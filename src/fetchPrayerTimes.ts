@@ -3,12 +3,44 @@ import {
     prayerTimesEndpoint,
     gouvernorat,
     delegation,
-    type PrayerTimesApiResponse,
 } from "./common";
 
 import fs from "fs";
 
-
+export type PrayerTimesApiResponse = {
+    data: {
+        id: number;
+        gouvernorat: {
+            id: number;
+            intituleFr: string;
+            intituleAr: string;
+            intituleAn: string;
+        };
+        delegation: {
+            id: number;
+            intituleFr: string;
+            intituleAr: string;
+            intituleAn: string;
+            parent: {
+                id: number;
+                intituleFr: string;
+                intituleAr: string;
+                intituleAn: string;
+            };
+        };
+        date: string;
+        sobh: string;
+        dhohr: string;
+        aser: string;
+        magreb: string;
+        isha: string;
+        lat: string;
+        lng: string;
+        annee: number;
+        active: boolean;
+    };
+    method: "GET";
+};
 
 (async () => {
     for (let i = 0; i < daysOfYear.length; i++) {

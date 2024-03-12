@@ -53,38 +53,3 @@ export type DawnTimesApiResponse = {
     };
     method: "GET";
 };
-
-export type PrayerTimesApiResponse = {
-    data: {
-        id: number;
-        gouvernorat: {
-            id: number;
-            intituleFr: string;
-            intituleAr: string;
-            intituleAn: string;
-        };
-        delegation: {
-            id: number;
-            intituleFr: string;
-            intituleAr: string;
-            intituleAn: string;
-            parent: {
-                id: number;
-                intituleFr: string;
-                intituleAr: string;
-                intituleAn: string;
-            };
-        };
-        date: string;
-        sobh: string;
-        dhohr: string;
-        aser: string;
-        magreb: string;
-        isha: string;
-        lat: string;
-        lng: string;
-        annee: number;
-        active: boolean;
-    };
-    method: "GET";
-};

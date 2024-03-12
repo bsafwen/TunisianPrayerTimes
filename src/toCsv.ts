@@ -5,8 +5,8 @@ import {
     delegation,
     gouvernorat,
     type DawnTimesApiResponse,
-    type PrayerTimesApiResponse,
 } from "./common";
+import type { PrayerTimesApiResponse } from "./fetchPrayerTimes";
 
 const dirname = "./data/";
 
