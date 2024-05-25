@@ -20,31 +20,31 @@ type CsvRow = {
     Isha: string;
 };
 
-// read all files in the data directory
-const filesPerDay = fs.readdirSync(dirname);
+export async function toCSV() {
+    // read all files in the data directory
+    const filesPerDay = fs.readdirSync(dirname);
 
-// group files per month
-const filesPerMonth: { [k: string]: string[] } = {};
+    // group files per month
+    const filesPerMonth: { [k: string]: string[] } = {};
 
-filesPerDay.forEach((file) => {
-    const month = file.split("-")[1];
-    filesPerMonth[month] = filesPerMonth[month] || [];
-    filesPerMonth[month].push(file);
-});
-
-// sort files per month
-Object.keys(filesPerMonth).forEach((month) => {
-    filesPerMonth[month].sort((a, b) => {
-        const dayA = a.split("-")[2].split(".")[0];
-        const dayB = b.split("-")[2].split(".")[0];
-        return parseInt(dayA) - parseInt(dayB);
+    filesPerDay.forEach((file) => {
+        const month = file.split("-")[1];
+        filesPerMonth[month] = filesPerMonth[month] || [];
+        filesPerMonth[month].push(file);
     });
-});
 
-(async () => {
+    // sort files per month
+    Object.keys(filesPerMonth).forEach((month) => {
+        filesPerMonth[month].sort((a, b) => {
+            const dayA = a.split("-")[2].split(".")[0];
+            const dayB = b.split("-")[2].split(".")[0];
+            return parseInt(dayA) - parseInt(dayB);
+        });
+    });
+
     for (let i = 0; i < Object.keys(filesPerMonth).length; i++) {
         const month = Object.keys(filesPerMonth)[i];
-        const csvOut = `${month}.csv`;
+        const csvOut = `mawaqit-csv/${month}.csv`;
         fs.writeFileSync(csvOut, "Day,Fajr,Shuruk,Duhr,Asr,Maghrib,Isha\n");
         for (let i = 0; i < filesPerMonth[month].length; i++) {
             const file = filesPerMonth[month][i];
@@ -73,4 +73,4 @@ Object.keys(filesPerMonth).forEach((month) => {
             );
         }
     }
-})();
+}

@@ -42,7 +42,7 @@ export type PrayerTimesApiResponse = {
     method: "GET";
 };
 
-(async () => {
+export async function fetchPrayerTimes() {
     for (let i = 0; i < daysOfYear.length; i++) {
         const response = await fetch(
             `${prayerTimesEndpoint}/${daysOfYear[i]}/${gouvernorat}/${delegation}/`
@@ -56,4 +56,4 @@ export type PrayerTimesApiResponse = {
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
     }
-})();
+}
