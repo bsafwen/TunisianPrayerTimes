@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "ts-node src/index.ts",
+    "clean": "rm -rf data mawaqit-csv"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,6 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
-    "@types/node": "^20.11.26"
+    "@types/node": "^20.12.12"
   }
 }

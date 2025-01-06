@@ -1,10 +1,12 @@
-import fs from "fs";
 import { fetchPrayerTimes } from "./fetchPrayerTimes";
 import { toCSV } from "./toCsv";
+import { csvDir, dataDir } from "./common";
+import { createFolderIfNotExists } from "./utils";
 
 (async () => {
-    fs.mkdirSync("data");
-    fs.mkdirSync("mawaqit-csv");
-    await fetchPrayerTimes();
-    await toCSV();
+  createFolderIfNotExists(dataDir);
+  await fetchPrayerTimes();
+
+  createFolderIfNotExists(csvDir);
+  await toCSV();
 })();
