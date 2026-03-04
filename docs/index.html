@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="مواقيت الصلاة في تونس — تحميل جدول مواقيت الصلاة لكل معتمدية"
+    />
+    <title>مواقيت الصلاة في تونس</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Amiri+Quran&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="card" role="main">
+      <!-- Gold top stripe rendered via CSS ::before -->
+
+      <!-- ── Header ─────────────────────────────────── -->
+      <header class="card-header">
+        <p class="bismillah">بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <span class="mosque-icon" aria-hidden="true">🕌</span>
+        <h1 class="card-title">مواقيت الصلاة في تونس</h1>
+        <p class="card-subtitle">اختر المعتمدية وحمّل الجدول السنوي</p>
+        <span class="ornament" aria-hidden="true">❖ ✦ ❖</span>
+      </header>
+
+      <!-- ── Form ───────────────────────────────────── -->
+      <section class="card-body">
+        <div class="field">
+          <label for="delegation-input">
+            <span class="label-icon" aria-hidden="true">📍</span>
+            المعتمدية
+          </label>
+          <div class="autocomplete-wrap">
+            <input
+              id="delegation-input"
+              type="text"
+              placeholder="ابحث عن معتمديتك…"
+              autocomplete="off"
+              spellcheck="false"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-controls="suggestions-list"
+              aria-expanded="false"
+            />
+            <ul
+              id="suggestions-list"
+              class="suggestions-list"
+              role="listbox"
+              hidden
+            ></ul>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="year-select">
+            <span class="label-icon" aria-hidden="true">📅</span>
+            السنة
+          </label>
+          <select id="year-select" disabled>
+            <option value="">— اختر المعتمدية أوّلاً —</option>
+          </select>
+        </div>
+
+        <p
+          class="status-msg"
+          id="status-msg"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <button class="btn-download" id="btn-download" disabled type="button">
+          <span class="spinner" aria-hidden="true"></span>
+          <span class="btn-text"
+            >⬇ تحميل مواقيت الصلاة (ملفات CSV داخل ZIP)</span
+          >
+        </button>
+
+        <button
+          class="btn-download btn-calendar-toggle"
+          id="btn-show-calendar"
+          disabled
+          type="button"
+        >
+          <span class="btn-text">📅 عرض جدول المواقيت</span>
+        </button>
+
+        <p class="source-note">
+          مواقيت الصلاة مستخرجة من
+          <a href="https://www.meteo.tn" target="_blank" rel="noopener"
+            >المعهد الوطني للرصد الجوي</a
+          >
+        </p>
+      </section>
+
+      <!-- ── Prayer Times Calendar ──────────────────── -->
+      <section class="card-body calendar-section" id="calendar-section" hidden>
+        <div class="calendar-header">
+          <button
+            class="cal-nav-btn"
+            id="cal-prev"
+            type="button"
+            aria-label="الشهر السابق"
+          >
+            ❮
+          </button>
+          <h2 class="cal-month-title" id="cal-month-title"></h2>
+          <button
+            class="cal-nav-btn"
+            id="cal-next"
+            type="button"
+            aria-label="الشهر التالي"
+          >
+            ❯
+          </button>
+        </div>
+        <div class="cal-table-wrap">
+          <table class="cal-table" id="cal-table">
+            <thead>
+              <tr>
+                <th>اليوم</th>
+                <th>الفجر</th>
+                <th>الشروق</th>
+                <th>الظهر</th>
+                <th>العصر</th>
+                <th>المغرب</th>
+                <th>العشاء</th>
+              </tr>
+            </thead>
+            <tbody id="cal-tbody"></tbody>
+          </table>
+        </div>
+        <button
+          class="btn-download btn-calendar-toggle btn-calendar-close"
+          id="btn-hide-calendar"
+          type="button"
+        >
+          <span class="btn-text">✕ إخفاء الجدول</span>
+        </button>
+      </section>
+
+      <!-- ── Mawaqit Push ────────────────────────────────────── -->
+      <section class="card-body mp-section" id="mawaqit-push-section">
+        <hr class="mp-divider" />
+        <h2 class="mp-heading">
+          <span aria-hidden="true">📡</span> رفع المواقيت إلى mawaqit.net
+          <button
+            id="mp-btn-settings"
+            class="mp-btn-icon"
+            type="button"
+            title="الإعدادات"
+            aria-label="إعدادات الرفع"
+          >
+            ⚙
+          </button>
+          <span id="mp-session-badge" class="mp-badge mp-badge--off"
+            >غير متصل</span
+          >
+        </h2>
+
+        <!-- Settings panel (collapsed by default) -->
+        <div id="mp-settings-panel" hidden>
+          <div class="field">
+            <label for="mp-mosque-id">
+              رقم المسجد على mawaqit.net
+              <span class="mp-hint"
+                >(من رابط الضبط: /mosque/<strong>رقم</strong>/configure)</span
+              >
+            </label>
+            <input
+              id="mp-mosque-id"
+              type="number"
+              placeholder="مثال: 17999"
+              min="1"
+            />
+          </div>
+
+          <div class="field">
+            <label for="mp-cookies">
+              Cookie الجلسة بعد تسجيل الدخول
+              <span class="mp-hint">
+                1.
+                <a
+                  href="https://mawaqit.net/en/backoffice/login"
+                  target="_blank"
+                  rel="noopener"
+                  >سجّل الدخول إلى mawaqit.net</a
+                >
+                يدوياً في المتصفح (كلمة السر + كود التحقق بالبريد).
+                <br />
+                2. افتح أدوات المطوّر (F12) ← تبويب
+                <strong>Console</strong> ← اكتب
+                <code>copy(document.cookie)</code> ثم Enter.
+                <br />
+                3. الصق النتيجة هنا وانقر «حفظ الجلسة».
+              </span>
+            </label>
+            <textarea
+              id="mp-cookies"
+              rows="3"
+              placeholder="PHPSESSID=abc123; REMEMBERME=…; accessToken=…"
+              autocomplete="off"
+              spellcheck="false"
+              dir="ltr"
+            ></textarea>
+          </div>
+
+          <div class="mp-row">
+            <button
+              class="btn-download mp-btn-login"
+              id="mp-btn-login"
+              type="button"
+            >
+              <span class="btn-text">حفظ الجلسة</span>
+            </button>
+            <button
+              class="mp-btn-secondary"
+              id="mp-btn-logout"
+              type="button"
+              style="display: none"
+            >
+              تسجيل الخروج
+            </button>
+          </div>
+        </div>
+
+        <p
+          class="mp-status"
+          id="mp-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <button class="btn-download" id="mp-btn-push" disabled type="button">
+          <span class="spinner" aria-hidden="true"></span>
+          <span class="btn-text">📡 رفع مواقيت الصلاة إلى mawaqit.net</span>
+        </button>
+      </section>
+
+      <!-- ── Footer: prayer names ───────────────────── -->
+      <footer class="card-footer" aria-label="أوقات الصلاة">
+        <div class="prayer-names">
+          <div class="prayer-item">
+            <div class="prayer-dot"></div>
+            <span class="prayer-name">الفجر</span>
+          </div>
+          <div class="prayer-item">
+            <div class="prayer-dot"></div>
+            <span class="prayer-name">الشروق</span>
+          </div>
+          <div class="prayer-item">
+            <div class="prayer-dot"></div>
+            <span class="prayer-name">الظهر</span>
+          </div>
+          <div class="prayer-item">
+            <div class="prayer-dot"></div>
+            <span class="prayer-name">العصر</span>
+          </div>
+          <div class="prayer-item">
+            <div class="prayer-dot"></div>
+            <span class="prayer-name">المغرب</span>
+          </div>
+          <div class="prayer-item">
+            <div class="prayer-dot"></div>
+            <span class="prayer-name">العشاء</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <p class="page-footer">
+      مصدر البيانات: المعهد الوطني للرصد الجوي &mdash; meteo.tn
+    </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="app.js?v=4" defer></script>
+    <script src="mawaqit-push.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+name = "mawaqittn"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Workers free tier is enough — no KV, no D1 needed.
+# After deploying, remember to add your GitHub Pages origin
+# to the ALLOWED_ORIGINS array in index.js.
+
+[build]
+# No build step needed — pure ES module Worker.

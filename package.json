@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "bun src/index.ts",
-    "clean": "rm -rf data mawaqit-csv"
+    "ingest": "bun src/index.ts"
   },
   "keywords": [],
   "author": "",
