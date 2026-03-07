@@ -65,150 +65,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="⏱️"
+                android:textSize="64sp"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/onboarding_step2_title"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
                 android:layout_marginBottom="24dp" />
-
-            <!-- Mock prayer row showing duration mode -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="24dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:strokeColor="@color/gold_light"
-                app:strokeWidth="1dp"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Mock row 1 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:text="@string/prayer_fajr"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/prayer_name" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="05:15"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_dark"
-                            android:textAlignment="center" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-
-                            <TextView
-                                android:layout_width="56dp"
-                                android:layout_height="36dp"
-                                android:text="60"
-                                android:textSize="14sp"
-                                android:textColor="@color/text_dark"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:background="@drawable/input_islamic"
-                                android:padding="4dp" />
-
-                            <TextView
-                                android:id="@+id/mockLabel1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:text="@string/label_duration"
-                                android:textSize="12sp"
-                                android:textColor="@color/gold"
-                                android:textStyle="bold"
-                                android:padding="4dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Divider -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/divider" />
-
-                    <!-- Mock row 2 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:text="@string/prayer_dhuhr"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/prayer_name" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="12:45"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_dark"
-                            android:textAlignment="center" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-
-                            <TextView
-                                android:layout_width="56dp"
-                                android:layout_height="36dp"
-                                android:text="60"
-                                android:textSize="14sp"
-                                android:textColor="@color/text_dark"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:background="@drawable/input_islamic"
-                                android:padding="4dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:text="@string/label_duration"
-                                android:textSize="12sp"
-                                android:textColor="@color/gold"
-                                android:textStyle="bold"
-                                android:padding="4dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -231,161 +99,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="🔄"
+                android:textSize="64sp"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/onboarding_step3_title"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
                 android:layout_marginBottom="24dp" />
 
-            <!-- Mock prayer row showing the tap animation -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:strokeColor="@color/gold_light"
-                app:strokeWidth="1dp"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Before: Duration mode (will fade out) -->
-                    <LinearLayout
-                        android:id="@+id/rowBefore"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:text="@string/prayer_fajr"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/prayer_name" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="05:15"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_dark"
-                            android:textAlignment="center" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-
-                            <TextView
-                                android:layout_width="56dp"
-                                android:layout_height="36dp"
-                                android:text="60"
-                                android:textSize="14sp"
-                                android:textColor="@color/text_dark"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:background="@drawable/input_islamic"
-                                android:padding="4dp" />
-
-                            <TextView
-                                android:id="@+id/pulseLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:text="@string/label_duration"
-                                android:textSize="14sp"
-                                android:textColor="@color/gold"
-                                android:textStyle="bold"
-                                android:padding="6dp"
-                                android:background="@drawable/pulse_circle_bg" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- After: Fixed time mode (will fade in) -->
-                    <LinearLayout
-                        android:id="@+id/rowAfter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="10dp"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:text="@string/prayer_fajr"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/prayer_name" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="05:15"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_dark"
-                            android:textAlignment="center" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-
-                            <TextView
-                                android:layout_width="64dp"
-                                android:layout_height="36dp"
-                                android:text="06:15"
-                                android:textSize="14sp"
-                                android:textColor="@color/green_primary"
-                                android:textAlignment="center"
-                                android:gravity="center"
-                                android:background="@drawable/input_islamic"
-                                android:textStyle="bold"
-                                android:padding="4dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:text="@string/label_fixed_time"
-                                android:textSize="12sp"
-                                android:textColor="@color/green_primary"
-                                android:textStyle="bold"
-                                android:padding="4dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Finger pointer indicator -->
             <TextView
-                android:id="@+id/tapIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="👆"
-                android:textSize="32sp"
-                android:layout_marginBottom="8dp" />
-
-            <TextView
-                android:id="@+id/step3Desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_step3_desc"
