@@ -27,9 +27,7 @@ class SilenceReceiver : BroadcastReceiver() {
                 Log.d(TAG, "Restoring normal mode after $prayerName")
                 disableSilentMode(context)
             }
-            "com.tunisianprayertimes.ACTION_RESCHEDULE",
-            Intent.ACTION_BOOT_COMPLETED,
-            "android.intent.action.MY_PACKAGE_REPLACED" -> {
+            "com.tunisianprayertimes.ACTION_RESCHEDULE" -> {
                 Log.d(TAG, "Rescheduling alarms")
                 SilenceScheduler.scheduleAll(context)
             }

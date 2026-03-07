@@ -4,8 +4,11 @@
 
     <!-- Required to modify Do Not Disturb settings -->
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-    <!-- Required for exact alarms on Android 12+ -->
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- Required for exact alarms on Android 12 and 13 -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32" />
+    <!-- Required for exact alarms on Android 14+ -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <!-- Re-schedule alarms after reboot -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -26,15 +29,24 @@
             </intent-filter>
         </activity>
 
+        <!-- Internal receiver for silence/unsilence/reschedule alarms -->
         <receiver
             android:name=".SilenceReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
                 <action android:name="com.tunisianprayertimes.ACTION_SILENCE" />
                 <action android:name="com.tunisianprayertimes.ACTION_UNSILENCE" />
                 <action android:name="com.tunisianprayertimes.ACTION_RESCHEDULE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- System broadcast receiver for boot/update (must be exported) -->
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
 
