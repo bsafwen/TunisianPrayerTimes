@@ -26,7 +26,7 @@
     <string name="label_duration">د</string>
     <string name="label_fixed_time">حتى</string>
     <string name="pick_end_time">اختر وقت الانتهاء</string>
-    <string name="ramadan_active">🌙 رمضان — إسكات العشاء ممتد إلى ساعتين</string>
+    <string name="ramadan_active">🌙 رمضان — إسكات العشاء ممتد إلى ساعة ونصف</string>
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>
     <string name="hint_search_delegation">ابحث عن معتمدية…</string>

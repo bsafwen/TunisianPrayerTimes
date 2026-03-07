@@ -43,13 +43,13 @@ object PrefsManager {
         Prayer.DHUHR -> 60
         Prayer.ASR -> 30
         Prayer.MAGHRIB -> 20
-        Prayer.ISHA -> if (RamadanDetector.isRamadan()) 120 else 30
+        Prayer.ISHA -> if (RamadanDetector.isRamadan()) 90 else 30
     }
 
     fun getAfterMinutes(context: Context, prayer: Prayer): Int {
-        // During Ramadan, override Isha to 120 min regardless of saved value
+        // During Ramadan, override Isha to 90 min regardless of saved value
         if (prayer == Prayer.ISHA && RamadanDetector.isRamadan()) {
-            return 120
+            return 90
         }
         return prefs(context).getInt("after_${prayer.name}", defaultAfterMinutes(prayer))
     }
