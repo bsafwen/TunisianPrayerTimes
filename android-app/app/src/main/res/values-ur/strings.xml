@@ -19,11 +19,13 @@
     <string name="toast_auto_enabled">خودکار خاموشی فعال ہو گئی ✅</string>
     <string name="toast_auto_disabled">خودکار خاموشی غیر فعال ہو گئی</string>
     <string name="prayer_settings_title">نماز خاموشی کی ترتیبات</string>
-    <string name="prayer_settings_subtitle">ہر نماز کے لیے خاموشی کی مدت منٹوں میں مقرر کریں (0 = غیر فعال)</string>
+    <string name="prayer_settings_subtitle">ہر نماز کے لیے خاموشی کی مدت مقرر کریں۔ مقررہ وقت پر سوئچ کرنے کے لیے لیبل کو تھپتھپائیں۔</string>
     <string name="col_prayer">نماز</string>
     <string name="col_time">وقت</string>
     <string name="col_duration">دورانیہ</string>
     <string name="label_duration">منٹ</string>
+    <string name="label_fixed_time">تک</string>
+    <string name="pick_end_time">ختم وقت مقرر کریں</string>
     <string name="ramadan_active">🌙 رمضان — عشاء کی خاموشی ۲ گھنٹے تک بڑھا دی گئی</string>
     <string name="location_title">مقام</string>
     <string name="label_delegation">ضلع</string>

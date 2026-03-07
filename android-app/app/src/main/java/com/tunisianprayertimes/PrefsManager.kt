@@ -58,9 +58,36 @@ object PrefsManager {
         prefs(context).edit().putInt("after_${prayer.name}", minutes).apply()
     }
 
+    fun getSilenceMode(context: Context, prayer: Prayer): SilenceMode {
+        val modeStr = prefs(context).getString("mode_${prayer.name}", SilenceMode.DURATION.name)
+        return try { SilenceMode.valueOf(modeStr!!) } catch (_: Exception) { SilenceMode.DURATION }
+    }
+
+    fun setSilenceMode(context: Context, prayer: Prayer, mode: SilenceMode) {
+        prefs(context).edit().putString("mode_${prayer.name}", mode.name).apply()
+    }
+
+    fun getFixedTimeHour(context: Context, prayer: Prayer): Int {
+        return prefs(context).getInt("fixed_hour_${prayer.name}", -1)
+    }
+
+    fun getFixedTimeMinute(context: Context, prayer: Prayer): Int {
+        return prefs(context).getInt("fixed_minute_${prayer.name}", -1)
+    }
+
+    fun setFixedTime(context: Context, prayer: Prayer, hour: Int, minute: Int) {
+        prefs(context).edit()
+            .putInt("fixed_hour_${prayer.name}", hour)
+            .putInt("fixed_minute_${prayer.name}", minute)
+            .apply()
+    }
+
     fun getConfig(context: Context, prayer: Prayer): PrayerSilenceConfig {
         return PrayerSilenceConfig(
-            afterMinutes = getAfterMinutes(context, prayer)
+            mode = getSilenceMode(context, prayer),
+            afterMinutes = getAfterMinutes(context, prayer),
+            fixedHour = getFixedTimeHour(context, prayer),
+            fixedMinute = getFixedTimeMinute(context, prayer)
         )
     }
 }

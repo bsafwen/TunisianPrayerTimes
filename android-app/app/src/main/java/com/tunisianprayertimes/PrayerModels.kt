@@ -24,6 +24,11 @@ data class DayPrayerTimes(
     fun allPrayers(): List<PrayerTime> = listOf(fajr, dhuhr, asr, maghrib, isha)
 }
 
+enum class SilenceMode { DURATION, FIXED_TIME }
+
 data class PrayerSilenceConfig(
-    val afterMinutes: Int = 30
+    val mode: SilenceMode = SilenceMode.DURATION,
+    val afterMinutes: Int = 30,
+    val fixedHour: Int = -1,
+    val fixedMinute: Int = -1
 )

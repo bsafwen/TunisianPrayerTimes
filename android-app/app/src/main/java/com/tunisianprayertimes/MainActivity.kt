@@ -17,6 +17,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.databinding.ActivityMainBinding
 import java.util.Calendar
 
@@ -162,7 +164,9 @@ class MainActivity : AppCompatActivity() {
 
             val tvName = rowView.findViewById<TextView>(R.id.tvPrayerName)
             val tvTime = rowView.findViewById<TextView>(R.id.tvPrayerTime)
+            val tvLabel = rowView.findViewById<TextView>(R.id.tvAfterLabel)
             val etAfter = rowView.findViewById<EditText>(R.id.etAfter)
+            val tvFixedTime = rowView.findViewById<TextView>(R.id.tvFixedTime)
 
             tvName.text = prayerNames[prayer] ?: prayer.name
 
@@ -174,10 +178,61 @@ class MainActivity : AppCompatActivity() {
                 "--:--"
             }
 
-            // Load saved values
+            // Load saved duration
             etAfter.setText(PrefsManager.getAfterMinutes(this, prayer).toString())
 
-            // Save on change
+            // Load or compute default fixed time
+            var fixedH = PrefsManager.getFixedTimeHour(this, prayer)
+            var fixedM = PrefsManager.getFixedTimeMinute(this, prayer)
+            if (fixedH < 0 || fixedM < 0) {
+                // Default: prayer time + current duration
+                if (prayerTime != null) {
+                    val defaultEnd = Calendar.getInstance().apply {
+                        set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+                        set(Calendar.MINUTE, prayerTime.minute)
+                        add(Calendar.MINUTE, PrefsManager.getAfterMinutes(this@MainActivity, prayer))
+                    }
+                    fixedH = defaultEnd.get(Calendar.HOUR_OF_DAY)
+                    fixedM = defaultEnd.get(Calendar.MINUTE)
+                    PrefsManager.setFixedTime(this, prayer, fixedH, fixedM)
+                } else {
+                    fixedH = 12; fixedM = 0
+                }
+            }
+            tvFixedTime.text = String.format("%02d:%02d", fixedH, fixedM)
+
+            // Set initial mode
+            val mode = PrefsManager.getSilenceMode(this, prayer)
+            applyRowMode(mode, tvLabel, etAfter, tvFixedTime)
+
+            // Tap label to toggle mode
+            tvLabel.setOnClickListener {
+                val current = PrefsManager.getSilenceMode(this, prayer)
+                val newMode = if (current == SilenceMode.DURATION) SilenceMode.FIXED_TIME else SilenceMode.DURATION
+                PrefsManager.setSilenceMode(this, prayer, newMode)
+                applyRowMode(newMode, tvLabel, etAfter, tvFixedTime)
+                rescheduleIfEnabled()
+            }
+
+            // Tap fixed time to open time picker
+            tvFixedTime.setOnClickListener {
+                val h = PrefsManager.getFixedTimeHour(this, prayer)
+                val m = PrefsManager.getFixedTimeMinute(this, prayer)
+                val picker = MaterialTimePicker.Builder()
+                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .setHour(if (h >= 0) h else 12)
+                    .setMinute(if (m >= 0) m else 0)
+                    .setTitleText(getString(R.string.pick_end_time))
+                    .build()
+                picker.addOnPositiveButtonClickListener {
+                    tvFixedTime.text = String.format("%02d:%02d", picker.hour, picker.minute)
+                    PrefsManager.setFixedTime(this, prayer, picker.hour, picker.minute)
+                    rescheduleIfEnabled()
+                }
+                picker.show(supportFragmentManager, "picker_${prayer.name}")
+            }
+
+            // Save duration on change
             etAfter.addTextChangedListener(createSaveWatcher { text ->
                 val minutes = text.toIntOrNull() ?: 0
                 PrefsManager.setAfterMinutes(this, prayer, minutes)
@@ -185,6 +240,21 @@ class MainActivity : AppCompatActivity() {
             })
 
             container.addView(rowView)
+        }
+    }
+
+    private fun applyRowMode(mode: SilenceMode, label: TextView, etDuration: EditText, tvFixed: TextView) {
+        when (mode) {
+            SilenceMode.DURATION -> {
+                label.text = getString(R.string.label_duration)
+                etDuration.visibility = View.VISIBLE
+                tvFixed.visibility = View.GONE
+            }
+            SilenceMode.FIXED_TIME -> {
+                label.text = getString(R.string.label_fixed_time)
+                etDuration.visibility = View.GONE
+                tvFixed.visibility = View.VISIBLE
+            }
         }
     }
 

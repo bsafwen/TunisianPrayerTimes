@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.tunisianprayertimes"
-    compileSdk = 34
+    compileSdk = 36
 
     signingConfigs {
         create("release") {
@@ -19,9 +19,9 @@ android {
     defaultConfig {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 4
-        versionName = "1.3"
+        targetSdk = 36
+        versionCode = 6
+        versionName = "1.5"
     }
 
     buildTypes {
@@ -36,12 +36,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {

@@ -51,13 +51,22 @@ object SilenceScheduler {
                 set(Calendar.MILLISECOND, 0)
             }
 
-            // Unsilence after configured minutes
-            val unsilenceTime = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, prayerTime.hour)
-                set(Calendar.MINUTE, prayerTime.minute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-                add(Calendar.MINUTE, config.afterMinutes)
+            // Unsilence based on mode: fixed time or duration
+            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
+                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }
+            } else {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+                    set(Calendar.MINUTE, prayerTime.minute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                    add(Calendar.MINUTE, config.afterMinutes)
+                }
             }
 
             // Check if we are currently inside this prayer's silence window

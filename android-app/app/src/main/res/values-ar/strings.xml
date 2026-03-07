@@ -19,11 +19,13 @@
     <string name="toast_auto_enabled">تم تفعيل الإسكات التلقائي ✅</string>
     <string name="toast_auto_disabled">تم تعطيل الإسكات التلقائي</string>
     <string name="prayer_settings_title">إعدادات إسكات الصلاة</string>
-    <string name="prayer_settings_subtitle">حدد مدة الإسكات بالدقائق لكل صلاة (0 = معطل)</string>
+    <string name="prayer_settings_subtitle">حدد مدة الإسكات لكل صلاة. اضغط على التسمية للتبديل إلى وقت انتهاء ثابت.</string>
     <string name="col_prayer">الصلاة</string>
     <string name="col_time">الوقت</string>
     <string name="col_duration">المدة</string>
     <string name="label_duration">د</string>
+    <string name="label_fixed_time">حتى</string>
+    <string name="pick_end_time">حدد وقت الانتهاء</string>
     <string name="ramadan_active">🌙 رمضان — تم تمديد إسكات العشاء إلى ساعتين</string>
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>
