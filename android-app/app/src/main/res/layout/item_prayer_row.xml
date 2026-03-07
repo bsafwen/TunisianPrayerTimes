@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="10dp">
+
+    <!-- Prayer name -->
+    <TextView
+        android:id="@+id/tvPrayerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/prayer_name" />
+
+    <!-- Prayer time -->
+    <TextView
+        android:id="@+id/tvPrayerTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:textSize="14sp"
+        android:textColor="@color/text_dark"
+        android:textAlignment="center" />
+
+    <!-- Duration (after) label + input -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvAfterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_duration"
+            android:textSize="10sp"
+            android:textColor="@color/text_muted" />
+
+        <EditText
+            android:id="@+id/etAfter"
+            android:layout_width="56dp"
+            android:layout_height="36dp"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:textColor="@color/text_dark"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@drawable/input_islamic"
+            android:padding="4dp"
+            android:maxLength="3"
+            android:importantForAutofill="no" />
+    </LinearLayout>
+
+</LinearLayout>

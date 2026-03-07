@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Islamic teal & gold palette -->
+    <color name="green_primary">#00695C</color>
+    <color name="green_primary_dark">#004D40</color>
+    <color name="green_accent">#B8860B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="header_start">#004D40</color>
+    <color name="header_end">#00695C</color>
+    <color name="gold">#D4AF37</color>
+    <color name="gold_light">#F5E6C8</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="bg_cream">#FFF8F0</color>
+    <color name="text_dark">#2C2C2C</color>
+    <color name="text_muted">#6D6D6D</color>
+    <color name="divider">#E8DFD0</color>
+    <color name="prayer_name">#004D40</color>
+    <color name="card_border">#E8DFD0</color>
+    <color name="silence_red">#C62828</color>
+    <color name="unsilence_green">#00695C</color>
+</resources>

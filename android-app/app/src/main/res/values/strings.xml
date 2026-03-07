@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tunisian Prayer Times</string>
+    <string name="subtitle">Prayer Times in Tunisia</string>
+    <string name="status_normal">🔔 Phone is in Normal Mode</string>
+    <string name="status_silent">🔇 Phone is in Silent Mode</string>
+    <string name="status_no_permission">⚠️ DND permission required</string>
+    <string name="btn_silence">🔇 Silence</string>
+    <string name="btn_unsilence">🔔 Unsilence</string>
+    <string name="info_text">This app uses Do Not Disturb mode to silence your phone during prayer times.</string>
+    <string name="toast_silent_enabled">Silent mode enabled 🔇</string>
+    <string name="toast_normal_restored">Normal mode restored 🔔</string>
+    <string name="toast_dnd_permission">Please grant Do Not Disturb access to this app</string>
+    <string name="dnd_dialog_title">Permission Required</string>
+    <string name="dnd_dialog_message">This app needs Do Not Disturb access to automatically silence your phone during prayer times. Please find and enable "Tunisian Prayer Times" in the next screen.</string>
+    <string name="dnd_dialog_grant">Grant Permission</string>
+    <string name="dnd_dialog_later">Later</string>
+    <string name="auto_silence">Auto-silence during prayers</string>
+    <string name="toast_auto_enabled">Auto-silence enabled ✅</string>
+    <string name="toast_auto_disabled">Auto-silence disabled</string>
+    <string name="prayer_settings_title">Prayer Silence Settings</string>
+    <string name="prayer_settings_subtitle">Set silence duration in minutes for each prayer (0 = disabled)</string>
+    <string name="col_prayer">Prayer</string>
+    <string name="col_time">Time</string>
+    <string name="col_duration">Duration</string>
+    <string name="label_duration">min</string>
+    <string name="ramadan_active">🌙 Ramadan — Isha silence extended to 2 hours</string>
+    <string name="location_title">Location</string>
+    <string name="label_delegation">Delegation</string>
+    <string name="hint_search_delegation">Search delegation…</string>
+    <string name="prayer_fajr">Fajr</string>
+    <string name="prayer_dhuhr">Dhuhr</string>
+    <string name="prayer_asr">Asr</string>
+    <string name="prayer_maghrib">Maghrib</string>
+    <string name="prayer_isha">Isha</string>
+</resources>

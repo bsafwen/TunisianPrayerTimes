@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="120dp"
+    android:viewportWidth="200"
+    android:viewportHeight="120">
+
+    <!-- Central dome -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.15"
+        android:pathData="M70,90 Q70,45 100,35 Q130,45 130,90 Z" />
+
+    <!-- Left minaret -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.12"
+        android:pathData="M42,90 L42,50 Q42,44 46,44 Q50,44 50,50 L50,90 Z" />
+
+    <!-- Right minaret -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.12"
+        android:pathData="M150,90 L150,50 Q150,44 154,44 Q158,44 158,50 L158,90 Z" />
+
+    <!-- Left minaret cap -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.15"
+        android:pathData="M46,44 L44,38 L46,32 L48,38 Z" />
+
+    <!-- Right minaret cap -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.15"
+        android:pathData="M154,44 L152,38 L154,32 L156,38 Z" />
+
+    <!-- Crescent on dome -->
+    <path
+        android:fillColor="#D4AF37"
+        android:fillAlpha="0.8"
+        android:pathData="M100,22
+            A7,7 0 1,0 100,36
+            A5.5,5.5 0 1,1 100,22Z" />
+
+    <!-- Star near crescent -->
+    <path
+        android:fillColor="#D4AF37"
+        android:fillAlpha="0.7"
+        android:pathData="M110,25 L111,28 L114,28 L111.5,30 L112.5,33 L110,31 L107.5,33 L108.5,30 L106,28 L109,28 Z" />
+
+    <!-- Base line -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.1"
+        android:pathData="M20,90 L180,90"
+        android:strokeWidth="1"
+        android:strokeColor="#FFFFFF"
+        android:strokeAlpha="0.2" />
+
+</vector>

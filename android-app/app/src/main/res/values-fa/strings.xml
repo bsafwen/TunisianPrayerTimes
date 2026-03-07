@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">اوقات نماز تونس</string>
+    <string name="subtitle">اوقات نماز در تونس</string>
+    <string name="status_normal">🔔 گوشی در حالت عادی است</string>
+    <string name="status_silent">🔇 گوشی در حالت بی‌صدا است</string>
+    <string name="status_no_permission">⚠️ مجوز عدم مزاحمت لازم است</string>
+    <string name="btn_silence">🔇 بی‌صدا</string>
+    <string name="btn_unsilence">🔔 فعال کردن صدا</string>
+    <string name="info_text">این برنامه از حالت عدم مزاحمت برای بی‌صدا کردن گوشی شما در اوقات نماز استفاده می‌کند.</string>
+    <string name="toast_silent_enabled">حالت بی‌صدا فعال شد 🔇</string>
+    <string name="toast_normal_restored">حالت عادی بازگردانده شد 🔔</string>
+    <string name="toast_dnd_permission">لطفاً دسترسی عدم مزاحمت را به این برنامه بدهید</string>
+    <string name="dnd_dialog_title">مجوز لازم است</string>
+    <string name="dnd_dialog_message">این برنامه به دسترسی عدم مزاحمت نیاز دارد تا گوشی شما را به طور خودکار در اوقات نماز بی‌صدا کند. لطفاً در صفحه بعدی «اوقات نماز تونس» را پیدا و فعال کنید.</string>
+    <string name="dnd_dialog_grant">اعطای مجوز</string>
+    <string name="dnd_dialog_later">بعداً</string>
+    <string name="auto_silence">بی‌صدا کردن خودکار هنگام نماز</string>
+    <string name="toast_auto_enabled">بی‌صدا کردن خودکار فعال شد ✅</string>
+    <string name="toast_auto_disabled">بی‌صدا کردن خودکار غیرفعال شد</string>
+    <string name="prayer_settings_title">تنظیمات بی‌صدای نماز</string>
+    <string name="prayer_settings_subtitle">مدت بی‌صدا کردن را به دقیقه برای هر نماز تنظیم کنید (۰ = غیرفعال)</string>
+    <string name="col_prayer">نماز</string>
+    <string name="col_time">زمان</string>
+    <string name="col_duration">مدت</string>
+    <string name="label_duration">دقیقه</string>
+    <string name="ramadan_active">🌙 رمضان — بی‌صدای عشاء به ۲ ساعت افزایش یافت</string>
+    <string name="location_title">موقعیت</string>
+    <string name="label_delegation">شهر</string>
+    <string name="hint_search_delegation">جستجوی شهر…</string>
+    <string name="prayer_fajr">فجر</string>
+    <string name="prayer_dhuhr">ظهر</string>
+    <string name="prayer_asr">عصر</string>
+    <string name="prayer_maghrib">مغرب</string>
+    <string name="prayer_isha">عشاء</string>
+</resources>

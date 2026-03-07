@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Dome -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,72 Q40,38 54,30 Q68,38 68,72 Z" />
+    <!-- Crescent -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M54,20
+            A8,8 0 1,0 54,36
+            A6,6 0 1,1 54,20Z" />
+    <!-- Star -->
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M66,24 L67.5,28 L72,28 L68.5,30.5 L69.5,34.5 L66,32 L62.5,34.5 L63.5,30.5 L60,28 L64.5,28 Z" />
+    <!-- Left minaret -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.85"
+        android:pathData="M30,72 L30,48 Q30,42 33,42 Q36,42 36,48 L36,72 Z" />
+    <!-- Right minaret -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.85"
+        android:pathData="M72,72 L72,48 Q72,42 75,42 Q78,42 78,48 L78,72 Z" />
+</vector>

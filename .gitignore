@@ -1,3 +1,15 @@
 node_modules/
 data
 mawaqit-csv
+.DS_Store
+
+# Android
+*.jks
+*.keystore
+android-app/.gradle/
+android-app/.idea/
+android-app/.kotlin/
+android-app/build/
+android-app/app/build/
+android-app/local.properties
+*.apk

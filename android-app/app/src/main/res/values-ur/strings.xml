@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تیونس نماز اوقات</string>
+    <string name="subtitle">تیونس میں نماز کے اوقات</string>
+    <string name="status_normal">🔔 فون نارمل موڈ میں ہے</string>
+    <string name="status_silent">🔇 فون خاموش موڈ میں ہے</string>
+    <string name="status_no_permission">⚠️ ڈو ناٹ ڈسٹرب اجازت درکار ہے</string>
+    <string name="btn_silence">🔇 خاموش</string>
+    <string name="btn_unsilence">🔔 آواز بحال کریں</string>
+    <string name="info_text">یہ ایپ نماز کے اوقات میں آپ کے فون کو خاموش کرنے کے لیے ڈو ناٹ ڈسٹرب موڈ استعمال کرتی ہے۔</string>
+    <string name="toast_silent_enabled">خاموش موڈ فعال ہو گیا 🔇</string>
+    <string name="toast_normal_restored">نارمل موڈ بحال ہو گیا 🔔</string>
+    <string name="toast_dnd_permission">براہ کرم اس ایپ کو ڈو ناٹ ڈسٹرب تک رسائی دیں</string>
+    <string name="dnd_dialog_title">اجازت درکار ہے</string>
+    <string name="dnd_dialog_message">اس ایپ کو نماز کے اوقات میں آپ کے فون کو خودکار طور پر خاموش کرنے کے لیے ڈو ناٹ ڈسٹرب تک رسائی درکار ہے۔ براہ کرم اگلی سکرین میں "تیونس نماز اوقات" تلاش کریں اور فعال کریں۔</string>
+    <string name="dnd_dialog_grant">اجازت دیں</string>
+    <string name="dnd_dialog_later">بعد میں</string>
+    <string name="auto_silence">نماز کے دوران خودکار خاموشی</string>
+    <string name="toast_auto_enabled">خودکار خاموشی فعال ہو گئی ✅</string>
+    <string name="toast_auto_disabled">خودکار خاموشی غیر فعال ہو گئی</string>
+    <string name="prayer_settings_title">نماز خاموشی کی ترتیبات</string>
+    <string name="prayer_settings_subtitle">ہر نماز کے لیے خاموشی کی مدت منٹوں میں مقرر کریں (0 = غیر فعال)</string>
+    <string name="col_prayer">نماز</string>
+    <string name="col_time">وقت</string>
+    <string name="col_duration">دورانیہ</string>
+    <string name="label_duration">منٹ</string>
+    <string name="ramadan_active">🌙 رمضان — عشاء کی خاموشی ۲ گھنٹے تک بڑھا دی گئی</string>
+    <string name="location_title">مقام</string>
+    <string name="label_delegation">ضلع</string>
+    <string name="hint_search_delegation">ضلع تلاش کریں…</string>
+    <string name="prayer_fajr">فجر</string>
+    <string name="prayer_dhuhr">ظہر</string>
+    <string name="prayer_asr">عصر</string>
+    <string name="prayer_maghrib">مغرب</string>
+    <string name="prayer_isha">عشاء</string>
+</resources>

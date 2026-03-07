@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Horarios de Oración Túnez</string>
+    <string name="subtitle">Horarios de oración en Túnez</string>
+    <string name="status_normal">🔔 El teléfono está en modo normal</string>
+    <string name="status_silent">🔇 El teléfono está en modo silencioso</string>
+    <string name="status_no_permission">⚠️ Se requiere permiso de No molestar</string>
+    <string name="btn_silence">🔇 Silenciar</string>
+    <string name="btn_unsilence">🔔 Quitar silencio</string>
+    <string name="info_text">Esta aplicación usa el modo No molestar para silenciar tu teléfono durante los horarios de oración.</string>
+    <string name="toast_silent_enabled">Modo silencioso activado 🔇</string>
+    <string name="toast_normal_restored">Modo normal restaurado 🔔</string>
+    <string name="toast_dnd_permission">Por favor, conceda acceso de No molestar a esta aplicación</string>
+    <string name="dnd_dialog_title">Permiso requerido</string>
+    <string name="dnd_dialog_message">Esta aplicación necesita acceso a No molestar para silenciar automáticamente su teléfono durante los horarios de oración. Por favor, busque y active "Horarios de Oración Túnez" en la siguiente pantalla.</string>
+    <string name="dnd_dialog_grant">Conceder permiso</string>
+    <string name="dnd_dialog_later">Más tarde</string>
+    <string name="auto_silence">Silencio automático durante las oraciones</string>
+    <string name="toast_auto_enabled">Silencio automático activado ✅</string>
+    <string name="toast_auto_disabled">Silencio automático desactivado</string>
+    <string name="prayer_settings_title">Configuración de silencio de oración</string>
+    <string name="prayer_settings_subtitle">Establezca la duración del silencio en minutos para cada oración (0 = desactivado)</string>
+    <string name="col_prayer">Oración</string>
+    <string name="col_time">Hora</string>
+    <string name="col_duration">Duración</string>
+    <string name="label_duration">min</string>
+    <string name="ramadan_active">🌙 Ramadán — Silencio de Isha extendido a 2 horas</string>
+    <string name="location_title">Ubicación</string>
+    <string name="label_delegation">Delegación</string>
+    <string name="hint_search_delegation">Buscar delegación…</string>
+    <string name="prayer_fajr">Fajr</string>
+    <string name="prayer_dhuhr">Dhuhr</string>
+    <string name="prayer_asr">Asr</string>
+    <string name="prayer_maghrib">Maghrib</string>
+    <string name="prayer_isha">Isha</string>
+</resources>
