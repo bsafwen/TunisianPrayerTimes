@@ -39,7 +39,7 @@ function tag(d: Delegation, i: number, total: number, month?: string): string {
 
 function loadDelegations(): Delegation[] {
   const raw: GouvernoratConfig = JSON.parse(
-    fs.readFileSync("./gouvernorats.json", "utf-8"),
+    fs.readFileSync("../gouvernorats.json", "utf-8"),
   );
   return raw.gouvernorats.flatMap((g) =>
     g.delegations.map((d) => ({
@@ -278,7 +278,7 @@ async function main() {
   writeIndexJson(delegations);
   fs.mkdirSync(config.docsDir, { recursive: true });
   fs.copyFileSync(
-    "./gouvernorats.json",
+    "../gouvernorats.json",
     path.join(config.docsDir, "gouvernorats.json"),
   );
   console.log("gouvernorats.json copied to docs/");

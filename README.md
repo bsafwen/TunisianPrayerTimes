@@ -1,8 +1,9 @@
 # 🕌 Tunisian Prayer Times
 
-Fetches daily prayer times for **every delegation in Tunisia** from the [Institut National de la Météorologie](https://www.meteo.tn), stores them as CSV files compatible with [mawaqit.net](https://mawaqit.net), and serves them through a static web app.
+Fetches daily prayer times for **every delegation in Tunisia** from the [Institut National de la Météorologie](https://www.meteo.tn), stores them as CSV files compatible with [mawaqit.net](https://mawaqit.net), and serves them through a static web app and an Android app.
 
 🔗 **Live site:** hosted on GitHub Pages (`docs/`)
+📱 **Android app:** [Download APK from Releases](https://github.com/bsafwen/TunisianPrayerTimes/releases)
 
 ---
 
@@ -14,6 +15,7 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 | **CSV export** | Generates per-month CSV files in Mawaqit format, downloadable as a ZIP |
 | **Prayer calendar** | Interactive monthly calendar view in the browser |
 | **Mawaqit push** | Push prayer times directly to mawaqit.net from the browser via a Cloudflare Worker proxy |
+| **Android app** | Auto-silence phone during prayer times with per-delegation schedules |
 | **Incremental updates** | Only fetches missing days; supports partial-year and repair modes |
 
 ---
@@ -21,12 +23,15 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 ## Project Structure
 
 ```
-├── src/                  # Ingestion scripts (TypeScript / Bun)
-│   ├── index.ts          # Main entry — orchestrates fetching & CSV generation
-│   ├── api.ts            # meteo.tn API client
-│   ├── csv.ts            # CSV read/write helpers
-│   ├── config.ts         # Runtime configuration (env vars)
-│   └── types.ts          # Shared type definitions
+├── scraper/              # Data ingestion (TypeScript / Bun)
+│   ├── src/
+│   │   ├── index.ts      # Main entry — orchestrates fetching & CSV generation
+│   │   ├── api.ts        # meteo.tn API client
+│   │   ├── csv.ts        # CSV read/write helpers
+│   │   ├── config.ts     # Runtime configuration (env vars)
+│   │   └── types.ts      # Shared type definitions
+│   ├── package.json
+│   └── tsconfig.json
 ├── docs/                 # GitHub Pages static site
 │   ├── index.html        # Arabic RTL web app
 │   ├── app.js            # Delegation search, download, calendar logic
@@ -34,13 +39,13 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 │   ├── style.css         # Styles
 │   ├── gouvernorats.json # Delegation list (Arabic + French + English)
 │   └── csv/              # Generated prayer-time CSVs (per delegation/year/month)
+├── android-app/          # Android app (Kotlin)
+│   └── app/src/main/     # Auto-silence during prayer times
 ├── worker/               # Cloudflare Worker — CORS proxy for mawaqit.net
 │   ├── index.js          # Worker source
 │   ├── wrangler.toml     # Wrangler config
 │   └── README.md         # Worker-specific docs
-├── gouvernorats.json     # Master list of gouvernorats & delegations
-├── package.json
-└── tsconfig.json
+└── gouvernorats.json     # Master list of gouvernorats & delegations
 ```
 
 ---
@@ -55,8 +60,7 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 ### Install
 
 ```bash
-npm install
-# or
+cd scraper
 bun install
 ```
 
@@ -64,10 +68,8 @@ bun install
 
 ```bash
 # Fetch the current year for all delegations
+cd scraper
 bun src/index.ts
-
-# Or use the npm script
-npm run ingest
 ```
 
 #### Environment Variables
@@ -85,6 +87,7 @@ npm run ingest
 Example:
 
 ```bash
+cd scraper
 YEAR=2026 CONCURRENCY=3 DELAY_MS=500 bun src/index.ts
 ```
 

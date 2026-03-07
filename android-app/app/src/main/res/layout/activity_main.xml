@@ -301,38 +301,21 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Manual Controls -->
-            <LinearLayout
+            <!-- Manual Toggle Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnToggleSilence"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSilence"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:text="@string/btn_silence"
-                    android:textSize="14sp"
-                    android:textAllCaps="false"
-                    app:backgroundTint="@color/silence_red"
-                    app:cornerRadius="14dp"
-                    android:layout_marginEnd="6dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnUnsilence"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:text="@string/btn_unsilence"
-                    android:textSize="14sp"
-                    android:textAllCaps="false"
-                    app:backgroundTint="@color/unsilence_green"
-                    app:cornerRadius="14dp"
-                    android:layout_marginStart="6dp" />
-
-            </LinearLayout>
+                android:layout_height="56dp"
+                android:text="@string/btn_silence"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/green_primary"
+                app:cornerRadius="16dp"
+                app:icon="@android:drawable/ic_lock_silent_mode"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                android:layout_marginTop="16dp" />
 
             <!-- Geometric border strip -->
             <ImageView

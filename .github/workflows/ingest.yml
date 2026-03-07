@@ -37,7 +37,7 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: bun install
+        run: cd scraper && bun install
 
       - name: Resolve target year
         id: vars
@@ -59,7 +59,7 @@ jobs:
           YEAR: ${{ steps.vars.outputs.year }}
           CONCURRENCY: ${{ steps.vars.outputs.concurrency }}
           DELAY_MS: "1000"
-        run: bun src/ingest.ts
+        run: cd scraper && bun src/ingest.ts
 
       - name: Commit and push generated files
         run: |

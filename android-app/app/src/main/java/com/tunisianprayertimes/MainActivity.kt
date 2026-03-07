@@ -54,19 +54,16 @@ class MainActivity : AppCompatActivity() {
         }
         updateUI()
 
-        binding.btnSilence.setOnClickListener {
-            if (notificationManager.isNotificationPolicyAccessGranted) {
-                enableSilentMode()
-            } else {
+        binding.btnToggleSilence.setOnClickListener {
+            if (!notificationManager.isNotificationPolicyAccessGranted) {
                 requestDndPermission()
+                return@setOnClickListener
             }
-        }
-
-        binding.btnUnsilence.setOnClickListener {
-            if (notificationManager.isNotificationPolicyAccessGranted) {
+            val isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+            if (isSilent) {
                 disableSilentMode()
             } else {
-                requestDndPermission()
+                enableSilentMode()
             }
         }
     }
@@ -244,7 +241,14 @@ class MainActivity : AppCompatActivity() {
             else -> getString(R.string.status_normal)
         }
 
-        binding.btnSilence.isEnabled = !isSilent || !hasDndAccess
-        binding.btnUnsilence.isEnabled = isSilent && hasDndAccess
+        if (isSilent && hasDndAccess) {
+            binding.btnToggleSilence.text = getString(R.string.btn_unsilence)
+            binding.btnToggleSilence.setIconResource(android.R.drawable.ic_lock_silent_mode_off)
+            binding.btnToggleSilence.setBackgroundColor(getColor(R.color.silence_red))
+        } else {
+            binding.btnToggleSilence.text = getString(R.string.btn_silence)
+            binding.btnToggleSilence.setIconResource(android.R.drawable.ic_lock_silent_mode)
+            binding.btnToggleSilence.setBackgroundColor(getColor(R.color.green_primary))
+        }
     }
 }
