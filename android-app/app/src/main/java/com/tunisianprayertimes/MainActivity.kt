@@ -1,10 +1,12 @@
 package com.tunisianprayertimes
 
+import android.app.AlarmManager
 import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Editable
@@ -52,7 +54,11 @@ class MainActivity : AppCompatActivity() {
 
         // Sync ringer state with prayer schedule on every app open
         if (PrefsManager.isEnabled(this)) {
-            SilenceScheduler.scheduleAll(this)
+            if (hasExactAlarmPermission()) {
+                SilenceScheduler.scheduleAll(this)
+            } else {
+                ensureExactAlarmPermission()
+            }
         }
         updateUI()
 
@@ -72,8 +78,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // After returning from DND settings, activate scheduling if permission was granted
-        if (PrefsManager.isEnabled(this) && notificationManager.isNotificationPolicyAccessGranted) {
+        // After returning from DND or alarm settings, activate scheduling if permissions granted
+        if (PrefsManager.isEnabled(this) && notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission()) {
             SilenceScheduler.scheduleAll(this)
         }
         updateUI()
@@ -88,6 +94,9 @@ class MainActivity : AppCompatActivity() {
                     requestDndPermission()
                     binding.switchAutoSilence.isChecked = false
                     PrefsManager.setEnabled(this, false)
+                } else if (!hasExactAlarmPermission()) {
+                    ensureExactAlarmPermission()
+                    Toast.makeText(this, getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
                 } else {
                     SilenceScheduler.scheduleAll(this)
                     Toast.makeText(this, getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
@@ -299,6 +308,23 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButton(getString(R.string.dnd_dialog_later), null)
             .setCancelable(false)
             .show()
+    }
+
+    private fun ensureExactAlarmPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            if (!alarmManager.canScheduleExactAlarms()) {
+                startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+            }
+        }
+    }
+
+    private fun hasExactAlarmPermission(): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            return alarmManager.canScheduleExactAlarms()
+        }
+        return true
     }
 
     private fun updateUI() {

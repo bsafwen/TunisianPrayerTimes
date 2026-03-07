@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
+import android.os.Build
 import android.util.Log
 import java.util.Calendar
 
@@ -126,7 +127,12 @@ object SilenceScheduler {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val pendingIntent = createPendingIntent(context, action, prayer)
 
-        // Use setAlarmClock — always exact, survives Doze, no permission needed
+        // Check exact alarm permission on Android 12+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+            Log.w(TAG, "Cannot schedule exact alarms - permission not granted, skipping $action for ${prayer.name}")
+            return
+        }
+
         val showIntent = PendingIntent.getActivity(
             context,
             0,
@@ -158,6 +164,12 @@ object SilenceScheduler {
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
+
+        // Check exact alarm permission on Android 12+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+            Log.w(TAG, "Cannot schedule exact alarms - permission not granted, skipping midnight reschedule")
+            return
+        }
 
         val showIntent = PendingIntent.getActivity(
             context,
