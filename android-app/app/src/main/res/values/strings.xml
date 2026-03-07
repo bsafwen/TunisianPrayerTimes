@@ -46,5 +46,6 @@
     <string name="onboarding_ready_title">جاهز للاستخدام!</string>
     <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\nصلاة مقبولة إن شاء الله 🧹</string>
     <string name="onboarding_start">ابدأ</string>
+    <string name="onboarding_next">التالي</string>
     <string name="onboarding_skip">تخطّ</string>
 </resources>

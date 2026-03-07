@@ -2,8 +2,6 @@ package com.tunisianprayertimes
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -20,8 +18,6 @@ class OnboardingActivity : AppCompatActivity() {
     private val progressBars = mutableListOf<View>()
     private var currentStep = 0
     private val totalSteps = 4
-    private val stepDuration = 4000L // 4 seconds per step (video-like pacing)
-    private val progressAnimators = mutableListOf<ValueAnimator>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +36,10 @@ class OnboardingActivity : AppCompatActivity() {
         // Start button on last step
         findViewById<View>(R.id.btnStart).setOnClickListener { finish() }
 
-        // Tap anywhere to advance (except on last step's button)
-        viewFlipper.setOnClickListener { advanceStep() }
+        // Next button
+        findViewById<View>(R.id.btnNext).setOnClickListener { advanceStep() }
 
-        // Start the auto-play sequence
+        // Start the sequence
         startStep(0)
     }
 
@@ -59,52 +55,28 @@ class OnboardingActivity : AppCompatActivity() {
             resetProgress(i)
         }
 
-        // Animate current step's progress bar
-        animateProgress(step)
+        // Fill current step's progress bar instantly
+        fillProgress(step, instant = true)
 
         // Run step-specific animations
         when (step) {
             2 -> handler.postDelayed({ animateStep3() }, 800)
         }
 
-        // Auto-advance to next step (except last)
-        if (step < totalSteps - 1) {
-            handler.postDelayed({ advanceStep() }, stepDuration)
-        }
-
-        // Hide skip on last step
-        findViewById<View>(R.id.tvSkip).visibility =
-            if (step == totalSteps - 1) View.GONE else View.VISIBLE
+        // Show Next on steps 0-2, hide on last step; show Start only on last step
+        val isLastStep = step == totalSteps - 1
+        findViewById<View>(R.id.btnNext).visibility = if (isLastStep) View.GONE else View.VISIBLE
+        findViewById<View>(R.id.btnStart).visibility = if (isLastStep) View.VISIBLE else View.GONE
+        findViewById<View>(R.id.tvSkip).visibility = if (isLastStep) View.GONE else View.VISIBLE
     }
 
     private fun advanceStep() {
         handler.removeCallbacksAndMessages(null)
-        cancelProgressAnimators()
-
         if (currentStep < totalSteps - 1) {
             fillProgress(currentStep, instant = true)
             viewFlipper.showNext()
             startStep(currentStep + 1)
         }
-    }
-
-    private fun animateProgress(step: Int) {
-        val bar = progressBars[step]
-        val gold = ContextCompat.getColor(this, R.color.gold)
-        val bg = ContextCompat.getColor(this, R.color.gold_light)
-
-        // Animate from left to right fill using scaleX
-        bar.pivotX = 0f
-        bar.scaleX = 0f
-        bar.setBackgroundColor(gold)
-
-        val animator = ValueAnimator.ofFloat(0f, 1f).apply {
-            duration = stepDuration
-            interpolator = android.view.animation.LinearInterpolator()
-            addUpdateListener { bar.scaleX = it.animatedValue as Float }
-        }
-        progressAnimators.add(animator)
-        animator.start()
     }
 
     private fun fillProgress(step: Int, instant: Boolean) {
@@ -117,11 +89,6 @@ class OnboardingActivity : AppCompatActivity() {
         val bar = progressBars[step]
         bar.setBackgroundColor(ContextCompat.getColor(this, R.color.gold_light))
         bar.scaleX = 1f
-    }
-
-    private fun cancelProgressAnimators() {
-        progressAnimators.forEach { it.cancel() }
-        progressAnimators.clear()
     }
 
     /**
@@ -185,7 +152,6 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         handler.removeCallbacksAndMessages(null)
-        cancelProgressAnimators()
         super.onDestroy()
     }
 }

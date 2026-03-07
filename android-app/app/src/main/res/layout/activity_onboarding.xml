@@ -443,6 +443,20 @@
 
     </ViewFlipper>
 
+    <!-- Next button (steps 1-3) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="100dp"
+        android:text="@string/onboarding_next"
+        android:textSize="18sp"
+        android:paddingHorizontal="48dp"
+        android:backgroundTint="@color/green_primary"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cornerRadius="28dp" />
+
     <!-- Progress dots -->
     <LinearLayout
         android:id="@+id/dotsContainer"
