@@ -28,56 +28,53 @@
         android:textAlignment="center" />
 
     <!-- Silence end control -->
-    <LinearLayout
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2.5"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_weight="2.5">
 
-        <!-- Mode label (tappable to toggle between duration/fixed time) -->
+        <!-- Duration input (visible in DURATION mode) -->
+        <EditText
+            android:id="@+id/etAfter"
+            android:layout_width="56dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:textColor="@color/text_dark"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@drawable/input_islamic"
+            android:padding="4dp"
+            android:maxLength="3"
+            android:importantForAutofill="no" />
+
+        <!-- Fixed time display (visible in FIXED_TIME mode) -->
+        <TextView
+            android:id="@+id/tvFixedTime"
+            android:layout_width="64dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/text_dark"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@drawable/input_islamic"
+            android:padding="4dp"
+            android:visibility="gone" />
+
+        <!-- Mode label overlaid at center-end (tappable to toggle) -->
         <TextView
             android:id="@+id/tvAfterLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="4dp"
             android:text="@string/label_duration"
-            android:textSize="10sp"
+            android:textSize="9sp"
             android:textColor="#D4AF37"
             android:padding="2dp" />
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <!-- Duration input (visible in DURATION mode) -->
-            <EditText
-                android:id="@+id/etAfter"
-                android:layout_width="56dp"
-                android:layout_height="36dp"
-                android:inputType="number"
-                android:textSize="14sp"
-                android:textColor="@color/text_dark"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:background="@drawable/input_islamic"
-                android:padding="4dp"
-                android:maxLength="3"
-                android:importantForAutofill="no" />
-
-            <!-- Fixed time display (visible in FIXED_TIME mode) -->
-            <TextView
-                android:id="@+id/tvFixedTime"
-                android:layout_width="64dp"
-                android:layout_height="36dp"
-                android:textSize="14sp"
-                android:textColor="@color/text_dark"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:background="@drawable/input_islamic"
-                android:padding="4dp"
-                android:visibility="gone" />
-
-        </FrameLayout>
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>
