@@ -18,6 +18,11 @@
         android:theme="@style/Theme.TunisianPrayerTimes">
 
         <activity
+            android:name=".OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TunisianPrayerTimes" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

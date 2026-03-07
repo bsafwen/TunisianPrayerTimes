@@ -35,4 +35,16 @@
     <string name="prayer_asr">العصر</string>
     <string name="prayer_maghrib">المغرب</string>
     <string name="prayer_isha">العشاء</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">هذا التطبيق يقوم بإسكات هاتفك تلقائيًا عند دخول وقت كل صلاة\nدعنا نشرح لك كيف يعمل</string>
+    <string name="onboarding_step2_title">الوضع الافتراضي: مدة بالدقائق</string>
+    <string name="onboarding_step2_desc">بعد الأذان، يتم إسكات الهاتف للمدة المحددة بجانب كل صلاة.\nالحرف "د" يعني دقائق.</string>
+    <string name="onboarding_step3_title">التبديل إلى وقت انتهاء محدد</string>
+    <string name="onboarding_step3_desc">اضغط على "د" بجانب المدة…</string>
+    <string name="onboarding_step3_after">الآن يظهر وقت انتهاء ثابت بدل المدة!\nاضغط على الوقت لتغييره.</string>
+    <string name="onboarding_ready_title">جاهز للاستخدام!</string>
+    <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\nصلاة مقبولة إن شاء الله 🧹</string>
+    <string name="onboarding_start">ابدأ</string>
+    <string name="onboarding_skip">تخطّ</string>
 </resources>

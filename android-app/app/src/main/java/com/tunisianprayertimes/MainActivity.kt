@@ -44,9 +44,10 @@ class MainActivity : AppCompatActivity() {
         setupPrayerRows()
         updateRamadanIndicator()
 
-        // On first launch, request DND permission and enable scheduling
+        // On first launch, show onboarding tutorial and request DND permission
         if (PrefsManager.isFirstLaunch(this)) {
             PrefsManager.markFirstLaunchDone(this)
+            startActivity(Intent(this, OnboardingActivity::class.java))
             if (!notificationManager.isNotificationPolicyAccessGranted) {
                 requestDndPermission()
             }
