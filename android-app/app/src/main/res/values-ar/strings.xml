@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">أوقات الصلاة تونس</string>
+    <string name="app_name"></string>
     <string name="subtitle">مواقيت الصلاة في تونس</string>
     <string name="source">المصدر: المعهد الوطني للرصد الجوي</string>
     <string name="status_normal">🔔 الهاتف في الوضع العادي</string>
@@ -49,7 +49,7 @@
     <string name="onboarding_step3_desc">اضغط على "د" بجانب المدة للتبديل إلى وقت انتهاء ثابت.
 اضغط على الوقت لتغييره.</string>
     <string name="onboarding_ready_title">جاهز للاستخدام!</string>
-    <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\nصلاة مقبولة إن شاء الله 🤲</string>
+    <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\nصلاة مقبولة 🤲</string>
     <string name="onboarding_start">ابدأ</string>
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_prev">السابق</string>

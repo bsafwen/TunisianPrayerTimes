@@ -10,11 +10,12 @@ object RamadanDetector {
      * Returns true if today is during Ramadan (Hijri month 9),
      * with a ±1 day buffer to account for moon-sighting differences.
      */
-    fun isRamadan(): Boolean {
-        val today = HijrahDate.now()
-        val month = today.get(ChronoField.MONTH_OF_YEAR)
-        val day = today.get(ChronoField.DAY_OF_MONTH)
-        val daysInMonth = today.lengthOfMonth()
+    fun isRamadan(): Boolean = isRamadan(HijrahDate.now())
+
+    fun isRamadan(date: HijrahDate): Boolean {
+        val month = date.get(ChronoField.MONTH_OF_YEAR)
+        val day = date.get(ChronoField.DAY_OF_MONTH)
+        val daysInMonth = date.lengthOfMonth()
 
         // Exact Ramadan
         if (month == HIJRI_RAMADAN) return true
