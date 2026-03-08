@@ -72,7 +72,11 @@
             android:textAlignment="center"
             android:gravity="center"
             android:background="@drawable/input_islamic"
-            android:padding="4dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="7sp"
+            app:autoSizeMaxTextSize="13sp"
             android:visibility="gone" />
 
         <!-- Delay mode label (tappable to toggle) -->
@@ -129,7 +133,11 @@
             android:textAlignment="center"
             android:gravity="center"
             android:background="@drawable/input_islamic"
-            android:padding="4dp"
+            android:padding="2dp"
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="7sp"
+            app:autoSizeMaxTextSize="13sp"
             android:visibility="gone" />
 
         <!-- Mode label next to input (tappable to toggle) -->

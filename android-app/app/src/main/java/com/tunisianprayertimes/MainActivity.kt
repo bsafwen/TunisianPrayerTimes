@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
         updatePermissionBanner()
         updateUI()
+        checkForAppUpdate()
     }
 
     private fun setupAutoSilenceToggle() {
