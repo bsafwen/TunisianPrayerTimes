@@ -53,4 +53,12 @@
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_prev">السابق</string>
     <string name="onboarding_skip">تخطّ</string>
+    <string name="onboarding_perm_title">صلاحيات ضرورية</string>
+    <string name="onboarding_perm_desc">لكي يعمل التطبيق بشكل صحيح، يرجى منح الصلاحيات التالية:</string>
+    <string name="onboarding_perm_dnd">إسكات الهاتف (Do Not Disturb)</string>
+    <string name="onboarding_perm_dnd_desc">يحتاج التطبيق لإذن تغيير إعدادات الصوت.</string>
+    <string name="onboarding_perm_grant">منح الصلاحية</string>
+    <string name="onboarding_perm_alarm">تنبيهات دقيقة</string>
+    <string name="onboarding_perm_alarm_desc">يحتاج التطبيق لإذن بجدولة التنبيهات في الوقت المحدد.</string>
+    <string name="onboarding_perm_granted">ممنوح</string>
 </resources>

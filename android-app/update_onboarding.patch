@@ -1,0 +1,73 @@
+--- app/src/main/res/layout/activity_onboarding.xml
++++ app/src/main/res/layout/activity_onboarding.xml
+@@ -193,6 +193,12 @@
+                 app:strokeColor="@color/gold_light"
+                 app:strokeWidth="1dp">
+ 
++                <!-- Add tapRipple view for animation -->
++                <View
++                    android:id="@+id/tapRipple"
++                    android:layout_width="40dp"
++                    android:layout_height="40dp"
++                    android:layout_gravity="center"
++                    android:alpha="0" />
++
+                 <FrameLayout
+                     android:layout_width="match_parent"
+@@ -324,6 +330,73 @@
+         </LinearLayout>
+ 
++        <!-- Step 4: Permissions -->
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:orientation="vertical"
++            android:gravity="center"
++            android:padding="32dp">
++
++            <TextView
++                android:layout_width=+                android:layout_width=+           gh+                android:layout_width=+           ”’"
++                android:textSize="48sp"
++                android:layout+                android:layout+       <Te+                android:layout+                androitent"+                anddro+                android:layout+                 +                android:layout+             +   +                android:layout+                  +                android:layout+                andid+                android:layout+    k"
++    +    +    +    +    +    t_marginBottom="16dp" />
++
++            <TextView
++                android:layout_w+                androi    +                android:layout_w+  p_content"
++                android:text="@string/onboarding_perm_desc"
++                android:textSize="16sp"
++                android:textColor="@color/text_dark"
++                android:textAlignment=+                android:textAlid:lineS+                and   +                android:textAlignment=+                android:textAlid:lineS+                and   +                android:textAlignment=+ ayout_width="match_parent"
++               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +               +        g/onboarding_perm_dnd"
++                    android:textSize="16sp"
++             +             +             +             +             +             +             +                      +             +             +             +             android:layout_width="wrap_content"
++         +         +         +         +         +         +                  android:text="@string/onboarding_perm_dnd_desc"
++                    android:textSize="14sp"
++                    android:textAlignment="center"
++                    android:textColor="@color/text_muted"
++                    android:layout_marginBottom="8dp" />
++                    
++                <com.google.android.material.button.MaterialButton
++                    android:id="@+id/btnGrantDnd"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    app:cornerRadius="20dp"
++                    android:text="@string/onboarding_perm_grant" />
++            </LinearLayout>
++
++            <!-- Alarm Permission -->
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:gravity="center_horizontal"
++                android:orientation="vertical">
++                
++                <TextView
++                    android:layout_width="wrap_content"
++                    android:lay+                    android:lay+            +                    android:lay+                   +                    android:lay+                    andr    android:textStyle="bold"
++                    android:textColor="@color/text_d+                    android:textColor="@color/text_d+              +                    android:textColor="@color/te  +                    android:textColor="@coloontent"
++                    android:text="@string/onboarding_perm_ala+                    android:text="@sttextSiz+                    android:text="@string/onboarding_perm_ala+                   android:textColor=+                    android:text="@s  +                    inBott+                    android:text="@string/onboa   <c+                    android:text="@string/onboardin  +                    android:text="@string/onboar    +                    android:text="@string/onboen+                 +                    andrht+                    android:text="@string/onboarding_"20dp"
++                    android:text="@string/onboarding_perm_grant" />
++            </LinearLayout>
++        </LinearLayout>
++
+         <!-- Step 4: Get started -->

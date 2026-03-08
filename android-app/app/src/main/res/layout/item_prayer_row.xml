@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layoutDirection="rtl"
     android:gravity="center_vertical"
     android:paddingVertical="10dp">
 
@@ -67,12 +68,14 @@
         <TextView
             android:id="@+id/tvAfterLabel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_marginStart="4dp"
             android:text="@string/label_duration"
-            android:textSize="9sp"
+            android:textSize="14sp"
             android:textColor="#D4AF37"
-            android:padding="2dp" />
+            android:gravity="center"
+            android:minWidth="40dp"
+            android:padding="6dp" />
 
     </LinearLayout>
 
