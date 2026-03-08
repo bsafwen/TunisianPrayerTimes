@@ -76,28 +76,28 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layoutDirection="rtl"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
             android:paddingTop="32dp"
-            android:paddingBottom="200dp">
+            android:paddingBottom="160dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_step2_title"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
                 android:textAlignment="center"
                 android:lineSpacingExtra="4dp"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="16dp" />
 
             <!-- Demo prayer row card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="16dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
@@ -111,14 +111,14 @@
                     android:orientation="horizontal"
                     android:layoutDirection="rtl"
                     android:gravity="center_vertical"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="@string/prayer_fajr"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         android:textColor="@color/prayer_name" />
 
@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
                         android:text="05:15"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textColor="@color/text_dark"
                         android:textAlignment="center" />
 
@@ -140,10 +140,10 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="36dp"
+                            android:layout_height="32dp"
                             android:layout_weight="1"
                             android:text="0"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/text_muted"
                             android:textAlignment="center"
                             android:gravity="center"
@@ -155,7 +155,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="2dp"
                             android:text="@string/label_delay_minutes"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             android:textColor="@color/text_muted"
                             android:padding="2dp" />
                     </LinearLayout>
@@ -169,10 +169,10 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="36dp"
+                            android:layout_height="32dp"
                             android:layout_weight="1"
                             android:text="60"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/text_dark"
                             android:textAlignment="center"
                             android:gravity="center"
@@ -184,7 +184,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="2dp"
                             android:text="@string/label_duration"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             android:textColor="@color/gold"
                             android:textStyle="bold"
                             android:padding="2dp" />
@@ -197,10 +197,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_step2_desc"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/text_dark"
                 android:textAlignment="center"
-                android:lineSpacingExtra="6dp" />
+                android:lineSpacingExtra="4dp" />
         </LinearLayout>
         </ScrollView>
 
@@ -216,28 +216,28 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layoutDirection="rtl"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
             android:paddingTop="32dp"
-            android:paddingBottom="200dp">
+            android:paddingBottom="160dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_delay_title"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
                 android:textAlignment="center"
                 android:lineSpacingExtra="4dp"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="16dp" />
 
             <!-- Animated demo prayer row card: delay "5 د" → "05:20 من" -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="16dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
@@ -248,7 +248,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <!-- Before state: delay minutes mode "5 د" -->
                     <LinearLayout
@@ -264,7 +264,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/prayer_fajr"
-                            android:textSize="15sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/prayer_name" />
 
@@ -273,7 +273,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
                             android:text="05:15"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/text_dark"
                             android:textAlignment="center" />
 
@@ -286,10 +286,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="5"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/green_primary"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -318,7 +318,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:text="@string/label_delay_minutes"
-                                    android:textSize="14sp"
+                                    android:textSize="12sp"
                                     android:textColor="@color/gold"
                                     android:textStyle="bold"
                                     android:paddingStart="8dp"
@@ -339,10 +339,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="60"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/text_dark"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -354,7 +354,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="2dp"
                                 android:text="@string/label_duration"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textColor="@color/gold"
                                 android:textStyle="bold"
                                 android:padding="2dp" />
@@ -377,7 +377,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/prayer_fajr"
-                            android:textSize="15sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/prayer_name" />
 
@@ -386,7 +386,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
                             android:text="05:15"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/text_dark"
                             android:textAlignment="center" />
 
@@ -399,10 +399,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="05:20"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/green_primary"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -415,7 +415,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="2dp"
                                 android:text="@string/label_delay_at"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textColor="@color/green_primary"
                                 android:textStyle="bold"
                                 android:padding="2dp" />
@@ -430,10 +430,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="60"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/text_dark"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -445,7 +445,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="2dp"
                                 android:text="@string/label_duration"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textColor="@color/gold"
                                 android:textStyle="bold"
                                 android:padding="2dp" />
@@ -459,10 +459,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_delay_desc"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/text_dark"
                 android:textAlignment="center"
-                android:lineSpacingExtra="6dp" />
+                android:lineSpacingExtra="4dp" />
         </LinearLayout>
         </ScrollView>
 
@@ -478,26 +478,27 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layoutDirection="rtl"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
             android:paddingTop="32dp"
-            android:paddingBottom="200dp">
+            android:paddingBottom="160dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_step3_title"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
-                android:layout_marginBottom="24dp" />
+                android:textAlignment="center"
+                android:layout_marginBottom="16dp" />
 
             <!-- Animated demo card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
@@ -508,7 +509,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <!-- Before state: duration mode "60 د" -->
                     <LinearLayout
@@ -524,7 +525,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/prayer_fajr"
-                            android:textSize="15sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/prayer_name" />
 
@@ -533,7 +534,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
                             android:text="05:15"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/text_dark"
                             android:textAlignment="center" />
 
@@ -546,10 +547,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="0"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/text_muted"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -561,7 +562,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="2dp"
                                 android:text="@string/label_delay_minutes"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textColor="@color/text_muted"
                                 android:padding="2dp" />
                         </LinearLayout>
@@ -575,10 +576,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="60"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/text_dark"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -606,7 +607,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:text="@string/label_duration"
-                                    android:textSize="14sp"
+                                    android:textSize="12sp"
                                     android:textColor="@color/gold"
                                     android:textStyle="bold"
                                     android:paddingStart="8dp"
@@ -635,7 +636,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/prayer_fajr"
-                            android:textSize="15sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/prayer_name" />
 
@@ -644,7 +645,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
                             android:text="05:15"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/text_dark"
                             android:textAlignment="center" />
 
@@ -657,10 +658,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="0"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/text_muted"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -672,7 +673,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="2dp"
                                 android:text="@string/label_delay_minutes"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textColor="@color/text_muted"
                                 android:padding="2dp" />
                         </LinearLayout>
@@ -686,10 +687,10 @@
 
                             <TextView
                                 android:layout_width="0dp"
-                                android:layout_height="36dp"
+                                android:layout_height="32dp"
                                 android:layout_weight="1"
                                 android:text="06:15"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/green_primary"
                                 android:textAlignment="center"
                                 android:gravity="center"
@@ -702,7 +703,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
                                 android:text="@string/label_fixed_time"
-                                android:textSize="12sp"
+                                android:textSize="11sp"
                                 android:textColor="@color/green_primary"
                                 android:textStyle="bold"
                                 android:padding="4dp" />
@@ -719,10 +720,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_step3_desc"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/text_dark"
                 android:textAlignment="center"
-                android:lineSpacingExtra="6dp" />
+                android:lineSpacingExtra="4dp" />
 
         </LinearLayout>
         </ScrollView>
@@ -731,7 +732,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -748,26 +749,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_perm_title"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="2dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_perm_desc"
-                android:textSize="13sp"
+                android:textSize="12sp"
                 android:textColor="@color/text_dark"
                 android:textAlignment="center"
                 android:lineSpacingExtra="2dp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="8dp" />
 
             <!-- DND permission row -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -778,44 +779,54 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:orientation="vertical"
                     android:layoutDirection="rtl"
-                    android:padding="12dp">
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layoutDirection="rtl">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/onboarding_perm_dnd"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGrantDnd"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/onboarding_perm_dnd_desc"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:layout_marginTop="2dp" />
+                            android:text="@string/onboarding_perm_grant"
+                            android:textSize="10sp"
+                            android:backgroundTint="@color/green_primary"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            app:cornerRadius="16dp"
+                            android:minHeight="0dp"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp" />
                     </LinearLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGrantDnd"
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="@string/onboarding_perm_grant"
-                        android:textSize="12sp"
-                        android:backgroundTint="@color/green_primary"
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="18dp"
-                        android:layout_marginStart="8dp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_perm_dnd_desc"
+                        android:textSize="10sp"
+                        android:textColor="@color/text_muted"
+                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -823,7 +834,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -834,44 +845,54 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:orientation="vertical"
                     android:layoutDirection="rtl"
-                    android:padding="12dp">
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layoutDirection="rtl">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/onboarding_perm_alarm"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGrantAlarm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/onboarding_perm_alarm_desc"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:layout_marginTop="2dp" />
+                            android:text="@string/onboarding_perm_grant"
+                            android:textSize="10sp"
+                            android:backgroundTint="@color/green_primary"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            app:cornerRadius="16dp"
+                            android:minHeight="0dp"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp" />
                     </LinearLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGrantAlarm"
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="@string/onboarding_perm_grant"
-                        android:textSize="12sp"
-                        android:backgroundTint="@color/green_primary"
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="18dp"
-                        android:layout_marginStart="8dp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_perm_alarm_desc"
+                        android:textSize="10sp"
+                        android:textColor="@color/text_muted"
+                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -879,7 +900,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -890,44 +911,54 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:orientation="vertical"
                     android:layoutDirection="rtl"
-                    android:padding="12dp">
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layoutDirection="rtl">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/onboarding_perm_install"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGrantInstall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/onboarding_perm_install_desc"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:layout_marginTop="2dp" />
+                            android:text="@string/onboarding_perm_grant"
+                            android:textSize="10sp"
+                            android:backgroundTint="@color/green_primary"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            app:cornerRadius="16dp"
+                            android:minHeight="0dp"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp" />
                     </LinearLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGrantInstall"
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="@string/onboarding_perm_grant"
-                        android:textSize="12sp"
-                        android:backgroundTint="@color/green_primary"
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="18dp"
-                        android:layout_marginStart="8dp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_perm_install_desc"
+                        android:textSize="10sp"
+                        android:textColor="@color/text_muted"
+                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -935,7 +966,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -946,44 +977,54 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:orientation="vertical"
                     android:layoutDirection="rtl"
-                    android:padding="12dp">
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layoutDirection="rtl">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/onboarding_perm_battery"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGrantBattery"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/onboarding_perm_battery_desc"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:layout_marginTop="2dp" />
+                            android:text="@string/onboarding_perm_grant"
+                            android:textSize="10sp"
+                            android:backgroundTint="@color/green_primary"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            app:cornerRadius="16dp"
+                            android:minHeight="0dp"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp" />
                     </LinearLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGrantBattery"
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="@string/onboarding_perm_grant"
-                        android:textSize="12sp"
-                        android:backgroundTint="@color/green_primary"
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="18dp"
-                        android:layout_marginStart="8dp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_perm_battery_desc"
+                        android:textSize="10sp"
+                        android:textColor="@color/text_muted"
+                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
