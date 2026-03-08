@@ -353,25 +353,55 @@
                             android:textStyle="bold"
                             android:textAlignment="center" />
 
-                        <TextView
+                        <!-- Delay header: same inner weights as row (1 input + 0.8 label) -->
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.8"
-                            android:text="@string/col_delay"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:textStyle="bold"
-                            android:textAlignment="center" />
+                            android:orientation="horizontal"
+                            android:layoutDirection="rtl">
 
-                        <TextView
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/col_delay"
+                                android:textSize="11sp"
+                                android:textColor="@color/text_muted"
+                                android:textStyle="bold"
+                                android:textAlignment="center" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.8" />
+
+                        </LinearLayout>
+
+                        <!-- Duration header: same inner weights as row (1 input + 0.8 label) -->
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2.2"
-                            android:text="@string/col_duration"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:textStyle="bold"
-                            android:textAlignment="center" />
+                            android:orientation="horizontal"
+                            android:layoutDirection="rtl">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/col_duration"
+                                android:textSize="11sp"
+                                android:textColor="@color/text_muted"
+                                android:textStyle="bold"
+                                android:textAlignment="center" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.8" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
