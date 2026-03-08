@@ -18,6 +18,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
+            android:layoutDirection="rtl"
             android:padding="32dp">
 
             <TextView
@@ -60,6 +61,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
+            android:layoutDirection="rtl"
             android:padding="32dp">
 
             <TextView
@@ -160,6 +162,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:layoutDirection="rtl"
             android:padding="32dp">
 
             <View
@@ -360,6 +363,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:layoutDirection="rtl"
             android:padding="32dp">
 
             <View
@@ -403,6 +407,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:layoutDirection="rtl"
                     android:padding="16dp">
 
                     <LinearLayout
@@ -458,6 +463,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:layoutDirection="rtl"
                     android:padding="16dp">
 
                     <LinearLayout
@@ -513,6 +519,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:layoutDirection="rtl"
                     android:padding="16dp">
 
                     <LinearLayout
@@ -563,6 +570,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
+            android:layoutDirection="rtl"
             android:padding="32dp">
 
             <TextView

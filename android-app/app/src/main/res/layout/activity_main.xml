@@ -15,58 +15,52 @@
         android:orientation="vertical">
 
         <!-- Islamic Header with mosque silhouette -->
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/header_gradient">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/header_gradient"
+            android:paddingTop="14dp"
+            android:paddingBottom="12dp">
+
+            <!-- Bismillah -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="﷽"
+                android:textSize="28sp"
+                android:textColor="#D4AF37"
+                android:includeFontPadding="false" />
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="70dp"
                 android:src="@drawable/mosque_silhouette"
-                android:scaleType="centerInside"
-                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="-8dp"
+                android:layout_marginBottom="2dp"
                 android:importantForAccessibility="no" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingTop="32dp"
-                android:paddingBottom="24dp">
+                android:text="@string/subtitle"
+                android:textSize="14sp"
+                android:textColor="#B2DFDB"
+                android:textAlignment="center"
+                android:layout_marginBottom="2dp" />
 
-                <!-- Bismillah -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="﷽"
-                    android:textSize="28sp"
-                    android:textColor="#D4AF37"
-                    android:layout_marginBottom="8dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/source"
+                android:textSize="11sp"
+                android:textColor="#80B2DFDB"
+                android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/tvSubtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/subtitle"
-                    android:textSize="14sp"
-                    android:textColor="#B2DFDB"
-                    android:textAlignment="center"
-                    android:layout_marginTop="16dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/source"
-                    android:textSize="11sp"
-                    android:textColor="#80B2DFDB"
-                    android:textAlignment="center"
-                    android:layout_marginTop="2dp" />
-
-            </LinearLayout>
-
-        </FrameLayout>
+        </LinearLayout>
 
         <!-- Geometric border strip -->
         <ImageView
@@ -81,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layoutDirection="rtl"
             android:padding="16dp">
 
             <!-- Status Card -->
@@ -105,6 +100,7 @@
                         android:text="@string/status_normal"
                         android:textSize="17sp"
                         android:textAlignment="center"
+                        android:textDirection="rtl"
                         android:padding="16dp"
                         android:textColor="@color/text_dark" />
 
@@ -130,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:layoutDirection="rtl"
                     android:padding="14dp">
 
                     <TextView
@@ -146,6 +143,7 @@
                         android:layout_weight="1"
                         android:textSize="13sp"
                         android:textColor="#E65100"
+                        android:textAlignment="viewStart"
                         android:lineSpacingExtra="3dp" />
 
                 </LinearLayout>
@@ -170,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:layoutDirection="rtl"
                     android:padding="14dp">
 
                     <TextView
@@ -186,60 +185,12 @@
                         android:layout_weight="1"
                         android:textSize="13sp"
                         android:textColor="#2E7D32"
+                        android:textAlignment="viewStart"
                         android:lineSpacingExtra="3dp" />
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Auto-Silence Toggle -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/card_bg"
-                android:layout_marginTop="12dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/auto_silence"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_dark" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchAutoSilence"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Ramadan indicator -->
-            <TextView
-                android:id="@+id/tvRamadanIndicator"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ramadan_active"
-                android:textSize="14sp"
-                android:textColor="#D4AF37"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:background="#FFF8E1"
-                android:padding="12dp"
-                android:visibility="gone"
-                android:layout_marginTop="12dp" />
 
             <!-- Location Picker Card -->
             <androidx.cardview.widget.CardView
@@ -254,6 +205,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layoutDirection="rtl"
                     android:padding="16dp">
 
                     <TextView
@@ -265,6 +217,7 @@
                         android:textColor="@color/prayer_name"
                         android:drawableStart="@android:drawable/ic_menu_mylocation"
                         android:drawablePadding="8dp"
+                        android:textAlignment="viewStart"
                         android:layout_marginBottom="12dp" />
 
                     <TextView
@@ -273,6 +226,7 @@
                         android:text="@string/label_delegation"
                         android:textSize="12sp"
                         android:textColor="@color/text_muted"
+                        android:textAlignment="viewStart"
                         android:layout_marginBottom="4dp" />
 
                     <AutoCompleteTextView
@@ -307,6 +261,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layoutDirection="rtl"
                     android:padding="16dp">
 
                     <TextView
@@ -316,6 +271,7 @@
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/prayer_name"
+                        android:textAlignment="viewStart"
                         android:layout_marginBottom="4dp" />
 
                     <TextView
@@ -324,6 +280,7 @@
                         android:text="@string/prayer_settings_subtitle"
                         android:textSize="12sp"
                         android:textColor="@color/text_muted"
+                        android:textAlignment="viewStart"
                         android:layout_marginBottom="12dp" />
 
                     <!-- Column headers -->
@@ -382,6 +339,57 @@
 
             </androidx.cardview.widget.CardView>
 
+            <!-- Auto-Silence Toggle -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/card_bg"
+                android:layout_marginTop="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layoutDirection="rtl"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/auto_silence"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_dark"
+                        android:textAlignment="viewStart" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchAutoSilence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Ramadan indicator -->
+            <TextView
+                android:id="@+id/tvRamadanIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ramadan_active"
+                android:textSize="14sp"
+                android:textColor="#D4AF37"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="#FFF8E1"
+                android:padding="12dp"
+                android:visibility="gone"
+                android:layout_marginTop="12dp" />
+
             <!-- Manual Toggle Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnToggleSilence"
@@ -391,6 +399,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
+                android:layoutDirection="rtl"
                 app:backgroundTint="@color/green_primary"
                 app:cornerRadius="16dp"
                 app:icon="@android:drawable/ic_lock_silent_mode"
@@ -416,6 +425,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/text_muted"
                 android:textAlignment="center"
+                android:textDirection="rtl"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp" />
 

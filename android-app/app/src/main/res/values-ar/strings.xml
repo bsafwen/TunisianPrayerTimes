@@ -3,11 +3,11 @@
     <string name="app_name">أوقات الصلاة تونس</string>
     <string name="subtitle">مواقيت الصلاة في تونس</string>
     <string name="source">المصدر: المعهد الوطني للرصد الجوي</string>
-    <string name="status_normal">🔔 الهاتف في الوضع العادي</string>
-    <string name="status_silent">🔇 الهاتف في الوضع الصامت</string>
-    <string name="status_no_permission">⚠️ يجب منح إذن عدم الإزعاج</string>
-    <string name="btn_silence">🔇 تفعيل الصامت</string>
-    <string name="btn_unsilence">🔔 إلغاء الصامت</string>
+    <string name="status_normal">الهاتف في الوضع العادي 🔔</string>
+    <string name="status_silent">الهاتف في الوضع الصامت 🔇</string>
+    <string name="status_no_permission">يجب منح إذن عدم الإزعاج ⚠️</string>
+    <string name="btn_silence">تفعيل الصامت 🔇</string>
+    <string name="btn_unsilence">إلغاء الصامت 🔔</string>
     <string name="info_text">يقوم هذا التطبيق بتفعيل وضع عدم الإزعاج تلقائيًا عند دخول وقت كل صلاة.</string>
     <string name="toast_silent_enabled">تم تفعيل الوضع الصامت 🔇</string>
     <string name="toast_normal_restored">تم إيقاف الوضع الصامت 🔔</string>
@@ -16,9 +16,9 @@
     <string name="dnd_dialog_message">يحتاج هذا التطبيق إلى إذن عدم الإزعاج لإسكات هاتفك تلقائيًا أثناء أوقات الصلاة. في الشاشة التالية، ابحث عن "أوقات الصلاة تونس" وقم بتفعيله.</string>
     <string name="dnd_dialog_grant">منح الإذن</string>
     <string name="dnd_dialog_later">لاحقًا</string>
-    <string name="banner_dnd_missing">⬅ إذن عدم الإزعاج مطلوب لإسكات الهاتف تلقائيًا. اضغط هنا لمنح الإذن.</string>
-    <string name="banner_alarm_missing">⬅ إذن التنبيهات والتذكيرات مطلوب لضبط أوقات الإسكات. اضغط هنا لمنح الإذن.</string>
-    <string name="banner_both_missing">⬅ أذونات مطلوبة: عدم الإزعاج + التنبيهات. اضغط هنا لمنح الأذونات.</string>
+    <string name="banner_dnd_missing">إذن عدم الإزعاج مطلوب لإسكات الهاتف تلقائيًا. اضغط هنا لمنح الإذن. ⬅</string>
+    <string name="banner_alarm_missing">إذن التنبيهات والتذكيرات مطلوب لضبط أوقات الإسكات. اضغط هنا لمنح الإذن. ⬅</string>
+    <string name="banner_both_missing">أذونات مطلوبة: عدم الإزعاج + التنبيهات. اضغط هنا لمنح الأذونات. ⬅</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
     <string name="toast_auto_enabled">تم تفعيل الإسكات التلقائي ✅</string>
     <string name="toast_auto_disabled">تم إيقاف الإسكات التلقائي</string>
@@ -30,7 +30,7 @@
     <string name="label_duration">د</string>
     <string name="label_fixed_time">حتى</string>
     <string name="pick_end_time">اختر وقت الانتهاء</string>
-    <string name="ramadan_active">🌙 رمضان — إسكات العشاء ممتد إلى ساعة ونصف</string>
+    <string name="ramadan_active">رمضان — إسكات العشاء ممتد إلى ساعة ونصف 🌙</string>
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>
     <string name="hint_search_delegation">ابحث عن معتمدية…</string>
@@ -63,5 +63,5 @@
     <string name="update_download">تحديث</string>
     <string name="update_later">لاحقًا</string>
     <string name="update_downloading">جاري تحميل التحديث…</string>
-    <string name="update_banner">⬆ إصدار جديد %s متوفر — اضغط للتحديث</string>
+    <string name="update_banner">إصدار جديد %s متوفر — اضغط للتحديث ⬆</string>
 </resources>
