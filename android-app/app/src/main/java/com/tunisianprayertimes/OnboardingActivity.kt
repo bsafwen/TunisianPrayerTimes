@@ -34,6 +34,7 @@ class OnboardingActivity : AppCompatActivity() {
         findViewById<View>(R.id.tvSkip).setOnClickListener { finish() }
         findViewById<View>(R.id.btnStart).setOnClickListener { finish() }
         findViewById<View>(R.id.btnNext).setOnClickListener { advanceStep() }
+        findViewById<View>(R.id.btnPrev).setOnClickListener { goBack() }
 
         startStep(0)
     }
@@ -50,7 +51,8 @@ class OnboardingActivity : AppCompatActivity() {
         progressBars[step].setBackgroundColor(ContextCompat.getColor(this, R.color.gold))
 
         val isLastStep = step == totalSteps - 1
-        findViewById<View>(R.id.btnNext).visibility = if (isLastStep) View.GONE else View.VISIBLE
+        findViewById<View>(R.id.navButtons).visibility = if (isLastStep) View.GONE else View.VISIBLE
+        findViewById<View>(R.id.btnPrev).visibility = if (step == 0) View.GONE else View.VISIBLE
         findViewById<View>(R.id.btnStart).visibility = if (isLastStep) View.VISIBLE else View.GONE
         findViewById<View>(R.id.tvSkip).visibility = if (isLastStep) View.GONE else View.VISIBLE
 
@@ -65,6 +67,35 @@ class OnboardingActivity : AppCompatActivity() {
             viewFlipper.showNext()
             startStep(currentStep + 1)
         }
+    }
+
+    private fun goBack() {
+        handler.removeCallbacksAndMessages(null)
+        if (currentStep > 0) {
+            // Reverse slide direction for going back
+            viewFlipper.setInAnimation(this, R.anim.slide_in_right)
+            viewFlipper.setOutAnimation(this, R.anim.slide_out_left)
+            viewFlipper.showPrevious()
+            // Restore forward animations
+            viewFlipper.setInAnimation(this, R.anim.slide_in_left)
+            viewFlipper.setOutAnimation(this, R.anim.slide_out_right)
+            resetStep3Demo()
+            startStep(currentStep - 1)
+        }
+    }
+
+    private fun resetStep3Demo() {
+        val finger = findViewById<View>(R.id.tapFinger) ?: return
+        val rowBefore = findViewById<View>(R.id.rowBefore) ?: return
+        val rowAfter = findViewById<View>(R.id.rowAfter) ?: return
+        val step3Desc = findViewById<TextView>(R.id.step3Desc) ?: return
+
+        finger.alpha = 1f
+        finger.translationY = 0f
+        rowBefore.alpha = 1f
+        rowAfter.alpha = 0f
+        rowAfter.visibility = View.INVISIBLE
+        step3Desc.text = getString(R.string.onboarding_step3_desc)
     }
 
     private fun animateDemoTap() {
