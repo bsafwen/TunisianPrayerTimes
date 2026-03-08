@@ -1,7 +1,6 @@
 package com.tunisianprayertimes
 
 import android.app.AlarmManager
-import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
@@ -44,28 +43,25 @@ class MainActivity : AppCompatActivity() {
         setupPrayerRows()
         updateRamadanIndicator()
 
-        // On first launch, show onboarding tutorial and request DND permission
+        // On first launch, show onboarding tutorial
         if (PrefsManager.isFirstLaunch(this)) {
             PrefsManager.markFirstLaunchDone(this)
             startActivity(Intent(this, OnboardingActivity::class.java))
-            if (!notificationManager.isNotificationPolicyAccessGranted) {
-                requestDndPermission()
-            }
         }
 
-        // Sync ringer state with prayer schedule on every app open
-        if (PrefsManager.isEnabled(this)) {
-            if (hasExactAlarmPermission()) {
-                SilenceScheduler.scheduleAll(this)
-            } else {
-                ensureExactAlarmPermission()
-            }
+        // Sync ringer state with prayer schedule on every app open (only if permissions are granted)
+        if (PrefsManager.isEnabled(this) && notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission()) {
+            SilenceScheduler.scheduleAll(this)
         }
+
+        // Set up the permission banner
+        setupPermissionBanner()
         updateUI()
 
         binding.btnToggleSilence.setOnClickListener {
             if (!notificationManager.isNotificationPolicyAccessGranted) {
-                requestDndPermission()
+                // Scroll to banner to make it visible
+                updatePermissionBanner()
                 return@setOnClickListener
             }
             val isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
@@ -79,10 +75,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // After returning from DND or alarm settings, activate scheduling if permissions granted
+        // After returning from settings, activate scheduling if all permissions granted
         if (PrefsManager.isEnabled(this) && notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission()) {
             SilenceScheduler.scheduleAll(this)
         }
+        updatePermissionBanner()
         updateUI()
     }
 
@@ -91,20 +88,20 @@ class MainActivity : AppCompatActivity() {
         binding.switchAutoSilence.setOnCheckedChangeListener { _, isChecked ->
             PrefsManager.setEnabled(this, isChecked)
             if (isChecked) {
-                if (!notificationManager.isNotificationPolicyAccessGranted) {
-                    requestDndPermission()
-                    binding.switchAutoSilence.isChecked = false
-                    PrefsManager.setEnabled(this, false)
-                } else if (!hasExactAlarmPermission()) {
-                    ensureExactAlarmPermission()
-                    Toast.makeText(this, getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
-                } else {
+                val hasDnd = notificationManager.isNotificationPolicyAccessGranted
+                val hasAlarm = hasExactAlarmPermission()
+                if (hasDnd && hasAlarm) {
                     SilenceScheduler.scheduleAll(this)
                     Toast.makeText(this, getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
+                } else {
+                    // Enable it but show the banner — scheduling will start once permissions are granted
+                    Toast.makeText(this, getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
                 }
+                updatePermissionBanner()
             } else {
                 SilenceScheduler.cancelAll(this)
                 Toast.makeText(this, getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
+                updatePermissionBanner()
             }
         }
     }
@@ -298,24 +295,32 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
     }
 
-    private fun requestDndPermission() {
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.dnd_dialog_title))
-            .setMessage(getString(R.string.dnd_dialog_message))
-            .setPositiveButton(getString(R.string.dnd_dialog_grant)) { _, _ ->
-                val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
-                startActivity(intent)
+    private fun setupPermissionBanner() {
+        binding.cardPermissionBanner.setOnClickListener {
+            val hasDnd = notificationManager.isNotificationPolicyAccessGranted
+            if (!hasDnd) {
+                startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
+            } else if (!hasExactAlarmPermission()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+                }
             }
-            .setNegativeButton(getString(R.string.dnd_dialog_later), null)
-            .setCancelable(false)
-            .show()
+        }
+        updatePermissionBanner()
     }
 
-    private fun ensureExactAlarmPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            if (!alarmManager.canScheduleExactAlarms()) {
-                startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+    private fun updatePermissionBanner() {
+        val hasDnd = notificationManager.isNotificationPolicyAccessGranted
+        val hasAlarm = hasExactAlarmPermission()
+
+        if (hasDnd && hasAlarm) {
+            binding.cardPermissionBanner.visibility = View.GONE
+        } else {
+            binding.cardPermissionBanner.visibility = View.VISIBLE
+            binding.tvPermissionMessage.text = when {
+                !hasDnd && !hasAlarm -> getString(R.string.banner_both_missing)
+                !hasDnd -> getString(R.string.banner_dnd_missing)
+                else -> getString(R.string.banner_alarm_missing)
             }
         }
     }

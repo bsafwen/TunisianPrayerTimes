@@ -15,6 +15,9 @@
     <string name="dnd_dialog_message">يحتاج هذا التطبيق إلى إذن عدم الإزعاج لإسكات هاتفك تلقائيًا أثناء أوقات الصلاة. في الشاشة التالية، ابحث عن "أوقات الصلاة تونس" وقم بتفعيله.</string>
     <string name="dnd_dialog_grant">منح الإذن</string>
     <string name="dnd_dialog_later">لاحقًا</string>
+    <string name="banner_dnd_missing">⬅ إذن عدم الإزعاج مطلوب لإسكات الهاتف تلقائيًا. اضغط هنا لمنح الإذن.</string>
+    <string name="banner_alarm_missing">⬅ إذن التنبيهات والتذكيرات مطلوب لضبط أوقات الإسكات. اضغط هنا لمنح الإذن.</string>
+    <string name="banner_both_missing">⬅ أذونات مطلوبة: عدم الإزعاج + التنبيهات. اضغط هنا لمنح الأذونات.</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
     <string name="toast_auto_enabled">تم تفعيل الإسكات التلقائي ✅</string>
     <string name="toast_auto_disabled">تم إيقاف الإسكات التلقائي</string>
