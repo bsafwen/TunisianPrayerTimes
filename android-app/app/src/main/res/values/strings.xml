@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">أوقات الصلاة تونس</string>
     <string name="subtitle">مواقيت الصلاة في تونس</string>
     <string name="source">المصدر: المعهد الوطني للرصد الجوي</string>
     <string name="status_normal">🔔 الهاتف في الوضع العادي</string>

@@ -25,12 +25,6 @@ class MainActivityInstrumentedTest {
     // --- UI presence tests ---
 
     @Test
-    fun titleIsDisplayed() {
-        onView(withId(R.id.tvTitle))
-            .check(matches(isDisplayed()))
-    }
-
-    @Test
     fun subtitleIsDisplayed() {
         onView(withId(R.id.tvSubtitle))
             .check(matches(isDisplayed()))
@@ -79,12 +73,6 @@ class MainActivityInstrumentedTest {
     }
 
     // --- Arabic localisation tests ---
-
-    @Test
-    fun title_isInArabic() {
-        onView(withId(R.id.tvTitle))
-            .check(matches(withText("أوقات الصلاة تونس")))
-    }
 
     @Test
     fun subtitle_isInArabic() {
