@@ -5,10 +5,12 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.PowerManager
 import android.provider.Settings
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -25,7 +27,7 @@ class OnboardingActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private val progressBars = mutableListOf<View>()
     private var currentStep = 0
-    private val totalSteps = 5
+    private val totalSteps = 6
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,7 @@ class OnboardingActivity : AppCompatActivity() {
         progressBars.add(findViewById(R.id.progressBar3))
         progressBars.add(findViewById(R.id.progressBar4))
         progressBars.add(findViewById(R.id.progressBar5))
+        progressBars.add(findViewById(R.id.progressBar6))
 
         findViewById<View>(R.id.btnStart).setOnClickListener { finish() }
         findViewById<View>(R.id.btnNext).setOnClickListener { advanceStep() }
@@ -66,9 +69,12 @@ class OnboardingActivity : AppCompatActivity() {
         findViewById<View>(R.id.btnStart).visibility = if (isLastStep) View.VISIBLE else View.GONE
 
         if (step == 2) {
-            handler.postDelayed({ animateDemoTap() }, 600)
+            handler.postDelayed({ animateDelayDemoTap() }, 600)
         }
         if (step == 3) {
+            handler.postDelayed({ animateDemoTap() }, 600)
+        }
+        if (step == 4) {
             updatePermissionButtons()
         } else {
             // Restore full opacity/enabled state for non-permission steps
@@ -91,6 +97,11 @@ class OnboardingActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, android.net.Uri.parse("package:$packageName")))
             }
+        }
+        findViewById<MaterialButton>(R.id.btnGrantBattery).setOnClickListener {
+            val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+            intent.data = Uri.parse("package:$packageName")
+            startActivity(intent)
         }
     }
 
@@ -132,7 +143,19 @@ class OnboardingActivity : AppCompatActivity() {
             btnInstall.setBackgroundColor(ContextCompat.getColor(this, R.color.green_primary))
         }
 
-        updateNextButtonForPermissions(hasDnd && hasAlarm && hasInstall)
+        val btnBattery = findViewById<MaterialButton>(R.id.btnGrantBattery)
+        val hasBattery = isIgnoringBatteryOptimizations()
+        if (hasBattery) {
+            btnBattery.text = getString(R.string.onboarding_perm_granted)
+            btnBattery.isEnabled = false
+            btnBattery.setBackgroundColor(ContextCompat.getColor(this, R.color.text_muted))
+        } else {
+            btnBattery.text = getString(R.string.onboarding_perm_grant)
+            btnBattery.isEnabled = true
+            btnBattery.setBackgroundColor(ContextCompat.getColor(this, R.color.green_primary))
+        }
+
+        updateNextButtonForPermissions(hasDnd && hasAlarm && hasInstall && hasBattery)
     }
 
     private fun updateNextButtonForPermissions(allGranted: Boolean) {
@@ -149,9 +172,14 @@ class OnboardingActivity : AppCompatActivity() {
         return true
     }
 
+    private fun isIgnoringBatteryOptimizations(): Boolean {
+        val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
+        return pm.isIgnoringBatteryOptimizations(packageName)
+    }
+
     override fun onResume() {
         super.onResume()
-        if (currentStep == 3) {
+        if (currentStep == 4) {
             updatePermissionButtons()
         }
     }
@@ -175,6 +203,7 @@ class OnboardingActivity : AppCompatActivity() {
             viewFlipper.setInAnimation(this, R.anim.slide_in_left)
             viewFlipper.setOutAnimation(this, R.anim.slide_out_right)
             resetStep3Demo()
+            resetDelayDemo()
             startStep(currentStep - 1)
         }
     }
@@ -184,6 +213,20 @@ class OnboardingActivity : AppCompatActivity() {
         val ripple = findViewById<View>(R.id.tapRipple) ?: return
         val rowBefore = findViewById<View>(R.id.rowBefore) ?: return
         val rowAfter = findViewById<View>(R.id.rowAfter) ?: return
+
+        ripple.alpha = 0f
+        ripple.scaleX = 1f
+        ripple.scaleY = 1f
+        ripple.visibility = View.INVISIBLE
+        rowBefore.alpha = 1f
+        rowAfter.alpha = 0f
+        rowAfter.visibility = View.INVISIBLE
+    }
+
+    private fun resetDelayDemo() {
+        val ripple = findViewById<View>(R.id.delayTapRipple) ?: return
+        val rowBefore = findViewById<View>(R.id.delayRowBefore) ?: return
+        val rowAfter = findViewById<View>(R.id.delayRowAfter) ?: return
 
         ripple.alpha = 0f
         ripple.scaleX = 1f
@@ -226,6 +269,42 @@ class OnboardingActivity : AppCompatActivity() {
                     ripple.visibility = View.INVISIBLE
 
                     // Crossfade from duration row to fixed time row
+                    handler.postDelayed({
+                        rowBefore.animate().alpha(0f).setDuration(300).start()
+                        rowAfter.visibility = View.VISIBLE
+                        rowAfter.animate().alpha(1f).setDuration(300).start()
+                    }, 500)
+                }
+                .start()
+        }, 800)
+    }
+
+    private fun animateDelayDemoTap() {
+        val ripple = findViewById<View>(R.id.delayTapRipple) ?: return
+        val rowBefore = findViewById<View>(R.id.delayRowBefore) ?: return
+        val rowAfter = findViewById<View>(R.id.delayRowAfter) ?: return
+
+        val goldColor = ContextCompat.getColor(this, R.color.gold)
+        val rippleBg = GradientDrawable().apply {
+            shape = GradientDrawable.OVAL
+            setColor(goldColor)
+        }
+        ripple.background = rippleBg
+
+        handler.postDelayed({
+            ripple.scaleX = 0.3f
+            ripple.scaleY = 0.3f
+            ripple.alpha = 0.7f
+            ripple.visibility = View.VISIBLE
+
+            ripple.animate()
+                .scaleX(3f).scaleY(3f)
+                .alpha(0f)
+                .setDuration(600)
+                .setInterpolator(AccelerateDecelerateInterpolator())
+                .withEndAction {
+                    ripple.visibility = View.INVISIBLE
+
                     handler.postDelayed({
                         rowBefore.animate().alpha(0f).setDuration(300).start()
                         rowAfter.visibility = View.VISIBLE

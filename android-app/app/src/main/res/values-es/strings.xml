@@ -20,12 +20,16 @@
     <string name="toast_auto_enabled">Silencio automático activado ✅</string>
     <string name="toast_auto_disabled">Silencio automático desactivado</string>
     <string name="prayer_settings_title">Configuración de silencio de oración</string>
-    <string name="prayer_settings_subtitle">Establezca la duración del silencio por oración. Toque la etiqueta para cambiar a hora de fin fija.</string>
+    <string name="prayer_settings_subtitle">Establezca el retraso y la duración del silencio por oración. Toque la etiqueta para cambiar a hora fija.</string>
     <string name="col_prayer">Oración</string>
     <string name="col_time">Hora</string>
+    <string name="col_delay">Retraso</string>
     <string name="col_duration">Duración</string>
+    <string name="label_delay_minutes">min</string>
+    <string name="label_delay_at">a</string>
     <string name="label_duration">min</string>
     <string name="label_fixed_time">hasta</string>
+    <string name="pick_delay_time">Establecer hora de inicio del silencio</string>
     <string name="pick_end_time">Establecer hora de fin</string>
     <string name="ramadan_active">🌙 Ramadán — Silencio de Isha extendido a 2 horas</string>
     <string name="location_title">Ubicación</string>

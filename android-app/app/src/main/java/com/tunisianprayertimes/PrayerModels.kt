@@ -26,9 +26,15 @@ data class DayPrayerTimes(
 
 enum class SilenceMode { DURATION, FIXED_TIME }
 
+enum class DelayMode { MINUTES, FIXED_TIME }
+
 data class PrayerSilenceConfig(
     val mode: SilenceMode = SilenceMode.DURATION,
     val afterMinutes: Int = 30,
     val fixedHour: Int = -1,
-    val fixedMinute: Int = -1
+    val fixedMinute: Int = -1,
+    val delayMode: DelayMode = DelayMode.MINUTES,
+    val delayMinutes: Int = 0,
+    val delayFixedHour: Int = -1,
+    val delayFixedMinute: Int = -1
 )

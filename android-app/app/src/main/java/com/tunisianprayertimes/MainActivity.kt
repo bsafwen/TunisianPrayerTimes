@@ -177,6 +177,9 @@ class MainActivity : AppCompatActivity() {
             val tvLabel = rowView.findViewById<TextView>(R.id.tvAfterLabel)
             val etAfter = rowView.findViewById<EditText>(R.id.etAfter)
             val tvFixedTime = rowView.findViewById<TextView>(R.id.tvFixedTime)
+            val etDelay = rowView.findViewById<EditText>(R.id.etDelay)
+            val tvDelayFixedTime = rowView.findViewById<TextView>(R.id.tvDelayFixedTime)
+            val tvDelayLabel = rowView.findViewById<TextView>(R.id.tvDelayLabel)
 
             tvName.text = prayerNames[prayer] ?: prayer.name
 
@@ -188,7 +191,58 @@ class MainActivity : AppCompatActivity() {
                 "--:--"
             }
 
-            // Load saved duration
+            // --- Delay controls ---
+            etDelay.setText(PrefsManager.getDelayMinutes(this, prayer).toString())
+
+            // Load or compute default delay fixed time
+            var delayFixH = PrefsManager.getDelayFixedHour(this, prayer)
+            var delayFixM = PrefsManager.getDelayFixedMinute(this, prayer)
+            if (delayFixH < 0 || delayFixM < 0) {
+                if (prayerTime != null) {
+                    delayFixH = prayerTime.hour
+                    delayFixM = prayerTime.minute
+                    PrefsManager.setDelayFixedTime(this, prayer, delayFixH, delayFixM)
+                } else {
+                    delayFixH = 12; delayFixM = 0
+                }
+            }
+            tvDelayFixedTime.text = String.format("%02d:%02d", delayFixH, delayFixM)
+
+            val delayMode = PrefsManager.getDelayMode(this, prayer)
+            applyDelayRowMode(delayMode, tvDelayLabel, etDelay, tvDelayFixedTime)
+
+            tvDelayLabel.setOnClickListener {
+                val current = PrefsManager.getDelayMode(this, prayer)
+                val newMode = if (current == DelayMode.MINUTES) DelayMode.FIXED_TIME else DelayMode.MINUTES
+                PrefsManager.setDelayMode(this, prayer, newMode)
+                applyDelayRowMode(newMode, tvDelayLabel, etDelay, tvDelayFixedTime)
+                rescheduleIfEnabled()
+            }
+
+            tvDelayFixedTime.setOnClickListener {
+                val h = PrefsManager.getDelayFixedHour(this, prayer)
+                val m = PrefsManager.getDelayFixedMinute(this, prayer)
+                val picker = MaterialTimePicker.Builder()
+                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .setHour(if (h >= 0) h else 12)
+                    .setMinute(if (m >= 0) m else 0)
+                    .setTitleText(getString(R.string.pick_delay_time))
+                    .build()
+                picker.addOnPositiveButtonClickListener {
+                    tvDelayFixedTime.text = String.format("%02d:%02d", picker.hour, picker.minute)
+                    PrefsManager.setDelayFixedTime(this, prayer, picker.hour, picker.minute)
+                    rescheduleIfEnabled()
+                }
+                picker.show(supportFragmentManager, "delay_picker_${prayer.name}")
+            }
+
+            etDelay.addTextChangedListener(createSaveWatcher { text ->
+                val minutes = text.toIntOrNull() ?: 0
+                PrefsManager.setDelayMinutes(this, prayer, minutes)
+                rescheduleIfEnabled()
+            })
+
+            // --- Duration/end controls ---
             etAfter.setText(PrefsManager.getAfterMinutes(this, prayer).toString())
 
             // Load or compute default fixed time
@@ -268,6 +322,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun applyDelayRowMode(mode: DelayMode, label: TextView, etDelay: EditText, tvFixed: TextView) {
+        when (mode) {
+            DelayMode.MINUTES -> {
+                label.text = getString(R.string.label_delay_minutes)
+                etDelay.visibility = View.VISIBLE
+                tvFixed.visibility = View.GONE
+            }
+            DelayMode.FIXED_TIME -> {
+                label.text = getString(R.string.label_delay_at)
+                etDelay.visibility = View.GONE
+                tvFixed.visibility = View.VISIBLE
+            }
+        }
+    }
+
     private fun createSaveWatcher(onSave: (String) -> Unit): TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -309,6 +378,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.cardBatteryBanner.setOnClickListener {
+            val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+            intent.data = android.net.Uri.parse("package:$packageName")
+            startActivity(intent)
+        }
         updatePermissionBanner()
     }
 
@@ -325,6 +399,13 @@ class MainActivity : AppCompatActivity() {
                 !hasDnd -> getString(R.string.banner_dnd_missing)
                 else -> getString(R.string.banner_alarm_missing)
             }
+        }
+
+        val pm = getSystemService(Context.POWER_SERVICE) as android.os.PowerManager
+        if (pm.isIgnoringBatteryOptimizations(packageName)) {
+            binding.cardBatteryBanner.visibility = View.GONE
+        } else {
+            binding.cardBatteryBanner.visibility = View.VISIBLE
         }
     }
 

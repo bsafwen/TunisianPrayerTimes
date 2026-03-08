@@ -20,12 +20,16 @@
     <string name="toast_auto_enabled">بی‌صدا کردن خودکار فعال شد ✅</string>
     <string name="toast_auto_disabled">بی‌صدا کردن خودکار غیرفعال شد</string>
     <string name="prayer_settings_title">تنظیمات بی‌صدای نماز</string>
-    <string name="prayer_settings_subtitle">مدت بی‌صدا را برای هر نماز تنظیم کنید. برای تغییر به زمان پایان ثابت، روی برچسب بزنید.</string>
+    <string name="prayer_settings_subtitle">تأخیر و مدت بی‌صدا را برای هر نماز تنظیم کنید. برای تغییر به زمان ثابت، روی برچسب بزنید.</string>
     <string name="col_prayer">نماز</string>
     <string name="col_time">زمان</string>
+    <string name="col_delay">تأخیر</string>
     <string name="col_duration">مدت</string>
+    <string name="label_delay_minutes">دقیقه</string>
+    <string name="label_delay_at">در</string>
     <string name="label_duration">دقیقه</string>
     <string name="label_fixed_time">تا</string>
+    <string name="pick_delay_time">تنظیم زمان شروع بی‌صدایی</string>
     <string name="pick_end_time">تنظیم زمان پایان</string>
     <string name="ramadan_active">🌙 رمضان — بی‌صدای عشاء به ۲ ساعت افزایش یافت</string>
     <string name="location_title">موقعیت</string>

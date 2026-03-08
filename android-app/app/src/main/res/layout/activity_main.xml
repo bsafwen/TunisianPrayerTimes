@@ -150,6 +150,49 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Battery Optimization Banner -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBatteryBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFF3E0"
+                app:strokeColor="#FFB74D"
+                app:strokeWidth="1dp"
+                android:layout_marginTop="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layoutDirection="rtl"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔋"
+                        android:textSize="20sp"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvBatteryMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/banner_battery_missing"
+                        android:textSize="13sp"
+                        android:textColor="#E65100"
+                        android:textAlignment="viewStart"
+                        android:lineSpacingExtra="3dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Update Available Banner -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardUpdateBanner"
@@ -294,7 +337,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
+                            android:layout_weight="2"
                             android:text="@string/col_prayer"
                             android:textSize="11sp"
                             android:textColor="@color/text_muted"
@@ -303,7 +346,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
+                            android:layout_weight="1.5"
                             android:text="@string/col_time"
                             android:textSize="11sp"
                             android:textColor="@color/text_muted"
@@ -313,13 +356,22 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2.5"
+                            android:layout_weight="1.8"
+                            android:text="@string/col_delay"
+                            android:textSize="11sp"
+                            android:textColor="@color/text_muted"
+                            android:textStyle="bold"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.2"
                             android:text="@string/col_duration"
                             android:textSize="11sp"
                             android:textColor="@color/text_muted"
                             android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:paddingEnd="44dp" />
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 

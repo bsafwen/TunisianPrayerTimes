@@ -43,19 +43,11 @@ object SilenceScheduler {
         for (prayerTime in todayTimes.allPrayers()) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
-            // Silence starts at prayer time
-            val silenceTime = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, prayerTime.hour)
-                set(Calendar.MINUTE, prayerTime.minute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-
-            // Unsilence based on mode: fixed time or duration
-            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+            // Silence start: apply delay to prayer time
+            val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
                 Calendar.getInstance().apply {
-                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
-                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
+                    set(Calendar.MINUTE, config.delayFixedMinute)
                     set(Calendar.SECOND, 0)
                     set(Calendar.MILLISECOND, 0)
                 }
@@ -65,6 +57,20 @@ object SilenceScheduler {
                     set(Calendar.MINUTE, prayerTime.minute)
                     set(Calendar.SECOND, 0)
                     set(Calendar.MILLISECOND, 0)
+                    add(Calendar.MINUTE, config.delayMinutes)
+                }
+            }
+
+            // Unsilence based on mode: fixed time or duration (duration is relative to silence start)
+            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
+                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }
+            } else {
+                (silenceTime.clone() as Calendar).apply {
                     add(Calendar.MINUTE, config.afterMinutes)
                 }
             }

@@ -90,12 +90,50 @@ object PrefsManager {
             .apply()
     }
 
+    // --- Delay settings ---
+
+    fun getDelayMinutes(context: Context, prayer: Prayer): Int {
+        return prefs(context).getInt("delay_${prayer.name}", 0)
+    }
+
+    fun setDelayMinutes(context: Context, prayer: Prayer, minutes: Int) {
+        prefs(context).edit().putInt("delay_${prayer.name}", minutes).apply()
+    }
+
+    fun getDelayMode(context: Context, prayer: Prayer): DelayMode {
+        val modeStr = prefs(context).getString("delay_mode_${prayer.name}", DelayMode.MINUTES.name)
+        return try { DelayMode.valueOf(modeStr!!) } catch (_: Exception) { DelayMode.MINUTES }
+    }
+
+    fun setDelayMode(context: Context, prayer: Prayer, mode: DelayMode) {
+        prefs(context).edit().putString("delay_mode_${prayer.name}", mode.name).apply()
+    }
+
+    fun getDelayFixedHour(context: Context, prayer: Prayer): Int {
+        return prefs(context).getInt("delay_fixed_hour_${prayer.name}", -1)
+    }
+
+    fun getDelayFixedMinute(context: Context, prayer: Prayer): Int {
+        return prefs(context).getInt("delay_fixed_minute_${prayer.name}", -1)
+    }
+
+    fun setDelayFixedTime(context: Context, prayer: Prayer, hour: Int, minute: Int) {
+        prefs(context).edit()
+            .putInt("delay_fixed_hour_${prayer.name}", hour)
+            .putInt("delay_fixed_minute_${prayer.name}", minute)
+            .apply()
+    }
+
     fun getConfig(context: Context, prayer: Prayer): PrayerSilenceConfig {
         return PrayerSilenceConfig(
             mode = getSilenceMode(context, prayer),
             afterMinutes = getAfterMinutes(context, prayer),
             fixedHour = getFixedTimeHour(context, prayer),
-            fixedMinute = getFixedTimeMinute(context, prayer)
+            fixedMinute = getFixedTimeMinute(context, prayer),
+            delayMode = getDelayMode(context, prayer),
+            delayMinutes = getDelayMinutes(context, prayer),
+            delayFixedHour = getDelayFixedHour(context, prayer),
+            delayFixedMinute = getDelayFixedMinute(context, prayer)
         )
     }
 }

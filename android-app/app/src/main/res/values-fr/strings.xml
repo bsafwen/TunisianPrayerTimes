@@ -20,12 +20,16 @@
     <string name="toast_auto_enabled">Silence automatique activé ✅</string>
     <string name="toast_auto_disabled">Silence automatique désactivé</string>
     <string name="prayer_settings_title">Paramètres de silence des prières</string>
-    <string name="prayer_settings_subtitle">Définissez la durée de silence par prière. Appuyez sur le libellé pour passer à une heure de fin fixe.</string>
+    <string name="prayer_settings_subtitle">Définissez le délai et la durée de silence par prière. Appuyez sur le libellé pour passer à une heure fixe.</string>
     <string name="col_prayer">Prière</string>
     <string name="col_time">Heure</string>
+    <string name="col_delay">Délai</string>
     <string name="col_duration">Durée</string>
+    <string name="label_delay_minutes">min</string>
+    <string name="label_delay_at">à</string>
     <string name="label_duration">min</string>
     <string name="label_fixed_time">jusqu\'à</string>
+    <string name="pick_delay_time">Définir l\'heure de début du silence</string>
     <string name="pick_end_time">Définir l\'heure de fin</string>
     <string name="ramadan_active">🌙 Ramadan — Silence d\'Isha étendu à 2 heures</string>
     <string name="location_title">Emplacement</string>

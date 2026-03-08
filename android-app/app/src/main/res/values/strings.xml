@@ -23,12 +23,16 @@
     <string name="toast_auto_enabled">تم تفعيل الإسكات التلقائي ✅</string>
     <string name="toast_auto_disabled">تم إيقاف الإسكات التلقائي</string>
     <string name="prayer_settings_title">إعدادات الإسكات</string>
-    <string name="prayer_settings_subtitle">حدد مدة الإسكات بالدقائق لكل صلاة. اضغط على "د" بجانب المدة للتبديل إلى وقت انتهاء محدد.</string>
+    <string name="prayer_settings_subtitle">حدد تأخير بدء الإسكات ومدته لكل صلاة. اضغط على "د" للتبديل إلى وقت محدد.</string>
     <string name="col_prayer">الصلاة</string>
     <string name="col_time">الوقت</string>
+    <string name="col_delay">التأخير</string>
     <string name="col_duration">المدة</string>
+    <string name="label_delay_minutes">د</string>
+    <string name="label_delay_at">من</string>
     <string name="label_duration">د</string>
     <string name="label_fixed_time">حتى</string>
+    <string name="pick_delay_time">اختر وقت بدء الإسكات</string>
     <string name="pick_end_time">اختر وقت الانتهاء</string>
     <string name="ramadan_active">رمضان — إسكات العشاء ممتد إلى ساعة ونصف 🌙</string>
     <string name="location_title">الموقع</string>
@@ -45,6 +49,10 @@
     <string name="onboarding_step2_title">عند الأذان، يتم إسكات الهاتف لمدة محددة بالدقائق</string>
     <string name="onboarding_step2_desc">كل صلاة لها مدة إسكات خاصة بها.
 في المثال أعلاه، سيتم إسكات الهاتف لمدة 60 دقيقة بعد أذان الفجر.</string>
+    <string name="onboarding_delay_title">تأخير بدء الإسكات</string>
+    <string name="onboarding_delay_desc">يمكنك تأخير بدء الإسكات بعدد من الدقائق بعد الأذان.
+في المثال أعلاه، سيبدأ الإسكات بعد 5 دقائق من أذان الفجر.
+اضغط على "د" للتبديل إلى وقت بدء محدد.</string>
     <string name="onboarding_step3_title">التبديل إلى وقت انتهاء محدد</string>
     <string name="onboarding_step3_desc">اضغط على "د" بجانب المدة للتبديل إلى وقت انتهاء ثابت.\nاضغط على الوقت لتغييره.</string>
     <string name="onboarding_ready_title">جاهز للاستخدام!</string>
@@ -63,6 +71,9 @@
     <string name="onboarding_perm_granted">ممنوح</string>
     <string name="onboarding_perm_install">تثبيت التحديثات</string>
     <string name="onboarding_perm_install_desc">يحتاج التطبيق لإذن تثبيت التحديثات تلقائيًا.</string>
+    <string name="onboarding_perm_battery">عدم تقييد البطارية</string>
+    <string name="onboarding_perm_battery_desc">يمنع النظام من إيقاف التطبيق عند عدم استخدامه.</string>
+    <string name="banner_battery_missing">التطبيق قد يتوقف عن العمل بسبب تحسين البطارية. اضغط هنا لإعفائه. ⬅</string>
 
     <!-- Self-update -->
     <string name="update_available_title">تحديث متوفر</string>
