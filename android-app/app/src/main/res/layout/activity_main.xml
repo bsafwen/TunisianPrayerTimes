@@ -162,6 +162,46 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Update Available Banner -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardUpdateBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#E8F5E9"
+                app:strokeColor="#66BB6A"
+                app:strokeWidth="1dp"
+                android:layout_marginTop="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⬆"
+                        android:textSize="20sp"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvUpdateMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="13sp"
+                        android:textColor="#2E7D32"
+                        android:lineSpacingExtra="3dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Auto-Silence Toggle -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -331,7 +371,8 @@
                             android:textSize="11sp"
                             android:textColor="@color/text_muted"
                             android:textStyle="bold"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:paddingEnd="22dp" />
 
                     </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import androidx.appcompat.app.AlertDialog
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var audioManager: AudioManager
     private lateinit var notificationManager: NotificationManager
     private var allDelegations: List<Delegation> = emptyList()
+    private var pendingUpdate: UpdateInfo? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         // Set up the permission banner
         setupPermissionBanner()
         updateUI()
+        checkForAppUpdate()
 
         binding.btnToggleSilence.setOnClickListener {
             if (!notificationManager.isNotificationPolicyAccessGranted) {
@@ -352,5 +355,30 @@ class MainActivity : AppCompatActivity() {
             binding.btnToggleSilence.setIconResource(android.R.drawable.ic_lock_silent_mode)
             binding.btnToggleSilence.setBackgroundColor(getColor(R.color.green_primary))
         }
+    }
+
+    private fun checkForAppUpdate() {
+        Thread {
+            val currentVersion = packageManager.getPackageInfo(packageName, 0).versionName ?: return@Thread
+            val update = AppUpdater.checkForUpdate(currentVersion) ?: return@Thread
+            pendingUpdate = update
+            runOnUiThread {
+                // Show the update banner
+                binding.cardUpdateBanner.visibility = View.VISIBLE
+                binding.tvUpdateMessage.text = getString(R.string.update_banner, update.versionName)
+                binding.cardUpdateBanner.setOnClickListener { showUpdateDialog(update) }
+            }
+        }.start()
+    }
+
+    private fun showUpdateDialog(update: UpdateInfo) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.update_available_title))
+            .setMessage(getString(R.string.update_available_message, update.versionName))
+            .setPositiveButton(getString(R.string.update_download)) { _, _ ->
+                AppUpdater.downloadAndInstall(this, update)
+            }
+            .setNegativeButton(getString(R.string.update_later), null)
+            .show()
     }
 }

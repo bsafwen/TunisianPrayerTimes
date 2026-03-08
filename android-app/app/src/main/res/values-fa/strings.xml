@@ -36,4 +36,12 @@
     <string name="prayer_asr">عصر</string>
     <string name="prayer_maghrib">مغرب</string>
     <string name="prayer_isha">عشاء</string>
+
+    <!-- Self-update -->
+    <string name="update_available_title">به‌روزرسانی موجود است</string>
+    <string name="update_available_message">نسخه %s موجود است. آیا می‌خواهید الان به‌روزرسانی کنید؟</string>
+    <string name="update_download">به‌روزرسانی</string>
+    <string name="update_later">بعداً</string>
+    <string name="update_downloading">در حال دانلود به‌روزرسانی…</string>
+    <string name="update_banner">⬆ نسخه جدید %s موجود — برای به‌روزرسانی لمس کنید</string>
 </resources>

@@ -36,4 +36,12 @@
     <string name="prayer_asr">Asr</string>
     <string name="prayer_maghrib">Maghrib</string>
     <string name="prayer_isha">Isha</string>
+
+    <!-- Self-update -->
+    <string name="update_available_title">Actualización disponible</string>
+    <string name="update_available_message">La versión %s está disponible. ¿Desea actualizar ahora?</string>
+    <string name="update_download">Actualizar</string>
+    <string name="update_later">Más tarde</string>
+    <string name="update_downloading">Descargando actualización…</string>
+    <string name="update_banner">⬆ Nueva versión %s disponible — toque para actualizar</string>
 </resources>

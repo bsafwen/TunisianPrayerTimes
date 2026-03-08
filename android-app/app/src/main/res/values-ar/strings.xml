@@ -54,4 +54,12 @@
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_prev">السابق</string>
     <string name="onboarding_skip">تخطّ</string>
+
+    <!-- Self-update -->
+    <string name="update_available_title">تحديث متوفر</string>
+    <string name="update_available_message">الإصدار %s متوفر. هل تريد التحديث الآن؟</string>
+    <string name="update_download">تحديث</string>
+    <string name="update_later">لاحقًا</string>
+    <string name="update_downloading">جاري تحميل التحديث…</string>
+    <string name="update_banner">⬆ إصدار جديد %s متوفر — اضغط للتحديث</string>
 </resources>

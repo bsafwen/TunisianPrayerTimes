@@ -12,4 +12,5 @@ android-app/.kotlin/
 android-app/build/
 android-app/app/build/
 android-app/local.properties
-*.apkjava_pid53290.hprof
+*.apk
+java_pid53290.hprof
