@@ -372,7 +372,7 @@
                             android:textColor="@color/text_muted"
                             android:textStyle="bold"
                             android:textAlignment="center"
-                            android:paddingEnd="22dp" />
+                            android:paddingEnd="44dp" />
 
                     </LinearLayout>
 
