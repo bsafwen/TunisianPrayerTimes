@@ -4,7 +4,6 @@ import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import org.json.JSONObject
-import java.util.Locale
 
 data class Gouvernorat(
     val id: Int,
@@ -13,14 +12,7 @@ data class Gouvernorat(
     val nomEn: String,
     val delegations: List<Delegation>
 ) {
-    fun displayName(): String {
-        val lang = Locale.getDefault().language
-        return when (lang) {
-            "ar", "fa", "ur" -> nomAr
-            "fr", "es" -> nomFr
-            else -> nomEn
-        }
-    }
+    fun displayName(): String = nomAr
 }
 
 data class Delegation(
@@ -31,13 +23,7 @@ data class Delegation(
     val gouvernoratName: String = ""
 ) {
     fun displayName(): String {
-        val lang = Locale.getDefault().language
-        val name = when (lang) {
-            "ar", "fa", "ur" -> nomAr
-            "fr", "es" -> nomFr
-            else -> nomEn
-        }
-        return if (gouvernoratName.isNotEmpty()) "$name ($gouvernoratName)" else name
+        return if (gouvernoratName.isNotEmpty()) "$nomAr ($gouvernoratName)" else nomAr
     }
 
     /** All searchable text for fuzzy matching */
@@ -63,7 +49,7 @@ object GouvernoratRepository {
             val g = arr.getJSONObject(i)
             val delArr = g.getJSONArray("delegations")
             val delegations = mutableListOf<Delegation>()
-            val gName = g.getString("nomFr")
+            val gName = g.getString("nomAr")
 
             for (j in 0 until delArr.length()) {
                 val d = delArr.getJSONObject(j)
