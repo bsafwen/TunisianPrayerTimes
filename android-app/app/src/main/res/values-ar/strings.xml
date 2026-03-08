@@ -54,6 +54,8 @@
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_prev">السابق</string>
     <string name="onboarding_skip">تخطّ</string>
+    <string name="onboarding_perm_install">تثبيت التحديثات</string>
+    <string name="onboarding_perm_install_desc">يحتاج التطبيق لإذن تثبيت التحديثات تلقائيًا.</string>
 
     <!-- Self-update -->
     <string name="update_available_title">تحديث متوفر</string>

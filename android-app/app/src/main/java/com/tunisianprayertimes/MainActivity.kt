@@ -376,6 +376,7 @@ class MainActivity : AppCompatActivity() {
             .setTitle(getString(R.string.update_available_title))
             .setMessage(getString(R.string.update_available_message, update.versionName))
             .setPositiveButton(getString(R.string.update_download)) { _, _ ->
+                binding.cardUpdateBanner.visibility = View.GONE
                 AppUpdater.downloadAndInstall(this, update)
             }
             .setNegativeButton(getString(R.string.update_later), null)

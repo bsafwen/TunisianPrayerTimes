@@ -61,6 +61,8 @@
     <string name="onboarding_perm_alarm">تنبيهات دقيقة</string>
     <string name="onboarding_perm_alarm_desc">يحتاج التطبيق لإذن بجدولة التنبيهات في الوقت المحدد.</string>
     <string name="onboarding_perm_granted">ممنوح</string>
+    <string name="onboarding_perm_install">تثبيت التحديثات</string>
+    <string name="onboarding_perm_install_desc">يحتاج التطبيق لإذن تثبيت التحديثات تلقائيًا.</string>
 
     <!-- Self-update -->
     <string name="update_available_title">تحديث متوفر</string>
