@@ -13,13 +13,21 @@
         android:outAnimation="@anim/slide_out_right">
 
         <!-- Step 1: Welcome -->
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:layoutDirection="rtl"
-            android:padding="32dp">
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="200dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,15 +62,24 @@
                 android:textAlignment="center"
                 android:lineSpacingExtra="6dp" />
         </LinearLayout>
+        </ScrollView>
 
         <!-- Step 2: Duration mode (default) -->
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:layoutDirection="rtl"
-            android:padding="32dp">
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="200dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -122,8 +139,9 @@
                         android:gravity="center">
 
                         <TextView
-                            android:layout_width="42dp"
+                            android:layout_width="0dp"
                             android:layout_height="36dp"
+                            android:layout_weight="1"
                             android:text="0"
                             android:textSize="14sp"
                             android:textColor="@color/text_muted"
@@ -150,8 +168,9 @@
                         android:gravity="center">
 
                         <TextView
-                            android:layout_width="42dp"
+                            android:layout_width="0dp"
                             android:layout_height="36dp"
+                            android:layout_weight="1"
                             android:text="60"
                             android:textSize="14sp"
                             android:textColor="@color/text_dark"
@@ -183,15 +202,24 @@
                 android:textAlignment="center"
                 android:lineSpacingExtra="6dp" />
         </LinearLayout>
+        </ScrollView>
 
         <!-- Step 3: Delay setting -->
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:layoutDirection="rtl"
-            android:padding="32dp">
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="200dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -257,8 +285,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="42dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="5"
                                 android:textSize="14sp"
                                 android:textColor="@color/green_primary"
@@ -309,8 +338,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="42dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="60"
                                 android:textSize="14sp"
                                 android:textColor="@color/text_dark"
@@ -368,8 +398,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="52dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="05:20"
                                 android:textSize="14sp"
                                 android:textColor="@color/green_primary"
@@ -398,8 +429,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="42dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="60"
                                 android:textSize="14sp"
                                 android:textColor="@color/text_dark"
@@ -432,20 +464,24 @@
                 android:textAlignment="center"
                 android:lineSpacingExtra="6dp" />
         </LinearLayout>
+        </ScrollView>
 
         <!-- Step 4: Tap "د" to switch to fixed time (animated demo) -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:layoutDirection="rtl"
-            android:padding="32dp">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="200dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -509,8 +545,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="42dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="0"
                                 android:textSize="14sp"
                                 android:textColor="@color/text_muted"
@@ -537,8 +574,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="42dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="60"
                                 android:textSize="14sp"
                                 android:textColor="@color/text_dark"
@@ -618,8 +656,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="42dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="0"
                                 android:textSize="14sp"
                                 android:textColor="@color/text_muted"
@@ -646,8 +685,9 @@
                             android:gravity="center">
 
                             <TextView
-                                android:layout_width="52dp"
+                                android:layout_width="0dp"
                                 android:layout_height="36dp"
+                                android:layout_weight="1"
                                 android:text="06:15"
                                 android:textSize="14sp"
                                 android:textColor="@color/green_primary"
@@ -684,50 +724,50 @@
                 android:textAlignment="center"
                 android:lineSpacingExtra="6dp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
         </LinearLayout>
+        </ScrollView>
 
         <!-- Step 5: Permissions -->
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layoutDirection="rtl"
-            android:padding="32dp">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="180dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_perm_title"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="6dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_perm_desc"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textColor="@color/text_dark"
                 android:textAlignment="center"
-                android:lineSpacingExtra="4dp"
-                android:layout_marginBottom="32dp" />
+                android:lineSpacingExtra="2dp"
+                android:layout_marginBottom="16dp" />
 
             <!-- DND permission row -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="8dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -741,7 +781,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layoutDirection="rtl"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -753,7 +793,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_dnd"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
@@ -761,7 +801,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_dnd_desc"
-                            android:textSize="13sp"
+                            android:textSize="11sp"
                             android:textColor="@color/text_muted"
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
@@ -769,12 +809,12 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnGrantDnd"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="36dp"
                         android:text="@string/onboarding_perm_grant"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:backgroundTint="@color/green_primary"
                         xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="20dp"
+                        app:cornerRadius="18dp"
                         android:layout_marginStart="8dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -783,7 +823,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -797,7 +837,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layoutDirection="rtl"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -809,7 +849,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_alarm"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
@@ -817,7 +857,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_alarm_desc"
-                            android:textSize="13sp"
+                            android:textSize="11sp"
                             android:textColor="@color/text_muted"
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
@@ -825,12 +865,12 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnGrantAlarm"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="36dp"
                         android:text="@string/onboarding_perm_grant"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:backgroundTint="@color/green_primary"
                         xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="20dp"
+                        app:cornerRadius="18dp"
                         android:layout_marginStart="8dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -839,7 +879,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -853,7 +893,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layoutDirection="rtl"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -865,7 +905,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_install"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
@@ -873,7 +913,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_install_desc"
-                            android:textSize="13sp"
+                            android:textSize="11sp"
                             android:textColor="@color/text_muted"
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
@@ -881,12 +921,12 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnGrantInstall"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="36dp"
                         android:text="@string/onboarding_perm_grant"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:backgroundTint="@color/green_primary"
                         xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="20dp"
+                        app:cornerRadius="18dp"
                         android:layout_marginStart="8dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -895,7 +935,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
@@ -909,7 +949,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layoutDirection="rtl"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -921,7 +961,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_battery"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="@color/green_primary_dark" />
 
@@ -929,7 +969,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/onboarding_perm_battery_desc"
-                            android:textSize="13sp"
+                            android:textSize="11sp"
                             android:textColor="@color/text_muted"
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
@@ -937,30 +977,35 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnGrantBattery"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="36dp"
                         android:text="@string/onboarding_perm_grant"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:backgroundTint="@color/green_primary"
                         xmlns:app="http://schemas.android.com/apk/res-auto"
-                        app:cornerRadius="20dp"
+                        app:cornerRadius="18dp"
                         android:layout_marginStart="8dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
         </LinearLayout>
+        </ScrollView>
 
         <!-- Step 6: Get started -->
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:layoutDirection="rtl"
-            android:padding="32dp">
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="200dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -982,6 +1027,7 @@
                 android:layout_marginBottom="40dp" />
 
         </LinearLayout>
+        </ScrollView>
 
     </ViewFlipper>
 

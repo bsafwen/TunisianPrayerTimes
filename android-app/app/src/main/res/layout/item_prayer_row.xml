@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -16,7 +17,11 @@
         android:layout_weight="2"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="@color/prayer_name" />
+        android:textColor="@color/prayer_name"
+        android:singleLine="true"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeMaxTextSize="15sp" />
 
     <!-- Prayer time -->
     <TextView
@@ -26,7 +31,11 @@
         android:layout_weight="1.5"
         android:textSize="14sp"
         android:textColor="@color/text_dark"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:singleLine="true"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeMaxTextSize="14sp" />
 
     <!-- Delay control -->
     <LinearLayout
@@ -39,8 +48,9 @@
         <!-- Delay minutes input (visible in MINUTES mode) -->
         <EditText
             android:id="@+id/etDelay"
-            android:layout_width="42dp"
+            android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_weight="1"
             android:inputType="number"
             android:textSize="14sp"
             android:textColor="@color/text_dark"
@@ -54,8 +64,9 @@
         <!-- Delay fixed time display (visible in FIXED_TIME mode) -->
         <TextView
             android:id="@+id/tvDelayFixedTime"
-            android:layout_width="52dp"
+            android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_weight="1"
             android:textSize="13sp"
             android:textColor="@color/text_dark"
             android:textAlignment="center"
@@ -67,13 +78,18 @@
         <!-- Delay mode label (tappable to toggle) -->
         <TextView
             android:id="@+id/tvDelayLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_weight="0.8"
             android:layout_marginStart="2dp"
             android:text="@string/label_delay_minutes"
             android:textSize="13sp"
             android:textColor="#D4AF37"
             android:gravity="center"
+            android:singleLine="true"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="9sp"
+            app:autoSizeMaxTextSize="13sp"
             android:padding="2dp" />
 
     </LinearLayout>
@@ -89,8 +105,9 @@
         <!-- Duration input (visible in DURATION mode) -->
         <EditText
             android:id="@+id/etAfter"
-            android:layout_width="42dp"
+            android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_weight="1"
             android:inputType="number"
             android:textSize="14sp"
             android:textColor="@color/text_dark"
@@ -104,8 +121,9 @@
         <!-- Fixed time display (visible in FIXED_TIME mode) -->
         <TextView
             android:id="@+id/tvFixedTime"
-            android:layout_width="52dp"
+            android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_weight="1"
             android:textSize="13sp"
             android:textColor="@color/text_dark"
             android:textAlignment="center"
@@ -117,13 +135,18 @@
         <!-- Mode label next to input (tappable to toggle) -->
         <TextView
             android:id="@+id/tvAfterLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_weight="0.8"
             android:layout_marginStart="2dp"
             android:text="@string/label_duration"
             android:textSize="13sp"
             android:textColor="#D4AF37"
             android:gravity="center"
+            android:singleLine="true"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="9sp"
+            app:autoSizeMaxTextSize="13sp"
             android:padding="2dp" />
 
     </LinearLayout>
