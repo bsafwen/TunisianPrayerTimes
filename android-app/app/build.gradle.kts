@@ -20,8 +20,8 @@ android {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
         targetSdk = 36
-        versionCode = 11
-        versionName = "2.0"
+        versionCode = 14
+        versionName = "2.3"
         resourceConfigurations += "ar"
     }
 
