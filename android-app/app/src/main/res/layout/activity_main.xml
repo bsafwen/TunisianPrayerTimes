@@ -65,6 +65,15 @@
                     android:textAlignment="center"
                     android:layout_marginTop="4dp" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/source"
+                    android:textSize="11sp"
+                    android:textColor="#80B2DFDB"
+                    android:textAlignment="center"
+                    android:layout_marginTop="2dp" />
+
             </LinearLayout>
 
         </FrameLayout>

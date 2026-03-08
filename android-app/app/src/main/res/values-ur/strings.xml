@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">تیونس نماز اوقات</string>
     <string name="subtitle">تیونس میں نماز کے اوقات</string>
+    <string name="source">ماخذ: تیونس قومی موسمیاتی ادارہ</string>
     <string name="status_normal">🔔 فون نارمل موڈ میں ہے</string>
     <string name="status_silent">🔇 فون خاموش موڈ میں ہے</string>
     <string name="status_no_permission">⚠️ ڈو ناٹ ڈسٹرب اجازت درکار ہے</string>

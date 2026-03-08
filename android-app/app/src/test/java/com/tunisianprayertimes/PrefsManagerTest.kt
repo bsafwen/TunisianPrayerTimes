@@ -77,7 +77,11 @@ class PrefsManagerTest {
     @Test
     fun defaultSilenceMode_isDuration() {
         for (prayer in Prayer.values()) {
-            assertEquals(SilenceMode.DURATION, PrefsManager.getSilenceMode(context, prayer))
+            if (prayer == Prayer.DHUHR) {
+                assertEquals(SilenceMode.FIXED_TIME, PrefsManager.getSilenceMode(context, prayer))
+            } else {
+                assertEquals(SilenceMode.DURATION, PrefsManager.getSilenceMode(context, prayer))
+            }
         }
     }
 
@@ -93,6 +97,12 @@ class PrefsManagerTest {
     fun defaultFixedTime_isNegativeOne() {
         assertEquals(-1, PrefsManager.getFixedTimeHour(context, Prayer.ASR))
         assertEquals(-1, PrefsManager.getFixedTimeMinute(context, Prayer.ASR))
+    }
+
+    @Test
+    fun defaultFixedTime_dhuhr_is1315() {
+        assertEquals(13, PrefsManager.getFixedTimeHour(context, Prayer.DHUHR))
+        assertEquals(15, PrefsManager.getFixedTimeMinute(context, Prayer.DHUHR))
     }
 
     @Test

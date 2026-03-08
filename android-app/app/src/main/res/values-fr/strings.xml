@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Horaires de Prière Tunisie</string>
     <string name="subtitle">Horaires de prière en Tunisie</string>
+    <string name="source">Source : Institut National de la Météorologie</string>
     <string name="status_normal">🔔 Le téléphone est en mode normal</string>
     <string name="status_silent">🔇 Le téléphone est en mode silencieux</string>
     <string name="status_no_permission">⚠️ Autorisation Ne pas déranger requise</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">اوقات نماز تونس</string>
     <string name="subtitle">اوقات نماز در تونس</string>
+    <string name="source">منبع: مؤسسه ملی هواشناسی تونس</string>
     <string name="status_normal">🔔 گوشی در حالت عادی است</string>
     <string name="status_silent">🔇 گوشی در حالت بی‌صدا است</string>
     <string name="status_no_permission">⚠️ مجوز عدم مزاحمت لازم است</string>

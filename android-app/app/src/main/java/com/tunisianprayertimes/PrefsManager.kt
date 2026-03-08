@@ -58,9 +58,15 @@ object PrefsManager {
         prefs(context).edit().putInt("after_${prayer.name}", minutes).apply()
     }
 
+    private fun defaultSilenceMode(prayer: Prayer): SilenceMode = when (prayer) {
+        Prayer.DHUHR -> SilenceMode.FIXED_TIME
+        else -> SilenceMode.DURATION
+    }
+
     fun getSilenceMode(context: Context, prayer: Prayer): SilenceMode {
-        val modeStr = prefs(context).getString("mode_${prayer.name}", SilenceMode.DURATION.name)
-        return try { SilenceMode.valueOf(modeStr!!) } catch (_: Exception) { SilenceMode.DURATION }
+        val default = defaultSilenceMode(prayer)
+        val modeStr = prefs(context).getString("mode_${prayer.name}", default.name)
+        return try { SilenceMode.valueOf(modeStr!!) } catch (_: Exception) { default }
     }
 
     fun setSilenceMode(context: Context, prayer: Prayer, mode: SilenceMode) {
@@ -68,11 +74,13 @@ object PrefsManager {
     }
 
     fun getFixedTimeHour(context: Context, prayer: Prayer): Int {
-        return prefs(context).getInt("fixed_hour_${prayer.name}", -1)
+        val default = if (prayer == Prayer.DHUHR) 13 else -1
+        return prefs(context).getInt("fixed_hour_${prayer.name}", default)
     }
 
     fun getFixedTimeMinute(context: Context, prayer: Prayer): Int {
-        return prefs(context).getInt("fixed_minute_${prayer.name}", -1)
+        val default = if (prayer == Prayer.DHUHR) 15 else -1
+        return prefs(context).getInt("fixed_minute_${prayer.name}", default)
     }
 
     fun setFixedTime(context: Context, prayer: Prayer, hour: Int, minute: Int) {

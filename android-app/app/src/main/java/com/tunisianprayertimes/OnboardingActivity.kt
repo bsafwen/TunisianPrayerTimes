@@ -70,6 +70,11 @@ class OnboardingActivity : AppCompatActivity() {
         }
         if (step == 3) {
             updatePermissionButtons()
+        } else {
+            // Restore full opacity/enabled state for non-permission steps
+            val btnNext = findViewById<MaterialButton>(R.id.btnNext)
+            btnNext.isEnabled = true
+            btnNext.alpha = 1f
         }
     }
 
@@ -109,6 +114,14 @@ class OnboardingActivity : AppCompatActivity() {
             btnAlarm.isEnabled = true
             btnAlarm.setBackgroundColor(ContextCompat.getColor(this, R.color.green_primary))
         }
+
+        updateNextButtonForPermissions(hasDnd && hasAlarm)
+    }
+
+    private fun updateNextButtonForPermissions(allGranted: Boolean) {
+        val btnNext = findViewById<MaterialButton>(R.id.btnNext)
+        btnNext.isEnabled = allGranted
+        btnNext.alpha = if (allGranted) 1f else 0.4f
     }
 
     private fun hasExactAlarmPermission(): Boolean {
@@ -154,12 +167,7 @@ class OnboardingActivity : AppCompatActivity() {
         val ripple = findViewById<View>(R.id.tapRipple) ?: return
         val rowBefore = findViewById<View>(R.id.rowBefore) ?: return
         val rowAfter = findViewById<View>(R.id.rowAfter) ?: return
-        val step3Desc = findViewById<TextView>(R.id.step3Desc) ?: return
 
-        demoLabel.text = getString(R.string.label_duration)
-        demoLabel.setTextColor(ContextCompat.getColor(this, R.color.gold))
-        demoLabel.scaleX = 1f
-        demoLabel.scaleY = 1f
         ripple.alpha = 0f
         ripple.scaleX = 1f
         ripple.scaleY = 1f
@@ -167,7 +175,6 @@ class OnboardingActivity : AppCompatActivity() {
         rowBefore.alpha = 1f
         rowAfter.alpha = 0f
         rowAfter.visibility = View.INVISIBLE
-        step3Desc.text = getString(R.string.onboarding_step3_desc)
     }
 
     private fun animateDemoTap() {
@@ -175,7 +182,6 @@ class OnboardingActivity : AppCompatActivity() {
         val ripple = findViewById<View>(R.id.tapRipple) ?: return
         val rowBefore = findViewById<View>(R.id.rowBefore) ?: return
         val rowAfter = findViewById<View>(R.id.rowAfter) ?: return
-        val step3Desc = findViewById<TextView>(R.id.step3Desc) ?: return
 
         // Create circular ripple drawable
         val goldColor = ContextCompat.getColor(this, R.color.gold)
@@ -202,25 +208,11 @@ class OnboardingActivity : AppCompatActivity() {
                 .withEndAction {
                     ripple.visibility = View.INVISIBLE
 
-                    // Change the label text from "د" to "حتى"
-                    demoLabel.setTextColor(ContextCompat.getColor(this, R.color.green_primary))
-                    demoLabel.text = getString(R.string.label_fixed_time)
-
-                    // Brief scale pop on the new label
-                    demoLabel.scaleX = 0.8f
-                    demoLabel.scaleY = 0.8f
-                    demoLabel.animate()
-                        .scaleX(1f).scaleY(1f)
-                        .setDuration(200)
-                        .setInterpolator(AccelerateDecelerateInterpolator())
-                        .start()
-
                     // Crossfade from duration row to fixed time row
                     handler.postDelayed({
                         rowBefore.animate().alpha(0f).setDuration(300).start()
                         rowAfter.visibility = View.VISIBLE
                         rowAfter.animate().alpha(1f).setDuration(300).start()
-                        step3Desc.text = getString(R.string.onboarding_step3_after)
                     }, 500)
                 }
                 .start()

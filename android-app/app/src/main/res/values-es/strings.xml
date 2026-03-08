@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Horarios de Oración Túnez</string>
     <string name="subtitle">Horarios de oración en Túnez</string>
+    <string name="source">Fuente: Instituto Nacional de Meteorología</string>
     <string name="status_normal">🔔 El teléfono está en modo normal</string>
     <string name="status_silent">🔇 El teléfono está en modo silencioso</string>
     <string name="status_no_permission">⚠️ Se requiere permiso de No molestar</string>
