@@ -88,7 +88,7 @@
                 android:lineSpacingExtra="6dp" />
         </LinearLayout>
 
-        <!-- Step 3: Tap "د" to switch to fixed time -->
+        <!-- Step 3: Tap "د" to switch to fixed time (animated demo) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -99,20 +99,159 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🔄"
-                android:textSize="64sp"
-                android:layout_marginBottom="24dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/onboarding_step3_title"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/green_primary_dark"
                 android:layout_marginBottom="24dp" />
 
+            <!-- Animated demo card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="16dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/gold_light"
+                app:strokeWidth="1dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <!-- Before state: duration mode "60 د" -->
+                    <LinearLayout
+                        android:id="@+id/rowBefore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text="@string/prayer_fajr"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prayer_name" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="05:15"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_dark"
+                            android:textAlignment="center" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="56dp"
+                                android:layout_height="36dp"
+                                android:text="60"
+                                android:textSize="14sp"
+                                android:textColor="@color/text_dark"
+                                android:textAlignment="center"
+                                android:gravity="center"
+                                android:background="@drawable/input_islamic"
+                                android:padding="4dp" />
+
+                            <TextView
+                                android:id="@+id/demoLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="@string/label_duration"
+                                android:textSize="12sp"
+                                android:textColor="@color/gold"
+                                android:textStyle="bold"
+                                android:padding="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- After state: fixed time mode "06:15 حتى" -->
+                    <LinearLayout
+                        android:id="@+id/rowAfter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:alpha="0"
+                        android:visibility="invisible">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text="@string/prayer_fajr"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prayer_name" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="05:15"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_dark"
+                            android:textAlignment="center" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="64dp"
+                                android:layout_height="36dp"
+                                android:text="06:15"
+                                android:textSize="14sp"
+                                android:textColor="@color/green_primary"
+                                android:textAlignment="center"
+                                android:gravity="center"
+                                android:background="@drawable/input_islamic"
+                                android:textStyle="bold"
+                                android:padding="4dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="@string/label_fixed_time"
+                                android:textSize="12sp"
+                                android:textColor="@color/green_primary"
+                                android:textStyle="bold"
+                                android:padding="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Tap finger indicator -->
             <TextView
+                android:id="@+id/tapFinger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👆"
+                android:textSize="32sp"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:id="@+id/step3Desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/onboarding_step3_desc"
