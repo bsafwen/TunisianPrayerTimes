@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مُقرِئ قالون</string>
+    <string name="loading_model">جارٍ تحميل نموذج التعرف…</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="surah">السورة</string>
+    <string name="ayah">الآية</string>
+    <string name="tap_to_record">اضغط للتلاوة</string>
+    <string name="tap_to_stop">اضغط للإيقاف</string>
+    <string name="transcribing">جارٍ التعرف…</string>
+    <string name="accuracy">الدقة</string>
+    <string name="correct">صحيح</string>
+    <string name="wrong">خطأ</string>
+    <string name="missing">ناقص</string>
+    <string name="your_recitation">تلاوتك:</string>
+    <string name="auto_detect">كشف الآية تلقائيًا</string>
+    <string name="tab_practice">تدريب</string>
+    <string name="tab_contribute">مساهمة</string>
+    <string name="contribute_title">ساهم بصوتك</string>
+    <string name="contribute_instructions">اقرأ الآية أدناه برواية قالون عن نافع. تسجيلك يساعد في تحسين نموذج التعرف للجميع.</string>
+    <string name="tap_to_contribute">اضغط للتسجيل</string>
+    <string name="uploading">جارٍ الرفع…</string>
+    <string name="upload_success">تم الرفع ✓</string>
+    <string name="contributions_count">%d تسجيل في هذه الجلسة</string>
+</resources>

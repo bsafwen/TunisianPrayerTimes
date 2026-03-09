@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qaloon Reciter</string>
+    <string name="loading_model">Loading recognition model…</string>
+    <string name="retry">Retry</string>
+    <string name="surah">Surah</string>
+    <string name="ayah">Ayah</string>
+    <string name="tap_to_record">Tap to recite</string>
+    <string name="tap_to_stop">Tap to stop</string>
+    <string name="transcribing">Recognizing…</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="correct">Correct</string>
+    <string name="wrong">Wrong</string>
+    <string name="missing">Missing</string>
+    <string name="your_recitation">Your recitation:</string>
+    <string name="auto_detect">Auto-detect ayah</string>
+    <string name="tab_practice">Practice</string>
+    <string name="tab_contribute">Contribute</string>
+    <string name="contribute_title">Contribute Your Voice</string>
+    <string name="contribute_instructions">Read the ayah below in Qaloon recitation. Your recording helps improve the recognition model for everyone.</string>
+    <string name="tap_to_contribute">Tap to record</string>
+    <string name="uploading">Uploading…</string>
+    <string name="upload_success">Uploaded ✓</string>
+    <string name="contributions_count">%d recordings this session</string>
+</resources>

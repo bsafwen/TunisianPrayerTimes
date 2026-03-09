@@ -1,9 +1,13 @@
 /**
- * Cloudflare Worker — Mawaqit.net CORS proxy
+ * Cloudflare Worker — Mawaqit.net CORS proxy + Qaloon voice contribution API
  *
  * Routes
  *   GET  /api/configure        ?mosqueId=xxx  + X-Auth-Cookies header → HTML string
  *   POST /api/configure        ?mosqueId=xxx  + X-Auth-Cookies header + URLEncoded body → { ok }
+ *   POST /api/contribute       multipart: audio (WAV) + surah + ayah → stores in R2
+ *   GET  /api/contribute/stats → { total, byReciter }
+ *   GET  /api/contribute/list  → paginated list of all contribution keys + metadata
+ *   GET  /api/contribute/download?key=... → stream a single WAV from R2
  *
  * The browser (GitHub Pages) calls these endpoints; the Worker forwards
  * the requests server-side to mawaqit.net, so CORS is never an issue.
@@ -31,7 +35,8 @@ function corsHeaders(origin) {
   return {
     "Access-Control-Allow-Origin": allowed,
     "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type,X-Auth-Cookies",
+    "Access-Control-Allow-Headers":
+      "Content-Type,X-Auth-Cookies,X-Contributor-Id",
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",
   };
@@ -305,9 +310,150 @@ async function handlePostConfigure(req) {
   );
 }
 
+// ── POST /api/contribute ──────────────────────────────────────────────────────
+// Receives voice recording + metadata from the Qaloon app, stores in R2.
+// Expects multipart/form-data with: audio (WAV blob), surah, ayah, text
+const MAX_AUDIO_BYTES = 5 * 1024 * 1024; // 5 MB max per recording
+
+async function handleContribute(req, env) {
+  if (!env.CONTRIBUTIONS) {
+    return Response.json({ error: "Storage not configured" }, { status: 503 });
+  }
+
+  let formData;
+  try {
+    formData = await req.formData();
+  } catch {
+    return Response.json(
+      { error: "Expected multipart/form-data" },
+      { status: 400 },
+    );
+  }
+
+  const audio = formData.get("audio");
+  const surah = parseInt(formData.get("surah"), 10);
+  const ayah = parseInt(formData.get("ayah"), 10);
+  const text = formData.get("text") || "";
+  const contributorId = req.headers.get("X-Contributor-Id") || "anonymous";
+
+  // Validate
+  if (!audio || !(audio instanceof File)) {
+    return Response.json({ error: "Missing audio file" }, { status: 400 });
+  }
+  if (audio.size > MAX_AUDIO_BYTES) {
+    return Response.json(
+      { error: "Audio too large (max 5MB)" },
+      { status: 413 },
+    );
+  }
+  if (!surah || surah < 1 || surah > 114) {
+    return Response.json({ error: "Invalid surah (1-114)" }, { status: 400 });
+  }
+  if (!ayah || ayah < 1 || ayah > 286) {
+    return Response.json({ error: "Invalid ayah" }, { status: 400 });
+  }
+
+  // Generate key: contributor/SSS/SSSAAA_timestamp.wav
+  const ts = Date.now();
+  const key = `${contributorId}/${String(surah).padStart(3, "0")}/${String(surah).padStart(3, "0")}${String(ayah).padStart(3, "0")}_${ts}.wav`;
+
+  // Store audio in R2 with metadata
+  const audioBytes = await audio.arrayBuffer();
+  await env.CONTRIBUTIONS.put(key, audioBytes, {
+    httpMetadata: { contentType: "audio/wav" },
+    customMetadata: {
+      surah: String(surah),
+      ayah: String(ayah),
+      text: text.slice(0, 2000),
+      contributor: contributorId,
+      timestamp: new Date(ts).toISOString(),
+    },
+  });
+
+  return Response.json({ ok: true, key });
+}
+
+// ── GET /api/contribute/stats ────────────────────────────────────────────────
+async function handleContributeStats(env) {
+  if (!env.CONTRIBUTIONS) {
+    return Response.json({ error: "Storage not configured" }, { status: 503 });
+  }
+
+  // List all objects (up to 1000) to build stats
+  const listed = await env.CONTRIBUTIONS.list({ limit: 1000 });
+  const contributors = new Set();
+  let total = 0;
+
+  for (const obj of listed.objects) {
+    total++;
+    const parts = obj.key.split("/");
+    if (parts.length >= 1) contributors.add(parts[0]);
+  }
+
+  return Response.json({
+    totalRecordings: total,
+    contributors: contributors.size,
+    truncated: listed.truncated,
+  });
+}
+
+// ── GET /api/contribute/list ──────────────────────────────────────────────────
+async function handleContributeList(env, url) {
+  if (!env.CONTRIBUTIONS) {
+    return Response.json({ error: "Storage not configured" }, { status: 503 });
+  }
+
+  const cursor = url.searchParams.get("cursor") || undefined;
+  const limit = Math.min(
+    parseInt(url.searchParams.get("limit") || "1000", 10),
+    1000,
+  );
+
+  const listed = await env.CONTRIBUTIONS.list({ limit, cursor });
+
+  const items = listed.objects.map((obj) => ({
+    key: obj.key,
+    size: obj.size,
+    uploaded: obj.uploaded?.toISOString(),
+    surah: obj.customMetadata?.surah,
+    ayah: obj.customMetadata?.ayah,
+    text: obj.customMetadata?.text,
+    contributor: obj.customMetadata?.contributor,
+  }));
+
+  return Response.json({
+    items,
+    cursor: listed.truncated ? listed.cursor : null,
+  });
+}
+
+// ── GET /api/contribute/download?key=... ─────────────────────────────────────
+async function handleContributeDownload(env, url) {
+  if (!env.CONTRIBUTIONS) {
+    return Response.json({ error: "Storage not configured" }, { status: 503 });
+  }
+
+  const key = url.searchParams.get("key");
+  if (!key) {
+    return Response.json({ error: "Missing ?key= parameter" }, { status: 400 });
+  }
+
+  const obj = await env.CONTRIBUTIONS.get(key);
+  if (!obj) {
+    return Response.json({ error: "Not found" }, { status: 404 });
+  }
+
+  return new Response(obj.body, {
+    headers: {
+      "Content-Type": obj.httpMetadata?.contentType || "audio/wav",
+      "Content-Length": String(obj.size),
+    },
+  });
+}
+
 // ── Main export ───────────────────────────────────────────────────────────────
 export default {
-  async fetch(req, _env, _ctx) {
+  async fetch(req, env, _ctx) {
     const origin = req.headers.get("Origin") || "";
     const cors = corsHeaders(origin);
 
@@ -326,6 +472,23 @@ export default {
         response = await handlePostConfigure(req);
       } else if (url.pathname === "/api/refresh" && req.method === "POST") {
         response = await handleRefresh(req);
+      } else if (url.pathname === "/api/contribute" && req.method === "POST") {
+        response = await handleContribute(req, env);
+      } else if (
+        url.pathname === "/api/contribute/stats" &&
+        req.method === "GET"
+      ) {
+        response = await handleContributeStats(env);
+      } else if (
+        url.pathname === "/api/contribute/list" &&
+        req.method === "GET"
+      ) {
+        response = await handleContributeList(env, url);
+      } else if (
+        url.pathname === "/api/contribute/download" &&
+        req.method === "GET"
+      ) {
+        response = await handleContributeDownload(env, url);
       } else {
         response = Response.json({ error: "Not found" }, { status: 404 });
       }

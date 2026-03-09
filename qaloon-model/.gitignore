@@ -1,0 +1,24 @@
+# Qaloon Model - Data Collection
+
+# Raw audio downloads (large, don't commit)
+data/raw/
+data/processed/
+
+# Manifest files (regenerable)
+data/manifest_*.jsonl
+data/manifest_summary.json
+
+# Logs
+data/**/normalize_log.json
+data/**/download_summary.json
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Secrets (contains RunPod API key)
+RUNPOD_OPS.md

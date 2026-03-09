@@ -6,5 +6,10 @@ compatibility_date = "2024-01-01"
 # After deploying, remember to add your GitHub Pages origin
 # to the ALLOWED_ORIGINS array in index.js.
 
+# R2 bucket for Qaloon voice contributions
+[[r2_buckets]]
+binding = "CONTRIBUTIONS"
+bucket_name = "qaloon-contributions"
+
 [build]
 # No build step needed — pure ES module Worker.
