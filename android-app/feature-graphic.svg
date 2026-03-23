@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500" viewBox="0 0 1024 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00332D"/>
+      <stop offset="100%" stop-color="#006B5A"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1024" height="500" fill="url(#bg)"/>
+
+  <!-- Decorative pattern - subtle geometric lines -->
+  <g opacity="0.08" stroke="#D4AF37" stroke-width="0.5" fill="none">
+    <circle cx="512" cy="250" r="180"/>
+    <circle cx="512" cy="250" r="220"/>
+    <circle cx="512" cy="250" r="140"/>
+  </g>
+
+  <!-- Mosque icon (centered, scaled up from app icon) -->
+  <g transform="translate(362, 80) scale(2.8)">
+    <!-- Dome -->
+    <path fill="#FFFFFF" d="M40,72 Q40,38 54,30 Q68,38 68,72 Z"/>
+    <!-- Crescent -->
+    <path fill="#D4AF37" d="M54,20 A8,8 0 1,0 54,36 A6,6 0 1,1 54,20Z"/>
+    <!-- Star -->
+    <path fill="#D4AF37" d="M66,24 L67.5,28 L72,28 L68.5,30.5 L69.5,34.5 L66,32 L62.5,34.5 L63.5,30.5 L60,28 L64.5,28 Z"/>
+    <!-- Left minaret -->
+    <path fill="#FFFFFF" fill-opacity="0.85" d="M30,72 L30,48 Q30,42 33,42 Q36,42 36,48 L36,72 Z"/>
+    <!-- Right minaret -->
+    <path fill="#FFFFFF" fill-opacity="0.85" d="M72,72 L72,48 Q72,42 75,42 Q78,42 78,48 L78,72 Z"/>
+  </g>
+
+  <!-- App name in Arabic -->
+  <text x="512" y="410" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="42" fill="#FFFFFF" direction="rtl">مواقيت الصلاة - تونس</text>
+
+  <!-- Tagline -->
+  <text x="512" y="455" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#D4AF37">Tunisian Prayer Times</text>
+</svg>
