@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <!-- Background -->
+  <rect width="108" height="108" fill="#004D40"/>
+  <!-- Dome -->
+  <path fill="#FFFFFF" d="M40,72 Q40,38 54,30 Q68,38 68,72 Z"/>
+  <!-- Crescent -->
+  <path fill="#D4AF37" d="M54,20 A8,8 0 1,0 54,36 A6,6 0 1,1 54,20Z"/>
+  <!-- Star -->
+  <path fill="#D4AF37" d="M66,24 L67.5,28 L72,28 L68.5,30.5 L69.5,34.5 L66,32 L62.5,34.5 L63.5,30.5 L60,28 L64.5,28 Z"/>
+  <!-- Left minaret -->
+  <path fill="#FFFFFF" fill-opacity="0.85" d="M30,72 L30,48 Q30,42 33,42 Q36,42 36,48 L36,72 Z"/>
+  <!-- Right minaret -->
+  <path fill="#FFFFFF" fill-opacity="0.85" d="M72,72 L72,48 Q72,42 75,42 Q78,42 78,48 L78,72 Z"/>
+</svg>
