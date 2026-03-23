@@ -20,8 +20,8 @@ android {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
         targetSdk = 36
-        versionCode = 22
-        versionName = "2.11"
+        versionCode = 24
+        versionName = "2.13"
         resourceConfigurations += "ar"
     }
 
@@ -30,7 +30,8 @@ android {
             signingConfig = signingConfigs.getByName("release")
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

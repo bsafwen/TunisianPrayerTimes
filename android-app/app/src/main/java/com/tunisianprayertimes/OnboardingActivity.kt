@@ -93,11 +93,6 @@ class OnboardingActivity : AppCompatActivity() {
                 startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
             }
         }
-        findViewById<MaterialButton>(R.id.btnGrantInstall).setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, android.net.Uri.parse("package:$packageName")))
-            }
-        }
         findViewById<MaterialButton>(R.id.btnGrantBattery).setOnClickListener {
             val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
             intent.data = Uri.parse("package:$packageName")
@@ -131,18 +126,6 @@ class OnboardingActivity : AppCompatActivity() {
             btnAlarm.setBackgroundColor(ContextCompat.getColor(this, R.color.green_primary))
         }
 
-        val btnInstall = findViewById<MaterialButton>(R.id.btnGrantInstall)
-        val hasInstall = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) packageManager.canRequestPackageInstalls() else true
-        if (hasInstall) {
-            btnInstall.text = getString(R.string.onboarding_perm_granted)
-            btnInstall.isEnabled = false
-            btnInstall.setBackgroundColor(ContextCompat.getColor(this, R.color.text_muted))
-        } else {
-            btnInstall.text = getString(R.string.onboarding_perm_grant)
-            btnInstall.isEnabled = true
-            btnInstall.setBackgroundColor(ContextCompat.getColor(this, R.color.green_primary))
-        }
-
         val btnBattery = findViewById<MaterialButton>(R.id.btnGrantBattery)
         val hasBattery = isIgnoringBatteryOptimizations()
         if (hasBattery) {
@@ -155,7 +138,7 @@ class OnboardingActivity : AppCompatActivity() {
             btnBattery.setBackgroundColor(ContextCompat.getColor(this, R.color.green_primary))
         }
 
-        updateNextButtonForPermissions(hasDnd && hasAlarm && hasInstall && hasBattery)
+        updateNextButtonForPermissions(hasDnd && hasAlarm && hasBattery)
     }
 
     private fun updateNextButtonForPermissions(allGranted: Boolean) {
