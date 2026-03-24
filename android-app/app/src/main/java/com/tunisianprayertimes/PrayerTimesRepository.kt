@@ -3,6 +3,7 @@ package com.tunisianprayertimes
 import android.content.Context
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.util.Locale
 
 object PrayerTimesRepository {
 
@@ -11,7 +12,7 @@ object PrayerTimesRepository {
      * CSV format: Day,Fajr,Shuruk,Duhr,Asr,Maghrib,Isha
      */
     fun loadPrayerTimes(context: Context, delegationId: Int, year: Int, month: Int): List<DayPrayerTimes> {
-        val path = "csv/$delegationId/$year/${String.format("%02d", month)}.csv"
+        val path = "csv/$delegationId/$year/${String.format(Locale.US, "%02d", month)}.csv"
         val results = mutableListOf<DayPrayerTimes>()
 
         context.assets.open(path).use { stream ->

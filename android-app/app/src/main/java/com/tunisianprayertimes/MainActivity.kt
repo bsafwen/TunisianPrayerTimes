@@ -13,6 +13,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import java.util.Locale
 import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -184,7 +185,7 @@ class MainActivity : AppCompatActivity() {
             // Show today's prayer time
             val prayerTime = todayTimes?.allPrayers()?.find { it.prayer == prayer }
             tvTime.text = if (prayerTime != null) {
-                String.format("%02d:%02d", prayerTime.hour, prayerTime.minute)
+                String.format(Locale.US, "%02d:%02d", prayerTime.hour, prayerTime.minute)
             } else {
                 "--:--"
             }
@@ -204,7 +205,7 @@ class MainActivity : AppCompatActivity() {
                     delayFixH = 12; delayFixM = 0
                 }
             }
-            tvDelayFixedTime.text = String.format("%02d:%02d", delayFixH, delayFixM)
+            tvDelayFixedTime.text = String.format(Locale.US, "%02d:%02d", delayFixH, delayFixM)
 
             val delayMode = PrefsManager.getDelayMode(this, prayer)
             applyDelayRowMode(delayMode, tvDelayLabel, etDelay, tvDelayFixedTime)
@@ -227,7 +228,7 @@ class MainActivity : AppCompatActivity() {
                     .setTitleText(getString(R.string.pick_delay_time))
                     .build()
                 picker.addOnPositiveButtonClickListener {
-                    tvDelayFixedTime.text = String.format("%02d:%02d", picker.hour, picker.minute)
+                    tvDelayFixedTime.text = String.format(Locale.US, "%02d:%02d", picker.hour, picker.minute)
                     PrefsManager.setDelayFixedTime(this, prayer, picker.hour, picker.minute)
                     rescheduleIfEnabled()
                 }
@@ -261,7 +262,7 @@ class MainActivity : AppCompatActivity() {
                     fixedH = 12; fixedM = 0
                 }
             }
-            tvFixedTime.text = String.format("%02d:%02d", fixedH, fixedM)
+            tvFixedTime.text = String.format(Locale.US, "%02d:%02d", fixedH, fixedM)
 
             // Set initial mode
             val mode = PrefsManager.getSilenceMode(this, prayer)
@@ -287,7 +288,7 @@ class MainActivity : AppCompatActivity() {
                     .setTitleText(getString(R.string.pick_end_time))
                     .build()
                 picker.addOnPositiveButtonClickListener {
-                    tvFixedTime.text = String.format("%02d:%02d", picker.hour, picker.minute)
+                    tvFixedTime.text = String.format(Locale.US, "%02d:%02d", picker.hour, picker.minute)
                     PrefsManager.setFixedTime(this, prayer, picker.hour, picker.minute)
                     rescheduleIfEnabled()
                 }

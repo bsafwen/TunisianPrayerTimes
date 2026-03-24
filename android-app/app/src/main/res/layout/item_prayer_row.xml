@@ -33,6 +33,7 @@
         android:textColor="@color/text_dark"
         android:textAlignment="center"
         android:singleLine="true"
+        android:textLocale="en"
         app:autoSizeTextType="uniform"
         app:autoSizeMinTextSize="10sp"
         app:autoSizeMaxTextSize="14sp" />
@@ -59,7 +60,9 @@
             android:background="@drawable/input_islamic"
             android:padding="4dp"
             android:maxLength="3"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:textLocale="en"
+            android:digits="0123456789" />
 
         <!-- Delay fixed time display (visible in FIXED_TIME mode) -->
         <TextView
@@ -74,6 +77,7 @@
             android:background="@drawable/input_islamic"
             android:padding="2dp"
             android:maxLines="1"
+            android:textLocale="en"
             app:autoSizeTextType="uniform"
             app:autoSizeMinTextSize="7sp"
             app:autoSizeMaxTextSize="13sp"
@@ -120,7 +124,9 @@
             android:background="@drawable/input_islamic"
             android:padding="4dp"
             android:maxLength="3"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:textLocale="en"
+            android:digits="0123456789" />
 
         <!-- Fixed time display (visible in FIXED_TIME mode) -->
         <TextView
@@ -135,6 +141,7 @@
             android:background="@drawable/input_islamic"
             android:padding="2dp"
             android:maxLines="1"
+            android:textLocale="en"
             app:autoSizeTextType="uniform"
             app:autoSizeMinTextSize="7sp"
             app:autoSizeMaxTextSize="13sp"
