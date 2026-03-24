@@ -14,3 +14,5 @@ android-app/app/build/
 android-app/local.properties
 *.apk
 java_pid53290.hprof
+*.aab
+*.apk

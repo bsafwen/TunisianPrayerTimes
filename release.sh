@@ -72,6 +72,7 @@ echo "✓ Copied artifacts: $AAB_OUT, $APK_OUT"
 
 # ── Git: stage, commit, tag ──────────────────
 git add -A
+git reset HEAD -- "$AAB_OUT" "$APK_OUT"
 git commit -m "${TAG}: ${RELEASE_MSG}"
 git tag -a "$TAG" -m "${TAG}: ${RELEASE_MSG}"
 echo "✓ Committed and tagged $TAG"
