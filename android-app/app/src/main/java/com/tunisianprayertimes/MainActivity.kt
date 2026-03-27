@@ -228,6 +228,19 @@ class MainActivity : AppCompatActivity() {
                     .setTitleText(getString(R.string.pick_delay_time))
                     .build()
                 picker.addOnPositiveButtonClickListener {
+                    if (prayerTime != null && (picker.hour < prayerTime.hour || (picker.hour == prayerTime.hour && picker.minute < prayerTime.minute))) {
+                        Toast.makeText(this, getString(R.string.error_start_before_athan), Toast.LENGTH_SHORT).show()
+                        return@addOnPositiveButtonClickListener
+                    }
+                    val endMode = PrefsManager.getSilenceMode(this, prayer)
+                    if (endMode == SilenceMode.FIXED_TIME) {
+                        val endH = PrefsManager.getFixedTimeHour(this, prayer)
+                        val endM = PrefsManager.getFixedTimeMinute(this, prayer)
+                        if (endH >= 0 && endM >= 0 && (picker.hour > endH || (picker.hour == endH && picker.minute >= endM))) {
+                            Toast.makeText(this, getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
+                            return@addOnPositiveButtonClickListener
+                        }
+                    }
                     tvDelayFixedTime.text = String.format(Locale.US, "%02d:%02d", picker.hour, picker.minute)
                     PrefsManager.setDelayFixedTime(this, prayer, picker.hour, picker.minute)
                     rescheduleIfEnabled()
@@ -288,6 +301,19 @@ class MainActivity : AppCompatActivity() {
                     .setTitleText(getString(R.string.pick_end_time))
                     .build()
                 picker.addOnPositiveButtonClickListener {
+                    if (prayerTime != null && (picker.hour < prayerTime.hour || (picker.hour == prayerTime.hour && picker.minute < prayerTime.minute))) {
+                        Toast.makeText(this, getString(R.string.error_end_before_athan), Toast.LENGTH_SHORT).show()
+                        return@addOnPositiveButtonClickListener
+                    }
+                    val delayMode = PrefsManager.getDelayMode(this, prayer)
+                    if (delayMode == DelayMode.FIXED_TIME) {
+                        val startH = PrefsManager.getDelayFixedHour(this, prayer)
+                        val startM = PrefsManager.getDelayFixedMinute(this, prayer)
+                        if (startH >= 0 && startM >= 0 && (picker.hour < startH || (picker.hour == startH && picker.minute <= startM))) {
+                            Toast.makeText(this, getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
+                            return@addOnPositiveButtonClickListener
+                        }
+                    }
                     tvFixedTime.text = String.format(Locale.US, "%02d:%02d", picker.hour, picker.minute)
                     PrefsManager.setFixedTime(this, prayer, picker.hour, picker.minute)
                     rescheduleIfEnabled()
