@@ -586,8 +586,14 @@ private fun DelegationPickerSheet(
                     .let { list ->
                         if (terms.isEmpty()) list
                         else list.sortedByDescending { d ->
-                            val text = d.searchableText()
-                            terms.count { term -> text.contains(term) }
+                            val names = listOf(d.nomFr.lowercase(), d.nomAr, d.nomEn.lowercase())
+                            val query = terms.joinToString(" ")
+                            when {
+                                names.any { it == query } -> 4
+                                names.any { it.startsWith(query) } -> 3
+                                names.any { n -> terms.any { n.contains(it) } } -> 2
+                                else -> 0
+                            }
                         }
                     }
                 if (filtered.isNotEmpty()) {
@@ -605,6 +611,11 @@ private fun DelegationPickerSheet(
     LaunchedEffect(Unit) {
         val idx = items.indexOfFirst { it is PickerItem.DelegationRow && it.isSelected }
         if (idx > 0) listState.scrollToItem((idx - 1).coerceAtLeast(0))
+    }
+
+    // Scroll to top when search text changes
+    LaunchedEffect(searchText) {
+        if (searchText.isNotEmpty()) listState.scrollToItem(0)
     }
 
     // Auto-focus search field
