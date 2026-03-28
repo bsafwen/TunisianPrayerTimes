@@ -548,6 +548,22 @@ private fun LocationPickerCard(
     }
 }
 
+/**
+ * Scores a delegation against search terms for ranking.
+ * 4 = exact name match, 3 = name starts with query, 2 = name contains a term, 0 = no name match.
+ */
+internal fun delegationSearchScore(delegation: Delegation, terms: List<String>): Int {
+    if (terms.isEmpty()) return 0
+    val query = terms.joinToString(" ")
+    val names = listOf(delegation.nomFr.lowercase(), delegation.nomAr, delegation.nomEn.lowercase())
+    return when {
+        names.any { it == query } -> 4
+        names.any { it.startsWith(query) } -> 3
+        names.any { n -> terms.any { n.contains(it) } } -> 2
+        else -> 0
+    }
+}
+
 /** Flat list item: either a gouvernorat header or a delegation row. */
 private sealed class PickerItem {
     data class Header(val govName: String) : PickerItem()
@@ -585,16 +601,7 @@ private fun DelegationPickerSheet(
                     }
                     .let { list ->
                         if (terms.isEmpty()) list
-                        else list.sortedByDescending { d ->
-                            val names = listOf(d.nomFr.lowercase(), d.nomAr, d.nomEn.lowercase())
-                            val query = terms.joinToString(" ")
-                            when {
-                                names.any { it == query } -> 4
-                                names.any { it.startsWith(query) } -> 3
-                                names.any { n -> terms.any { n.contains(it) } } -> 2
-                                else -> 0
-                            }
-                        }
+                        else list.sortedByDescending { delegationSearchScore(it, terms) }
                     }
                 if (filtered.isNotEmpty()) {
                     result.add(PickerItem.Header(gov.nomAr))
