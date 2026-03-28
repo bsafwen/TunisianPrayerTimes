@@ -583,6 +583,13 @@ private fun DelegationPickerSheet(
                         else if (govMatches) true
                         else terms.all { term -> d.searchableText().contains(term) }
                     }
+                    .let { list ->
+                        if (terms.isEmpty()) list
+                        else list.sortedByDescending { d ->
+                            val text = d.searchableText()
+                            terms.count { term -> text.contains(term) }
+                        }
+                    }
                 if (filtered.isNotEmpty()) {
                     result.add(PickerItem.Header(gov.nomAr))
                     filtered.forEach { d ->
