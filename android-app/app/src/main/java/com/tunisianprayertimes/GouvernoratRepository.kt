@@ -81,7 +81,12 @@ object GouvernoratRepository {
 
     fun loadAllDelegations(context: Context): List<Delegation> {
         cachedDelegations?.let { return it }
-        val all = loadAll(context).flatMap { it.delegations }
+        val now = java.util.Calendar.getInstance()
+        val year = now.get(java.util.Calendar.YEAR)
+        val month = now.get(java.util.Calendar.MONTH) + 1
+        val all = loadAll(context).flatMap { it.delegations }.filter { delegation ->
+            PrayerTimesRepository.hasPrayerData(context, delegation.id, year, month)
+        }
         cachedDelegations = all
         return all
     }

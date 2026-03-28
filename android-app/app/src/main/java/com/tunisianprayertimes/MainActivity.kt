@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         // Sync ringer state with prayer schedule on every app open (only if permissions are granted)
         if (PrefsManager.isEnabled(this) && notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission()) {
             SilenceScheduler.scheduleAll(this)
+            SilenceVerifyWorker.enqueue(this)
         }
 
         // Set up the permission banner
@@ -77,9 +78,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // After returning from settings, activate scheduling if all permissions granted
-        if (PrefsManager.isEnabled(this) && notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission()) {
+        // Re-check permissions on every resume (handles revocation mid-session)
+        val hasAllPermissions = notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission()
+        if (PrefsManager.isEnabled(this) && hasAllPermissions) {
             SilenceScheduler.scheduleAll(this)
+            SilenceVerifyWorker.enqueue(this)
+        } else if (PrefsManager.isEnabled(this) && !hasAllPermissions) {
+            // Permissions were revoked — cancel pending alarms
+            SilenceScheduler.cancelAll(this)
+            SilenceVerifyWorker.cancel(this)
         }
         updatePermissionBanner()
         updateUI()
@@ -94,6 +101,7 @@ class MainActivity : AppCompatActivity() {
                 val hasAlarm = hasExactAlarmPermission()
                 if (hasDnd && hasAlarm) {
                     SilenceScheduler.scheduleAll(this)
+                    SilenceVerifyWorker.enqueue(this)
                     Toast.makeText(this, getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
                 } else {
                     // Enable it but show the banner — scheduling will start once permissions are granted
@@ -102,6 +110,7 @@ class MainActivity : AppCompatActivity() {
                 updatePermissionBanner()
             } else {
                 SilenceScheduler.cancelAll(this)
+                SilenceVerifyWorker.cancel(this)
                 Toast.makeText(this, getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
                 updatePermissionBanner()
             }
