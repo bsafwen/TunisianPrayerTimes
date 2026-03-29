@@ -38,6 +38,10 @@
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>
     <string name="hint_search_delegation">ابحث عن معتمدية…</string>
+    <string name="label_change">تغيير</string>
+    <string name="gps_auto_detect">تحديد الموقع تلقائيًا 📍</string>
+    <string name="gps_locating">جاري تحديد الموقع…</string>
+    <string name="gps_unavailable">خدمة الموقع غير متاحة</string>
     <string name="prayer_fajr">الفجر</string>
     <string name="prayer_dhuhr">الظهر</string>
     <string name="prayer_asr">العصر</string>

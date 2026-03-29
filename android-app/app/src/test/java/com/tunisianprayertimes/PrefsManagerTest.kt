@@ -141,4 +141,28 @@ class PrefsManagerTest {
             .edit().putString("mode_FAJR", "INVALID_MODE").commit()
         assertEquals(SilenceMode.DURATION, PrefsManager.getSilenceMode(context, Prayer.FAJR))
     }
+
+    @Test
+    fun settingsSurviveDelegationChange() {
+        // Set delay and duration settings
+        PrefsManager.setDelayMinutes(context, Prayer.FAJR, 10)
+        PrefsManager.setDelayMode(context, Prayer.FAJR, DelayMode.FIXED_TIME)
+        PrefsManager.setDelayFixedTime(context, Prayer.FAJR, 5, 15)
+        PrefsManager.setAfterMinutes(context, Prayer.FAJR, 45)
+        PrefsManager.setSilenceMode(context, Prayer.FAJR, SilenceMode.FIXED_TIME)
+        PrefsManager.setFixedTime(context, Prayer.FAJR, 6, 30)
+
+        // Change delegation
+        PrefsManager.setDelegationId(context, 400)
+
+        // All settings should survive
+        assertEquals(10, PrefsManager.getDelayMinutes(context, Prayer.FAJR))
+        assertEquals(DelayMode.FIXED_TIME, PrefsManager.getDelayMode(context, Prayer.FAJR))
+        assertEquals(5, PrefsManager.getDelayFixedHour(context, Prayer.FAJR))
+        assertEquals(15, PrefsManager.getDelayFixedMinute(context, Prayer.FAJR))
+        assertEquals(45, PrefsManager.getAfterMinutes(context, Prayer.FAJR))
+        assertEquals(SilenceMode.FIXED_TIME, PrefsManager.getSilenceMode(context, Prayer.FAJR))
+        assertEquals(6, PrefsManager.getFixedTimeHour(context, Prayer.FAJR))
+        assertEquals(30, PrefsManager.getFixedTimeMinute(context, Prayer.FAJR))
+    }
 }
