@@ -13,6 +13,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
@@ -313,23 +314,28 @@ private fun DurationExplanationStep() {
 @Composable
 private fun DelayExplanationStep() {
     var showAfter by remember { mutableStateOf(false) }
-    val rippleScale = remember { Animatable(0.3f) }
-    val rippleAlpha = remember { Animatable(0f) }
-    val cardAlpha = remember { Animatable(1f) }
+    val tapScale = remember { Animatable(1f) }
+    val tapHighlight = remember { Animatable(0f) }
+    val shakeOffset = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
         showAfter = false
         delay(1400)
-        // Show ripple
-        rippleAlpha.snapTo(0.7f)
-        rippleScale.snapTo(0.3f)
-        rippleScale.animateTo(3f, tween(600, easing = FastOutSlowInEasing))
-        rippleAlpha.animateTo(0f, tween(600))
-        delay(300)
-        // Fade out, swap values, fade in
-        cardAlpha.animateTo(0f, tween(250))
+        // Simulate tap: press down
+        tapHighlight.animateTo(1f, tween(100))
+        tapScale.animateTo(0.85f, tween(100))
+        delay(150)
+        // Release
+        tapScale.animateTo(1f, spring(dampingRatio = 0.4f, stiffness = 300f))
+        tapHighlight.animateTo(0f, tween(200))
+        delay(200)
+        // Shake the value + swap at midpoint
+        shakeOffset.animateTo(20f, tween(50))
+        shakeOffset.animateTo(-15f, tween(50))
         showAfter = true
-        cardAlpha.animateTo(1f, tween(250))
+        shakeOffset.animateTo(10f, tween(50))
+        shakeOffset.animateTo(-5f, tween(50))
+        shakeOffset.animateTo(0f, tween(60))
     }
 
     Column(
@@ -350,20 +356,19 @@ private fun DelayExplanationStep() {
         )
         Spacer(Modifier.height(16.dp))
 
-        Box(modifier = Modifier.alpha(cardAlpha.value)) {
-            DemoPrayerRowCard(
-                delayValue = if (showAfter) "05:20" else "5",
-                delayLabel = stringResource(if (showAfter) R.string.label_delay_at else R.string.label_delay_minutes),
-                durationValue = "60",
-                durationLabel = stringResource(R.string.label_duration),
-                delayLabelColor = if (showAfter) GreenPrimary else Gold,
-                delayValueColor = GreenPrimary,
-                durationLabelColor = Gold,
-                showRippleOnDelay = !showAfter,
-                rippleScale = rippleScale.value,
-                rippleAlpha = rippleAlpha.value
-            )
-        }
+        DemoPrayerRowCard(
+            delayValue = if (showAfter) "05:20" else "5",
+            delayLabel = stringResource(if (showAfter) R.string.label_delay_at else R.string.label_delay_minutes),
+            durationValue = "60",
+            durationLabel = stringResource(R.string.label_duration),
+            delayLabelColor = if (showAfter) GreenPrimary else Gold,
+            delayValueColor = GreenPrimary,
+            durationLabelColor = Gold,
+            tapTargetDelay = true,
+            tapScale = tapScale.value,
+            tapHighlight = tapHighlight.value,
+            shakeOffset = shakeOffset.value
+        )
 
         Spacer(Modifier.height(16.dp))
         Text(
@@ -379,22 +384,28 @@ private fun DelayExplanationStep() {
 @Composable
 private fun FixedTimeSwitchStep() {
     var showAfter by remember { mutableStateOf(false) }
-    val rippleScale = remember { Animatable(0.3f) }
-    val rippleAlpha = remember { Animatable(0f) }
-    val cardAlpha = remember { Animatable(1f) }
+    val tapScale = remember { Animatable(1f) }
+    val tapHighlight = remember { Animatable(0f) }
+    val shakeOffset = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
         showAfter = false
         delay(1400)
-        rippleAlpha.snapTo(0.7f)
-        rippleScale.snapTo(0.3f)
-        rippleScale.animateTo(3f, tween(600, easing = FastOutSlowInEasing))
-        rippleAlpha.animateTo(0f, tween(600))
-        delay(300)
-        // Fade out, swap values, fade in
-        cardAlpha.animateTo(0f, tween(250))
+        // Simulate tap: press down
+        tapHighlight.animateTo(1f, tween(100))
+        tapScale.animateTo(0.85f, tween(100))
+        delay(150)
+        // Release
+        tapScale.animateTo(1f, spring(dampingRatio = 0.4f, stiffness = 300f))
+        tapHighlight.animateTo(0f, tween(200))
+        delay(200)
+        // Shake the value + swap at midpoint
+        shakeOffset.animateTo(20f, tween(50))
+        shakeOffset.animateTo(-15f, tween(50))
         showAfter = true
-        cardAlpha.animateTo(1f, tween(250))
+        shakeOffset.animateTo(10f, tween(50))
+        shakeOffset.animateTo(-5f, tween(50))
+        shakeOffset.animateTo(0f, tween(60))
     }
 
     Column(
@@ -415,20 +426,19 @@ private fun FixedTimeSwitchStep() {
         )
         Spacer(Modifier.height(16.dp))
 
-        Box(modifier = Modifier.alpha(cardAlpha.value)) {
-            DemoPrayerRowCard(
-                delayValue = "0",
-                delayLabel = stringResource(R.string.label_delay_minutes),
-                durationValue = if (showAfter) "06:15" else "60",
-                durationLabel = stringResource(if (showAfter) R.string.label_fixed_time else R.string.label_duration),
-                delayLabelColor = TextMuted,
-                durationLabelColor = if (showAfter) GreenPrimary else Gold,
-                durationValueColor = if (showAfter) GreenPrimary else TextDark,
-                showRippleOnDuration = !showAfter,
-                rippleScale = rippleScale.value,
-                rippleAlpha = rippleAlpha.value
-            )
-        }
+        DemoPrayerRowCard(
+            delayValue = "0",
+            delayLabel = stringResource(R.string.label_delay_minutes),
+            durationValue = if (showAfter) "06:15" else "60",
+            durationLabel = stringResource(if (showAfter) R.string.label_fixed_time else R.string.label_duration),
+            delayLabelColor = TextMuted,
+            durationLabelColor = if (showAfter) GreenPrimary else Gold,
+            durationValueColor = if (showAfter) GreenPrimary else TextDark,
+            tapTargetDuration = true,
+            tapScale = tapScale.value,
+            tapHighlight = tapHighlight.value,
+            shakeOffset = shakeOffset.value
+        )
 
         Spacer(Modifier.height(12.dp))
         Text(
@@ -612,10 +622,11 @@ private fun DemoPrayerRowCard(
     durationLabelColor: Color = Gold,
     delayValueColor: Color = TextDark,
     durationValueColor: Color = TextDark,
-    showRippleOnDelay: Boolean = false,
-    showRippleOnDuration: Boolean = false,
-    rippleScale: Float = 1f,
-    rippleAlpha: Float = 0f
+    tapTargetDelay: Boolean = false,
+    tapTargetDuration: Boolean = false,
+    tapScale: Float = 1f,
+    tapHighlight: Float = 0f,
+    shakeOffset: Float = 0f
 ) {
     Card(
         modifier = Modifier
@@ -654,23 +665,23 @@ private fun DemoPrayerRowCard(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                val delayShake = if (tapTargetDelay) shakeOffset else 0f
                 DemoInputBox(
                     text = delayValue,
                     textColor = delayValueColor,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
+                        .graphicsLayer { translationX = delayShake }
                 )
                 Box(modifier = Modifier.weight(0.8f)) {
+                    val bgAlpha = if (tapTargetDelay) tapHighlight * 0.3f else 0f
+                    val labelScale = if (tapTargetDelay) tapScale else 1f
                     Box(
                         modifier = Modifier
-                            .size(36.dp)
-                            .graphicsLayer {
-                                scaleX = rippleScale
-                                scaleY = rippleScale
-                                alpha = if (showRippleOnDelay) rippleAlpha else 0f
-                            }
-                            .clip(CircleShape)
+                            .matchParentSize()
+                            .graphicsLayer { alpha = bgAlpha }
+                            .clip(RoundedCornerShape(6.dp))
                             .background(Gold)
-                            .align(Alignment.Center)
                     )
                     Text(
                         text = delayLabel,
@@ -680,6 +691,11 @@ private fun DemoPrayerRowCard(
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .align(Alignment.Center)
+                            .graphicsLayer {
+                                scaleX = labelScale
+                                scaleY = labelScale
+                                translationX = delayShake
+                            }
                             .padding(2.dp)
                     )
                 }
@@ -690,23 +706,23 @@ private fun DemoPrayerRowCard(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                val durShake = if (tapTargetDuration) shakeOffset else 0f
                 DemoInputBox(
                     text = durationValue,
                     textColor = durationValueColor,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
+                        .graphicsLayer { translationX = durShake }
                 )
                 Box(modifier = Modifier.weight(0.8f)) {
+                    val bgAlpha = if (tapTargetDuration) tapHighlight * 0.3f else 0f
+                    val labelScale = if (tapTargetDuration) tapScale else 1f
                     Box(
                         modifier = Modifier
-                            .size(36.dp)
-                            .graphicsLayer {
-                                scaleX = rippleScale
-                                scaleY = rippleScale
-                                alpha = if (showRippleOnDuration) rippleAlpha else 0f
-                            }
-                            .clip(CircleShape)
+                            .matchParentSize()
+                            .graphicsLayer { alpha = bgAlpha }
+                            .clip(RoundedCornerShape(6.dp))
                             .background(Gold)
-                            .align(Alignment.Center)
                     )
                     Text(
                         text = durationLabel,
@@ -716,6 +732,11 @@ private fun DemoPrayerRowCard(
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .align(Alignment.Center)
+                            .graphicsLayer {
+                                scaleX = labelScale
+                                scaleY = labelScale
+                                translationX = durShake
+                            }
                             .padding(2.dp)
                     )
                 }
@@ -736,13 +757,14 @@ private fun DemoInputBox(
             .height(32.dp)
             .clip(RoundedCornerShape(6.dp))
             .background(GoldLight.copy(alpha = 0.3f))
-            .padding(4.dp)
+            .padding(horizontal = 2.dp, vertical = 4.dp)
     ) {
         Text(
             text = text,
             fontSize = 13.sp,
             color = textColor,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            maxLines = 1
         )
     }
 }
