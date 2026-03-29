@@ -931,22 +931,28 @@ private fun PrayerRowHeader() {
             textAlign = TextAlign.Center,
             modifier = Modifier.weight(1.5f)
         )
-        Text(
-            text = stringResource(R.string.col_delay),
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Bold,
-            color = TextMuted,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.weight(1.8f)
-        )
-        Text(
-            text = stringResource(R.string.col_duration),
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Bold,
-            color = TextMuted,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.weight(2.2f)
-        )
+        Row(modifier = Modifier.weight(1.8f)) {
+            Text(
+                text = stringResource(R.string.col_delay),
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextMuted,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.weight(1f)
+            )
+            Spacer(modifier = Modifier.weight(0.8f))
+        }
+        Row(modifier = Modifier.weight(2.2f)) {
+            Text(
+                text = stringResource(R.string.col_duration),
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextMuted,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.weight(1f)
+            )
+            Spacer(modifier = Modifier.weight(0.8f))
+        }
     }
 }
 
