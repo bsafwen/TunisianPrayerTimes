@@ -231,8 +231,8 @@ class SilenceSchedulerIntegrationTest {
         }
 
         SilenceScheduler.scheduleAll(context)
-        // Should have multiple alarms: silence + unsilence per future prayer + midnight reschedule
+        // At minimum the midnight reschedule alarm is always set; future prayer alarms depend on time of day
         val alarmCount = shadowAlarmManager.scheduledAlarms.size
-        assertTrue("Should have multiple alarms scheduled, got $alarmCount", alarmCount >= 2)
+        assertTrue("Should have at least the midnight reschedule alarm, got $alarmCount", alarmCount >= 1)
     }
 }
