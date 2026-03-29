@@ -35,6 +35,7 @@ object SilenceScheduler {
 
         if (todayTimes == null) {
             Log.w(TAG, "No prayer times found for $delegationId/$year/$month/$day")
+            disableSilentMode(context)
             return
         }
 

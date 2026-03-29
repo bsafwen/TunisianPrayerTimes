@@ -136,4 +136,6 @@ object PrefsManager {
             delayFixedMinute = getDelayFixedMinute(context, prayer)
         )
     }
+
+
 }

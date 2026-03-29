@@ -1,150 +1,99 @@
 package com.tunisianprayertimes
 
-import android.view.View
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.intent.Intents
-import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
-import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsEnabled
+import androidx.compose.ui.test.assertIsNotEnabled
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.hamcrest.Matchers.not
-import org.junit.After
-import org.junit.Before
+import com.tunisianprayertimes.ui.TestTags
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * UI tests for the OnboardingActivity's 6-step flow.
+ * Compose UI tests for the OnboardingActivity's 6-step flow.
  */
 @RunWith(AndroidJUnit4::class)
 class OnboardingActivityInstrumentedTest {
 
     @get:Rule
-    val activityRule = ActivityScenarioRule(OnboardingActivity::class.java)
+    val composeRule = createAndroidComposeRule<OnboardingActivity>()
 
-    @Before
-    fun setUp() {
-        Intents.init()
-    }
-
-    @After
-    fun tearDown() {
-        Intents.release()
+    private fun navigateToStep(step: Int) {
+        // Step 4 (permissions) blocks Next if permissions not granted
+        repeat(step) {
+            composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).performClick()
+            composeRule.waitForIdle()
+        }
     }
 
     // --- Step 0: Initial state ---
 
     @Test
-    fun initialState_viewFlipperIsDisplayed() {
-        onView(withId(R.id.viewFlipper))
-            .check(matches(isDisplayed()))
-    }
-
-    @Test
     fun initialState_nextButtonIsDisplayed() {
-        onView(withId(R.id.btnNext))
-            .check(matches(isDisplayed()))
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).assertIsDisplayed()
     }
 
     @Test
     fun initialState_prevButtonIsHidden() {
-        onView(withId(R.id.btnPrev))
-            .check(matches(not(isDisplayed())))
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_PREV).assertDoesNotExist()
     }
 
     @Test
     fun initialState_startButtonIsHidden() {
-        onView(withId(R.id.btnStart))
-            .check(matches(not(isDisplayed())))
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_START).assertDoesNotExist()
     }
 
-    @Test
-    fun initialState_progressBarsAreDisplayed() {
-        onView(withId(R.id.progressContainer))
-            .check(matches(isDisplayed()))
-    }
-
-    // --- Navigation: Step 0 → 1 ---
+    // --- Step 0 → Step 1 ---
 
     @Test
     fun clickNext_showsPrevButton() {
-        onView(withId(R.id.btnNext)).perform(click())
-        onView(withId(R.id.btnPrev))
-            .check(matches(isDisplayed()))
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_PREV).assertIsDisplayed()
     }
 
     @Test
     fun clickNext_nextButtonStillVisible() {
-        onView(withId(R.id.btnNext)).perform(click())
-        onView(withId(R.id.btnNext))
-            .check(matches(isDisplayed()))
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).assertIsDisplayed()
     }
 
-    // --- Navigation: Step 1 → 0 (go back) ---
+    // --- Step 1 → Step 0 (back) ---
 
     @Test
     fun clickNextThenPrev_prevButtonHiddenAgain() {
-        onView(withId(R.id.btnNext)).perform(click())
-        onView(withId(R.id.btnPrev)).perform(click())
-        onView(withId(R.id.btnPrev))
-            .check(matches(not(isDisplayed())))
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_PREV).performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_PREV).assertDoesNotExist()
     }
 
-    // --- Navigate to last step (step 5) ---
-
-    private fun navigateToStep(step: Int) {
-        // Step 4 (permissions) blocks navigation if permissions not granted.
-        // We can only navigate up to step 4 without granted permissions.
-        repeat(step) {
-            onView(withId(R.id.btnNext)).perform(click())
-        }
-    }
+    // --- Step 4: Permissions ---
 
     @Test
-    fun step2_demoElementsExist() {
-        navigateToStep(2)
-        onView(withId(R.id.delayRowBefore))
-            .check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun step3_demoElementsExist() {
-        navigateToStep(3)
-        onView(withId(R.id.rowBefore))
-            .check(matches(isDisplayed()))
-    }
-
-    // --- Permission step (step 4) ---
-
-    @Test
-    fun step4_permissionButtonsAreDisplayed() {
+    fun step4_nextButtonIsDisabledWithoutPermissions() {
         navigateToStep(4)
-        onView(withId(R.id.btnGrantDnd))
-            .check(matches(isDisplayed()))
-        onView(withId(R.id.btnGrantAlarm))
-            .check(matches(isDisplayed()))
-        onView(withId(R.id.btnGrantBattery))
-            .check(matches(isDisplayed()))
+        // On a fresh test device without DND permission, Next should be disabled
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).assertIsNotEnabled()
+    }
+
+    // --- Arabic text tests ---
+
+    @Test
+    fun nextButtonTextIsArabic() {
+        composeRule.onNodeWithText("التالي").assertIsDisplayed()
     }
 
     @Test
-    fun step4_dndButtonLaunchesSettings() {
-        navigateToStep(4)
-        onView(withId(R.id.btnGrantDnd)).perform(click())
-        Intents.intended(hasAction(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
-    }
-
-    // --- Nav buttons container ---
-
-    @Test
-    fun navButtonsContainer_isAlwaysDisplayed() {
-        onView(withId(R.id.navButtons))
-            .check(matches(isDisplayed()))
-        onView(withId(R.id.btnNext)).perform(click())
-        onView(withId(R.id.navButtons))
-            .check(matches(isDisplayed()))
+    fun step1_prevButtonTextIsArabic() {
+        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithText("السابق").assertIsDisplayed()
     }
 }

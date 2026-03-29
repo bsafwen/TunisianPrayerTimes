@@ -1,130 +1,170 @@
 package com.tunisianprayertimes
 
-import android.view.View
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
+import android.app.NotificationManager
+import android.content.Context
+import android.media.AudioManager
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsEnabled
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.hamcrest.Matchers.allOf
+import com.tunisianprayertimes.ui.TestTags
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * Instrumented tests that run on a real device or emulator.
- * Tests basic UI presence, interaction, and Arabic-only localisation.
+ * Compose UI tests for the main screen.
+ * Tests UI presence, Arabic localisation, interactions, and the core silence feature.
  */
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
 
     @get:Rule
-    val activityRule = ActivityScenarioRule(MainActivity::class.java)
+    val composeRule = createAndroidComposeRule<MainActivity>()
+
+    @Before
+    fun setup() {
+        // Mark first launch done so onboarding doesn't interfere
+        PrefsManager.markFirstLaunchDone(composeRule.activity)
+    }
 
     // --- UI presence tests ---
 
     @Test
-    fun subtitleIsDisplayed() {
-        onView(withId(R.id.tvSubtitle))
-            .check(matches(isDisplayed()))
-    }
-
-    @Test
     fun statusCardIsDisplayed() {
-        onView(withId(R.id.cardStatus))
-            .check(matches(isDisplayed()))
+        composeRule.onNodeWithTag(TestTags.STATUS_CARD).assertIsDisplayed()
     }
 
     @Test
-    fun autoSilenceToggleIsDisplayed() {
-        onView(withId(R.id.switchAutoSilence))
-            .check(matches(isDisplayed()))
+    fun autoSilenceSwitchIsDisplayed() {
+        composeRule.onNodeWithTag(TestTags.AUTO_SILENCE_SWITCH)
+            .performScrollTo()
+            .assertIsDisplayed()
     }
 
     @Test
-    fun delegationPickerIsDisplayed() {
-        onView(withId(R.id.actvDelegation))
-            .check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun prayerSettingsCardIsDisplayed() {
-        onView(withId(R.id.cardPrayers))
-            .check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun prayerRowsContainerIsDisplayed() {
-        onView(withId(R.id.prayerRowsContainer))
-            .check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun silenceButtonIsDisplayed() {
-        onView(withId(R.id.btnToggleSilence))
-            .check(matches(isDisplayed()))
+    fun manualSilenceButtonIsDisplayed() {
+        composeRule.onNodeWithTag(TestTags.MANUAL_SILENCE_BUTTON)
+            .performScrollTo()
+            .assertIsDisplayed()
     }
 
     @Test
     fun infoTextIsDisplayed() {
-        onView(withId(R.id.tvInfo))
-            .check(matches(isDisplayed()))
+        composeRule.onNodeWithTag(TestTags.INFO_TEXT)
+            .performScrollTo()
+            .assertIsDisplayed()
     }
 
     // --- Arabic localisation tests ---
 
     @Test
-    fun subtitle_isInArabic() {
-        onView(withId(R.id.tvSubtitle))
-            .check(matches(withText("مواقيت الصلاة في تونس")))
+    fun subtitleIsInArabic() {
+        composeRule.onNodeWithText("مواقيت الصلاة في تونس").assertIsDisplayed()
     }
 
     @Test
-    fun autoSilenceLabel_isInArabic() {
-        onView(withId(R.id.switchAutoSilence))
-            .check(matches(withText("الإسكات التلقائي أثناء الصلاة")))
+    fun autoSilenceLabelIsInArabic() {
+        composeRule.onNodeWithText("الإسكات التلقائي أثناء الصلاة")
+            .performScrollTo()
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun prayerNamesAreInArabic() {
+        val arabicNames = listOf("الفجر", "الظهر", "العصر", "المغرب", "العشاء")
+        for (name in arabicNames) {
+            composeRule.onNodeWithText(name, substring = true).assertExists()
+        }
     }
 
     // --- Interaction tests ---
 
     @Test
-    fun autoSilenceToggle_isClickable() {
-        onView(withId(R.id.switchAutoSilence))
-            .check(matches(isClickable()))
+    fun autoSilenceToggleIsClickable() {
+        composeRule.onNodeWithTag(TestTags.AUTO_SILENCE_SWITCH)
+            .performScrollTo()
+            .assertIsEnabled()
     }
 
     @Test
-    fun silenceButton_isClickable() {
-        onView(withId(R.id.btnToggleSilence))
-            .check(matches(isClickable()))
+    fun silenceButtonIsClickable() {
+        composeRule.onNodeWithTag(TestTags.MANUAL_SILENCE_BUTTON)
+            .performScrollTo()
+            .assertIsEnabled()
     }
 
+    // --- Core feature: manual silence must not be undone by the resume LaunchedEffect ---
+
     @Test
-    fun prayerRows_hasFiveChildren() {
-        activityRule.scenario.onActivity { activity ->
-            val container = activity.findViewById<android.view.ViewGroup>(R.id.prayerRowsContainer)
-            assert(container.childCount == 5) {
-                "Expected 5 prayer rows, got ${container.childCount}"
-            }
+    fun manualSilenceButton_doesNotGetUndoneByScheduleAll() {
+        val context = composeRule.activity
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+        // Skip if DND not granted on this device — can't test silencing without it
+        if (!notificationManager.isNotificationPolicyAccessGranted) return
+
+        // Ensure auto-silence is enabled (so scheduleAll would fire on refreshTick)
+        PrefsManager.setEnabled(context, true)
+
+        // Start in normal mode
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+
+        // Click the manual silence button
+        composeRule.onNodeWithTag(TestTags.MANUAL_SILENCE_BUTTON)
+            .performScrollTo()
+            .performClick()
+
+        // Wait for all Compose effects and recompositions to settle
+        composeRule.waitForIdle()
+
+        // The phone MUST still be in silent mode — scheduleAll must NOT have undone this
+        val ringerMode = audioManager.ringerMode
+        assert(ringerMode == AudioManager.RINGER_MODE_SILENT) {
+            "Expected RINGER_MODE_SILENT (0) but got $ringerMode. " +
+                    "Manual silence was undone — likely by scheduleAll triggered via refreshTick."
         }
+
+        // Cleanup: restore normal mode
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
     }
 
     @Test
-    fun prayerRows_showCorrectArabicNames() {
-        val arabicNames = listOf("الفجر", "الظهر", "العصر", "المغرب", "العشاء")
-        for (name in arabicNames) {
-            onView(allOf(withText(name), isDisplayed()))
-                .check(matches(isDisplayed()))
+    fun manualSilenceButton_togglesSilentAndBack() {
+        val context = composeRule.activity
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+        if (!notificationManager.isNotificationPolicyAccessGranted) return
+
+        // Start normal
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+
+        val button = composeRule.onNodeWithTag(TestTags.MANUAL_SILENCE_BUTTON)
+
+        // Click to silence
+        button.performScrollTo().performClick()
+        composeRule.waitForIdle()
+
+        assert(audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT) {
+            "Phone should be SILENT after first click"
         }
-    }
 
-    @Test
-    fun statusText_isDisplayedWithContent() {
-        onView(withId(R.id.tvStatus))
-            .check(matches(isDisplayed()))
-        // Status should have text (one of the status strings)
-        onView(withId(R.id.tvStatus))
-            .check(matches(withText(org.hamcrest.Matchers.not(""))))
+        // Click to unsilence
+        button.performScrollTo().performClick()
+        composeRule.waitForIdle()
+
+        assert(audioManager.ringerMode == AudioManager.RINGER_MODE_NORMAL) {
+            "Phone should be NORMAL after second click"
+        }
     }
 }
