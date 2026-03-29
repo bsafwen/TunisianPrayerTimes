@@ -16,6 +16,7 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -55,6 +56,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -310,10 +312,10 @@ private fun DurationExplanationStep() {
 
 @Composable
 private fun DelayExplanationStep() {
-    // Animate: show "before" state, then crossfade to "after" state
     var showAfter by remember { mutableStateOf(false) }
     val rippleScale = remember { Animatable(0.3f) }
     val rippleAlpha = remember { Animatable(0f) }
+    val cardAlpha = remember { Animatable(1f) }
 
     LaunchedEffect(Unit) {
         showAfter = false
@@ -323,8 +325,11 @@ private fun DelayExplanationStep() {
         rippleScale.snapTo(0.3f)
         rippleScale.animateTo(3f, tween(600, easing = FastOutSlowInEasing))
         rippleAlpha.animateTo(0f, tween(600))
-        delay(500)
+        delay(300)
+        // Fade out, swap values, fade in
+        cardAlpha.animateTo(0f, tween(250))
         showAfter = true
+        cardAlpha.animateTo(1f, tween(250))
     }
 
     Column(
@@ -345,31 +350,19 @@ private fun DelayExplanationStep() {
         )
         Spacer(Modifier.height(16.dp))
 
-        androidx.compose.animation.Crossfade(targetState = showAfter, label = "delay_demo") { after ->
-            if (!after) {
-                DemoPrayerRowCard(
-                    delayValue = "5",
-                    delayLabel = stringResource(R.string.label_delay_minutes),
-                    durationValue = "60",
-                    durationLabel = stringResource(R.string.label_duration),
-                    delayLabelColor = Gold,
-                    delayValueColor = GreenPrimary,
-                    durationLabelColor = Gold,
-                    showRippleOnDelay = true,
-                    rippleScale = rippleScale.value,
-                    rippleAlpha = rippleAlpha.value
-                )
-            } else {
-                DemoPrayerRowCard(
-                    delayValue = "05:20",
-                    delayLabel = stringResource(R.string.label_delay_at),
-                    durationValue = "60",
-                    durationLabel = stringResource(R.string.label_duration),
-                    delayLabelColor = GreenPrimary,
-                    delayValueColor = GreenPrimary,
-                    durationLabelColor = Gold,
-                )
-            }
+        Box(modifier = Modifier.alpha(cardAlpha.value)) {
+            DemoPrayerRowCard(
+                delayValue = if (showAfter) "05:20" else "5",
+                delayLabel = stringResource(if (showAfter) R.string.label_delay_at else R.string.label_delay_minutes),
+                durationValue = "60",
+                durationLabel = stringResource(R.string.label_duration),
+                delayLabelColor = if (showAfter) GreenPrimary else Gold,
+                delayValueColor = GreenPrimary,
+                durationLabelColor = Gold,
+                showRippleOnDelay = !showAfter,
+                rippleScale = rippleScale.value,
+                rippleAlpha = rippleAlpha.value
+            )
         }
 
         Spacer(Modifier.height(16.dp))
@@ -388,6 +381,7 @@ private fun FixedTimeSwitchStep() {
     var showAfter by remember { mutableStateOf(false) }
     val rippleScale = remember { Animatable(0.3f) }
     val rippleAlpha = remember { Animatable(0f) }
+    val cardAlpha = remember { Animatable(1f) }
 
     LaunchedEffect(Unit) {
         showAfter = false
@@ -396,8 +390,11 @@ private fun FixedTimeSwitchStep() {
         rippleScale.snapTo(0.3f)
         rippleScale.animateTo(3f, tween(600, easing = FastOutSlowInEasing))
         rippleAlpha.animateTo(0f, tween(600))
-        delay(500)
+        delay(300)
+        // Fade out, swap values, fade in
+        cardAlpha.animateTo(0f, tween(250))
         showAfter = true
+        cardAlpha.animateTo(1f, tween(250))
     }
 
     Column(
@@ -418,30 +415,19 @@ private fun FixedTimeSwitchStep() {
         )
         Spacer(Modifier.height(16.dp))
 
-        androidx.compose.animation.Crossfade(targetState = showAfter, label = "fixed_time_demo") { after ->
-            if (!after) {
-                DemoPrayerRowCard(
-                    delayValue = "0",
-                    delayLabel = stringResource(R.string.label_delay_minutes),
-                    durationValue = "60",
-                    durationLabel = stringResource(R.string.label_duration),
-                    delayLabelColor = TextMuted,
-                    durationLabelColor = Gold,
-                    showRippleOnDuration = true,
-                    rippleScale = rippleScale.value,
-                    rippleAlpha = rippleAlpha.value
-                )
-            } else {
-                DemoPrayerRowCard(
-                    delayValue = "0",
-                    delayLabel = stringResource(R.string.label_delay_minutes),
-                    durationValue = "06:15",
-                    durationLabel = stringResource(R.string.label_fixed_time),
-                    delayLabelColor = TextMuted,
-                    durationLabelColor = GreenPrimary,
-                    durationValueColor = GreenPrimary,
-                )
-            }
+        Box(modifier = Modifier.alpha(cardAlpha.value)) {
+            DemoPrayerRowCard(
+                delayValue = "0",
+                delayLabel = stringResource(R.string.label_delay_minutes),
+                durationValue = if (showAfter) "06:15" else "60",
+                durationLabel = stringResource(if (showAfter) R.string.label_fixed_time else R.string.label_duration),
+                delayLabelColor = TextMuted,
+                durationLabelColor = if (showAfter) GreenPrimary else Gold,
+                durationValueColor = if (showAfter) GreenPrimary else TextDark,
+                showRippleOnDuration = !showAfter,
+                rippleScale = rippleScale.value,
+                rippleAlpha = rippleAlpha.value
+            )
         }
 
         Spacer(Modifier.height(12.dp))
@@ -674,17 +660,18 @@ private fun DemoPrayerRowCard(
                     modifier = Modifier.weight(1f)
                 )
                 Box(modifier = Modifier.weight(0.8f)) {
-                    if (showRippleOnDelay) {
-                        Box(
-                            modifier = Modifier
-                                .size(36.dp)
-                                .scale(rippleScale)
-                                .alpha(rippleAlpha)
-                                .clip(CircleShape)
-                                .background(Gold)
-                                .align(Alignment.Center)
-                        )
-                    }
+                    Box(
+                        modifier = Modifier
+                            .size(36.dp)
+                            .graphicsLayer {
+                                scaleX = rippleScale
+                                scaleY = rippleScale
+                                alpha = if (showRippleOnDelay) rippleAlpha else 0f
+                            }
+                            .clip(CircleShape)
+                            .background(Gold)
+                            .align(Alignment.Center)
+                    )
                     Text(
                         text = delayLabel,
                         fontSize = 11.sp,
@@ -709,17 +696,18 @@ private fun DemoPrayerRowCard(
                     modifier = Modifier.weight(1f)
                 )
                 Box(modifier = Modifier.weight(0.8f)) {
-                    if (showRippleOnDuration) {
-                        Box(
-                            modifier = Modifier
-                                .size(36.dp)
-                                .scale(rippleScale)
-                                .alpha(rippleAlpha)
-                                .clip(CircleShape)
-                                .background(Gold)
-                                .align(Alignment.Center)
-                        )
-                    }
+                    Box(
+                        modifier = Modifier
+                            .size(36.dp)
+                            .graphicsLayer {
+                                scaleX = rippleScale
+                                scaleY = rippleScale
+                                alpha = if (showRippleOnDuration) rippleAlpha else 0f
+                            }
+                            .clip(CircleShape)
+                            .background(Gold)
+                            .align(Alignment.Center)
+                    )
                     Text(
                         text = durationLabel,
                         fontSize = 11.sp,
