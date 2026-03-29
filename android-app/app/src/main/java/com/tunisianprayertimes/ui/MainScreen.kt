@@ -242,7 +242,6 @@ fun MainScreen(
                     onDelegationSelected = { delegation ->
                         delegationId = delegation.id
                         PrefsManager.setDelegationId(context, delegation.id)
-                        PrefsManager.clearFixedTimes(context)
                         rescheduleIfEnabled()
                     }
                 )
