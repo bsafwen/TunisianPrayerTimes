@@ -1,9 +1,13 @@
 package com.tunisianprayertimes.ui
 
 import android.app.AlarmManager
+import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
@@ -62,7 +66,10 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -235,6 +242,7 @@ fun MainScreen(
                     onDelegationSelected = { delegation ->
                         delegationId = delegation.id
                         PrefsManager.setDelegationId(context, delegation.id)
+                        PrefsManager.clearFixedTimes(context)
                         rescheduleIfEnabled()
                     }
                 )
@@ -462,6 +470,7 @@ private fun BatteryBanner(context: Context) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+@SuppressLint("MissingPermission")
 private fun LocationPickerCard(
     delegationId: Int,
     onDelegationSelected: (Delegation) -> Unit
@@ -473,6 +482,34 @@ private fun LocationPickerCard(
     val savedDelegation = remember(delegationId) { GouvernoratRepository.findDelegationById(context, delegationId) }
 
     var showSheet by remember { mutableStateOf(false) }
+    var locating by remember { mutableStateOf(false) }
+
+    val locationPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            locating = true
+            val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val provider = LocationManager.NETWORK_PROVIDER
+            if (locationManager.isProviderEnabled(provider)) {
+                locationManager.requestSingleUpdate(provider, object : LocationListener {
+                    override fun onLocationChanged(location: Location) {
+                        val nearest = GouvernoratRepository.findNearestDelegation(
+                            context, location.latitude, location.longitude
+                        )
+                        locating = false
+                        if (nearest != null) onDelegationSelected(nearest)
+                    }
+                    @Deprecated("Deprecated in Java") override fun onStatusChanged(p: String?, s: Int, b: android.os.Bundle?) {}
+                    override fun onProviderEnabled(p: String) {}
+                    override fun onProviderDisabled(p: String) { locating = false }
+                }, null)
+            } else {
+                locating = false
+                Toast.makeText(context, context.getString(R.string.gps_unavailable), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     Card(
         modifier = Modifier
@@ -526,6 +563,42 @@ private fun LocationPickerCard(
                     Text(
                         text = stringResource(R.string.label_change),
                         fontSize = 12.sp,
+                        color = GreenPrimary,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(8.dp))
+
+            // GPS auto-detect button
+            OutlinedCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(enabled = !locating) {
+                        locationPermissionLauncher.launch(android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                    },
+                shape = RoundedCornerShape(8.dp),
+                border = androidx.compose.foundation.BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.5f))
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp, vertical = 10.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_location),
+                        contentDescription = null,
+                        tint = GreenPrimary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        text = if (locating) stringResource(R.string.gps_locating)
+                               else stringResource(R.string.gps_auto_detect),
+                        fontSize = 13.sp,
                         color = GreenPrimary,
                         fontWeight = FontWeight.Medium
                     )
@@ -822,13 +895,15 @@ private fun PrayerSettingsCard(
             // Prayer rows
             Prayer.values().forEach { prayer ->
                 val prayerTime = todayTimes?.allPrayers()?.find { it.prayer == prayer }
-                PrayerRow(
-                    prayer = prayer,
-                    prayerName = prayerNames[prayer] ?: prayer.name,
-                    prayerTime = prayerTime,
-                    activity = activity,
-                    onConfigChanged = onConfigChanged
-                )
+                key(delegationId) {
+                    PrayerRow(
+                        prayer = prayer,
+                        prayerName = prayerNames[prayer] ?: prayer.name,
+                        prayerTime = prayerTime,
+                        activity = activity,
+                        onConfigChanged = onConfigChanged
+                    )
+                }
             }
         }
     }

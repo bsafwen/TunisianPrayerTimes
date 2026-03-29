@@ -136,4 +136,16 @@ object PrefsManager {
             delayFixedMinute = getDelayFixedMinute(context, prayer)
         )
     }
+
+    /** Reset all fixed-time prefs so they get re-derived from the new delegation's prayer times. */
+    fun clearFixedTimes(context: Context) {
+        val editor = prefs(context).edit()
+        for (prayer in Prayer.values()) {
+            editor.putInt("fixed_hour_${prayer.name}", -1)
+            editor.putInt("fixed_minute_${prayer.name}", -1)
+            editor.putInt("delay_fixed_hour_${prayer.name}", -1)
+            editor.putInt("delay_fixed_minute_${prayer.name}", -1)
+        }
+        editor.apply()
+    }
 }
