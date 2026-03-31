@@ -24,6 +24,10 @@ class DateNavigationInstrumentedTest {
     @Before
     fun setup() {
         PrefsManager.markFirstLaunchDone(composeRule.activity)
+        composeRule.activity.runOnUiThread {
+            composeRule.activity.recreate()
+        }
+        composeRule.waitForIdle()
     }
 
     @Test
