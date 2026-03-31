@@ -1,17 +1,14 @@
 package com.tunisianprayertimes
 
-import android.os.Build
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.tunisianprayertimes.ui.TestTags
-import org.junit.Assume.assumeTrue
-import org.junit.Before
-import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
@@ -21,12 +18,16 @@ import org.junit.runner.RunWith
 
 /**
  * Instrumented tests for date navigation and DatePickerDialog.
- * The first-launch pref is forced before activity startup to bypass onboarding in CI.
+ * The first-launch pref is forced before activity startup via [RuleChain]
+ * so that [MainActivity] skips the onboarding redirect.
  */
 @RunWith(AndroidJUnit4::class)
-@Ignore("Flaky on CI emulators; re-enable after stabilizing onboarding/date-label visibility in instrumented environment")
 class DateNavigationInstrumentedTest {
 
+    /**
+     * Writes the "first_launch_done" flag into the **target app's** SharedPreferences
+     * synchronously before the activity rule creates [MainActivity].
+     */
     private val firstLaunchRule = TestRule { base, _ ->
         object : Statement() {
             override fun evaluate() {
@@ -45,45 +46,33 @@ class DateNavigationInstrumentedTest {
     @get:Rule
     val ruleChain: RuleChain = RuleChain.outerRule(firstLaunchRule).around(composeRule)
 
-    @Before
-    fun skipApi26() {
-        // API 26 emulator consistently fails to render this flow in CI; keep coverage on newer APIs.
-        assumeTrue(Build.VERSION.SDK_INT > Build.VERSION_CODES.O)
-    }
-
     @Test
     fun dateLabel_isDisplayed() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
+            .performScrollTo()
             .assertIsDisplayed()
     }
 
     @Test
     fun dateLabel_tap_opensDatePickerWithoutCrash() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
+            .performScrollTo()
             .performClick()
 
-        // DatePickerDialog should be visible — the Android date picker shows OK/Cancel buttons
-        // Wait for it to appear
         composeRule.waitForIdle()
-
-        // If we get here without a crash, the ContextThemeWrapper approach works.
-        // The dialog is a platform View, not a Compose node, so we can't easily assert
-        // its content with Compose testing. But no crash = success.
     }
 
     @Test
     fun previousArrow_changesPrayerTimes() {
-        // Scroll to date area and check it's visible
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
+            .performScrollTo()
             .assertIsDisplayed()
 
-        // Tap the back arrow (◂) to go to previous day
         composeRule.onNodeWithText("◂")
             .performClick()
 
         composeRule.waitForIdle()
 
-        // Date label should still be displayed (no crash)
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
             .assertIsDisplayed()
     }
@@ -91,9 +80,9 @@ class DateNavigationInstrumentedTest {
     @Test
     fun forwardArrow_changesPrayerTimes() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
+            .performScrollTo()
             .assertIsDisplayed()
 
-        // Tap forward arrow (▸)
         composeRule.onNodeWithText("▸")
             .performClick()
 
@@ -105,22 +94,23 @@ class DateNavigationInstrumentedTest {
 
     @Test
     fun navigateAwayAndBack_showsTodayLabel() {
-        // Go to previous day
+        composeRule.onNodeWithTag(TestTags.DATE_LABEL)
+            .performScrollTo()
+
         composeRule.onNodeWithText("◂")
             .performClick()
         composeRule.waitForIdle()
 
-        // "العودة لليوم" chip should be visible
         composeRule.onNodeWithText("العودة لليوم")
+            .performScrollTo()
             .assertIsDisplayed()
 
-        // Tap it to go back to today
         composeRule.onNodeWithText("العودة لليوم")
             .performClick()
         composeRule.waitForIdle()
 
-        // "اليوم" label should be displayed
         composeRule.onNodeWithText("اليوم")
+            .performScrollTo()
             .assertIsDisplayed()
     }
 }
