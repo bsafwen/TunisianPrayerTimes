@@ -5,8 +5,8 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.tunisianprayertimes.ui.TestTags
 import org.junit.Rule
 import org.junit.Test
@@ -25,7 +25,7 @@ class DateNavigationInstrumentedTest {
     private val firstLaunchRule = TestRule { base, _ ->
         object : Statement() {
             override fun evaluate() {
-                val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+                val context = InstrumentationRegistry.getInstrumentation().targetContext
                 context.getSharedPreferences("prayer_silence_prefs", android.content.Context.MODE_PRIVATE)
                     .edit()
                     .putBoolean("first_launch_done", true)
