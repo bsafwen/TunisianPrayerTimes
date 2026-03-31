@@ -108,7 +108,29 @@ object SilenceScheduler {
 
         // Schedule tomorrow's Fajr directly so we don't depend solely on the midnight
         // reschedule surviving OEM battery optimization (Xiaomi, Samsung, Huawei, etc.)
-        scheduleTomorrowFajr(context, delegationId, now)
+        // Only do this if today's Fajr has already passed — otherwise we'd overwrite
+        // today's still-future Fajr alarm (same PendingIntent request code).
+        val todayFajrConfig = PrefsManager.getConfig(context, Prayer.FAJR)
+        val todayFajr = todayTimes.fajr
+        val todayFajrSilence = if (todayFajrConfig.delayMode == DelayMode.FIXED_TIME && todayFajrConfig.delayFixedHour >= 0 && todayFajrConfig.delayFixedMinute >= 0) {
+            Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, todayFajrConfig.delayFixedHour)
+                set(Calendar.MINUTE, todayFajrConfig.delayFixedMinute)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+        } else {
+            Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, todayFajr.hour)
+                set(Calendar.MINUTE, todayFajr.minute)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+                add(Calendar.MINUTE, todayFajrConfig.delayMinutes)
+            }
+        }
+        if (!now.before(todayFajrSilence)) {
+            scheduleTomorrowFajr(context, delegationId, now)
+        }
 
         // Also schedule a daily reschedule at midnight to set up next day's alarms
         scheduleMidnightReschedule(context)
