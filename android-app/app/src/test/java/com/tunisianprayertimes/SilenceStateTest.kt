@@ -54,17 +54,15 @@ class SilenceStateTest {
 
     @Test
     fun manualSilence_setsSilentMode() {
-        // Simulate what the manual button does
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        SilenceModeController.setManualSilent(context)
 
         assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
     }
 
     @Test
-    fun scheduleAll_outsidePrayerWindow_restoresNormalMode() {
-        // First silence the phone
-        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+    fun autoSilence_thenScheduleAll_outsidePrayerWindow_restoresPreviousState() {
+        SilenceModeController.enableAutoSilence(context)
 
         // Use a non-existent delegation so todayTimes is null, which guarantees
         // we are "outside" any prayer window regardless of current time/timezone.
@@ -73,54 +71,52 @@ class SilenceStateTest {
         PrefsManager.setEnabled(context, true)
         SilenceScheduler.scheduleAll(context)
 
-        // scheduleAll correctly restores normal mode when not in a prayer window
         assertEquals(
-            "scheduleAll should restore normal mode when outside a prayer window",
+            "scheduleAll should restore the pre-auto-silence mode when outside a prayer window",
             AudioManager.RINGER_MODE_NORMAL,
             audioManager.ringerMode
         )
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
     }
 
     @Test
-    fun manualSilence_thenScheduleAll_scenario_demonstratesRaceCondition() {
-        // This test documents the race condition that existed before the fix:
-        // If the manual button incremented refreshTick, it triggered scheduleAll,
-        // which called disableSilentMode() and undid the manual silence.
-        //
-        // The correct behavior (after fix) is that the manual button does NOT
-        // trigger scheduleAll, so these two operations should be independent.
-
-        // Use a non-existent delegation to guarantee "outside prayer window" path,
-        // avoiding flakiness when CI runs during a real prayer window.
+    fun manualSilence_thenScheduleAll_preservesManualSilentState() {
         PrefsManager.setDelegationId(context, 99999)
         PrefsManager.setEnabled(context, true)
 
-        // Step 1: Manual silence
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        SilenceModeController.setManualSilent(context)
         assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
 
-        // Step 2: scheduleAll runs (as it would on resume)
         SilenceScheduler.scheduleAll(context)
 
-        // Step 3: scheduleAll DOES reset the ringer (this is by design — it ensures
-        // the phone isn't stuck silent outside a prayer window). The key insight is:
-        // the manual button must NOT trigger scheduleAll. The UI layer is responsible
-        // for keeping manual silence and auto-scheduling independent.
         assertEquals(
-            "scheduleAll resets ringer outside prayer window (by design)",
-            AudioManager.RINGER_MODE_NORMAL,
+            "scheduleAll should not undo manual silent mode outside a prayer window",
+            AudioManager.RINGER_MODE_SILENT,
             audioManager.ringerMode
         )
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
     }
 
     @Test
-    fun cancelAll_restoresNormalMode() {
-        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+    fun cancelAll_restoresPreviousStateOnlyForAutoSilence() {
+        SilenceModeController.enableAutoSilence(context)
         PrefsManager.setEnabled(context, true)
         SilenceScheduler.cancelAll(context)
 
         assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
+    }
+
+    @Test
+    fun autoSilence_restoresPreviouslySilentState() {
+        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+
+        SilenceModeController.enableAutoSilence(context)
+        SilenceModeController.disableAutoSilence(context)
+
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+        assertEquals(NotificationManager.INTERRUPTION_FILTER_ALL, notificationManager.currentInterruptionFilter)
     }
 
     @Test

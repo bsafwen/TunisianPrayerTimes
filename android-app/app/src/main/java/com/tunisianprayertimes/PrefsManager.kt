@@ -2,6 +2,8 @@ package com.tunisianprayertimes
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.app.NotificationManager
+import android.media.AudioManager
 import java.time.chrono.HijrahDate
 import java.time.temporal.ChronoField
 
@@ -10,6 +12,9 @@ object PrefsManager {
     private const val KEY_DELEGATION_ID = "delegation_id"
     private const val KEY_ENABLED = "silence_enabled"
     private const val KEY_FIRST_LAUNCH = "first_launch_done"
+    private const val KEY_AUTO_SILENCE_ACTIVE = "auto_silence_active"
+    private const val KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE = "auto_silence_previous_ringer_mode"
+    private const val KEY_AUTO_SILENCE_PREVIOUS_INTERRUPTION_FILTER = "auto_silence_previous_interruption_filter"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
 
     private fun prefs(context: Context): SharedPreferences {
@@ -38,6 +43,37 @@ object PrefsManager {
 
     fun setEnabled(context: Context, enabled: Boolean) {
         prefs(context).edit().putBoolean(KEY_ENABLED, enabled).apply()
+    }
+
+    fun isAutoSilenceActive(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_AUTO_SILENCE_ACTIVE, false)
+    }
+
+    fun markAutoSilenceActive(context: Context, previousRingerMode: Int, previousInterruptionFilter: Int) {
+        prefs(context).edit()
+            .putBoolean(KEY_AUTO_SILENCE_ACTIVE, true)
+            .putInt(KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE, previousRingerMode)
+            .putInt(KEY_AUTO_SILENCE_PREVIOUS_INTERRUPTION_FILTER, previousInterruptionFilter)
+            .apply()
+    }
+
+    fun getAutoSilencePreviousRingerMode(context: Context): Int {
+        return prefs(context).getInt(KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE, AudioManager.RINGER_MODE_NORMAL)
+    }
+
+    fun getAutoSilencePreviousInterruptionFilter(context: Context): Int {
+        return prefs(context).getInt(
+            KEY_AUTO_SILENCE_PREVIOUS_INTERRUPTION_FILTER,
+            NotificationManager.INTERRUPTION_FILTER_ALL
+        )
+    }
+
+    fun clearAutoSilenceState(context: Context) {
+        prefs(context).edit()
+            .putBoolean(KEY_AUTO_SILENCE_ACTIVE, false)
+            .remove(KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE)
+            .remove(KEY_AUTO_SILENCE_PREVIOUS_INTERRUPTION_FILTER)
+            .apply()
     }
 
     private const val RAMADAN_ISHA_MINUTES = 90
@@ -160,6 +196,4 @@ object PrefsManager {
             delayFixedMinute = getDelayFixedMinute(context, prayer)
         )
     }
-
-
 }

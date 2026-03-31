@@ -104,8 +104,8 @@ class AlarmCoverageTest {
         PrefsManager.setEnabled(context, true)
         PrefsManager.setDelegationId(context, 99999)
 
-        // Silence the phone first
-        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        // Simulate an earlier auto-silence session that now needs to be restored.
+        SilenceModeController.enableAutoSilence(context)
 
         SilenceScheduler.scheduleAll(context)
 
@@ -449,11 +449,10 @@ class AlarmCoverageTest {
 
     @Test
     fun silenceReceiver_withDndGranted_unsilencesPhone() {
-        // First silence
-        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-
         val receiver = SilenceReceiver()
+        receiver.onReceive(context, Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
+            putExtra("extra_prayer", "ASR")
+        })
         receiver.onReceive(context, Intent("com.tunisianprayertimes.ACTION_UNSILENCE").apply {
             putExtra("extra_prayer", "ASR")
         })
@@ -480,8 +479,8 @@ class AlarmCoverageTest {
 
     @Test
     fun silenceReceiver_unsilence_missingExtraPrayer_stillWorks() {
-        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
         val receiver = SilenceReceiver()
+        receiver.onReceive(context, Intent("com.tunisianprayertimes.ACTION_SILENCE"))
         receiver.onReceive(context, Intent("com.tunisianprayertimes.ACTION_UNSILENCE"))
 
         assertEquals(
