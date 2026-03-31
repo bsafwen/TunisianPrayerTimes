@@ -5,7 +5,6 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tunisianprayertimes.ui.TestTags
 import org.junit.Before
@@ -30,14 +29,12 @@ class DateNavigationInstrumentedTest {
     @Test
     fun dateLabel_isDisplayed() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
-            .performScrollTo()
             .assertIsDisplayed()
     }
 
     @Test
     fun dateLabel_tap_opensDatePickerWithoutCrash() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
-            .performScrollTo()
             .performClick()
 
         // DatePickerDialog should be visible — the Android date picker shows OK/Cancel buttons
@@ -53,12 +50,10 @@ class DateNavigationInstrumentedTest {
     fun previousArrow_changesPrayerTimes() {
         // Scroll to date area and check it's visible
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
-            .performScrollTo()
             .assertIsDisplayed()
 
         // Tap the back arrow (◂) to go to previous day
         composeRule.onNodeWithText("◂")
-            .performScrollTo()
             .performClick()
 
         composeRule.waitForIdle()
@@ -71,12 +66,10 @@ class DateNavigationInstrumentedTest {
     @Test
     fun forwardArrow_changesPrayerTimes() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
-            .performScrollTo()
             .assertIsDisplayed()
 
         // Tap forward arrow (▸)
         composeRule.onNodeWithText("▸")
-            .performScrollTo()
             .performClick()
 
         composeRule.waitForIdle()
@@ -89,7 +82,6 @@ class DateNavigationInstrumentedTest {
     fun navigateAwayAndBack_showsTodayLabel() {
         // Go to previous day
         composeRule.onNodeWithText("◂")
-            .performScrollTo()
             .performClick()
         composeRule.waitForIdle()
 
