@@ -5,12 +5,14 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tunisianprayertimes.ui.TestTags
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.rules.TestWatcher
+import org.junit.runner.Description
 
 /**
  * Instrumented tests for date navigation and DatePickerDialog.
@@ -18,17 +20,19 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class DateNavigationInstrumentedTest {
 
-    @get:Rule
-    val composeRule = createAndroidComposeRule<MainActivity>()
-
-    @Before
-    fun setup() {
-        PrefsManager.markFirstLaunchDone(composeRule.activity)
-        composeRule.activity.runOnUiThread {
-            composeRule.activity.recreate()
+    @get:Rule(order = 0)
+    val firstLaunchRule = object : TestWatcher() {
+        override fun starting(description: Description) {
+            val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+            context.getSharedPreferences("prayer_silence_prefs", android.content.Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("first_launch_done", true)
+                .commit()
         }
-        composeRule.waitForIdle()
     }
+
+    @get:Rule(order = 1)
+    val composeRule = createAndroidComposeRule<MainActivity>()
 
     @Test
     fun dateLabel_isDisplayed() {
