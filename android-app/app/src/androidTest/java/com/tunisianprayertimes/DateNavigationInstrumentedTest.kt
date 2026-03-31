@@ -16,6 +16,7 @@ import org.junit.runner.Description
 
 /**
  * Instrumented tests for date navigation and DatePickerDialog.
+ * The first-launch pref is forced before activity startup to bypass onboarding in CI.
  */
 @RunWith(AndroidJUnit4::class)
 class DateNavigationInstrumentedTest {
