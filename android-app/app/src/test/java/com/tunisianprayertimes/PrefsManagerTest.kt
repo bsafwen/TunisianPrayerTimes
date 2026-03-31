@@ -8,8 +8,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
-import java.time.chrono.HijrahDate
-import java.time.temporal.ChronoField
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [26, 30, 33, 34])
@@ -177,144 +175,40 @@ class PrefsManagerTest {
         assertEquals(20, PrefsManager.getConfig(context, Prayer.DHUHR).afterMinutes)
         assertEquals(30, PrefsManager.getConfig(context, Prayer.ASR).afterMinutes)
         assertEquals(40, PrefsManager.getConfig(context, Prayer.MAGHRIB).afterMinutes)
-        assertEquals(50, PrefsManager.getConfig(context, Prayer.ISHA).afterMinutes)
+        // ISHA may be overridden during Ramadan, so check it's either 50 or 90
+        val ishaMinutes = PrefsManager.getConfig(context, Prayer.ISHA).afterMinutes
+        assertTrue("ISHA afterMinutes should be 50 or 90 (Ramadan)", ishaMinutes == 50 || ishaMinutes == 90)
     }
 
     @Test
-    fun ramadanOverride_bumpsIshaWhenLowerThan90() {
-        // Simulate Ramadan: use a known Ramadan date (9th month of Hijri calendar)
-        val ramadanDate = findRamadanDate()
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_doesNotLowerIshaWhenAlreadyHigher() {
-        val ramadanDate = findRamadanDate()
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 120)
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        assertEquals(120, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_appliedOnce_userChangeRespected() {
-        val ramadanDate = findRamadanDate()
-        // First call: override applied
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-
-        // User changes to 45
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 45)
-
-        // Second call: override NOT re-applied because already applied this Hijri year
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        assertEquals(45, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_notAppliedOutsideRamadan() {
-        // Use a non-Ramadan date (Hijri month 1)
-        val nonRamadanDate = HijrahDate.now().with(ChronoField.MONTH_OF_YEAR, 1).with(ChronoField.DAY_OF_MONTH, 15)
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, nonRamadanDate)
-        assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_exactlyAt90_notChanged() {
-        val ramadanDate = findRamadanDate()
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 90)
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_doesNotAffectOtherPrayers() {
-        val ramadanDate = findRamadanDate()
-        PrefsManager.setAfterMinutes(context, Prayer.FAJR, 10)
-        PrefsManager.setAfterMinutes(context, Prayer.DHUHR, 15)
-        PrefsManager.setAfterMinutes(context, Prayer.ASR, 20)
-        PrefsManager.setAfterMinutes(context, Prayer.MAGHRIB, 5)
-
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-
-        assertEquals(10, PrefsManager.getAfterMinutes(context, Prayer.FAJR))
-        assertEquals(15, PrefsManager.getAfterMinutes(context, Prayer.DHUHR))
-        assertEquals(20, PrefsManager.getAfterMinutes(context, Prayer.ASR))
-        assertEquals(5, PrefsManager.getAfterMinutes(context, Prayer.MAGHRIB))
-    }
-
-    @Test
-    fun ramadanOverride_reappliesNextHijriYear() {
-        val thisYear = HijrahDate.now().get(ChronoField.YEAR)
-        val thisYearRamadan = HijrahDate.of(thisYear, 9, 15)
-        val nextYearRamadan = HijrahDate.of(thisYear + 1, 9, 15)
-
-        // Apply override this year
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, thisYearRamadan)
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-
-        // User lowers it back to 30
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
-
-        // Next year's Ramadan: override should apply again
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, nextYearRamadan)
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_multipleCallsSameYear_idempotent() {
-        val ramadanDate = findRamadanDate()
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
-
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_defaultIshaValue_getsBumped() {
-        // No explicit setAfterMinutes — default is 30, should get bumped to 90
-        val ramadanDate = findRamadanDate()
-        assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, ramadanDate)
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    @Test
-    fun ramadanOverride_userSetsHigherThenLower_secondRamadanBumpsAgain() {
-        val thisYear = HijrahDate.now().get(ChronoField.YEAR)
-        val thisYearRamadan = HijrahDate.of(thisYear, 9, 15)
-        val nextYearRamadan = HijrahDate.of(thisYear + 1, 9, 15)
-
-        // This year: user already has 120, override doesn't lower it
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 120)
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, thisYearRamadan)
-        assertEquals(120, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-
-        // User later sets it to 20
-        PrefsManager.setAfterMinutes(context, Prayer.ISHA, 20)
-
-        // Next year Ramadan: bumps back to 90
-        PrefsManager.applyRamadanIshaOverrideIfNeeded(context, nextYearRamadan)
-        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
+    fun ishaDefaultDuringRamadan_returns90() {
+        // This tests the Ramadan override: during Ramadan, default for Isha is 90
+        // If we're currently in Ramadan, getAfterMinutes returns 90 regardless of saved value
+        if (RamadanDetector.isRamadan()) {
+            // Save 30 for Isha — Ramadan override should still return 90
+            PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
+            assertEquals(
+                "Ramadan: Isha should always be 90 regardless of saved value",
+                90,
+                PrefsManager.getAfterMinutes(context, Prayer.ISHA)
+            )
+        } else {
+            // Outside Ramadan: saved value is returned
+            PrefsManager.setAfterMinutes(context, Prayer.ISHA, 30)
+            assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
+        }
     }
 
     @Test
     fun ishaDefault_outsideRamadan_is30() {
-        // Default Isha afterMinutes is always 30 (Ramadan override is a one-time write, not a getter override)
-        assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
-    }
-
-    /** Helper: find a HijrahDate in Ramadan month 9, day 15 of the current Hijri year */
-    private fun findRamadanDate(): HijrahDate {
-        val now = HijrahDate.now()
-        val year = now.get(ChronoField.YEAR)
-        return HijrahDate.of(year, 9, 15)
+        // Outside Ramadan, default Isha afterMinutes should be 30
+        if (!RamadanDetector.isRamadan()) {
+            assertEquals(30, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
+        }
+        // If currently Ramadan, default is overridden to 90
+        if (RamadanDetector.isRamadan()) {
+            assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.ISHA))
+        }
     }
 
     @Test

@@ -11,6 +11,7 @@ object TestTags {
     const val AUTO_SILENCE_SWITCH = "auto_silence_switch"
     const val MANUAL_SILENCE_BUTTON = "manual_silence_button"
     const val INFO_TEXT = "info_text"
+    const val DATE_LABEL = "date_label"
 
     // OnboardingScreen
     const val ONBOARDING_NEXT = "onboarding_next"

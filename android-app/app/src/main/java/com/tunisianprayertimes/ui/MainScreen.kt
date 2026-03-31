@@ -122,12 +122,14 @@ import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.HeaderEnd
+import com.tunisianprayertimes.ui.theme.NextPrayerBg
 import com.tunisianprayertimes.ui.theme.HeaderStart
 import com.tunisianprayertimes.ui.theme.PrayerNameColor
 import com.tunisianprayertimes.ui.theme.RamadanBg
 import com.tunisianprayertimes.ui.theme.SilenceRed
 import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
@@ -838,16 +840,51 @@ private fun PrayerSettingsCard(
     onConfigChanged: () -> Unit
 ) {
     val context = LocalContext.current
-    val now = remember { Calendar.getInstance() }
-    val todayTimes = remember(delegationId) {
+    val today = remember { Calendar.getInstance() }
+    var selectedDate by rememberSaveable { mutableStateOf(today.timeInMillis) }
+
+    val selectedCal = remember(selectedDate) {
+        Calendar.getInstance().apply { timeInMillis = selectedDate }
+    }
+    val isToday = remember(selectedDate) {
+        val sel = Calendar.getInstance().apply { timeInMillis = selectedDate }
+        val now = Calendar.getInstance()
+        sel.get(Calendar.YEAR) == now.get(Calendar.YEAR) &&
+                sel.get(Calendar.DAY_OF_YEAR) == now.get(Calendar.DAY_OF_YEAR)
+    }
+
+    val displayTimes = remember(delegationId, selectedDate) {
         try {
             PrayerTimesRepository.loadDayPrayerTimes(
                 context, delegationId,
-                now.get(Calendar.YEAR),
-                now.get(Calendar.MONTH) + 1,
-                now.get(Calendar.DAY_OF_MONTH)
+                selectedCal.get(Calendar.YEAR),
+                selectedCal.get(Calendar.MONTH) + 1,
+                selectedCal.get(Calendar.DAY_OF_MONTH)
             )
         } catch (e: Exception) { null }
+    }
+
+    val canGoBack = remember(delegationId, selectedDate) {
+        val prev = Calendar.getInstance().apply {
+            timeInMillis = selectedDate
+            add(Calendar.DAY_OF_MONTH, -1)
+        }
+        PrayerTimesRepository.hasPrayerData(
+            context, delegationId,
+            prev.get(Calendar.YEAR),
+            prev.get(Calendar.MONTH) + 1
+        )
+    }
+    val canGoForward = remember(delegationId, selectedDate) {
+        val next = Calendar.getInstance().apply {
+            timeInMillis = selectedDate
+            add(Calendar.DAY_OF_MONTH, 1)
+        }
+        PrayerTimesRepository.hasPrayerData(
+            context, delegationId,
+            next.get(Calendar.YEAR),
+            next.get(Calendar.MONTH) + 1
+        )
     }
 
     val prayerNames = mapOf(
@@ -857,6 +894,29 @@ private fun PrayerSettingsCard(
         Prayer.MAGHRIB to stringResource(R.string.prayer_maghrib),
         Prayer.ISHA to stringResource(R.string.prayer_isha)
     )
+
+    // Next prayer logic — only for today
+    val nextPrayerFromToday = remember(delegationId) {
+        if (!isToday) return@remember null
+        displayTimes?.nextPrayer(today.get(Calendar.HOUR_OF_DAY), today.get(Calendar.MINUTE))
+    }
+
+    val tomorrowFajr = remember(delegationId) {
+        if (!isToday || nextPrayerFromToday != null) return@remember null
+        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_MONTH, 1) }
+        try {
+            PrayerTimesRepository.loadDayPrayerTimes(
+                context, delegationId,
+                tomorrow.get(Calendar.YEAR),
+                tomorrow.get(Calendar.MONTH) + 1,
+                tomorrow.get(Calendar.DAY_OF_MONTH)
+            )?.fajr
+        } catch (_: Exception) { null }
+    }
+
+    val nextPrayer = if (isToday) {
+        nextPrayerFromToday ?: if (tomorrowFajr != null) Prayer.FAJR else null
+    } else null
 
     Card(
         modifier = Modifier
@@ -886,25 +946,168 @@ private fun PrayerSettingsCard(
 
             Spacer(Modifier.height(12.dp))
 
-            // Column headers
-            PrayerRowHeader()
+            // Date navigation
+            DateNavigationRow(
+                selectedDate = selectedDate,
+                isToday = isToday,
+                canGoBack = canGoBack,
+                canGoForward = canGoForward,
+                onPrevious = {
+                    val cal = Calendar.getInstance().apply {
+                        timeInMillis = selectedDate
+                        add(Calendar.DAY_OF_MONTH, -1)
+                    }
+                    selectedDate = cal.timeInMillis
+                },
+                onNext = {
+                    val cal = Calendar.getInstance().apply {
+                        timeInMillis = selectedDate
+                        add(Calendar.DAY_OF_MONTH, 1)
+                    }
+                    selectedDate = cal.timeInMillis
+                },
+                onDateSelected = { millis -> selectedDate = millis }
+            )
 
-            HorizontalDivider(color = Divider, thickness = 1.dp)
+            Spacer(Modifier.height(8.dp))
 
-            // Prayer rows
-            Prayer.values().forEach { prayer ->
-                val prayerTime = todayTimes?.allPrayers()?.find { it.prayer == prayer }
-                key(delegationId) {
-                    PrayerRow(
-                        prayer = prayer,
-                        prayerName = prayerNames[prayer] ?: prayer.name,
-                        prayerTime = prayerTime,
-                        activity = activity,
-                        onConfigChanged = onConfigChanged
-                    )
+            if (displayTimes != null) {
+                PrayerRowHeader()
+                HorizontalDivider(color = Divider, thickness = 1.dp)
+
+                Prayer.values().forEach { prayer ->
+                    val prayerTime = if (isToday && prayer == Prayer.FAJR && tomorrowFajr != null)
+                        tomorrowFajr
+                    else
+                        displayTimes.allPrayers().find { it.prayer == prayer }
+                    key(delegationId) {
+                        PrayerRow(
+                            prayer = prayer,
+                            prayerName = prayerNames[prayer] ?: prayer.name,
+                            prayerTime = prayerTime,
+                            isNextPrayer = prayer == nextPrayer,
+                            activity = activity,
+                            onConfigChanged = onConfigChanged
+                        )
+                    }
                 }
+            } else {
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    text = stringResource(R.string.no_prayer_data),
+                    fontSize = 13.sp,
+                    color = TextMuted,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(Modifier.height(16.dp))
             }
         }
+    }
+}
+
+@Composable
+private fun DateNavigationRow(
+    selectedDate: Long,
+    isToday: Boolean,
+    canGoBack: Boolean,
+    canGoForward: Boolean,
+    onPrevious: () -> Unit,
+    onNext: () -> Unit,
+    onDateSelected: (Long) -> Unit
+) {
+    val context = LocalContext.current
+    val dateFormat = remember { SimpleDateFormat("EEEE d MMMM yyyy", Locale("ar", "TN")) }
+    val dateText = remember(selectedDate) { dateFormat.format(selectedDate) }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(GoldLight.copy(alpha = 0.4f))
+            .padding(horizontal = 4.dp, vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        // Forward arrow (RTL: right side = forward)
+        Text(
+            text = "▸",
+            fontSize = 18.sp,
+            color = if (canGoForward) GreenPrimary else TextMuted.copy(alpha = 0.3f),
+            modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .then(if (canGoForward) Modifier.clickable { onNext() } else Modifier)
+                .padding(horizontal = 12.dp, vertical = 4.dp)
+        )
+
+        // Date label — tap to open date picker
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .testTag(TestTags.DATE_LABEL)
+                .clickable {
+                val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
+                val arabicLocale = Locale("ar", "TN")
+                val config = android.content.res.Configuration(context.resources.configuration).apply {
+                    setLocale(arabicLocale)
+                }
+                val arabicContext = android.view.ContextThemeWrapper(context, 0)
+                arabicContext.applyOverrideConfiguration(config)
+                android.app.DatePickerDialog(
+                    arabicContext,
+                    { _, year, month, dayOfMonth ->
+                        val picked = Calendar.getInstance().apply {
+                            set(Calendar.YEAR, year)
+                            set(Calendar.MONTH, month)
+                            set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                        }
+                        onDateSelected(picked.timeInMillis)
+                    },
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)
+                ).show()
+            }
+        ) {
+            Text(
+                text = dateText,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center
+            )
+            if (isToday) {
+                Text(
+                    text = stringResource(R.string.date_today),
+                    fontSize = 11.sp,
+                    color = Gold,
+                    fontWeight = FontWeight.Bold
+                )
+            } else {
+                Text(
+                    text = stringResource(R.string.date_go_back_today),
+                    fontSize = 11.sp,
+                    color = GreenPrimary,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(GreenPrimary.copy(alpha = 0.1f))
+                        .clickable { onDateSelected(Calendar.getInstance().timeInMillis) }
+                        .padding(horizontal = 8.dp, vertical = 2.dp)
+                )
+            }
+        }
+
+        // Back arrow (RTL: left side = back)
+        Text(
+            text = "◂",
+            fontSize = 18.sp,
+            color = if (canGoBack) GreenPrimary else TextMuted.copy(alpha = 0.3f),
+            modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .then(if (canGoBack) Modifier.clickable { onPrevious() } else Modifier)
+                .padding(horizontal = 12.dp, vertical = 4.dp)
+        )
     }
 }
 
@@ -965,6 +1168,7 @@ private fun PrayerRow(
     prayer: Prayer,
     prayerName: String,
     prayerTime: PrayerTime?,
+    isNextPrayer: Boolean,
     activity: androidx.appcompat.app.AppCompatActivity,
     onConfigChanged: () -> Unit
 ) {
@@ -986,7 +1190,13 @@ private fun PrayerRow(
         modifier = Modifier
             .fillMaxWidth()
             .height(IntrinsicSize.Min)
-            .padding(vertical = 10.dp),
+            .then(
+                if (isNextPrayer) Modifier
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(NextPrayerBg)
+                else Modifier
+            )
+            .padding(vertical = 10.dp, horizontal = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Prayer name
@@ -994,7 +1204,7 @@ private fun PrayerRow(
             text = prayerName,
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
-            color = PrayerNameColor,
+            color = if (isNextPrayer) GreenPrimary else PrayerNameColor,
             maxLines = 1,
             softWrap = false,
             modifier = Modifier.weight(1.2f)
