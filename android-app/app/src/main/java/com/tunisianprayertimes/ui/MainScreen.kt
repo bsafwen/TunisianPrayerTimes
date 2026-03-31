@@ -1051,7 +1051,7 @@ private fun DateNavigationRow(
                 val config = android.content.res.Configuration(context.resources.configuration).apply {
                     setLocale(arabicLocale)
                 }
-                val arabicContext = android.view.ContextThemeWrapper(context, 0)
+                val arabicContext = android.view.ContextThemeWrapper(context, R.style.Theme_TunisianPrayerTimes)
                 arabicContext.applyOverrideConfiguration(config)
                 android.app.DatePickerDialog(
                     arabicContext,
