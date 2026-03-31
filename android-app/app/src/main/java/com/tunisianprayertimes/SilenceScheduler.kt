@@ -25,6 +25,8 @@ object SilenceScheduler {
             return
         }
 
+        PrefsManager.applyRamadanIshaOverrideIfNeeded(context)
+
         val delegationId = PrefsManager.getDelegationId(context)
         val now = Calendar.getInstance()
         val year = now.get(Calendar.YEAR)
@@ -141,13 +143,14 @@ object SilenceScheduler {
      * This acts as a safety net: if the midnight reschedule alarm is killed by aggressive
      * OEM battery optimization, Fajr will still fire because it was set hours in advance.
      */
-    private fun scheduleTomorrowFajr(context: Context, delegationId: Int, now: Calendar) {
+    internal fun scheduleTomorrowFajr(context: Context, delegationId: Int, now: Calendar) {
         val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         val tYear = tomorrow.get(Calendar.YEAR)
         val tMonth = tomorrow.get(Calendar.MONTH) + 1
         val tDay = tomorrow.get(Calendar.DAY_OF_MONTH)
 
         val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(context, delegationId, tYear, tMonth, tDay)
+            ?: PrayerTimesRepository.loadDayPrayerTimes(context, delegationId, tYear - 1, tMonth, tDay)
             ?: return
 
         val fajr = tomorrowTimes.fajr
