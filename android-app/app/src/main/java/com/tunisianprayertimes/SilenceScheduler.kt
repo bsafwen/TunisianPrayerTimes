@@ -1,11 +1,9 @@
 package com.tunisianprayertimes
 
 import android.app.AlarmManager
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.media.AudioManager
 import android.os.Build
 import android.util.Log
 import java.util.Calendar
@@ -37,7 +35,7 @@ object SilenceScheduler {
 
         if (todayTimes == null) {
             Log.w(TAG, "No prayer times found for $delegationId/$year/$month/$day")
-            disableSilentMode(context)
+            SilenceModeController.disableAutoSilence(context)
             return
         }
 
@@ -83,7 +81,7 @@ object SilenceScheduler {
                 currentlyInSilenceWindow = true
                 // We're in the middle of a silence window — ensure phone is silenced
                 // and schedule the unsilence
-                enableSilentMode(context)
+                SilenceModeController.enableAutoSilence(context)
                 scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, prayerTime.prayer)
                 Log.d(TAG, "Currently in silence window for ${prayerTime.prayer}, scheduled UNSILENCE at ${unsilenceTime.time}")
                 continue
@@ -104,7 +102,7 @@ object SilenceScheduler {
         // If we're not in any silence window, make sure phone is in normal mode
         // (handles the case where a previous silence alarm fired but unsilence was missed)
         if (!currentlyInSilenceWindow) {
-            disableSilentMode(context)
+            SilenceModeController.disableAutoSilence(context)
             Log.d(TAG, "Not in any silence window, ensuring phone is in normal mode")
         }
 
@@ -213,7 +211,7 @@ object SilenceScheduler {
         )
         alarmManager.cancel(midnightIntent)
         // Restore normal mode when cancelling all alarms
-        disableSilentMode(context)
+        SilenceModeController.disableAutoSilence(context)
     }
 
     private fun scheduleExactAlarm(context: Context, triggerAtMillis: Long, action: String, prayer: Prayer) {
@@ -294,21 +292,4 @@ object SilenceScheduler {
         )
     }
 
-    private fun enableSilentMode(context: Context) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (notificationManager.isNotificationPolicyAccessGranted) {
-            notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-            val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-            audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
-        }
-    }
-
-    private fun disableSilentMode(context: Context) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (notificationManager.isNotificationPolicyAccessGranted) {
-            notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
-            val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-            audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
-        }
-    }
 }
