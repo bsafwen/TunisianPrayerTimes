@@ -23,7 +23,13 @@ class SilenceReceiver : BroadcastReceiver() {
             "com.tunisianprayertimes.ACTION_UNSILENCE" -> {
                 val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
                 Log.d(TAG, "Restoring normal mode after $prayerName")
-                SilenceModeController.disableAutoSilence(context)
+                if (!SilenceModeController.disableAutoSilence(context)) {
+                    // Flag was already cleared (manual toggle, scheduleAll, etc.)
+                    // but the alarm still fired — force normal so DND is never
+                    // left on permanently.
+                    Log.d(TAG, "Auto-silence flag already cleared, forcing normal mode")
+                    SilenceModeController.forceNormalMode(context)
+                }
             }
             "com.tunisianprayertimes.ACTION_RESCHEDULE" -> {
                 Log.d(TAG, "Rescheduling alarms")
