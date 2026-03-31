@@ -921,7 +921,8 @@ private fun PrayerRowHeader() {
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
             color = TextMuted,
-            modifier = Modifier.weight(2f)
+            maxLines = 1,
+            modifier = Modifier.weight(1.2f)
         )
         Text(
             text = stringResource(R.string.col_time),
@@ -929,29 +930,32 @@ private fun PrayerRowHeader() {
             fontWeight = FontWeight.Bold,
             color = TextMuted,
             textAlign = TextAlign.Center,
-            modifier = Modifier.weight(1.5f)
+            maxLines = 1,
+            modifier = Modifier.weight(1.8f)
         )
-        Row(modifier = Modifier.weight(1.8f)) {
+        Row(modifier = Modifier.weight(2.2f)) {
             Text(
                 text = stringResource(R.string.col_delay),
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextMuted,
                 textAlign = TextAlign.Center,
+                maxLines = 1,
                 modifier = Modifier.weight(1f)
             )
-            Spacer(modifier = Modifier.weight(0.8f))
+            Spacer(modifier = Modifier.weight(0.4f))
         }
-        Row(modifier = Modifier.weight(2.2f)) {
+        Row(modifier = Modifier.weight(2.5f)) {
             Text(
                 text = stringResource(R.string.col_duration),
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextMuted,
                 textAlign = TextAlign.Center,
+                maxLines = 1,
                 modifier = Modifier.weight(1f)
             )
-            Spacer(modifier = Modifier.weight(0.8f))
+            Spacer(modifier = Modifier.weight(0.4f))
         }
     }
 }
@@ -981,6 +985,7 @@ private fun PrayerRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .height(IntrinsicSize.Min)
             .padding(vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -991,7 +996,8 @@ private fun PrayerRow(
             fontWeight = FontWeight.Bold,
             color = PrayerNameColor,
             maxLines = 1,
-            modifier = Modifier.weight(2f)
+            softWrap = false,
+            modifier = Modifier.weight(1.2f)
         )
 
         // Prayer time
@@ -1002,12 +1008,14 @@ private fun PrayerRow(
             fontSize = 14.sp,
             color = TextDark,
             textAlign = TextAlign.Center,
-            modifier = Modifier.weight(1.5f)
+            maxLines = 1,
+            softWrap = false,
+            modifier = Modifier.weight(1.8f)
         )
 
         // Delay control
         Row(
-            modifier = Modifier.weight(1.8f),
+            modifier = Modifier.weight(2.2f),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -1064,8 +1072,9 @@ private fun PrayerRow(
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
+                softWrap = false,
                 modifier = Modifier
-                    .weight(0.8f)
+                    .weight(0.4f)
                     .clickable {
                         val newMode = if (delayMode == DelayMode.MINUTES) DelayMode.FIXED_TIME else DelayMode.MINUTES
                         delayMode = newMode
@@ -1078,7 +1087,7 @@ private fun PrayerRow(
 
         // Duration/end control
         Row(
-            modifier = Modifier.weight(2.2f),
+            modifier = Modifier.weight(2.5f),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -1135,8 +1144,9 @@ private fun PrayerRow(
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
+                softWrap = false,
                 modifier = Modifier
-                    .weight(0.8f)
+                    .weight(0.4f)
                     .clickable {
                         val newMode = if (silenceMode == SilenceMode.DURATION) SilenceMode.FIXED_TIME else SilenceMode.DURATION
                         silenceMode = newMode
@@ -1163,7 +1173,7 @@ private fun NumberInput(
             onValueChange(filtered)
         },
         modifier = modifier
-            .height(36.dp)
+            .heightIn(min = 36.dp)
             .clip(RoundedCornerShape(6.dp))
             .background(Color.White)
             .then(
@@ -1213,7 +1223,7 @@ private fun TimeDisplay(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-            .height(36.dp)
+            .heightIn(min = 36.dp)
             .clip(RoundedCornerShape(6.dp))
             .background(GoldLight.copy(alpha = 0.3f))
             .clickable(onClick = onClick)
@@ -1224,7 +1234,8 @@ private fun TimeDisplay(
             fontSize = 13.sp,
             color = TextDark,
             textAlign = TextAlign.Center,
-            maxLines = 1
+            maxLines = 1,
+            softWrap = false
         )
     }
 }

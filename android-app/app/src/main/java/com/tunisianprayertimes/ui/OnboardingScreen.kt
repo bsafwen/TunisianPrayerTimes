@@ -29,6 +29,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -184,7 +186,7 @@ fun OnboardingScreen(
                         goingForward = false
                         currentStep--
                     },
-                    modifier = Modifier.height(56.dp).testTag(TestTags.ONBOARDING_PREV),
+                    modifier = Modifier.weight(1f).heightIn(min = 56.dp).testTag(TestTags.ONBOARDING_PREV),
                     shape = RoundedCornerShape(28.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GreenPrimary)
                 ) {
@@ -192,7 +194,8 @@ fun OnboardingScreen(
                         text = stringResource(R.string.onboarding_prev),
                         fontSize = 16.sp,
                         color = GreenPrimary,
-                        modifier = Modifier.padding(horizontal = 12.dp)
+                        maxLines = 1,
+                        softWrap = false
                     )
                 }
                 Spacer(Modifier.width(12.dp))
@@ -201,14 +204,15 @@ fun OnboardingScreen(
             if (currentStep == totalSteps - 1) {
                 Button(
                     onClick = onFinish,
-                    modifier = Modifier.height(56.dp).testTag(TestTags.ONBOARDING_START),
+                    modifier = Modifier.weight(1f).heightIn(min = 56.dp).testTag(TestTags.ONBOARDING_START),
                     shape = RoundedCornerShape(28.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)
                 ) {
                     Text(
                         text = stringResource(R.string.onboarding_start),
                         fontSize = 18.sp,
-                        modifier = Modifier.padding(horizontal = 36.dp)
+                        maxLines = 1,
+                        softWrap = false
                     )
                 }
             } else {
@@ -218,14 +222,15 @@ fun OnboardingScreen(
                         currentStep++
                     },
                     enabled = currentStep != 4 || allPermsGranted,
-                    modifier = Modifier.height(56.dp).testTag(TestTags.ONBOARDING_NEXT).alpha(if (currentStep == 4 && !allPermsGranted) 0.4f else 1f),
+                    modifier = Modifier.weight(1f).heightIn(min = 56.dp).testTag(TestTags.ONBOARDING_NEXT).alpha(if (currentStep == 4 && !allPermsGranted) 0.4f else 1f),
                     shape = RoundedCornerShape(28.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)
                 ) {
                     Text(
                         text = stringResource(R.string.onboarding_next),
                         fontSize = 18.sp,
-                        modifier = Modifier.padding(horizontal = 36.dp)
+                        maxLines = 1,
+                        softWrap = false
                     )
                 }
             }
@@ -563,7 +568,7 @@ private fun PermissionRow(
                         disabledContainerColor = TextMuted
                     ),
                     contentPadding = ButtonDefaults.TextButtonContentPadding,
-                    modifier = Modifier.height(32.dp)
+                    modifier = Modifier.heightIn(min = 32.dp)
                 ) {
                     Text(
                         text = if (isGranted) grantedLabel else grantLabel,
@@ -640,6 +645,7 @@ private fun DemoPrayerRowCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .height(IntrinsicSize.Min)
                 .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -649,7 +655,9 @@ private fun DemoPrayerRowCard(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 color = PrayerNameColor,
-                modifier = Modifier.weight(2f)
+                maxLines = 1,
+                softWrap = false,
+                modifier = Modifier.weight(1.6f)
             )
             // Time
             Text(
@@ -657,11 +665,13 @@ private fun DemoPrayerRowCard(
                 fontSize = 13.sp,
                 color = TextDark,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.weight(1.5f)
+                maxLines = 1,
+                softWrap = false,
+                modifier = Modifier.weight(1.6f)
             )
             // Delay
             Row(
-                modifier = Modifier.weight(1.8f),
+                modifier = Modifier.weight(2f),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -673,7 +683,7 @@ private fun DemoPrayerRowCard(
                         .weight(1f)
                         .graphicsLayer { translationX = delayShake }
                 )
-                Box(modifier = Modifier.weight(0.8f)) {
+                Box(modifier = Modifier.weight(0.6f)) {
                     val bgAlpha = if (tapTargetDelay) tapHighlight * 0.3f else 0f
                     val labelScale = if (tapTargetDelay) tapScale else 1f
                     Box(
@@ -689,6 +699,8 @@ private fun DemoPrayerRowCard(
                         fontWeight = FontWeight.Bold,
                         color = delayLabelColor,
                         textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        softWrap = false,
                         modifier = Modifier
                             .align(Alignment.Center)
                             .graphicsLayer {
@@ -702,7 +714,7 @@ private fun DemoPrayerRowCard(
             }
             // Duration
             Row(
-                modifier = Modifier.weight(2.2f),
+                modifier = Modifier.weight(2.3f),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -714,7 +726,7 @@ private fun DemoPrayerRowCard(
                         .weight(1f)
                         .graphicsLayer { translationX = durShake }
                 )
-                Box(modifier = Modifier.weight(0.8f)) {
+                Box(modifier = Modifier.weight(0.6f)) {
                     val bgAlpha = if (tapTargetDuration) tapHighlight * 0.3f else 0f
                     val labelScale = if (tapTargetDuration) tapScale else 1f
                     Box(
@@ -730,6 +742,8 @@ private fun DemoPrayerRowCard(
                         fontWeight = FontWeight.Bold,
                         color = durationLabelColor,
                         textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        softWrap = false,
                         modifier = Modifier
                             .align(Alignment.Center)
                             .graphicsLayer {
@@ -754,7 +768,7 @@ private fun DemoInputBox(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-            .height(32.dp)
+            .heightIn(min = 32.dp)
             .clip(RoundedCornerShape(6.dp))
             .background(GoldLight.copy(alpha = 0.3f))
             .padding(horizontal = 2.dp, vertical = 4.dp)
@@ -764,7 +778,8 @@ private fun DemoInputBox(
             fontSize = 13.sp,
             color = textColor,
             textAlign = TextAlign.Center,
-            maxLines = 1
+            maxLines = 1,
+            softWrap = false
         )
     }
 }
