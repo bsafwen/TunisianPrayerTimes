@@ -10,9 +10,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tunisianprayertimes.ui.TestTags
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
+import org.junit.rules.TestRule
+import org.junit.runners.model.Statement
 import org.junit.runner.RunWith
-import org.junit.rules.TestWatcher
-import org.junit.runner.Description
 
 /**
  * Instrumented tests for date navigation and DatePickerDialog.
@@ -21,19 +22,23 @@ import org.junit.runner.Description
 @RunWith(AndroidJUnit4::class)
 class DateNavigationInstrumentedTest {
 
-    @get:Rule(order = 0)
-    val firstLaunchRule = object : TestWatcher() {
-        override fun starting(description: Description) {
-            val context = ApplicationProvider.getApplicationContext<android.content.Context>()
-            context.getSharedPreferences("prayer_silence_prefs", android.content.Context.MODE_PRIVATE)
-                .edit()
-                .putBoolean("first_launch_done", true)
-                .commit()
+    private val firstLaunchRule = TestRule { base, _ ->
+        object : Statement() {
+            override fun evaluate() {
+                val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+                context.getSharedPreferences("prayer_silence_prefs", android.content.Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("first_launch_done", true)
+                    .commit()
+                base.evaluate()
+            }
         }
     }
 
-    @get:Rule(order = 1)
-    val composeRule = createAndroidComposeRule<MainActivity>()
+    private val composeRule = createAndroidComposeRule<MainActivity>()
+
+    @get:Rule
+    val ruleChain: RuleChain = RuleChain.outerRule(firstLaunchRule).around(composeRule)
 
     @Test
     fun dateLabel_isDisplayed() {
