@@ -65,5 +65,8 @@
     <string name="onboarding_perm_battery">عدم تقييد البطارية</string>
     <string name="onboarding_perm_battery_desc">يمنع النظام من إيقاف التطبيق عند عدم استخدامه.</string>
     <string name="banner_battery_missing">التطبيق قد يتوقف عن العمل بسبب تحسين البطارية. اضغط هنا لإعفائه. ⬅</string>
+    <string name="date_today">اليوم</string>
+    <string name="date_go_back_today">العودة لليوم</string>
+    <string name="no_prayer_data">لا تتوفر بيانات لهذا اليوم</string>
 
 </resources>

@@ -28,6 +28,7 @@ val BannerBg = Color(0xFFFFF3E0)
 val BannerStroke = Color(0xFFFFB74D)
 val BannerText = Color(0xFFE65100)
 val RamadanBg = Color(0xFFFFF8E1)
+val NextPrayerBg = Color(0xFFE0F2F1)
 
 private val LightColorScheme = lightColorScheme(
     primary = GreenPrimary,

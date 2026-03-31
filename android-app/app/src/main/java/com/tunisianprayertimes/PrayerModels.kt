@@ -22,6 +22,17 @@ data class DayPrayerTimes(
     val isha: PrayerTime
 ) {
     fun allPrayers(): List<PrayerTime> = listOf(fajr, dhuhr, asr, maghrib, isha)
+
+    /**
+     * Returns the next upcoming prayer based on the given time (hour:minute).
+     * Returns null if all prayers have passed.
+     */
+    fun nextPrayer(currentHour: Int, currentMinute: Int): Prayer? {
+        val nowMinutes = currentHour * 60 + currentMinute
+        return allPrayers().firstOrNull { pt ->
+            pt.hour * 60 + pt.minute > nowMinutes
+        }?.prayer
+    }
 }
 
 enum class SilenceMode { DURATION, FIXED_TIME }
