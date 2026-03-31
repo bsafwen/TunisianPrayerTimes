@@ -3,8 +3,35 @@ package com.tunisianprayertimes
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
+import android.os.Handler
+import android.os.Looper
 
 object SilenceModeController {
+
+    private val handler = Handler(Looper.getMainLooper())
+
+    /**
+     * Restores the interruption filter and ringer mode.
+     *
+     * On some devices (Pixel 6, etc.) [NotificationManager.setInterruptionFilter]
+     * is processed asynchronously — a ringer-mode change made while the old DND
+     * state is still in effect can be silently clamped to SILENT.  To handle
+     * every device variant we:
+     *  1. Set the ringer mode immediately (works when the filter call is sync).
+     *  2. Clear / change the interruption filter.
+     *  3. Post a second ringer-mode write so it runs after the filter update
+     *     has been processed (handles the async case).
+     */
+    private fun restoreState(
+        notificationManager: NotificationManager,
+        audioManager: AudioManager,
+        previousFilter: Int,
+        previousRinger: Int
+    ) {
+        audioManager.ringerMode = previousRinger                       // (1)
+        notificationManager.setInterruptionFilter(previousFilter)      // (2)
+        handler.post { audioManager.ringerMode = previousRinger }      // (3)
+    }
 
     fun enableAutoSilence(context: Context): Boolean {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -30,8 +57,11 @@ object SilenceModeController {
         if (!PrefsManager.isAutoSilenceActive(context)) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        notificationManager.setInterruptionFilter(PrefsManager.getAutoSilencePreviousInterruptionFilter(context))
-        audioManager.ringerMode = PrefsManager.getAutoSilencePreviousRingerMode(context)
+        restoreState(
+            notificationManager, audioManager,
+            PrefsManager.getAutoSilencePreviousInterruptionFilter(context),
+            PrefsManager.getAutoSilencePreviousRingerMode(context)
+        )
         PrefsManager.clearAutoSilenceState(context)
         return true
     }
@@ -40,10 +70,17 @@ object SilenceModeController {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
-        PrefsManager.clearAutoSilenceState(context)
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        PrefsManager.clearAutoSilenceState(context)
+        if (!PrefsManager.isManualSilenceActive(context)) {
+            PrefsManager.markManualSilenceActive(
+                context = context,
+                previousRingerMode = audioManager.ringerMode,
+                previousInterruptionFilter = notificationManager.currentInterruptionFilter
+            )
+        }
+
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
         return true
     }
@@ -52,11 +89,44 @@ object SilenceModeController {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+        if (PrefsManager.isManualSilenceActive(context)) {
+            restoreState(
+                notificationManager, audioManager,
+                PrefsManager.getManualSilencePreviousInterruptionFilter(context),
+                PrefsManager.getManualSilencePreviousRingerMode(context)
+            )
+        } else {
+            restoreState(
+                notificationManager, audioManager,
+                NotificationManager.INTERRUPTION_FILTER_ALL,
+                AudioManager.RINGER_MODE_NORMAL
+            )
+        }
+
+        PrefsManager.clearManualSilenceState(context)
         PrefsManager.clearAutoSilenceState(context)
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        return true
+    }
+
+    /**
+     * Unconditionally forces normal mode and clears all silence state.
+     * Used as a safety net by the alarm receiver when the auto-silence flag
+     * was already cleared but the phone may still be in DND.
+     */
+    fun forceNormalMode(context: Context): Boolean {
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+        restoreState(
+            notificationManager, audioManager,
+            NotificationManager.INTERRUPTION_FILTER_ALL,
+            AudioManager.RINGER_MODE_NORMAL
+        )
+        PrefsManager.clearAutoSilenceState(context)
+        PrefsManager.clearManualSilenceState(context)
         return true
     }
 }

@@ -19,7 +19,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 
 private const val FUSED_TIMEOUT_MS = 8_000L
 private const val LOCATION_PROVIDER_TIMEOUT_MS = 8_000L
-private const val MAX_LAST_LOCATION_AGE_MS = 10 * 60 * 1_000L
+private const val MAX_LAST_LOCATION_AGE_MS = 5 * 60 * 1_000L
 
 sealed interface DelegationLocationResult {
     data class Success(val delegation: Delegation) : DelegationLocationResult
@@ -73,28 +73,34 @@ object DelegationLocator {
         context: Context,
         permissionState: LocationPermissionState
     ): Location? {
-        val fusedLocation = runCatching {
-            currentFusedLocation(context, permissionState)
-        }.getOrNull()
+        val candidates = mutableListOf<Location>()
 
-        if (fusedLocation != null) {
-            return fusedLocation
-        }
+        // Try fused location (may return a cached/coarse fix)
+        runCatching { currentFusedLocation(context, permissionState) }
+            .getOrNull()
+            ?.let { candidates.add(it) }
 
+        // Always also try NETWORK_PROVIDER — it consistently returns
+        // a fresh, accurate fix that is good enough for delegation matching.
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (fallbackProviders(permissionState).none { isProviderEnabled(locationManager, it) }) {
-            return null
+        val networkProvider = LocationManager.NETWORK_PROVIDER
+        if (isProviderEnabled(locationManager, networkProvider) && permissionState.hasAny) {
+            currentProviderLocation(locationManager, networkProvider)
+                ?.let { candidates.add(it) }
         }
 
+        // If we have candidates, pick the most accurate one
+        if (candidates.isNotEmpty()) {
+            return chooseBestLocation(candidates)
+        }
+
+        // Fall back to other providers (GPS, passive)
         for (provider in fallbackProviders(permissionState)) {
-            if (!isProviderEnabled(locationManager, provider)) {
-                continue
-            }
+            if (provider == networkProvider) continue // already tried
+            if (!isProviderEnabled(locationManager, provider)) continue
 
             val liveLocation = currentProviderLocation(locationManager, provider)
-            if (liveLocation != null) {
-                return liveLocation
-            }
+            if (liveLocation != null) return liveLocation
         }
 
         return freshestKnownLocation(locationManager, permissionState)
@@ -265,11 +271,12 @@ internal fun <T> chooseBestCandidate(
     accuracySelector: (T) -> Float
 ): T? {
     return candidates.maxWithOrNull { left, right ->
-        val timeComparison = timeSelector(left).compareTo(timeSelector(right))
-        if (timeComparison != 0) {
-            timeComparison
+        // Prefer better accuracy (lower value) first; break ties with recency
+        val accuracyComparison = accuracySelector(right).compareTo(accuracySelector(left))
+        if (accuracyComparison != 0) {
+            accuracyComparison
         } else {
-            accuracySelector(right).compareTo(accuracySelector(left))
+            timeSelector(left).compareTo(timeSelector(right))
         }
     }
 }

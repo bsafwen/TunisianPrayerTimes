@@ -43,7 +43,7 @@ class DelegationLocatorTest {
     }
 
     @Test
-    fun `newer location beats older more accurate one`() {
+    fun `more accurate location beats newer less accurate one`() {
         val olderAccurate = Candidate(time = 1_000L, accuracy = 5f)
         val newerLessAccurate = Candidate(time = 2_000L, accuracy = 50f)
 
@@ -53,7 +53,21 @@ class DelegationLocatorTest {
             accuracySelector = { it.accuracy }
         )
 
-        assertEquals(newerLessAccurate, best)
+        assertEquals(olderAccurate, best)
+    }
+
+    @Test
+    fun `same accuracy prefers newer`() {
+        val older = Candidate(time = 1_000L, accuracy = 10f)
+        val newer = Candidate(time = 2_000L, accuracy = 10f)
+
+        val best = chooseBestCandidate(
+            candidates = listOf(older, newer),
+            timeSelector = { it.time },
+            accuracySelector = { it.accuracy }
+        )
+
+        assertEquals(newer, best)
     }
 
     @Test

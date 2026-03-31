@@ -99,11 +99,12 @@ object SilenceScheduler {
             }
         }
 
-        // If we're not in any silence window, make sure phone is in normal mode
-        // (handles the case where a previous silence alarm fired but unsilence was missed)
+        // If we're not in any silence window, restore the previous ringer state
+        // if auto-silence was active (handles missed unsilence alarms).
+        // This is a no-op when the flag is not set, so manual silence is preserved.
         if (!currentlyInSilenceWindow) {
             SilenceModeController.disableAutoSilence(context)
-            Log.d(TAG, "Not in any silence window, ensuring phone is in normal mode")
+            Log.d(TAG, "Not in any silence window, ensuring phone is in previous mode")
         }
 
         // Schedule tomorrow's Fajr directly so we don't depend solely on the midnight

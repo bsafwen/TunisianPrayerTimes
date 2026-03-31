@@ -99,7 +99,7 @@ class AlarmCoverageTest {
     // ==================== todayTimes == null ====================
 
     @Test
-    fun scheduleAll_withNullTodayTimes_restoredNormalMode_andNoAlarms() {
+    fun scheduleAll_withNullTodayTimes_restoresAndClearsFlag() {
         // Use non-existent delegation so todayTimes == null
         PrefsManager.setEnabled(context, true)
         PrefsManager.setDelegationId(context, 99999)
@@ -110,10 +110,11 @@ class AlarmCoverageTest {
         SilenceScheduler.scheduleAll(context)
 
         assertEquals(
-            "Phone should be restored to normal when no prayer data",
+            "Phone should be restored to previous mode when no prayer data and flag was set",
             AudioManager.RINGER_MODE_NORMAL,
             audioManager.ringerMode
         )
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
         // todayTimes == null returns early, so no alarms at all (not even midnight reschedule)
         assertEquals("No alarms when prayer data missing", 0, shadowAlarmManager.scheduledAlarms.size)
     }

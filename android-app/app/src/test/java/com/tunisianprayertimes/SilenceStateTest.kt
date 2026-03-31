@@ -63,16 +63,18 @@ class SilenceStateTest {
     @Test
     fun autoSilence_thenScheduleAll_outsidePrayerWindow_restoresPreviousState() {
         SilenceModeController.enableAutoSilence(context)
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
 
         // Use a non-existent delegation so todayTimes is null, which guarantees
         // we are "outside" any prayer window regardless of current time/timezone.
-        // This avoids flakiness when CI runs during a real prayer window (e.g. UTC ~05:00).
         PrefsManager.setDelegationId(context, 99999)
         PrefsManager.setEnabled(context, true)
         SilenceScheduler.scheduleAll(context)
 
+        // scheduleAll sees auto-silence flag is set (missed unsilence) and
+        // restores to the captured previous state.
         assertEquals(
-            "scheduleAll should restore the pre-auto-silence mode when outside a prayer window",
+            "scheduleAll should restore the pre-auto-silence mode when flag is set",
             AudioManager.RINGER_MODE_NORMAL,
             audioManager.ringerMode
         )
@@ -107,6 +109,124 @@ class SilenceStateTest {
         assertFalse(PrefsManager.isAutoSilenceActive(context))
     }
 
+    // ==================== Regression: DND not cancelled ====================
+
+    /**
+     * Reproduces the bug where ACTION_UNSILENCE fails to cancel DND.
+     *
+     * Scenario: A previous prayer's unsilence alarm was missed (OEM killed it).
+     * Phone stays in DND with isAutoSilenceActive=true. The user opens the app
+     * between prayers — scheduleAll() calls disableAutoSilence() which restores
+     * to NORMAL and clears the flag. Next prayer's ACTION_SILENCE fires while
+     * the phone is NORMAL — captures previous=NORMAL, silences. Then the user
+     * manually silences via the UI button (setManualSilent clears auto-silence
+     * flag). ACTION_UNSILENCE fires → isAutoSilenceActive is false → returns
+     * without doing anything → DND stays on forever.
+     */
+    @Test
+    fun unsilenceAlarm_afterManualSilenceOverride_mustStillRestoreNormalMode() {
+        // 1. Auto-silence alarm fires for Isha
+        val receiver = SilenceReceiver()
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
+            putExtra("extra_prayer", "ISHA")
+        })
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+        assertTrue(PrefsManager.isAutoSilenceActive(context))
+
+        // 2. User taps manual silence button (clears auto-silence tracking)
+        SilenceModeController.setManualSilent(context)
+        assertFalse("Manual silence clears auto-silence flag", PrefsManager.isAutoSilenceActive(context))
+
+        // 3. Unsilence alarm fires — MUST still restore normal mode
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_UNSILENCE").apply {
+            putExtra("extra_prayer", "ISHA")
+        })
+
+        assertEquals(
+            "ACTION_UNSILENCE must always restore normal mode, even if auto-silence flag was cleared",
+            AudioManager.RINGER_MODE_NORMAL,
+            audioManager.ringerMode
+        )
+    }
+
+    /**
+     * Reproduces the bug where a missed unsilence from a previous prayer
+     * causes the next prayer's unsilence to restore to DND instead of NORMAL.
+     *
+     * Timeline:
+     * 1. Maghreb silence → captures previous=NORMAL, sets DND
+     * 2. Maghreb unsilence alarm MISSED (OEM killed it)
+     * 3. Phone stays in DND with auto-silence still active
+     * 4. Isha silence fires → isAutoSilenceActive=true → skips capture → sets DND (no-op)
+     * 5. Isha unsilence fires → restores "previous" which is NORMAL from step 1
+     *
+     * This scenario should work correctly — verify it does.
+     */
+    @Test
+    fun missedUnsilence_nextPrayerStillRestoresToOriginalNormalMode() {
+        val receiver = SilenceReceiver()
+
+        // 1. Maghreb silence fires — phone was NORMAL
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
+            putExtra("extra_prayer", "MAGHREB")
+        })
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        // 2. Maghreb unsilence MISSED — phone stays silent, flag stays active
+        // (we just don't call the unsilence receiver)
+
+        // 3. Isha silence fires — auto-silence already active, should NOT overwrite captured state
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
+            putExtra("extra_prayer", "ISHA")
+        })
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+        assertTrue(PrefsManager.isAutoSilenceActive(context))
+
+        // 4. Isha unsilence fires — should restore to the ORIGINAL normal mode from step 1
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_UNSILENCE").apply {
+            putExtra("extra_prayer", "ISHA")
+        })
+
+        assertEquals(
+            "Must restore to original NORMAL mode captured before the first silence",
+            AudioManager.RINGER_MODE_NORMAL,
+            audioManager.ringerMode
+        )
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
+    }
+
+    /**
+     * Reproduces the core bug: disableAutoSilence is gated on isAutoSilenceActive.
+     * If the flag is false, the SilenceReceiver's ACTION_UNSILENCE must still
+     * force normal mode as a safety net.
+     */
+    @Test
+    fun unsilenceAlarm_withClearedFlag_mustStillForceNormalMode() {
+        // Simulate: phone is in DND from a silence alarm
+        SilenceModeController.enableAutoSilence(context)
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        // Flag gets cleared by some path (manual toggle, scheduleAll, etc.)
+        PrefsManager.clearAutoSilenceState(context)
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
+
+        // Phone is still physically in DND/silent
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        // Unsilence alarm fires via SilenceReceiver — must force normal via safety net
+        val receiver = SilenceReceiver()
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_UNSILENCE").apply {
+            putExtra("extra_prayer", "ISHA")
+        })
+
+        assertEquals(
+            "ACTION_UNSILENCE must force normal mode even when auto-silence flag is already cleared",
+            AudioManager.RINGER_MODE_NORMAL,
+            audioManager.ringerMode
+        )
+    }
+
     @Test
     fun autoSilence_restoresPreviouslySilentState() {
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
@@ -117,6 +237,126 @@ class SilenceStateTest {
 
         assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
         assertEquals(NotificationManager.INTERRUPTION_FILTER_ALL, notificationManager.currentInterruptionFilter)
+    }
+
+    @Test
+    fun autoSilence_restoresPreviousVibrateMode() {
+        audioManager.ringerMode = AudioManager.RINGER_MODE_VIBRATE
+
+        SilenceModeController.enableAutoSilence(context)
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        SilenceModeController.disableAutoSilence(context)
+        assertEquals(
+            "Should restore to vibrate mode",
+            AudioManager.RINGER_MODE_VIBRATE,
+            audioManager.ringerMode
+        )
+    }
+
+    /**
+     * User already has DND enabled manually before any prayer window.
+     * The app should capture that state, apply its own DND during prayer,
+     * and restore the user's manual DND when the prayer ends.
+     */
+    @Test
+    fun autoSilence_whenUserAlreadyHasDndEnabled_restoresUserDnd() {
+        // User manually set DND + silent before any prayer
+        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+
+        // Prayer time comes in — alarm fires via SilenceReceiver
+        val receiver = SilenceReceiver()
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
+            putExtra("extra_prayer", "ISHA")
+        })
+
+        // App captures previous state (DND + silent) and enables its own DND
+        assertTrue(PrefsManager.isAutoSilenceActive(context))
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+        assertEquals(NotificationManager.INTERRUPTION_FILTER_NONE, notificationManager.currentInterruptionFilter)
+
+        // Prayer time goes out — unsilence alarm fires
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_UNSILENCE").apply {
+            putExtra("extra_prayer", "ISHA")
+        })
+
+        // App must restore the user's previous manual DND — NOT force normal mode
+        assertEquals(
+            "Phone must keep user's previous silent ringer mode",
+            AudioManager.RINGER_MODE_SILENT,
+            audioManager.ringerMode
+        )
+        assertEquals(
+            "Phone must keep user's previous DND interruption filter",
+            NotificationManager.INTERRUPTION_FILTER_NONE,
+            notificationManager.currentInterruptionFilter
+        )
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
+    }
+
+    // ==================== Manual toggle on already-silenced phone ====================
+
+    /**
+     * Reproduces the bug: phone is already silenced, user taps the manual
+     * silence button (toggle ON), then taps again (toggle OFF).
+     * The phone must return to its previous silenced state, NOT normal.
+     */
+    @Test
+    fun phoneSilenced_manualToggleOnThenOff_restoresSilenced() {
+        // Phone starts in silent mode (user set it outside the app)
+        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+
+        // User taps manual silence button — "enable app silence"
+        SilenceModeController.setManualSilent(context)
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        // User taps again — "disable app silence"
+        SilenceModeController.setManualNormal(context)
+
+        assertEquals(
+            "Phone must return to its previous silent state, not forced normal",
+            AudioManager.RINGER_MODE_SILENT,
+            audioManager.ringerMode
+        )
+    }
+
+    /**
+     * Same scenario but starting from vibrate mode.
+     */
+    @Test
+    fun phoneVibrate_manualToggleOnThenOff_restoresVibrate() {
+        audioManager.ringerMode = AudioManager.RINGER_MODE_VIBRATE
+
+        SilenceModeController.setManualSilent(context)
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        SilenceModeController.setManualNormal(context)
+
+        assertEquals(
+            "Phone must return to its previous vibrate state",
+            AudioManager.RINGER_MODE_VIBRATE,
+            audioManager.ringerMode
+        )
+    }
+
+    /**
+     * Starting from normal mode — setManualNormal should still go to normal.
+     */
+    @Test
+    fun phoneNormal_manualToggleOnThenOff_restoresNormal() {
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+
+        SilenceModeController.setManualSilent(context)
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        SilenceModeController.setManualNormal(context)
+
+        assertEquals(
+            "Phone should be back to normal",
+            AudioManager.RINGER_MODE_NORMAL,
+            audioManager.ringerMode
+        )
     }
 
     @Test

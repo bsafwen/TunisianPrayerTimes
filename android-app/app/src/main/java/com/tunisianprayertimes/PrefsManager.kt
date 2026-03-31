@@ -15,6 +15,9 @@ object PrefsManager {
     private const val KEY_AUTO_SILENCE_ACTIVE = "auto_silence_active"
     private const val KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE = "auto_silence_previous_ringer_mode"
     private const val KEY_AUTO_SILENCE_PREVIOUS_INTERRUPTION_FILTER = "auto_silence_previous_interruption_filter"
+    private const val KEY_MANUAL_SILENCE_ACTIVE = "manual_silence_active"
+    private const val KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE = "manual_silence_previous_ringer_mode"
+    private const val KEY_MANUAL_SILENCE_PREVIOUS_INTERRUPTION_FILTER = "manual_silence_previous_interruption_filter"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
 
     private fun prefs(context: Context): SharedPreferences {
@@ -73,6 +76,37 @@ object PrefsManager {
             .putBoolean(KEY_AUTO_SILENCE_ACTIVE, false)
             .remove(KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE)
             .remove(KEY_AUTO_SILENCE_PREVIOUS_INTERRUPTION_FILTER)
+            .apply()
+    }
+
+    fun isManualSilenceActive(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_MANUAL_SILENCE_ACTIVE, false)
+    }
+
+    fun markManualSilenceActive(context: Context, previousRingerMode: Int, previousInterruptionFilter: Int) {
+        prefs(context).edit()
+            .putBoolean(KEY_MANUAL_SILENCE_ACTIVE, true)
+            .putInt(KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE, previousRingerMode)
+            .putInt(KEY_MANUAL_SILENCE_PREVIOUS_INTERRUPTION_FILTER, previousInterruptionFilter)
+            .apply()
+    }
+
+    fun getManualSilencePreviousRingerMode(context: Context): Int {
+        return prefs(context).getInt(KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE, AudioManager.RINGER_MODE_NORMAL)
+    }
+
+    fun getManualSilencePreviousInterruptionFilter(context: Context): Int {
+        return prefs(context).getInt(
+            KEY_MANUAL_SILENCE_PREVIOUS_INTERRUPTION_FILTER,
+            NotificationManager.INTERRUPTION_FILTER_ALL
+        )
+    }
+
+    fun clearManualSilenceState(context: Context) {
+        prefs(context).edit()
+            .putBoolean(KEY_MANUAL_SILENCE_ACTIVE, false)
+            .remove(KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE)
+            .remove(KEY_MANUAL_SILENCE_PREVIOUS_INTERRUPTION_FILTER)
             .apply()
     }
 
