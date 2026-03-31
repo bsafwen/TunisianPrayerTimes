@@ -1,5 +1,6 @@
 package com.tunisianprayertimes
 
+import android.app.AlarmManager
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import androidx.work.Configuration
@@ -12,7 +13,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows
 import org.robolectric.annotation.Config
+import org.robolectric.shadows.ShadowAlarmManager
 
 /**
  * Tests for SilenceVerifyWorker using WorkManager's test infrastructure.
@@ -69,5 +72,42 @@ class SilenceVerifyWorkerTest {
         SilenceVerifyWorker.enqueue(context)
         SilenceVerifyWorker.cancel(context)
         SilenceVerifyWorker.enqueue(context)
+    }
+
+    @Test
+    fun doWork_whenEnabled_actuallySchedulesAlarms() = runBlocking {
+        PrefsManager.setEnabled(context, true)
+
+        val worker = TestListenableWorkerBuilder<SilenceVerifyWorker>(context).build()
+        worker.doWork()
+
+        // doWork calls scheduleAll on applicationContext — get the AlarmManager from it
+        val alarmManager = worker.applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val shadowAM: ShadowAlarmManager = Shadows.shadowOf(alarmManager)
+
+        assertTrue(
+            "doWork with enabled=true should schedule alarms",
+            shadowAM.scheduledAlarms.isNotEmpty()
+        )
+    }
+
+    @Test
+    fun doWork_whenDisabled_doesNotScheduleAlarms() = runBlocking {
+        PrefsManager.setEnabled(context, false)
+
+        // Clear any pre-existing alarms
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val shadowAM: ShadowAlarmManager = Shadows.shadowOf(alarmManager)
+        val alarmsBefore = shadowAM.scheduledAlarms.size
+
+        val worker = TestListenableWorkerBuilder<SilenceVerifyWorker>(context).build()
+        worker.doWork()
+
+        // No new alarms should be added
+        assertEquals(
+            "doWork with enabled=false should NOT add new alarms",
+            alarmsBefore,
+            shadowAM.scheduledAlarms.size
+        )
     }
 }

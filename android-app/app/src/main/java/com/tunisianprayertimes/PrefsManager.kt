@@ -2,6 +2,8 @@ package com.tunisianprayertimes
 
 import android.content.Context
 import android.content.SharedPreferences
+import java.time.chrono.HijrahDate
+import java.time.temporal.ChronoField
 
 object PrefsManager {
     private const val PREFS_NAME = "prayer_silence_prefs"
@@ -38,20 +40,42 @@ object PrefsManager {
         prefs(context).edit().putBoolean(KEY_ENABLED, enabled).apply()
     }
 
+    private const val RAMADAN_ISHA_MINUTES = 90
+    private const val KEY_RAMADAN_OVERRIDE_APPLIED = "ramadan_isha_override_hijri_year"
+
     private fun defaultAfterMinutes(prayer: Prayer): Int = when (prayer) {
         Prayer.FAJR -> 60
         Prayer.DHUHR -> 60
         Prayer.ASR -> 30
         Prayer.MAGHRIB -> 20
-        Prayer.ISHA -> if (RamadanDetector.isRamadan()) 90 else 30
+        Prayer.ISHA -> 30
     }
 
     fun getAfterMinutes(context: Context, prayer: Prayer): Int {
-        // During Ramadan, override Isha to 90 min regardless of saved value
-        if (prayer == Prayer.ISHA && RamadanDetector.isRamadan()) {
-            return 90
-        }
         return prefs(context).getInt("after_${prayer.name}", defaultAfterMinutes(prayer))
+    }
+
+    /**
+     * One-time Ramadan override: if it's Ramadan and we haven't already applied the
+     * override this Hijri year, bump Isha duration to 90 min (only if current value < 90).
+     * After this, the user's changes are respected.
+     */
+    fun applyRamadanIshaOverrideIfNeeded(context: Context) {
+        applyRamadanIshaOverrideIfNeeded(context, HijrahDate.now())
+    }
+
+    internal fun applyRamadanIshaOverrideIfNeeded(context: Context, hijrahDate: HijrahDate) {
+        if (!RamadanDetector.isRamadan(hijrahDate)) return
+
+        val hijriYear = hijrahDate.get(ChronoField.YEAR)
+        val appliedYear = prefs(context).getInt(KEY_RAMADAN_OVERRIDE_APPLIED, -1)
+        if (appliedYear == hijriYear) return // already applied this Ramadan
+
+        val current = getAfterMinutes(context, Prayer.ISHA)
+        if (current < RAMADAN_ISHA_MINUTES) {
+            setAfterMinutes(context, Prayer.ISHA, RAMADAN_ISHA_MINUTES)
+        }
+        prefs(context).edit().putInt(KEY_RAMADAN_OVERRIDE_APPLIED, hijriYear).apply()
     }
 
     fun setAfterMinutes(context: Context, prayer: Prayer, minutes: Int) {

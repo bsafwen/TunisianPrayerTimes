@@ -19,6 +19,7 @@ import java.util.Calendar
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [26])
+@Suppress("DEPRECATION")
 class SilenceSchedulerIntegrationTest {
 
     private lateinit var context: Context
@@ -234,5 +235,248 @@ class SilenceSchedulerIntegrationTest {
         // At minimum the midnight reschedule alarm is always set; future prayer alarms depend on time of day
         val alarmCount = shadowAlarmManager.scheduledAlarms.size
         assertTrue("Should have at least the midnight reschedule alarm, got $alarmCount", alarmCount >= 1)
+    }
+
+    // --- Tomorrow's Fajr integration tests ---
+
+    @Test
+    fun fullCycle_tomorrowFajrSurvivesDelegationChange() {
+        PrefsManager.setEnabled(context, true)
+
+        // Schedule with Tunis (615)
+        SilenceScheduler.scheduleAll(context)
+        val tunisAlarms = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }.toSet()
+
+        // Change to a different delegation
+        PrefsManager.setDelegationId(context, 386)
+        SilenceScheduler.scheduleAll(context)
+        val newAlarms = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }.toSet()
+
+        // Alarms should differ (different delegation = different prayer times)
+        // unless both have identical Fajr times, which is unlikely
+        assertTrue("Should have alarms after delegation change", newAlarms.isNotEmpty())
+    }
+
+    @Test
+    fun tomorrowFajr_persistsThroughConfigChange() {
+        PrefsManager.setEnabled(context, true)
+
+        // Schedule with default config
+        SilenceScheduler.scheduleAll(context)
+        val alarmsBefore = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }.toSet()
+
+        // Change Fajr duration and reschedule
+        PrefsManager.setAfterMinutes(context, Prayer.FAJR, 90)
+        SilenceScheduler.scheduleAll(context)
+        val alarmsAfter = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }.toSet()
+
+        // The unsilence time should differ (90 min instead of default 60 min)
+        assertNotEquals(
+            "Alarm set should change after config update",
+            alarmsBefore, alarmsAfter
+        )
+    }
+
+    @Test
+    fun bootReceiver_reschedulesTomorrowFajr() {
+        PrefsManager.setEnabled(context, true)
+
+        // Simulate boot
+        val receiver = BootReceiver()
+        receiver.onReceive(context, android.content.Intent(android.content.Intent.ACTION_BOOT_COMPLETED))
+
+        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, 1) }
+        val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(
+            context, PrefsManager.getDelegationId(context),
+            tomorrow.get(Calendar.YEAR),
+            tomorrow.get(Calendar.MONTH) + 1,
+            tomorrow.get(Calendar.DAY_OF_MONTH)
+        )
+
+        if (tomorrowTimes != null) {
+            val fajr = tomorrowTimes.fajr
+            val config = PrefsManager.getConfig(context, Prayer.FAJR)
+            val expectedSilence = Calendar.getInstance().apply {
+                set(Calendar.YEAR, tomorrow.get(Calendar.YEAR))
+                set(Calendar.MONTH, tomorrow.get(Calendar.MONTH))
+                set(Calendar.DAY_OF_MONTH, tomorrow.get(Calendar.DAY_OF_MONTH))
+                set(Calendar.HOUR_OF_DAY, fajr.hour)
+                set(Calendar.MINUTE, fajr.minute)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+                add(Calendar.MINUTE, config.delayMinutes)
+            }
+
+            val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
+            assertTrue(
+                "After boot, tomorrow's Fajr should be scheduled",
+                alarmTriggerTimes.contains(expectedSilence.timeInMillis)
+            )
+        }
+    }
+
+    @Test
+    fun rescheduleAction_includesTomorrowFajr() {
+        PrefsManager.setEnabled(context, true)
+
+        val receiver = SilenceReceiver()
+        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_RESCHEDULE"))
+
+        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, 1) }
+        val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(
+            context, PrefsManager.getDelegationId(context),
+            tomorrow.get(Calendar.YEAR),
+            tomorrow.get(Calendar.MONTH) + 1,
+            tomorrow.get(Calendar.DAY_OF_MONTH)
+        )
+
+        if (tomorrowTimes != null) {
+            val fajr = tomorrowTimes.fajr
+            val config = PrefsManager.getConfig(context, Prayer.FAJR)
+            val expectedSilence = Calendar.getInstance().apply {
+                set(Calendar.YEAR, tomorrow.get(Calendar.YEAR))
+                set(Calendar.MONTH, tomorrow.get(Calendar.MONTH))
+                set(Calendar.DAY_OF_MONTH, tomorrow.get(Calendar.DAY_OF_MONTH))
+                set(Calendar.HOUR_OF_DAY, fajr.hour)
+                set(Calendar.MINUTE, fajr.minute)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+                add(Calendar.MINUTE, config.delayMinutes)
+            }
+
+            val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
+            assertTrue(
+                "Reschedule action should include tomorrow's Fajr",
+                alarmTriggerTimes.contains(expectedSilence.timeInMillis)
+            )
+        }
+    }
+
+    // --- Year boundary fallback tests ---
+
+    @Test
+    fun tomorrowFajr_dec31_fallsBackToPreviousYear() {
+        PrefsManager.setEnabled(context, true)
+
+        // Simulate Dec 31 at 23:00 — tomorrow is Jan 1 of a year with no data (2027)
+        val dec31 = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 2026)
+            set(Calendar.MONTH, Calendar.DECEMBER)
+            set(Calendar.DAY_OF_MONTH, 31)
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        // Verify 2027 data doesn't exist but 2026 data does
+        assertNull(
+            "2027 data should not exist",
+            PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2027, 1, 1)
+        )
+        assertNotNull(
+            "2026 Jan 1 data should exist as fallback",
+            PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 1, 1)
+        )
+
+        // Call scheduleTomorrowFajr with Dec 31 — should use 2026 fallback
+        SilenceScheduler.scheduleTomorrowFajr(context, 615, dec31)
+
+        val alarms = shadowAlarmManager.scheduledAlarms
+        assertTrue(
+            "Should schedule Fajr alarms using previous year fallback",
+            alarms.isNotEmpty()
+        )
+
+        // Verify the alarm is set for Jan 1 2027 (correct date) using 2026 Fajr times
+        val fallbackTimes = PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 1, 1)!!
+        val config = PrefsManager.getConfig(context, Prayer.FAJR)
+        val expectedSilence = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 2027)
+            set(Calendar.MONTH, Calendar.JANUARY)
+            set(Calendar.DAY_OF_MONTH, 1)
+            set(Calendar.HOUR_OF_DAY, fallbackTimes.fajr.hour)
+            set(Calendar.MINUTE, fallbackTimes.fajr.minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+            add(Calendar.MINUTE, config.delayMinutes)
+        }
+
+        val triggerTimes = alarms.map { it.triggerAtTime }
+        assertTrue(
+            "Alarm should fire at Jan 1 2027 Fajr time from 2026 fallback data",
+            triggerTimes.contains(expectedSilence.timeInMillis)
+        )
+    }
+
+    @Test
+    fun tomorrowFajr_dec31_noFallback_noAlarms() {
+        PrefsManager.setEnabled(context, true)
+
+        // Simulate a delegation with no data at all for the fallback year
+        val dec31 = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 2026)
+            set(Calendar.MONTH, Calendar.DECEMBER)
+            set(Calendar.DAY_OF_MONTH, 31)
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        // Non-existent delegation — neither 2027 nor 2026 data exists
+        SilenceScheduler.scheduleTomorrowFajr(context, 99999, dec31)
+
+        assertEquals(
+            "Should not schedule any alarms when no data exists at all",
+            0, shadowAlarmManager.scheduledAlarms.size
+        )
+    }
+
+    @Test
+    fun tomorrowFajr_withinSameYear_doesNotUseFallback() {
+        PrefsManager.setEnabled(context, true)
+
+        // A normal day within 2026 — tomorrow is also in 2026
+        val march30 = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 2026)
+            set(Calendar.MONTH, Calendar.MARCH)
+            set(Calendar.DAY_OF_MONTH, 30)
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        // 2026 March 31 data should exist directly
+        assertNotNull(
+            "March 31 2026 data should exist",
+            PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 3, 31)
+        )
+
+        SilenceScheduler.scheduleTomorrowFajr(context, 615, march30)
+
+        val alarms = shadowAlarmManager.scheduledAlarms
+        assertTrue("Should schedule Fajr alarms normally", alarms.isNotEmpty())
+
+        // Verify it uses the correct March 31 data, not any fallback
+        val march31Times = PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 3, 31)!!
+        val config = PrefsManager.getConfig(context, Prayer.FAJR)
+        val expectedSilence = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 2026)
+            set(Calendar.MONTH, Calendar.MARCH)
+            set(Calendar.DAY_OF_MONTH, 31)
+            set(Calendar.HOUR_OF_DAY, march31Times.fajr.hour)
+            set(Calendar.MINUTE, march31Times.fajr.minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+            add(Calendar.MINUTE, config.delayMinutes)
+        }
+
+        val triggerTimes = alarms.map { it.triggerAtTime }
+        assertTrue(
+            "Alarm should use current year data, not fallback",
+            triggerTimes.contains(expectedSilence.timeInMillis)
+        )
     }
 }
