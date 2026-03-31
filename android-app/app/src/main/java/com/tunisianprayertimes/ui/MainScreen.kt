@@ -1,13 +1,10 @@
 package com.tunisianprayertimes.ui
 
+import android.Manifest
 import android.app.AlarmManager
-import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
@@ -68,6 +65,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -100,6 +98,8 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.DelayMode
 import com.tunisianprayertimes.Delegation
+import com.tunisianprayertimes.DelegationLocationResult
+import com.tunisianprayertimes.DelegationLocator
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.GouvernoratRepository
 import com.tunisianprayertimes.Prayer
@@ -109,6 +109,7 @@ import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
 import com.tunisianprayertimes.SilenceMode
+import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceVerifyWorker
 import com.tunisianprayertimes.ui.theme.BannerBg
@@ -132,6 +133,7 @@ import com.tunisianprayertimes.ui.theme.TextMuted
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlinx.coroutines.launch
 
 @Composable
 fun MainScreen(
@@ -287,13 +289,11 @@ fun MainScreen(
                     onClick = {
                         if (!notificationManager.isNotificationPolicyAccessGranted) return@ManualSilenceButton
                         if (isSilent) {
-                            notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
-                            audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+                            SilenceModeController.setManualNormal(context)
                             isSilent = false
                             Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
                         } else {
-                            notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-                            audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+                            SilenceModeController.setManualSilent(context)
                             isSilent = true
                             Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
                         }
@@ -350,7 +350,7 @@ private fun IslamicHeader() {
 
         Image(
             painter = painterResource(R.drawable.mosque_silhouette),
-            contentDescription = null,
+            contentDescription = stringResource(R.string.app_name),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(70.dp)
@@ -471,7 +471,6 @@ private fun BatteryBanner(context: Context) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@SuppressLint("MissingPermission")
 private fun LocationPickerCard(
     delegationId: Int,
     onDelegationSelected: (Delegation) -> Unit
@@ -484,37 +483,68 @@ private fun LocationPickerCard(
 
     var showSheet by remember { mutableStateOf(false) }
     var locating by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+
+    fun startLocationLookup() {
+        if (locating) {
+            return
+        }
+
+        locating = true
+        scope.launch {
+            val result = DelegationLocator.detectNearestDelegation(context)
+            locating = false
+
+            when (result) {
+                is DelegationLocationResult.Success -> onDelegationSelected(result.delegation)
+                DelegationLocationResult.PermissionDenied -> {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.location_permission_denied),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                DelegationLocationResult.LocationUnavailable -> {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.location_lookup_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                DelegationLocationResult.NoDelegationFound -> {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.location_no_match),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
 
     val locationPermissionLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { granted ->
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { grants ->
+        val granted = grants[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
+            grants[Manifest.permission.ACCESS_COARSE_LOCATION] == true
+
         if (granted) {
-            locating = true
-            val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val provider = LocationManager.NETWORK_PROVIDER
-            if (locationManager.isProviderEnabled(provider)) {
-                locationManager.requestSingleUpdate(provider, object : LocationListener {
-                    override fun onLocationChanged(location: Location) {
-                        val nearest = GouvernoratRepository.findNearestDelegation(
-                            context, location.latitude, location.longitude
-                        )
-                        locating = false
-                        if (nearest != null) onDelegationSelected(nearest)
-                    }
-                    @Deprecated("Deprecated in Java") override fun onStatusChanged(p: String?, s: Int, b: android.os.Bundle?) {}
-                    override fun onProviderEnabled(p: String) {}
-                    override fun onProviderDisabled(p: String) { locating = false }
-                }, null)
-            } else {
-                locating = false
-                Toast.makeText(context, context.getString(R.string.gps_unavailable), Toast.LENGTH_SHORT).show()
-            }
+            startLocationLookup()
+        } else {
+            Toast.makeText(
+                context,
+                context.getString(R.string.location_permission_denied),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .testTag(TestTags.LOCATION_PICKER)
             .padding(top = 12.dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -572,12 +602,16 @@ private fun LocationPickerCard(
 
             Spacer(Modifier.height(8.dp))
 
-            // GPS auto-detect button
+            // Auto-detect nearest delegation using the best available location source.
             OutlinedCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable(enabled = !locating) {
-                        locationPermissionLauncher.launch(android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        if (DelegationLocator.hasLocationPermission(context)) {
+                            startLocationLookup()
+                        } else {
+                            locationPermissionLauncher.launch(DelegationLocator.requestedPermissions)
+                        }
                     },
                 shape = RoundedCornerShape(8.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.5f))

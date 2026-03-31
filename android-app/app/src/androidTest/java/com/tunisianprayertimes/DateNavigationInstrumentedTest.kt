@@ -7,25 +7,44 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.tunisianprayertimes.ui.TestTags
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
+import org.junit.rules.TestRule
+import org.junit.runners.model.Statement
 import org.junit.runner.RunWith
 
 /**
  * Instrumented tests for date navigation and DatePickerDialog.
+ * The first-launch pref is forced before activity startup via [RuleChain]
+ * so that [MainActivity] skips the onboarding redirect.
  */
 @RunWith(AndroidJUnit4::class)
 class DateNavigationInstrumentedTest {
 
-    @get:Rule
-    val composeRule = createAndroidComposeRule<MainActivity>()
-
-    @Before
-    fun setup() {
-        PrefsManager.markFirstLaunchDone(composeRule.activity)
+    /**
+     * Writes the "first_launch_done" flag into the **target app's** SharedPreferences
+     * synchronously before the activity rule creates [MainActivity].
+     */
+    private val firstLaunchRule = TestRule { base, _ ->
+        object : Statement() {
+            override fun evaluate() {
+                val context = InstrumentationRegistry.getInstrumentation().targetContext
+                context.getSharedPreferences("prayer_silence_prefs", android.content.Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("first_launch_done", true)
+                    .commit()
+                base.evaluate()
+            }
+        }
     }
+
+    private val composeRule = createAndroidComposeRule<MainActivity>()
+
+    @get:Rule
+    val ruleChain: RuleChain = RuleChain.outerRule(firstLaunchRule).around(composeRule)
 
     @Test
     fun dateLabel_isDisplayed() {
@@ -40,30 +59,20 @@ class DateNavigationInstrumentedTest {
             .performScrollTo()
             .performClick()
 
-        // DatePickerDialog should be visible — the Android date picker shows OK/Cancel buttons
-        // Wait for it to appear
         composeRule.waitForIdle()
-
-        // If we get here without a crash, the ContextThemeWrapper approach works.
-        // The dialog is a platform View, not a Compose node, so we can't easily assert
-        // its content with Compose testing. But no crash = success.
     }
 
     @Test
     fun previousArrow_changesPrayerTimes() {
-        // Scroll to date area and check it's visible
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
             .performScrollTo()
             .assertIsDisplayed()
 
-        // Tap the back arrow (◂) to go to previous day
         composeRule.onNodeWithText("◂")
-            .performScrollTo()
             .performClick()
 
         composeRule.waitForIdle()
 
-        // Date label should still be displayed (no crash)
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
             .assertIsDisplayed()
     }
@@ -74,9 +83,7 @@ class DateNavigationInstrumentedTest {
             .performScrollTo()
             .assertIsDisplayed()
 
-        // Tap forward arrow (▸)
         composeRule.onNodeWithText("▸")
-            .performScrollTo()
             .performClick()
 
         composeRule.waitForIdle()
@@ -87,23 +94,23 @@ class DateNavigationInstrumentedTest {
 
     @Test
     fun navigateAwayAndBack_showsTodayLabel() {
-        // Go to previous day
-        composeRule.onNodeWithText("◂")
+        composeRule.onNodeWithTag(TestTags.DATE_LABEL)
             .performScrollTo()
+
+        composeRule.onNodeWithText("◂")
             .performClick()
         composeRule.waitForIdle()
 
-        // "العودة لليوم" chip should be visible
         composeRule.onNodeWithText("العودة لليوم")
+            .performScrollTo()
             .assertIsDisplayed()
 
-        // Tap it to go back to today
         composeRule.onNodeWithText("العودة لليوم")
             .performClick()
         composeRule.waitForIdle()
 
-        // "اليوم" label should be displayed
         composeRule.onNodeWithText("اليوم")
+            .performScrollTo()
             .assertIsDisplayed()
     }
 }
