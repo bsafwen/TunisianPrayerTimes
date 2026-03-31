@@ -66,7 +66,10 @@ class SilenceStateTest {
         // First silence the phone
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
 
-        // Then run scheduleAll (which calls disableSilentMode when outside prayer window)
+        // Use a non-existent delegation so todayTimes is null, which guarantees
+        // we are "outside" any prayer window regardless of current time/timezone.
+        // This avoids flakiness when CI runs during a real prayer window (e.g. UTC ~05:00).
+        PrefsManager.setDelegationId(context, 99999)
         PrefsManager.setEnabled(context, true)
         SilenceScheduler.scheduleAll(context)
 
@@ -87,6 +90,9 @@ class SilenceStateTest {
         // The correct behavior (after fix) is that the manual button does NOT
         // trigger scheduleAll, so these two operations should be independent.
 
+        // Use a non-existent delegation to guarantee "outside prayer window" path,
+        // avoiding flakiness when CI runs during a real prayer window.
+        PrefsManager.setDelegationId(context, 99999)
         PrefsManager.setEnabled(context, true)
 
         // Step 1: Manual silence
