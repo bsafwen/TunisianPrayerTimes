@@ -183,4 +183,29 @@ object SilenceAlarmComputer {
             }
         }
     }
+
+    /**
+     * Returns true if the silence window for [prayerTime] (with [config]) extends
+     * past the start of [nextPrayerTime].
+     *
+     * Pure computation — no Android dependencies.
+     */
+    fun overlapsNextPrayer(
+        prayerTime: PrayerTime,
+        nextPrayerTime: PrayerTime,
+        config: PrayerSilenceConfig
+    ): Boolean {
+        val nextMinutes = nextPrayerTime.hour * 60 + nextPrayerTime.minute
+        val silenceEndMinutes = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+            config.fixedHour * 60 + config.fixedMinute
+        } else {
+            val startMinutes = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
+                config.delayFixedHour * 60 + config.delayFixedMinute
+            } else {
+                prayerTime.hour * 60 + prayerTime.minute + config.delayMinutes
+            }
+            startMinutes + config.afterMinutes
+        }
+        return silenceEndMinutes > nextMinutes
+    }
 }

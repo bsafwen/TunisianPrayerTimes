@@ -82,6 +82,8 @@
     <string name="error_start_after_end">وقت البدء يجب أن يكون قبل وقت الانتهاء</string>
     <string name="error_start_before_athan">وقت البدء يجب أن لا يكون قبل وقت الأذان</string>
     <string name="error_end_before_athan">وقت الانتهاء يجب أن لا يكون قبل وقت الأذان</string>
+    <string name="error_overlaps_next_prayer">وقت الانتهاء يجب أن لا يتجاوز وقت الصلاة التالية</string>
+    <string name="warning_overlaps_next_prayer">⚠ مدة الإسكات تتجاوز وقت الصلاة التالية</string>
     <string name="date_today">اليوم</string>
     <string name="date_go_back_today">العودة لليوم</string>
     <string name="no_prayer_data">لا تتوفر بيانات لهذا اليوم</string>
