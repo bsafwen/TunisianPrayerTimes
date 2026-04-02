@@ -75,7 +75,7 @@ object SilenceAlarmComputer {
             val ishaSilence = computeSilenceStart(now, todayTimes.isha, ishaConfig)
             val ishaUnsilence = computeUnsilenceEnd(now, ishaSilence, ishaConfig)
 
-            if (!now.before(ishaUnsilence)) {
+            if (!now.before(ishaUnsilence) && !currentlyInSilenceWindow) {
                 val fajrConfig = configs[Prayer.FAJR] ?: PrayerSilenceConfig()
                 val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
                 val fajrSilence = computeSilenceStartForDay(tomorrow, tomorrowTimes.fajr, fajrConfig)
@@ -134,6 +134,9 @@ object SilenceAlarmComputer {
                 set(Calendar.MINUTE, config.fixedMinute)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
+                if (before(silenceStart)) {
+                    add(Calendar.DAY_OF_YEAR, 1)
+                }
             }
         } else {
             (silenceStart.clone() as Calendar).apply {
@@ -170,6 +173,9 @@ object SilenceAlarmComputer {
                 set(Calendar.MINUTE, config.fixedMinute)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
+                if (before(silenceStart)) {
+                    add(Calendar.DAY_OF_YEAR, 1)
+                }
             }
         } else {
             (silenceStart.clone() as Calendar).apply {

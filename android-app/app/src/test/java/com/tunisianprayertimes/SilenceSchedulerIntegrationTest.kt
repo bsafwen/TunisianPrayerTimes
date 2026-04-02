@@ -11,6 +11,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowAlarmManager
+import org.robolectric.shadows.ShadowNotificationManager
 import java.util.Calendar
 
 /**
@@ -366,6 +367,61 @@ class SilenceSchedulerIntegrationTest {
                 alarmTriggerTimes.contains(expectedSilence.timeInMillis)
             )
         }
+    }
+
+    // --- Bug reproduction: outside window, switch to fixed-time unsilence ---
+
+    /**
+     * BUG REPORT:
+     * - Fajr at 04:00, duration 10 min → original window 04:00–04:10
+     * - At 05:30, user switches unsilence to FIXED_TIME 05:31
+     * - New window 04:00–05:31 → app correctly silences (enableAutoSilence)
+     * - Expected: UNSILENCE alarm at 05:31 fires and restores phone
+     * - Actual: After 05:31 the phone is still silenced
+     *
+     * This test verifies that scheduleAllInternal sets:
+     *   1. auto-silence active (phone silenced)
+     *   2. an alarm whose trigger time matches 05:31
+     */
+    @Test
+    fun bugRepro_outsideOriginalWindow_switchToFixedTime_schedulesUnsilence() {
+        // Grant DND permission for Robolectric
+        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val shadowNm = Shadows.shadowOf(nm)
+        shadowNm.setNotificationPolicyAccessGranted(true)
+
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 615)
+
+        // Configure Fajr: FIXED_TIME unsilence at 05:31, no delay
+        PrefsManager.setSilenceMode(context, Prayer.FAJR, SilenceMode.FIXED_TIME)
+        PrefsManager.setFixedTime(context, Prayer.FAJR, 5, 31)
+        PrefsManager.setDelayMode(context, Prayer.FAJR, DelayMode.MINUTES)
+        PrefsManager.setDelayMinutes(context, Prayer.FAJR, 0)
+
+        // "now" is 05:30 — outside the original 10-min window, inside the new fixed-time window
+        val now = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 5)
+            set(Calendar.MINUTE, 30)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        SilenceScheduler.scheduleAllInternal(context, now)
+
+        // The phone should have been silenced (marks auto-silence active)
+        assertTrue("Auto-silence should be active (phone silenced)",
+            PrefsManager.isAutoSilenceActive(context))
+
+        // There must be an alarm at 05:31 for UNSILENCE
+        val expected0531 = (now.clone() as Calendar).apply {
+            set(Calendar.MINUTE, 31)
+        }
+        val alarmTriggers = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
+        assertTrue(
+            "Must have an alarm at 05:31 (${expected0531.timeInMillis}), alarms=$alarmTriggers",
+            alarmTriggers.contains(expected0531.timeInMillis)
+        )
     }
 
     // --- Year boundary fallback tests ---
