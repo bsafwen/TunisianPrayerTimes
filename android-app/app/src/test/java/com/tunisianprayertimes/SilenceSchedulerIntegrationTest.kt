@@ -261,13 +261,21 @@ class SilenceSchedulerIntegrationTest {
     fun tomorrowFajr_persistsThroughConfigChange() {
         PrefsManager.setEnabled(context, true)
 
+        // Use a late-night time so tomorrow's Fajr is gated (after Isha)
+        val lateNight = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
         // Schedule with default config
-        SilenceScheduler.scheduleAll(context)
+        SilenceScheduler.scheduleAllInternal(context, lateNight)
         val alarmsBefore = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }.toSet()
 
         // Change Fajr duration and reschedule
         PrefsManager.setAfterMinutes(context, Prayer.FAJR, 90)
-        SilenceScheduler.scheduleAll(context)
+        SilenceScheduler.scheduleAllInternal(context, lateNight)
         val alarmsAfter = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }.toSet()
 
         // The unsilence time should differ (90 min instead of default 60 min)
@@ -279,13 +287,20 @@ class SilenceSchedulerIntegrationTest {
 
     @Test
     fun bootReceiver_reschedulesTomorrowFajr() {
+        // Tomorrow's Fajr is only pre-scheduled after Isha, so this test uses
+        // scheduleAllInternal with a controlled late-night time instead of
+        // relying on BootReceiver (which calls scheduleAll with the real clock).
         PrefsManager.setEnabled(context, true)
 
-        // Simulate boot
-        val receiver = BootReceiver()
-        receiver.onReceive(context, android.content.Intent(android.content.Intent.ACTION_BOOT_COMPLETED))
+        val lateNight = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+        SilenceScheduler.scheduleAllInternal(context, lateNight)
 
-        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, 1) }
+        val tomorrow = (lateNight.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(
             context, PrefsManager.getDelegationId(context),
             tomorrow.get(Calendar.YEAR),
@@ -296,10 +311,7 @@ class SilenceSchedulerIntegrationTest {
         if (tomorrowTimes != null) {
             val fajr = tomorrowTimes.fajr
             val config = PrefsManager.getConfig(context, Prayer.FAJR)
-            val expectedSilence = Calendar.getInstance().apply {
-                set(Calendar.YEAR, tomorrow.get(Calendar.YEAR))
-                set(Calendar.MONTH, tomorrow.get(Calendar.MONTH))
-                set(Calendar.DAY_OF_MONTH, tomorrow.get(Calendar.DAY_OF_MONTH))
+            val expectedSilence = (tomorrow.clone() as Calendar).apply {
                 set(Calendar.HOUR_OF_DAY, fajr.hour)
                 set(Calendar.MINUTE, fajr.minute)
                 set(Calendar.SECOND, 0)
@@ -309,7 +321,7 @@ class SilenceSchedulerIntegrationTest {
 
             val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
             assertTrue(
-                "After boot, tomorrow's Fajr should be scheduled",
+                "After Isha, tomorrow's Fajr should be scheduled",
                 alarmTriggerTimes.contains(expectedSilence.timeInMillis)
             )
         }
@@ -317,12 +329,19 @@ class SilenceSchedulerIntegrationTest {
 
     @Test
     fun rescheduleAction_includesTomorrowFajr() {
+        // Tomorrow's Fajr is only pre-scheduled after Isha, so use
+        // scheduleAllInternal with a controlled late-night time.
         PrefsManager.setEnabled(context, true)
 
-        val receiver = SilenceReceiver()
-        receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_RESCHEDULE"))
+        val lateNight = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+        SilenceScheduler.scheduleAllInternal(context, lateNight)
 
-        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, 1) }
+        val tomorrow = (lateNight.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(
             context, PrefsManager.getDelegationId(context),
             tomorrow.get(Calendar.YEAR),
@@ -333,10 +352,7 @@ class SilenceSchedulerIntegrationTest {
         if (tomorrowTimes != null) {
             val fajr = tomorrowTimes.fajr
             val config = PrefsManager.getConfig(context, Prayer.FAJR)
-            val expectedSilence = Calendar.getInstance().apply {
-                set(Calendar.YEAR, tomorrow.get(Calendar.YEAR))
-                set(Calendar.MONTH, tomorrow.get(Calendar.MONTH))
-                set(Calendar.DAY_OF_MONTH, tomorrow.get(Calendar.DAY_OF_MONTH))
+            val expectedSilence = (tomorrow.clone() as Calendar).apply {
                 set(Calendar.HOUR_OF_DAY, fajr.hour)
                 set(Calendar.MINUTE, fajr.minute)
                 set(Calendar.SECOND, 0)
@@ -346,7 +362,7 @@ class SilenceSchedulerIntegrationTest {
 
             val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
             assertTrue(
-                "Reschedule action should include tomorrow's Fajr",
+                "After Isha, reschedule should include tomorrow's Fajr",
                 alarmTriggerTimes.contains(expectedSilence.timeInMillis)
             )
         }
