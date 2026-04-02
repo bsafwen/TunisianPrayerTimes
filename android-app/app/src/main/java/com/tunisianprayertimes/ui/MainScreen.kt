@@ -103,8 +103,10 @@ import com.tunisianprayertimes.DelegationLocator
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.GouvernoratRepository
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.PrayerTimesRepository
+import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
@@ -1009,16 +1011,21 @@ private fun PrayerSettingsCard(
                 PrayerRowHeader()
                 HorizontalDivider(color = Divider, thickness = 1.dp)
 
-                Prayer.values().forEach { prayer ->
+                val prayers = Prayer.values()
+                prayers.forEachIndexed { index, prayer ->
                     val prayerTime = if (isToday && prayer == Prayer.FAJR && tomorrowFajr != null)
                         tomorrowFajr
                     else
                         displayTimes.allPrayers().find { it.prayer == prayer }
+                    val nextPrayerTime = if (index < prayers.size - 1) {
+                        displayTimes.allPrayers().find { it.prayer == prayers[index + 1] }
+                    } else null
                     key(delegationId) {
                         PrayerRow(
                             prayer = prayer,
                             prayerName = prayerNames[prayer] ?: prayer.name,
                             prayerTime = prayerTime,
+                            nextPrayerTime = nextPrayerTime,
                             isNextPrayer = prayer == nextPrayer,
                             activity = activity,
                             onConfigChanged = onConfigChanged
@@ -1202,6 +1209,7 @@ private fun PrayerRow(
     prayer: Prayer,
     prayerName: String,
     prayerTime: PrayerTime?,
+    nextPrayerTime: PrayerTime?,
     isNextPrayer: Boolean,
     activity: androidx.appcompat.app.AppCompatActivity,
     onConfigChanged: () -> Unit
@@ -1220,6 +1228,25 @@ private fun PrayerRow(
     var fixedH by rememberSaveable { mutableIntStateOf(initFixedHour(context, prayer, prayerTime)) }
     var fixedM by rememberSaveable { mutableIntStateOf(initFixedMinute(context, prayer, prayerTime)) }
 
+    // Compute overlap with next prayer
+    val overlapsNextPrayer = remember(prayerTime, nextPrayerTime, silenceMode, afterMinutes, fixedH, fixedM, delayMode, delayMinutes, delayFixedH, delayFixedM) {
+        if (prayerTime == null || nextPrayerTime == null) false
+        else {
+            val config = PrayerSilenceConfig(
+                mode = silenceMode,
+                afterMinutes = afterMinutes.toIntOrNull() ?: 0,
+                fixedHour = fixedH,
+                fixedMinute = fixedM,
+                delayMode = delayMode,
+                delayMinutes = delayMinutes.toIntOrNull() ?: 0,
+                delayFixedHour = delayFixedH,
+                delayFixedMinute = delayFixedM
+            )
+            SilenceAlarmComputer.overlapsNextPrayer(prayerTime, nextPrayerTime, config)
+        }
+    }
+
+    Column {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -1343,7 +1370,7 @@ private fun PrayerRow(
                         PrefsManager.setAfterMinutes(context, prayer, it.toIntOrNull() ?: 0)
                         onConfigChanged()
                     },
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f).testTag(TestTags.durationInput(prayer.name))
                 )
             } else {
                 TimeDisplay(
@@ -1366,6 +1393,14 @@ private fun PrayerRow(
                                 val startM = PrefsManager.getDelayFixedMinute(context, prayer)
                                 if (startH >= 0 && startM >= 0 && (picker.hour < startH || (picker.hour == startH && picker.minute <= startM))) {
                                     Toast.makeText(context, context.getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
+                                    return@addOnPositiveButtonClickListener
+                                }
+                            }
+                            if (nextPrayerTime != null) {
+                                val pickedMinutes = picker.hour * 60 + picker.minute
+                                val nextMinutes = nextPrayerTime.hour * 60 + nextPrayerTime.minute
+                                if (pickedMinutes > nextMinutes) {
+                                    Toast.makeText(context, context.getString(R.string.error_overlaps_next_prayer), Toast.LENGTH_SHORT).show()
                                     return@addOnPositiveButtonClickListener
                                 }
                             }
@@ -1401,6 +1436,20 @@ private fun PrayerRow(
             )
         }
     }
+
+    if (overlapsNextPrayer) {
+        Text(
+            text = stringResource(R.string.warning_overlaps_next_prayer),
+            fontSize = 11.sp,
+            color = SilenceRed,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .testTag(TestTags.OVERLAP_WARNING)
+                .padding(bottom = 4.dp)
+        )
+    }
+    } // Column
 }
 
 @Composable
