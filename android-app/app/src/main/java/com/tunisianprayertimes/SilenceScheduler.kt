@@ -72,6 +72,9 @@ object SilenceScheduler {
                     set(Calendar.MINUTE, config.fixedMinute)
                     set(Calendar.SECOND, 0)
                     set(Calendar.MILLISECOND, 0)
+                    if (before(silenceTime)) {
+                        add(Calendar.DAY_OF_YEAR, 1)
+                    }
                 }
             } else {
                 (silenceTime.clone() as Calendar).apply {
@@ -139,13 +142,16 @@ object SilenceScheduler {
                 set(Calendar.MINUTE, ishaConfig.fixedMinute)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
+                if (before(ishaSilence)) {
+                    add(Calendar.DAY_OF_YEAR, 1)
+                }
             }
         } else {
             (ishaSilence.clone() as Calendar).apply {
                 add(Calendar.MINUTE, ishaConfig.afterMinutes)
             }
         }
-        if (!now.before(ishaUnsilence)) {
+        if (!now.before(ishaUnsilence) && !currentlyInSilenceWindow) {
             scheduleTomorrowFajr(context, delegationId, now)
         }
 
@@ -194,6 +200,9 @@ object SilenceScheduler {
                 set(Calendar.MINUTE, config.fixedMinute)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
+                if (before(silenceTime)) {
+                    add(Calendar.DAY_OF_YEAR, 1)
+                }
             }
         } else {
             (silenceTime.clone() as Calendar).apply {

@@ -8,7 +8,6 @@ import android.os.Looper
 
 object SilenceModeController {
 
-    private val handler = Handler(Looper.getMainLooper())
 
     /**
      * Restores the interruption filter and ringer mode.
@@ -30,7 +29,10 @@ object SilenceModeController {
     ) {
         audioManager.ringerMode = previousRinger                       // (1)
         notificationManager.setInterruptionFilter(previousFilter)      // (2)
-        handler.post { audioManager.ringerMode = previousRinger }      // (3)
+        try {
+            Thread.sleep(150)                                          // Wait synchronously for OS to process filter
+        } catch (e: InterruptedException) { }
+        audioManager.ringerMode = previousRinger                       // (3)
     }
 
     fun enableAutoSilence(context: Context): Boolean {

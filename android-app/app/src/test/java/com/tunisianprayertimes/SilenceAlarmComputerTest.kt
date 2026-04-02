@@ -407,6 +407,91 @@ class SilenceAlarmComputerTest {
 
     // ==================== Full day lifecycle ====================
 
+    // ==================== Bug: outside window, switch to fixed time ====================
+
+    /**
+     * BUG REPORT: Fajr at 04:00, original duration 10 min → window 04:00–04:10.
+     * At 05:30, user switches to FIXED_TIME mode with end time 05:31.
+     * New window becomes 04:00–05:31.  Since 05:30 is inside [04:00, 05:31),
+     * the app correctly enables silence.
+     * Expected: UNSILENCE alarm at 05:31.
+     * Actual (reported): silencer never removed.
+     */
+    @Test
+    fun outsideOriginalWindow_switchToFixedTime_schedulesUnsilence() {
+        val day = DayPrayerTimes(
+            day = 2,
+            fajr = PrayerTime(Prayer.FAJR, 4, 0),
+            dhuhr = PrayerTime(Prayer.DHUHR, 12, 37),
+            asr = PrayerTime(Prayer.ASR, 16, 10),
+            maghrib = PrayerTime(Prayer.MAGHRIB, 19, 22),
+            isha = PrayerTime(Prayer.ISHA, 20, 45)
+        )
+
+        val configs = configsWith(
+            Prayer.FAJR,
+            mode = SilenceMode.FIXED_TIME,
+            fixedHour = 5,
+            fixedMinute = 31
+        )
+
+        val now = makeNow(5, 30)
+        val result = SilenceAlarmComputer.compute(now, day, configs)
+
+        // Must be inside window [04:00, 05:31)
+        assertTrue("05:30 should be inside Fajr silence window [04:00, 05:31)",
+            result.currentlyInSilenceWindow)
+
+        // Must have exactly one UNSILENCE for Fajr at 05:31
+        val fajrAlarms = result.alarms.filter {
+            it.prayer == Prayer.FAJR && it.action != AlarmAction.MIDNIGHT_RESCHEDULE
+        }
+        assertEquals("Inside window: only UNSILENCE for Fajr", 1, fajrAlarms.size)
+        assertEquals(AlarmAction.UNSILENCE, fajrAlarms[0].action)
+
+        val unsilenceCal = Calendar.getInstance().apply { timeInMillis = fajrAlarms[0].triggerAtMillis }
+        assertEquals(5, unsilenceCal.get(Calendar.HOUR_OF_DAY))
+        assertEquals(31, unsilenceCal.get(Calendar.MINUTE))
+    }
+
+    /**
+     * Same scenario, but now verify what happens AFTER the unsilence time (05:32).
+     * At 05:32, we should NOT be in any window, and no Fajr alarms should be
+     * scheduled (both silenceTime and unsilenceTime are in the past).
+     */
+    @Test
+    fun afterFixedTimeUnsilence_notInWindow() {
+        val day = DayPrayerTimes(
+            day = 2,
+            fajr = PrayerTime(Prayer.FAJR, 4, 0),
+            dhuhr = PrayerTime(Prayer.DHUHR, 12, 37),
+            asr = PrayerTime(Prayer.ASR, 16, 10),
+            maghrib = PrayerTime(Prayer.MAGHRIB, 19, 22),
+            isha = PrayerTime(Prayer.ISHA, 20, 45)
+        )
+
+        val configs = configsWith(
+            Prayer.FAJR,
+            mode = SilenceMode.FIXED_TIME,
+            fixedHour = 5,
+            fixedMinute = 31
+        )
+
+        val now = makeNow(5, 32) // 1 min AFTER unsilence time
+        val result = SilenceAlarmComputer.compute(now, day, configs)
+
+        assertFalse("05:32 should NOT be in Fajr silence window",
+            result.currentlyInSilenceWindow)
+
+        // No alarms for Fajr (all past)
+        val fajrAlarms = result.alarms.filter {
+            it.prayer == Prayer.FAJR && it.action != AlarmAction.MIDNIGHT_RESCHEDULE
+        }
+        assertEquals("No Fajr alarms after window", 0, fajrAlarms.size)
+    }
+
+    // ==================== Full day lifecycle ====================
+
     @Test
     fun fullDayLifecycle_eachTimeSliceHasCorrectAlarms() {
         val configs = configsWith(Prayer.FAJR, afterMinutes = 45)
@@ -445,5 +530,65 @@ class SilenceAlarmComputerTest {
         result = SilenceAlarmComputer.compute(makeNow(23, 30), typicalDay, configs, tomorrowDay)
         assertFalse(result.currentlyInSilenceWindow)
         assertTrue(result.tomorrowFajrScheduled)
+    }
+
+    // ==================== Regression: Fajr FIXED_TIME past Isha unsilence ====================
+
+    /**
+     * THE BUG: Fajr at 04:35, unsilence FIXED_TIME at 21:30 (user set it to now+1min while
+     * testing outside Fajr window). Isha unsilence at 21:15. At 21:20, scheduleTomorrowFajr
+     * fires because ishaUnsilence has passed, overwriting today's Fajr UNSILENCE PendingIntent
+     * (same request code) with tomorrow's time. Result: DND stays on forever.
+     *
+     * Fix: also gate tomorrow's Fajr on !currentlyInSilenceWindow.
+     */
+    @Test
+    fun regression_fajrFixedTimeUnsilencePastIshaUnsilence_tomorrowFajrNotScheduled() {
+        // Fajr unsilence at 21:30 (FIXED_TIME), Isha unsilence at 21:15 (default 30 min)
+        val configs = configsWith(
+            Prayer.FAJR,
+            mode = SilenceMode.FIXED_TIME,
+            fixedHour = 21,
+            fixedMinute = 30
+        )
+        val now = makeNow(21, 20) // After Isha unsilence (21:15) but inside Fajr window (04:35–21:30)
+
+        val result = SilenceAlarmComputer.compute(now, typicalDay, configs, tomorrowDay)
+
+        // Must be inside Fajr's extended window
+        assertTrue("Should be inside Fajr's FIXED_TIME window", result.currentlyInSilenceWindow)
+
+        // Must NOT schedule tomorrow's Fajr — would overwrite today's UNSILENCE
+        assertFalse(
+            "Tomorrow Fajr must NOT be scheduled when inside Fajr's extended window past Isha",
+            result.tomorrowFajrScheduled
+        )
+
+        // Must have today's Fajr UNSILENCE at 21:30
+        val fajrUnsilences = result.alarms.filter {
+            it.prayer == Prayer.FAJR && it.action == AlarmAction.UNSILENCE
+        }
+        assertEquals("Should have exactly 1 Fajr UNSILENCE (today's)", 1, fajrUnsilences.size)
+
+        val unsilenceCal = Calendar.getInstance().apply { timeInMillis = fajrUnsilences[0].triggerAtMillis }
+        assertEquals(21, unsilenceCal.get(Calendar.HOUR_OF_DAY))
+        assertEquals(30, unsilenceCal.get(Calendar.MINUTE))
+    }
+
+    @Test
+    fun fajrFixedTimeUnsilencePastIshaUnsilence_afterWindowEnds_tomorrowFajrScheduled() {
+        // Same config, but now is after the Fajr fixed-time window ends
+        val configs = configsWith(
+            Prayer.FAJR,
+            mode = SilenceMode.FIXED_TIME,
+            fixedHour = 21,
+            fixedMinute = 30
+        )
+        val now = makeNow(21, 35) // After both Isha unsilence AND Fajr fixed-time end
+
+        val result = SilenceAlarmComputer.compute(now, typicalDay, configs, tomorrowDay)
+
+        assertFalse("Should NOT be in any silence window", result.currentlyInSilenceWindow)
+        assertTrue("Tomorrow Fajr should be scheduled now", result.tomorrowFajrScheduled)
     }
 }
