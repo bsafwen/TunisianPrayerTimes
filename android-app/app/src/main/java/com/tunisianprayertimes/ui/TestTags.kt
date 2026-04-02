@@ -12,6 +12,10 @@ object TestTags {
     const val MANUAL_SILENCE_BUTTON = "manual_silence_button"
     const val INFO_TEXT = "info_text"
     const val DATE_LABEL = "date_label"
+    const val OVERLAP_WARNING = "overlap_warning"
+
+    // Per-prayer duration input tags (for UI testing)
+    fun durationInput(prayer: String) = "duration_input_$prayer"
 
     // OnboardingScreen
     const val ONBOARDING_NEXT = "onboarding_next"
