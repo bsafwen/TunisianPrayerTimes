@@ -35,18 +35,20 @@ object SilenceAlarmComputer {
      * @param todayTimes      today's prayer times
      * @param configs         per-prayer silence configuration
      * @param tomorrowTimes   tomorrow's prayer times (null = skip tomorrow pre-scheduling)
+     * @param isFriday        true if today is Friday (uses JOMOAA config for Dhuhr slot)
      */
     fun compute(
         now: Calendar,
         todayTimes: DayPrayerTimes,
         configs: Map<Prayer, PrayerSilenceConfig>,
-        tomorrowTimes: DayPrayerTimes? = null
+        tomorrowTimes: DayPrayerTimes? = null,
+        isFriday: Boolean = false
     ): ComputeResult {
         val alarms = mutableListOf<ScheduledAlarm>()
         var currentlyInSilenceWindow = false
 
         // --- Today's prayer alarms ---
-        for (prayerTime in todayTimes.allPrayers()) {
+        for (prayerTime in todayTimes.scheduledPrayers(isFriday)) {
             val config = configs[prayerTime.prayer] ?: PrayerSilenceConfig()
 
             val silenceTime = computeSilenceStart(now, prayerTime, config)

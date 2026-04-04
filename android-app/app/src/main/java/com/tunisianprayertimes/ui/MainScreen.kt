@@ -928,13 +928,20 @@ private fun PrayerSettingsCard(
         Prayer.DHUHR to stringResource(R.string.prayer_dhuhr),
         Prayer.ASR to stringResource(R.string.prayer_asr),
         Prayer.MAGHRIB to stringResource(R.string.prayer_maghrib),
-        Prayer.ISHA to stringResource(R.string.prayer_isha)
+        Prayer.ISHA to stringResource(R.string.prayer_isha),
+        Prayer.JOMOAA to stringResource(R.string.prayer_jomoaa)
     )
 
-    // Next prayer logic — only for today
+    val isFriday = remember(selectedDate) {
+        Calendar.getInstance().apply { timeInMillis = selectedDate }
+            .get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+    }
+
+    // Next prayer logic — only for today, Friday-aware
     val nextPrayerFromToday = remember(delegationId) {
         if (!isToday) return@remember null
-        displayTimes?.nextPrayer(today.get(Calendar.HOUR_OF_DAY), today.get(Calendar.MINUTE))
+        displayTimes?.nextPrayer(today.get(Calendar.HOUR_OF_DAY), today.get(Calendar.MINUTE),
+            today.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)
     }
 
     val tomorrowFajr = remember(delegationId) {
@@ -1011,7 +1018,7 @@ private fun PrayerSettingsCard(
                 PrayerRowHeader()
                 HorizontalDivider(color = Divider, thickness = 1.dp)
 
-                val prayers = Prayer.values()
+                val prayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
                 prayers.forEachIndexed { index, prayer ->
                     val prayerTime = if (isToday && prayer == Prayer.FAJR && tomorrowFajr != null)
                         tomorrowFajr
@@ -1031,6 +1038,20 @@ private fun PrayerSettingsCard(
                             onConfigChanged = onConfigChanged
                         )
                     }
+                }
+
+                // JOMOAA row — always shown as the last row, uses Dhuhr time
+                HorizontalDivider(color = Divider, thickness = 1.dp)
+                key(delegationId, "jomoaa") {
+                    PrayerRow(
+                        prayer = Prayer.JOMOAA,
+                        prayerName = prayerNames[Prayer.JOMOAA] ?: Prayer.JOMOAA.name,
+                        prayerTime = PrayerTime(Prayer.JOMOAA, displayTimes.dhuhr.hour, displayTimes.dhuhr.minute),
+                        nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.ASR },
+                        isNextPrayer = Prayer.JOMOAA == nextPrayer,
+                        activity = activity,
+                        onConfigChanged = onConfigChanged
+                    )
                 }
             } else {
                 Spacer(Modifier.height(16.dp))
