@@ -34,6 +34,7 @@
     <string name="label_fixed_time">حتى</string>
     <string name="pick_delay_time">اختر وقت بدء الإسكات</string>
     <string name="pick_end_time">اختر وقت الانتهاء</string>
+    <string name="pick_jomoaa_time">اختر وقت صلاة الجمعة</string>
     <string name="ramadan_active">رمضان — إسكات العشاء ممتد إلى ساعة ونصف 🌙</string>
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>
@@ -50,6 +51,7 @@
     <string name="prayer_asr">العصر</string>
     <string name="prayer_maghrib">المغرب</string>
     <string name="prayer_isha">العشاء</string>
+    <string name="prayer_jomoaa">الجمعة</string>
 
     <!-- Onboarding -->
     <string name="onboarding_welcome">هذا التطبيق يقوم بإسكات هاتفك تلقائيًا عند دخول وقت كل صلاة\n\nمواقيت الصلاة المعتمدة هي المواقيت الرسمية للجمهورية التونسية، مصدرها المعهد الوطني للرصد الجوي التونسي\n\nدعنا نشرح لك كيف يعمل</string>

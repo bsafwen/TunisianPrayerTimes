@@ -119,6 +119,7 @@ object PrefsManager {
         Prayer.ASR -> 30
         Prayer.MAGHRIB -> 20
         Prayer.ISHA -> 30
+        Prayer.JOMOAA -> 60
     }
 
     fun getAfterMinutes(context: Context, prayer: Prayer): Int {
@@ -154,6 +155,7 @@ object PrefsManager {
 
     private fun defaultSilenceMode(prayer: Prayer): SilenceMode = when (prayer) {
         Prayer.DHUHR -> SilenceMode.FIXED_TIME
+        Prayer.JOMOAA -> SilenceMode.FIXED_TIME
         else -> SilenceMode.DURATION
     }
 
@@ -168,12 +170,12 @@ object PrefsManager {
     }
 
     fun getFixedTimeHour(context: Context, prayer: Prayer): Int {
-        val default = if (prayer == Prayer.DHUHR) 13 else -1
+        val default = if (prayer == Prayer.DHUHR || prayer == Prayer.JOMOAA) 13 else -1
         return prefs(context).getInt("fixed_hour_${prayer.name}", default)
     }
 
     fun getFixedTimeMinute(context: Context, prayer: Prayer): Int {
-        val default = if (prayer == Prayer.DHUHR) 15 else -1
+        val default = if (prayer == Prayer.DHUHR || prayer == Prayer.JOMOAA) 15 else -1
         return prefs(context).getInt("fixed_minute_${prayer.name}", default)
     }
 
@@ -229,5 +231,22 @@ object PrefsManager {
             delayFixedHour = getDelayFixedHour(context, prayer),
             delayFixedMinute = getDelayFixedMinute(context, prayer)
         )
+    }
+
+    // --- Jomoaa custom time (defaults to -1 = use Dhuhr time) ---
+
+    fun getJomoaaTimeHour(context: Context): Int {
+        return prefs(context).getInt("jomoaa_time_hour", -1)
+    }
+
+    fun getJomoaaTimeMinute(context: Context): Int {
+        return prefs(context).getInt("jomoaa_time_minute", -1)
+    }
+
+    fun setJomoaaTime(context: Context, hour: Int, minute: Int) {
+        prefs(context).edit()
+            .putInt("jomoaa_time_hour", hour)
+            .putInt("jomoaa_time_minute", minute)
+            .apply()
     }
 }

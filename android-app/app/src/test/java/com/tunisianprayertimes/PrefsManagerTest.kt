@@ -77,7 +77,7 @@ class PrefsManagerTest {
     @Test
     fun defaultSilenceMode_isDuration() {
         for (prayer in Prayer.values()) {
-            if (prayer == Prayer.DHUHR) {
+            if (prayer == Prayer.DHUHR || prayer == Prayer.JOMOAA) {
                 assertEquals(SilenceMode.FIXED_TIME, PrefsManager.getSilenceMode(context, prayer))
             } else {
                 assertEquals(SilenceMode.DURATION, PrefsManager.getSilenceMode(context, prayer))
@@ -233,5 +233,51 @@ class PrefsManagerTest {
         assertEquals(SilenceMode.FIXED_TIME, PrefsManager.getSilenceMode(context, Prayer.FAJR))
         assertEquals(6, PrefsManager.getFixedTimeHour(context, Prayer.FAJR))
         assertEquals(30, PrefsManager.getFixedTimeMinute(context, Prayer.FAJR))
+    }
+
+    // ── JOMOAA defaults ─────────────────────────
+
+    @Test
+    fun jomoaaDefaultAfterMinutes_is60() {
+        assertEquals(60, PrefsManager.getAfterMinutes(context, Prayer.JOMOAA))
+    }
+
+    @Test
+    fun jomoaaDefaultSilenceMode_isFixedTime() {
+        assertEquals(SilenceMode.FIXED_TIME, PrefsManager.getSilenceMode(context, Prayer.JOMOAA))
+    }
+
+    @Test
+    fun jomoaaDefaultFixedTime_is1315() {
+        assertEquals(13, PrefsManager.getFixedTimeHour(context, Prayer.JOMOAA))
+        assertEquals(15, PrefsManager.getFixedTimeMinute(context, Prayer.JOMOAA))
+    }
+
+    @Test
+    fun jomoaaConfig_isIndependentFromDhuhr() {
+        PrefsManager.setAfterMinutes(context, Prayer.JOMOAA, 90)
+        PrefsManager.setAfterMinutes(context, Prayer.DHUHR, 45)
+        assertEquals(90, PrefsManager.getAfterMinutes(context, Prayer.JOMOAA))
+        assertEquals(45, PrefsManager.getAfterMinutes(context, Prayer.DHUHR))
+    }
+
+    @Test
+    fun jomoaaConfig_setAndGet() {
+        PrefsManager.setSilenceMode(context, Prayer.JOMOAA, SilenceMode.DURATION)
+        PrefsManager.setAfterMinutes(context, Prayer.JOMOAA, 75)
+        PrefsManager.setFixedTime(context, Prayer.JOMOAA, 14, 30)
+        PrefsManager.setDelayMinutes(context, Prayer.JOMOAA, 5)
+        PrefsManager.setDelayMode(context, Prayer.JOMOAA, DelayMode.FIXED_TIME)
+        PrefsManager.setDelayFixedTime(context, Prayer.JOMOAA, 12, 45)
+
+        val config = PrefsManager.getConfig(context, Prayer.JOMOAA)
+        assertEquals(SilenceMode.DURATION, config.mode)
+        assertEquals(75, config.afterMinutes)
+        assertEquals(14, config.fixedHour)
+        assertEquals(30, config.fixedMinute)
+        assertEquals(5, config.delayMinutes)
+        assertEquals(DelayMode.FIXED_TIME, config.delayMode)
+        assertEquals(12, config.delayFixedHour)
+        assertEquals(45, config.delayFixedMinute)
     }
 }

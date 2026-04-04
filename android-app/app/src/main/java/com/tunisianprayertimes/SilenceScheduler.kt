@@ -33,6 +33,7 @@ object SilenceScheduler {
         val year = now.get(Calendar.YEAR)
         val month = now.get(Calendar.MONTH) + 1
         val day = now.get(Calendar.DAY_OF_MONTH)
+        val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
 
         val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(context, delegationId, year, month, day)
 
@@ -44,7 +45,10 @@ object SilenceScheduler {
 
         var currentlyInSilenceWindow = false
 
-        for (prayerTime in todayTimes.allPrayers()) {
+        val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
+        val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
+
+        for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
             // Silence start: apply delay to prayer time
