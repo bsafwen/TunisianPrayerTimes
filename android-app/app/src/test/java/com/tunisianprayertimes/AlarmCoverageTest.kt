@@ -195,16 +195,36 @@ class AlarmCoverageTest {
         ) ?: return
 
         // Find a prayer where we are currently inside the window
-        for (pt in todayTimes.allPrayers()) {
+        val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+        val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
+        val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
+        for (pt in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, pt.prayer)
-            val silenceTime = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, pt.hour)
-                set(Calendar.MINUTE, pt.minute)
-                set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
-                add(Calendar.MINUTE, config.delayMinutes)
+            val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
+                    set(Calendar.MINUTE, config.delayFixedMinute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                }
+            } else {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, pt.hour)
+                    set(Calendar.MINUTE, pt.minute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                    add(Calendar.MINUTE, config.delayMinutes)
+                }
             }
-            val unsilenceTime = (silenceTime.clone() as Calendar).apply {
-                add(Calendar.MINUTE, config.afterMinutes)
+            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
+                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                    if (before(silenceTime)) add(Calendar.DAY_OF_YEAR, 1)
+                }
+            } else {
+                (silenceTime.clone() as Calendar).apply {
+                    add(Calendar.MINUTE, config.afterMinutes)
+                }
             }
 
             if (!now.before(silenceTime) && now.before(unsilenceTime)) {

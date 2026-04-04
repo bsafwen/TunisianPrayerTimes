@@ -82,7 +82,8 @@ class SilenceAlarmComputerTest {
         val prayerAlarms = result.alarms.filter { it.action != AlarmAction.MIDNIGHT_RESCHEDULE }
         assertEquals("Each prayer should have silence + unsilence", 10, prayerAlarms.size)
 
-        for (prayer in Prayer.values()) {
+        val scheduledPrayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
+        for (prayer in scheduledPrayers) {
             assertTrue("Should have SILENCE for $prayer",
                 prayerAlarms.any { it.prayer == prayer && it.action == AlarmAction.SILENCE })
             assertTrue("Should have UNSILENCE for $prayer",
