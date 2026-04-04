@@ -23,7 +23,7 @@ class OnboardingActivityInstrumentedTest {
     val composeRule = createAndroidComposeRule<OnboardingActivity>()
 
     private fun navigateToStep(step: Int) {
-        // Step 4 (permissions) blocks Next if permissions not granted
+        // Step 5 (permissions) blocks Next if permissions not granted
         repeat(step) {
             composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).performClick()
             composeRule.waitForIdle()
@@ -74,11 +74,11 @@ class OnboardingActivityInstrumentedTest {
         composeRule.onNodeWithTag(TestTags.ONBOARDING_PREV).assertDoesNotExist()
     }
 
-    // --- Step 4: Permissions ---
+    // --- Step 5: Permissions ---
 
     @Test
-    fun step4_nextButtonIsDisabledWithoutPermissions() {
-        navigateToStep(4)
+    fun step5_nextButtonIsDisabledWithoutPermissions() {
+        navigateToStep(5)
         // On a fresh test device without DND permission, Next should be disabled
         composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).assertIsNotEnabled()
     }
