@@ -937,11 +937,21 @@ private fun PrayerSettingsCard(
             .get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
     }
 
+    // Jomoaa custom time from prefs (or Dhuhr as fallback)
+    var jomoaaH by rememberSaveable { mutableIntStateOf(PrefsManager.getJomoaaTimeHour(context)) }
+    var jomoaaM by rememberSaveable { mutableIntStateOf(PrefsManager.getJomoaaTimeMinute(context)) }
+    val resolvedJomoaaH = if (jomoaaH >= 0) jomoaaH else displayTimes?.dhuhr?.hour ?: -1
+    val resolvedJomoaaM = if (jomoaaM >= 0) jomoaaM else displayTimes?.dhuhr?.minute ?: -1
+
     // Next prayer logic — only for today, Friday-aware
-    val nextPrayerFromToday = remember(delegationId) {
+    val nextPrayerFromToday = remember(delegationId, jomoaaH, jomoaaM) {
         if (!isToday) return@remember null
-        displayTimes?.nextPrayer(today.get(Calendar.HOUR_OF_DAY), today.get(Calendar.MINUTE),
-            today.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)
+        displayTimes?.nextPrayer(
+            today.get(Calendar.HOUR_OF_DAY), today.get(Calendar.MINUTE),
+            today.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+            PrefsManager.getJomoaaTimeHour(context),
+            PrefsManager.getJomoaaTimeMinute(context)
+        )
     }
 
     val tomorrowFajr = remember(delegationId) {
@@ -1040,17 +1050,32 @@ private fun PrayerSettingsCard(
                     }
                 }
 
-                // JOMOAA row — always shown as the last row, uses Dhuhr time
+                // JOMOAA row — always shown as the last row, time editable
                 HorizontalDivider(color = Divider, thickness = 1.dp)
-                key(delegationId, "jomoaa") {
+                key(delegationId, "jomoaa", jomoaaH, jomoaaM) {
                     PrayerRow(
                         prayer = Prayer.JOMOAA,
                         prayerName = prayerNames[Prayer.JOMOAA] ?: Prayer.JOMOAA.name,
-                        prayerTime = PrayerTime(Prayer.JOMOAA, displayTimes.dhuhr.hour, displayTimes.dhuhr.minute),
+                        prayerTime = PrayerTime(Prayer.JOMOAA, resolvedJomoaaH, resolvedJomoaaM),
                         nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.ASR },
                         isNextPrayer = Prayer.JOMOAA == nextPrayer,
                         activity = activity,
-                        onConfigChanged = onConfigChanged
+                        onConfigChanged = onConfigChanged,
+                        onPrayerTimeClick = {
+                            val picker = MaterialTimePicker.Builder()
+                                .setTimeFormat(TimeFormat.CLOCK_24H)
+                                .setHour(resolvedJomoaaH.coerceAtLeast(0))
+                                .setMinute(resolvedJomoaaM.coerceAtLeast(0))
+                                .setTitleText(context.getString(R.string.pick_jomoaa_time))
+                                .build()
+                            picker.addOnPositiveButtonClickListener {
+                                jomoaaH = picker.hour
+                                jomoaaM = picker.minute
+                                PrefsManager.setJomoaaTime(context, picker.hour, picker.minute)
+                                onConfigChanged()
+                            }
+                            picker.show(activity.supportFragmentManager, "jomoaa_time_picker")
+                        }
                     )
                 }
             } else {
@@ -1233,7 +1258,8 @@ private fun PrayerRow(
     nextPrayerTime: PrayerTime?,
     isNextPrayer: Boolean,
     activity: androidx.appcompat.app.AppCompatActivity,
-    onConfigChanged: () -> Unit
+    onConfigChanged: () -> Unit,
+    onPrayerTimeClick: (() -> Unit)? = null
 ) {
     val context = LocalContext.current
 
@@ -1302,7 +1328,16 @@ private fun PrayerRow(
             textAlign = TextAlign.Center,
             maxLines = 1,
             softWrap = false,
-            modifier = Modifier.weight(1.8f)
+            modifier = Modifier
+                .weight(1.8f)
+                .then(
+                    if (onPrayerTimeClick != null) Modifier
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(GoldLight.copy(alpha = 0.3f))
+                        .clickable(onClick = onPrayerTimeClick)
+                        .padding(vertical = 4.dp)
+                    else Modifier
+                )
         )
 
         // Delay control

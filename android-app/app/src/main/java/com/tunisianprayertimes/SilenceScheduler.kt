@@ -45,7 +45,10 @@ object SilenceScheduler {
 
         var currentlyInSilenceWindow = false
 
-        for (prayerTime in todayTimes.scheduledPrayers(isFriday)) {
+        val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
+        val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
+
+        for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
             // Silence start: apply delay to prayer time

@@ -26,11 +26,20 @@ data class DayPrayerTimes(
 
     /**
      * Returns the effective prayer list for scheduling on the given day.
-     * On Fridays, DHUHR is replaced by JOMOAA (same time, different config).
+     * On Fridays, DHUHR is replaced by JOMOAA with an optionally custom time.
+     * @param jomoaaHour custom Jomoaa hour, or -1 to use Dhuhr time
+     * @param jomoaaMinute custom Jomoaa minute, or -1 to use Dhuhr time
      */
-    fun scheduledPrayers(isFriday: Boolean): List<PrayerTime> =
-        if (isFriday) listOf(fajr, PrayerTime(Prayer.JOMOAA, dhuhr.hour, dhuhr.minute), asr, maghrib, isha)
-        else allPrayers()
+    fun scheduledPrayers(
+        isFriday: Boolean,
+        jomoaaHour: Int = -1,
+        jomoaaMinute: Int = -1
+    ): List<PrayerTime> =
+        if (isFriday) {
+            val h = if (jomoaaHour >= 0) jomoaaHour else dhuhr.hour
+            val m = if (jomoaaMinute >= 0) jomoaaMinute else dhuhr.minute
+            listOf(fajr, PrayerTime(Prayer.JOMOAA, h, m), asr, maghrib, isha)
+        } else allPrayers()
 
     /**
      * Returns the next upcoming prayer based on the given time (hour:minute).
@@ -45,11 +54,17 @@ data class DayPrayerTimes(
 
     /**
      * Friday-aware next prayer calculation.
-     * On Fridays, DHUHR is replaced by JOMOAA.
+     * On Fridays, DHUHR is replaced by JOMOAA with an optionally custom time.
      */
-    fun nextPrayer(currentHour: Int, currentMinute: Int, isFriday: Boolean): Prayer? {
+    fun nextPrayer(
+        currentHour: Int,
+        currentMinute: Int,
+        isFriday: Boolean,
+        jomoaaHour: Int = -1,
+        jomoaaMinute: Int = -1
+    ): Prayer? {
         val nowMinutes = currentHour * 60 + currentMinute
-        return scheduledPrayers(isFriday).firstOrNull { pt ->
+        return scheduledPrayers(isFriday, jomoaaHour, jomoaaMinute).firstOrNull { pt ->
             pt.hour * 60 + pt.minute > nowMinutes
         }?.prayer
     }

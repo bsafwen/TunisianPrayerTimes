@@ -232,4 +232,21 @@ object PrefsManager {
             delayFixedMinute = getDelayFixedMinute(context, prayer)
         )
     }
+
+    // --- Jomoaa custom time (defaults to -1 = use Dhuhr time) ---
+
+    fun getJomoaaTimeHour(context: Context): Int {
+        return prefs(context).getInt("jomoaa_time_hour", -1)
+    }
+
+    fun getJomoaaTimeMinute(context: Context): Int {
+        return prefs(context).getInt("jomoaa_time_minute", -1)
+    }
+
+    fun setJomoaaTime(context: Context, hour: Int, minute: Int) {
+        prefs(context).edit()
+            .putInt("jomoaa_time_hour", hour)
+            .putInt("jomoaa_time_minute", minute)
+            .apply()
+    }
 }

@@ -223,4 +223,83 @@ class JomoaaTest {
         assertEquals(5, all.size)
         assertFalse(all.any { it.prayer == Prayer.JOMOAA })
     }
+
+    // ── Custom Jomoaa time ──────────────────────
+
+    @Test
+    fun scheduledPrayers_friday_customTime_usesCustomTime() {
+        val prayers = day.scheduledPrayers(isFriday = true, jomoaaHour = 13, jomoaaMinute = 0)
+        val jomoaa = prayers[1]
+        assertEquals(Prayer.JOMOAA, jomoaa.prayer)
+        assertEquals(13, jomoaa.hour)
+        assertEquals(0, jomoaa.minute)
+    }
+
+    @Test
+    fun scheduledPrayers_friday_noCustomTime_usesDhuhrTime() {
+        val prayers = day.scheduledPrayers(isFriday = true, jomoaaHour = -1, jomoaaMinute = -1)
+        val jomoaa = prayers[1]
+        assertEquals(day.dhuhr.hour, jomoaa.hour)
+        assertEquals(day.dhuhr.minute, jomoaa.minute)
+    }
+
+    @Test
+    fun scheduledPrayers_nonFriday_customTimeIgnored() {
+        val prayers = day.scheduledPrayers(isFriday = false, jomoaaHour = 13, jomoaaMinute = 0)
+        assertFalse(prayers.any { it.prayer == Prayer.JOMOAA })
+        assertEquals(day.dhuhr.hour, prayers[1].hour)
+    }
+
+    @Test
+    fun nextPrayer_friday_customTimeBeforeDhuhr_returnsJomoaa() {
+        // Custom Jomoaa at 13:00, current time 12:45 → next is JOMOAA
+        assertEquals(Prayer.JOMOAA, day.nextPrayer(12, 45, isFriday = true, jomoaaHour = 13, jomoaaMinute = 0))
+    }
+
+    @Test
+    fun nextPrayer_friday_customTimeAfterDhuhr_atDhuhrTime_returnsJomoaa() {
+        // Default Dhuhr is 12:30, custom Jomoaa at 13:00, current time 12:30 → next is JOMOAA at 13:00
+        assertEquals(Prayer.JOMOAA, day.nextPrayer(12, 30, isFriday = true, jomoaaHour = 13, jomoaaMinute = 0))
+    }
+
+    @Test
+    fun nextPrayer_friday_customTimePassed_returnsAsr() {
+        // Custom Jomoaa at 13:00, current time 13:00 → JOMOAA passed, next is ASR
+        assertEquals(Prayer.ASR, day.nextPrayer(13, 0, isFriday = true, jomoaaHour = 13, jomoaaMinute = 0))
+    }
+
+    @Test
+    fun compute_friday_customTime_usesCustomTimeForAlarm() {
+        val jomoaaConfig = PrayerSilenceConfig(afterMinutes = 60)
+        val configs = defaultConfigs + (Prayer.JOMOAA to jomoaaConfig)
+        val now = makeNow(3, 0)
+
+        val result = SilenceAlarmComputer.compute(
+            now, day, configs, isFriday = true,
+            jomoaaHour = 13, jomoaaMinute = 15
+        )
+
+        val jomoaaSilence = result.alarms.first { it.prayer == Prayer.JOMOAA && it.action == AlarmAction.SILENCE }
+        val silenceCal = Calendar.getInstance().apply { timeInMillis = jomoaaSilence.triggerAtMillis }
+        assertEquals(13, silenceCal.get(Calendar.HOUR_OF_DAY))
+        assertEquals(15, silenceCal.get(Calendar.MINUTE))
+    }
+
+    @Test
+    fun compute_friday_customTime_unsilenceFollowsCustomStart() {
+        val jomoaaConfig = PrayerSilenceConfig(afterMinutes = 45)
+        val configs = defaultConfigs + (Prayer.JOMOAA to jomoaaConfig)
+        val now = makeNow(3, 0)
+
+        val result = SilenceAlarmComputer.compute(
+            now, day, configs, isFriday = true,
+            jomoaaHour = 13, jomoaaMinute = 0
+        )
+
+        val jomoaaUnsilence = result.alarms.first { it.prayer == Prayer.JOMOAA && it.action == AlarmAction.UNSILENCE }
+        val unsilenceCal = Calendar.getInstance().apply { timeInMillis = jomoaaUnsilence.triggerAtMillis }
+        // 13:00 + 45 min = 13:45
+        assertEquals(13, unsilenceCal.get(Calendar.HOUR_OF_DAY))
+        assertEquals(45, unsilenceCal.get(Calendar.MINUTE))
+    }
 }
