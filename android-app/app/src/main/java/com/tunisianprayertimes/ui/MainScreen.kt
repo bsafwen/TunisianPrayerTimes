@@ -553,91 +553,51 @@ private fun LocationPickerCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
         ) {
-            Text(
-                text = stringResource(R.string.location_title),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                color = PrayerNameColor
-            )
-
-            Spacer(Modifier.height(12.dp))
-
-            Text(
-                text = stringResource(R.string.label_delegation),
-                fontSize = 12.sp,
-                color = TextMuted
-            )
-
-            Spacer(Modifier.height(4.dp))
-
-            OutlinedCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { showSheet = true },
-                shape = RoundedCornerShape(8.dp),
-                border = androidx.compose.foundation.BorderStroke(1.dp, GoldLight)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
+                Text(
+                    text = stringResource(R.string.location_title),
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerNameColor
+                )
+                Spacer(Modifier.width(12.dp))
+                Text(
+                    text = savedDelegation?.displayName()
+                        ?: stringResource(R.string.hint_search_delegation),
+                    fontSize = 14.sp,
+                    color = if (savedDelegation != null) TextDark else TextMuted,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 12.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = savedDelegation?.displayName()
-                            ?: stringResource(R.string.hint_search_delegation),
-                        fontSize = 14.sp,
-                        color = if (savedDelegation != null) TextDark else TextMuted,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Text(
-                        text = stringResource(R.string.label_change),
-                        fontSize = 12.sp,
-                        color = GreenPrimary,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
-            }
-
-            Spacer(Modifier.height(8.dp))
-
-            // Auto-detect nearest delegation using the best available location source.
-            OutlinedCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(enabled = !locating) {
-                        if (DelegationLocator.hasLocationPermission(context)) {
-                            startLocationLookup()
-                        } else {
-                            locationPermissionLauncher.launch(DelegationLocator.requestedPermissions)
+                        .weight(1f)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(GoldLight.copy(alpha = 0.25f))
+                        .clickable { showSheet = true }
+                        .padding(horizontal = 12.dp, vertical = 8.dp)
+                )
+                Spacer(Modifier.width(8.dp))
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .size(36.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(GreenPrimary.copy(alpha = 0.1f))
+                        .clickable(enabled = !locating) {
+                            if (DelegationLocator.hasLocationPermission(context)) {
+                                startLocationLookup()
+                            } else {
+                                locationPermissionLauncher.launch(DelegationLocator.requestedPermissions)
+                            }
                         }
-                    },
-                shape = RoundedCornerShape(8.dp),
-                border = androidx.compose.foundation.BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.5f))
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 12.dp, vertical = 10.dp),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_location),
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.gps_auto_detect),
                         tint = GreenPrimary,
                         modifier = Modifier.size(18.dp)
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                        text = if (locating) stringResource(R.string.gps_locating)
-                               else stringResource(R.string.gps_auto_detect),
-                        fontSize = 13.sp,
-                        color = GreenPrimary,
-                        fontWeight = FontWeight.Medium
                     )
                 }
             }
