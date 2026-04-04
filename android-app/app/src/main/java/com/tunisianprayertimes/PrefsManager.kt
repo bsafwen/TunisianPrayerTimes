@@ -18,7 +18,11 @@ object PrefsManager {
     private const val KEY_MANUAL_SILENCE_ACTIVE = "manual_silence_active"
     private const val KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE = "manual_silence_previous_ringer_mode"
     private const val KEY_MANUAL_SILENCE_PREVIOUS_INTERRUPTION_FILTER = "manual_silence_previous_interruption_filter"
+    private const val KEY_MANUAL_SILENCE_USES_DURATION = "manual_silence_uses_duration"
+    private const val KEY_MANUAL_SILENCE_DURATION_MINUTES = "manual_silence_duration_minutes"
+    private const val KEY_MANUAL_SILENCE_ENDS_AT_MILLIS = "manual_silence_ends_at_millis"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
+    private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
 
     private fun prefs(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -107,7 +111,41 @@ object PrefsManager {
             .putBoolean(KEY_MANUAL_SILENCE_ACTIVE, false)
             .remove(KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE)
             .remove(KEY_MANUAL_SILENCE_PREVIOUS_INTERRUPTION_FILTER)
+            .remove(KEY_MANUAL_SILENCE_ENDS_AT_MILLIS)
             .apply()
+    }
+
+    fun usesManualSilenceDuration(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_MANUAL_SILENCE_USES_DURATION, false)
+    }
+
+    fun setManualSilenceUsesDuration(context: Context, usesDuration: Boolean) {
+        prefs(context).edit().putBoolean(KEY_MANUAL_SILENCE_USES_DURATION, usesDuration).apply()
+    }
+
+    fun getManualSilenceDurationMinutes(context: Context): Int {
+        return prefs(context).getInt(
+            KEY_MANUAL_SILENCE_DURATION_MINUTES,
+            DEFAULT_MANUAL_SILENCE_DURATION_MINUTES
+        )
+    }
+
+    fun setManualSilenceDurationMinutes(context: Context, minutes: Int) {
+        prefs(context).edit()
+            .putInt(KEY_MANUAL_SILENCE_DURATION_MINUTES, minutes.coerceAtLeast(1))
+            .apply()
+    }
+
+    fun getManualSilenceEndsAtMillis(context: Context): Long {
+        return prefs(context).getLong(KEY_MANUAL_SILENCE_ENDS_AT_MILLIS, -1L)
+    }
+
+    fun setManualSilenceEndsAtMillis(context: Context, endsAtMillis: Long) {
+        prefs(context).edit().putLong(KEY_MANUAL_SILENCE_ENDS_AT_MILLIS, endsAtMillis).apply()
+    }
+
+    fun clearManualSilenceEndsAt(context: Context) {
+        prefs(context).edit().remove(KEY_MANUAL_SILENCE_ENDS_AT_MILLIS).apply()
     }
 
     private const val RAMADAN_ISHA_MINUTES = 90

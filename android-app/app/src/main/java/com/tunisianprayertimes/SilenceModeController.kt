@@ -40,6 +40,11 @@ object SilenceModeController {
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        if (PrefsManager.isManualSilenceActive(context)) {
+            notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+            audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+            return true
+        }
         if (!PrefsManager.isAutoSilenceActive(context)) {
             PrefsManager.markAutoSilenceActive(
                 context = context,
@@ -56,6 +61,7 @@ object SilenceModeController {
     fun disableAutoSilence(context: Context): Boolean {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
+        if (PrefsManager.isManualSilenceActive(context)) return false
         if (!PrefsManager.isAutoSilenceActive(context)) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
@@ -73,12 +79,24 @@ object SilenceModeController {
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        val previousRingerMode = if (PrefsManager.isAutoSilenceActive(context)) {
+            PrefsManager.getAutoSilencePreviousRingerMode(context)
+        } else {
+            audioManager.ringerMode
+        }
+        val previousInterruptionFilter = if (PrefsManager.isAutoSilenceActive(context)) {
+            PrefsManager.getAutoSilencePreviousInterruptionFilter(context)
+        } else {
+            notificationManager.currentInterruptionFilter
+        }
+
         PrefsManager.clearAutoSilenceState(context)
+        PrefsManager.clearManualSilenceEndsAt(context)
         if (!PrefsManager.isManualSilenceActive(context)) {
             PrefsManager.markManualSilenceActive(
                 context = context,
-                previousRingerMode = audioManager.ringerMode,
-                previousInterruptionFilter = notificationManager.currentInterruptionFilter
+                previousRingerMode = previousRingerMode,
+                previousInterruptionFilter = previousInterruptionFilter
             )
         }
 
@@ -92,6 +110,7 @@ object SilenceModeController {
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        ManualSilenceScheduler.cancel(context)
 
         if (PrefsManager.isManualSilenceActive(context)) {
             restoreState(
@@ -122,6 +141,7 @@ object SilenceModeController {
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        ManualSilenceScheduler.cancel(context)
         restoreState(
             notificationManager, audioManager,
             NotificationManager.INTERRUPTION_FILTER_ALL,

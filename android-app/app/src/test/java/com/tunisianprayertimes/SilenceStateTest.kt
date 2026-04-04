@@ -1,6 +1,5 @@
 package com.tunisianprayertimes
 
-import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
@@ -112,19 +111,10 @@ class SilenceStateTest {
     // ==================== Regression: DND not cancelled ====================
 
     /**
-     * Reproduces the bug where ACTION_UNSILENCE fails to cancel DND.
-     *
-     * Scenario: A previous prayer's unsilence alarm was missed (OEM killed it).
-     * Phone stays in DND with isAutoSilenceActive=true. The user opens the app
-     * between prayers — scheduleAll() calls disableAutoSilence() which restores
-     * to NORMAL and clears the flag. Next prayer's ACTION_SILENCE fires while
-     * the phone is NORMAL — captures previous=NORMAL, silences. Then the user
-     * manually silences via the UI button (setManualSilent clears auto-silence
-     * flag). ACTION_UNSILENCE fires → isAutoSilenceActive is false → returns
-     * without doing anything → DND stays on forever.
+     * Manual silence must now take priority over stale prayer unsilence alarms.
      */
     @Test
-    fun unsilenceAlarm_afterManualSilenceOverride_mustStillRestoreNormalMode() {
+    fun unsilenceAlarm_afterManualSilenceOverride_keepsManualSilentMode() {
         // 1. Auto-silence alarm fires for Isha
         val receiver = SilenceReceiver()
         receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
@@ -137,16 +127,17 @@ class SilenceStateTest {
         SilenceModeController.setManualSilent(context)
         assertFalse("Manual silence clears auto-silence flag", PrefsManager.isAutoSilenceActive(context))
 
-        // 3. Unsilence alarm fires — MUST still restore normal mode
+        // 3. Unsilence alarm fires — manual silence must still win
         receiver.onReceive(context, android.content.Intent("com.tunisianprayertimes.ACTION_UNSILENCE").apply {
             putExtra("extra_prayer", "ISHA")
         })
 
         assertEquals(
-            "ACTION_UNSILENCE must always restore normal mode, even if auto-silence flag was cleared",
-            AudioManager.RINGER_MODE_NORMAL,
+            "Manual silence must survive stale auto-unsilence alarms",
+            AudioManager.RINGER_MODE_SILENT,
             audioManager.ringerMode
         )
+        assertTrue(PrefsManager.isManualSilenceActive(context))
     }
 
     /**
@@ -357,6 +348,23 @@ class SilenceStateTest {
             AudioManager.RINGER_MODE_NORMAL,
             audioManager.ringerMode
         )
+    }
+
+    @Test
+    fun manualSilence_startedDuringAutoWindow_restoresOriginalPreAutoState() {
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+
+        SilenceModeController.enableAutoSilence(context)
+        assertTrue(PrefsManager.isAutoSilenceActive(context))
+
+        SilenceModeController.setManualSilent(context)
+        assertFalse(PrefsManager.isAutoSilenceActive(context))
+
+        SilenceModeController.setManualNormal(context)
+
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+        assertEquals(NotificationManager.INTERRUPTION_FILTER_ALL, notificationManager.currentInterruptionFilter)
     }
 
     @Test
