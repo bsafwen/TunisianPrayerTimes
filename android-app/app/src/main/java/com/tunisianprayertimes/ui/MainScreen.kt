@@ -62,6 +62,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
@@ -102,6 +103,7 @@ import com.tunisianprayertimes.DelegationLocationResult
 import com.tunisianprayertimes.DelegationLocator
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.GouvernoratRepository
+import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
@@ -135,6 +137,7 @@ import com.tunisianprayertimes.ui.theme.TextMuted
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
@@ -170,6 +173,34 @@ fun MainScreen(
 
     var autoSilenceEnabled by rememberSaveable { mutableStateOf(PrefsManager.isEnabled(context)) }
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
+    var manualUsesDuration by rememberSaveable { mutableStateOf(PrefsManager.usesManualSilenceDuration(context)) }
+    var manualDurationMinutes by rememberSaveable {
+        mutableStateOf(PrefsManager.getManualSilenceDurationMinutes(context).toString())
+    }
+    var manualSilenceActive by remember { mutableStateOf(PrefsManager.isManualSilenceActive(context)) }
+    var manualSilenceEndsAtMillis by remember {
+        mutableLongStateOf(PrefsManager.getManualSilenceEndsAtMillis(context))
+    }
+
+    LaunchedEffect(refreshTick) {
+        ManualSilenceScheduler.syncExpiredTimer(context)
+        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+        manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
+    }
+
+    LaunchedEffect(manualSilenceEndsAtMillis) {
+        if (manualSilenceEndsAtMillis <= 0L) return@LaunchedEffect
+
+        val waitMillis = manualSilenceEndsAtMillis - System.currentTimeMillis()
+        if (waitMillis <= 0L) {
+            refreshTick++
+            return@LaunchedEffect
+        }
+
+        delay(waitMillis)
+        refreshTick++
+    }
 
     // Reschedule helper
     fun rescheduleIfEnabled() {
@@ -188,6 +219,9 @@ fun MainScreen(
             SilenceScheduler.cancelAll(context)
             SilenceVerifyWorker.cancel(context)
         }
+        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+        manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
     }
 
     Column(
@@ -288,16 +322,56 @@ fun MainScreen(
                 ManualSilenceButton(
                     isSilent = isSilent,
                     hasDnd = hasDnd,
+                    manualUsesDuration = manualUsesDuration,
+                    manualDurationMinutes = manualDurationMinutes,
+                    manualSilenceActive = manualSilenceActive,
+                    manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
+                    onUseDurationChange = { usesDuration ->
+                        manualUsesDuration = usesDuration
+                        PrefsManager.setManualSilenceUsesDuration(context, usesDuration)
+                    },
+                    onDurationMinutesChange = { value ->
+                        manualDurationMinutes = value
+                        value.toIntOrNull()?.let { minutes ->
+                            PrefsManager.setManualSilenceDurationMinutes(context, minutes)
+                        }
+                    },
                     onClick = {
-                        if (!notificationManager.isNotificationPolicyAccessGranted) return@ManualSilenceButton
+                        if (!notificationManager.isNotificationPolicyAccessGranted) {
+                            Toast.makeText(context, context.getString(R.string.toast_dnd_permission), Toast.LENGTH_SHORT).show()
+                            return@ManualSilenceButton
+                        }
                         if (isSilent) {
                             SilenceModeController.setManualNormal(context)
-                            isSilent = false
+                            isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+                            manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+                            manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
                             Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
                         } else {
+                            val resolvedManualDurationMinutes = resolveManualDurationMinutes(
+                                manualDurationMinutes,
+                                PrefsManager.getManualSilenceDurationMinutes(context)
+                            )
+                            if (manualUsesDuration && resolvedManualDurationMinutes <= 0) {
+                                Toast.makeText(context, context.getString(R.string.error_manual_duration_required), Toast.LENGTH_SHORT).show()
+                                return@ManualSilenceButton
+                            }
+
                             SilenceModeController.setManualSilent(context)
+                            if (manualUsesDuration) {
+                                manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, resolvedManualDurationMinutes)
+                                Toast.makeText(
+                                    context,
+                                    context.getString(R.string.toast_silent_enabled_timed, resolvedManualDurationMinutes),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                ManualSilenceScheduler.cancel(context)
+                                manualSilenceEndsAtMillis = -1L
+                                Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
+                            }
                             isSilent = true
-                            Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
+                            manualSilenceActive = PrefsManager.isManualSilenceActive(context)
                         }
                     }
                 )
@@ -1606,27 +1680,166 @@ private fun RamadanBadge() {
 private fun ManualSilenceButton(
     isSilent: Boolean,
     hasDnd: Boolean,
+    manualUsesDuration: Boolean,
+    manualDurationMinutes: String,
+    manualSilenceActive: Boolean,
+    manualSilenceEndsAtMillis: Long,
+    onUseDurationChange: (Boolean) -> Unit,
+    onDurationMinutesChange: (String) -> Unit,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
     val bgColor by animateColorAsState(
         targetValue = if (isSilent && hasDnd) SilenceRed else GreenPrimary,
         label = "buttonColor"
     )
 
-    Button(
-        onClick = onClick,
+    val resolvedDurationMinutes = resolveManualDurationMinutes(
+        manualDurationMinutes,
+        PrefsManager.getManualSilenceDurationMinutes(context)
+    )
+    val statusText = when {
+        manualSilenceActive && manualSilenceEndsAtMillis > 0L -> {
+            stringResource(
+                R.string.manual_silence_active_until_time,
+                formatTimeOfDay(manualSilenceEndsAtMillis)
+            )
+        }
+        manualSilenceActive -> stringResource(R.string.manual_silence_active_until_manual)
+        manualUsesDuration -> stringResource(R.string.manual_silence_selected_duration, resolvedDurationMinutes)
+        else -> stringResource(R.string.manual_silence_subtitle)
+    }
+
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp)
-            .height(56.dp)
-            .testTag(TestTags.MANUAL_SILENCE_BUTTON),
+            .padding(top = 16.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = bgColor)
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.manual_silence_title),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextDark
+            )
+
+            Spacer(Modifier.height(4.dp))
+
+            Text(
+                text = statusText,
+                fontSize = 12.sp,
+                color = TextMuted
+            )
+
+            Spacer(Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                ManualSilenceModeChip(
+                    text = stringResource(R.string.manual_silence_mode_until),
+                    selected = !manualUsesDuration,
+                    testTag = TestTags.MANUAL_SILENCE_MODE_UNTIL,
+                    onClick = { onUseDurationChange(false) },
+                    modifier = Modifier.weight(1f)
+                )
+                ManualSilenceModeChip(
+                    text = stringResource(R.string.manual_silence_mode_duration),
+                    selected = manualUsesDuration,
+                    testTag = TestTags.MANUAL_SILENCE_MODE_DURATION,
+                    onClick = { onUseDurationChange(true) },
+                    modifier = Modifier.weight(1f)
+                )
+            }
+
+            AnimatedVisibility(
+                visible = manualUsesDuration,
+                enter = expandVertically(),
+                exit = shrinkVertically()
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(R.string.manual_silence_duration_label),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = PrayerNameColor,
+                        modifier = Modifier.width(64.dp)
+                    )
+                    NumberInput(
+                        value = manualDurationMinutes,
+                        onValueChange = onDurationMinutesChange,
+                        modifier = Modifier
+                            .width(76.dp)
+                            .testTag(TestTags.MANUAL_SILENCE_DURATION_INPUT)
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(R.string.manual_silence_duration_unit),
+                        fontSize = 13.sp,
+                        color = TextMuted
+                    )
+                }
+            }
+
+            Button(
+                onClick = onClick,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp)
+                    .height(56.dp)
+                    .testTag(TestTags.MANUAL_SILENCE_BUTTON),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = bgColor)
+            ) {
+                Text(
+                    text = when {
+                        isSilent && hasDnd -> stringResource(R.string.btn_unsilence)
+                        manualUsesDuration -> stringResource(R.string.btn_silence_for_duration, resolvedDurationMinutes)
+                        else -> stringResource(R.string.btn_silence)
+                    },
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ManualSilenceModeChip(
+    text: String,
+    selected: Boolean,
+    testTag: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+            .clip(RoundedCornerShape(10.dp))
+            .background(if (selected) GreenPrimary.copy(alpha = 0.14f) else GoldLight.copy(alpha = 0.18f))
+            .clickable(onClick = onClick)
+            .testTag(testTag)
+            .padding(horizontal = 12.dp, vertical = 10.dp)
     ) {
         Text(
-            text = if (isSilent && hasDnd) stringResource(R.string.btn_unsilence) else stringResource(R.string.btn_silence),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
+            text = text,
+            fontSize = 12.sp,
+            color = if (selected) GreenPrimaryDark else TextDark,
+            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+            textAlign = TextAlign.Center
         )
     }
 }
@@ -1692,4 +1905,18 @@ private fun initFixedMinute(context: Context, prayer: Prayer, prayerTime: Prayer
         return cal.get(Calendar.MINUTE)
     }
     return 0
+}
+
+private fun resolveManualDurationMinutes(value: String, fallback: Int): Int {
+    return value.toIntOrNull()?.coerceAtLeast(1) ?: fallback.coerceAtLeast(1)
+}
+
+private fun formatTimeOfDay(targetTimeInMillis: Long): String {
+    val calendar = Calendar.getInstance().apply { timeInMillis = targetTimeInMillis }
+    return String.format(
+        Locale.forLanguageTag("ar-TN"),
+        "%02d:%02d",
+        calendar.get(Calendar.HOUR_OF_DAY),
+        calendar.get(Calendar.MINUTE)
+    )
 }

@@ -7,9 +7,11 @@
     <string name="status_silent">الهاتف في الوضع الصامت 🔇</string>
     <string name="status_no_permission">يجب منح إذن عدم الإزعاج ⚠️</string>
     <string name="btn_silence">تفعيل الصامت 🔇</string>
+    <string name="btn_silence_for_duration">تفعيل الصامت لمدة %1$d دقيقة 🔇</string>
     <string name="btn_unsilence">إلغاء الصامت 🔔</string>
     <string name="info_text">يقوم هذا التطبيق بتفعيل وضع عدم الإزعاج تلقائيًا عند دخول وقت كل صلاة.</string>
     <string name="toast_silent_enabled">تم تفعيل الوضع الصامت 🔇</string>
+    <string name="toast_silent_enabled_timed">تم تفعيل الوضع الصامت لمدة %1$d دقيقة 🔇</string>
     <string name="toast_normal_restored">تم إيقاف الوضع الصامت 🔔</string>
     <string name="toast_dnd_permission">يرجى منح إذن عدم الإزعاج لهذا التطبيق</string>
     <string name="dnd_dialog_title">إذن مطلوب</string>
@@ -20,6 +22,15 @@
     <string name="banner_alarm_missing">إذن التنبيهات والتذكيرات مطلوب لضبط أوقات الإسكات. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="banner_both_missing">أذونات مطلوبة: عدم الإزعاج + التنبيهات. اضغط هنا لمنح الأذونات. ⬅</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
+    <string name="manual_silence_title">الإسكات اليدوي</string>
+    <string name="manual_silence_subtitle">اختر ما إذا كان الصامت يستمر حتى توقفه بنفسك أو لمدة محددة.</string>
+    <string name="manual_silence_mode_until">حتى أقوم بإيقافه</string>
+    <string name="manual_silence_mode_duration">لمدة محددة</string>
+    <string name="manual_silence_duration_label">المدة</string>
+    <string name="manual_silence_duration_unit">دقيقة</string>
+    <string name="manual_silence_active_until_manual">سيبقى الصامت مفعّلًا حتى تقوم بإلغائه.</string>
+    <string name="manual_silence_active_until_time">سيتم إلغاء الصامت تلقائيًا عند %1$s.</string>
+    <string name="manual_silence_selected_duration">سيتم إلغاء الصامت تلقائيًا بعد %1$d دقيقة.</string>
     <string name="toast_auto_enabled">تم تفعيل الإسكات التلقائي ✅</string>
     <string name="toast_auto_disabled">تم إيقاف الإسكات التلقائي</string>
     <string name="prayer_settings_title">إعدادات الإسكات</string>
@@ -87,6 +98,7 @@
     <string name="error_start_before_athan">وقت البدء يجب أن لا يكون قبل وقت الأذان</string>
     <string name="error_end_before_athan">وقت الانتهاء يجب أن لا يكون قبل وقت الأذان</string>
     <string name="error_overlaps_next_prayer">وقت الانتهاء يجب أن لا يتجاوز وقت الصلاة التالية</string>
+    <string name="error_manual_duration_required">حدد مدة صحيحة للإسكات اليدوي</string>
     <string name="warning_overlaps_next_prayer">⚠ مدة الإسكات تتجاوز وقت الصلاة التالية</string>
     <string name="date_today">اليوم</string>
     <string name="date_go_back_today">العودة لليوم</string>
