@@ -90,7 +90,8 @@ fun OnboardingScreen(
 ) {
     val context = LocalContext.current
     var currentStep by rememberSaveable { mutableIntStateOf(0) }
-    val totalSteps = 6
+    val totalSteps = 7
+    val permissionsStep = 5
 
     // Track navigation direction for animation
     var goingForward by remember { mutableStateOf(true) }
@@ -111,6 +112,15 @@ fun OnboardingScreen(
     val hasAlarm = remember(refreshTick) { hasExactAlarmPerm(context) }
     val hasBattery = remember(refreshTick) { isBatteryOptimized(context) }
     val allPermsGranted = hasDnd && hasAlarm && hasBattery
+
+    // Auto-advance from permissions step once all granted
+    LaunchedEffect(allPermsGranted, currentStep) {
+        if (allPermsGranted && currentStep == permissionsStep) {
+            delay(600)
+            goingForward = true
+            currentStep = permissionsStep + 1
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -161,13 +171,14 @@ fun OnboardingScreen(
                 1 -> DurationExplanationStep()
                 2 -> DelayExplanationStep()
                 3 -> FixedTimeSwitchStep()
-                4 -> PermissionsStep(
+                4 -> JomoaaExplanationStep()
+                5 -> PermissionsStep(
                     hasDnd = hasDnd,
                     hasAlarm = hasAlarm,
                     hasBattery = hasBattery,
                     context = context
                 )
-                5 -> ReadyStep()
+                6 -> ReadyStep()
             }
         }
 
@@ -221,8 +232,8 @@ fun OnboardingScreen(
                         goingForward = true
                         currentStep++
                     },
-                    enabled = currentStep != 4 || allPermsGranted,
-                    modifier = Modifier.weight(1f).heightIn(min = 56.dp).testTag(TestTags.ONBOARDING_NEXT).alpha(if (currentStep == 4 && !allPermsGranted) 0.4f else 1f),
+                    enabled = currentStep != permissionsStep || allPermsGranted,
+                    modifier = Modifier.weight(1f).heightIn(min = 56.dp).testTag(TestTags.ONBOARDING_NEXT).alpha(if (currentStep == permissionsStep && !allPermsGranted) 0.4f else 1f),
                     shape = RoundedCornerShape(28.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)
                 ) {
@@ -448,6 +459,135 @@ private fun FixedTimeSwitchStep() {
         Spacer(Modifier.height(12.dp))
         Text(
             text = stringResource(R.string.onboarding_step3_desc),
+            fontSize = 14.sp,
+            color = TextDark,
+            textAlign = TextAlign.Center,
+            lineHeight = 20.sp
+        )
+    }
+}
+
+@Composable
+private fun JomoaaExplanationStep() {
+    var showAfter by remember { mutableStateOf(false) }
+    val tapScale = remember { Animatable(1f) }
+    val tapHighlight = remember { Animatable(0f) }
+
+    LaunchedEffect(Unit) {
+        showAfter = false
+        delay(1400)
+        // Simulate tap on time
+        tapHighlight.animateTo(1f, tween(100))
+        tapScale.animateTo(0.9f, tween(100))
+        delay(150)
+        tapScale.animateTo(1f, spring(dampingRatio = 0.4f, stiffness = 300f))
+        tapHighlight.animateTo(0f, tween(200))
+        delay(200)
+        showAfter = true
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 24.dp, vertical = 32.dp)
+            .padding(bottom = 160.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = stringResource(R.string.onboarding_jomoaa_title),
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = GreenPrimaryDark,
+            textAlign = TextAlign.Center
+        )
+        Spacer(Modifier.height(16.dp))
+
+        // Demo Jomoaa row
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            border = androidx.compose.foundation.BorderStroke(1.dp, GoldLight)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min)
+                    .padding(12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(R.string.prayer_jomoaa),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerNameColor,
+                    maxLines = 1,
+                    modifier = Modifier.weight(1.6f)
+                )
+                // Tappable time
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1.6f)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(GoldLight.copy(alpha = 0.3f + tapHighlight.value * 0.3f))
+                        .graphicsLayer {
+                            scaleX = tapScale.value
+                            scaleY = tapScale.value
+                        }
+                        .padding(vertical = 4.dp)
+                ) {
+                    Text(
+                        text = if (showAfter) "12:40" else "12:30",
+                        fontSize = 13.sp,
+                        color = if (showAfter) GreenPrimary else TextDark,
+                        textAlign = TextAlign.Center,
+                        fontWeight = if (showAfter) FontWeight.Bold else FontWeight.Normal
+                    )
+                }
+                Spacer(Modifier.width(8.dp))
+                // Duration placeholder
+                Row(
+                    modifier = Modifier.weight(2f),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    DemoInputBox(text = "0", modifier = Modifier.weight(1f))
+                    Text(
+                        text = stringResource(R.string.label_delay_minutes),
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = TextMuted,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.weight(0.6f).padding(2.dp)
+                    )
+                }
+                Row(
+                    modifier = Modifier.weight(2.3f),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    DemoInputBox(text = "13:15", modifier = Modifier.weight(1f))
+                    Text(
+                        text = stringResource(R.string.label_fixed_time),
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Gold,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.weight(0.6f).padding(2.dp)
+                    )
+                }
+            }
+        }
+
+        Spacer(Modifier.height(16.dp))
+        Text(
+            text = stringResource(R.string.onboarding_jomoaa_desc),
             fontSize = 14.sp,
             color = TextDark,
             textAlign = TextAlign.Center,
