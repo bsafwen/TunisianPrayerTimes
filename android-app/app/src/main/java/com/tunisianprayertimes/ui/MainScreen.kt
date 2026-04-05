@@ -174,8 +174,11 @@ fun MainScreen(
     var autoSilenceEnabled by rememberSaveable { mutableStateOf(PrefsManager.isEnabled(context)) }
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
     var manualUsesDuration by rememberSaveable { mutableStateOf(PrefsManager.usesManualSilenceDuration(context)) }
+    var manualDurationHours by rememberSaveable {
+        mutableStateOf((PrefsManager.getManualSilenceDurationMinutes(context) / 60).toString())
+    }
     var manualDurationMinutes by rememberSaveable {
-        mutableStateOf(PrefsManager.getManualSilenceDurationMinutes(context).toString())
+        mutableStateOf((PrefsManager.getManualSilenceDurationMinutes(context) % 60).toString())
     }
     var manualSilenceActive by remember { mutableStateOf(PrefsManager.isManualSilenceActive(context)) }
     var manualSilenceEndsAtMillis by remember {
@@ -323,6 +326,7 @@ fun MainScreen(
                     isSilent = isSilent,
                     hasDnd = hasDnd,
                     manualUsesDuration = manualUsesDuration,
+                    manualDurationHours = manualDurationHours,
                     manualDurationMinutes = manualDurationMinutes,
                     manualSilenceActive = manualSilenceActive,
                     manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
@@ -330,11 +334,15 @@ fun MainScreen(
                         manualUsesDuration = usesDuration
                         PrefsManager.setManualSilenceUsesDuration(context, usesDuration)
                     },
+                    onDurationHoursChange = { value ->
+                        manualDurationHours = value
+                        val totalMinutes = (value.toIntOrNull() ?: 0) * 60 + (manualDurationMinutes.toIntOrNull() ?: 0)
+                        PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                    },
                     onDurationMinutesChange = { value ->
                         manualDurationMinutes = value
-                        value.toIntOrNull()?.let { minutes ->
-                            PrefsManager.setManualSilenceDurationMinutes(context, minutes)
-                        }
+                        val totalMinutes = (manualDurationHours.toIntOrNull() ?: 0) * 60 + (value.toIntOrNull() ?: 0)
+                        PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
                     },
                     onClick = {
                         if (!notificationManager.isNotificationPolicyAccessGranted) {
@@ -348,21 +356,21 @@ fun MainScreen(
                             manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
                             Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
                         } else {
-                            val resolvedManualDurationMinutes = resolveManualDurationMinutes(
-                                manualDurationMinutes,
+                            val totalMinutes = resolveManualTotalMinutes(
+                                manualDurationHours, manualDurationMinutes,
                                 PrefsManager.getManualSilenceDurationMinutes(context)
                             )
-                            if (manualUsesDuration && resolvedManualDurationMinutes <= 0) {
+                            if (manualUsesDuration && totalMinutes <= 0) {
                                 Toast.makeText(context, context.getString(R.string.error_manual_duration_required), Toast.LENGTH_SHORT).show()
                                 return@ManualSilenceButton
                             }
 
                             SilenceModeController.setManualSilent(context)
                             if (manualUsesDuration) {
-                                manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, resolvedManualDurationMinutes)
+                                manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, totalMinutes)
                                 Toast.makeText(
                                     context,
-                                    context.getString(R.string.toast_silent_enabled_timed, resolvedManualDurationMinutes),
+                                    context.getString(R.string.toast_silent_enabled_timed, formatDurationText(totalMinutes)),
                                     Toast.LENGTH_SHORT
                                 ).show()
                             } else {
@@ -1681,10 +1689,12 @@ private fun ManualSilenceButton(
     isSilent: Boolean,
     hasDnd: Boolean,
     manualUsesDuration: Boolean,
+    manualDurationHours: String,
     manualDurationMinutes: String,
     manualSilenceActive: Boolean,
     manualSilenceEndsAtMillis: Long,
     onUseDurationChange: (Boolean) -> Unit,
+    onDurationHoursChange: (String) -> Unit,
     onDurationMinutesChange: (String) -> Unit,
     onClick: () -> Unit
 ) {
@@ -1694,10 +1704,11 @@ private fun ManualSilenceButton(
         label = "buttonColor"
     )
 
-    val resolvedDurationMinutes = resolveManualDurationMinutes(
-        manualDurationMinutes,
+    val resolvedTotalMinutes = resolveManualTotalMinutes(
+        manualDurationHours, manualDurationMinutes,
         PrefsManager.getManualSilenceDurationMinutes(context)
     )
+    val durationText = formatDurationText(resolvedTotalMinutes)
     val statusText = when {
         manualSilenceActive && manualSilenceEndsAtMillis > 0L -> {
             stringResource(
@@ -1706,7 +1717,7 @@ private fun ManualSilenceButton(
             )
         }
         manualSilenceActive -> stringResource(R.string.manual_silence_active_until_manual)
-        manualUsesDuration -> stringResource(R.string.manual_silence_selected_duration, resolvedDurationMinutes)
+        manualUsesDuration -> stringResource(R.string.manual_silence_selected_duration, durationText)
         else -> stringResource(R.string.manual_silence_subtitle)
     }
 
@@ -1774,18 +1785,30 @@ private fun ManualSilenceButton(
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,
                         color = PrayerNameColor,
-                        modifier = Modifier.width(64.dp)
+                        modifier = Modifier.width(48.dp)
                     )
+                    NumberInput(
+                        value = manualDurationHours,
+                        onValueChange = onDurationHoursChange,
+                        modifier = Modifier
+                            .width(56.dp)
+                            .testTag(TestTags.MANUAL_SILENCE_DURATION_INPUT)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                    Text(
+                        text = stringResource(R.string.manual_silence_hours_label),
+                        fontSize = 13.sp,
+                        color = TextMuted
+                    )
+                    Spacer(Modifier.width(8.dp))
                     NumberInput(
                         value = manualDurationMinutes,
                         onValueChange = onDurationMinutesChange,
-                        modifier = Modifier
-                            .width(76.dp)
-                            .testTag(TestTags.MANUAL_SILENCE_DURATION_INPUT)
+                        modifier = Modifier.width(56.dp)
                     )
-                    Spacer(Modifier.width(8.dp))
+                    Spacer(Modifier.width(4.dp))
                     Text(
-                        text = stringResource(R.string.manual_silence_duration_unit),
+                        text = stringResource(R.string.manual_silence_minutes_label),
                         fontSize = 13.sp,
                         color = TextMuted
                     )
@@ -1805,7 +1828,7 @@ private fun ManualSilenceButton(
                 Text(
                     text = when {
                         isSilent && hasDnd -> stringResource(R.string.btn_unsilence)
-                        manualUsesDuration -> stringResource(R.string.btn_silence_for_duration, resolvedDurationMinutes)
+                        manualUsesDuration -> stringResource(R.string.btn_silence_for_duration, durationText)
                         else -> stringResource(R.string.btn_silence)
                     },
                     fontSize = 16.sp,
@@ -1907,8 +1930,21 @@ private fun initFixedMinute(context: Context, prayer: Prayer, prayerTime: Prayer
     return 0
 }
 
-private fun resolveManualDurationMinutes(value: String, fallback: Int): Int {
-    return value.toIntOrNull()?.coerceAtLeast(1) ?: fallback.coerceAtLeast(1)
+private fun resolveManualTotalMinutes(hours: String, minutes: String, fallback: Int): Int {
+    val h = hours.toIntOrNull() ?: 0
+    val m = minutes.toIntOrNull() ?: 0
+    val total = h * 60 + m
+    return if (total > 0) total else fallback.coerceAtLeast(1)
+}
+
+private fun formatDurationText(totalMinutes: Int): String {
+    val h = totalMinutes / 60
+    val m = totalMinutes % 60
+    return when {
+        h > 0 && m > 0 -> "${h}\u0633 ${m}\u062f"
+        h > 0 -> "${h}\u0633"
+        else -> "${m}\u062f"
+    }
 }
 
 private fun formatTimeOfDay(targetTimeInMillis: Long): String {

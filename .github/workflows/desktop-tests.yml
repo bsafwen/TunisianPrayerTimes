@@ -1,0 +1,51 @@
+name: Desktop Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "multiplatform/**"
+      - ".github/workflows/desktop-tests.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "multiplatform/**"
+
+jobs:
+  tests:
+    name: Shared & Desktop Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: multiplatform
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-desktop-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-desktop-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run shared tests (commonTest on JVM)
+        run: ./gradlew :shared:javaTest --no-daemon
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-test-results
+          path: multiplatform/shared/build/reports/tests/
