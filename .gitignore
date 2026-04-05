@@ -17,3 +17,13 @@ android-app/keystore.properties
 java_pid53290.hprof
 *.aab
 *.apk
+
+# Multiplatform Desktop
+multiplatform/.gradle/
+multiplatform/.idea/
+multiplatform/.kotlin/
+multiplatform/build/
+multiplatform/shared/build/
+multiplatform/desktopApp/build/
+multiplatform/local.properties
+multiplatform/keystore.properties

@@ -5,6 +5,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
 }
@@ -17,11 +18,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TunisianPrayerTimes"
-include(":app")
-
-includeBuild("../multiplatform") {
-    dependencySubstitution {
-        substitute(module("com.tunisianprayertimes:shared")).using(project(":shared"))
-    }
-}
+rootProject.name = "TunisianPrayerTimesMultiplatform"
+include(":shared")
+include(":desktopApp")
