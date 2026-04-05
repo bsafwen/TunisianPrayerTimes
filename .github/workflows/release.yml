@@ -1,0 +1,218 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  # ── Android artifacts (runs once on ubuntu) ──
+  android:
+    name: Android (APK + AAB)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android-app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-android-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-android-
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Build release APK
+        run: ./gradlew assembleRelease --no-daemon -q
+
+      - name: Build release AAB
+        run: ./gradlew bundleRelease --no-daemon -q
+
+      - name: Extract version from tag
+        id: version
+        run: echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: android-app/app/build/outputs/apk/release/app-release.apk
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-aab
+          path: android-app/app/build/outputs/bundle/release/app-release.aab
+
+  # ── Desktop artifacts (matrix: macOS, Windows, Linux) ──
+  desktop:
+    name: Desktop (${{ matrix.os }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - os: macOS
+            runner: macos-latest
+            task: packageReleaseDmg
+            glob: "multiplatform/desktopApp/build/compose/binaries/main-release/dmg/*.dmg"
+            artifact: desktop-dmg
+          - os: Windows
+            runner: windows-latest
+            task: packageReleaseMsi
+            glob: "multiplatform/desktopApp/build/compose/binaries/main-release/msi/*.msi"
+            artifact: desktop-msi
+          - os: Linux
+            runner: ubuntu-latest
+            task: packageReleaseDeb
+            glob: "multiplatform/desktopApp/build/compose/binaries/main-release/deb/*.deb"
+            artifact: desktop-deb
+    defaults:
+      run:
+        working-directory: multiplatform
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-desktop-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-desktop-
+
+      - name: Grant execute permission
+        if: runner.os != 'Windows'
+        run: chmod +x gradlew
+
+      - name: Extract version
+        id: version
+        shell: bash
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          echo "ver=$VER" >> "$GITHUB_OUTPUT"
+
+      - name: Run shared tests
+        run: ./gradlew :shared:javaTest --no-daemon
+
+      - name: Build native installer
+        run: ./gradlew :desktopApp:${{ matrix.task }} -PappVersion=${{ steps.version.outputs.ver }} --no-daemon
+
+      - name: Upload native installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.glob }}
+
+  # ── Cross-platform uber JAR (runs once) ──
+  uber-jar:
+    name: Desktop Uber JAR
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: multiplatform
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-desktop-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-desktop-
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Extract version
+        id: version
+        shell: bash
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          echo "ver=$VER" >> "$GITHUB_OUTPUT"
+
+      - name: Build uber JAR
+        run: ./gradlew :desktopApp:packageReleaseUberJarForCurrentOS -PappVersion=${{ steps.version.outputs.ver }} --no-daemon
+
+      - name: Upload uber JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-jar
+          path: multiplatform/desktopApp/build/compose/jars/*.jar
+
+  # ── GitHub Release (collects all artifacts) ──
+  publish:
+    name: Publish GitHub Release
+    needs: [android, desktop, uber-jar]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Extract version
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VER="${TAG#v}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "ver=$VER" >> "$GITHUB_OUTPUT"
+
+      - name: Rename artifacts
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          mkdir -p release
+          cp artifacts/android-apk/*.apk    "release/TunisianPrayerTimes-${TAG}.apk"
+          cp artifacts/desktop-jar/*.jar     "release/TunisianPrayerTimes-${TAG}-desktop.jar"
+          cp artifacts/desktop-dmg/*.dmg     "release/TunisianPrayerTimes-${TAG}.dmg"     || true
+          cp artifacts/desktop-msi/*.msi     "release/TunisianPrayerTimes-${TAG}.msi"     || true
+          cp artifacts/desktop-deb/*.deb     "release/TunisianPrayerTimes-${TAG}.deb"     || true
+          ls -la release/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: "Tunisian Prayer Times ${{ steps.version.outputs.ver }}"
+          body: |
+            ## Downloads
+
+            | Platform | File | Notes |
+            |----------|------|-------|
+            | Android | `.apk` | Install directly on your device |
+            | Windows | `.msi` | Windows installer |
+            | macOS | `.dmg` | macOS disk image |
+            | Linux | `.deb` | Debian/Ubuntu package |
+            | All desktops | `.jar` | Cross-platform, requires Java 17+ |
+
+            The AAB for Play Store upload is available as a build artifact.
+          files: release/*
