@@ -32,7 +32,9 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Msi, TargetFormat.Exe, TargetFormat.Dmg, TargetFormat.Deb, TargetFormat.Rpm)
             packageName = "TunisianPrayerTimes"
-            packageVersion = project.findProperty("appVersion")?.toString() ?: "1.0.0"
+            packageVersion = (project.findProperty("appVersion")?.toString() ?: "1.0.0").let {
+                if (it.count { c -> c == '.' } < 2) "$it.0" else it
+            }
             description = "أوقات الصلاة تونس - Tunisian Prayer Times"
             vendor = "TunisianPrayerTimes"
 
