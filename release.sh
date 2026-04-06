@@ -46,20 +46,35 @@ sed -i '' "s/versionCode = ${CURRENT_CODE}/versionCode = ${NEXT_CODE}/" "$GRADLE
 sed -i '' "s/versionName = \"${CURRENT_NAME}\"/versionName = \"${NEXT_NAME}\"/" "$GRADLE_FILE"
 echo "✓ Bumped version in build.gradle.kts"
 
-# ── Build signed AAB locally (before commit so failures abort cleanly) ──
-echo ""
-echo "Building signed release AAB..."
-cd "$APP_DIR"
-./gradlew clean bundleRelease --no-daemon
-
-AAB="app/build/outputs/bundle/release/app-release.aab"
-if [[ ! -f "$AAB" ]]; then
-    echo "✗ AAB not found after build — aborting release." >&2
-    exit 1
+# ── Build signed AAB locally (only if android-app changed) ──
+LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+ANDROID_CHANGED=false
+if [[ -z "$LAST_TAG" ]]; then
+    ANDROID_CHANGED=true
+elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ | grep -q .; then
+    ANDROID_CHANGED=true
+elif git diff --name-only HEAD -- android-app/ | grep -q .; then
+    ANDROID_CHANGED=true
 fi
-echo "✓ Signed AAB: $APP_DIR/$AAB"
-echo "  Size: $(du -h "$AAB" | cut -f1)"
-cd "$SCRIPT_DIR"
+
+if [[ "$ANDROID_CHANGED" == "false" ]]; then
+    echo ""
+    echo "⏭ No android-app changes since $LAST_TAG — skipping AAB build."
+else
+    echo ""
+    echo "Building signed release AAB..."
+    cd "$APP_DIR"
+    ./gradlew clean bundleRelease --no-daemon
+
+    AAB="app/build/outputs/bundle/release/app-release.aab"
+    if [[ ! -f "$AAB" ]]; then
+        echo "✗ AAB not found after build — aborting release." >&2
+        exit 1
+    fi
+    echo "✓ Signed AAB: $APP_DIR/$AAB"
+    echo "  Size: $(du -h "$AAB" | cut -f1)"
+    cd "$SCRIPT_DIR"
+fi
 
 # ── Git: stage, commit, tag ──────────────────
 git add -A

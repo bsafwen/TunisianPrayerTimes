@@ -1134,8 +1134,8 @@ private fun DatePickerDialogCustom(
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
 
-                // Day / Month / Year spinners (LTR for numbers)
-                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                // Day / Month / Year spinners (RTL: day on right, year on left)
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically
