@@ -39,6 +39,15 @@ object RamadanOverrideChecker {
     private const val BASE_URL = "https://bsafwen.github.io/TunisianPrayerTimes"
     private const val CONNECT_TIMEOUT = 10_000
     private const val READ_TIMEOUT = 15_000
+    private const val MAX_QUICK_RETRIES = 3
+    private const val RETRY_DELAY_MS = 60_000L // 1 minute between quick retries
+
+    /** Override for testing — set non-null to simulate a different "today". */
+    @JvmStatic
+    internal var testDateOverride: LocalDate? = null
+
+    private fun today(): LocalDate = testDateOverride ?: LocalDate.now()
+    private fun hijrahToday(): HijrahDate = testDateOverride?.let { HijrahDate.from(it) } ?: HijrahDate.now()
 
     // Cached override data
     @Volatile
@@ -68,13 +77,47 @@ object RamadanOverrideChecker {
 
         if (polling.get()) return
 
-        val hijrahDate = HijrahDate.now()
+        val needsPoll = shouldStartPolling()
+        if (!needsPoll) return
+        if (!polling.compareAndSet(false, true)) return
+
+        val executor = Executors.newSingleThreadScheduledExecutor { r ->
+            Thread(r, "RamadanOverridePoller").apply { isDaemon = true }
+        }
+        scheduledFuture = executor.scheduleAtFixedRate({
+            try {
+                var fetched: RamadanOverride? = null
+                for (attempt in 1..MAX_QUICK_RETRIES) {
+                    fetched = fetchOverride()
+                    if (fetched != null) break
+                    if (attempt < MAX_QUICK_RETRIES) {
+                        Thread.sleep(RETRY_DELAY_MS)
+                    }
+                }
+                if (fetched != null) {
+                    cachedOverride = fetched
+                    saveToPreferences(fetched)
+                    if (shouldStopPolling(fetched)) {
+                        stopPolling()
+                    }
+                }
+            } catch (_: Exception) {
+            }
+        }, 0, 1, TimeUnit.HOURS)
+    }
+
+    /**
+     * Determines whether polling should start based on the current (possibly overridden) date
+     * and the state of the cached override. Visible for testing.
+     */
+    internal fun shouldStartPolling(): Boolean {
+        val hijrahDate = hijrahToday()
         val month = hijrahDate.get(ChronoField.MONTH_OF_YEAR)
         val day = hijrahDate.get(ChronoField.DAY_OF_MONTH)
         val daysInMonth = hijrahDate.lengthOfMonth()
-        val today = LocalDate.now()
+        val today = today()
 
-        val needsPoll = when {
+        return when {
             // 28th-29th Sha'ban — moon sighting for Ramadan start (28th covers ±1 day drift)
             month == 8 && day >= daysInMonth - 2 && cachedOverride?.ramadanStart == null -> true
             // First 2 days of Ramadan — in case we missed the announcement
@@ -102,28 +145,6 @@ object RamadanOverrideChecker {
             }
             else -> false
         }
-
-        if (!needsPoll) return
-        if (!polling.compareAndSet(false, true)) return
-
-        val executor = Executors.newSingleThreadScheduledExecutor { r ->
-            Thread(r, "RamadanOverridePoller").apply { isDaemon = true }
-        }
-        scheduledFuture = executor.scheduleAtFixedRate({
-            try {
-                val fetched = fetchOverride()
-                if (fetched != null) {
-                    cachedOverride = fetched
-                    saveToPreferences(fetched)
-                    // Check if we got what we needed — if so, stop polling
-                    if (shouldStopPolling(fetched)) {
-                        stopPolling()
-                    }
-                }
-            } catch (_: Exception) {
-                // Silently retry next cycle
-            }
-        }, 0, 1, TimeUnit.HOURS)
     }
 
     /** Stop the periodic polling. */
@@ -138,7 +159,7 @@ object RamadanOverrideChecker {
      * Returns null on failure.
      */
     fun fetchOverride(): RamadanOverride? {
-        val hijriYear = HijrahDate.now().get(ChronoField.YEAR)
+        val hijriYear = hijrahToday().get(ChronoField.YEAR)
         return fetchOverrideForYear(hijriYear)
     }
 
@@ -182,8 +203,11 @@ object RamadanOverrideChecker {
         }
     }
 
-    private fun shouldStopPolling(override: RamadanOverride): Boolean {
-        val hijrahDate = HijrahDate.now()
+    /** Exposed for testing. */
+    internal fun parseOverrideForTest(json: String): RamadanOverride? = parseOverride(json)
+
+    internal fun shouldStopPolling(override: RamadanOverride): Boolean {
+        val hijrahDate = hijrahToday()
         val month = hijrahDate.get(ChronoField.MONTH_OF_YEAR)
 
         return when {
@@ -231,7 +255,7 @@ object RamadanOverrideChecker {
     fun getEidFitrDate(): LocalDate {
         val override = cachedOverride
         if (override?.eidFitrDate != null) return override.eidFitrDate
-        return LocalDate.from(HijrahDate.now().let {
+        return LocalDate.from(hijrahToday().let {
             HijrahDate.of(it.get(ChronoField.YEAR), 10, 1)
         })
     }
@@ -246,7 +270,7 @@ object RamadanOverrideChecker {
         val override = cachedOverride
         if (override?.eidAdhaDate != null) return override.eidAdhaDate
 
-        val hijriYear = HijrahDate.now().get(ChronoField.YEAR)
+        val hijriYear = hijrahToday().get(ChronoField.YEAR)
         val algorithmicEidAdha = LocalDate.from(
             HijrahDate.of(hijriYear, 12, 10)
         )
@@ -260,14 +284,14 @@ object RamadanOverrideChecker {
     /**
      * Check if a given Gregorian date is Eid al-Fitr (override-aware).
      */
-    fun isEidFitr(date: LocalDate = LocalDate.now()): Boolean {
+    fun isEidFitr(date: LocalDate = today()): Boolean {
         return date == getEidFitrDate()
     }
 
     /**
      * Check if a given Gregorian date is Eid al-Adha (override-aware, drift-adjusted).
      */
-    fun isEidAdha(date: LocalDate = LocalDate.now()): Boolean {
+    fun isEidAdha(date: LocalDate = today()): Boolean {
         return date == getEidAdhaDate()
     }
 
