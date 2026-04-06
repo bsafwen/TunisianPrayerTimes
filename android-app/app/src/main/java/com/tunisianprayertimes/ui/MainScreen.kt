@@ -422,14 +422,19 @@ private fun IslamicHeader() {
                     end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
                 )
             )
-            .padding(top = 14.dp, bottom = 12.dp),
+            .padding(top = 10.dp, bottom = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Bismillah
-        Text(
-            text = "﷽",
-            fontSize = 28.sp,
-            color = Gold,
+        Image(
+            painter = painterResource(R.drawable.basmalah),
+            contentDescription = "بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(32.dp)
+                .padding(horizontal = 32.dp),
+            contentScale = ContentScale.Fit,
+            colorFilter = ColorFilter.tint(Gold)
         )
 
         Image(
@@ -437,8 +442,7 @@ private fun IslamicHeader() {
             contentDescription = stringResource(R.string.app_name),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
-                .padding(bottom = 2.dp),
+                .height(54.dp),
             contentScale = ContentScale.Fit,
             colorFilter = ColorFilter.tint(Color(0xB3FFFFFF))
         )
@@ -447,8 +451,7 @@ private fun IslamicHeader() {
             text = stringResource(R.string.subtitle),
             fontSize = 14.sp,
             color = Color(0xFFB2DFDB),
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(bottom = 2.dp)
+            textAlign = TextAlign.Center
         )
 
         Text(
@@ -462,24 +465,47 @@ private fun IslamicHeader() {
 
 @Composable
 private fun StatusCard(isSilent: Boolean, hasDnd: Boolean) {
-    Card(
-        modifier = Modifier.fillMaxWidth().testTag(TestTags.STATUS_CARD),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    val bgColor by animateColorAsState(
+        targetValue = when {
+            !hasDnd -> Color(0xFFFFF3E0) // warm amber bg
+            isSilent -> Color(0xFFFFEBEE) // soft red bg
+            else -> Color(0xFFE8F5E9) // soft green bg
+        },
+        label = "statusBg"
+    )
+    val accentColor = when {
+        !hasDnd -> Color(0xFFFF9800)
+        isSilent -> SilenceRed
+        else -> GreenPrimary
+    }
+    val statusText = when {
+        !hasDnd -> stringResource(R.string.status_no_permission)
+        isSilent -> stringResource(R.string.status_silent)
+        else -> stringResource(R.string.status_normal)
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag(TestTags.STATUS_CARD)
+            .clip(RoundedCornerShape(24.dp))
+            .background(bgColor)
+            .padding(horizontal = 14.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = when {
-                !hasDnd -> stringResource(R.string.status_no_permission)
-                isSilent -> stringResource(R.string.status_silent)
-                else -> stringResource(R.string.status_normal)
-            },
-            fontSize = 17.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+                .size(8.dp)
+                .clip(RoundedCornerShape(50))
+                .background(accentColor)
+        )
+        Spacer(Modifier.width(8.dp))
+        Text(
+            text = statusText,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            color = accentColor
         )
     }
 }
@@ -1930,6 +1956,10 @@ private fun initFixedMinute(context: Context, prayer: Prayer, prayerTime: Prayer
     return 0
 }
 
+private fun resolveManualDurationMinutes(value: String, fallback: Int): Int {
+    return value.toIntOrNull()?.coerceAtLeast(1) ?: fallback.coerceAtLeast(1)
+}
+
 private fun resolveManualTotalMinutes(hours: String, minutes: String, fallback: Int): Int {
     val h = hours.toIntOrNull() ?: 0
     val m = minutes.toIntOrNull() ?: 0
@@ -1941,9 +1971,9 @@ private fun formatDurationText(totalMinutes: Int): String {
     val h = totalMinutes / 60
     val m = totalMinutes % 60
     return when {
-        h > 0 && m > 0 -> "${h}\u0633 ${m}\u062f"
-        h > 0 -> "${h}\u0633"
-        else -> "${m}\u062f"
+        h > 0 && m > 0 -> "${h}h ${m}min"
+        h > 0 -> "${h}h"
+        else -> "${m}min"
     }
 }
 

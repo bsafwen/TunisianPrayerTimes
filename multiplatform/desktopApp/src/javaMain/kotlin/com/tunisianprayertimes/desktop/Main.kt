@@ -205,7 +205,13 @@ private fun startBackgroundSilenceScheduler(): ScheduledFuture<*>? {
 }
 
 private fun resolveDataDir(): File {
-    // Look for data alongside the JAR, or in the docs/ folder of the project
+    // 1. Bundled app: Compose sets compose.application.resources.dir inside the native package
+    val bundledDir = System.getProperty("compose.application.resources.dir")
+    if (bundledDir != null) {
+        val dir = File(bundledDir)
+        if (File(dir, "gouvernorats.json").exists()) return dir
+    }
+    // 2. Dev mode: data symlink or docs/ relative to working directory
     val candidates = listOf(
         File("data"),
         File("../docs"),

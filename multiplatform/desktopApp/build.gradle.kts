@@ -25,11 +25,25 @@ kotlin {
     }
 }
 
+// Copy prayer-time data files (gouvernorats.json + csv/) into the native bundle.
+val stageAppResources by tasks.registering(Sync::class) {
+    val docsDir = rootProject.file("../docs")
+    from(docsDir) {
+        include("gouvernorats.json", "csv/**")
+    }
+    into(layout.buildDirectory.dir("app-resources/common"))
+}
+
+afterEvaluate {
+    tasks.named("prepareAppResources") { dependsOn(stageAppResources) }
+}
+
 compose.desktop {
     application {
         mainClass = "com.tunisianprayertimes.desktop.MainKt"
 
         nativeDistributions {
+            appResourcesRootDir.set(layout.buildDirectory.dir("app-resources"))
             targetFormats(TargetFormat.Msi, TargetFormat.Exe, TargetFormat.Dmg, TargetFormat.Deb, TargetFormat.Rpm)
             packageName = "TunisianPrayerTimes"
             packageVersion = (project.findProperty("appVersion")?.toString() ?: "1.0.0").let {
