@@ -24,6 +24,8 @@ class SilenceAlarmComputerTest {
     private val typicalDay = DayPrayerTimes(
         day = 2,
         fajr = PrayerTime(Prayer.FAJR, 4, 35),
+        shurukHour = 6,
+        shurukMinute = 5,
         dhuhr = PrayerTime(Prayer.DHUHR, 12, 38),
         asr = PrayerTime(Prayer.ASR, 16, 10),
         maghrib = PrayerTime(Prayer.MAGHRIB, 19, 22),
@@ -33,6 +35,8 @@ class SilenceAlarmComputerTest {
     private val tomorrowDay = DayPrayerTimes(
         day = 3,
         fajr = PrayerTime(Prayer.FAJR, 4, 34),
+        shurukHour = 6,
+        shurukMinute = 4,
         dhuhr = PrayerTime(Prayer.DHUHR, 12, 38),
         asr = PrayerTime(Prayer.ASR, 16, 10),
         maghrib = PrayerTime(Prayer.MAGHRIB, 19, 23),
@@ -423,6 +427,8 @@ class SilenceAlarmComputerTest {
         val day = DayPrayerTimes(
             day = 2,
             fajr = PrayerTime(Prayer.FAJR, 4, 0),
+            shurukHour = 5,
+            shurukMinute = 30,
             dhuhr = PrayerTime(Prayer.DHUHR, 12, 37),
             asr = PrayerTime(Prayer.ASR, 16, 10),
             maghrib = PrayerTime(Prayer.MAGHRIB, 19, 22),
@@ -465,6 +471,8 @@ class SilenceAlarmComputerTest {
         val day = DayPrayerTimes(
             day = 2,
             fajr = PrayerTime(Prayer.FAJR, 4, 0),
+            shurukHour = 5,
+            shurukMinute = 30,
             dhuhr = PrayerTime(Prayer.DHUHR, 12, 37),
             asr = PrayerTime(Prayer.ASR, 16, 10),
             maghrib = PrayerTime(Prayer.MAGHRIB, 19, 22),

@@ -3,9 +3,10 @@ package com.tunisianprayertimes
 /**
  * Prayer names matching the CSV columns (excluding Shuruk which is sunrise, not a prayer).
  * JOMOAA is the Friday prayer — it reuses the DHUHR time slot but has its own silence config.
+ * AID_FITR and AID_ADHA are the two Eid prayers — their default time is Shuruk (sunrise).
  */
 enum class Prayer {
-    FAJR, DHUHR, ASR, MAGHRIB, ISHA, JOMOAA
+    FAJR, DHUHR, ASR, MAGHRIB, ISHA, JOMOAA, AID_FITR, AID_ADHA
 }
 
 data class PrayerTime(
@@ -17,6 +18,8 @@ data class PrayerTime(
 data class DayPrayerTimes(
     val day: Int,
     val fajr: PrayerTime,
+    val shurukHour: Int,
+    val shurukMinute: Int,
     val dhuhr: PrayerTime,
     val asr: PrayerTime,
     val maghrib: PrayerTime,

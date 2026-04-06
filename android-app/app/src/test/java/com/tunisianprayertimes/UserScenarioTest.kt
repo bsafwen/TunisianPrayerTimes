@@ -16,6 +16,8 @@ class UserScenarioTest {
         val typicalDay = DayPrayerTimes(
             day = 1,
             fajr = PrayerTime(Prayer.FAJR, 4, 30),
+            shurukHour = 6,
+            shurukMinute = 0,
             dhuhr = PrayerTime(Prayer.DHUHR, 12, 30),
             asr = PrayerTime(Prayer.ASR, 16, 0),
             maghrib = PrayerTime(Prayer.MAGHRIB, 19, 0),
@@ -24,6 +26,8 @@ class UserScenarioTest {
         val tomorrowDay = DayPrayerTimes(
             day = 2,
             fajr = PrayerTime(Prayer.FAJR, 4, 30),
+            shurukHour = 6,
+            shurukMinute = 0,
             dhuhr = PrayerTime(Prayer.DHUHR, 12, 30),
             asr = PrayerTime(Prayer.ASR, 16, 0),
             maghrib = PrayerTime(Prayer.MAGHRIB, 19, 0),

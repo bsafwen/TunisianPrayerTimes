@@ -14,6 +14,8 @@ class JomoaaTest {
     private val day = DayPrayerTimes(
         day = 1,
         fajr = PrayerTime(Prayer.FAJR, 5, 0),
+        shurukHour = 6,
+        shurukMinute = 30,
         dhuhr = PrayerTime(Prayer.DHUHR, 12, 30),
         asr = PrayerTime(Prayer.ASR, 15, 45),
         maghrib = PrayerTime(Prayer.MAGHRIB, 18, 15),

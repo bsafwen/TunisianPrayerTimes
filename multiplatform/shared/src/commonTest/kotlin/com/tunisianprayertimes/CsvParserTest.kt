@@ -23,6 +23,8 @@ class CsvParserTest {
         assertEquals(5, day1.fajr.hour)
         assertEquals(30, day1.fajr.minute)
         assertEquals(Prayer.FAJR, day1.fajr.prayer)
+        assertEquals(6, day1.shurukHour)
+        assertEquals(50, day1.shurukMinute)
         assertEquals(12, day1.dhuhr.hour)
         assertEquals(15, day1.dhuhr.minute)
         assertEquals(15, day1.asr.hour)

@@ -114,10 +114,14 @@ import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
+import com.tunisianprayertimes.RamadanOverrideChecker
 import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceVerifyWorker
+import java.time.LocalDate
+import java.time.chrono.HijrahDate
+import java.time.temporal.ChronoField
 import com.tunisianprayertimes.ui.theme.BannerBg
 import com.tunisianprayertimes.ui.theme.BannerStroke
 import com.tunisianprayertimes.ui.theme.BannerText
@@ -192,6 +196,11 @@ fun MainScreen(
         isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
         manualSilenceActive = PrefsManager.isManualSilenceActive(context)
         manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
+    }
+
+    // Start Ramadan override polling on first composition
+    LaunchedEffect(Unit) {
+        RamadanOverrideChecker.startPollingIfNeeded()
     }
 
     LaunchedEffect(manualSilenceEndsAtMillis) {
@@ -999,7 +1008,9 @@ private fun PrayerSettingsCard(
         Prayer.ASR to stringResource(R.string.prayer_asr),
         Prayer.MAGHRIB to stringResource(R.string.prayer_maghrib),
         Prayer.ISHA to stringResource(R.string.prayer_isha),
-        Prayer.JOMOAA to stringResource(R.string.prayer_jomoaa)
+        Prayer.JOMOAA to stringResource(R.string.prayer_jomoaa),
+        Prayer.AID_FITR to stringResource(R.string.prayer_aid_fitr),
+        Prayer.AID_ADHA to stringResource(R.string.prayer_aid_adha)
     )
 
     val isFriday = remember(selectedDate) {
@@ -1007,11 +1018,74 @@ private fun PrayerSettingsCard(
             .get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
     }
 
+    // Hijri date for the selected day — used for Eid detection
+    val hijriDate = remember(selectedDate) {
+        val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
+        val localDate = LocalDate.of(
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH) + 1,
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
+        HijrahDate.from(localDate)
+    }
+    val isAidFitr = remember(selectedDate, displayTimes) {
+        val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
+        val gregDate = LocalDate.of(
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH) + 1,
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
+        val now = Calendar.getInstance()
+        RamadanOverrideChecker.shouldShowEidFitrPrayer(
+            date = gregDate,
+            nowHour = now.get(Calendar.HOUR_OF_DAY),
+            nowMinute = now.get(Calendar.MINUTE),
+            dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
+            dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
+            isToday = isToday,
+        )
+    }
+    val isAidAdha = remember(selectedDate, displayTimes) {
+        val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
+        val gregDate = LocalDate.of(
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH) + 1,
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
+        val now = Calendar.getInstance()
+        RamadanOverrideChecker.shouldShowEidAdhaPrayer(
+            date = gregDate,
+            nowHour = now.get(Calendar.HOUR_OF_DAY),
+            nowMinute = now.get(Calendar.MINUTE),
+            dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
+            dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
+            isToday = isToday,
+        )
+    }
+
     // Jomoaa custom time from prefs (or Dhuhr as fallback)
     var jomoaaH by rememberSaveable { mutableIntStateOf(PrefsManager.getJomoaaTimeHour(context)) }
     var jomoaaM by rememberSaveable { mutableIntStateOf(PrefsManager.getJomoaaTimeMinute(context)) }
     val resolvedJomoaaH = if (jomoaaH >= 0) jomoaaH else displayTimes?.dhuhr?.hour ?: -1
     val resolvedJomoaaM = if (jomoaaM >= 0) jomoaaM else displayTimes?.dhuhr?.minute ?: -1
+
+    // Aid Fitr custom time from prefs (or Shuruk of Eid day as fallback)
+    var aidFitrH by rememberSaveable { mutableIntStateOf(PrefsManager.getAidFitrTimeHour(context)) }
+    var aidFitrM by rememberSaveable { mutableIntStateOf(PrefsManager.getAidFitrTimeMinute(context)) }
+    val defaultAidFitrTime = remember(delegationId) {
+        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidFitrDate())
+    }
+    val resolvedAidFitrH = if (aidFitrH >= 0) aidFitrH else defaultAidFitrTime?.first ?: -1
+    val resolvedAidFitrM = if (aidFitrM >= 0) aidFitrM else defaultAidFitrTime?.second ?: -1
+
+    // Aid Adha custom time from prefs (or Shuruk of Eid day as fallback)
+    var aidAdhaH by rememberSaveable { mutableIntStateOf(PrefsManager.getAidAdhaTimeHour(context)) }
+    var aidAdhaM by rememberSaveable { mutableIntStateOf(PrefsManager.getAidAdhaTimeMinute(context)) }
+    val defaultAidAdhaTime = remember(delegationId) {
+        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidAdhaDate())
+    }
+    val resolvedAidAdhaH = if (aidAdhaH >= 0) aidAdhaH else defaultAidAdhaTime?.first ?: -1
+    val resolvedAidAdhaM = if (aidAdhaM >= 0) aidAdhaM else defaultAidAdhaTime?.second ?: -1
 
     // Next prayer logic — only for today, Friday-aware
     val nextPrayerFromToday = remember(delegationId, jomoaaH, jomoaaM) {
@@ -1148,6 +1222,68 @@ private fun PrayerSettingsCard(
                         }
                     )
                 }
+
+                // AID FITR row — shown only on 1 Shawwal
+                if (isAidFitr) {
+                    HorizontalDivider(color = Divider, thickness = 1.dp)
+                    key(delegationId, "aid_fitr", aidFitrH, aidFitrM) {
+                        PrayerRow(
+                            prayer = Prayer.AID_FITR,
+                            prayerName = prayerNames[Prayer.AID_FITR] ?: Prayer.AID_FITR.name,
+                            prayerTime = PrayerTime(Prayer.AID_FITR, resolvedAidFitrH, resolvedAidFitrM),
+                            nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
+                            isNextPrayer = false,
+                            activity = activity,
+                            onConfigChanged = onConfigChanged,
+                            onPrayerTimeClick = {
+                                val picker = MaterialTimePicker.Builder()
+                                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                                    .setHour(resolvedAidFitrH.coerceAtLeast(0))
+                                    .setMinute(resolvedAidFitrM.coerceAtLeast(0))
+                                    .setTitleText(context.getString(R.string.pick_aid_fitr_time))
+                                    .build()
+                                picker.addOnPositiveButtonClickListener {
+                                    aidFitrH = picker.hour
+                                    aidFitrM = picker.minute
+                                    PrefsManager.setAidFitrTime(context, picker.hour, picker.minute)
+                                    onConfigChanged()
+                                }
+                                picker.show(activity.supportFragmentManager, "aid_fitr_time_picker")
+                            }
+                        )
+                    }
+                }
+
+                // AID ADHA row — shown only on 10 Dhul Hijjah
+                if (isAidAdha) {
+                    HorizontalDivider(color = Divider, thickness = 1.dp)
+                    key(delegationId, "aid_adha", aidAdhaH, aidAdhaM) {
+                        PrayerRow(
+                            prayer = Prayer.AID_ADHA,
+                            prayerName = prayerNames[Prayer.AID_ADHA] ?: Prayer.AID_ADHA.name,
+                            prayerTime = PrayerTime(Prayer.AID_ADHA, resolvedAidAdhaH, resolvedAidAdhaM),
+                            nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
+                            isNextPrayer = false,
+                            activity = activity,
+                            onConfigChanged = onConfigChanged,
+                            onPrayerTimeClick = {
+                                val picker = MaterialTimePicker.Builder()
+                                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                                    .setHour(resolvedAidAdhaH.coerceAtLeast(0))
+                                    .setMinute(resolvedAidAdhaM.coerceAtLeast(0))
+                                    .setTitleText(context.getString(R.string.pick_aid_adha_time))
+                                    .build()
+                                picker.addOnPositiveButtonClickListener {
+                                    aidAdhaH = picker.hour
+                                    aidAdhaM = picker.minute
+                                    PrefsManager.setAidAdhaTime(context, picker.hour, picker.minute)
+                                    onConfigChanged()
+                                }
+                                picker.show(activity.supportFragmentManager, "aid_adha_time_picker")
+                            }
+                        )
+                    }
+                }
             } else {
                 Spacer(Modifier.height(16.dp))
                 Text(
@@ -1282,7 +1418,7 @@ private fun PrayerRowHeader() {
             fontWeight = FontWeight.Bold,
             color = TextMuted,
             maxLines = 1,
-            modifier = Modifier.weight(1.2f)
+            modifier = Modifier.weight(1.5f)
         )
         Text(
             text = stringResource(R.string.col_time),
@@ -1291,7 +1427,7 @@ private fun PrayerRowHeader() {
             color = TextMuted,
             textAlign = TextAlign.Center,
             maxLines = 1,
-            modifier = Modifier.weight(1.8f)
+            modifier = Modifier.weight(1.5f)
         )
         Row(modifier = Modifier.weight(2.2f)) {
             Text(
@@ -1385,7 +1521,7 @@ private fun PrayerRow(
             color = if (isNextPrayer) GreenPrimary else PrayerNameColor,
             maxLines = 1,
             softWrap = false,
-            modifier = Modifier.weight(1.2f)
+            modifier = Modifier.weight(1.5f)
         )
 
         // Prayer time
@@ -1399,7 +1535,7 @@ private fun PrayerRow(
             maxLines = 1,
             softWrap = false,
             modifier = Modifier
-                .weight(1.8f)
+                .weight(1.5f)
                 .then(
                     if (onPrayerTimeClick != null) Modifier
                         .clip(RoundedCornerShape(6.dp))

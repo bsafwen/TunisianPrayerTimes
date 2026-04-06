@@ -52,6 +52,20 @@ expect object Preferences {
     fun getJomoaaTimeMinute(): Int
     fun setJomoaaTime(hour: Int, minute: Int)
 
+    // Aid Fitr
+    fun getAidFitrTimeHour(): Int
+    fun getAidFitrTimeMinute(): Int
+    fun setAidFitrTime(hour: Int, minute: Int)
+
+    // Aid Adha
+    fun getAidAdhaTimeHour(): Int
+    fun getAidAdhaTimeMinute(): Int
+    fun setAidAdhaTime(hour: Int, minute: Int)
+
+    // Ramadan override (persisted JSON from GitHub Pages)
+    fun getRamadanOverrideJson(): String?
+    fun setRamadanOverrideJson(json: String?)
+
     // Config bundle
     fun getConfig(prayer: Prayer): PrayerSilenceConfig
 }

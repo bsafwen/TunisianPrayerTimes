@@ -47,6 +47,8 @@ class SilenceVerifyWorker(
 
     override suspend fun doWork(): Result {
         Log.d(TAG, "Verifying silence alarms")
+        // Check for Ramadan date override from GitHub Pages
+        RamadanOverrideChecker.startPollingIfNeeded()
         if (PrefsManager.isEnabled(applicationContext)) {
             SilenceScheduler.scheduleAll(applicationContext)
         }
