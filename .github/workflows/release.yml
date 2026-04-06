@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    tags: ["v*"]
+    branches: [main]
 
 concurrency:
   group: release-${{ github.ref }}
@@ -15,6 +15,7 @@ jobs:
   # ── Android artifacts (runs once on ubuntu) ──
   android:
     name: Android (APK + AAB)
+    if: startsWith(github.event.head_commit.message, 'v')
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -62,6 +63,7 @@ jobs:
   # ── Desktop artifacts (matrix: macOS, Windows, Linux) ──
   desktop:
     name: Desktop (${{ matrix.os }})
+    if: startsWith(github.event.head_commit.message, 'v')
     runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
@@ -102,7 +104,8 @@ jobs:
         id: version
         shell: bash
         run: |
-          VER="${GITHUB_REF_NAME#v}"
+          TAG=$(echo "${{ github.event.head_commit.message }}" | grep -oE '^v[0-9]+\.[0-9]+')
+          VER="${TAG#v}"
           echo "ver=$VER" >> "$GITHUB_OUTPUT"
 
       - name: Build native installer
@@ -128,6 +131,7 @@ jobs:
   # ── GitHub Release (collects all artifacts) ──
   publish:
     name: Publish GitHub Release
+    if: startsWith(github.event.head_commit.message, 'v')
     needs: [android, desktop]
     runs-on: ubuntu-latest
     steps:
@@ -139,7 +143,7 @@ jobs:
       - name: Extract version
         id: version
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          TAG=$(echo "${{ github.event.head_commit.message }}" | grep -oE '^v[0-9]+\.[0-9]+')
           VER="${TAG#v}"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "ver=$VER" >> "$GITHUB_OUTPUT"
