@@ -6,8 +6,9 @@ set -euo pipefail
 # Usage:  ./release.sh "Short description of changes"
 #
 # This script bumps the Android version, commits, tags, and pushes.
-# The GitHub Actions release workflow (triggered by the v* tag) handles
-# building all artifacts and creating the GitHub release.
+# The GitHub Actions release workflow (triggered by push to main with
+# a commit message starting with 'v') handles building all artifacts
+# and creating the GitHub release.
 # ──────────────────────────────────────────────
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -46,14 +47,14 @@ sed -i '' "s/versionCode = ${CURRENT_CODE}/versionCode = ${NEXT_CODE}/" "$GRADLE
 sed -i '' "s/versionName = \"${CURRENT_NAME}\"/versionName = \"${NEXT_NAME}\"/" "$GRADLE_FILE"
 echo "✓ Bumped version in build.gradle.kts"
 
-# ── Build signed AAB locally (only if android-app changed) ──
+# ── Build signed AAB locally (only if android-app source changed, not just version bump) ──
 LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
 ANDROID_CHANGED=false
 if [[ -z "$LAST_TAG" ]]; then
     ANDROID_CHANGED=true
-elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ | grep -q .; then
+elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
     ANDROID_CHANGED=true
-elif git diff --name-only HEAD -- android-app/ | grep -q .; then
+elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
     ANDROID_CHANGED=true
 fi
 
@@ -89,7 +90,6 @@ echo "✓ Pushed to origin"
 
 echo ""
 echo "══════════════════════════════════════════"
-echo "  Tag $TAG pushed — CI will build & release."
-echo "  AAB ready at: android-app/$AAB"
+echo "  $TAG pushed — CI will build & release."
 echo "  Track progress: gh run watch"
 echo "══════════════════════════════════════════"
