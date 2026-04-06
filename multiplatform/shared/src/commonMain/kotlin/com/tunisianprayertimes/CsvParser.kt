@@ -16,11 +16,14 @@ object CsvParser {
             if (parts.size >= 7) {
                 val day = parts[0].trim().toIntOrNull() ?: continue
                 val fajr = parseTime(Prayer.FAJR, parts[1].trim())
+                val shurukParts = parts[2].trim().split(":")
+                val shurukH = shurukParts[0].toInt()
+                val shurukM = shurukParts[1].toInt()
                 val dhuhr = parseTime(Prayer.DHUHR, parts[3].trim())
                 val asr = parseTime(Prayer.ASR, parts[4].trim())
                 val maghrib = parseTime(Prayer.MAGHRIB, parts[5].trim())
                 val isha = parseTime(Prayer.ISHA, parts[6].trim())
-                results.add(DayPrayerTimes(day, fajr, dhuhr, asr, maghrib, isha))
+                results.add(DayPrayerTimes(day, fajr, shurukH, shurukM, dhuhr, asr, maghrib, isha))
             }
         }
 

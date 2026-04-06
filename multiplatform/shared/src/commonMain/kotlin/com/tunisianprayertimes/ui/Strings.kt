@@ -51,6 +51,8 @@ object Strings {
     const val PRAYER_MAGHRIB = "المغرب"
     const val PRAYER_ISHA = "العشاء"
     const val PRAYER_JOMOAA = "الجمعة"
+    const val PRAYER_AID_FITR = "عيد الفطر"
+    const val PRAYER_AID_ADHA = "عيد الأضحى"
     const val WARNING_OVERLAPS_NEXT_PRAYER = "⚠ مدة الإسكات تتجاوز وقت الصلاة التالية"
     const val ERROR_START_AFTER_END = "وقت البدء يجب أن يكون قبل وقت الانتهاء"
     const val ERROR_START_BEFORE_ATHAN = "وقت البدء يجب أن لا يكون قبل وقت الأذان"

@@ -10,6 +10,7 @@ import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RamadanDetector
+import com.tunisianprayertimes.RamadanOverrideChecker
 import com.tunisianprayertimes.tv.data.*
 import com.tunisianprayertimes.tv.ui.display.*
 import com.tunisianprayertimes.tv.ui.settings.SettingsScreen
@@ -122,6 +123,11 @@ private fun TvApp(
     var isRamadan by remember { mutableStateOf(RamadanDetector.isRamadan()) }
     LaunchedEffect(dayPrayerTimes) {
         isRamadan = RamadanDetector.isRamadan()
+    }
+
+    // Start Ramadan override polling on first composition
+    LaunchedEffect(Unit) {
+        RamadanOverrideChecker.startPollingIfNeeded()
     }
 
     // Local media — backgrounds and announcements

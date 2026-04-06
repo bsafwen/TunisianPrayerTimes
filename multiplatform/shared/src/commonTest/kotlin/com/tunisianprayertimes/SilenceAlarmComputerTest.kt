@@ -18,6 +18,8 @@ class SilenceAlarmComputerTest {
     private val sampleTimes = DayPrayerTimes(
         day = 1,
         fajr = PrayerTime(Prayer.FAJR, 5, 30),
+        shurukHour = 6,
+        shurukMinute = 50,
         dhuhr = PrayerTime(Prayer.DHUHR, 12, 15),
         asr = PrayerTime(Prayer.ASR, 15, 30),
         maghrib = PrayerTime(Prayer.MAGHRIB, 18, 10),
@@ -153,6 +155,8 @@ class SilenceAlarmComputerTest {
         val tomorrowTimes = DayPrayerTimes(
             day = 2,
             fajr = PrayerTime(Prayer.FAJR, 5, 28),
+            shurukHour = 6,
+            shurukMinute = 48,
             dhuhr = PrayerTime(Prayer.DHUHR, 12, 15),
             asr = PrayerTime(Prayer.ASR, 15, 30),
             maghrib = PrayerTime(Prayer.MAGHRIB, 18, 10),

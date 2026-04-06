@@ -43,6 +43,7 @@ import java.awt.Toolkit
 import java.awt.TrayIcon
 import java.awt.image.BufferedImage
 import java.io.File
+import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledFuture
@@ -63,6 +64,9 @@ fun main() {
     val dataDir = resolveDataDir()
     PrayerDataLoader.init(dataDir)
     GouvernoratLoader.init(dataDir)
+
+    // Start Ramadan override polling if near a moon-sighting event
+    RamadanOverrideChecker.startPollingIfNeeded()
 
     // Start background silence scheduler
     val silenceSchedulerHandle = startBackgroundSilenceScheduler()
@@ -180,7 +184,9 @@ private fun startBackgroundSilenceScheduler(): ScheduledFuture<*>? {
                 Prayer.ASR to Preferences.getConfig(Prayer.ASR),
                 Prayer.MAGHRIB to Preferences.getConfig(Prayer.MAGHRIB),
                 Prayer.ISHA to Preferences.getConfig(Prayer.ISHA),
-                Prayer.JOMOAA to Preferences.getConfig(Prayer.JOMOAA)
+                Prayer.JOMOAA to Preferences.getConfig(Prayer.JOMOAA),
+                Prayer.AID_FITR to Preferences.getConfig(Prayer.AID_FITR),
+                Prayer.AID_ADHA to Preferences.getConfig(Prayer.AID_ADHA)
             )
 
             val result = SilenceAlarmComputer.compute(
@@ -596,6 +602,59 @@ private fun PrayerSettingsCard(delegationId: Int) {
     val resolvedJomoaaM = if (jomoaaM >= 0) jomoaaM else displayTimes?.dhuhr?.minute ?: -1
     var showJomoaaTimePicker by remember { mutableStateOf(false) }
 
+    // Aid Fitr time (default = Shuruk of Eid day)
+    var aidFitrH by remember { mutableStateOf(Preferences.getAidFitrTimeHour()) }
+    var aidFitrM by remember { mutableStateOf(Preferences.getAidFitrTimeMinute()) }
+    val defaultAidFitrTime = remember(delegationId) {
+        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidFitrDate())
+    }
+    val resolvedAidFitrH = if (aidFitrH >= 0) aidFitrH else defaultAidFitrTime?.first ?: -1
+    val resolvedAidFitrM = if (aidFitrM >= 0) aidFitrM else defaultAidFitrTime?.second ?: -1
+    var showAidFitrTimePicker by remember { mutableStateOf(false) }
+
+    // Aid Adha time (default = Shuruk of Eid day)
+    var aidAdhaH by remember { mutableStateOf(Preferences.getAidAdhaTimeHour()) }
+    var aidAdhaM by remember { mutableStateOf(Preferences.getAidAdhaTimeMinute()) }
+    val defaultAidAdhaTime = remember(delegationId) {
+        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidAdhaDate())
+    }
+    val resolvedAidAdhaH = if (aidAdhaH >= 0) aidAdhaH else defaultAidAdhaTime?.first ?: -1
+    val resolvedAidAdhaM = if (aidAdhaM >= 0) aidAdhaM else defaultAidAdhaTime?.second ?: -1
+    var showAidAdhaTimePicker by remember { mutableStateOf(false) }
+
+    val isAidFitr = remember(selectedDate, displayTimes) {
+        val gregDate = LocalDate.of(
+            selectedCal.get(Calendar.YEAR),
+            selectedCal.get(Calendar.MONTH) + 1,
+            selectedCal.get(Calendar.DAY_OF_MONTH)
+        )
+        val now = Calendar.getInstance()
+        RamadanOverrideChecker.shouldShowEidFitrPrayer(
+            date = gregDate,
+            nowHour = now.get(Calendar.HOUR_OF_DAY),
+            nowMinute = now.get(Calendar.MINUTE),
+            dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
+            dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
+            isToday = isToday,
+        )
+    }
+    val isAidAdha = remember(selectedDate, displayTimes) {
+        val gregDate = LocalDate.of(
+            selectedCal.get(Calendar.YEAR),
+            selectedCal.get(Calendar.MONTH) + 1,
+            selectedCal.get(Calendar.DAY_OF_MONTH)
+        )
+        val now = Calendar.getInstance()
+        RamadanOverrideChecker.shouldShowEidAdhaPrayer(
+            date = gregDate,
+            nowHour = now.get(Calendar.HOUR_OF_DAY),
+            nowMinute = now.get(Calendar.MINUTE),
+            dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
+            dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
+            isToday = isToday,
+        )
+    }
+
     val isFriday = remember(selectedDate) {
         selectedCal.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
     }
@@ -649,7 +708,9 @@ private fun PrayerSettingsCard(delegationId: Int) {
         Prayer.ASR to Strings.PRAYER_ASR,
         Prayer.MAGHRIB to Strings.PRAYER_MAGHRIB,
         Prayer.ISHA to Strings.PRAYER_ISHA,
-        Prayer.JOMOAA to Strings.PRAYER_JOMOAA
+        Prayer.JOMOAA to Strings.PRAYER_JOMOAA,
+        Prayer.AID_FITR to Strings.PRAYER_AID_FITR,
+        Prayer.AID_ADHA to Strings.PRAYER_AID_ADHA
     )
 
     Card(
@@ -804,6 +865,58 @@ private fun PrayerSettingsCard(delegationId: Int) {
                         },
                         onDismiss = { showJomoaaTimePicker = false }
                     )
+                }
+
+                // Aid Fitr row — shown 2 days before Eid, hidden after Dhuhr on Eid day
+                if (isAidFitr) {
+                    HorizontalDivider(color = Divider, thickness = 1.dp)
+                    PrayerRow(
+                        prayer = Prayer.AID_FITR,
+                        prayerName = prayerNames[Prayer.AID_FITR] ?: Prayer.AID_FITR.name,
+                        prayerTime = if (resolvedAidFitrH >= 0) PrayerTime(Prayer.AID_FITR, resolvedAidFitrH, resolvedAidFitrM) else null,
+                        nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
+                        isNextPrayer = false,
+                        onPrayerTimeClick = { showAidFitrTimePicker = true }
+                    )
+                    if (showAidFitrTimePicker) {
+                        TimePickerDialog(
+                            initialHour = resolvedAidFitrH.coerceAtLeast(0),
+                            initialMinute = resolvedAidFitrM.coerceAtLeast(0),
+                            onConfirm = { h, m ->
+                                aidFitrH = h
+                                aidFitrM = m
+                                Preferences.setAidFitrTime(h, m)
+                                showAidFitrTimePicker = false
+                            },
+                            onDismiss = { showAidFitrTimePicker = false }
+                        )
+                    }
+                }
+
+                // Aid Adha row — shown 2 days before Eid, hidden after Dhuhr on Eid day
+                if (isAidAdha) {
+                    HorizontalDivider(color = Divider, thickness = 1.dp)
+                    PrayerRow(
+                        prayer = Prayer.AID_ADHA,
+                        prayerName = prayerNames[Prayer.AID_ADHA] ?: Prayer.AID_ADHA.name,
+                        prayerTime = if (resolvedAidAdhaH >= 0) PrayerTime(Prayer.AID_ADHA, resolvedAidAdhaH, resolvedAidAdhaM) else null,
+                        nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
+                        isNextPrayer = false,
+                        onPrayerTimeClick = { showAidAdhaTimePicker = true }
+                    )
+                    if (showAidAdhaTimePicker) {
+                        TimePickerDialog(
+                            initialHour = resolvedAidAdhaH.coerceAtLeast(0),
+                            initialMinute = resolvedAidAdhaM.coerceAtLeast(0),
+                            onConfirm = { h, m ->
+                                aidAdhaH = h
+                                aidAdhaM = m
+                                Preferences.setAidAdhaTime(h, m)
+                                showAidAdhaTimePicker = false
+                            },
+                            onDismiss = { showAidAdhaTimePicker = false }
+                        )
+                    }
                 }
             } else {
                 Spacer(Modifier.height(16.dp))
