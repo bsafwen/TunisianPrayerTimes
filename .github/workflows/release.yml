@@ -8,55 +8,8 @@ permissions:
   contents: write
 
 jobs:
-  # ── Android artifacts (runs once on ubuntu) ──
-  android:
-    name: Android (APK + AAB)
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: android-app
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: "17"
-          distribution: "temurin"
-
-      - name: Cache Gradle packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-android-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: ${{ runner.os }}-gradle-android-
-
-      - name: Grant execute permission
-        run: chmod +x gradlew
-
-      - name: Build release APK
-        run: ./gradlew assembleRelease --no-daemon -q
-
-      - name: Build release AAB
-        run: ./gradlew bundleRelease --no-daemon -q
-
-      - name: Extract version from tag
-        id: version
-        run: echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-apk
-          path: android-app/app/build/outputs/apk/release/app-release.apk
-
-      - name: Upload AAB
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-aab
-          path: android-app/app/build/outputs/bundle/release/app-release.aab
+  # NOTE: Android release builds require keystore signing and are handled
+  # by release.sh locally. The CI workflow only builds desktop artifacts.
 
   # ── Desktop artifacts (matrix: macOS, Windows, Linux) ──
   desktop:
@@ -116,7 +69,7 @@ jobs:
         run: ./gradlew :shared:javaTest --no-daemon
 
       - name: Build native installer
-        run: ./gradlew :desktopApp:${{ matrix.task }} -PappVersion=${{ steps.version.outputs.ver }} --no-daemon
+        run: ./gradlew :desktopApp:${{ matrix.task }} "-PappVersion=${{ steps.version.outputs.ver }}" --no-daemon
 
       - name: Upload native installer
         uses: actions/upload-artifact@v4
@@ -160,7 +113,7 @@ jobs:
           echo "ver=$VER" >> "$GITHUB_OUTPUT"
 
       - name: Build uber JAR
-        run: ./gradlew :desktopApp:packageReleaseUberJarForCurrentOS -PappVersion=${{ steps.version.outputs.ver }} --no-daemon
+        run: ./gradlew :desktopApp:packageReleaseUberJarForCurrentOS "-PappVersion=${{ steps.version.outputs.ver }}" --no-daemon
 
       - name: Upload uber JAR
         uses: actions/upload-artifact@v4
@@ -171,7 +124,7 @@ jobs:
   # ── GitHub Release (collects all artifacts) ──
   publish:
     name: Publish GitHub Release
-    needs: [android, desktop, uber-jar]
+    needs: [desktop, uber-jar]
     runs-on: ubuntu-latest
     steps:
       - name: Download all artifacts
@@ -191,7 +144,6 @@ jobs:
         run: |
           TAG="${{ steps.version.outputs.tag }}"
           mkdir -p release
-          cp artifacts/android-apk/*.apk    "release/TunisianPrayerTimes-${TAG}.apk"
           cp artifacts/desktop-jar/*.jar     "release/TunisianPrayerTimes-${TAG}-desktop.jar"
           cp artifacts/desktop-dmg/*.dmg     "release/TunisianPrayerTimes-${TAG}.dmg"     || true
           cp artifacts/desktop-msi/*.msi     "release/TunisianPrayerTimes-${TAG}.msi"     || true
@@ -204,15 +156,14 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag }}
           name: "Tunisian Prayer Times ${{ steps.version.outputs.ver }}"
           body: |
-            ## Downloads
+            ## Desktop Downloads
 
             | Platform | File | Notes |
             |----------|------|-------|
-            | Android | `.apk` | Install directly on your device |
             | Windows | `.msi` | Windows installer |
             | macOS | `.dmg` | macOS disk image |
             | Linux | `.deb` | Debian/Ubuntu package |
             | All desktops | `.jar` | Cross-platform, requires Java 17+ |
 
-            The AAB for Play Store upload is available as a build artifact.
+            Android APK is attached by the local release script.
           files: release/*
