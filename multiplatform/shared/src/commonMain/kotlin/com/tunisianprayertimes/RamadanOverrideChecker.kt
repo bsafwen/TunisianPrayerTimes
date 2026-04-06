@@ -31,11 +31,14 @@ import com.tunisianprayertimes.platform.Preferences
  * Polling strategy:
  * - Starts polling hourly 2 days before algorithmic Ramadan (according to HijrahDate).
  * - Once a non-null ramadanStart is fetched, stores it and stops polling for Ramadan start.
- * - Also polls for eidFitrDate near end of Ramadan, and eidAdhaDate near Dhul Hijja.
+ * - Also polls for eidFitrDate near end of Ramadan.
+ * - Polls for eidAdhaDate near Dhul Hijja (moon sighting may differ from drift).
  */
 object RamadanOverrideChecker {
 
-    private const val BASE_URL = "https://bsafwen.github.io/TunisianPrayerTimes"
+    // TODO: revert to GitHub Pages URL before release:
+    // private const val BASE_URL = "https://bsafwen.github.io/TunisianPrayerTimes"
+    private const val BASE_URL = "https://raw.githubusercontent.com/bsafwen/TunisianPrayerTimes/ramadan/docs"
     private const val CONNECT_TIMEOUT = 10_000
     private const val READ_TIMEOUT = 15_000
 
@@ -86,18 +89,16 @@ object RamadanOverrideChecker {
             // Fallback: no ramadanStart known yet, use algorithmic 28th Ramadan
             month == 9 && day >= 28 && cachedOverride?.eidFitrDate == null -> true
             month == 10 && day == 1 && cachedOverride?.eidFitrDate == null -> true
-            // Eid al-Adha: use drift to compute precise polling window
+            // Eid al-Adha: use drift to compute polling window (moon sighting may differ)
             cachedOverride?.eidAdhaDate == null -> {
                 val drift = computeDriftDays()
                 if (drift != null) {
-                    // Apply drift to algorithmic 29th Dhul Qi'dah and 9th Dhul Hijja
                     val hijriYear = hijrahDate.get(ChronoField.YEAR)
                     val real29thDhulQidah = LocalDate.from(
                         HijrahDate.of(hijriYear, 11, 29)
                     ).plusDays(drift)
                     !today.isBefore(real29thDhulQidah) && today.isBefore(real29thDhulQidah.plusDays(13))
                 } else {
-                    // No drift available — use algorithmic window with ±1 buffer
                     (month == 11 && day >= daysInMonth - 2) || (month == 12 && day in 1..10)
                 }
             }
@@ -193,7 +194,7 @@ object RamadanOverrideChecker {
             // Polling for Eid al-Fitr — stop if we got it
             month in 9..10 && override.eidFitrDate != null -> true
             // Polling for Eid al-Adha — stop if we got it
-            month == 12 && override.eidAdhaDate != null -> true
+            month in 11..12 && override.eidAdhaDate != null -> true
             else -> false
         }
     }
@@ -238,14 +239,13 @@ object RamadanOverrideChecker {
     }
 
     /**
-     * Returns the best-known Eid al-Adha date:
+     * Returns the best-known Eid al-Adha date (10 Dhul Hijja):
      * 1. Explicit eidAdhaDate from override JSON
      * 2. Algorithmic (10 Dhul Hijja) + drift from Eid al-Fitr offset
      * 3. Algorithmic (10 Dhul Hijja) if no drift available
      */
     fun getEidAdhaDate(): LocalDate {
         val override = cachedOverride
-        // 1. Explicit override
         if (override?.eidAdhaDate != null) return override.eidAdhaDate
 
         val hijriYear = HijrahDate.now().get(ChronoField.YEAR)
@@ -253,11 +253,9 @@ object RamadanOverrideChecker {
             HijrahDate.of(hijriYear, 12, 10)
         )
 
-        // 2. Apply drift from Eid al-Fitr (or Ramadan start) announcement
         val drift = computeDriftDays()
         if (drift != null) return algorithmicEidAdha.plusDays(drift)
 
-        // 3. Pure algorithmic fallback
         return algorithmicEidAdha
     }
 

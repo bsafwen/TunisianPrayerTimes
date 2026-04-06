@@ -6,11 +6,13 @@ import org.junit.Test
 class PrayerModelsTest {
 
     @Test
-    fun prayer_enum_hasSixValues() {
-        assertEquals(6, Prayer.values().size)
+    fun prayer_enum_hasEightValues() {
+        assertEquals(8, Prayer.values().size)
         assertEquals(Prayer.FAJR, Prayer.values()[0])
         assertEquals(Prayer.ISHA, Prayer.values()[4])
         assertEquals(Prayer.JOMOAA, Prayer.values()[5])
+        assertEquals(Prayer.AID_FITR, Prayer.values()[6])
+        assertEquals(Prayer.AID_ADHA, Prayer.values()[7])
     }
 
     @Test

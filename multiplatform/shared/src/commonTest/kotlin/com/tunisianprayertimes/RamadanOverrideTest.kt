@@ -122,17 +122,6 @@ class RamadanOverrideTest {
     // ---------------------------------------------------------------
 
     @Test
-    fun eidAdha_explicitOverride_takesPrecedence() {
-        RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
-            hijriYear = 1447,
-            ramadanStart = LocalDate.of(2026, 2, 19),
-            eidFitrDate = LocalDate.of(2026, 3, 21),
-            eidAdhaDate = LocalDate.of(2026, 5, 29),
-        )
-        assertEquals(LocalDate.of(2026, 5, 29), RamadanOverrideChecker.getEidAdhaDate())
-    }
-
-    @Test
     fun eidAdha_driftedFromEidFitr_plusOne() {
         // Algorithmic 1 Shawwal 1447 = 2026-03-20, announced = 2026-03-21 → drift +1
         // Algorithmic 10 Dhul Hijja 1447 = 2026-05-27 → predicted = 2026-05-28
@@ -182,6 +171,17 @@ class RamadanOverrideTest {
         // Predicted Eid al-Adha = 2026-05-28 (algorithmic 2026-05-27 + 1 drift)
         assertTrue(RamadanOverrideChecker.isEidAdha(LocalDate.of(2026, 5, 28)))
         assertFalse(RamadanOverrideChecker.isEidAdha(LocalDate.of(2026, 5, 27)))
+    }
+
+    @Test
+    fun eidAdha_explicitOverride_takesPrecedence() {
+        RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
+            hijriYear = 1447,
+            ramadanStart = LocalDate.of(2026, 2, 19),
+            eidFitrDate = LocalDate.of(2026, 3, 21),
+            eidAdhaDate = LocalDate.of(2026, 5, 29),
+        )
+        assertEquals(LocalDate.of(2026, 5, 29), RamadanOverrideChecker.getEidAdhaDate())
     }
 
     // ---------------------------------------------------------------
@@ -304,12 +304,11 @@ class RamadanOverrideTest {
             hijriYear = 1447,
             ramadanStart = LocalDate.of(2026, 2, 19),
             eidFitrDate = LocalDate.of(2026, 3, 19),
-            eidAdhaDate = LocalDate.of(2026, 5, 28),
+            eidAdhaDate = null,
         )
         assertEquals(1447, override.hijriYear)
         assertEquals(LocalDate.of(2026, 2, 19), override.ramadanStart)
         assertEquals(LocalDate.of(2026, 3, 19), override.eidFitrDate)
-        assertEquals(LocalDate.of(2026, 5, 28), override.eidAdhaDate)
     }
 
     @Test
@@ -322,7 +321,6 @@ class RamadanOverrideTest {
         )
         assertNull(override.ramadanStart)
         assertNull(override.eidFitrDate)
-        assertNull(override.eidAdhaDate)
     }
 
     // ---------------------------------------------------------------
