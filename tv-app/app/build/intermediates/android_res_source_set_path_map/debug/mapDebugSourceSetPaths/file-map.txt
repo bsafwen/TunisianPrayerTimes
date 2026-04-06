@@ -1,0 +1,8 @@
+com.tunisianprayertimes.tv.app-pngs-0 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/build/generated/res/pngs/debug
+com.tunisianprayertimes.tv.app-resValues-1 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/build/generated/res/resValues/debug
+com.tunisianprayertimes.tv.app-updated_navigation_xml-2 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/build/generated/updated_navigation_xml/debug
+com.tunisianprayertimes.tv.app-packageDebugResources-3 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.tunisianprayertimes.tv.app-packageDebugResources-4 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.tunisianprayertimes.tv.app-debug-5 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.tunisianprayertimes.tv.app-debug-6 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/debug/res
+com.tunisianprayertimes.tv.app-main-7 /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/res

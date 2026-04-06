@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="desktopApp-java">
+    <output-path>$PROJECT_DIR$/../multiplatform/desktopApp/build/libs</output-path>
+    <root id="archive" name="desktopApp-java.jar" />
+  </artifact>
+</component>
