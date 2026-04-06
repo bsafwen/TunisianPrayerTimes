@@ -27,3 +27,21 @@ multiplatform/shared/build/
 multiplatform/desktopApp/build/
 multiplatform/local.properties
 multiplatform/keystore.properties
+
+# TV App
+tv-app/.gradle/
+tv-app/.idea/
+tv-app/.kotlin/
+tv-app/build/
+tv-app/app/build/
+tv-app/local.properties
+tv-app/keystore.properties
+
+# Qaloon
+qaloon-app/.gradle/
+qaloon-app/.idea/
+qaloon-app/.kotlin/
+qaloon-app/build/
+qaloon-app/app/build/
+qaloon-app/local.properties
+qaloon-app/keystore.properties
