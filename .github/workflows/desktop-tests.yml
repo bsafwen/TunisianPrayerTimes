@@ -11,6 +11,10 @@ on:
     paths:
       - "multiplatform/**"
 
+concurrency:
+  group: desktop-tests-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   tests:
     name: Shared & Desktop Tests
@@ -27,21 +31,13 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
-
-      - name: Cache Gradle packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-desktop-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: ${{ runner.os }}-gradle-desktop-
+          cache: gradle
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Run shared tests (commonTest on JVM)
-        run: ./gradlew :shared:javaTest --no-daemon
+        run: ./gradlew :shared:javaTest
 
       - name: Upload test results
         if: always()
