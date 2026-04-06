@@ -57,6 +57,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -1582,52 +1584,54 @@ private fun NumberInput(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    BasicTextField(
-        value = value,
-        onValueChange = { new ->
-            // Only allow digits, max 3 chars
-            val filtered = new.filter { it.isDigit() }.take(3)
-            onValueChange(filtered)
-        },
-        modifier = modifier
-            .heightIn(min = 36.dp)
-            .clip(RoundedCornerShape(6.dp))
-            .background(Color.White)
-            .then(
-                Modifier.background(
-                    color = Color.White,
-                    shape = RoundedCornerShape(6.dp)
-                )
-            )
-            .padding(4.dp),
-        textStyle = TextStyle(
-            fontSize = 14.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center
-        ),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        singleLine = true,
-        decorationBox = { innerTextField ->
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        BasicTextField(
+            value = value,
+            onValueChange = { new ->
+                // Only allow digits, max 3 chars
+                val filtered = new.filter { it.isDigit() }.take(3)
+                onValueChange(filtered)
+            },
+            modifier = modifier
+                .heightIn(min = 36.dp)
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color.White)
+                .then(
+                    Modifier.background(
                         color = Color.White,
                         shape = RoundedCornerShape(6.dp)
                     )
-                    .then(
-                        Modifier
-                            .background(
-                                color = GoldLight.copy(alpha = 0.3f),
-                                shape = RoundedCornerShape(6.dp)
-                            )
-                    )
-            ) {
-                innerTextField()
+                )
+                .padding(4.dp),
+            textStyle = TextStyle(
+                fontSize = 14.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center
+            ),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            singleLine = true,
+            decorationBox = { innerTextField ->
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(6.dp)
+                        )
+                        .then(
+                            Modifier
+                                .background(
+                                    color = GoldLight.copy(alpha = 0.3f),
+                                    shape = RoundedCornerShape(6.dp)
+                                )
+                        )
+                ) {
+                    innerTextField()
+                }
             }
-        }
-    )
+        )
+    }
 }
 
 @Composable
@@ -1854,7 +1858,6 @@ private fun ManualSilenceButton(
                 Text(
                     text = when {
                         isSilent && hasDnd -> stringResource(R.string.btn_unsilence)
-                        manualUsesDuration -> stringResource(R.string.btn_silence_for_duration, durationText)
                         else -> stringResource(R.string.btn_silence)
                     },
                     fontSize = 16.sp,
@@ -1971,9 +1974,9 @@ private fun formatDurationText(totalMinutes: Int): String {
     val h = totalMinutes / 60
     val m = totalMinutes % 60
     return when {
-        h > 0 && m > 0 -> "${h}h ${m}min"
-        h > 0 -> "${h}h"
-        else -> "${m}min"
+        h > 0 && m > 0 -> "${h} س و ${m} د"
+        h > 0 -> "${h} س"
+        else -> "${m} د"
     }
 }
 

@@ -1,0 +1,535 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:2:1-58:12
+INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:2:1-58:12
+MERGED from [:multiplatform:shared] /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/multiplatform/shared/build/intermediates/merged_manifest/androidMain/processAndroidMainManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/384ec752b3762903541a0c34cb8f1633/transformed/coil-compose-2.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2e20a5ad40059292a9abd10abafd39f3/transformed/coil-compose-base-2.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8900e398c2785d59c7cc3714db214268/transformed/coil-2.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-base:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ddc6d5b776921bf41905bc3e59d9e10e/transformed/coil-base-2.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3bbe0a790d984576662268620ee2e263/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d19efdc2c22142053b099ab0f644482f/transformed/appcompat-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.leanback:leanback:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/51c3ae3b2c59e2d1817e8a9a3b12ff8d/transformed/leanback-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f42d5f53110824abbaa2eb5e23925ee2/transformed/fragment-1.5.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tv:tv-foundation:1.0.0-alpha11] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f9bb24a08576071164291006f7a3b1b/transformed/tv-foundation-1.0.0-alpha11/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.tv:tv-material:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e257366f02f0acee8e09a2be20626974/transformed/tv-material-1.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:2:1-16:12
+MERGED from [androidx.navigation:navigation-runtime-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/88585a678b0599c1df280a0c6fd297ce/transformed/navigation-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5cfd06a96586d15a8bb1b1897c64545a/transformed/navigation-common-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-compose-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/80fb54441f04ed3ce8f614f1aa1e7b20/transformed/navigation-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8fe509956f57e193371a977b81bc893d/transformed/material-icons-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/4f5f4d63d4c8be001905047524fb7a43/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.compose.material3:material3-android:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fb64494a2b05ac0a666535bc0acef594/transformed/material3/AndroidManifest.xml:17:1-22:12
+MERGED from [org.jetbrains.compose.ui:ui-backhandler-android-debug:1.9.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d2e628337c94b9830180be1b2d49e484/transformed/ui-backhandler-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e719c85d9a480e8d1146767ff679eb43/transformed/animation-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cc6e0ca42224efcbe1e827730a3dca8e/transformed/ui-tooling-data/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e1faa911cab83ce6a489dab41be2b951/transformed/ui-tooling-preview/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/365a5104f8aa6b428b64d40f7f39bac5/transformed/ui-unit/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e277fbced208a7a8100f6a29db96b8ac/transformed/ui-geometry/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/da2b3b92de04170aa10a9c049ca395fa/transformed/ui-graphics/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/4cf83a60962cdd9f6b37a9aaac427136/transformed/ui-util/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fca3600971cad93716a157371f1f9ee4/transformed/ui-text/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.material:material-android:1.8.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f72b51d1ad8f1b468092d6ae6184441/transformed/material-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.9.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/60baf964bfdb48875f856acb74f712fb/transformed/material-ripple/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ff901f54d71b4c723ea6d17f9b4ada2b/transformed/animation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6606da919ff09703244b95535e0a2f3c/transformed/foundation-layout/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d7eb3666950efbf813b9ac35b422945f/transformed/foundation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/56741b3b155e16a6724b0f32aec585f0/transformed/runtime-annotation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/1001a12e4d011352e8c8f95688531eb8/transformed/runtime-retain/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/80ee7f7b7af4573bae2e210a1fe7ecb2/transformed/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c5cae34805afef5e820ecf99512ab029/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5ecf8a3e9acd1788dd89073715170598/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/13f67b78f8acabe22e93d5771f90192e/transformed/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/34ad626bcb8864ffd6f4d443a762028f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5c3fc179c863f0b810e1a248eee2b6a4/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ff9a07e928fbe3c9da63935108ff7f55/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f732a957a778a0ae9b8e76026557ac94/transformed/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/11aa3c9888eaf318a9f3cd1b8e0be898/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/08bf638a6c58953e353201545fb0159b/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c97ecad04d6362f1e7d729e1e430215/transformed/transition-1.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/34d7b516160959c6faf774c992d60486/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/1b4ea67c487fce38dbe23a5e08290f87/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/bebadac8a7074f44ba1b5efcdecef114/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/da469da1c8df0d1164468778221449d2/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6704dbf28fcb8b843e348e8d272696f2/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77f4227a82a31e605212bdfbb921a909/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/45287807d6c7c723cc00d0c4f490fb2b/transformed/window-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8b164afd771172d8a2e64d48c3ddb508/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e05e409272dc7bdf926efc0eb214e8d5/transformed/graphics-path-1.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/059993d1fc5ab8f7ccd12f0a0867d007/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/a7965c8017d45949411d2fb06ee84cfe/transformed/lifecycle-livedata-core-ktx-2.9.4/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0b23d500aa514e4bec7757f06cf6fd4f/transformed/lifecycle-viewmodel-ktx-2.9.4/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fc7b298d9ff9579cf57966043666e46f/transformed/lifecycle-livedata-core-2.9.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3f62ebb155cc5e28f67e42755e866ee8/transformed/lifecycle-livedata-2.9.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3648505d8f151327606b75613bdb735b/transformed/lifecycle-viewmodel-savedstate-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/7b88e60d1b984299b111cf6881136709/transformed/lifecycle-viewmodel-2.9.4/AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5bea58aff90cbdb64ec3856fef2ecd6b/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5e86db195584b4bea5ef5c53b9c78fc2/transformed/lifecycle-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8a3d31d8c371974abda72d22711f6abc/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6f6aefbc4570f71330c6e509c44ac2d7/transformed/savedstate-ktx-1.3.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-android:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2e5d5c952e364469a76a07da375db4cc/transformed/savedstate-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-compose-android:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2a0b9ba82aa5e3b377cf0e7bccd90105/transformed/savedstate-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/85401d40c39a16a088ffe12b74633339/transformed/runtime/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0b6036c0d3e1a433462339920d049cbd/transformed/runtime-saveable/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c846fd510a50e77561ac1b99585b9ee6/transformed/lifecycle-viewmodel-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e80c5061576ca4e0c31b38068cae4f04/transformed/ui/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-ktx:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c80718a9c90d7774e36459ff6bbbffb/transformed/activity-ktx-1.10.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/26cfae409877cb607cdda2f8916ca51f/transformed/activity-1.10.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-compose:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f4882c76c64e6619222f47d25c34c3b/transformed/activity-compose-1.10.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ace2475ac982eb146d6b1d15699f5203/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/61ff3676669ba45b08113f4c6104865d/transformed/core-ktx-1.16.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/befb014bfd1748e79443dff599c9f711/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/b7fbc06f8702301b3af43a5d362cb9b1/transformed/core-viewtree-1.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/159ed6b3e39181aa13f0b96b13ac56dd/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0e70ab64663380593c1b796a55f80561/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64939779de4d23d33044affb880bb704/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c3ebdf76639ffbefafaf5fa59cc0257/transformed/tracing-1.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/39288dd8fb4b0eee52d02d96b578161e/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e92e25c34efd2b3a61d1febac8b96ef7/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0a2cf9120ef556b5fff5bf4d10a25cee/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2fed2a9126567a87646f01553281c029/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e540709a98b08181da50c1ebafd69b44/transformed/exifinterface-1.3.7/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/99fb35689fffeadbbd9e8fdc4bb58880/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:5:5-68
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:5:22-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:7:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:9:5-10:38
+	android:maxSdkVersion
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:10:9-35
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:9:22-77
+uses-permission#android.permission.READ_MEDIA_IMAGES
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:11:5-76
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:11:22-73
+uses-permission#android.permission.INTERNET
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:13:5-67
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:13:22-64
+uses-feature#android.software.leanback
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:16:5-18:35
+	android:required
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:18:9-32
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:17:9-49
+uses-feature#android.hardware.touchscreen
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:20:5-22:36
+	android:required
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:22:9-33
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:21:9-52
+application
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:24:5-56:19
+INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:24:5-56:19
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:7:5-14:19
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:7:5-14:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64939779de4d23d33044affb880bb704/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64939779de4d23d33044affb880bb704/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/39288dd8fb4b0eee52d02d96b578161e/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/39288dd8fb4b0eee52d02d96b578161e/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+	android:requestLegacyExternalStorage
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:30:9-52
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:31:9-35
+	android:label
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:28:9-41
+	android:layoutDirection
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:29:9-38
+	android:icon
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:27:9-43
+	android:allowBackup
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:25:9-35
+	android:banner
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:26:9-45
+	android:theme
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:32:9-59
+activity#com.tunisianprayertimes.tv.MainActivity
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:34:9-44:20
+	android:screenOrientation
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:37:13-50
+	android:exported
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:36:13-36
+	android:keepScreenOn
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:38:13-40
+	android:configChanges
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:39:13-91
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:35:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LEANBACK_LAUNCHER
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:40:13-43:29
+action#android.intent.action.MAIN
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:41:17-69
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:41:25-66
+category#android.intent.category.LEANBACK_LAUNCHER
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:42:17-86
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:42:27-83
+receiver#com.tunisianprayertimes.tv.BootReceiver
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:47:9-54:20
+	android:exported
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:49:13-36
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:48:13-41
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:50:13-53:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:51:17-79
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:51:25-76
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:52:17-84
+	android:name
+		ADDED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml:52:25-81
+uses-sdk
+INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+MERGED from [:multiplatform:shared] /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/multiplatform/shared/build/intermediates/merged_manifest/androidMain/processAndroidMainManifest/AndroidManifest.xml:5:5-44
+MERGED from [:multiplatform:shared] /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/multiplatform/shared/build/intermediates/merged_manifest/androidMain/processAndroidMainManifest/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/384ec752b3762903541a0c34cb8f1633/transformed/coil-compose-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/384ec752b3762903541a0c34cb8f1633/transformed/coil-compose-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2e20a5ad40059292a9abd10abafd39f3/transformed/coil-compose-base-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2e20a5ad40059292a9abd10abafd39f3/transformed/coil-compose-base-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8900e398c2785d59c7cc3714db214268/transformed/coil-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8900e398c2785d59c7cc3714db214268/transformed/coil-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ddc6d5b776921bf41905bc3e59d9e10e/transformed/coil-base-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ddc6d5b776921bf41905bc3e59d9e10e/transformed/coil-base-2.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3bbe0a790d984576662268620ee2e263/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3bbe0a790d984576662268620ee2e263/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d19efdc2c22142053b099ab0f644482f/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d19efdc2c22142053b099ab0f644482f/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.leanback:leanback:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/51c3ae3b2c59e2d1817e8a9a3b12ff8d/transformed/leanback-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.leanback:leanback:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/51c3ae3b2c59e2d1817e8a9a3b12ff8d/transformed/leanback-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f42d5f53110824abbaa2eb5e23925ee2/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f42d5f53110824abbaa2eb5e23925ee2/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tv:tv-foundation:1.0.0-alpha11] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f9bb24a08576071164291006f7a3b1b/transformed/tv-foundation-1.0.0-alpha11/AndroidManifest.xml:5:5-44
+MERGED from [androidx.tv:tv-foundation:1.0.0-alpha11] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f9bb24a08576071164291006f7a3b1b/transformed/tv-foundation-1.0.0-alpha11/AndroidManifest.xml:5:5-44
+MERGED from [androidx.tv:tv-material:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e257366f02f0acee8e09a2be20626974/transformed/tv-material-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.tv:tv-material:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e257366f02f0acee8e09a2be20626974/transformed/tv-material-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:5:5-44
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/88585a678b0599c1df280a0c6fd297ce/transformed/navigation-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/88585a678b0599c1df280a0c6fd297ce/transformed/navigation-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5cfd06a96586d15a8bb1b1897c64545a/transformed/navigation-common-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5cfd06a96586d15a8bb1b1897c64545a/transformed/navigation-common-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-compose-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/80fb54441f04ed3ce8f614f1aa1e7b20/transformed/navigation-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose-android:2.9.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/80fb54441f04ed3ce8f614f1aa1e7b20/transformed/navigation-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8fe509956f57e193371a977b81bc893d/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8fe509956f57e193371a977b81bc893d/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/4f5f4d63d4c8be001905047524fb7a43/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/4f5f4d63d4c8be001905047524fb7a43/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.compose.material3:material3-android:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fb64494a2b05ac0a666535bc0acef594/transformed/material3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fb64494a2b05ac0a666535bc0acef594/transformed/material3/AndroidManifest.xml:20:5-44
+MERGED from [org.jetbrains.compose.ui:ui-backhandler-android-debug:1.9.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d2e628337c94b9830180be1b2d49e484/transformed/ui-backhandler-debug/AndroidManifest.xml:5:5-44
+MERGED from [org.jetbrains.compose.ui:ui-backhandler-android-debug:1.9.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d2e628337c94b9830180be1b2d49e484/transformed/ui-backhandler-debug/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e719c85d9a480e8d1146767ff679eb43/transformed/animation-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e719c85d9a480e8d1146767ff679eb43/transformed/animation-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cc6e0ca42224efcbe1e827730a3dca8e/transformed/ui-tooling-data/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cc6e0ca42224efcbe1e827730a3dca8e/transformed/ui-tooling-data/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e1faa911cab83ce6a489dab41be2b951/transformed/ui-tooling-preview/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e1faa911cab83ce6a489dab41be2b951/transformed/ui-tooling-preview/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/365a5104f8aa6b428b64d40f7f39bac5/transformed/ui-unit/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/365a5104f8aa6b428b64d40f7f39bac5/transformed/ui-unit/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e277fbced208a7a8100f6a29db96b8ac/transformed/ui-geometry/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e277fbced208a7a8100f6a29db96b8ac/transformed/ui-geometry/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/da2b3b92de04170aa10a9c049ca395fa/transformed/ui-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/da2b3b92de04170aa10a9c049ca395fa/transformed/ui-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/4cf83a60962cdd9f6b37a9aaac427136/transformed/ui-util/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/4cf83a60962cdd9f6b37a9aaac427136/transformed/ui-util/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fca3600971cad93716a157371f1f9ee4/transformed/ui-text/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fca3600971cad93716a157371f1f9ee4/transformed/ui-text/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-android:1.8.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f72b51d1ad8f1b468092d6ae6184441/transformed/material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.8.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f72b51d1ad8f1b468092d6ae6184441/transformed/material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.9.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/60baf964bfdb48875f856acb74f712fb/transformed/material-ripple/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.9.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/60baf964bfdb48875f856acb74f712fb/transformed/material-ripple/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ff901f54d71b4c723ea6d17f9b4ada2b/transformed/animation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ff901f54d71b4c723ea6d17f9b4ada2b/transformed/animation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6606da919ff09703244b95535e0a2f3c/transformed/foundation-layout/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6606da919ff09703244b95535e0a2f3c/transformed/foundation-layout/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d7eb3666950efbf813b9ac35b422945f/transformed/foundation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d7eb3666950efbf813b9ac35b422945f/transformed/foundation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/56741b3b155e16a6724b0f32aec585f0/transformed/runtime-annotation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/56741b3b155e16a6724b0f32aec585f0/transformed/runtime-annotation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/1001a12e4d011352e8c8f95688531eb8/transformed/runtime-retain/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/1001a12e4d011352e8c8f95688531eb8/transformed/runtime-retain/AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/80ee7f7b7af4573bae2e210a1fe7ecb2/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/80ee7f7b7af4573bae2e210a1fe7ecb2/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c5cae34805afef5e820ecf99512ab029/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c5cae34805afef5e820ecf99512ab029/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5ecf8a3e9acd1788dd89073715170598/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5ecf8a3e9acd1788dd89073715170598/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/13f67b78f8acabe22e93d5771f90192e/transformed/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/13f67b78f8acabe22e93d5771f90192e/transformed/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/34ad626bcb8864ffd6f4d443a762028f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/34ad626bcb8864ffd6f4d443a762028f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5c3fc179c863f0b810e1a248eee2b6a4/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5c3fc179c863f0b810e1a248eee2b6a4/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ff9a07e928fbe3c9da63935108ff7f55/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ff9a07e928fbe3c9da63935108ff7f55/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f732a957a778a0ae9b8e76026557ac94/transformed/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f732a957a778a0ae9b8e76026557ac94/transformed/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/11aa3c9888eaf318a9f3cd1b8e0be898/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/11aa3c9888eaf318a9f3cd1b8e0be898/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/08bf638a6c58953e353201545fb0159b/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/08bf638a6c58953e353201545fb0159b/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c97ecad04d6362f1e7d729e1e430215/transformed/transition-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.6.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c97ecad04d6362f1e7d729e1e430215/transformed/transition-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/34d7b516160959c6faf774c992d60486/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/34d7b516160959c6faf774c992d60486/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/1b4ea67c487fce38dbe23a5e08290f87/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/1b4ea67c487fce38dbe23a5e08290f87/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/bebadac8a7074f44ba1b5efcdecef114/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/bebadac8a7074f44ba1b5efcdecef114/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/da469da1c8df0d1164468778221449d2/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/da469da1c8df0d1164468778221449d2/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6704dbf28fcb8b843e348e8d272696f2/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6704dbf28fcb8b843e348e8d272696f2/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77f4227a82a31e605212bdfbb921a909/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77f4227a82a31e605212bdfbb921a909/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/45287807d6c7c723cc00d0c4f490fb2b/transformed/window-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/45287807d6c7c723cc00d0c4f490fb2b/transformed/window-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8b164afd771172d8a2e64d48c3ddb508/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8b164afd771172d8a2e64d48c3ddb508/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e05e409272dc7bdf926efc0eb214e8d5/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e05e409272dc7bdf926efc0eb214e8d5/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/059993d1fc5ab8f7ccd12f0a0867d007/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/059993d1fc5ab8f7ccd12f0a0867d007/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/a7965c8017d45949411d2fb06ee84cfe/transformed/lifecycle-livedata-core-ktx-2.9.4/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/a7965c8017d45949411d2fb06ee84cfe/transformed/lifecycle-livedata-core-ktx-2.9.4/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0b23d500aa514e4bec7757f06cf6fd4f/transformed/lifecycle-viewmodel-ktx-2.9.4/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0b23d500aa514e4bec7757f06cf6fd4f/transformed/lifecycle-viewmodel-ktx-2.9.4/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fc7b298d9ff9579cf57966043666e46f/transformed/lifecycle-livedata-core-2.9.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/fc7b298d9ff9579cf57966043666e46f/transformed/lifecycle-livedata-core-2.9.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3f62ebb155cc5e28f67e42755e866ee8/transformed/lifecycle-livedata-2.9.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3f62ebb155cc5e28f67e42755e866ee8/transformed/lifecycle-livedata-2.9.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3648505d8f151327606b75613bdb735b/transformed/lifecycle-viewmodel-savedstate-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/3648505d8f151327606b75613bdb735b/transformed/lifecycle-viewmodel-savedstate-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/7b88e60d1b984299b111cf6881136709/transformed/lifecycle-viewmodel-2.9.4/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/7b88e60d1b984299b111cf6881136709/transformed/lifecycle-viewmodel-2.9.4/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5bea58aff90cbdb64ec3856fef2ecd6b/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5bea58aff90cbdb64ec3856fef2ecd6b/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5e86db195584b4bea5ef5c53b9c78fc2/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5e86db195584b4bea5ef5c53b9c78fc2/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8a3d31d8c371974abda72d22711f6abc/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8a3d31d8c371974abda72d22711f6abc/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6f6aefbc4570f71330c6e509c44ac2d7/transformed/savedstate-ktx-1.3.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/6f6aefbc4570f71330c6e509c44ac2d7/transformed/savedstate-ktx-1.3.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2e5d5c952e364469a76a07da375db4cc/transformed/savedstate-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2e5d5c952e364469a76a07da375db4cc/transformed/savedstate-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2a0b9ba82aa5e3b377cf0e7bccd90105/transformed/savedstate-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.3.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2a0b9ba82aa5e3b377cf0e7bccd90105/transformed/savedstate-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/85401d40c39a16a088ffe12b74633339/transformed/runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/85401d40c39a16a088ffe12b74633339/transformed/runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0b6036c0d3e1a433462339920d049cbd/transformed/runtime-saveable/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0b6036c0d3e1a433462339920d049cbd/transformed/runtime-saveable/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c846fd510a50e77561ac1b99585b9ee6/transformed/lifecycle-viewmodel-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c846fd510a50e77561ac1b99585b9ee6/transformed/lifecycle-viewmodel-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e80c5061576ca4e0c31b38068cae4f04/transformed/ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e80c5061576ca4e0c31b38068cae4f04/transformed/ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c80718a9c90d7774e36459ff6bbbffb/transformed/activity-ktx-1.10.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c80718a9c90d7774e36459ff6bbbffb/transformed/activity-ktx-1.10.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/26cfae409877cb607cdda2f8916ca51f/transformed/activity-1.10.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/26cfae409877cb607cdda2f8916ca51f/transformed/activity-1.10.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f4882c76c64e6619222f47d25c34c3b/transformed/activity-compose-1.10.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.10.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/5f4882c76c64e6619222f47d25c34c3b/transformed/activity-compose-1.10.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ace2475ac982eb146d6b1d15699f5203/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/ace2475ac982eb146d6b1d15699f5203/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/61ff3676669ba45b08113f4c6104865d/transformed/core-ktx-1.16.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/61ff3676669ba45b08113f4c6104865d/transformed/core-ktx-1.16.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/befb014bfd1748e79443dff599c9f711/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/befb014bfd1748e79443dff599c9f711/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/b7fbc06f8702301b3af43a5d362cb9b1/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/b7fbc06f8702301b3af43a5d362cb9b1/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/159ed6b3e39181aa13f0b96b13ac56dd/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/159ed6b3e39181aa13f0b96b13ac56dd/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0e70ab64663380593c1b796a55f80561/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0e70ab64663380593c1b796a55f80561/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64939779de4d23d33044affb880bb704/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64939779de4d23d33044affb880bb704/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c3ebdf76639ffbefafaf5fa59cc0257/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/8c3ebdf76639ffbefafaf5fa59cc0257/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/39288dd8fb4b0eee52d02d96b578161e/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/39288dd8fb4b0eee52d02d96b578161e/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e92e25c34efd2b3a61d1febac8b96ef7/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e92e25c34efd2b3a61d1febac8b96ef7/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0a2cf9120ef556b5fff5bf4d10a25cee/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/0a2cf9120ef556b5fff5bf4d10a25cee/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2fed2a9126567a87646f01553281c029/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/2fed2a9126567a87646f01553281c029/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e540709a98b08181da50c1ebafd69b44/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/e540709a98b08181da50c1ebafd69b44/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/99fb35689fffeadbbd9e8fdc4bb58880/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/99fb35689fffeadbbd9e8fdc4bb58880/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/safwen.baroudi/Workspace/TunisianPrayerTimes/tv-app/app/src/main/AndroidManifest.xml
+provider#org.jetbrains.compose.resources.AndroidContextProvider
+ADDED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:8:9-13:20
+	android:enabled
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:11:13-35
+	android:authorities
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:10:13-84
+	android:exported
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:12:13-37
+	android:name
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.10.3] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/77bedc09506c7947f379b3ba9b9b6884/transformed/library-release/AndroidManifest.xml:9:13-82
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.10.5] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/f7bee8195f0770b655d23af79c9e492a/transformed/ui-tooling/AndroidManifest.xml:24:13-71
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:23:9-25:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:24:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:26:9-28:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/c8db850448e636163d1d2c02a579f5fa/transformed/window-1.5.0/AndroidManifest.xml:27:13-51
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64939779de4d23d33044affb880bb704/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64939779de4d23d33044affb880bb704/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/cd12c59e3a59e16c0b4abb1073a1e9d8/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:23:9-81
+permission#com.tunisianprayertimes.tv.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:26:22-94
+uses-permission#com.tunisianprayertimes.tv.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/634c3f3a03af21871162fa6f35171b41/transformed/core-1.16.0/AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.9.4] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/d222e924f66f3af659b06c929e89b7e9/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:30:17-78
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/safwen.baroudi/.gradle/caches/9.3.1/transforms/64340ea7d066cf41081bf3ccdb646673/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
