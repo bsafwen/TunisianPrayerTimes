@@ -14,6 +14,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- Coarse location for auto-detecting nearest delegation -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Internet access for fetching Ramadan override JSON -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
 
     <application
