@@ -82,9 +82,9 @@ git commit -m "${TAG}: ${RELEASE_MSG}"
 git tag -a "$TAG" -m "${TAG}: ${RELEASE_MSG}"
 echo "✓ Committed and tagged $TAG"
 
-# ── Push to origin (tag triggers CI release) ──
-git push origin main
+# ── Push to origin (main push triggers CI; tag must exist first) ──
 git push origin "$TAG"
+git push origin main
 echo "✓ Pushed to origin"
 
 echo ""
