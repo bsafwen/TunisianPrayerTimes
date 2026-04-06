@@ -11,6 +11,7 @@ set -euo pipefail
 # ──────────────────────────────────────────────
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
 APP_DIR="$SCRIPT_DIR/android-app"
 GRADLE_FILE="$APP_DIR/app/build.gradle.kts"
 
@@ -45,8 +46,22 @@ sed -i '' "s/versionCode = ${CURRENT_CODE}/versionCode = ${NEXT_CODE}/" "$GRADLE
 sed -i '' "s/versionName = \"${CURRENT_NAME}\"/versionName = \"${NEXT_NAME}\"/" "$GRADLE_FILE"
 echo "✓ Bumped version in build.gradle.kts"
 
-# ── Git: stage, commit, tag ──────────────────
+# ── Build signed AAB locally (before commit so failures abort cleanly) ──
+echo ""
+echo "Building signed release AAB..."
+cd "$APP_DIR"
+./gradlew clean bundleRelease --no-daemon
+
+AAB="app/build/outputs/bundle/release/app-release.aab"
+if [[ ! -f "$AAB" ]]; then
+    echo "✗ AAB not found after build — aborting release." >&2
+    exit 1
+fi
+echo "✓ Signed AAB: $APP_DIR/$AAB"
+echo "  Size: $(du -h "$AAB" | cut -f1)"
 cd "$SCRIPT_DIR"
+
+# ── Git: stage, commit, tag ──────────────────
 git add -A
 git commit -m "${TAG}: ${RELEASE_MSG}"
 git tag -a "$TAG" -m "${TAG}: ${RELEASE_MSG}"
@@ -60,5 +75,6 @@ echo "✓ Pushed to origin"
 echo ""
 echo "══════════════════════════════════════════"
 echo "  Tag $TAG pushed — CI will build & release."
+echo "  AAB ready at: android-app/$AAB"
 echo "  Track progress: gh run watch"
 echo "══════════════════════════════════════════"

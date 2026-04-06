@@ -43,7 +43,6 @@ import java.awt.Toolkit
 import java.awt.TrayIcon
 import java.awt.image.BufferedImage
 import java.io.File
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledFuture
@@ -57,6 +56,9 @@ private fun showNotification(message: String, type: TrayIcon.MessageType = TrayI
 }
 
 fun main() {
+    // Force Arabic locale so Material3 DatePicker displays in Arabic
+    Locale.setDefault(Locale("ar", "TN"))
+
     // Initialize data loaders with the data directory
     val dataDir = resolveDataDir()
     PrayerDataLoader.init(dataDir)
@@ -407,18 +409,34 @@ private fun IslamicHeader() {
 
 @Composable
 private fun StatusCard(isSilent: Boolean) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    val bgColor by animateColorAsState(
+        targetValue = if (isSilent) Color(0xFFFFEBEE) else Color(0xFFE8F5E9),
+        label = "statusBg"
+    )
+    val accentColor = if (isSilent) SilenceRed else GreenPrimary
+    val statusText = if (isSilent) "الكمبيوتر في الوضع الصامت 🔇" else "الكمبيوتر في الوضع العادي 🔔"
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(24.dp))
+            .background(bgColor)
+            .padding(horizontal = 14.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
+        Box(
+            modifier = Modifier
+                .size(8.dp)
+                .clip(RoundedCornerShape(50))
+                .background(accentColor)
+        )
+        Spacer(Modifier.width(8.dp))
         Text(
-            text = if (isSilent) Strings.STATUS_SILENT else Strings.STATUS_NORMAL,
-            fontSize = 17.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            text = statusText,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            color = accentColor
         )
     }
 }
@@ -551,6 +569,11 @@ private fun PrayerSettingsCard(delegationId: Int) {
     val selectedCal = remember(selectedDate) {
         Calendar.getInstance().apply { timeInMillis = selectedDate }
     }
+    val isToday = remember(selectedDate) {
+        val now = Calendar.getInstance()
+        selectedCal.get(Calendar.YEAR) == now.get(Calendar.YEAR) &&
+            selectedCal.get(Calendar.DAY_OF_YEAR) == now.get(Calendar.DAY_OF_YEAR)
+    }
 
     val displayTimes = remember(delegationId, selectedDate) {
         try {
@@ -563,8 +586,62 @@ private fun PrayerSettingsCard(delegationId: Int) {
         } catch (_: Exception) { null }
     }
 
-    val dateFormat = remember { SimpleDateFormat("EEEE d MMMM yyyy", Locale("ar", "TN")) }
-    val dateText = remember(selectedDate) { dateFormat.format(selectedDate) }
+    val dateText = remember(selectedDate) { formatArabicDate(selectedCal) }
+    var showDatePicker by remember { mutableStateOf(false) }
+
+    // Jomoaa time
+    var jomoaaH by remember { mutableStateOf(Preferences.getJomoaaTimeHour()) }
+    var jomoaaM by remember { mutableStateOf(Preferences.getJomoaaTimeMinute()) }
+    val resolvedJomoaaH = if (jomoaaH >= 0) jomoaaH else displayTimes?.dhuhr?.hour ?: -1
+    val resolvedJomoaaM = if (jomoaaM >= 0) jomoaaM else displayTimes?.dhuhr?.minute ?: -1
+    var showJomoaaTimePicker by remember { mutableStateOf(false) }
+
+    val isFriday = remember(selectedDate) {
+        selectedCal.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+    }
+
+    // Next prayer (only for today)
+    val nextPrayer = remember(delegationId, isToday, jomoaaH, jomoaaM) {
+        if (!isToday) null
+        else {
+            val now = Calendar.getInstance()
+            try {
+                val todayTimes = PrayerDataLoader.loadDayPrayerTimes(
+                    delegationId,
+                    now.get(Calendar.YEAR),
+                    now.get(Calendar.MONTH) + 1,
+                    now.get(Calendar.DAY_OF_MONTH)
+                )
+                todayTimes?.nextPrayer(
+                    now.get(Calendar.HOUR_OF_DAY),
+                    now.get(Calendar.MINUTE),
+                    now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+                    Preferences.getJomoaaTimeHour(),
+                    Preferences.getJomoaaTimeMinute()
+                )
+            } catch (_: Exception) { null }
+        }
+    }
+
+    // Date navigation bounds
+    val canGoForward = remember(delegationId, selectedDate) {
+        val nextCal = Calendar.getInstance().apply {
+            timeInMillis = selectedDate
+            add(Calendar.DAY_OF_MONTH, 1)
+        }
+        try {
+            PrayerDataLoader.hasPrayerData(delegationId, nextCal.get(Calendar.YEAR), nextCal.get(Calendar.MONTH) + 1)
+        } catch (_: Exception) { false }
+    }
+    val canGoBack = remember(delegationId, selectedDate) {
+        val prevCal = Calendar.getInstance().apply {
+            timeInMillis = selectedDate
+            add(Calendar.DAY_OF_MONTH, -1)
+        }
+        try {
+            PrayerDataLoader.hasPrayerData(delegationId, prevCal.get(Calendar.YEAR), prevCal.get(Calendar.MONTH) + 1)
+        } catch (_: Exception) { false }
+    }
 
     val prayerNames = mapOf(
         Prayer.FAJR to Strings.PRAYER_FAJR,
@@ -605,37 +682,74 @@ private fun PrayerSettingsCard(delegationId: Int) {
                 Text(
                     text = "▸",
                     fontSize = 18.sp,
-                    color = GreenPrimary,
+                    color = if (canGoForward) GreenPrimary else TextMuted.copy(alpha = 0.3f),
                     modifier = Modifier
                         .clip(RoundedCornerShape(8.dp))
-                        .clickable {
+                        .then(if (canGoForward) Modifier.clickable {
                             selectedDate = Calendar.getInstance().apply {
                                 timeInMillis = selectedDate
                                 add(Calendar.DAY_OF_MONTH, 1)
                             }.timeInMillis
-                        }
+                        } else Modifier)
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 )
-                Text(
-                    text = dateText,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = GreenPrimaryDark,
-                    textAlign = TextAlign.Center
-                )
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = dateText,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = GreenPrimaryDark,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.clickable { showDatePicker = true }
+                    )
+                    if (isToday) {
+                        Text(
+                            text = Strings.DATE_TODAY,
+                            fontSize = 11.sp,
+                            color = Gold,
+                            fontWeight = FontWeight.Bold
+                        )
+                    } else {
+                        Text(
+                            text = Strings.DATE_GO_BACK_TODAY,
+                            fontSize = 11.sp,
+                            color = GreenPrimary,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(6.dp))
+                                .background(GreenPrimary.copy(alpha = 0.1f))
+                                .clickable { selectedDate = Calendar.getInstance().timeInMillis }
+                                .padding(horizontal = 8.dp, vertical = 2.dp)
+                        )
+                    }
+                }
                 Text(
                     text = "◂",
                     fontSize = 18.sp,
-                    color = GreenPrimary,
+                    color = if (canGoBack) GreenPrimary else TextMuted.copy(alpha = 0.3f),
                     modifier = Modifier
                         .clip(RoundedCornerShape(8.dp))
-                        .clickable {
+                        .then(if (canGoBack) Modifier.clickable {
                             selectedDate = Calendar.getInstance().apply {
                                 timeInMillis = selectedDate
                                 add(Calendar.DAY_OF_MONTH, -1)
                             }.timeInMillis
-                        }
+                        } else Modifier)
                         .padding(horizontal = 12.dp, vertical = 4.dp)
+                )
+            }
+
+            // Date picker dialog
+            if (showDatePicker) {
+                DatePickerDialogCustom(
+                    initialCal = selectedCal,
+                    onConfirm = { cal ->
+                        selectedDate = cal.timeInMillis
+                        showDatePicker = false
+                    },
+                    onDismiss = { showDatePicker = false }
                 )
             }
 
@@ -652,12 +766,43 @@ private fun PrayerSettingsCard(delegationId: Int) {
                 HorizontalDivider(color = Divider, thickness = 1.dp)
 
                 val prayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-                prayers.forEach { prayer ->
+                prayers.forEachIndexed { index, prayer ->
                     val prayerTime = displayTimes.allPrayers().find { it.prayer == prayer }
+                    val nextPrayerTime = if (index < prayers.size - 1) {
+                        displayTimes.allPrayers().find { it.prayer == prayers[index + 1] }
+                    } else null
                     PrayerRow(
                         prayer = prayer,
                         prayerName = prayerNames[prayer] ?: prayer.name,
-                        prayerTime = prayerTime
+                        prayerTime = prayerTime,
+                        nextPrayerTime = nextPrayerTime,
+                        isNextPrayer = isToday && prayer == nextPrayer
+                    )
+                }
+
+                // Jomoaa row — always shown, with editable time
+                HorizontalDivider(color = Divider, thickness = 1.dp)
+                PrayerRow(
+                    prayer = Prayer.JOMOAA,
+                    prayerName = prayerNames[Prayer.JOMOAA] ?: Prayer.JOMOAA.name,
+                    prayerTime = if (resolvedJomoaaH >= 0) PrayerTime(Prayer.JOMOAA, resolvedJomoaaH, resolvedJomoaaM) else null,
+                    nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.ASR },
+                    isNextPrayer = isToday && Prayer.JOMOAA == nextPrayer,
+                    onPrayerTimeClick = { showJomoaaTimePicker = true }
+                )
+
+                // Jomoaa time picker
+                if (showJomoaaTimePicker) {
+                    TimePickerDialog(
+                        initialHour = resolvedJomoaaH.coerceAtLeast(0),
+                        initialMinute = resolvedJomoaaM.coerceAtLeast(0),
+                        onConfirm = { h, m ->
+                            jomoaaH = h
+                            jomoaaM = m
+                            Preferences.setJomoaaTime(h, m)
+                            showJomoaaTimePicker = false
+                        },
+                        onDismiss = { showJomoaaTimePicker = false }
                     )
                 }
             } else {
@@ -679,87 +824,221 @@ private fun PrayerSettingsCard(delegationId: Int) {
 private fun PrayerRow(
     prayer: Prayer,
     prayerName: String,
-    prayerTime: PrayerTime?
+    prayerTime: PrayerTime?,
+    nextPrayerTime: PrayerTime? = null,
+    isNextPrayer: Boolean = false,
+    onPrayerTimeClick: (() -> Unit)? = null
 ) {
+    // Delay state
+    var delayMode by remember { mutableStateOf(Preferences.getDelayMode(prayer)) }
     var delayMinutes by remember { mutableStateOf(Preferences.getDelayMinutes(prayer).toString()) }
-    var afterMinutes by remember { mutableStateOf(Preferences.getAfterMinutes(prayer).toString()) }
+    var delayFixedH by remember { mutableStateOf(Preferences.getDelayFixedHour(prayer).let { if (it >= 0) it else prayerTime?.hour ?: 0 }) }
+    var delayFixedM by remember { mutableStateOf(Preferences.getDelayFixedMinute(prayer).let { if (it >= 0) it else prayerTime?.minute ?: 0 }) }
     var showDelayPicker by remember { mutableStateOf(false) }
+
+    // Duration/end state
+    var silenceMode by remember { mutableStateOf(Preferences.getSilenceMode(prayer)) }
+    var afterMinutes by remember { mutableStateOf(Preferences.getAfterMinutes(prayer).toString()) }
+    var fixedH by remember { mutableStateOf(Preferences.getFixedTimeHour(prayer).let { if (it >= 0) it else prayerTime?.hour ?: 13 }) }
+    var fixedM by remember { mutableStateOf(Preferences.getFixedTimeMinute(prayer).let { if (it >= 0) it else prayerTime?.minute ?: 0 }) }
     var showDurationPicker by remember { mutableStateOf(false) }
 
-    // Delay time picker
+    // Delay time picker (used in FIXED_TIME delay mode)
     if (showDelayPicker) {
-        val currentDelay = delayMinutes.toIntOrNull() ?: 0
         TimePickerDialog(
-            initialHour = currentDelay / 60,
-            initialMinute = currentDelay % 60,
+            initialHour = if (delayMode == DelayMode.FIXED_TIME) delayFixedH else (delayMinutes.toIntOrNull() ?: 0) / 60,
+            initialMinute = if (delayMode == DelayMode.FIXED_TIME) delayFixedM else (delayMinutes.toIntOrNull() ?: 0) % 60,
             onConfirm = { h, m ->
-                val totalMin = h * 60 + m
-                delayMinutes = totalMin.toString()
-                Preferences.setDelayMinutes(prayer, totalMin)
+                if (delayMode == DelayMode.FIXED_TIME) {
+                    delayFixedH = h
+                    delayFixedM = m
+                    Preferences.setDelayFixedTime(prayer, h, m)
+                } else {
+                    val totalMin = h * 60 + m
+                    delayMinutes = totalMin.toString()
+                    Preferences.setDelayMinutes(prayer, totalMin)
+                }
                 showDelayPicker = false
             },
             onDismiss = { showDelayPicker = false }
         )
     }
 
-    // Duration time picker
+    // Duration/end time picker
     if (showDurationPicker) {
-        val currentDuration = afterMinutes.toIntOrNull() ?: 0
         TimePickerDialog(
-            initialHour = currentDuration / 60,
-            initialMinute = currentDuration % 60,
+            initialHour = if (silenceMode == SilenceMode.FIXED_TIME) fixedH else (afterMinutes.toIntOrNull() ?: 0) / 60,
+            initialMinute = if (silenceMode == SilenceMode.FIXED_TIME) fixedM else (afterMinutes.toIntOrNull() ?: 0) % 60,
             onConfirm = { h, m ->
-                val totalMin = h * 60 + m
-                afterMinutes = totalMin.toString()
-                Preferences.setAfterMinutes(prayer, totalMin)
+                if (silenceMode == SilenceMode.FIXED_TIME) {
+                    fixedH = h
+                    fixedM = m
+                    Preferences.setFixedTime(prayer, h, m)
+                } else {
+                    val totalMin = h * 60 + m
+                    afterMinutes = totalMin.toString()
+                    Preferences.setAfterMinutes(prayer, totalMin)
+                }
                 showDurationPicker = false
             },
             onDismiss = { showDurationPicker = false }
         )
     }
 
+    // Overlap detection
+    val overlapsNextPrayer = remember(prayerTime, nextPrayerTime, silenceMode, afterMinutes, fixedH, fixedM, delayMode, delayMinutes, delayFixedH, delayFixedM) {
+        if (prayerTime == null || nextPrayerTime == null) false
+        else {
+            val config = PrayerSilenceConfig(
+                mode = silenceMode,
+                afterMinutes = afterMinutes.toIntOrNull() ?: 0,
+                fixedHour = fixedH,
+                fixedMinute = fixedM,
+                delayMode = delayMode,
+                delayMinutes = delayMinutes.toIntOrNull() ?: 0,
+                delayFixedHour = delayFixedH,
+                delayFixedMinute = delayFixedM
+            )
+            SilenceAlarmComputer.overlapsNextPrayer(prayerTime, nextPrayerTime, config)
+        }
+    }
+
+    Column {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp, horizontal = 4.dp),
+        modifier = Modifier.fillMaxWidth()
+            .then(
+                if (isNextPrayer) Modifier
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(NextPrayerBg)
+                else Modifier
+            )
+            .padding(vertical = 10.dp, horizontal = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        // Prayer name
         Text(
             text = prayerName,
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
-            color = PrayerNameColor,
+            color = if (isNextPrayer) GreenPrimary else PrayerNameColor,
             modifier = Modifier.weight(1f)
         )
+
+        // Prayer time
         Text(
             text = if (prayerTime != null) String.format(Locale.US, "%02d:%02d", prayerTime.hour, prayerTime.minute) else "--:--",
             fontSize = 14.sp,
             color = TextDark,
             textAlign = TextAlign.Center,
             modifier = Modifier.weight(1f)
+                .then(
+                    if (onPrayerTimeClick != null) Modifier
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(GoldLight.copy(alpha = 0.3f))
+                        .clickable { onPrayerTimeClick() }
+                        .padding(vertical = 4.dp)
+                    else Modifier
+                )
         )
-        // Delay input (click to open time picker)
-        Box(modifier = Modifier.weight(1f)) {
-            NumberInput(
-                value = delayMinutes,
-                onValueChange = {
-                    delayMinutes = it
-                    Preferences.setDelayMinutes(prayer, it.toIntOrNull() ?: 0)
-                },
-                modifier = Modifier.fillMaxWidth()
-                    .clickable { showDelayPicker = true }
+
+        // Delay control: input + "د"/"من" toggle
+        Row(
+            modifier = Modifier.weight(1f),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (delayMode == DelayMode.MINUTES) {
+                NumberInput(
+                    value = delayMinutes,
+                    onValueChange = {
+                        delayMinutes = it
+                        Preferences.setDelayMinutes(prayer, it.toIntOrNull() ?: 0)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            } else {
+                // Fixed time display
+                Text(
+                    text = String.format(Locale.US, "%02d:%02d", delayFixedH, delayFixedM),
+                    fontSize = 14.sp,
+                    color = TextDark,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(GoldLight.copy(alpha = 0.3f))
+                        .clickable { showDelayPicker = true }
+                        .padding(4.dp)
+                )
+            }
+            Text(
+                text = if (delayMode == DelayMode.MINUTES) Strings.LABEL_DELAY_MINUTES else Strings.LABEL_DELAY_AT,
+                fontSize = 12.sp,
+                color = Gold,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .clickable {
+                        val newMode = if (delayMode == DelayMode.MINUTES) DelayMode.FIXED_TIME else DelayMode.MINUTES
+                        delayMode = newMode
+                        Preferences.setDelayMode(prayer, newMode)
+                    }
+                    .padding(horizontal = 4.dp, vertical = 2.dp)
             )
         }
-        // Duration input (click to open time picker)
-        Box(modifier = Modifier.weight(1f)) {
-            NumberInput(
-                value = afterMinutes,
-                onValueChange = {
-                    afterMinutes = it
-                    Preferences.setAfterMinutes(prayer, it.toIntOrNull() ?: 0)
-                },
-                modifier = Modifier.fillMaxWidth()
-                    .clickable { showDurationPicker = true }
+
+        // Duration/end control: input + "د"/"حتى" toggle
+        Row(
+            modifier = Modifier.weight(1f),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (silenceMode == SilenceMode.DURATION) {
+                NumberInput(
+                    value = afterMinutes,
+                    onValueChange = {
+                        afterMinutes = it
+                        Preferences.setAfterMinutes(prayer, it.toIntOrNull() ?: 0)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            } else {
+                // Fixed end time display
+                Text(
+                    text = String.format(Locale.US, "%02d:%02d", fixedH, fixedM),
+                    fontSize = 14.sp,
+                    color = TextDark,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(GoldLight.copy(alpha = 0.3f))
+                        .clickable { showDurationPicker = true }
+                        .padding(4.dp)
+                )
+            }
+            Text(
+                text = if (silenceMode == SilenceMode.DURATION) Strings.LABEL_DURATION else Strings.LABEL_FIXED_TIME,
+                fontSize = 12.sp,
+                color = Gold,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .clickable {
+                        val newMode = if (silenceMode == SilenceMode.DURATION) SilenceMode.FIXED_TIME else SilenceMode.DURATION
+                        silenceMode = newMode
+                        Preferences.setSilenceMode(prayer, newMode)
+                    }
+                    .padding(horizontal = 4.dp, vertical = 2.dp)
             )
         }
+    }
+    if (overlapsNextPrayer) {
+        Text(
+            text = Strings.WARNING_OVERLAPS_NEXT_PRAYER,
+            fontSize = 11.sp,
+            color = SilenceRed,
+            modifier = Modifier.padding(start = 4.dp, bottom = 2.dp)
+        )
+    }
     }
     HorizontalDivider(color = Divider, thickness = 0.5.dp)
 }
@@ -799,6 +1078,167 @@ private fun NumberInput(
 }
 
 @Composable
+private fun DatePickerDialogCustom(
+    initialCal: Calendar,
+    onConfirm: (Calendar) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val arabicMonths = arrayOf(
+        "جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان",
+        "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+    )
+
+    var year by remember { mutableIntStateOf(initialCal.get(Calendar.YEAR)) }
+    var month by remember { mutableIntStateOf(initialCal.get(Calendar.MONTH)) }
+    var day by remember { mutableIntStateOf(initialCal.get(Calendar.DAY_OF_MONTH)) }
+
+    val daysInMonth = remember(year, month) {
+        Calendar.getInstance().apply {
+            set(Calendar.YEAR, year)
+            set(Calendar.MONTH, month)
+        }.getActualMaximum(Calendar.DAY_OF_MONTH)
+    }
+
+    // Clamp day if month changed
+    val clampedDay = day.coerceAtMost(daysInMonth)
+    if (clampedDay != day) day = clampedDay
+
+    Dialog(onDismissRequest = onDismiss) {
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
+            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = Strings.TIME_PICKER_TITLE.replace("الوقت", "التاريخ"),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = GreenPrimaryDark
+                )
+                Spacer(Modifier.height(16.dp))
+
+                // Date display
+                Text(
+                    text = formatArabicDate(Calendar.getInstance().apply {
+                        set(Calendar.YEAR, year)
+                        set(Calendar.MONTH, month)
+                        set(Calendar.DAY_OF_MONTH, day)
+                    }),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = GreenPrimary,
+                    modifier = Modifier.padding(bottom = 12.dp)
+                )
+
+                // Day / Month / Year spinners (LTR for numbers)
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        // Day spinner
+                        SpinnerColumn(
+                            value = day,
+                            range = 1..daysInMonth,
+                            displayText = { it.toString() },
+                            onValueChange = { day = it },
+                            modifier = Modifier.width(60.dp)
+                        )
+                        // Month spinner
+                        SpinnerColumn(
+                            value = month,
+                            range = 0..11,
+                            displayText = { arabicMonths[it] },
+                            onValueChange = { month = it },
+                            modifier = Modifier.width(100.dp)
+                        )
+                        // Year spinner
+                        SpinnerColumn(
+                            value = year,
+                            range = (year - 2)..(year + 2),
+                            displayText = { it.toString() },
+                            onValueChange = { year = it },
+                            modifier = Modifier.width(70.dp)
+                        )
+                    }
+                }
+
+                Spacer(Modifier.height(20.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    TextButton(onClick = onDismiss) {
+                        Text(Strings.CANCEL, color = TextMuted)
+                    }
+                    Spacer(Modifier.width(8.dp))
+                    TextButton(onClick = {
+                        val result = Calendar.getInstance().apply {
+                            set(Calendar.YEAR, year)
+                            set(Calendar.MONTH, month)
+                            set(Calendar.DAY_OF_MONTH, day)
+                        }
+                        onConfirm(result)
+                    }) {
+                        Text(Strings.CONFIRM, color = GreenPrimary)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SpinnerColumn(
+    value: Int,
+    range: IntRange,
+    displayText: (Int) -> String,
+    onValueChange: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+    ) {
+        Text(
+            text = "▲",
+            fontSize = 16.sp,
+            color = GreenPrimary,
+            modifier = Modifier
+                .clip(RoundedCornerShape(4.dp))
+                .clickable { if (value < range.last) onValueChange(value + 1) }
+                .padding(4.dp)
+        )
+        Text(
+            text = displayText(value),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = TextDark,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(GoldLight.copy(alpha = 0.3f))
+                .padding(vertical = 8.dp, horizontal = 4.dp)
+        )
+        Text(
+            text = "▼",
+            fontSize = 16.sp,
+            color = GreenPrimary,
+            modifier = Modifier
+                .clip(RoundedCornerShape(4.dp))
+                .clickable { if (value > range.first) onValueChange(value - 1) }
+                .padding(4.dp)
+        )
+    }
+}
+
+@Composable
 private fun TimePickerDialog(
     initialHour: Int,
     initialMinute: Int,
@@ -827,6 +1267,7 @@ private fun TimePickerDialog(
                 )
                 Spacer(Modifier.height(20.dp))
 
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
@@ -850,6 +1291,7 @@ private fun TimePickerDialog(
                         range = 0..59,
                         onValueChange = { minute = it }
                     )
+                }
                 }
 
                 Spacer(Modifier.height(8.dp))
@@ -1132,4 +1574,17 @@ private fun formatTimeOfDay(targetTimeInMillis: Long): String {
         calendar.get(Calendar.HOUR_OF_DAY),
         calendar.get(Calendar.MINUTE)
     )
+}
+
+private fun formatArabicDate(cal: Calendar): String {
+    val dayNames = arrayOf("الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت")
+    val monthNames = arrayOf(
+        "جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان",
+        "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+    )
+    val dayOfWeek = dayNames[cal.get(Calendar.DAY_OF_WEEK) - 1]
+    val day = cal.get(Calendar.DAY_OF_MONTH)
+    val month = monthNames[cal.get(Calendar.MONTH)]
+    val year = cal.get(Calendar.YEAR)
+    return "$dayOfWeek $day $month $year"
 }
