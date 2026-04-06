@@ -1,8 +1,8 @@
 #!/bin/bash
 # Links the docs/ data directory so the desktop app can find CSV and JSON data at runtime.
-# Run from the multiplatform/ directory.
 
 set -e
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 DATA_DIR="desktopApp/data"
 SOURCE_DIR="../docs"
@@ -18,5 +18,4 @@ fi
 
 echo ""
 echo "To run the desktop app:"
-echo "  cd multiplatform"
 echo "  ./gradlew :desktopApp:run"
