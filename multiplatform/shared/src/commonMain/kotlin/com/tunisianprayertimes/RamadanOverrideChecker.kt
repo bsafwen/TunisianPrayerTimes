@@ -36,9 +36,7 @@ import com.tunisianprayertimes.platform.Preferences
  */
 object RamadanOverrideChecker {
 
-    // TODO: revert to GitHub Pages URL before release:
-    // private const val BASE_URL = "https://bsafwen.github.io/TunisianPrayerTimes"
-    private const val BASE_URL = "https://raw.githubusercontent.com/bsafwen/TunisianPrayerTimes/ramadan/docs"
+    private const val BASE_URL = "https://bsafwen.github.io/TunisianPrayerTimes"
     private const val CONNECT_TIMEOUT = 10_000
     private const val READ_TIMEOUT = 15_000
 
