@@ -196,6 +196,77 @@ Local releases can also be created with `./release.sh "description"`, which bump
 
 ---
 
+## Ramadan & Eid Date Override
+
+The Tunisian Ministry of Religious Affairs determines the start of Ramadan and Eid al-Fitr by physical moon sighting, announced after Maghreb prayer. This can differ by ±1 day from the algorithmic Hijri calendar (`HijrahDate`). The app supports an override mechanism to use the official dates.
+
+### How it works
+
+1. A JSON file `docs/ramadan-override-{hijriYear}.json` is served via GitHub Pages
+2. All apps (Android, TV, Desktop) poll this file **hourly**, starting **2 days before** the expected event according to `HijrahDate`
+3. Once the relevant date is fetched (non-null), polling **stops automatically**
+4. `RamadanDetector` checks the override first; if unavailable, falls back to algorithmic `HijrahDate`
+
+### When to update
+
+| Event | When to edit | Field to set |
+|-------|-------------|--------------|
+| Ramadan start | Evening of 29th Sha'ban, after Ministry announcement | `ramadanStart` |
+| Eid al-Fitr | Evening of 29th Ramadan, after Ministry announcement | `eidFitrDate` |
+| Eid al-Adha | Evening of 29th Dhul Qi'dah, after Ministry announcement | `eidAdhaDate` |
+
+### Steps
+
+```bash
+# 1. Edit the file for the current Hijri year (e.g. 1448)
+vi docs/ramadan-override-1448.json
+
+# 2. Set the announced date(s) — use Gregorian (ISO 8601) format
+{
+  "hijriYear": 1448,
+  "ramadanStart": "2027-02-17",
+  "eidFitrDate": null,
+  "eidAdhaDate": null,
+  "lastUpdated": "2027-02-16T20:30:00Z"
+}
+
+# 3. Push to GitHub — Pages updates in ~10 minutes
+git add docs/ramadan-override-1448.json
+git commit -m "Ramadan 1448 starts 2027-02-17"
+git push
+```
+
+### Yearly setup
+
+Before each new Hijri year, create a fresh override file:
+
+```bash
+cp docs/ramadan-override-1448.json docs/ramadan-override-1449.json
+# Edit: set hijriYear to 1449, reset all dates to null
+```
+
+### Polling windows
+
+The app only polls during these Hijri date windows (to avoid unnecessary network requests):
+
+- **Ramadan start**: 28th–29th Sha'ban (algorithmic ±1 buffer, drift unknown)
+- **Eid al-Fitr**: real 29th Ramadan (computed from known `ramadanStart` + 28 days), for 3 days
+- **Eid al-Adha**: real 29th Dhul Qi'dah (computed using drift from Eid al-Fitr), for ~13 days through 10th Dhul Hijja
+
+Outside these windows, no network requests are made.
+
+### Moon sighting drift
+
+When the Ministry's announced Eid al-Fitr date differs from the algorithmic Umm al-Qura calendar (e.g. +1 day), the app saves this **drift** and automatically applies it to predict the Eid al-Adha date. This means:
+
+1. Ministry announces Eid al-Fitr → app computes `drift = announced − algorithmic`
+2. For Eid al-Adha (if not yet announced), the app uses `algorithmic_10_dhul_hijja + drift`
+3. Once the actual Eid al-Adha date is announced and pushed to the JSON, it takes precedence
+
+This way, the app can show the correct Eid al-Adha row even before the official announcement, based on the pattern observed at Eid al-Fitr. The same drift is computed from `ramadanStart` if `eidFitrDate` is not yet available.
+
+---
+
 ## Data Source
 
 All prayer times are sourced from the **Institut National de la Météorologie** (meteo.tn) via their public API:
@@ -207,7 +278,7 @@ All prayer times are sourced from the **Institut National de la Météorologie**
 
 ## Privacy
 
-The Android app collects **no analytics, no device identifiers, and makes no network requests**. All prayer data is bundled in the APK. See [`docs/privacy-policy.html`](docs/privacy-policy.html) for the full privacy policy.
+The Android app collects **no analytics and no device identifiers**. The only network request is an hourly check to GitHub Pages for official Ramadan/Eid date overrides, made only during a narrow window around moon-sighting dates (a few days per year). All prayer data is bundled in the APK. See [`docs/privacy-policy.html`](docs/privacy-policy.html) for the full privacy policy.
 
 ---
 

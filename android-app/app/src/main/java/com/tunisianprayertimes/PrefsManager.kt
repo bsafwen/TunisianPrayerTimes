@@ -158,6 +158,8 @@ object PrefsManager {
         Prayer.MAGHRIB -> 20
         Prayer.ISHA -> 30
         Prayer.JOMOAA -> 60
+        Prayer.AID_FITR -> 60
+        Prayer.AID_ADHA -> 60
     }
 
     fun getAfterMinutes(context: Context, prayer: Prayer): Int {
@@ -194,6 +196,8 @@ object PrefsManager {
     private fun defaultSilenceMode(prayer: Prayer): SilenceMode = when (prayer) {
         Prayer.DHUHR -> SilenceMode.FIXED_TIME
         Prayer.JOMOAA -> SilenceMode.FIXED_TIME
+        Prayer.AID_FITR -> SilenceMode.DURATION
+        Prayer.AID_ADHA -> SilenceMode.DURATION
         else -> SilenceMode.DURATION
     }
 
@@ -285,6 +289,40 @@ object PrefsManager {
         prefs(context).edit()
             .putInt("jomoaa_time_hour", hour)
             .putInt("jomoaa_time_minute", minute)
+            .apply()
+    }
+
+    // --- Aid Fitr custom time (defaults to -1 = use Shuruk) ---
+
+    fun getAidFitrTimeHour(context: Context): Int {
+        return prefs(context).getInt("aid_fitr_time_hour", -1)
+    }
+
+    fun getAidFitrTimeMinute(context: Context): Int {
+        return prefs(context).getInt("aid_fitr_time_minute", -1)
+    }
+
+    fun setAidFitrTime(context: Context, hour: Int, minute: Int) {
+        prefs(context).edit()
+            .putInt("aid_fitr_time_hour", hour)
+            .putInt("aid_fitr_time_minute", minute)
+            .apply()
+    }
+
+    // --- Aid Adha custom time (defaults to -1 = use Shuruk) ---
+
+    fun getAidAdhaTimeHour(context: Context): Int {
+        return prefs(context).getInt("aid_adha_time_hour", -1)
+    }
+
+    fun getAidAdhaTimeMinute(context: Context): Int {
+        return prefs(context).getInt("aid_adha_time_minute", -1)
+    }
+
+    fun setAidAdhaTime(context: Context, hour: Int, minute: Int) {
+        prefs(context).edit()
+            .putInt("aid_adha_time_hour", hour)
+            .putInt("aid_adha_time_minute", minute)
             .apply()
     }
 }

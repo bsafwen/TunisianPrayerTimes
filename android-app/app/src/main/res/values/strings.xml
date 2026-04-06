@@ -65,6 +65,10 @@
     <string name="prayer_maghrib">المغرب</string>
     <string name="prayer_isha">العشاء</string>
     <string name="prayer_jomoaa">الجمعة</string>
+    <string name="prayer_aid_fitr">عيد الفطر</string>
+    <string name="prayer_aid_adha">عيد الأضحى</string>
+    <string name="pick_aid_fitr_time">اختر وقت صلاة عيد الفطر</string>
+    <string name="pick_aid_adha_time">اختر وقت صلاة عيد الأضحى</string>
 
     <!-- Onboarding -->
     <string name="onboarding_welcome">هذا التطبيق يقوم بإسكات هاتفك تلقائيًا عند دخول وقت كل صلاة\n\nمواقيت الصلاة المعتمدة هي المواقيت الرسمية للجمهورية التونسية، مصدرها المعهد الوطني للرصد الجوي التونسي\n\nدعنا نشرح لك كيف يعمل</string>

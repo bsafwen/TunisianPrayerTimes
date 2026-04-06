@@ -54,6 +54,8 @@ actual object Preferences {
         Prayer.MAGHRIB -> 20
         Prayer.ISHA -> 30
         Prayer.JOMOAA -> 60
+        Prayer.AID_FITR -> 60
+        Prayer.AID_ADHA -> 60
     }
 
     actual fun getAfterMinutes(prayer: Prayer): Int =
@@ -116,6 +118,29 @@ actual object Preferences {
     actual fun setJomoaaTime(hour: Int, minute: Int) {
         prefs.putInt("jomoaa_time_hour", hour)
         prefs.putInt("jomoaa_time_minute", minute)
+        prefs.flush()
+    }
+
+    actual fun getAidFitrTimeHour(): Int = prefs.getInt("aid_fitr_time_hour", -1)
+    actual fun getAidFitrTimeMinute(): Int = prefs.getInt("aid_fitr_time_minute", -1)
+    actual fun setAidFitrTime(hour: Int, minute: Int) {
+        prefs.putInt("aid_fitr_time_hour", hour)
+        prefs.putInt("aid_fitr_time_minute", minute)
+        prefs.flush()
+    }
+
+    actual fun getAidAdhaTimeHour(): Int = prefs.getInt("aid_adha_time_hour", -1)
+    actual fun getAidAdhaTimeMinute(): Int = prefs.getInt("aid_adha_time_minute", -1)
+    actual fun setAidAdhaTime(hour: Int, minute: Int) {
+        prefs.putInt("aid_adha_time_hour", hour)
+        prefs.putInt("aid_adha_time_minute", minute)
+        prefs.flush()
+    }
+
+    actual fun getRamadanOverrideJson(): String? = prefs.get("ramadan_override_json", null)
+    actual fun setRamadanOverrideJson(json: String?) {
+        if (json != null) prefs.put("ramadan_override_json", json)
+        else prefs.remove("ramadan_override_json")
         prefs.flush()
     }
 

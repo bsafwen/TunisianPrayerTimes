@@ -14,6 +14,7 @@ class BootReceiver : BroadcastReceiver() {
             Intent.ACTION_BOOT_COMPLETED,
             "android.intent.action.MY_PACKAGE_REPLACED" -> {
                 Log.d("BootReceiver", "Rescheduling alarms after boot/update")
+                RamadanOverrideChecker.startPollingIfNeeded()
                 SilenceScheduler.scheduleAll(context)
                 if (PrefsManager.isEnabled(context)) {
                     SilenceVerifyWorker.enqueue(context)
