@@ -1,0 +1,135 @@
+name: Check Islamic Date Overrides
+
+on:
+  # ══════════════════════════════════════════════════════════════════════
+  # Cron schedule: 4 runs per evening, after Maghrib Tunisia time (UTC+1)
+  #   18:30, 20:30, 22:30, 00:30 UTC+1  →  17:30, 19:30, 21:30, 23:30 UTC
+  #
+  # Active windows (approximate Gregorian dates — shift ±2 days per year):
+  #   Ramadan start:  late January – mid February
+  #   Eid al-Fitr:    late February – mid March
+  #   Eid al-Adha:    late May – mid June
+  #
+  # The cron runs year-round during these months; the script itself
+  # exits immediately if all dates are already set.
+  # ══════════════════════════════════════════════════════════════════════
+  schedule:
+    # 17:30 UTC (18:30 TN) — first check after Maghrib
+    - cron: "30 17 * 1-3,5-6 *"
+    # 19:30 UTC (20:30 TN)
+    - cron: "30 19 * 1-3,5-6 *"
+    # 21:30 UTC (22:30 TN)
+    - cron: "30 21 * 1-3,5-6 *"
+    # 23:30 UTC (00:30+1 TN)
+    - cron: "30 23 * 1-3,5-6 *"
+
+  workflow_dispatch:
+    inputs:
+      hijri_year:
+        description: "Hijri year to check (e.g. 1448). Defaults to auto-detect."
+        required: false
+        default: ""
+      events:
+        description: "Space-separated events to check (ramadan_start eid_fitr eid_adha). Defaults to all null dates."
+        required: false
+        default: ""
+      dry_run:
+        description: "Dry run — don't commit changes"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  check-dates:
+    name: Check Islamic date announcements
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Determine Hijri year
+        id: vars
+        run: |
+          if [ -n "${{ github.event.inputs.hijri_year }}" ]; then
+            echo "hijri_year=${{ github.event.inputs.hijri_year }}" >> "$GITHUB_OUTPUT"
+          else
+            # Auto-detect: compute approximate current Hijri year
+            # Hijri year ≈ (Gregorian year - 622) * (33/32) — good enough for ±1
+            # We check both current and next Hijri year's files to find one with nulls
+            CURRENT_YEAR=$(date +%Y)
+            HIJRI_APPROX=$(python3 -c "
+          import datetime, json, pathlib
+          today = datetime.date.today()
+          # Approximate Hijri year
+          hijri = int((today.year - 622) * 33 / 32)
+          docs = pathlib.Path('docs')
+          # Prefer the year that still has null dates
+          for y in [hijri, hijri + 1, hijri - 1]:
+              p = docs / f'ramadan-override-{y}.json'
+              if p.exists():
+                  data = json.loads(p.read_text())
+                  if any(data.get(k) is None for k in ['ramadanStart', 'eidFitrDate', 'eidAdhaDate']):
+                      print(y)
+                      break
+          else:
+              print(hijri)
+          ")
+            echo "hijri_year=$HIJRI_APPROX" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check for date announcements
+        id: check
+        env:
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          # Optional overrides for self-hosted models:
+          # LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          # LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          # LLM_MODEL: ${{ secrets.LLM_MODEL }}
+        run: |
+          ARGS="--hijri-year ${{ steps.vars.outputs.hijri_year }}"
+
+          if [ -n "${{ github.event.inputs.events }}" ]; then
+            ARGS="$ARGS --events ${{ github.event.inputs.events }}"
+          fi
+
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+
+          python3 scripts/check_islamic_dates.py $ARGS
+
+      - name: Commit and push if updated
+        if: steps.check.outputs.updated == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          HIJRI_YEAR=${{ steps.vars.outputs.hijri_year }}
+          git add "docs/ramadan-override-${HIJRI_YEAR}.json"
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            # Build descriptive commit message
+            MSG=$(python3 -c "
+          import json
+          data = json.load(open('docs/ramadan-override-${HIJRI_YEAR}.json'))
+          parts = []
+          if data.get('ramadanStart'): parts.append(f\"Ramadan: {data['ramadanStart']}\")
+          if data.get('eidFitrDate'): parts.append(f\"Eid Fitr: {data['eidFitrDate']}\")
+          if data.get('eidAdhaDate'): parts.append(f\"Eid Adha: {data['eidAdhaDate']}\")
+          print(f\"Update override {data['hijriYear']}H — {', '.join(parts)}\")
+          ")
+            git commit -m "$MSG"
+            git push
+            echo "✅ Pushed: $MSG"
+          fi
