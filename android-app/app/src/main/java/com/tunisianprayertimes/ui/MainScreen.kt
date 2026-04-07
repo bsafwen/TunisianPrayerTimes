@@ -390,6 +390,7 @@ fun MainScreen(
                         }
                         if (isSilent) {
                             SilenceModeController.setManualNormal(context)
+                            SilenceModeController.notifyIfMissedCallDuringSilence(context)
                             isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
                             manualSilenceActive = PrefsManager.isManualSilenceActive(context)
                             manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)

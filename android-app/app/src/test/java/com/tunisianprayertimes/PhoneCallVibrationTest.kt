@@ -211,6 +211,26 @@ class PhoneCallVibrationTest {
         )
     }
 
+    @Test
+    fun manualEarlyDisable_afterMissedCall_vibrationEnabled_consumesFlag() {
+        PrefsManager.setCallEndVibrationEnabled(context, true)
+
+        // User enables manual silence for a long duration (e.g. 1h30) but turns
+        // it off early from the UI before the alarm expires.
+        SilenceModeController.setManualSilent(context)
+        ManualSilenceScheduler.schedule(context, 90)
+        phoneReceiver.onReceive(context, ringtingIntent())
+
+        // UI path calls setManualNormal(), then the missed-call notifier.
+        SilenceModeController.setManualNormal(context)
+        SilenceModeController.notifyIfMissedCallDuringSilence(context)
+
+        assertFalse(
+            "Manual early disable must consume the call flag so missed-call alert is handled",
+            PrefsManager.consumeCallReceivedDuringSilence(context)
+        )
+    }
+
     // ── 3. Fresh session always starts with a clean flag ──────────────────────
 
     /**
@@ -245,6 +265,25 @@ class PhoneCallVibrationTest {
 
         assertFalse(
             "setManualSilent must clear a stale call flag from the previous session",
+            PrefsManager.consumeCallReceivedDuringSilence(context)
+        )
+    }
+
+    @Test
+    fun scheduleAll_outsideWindow_afterMissedCall_consumesFlag() {
+        // Auto silence is active, a call arrived during this window.
+        silenceReceiver.onReceive(context, silenceIntent())
+        assertTrue(PrefsManager.isAutoSilenceActive(context))
+        PrefsManager.markCallReceivedDuringSilence(context)
+
+        // Force scheduleAll outside any window using a non-existent delegation,
+        // which triggers scheduler-driven restore instead of alarm receiver path.
+        PrefsManager.setDelegationId(context, 99999)
+        PrefsManager.setEnabled(context, true)
+        SilenceScheduler.scheduleAll(context)
+
+        assertFalse(
+            "Scheduler-driven restore must consume missed-call flag",
             PrefsManager.consumeCallReceivedDuringSilence(context)
         )
     }

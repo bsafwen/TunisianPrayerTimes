@@ -39,7 +39,9 @@ object SilenceScheduler {
 
         if (todayTimes == null) {
             Log.w(TAG, "No prayer times found for $delegationId/$year/$month/$day")
-            SilenceModeController.disableAutoSilence(context)
+            if (SilenceModeController.disableAutoSilence(context)) {
+                SilenceModeController.notifyIfMissedCallDuringSilence(context)
+            }
             return
         }
 
@@ -113,7 +115,9 @@ object SilenceScheduler {
         // if auto-silence was active (handles missed unsilence alarms).
         // This is a no-op when the flag is not set, so manual silence is preserved.
         if (!currentlyInSilenceWindow) {
-            SilenceModeController.disableAutoSilence(context)
+            if (SilenceModeController.disableAutoSilence(context)) {
+                SilenceModeController.notifyIfMissedCallDuringSilence(context)
+            }
             Log.d(TAG, "Not in any silence window, ensuring phone is in previous mode")
         }
 
