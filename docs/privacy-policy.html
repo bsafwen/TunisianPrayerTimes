@@ -33,7 +33,7 @@
   </head>
   <body>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: March 23, 2026</p>
+    <p class="updated">Last updated: April 7, 2026</p>
 
     <p>
       <strong>Tunisian Prayer Times</strong> ("the App") is developed by Safwen
@@ -56,13 +56,20 @@
       <strong>locally on your device only</strong> and is never transmitted to
       any server.
     </p>
+    <p>
+      If you use the GPS auto-detect feature, your device location is read
+      momentarily to find the nearest municipality. The coordinates themselves
+      are never stored or transmitted — only the resulting municipality
+      selection is saved locally.
+    </p>
 
     <h2>2. Information We Do Not Collect</h2>
     <p>The App does <strong>not</strong> collect, store, or transmit:</p>
     <ul>
       <li>Personal identification (name, email, phone number)</li>
       <li>Device identifiers (IMEI, Android ID, advertising ID)</li>
-      <li>GPS or precise location data</li>
+      <li>GPS coordinates or precise location data</li>
+      <li>Phone call details (caller ID, call logs, call content)</li>
       <li>Contacts, photos, or files</li>
       <li>Usage analytics or behavioral data</li>
       <li>Crash reports or diagnostics</li>
@@ -70,8 +77,15 @@
 
     <h2>3. Network Access</h2>
     <p>
-      The App does not make any network requests. All prayer time data is
-      bundled within the App. No internet connection is required.
+      All prayer time data is bundled within the App and no internet connection
+      is required for the core silencing functionality.
+    </p>
+    <p>
+      The App makes one optional network request: once per day during Ramadan it
+      fetches a small JSON file from GitHub to check whether an official prayer
+      time adjustment has been published. No personal data is sent in this
+      request. If the request fails or the device has no internet access, the
+      App continues to work normally using the bundled data.
     </p>
 
     <h2>4. Permissions</h2>
@@ -94,6 +108,26 @@
       <li>
         <strong>Battery optimization exemption</strong> — to prevent the system
         from disabling scheduled alarms
+      </li>
+      <li>
+        <strong>Location (optional)</strong> — used only when you tap the GPS
+        auto-detect button to find your nearest municipality. The App never
+        accesses location in the background.
+      </li>
+      <li>
+        <strong>Internet access</strong> — for the optional Ramadan prayer
+        adjustment check described in Section 3.
+      </li>
+      <li>
+        <strong>Vibration</strong> — to vibrate the phone at the end of a
+        silence period when an incoming call was missed during silence.
+      </li>
+      <li>
+        <strong>Phone state (optional)</strong> — to detect whether an incoming
+        call was received while the phone was silenced, so the App can alert you
+        with a vibration when silence ends. Only the RINGING state is observed;
+        no call details (number, identity, duration) are read, stored, or
+        transmitted.
       </li>
     </ul>
 
