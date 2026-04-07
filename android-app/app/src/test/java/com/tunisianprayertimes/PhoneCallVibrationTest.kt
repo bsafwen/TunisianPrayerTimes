@@ -269,6 +269,25 @@ class PhoneCallVibrationTest {
         )
     }
 
+    @Test
+    fun scheduleAll_outsideWindow_afterMissedCall_consumesFlag() {
+        // Auto silence is active, a call arrived during this window.
+        silenceReceiver.onReceive(context, silenceIntent())
+        assertTrue(PrefsManager.isAutoSilenceActive(context))
+        PrefsManager.markCallReceivedDuringSilence(context)
+
+        // Force scheduleAll outside any window using a non-existent delegation,
+        // which triggers scheduler-driven restore instead of alarm receiver path.
+        PrefsManager.setDelegationId(context, 99999)
+        PrefsManager.setEnabled(context, true)
+        SilenceScheduler.scheduleAll(context)
+
+        assertFalse(
+            "Scheduler-driven restore must consume missed-call flag",
+            PrefsManager.consumeCallReceivedDuringSilence(context)
+        )
+    }
+
     // ── 4. Default setting ────────────────────────────────────────────────────
 
     @Test
