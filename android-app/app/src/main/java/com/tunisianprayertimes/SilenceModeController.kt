@@ -161,6 +161,17 @@ object SilenceModeController {
     }
 
     /**
+     * One-shot end-of-silence alert: consume the missed-call flag and vibrate
+     * only when the user enabled this behavior.
+     */
+    fun notifyIfMissedCallDuringSilence(context: Context) {
+        val hadCallDuringSilence = PrefsManager.consumeCallReceivedDuringSilence(context)
+        if (hadCallDuringSilence && PrefsManager.isCallEndVibrationEnabled(context)) {
+            vibrateEndOfSilence(context)
+        }
+    }
+
+    /**
      * Vibrates the phone briefly to alert the user that the silence period
      * has ended and they may have missed notifications or calls.
      */
