@@ -22,6 +22,8 @@
     <string name="banner_alarm_missing">إذن التنبيهات والتذكيرات مطلوب لضبط أوقات الإسكات. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="banner_both_missing">أذونات مطلوبة: عدم الإزعاج + التنبيهات. اضغط هنا لمنح الأذونات. ⬅</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
+    <string name="call_end_vibration_title">تنبيه بالاهتزاز بعد انتهاء الصامت</string>
+    <string name="call_end_vibration_subtitle">يهتز الهاتف عند انتهاء الصامت فقط إذا وردت مكالمة أثناء فترة الصمت.</string>
     <string name="manual_silence_title">الإسكات اليدوي</string>
     <string name="manual_silence_subtitle">اختر ما إذا كان الصامت يستمر حتى توقفه بنفسك أو لمدة محددة.</string>
     <string name="manual_silence_mode_until">حتى أقوم بإيقافه</string>

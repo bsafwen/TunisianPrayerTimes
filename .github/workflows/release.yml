@@ -153,6 +153,7 @@ jobs:
           TAG="${{ steps.version.outputs.tag }}"
           mkdir -p release
           cp artifacts/android-apk/*.apk     "release/TunisianPrayerTimes-${TAG}.apk"
+          cp artifacts/android-aab/*.aab     "release/TunisianPrayerTimes-${TAG}.aab"
           cp artifacts/desktop-jar/*.jar     "release/TunisianPrayerTimes-${TAG}-desktop.jar"
           cp artifacts/desktop-dmg/*.dmg     "release/TunisianPrayerTimes-${TAG}.dmg"     || true
           cp artifacts/desktop-msi/*.msi     "release/TunisianPrayerTimes-${TAG}.msi"     || true
@@ -170,6 +171,7 @@ jobs:
             | Platform | File | Notes |
             |----------|------|-------|
             | Android | `.apk` | Install directly on your device |
+            | Android | `.aab` | Android App Bundle for Play Store |
             | Windows | `.msi` | Windows installer |
             | macOS | `.dmg` | macOS disk image |
             | Linux | `.deb` | Debian/Ubuntu package |

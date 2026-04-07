@@ -16,6 +16,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Internet access for fetching Ramadan override JSON -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Vibrate when silence period ends to alert about suppressed notifications -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Needed to observe phone call state changes -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 
     <application
@@ -59,6 +63,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- System broadcast receiver for phone state changes -->
+        <receiver
+            android:name=".PhoneStateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
 

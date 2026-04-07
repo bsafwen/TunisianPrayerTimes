@@ -3,8 +3,10 @@ package com.tunisianprayertimes
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
-import android.os.Handler
-import android.os.Looper
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 
 object SilenceModeController {
 
@@ -40,6 +42,9 @@ object SilenceModeController {
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
+            PrefsManager.clearCallReceivedDuringSilence(context)
+        }
         if (PrefsManager.isManualSilenceActive(context)) {
             notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
             audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
@@ -79,6 +84,9 @@ object SilenceModeController {
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        if (!PrefsManager.isManualSilenceActive(context)) {
+            PrefsManager.clearCallReceivedDuringSilence(context)
+        }
         val previousRingerMode = if (PrefsManager.isAutoSilenceActive(context)) {
             PrefsManager.getAutoSilencePreviousRingerMode(context)
         } else {
@@ -150,5 +158,31 @@ object SilenceModeController {
         PrefsManager.clearAutoSilenceState(context)
         PrefsManager.clearManualSilenceState(context)
         return true
+    }
+
+    /**
+     * Vibrates the phone briefly to alert the user that the silence period
+     * has ended and they may have missed notifications or calls.
+     */
+    fun vibrateEndOfSilence(context: Context) {
+        val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val manager = context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            manager.defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        }
+        if (!vibrator.hasVibrator()) return
+
+        // Two short pulses: 300ms vibrate, 200ms pause, 300ms vibrate
+        val pattern = longArrayOf(0, 300, 200, 300)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(
+                VibrationEffect.createWaveform(pattern, -1)
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            vibrator.vibrate(pattern, -1)
+        }
     }
 }
