@@ -21,6 +21,8 @@ object PrefsManager {
     private const val KEY_MANUAL_SILENCE_USES_DURATION = "manual_silence_uses_duration"
     private const val KEY_MANUAL_SILENCE_DURATION_MINUTES = "manual_silence_duration_minutes"
     private const val KEY_MANUAL_SILENCE_ENDS_AT_MILLIS = "manual_silence_ends_at_millis"
+    private const val KEY_CALL_RECEIVED_DURING_SILENCE = "call_received_during_silence"
+    private const val KEY_CALL_END_VIBRATION_ENABLED = "call_end_vibration_enabled"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
 
@@ -146,6 +148,30 @@ object PrefsManager {
 
     fun clearManualSilenceEndsAt(context: Context) {
         prefs(context).edit().remove(KEY_MANUAL_SILENCE_ENDS_AT_MILLIS).apply()
+    }
+
+    fun markCallReceivedDuringSilence(context: Context) {
+        prefs(context).edit().putBoolean(KEY_CALL_RECEIVED_DURING_SILENCE, true).apply()
+    }
+
+    fun clearCallReceivedDuringSilence(context: Context) {
+        prefs(context).edit().putBoolean(KEY_CALL_RECEIVED_DURING_SILENCE, false).apply()
+    }
+
+    fun consumeCallReceivedDuringSilence(context: Context): Boolean {
+        val hadCall = prefs(context).getBoolean(KEY_CALL_RECEIVED_DURING_SILENCE, false)
+        if (hadCall) {
+            clearCallReceivedDuringSilence(context)
+        }
+        return hadCall
+    }
+
+    fun isCallEndVibrationEnabled(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_CALL_END_VIBRATION_ENABLED, true)
+    }
+
+    fun setCallEndVibrationEnabled(context: Context, enabled: Boolean) {
+        prefs(context).edit().putBoolean(KEY_CALL_END_VIBRATION_ENABLED, enabled).apply()
     }
 
     private const val RAMADAN_ISHA_MINUTES = 90
