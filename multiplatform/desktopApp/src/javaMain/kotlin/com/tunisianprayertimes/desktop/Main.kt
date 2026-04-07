@@ -157,59 +157,116 @@ private fun appIconPainter(): androidx.compose.ui.graphics.painter.BitmapPainter
     return androidx.compose.ui.graphics.painter.BitmapPainter(imageBitmap)
 }
 
+/** Shared executor for precise alarm scheduling. */
+private val silenceExecutor = Executors.newSingleThreadScheduledExecutor { r ->
+    Thread(r, "SilenceScheduler").apply { isDaemon = true }
+}
+
+/** Tracks all pending one-shot alarm futures so they can be cancelled on reschedule. */
+private val pendingAlarms = mutableListOf<ScheduledFuture<*>>()
+
 private fun startBackgroundSilenceScheduler(): ScheduledFuture<*>? {
     if (!Preferences.isEnabled()) return null
 
-    val executor = Executors.newSingleThreadScheduledExecutor { r ->
-        Thread(r, "SilenceScheduler").apply { isDaemon = true }
-    }
+    // Run immediately, then reschedule precise alarms
+    scheduleAlarms()
 
-    return executor.scheduleAtFixedRate({
+    // Safety-net: re-compute alarms every 10 minutes in case something drifts
+    return silenceExecutor.scheduleAtFixedRate({
         try {
-            if (!Preferences.isEnabled()) return@scheduleAtFixedRate
-
-            val delegationId = Preferences.getDelegationId()
-            val now = Calendar.getInstance()
-            val year = now.get(Calendar.YEAR)
-            val month = now.get(Calendar.MONTH) + 1
-            val day = now.get(Calendar.DAY_OF_MONTH)
-            val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
-
-            val todayTimes = PrayerDataLoader.loadDayPrayerTimes(delegationId, year, month, day)
-                ?: return@scheduleAtFixedRate
-
-            val configs = mapOf(
-                Prayer.FAJR to Preferences.getConfig(Prayer.FAJR),
-                Prayer.DHUHR to Preferences.getConfig(Prayer.DHUHR),
-                Prayer.ASR to Preferences.getConfig(Prayer.ASR),
-                Prayer.MAGHRIB to Preferences.getConfig(Prayer.MAGHRIB),
-                Prayer.ISHA to Preferences.getConfig(Prayer.ISHA),
-                Prayer.JOMOAA to Preferences.getConfig(Prayer.JOMOAA),
-                Prayer.AID_FITR to Preferences.getConfig(Prayer.AID_FITR),
-                Prayer.AID_ADHA to Preferences.getConfig(Prayer.AID_ADHA)
-            )
-
-            val result = SilenceAlarmComputer.compute(
-                now = now,
-                todayTimes = todayTimes,
-                configs = configs,
-                isFriday = isFriday,
-                jomoaaHour = Preferences.getJomoaaTimeHour(),
-                jomoaaMinute = Preferences.getJomoaaTimeMinute()
-            )
-
-            if (result.currentlyInSilenceWindow && !SilenceController.isSilent()) {
-                SilenceController.enableSilence()
-                showNotification(Strings.TOAST_SILENT_ENABLED)
-            } else if (!result.currentlyInSilenceWindow && SilenceController.isSilent()
-                && !Preferences.isManualSilenceActive()) {
-                SilenceController.disableSilence()
-                showNotification(Strings.TOAST_NORMAL_RESTORED)
-            }
+            scheduleAlarms()
         } catch (e: Exception) {
             System.err.println("Background silence scheduler error: ${e.message}")
         }
-    }, 0, 30, TimeUnit.SECONDS)
+    }, 10, 10, TimeUnit.MINUTES)
+}
+
+/**
+ * Compute alarm times and schedule precise one-shot tasks for each silence/unsilence event.
+ * Also handles the "currently in window" case immediately.
+ */
+private fun scheduleAlarms() {
+    if (!Preferences.isEnabled()) return
+
+    // Cancel any previously scheduled one-shot alarms
+    synchronized(pendingAlarms) {
+        pendingAlarms.forEach { it.cancel(false) }
+        pendingAlarms.clear()
+    }
+
+    val delegationId = Preferences.getDelegationId()
+    val now = Calendar.getInstance()
+    val year = now.get(Calendar.YEAR)
+    val month = now.get(Calendar.MONTH) + 1
+    val day = now.get(Calendar.DAY_OF_MONTH)
+    val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+
+    val todayTimes = PrayerDataLoader.loadDayPrayerTimes(delegationId, year, month, day)
+        ?: return
+
+    val configs = mapOf(
+        Prayer.FAJR to Preferences.getConfig(Prayer.FAJR),
+        Prayer.DHUHR to Preferences.getConfig(Prayer.DHUHR),
+        Prayer.ASR to Preferences.getConfig(Prayer.ASR),
+        Prayer.MAGHRIB to Preferences.getConfig(Prayer.MAGHRIB),
+        Prayer.ISHA to Preferences.getConfig(Prayer.ISHA),
+        Prayer.JOMOAA to Preferences.getConfig(Prayer.JOMOAA),
+        Prayer.AID_FITR to Preferences.getConfig(Prayer.AID_FITR),
+        Prayer.AID_ADHA to Preferences.getConfig(Prayer.AID_ADHA)
+    )
+
+    val result = SilenceAlarmComputer.compute(
+        now = now,
+        todayTimes = todayTimes,
+        configs = configs,
+        isFriday = isFriday,
+        jomoaaHour = Preferences.getJomoaaTimeHour(),
+        jomoaaMinute = Preferences.getJomoaaTimeMinute()
+    )
+
+    // Handle immediate state: if we're inside a silence window right now, silence immediately
+    if (result.currentlyInSilenceWindow && !SilenceController.isSilent()) {
+        SilenceController.enableSilence()
+        showNotification(Strings.TOAST_SILENT_ENABLED)
+    } else if (!result.currentlyInSilenceWindow && SilenceController.isSilent()
+        && !Preferences.isManualSilenceActive()) {
+        SilenceController.disableSilence()
+        showNotification(Strings.TOAST_NORMAL_RESTORED)
+    }
+
+    // Schedule precise one-shot tasks for each future alarm
+    val nowMillis = now.timeInMillis
+    synchronized(pendingAlarms) {
+        for (alarm in result.alarms) {
+            val delayMs = alarm.triggerAtMillis - nowMillis
+            if (delayMs <= 0) continue // already past
+
+            val future = silenceExecutor.schedule({
+                try {
+                    when (alarm.action) {
+                        SilenceAlarmComputer.AlarmAction.SILENCE -> {
+                            if (Preferences.isEnabled() && !SilenceController.isSilent()) {
+                                SilenceController.enableSilence()
+                                showNotification(Strings.TOAST_SILENT_ENABLED)
+                            }
+                        }
+                        SilenceAlarmComputer.AlarmAction.UNSILENCE -> {
+                            if (SilenceController.isSilent() && !Preferences.isManualSilenceActive()) {
+                                SilenceController.disableSilence()
+                                showNotification(Strings.TOAST_NORMAL_RESTORED)
+                            }
+                        }
+                        SilenceAlarmComputer.AlarmAction.MIDNIGHT_RESCHEDULE -> {
+                            scheduleAlarms()
+                        }
+                    }
+                } catch (e: Exception) {
+                    System.err.println("Alarm execution error: ${e.message}")
+                }
+            }, delayMs, TimeUnit.MILLISECONDS)
+            pendingAlarms.add(future)
+        }
+    }
 }
 
 private fun resolveDataDir(): File {
