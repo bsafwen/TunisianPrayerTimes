@@ -211,6 +211,26 @@ class PhoneCallVibrationTest {
         )
     }
 
+    @Test
+    fun manualEarlyDisable_afterMissedCall_vibrationEnabled_consumesFlag() {
+        PrefsManager.setCallEndVibrationEnabled(context, true)
+
+        // User enables manual silence for a long duration (e.g. 1h30) but turns
+        // it off early from the UI before the alarm expires.
+        SilenceModeController.setManualSilent(context)
+        ManualSilenceScheduler.schedule(context, 90)
+        phoneReceiver.onReceive(context, ringtingIntent())
+
+        // UI path calls setManualNormal(), then the missed-call notifier.
+        SilenceModeController.setManualNormal(context)
+        SilenceModeController.notifyIfMissedCallDuringSilence(context)
+
+        assertFalse(
+            "Manual early disable must consume the call flag so missed-call alert is handled",
+            PrefsManager.consumeCallReceivedDuringSilence(context)
+        )
+    }
+
     // ── 3. Fresh session always starts with a clean flag ──────────────────────
 
     /**
