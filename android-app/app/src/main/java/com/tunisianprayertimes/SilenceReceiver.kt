@@ -35,10 +35,18 @@ class SilenceReceiver : BroadcastReceiver() {
                     Log.d(TAG, "Auto-silence flag already cleared, forcing normal mode")
                     SilenceModeController.forceNormalMode(context)
                 }
+                val hadCallDuringSilence = PrefsManager.consumeCallReceivedDuringSilence(context)
+                if (hadCallDuringSilence && PrefsManager.isCallEndVibrationEnabled(context)) {
+                    SilenceModeController.vibrateEndOfSilence(context)
+                }
             }
             ManualSilenceScheduler.ACTION_MANUAL_UNSILENCE -> {
                 Log.d(TAG, "Manual silence timer expired")
                 ManualSilenceScheduler.onTimerExpired(context)
+                val hadCallDuringSilence = PrefsManager.consumeCallReceivedDuringSilence(context)
+                if (hadCallDuringSilence && PrefsManager.isCallEndVibrationEnabled(context)) {
+                    SilenceModeController.vibrateEndOfSilence(context)
+                }
             }
             "com.tunisianprayertimes.ACTION_RESCHEDULE" -> {
                 Log.d(TAG, "Rescheduling alarms")

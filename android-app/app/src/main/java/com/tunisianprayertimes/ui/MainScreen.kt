@@ -5,6 +5,7 @@ import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
@@ -97,6 +98,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.core.content.ContextCompat
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.DelayMode
@@ -171,6 +173,20 @@ fun MainScreen(
     val hasDnd = remember(refreshTick) { notificationManager.isNotificationPolicyAccessGranted }
     val hasAlarm = remember(refreshTick) { hasExactAlarmPermission(context) }
     val hasBattery = remember(refreshTick) { isIgnoringBatteryOptimizations(context) }
+    val phoneStatePermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { }
+
+    fun ensureCallTrackingPermission() {
+        if (ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.READ_PHONE_STATE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
+        }
+    }
+
     var isSilent by remember { mutableStateOf(audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT) }
     // Re-sync isSilent on resume
     LaunchedEffect(refreshTick) {
@@ -178,6 +194,9 @@ fun MainScreen(
     }
 
     var autoSilenceEnabled by rememberSaveable { mutableStateOf(PrefsManager.isEnabled(context)) }
+    var callEndVibrationEnabled by rememberSaveable {
+        mutableStateOf(PrefsManager.isCallEndVibrationEnabled(context))
+    }
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
     var manualUsesDuration by rememberSaveable { mutableStateOf(PrefsManager.usesManualSilenceDuration(context)) }
     var manualDurationHours by rememberSaveable {
@@ -314,6 +333,7 @@ fun MainScreen(
                         autoSilenceEnabled = enabled
                         PrefsManager.setEnabled(context, enabled)
                         if (enabled) {
+                            ensureCallTrackingPermission()
                             if (hasDnd && hasAlarm) {
                                 SilenceScheduler.scheduleAll(context)
                                 SilenceVerifyWorker.enqueue(context)
@@ -324,6 +344,14 @@ fun MainScreen(
                             SilenceVerifyWorker.cancel(context)
                             Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
                         }
+                    }
+                )
+
+                CallEndVibrationCard(
+                    enabled = callEndVibrationEnabled,
+                    onToggle = { enabled ->
+                        callEndVibrationEnabled = enabled
+                        PrefsManager.setCallEndVibrationEnabled(context, enabled)
                     }
                 )
 
@@ -376,6 +404,7 @@ fun MainScreen(
                                 return@ManualSilenceButton
                             }
 
+                            ensureCallTrackingPermission()
                             SilenceModeController.setManualSilent(context)
                             if (manualUsesDuration) {
                                 manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, totalMinutes)
@@ -1829,6 +1858,47 @@ private fun AutoSilenceCard(
                     checkedThumbColor = Color.White,
                     checkedTrackColor = GreenPrimary
                 )
+            )
+        }
+    }
+}
+
+@Composable
+private fun CallEndVibrationCard(
+    enabled: Boolean,
+    onToggle: (Boolean) -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.call_end_vibration_title),
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = TextDark,
+                    modifier = Modifier.weight(1f)
+                )
+                Switch(
+                    checked = enabled,
+                    onCheckedChange = onToggle,
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Color.White,
+                        checkedTrackColor = GreenPrimary
+                    )
+                )
+            }
+            Text(
+                text = stringResource(R.string.call_end_vibration_subtitle),
+                fontSize = 12.sp,
+                color = TextMuted,
+                modifier = Modifier.padding(top = 4.dp)
             )
         }
     }
