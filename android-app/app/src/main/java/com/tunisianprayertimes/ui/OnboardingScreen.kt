@@ -1,13 +1,17 @@
 package com.tunisianprayertimes.ui
 
+import android.Manifest
 import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.fadeIn
@@ -70,6 +74,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -108,10 +113,17 @@ fun OnboardingScreen(
     }
 
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
+    val phoneStatePermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { refreshTick++ }
+
     val hasDnd = remember(refreshTick) { notificationManager.isNotificationPolicyAccessGranted }
     val hasAlarm = remember(refreshTick) { hasExactAlarmPerm(context) }
     val hasBattery = remember(refreshTick) { isBatteryOptimized(context) }
-    val allPermsGranted = hasDnd && hasAlarm && hasBattery
+    val hasPhoneState = remember(refreshTick) {
+        ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
+    }
+    val allPermsGranted = hasDnd && hasAlarm && hasBattery && hasPhoneState
 
     // Auto-advance from permissions step once all granted
     LaunchedEffect(allPermsGranted, currentStep) {
@@ -176,6 +188,10 @@ fun OnboardingScreen(
                     hasDnd = hasDnd,
                     hasAlarm = hasAlarm,
                     hasBattery = hasBattery,
+                    hasPhoneState = hasPhoneState,
+                    onRequestPhoneState = {
+                        phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
+                    },
                     context = context
                 )
                 6 -> ReadyStep()
@@ -601,6 +617,8 @@ private fun PermissionsStep(
     hasDnd: Boolean,
     hasAlarm: Boolean,
     hasBattery: Boolean,
+    hasPhoneState: Boolean,
+    onRequestPhoneState: () -> Unit,
     context: Context
 ) {
     Column(
@@ -664,6 +682,17 @@ private fun PermissionsStep(
                 intent.data = Uri.parse("package:${context.packageName}")
                 context.startActivity(intent)
             }
+        )
+
+        Spacer(Modifier.height(4.dp))
+
+        PermissionRow(
+            title = stringResource(R.string.onboarding_perm_phone_state),
+            description = stringResource(R.string.onboarding_perm_phone_state_desc),
+            isGranted = hasPhoneState,
+            grantLabel = stringResource(R.string.onboarding_perm_grant),
+            grantedLabel = stringResource(R.string.onboarding_perm_granted),
+            onClick = onRequestPhoneState
         )
     }
 }

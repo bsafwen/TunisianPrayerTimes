@@ -21,6 +21,7 @@
     <string name="banner_dnd_missing">إذن عدم الإزعاج مطلوب لإسكات الهاتف تلقائيًا. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="banner_alarm_missing">إذن التنبيهات والتذكيرات مطلوب لضبط أوقات الإسكات. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="banner_both_missing">أذونات مطلوبة: عدم الإزعاج + التنبيهات. اضغط هنا لمنح الأذونات. ⬅</string>
+    <string name="banner_phone_state_missing">إذن حالة الهاتف مطلوب لتنبيهك بالاهتزاز إذا وصلك اتصال أثناء وضع الصامت. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
     <string name="call_end_vibration_title">تنبيه بالاهتزاز بعد انتهاء الصامت</string>
     <string name="call_end_vibration_subtitle">يهتز الهاتف عند انتهاء الصامت فقط إذا وردت مكالمة أثناء فترة الصمت.</string>
@@ -84,7 +85,7 @@
     <string name="onboarding_step3_title">التبديل إلى وقت انتهاء محدد</string>
     <string name="onboarding_step3_desc">اضغط على "د" بجانب المدة للتبديل إلى وقت انتهاء ثابت.\nاضغط على الوقت لتغييره.</string>
     <string name="onboarding_jomoaa_title">صلاة الجمعة</string>
-    <string name="onboarding_jomoaa_desc">يوم الجمعة، تظهر صلاة الجمعة في آخر الجدول بدلاً من صلاة الظهر.\nاضغط على الوقت لتعديله حسب مسجدك.</string>
+    <string name="onboarding_jomoaa_desc">يمكنك تعديل وقت بدء صلاة الجمعة حسب مسجدك.\nاضغط على الوقت لتعديله.</string>
     <string name="onboarding_ready_title">جاهز للاستخدام!</string>
     <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\n\nإذا لم تجد معتمديتك بالضبط، اختر الأقرب إليك فلا فرق في مواقيت الصلاة.\nقائمة المعتمديات مأخوذة من المعهد الوطني للرصد الجوي التونسي.\n\nصلاة مقبولة 🤲</string>
     <string name="onboarding_start">ابدأ</string>
@@ -101,6 +102,8 @@
     <string name="onboarding_perm_granted">ممنوح</string>
     <string name="onboarding_perm_battery">عدم تقييد البطارية</string>
     <string name="onboarding_perm_battery_desc">يمنع النظام من إيقاف التطبيق عند عدم استخدامه.</string>
+    <string name="onboarding_perm_phone_state">حالة الهاتف</string>
+    <string name="onboarding_perm_phone_state_desc">هذا الإذن مطلوب ليهتز هاتفك إذا وصلك اتصال أثناء وضع الصامت.</string>
     <string name="banner_battery_missing">التطبيق قد يتوقف عن العمل بسبب تحسين البطارية. اضغط هنا لإعفائه. ⬅</string>
     <string name="error_start_after_end">وقت البدء يجب أن يكون قبل وقت الانتهاء</string>
     <string name="error_start_before_athan">وقت البدء يجب أن لا يكون قبل وقت الأذان</string>
