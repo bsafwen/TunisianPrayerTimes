@@ -173,9 +173,15 @@ fun MainScreen(
     val hasDnd = remember(refreshTick) { notificationManager.isNotificationPolicyAccessGranted }
     val hasAlarm = remember(refreshTick) { hasExactAlarmPermission(context) }
     val hasBattery = remember(refreshTick) { isIgnoringBatteryOptimizations(context) }
+    val hasPhoneState = remember(refreshTick) {
+        ContextCompat.checkSelfPermission(
+            context,
+            Manifest.permission.READ_PHONE_STATE
+        ) == PackageManager.PERMISSION_GRANTED
+    }
     val phoneStatePermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { }
+    ) { refreshTick++ }
 
     fun ensureCallTrackingPermission() {
         if (ContextCompat.checkSelfPermission(
@@ -289,13 +295,17 @@ fun MainScreen(
 
                 // Permission banner
                 AnimatedVisibility(
-                    visible = !hasDnd || !hasAlarm,
+                    visible = !hasDnd || !hasAlarm || !hasPhoneState,
                     enter = expandVertically(),
                     exit = shrinkVertically()
                 ) {
                     PermissionBanner(
                         hasDnd = hasDnd,
                         hasAlarm = hasAlarm,
+                        hasPhoneState = hasPhoneState,
+                        onRequestPhoneState = {
+                            phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
+                        },
                         context = context
                     )
                 }
@@ -552,7 +562,13 @@ private fun StatusCard(isSilent: Boolean, hasDnd: Boolean) {
 }
 
 @Composable
-private fun PermissionBanner(hasDnd: Boolean, hasAlarm: Boolean, context: Context) {
+private fun PermissionBanner(
+    hasDnd: Boolean,
+    hasAlarm: Boolean,
+    hasPhoneState: Boolean,
+    onRequestPhoneState: () -> Unit,
+    context: Context
+) {
     OutlinedCard(
         modifier = Modifier
             .fillMaxWidth()
@@ -563,6 +579,8 @@ private fun PermissionBanner(hasDnd: Boolean, hasAlarm: Boolean, context: Contex
                     context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
                 } else if (!hasAlarm && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+                } else if (!hasPhoneState) {
+                    onRequestPhoneState()
                 }
             },
         shape = RoundedCornerShape(12.dp),
@@ -578,7 +596,8 @@ private fun PermissionBanner(hasDnd: Boolean, hasAlarm: Boolean, context: Contex
                 text = when {
                     !hasDnd && !hasAlarm -> stringResource(R.string.banner_both_missing)
                     !hasDnd -> stringResource(R.string.banner_dnd_missing)
-                    else -> stringResource(R.string.banner_alarm_missing)
+                    !hasAlarm -> stringResource(R.string.banner_alarm_missing)
+                    else -> stringResource(R.string.banner_phone_state_missing)
                 },
                 fontSize = 13.sp,
                 color = BannerText,
