@@ -40,6 +40,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -1359,7 +1360,7 @@ private fun DateNavigationRow(
     onDateSelected: (Long) -> Unit
 ) {
     val context = LocalContext.current
-    val dateFormat = remember { SimpleDateFormat("EEEE d MMMM yyyy", Locale("ar", "TN")) }
+    val dateFormat = remember { SimpleDateFormat("EEEE d MMMM yyyy", Locale.forLanguageTag("ar-TN-u-nu-latn")) }
     val dateText = remember(selectedDate) { dateFormat.format(selectedDate) }
 
     Row(
@@ -1389,7 +1390,7 @@ private fun DateNavigationRow(
                 .testTag(TestTags.DATE_LABEL)
                 .clickable {
                 val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
-                val arabicLocale = Locale("ar", "TN")
+                val arabicLocale = Locale.forLanguageTag("ar-TN-u-nu-latn")
                 val config = android.content.res.Configuration(context.resources.configuration).apply {
                     setLocale(arabicLocale)
                 }
@@ -1467,6 +1468,7 @@ private fun PrayerRowHeader() {
             fontWeight = FontWeight.Bold,
             color = TextMuted,
             maxLines = 1,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
             modifier = Modifier.weight(1.5f)
         )
         Text(
@@ -1476,6 +1478,7 @@ private fun PrayerRowHeader() {
             color = TextMuted,
             textAlign = TextAlign.Center,
             maxLines = 1,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
             modifier = Modifier.weight(1.5f)
         )
         Row(modifier = Modifier.weight(2.2f)) {
@@ -1486,6 +1489,7 @@ private fun PrayerRowHeader() {
                 color = TextMuted,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
+                autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.weight(0.4f))
@@ -1498,6 +1502,7 @@ private fun PrayerRowHeader() {
                 color = TextMuted,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
+                autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.weight(0.4f))
@@ -1570,6 +1575,7 @@ private fun PrayerRow(
             color = if (isNextPrayer) GreenPrimary else PrayerNameColor,
             maxLines = 1,
             softWrap = false,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
             modifier = Modifier.weight(1.5f)
         )
 
@@ -1583,6 +1589,7 @@ private fun PrayerRow(
             textAlign = TextAlign.Center,
             maxLines = 1,
             softWrap = false,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
             modifier = Modifier
                 .weight(1.5f)
                 .then(
@@ -1655,6 +1662,7 @@ private fun PrayerRow(
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 softWrap = false,
+                autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp),
                 modifier = Modifier
                     .weight(0.4f)
                     .clickable {
@@ -1735,6 +1743,7 @@ private fun PrayerRow(
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 softWrap = false,
+                autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp),
                 modifier = Modifier
                     .weight(0.4f)
                     .clickable {
@@ -1841,7 +1850,8 @@ private fun TimeDisplay(
             color = TextDark,
             textAlign = TextAlign.Center,
             maxLines = 1,
-            softWrap = false
+            softWrap = false,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 13.sp)
         )
     }
 }
