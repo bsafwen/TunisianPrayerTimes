@@ -44,8 +44,8 @@ android {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
         targetSdk = 36
-        versionCode = 59
-        versionName = "2.48"
+        versionCode = 60
+        versionName = "2.49"
         
         androidResources {
             localeFilters += "ar"
@@ -120,6 +120,7 @@ dependencies {
     // Unit tests (Robolectric)
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.14.1")
+    testImplementation("org.json:json:20240303")
     testImplementation("androidx.test:core:1.6.1")
     testImplementation("androidx.test.ext:junit:1.2.1")
     testImplementation("androidx.test:runner:1.6.2")

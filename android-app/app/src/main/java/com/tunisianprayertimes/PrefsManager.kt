@@ -23,6 +23,7 @@ object PrefsManager {
     private const val KEY_MANUAL_SILENCE_ENDS_AT_MILLIS = "manual_silence_ends_at_millis"
     private const val KEY_CALL_RECEIVED_DURING_SILENCE = "call_received_during_silence"
     private const val KEY_CALL_END_VIBRATION_ENABLED = "call_end_vibration_enabled"
+    private const val KEY_DISABLED_OUTSIDE_TUNISIA = "disabled_outside_tunisia"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
 
@@ -172,6 +173,14 @@ object PrefsManager {
 
     fun setCallEndVibrationEnabled(context: Context, enabled: Boolean) {
         prefs(context).edit().putBoolean(KEY_CALL_END_VIBRATION_ENABLED, enabled).apply()
+    }
+
+    fun isDisabledOutsideTunisia(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_DISABLED_OUTSIDE_TUNISIA, false)
+    }
+
+    fun setDisabledOutsideTunisia(context: Context, disabled: Boolean) {
+        prefs(context).edit().putBoolean(KEY_DISABLED_OUTSIDE_TUNISIA, disabled).apply()
     }
 
     private const val RAMADAN_ISHA_MINUTES = 90

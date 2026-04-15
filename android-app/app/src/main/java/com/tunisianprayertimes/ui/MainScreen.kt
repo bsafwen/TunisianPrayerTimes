@@ -253,7 +253,9 @@ fun MainScreen(
     LaunchedEffect(refreshTick) {
         val hasAll = notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission(context)
         if (PrefsManager.isEnabled(context) && hasAll) {
-            SilenceScheduler.scheduleAll(context)
+            if (!PrefsManager.isDisabledOutsideTunisia(context)) {
+                SilenceScheduler.scheduleAll(context)
+            }
             SilenceVerifyWorker.enqueue(context)
         } else if (PrefsManager.isEnabled(context) && !hasAll) {
             SilenceScheduler.cancelAll(context)
@@ -667,7 +669,12 @@ private fun LocationPickerCard(
             locating = false
 
             when (result) {
-                is DelegationLocationResult.Success -> onDelegationSelected(result.delegation)
+                is DelegationLocationResult.Success -> {
+                    if (PrefsManager.isDisabledOutsideTunisia(context)) {
+                        PrefsManager.setDisabledOutsideTunisia(context, false)
+                    }
+                    onDelegationSelected(result.delegation)
+                }
                 DelegationLocationResult.PermissionDenied -> {
                     Toast.makeText(
                         context,
@@ -689,6 +696,16 @@ private fun LocationPickerCard(
                         context,
                         context.getString(R.string.location_no_match),
                         Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                DelegationLocationResult.OutsideTunisia -> {
+                    SilenceScheduler.cancelAll(context)
+                    PrefsManager.setDisabledOutsideTunisia(context, true)
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.location_outside_tunisia),
+                        Toast.LENGTH_LONG
                     ).show()
                 }
             }
