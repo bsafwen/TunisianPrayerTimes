@@ -62,6 +62,7 @@
     <string name="location_permission_denied">يجب منح إذن الموقع لتحديد معتمديتك تلقائيًا</string>
     <string name="location_lookup_failed">تعذر تحديد موقعك حاليًا</string>
     <string name="location_no_match">تعذر تحديد أقرب معتمدية</string>
+    <string name="location_outside_tunisia">أنت خارج تونس، تم إيقاف الكتم التلقائي</string>
     <string name="prayer_fajr">الفجر</string>
     <string name="prayer_dhuhr">الظهر</string>
     <string name="prayer_asr">العصر</string>

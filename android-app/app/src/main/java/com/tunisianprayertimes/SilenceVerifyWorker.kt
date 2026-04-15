@@ -1,5 +1,6 @@
 package com.tunisianprayertimes
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
@@ -7,7 +8,11 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
+import android.location.Location
+import com.google.android.gms.location.LocationServices
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.resume
+import kotlinx.coroutines.suspendCancellableCoroutine
 
 /**
  * Periodic WorkManager worker that re-verifies and re-schedules silence alarms.
@@ -50,8 +55,46 @@ class SilenceVerifyWorker(
         // Check for Ramadan date override from GitHub Pages
         RamadanOverrideChecker.startPollingIfNeeded()
         if (PrefsManager.isEnabled(applicationContext)) {
-            SilenceScheduler.scheduleAll(applicationContext)
+            if (isOutsideTunisia()) {
+                if (!PrefsManager.isDisabledOutsideTunisia(applicationContext)) {
+                    Log.d(TAG, "User is outside Tunisia, cancelling silence alarms")
+                    SilenceScheduler.cancelAll(applicationContext)
+                    PrefsManager.setDisabledOutsideTunisia(applicationContext, true)
+                }
+            } else if (PrefsManager.isDisabledOutsideTunisia(applicationContext)) {
+                Log.d(TAG, "User returned to Tunisia, re-enabling silence alarms")
+                PrefsManager.setDisabledOutsideTunisia(applicationContext, false)
+                SilenceScheduler.scheduleAll(applicationContext)
+            } else {
+                SilenceScheduler.scheduleAll(applicationContext)
+            }
         }
         return Result.success()
+    }
+
+    @SuppressLint("MissingPermission")
+    private suspend fun isOutsideTunisia(): Boolean {
+        if (!DelegationLocator.hasLocationPermission(applicationContext)) {
+            return false
+        }
+
+        val location: Location? = try {
+            suspendCancellableCoroutine { continuation ->
+                LocationServices.getFusedLocationProviderClient(applicationContext)
+                    .lastLocation
+                    .addOnSuccessListener { loc: Location? ->
+                        if (continuation.isActive) continuation.resume(loc)
+                    }
+                    .addOnFailureListener {
+                        if (continuation.isActive) continuation.resume(null)
+                    }
+            }
+        } catch (_: Exception) {
+            null
+        }
+
+        if (location == null) return false
+
+        return !isInsideTunisiaBounds(location.latitude, location.longitude)
     }
 }
