@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1023799875715",
+    "project_id": "tbprayer-47ef4",
+    "storage_bucket": "tbprayer-47ef4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023799875715:android:59df974f63125a239c23b6",
+        "android_client_info": {
+          "package_name": "com.tunisianprayertimes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASNOK2-oljdujx0E5lz0hA5DOC2grrp74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
