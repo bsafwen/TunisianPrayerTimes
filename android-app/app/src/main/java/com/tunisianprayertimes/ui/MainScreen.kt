@@ -1948,12 +1948,6 @@ private fun CallEndVibrationCard(
                     )
                 )
             }
-            Text(
-                text = stringResource(R.string.call_end_vibration_subtitle),
-                fontSize = 12.sp,
-                color = TextMuted,
-                modifier = Modifier.padding(top = 4.dp)
-            )
         }
     }
 }
@@ -1989,12 +1983,6 @@ private fun AutoLocationCard(
                     )
                 )
             }
-            Text(
-                text = stringResource(R.string.auto_location_subtitle),
-                fontSize = 12.sp,
-                color = TextMuted,
-                modifier = Modifier.padding(top = 4.dp)
-            )
         }
     }
 }
@@ -2040,18 +2028,6 @@ private fun ManualSilenceButton(
         PrefsManager.getManualSilenceDurationMinutes(context)
     )
     val durationText = formatDurationText(resolvedTotalMinutes)
-    val statusText = when {
-        manualSilenceActive && manualSilenceEndsAtMillis > 0L -> {
-            stringResource(
-                R.string.manual_silence_active_until_time,
-                formatTimeOfDay(manualSilenceEndsAtMillis)
-            )
-        }
-        manualSilenceActive -> stringResource(R.string.manual_silence_active_until_manual)
-        manualUsesDuration -> stringResource(R.string.manual_silence_selected_duration, durationText)
-        else -> stringResource(R.string.manual_silence_subtitle)
-    }
-
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -2068,14 +2044,6 @@ private fun ManualSilenceButton(
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextDark
-            )
-
-            Spacer(Modifier.height(4.dp))
-
-            Text(
-                text = statusText,
-                fontSize = 12.sp,
-                color = TextMuted
             )
 
             Spacer(Modifier.height(12.dp))
