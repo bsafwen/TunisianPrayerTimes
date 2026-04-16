@@ -23,21 +23,16 @@
     <string name="banner_both_missing">أذونات مطلوبة: عدم الإزعاج + التنبيهات. اضغط هنا لمنح الأذونات. ⬅</string>
     <string name="banner_phone_state_missing">إذن حالة الهاتف مطلوب لتنبيهك بالاهتزاز إذا وصلك اتصال أثناء وضع الصامت. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
-    <string name="call_end_vibration_title">تنبيه بالاهتزاز بعد انتهاء الصامت</string>
-    <string name="call_end_vibration_subtitle">يهتز الهاتف عند انتهاء الصامت فقط إذا وردت مكالمة أثناء فترة الصمت.</string>
+    <string name="call_end_vibration_title">اهتزاز عند انتهاء الصامت إذا وردت مكالمة</string>
     <string name="auto_location_title">تحديث المعتمدية تلقائيًا</string>
-    <string name="auto_location_subtitle">تحديث المعتمدية حسب موقعك تلقائيًا عند كل صلاة وكل ساعة.</string>
     <string name="manual_silence_title">الإسكات اليدوي</string>
-    <string name="manual_silence_subtitle">اختر ما إذا كان الصامت يستمر حتى توقفه بنفسك أو لمدة محددة.</string>
     <string name="manual_silence_mode_until">حتى أقوم بإيقافه</string>
     <string name="manual_silence_mode_duration">لمدة محددة</string>
     <string name="manual_silence_duration_label">المدة</string>
     <string name="manual_silence_duration_unit">دقيقة</string>
     <string name="manual_silence_hours_label">ساعة</string>
     <string name="manual_silence_minutes_label">دقيقة</string>
-    <string name="manual_silence_active_until_manual">سيبقى الصامت مفعّلًا حتى تقوم بإلغائه.</string>
-    <string name="manual_silence_active_until_time">سيتم إلغاء الصامت تلقائيًا عند %1$s.</string>
-    <string name="manual_silence_selected_duration">سيتم إلغاء الصامت تلقائيًا بعد %1$s.</string>
+
     <string name="toast_auto_enabled">تم تفعيل الإسكات التلقائي ✅</string>
     <string name="toast_auto_disabled">تم إيقاف الإسكات التلقائي</string>
     <string name="prayer_settings_title">إعدادات الإسكات</string>
