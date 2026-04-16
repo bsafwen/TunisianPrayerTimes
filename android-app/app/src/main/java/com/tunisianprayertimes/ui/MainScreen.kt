@@ -251,6 +251,15 @@ fun MainScreen(
 
     // Sync on resume
     LaunchedEffect(refreshTick) {
+        // Auto-update location from last known GPS fix
+        if (PrefsManager.isAutoLocationUpdateEnabled(context) &&
+            DelegationLocator.hasLocationPermission(context)
+        ) {
+            if (DelegationLocator.updateDelegationFromLastLocation(context)) {
+                delegationId = PrefsManager.getDelegationId(context)
+            }
+        }
+
         val hasAll = notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission(context)
         if (PrefsManager.isEnabled(context) && hasAll) {
             if (!PrefsManager.isDisabledOutsideTunisia(context)) {

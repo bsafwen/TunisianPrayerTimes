@@ -52,6 +52,8 @@ grant_permissions() {
     adb -s "$serial" shell appops set "$pkg" SCHEDULE_EXACT_ALARM allow 2>/dev/null || true
     # Whitelist from battery optimization
     adb -s "$serial" shell dumpsys deviceidle whitelist +"$pkg" 2>/dev/null || true
+    # Grant READ_PHONE_STATE
+    adb -s "$serial" shell pm grant "$pkg" android.permission.READ_PHONE_STATE 2>/dev/null || true
 }
 
 # ── Tap the "Next" / "Start" button using uiautomator ────────────────────
@@ -101,7 +103,12 @@ tap_next_button() {
 
 tap_start_button() {
     local serial="$1"
-    tap_button "$serial" "ابدأ" || tap_button "$serial" "onboarding_start"
+    # Start button replaces Next button at the same position (left side, bottom row)
+    # Use same coordinates — falls back to direct tap if text search fails
+    tap_button "$serial" "ابدأ" || tap_button "$serial" "onboarding_start" || {
+        echo "  → Tapping Start button position directly"
+        adb -s "$serial" shell input tap 308 2032
+    }
 }
 
 # ── Capture all screens for one device ────────────────────────────────────
@@ -117,37 +124,40 @@ capture_device() {
     echo "  Clearing app data..."
     adb -s "$serial" shell pm clear "$pkg" >/dev/null 2>&1
 
-    # 2. Grant permissions before launching so Step 4 shows all-green
-    echo "  Granting permissions..."
-    grant_permissions "$serial" "$pkg"
-
-    # 3. Launch the app (will show onboarding since data is cleared)
+    # 2. Launch the app first (onboarding appears)
     echo "  Launching app..."
     adb -s "$serial" shell am start -n "$pkg/com.tunisianprayertimes.MainActivity" >/dev/null 2>&1
     wait_ui
-    # The onboarding shows on top of main activity
 
-    # 4. Capture each onboarding step (0..5)
-    local step_names=("welcome" "duration" "delay" "fixed-time" "permissions" "ready")
-    for i in 0 1 2 3 4 5; do
+    # 3. Grant permissions while app is running
+    echo "  Granting permissions..."
+    grant_permissions "$serial" "$pkg"
+
+    # 4. Capture onboarding steps 0..4 (welcome through jomoaa)
+    local step_names=("welcome" "duration" "delay" "fixed-time" "jomoaa")
+    for i in 0 1 2 3 4; do
         wait_ui
         capture "$serial" "${prefix}-onboarding-${i}-${step_names[$i]}.png"
-
-        if [ "$i" -lt 5 ]; then
-            tap_next_button "$serial"
-            sleep 1
-        fi
+        tap_next_button "$serial"
+        sleep 1
     done
 
-    # 5. Tap "Start" on the last onboarding step → goes to main screen
+    # 5. Permissions auto-advances when granted — home+resume triggers refresh → Ready
+    adb -s "$serial" shell input keyevent KEYCODE_HOME
+    sleep 1
+    adb -s "$serial" shell am start -n "$pkg/com.tunisianprayertimes.MainActivity" >/dev/null 2>&1
+    sleep 3
+
+    # 6. Capture Ready step
+    wait_ui
+    capture "$serial" "${prefix}-onboarding-5-ready.png"
+
+    # 7. Tap "Start" → main screen
     tap_start_button "$serial"
     wait_ui
-    wait_ui  # extra wait for main screen to fully load
+    wait_ui
 
-    # 6. Capture main screen
-    capture "$serial" "${prefix}-main-screen.png"
-
-    echo "  Done with $prefix!"
+    # 8o "  Done with $prefix!"
 }
 
 # ── Main ──────────────────────────────────────────────────────────────────
