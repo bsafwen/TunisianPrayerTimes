@@ -8,6 +8,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Looper
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.CurrentLocationRequest
 import com.google.android.gms.location.LocationServices
@@ -91,6 +92,8 @@ internal data class LocationPermissionState(
 }
 
 object DelegationLocator {
+    private const val TAG = "DelegationLocator"
+
     val requestedPermissions: Array<String> = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION
@@ -98,6 +101,50 @@ object DelegationLocator {
 
     fun hasLocationPermission(context: Context): Boolean {
         return locationPermissionState(context).hasAny
+    }
+
+    /**
+     * Uses the cached last-known location to silently update the saved delegation
+     * if the user has moved to a different one. Returns true if the delegation changed.
+     */
+    @SuppressLint("MissingPermission")
+    suspend fun updateDelegationFromLastLocation(context: Context): Boolean {
+        if (!hasLocationPermission(context)) return false
+
+        val location: Location? = try {
+            suspendCancellableCoroutine { continuation ->
+                LocationServices.getFusedLocationProviderClient(context)
+                    .lastLocation
+                    .addOnSuccessListener { loc: Location? ->
+                        if (continuation.isActive) continuation.resume(loc)
+                    }
+                    .addOnFailureListener {
+                        if (continuation.isActive) continuation.resume(null)
+                    }
+            }
+        } catch (_: Exception) {
+            null
+        }
+
+        if (location == null) return false
+
+        val lat = location.latitude
+        val lng = location.longitude
+
+        if (!isInsideTunisiaBounds(lat, lng)) return false
+
+        val delegation = DelegationBoundaryRepository.findDelegationForLocation(
+            context = context, lat = lat, lng = lng
+        ) ?: GouvernoratRepository.findNearestDelegation(
+            context = context, lat = lat, lng = lng
+        ) ?: return false
+
+        val currentId = PrefsManager.getDelegationId(context)
+        if (delegation.id == currentId) return false
+
+        Log.d(TAG, "Delegation changed: $currentId -> ${delegation.id} (${delegation.nomAr})")
+        PrefsManager.setDelegationId(context, delegation.id)
+        return true
     }
 
     suspend fun detectNearestDelegation(context: Context): DelegationLocationResult {

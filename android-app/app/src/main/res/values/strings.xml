@@ -25,6 +25,8 @@
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
     <string name="call_end_vibration_title">تنبيه بالاهتزاز بعد انتهاء الصامت</string>
     <string name="call_end_vibration_subtitle">يهتز الهاتف عند انتهاء الصامت فقط إذا وردت مكالمة أثناء فترة الصمت.</string>
+    <string name="auto_location_title">تحديث المعتمدية تلقائيًا</string>
+    <string name="auto_location_subtitle">تحديث المعتمدية حسب موقعك تلقائيًا عند كل صلاة وكل ساعة.</string>
     <string name="manual_silence_title">الإسكات اليدوي</string>
     <string name="manual_silence_subtitle">اختر ما إذا كان الصامت يستمر حتى توقفه بنفسك أو لمدة محددة.</string>
     <string name="manual_silence_mode_until">حتى أقوم بإيقافه</string>
