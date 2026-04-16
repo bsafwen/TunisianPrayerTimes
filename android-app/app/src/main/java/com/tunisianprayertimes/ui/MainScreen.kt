@@ -368,6 +368,13 @@ fun MainScreen(
                     }
                 )
 
+                AutoLocationCard(
+                    enabled = PrefsManager.isAutoLocationUpdateEnabled(context),
+                    onToggle = { enabled ->
+                        PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
+                    }
+                )
+
                 // Ramadan indicator
                 if (RamadanDetector.isRamadan()) {
                     RamadanBadge()
@@ -1943,6 +1950,47 @@ private fun CallEndVibrationCard(
             }
             Text(
                 text = stringResource(R.string.call_end_vibration_subtitle),
+                fontSize = 12.sp,
+                color = TextMuted,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+        }
+    }
+}
+
+@Composable
+private fun AutoLocationCard(
+    enabled: Boolean,
+    onToggle: (Boolean) -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.auto_location_title),
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = TextDark,
+                    modifier = Modifier.weight(1f)
+                )
+                Switch(
+                    checked = enabled,
+                    onCheckedChange = onToggle,
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Color.White,
+                        checkedTrackColor = GreenPrimary
+                    )
+                )
+            }
+            Text(
+                text = stringResource(R.string.auto_location_subtitle),
                 fontSize = 12.sp,
                 color = TextMuted,
                 modifier = Modifier.padding(top = 4.dp)

@@ -64,8 +64,16 @@ class SilenceVerifyWorker(
             } else if (PrefsManager.isDisabledOutsideTunisia(applicationContext)) {
                 Log.d(TAG, "User returned to Tunisia, re-enabling silence alarms")
                 PrefsManager.setDisabledOutsideTunisia(applicationContext, false)
+                if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
+                    DelegationLocator.updateDelegationFromLastLocation(applicationContext)
+                }
                 SilenceScheduler.scheduleAll(applicationContext)
             } else {
+                if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
+                    if (DelegationLocator.updateDelegationFromLastLocation(applicationContext)) {
+                        Log.d(TAG, "Delegation updated, rescheduling alarms")
+                    }
+                }
                 SilenceScheduler.scheduleAll(applicationContext)
             }
         }
