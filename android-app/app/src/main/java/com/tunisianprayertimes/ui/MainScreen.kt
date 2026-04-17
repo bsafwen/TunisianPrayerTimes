@@ -1038,8 +1038,27 @@ private fun PrayerSettingsCard(
     onConfigChanged: () -> Unit
 ) {
     val context = LocalContext.current
-    val today = remember { Calendar.getInstance() }
+    var today by remember { mutableStateOf(Calendar.getInstance()) }
     var selectedDate by rememberSaveable { mutableStateOf(today.timeInMillis) }
+
+    // Reset to today at midnight (fixes stale date when app stays alive)
+    LaunchedEffect(Unit) {
+        while (true) {
+            val now = Calendar.getInstance()
+            val midnight = Calendar.getInstance().apply {
+                add(Calendar.DAY_OF_MONTH, 1)
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+            val delayMs = midnight.timeInMillis - now.timeInMillis
+            kotlinx.coroutines.delay(delayMs)
+            val newToday = Calendar.getInstance()
+            today = newToday
+            selectedDate = newToday.timeInMillis
+        }
+    }
 
     val selectedCal = remember(selectedDate) {
         Calendar.getInstance().apply { timeInMillis = selectedDate }

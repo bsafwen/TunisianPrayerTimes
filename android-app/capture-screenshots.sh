@@ -20,8 +20,6 @@ detect_package() {
     local serial="$1"
     if adb -s "$serial" shell pm list packages 2>/dev/null | grep -q "^package:com.tunisianprayertimes$"; then
         echo "com.tunisianprayertimes"
-    elif adb -s "$serial" shell pm list packages 2>/dev/null | grep -q "^package:com.tunisianprayertimes.dev$"; then
-        echo "com.tunisianprayertimes.dev"
     else
         echo "ERROR: App not installed on $serial" >&2
         return 1
@@ -103,12 +101,30 @@ tap_next_button() {
 
 tap_start_button() {
     local serial="$1"
-    # Start button replaces Next button at the same position (left side, bottom row)
-    # Use same coordinates — falls back to direct tap if text search fails
-    tap_button "$serial" "ابدأ" || tap_button "$serial" "onboarding_start" || {
-        echo "  → Tapping Start button position directly"
-        adb -s "$serial" shell input tap 308 2032
-    }
+    # Arabic text grep is unreliable in bash — go straight to UI dump and find the clickable button
+    local dump="/sdcard/window_dump.xml"
+    adb -s "$serial" shell uiautomator dump "$dump" 2>/dev/null
+    local xml
+    xml=$(adb -s "$serial" shell cat "$dump" 2>/dev/null)
+    adb -s "$serial" shell rm "$dump" 2>/dev/null || true
+    # Find the last clickable button (Start is at the bottom of the Ready step)
+    local btn_bounds
+    btn_bounds=$(echo "$xml" | sed 's/></>\n</g' | grep 'clickable="true"' | tail -1 | sed -n 's/.*bounds="\[\([0-9]*\),\([0-9]*\)\]\[\([0-9]*\),\([0-9]*\)\]".*/\1 \2 \3 \4/p' || true)
+    if [ -n "$btn_bounds" ]; then
+        local x1 y1 x2 y2
+        read -r x1 y1 x2 y2 <<< "$btn_bounds"
+        local cx=$(( (x1 + x2) / 2 ))
+        local cy=$(( (y1 + y2) / 2 ))
+        echo "  → Tapping Start button at ($cx, $cy)"
+        adb -s "$serial" shell input tap "$cx" "$cy"
+    else
+        # Last resort: tap center-bottom of screen
+        local w h
+        w=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f1)
+        h=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f2)
+        echo "  → Tapping Start button at screen center-bottom"
+        adb -s "$serial" shell input tap $(( w / 3 )) $(( h * 9 / 10 ))
+    fi
 }
 
 # ── Capture all screens for one device ────────────────────────────────────
@@ -157,7 +173,10 @@ capture_device() {
     wait_ui
     wait_ui
 
-    # 8o "  Done with $prefix!"
+    # 8. Capture main screen
+    capture "$serial" "${prefix}-main-screen.png"
+
+    echo "  Done with $prefix!"
 }
 
 # ── Main ──────────────────────────────────────────────────────────────────
@@ -175,19 +194,30 @@ fi
 echo "Output directory: $OUT_DIR"
 echo "Connected devices: $DEVICES"
 
-# Capture phone (emulator-5554)
+# Capture phone and tablet in parallel
+PIDS=()
+
 if adb devices | grep -q "emulator-5554"; then
-    capture_device "emulator-5554" "phone"
+    capture_device "emulator-5554" "phone" &
+    PIDS+=($!)
 else
     echo "⚠ Phone emulator (5554) not found, skipping"
 fi
 
-# Capture tablet (emulator-5556)
 if adb devices | grep -q "emulator-5556"; then
-    capture_device "emulator-5556" "tablet"
+    capture_device "emulator-5556" "tablet" &
+    PIDS+=($!)
 else
     echo "⚠ Tablet emulator (5556) not found, skipping"
 fi
+
+# Wait for all captures to finish
+FAILED=false
+for pid in "${PIDS[@]}"; do
+    if ! wait "$pid"; then
+        FAILED=true
+    fi
+done
 
 echo ""
 echo "━━━ All screenshots saved to: $OUT_DIR ━━━"
