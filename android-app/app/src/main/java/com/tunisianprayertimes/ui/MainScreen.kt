@@ -1424,14 +1424,14 @@ private fun DateNavigationRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        // Forward arrow (RTL: right side = forward)
+        // Right arrow → previous day (RTL: right = back)
         Text(
             text = "▸",
             fontSize = 18.sp,
-            color = if (canGoForward) GreenPrimary else TextMuted.copy(alpha = 0.3f),
+            color = if (canGoBack) GreenPrimary else TextMuted.copy(alpha = 0.3f),
             modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))
-                .then(if (canGoForward) Modifier.clickable { onNext() } else Modifier)
+                .then(if (canGoBack) Modifier.clickable { onPrevious() } else Modifier)
                 .padding(horizontal = 12.dp, vertical = 4.dp)
         )
 
@@ -1493,14 +1493,14 @@ private fun DateNavigationRow(
             }
         }
 
-        // Back arrow (RTL: left side = back)
+        // Left arrow → next day (RTL: left = forward)
         Text(
             text = "◂",
             fontSize = 18.sp,
-            color = if (canGoBack) GreenPrimary else TextMuted.copy(alpha = 0.3f),
+            color = if (canGoForward) GreenPrimary else TextMuted.copy(alpha = 0.3f),
             modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))
-                .then(if (canGoBack) Modifier.clickable { onPrevious() } else Modifier)
+                .then(if (canGoForward) Modifier.clickable { onNext() } else Modifier)
                 .padding(horizontal = 12.dp, vertical = 4.dp)
         )
     }
