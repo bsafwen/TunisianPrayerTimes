@@ -212,6 +212,7 @@ fun MainScreen(
     var manualDurationMinutes by rememberSaveable {
         mutableStateOf((PrefsManager.getManualSilenceDurationMinutes(context) % 60).toString())
     }
+    var autoSilenceActive by remember { mutableStateOf(PrefsManager.isAutoSilenceActive(context)) }
     var manualSilenceActive by remember { mutableStateOf(PrefsManager.isManualSilenceActive(context)) }
     var manualSilenceEndsAtMillis by remember {
         mutableLongStateOf(PrefsManager.getManualSilenceEndsAtMillis(context))
@@ -220,6 +221,7 @@ fun MainScreen(
     LaunchedEffect(refreshTick) {
         ManualSilenceScheduler.syncExpiredTimer(context)
         isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
         manualSilenceActive = PrefsManager.isManualSilenceActive(context)
         manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
     }
@@ -271,6 +273,7 @@ fun MainScreen(
             SilenceVerifyWorker.cancel(context)
         }
         isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
         manualSilenceActive = PrefsManager.isManualSilenceActive(context)
         manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
     }
@@ -303,7 +306,11 @@ fun MainScreen(
                 Spacer(Modifier.height(12.dp))
 
                 // Status card
-                StatusCard(isSilent = isSilent, hasDnd = hasDnd)
+                StatusCard(
+                    isSilent = isSilent,
+                    isAppSilenced = autoSilenceActive || manualSilenceActive,
+                    hasDnd = hasDnd
+                )
 
                 // Permission banner
                 AnimatedVisibility(
@@ -534,23 +541,23 @@ private fun IslamicHeader() {
 }
 
 @Composable
-private fun StatusCard(isSilent: Boolean, hasDnd: Boolean) {
+private fun StatusCard(isSilent: Boolean, isAppSilenced: Boolean, hasDnd: Boolean) {
     val bgColor by animateColorAsState(
         targetValue = when {
             !hasDnd -> Color(0xFFFFF3E0) // warm amber bg
-            isSilent -> Color(0xFFFFEBEE) // soft red bg
+            isAppSilenced -> Color(0xFFFFEBEE) // soft red bg — app silenced
             else -> Color(0xFFE8F5E9) // soft green bg
         },
         label = "statusBg"
     )
     val accentColor = when {
         !hasDnd -> Color(0xFFFF9800)
-        isSilent -> SilenceRed
+        isAppSilenced -> SilenceRed
         else -> GreenPrimary
     }
     val statusText = when {
         !hasDnd -> stringResource(R.string.status_no_permission)
-        isSilent -> stringResource(R.string.status_silent)
+        isAppSilenced -> stringResource(R.string.status_silent)
         else -> stringResource(R.string.status_normal)
     }
 
