@@ -1652,7 +1652,9 @@ private fun PrayerRow(
                         PrefsManager.setDelayMinutes(context, prayer, it.toIntOrNull() ?: 0)
                         onConfigChanged()
                     },
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    allowNegative = true,
+                    keyboardType = KeyboardType.Number
                 )
             } else {
                 TimeDisplay(
@@ -1808,14 +1810,23 @@ private fun PrayerRow(
 private fun NumberInput(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    allowNegative: Boolean = false,
+    keyboardType: KeyboardType = KeyboardType.Number
 ) {
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         BasicTextField(
             value = value,
             onValueChange = { new ->
-                // Only allow digits, max 3 chars
-                val filtered = new.filter { it.isDigit() }.take(3)
+                val filtered = if (allowNegative) {
+                    // Allow optional leading '-' followed by up to 3 digits
+                    val negative = new.startsWith("-")
+                    val digits = new.filter { it.isDigit() }.take(3)
+                    if (negative && digits.isNotEmpty()) "-$digits" else digits
+                } else {
+                    // Only allow digits, max 3 chars
+                    new.filter { it.isDigit() }.take(3)
+                }
                 onValueChange(filtered)
             },
             modifier = modifier
@@ -1834,7 +1845,7 @@ private fun NumberInput(
                 color = TextDark,
                 textAlign = TextAlign.Center
             ),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             singleLine = true,
             decorationBox = { innerTextField ->
                 Box(
