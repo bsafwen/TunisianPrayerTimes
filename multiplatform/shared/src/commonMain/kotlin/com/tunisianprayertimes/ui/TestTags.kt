@@ -8,6 +8,8 @@ object TestTags {
     const val PRAYER_SETTINGS = "prayer_settings"
     const val AUTO_SILENCE_CARD = "auto_silence_card"
     const val AUTO_SILENCE_SWITCH = "auto_silence_switch"
+    const val CALL_END_VIBRATION_SWITCH = "call_end_vibration_switch"
+    const val AUTO_LOCATION_SWITCH = "auto_location_switch"
     const val MANUAL_SILENCE_BUTTON = "manual_silence_button"
     const val MANUAL_SILENCE_MODE_UNTIL = "manual_silence_mode_until"
     const val MANUAL_SILENCE_MODE_DURATION = "manual_silence_mode_duration"
