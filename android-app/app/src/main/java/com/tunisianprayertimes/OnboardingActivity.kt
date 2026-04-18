@@ -21,7 +21,10 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TunisianPrayerTimesTheme {
-                OnboardingScreen(onFinish = { finish() })
+                OnboardingScreen(onFinish = {
+                    PrefsManager.markFirstLaunchDone(this@OnboardingActivity)
+                    finish()
+                })
             }
         }
     }
