@@ -79,4 +79,52 @@ object PrayerTimesRepository {
             minute = parts[1].toInt()
         )
     }
+
+    /**
+     * Returns the (minMillis, maxMillis) date range for which CSV data exists
+     * for the given delegation, or null if no data is found.
+     */
+    fun getDateRange(context: Context, delegationId: Int): Pair<Long, Long>? {
+        val basePath = "csv/$delegationId"
+        val years = try {
+            context.assets.list(basePath)?.mapNotNull { it.toIntOrNull() }?.sorted() ?: return null
+        } catch (_: Exception) { return null }
+        if (years.isEmpty()) return null
+
+        // Find earliest month in earliest year
+        val firstYear = years.first()
+        val firstMonths = try {
+            context.assets.list("$basePath/$firstYear")
+                ?.mapNotNull { it.removeSuffix(".csv").toIntOrNull() }?.sorted() ?: return null
+        } catch (_: Exception) { return null }
+        if (firstMonths.isEmpty()) return null
+
+        // Find latest month in latest year
+        val lastYear = years.last()
+        val lastMonths = try {
+            context.assets.list("$basePath/$lastYear")
+                ?.mapNotNull { it.removeSuffix(".csv").toIntOrNull() }?.sorted() ?: return null
+        } catch (_: Exception) { return null }
+        if (lastMonths.isEmpty()) return null
+
+        val minCal = java.util.Calendar.getInstance().apply {
+            set(java.util.Calendar.YEAR, firstYear)
+            set(java.util.Calendar.MONTH, firstMonths.first() - 1)
+            set(java.util.Calendar.DAY_OF_MONTH, 1)
+            set(java.util.Calendar.HOUR_OF_DAY, 0)
+            set(java.util.Calendar.MINUTE, 0)
+            set(java.util.Calendar.SECOND, 0)
+            set(java.util.Calendar.MILLISECOND, 0)
+        }
+        val maxCal = java.util.Calendar.getInstance().apply {
+            set(java.util.Calendar.YEAR, lastYear)
+            set(java.util.Calendar.MONTH, lastMonths.last() - 1)
+            set(java.util.Calendar.DAY_OF_MONTH, getActualMaximum(java.util.Calendar.DAY_OF_MONTH))
+            set(java.util.Calendar.HOUR_OF_DAY, 23)
+            set(java.util.Calendar.MINUTE, 59)
+            set(java.util.Calendar.SECOND, 59)
+            set(java.util.Calendar.MILLISECOND, 999)
+        }
+        return minCal.timeInMillis to maxCal.timeInMillis
+    }
 }

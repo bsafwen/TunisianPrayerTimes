@@ -408,4 +408,84 @@ class SilenceStateTest {
 
         assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
     }
+
+    // ==================== Regression: resume scheduleAll during manual silence ====================
+
+    /**
+     * Regression for bug #3: scheduleAll called via resume (refreshTick) must
+     * not interfere with manual silence. Specifically, scheduleAll must NOT
+     * clear the call-received flag or schedule alarms that could fire a
+     * forceNormalMode after manual silence ends.
+     */
+    @Test
+    fun scheduleAll_duringManualSilence_doesNotClearCallReceivedFlag() {
+        PrefsManager.setEnabled(context, true)
+        SilenceModeController.setManualSilent(context)
+        PrefsManager.markCallReceivedDuringSilence(context)
+
+        // scheduleAll should not interfere with manual silence state
+        SilenceScheduler.scheduleAll(context)
+
+        assertTrue(
+            "Call-received flag must survive scheduleAll during manual silence",
+            PrefsManager.consumeCallReceivedDuringSilence(context)
+        )
+    }
+
+    @Test
+    fun scheduleAll_duringManualSilence_keepsManualSilenceActive() {
+        PrefsManager.setEnabled(context, true)
+        SilenceModeController.setManualSilent(context)
+        assertTrue(PrefsManager.isManualSilenceActive(context))
+
+        SilenceScheduler.scheduleAll(context)
+
+        assertTrue(
+            "Manual silence must remain active after scheduleAll",
+            PrefsManager.isManualSilenceActive(context)
+        )
+        assertEquals(
+            "Phone must stay silent after scheduleAll during manual silence",
+            AudioManager.RINGER_MODE_SILENT,
+            audioManager.ringerMode
+        )
+    }
+
+    @Test
+    fun scheduleAll_duringManualSilence_doesNotMarkAutoSilenceActive() {
+        PrefsManager.setEnabled(context, true)
+        SilenceModeController.setManualSilent(context)
+
+        SilenceScheduler.scheduleAll(context)
+
+        assertFalse(
+            "Auto-silence flag must not be set during manual silence",
+            PrefsManager.isAutoSilenceActive(context)
+        )
+    }
+
+    /**
+     * After manual silence ends, the next resume should trigger scheduleAll
+     * and set up alarms normally.
+     */
+    @Test
+    fun scheduleAll_afterManualSilenceEnds_schedulesNormally() {
+        PrefsManager.setEnabled(context, true)
+
+        // Manual silence starts and ends
+        SilenceModeController.setManualSilent(context)
+        SilenceModeController.setManualNormal(context)
+        assertFalse(PrefsManager.isManualSilenceActive(context))
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+
+        // Now scheduleAll should work normally (no manual silence blocking it)
+        SilenceScheduler.scheduleAll(context)
+
+        // If we're outside a prayer window, phone should stay normal
+        // If inside, it will auto-silence. Either way, no crash or assertion failure.
+        assertFalse(
+            "Manual silence flag must remain cleared",
+            PrefsManager.isManualSilenceActive(context)
+        )
+    }
 }

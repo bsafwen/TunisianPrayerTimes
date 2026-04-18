@@ -123,8 +123,6 @@ import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceVerifyWorker
 import java.time.LocalDate
-import java.time.chrono.HijrahDate
-import java.time.temporal.ChronoField
 import com.tunisianprayertimes.ui.theme.BannerBg
 import com.tunisianprayertimes.ui.theme.BannerStroke
 import com.tunisianprayertimes.ui.theme.BannerText
@@ -195,14 +193,13 @@ fun MainScreen(
     }
 
     var isSilent by remember { mutableStateOf(audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT) }
-    // Re-sync isSilent on resume
-    LaunchedEffect(refreshTick) {
-        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-    }
 
     var autoSilenceEnabled by rememberSaveable { mutableStateOf(PrefsManager.isEnabled(context)) }
     var callEndVibrationEnabled by rememberSaveable {
         mutableStateOf(PrefsManager.isCallEndVibrationEnabled(context))
+    }
+    var autoLocationEnabled by rememberSaveable {
+        mutableStateOf(PrefsManager.isAutoLocationUpdateEnabled(context))
     }
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
     var manualUsesDuration by rememberSaveable { mutableStateOf(PrefsManager.usesManualSilenceDuration(context)) }
@@ -218,8 +215,31 @@ fun MainScreen(
         mutableLongStateOf(PrefsManager.getManualSilenceEndsAtMillis(context))
     }
 
+    // Single resume-sync effect — merges all refreshTick observers into one
+    // so execution order is deterministic and state is read only once.
     LaunchedEffect(refreshTick) {
         ManualSilenceScheduler.syncExpiredTimer(context)
+
+        // Auto-update location from last known GPS fix
+        if (PrefsManager.isAutoLocationUpdateEnabled(context) &&
+            DelegationLocator.hasLocationPermission(context)
+        ) {
+            if (DelegationLocator.updateDelegationFromLastLocation(context)) {
+                delegationId = PrefsManager.getDelegationId(context)
+            }
+        }
+
+        val hasAll = notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission(context)
+        if (PrefsManager.isEnabled(context) && hasAll && !PrefsManager.isManualSilenceActive(context)) {
+            if (!PrefsManager.isDisabledOutsideTunisia(context)) {
+                SilenceScheduler.scheduleAll(context)
+            }
+            SilenceVerifyWorker.enqueue(context)
+        } else if (PrefsManager.isEnabled(context) && !hasAll) {
+            SilenceScheduler.cancelAll(context)
+            SilenceVerifyWorker.cancel(context)
+        }
+
         isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
         autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
         manualSilenceActive = PrefsManager.isManualSilenceActive(context)
@@ -249,33 +269,6 @@ fun MainScreen(
         if (PrefsManager.isEnabled(context) && hasDnd && hasAlarm) {
             SilenceScheduler.scheduleAll(context)
         }
-    }
-
-    // Sync on resume
-    LaunchedEffect(refreshTick) {
-        // Auto-update location from last known GPS fix
-        if (PrefsManager.isAutoLocationUpdateEnabled(context) &&
-            DelegationLocator.hasLocationPermission(context)
-        ) {
-            if (DelegationLocator.updateDelegationFromLastLocation(context)) {
-                delegationId = PrefsManager.getDelegationId(context)
-            }
-        }
-
-        val hasAll = notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission(context)
-        if (PrefsManager.isEnabled(context) && hasAll) {
-            if (!PrefsManager.isDisabledOutsideTunisia(context)) {
-                SilenceScheduler.scheduleAll(context)
-            }
-            SilenceVerifyWorker.enqueue(context)
-        } else if (PrefsManager.isEnabled(context) && !hasAll) {
-            SilenceScheduler.cancelAll(context)
-            SilenceVerifyWorker.cancel(context)
-        }
-        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
-        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
-        manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
     }
 
     Column(
@@ -345,6 +338,10 @@ fun MainScreen(
                         delegationId = delegation.id
                         PrefsManager.setDelegationId(context, delegation.id)
                         rescheduleIfEnabled()
+                    },
+                    onOutsideTunisia = {
+                        autoSilenceEnabled = false
+                        PrefsManager.setEnabled(context, false)
                     }
                 )
 
@@ -362,8 +359,8 @@ fun MainScreen(
                         autoSilenceEnabled = enabled
                         PrefsManager.setEnabled(context, enabled)
                         if (enabled) {
-                            ensureCallTrackingPermission()
                             if (hasDnd && hasAlarm) {
+                                ensureCallTrackingPermission()
                                 SilenceScheduler.scheduleAll(context)
                                 SilenceVerifyWorker.enqueue(context)
                             }
@@ -385,8 +382,9 @@ fun MainScreen(
                 )
 
                 AutoLocationCard(
-                    enabled = PrefsManager.isAutoLocationUpdateEnabled(context),
+                    enabled = autoLocationEnabled,
                     onToggle = { enabled ->
+                        autoLocationEnabled = enabled
                         PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
                     }
                 )
@@ -412,12 +410,16 @@ fun MainScreen(
                     onDurationHoursChange = { value ->
                         manualDurationHours = value
                         val totalMinutes = (value.toIntOrNull() ?: 0) * 60 + (manualDurationMinutes.toIntOrNull() ?: 0)
-                        PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                        if (totalMinutes > 0) {
+                            PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                        }
                     },
                     onDurationMinutesChange = { value ->
                         manualDurationMinutes = value
                         val totalMinutes = (manualDurationHours.toIntOrNull() ?: 0) * 60 + (value.toIntOrNull() ?: 0)
-                        PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                        if (totalMinutes > 0) {
+                            PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                        }
                     },
                     onClick = {
                         if (!notificationManager.isNotificationPolicyAccessGranted) {
@@ -669,7 +671,8 @@ private fun BatteryBanner(context: Context) {
 @Composable
 private fun LocationPickerCard(
     delegationId: Int,
-    onDelegationSelected: (Delegation) -> Unit
+    onDelegationSelected: (Delegation) -> Unit,
+    onOutsideTunisia: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val gouvernorats = remember { GouvernoratRepository.loadAll(context) }
@@ -725,6 +728,7 @@ private fun LocationPickerCard(
                 DelegationLocationResult.OutsideTunisia -> {
                     SilenceScheduler.cancelAll(context)
                     PrefsManager.setDisabledOutsideTunisia(context, true)
+                    onOutsideTunisia()
                     Toast.makeText(
                         context,
                         context.getString(R.string.location_outside_tunisia),
@@ -1122,21 +1126,6 @@ private fun PrayerSettingsCard(
         Prayer.AID_ADHA to stringResource(R.string.prayer_aid_adha)
     )
 
-    val isFriday = remember(selectedDate) {
-        Calendar.getInstance().apply { timeInMillis = selectedDate }
-            .get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
-    }
-
-    // Hijri date for the selected day — used for Eid detection
-    val hijriDate = remember(selectedDate) {
-        val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
-        val localDate = LocalDate.of(
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH) + 1,
-            cal.get(Calendar.DAY_OF_MONTH)
-        )
-        HijrahDate.from(localDate)
-    }
     val isAidFitr = remember(selectedDate, displayTimes) {
         val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
         val gregDate = LocalDate.of(
@@ -1207,22 +1196,7 @@ private fun PrayerSettingsCard(
         )
     }
 
-    val tomorrowFajr = remember(delegationId) {
-        if (!isToday || nextPrayerFromToday != null) return@remember null
-        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_MONTH, 1) }
-        try {
-            PrayerTimesRepository.loadDayPrayerTimes(
-                context, delegationId,
-                tomorrow.get(Calendar.YEAR),
-                tomorrow.get(Calendar.MONTH) + 1,
-                tomorrow.get(Calendar.DAY_OF_MONTH)
-            )?.fajr
-        } catch (_: Exception) { null }
-    }
-
-    val nextPrayer = if (isToday) {
-        nextPrayerFromToday ?: if (tomorrowFajr != null) Prayer.FAJR else null
-    } else null
+    val nextPrayer = if (isToday) nextPrayerFromToday else null
 
     Card(
         modifier = Modifier
@@ -1254,6 +1228,7 @@ private fun PrayerSettingsCard(
 
             // Date navigation
             DateNavigationRow(
+                delegationId = delegationId,
                 selectedDate = selectedDate,
                 isToday = isToday,
                 canGoBack = canGoBack,
@@ -1283,29 +1258,24 @@ private fun PrayerSettingsCard(
 
                 val prayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
                 prayers.forEachIndexed { index, prayer ->
-                    val prayerTime = if (isToday && prayer == Prayer.FAJR && tomorrowFajr != null)
-                        tomorrowFajr
-                    else
-                        displayTimes.allPrayers().find { it.prayer == prayer }
+                    val prayerTime = displayTimes.allPrayers().find { it.prayer == prayer }
                     val nextPrayerTime = if (index < prayers.size - 1) {
                         displayTimes.allPrayers().find { it.prayer == prayers[index + 1] }
                     } else null
-                    key(delegationId) {
-                        PrayerRow(
-                            prayer = prayer,
-                            prayerName = prayerNames[prayer] ?: prayer.name,
-                            prayerTime = prayerTime,
-                            nextPrayerTime = nextPrayerTime,
-                            isNextPrayer = prayer == nextPrayer,
-                            activity = activity,
-                            onConfigChanged = onConfigChanged
-                        )
-                    }
+                    PrayerRow(
+                        prayer = prayer,
+                        prayerName = prayerNames[prayer] ?: prayer.name,
+                        prayerTime = prayerTime,
+                        nextPrayerTime = nextPrayerTime,
+                        isNextPrayer = prayer == nextPrayer,
+                        activity = activity,
+                        onConfigChanged = onConfigChanged
+                    )
                 }
 
                 // JOMOAA row — always shown as the last row, time editable
                 HorizontalDivider(color = Divider, thickness = 1.dp)
-                key(delegationId, "jomoaa", jomoaaH, jomoaaM) {
+                key("jomoaa", jomoaaH, jomoaaM) {
                     PrayerRow(
                         prayer = Prayer.JOMOAA,
                         prayerName = prayerNames[Prayer.JOMOAA] ?: Prayer.JOMOAA.name,
@@ -1335,7 +1305,7 @@ private fun PrayerSettingsCard(
                 // AID FITR row — shown only on 1 Shawwal
                 if (isAidFitr) {
                     HorizontalDivider(color = Divider, thickness = 1.dp)
-                    key(delegationId, "aid_fitr", aidFitrH, aidFitrM) {
+                    key("aid_fitr", aidFitrH, aidFitrM) {
                         PrayerRow(
                             prayer = Prayer.AID_FITR,
                             prayerName = prayerNames[Prayer.AID_FITR] ?: Prayer.AID_FITR.name,
@@ -1366,7 +1336,7 @@ private fun PrayerSettingsCard(
                 // AID ADHA row — shown only on 10 Dhul Hijjah
                 if (isAidAdha) {
                     HorizontalDivider(color = Divider, thickness = 1.dp)
-                    key(delegationId, "aid_adha", aidAdhaH, aidAdhaM) {
+                    key("aid_adha", aidAdhaH, aidAdhaM) {
                         PrayerRow(
                             prayer = Prayer.AID_ADHA,
                             prayerName = prayerNames[Prayer.AID_ADHA] ?: Prayer.AID_ADHA.name,
@@ -1410,6 +1380,7 @@ private fun PrayerSettingsCard(
 
 @Composable
 private fun DateNavigationRow(
+    delegationId: Int,
     selectedDate: Long,
     isToday: Boolean,
     canGoBack: Boolean,
@@ -1421,6 +1392,7 @@ private fun DateNavigationRow(
     val context = LocalContext.current
     val dateFormat = remember { SimpleDateFormat("EEEE d MMMM yyyy", Locale.forLanguageTag("ar-TN-u-nu-latn")) }
     val dateText = remember(selectedDate) { dateFormat.format(selectedDate) }
+    val dateRange = remember(delegationId) { PrayerTimesRepository.getDateRange(context, delegationId) }
 
     Row(
         modifier = Modifier
@@ -1468,7 +1440,12 @@ private fun DateNavigationRow(
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)
-                ).show()
+                ).apply {
+                    dateRange?.let { (minMs, maxMs) ->
+                        datePicker.minDate = minMs
+                        datePicker.maxDate = maxMs
+                    }
+                }.show()
             }
         ) {
             Text(
@@ -1694,9 +1671,7 @@ private fun PrayerRow(
                                 return@addOnPositiveButtonClickListener
                             }
                             if (silenceMode == SilenceMode.FIXED_TIME) {
-                                val endH = PrefsManager.getFixedTimeHour(context, prayer)
-                                val endM = PrefsManager.getFixedTimeMinute(context, prayer)
-                                if (endH >= 0 && endM >= 0 && (picker.hour > endH || (picker.hour == endH && picker.minute >= endM))) {
+                                if (fixedH >= 0 && fixedM >= 0 && (picker.hour > fixedH || (picker.hour == fixedH && picker.minute >= fixedM))) {
                                     Toast.makeText(context, context.getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
                                     return@addOnPositiveButtonClickListener
                                 }
@@ -1767,9 +1742,7 @@ private fun PrayerRow(
                                 return@addOnPositiveButtonClickListener
                             }
                             if (delayMode == DelayMode.FIXED_TIME) {
-                                val startH = PrefsManager.getDelayFixedHour(context, prayer)
-                                val startM = PrefsManager.getDelayFixedMinute(context, prayer)
-                                if (startH >= 0 && startM >= 0 && (picker.hour < startH || (picker.hour == startH && picker.minute <= startM))) {
+                                if (delayFixedH >= 0 && delayFixedM >= 0 && (picker.hour < delayFixedH || (picker.hour == delayFixedH && picker.minute <= delayFixedM))) {
                                     Toast.makeText(context, context.getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
                                     return@addOnPositiveButtonClickListener
                                 }
@@ -1977,6 +1950,7 @@ private fun CallEndVibrationCard(
                 Switch(
                     checked = enabled,
                     onCheckedChange = onToggle,
+                    modifier = Modifier.testTag(TestTags.CALL_END_VIBRATION_SWITCH),
                     colors = SwitchDefaults.colors(
                         checkedThumbColor = Color.White,
                         checkedTrackColor = GreenPrimary
@@ -2012,6 +1986,7 @@ private fun AutoLocationCard(
                 Switch(
                     checked = enabled,
                     onCheckedChange = onToggle,
+                    modifier = Modifier.testTag(TestTags.AUTO_LOCATION_SWITCH),
                     colors = SwitchDefaults.colors(
                         checkedThumbColor = Color.White,
                         checkedTrackColor = GreenPrimary
