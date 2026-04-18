@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         // On first launch, show onboarding tutorial
         if (PrefsManager.isFirstLaunch(this)) {
-            PrefsManager.markFirstLaunchDone(this)
             startActivity(Intent(this, OnboardingActivity::class.java))
         }
 

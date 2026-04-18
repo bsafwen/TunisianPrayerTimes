@@ -17,6 +17,7 @@ android-app/keystore.properties
 java_pid53290.hprof
 *.aab
 *.apk
+android-app/BUG_REVIEW.md
 
 # Multiplatform Desktop
 multiplatform/.gradle/

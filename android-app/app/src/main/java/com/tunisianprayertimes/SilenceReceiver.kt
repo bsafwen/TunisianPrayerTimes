@@ -43,12 +43,19 @@ class SilenceReceiver : BroadcastReceiver() {
             "com.tunisianprayertimes.ACTION_UNSILENCE" -> {
                 val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
                 Log.d(TAG, "Restoring normal mode after $prayerName")
-                if (PrefsManager.isManualSilenceActive(context)) {
+                // Snapshot both flags once to avoid a race where manual silence
+                // toggles on between the two reads, causing forceNormalMode()
+                // to incorrectly clear the user's manual silence.
+                val manualActive = PrefsManager.isManualSilenceActive(context)
+                val autoActive = PrefsManager.isAutoSilenceActive(context)
+                if (manualActive) {
                     Log.d(TAG, "Manual silence is active, skipping auto unsilence")
                     PrefsManager.clearAutoSilenceState(context)
                     return
                 }
-                if (!SilenceModeController.disableAutoSilence(context)) {
+                if (autoActive) {
+                    SilenceModeController.disableAutoSilence(context)
+                } else {
                     // Flag was already cleared (manual toggle, scheduleAll, etc.)
                     // but the alarm still fired — force normal so DND is never
                     // left on permanently.
