@@ -1049,36 +1049,47 @@ private fun PrayerSettingsCard(
     onConfigChanged: () -> Unit
 ) {
     val context = LocalContext.current
-    var today by remember { mutableStateOf(Calendar.getInstance()) }
-    var selectedDate by rememberSaveable { mutableStateOf(today.timeInMillis) }
+    val lifecycleOwner = LocalLifecycleOwner.current
+    var currentTimeMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    val currentCalendar = remember(currentTimeMillis) {
+        Calendar.getInstance().apply { timeInMillis = currentTimeMillis }
+    }
+    val currentDayMillis = remember(currentTimeMillis) { startOfDayMillis(currentTimeMillis) }
+    var selectedDate by rememberSaveable { mutableLongStateOf(currentDayMillis) }
+    var lastCurrentDayMillis by remember { mutableLongStateOf(currentDayMillis) }
 
-    // Reset to today at midnight (fixes stale date when app stays alive)
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                currentTimeMillis = System.currentTimeMillis()
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
     LaunchedEffect(Unit) {
         while (true) {
-            val now = Calendar.getInstance()
-            val midnight = Calendar.getInstance().apply {
-                add(Calendar.DAY_OF_MONTH, 1)
-                set(Calendar.HOUR_OF_DAY, 0)
-                set(Calendar.MINUTE, 0)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-            val delayMs = midnight.timeInMillis - now.timeInMillis
-            kotlinx.coroutines.delay(delayMs)
-            val newToday = Calendar.getInstance()
-            today = newToday
-            selectedDate = newToday.timeInMillis
+            val now = System.currentTimeMillis()
+            val nextMinuteMillis = ((now / 60_000L) + 1L) * 60_000L
+            delay((nextMinuteMillis - now).coerceAtLeast(1L))
+            currentTimeMillis = System.currentTimeMillis()
         }
+    }
+
+    LaunchedEffect(currentDayMillis) {
+        if (currentDayMillis == lastCurrentDayMillis) return@LaunchedEffect
+        if (isSameCalendarDay(selectedDate, lastCurrentDayMillis)) {
+            selectedDate = currentDayMillis
+        }
+        lastCurrentDayMillis = currentDayMillis
     }
 
     val selectedCal = remember(selectedDate) {
         Calendar.getInstance().apply { timeInMillis = selectedDate }
     }
-    val isToday = remember(selectedDate) {
-        val sel = Calendar.getInstance().apply { timeInMillis = selectedDate }
-        val now = Calendar.getInstance()
-        sel.get(Calendar.YEAR) == now.get(Calendar.YEAR) &&
-                sel.get(Calendar.DAY_OF_YEAR) == now.get(Calendar.DAY_OF_YEAR)
+    val isToday = remember(selectedDate, currentDayMillis) {
+        isSameCalendarDay(selectedDate, currentDayMillis)
     }
 
     val displayTimes = remember(delegationId, selectedDate) {
@@ -1126,35 +1137,33 @@ private fun PrayerSettingsCard(
         Prayer.AID_ADHA to stringResource(R.string.prayer_aid_adha)
     )
 
-    val isAidFitr = remember(selectedDate, displayTimes) {
+    val isAidFitr = remember(selectedDate, displayTimes, currentTimeMillis) {
         val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
         val gregDate = LocalDate.of(
             cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH) + 1,
             cal.get(Calendar.DAY_OF_MONTH)
         )
-        val now = Calendar.getInstance()
         RamadanOverrideChecker.shouldShowEidFitrPrayer(
             date = gregDate,
-            nowHour = now.get(Calendar.HOUR_OF_DAY),
-            nowMinute = now.get(Calendar.MINUTE),
+            nowHour = currentCalendar.get(Calendar.HOUR_OF_DAY),
+            nowMinute = currentCalendar.get(Calendar.MINUTE),
             dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
             dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
             isToday = isToday,
         )
     }
-    val isAidAdha = remember(selectedDate, displayTimes) {
+    val isAidAdha = remember(selectedDate, displayTimes, currentTimeMillis) {
         val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
         val gregDate = LocalDate.of(
             cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH) + 1,
             cal.get(Calendar.DAY_OF_MONTH)
         )
-        val now = Calendar.getInstance()
         RamadanOverrideChecker.shouldShowEidAdhaPrayer(
             date = gregDate,
-            nowHour = now.get(Calendar.HOUR_OF_DAY),
-            nowMinute = now.get(Calendar.MINUTE),
+            nowHour = currentCalendar.get(Calendar.HOUR_OF_DAY),
+            nowMinute = currentCalendar.get(Calendar.MINUTE),
             dhuhrHour = displayTimes?.dhuhr?.hour ?: 13,
             dhuhrMinute = displayTimes?.dhuhr?.minute ?: 0,
             isToday = isToday,
@@ -1186,17 +1195,15 @@ private fun PrayerSettingsCard(
     val resolvedAidAdhaM = if (aidAdhaM >= 0) aidAdhaM else defaultAidAdhaTime?.second ?: -1
 
     // Next prayer logic — only for today, Friday-aware
-    val nextPrayerFromToday = remember(delegationId, jomoaaH, jomoaaM) {
-        if (!isToday) return@remember null
+    val nextPrayer = if (isToday) {
         displayTimes?.nextPrayer(
-            today.get(Calendar.HOUR_OF_DAY), today.get(Calendar.MINUTE),
-            today.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+            currentCalendar.get(Calendar.HOUR_OF_DAY),
+            currentCalendar.get(Calendar.MINUTE),
+            currentCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
             PrefsManager.getJomoaaTimeHour(context),
             PrefsManager.getJomoaaTimeMinute(context)
         )
-    }
-
-    val nextPrayer = if (isToday) nextPrayerFromToday else null
+    } else null
 
     Card(
         modifier = Modifier
@@ -2247,6 +2254,24 @@ private fun initFixedMinute(context: Context, prayer: Prayer, prayerTime: Prayer
         return cal.get(Calendar.MINUTE)
     }
     return 0
+}
+
+private fun startOfDayMillis(sourceTimeInMillis: Long): Long {
+    val calendar = Calendar.getInstance().apply {
+        timeInMillis = sourceTimeInMillis
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }
+    return calendar.timeInMillis
+}
+
+private fun isSameCalendarDay(firstTimeInMillis: Long, secondTimeInMillis: Long): Boolean {
+    val first = Calendar.getInstance().apply { timeInMillis = firstTimeInMillis }
+    val second = Calendar.getInstance().apply { timeInMillis = secondTimeInMillis }
+    return first.get(Calendar.YEAR) == second.get(Calendar.YEAR) &&
+            first.get(Calendar.DAY_OF_YEAR) == second.get(Calendar.DAY_OF_YEAR)
 }
 
 private fun resolveManualDurationMinutes(value: String, fallback: Int): Int {
