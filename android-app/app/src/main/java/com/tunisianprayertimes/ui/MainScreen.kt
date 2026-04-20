@@ -1528,9 +1528,7 @@ private fun WakeAlarmCard(
                 ) {
                     wakeAlarms.forEachIndexed { index, wakeAlarm ->
                         WakeAlarmRow(
-                            alarmName = wakeAlarm.displayTitle(
-                                fallback = context.getString(R.string.wake_alarm_row_title, index + 1),
-                            ),
+                            alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
                             wakeConfig = wakeAlarm,
                             onClick = { editingWakeAlarm = wakeAlarm },
                         )
@@ -1615,7 +1613,7 @@ private fun WakeAlarmRowHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 4.dp),
+            .padding(start = 14.dp, end = 14.dp, bottom = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
@@ -1623,9 +1621,10 @@ private fun WakeAlarmRowHeader() {
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
             color = TextMuted,
+            textAlign = TextAlign.Start,
             maxLines = 1,
             autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
-            modifier = Modifier.weight(1.2f)
+            modifier = Modifier.weight(1.25f)
         )
         Text(
             text = stringResource(R.string.wake_alarm_col_summary),
@@ -1635,9 +1634,20 @@ private fun WakeAlarmRowHeader() {
             textAlign = TextAlign.Center,
             maxLines = 1,
             autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
-            modifier = Modifier.weight(2.6f)
+            modifier = Modifier
+                .weight(2.55f)
+                .padding(horizontal = 12.dp)
         )
-        Spacer(Modifier.width(24.dp))
+        Text(
+            text = stringResource(R.string.wake_alarm_col_status),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            color = TextMuted,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
+            modifier = Modifier.weight(1f)
+        )
     }
 }
 
@@ -2104,8 +2114,9 @@ private fun WakeAlarmRow(
         )
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 14.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
@@ -2113,37 +2124,46 @@ private fun WakeAlarmRow(
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold,
                 color = if (enabled) GreenPrimaryDark else PrayerNameColor,
-                modifier = Modifier.weight(1.2f)
+                textAlign = TextAlign.Start,
+                modifier = Modifier.weight(1.25f)
             )
 
-            Column(modifier = Modifier.weight(2.6f)) {
-                Text(
-                    text = summaryText,
-                    fontSize = 12.sp,
-                    color = TextDark,
-                    lineHeight = 16.sp,
-                )
-            }
+            Text(
+                text = summaryText,
+                fontSize = 12.sp,
+                color = TextDark,
+                lineHeight = 16.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .weight(2.55f)
+                    .padding(horizontal = 12.dp)
+            )
 
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(50))
-                    .background(
-                        if (enabled) GreenPrimary.copy(alpha = 0.16f)
-                        else Color.White.copy(alpha = 0.72f)
-                    )
-                    .padding(horizontal = 10.dp, vertical = 6.dp),
+                    .weight(1f),
+                contentAlignment = Alignment.Center,
             ) {
-                Text(
-                    text = if (enabled) {
-                        stringResource(R.string.wake_summary_status_on)
-                    } else {
-                        stringResource(R.string.wake_summary_status_off)
-                    },
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = if (enabled) GreenPrimaryDark else TextMuted,
-                )
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(
+                            if (enabled) GreenPrimary.copy(alpha = 0.16f)
+                            else Color.White.copy(alpha = 0.72f)
+                        )
+                        .padding(horizontal = 10.dp, vertical = 6.dp),
+                ) {
+                    Text(
+                        text = if (enabled) {
+                            stringResource(R.string.wake_summary_status_on)
+                        } else {
+                            stringResource(R.string.wake_summary_status_off)
+                        },
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = if (enabled) GreenPrimaryDark else TextMuted,
+                    )
+                }
             }
         }
     }
@@ -2238,7 +2258,7 @@ private fun NumberInput(
             textStyle = TextStyle(
                 fontSize = 14.sp,
                 color = TextDark,
-                textAlign = TextAlign.Right,
+                textAlign = TextAlign.Center,
                 textDirection = TextDirection.Ltr
             ),
             keyboardOptions = KeyboardOptions(
@@ -2697,7 +2717,4 @@ private fun formatTimeOfDay(targetTimeInMillis: Long): String {
         calendar.get(Calendar.MINUTE)
     )
 }
-
-private fun PrayerWakeConfig.displayTitle(fallback: String): String =
-    title.trim().ifEmpty { fallback }
 
