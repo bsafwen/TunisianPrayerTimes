@@ -5,6 +5,7 @@ import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.formatArabicMinutes
 import java.util.Locale
 
 internal fun Prayer.displayName(context: Context): String = when (this) {
@@ -31,7 +32,7 @@ internal fun formatWakeOffset(
     } else {
         R.string.wake_alarm_offset_after
     },
-    minutes,
+    formatArabicMinutes(minutes),
 )
 
 internal fun WakeTriggerPayload.title(context: Context): String =

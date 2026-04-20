@@ -132,6 +132,7 @@ import com.tunisianprayertimes.SilenceVerifyWorker
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
@@ -187,16 +188,6 @@ fun MainScreen(
     val hasDnd = remember(refreshTick) { notificationManager.isNotificationPolicyAccessGranted }
     val hasAlarm = remember(refreshTick) { hasExactAlarmPermission(context) }
     val hasBattery = remember(refreshTick) { isIgnoringBatteryOptimizations(context) }
-    val hasNotifications = remember(refreshTick) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED
-        } else {
-            true
-        }
-    }
     val hasPhoneState = remember(refreshTick) {
         ContextCompat.checkSelfPermission(
             context,
@@ -204,9 +195,6 @@ fun MainScreen(
         ) == PackageManager.PERMISSION_GRANTED
     }
     val phoneStatePermissionLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { refreshTick++ }
-    val notificationPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { refreshTick++ }
 
@@ -217,17 +205,6 @@ fun MainScreen(
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
-        }
-    }
-
-    fun ensureNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-            ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 
@@ -361,16 +338,14 @@ fun MainScreen(
 
                 // Permission banner
                 AnimatedVisibility(
-                    visible = !hasDnd || !hasAlarm || !hasNotifications || !hasPhoneState,
+                    visible = !hasDnd || !hasAlarm || !hasPhoneState,
                     enter = expandVertically(),
                     exit = shrinkVertically()
                 ) {
                     PermissionBanner(
                         hasDnd = hasDnd,
                         hasAlarm = hasAlarm,
-                        hasNotifications = hasNotifications,
                         hasPhoneState = hasPhoneState,
-                        onRequestNotifications = { ensureNotificationPermission() },
                         onRequestPhoneState = {
                             phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
                         },
@@ -654,9 +629,7 @@ private fun StatusCard(isSilent: Boolean, isAppSilenced: Boolean, hasDnd: Boolea
 private fun PermissionBanner(
     hasDnd: Boolean,
     hasAlarm: Boolean,
-    hasNotifications: Boolean,
     hasPhoneState: Boolean,
-    onRequestNotifications: () -> Unit,
     onRequestPhoneState: () -> Unit,
     context: Context
 ) {
@@ -670,8 +643,6 @@ private fun PermissionBanner(
                     context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
                 } else if (!hasAlarm && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
-                } else if (!hasNotifications) {
-                    onRequestNotifications()
                 } else if (!hasPhoneState) {
                     onRequestPhoneState()
                 }
@@ -690,7 +661,6 @@ private fun PermissionBanner(
                     !hasDnd && !hasAlarm -> stringResource(R.string.banner_both_missing)
                     !hasDnd -> stringResource(R.string.banner_dnd_missing)
                     !hasAlarm -> stringResource(R.string.banner_alarm_missing)
-                    !hasNotifications -> stringResource(R.string.banner_notifications_missing)
                     else -> stringResource(R.string.banner_phone_state_missing)
                 },
                 fontSize = 13.sp,
@@ -1472,9 +1442,23 @@ private fun WakeAlarmCard(
     val wakeRepository = remember(context) { PrayerWakeRepository(context) }
     val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
+    fun requestFullScreenIntentIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            val nm = context.getSystemService(NotificationManager::class.java)
+            if (!nm.canUseFullScreenIntent()) {
+                Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
+                context.startActivity(
+                    Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
+                        data = Uri.parse("package:${context.packageName}")
+                    }
+                )
+            }
+        }
+    }
+
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { /* granted or denied — alarm is already saved */ }
+    ) { requestFullScreenIntentIfNeeded() }
 
     Card(
         modifier = Modifier
@@ -1579,17 +1563,8 @@ private fun WakeAlarmCard(
                         ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
                     ) {
                         notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                    }
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                        val nm = context.getSystemService(NotificationManager::class.java)
-                        if (!nm.canUseFullScreenIntent()) {
-                            Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
-                            context.startActivity(
-                                Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
-                                    data = Uri.parse("package:${context.packageName}")
-                                }
-                            )
-                        }
+                    } else {
+                        requestFullScreenIntentIfNeeded()
                     }
                 }
             },
@@ -2189,7 +2164,7 @@ private fun wakeSummaryText(
 
         WakeMainAlarmMode.FROM_NOW -> stringResource(
             R.string.wake_summary_from_now,
-            wakeConfig.mainAlarm.oneOffOffsetMinutes,
+            formatArabicMinutes(wakeConfig.mainAlarm.oneOffOffsetMinutes),
         )
 
         WakeMainAlarmMode.PRAYER_RELATIVE -> {
@@ -2198,13 +2173,13 @@ private fun wakeSummaryText(
                 stringResource(
                     R.string.wake_summary_relative_before,
                     prayerName,
-                    offset.absoluteMinutes,
+                    formatArabicMinutes(offset.absoluteMinutes),
                 )
             } else {
                 stringResource(
                     R.string.wake_summary_relative_after,
                     prayerName,
-                    offset.absoluteMinutes,
+                    formatArabicMinutes(offset.absoluteMinutes),
                 )
             }
         }

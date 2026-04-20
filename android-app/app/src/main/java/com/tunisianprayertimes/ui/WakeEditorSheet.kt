@@ -78,6 +78,7 @@ import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
@@ -725,7 +726,10 @@ private fun WakeSubAlarmEditorCard(
                         color = PrayerNameColor,
                     )
                     Text(
-                        text = stringResource(R.string.wake_editor_subalarm_offset_value, subAlarm.minutesOffset),
+                        text = stringResource(
+                            R.string.wake_editor_subalarm_offset_value,
+                            formatArabicMinutes(subAlarm.minutesOffset),
+                        ),
                         fontSize = 12.sp,
                         color = TextMuted,
                     )
@@ -1165,7 +1169,7 @@ private fun computeWakePreview(
             config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW -> {
                 context.getString(
                     R.string.wake_editor_preview_detail_from_now,
-                    config.mainAlarm.oneOffOffsetMinutes,
+                    formatArabicMinutes(config.mainAlarm.oneOffOffsetMinutes),
                     previewTime,
                 )
             }
@@ -1315,7 +1319,7 @@ private fun formatWakePreviewOffset(
     } else {
         R.string.wake_alarm_offset_after
     },
-    abs(signedOffsetMinutes),
+    formatArabicMinutes(abs(signedOffsetMinutes)),
 )
 
 private fun formatWakeEditorTime(hour: Int, minute: Int): String =
