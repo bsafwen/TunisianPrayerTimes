@@ -85,6 +85,8 @@
     <string name="onboarding_step3_desc">اضغط على "د" بجانب المدة للتبديل إلى وقت انتهاء ثابت.\nاضغط على الوقت لتغييره.</string>
     <string name="onboarding_jomoaa_title">صلاة الجمعة</string>
     <string name="onboarding_jomoaa_desc">يمكنك تعديل وقت بدء صلاة الجمعة حسب مسجدك.\nاضغط على الوقت لتعديله.</string>
+    <string name="onboarding_wake_alarm_title">منبه الاستيقاظ</string>
+    <string name="onboarding_wake_alarm_desc">يمكنك إضافة منبه استيقاظ مرتبط بأوقات الصلاة.\nمثلا: منبه قبل أذان الفجر بـ 30 دقيقة ليوقظك لصلاة الفجر.\n\nيمكنك أيضا ضبطه على وقت ثابت أو بعد مدة من الآن.</string>
     <string name="onboarding_ready_title">جاهز للاستخدام!</string>
     <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\n\nإذا لم تجد معتمديتك بالضبط، اختر الأقرب إليك فلا فرق في مواقيت الصلاة.\nقائمة المعتمديات مأخوذة من المعهد الوطني للرصد الجوي التونسي.\n\nصلاة مقبولة 🤲</string>
     <string name="onboarding_start">ابدأ</string>
