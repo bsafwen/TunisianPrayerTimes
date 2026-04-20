@@ -132,6 +132,7 @@
     <string name="wake_alarm_answer">الإجابة</string>
     <string name="wake_alarm_wake_up_check_complete">إجابة صحيحة. يمكنك الآن إيقاف المنبه.</string>
     <string name="wake_alarm_wake_up_check_incomplete">أدخل الإجابة الصحيحة لتفعيل زر الإيقاف.</string>
+    <string name="wake_alarm_full_screen_permission">لعرض المنبه على شاشة القفل، يرجى تفعيل إذن العرض بملء الشاشة</string>
     <string name="wake_alarm_main_label">المنبه الرئيسي</string>
     <string name="wake_alarm_subalarm_label">تنبيه إضافي: %1$s</string>
     <string name="wake_alarm_fallback_title">منبه الاستيقاظ</string>

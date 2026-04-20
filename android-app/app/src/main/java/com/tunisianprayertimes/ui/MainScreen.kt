@@ -1574,6 +1574,17 @@ private fun WakeAlarmCard(
                     editingWakeAlarm = null
                     onConfigChanged()
                 }
+                if (config.enabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                    val nm = context.getSystemService(NotificationManager::class.java)
+                    if (!nm.canUseFullScreenIntent()) {
+                        Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
+                        context.startActivity(
+                            Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
+                                data = Uri.parse("package:${context.packageName}")
+                            }
+                        )
+                    }
+                }
             },
             onDelete = if (isPersistedAlarm) {
                 {
