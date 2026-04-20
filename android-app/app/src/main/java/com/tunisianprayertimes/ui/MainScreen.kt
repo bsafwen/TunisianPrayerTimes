@@ -1473,6 +1473,9 @@ private fun WakeAlarmCard(
     val wakeRepository = remember(context) { PrayerWakeRepository(context) }
     val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { /* granted or denied — alarm is already saved */ }
 
     Card(
         modifier = Modifier
@@ -1574,15 +1577,22 @@ private fun WakeAlarmCard(
                     editingWakeAlarm = null
                     onConfigChanged()
                 }
-                if (config.enabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                    val nm = context.getSystemService(NotificationManager::class.java)
-                    if (!nm.canUseFullScreenIntent()) {
-                        Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
-                        context.startActivity(
-                            Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
-                                data = Uri.parse("package:${context.packageName}")
-                            }
-                        )
+                if (config.enabled) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                    }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                        val nm = context.getSystemService(NotificationManager::class.java)
+                        if (!nm.canUseFullScreenIntent()) {
+                            Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
+                            context.startActivity(
+                                Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
+                                    data = Uri.parse("package:${context.packageName}")
+                                }
+                            )
+                        }
                     }
                 }
             },

@@ -95,8 +95,8 @@ fun OnboardingScreen(
 ) {
     val context = LocalContext.current
     var currentStep by rememberSaveable { mutableIntStateOf(0) }
-    val totalSteps = 7
-    val permissionsStep = 5
+    val totalSteps = 8
+    val permissionsStep = 6
 
     // Track navigation direction for animation
     var goingForward by remember { mutableStateOf(true) }
@@ -184,7 +184,8 @@ fun OnboardingScreen(
                 2 -> DelayExplanationStep()
                 3 -> FixedTimeSwitchStep()
                 4 -> JomoaaExplanationStep()
-                5 -> PermissionsStep(
+                5 -> WakeAlarmIntroStep()
+                6 -> PermissionsStep(
                     hasDnd = hasDnd,
                     hasAlarm = hasAlarm,
                     hasBattery = hasBattery,
@@ -194,7 +195,7 @@ fun OnboardingScreen(
                     },
                     context = context
                 )
-                6 -> ReadyStep()
+                7 -> ReadyStep()
             }
         }
 
@@ -608,6 +609,40 @@ private fun JomoaaExplanationStep() {
             color = TextDark,
             textAlign = TextAlign.Center,
             lineHeight = 20.sp
+        )
+    }
+}
+
+@Composable
+private fun WakeAlarmIntroStep() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 32.dp, vertical = 32.dp)
+            .padding(bottom = 160.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "⏰",
+            fontSize = 48.sp,
+        )
+        Spacer(Modifier.height(24.dp))
+        Text(
+            text = stringResource(R.string.onboarding_wake_alarm_title),
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = GreenPrimaryDark,
+            textAlign = TextAlign.Center
+        )
+        Spacer(Modifier.height(16.dp))
+        Text(
+            text = stringResource(R.string.onboarding_wake_alarm_desc),
+            fontSize = 14.sp,
+            color = TextDark,
+            textAlign = TextAlign.Center,
+            lineHeight = 22.sp
         )
     }
 }
