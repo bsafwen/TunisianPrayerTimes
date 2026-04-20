@@ -7,14 +7,19 @@ import android.net.Uri
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -469,16 +474,7 @@ fun WakeEditorSheet(
                 }
             }
 
-                    if (onDelete != null) {
-                        TextButton(
-                            onClick = onDelete,
-                            modifier = Modifier.fillMaxWidth(),
-                        ) {
-                            Text(text = stringResource(R.string.wake_editor_delete))
-                        }
 
-                        HorizontalDivider()
-                    }
 
             WakePlaybackControls(
                 title = stringResource(R.string.wake_editor_playback_title),
@@ -644,6 +640,24 @@ fun WakeEditorSheet(
                     modifier = Modifier.weight(1f),
                 ) {
                     Text(text = stringResource(R.string.wake_editor_save))
+                }
+            }
+
+            if (onDelete != null) {
+                Spacer(modifier = Modifier.height(4.dp))
+                OutlinedButton(
+                    onClick = onDelete,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.5f)),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = SilenceRed,
+                    ),
+                ) {
+                    Text(
+                        text = "🗑️ " + stringResource(R.string.wake_editor_delete),
+                        fontWeight = FontWeight.SemiBold,
+                    )
                 }
             }
         }
