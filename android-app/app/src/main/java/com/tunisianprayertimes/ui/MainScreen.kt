@@ -458,7 +458,6 @@ fun MainScreen(
 
                 // Manual toggle button
                 ManualSilenceButton(
-                    isSilent = isSilent,
                     hasDnd = hasDnd,
                     manualUsesDuration = manualUsesDuration,
                     manualDurationHours = manualDurationHours,
@@ -488,7 +487,7 @@ fun MainScreen(
                             Toast.makeText(context, context.getString(R.string.toast_dnd_permission), Toast.LENGTH_SHORT).show()
                             return@ManualSilenceButton
                         }
-                        if (isSilent) {
+                        if (manualSilenceActive) {
                             SilenceModeController.setManualNormal(context)
                             SilenceModeController.notifyIfMissedCallDuringSilence(context)
                             isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
@@ -2425,7 +2424,6 @@ private fun RamadanBadge() {
 
 @Composable
 private fun ManualSilenceButton(
-    isSilent: Boolean,
     hasDnd: Boolean,
     manualUsesDuration: Boolean,
     manualDurationHours: String,
@@ -2439,7 +2437,7 @@ private fun ManualSilenceButton(
 ) {
     val context = LocalContext.current
     val bgColor by animateColorAsState(
-        targetValue = if (isSilent && hasDnd) SilenceRed else GreenPrimary,
+        targetValue = if (manualSilenceActive && hasDnd) SilenceRed else GreenPrimary,
         label = "buttonColor"
     )
 
@@ -2546,7 +2544,7 @@ private fun ManualSilenceButton(
             ) {
                 Text(
                     text = when {
-                        isSilent && hasDnd -> stringResource(R.string.btn_unsilence)
+                        manualSilenceActive && hasDnd -> stringResource(R.string.btn_unsilence)
                         else -> stringResource(R.string.btn_silence)
                     },
                     fontSize = 16.sp,
