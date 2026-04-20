@@ -1,10 +1,13 @@
 package com.tunisianprayertimes
 
+import kotlinx.serialization.Serializable
+
 /**
  * Prayer names matching the CSV columns (excluding Shuruk which is sunrise, not a prayer).
  * JOMOAA is the Friday prayer — it reuses the DHUHR time slot but has its own silence config.
  * AID_FITR and AID_ADHA are the two Eid prayers — their default time is Shuruk (sunrise).
  */
+@Serializable
 enum class Prayer {
     FAJR, DHUHR, ASR, MAGHRIB, ISHA, JOMOAA, AID_FITR, AID_ADHA
 }

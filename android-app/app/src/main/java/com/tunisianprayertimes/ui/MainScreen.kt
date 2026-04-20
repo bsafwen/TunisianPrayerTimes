@@ -56,9 +56,11 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.runtime.DisposableEffect
@@ -93,6 +95,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -112,16 +115,24 @@ import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
+import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
 import com.tunisianprayertimes.RamadanOverrideChecker
+import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceVerifyWorker
+import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
+import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.wake.PrayerWakeRepository
+import com.tunisianprayertimes.wake.WakeAlarmScheduler
+import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
 import java.time.LocalDate
 import com.tunisianprayertimes.ui.theme.BannerBg
 import com.tunisianprayertimes.ui.theme.BannerStroke
@@ -144,6 +155,7 @@ import com.tunisianprayertimes.ui.theme.TextMuted
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.UUID
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -154,6 +166,7 @@ fun MainScreen(
     val context = LocalContext.current
     val audioManager = remember { context.getSystemService(Context.AUDIO_SERVICE) as AudioManager }
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
+    val schedulerScope = rememberCoroutineScope()
 
     // Reactive state that gets refreshed on resume
     var refreshTick by remember { mutableIntStateOf(0) }
@@ -172,6 +185,16 @@ fun MainScreen(
     val hasDnd = remember(refreshTick) { notificationManager.isNotificationPolicyAccessGranted }
     val hasAlarm = remember(refreshTick) { hasExactAlarmPermission(context) }
     val hasBattery = remember(refreshTick) { isIgnoringBatteryOptimizations(context) }
+    val hasNotifications = remember(refreshTick) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
+    }
     val hasPhoneState = remember(refreshTick) {
         ContextCompat.checkSelfPermission(
             context,
@@ -179,6 +202,9 @@ fun MainScreen(
         ) == PackageManager.PERMISSION_GRANTED
     }
     val phoneStatePermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { refreshTick++ }
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { refreshTick++ }
 
@@ -189,6 +215,17 @@ fun MainScreen(
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
+        }
+    }
+
+    fun ensureNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 
@@ -215,6 +252,16 @@ fun MainScreen(
         mutableLongStateOf(PrefsManager.getManualSilenceEndsAtMillis(context))
     }
 
+    suspend fun syncWakeScheduling() {
+        if (WakeAlarmScheduler.hasEnabledWakeAlarms(context)) {
+            WakeAlarmVerifyWorker.enqueue(context)
+            WakeAlarmScheduler.scheduleAll(context)
+        } else {
+            WakeAlarmScheduler.cancelAll(context)
+            WakeAlarmVerifyWorker.cancel(context)
+        }
+    }
+
     // Single resume-sync effect — merges all refreshTick observers into one
     // so execution order is deterministic and state is read only once.
     LaunchedEffect(refreshTick) {
@@ -239,6 +286,8 @@ fun MainScreen(
             SilenceScheduler.cancelAll(context)
             SilenceVerifyWorker.cancel(context)
         }
+
+        syncWakeScheduling()
 
         isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
         autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
@@ -268,6 +317,9 @@ fun MainScreen(
     fun rescheduleIfEnabled() {
         if (PrefsManager.isEnabled(context) && hasDnd && hasAlarm) {
             SilenceScheduler.scheduleAll(context)
+        }
+        schedulerScope.launch {
+            syncWakeScheduling()
         }
     }
 
@@ -307,14 +359,16 @@ fun MainScreen(
 
                 // Permission banner
                 AnimatedVisibility(
-                    visible = !hasDnd || !hasAlarm || !hasPhoneState,
+                    visible = !hasDnd || !hasAlarm || !hasNotifications || !hasPhoneState,
                     enter = expandVertically(),
                     exit = shrinkVertically()
                 ) {
                     PermissionBanner(
                         hasDnd = hasDnd,
                         hasAlarm = hasAlarm,
+                        hasNotifications = hasNotifications,
                         hasPhoneState = hasPhoneState,
+                        onRequestNotifications = { ensureNotificationPermission() },
                         onRequestPhoneState = {
                             phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
                         },
@@ -347,6 +401,12 @@ fun MainScreen(
 
                 // Prayer settings
                 PrayerSettingsCard(
+                    delegationId = delegationId,
+                    activity = activity,
+                    onConfigChanged = { rescheduleIfEnabled() }
+                )
+
+                WakeAlarmCard(
                     delegationId = delegationId,
                     activity = activity,
                     onConfigChanged = { rescheduleIfEnabled() }
@@ -593,7 +653,9 @@ private fun StatusCard(isSilent: Boolean, isAppSilenced: Boolean, hasDnd: Boolea
 private fun PermissionBanner(
     hasDnd: Boolean,
     hasAlarm: Boolean,
+    hasNotifications: Boolean,
     hasPhoneState: Boolean,
+    onRequestNotifications: () -> Unit,
     onRequestPhoneState: () -> Unit,
     context: Context
 ) {
@@ -607,6 +669,8 @@ private fun PermissionBanner(
                     context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
                 } else if (!hasAlarm && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+                } else if (!hasNotifications) {
+                    onRequestNotifications()
                 } else if (!hasPhoneState) {
                     onRequestPhoneState()
                 }
@@ -625,6 +689,7 @@ private fun PermissionBanner(
                     !hasDnd && !hasAlarm -> stringResource(R.string.banner_both_missing)
                     !hasDnd -> stringResource(R.string.banner_dnd_missing)
                     !hasAlarm -> stringResource(R.string.banner_alarm_missing)
+                    !hasNotifications -> stringResource(R.string.banner_notifications_missing)
                     else -> stringResource(R.string.banner_phone_state_missing)
                 },
                 fontSize = 13.sp,
@@ -1276,7 +1341,7 @@ private fun PrayerSettingsCard(
                         nextPrayerTime = nextPrayerTime,
                         isNextPrayer = prayer == nextPrayer,
                         activity = activity,
-                        onConfigChanged = onConfigChanged
+                        onConfigChanged = onConfigChanged,
                     )
                 }
 
@@ -1382,6 +1447,170 @@ private fun PrayerSettingsCard(
                 Spacer(Modifier.height(16.dp))
             }
         }
+    }
+}
+
+@Composable
+private fun WakeAlarmCard(
+    delegationId: Int,
+    activity: androidx.appcompat.app.AppCompatActivity,
+    onConfigChanged: () -> Unit,
+) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val wakeRepository = remember(context) { PrayerWakeRepository(context) }
+    val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
+    var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.wake_alarm_section_title),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor
+            )
+
+            Spacer(Modifier.height(4.dp))
+
+            Text(
+                text = stringResource(R.string.wake_alarm_section_subtitle),
+                fontSize = 12.sp,
+                color = TextMuted
+            )
+
+            Spacer(Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = stringResource(R.string.wake_alarm_list_title),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerNameColor,
+                )
+
+                TextButton(
+                    onClick = {
+                        editingWakeAlarm = PrayerWakeConfig(
+                            id = UUID.randomUUID().toString(),
+                            enabled = true,
+                            prayer = WAKE_SUPPORTED_PRAYERS.first(),
+                            playback = WakePlaybackOptions(
+                                ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
+                            ),
+                        )
+                    },
+                ) {
+                    Text(text = stringResource(R.string.wake_alarm_add))
+                }
+            }
+
+            if (wakeAlarms.isEmpty()) {
+                OutlinedCard(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        text = stringResource(R.string.wake_alarm_empty_body),
+                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                        lineHeight = 17.sp,
+                    )
+                }
+            } else {
+                WakeAlarmRowHeader()
+                HorizontalDivider(color = Divider, thickness = 1.dp)
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    wakeAlarms.forEachIndexed { index, wakeAlarm ->
+                        WakeAlarmRow(
+                            alarmName = wakeAlarm.displayTitle(
+                                fallback = context.getString(R.string.wake_alarm_row_title, index + 1),
+                            ),
+                            wakeConfig = wakeAlarm,
+                            onClick = { editingWakeAlarm = wakeAlarm },
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    editingWakeAlarm?.let { wakeAlarm ->
+        val isPersistedAlarm = wakeAlarms.any { existing -> existing.id == wakeAlarm.id }
+        WakeEditorSheet(
+            activity = activity,
+            delegationId = delegationId,
+            initialConfig = wakeAlarm,
+            onDismissRequest = { editingWakeAlarm = null },
+            onSave = { config ->
+                scope.launch {
+                    wakeRepository.saveWakeConfig(config)
+                    editingWakeAlarm = null
+                    onConfigChanged()
+                }
+            },
+            onDelete = if (isPersistedAlarm) {
+                {
+                    scope.launch {
+                        wakeRepository.deleteWakeAlarm(wakeAlarm.id)
+                        editingWakeAlarm = null
+                        onConfigChanged()
+                    }
+                }
+            } else {
+                null
+            },
+        )
+    }
+}
+
+@Composable
+private fun WakeAlarmRowHeader() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = stringResource(R.string.wake_alarm_col_reference),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            color = TextMuted,
+            maxLines = 1,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
+            modifier = Modifier.weight(1.2f)
+        )
+        Text(
+            text = stringResource(R.string.wake_alarm_col_summary),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            color = TextMuted,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
+            modifier = Modifier.weight(2.6f)
+        )
+        Spacer(Modifier.width(24.dp))
     }
 }
 
@@ -1562,7 +1791,7 @@ private fun PrayerRow(
     isNextPrayer: Boolean,
     activity: androidx.appcompat.app.AppCompatActivity,
     onConfigChanged: () -> Unit,
-    onPrayerTimeClick: (() -> Unit)? = null
+    onPrayerTimeClick: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
 
@@ -1814,6 +2043,138 @@ private fun PrayerRow(
 }
 
 @Composable
+private fun WakeAlarmRow(
+    alarmName: String,
+    wakeConfig: PrayerWakeConfig,
+    onClick: () -> Unit,
+) {
+    val enabled = wakeConfig.enabled
+    val prayerName = when (wakeConfig.prayer) {
+        Prayer.FAJR -> stringResource(R.string.prayer_fajr)
+        Prayer.DHUHR -> stringResource(R.string.prayer_dhuhr)
+        Prayer.ASR -> stringResource(R.string.prayer_asr)
+        Prayer.MAGHRIB -> stringResource(R.string.prayer_maghrib)
+        Prayer.ISHA -> stringResource(R.string.prayer_isha)
+        Prayer.JOMOAA -> stringResource(R.string.prayer_jomoaa)
+        Prayer.AID_FITR -> stringResource(R.string.prayer_aid_fitr)
+        Prayer.AID_ADHA -> stringResource(R.string.prayer_aid_adha)
+    }
+    val summaryText = wakeSummaryText(prayerName, wakeConfig)
+
+    OutlinedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .clip(RoundedCornerShape(18.dp)),
+        shape = RoundedCornerShape(18.dp),
+        colors = CardDefaults.outlinedCardColors(
+            containerColor = if (enabled) GreenPrimary.copy(alpha = 0.09f)
+            else GoldLight.copy(alpha = 0.22f)
+        ),
+        border = androidx.compose.foundation.BorderStroke(
+            width = 1.dp,
+            color = if (enabled) GreenPrimary.copy(alpha = 0.16f) else CardBorder.copy(alpha = 0.75f)
+        )
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = alarmName,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = if (enabled) GreenPrimaryDark else PrayerNameColor,
+                modifier = Modifier.weight(1.2f)
+            )
+
+            Column(modifier = Modifier.weight(2.6f)) {
+                Text(
+                    text = summaryText,
+                    fontSize = 12.sp,
+                    color = TextDark,
+                    lineHeight = 16.sp,
+                )
+            }
+
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(
+                        if (enabled) GreenPrimary.copy(alpha = 0.16f)
+                        else Color.White.copy(alpha = 0.72f)
+                    )
+                    .padding(horizontal = 10.dp, vertical = 6.dp),
+            ) {
+                Text(
+                    text = if (enabled) {
+                        stringResource(R.string.wake_summary_status_on)
+                    } else {
+                        stringResource(R.string.wake_summary_status_off)
+                    },
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = if (enabled) GreenPrimaryDark else TextMuted,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun wakeSummaryText(
+    prayerName: String,
+    wakeConfig: PrayerWakeConfig,
+): String {
+    if (!wakeConfig.enabled) {
+        return stringResource(R.string.wake_summary_disabled_body)
+    }
+
+    val mainSummary = when (wakeConfig.mainAlarm.mode) {
+        WakeMainAlarmMode.FIXED_TIME -> stringResource(
+            R.string.wake_summary_fixed,
+            formatClockTime(
+                wakeConfig.mainAlarm.fixedTime.hour,
+                wakeConfig.mainAlarm.fixedTime.minute,
+            ),
+        )
+
+        WakeMainAlarmMode.FROM_NOW -> stringResource(
+            R.string.wake_summary_from_now,
+            wakeConfig.mainAlarm.oneOffOffsetMinutes,
+        )
+
+        WakeMainAlarmMode.PRAYER_RELATIVE -> {
+            val offset = wakeConfig.mainAlarm.prayerOffset
+            if (offset.minutes < 0) {
+                stringResource(
+                    R.string.wake_summary_relative_before,
+                    prayerName,
+                    offset.absoluteMinutes,
+                )
+            } else {
+                stringResource(
+                    R.string.wake_summary_relative_after,
+                    prayerName,
+                    offset.absoluteMinutes,
+                )
+            }
+        }
+    }
+
+    return if (wakeConfig.subAlarms.isEmpty()) {
+        mainSummary
+    } else {
+        stringResource(
+            R.string.wake_summary_with_subalarms,
+            mainSummary,
+            wakeConfig.subAlarms.size,
+        )
+    }
+}
+
+@Composable
 private fun NumberInput(
     value: String,
     onValueChange: (String) -> Unit,
@@ -1850,7 +2211,8 @@ private fun NumberInput(
             textStyle = TextStyle(
                 fontSize = 14.sp,
                 color = TextDark,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Right,
+                textDirection = TextDirection.Ltr
             ),
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             singleLine = true,
@@ -2295,6 +2657,9 @@ private fun formatDurationText(totalMinutes: Int): String {
     }
 }
 
+private fun formatClockTime(hour: Int, minute: Int): String =
+    String.format(Locale.US, "%02d:%02d", hour, minute)
+
 private fun formatTimeOfDay(targetTimeInMillis: Long): String {
     val calendar = Calendar.getInstance().apply { timeInMillis = targetTimeInMillis }
     return String.format(
@@ -2304,3 +2669,7 @@ private fun formatTimeOfDay(targetTimeInMillis: Long): String {
         calendar.get(Calendar.MINUTE)
     )
 }
+
+private fun PrayerWakeConfig.displayTitle(fallback: String): String =
+    title.trim().ifEmpty { fallback }
+

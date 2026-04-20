@@ -18,6 +18,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Vibrate when silence period ends to alert about suppressed notifications -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Run wake alarm playback as a foreground service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- Required for media playback foreground services on newer Android versions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <!-- Needed on Android 13+ so wake playback notifications can surface normally -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Allow wake alarms to present as full-screen alarm UI when permitted by the system -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <!-- Needed to observe phone call state changes -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- We don't use advertising; remove AD_ID added transitively by Firebase/Play Services -->
@@ -76,6 +84,28 @@
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".wake.WakeAlertActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:showWhenLocked="true"
+            android:theme="@style/Theme.TunisianPrayerTimes"
+            android:turnScreenOn="true" />
+
+        <service
+            android:name=".wake.WakePlaybackService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <receiver
+            android:name=".wake.WakeActionReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".wake.WakeAlarmReceiver"
+            android:exported="false" />
 
 
     </application>

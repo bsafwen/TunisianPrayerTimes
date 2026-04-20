@@ -22,6 +22,12 @@ object SilenceAlarmComputer {
         val tomorrowFajrScheduled: Boolean
     )
 
+    data class SilenceWindowOverlap(
+        val prayer: Prayer,
+        val startAtMillis: Long,
+        val endAtMillis: Long,
+    )
+
     fun compute(
         now: Calendar,
         todayTimes: DayPrayerTimes,
@@ -179,5 +185,38 @@ object SilenceAlarmComputer {
         }
 
         return unsilenceEnd.after(nextStart)
+    }
+
+    fun overlapForTrigger(
+        triggerAtMillis: Long,
+        prayerDay: Calendar,
+        prayerTimes: DayPrayerTimes,
+        configs: Map<Prayer, PrayerSilenceConfig>,
+        isFriday: Boolean = false,
+        jomoaaHour: Int = -1,
+        jomoaaMinute: Int = -1,
+    ): SilenceWindowOverlap? {
+        val day = prayerDay.clone() as Calendar
+        return prayerTimes
+            .scheduledPrayers(
+                isFriday = isFriday,
+                jomoaaHour = jomoaaHour,
+                jomoaaMinute = jomoaaMinute,
+            )
+            .firstNotNullOfOrNull { prayerTime ->
+                val config = configs[prayerTime.prayer] ?: PrayerSilenceConfig()
+                val silenceStart = computeSilenceStart(day, prayerTime, config)
+                val unsilenceEnd = computeUnsilenceEnd(day, silenceStart, config)
+
+                if (triggerAtMillis in silenceStart.timeInMillis until unsilenceEnd.timeInMillis) {
+                    SilenceWindowOverlap(
+                        prayer = prayerTime.prayer,
+                        startAtMillis = silenceStart.timeInMillis,
+                        endAtMillis = unsilenceEnd.timeInMillis,
+                    )
+                } else {
+                    null
+                }
+            }
     }
 }
