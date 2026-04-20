@@ -100,9 +100,6 @@ fun WakeEditorSheet(
     onDelete: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
-    var titleText by remember(initialConfig.id, initialConfig.title) {
-        mutableStateOf(initialConfig.title)
-    }
     var enabled by remember(initialConfig.id, initialConfig.enabled) {
         mutableStateOf(initialConfig.enabled)
     }
@@ -197,7 +194,6 @@ fun WakeEditorSheet(
 
     val draftConfig = remember(
         initialConfig,
-        titleText,
         enabled,
         mode,
         selectedPrayer,
@@ -210,7 +206,7 @@ fun WakeEditorSheet(
         subAlarms,
     ) {
         initialConfig.copy(
-            title = titleText.trim(),
+            title = "",
             prayer = selectedPrayer,
             enabled = enabled,
             mainAlarm = WakeMainAlarmConfig(
@@ -253,19 +249,6 @@ fun WakeEditorSheet(
                 fontSize = 13.sp,
                 color = TextMuted,
                 lineHeight = 18.sp,
-            )
-
-            OutlinedTextField(
-                value = titleText,
-                onValueChange = { newValue ->
-                    titleText = newValue.take(40)
-                },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text(stringResource(R.string.wake_editor_name_label)) },
-                supportingText = {
-                    Text(text = stringResource(R.string.wake_editor_name_hint))
-                },
-                singleLine = true,
             )
 
             OutlinedCard(
