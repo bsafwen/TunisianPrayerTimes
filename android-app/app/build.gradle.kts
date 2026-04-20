@@ -45,8 +45,8 @@ android {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
         targetSdk = 36
-        versionCode = 72
-        versionName = "2.61"
+        versionCode = 73
+        versionName = "2.62"
         
         androidResources {
             localeFilters += "ar"
@@ -102,8 +102,10 @@ dependencies {
     implementation("androidx.core:core-ktx:1.16.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("androidx.work:work-runtime-ktx:2.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
     // Compose
     implementation(platform("androidx.compose:compose-bom:2025.04.01"))
