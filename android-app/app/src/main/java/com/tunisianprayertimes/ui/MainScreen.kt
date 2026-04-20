@@ -16,6 +16,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -52,6 +53,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
@@ -1143,7 +1145,17 @@ private fun PrayerSettingsCard(
     }
 
     LaunchedEffect(currentDayMillis) {
-        if (currentDayMillis == lastCurrentDayMillis) return@LaunchedEffect
+        // After process death, selectedDate is restored from rememberSaveable
+        // but lastCurrentDayMillis is re-initialized to currentDayMillis.
+        // Detect stale selectedDate that predates today and auto-advance it.
+        if (currentDayMillis == lastCurrentDayMillis) {
+            if (!isSameCalendarDay(selectedDate, currentDayMillis) &&
+                selectedDate < currentDayMillis
+            ) {
+                selectedDate = currentDayMillis
+            }
+            return@LaunchedEffect
+        }
         if (isSameCalendarDay(selectedDate, lastCurrentDayMillis)) {
             selectedDate = currentDayMillis
         }
@@ -1490,34 +1502,6 @@ private fun WakeAlarmCard(
 
             Spacer(Modifier.height(12.dp))
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = stringResource(R.string.wake_alarm_list_title),
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PrayerNameColor,
-                )
-
-                TextButton(
-                    onClick = {
-                        editingWakeAlarm = PrayerWakeConfig(
-                            id = UUID.randomUUID().toString(),
-                            enabled = true,
-                            prayer = WAKE_SUPPORTED_PRAYERS.first(),
-                            playback = WakePlaybackOptions(
-                                ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
-                            ),
-                        )
-                    },
-                ) {
-                    Text(text = stringResource(R.string.wake_alarm_add))
-                }
-            }
-
             if (wakeAlarms.isEmpty()) {
                 OutlinedCard(
                     modifier = Modifier.fillMaxWidth(),
@@ -1550,6 +1534,29 @@ private fun WakeAlarmCard(
                         )
                     }
                 }
+            }
+
+            Spacer(Modifier.height(10.dp))
+
+            OutlinedButton(
+                onClick = {
+                    editingWakeAlarm = PrayerWakeConfig(
+                        id = UUID.randomUUID().toString(),
+                        enabled = true,
+                        prayer = WAKE_SUPPORTED_PRAYERS.first(),
+                        playback = WakePlaybackOptions(
+                            ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
+                        ),
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = GreenPrimary),
+                border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.5f)),
+            ) {
+                Text(text = "+", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Spacer(Modifier.width(6.dp))
+                Text(text = stringResource(R.string.wake_alarm_add), fontSize = 13.sp)
             }
         }
     }
@@ -2214,7 +2221,9 @@ private fun NumberInput(
                 textAlign = TextAlign.Right,
                 textDirection = TextDirection.Ltr
             ),
-            keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = if (allowNegative) KeyboardType.Phone else keyboardType
+            ),
             singleLine = true,
             decorationBox = { innerTextField ->
                 Box(
