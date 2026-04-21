@@ -73,9 +73,13 @@ enum class RingtonePreset {
 }
 
 @Serializable
+enum class MathDifficulty { EASY, INTERMEDIATE, HARD }
+
+@Serializable
 data class WakePlaybackOptions(
     val vibrationOnly: Boolean = false,
     val wakeUpCheckEnabled: Boolean = false,
+    val mathDifficulty: MathDifficulty = MathDifficulty.EASY,
     val progressiveVolume: Boolean = false,
     val snoreTrackingEnabled: Boolean = false,
     val ringtone: RingtonePreset = RingtonePreset.DEFAULT_ALARM,

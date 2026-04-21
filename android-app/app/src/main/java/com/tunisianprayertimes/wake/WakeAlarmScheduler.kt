@@ -230,7 +230,7 @@ object WakeAlarmScheduler {
 			progressiveVolume = playback.progressiveVolume,
 			snoreTrackingEnabled = playback.snoreTrackingEnabled,
 			wakeUpCheckChallenge = if (playback.wakeUpCheckEnabled) {
-				wakeUpCheckChallengeFor(eventId, triggerAtMillis)
+				wakeUpCheckChallengeFor(eventId, triggerAtMillis, playback.mathDifficulty)
 			} else {
 				null
 			},

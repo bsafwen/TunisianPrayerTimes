@@ -1,24 +1,34 @@
 package com.tunisianprayertimes.wake
 
+import com.tunisianprayertimes.MathDifficulty
 import java.util.Collections
 import java.util.Random
 
-internal fun wakeUpCheckChallengeFor(eventId: String, triggerAtMillis: Long): WakeUpCheckChallenge {
+internal fun wakeUpCheckChallengeFor(
+    eventId: String,
+    triggerAtMillis: Long,
+    difficulty: MathDifficulty = MathDifficulty.EASY,
+): WakeUpCheckChallenge {
     val sequence = (triggerAtMillis / 60_000L).coerceAtLeast(0L)
     val seed = triggerAtMillis xor eventId.hashCode().toLong()
-    return wakeUpCheckChallengeAt(sequence, seed)
+    return wakeUpCheckChallengeAt(sequence, seed, difficulty)
 }
 
-private fun wakeUpCheckChallengeAt(sequence: Long, seed: Long): WakeUpCheckChallenge {
+private fun wakeUpCheckChallengeAt(
+    sequence: Long,
+    seed: Long,
+    difficulty: MathDifficulty,
+): WakeUpCheckChallenge {
     require(sequence >= 0L) { "sequence must be non-negative" }
 
-    val cycle = sequence / baseChallenges.size
+    val challenges = challengesForDifficulty(difficulty)
+    val cycle = sequence / challenges.size
     require(cycle <= Int.MAX_VALUE / CYCLE_LEFT_OPERAND_OFFSET) { "sequence is too large" }
 
-    val shuffledChallenges = baseChallenges.toMutableList().apply {
+    val shuffledChallenges = challenges.toMutableList().apply {
         Collections.shuffle(this, Random(seed xor (cycle * CYCLE_SHUFFLE_MULTIPLIER)))
     }
-    val baseChallenge = shuffledChallenges[(sequence % baseChallenges.size).toInt()]
+    val baseChallenge = shuffledChallenges[(sequence % challenges.size).toInt()]
     val leftOperandOffset = (cycle * CYCLE_LEFT_OPERAND_OFFSET).toInt()
 
     return baseChallenge.copy(
@@ -27,7 +37,44 @@ private fun wakeUpCheckChallengeAt(sequence: Long, seed: Long): WakeUpCheckChall
     )
 }
 
-private val baseChallenges: List<WakeUpCheckChallenge> = buildList {
+private fun challengesForDifficulty(difficulty: MathDifficulty): List<WakeUpCheckChallenge> =
+    when (difficulty) {
+        MathDifficulty.EASY -> easyChallenges
+        MathDifficulty.INTERMEDIATE -> intermediateChallenges
+        MathDifficulty.HARD -> hardChallenges
+    }
+
+private val easyChallenges: List<WakeUpCheckChallenge> = buildList {
+    for (leftOperand in 2..9) {
+        for (rightOperand in 1..9) {
+            add(
+                WakeUpCheckChallenge(
+                    leftOperand = leftOperand,
+                    rightOperand = rightOperand,
+                    operatorSymbol = "+",
+                    answer = leftOperand + rightOperand,
+                ),
+            )
+        }
+    }
+
+    for (leftOperand in 10..18) {
+        for (rightOperand in 1..9) {
+            if (leftOperand > rightOperand) {
+                add(
+                    WakeUpCheckChallenge(
+                        leftOperand = leftOperand,
+                        rightOperand = rightOperand,
+                        operatorSymbol = "−",
+                        answer = leftOperand - rightOperand,
+                    ),
+                )
+            }
+        }
+    }
+}
+
+private val intermediateChallenges: List<WakeUpCheckChallenge> = buildList {
     for (leftOperand in 11..23 step 2) {
         for (rightOperand in 4..11) {
             add(
@@ -48,10 +95,40 @@ private val baseChallenges: List<WakeUpCheckChallenge> = buildList {
                 WakeUpCheckChallenge(
                     leftOperand = leftOperand,
                     rightOperand = rightOperand,
-                    operatorSymbol = "-",
+                    operatorSymbol = "−",
                     answer = difference,
                 ),
             )
+        }
+    }
+}
+
+private val hardChallenges: List<WakeUpCheckChallenge> = buildList {
+    for (leftOperand in 12..25) {
+        for (rightOperand in 3..9) {
+            add(
+                WakeUpCheckChallenge(
+                    leftOperand = leftOperand,
+                    rightOperand = rightOperand,
+                    operatorSymbol = "×",
+                    answer = leftOperand * rightOperand,
+                ),
+            )
+        }
+    }
+
+    for (leftOperand in 30..99 step 3) {
+        for (rightOperand in 15..49) {
+            if (leftOperand > rightOperand) {
+                add(
+                    WakeUpCheckChallenge(
+                        leftOperand = leftOperand,
+                        rightOperand = rightOperand,
+                        operatorSymbol = "+",
+                        answer = leftOperand + rightOperand,
+                    ),
+                )
+            }
         }
     }
 }
