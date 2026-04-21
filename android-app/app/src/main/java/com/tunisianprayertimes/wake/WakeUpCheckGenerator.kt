@@ -22,19 +22,10 @@ private fun wakeUpCheckChallengeAt(
     require(sequence >= 0L) { "sequence must be non-negative" }
 
     val challenges = challengesForDifficulty(difficulty)
-    val cycle = sequence / challenges.size
-    require(cycle <= Int.MAX_VALUE / CYCLE_LEFT_OPERAND_OFFSET) { "sequence is too large" }
-
     val shuffledChallenges = challenges.toMutableList().apply {
-        Collections.shuffle(this, Random(seed xor (cycle * CYCLE_SHUFFLE_MULTIPLIER)))
+        Collections.shuffle(this, Random(seed))
     }
-    val baseChallenge = shuffledChallenges[(sequence % challenges.size).toInt()]
-    val leftOperandOffset = (cycle * CYCLE_LEFT_OPERAND_OFFSET).toInt()
-
-    return baseChallenge.copy(
-        leftOperand = baseChallenge.leftOperand + leftOperandOffset,
-        answer = baseChallenge.answer + leftOperandOffset,
-    )
+    return shuffledChallenges[(sequence % challenges.size).toInt()]
 }
 
 private fun challengesForDifficulty(difficulty: MathDifficulty): List<WakeUpCheckChallenge> =
@@ -132,6 +123,3 @@ private val hardChallenges: List<WakeUpCheckChallenge> = buildList {
         }
     }
 }
-
-private const val CYCLE_LEFT_OPERAND_OFFSET = 16
-private const val CYCLE_SHUFFLE_MULTIPLIER = 1_103_515_245L
