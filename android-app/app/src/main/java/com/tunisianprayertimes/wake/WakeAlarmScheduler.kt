@@ -12,6 +12,7 @@ import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.WakeAlarmComputer
+import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.WakeMainAlarmMode
 import java.util.Calendar
 import kotlin.math.abs
@@ -102,20 +103,24 @@ object WakeAlarmScheduler {
 	) {
 		val pendingIntent = createPendingIntent(context, trigger, eventId)
 
-		if (trigger.isSubAlarm) {
-			alarmManager.setExactAndAllowWhileIdle(
-				AlarmManager.RTC_WAKEUP,
-				trigger.triggerAtMillis,
-				pendingIntent,
-			)
-		} else {
-			alarmManager.setAlarmClock(
-				AlarmManager.AlarmClockInfo(
+		try {
+			if (trigger.isSubAlarm) {
+				alarmManager.setExactAndAllowWhileIdle(
+					AlarmManager.RTC_WAKEUP,
 					trigger.triggerAtMillis,
-					WakePlaybackService.alarmClockInfoIntent(context),
-				),
-				pendingIntent,
-			)
+					pendingIntent,
+				)
+			} else {
+				alarmManager.setAlarmClock(
+					AlarmManager.AlarmClockInfo(
+						trigger.triggerAtMillis,
+						WakePlaybackService.alarmClockInfoIntent(context),
+					),
+					pendingIntent,
+				)
+			}
+		} catch (e: SecurityException) {
+			Log.w(TAG, "Exact alarm denied for $eventId; skipping", e)
 		}
 	}
 
@@ -137,6 +142,9 @@ object WakeAlarmScheduler {
 				customRingtoneUri = payload.customRingtoneUri,
 				vibrationOnly = payload.vibrationOnly,
 				wakeUpCheckEnabled = payload.wakeUpCheckEnabled,
+				wakeUpCheckType = payload.wakeUpCheckType,
+				whackAMoleKillTarget = payload.whackAMoleKillTarget,
+				wakeUpCheckSteps = payload.wakeUpCheckSteps,
 				progressiveVolume = payload.progressiveVolume,
 				snoreTrackingEnabled = payload.snoreTrackingEnabled,
 				awakeCheckEnabled = payload.awakeCheckEnabled,
@@ -229,6 +237,10 @@ object WakeAlarmScheduler {
 			customRingtoneUri = playback.customRingtoneUri,
 			vibrationOnly = playback.vibrationOnly,
 			wakeUpCheckEnabled = playback.wakeUpCheckEnabled,
+			wakeUpCheckType = playback.wakeUpCheckType,
+			wakeUpCheckDifficulty = playback.mathDifficulty,
+			whackAMoleKillTarget = whackAMoleKillTargetFor(playback.mathDifficulty),
+			wakeUpCheckSteps = playback.effectiveWakeUpCheckSteps,
 			progressiveVolume = playback.progressiveVolume,
 			snoreTrackingEnabled = playback.snoreTrackingEnabled,
 			awakeCheckEnabled = playback.awakeCheckEnabled,
@@ -247,6 +259,12 @@ object WakeAlarmScheduler {
 
 	private fun Int.toOffsetDirection(): OffsetDirection =
 		if (this < 0) OffsetDirection.BEFORE else OffsetDirection.AFTER
+
+	private fun whackAMoleKillTargetFor(difficulty: MathDifficulty): Int = when (difficulty) {
+		MathDifficulty.EASY -> 5
+		MathDifficulty.INTERMEDIATE -> 10
+		MathDifficulty.HARD -> 15
+	}
 
 	private fun Int.toMillis(): Long = this * 60_000L
 

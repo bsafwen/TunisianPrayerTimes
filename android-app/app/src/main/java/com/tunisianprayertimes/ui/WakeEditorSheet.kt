@@ -12,6 +12,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -64,6 +65,8 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.ClockTime
 import com.tunisianprayertimes.MathDifficulty
+import com.tunisianprayertimes.WakeUpCheckStep
+import com.tunisianprayertimes.WakeUpCheckType
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.Prayer
@@ -96,6 +99,18 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import kotlin.math.abs
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.window.Dialog
+import com.tunisianprayertimes.ui.theme.BgCream
+import com.tunisianprayertimes.wake.GyroscopeMazeGame
+import com.tunisianprayertimes.wake.WhackAMoleGame
+import com.tunisianprayertimes.wake.wakeUpCheckChallengeFor
+import com.tunisianprayertimes.wake.wakeUpCheckChallengeForStep
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -812,6 +827,19 @@ private fun WakePlaybackControls(
     playback: WakePlaybackOptions,
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
 ) {
+    var previewStepIndex by remember { mutableStateOf<Int?>(null) }
+    val previewSteps = playback.wakeUpCheckSteps.ifEmpty {
+        listOf(WakeUpCheckStep(playback.wakeUpCheckType, playback.mathDifficulty))
+    }
+    if (previewStepIndex != null && previewStepIndex!! < previewSteps.size) {
+        val step = previewSteps[previewStepIndex!!]
+        WakeUpCheckPreviewDialog(
+            checkType = step.type,
+            difficulty = step.difficulty,
+            onDismiss = { previewStepIndex = null },
+        )
+    }
+
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(
             text = title,
@@ -892,32 +920,119 @@ private fun WakePlaybackControls(
         }
 
         AnimatedVisibility(visible = playback.wakeUpCheckEnabled) {
+            val steps = playback.wakeUpCheckSteps.ifEmpty {
+                listOf(WakeUpCheckStep(playback.wakeUpCheckType, playback.mathDifficulty))
+            }
+
             Column(
                 modifier = Modifier.padding(start = 14.dp, end = 14.dp, bottom = 12.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                Text(
-                    text = stringResource(R.string.wake_editor_math_difficulty_title),
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = TextDark,
-                )
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    FilterChip(
-                        selected = playback.mathDifficulty == MathDifficulty.EASY,
-                        onClick = { onPlaybackChange(playback.copy(mathDifficulty = MathDifficulty.EASY)) },
-                        label = { Text(stringResource(R.string.wake_editor_math_difficulty_easy)) },
-                    )
-                    FilterChip(
-                        selected = playback.mathDifficulty == MathDifficulty.INTERMEDIATE,
-                        onClick = { onPlaybackChange(playback.copy(mathDifficulty = MathDifficulty.INTERMEDIATE)) },
-                        label = { Text(stringResource(R.string.wake_editor_math_difficulty_intermediate)) },
-                    )
-                    FilterChip(
-                        selected = playback.mathDifficulty == MathDifficulty.HARD,
-                        onClick = { onPlaybackChange(playback.copy(mathDifficulty = MathDifficulty.HARD)) },
-                        label = { Text(stringResource(R.string.wake_editor_math_difficulty_hard)) },
-                    )
+                steps.forEachIndexed { index, step ->
+                    OutlinedCard(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.08f)),
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalArrangement = Arrangement.spacedBy(6.dp),
+                        ) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.wake_editor_check_step_label, index + 1),
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = TextDark,
+                                )
+                                if (steps.size > 1) {
+                                    TextButton(onClick = {
+                                        val updated = steps.toMutableList().apply { removeAt(index) }
+                                        onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                                    }) {
+                                        Text("✕", fontSize = 14.sp)
+                                    }
+                                }
+                            }
+                            Text(
+                                text = stringResource(R.string.wake_editor_check_type_title),
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = TextMuted,
+                            )
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                WakeUpCheckType.entries.forEach { type ->
+                                    FilterChip(
+                                        selected = step.type == type,
+                                        onClick = {
+                                            val updated = steps.toMutableList().apply {
+                                                set(index, step.copy(type = type))
+                                            }
+                                            onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                                        },
+                                        label = {
+                                            Text(
+                                                text = when (type) {
+                                                    WakeUpCheckType.MATH -> stringResource(R.string.wake_editor_check_type_math)
+                                                    WakeUpCheckType.WHACK_A_MOLE -> stringResource(R.string.wake_editor_check_type_whack_a_mole)
+                                                    WakeUpCheckType.GYROSCOPE_MAZE -> stringResource(R.string.wake_editor_check_type_gyroscope_maze)
+                                                },
+                                                fontSize = 11.sp,
+                                            )
+                                        },
+                                    )
+                                }
+                            }
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 2.dp))
+                            Text(
+                                text = stringResource(R.string.wake_editor_math_difficulty_title),
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = TextMuted,
+                            )
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                MathDifficulty.entries.forEach { diff ->
+                                    FilterChip(
+                                        selected = step.difficulty == diff,
+                                        onClick = {
+                                            val updated = steps.toMutableList().apply {
+                                                set(index, step.copy(difficulty = diff))
+                                            }
+                                            onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                                        },
+                                        label = {
+                                            Text(
+                                                text = when (diff) {
+                                                    MathDifficulty.EASY -> stringResource(R.string.wake_editor_math_difficulty_easy)
+                                                    MathDifficulty.INTERMEDIATE -> stringResource(R.string.wake_editor_math_difficulty_intermediate)
+                                                    MathDifficulty.HARD -> stringResource(R.string.wake_editor_math_difficulty_hard)
+                                                },
+                                                fontSize = 11.sp,
+                                            )
+                                        },
+                                    )
+                                }
+                            }
+                            TextButton(
+                                onClick = { previewStepIndex = index },
+                                modifier = Modifier.fillMaxWidth(),
+                            ) {
+                                Text(stringResource(R.string.wake_editor_check_preview_button), fontSize = 11.sp)
+                            }
+                        }
+                    }
+                }
+                OutlinedButton(
+                    onClick = {
+                        val updated = steps + WakeUpCheckStep()
+                        onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.wake_editor_check_add_step))
                 }
             }
         }
@@ -996,6 +1111,125 @@ private fun WakePlaybackControls(
             onCustomSelected = { uri ->
                 onPlaybackChange(playback.copy(ringtone = RingtonePreset.CUSTOM, customRingtoneUri = uri))
             },
+        )
+    }
+}
+
+@Composable
+private fun WakeUpCheckPreviewDialog(
+    checkType: WakeUpCheckType,
+    difficulty: MathDifficulty,
+    onDismiss: () -> Unit,
+) {
+    val challenge = remember(checkType, difficulty) {
+        if (checkType == WakeUpCheckType.MATH) {
+            wakeUpCheckChallengeFor("preview", System.currentTimeMillis(), difficulty)
+        } else null
+    }
+    val killTarget = remember(difficulty) {
+        when (difficulty) {
+            MathDifficulty.EASY -> 5
+            MathDifficulty.INTERMEDIATE -> 10
+            MathDifficulty.HARD -> 15
+        }
+    }
+    val gradient = Brush.verticalGradient(listOf(GreenPrimaryDark, GreenPrimary, BgCream))
+
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = androidx.compose.ui.window.DialogProperties(
+            dismissOnClickOutside = false,
+        ),
+    ) {
+        Surface(
+            shape = RoundedCornerShape(16.dp),
+        ) {
+            Box(
+                modifier = Modifier
+                    .background(gradient)
+                    .padding(24.dp),
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_check_preview_title),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onPrimary,
+                    )
+
+                    if (checkType == WakeUpCheckType.MATH && challenge != null) {
+                        WakeUpCheckMathPreview(challenge = challenge)
+                    } else if (checkType == WakeUpCheckType.WHACK_A_MOLE) {
+                        WhackAMoleGame(
+                            killTarget = killTarget,
+                            difficulty = difficulty,
+                            onCompleted = { /* no-op in preview */ },
+                        )
+                    } else if (checkType == WakeUpCheckType.GYROSCOPE_MAZE) {
+                        GyroscopeMazeGame(
+                            difficulty = difficulty,
+                            onCompleted = { /* no-op in preview */ },
+                        )
+                    }
+
+                    Button(
+                        onClick = onDismiss,
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = GreenPrimaryDark,
+                        ),
+                    ) {
+                        Text(stringResource(R.string.wake_editor_check_preview_close))
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeUpCheckMathPreview(challenge: com.tunisianprayertimes.wake.WakeUpCheckChallenge) {
+    var answer by rememberSaveable { mutableStateOf("") }
+    val passed = challenge.matches(answer)
+
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Text(
+            text = stringResource(R.string.wake_alarm_solve_wake_up_check_prompt),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onPrimary,
+        )
+        Text(
+            text = challenge.prompt,
+            style = MaterialTheme.typography.headlineMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onPrimary,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        OutlinedTextField(
+            value = answer,
+            onValueChange = { input ->
+                answer = input.filterIndexed { index, c ->
+                    c.isDigit() || (c == '-' && index == 0)
+                }
+            },
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(stringResource(R.string.wake_alarm_answer)) },
+            singleLine = true,
+            textStyle = LocalTextStyle.current.copy(
+                textAlign = TextAlign.Right,
+                textDirection = TextDirection.Ltr,
+            ),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        )
+        Text(
+            text = if (passed) {
+                stringResource(R.string.wake_alarm_wake_up_check_complete)
+            } else {
+                stringResource(R.string.wake_alarm_wake_up_check_incomplete)
+            },
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onPrimary,
         )
     }
 }

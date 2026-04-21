@@ -45,8 +45,8 @@ android {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
         targetSdk = 36
-        versionCode = 84
-        versionName = "2.73"
+        versionCode = 85
+        versionName = "2.74"
         
         androidResources {
             localeFilters += "ar"
@@ -61,6 +61,7 @@ android {
     buildTypes {
         debug {
             signingConfig = signingConfigs.getByName("debug")
+            applicationIdSuffix = ".dev"
         }
         release {
             isMinifyEnabled = true

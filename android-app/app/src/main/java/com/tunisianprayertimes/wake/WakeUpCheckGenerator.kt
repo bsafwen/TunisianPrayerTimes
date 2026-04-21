@@ -14,6 +14,15 @@ internal fun wakeUpCheckChallengeFor(
     return wakeUpCheckChallengeAt(sequence, seed, difficulty)
 }
 
+internal fun wakeUpCheckChallengeForStep(
+    eventId: String,
+    stepIndex: Int,
+    difficulty: MathDifficulty,
+): WakeUpCheckChallenge {
+    val seed = eventId.hashCode().toLong() xor (stepIndex.toLong() * 7919L)
+    return wakeUpCheckChallengeAt(stepIndex.toLong(), seed, difficulty)
+}
+
 private fun wakeUpCheckChallengeAt(
     sequence: Long,
     seed: Long,
