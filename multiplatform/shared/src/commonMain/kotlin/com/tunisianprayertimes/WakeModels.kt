@@ -82,6 +82,8 @@ data class WakePlaybackOptions(
     val mathDifficulty: MathDifficulty = MathDifficulty.EASY,
     val progressiveVolume: Boolean = false,
     val snoreTrackingEnabled: Boolean = false,
+    val awakeCheckEnabled: Boolean = true,
+    val awakeCheckDelayMinutes: Int = 7,
     val ringtone: RingtonePreset = RingtonePreset.DEFAULT_ALARM,
     val customRingtoneUri: String? = null,
 )

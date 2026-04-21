@@ -72,7 +72,7 @@ class WakePlaybackService : Service() {
                     addAction(
                         android.R.drawable.ic_menu_close_clear_cancel,
                         getString(R.string.wake_alarm_stop),
-                        stopPendingIntent(this@WakePlaybackService, payload.eventId),
+                        stopPendingIntent(this@WakePlaybackService, payload),
                     )
                 }
             }
@@ -233,6 +233,8 @@ class WakePlaybackService : Service() {
                     wakeUpCheckEnabled = payload.wakeUpCheckEnabled,
                     progressiveVolume = payload.progressiveVolume,
                     snoreTrackingEnabled = payload.snoreTrackingEnabled,
+                    awakeCheckEnabled = payload.awakeCheckEnabled,
+                    awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
                     wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
                     isSubAlarm = payload.isSubAlarm,
                     subAlarmId = payload.subAlarmId,
@@ -249,14 +251,20 @@ class WakePlaybackService : Service() {
         )
     }
 
-    private fun stopPendingIntent(context: Context, eventId: String): PendingIntent {
+    private fun stopPendingIntent(context: Context, payload: WakeTriggerPayload): PendingIntent {
         val intent = Intent(context, WakeActionReceiver::class.java)
             .setAction(ACTION_STOP_WAKE_ALARM)
-            .populateWakeStopPayload(eventId)
+            .populateWakeStopPayload(payload.eventId)
+            .putExtra(EXTRA_AWAKE_CHECK_ENABLED, payload.awakeCheckEnabled)
+            .putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, payload.awakeCheckDelayMinutes)
+            .putExtra(EXTRA_RINGTONE, payload.ringtone.name)
+            .apply {
+                payload.customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
+            }
 
         return PendingIntent.getBroadcast(
             context,
-            wakeEventRequestCode(eventId),
+            wakeEventRequestCode(payload.eventId),
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
@@ -290,6 +298,8 @@ class WakePlaybackService : Service() {
                     wakeUpCheckEnabled = payload.wakeUpCheckEnabled,
                     progressiveVolume = payload.progressiveVolume,
                     snoreTrackingEnabled = payload.snoreTrackingEnabled,
+                    awakeCheckEnabled = payload.awakeCheckEnabled,
+                    awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
                     wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
                     isSubAlarm = payload.isSubAlarm,
                     subAlarmId = payload.subAlarmId,

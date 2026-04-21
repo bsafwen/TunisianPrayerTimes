@@ -82,6 +82,7 @@ class WakeAlertActivity : AppCompatActivity() {
                     payload = payload,
                     onStop = {
                         stopService(Intent(this, WakePlaybackService::class.java))
+                        payload?.let { p -> scheduleAwakeCheckIfEnabled(p) }
                         finish()
                     },
                     onOpenApp = {
@@ -130,6 +131,34 @@ class WakeAlertActivity : AppCompatActivity() {
             )
         }
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    }
+
+    private fun scheduleAwakeCheckIfEnabled(payload: WakeTriggerPayload) {
+        if (!payload.awakeCheckEnabled) return
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as android.app.AlarmManager
+        val triggerAtMillis = System.currentTimeMillis() + payload.awakeCheckDelayMinutes * 60_000L
+
+        val intent = Intent(this, AwakeCheckReceiver::class.java)
+            .setAction(AwakeCheckReceiver.ACTION_START_AWAKE_CHECK)
+            .putExtra(EXTRA_EVENT_ID, payload.eventId)
+            .putExtra(EXTRA_RINGTONE, payload.ringtone.name)
+            .apply {
+                payload.customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
+            }
+
+        val pendingIntent = android.app.PendingIntent.getBroadcast(
+            this,
+            "awake_check_schedule".hashCode(),
+            intent,
+            android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE,
+        )
+
+        alarmManager.setExactAndAllowWhileIdle(
+            android.app.AlarmManager.RTC_WAKEUP,
+            triggerAtMillis,
+            pendingIntent,
+        )
     }
 }
 
