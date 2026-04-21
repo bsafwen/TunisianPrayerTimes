@@ -137,6 +137,8 @@ import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
 import java.time.LocalDate
+import java.util.Date
+import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.ui.theme.BannerBg
 import com.tunisianprayertimes.ui.theme.BannerStroke
 import com.tunisianprayertimes.ui.theme.BannerText
@@ -1511,9 +1513,13 @@ private fun WakeAlarmCard(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     wakeAlarms.forEachIndexed { index, wakeAlarm ->
+                        val nextMillis = remember(wakeAlarm, delegationId) {
+                            nextWakeAlarmMillis(context, delegationId, wakeAlarm)
+                        }
                         WakeAlarmRow(
                             alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
                             wakeConfig = wakeAlarm,
+                            nextAlarmMillis = nextMillis,
                             onClick = { editingWakeAlarm = wakeAlarm },
                         )
                     }
@@ -2058,6 +2064,7 @@ private fun PrayerRow(
 private fun WakeAlarmRow(
     alarmName: String,
     wakeConfig: PrayerWakeConfig,
+    nextAlarmMillis: Long?,
     onClick: () -> Unit,
 ) {
     val enabled = wakeConfig.enabled
@@ -2103,16 +2110,34 @@ private fun WakeAlarmRow(
                 modifier = Modifier.weight(1.25f)
             )
 
-            Text(
-                text = summaryText,
-                fontSize = 12.sp,
-                color = TextDark,
-                lineHeight = 16.sp,
-                textAlign = TextAlign.Center,
+            Column(
                 modifier = Modifier
                     .weight(2.55f)
-                    .padding(horizontal = 12.dp)
-            )
+                    .padding(horizontal = 12.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Text(
+                    text = summaryText,
+                    fontSize = 12.sp,
+                    color = TextDark,
+                    lineHeight = 16.sp,
+                    textAlign = TextAlign.Center,
+                )
+                if (nextAlarmMillis != null) {
+                    Text(
+                        text = stringResource(
+                            R.string.wake_alarm_row_next_at,
+                            formatWakeAlarmDateTime(nextAlarmMillis),
+                        ),
+                        fontSize = 11.sp,
+                        color = if (enabled) GreenPrimaryDark else TextMuted,
+                        lineHeight = 15.sp,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Medium,
+                    )
+                }
+            }
 
             Box(
                 modifier = Modifier
@@ -2678,6 +2703,42 @@ private fun formatDurationText(totalMinutes: Int): String {
         h > 0 -> "${h} س"
         else -> "${m} د"
     }
+}
+
+private fun nextWakeAlarmMillis(
+    context: android.content.Context,
+    delegationId: Int,
+    config: com.tunisianprayertimes.PrayerWakeConfig,
+): Long? {
+    if (!config.enabled) return null
+    val now = Calendar.getInstance()
+    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
+    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
+    val prayerDays = (-1..2).mapNotNull { dayOffset ->
+        val date = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, dayOffset) }
+        PrayerTimesRepository.loadDayPrayerTimes(
+            context = context,
+            delegationId = delegationId,
+            year = date.get(Calendar.YEAR),
+            month = date.get(Calendar.MONTH) + 1,
+            day = date.get(Calendar.DAY_OF_MONTH),
+        )?.let { times ->
+            WakeAlarmComputer.PrayerDayContext(
+                date = date,
+                prayerTimes = times,
+                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+                jomoaaHour = jomoaaHour,
+                jomoaaMinute = jomoaaMinute,
+            )
+        }
+    }
+    return WakeAlarmComputer.compute(now, config, prayerDays)
+        .allTriggers.firstOrNull()?.triggerAtMillis
+}
+
+private fun formatWakeAlarmDateTime(timeInMillis: Long): String {
+    val formatter = SimpleDateFormat("EEE d MMM - HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))
+    return formatter.format(Date(timeInMillis))
 }
 
 private fun formatClockTime(hour: Int, minute: Int): String =

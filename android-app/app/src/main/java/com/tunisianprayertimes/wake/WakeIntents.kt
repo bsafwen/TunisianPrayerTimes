@@ -2,10 +2,13 @@ package com.tunisianprayertimes.wake
 
 import android.content.Intent
 import android.net.Uri
+import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.WakeUpCheckStep
+import com.tunisianprayertimes.WakeUpCheckType
 
 const val ACTION_STOP_WAKE_ALARM = "com.tunisianprayertimes.action.STOP_WAKE_ALARM"
 
@@ -27,6 +30,10 @@ const val EXTRA_IS_SUBALARM = "extra_is_subalarm"
 const val EXTRA_SUBALARM_ID = "extra_subalarm_id"
 const val EXTRA_OFFSET_MINUTES = "extra_offset_minutes"
 const val EXTRA_OFFSET_DIRECTION = "extra_offset_direction"
+const val EXTRA_WAKE_UP_CHECK_TYPE = "extra_wake_up_check_type"
+const val EXTRA_WAKE_UP_CHECK_DIFFICULTY = "extra_wake_up_check_difficulty"
+const val EXTRA_WAKE_UP_CHECK_KILL_TARGET = "extra_wake_up_check_kill_target"
+const val EXTRA_WAKE_UP_CHECK_STEPS = "extra_wake_up_check_steps"
 const val EXTRA_WAKE_UP_CHECK_LEFT_OPERAND = "extra_wake_up_check_left_operand"
 const val EXTRA_WAKE_UP_CHECK_RIGHT_OPERAND = "extra_wake_up_check_right_operand"
 const val EXTRA_WAKE_UP_CHECK_OPERATOR = "extra_wake_up_check_operator"
@@ -55,10 +62,14 @@ data class WakeTriggerPayload(
     val customRingtoneUri: String? = null,
     val vibrationOnly: Boolean,
     val wakeUpCheckEnabled: Boolean,
+    val wakeUpCheckType: WakeUpCheckType = WakeUpCheckType.MATH,
+    val wakeUpCheckDifficulty: MathDifficulty = MathDifficulty.EASY,
+    val whackAMoleKillTarget: Int = 5,
     val progressiveVolume: Boolean,
     val snoreTrackingEnabled: Boolean,
     val awakeCheckEnabled: Boolean,
     val awakeCheckDelayMinutes: Int = 7,
+    val wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
     val wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     val isSubAlarm: Boolean,
     val subAlarmId: String? = null,
@@ -89,6 +100,10 @@ fun Intent.populateWakeTriggerPayload(
     customRingtoneUri: String? = null,
     vibrationOnly: Boolean,
     wakeUpCheckEnabled: Boolean,
+    wakeUpCheckType: WakeUpCheckType = WakeUpCheckType.MATH,
+    wakeUpCheckDifficulty: MathDifficulty = MathDifficulty.EASY,
+    whackAMoleKillTarget: Int = 5,
+    wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
     progressiveVolume: Boolean,
     snoreTrackingEnabled: Boolean,
     awakeCheckEnabled: Boolean = true,
@@ -109,6 +124,12 @@ fun Intent.populateWakeTriggerPayload(
     customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
     putExtra(EXTRA_VIBRATION_ONLY, vibrationOnly)
     putExtra(EXTRA_WAKE_UP_CHECK, wakeUpCheckEnabled)
+    putExtra(EXTRA_WAKE_UP_CHECK_TYPE, wakeUpCheckType.name)
+    putExtra(EXTRA_WAKE_UP_CHECK_DIFFICULTY, wakeUpCheckDifficulty.name)
+    putExtra(EXTRA_WAKE_UP_CHECK_KILL_TARGET, whackAMoleKillTarget)
+    if (wakeUpCheckSteps.isNotEmpty()) {
+        putExtra(EXTRA_WAKE_UP_CHECK_STEPS, wakeUpCheckSteps.joinToString(",") { "${it.type.name}:${it.difficulty.name}" })
+    }
     putExtra(EXTRA_PROGRESSIVE_VOLUME, progressiveVolume)
     putExtra(EXTRA_SNORE_TRACKING_ENABLED, snoreTrackingEnabled)
     putExtra(EXTRA_AWAKE_CHECK_ENABLED, awakeCheckEnabled)
@@ -160,6 +181,27 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         null
     }
     val rawDirection = getStringExtra(EXTRA_OFFSET_DIRECTION)
+    val wakeUpCheckType = getStringExtra(EXTRA_WAKE_UP_CHECK_TYPE)
+        ?.let { raw -> runCatching { WakeUpCheckType.valueOf(raw) }.getOrNull() }
+        ?: WakeUpCheckType.MATH
+    val whackAMoleKillTarget = getIntExtra(EXTRA_WAKE_UP_CHECK_KILL_TARGET, 5)
+    val wakeUpCheckDifficulty = getStringExtra(EXTRA_WAKE_UP_CHECK_DIFFICULTY)
+        ?.let { raw -> runCatching { MathDifficulty.valueOf(raw) }.getOrNull() }
+        ?: inferWakeUpCheckDifficulty(wakeUpCheckType, whackAMoleKillTarget)
+    val wakeUpCheckSteps = getStringExtra(EXTRA_WAKE_UP_CHECK_STEPS)
+        ?.split(",")
+        ?.mapNotNull { part ->
+            val segments = part.split(":")
+            if (segments.size == 2) {
+                runCatching {
+                    WakeUpCheckStep(
+                        type = WakeUpCheckType.valueOf(segments[0]),
+                        difficulty = MathDifficulty.valueOf(segments[1]),
+                    )
+                }.getOrNull()
+            } else null
+        }
+        ?: emptyList()
 
     return WakeTriggerPayload(
         eventId = eventId,
@@ -172,10 +214,14 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         customRingtoneUri = getStringExtra(EXTRA_CUSTOM_RINGTONE_URI),
         vibrationOnly = getBooleanExtra(EXTRA_VIBRATION_ONLY, false),
         wakeUpCheckEnabled = getBooleanExtra(EXTRA_WAKE_UP_CHECK, false),
+        wakeUpCheckType = wakeUpCheckType,
+        wakeUpCheckDifficulty = wakeUpCheckDifficulty,
+        whackAMoleKillTarget = whackAMoleKillTarget,
         progressiveVolume = getBooleanExtra(EXTRA_PROGRESSIVE_VOLUME, false),
         snoreTrackingEnabled = getBooleanExtra(EXTRA_SNORE_TRACKING_ENABLED, false),
         awakeCheckEnabled = getBooleanExtra(EXTRA_AWAKE_CHECK_ENABLED, true),
         awakeCheckDelayMinutes = getIntExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, 7),
+        wakeUpCheckSteps = wakeUpCheckSteps,
         wakeUpCheckChallenge = wakeUpCheckChallenge,
         isSubAlarm = getBooleanExtra(EXTRA_IS_SUBALARM, false),
         subAlarmId = getStringExtra(EXTRA_SUBALARM_ID),
@@ -187,3 +233,18 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
 }
 
 fun Intent.wakeEventId(): String? = getStringExtra(EXTRA_EVENT_ID)
+
+private fun inferWakeUpCheckDifficulty(
+    wakeUpCheckType: WakeUpCheckType,
+    whackAMoleKillTarget: Int,
+): MathDifficulty {
+    if (wakeUpCheckType != WakeUpCheckType.WHACK_A_MOLE) {
+        return MathDifficulty.EASY
+    }
+
+    return when {
+        whackAMoleKillTarget >= 15 -> MathDifficulty.HARD
+        whackAMoleKillTarget >= 10 -> MathDifficulty.INTERMEDIATE
+        else -> MathDifficulty.EASY
+    }
+}

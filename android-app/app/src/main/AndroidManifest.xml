@@ -31,6 +31,11 @@
     <!-- We don't use advertising; remove AD_ID added transitively by Firebase/Play Services -->
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
 
+    <!-- Gyroscope Maze wake-up challenge uses the device orientation sensor.
+         Marked required=false so devices without a gyroscope are not filtered from the store;
+         the game falls back gracefully when no orientation sensor is available. -->
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false" />
+
 
     <application
         android:allowBackup="true"
