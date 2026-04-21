@@ -37,7 +37,7 @@ data class WakeUpCheckChallenge(
     val answer: Int,
 ) {
     val prompt: String
-        get() = "$leftOperand $operatorSymbol $rightOperand"
+        get() = "\u200E$leftOperand $operatorSymbol $rightOperand"
 
     fun matches(input: String): Boolean = input.trim().toIntOrNull() == answer
 }

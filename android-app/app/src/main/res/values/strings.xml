@@ -186,7 +186,11 @@
     <string name="wake_editor_vibration_only_title">اهتزاز فقط</string>
     <string name="wake_editor_vibration_only_subtitle">عند التفعيل لن يتم تشغيل أي صوت.</string>
     <string name="wake_editor_wake_up_check_title">اختبار الاستيقاظ</string>
-    <string name="wake_editor_wake_up_check_subtitle">لن تتمكن من إيقاف المنبه قبل حل عملية حسابية بسيطة.</string>
+    <string name="wake_editor_wake_up_check_subtitle">لن تتمكن من إيقاف المنبه قبل حل عملية حسابية.</string>
+    <string name="wake_editor_math_difficulty_title">مستوى الصعوبة</string>
+    <string name="wake_editor_math_difficulty_easy">سهل</string>
+    <string name="wake_editor_math_difficulty_intermediate">متوسط</string>
+    <string name="wake_editor_math_difficulty_hard">صعب</string>
     <string name="wake_editor_progressive_volume_title">رفع الصوت تدريجيًا</string>
     <string name="wake_editor_progressive_volume_subtitle">يبدأ المنبه بصوت منخفض ثم يرتفع خلال أول 30 ثانية.</string>
     <string name="wake_editor_preview_title">الموعد القادم</string>

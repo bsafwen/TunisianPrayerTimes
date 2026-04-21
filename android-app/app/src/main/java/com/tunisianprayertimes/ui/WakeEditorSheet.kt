@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -62,6 +63,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.ClockTime
+import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.Prayer
@@ -886,6 +888,37 @@ private fun WakePlaybackControls(
                         onPlaybackChange(playback.copy(wakeUpCheckEnabled = enabled))
                     },
                 )
+            }
+        }
+
+        AnimatedVisibility(visible = playback.wakeUpCheckEnabled) {
+            Column(
+                modifier = Modifier.padding(start = 14.dp, end = 14.dp, bottom = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Text(
+                    text = stringResource(R.string.wake_editor_math_difficulty_title),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = TextDark,
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FilterChip(
+                        selected = playback.mathDifficulty == MathDifficulty.EASY,
+                        onClick = { onPlaybackChange(playback.copy(mathDifficulty = MathDifficulty.EASY)) },
+                        label = { Text(stringResource(R.string.wake_editor_math_difficulty_easy)) },
+                    )
+                    FilterChip(
+                        selected = playback.mathDifficulty == MathDifficulty.INTERMEDIATE,
+                        onClick = { onPlaybackChange(playback.copy(mathDifficulty = MathDifficulty.INTERMEDIATE)) },
+                        label = { Text(stringResource(R.string.wake_editor_math_difficulty_intermediate)) },
+                    )
+                    FilterChip(
+                        selected = playback.mathDifficulty == MathDifficulty.HARD,
+                        onClick = { onPlaybackChange(playback.copy(mathDifficulty = MathDifficulty.HARD)) },
+                        label = { Text(stringResource(R.string.wake_editor_math_difficulty_hard)) },
+                    )
+                }
             }
         }
 

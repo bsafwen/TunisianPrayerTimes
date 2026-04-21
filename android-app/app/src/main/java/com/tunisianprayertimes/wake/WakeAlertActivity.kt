@@ -197,7 +197,9 @@ private fun WakeAlertScreen(
                                     R.string.wake_alarm_solve_wake_up_check_prompt,
                                     wakeUpCheck.prompt,
                                 ),
-                                style = MaterialTheme.typography.bodyLarge,
+                                style = MaterialTheme.typography.bodyLarge.copy(
+                                    textDirection = TextDirection.ContentOrLtr,
+                                ),
                                 color = MaterialTheme.colorScheme.onPrimary,
                             )
                             OutlinedTextField(
