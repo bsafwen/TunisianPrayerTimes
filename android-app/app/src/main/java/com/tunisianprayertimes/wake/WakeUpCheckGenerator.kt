@@ -66,8 +66,8 @@ private val easyChallenges: List<WakeUpCheckChallenge> = buildList {
 }
 
 private val intermediateChallenges: List<WakeUpCheckChallenge> = buildList {
-    for (leftOperand in 11..23 step 2) {
-        for (rightOperand in 4..11) {
+    for (leftOperand in 15..35 step 2) {
+        for (rightOperand in 7..18) {
             add(
                 WakeUpCheckChallenge(
                     leftOperand = leftOperand,
@@ -79,8 +79,8 @@ private val intermediateChallenges: List<WakeUpCheckChallenge> = buildList {
         }
     }
 
-    for (rightOperand in 3..9) {
-        for (difference in 8..17) {
+    for (rightOperand in 5..14) {
+        for (difference in 12..25) {
             val leftOperand = rightOperand + difference
             add(
                 WakeUpCheckChallenge(
@@ -92,10 +92,8 @@ private val intermediateChallenges: List<WakeUpCheckChallenge> = buildList {
             )
         }
     }
-}
 
-private val hardChallenges: List<WakeUpCheckChallenge> = buildList {
-    for (leftOperand in 12..25) {
+    for (leftOperand in 3..9) {
         for (rightOperand in 3..9) {
             add(
                 WakeUpCheckChallenge(
@@ -107,9 +105,24 @@ private val hardChallenges: List<WakeUpCheckChallenge> = buildList {
             )
         }
     }
+}
 
-    for (leftOperand in 30..99 step 3) {
-        for (rightOperand in 15..49) {
+private val hardChallenges: List<WakeUpCheckChallenge> = buildList {
+    for (leftOperand in 15..35) {
+        for (rightOperand in 6..15) {
+            add(
+                WakeUpCheckChallenge(
+                    leftOperand = leftOperand,
+                    rightOperand = rightOperand,
+                    operatorSymbol = "×",
+                    answer = leftOperand * rightOperand,
+                ),
+            )
+        }
+    }
+
+    for (leftOperand in 50..150 step 3) {
+        for (rightOperand in 25..75) {
             if (leftOperand > rightOperand) {
                 add(
                     WakeUpCheckChallenge(
@@ -120,6 +133,20 @@ private val hardChallenges: List<WakeUpCheckChallenge> = buildList {
                     ),
                 )
             }
+        }
+    }
+
+    for (rightOperand in 15..45) {
+        for (difference in 20..55) {
+            val leftOperand = rightOperand + difference
+            add(
+                WakeUpCheckChallenge(
+                    leftOperand = leftOperand,
+                    rightOperand = rightOperand,
+                    operatorSymbol = "−",
+                    answer = difference,
+                ),
+            )
         }
     }
 }
