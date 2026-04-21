@@ -21,6 +21,8 @@ const val EXTRA_VIBRATION_ONLY = "extra_vibration_only"
 const val EXTRA_WAKE_UP_CHECK = "extra_wake_up_check"
 const val EXTRA_PROGRESSIVE_VOLUME = "extra_progressive_volume"
 const val EXTRA_SNORE_TRACKING_ENABLED = "extra_snore_tracking_enabled"
+const val EXTRA_AWAKE_CHECK_ENABLED = "extra_awake_check_enabled"
+const val EXTRA_AWAKE_CHECK_DELAY_MINUTES = "extra_awake_check_delay_minutes"
 const val EXTRA_IS_SUBALARM = "extra_is_subalarm"
 const val EXTRA_SUBALARM_ID = "extra_subalarm_id"
 const val EXTRA_OFFSET_MINUTES = "extra_offset_minutes"
@@ -55,6 +57,8 @@ data class WakeTriggerPayload(
     val wakeUpCheckEnabled: Boolean,
     val progressiveVolume: Boolean,
     val snoreTrackingEnabled: Boolean,
+    val awakeCheckEnabled: Boolean,
+    val awakeCheckDelayMinutes: Int = 7,
     val wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     val isSubAlarm: Boolean,
     val subAlarmId: String? = null,
@@ -87,6 +91,8 @@ fun Intent.populateWakeTriggerPayload(
     wakeUpCheckEnabled: Boolean,
     progressiveVolume: Boolean,
     snoreTrackingEnabled: Boolean,
+    awakeCheckEnabled: Boolean = true,
+    awakeCheckDelayMinutes: Int = 7,
     wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     isSubAlarm: Boolean,
     subAlarmId: String? = null,
@@ -105,6 +111,8 @@ fun Intent.populateWakeTriggerPayload(
     putExtra(EXTRA_WAKE_UP_CHECK, wakeUpCheckEnabled)
     putExtra(EXTRA_PROGRESSIVE_VOLUME, progressiveVolume)
     putExtra(EXTRA_SNORE_TRACKING_ENABLED, snoreTrackingEnabled)
+    putExtra(EXTRA_AWAKE_CHECK_ENABLED, awakeCheckEnabled)
+    putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, awakeCheckDelayMinutes)
     putExtra(EXTRA_IS_SUBALARM, isSubAlarm)
     subAlarmId?.let { putExtra(EXTRA_SUBALARM_ID, it) }
     offsetMinutes?.let { putExtra(EXTRA_OFFSET_MINUTES, it) }
@@ -166,6 +174,8 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         wakeUpCheckEnabled = getBooleanExtra(EXTRA_WAKE_UP_CHECK, false),
         progressiveVolume = getBooleanExtra(EXTRA_PROGRESSIVE_VOLUME, false),
         snoreTrackingEnabled = getBooleanExtra(EXTRA_SNORE_TRACKING_ENABLED, false),
+        awakeCheckEnabled = getBooleanExtra(EXTRA_AWAKE_CHECK_ENABLED, true),
+        awakeCheckDelayMinutes = getIntExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, 7),
         wakeUpCheckChallenge = wakeUpCheckChallenge,
         isSubAlarm = getBooleanExtra(EXTRA_IS_SUBALARM, false),
         subAlarmId = getStringExtra(EXTRA_SUBALARM_ID),

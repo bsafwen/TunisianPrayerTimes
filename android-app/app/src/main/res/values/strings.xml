@@ -243,4 +243,14 @@
     <string name="wake_editor_cancel">إلغاء</string>
     <string name="wake_editor_save">حفظ</string>
 
+    <string name="wake_editor_awake_check_title">التحقق من الاستيقاظ</string>
+    <string name="wake_editor_awake_check_subtitle">بعد إيقاف المنبه، سيتحقق التطبيق من أنك لا تزال مستيقظا. إذا لم تؤكد خلال دقيقة، سيهتز الهاتف ثم يرن.</string>
+    <string name="awake_check_channel_name">التحقق من الاستيقاظ</string>
+    <string name="awake_check_channel_description">إشعارات للتحقق من أنك لا تزال مستيقظا بعد إيقاف المنبه</string>
+    <string name="awake_check_title">هل أنت مستيقظ؟</string>
+    <string name="awake_check_prompt">اضغط لتأكيد أنك مستيقظ، وإلا سيرن الهاتف بعد دقيقة.</string>
+    <string name="awake_check_confirm">نعم، أنا مستيقظ</string>
+    <string name="awake_check_no_response">لم تؤكد استيقاظك! الهاتف يهتز الآن.</string>
+    <string name="awake_check_ringing">لم تؤكد استيقاظك! المنبه يرن الآن.</string>
+
 </resources>

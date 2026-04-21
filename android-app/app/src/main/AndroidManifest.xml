@@ -107,6 +107,15 @@
             android:name=".wake.WakeAlarmReceiver"
             android:exported="false" />
 
+        <receiver
+            android:name=".wake.AwakeCheckReceiver"
+            android:exported="false" />
+
+        <service
+            android:name=".wake.AwakeCheckService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
 
     </application>
 

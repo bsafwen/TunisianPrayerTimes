@@ -954,6 +954,38 @@ private fun WakePlaybackControls(
             }
         }
 
+        OutlinedCard(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 14.dp, vertical = 12.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_awake_check_title),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = TextDark,
+                    )
+                    Text(
+                        text = stringResource(R.string.wake_editor_awake_check_subtitle),
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                    )
+                }
+                Switch(
+                    checked = playback.awakeCheckEnabled,
+                    onCheckedChange = { enabled ->
+                        onPlaybackChange(playback.copy(awakeCheckEnabled = enabled))
+                    },
+                )
+            }
+        }
+
         WakeRingtoneSelector(
             label = ringtoneLabel,
             selected = playback.ringtone,
