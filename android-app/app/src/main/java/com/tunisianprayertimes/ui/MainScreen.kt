@@ -40,6 +40,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
@@ -90,6 +91,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -2238,18 +2240,21 @@ private fun NumberInput(
     allowNegative: Boolean = false,
     keyboardType: KeyboardType = KeyboardType.Number
 ) {
+    val focusManager = LocalFocusManager.current
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         BasicTextField(
             value = value,
             onValueChange = { new ->
+                // Normalize Eastern Arabic (٠-٩) and Extended Arabic-Indic (۰-۹) to 0-9
+                val normalized = normalizeDigits(new)
                 val filtered = if (allowNegative) {
                     // Allow optional leading '-' followed by up to 3 digits
-                    val negative = new.startsWith("-")
-                    val digits = new.filter { it.isDigit() }.take(3)
+                    val negative = normalized.startsWith("-")
+                    val digits = normalized.filter { it in '0'..'9' }.take(3)
                     if (negative && digits.isNotEmpty()) "-$digits" else digits
                 } else {
                     // Only allow digits, max 3 chars
-                    new.filter { it.isDigit() }.take(3)
+                    normalized.filter { it in '0'..'9' }.take(3)
                 }
                 onValueChange(filtered)
             },
@@ -2273,6 +2278,7 @@ private fun NumberInput(
             keyboardOptions = KeyboardOptions(
                 keyboardType = if (allowNegative) KeyboardType.Phone else keyboardType
             ),
+            keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
             singleLine = true,
             decorationBox = { innerTextField ->
                 Box(
@@ -2614,6 +2620,17 @@ private fun ManualSilenceModeChip(
 
 // Helper functions
 
+/** Normalizes Eastern Arabic (٠-٩) and Extended Arabic-Indic (۰-۹) digits to Western 0-9. */
+private fun normalizeDigits(input: String): String = buildString(input.length) {
+    for (c in input) {
+        when (c) {
+            in '\u0660'..'\u0669' -> append('0' + (c - '\u0660')) // ٠١٢٣٤٥٦٧٨٩
+            in '\u06F0'..'\u06F9' -> append('0' + (c - '\u06F0')) // ۰۱۲۳۴۵۶۷۸۹
+            else -> append(c)
+        }
+    }
+}
+
 private fun hasExactAlarmPermission(context: Context): Boolean {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -2756,7 +2773,7 @@ private fun formatClockTime(hour: Int, minute: Int): String =
 private fun formatTimeOfDay(targetTimeInMillis: Long): String {
     val calendar = Calendar.getInstance().apply { timeInMillis = targetTimeInMillis }
     return String.format(
-        Locale.forLanguageTag("ar-TN"),
+        Locale.US,
         "%02d:%02d",
         calendar.get(Calendar.HOUR_OF_DAY),
         calendar.get(Calendar.MINUTE)
