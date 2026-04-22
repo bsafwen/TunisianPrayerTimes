@@ -1237,8 +1237,9 @@ private fun WakeUpCheckMathPreview(challenge: com.tunisianprayertimes.wake.WakeU
         OutlinedTextField(
             value = answer,
             onValueChange = { input ->
-                answer = input.filterIndexed { index, c ->
-                    c.isDigit() || (c == '-' && index == 0)
+                val normalized = normalizeDigits(input)
+                answer = normalized.filterIndexed { index, c ->
+                    c in '0'..'9' || (c == '-' && index == 0)
                 }
             },
             modifier = Modifier.fillMaxWidth(),
@@ -1607,13 +1608,24 @@ private fun formatWakePreviewDateTime(timeInMillis: Long): String {
 }
 
 private fun sanitizeMinutesInput(input: String): String =
-    input.filter { character -> character.isDigit() }.take(3)
+    normalizeDigits(input).filter { it in '0'..'9' }.take(3)
 
 private fun sanitizeHoursInput(input: String): String =
-    input.filter { character -> character.isDigit() }.take(3)
+    normalizeDigits(input).filter { it in '0'..'9' }.take(3)
 
 private fun sanitizeHourMinutePartInput(input: String): String =
-    input.filter { character -> character.isDigit() }.take(2)
+    normalizeDigits(input).filter { it in '0'..'9' }.take(2)
+
+/** Normalizes Eastern Arabic (٠-٩) and Extended Arabic-Indic (۰-۹) digits to Western 0-9. */
+private fun normalizeDigits(input: String): String = buildString(input.length) {
+    for (c in input) {
+        when (c) {
+            in '\u0660'..'\u0669' -> append('0' + (c - '\u0660'))
+            in '\u06F0'..'\u06F9' -> append('0' + (c - '\u06F0'))
+            else -> append(c)
+        }
+    }
+}
 
 private fun parseFromNowOffsetMinutes(
     hoursText: String,
