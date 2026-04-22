@@ -36,6 +36,7 @@ class WakePlaybackService : Service() {
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
     private var volumeRampJob: Job? = null
+    private var savedAlarmVolume: Int? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -85,6 +86,8 @@ class WakePlaybackService : Service() {
             startVibrationOnly()
             return
         }
+
+        forceMaxAlarmVolume()
 
         val preferredUri = preferredRingtoneUri(payload)
         if (preferredUri != null && playUri(preferredUri, payload.progressiveVolume)) {
@@ -166,6 +169,7 @@ class WakePlaybackService : Service() {
     private fun stopPlayback() {
         volumeRampJob?.cancel()
         volumeRampJob = null
+        restoreAlarmVolume()
         mediaPlayer?.let { player ->
             runCatching {
                 if (player.isPlaying) {
@@ -198,6 +202,20 @@ class WakePlaybackService : Service() {
             lockscreenVisibility = Notification.VISIBILITY_PUBLIC
         }
         notificationManager.createNotificationChannel(channel)
+    }
+
+    private fun forceMaxAlarmVolume() {
+        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        savedAlarmVolume = audioManager.getStreamVolume(AudioManager.STREAM_ALARM)
+        val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM)
+        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, maxVolume, 0)
+    }
+
+    private fun restoreAlarmVolume() {
+        val volume = savedAlarmVolume ?: return
+        savedAlarmVolume = null
+        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, volume, 0)
     }
 
     private fun forceSpeakerOutput(player: MediaPlayer) {
