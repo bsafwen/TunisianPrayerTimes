@@ -304,12 +304,36 @@ fun MainScreen(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(BgCream)
-            .verticalScroll(rememberScrollState())
-    ) {
+    var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
+
+    fun requestFullScreenIntentIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            val nm = context.getSystemService(NotificationManager::class.java)
+            if (!nm.canUseFullScreenIntent()) {
+                Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
+                context.startActivity(
+                    Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
+                        data = Uri.parse("package:${context.packageName}")
+                    }
+                )
+            }
+        }
+    }
+
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { requestFullScreenIntentIfNeeded() }
+
+    val wakeRepository = remember(context) { com.tunisianprayertimes.wake.PrayerWakeRepository(context) }
+    val mainScope = rememberCoroutineScope()
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(BgCream)
+                .verticalScroll(rememberScrollState())
+        ) {
         // Header
         IslamicHeader()
 
@@ -388,7 +412,8 @@ fun MainScreen(
                 WakeAlarmCard(
                     delegationId = delegationId,
                     activity = activity,
-                    onConfigChanged = { rescheduleIfEnabled() }
+                    onConfigChanged = { rescheduleIfEnabled() },
+                    onEditAlarm = { config -> editingWakeAlarm = config },
                 )
 
                 // Auto-silence toggle
@@ -525,6 +550,45 @@ fun MainScreen(
                 )
             }
         }
+        // Full-screen wake alarm editor overlay
+        editingWakeAlarm?.let { wakeAlarm ->
+            val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
+            val isPersistedAlarm = wakeAlarms.any { existing -> existing.id == wakeAlarm.id }
+            WakeEditorSheet(
+                activity = activity,
+                delegationId = delegationId,
+                initialConfig = wakeAlarm,
+                onDismissRequest = { editingWakeAlarm = null },
+                onSave = { config ->
+                    mainScope.launch {
+                        wakeRepository.saveWakeConfig(config)
+                        editingWakeAlarm = null
+                        rescheduleIfEnabled()
+                    }
+                    if (config.enabled) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        } else {
+                            requestFullScreenIntentIfNeeded()
+                        }
+                    }
+                },
+                onDelete = if (isPersistedAlarm) {
+                    {
+                        mainScope.launch {
+                            wakeRepository.deleteWakeAlarm(wakeAlarm.id)
+                            editingWakeAlarm = null
+                            rescheduleIfEnabled()
+                        }
+                    }
+                } else {
+                    null
+                },
+            )
+        }
+    }
 }
 
 @Composable
@@ -1438,29 +1502,11 @@ private fun WakeAlarmCard(
     delegationId: Int,
     activity: androidx.appcompat.app.AppCompatActivity,
     onConfigChanged: () -> Unit,
+    onEditAlarm: (PrayerWakeConfig) -> Unit,
 ) {
     val context = LocalContext.current
-    val scope = rememberCoroutineScope()
     val wakeRepository = remember(context) { PrayerWakeRepository(context) }
     val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
-    var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
-    fun requestFullScreenIntentIfNeeded() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            val nm = context.getSystemService(NotificationManager::class.java)
-            if (!nm.canUseFullScreenIntent()) {
-                Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
-                context.startActivity(
-                    Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
-                        data = Uri.parse("package:${context.packageName}")
-                    }
-                )
-            }
-        }
-    }
-
-    val notificationPermissionLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { requestFullScreenIntentIfNeeded() }
 
     Card(
         modifier = Modifier
@@ -1520,7 +1566,7 @@ private fun WakeAlarmCard(
                             alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
                             wakeConfig = wakeAlarm,
                             nextAlarmMillis = nextMillis,
-                            onClick = { editingWakeAlarm = wakeAlarm },
+                            onClick = { onEditAlarm(wakeAlarm) },
                         )
                     }
                 }
@@ -1530,14 +1576,14 @@ private fun WakeAlarmCard(
 
             OutlinedButton(
                 onClick = {
-                    editingWakeAlarm = PrayerWakeConfig(
+                    onEditAlarm(PrayerWakeConfig(
                         id = UUID.randomUUID().toString(),
                         enabled = true,
                         prayer = WAKE_SUPPORTED_PRAYERS.first(),
                         playback = WakePlaybackOptions(
                             ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
                         ),
-                    )
+                    ))
                 },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp),
@@ -1549,43 +1595,6 @@ private fun WakeAlarmCard(
                 Text(text = stringResource(R.string.wake_alarm_add), fontSize = 13.sp)
             }
         }
-    }
-
-    editingWakeAlarm?.let { wakeAlarm ->
-        val isPersistedAlarm = wakeAlarms.any { existing -> existing.id == wakeAlarm.id }
-        WakeEditorSheet(
-            activity = activity,
-            delegationId = delegationId,
-            initialConfig = wakeAlarm,
-            onDismissRequest = { editingWakeAlarm = null },
-            onSave = { config ->
-                scope.launch {
-                    wakeRepository.saveWakeConfig(config)
-                    editingWakeAlarm = null
-                    onConfigChanged()
-                }
-                if (config.enabled) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-                        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                    } else {
-                        requestFullScreenIntentIfNeeded()
-                    }
-                }
-            },
-            onDelete = if (isPersistedAlarm) {
-                {
-                    scope.launch {
-                        wakeRepository.deleteWakeAlarm(wakeAlarm.id)
-                        editingWakeAlarm = null
-                        onConfigChanged()
-                    }
-                }
-            } else {
-                null
-            },
-        )
     }
 }
 

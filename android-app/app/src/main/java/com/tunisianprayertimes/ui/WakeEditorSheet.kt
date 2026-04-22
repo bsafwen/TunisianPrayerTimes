@@ -5,6 +5,7 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Build
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -33,22 +35,24 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -247,14 +251,19 @@ fun WakeEditorSheet(
         computeWakePreview(context, delegationId, draftConfig)
     }
 
-    ModalBottomSheet(
-        onDismissRequest = onDismissRequest,
-        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+    val scrollState = rememberScrollState()
+    val coroutineScope = rememberCoroutineScope()
+    val newSubAlarmIds = remember { mutableStateListOf<String>() }
+
+    BackHandler(onBack = onDismissRequest)
+
+    Surface(
+        modifier = Modifier.fillMaxSize(),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .statusBarsPadding()
                 .navigationBarsPadding()
                 .padding(horizontal = 20.dp, vertical = 12.dp),
@@ -526,11 +535,16 @@ fun WakeEditorSheet(
 
                     TextButton(
                         onClick = {
+                            val newId = UUID.randomUUID().toString()
+                            newSubAlarmIds += newId
                             subAlarms = subAlarms + PrayerWakeSubAlarm(
-                                id = UUID.randomUUID().toString(),
+                                id = newId,
                                 minutesOffset = 10,
                                 direction = OffsetDirection.BEFORE,
                             )
+                            coroutineScope.launch {
+                                scrollState.animateScrollTo(scrollState.maxValue)
+                            }
                         },
                     ) {
                         Text(text = stringResource(R.string.wake_editor_subalarms_add))
@@ -550,6 +564,14 @@ fun WakeEditorSheet(
                 }
 
                 subAlarms.forEachIndexed { index, subAlarm ->
+                    AnimatedVisibility(
+                        visible = true,
+                        enter = if (subAlarm.id in newSubAlarmIds) {
+                            androidx.compose.animation.expandVertically() + androidx.compose.animation.fadeIn()
+                        } else {
+                            androidx.compose.animation.EnterTransition.None
+                        },
+                    ) {
                     WakeSubAlarmEditorCard(
                         index = index,
                         subAlarm = subAlarm,
@@ -567,9 +589,11 @@ fun WakeEditorSheet(
                             subAlarms = subAlarms.moveSubAlarm(index, index + 1)
                         },
                         onRemove = {
+                            newSubAlarmIds -= subAlarm.id
                             subAlarms = subAlarms.filterNot { existing -> existing.id == subAlarm.id }
                         },
                     )
+                    } // AnimatedVisibility
                 }
             }
 
@@ -798,6 +822,7 @@ private fun WakeSubAlarmEditorCard(
                 ringtoneLabel = stringResource(R.string.wake_editor_subalarm_ringtone_label),
                 playback = subAlarm.playback,
                 onPlaybackChange = { updated -> onChange(subAlarm.copy(playback = updated)) },
+                showAwakeCheck = false,
             )
 
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -826,6 +851,7 @@ private fun WakePlaybackControls(
     ringtoneLabel: String,
     playback: WakePlaybackOptions,
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
+    showAwakeCheck: Boolean = true,
 ) {
     var previewStepIndex by remember { mutableStateOf<Int?>(null) }
     val previewSteps = playback.wakeUpCheckSteps.ifEmpty {
@@ -1069,35 +1095,37 @@ private fun WakePlaybackControls(
             }
         }
 
-        OutlinedCard(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
+        if (showAwakeCheck) {
+            OutlinedCard(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
             ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_awake_check_title),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = TextDark,
-                    )
-                    Text(
-                        text = stringResource(R.string.wake_editor_awake_check_subtitle),
-                        fontSize = 12.sp,
-                        color = TextMuted,
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 14.dp, vertical = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.wake_editor_awake_check_title),
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextDark,
+                        )
+                        Text(
+                            text = stringResource(R.string.wake_editor_awake_check_subtitle),
+                            fontSize = 12.sp,
+                            color = TextMuted,
+                        )
+                    }
+                    Switch(
+                        checked = playback.awakeCheckEnabled,
+                        onCheckedChange = { enabled ->
+                            onPlaybackChange(playback.copy(awakeCheckEnabled = enabled))
+                        },
                     )
                 }
-                Switch(
-                    checked = playback.awakeCheckEnabled,
-                    onCheckedChange = { enabled ->
-                        onPlaybackChange(playback.copy(awakeCheckEnabled = enabled))
-                    },
-                )
             }
         }
 

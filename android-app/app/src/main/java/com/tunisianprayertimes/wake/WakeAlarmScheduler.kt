@@ -243,7 +243,7 @@ object WakeAlarmScheduler {
 			wakeUpCheckSteps = playback.effectiveWakeUpCheckSteps,
 			progressiveVolume = playback.progressiveVolume,
 			snoreTrackingEnabled = playback.snoreTrackingEnabled,
-			awakeCheckEnabled = playback.awakeCheckEnabled,
+			awakeCheckEnabled = if (isSubAlarm) false else playback.awakeCheckEnabled,
 			awakeCheckDelayMinutes = playback.awakeCheckDelayMinutes,
 			wakeUpCheckChallenge = if (playback.wakeUpCheckEnabled) {
 				wakeUpCheckChallengeFor(eventId, triggerAtMillis, playback.mathDifficulty)
