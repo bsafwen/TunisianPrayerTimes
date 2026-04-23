@@ -21,6 +21,7 @@ class SilenceReceiver : BroadcastReceiver() {
             "com.tunisianprayertimes.ACTION_SILENCE" -> {
                 val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
                 Log.d(TAG, "Silencing phone for $prayerName")
+                PrefsManager.clearAutoSilenceDismissed(context)
                 SilenceModeController.enableAutoSilence(context)
                 // Update delegation from cached location in the background,
                 // so the next reschedule uses the correct prayer times.

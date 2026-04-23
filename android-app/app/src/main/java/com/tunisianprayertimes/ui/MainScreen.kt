@@ -304,6 +304,11 @@ fun MainScreen(
         schedulerScope.launch {
             syncWakeScheduling()
         }
+        // Sync UI after rescheduling — scheduleAll may have silenced the phone
+        // if the current time now falls inside a silence window.
+        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
+        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
     }
 
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
@@ -436,6 +441,9 @@ fun MainScreen(
                             SilenceVerifyWorker.cancel(context)
                             Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
                         }
+                        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+                        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
+                        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
                     }
                 )
 
@@ -467,6 +475,7 @@ fun MainScreen(
                     manualDurationHours = manualDurationHours,
                     manualDurationMinutes = manualDurationMinutes,
                     manualSilenceActive = manualSilenceActive,
+                    autoSilenceActive = autoSilenceActive,
                     manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
                     onUseDurationChange = { usesDuration ->
                         manualUsesDuration = usesDuration
@@ -491,10 +500,24 @@ fun MainScreen(
                             Toast.makeText(context, context.getString(R.string.toast_dnd_permission), Toast.LENGTH_SHORT).show()
                             return@ManualSilenceButton
                         }
-                        if (manualSilenceActive) {
-                            SilenceModeController.setManualNormal(context)
+                        if (manualSilenceActive || autoSilenceActive) {
+                            if (manualSilenceActive) {
+                                SilenceModeController.setManualNormal(context)
+                            } else {
+                                SilenceModeController.disableAutoSilence(context)
+                                // Remember that the user dismissed auto-silence so
+                                // rescheduleIfEnabled() / scheduleAll() won't re-enable
+                                // it while we're still inside the same prayer's window.
+                                val dismissedPrayer = SilenceScheduler.currentSilenceWindowPrayer(context)
+                                if (dismissedPrayer != null) {
+                                    PrefsManager.setAutoSilenceDismissed(
+                                        context, System.currentTimeMillis(), dismissedPrayer
+                                    )
+                                }
+                            }
                             SilenceModeController.notifyIfMissedCallDuringSilence(context)
                             isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+                            autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
                             manualSilenceActive = PrefsManager.isManualSilenceActive(context)
                             manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
                             Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
@@ -2464,6 +2487,7 @@ private fun ManualSilenceButton(
     manualDurationHours: String,
     manualDurationMinutes: String,
     manualSilenceActive: Boolean,
+    autoSilenceActive: Boolean,
     manualSilenceEndsAtMillis: Long,
     onUseDurationChange: (Boolean) -> Unit,
     onDurationHoursChange: (String) -> Unit,
@@ -2471,8 +2495,9 @@ private fun ManualSilenceButton(
     onClick: () -> Unit
 ) {
     val context = LocalContext.current
+    val anySilenceActive = manualSilenceActive || autoSilenceActive
     val bgColor by animateColorAsState(
-        targetValue = if (manualSilenceActive && hasDnd) SilenceRed else GreenPrimary,
+        targetValue = if (anySilenceActive && hasDnd) SilenceRed else GreenPrimary,
         label = "buttonColor"
     )
 
@@ -2579,7 +2604,7 @@ private fun ManualSilenceButton(
             ) {
                 Text(
                     text = when {
-                        manualSilenceActive && hasDnd -> stringResource(R.string.btn_unsilence)
+                        anySilenceActive && hasDnd -> stringResource(R.string.btn_unsilence)
                         else -> stringResource(R.string.btn_silence)
                     },
                     fontSize = 16.sp,

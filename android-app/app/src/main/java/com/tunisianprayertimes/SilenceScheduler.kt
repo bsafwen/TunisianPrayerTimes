@@ -20,6 +20,53 @@ object SilenceScheduler {
      */
     fun scheduleAll(context: Context) = scheduleAllInternal(context, Calendar.getInstance())
 
+    /**
+     * Returns the [Prayer] whose silence window currently contains [now], or null.
+     */
+    fun currentSilenceWindowPrayer(context: Context): Prayer? {
+        val now = Calendar.getInstance()
+        val delegationId = PrefsManager.getDelegationId(context)
+        val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
+            context, delegationId,
+            now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH),
+        ) ?: return null
+        val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+        val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
+        val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
+
+        for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
+            val config = PrefsManager.getConfig(context, prayerTime.prayer)
+            val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
+                    set(Calendar.MINUTE, config.delayFixedMinute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                }
+            } else {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+                    set(Calendar.MINUTE, prayerTime.minute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                    add(Calendar.MINUTE, config.delayMinutes)
+                }
+            }
+            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+                Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
+                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                    if (before(silenceTime)) add(Calendar.DAY_OF_YEAR, 1)
+                }
+            } else {
+                (silenceTime.clone() as Calendar).apply { add(Calendar.MINUTE, config.afterMinutes) }
+            }
+            if (!now.before(silenceTime) && now.before(unsilenceTime)) {
+                return prayerTime.prayer
+            }
+        }
+        return null
+    }
+
     @VisibleForTesting
     internal fun scheduleAllInternal(context: Context, now: Calendar) {
         if (!PrefsManager.isEnabled(context)) {
@@ -91,8 +138,22 @@ object SilenceScheduler {
             // Check if we are currently inside this prayer's silence window
             if (!now.before(silenceTime) && now.before(unsilenceTime)) {
                 currentlyInSilenceWindow = true
+
+                // If the user manually dismissed auto-silence during this specific
+                // prayer's window, don't re-enable it.  Check both the timestamp
+                // and the prayer name so overlapping windows from different prayers
+                // are not affected.
+                val dismissedAt = PrefsManager.getAutoSilenceDismissedUntilMillis(context)
+                val dismissedPrayer = PrefsManager.getAutoSilenceDismissedPrayer(context)
+                if (dismissedAt >= silenceTime.timeInMillis && dismissedPrayer == prayerTime.prayer.name) {
+                    scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, prayerTime.prayer)
+                    Log.d(TAG, "In silence window for ${prayerTime.prayer} but user dismissed; only scheduling UNSILENCE")
+                    continue
+                }
+
                 // We're in the middle of a silence window — ensure phone is silenced
                 // and schedule the unsilence
+                PrefsManager.clearAutoSilenceDismissed(context)
                 SilenceModeController.enableAutoSilence(context)
                 scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, prayerTime.prayer)
                 Log.d(TAG, "Currently in silence window for ${prayerTime.prayer}, scheduled UNSILENCE at ${unsilenceTime.time}")
