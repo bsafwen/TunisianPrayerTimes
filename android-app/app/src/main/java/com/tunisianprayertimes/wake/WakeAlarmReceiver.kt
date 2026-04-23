@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 class WakeAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val payload = intent.toWakeTriggerPayload() ?: return
+        Log.d("WakeFlow", "WakeAlarmReceiver.onReceive eventId=${payload.eventId}")
 
         ContextCompat.startForegroundService(
             context,

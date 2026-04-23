@@ -44,6 +44,10 @@ class WakePlaybackService : Service() {
     private var currentEventId: String? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        android.util.Log.d(
+            "WakeFlow",
+            "Service.onStartCommand action=${intent?.action} eventId=${intent?.wakeEventId()} startId=$startId",
+        )
         // Action-based commands (sent by the activity after advancing the queue).
         when (intent?.action) {
             ACTION_REFRESH_FOR_CURRENT -> {
@@ -86,6 +90,10 @@ class WakePlaybackService : Service() {
     private fun presentCurrent() {
         val current = WakeAlarmQueueHolder.queue.current ?: return
         val newNotifId = notificationIdFor(current.eventId)
+        android.util.Log.d(
+            "WakeFlow",
+            "Service.presentCurrent eventId=${current.eventId} newNotifId=$newNotifId currentNotifId=$currentNotificationId currentEventId=$currentEventId",
+        )
 
         // Cancel the previous notification if it has a different ID
         // so it doesn't linger in the notification shade.
@@ -115,6 +123,7 @@ class WakePlaybackService : Service() {
      */
     private fun refreshForCurrent() {
         val current = WakeAlarmQueueHolder.queue.current
+        android.util.Log.d("WakeFlow", "Service.refreshForCurrent current=${current?.eventId}")
         if (current == null) {
             currentNotificationId?.let { oldId ->
                 (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
@@ -133,6 +142,7 @@ class WakePlaybackService : Service() {
 
     private fun launchActivityForCurrent() {
         val current = WakeAlarmQueueHolder.queue.current ?: return
+        android.util.Log.d("WakeFlow", "Service.launchActivityForCurrent eventId=${current.eventId}")
         // Explicitly deliver the payload to WakeAlertActivity. The notification's
         // fullScreenIntent only fires on initial display; we must explicitly
         // re-launch the activity to surface a newly-current payload.
@@ -169,6 +179,7 @@ class WakePlaybackService : Service() {
     }
 
     override fun onDestroy() {
+        android.util.Log.d("WakeFlow", "Service.onDestroy")
         stopPlayback()
         serviceScope.cancel()
         stopForeground(STOP_FOREGROUND_REMOVE)
