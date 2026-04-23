@@ -40,11 +40,25 @@ class WakePlaybackService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? = null
 
+    private var currentNotificationId: Int? = null
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val payload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY
 
         createChannel()
-        startForeground(notificationIdFor(payload.eventId), buildNotification(payload))
+
+        // Cancel the previous notification if it has a different ID (e.g. main → sub-alarm)
+        // so it doesn't linger in the notification shade.
+        val newNotifId = notificationIdFor(payload.eventId)
+        currentNotificationId?.let { oldId ->
+            if (oldId != newNotifId) {
+                (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
+                    .cancel(oldId)
+            }
+        }
+        currentNotificationId = newNotifId
+
+        startForeground(newNotifId, buildNotification(payload))
         startPlayback(payload)
 
         // Explicitly deliver the payload to WakeAlertActivity.  The notification's

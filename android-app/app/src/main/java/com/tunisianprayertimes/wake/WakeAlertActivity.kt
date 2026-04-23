@@ -62,23 +62,22 @@ import java.util.Locale
 
 class WakeAlertActivity : AppCompatActivity() {
     private var payload by mutableStateOf<WakeTriggerPayload?>(null)
-    private val pendingPayloads = ArrayDeque<WakeTriggerPayload>()
+    private val queue = WakeAlarmQueue()
 
     private val dismissReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             val eventId = intent.wakeEventId()
-            if (eventId == null || eventId == payload?.eventId) {
-                if (!advanceToNextPayload()) {
-                    finish()
-                }
+            if (!queue.handleDismiss(eventId)) {
+                finish()
             }
+            payload = queue.current
         }
     }
 
     private fun advanceToNextPayload(): Boolean {
-        val next = pendingPayloads.removeFirstOrNull() ?: return false
-        payload = next
-        return true
+        val advanced = queue.advance()
+        payload = queue.current
+        return advanced
     }
 
     override fun attachBaseContext(newBase: Context) {
@@ -95,27 +94,16 @@ class WakeAlertActivity : AppCompatActivity() {
         // Restore payloads that survived activity destruction (e.g. HOME press
         // while a challenge is active, then system kills the activity).
         if (savedInstanceState != null) {
-            savedInstanceState.getBundle(KEY_CURRENT_PAYLOAD)
-                ?.toWakeTriggerPayload()
-                ?.let { payload = it }
-            val count = savedInstanceState.getInt(KEY_PENDING_COUNT, 0)
-            for (i in 0 until count) {
-                savedInstanceState.getBundle("$KEY_PENDING_PREFIX$i")
-                    ?.toWakeTriggerPayload()
-                    ?.let { pendingPayloads.addLast(it) }
-            }
+            queue.restoreFromBundle(savedInstanceState)
+            payload = queue.current
         }
 
         // Handle the incoming intent payload (initial launch or re-creation
         // after the system delivered a new alarm while the activity was dead).
         val intentPayload = intent?.toWakeTriggerPayload()
         if (intentPayload != null) {
-            val current = payload
-            if (current == null || !current.wakeUpCheckEnabled) {
-                payload = intentPayload
-            } else if (intentPayload.eventId != current.eventId) {
-                pendingPayloads.addLast(intentPayload)
-            }
+            queue.handleIncoming(intentPayload)
+            payload = queue.current
         }
 
         setContent {
@@ -146,14 +134,8 @@ class WakeAlertActivity : AppCompatActivity() {
         super.onNewIntent(intent)
         setIntent(intent)
         val incoming = intent.toWakeTriggerPayload() ?: return
-        val current = payload
-        if (current == null || !current.wakeUpCheckEnabled) {
-            // No active challenge — show the new alarm immediately
-            payload = incoming
-        } else {
-            // User is busy solving a challenge — queue the incoming alarm
-            pendingPayloads.addLast(incoming)
-        }
+        queue.handleIncoming(incoming)
+        payload = queue.current
     }
 
     override fun onStart() {
@@ -173,11 +155,7 @@ class WakeAlertActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        payload?.let { outState.putBundle(KEY_CURRENT_PAYLOAD, it.toBundle()) }
-        outState.putInt(KEY_PENDING_COUNT, pendingPayloads.size)
-        pendingPayloads.forEachIndexed { i, p ->
-            outState.putBundle("$KEY_PENDING_PREFIX$i", p.toBundle())
-        }
+        queue.saveToBundle(outState)
     }
 
     private fun configureWindowForAlarm() {
@@ -244,12 +222,6 @@ class WakeAlertActivity : AppCompatActivity() {
                 pendingIntent,
             )
         }
-    }
-
-    private companion object {
-        const val KEY_CURRENT_PAYLOAD = "current_payload"
-        const val KEY_PENDING_COUNT = "pending_count"
-        const val KEY_PENDING_PREFIX = "pending_"
     }
 }
 
