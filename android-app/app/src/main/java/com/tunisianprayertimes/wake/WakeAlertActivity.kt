@@ -62,14 +62,23 @@ import java.util.Locale
 
 class WakeAlertActivity : AppCompatActivity() {
     private var payload by mutableStateOf<WakeTriggerPayload?>(null)
+    private val pendingPayloads = ArrayDeque<WakeTriggerPayload>()
 
     private val dismissReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             val eventId = intent.wakeEventId()
             if (eventId == null || eventId == payload?.eventId) {
-                finish()
+                if (!advanceToNextPayload()) {
+                    finish()
+                }
             }
         }
+    }
+
+    private fun advanceToNextPayload(): Boolean {
+        val next = pendingPayloads.removeFirstOrNull() ?: return false
+        payload = next
+        return true
     }
 
     override fun attachBaseContext(newBase: Context) {
@@ -89,9 +98,11 @@ class WakeAlertActivity : AppCompatActivity() {
                 WakeAlertScreen(
                     payload = payload,
                     onStop = {
-                        stopService(Intent(this, WakePlaybackService::class.java))
                         payload?.let { p -> scheduleAwakeCheckIfEnabled(p) }
-                        finish()
+                        if (!advanceToNextPayload()) {
+                            stopService(Intent(this, WakePlaybackService::class.java))
+                            finish()
+                        }
                     },
                     onOpenApp = {
                         startActivity(
@@ -109,7 +120,15 @@ class WakeAlertActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        payload = intent.toWakeTriggerPayload()
+        val incoming = intent.toWakeTriggerPayload() ?: return
+        val current = payload
+        if (current == null || !current.wakeUpCheckEnabled) {
+            // No active challenge — show the new alarm immediately
+            payload = incoming
+        } else {
+            // User is busy solving a challenge — queue the incoming alarm
+            pendingPayloads.addLast(incoming)
+        }
     }
 
     override fun onStart() {

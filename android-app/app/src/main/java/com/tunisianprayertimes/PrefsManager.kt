@@ -25,6 +25,8 @@ object PrefsManager {
     private const val KEY_CALL_END_VIBRATION_ENABLED = "call_end_vibration_enabled"
     private const val KEY_DISABLED_OUTSIDE_TUNISIA = "disabled_outside_tunisia"
     private const val KEY_AUTO_LOCATION_UPDATE = "auto_location_update"
+    private const val KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS = "auto_silence_dismissed_until_millis"
+    private const val KEY_AUTO_SILENCE_DISMISSED_PRAYER = "auto_silence_dismissed_prayer"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
 
@@ -84,6 +86,28 @@ object PrefsManager {
             .putBoolean(KEY_AUTO_SILENCE_ACTIVE, false)
             .remove(KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE)
             .remove(KEY_AUTO_SILENCE_PREVIOUS_INTERRUPTION_FILTER)
+            .apply()
+    }
+
+    fun getAutoSilenceDismissedUntilMillis(context: Context): Long {
+        return prefs(context).getLong(KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS, 0L)
+    }
+
+    fun getAutoSilenceDismissedPrayer(context: Context): String? {
+        return prefs(context).getString(KEY_AUTO_SILENCE_DISMISSED_PRAYER, null)
+    }
+
+    fun setAutoSilenceDismissed(context: Context, millis: Long, prayer: Prayer) {
+        prefs(context).edit()
+            .putLong(KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS, millis)
+            .putString(KEY_AUTO_SILENCE_DISMISSED_PRAYER, prayer.name)
+            .apply()
+    }
+
+    fun clearAutoSilenceDismissed(context: Context) {
+        prefs(context).edit()
+            .remove(KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS)
+            .remove(KEY_AUTO_SILENCE_DISMISSED_PRAYER)
             .apply()
     }
 
