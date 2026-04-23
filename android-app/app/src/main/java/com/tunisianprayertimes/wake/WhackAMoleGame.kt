@@ -61,11 +61,13 @@ internal fun WhackAMoleGame(
     var kills by rememberSaveable { mutableIntStateOf(0) }
     var completed by rememberSaveable { mutableStateOf(false) }
     var activeHole by remember { mutableStateOf(-1) }
+    var whackedHole by remember { mutableStateOf(-1) }
 
     LaunchedEffect(completed, timing) {
         if (completed) return@LaunchedEffect
         while (true) {
             val hole = Random.nextInt(TOTAL_HOLES)
+            whackedHole = -1
             activeHole = hole
             delay(timing.visibilityMs)
             activeHole = -1
@@ -102,12 +104,14 @@ internal fun WhackAMoleGame(
                         val index = row * GRID_SIZE + col
                         MoleHole(
                             isActive = activeHole == index && !completed,
+                            wasWhacked = whackedHole == index,
                             popUpAnimMs = timing.popUpAnimMs,
                             hideAnimMs = timing.hideAnimMs,
                             modifier = Modifier.weight(1f),
                             onWhack = {
                                 if (activeHole == index && !completed) {
                                     activeHole = -1
+                                    whackedHole = index
                                     val newKills = kills + 1
                                     kills = newKills
                                     if (newKills >= killTarget) {
@@ -146,6 +150,7 @@ private val MoleNoseColor = Color(0xFFD81B60)
 @Composable
 private fun MoleHole(
     isActive: Boolean,
+    wasWhacked: Boolean,
     popUpAnimMs: Int,
     hideAnimMs: Int,
     modifier: Modifier = Modifier,
@@ -185,13 +190,15 @@ private fun MoleHole(
                     .background(MoleColor),
                 contentAlignment = Alignment.Center,
             ) {
-                // Mole nose
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize(0.25f)
-                        .clip(CircleShape)
-                        .background(MoleNoseColor),
-                )
+                // Mole nose — only visible when user tapped the hamster
+                if (wasWhacked) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize(0.25f)
+                            .clip(CircleShape)
+                            .background(MoleNoseColor),
+                    )
+                }
             }
         }
         // Emoji eyes on top of mole
