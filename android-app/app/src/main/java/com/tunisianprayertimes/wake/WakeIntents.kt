@@ -2,6 +2,7 @@ package com.tunisianprayertimes.wake
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
@@ -233,6 +234,36 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
 }
 
 fun Intent.wakeEventId(): String? = getStringExtra(EXTRA_EVENT_ID)
+
+fun WakeTriggerPayload.toBundle(): Bundle =
+    Intent().populateWakeTriggerPayload(
+        eventId = eventId,
+        prayer = prayer,
+        effectivePrayer = effectivePrayer,
+        mainAlarmMode = mainAlarmMode,
+        hour = hour,
+        minute = minute,
+        ringtone = ringtone,
+        customRingtoneUri = customRingtoneUri,
+        vibrationOnly = vibrationOnly,
+        wakeUpCheckEnabled = wakeUpCheckEnabled,
+        wakeUpCheckType = wakeUpCheckType,
+        wakeUpCheckDifficulty = wakeUpCheckDifficulty,
+        whackAMoleKillTarget = whackAMoleKillTarget,
+        wakeUpCheckSteps = wakeUpCheckSteps,
+        progressiveVolume = progressiveVolume,
+        snoreTrackingEnabled = snoreTrackingEnabled,
+        awakeCheckEnabled = awakeCheckEnabled,
+        awakeCheckDelayMinutes = awakeCheckDelayMinutes,
+        wakeUpCheckChallenge = wakeUpCheckChallenge,
+        isSubAlarm = isSubAlarm,
+        subAlarmId = subAlarmId,
+        offsetMinutes = offsetMinutes,
+        offsetDirection = offsetDirection,
+    ).extras ?: Bundle()
+
+fun Bundle.toWakeTriggerPayload(): WakeTriggerPayload? =
+    Intent().apply { putExtras(this@toWakeTriggerPayload) }.toWakeTriggerPayload()
 
 private fun inferWakeUpCheckDifficulty(
     wakeUpCheckType: WakeUpCheckType,
