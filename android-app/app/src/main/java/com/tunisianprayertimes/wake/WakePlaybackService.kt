@@ -41,15 +41,54 @@ class WakePlaybackService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     private var currentNotificationId: Int? = null
+    private var currentEventId: String? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        // Action-based commands (sent by the activity after advancing the queue).
+        when (intent?.action) {
+            ACTION_REFRESH_FOR_CURRENT -> {
+                refreshForCurrent()
+                return START_NOT_STICKY
+            }
+            ACTION_STOP_PLAYBACK -> {
+                stopPlayback()
+                stopForeground(STOP_FOREGROUND_REMOVE)
+                stopSelf()
+                return START_NOT_STICKY
+            }
+        }
+
         val payload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY
 
         createChannel()
 
-        // Cancel the previous notification if it has a different ID (e.g. main → sub-alarm)
+        // Queue-aware: hand the payload to the process-global queue first.
+        // Only refresh notification + playback + activity if it became the
+        // active alarm. If queued, keep showing the existing alarm.
+        val result = WakeAlarmQueueHolder.queue.handleIncoming(payload)
+
+        when (result) {
+            IncomingResult.BECAME_CURRENT -> {
+                presentCurrent()
+                launchActivityForCurrent()
+            }
+            IncomingResult.QUEUED, IncomingResult.REJECTED_DUPLICATE -> {
+                // Make sure we are still foregrounded with whatever is current.
+                // (The notification might have been cancelled if the activity
+                // briefly fell behind; this re-asserts service state.)
+                if (currentNotificationId == null) presentCurrent()
+            }
+        }
+
+        return START_NOT_STICKY
+    }
+
+    private fun presentCurrent() {
+        val current = WakeAlarmQueueHolder.queue.current ?: return
+        val newNotifId = notificationIdFor(current.eventId)
+
+        // Cancel the previous notification if it has a different ID
         // so it doesn't linger in the notification shade.
-        val newNotifId = notificationIdFor(payload.eventId)
         currentNotificationId?.let { oldId ->
             if (oldId != newNotifId) {
                 (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
@@ -58,46 +97,75 @@ class WakePlaybackService : Service() {
         }
         currentNotificationId = newNotifId
 
-        startForeground(newNotifId, buildNotification(payload))
-        startPlayback(payload)
+        startForeground(newNotifId, buildNotification(current))
 
-        // Explicitly deliver the payload to WakeAlertActivity.  The notification's
-        // fullScreenIntent only fires on initial display; when the service is already
-        // foregrounded (e.g. a sub-alarm arriving while the main alarm is active),
-        // updating the notification does NOT re-trigger fullScreenIntent, so the
-        // activity would never see the new payload.
+        // Only restart playback if the alarm being presented changed —
+        // avoid stop/start churn when the queue did not advance.
+        if (currentEventId != current.eventId) {
+            currentEventId = current.eventId
+            startPlayback(current)
+        }
+    }
+
+    /**
+     * Re-evaluate state after the activity advances or dismisses an alarm.
+     * - If the queue still has a current alarm: refresh notif + playback for it
+     *   and re-launch the activity (so a queued challenge is immediately shown).
+     * - If the queue is empty: stop the service entirely.
+     */
+    private fun refreshForCurrent() {
+        val current = WakeAlarmQueueHolder.queue.current
+        if (current == null) {
+            currentNotificationId?.let { oldId ->
+                (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
+                    .cancel(oldId)
+            }
+            currentNotificationId = null
+            currentEventId = null
+            stopPlayback()
+            stopForeground(STOP_FOREGROUND_REMOVE)
+            stopSelf()
+            return
+        }
+        presentCurrent()
+        launchActivityForCurrent()
+    }
+
+    private fun launchActivityForCurrent() {
+        val current = WakeAlarmQueueHolder.queue.current ?: return
+        // Explicitly deliver the payload to WakeAlertActivity. The notification's
+        // fullScreenIntent only fires on initial display; we must explicitly
+        // re-launch the activity to surface a newly-current payload.
         val activityIntent = Intent(this, WakeAlertActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             .putExtras(
                 Intent().populateWakeTriggerPayload(
-                    eventId = payload.eventId,
-                    prayer = payload.prayer,
-                    effectivePrayer = payload.effectivePrayer,
-                    mainAlarmMode = payload.mainAlarmMode,
-                    hour = payload.hour,
-                    minute = payload.minute,
-                    ringtone = payload.ringtone,
-                    customRingtoneUri = payload.customRingtoneUri,
-                    vibrationOnly = payload.vibrationOnly,
-                    wakeUpCheckEnabled = payload.wakeUpCheckEnabled,
-                    wakeUpCheckType = payload.wakeUpCheckType,
-                    wakeUpCheckDifficulty = payload.wakeUpCheckDifficulty,
-                    whackAMoleKillTarget = payload.whackAMoleKillTarget,
-                    wakeUpCheckSteps = payload.wakeUpCheckSteps,
-                    progressiveVolume = payload.progressiveVolume,
-                    snoreTrackingEnabled = payload.snoreTrackingEnabled,
-                    awakeCheckEnabled = payload.awakeCheckEnabled,
-                    awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
-                    wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
-                    isSubAlarm = payload.isSubAlarm,
-                    subAlarmId = payload.subAlarmId,
-                    offsetMinutes = payload.offsetMinutes,
-                    offsetDirection = payload.offsetDirection,
+                    eventId = current.eventId,
+                    prayer = current.prayer,
+                    effectivePrayer = current.effectivePrayer,
+                    mainAlarmMode = current.mainAlarmMode,
+                    hour = current.hour,
+                    minute = current.minute,
+                    ringtone = current.ringtone,
+                    customRingtoneUri = current.customRingtoneUri,
+                    vibrationOnly = current.vibrationOnly,
+                    wakeUpCheckEnabled = current.wakeUpCheckEnabled,
+                    wakeUpCheckType = current.wakeUpCheckType,
+                    wakeUpCheckDifficulty = current.wakeUpCheckDifficulty,
+                    whackAMoleKillTarget = current.whackAMoleKillTarget,
+                    wakeUpCheckSteps = current.wakeUpCheckSteps,
+                    progressiveVolume = current.progressiveVolume,
+                    snoreTrackingEnabled = current.snoreTrackingEnabled,
+                    awakeCheckEnabled = current.awakeCheckEnabled,
+                    awakeCheckDelayMinutes = current.awakeCheckDelayMinutes,
+                    wakeUpCheckChallenge = current.wakeUpCheckChallenge,
+                    isSubAlarm = current.isSubAlarm,
+                    subAlarmId = current.subAlarmId,
+                    offsetMinutes = current.offsetMinutes,
+                    offsetDirection = current.offsetDirection,
                 ),
             )
         startActivity(activityIntent)
-
-        return START_NOT_STICKY
     }
 
     override fun onDestroy() {
@@ -355,6 +423,11 @@ class WakePlaybackService : Service() {
 
     companion object {
         private const val CHANNEL_ID = "tunisianprayertimes.wake.playback"
+
+        const val ACTION_REFRESH_FOR_CURRENT =
+            "com.tunisianprayertimes.action.REFRESH_FOR_CURRENT"
+        const val ACTION_STOP_PLAYBACK =
+            "com.tunisianprayertimes.action.STOP_PLAYBACK"
 
         fun playbackIntent(context: Context, payload: WakeTriggerPayload): Intent =
             Intent(context, WakePlaybackService::class.java).putExtras(

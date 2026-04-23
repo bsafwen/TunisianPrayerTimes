@@ -2,6 +2,17 @@ package com.tunisianprayertimes.wake
 
 import android.os.Bundle
 
+enum class IncomingResult {
+    /** Payload became the new current (queue was empty / current had no challenge). */
+    BECAME_CURRENT,
+
+    /** Payload was added to the pending queue behind an active challenge. */
+    QUEUED,
+
+    /** Payload was rejected because its eventId duplicates current or a queued payload. */
+    REJECTED_DUPLICATE,
+}
+
 class WakeAlarmQueue {
     var current: WakeTriggerPayload? = null
         private set
@@ -19,27 +30,31 @@ class WakeAlarmQueue {
      *   the incoming payload replaces the current one immediately.
      * - If a challenge IS active, the incoming payload is queued — unless its
      *   eventId already matches the current or any queued payload (dedup).
-     *
-     * Returns `true` if the payload was accepted (set as current or queued).
      */
-    fun handleIncoming(payload: WakeTriggerPayload): Boolean {
+    fun handleIncoming(payload: WakeTriggerPayload): IncomingResult {
         val cur = current
         if (cur == null || !cur.wakeUpCheckEnabled) {
             current = payload
-            return true
+            return IncomingResult.BECAME_CURRENT
         }
-        if (cur.eventId == payload.eventId) return false
-        if (pending.any { it.eventId == payload.eventId }) return false
+        if (cur.eventId == payload.eventId) return IncomingResult.REJECTED_DUPLICATE
+        if (pending.any { it.eventId == payload.eventId }) return IncomingResult.REJECTED_DUPLICATE
         pending.addLast(payload)
-        return true
+        return IncomingResult.QUEUED
     }
 
     /**
-     * Advance to the next queued payload.
-     * Returns `true` if a pending payload was promoted to current.
+     * Advance to the next queued payload. If the queue is empty, [current]
+     * is cleared to `null` (the just-handled alarm is fully done).
+     * Returns `true` if a pending payload was promoted to current,
+     * `false` if the queue was empty (and `current` is now `null`).
      */
     fun advance(): Boolean {
-        val next = pending.removeFirstOrNull() ?: return false
+        val next = pending.removeFirstOrNull()
+        if (next == null) {
+            current = null
+            return false
+        }
         current = next
         return true
     }
@@ -55,7 +70,17 @@ class WakeAlarmQueue {
     }
 
     /**
-     * Save queue state into a [Bundle] for activity state preservation.
+     * Clear all state. Used when the alarm session fully ends or for testing.
+     */
+    fun clear() {
+        current = null
+        pending.clear()
+    }
+
+    /**
+     * Save queue state into a [Bundle]. Used by tests; the production queue
+     * lives in [WakeAlarmQueueHolder] and survives activity destruction
+     * naturally as a process-level singleton.
      */
     fun saveToBundle(outState: Bundle) {
         current?.let { outState.putBundle(KEY_CURRENT_PAYLOAD, it.toBundle()) }
@@ -65,9 +90,7 @@ class WakeAlarmQueue {
         }
     }
 
-    /**
-     * Restore queue state from a saved [Bundle].
-     */
+    /** Restore queue state from a saved [Bundle]. */
     fun restoreFromBundle(savedState: Bundle) {
         savedState.getBundle(KEY_CURRENT_PAYLOAD)
             ?.toWakeTriggerPayload()
@@ -86,3 +109,16 @@ class WakeAlarmQueue {
         private const val KEY_PENDING_PREFIX = "pending_"
     }
 }
+
+/**
+ * Process-wide singleton holder for the alarm queue.
+ *
+ * Survives activity destruction and service restarts within the same process,
+ * which is essential to prevent challenge bypass and duplicate delivery bugs.
+ * On full process death (rare — Android only kills a foregrounded app under
+ * extreme memory pressure) the queue is reset, which is acceptable.
+ */
+object WakeAlarmQueueHolder {
+    val queue = WakeAlarmQueue()
+}
+

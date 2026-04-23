@@ -1,10 +1,12 @@
 package com.tunisianprayertimes
 
 import android.os.Bundle
+import com.tunisianprayertimes.wake.IncomingResult
 import com.tunisianprayertimes.wake.WakeAlarmQueue
 import com.tunisianprayertimes.wake.WakeTriggerPayload
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -57,6 +59,69 @@ class WakeAlarmQueueTest {
     )
 
     // ──────────────────────────────────────────────────────────────
+    // IncomingResult enum distinctions (critical for service behavior)
+    // ──────────────────────────────────────────────────────────────
+
+    @Test
+    fun `first incoming returns BECAME_CURRENT`() {
+        assertEquals(IncomingResult.BECAME_CURRENT, queue.handleIncoming(payload("a")))
+    }
+
+    @Test
+    fun `incoming replacing no-challenge current returns BECAME_CURRENT`() {
+        queue.handleIncoming(payload("old", wakeUpCheckEnabled = false))
+        assertEquals(IncomingResult.BECAME_CURRENT, queue.handleIncoming(payload("new")))
+    }
+
+    @Test
+    fun `incoming queued behind active challenge returns QUEUED`() {
+        queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
+        assertEquals(IncomingResult.QUEUED, queue.handleIncoming(payload("sub")))
+    }
+
+    @Test
+    fun `duplicate of current returns REJECTED_DUPLICATE`() {
+        queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("main")))
+    }
+
+    @Test
+    fun `duplicate of queued returns REJECTED_DUPLICATE`() {
+        queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
+        queue.handleIncoming(payload("sub"))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub")))
+    }
+
+    // ──────────────────────────────────────────────────────────────
+    // clear()
+    // ──────────────────────────────────────────────────────────────
+
+    @Test
+    fun `clear empties current and pending`() {
+        queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
+        queue.handleIncoming(payload("sub1"))
+        queue.handleIncoming(payload("sub2"))
+        queue.clear()
+        assertNull(queue.current)
+        assertEquals(0, queue.pendingCount)
+    }
+
+    @Test
+    fun `clear on empty queue is a no-op`() {
+        queue.clear()
+        assertNull(queue.current)
+        assertEquals(0, queue.pendingCount)
+    }
+
+    @Test
+    fun `after clear new incoming becomes current`() {
+        queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
+        queue.clear()
+        assertEquals(IncomingResult.BECAME_CURRENT, queue.handleIncoming(payload("fresh")))
+        assertEquals("fresh", queue.current?.eventId)
+    }
+
+    // ──────────────────────────────────────────────────────────────
     // Initial state
     // ──────────────────────────────────────────────────────────────
 
@@ -73,7 +138,7 @@ class WakeAlarmQueueTest {
     @Test
     fun `incoming payload becomes current when queue is empty`() {
         val p = payload("main")
-        assertTrue(queue.handleIncoming(p))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(p))
         assertEquals("main", queue.current?.eventId)
         assertEquals(0, queue.pendingCount)
     }
@@ -86,7 +151,7 @@ class WakeAlarmQueueTest {
     fun `incoming replaces current when current has no challenge`() {
         queue.handleIncoming(payload("old", wakeUpCheckEnabled = false))
         val newP = payload("new")
-        assertTrue(queue.handleIncoming(newP))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(newP))
         assertEquals("new", queue.current?.eventId)
         assertEquals(0, queue.pendingCount)
     }
@@ -94,7 +159,7 @@ class WakeAlarmQueueTest {
     @Test
     fun `incoming replaces current even with same eventId when no challenge`() {
         queue.handleIncoming(payload("same", wakeUpCheckEnabled = false))
-        assertTrue(queue.handleIncoming(payload("same")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("same")))
         assertEquals("same", queue.current?.eventId)
     }
 
@@ -105,7 +170,7 @@ class WakeAlarmQueueTest {
     @Test
     fun `incoming with different eventId is queued when challenge active`() {
         queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
-        assertTrue(queue.handleIncoming(payload("sub1")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub1")))
         assertEquals("main", queue.current?.eventId)
         assertEquals(1, queue.pendingCount)
     }
@@ -113,7 +178,7 @@ class WakeAlarmQueueTest {
     @Test
     fun `duplicate of current eventId is rejected when challenge active`() {
         queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
-        assertFalse(queue.handleIncoming(payload("main")))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("main")))
         assertEquals(0, queue.pendingCount)
     }
 
@@ -121,24 +186,24 @@ class WakeAlarmQueueTest {
     fun `duplicate of queued eventId is rejected`() {
         queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
         queue.handleIncoming(payload("sub1"))
-        assertFalse(queue.handleIncoming(payload("sub1")))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub1")))
         assertEquals(1, queue.pendingCount)
     }
 
     @Test
     fun `triple delivery of same main alarm is rejected both times`() {
         queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
-        assertFalse(queue.handleIncoming(payload("main")))
-        assertFalse(queue.handleIncoming(payload("main")))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("main")))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("main")))
         assertEquals(0, queue.pendingCount)
     }
 
     @Test
     fun `multiple different sub-alarms are queued in order`() {
         queue.handleIncoming(payload("main", wakeUpCheckEnabled = true))
-        assertTrue(queue.handleIncoming(payload("sub1")))
-        assertTrue(queue.handleIncoming(payload("sub2")))
-        assertTrue(queue.handleIncoming(payload("sub3")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub1")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub2")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub3")))
         assertEquals(3, queue.pendingCount)
         assertEquals(listOf("sub1", "sub2", "sub3"), queue.pendingEventIds())
     }
@@ -153,10 +218,10 @@ class WakeAlarmQueueTest {
     }
 
     @Test
-    fun `advance returns false when only current exists`() {
+    fun `advance returns false and clears current when only current exists`() {
         queue.handleIncoming(payload("main"))
         assertFalse(queue.advance())
-        assertEquals("main", queue.current?.eventId)
+        assertNull(queue.current)
     }
 
     @Test
@@ -184,7 +249,7 @@ class WakeAlarmQueueTest {
         assertTrue(queue.advance())
         assertEquals("sub3", queue.current?.eventId)
         assertFalse(queue.advance())
-        assertEquals("sub3", queue.current?.eventId)
+        assertNull(queue.current)
     }
 
     @Test
@@ -292,7 +357,7 @@ class WakeAlarmQueueTest {
         queue.handleIncoming(payload("sub1", wakeUpCheckEnabled = true))
         queue.advance()
         // Now sub1 is current with challenge active
-        assertTrue(queue.handleIncoming(payload("sub2")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub2")))
         assertEquals(1, queue.pendingCount)
     }
 
@@ -303,7 +368,7 @@ class WakeAlarmQueueTest {
         queue.advance()
         // "main" was evicted from current; now sub1 is current
         // A fresh delivery of "main" should be accepted
-        assertTrue(queue.handleIncoming(payload("main")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("main")))
         assertEquals(listOf("main"), queue.pendingEventIds())
     }
 
@@ -314,7 +379,7 @@ class WakeAlarmQueueTest {
     @Test
     fun `no-challenge payload replaced by challenge payload`() {
         queue.handleIncoming(payload("nocheck", wakeUpCheckEnabled = false))
-        assertTrue(queue.handleIncoming(payload("withcheck", wakeUpCheckEnabled = true)))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("withcheck", wakeUpCheckEnabled = true)))
         assertEquals("withcheck", queue.current?.eventId)
         assertEquals(0, queue.pendingCount)
     }
@@ -322,9 +387,9 @@ class WakeAlarmQueueTest {
     @Test
     fun `no-challenge current is always replaced regardless of eventId`() {
         queue.handleIncoming(payload("a", wakeUpCheckEnabled = false))
-        assertTrue(queue.handleIncoming(payload("b", wakeUpCheckEnabled = false)))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("b", wakeUpCheckEnabled = false)))
         assertEquals("b", queue.current?.eventId)
-        assertTrue(queue.handleIncoming(payload("c")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("c")))
         assertEquals("c", queue.current?.eventId)
     }
 
@@ -338,7 +403,7 @@ class WakeAlarmQueueTest {
         queue.advance()
         assertEquals("sub", queue.current?.eventId)
         // Since sub has no challenge, a new incoming should replace it
-        assertTrue(queue.handleIncoming(payload("new")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("new")))
         assertEquals("new", queue.current?.eventId)
     }
 
@@ -354,11 +419,11 @@ class WakeAlarmQueueTest {
         assertEquals("wake:main:fajr_1", queue.current?.eventId)
 
         // Then startActivity fires -> onNewIntent with same payload
-        assertFalse(queue.handleIncoming(payload("wake:main:fajr_1")))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("wake:main:fajr_1")))
         assertEquals(0, queue.pendingCount)
 
         // Sub-alarm arrives later
-        assertTrue(queue.handleIncoming(payload("wake:sub:fajr_1:sub1")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("wake:sub:fajr_1:sub1")))
         assertEquals(1, queue.pendingCount)
 
         // User solves main -> advances to sub
@@ -429,7 +494,7 @@ class WakeAlarmQueueTest {
         val restored = WakeAlarmQueue()
         restored.restoreFromBundle(bundle)
         // Now the intent delivers "sub" again (setIntent from onNewIntent)
-        assertFalse(restored.handleIncoming(payload("sub")))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, restored.handleIncoming(payload("sub")))
         assertEquals(1, restored.pendingCount) // still just 1
     }
 
@@ -443,7 +508,7 @@ class WakeAlarmQueueTest {
 
         val restored = WakeAlarmQueue()
         restored.restoreFromBundle(bundle)
-        assertTrue(restored.handleIncoming(payload("newsub")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, restored.handleIncoming(payload("newsub")))
         assertEquals(1, restored.pendingCount)
     }
 
@@ -463,7 +528,7 @@ class WakeAlarmQueueTest {
         val restored = WakeAlarmQueue()
         restored.restoreFromBundle(bundle)
         // Intent still carries "sub" payload
-        assertFalse(restored.handleIncoming(payload("sub")))
+        assertEquals(IncomingResult.REJECTED_DUPLICATE, restored.handleIncoming(payload("sub")))
 
         // 5. Main challenge is still current
         assertEquals("main", restored.current?.eventId)
@@ -482,15 +547,15 @@ class WakeAlarmQueueTest {
     // ──────────────────────────────────────────────────────────────
 
     @Test
-    fun `advance does not change current when queue is empty`() {
+    fun `advance clears current when queue is empty`() {
         queue.handleIncoming(payload("main"))
-        queue.advance() // returns false
-        assertEquals("main", queue.current?.eventId)
+        queue.advance() // returns false, current is now null
+        assertNull(queue.current)
     }
 
     @Test
     fun `handleIncoming on pristine queue works`() {
-        assertTrue(queue.handleIncoming(payload("first")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("first")))
         assertEquals("first", queue.current?.eventId)
     }
 
@@ -536,7 +601,7 @@ class WakeAlarmQueueTest {
         assertEquals("sub1", queue.current?.eventId)
 
         // New sub2 arrives while solving sub1
-        assertTrue(queue.handleIncoming(payload("sub2", wakeUpCheckEnabled = true)))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub2", wakeUpCheckEnabled = true)))
         assertEquals(1, queue.pendingCount)
 
         // Advance to sub2
@@ -544,7 +609,7 @@ class WakeAlarmQueueTest {
         assertEquals("sub2", queue.current?.eventId)
 
         // sub3 arrives
-        assertTrue(queue.handleIncoming(payload("sub3")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("sub3")))
 
         // Advance to sub3
         assertTrue(queue.advance())
@@ -584,7 +649,7 @@ class WakeAlarmQueueTest {
         // sub1 is current with no challenge, queue empty
         queue.advance() // returns false, queue empty
         // Now a completely new alarm arrives — sub1 has no challenge so it's replaced
-        assertTrue(queue.handleIncoming(payload("new_main")))
+        assertNotEquals(IncomingResult.REJECTED_DUPLICATE, queue.handleIncoming(payload("new_main")))
         assertEquals("new_main", queue.current?.eventId)
         assertEquals(0, queue.pendingCount)
     }
