@@ -1,6 +1,9 @@
 package com.tunisianprayertimes.wake
 
 import android.os.Bundle
+import android.util.Log
+
+private const val TAG = "WakeFlow"
 
 enum class IncomingResult {
     /** Payload became the new current (queue was empty / current had no challenge). */
@@ -33,14 +36,22 @@ class WakeAlarmQueue {
      */
     fun handleIncoming(payload: WakeTriggerPayload): IncomingResult {
         val cur = current
-        if (cur == null || !cur.wakeUpCheckEnabled) {
+        val result = if (cur == null || !cur.wakeUpCheckEnabled) {
             current = payload
-            return IncomingResult.BECAME_CURRENT
+            IncomingResult.BECAME_CURRENT
+        } else if (cur.eventId == payload.eventId) {
+            IncomingResult.REJECTED_DUPLICATE
+        } else if (pending.any { it.eventId == payload.eventId }) {
+            IncomingResult.REJECTED_DUPLICATE
+        } else {
+            pending.addLast(payload)
+            IncomingResult.QUEUED
         }
-        if (cur.eventId == payload.eventId) return IncomingResult.REJECTED_DUPLICATE
-        if (pending.any { it.eventId == payload.eventId }) return IncomingResult.REJECTED_DUPLICATE
-        pending.addLast(payload)
-        return IncomingResult.QUEUED
+        Log.d(
+            TAG,
+            "Queue.handleIncoming(${payload.eventId}) -> $result | current=${current?.eventId} pending=${pendingEventIds()}",
+        )
+        return result
     }
 
     /**
@@ -50,12 +61,15 @@ class WakeAlarmQueue {
      * `false` if the queue was empty (and `current` is now `null`).
      */
     fun advance(): Boolean {
+        val previous = current?.eventId
         val next = pending.removeFirstOrNull()
         if (next == null) {
             current = null
+            Log.d(TAG, "Queue.advance() previous=$previous -> EMPTY (current=null)")
             return false
         }
         current = next
+        Log.d(TAG, "Queue.advance() previous=$previous -> current=${next.eventId} pending=${pendingEventIds()}")
         return true
     }
 
@@ -65,6 +79,7 @@ class WakeAlarmQueue {
      * Returns `true` if we advanced to a next payload (caller should NOT finish).
      */
     fun handleDismiss(eventId: String?): Boolean {
+        Log.d(TAG, "Queue.handleDismiss(eventId=$eventId) | current=${current?.eventId} pending=${pendingEventIds()}")
         if (eventId != null && eventId != current?.eventId) return true
         return advance()
     }

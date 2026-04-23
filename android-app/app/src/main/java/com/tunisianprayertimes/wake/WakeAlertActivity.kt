@@ -67,6 +67,7 @@ class WakeAlertActivity : AppCompatActivity() {
     private val dismissReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             val eventId = intent.wakeEventId()
+            android.util.Log.d("WakeFlow", "Activity.dismissReceiver eventId=$eventId current=${queue.current?.eventId}")
             if (!queue.handleDismiss(eventId)) {
                 signalServiceCurrentChanged()
                 finish()
@@ -106,19 +107,27 @@ class WakeAlertActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         configureWindowForAlarm()
 
+        android.util.Log.d(
+            "WakeFlow",
+            "Activity.onCreate intentEventId=${intent?.wakeEventId()} queueCurrent=${queue.current?.eventId} pending=${queue.pendingEventIds()}",
+        )
+
         // The queue is a process-wide singleton populated by WakePlaybackService
         // before it launches us. Just read the current payload — never replay
         // the intent extras (which would risk duplicate / stale delivery).
         payload = queue.current
 
-        // If the singleton has nothing (extremely rare: process death between
-        // service launching us and us reaching onCreate), fall back to the
-        // intent-carried payload so we don't show an empty screen.
+        // If the singleton has nothing, the alarm session is already over (we
+        // were probably re-launched by a stale PendingIntent — e.g. a deferred
+        // fullScreenIntent for a long-since-cancelled notification). Bail out
+        // without resurrecting the dead alarm.
         if (payload == null) {
-            intent?.toWakeTriggerPayload()?.let { incoming ->
-                queue.handleIncoming(incoming)
-                payload = queue.current
-            }
+            android.util.Log.d(
+                "WakeFlow",
+                "Activity.onCreate finishing immediately — queue is empty (stale launch)",
+            )
+            finish()
+            return
         }
 
         setContent {
@@ -126,6 +135,10 @@ class WakeAlertActivity : AppCompatActivity() {
                 WakeAlertScreen(
                     payload = payload,
                     onStop = {
+                        android.util.Log.d(
+                            "WakeFlow",
+                            "Activity.onStopButton payloadEventId=${payload?.eventId} queueCurrent=${queue.current?.eventId}",
+                        )
                         payload?.let { p -> scheduleAwakeCheckIfEnabled(p) }
                         val advanced = advanceToNextPayload()
                         // Ask the service to refresh notification + ringtone
@@ -152,15 +165,29 @@ class WakeAlertActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        // The service already queued the payload before launching us; just
-        // resync our local UI state from the singleton. Defensively also
-        // re-feed the intent in case we somehow received it before the service.
-        intent.toWakeTriggerPayload()?.let { queue.handleIncoming(it) }
+        android.util.Log.d(
+            "WakeFlow",
+            "Activity.onNewIntent intentEventId=${intent.wakeEventId()} queueCurrent=${queue.current?.eventId}",
+        )
+        // Only trust the queue (populated by the service). Never feed intent
+        // extras into the queue from here — a stale PendingIntent (e.g. a
+        // deferred fullScreenIntent) could otherwise resurrect a dead alarm.
         payload = queue.current
+        if (payload == null) {
+            android.util.Log.d(
+                "WakeFlow",
+                "Activity.onNewIntent finishing — queue is empty (stale launch)",
+            )
+            finish()
+        }
     }
 
     override fun onStart() {
         super.onStart()
+        android.util.Log.d(
+            "WakeFlow",
+            "Activity.onStart queueCurrent=${queue.current?.eventId} pending=${queue.pendingEventIds()}",
+        )
         // Resync from the singleton in case the queue advanced or was cleared
         // while this activity was paused/stopped (e.g., user opened another app
         // and a sub-alarm fired).
@@ -180,8 +207,14 @@ class WakeAlertActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
+        android.util.Log.d("WakeFlow", "Activity.onStop queueCurrent=${queue.current?.eventId}")
         runCatching { unregisterReceiver(dismissReceiver) }
         super.onStop()
+    }
+
+    override fun onDestroy() {
+        android.util.Log.d("WakeFlow", "Activity.onDestroy isFinishing=$isFinishing queueCurrent=${queue.current?.eventId}")
+        super.onDestroy()
     }
 
     // No onSaveInstanceState needed — the queue is a process-wide singleton
