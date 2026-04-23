@@ -1063,35 +1063,37 @@ private fun WakePlaybackControls(
             }
         }
 
-        OutlinedCard(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
+        AnimatedVisibility(visible = !playback.vibrationOnly) {
+            OutlinedCard(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
             ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_progressive_volume_title),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = TextDark,
-                    )
-                    Text(
-                        text = stringResource(R.string.wake_editor_progressive_volume_subtitle),
-                        fontSize = 12.sp,
-                        color = TextMuted,
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 14.dp, vertical = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.wake_editor_progressive_volume_title),
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextDark,
+                        )
+                        Text(
+                            text = stringResource(R.string.wake_editor_progressive_volume_subtitle),
+                            fontSize = 12.sp,
+                            color = TextMuted,
+                        )
+                    }
+                    Switch(
+                        checked = playback.progressiveVolume,
+                        onCheckedChange = { enabled ->
+                            onPlaybackChange(playback.copy(progressiveVolume = enabled))
+                        },
                     )
                 }
-                Switch(
-                    checked = playback.progressiveVolume,
-                    onCheckedChange = { enabled ->
-                        onPlaybackChange(playback.copy(progressiveVolume = enabled))
-                    },
-                )
             }
         }
 
@@ -1129,17 +1131,19 @@ private fun WakePlaybackControls(
             }
         }
 
-        WakeRingtoneSelector(
-            label = ringtoneLabel,
-            selected = playback.ringtone,
-            customRingtoneUri = playback.customRingtoneUri,
-            onSelected = { preset ->
-                onPlaybackChange(playback.copy(ringtone = preset))
-            },
-            onCustomSelected = { uri ->
-                onPlaybackChange(playback.copy(ringtone = RingtonePreset.CUSTOM, customRingtoneUri = uri))
-            },
-        )
+        AnimatedVisibility(visible = !playback.vibrationOnly) {
+            WakeRingtoneSelector(
+                label = ringtoneLabel,
+                selected = playback.ringtone,
+                customRingtoneUri = playback.customRingtoneUri,
+                onSelected = { preset ->
+                    onPlaybackChange(playback.copy(ringtone = preset))
+                },
+                onCustomSelected = { uri ->
+                    onPlaybackChange(playback.copy(ringtone = RingtonePreset.CUSTOM, customRingtoneUri = uri))
+                },
+            )
+        }
     }
 }
 

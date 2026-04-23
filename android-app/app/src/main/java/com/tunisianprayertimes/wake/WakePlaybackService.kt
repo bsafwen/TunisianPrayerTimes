@@ -46,6 +46,43 @@ class WakePlaybackService : Service() {
         createChannel()
         startForeground(notificationIdFor(payload.eventId), buildNotification(payload))
         startPlayback(payload)
+
+        // Explicitly deliver the payload to WakeAlertActivity.  The notification's
+        // fullScreenIntent only fires on initial display; when the service is already
+        // foregrounded (e.g. a sub-alarm arriving while the main alarm is active),
+        // updating the notification does NOT re-trigger fullScreenIntent, so the
+        // activity would never see the new payload.
+        val activityIntent = Intent(this, WakeAlertActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            .putExtras(
+                Intent().populateWakeTriggerPayload(
+                    eventId = payload.eventId,
+                    prayer = payload.prayer,
+                    effectivePrayer = payload.effectivePrayer,
+                    mainAlarmMode = payload.mainAlarmMode,
+                    hour = payload.hour,
+                    minute = payload.minute,
+                    ringtone = payload.ringtone,
+                    customRingtoneUri = payload.customRingtoneUri,
+                    vibrationOnly = payload.vibrationOnly,
+                    wakeUpCheckEnabled = payload.wakeUpCheckEnabled,
+                    wakeUpCheckType = payload.wakeUpCheckType,
+                    wakeUpCheckDifficulty = payload.wakeUpCheckDifficulty,
+                    whackAMoleKillTarget = payload.whackAMoleKillTarget,
+                    wakeUpCheckSteps = payload.wakeUpCheckSteps,
+                    progressiveVolume = payload.progressiveVolume,
+                    snoreTrackingEnabled = payload.snoreTrackingEnabled,
+                    awakeCheckEnabled = payload.awakeCheckEnabled,
+                    awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
+                    wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
+                    isSubAlarm = payload.isSubAlarm,
+                    subAlarmId = payload.subAlarmId,
+                    offsetMinutes = payload.offsetMinutes,
+                    offsetDirection = payload.offsetDirection,
+                ),
+            )
+        startActivity(activityIntent)
+
         return START_NOT_STICKY
     }
 
