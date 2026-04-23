@@ -91,7 +91,32 @@ class WakeAlertActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         configureWindowForAlarm()
-        payload = intent?.toWakeTriggerPayload()
+
+        // Restore payloads that survived activity destruction (e.g. HOME press
+        // while a challenge is active, then system kills the activity).
+        if (savedInstanceState != null) {
+            savedInstanceState.getBundle(KEY_CURRENT_PAYLOAD)
+                ?.toWakeTriggerPayload()
+                ?.let { payload = it }
+            val count = savedInstanceState.getInt(KEY_PENDING_COUNT, 0)
+            for (i in 0 until count) {
+                savedInstanceState.getBundle("$KEY_PENDING_PREFIX$i")
+                    ?.toWakeTriggerPayload()
+                    ?.let { pendingPayloads.addLast(it) }
+            }
+        }
+
+        // Handle the incoming intent payload (initial launch or re-creation
+        // after the system delivered a new alarm while the activity was dead).
+        val intentPayload = intent?.toWakeTriggerPayload()
+        if (intentPayload != null) {
+            val current = payload
+            if (current == null || !current.wakeUpCheckEnabled) {
+                payload = intentPayload
+            } else if (intentPayload.eventId != current.eventId) {
+                pendingPayloads.addLast(intentPayload)
+            }
+        }
 
         setContent {
             TunisianPrayerTimesTheme {
@@ -144,6 +169,15 @@ class WakeAlertActivity : AppCompatActivity() {
     override fun onStop() {
         runCatching { unregisterReceiver(dismissReceiver) }
         super.onStop()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        payload?.let { outState.putBundle(KEY_CURRENT_PAYLOAD, it.toBundle()) }
+        outState.putInt(KEY_PENDING_COUNT, pendingPayloads.size)
+        pendingPayloads.forEachIndexed { i, p ->
+            outState.putBundle("$KEY_PENDING_PREFIX$i", p.toBundle())
+        }
     }
 
     private fun configureWindowForAlarm() {
@@ -210,6 +244,12 @@ class WakeAlertActivity : AppCompatActivity() {
                 pendingIntent,
             )
         }
+    }
+
+    private companion object {
+        const val KEY_CURRENT_PAYLOAD = "current_payload"
+        const val KEY_PENDING_COUNT = "pending_count"
+        const val KEY_PENDING_PREFIX = "pending_"
     }
 }
 
