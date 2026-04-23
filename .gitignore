@@ -46,3 +46,6 @@ qaloon-app/build/
 qaloon-app/app/build/
 qaloon-app/local.properties
 qaloon-app/keystore.properties
+
+hs_err_pid*.log
+replay_pid*.log
