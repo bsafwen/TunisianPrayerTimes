@@ -297,14 +297,14 @@ private fun WakeAlertScreen(
     val checkEnabled = payload?.wakeUpCheckEnabled == true
     val eventId = payload?.eventId ?: ""
 
+    // payload is guaranteed non-null when checkEnabled is true (since checkEnabled
+    // is derived from payload?.wakeUpCheckEnabled == true).
     val steps: List<WakeUpCheckStep> = if (!checkEnabled) {
         emptyList()
-    } else if (payload != null && payload.wakeUpCheckSteps.isNotEmpty()) {
+    } else if (payload!!.wakeUpCheckSteps.isNotEmpty()) {
         payload.wakeUpCheckSteps
-    } else if (payload != null) {
-        listOf(WakeUpCheckStep(payload.wakeUpCheckType, payload.wakeUpCheckDifficulty))
     } else {
-        emptyList()
+        listOf(WakeUpCheckStep(payload.wakeUpCheckType, payload.wakeUpCheckDifficulty))
     }
 
     var completedSteps by rememberSaveable(eventId) { mutableIntStateOf(0) }
