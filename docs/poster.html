@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>أوقات الصلاة تونس — ملصق</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=Amiri+Quran&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      body {
+        font-family: "Noto Kufi Arabic", sans-serif;
+        background: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .poster {
+        width: 210mm;
+        min-height: 297mm;
+        background: linear-gradient(
+          170deg,
+          #0a1628 0%,
+          #0d2137 35%,
+          #0f3a4d 65%,
+          #0a1628 100%
+        );
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14mm 14mm 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Arabesque corner ornaments */
+      .corner-ornament {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .corner-tl {
+        top: 12px;
+        left: 12px;
+      }
+      .corner-tr {
+        top: 12px;
+        right: 12px;
+        transform: scaleX(-1);
+      }
+      .corner-bl {
+        bottom: 12px;
+        left: 12px;
+        transform: scaleY(-1);
+      }
+      .corner-br {
+        bottom: 12px;
+        right: 12px;
+        transform: scale(-1, -1);
+      }
+
+      /* Bismillah calligraphy header */
+      .bismillah {
+        text-align: center;
+        z-index: 1;
+        margin-bottom: 2mm;
+      }
+
+      .bismillah img {
+        width: 320px;
+        height: auto;
+        filter: invert(1) sepia(1) saturate(3) hue-rotate(10deg)
+          brightness(0.85) drop-shadow(0 0 20px rgba(212, 175, 55, 0.25));
+      }
+
+      .bismillah-line {
+        width: 260px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(212, 175, 55, 0.4),
+          transparent
+        );
+        margin: 0 auto 4mm;
+      }
+
+      .top-section {
+        text-align: center;
+        z-index: 1;
+      }
+
+      .app-logo {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 6mm;
+        filter: drop-shadow(0 4px 24px rgba(212, 175, 55, 0.35));
+        border-radius: 24px;
+      }
+
+      .app-name {
+        font-size: 42px;
+        font-weight: 900;
+        color: #d4af37;
+        letter-spacing: 2px;
+        margin-bottom: 4mm;
+        text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
+      }
+
+      .divider {
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        margin: 0 auto;
+      }
+
+      .middle-section {
+        text-align: center;
+        z-index: 1;
+        max-width: 160mm;
+      }
+
+      .features {
+        list-style: none;
+        text-align: right;
+        display: inline-block;
+      }
+      .features li {
+        font-size: 17px;
+        line-height: 2.2;
+        color: rgba(255, 255, 255, 0.9);
+        position: relative;
+        padding-right: 28px;
+      }
+      .features li::before {
+        content: "✦";
+        position: absolute;
+        right: 0;
+        color: #d4af37;
+        font-size: 14px;
+      }
+
+      .verse {
+        text-align: center;
+        z-index: 1;
+        margin: 4mm 10mm 2mm;
+        padding: 3mm 5mm;
+        border-top: 1px solid rgba(212, 175, 55, 0.25);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      }
+
+      .verse p {
+        font-family: "Amiri Quran", serif;
+        font-size: 20px;
+        color: #d4af37;
+        line-height: 1.8;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .verse .verse-ref {
+        font-family: "Noto Kufi Arabic", sans-serif;
+        font-size: 11px;
+        color: rgba(212, 175, 55, 0.5);
+        margin-top: 1mm;
+      }
+
+      .bottom-section {
+        text-align: center;
+        z-index: 1;
+        position: relative;
+      }
+      .scan-label {
+        font-size: 20px;
+        font-weight: 700;
+        color: #d4af37;
+        margin-bottom: 5mm;
+      }
+      .qr-container {
+        background: #fff;
+        border-radius: 16px;
+        padding: 12px;
+        display: inline-block;
+        margin-bottom: 5mm;
+        box-shadow: 0 4px 30px rgba(212, 175, 55, 0.2);
+      }
+      .qr-container canvas {
+        display: block;
+      }
+      .store-badge {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 2mm;
+        margin-bottom: 8mm;
+      }
+
+      /* Mosque skyline at the very bottom */
+      .mosque-skyline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 180px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @media print {
+        body {
+          background: none;
+        }
+        .poster {
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <!-- Arabesque corner ornaments -->
+      <svg
+        class="corner-ornament corner-tl"
+        viewBox="0 0 120 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5,5 Q5,60 60,60"
+          stroke="rgba(212,175,55,0.25)"
+          stroke-width="1.5"
+          fill="none"
+        />
+        <path
+          d="M5,5 Q5,40 40,40"
+          stroke="rgba(212,175,55,0.18)"
+          stroke-width="1"
+          fill="none"
+        />
+        <path d="M5,5 L5,25" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <path d="M5,5 L25,5" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <circle cx="5" cy="5" r="3" fill="rgba(212,175,55,0.3)" />
+        <path
+          d="M10,30 Q20,20 30,10"
+          stroke="rgba(212,175,55,0.12)"
+          stroke-width="1"
+          fill="none"
+        />
+        <path
+          d="M8,50 Q30,30 50,8"
+          stroke="rgba(212,175,55,0.08)"
+          stroke-width="1"
+          fill="none"
+        />
+        <!-- Small floral motif -->
+        <circle
+          cx="35"
+          cy="35"
+          r="5"
+          stroke="rgba(212,175,55,0.15)"
+          stroke-width="0.8"
+          fill="none"
+        />
+        <path
+          d="M30,35 Q35,30 35,25"
+          stroke="rgba(212,175,55,0.12)"
+          stroke-width="0.8"
+          fill="none"
+        />
+        <path
+          d="M35,35 Q40,30 45,30"
+          stroke="rgba(212,175,55,0.12)"
+          stroke-width="0.8"
+          fill="none"
+        />
+      </svg>
+      <svg
+        class="corner-ornament corner-tr"
+        viewBox="0 0 120 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5,5 Q5,60 60,60"
+          stroke="rgba(212,175,55,0.25)"
+          stroke-width="1.5"
+          fill="none"
+        />
+        <path
+          d="M5,5 Q5,40 40,40"
+          stroke="rgba(212,175,55,0.18)"
+          stroke-width="1"
+          fill="none"
+        />
+        <path d="M5,5 L5,25" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <path d="M5,5 L25,5" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <circle cx="5" cy="5" r="3" fill="rgba(212,175,55,0.3)" />
+        <path
+          d="M10,30 Q20,20 30,10"
+          stroke="rgba(212,175,55,0.12)"
+          stroke-width="1"
+          fill="none"
+        />
+        <path
+          d="M8,50 Q30,30 50,8"
+          stroke="rgba(212,175,55,0.08)"
+          stroke-width="1"
+          fill="none"
+        />
+        <circle
+          cx="35"
+          cy="35"
+          r="5"
+          stroke="rgba(212,175,55,0.15)"
+          stroke-width="0.8"
+          fill="none"
+        />
+        <path
+          d="M30,35 Q35,30 35,25"
+          stroke="rgba(212,175,55,0.12)"
+          stroke-width="0.8"
+          fill="none"
+        />
+        <path
+          d="M35,35 Q40,30 45,30"
+          stroke="rgba(212,175,55,0.12)"
+          stroke-width="0.8"
+          fill="none"
+        />
+      </svg>
+      <svg
+        class="corner-ornament corner-bl"
+        viewBox="0 0 120 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5,5 Q5,60 60,60"
+          stroke="rgba(212,175,55,0.25)"
+          stroke-width="1.5"
+          fill="none"
+        />
+        <path
+          d="M5,5 Q5,40 40,40"
+          stroke="rgba(212,175,55,0.18)"
+          stroke-width="1"
+          fill="none"
+        />
+        <path d="M5,5 L5,25" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <path d="M5,5 L25,5" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <circle cx="5" cy="5" r="3" fill="rgba(212,175,55,0.3)" />
+      </svg>
+      <svg
+        class="corner-ornament corner-br"
+        viewBox="0 0 120 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5,5 Q5,60 60,60"
+          stroke="rgba(212,175,55,0.25)"
+          stroke-width="1.5"
+          fill="none"
+        />
+        <path
+          d="M5,5 Q5,40 40,40"
+          stroke="rgba(212,175,55,0.18)"
+          stroke-width="1"
+          fill="none"
+        />
+        <path d="M5,5 L5,25" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <path d="M5,5 L25,5" stroke="rgba(212,175,55,0.3)" stroke-width="1.5" />
+        <circle cx="5" cy="5" r="3" fill="rgba(212,175,55,0.3)" />
+      </svg>
+
+      <!-- Bismillah calligraphy -->
+      <div class="bismillah">
+        <img src="basmalah.png" alt="بسم الله الرحمن الرحيم" />
+      </div>
+
+      <div class="verse">
+        <p>
+          قَدْ أَفْلَحَ الْمُؤْمِنُونَ ﴿1﴾ الَّذِينَ هُمْ فِي صَلَاتِهِمْ
+          خَاشِعُونَ ﴿2﴾
+        </p>
+        <div class="verse-ref">سورة المؤمنون 1-2</div>
+      </div>
+
+      <div class="bismillah-line"></div>
+
+      <div class="top-section">
+        <svg
+          class="app-logo"
+          viewBox="0 0 108 108"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="108" height="108" rx="26" fill="#004D40" />
+          <path d="M40,72 Q40,38 54,30 Q68,38 68,72 Z" fill="#FFFFFF" />
+          <path d="M54,20 A8,8 0 1,0 54,36 A6,6 0 1,1 54,20Z" fill="#D4AF37" />
+          <path
+            d="M66,24 L67.5,28 L72,28 L68.5,30.5 L69.5,34.5 L66,32 L62.5,34.5 L63.5,30.5 L60,28 L64.5,28 Z"
+            fill="#D4AF37"
+          />
+          <path
+            d="M30,72 L30,48 Q30,42 33,42 Q36,42 36,48 L36,72 Z"
+            fill="#FFFFFF"
+            opacity="0.85"
+          />
+          <path
+            d="M72,72 L72,48 Q72,42 75,42 Q78,42 78,48 L78,72 Z"
+            fill="#FFFFFF"
+            opacity="0.85"
+          />
+        </svg>
+        <div class="app-name">أوقات الصلاة تونس</div>
+        <div class="divider"></div>
+      </div>
+
+      <div class="middle-section">
+        <ul class="features">
+          <li>المواقيت الرسمية للصلاة من المعهد الوطني للرصد الجوي</li>
+          <li>يُسكت هاتفك تلقائيًا عند كل صلاة</li>
+          <li>منبّه للاستيقاظ قبل صلاة الفجر</li>
+          <li>يعمل من دون انترنت</li>
+        </ul>
+      </div>
+
+      <div class="bottom-section">
+        <div class="scan-label">حمّل التطبيق مجانًا</div>
+        <div class="qr-container"><canvas id="qr"></canvas></div>
+        <div class="store-badge">متوفر على Google Play</div>
+      </div>
+
+      <!-- Mosque skyline silhouette -->
+      <svg
+        class="mosque-skyline"
+        viewBox="0 0 800 180"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(212,175,55,0)" />
+            <stop offset="100%" stop-color="rgba(212,175,55,0.06)" />
+          </linearGradient>
+        </defs>
+        <!-- Background glow -->
+        <rect width="800" height="180" fill="url(#skyGrad)" />
+        <!-- Mosque silhouette -->
+        <path
+          d="
+          M0,180 L0,140
+          L40,140 L40,120 L42,115 L44,120 L44,140
+          L80,140 L80,130
+          L100,130 L100,100 Q100,70 120,60 Q140,70 140,100 L140,130
+          L160,130 L160,140
+          L200,140 L200,120 L202,100 L204,120 L204,140
+          L260,140 L260,110
+          L280,110 L280,80 Q280,40 320,20 Q360,40 360,80 L360,110
+          L380,110 L380,90 L382,60 L384,90 L384,110
+          L400,110 L400,140
+          L440,140 L440,120 L442,115 L444,120 L444,140
+          L500,140 L500,130
+          L520,130 L520,95 Q520,65 545,50 Q570,65 570,95 L570,130
+          L590,130 L590,140
+          L630,140 L630,110 L632,85 L634,110 L634,140
+          L680,140 L680,125
+          L700,125 L700,105 Q700,80 720,70 Q740,80 740,105 L740,125
+          L760,125 L760,140
+          L800,140 L800,180 Z
+        "
+          fill="rgba(212,175,55,0.08)"
+        />
+        <!-- Crescent on main dome -->
+        <path
+          d="M320,18 A4,4 0 1,0 320,10 A3,3 0 1,1 320,18Z"
+          fill="rgba(212,175,55,0.2)"
+        />
+        <!-- Crescent on smaller dome -->
+        <path
+          d="M545,48 A3,3 0 1,0 545,42 A2.2,2.2 0 1,1 545,48Z"
+          fill="rgba(212,175,55,0.15)"
+        />
+        <!-- Stars scattered -->
+        <circle cx="50" cy="50" r="1.2" fill="rgba(212,175,55,0.15)" />
+        <circle cx="180" cy="30" r="1" fill="rgba(212,175,55,0.12)" />
+        <circle cx="450" cy="40" r="1.3" fill="rgba(212,175,55,0.14)" />
+        <circle cx="650" cy="25" r="1" fill="rgba(212,175,55,0.12)" />
+        <circle cx="750" cy="50" r="1.2" fill="rgba(212,175,55,0.13)" />
+      </svg>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <script>
+      new QRious({
+        element: document.getElementById("qr"),
+        value:
+          "https://play.google.com/store/apps/details?id=com.tunisianprayertimes",
+        size: 200,
+        foreground: "#0a1628",
+        background: "#ffffff",
+        level: "M",
+      });
+    </script>
+  </body>
+</html>

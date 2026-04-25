@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -334,11 +335,10 @@ fun MainScreen(
     val wakeRepository = remember(context) { com.tunisianprayertimes.wake.PrayerWakeRepository(context) }
     val mainScope = rememberCoroutineScope()
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().background(BgCream).statusBarsPadding().navigationBarsPadding()) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(BgCream)
                 .verticalScroll(rememberScrollState())
         ) {
         // Header

@@ -4,8 +4,7 @@
         <item name="colorPrimary">@color/green_primary</item>
         <item name="colorPrimaryDark">@color/green_primary_dark</item>
         <item name="colorAccent">@color/gold</item>
-        <item name="android:statusBarColor">@color/green_primary_dark</item>
-        <item name="android:navigationBarColor">@color/green_primary_dark</item>
+        <!-- Removed hardcoded system bar colors: enableEdgeToEdge() handles them -->
         <item name="android:windowBackground">@color/bg_cream</item>
     </style>
 </resources>

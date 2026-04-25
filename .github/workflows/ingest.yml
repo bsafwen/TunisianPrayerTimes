@@ -1,9 +1,9 @@
 name: Ingest Prayer Times
 
 on:
-  # Run automatically on January 1st at 06:00 UTC each year
+  # Run automatically on January 1st at 01:00 Tunisian time (00:00 UTC)
   schedule:
-    - cron: "0 6 1 1 *"
+    - cron: "0 0 1 1 *"
 
   # Allow manual runs from the GitHub Actions UI
   workflow_dispatch:
@@ -59,7 +59,7 @@ jobs:
           YEAR: ${{ steps.vars.outputs.year }}
           CONCURRENCY: ${{ steps.vars.outputs.concurrency }}
           DELAY_MS: "1000"
-        run: cd scraper && bun src/ingest.ts
+        run: cd scraper && bun src/index.ts
 
       - name: Commit and push generated files
         run: |
