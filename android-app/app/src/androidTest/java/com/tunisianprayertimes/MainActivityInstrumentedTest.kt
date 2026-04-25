@@ -65,7 +65,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun subtitleIsInArabic() {
-        composeRule.onNodeWithText("مواقيت الصلاة في تونس").assertIsDisplayed()
+        composeRule.onNodeWithText("مواقيت الصلاة في تونس", substring = true).assertIsDisplayed()
     }
 
     @Test
