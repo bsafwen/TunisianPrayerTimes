@@ -78,7 +78,7 @@ class OnboardingActivityInstrumentedTest {
 
     @Test
     fun step5_nextButtonIsDisabledWithoutPermissions() {
-        navigateToStep(5)
+        navigateToStep(6)
         // On a fresh test device without DND permission, Next should be disabled
         composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).assertIsNotEnabled()
     }
