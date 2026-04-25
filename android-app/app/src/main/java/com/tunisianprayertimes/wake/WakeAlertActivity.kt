@@ -48,7 +48,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.WakeUpCheckStep
@@ -149,14 +148,7 @@ class WakeAlertActivity : AppCompatActivity() {
                             finish()
                         }
                     },
-                    onOpenApp = {
-                        startActivity(
-                            Intent(this, MainActivity::class.java).addFlags(
-                                Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP,
-                            ),
-                        )
-                        finish()
-                    },
+
                 )
             }
         }
@@ -291,7 +283,6 @@ class WakeAlertActivity : AppCompatActivity() {
 private fun WakeAlertScreen(
     payload: WakeTriggerPayload?,
     onStop: () -> Unit,
-    onOpenApp: () -> Unit,
 ) {
     val context = LocalContext.current
     val checkEnabled = payload?.wakeUpCheckEnabled == true
@@ -430,12 +421,6 @@ private fun WakeAlertScreen(
                         modifier = Modifier.fillMaxWidth(),
                     ) {
                         Text(text = stringResource(R.string.wake_alarm_stop))
-                    }
-                    OutlinedButton(
-                        onClick = onOpenApp,
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        Text(text = stringResource(R.string.wake_alarm_open_app))
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                 }
