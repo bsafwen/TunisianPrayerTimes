@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.tunisianprayertimes.ui.MainScreen
 import com.tunisianprayertimes.ui.theme.TunisianPrayerTimesTheme
+import com.tunisianprayertimes.wake.WakeAlarmQueueHolder
+import com.tunisianprayertimes.wake.WakeAlertActivity
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +32,16 @@ class MainActivity : AppCompatActivity() {
             TunisianPrayerTimesTheme {
                 MainScreen(activity = this)
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (WakeAlarmQueueHolder.queue.current != null) {
+            startActivity(
+                Intent(this, WakeAlertActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP),
+            )
         }
     }
 }
