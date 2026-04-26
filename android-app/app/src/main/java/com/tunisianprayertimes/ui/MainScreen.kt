@@ -128,6 +128,7 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
 import com.tunisianprayertimes.RamadanOverrideChecker
 import com.tunisianprayertimes.RingtonePreset
+import com.tunisianprayertimes.SilenceGuardService
 import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
@@ -266,6 +267,7 @@ fun MainScreen(
                 SilenceScheduler.scheduleAll(context)
             }
             SilenceVerifyWorker.enqueue(context)
+            SilenceGuardService.start(context)
         } else if (PrefsManager.isEnabled(context) && !hasAll) {
             SilenceScheduler.cancelAll(context)
             SilenceVerifyWorker.cancel(context)
@@ -435,10 +437,12 @@ fun MainScreen(
                                 SilenceScheduler.scheduleAll(context)
                                 SilenceVerifyWorker.enqueue(context)
                             }
+                            SilenceGuardService.start(context)
                             Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
                         } else {
                             SilenceScheduler.cancelAll(context)
                             SilenceVerifyWorker.cancel(context)
+                            SilenceGuardService.stop(context)
                             Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
                         }
                         isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT

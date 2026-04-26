@@ -272,4 +272,9 @@
     <string name="awake_check_no_response">لم تؤكد استيقاظك! الهاتف يهتز الآن.</string>
     <string name="awake_check_ringing">لم تؤكد استيقاظك! المنبه يرن الآن.</string>
 
+    <string name="guard_channel_name">حماية الصمت التلقائي</string>
+    <string name="guard_channel_description">إشعار دائم يمنع النظام من إيقاف التطبيق حتى تعمل التنبيهات بشكل موثوق.</string>
+    <string name="guard_notification_title">أوقات الصلاة نشطة</string>
+    <string name="guard_notification_text">الصمت التلقائي يعمل في الخلفية.</string>
+
 </resources>

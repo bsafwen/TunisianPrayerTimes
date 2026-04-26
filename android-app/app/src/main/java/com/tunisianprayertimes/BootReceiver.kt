@@ -23,6 +23,7 @@ class BootReceiver : BroadcastReceiver() {
                 SilenceScheduler.scheduleAll(context)
                 if (PrefsManager.isEnabled(context)) {
                     SilenceVerifyWorker.enqueue(context)
+                    SilenceGuardService.start(context)
                 }
 
                 val pendingResult = goAsync()

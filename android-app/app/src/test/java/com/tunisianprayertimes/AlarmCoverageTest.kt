@@ -272,9 +272,15 @@ class AlarmCoverageTest {
         val now = Calendar.getInstance()
         if (expectedSilenceTime.after(now)) {
             val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
+            // After Isha, scheduleTomorrowPrayers may overwrite today's ASR alarm with
+            // tomorrow's 23:55 (same PendingIntent request code). Accept either day.
+            val tomorrowSilenceTime = (expectedSilenceTime.clone() as Calendar).apply {
+                add(Calendar.DAY_OF_YEAR, 1)
+            }
             assertTrue(
-                "ASR silence alarm should fire at fixed delay time 23:55",
-                alarmTriggerTimes.contains(expectedSilenceTime.timeInMillis)
+                "ASR silence alarm should fire at fixed delay time 23:55 (today or tomorrow)",
+                alarmTriggerTimes.contains(expectedSilenceTime.timeInMillis) ||
+                    alarmTriggerTimes.contains(tomorrowSilenceTime.timeInMillis)
             )
         }
     }

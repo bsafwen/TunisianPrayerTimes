@@ -22,6 +22,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- Required for media playback foreground services on newer Android versions -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <!-- Required for the silence guard keep-alive foreground service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <!-- Needed on Android 13+ so wake playback notifications can surface normally -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <!-- Allow wake alarms to present as full-screen alarm UI when permitted by the system -->
@@ -121,6 +123,15 @@
             android:name=".wake.AwakeCheckService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
+
+        <service
+            android:name=".SilenceGuardService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Keeps the app process alive so prayer silence alarms fire reliably on aggressive OEM ROMs." />
+        </service>
 
 
     </application>

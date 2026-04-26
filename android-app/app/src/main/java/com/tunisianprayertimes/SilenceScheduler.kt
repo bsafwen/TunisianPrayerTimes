@@ -182,11 +182,10 @@ object SilenceScheduler {
             Log.d(TAG, "Not in any silence window, ensuring phone is in previous mode")
         }
 
-        // Schedule tomorrow's Fajr directly so we don't depend solely on the midnight
-        // reschedule surviving OEM battery optimization (Xiaomi, Samsung, Huawei, etc.)
-        // Only do this after today's Isha unsilence has passed — this guarantees all of
-        // today's prayer alarms (including Fajr's UNSILENCE) are done, so the
-        // PendingIntent request code for Fajr is safe to reuse for tomorrow.
+        // Pre-schedule ALL of tomorrow's prayers once today's Isha unsilence has passed.
+        // This guards against OEM battery optimization (Honor, Xiaomi, Samsung, Huawei, etc.)
+        // killing the midnight reschedule alarm. After Isha, all of today's PendingIntent
+        // request codes are past and safe to reuse for tomorrow.
         val ishaConfig = PrefsManager.getConfig(context, Prayer.ISHA)
         val todayIsha = todayTimes.isha
         val ishaSilence = if (ishaConfig.delayMode == DelayMode.FIXED_TIME && ishaConfig.delayFixedHour >= 0 && ishaConfig.delayFixedMinute >= 0) {
@@ -221,7 +220,7 @@ object SilenceScheduler {
             }
         }
         if (!now.before(ishaUnsilence) && !currentlyInSilenceWindow) {
-            scheduleTomorrowFajr(context, delegationId, now)
+            scheduleTomorrowPrayers(context, delegationId, now)
         }
 
         // Also schedule a daily reschedule at midnight to set up next day's alarms
@@ -229,11 +228,11 @@ object SilenceScheduler {
     }
 
     /**
-     * Pre-schedule tomorrow's Fajr silence/unsilence alarms.
+     * Pre-schedule ALL of tomorrow's silence/unsilence alarms.
      * This acts as a safety net: if the midnight reschedule alarm is killed by aggressive
-     * OEM battery optimization, Fajr will still fire because it was set hours in advance.
+     * OEM battery optimization, prayers will still fire because they were set hours in advance.
      */
-    internal fun scheduleTomorrowFajr(context: Context, delegationId: Int, now: Calendar) {
+    internal fun scheduleTomorrowPrayers(context: Context, delegationId: Int, now: Calendar) {
         val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         val tYear = tomorrow.get(Calendar.YEAR)
         val tMonth = tomorrow.get(Calendar.MONTH) + 1
@@ -243,49 +242,54 @@ object SilenceScheduler {
             ?: PrayerTimesRepository.loadDayPrayerTimes(context, delegationId, tYear - 1, tMonth, tDay)
             ?: return
 
-        val fajr = tomorrowTimes.fajr
-        val config = PrefsManager.getConfig(context, Prayer.FAJR)
+        val isFriday = tomorrow.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+        val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
+        val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
-        val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
-            (tomorrow.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
-                set(Calendar.MINUTE, config.delayFixedMinute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-        } else {
-            (tomorrow.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, fajr.hour)
-                set(Calendar.MINUTE, fajr.minute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-                add(Calendar.MINUTE, config.delayMinutes)
-            }
-        }
+        for (prayerTime in tomorrowTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
+            val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
-        val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-            (tomorrow.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, config.fixedHour)
-                set(Calendar.MINUTE, config.fixedMinute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-                if (before(silenceTime)) {
-                    add(Calendar.DAY_OF_YEAR, 1)
+            val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
+                (tomorrow.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
+                    set(Calendar.MINUTE, config.delayFixedMinute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }
+            } else {
+                (tomorrow.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+                    set(Calendar.MINUTE, prayerTime.minute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                    add(Calendar.MINUTE, config.delayMinutes)
                 }
             }
-        } else {
-            (silenceTime.clone() as Calendar).apply {
-                add(Calendar.MINUTE, config.afterMinutes)
-            }
-        }
 
-        if (silenceTime.after(now)) {
-            scheduleExactAlarm(context, silenceTime.timeInMillis, ACTION_SILENCE, Prayer.FAJR)
-            Log.d(TAG, "Pre-scheduled tomorrow's SILENCE for FAJR at ${silenceTime.time}")
-        }
-        if (unsilenceTime.after(now)) {
-            scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, Prayer.FAJR)
-            Log.d(TAG, "Pre-scheduled tomorrow's UNSILENCE for FAJR at ${unsilenceTime.time}")
+            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+                (tomorrow.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
+                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                    if (before(silenceTime)) {
+                        add(Calendar.DAY_OF_YEAR, 1)
+                    }
+                }
+            } else {
+                (silenceTime.clone() as Calendar).apply {
+                    add(Calendar.MINUTE, config.afterMinutes)
+                }
+            }
+
+            if (silenceTime.after(now)) {
+                scheduleExactAlarm(context, silenceTime.timeInMillis, ACTION_SILENCE, prayerTime.prayer)
+                Log.d(TAG, "Pre-scheduled tomorrow's SILENCE for ${prayerTime.prayer} at ${silenceTime.time}")
+            }
+            if (unsilenceTime.after(now)) {
+                scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, prayerTime.prayer)
+                Log.d(TAG, "Pre-scheduled tomorrow's UNSILENCE for ${prayerTime.prayer} at ${unsilenceTime.time}")
+            }
         }
     }
 

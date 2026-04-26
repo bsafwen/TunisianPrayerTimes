@@ -451,8 +451,8 @@ class SilenceSchedulerIntegrationTest {
             PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 1, 1)
         )
 
-        // Call scheduleTomorrowFajr with Dec 31 — should use 2026 fallback
-        SilenceScheduler.scheduleTomorrowFajr(context, 615, dec31)
+        // Call scheduleTomorrowPrayers with Dec 31 — should use 2026 fallback
+        SilenceScheduler.scheduleTomorrowPrayers(context, 615, dec31)
 
         val alarms = shadowAlarmManager.scheduledAlarms
         assertTrue(
@@ -497,7 +497,7 @@ class SilenceSchedulerIntegrationTest {
         }
 
         // Non-existent delegation — neither 2027 nor 2026 data exists
-        SilenceScheduler.scheduleTomorrowFajr(context, 99999, dec31)
+        SilenceScheduler.scheduleTomorrowPrayers(context, 99999, dec31)
 
         assertEquals(
             "Should not schedule any alarms when no data exists at all",
@@ -526,7 +526,7 @@ class SilenceSchedulerIntegrationTest {
             PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 3, 31)
         )
 
-        SilenceScheduler.scheduleTomorrowFajr(context, 615, march30)
+        SilenceScheduler.scheduleTomorrowPrayers(context, 615, march30)
 
         val alarms = shadowAlarmManager.scheduledAlarms
         assertTrue("Should schedule Fajr alarms normally", alarms.isNotEmpty())
