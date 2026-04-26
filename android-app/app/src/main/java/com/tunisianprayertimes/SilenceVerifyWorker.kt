@@ -29,11 +29,11 @@ class SilenceVerifyWorker(
 
         fun enqueue(context: Context) {
             try {
-                val request = PeriodicWorkRequestBuilder<SilenceVerifyWorker>(1, TimeUnit.HOURS)
+                val request = PeriodicWorkRequestBuilder<SilenceVerifyWorker>(15, TimeUnit.MINUTES)
                     .build()
                 WorkManager.getInstance(context).enqueueUniquePeriodicWork(
                     WORK_NAME,
-                    ExistingPeriodicWorkPolicy.KEEP,
+                    ExistingPeriodicWorkPolicy.UPDATE,
                     request
                 )
             } catch (e: IllegalStateException) {
