@@ -609,6 +609,10 @@ fun MainScreen(
                         editingWakeAlarm = null
                         rescheduleIfEnabled()
                     }
+                    if (config.enabled && config.silenceUntilAlarm) {
+                        com.tunisianprayertimes.wake.WakeAlarmScheduler.activateSilenceUntilAlarm(context, config.id)
+                        isSilent = true
+                    }
                     if (config.enabled) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
                             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
@@ -2326,12 +2330,14 @@ private fun NumberInput(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     allowNegative: Boolean = false,
-    keyboardType: KeyboardType = KeyboardType.Number
+    keyboardType: KeyboardType = KeyboardType.Number,
+    enabled: Boolean = true
 ) {
     val focusManager = LocalFocusManager.current
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         BasicTextField(
             value = value,
+            enabled = enabled,
             onValueChange = { new ->
                 // Normalize Eastern Arabic (٠-٩) and Extended Arabic-Indic (۰-۹) to 0-9
                 val normalized = normalizeDigits(new)

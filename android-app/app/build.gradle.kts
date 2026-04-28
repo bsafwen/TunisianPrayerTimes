@@ -45,8 +45,8 @@ android {
         applicationId = "com.tunisianprayertimes"
         minSdk = 26
         targetSdk = 36
-        versionCode = 107
-        versionName = "2.96"
+        versionCode = 108
+        versionName = "2.97"
         
         androidResources {
             localeFilters += "ar"

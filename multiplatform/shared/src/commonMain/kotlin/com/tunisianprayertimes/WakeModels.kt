@@ -127,6 +127,7 @@ data class PrayerWakeConfig(
     val mainAlarm: WakeMainAlarmConfig = WakeMainAlarmConfig(),
     val playback: WakePlaybackOptions = WakePlaybackOptions(),
     val subAlarms: List<PrayerWakeSubAlarm> = emptyList(),
+    val silenceUntilAlarm: Boolean = false,
 ) {
     init {
         require(prayer.supportsWakeAlarm()) {

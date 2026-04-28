@@ -183,9 +183,7 @@
     <string name="wake_editor_relative_hint">اختر ما إذا كان المنبه قبل الصلاة أو بعدها، ثم أدخل عدد الدقائق.</string>
     <string name="wake_editor_from_now_title">منبه لمرة واحدة بعد مدة من الآن</string>
     <string name="wake_editor_from_now_hint">اختر 5 أو 15 أو 30 دقيقة، أو أدخل مدة مخصصة بالساعات والدقائق.</string>
-    <string name="wake_editor_from_now_quick_5">5 دقائق</string>
-    <string name="wake_editor_from_now_quick_15">15 دقيقة</string>
-    <string name="wake_editor_from_now_quick_30">30 دقيقة</string>
+
     <string name="wake_editor_from_now_hours_label">الساعات</string>
     <string name="wake_editor_from_now_minutes_label">الدقائق</string>
     <string name="wake_editor_playback_title">إعدادات الرنين</string>
@@ -277,5 +275,9 @@
     <string name="guard_channel_description">إشعار دائم يمنع النظام من إيقاف التطبيق حتى تعمل التنبيهات بشكل موثوق.</string>
     <string name="guard_notification_title">أوقات الصلاة نشطة</string>
     <string name="guard_notification_text">الصمت التلقائي يعمل في الخلفية.</string>
+
+    <!-- Silence until alarm -->
+    <string name="wake_editor_silence_toggle">إسكات الهاتف حتى يرنّ المنبه</string>
+    <string name="wake_editor_silence_hint">سَيَتِمُّ إسْكَاتُ الهاتف عند الحفظ ويعود للوضع الطبيعي عند رنين المنبه</string>
 
 </resources>
