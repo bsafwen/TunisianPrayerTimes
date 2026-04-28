@@ -28,6 +28,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -49,6 +51,7 @@ class AwakeCheckService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        _isRunning.value = true
         val eventId = intent?.getStringExtra(EXTRA_EVENT_ID) ?: return START_NOT_STICKY
         val ringtonePresetName = intent.getStringExtra(EXTRA_RINGTONE)
         val customRingtoneUri = intent.getStringExtra(EXTRA_CUSTOM_RINGTONE_URI)
@@ -60,6 +63,7 @@ class AwakeCheckService : Service() {
     }
 
     override fun onDestroy() {
+        _isRunning.value = false
         escalationJob?.cancel()
         stopPlayback()
         serviceScope.cancel()
@@ -270,6 +274,14 @@ class AwakeCheckService : Service() {
 
         private const val QUIET_WAIT_MILLIS = 60_000L
         private const val VIBRATION_DURATION_MILLIS = 3 * 60_000L
+
+        private val _isRunning = MutableStateFlow(false)
+        val isRunning: StateFlow<Boolean> = _isRunning
+
+        /** Confirm awake from the app UI — stops the service. */
+        fun confirmAwake(context: Context) {
+            context.stopService(Intent(context, AwakeCheckService::class.java))
+        }
 
         fun intent(
             context: Context,

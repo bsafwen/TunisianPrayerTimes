@@ -269,6 +269,7 @@
     <string name="awake_check_title">هل أنت مستيقظ؟</string>
     <string name="awake_check_prompt">اضغط لتأكيد أنك مستيقظ، وإلا سيرن الهاتف بعد دقيقة.</string>
     <string name="awake_check_confirm">نعم، أنا مستيقظ</string>
+    <string name="awake_check_confirm_prompt">هل أنت مستيقظ؟ اضغط هنا لتأكيد استيقاظك.</string>
     <string name="awake_check_no_response">لم تؤكد استيقاظك! الهاتف يهتز الآن.</string>
     <string name="awake_check_ringing">لم تؤكد استيقاظك! المنبه يرن الآن.</string>
 
