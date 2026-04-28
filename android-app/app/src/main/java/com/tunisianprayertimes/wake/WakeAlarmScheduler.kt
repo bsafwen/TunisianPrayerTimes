@@ -14,6 +14,7 @@ import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.nap.NapSilenceController
 import java.util.Calendar
 import kotlin.math.abs
 
@@ -21,6 +22,28 @@ object WakeAlarmScheduler {
 	private const val TAG = "WakeAlarmScheduler"
 	private const val SCHEDULER_PREFS = "wake_alarm_scheduler"
 	private const val KEY_SCHEDULED_EVENT_IDS = "scheduled_event_ids"
+	private const val KEY_SILENCED_ALARM_ID = "silenced_alarm_id"
+
+	fun activateSilenceUntilAlarm(context: Context, alarmId: String) {
+		NapSilenceController.enableNapSilence(context)
+		context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+			.edit()
+			.putString(KEY_SILENCED_ALARM_ID, alarmId)
+			.apply()
+		Log.d(TAG, "Silence activated for alarm $alarmId")
+	}
+
+	fun isSilencedAlarm(context: Context, alarmId: String): Boolean {
+		return context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+			.getString(KEY_SILENCED_ALARM_ID, null) == alarmId
+	}
+
+	fun clearSilencedAlarmId(context: Context) {
+		context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+			.edit()
+			.remove(KEY_SILENCED_ALARM_ID)
+			.apply()
+	}
 
 	suspend fun hasEnabledWakeAlarms(context: Context): Boolean =
 		PrayerWakeRepository(context)
@@ -70,7 +93,9 @@ object WakeAlarmScheduler {
 
 		val delegationId = PrefsManager.getDelegationId(context)
 		val prayerDays = loadPrayerDayContexts(context, delegationId, now)
-		if (prayerDays.isEmpty() && enabledConfigs.any { config -> config.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW }) {
+		if (prayerDays.isEmpty() && enabledConfigs.any { config ->
+			config.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW
+		}) {
 			Log.w(TAG, "No prayer day contexts available for wake scheduling")
 		}
 

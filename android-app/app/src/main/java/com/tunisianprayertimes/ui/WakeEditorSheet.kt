@@ -185,6 +185,9 @@ fun WakeEditorSheet(
     var subAlarms by remember(initialConfig.id, initialConfig.subAlarms) {
         mutableStateOf(initialConfig.subAlarms)
     }
+    var silenceUntilAlarm by remember(initialConfig.id, initialConfig.silenceUntilAlarm) {
+        mutableStateOf(initialConfig.silenceUntilAlarm)
+    }
 
     val parsedRelativeOffset = relativeOffsetText.toIntOrNull()?.coerceAtLeast(0) ?: 0
     val signedRelativeOffset = if (relativeOffsetDirection == OffsetDirection.BEFORE) {
@@ -208,17 +211,6 @@ fun WakeEditorSheet(
         ).toMillis()
     }
 
-    fun applyQuickFromNowOffset(totalMinutes: Int) {
-        val resolvedMinutes = totalMinutes.coerceAtLeast(1)
-        rescheduleFromNowAlarm(
-            hoursText = (resolvedMinutes / 60)
-                .takeIf { hours -> hours > 0 }
-                ?.toString()
-                ?: "",
-            minutesText = (resolvedMinutes % 60).toString(),
-        )
-    }
-
     val draftConfig = remember(
         initialConfig,
         enabled,
@@ -231,6 +223,7 @@ fun WakeEditorSheet(
         fromNowTriggerAtMillis,
         mainPlayback,
         subAlarms,
+        silenceUntilAlarm,
     ) {
         initialConfig.copy(
             title = "",
@@ -245,6 +238,7 @@ fun WakeEditorSheet(
             ),
             playback = mainPlayback,
             subAlarms = subAlarms,
+            silenceUntilAlarm = silenceUntilAlarm,
         )
     }
     val preview = remember(delegationId, draftConfig) {
@@ -317,7 +311,7 @@ fun WakeEditorSheet(
                     fontWeight = FontWeight.Bold,
                     color = PrayerNameColor,
                 )
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(
                         selected = mode == WakeMainAlarmMode.PRAYER_RELATIVE,
                         onClick = { mode = WakeMainAlarmMode.PRAYER_RELATIVE },
@@ -435,24 +429,6 @@ fun WakeEditorSheet(
                             color = PrayerNameColor,
                         )
 
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            FilterChip(
-                                selected = parsedFromNowOffsetMinutes == 5,
-                                onClick = { applyQuickFromNowOffset(5) },
-                                label = { Text(stringResource(R.string.wake_editor_from_now_quick_5)) },
-                            )
-                            FilterChip(
-                                selected = parsedFromNowOffsetMinutes == 15,
-                                onClick = { applyQuickFromNowOffset(15) },
-                                label = { Text(stringResource(R.string.wake_editor_from_now_quick_15)) },
-                            )
-                            FilterChip(
-                                selected = parsedFromNowOffsetMinutes == 30,
-                                onClick = { applyQuickFromNowOffset(30) },
-                                label = { Text(stringResource(R.string.wake_editor_from_now_quick_30)) },
-                            )
-                        }
-
                         Text(
                             text = stringResource(R.string.wake_editor_from_now_hint),
                             fontSize = 12.sp,
@@ -502,6 +478,32 @@ fun WakeEditorSheet(
             }
 
 
+
+            // Silence until alarm toggle
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_silence_toggle),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = PrayerNameColor,
+                    )
+                    Text(
+                        text = stringResource(R.string.wake_editor_silence_hint),
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                        lineHeight = 17.sp,
+                    )
+                }
+                Switch(
+                    checked = silenceUntilAlarm,
+                    onCheckedChange = { silenceUntilAlarm = it },
+                )
+            }
 
             WakePlaybackControls(
                 title = stringResource(R.string.wake_editor_playback_title),

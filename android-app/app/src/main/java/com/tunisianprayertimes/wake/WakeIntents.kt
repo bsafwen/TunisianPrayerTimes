@@ -80,6 +80,9 @@ data class WakeTriggerPayload(
 
 fun wakeMainEventId(alarmId: String): String = "wake:main:$alarmId"
 
+fun wakeAlarmIdFromEventId(eventId: String): String? =
+    eventId.split(":").getOrNull(2)?.takeIf { it.isNotBlank() }
+
 fun wakeSubAlarmEventId(alarmId: String, subAlarmId: String): String {
     require(alarmId.isNotBlank()) { "alarmId must not be blank." }
     require(subAlarmId.isNotBlank()) { "subAlarmId must not be blank." }
