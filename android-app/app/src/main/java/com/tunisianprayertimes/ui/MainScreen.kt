@@ -139,6 +139,7 @@ import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
+import com.tunisianprayertimes.wake.AwakeCheckService
 import java.time.LocalDate
 import java.util.Date
 import com.tunisianprayertimes.WakeAlarmComputer
@@ -335,6 +336,7 @@ fun MainScreen(
 
     val wakeRepository = remember(context) { com.tunisianprayertimes.wake.PrayerWakeRepository(context) }
     val mainScope = rememberCoroutineScope()
+    val awakeCheckRunning by AwakeCheckService.isRunning.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -370,6 +372,19 @@ fun MainScreen(
                     isAppSilenced = autoSilenceActive || manualSilenceActive,
                     hasDnd = hasDnd
                 )
+
+                // Awake check banner — shown when the service is running
+                AnimatedVisibility(
+                    visible = awakeCheckRunning,
+                    enter = expandVertically(),
+                    exit = shrinkVertically()
+                ) {
+                    AwakeCheckBanner(
+                        onConfirm = {
+                            AwakeCheckService.confirmAwake(context)
+                        }
+                    )
+                }
 
                 // Permission banner
                 AnimatedVisibility(
@@ -717,6 +732,52 @@ private fun StatusCard(isSilent: Boolean, isAppSilenced: Boolean, hasDnd: Boolea
             fontWeight = FontWeight.Medium,
             color = accentColor
         )
+    }
+}
+
+@Composable
+private fun AwakeCheckBanner(onConfirm: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF3E0)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "⏰",
+                fontSize = 32.sp
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = stringResource(R.string.awake_check_confirm_prompt),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFFE65100),
+                textAlign = TextAlign.Center
+            )
+            Spacer(Modifier.height(12.dp))
+            Button(
+                onClick = onConfirm,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)
+            ) {
+                Text(
+                    text = stringResource(R.string.awake_check_confirm),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                )
+            }
+        }
     }
 }
 
