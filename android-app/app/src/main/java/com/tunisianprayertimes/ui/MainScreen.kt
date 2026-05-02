@@ -612,6 +612,11 @@ fun MainScreen(
                     if (config.enabled && config.silenceUntilAlarm) {
                         com.tunisianprayertimes.wake.WakeAlarmScheduler.activateSilenceUntilAlarm(context, config.id)
                         isSilent = true
+                    } else if (com.tunisianprayertimes.wake.WakeAlarmScheduler.isSilencedAlarm(context, config.id)) {
+                        if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
+                            com.tunisianprayertimes.nap.NapSilenceController.disableNapSilence(context)
+                        }
+                        com.tunisianprayertimes.wake.WakeAlarmScheduler.clearSilencedAlarmId(context)
                     }
                     if (config.enabled) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
@@ -625,6 +630,12 @@ fun MainScreen(
                 },
                 onDelete = if (isPersistedAlarm) {
                     {
+                        if (com.tunisianprayertimes.wake.WakeAlarmScheduler.isSilencedAlarm(context, wakeAlarm.id)) {
+                            if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
+                                com.tunisianprayertimes.nap.NapSilenceController.disableNapSilence(context)
+                            }
+                            com.tunisianprayertimes.wake.WakeAlarmScheduler.clearSilencedAlarmId(context)
+                        }
                         mainScope.launch {
                             wakeRepository.deleteWakeAlarm(wakeAlarm.id)
                             editingWakeAlarm = null
