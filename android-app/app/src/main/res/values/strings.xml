@@ -182,17 +182,17 @@
     <string name="wake_editor_relative_label">الدقائق</string>
     <string name="wake_editor_relative_hint">اختر ما إذا كان المنبه قبل الصلاة أو بعدها، ثم أدخل عدد الدقائق.</string>
     <string name="wake_editor_from_now_title">منبه لمرة واحدة بعد مدة من الآن</string>
-    <string name="wake_editor_from_now_hint">اختر 5 أو 15 أو 30 دقيقة، أو أدخل مدة مخصصة بالساعات والدقائق.</string>
+    <string name="wake_editor_from_now_hint">أدخل المدة بالساعات والدقائق. سيرنّ المنبه مرة واحدة بعد انقضائها.</string>
 
     <string name="wake_editor_from_now_hours_label">الساعات</string>
     <string name="wake_editor_from_now_minutes_label">الدقائق</string>
     <string name="wake_editor_playback_title">إعدادات الرنين</string>
-    <string name="wake_editor_playback_subtitle">اختر النغمة الرئيسية أو فعّل الاهتزاز فقط.</string>
+    <string name="wake_editor_playback_subtitle">اختر النغمة وخصّص سلوك المنبه.</string>
     <string name="wake_editor_main_ringtone_label">نغمة المنبه</string>
     <string name="wake_editor_vibration_only_title">اهتزاز فقط</string>
     <string name="wake_editor_vibration_only_subtitle">عند التفعيل لن يتم تشغيل أي صوت.</string>
     <string name="wake_editor_wake_up_check_title">اختبار الاستيقاظ</string>
-    <string name="wake_editor_wake_up_check_subtitle">لن تتمكن من إيقاف المنبه قبل حل عملية حسابية.</string>
+    <string name="wake_editor_wake_up_check_subtitle">لن تتمكن من إيقاف المنبه قبل إتمام اختبار الاستيقاظ.</string>
     <string name="wake_editor_math_difficulty_title">مستوى الصعوبة</string>
     <string name="wake_editor_math_difficulty_easy">سهل</string>
     <string name="wake_editor_math_difficulty_intermediate">متوسط</string>

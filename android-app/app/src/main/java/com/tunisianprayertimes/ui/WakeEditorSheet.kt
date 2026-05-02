@@ -478,39 +478,14 @@ fun WakeEditorSheet(
             }
 
 
-
-            // Silence until alarm toggle
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_silence_toggle),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor,
-                    )
-                    Text(
-                        text = stringResource(R.string.wake_editor_silence_hint),
-                        fontSize = 12.sp,
-                        color = TextMuted,
-                        lineHeight = 17.sp,
-                    )
-                }
-                Switch(
-                    checked = silenceUntilAlarm,
-                    onCheckedChange = { silenceUntilAlarm = it },
-                )
-            }
-
             WakePlaybackControls(
                 title = stringResource(R.string.wake_editor_playback_title),
                 subtitle = stringResource(R.string.wake_editor_playback_subtitle),
                 ringtoneLabel = stringResource(R.string.wake_editor_main_ringtone_label),
                 playback = mainPlayback,
                 onPlaybackChange = { updated -> mainPlayback = updated },
+                silenceUntilAlarm = silenceUntilAlarm,
+                onSilenceUntilAlarmChange = { silenceUntilAlarm = it },
             )
 
             HorizontalDivider()
@@ -854,6 +829,8 @@ private fun WakePlaybackControls(
     playback: WakePlaybackOptions,
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
     showAwakeCheck: Boolean = true,
+    silenceUntilAlarm: Boolean = false,
+    onSilenceUntilAlarmChange: ((Boolean) -> Unit)? = null,
 ) {
     var previewStepIndex by remember { mutableStateOf<Int?>(null) }
     val previewSteps = playback.wakeUpCheckSteps.ifEmpty {
@@ -912,6 +889,38 @@ private fun WakePlaybackControls(
                         onPlaybackChange(playback.copy(vibrationOnly = enabled))
                     },
                 )
+            }
+        }
+
+        if (onSilenceUntilAlarmChange != null) {
+            OutlinedCard(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 14.dp, vertical = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.wake_editor_silence_toggle),
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextDark,
+                        )
+                        Text(
+                            text = stringResource(R.string.wake_editor_silence_hint),
+                            fontSize = 12.sp,
+                            color = TextMuted,
+                        )
+                    }
+                    Switch(
+                        checked = silenceUntilAlarm,
+                        onCheckedChange = onSilenceUntilAlarmChange,
+                    )
+                }
             }
         }
 
