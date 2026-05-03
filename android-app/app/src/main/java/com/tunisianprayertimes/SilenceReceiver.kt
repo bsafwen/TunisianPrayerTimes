@@ -21,6 +21,14 @@ class SilenceReceiver : BroadcastReceiver() {
             "com.tunisianprayertimes.ACTION_SILENCE" -> {
                 val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
                 Log.d(TAG, "Silencing phone for $prayerName")
+                // Check if the user already dismissed silence for this prayer.
+                // A delegation change may have rescheduled this alarm to a slightly
+                // later time; honour the user's prior dismissal.
+                val dismissedPrayer = PrefsManager.getAutoSilenceDismissedPrayer(context)
+                if (dismissedPrayer == prayerName) {
+                    Log.d(TAG, "User already dismissed silence for $prayerName, skipping")
+                    return
+                }
                 PrefsManager.clearAutoSilenceDismissed(context)
                 SilenceModeController.enableAutoSilence(context)
                 // Update delegation from cached location in the background,
