@@ -2,6 +2,7 @@ package com.tunisianprayertimes
 
 import android.app.AlarmManager
 import android.content.Context
+import android.media.AudioManager
 import androidx.test.core.app.ApplicationProvider
 import org.junit.Assert.*
 import org.junit.Before
@@ -549,6 +550,171 @@ class SilenceSchedulerIntegrationTest {
         assertTrue(
             "Alarm should use current year data, not fallback",
             triggerTimes.contains(expectedSilence.timeInMillis)
+        )
+    }
+
+    /**
+     * Bug reproduction: user dismisses auto-silence then changes to a delegation
+     * whose prayer time is LATER than the dismiss timestamp.
+     *
+     * Uses delegations 386 and 500 — Dhuhr differs by ~7 min (386 is earlier).
+     *
+     * 1. Phone silences for delegation 386's Dhuhr
+     * 2. User taps dismiss 2 min later
+     * 3. User changes delegation to 500 → rescheduleIfEnabled → scheduleAllInternal
+     * 4. scheduleAllInternal runs while inside delegation 500's Dhuhr window
+     * 5. BUG: dismissed check fails because dismissedAt < new silenceTime
+     * 6. Phone gets re-silenced despite user's explicit dismiss!
+     */
+    @Test
+    fun bugRepro_dismissAutoSilence_thenChangeDelegation_shouldNotResilence() {
+        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val shadowNm = Shadows.shadowOf(nm)
+        shadowNm.setNotificationPolicyAccessGranted(true)
+
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 386)
+        PrefsManager.setSilenceMode(context, Prayer.DHUHR, SilenceMode.DURATION)
+        PrefsManager.setAfterMinutes(context, Prayer.DHUHR, 20)
+        PrefsManager.setDelayMode(context, Prayer.DHUHR, DelayMode.MINUTES)
+        PrefsManager.setDelayMinutes(context, Prayer.DHUHR, 0)
+
+        // Load actual prayer times for today
+        val now = Calendar.getInstance()
+        val times386 = PrayerTimesRepository.loadDayPrayerTimes(
+            context, 386, now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH)
+        )!!
+        val times500 = PrayerTimesRepository.loadDayPrayerTimes(
+            context, 500, now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH)
+        )!!
+        // Sanity: delegation 500 Dhuhr must be later than 386
+        assertTrue(
+            "Test requires delegation 500 Dhuhr to be later than 386",
+            times500.dhuhr.hour * 60 + times500.dhuhr.minute > times386.dhuhr.hour * 60 + times386.dhuhr.minute
+        )
+
+        // Step 1: Time is 2 min after delegation 386's Dhuhr → inside its window
+        val timeDismiss = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, times386.dhuhr.hour)
+            set(Calendar.MINUTE, times386.dhuhr.minute + 2)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        SilenceScheduler.scheduleAllInternal(context, timeDismiss)
+        assertTrue("Phone should be auto-silenced", PrefsManager.isAutoSilenceActive(context))
+
+        // Step 2: User dismisses auto-silence
+        SilenceModeController.disableAutoSilence(context)
+        assertFalse("Auto-silence should be cleared after dismiss", PrefsManager.isAutoSilenceActive(context))
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+        PrefsManager.setAutoSilenceDismissed(context, timeDismiss.timeInMillis, Prayer.DHUHR)
+
+        // Step 3: User changes delegation to 500 (Dhuhr is later)
+        PrefsManager.setDelegationId(context, 500)
+
+        // Step 4: scheduleAll runs 2 min after delegation 500's Dhuhr → inside 500's window
+        val timeAfterChange = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, times500.dhuhr.hour)
+            set(Calendar.MINUTE, times500.dhuhr.minute + 2)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        SilenceScheduler.scheduleAllInternal(context, timeAfterChange)
+
+        // Step 5: phone should NOT be re-silenced
+        assertFalse(
+            "Phone was re-silenced after delegation change despite user dismiss!",
+            PrefsManager.isAutoSilenceActive(context)
+        )
+        assertEquals(
+            "Ringer should remain NORMAL after delegation change when user dismissed",
+            AudioManager.RINGER_MODE_NORMAL,
+            audioManager.ringerMode
+        )
+    }
+
+    /**
+     * Bug reproduction: phone is actively silenced for a prayer, then delegation
+     * auto-updates (via SilenceVerifyWorker or ACTION_SILENCE background coroutine)
+     * to a delegation whose prayer time is LATER. scheduleAll() doesn't see the
+     * current time as inside the new delegation's window and unsilences prematurely.
+     *
+     * Uses delegations 386 and 500 — Maghrib differs by ~8 min (386 is earlier).
+     *
+     * 1. Phone silenced for delegation 386's Maghrib
+     * 2. SilenceVerifyWorker updates delegation to 500
+     * 3. scheduleAll() runs between delegation 386's and 500's Maghrib times
+     * 4. BUG: current time is before 500's window → disableAutoSilence() called
+     */
+    @Test
+    fun bugRepro_delegationAutoUpdate_unsilencesDuringActiveSilenceWindow() {
+        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val shadowNm = Shadows.shadowOf(nm)
+        shadowNm.setNotificationPolicyAccessGranted(true)
+
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 386)
+        PrefsManager.setSilenceMode(context, Prayer.MAGHRIB, SilenceMode.DURATION)
+        PrefsManager.setAfterMinutes(context, Prayer.MAGHRIB, 20)
+        PrefsManager.setDelayMode(context, Prayer.MAGHRIB, DelayMode.MINUTES)
+        PrefsManager.setDelayMinutes(context, Prayer.MAGHRIB, 0)
+
+        // Load actual prayer times for today
+        val today = Calendar.getInstance()
+        val times386 = PrayerTimesRepository.loadDayPrayerTimes(
+            context, 386, today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH)
+        )!!
+        val times500 = PrayerTimesRepository.loadDayPrayerTimes(
+            context, 500, today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH)
+        )!!
+        assertTrue(
+            "Test requires delegation 500 Maghrib to be later than 386",
+            times500.maghrib.hour * 60 + times500.maghrib.minute > times386.maghrib.hour * 60 + times386.maghrib.minute
+        )
+
+        // Step 1: Simulate the state AFTER the SILENCE alarm fired for delegation 386's Maghrib
+        PrefsManager.markAutoSilenceActive(
+            context, AudioManager.RINGER_MODE_NORMAL,
+            android.app.NotificationManager.INTERRUPTION_FILTER_ALL
+        )
+        audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+
+        assertTrue("Phone should be auto-silenced for Maghrib", PrefsManager.isAutoSilenceActive(context))
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        // Step 2: Delegation auto-updates to 500 (simulating SilenceVerifyWorker)
+        PrefsManager.setDelegationId(context, 500)
+
+        // Step 3: scheduleAll() runs between the two delegations' Maghrib times
+        // (after 386's Maghrib, before 500's Maghrib)
+        val timeBetween = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, times386.maghrib.hour)
+            set(Calendar.MINUTE, times386.maghrib.minute + 3)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        SilenceScheduler.scheduleAllInternal(context, timeBetween)
+
+        // Step 4: phone should NOT be unsilenced
+        assertTrue(
+            "Phone was unsilenced during active prayer silence! " +
+            "Delegation auto-update shifted the window and scheduleAll() " +
+            "incorrectly called disableAutoSilence().",
+            PrefsManager.isAutoSilenceActive(context)
+        )
+        assertEquals(
+            "Ringer should remain SILENT — delegation auto-update should not interrupt silence",
+            AudioManager.RINGER_MODE_SILENT,
+            audioManager.ringerMode
         )
     }
 }

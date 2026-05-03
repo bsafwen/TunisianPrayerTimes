@@ -16,12 +16,16 @@ cd "$SCRIPT_DIR"
 APP_DIR="$SCRIPT_DIR/android-app"
 GRADLE_FILE="$APP_DIR/app/build.gradle.kts"
 
-# ── Require a release message ────────────────
+# ── Require a release message (English only) ─
 if [[ $# -lt 1 ]]; then
-  echo "Usage: $0 \"Release description\""
+  echo "Usage: $0 \"Release description (English only)\""
   exit 1
 fi
 RELEASE_MSG="$1"
+if [[ "$RELEASE_MSG" =~ [^[:ascii:]] ]]; then
+  echo "✗ Release message must be in English (ASCII only)." >&2
+  exit 1
+fi
 
 # ── Read current version from build.gradle.kts ──
 CURRENT_CODE=$(grep -m1 'versionCode' "$GRADLE_FILE" | sed 's/[^0-9]//g')

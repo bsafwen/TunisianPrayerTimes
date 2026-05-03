@@ -15,6 +15,10 @@ object SilenceScheduler {
     private const val ACTION_UNSILENCE = "com.tunisianprayertimes.ACTION_UNSILENCE"
     private const val EXTRA_PRAYER = "extra_prayer"
 
+    // Max prayer-time difference between any two Tunisian delegations (~15 min).
+    // Used to tolerate slight window shifts after a delegation change.
+    private const val MAX_DELEGATION_SHIFT_MS = 15 * 60 * 1000L
+
     /**
      * Schedule silence and unsilence alarms for all prayers today (and tomorrow if today's are past).
      */
@@ -93,6 +97,7 @@ object SilenceScheduler {
         }
 
         var currentlyInSilenceWindow = false
+        var earliestUpcomingSilenceMs = Long.MAX_VALUE
 
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
@@ -145,7 +150,7 @@ object SilenceScheduler {
                 // are not affected.
                 val dismissedAt = PrefsManager.getAutoSilenceDismissedUntilMillis(context)
                 val dismissedPrayer = PrefsManager.getAutoSilenceDismissedPrayer(context)
-                if (dismissedAt >= silenceTime.timeInMillis && dismissedPrayer == prayerTime.prayer.name) {
+                if (dismissedAt >= silenceTime.timeInMillis - MAX_DELEGATION_SHIFT_MS && dismissedPrayer == prayerTime.prayer.name) {
                     scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, prayerTime.prayer)
                     Log.d(TAG, "In silence window for ${prayerTime.prayer} but user dismissed; only scheduling UNSILENCE")
                     continue
@@ -162,6 +167,7 @@ object SilenceScheduler {
 
             // Only schedule if in the future
             if (silenceTime.after(now)) {
+                earliestUpcomingSilenceMs = minOf(earliestUpcomingSilenceMs, silenceTime.timeInMillis)
                 scheduleExactAlarm(context, silenceTime.timeInMillis, ACTION_SILENCE, prayerTime.prayer)
                 Log.d(TAG, "Scheduled SILENCE for ${prayerTime.prayer} at ${silenceTime.time}")
             }
@@ -175,11 +181,20 @@ object SilenceScheduler {
         // If we're not in any silence window, restore the previous ringer state
         // if auto-silence was active (handles missed unsilence alarms).
         // This is a no-op when the flag is not set, so manual silence is preserved.
+        // However, if auto-silence IS active and a prayer window starts within
+        // MAX_DELEGATION_SHIFT_MS, a delegation change likely shifted the window
+        // slightly — keep the phone silenced so the user isn't interrupted.
         if (!currentlyInSilenceWindow) {
-            if (SilenceModeController.disableAutoSilence(context)) {
-                SilenceModeController.notifyIfMissedCallDuringSilence(context)
+            val imminentWindow = PrefsManager.isAutoSilenceActive(context)
+                && earliestUpcomingSilenceMs - now.timeInMillis <= MAX_DELEGATION_SHIFT_MS
+            if (!imminentWindow) {
+                if (SilenceModeController.disableAutoSilence(context)) {
+                    SilenceModeController.notifyIfMissedCallDuringSilence(context)
+                }
+                Log.d(TAG, "Not in any silence window, ensuring phone is in previous mode")
+            } else {
+                Log.d(TAG, "Not in window but silence active and next window imminent; keeping silence")
             }
-            Log.d(TAG, "Not in any silence window, ensuring phone is in previous mode")
         }
 
         // Pre-schedule ALL of tomorrow's prayers once today's Isha unsilence has passed.
