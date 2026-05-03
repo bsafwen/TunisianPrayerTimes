@@ -26,6 +26,8 @@ object SilenceScheduler {
 
     /**
      * Returns the [Prayer] whose silence window currently contains [now], or null.
+     * Also returns the nearest upcoming prayer if auto-silence is already active
+     * and that prayer starts within [MAX_DELEGATION_SHIFT_MS] (imminent window).
      */
     fun currentSilenceWindowPrayer(context: Context): Prayer? {
         val now = Calendar.getInstance()
@@ -37,6 +39,9 @@ object SilenceScheduler {
         val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
+
+        var nearestImminentPrayer: Prayer? = null
+        var nearestImminentDistance = Long.MAX_VALUE
 
         for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
@@ -67,6 +72,19 @@ object SilenceScheduler {
             if (!now.before(silenceTime) && now.before(unsilenceTime)) {
                 return prayerTime.prayer
             }
+            // Track the nearest upcoming prayer within the delegation-shift tolerance
+            if (silenceTime.after(now)) {
+                val distance = silenceTime.timeInMillis - now.timeInMillis
+                if (distance <= MAX_DELEGATION_SHIFT_MS && distance < nearestImminentDistance) {
+                    nearestImminentDistance = distance
+                    nearestImminentPrayer = prayerTime.prayer
+                }
+            }
+        }
+        // If auto-silence is active but we're in the gap between old/new delegation times,
+        // return the imminent prayer so the UI can record dismissal correctly.
+        if (nearestImminentPrayer != null && PrefsManager.isAutoSilenceActive(context)) {
+            return nearestImminentPrayer
         }
         return null
     }

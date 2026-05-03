@@ -717,4 +717,53 @@ class SilenceSchedulerIntegrationTest {
             audioManager.ringerMode
         )
     }
+
+    /**
+     * Bug reproduction: after delegation auto-update creates an "imminent window" state,
+     * if the user dismisses silence, the rescheduled SILENCE alarm should NOT re-silence.
+     *
+     * Scenario:
+     * 1. Phone silenced for delegation 386's Maghrib (e.g., 19:12)
+     * 2. Delegation auto-updates to 500 (Maghrib 19:20)
+     * 3. scheduleAll at 19:15: imminent window keeps silence, schedules SILENCE at 19:20
+     * 4. User dismisses at 19:16
+     * 5. At 19:20, SILENCE alarm fires → should honour dismissal, NOT re-silence
+     */
+    @Test
+    fun bugRepro_silenceAlarmHonoursDismissalAfterDelegationChange() {
+        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val shadowNm = Shadows.shadowOf(nm)
+        shadowNm.setNotificationPolicyAccessGranted(true)
+
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 500)
+        PrefsManager.setSilenceMode(context, Prayer.MAGHRIB, SilenceMode.DURATION)
+        PrefsManager.setAfterMinutes(context, Prayer.MAGHRIB, 20)
+        PrefsManager.setDelayMode(context, Prayer.MAGHRIB, DelayMode.MINUTES)
+        PrefsManager.setDelayMinutes(context, Prayer.MAGHRIB, 0)
+
+        // Simulate: user already dismissed silence for MAGHRIB
+        PrefsManager.setAutoSilenceDismissed(context, System.currentTimeMillis(), Prayer.MAGHRIB)
+
+        // The rescheduled SILENCE alarm fires (from SilenceReceiver)
+        val receiver = SilenceReceiver()
+        val intent = android.content.Intent("com.tunisianprayertimes.ACTION_SILENCE").apply {
+            putExtra("extra_prayer", Prayer.MAGHRIB.name)
+        }
+        receiver.onReceive(context, intent)
+
+        // Phone should NOT be re-silenced because user dismissed MAGHRIB
+        assertFalse(
+            "SILENCE alarm should honour user's dismissal for the same prayer",
+            PrefsManager.isAutoSilenceActive(context)
+        )
+        assertEquals(
+            "Ringer should remain NORMAL after dismissed SILENCE alarm fires",
+            AudioManager.RINGER_MODE_NORMAL,
+            audioManager.ringerMode
+        )
+    }
 }
