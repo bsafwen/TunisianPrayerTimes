@@ -17,7 +17,7 @@ object SilenceScheduler {
 
     // Max prayer-time difference between any two Tunisian delegations (~15 min).
     // Used to tolerate slight window shifts after a delegation change.
-    private const val MAX_DELEGATION_SHIFT_MS = 15 * 60 * 1000L
+    private const val MAX_DELEGATION_SHIFT_MS = 45 * 60 * 1000L
 
     /**
      * Schedule silence and unsilence alarms for all prayers today (and tomorrow if today's are past).
@@ -193,6 +193,15 @@ object SilenceScheduler {
             if (unsilenceTime.after(now)) {
                 scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, prayerTime.prayer)
                 Log.d(TAG, "Scheduled UNSILENCE for ${prayerTime.prayer} at ${unsilenceTime.time}")
+            }
+
+            // Cancel stale alarms for prayers whose window has fully passed.
+            // Without this, a delegation change can leave an old UNSILENCE alarm
+            // that fires during the imminent window of the next prayer, bypassing
+            // the silence-bridging protection.
+            if (!silenceTime.after(now) && !unsilenceTime.after(now)) {
+                cancelPrayerAlarms(context, prayerTime.prayer)
+                Log.d(TAG, "Cancelled stale alarms for past prayer ${prayerTime.prayer}")
             }
         }
 
@@ -404,6 +413,12 @@ object SilenceScheduler {
             AlarmManager.AlarmClockInfo(midnight.timeInMillis, showIntent),
             pendingIntent
         )
+    }
+
+    private fun cancelPrayerAlarms(context: Context, prayer: Prayer) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(createPendingIntent(context, ACTION_SILENCE, prayer))
+        alarmManager.cancel(createPendingIntent(context, ACTION_UNSILENCE, prayer))
     }
 
     private fun createPendingIntent(context: Context, action: String, prayer: Prayer): PendingIntent {
