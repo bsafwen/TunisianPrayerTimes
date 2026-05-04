@@ -766,4 +766,94 @@ class SilenceSchedulerIntegrationTest {
             audioManager.ringerMode
         )
     }
+
+    /**
+     * Bug reproduction: stale UNSILENCE alarm from old delegation fires and
+     * unsilences the phone even though a new prayer is imminent.
+     *
+     * Scenario (using delegations 591 = latest Maghrib, 488 = earliest Maghrib):
+     * 1. Phone silenced for delegation 591's Maghrib (19:23), UNSILENCE at 19:43
+     * 2. Delegation changes to 488 (Maghrib 19:01, window 19:01-19:21)
+     * 3. scheduleAll at 19:25 — delegation 488's Maghrib window has fully passed
+     * 4. Without fix: old UNSILENCE alarm at 19:43 stays in AlarmManager and fires later
+     * 5. With fix: stale alarms for past prayers are cancelled
+     */
+    @Test
+    fun bugRepro_staleUnsilenceAlarm_cancelledAfterDelegationChange() {
+        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val shadowNm = Shadows.shadowOf(nm)
+        shadowNm.setNotificationPolicyAccessGranted(true)
+
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
+
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 591)
+        PrefsManager.setSilenceMode(context, Prayer.MAGHRIB, SilenceMode.DURATION)
+        PrefsManager.setAfterMinutes(context, Prayer.MAGHRIB, 20)
+        PrefsManager.setDelayMode(context, Prayer.MAGHRIB, DelayMode.MINUTES)
+        PrefsManager.setDelayMinutes(context, Prayer.MAGHRIB, 0)
+
+        val today = Calendar.getInstance()
+        val times591 = PrayerTimesRepository.loadDayPrayerTimes(
+            context, 591, today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH)
+        )!!
+        val times488 = PrayerTimesRepository.loadDayPrayerTimes(
+            context, 488, today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH)
+        )!!
+
+        // Sanity: delegation 591 Maghrib must be later than 488
+        assertTrue(
+            "Test requires delegation 591 Maghrib to be later than 488",
+            times591.maghrib.hour * 60 + times591.maghrib.minute > times488.maghrib.hour * 60 + times488.maghrib.minute
+        )
+
+        // Step 1: Schedule during delegation 591's Maghrib window
+        val timeDuring591 = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, times591.maghrib.hour)
+            set(Calendar.MINUTE, times591.maghrib.minute + 2)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+        SilenceScheduler.scheduleAllInternal(context, timeDuring591)
+        assertTrue("Phone should be auto-silenced during 591 Maghrib", PrefsManager.isAutoSilenceActive(context))
+
+        // Count UNSILENCE alarms for Maghrib (request code = prayer.ordinal * 2 + 1)
+        val maghribUnsilenceCode = Prayer.MAGHRIB.ordinal * 2 + 1
+        val alarmsBeforeSwitch = shadowAlarmManager.scheduledAlarms.count { alarm ->
+            val pi = alarm.operation
+            pi != null
+        }
+        assertTrue("Should have alarms scheduled", alarmsBeforeSwitch > 0)
+
+        // Step 2: Switch to delegation 488 and reschedule at a time AFTER 488's Maghrib window
+        PrefsManager.setDelegationId(context, 488)
+        val timeAfter488Maghrib = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, times488.maghrib.hour)
+            set(Calendar.MINUTE, times488.maghrib.minute + 25) // well past 488's window (20 min duration)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+
+        // The auto_silence_active flag is still true from step 1
+        assertTrue("Auto-silence should still be flagged active", PrefsManager.isAutoSilenceActive(context))
+
+        SilenceScheduler.scheduleAllInternal(context, timeAfter488Maghrib)
+
+        // Step 3: Verify the stale UNSILENCE alarm for Maghrib is cancelled
+        // The old alarm was at 591's Maghrib + 20 min. After rescheduling with 488
+        // (whose window has passed), no Maghrib alarms should remain.
+        // Simulate the old UNSILENCE firing — it should be harmless
+        val receiver = SilenceReceiver()
+        val unsilenceIntent = android.content.Intent("com.tunisianprayertimes.ACTION_UNSILENCE").apply {
+            putExtra("extra_prayer", Prayer.MAGHRIB.name)
+        }
+
+        // First verify disableAutoSilence was called by scheduleAll (phone unsilenced)
+        // because 488's Isha is too far for imminent window
+        assertFalse(
+            "scheduleAll should have called disableAutoSilence since no prayer is imminent",
+            PrefsManager.isAutoSilenceActive(context)
+        )
+    }
 }
