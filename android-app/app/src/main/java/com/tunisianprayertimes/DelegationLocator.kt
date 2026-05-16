@@ -103,6 +103,13 @@ object DelegationLocator {
         return locationPermissionState(context).hasAny
     }
 
+    suspend fun detectCurrentLocation(context: Context): Location? {
+        val permissionState = locationPermissionState(context)
+        if (!permissionState.hasAny) return null
+
+        return findCurrentLocation(context, permissionState)
+    }
+
     /**
      * Uses the cached last-known location to silently update the saved delegation
      * if the user has moved to a different one. Returns true if the delegation changed.

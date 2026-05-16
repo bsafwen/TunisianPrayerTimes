@@ -5,6 +5,7 @@ object TestTags {
     const val PERMISSION_BANNER = "permission_banner"
     const val BATTERY_BANNER = "battery_banner"
     const val LOCATION_PICKER = "location_picker"
+    const val QIBLA_CARD = "qibla_card"
     const val PRAYER_SETTINGS = "prayer_settings"
     const val AUTO_SILENCE_CARD = "auto_silence_card"
     const val AUTO_SILENCE_SWITCH = "auto_silence_switch"

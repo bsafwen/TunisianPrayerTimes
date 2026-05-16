@@ -570,6 +570,8 @@ fun MainScreen(
                     }
                 )
 
+                QiblaCard()
+
                 // Bottom border
                 Image(
                     painter = painterResource(R.drawable.islamic_border),

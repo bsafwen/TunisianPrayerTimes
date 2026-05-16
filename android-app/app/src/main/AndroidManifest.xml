@@ -37,6 +37,9 @@
          Marked required=false so devices without a gyroscope are not filtered from the store;
          the game falls back gracefully when no orientation sensor is available. -->
     <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false" />
+        <!-- Qibla compass uses motion/magnetic sensors when available, with a static bearing fallback. -->
+        <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+        <uses-feature android:name="android.hardware.sensor.compass" android:required="false" />
 
 
     <application
