@@ -19,6 +19,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AnalyticsTracker.installRamadanOverrideReporter(this)
         setContent {
             TunisianPrayerTimesTheme {
                 OnboardingScreen(onFinish = {

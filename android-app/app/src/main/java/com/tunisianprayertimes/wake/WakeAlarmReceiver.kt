@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat
+import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.nap.NapSilenceController
 import kotlinx.coroutines.CoroutineScope
@@ -15,6 +16,7 @@ class WakeAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val payload = intent.toWakeTriggerPayload() ?: return
         Log.d("WakeFlow", "WakeAlarmReceiver.onReceive eventId=${payload.eventId}")
+        AnalyticsTracker.wakeAlarmFired(context, payload)
 
         // If this alarm had silence activated, restore audio state before playing the wake-up alarm
         val alarmId = wakeAlarmIdFromEventId(payload.eventId)
@@ -33,11 +35,20 @@ class WakeAlarmReceiver : BroadcastReceiver() {
 
         val pendingResult = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
+            var result = "success"
             try {
                 WakeAlarmScheduler.scheduleAll(context)
             } catch (error: Exception) {
+                result = "failure"
                 Log.w(TAG, "Failed to reschedule wake alarms after trigger", error)
             } finally {
+                AnalyticsTracker.scheduleRefreshResult(
+                    context = context,
+                    source = "wake_alarm_fired",
+                    result = result,
+                    silencePrayerCount = AnalyticsTracker.silencePrayerCount(context),
+                    wakeAlarmCount = AnalyticsTracker.enabledWakeAlarmCount(context),
+                )
                 pendingResult.finish()
             }
         }

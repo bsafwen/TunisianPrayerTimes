@@ -54,14 +54,17 @@ class SilenceVerifyWorker(
         Log.d(TAG, "Verifying silence alarms")
         // Check for Ramadan date override from GitHub Pages
         RamadanOverrideChecker.startPollingIfNeeded()
+        var refreshResult = "disabled"
         if (PrefsManager.isEnabled(applicationContext)) {
             if (isOutsideTunisia()) {
+                refreshResult = "outside_tunisia"
                 if (!PrefsManager.isDisabledOutsideTunisia(applicationContext)) {
                     Log.d(TAG, "User is outside Tunisia, cancelling silence alarms")
                     SilenceScheduler.cancelAll(applicationContext)
                     PrefsManager.setDisabledOutsideTunisia(applicationContext, true)
                 }
             } else if (PrefsManager.isDisabledOutsideTunisia(applicationContext)) {
+                refreshResult = "returned_to_tunisia"
                 Log.d(TAG, "User returned to Tunisia, re-enabling silence alarms")
                 PrefsManager.setDisabledOutsideTunisia(applicationContext, false)
                 if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
@@ -69,6 +72,7 @@ class SilenceVerifyWorker(
                 }
                 SilenceScheduler.scheduleAll(applicationContext)
             } else {
+                refreshResult = "success"
                 if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
                     if (DelegationLocator.updateDelegationFromLastLocation(applicationContext)) {
                         Log.d(TAG, "Delegation updated, rescheduling alarms")
@@ -77,6 +81,13 @@ class SilenceVerifyWorker(
                 SilenceScheduler.scheduleAll(applicationContext)
             }
         }
+        AnalyticsTracker.scheduleRefreshResult(
+            context = applicationContext,
+            source = "silence_worker",
+            result = refreshResult,
+            silencePrayerCount = AnalyticsTracker.silencePrayerCount(applicationContext),
+            wakeAlarmCount = AnalyticsTracker.enabledWakeAlarmCount(applicationContext),
+        )
         return Result.success()
     }
 

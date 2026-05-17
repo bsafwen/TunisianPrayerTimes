@@ -116,6 +116,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.DelayMode
+import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.DelegationLocationResult
@@ -182,6 +183,12 @@ private enum class MainDestination(val labelRes: Int, val iconRes: Int) {
     Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla),
 }
 
+private fun MainDestination.analyticsName(): String = when (this) {
+    MainDestination.Today -> "prayers"
+    MainDestination.Alarms -> "alarms"
+    MainDestination.Qibla -> "qibla"
+}
+
 private data class NextPrayerCountdownInfo(
     val prayer: Prayer,
     val hour: Int,
@@ -224,7 +231,15 @@ fun MainScreen(
     }
     val phoneStatePermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { refreshTick++ }
+    ) { granted ->
+        AnalyticsTracker.permissionStepResult(
+            context = context,
+            permissionType = "phone_state",
+            result = if (granted) "granted" else "denied",
+            entryPoint = "main_banner",
+        )
+        refreshTick++
+    }
 
     fun ensureCallTrackingPermission() {
         if (ContextCompat.checkSelfPermission(
@@ -232,6 +247,12 @@ fun MainScreen(
                 Manifest.permission.READ_PHONE_STATE
             ) != PackageManager.PERMISSION_GRANTED
         ) {
+            AnalyticsTracker.permissionStepResult(
+                context = context,
+                permissionType = "phone_state",
+                result = "request_opened",
+                entryPoint = "auto_silence",
+            )
             phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
         }
     }
@@ -315,7 +336,17 @@ fun MainScreen(
 
     // Start Ramadan override polling on first composition
     LaunchedEffect(Unit) {
+        AnalyticsTracker.installRamadanOverrideReporter(context)
         RamadanOverrideChecker.startPollingIfNeeded()
+    }
+
+    LaunchedEffect(hasDnd, hasAlarm, hasBattery) {
+        AnalyticsTracker.activationCompletedIfNeeded(
+            context = context,
+            dndGranted = hasDnd,
+            exactAlarmGranted = hasAlarm,
+            batteryExempt = hasBattery,
+        )
     }
 
     LaunchedEffect(manualSilenceEndsAtMillis) {
@@ -356,10 +387,20 @@ fun MainScreen(
     }
     val selectedDestination = mainDestinations[currentDestinationIndex]
 
+    LaunchedEffect(selectedDestination) {
+        AnalyticsTracker.tabViewed(context, selectedDestination.analyticsName())
+    }
+
     fun requestFullScreenIntentIfNeeded() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             val nm = context.getSystemService(NotificationManager::class.java)
             if (!nm.canUseFullScreenIntent()) {
+                AnalyticsTracker.permissionStepResult(
+                    context = context,
+                    permissionType = "full_screen_intent",
+                    result = "request_opened",
+                    entryPoint = "wake_alarm",
+                )
                 Toast.makeText(context, context.getString(R.string.wake_alarm_full_screen_permission), Toast.LENGTH_LONG).show()
                 context.startActivity(
                     Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
@@ -372,7 +413,15 @@ fun MainScreen(
 
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { requestFullScreenIntentIfNeeded() }
+    ) { granted ->
+        AnalyticsTracker.permissionStepResult(
+            context = context,
+            permissionType = "notifications",
+            result = if (granted) "granted" else "denied",
+            entryPoint = "wake_alarm",
+        )
+        requestFullScreenIntentIfNeeded()
+    }
 
     val wakeRepository = remember(context) { com.tunisianprayertimes.wake.PrayerWakeRepository(context) }
     val mainScope = rememberCoroutineScope()
@@ -432,6 +481,12 @@ fun MainScreen(
                         hasAlarm = hasAlarm,
                         hasPhoneState = hasPhoneState,
                         onRequestPhoneState = {
+                            AnalyticsTracker.permissionStepResult(
+                                context = context,
+                                permissionType = "phone_state",
+                                result = "request_opened",
+                                entryPoint = "main_banner",
+                            )
                             phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
                         },
                         context = context
@@ -472,6 +527,7 @@ fun MainScreen(
                             onToggle = { enabled ->
                                 autoSilenceEnabled = enabled
                                 PrefsManager.setEnabled(context, enabled)
+                                AnalyticsTracker.autoSilenceStateChanged(context, enabled)
                                 if (enabled) {
                                     if (hasDnd && hasAlarm) {
                                         ensureCallTrackingPermission()
@@ -595,6 +651,7 @@ fun MainScreen(
                                     when (manualSilenceMode) {
                                         ManualSilenceMode.DURATION -> {
                                             manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, totalMinutes)
+                                            AnalyticsTracker.manualSilenceStarted(context, manualSilenceMode, totalMinutes)
                                             Toast.makeText(
                                                 context,
                                                 context.getString(R.string.toast_silent_enabled_timed, formatDurationText(totalMinutes)),
@@ -605,6 +662,7 @@ fun MainScreen(
                                             val endsAtMillis = requireNotNull(prayerEndsAtMillis)
                                             ManualSilenceScheduler.scheduleAt(context, endsAtMillis)
                                             manualSilenceEndsAtMillis = endsAtMillis
+                                            AnalyticsTracker.manualSilenceStarted(context, manualSilenceMode, null)
                                             Toast.makeText(
                                                 context,
                                                 context.getString(
@@ -617,6 +675,7 @@ fun MainScreen(
                                         ManualSilenceMode.UNTIL_STOPPED -> {
                                             ManualSilenceScheduler.cancel(context)
                                             manualSilenceEndsAtMillis = -1L
+                                            AnalyticsTracker.manualSilenceStarted(context, manualSilenceMode, null)
                                             Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
                                         }
                                     }
@@ -747,6 +806,7 @@ fun MainScreen(
                 onSave = { config ->
                     mainScope.launch {
                         wakeRepository.saveWakeConfig(config)
+                        AnalyticsTracker.wakeAlarmSaved(context, config)
                         editingWakeAlarm = null
                         rescheduleIfEnabled()
                     }
@@ -766,6 +826,12 @@ fun MainScreen(
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
                             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
                         ) {
+                            AnalyticsTracker.permissionStepResult(
+                                context = context,
+                                permissionType = "notifications",
+                                result = "request_opened",
+                                entryPoint = "wake_alarm",
+                            )
                             notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                         } else {
                             requestFullScreenIntentIfNeeded()
@@ -955,8 +1021,20 @@ private fun PermissionBanner(
             .padding(top = 12.dp)
             .clickable {
                 if (!hasDnd) {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "dnd",
+                        result = "request_opened",
+                        entryPoint = "main_banner",
+                    )
                     context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
                 } else if (!hasAlarm && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "exact_alarm",
+                        result = "request_opened",
+                        entryPoint = "main_banner",
+                    )
                     context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
                 } else if (!hasPhoneState) {
                     onRequestPhoneState()
@@ -994,6 +1072,12 @@ private fun BatteryBanner(context: Context) {
             .fillMaxWidth()
             .padding(top = 12.dp)
             .clickable {
+                AnalyticsTracker.permissionStepResult(
+                    context = context,
+                    permissionType = "battery_optimization",
+                    result = "request_opened",
+                    entryPoint = "main_banner",
+                )
                 val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
                 intent.data = Uri.parse("package:${context.packageName}")
                 context.startActivity(intent)
@@ -1050,9 +1134,16 @@ private fun LocationPickerCard(
                     if (PrefsManager.isDisabledOutsideTunisia(context)) {
                         PrefsManager.setDisabledOutsideTunisia(context, false)
                     }
+                    AnalyticsTracker.markDelegationSource(context, "gps_success")
                     onDelegationSelected(result.delegation)
                 }
                 DelegationLocationResult.PermissionDenied -> {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "location",
+                        result = "denied",
+                        entryPoint = "delegation_picker",
+                    )
                     Toast.makeText(
                         context,
                         context.getString(R.string.location_permission_denied),
@@ -1061,6 +1152,12 @@ private fun LocationPickerCard(
                 }
 
                 DelegationLocationResult.LocationUnavailable -> {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "location",
+                        result = "location_unavailable",
+                        entryPoint = "delegation_picker",
+                    )
                     Toast.makeText(
                         context,
                         context.getString(R.string.location_lookup_failed),
@@ -1069,6 +1166,12 @@ private fun LocationPickerCard(
                 }
 
                 DelegationLocationResult.NoDelegationFound -> {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "location",
+                        result = "no_delegation_found",
+                        entryPoint = "delegation_picker",
+                    )
                     Toast.makeText(
                         context,
                         context.getString(R.string.location_no_match),
@@ -1077,6 +1180,12 @@ private fun LocationPickerCard(
                 }
 
                 DelegationLocationResult.OutsideTunisia -> {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "location",
+                        result = "outside_tunisia",
+                        entryPoint = "delegation_picker",
+                    )
                     SilenceScheduler.cancelAll(context)
                     PrefsManager.setDisabledOutsideTunisia(context, true)
                     onOutsideTunisia()
@@ -1097,8 +1206,20 @@ private fun LocationPickerCard(
             grants[Manifest.permission.ACCESS_COARSE_LOCATION] == true
 
         if (granted) {
+            AnalyticsTracker.permissionStepResult(
+                context = context,
+                permissionType = "location",
+                result = "granted",
+                entryPoint = "delegation_picker",
+            )
             startLocationLookup()
         } else {
+            AnalyticsTracker.permissionStepResult(
+                context = context,
+                permissionType = "location",
+                result = "denied",
+                entryPoint = "delegation_picker",
+            )
             Toast.makeText(
                 context,
                 context.getString(R.string.location_permission_denied),
@@ -1153,6 +1274,12 @@ private fun LocationPickerCard(
                             if (DelegationLocator.hasLocationPermission(context)) {
                                 startLocationLookup()
                             } else {
+                                AnalyticsTracker.permissionStepResult(
+                                    context = context,
+                                    permissionType = "location",
+                                    result = "request_opened",
+                                    entryPoint = "delegation_picker",
+                                )
                                 locationPermissionLauncher.launch(DelegationLocator.requestedPermissions)
                             }
                         }
@@ -1176,6 +1303,7 @@ private fun LocationPickerCard(
             onDismiss = { showSheet = false },
             onSelect = { delegation ->
                 showSheet = false
+                AnalyticsTracker.markDelegationSource(context, "manual")
                 onDelegationSelected(delegation)
             }
         )
@@ -1863,7 +1991,9 @@ private fun WakeAlarmCard(
                             onClick = { onEditAlarm(wakeAlarm) },
                             onEnabledChange = { enabled ->
                                 coroutineScope.launch {
-                                    wakeRepository.saveWakeConfig(wakeAlarm.copy(enabled = enabled))
+                                    val updatedAlarm = wakeAlarm.copy(enabled = enabled)
+                                    wakeRepository.saveWakeConfig(updatedAlarm)
+                                    AnalyticsTracker.wakeAlarmSaved(context, updatedAlarm)
                                     onConfigChanged()
                                 }
                             },
@@ -2322,6 +2452,20 @@ private fun PrayerRow(
     var fixedH by rememberSaveable { mutableIntStateOf(initFixedHour(context, prayer, prayerTime)) }
     var fixedM by rememberSaveable { mutableIntStateOf(initFixedMinute(context, prayer, prayerTime)) }
 
+    fun logSilenceConfigChange(
+        currentSilenceMode: SilenceMode = silenceMode,
+        currentAfterMinutes: Int = afterMinutes.toIntOrNull() ?: 0,
+        currentDelayMode: DelayMode = delayMode,
+    ) {
+        AnalyticsTracker.silenceConfigChanged(
+            context = context,
+            prayer = prayer,
+            mode = currentSilenceMode,
+            durationMinutes = currentAfterMinutes,
+            delayMode = currentDelayMode,
+        )
+    }
+
     // Compute overlap with next prayer
     val overlapsNextPrayer = remember(prayerTime, nextPrayerTime, silenceMode, afterMinutes, fixedH, fixedM, delayMode, delayMinutes, delayFixedH, delayFixedM) {
         if (prayerTime == null || nextPrayerTime == null) false
@@ -2401,6 +2545,7 @@ private fun PrayerRow(
                     onValueChange = {
                         delayMinutes = it
                         PrefsManager.setDelayMinutes(context, prayer, it.toIntOrNull() ?: 0)
+                        logSilenceConfigChange()
                         onConfigChanged()
                     },
                     modifier = Modifier.weight(1f),
@@ -2432,6 +2577,7 @@ private fun PrayerRow(
                             delayFixedH = picker.hour
                             delayFixedM = picker.minute
                             PrefsManager.setDelayFixedTime(context, prayer, picker.hour, picker.minute)
+                            logSilenceConfigChange()
                             onConfigChanged()
                         }
                         picker.show(activity.supportFragmentManager, "delay_picker_${prayer.name}")
@@ -2456,6 +2602,7 @@ private fun PrayerRow(
                         val newMode = if (delayMode == DelayMode.MINUTES) DelayMode.FIXED_TIME else DelayMode.MINUTES
                         delayMode = newMode
                         PrefsManager.setDelayMode(context, prayer, newMode)
+                        logSilenceConfigChange(currentDelayMode = newMode)
                         onConfigChanged()
                     }
                     .padding(2.dp)
@@ -2474,6 +2621,7 @@ private fun PrayerRow(
                     onValueChange = {
                         afterMinutes = it
                         PrefsManager.setAfterMinutes(context, prayer, it.toIntOrNull() ?: 0)
+                        logSilenceConfigChange(currentAfterMinutes = it.toIntOrNull() ?: 0)
                         onConfigChanged()
                     },
                     modifier = Modifier.weight(1f).testTag(TestTags.durationInput(prayer.name))
@@ -2511,6 +2659,7 @@ private fun PrayerRow(
                             fixedH = picker.hour
                             fixedM = picker.minute
                             PrefsManager.setFixedTime(context, prayer, picker.hour, picker.minute)
+                            logSilenceConfigChange()
                             onConfigChanged()
                         }
                         picker.show(activity.supportFragmentManager, "picker_${prayer.name}")
@@ -2535,6 +2684,7 @@ private fun PrayerRow(
                         val newMode = if (silenceMode == SilenceMode.DURATION) SilenceMode.FIXED_TIME else SilenceMode.DURATION
                         silenceMode = newMode
                         PrefsManager.setSilenceMode(context, prayer, newMode)
+                        logSilenceConfigChange(currentSilenceMode = newMode)
                         onConfigChanged()
                     }
                     .padding(2.dp)

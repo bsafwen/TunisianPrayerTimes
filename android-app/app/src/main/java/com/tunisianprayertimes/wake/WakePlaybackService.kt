@@ -434,7 +434,31 @@ class WakePlaybackService : Service() {
     private fun stopPendingIntent(context: Context, payload: WakeTriggerPayload): PendingIntent {
         val intent = Intent(context, WakeActionReceiver::class.java)
             .setAction(ACTION_STOP_WAKE_ALARM)
-            .populateWakeStopPayload(payload.eventId)
+            .populateWakeTriggerPayload(
+                eventId = payload.eventId,
+                prayer = payload.prayer,
+                effectivePrayer = payload.effectivePrayer,
+                mainAlarmMode = payload.mainAlarmMode,
+                hour = payload.hour,
+                minute = payload.minute,
+                ringtone = payload.ringtone,
+                customRingtoneUri = payload.customRingtoneUri,
+                vibrationOnly = payload.vibrationOnly,
+                wakeUpCheckEnabled = payload.wakeUpCheckEnabled,
+                wakeUpCheckType = payload.wakeUpCheckType,
+                wakeUpCheckDifficulty = payload.wakeUpCheckDifficulty,
+                whackAMoleKillTarget = payload.whackAMoleKillTarget,
+                wakeUpCheckSteps = payload.wakeUpCheckSteps,
+                progressiveVolume = payload.progressiveVolume,
+                snoreTrackingEnabled = payload.snoreTrackingEnabled,
+                awakeCheckEnabled = payload.awakeCheckEnabled,
+                awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
+                wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
+                isSubAlarm = payload.isSubAlarm,
+                subAlarmId = payload.subAlarmId,
+                offsetMinutes = payload.offsetMinutes,
+                offsetDirection = payload.offsetDirection,
+            )
             .putExtra(EXTRA_AWAKE_CHECK_ENABLED, payload.awakeCheckEnabled)
             .putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, payload.awakeCheckDelayMinutes)
             .putExtra(EXTRA_RINGTONE, payload.ringtone.name)

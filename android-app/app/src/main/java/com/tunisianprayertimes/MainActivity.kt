@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AnalyticsTracker.installRamadanOverrideReporter(this)
 
         // On first launch, show onboarding tutorial
         if (PrefsManager.isFirstLaunch(this)) {
