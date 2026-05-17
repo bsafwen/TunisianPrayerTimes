@@ -8,33 +8,37 @@ import android.os.Build
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -51,10 +55,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -64,13 +71,11 @@ import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.window.Dialog
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.ClockTime
 import com.tunisianprayertimes.MathDifficulty
-import com.tunisianprayertimes.WakeUpCheckStep
-import com.tunisianprayertimes.WakeUpCheckType
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.Prayer
@@ -87,7 +92,11 @@ import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.WakeUpCheckStep
+import com.tunisianprayertimes.WakeUpCheckType
 import com.tunisianprayertimes.formatArabicMinutes
+import com.tunisianprayertimes.ui.theme.BgCream
+import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
@@ -95,26 +104,19 @@ import com.tunisianprayertimes.ui.theme.PrayerNameColor
 import com.tunisianprayertimes.ui.theme.SilenceRed
 import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
+import com.tunisianprayertimes.wake.GyroscopeMazeGame
+import com.tunisianprayertimes.wake.WhackAMoleGame
 import com.tunisianprayertimes.wake.WakeRingtoneCatalog
 import com.tunisianprayertimes.wake.WakeRingtonePreviewPlayer
+import com.tunisianprayertimes.wake.wakeUpCheckChallengeFor
+import com.tunisianprayertimes.wake.wakeUpCheckChallengeForStep
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import kotlin.math.abs
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.window.Dialog
-import com.tunisianprayertimes.ui.theme.BgCream
-import com.tunisianprayertimes.wake.GyroscopeMazeGame
-import com.tunisianprayertimes.wake.WhackAMoleGame
-import com.tunisianprayertimes.wake.wakeUpCheckChallengeFor
-import com.tunisianprayertimes.wake.wakeUpCheckChallengeForStep
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -127,9 +129,7 @@ fun WakeEditorSheet(
     onDelete: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
-    var enabled by remember(initialConfig.id, initialConfig.enabled) {
-        mutableStateOf(initialConfig.enabled)
-    }
+    val enabled = initialConfig.enabled
     var mode by remember(initialConfig.id, initialConfig.mainAlarm.mode) {
         mutableStateOf(initialConfig.mainAlarm.mode)
     }
@@ -200,6 +200,8 @@ fun WakeEditorSheet(
         minutesText = fromNowMinutesText,
         fallbackMinutes = initialFromNowOffsetMinutes,
     )
+    val supportsSilenceUntilAlarm = mode == WakeMainAlarmMode.FROM_NOW
+    val effectiveSilenceUntilAlarm = silenceUntilAlarm && supportsSilenceUntilAlarm
 
     fun rescheduleFromNowAlarm(hoursText: String, minutesText: String) {
         fromNowHoursText = hoursText
@@ -213,7 +215,6 @@ fun WakeEditorSheet(
 
     val draftConfig = remember(
         initialConfig,
-        enabled,
         mode,
         selectedPrayer,
         fixedHour,
@@ -223,7 +224,7 @@ fun WakeEditorSheet(
         fromNowTriggerAtMillis,
         mainPlayback,
         subAlarms,
-        silenceUntilAlarm,
+        effectiveSilenceUntilAlarm,
     ) {
         initialConfig.copy(
             title = "",
@@ -238,7 +239,7 @@ fun WakeEditorSheet(
             ),
             playback = mainPlayback,
             subAlarms = subAlarms,
-            silenceUntilAlarm = silenceUntilAlarm,
+            silenceUntilAlarm = effectiveSilenceUntilAlarm,
         )
     }
     val preview = remember(delegationId, draftConfig) {
@@ -260,78 +261,70 @@ fun WakeEditorSheet(
                 .verticalScroll(scrollState)
                 .statusBarsPadding()
                 .navigationBarsPadding()
-                .padding(horizontal = 20.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+                .padding(horizontal = 16.dp, vertical = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Text(
-                text = stringResource(R.string.wake_editor_title),
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
-                color = PrayerNameColor,
-            )
-
-            Text(
-                text = stringResource(R.string.wake_editor_subtitle),
-                fontSize = 13.sp,
-                color = TextMuted,
-                lineHeight = 18.sp,
-            )
-
-            OutlinedCard(
+            Row(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.18f)),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 14.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_enable_title),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = TextDark,
-                        )
-                        Text(
-                            text = stringResource(R.string.wake_editor_enable_subtitle),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                        )
-                    }
-                    Switch(checked = enabled, onCheckedChange = { checked -> enabled = checked })
-                }
-            }
-
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
-                    text = stringResource(R.string.wake_editor_mode_title),
-                    fontSize = 13.sp,
+                    text = stringResource(R.string.wake_editor_title),
+                    fontSize = 19.sp,
                     fontWeight = FontWeight.Bold,
                     color = PrayerNameColor,
+                    modifier = Modifier.weight(1f),
                 )
-                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    FilterChip(
-                        selected = mode == WakeMainAlarmMode.PRAYER_RELATIVE,
-                        onClick = { mode = WakeMainAlarmMode.PRAYER_RELATIVE },
-                        label = { Text(stringResource(R.string.wake_editor_mode_relative)) },
-                    )
-                    FilterChip(
-                        selected = mode == WakeMainAlarmMode.FIXED_TIME,
-                        onClick = { mode = WakeMainAlarmMode.FIXED_TIME },
-                        label = { Text(stringResource(R.string.wake_editor_mode_fixed)) },
-                    )
-                    FilterChip(
-                        selected = mode == WakeMainAlarmMode.FROM_NOW,
-                        onClick = {
-                            mode = WakeMainAlarmMode.FROM_NOW
-                            fromNowTriggerAtMillis = System.currentTimeMillis() + parsedFromNowOffsetMinutes.toMillis()
-                        },
-                        label = { Text(stringResource(R.string.wake_editor_mode_from_now)) },
-                    )
+
+                Button(
+                    onClick = { onSave(draftConfig) },
+                    shape = RoundedCornerShape(10.dp),
+                    modifier = Modifier.heightIn(min = 38.dp),
+                ) {
+                    Text(text = stringResource(R.string.wake_editor_save))
                 }
             }
+
+            WakeEditorPreviewCard(
+                enabled = enabled,
+                preview = preview,
+            )
+
+            WakeEditorSectionCard(
+                title = stringResource(R.string.wake_editor_main_section_title),
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_mode_title),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = PrayerNameColor,
+                    )
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        WakeChoiceButton(
+                            selected = mode == WakeMainAlarmMode.PRAYER_RELATIVE,
+                            onClick = { mode = WakeMainAlarmMode.PRAYER_RELATIVE },
+                            text = stringResource(R.string.wake_editor_mode_relative),
+                        )
+                        WakeChoiceButton(
+                            selected = mode == WakeMainAlarmMode.FIXED_TIME,
+                            onClick = { mode = WakeMainAlarmMode.FIXED_TIME },
+                            text = stringResource(R.string.wake_editor_mode_fixed),
+                        )
+                        WakeChoiceButton(
+                            selected = mode == WakeMainAlarmMode.FROM_NOW,
+                            onClick = {
+                                mode = WakeMainAlarmMode.FROM_NOW
+                                fromNowTriggerAtMillis = System.currentTimeMillis() + parsedFromNowOffsetMinutes.toMillis()
+                            },
+                            text = stringResource(R.string.wake_editor_mode_from_now),
+                        )
+                    }
+                }
 
             when (mode) {
                 WakeMainAlarmMode.FIXED_TIME -> {
@@ -342,7 +335,7 @@ fun WakeEditorSheet(
                             fontWeight = FontWeight.Bold,
                             color = PrayerNameColor,
                         )
-                        OutlinedCard(
+                        OutlinedButton(
                             modifier = Modifier.fillMaxWidth(),
                             onClick = {
                                 val picker = MaterialTimePicker.Builder()
@@ -357,10 +350,11 @@ fun WakeEditorSheet(
                                 }
                                 picker.show(activity.supportFragmentManager, "wake_main_time_${initialConfig.id}")
                             },
+                            shape = RoundedCornerShape(10.dp),
+                            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
                         ) {
                             Text(
                                 text = formatWakeEditorTime(fixedHour, fixedMinute),
-                                modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = GreenPrimaryDark,
@@ -389,15 +383,17 @@ fun WakeEditorSheet(
                             color = PrayerNameColor,
                         )
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            FilterChip(
+                            WakeChoiceButton(
                                 selected = relativeOffsetDirection == OffsetDirection.BEFORE,
                                 onClick = { relativeOffsetDirection = OffsetDirection.BEFORE },
-                                label = { Text(stringResource(R.string.wake_editor_subalarm_before)) },
+                                text = stringResource(R.string.wake_editor_subalarm_before),
+                                compact = true,
                             )
-                            FilterChip(
+                            WakeChoiceButton(
                                 selected = relativeOffsetDirection == OffsetDirection.AFTER,
                                 onClick = { relativeOffsetDirection = OffsetDirection.AFTER },
-                                label = { Text(stringResource(R.string.wake_editor_subalarm_after)) },
+                                text = stringResource(R.string.wake_editor_subalarm_after),
+                                compact = true,
                             )
                         }
                         OutlinedTextField(
@@ -407,9 +403,6 @@ fun WakeEditorSheet(
                             },
                             modifier = Modifier.fillMaxWidth(),
                             label = { Text(stringResource(R.string.wake_editor_relative_label)) },
-                            supportingText = {
-                                Text(text = stringResource(R.string.wake_editor_relative_hint))
-                            },
                             textStyle = LocalTextStyle.current.copy(
                                 textAlign = TextAlign.Right,
                                 textDirection = TextDirection.Ltr,
@@ -427,13 +420,6 @@ fun WakeEditorSheet(
                             fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
                             color = PrayerNameColor,
-                        )
-
-                        Text(
-                            text = stringResource(R.string.wake_editor_from_now_hint),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                            lineHeight = 17.sp,
                         )
 
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -473,44 +459,68 @@ fun WakeEditorSheet(
                                 singleLine = true,
                             )
                         }
+
                     }
                 }
             }
 
+                if (supportsSilenceUntilAlarm) {
+                    WakeSwitchSettingRow(
+                        title = stringResource(R.string.wake_editor_silence_toggle),
+                        checked = effectiveSilenceUntilAlarm,
+                        onCheckedChange = { updated -> silenceUntilAlarm = updated },
+                    )
+                }
+            }
 
-            WakePlaybackControls(
+            if (enabled) {
+                preview?.warning?.let { warning ->
+                    WakeEditorWarningCard(warning = warning)
+                }
+            }
+
+
+            WakeEditorSectionCard(
                 title = stringResource(R.string.wake_editor_playback_title),
-                subtitle = stringResource(R.string.wake_editor_playback_subtitle),
-                ringtoneLabel = stringResource(R.string.wake_editor_main_ringtone_label),
-                playback = mainPlayback,
-                onPlaybackChange = { updated -> mainPlayback = updated },
-                silenceUntilAlarm = silenceUntilAlarm,
-                onSilenceUntilAlarmChange = { silenceUntilAlarm = it },
-            )
+            ) {
+                WakeSoundControls(
+                    ringtoneLabel = stringResource(R.string.wake_editor_main_ringtone_label),
+                    playback = mainPlayback,
+                    onPlaybackChange = { updated -> mainPlayback = updated },
+                )
+            }
 
-            HorizontalDivider()
+            WakeEditorSectionCard(
+                title = stringResource(R.string.wake_editor_wake_up_check_title),
+            ) {
+                WakeWakeCheckControls(
+                    playback = mainPlayback,
+                    onPlaybackChange = { updated -> mainPlayback = updated },
+                )
+            }
 
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            WakeEditorSectionCard(
+                title = stringResource(R.string.wake_editor_subalarms_title),
+                subtitle = stringResource(R.string.wake_editor_subalarms_relationship),
+            ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_subalarms_title),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = PrayerNameColor,
-                        )
-                        Text(
-                            text = stringResource(R.string.wake_editor_subalarms_subtitle),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                            lineHeight = 17.sp,
-                        )
-                    }
+                    Text(
+                        text = if (subAlarms.isEmpty()) {
+                            stringResource(R.string.wake_editor_subalarms_empty_compact)
+                        } else {
+                            stringResource(R.string.wake_editor_subalarms_count, subAlarms.size)
+                        },
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                        lineHeight = 17.sp,
+                        modifier = Modifier.weight(1f),
+                    )
 
-                    TextButton(
+                    OutlinedButton(
                         onClick = {
                             val newId = UUID.randomUUID().toString()
                             newSubAlarmIds += newId
@@ -523,20 +533,10 @@ fun WakeEditorSheet(
                                 scrollState.animateScrollTo(scrollState.maxValue)
                             }
                         },
+                        shape = RoundedCornerShape(10.dp),
+                        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
                     ) {
                         Text(text = stringResource(R.string.wake_editor_subalarms_add))
-                    }
-                }
-
-                if (subAlarms.isEmpty()) {
-                    OutlinedCard(modifier = Modifier.fillMaxWidth()) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_subalarms_empty),
-                            modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                            lineHeight = 17.sp,
-                        )
                     }
                 }
 
@@ -549,96 +549,27 @@ fun WakeEditorSheet(
                             androidx.compose.animation.EnterTransition.None
                         },
                     ) {
-                    WakeSubAlarmEditorCard(
-                        index = index,
-                        subAlarm = subAlarm,
-                        canMoveUp = index > 0,
-                        canMoveDown = index < subAlarms.lastIndex,
-                        onChange = { updated ->
-                            subAlarms = subAlarms.map { existing ->
-                                if (existing.id == updated.id) updated else existing
-                            }
-                        },
-                        onMoveUp = {
-                            subAlarms = subAlarms.moveSubAlarm(index, index - 1)
-                        },
-                        onMoveDown = {
-                            subAlarms = subAlarms.moveSubAlarm(index, index + 1)
-                        },
-                        onRemove = {
-                            newSubAlarmIds -= subAlarm.id
-                            subAlarms = subAlarms.filterNot { existing -> existing.id == subAlarm.id }
-                        },
-                    )
-                    } // AnimatedVisibility
-                }
-            }
-
-            HorizontalDivider()
-
-            OutlinedCard(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.outlinedCardColors(containerColor = GreenPrimary.copy(alpha = 0.08f)),
-            ) {
-                Column(
-                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
-                    verticalArrangement = Arrangement.spacedBy(6.dp),
-                ) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_preview_title),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor,
-                    )
-
-                    when {
-                        !enabled -> {
-                            Text(
-                                text = stringResource(R.string.wake_editor_preview_disabled),
-                                fontSize = 12.sp,
-                                color = TextMuted,
-                            )
-                        }
-
-                        preview == null -> {
-                            Text(
-                                text = stringResource(R.string.wake_editor_preview_unavailable),
-                                fontSize = 12.sp,
-                                color = TextMuted,
-                            )
-                        }
-
-                        else -> {
-                            Text(
-                                text = preview.title,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = GreenPrimaryDark,
-                            )
-                            Text(
-                                text = preview.detail,
-                                fontSize = 12.sp,
-                                color = TextDark,
-                                lineHeight = 17.sp,
-                            )
-
-                            preview.warning?.let { warning ->
-                                HorizontalDivider(modifier = Modifier.padding(top = 4.dp))
-
-                                Text(
-                                    text = warning.title,
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = SilenceRed,
-                                )
-                                Text(
-                                    text = warning.detail,
-                                    fontSize = 12.sp,
-                                    color = SilenceRed,
-                                    lineHeight = 17.sp,
-                                )
-                            }
-                        }
+                        WakeSubAlarmEditorCard(
+                            index = index,
+                            subAlarm = subAlarm,
+                            canMoveUp = index > 0,
+                            canMoveDown = index < subAlarms.lastIndex,
+                            onChange = { updated ->
+                                subAlarms = subAlarms.map { existing ->
+                                    if (existing.id == updated.id) updated else existing
+                                }
+                            },
+                            onMoveUp = {
+                                subAlarms = subAlarms.moveSubAlarm(index, index - 1)
+                            },
+                            onMoveDown = {
+                                subAlarms = subAlarms.moveSubAlarm(index, index + 1)
+                            },
+                            onRemove = {
+                                newSubAlarmIds -= subAlarm.id
+                                subAlarms = subAlarms.filterNot { existing -> existing.id == subAlarm.id }
+                            },
+                        )
                     }
                 }
             }
@@ -647,9 +578,10 @@ fun WakeEditorSheet(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                TextButton(
+                OutlinedButton(
                     onClick = onDismissRequest,
                     modifier = Modifier.weight(1f),
+                    shape = RoundedCornerShape(12.dp),
                 ) {
                     Text(text = stringResource(R.string.wake_editor_cancel))
                 }
@@ -657,6 +589,7 @@ fun WakeEditorSheet(
                 Button(
                     onClick = { onSave(draftConfig) },
                     modifier = Modifier.weight(1f),
+                    shape = RoundedCornerShape(12.dp),
                 ) {
                     Text(text = stringResource(R.string.wake_editor_save))
                 }
@@ -679,6 +612,235 @@ fun WakeEditorSheet(
                     )
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun WakeEditorSectionCard(
+    title: String,
+    subtitle: String? = null,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    OutlinedCard(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.08f)),
+        border = BorderStroke(1.5.dp, Gold.copy(alpha = 0.58f)),
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(
+                    text = title,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerNameColor,
+                )
+            }
+
+            if (!subtitle.isNullOrBlank()) {
+                Text(
+                    text = subtitle,
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    lineHeight = 17.sp,
+                )
+            }
+            content()
+        }
+    }
+}
+
+@Composable
+private fun WakeChoiceButton(
+    selected: Boolean,
+    onClick: () -> Unit,
+    text: String,
+    modifier: Modifier = Modifier,
+    compact: Boolean = false,
+) {
+    OutlinedButton(
+        onClick = onClick,
+        modifier = modifier.heightIn(min = if (compact) 34.dp else 38.dp),
+        shape = RoundedCornerShape(10.dp),
+        border = BorderStroke(
+            1.dp,
+            if (selected) GreenPrimary else GreenPrimary.copy(alpha = 0.34f),
+        ),
+        colors = ButtonDefaults.outlinedButtonColors(
+            containerColor = if (selected) GreenPrimary else Color.White,
+            contentColor = if (selected) Color.White else TextDark,
+        ),
+    ) {
+        Text(
+            text = text,
+            fontSize = if (compact) 11.sp else 12.sp,
+            fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
+        )
+    }
+}
+
+@Composable
+private fun WakeEditorPreviewCard(
+    enabled: Boolean,
+    preview: WakePreview?,
+) {
+    OutlinedCard(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(14.dp),
+        colors = CardDefaults.outlinedCardColors(containerColor = GreenPrimaryDark),
+        border = BorderStroke(1.dp, GreenPrimaryDark),
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.wake_editor_preview_title),
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White.copy(alpha = 0.78f),
+            )
+            when {
+                !enabled -> Text(
+                    text = stringResource(R.string.wake_editor_preview_disabled),
+                    fontSize = 12.sp,
+                    color = Color.White.copy(alpha = 0.78f),
+                )
+
+                preview == null -> Text(
+                    text = stringResource(R.string.wake_editor_preview_unavailable),
+                    fontSize = 12.sp,
+                    color = Color.White.copy(alpha = 0.78f),
+                )
+
+                else -> {
+                    Text(
+                        text = preview.title,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+                    )
+                    Text(
+                        text = preview.detail,
+                        fontSize = 12.sp,
+                        color = Color.White.copy(alpha = 0.82f),
+                        lineHeight = 17.sp,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeEditorWarningCard(
+    warning: WakeValidationWarning,
+) {
+    OutlinedCard(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.outlinedCardColors(containerColor = SilenceRed.copy(alpha = 0.07f)),
+        border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.18f)),
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(
+                text = warning.title,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = SilenceRed,
+            )
+            Text(
+                text = warning.detail,
+                fontSize = 12.sp,
+                color = SilenceRed,
+                lineHeight = 17.sp,
+            )
+        }
+    }
+}
+
+@Composable
+private fun WakeSwitchSettingRow(
+    title: String,
+    subtitle: String? = null,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextDark,
+            )
+            if (!subtitle.isNullOrBlank()) {
+                Text(
+                    text = subtitle,
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    lineHeight = 17.sp,
+                )
+            }
+        }
+        Switch(checked = checked, onCheckedChange = onCheckedChange)
+    }
+}
+
+@Composable
+private fun WakeDisclosureRow(
+    title: String,
+    subtitle: String,
+    expanded: Boolean,
+    onClick: () -> Unit,
+) {
+    OutlinedButton(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(10.dp),
+        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.28f)),
+        colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = TextDark,
+                )
+                Text(
+                    text = subtitle,
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    lineHeight = 17.sp,
+                )
+            }
+            Text(
+                text = if (expanded) "−" else "+",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                modifier = Modifier.padding(start = 10.dp),
+            )
         }
     }
 }
@@ -753,41 +915,52 @@ private fun WakeSubAlarmEditorCard(
                     )
                 }
 
-                TextButton(onClick = onRemove) {
+                OutlinedButton(
+                    onClick = onRemove,
+                    shape = RoundedCornerShape(10.dp),
+                    border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.45f)),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = SilenceRed),
+                ) {
                     Text(text = stringResource(R.string.wake_editor_subalarm_remove))
                 }
             }
 
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                FilterChip(
+                WakeChoiceButton(
                     selected = subAlarm.direction == OffsetDirection.BEFORE,
                     onClick = {
                         onChange(subAlarm.copy(direction = OffsetDirection.BEFORE))
                     },
-                    label = { Text(stringResource(R.string.wake_editor_subalarm_before)) },
+                    text = stringResource(R.string.wake_editor_subalarm_before_main),
+                    modifier = Modifier.weight(1f),
+                    compact = true,
                 )
-                FilterChip(
+                WakeChoiceButton(
                     selected = subAlarm.direction == OffsetDirection.AFTER,
                     onClick = {
                         onChange(subAlarm.copy(direction = OffsetDirection.AFTER))
                     },
-                    label = { Text(stringResource(R.string.wake_editor_subalarm_after)) },
+                    text = stringResource(R.string.wake_editor_subalarm_after_main),
+                    modifier = Modifier.weight(1f),
+                    compact = true,
                 )
             }
 
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                TextButton(
+                OutlinedButton(
                     onClick = {
                         onChange(subAlarm.copy(minutesOffset = maxOf(1, subAlarm.minutesOffset - 1)))
                     },
+                    shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(text = stringResource(R.string.wake_editor_subalarm_decrease))
                 }
 
-                TextButton(
+                OutlinedButton(
                     onClick = {
                         onChange(subAlarm.copy(minutesOffset = subAlarm.minutesOffset + 1))
                     },
+                    shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(text = stringResource(R.string.wake_editor_subalarm_increase))
                 }
@@ -803,16 +976,18 @@ private fun WakeSubAlarmEditorCard(
             )
 
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                TextButton(
+                OutlinedButton(
                     onClick = onMoveUp,
                     enabled = canMoveUp,
+                    shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(text = stringResource(R.string.wake_editor_subalarm_move_up))
                 }
 
-                TextButton(
+                OutlinedButton(
                     onClick = onMoveDown,
                     enabled = canMoveDown,
+                    shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(text = stringResource(R.string.wake_editor_subalarm_move_down))
                 }
@@ -832,10 +1007,109 @@ private fun WakePlaybackControls(
     silenceUntilAlarm: Boolean = false,
     onSilenceUntilAlarmChange: ((Boolean) -> Unit)? = null,
 ) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            Text(
+                text = title,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+
+            Text(
+                text = subtitle,
+                fontSize = 12.sp,
+                color = TextMuted,
+                lineHeight = 17.sp,
+            )
+        }
+
+        WakeSoundControls(
+            ringtoneLabel = ringtoneLabel,
+            playback = playback,
+            onPlaybackChange = onPlaybackChange,
+        )
+
+        WakeWakeCheckControls(
+            playback = playback,
+            onPlaybackChange = onPlaybackChange,
+            showAwakeCheck = showAwakeCheck,
+        )
+
+        if (onSilenceUntilAlarmChange != null) {
+            WakeSwitchSettingRow(
+                title = stringResource(R.string.wake_editor_silence_toggle),
+                checked = silenceUntilAlarm,
+                onCheckedChange = onSilenceUntilAlarmChange,
+            )
+        }
+    }
+}
+
+@Composable
+private fun WakeSoundControls(
+    ringtoneLabel: String,
+    playback: WakePlaybackOptions,
+    onPlaybackChange: (WakePlaybackOptions) -> Unit,
+) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        AnimatedVisibility(visible = !playback.vibrationOnly) {
+            WakeRingtoneSelector(
+                label = ringtoneLabel,
+                selected = playback.ringtone,
+                customRingtoneUri = playback.customRingtoneUri,
+                onSelected = { preset ->
+                    onPlaybackChange(playback.copy(ringtone = preset))
+                },
+                onCustomSelected = { uri ->
+                    onPlaybackChange(playback.copy(ringtone = RingtonePreset.CUSTOM, customRingtoneUri = uri))
+                },
+            )
+        }
+
+        WakeSwitchSettingRow(
+            title = stringResource(R.string.wake_editor_vibration_only_title),
+            checked = playback.vibrationOnly,
+            onCheckedChange = { enabled ->
+                onPlaybackChange(playback.copy(vibrationOnly = enabled))
+            },
+        )
+
+        if (!playback.vibrationOnly) {
+            WakeSwitchSettingRow(
+                title = stringResource(R.string.wake_editor_progressive_volume_title),
+                checked = playback.progressiveVolume,
+                onCheckedChange = { enabled ->
+                    onPlaybackChange(playback.copy(progressiveVolume = enabled))
+                },
+            )
+        }
+    }
+}
+
+@Composable
+private fun WakeWakeCheckControls(
+    playback: WakePlaybackOptions,
+    onPlaybackChange: (WakePlaybackOptions) -> Unit,
+    showAwakeCheck: Boolean = true,
+) {
     var previewStepIndex by remember { mutableStateOf<Int?>(null) }
+    var wakeCheckExpanded by rememberSaveable { mutableStateOf(false) }
     val previewSteps = playback.wakeUpCheckSteps.ifEmpty {
         listOf(WakeUpCheckStep(playback.wakeUpCheckType, playback.mathDifficulty))
     }
+    val wakeCheckSummary = if (!playback.wakeUpCheckEnabled) {
+        stringResource(R.string.wake_editor_wake_up_check_off)
+    } else if (previewSteps.size == 1) {
+        stringResource(
+            R.string.wake_editor_wake_up_check_single_summary,
+            wakeCheckTypeLabel(previewSteps.first().type),
+            wakeCheckDifficultyLabel(previewSteps.first().difficulty),
+        )
+    } else {
+        stringResource(R.string.wake_editor_wake_up_check_steps_summary, previewSteps.size)
+    }
+
     if (previewStepIndex != null && previewStepIndex!! < previewSteps.size) {
         val step = previewSteps[previewStepIndex!!]
         WakeUpCheckPreviewDialog(
@@ -846,123 +1120,32 @@ private fun WakePlaybackControls(
     }
 
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(
-            text = title,
-            fontSize = 13.sp,
-            fontWeight = FontWeight.Bold,
-            color = PrayerNameColor,
+        WakeSwitchSettingRow(
+            title = stringResource(R.string.wake_editor_wake_up_check_title),
+            subtitle = wakeCheckSummary,
+            checked = playback.wakeUpCheckEnabled,
+            onCheckedChange = { enabled ->
+                onPlaybackChange(playback.copy(wakeUpCheckEnabled = enabled))
+                if (enabled) wakeCheckExpanded = true
+            },
         )
 
-        Text(
-            text = subtitle,
-            fontSize = 12.sp,
-            color = TextMuted,
-            lineHeight = 17.sp,
-        )
-
-        OutlinedCard(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_vibration_only_title),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = TextDark,
-                    )
-                    Text(
-                        text = stringResource(R.string.wake_editor_vibration_only_subtitle),
-                        fontSize = 12.sp,
-                        color = TextMuted,
-                    )
-                }
-                Switch(
-                    checked = playback.vibrationOnly,
-                    onCheckedChange = { enabled ->
-                        onPlaybackChange(playback.copy(vibrationOnly = enabled))
-                    },
-                )
-            }
+        if (playback.wakeUpCheckEnabled) {
+            WakeDisclosureRow(
+                title = stringResource(R.string.wake_editor_wake_up_check_edit),
+                subtitle = wakeCheckSummary,
+                expanded = wakeCheckExpanded,
+                onClick = { wakeCheckExpanded = !wakeCheckExpanded },
+            )
         }
 
-        if (onSilenceUntilAlarmChange != null) {
-            OutlinedCard(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 14.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_silence_toggle),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = TextDark,
-                        )
-                        Text(
-                            text = stringResource(R.string.wake_editor_silence_hint),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                        )
-                    }
-                    Switch(
-                        checked = silenceUntilAlarm,
-                        onCheckedChange = onSilenceUntilAlarmChange,
-                    )
-                }
-            }
-        }
-
-        OutlinedCard(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_wake_up_check_title),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = TextDark,
-                    )
-                    Text(
-                        text = stringResource(R.string.wake_editor_wake_up_check_subtitle),
-                        fontSize = 12.sp,
-                        color = TextMuted,
-                    )
-                }
-                Switch(
-                    checked = playback.wakeUpCheckEnabled,
-                    onCheckedChange = { enabled ->
-                        onPlaybackChange(playback.copy(wakeUpCheckEnabled = enabled))
-                    },
-                )
-            }
-        }
-
-        AnimatedVisibility(visible = playback.wakeUpCheckEnabled) {
+        AnimatedVisibility(visible = playback.wakeUpCheckEnabled && wakeCheckExpanded) {
             val steps = playback.wakeUpCheckSteps.ifEmpty {
                 listOf(WakeUpCheckStep(playback.wakeUpCheckType, playback.mathDifficulty))
             }
 
             Column(
-                modifier = Modifier.padding(start = 14.dp, end = 14.dp, bottom = 12.dp),
+                modifier = Modifier.padding(start = 6.dp, end = 6.dp, bottom = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 steps.forEachIndexed { index, step ->
@@ -986,11 +1169,14 @@ private fun WakePlaybackControls(
                                     color = TextDark,
                                 )
                                 if (steps.size > 1) {
-                                    TextButton(onClick = {
-                                        val updated = steps.toMutableList().apply { removeAt(index) }
-                                        onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
-                                    }) {
-                                        Text("✕", fontSize = 14.sp)
+                                    OutlinedButton(
+                                        onClick = {
+                                            val updated = steps.toMutableList().apply { removeAt(index) }
+                                            onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                                        },
+                                        shape = RoundedCornerShape(8.dp),
+                                    ) {
+                                        Text("✕", fontSize = 12.sp)
                                     }
                                 }
                             }
@@ -1000,9 +1186,12 @@ private fun WakePlaybackControls(
                                 fontWeight = FontWeight.Bold,
                                 color = TextMuted,
                             )
-                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            FlowRow(
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalArrangement = Arrangement.spacedBy(6.dp),
+                            ) {
                                 WakeUpCheckType.entries.forEach { type ->
-                                    FilterChip(
+                                    WakeChoiceButton(
                                         selected = step.type == type,
                                         onClick = {
                                             val updated = steps.toMutableList().apply {
@@ -1010,16 +1199,12 @@ private fun WakePlaybackControls(
                                             }
                                             onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
                                         },
-                                        label = {
-                                            Text(
-                                                text = when (type) {
-                                                    WakeUpCheckType.MATH -> stringResource(R.string.wake_editor_check_type_math)
-                                                    WakeUpCheckType.WHACK_A_MOLE -> stringResource(R.string.wake_editor_check_type_whack_a_mole)
-                                                    WakeUpCheckType.GYROSCOPE_MAZE -> stringResource(R.string.wake_editor_check_type_gyroscope_maze)
-                                                },
-                                                fontSize = 11.sp,
-                                            )
+                                        text = when (type) {
+                                            WakeUpCheckType.MATH -> stringResource(R.string.wake_editor_check_type_math)
+                                            WakeUpCheckType.WHACK_A_MOLE -> stringResource(R.string.wake_editor_check_type_whack_a_mole)
+                                            WakeUpCheckType.GYROSCOPE_MAZE -> stringResource(R.string.wake_editor_check_type_gyroscope_maze)
                                         },
+                                        compact = true,
                                     )
                                 }
                             }
@@ -1030,9 +1215,12 @@ private fun WakePlaybackControls(
                                 fontWeight = FontWeight.Bold,
                                 color = TextMuted,
                             )
-                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            FlowRow(
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalArrangement = Arrangement.spacedBy(6.dp),
+                            ) {
                                 MathDifficulty.entries.forEach { diff ->
-                                    FilterChip(
+                                    WakeChoiceButton(
                                         selected = step.difficulty == diff,
                                         onClick = {
                                             val updated = steps.toMutableList().apply {
@@ -1040,22 +1228,19 @@ private fun WakePlaybackControls(
                                             }
                                             onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
                                         },
-                                        label = {
-                                            Text(
-                                                text = when (diff) {
-                                                    MathDifficulty.EASY -> stringResource(R.string.wake_editor_math_difficulty_easy)
-                                                    MathDifficulty.INTERMEDIATE -> stringResource(R.string.wake_editor_math_difficulty_intermediate)
-                                                    MathDifficulty.HARD -> stringResource(R.string.wake_editor_math_difficulty_hard)
-                                                },
-                                                fontSize = 11.sp,
-                                            )
+                                        text = when (diff) {
+                                            MathDifficulty.EASY -> stringResource(R.string.wake_editor_math_difficulty_easy)
+                                            MathDifficulty.INTERMEDIATE -> stringResource(R.string.wake_editor_math_difficulty_intermediate)
+                                            MathDifficulty.HARD -> stringResource(R.string.wake_editor_math_difficulty_hard)
                                         },
+                                        compact = true,
                                     )
                                 }
                             }
-                            TextButton(
+                            OutlinedButton(
                                 onClick = { previewStepIndex = index },
                                 modifier = Modifier.fillMaxWidth(),
+                                shape = RoundedCornerShape(10.dp),
                             ) {
                                 Text(stringResource(R.string.wake_editor_check_preview_button), fontSize = 11.sp)
                             }
@@ -1068,94 +1253,37 @@ private fun WakePlaybackControls(
                         onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
                     },
                     modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(10.dp),
                 ) {
                     Text(stringResource(R.string.wake_editor_check_add_step))
                 }
             }
         }
 
-        AnimatedVisibility(visible = !playback.vibrationOnly) {
-            OutlinedCard(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 14.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_progressive_volume_title),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = TextDark,
-                        )
-                        Text(
-                            text = stringResource(R.string.wake_editor_progressive_volume_subtitle),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                        )
-                    }
-                    Switch(
-                        checked = playback.progressiveVolume,
-                        onCheckedChange = { enabled ->
-                            onPlaybackChange(playback.copy(progressiveVolume = enabled))
-                        },
-                    )
-                }
-            }
-        }
-
         if (showAwakeCheck) {
-            OutlinedCard(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.14f)),
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 14.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_awake_check_title),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = TextDark,
-                        )
-                        Text(
-                            text = stringResource(R.string.wake_editor_awake_check_subtitle),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                        )
-                    }
-                    Switch(
-                        checked = playback.awakeCheckEnabled,
-                        onCheckedChange = { enabled ->
-                            onPlaybackChange(playback.copy(awakeCheckEnabled = enabled))
-                        },
-                    )
-                }
-            }
-        }
-
-        AnimatedVisibility(visible = !playback.vibrationOnly) {
-            WakeRingtoneSelector(
-                label = ringtoneLabel,
-                selected = playback.ringtone,
-                customRingtoneUri = playback.customRingtoneUri,
-                onSelected = { preset ->
-                    onPlaybackChange(playback.copy(ringtone = preset))
-                },
-                onCustomSelected = { uri ->
-                    onPlaybackChange(playback.copy(ringtone = RingtonePreset.CUSTOM, customRingtoneUri = uri))
+            WakeSwitchSettingRow(
+                title = stringResource(R.string.wake_editor_awake_check_title),
+                checked = playback.awakeCheckEnabled,
+                onCheckedChange = { enabled ->
+                    onPlaybackChange(playback.copy(awakeCheckEnabled = enabled))
                 },
             )
         }
     }
+}
+
+@Composable
+private fun wakeCheckTypeLabel(type: WakeUpCheckType): String = when (type) {
+    WakeUpCheckType.MATH -> stringResource(R.string.wake_editor_check_type_math)
+    WakeUpCheckType.WHACK_A_MOLE -> stringResource(R.string.wake_editor_check_type_whack_a_mole)
+    WakeUpCheckType.GYROSCOPE_MAZE -> stringResource(R.string.wake_editor_check_type_gyroscope_maze)
+}
+
+@Composable
+private fun wakeCheckDifficultyLabel(difficulty: MathDifficulty): String = when (difficulty) {
+    MathDifficulty.EASY -> stringResource(R.string.wake_editor_math_difficulty_easy)
+    MathDifficulty.INTERMEDIATE -> stringResource(R.string.wake_editor_math_difficulty_intermediate)
+    MathDifficulty.HARD -> stringResource(R.string.wake_editor_math_difficulty_hard)
 }
 
 @Composable

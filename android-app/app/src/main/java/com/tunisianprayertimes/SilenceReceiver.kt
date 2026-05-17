@@ -44,7 +44,7 @@ class SilenceReceiver : BroadcastReceiver() {
                         } catch (e: Exception) {
                             Log.w(TAG, "Failed to update delegation", e)
                         } finally {
-                            pendingResult.finish()
+                            pendingResult?.finish()
                         }
                     }
                 }
