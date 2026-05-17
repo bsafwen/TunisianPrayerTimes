@@ -111,7 +111,7 @@ The repository includes a GitHub Actions workflow that can prepare these JSON co
 scripts/detect_tunisian_lunar_dates.py
 ```
 
-The workflow runs several evening checks during the relevant announcement months, but the script exits without doing network work unless the current approximate Hijri date is close to one of the announcement windows:
+The workflow runs several evening checks every day of the year, so Ramadan and Aid remain covered as they drift through the Gregorian calendar. The script exits without doing network work unless the current approximate Hijri date is close to one of the announcement windows:
 
 - Ramadan start: late Shaaban through the first days of Ramadan.
 - Aid el-Fitr: late Ramadan through the first days of Shawwal.
