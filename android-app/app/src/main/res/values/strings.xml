@@ -3,6 +3,9 @@
     <string name="app_name">أوقات الصلاة تونس</string>
     <string name="subtitle">مواقيت الصلاة في تونس</string>
     <string name="source">المصدر: المعهد الوطني للرصد الجوي</string>
+    <string name="main_tab_today">الصلاة</string>
+    <string name="main_tab_alarms">المنبهات</string>
+    <string name="main_tab_qibla">القبلة</string>
     <string name="status_normal">الهاتف في الوضع العادي 🔔</string>
     <string name="status_silent">الهاتف في الوضع الصامت 🔇</string>
     <string name="status_no_permission">يجب منح إذن عدم الإزعاج ⚠️</string>

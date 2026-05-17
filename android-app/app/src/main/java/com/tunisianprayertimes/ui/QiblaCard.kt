@@ -182,12 +182,13 @@ fun QiblaCard() {
         normalizeDegrees(magneticHeadingDegrees.toDouble() + magneticDeclinationDegrees)
     }
     val hasReliableCompassHeading = headingDegrees != null && !compassNeedsCalibration(compassState)
-    val turnDegrees = if (qiblaBearing != null && headingDegrees != null && hasReliableCompassHeading) {
+    val liveTurnDegrees = if (qiblaBearing != null && headingDegrees != null) {
         shortestSignedAngleDegrees(headingDegrees, qiblaBearing)
     } else {
         null
     }
-    val qiblaRotation = turnDegrees ?: qiblaBearing ?: 0.0
+    val turnDegrees = if (hasReliableCompassHeading) liveTurnDegrees else null
+    val qiblaRotation = liveTurnDegrees ?: qiblaBearing ?: 0.0
     var displayedHeadingDegrees by remember { mutableStateOf<Double?>(null) }
     var displayedTurnDegrees by remember { mutableStateOf<Double?>(null) }
     var lastTextDegreeUpdateMs by remember { mutableStateOf(0L) }
@@ -292,7 +293,7 @@ fun QiblaCard() {
 
             QiblaCompassDial(
                 rotationDegrees = qiblaRotation.toFloat(),
-                displayDegrees = displayedTurnDegrees ?: if (turnDegrees == null) qiblaBearing else turnDegrees,
+                displayDegrees = displayedTurnDegrees ?: liveTurnDegrees ?: qiblaBearing,
                 hasBearing = qiblaBearing != null,
             )
             Spacer(Modifier.height(12.dp))
@@ -334,7 +335,10 @@ fun QiblaCard() {
                 QiblaMetricChip(
                     text = when {
                         !qiblaRequested -> stringResource(R.string.qibla_not_computed)
-                        qiblaBearing != null -> stringResource(R.string.qibla_bearing, qiblaBearing)
+                        qiblaBearing != null -> stringResource(
+                            R.string.qibla_bearing,
+                            roundedCompassDegree(qiblaBearing).toDouble(),
+                        )
                         else -> stringResource(R.string.qibla_location_required)
                     },
                     modifier = Modifier.weight(1f),
@@ -344,9 +348,15 @@ fun QiblaCard() {
                         stringResource(R.string.qibla_not_computed)
                     } else {
                         displayedHeadingDegrees?.let { displayedHeading ->
-                            stringResource(R.string.qibla_heading, displayedHeading)
+                            stringResource(
+                                R.string.qibla_heading,
+                                roundedCompassDegree(displayedHeading).toDouble(),
+                            )
                         } ?: headingDegrees?.let { liveHeading ->
-                            stringResource(R.string.qibla_heading, liveHeading)
+                            stringResource(
+                                R.string.qibla_heading,
+                                roundedCompassDegree(liveHeading).toDouble(),
+                            )
                         } ?: stringResource(R.string.qibla_compass_waiting)
                     },
                     modifier = Modifier.weight(1f),
@@ -526,7 +536,7 @@ private fun QiblaCompassDial(rotationDegrees: Float, displayDegrees: Double?, ha
             )
             Text(
                 text = if (hasBearing) {
-                    "${normalizeDegrees((displayDegrees ?: rotationDegrees.toDouble())).roundToInt()}°"
+                    "${roundedCompassDegree(displayDegrees ?: rotationDegrees.toDouble())}°"
                 } else {
                     "--°"
                 },
@@ -823,6 +833,11 @@ private fun magneticFieldStrengthMicroTesla(values: FloatArray): Float {
 
 private fun roundedDegreeChanged(currentDegrees: Double?, candidateDegrees: Double): Boolean {
     return currentDegrees == null || currentDegrees.roundToInt() != candidateDegrees.roundToInt()
+}
+
+private fun roundedCompassDegree(degrees: Double): Int {
+    val roundedDegrees = normalizeDegrees(degrees).roundToInt()
+    return if (roundedDegrees == 360) 0 else roundedDegrees
 }
 
 private fun copySmoothedSensorValues(
