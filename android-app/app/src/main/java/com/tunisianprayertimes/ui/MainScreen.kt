@@ -54,6 +54,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Switch
@@ -167,6 +168,12 @@ import java.util.Locale
 import java.util.UUID
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
+private enum class MainDestination(val labelRes: Int, val iconRes: Int) {
+    Today(R.string.main_tab_today, R.drawable.ic_tab_today),
+    Alarms(R.string.main_tab_alarms, R.drawable.ic_tab_alarms),
+    Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla),
+}
 
 @Composable
 fun MainScreen(
@@ -315,6 +322,14 @@ fun MainScreen(
     }
 
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
+    val mainDestinations = remember { MainDestination.values().toList() }
+    var selectedDestinationIndex by rememberSaveable { mutableIntStateOf(0) }
+    val currentDestinationIndex = if (selectedDestinationIndex in mainDestinations.indices) {
+        selectedDestinationIndex
+    } else {
+        0
+    }
+    val selectedDestination = mainDestinations[currentDestinationIndex]
 
     fun requestFullScreenIntentIfNeeded() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
@@ -343,37 +358,33 @@ fun MainScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(BgCream)
+                .padding(bottom = 88.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-        // Header
-        IslamicHeader()
+            IslamicHeader()
 
-        // Islamic border strip
-        Image(
-            painter = painterResource(R.drawable.islamic_border),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(6.dp),
-            contentScale = ContentScale.FillBounds
-        )
+            Image(
+                painter = painterResource(R.drawable.islamic_border),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(6.dp),
+                contentScale = ContentScale.FillBounds
+            )
 
-        // Content
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+            ) {
                 Spacer(Modifier.height(12.dp))
 
-                // Status card
                 StatusCard(
                     isSilent = isSilent,
                     isAppSilenced = autoSilenceActive || manualSilenceActive,
                     hasDnd = hasDnd
                 )
 
-                // Awake check banner — shown when the service is running
                 AnimatedVisibility(
                     visible = awakeCheckRunning,
                     enter = expandVertically(),
@@ -386,7 +397,6 @@ fun MainScreen(
                     )
                 }
 
-                // Permission banner
                 AnimatedVisibility(
                     visible = !hasDnd || !hasAlarm || !hasPhoneState,
                     enter = expandVertically(),
@@ -403,7 +413,6 @@ fun MainScreen(
                     )
                 }
 
-                // Battery banner
                 AnimatedVisibility(
                     visible = !hasBattery,
                     enter = expandVertically(),
@@ -412,167 +421,177 @@ fun MainScreen(
                     BatteryBanner(context = context)
                 }
 
-                // Location picker
-                LocationPickerCard(
-                    delegationId = delegationId,
-                    onDelegationSelected = { delegation ->
-                        delegationId = delegation.id
-                        PrefsManager.setDelegationId(context, delegation.id)
-                        rescheduleIfEnabled()
-                    },
-                    onOutsideTunisia = {
-                        autoSilenceEnabled = false
-                        PrefsManager.setEnabled(context, false)
-                    }
-                )
-
-                // Prayer settings
-                PrayerSettingsCard(
-                    delegationId = delegationId,
-                    activity = activity,
-                    onConfigChanged = { rescheduleIfEnabled() }
-                )
-
-                WakeAlarmCard(
-                    delegationId = delegationId,
-                    activity = activity,
-                    onConfigChanged = { rescheduleIfEnabled() },
-                    onEditAlarm = { config -> editingWakeAlarm = config },
-                )
-
-                // Auto-silence toggle
-                AutoSilenceCard(
-                    enabled = autoSilenceEnabled,
-                    onToggle = { enabled ->
-                        autoSilenceEnabled = enabled
-                        PrefsManager.setEnabled(context, enabled)
-                        if (enabled) {
-                            if (hasDnd && hasAlarm) {
-                                ensureCallTrackingPermission()
-                                SilenceScheduler.scheduleAll(context)
-                                SilenceVerifyWorker.enqueue(context)
+                when (selectedDestination) {
+                    MainDestination.Today -> {
+                        LocationPickerCard(
+                            delegationId = delegationId,
+                            onDelegationSelected = { delegation ->
+                                delegationId = delegation.id
+                                PrefsManager.setDelegationId(context, delegation.id)
+                                rescheduleIfEnabled()
+                            },
+                            onOutsideTunisia = {
+                                autoSilenceEnabled = false
+                                PrefsManager.setEnabled(context, false)
                             }
-                            SilenceGuardService.start(context)
-                            Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
-                        } else {
-                            SilenceScheduler.cancelAll(context)
-                            SilenceVerifyWorker.cancel(context)
-                            SilenceGuardService.stop(context)
-                            Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
-                        }
-                        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-                        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
-                        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
-                    }
-                )
+                        )
 
-                CallEndVibrationCard(
-                    enabled = callEndVibrationEnabled,
-                    onToggle = { enabled ->
-                        callEndVibrationEnabled = enabled
-                        PrefsManager.setCallEndVibrationEnabled(context, enabled)
-                    }
-                )
+                        PrayerSettingsCard(
+                            delegationId = delegationId,
+                            activity = activity,
+                            onConfigChanged = { rescheduleIfEnabled() }
+                        )
 
-                AutoLocationCard(
-                    enabled = autoLocationEnabled,
-                    onToggle = { enabled ->
-                        autoLocationEnabled = enabled
-                        PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
-                    }
-                )
+                        AutoSilenceCard(
+                            enabled = autoSilenceEnabled,
+                            onToggle = { enabled ->
+                                autoSilenceEnabled = enabled
+                                PrefsManager.setEnabled(context, enabled)
+                                if (enabled) {
+                                    if (hasDnd && hasAlarm) {
+                                        ensureCallTrackingPermission()
+                                        SilenceScheduler.scheduleAll(context)
+                                        SilenceVerifyWorker.enqueue(context)
+                                    }
+                                    SilenceGuardService.start(context)
+                                    Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
+                                } else {
+                                    SilenceScheduler.cancelAll(context)
+                                    SilenceVerifyWorker.cancel(context)
+                                    SilenceGuardService.stop(context)
+                                    Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
+                                }
+                                isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+                                autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
+                                manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+                            }
+                        )
 
-                // Ramadan indicator
-                if (RamadanDetector.isRamadan()) {
-                    RamadanBadge()
-                }
+                        CallEndVibrationCard(
+                            enabled = callEndVibrationEnabled,
+                            onToggle = { enabled ->
+                                callEndVibrationEnabled = enabled
+                                PrefsManager.setCallEndVibrationEnabled(context, enabled)
+                            }
+                        )
 
-                // Manual toggle button
-                ManualSilenceButton(
-                    hasDnd = hasDnd,
-                    manualUsesDuration = manualUsesDuration,
-                    manualDurationHours = manualDurationHours,
-                    manualDurationMinutes = manualDurationMinutes,
-                    manualSilenceActive = manualSilenceActive,
-                    autoSilenceActive = autoSilenceActive,
-                    manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
-                    onUseDurationChange = { usesDuration ->
-                        manualUsesDuration = usesDuration
-                        PrefsManager.setManualSilenceUsesDuration(context, usesDuration)
-                    },
-                    onDurationHoursChange = { value ->
-                        manualDurationHours = value
-                        val totalMinutes = (value.toIntOrNull() ?: 0) * 60 + (manualDurationMinutes.toIntOrNull() ?: 0)
-                        if (totalMinutes > 0) {
-                            PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                        AutoLocationCard(
+                            enabled = autoLocationEnabled,
+                            onToggle = { enabled ->
+                                autoLocationEnabled = enabled
+                                PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
+                            }
+                        )
+
+                        if (RamadanDetector.isRamadan()) {
+                            RamadanBadge()
                         }
-                    },
-                    onDurationMinutesChange = { value ->
-                        manualDurationMinutes = value
-                        val totalMinutes = (manualDurationHours.toIntOrNull() ?: 0) * 60 + (value.toIntOrNull() ?: 0)
-                        if (totalMinutes > 0) {
-                            PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
-                        }
-                    },
-                    onClick = {
-                        if (!notificationManager.isNotificationPolicyAccessGranted) {
-                            Toast.makeText(context, context.getString(R.string.toast_dnd_permission), Toast.LENGTH_SHORT).show()
-                            return@ManualSilenceButton
-                        }
-                        if (manualSilenceActive || autoSilenceActive) {
-                            if (manualSilenceActive) {
-                                SilenceModeController.setManualNormal(context)
-                            } else {
-                                SilenceModeController.disableAutoSilence(context)
-                                // Remember that the user dismissed auto-silence so
-                                // rescheduleIfEnabled() / scheduleAll() won't re-enable
-                                // it while we're still inside the same prayer's window.
-                                val dismissedPrayer = SilenceScheduler.currentSilenceWindowPrayer(context)
-                                if (dismissedPrayer != null) {
-                                    PrefsManager.setAutoSilenceDismissed(
-                                        context, System.currentTimeMillis(), dismissedPrayer
+
+                        ManualSilenceButton(
+                            hasDnd = hasDnd,
+                            manualUsesDuration = manualUsesDuration,
+                            manualDurationHours = manualDurationHours,
+                            manualDurationMinutes = manualDurationMinutes,
+                            manualSilenceActive = manualSilenceActive,
+                            autoSilenceActive = autoSilenceActive,
+                            manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
+                            onUseDurationChange = { usesDuration ->
+                                manualUsesDuration = usesDuration
+                                PrefsManager.setManualSilenceUsesDuration(context, usesDuration)
+                            },
+                            onDurationHoursChange = { value ->
+                                manualDurationHours = value
+                                val totalMinutes = (value.toIntOrNull() ?: 0) * 60 + (manualDurationMinutes.toIntOrNull() ?: 0)
+                                if (totalMinutes > 0) {
+                                    PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                                }
+                            },
+                            onDurationMinutesChange = { value ->
+                                manualDurationMinutes = value
+                                val totalMinutes = (manualDurationHours.toIntOrNull() ?: 0) * 60 + (value.toIntOrNull() ?: 0)
+                                if (totalMinutes > 0) {
+                                    PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                                }
+                            },
+                            onClick = {
+                                if (!notificationManager.isNotificationPolicyAccessGranted) {
+                                    Toast.makeText(context, context.getString(R.string.toast_dnd_permission), Toast.LENGTH_SHORT).show()
+                                    return@ManualSilenceButton
+                                }
+                                if (manualSilenceActive || autoSilenceActive) {
+                                    if (manualSilenceActive) {
+                                        SilenceModeController.setManualNormal(context)
+                                    } else {
+                                        SilenceModeController.disableAutoSilence(context)
+                                        val dismissedPrayer = SilenceScheduler.currentSilenceWindowPrayer(context)
+                                        if (dismissedPrayer != null) {
+                                            PrefsManager.setAutoSilenceDismissed(
+                                                context, System.currentTimeMillis(), dismissedPrayer
+                                            )
+                                        }
+                                    }
+                                    SilenceModeController.notifyIfMissedCallDuringSilence(context)
+                                    isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+                                    autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
+                                    manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+                                    manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
+                                    Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
+                                } else {
+                                    val totalMinutes = resolveManualTotalMinutes(
+                                        manualDurationHours, manualDurationMinutes,
+                                        PrefsManager.getManualSilenceDurationMinutes(context)
                                     )
+                                    if (manualUsesDuration && totalMinutes <= 0) {
+                                        Toast.makeText(context, context.getString(R.string.error_manual_duration_required), Toast.LENGTH_SHORT).show()
+                                        return@ManualSilenceButton
+                                    }
+
+                                    ensureCallTrackingPermission()
+                                    SilenceModeController.setManualSilent(context)
+                                    if (manualUsesDuration) {
+                                        manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, totalMinutes)
+                                        Toast.makeText(
+                                            context,
+                                            context.getString(R.string.toast_silent_enabled_timed, formatDurationText(totalMinutes)),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    } else {
+                                        ManualSilenceScheduler.cancel(context)
+                                        manualSilenceEndsAtMillis = -1L
+                                        Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
+                                    }
+                                    isSilent = true
+                                    manualSilenceActive = PrefsManager.isManualSilenceActive(context)
                                 }
                             }
-                            SilenceModeController.notifyIfMissedCallDuringSilence(context)
-                            isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-                            autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
-                            manualSilenceActive = PrefsManager.isManualSilenceActive(context)
-                            manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
-                            Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
-                        } else {
-                            val totalMinutes = resolveManualTotalMinutes(
-                                manualDurationHours, manualDurationMinutes,
-                                PrefsManager.getManualSilenceDurationMinutes(context)
-                            )
-                            if (manualUsesDuration && totalMinutes <= 0) {
-                                Toast.makeText(context, context.getString(R.string.error_manual_duration_required), Toast.LENGTH_SHORT).show()
-                                return@ManualSilenceButton
-                            }
+                        )
 
-                            ensureCallTrackingPermission()
-                            SilenceModeController.setManualSilent(context)
-                            if (manualUsesDuration) {
-                                manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, totalMinutes)
-                                Toast.makeText(
-                                    context,
-                                    context.getString(R.string.toast_silent_enabled_timed, formatDurationText(totalMinutes)),
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                ManualSilenceScheduler.cancel(context)
-                                manualSilenceEndsAtMillis = -1L
-                                Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
-                            }
-                            isSilent = true
-                            manualSilenceActive = PrefsManager.isManualSilenceActive(context)
-                        }
+                        Text(
+                            text = stringResource(R.string.info_text),
+                            fontSize = 12.sp,
+                            color = TextMuted,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .testTag(TestTags.INFO_TEXT)
+                                .padding(top = 12.dp)
+                        )
                     }
-                )
 
-                QiblaCard()
+                    MainDestination.Alarms -> {
+                        WakeAlarmCard(
+                            delegationId = delegationId,
+                            activity = activity,
+                            onConfigChanged = { rescheduleIfEnabled() },
+                            onEditAlarm = { config -> editingWakeAlarm = config },
+                        )
+                    }
 
-                // Bottom border
+                    MainDestination.Qibla -> {
+                        QiblaCard()
+                    }
+                }
+
                 Image(
                     painter = painterResource(R.drawable.islamic_border),
                     contentDescription = null,
@@ -582,20 +601,63 @@ fun MainScreen(
                         .height(6.dp),
                     contentScale = ContentScale.FillBounds
                 )
-
-                // Info text
-                Text(
-                    text = stringResource(R.string.info_text),
-                    fontSize = 12.sp,
-                    color = TextMuted,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .testTag(TestTags.INFO_TEXT)
-                        .padding(top = 12.dp, bottom = 16.dp)
-                )
             }
         }
+
+        NavigationBar(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .navigationBarsPadding(),
+            containerColor = Color.White,
+            tonalElevation = 8.dp
+        ) {
+            mainDestinations.forEachIndexed { index, destination ->
+                val selected = currentDestinationIndex == index
+                val label = stringResource(destination.labelRes)
+                val tabBackground by animateColorAsState(
+                    targetValue = if (selected) GreenPrimary.copy(alpha = 0.12f) else Color.Transparent,
+                    label = "bottomTabBackground"
+                )
+                val tabContentColor by animateColorAsState(
+                    targetValue = if (selected) GreenPrimaryDark else TextMuted,
+                    label = "bottomTabContent"
+                )
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(horizontal = 6.dp, vertical = 8.dp)
+                        .height(56.dp)
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(tabBackground)
+                        .clickable { selectedDestinationIndex = index },
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        painter = painterResource(destination.iconRes),
+                        contentDescription = label,
+                        tint = tabContentColor,
+                        modifier = Modifier.size(22.dp)
+                    )
+
+                    Spacer(Modifier.height(3.dp))
+
+                    Text(
+                        text = label,
+                        fontSize = 11.sp,
+                        fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
+                        color = tabContentColor,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 2.dp)
+                    )
+                }
+            }
+        }
+
         // Full-screen wake alarm editor overlay
         editingWakeAlarm?.let { wakeAlarm ->
             val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
