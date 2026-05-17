@@ -2,6 +2,8 @@ node_modules/
 data
 mawaqit-csv
 .DS_Store
+.env.local
+.env.*.local
 
 # Android
 *.jks

@@ -107,11 +107,11 @@ Fetched data is cached in app preferences under `ramadan_override_json`, so user
 The repository includes a GitHub Actions workflow that can prepare these JSON corrections automatically:
 
 ```text
-.github/workflows/update-ramadan-aid-overrides.yml
+.github/workflows/check-islamic-dates.yml
 scripts/detect_tunisian_lunar_dates.py
 ```
 
-The workflow runs daily, but the script exits without doing network work unless the current approximate Hijri date is close to one of the announcement windows:
+The workflow runs several evening checks during the relevant announcement months, but the script exits without doing network work unless the current approximate Hijri date is close to one of the announcement windows:
 
 - Ramadan start: late Shaaban through the first days of Ramadan.
 - Aid el-Fitr: late Ramadan through the first days of Shawwal.
@@ -141,7 +141,7 @@ For `meteo.tn`, the runner also fetches the official crescent visibility pages d
 
 The script updates `docs/ramadan-override-{hijriYear}.json` only when validation passes:
 
-- The model reports `high` confidence.
+- The detector reports `high` confidence.
 - The selected Gregorian date is close to the expected Hijri event date.
 - The claim is an announced official decision, not a prediction.
 - Official `meteo.tn` crescent visibility reports can be accepted as official astronomy evidence when they clearly imply the date.
