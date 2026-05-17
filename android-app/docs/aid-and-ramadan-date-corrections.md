@@ -102,6 +102,57 @@ The app does not poll all year. It starts polling only near dates where an offic
 
 Fetched data is cached in app preferences under `ramadan_override_json`, so users keep the last successful correction even if the next launch is offline.
 
+## Automated Detection Runner
+
+The repository includes a GitHub Actions workflow that can prepare these JSON corrections automatically:
+
+```text
+.github/workflows/update-ramadan-aid-overrides.yml
+scripts/detect_tunisian_lunar_dates.py
+```
+
+The workflow runs daily, but the script exits without doing network work unless the current approximate Hijri date is close to one of the announcement windows:
+
+- Ramadan start: late Shaaban through the first days of Ramadan.
+- Aid el-Fitr: late Ramadan through the first days of Shawwal.
+- Aid el-Adha: late Dhul Qidah through the first days of Dhul Hijja.
+
+The approximate Hijri date is only a polling and validation-window helper. It is not an official source and must not be used to decide Ramadan or Aid dates by itself.
+
+It can also be started manually from GitHub Actions with `workflow_dispatch`, choosing `auto`, `all`, `ramadan_start`, `eid_fitr`, or `eid_adha`. A manual run can pass a `today` value in `YYYY-MM-DD` format for testing a future window.
+
+For older historical checks, the script supports `--use-gdelt` as an extra fallback source search. It is disabled by default because normal Google News and Bing News RSS queries are less noisy and avoid GDELT rate-limit failures.
+
+The DeepSeek API key must be stored in GitHub Actions secrets as:
+
+```text
+DEEP
+```
+
+For local testing, the script reads `DEEP` from the shell environment first. If it is not set, it reads an ignored local `.env.local` file containing `DEEP=...`. This file is for developer machines only and is not used by the GitHub runner.
+
+The script treats `meteo.tn` as the primary source for crescent visibility. If direct `meteo.tn` evidence is not enough, it falls back to generic Google News and Bing News RSS searches using Arabic and French Tunisia-focused announcement terms. The fallback is intentionally search-engine based instead of being scoped to a fixed list of news sites.
+
+Discovered sources are still classified by trust tier before validation. Official or semi-official domains, such as Dar al-Ifta Tunisia, the Ministry of Religious Affairs, `meteo.tn`, and TAP, are preferred. Trusted Tunisian news domains discovered through search can support an official announcement, but generic search results do not become authoritative just because they were found.
+
+When direct `meteo.tn` evidence clearly derives the date, the runner can validate it without asking DeepSeek. Otherwise, the runner sends only titles, snippets, source names, and URLs to DeepSeek, and asks for strict JSON extraction. DeepSeek is not treated as the source of truth; it only extracts claims from the gathered source material.
+
+For `meteo.tn`, the runner also fetches the official crescent visibility pages directly instead of relying only on search snippets. These pages are treated as primary official astronomy evidence. For Ramadan, if the INM report says the crescent becomes visible after sunset on a given Gregorian date, the runner derives the first fasting day as the following Gregorian day. For Aid el-Adha, the runner derives 1 Dhul Hijja as the day after official Dhul Hijja crescent visibility, then derives Aid el-Adha as 10 Dhul Hijja. Page publication dates and imsakiyya publication dates are not treated as event dates unless the page explicitly says they are the relevant Hijri day.
+
+The script updates `docs/ramadan-override-{hijriYear}.json` only when validation passes:
+
+- The model reports `high` confidence.
+- The selected Gregorian date is close to the expected Hijri event date.
+- The claim is an announced official decision, not a prediction.
+- Official `meteo.tn` crescent visibility reports can be accepted as official astronomy evidence when they clearly imply the date.
+- Evidence comes from an official source, or from at least two distinct trusted Tunisian news sources that report the same official announcement.
+- No conflicting announced dates are found.
+- An existing non-null JSON date is never overwritten automatically.
+
+When a valid update is detected, the workflow opens or updates a pull request instead of pushing to the default branch. The PR body includes the selected date, confidence, validation result, and evidence summary. A human should still review the sources before merging.
+
+No DeepSeek call happens on user devices. The Android app only fetches the final small JSON file from GitHub Pages.
+
 ## Validation Checklist
 
 After changing an override file:

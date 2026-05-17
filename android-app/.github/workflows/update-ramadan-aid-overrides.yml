@@ -1,0 +1,95 @@
+name: Update Ramadan and Aid Overrides
+
+on:
+  schedule:
+    - cron: "23 6 * * *"
+  workflow_dispatch:
+    inputs:
+      event:
+        description: "Event to check"
+        required: false
+        default: "auto"
+        type: choice
+        options:
+          - auto
+          - all
+          - ramadan_start
+          - eid_fitr
+          - eid_adha
+      today:
+        description: "Optional YYYY-MM-DD date override for manual testing"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ramadan-aid-overrides
+  cancel-in-progress: false
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Detect Tunisian Ramadan/Aid dates
+        env:
+          DEEP: ${{ secrets.DEEP }}
+          EVENT_INPUT: ${{ github.event.inputs.event || 'auto' }}
+          TODAY_INPUT: ${{ github.event.inputs.today || '' }}
+        run: |
+          args=(--event "$EVENT_INPUT" --pr-body .github/ramadan-aid-detection-pr.md)
+          if [[ -n "$TODAY_INPUT" ]]; then
+            args+=(--today "$TODAY_INPUT")
+          fi
+          python3 scripts/detect_tunisian_lunar_dates.py "${args[@]}"
+
+      - name: Check for override changes
+        id: diff
+        run: |
+          if [[ -n "$(git status --porcelain -- docs)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create or update pull request
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH_NAME: automation/ramadan-aid-overrides
+          BASE_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout -B "$BRANCH_NAME"
+          git add docs/ramadan-override-*.json
+          git commit -m "Update Tunisian Ramadan/Aid override JSON"
+          git push --force-with-lease origin "$BRANCH_NAME"
+
+          if gh pr view "$BRANCH_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh pr edit "$BRANCH_NAME" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "Update Tunisian Ramadan/Aid override JSON" \
+              --body-file .github/ramadan-aid-detection-pr.md
+          else
+            gh pr create \
+              --repo "$GITHUB_REPOSITORY" \
+              --base "$BASE_BRANCH" \
+              --head "$BRANCH_NAME" \
+              --title "Update Tunisian Ramadan/Aid override JSON" \
+              --body-file .github/ramadan-aid-detection-pr.md
+          fi
