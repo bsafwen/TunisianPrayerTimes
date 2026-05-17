@@ -7,6 +7,8 @@ import android.media.AudioManager
 import java.time.chrono.HijrahDate
 import java.time.temporal.ChronoField
 
+enum class ManualSilenceMode { UNTIL_STOPPED, DURATION, UNTIL_PRAYER }
+
 object PrefsManager {
     private const val PREFS_NAME = "prayer_silence_prefs"
     private const val KEY_DELEGATION_ID = "delegation_id"
@@ -18,9 +20,11 @@ object PrefsManager {
     private const val KEY_MANUAL_SILENCE_ACTIVE = "manual_silence_active"
     private const val KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE = "manual_silence_previous_ringer_mode"
     private const val KEY_MANUAL_SILENCE_PREVIOUS_INTERRUPTION_FILTER = "manual_silence_previous_interruption_filter"
+    private const val KEY_MANUAL_SILENCE_MODE = "manual_silence_mode"
     private const val KEY_MANUAL_SILENCE_USES_DURATION = "manual_silence_uses_duration"
     private const val KEY_MANUAL_SILENCE_DURATION_MINUTES = "manual_silence_duration_minutes"
     private const val KEY_MANUAL_SILENCE_ENDS_AT_MILLIS = "manual_silence_ends_at_millis"
+    private const val KEY_MANUAL_SILENCE_TARGET_PRAYER = "manual_silence_target_prayer"
     private const val KEY_CALL_RECEIVED_DURING_SILENCE = "call_received_during_silence"
     private const val KEY_CALL_END_VIBRATION_ENABLED = "call_end_vibration_enabled"
     private const val KEY_DISABLED_OUTSIDE_TUNISIA = "disabled_outside_tunisia"
@@ -144,11 +148,51 @@ object PrefsManager {
     }
 
     fun usesManualSilenceDuration(context: Context): Boolean {
-        return prefs(context).getBoolean(KEY_MANUAL_SILENCE_USES_DURATION, false)
+        return getManualSilenceMode(context) == ManualSilenceMode.DURATION
     }
 
     fun setManualSilenceUsesDuration(context: Context, usesDuration: Boolean) {
-        prefs(context).edit().putBoolean(KEY_MANUAL_SILENCE_USES_DURATION, usesDuration).apply()
+        setManualSilenceMode(
+            context,
+            if (usesDuration) ManualSilenceMode.DURATION else ManualSilenceMode.UNTIL_STOPPED
+        )
+    }
+
+    fun getManualSilenceMode(context: Context): ManualSilenceMode {
+        val storedMode = prefs(context).getString(KEY_MANUAL_SILENCE_MODE, null)
+            ?.let { raw -> runCatching { ManualSilenceMode.valueOf(raw) }.getOrNull() }
+        if (storedMode != null) return storedMode
+
+        return if (prefs(context).getBoolean(KEY_MANUAL_SILENCE_USES_DURATION, false)) {
+            ManualSilenceMode.DURATION
+        } else {
+            ManualSilenceMode.UNTIL_STOPPED
+        }
+    }
+
+    fun setManualSilenceMode(context: Context, mode: ManualSilenceMode) {
+        prefs(context).edit()
+            .putString(KEY_MANUAL_SILENCE_MODE, mode.name)
+            .putBoolean(KEY_MANUAL_SILENCE_USES_DURATION, mode == ManualSilenceMode.DURATION)
+            .apply()
+    }
+
+    fun getManualSilenceTargetPrayer(context: Context): Prayer {
+        val storedPrayer = prefs(context).getString(KEY_MANUAL_SILENCE_TARGET_PRAYER, null)
+            ?.let { raw -> runCatching { Prayer.valueOf(raw) }.getOrNull() }
+            ?: Prayer.FAJR
+
+        return if (storedPrayer in listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)) {
+            storedPrayer
+        } else {
+            Prayer.FAJR
+        }
+    }
+
+    fun setManualSilenceTargetPrayer(context: Context, prayer: Prayer) {
+        prefs(context).edit()
+            .putString(KEY_MANUAL_SILENCE_TARGET_PRAYER, prayer.name)
+            .apply()
     }
 
     fun getManualSilenceDurationMinutes(context: Context): Int {

@@ -12,6 +12,7 @@ import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.RingtoneManager
+import android.media.VolumeShaper
 import android.net.Uri
 import android.os.Build
 import android.os.IBinder
@@ -36,6 +37,7 @@ class WakePlaybackService : Service() {
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
     private var volumeRampJob: Job? = null
+    private var volumeShaper: VolumeShaper? = null
     private var savedAlarmVolume: Int? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
@@ -260,7 +262,18 @@ class WakePlaybackService : Service() {
             player.setAudioAttributes(alarmAudioAttributes())
             player.isLooping = true
             player.prepare()
-            val initialVolume = if (progressiveVolume) {
+            val nativeVolumeShaper = if (progressiveVolume) {
+                createProgressiveVolumeShaper(player)
+            } else {
+                null
+            }
+            val nativeRampStarted = if (nativeVolumeShaper != null) {
+                player.setVolume(1f, 1f)
+                runCatching { nativeVolumeShaper.apply(VolumeShaper.Operation.PLAY) }.isSuccess
+            } else {
+                false
+            }
+            val initialVolume = if (progressiveVolume && !nativeRampStarted) {
                 WakeProgressiveVolumeRamp.ringtoneVolumeAt(0L)
             } else {
                 1f
@@ -268,8 +281,11 @@ class WakePlaybackService : Service() {
             player.setVolume(initialVolume, initialVolume)
             forceSpeakerOutput(player)
             player.start()
-            if (progressiveVolume) {
-                startVolumeRamp { volume ->
+            if (nativeRampStarted) {
+                volumeShaper = nativeVolumeShaper
+            } else if (progressiveVolume) {
+                closeVolumeShaper(nativeVolumeShaper)
+                startFallbackVolumeRamp { volume ->
                     player.setVolume(volume, volume)
                 }
             }
@@ -281,13 +297,18 @@ class WakePlaybackService : Service() {
         }
     }
 
-    private fun startVolumeRamp(onVolumeChanged: (Float) -> Unit) {
+    private fun createProgressiveVolumeShaper(player: MediaPlayer): VolumeShaper? =
+        runCatching {
+            player.createVolumeShaper(WakeProgressiveVolumeRamp.volumeShaperConfiguration())
+        }.getOrNull()
+
+    private fun startFallbackVolumeRamp(onVolumeChanged: (Float) -> Unit) {
         volumeRampJob?.cancel()
         volumeRampJob = serviceScope.launch {
             var elapsedMillis = 0L
             while (isActive && elapsedMillis < WakeProgressiveVolumeRamp.DURATION_MILLIS) {
-                delay(WakeProgressiveVolumeRamp.STEP_INTERVAL_MILLIS)
-                elapsedMillis += WakeProgressiveVolumeRamp.STEP_INTERVAL_MILLIS
+                delay(WakeProgressiveVolumeRamp.FALLBACK_STEP_INTERVAL_MILLIS)
+                elapsedMillis += WakeProgressiveVolumeRamp.FALLBACK_STEP_INTERVAL_MILLIS
                 runCatching {
                     onVolumeChanged(WakeProgressiveVolumeRamp.ringtoneVolumeAt(elapsedMillis))
                 }
@@ -299,6 +320,8 @@ class WakePlaybackService : Service() {
     private fun stopPlayback() {
         volumeRampJob?.cancel()
         volumeRampJob = null
+        closeVolumeShaper(volumeShaper)
+        volumeShaper = null
         restoreAlarmVolume()
         mediaPlayer?.let { player ->
             runCatching {
@@ -311,6 +334,11 @@ class WakePlaybackService : Service() {
         mediaPlayer = null
         vibrator?.cancel()
         vibrator = null
+    }
+
+    private fun closeVolumeShaper(shaper: VolumeShaper?) {
+        if (shaper == null) return
+        runCatching { shaper.close() }
     }
 
     private fun startVibrationOnly() {

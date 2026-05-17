@@ -8,14 +8,20 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerWakeConfig
+import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.PrayerWakeStore
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmConfig
-import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.supportsWakeAlarm
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.booleanOrNull
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 internal val Context.prayerWakeDataStore: DataStore<Preferences> by preferencesDataStore(
     name = "prayer_wake_store",
@@ -34,9 +40,14 @@ internal fun decodePrayerWakeStore(encoded: String?): PrayerWakeStore {
     }
 
     return runCatching {
-        prayerWakeJson.decodeFromString<PrayerWakeStore>(encoded).normalized()
-    }.recoverCatching {
-        prayerWakeJson.decodeFromString<LegacyPrayerWakeStore>(encoded).toCurrentStore().normalized()
+        val element = prayerWakeJson.parseToJsonElement(encoded)
+        val keys = element.jsonObject.keys
+
+        when {
+            "alarms" in keys -> prayerWakeJson.decodeFromJsonElement<PrayerWakeStore>(element).normalized()
+            "configs" in keys -> decodeLegacyPrayerWakeStore(element).normalized()
+            else -> PrayerWakeStore()
+        }
     }.getOrDefault(PrayerWakeStore())
 }
 
@@ -92,45 +103,66 @@ private fun WakeMainAlarmConfig.normalized(): WakeMainAlarmConfig = copy(
 private fun generatedAlarmId(prayer: Prayer, index: Int): String =
     "${prayer.name.lowercase()}_${index + 1}"
 
-@Serializable
-private data class LegacyPrayerWakeStore(
-    val configs: Map<Prayer, LegacyPrayerWakeConfig> = emptyMap(),
-)
+private fun decodeLegacyPrayerWakeStore(element: JsonElement): PrayerWakeStore {
+    val configs = runCatching { element.jsonObject["configs"]?.jsonObject }
+        .getOrNull()
+        ?: return PrayerWakeStore()
 
-@Serializable
-private data class LegacyPrayerWakeConfig(
-    val prayer: Prayer,
-    val enabled: Boolean = false,
-    val mainAlarm: LegacyWakeMainAlarmConfig = LegacyWakeMainAlarmConfig(),
-    val playback: com.tunisianprayertimes.WakePlaybackOptions = com.tunisianprayertimes.WakePlaybackOptions(),
-    val subAlarms: List<com.tunisianprayertimes.PrayerWakeSubAlarm> = emptyList(),
-)
+    val decodedConfigs = configs.entries
+        .mapNotNull { (prayerName, configElement) ->
+            val prayer = runCatching { Prayer.valueOf(prayerName) }.getOrNull()
+                ?: return@mapNotNull null
+            val config = runCatching { decodeLegacyPrayerWakeConfig(configElement) }.getOrNull()
+                ?: return@mapNotNull null
 
-@Serializable
-private data class LegacyWakeMainAlarmConfig(
-    val mode: WakeMainAlarmMode = WakeMainAlarmMode.PRAYER_RELATIVE,
-    val fixedTime: com.tunisianprayertimes.ClockTime = com.tunisianprayertimes.ClockTime(),
-    val prayerOffset: com.tunisianprayertimes.PrayerRelativeOffset = com.tunisianprayertimes.PrayerRelativeOffset(),
-)
-
-private fun LegacyPrayerWakeStore.toCurrentStore(): PrayerWakeStore = PrayerWakeStore(
-    alarms = configs.entries
+            prayer to config
+        }
         .filter { (prayer, _) -> prayer.supportsWakeAlarm() }
         .sortedBy { (prayer, _) ->
             WAKE_SUPPORTED_PRAYERS.indexOf(prayer).takeIf { index -> index >= 0 } ?: Int.MAX_VALUE
         }
-        .mapIndexed { index, (prayer, config) ->
+
+    return PrayerWakeStore(
+        alarms = decodedConfigs.mapIndexed { index, (prayer, config) ->
             PrayerWakeConfig(
                 id = generatedAlarmId(prayer, index),
                 prayer = prayer,
                 enabled = config.enabled,
-                mainAlarm = WakeMainAlarmConfig(
-                    mode = config.mainAlarm.mode,
-                    fixedTime = config.mainAlarm.fixedTime,
-                    prayerOffset = config.mainAlarm.prayerOffset,
-                ),
+                mainAlarm = config.mainAlarm,
                 playback = config.playback,
                 subAlarms = config.subAlarms,
             )
         },
+    )
+}
+
+private data class LegacyPrayerWakeConfigValues(
+    val enabled: Boolean = false,
+    val mainAlarm: WakeMainAlarmConfig = WakeMainAlarmConfig(),
+    val playback: WakePlaybackOptions = WakePlaybackOptions(),
+    val subAlarms: List<PrayerWakeSubAlarm> = emptyList(),
 )
+
+private fun decodeLegacyPrayerWakeConfig(element: JsonElement): LegacyPrayerWakeConfigValues {
+    val config = element.jsonObject
+    val mainAlarm = config["mainAlarm"]?.let { alarmElement ->
+        prayerWakeJson.decodeFromJsonElement<WakeMainAlarmConfig>(alarmElement)
+    } ?: WakeMainAlarmConfig()
+    val playback = config["playback"]?.let { playbackElement ->
+        prayerWakeJson.decodeFromJsonElement<WakePlaybackOptions>(playbackElement)
+    } ?: WakePlaybackOptions()
+    val subAlarms = config["subAlarms"]?.jsonArray
+        ?.mapNotNull { subAlarmElement ->
+            runCatching {
+                prayerWakeJson.decodeFromJsonElement<PrayerWakeSubAlarm>(subAlarmElement)
+            }.getOrNull()
+        }
+        .orEmpty()
+
+    return LegacyPrayerWakeConfigValues(
+        enabled = config["enabled"]?.jsonPrimitive?.booleanOrNull ?: false,
+        mainAlarm = mainAlarm,
+        playback = playback,
+        subAlarms = subAlarms,
+    )
+}
