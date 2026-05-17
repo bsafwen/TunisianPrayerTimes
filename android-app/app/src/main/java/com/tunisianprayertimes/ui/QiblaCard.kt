@@ -69,6 +69,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.tunisianprayertimes.DelegationLocator
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.calculateQiblaBearing
 import com.tunisianprayertimes.normalizeDegrees
 import com.tunisianprayertimes.shortestSignedAngleDegrees
@@ -136,6 +137,12 @@ fun QiblaCard() {
             locating = false
 
             if (location == null) {
+                AnalyticsTracker.qiblaComputeResult(
+                    context = context,
+                    source = "current_location",
+                    result = "location_unavailable",
+                    hasSensorSupport = hasQiblaSensorSupport(context),
+                )
                 Toast.makeText(
                     context,
                     context.getString(R.string.qibla_location_unavailable),
@@ -150,6 +157,12 @@ fun QiblaCard() {
                 altitudeMeters = if (location.hasAltitude()) location.altitude else 0.0,
                 accuracyMeters = if (location.hasAccuracy()) location.accuracy else null,
             )
+            AnalyticsTracker.qiblaComputeResult(
+                context = context,
+                source = "current_location",
+                result = "success",
+                hasSensorSupport = hasQiblaSensorSupport(context),
+            )
         }
     }
 
@@ -159,8 +172,26 @@ fun QiblaCard() {
         val granted = grants[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
             grants[Manifest.permission.ACCESS_COARSE_LOCATION] == true
         if (granted) {
+            AnalyticsTracker.permissionStepResult(
+                context = context,
+                permissionType = "location",
+                result = "granted",
+                entryPoint = "qibla",
+            )
             detectCurrentLocation()
         } else {
+            AnalyticsTracker.permissionStepResult(
+                context = context,
+                permissionType = "location",
+                result = "denied",
+                entryPoint = "qibla",
+            )
+            AnalyticsTracker.qiblaComputeResult(
+                context = context,
+                source = "current_location",
+                result = "permission_denied",
+                hasSensorSupport = hasQiblaSensorSupport(context),
+            )
             Toast.makeText(
                 context,
                 context.getString(R.string.location_permission_denied),
@@ -391,6 +422,12 @@ fun QiblaCard() {
                     if (DelegationLocator.hasLocationPermission(context)) {
                         detectCurrentLocation()
                     } else {
+                        AnalyticsTracker.permissionStepResult(
+                            context = context,
+                            permissionType = "location",
+                            result = "request_opened",
+                            entryPoint = "qibla",
+                        )
                         locationPermissionLauncher.launch(DelegationLocator.requestedPermissions)
                     }
                 },
@@ -639,6 +676,15 @@ private fun compassNeedsCalibration(compassState: CompassState): Boolean {
     if (!compassState.hasCompass || compassState.headingDegrees == null) return false
     return compassState.accuracy != SensorManager.SENSOR_STATUS_ACCURACY_HIGH ||
         compassState.hasAbnormalMagneticField
+}
+
+private fun hasQiblaSensorSupport(context: Context): Boolean {
+    val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    val hasMagneticCompass = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null &&
+        sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null
+    val hasRotationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR) != null ||
+        sensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR) != null
+    return hasMagneticCompass || hasRotationSensor
 }
 
 private val CompassState.hasAbnormalMagneticField: Boolean

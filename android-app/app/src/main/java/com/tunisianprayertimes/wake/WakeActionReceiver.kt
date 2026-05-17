@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
+import com.tunisianprayertimes.AnalyticsTracker
 
 const val ACTION_DISMISS_WAKE_ALERT = "com.tunisianprayertimes.action.DISMISS_WAKE_ALERT"
 
@@ -17,6 +18,14 @@ class WakeActionReceiver : BroadcastReceiver() {
         }
 
         context.stopService(Intent(context, WakePlaybackService::class.java))
+        intent.toWakeTriggerPayload()?.let { payload ->
+            AnalyticsTracker.wakeAlarmDismissed(
+                context = context,
+                payload = payload,
+                stopSource = "notification_action",
+                wakeupCheckCompleted = !payload.wakeUpCheckEnabled,
+            )
+        }
 
         val awakeCheckEnabled = intent.getBooleanExtra(EXTRA_AWAKE_CHECK_ENABLED, false)
         val delayMinutes = intent.getIntExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, 7)

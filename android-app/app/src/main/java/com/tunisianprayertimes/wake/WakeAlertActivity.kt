@@ -48,6 +48,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.WakeUpCheckStep
@@ -133,12 +134,20 @@ class WakeAlertActivity : AppCompatActivity() {
             TunisianPrayerTimesTheme {
                 WakeAlertScreen(
                     payload = payload,
-                    onStop = {
+                    onStop = { wakeupCheckCompleted ->
                         android.util.Log.d(
                             "WakeFlow",
                             "Activity.onStopButton payloadEventId=${payload?.eventId} queueCurrent=${queue.current?.eventId}",
                         )
-                        payload?.let { p -> scheduleAwakeCheckIfEnabled(p) }
+                        payload?.let { p ->
+                            AnalyticsTracker.wakeAlarmDismissed(
+                                context = this@WakeAlertActivity,
+                                payload = p,
+                                stopSource = "alert_activity",
+                                wakeupCheckCompleted = wakeupCheckCompleted,
+                            )
+                            scheduleAwakeCheckIfEnabled(p)
+                        }
                         val advanced = advanceToNextPayload()
                         // Ask the service to refresh notification + ringtone
                         // for whatever is now current, or stop itself if the
@@ -282,7 +291,7 @@ class WakeAlertActivity : AppCompatActivity() {
 @Composable
 private fun WakeAlertScreen(
     payload: WakeTriggerPayload?,
-    onStop: () -> Unit,
+    onStop: (Boolean) -> Unit,
 ) {
     val context = LocalContext.current
     val checkEnabled = payload?.wakeUpCheckEnabled == true
@@ -416,7 +425,7 @@ private fun WakeAlertScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Button(
-                        onClick = onStop,
+                        onClick = { onStop(allDone) },
                         enabled = allDone,
                         modifier = Modifier.fillMaxWidth(),
                     ) {

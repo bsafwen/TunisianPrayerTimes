@@ -7,6 +7,7 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
+import com.tunisianprayertimes.AnalyticsTracker
 import java.util.concurrent.TimeUnit
 
 class WakeAlarmVerifyWorker(
@@ -16,13 +17,29 @@ class WakeAlarmVerifyWorker(
 
     override suspend fun doWork(): Result {
         Log.d(TAG, "Verifying wake alarms")
+        val hasWakeAlarms = WakeAlarmScheduler.hasEnabledWakeAlarms(applicationContext)
+        val result = if (hasWakeAlarms) "success" else "disabled"
 
-        return if (WakeAlarmScheduler.hasEnabledWakeAlarms(applicationContext)) {
+        return if (hasWakeAlarms) {
             WakeAlarmScheduler.scheduleAll(applicationContext)
+            AnalyticsTracker.scheduleRefreshResult(
+                context = applicationContext,
+                source = "wake_worker",
+                result = result,
+                silencePrayerCount = AnalyticsTracker.silencePrayerCount(applicationContext),
+                wakeAlarmCount = AnalyticsTracker.enabledWakeAlarmCount(applicationContext),
+            )
             Result.success()
         } else {
             WakeAlarmScheduler.cancelAll(applicationContext)
             cancel(applicationContext)
+            AnalyticsTracker.scheduleRefreshResult(
+                context = applicationContext,
+                source = "wake_worker",
+                result = result,
+                silencePrayerCount = AnalyticsTracker.silencePrayerCount(applicationContext),
+                wakeAlarmCount = 0,
+            )
             Result.success()
         }
     }

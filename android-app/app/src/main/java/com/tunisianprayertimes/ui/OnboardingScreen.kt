@@ -79,6 +79,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
@@ -115,7 +116,15 @@ fun OnboardingScreen(
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
     val phoneStatePermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { refreshTick++ }
+    ) { granted ->
+        AnalyticsTracker.permissionStepResult(
+            context = context,
+            permissionType = "phone_state",
+            result = if (granted) "granted" else "denied",
+            entryPoint = "onboarding",
+        )
+        refreshTick++
+    }
 
     val hasDnd = remember(refreshTick) { notificationManager.isNotificationPolicyAccessGranted }
     val hasAlarm = remember(refreshTick) { hasExactAlarmPerm(context) }
@@ -191,6 +200,12 @@ fun OnboardingScreen(
                     hasBattery = hasBattery,
                     hasPhoneState = hasPhoneState,
                     onRequestPhoneState = {
+                        AnalyticsTracker.permissionStepResult(
+                            context = context,
+                            permissionType = "phone_state",
+                            result = "request_opened",
+                            entryPoint = "onboarding",
+                        )
                         phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
                     },
                     context = context
@@ -687,6 +702,12 @@ private fun PermissionsStep(
             grantLabel = stringResource(R.string.onboarding_perm_grant),
             grantedLabel = stringResource(R.string.onboarding_perm_granted),
             onClick = {
+                AnalyticsTracker.permissionStepResult(
+                    context = context,
+                    permissionType = "dnd",
+                    result = "request_opened",
+                    entryPoint = "onboarding",
+                )
                 context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
             }
         )
@@ -700,6 +721,12 @@ private fun PermissionsStep(
             grantedLabel = stringResource(R.string.onboarding_perm_granted),
             onClick = {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "exact_alarm",
+                        result = "request_opened",
+                        entryPoint = "onboarding",
+                    )
                     context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
                 }
             }
@@ -713,6 +740,12 @@ private fun PermissionsStep(
             grantLabel = stringResource(R.string.onboarding_perm_grant),
             grantedLabel = stringResource(R.string.onboarding_perm_granted),
             onClick = {
+                AnalyticsTracker.permissionStepResult(
+                    context = context,
+                    permissionType = "battery_optimization",
+                    result = "request_opened",
+                    entryPoint = "onboarding",
+                )
                 val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
                 intent.data = Uri.parse("package:${context.packageName}")
                 context.startActivity(intent)

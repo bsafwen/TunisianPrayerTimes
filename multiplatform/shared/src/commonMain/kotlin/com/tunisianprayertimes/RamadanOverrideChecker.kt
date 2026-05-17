@@ -64,6 +64,18 @@ object RamadanOverrideChecker {
         val eidAdhaDate: LocalDate?,
     )
 
+    data class FetchReport(
+        val hijriYear: Int,
+        val result: String,
+        val hasRamadanStart: Boolean,
+        val hasEidFitr: Boolean,
+        val hasEidAdha: Boolean,
+        val cacheUsed: Boolean,
+    )
+
+    @Volatile
+    var analyticsReporter: ((FetchReport) -> Unit)? = null
+
     /**
      * Start periodic polling if we're within 2 days of an event that needs override.
      * Call this on app startup / from periodic workers.
@@ -174,12 +186,33 @@ object RamadanOverrideChecker {
             try {
                 if (conn.responseCode == 200) {
                     val text = BufferedReader(InputStreamReader(conn.inputStream)).readText()
-                    parseOverride(text)
-                } else null
+                    val parsed = parseOverride(text)
+                    reportFetch(
+                        hijriYear = hijriYear,
+                        result = if (parsed != null) "success" else "parse_error",
+                        override = parsed,
+                        cacheUsed = false,
+                    )
+                    parsed
+                } else {
+                    reportFetch(
+                        hijriYear = hijriYear,
+                        result = "http_error",
+                        override = null,
+                        cacheUsed = false,
+                    )
+                    null
+                }
             } finally {
                 conn.disconnect()
             }
         } catch (_: Exception) {
+            reportFetch(
+                hijriYear = hijriYear,
+                result = "network_error",
+                override = null,
+                cacheUsed = false,
+            )
             null
         }
     }
@@ -399,10 +432,37 @@ object RamadanOverrideChecker {
     private fun loadFromPreferences() {
         try {
             val json = Preferences.getRamadanOverrideJson() ?: return
-            cachedOverride = parseOverride(json)
+            val parsed = parseOverride(json)
+            cachedOverride = parsed
+            if (parsed != null) {
+                reportFetch(
+                    hijriYear = parsed.hijriYear,
+                    result = "cache_loaded",
+                    override = parsed,
+                    cacheUsed = true,
+                )
+            }
         } catch (_: Exception) {
             // Ignore corrupt data
         }
+    }
+
+    private fun reportFetch(
+        hijriYear: Int,
+        result: String,
+        override: RamadanOverride?,
+        cacheUsed: Boolean,
+    ) {
+        analyticsReporter?.invoke(
+            FetchReport(
+                hijriYear = override?.hijriYear ?: hijriYear,
+                result = result,
+                hasRamadanStart = override?.ramadanStart != null,
+                hasEidFitr = override?.eidFitrDate != null,
+                hasEidAdha = override?.eidAdhaDate != null,
+                cacheUsed = cacheUsed,
+            ),
+        )
     }
 
     private fun saveToPreferences(override: RamadanOverride) {
