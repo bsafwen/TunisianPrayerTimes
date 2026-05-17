@@ -615,9 +615,9 @@ fun MainScreen(
             mainDestinations.forEachIndexed { index, destination ->
                 val selected = currentDestinationIndex == index
                 val label = stringResource(destination.labelRes)
-                val tabBackground by animateColorAsState(
-                    targetValue = if (selected) GreenPrimary.copy(alpha = 0.12f) else Color.Transparent,
-                    label = "bottomTabBackground"
+                val tabIndicatorColor by animateColorAsState(
+                    targetValue = if (selected) GreenPrimary else Color.Transparent,
+                    label = "bottomTabIndicator"
                 )
                 val tabContentColor by animateColorAsState(
                     targetValue = if (selected) GreenPrimaryDark else TextMuted,
@@ -628,21 +628,30 @@ fun MainScreen(
                     modifier = Modifier
                         .weight(1f)
                         .padding(horizontal = 6.dp, vertical = 8.dp)
-                        .height(56.dp)
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(tabBackground)
+                        .height(54.dp)
+                        .clip(RoundedCornerShape(14.dp))
                         .clickable { selectedDestinationIndex = index },
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
+                    Box(
+                        modifier = Modifier
+                            .width(28.dp)
+                            .height(3.dp)
+                            .clip(RoundedCornerShape(2.dp))
+                            .background(tabIndicatorColor)
+                    )
+
+                    Spacer(Modifier.height(7.dp))
+
                     Icon(
                         painter = painterResource(destination.iconRes),
                         contentDescription = label,
                         tint = tabContentColor,
-                        modifier = Modifier.size(22.dp)
+                        modifier = Modifier.size(19.dp)
                     )
 
-                    Spacer(Modifier.height(3.dp))
+                    Spacer(Modifier.height(4.dp))
 
                     Text(
                         text = label,
