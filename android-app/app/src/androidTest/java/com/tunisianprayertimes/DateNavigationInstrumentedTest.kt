@@ -93,7 +93,7 @@ class DateNavigationInstrumentedTest {
     }
 
     @Test
-    fun navigateAwayAndBack_showsTodayLabel() {
+    fun navigateAwayAndBack_hidesTodayLabel() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
             .performScrollTo()
 
@@ -110,7 +110,6 @@ class DateNavigationInstrumentedTest {
         composeRule.waitForIdle()
 
         composeRule.onNodeWithText("اليوم")
-            .performScrollTo()
-            .assertIsDisplayed()
+            .assertDoesNotExist()
     }
 }
