@@ -49,6 +49,7 @@ class WakeActionReceiver : BroadcastReceiver() {
                     }
                 },
         )
+            WakeAlarmScheduler.resumeSilenceUntilNextAlarm(context)
     }
 
     private fun scheduleAwakeCheck(

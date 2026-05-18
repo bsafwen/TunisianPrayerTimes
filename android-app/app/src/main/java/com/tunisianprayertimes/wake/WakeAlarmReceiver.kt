@@ -6,8 +6,6 @@ import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.AnalyticsTracker
-import com.tunisianprayertimes.PrefsManager
-import com.tunisianprayertimes.nap.NapSilenceController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,10 +20,7 @@ class WakeAlarmReceiver : BroadcastReceiver() {
         val alarmId = wakeAlarmIdFromEventId(payload.eventId)
         if (alarmId != null && WakeAlarmScheduler.isSilencedAlarm(context, alarmId)) {
             Log.d("WakeFlow", "Silenced alarm fired — restoring audio state")
-            if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
-                NapSilenceController.disableNapSilence(context)
-            }
-            WakeAlarmScheduler.clearSilencedAlarmId(context)
+            WakeAlarmScheduler.releaseSilenceForRingingAlarm(context, alarmId)
         }
 
         ContextCompat.startForegroundService(

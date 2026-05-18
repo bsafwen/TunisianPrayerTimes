@@ -58,6 +58,7 @@ class WakePlaybackService : Service() {
             }
             ACTION_STOP_PLAYBACK -> {
                 stopPlayback()
+                WakeAlarmScheduler.resumeSilenceUntilNextAlarm(this)
                 stopForeground(STOP_FOREGROUND_REMOVE)
                 stopSelf()
                 return START_NOT_STICKY
@@ -134,6 +135,7 @@ class WakePlaybackService : Service() {
             currentNotificationId = null
             currentEventId = null
             stopPlayback()
+            WakeAlarmScheduler.resumeSilenceUntilNextAlarm(this)
             stopForeground(STOP_FOREGROUND_REMOVE)
             stopSelf()
             return
