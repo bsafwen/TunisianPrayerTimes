@@ -1914,7 +1914,7 @@ private fun WakeAlarmCard(
 
     alarmPendingDeletion?.let { alarm ->
         WakeAlarmDeleteDialog(
-            alarmName = wakeAlarmPrayerName(alarm.prayer),
+            alarmName = wakeAlarmDisplayName(alarm),
             onDismiss = { alarmPendingDeletion = null },
             onConfirm = {
                 val alarmId = alarm.id
@@ -2734,17 +2734,8 @@ private fun WakeAlarmRow(
     onDeleteRequest: () -> Unit,
 ) {
     val enabled = wakeConfig.enabled
-    val prayerName = when (wakeConfig.prayer) {
-        Prayer.FAJR -> stringResource(R.string.prayer_fajr)
-        Prayer.DHUHR -> stringResource(R.string.prayer_dhuhr)
-        Prayer.ASR -> stringResource(R.string.prayer_asr)
-        Prayer.MAGHRIB -> stringResource(R.string.prayer_maghrib)
-        Prayer.ISHA -> stringResource(R.string.prayer_isha)
-        Prayer.JOMOAA -> stringResource(R.string.prayer_jomoaa)
-        Prayer.AID_FITR -> stringResource(R.string.prayer_aid_fitr)
-        Prayer.AID_ADHA -> stringResource(R.string.prayer_aid_adha)
-    }
-    val summaryText = wakeSummaryText(prayerName, wakeConfig)
+    val alarmDisplayName = wakeAlarmDisplayName(wakeConfig)
+    val summaryText = wakeSummaryText(alarmDisplayName, wakeConfig)
     val wakeCheckChip = stringResource(R.string.wake_alarm_feature_wake_check)
     val vibrationChip = stringResource(R.string.wake_alarm_feature_vibration)
     val progressiveChip = stringResource(R.string.wake_alarm_feature_progressive)
@@ -2789,7 +2780,7 @@ private fun WakeAlarmRow(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(
-                        text = prayerName,
+                        text = alarmDisplayName,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
                         color = if (enabled) GreenPrimaryDark else PrayerNameColor,
@@ -2910,6 +2901,13 @@ private fun wakeSummaryText(
             wakeConfig.subAlarms.size,
         )
     }
+}
+
+@Composable
+private fun wakeAlarmDisplayName(wakeConfig: PrayerWakeConfig): String = when (wakeConfig.mainAlarm.mode) {
+    WakeMainAlarmMode.FROM_NOW -> stringResource(R.string.wake_editor_mode_from_now)
+    WakeMainAlarmMode.FIXED_TIME -> stringResource(R.string.wake_editor_mode_fixed)
+    WakeMainAlarmMode.PRAYER_RELATIVE -> wakeAlarmPrayerName(wakeConfig.prayer)
 }
 
 @Composable
