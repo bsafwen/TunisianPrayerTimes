@@ -2329,20 +2329,8 @@ private fun DateNavigationRow(
                 maxLines = 1,
                 autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp),
             )
-            Spacer(Modifier.width(8.dp))
-            if (isToday) {
-                Text(
-                    text = stringResource(R.string.date_today),
-                    fontSize = 10.sp,
-                    color = Gold,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(50))
-                        .background(Color.White.copy(alpha = 0.58f))
-                        .padding(horizontal = 7.dp, vertical = 2.dp),
-                )
-            } else {
+            if (!isToday) {
+                Spacer(Modifier.width(8.dp))
                 Text(
                     text = stringResource(R.string.date_go_back_today),
                     fontSize = 10.sp,
