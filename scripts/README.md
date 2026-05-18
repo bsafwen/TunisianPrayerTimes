@@ -2,7 +2,7 @@
 
 ## Problem
 
-The prayer times app relies on override JSON files (`docs/ramadan-override-{hijriYear}.json`) for three critical dates each Hijri year:
+The prayer times app relies on official-date JSON files (`data/official-islamic-dates/{hijriYear}.json`) for three critical dates each Hijri year:
 
 | Event | JSON Field | When Announced | Approx. Gregorian (shifts ~11 days/year) |
 |-------|-----------|----------------|------------------------------------------|
@@ -14,7 +14,7 @@ These dates depend on **official moon sighting** by the Tunisian Ministry of Rel
 
 Previously, a human had to watch the news, edit the JSON, and push to GitHub.
 
-### Override JSON Format
+### Official Date JSON Format
 
 ```json
 {
@@ -29,7 +29,8 @@ Previously, a human had to watch the news, edit the JSON, and push to GitHub.
 - All dates are **Gregorian ISO 8601** (not Hijri)
 - `null` means "not yet announced"
 - `lastUpdated` is informational only (not parsed by apps)
-- Files live at `docs/ramadan-override-{hijriYear}.json` and are served via GitHub Pages at `https://bsafwen.github.io/TunisianPrayerTimes/ramadan-override-{hijriYear}.json`
+- Files live at `data/official-islamic-dates/{hijriYear}.json` and are served via GitHub Pages at `https://bsafwen.github.io/TunisianPrayerTimes/data/official-islamic-dates/{hijriYear}.json`
+- Pages also publishes generated `ramadan-override-{hijriYear}.json` compatibility copies for already-released app versions.
 
 ## Solution
 
@@ -38,7 +39,7 @@ A Python script + GitHub Actions workflow that:
 1. **Scrapes** three trusted Tunisian news sources
 2. **Sends** the scraped content to Alibaba's Qwen LLM
 3. **Extracts** only officially confirmed dates (rejects astronomical predictions)
-4. **Updates** the override JSON and auto-commits to GitHub
+4. **Updates** the official-date JSON and auto-commits to GitHub
 
 The apps already poll GitHub Pages hourly during announcement windows, so updates propagate to users within ~1 hour.
 
@@ -76,7 +77,7 @@ The app-side polling is handled by `RamadanOverrideChecker` in `multiplatform/sh
                     │
                     ▼
            ┌──────────────┐
-           │ Update JSON  │  docs/ramadan-override-{year}.json
+           │ Update JSON  │  data/official-islamic-dates/{year}.json
            │ git push     │
            └──────────────┘
                     │
@@ -162,12 +163,12 @@ LLM_MODEL=qwen3:8b
 
 Then uncomment the env lines in `.github/workflows/check-islamic-dates.yml`.
 
-### 3. Prepare Next Year's Override File
+### 3. Prepare Next Year's Official Date File
 
 Before each Hijri year, create a template:
 
 ```bash
-cat > docs/ramadan-override-1449.json << 'EOF'
+cat > data/official-islamic-dates/1449.json << 'EOF'
 {
   "hijriYear": 1449,
   "ramadanStart": null,
@@ -176,8 +177,8 @@ cat > docs/ramadan-override-1449.json << 'EOF'
   "lastUpdated": null
 }
 EOF
-git add docs/ramadan-override-1449.json
-git commit -m "Add override template for 1449H"
+git add data/official-islamic-dates/1449.json
+git commit -m "Add official Islamic date template for 1449H"
 git push
 ```
 
@@ -228,8 +229,8 @@ DASHSCOPE_API_KEY=sk-xxx python3 scripts/check_islamic_dates.py --hijri-year 144
 | LLM API error (DashScope down, quota exceeded) | Script prints warning, no JSON update | Check `DASHSCOPE_API_KEY` validity; next run retries |
 | LLM hallucinates a date | Unlikely due to strict `NOT_FOUND` prompt + date validation, but possible | Review git history; manually revert the JSON if wrong |
 | LLM returns `NOT_FOUND` when date is actually announced | Announcement may not yet appear in scraped content (pages cache) | Next run (2h later) will retry; manual update as fallback |
-| Override JSON already has all dates filled | Script exits immediately: "All dates already set" | Expected — no action needed |
-| Wrong Hijri year auto-detected | Workflow checks all existing override files for null dates | Use `--hijri-year` manual input to force |
+| Official date JSON already has all dates filled | Script exits immediately: "All dates already set" | Expected — no action needed |
+| Wrong Hijri year auto-detected | Workflow checks all existing official-date files for null dates | Use `--hijri-year` manual input to force |
 
 ### Key Limitation
 
@@ -241,4 +242,4 @@ The scraping approach extracts **text from HTML pages** using basic tag strippin
 |------|---------|
 | [`scripts/check_islamic_dates.py`](check_islamic_dates.py) | Scraper + LLM extractor (zero external dependencies) |
 | [`.github/workflows/check-islamic-dates.yml`](../.github/workflows/check-islamic-dates.yml) | GitHub Actions cron workflow |
-| [`docs/ramadan-override-{year}.json`](../docs/) | Override files consumed by the apps |
+| [`data/official-islamic-dates/{year}.json`](../data/official-islamic-dates/) | Official date files consumed by the apps |

@@ -16,10 +16,10 @@ import java.util.concurrent.atomic.AtomicBoolean
 import com.tunisianprayertimes.platform.Preferences
 
 /**
- * Fetches the Ramadan override JSON from GitHub Pages to get the official
- * Ramadan start / Eid dates as announced by the Tunisian Ministry of Religious Affairs.
+ * Fetches the official Islamic date JSON from GitHub Pages to get the official
+ * Ramadan start / Eid dates announced for Tunisia.
  *
- * The file is named ramadan-override-{hijriYear}.json and contains:
+ * The source file is data/official-islamic-dates/{hijriYear}.json and contains:
  * {
  *   "hijriYear": 1448,
  *   "ramadanStart": "2027-02-17",   // Gregorian date, null if not yet announced
@@ -37,6 +37,7 @@ import com.tunisianprayertimes.platform.Preferences
 object RamadanOverrideChecker {
 
     private const val BASE_URL = "https://bsafwen.github.io/TunisianPrayerTimes"
+    private const val OFFICIAL_DATES_PATH = "data/official-islamic-dates"
     private const val CONNECT_TIMEOUT = 10_000
     private const val READ_TIMEOUT = 15_000
     private const val MAX_QUICK_RETRIES = 3
@@ -174,7 +175,7 @@ object RamadanOverrideChecker {
         polling.set(false)
     }
 
-    /** Load the persisted override JSON, if available, without starting network polling. */
+    /** Load the persisted official-date JSON, if available, without starting network polling. */
     fun loadCachedOverrideIfNeeded() {
         if (cachedOverride == null) {
             loadFromPreferences()
@@ -191,7 +192,42 @@ object RamadanOverrideChecker {
     }
 
     fun fetchOverrideForYear(hijriYear: Int): RamadanOverride? {
-        val urlStr = "$BASE_URL/ramadan-override-$hijriYear.json"
+        val primary = fetchOverrideFromUrl(officialDatesUrl(hijriYear))
+        if (primary.override != null) {
+            reportFetch(
+                hijriYear = hijriYear,
+                result = "success",
+                override = primary.override,
+                cacheUsed = false,
+            )
+            return primary.override
+        }
+
+        val legacy = fetchOverrideFromUrl(legacyOverrideUrl(hijriYear))
+        val fallbackOverride = legacy.override
+        reportFetch(
+            hijriYear = hijriYear,
+            result = if (fallbackOverride != null) "success" else legacy.result,
+            override = fallbackOverride,
+            cacheUsed = false,
+        )
+        return fallbackOverride
+    }
+
+    private data class FetchAttempt(
+        val override: RamadanOverride?,
+        val result: String,
+    )
+
+    private fun officialDatesUrl(hijriYear: Int): String = "$BASE_URL/$OFFICIAL_DATES_PATH/$hijriYear.json"
+
+    private fun legacyOverrideUrl(hijriYear: Int): String = "$BASE_URL/ramadan-override-$hijriYear.json"
+
+    internal fun officialDatesUrlForTest(hijriYear: Int): String = officialDatesUrl(hijriYear)
+
+    internal fun legacyOverrideUrlForTest(hijriYear: Int): String = legacyOverrideUrl(hijriYear)
+
+    private fun fetchOverrideFromUrl(urlStr: String): FetchAttempt {
         return try {
             val url = URL(urlStr)
             val conn = url.openConnection() as HttpURLConnection
@@ -202,33 +238,15 @@ object RamadanOverrideChecker {
                 if (conn.responseCode == 200) {
                     val text = BufferedReader(InputStreamReader(conn.inputStream)).readText()
                     val parsed = parseOverride(text)
-                    reportFetch(
-                        hijriYear = hijriYear,
-                        result = if (parsed != null) "success" else "parse_error",
-                        override = parsed,
-                        cacheUsed = false,
-                    )
-                    parsed
+                    FetchAttempt(parsed, if (parsed != null) "success" else "parse_error")
                 } else {
-                    reportFetch(
-                        hijriYear = hijriYear,
-                        result = "http_error",
-                        override = null,
-                        cacheUsed = false,
-                    )
-                    null
+                    FetchAttempt(null, "http_error")
                 }
             } finally {
                 conn.disconnect()
             }
         } catch (_: Exception) {
-            reportFetch(
-                hijriYear = hijriYear,
-                result = "network_error",
-                override = null,
-                cacheUsed = false,
-            )
-            null
+            FetchAttempt(null, "network_error")
         }
     }
 
@@ -298,7 +316,7 @@ object RamadanOverrideChecker {
 
     /**
      * Returns the best-known Eid al-Fitr date:
-     * 1. Explicit eidFitrDate from override JSON
+    * 1. Explicit eidFitrDate from official-date JSON
      * 2. Algorithmic (1 Shawwal) if no override
      */
     fun getEidFitrDate(): LocalDate {
@@ -311,7 +329,7 @@ object RamadanOverrideChecker {
 
     /**
      * Returns the best-known Eid al-Adha date (10 Dhul Hijja):
-     * 1. Explicit eidAdhaDate from override JSON
+    * 1. Explicit eidAdhaDate from official-date JSON
      * 2. Algorithmic (10 Dhul Hijja) + drift from Eid al-Fitr offset
      * 3. Algorithmic (10 Dhul Hijja) if no drift available
      */

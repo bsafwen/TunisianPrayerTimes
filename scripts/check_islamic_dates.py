@@ -39,7 +39,7 @@ from pathlib import Path
 # Configuration
 # ---------------------------------------------------------------------------
 
-OVERRIDE_DIR = Path(__file__).resolve().parent.parent / "docs"
+OFFICIAL_DATES_DIR = Path(__file__).resolve().parent.parent / "data" / "official-islamic-dates"
 
 SOURCES = {
     "ministry": "https://www.affaires-religieuses.tn/public/actualites",
@@ -284,13 +284,13 @@ def extract_date_for_event(event_type: str, hijri_year: int) -> str | None:
 
 
 # ---------------------------------------------------------------------------
-# Override file management
+# Official date file management
 # ---------------------------------------------------------------------------
 
 
 def load_override(hijri_year: int) -> dict:
-    """Load the override JSON for the given Hijri year."""
-    path = OVERRIDE_DIR / f"ramadan-override-{hijri_year}.json"
+    """Load the official date JSON for the given Hijri year."""
+    path = OFFICIAL_DATES_DIR / f"{hijri_year}.json"
     if path.exists():
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -304,13 +304,14 @@ def load_override(hijri_year: int) -> dict:
 
 
 def save_override(data: dict) -> None:
-    """Save the override JSON."""
-    path = OVERRIDE_DIR / f"ramadan-override-{data['hijriYear']}.json"
+    """Save the official date JSON."""
+    path = OFFICIAL_DATES_DIR / f"{data['hijriYear']}.json"
     data["lastUpdated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
-    print(f"\n✅ Updated {path.name}")
+    print(f"\n✅ Updated {path.relative_to(Path(__file__).resolve().parent.parent)}")
 
 
 # ---------------------------------------------------------------------------

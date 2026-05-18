@@ -50,6 +50,18 @@ class PollingDecisionTest {
     // ───────────────────────────────────────────────
 
     @Test
+    fun officialDateUrls_useRenamedDataPath() {
+        assertEquals(
+            "https://bsafwen.github.io/TunisianPrayerTimes/data/official-islamic-dates/1447.json",
+            RamadanOverrideChecker.officialDatesUrlForTest(1447),
+        )
+        assertEquals(
+            "https://bsafwen.github.io/TunisianPrayerTimes/ramadan-override-1447.json",
+            RamadanOverrideChecker.legacyOverrideUrlForTest(1447),
+        )
+    }
+
+    @Test
     fun dateAssumptions_1447() {
         // Verify our Hijri dates are correct before running polling tests
         assertHijri(LocalDate.of(2026, 2, 14), 8, 26) // 26 Sha'ban

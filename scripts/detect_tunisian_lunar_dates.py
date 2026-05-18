@@ -209,13 +209,13 @@ def main() -> int:
                 dry_run=args.dry_run,
             )
             if changed:
-                changed_files.append(repo_root / "docs" / f"ramadan-override-{hijri_year}.json")
+                changed_files.append(official_dates_path(repo_root, hijri_year))
                 if args.dry_run:
-                    report_lines.append("Override JSON would be updated; dry run did not write files.")
+                    report_lines.append("Official date JSON would be updated; dry run did not write files.")
                 else:
-                    report_lines.append("Override JSON was updated.")
+                    report_lines.append("Official date JSON was updated.")
             else:
-                report_lines.append("Override JSON already contains this date; no file change was needed.")
+                report_lines.append("Official date JSON already contains this date; no file change was needed.")
         else:
             report_lines.append("No JSON update was made.")
         report_lines.append("")
@@ -234,7 +234,7 @@ def main() -> int:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Detect official Tunisian Ramadan/Aid dates and update override JSON files.",
+        description="Detect official Tunisian Ramadan/Aid dates and update official-date JSON files.",
     )
     parser.add_argument("--repo-root", default=".")
     parser.add_argument("--today", help="Override today's date, YYYY-MM-DD, for manual runs.")
@@ -245,7 +245,7 @@ def parse_args() -> argparse.Namespace:
         help="Which event to check. 'auto' checks only active polling windows.",
     )
     parser.add_argument("--max-candidates", type=int, default=36)
-    parser.add_argument("--dry-run", action="store_true", help="Do not write override JSON files.")
+    parser.add_argument("--dry-run", action="store_true", help="Do not write official-date JSON files.")
     parser.add_argument("--skip-network", action="store_true", help="Skip source fetches and the DeepSeek call.")
     parser.add_argument("--use-gdelt", action="store_true", help="Use GDELT as an additional historical search fallback.")
     parser.add_argument(
@@ -1146,8 +1146,7 @@ def update_override_file(
     gregorian_date: str,
     dry_run: bool,
 ) -> bool:
-    docs_dir = repo_root / "docs"
-    path = docs_dir / f"ramadan-override-{hijri_year}.json"
+    path = official_dates_path(repo_root, hijri_year)
     if path.exists():
         data = json.loads(path.read_text(encoding="utf-8"))
     else:
@@ -1171,9 +1170,13 @@ def update_override_file(
     data["lastUpdated"] = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     if dry_run:
         return True
-    docs_dir.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return True
+
+
+def official_dates_path(repo_root: Path, hijri_year: int) -> Path:
+    return repo_root / "data" / "official-islamic-dates" / f"{hijri_year}.json"
 
 
 def write_reports(args: argparse.Namespace, report_lines: list[str]) -> None:
