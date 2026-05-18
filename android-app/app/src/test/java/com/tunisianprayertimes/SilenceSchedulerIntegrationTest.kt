@@ -13,6 +13,7 @@ import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowAlarmManager
 import org.robolectric.shadows.ShadowNotificationManager
+import java.time.LocalDate
 import java.util.Calendar
 
 /**
@@ -34,6 +35,42 @@ class SilenceSchedulerIntegrationTest {
         shadowAlarmManager = Shadows.shadowOf(alarmManager)
         context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE)
             .edit().clear().commit()
+        setCachedOverrideForTest(null)
+    }
+
+    private fun setCachedOverrideForTest(override: RamadanOverrideChecker.RamadanOverride?) {
+        val field = RamadanOverrideChecker::class.java.getDeclaredField("cachedOverride")
+        field.isAccessible = true
+        field.set(RamadanOverrideChecker, override)
+    }
+
+    private fun setOfficial1447Override() {
+        setCachedOverrideForTest(
+            RamadanOverrideChecker.RamadanOverride(
+                hijriYear = 1447,
+                ramadanStart = LocalDate.of(2026, 2, 19),
+                eidFitrDate = LocalDate.of(2026, 3, 20),
+                eidAdhaDate = LocalDate.of(2026, 5, 27),
+            )
+        )
+    }
+
+    private fun calendarAt(year: Int, month: Int, day: Int, hour: Int, minute: Int): Calendar {
+        return Calendar.getInstance().apply {
+            set(Calendar.YEAR, year)
+            set(Calendar.MONTH, month)
+            set(Calendar.DAY_OF_MONTH, day)
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+    }
+
+    private fun assertAlarmAt(expected: Calendar, message: String) {
+        val triggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
+        assertTrue("$message, expected=${expected.timeInMillis}, alarms=$triggerTimes",
+            triggerTimes.contains(expected.timeInMillis))
     }
 
     @Test
@@ -237,6 +274,57 @@ class SilenceSchedulerIntegrationTest {
         // At minimum the midnight reschedule alarm is always set; future prayer alarms depend on time of day
         val alarmCount = shadowAlarmManager.scheduledAlarms.size
         assertTrue("Should have at least the midnight reschedule alarm, got $alarmCount", alarmCount >= 1)
+    }
+
+    @Test
+    fun eidFitrOverride_schedulesDefaultShurukSilence() {
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 615)
+        setOfficial1447Override()
+
+        val now = calendarAt(2026, Calendar.MARCH, 20, 3, 0)
+        val times = PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 3, 20)!!
+
+        SilenceScheduler.scheduleAllInternal(context, now)
+
+        val expectedSilence = calendarAt(2026, Calendar.MARCH, 20, times.shurukHour, times.shurukMinute)
+        val expectedUnsilence = (expectedSilence.clone() as Calendar).apply { add(Calendar.MINUTE, 60) }
+        assertAlarmAt(expectedSilence, "Aid el-Fitr silence should use Shuruk by default")
+        assertAlarmAt(expectedUnsilence, "Aid el-Fitr unsilence should use the default 60-minute duration")
+    }
+
+    @Test
+    fun eidAdhaOverride_schedulesDefaultShurukSilence() {
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 615)
+        setOfficial1447Override()
+
+        val now = calendarAt(2026, Calendar.MAY, 27, 3, 0)
+        val times = PrayerTimesRepository.loadDayPrayerTimes(context, 615, 2026, 5, 27)!!
+
+        SilenceScheduler.scheduleAllInternal(context, now)
+
+        val expectedSilence = calendarAt(2026, Calendar.MAY, 27, times.shurukHour, times.shurukMinute)
+        val expectedUnsilence = (expectedSilence.clone() as Calendar).apply { add(Calendar.MINUTE, 60) }
+        assertAlarmAt(expectedSilence, "Aid el-Adha silence should use Shuruk by default")
+        assertAlarmAt(expectedUnsilence, "Aid el-Adha unsilence should use the default 60-minute duration")
+    }
+
+    @Test
+    fun eidAdhaOverride_schedulesCustomPrayerTime() {
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, 615)
+        PrefsManager.setAidAdhaTime(context, 7, 15)
+        setOfficial1447Override()
+
+        val now = calendarAt(2026, Calendar.MAY, 27, 3, 0)
+
+        SilenceScheduler.scheduleAllInternal(context, now)
+
+        val expectedSilence = calendarAt(2026, Calendar.MAY, 27, 7, 15)
+        val expectedUnsilence = calendarAt(2026, Calendar.MAY, 27, 8, 15)
+        assertAlarmAt(expectedSilence, "Aid el-Adha silence should use the user's custom time")
+        assertAlarmAt(expectedUnsilence, "Aid el-Adha custom-time unsilence should keep the default 60-minute duration")
     }
 
     // --- Tomorrow's Fajr integration tests ---

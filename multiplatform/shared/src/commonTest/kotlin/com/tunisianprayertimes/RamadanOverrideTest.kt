@@ -28,6 +28,7 @@ class RamadanOverrideTest {
     @AfterTest
     fun cleanup() {
         RamadanOverrideChecker.cachedOverride = null
+        RamadanOverrideChecker.testDateOverride = null
     }
 
     // ---------------------------------------------------------------
@@ -290,6 +291,68 @@ class RamadanOverrideTest {
 
         val muharram = HijrahDate.of(1447, 1, 15)
         assertFalse(RamadanDetector.isRamadan(muharram))
+    }
+
+    @Test
+    fun official1447Override_endToEndRamadanAndBothEids() {
+        RamadanOverrideChecker.testDateOverride = LocalDate.of(2026, 5, 17)
+        val override = RamadanOverrideChecker.parseOverrideForTest(
+            """
+            {
+              "hijriYear": 1447,
+              "ramadanStart": "2026-02-19",
+              "eidFitrDate": "2026-03-20",
+              "eidAdhaDate": "2026-05-27",
+              "lastUpdated": "2026-05-17T19:53:03Z"
+            }
+            """.trimIndent()
+        )!!
+        RamadanOverrideChecker.cachedOverride = override
+
+        assertEquals(LocalDate.of(2026, 2, 19), override.ramadanStart)
+        assertEquals(LocalDate.of(2026, 3, 20), RamadanOverrideChecker.getEidFitrDate())
+        assertEquals(LocalDate.of(2026, 5, 27), RamadanOverrideChecker.getEidAdhaDate())
+        assertTrue(RamadanOverrideChecker.isEidFitr(LocalDate.of(2026, 3, 20)))
+        assertTrue(RamadanOverrideChecker.isEidAdha(LocalDate.of(2026, 5, 27)))
+
+        assertTrue(RamadanDetector.isRamadan(HijrahDate.from(LocalDate.of(2026, 2, 18))))
+        assertTrue(RamadanDetector.isRamadan(HijrahDate.from(LocalDate.of(2026, 2, 19))))
+        assertTrue(RamadanDetector.isRamadan(HijrahDate.from(LocalDate.of(2026, 3, 19))))
+        assertTrue(RamadanDetector.isRamadan(HijrahDate.from(LocalDate.of(2026, 3, 20))))
+        assertFalse(RamadanDetector.isRamadan(HijrahDate.from(LocalDate.of(2026, 3, 21))))
+
+        assertTrue(RamadanOverrideChecker.shouldShowEidFitrPrayer(
+            date = LocalDate.of(2026, 3, 18),
+            nowHour = 10, nowMinute = 0, dhuhrHour = 12, dhuhrMinute = 30, isToday = true
+        ))
+        assertFalse(RamadanOverrideChecker.shouldShowEidFitrPrayer(
+            date = LocalDate.of(2026, 3, 20),
+            nowHour = 12, nowMinute = 30, dhuhrHour = 12, dhuhrMinute = 30, isToday = true
+        ))
+        assertTrue(RamadanOverrideChecker.shouldShowEidAdhaPrayer(
+            date = LocalDate.of(2026, 5, 25),
+            nowHour = 10, nowMinute = 0, dhuhrHour = 12, dhuhrMinute = 30, isToday = true
+        ))
+        assertFalse(RamadanOverrideChecker.shouldShowEidAdhaPrayer(
+            date = LocalDate.of(2026, 5, 27),
+            nowHour = 12, nowMinute = 30, dhuhrHour = 12, dhuhrMinute = 30, isToday = true
+        ))
+    }
+
+    @Test
+    fun eidDates_ignoreCachedOverrideFromPreviousHijriYear() {
+        RamadanOverrideChecker.testDateOverride = LocalDate.from(HijrahDate.of(1448, 8, 29))
+        RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
+            hijriYear = 1447,
+            ramadanStart = LocalDate.of(2026, 2, 19),
+            eidFitrDate = LocalDate.of(2026, 3, 20),
+            eidAdhaDate = LocalDate.of(2026, 5, 27),
+        )
+
+        assertEquals(LocalDate.from(HijrahDate.of(1448, 10, 1)), RamadanOverrideChecker.getEidFitrDate())
+        assertEquals(LocalDate.from(HijrahDate.of(1448, 12, 10)), RamadanOverrideChecker.getEidAdhaDate())
+        assertFalse(RamadanOverrideChecker.isEidFitr(LocalDate.of(2026, 3, 20)))
+        assertFalse(RamadanOverrideChecker.isEidAdha(LocalDate.of(2026, 5, 27)))
     }
 
     // ---------------------------------------------------------------
