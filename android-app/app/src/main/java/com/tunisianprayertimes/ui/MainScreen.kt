@@ -816,10 +816,7 @@ fun MainScreen(
                         WakeAlarmScheduler.activateSilenceUntilAlarm(context, config.id)
                         refreshSilenceState()
                     } else if (com.tunisianprayertimes.wake.WakeAlarmScheduler.isSilencedAlarm(context, config.id)) {
-                        if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
-                            com.tunisianprayertimes.nap.NapSilenceController.disableNapSilence(context)
-                        }
-                        com.tunisianprayertimes.wake.WakeAlarmScheduler.clearSilencedAlarmId(context)
+                        WakeAlarmScheduler.removeSilenceUntilAlarm(context, config.id)
                         refreshSilenceState()
                     }
                     if (config.enabled) {
@@ -840,12 +837,7 @@ fun MainScreen(
                 },
                 onDelete = if (isPersistedAlarm) {
                     {
-                        if (com.tunisianprayertimes.wake.WakeAlarmScheduler.isSilencedAlarm(context, wakeAlarm.id)) {
-                            if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
-                                com.tunisianprayertimes.nap.NapSilenceController.disableNapSilence(context)
-                            }
-                            com.tunisianprayertimes.wake.WakeAlarmScheduler.clearSilencedAlarmId(context)
-                        }
+                        WakeAlarmScheduler.removeSilenceUntilAlarm(context, wakeAlarm.id)
                         mainScope.launch {
                             wakeRepository.deleteWakeAlarm(wakeAlarm.id)
                             editingWakeAlarm = null
@@ -1919,12 +1911,7 @@ private fun WakeAlarmCard(
             onConfirm = {
                 val alarmId = alarm.id
                 alarmPendingDeletion = null
-                if (WakeAlarmScheduler.isSilencedAlarm(context, alarmId)) {
-                    if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
-                        com.tunisianprayertimes.nap.NapSilenceController.disableNapSilence(context)
-                    }
-                    WakeAlarmScheduler.clearSilencedAlarmId(context)
-                }
+                WakeAlarmScheduler.removeSilenceUntilAlarm(context, alarmId)
                 coroutineScope.launch {
                     wakeRepository.deleteWakeAlarm(alarmId)
                     onConfigChanged()

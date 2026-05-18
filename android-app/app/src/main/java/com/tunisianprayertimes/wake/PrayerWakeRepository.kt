@@ -101,6 +101,7 @@ class PrayerWakeRepository(private val context: Context) {
                 preferences[prayerWakeStoreKey] = encodePrayerWakeStore(PrayerWakeStore(alarms = updated))
             }
         }
+        WakeAlarmScheduler.removeSilenceUntilAlarm(context, id)
     }
 
     suspend fun clearAllWakeConfigs() {

@@ -23,35 +23,119 @@ object WakeAlarmScheduler {
 	private const val SCHEDULER_PREFS = "wake_alarm_scheduler"
 	private const val KEY_SCHEDULED_EVENT_IDS = "scheduled_event_ids"
 	private const val KEY_SILENCED_ALARM_ID = "silenced_alarm_id"
+	private const val KEY_SILENCED_ALARM_IDS = "silenced_alarm_ids"
+	private const val KEY_SILENCE_PAUSED_FOR_ALARM_ID = "silence_paused_for_alarm_id"
 
 	fun activateSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
-		if (!prefs.contains(KEY_SILENCED_ALARM_ID) && !NapSilenceController.enableNapSilence(context)) {
+		val pendingAlarmIds = silencedAlarmIds(context)
+		if (pendingAlarmIds.isEmpty() && !NapSilenceController.enableNapSilence(context)) {
 			return false
 		}
-		prefs
-			.edit()
-			.putString(KEY_SILENCED_ALARM_ID, alarmId)
-			.apply()
+		persistSilencedAlarmIds(
+			context = context,
+			alarmIds = pendingAlarmIds + alarmId,
+			pausedForAlarmId = if (pendingAlarmIds.isEmpty()) null else prefs.getString(KEY_SILENCE_PAUSED_FOR_ALARM_ID, null),
+		)
 		Log.d(TAG, "Silence activated for alarm $alarmId")
 		return true
 	}
 
+	fun releaseSilenceForRingingAlarm(context: Context, alarmId: String): Boolean {
+		if (!isSilencedAlarm(context, alarmId)) return false
+		val remainingAlarmIds = silencedAlarmIds(context) - alarmId
+		val temporarilyLifted = shouldUseWakeSilence(context) && NapSilenceController.disableNapSilence(context)
+		persistSilencedAlarmIds(
+			context = context,
+			alarmIds = remainingAlarmIds,
+			pausedForAlarmId = if (remainingAlarmIds.isNotEmpty() && temporarilyLifted) alarmId else null,
+		)
+		Log.d(TAG, "Silence released for ringing alarm $alarmId")
+		return true
+	}
+
+	fun removeSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
+		if (!isSilencedAlarm(context, alarmId)) return false
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		val remainingAlarmIds = silencedAlarmIds(context) - alarmId
+		val pausedForAlarmId = prefs.getString(KEY_SILENCE_PAUSED_FOR_ALARM_ID, null)
+		if (remainingAlarmIds.isEmpty() && pausedForAlarmId == null && shouldUseWakeSilence(context)) {
+			NapSilenceController.disableNapSilence(context)
+		}
+		persistSilencedAlarmIds(
+			context = context,
+			alarmIds = remainingAlarmIds,
+			pausedForAlarmId = pausedForAlarmId?.takeIf { remainingAlarmIds.isNotEmpty() },
+		)
+		Log.d(TAG, "Silence removed for alarm $alarmId")
+		return true
+	}
+
+	fun resumeSilenceUntilNextAlarm(context: Context): Boolean {
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		val pendingAlarmIds = silencedAlarmIds(context)
+		val pausedForAlarmId = prefs.getString(KEY_SILENCE_PAUSED_FOR_ALARM_ID, null)
+		if (pendingAlarmIds.isEmpty()) {
+			persistSilencedAlarmIds(context, emptySet(), null)
+			return false
+		}
+		if (pausedForAlarmId == null || !shouldUseWakeSilence(context)) {
+			return false
+		}
+		if (!NapSilenceController.enableNapSilence(context)) {
+			return false
+		}
+		persistSilencedAlarmIds(context, pendingAlarmIds, null)
+		Log.d(TAG, "Silence resumed for pending alarm(s) ${pendingAlarmIds.joinToString()}")
+		return true
+	}
+
 	fun isSilenceUntilAlarmActive(context: Context): Boolean {
-		return context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
-			.contains(KEY_SILENCED_ALARM_ID)
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		return silencedAlarmIds(context).isNotEmpty() && !prefs.contains(KEY_SILENCE_PAUSED_FOR_ALARM_ID)
 	}
 
 	fun isSilencedAlarm(context: Context, alarmId: String): Boolean {
-		return context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
-			.getString(KEY_SILENCED_ALARM_ID, null) == alarmId
+		return alarmId in silencedAlarmIds(context)
 	}
 
 	fun clearSilencedAlarmId(context: Context) {
-		context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
-			.edit()
-			.remove(KEY_SILENCED_ALARM_ID)
-			.apply()
+		persistSilencedAlarmIds(context, emptySet(), null)
+	}
+
+	private fun shouldUseWakeSilence(context: Context): Boolean =
+		!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)
+
+	private fun silencedAlarmIds(context: Context): Set<String> {
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		return buildSet {
+			prefs.getStringSet(KEY_SILENCED_ALARM_IDS, emptySet())
+				?.filterTo(this) { alarmId -> alarmId.isNotBlank() }
+			prefs.getString(KEY_SILENCED_ALARM_ID, null)
+				?.takeIf { alarmId -> alarmId.isNotBlank() }
+				?.let(::add)
+		}
+	}
+
+	private fun persistSilencedAlarmIds(
+		context: Context,
+		alarmIds: Set<String>,
+		pausedForAlarmId: String?,
+	) {
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		prefs.edit().apply {
+			remove(KEY_SILENCED_ALARM_ID)
+			if (alarmIds.isEmpty()) {
+				remove(KEY_SILENCED_ALARM_IDS)
+			} else {
+				putStringSet(KEY_SILENCED_ALARM_IDS, LinkedHashSet(alarmIds))
+			}
+			if (pausedForAlarmId == null) {
+				remove(KEY_SILENCE_PAUSED_FOR_ALARM_ID)
+			} else {
+				putString(KEY_SILENCE_PAUSED_FOR_ALARM_ID, pausedForAlarmId)
+			}
+		}.apply()
 	}
 
 	suspend fun hasEnabledWakeAlarms(context: Context): Boolean =

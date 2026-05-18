@@ -68,4 +68,56 @@ class WakeSilenceStatusTest {
 
         assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
     }
+
+    @Test
+    fun multipleSilencedAlarms_resumeSilenceAfterFirstAlarmStops() {
+        WakeAlarmScheduler.activateSilenceUntilAlarm(context, "alarm-1")
+        WakeAlarmScheduler.activateSilenceUntilAlarm(context, "alarm-2")
+
+        assertTrue(WakeAlarmScheduler.isSilencedAlarm(context, "alarm-1"))
+        assertTrue(WakeAlarmScheduler.isSilencedAlarm(context, "alarm-2"))
+        assertTrue(WakeAlarmScheduler.isSilenceUntilAlarmActive(context))
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        WakeAlarmScheduler.releaseSilenceForRingingAlarm(context, "alarm-1")
+
+        assertFalse(WakeAlarmScheduler.isSilencedAlarm(context, "alarm-1"))
+        assertTrue(WakeAlarmScheduler.isSilencedAlarm(context, "alarm-2"))
+        assertFalse(WakeAlarmScheduler.isSilenceUntilAlarmActive(context))
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+
+        WakeAlarmScheduler.resumeSilenceUntilNextAlarm(context)
+
+        assertTrue(WakeAlarmScheduler.isSilenceUntilAlarmActive(context))
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+
+        WakeAlarmScheduler.releaseSilenceForRingingAlarm(context, "alarm-2")
+
+        assertFalse(WakeAlarmScheduler.isSilenceUntilAlarmActive(context))
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+    }
+
+    @Test
+    fun removingOneOfMultipleSilencedAlarms_keepsSilenceForRemainingAlarm() {
+        WakeAlarmScheduler.activateSilenceUntilAlarm(context, "alarm-1")
+        WakeAlarmScheduler.activateSilenceUntilAlarm(context, "alarm-2")
+
+        WakeAlarmScheduler.removeSilenceUntilAlarm(context, "alarm-1")
+
+        assertFalse(WakeAlarmScheduler.isSilencedAlarm(context, "alarm-1"))
+        assertTrue(WakeAlarmScheduler.isSilencedAlarm(context, "alarm-2"))
+        assertTrue(WakeAlarmScheduler.isSilenceUntilAlarmActive(context))
+        assertEquals(AudioManager.RINGER_MODE_SILENT, audioManager.ringerMode)
+    }
+
+    @Test
+    fun removingOnlySilencedAlarm_liftsSilence() {
+        WakeAlarmScheduler.activateSilenceUntilAlarm(context, "alarm-1")
+
+        WakeAlarmScheduler.removeSilenceUntilAlarm(context, "alarm-1")
+
+        assertFalse(WakeAlarmScheduler.isSilencedAlarm(context, "alarm-1"))
+        assertFalse(WakeAlarmScheduler.isSilenceUntilAlarmActive(context))
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
+    }
 }
