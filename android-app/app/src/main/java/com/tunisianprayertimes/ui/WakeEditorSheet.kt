@@ -12,11 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,6 +27,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -37,6 +40,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -63,6 +67,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -503,23 +508,35 @@ fun WakeEditorSheet(
                 title = stringResource(R.string.wake_editor_subalarms_title),
                 subtitle = stringResource(R.string.wake_editor_subalarms_relationship),
             ) {
+                subAlarms.forEachIndexed { index, subAlarm ->
+                    AnimatedVisibility(
+                        visible = true,
+                        enter = if (subAlarm.id in newSubAlarmIds) {
+                            androidx.compose.animation.expandVertically() + androidx.compose.animation.fadeIn()
+                        } else {
+                            androidx.compose.animation.EnterTransition.None
+                        },
+                    ) {
+                        WakeSubAlarmEditorCard(
+                            index = index,
+                            subAlarm = subAlarm,
+                            onChange = { updated ->
+                                subAlarms = subAlarms.map { existing ->
+                                    if (existing.id == updated.id) updated else existing
+                                }
+                            },
+                            onRemove = {
+                                newSubAlarmIds -= subAlarm.id
+                                subAlarms = subAlarms.filterNot { existing -> existing.id == subAlarm.id }
+                            },
+                        )
+                    }
+                }
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                 ) {
-                    Text(
-                        text = if (subAlarms.isEmpty()) {
-                            stringResource(R.string.wake_editor_subalarms_empty_compact)
-                        } else {
-                            stringResource(R.string.wake_editor_subalarms_count, subAlarms.size)
-                        },
-                        fontSize = 12.sp,
-                        color = TextMuted,
-                        lineHeight = 17.sp,
-                        modifier = Modifier.weight(1f),
-                    )
-
                     OutlinedButton(
                         onClick = {
                             val newId = UUID.randomUUID().toString()
@@ -537,39 +554,6 @@ fun WakeEditorSheet(
                         border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
                     ) {
                         Text(text = stringResource(R.string.wake_editor_subalarms_add))
-                    }
-                }
-
-                subAlarms.forEachIndexed { index, subAlarm ->
-                    AnimatedVisibility(
-                        visible = true,
-                        enter = if (subAlarm.id in newSubAlarmIds) {
-                            androidx.compose.animation.expandVertically() + androidx.compose.animation.fadeIn()
-                        } else {
-                            androidx.compose.animation.EnterTransition.None
-                        },
-                    ) {
-                        WakeSubAlarmEditorCard(
-                            index = index,
-                            subAlarm = subAlarm,
-                            canMoveUp = index > 0,
-                            canMoveDown = index < subAlarms.lastIndex,
-                            onChange = { updated ->
-                                subAlarms = subAlarms.map { existing ->
-                                    if (existing.id == updated.id) updated else existing
-                                }
-                            },
-                            onMoveUp = {
-                                subAlarms = subAlarms.moveSubAlarm(index, index - 1)
-                            },
-                            onMoveDown = {
-                                subAlarms = subAlarms.moveSubAlarm(index, index + 1)
-                            },
-                            onRemove = {
-                                newSubAlarmIds -= subAlarm.id
-                                subAlarms = subAlarms.filterNot { existing -> existing.id == subAlarm.id }
-                            },
-                        )
                     }
                 }
             }
@@ -882,115 +866,180 @@ private fun WakeAnchorPrayerSelector(
 private fun WakeSubAlarmEditorCard(
     index: Int,
     subAlarm: PrayerWakeSubAlarm,
-    canMoveUp: Boolean,
-    canMoveDown: Boolean,
     onChange: (PrayerWakeSubAlarm) -> Unit,
-    onMoveUp: () -> Unit,
-    onMoveDown: () -> Unit,
     onRemove: () -> Unit,
 ) {
-    OutlinedCard(modifier = Modifier.fillMaxWidth()) {
-        Column(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+    val context = LocalContext.current
+    val shape = RoundedCornerShape(10.dp)
+    var soundExpanded by rememberSaveable(subAlarm.id) { mutableStateOf(false) }
+    val offsetText = stringResource(
+        if (subAlarm.direction == OffsetDirection.BEFORE) {
+            R.string.wake_editor_subalarm_offset_before_value
+        } else {
+            R.string.wake_editor_subalarm_offset_after_value
+        },
+        formatArabicMinutes(subAlarm.minutesOffset),
+    )
+    val soundSummary = if (subAlarm.playback.vibrationOnly) {
+        stringResource(R.string.wake_editor_vibration_only_title)
+    } else {
+        WakeRingtoneCatalog.titleFor(context, subAlarm.playback.ringtone, subAlarm.playback.customRingtoneUri)
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(Color.White.copy(alpha = 0.78f))
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.22f)), shape)
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(2.dp),
             ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_subalarm_title, index + 1),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor,
-                    )
-                    Text(
-                        text = stringResource(
-                            R.string.wake_editor_subalarm_offset_value,
-                            formatArabicMinutes(subAlarm.minutesOffset),
-                        ),
-                        fontSize = 12.sp,
-                        color = TextMuted,
-                    )
-                }
-
-                OutlinedButton(
-                    onClick = onRemove,
-                    shape = RoundedCornerShape(10.dp),
-                    border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.45f)),
-                    colors = ButtonDefaults.outlinedButtonColors(contentColor = SilenceRed),
-                ) {
-                    Text(text = stringResource(R.string.wake_editor_subalarm_remove))
-                }
-            }
-
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                WakeChoiceButton(
-                    selected = subAlarm.direction == OffsetDirection.BEFORE,
-                    onClick = {
-                        onChange(subAlarm.copy(direction = OffsetDirection.BEFORE))
-                    },
-                    text = stringResource(R.string.wake_editor_subalarm_before_main),
-                    modifier = Modifier.weight(1f),
-                    compact = true,
+                Text(
+                    text = stringResource(R.string.wake_editor_subalarm_title, index + 1),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerNameColor,
                 )
-                WakeChoiceButton(
-                    selected = subAlarm.direction == OffsetDirection.AFTER,
-                    onClick = {
-                        onChange(subAlarm.copy(direction = OffsetDirection.AFTER))
-                    },
-                    text = stringResource(R.string.wake_editor_subalarm_after_main),
-                    modifier = Modifier.weight(1f),
-                    compact = true,
+                Text(
+                    text = offsetText,
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    lineHeight = 17.sp,
                 )
             }
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(
-                    onClick = {
-                        onChange(subAlarm.copy(minutesOffset = maxOf(1, subAlarm.minutesOffset - 1)))
-                    },
-                    shape = RoundedCornerShape(10.dp),
-                ) {
-                    Text(text = stringResource(R.string.wake_editor_subalarm_decrease))
-                }
+            OutlinedButton(
+                onClick = onRemove,
+                modifier = Modifier.size(36.dp),
+                shape = RoundedCornerShape(10.dp),
+                border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.42f)),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = SilenceRed.copy(alpha = 0.06f),
+                    contentColor = SilenceRed,
+                ),
+                contentPadding = PaddingValues(0.dp),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_delete),
+                    contentDescription = stringResource(R.string.wake_editor_subalarm_remove),
+                    modifier = Modifier.size(16.dp),
+                )
+            }
+        }
 
-                OutlinedButton(
-                    onClick = {
-                        onChange(subAlarm.copy(minutesOffset = subAlarm.minutesOffset + 1))
-                    },
-                    shape = RoundedCornerShape(10.dp),
-                ) {
-                    Text(text = stringResource(R.string.wake_editor_subalarm_increase))
-                }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            WakeChoiceButton(
+                selected = subAlarm.direction == OffsetDirection.BEFORE,
+                onClick = {
+                    onChange(subAlarm.copy(direction = OffsetDirection.BEFORE))
+                },
+                text = stringResource(R.string.wake_editor_subalarm_before_main),
+                modifier = Modifier.weight(1f),
+                compact = true,
+            )
+            WakeChoiceButton(
+                selected = subAlarm.direction == OffsetDirection.AFTER,
+                onClick = {
+                    onChange(subAlarm.copy(direction = OffsetDirection.AFTER))
+                },
+                text = stringResource(R.string.wake_editor_subalarm_after_main),
+                modifier = Modifier.weight(1f),
+                compact = true,
+            )
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            OutlinedButton(
+                onClick = {
+                    onChange(subAlarm.copy(minutesOffset = maxOf(1, subAlarm.minutesOffset - 1)))
+                },
+                modifier = Modifier.heightIn(min = 38.dp),
+                shape = RoundedCornerShape(10.dp),
+            ) {
+                Text(text = "-", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
 
-            WakePlaybackControls(
-                title = stringResource(R.string.wake_editor_subalarm_playback_title),
-                subtitle = stringResource(R.string.wake_editor_subalarm_playback_subtitle),
-                ringtoneLabel = stringResource(R.string.wake_editor_subalarm_ringtone_label),
-                playback = subAlarm.playback,
-                onPlaybackChange = { updated -> onChange(subAlarm.copy(playback = updated)) },
-                showAwakeCheck = false,
+            Text(
+                text = stringResource(
+                    R.string.wake_editor_subalarm_minutes_value,
+                    formatArabicMinutes(subAlarm.minutesOffset),
+                ),
+                modifier = Modifier
+                    .weight(1f)
+                    .heightIn(min = 38.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(GoldLight.copy(alpha = 0.14f))
+                    .padding(horizontal = 10.dp, vertical = 9.dp),
+                textAlign = TextAlign.Center,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = TextDark,
             )
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(
-                    onClick = onMoveUp,
-                    enabled = canMoveUp,
-                    shape = RoundedCornerShape(10.dp),
-                ) {
-                    Text(text = stringResource(R.string.wake_editor_subalarm_move_up))
-                }
+            OutlinedButton(
+                onClick = {
+                    onChange(subAlarm.copy(minutesOffset = subAlarm.minutesOffset + 1))
+                },
+                modifier = Modifier.heightIn(min = 38.dp),
+                shape = RoundedCornerShape(10.dp),
+            ) {
+                Text(text = "+", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            }
+        }
 
-                OutlinedButton(
-                    onClick = onMoveDown,
-                    enabled = canMoveDown,
-                    shape = RoundedCornerShape(10.dp),
-                ) {
-                    Text(text = stringResource(R.string.wake_editor_subalarm_move_down))
-                }
+        HorizontalDivider(color = Gold.copy(alpha = 0.16f))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(R.string.wake_editor_subalarm_sound_summary, soundSummary),
+                modifier = Modifier.weight(1f),
+                fontSize = 12.sp,
+                color = TextMuted,
+                lineHeight = 17.sp,
+            )
+            TextButton(
+                onClick = { soundExpanded = !soundExpanded },
+                shape = RoundedCornerShape(10.dp),
+            ) {
+                Text(
+                    text = stringResource(
+                        if (soundExpanded) {
+                            R.string.wake_editor_subalarm_hide_customization
+                        } else {
+                            R.string.wake_editor_subalarm_customize
+                        },
+                    ),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                )
+            }
+        }
+
+        AnimatedVisibility(visible = soundExpanded) {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                WakeSoundControls(
+                    ringtoneLabel = stringResource(R.string.wake_editor_subalarm_ringtone_label),
+                    playback = subAlarm.playback,
+                    onPlaybackChange = { updated -> onChange(subAlarm.copy(playback = updated)) },
+                )
             }
         }
     }
@@ -1808,14 +1857,3 @@ private fun formatWakeEditorTime(hour: Int, minute: Int): String =
     String.format(Locale.US, "%02d:%02d", hour, minute)
 
 private fun Int.toMillis(): Long = this * 60_000L
-
-private fun List<PrayerWakeSubAlarm>.moveSubAlarm(fromIndex: Int, toIndex: Int): List<PrayerWakeSubAlarm> {
-    if (fromIndex !in indices || toIndex !in indices || fromIndex == toIndex) {
-        return this
-    }
-
-    val mutable = toMutableList()
-    val item = mutable.removeAt(fromIndex)
-    mutable.add(toIndex, item)
-    return mutable.toList()
-}
