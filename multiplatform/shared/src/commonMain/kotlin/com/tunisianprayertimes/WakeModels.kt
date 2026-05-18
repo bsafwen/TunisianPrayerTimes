@@ -108,7 +108,9 @@ data class PrayerWakeSubAlarm(
     val id: String,
     val minutesOffset: Int,
     val direction: OffsetDirection,
-    val playback: WakePlaybackOptions = WakePlaybackOptions(),
+    val playback: WakePlaybackOptions = WakePlaybackOptions(
+        ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
+    ),
 ) {
     init {
         require(minutesOffset > 0) { "Sub-alarm offset must be positive." }
