@@ -1,5 +1,7 @@
 node_modules/
-data
+data/*
+!data/official-islamic-dates/
+!data/official-islamic-dates/*.json
 mawaqit-csv
 .DS_Store
 .env.local
