@@ -3358,18 +3358,22 @@ private fun ManualSilenceModeChip(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
+            .height(74.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(if (selected) GreenPrimary.copy(alpha = 0.14f) else GoldLight.copy(alpha = 0.18f))
             .clickable(onClick = onClick)
             .testTag(testTag)
-            .padding(horizontal = 12.dp, vertical = 10.dp)
+            .padding(horizontal = 8.dp, vertical = 8.dp)
     ) {
         Text(
             text = text,
             fontSize = 12.sp,
             color = if (selected) GreenPrimaryDark else TextDark,
             fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            lineHeight = 18.sp,
+            maxLines = 2,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp)
         )
     }
 }
