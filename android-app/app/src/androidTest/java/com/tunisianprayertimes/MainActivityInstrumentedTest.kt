@@ -10,12 +10,15 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tunisianprayertimes.ui.TestTags
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
+import org.junit.rules.TestRule
 import org.junit.runner.RunWith
+import org.junit.runners.model.Statement
 
 /**
  * Compose UI tests for the main screen.
@@ -24,14 +27,20 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
 
-    @get:Rule
-    val composeRule = createAndroidComposeRule<MainActivity>()
-
-    @Before
-    fun setup() {
-        // Mark first launch done so onboarding doesn't interfere
-        PrefsManager.markFirstLaunchDone(composeRule.activity)
+    private val prefsRule = TestRule { base, _ ->
+        object : Statement() {
+            override fun evaluate() {
+                val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+                PrefsManager.markFirstLaunchDone(context)
+                base.evaluate()
+            }
+        }
     }
+
+    private val composeRule = createAndroidComposeRule<MainActivity>()
+
+    @get:Rule
+    val ruleChain: RuleChain = RuleChain.outerRule(prefsRule).around(composeRule)
 
     // --- UI presence tests ---
 
