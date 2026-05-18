@@ -20,6 +20,9 @@ on:
 permissions:
   contents: write # needed to push the generated CSV files back to the repo
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   ingest:
     name: Ingest prayer times
@@ -28,7 +31,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # Full history allows git to push back cleanly
           fetch-depth: 1
