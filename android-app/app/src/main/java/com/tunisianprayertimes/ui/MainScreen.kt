@@ -140,6 +140,7 @@ import com.tunisianprayertimes.SilenceGuardService
 import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
+import com.tunisianprayertimes.SilenceStatus
 import com.tunisianprayertimes.SilenceVerifyWorker
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmMode
@@ -286,8 +287,17 @@ fun MainScreen(
     }
     var autoSilenceActive by remember { mutableStateOf(PrefsManager.isAutoSilenceActive(context)) }
     var manualSilenceActive by remember { mutableStateOf(PrefsManager.isManualSilenceActive(context)) }
+    var appControlledSilenceActive by remember { mutableStateOf(SilenceStatus.isAppControlledSilenceActive(context)) }
     var manualSilenceEndsAtMillis by remember {
         mutableLongStateOf(PrefsManager.getManualSilenceEndsAtMillis(context))
+    }
+
+    fun refreshSilenceState() {
+        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
+        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
+        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+        appControlledSilenceActive = SilenceStatus.isAppControlledSilenceActive(context)
+        manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
     }
 
     suspend fun syncWakeScheduling() {
@@ -328,10 +338,7 @@ fun MainScreen(
 
         syncWakeScheduling()
 
-        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
-        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
-        manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
+        refreshSilenceState()
     }
 
     // Start Ramadan override polling on first composition
@@ -372,9 +379,7 @@ fun MainScreen(
         }
         // Sync UI after rescheduling — scheduleAll may have silenced the phone
         // if the current time now falls inside a silence window.
-        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-        autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
-        manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+        refreshSilenceState()
     }
 
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
@@ -455,7 +460,7 @@ fun MainScreen(
 
                 StatusCard(
                     isSilent = isSilent,
-                    isAppSilenced = autoSilenceActive || manualSilenceActive,
+                    isAppSilenced = appControlledSilenceActive,
                     hasDnd = hasDnd
                 )
 
@@ -542,9 +547,7 @@ fun MainScreen(
                                     SilenceGuardService.stop(context)
                                     Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
                                 }
-                                isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-                                autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
-                                manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+                                refreshSilenceState()
                             }
                         )
 
@@ -622,10 +625,7 @@ fun MainScreen(
                                         }
                                     }
                                     SilenceModeController.notifyIfMissedCallDuringSilence(context)
-                                    isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
-                                    autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
-                                    manualSilenceActive = PrefsManager.isManualSilenceActive(context)
-                                    manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
+                                    refreshSilenceState()
                                     Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
                                 } else {
                                     val totalMinutes = resolveManualTotalMinutes(
@@ -679,8 +679,7 @@ fun MainScreen(
                                             Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
                                         }
                                     }
-                                    isSilent = true
-                                    manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+                                    refreshSilenceState()
                                 }
                             }
                         )
@@ -814,13 +813,14 @@ fun MainScreen(
                         config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW &&
                         config.silenceUntilAlarm
                     ) {
-                        com.tunisianprayertimes.wake.WakeAlarmScheduler.activateSilenceUntilAlarm(context, config.id)
-                        isSilent = true
+                        WakeAlarmScheduler.activateSilenceUntilAlarm(context, config.id)
+                        refreshSilenceState()
                     } else if (com.tunisianprayertimes.wake.WakeAlarmScheduler.isSilencedAlarm(context, config.id)) {
                         if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
                             com.tunisianprayertimes.nap.NapSilenceController.disableNapSilence(context)
                         }
                         com.tunisianprayertimes.wake.WakeAlarmScheduler.clearSilencedAlarmId(context)
+                        refreshSilenceState()
                     }
                     if (config.enabled) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
