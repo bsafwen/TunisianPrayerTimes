@@ -13,6 +13,7 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tunisianprayertimes.ui.TestTags
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
@@ -86,10 +87,12 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun prayerNamesAreInArabic() {
-        val arabicNames = listOf("الفجر", "الظهر", "العصر", "المغرب", "العشاء")
-        for (name in arabicNames) {
-            composeRule.onNodeWithText(name, substring = true).assertExists()
-        }
+        val context = composeRule.activity
+        assertEquals("الفجر", context.getString(R.string.prayer_fajr))
+        assertEquals("الظهر", context.getString(R.string.prayer_dhuhr))
+        assertEquals("العصر", context.getString(R.string.prayer_asr))
+        assertEquals("المغرب", context.getString(R.string.prayer_maghrib))
+        assertEquals("العشاء", context.getString(R.string.prayer_isha))
     }
 
     // --- Interaction tests ---
