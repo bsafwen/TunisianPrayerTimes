@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.annotation.VisibleForTesting
+import java.time.LocalDate
 import java.util.Calendar
 
 object SilenceScheduler {
@@ -22,7 +23,10 @@ object SilenceScheduler {
     /**
      * Schedule silence and unsilence alarms for all prayers today (and tomorrow if today's are past).
      */
-    fun scheduleAll(context: Context) = scheduleAllInternal(context, Calendar.getInstance())
+    fun scheduleAll(context: Context) {
+        RamadanOverrideChecker.loadCachedOverrideIfNeeded()
+        scheduleAllInternal(context, Calendar.getInstance())
+    }
 
     /**
      * Returns the [Prayer] whose silence window currently contains [now], or null.
@@ -30,6 +34,7 @@ object SilenceScheduler {
      * and that prayer starts within [MAX_DELEGATION_SHIFT_MS] (imminent window).
      */
     fun currentSilenceWindowPrayer(context: Context): Prayer? {
+        RamadanOverrideChecker.loadCachedOverrideIfNeeded()
         val now = Calendar.getInstance()
         val delegationId = PrefsManager.getDelegationId(context)
         val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
@@ -43,16 +48,16 @@ object SilenceScheduler {
         var nearestImminentPrayer: Prayer? = null
         var nearestImminentDistance = Long.MAX_VALUE
 
-        for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
+        for (prayerTime in scheduledPrayersForDate(context, todayTimes, now, isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
             val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
-                Calendar.getInstance().apply {
+                (now.clone() as Calendar).apply {
                     set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
                     set(Calendar.MINUTE, config.delayFixedMinute)
                     set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
                 }
             } else {
-                Calendar.getInstance().apply {
+                (now.clone() as Calendar).apply {
                     set(Calendar.HOUR_OF_DAY, prayerTime.hour)
                     set(Calendar.MINUTE, prayerTime.minute)
                     set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
@@ -60,7 +65,7 @@ object SilenceScheduler {
                 }
             }
             val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-                Calendar.getInstance().apply {
+                (now.clone() as Calendar).apply {
                     set(Calendar.HOUR_OF_DAY, config.fixedHour)
                     set(Calendar.MINUTE, config.fixedMinute)
                     set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
@@ -120,19 +125,19 @@ object SilenceScheduler {
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
-        for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
+        for (prayerTime in scheduledPrayersForDate(context, todayTimes, now, isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
             // Silence start: apply delay to prayer time
             val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
-                Calendar.getInstance().apply {
+                (now.clone() as Calendar).apply {
                     set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
                     set(Calendar.MINUTE, config.delayFixedMinute)
                     set(Calendar.SECOND, 0)
                     set(Calendar.MILLISECOND, 0)
                 }
             } else {
-                Calendar.getInstance().apply {
+                (now.clone() as Calendar).apply {
                     set(Calendar.HOUR_OF_DAY, prayerTime.hour)
                     set(Calendar.MINUTE, prayerTime.minute)
                     set(Calendar.SECOND, 0)
@@ -143,7 +148,7 @@ object SilenceScheduler {
 
             // Unsilence based on mode: fixed time or duration (duration is relative to silence start)
             val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-                Calendar.getInstance().apply {
+                (now.clone() as Calendar).apply {
                     set(Calendar.HOUR_OF_DAY, config.fixedHour)
                     set(Calendar.MINUTE, config.fixedMinute)
                     set(Calendar.SECOND, 0)
@@ -231,14 +236,14 @@ object SilenceScheduler {
         val ishaConfig = PrefsManager.getConfig(context, Prayer.ISHA)
         val todayIsha = todayTimes.isha
         val ishaSilence = if (ishaConfig.delayMode == DelayMode.FIXED_TIME && ishaConfig.delayFixedHour >= 0 && ishaConfig.delayFixedMinute >= 0) {
-            Calendar.getInstance().apply {
+            (now.clone() as Calendar).apply {
                 set(Calendar.HOUR_OF_DAY, ishaConfig.delayFixedHour)
                 set(Calendar.MINUTE, ishaConfig.delayFixedMinute)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
             }
         } else {
-            Calendar.getInstance().apply {
+            (now.clone() as Calendar).apply {
                 set(Calendar.HOUR_OF_DAY, todayIsha.hour)
                 set(Calendar.MINUTE, todayIsha.minute)
                 set(Calendar.SECOND, 0)
@@ -247,7 +252,7 @@ object SilenceScheduler {
             }
         }
         val ishaUnsilence = if (ishaConfig.mode == SilenceMode.FIXED_TIME && ishaConfig.fixedHour >= 0 && ishaConfig.fixedMinute >= 0) {
-            Calendar.getInstance().apply {
+            (now.clone() as Calendar).apply {
                 set(Calendar.HOUR_OF_DAY, ishaConfig.fixedHour)
                 set(Calendar.MINUTE, ishaConfig.fixedMinute)
                 set(Calendar.SECOND, 0)
@@ -288,7 +293,7 @@ object SilenceScheduler {
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
-        for (prayerTime in tomorrowTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
+        for (prayerTime in scheduledPrayersForDate(context, tomorrowTimes, tomorrow, isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
             val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
@@ -420,6 +425,52 @@ object SilenceScheduler {
         alarmManager.cancel(createPendingIntent(context, ACTION_SILENCE, prayer))
         alarmManager.cancel(createPendingIntent(context, ACTION_UNSILENCE, prayer))
     }
+
+    private fun scheduledPrayersForDate(
+        context: Context,
+        dayTimes: DayPrayerTimes,
+        date: Calendar,
+        isFriday: Boolean,
+        jomoaaHour: Int,
+        jomoaaMinute: Int,
+    ): List<PrayerTime> {
+        val prayers = dayTimes.scheduledPrayers(isFriday, jomoaaHour, jomoaaMinute).toMutableList()
+        val localDate = date.toLocalDate()
+
+        if (RamadanOverrideChecker.isEidFitr(localDate)) {
+            prayers += eidPrayerTime(
+                prayer = Prayer.AID_FITR,
+                dayTimes = dayTimes,
+                hour = PrefsManager.getAidFitrTimeHour(context),
+                minute = PrefsManager.getAidFitrTimeMinute(context),
+            )
+        }
+
+        if (RamadanOverrideChecker.isEidAdha(localDate)) {
+            prayers += eidPrayerTime(
+                prayer = Prayer.AID_ADHA,
+                dayTimes = dayTimes,
+                hour = PrefsManager.getAidAdhaTimeHour(context),
+                minute = PrefsManager.getAidAdhaTimeMinute(context),
+            )
+        }
+
+        return prayers.sortedBy { it.hour * 60 + it.minute }
+    }
+
+    private fun eidPrayerTime(prayer: Prayer, dayTimes: DayPrayerTimes, hour: Int, minute: Int): PrayerTime {
+        return PrayerTime(
+            prayer = prayer,
+            hour = if (hour >= 0) hour else dayTimes.shurukHour,
+            minute = if (minute >= 0) minute else dayTimes.shurukMinute,
+        )
+    }
+
+    private fun Calendar.toLocalDate(): LocalDate = LocalDate.of(
+        get(Calendar.YEAR),
+        get(Calendar.MONTH) + 1,
+        get(Calendar.DAY_OF_MONTH),
+    )
 
     private fun createPendingIntent(context: Context, action: String, prayer: Prayer): PendingIntent {
         val requestCode = when (action) {

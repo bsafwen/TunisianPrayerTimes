@@ -145,6 +145,21 @@ class PollingDecisionTest {
         assertFalse(RamadanOverrideChecker.shouldStartPolling())
     }
 
+    @Test
+    fun ramadanStart_previousHijriYearCache_pollsForNewYear() {
+        val shaban1448 = HijrahDate.of(1448, 8, 1)
+        RamadanOverrideChecker.testDateOverride = LocalDate.from(HijrahDate.of(1448, 8, shaban1448.lengthOfMonth()))
+        RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
+            hijriYear = 1447,
+            ramadanStart = LocalDate.of(2026, 2, 19),
+            eidFitrDate = LocalDate.of(2026, 3, 20),
+            eidAdhaDate = LocalDate.of(2026, 5, 27),
+        )
+
+        assertTrue(RamadanOverrideChecker.shouldStartPolling(),
+            "Previous-year cache must not block Ramadan start polling for the new Hijri year")
+    }
+
     // ───────────────────────────────────────────────
     // EID AL-FITR polling (with known ramadanStart)
     // ───────────────────────────────────────────────
@@ -269,6 +284,20 @@ class PollingDecisionTest {
             "2 Shawwal with no cache should NOT poll (past fallback window)")
     }
 
+    @Test
+    fun eidFitr_previousHijriYearCache_pollsForNewYear() {
+        RamadanOverrideChecker.testDateOverride = LocalDate.from(HijrahDate.of(1448, 9, 28))
+        RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
+            hijriYear = 1447,
+            ramadanStart = LocalDate.of(2026, 2, 19),
+            eidFitrDate = LocalDate.of(2026, 3, 20),
+            eidAdhaDate = LocalDate.of(2026, 5, 27),
+        )
+
+        assertTrue(RamadanOverrideChecker.shouldStartPolling(),
+            "Previous-year cache must not block Eid al-Fitr polling for the new Hijri year")
+    }
+
     // ───────────────────────────────────────────────
     // EID AL-ADHA polling (with drift)
     // ───────────────────────────────────────────────
@@ -378,6 +407,20 @@ class PollingDecisionTest {
         RamadanOverrideChecker.testDateOverride = LocalDate.from(HijrahDate.of(1447, 12, 11))
         assertFalse(RamadanOverrideChecker.shouldStartPolling(),
             "11 Dhul Hijja (past window) should NOT poll")
+    }
+
+    @Test
+    fun eidAdha_previousHijriYearCache_pollsForNewYear() {
+        RamadanOverrideChecker.testDateOverride = LocalDate.from(HijrahDate.of(1448, 12, 5))
+        RamadanOverrideChecker.cachedOverride = RamadanOverrideChecker.RamadanOverride(
+            hijriYear = 1447,
+            ramadanStart = LocalDate.of(2026, 2, 19),
+            eidFitrDate = LocalDate.of(2026, 3, 20),
+            eidAdhaDate = LocalDate.of(2026, 5, 27),
+        )
+
+        assertTrue(RamadanOverrideChecker.shouldStartPolling(),
+            "Previous-year cache must not block Eid al-Adha polling for the new Hijri year")
     }
 
     // ───────────────────────────────────────────────

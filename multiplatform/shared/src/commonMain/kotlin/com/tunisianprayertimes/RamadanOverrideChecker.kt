@@ -64,6 +64,13 @@ object RamadanOverrideChecker {
         val eidAdhaDate: LocalDate?,
     )
 
+    private fun currentHijriYear(): Int = hijrahToday().get(ChronoField.YEAR)
+
+    private fun currentYearOverride(): RamadanOverride? {
+        val override = cachedOverride ?: return null
+        return override.takeIf { it.hijriYear == currentHijriYear() }
+    }
+
     data class FetchReport(
         val hijriYear: Int,
         val result: String,
@@ -128,22 +135,23 @@ object RamadanOverrideChecker {
         val day = hijrahDate.get(ChronoField.DAY_OF_MONTH)
         val daysInMonth = hijrahDate.lengthOfMonth()
         val today = today()
+        val override = currentYearOverride()
 
         return when {
             // 28th-29th Sha'ban — moon sighting for Ramadan start (28th covers ±1 day drift)
-            month == 8 && day >= daysInMonth - 2 && cachedOverride?.ramadanStart == null -> true
+            month == 8 && day >= daysInMonth - 2 && override?.ramadanStart == null -> true
             // First 2 days of Ramadan — in case we missed the announcement
-            month == 9 && day <= 2 && cachedOverride?.ramadanStart == null -> true
+            month == 9 && day <= 2 && override?.ramadanStart == null -> true
             // Eid al-Fitr: use known ramadanStart to compute the real 29th Ramadan
-            cachedOverride?.ramadanStart != null && cachedOverride?.eidFitrDate == null -> {
-                val real29thRamadan = cachedOverride!!.ramadanStart!!.plusDays(28) // day 1 + 28 = day 29
+            override?.ramadanStart != null && override.eidFitrDate == null -> {
+                val real29thRamadan = override.ramadanStart.plusDays(28) // day 1 + 28 = day 29
                 !today.isBefore(real29thRamadan) && today.isBefore(real29thRamadan.plusDays(3))
             }
             // Fallback: no ramadanStart known yet, use algorithmic 28th Ramadan
-            month == 9 && day >= 28 && cachedOverride?.eidFitrDate == null -> true
-            month == 10 && day == 1 && cachedOverride?.eidFitrDate == null -> true
+            month == 9 && day >= 28 && override?.eidFitrDate == null -> true
+            month == 10 && day == 1 && override?.eidFitrDate == null -> true
             // Eid al-Adha: use drift to compute polling window (moon sighting may differ)
-            cachedOverride?.eidAdhaDate == null -> {
+            override?.eidAdhaDate == null -> {
                 val drift = computeDriftDays()
                 if (drift != null) {
                     val hijriYear = hijrahDate.get(ChronoField.YEAR)
@@ -164,6 +172,13 @@ object RamadanOverrideChecker {
         scheduledFuture?.cancel(false)
         scheduledFuture = null
         polling.set(false)
+    }
+
+    /** Load the persisted override JSON, if available, without starting network polling. */
+    fun loadCachedOverrideIfNeeded() {
+        if (cachedOverride == null) {
+            loadFromPreferences()
+        }
     }
 
     /**
@@ -241,6 +256,7 @@ object RamadanOverrideChecker {
 
     internal fun shouldStopPolling(override: RamadanOverride): Boolean {
         val hijrahDate = hijrahToday()
+        if (override.hijriYear != hijrahDate.get(ChronoField.YEAR)) return false
         val month = hijrahDate.get(ChronoField.MONTH_OF_YEAR)
 
         return when {
@@ -262,7 +278,7 @@ object RamadanOverrideChecker {
      * is also available and can be used instead.
      */
     fun computeDriftDays(): Long? {
-        val override = cachedOverride ?: return null
+        val override = currentYearOverride() ?: return null
         // Prefer eidFitrDate for drift (most recent confirmed data point)
         if (override.eidFitrDate != null) {
             val algorithmicEidFitr = LocalDate.from(
@@ -286,7 +302,7 @@ object RamadanOverrideChecker {
      * 2. Algorithmic (1 Shawwal) if no override
      */
     fun getEidFitrDate(): LocalDate {
-        val override = cachedOverride
+        val override = currentYearOverride()
         if (override?.eidFitrDate != null) return override.eidFitrDate
         return LocalDate.from(hijrahToday().let {
             HijrahDate.of(it.get(ChronoField.YEAR), 10, 1)
@@ -300,7 +316,7 @@ object RamadanOverrideChecker {
      * 3. Algorithmic (10 Dhul Hijja) if no drift available
      */
     fun getEidAdhaDate(): LocalDate {
-        val override = cachedOverride
+        val override = currentYearOverride()
         if (override?.eidAdhaDate != null) return override.eidAdhaDate
 
         val hijriYear = hijrahToday().get(ChronoField.YEAR)

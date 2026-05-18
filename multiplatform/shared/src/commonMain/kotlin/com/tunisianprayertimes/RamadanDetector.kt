@@ -12,6 +12,8 @@ object RamadanDetector {
         val override = RamadanOverrideChecker.cachedOverride
         if (override?.ramadanStart != null) {
             val today = LocalDate.now()
+            val hijriYear = HijrahDate.from(today).get(ChronoField.YEAR)
+            if (override.hijriYear != hijriYear) return isRamadanByHijrahDate(HijrahDate.now())
             val eidDate = override.eidFitrDate
             // Ramadan: from ramadanStart up to (but not including) eidFitrDate.
             // If eidFitrDate is unknown, assume 30 days of Ramadan.
