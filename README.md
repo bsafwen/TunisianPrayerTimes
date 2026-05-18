@@ -196,16 +196,18 @@ Local releases can also be created with `./release.sh "description"`, which bump
 
 ---
 
-## Ramadan & Eid Date Override
+## Official Islamic Date Corrections
 
 The Tunisian Ministry of Religious Affairs determines the start of Ramadan and Eid al-Fitr by physical moon sighting, announced after Maghreb prayer. This can differ by ±1 day from the algorithmic Hijri calendar (`HijrahDate`). The app supports an override mechanism to use the official dates.
 
 ### How it works
 
-1. A JSON file `docs/ramadan-override-{hijriYear}.json` is served via GitHub Pages
+1. A JSON file `data/official-islamic-dates/{hijriYear}.json` is served via GitHub Pages at `/data/official-islamic-dates/{hijriYear}.json`
 2. All apps (Android, TV, Desktop) poll this file **hourly**, starting **2 days before** the expected event according to `HijrahDate`
 3. Once the relevant date is fetched (non-null), polling **stops automatically**
 4. `RamadanDetector` checks the override first; if unavailable, falls back to algorithmic `HijrahDate`
+
+The Pages deployment also publishes a generated `ramadan-override-{hijriYear}.json` compatibility copy for already-released app versions.
 
 ### When to update
 
@@ -219,7 +221,7 @@ The Tunisian Ministry of Religious Affairs determines the start of Ramadan and E
 
 ```bash
 # 1. Edit the file for the current Hijri year (e.g. 1448)
-vi docs/ramadan-override-1448.json
+vi data/official-islamic-dates/1448.json
 
 # 2. Set the announced date(s) — use Gregorian (ISO 8601) format
 {
@@ -231,7 +233,7 @@ vi docs/ramadan-override-1448.json
 }
 
 # 3. Push to GitHub — Pages updates in ~10 minutes
-git add docs/ramadan-override-1448.json
+git add data/official-islamic-dates/1448.json
 git commit -m "Ramadan 1448 starts 2027-02-17"
 git push
 ```
@@ -241,7 +243,7 @@ git push
 Before each new Hijri year, create a fresh override file:
 
 ```bash
-cp docs/ramadan-override-1448.json docs/ramadan-override-1449.json
+cp data/official-islamic-dates/1448.json data/official-islamic-dates/1449.json
 # Edit: set hijriYear to 1449, reset all dates to null
 ```
 

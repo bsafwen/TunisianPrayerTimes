@@ -5,11 +5,14 @@ on:
     branches: [main]
     paths:
       - "android-app/**"
+      - "multiplatform/shared/**"
+      - ".github/workflows/android-tests.yml"
       - ".github/workflows/android-tests.yml"
   pull_request:
     branches: [main]
     paths:
       - "android-app/**"
+      - "multiplatform/shared/**"
 
 concurrency:
   group: android-tests-${{ github.ref }}

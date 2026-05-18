@@ -65,7 +65,7 @@ jobs:
       - name: Check for override changes
         id: diff
         run: |
-          if [[ -n "$(git status --porcelain -- docs/ramadan-override-*.json)" ]]; then
+          if [[ -n "$(git status --porcelain -- data/official-islamic-dates)" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -83,20 +83,20 @@ jobs:
 
           git fetch origin "$BRANCH_NAME" || true
           git checkout -B "$BRANCH_NAME"
-          git add docs/ramadan-override-*.json
-          git commit -m "Update Tunisian Ramadan/Aid override JSON"
+          git add data/official-islamic-dates/*.json
+          git commit -m "Update Tunisian official Islamic date JSON"
           git push --force-with-lease origin "$BRANCH_NAME"
 
           if gh pr view "$BRANCH_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh pr edit "$BRANCH_NAME" \
               --repo "$GITHUB_REPOSITORY" \
-              --title "Update Tunisian Ramadan/Aid override JSON" \
+              --title "Update Tunisian official Islamic date JSON" \
               --body-file .github/ramadan-aid-detection-pr.md
           else
             gh pr create \
               --repo "$GITHUB_REPOSITORY" \
               --base "$BASE_BRANCH" \
               --head "$BRANCH_NAME" \
-              --title "Update Tunisian Ramadan/Aid override JSON" \
+              --title "Update Tunisian official Islamic date JSON" \
               --body-file .github/ramadan-aid-detection-pr.md
           fi

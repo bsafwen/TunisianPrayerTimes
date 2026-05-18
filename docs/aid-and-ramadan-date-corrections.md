@@ -1,10 +1,10 @@
-# Ramadan And Aid Date Corrections
+# Official Islamic Date Corrections
 
-This app uses the device's Hijri calendar as a fallback, but Ramadan and Aid dates should follow the official Tunisian announcement when it differs from the algorithmic calendar. Corrections are done by publishing a yearly override JSON file, not by changing app code for every lunar-year announcement.
+This app uses the device's Hijri calendar as a fallback, but Ramadan and Aid dates should follow the official Tunisian announcement when it differs from the algorithmic calendar. Corrections are done by publishing a yearly official-date JSON file, not by changing app code for every lunar-year announcement.
 
 ## What The Override Controls
 
-The remote override can correct three official dates for a Hijri year:
+The remote file can correct three official dates for a Hijri year:
 
 - `ramadanStart`: the Gregorian date of 1 Ramadan.
 - `eidFitrDate`: the Gregorian date of Aid el-Fitr, 1 Shawwal.
@@ -13,14 +13,16 @@ The remote override can correct three official dates for a Hijri year:
 The Android app fetches the file from GitHub Pages:
 
 ```text
-https://bsafwen.github.io/TunisianPrayerTimes/ramadan-override-{hijriYear}.json
+https://bsafwen.github.io/TunisianPrayerTimes/data/official-islamic-dates/{hijriYear}.json
 ```
 
-The source file lives in the repository GitHub Pages folder:
+The canonical source file lives with the other app data, not in the GitHub Pages webroot:
 
 ```text
-docs/ramadan-override-{hijriYear}.json
+data/official-islamic-dates/{hijriYear}.json
 ```
+
+The Pages deployment also publishes a generated legacy copy at `https://bsafwen.github.io/TunisianPrayerTimes/ramadan-override-{hijriYear}.json` so already-released app versions keep working.
 
 Example:
 
@@ -53,10 +55,10 @@ The app also keeps the existing Ramadan buffer behavior: the day before Ramadan 
 
 When the Tunisian authorities announce Aid el-Fitr:
 
-1. Open or create `docs/ramadan-override-{hijriYear}.json`.
+1. Open or create `data/official-islamic-dates/{hijriYear}.json`.
 2. Set `eidFitrDate` to the official Gregorian date.
 3. Update `lastUpdated`.
-4. Publish the `docs/` folder through the normal GitHub Pages deployment.
+4. Merge to `main`; the Pages workflow publishes the canonical data path and legacy compatibility copy.
 
 The app will then use the corrected date for:
 
@@ -71,10 +73,10 @@ The Aid el-Fitr row is shown from two days before Aid through Aid morning. On th
 
 When the Tunisian authorities announce Aid el-Adha:
 
-1. Open `docs/ramadan-override-{hijriYear}.json` for the same Hijri year.
+1. Open `data/official-islamic-dates/{hijriYear}.json` for the same Hijri year.
 2. Set `eidAdhaDate` to the official Gregorian date.
 3. Update `lastUpdated`.
-4. Publish the updated JSON to GitHub Pages.
+4. Merge to `main`; the Pages workflow publishes the updated JSON.
 
 Before `eidAdhaDate` is known, the app estimates Aid el-Adha from the algorithmic 10 Dhul Hijja date plus the latest known drift. The drift is taken from `eidFitrDate` when available, or from `ramadanStart` otherwise. Once `eidAdhaDate` is set, it takes precedence over the drift estimate.
 
@@ -84,11 +86,11 @@ The Aid el-Adha row follows the same visibility rule as Aid el-Fitr: visible fro
 
 When Ramadan start is announced:
 
-1. Open or create `docs/ramadan-override-{hijriYear}.json`.
+1. Open or create `data/official-islamic-dates/{hijriYear}.json`.
 2. Set `ramadanStart` to the official Gregorian date.
 3. Leave `eidFitrDate` and `eidAdhaDate` as `null` until announced.
 4. Update `lastUpdated`.
-5. Publish the file to GitHub Pages.
+5. Merge to `main`; the Pages workflow publishes the file to GitHub Pages.
 
 This lets the app correct the Ramadan banner and the one-time Isha silence duration behavior without shipping a new Android release.
 
@@ -139,7 +141,7 @@ When direct `meteo.tn` evidence clearly derives the date, the runner can validat
 
 For `meteo.tn`, the runner also fetches the official crescent visibility pages directly instead of relying only on search snippets. These pages are treated as primary official astronomy evidence. For Ramadan, if the INM report says the crescent becomes visible after sunset on a given Gregorian date, the runner derives the first fasting day as the following Gregorian day. For Aid el-Adha, the runner derives 1 Dhul Hijja as the day after official Dhul Hijja crescent visibility, then derives Aid el-Adha as 10 Dhul Hijja. Page publication dates and imsakiyya publication dates are not treated as event dates unless the page explicitly says they are the relevant Hijri day.
 
-The script updates `docs/ramadan-override-{hijriYear}.json` only when validation passes:
+The script updates `data/official-islamic-dates/{hijriYear}.json` only when validation passes:
 
 - The detector reports `high` confidence.
 - The selected Gregorian date is close to the expected Hijri event date.
@@ -155,7 +157,7 @@ No DeepSeek call happens on user devices. The Android app only fetches the final
 
 ## Validation Checklist
 
-After changing an override file:
+After changing an official-date file:
 
 1. Confirm the JSON is valid and contains the correct `hijriYear`.
 2. Open the raw GitHub Pages URL and verify the published file returns HTTP 200.
