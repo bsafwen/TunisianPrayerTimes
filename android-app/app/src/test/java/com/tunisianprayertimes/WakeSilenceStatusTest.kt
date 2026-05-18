@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
 import androidx.test.core.app.ApplicationProvider
+import com.tunisianprayertimes.nap.NapSilenceController
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -56,5 +57,15 @@ class WakeSilenceStatusTest {
 
         assertFalse(WakeAlarmScheduler.isSilenceUntilAlarmActive(context))
         assertFalse(SilenceStatus.isAppControlledSilenceActive(context))
+    }
+
+    @Test
+    fun reactivatingSilenceUntilAlarm_preservesOriginalAudioStateForAlarmFire() {
+        WakeAlarmScheduler.activateSilenceUntilAlarm(context, "alarm-1")
+        WakeAlarmScheduler.activateSilenceUntilAlarm(context, "alarm-1")
+
+        NapSilenceController.disableNapSilence(context)
+
+        assertEquals(AudioManager.RINGER_MODE_NORMAL, audioManager.ringerMode)
     }
 }

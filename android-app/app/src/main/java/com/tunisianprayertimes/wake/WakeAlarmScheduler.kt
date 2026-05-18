@@ -25,8 +25,11 @@ object WakeAlarmScheduler {
 	private const val KEY_SILENCED_ALARM_ID = "silenced_alarm_id"
 
 	fun activateSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
-		if (!NapSilenceController.enableNapSilence(context)) return false
-		context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		if (!prefs.contains(KEY_SILENCED_ALARM_ID) && !NapSilenceController.enableNapSilence(context)) {
+			return false
+		}
+		prefs
 			.edit()
 			.putString(KEY_SILENCED_ALARM_ID, alarmId)
 			.apply()
