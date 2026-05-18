@@ -91,7 +91,7 @@ data class WakePlaybackOptions(
     val wakeUpCheckType: WakeUpCheckType = WakeUpCheckType.MATH,
     val mathDifficulty: MathDifficulty = MathDifficulty.EASY,
     val wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
-    val progressiveVolume: Boolean = false,
+    val progressiveVolume: Boolean = true,
     val snoreTrackingEnabled: Boolean = false,
     val awakeCheckEnabled: Boolean = true,
     val awakeCheckDelayMinutes: Int = 7,

@@ -221,7 +221,7 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         wakeUpCheckType = wakeUpCheckType,
         wakeUpCheckDifficulty = wakeUpCheckDifficulty,
         whackAMoleKillTarget = whackAMoleKillTarget,
-        progressiveVolume = getBooleanExtra(EXTRA_PROGRESSIVE_VOLUME, false),
+        progressiveVolume = getBooleanExtra(EXTRA_PROGRESSIVE_VOLUME, true),
         snoreTrackingEnabled = getBooleanExtra(EXTRA_SNORE_TRACKING_ENABLED, false),
         awakeCheckEnabled = getBooleanExtra(EXTRA_AWAKE_CHECK_ENABLED, true),
         awakeCheckDelayMinutes = getIntExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, 7),
