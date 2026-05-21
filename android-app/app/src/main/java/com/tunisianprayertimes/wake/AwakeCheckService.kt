@@ -8,7 +8,6 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
-import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.RingtoneManager
@@ -20,6 +19,7 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import androidx.core.app.NotificationCompat
 import com.tunisianprayertimes.MainActivity
+import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RingtonePreset
 import kotlinx.coroutines.CoroutineScope
@@ -47,6 +47,7 @@ class AwakeCheckService : Service() {
     private var escalationJob: Job? = null
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
+    private var speakerRoute: SpeakerPlaybackRoute? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -105,6 +106,7 @@ class AwakeCheckService : Service() {
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setOngoing(true)
             .setAutoCancel(false)
+            .setSilent(true)
             .addAction(
                 android.R.drawable.ic_menu_send,
                 getString(R.string.awake_check_confirm),
@@ -123,6 +125,7 @@ class AwakeCheckService : Service() {
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setOngoing(true)
             .setAutoCancel(false)
+            .setSilent(true)
             .addAction(
                 android.R.drawable.ic_menu_send,
                 getString(R.string.awake_check_confirm),
@@ -141,6 +144,7 @@ class AwakeCheckService : Service() {
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setOngoing(true)
             .setAutoCancel(false)
+            .setSilent(true)
             .addAction(
                 android.R.drawable.ic_menu_send,
                 getString(R.string.awake_check_confirm),
@@ -188,20 +192,30 @@ class AwakeCheckService : Service() {
 
     private fun playUri(uri: Uri) {
         val player = MediaPlayer()
+        var route: SpeakerPlaybackRoute? = null
         try {
             player.setDataSource(this, uri)
             player.setAudioAttributes(alarmAudioAttributes())
+            val playbackRoute = SpeakerPlaybackRoute(this, player, serviceScope)
+            route = playbackRoute
+            playbackRoute.applyNow()
             player.isLooping = true
             player.prepare()
-            forceSpeakerOutput(player)
+            playbackRoute.applyNow()
+            player.setVolume(1f, 1f)
             player.start()
+            playbackRoute.start()
+            speakerRoute = playbackRoute
             mediaPlayer = player
         } catch (_: Exception) {
+            route?.release()
             runCatching { player.release() }
         }
     }
 
     private fun stopPlayback() {
+        speakerRoute?.release()
+        speakerRoute = null
         mediaPlayer?.let { player ->
             runCatching { if (player.isPlaying) player.stop() }
             runCatching { player.release() }
@@ -220,6 +234,8 @@ class AwakeCheckService : Service() {
         ).apply {
             description = getString(R.string.awake_check_channel_description)
             lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+            setSound(null, null)
+            enableVibration(false)
         }
         notificationManager.createNotificationChannel(channel)
     }
@@ -240,7 +256,9 @@ class AwakeCheckService : Service() {
     private fun appPendingIntent(): PendingIntent = PendingIntent.getActivity(
         this,
         0,
-        Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
+        Intent(this, MainActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_ALARMS),
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
     )
 
@@ -249,13 +267,6 @@ class AwakeCheckService : Service() {
             .setUsage(AudioAttributes.USAGE_ALARM)
             .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
             .build()
-
-    private fun forceSpeakerOutput(player: MediaPlayer) {
-        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
-            .firstOrNull { it.type == AudioDeviceInfo.TYPE_BUILTIN_SPEAKER }
-            ?.let { player.setPreferredDevice(it) }
-    }
 
     @Suppress("DEPRECATION")
     private fun systemVibrator(): Vibrator? =
@@ -266,7 +277,7 @@ class AwakeCheckService : Service() {
         }
 
     companion object {
-        private const val CHANNEL_ID = "tunisianprayertimes.awake.check"
+        private const val CHANNEL_ID = "tunisianprayertimes.awake.check.silent"
         private const val NOTIFICATION_ID = 0x7A0E
 
         const val ACTION_AWAKE_CHECK_CONFIRMED =
