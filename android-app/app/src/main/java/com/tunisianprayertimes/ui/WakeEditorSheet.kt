@@ -13,6 +13,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,13 +44,17 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
@@ -254,8 +259,27 @@ fun WakeEditorSheet(
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
     val newSubAlarmIds = remember { mutableStateListOf<String>() }
+    var modePickerVisible by rememberSaveable(initialConfig.id) { mutableStateOf(false) }
+
+    fun selectMainAlarmMode(nextMode: WakeMainAlarmMode) {
+        mode = nextMode
+        if (nextMode == WakeMainAlarmMode.FROM_NOW) {
+            fromNowTriggerAtMillis = System.currentTimeMillis() + parsedFromNowOffsetMinutes.toMillis()
+        }
+    }
 
     BackHandler(onBack = onDismissRequest)
+
+    if (modePickerVisible) {
+        WakeModePickerSheet(
+            selectedMode = mode,
+            onModeSelected = { nextMode ->
+                selectMainAlarmMode(nextMode)
+                modePickerVisible = false
+            },
+            onDismiss = { modePickerVisible = false },
+        )
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -299,183 +323,40 @@ fun WakeEditorSheet(
             WakeEditorSectionCard(
                 title = stringResource(R.string.wake_editor_main_section_title),
             ) {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_mode_title),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor,
-                    )
-                    FlowRow(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                    ) {
-                        WakeChoiceButton(
-                            selected = mode == WakeMainAlarmMode.PRAYER_RELATIVE,
-                            onClick = { mode = WakeMainAlarmMode.PRAYER_RELATIVE },
-                            text = stringResource(R.string.wake_editor_mode_relative),
+                WakeScheduleBuilder(
+                    activity = activity,
+                    alarmId = initialConfig.id,
+                    mode = mode,
+                    onChangeModeClick = { modePickerVisible = true },
+                    selectedPrayer = selectedPrayer,
+                    onPrayerSelected = { prayer -> selectedPrayer = prayer },
+                    offsetDirection = relativeOffsetDirection,
+                    onOffsetDirectionChange = { direction -> relativeOffsetDirection = direction },
+                    offsetText = relativeOffsetText,
+                    onOffsetTextChange = { newValue -> relativeOffsetText = sanitizeMinutesInput(newValue) },
+                    fixedHour = fixedHour,
+                    fixedMinute = fixedMinute,
+                    onFixedTimePicked = { hour, minute ->
+                        fixedHour = hour
+                        fixedMinute = minute
+                    },
+                    fromNowHoursText = fromNowHoursText,
+                    fromNowMinutesText = fromNowMinutesText,
+                    onFromNowHoursTextChange = { updatedHours ->
+                        rescheduleFromNowAlarm(
+                            hoursText = updatedHours,
+                            minutesText = fromNowMinutesText,
                         )
-                        WakeChoiceButton(
-                            selected = mode == WakeMainAlarmMode.FIXED_TIME,
-                            onClick = { mode = WakeMainAlarmMode.FIXED_TIME },
-                            text = stringResource(R.string.wake_editor_mode_fixed),
+                    },
+                    onFromNowMinutesTextChange = { updatedMinutes ->
+                        rescheduleFromNowAlarm(
+                            hoursText = fromNowHoursText,
+                            minutesText = updatedMinutes,
                         )
-                        WakeChoiceButton(
-                            selected = mode == WakeMainAlarmMode.FROM_NOW,
-                            onClick = {
-                                mode = WakeMainAlarmMode.FROM_NOW
-                                fromNowTriggerAtMillis = System.currentTimeMillis() + parsedFromNowOffsetMinutes.toMillis()
-                            },
-                            text = stringResource(R.string.wake_editor_mode_from_now),
-                        )
-                    }
-                }
-
-            when (mode) {
-                WakeMainAlarmMode.FIXED_TIME -> {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_fixed_time_title),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = PrayerNameColor,
-                        )
-                        OutlinedButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            onClick = {
-                                val picker = MaterialTimePicker.Builder()
-                                    .setTimeFormat(TimeFormat.CLOCK_24H)
-                                    .setHour(fixedHour)
-                                    .setMinute(fixedMinute)
-                                    .setTitleText(context.getString(R.string.wake_editor_pick_time))
-                                    .build()
-                                picker.addOnPositiveButtonClickListener {
-                                    fixedHour = picker.hour
-                                    fixedMinute = picker.minute
-                                }
-                                picker.show(activity.supportFragmentManager, "wake_main_time_${initialConfig.id}")
-                            },
-                            shape = RoundedCornerShape(10.dp),
-                            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
-                        ) {
-                            Text(
-                                text = formatWakeEditorTime(fixedHour, fixedMinute),
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = GreenPrimaryDark,
-                            )
-                        }
-                    }
-                }
-
-                WakeMainAlarmMode.PRAYER_RELATIVE -> {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_anchor_prayer_title),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = PrayerNameColor,
-                        )
-                        WakeAnchorPrayerSelector(
-                            selectedPrayer = selectedPrayer,
-                            onPrayerSelected = { prayer -> selectedPrayer = prayer },
-                        )
-
-                        Text(
-                            text = stringResource(R.string.wake_editor_relative_title),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = PrayerNameColor,
-                        )
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            WakeChoiceButton(
-                                selected = relativeOffsetDirection == OffsetDirection.BEFORE,
-                                onClick = { relativeOffsetDirection = OffsetDirection.BEFORE },
-                                text = stringResource(R.string.wake_editor_subalarm_before),
-                                compact = true,
-                            )
-                            WakeChoiceButton(
-                                selected = relativeOffsetDirection == OffsetDirection.AFTER,
-                                onClick = { relativeOffsetDirection = OffsetDirection.AFTER },
-                                text = stringResource(R.string.wake_editor_subalarm_after),
-                                compact = true,
-                            )
-                        }
-                        OutlinedTextField(
-                            value = relativeOffsetText,
-                            onValueChange = { newValue ->
-                                relativeOffsetText = sanitizeMinutesInput(newValue)
-                            },
-                            modifier = Modifier.fillMaxWidth(),
-                            label = { Text(stringResource(R.string.wake_editor_relative_label)) },
-                            textStyle = LocalTextStyle.current.copy(
-                                textAlign = TextAlign.Right,
-                                textDirection = TextDirection.Ltr,
-                            ),
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            singleLine = true,
-                        )
-                    }
-                }
-
-                WakeMainAlarmMode.FROM_NOW -> {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_from_now_title),
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = PrayerNameColor,
-                        )
-
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            OutlinedTextField(
-                                value = fromNowHoursText,
-                                onValueChange = { newValue ->
-                                    rescheduleFromNowAlarm(
-                                        hoursText = sanitizeHoursInput(newValue),
-                                        minutesText = fromNowMinutesText,
-                                    )
-                                },
-                                modifier = Modifier.weight(1f),
-                                label = { Text(stringResource(R.string.wake_editor_from_now_hours_label)) },
-                                textStyle = LocalTextStyle.current.copy(
-                                    textAlign = TextAlign.Right,
-                                    textDirection = TextDirection.Ltr,
-                                ),
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                                singleLine = true,
-                            )
-
-                            OutlinedTextField(
-                                value = fromNowMinutesText,
-                                onValueChange = { newValue ->
-                                    rescheduleFromNowAlarm(
-                                        hoursText = fromNowHoursText,
-                                        minutesText = sanitizeHourMinutePartInput(newValue),
-                                    )
-                                },
-                                modifier = Modifier.weight(1f),
-                                label = { Text(stringResource(R.string.wake_editor_from_now_minutes_label)) },
-                                textStyle = LocalTextStyle.current.copy(
-                                    textAlign = TextAlign.Right,
-                                    textDirection = TextDirection.Ltr,
-                                ),
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                                singleLine = true,
-                            )
-                        }
-
-                    }
-                }
-            }
-
-                if (supportsSilenceUntilAlarm) {
-                    WakeSwitchSettingRow(
-                        title = stringResource(R.string.wake_editor_silence_toggle),
-                        checked = effectiveSilenceUntilAlarm,
-                        onCheckedChange = { updated -> silenceUntilAlarm = updated },
-                    )
-                }
+                    },
+                    silenceUntilAlarm = effectiveSilenceUntilAlarm,
+                    onSilenceUntilAlarmChange = { updated -> silenceUntilAlarm = updated },
+                )
             }
 
             if (enabled) {
@@ -639,6 +520,468 @@ private fun WakeEditorSectionCard(
             content()
         }
     }
+}
+
+@Composable
+private fun WakeScheduleBuilder(
+    activity: AppCompatActivity,
+    alarmId: String,
+    mode: WakeMainAlarmMode,
+    onChangeModeClick: () -> Unit,
+    selectedPrayer: Prayer,
+    onPrayerSelected: (Prayer) -> Unit,
+    offsetDirection: OffsetDirection,
+    onOffsetDirectionChange: (OffsetDirection) -> Unit,
+    offsetText: String,
+    onOffsetTextChange: (String) -> Unit,
+    fixedHour: Int,
+    fixedMinute: Int,
+    onFixedTimePicked: (hour: Int, minute: Int) -> Unit,
+    fromNowHoursText: String,
+    fromNowMinutesText: String,
+    onFromNowHoursTextChange: (String) -> Unit,
+    onFromNowMinutesTextChange: (String) -> Unit,
+    silenceUntilAlarm: Boolean,
+    onSilenceUntilAlarmChange: (Boolean) -> Unit,
+) {
+    val context = LocalContext.current
+    val summary = formatWakeScheduleSummary(
+        context = context,
+        mode = mode,
+        selectedPrayer = selectedPrayer,
+        offsetDirection = offsetDirection,
+        offsetText = offsetText,
+        fixedHour = fixedHour,
+        fixedMinute = fixedMinute,
+        fromNowHoursText = fromNowHoursText,
+        fromNowMinutesText = fromNowMinutesText,
+    )
+
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        WakeScheduleSummaryBand(summary = summary)
+        WakeScheduleTypeRow(
+            mode = mode,
+            onChangeModeClick = onChangeModeClick,
+        )
+
+        when (mode) {
+            WakeMainAlarmMode.PRAYER_RELATIVE -> {
+                WakePrayerRelativeModeControls(
+                    selectedPrayer = selectedPrayer,
+                    onPrayerSelected = onPrayerSelected,
+                    offsetDirection = offsetDirection,
+                    onOffsetDirectionChange = onOffsetDirectionChange,
+                    offsetText = offsetText,
+                    onOffsetTextChange = onOffsetTextChange,
+                )
+            }
+
+            WakeMainAlarmMode.FIXED_TIME -> {
+                WakeFixedTimeModeControls(
+                    activity = activity,
+                    timePickerTag = "wake_main_time_$alarmId",
+                    fixedHour = fixedHour,
+                    fixedMinute = fixedMinute,
+                    onTimePicked = onFixedTimePicked,
+                )
+            }
+
+            WakeMainAlarmMode.FROM_NOW -> {
+                WakeFromNowModeControls(
+                    hoursText = fromNowHoursText,
+                    minutesText = fromNowMinutesText,
+                    onHoursTextChange = onFromNowHoursTextChange,
+                    onMinutesTextChange = onFromNowMinutesTextChange,
+                    silenceUntilAlarm = silenceUntilAlarm,
+                    onSilenceUntilAlarmChange = onSilenceUntilAlarmChange,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeScheduleSummaryBand(summary: String) {
+    val shape = RoundedCornerShape(12.dp)
+    Text(
+        text = summary,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(GreenPrimary.copy(alpha = 0.10f))
+            .border(BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.18f)), shape)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Bold,
+        color = GreenPrimaryDark,
+        lineHeight = 28.sp,
+    )
+}
+
+@Composable
+private fun WakeScheduleTypeRow(
+    mode: WakeMainAlarmMode,
+    onChangeModeClick: () -> Unit,
+) {
+    val shape = RoundedCornerShape(10.dp)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .clickable(onClick = onChangeModeClick)
+            .background(Color.White.copy(alpha = 0.72f))
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.20f)), shape)
+            .padding(start = 12.dp, top = 8.dp, end = 8.dp, bottom = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.wake_editor_mode_type_label),
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextMuted,
+            )
+            Text(
+                text = wakeModeTitle(mode),
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextDark,
+            )
+            Text(
+                text = wakeModeHint(mode),
+                fontSize = 12.sp,
+                color = TextMuted,
+                lineHeight = 16.sp,
+            )
+        }
+
+        TextButton(
+            onClick = onChangeModeClick,
+            shape = RoundedCornerShape(10.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.wake_editor_mode_change),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold,
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun WakeModePickerSheet(
+    selectedMode: WakeMainAlarmMode,
+    onModeSelected: (WakeMainAlarmMode) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .padding(horizontal = 20.dp, vertical = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.wake_editor_mode_sheet_title),
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+
+            WakeModePickerRow(
+                mode = WakeMainAlarmMode.PRAYER_RELATIVE,
+                selected = selectedMode == WakeMainAlarmMode.PRAYER_RELATIVE,
+                onClick = { onModeSelected(WakeMainAlarmMode.PRAYER_RELATIVE) },
+            )
+            WakeModePickerRow(
+                mode = WakeMainAlarmMode.FIXED_TIME,
+                selected = selectedMode == WakeMainAlarmMode.FIXED_TIME,
+                onClick = { onModeSelected(WakeMainAlarmMode.FIXED_TIME) },
+            )
+            WakeModePickerRow(
+                mode = WakeMainAlarmMode.FROM_NOW,
+                selected = selectedMode == WakeMainAlarmMode.FROM_NOW,
+                onClick = { onModeSelected(WakeMainAlarmMode.FROM_NOW) },
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+private fun WakeModePickerRow(
+    mode: WakeMainAlarmMode,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
+    val shape = RoundedCornerShape(12.dp)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .clickable(onClick = onClick)
+            .background(if (selected) GreenPrimary.copy(alpha = 0.10f) else GoldLight.copy(alpha = 0.08f))
+            .border(
+                BorderStroke(1.dp, if (selected) GreenPrimary else Gold.copy(alpha = 0.20f)),
+                shape,
+            )
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
+        ) {
+            Text(
+                text = wakeModeTitle(mode),
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = if (selected) GreenPrimaryDark else TextDark,
+            )
+            Text(
+                text = wakeModeHint(mode),
+                fontSize = 12.sp,
+                color = if (selected) GreenPrimaryDark.copy(alpha = 0.78f) else TextMuted,
+                lineHeight = 17.sp,
+            )
+        }
+
+        RadioButton(
+            selected = selected,
+            onClick = onClick,
+            colors = RadioButtonDefaults.colors(
+                selectedColor = GreenPrimary,
+                unselectedColor = GreenPrimary.copy(alpha = 0.55f),
+            ),
+        )
+    }
+}
+
+@Composable
+private fun wakeModeTitle(mode: WakeMainAlarmMode): String = when (mode) {
+    WakeMainAlarmMode.PRAYER_RELATIVE -> stringResource(R.string.wake_editor_mode_relative)
+    WakeMainAlarmMode.FIXED_TIME -> stringResource(R.string.wake_editor_mode_fixed)
+    WakeMainAlarmMode.FROM_NOW -> stringResource(R.string.wake_editor_mode_from_now)
+}
+
+@Composable
+private fun wakeModeHint(mode: WakeMainAlarmMode): String = when (mode) {
+    WakeMainAlarmMode.PRAYER_RELATIVE -> stringResource(R.string.wake_editor_mode_relative_hint)
+    WakeMainAlarmMode.FIXED_TIME -> stringResource(R.string.wake_editor_mode_fixed_hint)
+    WakeMainAlarmMode.FROM_NOW -> stringResource(R.string.wake_editor_mode_from_now_hint)
+}
+
+private fun formatWakeScheduleSummary(
+    context: android.content.Context,
+    mode: WakeMainAlarmMode,
+    selectedPrayer: Prayer,
+    offsetDirection: OffsetDirection,
+    offsetText: String,
+    fixedHour: Int,
+    fixedMinute: Int,
+    fromNowHoursText: String,
+    fromNowMinutesText: String,
+): String = when (mode) {
+    WakeMainAlarmMode.PRAYER_RELATIVE -> {
+        val prayerName = prayerDisplayName(context, selectedPrayer)
+        val offsetMinutes = offsetText.toIntOrNull()?.coerceAtLeast(0) ?: 0
+        if (offsetMinutes == 0) {
+            context.getString(R.string.wake_editor_schedule_summary_relative_at, prayerName)
+        } else {
+            context.getString(
+                if (offsetDirection == OffsetDirection.BEFORE) {
+                    R.string.wake_editor_schedule_summary_relative_before
+                } else {
+                    R.string.wake_editor_schedule_summary_relative_after
+                },
+                prayerName,
+                formatArabicMinutes(offsetMinutes),
+            )
+        }
+    }
+
+    WakeMainAlarmMode.FIXED_TIME -> context.getString(
+        R.string.wake_editor_schedule_summary_fixed,
+        formatWakeEditorTime(fixedHour, fixedMinute),
+    )
+
+    WakeMainAlarmMode.FROM_NOW -> context.getString(
+        R.string.wake_editor_schedule_summary_from_now,
+        formatWakeScheduleDuration(
+            context = context,
+            hours = fromNowHoursText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
+            minutes = fromNowMinutesText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
+        ),
+    )
+}
+
+private fun formatWakeScheduleDuration(
+    context: android.content.Context,
+    hours: Int,
+    minutes: Int,
+): String = when {
+    hours > 0 && minutes > 0 -> context.getString(
+        R.string.wake_editor_duration_hours_minutes,
+        hours,
+        formatArabicMinutes(minutes),
+    )
+
+    hours > 0 -> context.getString(R.string.wake_editor_duration_hours, hours)
+    else -> formatArabicMinutes(minutes)
+}
+
+@Composable
+private fun WakePrayerRelativeModeControls(
+    selectedPrayer: Prayer,
+    onPrayerSelected: (Prayer) -> Unit,
+    offsetDirection: OffsetDirection,
+    onOffsetDirectionChange: (OffsetDirection) -> Unit,
+    offsetText: String,
+    onOffsetTextChange: (String) -> Unit,
+) {
+    Text(
+        text = stringResource(R.string.wake_editor_anchor_prayer_title),
+        fontSize = 13.sp,
+        fontWeight = FontWeight.Bold,
+        color = PrayerNameColor,
+    )
+    WakeAnchorPrayerSelector(
+        selectedPrayer = selectedPrayer,
+        onPrayerSelected = onPrayerSelected,
+    )
+
+    Text(
+        text = stringResource(R.string.wake_editor_relative_title),
+        fontSize = 13.sp,
+        fontWeight = FontWeight.Bold,
+        color = PrayerNameColor,
+    )
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        WakeChoiceButton(
+            selected = offsetDirection == OffsetDirection.BEFORE,
+            onClick = { onOffsetDirectionChange(OffsetDirection.BEFORE) },
+            text = stringResource(R.string.wake_editor_subalarm_before),
+            compact = true,
+        )
+        WakeChoiceButton(
+            selected = offsetDirection == OffsetDirection.AFTER,
+            onClick = { onOffsetDirectionChange(OffsetDirection.AFTER) },
+            text = stringResource(R.string.wake_editor_subalarm_after),
+            compact = true,
+        )
+    }
+    OutlinedTextField(
+        value = offsetText,
+        onValueChange = onOffsetTextChange,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(stringResource(R.string.wake_editor_relative_label)) },
+        textStyle = LocalTextStyle.current.copy(
+            textAlign = TextAlign.Right,
+            textDirection = TextDirection.Ltr,
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        singleLine = true,
+    )
+}
+
+@Composable
+private fun WakeFixedTimeModeControls(
+    activity: AppCompatActivity,
+    timePickerTag: String,
+    fixedHour: Int,
+    fixedMinute: Int,
+    onTimePicked: (hour: Int, minute: Int) -> Unit,
+) {
+    val context = LocalContext.current
+    Text(
+        text = stringResource(R.string.wake_editor_fixed_time_title),
+        fontSize = 13.sp,
+        fontWeight = FontWeight.Bold,
+        color = PrayerNameColor,
+    )
+    OutlinedButton(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = {
+            val picker = MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(fixedHour)
+                .setMinute(fixedMinute)
+                .setTitleText(context.getString(R.string.wake_editor_pick_time))
+                .build()
+            picker.addOnPositiveButtonClickListener {
+                onTimePicked(picker.hour, picker.minute)
+            }
+            picker.show(activity.supportFragmentManager, timePickerTag)
+        },
+        shape = RoundedCornerShape(10.dp),
+        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
+    ) {
+        Text(
+            text = formatWakeEditorTime(fixedHour, fixedMinute),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = GreenPrimaryDark,
+        )
+    }
+}
+
+@Composable
+private fun WakeFromNowModeControls(
+    hoursText: String,
+    minutesText: String,
+    onHoursTextChange: (String) -> Unit,
+    onMinutesTextChange: (String) -> Unit,
+    silenceUntilAlarm: Boolean,
+    onSilenceUntilAlarmChange: (Boolean) -> Unit,
+) {
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        OutlinedTextField(
+            value = hoursText,
+            onValueChange = { newValue -> onHoursTextChange(sanitizeHoursInput(newValue)) },
+            modifier = Modifier.weight(1f),
+            label = { Text(stringResource(R.string.wake_editor_from_now_hours_label)) },
+            textStyle = LocalTextStyle.current.copy(
+                textAlign = TextAlign.Right,
+                textDirection = TextDirection.Ltr,
+            ),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            singleLine = true,
+        )
+
+        OutlinedTextField(
+            value = minutesText,
+            onValueChange = { newValue -> onMinutesTextChange(sanitizeHourMinutePartInput(newValue)) },
+            modifier = Modifier.weight(1f),
+            label = { Text(stringResource(R.string.wake_editor_from_now_minutes_label)) },
+            textStyle = LocalTextStyle.current.copy(
+                textAlign = TextAlign.Right,
+                textDirection = TextDirection.Ltr,
+            ),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            singleLine = true,
+        )
+    }
+
+    WakeSwitchSettingRow(
+        title = stringResource(R.string.wake_editor_silence_toggle),
+        checked = silenceUntilAlarm,
+        onCheckedChange = onSilenceUntilAlarmChange,
+    )
 }
 
 @Composable

@@ -9,6 +9,8 @@
     <string name="status_normal">الهاتف في الوضع العادي 🔔</string>
     <string name="status_silent">الهاتف في الوضع الصامت 🔇</string>
     <string name="status_no_permission">يجب منح إذن عدم الإزعاج ⚠️</string>
+    <string name="phone_status_silent_short">الهاتف صامت</string>
+    <string name="phone_status_permission_short">إذن عدم الإزعاج مطلوب</string>
     <string name="btn_silence">تفعيل الصامت 🔇</string>
     <string name="btn_silence_for_duration">تفعيل الصامت لمدة %1$s 🔇</string>
     <string name="btn_silence_until_prayer">تفعيل الصامت حتى %1$s 🔇</string>
@@ -43,8 +45,8 @@
 
     <string name="toast_auto_enabled">تم تفعيل الإسكات التلقائي ✅</string>
     <string name="toast_auto_disabled">تم إيقاف الإسكات التلقائي</string>
-    <string name="prayer_settings_title">إعدادات الإسكات</string>
-    <string name="prayer_settings_subtitle">حدد تأخير بدء الإسكات ومدته لكل صلاة. اضغط على "د" للتبديل إلى وقت محدد.</string>
+    <string name="prayer_settings_title">مواقيت الصلاة</string>
+    <string name="prayer_settings_subtitle">اضبط بداية الإسكات ومدته لكل صلاة.</string>
     <string name="next_prayer_countdown_title">الصلاة القادمة</string>
     <string name="next_prayer_countdown_remaining">متبقي %1$s</string>
     <string name="next_prayer_countdown_at">عند %1$s</string>
@@ -219,8 +221,21 @@
     <string name="wake_editor_essentials_section_subtitle">الصوت، الاهتزاز، واختبار الاستيقاظ.</string>
     <string name="wake_editor_mode_title">طريقة ضبط المنبه الرئيسي</string>
     <string name="wake_editor_mode_relative">مرتبط بالصلاة</string>
+    <string name="wake_editor_mode_relative_hint">قبل أو بعد صلاة محددة</string>
     <string name="wake_editor_mode_fixed">وقت ثابت</string>
+    <string name="wake_editor_mode_fixed_hint">يرن كل يوم في وقت تختاره</string>
     <string name="wake_editor_mode_from_now">مؤقت لمرة واحدة</string>
+    <string name="wake_editor_mode_from_now_hint">يرن مرة واحدة بعد مدة من الآن</string>
+    <string name="wake_editor_mode_type_label">نوع الوقت</string>
+    <string name="wake_editor_mode_change">تغيير</string>
+    <string name="wake_editor_mode_sheet_title">اختر نوع وقت المنبه</string>
+    <string name="wake_editor_schedule_summary_relative_at">يرن عند %1$s</string>
+    <string name="wake_editor_schedule_summary_relative_before">يرن قبل %1$s بـ %2$s</string>
+    <string name="wake_editor_schedule_summary_relative_after">يرن بعد %1$s بـ %2$s</string>
+    <string name="wake_editor_schedule_summary_fixed">يرن كل يوم الساعة %1$s</string>
+    <string name="wake_editor_schedule_summary_from_now">يرن بعد %1$s</string>
+    <string name="wake_editor_duration_hours">%1$d ساعة</string>
+    <string name="wake_editor_duration_hours_minutes">%1$d ساعة و %2$s</string>
     <string name="wake_editor_anchor_prayer_title">الصلاة المعتمدة</string>
     <string name="wake_editor_fixed_time_title">وقت المنبه الرئيسي</string>
     <string name="wake_editor_pick_time">اختر وقت المنبه</string>
