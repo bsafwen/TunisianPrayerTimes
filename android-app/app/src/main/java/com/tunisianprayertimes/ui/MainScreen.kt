@@ -6,7 +6,6 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
@@ -130,6 +129,7 @@ import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.GouvernoratRepository
 import com.tunisianprayertimes.ManualSilenceMode
 import com.tunisianprayertimes.ManualSilenceScheduler
+import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
@@ -205,10 +205,11 @@ private data class NextPrayerCountdownInfo(
 
 @Composable
 fun MainScreen(
-    activity: androidx.appcompat.app.AppCompatActivity
+    activity: androidx.appcompat.app.AppCompatActivity,
+    requestedDestination: String? = null,
+    requestedDestinationSequence: Int = 0,
 ) {
     val context = LocalContext.current
-    val audioManager = remember { context.getSystemService(Context.AUDIO_SERVICE) as AudioManager }
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
     val schedulerScope = rememberCoroutineScope()
 
@@ -263,8 +264,6 @@ fun MainScreen(
         }
     }
 
-    var isSilent by remember { mutableStateOf(audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT) }
-
     var autoSilenceEnabled by rememberSaveable { mutableStateOf(PrefsManager.isEnabled(context)) }
     var callEndVibrationEnabled by rememberSaveable {
         mutableStateOf(PrefsManager.isCallEndVibrationEnabled(context))
@@ -298,7 +297,6 @@ fun MainScreen(
     }
 
     fun refreshSilenceState() {
-        isSilent = audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT
         autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
         manualSilenceActive = PrefsManager.isManualSilenceActive(context)
         appControlledSilenceActive = SilenceStatus.isAppControlledSilenceActive(context)
@@ -390,6 +388,17 @@ fun MainScreen(
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
     val mainDestinations = remember { MainDestination.values().toList() }
     var selectedDestinationIndex by rememberSaveable { mutableIntStateOf(0) }
+    LaunchedEffect(requestedDestination, requestedDestinationSequence) {
+        val requestedIndex = when (requestedDestination) {
+            MainTabNavigation.DESTINATION_PRAYERS -> mainDestinations.indexOf(MainDestination.Today)
+            MainTabNavigation.DESTINATION_ALARMS -> mainDestinations.indexOf(MainDestination.Alarms)
+            MainTabNavigation.DESTINATION_QIBLA -> mainDestinations.indexOf(MainDestination.Qibla)
+            else -> -1
+        }
+        if (requestedIndex in mainDestinations.indices) {
+            selectedDestinationIndex = requestedIndex
+        }
+    }
     val currentDestinationIndex = if (selectedDestinationIndex in mainDestinations.indices) {
         selectedDestinationIndex
     } else {
@@ -443,6 +452,7 @@ fun MainScreen(
                 .fillMaxSize()
                 .background(BgCream)
                 .padding(bottom = 76.dp)
+                .navigationBarsPadding()
                 .verticalScroll(rememberScrollState())
         ) {
             IslamicHeader()
@@ -462,18 +472,6 @@ fun MainScreen(
                     .padding(horizontal = 16.dp)
             ) {
                 Spacer(Modifier.height(8.dp))
-
-                AnimatedVisibility(
-                    visible = awakeCheckRunning,
-                    enter = expandVertically(),
-                    exit = shrinkVertically()
-                ) {
-                    AwakeCheckBanner(
-                        onConfirm = {
-                            AwakeCheckService.confirmAwake(context)
-                        }
-                    )
-                }
 
                 AnimatedVisibility(
                     visible = !hasDnd || !hasAlarm || !hasPhoneState,
@@ -509,7 +507,6 @@ fun MainScreen(
                     MainDestination.Today -> {
                         TodayNextPrayerCard(
                             delegationId = delegationId,
-                            isSilent = isSilent,
                             isAppSilenced = appControlledSilenceActive,
                             hasDnd = hasDnd,
                         )
@@ -703,6 +700,18 @@ fun MainScreen(
                     }
 
                     MainDestination.Alarms -> {
+                        AnimatedVisibility(
+                            visible = awakeCheckRunning,
+                            enter = expandVertically(),
+                            exit = shrinkVertically()
+                        ) {
+                            AwakeCheckBanner(
+                                onConfirm = {
+                                    AwakeCheckService.confirmAwake(context)
+                                }
+                            )
+                        }
+
                         WakeAlarmCard(
                             delegationId = delegationId,
                             activity = activity,
@@ -736,69 +745,74 @@ fun MainScreen(
         Surface(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .fillMaxWidth()
-                .navigationBarsPadding(),
+                .fillMaxWidth(),
             color = Color.White,
             tonalElevation = 8.dp
         ) {
-            Row(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(64.dp)
-                    .padding(horizontal = 8.dp, vertical = 6.dp),
-                verticalAlignment = Alignment.CenterVertically
+                    .navigationBarsPadding()
             ) {
-                mainDestinations.forEachIndexed { index, destination ->
-                    val selected = currentDestinationIndex == index
-                    val label = stringResource(destination.labelRes)
-                    val tabIndicatorColor by animateColorAsState(
-                        targetValue = if (selected) GreenPrimary else Color.Transparent,
-                        label = "bottomTabIndicator"
-                    )
-                    val tabContentColor by animateColorAsState(
-                        targetValue = if (selected) GreenPrimaryDark else TextMuted,
-                        label = "bottomTabContent"
-                    )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(64.dp)
+                        .padding(horizontal = 8.dp, vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    mainDestinations.forEachIndexed { index, destination ->
+                        val selected = currentDestinationIndex == index
+                        val label = stringResource(destination.labelRes)
+                        val tabIndicatorColor by animateColorAsState(
+                            targetValue = if (selected) GreenPrimary else Color.Transparent,
+                            label = "bottomTabIndicator"
+                        )
+                        val tabContentColor by animateColorAsState(
+                            targetValue = if (selected) GreenPrimaryDark else TextMuted,
+                            label = "bottomTabContent"
+                        )
 
-                    Column(
-                        modifier = Modifier
-                            .weight(1f)
-                            .fillMaxSize()
-                            .padding(horizontal = 4.dp)
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable { selectedDestinationIndex = index },
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Box(
+                        Column(
                             modifier = Modifier
-                                .width(26.dp)
-                                .height(3.dp)
-                                .clip(RoundedCornerShape(2.dp))
-                                .background(tabIndicatorColor)
-                        )
+                                .weight(1f)
+                                .fillMaxSize()
+                                .padding(horizontal = 4.dp)
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable { selectedDestinationIndex = index },
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .width(26.dp)
+                                    .height(3.dp)
+                                    .clip(RoundedCornerShape(2.dp))
+                                    .background(tabIndicatorColor)
+                            )
 
-                        Spacer(Modifier.height(5.dp))
+                            Spacer(Modifier.height(5.dp))
 
-                        Icon(
-                            painter = painterResource(destination.iconRes),
-                            contentDescription = label,
-                            tint = tabContentColor,
-                            modifier = Modifier.size(18.dp)
-                        )
+                            Icon(
+                                painter = painterResource(destination.iconRes),
+                                contentDescription = label,
+                                tint = tabContentColor,
+                                modifier = Modifier.size(18.dp)
+                            )
 
-                        Spacer(Modifier.height(3.dp))
+                            Spacer(Modifier.height(3.dp))
 
-                        Text(
-                            text = label,
-                            fontSize = 11.sp,
-                            fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
-                            color = tabContentColor,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 2.dp)
-                        )
+                            Text(
+                                text = label,
+                                fontSize = 11.sp,
+                                fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
+                                color = tabContentColor,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 2.dp)
+                            )
+                        }
                     }
                 }
             }
@@ -919,13 +933,11 @@ private fun IslamicHeader() {
 
 @Composable
 private fun PhoneStatusNotice(
-    isSilent: Boolean,
     isAppSilenced: Boolean,
     hasDnd: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    val phoneIsSilent = isSilent || isAppSilenced
-    if (hasDnd && !phoneIsSilent) return
+    if (hasDnd && !isAppSilenced) return
 
     val accentColor by animateColorAsState(
         targetValue = if (!hasDnd) Color(0xFFFFD166) else Color(0xFFFFCDD2),
@@ -1538,7 +1550,6 @@ private fun DelegationPickerSheet(
 @Composable
 private fun TodayNextPrayerCard(
     delegationId: Int,
-    isSilent: Boolean,
     isAppSilenced: Boolean,
     hasDnd: Boolean,
 ) {
@@ -1598,7 +1609,6 @@ private fun TodayNextPrayerCard(
             countdown = countdown,
             prayerName = prayerName(context, countdown.prayer),
             currentTimeMillis = currentTimeMillis,
-            isSilent = isSilent,
             isAppSilenced = isAppSilenced,
             hasDnd = hasDnd,
         )
@@ -2246,7 +2256,6 @@ private fun NextPrayerHeroCard(
     countdown: NextPrayerCountdownInfo,
     prayerName: String,
     currentTimeMillis: Long,
-    isSilent: Boolean,
     isAppSilenced: Boolean,
     hasDnd: Boolean,
 ) {
@@ -2319,7 +2328,6 @@ private fun NextPrayerHeroCard(
                         maxLines = 1,
                     )
                     PhoneStatusNotice(
-                        isSilent = isSilent,
                         isAppSilenced = isAppSilenced,
                         hasDnd = hasDnd,
                         modifier = Modifier.align(Alignment.Start),

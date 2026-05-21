@@ -8,11 +8,9 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
-import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.RingtoneManager
-import android.media.VolumeShaper
 import android.net.Uri
 import android.os.Build
 import android.os.IBinder
@@ -37,8 +35,8 @@ class WakePlaybackService : Service() {
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
     private var volumeRampJob: Job? = null
-    private var volumeShaper: VolumeShaper? = null
     private var savedAlarmVolume: Int? = null
+    private var speakerRoute: SpeakerPlaybackRoute? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -200,6 +198,7 @@ class WakePlaybackService : Service() {
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setOngoing(true)
             .setAutoCancel(false)
+            .setSilent(true)
             .setContentIntent(alertActivityPendingIntent(this, payload))
             .setFullScreenIntent(alertActivityPendingIntent(this, payload), true)
             .apply {
@@ -259,52 +258,40 @@ class WakePlaybackService : Service() {
 
     private fun playUri(uri: Uri, progressiveVolume: Boolean): Boolean {
         val player = MediaPlayer()
+        var route: SpeakerPlaybackRoute? = null
         return try {
             player.setDataSource(this, uri)
             player.setAudioAttributes(alarmAudioAttributes())
+            val playbackRoute = SpeakerPlaybackRoute(this, player, serviceScope)
+            route = playbackRoute
+            playbackRoute.applyNow()
             player.isLooping = true
             player.prepare()
-            val nativeVolumeShaper = if (progressiveVolume) {
-                createProgressiveVolumeShaper(player)
-            } else {
-                null
-            }
-            val nativeRampStarted = if (nativeVolumeShaper != null) {
-                player.setVolume(1f, 1f)
-                runCatching { nativeVolumeShaper.apply(VolumeShaper.Operation.PLAY) }.isSuccess
-            } else {
-                false
-            }
-            val initialVolume = if (progressiveVolume && !nativeRampStarted) {
+            playbackRoute.applyNow()
+            val initialVolume = if (progressiveVolume) {
                 WakeProgressiveVolumeRamp.ringtoneVolumeAt(0L)
             } else {
                 1f
             }
             player.setVolume(initialVolume, initialVolume)
-            forceSpeakerOutput(player)
             player.start()
-            if (nativeRampStarted) {
-                volumeShaper = nativeVolumeShaper
-            } else if (progressiveVolume) {
-                closeVolumeShaper(nativeVolumeShaper)
-                startFallbackVolumeRamp { volume ->
+            playbackRoute.start()
+            if (progressiveVolume) {
+                startProgressiveVolumeRamp { volume ->
                     player.setVolume(volume, volume)
                 }
             }
+            speakerRoute = playbackRoute
             mediaPlayer = player
             true
         } catch (_: Exception) {
+            route?.release()
             runCatching { player.release() }
             false
         }
     }
 
-    private fun createProgressiveVolumeShaper(player: MediaPlayer): VolumeShaper? =
-        runCatching {
-            player.createVolumeShaper(WakeProgressiveVolumeRamp.volumeShaperConfiguration())
-        }.getOrNull()
-
-    private fun startFallbackVolumeRamp(onVolumeChanged: (Float) -> Unit) {
+    private fun startProgressiveVolumeRamp(onVolumeChanged: (Float) -> Unit) {
         volumeRampJob?.cancel()
         volumeRampJob = serviceScope.launch {
             var elapsedMillis = 0L
@@ -322,8 +309,8 @@ class WakePlaybackService : Service() {
     private fun stopPlayback() {
         volumeRampJob?.cancel()
         volumeRampJob = null
-        closeVolumeShaper(volumeShaper)
-        volumeShaper = null
+        speakerRoute?.release()
+        speakerRoute = null
         restoreAlarmVolume()
         mediaPlayer?.let { player ->
             runCatching {
@@ -336,11 +323,6 @@ class WakePlaybackService : Service() {
         mediaPlayer = null
         vibrator?.cancel()
         vibrator = null
-    }
-
-    private fun closeVolumeShaper(shaper: VolumeShaper?) {
-        if (shaper == null) return
-        runCatching { shaper.close() }
     }
 
     private fun startVibrationOnly() {
@@ -360,6 +342,8 @@ class WakePlaybackService : Service() {
         ).apply {
             description = getString(R.string.wake_alarm_channel_description)
             lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+            setSound(null, null)
+            enableVibration(false)
         }
         notificationManager.createNotificationChannel(channel)
     }
@@ -376,13 +360,6 @@ class WakePlaybackService : Service() {
         savedAlarmVolume = null
         val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
         audioManager.setStreamVolume(AudioManager.STREAM_ALARM, volume, 0)
-    }
-
-    private fun forceSpeakerOutput(player: MediaPlayer) {
-        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
-            .firstOrNull { it.type == AudioDeviceInfo.TYPE_BUILTIN_SPEAKER }
-            ?.let { player.setPreferredDevice(it) }
     }
 
     private fun alarmAudioAttributes(): AudioAttributes =
@@ -487,7 +464,7 @@ class WakePlaybackService : Service() {
         }
 
     companion object {
-        private const val CHANNEL_ID = "tunisianprayertimes.wake.playback"
+        private const val CHANNEL_ID = "tunisianprayertimes.wake.playback.silent"
 
         const val ACTION_REFRESH_FOR_CURRENT =
             "com.tunisianprayertimes.action.REFRESH_FOR_CURRENT"
