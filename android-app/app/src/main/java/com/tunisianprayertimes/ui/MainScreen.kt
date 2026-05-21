@@ -12,6 +12,8 @@ import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.expandVertically
@@ -19,6 +21,7 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,6 +31,7 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,7 +39,10 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -47,9 +54,9 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -68,21 +75,17 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -97,6 +100,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalLayoutDirection
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -107,6 +111,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
@@ -164,8 +169,8 @@ import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.HeaderEnd
-import com.tunisianprayertimes.ui.theme.NextPrayerBg
 import com.tunisianprayertimes.ui.theme.HeaderStart
+import com.tunisianprayertimes.ui.theme.NextPrayerBg
 import com.tunisianprayertimes.ui.theme.PrayerNameColor
 import com.tunisianprayertimes.ui.theme.RamadanBg
 import com.tunisianprayertimes.ui.theme.SilenceRed
@@ -456,13 +461,7 @@ fun MainScreen(
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {
-                Spacer(Modifier.height(12.dp))
-
-                StatusCard(
-                    isSilent = isSilent,
-                    isAppSilenced = appControlledSilenceActive,
-                    hasDnd = hasDnd
-                )
+                Spacer(Modifier.height(8.dp))
 
                 AnimatedVisibility(
                     visible = awakeCheckRunning,
@@ -508,6 +507,13 @@ fun MainScreen(
 
                 when (selectedDestination) {
                     MainDestination.Today -> {
+                        TodayNextPrayerCard(
+                            delegationId = delegationId,
+                            isSilent = isSilent,
+                            isAppSilenced = appControlledSilenceActive,
+                            hasDnd = hasDnd,
+                        )
+
                         LocationPickerCard(
                             delegationId = delegationId,
                             onDelegationSelected = { delegation ->
@@ -710,17 +716,22 @@ fun MainScreen(
                     }
                 }
 
-                Image(
-                    painter = painterResource(R.drawable.islamic_border),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 16.dp)
-                        .height(6.dp),
-                    contentScale = ContentScale.FillBounds
-                )
             }
         }
+
+        Spacer(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .fillMaxWidth()
+                .windowInsetsTopHeight(WindowInsets.statusBars)
+                .background(
+                    brush = Brush.linearGradient(
+                        colors = listOf(HeaderStart, HeaderEnd),
+                        start = Offset(0f, 0f),
+                        end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
+                    )
+                )
+        )
 
         Surface(
             modifier = Modifier
@@ -864,7 +875,8 @@ private fun IslamicHeader() {
                     end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
                 )
             )
-            .padding(top = 10.dp, bottom = 8.dp),
+            .statusBarsPadding()
+            .padding(top = 2.dp, bottom = 6.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Bismillah
@@ -873,8 +885,8 @@ private fun IslamicHeader() {
             contentDescription = "بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(32.dp)
-                .padding(horizontal = 32.dp),
+                .height(28.dp)
+                .padding(horizontal = 42.dp),
             contentScale = ContentScale.Fit,
             colorFilter = ColorFilter.tint(Gold)
         )
@@ -884,21 +896,21 @@ private fun IslamicHeader() {
             contentDescription = stringResource(R.string.app_name),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(54.dp),
+                .height(40.dp),
             contentScale = ContentScale.Fit,
             colorFilter = ColorFilter.tint(Color(0xB3FFFFFF))
         )
 
         Text(
             text = stringResource(R.string.subtitle),
-            fontSize = 14.sp,
+            fontSize = 13.sp,
             color = Color(0xFFB2DFDB),
             textAlign = TextAlign.Center
         )
 
         Text(
             text = stringResource(R.string.source),
-            fontSize = 11.sp,
+            fontSize = 10.sp,
             color = Color(0x80B2DFDB),
             textAlign = TextAlign.Center
         )
@@ -906,50 +918,60 @@ private fun IslamicHeader() {
 }
 
 @Composable
-private fun StatusCard(isSilent: Boolean, isAppSilenced: Boolean, hasDnd: Boolean) {
-    val bgColor by animateColorAsState(
-        targetValue = when {
-            !hasDnd -> Color(0xFFFFF3E0) // warm amber bg
-            isAppSilenced -> Color(0xFFFFEBEE) // soft red bg — app silenced
-            else -> Color(0xFFE8F5E9) // soft green bg
-        },
-        label = "statusBg"
+private fun PhoneStatusNotice(
+    isSilent: Boolean,
+    isAppSilenced: Boolean,
+    hasDnd: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val phoneIsSilent = isSilent || isAppSilenced
+    if (hasDnd && !phoneIsSilent) return
+
+    val accentColor by animateColorAsState(
+        targetValue = if (!hasDnd) Color(0xFFFFD166) else Color(0xFFFFCDD2),
+        label = "phoneStatusAccent"
     )
-    val accentColor = when {
-        !hasDnd -> Color(0xFFFF9800)
-        isAppSilenced -> SilenceRed
-        else -> GreenPrimary
-    }
     val statusText = when {
-        !hasDnd -> stringResource(R.string.status_no_permission)
-        isAppSilenced -> stringResource(R.string.status_silent)
-        else -> stringResource(R.string.status_normal)
+        !hasDnd -> stringResource(R.string.phone_status_permission_short)
+        else -> stringResource(R.string.phone_status_silent_short)
     }
 
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .testTag(TestTags.STATUS_CARD)
-            .clip(RoundedCornerShape(24.dp))
-            .background(bgColor)
-            .padding(horizontal = 14.dp, vertical = 8.dp),
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
     ) {
         Box(
             modifier = Modifier
-                .size(8.dp)
+                .size(5.dp)
                 .clip(RoundedCornerShape(50))
                 .background(accentColor)
         )
-        Spacer(Modifier.width(8.dp))
+        Spacer(Modifier.width(6.dp))
         Text(
             text = statusText,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium,
-            color = accentColor
+            fontSize = 11.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = accentColor,
+            maxLines = 1,
+            softWrap = false,
+            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
         )
     }
+}
+
+@Composable
+private fun TomorrowMarker() {
+    Text(
+        text = stringResource(R.string.next_prayer_countdown_tomorrow),
+        fontSize = 11.sp,
+        color = GreenPrimaryDark,
+        fontWeight = FontWeight.Bold,
+        maxLines = 1,
+        modifier = Modifier
+            .clip(RoundedCornerShape(50))
+            .background(Color.White.copy(alpha = 0.82f))
+            .padding(horizontal = 8.dp, vertical = 3.dp),
+    )
 }
 
 @Composable
@@ -1514,6 +1536,76 @@ private fun DelegationPickerSheet(
 }
 
 @Composable
+private fun TodayNextPrayerCard(
+    delegationId: Int,
+    isSilent: Boolean,
+    isAppSilenced: Boolean,
+    hasDnd: Boolean,
+) {
+    val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
+    var currentTimeMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    val currentCalendar = remember(currentTimeMillis) {
+        Calendar.getInstance().apply { timeInMillis = currentTimeMillis }
+    }
+    val currentDayMillis = remember(currentTimeMillis) { startOfDayMillis(currentTimeMillis) }
+    val todayTimes = remember(delegationId, currentDayMillis) {
+        try {
+            PrayerTimesRepository.loadDayPrayerTimes(
+                context = context,
+                delegationId = delegationId,
+                year = currentCalendar.get(Calendar.YEAR),
+                month = currentCalendar.get(Calendar.MONTH) + 1,
+                day = currentCalendar.get(Calendar.DAY_OF_MONTH),
+            )
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                currentTimeMillis = System.currentTimeMillis()
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            val now = System.currentTimeMillis()
+            val nextMinuteMillis = ((now / 60_000L) + 1L) * 60_000L
+            delay((nextMinuteMillis - now).coerceAtLeast(1L))
+            currentTimeMillis = System.currentTimeMillis()
+        }
+    }
+
+    val countdown = remember(delegationId, todayTimes, currentTimeMillis) {
+        resolveNextPrayerCountdown(
+            context = context,
+            delegationId = delegationId,
+            todayTimes = todayTimes,
+            nowMillis = currentTimeMillis,
+            jomoaaHour = PrefsManager.getJomoaaTimeHour(context),
+            jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
+        )
+    }
+
+    if (countdown != null) {
+        NextPrayerHeroCard(
+            countdown = countdown,
+            prayerName = prayerName(context, countdown.prayer),
+            currentTimeMillis = currentTimeMillis,
+            isSilent = isSilent,
+            isAppSilenced = isAppSilenced,
+            hasDnd = hasDnd,
+        )
+    }
+}
+
+@Composable
 private fun PrayerSettingsCard(
     delegationId: Int,
     activity: androidx.appcompat.app.AppCompatActivity,
@@ -1685,40 +1777,37 @@ private fun PrayerSettingsCard(
             PrefsManager.getJomoaaTimeMinute(context)
         )
     } else null
-    val nextPrayerCountdown = remember(delegationId, displayTimes, currentTimeMillis, isToday, jomoaaH, jomoaaM) {
-        if (isToday) {
-            resolveNextPrayerCountdown(
-                context = context,
-                delegationId = delegationId,
-                todayTimes = displayTimes,
-                nowMillis = currentTimeMillis,
-                jomoaaHour = jomoaaH,
-                jomoaaMinute = jomoaaM,
-            )
-        } else {
-            null
-        }
-    }
 
-    Card(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 8.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp)
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         ) {
-            Text(
-                text = stringResource(R.string.prayer_settings_title),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                color = PrayerNameColor
-            )
-
-            Spacer(Modifier.height(8.dp))
+            Column(
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(
+                        text = stringResource(R.string.prayer_settings_title),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = PrayerNameColor,
+                    )
+                    Text(
+                        text = stringResource(R.string.prayer_settings_subtitle),
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                        lineHeight = 17.sp,
+                    )
+                }
 
             // Date navigation
             DateNavigationRow(
@@ -1745,18 +1834,6 @@ private fun PrayerSettingsCard(
             )
 
             if (displayTimes != null) {
-                if (nextPrayerCountdown != null) {
-                    Spacer(Modifier.height(6.dp))
-                    NextPrayerCountdownStrip(
-                        countdown = nextPrayerCountdown,
-                        prayerName = prayerNames[nextPrayerCountdown.prayer] ?: nextPrayerCountdown.prayer.name,
-                        currentTimeMillis = currentTimeMillis,
-                    )
-                    Spacer(Modifier.height(6.dp))
-                } else {
-                    Spacer(Modifier.height(8.dp))
-                }
-
                 PrayerRowHeader()
                 HorizontalDivider(color = Divider, thickness = 1.dp)
 
@@ -1882,6 +1959,8 @@ private fun PrayerSettingsCard(
     }
 }
 
+}
+
 @Composable
 private fun WakeAlarmCard(
     delegationId: Int,
@@ -1920,94 +1999,143 @@ private fun WakeAlarmCard(
         )
     }
 
-    Card(
+    fun createWakeAlarm() {
+        onEditAlarm(PrayerWakeConfig(
+            id = UUID.randomUUID().toString(),
+            enabled = true,
+            prayer = WAKE_SUPPORTED_PRAYERS.first(),
+            playback = WakePlaybackOptions(
+                ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
+            ),
+        ))
+    }
+
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 12.dp),
-        shape = RoundedCornerShape(14.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        WakeAlarmTabHeader(
+            showAddButton = wakeAlarms.isNotEmpty(),
+            onAddAlarm = ::createWakeAlarm,
+        )
+
+        if (nextAlarm != null) {
+            val (alarm, triggerAtMillis) = nextAlarm
+            WakeNextAlarmPanel(
+                wakeConfig = alarm,
+                triggerAtMillis = triggerAtMillis,
+            )
+        } else {
+            WakeAlarmEmptyState(onAddAlarm = ::createWakeAlarm)
+        }
+
+        if (wakeAlarms.isNotEmpty()) {
+            WakeAlarmListPanel(
+                wakeAlarms = wakeAlarms,
+                delegationId = delegationId,
+                onEditAlarm = onEditAlarm,
+                onEnabledChange = { wakeAlarm, enabled ->
+                    coroutineScope.launch {
+                        val updatedAlarm = wakeAlarm.copy(enabled = enabled)
+                        wakeRepository.saveWakeConfig(updatedAlarm)
+                        AnalyticsTracker.wakeAlarmSaved(context, updatedAlarm)
+                        onConfigChanged()
+                    }
+                },
+                onDeleteRequest = { alarm -> alarmPendingDeletion = alarm },
+            )
+        }
+    }
+}
+
+@Composable
+private fun WakeAlarmTabHeader(
+    showAddButton: Boolean,
+    onAddAlarm: () -> Unit,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.wake_alarm_section_title),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor,
-                    )
-                    Text(
-                        text = stringResource(R.string.wake_alarm_section_subtitle_modern),
-                        fontSize = 12.sp,
-                        color = TextMuted,
-                        lineHeight = 17.sp,
-                    )
-                }
-            }
+            Text(
+                text = stringResource(R.string.wake_alarm_section_title),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+            Text(
+                text = stringResource(R.string.wake_alarm_section_subtitle_modern),
+                fontSize = 12.sp,
+                color = TextMuted,
+                lineHeight = 17.sp,
+            )
+        }
 
-            nextAlarm?.let { (alarm, triggerAtMillis) ->
-                WakeNextAlarmPanel(
-                    wakeConfig = alarm,
-                    triggerAtMillis = triggerAtMillis,
-                )
-            }
-
-            if (wakeAlarms.isEmpty()) {
-                WakeAlarmEmptyState()
-            } else {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    wakeAlarms.forEachIndexed { index, wakeAlarm ->
-                        val nextMillis = remember(wakeAlarm, delegationId) {
-                            nextWakeAlarmMillis(context, delegationId, wakeAlarm)
-                        }
-                        WakeAlarmRow(
-                            alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
-                            wakeConfig = wakeAlarm,
-                            nextAlarmMillis = nextMillis,
-                            onClick = { onEditAlarm(wakeAlarm) },
-                            onEnabledChange = { enabled ->
-                                coroutineScope.launch {
-                                    val updatedAlarm = wakeAlarm.copy(enabled = enabled)
-                                    wakeRepository.saveWakeConfig(updatedAlarm)
-                                    AnalyticsTracker.wakeAlarmSaved(context, updatedAlarm)
-                                    onConfigChanged()
-                                }
-                            },
-                            onDeleteRequest = { alarmPendingDeletion = wakeAlarm },
-                        )
-                    }
-                }
-            }
-
+        if (showAddButton) {
             Button(
-                onClick = {
-                    onEditAlarm(PrayerWakeConfig(
-                        id = UUID.randomUUID().toString(),
-                        enabled = true,
-                        prayer = WAKE_SUPPORTED_PRAYERS.first(),
-                        playback = WakePlaybackOptions(
-                            ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
-                        ),
-                    ))
-                },
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(10.dp),
+                onClick = onAddAlarm,
+                shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
             ) {
                 Text(text = "+", fontSize = 16.sp, fontWeight = FontWeight.Bold)
                 Spacer(Modifier.width(6.dp))
-                Text(text = stringResource(R.string.wake_alarm_add), fontSize = 13.sp)
+                Text(text = stringResource(R.string.wake_alarm_add), fontSize = 12.sp)
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeAlarmListPanel(
+    wakeAlarms: List<PrayerWakeConfig>,
+    delegationId: Int,
+    onEditAlarm: (PrayerWakeConfig) -> Unit,
+    onEnabledChange: (PrayerWakeConfig, Boolean) -> Unit,
+    onDeleteRequest: (PrayerWakeConfig) -> Unit,
+) {
+    val context = LocalContext.current
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+    ) {
+        Column(
+            modifier = Modifier.padding(14.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.wake_alarm_list_title),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                wakeAlarms.forEachIndexed { index, wakeAlarm ->
+                    val nextMillis = remember(wakeAlarm, delegationId) {
+                        nextWakeAlarmMillis(context, delegationId, wakeAlarm)
+                    }
+                    WakeAlarmRow(
+                        alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
+                        wakeConfig = wakeAlarm,
+                        nextAlarmMillis = nextMillis,
+                        onClick = { onEditAlarm(wakeAlarm) },
+                        onEnabledChange = { enabled -> onEnabledChange(wakeAlarm, enabled) },
+                        onDeleteRequest = { onDeleteRequest(wakeAlarm) },
+                    )
+                }
             }
         }
     }
@@ -2019,33 +2147,42 @@ private fun WakeNextAlarmPanel(
     triggerAtMillis: Long,
 ) {
     val prayerName = wakeAlarmPrayerName(wakeConfig.prayer)
-    OutlinedCard(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.outlinedCardColors(containerColor = GreenPrimary.copy(alpha = 0.08f)),
-        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.16f)),
+    val shape = RoundedCornerShape(18.dp)
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(
+                Brush.linearGradient(
+                    colors = listOf(GreenPrimaryDark, GreenPrimary),
+                    start = Offset(0f, 0f),
+                    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
+                )
+            )
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape),
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.padding(horizontal = 18.dp, vertical = 15.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
                 text = stringResource(R.string.wake_alarm_next_title),
-                fontSize = 11.sp,
+                fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = GreenPrimaryDark,
+                color = Color.White.copy(alpha = 0.78f),
             )
             Text(
                 text = formatWakeAlarmDateTime(triggerAtMillis),
-                fontSize = 18.sp,
+                fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
-                color = TextDark,
+                color = Color.White,
+                lineHeight = 30.sp,
             )
             Text(
                 text = wakeSummaryText(prayerName, wakeConfig),
-                fontSize = 12.sp,
-                color = TextMuted,
-                lineHeight = 17.sp,
+                fontSize = 13.sp,
+                color = Color.White.copy(alpha = 0.82f),
+                lineHeight = 18.sp,
             )
         }
     }
@@ -2105,112 +2242,144 @@ private fun wakeAlarmPrayerName(prayer: Prayer): String = when (prayer) {
 }
 
 @Composable
-private fun NextPrayerCountdownStrip(
+private fun NextPrayerHeroCard(
     countdown: NextPrayerCountdownInfo,
     prayerName: String,
     currentTimeMillis: Long,
+    isSilent: Boolean,
+    isAppSilenced: Boolean,
+    hasDnd: Boolean,
 ) {
     val prayerTimeText = String.format(Locale.US, "%02d:%02d", countdown.hour, countdown.minute)
+    val remainingText = stringResource(
+        R.string.next_prayer_countdown_remaining,
+        formatCountdownRemaining(countdown.triggerAtMillis, currentTimeMillis),
+    )
+    val shape = RoundedCornerShape(18.dp)
 
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 34.dp)
-            .clip(RoundedCornerShape(9.dp))
-            .background(NextPrayerBg)
-            .padding(horizontal = 10.dp, vertical = 6.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
+            .testTag(TestTags.STATUS_CARD)
+            .clip(shape)
+            .background(
+                Brush.linearGradient(
+                    colors = listOf(GreenPrimaryDark, GreenPrimary),
+                    start = Offset(0f, 0f),
+                    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
+                )
+            )
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape)
     ) {
-        Row(
-            modifier = Modifier.weight(1f),
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-            verticalAlignment = Alignment.CenterVertically,
+        Column(
+            modifier = Modifier.padding(horizontal = 18.dp, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
-            Text(
-                text = stringResource(R.string.next_prayer_countdown_title),
-                fontSize = 10.sp,
-                color = TextMuted,
-                fontWeight = FontWeight.Medium,
-                maxLines = 1,
-            )
-            Text(
-                text = prayerName,
-                fontSize = 13.sp,
-                color = GreenPrimaryDark,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1,
-                softWrap = false,
-                autoSize = TextAutoSize.StepBased(maxFontSize = 13.sp),
-                modifier = Modifier.weight(1f, fill = false),
-            )
-            Text(
-                text = prayerTimeText,
-                fontSize = 12.sp,
-                color = TextDark,
-                fontWeight = FontWeight.Medium,
-                maxLines = 1,
-            )
-            if (countdown.isTomorrow) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
                 Text(
-                    text = stringResource(R.string.next_prayer_countdown_tomorrow),
-                    fontSize = 10.sp,
-                    color = GreenPrimaryDark,
+                    text = stringResource(R.string.next_prayer_countdown_title),
+                    fontSize = 12.sp,
+                    color = Color.White.copy(alpha = 0.78f),
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
+                )
+
+                if (countdown.isTomorrow) {
+                    TomorrowMarker()
+                }
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Bottom,
+            ) {
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Text(
+                        text = prayerName,
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+                        maxLines = 1,
+                        softWrap = false,
+                        autoSize = TextAutoSize.StepBased(maxFontSize = 28.sp),
+                    )
+                    Text(
+                        text = stringResource(R.string.next_prayer_countdown_at, prayerTimeText),
+                        fontSize = 14.sp,
+                        color = Color.White.copy(alpha = 0.82f),
+                        fontWeight = FontWeight.SemiBold,
+                        maxLines = 1,
+                    )
+                    PhoneStatusNotice(
+                        isSilent = isSilent,
+                        isAppSilenced = isAppSilenced,
+                        hasDnd = hasDnd,
+                        modifier = Modifier.align(Alignment.Start),
+                    )
+                }
+
+                Text(
+                    text = remainingText,
+                    fontSize = 14.sp,
+                    color = GreenPrimaryDark,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    maxLines = 1,
+                    softWrap = false,
+                    autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
                     modifier = Modifier
+                        .padding(start = 12.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.White.copy(alpha = 0.58f))
-                        .padding(horizontal = 6.dp, vertical = 2.dp),
+                        .background(Color.White.copy(alpha = 0.90f))
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
                 )
             }
         }
-
-        Text(
-            text = stringResource(
-                R.string.next_prayer_countdown_remaining,
-                formatCountdownRemaining(countdown.triggerAtMillis, currentTimeMillis),
-            ),
-            fontSize = 13.sp,
-            color = PrayerNameColor,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.End,
-            maxLines = 1,
-            softWrap = false,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 13.sp),
-            modifier = Modifier
-                .padding(start = 8.dp)
-                .clip(RoundedCornerShape(50))
-                .background(Color.White.copy(alpha = 0.62f))
-                .padding(horizontal = 8.dp, vertical = 3.dp),
-        )
     }
 }
 
 @Composable
-private fun WakeAlarmEmptyState() {
-    OutlinedCard(
+private fun WakeAlarmEmptyState(onAddAlarm: () -> Unit) {
+    Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.18f)),
-        border = BorderStroke(1.dp, CardBorder.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(18.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.padding(horizontal = 18.dp, vertical = 18.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(
                 text = stringResource(R.string.wake_alarm_empty_title),
-                fontSize = 14.sp,
+                fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = PrayerNameColor,
             )
             Text(
                 text = stringResource(R.string.wake_alarm_empty_body_modern),
-                fontSize = 12.sp,
+                fontSize = 13.sp,
                 color = TextMuted,
-                lineHeight = 17.sp,
+                lineHeight = 18.sp,
             )
+            Button(
+                onClick = onAddAlarm,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+            ) {
+                Text(text = "+", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Spacer(Modifier.width(6.dp))
+                Text(text = stringResource(R.string.wake_alarm_add), fontSize = 13.sp)
+            }
         }
     }
 }
@@ -2276,24 +2445,27 @@ private fun DateNavigationRow(
         }.show()
     }
 
+    val shape = RoundedCornerShape(12.dp)
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(10.dp))
-            .background(GoldLight.copy(alpha = 0.4f))
-            .padding(horizontal = 4.dp, vertical = 3.dp),
+            .clip(shape)
+            .background(GoldLight.copy(alpha = 0.18f))
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.18f)), shape)
+            .padding(horizontal = 5.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        // Right arrow → previous day (RTL: right = back)
+        // Previous day
         Text(
-            text = "▸",
-            fontSize = 18.sp,
+            text = "‹",
+            fontSize = 22.sp,
             color = if (canGoBack) GreenPrimary else TextMuted.copy(alpha = 0.3f),
             modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(10.dp))
+                .background(if (canGoBack) Color.White.copy(alpha = 0.70f) else Color.Transparent)
                 .then(if (canGoBack) Modifier.clickable { onPrevious() } else Modifier)
-                .padding(horizontal = 10.dp, vertical = 3.dp)
+                .padding(horizontal = 12.dp, vertical = 1.dp)
         )
 
         // Date label — tap to open date picker
@@ -2333,15 +2505,16 @@ private fun DateNavigationRow(
             }
         }
 
-        // Left arrow → next day (RTL: left = forward)
+        // Next day
         Text(
-            text = "◂",
-            fontSize = 18.sp,
+            text = "›",
+            fontSize = 22.sp,
             color = if (canGoForward) GreenPrimary else TextMuted.copy(alpha = 0.3f),
             modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(10.dp))
+                .background(if (canGoForward) Color.White.copy(alpha = 0.70f) else Color.Transparent)
                 .then(if (canGoForward) Modifier.clickable { onNext() } else Modifier)
-                .padding(horizontal = 10.dp, vertical = 3.dp)
+                .padding(horizontal = 12.dp, vertical = 1.dp)
         )
     }
 }
@@ -2351,7 +2524,9 @@ private fun PrayerRowHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 4.dp),
+            .clip(RoundedCornerShape(9.dp))
+            .background(GoldLight.copy(alpha = 0.14f))
+            .padding(horizontal = 8.dp, vertical = 7.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
