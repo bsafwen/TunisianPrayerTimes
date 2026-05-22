@@ -2,10 +2,12 @@ package com.tunisianprayertimes
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performSemanticsAction
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.tunisianprayertimes.ui.TestTags
@@ -57,7 +59,7 @@ class DateNavigationInstrumentedTest {
     fun dateLabel_tap_opensDatePickerWithoutCrash() {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
             .performScrollTo()
-            .performClick()
+            .performSemanticsAction(SemanticsActions.OnClick)
 
         composeRule.waitForIdle()
     }
@@ -68,8 +70,8 @@ class DateNavigationInstrumentedTest {
             .performScrollTo()
             .assertIsDisplayed()
 
-        composeRule.onNodeWithText("◂")
-            .performClick()
+        composeRule.onNodeWithTag(TestTags.DATE_PREVIOUS_BUTTON)
+            .performSemanticsAction(SemanticsActions.OnClick)
 
         composeRule.waitForIdle()
 
@@ -83,8 +85,8 @@ class DateNavigationInstrumentedTest {
             .performScrollTo()
             .assertIsDisplayed()
 
-        composeRule.onNodeWithText("▸")
-            .performClick()
+        composeRule.onNodeWithTag(TestTags.DATE_NEXT_BUTTON)
+            .performSemanticsAction(SemanticsActions.OnClick)
 
         composeRule.waitForIdle()
 
@@ -97,19 +99,26 @@ class DateNavigationInstrumentedTest {
         composeRule.onNodeWithTag(TestTags.DATE_LABEL)
             .performScrollTo()
 
-        composeRule.onNodeWithText("◂")
-            .performClick()
+        composeRule.onNodeWithTag(TestTags.DATE_PREVIOUS_BUTTON)
+            .performSemanticsAction(SemanticsActions.OnClick)
         composeRule.waitForIdle()
 
-        composeRule.onNodeWithText("العودة لليوم")
+        composeRule.waitUntilTagExists(TestTags.DATE_TODAY_BUTTON)
+        composeRule.onNodeWithTag(TestTags.DATE_TODAY_BUTTON)
             .performScrollTo()
             .assertIsDisplayed()
 
-        composeRule.onNodeWithText("العودة لليوم")
-            .performClick()
+        composeRule.onNodeWithTag(TestTags.DATE_TODAY_BUTTON)
+            .performSemanticsAction(SemanticsActions.OnClick)
         composeRule.waitForIdle()
 
-        composeRule.onNodeWithText("اليوم")
+        composeRule.onNodeWithTag(TestTags.DATE_TODAY_BUTTON)
             .assertDoesNotExist()
+    }
+
+    private fun androidx.compose.ui.test.junit4.ComposeTestRule.waitUntilTagExists(tag: String) {
+        waitUntil(timeoutMillis = 5_000) {
+            onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
+        }
     }
 }

@@ -18,6 +18,9 @@ object TestTags {
     const val MANUAL_SILENCE_DURATION_INPUT = "manual_silence_duration_input"
     const val INFO_TEXT = "info_text"
     const val DATE_LABEL = "date_label"
+    const val DATE_PREVIOUS_BUTTON = "date_previous_button"
+    const val DATE_NEXT_BUTTON = "date_next_button"
+    const val DATE_TODAY_BUTTON = "date_today_button"
     const val OVERLAP_WARNING = "overlap_warning"
 
     const val MAIN_TAB_TODAY = "main_tab_today"
