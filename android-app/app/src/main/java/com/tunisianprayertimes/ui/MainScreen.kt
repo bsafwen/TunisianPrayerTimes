@@ -207,6 +207,18 @@ private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Qibla -> "qibla"
 }
 
+private fun MainDestination.testTag(): String = when (this) {
+    MainDestination.Today -> TestTags.MAIN_TAB_TODAY
+    MainDestination.Alarms -> TestTags.MAIN_TAB_ALARMS
+    MainDestination.Qibla -> TestTags.MAIN_TAB_QIBLA
+}
+
+private fun WakeQuickPreset.testTag(): String = when (this) {
+    WakeQuickPreset.PRAYER_RELATIVE -> TestTags.WAKE_QUICK_PRESET_PRAYER_RELATIVE
+    WakeQuickPreset.FIXED_TIME -> TestTags.WAKE_QUICK_PRESET_FIXED_TIME
+    WakeQuickPreset.TIMER -> TestTags.WAKE_QUICK_PRESET_TIMER
+}
+
 private data class NextPrayerCountdownInfo(
     val prayer: Prayer,
     val hour: Int,
@@ -839,6 +851,7 @@ fun MainScreen(
                                 .weight(1f)
                                 .fillMaxSize()
                                 .padding(horizontal = 4.dp)
+                                .testTag(destination.testTag())
                                 .clip(RoundedCornerShape(12.dp))
                                 .clickable { selectedDestinationIndex = index },
                             horizontalAlignment = Alignment.CenterHorizontally,
@@ -2126,7 +2139,9 @@ private fun WakeAlarmFloatingAddButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier.size(64.dp),
+        modifier = modifier
+            .testTag(TestTags.WAKE_ALARM_ADD_BUTTON)
+            .size(64.dp),
         shape = RoundedCornerShape(22.dp),
         colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
         contentPadding = PaddingValues(0.dp),
@@ -2160,6 +2175,7 @@ private fun WakeQuickAddSheet(
             modifier = Modifier
                 .fillMaxWidth()
                 .navigationBarsPadding()
+                .testTag(TestTags.WAKE_QUICK_ADD_SHEET)
                 .padding(horizontal = 20.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -2173,6 +2189,7 @@ private fun WakeQuickAddSheet(
                 WakeQuickPresetRow(
                     preset = preset,
                     onClick = { onPresetSelected(preset) },
+                    modifier = Modifier.testTag(preset.testTag()),
                 )
             }
 
@@ -2304,7 +2321,9 @@ private fun WakeAlarmListPanel(
 ) {
     val context = LocalContext.current
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag(TestTags.WAKE_ALARM_LIST),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         wakeAlarms.forEachIndexed { index, wakeAlarm ->
@@ -3084,6 +3103,7 @@ private fun WakeAlarmRow(
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .testTag(TestTags.wakeAlarmRow(wakeConfig.id))
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
@@ -3159,6 +3179,7 @@ private fun WakeAlarmRow(
                 Switch(
                     checked = enabled,
                     onCheckedChange = onEnabledChange,
+                    modifier = Modifier.testTag(TestTags.wakeAlarmEnabledSwitch(wakeConfig.id)),
                 )
 
                 OutlinedButton(
@@ -3170,7 +3191,9 @@ private fun WakeAlarmRow(
                         contentColor = SilenceRed,
                     ),
                     contentPadding = PaddingValues(0.dp),
-                    modifier = Modifier.size(36.dp),
+                    modifier = Modifier
+                        .testTag(TestTags.wakeAlarmDeleteButton(wakeConfig.id))
+                        .size(36.dp),
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_delete),

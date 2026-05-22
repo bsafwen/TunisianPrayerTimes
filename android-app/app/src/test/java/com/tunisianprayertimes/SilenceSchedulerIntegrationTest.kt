@@ -670,13 +670,21 @@ class SilenceSchedulerIntegrationTest {
         PrefsManager.setDelayMode(context, Prayer.DHUHR, DelayMode.MINUTES)
         PrefsManager.setDelayMinutes(context, Prayer.DHUHR, 0)
 
-        // Load actual prayer times for today
-        val now = Calendar.getInstance()
+        // Use a stable non-Friday date so this regression exercises DHUHR, not JOMOAA.
+        val testDate = calendarAt(2026, Calendar.MAY, 21, 0, 0)
         val times386 = PrayerTimesRepository.loadDayPrayerTimes(
-            context, 386, now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH)
+            context,
+            386,
+            testDate.get(Calendar.YEAR),
+            testDate.get(Calendar.MONTH) + 1,
+            testDate.get(Calendar.DAY_OF_MONTH),
         )!!
         val times500 = PrayerTimesRepository.loadDayPrayerTimes(
-            context, 500, now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH)
+            context,
+            500,
+            testDate.get(Calendar.YEAR),
+            testDate.get(Calendar.MONTH) + 1,
+            testDate.get(Calendar.DAY_OF_MONTH),
         )!!
         // Sanity: delegation 500 Dhuhr must be later than 386
         assertTrue(
@@ -685,7 +693,7 @@ class SilenceSchedulerIntegrationTest {
         )
 
         // Step 1: Time is 2 min after delegation 386's Dhuhr → inside its window
-        val timeDismiss = Calendar.getInstance().apply {
+        val timeDismiss = (testDate.clone() as Calendar).apply {
             set(Calendar.HOUR_OF_DAY, times386.dhuhr.hour)
             set(Calendar.MINUTE, times386.dhuhr.minute + 2)
             set(Calendar.SECOND, 0)
@@ -705,7 +713,7 @@ class SilenceSchedulerIntegrationTest {
         PrefsManager.setDelegationId(context, 500)
 
         // Step 4: scheduleAll runs 2 min after delegation 500's Dhuhr → inside 500's window
-        val timeAfterChange = Calendar.getInstance().apply {
+        val timeAfterChange = (testDate.clone() as Calendar).apply {
             set(Calendar.HOUR_OF_DAY, times500.dhuhr.hour)
             set(Calendar.MINUTE, times500.dhuhr.minute + 2)
             set(Calendar.SECOND, 0)

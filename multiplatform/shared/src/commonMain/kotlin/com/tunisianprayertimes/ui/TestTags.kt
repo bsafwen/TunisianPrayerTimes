@@ -20,8 +20,22 @@ object TestTags {
     const val DATE_LABEL = "date_label"
     const val OVERLAP_WARNING = "overlap_warning"
 
+    const val MAIN_TAB_TODAY = "main_tab_today"
+    const val MAIN_TAB_ALARMS = "main_tab_alarms"
+    const val MAIN_TAB_QIBLA = "main_tab_qibla"
+
+    const val WAKE_ALARM_ADD_BUTTON = "wake_alarm_add_button"
+    const val WAKE_QUICK_ADD_SHEET = "wake_quick_add_sheet"
+    const val WAKE_QUICK_PRESET_PRAYER_RELATIVE = "wake_quick_preset_prayer_relative"
+    const val WAKE_QUICK_PRESET_FIXED_TIME = "wake_quick_preset_fixed_time"
+    const val WAKE_QUICK_PRESET_TIMER = "wake_quick_preset_timer"
+    const val WAKE_ALARM_LIST = "wake_alarm_list"
+
     fun durationInput(prayer: String) = "duration_input_$prayer"
     fun manualSilenceTargetPrayer(prayer: String) = "manual_silence_target_prayer_$prayer"
+    fun wakeAlarmRow(alarmId: String) = "wake_alarm_row_$alarmId"
+    fun wakeAlarmEnabledSwitch(alarmId: String) = "wake_alarm_enabled_switch_$alarmId"
+    fun wakeAlarmDeleteButton(alarmId: String) = "wake_alarm_delete_button_$alarmId"
 
     const val ONBOARDING_NEXT = "onboarding_next"
     const val ONBOARDING_PREV = "onboarding_prev"
