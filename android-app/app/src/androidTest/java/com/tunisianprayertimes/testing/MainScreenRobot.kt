@@ -74,6 +74,10 @@ class AlarmScreenRobot(private val composeRule: ComposeTestRule) {
     fun assertQuickAddActionsVisible(): AlarmScreenRobot = apply {
         composeRule.waitUntilTagExists(TestTags.WAKE_QUICK_ADD_SHEET)
         composeRule.onNodeWithTag(TestTags.WAKE_QUICK_ADD_SHEET).assertIsDisplayed()
+        assertPresetActionsVisible()
+    }
+
+    fun assertPresetActionsVisible(): AlarmScreenRobot = apply {
         composeRule.waitUntilTagExists(TestTags.WAKE_QUICK_PRESET_PRAYER_RELATIVE)
         composeRule.onNodeWithTag(TestTags.WAKE_QUICK_PRESET_PRAYER_RELATIVE).assertIsDisplayed()
         composeRule.onNodeWithTag(TestTags.WAKE_QUICK_PRESET_FIXED_TIME).assertIsDisplayed()

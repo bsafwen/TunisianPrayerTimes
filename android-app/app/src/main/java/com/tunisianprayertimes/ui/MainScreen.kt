@@ -2578,6 +2578,7 @@ private fun WakeAlarmEmptyState(onPresetSelected: (WakeQuickPreset) -> Unit) {
                     WakeQuickPresetRow(
                         preset = preset,
                         onClick = { onPresetSelected(preset) },
+                        modifier = Modifier.testTag(preset.testTag()),
                     )
                 }
             }
