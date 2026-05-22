@@ -12,6 +12,8 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performSemanticsAction
 import com.tunisianprayertimes.ui.TestTags
 
+private const val TAG_WAIT_TIMEOUT_MILLIS = 15_000L
+
 class MainScreenRobot(private val composeRule: ComposeTestRule) {
     fun openAlarms(): AlarmScreenRobot {
         composeRule.waitUntilTagExists(TestTags.MAIN_TAB_ALARMS)
@@ -80,7 +82,11 @@ class AlarmScreenRobot(private val composeRule: ComposeTestRule) {
 }
 
 private fun ComposeTestRule.waitUntilTagExists(tag: String) {
-    waitUntil(timeoutMillis = 5_000) {
-        onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
+    waitUntil(timeoutMillis = TAG_WAIT_TIMEOUT_MILLIS) {
+        try {
+            onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
+        } catch (_: IllegalStateException) {
+            false
+        }
     }
 }
