@@ -510,6 +510,8 @@ fun MainScreen(
             onPresetSelected = ::createWakeAlarm,
         )
     }
+    val showPermissionBanner = !hasDnd || !hasAlarm || !hasPhoneState
+    val showBatteryBanner = !hasBattery
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -538,36 +540,6 @@ fun MainScreen(
             ) {
                 Spacer(Modifier.height(8.dp))
 
-                AnimatedVisibility(
-                    visible = !hasDnd || !hasAlarm || !hasPhoneState,
-                    enter = expandVertically(),
-                    exit = shrinkVertically()
-                ) {
-                    PermissionBanner(
-                        hasDnd = hasDnd,
-                        hasAlarm = hasAlarm,
-                        hasPhoneState = hasPhoneState,
-                        onRequestPhoneState = {
-                            AnalyticsTracker.permissionStepResult(
-                                context = context,
-                                permissionType = "phone_state",
-                                result = "request_opened",
-                                entryPoint = "main_banner",
-                            )
-                            phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
-                        },
-                        context = context
-                    )
-                }
-
-                AnimatedVisibility(
-                    visible = !hasBattery,
-                    enter = expandVertically(),
-                    exit = shrinkVertically()
-                ) {
-                    BatteryBanner(context = context)
-                }
-
                 when (selectedDestination) {
                     MainDestination.Today -> {
                         TodayNextPrayerCard(
@@ -575,6 +547,36 @@ fun MainScreen(
                             isAppSilenced = appControlledSilenceActive,
                             hasDnd = hasDnd,
                         )
+
+                        AnimatedVisibility(
+                            visible = showPermissionBanner,
+                            enter = expandVertically(),
+                            exit = shrinkVertically()
+                        ) {
+                            PermissionBanner(
+                                hasDnd = hasDnd,
+                                hasAlarm = hasAlarm,
+                                hasPhoneState = hasPhoneState,
+                                onRequestPhoneState = {
+                                    AnalyticsTracker.permissionStepResult(
+                                        context = context,
+                                        permissionType = "phone_state",
+                                        result = "request_opened",
+                                        entryPoint = "main_banner",
+                                    )
+                                    phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
+                                },
+                                context = context
+                            )
+                        }
+
+                        AnimatedVisibility(
+                            visible = showBatteryBanner,
+                            enter = expandVertically(),
+                            exit = shrinkVertically()
+                        ) {
+                            BatteryBanner(context = context)
+                        }
 
                         LocationPickerCard(
                             delegationId = delegationId,
@@ -769,14 +771,10 @@ fun MainScreen(
                             wakeAlarms = wakeAlarmsForPermission,
                             delegationId = delegationId,
                             activity = activity,
-                            hasNotifications = hasNotifications,
-                            hasFullScreenIntent = hasFullScreenIntent,
-                            hasBattery = hasBattery,
                             awakeCheckRunning = awakeCheckRunning,
                             onConfirmAwake = {
                                 AwakeCheckService.confirmAwake(context)
                             },
-                            onRequestNotifications = ::requestWakeNotificationPermission,
                             onConfigChanged = { rescheduleIfEnabled() },
                             onPresetSelected = ::createWakeAlarm,
                             onEditAlarm = { config -> editingWakeAlarm = config },
@@ -1648,15 +1646,6 @@ private fun TodayNextPrayerCard(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    LaunchedEffect(Unit) {
-        while (true) {
-            val now = System.currentTimeMillis()
-            val nextMinuteMillis = ((now / 60_000L) + 1L) * 60_000L
-            delay((nextMinuteMillis - now).coerceAtLeast(1L))
-            currentTimeMillis = System.currentTimeMillis()
-        }
-    }
-
     val countdown = remember(delegationId, todayTimes, currentTimeMillis) {
         resolveNextPrayerCountdown(
             context = context,
@@ -1666,6 +1655,14 @@ private fun TodayNextPrayerCard(
             jomoaaHour = PrefsManager.getJomoaaTimeHour(context),
             jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
         )
+    }
+
+    LaunchedEffect(countdown?.triggerAtMillis) {
+        while (true) {
+            val now = System.currentTimeMillis()
+            delay(nextCountdownRefreshDelayMillis(countdown?.triggerAtMillis, now))
+            currentTimeMillis = System.currentTimeMillis()
+        }
     }
 
     if (countdown != null) {
@@ -2040,12 +2037,8 @@ private fun WakeAlarmCard(
     wakeAlarms: List<PrayerWakeConfig>?,
     delegationId: Int,
     activity: androidx.appcompat.app.AppCompatActivity,
-    hasNotifications: Boolean,
-    hasFullScreenIntent: Boolean,
-    hasBattery: Boolean,
     awakeCheckRunning: Boolean,
     onConfirmAwake: () -> Unit,
-    onRequestNotifications: () -> Unit,
     onConfigChanged: () -> Unit,
     onPresetSelected: (WakeQuickPreset) -> Unit,
     onEditAlarm: (PrayerWakeConfig) -> Unit,
@@ -2055,30 +2048,6 @@ private fun WakeAlarmCard(
     val coroutineScope = rememberCoroutineScope()
     var alarmPendingDeletion by remember { mutableStateOf<PrayerWakeConfig?>(null) }
     val loadedWakeAlarms = wakeAlarms.orEmpty()
-    val schedulingSnapshot = WakeAlarmScheduler.schedulingSnapshot(context, loadedWakeAlarms)
-    val healthMessages = buildList {
-        if (schedulingSnapshot.enabledFutureAlarmCount > 0) {
-            when (schedulingSnapshot.state) {
-                WakeAlarmScheduler.SchedulingState.EXACT_ALARM_PERMISSION_MISSING -> {
-                    add(context.getString(R.string.wake_alarm_health_exact_missing))
-                }
-                WakeAlarmScheduler.SchedulingState.NOT_SCHEDULED -> {
-                    add(context.getString(R.string.wake_alarm_health_not_scheduled))
-                }
-                WakeAlarmScheduler.SchedulingState.READY,
-                WakeAlarmScheduler.SchedulingState.NO_ENABLED_FUTURE_ALARMS -> Unit
-            }
-            if (!hasNotifications) {
-                add(context.getString(R.string.wake_alarm_health_notifications_missing))
-            }
-            if (!hasFullScreenIntent) {
-                add(context.getString(R.string.wake_alarm_health_full_screen_missing))
-            }
-            if (!hasBattery) {
-                add(context.getString(R.string.wake_alarm_health_battery_restricted))
-            }
-        }
-    }
     val nextAlarm = remember(loadedWakeAlarms, delegationId) {
         loadedWakeAlarms
             .mapNotNull { alarm ->
@@ -2131,13 +2100,6 @@ private fun WakeAlarmCard(
             WakeAlarmEmptyState(onPresetSelected = onPresetSelected)
         }
 
-        if (healthMessages.isNotEmpty()) {
-            WakeAlarmHealthPanel(
-                messages = healthMessages,
-                onRequestNotifications = if (!hasNotifications) onRequestNotifications else null,
-            )
-        }
-
         if (loadedWakeAlarms.isNotEmpty()) {
             WakeAlarmListPanel(
                 wakeAlarms = loadedWakeAlarms,
@@ -2177,57 +2139,6 @@ private fun WakeAlarmFloatingAddButton(
             fontWeight = FontWeight.Normal,
             color = Color.White,
         )
-    }
-}
-
-@Composable
-private fun WakeAlarmHealthPanel(
-    messages: List<String>,
-    onRequestNotifications: (() -> Unit)? = null,
-) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(14.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF8E1)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-        border = BorderStroke(1.dp, Color(0xFFFFECB3)),
-    ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp),
-        ) {
-            Text(
-                text = stringResource(R.string.wake_alarm_health_title),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF7A4A00),
-            )
-            messages.forEach { message ->
-                Text(
-                    text = message,
-                    fontSize = 12.sp,
-                    lineHeight = 17.sp,
-                    color = Color(0xFF7A4A00),
-                )
-            }
-            if (onRequestNotifications != null) {
-                OutlinedButton(
-                    onClick = onRequestNotifications,
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp),
-                    border = BorderStroke(1.dp, Color(0xFFB26A00).copy(alpha = 0.45f)),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color(0xFF7A4A00),
-                    ),
-                ) {
-                    Text(
-                        text = stringResource(R.string.wake_alarm_health_notifications_action),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
-            }
-        }
     }
 }
 
@@ -2396,14 +2307,6 @@ private fun WakeAlarmListPanel(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Text(
-            text = stringResource(R.string.wake_alarm_list_title),
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Bold,
-            color = PrayerNameColor,
-            modifier = Modifier.padding(horizontal = 4.dp),
-        )
-
         wakeAlarms.forEachIndexed { index, wakeAlarm ->
             val nextMillis = remember(wakeAlarm, delegationId) {
                 nextWakeAlarmMillis(context, delegationId, wakeAlarm)
@@ -3970,10 +3873,28 @@ private fun prayerTimeMillis(day: Calendar, prayerTime: PrayerTime): Long {
 }
 
 private fun formatCountdownRemaining(targetAtMillis: Long, currentTimeMillis: Long): String {
-    val remainingMinutes = ((targetAtMillis - currentTimeMillis + 59_999L) / 60_000L)
+    val remainingMillis = (targetAtMillis - currentTimeMillis).coerceAtLeast(0L)
+    if (remainingMillis < 60_000L) {
+        val remainingSeconds = ((remainingMillis + 999L) / 1_000L)
+            .coerceAtLeast(0L)
+            .toInt()
+        return "${remainingSeconds} ث"
+    }
+
+    val remainingMinutes = ((remainingMillis + 59_999L) / 60_000L)
         .coerceAtLeast(1L)
         .toInt()
     return formatDurationText(remainingMinutes)
+}
+
+private fun nextCountdownRefreshDelayMillis(targetAtMillis: Long?, currentTimeMillis: Long): Long {
+    val remainingMillis = targetAtMillis?.let { target -> target - currentTimeMillis }
+    val nextTickMillis = if (remainingMillis != null && remainingMillis in 1L..60_000L) {
+        ((currentTimeMillis / 1_000L) + 1L) * 1_000L
+    } else {
+        ((currentTimeMillis / 60_000L) + 1L) * 60_000L
+    }
+    return (nextTickMillis - currentTimeMillis).coerceAtLeast(1L)
 }
 
 // Helper functions
