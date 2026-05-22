@@ -51,7 +51,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.WakeUpCheckStep
@@ -147,13 +146,12 @@ class WakeAlertActivity : AppCompatActivity() {
                             "Activity.onStopButton payloadEventId=${payload?.eventId} queueCurrent=${queue.current?.eventId}",
                         )
                         payload?.let { p ->
-                            AnalyticsTracker.wakeAlarmDismissed(
+                            WakeDismissalCoordinator.recordDismissal(
                                 context = this@WakeAlertActivity,
                                 payload = p,
                                 stopSource = "alert_activity",
                                 wakeupCheckCompleted = wakeupCheckCompleted,
                             )
-                            scheduleAwakeCheckIfEnabled(p)
                         }
                         val advanced = advanceToNextPayload()
                         // Ask the service to refresh notification + ringtone
@@ -242,57 +240,6 @@ class WakeAlertActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
-    private fun scheduleAwakeCheckIfEnabled(payload: WakeTriggerPayload) {
-        if (!payload.awakeCheckEnabled) return
-
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as android.app.AlarmManager
-        val triggerAtMillis = System.currentTimeMillis() + payload.awakeCheckDelayMinutes * 60_000L
-
-        val intent = Intent(this, AwakeCheckReceiver::class.java)
-            .setAction(AwakeCheckReceiver.ACTION_START_AWAKE_CHECK)
-            .putExtra(EXTRA_EVENT_ID, payload.eventId)
-            .putExtra(EXTRA_RINGTONE, payload.ringtone.name)
-            .apply {
-                payload.customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
-            }
-
-        val pendingIntent = android.app.PendingIntent.getBroadcast(
-            this,
-            "awake_check_schedule".hashCode(),
-            intent,
-            android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE,
-        )
-
-        val canUseExact = Build.VERSION.SDK_INT < Build.VERSION_CODES.S ||
-            alarmManager.canScheduleExactAlarms()
-
-        try {
-            if (canUseExact) {
-                alarmManager.setExactAndAllowWhileIdle(
-                    android.app.AlarmManager.RTC_WAKEUP,
-                    triggerAtMillis,
-                    pendingIntent,
-                )
-            } else {
-                alarmManager.setAndAllowWhileIdle(
-                    android.app.AlarmManager.RTC_WAKEUP,
-                    triggerAtMillis,
-                    pendingIntent,
-                )
-            }
-        } catch (e: SecurityException) {
-            android.util.Log.w(
-                "WakeAlertActivity",
-                "Exact alarm denied; falling back to inexact awake check",
-                e,
-            )
-            alarmManager.setAndAllowWhileIdle(
-                android.app.AlarmManager.RTC_WAKEUP,
-                triggerAtMillis,
-                pendingIntent,
-            )
-        }
-    }
 }
 
 @Composable

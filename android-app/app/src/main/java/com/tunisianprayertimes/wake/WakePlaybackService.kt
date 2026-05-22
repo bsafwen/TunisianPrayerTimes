@@ -1,42 +1,23 @@
 package com.tunisianprayertimes.wake
 
 import android.app.Notification
-import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
-import android.media.AudioAttributes
-import android.media.AudioManager
-import android.media.MediaPlayer
-import android.media.RingtoneManager
-import android.net.Uri
-import android.os.Build
 import android.os.IBinder
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.os.VibratorManager
 import androidx.core.app.NotificationCompat
 import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.R
-import com.tunisianprayertimes.RingtonePreset
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
 
 class WakePlaybackService : Service() {
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-    private var mediaPlayer: MediaPlayer? = null
-    private var vibrator: Vibrator? = null
-    private var volumeRampJob: Job? = null
-    private var savedAlarmVolume: Int? = null
-    private var speakerRoute: SpeakerPlaybackRoute? = null
+    private val audioController by lazy { AlarmAudioController(this, serviceScope) }
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -213,160 +194,21 @@ class WakePlaybackService : Service() {
             .build()
 
     private fun startPlayback(payload: WakeTriggerPayload) {
-        stopPlayback()
-
-        if (payload.vibrationOnly) {
-            startVibrationOnly()
-            return
-        }
-
-        forceMaxAlarmVolume()
-
-        val preferredUri = preferredRingtoneUri(payload)
-        if (preferredUri != null && playUri(preferredUri, payload.progressiveVolume)) {
-            return
-        }
-
-        val fallbackUri = fallbackRingtoneUri()
-        if (fallbackUri != null && fallbackUri != preferredUri && playUri(fallbackUri, payload.progressiveVolume)) {
-            return
-        }
-
-        startVibrationOnly()
-    }
-
-    private fun preferredRingtoneUri(payload: WakeTriggerPayload): Uri? = when {
-        payload.ringtone == RingtonePreset.CUSTOM && payload.customRingtoneUri != null -> {
-            runCatching { Uri.parse(payload.customRingtoneUri) }.getOrNull()
-        }
-
-        WakeRingtoneCatalog.rawResIdFor(payload.ringtone) != null -> {
-            val rawResId = WakeRingtoneCatalog.rawResIdFor(payload.ringtone) ?: return null
-            Uri.parse("android.resource://$packageName/$rawResId")
-        }
-
-        else -> {
-            WakeRingtoneCatalog.systemTypeFor(payload.ringtone)
-                ?.let { systemType -> RingtoneManager.getDefaultUri(systemType) }
-        }
-    }
-
-    private fun fallbackRingtoneUri(): Uri? =
-        RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-            ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-            ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
-
-    private fun playUri(uri: Uri, progressiveVolume: Boolean): Boolean {
-        val player = MediaPlayer()
-        var route: SpeakerPlaybackRoute? = null
-        return try {
-            player.setDataSource(this, uri)
-            player.setAudioAttributes(alarmAudioAttributes())
-            val playbackRoute = SpeakerPlaybackRoute(this, player, serviceScope)
-            route = playbackRoute
-            playbackRoute.applyNow()
-            player.isLooping = true
-            player.prepare()
-            playbackRoute.applyNow()
-            val initialVolume = if (progressiveVolume) {
-                WakeProgressiveVolumeRamp.ringtoneVolumeAt(0L)
-            } else {
-                1f
-            }
-            player.setVolume(initialVolume, initialVolume)
-            player.start()
-            playbackRoute.start()
-            if (progressiveVolume) {
-                startProgressiveVolumeRamp { volume ->
-                    player.setVolume(volume, volume)
-                }
-            }
-            speakerRoute = playbackRoute
-            mediaPlayer = player
-            true
-        } catch (_: Exception) {
-            route?.release()
-            runCatching { player.release() }
-            false
-        }
-    }
-
-    private fun startProgressiveVolumeRamp(onVolumeChanged: (Float) -> Unit) {
-        volumeRampJob?.cancel()
-        volumeRampJob = serviceScope.launch {
-            var elapsedMillis = 0L
-            while (isActive && elapsedMillis < WakeProgressiveVolumeRamp.DURATION_MILLIS) {
-                delay(WakeProgressiveVolumeRamp.FALLBACK_STEP_INTERVAL_MILLIS)
-                elapsedMillis += WakeProgressiveVolumeRamp.FALLBACK_STEP_INTERVAL_MILLIS
-                runCatching {
-                    onVolumeChanged(WakeProgressiveVolumeRamp.ringtoneVolumeAt(elapsedMillis))
-                }
-            }
-            runCatching { onVolumeChanged(1f) }
-        }
+        audioController.startWakeAlarm(payload)
     }
 
     private fun stopPlayback() {
-        volumeRampJob?.cancel()
-        volumeRampJob = null
-        speakerRoute?.release()
-        speakerRoute = null
-        restoreAlarmVolume()
-        mediaPlayer?.let { player ->
-            runCatching {
-                if (player.isPlaying) {
-                    player.stop()
-                }
-            }
-            runCatching { player.release() }
-        }
-        mediaPlayer = null
-        vibrator?.cancel()
-        vibrator = null
-    }
-
-    private fun startVibrationOnly() {
-        val vibrator = systemVibrator() ?: return
-        vibrator.vibrate(
-            VibrationEffect.createWaveform(longArrayOf(0L, 700L, 300L, 900L), 0),
-        )
-        this.vibrator = vibrator
+        audioController.stop()
     }
 
     private fun createChannel() {
-        val notificationManager = getSystemService(NotificationManager::class.java)
-        val channel = NotificationChannel(
-            CHANNEL_ID,
-            getString(R.string.wake_alarm_channel_name),
-            NotificationManager.IMPORTANCE_HIGH,
-        ).apply {
-            description = getString(R.string.wake_alarm_channel_description)
-            lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            setSound(null, null)
-            enableVibration(false)
-        }
-        notificationManager.createNotificationChannel(channel)
+        AlarmAudioController.createSilentAlarmChannel(
+            context = this,
+            channelId = CHANNEL_ID,
+            name = getString(R.string.wake_alarm_channel_name),
+            description = getString(R.string.wake_alarm_channel_description),
+        )
     }
-
-    private fun forceMaxAlarmVolume() {
-        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        savedAlarmVolume = audioManager.getStreamVolume(AudioManager.STREAM_ALARM)
-        val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM)
-        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, maxVolume, 0)
-    }
-
-    private fun restoreAlarmVolume() {
-        val volume = savedAlarmVolume ?: return
-        savedAlarmVolume = null
-        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, volume, 0)
-    }
-
-    private fun alarmAudioAttributes(): AudioAttributes =
-        AudioAttributes.Builder()
-            .setUsage(AudioAttributes.USAGE_ALARM)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-            .build()
 
     private fun alertActivityPendingIntent(
         context: Context,
@@ -454,14 +296,6 @@ class WakePlaybackService : Service() {
     }
 
     private fun notificationIdFor(eventId: String): Int = eventId.hashCode() and 0x7fffffff
-
-    @Suppress("DEPRECATION")
-    private fun systemVibrator(): Vibrator? =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            getSystemService(VibratorManager::class.java)?.defaultVibrator
-        } else {
-            getSystemService(Vibrator::class.java)
-        }
 
     companion object {
         private const val CHANNEL_ID = "tunisianprayertimes.wake.playback.silent"

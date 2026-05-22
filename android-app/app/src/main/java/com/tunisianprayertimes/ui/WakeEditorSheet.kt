@@ -134,6 +134,7 @@ fun WakeEditorSheet(
     activity: AppCompatActivity,
     delegationId: Int,
     initialConfig: PrayerWakeConfig,
+    isNewAlarm: Boolean = false,
     onDismissRequest: () -> Unit,
     onSave: (PrayerWakeConfig) -> Unit,
     onDelete: (() -> Unit)? = null,
@@ -299,7 +300,9 @@ fun WakeEditorSheet(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = stringResource(R.string.wake_editor_title),
+                    text = stringResource(
+                        if (isNewAlarm) R.string.wake_editor_new_title else R.string.wake_editor_title,
+                    ),
                     fontSize = 19.sp,
                     fontWeight = FontWeight.Bold,
                     color = PrayerNameColor,
@@ -1009,6 +1012,8 @@ private fun WakeChoiceButton(
             text = text,
             fontSize = if (compact) 11.sp else 12.sp,
             fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
+            textAlign = TextAlign.Center,
+            maxLines = if (compact) 1 else Int.MAX_VALUE,
         )
     }
 }
@@ -1578,9 +1583,9 @@ private fun WakeWakeCheckControls(
                                 fontWeight = FontWeight.Bold,
                                 color = TextMuted,
                             )
-                            FlowRow(
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.spacedBy(6.dp),
-                                verticalArrangement = Arrangement.spacedBy(6.dp),
                             ) {
                                 WakeUpCheckType.entries.forEach { type ->
                                     WakeChoiceButton(
@@ -1591,11 +1596,8 @@ private fun WakeWakeCheckControls(
                                             }
                                             onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
                                         },
-                                        text = when (type) {
-                                            WakeUpCheckType.MATH -> stringResource(R.string.wake_editor_check_type_math)
-                                            WakeUpCheckType.WHACK_A_MOLE -> stringResource(R.string.wake_editor_check_type_whack_a_mole)
-                                            WakeUpCheckType.GYROSCOPE_MAZE -> stringResource(R.string.wake_editor_check_type_gyroscope_maze)
-                                        },
+                                        text = wakeCheckTypeShortLabel(type),
+                                        modifier = Modifier.weight(1f),
                                         compact = true,
                                     )
                                 }
@@ -1607,9 +1609,9 @@ private fun WakeWakeCheckControls(
                                 fontWeight = FontWeight.Bold,
                                 color = TextMuted,
                             )
-                            FlowRow(
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.spacedBy(6.dp),
-                                verticalArrangement = Arrangement.spacedBy(6.dp),
                             ) {
                                 MathDifficulty.entries.forEach { diff ->
                                     WakeChoiceButton(
@@ -1625,6 +1627,7 @@ private fun WakeWakeCheckControls(
                                             MathDifficulty.INTERMEDIATE -> stringResource(R.string.wake_editor_math_difficulty_intermediate)
                                             MathDifficulty.HARD -> stringResource(R.string.wake_editor_math_difficulty_hard)
                                         },
+                                        modifier = Modifier.weight(1f),
                                         compact = true,
                                     )
                                 }
@@ -1669,6 +1672,13 @@ private fun wakeCheckTypeLabel(type: WakeUpCheckType): String = when (type) {
     WakeUpCheckType.MATH -> stringResource(R.string.wake_editor_check_type_math)
     WakeUpCheckType.WHACK_A_MOLE -> stringResource(R.string.wake_editor_check_type_whack_a_mole)
     WakeUpCheckType.GYROSCOPE_MAZE -> stringResource(R.string.wake_editor_check_type_gyroscope_maze)
+}
+
+@Composable
+private fun wakeCheckTypeShortLabel(type: WakeUpCheckType): String = when (type) {
+    WakeUpCheckType.MATH -> stringResource(R.string.wake_editor_check_type_math_short)
+    WakeUpCheckType.WHACK_A_MOLE -> stringResource(R.string.wake_editor_check_type_whack_short)
+    WakeUpCheckType.GYROSCOPE_MAZE -> stringResource(R.string.wake_editor_check_type_maze_short)
 }
 
 @Composable

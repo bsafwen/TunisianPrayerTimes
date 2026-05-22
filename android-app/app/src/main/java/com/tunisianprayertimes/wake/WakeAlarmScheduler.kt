@@ -163,6 +163,34 @@ object WakeAlarmScheduler {
 		persistScheduledEventIds(context, emptySet())
 	}
 
+	fun schedulingSnapshot(
+		context: Context,
+		configs: Collection<PrayerWakeConfig>,
+		nowMillis: Long = System.currentTimeMillis(),
+	): SchedulingSnapshot {
+		val enabledFutureAlarmCount = configs.count { config -> config.hasFutureTriggers(nowMillis) }
+		val scheduledEventCount = scheduledEventIds(context).size
+		val exactAlarmAllowed = canScheduleExactAlarms(context)
+		val state = when {
+			enabledFutureAlarmCount == 0 -> SchedulingState.NO_ENABLED_FUTURE_ALARMS
+			!exactAlarmAllowed -> SchedulingState.EXACT_ALARM_PERMISSION_MISSING
+			scheduledEventCount == 0 -> SchedulingState.NOT_SCHEDULED
+			else -> SchedulingState.READY
+		}
+
+		return SchedulingSnapshot(
+			state = state,
+			enabledFutureAlarmCount = enabledFutureAlarmCount,
+			scheduledEventCount = scheduledEventCount,
+			exactAlarmAllowed = exactAlarmAllowed,
+		)
+	}
+
+	fun canScheduleExactAlarms(context: Context): Boolean {
+		val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+		return canScheduleExactAlarms(alarmManager)
+	}
+
 	@VisibleForTesting
 	internal fun scheduleAllInternal(
 		context: Context,
@@ -415,6 +443,20 @@ object WakeAlarmScheduler {
 		} else {
 			true
 		}
+
+	enum class SchedulingState {
+		READY,
+		NO_ENABLED_FUTURE_ALARMS,
+		EXACT_ALARM_PERMISSION_MISSING,
+		NOT_SCHEDULED,
+	}
+
+	data class SchedulingSnapshot(
+		val state: SchedulingState,
+		val enabledFutureAlarmCount: Int,
+		val scheduledEventCount: Int,
+		val exactAlarmAllowed: Boolean,
+	)
 
 	private fun scheduledEventIds(context: Context): Set<String> =
 		context

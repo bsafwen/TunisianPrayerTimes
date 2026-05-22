@@ -119,6 +119,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.core.content.ContextCompat
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import com.tunisianprayertimes.ClockTime
 import com.tunisianprayertimes.DelayMode
 import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.DayPrayerTimes
@@ -131,6 +132,7 @@ import com.tunisianprayertimes.ManualSilenceMode
 import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerRelativeOffset
 import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.PrayerWakeConfig
@@ -148,6 +150,7 @@ import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
 import com.tunisianprayertimes.SilenceVerifyWorker
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
+import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.formatArabicMinutes
@@ -189,6 +192,15 @@ private enum class MainDestination(val labelRes: Int, val iconRes: Int) {
     Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla),
 }
 
+private enum class WakeQuickPreset {
+    PRAYER_RELATIVE,
+    FIXED_TIME,
+    TIMER,
+}
+
+private const val DEFAULT_PRAYER_OFFSET_MINUTES = 20
+private const val DEFAULT_TIMER_MINUTES = 15
+
 private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Today -> "prayers"
     MainDestination.Alarms -> "alarms"
@@ -229,6 +241,8 @@ fun MainScreen(
     // State derived from system/prefs — re-evaluated on refreshTick
     val hasDnd = remember(refreshTick) { notificationManager.isNotificationPolicyAccessGranted }
     val hasAlarm = remember(refreshTick) { hasExactAlarmPermission(context) }
+    val hasNotifications = remember(refreshTick) { hasPostNotificationsPermission(context) }
+    val hasFullScreenIntent = remember(refreshTick) { hasFullScreenIntentPermission(context) }
     val hasBattery = remember(refreshTick) { isIgnoringBatteryOptimizations(context) }
     val hasPhoneState = remember(refreshTick) {
         ContextCompat.checkSelfPermission(
@@ -379,6 +393,7 @@ fun MainScreen(
         }
         schedulerScope.launch {
             syncWakeScheduling()
+            refreshTick++
         }
         // Sync UI after rescheduling — scheduleAll may have silenced the phone
         // if the current time now falls inside a silence window.
@@ -386,6 +401,13 @@ fun MainScreen(
     }
 
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
+    var quickAddVisible by rememberSaveable { mutableStateOf(false) }
+
+    fun createWakeAlarm(preset: WakeQuickPreset) {
+        quickAddVisible = false
+        editingWakeAlarm = newWakeAlarmConfig(preset)
+    }
+
     val mainDestinations = remember { MainDestination.values().toList() }
     var selectedDestinationIndex by rememberSaveable { mutableIntStateOf(0) }
     LaunchedEffect(requestedDestination, requestedDestinationSequence) {
@@ -430,6 +452,7 @@ fun MainScreen(
         }
     }
 
+    var notificationPermissionPromptRequested by rememberSaveable { mutableStateOf(false) }
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { granted ->
@@ -439,12 +462,54 @@ fun MainScreen(
             result = if (granted) "granted" else "denied",
             entryPoint = "wake_alarm",
         )
+        if (granted) {
+            notificationPermissionPromptRequested = false
+        }
+        refreshTick++
         requestFullScreenIntentIfNeeded()
     }
 
+    fun requestWakeNotificationPermission() {
+        if (hasPostNotificationsPermission(context)) {
+            refreshTick++
+            return
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            notificationPermissionPromptRequested = true
+            AnalyticsTracker.permissionStepResult(
+                context = context,
+                permissionType = "notifications",
+                result = "request_opened",
+                entryPoint = "wake_alarm",
+            )
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
     val wakeRepository = remember(context) { com.tunisianprayertimes.wake.PrayerWakeRepository(context) }
+    val wakeAlarmsForPermission: List<PrayerWakeConfig>? by wakeRepository.wakeAlarms.collectAsState(initial = null)
+    val hasEnabledFutureWakeAlarm = wakeAlarmsForPermission
+        ?.let { wakeAlarms -> WakeAlarmScheduler.schedulingSnapshot(context, wakeAlarms).enabledFutureAlarmCount > 0 }
+        ?: false
     val mainScope = rememberCoroutineScope()
     val awakeCheckRunning by AwakeCheckService.isRunning.collectAsState()
+
+    LaunchedEffect(selectedDestination, hasNotifications, hasEnabledFutureWakeAlarm, notificationPermissionPromptRequested) {
+        if (selectedDestination == MainDestination.Alarms &&
+            hasEnabledFutureWakeAlarm &&
+            !hasNotifications &&
+            !notificationPermissionPromptRequested
+        ) {
+            requestWakeNotificationPermission()
+        }
+    }
+
+    if (quickAddVisible) {
+        WakeQuickAddSheet(
+            onDismiss = { quickAddVisible = false },
+            onPresetSelected = ::createWakeAlarm,
+        )
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -713,9 +778,15 @@ fun MainScreen(
                         }
 
                         WakeAlarmCard(
+                            wakeAlarms = wakeAlarmsForPermission,
                             delegationId = delegationId,
                             activity = activity,
+                            hasNotifications = hasNotifications,
+                            hasFullScreenIntent = hasFullScreenIntent,
+                            hasBattery = hasBattery,
+                            onRequestNotifications = ::requestWakeNotificationPermission,
                             onConfigChanged = { rescheduleIfEnabled() },
+                            onPresetSelected = ::createWakeAlarm,
                             onEditAlarm = { config -> editingWakeAlarm = config },
                         )
                     }
@@ -818,6 +889,16 @@ fun MainScreen(
             }
         }
 
+        if (selectedDestination == MainDestination.Alarms && wakeAlarmsForPermission?.isNotEmpty() == true && editingWakeAlarm == null) {
+            WakeAlarmFloatingAddButton(
+                onClick = { quickAddVisible = true },
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .navigationBarsPadding()
+                    .padding(end = 24.dp, bottom = 92.dp),
+            )
+        }
+
         // Full-screen wake alarm editor overlay
         editingWakeAlarm?.let { wakeAlarm ->
             val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
@@ -826,6 +907,7 @@ fun MainScreen(
                 activity = activity,
                 delegationId = delegationId,
                 initialConfig = wakeAlarm,
+                isNewAlarm = !isPersistedAlarm,
                 onDismissRequest = { editingWakeAlarm = null },
                 onSave = { config ->
                     mainScope.launch {
@@ -845,16 +927,8 @@ fun MainScreen(
                         refreshSilenceState()
                     }
                     if (config.enabled) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-                            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
-                        ) {
-                            AnalyticsTracker.permissionStepResult(
-                                context = context,
-                                permissionType = "notifications",
-                                result = "request_opened",
-                                entryPoint = "wake_alarm",
-                            )
-                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        if (!hasPostNotificationsPermission(context)) {
+                            requestWakeNotificationPermission()
                         } else {
                             requestFullScreenIntentIfNeeded()
                         }
@@ -1973,18 +2047,48 @@ private fun PrayerSettingsCard(
 
 @Composable
 private fun WakeAlarmCard(
+    wakeAlarms: List<PrayerWakeConfig>?,
     delegationId: Int,
     activity: androidx.appcompat.app.AppCompatActivity,
+    hasNotifications: Boolean,
+    hasFullScreenIntent: Boolean,
+    hasBattery: Boolean,
+    onRequestNotifications: () -> Unit,
     onConfigChanged: () -> Unit,
+    onPresetSelected: (WakeQuickPreset) -> Unit,
     onEditAlarm: (PrayerWakeConfig) -> Unit,
 ) {
     val context = LocalContext.current
     val wakeRepository = remember(context) { PrayerWakeRepository(context) }
-    val wakeAlarms by wakeRepository.wakeAlarms.collectAsState(initial = emptyList())
     val coroutineScope = rememberCoroutineScope()
     var alarmPendingDeletion by remember { mutableStateOf<PrayerWakeConfig?>(null) }
-    val nextAlarm = remember(wakeAlarms, delegationId) {
-        wakeAlarms
+    val loadedWakeAlarms = wakeAlarms.orEmpty()
+    val schedulingSnapshot = WakeAlarmScheduler.schedulingSnapshot(context, loadedWakeAlarms)
+    val healthMessages = buildList {
+        if (schedulingSnapshot.enabledFutureAlarmCount > 0) {
+            when (schedulingSnapshot.state) {
+                WakeAlarmScheduler.SchedulingState.EXACT_ALARM_PERMISSION_MISSING -> {
+                    add(context.getString(R.string.wake_alarm_health_exact_missing))
+                }
+                WakeAlarmScheduler.SchedulingState.NOT_SCHEDULED -> {
+                    add(context.getString(R.string.wake_alarm_health_not_scheduled))
+                }
+                WakeAlarmScheduler.SchedulingState.READY,
+                WakeAlarmScheduler.SchedulingState.NO_ENABLED_FUTURE_ALARMS -> Unit
+            }
+            if (!hasNotifications) {
+                add(context.getString(R.string.wake_alarm_health_notifications_missing))
+            }
+            if (!hasFullScreenIntent) {
+                add(context.getString(R.string.wake_alarm_health_full_screen_missing))
+            }
+            if (!hasBattery) {
+                add(context.getString(R.string.wake_alarm_health_battery_restricted))
+            }
+        }
+    }
+    val nextAlarm = remember(loadedWakeAlarms, delegationId) {
+        loadedWakeAlarms
             .mapNotNull { alarm ->
                 nextWakeAlarmMillis(context, delegationId, alarm)?.let { triggerAtMillis ->
                     alarm to triggerAtMillis
@@ -2009,41 +2113,34 @@ private fun WakeAlarmCard(
         )
     }
 
-    fun createWakeAlarm() {
-        onEditAlarm(PrayerWakeConfig(
-            id = UUID.randomUUID().toString(),
-            enabled = true,
-            prayer = WAKE_SUPPORTED_PRAYERS.first(),
-            playback = WakePlaybackOptions(
-                ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
-            ),
-        ))
-    }
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        WakeAlarmTabHeader(
-            showAddButton = wakeAlarms.isNotEmpty(),
-            onAddAlarm = ::createWakeAlarm,
-        )
-
         if (nextAlarm != null) {
             val (alarm, triggerAtMillis) = nextAlarm
             WakeNextAlarmPanel(
                 wakeConfig = alarm,
                 triggerAtMillis = triggerAtMillis,
             )
-        } else {
-            WakeAlarmEmptyState(onAddAlarm = ::createWakeAlarm)
         }
 
-        if (wakeAlarms.isNotEmpty()) {
+        if (wakeAlarms != null && nextAlarm == null) {
+            WakeAlarmEmptyState(onPresetSelected = onPresetSelected)
+        }
+
+        if (healthMessages.isNotEmpty()) {
+            WakeAlarmHealthPanel(
+                messages = healthMessages,
+                onRequestNotifications = if (!hasNotifications) onRequestNotifications else null,
+            )
+        }
+
+        if (loadedWakeAlarms.isNotEmpty()) {
             WakeAlarmListPanel(
-                wakeAlarms = wakeAlarms,
+                wakeAlarms = loadedWakeAlarms,
                 delegationId = delegationId,
                 onEditAlarm = onEditAlarm,
                 onEnabledChange = { wakeAlarm, enabled ->
@@ -2061,46 +2158,229 @@ private fun WakeAlarmCard(
 }
 
 @Composable
-private fun WakeAlarmTabHeader(
-    showAddButton: Boolean,
-    onAddAlarm: () -> Unit,
+private fun WakeAlarmFloatingAddButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    Row(
+    Button(
+        onClick = onClick,
+        modifier = modifier.size(64.dp),
+        shape = RoundedCornerShape(22.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+        contentPadding = PaddingValues(0.dp),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp),
+    ) {
+        Text(
+            text = "+",
+            fontSize = 34.sp,
+            lineHeight = 34.sp,
+            fontWeight = FontWeight.Normal,
+            color = Color.White,
+        )
+    }
+}
+
+@Composable
+private fun WakeAlarmHealthPanel(
+    messages: List<String>,
+    onRequestNotifications: (() -> Unit)? = null,
+) {
+    Card(
         modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(14.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF8E1)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        border = BorderStroke(1.dp, Color(0xFFFFECB3)),
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.wake_alarm_health_title),
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF7A4A00),
+            )
+            messages.forEach { message ->
+                Text(
+                    text = message,
+                    fontSize = 12.sp,
+                    lineHeight = 17.sp,
+                    color = Color(0xFF7A4A00),
+                )
+            }
+            if (onRequestNotifications != null) {
+                OutlinedButton(
+                    onClick = onRequestNotifications,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(10.dp),
+                    border = BorderStroke(1.dp, Color(0xFFB26A00).copy(alpha = 0.45f)),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = Color(0xFF7A4A00),
+                    ),
+                ) {
+                    Text(
+                        text = stringResource(R.string.wake_alarm_health_notifications_action),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun WakeQuickAddSheet(
+    onDismiss: () -> Unit,
+    onPresetSelected: (WakeQuickPreset) -> Unit,
+) {
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .padding(horizontal = 20.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.wake_quick_add_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+            WakeQuickPreset.values().forEach { preset ->
+                WakeQuickPresetRow(
+                    preset = preset,
+                    onClick = { onPresetSelected(preset) },
+                )
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+private fun WakeQuickPresetRow(
+    preset: WakeQuickPreset,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val recommended = preset == WakeQuickPreset.PRAYER_RELATIVE
+    val shape = RoundedCornerShape(12.dp)
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .clickable(onClick = onClick)
+            .background(if (recommended) GreenPrimary.copy(alpha = 0.10f) else GoldLight.copy(alpha = 0.10f))
+            .border(
+                BorderStroke(1.dp, if (recommended) GreenPrimary.copy(alpha = 0.40f) else Gold.copy(alpha = 0.22f)),
+                shape,
+            )
+            .padding(horizontal = 13.dp, vertical = 11.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(
             modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(2.dp),
+            verticalArrangement = Arrangement.spacedBy(3.dp),
         ) {
             Text(
-                text = stringResource(R.string.wake_alarm_section_title),
-                fontSize = 20.sp,
+                text = wakeQuickPresetTitle(preset),
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
-                color = PrayerNameColor,
+                color = if (recommended) GreenPrimaryDark else TextDark,
             )
             Text(
-                text = stringResource(R.string.wake_alarm_section_subtitle_modern),
+                text = wakeQuickPresetSubtitle(preset),
                 fontSize = 12.sp,
-                color = TextMuted,
                 lineHeight = 17.sp,
+                color = if (recommended) GreenPrimaryDark.copy(alpha = 0.78f) else TextMuted,
             )
         }
-
-        if (showAddButton) {
-            Button(
-                onClick = onAddAlarm,
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
-            ) {
-                Text(text = "+", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.width(6.dp))
-                Text(text = stringResource(R.string.wake_alarm_add), fontSize = 12.sp)
-            }
-        }
+        Text(
+            text = "+",
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (recommended) GreenPrimary else TextMuted,
+            modifier = Modifier.padding(start = 10.dp),
+        )
     }
+}
+
+@Composable
+private fun wakeQuickPresetTitle(preset: WakeQuickPreset): String = when (preset) {
+    WakeQuickPreset.PRAYER_RELATIVE -> stringResource(R.string.wake_quick_add_prayer_relative_title)
+    WakeQuickPreset.FIXED_TIME -> stringResource(R.string.wake_quick_add_fixed_title)
+    WakeQuickPreset.TIMER -> stringResource(R.string.wake_quick_add_timer_title)
+}
+
+@Composable
+private fun wakeQuickPresetSubtitle(preset: WakeQuickPreset): String = when (preset) {
+    WakeQuickPreset.PRAYER_RELATIVE -> stringResource(R.string.wake_quick_add_prayer_relative_subtitle)
+    WakeQuickPreset.FIXED_TIME -> stringResource(R.string.wake_quick_add_fixed_subtitle)
+    WakeQuickPreset.TIMER -> stringResource(R.string.wake_quick_add_timer_subtitle)
+}
+
+private fun newWakeAlarmConfig(preset: WakeQuickPreset): PrayerWakeConfig {
+    val nowMillis = System.currentTimeMillis()
+    val fixedTime = roundedClockTimeAfter(minutesFromNow = 30)
+    val mainAlarm = when (preset) {
+        WakeQuickPreset.PRAYER_RELATIVE -> WakeMainAlarmConfig(
+            mode = WakeMainAlarmMode.PRAYER_RELATIVE,
+            prayerOffset = PrayerRelativeOffset(-DEFAULT_PRAYER_OFFSET_MINUTES),
+        )
+        WakeQuickPreset.FIXED_TIME -> WakeMainAlarmConfig(
+            mode = WakeMainAlarmMode.FIXED_TIME,
+            fixedTime = fixedTime,
+        )
+        WakeQuickPreset.TIMER -> WakeMainAlarmConfig(
+            mode = WakeMainAlarmMode.FROM_NOW,
+            fixedTime = fixedTime,
+            oneOffOffsetMinutes = DEFAULT_TIMER_MINUTES,
+            oneOffTriggerAtMillis = nowMillis + DEFAULT_TIMER_MINUTES * 60_000L,
+        )
+    }
+
+    return PrayerWakeConfig(
+        id = UUID.randomUUID().toString(),
+        enabled = true,
+        prayer = Prayer.FAJR,
+        mainAlarm = mainAlarm,
+        playback = WakePlaybackOptions(
+            ringtone = RingtonePreset.ADHAN_MADINAH_MARWAN_QASSAS,
+        ),
+    )
+}
+
+private fun roundedClockTimeAfter(minutesFromNow: Int): ClockTime {
+    val calendar = Calendar.getInstance().apply {
+        add(Calendar.MINUTE, minutesFromNow)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }
+    val roundedMinute = ((calendar.get(Calendar.MINUTE) + 4) / 5) * 5
+    if (roundedMinute >= 60) {
+        calendar.add(Calendar.HOUR_OF_DAY, 1)
+        calendar.set(Calendar.MINUTE, 0)
+    } else {
+        calendar.set(Calendar.MINUTE, roundedMinute)
+    }
+    return ClockTime(
+        hour = calendar.get(Calendar.HOUR_OF_DAY),
+        minute = calendar.get(Calendar.MINUTE),
+    )
 }
 
 @Composable
@@ -2112,41 +2392,30 @@ private fun WakeAlarmListPanel(
     onDeleteRequest: (PrayerWakeConfig) -> Unit,
 ) {
     val context = LocalContext.current
-    Card(
+    Column(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Column(
-            modifier = Modifier.padding(14.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            Text(
-                text = stringResource(R.string.wake_alarm_list_title),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                color = PrayerNameColor,
-            )
+        Text(
+            text = stringResource(R.string.wake_alarm_list_title),
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+            color = PrayerNameColor,
+            modifier = Modifier.padding(horizontal = 4.dp),
+        )
 
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                wakeAlarms.forEachIndexed { index, wakeAlarm ->
-                    val nextMillis = remember(wakeAlarm, delegationId) {
-                        nextWakeAlarmMillis(context, delegationId, wakeAlarm)
-                    }
-                    WakeAlarmRow(
-                        alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
-                        wakeConfig = wakeAlarm,
-                        nextAlarmMillis = nextMillis,
-                        onClick = { onEditAlarm(wakeAlarm) },
-                        onEnabledChange = { enabled -> onEnabledChange(wakeAlarm, enabled) },
-                        onDeleteRequest = { onDeleteRequest(wakeAlarm) },
-                    )
-                }
+        wakeAlarms.forEachIndexed { index, wakeAlarm ->
+            val nextMillis = remember(wakeAlarm, delegationId) {
+                nextWakeAlarmMillis(context, delegationId, wakeAlarm)
             }
+            WakeAlarmRow(
+                alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
+                wakeConfig = wakeAlarm,
+                nextAlarmMillis = nextMillis,
+                onClick = { onEditAlarm(wakeAlarm) },
+                onEnabledChange = { enabled -> onEnabledChange(wakeAlarm, enabled) },
+                onDeleteRequest = { onDeleteRequest(wakeAlarm) },
+            )
         }
     }
 }
@@ -2355,7 +2624,7 @@ private fun NextPrayerHeroCard(
 }
 
 @Composable
-private fun WakeAlarmEmptyState(onAddAlarm: () -> Unit) {
+private fun WakeAlarmEmptyState(onPresetSelected: (WakeQuickPreset) -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(18.dp),
@@ -2378,15 +2647,17 @@ private fun WakeAlarmEmptyState(onAddAlarm: () -> Unit) {
                 color = TextMuted,
                 lineHeight = 18.sp,
             )
-            Button(
-                onClick = onAddAlarm,
+
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                Text(text = "+", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.width(6.dp))
-                Text(text = stringResource(R.string.wake_alarm_add), fontSize = 13.sp)
+                WakeQuickPreset.values().forEach { preset ->
+                    WakeQuickPresetRow(
+                        preset = preset,
+                        onClick = { onPresetSelected(preset) },
+                    )
+                }
             }
         }
     }
@@ -2907,18 +3178,18 @@ private fun WakeAlarmRow(
         }
     }
 
-    OutlinedCard(
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .clip(RoundedCornerShape(12.dp)),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.outlinedCardColors(
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
             containerColor = if (enabled) Color.White else GoldLight.copy(alpha = 0.16f)
         ),
-        border = androidx.compose.foundation.BorderStroke(
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        border = BorderStroke(
             width = 1.dp,
-            color = if (enabled) GreenPrimary.copy(alpha = 0.16f) else CardBorder.copy(alpha = 0.75f)
+            color = if (enabled) GreenPrimary.copy(alpha = 0.14f) else CardBorder.copy(alpha = 0.75f)
         )
     ) {
         Row(
@@ -3725,6 +3996,17 @@ private fun hasExactAlarmPermission(context: Context): Boolean {
     }
     return true
 }
+
+private fun hasPostNotificationsPermission(context: Context): Boolean =
+    Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
+        ContextCompat.checkSelfPermission(
+            context,
+            Manifest.permission.POST_NOTIFICATIONS,
+        ) == PackageManager.PERMISSION_GRANTED
+
+private fun hasFullScreenIntentPermission(context: Context): Boolean =
+    Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE ||
+        context.getSystemService(NotificationManager::class.java).canUseFullScreenIntent()
 
 private fun isIgnoringBatteryOptimizations(context: Context): Boolean {
     val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
