@@ -1,8 +1,8 @@
 package com.tunisianprayertimes
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.tunisianprayertimes.testing.MainScreenRobot
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import kotlinx.coroutines.runBlocking
@@ -31,9 +31,12 @@ class WakeAlarmFunctionalInstrumentedTest {
     private val seedRule = TestRule { base, _ ->
         object : Statement() {
             override fun evaluate() {
-                val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+                val context = InstrumentationRegistry.getInstrumentation().targetContext
                 val repository = PrayerWakeRepository(context)
-                PrefsManager.markFirstLaunchDone(context)
+                context.getSharedPreferences("prayer_silence_prefs", android.content.Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("first_launch_done", true)
+                    .commit()
                 runBlocking { repository.replaceWakeConfigs(listOf(seededAlarm)) }
                 try {
                     base.evaluate()
