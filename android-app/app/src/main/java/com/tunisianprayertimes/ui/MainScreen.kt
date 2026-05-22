@@ -765,18 +765,6 @@ fun MainScreen(
                     }
 
                     MainDestination.Alarms -> {
-                        AnimatedVisibility(
-                            visible = awakeCheckRunning,
-                            enter = expandVertically(),
-                            exit = shrinkVertically()
-                        ) {
-                            AwakeCheckBanner(
-                                onConfirm = {
-                                    AwakeCheckService.confirmAwake(context)
-                                }
-                            )
-                        }
-
                         WakeAlarmCard(
                             wakeAlarms = wakeAlarmsForPermission,
                             delegationId = delegationId,
@@ -784,6 +772,10 @@ fun MainScreen(
                             hasNotifications = hasNotifications,
                             hasFullScreenIntent = hasFullScreenIntent,
                             hasBattery = hasBattery,
+                            awakeCheckRunning = awakeCheckRunning,
+                            onConfirmAwake = {
+                                AwakeCheckService.confirmAwake(context)
+                            },
                             onRequestNotifications = ::requestWakeNotificationPermission,
                             onConfigChanged = { rescheduleIfEnabled() },
                             onPresetSelected = ::createWakeAlarm,
@@ -1063,9 +1055,7 @@ private fun TomorrowMarker() {
 @Composable
 private fun AwakeCheckBanner(onConfirm: () -> Unit) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 12.dp),
+        modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF3E0)),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
@@ -2053,6 +2043,8 @@ private fun WakeAlarmCard(
     hasNotifications: Boolean,
     hasFullScreenIntent: Boolean,
     hasBattery: Boolean,
+    awakeCheckRunning: Boolean,
+    onConfirmAwake: () -> Unit,
     onRequestNotifications: () -> Unit,
     onConfigChanged: () -> Unit,
     onPresetSelected: (WakeQuickPreset) -> Unit,
@@ -2125,6 +2117,14 @@ private fun WakeAlarmCard(
                 wakeConfig = alarm,
                 triggerAtMillis = triggerAtMillis,
             )
+        }
+
+        AnimatedVisibility(
+            visible = awakeCheckRunning,
+            enter = expandVertically(),
+            exit = shrinkVertically()
+        ) {
+            AwakeCheckBanner(onConfirm = onConfirmAwake)
         }
 
         if (wakeAlarms != null && nextAlarm == null) {
