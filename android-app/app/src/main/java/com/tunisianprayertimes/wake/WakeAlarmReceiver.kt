@@ -6,6 +6,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.AnalyticsTracker
+import com.tunisianprayertimes.SilenceStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,10 +24,14 @@ class WakeAlarmReceiver : BroadcastReceiver() {
             WakeAlarmScheduler.releaseSilenceForRingingAlarm(context, alarmId)
         }
 
-        ContextCompat.startForegroundService(
-            context,
-            WakePlaybackService.playbackIntent(context, payload),
-        )
+        if (SilenceStatus.isAppControlledSilenceActive(context)) {
+            Log.d("WakeFlow", "Wake alarm suppressed during app-controlled silence eventId=${payload.eventId}")
+        } else {
+            ContextCompat.startForegroundService(
+                context,
+                WakePlaybackService.playbackIntent(context, payload),
+            )
+        }
 
         val pendingResult = goAsync()
         CoroutineScope(Dispatchers.IO).launch {

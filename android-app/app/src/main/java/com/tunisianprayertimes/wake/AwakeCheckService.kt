@@ -12,6 +12,7 @@ import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RingtonePreset
+import com.tunisianprayertimes.SilenceStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -40,8 +41,13 @@ class AwakeCheckService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        _isRunning.value = true
         val eventId = intent?.getStringExtra(EXTRA_EVENT_ID) ?: return START_NOT_STICKY
+        if (cancelIfSilenceActive(eventId)) {
+            stopSelf(startId)
+            return START_NOT_STICKY
+        }
+
+        _isRunning.value = true
         val ringtonePresetName = intent.getStringExtra(EXTRA_RINGTONE)
         val customRingtoneUri = intent.getStringExtra(EXTRA_CUSTOM_RINGTONE_URI)
 
@@ -69,12 +75,14 @@ class AwakeCheckService : Service() {
         escalationJob = serviceScope.launch {
             // Phase 1: Wait 60 seconds for user to confirm awake
             delay(QUIET_WAIT_MILLIS)
+            if (cancelIfSilenceActive(eventId)) return@launch
 
             // Phase 2: Vibrate for up to 3 minutes
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.notify(NOTIFICATION_ID, buildVibrationNotification(eventId))
             audioController.startVibrationOnly()
             delay(VIBRATION_DURATION_MILLIS)
+            if (cancelIfSilenceActive(eventId)) return@launch
 
             // Phase 3: Switch to ringtone
             notificationManager.notify(NOTIFICATION_ID, buildRingtoneNotification(eventId))
@@ -154,6 +162,15 @@ class AwakeCheckService : Service() {
 
     private fun stopPlayback() {
         audioController.stop()
+    }
+
+    private fun cancelIfSilenceActive(eventId: String): Boolean {
+        if (!SilenceStatus.isAppControlledSilenceActive(this)) return false
+        AwakeCheckScheduler.cancel(this, eventId)
+        stopPlayback()
+        stopForeground(STOP_FOREGROUND_REMOVE)
+        stopSelf()
+        return true
     }
 
     private fun createChannel() {

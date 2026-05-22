@@ -3,6 +3,8 @@ package com.tunisianprayertimes.wake
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
+import com.tunisianprayertimes.SilenceStatus
 
 /**
  * Receives the "Yes, I'm awake" confirmation and stops the AwakeCheckService.
@@ -18,6 +20,12 @@ class AwakeCheckReceiver : BroadcastReceiver() {
 
             ACTION_START_AWAKE_CHECK -> {
                 val eventId = intent.getStringExtra(EXTRA_EVENT_ID) ?: return
+                if (SilenceStatus.isAppControlledSilenceActive(context)) {
+                    Log.d(TAG, "Awake check suppressed during app-controlled silence eventId=$eventId")
+                    AwakeCheckScheduler.cancel(context, eventId)
+                    return
+                }
+
                 val ringtonePresetName = intent.getStringExtra(EXTRA_RINGTONE)
                 val customRingtoneUri = intent.getStringExtra(EXTRA_CUSTOM_RINGTONE_URI)
 
@@ -37,6 +45,8 @@ class AwakeCheckReceiver : BroadcastReceiver() {
     }
 
     companion object {
+        private const val TAG = "AwakeCheckReceiver"
+
         const val ACTION_START_AWAKE_CHECK =
             "com.tunisianprayertimes.action.START_AWAKE_CHECK"
     }

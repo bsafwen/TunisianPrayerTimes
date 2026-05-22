@@ -10,6 +10,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.SilenceStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -45,6 +46,15 @@ class WakePlaybackService : Service() {
         }
 
         val payload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY
+        if (SilenceStatus.isAppControlledSilenceActive(this)) {
+            android.util.Log.d("WakeFlow", "Service suppressed during app-controlled silence eventId=${payload.eventId}")
+            if (WakeAlarmQueueHolder.queue.current == null) {
+                stopPlayback()
+                stopForeground(STOP_FOREGROUND_REMOVE)
+                stopSelf(startId)
+            }
+            return START_NOT_STICKY
+        }
 
         createChannel()
 
@@ -194,6 +204,14 @@ class WakePlaybackService : Service() {
             .build()
 
     private fun startPlayback(payload: WakeTriggerPayload) {
+        if (SilenceStatus.isAppControlledSilenceActive(this)) {
+            android.util.Log.d("WakeFlow", "Playback suppressed during app-controlled silence eventId=${payload.eventId}")
+            WakeAlarmQueueHolder.queue.clear()
+            stopPlayback()
+            stopForeground(STOP_FOREGROUND_REMOVE)
+            stopSelf()
+            return
+        }
         audioController.startWakeAlarm(payload)
     }
 
