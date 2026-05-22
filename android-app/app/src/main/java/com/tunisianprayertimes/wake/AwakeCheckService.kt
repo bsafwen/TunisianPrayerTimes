@@ -1,22 +1,12 @@
 package com.tunisianprayertimes.wake
 
 import android.app.Notification
-import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
-import android.media.AudioAttributes
-import android.media.AudioManager
-import android.media.MediaPlayer
-import android.media.RingtoneManager
-import android.net.Uri
-import android.os.Build
 import android.os.IBinder
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.os.VibratorManager
 import androidx.core.app.NotificationCompat
 import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.MainTabNavigation
@@ -44,10 +34,8 @@ import kotlinx.coroutines.launch
  */
 class AwakeCheckService : Service() {
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val audioController by lazy { AlarmAudioController(this, serviceScope) }
     private var escalationJob: Job? = null
-    private var mediaPlayer: MediaPlayer? = null
-    private var vibrator: Vibrator? = null
-    private var speakerRoute: SpeakerPlaybackRoute? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -85,12 +73,10 @@ class AwakeCheckService : Service() {
             // Phase 2: Vibrate for up to 3 minutes
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.notify(NOTIFICATION_ID, buildVibrationNotification(eventId))
-            startVibration()
+            audioController.startVibrationOnly()
             delay(VIBRATION_DURATION_MILLIS)
 
             // Phase 3: Switch to ringtone
-            vibrator?.cancel()
-            vibrator = null
             notificationManager.notify(NOTIFICATION_ID, buildRingtoneNotification(eventId))
             startRingtone(ringtonePresetName, customRingtoneUri)
         }
@@ -153,91 +139,30 @@ class AwakeCheckService : Service() {
             .setContentIntent(appPendingIntent())
             .build()
 
-    private fun startVibration() {
-        val v = systemVibrator() ?: return
-        v.vibrate(
-            VibrationEffect.createWaveform(longArrayOf(0L, 700L, 300L, 900L), 0),
-        )
-        vibrator = v
-    }
-
     private fun startRingtone(ringtonePresetName: String?, customRingtoneUri: String?) {
         val ringtonePreset = ringtonePresetName
             ?.let { name -> runCatching { RingtonePreset.valueOf(name) }.getOrNull() }
 
-        val preferredUri = when {
-            ringtonePreset == RingtonePreset.CUSTOM && customRingtoneUri != null -> {
-                runCatching { Uri.parse(customRingtoneUri) }.getOrNull()
-            }
-            ringtonePreset != null && WakeRingtoneCatalog.rawResIdFor(ringtonePreset) != null -> {
-                val rawResId = WakeRingtoneCatalog.rawResIdFor(ringtonePreset)!!
-                Uri.parse("android.resource://$packageName/$rawResId")
-            }
-            ringtonePreset != null -> {
-                WakeRingtoneCatalog.systemTypeFor(ringtonePreset)
-                    ?.let { systemType -> RingtoneManager.getDefaultUri(systemType) }
-            }
-            else -> null
-        }
-
-        val uri = preferredUri
-            ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-            ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-            ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
-
-        if (uri != null) {
-            playUri(uri)
-        }
-    }
-
-    private fun playUri(uri: Uri) {
-        val player = MediaPlayer()
-        var route: SpeakerPlaybackRoute? = null
-        try {
-            player.setDataSource(this, uri)
-            player.setAudioAttributes(alarmAudioAttributes())
-            val playbackRoute = SpeakerPlaybackRoute(this, player, serviceScope)
-            route = playbackRoute
-            playbackRoute.applyNow()
-            player.isLooping = true
-            player.prepare()
-            playbackRoute.applyNow()
-            player.setVolume(1f, 1f)
-            player.start()
-            playbackRoute.start()
-            speakerRoute = playbackRoute
-            mediaPlayer = player
-        } catch (_: Exception) {
-            route?.release()
-            runCatching { player.release() }
+        val started = audioController.startRingtone(
+            ringtonePreset = ringtonePreset,
+            customRingtoneUri = customRingtoneUri,
+        )
+        if (!started) {
+            audioController.startVibrationOnly()
         }
     }
 
     private fun stopPlayback() {
-        speakerRoute?.release()
-        speakerRoute = null
-        mediaPlayer?.let { player ->
-            runCatching { if (player.isPlaying) player.stop() }
-            runCatching { player.release() }
-        }
-        mediaPlayer = null
-        vibrator?.cancel()
-        vibrator = null
+        audioController.stop()
     }
 
     private fun createChannel() {
-        val notificationManager = getSystemService(NotificationManager::class.java)
-        val channel = NotificationChannel(
-            CHANNEL_ID,
-            getString(R.string.awake_check_channel_name),
-            NotificationManager.IMPORTANCE_HIGH,
-        ).apply {
-            description = getString(R.string.awake_check_channel_description)
-            lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            setSound(null, null)
-            enableVibration(false)
-        }
-        notificationManager.createNotificationChannel(channel)
+        AlarmAudioController.createSilentAlarmChannel(
+            context = this,
+            channelId = CHANNEL_ID,
+            name = getString(R.string.awake_check_channel_name),
+            description = getString(R.string.awake_check_channel_description),
+        )
     }
 
     private fun dismissPendingIntent(eventId: String): PendingIntent {
@@ -261,20 +186,6 @@ class AwakeCheckService : Service() {
             .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_ALARMS),
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
     )
-
-    private fun alarmAudioAttributes(): AudioAttributes =
-        AudioAttributes.Builder()
-            .setUsage(AudioAttributes.USAGE_ALARM)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-            .build()
-
-    @Suppress("DEPRECATION")
-    private fun systemVibrator(): Vibrator? =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            getSystemService(VibratorManager::class.java)?.defaultVibrator
-        } else {
-            getSystemService(Vibrator::class.java)
-        }
 
     companion object {
         private const val CHANNEL_ID = "tunisianprayertimes.awake.check.silent"

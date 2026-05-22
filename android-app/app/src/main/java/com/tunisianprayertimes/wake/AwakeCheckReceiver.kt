@@ -12,6 +12,7 @@ class AwakeCheckReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
             AwakeCheckService.ACTION_AWAKE_CHECK_CONFIRMED -> {
+                AwakeCheckScheduler.cancel(context, intent.getStringExtra(EXTRA_EVENT_ID))
                 context.stopService(Intent(context, AwakeCheckService::class.java))
             }
 
