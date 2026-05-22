@@ -534,7 +534,7 @@ private fun QiblaCompassDial(
             val cardinalPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
                 color = TextMuted.copy(alpha = if (hasGuidance) 0.78f else 0.34f).toArgb()
                 textAlign = Paint.Align.CENTER
-                textSize = 11.sp.toPx()
+                textSize = 11.dp.toPx()
                 typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             }
             val cardinalBaselineOffset = -(cardinalPaint.ascent() + cardinalPaint.descent()) / 2f
