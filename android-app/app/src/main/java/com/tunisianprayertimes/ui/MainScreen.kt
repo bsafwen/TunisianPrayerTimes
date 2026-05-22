@@ -2663,6 +2663,7 @@ private fun DateNavigationRow(
             fontSize = 22.sp,
             color = if (canGoBack) GreenPrimary else TextMuted.copy(alpha = 0.3f),
             modifier = Modifier
+                .testTag(TestTags.DATE_PREVIOUS_BUTTON)
                 .clip(RoundedCornerShape(10.dp))
                 .background(if (canGoBack) Color.White.copy(alpha = 0.70f) else Color.Transparent)
                 .then(if (canGoBack) Modifier.clickable { onPrevious() } else Modifier)
@@ -2698,6 +2699,7 @@ private fun DateNavigationRow(
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
                     modifier = Modifier
+                        .testTag(TestTags.DATE_TODAY_BUTTON)
                         .clip(RoundedCornerShape(50))
                         .background(GreenPrimary.copy(alpha = 0.1f))
                         .clickable { onDateSelected(Calendar.getInstance().timeInMillis) }
@@ -2712,6 +2714,7 @@ private fun DateNavigationRow(
             fontSize = 22.sp,
             color = if (canGoForward) GreenPrimary else TextMuted.copy(alpha = 0.3f),
             modifier = Modifier
+                .testTag(TestTags.DATE_NEXT_BUTTON)
                 .clip(RoundedCornerShape(10.dp))
                 .background(if (canGoForward) Color.White.copy(alpha = 0.70f) else Color.Transparent)
                 .then(if (canGoForward) Modifier.clickable { onNext() } else Modifier)
