@@ -4,13 +4,28 @@ import com.tunisianprayertimes.MathDifficulty
 import java.util.Collections
 import java.util.Random
 
+private const val STEP_SEED_MULTIPLIER = 7_919L
+
 internal fun wakeUpCheckChallengeFor(
     eventId: String,
     triggerAtMillis: Long,
     difficulty: MathDifficulty = MathDifficulty.EASY,
 ): WakeUpCheckChallenge {
-    val sequence = (triggerAtMillis / 60_000L).coerceAtLeast(0L)
-    val seed = triggerAtMillis xor eventId.hashCode().toLong()
+    return wakeUpCheckChallengeForStep(eventId, triggerAtMillis, 0, difficulty)
+}
+
+internal fun wakeUpCheckChallengeForStep(
+    eventId: String,
+    triggerAtMillis: Long?,
+    stepIndex: Int,
+    difficulty: MathDifficulty,
+): WakeUpCheckChallenge {
+    if (triggerAtMillis == null) {
+        return wakeUpCheckChallengeForStep(eventId, stepIndex, difficulty)
+    }
+
+    val sequence = (triggerAtMillis / 60_000L).coerceAtLeast(0L) + stepIndex.toLong()
+    val seed = triggerAtMillis xor eventId.hashCode().toLong() xor (stepIndex.toLong() * STEP_SEED_MULTIPLIER)
     return wakeUpCheckChallengeAt(sequence, seed, difficulty)
 }
 
@@ -19,7 +34,7 @@ internal fun wakeUpCheckChallengeForStep(
     stepIndex: Int,
     difficulty: MathDifficulty,
 ): WakeUpCheckChallenge {
-    val seed = eventId.hashCode().toLong() xor (stepIndex.toLong() * 7919L)
+    val seed = eventId.hashCode().toLong() xor (stepIndex.toLong() * STEP_SEED_MULTIPLIER)
     return wakeUpCheckChallengeAt(stepIndex.toLong(), seed, difficulty)
 }
 

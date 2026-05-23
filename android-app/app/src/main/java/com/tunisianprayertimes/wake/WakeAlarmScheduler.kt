@@ -342,6 +342,7 @@ object WakeAlarmScheduler {
 				vibrationOnly = payload.vibrationOnly,
 				wakeUpCheckEnabled = payload.wakeUpCheckEnabled,
 				wakeUpCheckType = payload.wakeUpCheckType,
+				wakeUpCheckDifficulty = payload.wakeUpCheckDifficulty,
 				whackAMoleKillTarget = payload.whackAMoleKillTarget,
 				wakeUpCheckSteps = payload.wakeUpCheckSteps,
 				progressiveVolume = payload.progressiveVolume,
@@ -349,6 +350,7 @@ object WakeAlarmScheduler {
 				awakeCheckEnabled = payload.awakeCheckEnabled,
 				awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
 				wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
+				wakeUpCheckSeed = payload.wakeUpCheckSeed,
 				isSubAlarm = payload.isSubAlarm,
 				subAlarmId = payload.subAlarmId,
 				offsetMinutes = payload.offsetMinutes,
@@ -460,6 +462,7 @@ object WakeAlarmScheduler {
 			snoreTrackingEnabled = playback.snoreTrackingEnabled,
 			awakeCheckEnabled = if (isSubAlarm) false else playback.awakeCheckEnabled,
 			awakeCheckDelayMinutes = playback.awakeCheckDelayMinutes,
+			wakeUpCheckSeed = if (playback.wakeUpCheckEnabled) triggerAtMillis else null,
 			wakeUpCheckChallenge = if (playback.wakeUpCheckEnabled) {
 				wakeUpCheckChallengeFor(eventId, triggerAtMillis, playback.mathDifficulty)
 			} else {

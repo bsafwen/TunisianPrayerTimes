@@ -39,6 +39,7 @@ const val EXTRA_WAKE_UP_CHECK_LEFT_OPERAND = "extra_wake_up_check_left_operand"
 const val EXTRA_WAKE_UP_CHECK_RIGHT_OPERAND = "extra_wake_up_check_right_operand"
 const val EXTRA_WAKE_UP_CHECK_OPERATOR = "extra_wake_up_check_operator"
 const val EXTRA_WAKE_UP_CHECK_ANSWER = "extra_wake_up_check_answer"
+const val EXTRA_WAKE_UP_CHECK_SEED = "extra_wake_up_check_seed"
 
 data class WakeUpCheckChallenge(
     val leftOperand: Int,
@@ -72,6 +73,7 @@ data class WakeTriggerPayload(
     val awakeCheckDelayMinutes: Int = 7,
     val wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
     val wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
+    val wakeUpCheckSeed: Long? = null,
     val isSubAlarm: Boolean,
     val subAlarmId: String? = null,
     val offsetMinutes: Int? = null,
@@ -113,6 +115,7 @@ fun Intent.populateWakeTriggerPayload(
     awakeCheckEnabled: Boolean = true,
     awakeCheckDelayMinutes: Int = 7,
     wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
+    wakeUpCheckSeed: Long? = null,
     isSubAlarm: Boolean,
     subAlarmId: String? = null,
     offsetMinutes: Int? = null,
@@ -148,6 +151,7 @@ fun Intent.populateWakeTriggerPayload(
         putExtra(EXTRA_WAKE_UP_CHECK_OPERATOR, challenge.operatorSymbol)
         putExtra(EXTRA_WAKE_UP_CHECK_ANSWER, challenge.answer)
     }
+    wakeUpCheckSeed?.let { putExtra(EXTRA_WAKE_UP_CHECK_SEED, it) }
 }
 
 fun Intent.populateWakeStopPayload(eventId: String): Intent = apply {
@@ -181,6 +185,11 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
                 answer = getIntExtra(EXTRA_WAKE_UP_CHECK_ANSWER, 0),
             )
         }
+    } else {
+        null
+    }
+    val wakeUpCheckSeed = if (hasExtra(EXTRA_WAKE_UP_CHECK_SEED)) {
+        getLongExtra(EXTRA_WAKE_UP_CHECK_SEED, 0L)
     } else {
         null
     }
@@ -227,6 +236,7 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         awakeCheckDelayMinutes = getIntExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, 7),
         wakeUpCheckSteps = wakeUpCheckSteps,
         wakeUpCheckChallenge = wakeUpCheckChallenge,
+        wakeUpCheckSeed = wakeUpCheckSeed,
         isSubAlarm = getBooleanExtra(EXTRA_IS_SUBALARM, false),
         subAlarmId = getStringExtra(EXTRA_SUBALARM_ID),
         offsetMinutes = if (hasExtra(EXTRA_OFFSET_MINUTES)) getIntExtra(EXTRA_OFFSET_MINUTES, 0) else null,
@@ -259,6 +269,7 @@ fun WakeTriggerPayload.toBundle(): Bundle =
         awakeCheckEnabled = awakeCheckEnabled,
         awakeCheckDelayMinutes = awakeCheckDelayMinutes,
         wakeUpCheckChallenge = wakeUpCheckChallenge,
+        wakeUpCheckSeed = wakeUpCheckSeed,
         isSubAlarm = isSubAlarm,
         subAlarmId = subAlarmId,
         offsetMinutes = offsetMinutes,

@@ -198,8 +198,12 @@ private enum class WakeQuickPreset {
 
 private const val DEFAULT_PRAYER_OFFSET_MINUTES = 20
 private const val DEFAULT_TIMER_MINUTES = 15
-private val MainHeroCardHeight = 132.dp
+private val MainHeroCardHeight = 148.dp
 private val MainHeroCardShape = RoundedCornerShape(18.dp)
+private val SilencedHeroStart = Color(0xFF3A1F2E)
+private val SilencedHeroEnd = Color(0xFF6D3543)
+private val SilencedHeroPillBackground = Color(0xFFF7E8EC)
+private val SilencedHeroPillText = Color(0xFF3A1F2E)
 
 private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Today -> "prayers"
@@ -317,6 +321,7 @@ fun MainScreen(
     }
     var autoSilenceActive by remember { mutableStateOf(PrefsManager.isAutoSilenceActive(context)) }
     var manualSilenceActive by remember { mutableStateOf(PrefsManager.isManualSilenceActive(context)) }
+    var phoneSilenced by remember { mutableStateOf(SilenceStatus.isPhoneSilenced(context)) }
     var appControlledSilenceActive by remember { mutableStateOf(SilenceStatus.isAppControlledSilenceActive(context)) }
     var manualSilenceEndsAtMillis by remember {
         mutableLongStateOf(PrefsManager.getManualSilenceEndsAtMillis(context))
@@ -325,6 +330,7 @@ fun MainScreen(
     fun refreshSilenceState() {
         autoSilenceActive = PrefsManager.isAutoSilenceActive(context)
         manualSilenceActive = PrefsManager.isManualSilenceActive(context)
+        phoneSilenced = SilenceStatus.isPhoneSilenced(context)
         appControlledSilenceActive = SilenceStatus.isAppControlledSilenceActive(context)
         manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
     }
@@ -382,6 +388,13 @@ fun MainScreen(
 
         delay(waitMillis)
         refreshTick++
+    }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(1_000L)
+            refreshSilenceState()
+        }
     }
 
     // Reschedule helper
@@ -540,7 +553,7 @@ fun MainScreen(
                     MainDestination.Today -> {
                         TodayNextPrayerCard(
                             delegationId = delegationId,
-                            isAppSilenced = appControlledSilenceActive,
+                            isPhoneSilenced = phoneSilenced,
                             hasDnd = hasDnd,
                         )
 
@@ -990,11 +1003,11 @@ private fun IslamicHeader() {
 
 @Composable
 private fun PhoneStatusNotice(
-    isAppSilenced: Boolean,
+    isPhoneSilenced: Boolean,
     hasDnd: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    if (hasDnd && !isAppSilenced) return
+    if (hasDnd && !isPhoneSilenced) return
 
     val accentColor by animateColorAsState(
         targetValue = if (!hasDnd) Color(0xFFFFD166) else Color(0xFFFFCDD2),
@@ -1605,7 +1618,7 @@ private fun DelegationPickerSheet(
 @Composable
 private fun TodayNextPrayerCard(
     delegationId: Int,
-    isAppSilenced: Boolean,
+    isPhoneSilenced: Boolean,
     hasDnd: Boolean,
 ) {
     val context = LocalContext.current
@@ -1663,7 +1676,7 @@ private fun TodayNextPrayerCard(
             countdown = countdown,
             prayerName = prayerName(context, countdown.prayer),
             currentTimeMillis = currentTimeMillis,
-            isAppSilenced = isAppSilenced,
+            isPhoneSilenced = isPhoneSilenced,
             hasDnd = hasDnd,
         )
     }
@@ -2427,7 +2440,7 @@ private fun NextPrayerHeroCard(
     countdown: NextPrayerCountdownInfo,
     prayerName: String,
     currentTimeMillis: Long,
-    isAppSilenced: Boolean,
+    isPhoneSilenced: Boolean,
     hasDnd: Boolean,
 ) {
     val prayerTimeText = String.format(Locale.US, "%02d:%02d", countdown.hour, countdown.minute)
@@ -2437,12 +2450,20 @@ private fun NextPrayerHeroCard(
     )
     val shape = MainHeroCardShape
     val heroStartColor by animateColorAsState(
-        targetValue = if (isAppSilenced) Color(0xFF003F3A) else GreenPrimaryDark,
+        targetValue = if (isPhoneSilenced) SilencedHeroStart else GreenPrimaryDark,
         label = "nextPrayerHeroStart"
     )
     val heroEndColor by animateColorAsState(
-        targetValue = if (isAppSilenced) Color(0xFF00695C) else GreenPrimary,
+        targetValue = if (isPhoneSilenced) SilencedHeroEnd else GreenPrimary,
         label = "nextPrayerHeroEnd"
+    )
+    val countdownPillBackgroundColor by animateColorAsState(
+        targetValue = if (isPhoneSilenced) SilencedHeroPillBackground else Color.White.copy(alpha = 0.90f),
+        label = "nextPrayerHeroPillBackground"
+    )
+    val countdownPillTextColor by animateColorAsState(
+        targetValue = if (isPhoneSilenced) SilencedHeroPillText else GreenPrimaryDark,
+        label = "nextPrayerHeroPillText"
     )
 
     Box(
@@ -2475,10 +2496,20 @@ private fun NextPrayerHeroCard(
                     color = Color.White.copy(alpha = 0.78f),
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
+                    modifier = Modifier.weight(1f),
                 )
 
-                if (countdown.isTomorrow) {
-                    TomorrowMarker()
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    PhoneStatusNotice(
+                        isPhoneSilenced = isPhoneSilenced,
+                        hasDnd = hasDnd,
+                    )
+                    if (countdown.isTomorrow) {
+                        TomorrowMarker()
+                    }
                 }
             }
 
@@ -2507,17 +2538,12 @@ private fun NextPrayerHeroCard(
                         fontWeight = FontWeight.SemiBold,
                         maxLines = 1,
                     )
-                    PhoneStatusNotice(
-                        isAppSilenced = isAppSilenced,
-                        hasDnd = hasDnd,
-                        modifier = Modifier.align(Alignment.Start),
-                    )
                 }
 
                 Text(
                     text = remainingText,
                     fontSize = 14.sp,
-                    color = GreenPrimaryDark,
+                    color = countdownPillTextColor,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
                     maxLines = 1,
@@ -2526,7 +2552,7 @@ private fun NextPrayerHeroCard(
                     modifier = Modifier
                         .padding(start = 12.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.White.copy(alpha = 0.90f))
+                        .background(countdownPillBackgroundColor)
                         .padding(horizontal = 12.dp, vertical = 6.dp),
                 )
             }
@@ -3531,7 +3557,7 @@ private fun ManualSilenceButton(
     val manualUsesDuration = manualSilenceMode == ManualSilenceMode.DURATION
     val manualUsesPrayer = manualSilenceMode == ManualSilenceMode.UNTIL_PRAYER
     val bgColor by animateColorAsState(
-        targetValue = if (anySilenceActive && hasDnd) SilenceRed else GreenPrimary,
+        targetValue = if (anySilenceActive && hasDnd) SilencedHeroEnd else GreenPrimary,
         label = "buttonColor"
     )
 
