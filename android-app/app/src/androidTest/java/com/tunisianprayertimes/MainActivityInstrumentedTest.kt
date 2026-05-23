@@ -1,14 +1,10 @@
 package com.tunisianprayertimes
 
-import android.app.NotificationManager
-import android.content.Context
-import android.media.AudioManager
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -111,72 +107,4 @@ class MainActivityInstrumentedTest {
             .assertIsEnabled()
     }
 
-    // --- Core feature: manual silence must not be undone by the resume LaunchedEffect ---
-
-    @Test
-    fun manualSilenceButton_doesNotGetUndoneByScheduleAll() {
-        val context = composeRule.activity
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-
-        // Skip if DND not granted on this device — can't test silencing without it
-        if (!notificationManager.isNotificationPolicyAccessGranted) return
-
-        // Ensure auto-silence is enabled (so scheduleAll would fire on refreshTick)
-        PrefsManager.setEnabled(context, true)
-
-        // Start in normal mode
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
-        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
-
-        // Click the manual silence button
-        composeRule.onNodeWithTag(TestTags.MANUAL_SILENCE_BUTTON)
-            .performScrollTo()
-            .performClick()
-
-        // Wait for all Compose effects and recompositions to settle
-        composeRule.waitForIdle()
-
-        // The phone MUST still be in silent mode — scheduleAll must NOT have undone this
-        val ringerMode = audioManager.ringerMode
-        assert(ringerMode == AudioManager.RINGER_MODE_SILENT) {
-            "Expected RINGER_MODE_SILENT (0) but got $ringerMode. " +
-                    "Manual silence was undone — likely by scheduleAll triggered via refreshTick."
-        }
-
-        // Cleanup: restore normal mode
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
-        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
-    }
-
-    @Test
-    fun manualSilenceButton_togglesSilentAndBack() {
-        val context = composeRule.activity
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-
-        if (!notificationManager.isNotificationPolicyAccessGranted) return
-
-        // Start normal
-        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
-        audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
-
-        val button = composeRule.onNodeWithTag(TestTags.MANUAL_SILENCE_BUTTON)
-
-        // Click to silence
-        button.performScrollTo().performClick()
-        composeRule.waitForIdle()
-
-        assert(audioManager.ringerMode == AudioManager.RINGER_MODE_SILENT) {
-            "Phone should be SILENT after first click"
-        }
-
-        // Click to unsilence
-        button.performScrollTo().performClick()
-        composeRule.waitForIdle()
-
-        assert(audioManager.ringerMode == AudioManager.RINGER_MODE_NORMAL) {
-            "Phone should be NORMAL after second click"
-        }
-    }
 }

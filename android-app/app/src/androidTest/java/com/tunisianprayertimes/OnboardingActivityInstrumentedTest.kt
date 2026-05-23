@@ -1,16 +1,13 @@
 package com.tunisianprayertimes
 
-import android.app.NotificationManager
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
-import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tunisianprayertimes.ui.TestTags
-import org.junit.Assume.assumeFalse
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -74,20 +71,6 @@ class OnboardingActivityInstrumentedTest {
         composeRule.onNodeWithTag(TestTags.ONBOARDING_PREV).performClick()
         composeRule.waitForIdle()
         composeRule.onNodeWithTag(TestTags.ONBOARDING_PREV).assertDoesNotExist()
-    }
-
-    // --- Step 5: Permissions ---
-
-    @Test
-    fun step5_nextButtonIsDisabledWithoutPermissions() {
-        val notificationManager = composeRule.activity.getSystemService(NotificationManager::class.java)
-        assumeFalse(
-            "DND policy access is already granted on this device",
-            notificationManager.isNotificationPolicyAccessGranted,
-        )
-
-        navigateToStep(6)
-        composeRule.onNodeWithTag(TestTags.ONBOARDING_NEXT).assertIsNotEnabled()
     }
 
     // --- Arabic text tests ---

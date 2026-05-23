@@ -39,50 +39,51 @@ class TomorrowFajrTest {
             .edit().clear().commit()
     }
 
-    /** Returns true if today's Isha unsilence time has already passed. */
-    private fun isTodayIshaPast(): Boolean {
-        val now = Calendar.getInstance()
-        val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
-            context, PrefsManager.getDelegationId(context),
-            now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH)
-        ) ?: return true // no data = treat as past
-        val config = PrefsManager.getConfig(context, Prayer.ISHA)
-        val ishaSilence = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
-            Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
-                set(Calendar.MINUTE, config.delayFixedMinute)
-                set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
-            }
-        } else {
-            Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, todayTimes.isha.hour)
-                set(Calendar.MINUTE, todayTimes.isha.minute)
-                set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
-                add(Calendar.MINUTE, config.delayMinutes)
-            }
+    private fun calendarAt(year: Int, month: Int, day: Int, hour: Int, minute: Int): Calendar {
+        return Calendar.getInstance().apply {
+            set(Calendar.YEAR, year)
+            set(Calendar.MONTH, month)
+            set(Calendar.DAY_OF_MONTH, day)
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
         }
-        val ishaUnsilence = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-            Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, config.fixedHour)
-                set(Calendar.MINUTE, config.fixedMinute)
-                set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
-            }
-        } else {
-            (ishaSilence.clone() as Calendar).apply {
-                add(Calendar.MINUTE, config.afterMinutes)
-            }
-        }
-        return !now.before(ishaUnsilence)
     }
 
+    private fun beforeIshaNow(): Calendar = calendarAt(2026, Calendar.MAY, 21, 12, 0)
+
+    private fun afterIshaNow(): Calendar = calendarAt(2026, Calendar.MAY, 21, 23, 30)
+
+    private fun duringFajrSilenceWindowNow(): Calendar {
+        val now = calendarAt(2026, Calendar.MAY, 21, 0, 0)
+        val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
+            context,
+            PrefsManager.getDelegationId(context),
+            now.get(Calendar.YEAR),
+            now.get(Calendar.MONTH) + 1,
+            now.get(Calendar.DAY_OF_MONTH),
+        ) ?: error("Missing prayer times for controlled Fajr window test date")
+
+        return (now.clone() as Calendar).apply {
+            set(Calendar.HOUR_OF_DAY, todayTimes.fajr.hour)
+            set(Calendar.MINUTE, todayTimes.fajr.minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+            add(Calendar.MINUTE, 15)
+        }
+    }
+
+    private fun scheduledTriggerTimes(): List<Long> = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
+
     /** Computes expected tomorrow Fajr silence trigger time. */
-    private fun expectedTomorrowFajrSilenceMillis(): Long {
+    private fun expectedTomorrowFajrSilenceMillis(now: Calendar): Long {
         val config = PrefsManager.getConfig(context, Prayer.FAJR)
-        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, 1) }
+        val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(
             context, PrefsManager.getDelegationId(context),
             tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH) + 1, tomorrow.get(Calendar.DAY_OF_MONTH)
-        )!!
+        ) ?: error("Missing tomorrow prayer times for controlled test date")
         val fajr = tomorrowTimes.fajr
         return if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
             (tomorrow.clone() as Calendar).apply {
@@ -101,11 +102,11 @@ class TomorrowFajrTest {
     }
 
     /** Computes expected tomorrow Fajr unsilence trigger time. */
-    private fun expectedTomorrowFajrUnsilenceMillis(): Long {
+    private fun expectedTomorrowFajrUnsilenceMillis(now: Calendar): Long {
         val config = PrefsManager.getConfig(context, Prayer.FAJR)
-        val silenceMillis = expectedTomorrowFajrSilenceMillis()
+        val silenceMillis = expectedTomorrowFajrSilenceMillis(now)
         return if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-            val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, 1) }
+            val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
             (tomorrow.clone() as Calendar).apply {
                 set(Calendar.HOUR_OF_DAY, config.fixedHour)
                 set(Calendar.MINUTE, config.fixedMinute)
@@ -122,30 +123,24 @@ class TomorrowFajrTest {
     @Test
     fun scheduleAll_whenIshaPast_includesAlarmForTomorrowFajr() {
         PrefsManager.setEnabled(context, true)
-        SilenceScheduler.scheduleAll(context)
+        val now = afterIshaNow()
+        SilenceScheduler.scheduleAllInternal(context, now)
 
-        if (!isTodayIshaPast()) return // today's Isha hasn't passed yet — skip
-
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
         assertTrue(
             "When today's Isha is past, tomorrow's Fajr alarm should be scheduled",
-            alarmTriggerTimes.contains(expectedTomorrowFajrSilenceMillis())
+            scheduledTriggerTimes().contains(expectedTomorrowFajrSilenceMillis(now))
         )
     }
 
     @Test
     fun scheduleAll_whenIshaNotPast_doesNotOverwriteTodayFajr() {
         PrefsManager.setEnabled(context, true)
-        SilenceScheduler.scheduleAll(context)
+        val now = beforeIshaNow()
+        SilenceScheduler.scheduleAllInternal(context, now)
 
-        if (isTodayIshaPast()) return // today's Isha already past — skip
-
-        // Tomorrow's Fajr should NOT be scheduled yet
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
-        val tomorrowSilence = expectedTomorrowFajrSilenceMillis()
         assertFalse(
             "When today's Isha hasn't passed, tomorrow's Fajr should NOT be scheduled",
-            alarmTriggerTimes.contains(tomorrowSilence)
+            scheduledTriggerTimes().contains(expectedTomorrowFajrSilenceMillis(now))
         )
     }
 
@@ -154,14 +149,12 @@ class TomorrowFajrTest {
         PrefsManager.setEnabled(context, true)
         PrefsManager.setDelayMode(context, Prayer.FAJR, DelayMode.MINUTES)
         PrefsManager.setDelayMinutes(context, Prayer.FAJR, 10)
-        SilenceScheduler.scheduleAll(context)
+        val now = afterIshaNow()
+        SilenceScheduler.scheduleAllInternal(context, now)
 
-        if (!isTodayIshaPast()) return
-
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
         assertTrue(
             "Tomorrow's Fajr alarm should include 10-minute delay",
-            alarmTriggerTimes.contains(expectedTomorrowFajrSilenceMillis())
+            scheduledTriggerTimes().contains(expectedTomorrowFajrSilenceMillis(now))
         )
     }
 
@@ -170,14 +163,12 @@ class TomorrowFajrTest {
         PrefsManager.setEnabled(context, true)
         PrefsManager.setDelayMode(context, Prayer.FAJR, DelayMode.FIXED_TIME)
         PrefsManager.setDelayFixedTime(context, Prayer.FAJR, 5, 30)
-        SilenceScheduler.scheduleAll(context)
+        val now = afterIshaNow()
+        SilenceScheduler.scheduleAllInternal(context, now)
 
-        if (!isTodayIshaPast()) return
-
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
         assertTrue(
             "Tomorrow's Fajr alarm should use fixed delay time 05:30",
-            alarmTriggerTimes.contains(expectedTomorrowFajrSilenceMillis())
+            scheduledTriggerTimes().contains(expectedTomorrowFajrSilenceMillis(now))
         )
     }
 
@@ -186,14 +177,12 @@ class TomorrowFajrTest {
         PrefsManager.setEnabled(context, true)
         PrefsManager.setSilenceMode(context, Prayer.FAJR, SilenceMode.FIXED_TIME)
         PrefsManager.setFixedTime(context, Prayer.FAJR, 7, 0)
-        SilenceScheduler.scheduleAll(context)
+        val now = afterIshaNow()
+        SilenceScheduler.scheduleAllInternal(context, now)
 
-        if (!isTodayIshaPast()) return
-
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
         assertTrue(
             "Tomorrow's Fajr unsilence should use fixed end time 07:00",
-            alarmTriggerTimes.contains(expectedTomorrowFajrUnsilenceMillis())
+            scheduledTriggerTimes().contains(expectedTomorrowFajrUnsilenceMillis(now))
         )
     }
 
@@ -204,14 +193,12 @@ class TomorrowFajrTest {
         PrefsManager.setAfterMinutes(context, Prayer.FAJR, 45)
         PrefsManager.setDelayMode(context, Prayer.FAJR, DelayMode.MINUTES)
         PrefsManager.setDelayMinutes(context, Prayer.FAJR, 0)
-        SilenceScheduler.scheduleAll(context)
+        val now = afterIshaNow()
+        SilenceScheduler.scheduleAllInternal(context, now)
 
-        if (!isTodayIshaPast()) return
-
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
         assertTrue(
             "Tomorrow's Fajr unsilence should be fajr + 45 minutes",
-            alarmTriggerTimes.contains(expectedTomorrowFajrUnsilenceMillis())
+            scheduledTriggerTimes().contains(expectedTomorrowFajrUnsilenceMillis(now))
         )
     }
 
@@ -227,14 +214,12 @@ class TomorrowFajrTest {
     fun scheduleAll_withDifferentDelegation_schedulesTomorrowFajr() {
         PrefsManager.setEnabled(context, true)
         PrefsManager.setDelegationId(context, 386)
-        SilenceScheduler.scheduleAll(context)
+        val now = afterIshaNow()
+        SilenceScheduler.scheduleAllInternal(context, now)
 
-        if (!isTodayIshaPast()) return
-
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
         assertTrue(
             "Should have alarm for delegation 386 tomorrow's Fajr",
-            alarmTriggerTimes.contains(expectedTomorrowFajrSilenceMillis())
+            scheduledTriggerTimes().contains(expectedTomorrowFajrSilenceMillis(now))
         )
     }
 
@@ -286,40 +271,17 @@ class TomorrowFajrTest {
         PrefsManager.setDelayMode(context, Prayer.FAJR, DelayMode.MINUTES)
         PrefsManager.setDelayMinutes(context, Prayer.FAJR, 0)
 
-        // Simulate "now" = today at 05:00 (inside Fajr silence window 04:35–05:20)
-        val fakeNow = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 5)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-        }
+        val fakeNow = duringFajrSilenceWindowNow()
 
         SilenceScheduler.scheduleAllInternal(context, fakeNow)
 
         // Fajr UNSILENCE request code = Prayer.FAJR.ordinal * 2 + 1 = 1
         // If tomorrow's Fajr was incorrectly scheduled, the alarm at request code 1
         // would point to tomorrow instead of today.
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
-
-        // Compute tomorrow's Fajr silence time — it should NOT be in the alarm list
-        val tomorrow = (fakeNow.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
-        val delegationId = PrefsManager.getDelegationId(context)
-        val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(
-            context, delegationId,
-            tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH) + 1, tomorrow.get(Calendar.DAY_OF_MONTH)
+        assertFalse(
+            "During Fajr silence window, tomorrow's Fajr should NOT be scheduled",
+            scheduledTriggerTimes().contains(expectedTomorrowFajrSilenceMillis(fakeNow))
         )
-        if (tomorrowTimes != null) {
-            val tomorrowFajrSilence = (tomorrow.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, tomorrowTimes.fajr.hour)
-                set(Calendar.MINUTE, tomorrowTimes.fajr.minute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-            assertFalse(
-                "During Fajr silence window, tomorrow's Fajr should NOT be scheduled",
-                alarmTriggerTimes.contains(tomorrowFajrSilence.timeInMillis)
-            )
-        }
     }
 
     /**
@@ -334,35 +296,13 @@ class TomorrowFajrTest {
         PrefsManager.setDelayMode(context, Prayer.FAJR, DelayMode.MINUTES)
         PrefsManager.setDelayMinutes(context, Prayer.FAJR, 0)
 
-        // Simulate "now" = today at 22:30 (after Isha)
-        val fakeNow = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 22)
-            set(Calendar.MINUTE, 30)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-        }
+        val fakeNow = afterIshaNow()
 
         SilenceScheduler.scheduleAllInternal(context, fakeNow)
 
-        val alarmTriggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
-
-        val tomorrow = (fakeNow.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
-        val delegationId = PrefsManager.getDelegationId(context)
-        val tomorrowTimes = PrayerTimesRepository.loadDayPrayerTimes(
-            context, delegationId,
-            tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH) + 1, tomorrow.get(Calendar.DAY_OF_MONTH)
+        assertTrue(
+            "After Isha, tomorrow's Fajr should be pre-scheduled",
+            scheduledTriggerTimes().contains(expectedTomorrowFajrSilenceMillis(fakeNow))
         )
-        if (tomorrowTimes != null) {
-            val tomorrowFajrSilence = (tomorrow.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, tomorrowTimes.fajr.hour)
-                set(Calendar.MINUTE, tomorrowTimes.fajr.minute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-            assertTrue(
-                "After Isha, tomorrow's Fajr should be pre-scheduled",
-                alarmTriggerTimes.contains(tomorrowFajrSilence.timeInMillis)
-            )
-        }
     }
 }
