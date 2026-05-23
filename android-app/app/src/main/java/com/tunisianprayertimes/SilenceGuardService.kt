@@ -14,13 +14,14 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 
 /**
- * Lightweight foreground service that keeps the app process alive so that
- * AlarmManager can always deliver silence/unsilence broadcasts.
+ * Lightweight foreground service that keeps the app process alive during an
+ * active auto-silence window so the restore alarm is less likely to be missed.
  *
  * On aggressive OEM ROMs (Honor MagicOS, Xiaomi MIUI, Huawei EMUI, etc.)
  * the system may kill app processes even when setAlarmClock() alarms are
- * pending.  A foreground service with a persistent notification prevents
- * this with essentially zero battery cost — the service is idle.
+ * pending. Keeping the guard scoped to active auto-silence avoids an all-day
+ * foreground service while still protecting the most costly failure: DND not
+ * being restored at the end of a prayer window.
  */
 class SilenceGuardService : Service() {
 
@@ -30,7 +31,7 @@ class SilenceGuardService : Service() {
         private const val NOTIFICATION_ID = 7001
 
         fun start(context: Context) {
-            if (!PrefsManager.isEnabled(context)) return
+            if (!shouldRun(context)) return
             val intent = Intent(context, SilenceGuardService::class.java)
             try {
                 context.startForegroundService(intent)
@@ -42,6 +43,15 @@ class SilenceGuardService : Service() {
         fun stop(context: Context) {
             context.stopService(Intent(context, SilenceGuardService::class.java))
         }
+
+        fun stopIfNotNeeded(context: Context) {
+            if (!shouldRun(context)) {
+                stop(context)
+            }
+        }
+
+        private fun shouldRun(context: Context): Boolean =
+            PrefsManager.isEnabled(context) && PrefsManager.isAutoSilenceActive(context)
     }
 
     override fun onCreate() {
@@ -56,7 +66,7 @@ class SilenceGuardService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (!PrefsManager.isEnabled(this)) {
+        if (!shouldRun(this)) {
             stopSelf()
             return START_NOT_STICKY
         }

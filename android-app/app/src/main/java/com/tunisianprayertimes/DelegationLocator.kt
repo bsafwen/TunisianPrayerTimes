@@ -21,6 +21,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 private const val FUSED_TIMEOUT_MS = 8_000L
 private const val LOCATION_PROVIDER_TIMEOUT_MS = 8_000L
 private const val MAX_LAST_LOCATION_AGE_MS = 5 * 60 * 1_000L
+private const val MAX_SILENT_UPDATE_ACCURACY_METERS = 10_000f
 
 /**
  * Simplified polygon of Tunisia's border from OpenStreetMap / Nominatim,
@@ -94,6 +95,8 @@ internal data class LocationPermissionState(
 object DelegationLocator {
     private const val TAG = "DelegationLocator"
 
+    internal var locationProvider: DelegationLocationProvider = AndroidDelegationLocationProvider
+
     val requestedPermissions: Array<String> = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION
@@ -107,44 +110,48 @@ object DelegationLocator {
         val permissionState = locationPermissionState(context)
         if (!permissionState.hasAny) return null
 
-        return findCurrentLocation(context, permissionState)
+        return locationProvider.findCurrentLocation(context, permissionState)
     }
 
     /**
-     * Uses the cached last-known location to silently update the saved delegation
-     * if the user has moved to a different one. Returns true if the delegation changed.
+     * Uses a recent cached or fused location to silently update the saved
+     * delegation if the user has moved to a different one. Returns true if the
+     * delegation changed.
      */
-    @SuppressLint("MissingPermission")
     suspend fun updateDelegationFromLastLocation(context: Context): Boolean {
-        if (!hasLocationPermission(context)) return false
+        return updateDelegationFromLocation(context) { permissionState ->
+            locationProvider.findRecentLocation(context, permissionState)
+        }
+    }
+
+    /**
+     * Uses a bounded fresh-location lookup before silently updating the saved
+     * delegation. Use this from scheduled background checks where a short
+     * location wait is acceptable.
+     */
+    suspend fun updateDelegationFromCurrentLocation(context: Context): Boolean {
+        return updateDelegationFromLocation(context) { permissionState ->
+            locationProvider.findFreshLocation(context, permissionState)
+        }
+    }
+
+    private suspend fun updateDelegationFromLocation(
+        context: Context,
+        locationSource: suspend (LocationPermissionState) -> Location?
+    ): Boolean {
+        val permissionState = locationPermissionState(context)
+        if (!permissionState.hasAny) return false
 
         val location: Location? = try {
-            suspendCancellableCoroutine { continuation ->
-                LocationServices.getFusedLocationProviderClient(context)
-                    .lastLocation
-                    .addOnSuccessListener { loc: Location? ->
-                        if (continuation.isActive) continuation.resume(loc)
-                    }
-                    .addOnFailureListener {
-                        if (continuation.isActive) continuation.resume(null)
-                    }
-            }
+            locationSource(permissionState)
         } catch (_: Exception) {
             null
         }
 
         if (location == null) return false
+        if (!isUsableSilentUpdateLocation(location)) return false
 
-        val lat = location.latitude
-        val lng = location.longitude
-
-        if (!isInsideTunisiaBounds(lat, lng)) return false
-
-        val delegation = DelegationBoundaryRepository.findDelegationForLocation(
-            context = context, lat = lat, lng = lng
-        ) ?: GouvernoratRepository.findNearestDelegation(
-            context = context, lat = lat, lng = lng
-        ) ?: return false
+        val delegation = findDelegationForLocation(context, location) ?: return false
 
         val currentId = PrefsManager.getDelegationId(context)
         if (delegation.id == currentId) return false
@@ -163,14 +170,37 @@ object DelegationLocator {
         val location = findCurrentLocation(context, permissionState)
             ?: return DelegationLocationResult.LocationUnavailable
 
-        val lat = location.latitude
-        val lng = location.longitude
+        val nearest = findDelegationForLocation(context, location)
 
-        if (!isInsideTunisiaBounds(lat, lng)) {
+        if (nearest != null) {
+            return DelegationLocationResult.Success(nearest)
+        }
+
+        if (!isInsideTunisiaBounds(location.latitude, location.longitude)) {
             return DelegationLocationResult.OutsideTunisia
         }
 
-        val nearest = DelegationBoundaryRepository.findDelegationForLocation(
+        return DelegationLocationResult.NoDelegationFound
+    }
+
+    internal fun resetLocationProviderForTests() {
+        locationProvider = AndroidDelegationLocationProvider
+    }
+
+    private suspend fun findCurrentLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? {
+        return locationProvider.findCurrentLocation(context, permissionState)
+    }
+
+    private fun findDelegationForLocation(context: Context, location: Location): Delegation? {
+        val lat = location.latitude
+        val lng = location.longitude
+
+        if (!isInsideTunisiaBounds(lat, lng)) return null
+
+        return DelegationBoundaryRepository.findDelegationForLocation(
             context = context,
             lat = lat,
             lng = lng
@@ -179,16 +209,60 @@ object DelegationLocator {
             lat = lat,
             lng = lng
         )
+    }
 
-        return if (nearest != null) {
-            DelegationLocationResult.Success(nearest)
-        } else {
-            DelegationLocationResult.NoDelegationFound
-        }
+    private fun isUsableSilentUpdateLocation(location: Location): Boolean {
+        val ageMs = System.currentTimeMillis() - location.time
+        if (location.time <= 0L || ageMs < 0L || ageMs > MAX_LAST_LOCATION_AGE_MS) return false
+        if (location.hasAccuracy() && location.accuracy > MAX_SILENT_UPDATE_ACCURACY_METERS) return false
+        return true
+    }
+}
+
+internal interface DelegationLocationProvider {
+    suspend fun findCurrentLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location?
+
+    suspend fun findRecentLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location?
+
+    suspend fun findFreshLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location?
+}
+
+private object AndroidDelegationLocationProvider : DelegationLocationProvider {
+
+    override suspend fun findCurrentLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? {
+        return findCurrentLocationInternal(context, permissionState)
+    }
+
+    override suspend fun findRecentLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? {
+        return runCatching { lastFusedLocation(context) }.getOrNull()
+            ?: recentKnownLocation(context, permissionState)
+    }
+
+    override suspend fun findFreshLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? {
+        return runCatching { currentFusedLocation(context, permissionState) }.getOrNull()
+            ?: recentKnownLocation(context, permissionState)
     }
 
     @SuppressLint("MissingPermission")
-    private suspend fun findCurrentLocation(
+    private suspend fun findCurrentLocationInternal(
         context: Context,
         permissionState: LocationPermissionState
     ): Location? {
@@ -223,6 +297,29 @@ object DelegationLocator {
         }
 
         return freshestKnownLocation(locationManager, permissionState)
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun recentKnownLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return freshestKnownLocation(locationManager, permissionState)
+    }
+
+    @SuppressLint("MissingPermission")
+    private suspend fun lastFusedLocation(context: Context): Location? {
+        return suspendCancellableCoroutine { continuation ->
+            LocationServices.getFusedLocationProviderClient(context)
+                .lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    if (continuation.isActive) continuation.resume(location)
+                }
+                .addOnFailureListener {
+                    if (continuation.isActive) continuation.resume(null)
+                }
+        }
     }
 
     @SuppressLint("MissingPermission")

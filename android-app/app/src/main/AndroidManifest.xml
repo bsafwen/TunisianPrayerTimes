@@ -81,6 +81,7 @@
             <intent-filter>
                 <action android:name="com.tunisianprayertimes.ACTION_SILENCE" />
                 <action android:name="com.tunisianprayertimes.ACTION_UNSILENCE" />
+                <action android:name="com.tunisianprayertimes.ACTION_DELEGATION_CHECK" />
                 <action android:name="com.tunisianprayertimes.ACTION_RESCHEDULE" />
             </intent-filter>
         </receiver>
@@ -92,6 +93,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
             </intent-filter>
         </receiver>
 
@@ -127,6 +132,10 @@
             android:exported="false" />
 
         <receiver
+            android:name=".wake.WakeAlarmRepairReceiver"
+            android:exported="false" />
+
+        <receiver
             android:name=".wake.AwakeCheckReceiver"
             android:exported="false" />
 
@@ -141,7 +150,7 @@
             android:foregroundServiceType="specialUse">
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="Keeps the app process alive so prayer silence alarms fire reliably on aggressive OEM ROMs." />
+                android:value="Keeps active prayer auto-silence restoration reliable on aggressive OEM ROMs." />
         </service>
 
 

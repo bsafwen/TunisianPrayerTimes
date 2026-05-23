@@ -367,9 +367,9 @@
     <string name="awake_check_ringing">لم تؤكد استيقاظك! المنبه يرن الآن.</string>
 
     <string name="guard_channel_name">حماية الصمت التلقائي</string>
-    <string name="guard_channel_description">إشعار دائم يمنع النظام من إيقاف التطبيق حتى تعمل التنبيهات بشكل موثوق.</string>
+    <string name="guard_channel_description">إشعار يظهر أثناء الصمت التلقائي للمساعدة على إنهائه في وقته.</string>
     <string name="guard_notification_title">أوقات الصلاة نشطة</string>
-    <string name="guard_notification_text">الصمت التلقائي يعمل في الخلفية.</string>
+    <string name="guard_notification_text">الصمت التلقائي نشط الآن.</string>
 
     <!-- Silence until alarm -->
     <string name="wake_editor_silence_toggle">إسكات الهاتف حتى يرنّ المنبه</string>

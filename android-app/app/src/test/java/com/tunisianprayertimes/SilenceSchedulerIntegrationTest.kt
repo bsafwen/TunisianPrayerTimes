@@ -13,6 +13,7 @@ import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowAlarmManager
 import org.robolectric.shadows.ShadowNotificationManager
+import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
 import java.util.Calendar
 
@@ -71,6 +72,12 @@ class SilenceSchedulerIntegrationTest {
         val triggerTimes = shadowAlarmManager.scheduledAlarms.map { it.triggerAtTime }
         assertTrue("$message, expected=${expected.timeInMillis}, alarms=$triggerTimes",
             triggerTimes.contains(expected.timeInMillis))
+    }
+
+    private fun grantNotificationPolicyAccess() {
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val shadowNotificationManager = Shadows.shadowOf(notificationManager)
+        shadowNotificationManager.setNotificationPolicyAccessGranted(true)
     }
 
     @Test
@@ -173,10 +180,11 @@ class SilenceSchedulerIntegrationTest {
     }
 
     @Test
-    fun bootReceiver_reschedulesWhenEnabled() {
+    fun bootReceiver_reschedulesWhenEnabled() = runBlocking {
+        grantNotificationPolicyAccess()
         PrefsManager.setEnabled(context, true)
         val receiver = BootReceiver()
-        receiver.onReceive(context, android.content.Intent(android.content.Intent.ACTION_BOOT_COMPLETED))
+        receiver.refreshSchedules(context)
 
         // Should have rescheduled alarms
         assertTrue("Boot receiver should reschedule alarms", shadowAlarmManager.scheduledAlarms.isNotEmpty())

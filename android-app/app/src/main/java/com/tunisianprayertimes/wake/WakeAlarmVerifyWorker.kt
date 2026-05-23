@@ -3,13 +3,11 @@ package com.tunisianprayertimes.wake
 import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.tunisianprayertimes.AnalyticsTracker
-import java.util.concurrent.TimeUnit
 
+/** Legacy WorkManager verifier retained to drain old hourly work after app update. */
 class WakeAlarmVerifyWorker(
     appContext: Context,
     workerParams: WorkerParameters,
@@ -20,7 +18,7 @@ class WakeAlarmVerifyWorker(
         val hasWakeAlarms = WakeAlarmScheduler.hasEnabledWakeAlarms(applicationContext)
         val result = if (hasWakeAlarms) "success" else "disabled"
 
-        return if (hasWakeAlarms) {
+        val workerResult = if (hasWakeAlarms) {
             WakeAlarmScheduler.scheduleAll(applicationContext)
             AnalyticsTracker.scheduleRefreshResult(
                 context = applicationContext,
@@ -42,25 +40,13 @@ class WakeAlarmVerifyWorker(
             )
             Result.success()
         }
+        cancel(applicationContext)
+        return workerResult
     }
 
     companion object {
         private const val TAG = "WakeAlarmVerifyWorker"
         private const val WORK_NAME = "wake_alarm_verify"
-
-        fun enqueue(context: Context) {
-            try {
-                val request = PeriodicWorkRequestBuilder<WakeAlarmVerifyWorker>(1, TimeUnit.HOURS)
-                    .build()
-                WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-                    WORK_NAME,
-                    ExistingPeriodicWorkPolicy.KEEP,
-                    request,
-                )
-            } catch (error: IllegalStateException) {
-                Log.w(TAG, "WorkManager not initialized, skipping enqueue", error)
-            }
-        }
 
         fun cancel(context: Context) {
             try {

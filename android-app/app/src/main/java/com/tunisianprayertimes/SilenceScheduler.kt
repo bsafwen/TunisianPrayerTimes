@@ -9,16 +9,24 @@ import android.util.Log
 import androidx.annotation.VisibleForTesting
 import java.time.LocalDate
 import java.util.Calendar
+import java.util.concurrent.TimeUnit
 
 object SilenceScheduler {
     private const val TAG = "SilenceScheduler"
     private const val ACTION_SILENCE = "com.tunisianprayertimes.ACTION_SILENCE"
     private const val ACTION_UNSILENCE = "com.tunisianprayertimes.ACTION_UNSILENCE"
+    private const val ACTION_DELEGATION_CHECK = "com.tunisianprayertimes.ACTION_DELEGATION_CHECK"
+    private const val ACTION_RESCHEDULE = "com.tunisianprayertimes.ACTION_RESCHEDULE"
     private const val EXTRA_PRAYER = "extra_prayer"
+    private const val DELEGATION_CHECK_REQUEST_CODE_BASE = 10_000
+    private const val POST_FINAL_WINDOW_RESCHEDULE_REQUEST_CODE = 9998
+    private const val MIDNIGHT_RESCHEDULE_REQUEST_CODE = 9999
+    private const val DELEGATION_CHECK_LEAD_MINUTES = 45L
+    private const val POST_FINAL_WINDOW_RESCHEDULE_DELAY_MINUTES = 2
 
-    // Max prayer-time difference between any two Tunisian delegations (~15 min).
-    // Used to tolerate slight window shifts after a delegation change.
-    private const val MAX_DELEGATION_SHIFT_MS = 45 * 60 * 1000L
+    // Measured max prayer-time spread across bundled Tunisian delegation data is 39 minutes.
+    // Keep a 45-minute margin for delegation-change checks and shifted-window tolerance.
+    private const val MAX_DELEGATION_SHIFT_MS = DELEGATION_CHECK_LEAD_MINUTES * 60 * 1000L
 
     /**
      * Schedule silence and unsilence alarms for all prayers today (and tomorrow if today's are past).
@@ -121,12 +129,16 @@ object SilenceScheduler {
 
         var currentlyInSilenceWindow = false
         var earliestUpcomingSilenceMs = Long.MAX_VALUE
+        var latestWindowEndMs = Long.MIN_VALUE
 
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
         for (prayerTime in scheduledPrayersForDate(context, todayTimes, now, isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
+
+            val prayerStartTime = prayerStartTime(now, prayerTime)
+            scheduleDelegationCheckIfNeeded(context, now, prayerStartTime, prayerTime.prayer)
 
             // Silence start: apply delay to prayer time
             val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
@@ -162,6 +174,7 @@ object SilenceScheduler {
                     add(Calendar.MINUTE, config.afterMinutes)
                 }
             }
+            latestWindowEndMs = maxOf(latestWindowEndMs, unsilenceTime.timeInMillis)
 
             // Check if we are currently inside this prayer's silence window
             if (!now.before(silenceTime) && now.before(unsilenceTime)) {
@@ -229,44 +242,15 @@ object SilenceScheduler {
             }
         }
 
-        // Pre-schedule ALL of tomorrow's prayers once today's Isha unsilence has passed.
-        // This guards against OEM battery optimization (Honor, Xiaomi, Samsung, Huawei, etc.)
-        // killing the midnight reschedule alarm. After Isha, all of today's PendingIntent
-        // request codes are past and safe to reuse for tomorrow.
-        val ishaConfig = PrefsManager.getConfig(context, Prayer.ISHA)
-        val todayIsha = todayTimes.isha
-        val ishaSilence = if (ishaConfig.delayMode == DelayMode.FIXED_TIME && ishaConfig.delayFixedHour >= 0 && ishaConfig.delayFixedMinute >= 0) {
-            (now.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, ishaConfig.delayFixedHour)
-                set(Calendar.MINUTE, ishaConfig.delayFixedMinute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-        } else {
-            (now.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, todayIsha.hour)
-                set(Calendar.MINUTE, todayIsha.minute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-                add(Calendar.MINUTE, ishaConfig.delayMinutes)
-            }
+        // Pre-schedule ALL of tomorrow's prayers once today's final silence
+        // window has passed. This keeps tomorrow's alarms on exact AlarmManager
+        // delivery instead of depending on a frequent WorkManager verifier. Wait
+        // for the latest window end so custom fixed-time windows cannot be
+        // overwritten by tomorrow's alarms sharing the same request codes.
+        if (latestWindowEndMs != Long.MIN_VALUE && now.timeInMillis < latestWindowEndMs) {
+            schedulePostFinalWindowReschedule(context, latestWindowEndMs)
         }
-        val ishaUnsilence = if (ishaConfig.mode == SilenceMode.FIXED_TIME && ishaConfig.fixedHour >= 0 && ishaConfig.fixedMinute >= 0) {
-            (now.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, ishaConfig.fixedHour)
-                set(Calendar.MINUTE, ishaConfig.fixedMinute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-                if (before(ishaSilence)) {
-                    add(Calendar.DAY_OF_YEAR, 1)
-                }
-            }
-        } else {
-            (ishaSilence.clone() as Calendar).apply {
-                add(Calendar.MINUTE, ishaConfig.afterMinutes)
-            }
-        }
-        if (!now.before(ishaUnsilence) && !currentlyInSilenceWindow) {
+        if (latestWindowEndMs != Long.MIN_VALUE && now.timeInMillis >= latestWindowEndMs && !currentlyInSilenceWindow) {
             scheduleTomorrowPrayers(context, delegationId, now)
         }
 
@@ -295,6 +279,8 @@ object SilenceScheduler {
 
         for (prayerTime in scheduledPrayersForDate(context, tomorrowTimes, tomorrow, isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
+            val prayerStartTime = prayerStartTime(tomorrow, prayerTime)
+            scheduleDelegationCheckIfNeeded(context, now, prayerStartTime, prayerTime.prayer)
 
             val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
                 (tomorrow.clone() as Calendar).apply {
@@ -345,17 +331,14 @@ object SilenceScheduler {
         for (prayer in Prayer.values()) {
             val silenceIntent = createPendingIntent(context, ACTION_SILENCE, prayer)
             val unsilenceIntent = createPendingIntent(context, ACTION_UNSILENCE, prayer)
+            val delegationCheckIntent = createPendingIntent(context, ACTION_DELEGATION_CHECK, prayer)
             alarmManager.cancel(silenceIntent)
             alarmManager.cancel(unsilenceIntent)
+            alarmManager.cancel(delegationCheckIntent)
         }
-        // Cancel midnight reschedule
-        val midnightIntent = PendingIntent.getBroadcast(
-            context,
-            9999,
-            Intent(context, SilenceReceiver::class.java).apply { action = "com.tunisianprayertimes.ACTION_RESCHEDULE" },
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        alarmManager.cancel(midnightIntent)
+        // Cancel daily reschedule safety nets.
+        alarmManager.cancel(createReschedulePendingIntent(context, MIDNIGHT_RESCHEDULE_REQUEST_CODE))
+        alarmManager.cancel(createReschedulePendingIntent(context, POST_FINAL_WINDOW_RESCHEDULE_REQUEST_CODE))
         // Restore normal mode when cancelling all alarms
         SilenceModeController.disableAutoSilence(context)
     }
@@ -382,8 +365,35 @@ object SilenceScheduler {
         )
     }
 
-    private fun scheduleMidnightReschedule(context: Context) {
+    private fun scheduleDelegationCheckIfNeeded(context: Context, now: Calendar, prayerStartTime: Calendar, prayer: Prayer) {
+        if (!PrefsManager.isAutoLocationUpdateEnabled(context) || !DelegationLocator.hasLocationPermission(context)) {
+            return
+        }
+        if (!prayerStartTime.after(now)) {
+            return
+        }
+
+        val idealTriggerAtMillis = prayerStartTime.timeInMillis - TimeUnit.MINUTES.toMillis(DELEGATION_CHECK_LEAD_MINUTES)
+        val triggerAtMillis = maxOf(idealTriggerAtMillis, now.timeInMillis)
+        scheduleDelegationCheckAlarm(context, triggerAtMillis, prayer)
+    }
+
+    private fun scheduleDelegationCheckAlarm(context: Context, triggerAtMillis: Long, prayer: Prayer) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+            Log.w(TAG, "Cannot schedule exact alarms - permission not granted, skipping delegation check for ${prayer.name}")
+            return
+        }
+
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            triggerAtMillis,
+            createPendingIntent(context, ACTION_DELEGATION_CHECK, prayer),
+        )
+    }
+
+    private fun scheduleMidnightReschedule(context: Context) {
         val midnight = Calendar.getInstance().apply {
             add(Calendar.DAY_OF_YEAR, 1)
             set(Calendar.HOUR_OF_DAY, 0)
@@ -392,19 +402,29 @@ object SilenceScheduler {
             set(Calendar.MILLISECOND, 0)
         }
 
-        val intent = Intent(context, SilenceReceiver::class.java).apply {
-            action = "com.tunisianprayertimes.ACTION_RESCHEDULE"
-        }
-        val pendingIntent = PendingIntent.getBroadcast(
-            context,
-            9999,
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        scheduleRescheduleAlarm(
+            context = context,
+            triggerAtMillis = midnight.timeInMillis,
+            requestCode = MIDNIGHT_RESCHEDULE_REQUEST_CODE,
+            label = "midnight reschedule",
         )
+    }
 
-        // Check exact alarm permission on Android 12+
+    private fun schedulePostFinalWindowReschedule(context: Context, latestWindowEndMs: Long) {
+        val triggerAtMillis = latestWindowEndMs + TimeUnit.MINUTES.toMillis(POST_FINAL_WINDOW_RESCHEDULE_DELAY_MINUTES.toLong())
+        scheduleRescheduleAlarm(
+            context = context,
+            triggerAtMillis = triggerAtMillis,
+            requestCode = POST_FINAL_WINDOW_RESCHEDULE_REQUEST_CODE,
+            label = "post-final-window reschedule",
+        )
+    }
+
+    private fun scheduleRescheduleAlarm(context: Context, triggerAtMillis: Long, requestCode: Int, label: String) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
-            Log.w(TAG, "Cannot schedule exact alarms - permission not granted, skipping midnight reschedule")
+            Log.w(TAG, "Cannot schedule exact alarms - permission not granted, skipping $label")
             return
         }
 
@@ -415,8 +435,20 @@ object SilenceScheduler {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
         alarmManager.setAlarmClock(
-            AlarmManager.AlarmClockInfo(midnight.timeInMillis, showIntent),
-            pendingIntent
+            AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent),
+            createReschedulePendingIntent(context, requestCode),
+        )
+    }
+
+    private fun createReschedulePendingIntent(context: Context, requestCode: Int): PendingIntent {
+        val intent = Intent(context, SilenceReceiver::class.java).apply {
+            action = ACTION_RESCHEDULE
+        }
+        return PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
     }
 
@@ -424,6 +456,16 @@ object SilenceScheduler {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(createPendingIntent(context, ACTION_SILENCE, prayer))
         alarmManager.cancel(createPendingIntent(context, ACTION_UNSILENCE, prayer))
+        alarmManager.cancel(createPendingIntent(context, ACTION_DELEGATION_CHECK, prayer))
+    }
+
+    private fun prayerStartTime(date: Calendar, prayerTime: PrayerTime): Calendar {
+        return (date.clone() as Calendar).apply {
+            set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+            set(Calendar.MINUTE, prayerTime.minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
     }
 
     private fun scheduledPrayersForDate(
@@ -476,6 +518,7 @@ object SilenceScheduler {
         val requestCode = when (action) {
             ACTION_SILENCE -> prayer.ordinal * 2
             ACTION_UNSILENCE -> prayer.ordinal * 2 + 1
+            ACTION_DELEGATION_CHECK -> DELEGATION_CHECK_REQUEST_CODE_BASE + prayer.ordinal
             else -> prayer.ordinal * 2
         }
         val intent = Intent(context, SilenceReceiver::class.java).apply {

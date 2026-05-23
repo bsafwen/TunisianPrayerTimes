@@ -48,6 +48,7 @@ object SilenceModeController {
         if (PrefsManager.isManualSilenceActive(context)) {
             notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
             audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+            SilenceGuardService.stopIfNotNeeded(context)
             return true
         }
         if (!PrefsManager.isAutoSilenceActive(context)) {
@@ -60,6 +61,7 @@ object SilenceModeController {
 
         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        SilenceGuardService.start(context)
         return true
     }
 
@@ -76,6 +78,7 @@ object SilenceModeController {
             PrefsManager.getAutoSilencePreviousRingerMode(context)
         )
         PrefsManager.clearAutoSilenceState(context)
+        SilenceGuardService.stopIfNotNeeded(context)
         return true
     }
 
@@ -100,6 +103,7 @@ object SilenceModeController {
 
         PrefsManager.clearAutoSilenceState(context)
         PrefsManager.clearManualSilenceEndsAt(context)
+        SilenceGuardService.stopIfNotNeeded(context)
         if (!PrefsManager.isManualSilenceActive(context)) {
             PrefsManager.markManualSilenceActive(
                 context = context,
@@ -136,6 +140,7 @@ object SilenceModeController {
 
         PrefsManager.clearManualSilenceState(context)
         PrefsManager.clearAutoSilenceState(context)
+        SilenceGuardService.stopIfNotNeeded(context)
         return true
     }
 
@@ -157,6 +162,7 @@ object SilenceModeController {
         )
         PrefsManager.clearAutoSilenceState(context)
         PrefsManager.clearManualSilenceState(context)
+        SilenceGuardService.stopIfNotNeeded(context)
         return true
     }
 
