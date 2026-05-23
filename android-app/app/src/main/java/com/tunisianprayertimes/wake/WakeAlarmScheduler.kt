@@ -16,6 +16,7 @@ import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.nap.NapSilenceController
 import java.util.Calendar
+import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
 object WakeAlarmScheduler {
@@ -25,6 +26,8 @@ object WakeAlarmScheduler {
 	private const val KEY_SILENCED_ALARM_ID = "silenced_alarm_id"
 	private const val KEY_SILENCED_ALARM_IDS = "silenced_alarm_ids"
 	private const val KEY_SILENCE_PAUSED_FOR_ALARM_ID = "silence_paused_for_alarm_id"
+	private const val REPAIR_REQUEST_CODE = 70_001
+	private const val REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES = 2L
 
 	fun activateSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
@@ -161,6 +164,8 @@ object WakeAlarmScheduler {
 	fun cancelAll(context: Context) {
 		cancelEventIds(context, scheduledEventIds(context))
 		persistScheduledEventIds(context, emptySet())
+		cancelRepairAlarm(context)
+		WakeAlarmVerifyWorker.cancel(context)
 	}
 
 	fun schedulingSnapshot(
@@ -203,12 +208,14 @@ object WakeAlarmScheduler {
 		if (!canScheduleExactAlarms(alarmManager)) {
 			Log.w(TAG, "Cannot schedule wake alarms because exact alarm permission is missing")
 			persistScheduledEventIds(context, emptySet())
+			cancelRepairAlarm(context)
 			return
 		}
 
 		val enabledConfigs = configs.filter { config -> config.hasFutureTriggers(now.timeInMillis) }
 		if (enabledConfigs.isEmpty()) {
 			persistScheduledEventIds(context, emptySet())
+			cancelRepairAlarm(context)
 			return
 		}
 
@@ -221,12 +228,14 @@ object WakeAlarmScheduler {
 		}
 
 		val scheduledEventIds = linkedSetOf<String>()
+		var latestTriggerAtMillis: Long? = null
 		enabledConfigs.forEach { config ->
 			val result = WakeAlarmComputer.compute(now, config, prayerDays)
 			result.mainAlarm?.let { trigger ->
 				val eventId = wakeMainEventId(trigger.alarmId)
 				scheduleTrigger(context, alarmManager, trigger, eventId)
 				scheduledEventIds += eventId
+				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
 			}
 			result.subAlarms.forEach { trigger ->
 				val eventId = wakeSubAlarmEventId(
@@ -235,10 +244,54 @@ object WakeAlarmScheduler {
 				)
 				scheduleTrigger(context, alarmManager, trigger, eventId)
 				scheduledEventIds += eventId
+				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
 			}
 		}
 
 		persistScheduledEventIds(context, scheduledEventIds)
+		if (scheduledEventIds.isNotEmpty()) {
+			scheduleRepairAlarm(context, alarmManager, now, latestTriggerAtMillis)
+		} else {
+			cancelRepairAlarm(context)
+		}
+	}
+
+	@VisibleForTesting
+	internal fun repairTriggerAtMillis(now: Calendar, latestWakeTriggerAtMillis: Long?): Long {
+		val midnightRepairAtMillis = (now.clone() as Calendar).apply {
+			add(Calendar.DAY_OF_YEAR, 1)
+			set(Calendar.HOUR_OF_DAY, 0)
+			set(Calendar.MINUTE, 1)
+			set(Calendar.SECOND, 0)
+			set(Calendar.MILLISECOND, 0)
+		}.timeInMillis
+
+		val afterLastWakeAlarmAtMillis = latestWakeTriggerAtMillis
+			?.plus(TimeUnit.MINUTES.toMillis(REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES))
+			?.takeIf { triggerAtMillis -> triggerAtMillis > now.timeInMillis }
+
+		return listOfNotNull(afterLastWakeAlarmAtMillis, midnightRepairAtMillis)
+			.minOrNull()
+			?: midnightRepairAtMillis
+	}
+
+	private fun scheduleRepairAlarm(
+		context: Context,
+		alarmManager: AlarmManager,
+		now: Calendar,
+		latestWakeTriggerAtMillis: Long?,
+	) {
+		val triggerAtMillis = repairTriggerAtMillis(now, latestWakeTriggerAtMillis)
+		try {
+			alarmManager.setExactAndAllowWhileIdle(
+				AlarmManager.RTC_WAKEUP,
+				triggerAtMillis,
+				createRepairPendingIntent(context),
+			)
+			Log.d(TAG, "Scheduled wake repair at ${Calendar.getInstance().apply { timeInMillis = triggerAtMillis }.time}")
+		} catch (e: SecurityException) {
+			Log.w(TAG, "Exact alarm denied for wake repair; skipping", e)
+		}
 	}
 
 	private fun scheduleTrigger(
@@ -316,11 +369,27 @@ object WakeAlarmScheduler {
 		if (eventIds.isEmpty()) {
 			return
 		}
-
 		val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 		eventIds.forEach { eventId ->
 			alarmManager.cancel(cancelPendingIntent(context, eventId))
 		}
+	}
+
+	private fun cancelRepairAlarm(context: Context) {
+		val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+		alarmManager.cancel(createRepairPendingIntent(context))
+	}
+
+	private fun createRepairPendingIntent(context: Context): PendingIntent {
+		val intent = Intent(context, WakeAlarmRepairReceiver::class.java)
+			.setAction(WakeAlarmRepairReceiver.ACTION_REPAIR)
+
+		return PendingIntent.getBroadcast(
+			context,
+			REPAIR_REQUEST_CODE,
+			intent,
+			PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+		)
 	}
 
 	private fun cancelPendingIntent(context: Context, eventId: String): PendingIntent {

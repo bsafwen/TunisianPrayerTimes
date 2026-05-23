@@ -3,6 +3,7 @@ package com.tunisianprayertimes
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
@@ -26,10 +27,21 @@ class SilenceVerifyWorker(
     companion object {
         private const val TAG = "SilenceVerifyWorker"
         private const val WORK_NAME = "silence_verify"
+        private const val VERIFY_INTERVAL_HOURS = 6L
+        private const val VERIFY_FLEX_HOURS = 2L
 
         fun enqueue(context: Context) {
             try {
-                val request = PeriodicWorkRequestBuilder<SilenceVerifyWorker>(15, TimeUnit.MINUTES)
+                val constraints = Constraints.Builder()
+                    .setRequiresBatteryNotLow(true)
+                    .build()
+                val request = PeriodicWorkRequestBuilder<SilenceVerifyWorker>(
+                    VERIFY_INTERVAL_HOURS,
+                    TimeUnit.HOURS,
+                    VERIFY_FLEX_HOURS,
+                    TimeUnit.HOURS,
+                )
+                    .setConstraints(constraints)
                     .build()
                 WorkManager.getInstance(context).enqueueUniquePeriodicWork(
                     WORK_NAME,
@@ -68,13 +80,13 @@ class SilenceVerifyWorker(
                 Log.d(TAG, "User returned to Tunisia, re-enabling silence alarms")
                 PrefsManager.setDisabledOutsideTunisia(applicationContext, false)
                 if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
-                    DelegationLocator.updateDelegationFromLastLocation(applicationContext)
+                    DelegationLocator.updateDelegationFromCurrentLocation(applicationContext)
                 }
                 SilenceScheduler.scheduleAll(applicationContext)
             } else {
                 refreshResult = "success"
                 if (PrefsManager.isAutoLocationUpdateEnabled(applicationContext)) {
-                    if (DelegationLocator.updateDelegationFromLastLocation(applicationContext)) {
+                    if (DelegationLocator.updateDelegationFromCurrentLocation(applicationContext)) {
                         Log.d(TAG, "Delegation updated, rescheduling alarms")
                     }
                 }

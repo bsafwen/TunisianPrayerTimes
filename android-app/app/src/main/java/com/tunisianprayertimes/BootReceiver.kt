@@ -4,8 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.tunisianprayertimes.wake.WakeAlarmScheduler
-import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,35 +15,25 @@ class BootReceiver : BroadcastReceiver() {
 
         when (action) {
             Intent.ACTION_BOOT_COMPLETED,
-            "android.intent.action.MY_PACKAGE_REPLACED" -> {
-                Log.d("BootReceiver", "Rescheduling alarms after boot/update")
-                AnalyticsTracker.installRamadanOverrideReporter(context)
-                RamadanOverrideChecker.startPollingIfNeeded()
-                SilenceScheduler.scheduleAll(context)
-                if (PrefsManager.isEnabled(context)) {
-                    SilenceVerifyWorker.enqueue(context)
-                    SilenceGuardService.start(context)
-                }
+            Intent.ACTION_MY_PACKAGE_REPLACED,
+            Intent.ACTION_TIME_CHANGED,
+            Intent.ACTION_TIMEZONE_CHANGED,
+            Intent.ACTION_DATE_CHANGED,
+            ACTION_EXACT_ALARM_PERMISSION_CHANGED -> {
+                Log.d("BootReceiver", "Refreshing schedules after ${sourceForAction(action)}")
 
                 val pendingResult = goAsync()
                 CoroutineScope(Dispatchers.IO).launch {
                     var refreshResult = "success"
                     try {
-                        if (WakeAlarmScheduler.hasEnabledWakeAlarms(context)) {
-                            WakeAlarmVerifyWorker.enqueue(context)
-                            WakeAlarmScheduler.scheduleAll(context)
-                        } else {
-                            refreshResult = "wake_disabled"
-                            WakeAlarmScheduler.cancelAll(context)
-                            WakeAlarmVerifyWorker.cancel(context)
-                        }
+                        refreshResult = refreshSchedules(context)
                     } catch (error: Exception) {
                         refreshResult = "failure"
-                        Log.w("BootReceiver", "Failed to restore wake alarms", error)
+                        Log.w("BootReceiver", "Failed to refresh schedules", error)
                     } finally {
                         AnalyticsTracker.scheduleRefreshResult(
                             context = context,
-                            source = if (action == Intent.ACTION_BOOT_COMPLETED) "boot" else "package_replaced",
+                            source = sourceForAction(action),
                             result = refreshResult,
                             silencePrayerCount = AnalyticsTracker.silencePrayerCount(context),
                             wakeAlarmCount = AnalyticsTracker.enabledWakeAlarmCount(context),
@@ -55,5 +43,26 @@ class BootReceiver : BroadcastReceiver() {
                 }
             }
         }
+    }
+
+    internal suspend fun refreshSchedules(context: Context): String {
+        AnalyticsTracker.installRamadanOverrideReporter(context)
+        RamadanOverrideChecker.startPollingIfNeeded()
+        return ScheduleRefreshCoordinator.syncAll(context).analyticsResult
+    }
+
+    private fun sourceForAction(action: String): String = when (action) {
+        Intent.ACTION_BOOT_COMPLETED -> "boot"
+        Intent.ACTION_MY_PACKAGE_REPLACED -> "package_replaced"
+        Intent.ACTION_TIME_CHANGED -> "time_changed"
+        Intent.ACTION_TIMEZONE_CHANGED -> "timezone_changed"
+        Intent.ACTION_DATE_CHANGED -> "date_changed"
+        ACTION_EXACT_ALARM_PERMISSION_CHANGED -> "exact_alarm_permission_changed"
+        else -> "system_broadcast"
+    }
+
+    companion object {
+        private const val ACTION_EXACT_ALARM_PERMISSION_CHANGED =
+            "android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED"
     }
 }

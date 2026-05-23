@@ -64,6 +64,7 @@ object AnalyticsTracker {
     }
 
     fun tabViewed(context: Context, tab: String) {
+        if (tab.isBlank()) return
         log(
             context,
             "tab_viewed",

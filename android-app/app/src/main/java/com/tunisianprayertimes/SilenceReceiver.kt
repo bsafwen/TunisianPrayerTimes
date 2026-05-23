@@ -60,6 +60,7 @@ class SilenceReceiver : BroadcastReceiver() {
                 if (manualActive) {
                     Log.d(TAG, "Manual silence is active, skipping auto unsilence")
                     PrefsManager.clearAutoSilenceState(context)
+                    SilenceGuardService.stopIfNotNeeded(context)
                     return
                 }
                 if (autoActive) {
@@ -78,10 +79,56 @@ class SilenceReceiver : BroadcastReceiver() {
                 ManualSilenceScheduler.onTimerExpired(context)
                 SilenceModeController.notifyIfMissedCallDuringSilence(context)
             }
+            "com.tunisianprayertimes.ACTION_DELEGATION_CHECK" -> {
+                val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
+                Log.d(TAG, "Checking delegation before $prayerName")
+                if (PrefsManager.isAutoLocationUpdateEnabled(context) && DelegationLocator.hasLocationPermission(context)) {
+                    val pendingResult = goAsync()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            checkDelegationBeforePrayer(context, prayerName)
+                        } catch (e: Exception) {
+                            Log.w(TAG, "Failed to update delegation before $prayerName", e)
+                        } finally {
+                            pendingResult.finish()
+                        }
+                    }
+                }
+            }
             "com.tunisianprayertimes.ACTION_RESCHEDULE" -> {
                 Log.d(TAG, "Rescheduling alarms")
-                SilenceScheduler.scheduleAll(context)
+                if (PrefsManager.isAutoLocationUpdateEnabled(context) && DelegationLocator.hasLocationPermission(context)) {
+                    val pendingResult = goAsync()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            if (DelegationLocator.updateDelegationFromLastLocation(context)) {
+                                Log.d(TAG, "Delegation updated before reschedule")
+                            }
+                            SilenceScheduler.scheduleAll(context)
+                        } catch (e: Exception) {
+                            Log.w(TAG, "Failed to update delegation before reschedule", e)
+                            SilenceScheduler.scheduleAll(context)
+                        } finally {
+                            pendingResult.finish()
+                        }
+                    }
+                } else {
+                    SilenceScheduler.scheduleAll(context)
+                }
             }
         }
+    }
+
+    internal suspend fun checkDelegationBeforePrayer(context: Context, prayerName: String): Boolean {
+        if (!PrefsManager.isAutoLocationUpdateEnabled(context) || !DelegationLocator.hasLocationPermission(context)) {
+            return false
+        }
+        if (!DelegationLocator.updateDelegationFromCurrentLocation(context)) {
+            return false
+        }
+
+        Log.d(TAG, "Delegation updated before $prayerName, rescheduling")
+        SilenceScheduler.scheduleAll(context)
+        return true
     }
 }

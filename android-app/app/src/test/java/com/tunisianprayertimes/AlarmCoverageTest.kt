@@ -1,6 +1,8 @@
 package com.tunisianprayertimes
 
+import android.Manifest
 import android.app.AlarmManager
+import android.app.Application
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
@@ -9,6 +11,7 @@ import androidx.test.core.app.ApplicationProvider
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import org.robolectric.RuntimeEnvironment
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
@@ -54,6 +57,23 @@ class AlarmCoverageTest {
         audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
     }
 
+    private fun calendarAt(year: Int, month: Int, day: Int, hour: Int, minute: Int): Calendar {
+        return Calendar.getInstance().apply {
+            set(Calendar.YEAR, year)
+            set(Calendar.MONTH, month)
+            set(Calendar.DAY_OF_MONTH, day)
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+    }
+
+    private fun grantCoarseLocationPermission() {
+        Shadows.shadowOf(RuntimeEnvironment.getApplication() as Application)
+            .grantPermissions(Manifest.permission.ACCESS_COARSE_LOCATION)
+    }
+
     // ==================== Midnight reschedule ====================
 
     @Test
@@ -94,6 +114,27 @@ class AlarmCoverageTest {
 
         SilenceScheduler.cancelAll(context)
         assertEquals("All alarms cancelled", 0, shadowAlarmManager.scheduledAlarms.size)
+    }
+
+    @Test
+    fun scheduleAll_withAutoLocation_schedulesDelegationCheck45MinutesBeforePrayer() {
+        grantCoarseLocationPermission()
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setAutoLocationUpdateEnabled(context, true)
+        val now = calendarAt(2026, Calendar.MAY, 21, 1, 0)
+
+        SilenceScheduler.scheduleAllInternal(context, now)
+
+        val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(context, PrefsManager.getDelegationId(context), 2026, 5, 21)
+            ?: error("Missing prayer data for controlled delegation-check test date")
+        val expectedFajrCheck = calendarAt(2026, Calendar.MAY, 21, todayTimes.fajr.hour, todayTimes.fajr.minute).apply {
+            add(Calendar.MINUTE, -45)
+        }.timeInMillis
+
+        assertTrue(
+            "Delegation check should be scheduled 45 minutes before Fajr",
+            shadowAlarmManager.scheduledAlarms.any { it.triggerAtTime == expectedFajrCheck }
+        )
     }
 
     // ==================== todayTimes == null ====================
@@ -345,7 +386,7 @@ class AlarmCoverageTest {
         ) ?: return
 
         // Count expected alarms: for each prayer, silence + unsilence if both in future,
-        // only unsilence if inside window, skip if both past. Plus midnight. Plus maybe tomorrow Fajr.
+        // only unsilence if inside window, skip if both past. Plus midnight.
         var expectedMinAlarms = 1 // midnight reschedule
 
         for (pt in todayTimes.allPrayers()) {

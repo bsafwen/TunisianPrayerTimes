@@ -143,12 +143,11 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
 import com.tunisianprayertimes.RamadanOverrideChecker
 import com.tunisianprayertimes.RingtonePreset
-import com.tunisianprayertimes.SilenceGuardService
+import com.tunisianprayertimes.ScheduleRefreshCoordinator
 import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
-import com.tunisianprayertimes.SilenceVerifyWorker
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
@@ -156,7 +155,6 @@ import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
-import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
 import com.tunisianprayertimes.wake.AwakeCheckService
 import java.time.LocalDate
 import java.util.Date
@@ -330,13 +328,7 @@ fun MainScreen(
     }
 
     suspend fun syncWakeScheduling() {
-        if (WakeAlarmScheduler.hasEnabledWakeAlarms(context)) {
-            WakeAlarmVerifyWorker.enqueue(context)
-            WakeAlarmScheduler.scheduleAll(context)
-        } else {
-            WakeAlarmScheduler.cancelAll(context)
-            WakeAlarmVerifyWorker.cancel(context)
-        }
+        ScheduleRefreshCoordinator.syncWake(context)
     }
 
     // Single resume-sync effect — merges all refreshTick observers into one
@@ -353,18 +345,10 @@ fun MainScreen(
             }
         }
 
-        val hasAll = notificationManager.isNotificationPolicyAccessGranted && hasExactAlarmPermission(context)
-        if (PrefsManager.isEnabled(context) && hasAll && !PrefsManager.isManualSilenceActive(context)) {
-            if (!PrefsManager.isDisabledOutsideTunisia(context)) {
-                SilenceScheduler.scheduleAll(context)
-            }
-            SilenceVerifyWorker.enqueue(context)
-            SilenceGuardService.start(context)
-        } else if (PrefsManager.isEnabled(context) && !hasAll) {
-            SilenceScheduler.cancelAll(context)
-            SilenceVerifyWorker.cancel(context)
-        }
-
+        ScheduleRefreshCoordinator.syncSilence(
+            context = context,
+            skipWhileManualSilence = true,
+        )
         syncWakeScheduling()
 
         refreshSilenceState()
@@ -400,9 +384,7 @@ fun MainScreen(
 
     // Reschedule helper
     fun rescheduleIfEnabled() {
-        if (PrefsManager.isEnabled(context) && hasDnd && hasAlarm) {
-            SilenceScheduler.scheduleAll(context)
-        }
+        ScheduleRefreshCoordinator.syncSilence(context)
         schedulerScope.launch {
             syncWakeScheduling()
             refreshTick++
@@ -618,15 +600,11 @@ fun MainScreen(
                                 if (enabled) {
                                     if (hasDnd && hasAlarm) {
                                         ensureCallTrackingPermission()
-                                        SilenceScheduler.scheduleAll(context)
-                                        SilenceVerifyWorker.enqueue(context)
                                     }
-                                    SilenceGuardService.start(context)
+                                    ScheduleRefreshCoordinator.syncSilence(context)
                                     Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
                                 } else {
-                                    SilenceScheduler.cancelAll(context)
-                                    SilenceVerifyWorker.cancel(context)
-                                    SilenceGuardService.stop(context)
+                                    ScheduleRefreshCoordinator.syncSilence(context)
                                     Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
                                 }
                                 refreshSilenceState()
