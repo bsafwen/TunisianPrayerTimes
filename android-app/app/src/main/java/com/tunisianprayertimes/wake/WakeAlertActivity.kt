@@ -340,8 +340,30 @@ private fun WakeAlertScreen(
                     if (currentStep != null) {
                         when (currentStep.type) {
                             WakeUpCheckType.MATH -> {
-                                val challenge = remember(completedSteps) {
-                                    wakeUpCheckChallengeForStep(eventId, completedSteps, currentStep.difficulty)
+                                val challengeSeed = payload?.wakeUpCheckSeed
+                                val scheduledChallenge = payload?.wakeUpCheckChallenge
+                                val challenge = remember(
+                                    eventId,
+                                    challengeSeed,
+                                    scheduledChallenge,
+                                    completedSteps,
+                                    currentStep.difficulty,
+                                ) {
+                                    if (
+                                        challengeSeed == null &&
+                                        completedSteps == 0 &&
+                                        scheduledChallenge != null &&
+                                        payload?.wakeUpCheckSteps.isNullOrEmpty()
+                                    ) {
+                                        scheduledChallenge
+                                    } else {
+                                        wakeUpCheckChallengeForStep(
+                                            eventId = eventId,
+                                            triggerAtMillis = challengeSeed,
+                                            stepIndex = completedSteps,
+                                            difficulty = currentStep.difficulty,
+                                        )
+                                    }
                                 }
                                 MathStepContent(
                                     stepKey = completedSteps,
