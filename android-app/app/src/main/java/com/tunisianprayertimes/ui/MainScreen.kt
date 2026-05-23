@@ -198,6 +198,8 @@ private enum class WakeQuickPreset {
 
 private const val DEFAULT_PRAYER_OFFSET_MINUTES = 20
 private const val DEFAULT_TIMER_MINUTES = 15
+private val MainHeroCardHeight = 132.dp
+private val MainHeroCardShape = RoundedCornerShape(18.dp)
 
 private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Today -> "prayers"
@@ -2067,8 +2069,7 @@ private fun WakeAlarmCard(
 
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 12.dp),
+            .fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         if (nextAlarm != null) {
@@ -2326,10 +2327,11 @@ private fun WakeNextAlarmPanel(
     triggerAtMillis: Long,
 ) {
     val prayerName = wakeAlarmPrayerName(wakeConfig.prayer)
-    val shape = RoundedCornerShape(18.dp)
+    val shape = MainHeroCardShape
     Box(
         modifier = Modifier
             .fillMaxWidth()
+            .height(MainHeroCardHeight)
             .clip(shape)
             .background(
                 Brush.linearGradient(
@@ -2433,16 +2435,25 @@ private fun NextPrayerHeroCard(
         R.string.next_prayer_countdown_remaining,
         formatCountdownRemaining(countdown.triggerAtMillis, currentTimeMillis),
     )
-    val shape = RoundedCornerShape(18.dp)
+    val shape = MainHeroCardShape
+    val heroStartColor by animateColorAsState(
+        targetValue = if (isAppSilenced) Color(0xFF003F3A) else GreenPrimaryDark,
+        label = "nextPrayerHeroStart"
+    )
+    val heroEndColor by animateColorAsState(
+        targetValue = if (isAppSilenced) Color(0xFF00695C) else GreenPrimary,
+        label = "nextPrayerHeroEnd"
+    )
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
+            .height(MainHeroCardHeight)
             .testTag(TestTags.STATUS_CARD)
             .clip(shape)
             .background(
                 Brush.linearGradient(
-                    colors = listOf(GreenPrimaryDark, GreenPrimary),
+                    colors = listOf(heroStartColor, heroEndColor),
                     start = Offset(0f, 0f),
                     end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
                 )
