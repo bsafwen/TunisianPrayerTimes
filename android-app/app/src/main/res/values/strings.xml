@@ -11,6 +11,13 @@
     <string name="status_no_permission">يجب منح إذن عدم الإزعاج ⚠️</string>
     <string name="phone_status_silent_short">الهاتف صامت</string>
     <string name="phone_status_permission_short">إذن عدم الإزعاج مطلوب</string>
+    <string name="phone_status_silent_auto_prayer">صامت بسبب صلاة %1$s</string>
+    <string name="phone_status_silent_auto">صامت بسبب وقت الصلاة</string>
+    <string name="phone_status_silent_manual">صامت يدويًا</string>
+    <string name="phone_status_silent_manual_until_time">صامت يدويًا حتى %1$s</string>
+    <string name="phone_status_silent_manual_until_prayer">صامت يدويًا حتى %1$s</string>
+    <string name="phone_status_silent_wake_alarm">صامت حتى منبه الاستيقاظ</string>
+    <string name="phone_status_silent_external">صامت من إعدادات الهاتف</string>
     <string name="btn_silence">تفعيل الصامت 🔇</string>
     <string name="btn_silence_for_duration">تفعيل الصامت لمدة %1$s 🔇</string>
     <string name="btn_silence_until_prayer">تفعيل الصامت حتى %1$s 🔇</string>

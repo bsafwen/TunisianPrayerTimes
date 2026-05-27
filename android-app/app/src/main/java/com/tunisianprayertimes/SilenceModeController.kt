@@ -37,12 +37,13 @@ object SilenceModeController {
         audioManager.ringerMode = previousRinger                       // (3)
     }
 
-    fun enableAutoSilence(context: Context): Boolean {
+    fun enableAutoSilence(context: Context, prayer: Prayer? = null): Boolean {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        if (!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)) {
+        val isNewSilenceSession = !PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)
+        if (isNewSilenceSession) {
             PrefsManager.clearCallReceivedDuringSilence(context)
         }
         if (PrefsManager.isManualSilenceActive(context)) {
@@ -61,6 +62,9 @@ object SilenceModeController {
 
         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        if (isNewSilenceSession) {
+            AnalyticsTracker.phoneSilenced(context, source = "auto_prayer", prayer = prayer)
+        }
         SilenceGuardService.start(context)
         return true
     }
@@ -87,6 +91,7 @@ object SilenceModeController {
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        val isNewSilenceSession = !PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)
         if (!PrefsManager.isManualSilenceActive(context)) {
             PrefsManager.clearCallReceivedDuringSilence(context)
         }
@@ -114,6 +119,9 @@ object SilenceModeController {
 
         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        if (isNewSilenceSession) {
+            AnalyticsTracker.phoneSilenced(context, source = "manual")
+        }
         return true
     }
 
