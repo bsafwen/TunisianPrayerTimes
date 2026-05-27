@@ -195,7 +195,7 @@ object SilenceScheduler {
                 // We're in the middle of a silence window — ensure phone is silenced
                 // and schedule the unsilence
                 PrefsManager.clearAutoSilenceDismissed(context)
-                SilenceModeController.enableAutoSilence(context)
+                SilenceModeController.enableAutoSilence(context, prayerTime.prayer)
                 scheduleExactAlarm(context, unsilenceTime.timeInMillis, ACTION_UNSILENCE, prayerTime.prayer)
                 Log.d(TAG, "Currently in silence window for ${prayerTime.prayer}, scheduled UNSILENCE at ${unsilenceTime.time}")
                 continue

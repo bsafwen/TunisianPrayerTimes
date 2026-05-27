@@ -3,6 +3,7 @@ package com.tunisianprayertimes.nap
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
+import com.tunisianprayertimes.AnalyticsTracker
 
 object NapSilenceController {
 
@@ -22,6 +23,7 @@ object NapSilenceController {
 
         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+        AnalyticsTracker.phoneSilenced(context, source = "wake_alarm")
         return true
     }
 

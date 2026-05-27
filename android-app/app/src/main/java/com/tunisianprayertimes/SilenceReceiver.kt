@@ -30,7 +30,10 @@ class SilenceReceiver : BroadcastReceiver() {
                     return
                 }
                 PrefsManager.clearAutoSilenceDismissed(context)
-                SilenceModeController.enableAutoSilence(context)
+                SilenceModeController.enableAutoSilence(
+                    context,
+                    runCatching { Prayer.valueOf(prayerName) }.getOrNull(),
+                )
                 // Update delegation from cached location in the background,
                 // so the next reschedule uses the correct prayer times.
                 if (PrefsManager.isAutoLocationUpdateEnabled(context)) {

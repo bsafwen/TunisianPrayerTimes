@@ -323,6 +323,7 @@ fun MainScreen(
     var manualSilenceActive by remember { mutableStateOf(PrefsManager.isManualSilenceActive(context)) }
     var phoneSilenced by remember { mutableStateOf(SilenceStatus.isPhoneSilenced(context)) }
     var appControlledSilenceActive by remember { mutableStateOf(SilenceStatus.isAppControlledSilenceActive(context)) }
+    var wakeSilenceUntilAlarmActive by remember { mutableStateOf(WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) }
     var manualSilenceEndsAtMillis by remember {
         mutableLongStateOf(PrefsManager.getManualSilenceEndsAtMillis(context))
     }
@@ -332,6 +333,7 @@ fun MainScreen(
         manualSilenceActive = PrefsManager.isManualSilenceActive(context)
         phoneSilenced = SilenceStatus.isPhoneSilenced(context)
         appControlledSilenceActive = SilenceStatus.isAppControlledSilenceActive(context)
+        wakeSilenceUntilAlarmActive = WakeAlarmScheduler.isSilenceUntilAlarmActive(context)
         manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context)
     }
 
@@ -555,6 +557,12 @@ fun MainScreen(
                             delegationId = delegationId,
                             isPhoneSilenced = phoneSilenced,
                             hasDnd = hasDnd,
+                            autoSilenceActive = autoSilenceActive,
+                            manualSilenceActive = manualSilenceActive,
+                            manualSilenceMode = manualSilenceMode,
+                            manualTargetPrayer = manualTargetPrayer,
+                            manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
+                            wakeSilenceUntilAlarmActive = wakeSilenceUntilAlarmActive,
                         )
 
                         AnimatedVisibility(
@@ -1005,18 +1013,21 @@ private fun IslamicHeader() {
 private fun PhoneStatusNotice(
     isPhoneSilenced: Boolean,
     hasDnd: Boolean,
+    silenceReason: PhoneSilenceReason?,
     modifier: Modifier = Modifier,
 ) {
-    if (hasDnd && !isPhoneSilenced) return
+    val context = LocalContext.current
+    val statusText = phoneStatusNoticeText(
+        context = context,
+        isPhoneSilenced = isPhoneSilenced,
+        hasDnd = hasDnd,
+        silenceReason = silenceReason,
+    ) ?: return
 
     val accentColor by animateColorAsState(
         targetValue = if (!hasDnd) Color(0xFFFFD166) else Color(0xFFFFCDD2),
         label = "phoneStatusAccent"
     )
-    val statusText = when {
-        !hasDnd -> stringResource(R.string.phone_status_permission_short)
-        else -> stringResource(R.string.phone_status_silent_short)
-    }
 
     Row(
         modifier = modifier,
@@ -1620,6 +1631,12 @@ private fun TodayNextPrayerCard(
     delegationId: Int,
     isPhoneSilenced: Boolean,
     hasDnd: Boolean,
+    autoSilenceActive: Boolean,
+    manualSilenceActive: Boolean,
+    manualSilenceMode: ManualSilenceMode,
+    manualTargetPrayer: Prayer,
+    manualSilenceEndsAtMillis: Long,
+    wakeSilenceUntilAlarmActive: Boolean,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -1662,6 +1679,32 @@ private fun TodayNextPrayerCard(
             jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
         )
     }
+    val activeAutoSilencePrayer = remember(autoSilenceActive, currentTimeMillis) {
+        if (autoSilenceActive) SilenceScheduler.currentSilenceWindowPrayer(context) else null
+    }
+    val silenceReason = remember(
+        isPhoneSilenced,
+        autoSilenceActive,
+        activeAutoSilencePrayer,
+        manualSilenceActive,
+        manualSilenceMode,
+        manualTargetPrayer,
+        manualSilenceEndsAtMillis,
+        wakeSilenceUntilAlarmActive,
+        currentTimeMillis,
+    ) {
+        resolvePhoneSilenceReason(
+            isPhoneSilenced = isPhoneSilenced,
+            autoSilenceActive = autoSilenceActive,
+            activeAutoSilencePrayer = activeAutoSilencePrayer,
+            manualSilenceActive = manualSilenceActive,
+            manualSilenceMode = manualSilenceMode,
+            manualTargetPrayer = manualTargetPrayer,
+            manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
+            wakeSilenceUntilAlarmActive = wakeSilenceUntilAlarmActive,
+            currentTimeMillis = currentTimeMillis,
+        )
+    }
 
     LaunchedEffect(countdown?.triggerAtMillis) {
         while (true) {
@@ -1678,6 +1721,7 @@ private fun TodayNextPrayerCard(
             currentTimeMillis = currentTimeMillis,
             isPhoneSilenced = isPhoneSilenced,
             hasDnd = hasDnd,
+            silenceReason = silenceReason,
         )
     }
 }
@@ -2442,6 +2486,7 @@ private fun NextPrayerHeroCard(
     currentTimeMillis: Long,
     isPhoneSilenced: Boolean,
     hasDnd: Boolean,
+    silenceReason: PhoneSilenceReason?,
 ) {
     val prayerTimeText = String.format(Locale.US, "%02d:%02d", countdown.hour, countdown.minute)
     val remainingText = stringResource(
@@ -2506,6 +2551,7 @@ private fun NextPrayerHeroCard(
                     PhoneStatusNotice(
                         isPhoneSilenced = isPhoneSilenced,
                         hasDnd = hasDnd,
+                        silenceReason = silenceReason,
                     )
                     if (countdown.isTomorrow) {
                         TomorrowMarker()

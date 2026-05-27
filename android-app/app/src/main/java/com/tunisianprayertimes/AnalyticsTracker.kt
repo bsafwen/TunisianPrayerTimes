@@ -117,6 +117,21 @@ object AnalyticsTracker {
         )
     }
 
+    fun phoneSilenced(
+        context: Context,
+        source: String,
+        prayer: Prayer? = null,
+    ) {
+        log(
+            context,
+            "phone_silenced",
+            Bundle().apply {
+                putString("source", source)
+                prayer?.let { putString("prayer", it.analyticsName()) }
+            },
+        )
+    }
+
     fun wakeAlarmSaved(context: Context, config: PrayerWakeConfig) {
         log(
             context,
