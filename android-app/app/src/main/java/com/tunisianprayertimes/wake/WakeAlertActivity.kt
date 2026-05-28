@@ -13,10 +13,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +24,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.LocalTextStyle
@@ -64,6 +68,7 @@ import java.util.Locale
 
 class WakeAlertActivity : AppCompatActivity() {
     private var payload by mutableStateOf<WakeTriggerPayload?>(null)
+    private var pendingCount by mutableIntStateOf(0)
     private val queue get() = WakeAlarmQueueHolder.queue
 
     private val dismissReceiver = object : BroadcastReceiver() {
@@ -75,6 +80,7 @@ class WakeAlertActivity : AppCompatActivity() {
                 finish()
             } else {
                 payload = queue.current
+                pendingCount = queue.pendingCount
                 signalServiceCurrentChanged()
             }
         }
@@ -95,6 +101,7 @@ class WakeAlertActivity : AppCompatActivity() {
     private fun advanceToNextPayload(): Boolean {
         val advanced = queue.advance()
         payload = queue.current
+        pendingCount = queue.pendingCount
         return advanced
     }
 
@@ -122,6 +129,7 @@ class WakeAlertActivity : AppCompatActivity() {
         // before it launches us. Just read the current payload — never replay
         // the intent extras (which would risk duplicate / stale delivery).
         payload = queue.current
+        pendingCount = queue.pendingCount
 
         // If the singleton has nothing, the alarm session is already over (we
         // were probably re-launched by a stale PendingIntent — e.g. a deferred
@@ -140,6 +148,7 @@ class WakeAlertActivity : AppCompatActivity() {
             TunisianPrayerTimesTheme {
                 WakeAlertScreen(
                     payload = payload,
+                    pendingCount = pendingCount,
                     onStop = { wakeupCheckCompleted ->
                         android.util.Log.d(
                             "WakeFlow",
@@ -183,6 +192,7 @@ class WakeAlertActivity : AppCompatActivity() {
         // extras into the queue from here — a stale PendingIntent (e.g. a
         // deferred fullScreenIntent) could otherwise resurrect a dead alarm.
         payload = queue.current
+        pendingCount = queue.pendingCount
         if (payload == null) {
             android.util.Log.d(
                 "WakeFlow",
@@ -202,6 +212,7 @@ class WakeAlertActivity : AppCompatActivity() {
         // while this activity was paused/stopped (e.g., user opened another app
         // and a sub-alarm fired).
         payload = queue.current
+        pendingCount = queue.pendingCount
         if (payload == null) {
             // Nothing to show — either the alarm was dismissed externally or
             // the process was just rebuilt with no queue state. Bail out.
@@ -249,6 +260,7 @@ class WakeAlertActivity : AppCompatActivity() {
 @Composable
 private fun WakeAlertScreen(
     payload: WakeTriggerPayload?,
+    pendingCount: Int,
     onStop: (Boolean) -> Unit,
 ) {
     val context = LocalContext.current
@@ -277,6 +289,7 @@ private fun WakeAlertScreen(
     val gradient = Brush.verticalGradient(
         colors = listOf(GreenPrimaryDark, GreenPrimary, BgCream),
     )
+    val contentScrollState = rememberScrollState()
 
     Surface {
         Box(
@@ -289,9 +302,15 @@ private fun WakeAlertScreen(
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.SpaceBetween,
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .verticalScroll(contentScrollState),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
                     Text(
                         text = payload?.title(context)
                             ?: stringResource(R.string.wake_alarm_fallback_title),
@@ -305,6 +324,15 @@ private fun WakeAlertScreen(
                         style = MaterialTheme.typography.headlineMedium,
                         color = MaterialTheme.colorScheme.onPrimary,
                     )
+
+                    payload?.let { currentPayload ->
+                        WakeAlarmContextPanel(
+                            payload = currentPayload,
+                            pendingCount = pendingCount,
+                            allDone = allDone,
+                            checkEnabled = checkEnabled,
+                        )
+                    }
 
                     if (steps.size > 1 && !allDone) {
                         Text(
@@ -326,6 +354,7 @@ private fun WakeAlertScreen(
                     Text(
                         text = when {
                             payload == null -> stringResource(R.string.wake_alarm_now_ringing)
+                            checkEnabled && allDone -> stringResource(R.string.wake_alarm_stop_challenge_done)
                             allDone -> payload.statusText(context)
                             currentStep == null -> payload.statusText(context)
                             currentStep.type == WakeUpCheckType.MATH ->
@@ -437,6 +466,8 @@ private fun WakeAlertScreen(
                     }
                 }
 
+                Spacer(modifier = Modifier.height(4.dp))
+
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -449,8 +480,82 @@ private fun WakeAlertScreen(
                     ) {
                         Text(text = stringResource(R.string.wake_alarm_stop))
                     }
+                    if (!allDone) {
+                        Text(
+                            text = stringResource(R.string.wake_alarm_stop_locked_until_challenge),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            textAlign = TextAlign.Center,
+                        )
+                    } else if (checkEnabled) {
+                        Text(
+                            text = stringResource(R.string.wake_alarm_stop_available_after_challenge),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
                     Spacer(modifier = Modifier.height(8.dp))
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeAlarmContextPanel(
+    payload: WakeTriggerPayload,
+    pendingCount: Int,
+    allDone: Boolean,
+    checkEnabled: Boolean,
+) {
+    val context = LocalContext.current
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.14f),
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Text(
+                    text = payload.alertTypeLabel(context),
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                )
+                Text(
+                    text = if (checkEnabled && !allDone) {
+                        stringResource(R.string.wake_alarm_stop_locked_short)
+                    } else {
+                        stringResource(R.string.wake_alarm_stop_ready_short)
+                    },
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                )
+            }
+            Text(
+                text = payload.alertContextText(context),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimary,
+            )
+            if (pendingCount > 0) {
+                Text(
+                    text = if (pendingCount == 1) {
+                        stringResource(R.string.wake_alarm_queue_one)
+                    } else {
+                        stringResource(R.string.wake_alarm_queue_many, pendingCount)
+                    },
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                )
             }
         }
     }

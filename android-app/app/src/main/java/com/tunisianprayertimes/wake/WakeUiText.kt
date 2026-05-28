@@ -89,3 +89,43 @@ internal fun WakeTriggerPayload.statusText(context: Context): String = when {
 
     else -> context.getString(R.string.wake_alarm_main_label)
 }
+
+internal fun WakeTriggerPayload.alertTypeLabel(context: Context): String = when {
+    isSubAlarm && offsetMinutes != null && offsetDirection != null -> context.getString(
+        R.string.wake_alarm_alert_subalarm_type,
+        formatWakeOffset(context, offsetMinutes, offsetDirection),
+    )
+
+    isSubAlarm -> context.getString(R.string.wake_alarm_alert_subalarm_type_plain)
+    else -> context.getString(R.string.wake_alarm_main_label)
+}
+
+internal fun WakeTriggerPayload.alertContextText(context: Context): String = when (mainAlarmMode) {
+    WakeMainAlarmMode.PRAYER_RELATIVE -> context.getString(
+        if (isSubAlarm) {
+            R.string.wake_alarm_alert_context_prayer_subalarm
+        } else {
+            R.string.wake_alarm_alert_context_prayer_main
+        },
+        effectivePrayer.displayName(context),
+        formatWakeTime(hour, minute),
+    )
+
+    WakeMainAlarmMode.FIXED_TIME -> context.getString(
+        if (isSubAlarm) {
+            R.string.wake_alarm_alert_context_fixed_subalarm
+        } else {
+            R.string.wake_alarm_alert_context_fixed_main
+        },
+        formatWakeTime(hour, minute),
+    )
+
+    WakeMainAlarmMode.FROM_NOW -> context.getString(
+        if (isSubAlarm) {
+            R.string.wake_alarm_alert_context_one_off_subalarm
+        } else {
+            R.string.wake_alarm_alert_context_one_off_main
+        },
+        formatWakeTime(hour, minute),
+    )
+}
