@@ -9,8 +9,11 @@ import android.util.Log
 import androidx.annotation.VisibleForTesting
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerTimesRepository
+import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.WakeMainAlarmMode
@@ -145,7 +148,7 @@ object WakeAlarmScheduler {
 		PrayerWakeRepository(context)
 			.getCurrentStore()
 			.alarms
-			.any { config -> config.hasFutureTriggers(System.currentTimeMillis()) }
+			.any { config -> config.hasFutureWakeTriggers(System.currentTimeMillis()) }
 
 	suspend fun scheduleAll(context: Context) {
 		val repo = PrayerWakeRepository(context)
@@ -154,10 +157,7 @@ object WakeAlarmScheduler {
 		// Auto-delete one-off (FROM_NOW) alarms once all their triggers are in the past
 		val nowMillis = System.currentTimeMillis()
 		configs
-			.filter { config ->
-				config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW &&
-					!config.hasFutureTriggers(nowMillis)
-			}
+			.filter { config -> config.isExpiredOneOffWakeAlarm(nowMillis) }
 			.forEach { config -> runCatching { repo.deleteWakeAlarm(config.id) } }
 	}
 
@@ -173,7 +173,7 @@ object WakeAlarmScheduler {
 		configs: Collection<PrayerWakeConfig>,
 		nowMillis: Long = System.currentTimeMillis(),
 	): SchedulingSnapshot {
-		val enabledFutureAlarmCount = configs.count { config -> config.hasFutureTriggers(nowMillis) }
+		val enabledFutureAlarmCount = configs.count { config -> config.hasFutureWakeTriggers(nowMillis) }
 		val scheduledEventCount = scheduledEventIds(context).size
 		val exactAlarmAllowed = canScheduleExactAlarms(context)
 		val state = when {
@@ -212,7 +212,7 @@ object WakeAlarmScheduler {
 			return
 		}
 
-		val enabledConfigs = configs.filter { config -> config.hasFutureTriggers(now.timeInMillis) }
+		val enabledConfigs = configs.filter { config -> config.hasFutureWakeTriggers(now.timeInMillis) }
 		if (enabledConfigs.isEmpty()) {
 			persistScheduledEventIds(context, emptySet())
 			cancelRepairAlarm(context)
@@ -221,6 +221,11 @@ object WakeAlarmScheduler {
 
 		val delegationId = PrefsManager.getDelegationId(context)
 		val prayerDays = loadPrayerDayContexts(context, delegationId, now)
+		val silenceConfigs: Map<Prayer, PrayerSilenceConfig> = if (PrefsManager.isEnabled(context)) {
+			Prayer.entries.associateWith { prayer -> PrefsManager.getConfig(context, prayer) }
+		} else {
+			emptyMap()
+		}
 		if (prayerDays.isEmpty() && enabledConfigs.any { config ->
 			config.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW
 		}) {
@@ -233,7 +238,15 @@ object WakeAlarmScheduler {
 			val result = WakeAlarmComputer.compute(now, config, prayerDays)
 			result.mainAlarm?.let { trigger ->
 				val eventId = wakeMainEventId(trigger.alarmId)
-				scheduleTrigger(context, alarmManager, trigger, eventId)
+				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
+					.takeIf { config.shouldUseAutoSilenceConflictPlayback() }
+				scheduleTrigger(
+					context = context,
+					alarmManager = alarmManager,
+					trigger = trigger,
+					eventId = eventId,
+					autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+				)
 				scheduledEventIds += eventId
 				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
 			}
@@ -242,7 +255,15 @@ object WakeAlarmScheduler {
 					alarmId = trigger.alarmId,
 					subAlarmId = requireNotNull(trigger.subAlarmId),
 				)
-				scheduleTrigger(context, alarmManager, trigger, eventId)
+				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
+					.takeIf { config.shouldUseAutoSilenceConflictPlayback() }
+				scheduleTrigger(
+					context = context,
+					alarmManager = alarmManager,
+					trigger = trigger,
+					eventId = eventId,
+					autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+				)
 				scheduledEventIds += eventId
 				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
 			}
@@ -299,8 +320,9 @@ object WakeAlarmScheduler {
 		alarmManager: AlarmManager,
 		trigger: WakeAlarmComputer.ScheduledWakeTrigger,
 		eventId: String,
+		autoSilenceConflictPrayer: Prayer?,
 	) {
-		val pendingIntent = createPendingIntent(context, trigger, eventId)
+		val pendingIntent = createPendingIntent(context, trigger, eventId, autoSilenceConflictPrayer)
 
 		try {
 			if (trigger.isSubAlarm) {
@@ -327,8 +349,9 @@ object WakeAlarmScheduler {
 		context: Context,
 		trigger: WakeAlarmComputer.ScheduledWakeTrigger,
 		eventId: String,
+		autoSilenceConflictPrayer: Prayer?,
 	): PendingIntent {
-		val payload = trigger.toPayload(eventId)
+		val payload = trigger.toPayload(eventId, autoSilenceConflictPrayer)
 		val intent = Intent(context, WakeAlarmReceiver::class.java)
 			.populateWakeTriggerPayload(
 				eventId = payload.eventId,
@@ -347,6 +370,8 @@ object WakeAlarmScheduler {
 				wakeUpCheckSteps = payload.wakeUpCheckSteps,
 				progressiveVolume = payload.progressiveVolume,
 				snoreTrackingEnabled = payload.snoreTrackingEnabled,
+				useAutoSilenceConflictPlayback = payload.useAutoSilenceConflictPlayback,
+				autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
 				awakeCheckEnabled = payload.awakeCheckEnabled,
 				awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
 				wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
@@ -437,7 +462,10 @@ object WakeAlarmScheduler {
 		}
 	}
 
-	private fun WakeAlarmComputer.ScheduledWakeTrigger.toPayload(eventId: String): WakeTriggerPayload {
+	private fun WakeAlarmComputer.ScheduledWakeTrigger.toPayload(
+		eventId: String,
+		autoSilenceConflictPrayer: Prayer?,
+	): WakeTriggerPayload {
 		val mainTriggerAtMillis = triggerAtMillis - signedOffsetMinutes.toMillis()
 		val mainTriggerTime = Calendar.getInstance().apply {
 			timeInMillis = mainTriggerAtMillis
@@ -460,6 +488,8 @@ object WakeAlarmScheduler {
 			wakeUpCheckSteps = playback.effectiveWakeUpCheckSteps,
 			progressiveVolume = playback.progressiveVolume,
 			snoreTrackingEnabled = playback.snoreTrackingEnabled,
+			useAutoSilenceConflictPlayback = autoSilenceConflictPrayer != null,
+			autoSilenceConflictPrayer = autoSilenceConflictPrayer,
 			awakeCheckEnabled = if (isSubAlarm) false else playback.awakeCheckEnabled,
 			awakeCheckDelayMinutes = playback.awakeCheckDelayMinutes,
 			wakeUpCheckSeed = if (playback.wakeUpCheckEnabled) triggerAtMillis else null,
@@ -475,6 +505,33 @@ object WakeAlarmScheduler {
 		)
 	}
 
+	private fun WakeAlarmComputer.ScheduledWakeTrigger.autoSilenceConflictPrayer(
+		prayerDays: List<WakeAlarmComputer.PrayerDayContext>,
+		silenceConfigs: Map<Prayer, PrayerSilenceConfig>,
+	): Prayer? {
+		if (silenceConfigs.isEmpty()) {
+			return null
+		}
+
+		return prayerDays
+			.asSequence()
+			.mapNotNull { prayerDay ->
+				SilenceAlarmComputer.overlapForTrigger(
+					triggerAtMillis = triggerAtMillis,
+					prayerDay = prayerDay.date,
+					prayerTimes = prayerDay.prayerTimes,
+					configs = silenceConfigs,
+					isFriday = prayerDay.isFriday,
+					jomoaaHour = prayerDay.jomoaaHour,
+					jomoaaMinute = prayerDay.jomoaaMinute,
+				)?.prayer
+			}
+			.firstOrNull()
+	}
+
+	private fun PrayerWakeConfig.shouldUseAutoSilenceConflictPlayback(): Boolean =
+		mainAlarm.mode == WakeMainAlarmMode.FROM_NOW || ringDuringSilenceWindow
+
 	private fun Int.toOffsetDirection(): OffsetDirection =
 		if (this < 0) OffsetDirection.BEFORE else OffsetDirection.AFTER
 
@@ -485,29 +542,6 @@ object WakeAlarmScheduler {
 	}
 
 	private fun Int.toMillis(): Long = this * 60_000L
-
-	private fun PrayerWakeConfig.hasFutureTriggers(nowMillis: Long): Boolean {
-		if (!enabled) {
-			return false
-		}
-
-		if (mainAlarm.mode != WakeMainAlarmMode.FROM_NOW) {
-			return true
-		}
-
-		val mainTriggerAtMillis = mainAlarm.oneOffTriggerAtMillis
-		if (mainTriggerAtMillis > nowMillis) {
-			return true
-		}
-
-		if (mainTriggerAtMillis <= 0L) {
-			return false
-		}
-
-		return subAlarms.any { subAlarm ->
-			mainTriggerAtMillis + subAlarm.signedOffsetMinutes.toMillis() > nowMillis
-		}
-	}
 
 	private fun canScheduleExactAlarms(alarmManager: AlarmManager): Boolean =
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

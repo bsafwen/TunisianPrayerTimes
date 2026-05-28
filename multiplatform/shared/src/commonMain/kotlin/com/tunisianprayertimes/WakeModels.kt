@@ -78,6 +78,8 @@ enum class MathDifficulty { EASY, INTERMEDIATE, HARD }
 @Serializable
 enum class WakeUpCheckType { MATH, WHACK_A_MOLE, GYROSCOPE_MAZE }
 
+const val DEFAULT_AWAKE_CHECK_DELAY_MINUTES: Int = 3
+
 @Serializable
 data class WakeUpCheckStep(
     val type: WakeUpCheckType = WakeUpCheckType.MATH,
@@ -94,7 +96,7 @@ data class WakePlaybackOptions(
     val progressiveVolume: Boolean = true,
     val snoreTrackingEnabled: Boolean = false,
     val awakeCheckEnabled: Boolean = true,
-    val awakeCheckDelayMinutes: Int = 7,
+    val awakeCheckDelayMinutes: Int = DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
     val ringtone: RingtonePreset = RingtonePreset.DEFAULT_ALARM,
     val customRingtoneUri: String? = null,
 ) {
@@ -130,6 +132,7 @@ data class PrayerWakeConfig(
     val playback: WakePlaybackOptions = WakePlaybackOptions(),
     val subAlarms: List<PrayerWakeSubAlarm> = emptyList(),
     val silenceUntilAlarm: Boolean = false,
+    val ringDuringSilenceWindow: Boolean = false,
 ) {
     init {
         require(prayer.supportsWakeAlarm()) {

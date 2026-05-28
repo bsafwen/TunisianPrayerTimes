@@ -14,6 +14,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -97,6 +99,7 @@ import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.SilenceAlarmComputer
+import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.WakeMainAlarmConfig
@@ -114,10 +117,13 @@ import com.tunisianprayertimes.ui.theme.PrayerNameColor
 import com.tunisianprayertimes.ui.theme.SilenceRed
 import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
+import com.tunisianprayertimes.wake.GyroscopeMazeSensorState
 import com.tunisianprayertimes.wake.GyroscopeMazeGame
 import com.tunisianprayertimes.wake.WhackAMoleGame
 import com.tunisianprayertimes.wake.WakeRingtoneCatalog
 import com.tunisianprayertimes.wake.WakeRingtonePreviewPlayer
+import com.tunisianprayertimes.wake.hasGyroscopeMazeTiltSensor
+import com.tunisianprayertimes.wake.rememberGyroscopeMazeSensorState
 import com.tunisianprayertimes.wake.wakeUpCheckChallengeFor
 import com.tunisianprayertimes.wake.wakeUpCheckChallengeForStep
 import kotlinx.coroutines.launch
@@ -127,6 +133,8 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import kotlin.math.abs
+
+private const val AUTO_SILENCE_WAKE_BUFFER_MINUTES = 1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -256,11 +264,28 @@ fun WakeEditorSheet(
     val preview = remember(delegationId, draftConfig) {
         computeWakePreview(context, delegationId, draftConfig)
     }
+    val timelineEntries = remember(delegationId, draftConfig) {
+        computeWakeTimelineEntries(context, delegationId, draftConfig)
+    }
 
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
     val newSubAlarmIds = remember { mutableStateListOf<String>() }
     var modePickerVisible by rememberSaveable(initialConfig.id) { mutableStateOf(false) }
+    var pendingRecurringSilenceConflict by remember(initialConfig.id) { mutableStateOf<WakeSilenceConflict?>(null) }
+
+    fun saveDraftConfig() {
+        val recurringConflict = preview?.warning?.conflict?.takeIf {
+            draftConfig.enabled &&
+                draftConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
+                !draftConfig.ringDuringSilenceWindow
+        }
+        if (recurringConflict != null) {
+            pendingRecurringSilenceConflict = recurringConflict
+        } else {
+            onSave(draftConfig)
+        }
+    }
 
     fun selectMainAlarmMode(nextMode: WakeMainAlarmMode) {
         mode = nextMode
@@ -279,6 +304,22 @@ fun WakeEditorSheet(
                 modePickerVisible = false
             },
             onDismiss = { modePickerVisible = false },
+        )
+    }
+
+    pendingRecurringSilenceConflict?.let { conflict ->
+        WakeRecurringSilenceConflictDialog(
+            conflict = conflict,
+            onAdjustSilenceWindow = {
+                adjustAutoSilenceWindowForWakeConflict(context, conflict)
+                pendingRecurringSilenceConflict = null
+                onSave(draftConfig.copy(ringDuringSilenceWindow = false))
+            },
+            onRingDuringSilence = {
+                pendingRecurringSilenceConflict = null
+                onSave(draftConfig.copy(ringDuringSilenceWindow = true))
+            },
+            onDismiss = { pendingRecurringSilenceConflict = null },
         )
     }
 
@@ -310,7 +351,7 @@ fun WakeEditorSheet(
                 )
 
                 Button(
-                    onClick = { onSave(draftConfig) },
+                    onClick = { saveDraftConfig() },
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.heightIn(min = 38.dp),
                 ) {
@@ -392,6 +433,11 @@ fun WakeEditorSheet(
                 title = stringResource(R.string.wake_editor_subalarms_title),
                 subtitle = stringResource(R.string.wake_editor_subalarms_relationship),
             ) {
+                WakeSubAlarmTimeline(
+                    subAlarms = subAlarms,
+                    entries = timelineEntries,
+                )
+
                 subAlarms.forEachIndexed { index, subAlarm ->
                     AnimatedVisibility(
                         visible = true,
@@ -455,7 +501,7 @@ fun WakeEditorSheet(
                 }
 
                 Button(
-                    onClick = { onSave(draftConfig) },
+                    onClick = { saveDraftConfig() },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(12.dp),
                 ) {
@@ -474,8 +520,14 @@ fun WakeEditorSheet(
                         contentColor = SilenceRed,
                     ),
                 ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_delete),
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp),
+                    )
+                    Spacer(modifier = Modifier.size(8.dp))
                     Text(
-                        text = "🗑️ " + stringResource(R.string.wake_editor_delete),
+                        text = stringResource(R.string.wake_editor_delete),
                         fontWeight = FontWeight.SemiBold,
                     )
                 }
@@ -994,24 +1046,32 @@ private fun WakeChoiceButton(
     text: String,
     modifier: Modifier = Modifier,
     compact: Boolean = false,
+    enabled: Boolean = true,
 ) {
     OutlinedButton(
         onClick = onClick,
+        enabled = enabled,
         modifier = modifier.heightIn(min = if (compact) 34.dp else 38.dp),
         shape = RoundedCornerShape(10.dp),
         border = BorderStroke(
             1.dp,
-            if (selected) GreenPrimary else GreenPrimary.copy(alpha = 0.34f),
+            when {
+                !enabled -> TextMuted.copy(alpha = 0.24f)
+                selected -> GreenPrimary
+                else -> GreenPrimary.copy(alpha = 0.34f)
+            },
         ),
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = if (selected) GreenPrimary else Color.White,
             contentColor = if (selected) Color.White else TextDark,
+            disabledContainerColor = GoldLight.copy(alpha = 0.12f),
+            disabledContentColor = TextMuted.copy(alpha = 0.62f),
         ),
     ) {
         Text(
             text = text,
             fontSize = if (compact) 11.sp else 12.sp,
-            fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
+            fontWeight = if (selected && enabled) FontWeight.Bold else FontWeight.SemiBold,
             textAlign = TextAlign.Center,
             maxLines = if (compact) 1 else Int.MAX_VALUE,
         )
@@ -1102,6 +1162,76 @@ private fun WakeEditorWarningCard(
 }
 
 @Composable
+private fun WakeRecurringSilenceConflictDialog(
+    conflict: WakeSilenceConflict,
+    onAdjustSilenceWindow: () -> Unit,
+    onRingDuringSilence: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    Dialog(onDismissRequest = onDismiss) {
+        Surface(
+            shape = RoundedCornerShape(18.dp),
+            color = Color.White,
+        ) {
+            Column(
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 18.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                Text(
+                    text = stringResource(R.string.wake_editor_recurring_conflict_title),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerNameColor,
+                )
+                Text(
+                    text = conflict.detail,
+                    fontSize = 13.sp,
+                    color = TextDark,
+                    lineHeight = 19.sp,
+                )
+                Text(
+                    text = stringResource(R.string.wake_editor_recurring_conflict_message),
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    lineHeight = 18.sp,
+                )
+
+                Button(
+                    onClick = onAdjustSilenceWindow,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                ) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_recurring_conflict_adjust),
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+
+                OutlinedButton(
+                    onClick = onRingDuringSilence,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.42f)),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = SilenceRed),
+                ) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_recurring_conflict_ring_anyway),
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+
+                TextButton(
+                    onClick = onDismiss,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(text = stringResource(R.string.wake_editor_cancel))
+                }
+            }
+        }
+    }
+}
+
+@Composable
 private fun WakeSwitchSettingRow(
     title: String,
     subtitle: String? = null,
@@ -1166,12 +1296,15 @@ private fun WakeDisclosureRow(
                     lineHeight = 17.sp,
                 )
             }
-            Text(
-                text = if (expanded) "−" else "+",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                color = GreenPrimaryDark,
-                modifier = Modifier.padding(start = 10.dp),
+            Icon(
+                painter = painterResource(
+                    if (expanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more,
+                ),
+                contentDescription = null,
+                tint = GreenPrimaryDark,
+                modifier = Modifier
+                    .padding(start = 10.dp)
+                    .size(22.dp),
             )
         }
     }
@@ -1318,7 +1451,11 @@ private fun WakeSubAlarmEditorCard(
                 modifier = Modifier.heightIn(min = 38.dp),
                 shape = RoundedCornerShape(10.dp),
             ) {
-                Text(text = "-", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Icon(
+                    painter = painterResource(R.drawable.ic_remove),
+                    contentDescription = stringResource(R.string.wake_editor_subalarm_decrease),
+                    modifier = Modifier.size(18.dp),
+                )
             }
 
             Text(
@@ -1345,7 +1482,11 @@ private fun WakeSubAlarmEditorCard(
                 modifier = Modifier.heightIn(min = 38.dp),
                 shape = RoundedCornerShape(10.dp),
             ) {
-                Text(text = "+", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Icon(
+                    painter = painterResource(R.drawable.ic_add),
+                    contentDescription = stringResource(R.string.wake_editor_subalarm_increase),
+                    modifier = Modifier.size(18.dp),
+                )
             }
         }
 
@@ -1389,6 +1530,163 @@ private fun WakeSubAlarmEditorCard(
                     onPlaybackChange = { updated -> onChange(subAlarm.copy(playback = updated)) },
                 )
             }
+        }
+    }
+}
+
+private data class WakeSubAlarmTimelineEntry(
+    val sortAtMillis: Long,
+    val stableOrder: Int,
+    val title: String,
+    val timing: String,
+    val isMainAlarm: Boolean,
+)
+
+@Composable
+private fun WakeSubAlarmTimeline(
+    subAlarms: List<PrayerWakeSubAlarm>,
+    entries: List<WakeSubAlarmTimelineEntry>,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color.White.copy(alpha = 0.92f))
+            .border(BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.32f)), RoundedCornerShape(12.dp))
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(R.string.wake_editor_subalarms_timeline_title),
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+        }
+        val shouldScroll = subAlarms.size > 3
+        val timelineScrollState = rememberScrollState()
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .then(
+                    if (shouldScroll) {
+                        Modifier.horizontalScroll(timelineScrollState)
+                    } else {
+                        Modifier
+                    },
+                ),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            entries.forEachIndexed { index, entry ->
+                WakeSubAlarmTimelineNode(
+                    entry = entry,
+                    isFirst = index == 0,
+                    isLast = index == entries.lastIndex,
+                    modifier = if (shouldScroll) {
+                        Modifier.width(92.dp)
+                    } else {
+                        Modifier.weight(1f)
+                    },
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeSubAlarmTimelineNode(
+    entry: WakeSubAlarmTimelineEntry,
+    isFirst: Boolean,
+    isLast: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val markerColor = if (entry.isMainAlarm) GreenPrimary else Gold
+    val markerSize = if (entry.isMainAlarm) 16.dp else 12.dp
+    val trackColor = Gold.copy(alpha = 0.36f)
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(18.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = entry.title,
+                fontSize = 11.sp,
+                fontWeight = if (entry.isMainAlarm) FontWeight.Bold else FontWeight.SemiBold,
+                color = if (entry.isMainAlarm) GreenPrimaryDark else TextDark,
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                softWrap = false,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 2.dp),
+            )
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(22.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(2.dp)
+                        .clip(RoundedCornerShape(50))
+                        .background(if (isFirst) Color.Transparent else trackColor),
+                )
+                Spacer(modifier = Modifier.width(markerSize))
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(2.dp)
+                        .clip(RoundedCornerShape(50))
+                        .background(if (isLast) Color.Transparent else trackColor),
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .size(markerSize)
+                    .clip(RoundedCornerShape(50))
+                    .background(markerColor)
+                    .border(
+                        BorderStroke(2.dp, Color.White),
+                        RoundedCornerShape(50),
+                    ),
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(18.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = entry.timing,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = TextMuted,
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                softWrap = false,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 2.dp),
+            )
         }
     }
 }
@@ -1490,6 +1788,8 @@ private fun WakeWakeCheckControls(
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
     showAwakeCheck: Boolean = true,
 ) {
+    val context = LocalContext.current
+    val gyroscopeMazeSupported = remember(context) { hasGyroscopeMazeTiltSensor(context) }
     var previewStepIndex by remember { mutableStateOf<Int?>(null) }
     var wakeCheckExpanded by rememberSaveable { mutableStateOf(false) }
     val previewSteps = playback.wakeUpCheckSteps.ifEmpty {
@@ -1571,9 +1871,15 @@ private fun WakeWakeCheckControls(
                                             val updated = steps.toMutableList().apply { removeAt(index) }
                                             onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
                                         },
+                                        modifier = Modifier.size(32.dp),
                                         shape = RoundedCornerShape(8.dp),
+                                        contentPadding = PaddingValues(0.dp),
                                     ) {
-                                        Text("✕", fontSize = 12.sp)
+                                        Icon(
+                                            painter = painterResource(R.drawable.ic_close),
+                                            contentDescription = stringResource(R.string.wake_editor_check_remove_step),
+                                            modifier = Modifier.size(15.dp),
+                                        )
                                     }
                                 }
                             }
@@ -1588,6 +1894,7 @@ private fun WakeWakeCheckControls(
                                 horizontalArrangement = Arrangement.spacedBy(6.dp),
                             ) {
                                 WakeUpCheckType.entries.forEach { type ->
+                                    val typeEnabled = type != WakeUpCheckType.GYROSCOPE_MAZE || gyroscopeMazeSupported
                                     WakeChoiceButton(
                                         selected = step.type == type,
                                         onClick = {
@@ -1599,8 +1906,17 @@ private fun WakeWakeCheckControls(
                                         text = wakeCheckTypeShortLabel(type),
                                         modifier = Modifier.weight(1f),
                                         compact = true,
+                                        enabled = typeEnabled,
                                     )
                                 }
+                            }
+                            if (!gyroscopeMazeSupported) {
+                                Text(
+                                    text = stringResource(R.string.wake_editor_gyroscope_maze_not_supported),
+                                    fontSize = 11.sp,
+                                    color = TextMuted,
+                                    lineHeight = 15.sp,
+                                )
                             }
                             HorizontalDivider(modifier = Modifier.padding(vertical = 2.dp))
                             Text(
@@ -1658,6 +1974,7 @@ private fun WakeWakeCheckControls(
         if (showAwakeCheck) {
             WakeSwitchSettingRow(
                 title = stringResource(R.string.wake_editor_awake_check_title),
+                subtitle = stringResource(R.string.wake_editor_awake_check_subtitle_compact),
                 checked = playback.awakeCheckEnabled,
                 onCheckedChange = { enabled ->
                     onPlaybackChange(playback.copy(awakeCheckEnabled = enabled))
@@ -1695,9 +2012,14 @@ private fun WakeUpCheckPreviewDialog(
     onDismiss: () -> Unit,
 ) {
     val challenge = remember(checkType, difficulty) {
-        if (checkType == WakeUpCheckType.MATH) {
+        if (checkType == WakeUpCheckType.MATH || checkType == WakeUpCheckType.GYROSCOPE_MAZE) {
             wakeUpCheckChallengeFor("preview", System.currentTimeMillis(), difficulty)
         } else null
+    }
+    val gyroscopeMazeSensorState = if (checkType == WakeUpCheckType.GYROSCOPE_MAZE) {
+        rememberGyroscopeMazeSensorState(probeKey = "preview:$difficulty")
+    } else {
+        null
     }
     val killTarget = remember(difficulty) {
         when (difficulty) {
@@ -1739,10 +2061,32 @@ private fun WakeUpCheckPreviewDialog(
                             onCompleted = { /* no-op in preview */ },
                         )
                     } else if (checkType == WakeUpCheckType.GYROSCOPE_MAZE) {
-                        GyroscopeMazeGame(
-                            difficulty = difficulty,
-                            onCompleted = { /* no-op in preview */ },
-                        )
+                        when (gyroscopeMazeSensorState) {
+                            GyroscopeMazeSensorState.READY -> {
+                                GyroscopeMazeGame(
+                                    difficulty = difficulty,
+                                    onCompleted = { /* no-op in preview */ },
+                                )
+                            }
+                            GyroscopeMazeSensorState.UNAVAILABLE -> {
+                                Text(
+                                    text = stringResource(R.string.wake_alarm_gyroscope_maze_unavailable_fallback),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    color = MaterialTheme.colorScheme.onPrimary,
+                                )
+                                if (challenge != null) {
+                                    WakeUpCheckMathPreview(challenge = challenge)
+                                }
+                            }
+                            GyroscopeMazeSensorState.CHECKING,
+                            null -> {
+                                Text(
+                                    text = stringResource(R.string.wake_alarm_gyroscope_maze_checking),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    color = MaterialTheme.colorScheme.onPrimary,
+                                )
+                            }
+                        }
                     }
 
                     Button(
@@ -1975,6 +2319,14 @@ private data class WakePreview(
 private data class WakeValidationWarning(
     val title: String,
     val detail: String,
+    val conflict: WakeSilenceConflict? = null,
+)
+
+private data class WakeSilenceConflict(
+    val detail: String,
+    val silencePrayer: Prayer,
+    val silenceStartAtMillis: Long,
+    val triggerAtMillis: Long,
 )
 
 private fun computeWakePreview(
@@ -2077,6 +2429,96 @@ private fun computeWakePreview(
     )
 }
 
+private fun computeWakeTimelineEntries(
+    context: android.content.Context,
+    delegationId: Int,
+    config: PrayerWakeConfig,
+): List<WakeSubAlarmTimelineEntry> {
+    val now = Calendar.getInstance()
+    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
+    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
+    val prayerDays = (-1..2).mapNotNull { dayOffset ->
+        val date = (now.clone() as Calendar).apply {
+            add(Calendar.DAY_OF_YEAR, dayOffset)
+        }
+        PrayerTimesRepository.loadDayPrayerTimes(
+            context = context,
+            delegationId = delegationId,
+            year = date.get(Calendar.YEAR),
+            month = date.get(Calendar.MONTH) + 1,
+            day = date.get(Calendar.DAY_OF_MONTH),
+        )?.let { prayerTimes ->
+            WakeAlarmComputer.PrayerDayContext(
+                date = date,
+                prayerTimes = prayerTimes,
+                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+                jomoaaHour = jomoaaHour,
+                jomoaaMinute = jomoaaMinute,
+            )
+        }
+    }
+
+    val computeResult = WakeAlarmComputer.compute(now, config.copy(enabled = true), prayerDays)
+    val mainTriggerAtMillis = computeResult.mainAlarm?.triggerAtMillis
+        ?: return fallbackWakeTimelineEntries(context, config.subAlarms)
+
+    return buildList {
+        config.subAlarms.forEachIndexed { index, subAlarm ->
+            val triggerAtMillis = mainTriggerAtMillis + subAlarm.signedOffsetMinutes.toMillis()
+            add(
+                WakeSubAlarmTimelineEntry(
+                    sortAtMillis = triggerAtMillis,
+                    stableOrder = index,
+                    title = context.getString(R.string.wake_editor_subalarm_timeline_alarm, index + 1),
+                    timing = formatWakeTimelineTime(triggerAtMillis),
+                    isMainAlarm = false,
+                ),
+            )
+        }
+        add(
+            WakeSubAlarmTimelineEntry(
+                sortAtMillis = mainTriggerAtMillis,
+                stableOrder = Int.MAX_VALUE,
+                title = context.getString(R.string.wake_editor_subalarm_timeline_main),
+                timing = formatWakeTimelineTime(mainTriggerAtMillis),
+                isMainAlarm = true,
+            ),
+        )
+    }.sortedWith(
+        compareBy<WakeSubAlarmTimelineEntry> { entry -> entry.sortAtMillis }
+            .thenBy { entry -> entry.stableOrder },
+    )
+}
+
+private fun fallbackWakeTimelineEntries(
+    context: android.content.Context,
+    subAlarms: List<PrayerWakeSubAlarm>,
+): List<WakeSubAlarmTimelineEntry> = buildList {
+    subAlarms.forEachIndexed { index, subAlarm ->
+        add(
+            WakeSubAlarmTimelineEntry(
+                sortAtMillis = subAlarm.signedOffsetMinutes.toLong(),
+                stableOrder = index,
+                title = context.getString(R.string.wake_editor_subalarm_timeline_alarm, index + 1),
+                timing = "--:--",
+                isMainAlarm = false,
+            ),
+        )
+    }
+    add(
+        WakeSubAlarmTimelineEntry(
+            sortAtMillis = 0L,
+            stableOrder = Int.MAX_VALUE,
+            title = context.getString(R.string.wake_editor_subalarm_timeline_main),
+            timing = "--:--",
+            isMainAlarm = true,
+        ),
+    )
+}.sortedWith(
+    compareBy<WakeSubAlarmTimelineEntry> { entry -> entry.sortAtMillis }
+        .thenBy { entry -> entry.stableOrder },
+)
+
 private fun computeWakeSilenceWarning(
     context: android.content.Context,
     triggers: List<WakeAlarmComputer.ScheduledWakeTrigger>,
@@ -2101,17 +2543,56 @@ private fun computeWakeSilenceWarning(
         ?: return null
 
     val (trigger, overlap) = triggerWithOverlap
+    val detail = context.getString(
+        R.string.wake_editor_warning_silence_overlap,
+        wakeTriggerLabel(context, trigger),
+        formatWakePreviewDateTime(trigger.triggerAtMillis),
+        prayerDisplayName(context, overlap.prayer),
+        formatWakePreviewDateTime(overlap.startAtMillis),
+        formatWakePreviewDateTime(overlap.endAtMillis),
+    )
     return WakeValidationWarning(
         title = context.getString(R.string.wake_editor_warning_title),
-        detail = context.getString(
-            R.string.wake_editor_warning_silence_overlap,
-            wakeTriggerLabel(context, trigger),
-            formatWakePreviewDateTime(trigger.triggerAtMillis),
-            prayerDisplayName(context, overlap.prayer),
-            formatWakePreviewDateTime(overlap.startAtMillis),
-            formatWakePreviewDateTime(overlap.endAtMillis),
+        detail = detail,
+        conflict = WakeSilenceConflict(
+            detail = detail,
+            silencePrayer = overlap.prayer,
+            silenceStartAtMillis = overlap.startAtMillis,
+            triggerAtMillis = trigger.triggerAtMillis,
         ),
     )
+}
+
+private fun adjustAutoSilenceWindowForWakeConflict(
+    context: android.content.Context,
+    conflict: WakeSilenceConflict,
+) {
+    val silenceConfig = PrefsManager.getConfig(context, conflict.silencePrayer)
+    val adjustedEndAtMillis = maxOf(
+        conflict.silenceStartAtMillis,
+        conflict.triggerAtMillis - AUTO_SILENCE_WAKE_BUFFER_MINUTES.toMillis(),
+    )
+
+    when (silenceConfig.mode) {
+        SilenceMode.DURATION -> {
+            val adjustedDurationMinutes = ((adjustedEndAtMillis - conflict.silenceStartAtMillis) / 60_000L)
+                .toInt()
+                .coerceAtLeast(0)
+            PrefsManager.setAfterMinutes(context, conflict.silencePrayer, adjustedDurationMinutes)
+        }
+
+        SilenceMode.FIXED_TIME -> {
+            val adjustedEnd = Calendar.getInstance().apply {
+                timeInMillis = adjustedEndAtMillis
+            }
+            PrefsManager.setFixedTime(
+                context = context,
+                prayer = conflict.silencePrayer,
+                hour = adjustedEnd.get(Calendar.HOUR_OF_DAY),
+                minute = adjustedEnd.get(Calendar.MINUTE),
+            )
+        }
+    }
 }
 
 private fun findWakeSilenceOverlap(
@@ -2149,6 +2630,11 @@ private fun wakeTriggerLabel(
 
 private fun formatWakePreviewDateTime(timeInMillis: Long): String {
     val formatter = SimpleDateFormat("EEEE d MMMM - HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))
+    return formatter.format(Date(timeInMillis))
+}
+
+private fun formatWakeTimelineTime(timeInMillis: Long): String {
+    val formatter = SimpleDateFormat("HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))
     return formatter.format(Date(timeInMillis))
 }
 

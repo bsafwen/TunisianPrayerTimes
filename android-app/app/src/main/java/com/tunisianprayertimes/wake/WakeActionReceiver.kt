@@ -20,6 +20,10 @@ class WakeActionReceiver : BroadcastReceiver() {
                 stopSource = "notification_action",
                 wakeupCheckCompleted = !payload.wakeUpCheckEnabled,
             )
+            WakeDismissalCoordinator.removeExpiredOneOffAlarmAfterDismissalAsync(
+                context = context,
+                payload = payload,
+            )
         }
 
         context.sendBroadcast(

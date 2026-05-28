@@ -181,6 +181,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import java.util.UUID
+import kotlin.math.abs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -1081,9 +1082,11 @@ private fun AwakeCheckBanner(onConfirm: () -> Unit) {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "⏰",
-                fontSize = 32.sp
+            Icon(
+                painter = painterResource(R.drawable.ic_tab_alarms),
+                contentDescription = null,
+                tint = Color(0xFFE65100),
+                modifier = Modifier.size(32.dp),
             )
             Spacer(Modifier.height(8.dp))
             Text(
@@ -1153,7 +1156,14 @@ private fun PermissionBanner(
             modifier = Modifier.padding(14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("⚠\uFE0F", fontSize = 20.sp, modifier = Modifier.padding(end = 10.dp))
+            Icon(
+                painter = painterResource(R.drawable.ic_warning),
+                contentDescription = null,
+                tint = BannerText,
+                modifier = Modifier
+                    .padding(end = 10.dp)
+                    .size(22.dp),
+            )
             Text(
                 text = when {
                     !hasDnd && !hasAlarm -> stringResource(R.string.banner_both_missing)
@@ -1195,7 +1205,14 @@ private fun BatteryBanner(context: Context) {
             modifier = Modifier.padding(14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("🔋", fontSize = 20.sp, modifier = Modifier.padding(end = 10.dp))
+            Icon(
+                painter = painterResource(R.drawable.ic_battery_alert),
+                contentDescription = null,
+                tint = BannerText,
+                modifier = Modifier
+                    .padding(end = 10.dp)
+                    .size(22.dp),
+            )
             Text(
                 text = stringResource(R.string.banner_battery_missing),
                 fontSize = 13.sp,
@@ -1605,11 +1622,11 @@ private fun DelegationPickerSheet(
                                         fontWeight = if (item.isSelected) FontWeight.Bold else FontWeight.Normal
                                     )
                                     if (item.isSelected) {
-                                        Text(
-                                            text = "✓",
-                                            fontSize = 16.sp,
-                                            color = GreenPrimary,
-                                            fontWeight = FontWeight.Bold
+                                        Icon(
+                                            painter = painterResource(R.drawable.ic_check),
+                                            contentDescription = null,
+                                            tint = GreenPrimary,
+                                            modifier = Modifier.size(18.dp),
                                         )
                                     }
                                 }
@@ -2097,15 +2114,16 @@ private fun WakeAlarmCard(
     val wakeRepository = remember(context) { PrayerWakeRepository(context) }
     val coroutineScope = rememberCoroutineScope()
     var alarmPendingDeletion by remember { mutableStateOf<PrayerWakeConfig?>(null) }
-    val loadedWakeAlarms = wakeAlarms.orEmpty()
+    val displayState = wakeAlarmDisplayState(wakeAlarms)
+    val loadedWakeAlarms = displayState.visibleWakeAlarms
     val nextAlarm = remember(loadedWakeAlarms, delegationId) {
         loadedWakeAlarms
             .mapNotNull { alarm ->
-                nextWakeAlarmMillis(context, delegationId, alarm)?.let { triggerAtMillis ->
-                    alarm to triggerAtMillis
+                nextWakeAlarmTrigger(context, delegationId, alarm)?.let { trigger ->
+                    alarm to trigger
                 }
             }
-            .minByOrNull { (_, triggerAtMillis) -> triggerAtMillis }
+            .minByOrNull { (_, trigger) -> trigger.triggerAtMillis }
     }
 
     alarmPendingDeletion?.let { alarm ->
@@ -2130,10 +2148,10 @@ private fun WakeAlarmCard(
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         if (nextAlarm != null) {
-            val (alarm, triggerAtMillis) = nextAlarm
+            val (alarm, trigger) = nextAlarm
             WakeNextAlarmPanel(
                 wakeConfig = alarm,
-                triggerAtMillis = triggerAtMillis,
+                trigger = trigger,
             )
         }
 
@@ -2145,7 +2163,7 @@ private fun WakeAlarmCard(
             AwakeCheckBanner(onConfirm = onConfirmAwake)
         }
 
-        if (wakeAlarms != null && nextAlarm == null) {
+        if (displayState.showEmptyState) {
             WakeAlarmEmptyState(onPresetSelected = onPresetSelected)
         }
 
@@ -2183,12 +2201,11 @@ private fun WakeAlarmFloatingAddButton(
         contentPadding = PaddingValues(0.dp),
         elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp),
     ) {
-        Text(
-            text = "+",
-            fontSize = 34.sp,
-            lineHeight = 34.sp,
-            fontWeight = FontWeight.Normal,
-            color = Color.White,
+        Icon(
+            painter = painterResource(R.drawable.ic_add),
+            contentDescription = stringResource(R.string.wake_quick_add_title),
+            tint = Color.White,
+            modifier = Modifier.size(30.dp),
         )
     }
 }
@@ -2273,12 +2290,13 @@ private fun WakeQuickPresetRow(
                 color = if (recommended) GreenPrimaryDark.copy(alpha = 0.78f) else TextMuted,
             )
         }
-        Text(
-            text = "+",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = if (recommended) GreenPrimary else TextMuted,
-            modifier = Modifier.padding(start = 10.dp),
+        Icon(
+            painter = painterResource(R.drawable.ic_add),
+            contentDescription = null,
+            tint = if (recommended) GreenPrimary else TextMuted,
+            modifier = Modifier
+                .padding(start = 10.dp)
+                .size(20.dp),
         )
     }
 }
@@ -2381,9 +2399,10 @@ private fun WakeAlarmListPanel(
 @Composable
 private fun WakeNextAlarmPanel(
     wakeConfig: PrayerWakeConfig,
-    triggerAtMillis: Long,
+    trigger: WakeAlarmComputer.ScheduledWakeTrigger,
 ) {
     val prayerName = wakeAlarmPrayerName(wakeConfig.prayer)
+    val summaryText = wakeNextAlarmSummaryText(prayerName, wakeConfig, trigger)
     val shape = MainHeroCardShape
     Box(
         modifier = Modifier
@@ -2410,20 +2429,38 @@ private fun WakeNextAlarmPanel(
                 color = Color.White.copy(alpha = 0.78f),
             )
             Text(
-                text = formatWakeAlarmDateTime(triggerAtMillis),
+                text = formatWakeAlarmDateTime(trigger.triggerAtMillis),
                 fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 lineHeight = 30.sp,
             )
             Text(
-                text = wakeSummaryText(prayerName, wakeConfig),
+                text = summaryText,
                 fontSize = 13.sp,
                 color = Color.White.copy(alpha = 0.82f),
                 lineHeight = 18.sp,
             )
         }
     }
+}
+
+@Composable
+private fun wakeNextAlarmSummaryText(
+    prayerName: String,
+    wakeConfig: PrayerWakeConfig,
+    trigger: WakeAlarmComputer.ScheduledWakeTrigger,
+): String {
+    val baseSummary = wakeSummaryText(prayerName, wakeConfig)
+    if (!trigger.isSubAlarm) {
+        return baseSummary
+    }
+
+    return stringResource(
+        R.string.wake_alarm_next_subalarm_summary,
+        formatWakeAlarmOffset(trigger.signedOffsetMinutes),
+        baseSummary,
+    )
 }
 
 @Composable
@@ -3741,6 +3778,18 @@ private fun ManualSilenceButton(
                 }
             }
 
+            val silenceButtonText = when {
+                anySilenceActive && hasDnd -> stringResource(R.string.btn_unsilence)
+                manualUsesDuration -> stringResource(R.string.btn_silence_for_duration, durationText)
+                manualUsesPrayer -> stringResource(R.string.btn_silence_until_prayer, targetPrayerName)
+                else -> stringResource(R.string.btn_silence)
+            }
+            val silenceButtonIcon = if (anySilenceActive && hasDnd) {
+                R.drawable.ic_volume_on
+            } else {
+                R.drawable.ic_volume_off
+            }
+
             Button(
                 onClick = onClick,
                 modifier = Modifier
@@ -3751,13 +3800,14 @@ private fun ManualSilenceButton(
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = bgColor)
             ) {
+                Icon(
+                    painter = painterResource(silenceButtonIcon),
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp),
+                )
+                Spacer(Modifier.width(8.dp))
                 Text(
-                    text = when {
-                        anySilenceActive && hasDnd -> stringResource(R.string.btn_unsilence)
-                        manualUsesDuration -> stringResource(R.string.btn_silence_for_duration, durationText)
-                        manualUsesPrayer -> stringResource(R.string.btn_silence_until_prayer, targetPrayerName)
-                        else -> stringResource(R.string.btn_silence)
-                    },
+                    text = silenceButtonText,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
@@ -4114,6 +4164,14 @@ private fun nextWakeAlarmMillis(
     delegationId: Int,
     config: com.tunisianprayertimes.PrayerWakeConfig,
 ): Long? {
+    return nextWakeAlarmTrigger(context, delegationId, config)?.triggerAtMillis
+}
+
+private fun nextWakeAlarmTrigger(
+    context: android.content.Context,
+    delegationId: Int,
+    config: com.tunisianprayertimes.PrayerWakeConfig,
+): WakeAlarmComputer.ScheduledWakeTrigger? {
     if (!config.enabled) return null
     val now = Calendar.getInstance()
     val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
@@ -4137,8 +4195,18 @@ private fun nextWakeAlarmMillis(
         }
     }
     return WakeAlarmComputer.compute(now, config, prayerDays)
-        .allTriggers.firstOrNull()?.triggerAtMillis
+        .allTriggers.firstOrNull()
 }
+
+@Composable
+private fun formatWakeAlarmOffset(signedOffsetMinutes: Int): String = stringResource(
+    if (signedOffsetMinutes < 0) {
+        R.string.wake_alarm_offset_before
+    } else {
+        R.string.wake_alarm_offset_after
+    },
+    formatArabicMinutes(abs(signedOffsetMinutes)),
+)
 
 private fun formatWakeAlarmDateTime(timeInMillis: Long): String {
     val formatter = SimpleDateFormat("EEE d MMM - HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))

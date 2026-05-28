@@ -29,9 +29,8 @@ import kotlinx.coroutines.launch
  * Flow:
  * 1. Shows a quiet notification asking "Are you still awake?"
  * 2. Waits 60 seconds for the user to tap "Yes, I'm awake"
- * 3. If no response: vibrates for up to 3 minutes
- * 4. If still no response after vibration: plays the configured alarm ringtone
- * 5. User can dismiss at any point by tapping "Yes, I'm awake"
+ * 3. If no response: vibrates until the user confirms
+ * 4. User can dismiss at any point by tapping "Yes, I'm awake"
  */
 class AwakeCheckService : Service() {
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
@@ -48,12 +47,10 @@ class AwakeCheckService : Service() {
         }
 
         _isRunning.value = true
-        val ringtonePresetName = intent.getStringExtra(EXTRA_RINGTONE)
-        val customRingtoneUri = intent.getStringExtra(EXTRA_CUSTOM_RINGTONE_URI)
 
         createChannel()
         startForeground(NOTIFICATION_ID, buildQuietNotification(eventId))
-        startEscalation(eventId, ringtonePresetName, customRingtoneUri)
+        startEscalation(eventId)
         return START_NOT_STICKY
     }
 
@@ -66,27 +63,16 @@ class AwakeCheckService : Service() {
         super.onDestroy()
     }
 
-    private fun startEscalation(
-        eventId: String,
-        ringtonePresetName: String?,
-        customRingtoneUri: String?,
-    ) {
+    private fun startEscalation(eventId: String) {
         escalationJob?.cancel()
         escalationJob = serviceScope.launch {
             // Phase 1: Wait 60 seconds for user to confirm awake
             delay(QUIET_WAIT_MILLIS)
             if (cancelIfSilenceActive(eventId)) return@launch
 
-            // Phase 2: Vibrate for up to 3 minutes
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.notify(NOTIFICATION_ID, buildVibrationNotification(eventId))
             audioController.startVibrationOnly()
-            delay(VIBRATION_DURATION_MILLIS)
-            if (cancelIfSilenceActive(eventId)) return@launch
-
-            // Phase 3: Switch to ringtone
-            notificationManager.notify(NOTIFICATION_ID, buildRingtoneNotification(eventId))
-            startRingtone(ringtonePresetName, customRingtoneUri)
         }
     }
 
@@ -127,38 +113,6 @@ class AwakeCheckService : Service() {
             )
             .setContentIntent(appPendingIntent())
             .build()
-
-    private fun buildRingtoneNotification(eventId: String): Notification =
-        NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
-            .setContentTitle(getString(R.string.awake_check_title))
-            .setContentText(getString(R.string.awake_check_ringing))
-            .setPriority(NotificationCompat.PRIORITY_MAX)
-            .setCategory(NotificationCompat.CATEGORY_ALARM)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setOngoing(true)
-            .setAutoCancel(false)
-            .setSilent(true)
-            .addAction(
-                android.R.drawable.ic_menu_send,
-                getString(R.string.awake_check_confirm),
-                dismissPendingIntent(eventId),
-            )
-            .setContentIntent(appPendingIntent())
-            .build()
-
-    private fun startRingtone(ringtonePresetName: String?, customRingtoneUri: String?) {
-        val ringtonePreset = ringtonePresetName
-            ?.let { name -> runCatching { RingtonePreset.valueOf(name) }.getOrNull() }
-
-        val started = audioController.startRingtone(
-            ringtonePreset = ringtonePreset,
-            customRingtoneUri = customRingtoneUri,
-        )
-        if (!started) {
-            audioController.startVibrationOnly()
-        }
-    }
 
     private fun stopPlayback() {
         audioController.stop()
@@ -212,7 +166,6 @@ class AwakeCheckService : Service() {
             "com.tunisianprayertimes.action.AWAKE_CHECK_CONFIRMED"
 
         private const val QUIET_WAIT_MILLIS = 60_000L
-        private const val VIBRATION_DURATION_MILLIS = 3 * 60_000L
 
         private val _isRunning = MutableStateFlow(false)
         val isRunning: StateFlow<Boolean> = _isRunning

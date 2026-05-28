@@ -3,6 +3,7 @@ package com.tunisianprayertimes.wake
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import com.tunisianprayertimes.DEFAULT_AWAKE_CHECK_DELAY_MINUTES
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
@@ -25,6 +26,8 @@ const val EXTRA_VIBRATION_ONLY = "extra_vibration_only"
 const val EXTRA_WAKE_UP_CHECK = "extra_wake_up_check"
 const val EXTRA_PROGRESSIVE_VOLUME = "extra_progressive_volume"
 const val EXTRA_SNORE_TRACKING_ENABLED = "extra_snore_tracking_enabled"
+const val EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK = "extra_auto_silence_conflict_playback"
+const val EXTRA_AUTO_SILENCE_CONFLICT_PRAYER = "extra_auto_silence_conflict_prayer"
 const val EXTRA_AWAKE_CHECK_ENABLED = "extra_awake_check_enabled"
 const val EXTRA_AWAKE_CHECK_DELAY_MINUTES = "extra_awake_check_delay_minutes"
 const val EXTRA_IS_SUBALARM = "extra_is_subalarm"
@@ -40,6 +43,8 @@ const val EXTRA_WAKE_UP_CHECK_RIGHT_OPERAND = "extra_wake_up_check_right_operand
 const val EXTRA_WAKE_UP_CHECK_OPERATOR = "extra_wake_up_check_operator"
 const val EXTRA_WAKE_UP_CHECK_ANSWER = "extra_wake_up_check_answer"
 const val EXTRA_WAKE_UP_CHECK_SEED = "extra_wake_up_check_seed"
+
+private const val LEGACY_AWAKE_CHECK_DELAY_MINUTES = 7
 
 data class WakeUpCheckChallenge(
     val leftOperand: Int,
@@ -69,8 +74,10 @@ data class WakeTriggerPayload(
     val whackAMoleKillTarget: Int = 5,
     val progressiveVolume: Boolean,
     val snoreTrackingEnabled: Boolean,
+    val useAutoSilenceConflictPlayback: Boolean = false,
+    val autoSilenceConflictPrayer: Prayer? = null,
     val awakeCheckEnabled: Boolean,
-    val awakeCheckDelayMinutes: Int = 7,
+    val awakeCheckDelayMinutes: Int = DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
     val wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
     val wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     val wakeUpCheckSeed: Long? = null,
@@ -112,8 +119,10 @@ fun Intent.populateWakeTriggerPayload(
     wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
     progressiveVolume: Boolean,
     snoreTrackingEnabled: Boolean,
+    useAutoSilenceConflictPlayback: Boolean = false,
+    autoSilenceConflictPrayer: Prayer? = null,
     awakeCheckEnabled: Boolean = true,
-    awakeCheckDelayMinutes: Int = 7,
+    awakeCheckDelayMinutes: Int = DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
     wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     wakeUpCheckSeed: Long? = null,
     isSubAlarm: Boolean,
@@ -139,8 +148,10 @@ fun Intent.populateWakeTriggerPayload(
     }
     putExtra(EXTRA_PROGRESSIVE_VOLUME, progressiveVolume)
     putExtra(EXTRA_SNORE_TRACKING_ENABLED, snoreTrackingEnabled)
+    putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK, useAutoSilenceConflictPlayback)
+    autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }
     putExtra(EXTRA_AWAKE_CHECK_ENABLED, awakeCheckEnabled)
-    putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, awakeCheckDelayMinutes)
+    putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, awakeCheckDelayMinutes.normalizedAwakeCheckDelayMinutes())
     putExtra(EXTRA_IS_SUBALARM, isSubAlarm)
     subAlarmId?.let { putExtra(EXTRA_SUBALARM_ID, it) }
     offsetMinutes?.let { putExtra(EXTRA_OFFSET_MINUTES, it) }
@@ -194,6 +205,8 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         null
     }
     val rawDirection = getStringExtra(EXTRA_OFFSET_DIRECTION)
+    val autoSilenceConflictPrayer = getStringExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER)
+        ?.let { rawPrayer -> runCatching { Prayer.valueOf(rawPrayer) }.getOrNull() }
     val wakeUpCheckType = getStringExtra(EXTRA_WAKE_UP_CHECK_TYPE)
         ?.let { raw -> runCatching { WakeUpCheckType.valueOf(raw) }.getOrNull() }
         ?: WakeUpCheckType.MATH
@@ -232,8 +245,13 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         whackAMoleKillTarget = whackAMoleKillTarget,
         progressiveVolume = getBooleanExtra(EXTRA_PROGRESSIVE_VOLUME, true),
         snoreTrackingEnabled = getBooleanExtra(EXTRA_SNORE_TRACKING_ENABLED, false),
+        useAutoSilenceConflictPlayback = getBooleanExtra(EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK, false),
+        autoSilenceConflictPrayer = autoSilenceConflictPrayer,
         awakeCheckEnabled = getBooleanExtra(EXTRA_AWAKE_CHECK_ENABLED, true),
-        awakeCheckDelayMinutes = getIntExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, 7),
+        awakeCheckDelayMinutes = getIntExtra(
+            EXTRA_AWAKE_CHECK_DELAY_MINUTES,
+            DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
+        ).normalizedAwakeCheckDelayMinutes(),
         wakeUpCheckSteps = wakeUpCheckSteps,
         wakeUpCheckChallenge = wakeUpCheckChallenge,
         wakeUpCheckSeed = wakeUpCheckSeed,
@@ -247,6 +265,12 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
 }
 
 fun Intent.wakeEventId(): String? = getStringExtra(EXTRA_EVENT_ID)
+
+private fun Int.normalizedAwakeCheckDelayMinutes(): Int =
+    when (this) {
+        LEGACY_AWAKE_CHECK_DELAY_MINUTES -> DEFAULT_AWAKE_CHECK_DELAY_MINUTES
+        else -> coerceAtLeast(1)
+    }
 
 fun WakeTriggerPayload.toBundle(): Bundle =
     Intent().populateWakeTriggerPayload(
@@ -266,6 +290,8 @@ fun WakeTriggerPayload.toBundle(): Bundle =
         wakeUpCheckSteps = wakeUpCheckSteps,
         progressiveVolume = progressiveVolume,
         snoreTrackingEnabled = snoreTrackingEnabled,
+        useAutoSilenceConflictPlayback = useAutoSilenceConflictPlayback,
+        autoSilenceConflictPrayer = autoSilenceConflictPrayer,
         awakeCheckEnabled = awakeCheckEnabled,
         awakeCheckDelayMinutes = awakeCheckDelayMinutes,
         wakeUpCheckChallenge = wakeUpCheckChallenge,

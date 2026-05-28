@@ -48,6 +48,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -643,9 +644,11 @@ private fun WakeAlarmIntroStep() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = "⏰",
-            fontSize = 48.sp,
+        Icon(
+            painter = painterResource(R.drawable.ic_tab_alarms),
+            contentDescription = null,
+            tint = GreenPrimary,
+            modifier = Modifier.size(56.dp),
         )
         Spacer(Modifier.height(24.dp))
         Text(

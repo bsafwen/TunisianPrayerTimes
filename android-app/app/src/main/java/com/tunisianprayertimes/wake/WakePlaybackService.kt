@@ -45,8 +45,12 @@ class WakePlaybackService : Service() {
             }
         }
 
-        val payload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY
-        if (SilenceStatus.isAppControlledSilenceActive(this)) {
+        val payload = WakeAutoSilenceConflictController.withRuntimeConflictIfNeeded(
+            context = this,
+            payload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY,
+        )
+        val liftedAutoSilence = WakeAutoSilenceConflictController.liftAutoSilenceIfNeeded(this, payload)
+        if (SilenceStatus.isAppControlledSilenceActive(this) && !liftedAutoSilence) {
             android.util.Log.d("WakeFlow", "Service suppressed during app-controlled silence eventId=${payload.eventId}")
             if (WakeAlarmQueueHolder.queue.current == null) {
                 stopPlayback()
@@ -159,6 +163,8 @@ class WakePlaybackService : Service() {
                     wakeUpCheckSteps = current.wakeUpCheckSteps,
                     progressiveVolume = current.progressiveVolume,
                     snoreTrackingEnabled = current.snoreTrackingEnabled,
+                    useAutoSilenceConflictPlayback = current.useAutoSilenceConflictPlayback,
+                    autoSilenceConflictPrayer = current.autoSilenceConflictPrayer,
                     awakeCheckEnabled = current.awakeCheckEnabled,
                     awakeCheckDelayMinutes = current.awakeCheckDelayMinutes,
                     wakeUpCheckChallenge = current.wakeUpCheckChallenge,
@@ -205,7 +211,8 @@ class WakePlaybackService : Service() {
             .build()
 
     private fun startPlayback(payload: WakeTriggerPayload) {
-        if (SilenceStatus.isAppControlledSilenceActive(this)) {
+        val liftedAutoSilence = WakeAutoSilenceConflictController.liftAutoSilenceIfNeeded(this, payload)
+        if (SilenceStatus.isAppControlledSilenceActive(this) && !liftedAutoSilence) {
             android.util.Log.d("WakeFlow", "Playback suppressed during app-controlled silence eventId=${payload.eventId}")
             WakeAlarmQueueHolder.queue.clear()
             stopPlayback()
@@ -253,6 +260,8 @@ class WakePlaybackService : Service() {
                     wakeUpCheckSteps = payload.wakeUpCheckSteps,
                     progressiveVolume = payload.progressiveVolume,
                     snoreTrackingEnabled = payload.snoreTrackingEnabled,
+                    useAutoSilenceConflictPlayback = payload.useAutoSilenceConflictPlayback,
+                    autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
                     awakeCheckEnabled = payload.awakeCheckEnabled,
                     awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
                     wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
@@ -292,6 +301,8 @@ class WakePlaybackService : Service() {
                 wakeUpCheckSteps = payload.wakeUpCheckSteps,
                 progressiveVolume = payload.progressiveVolume,
                 snoreTrackingEnabled = payload.snoreTrackingEnabled,
+                useAutoSilenceConflictPlayback = payload.useAutoSilenceConflictPlayback,
+                autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
                 awakeCheckEnabled = payload.awakeCheckEnabled,
                 awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
                 wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
@@ -345,6 +356,8 @@ class WakePlaybackService : Service() {
                     wakeUpCheckSteps = payload.wakeUpCheckSteps,
                     progressiveVolume = payload.progressiveVolume,
                     snoreTrackingEnabled = payload.snoreTrackingEnabled,
+                    useAutoSilenceConflictPlayback = payload.useAutoSilenceConflictPlayback,
+                    autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
                     awakeCheckEnabled = payload.awakeCheckEnabled,
                     awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
                     wakeUpCheckChallenge = payload.wakeUpCheckChallenge,

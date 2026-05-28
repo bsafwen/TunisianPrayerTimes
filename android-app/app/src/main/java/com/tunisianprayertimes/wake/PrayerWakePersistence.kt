@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.tunisianprayertimes.DEFAULT_AWAKE_CHECK_DELAY_MINUTES
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerWakeConfig
@@ -22,6 +23,8 @@ import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+
+private const val LEGACY_AWAKE_CHECK_DELAY_MINUTES = 7
 
 internal val Context.prayerWakeDataStore: DataStore<Preferences> by preferencesDataStore(
     name = "prayer_wake_store",
@@ -93,7 +96,16 @@ private fun PrayerWakeConfig.normalizedFor(
     )
 
 private fun com.tunisianprayertimes.WakePlaybackOptions.normalized(): com.tunisianprayertimes.WakePlaybackOptions =
-    copy(customRingtoneUri = customRingtoneUri?.trim()?.takeIf { it.isNotEmpty() })
+    copy(
+        customRingtoneUri = customRingtoneUri?.trim()?.takeIf { it.isNotEmpty() },
+        awakeCheckDelayMinutes = awakeCheckDelayMinutes.normalizedAwakeCheckDelayMinutes(),
+    )
+
+private fun Int.normalizedAwakeCheckDelayMinutes(): Int =
+    when (this) {
+        LEGACY_AWAKE_CHECK_DELAY_MINUTES -> DEFAULT_AWAKE_CHECK_DELAY_MINUTES
+        else -> coerceAtLeast(1)
+    }
 
 private fun WakeMainAlarmConfig.normalized(): WakeMainAlarmConfig = copy(
     oneOffOffsetMinutes = oneOffOffsetMinutes.coerceAtLeast(1),

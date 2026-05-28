@@ -7,9 +7,10 @@ internal object WakeProgressiveVolumeRamp {
     const val START_RINGTONE_VOLUME = 0.05f
     private const val END_RINGTONE_VOLUME = 1f
 
-    fun ringtoneVolumeAt(elapsedMillis: Long): Float {
-        val boundedElapsed = elapsedMillis.coerceIn(0L, DURATION_MILLIS)
-        val fraction = boundedElapsed / DURATION_MILLIS.toFloat()
+    fun ringtoneVolumeAt(elapsedMillis: Long, durationMillis: Long = DURATION_MILLIS): Float {
+        val boundedDuration = durationMillis.coerceAtLeast(1L)
+        val boundedElapsed = elapsedMillis.coerceIn(0L, boundedDuration)
+        val fraction = boundedElapsed / boundedDuration.toFloat()
         return START_RINGTONE_VOLUME + ((END_RINGTONE_VOLUME - START_RINGTONE_VOLUME) * fraction)
     }
 }

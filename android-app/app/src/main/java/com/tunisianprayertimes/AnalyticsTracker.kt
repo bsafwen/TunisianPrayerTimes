@@ -144,6 +144,7 @@ object AnalyticsTracker {
                 putFlag("has_wakeup_check", config.playback.wakeUpCheckEnabled)
                 putFlag("progressive_volume", config.playback.progressiveVolume)
                 putFlag("silence_until_alarm", config.silenceUntilAlarm)
+                putFlag("ring_during_silence_window", config.ringDuringSilenceWindow)
                 putFlag("vibration_only", config.playback.vibrationOnly)
                 putFlag("awake_check", config.playback.awakeCheckEnabled)
             },
