@@ -77,6 +77,7 @@ class WakePlaybackService : Service() {
                 // (The notification might have been cancelled if the activity
                 // briefly fell behind; this re-asserts service state.)
                 if (currentNotificationId == null) presentCurrent()
+                if (result == IncomingResult.QUEUED) launchActivityForCurrent()
             }
         }
 
