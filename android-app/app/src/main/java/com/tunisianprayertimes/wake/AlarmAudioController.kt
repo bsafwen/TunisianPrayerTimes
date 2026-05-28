@@ -29,6 +29,7 @@ internal class AlarmAudioController(
     private var vibrator: Vibrator? = null
     private var delayedRingtoneJob: Job? = null
     private var volumeRampJob: Job? = null
+    private var volumeGuardJob: Job? = null
     private var savedAlarmVolume: Int? = null
     private var speakerRoute: SpeakerPlaybackRoute? = null
 
@@ -98,6 +99,8 @@ internal class AlarmAudioController(
         delayedRingtoneJob = null
         volumeRampJob?.cancel()
         volumeRampJob = null
+        volumeGuardJob?.cancel()
+        volumeGuardJob = null
         speakerRoute?.release()
         speakerRoute = null
         restoreAlarmVolume()
@@ -234,16 +237,41 @@ internal class AlarmAudioController(
 
     private fun forceMaxAlarmVolume() {
         val audioManager = appContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        savedAlarmVolume = audioManager.getStreamVolume(AudioManager.STREAM_ALARM)
+        if (savedAlarmVolume == null) {
+            savedAlarmVolume = audioManager.getStreamVolume(AudioManager.STREAM_ALARM)
+        }
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM)
         audioManager.setStreamVolume(AudioManager.STREAM_ALARM, maxVolume, 0)
+        startAlarmVolumeGuard(audioManager, maxVolume)
     }
 
     private fun restoreAlarmVolume() {
+        volumeGuardJob?.cancel()
+        volumeGuardJob = null
         val volume = savedAlarmVolume ?: return
         savedAlarmVolume = null
         val audioManager = appContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         audioManager.setStreamVolume(AudioManager.STREAM_ALARM, volume, 0)
+    }
+
+    private fun startAlarmVolumeGuard(
+        audioManager: AudioManager,
+        expectedVolume: Int,
+    ) {
+        volumeGuardJob?.cancel()
+        volumeGuardJob = scope.launch {
+            while (isActive) {
+                delay(ALARM_VOLUME_GUARD_INTERVAL_MILLIS)
+                val currentVolume = runCatching {
+                    audioManager.getStreamVolume(AudioManager.STREAM_ALARM)
+                }.getOrNull() ?: continue
+                if (currentVolume < expectedVolume) {
+                    runCatching {
+                        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, expectedVolume, 0)
+                    }
+                }
+            }
+        }
     }
 
     private fun alarmAudioAttributes(): AudioAttributes =
@@ -263,6 +291,7 @@ internal class AlarmAudioController(
     companion object {
         private const val AUTO_SILENCE_CONFLICT_VIBRATION_MILLIS = 2 * 60_000L
         private const val AUTO_SILENCE_CONFLICT_RAMP_MILLIS = 10 * 60_000L
+        private const val ALARM_VOLUME_GUARD_INTERVAL_MILLIS = 500L
 
         fun createSilentAlarmChannel(
             context: Context,

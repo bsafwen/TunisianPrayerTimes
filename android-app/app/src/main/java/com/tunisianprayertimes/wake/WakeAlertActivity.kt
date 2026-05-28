@@ -351,35 +351,32 @@ private fun WakeAlertScreen(
                         )
                     }
 
-                    Text(
-                        text = when {
-                            payload == null -> stringResource(R.string.wake_alarm_now_ringing)
-                            checkEnabled && allDone -> stringResource(R.string.wake_alarm_stop_challenge_done)
-                            allDone -> payload.statusText(context)
-                            currentStep == null -> payload.statusText(context)
-                            currentStep.type == WakeUpCheckType.MATH ->
-                                stringResource(R.string.wake_alarm_wake_up_check_required)
-                            currentStep.type == WakeUpCheckType.WHACK_A_MOLE ->
-                                stringResource(R.string.wake_alarm_whack_a_mole_required)
-                            currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
-                                gyroscopeMazeSensorState == GyroscopeMazeSensorState.CHECKING ->
-                                stringResource(R.string.wake_alarm_gyroscope_maze_checking)
-                            currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
-                                gyroscopeMazeSensorState == GyroscopeMazeSensorState.UNAVAILABLE ->
-                                stringResource(R.string.wake_alarm_gyroscope_maze_unavailable_fallback)
-                            currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE ->
-                                stringResource(R.string.wake_alarm_gyroscope_maze_prompt)
-                            else -> payload.statusText(context)
-                        },
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onPrimary,
-                    )
-                    Text(
-                        text = payload?.contentText(context)
-                            ?: stringResource(R.string.wake_alarm_now_ringing),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onPrimary,
-                    )
+                    val challengeStatusText = when {
+                        payload == null -> stringResource(R.string.wake_alarm_now_ringing)
+                        !checkEnabled -> null
+                        allDone -> stringResource(R.string.wake_alarm_stop_challenge_done)
+                        currentStep == null -> stringResource(R.string.wake_alarm_wake_up_check_required)
+                        currentStep.type == WakeUpCheckType.MATH ->
+                            stringResource(R.string.wake_alarm_wake_up_check_required)
+                        currentStep.type == WakeUpCheckType.WHACK_A_MOLE ->
+                            stringResource(R.string.wake_alarm_whack_a_mole_required)
+                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
+                            gyroscopeMazeSensorState == GyroscopeMazeSensorState.CHECKING ->
+                            stringResource(R.string.wake_alarm_gyroscope_maze_checking)
+                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
+                            gyroscopeMazeSensorState == GyroscopeMazeSensorState.UNAVAILABLE ->
+                            stringResource(R.string.wake_alarm_gyroscope_maze_unavailable_fallback)
+                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE ->
+                            stringResource(R.string.wake_alarm_gyroscope_maze_prompt)
+                        else -> payload.statusText(context)
+                    }
+                    if (challengeStatusText != null) {
+                        Text(
+                            text = challengeStatusText,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onPrimary,
+                        )
+                    }
 
                     if (currentStep != null) {
                         when (currentStep.type) {

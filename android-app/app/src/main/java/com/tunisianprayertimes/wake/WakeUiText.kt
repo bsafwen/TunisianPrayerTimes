@@ -36,9 +36,10 @@ internal fun formatWakeOffset(
 )
 
 internal fun WakeTriggerPayload.title(context: Context): String =
-    if (mainAlarmMode == WakeMainAlarmMode.FIXED_TIME || mainAlarmMode == WakeMainAlarmMode.FROM_NOW) {
-        context.getString(R.string.wake_alarm_fallback_title)
-    } else {
+    when (mainAlarmMode) {
+        WakeMainAlarmMode.FIXED_TIME -> context.getString(R.string.wake_alarm_title_fixed)
+        WakeMainAlarmMode.FROM_NOW -> context.getString(R.string.wake_alarm_title_one_off)
+        WakeMainAlarmMode.PRAYER_RELATIVE ->
         context.getString(R.string.wake_alarm_notification_title, effectivePrayer.displayName(context))
     }
 

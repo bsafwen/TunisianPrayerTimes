@@ -1,7 +1,7 @@
 package com.tunisianprayertimes.wake
 
 internal object WakeProgressiveVolumeRamp {
-    const val DURATION_MILLIS = 30_000L
+    const val DURATION_MILLIS = 120_000L
     const val FALLBACK_STEP_INTERVAL_MILLIS = 100L
 
     const val START_RINGTONE_VOLUME = 0.05f

@@ -271,7 +271,7 @@ fun WakeEditorSheet(
         formatWakeBehaviorSummary(context, mainPlayback)
     }
     val advancedSummary = if (subAlarms.isEmpty()) {
-        stringResource(R.string.wake_editor_subalarms_none_summary)
+        null
     } else {
         stringResource(R.string.wake_editor_subalarms_count_summary, subAlarms.size)
     }
@@ -2726,7 +2726,7 @@ private fun wakeTriggerLabel(
     }
 
 private fun formatWakePreviewDateTime(timeInMillis: Long): String {
-    val formatter = SimpleDateFormat("EEEE d MMMM - HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))
+    val formatter = SimpleDateFormat("EEEE d MMMM، HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))
     return formatter.format(Date(timeInMillis))
 }
 
