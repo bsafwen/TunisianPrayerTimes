@@ -13,7 +13,10 @@ import kotlinx.coroutines.launch
 
 class WakeAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val payload = intent.toWakeTriggerPayload() ?: return
+        val payload = WakeAutoSilenceConflictController.withRuntimeConflictIfNeeded(
+            context = context,
+            payload = intent.toWakeTriggerPayload() ?: return,
+        )
         Log.d("WakeFlow", "WakeAlarmReceiver.onReceive eventId=${payload.eventId}")
         AnalyticsTracker.wakeAlarmFired(context, payload)
 
@@ -24,7 +27,8 @@ class WakeAlarmReceiver : BroadcastReceiver() {
             WakeAlarmScheduler.releaseSilenceForRingingAlarm(context, alarmId)
         }
 
-        if (SilenceStatus.isAppControlledSilenceActive(context)) {
+        val liftedAutoSilence = WakeAutoSilenceConflictController.liftAutoSilenceIfNeeded(context, payload)
+        if (SilenceStatus.isAppControlledSilenceActive(context) && !liftedAutoSilence) {
             Log.d("WakeFlow", "Wake alarm suppressed during app-controlled silence eventId=${payload.eventId}")
         } else {
             ContextCompat.startForegroundService(

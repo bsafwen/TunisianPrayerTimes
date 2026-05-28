@@ -152,6 +152,10 @@ class WakeAlertActivity : AppCompatActivity() {
                                 stopSource = "alert_activity",
                                 wakeupCheckCompleted = wakeupCheckCompleted,
                             )
+                            WakeDismissalCoordinator.removeExpiredOneOffAlarmAfterDismissalAsync(
+                                context = this@WakeAlertActivity,
+                                payload = p,
+                            )
                         }
                         val advanced = advanceToNextPayload()
                         // Ask the service to refresh notification + ringtone
@@ -264,6 +268,11 @@ private fun WakeAlertScreen(
     var completedSteps by rememberSaveable(eventId) { mutableIntStateOf(0) }
     val allDone = !checkEnabled || completedSteps >= steps.size
     val currentStep = if (!allDone) steps[completedSteps] else null
+    val gyroscopeMazeSensorState = if (currentStep?.type == WakeUpCheckType.GYROSCOPE_MAZE) {
+        rememberGyroscopeMazeSensorState(probeKey = "$eventId:$completedSteps")
+    } else {
+        null
+    }
 
     val gradient = Brush.verticalGradient(
         colors = listOf(GreenPrimaryDark, GreenPrimary, BgCream),
@@ -323,6 +332,12 @@ private fun WakeAlertScreen(
                                 stringResource(R.string.wake_alarm_wake_up_check_required)
                             currentStep.type == WakeUpCheckType.WHACK_A_MOLE ->
                                 stringResource(R.string.wake_alarm_whack_a_mole_required)
+                            currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
+                                gyroscopeMazeSensorState == GyroscopeMazeSensorState.CHECKING ->
+                                stringResource(R.string.wake_alarm_gyroscope_maze_checking)
+                            currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
+                                gyroscopeMazeSensorState == GyroscopeMazeSensorState.UNAVAILABLE ->
+                                stringResource(R.string.wake_alarm_gyroscope_maze_unavailable_fallback)
                             currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE ->
                                 stringResource(R.string.wake_alarm_gyroscope_maze_prompt)
                             else -> payload.statusText(context)
@@ -386,10 +401,37 @@ private fun WakeAlertScreen(
                                 )
                             }
                             WakeUpCheckType.GYROSCOPE_MAZE -> {
-                                GyroscopeMazeGame(
-                                    difficulty = currentStep.difficulty,
-                                    onCompleted = { completedSteps++ },
-                                )
+                                when (gyroscopeMazeSensorState) {
+                                    GyroscopeMazeSensorState.READY -> {
+                                        GyroscopeMazeGame(
+                                            difficulty = currentStep.difficulty,
+                                            onCompleted = { completedSteps++ },
+                                        )
+                                    }
+                                    GyroscopeMazeSensorState.UNAVAILABLE -> {
+                                        val challengeSeed = payload?.wakeUpCheckSeed
+                                        val challenge = remember(
+                                            eventId,
+                                            challengeSeed,
+                                            completedSteps,
+                                            currentStep.difficulty,
+                                        ) {
+                                            wakeUpCheckChallengeForStep(
+                                                eventId = eventId,
+                                                triggerAtMillis = challengeSeed,
+                                                stepIndex = completedSteps,
+                                                difficulty = currentStep.difficulty,
+                                            )
+                                        }
+                                        MathStepContent(
+                                            stepKey = completedSteps,
+                                            challenge = challenge,
+                                            onSolved = { completedSteps++ },
+                                        )
+                                    }
+                                    GyroscopeMazeSensorState.CHECKING,
+                                    null -> Unit
+                                }
                             }
                         }
                     }
