@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -58,7 +59,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -74,6 +77,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -81,6 +85,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -99,15 +104,17 @@ import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.SilenceAlarmComputer
-import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
+import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.WakeScheduleDay
 import com.tunisianprayertimes.WakeUpCheckStep
 import com.tunisianprayertimes.WakeUpCheckType
 import com.tunisianprayertimes.formatArabicMinutes
+import com.tunisianprayertimes.normalizedWakeScheduleDays
 import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
@@ -134,7 +141,32 @@ import java.util.Locale
 import java.util.UUID
 import kotlin.math.abs
 
-private const val AUTO_SILENCE_WAKE_BUFFER_MINUTES = 1
+data class WakeSilenceConflictSummary(
+    val detail: String,
+    val silencePrayer: Prayer,
+    val silenceStartAtMillis: Long,
+    val silenceEndAtMillis: Long,
+    val triggerAtMillis: Long,
+)
+
+private data class WakeSilenceConflictKey(
+    val silencePrayer: Prayer,
+    val silenceStartAtMillis: Long,
+    val silenceEndAtMillis: Long,
+    val triggerAtMillis: Long,
+)
+
+private fun WakeSilenceConflictSummary.toKey(): WakeSilenceConflictKey = WakeSilenceConflictKey(
+    silencePrayer = silencePrayer,
+    silenceStartAtMillis = silenceStartAtMillis,
+    silenceEndAtMillis = silenceEndAtMillis,
+    triggerAtMillis = triggerAtMillis,
+)
+
+data class WakeSilenceConflictResolverState(
+    val conflict: WakeSilenceConflictSummary,
+    val resolved: Boolean,
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -143,8 +175,13 @@ fun WakeEditorSheet(
     delegationId: Int,
     initialConfig: PrayerWakeConfig,
     isNewAlarm: Boolean = false,
+    silenceConfigRevision: Int = 0,
+    silenceConflictResolverState: WakeSilenceConflictResolverState? = null,
+    silenceConflictResolverContent: @Composable (WakeSilenceConflictSummary) -> Unit = {},
     onDismissRequest: () -> Unit,
     onSave: (PrayerWakeConfig) -> Unit,
+    onEditSilenceWindowRequest: (PrayerWakeConfig, WakeSilenceConflictSummary) -> Unit = { _, _ -> },
+    onCancelSilenceWindowEdit: () -> Unit = {},
     onDelete: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
@@ -201,11 +238,17 @@ fun WakeEditorSheet(
     var mainPlayback by remember(initialConfig.id, initialConfig.playback) {
         mutableStateOf(initialConfig.playback)
     }
+    var scheduledDays by remember(initialConfig.id, initialConfig.scheduledDays) {
+        mutableStateOf(initialConfig.scheduledDays.normalizedWakeScheduleDays())
+    }
     var subAlarms by remember(initialConfig.id, initialConfig.subAlarms) {
         mutableStateOf(initialConfig.subAlarms)
     }
     var silenceUntilAlarm by remember(initialConfig.id, initialConfig.silenceUntilAlarm) {
         mutableStateOf(initialConfig.silenceUntilAlarm)
+    }
+    var ringDuringSilenceWindow by remember(initialConfig.id, initialConfig.ringDuringSilenceWindow) {
+        mutableStateOf(initialConfig.ringDuringSilenceWindow)
     }
 
     val parsedRelativeOffset = relativeOffsetText.toIntOrNull()?.coerceAtLeast(0) ?: 0
@@ -219,6 +262,7 @@ fun WakeEditorSheet(
         minutesText = fromNowMinutesText,
         fallbackMinutes = initialFromNowOffsetMinutes,
     )
+    val effectiveScheduledDays = scheduledDays.normalizedWakeScheduleDays()
     val supportsSilenceUntilAlarm = mode == WakeMainAlarmMode.FROM_NOW
     val effectiveSilenceUntilAlarm = silenceUntilAlarm && supportsSilenceUntilAlarm
 
@@ -241,9 +285,11 @@ fun WakeEditorSheet(
         signedRelativeOffset,
         parsedFromNowOffsetMinutes,
         fromNowTriggerAtMillis,
+        effectiveScheduledDays,
         mainPlayback,
         subAlarms,
         effectiveSilenceUntilAlarm,
+        ringDuringSilenceWindow,
     ) {
         initialConfig.copy(
             title = "",
@@ -256,13 +302,18 @@ fun WakeEditorSheet(
                 oneOffOffsetMinutes = parsedFromNowOffsetMinutes,
                 oneOffTriggerAtMillis = fromNowTriggerAtMillis,
             ),
+            scheduledDays = effectiveScheduledDays,
             playback = mainPlayback,
             subAlarms = subAlarms,
             silenceUntilAlarm = effectiveSilenceUntilAlarm,
+            ringDuringSilenceWindow = ringDuringSilenceWindow,
         )
     }
-    val preview = remember(delegationId, draftConfig) {
+    val preview = remember(delegationId, draftConfig, silenceConfigRevision) {
         computeWakePreview(context, delegationId, draftConfig)
+    }
+    val activeRecurringSilenceConflict = preview?.warning?.conflict?.takeIf {
+        draftConfig.enabled && draftConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW
     }
     val timelineEntries = remember(delegationId, draftConfig) {
         computeWakeTimelineEntries(context, delegationId, draftConfig)
@@ -280,7 +331,8 @@ fun WakeEditorSheet(
     val coroutineScope = rememberCoroutineScope()
     val newSubAlarmIds = remember { mutableStateListOf<String>() }
     var modePickerVisible by rememberSaveable(initialConfig.id) { mutableStateOf(false) }
-    var pendingRecurringSilenceConflict by remember(initialConfig.id) { mutableStateOf<WakeSilenceConflict?>(null) }
+    var silenceConflictDialogVisible by remember(initialConfig.id) { mutableStateOf(false) }
+    var dismissedSilenceConflictKey by remember(initialConfig.id) { mutableStateOf<WakeSilenceConflictKey?>(null) }
     var behaviorExpanded by rememberSaveable(initialConfig.id) {
         mutableStateOf(!isNewAlarm && shouldExpandWakeBehavior(initialConfig.playback))
     }
@@ -288,17 +340,56 @@ fun WakeEditorSheet(
         mutableStateOf(!isNewAlarm && initialConfig.subAlarms.isNotEmpty())
     }
 
+    val unresolvedRecurringConflict = activeRecurringSilenceConflict
+        ?.takeIf { !ringDuringSilenceWindow }
+        ?.toSummary()
+    val unresolvedRecurringConflictKey = unresolvedRecurringConflict?.toKey()
+    val resolverConflictKey = silenceConflictResolverState?.conflict?.toKey()
+    val resolverResolvedForCurrentConflict = silenceConflictResolverState?.resolved == true &&
+        resolverConflictKey == unresolvedRecurringConflictKey
+    val silenceConflictDialogConflict = silenceConflictResolverState?.conflict ?: unresolvedRecurringConflict
+
+    LaunchedEffect(unresolvedRecurringConflictKey, ringDuringSilenceWindow) {
+        if (unresolvedRecurringConflictKey == null || ringDuringSilenceWindow) {
+            silenceConflictDialogVisible = false
+            dismissedSilenceConflictKey = null
+        }
+    }
+
+    LaunchedEffect(
+        unresolvedRecurringConflictKey,
+        ringDuringSilenceWindow,
+        resolverResolvedForCurrentConflict,
+        dismissedSilenceConflictKey,
+    ) {
+        val shouldOpenForConflict = unresolvedRecurringConflictKey != null &&
+            !ringDuringSilenceWindow &&
+            !resolverResolvedForCurrentConflict &&
+            dismissedSilenceConflictKey != unresolvedRecurringConflictKey
+        if (shouldOpenForConflict) {
+            silenceConflictDialogVisible = true
+        }
+    }
+
     fun saveDraftConfig() {
-        val recurringConflict = preview?.warning?.conflict?.takeIf {
+        val latestPreview = computeWakePreview(context, delegationId, draftConfig)
+        val recurringConflict = latestPreview?.warning?.conflict?.takeIf {
             draftConfig.enabled &&
                 draftConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
-                !draftConfig.ringDuringSilenceWindow
+                !draftConfig.ringDuringSilenceWindow &&
+                !resolverResolvedForCurrentConflict
         }
         if (recurringConflict != null) {
-            pendingRecurringSilenceConflict = recurringConflict
+            silenceConflictDialogVisible = true
         } else {
             onSave(draftConfig)
         }
+    }
+
+    fun dismissSilenceConflictDialog() {
+        dismissedSilenceConflictKey = unresolvedRecurringConflictKey
+        silenceConflictDialogVisible = false
+        onCancelSilenceWindowEdit()
     }
 
     fun selectMainAlarmMode(nextMode: WakeMainAlarmMode) {
@@ -321,19 +412,24 @@ fun WakeEditorSheet(
         )
     }
 
-    pendingRecurringSilenceConflict?.let { conflict ->
+    if (silenceConflictDialogVisible && silenceConflictDialogConflict != null) {
         WakeRecurringSilenceConflictDialog(
-            conflict = conflict,
+            conflict = silenceConflictDialogConflict,
+            editorState = silenceConflictResolverState,
+            editorContent = silenceConflictResolverContent,
             onAdjustSilenceWindow = {
-                adjustAutoSilenceWindowForWakeConflict(context, conflict)
-                pendingRecurringSilenceConflict = null
-                onSave(draftConfig.copy(ringDuringSilenceWindow = false))
+                onEditSilenceWindowRequest(
+                    draftConfig.copy(ringDuringSilenceWindow = false),
+                    silenceConflictDialogConflict,
+                )
             },
             onRingDuringSilence = {
-                pendingRecurringSilenceConflict = null
-                onSave(draftConfig.copy(ringDuringSilenceWindow = true))
+                ringDuringSilenceWindow = true
+                silenceConflictDialogVisible = false
             },
-            onDismiss = { pendingRecurringSilenceConflict = null },
+            onDone = { silenceConflictDialogVisible = false },
+            onBackToChoices = { onCancelSilenceWindowEdit() },
+            onDismiss = { dismissSilenceConflictDialog() },
         )
     }
 
@@ -404,6 +500,8 @@ fun WakeEditorSheet(
                             fixedHour = hour
                             fixedMinute = minute
                         },
+                        selectedDays = effectiveScheduledDays,
+                        onSelectedDaysChange = { days -> scheduledDays = days.normalizedWakeScheduleDays() },
                         fromNowHoursText = fromNowHoursText,
                         fromNowMinutesText = fromNowMinutesText,
                         onFromNowHoursTextChange = { updatedHours ->
@@ -424,7 +522,7 @@ fun WakeEditorSheet(
                 }
 
                 if (enabled) {
-                    preview?.warning?.let { warning ->
+                    preview?.warning?.takeIf { warning -> warning.conflict == null }?.let { warning ->
                         WakeEditorWarningCard(warning = warning)
                     }
                 }
@@ -557,18 +655,21 @@ fun WakeEditorSheet(
 
 @Composable
 private fun WakeEditorSectionCard(
+    modifier: Modifier = Modifier,
     title: String,
     subtitle: String? = null,
     expanded: Boolean = true,
     onExpandedChange: (() -> Unit)? = null,
+    containerColor: Color = GoldLight.copy(alpha = 0.08f),
+    borderColor: Color = Gold.copy(alpha = 0.58f),
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val collapsible = onExpandedChange != null
     OutlinedCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.08f)),
-        border = BorderStroke(1.5.dp, Gold.copy(alpha = 0.58f)),
+        colors = CardDefaults.outlinedCardColors(containerColor = containerColor),
+        border = BorderStroke(1.5.dp, borderColor),
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
@@ -654,6 +755,8 @@ private fun WakeScheduleBuilder(
     fixedHour: Int,
     fixedMinute: Int,
     onFixedTimePicked: (hour: Int, minute: Int) -> Unit,
+    selectedDays: Set<WakeScheduleDay>,
+    onSelectedDaysChange: (Set<WakeScheduleDay>) -> Unit,
     fromNowHoursText: String,
     fromNowMinutesText: String,
     onFromNowHoursTextChange: (String) -> Unit,
@@ -670,6 +773,7 @@ private fun WakeScheduleBuilder(
         offsetText = offsetText,
         fixedHour = fixedHour,
         fixedMinute = fixedMinute,
+        scheduledDays = selectedDays,
         fromNowHoursText = fromNowHoursText,
         fromNowMinutesText = fromNowMinutesText,
     )
@@ -713,6 +817,13 @@ private fun WakeScheduleBuilder(
                     onSilenceUntilAlarmChange = onSilenceUntilAlarmChange,
                 )
             }
+        }
+
+        if (mode != WakeMainAlarmMode.FROM_NOW) {
+            WakeScheduleDaySelector(
+                selectedDays = selectedDays,
+                onSelectedDaysChange = onSelectedDaysChange,
+            )
         }
     }
 }
@@ -911,40 +1022,61 @@ private fun formatWakeScheduleSummary(
     offsetText: String,
     fixedHour: Int,
     fixedMinute: Int,
+    scheduledDays: Set<WakeScheduleDay>,
     fromNowHoursText: String,
     fromNowMinutesText: String,
-): String = when (mode) {
-    WakeMainAlarmMode.PRAYER_RELATIVE -> {
-        val prayerName = prayerDisplayName(context, selectedPrayer)
-        val offsetMinutes = offsetText.toIntOrNull()?.coerceAtLeast(0) ?: 0
-        if (offsetMinutes == 0) {
-            context.getString(R.string.wake_editor_schedule_summary_relative_at, prayerName)
+): String {
+    val normalizedDays = scheduledDays.normalizedWakeScheduleDays()
+    val selectedDaysSummary = formatWakeScheduleDaysSummary(context, normalizedDays)
+    val allDaysSelected = isEveryWakeScheduleDay(normalizedDays)
+
+    return when (mode) {
+        WakeMainAlarmMode.PRAYER_RELATIVE -> {
+            val prayerName = prayerDisplayName(context, selectedPrayer)
+            val offsetMinutes = offsetText.toIntOrNull()?.coerceAtLeast(0) ?: 0
+            val baseSummary = if (offsetMinutes == 0) {
+                context.getString(R.string.wake_editor_schedule_summary_relative_at, prayerName)
+            } else {
+                context.getString(
+                    if (offsetDirection == OffsetDirection.BEFORE) {
+                        R.string.wake_editor_schedule_summary_relative_before
+                    } else {
+                        R.string.wake_editor_schedule_summary_relative_after
+                    },
+                    prayerName,
+                    formatArabicMinutes(offsetMinutes),
+                )
+            }
+
+            if (allDaysSelected) {
+                baseSummary
+            } else {
+                context.getString(R.string.wake_editor_schedule_summary_with_days, baseSummary, selectedDaysSummary)
+            }
+        }
+
+        WakeMainAlarmMode.FIXED_TIME -> if (allDaysSelected) {
+            context.getString(
+                R.string.wake_editor_schedule_summary_fixed,
+                formatWakeEditorTime(fixedHour, fixedMinute),
+            )
         } else {
             context.getString(
-                if (offsetDirection == OffsetDirection.BEFORE) {
-                    R.string.wake_editor_schedule_summary_relative_before
-                } else {
-                    R.string.wake_editor_schedule_summary_relative_after
-                },
-                prayerName,
-                formatArabicMinutes(offsetMinutes),
+                R.string.wake_editor_schedule_summary_fixed_selected_days,
+                formatWakeEditorTime(fixedHour, fixedMinute),
+                selectedDaysSummary,
             )
         }
+
+        WakeMainAlarmMode.FROM_NOW -> context.getString(
+            R.string.wake_editor_schedule_summary_from_now,
+            formatWakeScheduleDuration(
+                context = context,
+                hours = fromNowHoursText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
+                minutes = fromNowMinutesText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
+            ),
+        )
     }
-
-    WakeMainAlarmMode.FIXED_TIME -> context.getString(
-        R.string.wake_editor_schedule_summary_fixed,
-        formatWakeEditorTime(fixedHour, fixedMinute),
-    )
-
-    WakeMainAlarmMode.FROM_NOW -> context.getString(
-        R.string.wake_editor_schedule_summary_from_now,
-        formatWakeScheduleDuration(
-            context = context,
-            hours = fromNowHoursText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
-            minutes = fromNowMinutesText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
-        ),
-    )
 }
 
 private fun formatWakeScheduleDuration(
@@ -960,6 +1092,72 @@ private fun formatWakeScheduleDuration(
 
     hours > 0 -> context.getString(R.string.wake_editor_duration_hours, hours)
     else -> formatArabicMinutes(minutes)
+}
+
+@Composable
+private fun WakeScheduleDaySelector(
+    selectedDays: Set<WakeScheduleDay>,
+    onSelectedDaysChange: (Set<WakeScheduleDay>) -> Unit,
+) {
+    val normalizedDays = selectedDays.normalizedWakeScheduleDays()
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(
+            text = stringResource(R.string.wake_editor_repeat_days_title),
+            fontSize = 13.sp,
+            fontWeight = FontWeight.Bold,
+            color = PrayerNameColor,
+        )
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS.forEach { day ->
+                val selected = day in normalizedDays
+                WakeScheduleDayChip(
+                    day = day,
+                    selected = selected,
+                    onClick = {
+                        val nextDays = if (selected) {
+                            if (normalizedDays.size == 1) normalizedDays else normalizedDays - day
+                        } else {
+                            normalizedDays + day
+                        }
+                        onSelectedDaysChange(nextDays.normalizedWakeScheduleDays())
+                    },
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeScheduleDayChip(
+    day: WakeScheduleDay,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
+    val shape = RoundedCornerShape(9.dp)
+    Surface(
+        modifier = Modifier
+            .clip(shape)
+            .clickable(onClick = onClick),
+        shape = shape,
+        color = if (selected) GreenPrimary else Color.White,
+        border = BorderStroke(
+            1.dp,
+            if (selected) GreenPrimary else Gold.copy(alpha = 0.28f),
+        ),
+    ) {
+        Text(
+            text = wakeScheduleDayLabel(day),
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (selected) Color.White else TextDark,
+            maxLines = 1,
+            textAlign = TextAlign.Center,
+        )
+    }
 }
 
 @Composable
@@ -988,31 +1186,88 @@ private fun WakePrayerRelativeModeControls(
         fontWeight = FontWeight.Bold,
         color = PrayerNameColor,
     )
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         WakeChoiceButton(
             selected = offsetDirection == OffsetDirection.BEFORE,
             onClick = { onOffsetDirectionChange(OffsetDirection.BEFORE) },
             text = stringResource(R.string.wake_editor_subalarm_before),
+            modifier = Modifier
+                .width(82.dp)
+                .height(48.dp),
             compact = true,
         )
+        Spacer(modifier = Modifier.width(8.dp))
+        WakeRelativeMinutesInput(
+            value = offsetText,
+            onValueChange = onOffsetTextChange,
+            modifier = Modifier.width(118.dp),
+        )
+        Spacer(modifier = Modifier.width(8.dp))
         WakeChoiceButton(
             selected = offsetDirection == OffsetDirection.AFTER,
             onClick = { onOffsetDirectionChange(OffsetDirection.AFTER) },
             text = stringResource(R.string.wake_editor_subalarm_after),
+            modifier = Modifier
+                .width(82.dp)
+                .height(48.dp),
             compact = true,
         )
     }
-    OutlinedTextField(
-        value = offsetText,
-        onValueChange = onOffsetTextChange,
-        modifier = Modifier.fillMaxWidth(),
-        label = { Text(stringResource(R.string.wake_editor_relative_label)) },
+}
+
+@Composable
+private fun WakeRelativeMinutesInput(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val shape = RoundedCornerShape(10.dp)
+    BasicTextField(
+        value = value,
+        onValueChange = onValueChange,
+        modifier = modifier
+            .height(48.dp)
+            .clip(shape)
+            .background(GoldLight.copy(alpha = 0.12f))
+            .border(1.dp, Gold.copy(alpha = 0.24f), shape)
+            .padding(horizontal = 10.dp),
         textStyle = LocalTextStyle.current.copy(
-            textAlign = TextAlign.Right,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = TextDark,
+            textAlign = TextAlign.Center,
             textDirection = TextDirection.Ltr,
         ),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
+        decorationBox = { innerTextField ->
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Box(
+                        modifier = Modifier.width(42.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        innerTextField()
+                    }
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = stringResource(R.string.wake_editor_relative_unit_minute),
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = TextMuted,
+                        maxLines = 1,
+                    )
+                }
+            }
+        },
     )
 }
 
@@ -1155,12 +1410,6 @@ private fun WakeEditorPreviewCard(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            Text(
-                text = stringResource(R.string.wake_editor_preview_title),
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White.copy(alpha = 0.78f),
-            )
             when {
                 !enabled -> Text(
                     text = stringResource(R.string.wake_editor_preview_disabled),
@@ -1225,68 +1474,166 @@ private fun WakeEditorWarningCard(
 
 @Composable
 private fun WakeRecurringSilenceConflictDialog(
-    conflict: WakeSilenceConflict,
+    conflict: WakeSilenceConflictSummary,
+    editorState: WakeSilenceConflictResolverState?,
+    editorContent: @Composable (WakeSilenceConflictSummary) -> Unit,
     onAdjustSilenceWindow: () -> Unit,
     onRingDuringSilence: () -> Unit,
+    onDone: () -> Unit,
+    onBackToChoices: () -> Unit,
     onDismiss: () -> Unit,
 ) {
+    val context = LocalContext.current
+    val prayerName = prayerDisplayName(context, conflict.silencePrayer)
+    val titleRes = when {
+        editorState?.resolved == true -> R.string.wake_editor_silence_inline_resolved_title
+        editorState != null -> R.string.wake_editor_silence_inline_title
+        else -> R.string.wake_editor_conflict_choice_title
+    }
+    val detailText = when {
+        editorState?.resolved == true -> stringResource(
+            R.string.wake_editor_silence_inline_resolved_detail,
+            formatWakeTimelineTime(conflict.triggerAtMillis),
+        )
+        editorState != null -> stringResource(
+            R.string.wake_editor_silence_inline_conflict_detail,
+            formatWakeTimelineTime(conflict.silenceStartAtMillis),
+            formatWakeTimelineTime(conflict.silenceEndAtMillis),
+            formatWakeTimelineTime(conflict.triggerAtMillis),
+        )
+        else -> stringResource(
+            R.string.wake_editor_conflict_choice_detail,
+            formatWakeTimelineTime(conflict.triggerAtMillis),
+            prayerName,
+            formatWakeTimelineTime(conflict.silenceStartAtMillis),
+            formatWakeTimelineTime(conflict.silenceEndAtMillis),
+        )
+    }
+
     Dialog(onDismissRequest = onDismiss) {
         Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(max = 640.dp),
             shape = RoundedCornerShape(18.dp),
             color = Color.White,
         ) {
             Column(
-                modifier = Modifier.padding(horizontal = 20.dp, vertical = 18.dp),
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 20.dp, vertical = 18.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 Text(
-                    text = stringResource(R.string.wake_editor_recurring_conflict_title),
+                    text = stringResource(titleRes),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = PrayerNameColor,
                 )
                 Text(
-                    text = conflict.detail,
+                    text = detailText,
                     fontSize = 13.sp,
                     color = TextDark,
                     lineHeight = 19.sp,
                 )
-                Text(
-                    text = stringResource(R.string.wake_editor_recurring_conflict_message),
-                    fontSize = 12.sp,
-                    color = TextMuted,
-                    lineHeight = 18.sp,
-                )
 
-                Button(
-                    onClick = onAdjustSilenceWindow,
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
-                ) {
+                if (editorState == null) {
                     Text(
-                        text = stringResource(R.string.wake_editor_recurring_conflict_adjust),
-                        fontWeight = FontWeight.Bold,
+                        text = stringResource(R.string.wake_editor_conflict_choice_message),
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                        lineHeight = 18.sp,
                     )
+
+                    Button(
+                        onClick = onAdjustSilenceWindow,
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.wake_editor_conflict_choice_adjust, prayerName),
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+
+                    OutlinedButton(
+                        onClick = onRingDuringSilence,
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.42f)),
+                        colors = ButtonDefaults.outlinedButtonColors(contentColor = SilenceRed),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.wake_editor_conflict_choice_allow),
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+                } else {
+                    editorContent(editorState.conflict)
+
+                    if (editorState.resolved) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        ) {
+                            Button(
+                                onClick = onDone,
+                                modifier = Modifier.weight(1f),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.wake_editor_conflict_choice_done),
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+                            OutlinedButton(
+                                onClick = onDismiss,
+                                modifier = Modifier.weight(1f),
+                                shape = RoundedCornerShape(12.dp),
+                                border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
+                                colors = ButtonDefaults.outlinedButtonColors(contentColor = GreenPrimaryDark),
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.wake_editor_cancel),
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+                        }
+                    } else {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        ) {
+                            OutlinedButton(
+                                onClick = onBackToChoices,
+                                modifier = Modifier.weight(1f),
+                                shape = RoundedCornerShape(12.dp),
+                                border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
+                                colors = ButtonDefaults.outlinedButtonColors(contentColor = GreenPrimaryDark),
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.wake_editor_conflict_choice_back),
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+                            TextButton(
+                                onClick = onDismiss,
+                                modifier = Modifier.weight(1f),
+                            ) {
+                                Text(text = stringResource(R.string.wake_editor_cancel))
+                            }
+                        }
+                    }
                 }
 
-                OutlinedButton(
-                    onClick = onRingDuringSilence,
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.42f)),
-                    colors = ButtonDefaults.outlinedButtonColors(contentColor = SilenceRed),
-                ) {
-                    Text(
-                        text = stringResource(R.string.wake_editor_recurring_conflict_ring_anyway),
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
-
-                TextButton(
-                    onClick = onDismiss,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(text = stringResource(R.string.wake_editor_cancel))
+                if (editorState == null) {
+                    TextButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(text = stringResource(R.string.wake_editor_cancel))
+                    }
                 }
             }
         }
@@ -2423,7 +2770,16 @@ private data class WakeSilenceConflict(
     val detail: String,
     val silencePrayer: Prayer,
     val silenceStartAtMillis: Long,
+    val silenceEndAtMillis: Long,
     val triggerAtMillis: Long,
+)
+
+private fun WakeSilenceConflict.toSummary(): WakeSilenceConflictSummary = WakeSilenceConflictSummary(
+    detail = detail,
+    silencePrayer = silencePrayer,
+    silenceStartAtMillis = silenceStartAtMillis,
+    silenceEndAtMillis = silenceEndAtMillis,
+    triggerAtMillis = triggerAtMillis,
 )
 
 private fun computeWakePreview(
@@ -2438,7 +2794,7 @@ private fun computeWakePreview(
     val now = Calendar.getInstance()
     val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
     val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (-1..2).mapNotNull { dayOffset ->
+    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
         val date = (now.clone() as Calendar).apply {
             add(Calendar.DAY_OF_YEAR, dayOffset)
         }
@@ -2534,7 +2890,7 @@ private fun computeWakeTimelineEntries(
     val now = Calendar.getInstance()
     val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
     val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (-1..2).mapNotNull { dayOffset ->
+    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
         val date = (now.clone() as Calendar).apply {
             add(Calendar.DAY_OF_YEAR, dayOffset)
         }
@@ -2655,41 +3011,10 @@ private fun computeWakeSilenceWarning(
             detail = detail,
             silencePrayer = overlap.prayer,
             silenceStartAtMillis = overlap.startAtMillis,
+            silenceEndAtMillis = overlap.endAtMillis,
             triggerAtMillis = trigger.triggerAtMillis,
         ),
     )
-}
-
-private fun adjustAutoSilenceWindowForWakeConflict(
-    context: android.content.Context,
-    conflict: WakeSilenceConflict,
-) {
-    val silenceConfig = PrefsManager.getConfig(context, conflict.silencePrayer)
-    val adjustedEndAtMillis = maxOf(
-        conflict.silenceStartAtMillis,
-        conflict.triggerAtMillis - AUTO_SILENCE_WAKE_BUFFER_MINUTES.toMillis(),
-    )
-
-    when (silenceConfig.mode) {
-        SilenceMode.DURATION -> {
-            val adjustedDurationMinutes = ((adjustedEndAtMillis - conflict.silenceStartAtMillis) / 60_000L)
-                .toInt()
-                .coerceAtLeast(0)
-            PrefsManager.setAfterMinutes(context, conflict.silencePrayer, adjustedDurationMinutes)
-        }
-
-        SilenceMode.FIXED_TIME -> {
-            val adjustedEnd = Calendar.getInstance().apply {
-                timeInMillis = adjustedEndAtMillis
-            }
-            PrefsManager.setFixedTime(
-                context = context,
-                prayer = conflict.silencePrayer,
-                hour = adjustedEnd.get(Calendar.HOUR_OF_DAY),
-                minute = adjustedEnd.get(Calendar.MINUTE),
-            )
-        }
-    }
 }
 
 private fun findWakeSilenceOverlap(

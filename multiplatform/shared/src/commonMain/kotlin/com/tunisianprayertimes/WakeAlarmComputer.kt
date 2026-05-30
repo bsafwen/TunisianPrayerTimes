@@ -93,7 +93,10 @@ object WakeAlarmComputer {
             return ComputeResult(mainAlarm = mainAlarm, subAlarms = subAlarms)
         }
 
-        val sortedPrayerDays = prayerDays.sortedBy { day -> day.date.timeInMillis }
+        val scheduledDays = config.scheduledDays.normalizedWakeScheduleDays()
+        val sortedPrayerDays = prayerDays
+            .filter { day -> day.date.wakeScheduleDay() in scheduledDays }
+            .sortedBy { day -> day.date.timeInMillis }
         val mainAlarm = nextFutureTrigger(
             now = now,
             candidates = sortedPrayerDays.mapNotNull { day ->

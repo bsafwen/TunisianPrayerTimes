@@ -1,5 +1,6 @@
 package com.tunisianprayertimes
 
+import java.util.Calendar
 import kotlinx.serialization.Serializable
 import kotlin.math.abs
 
@@ -15,6 +16,36 @@ fun Prayer.supportsWakeAlarm(): Boolean = this in WAKE_SUPPORTED_PRAYERS
 
 @Serializable
 enum class WakeMainAlarmMode { FIXED_TIME, PRAYER_RELATIVE, FROM_NOW }
+
+const val WAKE_RECURRING_LOOKAHEAD_DAYS: Int = 7
+
+@Serializable
+enum class WakeScheduleDay { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
+
+val ALL_WAKE_SCHEDULE_DAYS: Set<WakeScheduleDay> = setOf(
+    WakeScheduleDay.MONDAY,
+    WakeScheduleDay.TUESDAY,
+    WakeScheduleDay.WEDNESDAY,
+    WakeScheduleDay.THURSDAY,
+    WakeScheduleDay.FRIDAY,
+    WakeScheduleDay.SATURDAY,
+    WakeScheduleDay.SUNDAY,
+)
+
+fun Collection<WakeScheduleDay>.normalizedWakeScheduleDays(): Set<WakeScheduleDay> {
+    val orderedDays = ALL_WAKE_SCHEDULE_DAYS.filterTo(linkedSetOf()) { day -> day in this }
+    return orderedDays.ifEmpty { ALL_WAKE_SCHEDULE_DAYS }
+}
+
+fun Calendar.wakeScheduleDay(): WakeScheduleDay = when (get(Calendar.DAY_OF_WEEK)) {
+    Calendar.MONDAY -> WakeScheduleDay.MONDAY
+    Calendar.TUESDAY -> WakeScheduleDay.TUESDAY
+    Calendar.WEDNESDAY -> WakeScheduleDay.WEDNESDAY
+    Calendar.THURSDAY -> WakeScheduleDay.THURSDAY
+    Calendar.FRIDAY -> WakeScheduleDay.FRIDAY
+    Calendar.SATURDAY -> WakeScheduleDay.SATURDAY
+    else -> WakeScheduleDay.SUNDAY
+}
 
 @Serializable
 data class ClockTime(
@@ -129,6 +160,7 @@ data class PrayerWakeConfig(
     val prayer: Prayer,
     val enabled: Boolean = false,
     val mainAlarm: WakeMainAlarmConfig = WakeMainAlarmConfig(),
+    val scheduledDays: Set<WakeScheduleDay> = ALL_WAKE_SCHEDULE_DAYS,
     val playback: WakePlaybackOptions = WakePlaybackOptions(),
     val subAlarms: List<PrayerWakeSubAlarm> = emptyList(),
     val silenceUntilAlarm: Boolean = false,

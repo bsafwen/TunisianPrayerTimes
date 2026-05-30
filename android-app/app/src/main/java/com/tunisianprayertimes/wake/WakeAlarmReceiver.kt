@@ -6,6 +6,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.AnalyticsTracker
+import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,9 +14,12 @@ import kotlinx.coroutines.launch
 
 class WakeAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        val triggerPayload = intent.toWakeTriggerPayload() ?: return
+        ManualSilenceScheduler.syncExpiredTimer(context)
+
         val payload = WakeAutoSilenceConflictController.withRuntimeConflictIfNeeded(
             context = context,
-            payload = intent.toWakeTriggerPayload() ?: return,
+            payload = triggerPayload,
         )
         Log.d("WakeFlow", "WakeAlarmReceiver.onReceive eventId=${payload.eventId}")
         AnalyticsTracker.wakeAlarmFired(context, payload)

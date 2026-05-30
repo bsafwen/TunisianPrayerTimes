@@ -16,6 +16,7 @@ import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.MathDifficulty
+import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.nap.NapSilenceController
 import java.util.Calendar
@@ -440,7 +441,7 @@ object WakeAlarmScheduler {
 		val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
 		val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
 
-		return (-1..2).mapNotNull { dayOffset ->
+		return (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
 			val date = (now.clone() as Calendar).apply {
 				add(Calendar.DAY_OF_YEAR, dayOffset)
 			}

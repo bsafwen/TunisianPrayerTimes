@@ -9,6 +9,7 @@ import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.tunisianprayertimes.MainActivity
+import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.SilenceStatus
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +31,8 @@ class WakePlaybackService : Service() {
             "WakeFlow",
             "Service.onStartCommand action=${intent?.action} eventId=${intent?.wakeEventId()} startId=$startId",
         )
+        ManualSilenceScheduler.syncExpiredTimer(this)
+
         // Action-based commands (sent by the activity after advancing the queue).
         when (intent?.action) {
             ACTION_REFRESH_FOR_CURRENT -> {
@@ -45,9 +48,10 @@ class WakePlaybackService : Service() {
             }
         }
 
+        val triggerPayload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY
         val payload = WakeAutoSilenceConflictController.withRuntimeConflictIfNeeded(
             context = this,
-            payload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY,
+            payload = triggerPayload,
         )
         val liftedAutoSilence = WakeAutoSilenceConflictController.liftAutoSilenceIfNeeded(this, payload)
         if (SilenceStatus.isAppControlledSilenceActive(this) && !liftedAutoSilence) {
@@ -212,6 +216,8 @@ class WakePlaybackService : Service() {
             .build()
 
     private fun startPlayback(payload: WakeTriggerPayload) {
+        ManualSilenceScheduler.syncExpiredTimer(this)
+
         val liftedAutoSilence = WakeAutoSilenceConflictController.liftAutoSilenceIfNeeded(this, payload)
         if (SilenceStatus.isAppControlledSilenceActive(this) && !liftedAutoSilence) {
             android.util.Log.d("WakeFlow", "Playback suppressed during app-controlled silence eventId=${payload.eventId}")
