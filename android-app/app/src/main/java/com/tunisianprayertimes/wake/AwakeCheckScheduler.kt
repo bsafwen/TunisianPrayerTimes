@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
+import com.tunisianprayertimes.Prayer
 
 internal object AwakeCheckScheduler {
     private const val TAG = "AwakeCheckScheduler"
@@ -16,6 +17,8 @@ internal object AwakeCheckScheduler {
         delayMinutes: Int,
         ringtonePresetName: String?,
         customRingtoneUri: String?,
+        autoSilenceOverrideAllowed: Boolean = false,
+        autoSilenceConflictPrayer: Prayer? = null,
     ): Boolean {
         val resolvedEventId = eventId?.takeIf { it.isNotBlank() } ?: return false
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -25,6 +28,8 @@ internal object AwakeCheckScheduler {
             eventId = resolvedEventId,
             ringtonePresetName = ringtonePresetName,
             customRingtoneUri = customRingtoneUri,
+            autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+            autoSilenceConflictPrayer = autoSilenceConflictPrayer,
             flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
 
@@ -67,6 +72,8 @@ internal object AwakeCheckScheduler {
                 eventId = resolvedEventId,
                 ringtonePresetName = null,
                 customRingtoneUri = null,
+                autoSilenceOverrideAllowed = false,
+                autoSilenceConflictPrayer = null,
                 flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             ),
         )
@@ -77,15 +84,19 @@ internal object AwakeCheckScheduler {
         eventId: String,
         ringtonePresetName: String?,
         customRingtoneUri: String?,
+        autoSilenceOverrideAllowed: Boolean,
+        autoSilenceConflictPrayer: Prayer?,
         flags: Int,
     ): PendingIntent {
         val intent = Intent(context, AwakeCheckReceiver::class.java)
             .setAction(AwakeCheckReceiver.ACTION_START_AWAKE_CHECK)
             .setData(wakeEventUri("awake-check:$eventId"))
             .putExtra(EXTRA_EVENT_ID, eventId)
+            .putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
             .apply {
                 ringtonePresetName?.let { putExtra(EXTRA_RINGTONE, it) }
                 customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
+                autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }
             }
 
         return PendingIntent.getBroadcast(

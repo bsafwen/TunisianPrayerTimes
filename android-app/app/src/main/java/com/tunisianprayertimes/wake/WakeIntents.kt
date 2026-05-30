@@ -26,6 +26,7 @@ const val EXTRA_VIBRATION_ONLY = "extra_vibration_only"
 const val EXTRA_WAKE_UP_CHECK = "extra_wake_up_check"
 const val EXTRA_PROGRESSIVE_VOLUME = "extra_progressive_volume"
 const val EXTRA_SNORE_TRACKING_ENABLED = "extra_snore_tracking_enabled"
+const val EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED = "extra_auto_silence_override_allowed"
 const val EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK = "extra_auto_silence_conflict_playback"
 const val EXTRA_AUTO_SILENCE_CONFLICT_PRAYER = "extra_auto_silence_conflict_prayer"
 const val EXTRA_AWAKE_CHECK_ENABLED = "extra_awake_check_enabled"
@@ -74,6 +75,7 @@ data class WakeTriggerPayload(
     val whackAMoleKillTarget: Int = 5,
     val progressiveVolume: Boolean,
     val snoreTrackingEnabled: Boolean,
+    val autoSilenceOverrideAllowed: Boolean = false,
     val useAutoSilenceConflictPlayback: Boolean = false,
     val autoSilenceConflictPrayer: Prayer? = null,
     val awakeCheckEnabled: Boolean,
@@ -119,6 +121,7 @@ fun Intent.populateWakeTriggerPayload(
     wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
     progressiveVolume: Boolean,
     snoreTrackingEnabled: Boolean,
+    autoSilenceOverrideAllowed: Boolean = false,
     useAutoSilenceConflictPlayback: Boolean = false,
     autoSilenceConflictPrayer: Prayer? = null,
     awakeCheckEnabled: Boolean = true,
@@ -148,6 +151,7 @@ fun Intent.populateWakeTriggerPayload(
     }
     putExtra(EXTRA_PROGRESSIVE_VOLUME, progressiveVolume)
     putExtra(EXTRA_SNORE_TRACKING_ENABLED, snoreTrackingEnabled)
+    putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
     putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK, useAutoSilenceConflictPlayback)
     autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }
     putExtra(EXTRA_AWAKE_CHECK_ENABLED, awakeCheckEnabled)
@@ -245,6 +249,10 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         whackAMoleKillTarget = whackAMoleKillTarget,
         progressiveVolume = getBooleanExtra(EXTRA_PROGRESSIVE_VOLUME, true),
         snoreTrackingEnabled = getBooleanExtra(EXTRA_SNORE_TRACKING_ENABLED, false),
+        autoSilenceOverrideAllowed = getBooleanExtra(
+            EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED,
+            getBooleanExtra(EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK, false),
+        ),
         useAutoSilenceConflictPlayback = getBooleanExtra(EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK, false),
         autoSilenceConflictPrayer = autoSilenceConflictPrayer,
         awakeCheckEnabled = getBooleanExtra(EXTRA_AWAKE_CHECK_ENABLED, true),
@@ -290,6 +298,7 @@ fun WakeTriggerPayload.toBundle(): Bundle =
         wakeUpCheckSteps = wakeUpCheckSteps,
         progressiveVolume = progressiveVolume,
         snoreTrackingEnabled = snoreTrackingEnabled,
+        autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
         useAutoSilenceConflictPlayback = useAutoSilenceConflictPlayback,
         autoSilenceConflictPrayer = autoSilenceConflictPrayer,
         awakeCheckEnabled = awakeCheckEnabled,

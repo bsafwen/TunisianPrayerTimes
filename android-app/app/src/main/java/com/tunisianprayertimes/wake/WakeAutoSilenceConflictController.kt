@@ -23,6 +23,7 @@ internal object WakeAutoSilenceConflictController {
 
         val conflictPrayer = SilenceScheduler.currentSilenceWindowPrayer(context) ?: return payload
         return payload.copy(
+            autoSilenceOverrideAllowed = true,
             useAutoSilenceConflictPlayback = true,
             autoSilenceConflictPrayer = conflictPrayer,
         )

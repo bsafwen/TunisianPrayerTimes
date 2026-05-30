@@ -67,6 +67,20 @@ internal class AlarmAudioController(
         progressiveVolume: Boolean = false,
         maximizeAlarmVolume: Boolean = false,
     ): Boolean {
+        return startRingtoneRamp(
+            ringtonePreset = ringtonePreset,
+            customRingtoneUri = customRingtoneUri,
+            rampDurationMillis = progressiveVolume.rampDurationMillis(),
+            maximizeAlarmVolume = maximizeAlarmVolume,
+        )
+    }
+
+    fun startRingtoneRamp(
+        ringtonePreset: RingtonePreset?,
+        customRingtoneUri: String?,
+        rampDurationMillis: Long?,
+        maximizeAlarmVolume: Boolean = false,
+    ): Boolean {
         stop()
 
         if (maximizeAlarmVolume) {
@@ -74,12 +88,12 @@ internal class AlarmAudioController(
         }
 
         val preferredUri = ringtonePreset?.let { preset -> ringtoneUri(preset, customRingtoneUri) }
-        if (preferredUri != null && playUri(preferredUri, progressiveVolume.rampDurationMillis())) {
+        if (preferredUri != null && playUri(preferredUri, rampDurationMillis)) {
             return true
         }
 
         val fallbackUri = fallbackRingtoneUri()
-        if (fallbackUri != null && fallbackUri != preferredUri && playUri(fallbackUri, progressiveVolume.rampDurationMillis())) {
+        if (fallbackUri != null && fallbackUri != preferredUri && playUri(fallbackUri, rampDurationMillis)) {
             return true
         }
 
@@ -89,9 +103,9 @@ internal class AlarmAudioController(
         return false
     }
 
-    fun startVibrationOnly() {
+    fun startVibrationOnly(strong: Boolean = false) {
         stop()
-        startVibrationPattern()
+        startVibrationPattern(strong = strong)
     }
 
     fun stop() {
@@ -139,20 +153,30 @@ internal class AlarmAudioController(
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
 
     private fun startAutoSilenceConflictWakeAlarm(payload: WakeTriggerPayload) {
+        startStrongVibrationThenRingtone(
+            ringtonePreset = payload.ringtone,
+            customRingtoneUri = payload.customRingtoneUri,
+        )
+    }
+
+    private fun startStrongVibrationThenRingtone(
+        ringtonePreset: RingtonePreset?,
+        customRingtoneUri: String?,
+    ) {
         startVibrationPattern(strong = true)
         delayedRingtoneJob = scope.launch {
-            delay(AUTO_SILENCE_CONFLICT_VIBRATION_MILLIS)
+            delay(STRONG_VIBRATION_MILLIS)
             vibrator?.cancel()
             vibrator = null
 
             forceMaxAlarmVolume()
-            val preferredUri = ringtoneUri(payload.ringtone, payload.customRingtoneUri)
-            if (preferredUri != null && playUri(preferredUri, AUTO_SILENCE_CONFLICT_RAMP_MILLIS)) {
+            val preferredUri = ringtonePreset?.let { preset -> ringtoneUri(preset, customRingtoneUri) }
+            if (preferredUri != null && playUri(preferredUri, LONG_RAMP_MILLIS)) {
                 return@launch
             }
 
             val fallbackUri = fallbackRingtoneUri()
-            if (fallbackUri != null && fallbackUri != preferredUri && playUri(fallbackUri, AUTO_SILENCE_CONFLICT_RAMP_MILLIS)) {
+            if (fallbackUri != null && fallbackUri != preferredUri && playUri(fallbackUri, LONG_RAMP_MILLIS)) {
                 return@launch
             }
 
@@ -289,8 +313,8 @@ internal class AlarmAudioController(
         }
 
     companion object {
-        private const val AUTO_SILENCE_CONFLICT_VIBRATION_MILLIS = 2 * 60_000L
-        private const val AUTO_SILENCE_CONFLICT_RAMP_MILLIS = 10 * 60_000L
+        const val STRONG_VIBRATION_MILLIS = 2 * 60_000L
+        const val LONG_RAMP_MILLIS = 10 * 60_000L
         private const val ALARM_VOLUME_GUARD_INTERVAL_MILLIS = 500L
 
         fun createSilentAlarmChannel(

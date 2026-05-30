@@ -31,6 +31,8 @@ internal object WakeDismissalCoordinator {
                 delayMinutes = payload.awakeCheckDelayMinutes,
                 ringtonePresetName = payload.ringtone.name,
                 customRingtoneUri = payload.customRingtoneUri,
+                autoSilenceOverrideAllowed = payload.autoSilenceOverrideAllowed,
+                autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
             )
         }
     }
