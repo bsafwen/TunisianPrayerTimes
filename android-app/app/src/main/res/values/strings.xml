@@ -239,7 +239,7 @@
     <string name="wake_alarm_col_status">الحالة</string>
     <string name="wake_summary_title">منبه الاستيقاظ</string>
     <string name="wake_summary_status_on">مفعّل</string>
-    <string name="wake_summary_status_off">متوقف</string>
+    <string name="wake_summary_status_off">معطل</string>
     <string name="wake_summary_disabled_body">لا يوجد منبه استيقاظ مفعّل لهذا الموعد</string>
     <string name="wake_summary_fixed">وقت ثابت: %1$s</string>
     <string name="wake_summary_from_now">لمرة واحدة بعد %1$s</string>
@@ -310,7 +310,6 @@
     <string name="wake_editor_wake_up_check_title">تحدي الاستيقاظ</string>
     <string name="wake_editor_wake_up_check_subtitle">لن تتمكن من إيقاف المنبه قبل إتمام تحدي الاستيقاظ.</string>
     <string name="wake_editor_wake_up_check_subtitle_compact">اختر نوع التحدي والخطوات التي تظهر عند الرنين.</string>
-    <string name="wake_editor_wake_up_check_off">متوقف</string>
     <string name="wake_editor_wake_up_check_single_summary">%1$s • %2$s</string>
     <string name="wake_editor_wake_up_check_steps_summary">%1$d خطوات</string>
     <string name="wake_editor_wake_up_check_edit">تعديل تحدي الاستيقاظ</string>
@@ -426,16 +425,16 @@
     <string name="wake_editor_save">حفظ</string>
 
     <string name="wake_editor_awake_check_title">التحقق من الاستيقاظ</string>
-    <string name="wake_editor_awake_check_subtitle">بعد إيقاف المنبه، سيتحقق التطبيق من أنك لا تزال مستيقظا. إذا لم تؤكد خلال دقيقة، سيهتز الهاتف ثم يرن.</string>
-    <string name="wake_editor_awake_check_subtitle_compact">يسألك التطبيق بعد إيقاف المنبه إن كنت لا تزال مستيقظا.</string>
+    <string name="wake_editor_awake_check_subtitle">بعد إيقاف المنبه، سيتحقق التطبيق من أنك لا تزال مستيقظا. إذا لم تؤكد خلال دقيقة، سيهتز الهاتف بقوة لدقيقتين ثم يرن تدريجيا.</string>
+    <string name="wake_editor_awake_check_subtitle_compact">بعد إيقاف المنبه، إن لم تؤكد استيقاظك سيهتز الهاتف بقوة لدقيقتين ثم يرن تدريجيا.</string>
     <string name="awake_check_channel_name">التحقق من الاستيقاظ</string>
     <string name="awake_check_channel_description">إشعارات للتحقق من أنك لا تزال مستيقظا بعد إيقاف المنبه</string>
     <string name="awake_check_title">هل أنت مستيقظ؟</string>
-    <string name="awake_check_prompt">اضغط لتأكيد أنك مستيقظ، وإلا سيرن الهاتف بعد دقيقة.</string>
+    <string name="awake_check_prompt">اضغط لتأكيد أنك مستيقظ، وإلا سيهتز الهاتف بعد دقيقة.</string>
     <string name="awake_check_confirm">نعم، أنا مستيقظ</string>
     <string name="awake_check_confirm_prompt">هل أنت مستيقظ؟ اضغط هنا لتأكيد استيقاظك.</string>
     <string name="awake_check_no_response">لم تؤكد استيقاظك! الهاتف يهتز الآن.</string>
-    <string name="awake_check_ringing">لم تؤكد استيقاظك! المنبه يرن الآن.</string>
+    <string name="awake_check_ringing">لم تؤكد استيقاظك! المنبه يرن تدريجيا الآن.</string>
 
     <string name="guard_channel_name">حماية الإسكات التلقائي</string>
     <string name="guard_channel_description">إشعار يظهر أثناء الإسكات التلقائي للمساعدة على إنهائه في وقته.</string>

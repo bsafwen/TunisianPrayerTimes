@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.tunisianprayertimes.ManualSilenceScheduler
-import com.tunisianprayertimes.SilenceStatus
+import com.tunisianprayertimes.Prayer
 
 /**
  * Receives the "Yes, I'm awake" confirmation and stops the AwakeCheckService.
@@ -22,8 +22,14 @@ class AwakeCheckReceiver : BroadcastReceiver() {
             ACTION_START_AWAKE_CHECK -> {
                 val eventId = intent.getStringExtra(EXTRA_EVENT_ID) ?: return
                 ManualSilenceScheduler.syncExpiredTimer(context)
+                val autoSilenceOverrideAllowed = intent.getBooleanExtra(
+                    EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED,
+                    false,
+                )
+                val autoSilenceConflictPrayer = intent.getStringExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER)
+                    ?.let { rawPrayer -> runCatching { Prayer.valueOf(rawPrayer) }.getOrNull() }
 
-                if (SilenceStatus.isAppControlledSilenceActive(context)) {
+                if (AwakeCheckSilencePolicy.shouldCancelBeforeStart(context, autoSilenceOverrideAllowed)) {
                     Log.d(TAG, "Awake check suppressed during app-controlled silence eventId=$eventId")
                     AwakeCheckScheduler.cancel(context, eventId)
                     return
@@ -41,6 +47,8 @@ class AwakeCheckReceiver : BroadcastReceiver() {
                     eventId = eventId,
                     ringtonePreset = ringtonePreset,
                     customRingtoneUri = customRingtoneUri,
+                    autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+                    autoSilenceConflictPrayer = autoSilenceConflictPrayer,
                 )
                 context.startForegroundService(serviceIntent)
             }

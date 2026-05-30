@@ -236,17 +236,19 @@ object WakeAlarmScheduler {
 		val scheduledEventIds = linkedSetOf<String>()
 		var latestTriggerAtMillis: Long? = null
 		enabledConfigs.forEach { config ->
+			val autoSilenceOverrideAllowed = config.shouldUseAutoSilenceConflictPlayback()
 			val result = WakeAlarmComputer.compute(now, config, prayerDays)
 			result.mainAlarm?.let { trigger ->
 				val eventId = wakeMainEventId(trigger.alarmId)
 				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
-					.takeIf { config.shouldUseAutoSilenceConflictPlayback() }
+					.takeIf { autoSilenceOverrideAllowed }
 				scheduleTrigger(
 					context = context,
 					alarmManager = alarmManager,
 					trigger = trigger,
 					eventId = eventId,
 					autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+					autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
 				)
 				scheduledEventIds += eventId
 				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
@@ -257,13 +259,14 @@ object WakeAlarmScheduler {
 					subAlarmId = requireNotNull(trigger.subAlarmId),
 				)
 				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
-					.takeIf { config.shouldUseAutoSilenceConflictPlayback() }
+					.takeIf { autoSilenceOverrideAllowed }
 				scheduleTrigger(
 					context = context,
 					alarmManager = alarmManager,
 					trigger = trigger,
 					eventId = eventId,
 					autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+					autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
 				)
 				scheduledEventIds += eventId
 				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
@@ -322,8 +325,15 @@ object WakeAlarmScheduler {
 		trigger: WakeAlarmComputer.ScheduledWakeTrigger,
 		eventId: String,
 		autoSilenceConflictPrayer: Prayer?,
+		autoSilenceOverrideAllowed: Boolean,
 	) {
-		val pendingIntent = createPendingIntent(context, trigger, eventId, autoSilenceConflictPrayer)
+		val pendingIntent = createPendingIntent(
+			context = context,
+			trigger = trigger,
+			eventId = eventId,
+			autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+			autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+		)
 
 		try {
 			if (trigger.isSubAlarm) {
@@ -351,8 +361,13 @@ object WakeAlarmScheduler {
 		trigger: WakeAlarmComputer.ScheduledWakeTrigger,
 		eventId: String,
 		autoSilenceConflictPrayer: Prayer?,
+		autoSilenceOverrideAllowed: Boolean,
 	): PendingIntent {
-		val payload = trigger.toPayload(eventId, autoSilenceConflictPrayer)
+		val payload = trigger.toPayload(
+			eventId = eventId,
+			autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+			autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+		)
 		val intent = Intent(context, WakeAlarmReceiver::class.java)
 			.populateWakeTriggerPayload(
 				eventId = payload.eventId,
@@ -371,6 +386,7 @@ object WakeAlarmScheduler {
 				wakeUpCheckSteps = payload.wakeUpCheckSteps,
 				progressiveVolume = payload.progressiveVolume,
 				snoreTrackingEnabled = payload.snoreTrackingEnabled,
+				autoSilenceOverrideAllowed = payload.autoSilenceOverrideAllowed,
 				useAutoSilenceConflictPlayback = payload.useAutoSilenceConflictPlayback,
 				autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
 				awakeCheckEnabled = payload.awakeCheckEnabled,
@@ -466,6 +482,7 @@ object WakeAlarmScheduler {
 	private fun WakeAlarmComputer.ScheduledWakeTrigger.toPayload(
 		eventId: String,
 		autoSilenceConflictPrayer: Prayer?,
+		autoSilenceOverrideAllowed: Boolean,
 	): WakeTriggerPayload {
 		val mainTriggerAtMillis = triggerAtMillis - signedOffsetMinutes.toMillis()
 		val mainTriggerTime = Calendar.getInstance().apply {
@@ -489,6 +506,7 @@ object WakeAlarmScheduler {
 			wakeUpCheckSteps = playback.effectiveWakeUpCheckSteps,
 			progressiveVolume = playback.progressiveVolume,
 			snoreTrackingEnabled = playback.snoreTrackingEnabled,
+			autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
 			useAutoSilenceConflictPlayback = autoSilenceConflictPrayer != null,
 			autoSilenceConflictPrayer = autoSilenceConflictPrayer,
 			awakeCheckEnabled = if (isSubAlarm) false else playback.awakeCheckEnabled,

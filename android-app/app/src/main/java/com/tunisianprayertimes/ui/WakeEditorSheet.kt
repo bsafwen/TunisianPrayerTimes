@@ -89,6 +89,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.ClockTime
@@ -185,6 +186,14 @@ fun WakeEditorSheet(
     onDelete: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
+    DisposableEffect(activity) {
+        val controller = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
+        val previousLightStatusBars = controller.isAppearanceLightStatusBars
+        controller.isAppearanceLightStatusBars = true
+        onDispose {
+            controller.isAppearanceLightStatusBars = previousLightStatusBars
+        }
+    }
     val enabled = initialConfig.enabled
     var mode by remember(initialConfig.id, initialConfig.mainAlarm.mode) {
         mutableStateOf(initialConfig.mainAlarm.mode)
@@ -2240,7 +2249,7 @@ private fun WakeWakeCheckControls(
         listOf(WakeUpCheckStep(playback.wakeUpCheckType, playback.mathDifficulty))
     }
     val wakeCheckSummary = if (!playback.wakeUpCheckEnabled) {
-        stringResource(R.string.wake_editor_wake_up_check_off)
+        null
     } else if (previewSteps.size == 1) {
         stringResource(
             R.string.wake_editor_wake_up_check_single_summary,
@@ -2274,7 +2283,7 @@ private fun WakeWakeCheckControls(
         if (playback.wakeUpCheckEnabled) {
             WakeDisclosureRow(
                 title = stringResource(R.string.wake_editor_wake_up_check_edit),
-                subtitle = wakeCheckSummary,
+                subtitle = requireNotNull(wakeCheckSummary),
                 expanded = wakeCheckExpanded,
                 onClick = { wakeCheckExpanded = !wakeCheckExpanded },
             )
