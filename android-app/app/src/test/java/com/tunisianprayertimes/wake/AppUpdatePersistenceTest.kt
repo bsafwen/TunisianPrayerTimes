@@ -3,15 +3,20 @@ package com.tunisianprayertimes.wake
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.test.core.app.ApplicationProvider
+import com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS
+import com.tunisianprayertimes.ClockTime
 import com.tunisianprayertimes.DelayMode
 import com.tunisianprayertimes.ManualSilenceMode
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.SilenceMode
+import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.WakeScheduleDay
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -82,12 +87,105 @@ class AppUpdatePersistenceTest {
         assertTrue(alarm.playback.wakeUpCheckEnabled)
         assertEquals(MathDifficulty.HARD, alarm.playback.mathDifficulty)
         assertTrue(alarm.playback.progressiveVolume)
+        assertEquals(ALL_WAKE_SCHEDULE_DAYS, alarm.scheduledDays)
 
         val subAlarm = alarm.subAlarms.single()
         assertEquals("legacy_sub", subAlarm.id)
         assertEquals(10, subAlarm.minutesOffset)
         assertEquals(OffsetDirection.BEFORE, subAlarm.direction)
         assertEquals(RingtonePreset.CLASSIC_BEEP, subAlarm.playback.ringtone)
+    }
+
+    @Test
+    fun currentWakeStoreWithoutScheduledDays_defaultsToEveryDay() {
+        val store = decodePrayerWakeStore(
+            """
+                {
+                  "alarms": [
+                    {
+                      "id": "fixed_without_days",
+                      "prayer": "FAJR",
+                      "enabled": true,
+                      "mainAlarm": {
+                        "mode": "FIXED_TIME",
+                        "fixedTime": { "hour": 8, "minute": 0 }
+                      }
+                    }
+                  ]
+                }
+            """.trimIndent(),
+        )
+
+        val alarm = store.alarms.single()
+        assertEquals(ALL_WAKE_SCHEDULE_DAYS, alarm.scheduledDays)
+    }
+
+    @Test
+    fun currentWakeStoreWithEmptyScheduledDays_isNormalizedToEveryDay() {
+        val store = decodePrayerWakeStore(
+            """
+                {
+                  "alarms": [
+                    {
+                      "id": "fixed_empty_days",
+                      "prayer": "FAJR",
+                      "enabled": true,
+                      "scheduledDays": [],
+                      "mainAlarm": {
+                        "mode": "FIXED_TIME",
+                        "fixedTime": { "hour": 8, "minute": 0 }
+                      }
+                    }
+                  ]
+                }
+            """.trimIndent(),
+        )
+
+        val alarm = store.alarms.single()
+        assertEquals(ALL_WAKE_SCHEDULE_DAYS, alarm.scheduledDays)
+    }
+
+    @Test
+    fun saveWakeConfigWithSelectedDays_preservesSelectedDays() = runBlocking {
+        val repository = PrayerWakeRepository(context)
+        val selectedDays = setOf(WakeScheduleDay.MONDAY, WakeScheduleDay.THURSDAY)
+
+        repository.saveWakeConfig(
+            PrayerWakeConfig(
+                id = "fixed_selected_days",
+                prayer = Prayer.FAJR,
+                enabled = true,
+                mainAlarm = WakeMainAlarmConfig(
+                    mode = WakeMainAlarmMode.FIXED_TIME,
+                    fixedTime = ClockTime(8, 0),
+                ),
+                scheduledDays = selectedDays,
+            ),
+        )
+
+        val alarm = repository.getWakeAlarm("fixed_selected_days")
+        assertEquals(selectedDays, alarm?.scheduledDays)
+    }
+
+    @Test
+    fun saveWakeConfigWithEmptyScheduledDays_normalizesToEveryDay() = runBlocking {
+        val repository = PrayerWakeRepository(context)
+
+        repository.saveWakeConfig(
+            PrayerWakeConfig(
+                id = "fixed_empty_days",
+                prayer = Prayer.FAJR,
+                enabled = true,
+                mainAlarm = WakeMainAlarmConfig(
+                    mode = WakeMainAlarmMode.FIXED_TIME,
+                    fixedTime = ClockTime(8, 0),
+                ),
+                scheduledDays = emptySet(),
+            ),
+        )
+
+        val alarm = repository.getWakeAlarm("fixed_empty_days")
+        assertEquals(ALL_WAKE_SCHEDULE_DAYS, alarm?.scheduledDays)
     }
 
     private fun seedExistingSilenceSettings() {

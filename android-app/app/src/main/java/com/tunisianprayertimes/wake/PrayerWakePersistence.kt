@@ -14,6 +14,7 @@ import com.tunisianprayertimes.PrayerWakeStore
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.normalizedWakeScheduleDays
 import com.tunisianprayertimes.supportsWakeAlarm
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -78,6 +79,7 @@ private fun PrayerWakeConfig.normalizedFor(
         title = title.trim(),
         prayer = prayer,
         mainAlarm = mainAlarm.normalized(),
+        scheduledDays = scheduledDays.normalizedWakeScheduleDays(),
         playback = playback.normalized(),
         subAlarms = subAlarms
             .filter { it.minutesOffset > 0 }

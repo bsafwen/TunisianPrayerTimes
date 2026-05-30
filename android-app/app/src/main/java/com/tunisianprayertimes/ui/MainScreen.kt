@@ -108,6 +108,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.LayoutDirection
@@ -137,7 +138,6 @@ import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerTimesRepository
-import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
@@ -145,9 +145,11 @@ import com.tunisianprayertimes.RamadanOverrideChecker
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.ScheduleRefreshCoordinator
 import com.tunisianprayertimes.SilenceMode
+import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
+import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
@@ -197,8 +199,29 @@ private enum class WakeQuickPreset {
     TIMER,
 }
 
+private enum class PrayerRowValidationTarget {
+    DELAY,
+    DURATION,
+}
+
+private data class PrayerRowValidationWarning(
+    val messageRes: Int,
+    val target: PrayerRowValidationTarget,
+)
+
+private data class WakeSilenceConflictEditorState(
+    val draftConfig: PrayerWakeConfig,
+    val originalConflict: WakeSilenceConflictSummary,
+    val draftSilenceConfig: PrayerSilenceConfig,
+    val currentConflict: WakeSilenceConflictSummary? = originalConflict,
+    val hasEditedSilenceWindow: Boolean = false,
+    val editRevision: Int = 0,
+)
+
 private const val DEFAULT_PRAYER_OFFSET_MINUTES = 20
 private const val DEFAULT_TIMER_MINUTES = 15
+private const val DEFAULT_FIXED_ALARM_HOUR = 8
+private const val DEFAULT_FIXED_ALARM_MINUTE = 0
 private val MainHeroCardHeight = 148.dp
 private val MainHeroCardShape = RoundedCornerShape(18.dp)
 private val SilencedHeroStart = Color(0xFF3A1F2E)
@@ -414,9 +437,11 @@ fun MainScreen(
 
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
     var quickAddVisible by rememberSaveable { mutableStateOf(false) }
+    var wakeSilenceConflictEditor by remember { mutableStateOf<WakeSilenceConflictEditorState?>(null) }
 
     fun createWakeAlarm(preset: WakeQuickPreset) {
         quickAddVisible = false
+        wakeSilenceConflictEditor = null
         editingWakeAlarm = newWakeAlarmConfig(preset)
     }
 
@@ -612,7 +637,9 @@ fun MainScreen(
                         PrayerSettingsCard(
                             delegationId = delegationId,
                             activity = activity,
-                            onConfigChanged = { rescheduleIfEnabled() }
+                            onConfigChanged = {
+                                rescheduleIfEnabled()
+                            }
                         )
 
                         AutoSilenceCard(
@@ -913,12 +940,49 @@ fun MainScreen(
                 delegationId = delegationId,
                 initialConfig = wakeAlarm,
                 isNewAlarm = !isPersistedAlarm,
-                onDismissRequest = { editingWakeAlarm = null },
+                silenceConfigRevision = refreshTick + (wakeSilenceConflictEditor?.editRevision ?: 0),
+                silenceConflictResolverState = wakeSilenceConflictEditor?.let { editorState ->
+                    WakeSilenceConflictResolverState(
+                        conflict = editorState.currentConflict ?: editorState.originalConflict,
+                        resolved = editorState.hasEditedSilenceWindow && editorState.currentConflict == null,
+                    )
+                },
+                silenceConflictResolverContent = {
+                    wakeSilenceConflictEditor?.let { editorState ->
+                        WakeSilenceConflictPrayerEditor(
+                            delegationId = delegationId,
+                            activity = activity,
+                            editorState = editorState,
+                            onConfigChanged = { updatedSilenceConfig ->
+                                wakeSilenceConflictEditor = wakeSilenceConflictEditor?.let { state ->
+                                    refreshWakeSilenceConflictEditor(
+                                        context = context,
+                                        delegationId = delegationId,
+                                        editorState = state.copy(draftSilenceConfig = updatedSilenceConfig),
+                                    )
+                                }
+                            },
+                        )
+                    }
+                },
+                onDismissRequest = {
+                    editingWakeAlarm = null
+                    wakeSilenceConflictEditor = null
+                },
                 onSave = { config ->
+                    val stagedSilenceEditor = wakeSilenceConflictEditor
+                    if (stagedSilenceEditor?.hasEditedSilenceWindow == true && !config.ringDuringSilenceWindow) {
+                        persistPrayerSilenceConfig(
+                            context = context,
+                            prayer = stagedSilenceEditor.originalConflict.silencePrayer,
+                            config = stagedSilenceEditor.draftSilenceConfig,
+                        )
+                    }
                     mainScope.launch {
                         wakeRepository.saveWakeConfig(config)
                         AnalyticsTracker.wakeAlarmSaved(context, config)
                         editingWakeAlarm = null
+                        wakeSilenceConflictEditor = null
                         rescheduleIfEnabled()
                     }
                     if (config.enabled &&
@@ -939,12 +1003,24 @@ fun MainScreen(
                         }
                     }
                 },
+                onEditSilenceWindowRequest = { draftConfig, conflict ->
+                    quickAddVisible = false
+                    wakeSilenceConflictEditor = WakeSilenceConflictEditorState(
+                        draftConfig = draftConfig,
+                        originalConflict = conflict,
+                        draftSilenceConfig = PrefsManager.getConfig(context, conflict.silencePrayer),
+                    )
+                },
+                onCancelSilenceWindowEdit = {
+                    wakeSilenceConflictEditor = null
+                },
                 onDelete = if (isPersistedAlarm) {
                     {
                         WakeAlarmScheduler.removeSilenceUntilAlarm(context, wakeAlarm.id)
                         mainScope.launch {
                             wakeRepository.deleteWakeAlarm(wakeAlarm.id)
                             editingWakeAlarm = null
+                            wakeSilenceConflictEditor = null
                             rescheduleIfEnabled()
                         }
                     }
@@ -1051,21 +1127,6 @@ private fun PhoneStatusNotice(
             autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
         )
     }
-}
-
-@Composable
-private fun TomorrowMarker() {
-    Text(
-        text = stringResource(R.string.next_prayer_countdown_tomorrow),
-        fontSize = 11.sp,
-        color = GreenPrimaryDark,
-        fontWeight = FontWeight.Bold,
-        maxLines = 1,
-        modifier = Modifier
-            .clip(RoundedCornerShape(50))
-            .background(Color.White.copy(alpha = 0.82f))
-            .padding(horizontal = 8.dp, vertical = 3.dp),
-    )
 }
 
 @Composable
@@ -2325,7 +2386,7 @@ private fun newWakeAlarmConfig(preset: WakeQuickPreset): PrayerWakeConfig {
         )
         WakeQuickPreset.FIXED_TIME -> WakeMainAlarmConfig(
             mode = WakeMainAlarmMode.FIXED_TIME,
-            fixedTime = fixedTime,
+            fixedTime = ClockTime(DEFAULT_FIXED_ALARM_HOUR, DEFAULT_FIXED_ALARM_MINUTE),
         )
         WakeQuickPreset.TIMER -> WakeMainAlarmConfig(
             mode = WakeMainAlarmMode.FROM_NOW,
@@ -2407,7 +2468,7 @@ private fun WakeNextAlarmPanel(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(MainHeroCardHeight)
+            .heightIn(min = MainHeroCardHeight)
             .clip(shape)
             .background(
                 Brush.linearGradient(
@@ -2419,7 +2480,9 @@ private fun WakeNextAlarmPanel(
             .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape),
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 18.dp, vertical = 15.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 18.dp, vertical = 15.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
@@ -2440,6 +2503,8 @@ private fun WakeNextAlarmPanel(
                 fontSize = 13.sp,
                 color = Color.White.copy(alpha = 0.82f),
                 lineHeight = 18.sp,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
             )
         }
     }
@@ -2526,6 +2591,11 @@ private fun NextPrayerHeroCard(
     silenceReason: PhoneSilenceReason?,
 ) {
     val prayerTimeText = String.format(Locale.US, "%02d:%02d", countdown.hour, countdown.minute)
+    val prayerTimeLineText = if (countdown.isTomorrow) {
+        stringResource(R.string.next_prayer_countdown_at_tomorrow, prayerTimeText)
+    } else {
+        stringResource(R.string.next_prayer_countdown_at, prayerTimeText)
+    }
     val remainingText = stringResource(
         R.string.next_prayer_countdown_remaining,
         formatCountdownRemaining(countdown.triggerAtMillis, currentTimeMillis),
@@ -2590,9 +2660,6 @@ private fun NextPrayerHeroCard(
                         hasDnd = hasDnd,
                         silenceReason = silenceReason,
                     )
-                    if (countdown.isTomorrow) {
-                        TomorrowMarker()
-                    }
                 }
             }
 
@@ -2615,7 +2682,7 @@ private fun NextPrayerHeroCard(
                         autoSize = TextAutoSize.StepBased(maxFontSize = 28.sp),
                     )
                     Text(
-                        text = stringResource(R.string.next_prayer_countdown_at, prayerTimeText),
+                        text = prayerTimeLineText,
                         fontSize = 14.sp,
                         color = Color.White.copy(alpha = 0.82f),
                         fontWeight = FontWeight.SemiBold,
@@ -2888,22 +2955,111 @@ private fun PrayerRow(
     nextPrayerTime: PrayerTime?,
     isNextPrayer: Boolean,
     activity: androidx.appcompat.app.AppCompatActivity,
+    highlighted: Boolean = false,
+    draftSilenceConfig: PrayerSilenceConfig? = null,
+    onDraftSilenceConfigChange: ((PrayerSilenceConfig) -> Unit)? = null,
     onConfigChanged: () -> Unit,
     onPrayerTimeClick: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
+    val usesDraftSilenceConfig = draftSilenceConfig != null && onDraftSilenceConfigChange != null
+
+    fun draftDelayFixedHour(): Int = draftSilenceConfig?.delayFixedHour?.takeIf { it >= 0 }
+        ?: prayerTime?.hour
+        ?: 12
+
+    fun draftDelayFixedMinute(): Int = draftSilenceConfig?.delayFixedMinute?.takeIf { it >= 0 }
+        ?: prayerTime?.minute
+        ?: 0
+
+    fun computeDraftFixedEndTime(): Pair<Int, Int> {
+        val config = draftSilenceConfig
+        if (config != null && config.fixedHour >= 0 && config.fixedMinute >= 0) {
+            return config.fixedHour to config.fixedMinute
+        }
+        if (prayerTime != null) {
+            val calendar = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+                set(Calendar.MINUTE, prayerTime.minute)
+                add(Calendar.MINUTE, config?.afterMinutes ?: PrefsManager.getAfterMinutes(context, prayer))
+            }
+            return calendar.get(Calendar.HOUR_OF_DAY) to calendar.get(Calendar.MINUTE)
+        }
+        return 12 to 0
+    }
 
     // Delay state
-    var delayMode by rememberSaveable { mutableStateOf(PrefsManager.getDelayMode(context, prayer)) }
-    var delayMinutes by rememberSaveable { mutableStateOf(PrefsManager.getDelayMinutes(context, prayer).toString()) }
-    var delayFixedH by rememberSaveable { mutableIntStateOf(initDelayFixedHour(context, prayer, prayerTime)) }
-    var delayFixedM by rememberSaveable { mutableIntStateOf(initDelayFixedMinute(context, prayer, prayerTime)) }
+    var delayMode by rememberSaveable(prayer, draftSilenceConfig?.delayMode) {
+        mutableStateOf(draftSilenceConfig?.delayMode ?: PrefsManager.getDelayMode(context, prayer))
+    }
+    var delayMinutes by rememberSaveable(prayer, draftSilenceConfig?.delayMinutes) {
+        mutableStateOf((draftSilenceConfig?.delayMinutes ?: PrefsManager.getDelayMinutes(context, prayer)).toString())
+    }
+    var delayFixedH by rememberSaveable(prayer, draftSilenceConfig?.delayFixedHour) {
+        mutableIntStateOf(
+            if (usesDraftSilenceConfig) {
+                draftDelayFixedHour()
+            } else {
+                initDelayFixedHour(context, prayer, prayerTime)
+            }
+        )
+    }
+    var delayFixedM by rememberSaveable(prayer, draftSilenceConfig?.delayFixedMinute) {
+        mutableIntStateOf(
+            if (usesDraftSilenceConfig) {
+                draftDelayFixedMinute()
+            } else {
+                initDelayFixedMinute(context, prayer, prayerTime)
+            }
+        )
+    }
 
     // Duration/end state
-    var silenceMode by rememberSaveable { mutableStateOf(PrefsManager.getSilenceMode(context, prayer)) }
-    var afterMinutes by rememberSaveable { mutableStateOf(PrefsManager.getAfterMinutes(context, prayer).toString()) }
-    var fixedH by rememberSaveable { mutableIntStateOf(initFixedHour(context, prayer, prayerTime)) }
-    var fixedM by rememberSaveable { mutableIntStateOf(initFixedMinute(context, prayer, prayerTime)) }
+    var silenceMode by rememberSaveable(prayer, draftSilenceConfig?.mode) {
+        mutableStateOf(draftSilenceConfig?.mode ?: PrefsManager.getSilenceMode(context, prayer))
+    }
+    var afterMinutes by rememberSaveable(prayer, draftSilenceConfig?.afterMinutes) {
+        mutableStateOf((draftSilenceConfig?.afterMinutes ?: PrefsManager.getAfterMinutes(context, prayer)).toString())
+    }
+    val initialDraftFixedEndTime = remember(prayerTime, draftSilenceConfig) { computeDraftFixedEndTime() }
+    var fixedH by rememberSaveable(prayer, draftSilenceConfig?.fixedHour) {
+        mutableIntStateOf(
+            if (usesDraftSilenceConfig) {
+                initialDraftFixedEndTime.first
+            } else {
+                initFixedHour(context, prayer, prayerTime)
+            }
+        )
+    }
+    var fixedM by rememberSaveable(prayer, draftSilenceConfig?.fixedMinute) {
+        mutableIntStateOf(
+            if (usesDraftSilenceConfig) {
+                initialDraftFixedEndTime.second
+            } else {
+                initFixedMinute(context, prayer, prayerTime)
+            }
+        )
+    }
+
+    fun stagedSilenceConfig(
+        currentSilenceMode: SilenceMode = silenceMode,
+        currentAfterMinutes: Int = afterMinutes.toIntOrNull() ?: 0,
+        currentFixedHour: Int = fixedH,
+        currentFixedMinute: Int = fixedM,
+        currentDelayMode: DelayMode = delayMode,
+        currentDelayMinutes: Int = delayMinutes.toIntOrNull() ?: 0,
+        currentDelayFixedHour: Int = delayFixedH,
+        currentDelayFixedMinute: Int = delayFixedM,
+    ): PrayerSilenceConfig = PrayerSilenceConfig(
+        mode = currentSilenceMode,
+        afterMinutes = currentAfterMinutes,
+        fixedHour = currentFixedHour,
+        fixedMinute = currentFixedMinute,
+        delayMode = currentDelayMode,
+        delayMinutes = currentDelayMinutes,
+        delayFixedHour = currentDelayFixedHour,
+        delayFixedMinute = currentDelayFixedMinute,
+    )
 
     fun logSilenceConfigChange(
         currentSilenceMode: SilenceMode = silenceMode,
@@ -2919,22 +3075,36 @@ private fun PrayerRow(
         )
     }
 
-    // Compute overlap with next prayer
-    val overlapsNextPrayer = remember(prayerTime, nextPrayerTime, silenceMode, afterMinutes, fixedH, fixedM, delayMode, delayMinutes, delayFixedH, delayFixedM) {
-        if (prayerTime == null || nextPrayerTime == null) false
-        else {
-            val config = PrayerSilenceConfig(
-                mode = silenceMode,
-                afterMinutes = afterMinutes.toIntOrNull() ?: 0,
-                fixedHour = fixedH,
-                fixedMinute = fixedM,
-                delayMode = delayMode,
-                delayMinutes = delayMinutes.toIntOrNull() ?: 0,
-                delayFixedHour = delayFixedH,
-                delayFixedMinute = delayFixedM
-            )
-            SilenceAlarmComputer.overlapsNextPrayer(prayerTime, nextPrayerTime, config)
-        }
+    val validationWarning = remember(
+        prayerTime,
+        nextPrayerTime,
+        silenceMode,
+        afterMinutes,
+        fixedH,
+        fixedM,
+        delayMode,
+        delayMinutes,
+        delayFixedH,
+        delayFixedM,
+    ) {
+        resolvePrayerRowValidationWarning(
+            prayerTime = prayerTime,
+            nextPrayerTime = nextPrayerTime,
+            silenceMode = silenceMode,
+            afterMinutes = afterMinutes.toIntOrNull() ?: 0,
+            fixedHour = fixedH,
+            fixedMinute = fixedM,
+            delayMode = delayMode,
+            delayMinutes = delayMinutes.toIntOrNull() ?: 0,
+            delayFixedHour = delayFixedH,
+            delayFixedMinute = delayFixedM,
+        )
+    }
+
+    val rowBackground = when {
+        highlighted -> GoldLight.copy(alpha = 0.30f)
+        isNextPrayer -> NextPrayerBg
+        else -> Color.Transparent
     }
 
     Column {
@@ -2943,9 +3113,9 @@ private fun PrayerRow(
             .fillMaxWidth()
             .height(IntrinsicSize.Min)
             .then(
-                if (isNextPrayer) Modifier
+                if (highlighted || isNextPrayer) Modifier
                     .clip(RoundedCornerShape(8.dp))
-                    .background(NextPrayerBg)
+                    .background(rowBackground)
                 else Modifier
             )
             .padding(vertical = 10.dp, horizontal = 4.dp),
@@ -2956,7 +3126,11 @@ private fun PrayerRow(
             text = prayerName,
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
-            color = if (isNextPrayer) GreenPrimary else PrayerNameColor,
+            color = when {
+                highlighted -> GreenPrimaryDark
+                isNextPrayer -> GreenPrimary
+                else -> PrayerNameColor
+            },
             maxLines = 1,
             softWrap = false,
             autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
@@ -2997,8 +3171,15 @@ private fun PrayerRow(
                     value = delayMinutes,
                     onValueChange = {
                         delayMinutes = it
-                        PrefsManager.setDelayMinutes(context, prayer, it.toIntOrNull() ?: 0)
-                        logSilenceConfigChange()
+                        val updatedDelayMinutes = it.toIntOrNull() ?: 0
+                        if (usesDraftSilenceConfig) {
+                            onDraftSilenceConfigChange?.invoke(
+                                stagedSilenceConfig(currentDelayMinutes = updatedDelayMinutes)
+                            )
+                        } else {
+                            PrefsManager.setDelayMinutes(context, prayer, updatedDelayMinutes)
+                            logSilenceConfigChange()
+                        }
                         onConfigChanged()
                     },
                     modifier = Modifier.weight(1f),
@@ -3029,8 +3210,17 @@ private fun PrayerRow(
                             }
                             delayFixedH = picker.hour
                             delayFixedM = picker.minute
-                            PrefsManager.setDelayFixedTime(context, prayer, picker.hour, picker.minute)
-                            logSilenceConfigChange()
+                            if (usesDraftSilenceConfig) {
+                                onDraftSilenceConfigChange?.invoke(
+                                    stagedSilenceConfig(
+                                        currentDelayFixedHour = picker.hour,
+                                        currentDelayFixedMinute = picker.minute,
+                                    )
+                                )
+                            } else {
+                                PrefsManager.setDelayFixedTime(context, prayer, picker.hour, picker.minute)
+                                logSilenceConfigChange()
+                            }
                             onConfigChanged()
                         }
                         picker.show(activity.supportFragmentManager, "delay_picker_${prayer.name}")
@@ -3054,8 +3244,14 @@ private fun PrayerRow(
                     .clickable {
                         val newMode = if (delayMode == DelayMode.MINUTES) DelayMode.FIXED_TIME else DelayMode.MINUTES
                         delayMode = newMode
-                        PrefsManager.setDelayMode(context, prayer, newMode)
-                        logSilenceConfigChange(currentDelayMode = newMode)
+                        if (usesDraftSilenceConfig) {
+                            onDraftSilenceConfigChange?.invoke(
+                                stagedSilenceConfig(currentDelayMode = newMode)
+                            )
+                        } else {
+                            PrefsManager.setDelayMode(context, prayer, newMode)
+                            logSilenceConfigChange(currentDelayMode = newMode)
+                        }
                         onConfigChanged()
                     }
                     .padding(2.dp)
@@ -3073,8 +3269,15 @@ private fun PrayerRow(
                     value = afterMinutes,
                     onValueChange = {
                         afterMinutes = it
-                        PrefsManager.setAfterMinutes(context, prayer, it.toIntOrNull() ?: 0)
-                        logSilenceConfigChange(currentAfterMinutes = it.toIntOrNull() ?: 0)
+                        val updatedAfterMinutes = it.toIntOrNull() ?: 0
+                        if (usesDraftSilenceConfig) {
+                            onDraftSilenceConfigChange?.invoke(
+                                stagedSilenceConfig(currentAfterMinutes = updatedAfterMinutes)
+                            )
+                        } else {
+                            PrefsManager.setAfterMinutes(context, prayer, updatedAfterMinutes)
+                            logSilenceConfigChange(currentAfterMinutes = updatedAfterMinutes)
+                        }
                         onConfigChanged()
                     },
                     modifier = Modifier.weight(1f).testTag(TestTags.durationInput(prayer.name))
@@ -3091,18 +3294,20 @@ private fun PrayerRow(
                             .setTitleText(context.getString(R.string.pick_end_time))
                             .build()
                         picker.addOnPositiveButtonClickListener {
+                            val pickedMinutes = picker.hour * 60 + picker.minute
                             if (prayerTime != null && (picker.hour < prayerTime.hour || (picker.hour == prayerTime.hour && picker.minute < prayerTime.minute))) {
                                 Toast.makeText(context, context.getString(R.string.error_end_before_athan), Toast.LENGTH_SHORT).show()
                                 return@addOnPositiveButtonClickListener
                             }
-                            if (delayMode == DelayMode.FIXED_TIME) {
-                                if (delayFixedH >= 0 && delayFixedM >= 0 && (picker.hour < delayFixedH || (picker.hour == delayFixedH && picker.minute <= delayFixedM))) {
-                                    Toast.makeText(context, context.getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
-                                    return@addOnPositiveButtonClickListener
-                                }
+                            val startMinutes = when (delayMode) {
+                                DelayMode.FIXED_TIME -> minutesOfDayOrNull(delayFixedH, delayFixedM)
+                                DelayMode.MINUTES -> prayerTime?.minutesOfDay()?.plus(delayMinutes.toIntOrNull() ?: 0)
+                            }
+                            if (startMinutes != null && pickedMinutes <= startMinutes) {
+                                Toast.makeText(context, context.getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
+                                return@addOnPositiveButtonClickListener
                             }
                             if (nextPrayerTime != null) {
-                                val pickedMinutes = picker.hour * 60 + picker.minute
                                 val nextMinutes = nextPrayerTime.hour * 60 + nextPrayerTime.minute
                                 if (pickedMinutes > nextMinutes) {
                                     Toast.makeText(context, context.getString(R.string.error_overlaps_next_prayer), Toast.LENGTH_SHORT).show()
@@ -3111,8 +3316,17 @@ private fun PrayerRow(
                             }
                             fixedH = picker.hour
                             fixedM = picker.minute
-                            PrefsManager.setFixedTime(context, prayer, picker.hour, picker.minute)
-                            logSilenceConfigChange()
+                            if (usesDraftSilenceConfig) {
+                                onDraftSilenceConfigChange?.invoke(
+                                    stagedSilenceConfig(
+                                        currentFixedHour = picker.hour,
+                                        currentFixedMinute = picker.minute,
+                                    )
+                                )
+                            } else {
+                                PrefsManager.setFixedTime(context, prayer, picker.hour, picker.minute)
+                                logSilenceConfigChange()
+                            }
                             onConfigChanged()
                         }
                         picker.show(activity.supportFragmentManager, "picker_${prayer.name}")
@@ -3136,8 +3350,14 @@ private fun PrayerRow(
                     .clickable {
                         val newMode = if (silenceMode == SilenceMode.DURATION) SilenceMode.FIXED_TIME else SilenceMode.DURATION
                         silenceMode = newMode
-                        PrefsManager.setSilenceMode(context, prayer, newMode)
-                        logSilenceConfigChange(currentSilenceMode = newMode)
+                        if (usesDraftSilenceConfig) {
+                            onDraftSilenceConfigChange?.invoke(
+                                stagedSilenceConfig(currentSilenceMode = newMode)
+                            )
+                        } else {
+                            PrefsManager.setSilenceMode(context, prayer, newMode)
+                            logSilenceConfigChange(currentSilenceMode = newMode)
+                        }
                         onConfigChanged()
                     }
                     .padding(2.dp)
@@ -3145,37 +3365,185 @@ private fun PrayerRow(
         }
     }
 
-        if (overlapsNextPrayer) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 4.dp, vertical = 2.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Spacer(modifier = Modifier.weight(1.5f))
-                Spacer(modifier = Modifier.weight(1.5f))
-                Spacer(modifier = Modifier.weight(2.2f))
-                Box(
-                    modifier = Modifier
-                        .weight(2.5f)
-                        .testTag(TestTags.OVERLAP_WARNING)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(SilenceRed.copy(alpha = 0.08f))
-                        .padding(horizontal = 6.dp, vertical = 5.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        text = stringResource(R.string.warning_overlaps_next_prayer),
-                        fontSize = 10.sp,
-                        color = SilenceRed,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 13.sp,
-                    )
-                }
-            }
+        validationWarning?.let { warning ->
+            PrayerRowValidationWarningMessage(warning = warning)
         }
     } // Column
 }
+
+@Composable
+private fun WakeSilenceConflictPrayerEditor(
+    delegationId: Int,
+    activity: androidx.appcompat.app.AppCompatActivity,
+    editorState: WakeSilenceConflictEditorState,
+    onConfigChanged: (PrayerSilenceConfig) -> Unit,
+) {
+    val context = LocalContext.current
+    val targetPrayer = editorState.originalConflict.silencePrayer
+    val conflict = editorState.currentConflict ?: editorState.originalConflict
+    val conflictCalendar = remember(conflict.silenceStartAtMillis) {
+        Calendar.getInstance().apply { timeInMillis = conflict.silenceStartAtMillis }
+    }
+    val displayTimes = remember(delegationId, conflict.silenceStartAtMillis) {
+        try {
+            PrayerTimesRepository.loadDayPrayerTimes(
+                context,
+                delegationId,
+                conflictCalendar.get(Calendar.YEAR),
+                conflictCalendar.get(Calendar.MONTH) + 1,
+                conflictCalendar.get(Calendar.DAY_OF_MONTH),
+            )
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    if (displayTimes == null) {
+        Text(
+            text = stringResource(R.string.no_prayer_data),
+            fontSize = 12.sp,
+            color = TextMuted,
+            lineHeight = 17.sp,
+        )
+        return
+    }
+
+    val isFriday = conflictCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+    val scheduledPrayers = remember(displayTimes, isFriday) {
+        displayTimes.scheduledPrayers(
+            isFriday = isFriday,
+            jomoaaHour = PrefsManager.getJomoaaTimeHour(context),
+            jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context),
+        )
+    }
+    val prayerIndex = scheduledPrayers.indexOfFirst { prayerTime -> prayerTime.prayer == targetPrayer }
+    val prayerTime = scheduledPrayers.getOrNull(prayerIndex)
+    val nextPrayerTime = scheduledPrayers.getOrNull(prayerIndex + 1)
+
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        PrayerRow(
+            prayer = targetPrayer,
+            prayerName = prayerName(context, targetPrayer),
+            prayerTime = prayerTime,
+            nextPrayerTime = nextPrayerTime,
+            isNextPrayer = false,
+            activity = activity,
+            highlighted = false,
+            draftSilenceConfig = editorState.draftSilenceConfig,
+            onDraftSilenceConfigChange = onConfigChanged,
+            onConfigChanged = {},
+        )
+    }
+}
+
+@Composable
+private fun PrayerRowValidationWarningMessage(
+    warning: PrayerRowValidationWarning,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 4.dp, vertical = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Spacer(modifier = Modifier.weight(1.5f))
+        Spacer(modifier = Modifier.weight(1.5f))
+        if (warning.target == PrayerRowValidationTarget.DURATION) {
+            Spacer(modifier = Modifier.weight(2.2f))
+        }
+        Box(
+            modifier = Modifier
+                .weight(
+                    if (warning.target == PrayerRowValidationTarget.DELAY) {
+                        2.2f
+                    } else {
+                        2.5f
+                    }
+                )
+                .testTag(TestTags.OVERLAP_WARNING)
+                .clip(RoundedCornerShape(8.dp))
+                .background(SilenceRed.copy(alpha = 0.08f))
+                .padding(horizontal = 6.dp, vertical = 5.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = stringResource(warning.messageRes),
+                fontSize = 10.sp,
+                color = SilenceRed,
+                textAlign = TextAlign.Center,
+                lineHeight = 13.sp,
+            )
+        }
+        if (warning.target == PrayerRowValidationTarget.DELAY) {
+            Spacer(modifier = Modifier.weight(2.5f))
+        }
+    }
+}
+
+private fun resolvePrayerRowValidationWarning(
+    prayerTime: PrayerTime?,
+    nextPrayerTime: PrayerTime?,
+    silenceMode: SilenceMode,
+    afterMinutes: Int,
+    fixedHour: Int,
+    fixedMinute: Int,
+    delayMode: DelayMode,
+    delayMinutes: Int,
+    delayFixedHour: Int,
+    delayFixedMinute: Int,
+): PrayerRowValidationWarning? {
+    val prayerMinutes = prayerTime?.minutesOfDay() ?: return null
+    val fixedStartMinutes = if (delayMode == DelayMode.FIXED_TIME) {
+        minutesOfDayOrNull(delayFixedHour, delayFixedMinute)
+    } else {
+        null
+    }
+    if (fixedStartMinutes != null && fixedStartMinutes < prayerMinutes) {
+        return PrayerRowValidationWarning(
+            messageRes = R.string.error_start_before_athan,
+            target = PrayerRowValidationTarget.DELAY,
+        )
+    }
+
+    val fixedEndMinutes = if (silenceMode == SilenceMode.FIXED_TIME) {
+        minutesOfDayOrNull(fixedHour, fixedMinute)
+    } else {
+        null
+    }
+    if (fixedEndMinutes != null && fixedEndMinutes < prayerMinutes) {
+        return PrayerRowValidationWarning(
+            messageRes = R.string.error_end_before_athan,
+            target = PrayerRowValidationTarget.DURATION,
+        )
+    }
+
+    val startMinutes = fixedStartMinutes ?: prayerMinutes + delayMinutes
+    if (fixedEndMinutes != null && startMinutes >= fixedEndMinutes) {
+        return PrayerRowValidationWarning(
+            messageRes = R.string.error_start_after_end,
+            target = PrayerRowValidationTarget.DURATION,
+        )
+    }
+
+    val endMinutes = when (silenceMode) {
+        SilenceMode.DURATION -> startMinutes + afterMinutes
+        SilenceMode.FIXED_TIME -> fixedEndMinutes
+    }
+    val nextPrayerMinutes = nextPrayerTime?.minutesOfDay()
+    if (endMinutes != null && nextPrayerMinutes != null && endMinutes > nextPrayerMinutes) {
+        return PrayerRowValidationWarning(
+            messageRes = R.string.warning_overlaps_next_prayer,
+            target = PrayerRowValidationTarget.DURATION,
+        )
+    }
+
+    return null
+}
+
+private fun PrayerTime.minutesOfDay(): Int = hour * 60 + minute
+
+private fun minutesOfDayOrNull(hour: Int, minute: Int): Int? =
+    if (hour >= 0 && minute >= 0) hour * 60 + minute else null
 
 @Composable
 private fun WakeAlarmRow(
@@ -3191,15 +3559,9 @@ private fun WakeAlarmRow(
     val summaryText = wakeSummaryText(alarmDisplayName, wakeConfig)
     val wakeCheckChip = stringResource(R.string.wake_alarm_feature_wake_check)
     val vibrationChip = stringResource(R.string.wake_alarm_feature_vibration)
-    val progressiveChip = stringResource(R.string.wake_alarm_feature_progressive)
-    val subAlarmsChip = stringResource(R.string.wake_alarm_feature_subalarms, wakeConfig.subAlarms.size)
     val featureChips = buildList {
         if (wakeConfig.playback.wakeUpCheckEnabled) add(wakeCheckChip)
         if (wakeConfig.playback.vibrationOnly) add(vibrationChip)
-        if (wakeConfig.playback.progressiveVolume) add(progressiveChip)
-        if (wakeConfig.subAlarms.isNotEmpty()) {
-            add(subAlarmsChip)
-        }
     }
 
     Card(
@@ -3349,15 +3711,21 @@ private fun wakeSummaryText(
         }
     }
 
-    return if (wakeConfig.subAlarms.isEmpty()) {
-        mainSummary
-    } else {
+    val context = LocalContext.current
+    val recurringSummary = if (
+        wakeConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
+        !isEveryWakeScheduleDay(wakeConfig.scheduledDays)
+    ) {
         stringResource(
-            R.string.wake_summary_with_subalarms,
+            R.string.wake_summary_with_days,
             mainSummary,
-            wakeConfig.subAlarms.size,
+            formatWakeScheduleDaysSummary(context, wakeConfig.scheduledDays),
         )
+    } else {
+        mainSummary
     }
+
+    return recurringSummary
 }
 
 @Composable
@@ -3784,12 +4152,6 @@ private fun ManualSilenceButton(
                 manualUsesPrayer -> stringResource(R.string.btn_silence_until_prayer, targetPrayerName)
                 else -> stringResource(R.string.btn_silence)
             }
-            val silenceButtonIcon = if (anySilenceActive && hasDnd) {
-                R.drawable.ic_volume_on
-            } else {
-                R.drawable.ic_volume_off
-            }
-
             Button(
                 onClick = onClick,
                 modifier = Modifier
@@ -3800,12 +4162,6 @@ private fun ManualSilenceButton(
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = bgColor)
             ) {
-                Icon(
-                    painter = painterResource(silenceButtonIcon),
-                    contentDescription = null,
-                    modifier = Modifier.size(20.dp),
-                )
-                Spacer(Modifier.width(8.dp))
                 Text(
                     text = silenceButtonText,
                     fontSize = 16.sp,
@@ -4176,7 +4532,7 @@ private fun nextWakeAlarmTrigger(
     val now = Calendar.getInstance()
     val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
     val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (-1..2).mapNotNull { dayOffset ->
+    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
         val date = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, dayOffset) }
         PrayerTimesRepository.loadDayPrayerTimes(
             context = context,
@@ -4196,6 +4552,137 @@ private fun nextWakeAlarmTrigger(
     }
     return WakeAlarmComputer.compute(now, config, prayerDays)
         .allTriggers.firstOrNull()
+}
+
+private fun refreshWakeSilenceConflictEditor(
+    context: Context,
+    delegationId: Int,
+    editorState: WakeSilenceConflictEditorState,
+): WakeSilenceConflictEditorState = editorState.copy(
+    currentConflict = findWakeSilenceConflictForGuide(
+        context = context,
+        delegationId = delegationId,
+        config = editorState.draftConfig,
+        targetPrayer = editorState.originalConflict.silencePrayer,
+        stagedSilenceConfig = editorState.draftSilenceConfig,
+    ),
+    hasEditedSilenceWindow = true,
+    editRevision = editorState.editRevision + 1,
+)
+
+private fun persistPrayerSilenceConfig(
+    context: Context,
+    prayer: Prayer,
+    config: PrayerSilenceConfig,
+) {
+    PrefsManager.setSilenceMode(context, prayer, config.mode)
+    PrefsManager.setAfterMinutes(context, prayer, config.afterMinutes)
+    PrefsManager.setFixedTime(context, prayer, config.fixedHour, config.fixedMinute)
+    PrefsManager.setDelayMode(context, prayer, config.delayMode)
+    PrefsManager.setDelayMinutes(context, prayer, config.delayMinutes)
+    PrefsManager.setDelayFixedTime(context, prayer, config.delayFixedHour, config.delayFixedMinute)
+    AnalyticsTracker.silenceConfigChanged(
+        context = context,
+        prayer = prayer,
+        mode = config.mode,
+        durationMinutes = config.afterMinutes,
+        delayMode = config.delayMode,
+    )
+}
+
+private fun findWakeSilenceConflictForGuide(
+    context: Context,
+    delegationId: Int,
+    config: PrayerWakeConfig,
+    targetPrayer: Prayer,
+    stagedSilenceConfig: PrayerSilenceConfig? = null,
+): WakeSilenceConflictSummary? {
+    if (!config.enabled || !PrefsManager.isEnabled(context)) return null
+
+    val now = Calendar.getInstance()
+    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
+    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
+    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
+        val date = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, dayOffset) }
+        PrayerTimesRepository.loadDayPrayerTimes(
+            context = context,
+            delegationId = delegationId,
+            year = date.get(Calendar.YEAR),
+            month = date.get(Calendar.MONTH) + 1,
+            day = date.get(Calendar.DAY_OF_MONTH),
+        )?.let { times ->
+            WakeAlarmComputer.PrayerDayContext(
+                date = date,
+                prayerTimes = times,
+                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+                jomoaaHour = jomoaaHour,
+                jomoaaMinute = jomoaaMinute,
+            )
+        }
+    }
+    val silenceConfigs = Prayer.entries.associateWith { prayer ->
+        if (prayer == targetPrayer && stagedSilenceConfig != null) {
+            stagedSilenceConfig
+        } else {
+            PrefsManager.getConfig(context, prayer)
+        }
+    }
+
+    return WakeAlarmComputer.compute(now, config, prayerDays)
+        .allTriggers
+        .asSequence()
+        .mapNotNull { trigger ->
+            prayerDays
+                .asSequence()
+                .mapNotNull { prayerDay ->
+                    SilenceAlarmComputer.overlapForTrigger(
+                        triggerAtMillis = trigger.triggerAtMillis,
+                        prayerDay = prayerDay.date,
+                        prayerTimes = prayerDay.prayerTimes,
+                        configs = silenceConfigs,
+                        isFriday = prayerDay.isFriday,
+                        jomoaaHour = prayerDay.jomoaaHour,
+                        jomoaaMinute = prayerDay.jomoaaMinute,
+                    )
+                }
+                .firstOrNull { overlap -> overlap.prayer == targetPrayer }
+                ?.let { overlap ->
+                    WakeSilenceConflictSummary(
+                        detail = context.getString(
+                            R.string.wake_editor_warning_silence_overlap,
+                            wakeGuideTriggerLabel(context, trigger),
+                            formatWakeAlarmDateTime(trigger.triggerAtMillis),
+                            prayerName(context, overlap.prayer),
+                            formatWakeAlarmDateTime(overlap.startAtMillis),
+                            formatWakeAlarmDateTime(overlap.endAtMillis),
+                        ),
+                        silencePrayer = overlap.prayer,
+                        silenceStartAtMillis = overlap.startAtMillis,
+                        silenceEndAtMillis = overlap.endAtMillis,
+                        triggerAtMillis = trigger.triggerAtMillis,
+                    )
+                }
+        }
+        .firstOrNull()
+}
+
+private fun wakeGuideTriggerLabel(
+    context: Context,
+    trigger: WakeAlarmComputer.ScheduledWakeTrigger,
+): String = if (trigger.isSubAlarm) {
+    context.getString(
+        R.string.wake_editor_warning_trigger_subalarm,
+        context.getString(
+            if (trigger.signedOffsetMinutes < 0) {
+                R.string.wake_alarm_offset_before
+            } else {
+                R.string.wake_alarm_offset_after
+            },
+            formatArabicMinutes(abs(trigger.signedOffsetMinutes)),
+        ),
+    )
+} else {
+    context.getString(R.string.wake_editor_warning_trigger_main)
 }
 
 @Composable

@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
 
 /**
@@ -20,6 +21,8 @@ class AwakeCheckReceiver : BroadcastReceiver() {
 
             ACTION_START_AWAKE_CHECK -> {
                 val eventId = intent.getStringExtra(EXTRA_EVENT_ID) ?: return
+                ManualSilenceScheduler.syncExpiredTimer(context)
+
                 if (SilenceStatus.isAppControlledSilenceActive(context)) {
                     Log.d(TAG, "Awake check suppressed during app-controlled silence eventId=$eventId")
                     AwakeCheckScheduler.cancel(context, eventId)

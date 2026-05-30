@@ -90,7 +90,7 @@ class PhoneSilenceHeroStateTest {
             ),
         )
 
-        assertEquals("صامت يدويًا حتى الظهر", text)
+        assertEquals("الإسكات اليدوي حتى صلاة الظهر", text)
     }
 
     @Test
@@ -256,7 +256,7 @@ class PhoneSilenceHeroStateTest {
     @Test
     fun reasonText_formatsEveryHeroReason() {
         assertEquals(
-            "صامت بسبب صلاة الفجر",
+            "الإسكات مفعل لصلاة الفجر",
             phoneSilenceReasonText(
                 context,
                 PhoneSilenceReason(
@@ -266,15 +266,15 @@ class PhoneSilenceHeroStateTest {
             ),
         )
         assertEquals(
-            "صامت بسبب وقت الصلاة",
+            "الإسكات مفعل لوقت الصلاة",
             phoneSilenceReasonText(context, PhoneSilenceReason(PhoneSilenceReasonSource.AUTO_PRAYER_UNKNOWN)),
         )
         assertEquals(
-            "صامت يدويًا",
+            "الإسكات اليدوي مفعل",
             phoneSilenceReasonText(context, PhoneSilenceReason(PhoneSilenceReasonSource.MANUAL_UNTIL_STOPPED)),
         )
         assertEquals(
-            "صامت يدويًا حتى 07:30",
+            "الإسكات اليدوي حتى 07:30",
             phoneSilenceReasonText(
                 context,
                 PhoneSilenceReason(
@@ -284,7 +284,7 @@ class PhoneSilenceHeroStateTest {
             ),
         )
         assertEquals(
-            "صامت يدويًا حتى الظهر",
+            "الإسكات اليدوي حتى صلاة الظهر",
             phoneSilenceReasonText(
                 context,
                 PhoneSilenceReason(
@@ -294,11 +294,11 @@ class PhoneSilenceHeroStateTest {
             ),
         )
         assertEquals(
-            "صامت حتى منبه الاستيقاظ",
+            "الإسكات مفعل حتى منبه الاستيقاظ",
             phoneSilenceReasonText(context, PhoneSilenceReason(PhoneSilenceReasonSource.WAKE_ALARM)),
         )
         assertEquals(
-            "صامت من إعدادات الهاتف",
+            "الهاتف صامت من إعدادات الهاتف",
             phoneSilenceReasonText(context, PhoneSilenceReason(PhoneSilenceReasonSource.EXTERNAL)),
         )
     }

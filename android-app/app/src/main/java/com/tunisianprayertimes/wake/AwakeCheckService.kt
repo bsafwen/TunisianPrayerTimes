@@ -10,6 +10,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.MainTabNavigation
+import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.SilenceStatus
@@ -119,6 +120,8 @@ class AwakeCheckService : Service() {
     }
 
     private fun cancelIfSilenceActive(eventId: String): Boolean {
+        ManualSilenceScheduler.syncExpiredTimer(this)
+
         if (!SilenceStatus.isAppControlledSilenceActive(this)) return false
         AwakeCheckScheduler.cancel(this, eventId)
         stopPlayback()
