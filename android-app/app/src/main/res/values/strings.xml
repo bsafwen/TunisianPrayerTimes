@@ -271,10 +271,13 @@
     <string name="wake_editor_schedule_summary_relative_before">يرن قبل %1$s بـ %2$s</string>
     <string name="wake_editor_schedule_summary_relative_after">يرن بعد %1$s بـ %2$s</string>
     <string name="wake_editor_schedule_summary_fixed">يرن كل يوم الساعة %1$s</string>
+    <string name="wake_editor_schedule_summary_fixed_once">يرن مرة واحدة الساعة %1$s</string>
     <string name="wake_editor_schedule_summary_fixed_selected_days">يرن الساعة %1$s • %2$s</string>
     <string name="wake_editor_schedule_summary_with_days">%1$s • %2$s</string>
+    <string name="wake_editor_schedule_summary_once">مرة واحدة • %1$s</string>
     <string name="wake_editor_schedule_summary_from_now">يرن بعد %1$s</string>
-    <string name="wake_editor_repeat_days_title">أيام التكرار</string>
+    <string name="wake_editor_repeat_days_title">التكرار</string>
+    <string name="wake_schedule_once">مرة واحدة</string>
     <string name="wake_schedule_days_every_day">كل يوم</string>
     <string name="wake_schedule_day_monday">الإثنين</string>
     <string name="wake_schedule_day_tuesday">الثلاثاء</string>

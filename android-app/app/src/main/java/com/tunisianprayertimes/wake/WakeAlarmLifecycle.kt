@@ -2,13 +2,14 @@ package com.tunisianprayertimes.wake
 
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.WakeRepeatMode
 
 internal fun PrayerWakeConfig.hasFutureWakeTriggers(nowMillis: Long): Boolean {
     if (!enabled) {
         return false
     }
 
-    if (mainAlarm.mode != WakeMainAlarmMode.FROM_NOW) {
+    if (mainAlarm.mode != WakeMainAlarmMode.FROM_NOW && repeatMode != WakeRepeatMode.ONCE) {
         return true
     }
 
@@ -16,7 +17,8 @@ internal fun PrayerWakeConfig.hasFutureWakeTriggers(nowMillis: Long): Boolean {
 }
 
 internal fun PrayerWakeConfig.isExpiredOneOffWakeAlarm(nowMillis: Long): Boolean =
-    mainAlarm.mode == WakeMainAlarmMode.FROM_NOW && !hasIncompleteOneOffTriggers(nowMillis)
+    (mainAlarm.mode == WakeMainAlarmMode.FROM_NOW || repeatMode == WakeRepeatMode.ONCE) &&
+        !hasIncompleteOneOffTriggers(nowMillis)
 
 private fun PrayerWakeConfig.hasIncompleteOneOffTriggers(nowMillis: Long): Boolean {
     val mainTriggerAtMillis = mainAlarm.oneOffTriggerAtMillis

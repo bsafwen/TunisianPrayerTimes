@@ -83,8 +83,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun applyTabRequest(intent: Intent?) {
-        val destination = intent?.getStringExtra(MainTabNavigation.EXTRA_DESTINATION) ?: return
+        if (intent == null) return
+        val destination = intent.getStringExtra(MainTabNavigation.EXTRA_DESTINATION)
+        if (destination == null) return
         tabRequestSequence += 1
-        tabRequest = MainTabRequest(destination = destination, sequence = tabRequestSequence)
+        tabRequest = MainTabRequest(
+            destination = destination,
+            sequence = tabRequestSequence,
+        )
     }
 }

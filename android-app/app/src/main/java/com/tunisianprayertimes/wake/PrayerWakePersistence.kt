@@ -13,7 +13,9 @@ import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.PrayerWakeStore
 import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmConfig
+import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.WakeRepeatMode
 import com.tunisianprayertimes.normalizedWakeScheduleDays
 import com.tunisianprayertimes.supportsWakeAlarm
 import kotlinx.serialization.encodeToString
@@ -79,6 +81,7 @@ private fun PrayerWakeConfig.normalizedFor(
         title = title.trim(),
         prayer = prayer,
         mainAlarm = mainAlarm.normalized(),
+        repeatMode = if (mainAlarm.mode == WakeMainAlarmMode.FROM_NOW) WakeRepeatMode.ONCE else repeatMode,
         scheduledDays = scheduledDays.normalizedWakeScheduleDays(),
         playback = playback.normalized(),
         subAlarms = subAlarms

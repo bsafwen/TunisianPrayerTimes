@@ -48,46 +48,21 @@ object WakeAlarmComputer {
             return ComputeResult(mainAlarm = null, subAlarms = emptyList())
         }
 
-        if (config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW) {
-            val mainOccurrence = oneOffMainOccurrence(config) ?: return ComputeResult(
+        if (config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW || config.repeatMode == WakeRepeatMode.ONCE) {
+            val mainOccurrence = oneTimeMainOccurrence(now, config, prayerDays) ?: return ComputeResult(
                 mainAlarm = null,
                 subAlarms = emptyList(),
             )
+            val triggers = scheduledTriggersForOccurrence(config, mainOccurrence)
 
             val mainAlarm = nextFutureTrigger(
                 now = now,
-                candidates = listOf(
-                    ScheduledWakeTrigger(
-                        alarmId = config.id,
-                        triggerAtMillis = mainOccurrence.triggerAtMillis,
-                        prayer = config.prayer,
-                        effectivePrayer = mainOccurrence.effectivePrayer,
-                        mainAlarmMode = config.mainAlarm.mode,
-                        isSubAlarm = false,
-                        playback = config.playback,
-                    ),
-                ),
+                candidates = triggers.filterNot { trigger -> trigger.isSubAlarm },
             )
 
-            val subAlarms = config.subAlarms
-                .mapNotNull { subAlarm ->
-                    nextFutureTrigger(
-                        now = now,
-                        candidates = listOf(
-                            ScheduledWakeTrigger(
-                                alarmId = config.id,
-                                triggerAtMillis = mainOccurrence.triggerAtMillis + subAlarm.signedOffsetMinutes.toMillis(),
-                                prayer = config.prayer,
-                                effectivePrayer = mainOccurrence.effectivePrayer,
-                                mainAlarmMode = config.mainAlarm.mode,
-                                isSubAlarm = true,
-                                subAlarmId = subAlarm.id,
-                                signedOffsetMinutes = subAlarm.signedOffsetMinutes,
-                                playback = subAlarm.playback,
-                            ),
-                        ),
-                    )
-                }
+            val subAlarms = triggers
+                .filter { trigger -> trigger.isSubAlarm }
+                .mapNotNull { trigger -> nextFutureTrigger(now, listOf(trigger)) }
                 .sortedBy { trigger -> trigger.triggerAtMillis }
 
             return ComputeResult(mainAlarm = mainAlarm, subAlarms = subAlarms)
@@ -116,6 +91,34 @@ object WakeAlarmComputer {
             .sortedBy { trigger -> trigger.triggerAtMillis }
 
         return ComputeResult(mainAlarm = mainAlarm, subAlarms = subAlarms)
+    }
+
+    fun scheduledTriggers(
+        config: PrayerWakeConfig,
+        prayerDays: List<PrayerDayContext>,
+    ): List<ScheduledWakeTrigger> {
+        if (!config.enabled) return emptyList()
+
+        if (config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW || config.repeatMode == WakeRepeatMode.ONCE) {
+            val mainOccurrence = oneOffMainOccurrence(config)
+                ?: firstScheduledMainOccurrence(config, prayerDays)
+                ?: return emptyList()
+            if (config.mainAlarm.oneOffTriggerAtMillis > 0L && !prayerDaysContain(mainOccurrence.triggerAtMillis, prayerDays)) {
+                return emptyList()
+            }
+            return scheduledTriggersForOccurrence(config, mainOccurrence)
+        }
+
+        val scheduledDays = config.scheduledDays.normalizedWakeScheduleDays()
+        return prayerDays
+            .filter { day -> day.date.wakeScheduleDay() in scheduledDays }
+            .sortedBy { day -> day.date.timeInMillis }
+            .flatMap { day ->
+                listOfNotNull(mainTriggerForDay(day, config)) + config.subAlarms.mapNotNull { subAlarm ->
+                    subTriggerForDay(day, config, subAlarm)
+                }
+            }
+            .sortedBy { trigger -> trigger.triggerAtMillis }
     }
 
     private fun mainTriggerForDay(
@@ -187,6 +190,59 @@ object WakeAlarmComputer {
             triggerAtMillis = triggerAtMillis,
             effectivePrayer = config.prayer,
         )
+    }
+
+    private fun oneTimeMainOccurrence(
+        now: Calendar,
+        config: PrayerWakeConfig,
+        prayerDays: List<PrayerDayContext>,
+    ): MainOccurrence? = oneOffMainOccurrence(config)
+        ?: firstScheduledMainOccurrence(config, prayerDays) { occurrence -> occurrence.triggerAtMillis > now.timeInMillis }
+
+    private fun firstScheduledMainOccurrence(
+        config: PrayerWakeConfig,
+        prayerDays: List<PrayerDayContext>,
+        predicate: (MainOccurrence) -> Boolean = { true },
+    ): MainOccurrence? = prayerDays
+        .sortedBy { day -> day.date.timeInMillis }
+        .mapNotNull { day -> mainOccurrenceForDay(day, config) }
+        .firstOrNull(predicate)
+
+    private fun scheduledTriggersForOccurrence(
+        config: PrayerWakeConfig,
+        mainOccurrence: MainOccurrence,
+    ): List<ScheduledWakeTrigger> = (
+        listOf(
+            ScheduledWakeTrigger(
+                alarmId = config.id,
+                triggerAtMillis = mainOccurrence.triggerAtMillis,
+                prayer = config.prayer,
+                effectivePrayer = mainOccurrence.effectivePrayer,
+                mainAlarmMode = config.mainAlarm.mode,
+                isSubAlarm = false,
+                playback = config.playback,
+            ),
+        ) + config.subAlarms.map { subAlarm ->
+            ScheduledWakeTrigger(
+                alarmId = config.id,
+                triggerAtMillis = mainOccurrence.triggerAtMillis + subAlarm.signedOffsetMinutes.toMillis(),
+                prayer = config.prayer,
+                effectivePrayer = mainOccurrence.effectivePrayer,
+                mainAlarmMode = config.mainAlarm.mode,
+                isSubAlarm = true,
+                subAlarmId = subAlarm.id,
+                signedOffsetMinutes = subAlarm.signedOffsetMinutes,
+                playback = subAlarm.playback,
+            )
+        }
+    ).sortedBy { trigger -> trigger.triggerAtMillis }
+
+    private fun prayerDaysContain(triggerAtMillis: Long, prayerDays: List<PrayerDayContext>): Boolean {
+        val triggerCalendar = Calendar.getInstance().apply { timeInMillis = triggerAtMillis }
+        return prayerDays.any { day ->
+            day.date.get(Calendar.YEAR) == triggerCalendar.get(Calendar.YEAR) &&
+                day.date.get(Calendar.DAY_OF_YEAR) == triggerCalendar.get(Calendar.DAY_OF_YEAR)
+        }
     }
 
     private fun nextFutureTrigger(

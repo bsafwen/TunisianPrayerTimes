@@ -17,6 +17,9 @@ fun Prayer.supportsWakeAlarm(): Boolean = this in WAKE_SUPPORTED_PRAYERS
 @Serializable
 enum class WakeMainAlarmMode { FIXED_TIME, PRAYER_RELATIVE, FROM_NOW }
 
+@Serializable
+enum class WakeRepeatMode { ONCE, RECURRING }
+
 const val WAKE_RECURRING_LOOKAHEAD_DAYS: Int = 7
 
 @Serializable
@@ -160,6 +163,7 @@ data class PrayerWakeConfig(
     val prayer: Prayer,
     val enabled: Boolean = false,
     val mainAlarm: WakeMainAlarmConfig = WakeMainAlarmConfig(),
+    val repeatMode: WakeRepeatMode = WakeRepeatMode.RECURRING,
     val scheduledDays: Set<WakeScheduleDay> = ALL_WAKE_SCHEDULE_DAYS,
     val playback: WakePlaybackOptions = WakePlaybackOptions(),
     val subAlarms: List<PrayerWakeSubAlarm> = emptyList(),
