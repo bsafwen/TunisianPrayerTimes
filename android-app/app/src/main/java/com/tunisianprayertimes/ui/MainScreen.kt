@@ -2197,13 +2197,12 @@ private data class NightTimelineAlarm(
     val isSubAlarm: Boolean,
 )
 
-private enum class NightTimelineSegment {
-    Daylight,
-    FirstThird,
-    SecondThird,
-    FinalThird,
-    Twilight,
-}
+private data class NightTimelinePrayer(
+    val prayer: Prayer,
+    val title: String,
+    val time: String,
+    val minuteOfDay: Int,
+)
 
 private data class NightTimesCardData(
     val sunriseTime: String,
@@ -2213,6 +2212,7 @@ private data class NightTimesCardData(
     val statusText: String,
     val activeThird: Int?,
     val thirds: List<NightThirdSegment>,
+    val timelinePrayers: List<NightTimelinePrayer>,
     val timelineAlarms: List<NightTimelineAlarm>,
 )
 
@@ -2298,6 +2298,31 @@ private fun SunriseAndNightTimesCard(
         2 -> "الآن: الثلث الأخير"
         else -> "الليلة القادمة"
     }
+    fun timelinePrayer(prayerTime: PrayerTime): NightTimelinePrayer = NightTimelinePrayer(
+        prayer = prayerTime.prayer,
+        title = prayerName(context, prayerTime.prayer),
+        time = formatClockTime(prayerTime.hour, prayerTime.minute),
+        minuteOfDay = prayerTime.hour * 60 + prayerTime.minute,
+    )
+    val isFriday = todayCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
+    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
+    val middayPrayer = if (isFriday) {
+        PrayerTime(
+            prayer = Prayer.JOMOAA,
+            hour = if (jomoaaHour >= 0) jomoaaHour else today.dhuhr.hour,
+            minute = if (jomoaaMinute >= 0) jomoaaMinute else today.dhuhr.minute,
+        )
+    } else {
+        today.dhuhr
+    }
+    val timelinePrayers = listOf(
+        timelinePrayer(nightEndTimes.fajr),
+        timelinePrayer(middayPrayer),
+        timelinePrayer(today.asr),
+        timelinePrayer(nightStartTimes.maghrib),
+        timelinePrayer(nightStartTimes.isha),
+    )
     val data = NightTimesCardData(
         sunriseTime = formatClockTime(today.shurukHour, today.shurukMinute),
         sunriseMinuteOfDay = today.shurukHour * 60 + today.shurukMinute,
@@ -2331,6 +2356,7 @@ private fun SunriseAndNightTimesCard(
                 active = activeThird == 2,
             ),
         ),
+        timelinePrayers = timelinePrayers,
         timelineAlarms = timelineAlarms,
     )
     NightTimesDayNightHorizon(data = data)
@@ -2406,19 +2432,6 @@ private fun NightTimesDayNightHorizon(
                     val twilightSweepDegrees = twilightMinutes / (24f * 60f) * 360f
                     val nightSweepDegrees = (360f - daylightSweepDegrees - twilightSweepDegrees).coerceAtLeast(0f)
                     val nightTotalMinutes = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.thirds[2].endMinuteOfDay).coerceAtLeast(1)
-                    val currentMinutesFromSunrise = minutesBetweenInDay(data.sunriseMinuteOfDay, data.currentMinuteOfDay)
-                    val currentMinutesFromMaghrib = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.currentMinuteOfDay)
-                    val firstThirdDurationMinutes = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.thirds[1].startMinuteOfDay)
-                    val firstTwoThirdsDurationMinutes = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.thirds[2].startMinuteOfDay)
-                    val activeTimelineSegment = when {
-                        currentMinutesFromSunrise < daylightMinutes -> NightTimelineSegment.Daylight
-                        currentMinutesFromMaghrib < nightTotalMinutes -> when {
-                            currentMinutesFromMaghrib < firstThirdDurationMinutes -> NightTimelineSegment.FirstThird
-                            currentMinutesFromMaghrib < firstTwoThirdsDurationMinutes -> NightTimelineSegment.SecondThird
-                            else -> NightTimelineSegment.FinalThird
-                        }
-                        else -> NightTimelineSegment.Twilight
-                    }
                     fun minuteToNightAngleDegrees(minuteOfDay: Int): Float {
                         val minutesFromMaghrib = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, minuteOfDay)
                         return sunsetAngleDegrees + nightSweepDegrees * (minutesFromMaghrib.toFloat() / nightTotalMinutes.toFloat())
@@ -2426,13 +2439,6 @@ private fun NightTimesDayNightHorizon(
                     val secondThirdAngleDegrees = minuteToNightAngleDegrees(data.thirds[1].startMinuteOfDay)
                     val finalThirdAngleDegrees = minuteToNightAngleDegrees(data.thirds[2].startMinuteOfDay)
                     val fajrAngleDegrees = minuteToNightAngleDegrees(data.thirds[2].endMinuteOfDay)
-                    val activeSegmentArc = when (activeTimelineSegment) {
-                        NightTimelineSegment.Daylight -> sunriseAngleDegrees to daylightSweepDegrees
-                        NightTimelineSegment.FirstThird -> sunsetAngleDegrees to (secondThirdAngleDegrees - sunsetAngleDegrees)
-                        NightTimelineSegment.SecondThird -> secondThirdAngleDegrees to (finalThirdAngleDegrees - secondThirdAngleDegrees)
-                        NightTimelineSegment.FinalThird -> finalThirdAngleDegrees to (fajrAngleDegrees - finalThirdAngleDegrees)
-                        NightTimelineSegment.Twilight -> fajrAngleDegrees to twilightSweepDegrees
-                    }
                     fun minuteToTimelineAngleDegrees(minuteOfDay: Int): Float {
                         val minutesFromSunrise = minutesBetweenInDay(data.sunriseMinuteOfDay, minuteOfDay)
                         val minutesFromMaghrib = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, minuteOfDay)
@@ -2449,6 +2455,39 @@ private fun NightTimesDayNightHorizon(
                             }
                         }
                     }
+                    fun containsCurrentMinute(startMinuteOfDay: Int, endMinuteOfDay: Int): Boolean {
+                        val segmentDuration = minutesBetweenInDay(startMinuteOfDay, endMinuteOfDay)
+                        if (segmentDuration <= 0) return false
+                        return minutesBetweenInDay(startMinuteOfDay, data.currentMinuteOfDay) < segmentDuration
+                    }
+                    fun clockwiseSweepDegrees(startAngle: Float, endAngle: Float): Float {
+                        val sweep = endAngle - startAngle
+                        return if (sweep >= 0f) sweep else sweep + 360f
+                    }
+                    val fajrMinuteOfDay = data.timelinePrayers.firstOrNull { it.prayer == Prayer.FAJR }?.minuteOfDay
+                        ?: data.thirds[2].endMinuteOfDay
+                    val middayMinuteOfDay = data.timelinePrayers.firstOrNull { it.prayer == Prayer.DHUHR || it.prayer == Prayer.JOMOAA }?.minuteOfDay
+                        ?: data.sunriseMinuteOfDay
+                    val asrMinuteOfDay = data.timelinePrayers.firstOrNull { it.prayer == Prayer.ASR }?.minuteOfDay
+                        ?: middayMinuteOfDay
+                    val maghribMinuteOfDay = data.timelinePrayers.firstOrNull { it.prayer == Prayer.MAGHRIB }?.minuteOfDay
+                        ?: data.thirds[0].startMinuteOfDay
+                    val ishaMinuteOfDay = data.timelinePrayers.firstOrNull { it.prayer == Prayer.ISHA }?.minuteOfDay
+                        ?: maghribMinuteOfDay
+                    val activeSegmentMinutes = listOf(
+                        fajrMinuteOfDay to data.sunriseMinuteOfDay,
+                        data.sunriseMinuteOfDay to middayMinuteOfDay,
+                        middayMinuteOfDay to asrMinuteOfDay,
+                        asrMinuteOfDay to maghribMinuteOfDay,
+                        maghribMinuteOfDay to ishaMinuteOfDay,
+                        ishaMinuteOfDay to data.thirds[1].startMinuteOfDay,
+                        data.thirds[1].startMinuteOfDay to data.thirds[2].startMinuteOfDay,
+                        data.thirds[2].startMinuteOfDay to fajrMinuteOfDay,
+                    ).firstOrNull { (startMinuteOfDay, endMinuteOfDay) ->
+                        containsCurrentMinute(startMinuteOfDay, endMinuteOfDay)
+                    } ?: (data.sunriseMinuteOfDay to maghribMinuteOfDay)
+                    val activeSegmentStartAngle = minuteToTimelineAngleDegrees(activeSegmentMinutes.first)
+                    val activeSegmentEndAngle = minuteToTimelineAngleDegrees(activeSegmentMinutes.second)
                     val secondThirdRadians = secondThirdAngleDegrees * PI / 180.0
                     val finalThirdRadians = finalThirdAngleDegrees * PI / 180.0
                     val fajrRadians = fajrAngleDegrees * PI / 180.0
@@ -2537,6 +2576,22 @@ private fun NightTimesDayNightHorizon(
                         ),
                     )
                     val timelineAlarmAngles = data.timelineAlarms.map { alarm -> minuteToTimelineAngleDegrees(alarm.minuteOfDay) }
+                    val timelinePrayerAngles = data.timelinePrayers.map { prayer -> minuteToTimelineAngleDegrees(prayer.minuteOfDay) }
+                    val timelinePrayerLabelWidth = 58f
+                    val timelinePrayerLabelHeight = 26f
+                    val timelinePrayerLabelRadius = (circleRadius - 31f).coerceAtLeast(20f)
+                    val timelinePrayerLabels = data.timelinePrayers.zip(timelinePrayerAngles)
+                        .filter { (prayer, _) -> prayer.prayer != Prayer.FAJR && prayer.prayer != Prayer.MAGHRIB }
+                        .map { (prayer, angleDegrees) ->
+                            val radians = angleDegrees * PI / 180.0
+                            val labelCenterX = circleCenterX + timelinePrayerLabelRadius * cos(radians).toFloat()
+                            val labelCenterY = circleCenterY + timelinePrayerLabelRadius * sin(radians).toFloat()
+                            Triple(
+                                prayer,
+                                (labelCenterX - timelinePrayerLabelWidth / 2f).coerceIn(4f, panelWidth - timelinePrayerLabelWidth - 4f),
+                                (labelCenterY - timelinePrayerLabelHeight / 2f).coerceIn(4f, panelHeight - timelinePrayerLabelHeight - 4f),
+                            )
+                        }
                     val timelineAlarmLabelWidth = 46f
                     val timelineAlarmLabelHeight = 24f
                     val timelineAlarmMarkerRadius = 7f
@@ -3143,8 +3198,8 @@ private fun NightTimesDayNightHorizon(
                         )
                         drawArc(
                             color = Color(0xFFFFC247),
-                            startAngle = activeSegmentArc.first,
-                            sweepAngle = activeSegmentArc.second.coerceAtLeast(0f),
+                            startAngle = activeSegmentStartAngle,
+                            sweepAngle = clockwiseSweepDegrees(activeSegmentStartAngle, activeSegmentEndAngle),
                             useCenter = false,
                             topLeft = Offset(circleLeftPx, circleTopPx),
                             size = Size(circleRadiusPx * 2f, circleRadiusPx * 2f),
@@ -3154,8 +3209,22 @@ private fun NightTimesDayNightHorizon(
                             drawCircle(Color.White.copy(alpha = 0.96f), radius = 5.2f * scaleX, center = center)
                             drawCircle(Color(0xFF173F68), radius = 2.4f * scaleX, center = center)
                         }
+                        fun drawPrayerTimelineMarker(center: Offset) {
+                            drawCircle(Color.White.copy(alpha = 0.96f), radius = 5.0f * scaleX, center = center)
+                            drawCircle(GreenPrimaryDark.copy(alpha = 0.94f), radius = 3.0f * scaleX, center = center)
+                            drawCircle(GoldLight.copy(alpha = 0.72f), radius = 1.05f * scaleX, center = center)
+                        }
                         val timelineEventPoints = listOf(sunrisePoint, sunsetPoint, secondThirdPoint, finalThirdPoint, fajrPoint)
                         timelineEventPoints.forEach(::drawTimelineMarker)
+                        timelinePrayerAngles.forEach { angleDegrees ->
+                            val radians = angleDegrees * PI / 180.0
+                            drawPrayerTimelineMarker(
+                                Offset(
+                                    x = (circleCenterX + circleRadius * cos(radians).toFloat()) * scaleX,
+                                    y = (circleCenterY + circleRadius * sin(radians).toFloat()) * scaleY,
+                                ),
+                            )
+                        }
                     }
 
                     data.timelineAlarms.zip(timelineAlarmAngles).forEach { (alarm, angleDegrees) ->
@@ -3240,6 +3309,16 @@ private fun NightTimesDayNightHorizon(
                                 time = alarm.time,
                                 dark = false,
                                 modifier = Modifier.offset(x = labelX.dp, y = labelY.dp).width(timelineAlarmLabelWidth.dp),
+                            )
+                        }
+                    }
+                    timelinePrayerLabels.forEach { (prayer, labelX, labelY) ->
+                        key(prayer.prayer.name) {
+                            DayNightHorizonPrayerTime(
+                                label = prayer.title,
+                                time = prayer.time,
+                                dark = prayer.prayer == Prayer.DHUHR || prayer.prayer == Prayer.JOMOAA || prayer.prayer == Prayer.ASR,
+                                modifier = Modifier.offset(x = labelX.dp, y = labelY.dp).width(timelinePrayerLabelWidth.dp),
                             )
                         }
                     }
@@ -3371,6 +3450,40 @@ private fun DayNightHorizonAlarmTime(
             lineHeight = 12.sp,
             fontWeight = FontWeight.Black,
             color = if (dark) Color(0xFF22364F) else Color.White,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+    }
+}
+
+@Composable
+private fun DayNightHorizonPrayerTime(
+    label: String,
+    time: String,
+    dark: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(0.dp),
+    ) {
+        Text(
+            text = label,
+            fontSize = 8.sp,
+            lineHeight = 9.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (dark) Color(0xFF173F68) else Color.White.copy(alpha = 0.92f),
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+        Text(
+            text = time,
+            modifier = Modifier.offset(y = (-2).dp),
+            fontSize = 10.sp,
+            lineHeight = 10.sp,
+            fontWeight = FontWeight.Black,
+            color = if (dark) Color(0xFF173F68) else Color.White,
             textAlign = TextAlign.Center,
             maxLines = 1,
         )
