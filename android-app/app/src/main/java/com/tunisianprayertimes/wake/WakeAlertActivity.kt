@@ -285,6 +285,8 @@ private fun WakeAlertScreen(
     } else {
         null
     }
+    val isActiveMazeChallenge = currentStep?.type == WakeUpCheckType.GYROSCOPE_MAZE &&
+        gyroscopeMazeSensorState == GyroscopeMazeSensorState.READY
 
     val gradient = Brush.verticalGradient(
         colors = listOf(GreenPrimaryDark, GreenPrimary, BgCream),
@@ -308,7 +310,13 @@ private fun WakeAlertScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f)
-                        .verticalScroll(contentScrollState),
+                        .then(
+                            if (isActiveMazeChallenge) {
+                                Modifier
+                            } else {
+                                Modifier.verticalScroll(contentScrollState)
+                            },
+                        ),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
                     Text(
@@ -366,6 +374,8 @@ private fun WakeAlertScreen(
                         currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
                             gyroscopeMazeSensorState == GyroscopeMazeSensorState.UNAVAILABLE ->
                             stringResource(R.string.wake_alarm_gyroscope_maze_unavailable_fallback)
+                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
+                            gyroscopeMazeSensorState == GyroscopeMazeSensorState.READY -> null
                         currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE ->
                             stringResource(R.string.wake_alarm_gyroscope_maze_prompt)
                         else -> payload.statusText(context)
@@ -432,6 +442,10 @@ private fun WakeAlertScreen(
                                         GyroscopeMazeGame(
                                             difficulty = currentStep.difficulty,
                                             onCompleted = { completedSteps++ },
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .weight(1f),
+                                            fitAvailableHeight = true,
                                         )
                                     }
                                     GyroscopeMazeSensorState.UNAVAILABLE -> {
