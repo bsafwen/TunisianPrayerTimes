@@ -111,6 +111,7 @@ import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.WakeRepeatMode
 import com.tunisianprayertimes.WakeScheduleDay
 import com.tunisianprayertimes.WakeUpCheckStep
 import com.tunisianprayertimes.WakeUpCheckType
@@ -250,6 +251,15 @@ fun WakeEditorSheet(
     var scheduledDays by remember(initialConfig.id, initialConfig.scheduledDays) {
         mutableStateOf(initialConfig.scheduledDays.normalizedWakeScheduleDays())
     }
+    var repeatMode by remember(initialConfig.id, initialConfig.repeatMode, initialConfig.mainAlarm.mode) {
+        mutableStateOf(
+            if (initialConfig.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW) {
+                WakeRepeatMode.ONCE
+            } else {
+                initialConfig.repeatMode
+            },
+        )
+    }
     var subAlarms by remember(initialConfig.id, initialConfig.subAlarms) {
         mutableStateOf(initialConfig.subAlarms)
     }
@@ -272,6 +282,7 @@ fun WakeEditorSheet(
         fallbackMinutes = initialFromNowOffsetMinutes,
     )
     val effectiveScheduledDays = scheduledDays.normalizedWakeScheduleDays()
+    val effectiveRepeatMode = if (mode == WakeMainAlarmMode.FROM_NOW) WakeRepeatMode.ONCE else repeatMode
     val supportsSilenceUntilAlarm = mode == WakeMainAlarmMode.FROM_NOW
     val effectiveSilenceUntilAlarm = silenceUntilAlarm && supportsSilenceUntilAlarm
 
@@ -294,6 +305,7 @@ fun WakeEditorSheet(
         signedRelativeOffset,
         parsedFromNowOffsetMinutes,
         fromNowTriggerAtMillis,
+        effectiveRepeatMode,
         effectiveScheduledDays,
         mainPlayback,
         subAlarms,
@@ -309,8 +321,9 @@ fun WakeEditorSheet(
                 fixedTime = ClockTime(fixedHour, fixedMinute),
                 prayerOffset = PrayerRelativeOffset(signedRelativeOffset),
                 oneOffOffsetMinutes = parsedFromNowOffsetMinutes,
-                oneOffTriggerAtMillis = fromNowTriggerAtMillis,
+                oneOffTriggerAtMillis = if (mode == WakeMainAlarmMode.FROM_NOW) fromNowTriggerAtMillis else 0L,
             ),
+            repeatMode = effectiveRepeatMode,
             scheduledDays = effectiveScheduledDays,
             playback = mainPlayback,
             subAlarms = subAlarms,
@@ -322,7 +335,9 @@ fun WakeEditorSheet(
         computeWakePreview(context, delegationId, draftConfig)
     }
     val activeRecurringSilenceConflict = preview?.warning?.conflict?.takeIf {
-        draftConfig.enabled && draftConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW
+        draftConfig.enabled &&
+            draftConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
+            draftConfig.repeatMode != WakeRepeatMode.ONCE
     }
     val timelineEntries = remember(delegationId, draftConfig) {
         computeWakeTimelineEntries(context, delegationId, draftConfig)
@@ -381,17 +396,19 @@ fun WakeEditorSheet(
     }
 
     fun saveDraftConfig() {
-        val latestPreview = computeWakePreview(context, delegationId, draftConfig)
+        val configToSave = resolveOneTimeWakeTrigger(context, delegationId, draftConfig)
+        val latestPreview = computeWakePreview(context, delegationId, configToSave)
         val recurringConflict = latestPreview?.warning?.conflict?.takeIf {
-            draftConfig.enabled &&
-                draftConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
-                !draftConfig.ringDuringSilenceWindow &&
+            configToSave.enabled &&
+                configToSave.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
+                configToSave.repeatMode != WakeRepeatMode.ONCE &&
+                !configToSave.ringDuringSilenceWindow &&
                 !resolverResolvedForCurrentConflict
         }
         if (recurringConflict != null) {
             silenceConflictDialogVisible = true
         } else {
-            onSave(draftConfig)
+            onSave(configToSave)
         }
     }
 
@@ -402,9 +419,13 @@ fun WakeEditorSheet(
     }
 
     fun selectMainAlarmMode(nextMode: WakeMainAlarmMode) {
+        val previousMode = mode
         mode = nextMode
         if (nextMode == WakeMainAlarmMode.FROM_NOW) {
+            repeatMode = WakeRepeatMode.ONCE
             fromNowTriggerAtMillis = System.currentTimeMillis() + parsedFromNowOffsetMinutes.toMillis()
+        } else if (previousMode == WakeMainAlarmMode.FROM_NOW) {
+            repeatMode = WakeRepeatMode.RECURRING
         }
     }
 
@@ -468,12 +489,25 @@ fun WakeEditorSheet(
                     modifier = Modifier.weight(1f),
                 )
 
-                Button(
-                    onClick = { saveDraftConfig() },
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.heightIn(min = 38.dp),
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(text = stringResource(R.string.wake_editor_save))
+                    OutlinedButton(
+                        onClick = onDismissRequest,
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.heightIn(min = 38.dp),
+                        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
+                    ) {
+                        Text(text = stringResource(R.string.wake_editor_cancel))
+                    }
+                    Button(
+                        onClick = { saveDraftConfig() },
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.heightIn(min = 38.dp),
+                    ) {
+                        Text(text = stringResource(R.string.wake_editor_save))
+                    }
                 }
             }
 
@@ -511,6 +545,8 @@ fun WakeEditorSheet(
                         },
                         selectedDays = effectiveScheduledDays,
                         onSelectedDaysChange = { days -> scheduledDays = days.normalizedWakeScheduleDays() },
+                        repeatMode = effectiveRepeatMode,
+                        onRepeatModeChange = { updated -> repeatMode = updated },
                         fromNowHoursText = fromNowHoursText,
                         fromNowMinutesText = fromNowMinutesText,
                         onFromNowHoursTextChange = { updatedHours ->
@@ -766,6 +802,8 @@ private fun WakeScheduleBuilder(
     onFixedTimePicked: (hour: Int, minute: Int) -> Unit,
     selectedDays: Set<WakeScheduleDay>,
     onSelectedDaysChange: (Set<WakeScheduleDay>) -> Unit,
+    repeatMode: WakeRepeatMode,
+    onRepeatModeChange: (WakeRepeatMode) -> Unit,
     fromNowHoursText: String,
     fromNowMinutesText: String,
     onFromNowHoursTextChange: (String) -> Unit,
@@ -783,6 +821,7 @@ private fun WakeScheduleBuilder(
         fixedHour = fixedHour,
         fixedMinute = fixedMinute,
         scheduledDays = selectedDays,
+        repeatMode = repeatMode,
         fromNowHoursText = fromNowHoursText,
         fromNowMinutesText = fromNowMinutesText,
     )
@@ -829,7 +868,9 @@ private fun WakeScheduleBuilder(
         }
 
         if (mode != WakeMainAlarmMode.FROM_NOW) {
-            WakeScheduleDaySelector(
+            WakeRepetitionSelector(
+                repeatMode = repeatMode,
+                onRepeatModeChange = onRepeatModeChange,
                 selectedDays = selectedDays,
                 onSelectedDaysChange = onSelectedDaysChange,
             )
@@ -1032,6 +1073,7 @@ private fun formatWakeScheduleSummary(
     fixedHour: Int,
     fixedMinute: Int,
     scheduledDays: Set<WakeScheduleDay>,
+    repeatMode: WakeRepeatMode,
     fromNowHoursText: String,
     fromNowMinutesText: String,
 ): String {
@@ -1057,14 +1099,21 @@ private fun formatWakeScheduleSummary(
                 )
             }
 
-            if (allDaysSelected) {
+            if (repeatMode == WakeRepeatMode.ONCE) {
+                context.getString(R.string.wake_editor_schedule_summary_once, baseSummary)
+            } else if (allDaysSelected) {
                 baseSummary
             } else {
                 context.getString(R.string.wake_editor_schedule_summary_with_days, baseSummary, selectedDaysSummary)
             }
         }
 
-        WakeMainAlarmMode.FIXED_TIME -> if (allDaysSelected) {
+        WakeMainAlarmMode.FIXED_TIME -> if (repeatMode == WakeRepeatMode.ONCE) {
+            context.getString(
+                R.string.wake_editor_schedule_summary_fixed_once,
+                formatWakeEditorTime(fixedHour, fixedMinute),
+            )
+        } else if (allDaysSelected) {
             context.getString(
                 R.string.wake_editor_schedule_summary_fixed,
                 formatWakeEditorTime(fixedHour, fixedMinute),
@@ -1104,7 +1153,9 @@ private fun formatWakeScheduleDuration(
 }
 
 @Composable
-private fun WakeScheduleDaySelector(
+private fun WakeRepetitionSelector(
+    repeatMode: WakeRepeatMode,
+    onRepeatModeChange: (WakeRepeatMode) -> Unit,
     selectedDays: Set<WakeScheduleDay>,
     onSelectedDaysChange: (Set<WakeScheduleDay>) -> Unit,
 ) {
@@ -1120,22 +1171,68 @@ private fun WakeScheduleDaySelector(
             horizontalArrangement = Arrangement.spacedBy(6.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS.forEach { day ->
-                val selected = day in normalizedDays
-                WakeScheduleDayChip(
-                    day = day,
-                    selected = selected,
-                    onClick = {
-                        val nextDays = if (selected) {
-                            if (normalizedDays.size == 1) normalizedDays else normalizedDays - day
-                        } else {
-                            normalizedDays + day
-                        }
-                        onSelectedDaysChange(nextDays.normalizedWakeScheduleDays())
-                    },
-                )
+            WakeRepetitionChip(
+                text = stringResource(R.string.wake_schedule_once),
+                selected = repeatMode == WakeRepeatMode.ONCE,
+                onClick = { onRepeatModeChange(WakeRepeatMode.ONCE) },
+            )
+            WakeRepetitionChip(
+                text = stringResource(R.string.wake_schedule_days_every_day),
+                selected = repeatMode == WakeRepeatMode.RECURRING && isEveryWakeScheduleDay(normalizedDays),
+                onClick = {
+                    onRepeatModeChange(WakeRepeatMode.RECURRING)
+                    onSelectedDaysChange(com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS)
+                },
+            )
+            if (repeatMode != WakeRepeatMode.ONCE) {
+                com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS.forEach { day ->
+                    val selected = day in normalizedDays
+                    WakeScheduleDayChip(
+                        day = day,
+                        selected = selected,
+                        onClick = {
+                            onRepeatModeChange(WakeRepeatMode.RECURRING)
+                            val nextDays = if (selected) {
+                                if (normalizedDays.size == 1) normalizedDays else normalizedDays - day
+                            } else {
+                                normalizedDays + day
+                            }
+                            onSelectedDaysChange(nextDays.normalizedWakeScheduleDays())
+                        },
+                    )
+                }
             }
         }
+    }
+}
+
+@Composable
+private fun WakeRepetitionChip(
+    text: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
+    val shape = RoundedCornerShape(9.dp)
+    Surface(
+        modifier = Modifier
+            .clip(shape)
+            .clickable(onClick = onClick),
+        shape = shape,
+        color = if (selected) GreenPrimary else Color.White,
+        border = BorderStroke(
+            1.dp,
+            if (selected) GreenPrimary else Gold.copy(alpha = 0.28f),
+        ),
+    ) {
+        Text(
+            text = text,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (selected) Color.White else TextDark,
+            maxLines = 1,
+            textAlign = TextAlign.Center,
+        )
     }
 }
 
@@ -2888,6 +2985,46 @@ private fun computeWakePreview(
             }
         },
         warning = warning,
+    )
+}
+
+private fun resolveOneTimeWakeTrigger(
+    context: android.content.Context,
+    delegationId: Int,
+    config: PrayerWakeConfig,
+): PrayerWakeConfig {
+    if (config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW || config.repeatMode != WakeRepeatMode.ONCE) {
+        return config
+    }
+
+    val now = Calendar.getInstance()
+    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
+    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
+    val prayerDays = (0..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
+        val date = (now.clone() as Calendar).apply {
+            add(Calendar.DAY_OF_YEAR, dayOffset)
+        }
+        PrayerTimesRepository.loadDayPrayerTimes(
+            context = context,
+            delegationId = delegationId,
+            year = date.get(Calendar.YEAR),
+            month = date.get(Calendar.MONTH) + 1,
+            day = date.get(Calendar.DAY_OF_MONTH),
+        )?.let { prayerTimes ->
+            WakeAlarmComputer.PrayerDayContext(
+                date = date,
+                prayerTimes = prayerTimes,
+                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+                jomoaaHour = jomoaaHour,
+                jomoaaMinute = jomoaaMinute,
+            )
+        }
+    }
+    val mainTrigger = WakeAlarmComputer.compute(now, config, prayerDays).mainAlarm ?: return config
+    return config.copy(
+        mainAlarm = config.mainAlarm.copy(
+            oneOffTriggerAtMillis = mainTrigger.triggerAtMillis,
+        ),
     )
 }
 

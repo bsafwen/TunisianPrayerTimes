@@ -18,12 +18,14 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -36,6 +38,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -47,6 +50,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -93,9 +97,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathOperation
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
@@ -154,6 +164,7 @@ import com.tunisianprayertimes.WAKE_SUPPORTED_PRAYERS
 import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.WakeRepeatMode
 import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
@@ -183,7 +194,11 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import java.util.UUID
+import kotlin.math.PI
 import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -642,40 +657,9 @@ fun MainScreen(
                             }
                         )
 
-                        AutoSilenceCard(
-                            enabled = autoSilenceEnabled,
-                            onToggle = { enabled ->
-                                autoSilenceEnabled = enabled
-                                PrefsManager.setEnabled(context, enabled)
-                                AnalyticsTracker.autoSilenceStateChanged(context, enabled)
-                                if (enabled) {
-                                    if (hasDnd && hasAlarm) {
-                                        ensureCallTrackingPermission()
-                                    }
-                                    ScheduleRefreshCoordinator.syncSilence(context)
-                                    Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
-                                } else {
-                                    ScheduleRefreshCoordinator.syncSilence(context)
-                                    Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
-                                }
-                                refreshSilenceState()
-                            }
-                        )
-
-                        CallEndVibrationCard(
-                            enabled = callEndVibrationEnabled,
-                            onToggle = { enabled ->
-                                callEndVibrationEnabled = enabled
-                                PrefsManager.setCallEndVibrationEnabled(context, enabled)
-                            }
-                        )
-
-                        AutoLocationCard(
-                            enabled = autoLocationEnabled,
-                            onToggle = { enabled ->
-                                autoLocationEnabled = enabled
-                                PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
-                            }
+                        SunriseAndNightTimesCard(
+                            delegationId = delegationId,
+                            wakeAlarms = wakeAlarmsForPermission,
                         )
 
                         if (RamadanDetector.isRamadan()) {
@@ -792,6 +776,42 @@ fun MainScreen(
                                     }
                                     refreshSilenceState()
                                 }
+                            }
+                        )
+
+                        AutoSilenceCard(
+                            enabled = autoSilenceEnabled,
+                            onToggle = { enabled ->
+                                autoSilenceEnabled = enabled
+                                PrefsManager.setEnabled(context, enabled)
+                                AnalyticsTracker.autoSilenceStateChanged(context, enabled)
+                                if (enabled) {
+                                    if (hasDnd && hasAlarm) {
+                                        ensureCallTrackingPermission()
+                                    }
+                                    ScheduleRefreshCoordinator.syncSilence(context)
+                                    Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
+                                } else {
+                                    ScheduleRefreshCoordinator.syncSilence(context)
+                                    Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
+                                }
+                                refreshSilenceState()
+                            }
+                        )
+
+                        CallEndVibrationCard(
+                            enabled = callEndVibrationEnabled,
+                            onToggle = { enabled ->
+                                callEndVibrationEnabled = enabled
+                                PrefsManager.setCallEndVibrationEnabled(context, enabled)
+                            }
+                        )
+
+                        AutoLocationCard(
+                            enabled = autoLocationEnabled,
+                            onToggle = { enabled ->
+                                autoLocationEnabled = enabled
+                                PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
                             }
                         )
 
@@ -2158,6 +2178,1203 @@ private fun PrayerSettingsCard(
     }
 }
 
+}
+
+private data class NightThirdSegment(
+    val title: String,
+    val startTime: String,
+    val endTime: String,
+    val startMinuteOfDay: Int,
+    val endMinuteOfDay: Int,
+    val active: Boolean,
+)
+
+private data class NightTimelineAlarm(
+    val id: String,
+    val title: String,
+    val time: String,
+    val minuteOfDay: Int,
+    val isSubAlarm: Boolean,
+)
+
+private enum class NightTimelineSegment {
+    Daylight,
+    FirstThird,
+    SecondThird,
+    FinalThird,
+    Twilight,
+}
+
+private data class NightTimesCardData(
+    val sunriseTime: String,
+    val sunriseMinuteOfDay: Int,
+    val currentMinuteOfDay: Int,
+    val nightRange: String,
+    val statusText: String,
+    val activeThird: Int?,
+    val thirds: List<NightThirdSegment>,
+    val timelineAlarms: List<NightTimelineAlarm>,
+)
+
+@Composable
+private fun SunriseAndNightTimesCard(
+    delegationId: Int,
+    wakeAlarms: List<PrayerWakeConfig>? = null,
+) {
+    val context = LocalContext.current
+    var currentTimeMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    val currentDayMillis = remember(currentTimeMillis) { startOfDayMillis(currentTimeMillis) }
+    val todayCalendar = remember(currentDayMillis) {
+        Calendar.getInstance().apply { timeInMillis = currentDayMillis }
+    }
+    val yesterdayCalendar = remember(currentDayMillis) {
+        (todayCalendar.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, -1) }
+    }
+    val tomorrowCalendar = remember(currentDayMillis) {
+        (todayCalendar.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
+    }
+
+    val todayTimes = remember(delegationId, currentDayMillis) {
+        loadDayPrayerTimesWithFallback(context, delegationId, todayCalendar)
+    }
+    val yesterdayTimes = remember(delegationId, currentDayMillis) {
+        loadDayPrayerTimesWithFallback(context, delegationId, yesterdayCalendar)
+    }
+    val tomorrowTimes = remember(delegationId, currentDayMillis) {
+        loadDayPrayerTimesWithFallback(context, delegationId, tomorrowCalendar)
+    }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            val now = System.currentTimeMillis()
+            val nextMinuteMillis = ((now / 60_000L) + 1L) * 60_000L
+            delay((nextMinuteMillis - now).coerceAtLeast(1L))
+            currentTimeMillis = System.currentTimeMillis()
+        }
+    }
+
+    val today = todayTimes ?: return
+    val visibleWakeAlarms = remember(wakeAlarms, currentTimeMillis) {
+        wakeAlarmDisplayState(wakeAlarms, currentTimeMillis).visibleWakeAlarms
+    }
+    val timelineAlarms = remember(visibleWakeAlarms, delegationId, currentDayMillis) {
+        visibleWakeAlarms
+            .flatMap { wakeAlarm ->
+                scheduledWakeAlarmTriggersForDay(context, delegationId, wakeAlarm, todayCalendar).map { trigger ->
+                    NightTimelineAlarm(
+                        id = listOfNotNull(trigger.alarmId, trigger.subAlarmId, trigger.triggerAtMillis.toString()).joinToString(":"),
+                        title = if (trigger.isSubAlarm) "تنبيه" else "منبّه",
+                        time = formatTimeOfDay(trigger.triggerAtMillis),
+                        minuteOfDay = minuteOfDay(trigger.triggerAtMillis),
+                        isSubAlarm = trigger.isSubAlarm,
+                    )
+                }
+            }
+            .sortedBy { alarm -> alarm.minuteOfDay }
+    }
+    val todayFajrMillis = prayerTimeMillis(todayCalendar, today.fajr)
+    val usePreviousNight = currentTimeMillis < todayFajrMillis && yesterdayTimes != null
+    val nightStartCalendar = if (usePreviousNight) yesterdayCalendar else todayCalendar
+    val nightEndCalendar = if (usePreviousNight) todayCalendar else tomorrowCalendar
+    val nightStartTimes = if (usePreviousNight) requireNotNull(yesterdayTimes) else today
+    val nightEndTimes = if (usePreviousNight) today else (tomorrowTimes ?: return)
+
+    val nightStartMillis = prayerTimeMillis(nightStartCalendar, nightStartTimes.maghrib)
+    val nightEndMillis = prayerTimeMillis(nightEndCalendar, nightEndTimes.fajr)
+    if (nightEndMillis <= nightStartMillis) return
+
+    val thirdDurationMillis = (nightEndMillis - nightStartMillis) / 3L
+    val firstEndMillis = nightStartMillis + thirdDurationMillis
+    val secondEndMillis = nightStartMillis + thirdDurationMillis * 2L
+    val activeThird = when {
+        currentTimeMillis >= nightStartMillis && currentTimeMillis < firstEndMillis -> 0
+        currentTimeMillis >= firstEndMillis && currentTimeMillis < secondEndMillis -> 1
+        currentTimeMillis >= secondEndMillis && currentTimeMillis < nightEndMillis -> 2
+        else -> null
+    }
+    val statusText = when (activeThird) {
+        0 -> "الآن: الثلث الأول"
+        1 -> "الآن: الثلث الثاني"
+        2 -> "الآن: الثلث الأخير"
+        else -> "الليلة القادمة"
+    }
+    val data = NightTimesCardData(
+        sunriseTime = formatClockTime(today.shurukHour, today.shurukMinute),
+        sunriseMinuteOfDay = today.shurukHour * 60 + today.shurukMinute,
+        currentMinuteOfDay = minuteOfDay(currentTimeMillis),
+        nightRange = "من ${formatTimeOfDay(nightStartMillis)} إلى ${formatTimeOfDay(nightEndMillis)}",
+        statusText = statusText,
+        activeThird = activeThird,
+        thirds = listOf(
+            NightThirdSegment(
+                title = "الأول",
+                startTime = formatTimeOfDay(nightStartMillis),
+                endTime = formatTimeOfDay(firstEndMillis),
+                startMinuteOfDay = minuteOfDay(nightStartMillis),
+                endMinuteOfDay = minuteOfDay(firstEndMillis),
+                active = activeThird == 0,
+            ),
+            NightThirdSegment(
+                title = "الثاني",
+                startTime = formatTimeOfDay(firstEndMillis),
+                endTime = formatTimeOfDay(secondEndMillis),
+                startMinuteOfDay = minuteOfDay(firstEndMillis),
+                endMinuteOfDay = minuteOfDay(secondEndMillis),
+                active = activeThird == 1,
+            ),
+            NightThirdSegment(
+                title = "الأخير",
+                startTime = formatTimeOfDay(secondEndMillis),
+                endTime = formatTimeOfDay(nightEndMillis),
+                startMinuteOfDay = minuteOfDay(secondEndMillis),
+                endMinuteOfDay = minuteOfDay(nightEndMillis),
+                active = activeThird == 2,
+            ),
+        ),
+        timelineAlarms = timelineAlarms,
+    )
+    NightTimesDayNightHorizon(data = data)
+}
+
+@Composable
+private fun NightTimesDayNightHorizon(
+    data: NightTimesCardData,
+) {
+    val skyBlue = Color(0xFF92D8F3)
+    val deepNight = Color(0xFF16345C)
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        border = BorderStroke(1.dp, Gold.copy(alpha = 0.18f)),
+    ) {
+        Column(modifier = Modifier.padding(8.dp)) {
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                BoxWithConstraints(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(442.dp)
+                        .clip(RoundedCornerShape(22.dp))
+                        .background(deepNight)
+                        .border(BorderStroke(1.dp, Divider), RoundedCornerShape(22.dp)),
+                ) {
+                    val panelWidth = maxWidth.value
+                    val panelHeight = 442f
+                    val daylightMinutes = minutesBetweenInDay(data.sunriseMinuteOfDay, data.thirds[0].startMinuteOfDay)
+                    val daylightFraction = daylightMinutes / (24f * 60f)
+                    val daylightSweepDegrees = daylightFraction * 360f
+                    val sunriseAngleDegrees = 180f
+                    val sunsetAngleDegrees = sunriseAngleDegrees + daylightSweepDegrees
+                    val sunsetRadians = sunsetAngleDegrees * PI / 180.0
+                    val circleRadius = if (panelWidth - 86f > 262f) 131f else (panelWidth - 86f) / 2f
+                    val circleCenterX = panelWidth / 2f
+                    val circleCenterY = panelHeight / 2f
+                    val circleTop = circleCenterY - circleRadius
+                    val circleBottom = circleCenterY + circleRadius
+                    val sunriseX = circleCenterX - circleRadius
+                    val sunriseY = circleCenterY
+                    val sunsetX = circleCenterX + circleRadius * cos(sunsetRadians).toFloat()
+                    val sunsetY = circleCenterY + circleRadius * sin(sunsetRadians).toFloat()
+                    val sunriseSunOutsideOffset = 26f
+                    val sunriseSunX = sunriseX + (sunriseX - circleCenterX) / circleRadius * sunriseSunOutsideOffset
+                    val sunriseSunY = sunriseY + (sunriseY - circleCenterY) / circleRadius * sunriseSunOutsideOffset
+                    val sunsetRayUnitX = (sunsetX - circleCenterX) / circleRadius
+                    val sunsetRayUnitY = (sunsetY - circleCenterY) / circleRadius
+                    fun distanceToPanelBorderAlongRay(originX: Float, originY: Float, unitX: Float, unitY: Float): Float {
+                        val horizontalDistance = when {
+                            unitX > 0f -> (panelWidth - originX) / unitX
+                            unitX < 0f -> -originX / unitX
+                            else -> Float.POSITIVE_INFINITY
+                        }
+                        val verticalDistance = when {
+                            unitY > 0f -> (panelHeight - originY) / unitY
+                            unitY < 0f -> -originY / unitY
+                            else -> Float.POSITIVE_INFINITY
+                        }
+                        return minOf(horizontalDistance, verticalDistance).coerceAtLeast(0f)
+                    }
+                    val sunsetDistanceToPanelBorder = distanceToPanelBorderAlongRay(sunsetX, sunsetY, sunsetRayUnitX, sunsetRayUnitY)
+                    val sunsetSunOffset = sunsetDistanceToPanelBorder / 2f
+                    val sunsetSunX = sunsetX + sunsetRayUnitX * sunsetSunOffset
+                    val sunsetSunY = sunsetY + sunsetRayUnitY * sunsetSunOffset
+                    val sunsetPanelBorderX = sunsetX + sunsetRayUnitX * sunsetDistanceToPanelBorder
+                    val sunsetPanelBorderY = sunsetY + sunsetRayUnitY * sunsetDistanceToPanelBorder
+                    val twilightMinutes = minutesBetweenInDay(data.thirds[2].endMinuteOfDay, data.sunriseMinuteOfDay)
+                    val twilightSweepDegrees = twilightMinutes / (24f * 60f) * 360f
+                    val nightSweepDegrees = (360f - daylightSweepDegrees - twilightSweepDegrees).coerceAtLeast(0f)
+                    val nightTotalMinutes = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.thirds[2].endMinuteOfDay).coerceAtLeast(1)
+                    val currentMinutesFromSunrise = minutesBetweenInDay(data.sunriseMinuteOfDay, data.currentMinuteOfDay)
+                    val currentMinutesFromMaghrib = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.currentMinuteOfDay)
+                    val firstThirdDurationMinutes = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.thirds[1].startMinuteOfDay)
+                    val firstTwoThirdsDurationMinutes = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, data.thirds[2].startMinuteOfDay)
+                    val activeTimelineSegment = when {
+                        currentMinutesFromSunrise < daylightMinutes -> NightTimelineSegment.Daylight
+                        currentMinutesFromMaghrib < nightTotalMinutes -> when {
+                            currentMinutesFromMaghrib < firstThirdDurationMinutes -> NightTimelineSegment.FirstThird
+                            currentMinutesFromMaghrib < firstTwoThirdsDurationMinutes -> NightTimelineSegment.SecondThird
+                            else -> NightTimelineSegment.FinalThird
+                        }
+                        else -> NightTimelineSegment.Twilight
+                    }
+                    fun minuteToNightAngleDegrees(minuteOfDay: Int): Float {
+                        val minutesFromMaghrib = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, minuteOfDay)
+                        return sunsetAngleDegrees + nightSweepDegrees * (minutesFromMaghrib.toFloat() / nightTotalMinutes.toFloat())
+                    }
+                    val secondThirdAngleDegrees = minuteToNightAngleDegrees(data.thirds[1].startMinuteOfDay)
+                    val finalThirdAngleDegrees = minuteToNightAngleDegrees(data.thirds[2].startMinuteOfDay)
+                    val fajrAngleDegrees = minuteToNightAngleDegrees(data.thirds[2].endMinuteOfDay)
+                    val activeSegmentArc = when (activeTimelineSegment) {
+                        NightTimelineSegment.Daylight -> sunriseAngleDegrees to daylightSweepDegrees
+                        NightTimelineSegment.FirstThird -> sunsetAngleDegrees to (secondThirdAngleDegrees - sunsetAngleDegrees)
+                        NightTimelineSegment.SecondThird -> secondThirdAngleDegrees to (finalThirdAngleDegrees - secondThirdAngleDegrees)
+                        NightTimelineSegment.FinalThird -> finalThirdAngleDegrees to (fajrAngleDegrees - finalThirdAngleDegrees)
+                        NightTimelineSegment.Twilight -> fajrAngleDegrees to twilightSweepDegrees
+                    }
+                    fun minuteToTimelineAngleDegrees(minuteOfDay: Int): Float {
+                        val minutesFromSunrise = minutesBetweenInDay(data.sunriseMinuteOfDay, minuteOfDay)
+                        val minutesFromMaghrib = minutesBetweenInDay(data.thirds[0].startMinuteOfDay, minuteOfDay)
+                        return when {
+                            minutesFromSunrise <= daylightMinutes -> {
+                                sunriseAngleDegrees + daylightSweepDegrees * (minutesFromSunrise.toFloat() / daylightMinutes.coerceAtLeast(1).toFloat())
+                            }
+
+                            minutesFromMaghrib <= nightTotalMinutes -> minuteToNightAngleDegrees(minuteOfDay)
+
+                            else -> {
+                                val minutesFromFajr = minutesBetweenInDay(data.thirds[2].endMinuteOfDay, minuteOfDay)
+                                fajrAngleDegrees + twilightSweepDegrees * (minutesFromFajr.toFloat() / twilightMinutes.coerceAtLeast(1).toFloat())
+                            }
+                        }
+                    }
+                    val secondThirdRadians = secondThirdAngleDegrees * PI / 180.0
+                    val finalThirdRadians = finalThirdAngleDegrees * PI / 180.0
+                    val fajrRadians = fajrAngleDegrees * PI / 180.0
+                    val twilightLabelRadians = (fajrAngleDegrees + twilightSweepDegrees * 0.52f) * PI / 180.0
+                    val secondThirdX = circleCenterX + circleRadius * cos(secondThirdRadians).toFloat()
+                    val secondThirdY = circleCenterY + circleRadius * sin(secondThirdRadians).toFloat()
+                    val finalThirdX = circleCenterX + circleRadius * cos(finalThirdRadians).toFloat()
+                    val finalThirdY = circleCenterY + circleRadius * sin(finalThirdRadians).toFloat()
+                    val fajrX = circleCenterX + circleRadius * cos(fajrRadians).toFloat()
+                    val fajrY = circleCenterY + circleRadius * sin(fajrRadians).toFloat()
+                    val twilightLabelRadius = circleRadius * 0.58f
+                    val twilightLabelX = (circleCenterX + twilightLabelRadius * cos(twilightLabelRadians).toFloat() - 28f).coerceIn(4f, panelWidth - 58f)
+                    val twilightLabelY = (circleCenterY + twilightLabelRadius * sin(twilightLabelRadians).toFloat() - 9f).coerceIn(circleTop + 14f, circleBottom - 20f)
+                    val dayLabelY = circleTop + circleRadius * 0.48f
+                    val nightLabelY = circleCenterY + circleRadius * 0.22f
+                    val timeLabelHeight = 29f
+                    val fajrLabelWidth = 54f
+                    val sunriseLabelWidth = 52f
+                    val maghribLabelWidth = 58f
+                    val horizonLabelSunLift = 52f
+                    val sunriseLabelX = sunriseSunX - sunriseLabelWidth / 2f
+                    val maghribLabelX = (sunsetSunX - maghribLabelWidth / 2f).coerceIn(6f, panelWidth - maghribLabelWidth - 6f)
+                    val thirdLabelWidth = 82f
+                    val exteriorLabelTimelineGap = 3f
+                    val sunriseLabelY = (sunriseSunY - horizonLabelSunLift).coerceAtLeast(12f)
+                    val maghribLabelY = (sunsetSunY - horizonLabelSunLift).coerceIn(8f, panelHeight - timeLabelHeight - 8f)
+
+                    fun radialLabelExtent(angleDegrees: Float, labelWidth: Float, labelHeight: Float): Float {
+                        val radians = angleDegrees * PI / 180.0
+                        val radialX = cos(radians).toFloat()
+                        val radialY = sin(radians).toFloat()
+                        return abs(radialX) * labelWidth / 2f + abs(radialY) * labelHeight / 2f
+                    }
+
+                    fun exteriorMarkerLabelCenterDistance(
+                        angleDegrees: Float,
+                        labelWidth: Float,
+                        labelHeight: Float,
+                    ): Float = exteriorLabelTimelineGap + radialLabelExtent(angleDegrees, labelWidth, labelHeight)
+
+                    fun labelOutsideTimeline(
+                        angleDegrees: Float,
+                        labelWidth: Float,
+                        labelHeight: Float,
+                        markerLabelCenterDistance: Float,
+                    ): Pair<Float, Float> {
+                        val radians = angleDegrees * PI / 180.0
+                        val radialX = cos(radians).toFloat()
+                        val radialY = sin(radians).toFloat()
+                        val halfWidth = labelWidth / 2f
+                        val halfHeight = labelHeight / 2f
+                        val labelRadius = circleRadius + markerLabelCenterDistance
+                        val labelCenterX = circleCenterX + labelRadius * radialX
+                        val labelCenterY = circleCenterY + labelRadius * radialY
+                        return labelCenterX - halfWidth to labelCenterY - halfHeight
+                    }
+
+                    val (fajrLabelX, fajrLabelY) = labelOutsideTimeline(
+                        angleDegrees = fajrAngleDegrees,
+                        labelWidth = fajrLabelWidth,
+                        labelHeight = timeLabelHeight,
+                        markerLabelCenterDistance = exteriorMarkerLabelCenterDistance(
+                            fajrAngleDegrees,
+                            fajrLabelWidth,
+                            timeLabelHeight,
+                        ),
+                    )
+                    val (secondThirdLabelX, secondThirdLabelY) = labelOutsideTimeline(
+                        angleDegrees = secondThirdAngleDegrees,
+                        labelWidth = thirdLabelWidth,
+                        labelHeight = timeLabelHeight,
+                        markerLabelCenterDistance = exteriorMarkerLabelCenterDistance(
+                            secondThirdAngleDegrees,
+                            thirdLabelWidth,
+                            timeLabelHeight,
+                        ),
+                    )
+                    val (finalThirdLabelX, finalThirdLabelY) = labelOutsideTimeline(
+                        angleDegrees = finalThirdAngleDegrees,
+                        labelWidth = thirdLabelWidth,
+                        labelHeight = timeLabelHeight,
+                        markerLabelCenterDistance = exteriorMarkerLabelCenterDistance(
+                            finalThirdAngleDegrees,
+                            thirdLabelWidth,
+                            timeLabelHeight,
+                        ),
+                    )
+                    val timelineAlarmAngles = data.timelineAlarms.map { alarm -> minuteToTimelineAngleDegrees(alarm.minuteOfDay) }
+                    val timelineAlarmLabelWidth = 46f
+                    val timelineAlarmLabelHeight = 24f
+                    val timelineAlarmMarkerRadius = 7f
+                    val timelineAlarmGap = 1f
+                    val timelineAlarmLabelHalfWidth = timelineAlarmLabelWidth / 2f
+                    val timelineAlarmLabelHalfHeight = timelineAlarmLabelHeight / 2f
+                    val timelineAlarmMarkerLabelCenterDistance = timelineAlarmMarkerRadius + timelineAlarmGap + (
+                        timelineAlarmAngles.maxOfOrNull { angleDegrees ->
+                            val radians = angleDegrees * PI / 180.0
+                            val radialX = cos(radians).toFloat()
+                            val radialY = sin(radians).toFloat()
+                            abs(radialX) * timelineAlarmLabelHalfWidth + abs(radialY) * timelineAlarmLabelHalfHeight
+                        } ?: 0f
+                    )
+                    val timelineAlarmLabels = data.timelineAlarms.zip(timelineAlarmAngles).map { (alarm, angleDegrees) ->
+                        val radians = angleDegrees * PI / 180.0
+                        val radialX = cos(radians).toFloat()
+                        val radialY = sin(radians).toFloat()
+                        val labelRadius = (circleRadius - timelineAlarmMarkerLabelCenterDistance).coerceAtLeast(18f)
+                        val labelCenterX = circleCenterX + labelRadius * radialX
+                        val labelCenterY = circleCenterY + labelRadius * radialY
+                        Triple(
+                            alarm,
+                            labelCenterX - timelineAlarmLabelWidth / 2f,
+                            labelCenterY - timelineAlarmLabelHeight / 2f,
+                        )
+                    }
+
+                    Canvas(modifier = Modifier.fillMaxSize()) {
+                        val scaleX = size.width / panelWidth
+                        val scaleY = size.height / panelHeight
+                        val circleCenter = Offset(circleCenterX * scaleX, circleCenterY * scaleY)
+                        val circleRadiusPx = circleRadius * scaleX
+                        val circleTopPx = circleTop * scaleY
+                        val circleBottomPx = circleBottom * scaleY
+                        val circleLeftPx = (circleCenterX - circleRadius) * scaleX
+                        val circleRightPx = (circleCenterX + circleRadius) * scaleX
+                        val sunrisePoint = Offset(sunriseX * scaleX, sunriseY * scaleY)
+                        val sunsetPoint = Offset(sunsetX * scaleX, sunsetY * scaleY)
+                        val sunriseSunCenter = Offset(sunriseSunX * scaleX, sunriseSunY * scaleY)
+                        val sunsetSunCenter = Offset(sunsetSunX * scaleX, sunsetSunY * scaleY)
+                        val secondThirdPoint = Offset(secondThirdX * scaleX, secondThirdY * scaleY)
+                        val finalThirdPoint = Offset(finalThirdX * scaleX, finalThirdY * scaleY)
+                        val fajrPoint = Offset(fajrX * scaleX, fajrY * scaleY)
+                        val nightApex = Offset(circleCenter.x, circleBottomPx - 8f * scaleY)
+                        val nightHeightPx = circleBottomPx - circleCenter.y
+                        val sunsetBoundaryEnd = Offset(sunsetPanelBorderX * scaleX, sunsetPanelBorderY * scaleY)
+                        val fajrRayDx = fajrPoint.x - circleCenter.x
+                        val fajrRayDy = fajrPoint.y - circleCenter.y
+                        val fajrRayToLeft = if (fajrRayDx < 0f) (0f - fajrPoint.x) / fajrRayDx else Float.POSITIVE_INFINITY
+                        val fajrRayToBottom = if (fajrRayDy > 0f) (size.height - fajrPoint.y) / fajrRayDy else Float.POSITIVE_INFINITY
+                        val fajrRayScale = minOf(fajrRayToLeft, fajrRayToBottom).coerceAtLeast(0f)
+                        val fajrBoundaryEnd = Offset(
+                            x = fajrPoint.x + fajrRayDx * fajrRayScale,
+                            y = fajrPoint.y + fajrRayDy * fajrRayScale,
+                        )
+                        val circleRect = Rect(circleLeftPx, circleTopPx, circleRightPx, circleBottomPx)
+                        val circlePath = Path().apply {
+                            addOval(circleRect)
+                        }
+                        val dayPath = Path().apply {
+                            moveTo(circleCenter.x, circleCenter.y)
+                            lineTo(sunrisePoint.x, sunrisePoint.y)
+                            arcTo(circleRect, sunriseAngleDegrees, daylightSweepDegrees, false)
+                            lineTo(circleCenter.x, circleCenter.y)
+                            close()
+                        }
+                        val twilightPath = Path().apply {
+                            moveTo(circleCenter.x, circleCenter.y)
+                            lineTo(fajrPoint.x, fajrPoint.y)
+                            arcTo(circleRect, fajrAngleDegrees, twilightSweepDegrees, false)
+                            lineTo(circleCenter.x, circleCenter.y)
+                            close()
+                        }
+                        val lowerNightField = Path().apply {
+                            moveTo(0f, sunrisePoint.y)
+                            lineTo(sunrisePoint.x, sunrisePoint.y)
+                            lineTo(sunsetPoint.x, sunsetPoint.y)
+                            lineTo(sunsetBoundaryEnd.x, sunsetBoundaryEnd.y)
+                            lineTo(size.width, size.height)
+                            lineTo(0f, size.height)
+                            close()
+                        }
+                        val daylightField = Path().apply {
+                            moveTo(0f, 0f)
+                            lineTo(size.width, 0f)
+                            lineTo(sunsetBoundaryEnd.x, sunsetBoundaryEnd.y)
+                            lineTo(sunsetPoint.x, sunsetPoint.y)
+                            lineTo(sunrisePoint.x, sunrisePoint.y)
+                            lineTo(0f, sunrisePoint.y)
+                            close()
+                        }
+                        val twilightField = Path().apply {
+                            moveTo(0f, sunrisePoint.y)
+                            lineTo(sunrisePoint.x, sunrisePoint.y)
+                            lineTo(fajrPoint.x, fajrPoint.y)
+                            lineTo(fajrBoundaryEnd.x, fajrBoundaryEnd.y)
+                            if (fajrBoundaryEnd.y >= size.height - 1f) {
+                                lineTo(0f, size.height)
+                            }
+                            close()
+                        }
+                        fun drawHorizonSun(center: Offset, color: Color) {
+                            for (ray in 0..8) {
+                                val angle = PI + ray * PI / 8.0
+                                drawLine(
+                                    color = color.copy(alpha = 0.60f),
+                                    start = Offset(
+                                        center.x + 14f * scaleX * cos(angle).toFloat(),
+                                        center.y + 14f * scaleY * sin(angle).toFloat(),
+                                    ),
+                                    end = Offset(
+                                        center.x + 23f * scaleX * cos(angle).toFloat(),
+                                        center.y + 23f * scaleY * sin(angle).toFloat(),
+                                    ),
+                                    strokeWidth = 1.7f * scaleY,
+                                )
+                            }
+                            drawCircle(color.copy(alpha = 0.33f), radius = 18f * scaleX, center = center)
+                            drawCircle(color, radius = 11f * scaleX, center = center)
+                        }
+                        fun drawCloud(anchorX: Float, anchorY: Float, cloudScale: Float, alpha: Float = 0.36f) {
+                            val cloudScalePx = scaleX * cloudScale
+                            val cloudColor = Color.White.copy(alpha = alpha)
+                            val cloudPath = Path().apply {
+                                moveTo(anchorX, anchorY + 28f * cloudScalePx)
+                                cubicTo(
+                                    anchorX + 5f * cloudScalePx,
+                                    anchorY + 16f * cloudScalePx,
+                                    anchorX + 15f * cloudScalePx,
+                                    anchorY + 17f * cloudScalePx,
+                                    anchorX + 21f * cloudScalePx,
+                                    anchorY + 10f * cloudScalePx,
+                                )
+                                cubicTo(
+                                    anchorX + 27f * cloudScalePx,
+                                    anchorY - 4f * cloudScalePx,
+                                    anchorX + 44f * cloudScalePx,
+                                    anchorY - 2f * cloudScalePx,
+                                    anchorX + 49f * cloudScalePx,
+                                    anchorY + 12f * cloudScalePx,
+                                )
+                                cubicTo(
+                                    anchorX + 60f * cloudScalePx,
+                                    anchorY + 7f * cloudScalePx,
+                                    anchorX + 75f * cloudScalePx,
+                                    anchorY + 15f * cloudScalePx,
+                                    anchorX + 76f * cloudScalePx,
+                                    anchorY + 28f * cloudScalePx,
+                                )
+                                cubicTo(
+                                    anchorX + 76f * cloudScalePx,
+                                    anchorY + 40f * cloudScalePx,
+                                    anchorX + 57f * cloudScalePx,
+                                    anchorY + 43f * cloudScalePx,
+                                    anchorX + 45f * cloudScalePx,
+                                    anchorY + 39f * cloudScalePx,
+                                )
+                                cubicTo(
+                                    anchorX + 31f * cloudScalePx,
+                                    anchorY + 45f * cloudScalePx,
+                                    anchorX + 10f * cloudScalePx,
+                                    anchorY + 42f * cloudScalePx,
+                                    anchorX,
+                                    anchorY + 28f * cloudScalePx,
+                                )
+                                close()
+                            }
+                            val lowerWisp = Path().apply {
+                                moveTo(anchorX + 8f * cloudScalePx, anchorY + 34f * cloudScalePx)
+                                cubicTo(
+                                    anchorX + 24f * cloudScalePx,
+                                    anchorY + 41f * cloudScalePx,
+                                    anchorX + 49f * cloudScalePx,
+                                    anchorY + 42f * cloudScalePx,
+                                    anchorX + 70f * cloudScalePx,
+                                    anchorY + 31f * cloudScalePx,
+                                )
+                            }
+                            drawPath(cloudPath, cloudColor)
+                            drawPath(
+                                path = cloudPath,
+                                color = Color.White.copy(alpha = alpha * 0.50f),
+                                style = Stroke(width = 1.4f * cloudScalePx),
+                            )
+                            drawPath(
+                                path = lowerWisp,
+                                color = Color.White.copy(alpha = alpha * 0.62f),
+                                style = Stroke(width = 1.1f * cloudScalePx),
+                            )
+                        }
+                        fun drawStar(center: Offset, radius: Float, alpha: Float = 0.70f) {
+                            drawCircle(GoldLight.copy(alpha = alpha), radius = radius * 0.34f, center = center)
+                            drawCircle(
+                                Color.White.copy(alpha = alpha * 0.50f),
+                                radius = radius * 0.13f,
+                                center = Offset(center.x + radius * 0.15f, center.y - radius * 0.12f),
+                            )
+                        }
+                        fun drawNightMosqueSilhouette(
+                            centerX: Float,
+                            baseY: Float,
+                            silhouetteScale: Float,
+                            alpha: Float,
+                            color: Color = Color(0xFF061D32),
+                        ) {
+                            val silhouetteColor = color.copy(alpha = alpha)
+                            val detailColor = Color(0xFF86AFC2).copy(alpha = alpha * 0.22f)
+                            val xScale = scaleX * silhouetteScale
+                            val yScale = scaleY * silhouetteScale
+
+                            fun drawRectangle(leftOffset: Float, topOffset: Float, rightOffset: Float, bottomOffset: Float) {
+                                val rectangle = Path().apply {
+                                    moveTo(centerX + leftOffset * xScale, baseY + topOffset * yScale)
+                                    lineTo(centerX + rightOffset * xScale, baseY + topOffset * yScale)
+                                    lineTo(centerX + rightOffset * xScale, baseY + bottomOffset * yScale)
+                                    lineTo(centerX + leftOffset * xScale, baseY + bottomOffset * yScale)
+                                    close()
+                                }
+                                drawPath(rectangle, silhouetteColor)
+                            }
+
+                            fun drawArchedOpening(centerOffset: Float, bottomOffset: Float, width: Float, height: Float) {
+                                val halfWidth = width * xScale / 2f
+                                val openingCenterX = centerX + centerOffset * xScale
+                                val openingBottomY = baseY + bottomOffset * yScale
+                                val openingHeight = height * yScale
+                                val openingPath = Path().apply {
+                                    moveTo(openingCenterX - halfWidth, openingBottomY)
+                                    lineTo(openingCenterX - halfWidth, openingBottomY - openingHeight * 0.56f)
+                                    cubicTo(
+                                        openingCenterX - halfWidth,
+                                        openingBottomY - openingHeight * 0.88f,
+                                        openingCenterX - halfWidth * 0.45f,
+                                        openingBottomY - openingHeight,
+                                        openingCenterX,
+                                        openingBottomY - openingHeight,
+                                    )
+                                    cubicTo(
+                                        openingCenterX + halfWidth * 0.45f,
+                                        openingBottomY - openingHeight,
+                                        openingCenterX + halfWidth,
+                                        openingBottomY - openingHeight * 0.88f,
+                                        openingCenterX + halfWidth,
+                                        openingBottomY - openingHeight * 0.56f,
+                                    )
+                                    lineTo(openingCenterX + halfWidth, openingBottomY)
+                                    close()
+                                }
+                                drawPath(openingPath, detailColor)
+                            }
+
+                            fun drawFinial(finialCenterX: Float, finialBaseY: Float, finialHeight: Float, finialRadius: Float) {
+                                drawLine(
+                                    color = silhouetteColor,
+                                    start = Offset(finialCenterX, finialBaseY),
+                                    end = Offset(finialCenterX, finialBaseY - finialHeight),
+                                    strokeWidth = 1.1f * xScale,
+                                )
+                                drawCircle(
+                                    color = silhouetteColor,
+                                    radius = finialRadius,
+                                    center = Offset(finialCenterX, finialBaseY - finialHeight * 0.58f),
+                                )
+                            }
+
+                            fun drawDome(centerOffset: Float, baseOffset: Float, halfWidth: Float, height: Float, finialHeight: Float) {
+                                val domeCenterX = centerX + centerOffset * xScale
+                                val domeBaseY = baseY + baseOffset * yScale
+                                val halfWidthPx = halfWidth * xScale
+                                val heightPx = height * yScale
+                                val domePath = Path().apply {
+                                    moveTo(domeCenterX - halfWidthPx, domeBaseY)
+                                    cubicTo(
+                                        domeCenterX - halfWidthPx * 1.03f,
+                                        domeBaseY - heightPx * 0.32f,
+                                        domeCenterX - halfWidthPx * 0.64f,
+                                        domeBaseY - heightPx * 0.64f,
+                                        domeCenterX - halfWidthPx * 0.14f,
+                                        domeBaseY - heightPx * 0.83f,
+                                    )
+                                    quadraticTo(
+                                        domeCenterX,
+                                        domeBaseY - heightPx,
+                                        domeCenterX + halfWidthPx * 0.14f,
+                                        domeBaseY - heightPx * 0.83f,
+                                    )
+                                    cubicTo(
+                                        domeCenterX + halfWidthPx * 0.64f,
+                                        domeBaseY - heightPx * 0.64f,
+                                        domeCenterX + halfWidthPx * 1.03f,
+                                        domeBaseY - heightPx * 0.32f,
+                                        domeCenterX + halfWidthPx,
+                                        domeBaseY,
+                                    )
+                                    close()
+                                }
+                                drawPath(domePath, silhouetteColor)
+                                drawFinial(
+                                    finialCenterX = domeCenterX,
+                                    finialBaseY = domeBaseY - heightPx + 1.5f * yScale,
+                                    finialHeight = finialHeight * yScale,
+                                    finialRadius = 1.2f * xScale,
+                                )
+                            }
+
+                            fun drawMinaret(centerOffset: Float, height: Float, width: Float, balconyLevels: List<Float>) {
+                                val towerCenterX = centerX + centerOffset * xScale
+                                val towerBaseY = baseY + 5f * yScale
+                                val towerHeightPx = height * yScale
+                                val towerWidthPx = width * xScale
+                                val shaftTopY = towerBaseY - towerHeightPx
+                                val shaftPath = Path().apply {
+                                    moveTo(towerCenterX - towerWidthPx * 0.48f, towerBaseY)
+                                    lineTo(towerCenterX - towerWidthPx * 0.36f, shaftTopY + towerWidthPx * 1.1f)
+                                    lineTo(towerCenterX + towerWidthPx * 0.36f, shaftTopY + towerWidthPx * 1.1f)
+                                    lineTo(towerCenterX + towerWidthPx * 0.48f, towerBaseY)
+                                    close()
+                                }
+                                drawPath(shaftPath, silhouetteColor)
+                                drawArchedOpening(centerOffset, -height * 0.28f, width * 0.38f, height * 0.10f)
+                                drawArchedOpening(centerOffset, -height * 0.48f, width * 0.34f, height * 0.09f)
+                                balconyLevels.forEach { level ->
+                                    val balconyY = towerBaseY - towerHeightPx * level
+                                    val balconyPath = Path().apply {
+                                        moveTo(towerCenterX - towerWidthPx * 0.86f, balconyY - 1.4f * yScale)
+                                        lineTo(towerCenterX + towerWidthPx * 0.86f, balconyY - 1.4f * yScale)
+                                        lineTo(towerCenterX + towerWidthPx * 0.76f, balconyY + 2.4f * yScale)
+                                        lineTo(towerCenterX - towerWidthPx * 0.76f, balconyY + 2.4f * yScale)
+                                        close()
+                                    }
+                                    drawPath(balconyPath, silhouetteColor)
+                                }
+                                val capBaseY = shaftTopY + towerWidthPx * 1.1f
+                                val capHeightPx = towerWidthPx * 2.2f
+                                val capPath = Path().apply {
+                                    moveTo(towerCenterX - towerWidthPx * 0.62f, capBaseY)
+                                    cubicTo(
+                                        towerCenterX - towerWidthPx * 0.62f,
+                                        capBaseY - capHeightPx * 0.52f,
+                                        towerCenterX - towerWidthPx * 0.22f,
+                                        capBaseY - capHeightPx * 0.92f,
+                                        towerCenterX,
+                                        capBaseY - capHeightPx,
+                                    )
+                                    cubicTo(
+                                        towerCenterX + towerWidthPx * 0.22f,
+                                        capBaseY - capHeightPx * 0.92f,
+                                        towerCenterX + towerWidthPx * 0.62f,
+                                        capBaseY - capHeightPx * 0.52f,
+                                        towerCenterX + towerWidthPx * 0.62f,
+                                        capBaseY,
+                                    )
+                                    close()
+                                }
+                                drawPath(capPath, silhouetteColor)
+                                drawFinial(
+                                    finialCenterX = towerCenterX,
+                                    finialBaseY = capBaseY - capHeightPx + 1f * yScale,
+                                    finialHeight = 7f * yScale,
+                                    finialRadius = 0.9f * xScale,
+                                )
+                            }
+
+                            fun drawNeedle(centerOffset: Float, baseOffset: Float, height: Float) {
+                                val needleCenterX = centerX + centerOffset * xScale
+                                val needleBaseY = baseY + baseOffset * yScale
+                                val needlePath = Path().apply {
+                                    moveTo(needleCenterX - 2.4f * xScale, needleBaseY)
+                                    lineTo(needleCenterX, needleBaseY - height * yScale)
+                                    lineTo(needleCenterX + 2.4f * xScale, needleBaseY)
+                                    close()
+                                }
+                                drawPath(needlePath, silhouetteColor)
+                                drawFinial(needleCenterX, needleBaseY - height * yScale, 4.5f * yScale, 0.6f * xScale)
+                            }
+
+                            drawRectangle(-108f, 6f, 108f, 12f)
+                            drawRectangle(-100f, -3f, 100f, 7f)
+                            drawRectangle(-82f, -16f, -50f, 1f)
+                            drawRectangle(-43f, -20f, 43f, 1f)
+                            drawRectangle(50f, -16f, 82f, 1f)
+                            drawRectangle(-99f, -25f, -87f, 1f)
+                            drawRectangle(87f, -25f, 99f, 1f)
+
+                            drawMinaret(-88f, 74f, 8f, listOf(0.35f, 0.66f))
+                            drawMinaret(-63f, 58f, 6.5f, listOf(0.50f))
+                            drawMinaret(63f, 58f, 6.5f, listOf(0.50f))
+                            drawMinaret(88f, 74f, 8f, listOf(0.35f, 0.66f))
+
+                            drawDome(-73f, -16f, 14f, 29f, 7f)
+                            drawDome(-35f, -18f, 22f, 45f, 8f)
+                            drawDome(0f, -19f, 31f, 62f, 10f)
+                            drawDome(35f, -18f, 22f, 45f, 8f)
+                            drawDome(73f, -16f, 14f, 29f, 7f)
+
+                            drawNeedle(-18f, -21f, 16f)
+                            drawNeedle(18f, -21f, 16f)
+                            drawNeedle(-51f, -19f, 12f)
+                            drawNeedle(51f, -19f, 12f)
+                            listOf(-82f, -62f, -40f, -20f, 0f, 20f, 40f, 62f, 82f).forEach { offset ->
+                                drawArchedOpening(offset, 6f, 5.6f, 9f)
+                            }
+                            listOf(-35f, 0f, 35f).forEach { offset ->
+                                drawArchedOpening(offset, -3f, 7.2f, 12f)
+                            }
+                            drawLine(
+                                color = detailColor,
+                                start = Offset(centerX - 96f * xScale, baseY - 4f * yScale),
+                                end = Offset(centerX + 96f * xScale, baseY - 4f * yScale),
+                                strokeWidth = 0.9f * yScale,
+                            )
+                            drawLine(
+                                color = detailColor,
+                                start = Offset(centerX - 84f * xScale, baseY - 16f * yScale),
+                                end = Offset(centerX + 84f * xScale, baseY - 16f * yScale),
+                                strokeWidth = 0.8f * yScale,
+                            )
+                        }
+                        drawRect(color = deepNight.copy(alpha = 0.96f), topLeft = Offset.Zero, size = size)
+                        drawPath(
+                            path = daylightField,
+                            brush = Brush.verticalGradient(
+                                colors = listOf(Color(0xFFCFF5FF), skyBlue, Color(0xFF88D5F1)),
+                                startY = 0f,
+                                endY = sunsetPoint.y + 18f * scaleY,
+                            ),
+                        )
+                        drawHorizonSun(sunriseSunCenter, Color(0xFFFFB84D))
+                        drawHorizonSun(sunsetSunCenter, Color(0xFFFF7A3D))
+                        drawCloud(24f * scaleX, 54f * scaleY, 0.70f, alpha = 0.24f)
+                        drawCloud(size.width - 120f * scaleX, 70f * scaleY, 0.64f, alpha = 0.20f)
+                        drawPath(lowerNightField, Color(0xFF12375D))
+                        drawNightMosqueSilhouette(
+                            centerX = circleCenter.x - circleRadiusPx * 0.96f,
+                            baseY = circleBottomPx + 82f * scaleY,
+                            silhouetteScale = 0.78f,
+                            alpha = 0.18f,
+                        )
+                        drawNightMosqueSilhouette(
+                            centerX = circleCenter.x + circleRadiusPx * 0.96f,
+                            baseY = circleBottomPx + 84f * scaleY,
+                            silhouetteScale = 0.78f,
+                            alpha = 0.17f,
+                        )
+                        drawNightMosqueSilhouette(
+                            centerX = circleCenter.x,
+                            baseY = size.height - 16f * scaleY,
+                            silhouetteScale = 1.04f,
+                            alpha = 0.12f,
+                        )
+                        listOf(
+                            Offset(32f * scaleX, 210f * scaleY) to 1.5f,
+                            Offset(82f * scaleX, 258f * scaleY) to 1.0f,
+                            Offset(132f * scaleX, 350f * scaleY) to 1.3f,
+                            Offset(54f * scaleX, 384f * scaleY) to 1.1f,
+                            Offset(118f * scaleX, 416f * scaleY) to 1.2f,
+                            Offset(190f * scaleX, 400f * scaleY) to 0.9f,
+                            Offset(236f * scaleX, 378f * scaleY) to 1.0f,
+                            Offset(size.width - 42f * scaleX, 238f * scaleY) to 1.4f,
+                            Offset(size.width - 92f * scaleX, 318f * scaleY) to 1.1f,
+                            Offset(size.width - 160f * scaleX, 376f * scaleY) to 1.2f,
+                            Offset(size.width - 76f * scaleX, 398f * scaleY) to 0.9f,
+                            Offset(size.width - 128f * scaleX, 424f * scaleY) to 1.1f,
+                        ).forEach { (star, radius) -> drawStar(star, radius * scaleX, alpha = 0.55f) }
+                        drawPath(
+                            path = twilightField,
+                            brush = Brush.linearGradient(
+                                colors = listOf(
+                                    Color(0xFF12375D).copy(alpha = 0.0f),
+                                    Color(0xFF3F86A8).copy(alpha = 0.48f),
+                                    Color(0xFFBFEFFF).copy(alpha = 0.68f),
+                                ),
+                                start = fajrBoundaryEnd,
+                                end = sunrisePoint,
+                            ),
+                        )
+                        drawLine(
+                            color = Color.White.copy(alpha = 0.34f),
+                            start = Offset(0f, sunrisePoint.y),
+                            end = sunrisePoint,
+                            strokeWidth = 1.6f * scaleY,
+                        )
+                        drawLine(
+                            color = Color.White.copy(alpha = 0.34f),
+                            start = sunsetPoint,
+                            end = sunsetBoundaryEnd,
+                            strokeWidth = 1.6f * scaleY,
+                        )
+                        clipPath(circlePath) {
+                            drawRect(
+                                brush = Brush.verticalGradient(listOf(Color(0xFF173F68), deepNight, Color(0xFF09223C))),
+                                topLeft = Offset(circleLeftPx, circleTopPx),
+                                size = Size(circleRadiusPx * 2f, circleRadiusPx * 2f),
+                            )
+                            val secondNightSector = Path().apply {
+                                moveTo(circleRightPx, circleCenter.y)
+                                lineTo(circleCenter.x, circleBottomPx)
+                                lineTo(nightApex.x, nightApex.y)
+                                close()
+                            }
+                            val thirdNightSector = Path().apply {
+                                moveTo(circleCenter.x, circleBottomPx)
+                                lineTo(sunrisePoint.x, sunrisePoint.y)
+                                lineTo(nightApex.x, nightApex.y)
+                                close()
+                            }
+                            drawPath(secondNightSector, Color(0xFF082A4A).copy(alpha = 0.22f))
+                            drawPath(thirdNightSector, Color(0xFF0F5F83).copy(alpha = 0.18f))
+                            drawPath(
+                                path = twilightPath,
+                                brush = Brush.radialGradient(
+                                    colors = listOf(
+                                        Color(0xFFBFEFFF).copy(alpha = 0.66f),
+                                        Color(0xFF3F86A8).copy(alpha = 0.44f),
+                                        Color(0xFF12375D).copy(alpha = 0.0f),
+                                    ),
+                                    center = sunrisePoint,
+                                    radius = circleRadiusPx * 0.82f,
+                                ),
+                            )
+                            drawPath(dayPath, Brush.verticalGradient(listOf(Color(0xFFCFF5FF), skyBlue, Color(0xFF75C9EA))))
+                            drawCloud(circleCenter.x - circleRadiusPx * 0.72f, circleTopPx + circleRadiusPx * 0.25f, 0.68f)
+                            drawCloud(circleCenter.x + circleRadiusPx * 0.30f, circleTopPx + circleRadiusPx * 0.23f, 0.72f)
+
+                            listOf(sunrisePoint, sunsetPoint).forEach { daylightBoundaryEnd ->
+                                drawLine(
+                                    color = Color.White.copy(alpha = 0.74f),
+                                    start = circleCenter,
+                                    end = daylightBoundaryEnd,
+                                    strokeWidth = 2.6f * scaleY,
+                                )
+                            }
+                            listOf(secondThirdPoint, finalThirdPoint).forEach { separatorEnd ->
+                                drawLine(Color(0xFF071D31).copy(alpha = 0.24f), start = circleCenter, end = separatorEnd, strokeWidth = 1.4f * scaleY)
+                                drawLine(GoldLight.copy(alpha = 0.20f), start = circleCenter, end = separatorEnd, strokeWidth = 0.75f * scaleY)
+                            }
+
+                            listOf(
+                                Offset(circleCenter.x - circleRadiusPx * 0.63f, circleCenter.y + nightHeightPx * 0.33f) to 2.2f,
+                                Offset(circleCenter.x - circleRadiusPx * 0.53f, circleCenter.y + nightHeightPx * 0.48f) to 1.6f,
+                                Offset(circleCenter.x - circleRadiusPx * 0.40f, circleCenter.y + nightHeightPx * 0.61f) to 1.4f,
+                                Offset(circleCenter.x - circleRadiusPx * 0.26f, circleCenter.y + nightHeightPx * 0.44f) to 1.4f,
+                                Offset(circleCenter.x + circleRadiusPx * 0.20f, circleCenter.y + nightHeightPx * 0.50f) to 1.3f,
+                                Offset(circleCenter.x + circleRadiusPx * 0.42f, circleCenter.y + nightHeightPx * 0.34f) to 1.8f,
+                                Offset(circleCenter.x + circleRadiusPx * 0.58f, circleCenter.y + nightHeightPx * 0.55f) to 1.5f,
+                                Offset(circleCenter.x + circleRadiusPx * 0.70f, circleCenter.y + nightHeightPx * 0.42f) to 1.2f,
+                            ).forEach { (star, radius) -> drawStar(star, radius * scaleX) }
+
+                            val mosqueBaseY = circleCenter.y + nightHeightPx * 0.78f
+                            drawNightMosqueSilhouette(
+                                centerX = circleCenter.x,
+                                baseY = mosqueBaseY,
+                                silhouetteScale = 0.64f,
+                                alpha = 0.62f,
+                                color = Color(0xFF05192B),
+                            )
+
+                            val midnightMoonCenter = Offset(
+                                circleCenter.x - circleRadiusPx * 0.34f,
+                                circleCenter.y + nightHeightPx * 0.24f,
+                            )
+                            val midnightMoonRadius = 8.5f * scaleX
+                            val outerMoonPath = Path().apply {
+                                addOval(
+                                    Rect(
+                                        left = midnightMoonCenter.x - midnightMoonRadius,
+                                        top = midnightMoonCenter.y - midnightMoonRadius,
+                                        right = midnightMoonCenter.x + midnightMoonRadius,
+                                        bottom = midnightMoonCenter.y + midnightMoonRadius,
+                                    ),
+                                )
+                            }
+                            val innerMoonRadius = midnightMoonRadius * 0.96f
+                            val innerMoonCenter = Offset(
+                                x = midnightMoonCenter.x + midnightMoonRadius * 0.54f,
+                                y = midnightMoonCenter.y - midnightMoonRadius * 0.03f,
+                            )
+                            val innerMoonPath = Path().apply {
+                                addOval(
+                                    Rect(
+                                        left = innerMoonCenter.x - innerMoonRadius,
+                                        top = innerMoonCenter.y - innerMoonRadius,
+                                        right = innerMoonCenter.x + innerMoonRadius,
+                                        bottom = innerMoonCenter.y + innerMoonRadius,
+                                    ),
+                                )
+                            }
+                            val crescentPath = Path.combine(PathOperation.Difference, outerMoonPath, innerMoonPath)
+                            drawPath(crescentPath, GoldLight)
+                        }
+                        drawHorizonSun(Offset(circleCenter.x, circleTopPx - 28f * scaleY), Color(0xFFFFB84D))
+                        drawCircle(
+                            color = Color.White.copy(alpha = 0.76f),
+                            radius = circleRadiusPx,
+                            center = circleCenter,
+                            style = Stroke(width = 3f * scaleX),
+                        )
+                        drawCircle(
+                            color = Color(0xFF6F8491).copy(alpha = 0.52f),
+                            radius = circleRadiusPx + 2f * scaleX,
+                            center = circleCenter,
+                            style = Stroke(width = 1.4f * scaleX),
+                        )
+                        drawArc(
+                            color = Color(0xFFFFC247),
+                            startAngle = activeSegmentArc.first,
+                            sweepAngle = activeSegmentArc.second.coerceAtLeast(0f),
+                            useCenter = false,
+                            topLeft = Offset(circleLeftPx, circleTopPx),
+                            size = Size(circleRadiusPx * 2f, circleRadiusPx * 2f),
+                            style = Stroke(width = 3f * scaleX),
+                        )
+                        fun drawTimelineMarker(center: Offset) {
+                            drawCircle(Color.White.copy(alpha = 0.96f), radius = 5.2f * scaleX, center = center)
+                            drawCircle(Color(0xFF173F68), radius = 2.4f * scaleX, center = center)
+                        }
+                        val timelineEventPoints = listOf(sunrisePoint, sunsetPoint, secondThirdPoint, finalThirdPoint, fajrPoint)
+                        timelineEventPoints.forEach(::drawTimelineMarker)
+                    }
+
+                    data.timelineAlarms.zip(timelineAlarmAngles).forEach { (alarm, angleDegrees) ->
+                        key(alarm.id) {
+                            val radians = angleDegrees * PI / 180.0
+                            val iconSize = if (alarm.isSubAlarm) 12.4f else 14f
+                            val iconCenterX = circleCenterX + circleRadius * cos(radians).toFloat()
+                            val iconCenterY = circleCenterY + circleRadius * sin(radians).toFloat()
+                            TimelineAlarmMarkerIcon(
+                                isSubAlarm = alarm.isSubAlarm,
+                                modifier = Modifier
+                                    .offset(x = (iconCenterX - iconSize / 2f).dp, y = (iconCenterY - iconSize / 2f).dp)
+                                    .size(iconSize.dp),
+                            )
+                        }
+                    }
+
+                    Text(
+                        text = "النهار",
+                        modifier = Modifier.offset(x = (panelWidth / 2f - 47f).dp, y = dayLabelY.dp).width(94.dp),
+                        fontSize = 24.sp,
+                        lineHeight = 26.sp,
+                        fontWeight = FontWeight.Black,
+                        color = Color(0xFF22364F),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                    )
+                    Text(
+                        text = "الليل",
+                        modifier = Modifier.offset(x = (panelWidth / 2f - 61f).dp, y = nightLabelY.dp).width(122.dp),
+                        fontSize = 24.sp,
+                        lineHeight = 26.sp,
+                        fontWeight = FontWeight.Black,
+                        color = Color.White,
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                    )
+                    Text(
+                        text = "الشفق",
+                        modifier = Modifier.offset(x = twilightLabelX.dp, y = twilightLabelY.dp).width(56.dp),
+                        fontSize = 11.sp,
+                        lineHeight = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White.copy(alpha = 0.88f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                    )
+                    DayNightHorizonTime(
+                        label = "الشروق",
+                        time = data.sunriseTime,
+                        dark = false,
+                        modifier = Modifier.offset(x = sunriseLabelX.dp, y = sunriseLabelY.dp).width(sunriseLabelWidth.dp),
+                    )
+                    DayNightHorizonTime(
+                        label = "المغرب",
+                        time = data.thirds[0].startTime,
+                        dark = false,
+                        modifier = Modifier.offset(x = maghribLabelX.dp, y = maghribLabelY.dp).width(maghribLabelWidth.dp),
+                    )
+                    DayNightHorizonTime(
+                        label = "الفجر",
+                        time = data.thirds[2].endTime,
+                        dark = false,
+                        modifier = Modifier.offset(x = fajrLabelX.dp, y = fajrLabelY.dp).width(fajrLabelWidth.dp),
+                    )
+                    DayNightHorizonTime(
+                        label = "الثلث الأخير",
+                        time = data.thirds[2].startTime,
+                        dark = false,
+                        modifier = Modifier.offset(x = finalThirdLabelX.dp, y = finalThirdLabelY.dp).width(thirdLabelWidth.dp),
+                    )
+                    DayNightHorizonTime(
+                        label = "الثلث الثاني",
+                        time = data.thirds[1].startTime,
+                        dark = false,
+                        modifier = Modifier.offset(x = secondThirdLabelX.dp, y = secondThirdLabelY.dp).width(thirdLabelWidth.dp),
+                    )
+                    timelineAlarmLabels.forEach { (alarm, labelX, labelY) ->
+                        key(alarm.id) {
+                            DayNightHorizonAlarmTime(
+                                label = alarm.title,
+                                time = alarm.time,
+                                dark = false,
+                                modifier = Modifier.offset(x = labelX.dp, y = labelY.dp).width(timelineAlarmLabelWidth.dp),
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun TimelineAlarmMarkerIcon(
+    isSubAlarm: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val amber = Color(0xFFFFC247).copy(alpha = if (isSubAlarm) 0.84f else 1f)
+    val ink = Color(0xFF061D32)
+    val backing = Color(0xFF031323).copy(alpha = if (isSubAlarm) 0.68f else 0.82f)
+    Canvas(modifier = modifier) {
+        val side = minOf(size.width, size.height)
+        val center = Offset(size.width / 2f, size.height / 2f + side * 0.05f)
+        val bodyRadius = side * 0.32f
+        val bellRadius = side * 0.13f
+
+        drawCircle(backing, radius = side * 0.48f, center = center)
+        drawCircle(amber.copy(alpha = 0.18f), radius = side * 0.43f, center = center, style = Stroke(width = side * 0.07f))
+
+        drawCircle(amber, radius = bellRadius, center = Offset(center.x - side * 0.26f, center.y - side * 0.38f))
+        drawCircle(amber, radius = bellRadius, center = Offset(center.x + side * 0.26f, center.y - side * 0.38f))
+        drawLine(
+            color = ink,
+            start = Offset(center.x - side * 0.36f, center.y - side * 0.52f),
+            end = Offset(center.x - side * 0.18f, center.y - side * 0.28f),
+            strokeWidth = side * 0.06f,
+        )
+        drawLine(
+            color = ink,
+            start = Offset(center.x + side * 0.36f, center.y - side * 0.52f),
+            end = Offset(center.x + side * 0.18f, center.y - side * 0.28f),
+            strokeWidth = side * 0.06f,
+        )
+
+        drawCircle(amber, radius = bodyRadius, center = center)
+        drawCircle(ink, radius = bodyRadius * 0.58f, center = center)
+        drawLine(
+            color = amber,
+            start = center,
+            end = Offset(center.x, center.y - bodyRadius * 0.42f),
+            strokeWidth = side * 0.055f,
+        )
+        drawLine(
+            color = amber,
+            start = center,
+            end = Offset(center.x + bodyRadius * 0.42f, center.y + bodyRadius * 0.16f),
+            strokeWidth = side * 0.055f,
+        )
+        drawLine(
+            color = amber,
+            start = Offset(center.x - bodyRadius * 0.48f, center.y + bodyRadius * 0.78f),
+            end = Offset(center.x - bodyRadius * 0.68f, center.y + bodyRadius),
+            strokeWidth = side * 0.06f,
+        )
+        drawLine(
+            color = amber,
+            start = Offset(center.x + bodyRadius * 0.48f, center.y + bodyRadius * 0.78f),
+            end = Offset(center.x + bodyRadius * 0.68f, center.y + bodyRadius),
+            strokeWidth = side * 0.06f,
+        )
+    }
+}
+
+@Composable
+private fun DayNightHorizonTime(
+    label: String,
+    time: String,
+    dark: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(1.dp),
+    ) {
+        Text(
+            text = label,
+            fontSize = 9.sp,
+            lineHeight = 11.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (dark) Color(0xFF22364F) else Color.White,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+        Text(
+            text = time,
+            fontSize = 12.sp,
+            lineHeight = 13.sp,
+            fontWeight = FontWeight.Black,
+            color = if (dark) Color(0xFF22364F) else Color.White,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+    }
+}
+
+@Composable
+private fun DayNightHorizonAlarmTime(
+    label: String,
+    time: String,
+    dark: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(0.dp),
+    ) {
+        Text(
+            text = label,
+            fontSize = 9.sp,
+            lineHeight = 9.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (dark) Color(0xFF22364F) else Color.White,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+        Text(
+            text = time,
+            modifier = Modifier.offset(y = (-3).dp),
+            fontSize = 12.sp,
+            lineHeight = 12.sp,
+            fontWeight = FontWeight.Black,
+            color = if (dark) Color(0xFF22364F) else Color.White,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+    }
 }
 
 @Composable
@@ -3714,6 +4931,15 @@ private fun wakeSummaryText(
     val context = LocalContext.current
     val recurringSummary = if (
         wakeConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
+        wakeConfig.repeatMode == WakeRepeatMode.ONCE
+    ) {
+        stringResource(
+            R.string.wake_summary_with_days,
+            mainSummary,
+            stringResource(R.string.wake_schedule_once),
+        )
+    } else if (
+        wakeConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
         !isEveryWakeScheduleDay(wakeConfig.scheduledDays)
     ) {
         stringResource(
@@ -4528,7 +5754,15 @@ private fun nextWakeAlarmTrigger(
     delegationId: Int,
     config: com.tunisianprayertimes.PrayerWakeConfig,
 ): WakeAlarmComputer.ScheduledWakeTrigger? {
-    if (!config.enabled) return null
+    return nextWakeAlarmTriggers(context, delegationId, config).firstOrNull()
+}
+
+private fun nextWakeAlarmTriggers(
+    context: android.content.Context,
+    delegationId: Int,
+    config: com.tunisianprayertimes.PrayerWakeConfig,
+): List<WakeAlarmComputer.ScheduledWakeTrigger> {
+    if (!config.enabled) return emptyList()
     val now = Calendar.getInstance()
     val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
     val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
@@ -4551,7 +5785,33 @@ private fun nextWakeAlarmTrigger(
         }
     }
     return WakeAlarmComputer.compute(now, config, prayerDays)
-        .allTriggers.firstOrNull()
+        .allTriggers
+}
+
+private fun scheduledWakeAlarmTriggersForDay(
+    context: android.content.Context,
+    delegationId: Int,
+    config: com.tunisianprayertimes.PrayerWakeConfig,
+    day: Calendar,
+): List<WakeAlarmComputer.ScheduledWakeTrigger> {
+    if (!config.enabled) return emptyList()
+    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
+    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
+    val times = PrayerTimesRepository.loadDayPrayerTimes(
+        context = context,
+        delegationId = delegationId,
+        year = day.get(Calendar.YEAR),
+        month = day.get(Calendar.MONTH) + 1,
+        day = day.get(Calendar.DAY_OF_MONTH),
+    ) ?: return emptyList()
+    val prayerDay = WakeAlarmComputer.PrayerDayContext(
+        date = day,
+        prayerTimes = times,
+        isFriday = day.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
+        jomoaaHour = jomoaaHour,
+        jomoaaMinute = jomoaaMinute,
+    )
+    return WakeAlarmComputer.scheduledTriggers(config, listOf(prayerDay))
 }
 
 private fun refreshWakeSilenceConflictEditor(
@@ -4702,6 +5962,19 @@ private fun formatWakeAlarmDateTime(timeInMillis: Long): String {
 
 private fun formatClockTime(hour: Int, minute: Int): String =
     String.format(Locale.US, "%02d:%02d", hour, minute)
+
+private fun minuteOfDay(targetTimeInMillis: Long): Int {
+    val calendar = Calendar.getInstance().apply { timeInMillis = targetTimeInMillis }
+    return calendar.get(Calendar.HOUR_OF_DAY) * 60 + calendar.get(Calendar.MINUTE)
+}
+
+private fun normalizedMinuteOfDay(minuteOfDay: Int): Int =
+    ((minuteOfDay % (24 * 60)) + (24 * 60)) % (24 * 60)
+
+private fun minutesBetweenInDay(startMinuteOfDay: Int, endMinuteOfDay: Int): Int {
+    val totalMinutes = 24 * 60
+    return (normalizedMinuteOfDay(endMinuteOfDay) - normalizedMinuteOfDay(startMinuteOfDay) + totalMinutes) % totalMinutes
+}
 
 private fun formatTimeOfDay(targetTimeInMillis: Long): String {
     val calendar = Calendar.getInstance().apply { timeInMillis = targetTimeInMillis }

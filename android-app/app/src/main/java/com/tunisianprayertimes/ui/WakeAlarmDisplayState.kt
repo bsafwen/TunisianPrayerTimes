@@ -2,6 +2,7 @@ package com.tunisianprayertimes.ui
 
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.WakeRepeatMode
 
 internal data class WakeAlarmDisplayState(
     val visibleWakeAlarms: List<PrayerWakeConfig>,
@@ -30,7 +31,7 @@ internal fun wakeAlarmDisplayState(
 }
 
 private fun PrayerWakeConfig.isExpiredFromNowAlarm(nowMillis: Long): Boolean {
-    if (mainAlarm.mode != WakeMainAlarmMode.FROM_NOW) {
+    if (mainAlarm.mode != WakeMainAlarmMode.FROM_NOW && repeatMode != WakeRepeatMode.ONCE) {
         return false
     }
 
