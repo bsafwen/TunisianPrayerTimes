@@ -7,10 +7,13 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -323,6 +327,7 @@ internal fun GyroscopeMazeGame(
     difficulty: MathDifficulty,
     onCompleted: () -> Unit,
     modifier: Modifier = Modifier,
+    fitAvailableHeight: Boolean = false,
 ) {
     val context = LocalContext.current
     val spec = remember(difficulty) { specForDifficulty(difficulty) }
@@ -537,12 +542,12 @@ internal fun GyroscopeMazeGame(
 
     // ── UI ───────────────────────────────────────────────────────────────────
     Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(6.dp),
+        modifier = if (fitAvailableHeight) modifier.fillMaxSize() else modifier,
+        verticalArrangement = Arrangement.spacedBy(if (fitAvailableHeight) 4.dp else 6.dp),
     ) {
         Text(
             text = promptText,
-            style = MaterialTheme.typography.bodyLarge,
+            style = if (fitAvailableHeight) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onPrimary,
         )
 
@@ -563,79 +568,40 @@ internal fun GyroscopeMazeGame(
             )
         }
 
-        Canvas(
-            modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(1f)
-                .padding(2.dp),
-        ) {
-            val w = size.width
-            val h = size.height
-            val minDim = minOf(w, h)
-
-            // ── Arena background ──
-            drawRect(color = if (spec.useMaze) Color(0xFF263238) else Color(0xFF1A237E).copy(alpha = 0.80f))
-
-            // ── Maze walls ──
-            val wallColor = if (spec.useMaze) Color(0xFF8D6E63) else Color(0xFF546E7A)
-            for (wall in walls) {
-                drawRect(
-                    color = wallColor,
-                    topLeft = Offset(wall.left * w, wall.top * h),
-                    size = Size((wall.right - wall.left) * w, (wall.bottom - wall.top) * h),
+        if (fitAvailableHeight) {
+            BoxWithConstraints(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f, fill = true),
+                contentAlignment = Alignment.Center,
+            ) {
+                val arenaSize = minOf(maxWidth, maxHeight)
+                GyroscopeMazeArena(
+                    spec = spec,
+                    walls = walls,
+                    holes = holes,
+                    targetPos = targetPos,
+                    ballX = ballX,
+                    ballY = ballY,
+                    holdMs = holdMs,
+                    modifier = Modifier
+                        .size(arenaSize)
+                        .padding(2.dp),
                 )
             }
-
-            // ── Holes ──
-            val holeDrawRadius = spec.ballRadiusFraction * minDim
-            for (hole in holes) {
-                // Outer dark circle
-                drawCircle(
-                    color = Color(0xFF000000),
-                    radius = holeDrawRadius,
-                    center = Offset(hole.x * w, hole.y * h),
-                )
-                // Inner highlight
-                drawCircle(
-                    color = Color(0xFF1C1C1C),
-                    radius = holeDrawRadius * 0.6f,
-                    center = Offset(hole.x * w, hole.y * h),
-                )
-            }
-
-            // ── Target zone ──
-            val targetRadius = spec.targetRadiusFraction * minDim
-            val holdFraction = (holdMs / (spec.holdSeconds * 1000f)).coerceIn(0f, 1f)
-            drawCircle(
-                color = Color(0xFF4CAF50).copy(alpha = 0.25f + 0.45f * holdFraction),
-                radius = targetRadius,
-                center = Offset(targetPos.x * w, targetPos.y * h),
-            )
-            drawCircle(
-                color = Color(0xFF4CAF50),
-                radius = targetRadius,
-                center = Offset(targetPos.x * w, targetPos.y * h),
-                style = Stroke(width = 3.dp.toPx()),
-            )
-
-            // ── Ball (shadow + body + specular highlight) ──
-            val ballRadius = spec.ballRadiusFraction * minDim
-            val bx = ballX * w
-            val by = ballY * h
-            drawCircle(
-                color = Color(0x44000000),
-                radius = ballRadius + 3.dp.toPx(),
-                center = Offset(bx + 2.dp.toPx(), by + 2.dp.toPx()),
-            )
-            drawCircle(
-                color = Color(0xFFF57F17),
-                radius = ballRadius,
-                center = Offset(bx, by),
-            )
-            drawCircle(
-                color = Color(0xCCFFFFFF),
-                radius = ballRadius * 0.35f,
-                center = Offset(bx - ballRadius * 0.25f, by - ballRadius * 0.25f),
+        } else {
+            GyroscopeMazeArena(
+                spec = spec,
+                walls = walls,
+                holes = holes,
+                targetPos = targetPos,
+                ballX = ballX,
+                ballY = ballY,
+                holdMs = holdMs,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1f)
+                    .padding(2.dp),
             )
         }
 
@@ -646,6 +612,89 @@ internal fun GyroscopeMazeGame(
                 color = MaterialTheme.colorScheme.onPrimary,
             )
         }
+    }
+}
+
+@Composable
+private fun GyroscopeMazeArena(
+    spec: MazeSpec,
+    walls: List<Rect>,
+    holes: List<Offset>,
+    targetPos: Offset,
+    ballX: Float,
+    ballY: Float,
+    holdMs: Long,
+    modifier: Modifier = Modifier,
+) {
+    Canvas(modifier = modifier) {
+        val w = size.width
+        val h = size.height
+        val minDim = minOf(w, h)
+
+        // ── Arena background ──
+        drawRect(color = if (spec.useMaze) Color(0xFF263238) else Color(0xFF1A237E).copy(alpha = 0.80f))
+
+        // ── Maze walls ──
+        val wallColor = if (spec.useMaze) Color(0xFF8D6E63) else Color(0xFF546E7A)
+        for (wall in walls) {
+            drawRect(
+                color = wallColor,
+                topLeft = Offset(wall.left * w, wall.top * h),
+                size = Size((wall.right - wall.left) * w, (wall.bottom - wall.top) * h),
+            )
+        }
+
+        // ── Holes ──
+        val holeDrawRadius = spec.ballRadiusFraction * minDim
+        for (hole in holes) {
+            // Outer dark circle
+            drawCircle(
+                color = Color(0xFF000000),
+                radius = holeDrawRadius,
+                center = Offset(hole.x * w, hole.y * h),
+            )
+            // Inner highlight
+            drawCircle(
+                color = Color(0xFF1C1C1C),
+                radius = holeDrawRadius * 0.6f,
+                center = Offset(hole.x * w, hole.y * h),
+            )
+        }
+
+        // ── Target zone ──
+        val targetRadius = spec.targetRadiusFraction * minDim
+        val holdFraction = (holdMs / (spec.holdSeconds * 1000f)).coerceIn(0f, 1f)
+        drawCircle(
+            color = Color(0xFF4CAF50).copy(alpha = 0.25f + 0.45f * holdFraction),
+            radius = targetRadius,
+            center = Offset(targetPos.x * w, targetPos.y * h),
+        )
+        drawCircle(
+            color = Color(0xFF4CAF50),
+            radius = targetRadius,
+            center = Offset(targetPos.x * w, targetPos.y * h),
+            style = Stroke(width = 3.dp.toPx()),
+        )
+
+        // ── Ball (shadow + body + specular highlight) ──
+        val ballRadius = spec.ballRadiusFraction * minDim
+        val bx = ballX * w
+        val by = ballY * h
+        drawCircle(
+            color = Color(0x44000000),
+            radius = ballRadius + 3.dp.toPx(),
+            center = Offset(bx + 2.dp.toPx(), by + 2.dp.toPx()),
+        )
+        drawCircle(
+            color = Color(0xFFF57F17),
+            radius = ballRadius,
+            center = Offset(bx, by),
+        )
+        drawCircle(
+            color = Color(0xCCFFFFFF),
+            radius = ballRadius * 0.35f,
+            center = Offset(bx - ballRadius * 0.25f, by - ballRadius * 0.25f),
+        )
     }
 }
 
