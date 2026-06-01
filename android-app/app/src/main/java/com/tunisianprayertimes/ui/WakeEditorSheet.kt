@@ -286,14 +286,13 @@ fun WakeEditorSheet(
     val supportsSilenceUntilAlarm = mode == WakeMainAlarmMode.FROM_NOW
     val effectiveSilenceUntilAlarm = silenceUntilAlarm && supportsSilenceUntilAlarm
 
-    fun rescheduleFromNowAlarm(hoursText: String, minutesText: String) {
-        fromNowHoursText = hoursText
-        fromNowMinutesText = minutesText
-        fromNowTriggerAtMillis = System.currentTimeMillis() + parseFromNowOffsetMinutes(
-            hoursText = hoursText,
-            minutesText = minutesText,
-            fallbackMinutes = initialFromNowOffsetMinutes,
-        ).toMillis()
+    fun rescheduleFromNowAlarm(totalMinutes: Int) {
+        val safeTotalMinutes = totalMinutes.coerceAtLeast(1)
+        val hours = safeTotalMinutes / 60
+        val minutes = safeTotalMinutes % 60
+        fromNowHoursText = hours.takeIf { it > 0 }?.toString().orEmpty()
+        fromNowMinutesText = minutes.toString()
+        fromNowTriggerAtMillis = System.currentTimeMillis() + safeTotalMinutes.toMillis()
     }
 
     val draftConfig = remember(
@@ -549,18 +548,7 @@ fun WakeEditorSheet(
                         onRepeatModeChange = { updated -> repeatMode = updated },
                         fromNowHoursText = fromNowHoursText,
                         fromNowMinutesText = fromNowMinutesText,
-                        onFromNowHoursTextChange = { updatedHours ->
-                            rescheduleFromNowAlarm(
-                                hoursText = updatedHours,
-                                minutesText = fromNowMinutesText,
-                            )
-                        },
-                        onFromNowMinutesTextChange = { updatedMinutes ->
-                            rescheduleFromNowAlarm(
-                                hoursText = fromNowHoursText,
-                                minutesText = updatedMinutes,
-                            )
-                        },
+                        onFromNowDurationMinutesChange = { totalMinutes -> rescheduleFromNowAlarm(totalMinutes) },
                         silenceUntilAlarm = effectiveSilenceUntilAlarm,
                         onSilenceUntilAlarmChange = { updated -> silenceUntilAlarm = updated },
                     )
@@ -806,8 +794,7 @@ private fun WakeScheduleBuilder(
     onRepeatModeChange: (WakeRepeatMode) -> Unit,
     fromNowHoursText: String,
     fromNowMinutesText: String,
-    onFromNowHoursTextChange: (String) -> Unit,
-    onFromNowMinutesTextChange: (String) -> Unit,
+    onFromNowDurationMinutesChange: (Int) -> Unit,
     silenceUntilAlarm: Boolean,
     onSilenceUntilAlarmChange: (Boolean) -> Unit,
 ) {
@@ -859,8 +846,7 @@ private fun WakeScheduleBuilder(
                 WakeFromNowModeControls(
                     hoursText = fromNowHoursText,
                     minutesText = fromNowMinutesText,
-                    onHoursTextChange = onFromNowHoursTextChange,
-                    onMinutesTextChange = onFromNowMinutesTextChange,
+                    onDurationMinutesChange = onFromNowDurationMinutesChange,
                     silenceUntilAlarm = silenceUntilAlarm,
                     onSilenceUntilAlarmChange = onSilenceUntilAlarmChange,
                 )
@@ -1184,23 +1170,23 @@ private fun WakeRepetitionSelector(
                     onSelectedDaysChange(com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS)
                 },
             )
-            if (repeatMode != WakeRepeatMode.ONCE) {
-                com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS.forEach { day ->
-                    val selected = day in normalizedDays
-                    WakeScheduleDayChip(
-                        day = day,
-                        selected = selected,
-                        onClick = {
-                            onRepeatModeChange(WakeRepeatMode.RECURRING)
-                            val nextDays = if (selected) {
-                                if (normalizedDays.size == 1) normalizedDays else normalizedDays - day
-                            } else {
-                                normalizedDays + day
-                            }
-                            onSelectedDaysChange(nextDays.normalizedWakeScheduleDays())
-                        },
-                    )
-                }
+            com.tunisianprayertimes.ALL_WAKE_SCHEDULE_DAYS.forEach { day ->
+                val selected = repeatMode != WakeRepeatMode.ONCE && day in normalizedDays
+                WakeScheduleDayChip(
+                    day = day,
+                    selected = selected,
+                    onClick = {
+                        onRepeatModeChange(WakeRepeatMode.RECURRING)
+                        val nextDays = if (repeatMode == WakeRepeatMode.ONCE) {
+                            setOf(day)
+                        } else if (selected) {
+                            if (normalizedDays.size == 1) normalizedDays else normalizedDays - day
+                        } else {
+                            normalizedDays + day
+                        }
+                        onSelectedDaysChange(nextDays.normalizedWakeScheduleDays())
+                    },
+                )
             }
         }
     }
@@ -1422,37 +1408,48 @@ private fun WakeFixedTimeModeControls(
 private fun WakeFromNowModeControls(
     hoursText: String,
     minutesText: String,
-    onHoursTextChange: (String) -> Unit,
-    onMinutesTextChange: (String) -> Unit,
+    onDurationMinutesChange: (Int) -> Unit,
     silenceUntilAlarm: Boolean,
     onSilenceUntilAlarmChange: (Boolean) -> Unit,
 ) {
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedTextField(
-            value = hoursText,
-            onValueChange = { newValue -> onHoursTextChange(sanitizeHoursInput(newValue)) },
-            modifier = Modifier.weight(1f),
-            label = { Text(stringResource(R.string.wake_editor_from_now_hours_label)) },
-            textStyle = LocalTextStyle.current.copy(
-                textAlign = TextAlign.Right,
-                textDirection = TextDirection.Ltr,
+    val context = LocalContext.current
+    val totalMinutes = fromNowTotalMinutes(hoursText, minutesText).coerceAtLeast(1)
+    val quickAdds = listOf(1, 5, 10, 15, 30, 60)
+
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Text(
+            text = formatWakeScheduleDuration(
+                context = context,
+                hours = totalMinutes / 60,
+                minutes = totalMinutes % 60,
             ),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = GreenPrimaryDark,
+            textAlign = TextAlign.Center,
         )
 
-        OutlinedTextField(
-            value = minutesText,
-            onValueChange = { newValue -> onMinutesTextChange(sanitizeHourMinutePartInput(newValue)) },
-            modifier = Modifier.weight(1f),
-            label = { Text(stringResource(R.string.wake_editor_from_now_minutes_label)) },
-            textStyle = LocalTextStyle.current.copy(
-                textAlign = TextAlign.Right,
-                textDirection = TextDirection.Ltr,
-            ),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            singleLine = true,
-        )
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            quickAdds.chunked(3).forEach { rowItems ->
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    rowItems.forEach { minutesToAdd ->
+                        WakeDurationAdjustChip(
+                            text = formatWakeDurationShort(minutesToAdd),
+                            canSubtract = totalMinutes > 1,
+                            onSubtract = {
+                                onDurationMinutesChange((totalMinutes - minutesToAdd).coerceAtLeast(1))
+                            },
+                            onAdd = { onDurationMinutesChange(totalMinutes + minutesToAdd) },
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                }
+            }
+        }
     }
 
     WakeSwitchSettingRow(
@@ -1461,6 +1458,91 @@ private fun WakeFromNowModeControls(
         onCheckedChange = onSilenceUntilAlarmChange,
     )
 }
+
+@Composable
+private fun WakeDurationAdjustChip(
+    text: String,
+    canSubtract: Boolean,
+    onSubtract: () -> Unit,
+    onAdd: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val shape = RoundedCornerShape(14.dp)
+    Surface(
+        modifier = modifier
+            .heightIn(min = 48.dp),
+        shape = shape,
+        color = GreenPrimary.copy(alpha = 0.06f),
+        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.20f)),
+    ) {
+        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 7.dp, vertical = 7.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                WakeDurationAdjustZone(
+                    text = "−",
+                    enabled = canSubtract,
+                    onClick = onSubtract,
+                )
+                Text(
+                    text = text,
+                    modifier = Modifier.weight(1f),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = TextDark,
+                    textAlign = TextAlign.Center,
+                    style = LocalTextStyle.current.copy(textDirection = TextDirection.Rtl),
+                    maxLines = 1,
+                )
+                WakeDurationAdjustZone(
+                    text = "+",
+                    enabled = true,
+                    onClick = onAdd,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun WakeDurationAdjustZone(
+    text: String,
+    enabled: Boolean,
+    onClick: () -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .width(30.dp)
+            .height(32.dp)
+            .clickable(enabled = enabled, onClick = onClick),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = text,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (enabled) GreenPrimaryDark else TextMuted.copy(alpha = 0.38f),
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+    }
+}
+
+private fun fromNowTotalMinutes(hoursText: String, minutesText: String): Int {
+    val hours = hoursText.toIntOrNull()?.coerceAtLeast(0) ?: 0
+    val minutes = minutesText.toIntOrNull()?.coerceIn(0, 59) ?: 0
+    return (hours * 60) + minutes
+}
+
+private fun formatWakeDurationShort(totalMinutes: Int): String =
+    if (totalMinutes >= 60 && totalMinutes % 60 == 0) {
+        "${totalMinutes / 60} س"
+    } else {
+        "$totalMinutes د"
+    }
 
 @Composable
 private fun WakeChoiceButton(
