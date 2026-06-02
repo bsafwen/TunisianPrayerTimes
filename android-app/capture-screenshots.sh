@@ -190,7 +190,17 @@ tap_button() {
 # ── Navigate onboarding using text-based button search ────────────────────
 tap_next_button() {
     local serial="$1"
-    tap_button "$serial" "التالي" || tap_button "$serial" "onboarding_next"
+    if tap_button "$serial" "التالي" || tap_button "$serial" "onboarding_next"; then
+        return 0
+    fi
+
+    # Some physical devices expose the Compose button bounds without text.
+    # RTL layout places the primary Next button on the left half.
+    local w h
+    w=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f1)
+    h=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f2)
+    echo "  → Tapping Next button by coordinate fallback"
+    adb -s "$serial" shell input tap $(( w / 3 )) $(( h * 5 / 6 ))
 }
 
 tap_start_button() {
@@ -209,15 +219,30 @@ tap_start_button() {
 
 tap_qibla_tab() {
     local serial="$1"
-    if tap_button "$serial" "القبلة"; then
+    local dump="/sdcard/window_dump.xml"
+    adb -s "$serial" shell uiautomator dump "$dump" >/dev/null 2>&1 || true
+    local xml nodes bounds_raw
+    xml=$(adb -s "$serial" shell cat "$dump" 2>/dev/null || true)
+    adb -s "$serial" shell rm "$dump" 2>/dev/null || true
+    nodes=$(echo "$xml" | sed 's/></>\n</g')
+
+    # The tab label/icon nodes are often not clickable themselves in Compose.
+    # Tap the wider bottom-navigation parent hit target around the qibla label.
+    local h bottom_threshold
+    h=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f2)
+    bottom_threshold=$(( h * 3 / 4 ))
+    bounds_raw=$(echo "$nodes" | grep 'clickable="true"' | sed -n 's/.*bounds="\[\([0-9]*\),\([0-9]*\)\]\[\([0-9]*\),\([0-9]*\)\]".*/\1 \2 \3 \4/p' | awk -v threshold="$bottom_threshold" '$2 > threshold { print }' | sort -n | head -1 || true)
+    if [ -n "$bounds_raw" ]; then
+        local x1 y1 x2 y2
+        read -r x1 y1 x2 y2 <<< "$bounds_raw"
+        adb -s "$serial" shell input tap $(( (x1 + x2) / 2 )) $(( (y1 + y2) / 2 ))
         return 0
     fi
 
-    local w h
+    local w
     w=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f1)
-    h=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f2)
     echo "  → Tapping Qibla tab by coordinate fallback"
-    adb -s "$serial" shell input tap $(( w / 6 )) $(( h - 80 ))
+    adb -s "$serial" shell input tap $(( w / 6 )) $(( h * 93 / 100 ))
 }
 
 tap_qibla_compute_button() {
@@ -226,26 +251,7 @@ tap_qibla_compute_button() {
         return 0
     fi
 
-    local dump="/sdcard/window_dump.xml"
-    adb -s "$serial" shell uiautomator dump "$dump" 2>/dev/null || true
-    local xml nodes bounds_raw
-    xml=$(adb -s "$serial" shell cat "$dump" 2>/dev/null || true)
-    adb -s "$serial" shell rm "$dump" 2>/dev/null || true
-    nodes=$(echo "$xml" | sed 's/></>\n</g')
-    bounds_raw=$(echo "$nodes" | grep 'clickable="true"' | head -1 | sed -n 's/.*bounds="\[\([0-9]*\),\([0-9]*\)\]\[\([0-9]*\),\([0-9]*\)\]".*/\1 \2 \3 \4/p' || true)
-    if [ -n "$bounds_raw" ]; then
-        local x1 y1 x2 y2
-        read -r x1 y1 x2 y2 <<< "$bounds_raw"
-        echo "  → Tapping Qibla compute button at detected bounds"
-        adb -s "$serial" shell input tap $(( (x1 + x2) / 2 )) $(( (y1 + y2) / 2 ))
-        return 0
-    fi
-
-    echo "  → Tapping Qibla compute button by coordinate fallback"
-    local w h
-    w=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f1)
-    h=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f2)
-    adb -s "$serial" shell input tap $(( w / 2 )) $(( h * 4 / 5 ))
+    echo "  → No Qibla compute button found; waiting for automatic Qibla state"
 }
 
 capture_qibla_screen() {
@@ -254,11 +260,21 @@ capture_qibla_screen() {
     echo "  Opening Qibla screen..."
     prepare_qibla_location "$serial"
     tap_qibla_tab "$serial"
-    wait_for_text "$serial" "اتجاه القبلة" 10 || wait_ui
+    if ! wait_for_text "$serial" "اتجاه القبلة" 10; then
+        echo "  → Qibla tab did not open; retrying by coordinate fallback"
+        local w h
+        w=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f1)
+        h=$(adb -s "$serial" shell wm size | sed 's/.*: //' | cut -dx -f2)
+        adb -s "$serial" shell input tap $(( w / 6 )) $(( h * 93 / 100 ))
+        wait_for_text "$serial" "اتجاه القبلة" 10
+    fi
 
     echo "  Computing Qibla direction..."
     tap_qibla_compute_button "$serial"
-    wait_for_text "$serial" "حسب موقعك الحالي" 30 || sleep 5
+    if ! wait_for_text "$serial" "حسب موقعك الحالي" 30; then
+        echo "  ✗ Qibla did not reach active current-location state; refusing to capture disabled screen" >&2
+        return 1
+    fi
 
     capture "$serial" "${prefix}-qibla.png"
 }

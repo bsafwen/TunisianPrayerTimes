@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">أوقات الصلاة تونس</string>
     <string name="subtitle">مواقيت الصلاة في تونس</string>
-    <string name="source">المصدر: المعهد الوطني للرصد الجوي</string>
+    <string name="source">مصدر البيانات: المعهد الوطني للرصد الجوي (meteo.tn)</string>
     <string name="main_tab_today">الصلاة</string>
     <string name="main_tab_alarms">المنبهات</string>
     <string name="main_tab_qibla">القبلة</string>
@@ -122,7 +122,7 @@
     <string name="pick_aid_adha_time">اختر وقت صلاة عيد الأضحى</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_welcome">هذا التطبيق يقوم بإسكات هاتفك تلقائيًا عند دخول وقت كل صلاة\n\nمواقيت الصلاة المعتمدة هي المواقيت الرسمية للجمهورية التونسية، مصدرها المعهد الوطني للرصد الجوي التونسي\n\nدعنا نشرح لك كيف يعمل</string>
+    <string name="onboarding_welcome">هذا التطبيق يقوم بإسكات هاتفك تلقائيًا عند دخول وقت كل صلاة\n\nيعتمد التطبيق على بيانات مواقيت الصلاة المنشورة من المعهد الوطني للرصد الجوي التونسي على meteo.tn.\n\nهذا التطبيق مستقل وليس تابعًا لأي جهة حكومية ولا يمثلها.\n\nدعنا نشرح لك كيف يعمل</string>
     <string name="onboarding_step2_title">عند الأذان، يتم إسكات الهاتف لمدة محددة بالدقائق</string>
     <string name="onboarding_step2_desc">كل صلاة لها مدة إسكات خاصة بها.
 في المثال أعلاه، سيتم إسكات الهاتف لمدة 60 دقيقة بعد أذان الفجر.</string>
@@ -137,7 +137,7 @@
     <string name="onboarding_wake_alarm_title">منبه الاستيقاظ</string>
     <string name="onboarding_wake_alarm_desc">يمكنك إضافة منبه استيقاظ مرتبط بأوقات الصلاة.\nمثلا: منبه قبل أذان الفجر بـ 30 دقيقة ليوقظك لصلاة الفجر.\n\nيمكنك أيضا ضبطه على وقت ثابت أو بعد مدة من الآن.</string>
     <string name="onboarding_ready_title">جاهز للاستخدام!</string>
-    <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\n\nإذا لم تجد معتمديتك بالضبط، اختر الأقرب إليك فلا فرق في مواقيت الصلاة.\nقائمة المعتمديات مأخوذة من المعهد الوطني للرصد الجوي التونسي.\n\nصلاة مقبولة 🤲</string>
+    <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\n\nإذا لم تجد معتمديتك بالضبط، اختر الأقرب إليك فلا فرق في مواقيت الصلاة.\nقائمة المعتمديات وبيانات المواقيت مأخوذة من البيانات المنشورة من المعهد الوطني للرصد الجوي التونسي على meteo.tn.\nالتطبيق مستقل ولا يمثل أي جهة حكومية.\n\nصلاة مقبولة 🤲</string>
     <string name="onboarding_start">ابدأ</string>
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_prev">السابق</string>
