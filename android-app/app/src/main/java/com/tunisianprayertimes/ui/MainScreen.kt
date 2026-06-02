@@ -662,6 +662,14 @@ fun MainScreen(
                         SunriseAndNightTimesCard(
                             delegationId = delegationId,
                             wakeAlarms = wakeAlarmsForPermission,
+                            onEditWakeAlarm = { alarmId ->
+                                wakeAlarmsForPermission
+                                    ?.firstOrNull { alarm -> alarm.id == alarmId }
+                                    ?.let { alarm ->
+                                        selectedDestinationIndex = mainDestinations.indexOf(MainDestination.Alarms)
+                                        editingWakeAlarm = alarm
+                                    }
+                            },
                         )
 
                         if (RamadanDetector.isRamadan()) {
@@ -2196,11 +2204,27 @@ private data class NightThirdSegment(
 
 private data class NightTimelineAlarm(
     val id: String,
+    val wakeAlarmId: String,
     val title: String,
     val time: String,
     val minuteOfDay: Int,
     val isSubAlarm: Boolean,
 )
+
+private data class NightTimelineAlarmPlacement(
+    val id: String,
+    val alarms: List<NightTimelineAlarm>,
+    val iconCenterX: Float,
+    val iconCenterY: Float,
+    val labelX: Float,
+    val labelY: Float,
+    val labelWidth: Float,
+    val label: String,
+    val time: String,
+) {
+    val isCluster: Boolean = alarms.size > 1
+    val hasSubAlarm: Boolean = alarms.any { alarm -> alarm.isSubAlarm }
+}
 
 private data class NightTimelinePrayer(
     val prayer: Prayer,
@@ -2225,6 +2249,7 @@ private data class NightTimesCardData(
 private fun SunriseAndNightTimesCard(
     delegationId: Int,
     wakeAlarms: List<PrayerWakeConfig>? = null,
+    onEditWakeAlarm: (String) -> Unit = {},
 ) {
     val context = LocalContext.current
     var currentTimeMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
@@ -2268,6 +2293,7 @@ private fun SunriseAndNightTimesCard(
                 scheduledWakeAlarmTriggersForDay(context, delegationId, wakeAlarm, todayCalendar).map { trigger ->
                     NightTimelineAlarm(
                         id = listOfNotNull(trigger.alarmId, trigger.subAlarmId, trigger.triggerAtMillis.toString()).joinToString(":"),
+                        wakeAlarmId = trigger.alarmId,
                         title = if (trigger.isSubAlarm) "تنبيه" else "منبّه",
                         time = formatTimeOfDay(trigger.triggerAtMillis),
                         minuteOfDay = minuteOfDay(trigger.triggerAtMillis),
@@ -2364,15 +2390,29 @@ private fun SunriseAndNightTimesCard(
         timelinePrayers = timelinePrayers,
         timelineAlarms = timelineAlarms,
     )
-    NightTimesDayNightHorizon(data = data)
+    NightTimesDayNightHorizon(data = data, onEditWakeAlarm = onEditWakeAlarm)
 }
 
 @Composable
 private fun NightTimesDayNightHorizon(
     data: NightTimesCardData,
+    onEditWakeAlarm: (String) -> Unit,
 ) {
     val skyBlue = Color(0xFF92D8F3)
     val deepNight = Color(0xFF16345C)
+    var selectedAlarmCluster by remember { mutableStateOf<List<NightTimelineAlarm>?>(null) }
+
+    selectedAlarmCluster?.let { alarms ->
+        TimelineAlarmClusterSheet(
+            alarms = alarms,
+            onDismiss = { selectedAlarmCluster = null },
+            onEditAlarm = { alarmId ->
+                selectedAlarmCluster = null
+                onEditWakeAlarm(alarmId)
+            },
+        )
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -2586,7 +2626,6 @@ private fun NightTimesDayNightHorizon(
                             timeLabelHeight,
                         ),
                     )
-                    val timelineAlarmAngles = data.timelineAlarms.map { alarm -> minuteToTimelineAngleDegrees(alarm.minuteOfDay) }
                     val timelinePrayerAngles = data.timelinePrayers.map { prayer -> minuteToTimelineAngleDegrees(prayer.minuteOfDay) }
                     val timelinePrayerLabelWidth = 58f
                     val timelinePrayerLabelHeight = 26f
@@ -2607,6 +2646,11 @@ private fun NightTimesDayNightHorizon(
                     val timelineAlarmLabelHeight = 24f
                     val timelineAlarmMarkerRadius = 7f
                     val timelineAlarmGap = 1f
+                    val timelineAlarmClusterLabelWidth = 54f
+                    val timelineAlarmClusterMarkerSize = 22f
+                    val timelineAlarmCollisionPadding = 3f
+                    val timelineAlarmMinMarkerSpacing = 24f
+                    val timelineAlarmAngles = data.timelineAlarms.map { alarm -> minuteToTimelineAngleDegrees(alarm.minuteOfDay) }
                     val timelineAlarmLabelHalfWidth = timelineAlarmLabelWidth / 2f
                     val timelineAlarmLabelHalfHeight = timelineAlarmLabelHeight / 2f
                     val timelineAlarmMarkerLabelCenterDistance = timelineAlarmMarkerRadius + timelineAlarmGap + (
@@ -2617,17 +2661,147 @@ private fun NightTimesDayNightHorizon(
                             abs(radialX) * timelineAlarmLabelHalfWidth + abs(radialY) * timelineAlarmLabelHalfHeight
                         } ?: 0f
                     )
-                    val timelineAlarmLabels = data.timelineAlarms.zip(timelineAlarmAngles).map { (alarm, angleDegrees) ->
+
+                    data class TimelineAlarmCandidate(
+                        val alarm: NightTimelineAlarm,
+                        val angleDegrees: Float,
+                        val iconCenterX: Float,
+                        val iconCenterY: Float,
+                        val labelX: Float,
+                        val labelY: Float,
+                        val labelBounds: Rect,
+                        val markerBounds: Rect,
+                    )
+
+                    data class TimelineAlarmClusterDraft(
+                        val candidates: MutableList<TimelineAlarmCandidate>,
+                        var labelBounds: Rect,
+                        var markerBounds: Rect,
+                    )
+
+                    fun expandedRect(left: Float, top: Float, right: Float, bottom: Float, padding: Float): Rect = Rect(
+                        left = left - padding,
+                        top = top - padding,
+                        right = right + padding,
+                        bottom = bottom + padding,
+                    )
+
+                    fun combineRects(first: Rect, second: Rect): Rect = Rect(
+                        left = minOf(first.left, second.left),
+                        top = minOf(first.top, second.top),
+                        right = maxOf(first.right, second.right),
+                        bottom = maxOf(first.bottom, second.bottom),
+                    )
+
+                    fun rectsOverlap(first: Rect, second: Rect): Boolean =
+                        first.left < second.right &&
+                            second.left < first.right &&
+                            first.top < second.bottom &&
+                            second.top < first.bottom
+
+                    fun markerDistance(first: TimelineAlarmCandidate, second: TimelineAlarmCandidate): Float {
+                        val dx = first.iconCenterX - second.iconCenterX
+                        val dy = first.iconCenterY - second.iconCenterY
+                        return sqrt(dx * dx + dy * dy)
+                    }
+
+                    fun clusterCollides(cluster: TimelineAlarmClusterDraft, candidate: TimelineAlarmCandidate): Boolean =
+                        rectsOverlap(cluster.labelBounds, candidate.labelBounds) ||
+                            rectsOverlap(cluster.markerBounds, candidate.markerBounds) ||
+                            cluster.candidates.any { existing -> markerDistance(existing, candidate) < timelineAlarmMinMarkerSpacing }
+
+                    fun clustersCollide(first: TimelineAlarmClusterDraft, second: TimelineAlarmClusterDraft): Boolean =
+                        rectsOverlap(first.labelBounds, second.labelBounds) ||
+                            rectsOverlap(first.markerBounds, second.markerBounds) ||
+                            first.candidates.any { left ->
+                                second.candidates.any { right -> markerDistance(left, right) < timelineAlarmMinMarkerSpacing }
+                            }
+
+                    val timelineAlarmCandidates = data.timelineAlarms.zip(timelineAlarmAngles).map { (alarm, angleDegrees) ->
                         val radians = angleDegrees * PI / 180.0
+                        val radialX = cos(radians).toFloat()
+                        val radialY = sin(radians).toFloat()
+                        val iconCenterX = circleCenterX + circleRadius * radialX
+                        val iconCenterY = circleCenterY + circleRadius * radialY
+                        val labelRadius = (circleRadius - timelineAlarmMarkerLabelCenterDistance).coerceAtLeast(18f)
+                        val labelCenterX = circleCenterX + labelRadius * radialX
+                        val labelCenterY = circleCenterY + labelRadius * radialY
+                        val labelX = labelCenterX - timelineAlarmLabelWidth / 2f
+                        val labelY = labelCenterY - timelineAlarmLabelHeight / 2f
+                        val markerHalfSize = timelineAlarmClusterMarkerSize / 2f
+                        TimelineAlarmCandidate(
+                            alarm = alarm,
+                            angleDegrees = angleDegrees,
+                            iconCenterX = iconCenterX,
+                            iconCenterY = iconCenterY,
+                            labelX = labelX,
+                            labelY = labelY,
+                            labelBounds = expandedRect(
+                                labelX,
+                                labelY,
+                                labelX + timelineAlarmLabelWidth,
+                                labelY + timelineAlarmLabelHeight,
+                                timelineAlarmCollisionPadding,
+                            ),
+                            markerBounds = expandedRect(
+                                iconCenterX - markerHalfSize,
+                                iconCenterY - markerHalfSize,
+                                iconCenterX + markerHalfSize,
+                                iconCenterY + markerHalfSize,
+                                0f,
+                            ),
+                        )
+                    }
+                    val timelineAlarmClusterDrafts = mutableListOf<TimelineAlarmClusterDraft>()
+                    timelineAlarmCandidates.sortedBy { candidate -> candidate.angleDegrees }.forEach { candidate ->
+                        val previousCluster = timelineAlarmClusterDrafts.lastOrNull()
+                        if (previousCluster != null && clusterCollides(previousCluster, candidate)) {
+                            previousCluster.candidates.add(candidate)
+                            previousCluster.labelBounds = combineRects(previousCluster.labelBounds, candidate.labelBounds)
+                            previousCluster.markerBounds = combineRects(previousCluster.markerBounds, candidate.markerBounds)
+                        } else {
+                            timelineAlarmClusterDrafts.add(
+                                TimelineAlarmClusterDraft(
+                                    candidates = mutableListOf(candidate),
+                                    labelBounds = candidate.labelBounds,
+                                    markerBounds = candidate.markerBounds,
+                                ),
+                            )
+                        }
+                    }
+                    if (timelineAlarmClusterDrafts.size > 1) {
+                        val firstCluster = timelineAlarmClusterDrafts.first()
+                        val lastCluster = timelineAlarmClusterDrafts.last()
+                        if (clustersCollide(lastCluster, firstCluster)) {
+                            lastCluster.candidates.addAll(firstCluster.candidates)
+                            lastCluster.labelBounds = combineRects(lastCluster.labelBounds, firstCluster.labelBounds)
+                            lastCluster.markerBounds = combineRects(lastCluster.markerBounds, firstCluster.markerBounds)
+                            timelineAlarmClusterDrafts.removeAt(0)
+                        }
+                    }
+                    val timelineAlarmPlacements = timelineAlarmClusterDrafts.map { cluster ->
+                        val sortedCandidates = cluster.candidates.sortedBy { candidate -> candidate.angleDegrees }
+                        val anchor = sortedCandidates[sortedCandidates.size / 2]
+                        val alarms = sortedCandidates.map { candidate -> candidate.alarm }.sortedBy { alarm -> alarm.minuteOfDay }
+                        val clustered = alarms.size > 1
+                        val labelWidth = if (clustered) timelineAlarmClusterLabelWidth else timelineAlarmLabelWidth
+                        val radians = anchor.angleDegrees * PI / 180.0
                         val radialX = cos(radians).toFloat()
                         val radialY = sin(radians).toFloat()
                         val labelRadius = (circleRadius - timelineAlarmMarkerLabelCenterDistance).coerceAtLeast(18f)
                         val labelCenterX = circleCenterX + labelRadius * radialX
                         val labelCenterY = circleCenterY + labelRadius * radialY
-                        Triple(
-                            alarm,
-                            labelCenterX - timelineAlarmLabelWidth / 2f,
-                            labelCenterY - timelineAlarmLabelHeight / 2f,
+
+                        NightTimelineAlarmPlacement(
+                            id = alarms.joinToString("|") { alarm -> alarm.id },
+                            alarms = alarms,
+                            iconCenterX = circleCenterX + circleRadius * radialX,
+                            iconCenterY = circleCenterY + circleRadius * radialY,
+                            labelX = labelCenterX - labelWidth / 2f,
+                            labelY = labelCenterY - timelineAlarmLabelHeight / 2f,
+                            labelWidth = labelWidth,
+                            label = if (clustered) "+${alarms.size}" else alarms.first().title,
+                            time = if (clustered) anchor.alarm.time else alarms.first().time,
                         )
                     }
 
@@ -3238,18 +3412,33 @@ private fun NightTimesDayNightHorizon(
                         }
                     }
 
-                    data.timelineAlarms.zip(timelineAlarmAngles).forEach { (alarm, angleDegrees) ->
-                        key(alarm.id) {
-                            val radians = angleDegrees * PI / 180.0
-                            val iconSize = if (alarm.isSubAlarm) 12.4f else 14f
-                            val iconCenterX = circleCenterX + circleRadius * cos(radians).toFloat()
-                            val iconCenterY = circleCenterY + circleRadius * sin(radians).toFloat()
-                            TimelineAlarmMarkerIcon(
-                                isSubAlarm = alarm.isSubAlarm,
-                                modifier = Modifier
-                                    .offset(x = (iconCenterX - iconSize / 2f).dp, y = (iconCenterY - iconSize / 2f).dp)
-                                    .size(iconSize.dp),
-                            )
+                    timelineAlarmPlacements.forEach { placement ->
+                        key(placement.id) {
+                            val iconSize = if (placement.isCluster) timelineAlarmClusterMarkerSize else if (placement.hasSubAlarm) 12.4f else 14f
+                            val markerModifier = Modifier
+                                .offset(x = (placement.iconCenterX - iconSize / 2f).dp, y = (placement.iconCenterY - iconSize / 2f).dp)
+                                .size(iconSize.dp)
+                                .then(
+                                    if (placement.isCluster) {
+                                        Modifier
+                                            .clip(CircleShape)
+                                            .clickable { selectedAlarmCluster = placement.alarms }
+                                    } else {
+                                        Modifier
+                                    },
+                                )
+                            if (placement.isCluster) {
+                                TimelineAlarmClusterMarker(
+                                    count = placement.alarms.size,
+                                    hasSubAlarm = placement.hasSubAlarm,
+                                    modifier = markerModifier,
+                                )
+                            } else {
+                                TimelineAlarmMarkerIcon(
+                                    isSubAlarm = placement.hasSubAlarm,
+                                    modifier = markerModifier,
+                                )
+                            }
                         }
                     }
 
@@ -3313,13 +3502,25 @@ private fun NightTimesDayNightHorizon(
                         dark = false,
                         modifier = Modifier.offset(x = secondThirdLabelX.dp, y = secondThirdLabelY.dp).width(thirdLabelWidth.dp),
                     )
-                    timelineAlarmLabels.forEach { (alarm, labelX, labelY) ->
-                        key(alarm.id) {
+                    timelineAlarmPlacements.forEach { placement ->
+                        key("label_${placement.id}") {
+                            val labelModifier = Modifier
+                                .offset(x = placement.labelX.dp, y = placement.labelY.dp)
+                                .width(placement.labelWidth.dp)
+                                .then(
+                                    if (placement.isCluster) {
+                                        Modifier
+                                            .clip(RoundedCornerShape(6.dp))
+                                            .clickable { selectedAlarmCluster = placement.alarms }
+                                    } else {
+                                        Modifier
+                                    },
+                                )
                             DayNightHorizonAlarmTime(
-                                label = alarm.title,
-                                time = alarm.time,
+                                label = placement.label,
+                                time = placement.time,
                                 dark = false,
-                                modifier = Modifier.offset(x = labelX.dp, y = labelY.dp).width(timelineAlarmLabelWidth.dp),
+                                modifier = labelModifier,
                             )
                         }
                     }
@@ -3398,6 +3599,116 @@ private fun TimelineAlarmMarkerIcon(
             end = Offset(center.x + bodyRadius * 0.68f, center.y + bodyRadius),
             strokeWidth = side * 0.06f,
         )
+    }
+}
+
+@Composable
+private fun TimelineAlarmClusterMarker(
+    count: Int,
+    hasSubAlarm: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val markerColor = Color(0xFFFFC247).copy(alpha = if (hasSubAlarm) 0.90f else 1f)
+    Box(
+        modifier = modifier
+            .background(Color(0xFF031323).copy(alpha = 0.86f), CircleShape)
+            .border(BorderStroke(1.2.dp, markerColor.copy(alpha = 0.82f)), CircleShape),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = count.coerceAtMost(9).let { visibleCount -> if (count > 9) "+9" else visibleCount.toString() },
+            fontSize = 10.sp,
+            lineHeight = 10.sp,
+            fontWeight = FontWeight.Black,
+            color = markerColor,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun TimelineAlarmClusterSheet(
+    alarms: List<NightTimelineAlarm>,
+    onDismiss: () -> Unit,
+    onEditAlarm: (String) -> Unit,
+) {
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val sortedAlarms = remember(alarms) { alarms.sortedBy { alarm -> alarm.minuteOfDay } }
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .padding(horizontal = 20.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text(
+                text = if (sortedAlarms.size == 1) "منبّه على الخط الزمني" else "${sortedAlarms.size} منبّهات متقاربة",
+                fontSize = 18.sp,
+                lineHeight = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+            sortedAlarms.forEach { alarm ->
+                TimelineAlarmClusterRow(
+                    alarm = alarm,
+                    onEditAlarm = onEditAlarm,
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+private fun TimelineAlarmClusterRow(
+    alarm: NightTimelineAlarm,
+    onEditAlarm: (String) -> Unit,
+) {
+    val shape = RoundedCornerShape(12.dp)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .clickable { onEditAlarm(alarm.wakeAlarmId) }
+            .background(if (alarm.isSubAlarm) GoldLight.copy(alpha = 0.12f) else GreenPrimary.copy(alpha = 0.08f))
+            .border(BorderStroke(1.dp, if (alarm.isSubAlarm) Gold.copy(alpha = 0.22f) else GreenPrimary.copy(alpha = 0.24f)), shape)
+            .padding(horizontal = 13.dp, vertical = 11.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
+        ) {
+            Text(
+                text = alarm.time,
+                fontSize = 18.sp,
+                lineHeight = 22.sp,
+                fontWeight = FontWeight.Black,
+                color = PrayerNameColor,
+                maxLines = 1,
+            )
+            Text(
+                text = alarm.title,
+                fontSize = 12.sp,
+                lineHeight = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextMuted,
+                maxLines = 1,
+            )
+        }
+        TextButton(onClick = { onEditAlarm(alarm.wakeAlarmId) }) {
+            Text(text = "تعديل")
+        }
     }
 }
 
