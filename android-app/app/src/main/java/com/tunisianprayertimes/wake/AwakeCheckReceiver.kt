@@ -28,8 +28,10 @@ class AwakeCheckReceiver : BroadcastReceiver() {
                 )
                 val autoSilenceConflictPrayer = intent.getStringExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER)
                     ?.let { rawPrayer -> runCatching { Prayer.valueOf(rawPrayer) }.getOrNull() }
+                val scheduledTriggerAtMillis = intent.getLongExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, 0L)
+                    .takeIf { millis -> millis > 0L }
 
-                if (AwakeCheckSilencePolicy.shouldCancelBeforeStart(context, autoSilenceOverrideAllowed)) {
+                if (AwakeCheckSilencePolicy.shouldCancelBeforeStart(context, autoSilenceOverrideAllowed, scheduledTriggerAtMillis)) {
                     Log.d(TAG, "Awake check suppressed during app-controlled silence eventId=$eventId")
                     AwakeCheckScheduler.cancel(context, eventId)
                     return
@@ -49,6 +51,7 @@ class AwakeCheckReceiver : BroadcastReceiver() {
                     customRingtoneUri = customRingtoneUri,
                     autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                     autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+                    scheduledTriggerAtMillis = scheduledTriggerAtMillis,
                 )
                 context.startForegroundService(serviceIntent)
             }

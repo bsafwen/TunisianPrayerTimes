@@ -26,6 +26,7 @@ internal object AwakeCheckScheduler {
         val pendingIntent = pendingIntent(
             context = context,
             eventId = resolvedEventId,
+            triggerAtMillis = triggerAtMillis,
             ringtonePresetName = ringtonePresetName,
             customRingtoneUri = customRingtoneUri,
             autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
@@ -70,6 +71,7 @@ internal object AwakeCheckScheduler {
             pendingIntent(
                 context = context,
                 eventId = resolvedEventId,
+                triggerAtMillis = null,
                 ringtonePresetName = null,
                 customRingtoneUri = null,
                 autoSilenceOverrideAllowed = false,
@@ -82,6 +84,7 @@ internal object AwakeCheckScheduler {
     private fun pendingIntent(
         context: Context,
         eventId: String,
+        triggerAtMillis: Long?,
         ringtonePresetName: String?,
         customRingtoneUri: String?,
         autoSilenceOverrideAllowed: Boolean,
@@ -94,6 +97,7 @@ internal object AwakeCheckScheduler {
             .putExtra(EXTRA_EVENT_ID, eventId)
             .putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
             .apply {
+                triggerAtMillis?.let { putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, it) }
                 ringtonePresetName?.let { putExtra(EXTRA_RINGTONE, it) }
                 customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
                 autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }

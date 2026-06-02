@@ -8,7 +8,9 @@ import android.content.Intent
 import android.media.AudioManager
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceModeController
+import java.util.Calendar
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -113,6 +115,33 @@ class AwakeCheckSilenceSuppressionTest {
         assertEquals(AwakeCheckService::class.java.name, startedService?.component?.className)
     }
 
+    @Test
+    fun delayedAwakeCheckScheduledInsideAutoSilenceCancelsAfterWindowEnded() {
+        val eventId = "wake:main:delayed-auto-silenced-alarm"
+        scheduleAwakeCheck(eventId)
+
+        receiveStartAwakeCheck(
+            eventId = eventId,
+            scheduledTriggerAtMillis = dhuhrSilenceWindowTriggerAtMillis(),
+        )
+
+        assertAwakeCheckCancelledWithoutService()
+    }
+
+    @Test
+    fun delayedAwakeCheckScheduledInsideAutoSilenceStartsWhenOverrideAllowed() {
+        val eventId = "wake:main:override-auto-silenced-alarm"
+
+        receiveStartAwakeCheck(
+            eventId = eventId,
+            scheduledTriggerAtMillis = dhuhrSilenceWindowTriggerAtMillis(),
+            autoSilenceOverrideAllowed = true,
+        )
+
+        val startedService = nextStartedService()
+        assertEquals(AwakeCheckService::class.java.name, startedService?.component?.className)
+    }
+
     private fun scheduleAwakeCheck(eventId: String) {
         assertTrue(
             AwakeCheckScheduler.schedule(
@@ -126,13 +155,43 @@ class AwakeCheckSilenceSuppressionTest {
         assertEquals(1, shadowAlarmManager.scheduledAlarms.size)
     }
 
-    private fun receiveStartAwakeCheck(eventId: String) {
+    private fun receiveStartAwakeCheck(
+        eventId: String,
+        scheduledTriggerAtMillis: Long? = null,
+        autoSilenceOverrideAllowed: Boolean = false,
+    ) {
         AwakeCheckReceiver().onReceive(
             context,
             Intent(context, AwakeCheckReceiver::class.java)
                 .setAction(AwakeCheckReceiver.ACTION_START_AWAKE_CHECK)
-                .putExtra(EXTRA_EVENT_ID, eventId),
+                .putExtra(EXTRA_EVENT_ID, eventId)
+                .putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
+                .apply {
+                    scheduledTriggerAtMillis?.let { putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, it) }
+                },
         )
+    }
+
+    private fun dhuhrSilenceWindowTriggerAtMillis(): Long {
+        val delegationId = 615
+        val year = 2026
+        val month = 6
+        val day = 2
+        PrefsManager.setEnabled(context, true)
+        PrefsManager.setDelegationId(context, delegationId)
+        val prayerTimes = requireNotNull(
+            PrayerTimesRepository.loadDayPrayerTimes(context, delegationId, year, month, day),
+        )
+        return Calendar.getInstance().apply {
+            set(Calendar.YEAR, year)
+            set(Calendar.MONTH, month - 1)
+            set(Calendar.DAY_OF_MONTH, day)
+            set(Calendar.HOUR_OF_DAY, prayerTimes.dhuhr.hour)
+            set(Calendar.MINUTE, prayerTimes.dhuhr.minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+            add(Calendar.MINUTE, 3)
+        }.timeInMillis
     }
 
     private fun markAutoSilenceActive() {
