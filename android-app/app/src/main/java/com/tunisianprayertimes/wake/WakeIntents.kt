@@ -31,6 +31,7 @@ const val EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK = "extra_auto_silence_conflict_pl
 const val EXTRA_AUTO_SILENCE_CONFLICT_PRAYER = "extra_auto_silence_conflict_prayer"
 const val EXTRA_AWAKE_CHECK_ENABLED = "extra_awake_check_enabled"
 const val EXTRA_AWAKE_CHECK_DELAY_MINUTES = "extra_awake_check_delay_minutes"
+const val EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS = "extra_awake_check_trigger_at_millis"
 const val EXTRA_IS_SUBALARM = "extra_is_subalarm"
 const val EXTRA_SUBALARM_ID = "extra_subalarm_id"
 const val EXTRA_OFFSET_MINUTES = "extra_offset_minutes"

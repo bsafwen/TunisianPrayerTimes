@@ -53,11 +53,14 @@ class AwakeCheckService : Service() {
         )
         val autoSilenceConflictPrayer = intent.getStringExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER)
             ?.let { rawPrayer -> runCatching { Prayer.valueOf(rawPrayer) }.getOrNull() }
+        val scheduledTriggerAtMillis = intent.getLongExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, 0L)
+            .takeIf { millis -> millis > 0L }
 
         if (cancelIfSilenceActive(
                 eventId = eventId,
                 autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                 autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+                scheduledTriggerAtMillis = scheduledTriggerAtMillis,
                 liftAutoSilence = false,
             )
         ) {
@@ -75,6 +78,7 @@ class AwakeCheckService : Service() {
             customRingtoneUri = customRingtoneUri,
             autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
             autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+            scheduledTriggerAtMillis = scheduledTriggerAtMillis,
         )
         return START_NOT_STICKY
     }
@@ -94,6 +98,7 @@ class AwakeCheckService : Service() {
         customRingtoneUri: String?,
         autoSilenceOverrideAllowed: Boolean,
         autoSilenceConflictPrayer: Prayer?,
+        scheduledTriggerAtMillis: Long?,
     ) {
         escalationJob?.cancel()
         escalationJob = serviceScope.launch {
@@ -102,6 +107,7 @@ class AwakeCheckService : Service() {
                     eventId = eventId,
                     autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                     autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+                    scheduledTriggerAtMillis = scheduledTriggerAtMillis,
                     liftAutoSilence = true,
                 )
             ) return@launch
@@ -119,6 +125,7 @@ class AwakeCheckService : Service() {
                         eventId = eventId,
                         autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                         autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+                        scheduledTriggerAtMillis = scheduledTriggerAtMillis,
                         liftAutoSilence = true,
                     )
                 ) return@launch
@@ -141,6 +148,7 @@ class AwakeCheckService : Service() {
                         eventId = eventId,
                         autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                         autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+                        scheduledTriggerAtMillis = scheduledTriggerAtMillis,
                         liftAutoSilence = true,
                     )
                 ) return@launch
@@ -213,6 +221,7 @@ class AwakeCheckService : Service() {
         eventId: String,
         autoSilenceOverrideAllowed: Boolean,
         autoSilenceConflictPrayer: Prayer?,
+        scheduledTriggerAtMillis: Long?,
         liftAutoSilence: Boolean,
     ): Boolean {
         val shouldCancel = if (liftAutoSilence) {
@@ -225,6 +234,7 @@ class AwakeCheckService : Service() {
             AwakeCheckSilencePolicy.shouldCancelBeforeStart(
                 context = this,
                 autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+                scheduledTriggerAtMillis = scheduledTriggerAtMillis,
             )
         }
         if (!shouldCancel) return false
@@ -294,11 +304,13 @@ class AwakeCheckService : Service() {
             customRingtoneUri: String?,
             autoSilenceOverrideAllowed: Boolean = false,
             autoSilenceConflictPrayer: Prayer? = null,
+            scheduledTriggerAtMillis: Long? = null,
         ): Intent = Intent(context, AwakeCheckService::class.java).apply {
             putExtra(EXTRA_EVENT_ID, eventId)
             ringtonePreset?.let { putExtra(EXTRA_RINGTONE, it.name) }
             customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
             putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
+            scheduledTriggerAtMillis?.let { putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, it) }
             autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }
         }
     }
