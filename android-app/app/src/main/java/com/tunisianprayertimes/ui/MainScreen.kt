@@ -23,6 +23,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -44,6 +45,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -902,7 +904,10 @@ fun MainScreen(
                                 .padding(horizontal = 4.dp)
                                 .testTag(destination.testTag())
                                 .clip(RoundedCornerShape(12.dp))
-                                .clickable { selectedDestinationIndex = index },
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                ) { selectedDestinationIndex = index },
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center
                         ) {
@@ -2368,25 +2373,31 @@ private fun NightTimesDayNightHorizon(
 ) {
     val skyBlue = Color(0xFF92D8F3)
     val deepNight = Color(0xFF16345C)
-    Card(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 12.dp),
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        border = BorderStroke(1.dp, Gold.copy(alpha = 0.18f)),
+        contentAlignment = Alignment.Center,
     ) {
-        Column(modifier = Modifier.padding(8.dp)) {
-            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-                BoxWithConstraints(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(442.dp)
-                        .clip(RoundedCornerShape(22.dp))
-                        .background(deepNight)
-                        .border(BorderStroke(1.dp, Divider), RoundedCornerShape(22.dp)),
-                ) {
+        Card(
+            modifier = Modifier
+                .widthIn(max = 430.dp)
+                .fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+            border = BorderStroke(1.dp, Gold.copy(alpha = 0.18f)),
+        ) {
+            Column(modifier = Modifier.padding(8.dp)) {
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                    BoxWithConstraints(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(442.dp)
+                            .clip(RoundedCornerShape(22.dp))
+                            .background(deepNight)
+                            .border(BorderStroke(1.dp, Divider), RoundedCornerShape(22.dp)),
+                    ) {
                     val panelWidth = maxWidth.value
                     val panelHeight = 442f
                     val daylightMinutes = minutesBetweenInDay(data.sunriseMinuteOfDay, data.thirds[0].startMinuteOfDay)
@@ -3326,6 +3337,7 @@ private fun NightTimesDayNightHorizon(
             }
         }
     }
+}
 }
 
 @Composable
