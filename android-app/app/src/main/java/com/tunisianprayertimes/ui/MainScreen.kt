@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
@@ -248,10 +247,9 @@ private const val DEFAULT_FIXED_ALARM_MINUTE = 0
 private val MainContentBottomPadding = 76.dp
 private val WakeAlarmAddButtonSize = 64.dp
 private val WakeAlarmAddButtonBottomPadding = 92.dp
-private const val WakeAlarmAddButtonHiddenScale = 0.92f
 private val WakeAlarmAddButtonShadowElevation = 8.dp
-private const val WakeAlarmAddButtonIdleRevealDelayMillis = 1_000L
-private const val WakeAlarmAddButtonBottomPullRevealDelayMillis = 2_000L
+private const val WakeAlarmAddButtonIdleRevealDelayMillis = 3_000L
+private const val WakeAlarmAddButtonBottomPullRevealDelayMillis = 3_000L
 private val MainHeroCardHeight = 148.dp
 private val MainHeroCardShape = RoundedCornerShape(18.dp)
 private val SilencedHeroStart = Color(0xFF3A1F2E)
@@ -1043,10 +1041,9 @@ fun MainScreen(
             }
         }
 
-        if (showWakeAlarmAddButton) {
+        if (showWakeAlarmAddButton && wakeAlarmAddButtonVisible) {
             WakeAlarmFloatingAddButton(
                 onClick = { quickAddVisible = true },
-                visible = wakeAlarmAddButtonVisible,
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .navigationBarsPadding()
@@ -4263,25 +4260,15 @@ private fun WakeAlarmCard(
 @Composable
 private fun WakeAlarmFloatingAddButton(
     onClick: () -> Unit,
-    visible: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    val animationProgress by animateFloatAsState(
-        targetValue = if (visible) 1f else 0f,
-        label = "wakeAlarmAddButtonProgress",
-    )
-    val scale = WakeAlarmAddButtonHiddenScale + (1f - WakeAlarmAddButtonHiddenScale) * animationProgress
     val shape = RoundedCornerShape(22.dp)
 
     Button(
         onClick = onClick,
-        enabled = visible,
         modifier = modifier
             .graphicsLayer {
-                alpha = animationProgress
-                scaleX = scale
-                scaleY = scale
-                shadowElevation = WakeAlarmAddButtonShadowElevation.toPx() * animationProgress
+                shadowElevation = WakeAlarmAddButtonShadowElevation.toPx()
                 this.shape = shape
                 clip = false
             }
