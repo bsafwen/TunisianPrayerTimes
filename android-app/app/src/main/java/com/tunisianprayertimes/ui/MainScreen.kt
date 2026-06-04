@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
@@ -93,6 +94,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -108,6 +110,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathOperation
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
@@ -115,6 +118,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -198,10 +202,12 @@ import java.util.Locale
 import java.util.UUID
 import kotlin.math.PI
 import kotlin.math.abs
+import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 private enum class MainDestination(val labelRes: Int, val iconRes: Int) {
@@ -239,6 +245,13 @@ private const val DEFAULT_PRAYER_OFFSET_MINUTES = 20
 private const val DEFAULT_TIMER_MINUTES = 15
 private const val DEFAULT_FIXED_ALARM_HOUR = 8
 private const val DEFAULT_FIXED_ALARM_MINUTE = 0
+private val MainContentBottomPadding = 76.dp
+private val WakeAlarmAddButtonSize = 64.dp
+private val WakeAlarmAddButtonBottomPadding = 92.dp
+private const val WakeAlarmAddButtonHiddenScale = 0.92f
+private val WakeAlarmAddButtonShadowElevation = 8.dp
+private const val WakeAlarmAddButtonIdleRevealDelayMillis = 1_000L
+private const val WakeAlarmAddButtonBottomPullRevealDelayMillis = 2_000L
 private val MainHeroCardHeight = 148.dp
 private val MainHeroCardShape = RoundedCornerShape(18.dp)
 private val SilencedHeroStart = Color(0xFF3A1F2E)
@@ -455,6 +468,7 @@ fun MainScreen(
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
     var quickAddVisible by rememberSaveable { mutableStateOf(false) }
     var wakeSilenceConflictEditor by remember { mutableStateOf<WakeSilenceConflictEditorState?>(null) }
+    var pendingReturnToPrayersAfterEdit by rememberSaveable { mutableStateOf(false) }
 
     fun createWakeAlarm(preset: WakeQuickPreset) {
         quickAddVisible = false
@@ -481,9 +495,28 @@ fun MainScreen(
         0
     }
     val selectedDestination = mainDestinations[currentDestinationIndex]
+    val todayScrollState = rememberScrollState()
+    val alarmsScrollState = rememberScrollState()
+    val qiblaScrollState = rememberScrollState()
+    var prayerTableSelectedDate by rememberSaveable {
+        mutableLongStateOf(startOfDayMillis(System.currentTimeMillis()))
+    }
+    val selectedDestinationScrollState = when (selectedDestination) {
+        MainDestination.Today -> todayScrollState
+        MainDestination.Alarms -> alarmsScrollState
+        MainDestination.Qibla -> qiblaScrollState
+    }
 
     LaunchedEffect(selectedDestination) {
         AnalyticsTracker.tabViewed(context, selectedDestination.analyticsName())
+    }
+
+    // When an alarm edit was launched from the prayer-tab timeline, return there once the editor closes.
+    LaunchedEffect(editingWakeAlarm) {
+        if (editingWakeAlarm == null && pendingReturnToPrayersAfterEdit) {
+            selectedDestinationIndex = mainDestinations.indexOf(MainDestination.Today)
+            pendingReturnToPrayersAfterEdit = false
+        }
     }
 
     fun requestFullScreenIntentIfNeeded() {
@@ -566,15 +599,65 @@ fun MainScreen(
     }
     val showPermissionBanner = !hasDnd || !hasAlarm || !hasPhoneState
     val showBatteryBanner = !hasBattery
+    val showWakeAlarmAddButton = selectedDestination == MainDestination.Alarms &&
+        wakeAlarmsForPermission?.isNotEmpty() == true &&
+        editingWakeAlarm == null
+    var wakeAlarmAddButtonVisible by remember { mutableStateOf(true) }
+    var wakeAlarmBottomPullHideActive by remember { mutableStateOf(false) }
+
+    LaunchedEffect(showWakeAlarmAddButton, alarmsScrollState) {
+        if (!showWakeAlarmAddButton) {
+            wakeAlarmAddButtonVisible = true
+            return@LaunchedEffect
+        }
+
+        var previousScrollValue = alarmsScrollState.value
+        snapshotFlow {
+            Pair(
+                alarmsScrollState.value,
+                alarmsScrollState.isScrollInProgress,
+            )
+        }.collectLatest { (scrollValue, scrollInProgress) ->
+            val scrollingDown = scrollInProgress && scrollValue > previousScrollValue
+            val scrollingUp = scrollInProgress && scrollValue < previousScrollValue
+            val atBottom = scrollValue >= alarmsScrollState.maxValue
+            previousScrollValue = scrollValue
+
+            when {
+                scrollingDown -> {
+                    wakeAlarmBottomPullHideActive = false
+                    wakeAlarmAddButtonVisible = false
+                }
+                scrollInProgress && atBottom && !scrollingUp -> {
+                    wakeAlarmBottomPullHideActive = true
+                    wakeAlarmAddButtonVisible = false
+                }
+                scrollingUp -> {
+                    wakeAlarmBottomPullHideActive = false
+                    wakeAlarmAddButtonVisible = true
+                }
+                !scrollInProgress -> {
+                    val revealDelayMillis = if (wakeAlarmBottomPullHideActive) {
+                        WakeAlarmAddButtonBottomPullRevealDelayMillis
+                    } else {
+                        WakeAlarmAddButtonIdleRevealDelayMillis
+                    }
+                    delay(revealDelayMillis)
+                    wakeAlarmAddButtonVisible = true
+                    wakeAlarmBottomPullHideActive = false
+                }
+            }
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(BgCream)
-                .padding(bottom = 76.dp)
+                .padding(bottom = MainContentBottomPadding)
                 .navigationBarsPadding()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(selectedDestinationScrollState)
         ) {
             IslamicHeader()
 
@@ -654,6 +737,10 @@ fun MainScreen(
                         PrayerSettingsCard(
                             delegationId = delegationId,
                             activity = activity,
+                            selectedDate = prayerTableSelectedDate,
+                            onSelectedDateChange = { selectedDate ->
+                                prayerTableSelectedDate = startOfDayMillis(selectedDate)
+                            },
                             onConfigChanged = {
                                 rescheduleIfEnabled()
                             }
@@ -661,11 +748,13 @@ fun MainScreen(
 
                         SunriseAndNightTimesCard(
                             delegationId = delegationId,
+                            selectedDate = prayerTableSelectedDate,
                             wakeAlarms = wakeAlarmsForPermission,
                             onEditWakeAlarm = { alarmId ->
                                 wakeAlarmsForPermission
                                     ?.firstOrNull { alarm -> alarm.id == alarmId }
                                     ?.let { alarm ->
+                                        pendingReturnToPrayersAfterEdit = true
                                         selectedDestinationIndex = mainDestinations.indexOf(MainDestination.Alarms)
                                         editingWakeAlarm = alarm
                                     }
@@ -954,13 +1043,14 @@ fun MainScreen(
             }
         }
 
-        if (selectedDestination == MainDestination.Alarms && wakeAlarmsForPermission?.isNotEmpty() == true && editingWakeAlarm == null) {
+        if (showWakeAlarmAddButton) {
             WakeAlarmFloatingAddButton(
                 onClick = { quickAddVisible = true },
+                visible = wakeAlarmAddButtonVisible,
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .navigationBarsPadding()
-                    .padding(end = 24.dp, bottom = 92.dp),
+                    .padding(end = 24.dp, bottom = WakeAlarmAddButtonBottomPadding),
             )
         }
 
@@ -1841,6 +1931,8 @@ private fun TodayNextPrayerCard(
 private fun PrayerSettingsCard(
     delegationId: Int,
     activity: androidx.appcompat.app.AppCompatActivity,
+    selectedDate: Long,
+    onSelectedDateChange: (Long) -> Unit,
     onConfigChanged: () -> Unit
 ) {
     val context = LocalContext.current
@@ -1850,7 +1942,6 @@ private fun PrayerSettingsCard(
         Calendar.getInstance().apply { timeInMillis = currentTimeMillis }
     }
     val currentDayMillis = remember(currentTimeMillis) { startOfDayMillis(currentTimeMillis) }
-    var selectedDate by rememberSaveable { mutableLongStateOf(currentDayMillis) }
     var lastCurrentDayMillis by remember { mutableLongStateOf(currentDayMillis) }
 
     DisposableEffect(lifecycleOwner) {
@@ -1873,19 +1964,19 @@ private fun PrayerSettingsCard(
     }
 
     LaunchedEffect(currentDayMillis) {
-        // After process death, selectedDate is restored from rememberSaveable
+        // After process death, selectedDate is restored by the parent
         // but lastCurrentDayMillis is re-initialized to currentDayMillis.
         // Detect stale selectedDate that predates today and auto-advance it.
         if (currentDayMillis == lastCurrentDayMillis) {
             if (!isSameCalendarDay(selectedDate, currentDayMillis) &&
                 selectedDate < currentDayMillis
             ) {
-                selectedDate = currentDayMillis
+                onSelectedDateChange(currentDayMillis)
             }
             return@LaunchedEffect
         }
         if (isSameCalendarDay(selectedDate, lastCurrentDayMillis)) {
-            selectedDate = currentDayMillis
+            onSelectedDateChange(currentDayMillis)
         }
         lastCurrentDayMillis = currentDayMillis
     }
@@ -2053,16 +2144,16 @@ private fun PrayerSettingsCard(
                         timeInMillis = selectedDate
                         add(Calendar.DAY_OF_MONTH, -1)
                     }
-                    selectedDate = cal.timeInMillis
+                    onSelectedDateChange(cal.timeInMillis)
                 },
                 onNext = {
                     val cal = Calendar.getInstance().apply {
                         timeInMillis = selectedDate
                         add(Calendar.DAY_OF_MONTH, 1)
                     }
-                    selectedDate = cal.timeInMillis
+                    onSelectedDateChange(cal.timeInMillis)
                 },
-                onDateSelected = { millis -> selectedDate = millis }
+                onDateSelected = { millis -> onSelectedDateChange(millis) }
             )
 
             if (displayTimes != null) {
@@ -2216,6 +2307,9 @@ private data class NightTimelineAlarmPlacement(
     val alarms: List<NightTimelineAlarm>,
     val iconCenterX: Float,
     val iconCenterY: Float,
+    val nearNonAlarmMarker: Boolean,
+    val labelCenterX: Float,
+    val labelCenterY: Float,
     val labelX: Float,
     val labelY: Float,
     val labelWidth: Float,
@@ -2248,30 +2342,32 @@ private data class NightTimesCardData(
 @Composable
 private fun SunriseAndNightTimesCard(
     delegationId: Int,
+    selectedDate: Long,
     wakeAlarms: List<PrayerWakeConfig>? = null,
     onEditWakeAlarm: (String) -> Unit = {},
 ) {
     val context = LocalContext.current
     var currentTimeMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
     val currentDayMillis = remember(currentTimeMillis) { startOfDayMillis(currentTimeMillis) }
-    val todayCalendar = remember(currentDayMillis) {
-        Calendar.getInstance().apply { timeInMillis = currentDayMillis }
+    val selectedDayMillis = remember(selectedDate) { startOfDayMillis(selectedDate) }
+    val selectedCalendar = remember(selectedDayMillis) {
+        Calendar.getInstance().apply { timeInMillis = selectedDayMillis }
     }
-    val yesterdayCalendar = remember(currentDayMillis) {
-        (todayCalendar.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, -1) }
+    val previousCalendar = remember(selectedDayMillis) {
+        (selectedCalendar.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, -1) }
     }
-    val tomorrowCalendar = remember(currentDayMillis) {
-        (todayCalendar.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
+    val nextCalendar = remember(selectedDayMillis) {
+        (selectedCalendar.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
     }
 
-    val todayTimes = remember(delegationId, currentDayMillis) {
-        loadDayPrayerTimesWithFallback(context, delegationId, todayCalendar)
+    val selectedTimes = remember(delegationId, selectedDayMillis) {
+        loadDayPrayerTimesWithFallback(context, delegationId, selectedCalendar)
     }
-    val yesterdayTimes = remember(delegationId, currentDayMillis) {
-        loadDayPrayerTimesWithFallback(context, delegationId, yesterdayCalendar)
+    val previousTimes = remember(delegationId, selectedDayMillis) {
+        loadDayPrayerTimesWithFallback(context, delegationId, previousCalendar)
     }
-    val tomorrowTimes = remember(delegationId, currentDayMillis) {
-        loadDayPrayerTimesWithFallback(context, delegationId, tomorrowCalendar)
+    val nextTimes = remember(delegationId, selectedDayMillis) {
+        loadDayPrayerTimesWithFallback(context, delegationId, nextCalendar)
     }
 
     LaunchedEffect(Unit) {
@@ -2283,14 +2379,14 @@ private fun SunriseAndNightTimesCard(
         }
     }
 
-    val today = todayTimes ?: return
+    val selectedTimesForDay = selectedTimes ?: return
     val visibleWakeAlarms = remember(wakeAlarms, currentTimeMillis) {
         wakeAlarmDisplayState(wakeAlarms, currentTimeMillis).visibleWakeAlarms
     }
-    val timelineAlarms = remember(visibleWakeAlarms, delegationId, currentDayMillis) {
+    val timelineAlarms = remember(visibleWakeAlarms, delegationId, selectedDayMillis) {
         visibleWakeAlarms
             .flatMap { wakeAlarm ->
-                scheduledWakeAlarmTriggersForDay(context, delegationId, wakeAlarm, todayCalendar).map { trigger ->
+                scheduledWakeAlarmTriggersForDay(context, delegationId, wakeAlarm, selectedCalendar).map { trigger ->
                     NightTimelineAlarm(
                         id = listOfNotNull(trigger.alarmId, trigger.subAlarmId, trigger.triggerAtMillis.toString()).joinToString(":"),
                         wakeAlarmId = trigger.alarmId,
@@ -2303,12 +2399,13 @@ private fun SunriseAndNightTimesCard(
             }
             .sortedBy { alarm -> alarm.minuteOfDay }
     }
-    val todayFajrMillis = prayerTimeMillis(todayCalendar, today.fajr)
-    val usePreviousNight = currentTimeMillis < todayFajrMillis && yesterdayTimes != null
-    val nightStartCalendar = if (usePreviousNight) yesterdayCalendar else todayCalendar
-    val nightEndCalendar = if (usePreviousNight) todayCalendar else tomorrowCalendar
-    val nightStartTimes = if (usePreviousNight) requireNotNull(yesterdayTimes) else today
-    val nightEndTimes = if (usePreviousNight) today else (tomorrowTimes ?: return)
+    val selectedFajrMillis = prayerTimeMillis(selectedCalendar, selectedTimesForDay.fajr)
+    val usePreviousNight = isSameCalendarDay(selectedDayMillis, currentDayMillis) &&
+        currentTimeMillis < selectedFajrMillis && previousTimes != null
+    val nightStartCalendar = if (usePreviousNight) previousCalendar else selectedCalendar
+    val nightEndCalendar = if (usePreviousNight) selectedCalendar else nextCalendar
+    val nightStartTimes = if (usePreviousNight) requireNotNull(previousTimes) else selectedTimesForDay
+    val nightEndTimes = if (usePreviousNight) selectedTimesForDay else (nextTimes ?: return)
 
     val nightStartMillis = prayerTimeMillis(nightStartCalendar, nightStartTimes.maghrib)
     val nightEndMillis = prayerTimeMillis(nightEndCalendar, nightEndTimes.fajr)
@@ -2335,28 +2432,28 @@ private fun SunriseAndNightTimesCard(
         time = formatClockTime(prayerTime.hour, prayerTime.minute),
         minuteOfDay = prayerTime.hour * 60 + prayerTime.minute,
     )
-    val isFriday = todayCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+    val isFriday = selectedCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
     val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
     val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
     val middayPrayer = if (isFriday) {
         PrayerTime(
             prayer = Prayer.JOMOAA,
-            hour = if (jomoaaHour >= 0) jomoaaHour else today.dhuhr.hour,
-            minute = if (jomoaaMinute >= 0) jomoaaMinute else today.dhuhr.minute,
+            hour = if (jomoaaHour >= 0) jomoaaHour else selectedTimesForDay.dhuhr.hour,
+            minute = if (jomoaaMinute >= 0) jomoaaMinute else selectedTimesForDay.dhuhr.minute,
         )
     } else {
-        today.dhuhr
+        selectedTimesForDay.dhuhr
     }
     val timelinePrayers = listOf(
         timelinePrayer(nightEndTimes.fajr),
         timelinePrayer(middayPrayer),
-        timelinePrayer(today.asr),
+        timelinePrayer(selectedTimesForDay.asr),
         timelinePrayer(nightStartTimes.maghrib),
         timelinePrayer(nightStartTimes.isha),
     )
     val data = NightTimesCardData(
-        sunriseTime = formatClockTime(today.shurukHour, today.shurukMinute),
-        sunriseMinuteOfDay = today.shurukHour * 60 + today.shurukMinute,
+        sunriseTime = formatClockTime(selectedTimesForDay.shurukHour, selectedTimesForDay.shurukMinute),
+        sunriseMinuteOfDay = selectedTimesForDay.shurukHour * 60 + selectedTimesForDay.shurukMinute,
         currentMinuteOfDay = minuteOfDay(currentTimeMillis),
         nightRange = "من ${formatTimeOfDay(nightStartMillis)} إلى ${formatTimeOfDay(nightEndMillis)}",
         statusText = statusText,
@@ -2559,12 +2656,13 @@ private fun NightTimesDayNightHorizon(
                     val sunriseLabelWidth = 52f
                     val maghribLabelWidth = 58f
                     val horizonLabelSunLift = 52f
+                    val maghribLabelSunLift = horizonLabelSunLift + 10f
                     val sunriseLabelX = sunriseSunX - sunriseLabelWidth / 2f
                     val maghribLabelX = (sunsetSunX - maghribLabelWidth / 2f).coerceIn(6f, panelWidth - maghribLabelWidth - 6f)
                     val thirdLabelWidth = 82f
                     val exteriorLabelTimelineGap = 3f
                     val sunriseLabelY = (sunriseSunY - horizonLabelSunLift).coerceAtLeast(12f)
-                    val maghribLabelY = (sunsetSunY - horizonLabelSunLift).coerceIn(8f, panelHeight - timeLabelHeight - 8f)
+                    val maghribLabelY = (sunsetSunY - maghribLabelSunLift).coerceIn(8f, panelHeight - timeLabelHeight - 8f)
 
                     fun radialLabelExtent(angleDegrees: Float, labelWidth: Float, labelHeight: Float): Float {
                         val radians = angleDegrees * PI / 180.0
@@ -2642,14 +2740,13 @@ private fun NightTimesDayNightHorizon(
                                 (labelCenterY - timelinePrayerLabelHeight / 2f).coerceIn(4f, panelHeight - timelinePrayerLabelHeight - 4f),
                             )
                         }
-                    val timelineAlarmLabelWidth = 46f
-                    val timelineAlarmLabelHeight = 24f
-                    val timelineAlarmMarkerRadius = 7f
-                    val timelineAlarmGap = 1f
-                    val timelineAlarmClusterLabelWidth = 54f
-                    val timelineAlarmClusterMarkerSize = 22f
+                    val timelineAlarmLabelWidth = 40f
+                    val timelineAlarmLabelHeight = 16f
+                    val timelineAlarmMarkerRadius = 5.2f
+                    val timelineAlarmGap = 3f
+                    val timelineAlarmClusterLabelWidth = timelineAlarmLabelWidth
                     val timelineAlarmCollisionPadding = 3f
-                    val timelineAlarmMinMarkerSpacing = 24f
+                    val timelineAlarmMinMarkerSpacing = timelineAlarmMarkerRadius * 2f + 3.2f
                     val timelineAlarmAngles = data.timelineAlarms.map { alarm -> minuteToTimelineAngleDegrees(alarm.minuteOfDay) }
                     val timelineAlarmLabelHalfWidth = timelineAlarmLabelWidth / 2f
                     val timelineAlarmLabelHalfHeight = timelineAlarmLabelHeight / 2f
@@ -2662,9 +2759,45 @@ private fun NightTimesDayNightHorizon(
                         } ?: 0f
                     )
 
+                    // Fixed obstacles: every non-alarm time label that alarm labels must never overlap.
+                    val nonAlarmLabelObstacles = mutableListOf<Rect>()
+                    run {
+                        val pad = 2f
+                        fun obstacle(x: Float, y: Float, width: Float, height: Float) {
+                            nonAlarmLabelObstacles.add(
+                                Rect(x - pad, y - pad, x + width + pad, y + height + pad),
+                            )
+                        }
+                        obstacle(sunriseLabelX, sunriseLabelY, sunriseLabelWidth, timeLabelHeight)
+                        obstacle(maghribLabelX, maghribLabelY, maghribLabelWidth, timeLabelHeight)
+                        obstacle(fajrLabelX, fajrLabelY, fajrLabelWidth, timeLabelHeight)
+                        obstacle(secondThirdLabelX, secondThirdLabelY, thirdLabelWidth, timeLabelHeight)
+                        obstacle(finalThirdLabelX, finalThirdLabelY, thirdLabelWidth, timeLabelHeight)
+                        obstacle(twilightLabelX, twilightLabelY, 56f, 20f)
+                        timelinePrayerLabels.forEach { (_, labelX, labelY) ->
+                            obstacle(labelX, labelY, timelinePrayerLabelWidth, timelinePrayerLabelHeight)
+                        }
+                    }
+
+                    // Non-alarm markers act as ordering barriers: alarms separated by a prayer/event
+                    // marker must never be reordered or merged across it (keeps before/after intact).
+                    val nonAlarmBarrierAngles = (
+                        listOf(
+                            sunriseAngleDegrees,
+                            sunriseAngleDegrees + 360f,
+                            sunsetAngleDegrees,
+                            secondThirdAngleDegrees,
+                            finalThirdAngleDegrees,
+                            fajrAngleDegrees,
+                        ) + timelinePrayerAngles
+                        ).distinct().sorted()
+                    fun barrierGapIndex(angleDegrees: Float): Int =
+                        nonAlarmBarrierAngles.count { barrierAngle -> barrierAngle < angleDegrees }
+
                     data class TimelineAlarmCandidate(
                         val alarm: NightTimelineAlarm,
                         val angleDegrees: Float,
+                        val gapIndex: Int,
                         val iconCenterX: Float,
                         val iconCenterY: Float,
                         val labelX: Float,
@@ -2705,18 +2838,19 @@ private fun NightTimesDayNightHorizon(
                         return sqrt(dx * dx + dy * dy)
                     }
 
+                    // Only merge alarms that physically collide on the ring AND share the same gap
+                    // between non-alarm barriers — this preserves before/after ordering (reqs 5 & 6).
                     fun clusterCollides(cluster: TimelineAlarmClusterDraft, candidate: TimelineAlarmCandidate): Boolean =
-                        rectsOverlap(cluster.labelBounds, candidate.labelBounds) ||
-                            rectsOverlap(cluster.markerBounds, candidate.markerBounds) ||
-                            cluster.candidates.any { existing -> markerDistance(existing, candidate) < timelineAlarmMinMarkerSpacing }
+                        cluster.candidates.first().gapIndex == candidate.gapIndex &&
+                            cluster.candidates.any { existing -> existing.alarm.minuteOfDay == candidate.alarm.minuteOfDay }
 
                     fun clustersCollide(first: TimelineAlarmClusterDraft, second: TimelineAlarmClusterDraft): Boolean =
-                        rectsOverlap(first.labelBounds, second.labelBounds) ||
-                            rectsOverlap(first.markerBounds, second.markerBounds) ||
+                        first.candidates.first().gapIndex == second.candidates.first().gapIndex &&
                             first.candidates.any { left ->
-                                second.candidates.any { right -> markerDistance(left, right) < timelineAlarmMinMarkerSpacing }
+                                second.candidates.any { right -> left.alarm.minuteOfDay == right.alarm.minuteOfDay }
                             }
 
+                    val markerHalfSize = timelineAlarmMarkerRadius + 1f
                     val timelineAlarmCandidates = data.timelineAlarms.zip(timelineAlarmAngles).map { (alarm, angleDegrees) ->
                         val radians = angleDegrees * PI / 180.0
                         val radialX = cos(radians).toFloat()
@@ -2728,10 +2862,10 @@ private fun NightTimesDayNightHorizon(
                         val labelCenterY = circleCenterY + labelRadius * radialY
                         val labelX = labelCenterX - timelineAlarmLabelWidth / 2f
                         val labelY = labelCenterY - timelineAlarmLabelHeight / 2f
-                        val markerHalfSize = timelineAlarmClusterMarkerSize / 2f
                         TimelineAlarmCandidate(
                             alarm = alarm,
                             angleDegrees = angleDegrees,
+                            gapIndex = barrierGapIndex(angleDegrees),
                             iconCenterX = iconCenterX,
                             iconCenterY = iconCenterY,
                             labelX = labelX,
@@ -2779,29 +2913,305 @@ private fun NightTimesDayNightHorizon(
                             timelineAlarmClusterDrafts.removeAt(0)
                         }
                     }
-                    val timelineAlarmPlacements = timelineAlarmClusterDrafts.map { cluster ->
-                        val sortedCandidates = cluster.candidates.sortedBy { candidate -> candidate.angleDegrees }
-                        val anchor = sortedCandidates[sortedCandidates.size / 2]
-                        val alarms = sortedCandidates.map { candidate -> candidate.alarm }.sortedBy { alarm -> alarm.minuteOfDay }
-                        val clustered = alarms.size > 1
-                        val labelWidth = if (clustered) timelineAlarmClusterLabelWidth else timelineAlarmLabelWidth
-                        val radians = anchor.angleDegrees * PI / 180.0
+
+                    val nonAlarmMarkerCenters = nonAlarmBarrierAngles.map { angleDegrees ->
+                        val radians = angleDegrees * PI / 180.0
+                        (circleCenterX + circleRadius * cos(radians).toFloat()) to
+                            (circleCenterY + circleRadius * sin(radians).toFloat())
+                    }
+                    // Non-alarm marker dots become small obstacles so alarm labels never sit on top of them.
+                    val nonAlarmMarkerObstacles = nonAlarmMarkerCenters.map { (markerX, markerY) ->
+                        expandedRect(markerX - 5.5f, markerY - 5.5f, markerX + 5.5f, markerY + 5.5f, 1.5f)
+                    }
+                    val placedAlarmMarkerCenters = mutableListOf<Pair<Float, Float>>()
+                    val allAlarmMarkerObstacles = mutableListOf<Rect>()
+                    val placedAlarmLabelBounds = mutableListOf<Rect>()
+
+                    data class TimelineAlarmMarkerPlacement(
+                        val cluster: TimelineAlarmClusterDraft,
+                        val anchor: TimelineAlarmCandidate,
+                        val alarms: List<NightTimelineAlarm>,
+                        val labelWidth: Float,
+                        val desiredAngleDegrees: Float,
+                        val visualAngleDegrees: Float,
+                        val markerX: Float,
+                        val markerY: Float,
+                        val markerWasNudged: Boolean,
+                    )
+
+                    data class TimelineAlarmMarkerDraft(
+                        val candidates: List<TimelineAlarmCandidate>,
+                        val desiredAngleDegrees: Float,
+                        val gapIndex: Int,
+                    ) {
+                        val alarms: List<NightTimelineAlarm> = candidates.map { candidate -> candidate.alarm }.sortedBy { alarm -> alarm.minuteOfDay }
+                        val anchor: TimelineAlarmCandidate = candidates.sortedBy { candidate -> candidate.angleDegrees }[candidates.size / 2]
+                        val labelWidth: Float = if (alarms.size > 1) timelineAlarmClusterLabelWidth else timelineAlarmLabelWidth
+                    }
+
+                    fun signedAngleDeltaDegrees(fromDegrees: Float, toDegrees: Float): Float =
+                        ((toDegrees - fromDegrees + 540f) % 360f) - 180f
+
+                    fun timelinePointAt(angleDegrees: Float): Pair<Float, Float> {
+                        val radians = angleDegrees * PI / 180.0
+                        return (circleCenterX + circleRadius * cos(radians).toFloat()) to
+                            (circleCenterY + circleRadius * sin(radians).toFloat())
+                    }
+
+                    fun pointDistance(first: Pair<Float, Float>, second: Pair<Float, Float>): Float {
+                        val dx = first.first - second.first
+                        val dy = first.second - second.second
+                        return sqrt(dx * dx + dy * dy)
+                    }
+
+                    val alarmMarkerMinGap = timelineAlarmMarkerRadius + 5.2f + 2f
+                    val alarmMarkerMinAngleGap = alarmMarkerMinGap / circleRadius * (180f / PI.toFloat())
+                    val alarmToAlarmMarkerMinAngleGap = timelineAlarmMinMarkerSpacing / circleRadius * (180f / PI.toFloat())
+
+                    fun gapBounds(gapIndex: Int): Pair<Float, Float> {
+                        val lower = if (gapIndex > 0) {
+                            nonAlarmBarrierAngles[gapIndex - 1]
+                        } else {
+                            nonAlarmBarrierAngles.first() - 360f
+                        }
+                        val upper = if (gapIndex < nonAlarmBarrierAngles.size) {
+                            nonAlarmBarrierAngles[gapIndex]
+                        } else {
+                            nonAlarmBarrierAngles.last() + 360f
+                        }
+                        return (lower + alarmMarkerMinAngleGap) to (upper - alarmMarkerMinAngleGap)
+                    }
+
+                    fun fitMarkerAngles(drafts: List<TimelineAlarmMarkerDraft>): List<Pair<TimelineAlarmMarkerDraft, Float>>? {
+                        if (drafts.isEmpty()) return emptyList()
+                        val gapIndex = drafts.first().gapIndex
+                        val (minAngle, maxAngle) = gapBounds(gapIndex)
+                        if (minAngle > maxAngle) return null
+                        val sortedDrafts = drafts.sortedBy { draft -> draft.desiredAngleDegrees }
+                        val angles = sortedDrafts.map { draft -> draft.desiredAngleDegrees.coerceIn(minAngle, maxAngle) }.toMutableList()
+                        angles[0] = angles[0].coerceAtLeast(minAngle)
+                        for (index in 1 until angles.size) {
+                            angles[index] = angles[index].coerceAtLeast(angles[index - 1] + alarmToAlarmMarkerMinAngleGap)
+                        }
+                        if (angles.last() > maxAngle) {
+                            angles[angles.lastIndex] = maxAngle
+                            for (index in angles.lastIndex - 1 downTo 0) {
+                                angles[index] = angles[index].coerceAtMost(angles[index + 1] - alarmToAlarmMarkerMinAngleGap)
+                            }
+                        }
+                        if (angles.first() < minAngle || angles.last() > maxAngle) return null
+                        return sortedDrafts.zip(angles)
+                    }
+
+                    fun mergeClosestMarkerDrafts(drafts: List<TimelineAlarmMarkerDraft>): List<TimelineAlarmMarkerDraft> {
+                        if (drafts.size < 2) return drafts
+                        val sortedDrafts = drafts.sortedBy { draft -> draft.desiredAngleDegrees }
+                        val mergeIndex = (0 until sortedDrafts.lastIndex).minByOrNull { index ->
+                            sortedDrafts[index + 1].desiredAngleDegrees - sortedDrafts[index].desiredAngleDegrees
+                        } ?: return sortedDrafts
+                        val mergedCandidates = sortedDrafts[mergeIndex].candidates + sortedDrafts[mergeIndex + 1].candidates
+                        val mergedDesiredAngle = mergedCandidates.map { candidate -> candidate.angleDegrees }.average().toFloat()
+                        val mergedDraft = TimelineAlarmMarkerDraft(
+                            candidates = mergedCandidates.sortedBy { candidate -> candidate.angleDegrees },
+                            desiredAngleDegrees = mergedDesiredAngle,
+                            gapIndex = sortedDrafts[mergeIndex].gapIndex,
+                        )
+                        return buildList {
+                            sortedDrafts.forEachIndexed { index, draft ->
+                                when (index) {
+                                    mergeIndex -> add(mergedDraft)
+                                    mergeIndex + 1 -> Unit
+                                    else -> add(draft)
+                                }
+                            }
+                        }
+                    }
+
+                    fun layoutMarkerDraftsForGap(drafts: List<TimelineAlarmMarkerDraft>): List<Pair<TimelineAlarmMarkerDraft, Float>> {
+                        var pendingDrafts = drafts
+                        while (pendingDrafts.size > 1) {
+                            fitMarkerAngles(pendingDrafts)?.let { return it }
+                            pendingDrafts = mergeClosestMarkerDrafts(pendingDrafts)
+                        }
+                        return fitMarkerAngles(pendingDrafts) ?: pendingDrafts.map { draft ->
+                            val (minAngle, maxAngle) = gapBounds(draft.gapIndex)
+                            draft to draft.desiredAngleDegrees.coerceIn(minAngle, maxAngle)
+                        }
+                    }
+
+                    // Resolve the label position for one cluster: search outward from the marker dot
+                    // for the nearest free spot, preferring the radial direction (inside then outside the
+                    // ring) and only drifting tangentially when needed. Distance from the dot grows
+                    // gradually, so the chosen label is always as close to its marker as possible.
+                    fun resolveLabelCenter(angleDegrees: Float, labelWidth: Float): Pair<Float, Float> {
+                        val radians = angleDegrees * PI / 180.0
                         val radialX = cos(radians).toFloat()
                         val radialY = sin(radians).toFloat()
-                        val labelRadius = (circleRadius - timelineAlarmMarkerLabelCenterDistance).coerceAtLeast(18f)
-                        val labelCenterX = circleCenterX + labelRadius * radialX
-                        val labelCenterY = circleCenterY + labelRadius * radialY
+                        val halfWidth = labelWidth / 2f
+                        val halfHeight = timelineAlarmLabelHeight / 2f
+                        val markerX = circleCenterX + circleRadius * radialX
+                        val markerY = circleCenterY + circleRadius * radialY
+                        // Minimum gap so the label box never overlaps its own marker dot.
+                        val minDistance = timelineAlarmMarkerRadius + timelineAlarmGap +
+                            (abs(radialX) * halfWidth + abs(radialY) * halfHeight)
+                        // Inward direction (marker -> circle centre); outward is the opposite.
+                        val inwardAngle = atan2((circleCenterY - markerY).toDouble(), (circleCenterX - markerX).toDouble())
+
+                        fun boxAtPoint(centerX: Float, centerY: Float): Rect =
+                            Rect(centerX - halfWidth, centerY - halfHeight, centerX + halfWidth, centerY + halfHeight)
+                        fun withinPanel(box: Rect): Boolean =
+                            box.left >= 2f && box.top >= 2f && box.right <= panelWidth - 2f && box.bottom <= panelHeight - 2f
+                        fun touchesTimelineCircle(box: Rect): Boolean {
+                            val closestX = circleCenterX.coerceIn(box.left, box.right)
+                            val closestY = circleCenterY.coerceIn(box.top, box.bottom)
+                            val closestDx = closestX - circleCenterX
+                            val closestDy = closestY - circleCenterY
+                            val closestDistance = sqrt(closestDx * closestDx + closestDy * closestDy)
+                            val farthestDistance = maxOf(
+                                sqrt((box.left - circleCenterX) * (box.left - circleCenterX) + (box.top - circleCenterY) * (box.top - circleCenterY)),
+                                sqrt((box.right - circleCenterX) * (box.right - circleCenterX) + (box.top - circleCenterY) * (box.top - circleCenterY)),
+                                sqrt((box.left - circleCenterX) * (box.left - circleCenterX) + (box.bottom - circleCenterY) * (box.bottom - circleCenterY)),
+                                sqrt((box.right - circleCenterX) * (box.right - circleCenterX) + (box.bottom - circleCenterY) * (box.bottom - circleCenterY)),
+                            )
+                            val circlePadding = 4f
+                            return closestDistance <= circleRadius + circlePadding && farthestDistance >= circleRadius - circlePadding
+                        }
+                        fun clears(box: Rect): Boolean =
+                            withinPanel(box) &&
+                                !touchesTimelineCircle(box) &&
+                                nonAlarmLabelObstacles.none { rectsOverlap(it, box) } &&
+                                nonAlarmMarkerObstacles.none { rectsOverlap(it, box) } &&
+                                allAlarmMarkerObstacles.none { rectsOverlap(it, box) } &&
+                                placedAlarmLabelBounds.none { rectsOverlap(it, box) }
+                        fun clearsHardObstacles(box: Rect): Boolean =
+                            withinPanel(box) &&
+                                !touchesTimelineCircle(box) &&
+                                nonAlarmLabelObstacles.none { rectsOverlap(it, box) } &&
+                                nonAlarmMarkerObstacles.none { rectsOverlap(it, box) } &&
+                                allAlarmMarkerObstacles.none { rectsOverlap(it, box) }
+
+                        // Direction offsets relative to the inward radial ray, ordered by preference:
+                        // straight inside, straight outside, then progressively larger tangential drifts.
+                        val directionOffsets = listOf(
+                            0f,
+                            180f,
+                            20f,
+                            -20f,
+                            160f,
+                            -160f,
+                            40f,
+                            -40f,
+                            140f,
+                            -140f,
+                            60f,
+                            -60f,
+                            120f,
+                            -120f,
+                            90f,
+                            -90f,
+                        )
+                        var fallbackCenter: Pair<Float, Float>? = null
+                        var distance = minDistance
+                        while (distance <= minDistance + 220f) {
+                            for (offset in directionOffsets) {
+                                val dir = inwardAngle + offset * PI / 180.0
+                                val centerX = markerX + distance * cos(dir).toFloat()
+                                val centerY = markerY + distance * sin(dir).toFloat()
+                                val box = boxAtPoint(centerX, centerY)
+                                if (fallbackCenter == null && clearsHardObstacles(box)) {
+                                    fallbackCenter = centerX to centerY
+                                }
+                                if (clears(box)) {
+                                    placedAlarmLabelBounds.add(
+                                        expandedRect(box.left, box.top, box.right, box.bottom, timelineAlarmCollisionPadding),
+                                    )
+                                    return centerX to centerY
+                                }
+                            }
+                            distance += 8f
+                        }
+                        val safeFallbackCenter = fallbackCenter ?: (
+                            (circleCenterX + (circleRadius - minDistance) * radialX) to
+                                (circleCenterY + (circleRadius - minDistance) * radialY)
+                            )
+                        val fallbackBox = boxAtPoint(safeFallbackCenter.first, safeFallbackCenter.second)
+                        placedAlarmLabelBounds.add(
+                            expandedRect(fallbackBox.left, fallbackBox.top, fallbackBox.right, fallbackBox.bottom, timelineAlarmCollisionPadding),
+                        )
+                        return safeFallbackCenter
+                    }
+
+                    val timelineAlarmMarkerDrafts = timelineAlarmClusterDrafts
+                        .map { cluster ->
+                            val sortedCandidates = cluster.candidates.sortedBy { candidate -> candidate.angleDegrees }
+                            val anchor = sortedCandidates[sortedCandidates.size / 2]
+                            TimelineAlarmMarkerDraft(
+                                candidates = sortedCandidates,
+                                desiredAngleDegrees = anchor.angleDegrees,
+                                gapIndex = anchor.gapIndex,
+                            )
+                        }
+
+                    val timelineAlarmMarkerPlacements = timelineAlarmMarkerDrafts
+                        .groupBy { draft -> draft.gapIndex }
+                        .toSortedMap()
+                        .flatMap { (_, gapDrafts) -> layoutMarkerDraftsForGap(gapDrafts) }
+                        .sortedBy { (draft, _) -> draft.desiredAngleDegrees }
+                        .map { (draft, visualAngleDegrees) ->
+                            val radians = visualAngleDegrees * PI / 180.0
+                            val radialX = cos(radians).toFloat()
+                            val radialY = sin(radians).toFloat()
+                            val markerX = circleCenterX + circleRadius * radialX
+                            val markerY = circleCenterY + circleRadius * radialY
+                            val markerWasNudgedForNonAlarm = nonAlarmMarkerCenters.any { markerCenter ->
+                                pointDistance(timelinePointAt(draft.desiredAngleDegrees), markerCenter) < alarmMarkerMinGap
+                            }
+
+                            TimelineAlarmMarkerPlacement(
+                                cluster = TimelineAlarmClusterDraft(
+                                    candidates = draft.candidates.toMutableList(),
+                                    labelBounds = draft.candidates.first().labelBounds,
+                                    markerBounds = draft.candidates.first().markerBounds,
+                                ),
+                                anchor = draft.anchor,
+                                alarms = draft.alarms,
+                                labelWidth = draft.labelWidth,
+                                desiredAngleDegrees = draft.desiredAngleDegrees,
+                                visualAngleDegrees = visualAngleDegrees,
+                                markerX = markerX,
+                                markerY = markerY,
+                                markerWasNudged = markerWasNudgedForNonAlarm,
+                            )
+                        }
+
+                    timelineAlarmMarkerPlacements.forEach { placement ->
+                        allAlarmMarkerObstacles.add(
+                            expandedRect(
+                                placement.markerX - timelineAlarmMarkerRadius,
+                                placement.markerY - timelineAlarmMarkerRadius,
+                                placement.markerX + timelineAlarmMarkerRadius,
+                                placement.markerY + timelineAlarmMarkerRadius,
+                                1.5f,
+                            ),
+                        )
+                    }
+
+                    val timelineAlarmPlacements = timelineAlarmMarkerPlacements.map { placement ->
+                        val (labelCenterX, labelCenterY) = resolveLabelCenter(placement.visualAngleDegrees, placement.labelWidth)
 
                         NightTimelineAlarmPlacement(
-                            id = alarms.joinToString("|") { alarm -> alarm.id },
-                            alarms = alarms,
-                            iconCenterX = circleCenterX + circleRadius * radialX,
-                            iconCenterY = circleCenterY + circleRadius * radialY,
-                            labelX = labelCenterX - labelWidth / 2f,
+                            id = placement.alarms.joinToString("|") { alarm -> alarm.id },
+                            alarms = placement.alarms,
+                            iconCenterX = placement.markerX,
+                            iconCenterY = placement.markerY,
+                            nearNonAlarmMarker = placement.markerWasNudged,
+                            labelCenterX = labelCenterX,
+                            labelCenterY = labelCenterY,
+                            labelX = labelCenterX - placement.labelWidth / 2f,
                             labelY = labelCenterY - timelineAlarmLabelHeight / 2f,
-                            labelWidth = labelWidth,
-                            label = if (clustered) "+${alarms.size}" else alarms.first().title,
-                            time = if (clustered) anchor.alarm.time else alarms.first().time,
+                            labelWidth = placement.labelWidth,
+                            label = if (placement.alarms.size > 1) "+${placement.alarms.size}" else placement.alarms.first().title,
+                            time = placement.alarms.first().time,
                         )
                     }
 
@@ -2818,6 +3228,11 @@ private fun NightTimesDayNightHorizon(
                         val sunsetPoint = Offset(sunsetX * scaleX, sunsetY * scaleY)
                         val sunriseSunCenter = Offset(sunriseSunX * scaleX, sunriseSunY * scaleY)
                         val sunsetSunCenter = Offset(sunsetSunX * scaleX, sunsetSunY * scaleY)
+                        val noonSunCenter = Offset(circleCenter.x, circleTopPx - 28f * scaleY)
+                        val midnightMoonCenter = Offset(
+                            x = circleCenter.x * 2f - noonSunCenter.x,
+                            y = circleCenter.y * 2f - noonSunCenter.y,
+                        )
                         val secondThirdPoint = Offset(secondThirdX * scaleX, secondThirdY * scaleY)
                         val finalThirdPoint = Offset(finalThirdX * scaleX, finalThirdY * scaleY)
                         val fajrPoint = Offset(fajrX * scaleX, fajrY * scaleY)
@@ -2975,6 +3390,35 @@ private fun NightTimesDayNightHorizon(
                                 radius = radius * 0.13f,
                                 center = Offset(center.x + radius * 0.15f, center.y - radius * 0.12f),
                             )
+                        }
+                        fun drawCrescent(center: Offset) {
+                            val moonRadius = 8.5f * scaleX
+                            val outerMoonPath = Path().apply {
+                                addOval(
+                                    Rect(
+                                        left = center.x - moonRadius,
+                                        top = center.y - moonRadius,
+                                        right = center.x + moonRadius,
+                                        bottom = center.y + moonRadius,
+                                    ),
+                                )
+                            }
+                            val innerMoonRadius = moonRadius * 0.96f
+                            val innerMoonCenter = Offset(
+                                x = center.x + moonRadius * 0.50f,
+                                y = center.y,
+                            )
+                            val innerMoonPath = Path().apply {
+                                addOval(
+                                    Rect(
+                                        left = innerMoonCenter.x - innerMoonRadius,
+                                        top = innerMoonCenter.y - innerMoonRadius,
+                                        right = innerMoonCenter.x + innerMoonRadius,
+                                        bottom = innerMoonCenter.y + innerMoonRadius,
+                                    ),
+                                )
+                            }
+                            drawPath(Path.combine(PathOperation.Difference, outerMoonPath, innerMoonPath), GoldLight)
                         }
                         fun drawNightMosqueSilhouette(
                             centerX: Float,
@@ -3335,40 +3779,9 @@ private fun NightTimesDayNightHorizon(
                                 color = Color(0xFF05192B),
                             )
 
-                            val midnightMoonCenter = Offset(
-                                circleCenter.x - circleRadiusPx * 0.34f,
-                                circleCenter.y + nightHeightPx * 0.24f,
-                            )
-                            val midnightMoonRadius = 8.5f * scaleX
-                            val outerMoonPath = Path().apply {
-                                addOval(
-                                    Rect(
-                                        left = midnightMoonCenter.x - midnightMoonRadius,
-                                        top = midnightMoonCenter.y - midnightMoonRadius,
-                                        right = midnightMoonCenter.x + midnightMoonRadius,
-                                        bottom = midnightMoonCenter.y + midnightMoonRadius,
-                                    ),
-                                )
-                            }
-                            val innerMoonRadius = midnightMoonRadius * 0.96f
-                            val innerMoonCenter = Offset(
-                                x = midnightMoonCenter.x + midnightMoonRadius * 0.54f,
-                                y = midnightMoonCenter.y - midnightMoonRadius * 0.03f,
-                            )
-                            val innerMoonPath = Path().apply {
-                                addOval(
-                                    Rect(
-                                        left = innerMoonCenter.x - innerMoonRadius,
-                                        top = innerMoonCenter.y - innerMoonRadius,
-                                        right = innerMoonCenter.x + innerMoonRadius,
-                                        bottom = innerMoonCenter.y + innerMoonRadius,
-                                    ),
-                                )
-                            }
-                            val crescentPath = Path.combine(PathOperation.Difference, outerMoonPath, innerMoonPath)
-                            drawPath(crescentPath, GoldLight)
                         }
-                        drawHorizonSun(Offset(circleCenter.x, circleTopPx - 28f * scaleY), Color(0xFFFFB84D))
+                        drawCrescent(midnightMoonCenter)
+                        drawHorizonSun(noonSunCenter, Color(0xFFFFB84D))
                         drawCircle(
                             color = Color.White.copy(alpha = 0.76f),
                             radius = circleRadiusPx,
@@ -3390,6 +3803,29 @@ private fun NightTimesDayNightHorizon(
                             size = Size(circleRadiusPx * 2f, circleRadiusPx * 2f),
                             style = Stroke(width = 3f * scaleX),
                         )
+                        timelineAlarmPlacements.forEach { placement ->
+                            val marker = Offset(placement.iconCenterX * scaleX, placement.iconCenterY * scaleY)
+                            val labelCenter = Offset(placement.labelCenterX * scaleX, placement.labelCenterY * scaleY)
+                            val dx = labelCenter.x - marker.x
+                            val dy = labelCenter.y - marker.y
+                            val distance = sqrt(dx * dx + dy * dy)
+                            if (distance > 19f * scaleX) {
+                                val unitX = dx / distance
+                                val unitY = dy / distance
+                                drawLine(
+                                    color = Color(0xFFFFC247).copy(alpha = if (placement.nearNonAlarmMarker) 0.72f else 0.46f),
+                                    start = Offset(
+                                        x = marker.x + unitX * 7f * scaleX,
+                                        y = marker.y + unitY * 7f * scaleY,
+                                    ),
+                                    end = Offset(
+                                        x = labelCenter.x - unitX * 10f * scaleX,
+                                        y = labelCenter.y - unitY * 10f * scaleY,
+                                    ),
+                                    strokeWidth = 1.15f * scaleX,
+                                )
+                            }
+                        }
                         fun drawTimelineMarker(center: Offset) {
                             drawCircle(Color.White.copy(alpha = 0.96f), radius = 5.2f * scaleX, center = center)
                             drawCircle(Color(0xFF173F68), radius = 2.4f * scaleX, center = center)
@@ -3398,6 +3834,30 @@ private fun NightTimesDayNightHorizon(
                             drawCircle(Color.White.copy(alpha = 0.96f), radius = 5.0f * scaleX, center = center)
                             drawCircle(GreenPrimaryDark.copy(alpha = 0.94f), radius = 3.0f * scaleX, center = center)
                             drawCircle(GoldLight.copy(alpha = 0.72f), radius = 1.05f * scaleX, center = center)
+                        }
+                        fun drawAlarmTimelineMarker(center: Offset, cluster: Boolean, sub: Boolean, nearNonAlarmMarker: Boolean) {
+                            val amber = Color(0xFFFFC247).copy(alpha = if (sub && !cluster) 0.9f else 1f)
+                            if (cluster) {
+                                drawCircle(amber.copy(alpha = 0.52f), radius = 6.9f * scaleX, center = center, style = Stroke(width = 1.15f * scaleX))
+                                drawCircle(Color.White.copy(alpha = 0.96f), radius = 5.4f * scaleX, center = center)
+                                drawCircle(amber, radius = 3.0f * scaleX, center = center)
+                                drawCircle(Color(0xFF061D32), radius = 1.1f * scaleX, center = center)
+                            } else {
+                                if (nearNonAlarmMarker) {
+                                    drawCircle(amber.copy(alpha = 0.68f), radius = 6.9f * scaleX, center = center, style = Stroke(width = 1.1f * scaleX))
+                                }
+                                drawCircle(Color.White.copy(alpha = 0.96f), radius = 5.2f * scaleX, center = center)
+                                drawCircle(amber, radius = 2.8f * scaleX, center = center)
+                            }
+                        }
+                        // Alarm dots are drawn BEFORE non-alarm markers so prayer/event dots stay on top (req 2).
+                        timelineAlarmPlacements.forEach { placement ->
+                            drawAlarmTimelineMarker(
+                                center = Offset(placement.iconCenterX * scaleX, placement.iconCenterY * scaleY),
+                                cluster = placement.isCluster,
+                                sub = placement.hasSubAlarm,
+                                nearNonAlarmMarker = placement.nearNonAlarmMarker,
+                            )
                         }
                         val timelineEventPoints = listOf(sunrisePoint, sunsetPoint, secondThirdPoint, finalThirdPoint, fajrPoint)
                         timelineEventPoints.forEach(::drawTimelineMarker)
@@ -3414,31 +3874,22 @@ private fun NightTimesDayNightHorizon(
 
                     timelineAlarmPlacements.forEach { placement ->
                         key(placement.id) {
-                            val iconSize = if (placement.isCluster) timelineAlarmClusterMarkerSize else if (placement.hasSubAlarm) 12.4f else 14f
-                            val markerModifier = Modifier
-                                .offset(x = (placement.iconCenterX - iconSize / 2f).dp, y = (placement.iconCenterY - iconSize / 2f).dp)
-                                .size(iconSize.dp)
-                                .then(
-                                    if (placement.isCluster) {
-                                        Modifier
-                                            .clip(CircleShape)
-                                            .clickable { selectedAlarmCluster = placement.alarms }
-                                    } else {
-                                        Modifier
+                            // Transparent hit target over the alarm dot (the dot itself is drawn in the
+                            // Canvas below the non-alarm markers). Single → edit directly; cluster → sheet.
+                            val touchSize = 30f
+                            Box(
+                                modifier = Modifier
+                                    .offset(x = (placement.iconCenterX - touchSize / 2f).dp, y = (placement.iconCenterY - touchSize / 2f).dp)
+                                    .size(touchSize.dp)
+                                    .clip(CircleShape)
+                                    .clickable {
+                                        if (placement.isCluster) {
+                                            selectedAlarmCluster = placement.alarms
+                                        } else {
+                                            onEditWakeAlarm(placement.alarms.first().wakeAlarmId)
+                                        }
                                     },
-                                )
-                            if (placement.isCluster) {
-                                TimelineAlarmClusterMarker(
-                                    count = placement.alarms.size,
-                                    hasSubAlarm = placement.hasSubAlarm,
-                                    modifier = markerModifier,
-                                )
-                            } else {
-                                TimelineAlarmMarkerIcon(
-                                    isSubAlarm = placement.hasSubAlarm,
-                                    modifier = markerModifier,
-                                )
-                            }
+                            )
                         }
                     }
 
@@ -3514,12 +3965,12 @@ private fun NightTimesDayNightHorizon(
                                             .clickable { selectedAlarmCluster = placement.alarms }
                                     } else {
                                         Modifier
+                                            .clip(RoundedCornerShape(6.dp))
+                                            .clickable { onEditWakeAlarm(placement.alarms.first().wakeAlarmId) }
                                     },
                                 )
                             DayNightHorizonAlarmTime(
-                                label = placement.label,
                                 time = placement.time,
-                                dark = false,
                                 modifier = labelModifier,
                             )
                         }
@@ -3539,92 +3990,6 @@ private fun NightTimesDayNightHorizon(
         }
     }
 }
-}
-
-@Composable
-private fun TimelineAlarmMarkerIcon(
-    isSubAlarm: Boolean,
-    modifier: Modifier = Modifier,
-) {
-    val amber = Color(0xFFFFC247).copy(alpha = if (isSubAlarm) 0.84f else 1f)
-    val ink = Color(0xFF061D32)
-    val backing = Color(0xFF031323).copy(alpha = if (isSubAlarm) 0.68f else 0.82f)
-    Canvas(modifier = modifier) {
-        val side = minOf(size.width, size.height)
-        val center = Offset(size.width / 2f, size.height / 2f + side * 0.05f)
-        val bodyRadius = side * 0.32f
-        val bellRadius = side * 0.13f
-
-        drawCircle(backing, radius = side * 0.48f, center = center)
-        drawCircle(amber.copy(alpha = 0.18f), radius = side * 0.43f, center = center, style = Stroke(width = side * 0.07f))
-
-        drawCircle(amber, radius = bellRadius, center = Offset(center.x - side * 0.26f, center.y - side * 0.38f))
-        drawCircle(amber, radius = bellRadius, center = Offset(center.x + side * 0.26f, center.y - side * 0.38f))
-        drawLine(
-            color = ink,
-            start = Offset(center.x - side * 0.36f, center.y - side * 0.52f),
-            end = Offset(center.x - side * 0.18f, center.y - side * 0.28f),
-            strokeWidth = side * 0.06f,
-        )
-        drawLine(
-            color = ink,
-            start = Offset(center.x + side * 0.36f, center.y - side * 0.52f),
-            end = Offset(center.x + side * 0.18f, center.y - side * 0.28f),
-            strokeWidth = side * 0.06f,
-        )
-
-        drawCircle(amber, radius = bodyRadius, center = center)
-        drawCircle(ink, radius = bodyRadius * 0.58f, center = center)
-        drawLine(
-            color = amber,
-            start = center,
-            end = Offset(center.x, center.y - bodyRadius * 0.42f),
-            strokeWidth = side * 0.055f,
-        )
-        drawLine(
-            color = amber,
-            start = center,
-            end = Offset(center.x + bodyRadius * 0.42f, center.y + bodyRadius * 0.16f),
-            strokeWidth = side * 0.055f,
-        )
-        drawLine(
-            color = amber,
-            start = Offset(center.x - bodyRadius * 0.48f, center.y + bodyRadius * 0.78f),
-            end = Offset(center.x - bodyRadius * 0.68f, center.y + bodyRadius),
-            strokeWidth = side * 0.06f,
-        )
-        drawLine(
-            color = amber,
-            start = Offset(center.x + bodyRadius * 0.48f, center.y + bodyRadius * 0.78f),
-            end = Offset(center.x + bodyRadius * 0.68f, center.y + bodyRadius),
-            strokeWidth = side * 0.06f,
-        )
-    }
-}
-
-@Composable
-private fun TimelineAlarmClusterMarker(
-    count: Int,
-    hasSubAlarm: Boolean,
-    modifier: Modifier = Modifier,
-) {
-    val markerColor = Color(0xFFFFC247).copy(alpha = if (hasSubAlarm) 0.90f else 1f)
-    Box(
-        modifier = modifier
-            .background(Color(0xFF031323).copy(alpha = 0.86f), CircleShape)
-            .border(BorderStroke(1.2.dp, markerColor.copy(alpha = 0.82f)), CircleShape),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = count.coerceAtMost(9).let { visibleCount -> if (count > 9) "+9" else visibleCount.toString() },
-            fontSize = 10.sp,
-            lineHeight = 10.sp,
-            fontWeight = FontWeight.Black,
-            color = markerColor,
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-        )
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -3747,34 +4112,29 @@ private fun DayNightHorizonTime(
 
 @Composable
 private fun DayNightHorizonAlarmTime(
-    label: String,
     time: String,
-    dark: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    Column(
+    Row(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(0.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = label,
-            fontSize = 9.sp,
-            lineHeight = 9.sp,
-            fontWeight = FontWeight.Bold,
-            color = if (dark) Color(0xFF22364F) else Color.White,
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-        )
-        Text(
             text = time,
-            modifier = Modifier.offset(y = (-3).dp),
-            fontSize = 12.sp,
-            lineHeight = 12.sp,
+            fontSize = 10.sp,
+            lineHeight = 11.sp,
             fontWeight = FontWeight.Black,
-            color = if (dark) Color(0xFF22364F) else Color.White,
+            color = Color(0xFFFFD479),
             textAlign = TextAlign.Center,
             maxLines = 1,
+            style = TextStyle(
+                shadow = Shadow(
+                    color = Color(0xFF061D32).copy(alpha = 0.72f),
+                    offset = Offset(0f, 0.8f),
+                    blurRadius = 1.8f,
+                ),
+            ),
         )
     }
 }
@@ -3903,17 +4263,38 @@ private fun WakeAlarmCard(
 @Composable
 private fun WakeAlarmFloatingAddButton(
     onClick: () -> Unit,
+    visible: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    val animationProgress by animateFloatAsState(
+        targetValue = if (visible) 1f else 0f,
+        label = "wakeAlarmAddButtonProgress",
+    )
+    val scale = WakeAlarmAddButtonHiddenScale + (1f - WakeAlarmAddButtonHiddenScale) * animationProgress
+    val shape = RoundedCornerShape(22.dp)
+
     Button(
         onClick = onClick,
+        enabled = visible,
         modifier = modifier
+            .graphicsLayer {
+                alpha = animationProgress
+                scaleX = scale
+                scaleY = scale
+                shadowElevation = WakeAlarmAddButtonShadowElevation.toPx() * animationProgress
+                this.shape = shape
+                clip = false
+            }
             .testTag(TestTags.WAKE_ALARM_ADD_BUTTON)
-            .size(64.dp),
-        shape = RoundedCornerShape(22.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+            .size(WakeAlarmAddButtonSize),
+        shape = shape,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = GreenPrimary,
+            disabledContainerColor = GreenPrimary,
+            disabledContentColor = Color.White,
+        ),
         contentPadding = PaddingValues(0.dp),
-        elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp),
     ) {
         Icon(
             painter = painterResource(R.drawable.ic_add),
@@ -4096,7 +4477,7 @@ private fun WakeAlarmListPanel(
     ) {
         wakeAlarms.forEachIndexed { index, wakeAlarm ->
             val nextMillis = remember(wakeAlarm, delegationId) {
-                nextWakeAlarmMillis(context, delegationId, wakeAlarm)
+                nextWakeAlarmMillis(context, delegationId, wakeAlarm.copy(enabled = true))
             }
             WakeAlarmRow(
                 alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
@@ -5224,12 +5605,12 @@ private fun WakeAlarmRow(
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (enabled) Color.White else GoldLight.copy(alpha = 0.16f)
+            containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         border = BorderStroke(
             width = 1.dp,
-            color = if (enabled) GreenPrimary.copy(alpha = 0.14f) else CardBorder.copy(alpha = 0.75f)
+            color = GreenPrimary.copy(alpha = 0.14f)
         )
     ) {
         Row(
@@ -5252,7 +5633,7 @@ private fun WakeAlarmRow(
                         text = alarmDisplayName,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        color = if (enabled) GreenPrimaryDark else PrayerNameColor,
+                        color = GreenPrimaryDark,
                     )
                     Text(
                         text = alarmName,
@@ -5273,7 +5654,7 @@ private fun WakeAlarmRow(
                             formatWakeAlarmDateTime(nextAlarmMillis),
                         ),
                         fontSize = 11.sp,
-                        color = if (enabled) GreenPrimaryDark else TextMuted,
+                        color = GreenPrimaryDark,
                         lineHeight = 15.sp,
                         fontWeight = FontWeight.Medium,
                     )
@@ -5328,10 +5709,6 @@ private fun wakeSummaryText(
     prayerName: String,
     wakeConfig: PrayerWakeConfig,
 ): String {
-    if (!wakeConfig.enabled) {
-        return stringResource(R.string.wake_summary_disabled_body)
-    }
-
     val mainSummary = when (wakeConfig.mainAlarm.mode) {
         WakeMainAlarmMode.FIXED_TIME -> stringResource(
             R.string.wake_summary_fixed,
