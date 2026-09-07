@@ -1,0 +1,7549 @@
+{
+  "source": {
+    "provider": "OpenStreetMap contributors / Geofabrik",
+    "license": "ODbL-1.0",
+    "url": "https://download.geofabrik.de/africa/tunisia-260905.osm.pbf",
+    "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "timestamp": "2026-09-05T20:22:06Z"
+  },
+  "sources": {
+    "osm": {
+      "provider": "OpenStreetMap contributors / Geofabrik",
+      "license": "ODbL-1.0",
+      "url": "https://download.geofabrik.de/africa/tunisia-260905.osm.pbf",
+      "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "timestamp": "2026-09-05T20:22:06Z"
+    },
+    "bouarada-archive-2018": {
+      "id": "bouarada-archive-2018",
+      "provider": "Commune de Bouarada / OpenBaladiati",
+      "catalogUrl": "https://catalog.data.gov.tn/fr/dataset/quartiers-dans-la-zone-municipale-de-bouarada",
+      "url": "http://openbaladiati.tn/dataset/a444cad1-9911-40b0-896c-ee070794132e/resource/0b6b7ff9-e6b2-4448-a9ff-7de6839a419a/download/repartition_quarties.geojson",
+      "archiveUrl": "https://web.archive.org/web/20180618182551id_/http://openbaladiati.tn:80/dataset/a444cad1-9911-40b0-896c-ee070794132e/resource/0b6b7ff9-e6b2-4448-a9ff-7de6839a419a/download/repartition_quarties.geojson",
+      "archiveTimestamp": "20180618182551",
+      "license": "CC-BY (version unspecified by catalog)",
+      "catalogLicense": "cc-by",
+      "licenseMetadataUrl": "https://catalog.data.gov.tn/fr/api/3/action/package_show?id=quartiers-dans-la-zone-municipale-de-bouarada",
+      "licenseCheckedDate": "2026-09-06",
+      "currency": "Archived in 2018; current municipal boundaries have not been independently certified.",
+      "sha256": "861f15e4dfd4ce83e6f670ed29560329b7ebee2ed6b09c5793cc2bac98c3e886",
+      "featureCount": 21
+    }
+  },
+  "polygonCount": 2741,
+  "pointOnlyCount": 902,
+  "polygonsBySource": {
+    "bouarada-archive-2018": 21,
+    "osm": 2720
+  },
+  "conflictCount": 71,
+  "conflictsByReason": {
+    "crossing_local_areas": 64,
+    "overlapping_sectors": 7
+  },
+  "municipalInternalConflictCount": 22,
+  "conflicts": [
+    {
+      "ids": [
+        "municipal:bouarada:cite_1",
+        "municipal:bouarada:cite_18"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0002025625794201572,
+      "sample": {
+        "lat": 36.35191549175929,
+        "lng": 9.628518619612858
+      },
+      "names": [
+        "حيّ وسط المدينة",
+        "حيّ الاقامة الطيبة"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_1",
+        "municipal:bouarada:cite_3"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0001744618880049242,
+      "sample": {
+        "lat": 36.35615069464567,
+        "lng": 9.626748395238085
+      },
+      "names": [
+        "حيّ وسط المدينة",
+        "حيّ علي بن مبارك 1"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_1",
+        "municipal:bouarada:cite_5"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 3.527796252230958e-05,
+      "sample": {
+        "lat": 36.35166797076631,
+        "lng": 9.62368292390708
+      },
+      "names": [
+        "حيّ وسط المدينة",
+        "حيّ القسطلي"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_1",
+        "municipal:bouarada:cite_6"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00021460643329093332,
+      "sample": {
+        "lat": 36.35381473529408,
+        "lng": 9.623117237675043
+      },
+      "names": [
+        "حيّ وسط المدينة",
+        "حيّ النور 1"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_10",
+        "municipal:bouarada:cite_12"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0001783083403545436,
+      "sample": {
+        "lat": 36.350889345812845,
+        "lng": 9.616664928887172
+      },
+      "names": [
+        "حيّ السعادة",
+        "حيّ الصفاء"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_10",
+        "municipal:bouarada:cite_19"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00010293306062023585,
+      "sample": {
+        "lat": 36.35143588922526,
+        "lng": 9.616304227071335
+      },
+      "names": [
+        "حيّ السعادة",
+        "حيّ الحرفيين"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_11",
+        "municipal:bouarada:cite_12"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00022550494761137824,
+      "sample": {
+        "lat": 36.347978601985346,
+        "lng": 9.620784077447064
+      },
+      "names": [
+        "حيّ النخيل",
+        "حيّ الصفاء"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_11",
+        "municipal:bouarada:cite_9"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00011102849513429917,
+      "sample": {
+        "lat": 36.34777155526987,
+        "lng": 9.621273635161533
+      },
+      "names": [
+        "حيّ النخيل",
+        "حيّ الزياتين الغربي"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_12",
+        "municipal:bouarada:cite_21"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 1.7499829121787174e-05,
+      "sample": {
+        "lat": 36.34748969501426,
+        "lng": 9.612112191058445
+      },
+      "names": [
+        "حيّ الصفاء",
+        "حيّ سيدي جابر"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_13",
+        "municipal:bouarada:cite_8"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00017102463316912377,
+      "sample": {
+        "lat": 36.34729209939759,
+        "lng": 9.622688246987945
+      },
+      "names": [
+        "حيّ الصنوبر",
+        "حيّ الزياتين الشرقي"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_15",
+        "municipal:bouarada:cite_16"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0013134920083193028,
+      "sample": {
+        "lat": 36.34948954798001,
+        "lng": 9.630866121216668
+      },
+      "names": [
+        "حيّ ابن خلدون",
+        "حيّ البساتين"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_15",
+        "municipal:bouarada:cite_18"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 4.464603003956742e-06,
+      "sample": {
+        "lat": 36.3512445,
+        "lng": 9.629484371948937
+      },
+      "names": [
+        "حيّ ابن خلدون",
+        "حيّ الاقامة الطيبة"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_15",
+        "municipal:bouarada:cite_20"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 4.81256977196367e-05,
+      "sample": {
+        "lat": 36.3512355,
+        "lng": 9.631276344663302
+      },
+      "names": [
+        "حيّ ابن خلدون",
+        "المنطقة الصناعيّة"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_16",
+        "municipal:bouarada:cite_20"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00032737439082242684,
+      "sample": {
+        "lat": 36.350793696251195,
+        "lng": 9.636129606165984
+      },
+      "names": [
+        "حيّ البساتين",
+        "المنطقة الصناعيّة"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_17",
+        "municipal:bouarada:cite_18"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00020452233934606452,
+      "sample": {
+        "lat": 36.35182351696019,
+        "lng": 9.629642453860747
+      },
+      "names": [
+        "حيّ الريّاض",
+        "حيّ الاقامة الطيبة"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_17",
+        "municipal:bouarada:cite_2"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 3.704248727607091e-05,
+      "sample": {
+        "lat": 36.35406616012804,
+        "lng": 9.630324005458021
+      },
+      "names": [
+        "حيّ الريّاض",
+        "حيّ الملاّسين"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_17",
+        "municipal:bouarada:cite_20"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00021037240202283276,
+      "sample": {
+        "lat": 36.35292918460519,
+        "lng": 9.631626899551259
+      },
+      "names": [
+        "حيّ الريّاض",
+        "المنطقة الصناعيّة"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_18",
+        "municipal:bouarada:cite_8"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.000449866693325248,
+      "sample": {
+        "lat": 36.35126076547725,
+        "lng": 9.629197268150252
+      },
+      "names": [
+        "حيّ الاقامة الطيبة",
+        "حيّ الزياتين الشرقي"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_19",
+        "municipal:bouarada:cite_7"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 1.2113393179347886e-07,
+      "sample": {
+        "lat": 36.35301467721358,
+        "lng": 9.614858321385706
+      },
+      "names": [
+        "حيّ الحرفيين",
+        "حيّ النور 2"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_5",
+        "municipal:bouarada:cite_6"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 8.881133494764059e-05,
+      "sample": {
+        "lat": 36.35281520963998,
+        "lng": 9.620303292539209
+      },
+      "names": [
+        "حيّ القسطلي",
+        "حيّ النور 1"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_5",
+        "municipal:bouarada:cite_9"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 3.344323549952276e-07,
+      "sample": {
+        "lat": 36.35090915280387,
+        "lng": 9.620374868561822
+      },
+      "names": [
+        "حيّ القسطلي",
+        "حيّ الزياتين الغربي"
+      ]
+    },
+    {
+      "ids": [
+        "municipal:bouarada:cite_6",
+        "municipal:bouarada:cite_7"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 8.648498492366831e-07,
+      "sample": {
+        "lat": 36.35286321440336,
+        "lng": 9.619659904375196
+      },
+      "names": [
+        "حيّ النور 1",
+        "حيّ النور 2"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:15063268",
+        "osm:way:1321465756"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.3802056118144297,
+      "sample": {
+        "lat": 33.060010000000005,
+        "lng": 10.344931730491195
+      },
+      "names": [
+        "غمراسن",
+        "حي التحرير"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7111279",
+        "osm:relation:7151555"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.41408949889260505,
+      "sample": {
+        "lat": 35.7240105,
+        "lng": 10.575232924336973
+      },
+      "names": [
+        "التوارة الجنوبية",
+        "El Gharbine"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7111279",
+        "osm:relation:7151556"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.3589038305694173,
+      "sample": {
+        "lat": 35.729242,
+        "lng": 10.575100967440378
+      },
+      "names": [
+        "التوارة الجنوبية",
+        "الجبليين"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7111785",
+        "osm:relation:7111933"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 5.55843865355527,
+      "sample": {
+        "lat": 35.635352999999995,
+        "lng": 10.989164577327905
+      },
+      "names": [
+        "الفضلين",
+        "طبلبة"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7118631",
+        "osm:relation:7152490"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.11214315911459129,
+      "sample": {
+        "lat": 37.2742705,
+        "lng": 9.87149431395035
+      },
+      "names": [
+        "المدينة",
+        "الشيخ إدريس"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7125182",
+        "osm:relation:7125189"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.8950270822781998,
+      "sample": {
+        "lat": 36.092062,
+        "lng": 9.567853787105875
+      },
+      "names": [
+        "برقو",
+        "أولاد فرج"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7126518",
+        "osm:relation:7126525"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 2.390834030755614,
+      "sample": {
+        "lat": 36.773932,
+        "lng": 8.687259187011538
+      },
+      "names": [
+        "عين دراهم المدينة",
+        "عين دراهم الأحواز"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7174591",
+        "osm:relation:7174628"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 1.1524188837523914,
+      "sample": {
+        "lat": 36.777333999999996,
+        "lng": 10.220016121993286
+      },
+      "names": [
+        "جوهرة",
+        "مقرين شاكر"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:1015036263",
+        "osm:way:1017862824"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.07563051815025892,
+      "sample": {
+        "lat": 37.302634,
+        "lng": 9.85818874823071
+      },
+      "names": [
+        "بوخريص",
+        "حي المالوف"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:1220194442",
+        "osm:way:1390960491"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 6.777673894217577e-05,
+      "sample": {
+        "lat": 36.4104520767511,
+        "lng": 10.193594777076513
+      },
+      "names": [
+        "وادي الربح - Oued Al Ribah",
+        "Les Jardins de Zaghouan"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:1221480512",
+        "osm:way:191002459"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.14937908779001408,
+      "sample": {
+        "lat": 36.312591630024876,
+        "lng": 9.321868036358403
+      },
+      "names": [
+        "EL HENCHIR الهنشير",
+        "قعفور"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:1408126432",
+        "osm:way:172866902"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.34622580104976897,
+      "sample": {
+        "lat": 36.61755647948151,
+        "lng": 8.978939898499647
+      },
+      "names": [
+        "Cité El Hedi Khlil",
+        "بوسالم"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:189193491",
+        "osm:way:293163306"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.04174558578362415,
+      "sample": {
+        "lat": 33.89277,
+        "lng": 10.059065714338576
+      },
+      "names": [
+        "Bouchama",
+        "النحال"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:293047299",
+        "osm:way:293163306"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0024660266536135323,
+      "sample": {
+        "lat": 33.876922,
+        "lng": 10.058535594794735
+      },
+      "names": [
+        "شنني",
+        "النحال"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:512547869",
+        "osm:way:521374758"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0006745586065629574,
+      "sample": {
+        "lat": 36.7166995,
+        "lng": 10.214447527027033
+      },
+      "names": [
+        "البستان 2",
+        "المروج 4"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:640629366",
+        "osm:way:693689970"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0057005421234569646,
+      "sample": {
+        "lat": 36.730041,
+        "lng": 10.466370612333158
+      },
+      "names": [
+        "Soliman Plage",
+        "43"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685788938",
+        "osm:way:685823079"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 7.667575229420924e-06,
+      "sample": {
+        "lat": 34.7440215,
+        "lng": 10.522920818840579
+      },
+      "names": [
+        "حي الزيتونة",
+        "حي بوبين"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685788938",
+        "osm:way:685824247"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 1.6251230852347516e-05,
+      "sample": {
+        "lat": 34.745866,
+        "lng": 10.515898874999998
+      },
+      "names": [
+        "حي الزيتونة",
+        "Cité Cheaacheaa"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685788938",
+        "osm:way:691393147"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00010443830970047489,
+      "sample": {
+        "lat": 34.74915,
+        "lng": 10.51395992512909
+      },
+      "names": [
+        "حي الزيتونة",
+        "Cité Dhieb"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685789421",
+        "osm:way:685824247"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 2.55830816787093e-05,
+      "sample": {
+        "lat": 34.7471185,
+        "lng": 10.512310454787244
+      },
+      "names": [
+        "حي الرفاهة",
+        "Cité Cheaacheaa"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685790087",
+        "osm:way:685795194"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 2.4784004869554055e-05,
+      "sample": {
+        "lat": 34.746334000000004,
+        "lng": 10.5241786994329
+      },
+      "names": [
+        "حي المنار",
+        "حي بن إبراهيم"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685790087",
+        "osm:way:976914129"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.02218982995716929,
+      "sample": {
+        "lat": 34.7485005,
+        "lng": 10.52766157340919
+      },
+      "names": [
+        "حي المنار",
+        "حي 14"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685795194",
+        "osm:way:685823079"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 4.948814598773523e-06,
+      "sample": {
+        "lat": 34.743671,
+        "lng": 10.523954597051599
+      },
+      "names": [
+        "حي بن إبراهيم",
+        "حي بوبين"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685795194",
+        "osm:way:976914129"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0013077272139706106,
+      "sample": {
+        "lat": 34.74753559743191,
+        "lng": 10.528221844734073
+      },
+      "names": [
+        "حي بن إبراهيم",
+        "حي 14"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685798813",
+        "osm:way:685803229"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 1.4001869657399036e-05,
+      "sample": {
+        "lat": 34.740167,
+        "lng": 10.524202749363868
+      },
+      "names": [
+        "حي النور",
+        "حي الانطلاقة"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685798813",
+        "osm:way:685813205"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 3.054928299924846e-08,
+      "sample": {
+        "lat": 34.7408445,
+        "lng": 10.52351950955414
+      },
+      "names": [
+        "حي النور",
+        "حي الخضراء"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685798813",
+        "osm:way:685823756"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 1.534112420227405e-05,
+      "sample": {
+        "lat": 34.7392695,
+        "lng": 10.526233299295773
+      },
+      "names": [
+        "حي النور",
+        "حي الزهور"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685803229",
+        "osm:way:685823755"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 9.439981275413024e-06,
+      "sample": {
+        "lat": 34.738632499999994,
+        "lng": 10.524759844642846
+      },
+      "names": [
+        "حي الانطلاقة",
+        "حي المروج"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685812093",
+        "osm:way:685827604"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 2.691596758278844e-06,
+      "sample": {
+        "lat": 34.7407025,
+        "lng": 10.5267267664155
+      },
+      "names": [
+        "حي 2 مارس",
+        "حي عقارب الوسطى"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685812093",
+        "osm:way:691392240"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 4.414317805706473e-06,
+      "sample": {
+        "lat": 34.741848,
+        "lng": 10.527126476744185
+      },
+      "names": [
+        "حي 2 مارس",
+        "حي المنزه"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685813205",
+        "osm:way:685817554"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 1.4735593723972976e-05,
+      "sample": {
+        "lat": 34.7371655,
+        "lng": 10.523996672477073
+      },
+      "names": [
+        "حي الخضراء",
+        "حي الجويرات"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685817554",
+        "osm:way:686587747"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 6.71063985894037e-05,
+      "sample": {
+        "lat": 34.7348135,
+        "lng": 10.521674841755315
+      },
+      "names": [
+        "حي الجويرات",
+        "العرايش"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685818819",
+        "osm:way:685827604"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00038591055131698626,
+      "sample": {
+        "lat": 34.7415445,
+        "lng": 10.529457789947774
+      },
+      "names": [
+        "حي الخشاينة",
+        "حي عقارب الوسطى"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685818819",
+        "osm:way:693481289"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 4.10236335249682e-06,
+      "sample": {
+        "lat": 34.741637,
+        "lng": 10.531955533644865
+      },
+      "names": [
+        "حي الخشاينة",
+        "السوالم"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685823755",
+        "osm:way:685823756"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 5.555011237947757e-06,
+      "sample": {
+        "lat": 34.738863,
+        "lng": 10.525985843947037
+      },
+      "names": [
+        "حي المروج",
+        "حي الزهور"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685823755",
+        "osm:way:686587747"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 1.401895432761466e-08,
+      "sample": {
+        "lat": 34.738273500000005,
+        "lng": 10.52634679009435
+      },
+      "names": [
+        "حي المروج",
+        "العرايش"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685823756",
+        "osm:way:686587747"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 8.923049285100894e-07,
+      "sample": {
+        "lat": 34.73837963943453,
+        "lng": 10.526600122615537
+      },
+      "names": [
+        "حي الزهور",
+        "العرايش"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685827604",
+        "osm:way:686587747"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.14378601239125344,
+      "sample": {
+        "lat": 34.7381975,
+        "lng": 10.528482449787226
+      },
+      "names": [
+        "حي عقارب الوسطى",
+        "العرايش"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:685827604",
+        "osm:way:693481289"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 4.456232431370491e-05,
+      "sample": {
+        "lat": 34.741365950066026,
+        "lng": 10.53232734021768
+      },
+      "names": [
+        "حي عقارب الوسطى",
+        "السوالم"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:686587747",
+        "osm:way:693481289"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.0015240187923201585,
+      "sample": {
+        "lat": 34.7400219153725,
+        "lng": 10.534167800946854
+      },
+      "names": [
+        "العرايش",
+        "السوالم"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:686587747",
+        "osm:way:941118454"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.000522449323141457,
+      "sample": {
+        "lat": 34.729511653661746,
+        "lng": 10.542007719040097
+      },
+      "names": [
+        "العرايش",
+        "حي العكاشات"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:693481289",
+        "osm:way:976914129"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00030510326172638474,
+      "sample": {
+        "lat": 34.746612,
+        "lng": 10.533622740136689
+      },
+      "names": [
+        "السوالم",
+        "حي 14"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:702432167",
+        "osm:way:702432169"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.18224157938449087,
+      "sample": {
+        "lat": 33.9531305,
+        "lng": 10.017671008052313
+      },
+      "names": [
+        "Cité Ennarjes",
+        "ZONE 1"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:702432167",
+        "osm:way:702435653"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 9.305012062104811e-05,
+      "sample": {
+        "lat": 33.95140985868946,
+        "lng": 10.016882086576418
+      },
+      "names": [
+        "Cité Ennarjes",
+        "حي الزهور"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:702432168",
+        "osm:way:702432169"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.3751395230488269,
+      "sample": {
+        "lat": 33.958472,
+        "lng": 10.014266593650795
+      },
+      "names": [
+        "Cité El Maya",
+        "ZONE 1"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:702432168",
+        "osm:way:702435653"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.00023755033838059763,
+      "sample": {
+        "lat": 33.9555685,
+        "lng": 10.012724317277073
+      },
+      "names": [
+        "Cité El Maya",
+        "حي الزهور"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:702432169",
+        "osm:way:702435653"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.006070831525471974,
+      "sample": {
+        "lat": 33.954256,
+        "lng": 10.013884903557262
+      },
+      "names": [
+        "ZONE 1",
+        "حي الزهور"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:702432169",
+        "osm:way:702435654"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 9.120924197966526e-05,
+      "sample": {
+        "lat": 33.957137,
+        "lng": 10.010059667046416
+      },
+      "names": [
+        "ZONE 1",
+        "حي النسيم"
+      ]
+    },
+    {
+      "ids": [
+        "osm:way:702443180",
+        "osm:way:702621052"
+      ],
+      "reason": "crossing_local_areas",
+      "intersectionKm2": 0.017728848458018774,
+      "sample": {
+        "lat": 33.958726999999996,
+        "lng": 9.993149485730848
+      },
+      "names": [
+        "Cité Nkhilet Farhat",
+        "Cité El Shorfa (ZONE 6)"
+      ]
+    }
+  ],
+  "polygonsByKind": {
+    "neighbourhood": 28,
+    "locality": 8,
+    "sector": 2084,
+    "residential": 534,
+    "town": 21,
+    "suburb": 9,
+    "quarter": 7,
+    "village": 34,
+    "hamlet": 16
+  },
+  "polygonsByGovernorate": {
+    "تونس": 226,
+    "زغوان": 55,
+    "سليانة": 116,
+    "المهدية": 100,
+    "قابس": 110,
+    "سوسة": 112,
+    "بن عروس": 91,
+    "نابل": 247,
+    "تطاوين": 96,
+    "توزر": 41,
+    "مدنين": 146,
+    "جندوبة": 110,
+    "سيدي بوزيد": 137,
+    "باجة": 121,
+    "القيروان": 129,
+    "اريانة": 77,
+    "صفاقس": 172,
+    "منوبة": 71,
+    "بنزرت": 132,
+    "القصرين": 124,
+    "الكاف": 97,
+    "المنستير": 87,
+    "قفصة": 96,
+    "قبلي": 48
+  },
+  "rejected": [
+    {
+      "id": "osm:relation:1614575",
+      "reason": "No polygon inside Tunisia"
+    },
+    {
+      "id": "osm:relation:6663202",
+      "reason": "No polygon inside Tunisia"
+    }
+  ],
+  "missingGovernorate": [],
+  "geometryBytes": 5482484,
+  "metadataBytes": 1283187,
+  "pointOnlyPlaces": [
+    {
+      "id": "osm:node:10002024787",
+      "name": "عين زريق",
+      "kind": "hamlet",
+      "lat": 36.163799,
+      "lng": 9.4505751
+    },
+    {
+      "id": "osm:node:10002024986",
+      "name": "حي المنجي سليم",
+      "kind": "suburb",
+      "lat": 36.0776474,
+      "lng": 9.3637341
+    },
+    {
+      "id": "osm:node:10004387317",
+      "name": "عين دباب",
+      "kind": "hamlet",
+      "lat": 36.0216146,
+      "lng": 9.8743203
+    },
+    {
+      "id": "osm:node:10004462470",
+      "name": "حي البحرين",
+      "kind": "neighbourhood",
+      "lat": 36.6359512,
+      "lng": 9.6110519
+    },
+    {
+      "id": "osm:node:10004462471",
+      "name": "حي العزيمة 1",
+      "kind": "neighbourhood",
+      "lat": 36.6534039,
+      "lng": 9.615924
+    },
+    {
+      "id": "osm:node:10004462472",
+      "name": "حي العزيمة 2",
+      "kind": "neighbourhood",
+      "lat": 36.6554948,
+      "lng": 9.6142356
+    },
+    {
+      "id": "osm:node:10006515464",
+      "name": "الزعيبات",
+      "kind": "village",
+      "lat": 34.9810311,
+      "lng": 10.4781238
+    },
+    {
+      "id": "osm:node:10006515482",
+      "name": "الفزقية",
+      "kind": "hamlet",
+      "lat": 35.1692624,
+      "lng": 10.1795262
+    },
+    {
+      "id": "osm:node:10006515498",
+      "name": "بئر الفيض",
+      "kind": "hamlet",
+      "lat": 35.1595851,
+      "lng": 10.1753254
+    },
+    {
+      "id": "osm:node:10006515503",
+      "name": "الشرايطية",
+      "kind": "village",
+      "lat": 35.1904072,
+      "lng": 10.0734378
+    },
+    {
+      "id": "osm:node:10006515504",
+      "name": "بئر الدولة",
+      "kind": "hamlet",
+      "lat": 35.257345,
+      "lng": 10.0303593
+    },
+    {
+      "id": "osm:node:10006515509",
+      "name": "بئر القصور",
+      "kind": "hamlet",
+      "lat": 35.2690069,
+      "lng": 9.9402327
+    },
+    {
+      "id": "osm:node:10006525950",
+      "name": "المناصير",
+      "kind": "hamlet",
+      "lat": 35.2765451,
+      "lng": 9.8513256
+    },
+    {
+      "id": "osm:node:10006525963",
+      "name": "العجابنة الدشرة",
+      "kind": "hamlet",
+      "lat": 35.2404934,
+      "lng": 9.8522361
+    },
+    {
+      "id": "osm:node:10006525988",
+      "name": "دوار الفالحية",
+      "kind": "hamlet",
+      "lat": 35.2306432,
+      "lng": 9.8449733
+    },
+    {
+      "id": "osm:node:10006741193",
+      "name": "الخبينة",
+      "kind": "hamlet",
+      "lat": 35.1653845,
+      "lng": 9.723746
+    },
+    {
+      "id": "osm:node:10006741276",
+      "name": "قمودة",
+      "kind": "village",
+      "lat": 35.0994328,
+      "lng": 9.456528
+    },
+    {
+      "id": "osm:node:10006741340",
+      "name": "بئر الباي",
+      "kind": "village",
+      "lat": 35.0865589,
+      "lng": 9.3479569
+    },
+    {
+      "id": "osm:node:10006741366",
+      "name": "البريج",
+      "kind": "village",
+      "lat": 35.1052865,
+      "lng": 9.3244097
+    },
+    {
+      "id": "osm:node:10006741378",
+      "name": "القساسمية",
+      "kind": "village",
+      "lat": 35.0851342,
+      "lng": 9.2688344
+    },
+    {
+      "id": "osm:node:10006882439",
+      "name": "أولاد خليفة",
+      "kind": "village",
+      "lat": 34.9854152,
+      "lng": 9.1788062
+    },
+    {
+      "id": "osm:node:10006882453",
+      "name": "أولاد ساهل",
+      "kind": "hamlet",
+      "lat": 34.9258661,
+      "lng": 9.2669048
+    },
+    {
+      "id": "osm:node:10006882480",
+      "name": "الفتح",
+      "kind": "village",
+      "lat": 34.8582527,
+      "lng": 9.3945627
+    },
+    {
+      "id": "osm:node:10008668578",
+      "name": "بئر سيدي علي بلعابد",
+      "kind": "hamlet",
+      "lat": 34.736578,
+      "lng": 10.1857002
+    },
+    {
+      "id": "osm:node:10008668579",
+      "name": "دوار قصر الخامسة",
+      "kind": "hamlet",
+      "lat": 34.7508679,
+      "lng": 10.1228289
+    },
+    {
+      "id": "osm:node:10008679370",
+      "name": "أولاد دلالة",
+      "kind": "village",
+      "lat": 34.5197173,
+      "lng": 9.9327585
+    },
+    {
+      "id": "osm:node:10008679371",
+      "name": "فرجان",
+      "kind": "hamlet",
+      "lat": 34.4792047,
+      "lng": 9.7723839
+    },
+    {
+      "id": "osm:node:10008679396",
+      "name": "أولاد زايد",
+      "kind": "hamlet",
+      "lat": 34.4264212,
+      "lng": 9.4342564
+    },
+    {
+      "id": "osm:node:10008679398",
+      "name": "أولاد طالب",
+      "kind": "hamlet",
+      "lat": 34.3610411,
+      "lng": 9.2729875
+    },
+    {
+      "id": "osm:node:10009372769",
+      "name": "الشبيبة",
+      "kind": "village",
+      "lat": 34.5624317,
+      "lng": 8.9256796
+    },
+    {
+      "id": "osm:node:10009372791",
+      "name": "المريطبة",
+      "kind": "hamlet",
+      "lat": 34.5951831,
+      "lng": 8.9259041
+    },
+    {
+      "id": "osm:node:10010935167",
+      "name": "العمايمية",
+      "kind": "hamlet",
+      "lat": 34.6363366,
+      "lng": 8.7014249
+    },
+    {
+      "id": "osm:node:10010935229",
+      "name": "عقلة أحمد",
+      "kind": "hamlet",
+      "lat": 34.7232381,
+      "lng": 8.3218171
+    },
+    {
+      "id": "osm:node:10010935355",
+      "name": "أولاد إبراهيم",
+      "kind": "hamlet",
+      "lat": 34.8523033,
+      "lng": 8.3372642
+    },
+    {
+      "id": "osm:node:10011134568",
+      "name": "السنك",
+      "kind": "hamlet",
+      "lat": 35.0700423,
+      "lng": 8.4723297
+    },
+    {
+      "id": "osm:node:10011134595",
+      "name": "زاوية المولدي",
+      "kind": "hamlet",
+      "lat": 35.3114431,
+      "lng": 8.5404115
+    },
+    {
+      "id": "osm:node:10011134633",
+      "name": "اولاد بالطيب",
+      "kind": "neighbourhood",
+      "lat": 35.320375,
+      "lng": 8.5933147
+    },
+    {
+      "id": "osm:node:10011471886",
+      "name": "عين الجديدة",
+      "kind": "hamlet",
+      "lat": 35.6284551,
+      "lng": 8.7861067
+    },
+    {
+      "id": "osm:node:10011519047",
+      "name": "عين قصيبة",
+      "kind": "village",
+      "lat": 35.7897838,
+      "lng": 8.8415151
+    },
+    {
+      "id": "osm:node:10017533908",
+      "name": "بئر السلايمية",
+      "kind": "village",
+      "lat": 35.3564227,
+      "lng": 9.8741325
+    },
+    {
+      "id": "osm:node:10018736448",
+      "name": "بئر الحاج مرزوق",
+      "kind": "hamlet",
+      "lat": 35.1306233,
+      "lng": 10.5687847
+    },
+    {
+      "id": "osm:node:10018736472",
+      "name": "الغطاطسة",
+      "kind": "village",
+      "lat": 35.1065299,
+      "lng": 10.6449633
+    },
+    {
+      "id": "osm:node:10018736489",
+      "name": "وادي حمودة",
+      "kind": "village",
+      "lat": 35.2679807,
+      "lng": 10.7554926
+    },
+    {
+      "id": "osm:node:10018736494",
+      "name": "أولاد عرجون",
+      "kind": "village",
+      "lat": 35.2697486,
+      "lng": 10.8107845
+    },
+    {
+      "id": "osm:node:10021286069",
+      "name": "الطواهرة",
+      "kind": "village",
+      "lat": 35.3238175,
+      "lng": 10.7987315
+    },
+    {
+      "id": "osm:node:10021286089",
+      "name": "أولاد بالليل",
+      "kind": "village",
+      "lat": 35.3814789,
+      "lng": 10.8989646
+    },
+    {
+      "id": "osm:node:10021286328",
+      "name": "أولاد الميساوي",
+      "kind": "hamlet",
+      "lat": 35.3870238,
+      "lng": 10.9121261
+    },
+    {
+      "id": "osm:node:10024584141",
+      "name": "اولاد جاء بالله",
+      "kind": "village",
+      "lat": 35.2042751,
+      "lng": 10.9187989
+    },
+    {
+      "id": "osm:node:10044670149",
+      "name": "Cité el Bank",
+      "kind": "neighbourhood",
+      "lat": 36.8502352,
+      "lng": 10.3083211
+    },
+    {
+      "id": "osm:node:10118270159",
+      "name": "السواهلية",
+      "kind": "village",
+      "lat": 35.3890884,
+      "lng": 10.627869
+    },
+    {
+      "id": "osm:node:10118270171",
+      "name": "أولاد عبد الله",
+      "kind": "village",
+      "lat": 35.410761,
+      "lng": 10.6180747
+    },
+    {
+      "id": "osm:node:10118270176",
+      "name": "المليشات",
+      "kind": "village",
+      "lat": 35.51208,
+      "lng": 10.5316808
+    },
+    {
+      "id": "osm:node:10168275561",
+      "name": "حي الأمل",
+      "kind": "neighbourhood",
+      "lat": 34.767506,
+      "lng": 10.7725875
+    },
+    {
+      "id": "osm:node:10168309795",
+      "name": "حي المعارف",
+      "kind": "suburb",
+      "lat": 34.7528495,
+      "lng": 10.7647459
+    },
+    {
+      "id": "osm:node:10168309796",
+      "name": "البستان",
+      "kind": "suburb",
+      "lat": 34.754243,
+      "lng": 10.769055
+    },
+    {
+      "id": "osm:node:10173262940",
+      "name": "الحي الجديد قرمدة",
+      "kind": "suburb",
+      "lat": 34.8105622,
+      "lng": 10.71547
+    },
+    {
+      "id": "osm:node:10173277351",
+      "name": "مركز كمون",
+      "kind": "suburb",
+      "lat": 34.7857013,
+      "lng": 10.7208493
+    },
+    {
+      "id": "osm:node:10175133812",
+      "name": "مركز السلامي",
+      "kind": "suburb",
+      "lat": 34.7792175,
+      "lng": 10.7252894
+    },
+    {
+      "id": "osm:node:10564575529",
+      "name": "أولاد يوسف",
+      "kind": "village",
+      "lat": 35.061129,
+      "lng": 10.856867
+    },
+    {
+      "id": "osm:node:10588208128",
+      "name": "Sidi Ferjani",
+      "kind": "village",
+      "lat": 37.2094213,
+      "lng": 9.2466398
+    },
+    {
+      "id": "osm:node:10725184506",
+      "name": "وادي رقة",
+      "kind": "village",
+      "lat": 35.2173131,
+      "lng": 10.7899834
+    },
+    {
+      "id": "osm:node:10725184507",
+      "name": "الرحاحلة",
+      "kind": "village",
+      "lat": 35.2431135,
+      "lng": 10.7603098
+    },
+    {
+      "id": "osm:node:10739565994",
+      "name": "Fesguiet es Souk فسقية",
+      "kind": "hamlet",
+      "lat": 35.7630075,
+      "lng": 9.7246493
+    },
+    {
+      "id": "osm:node:1080388142",
+      "name": "شطرانة",
+      "kind": "village",
+      "lat": 36.8811985,
+      "lng": 10.211819
+    },
+    {
+      "id": "osm:node:1080390577",
+      "name": "حي المنصورة 1",
+      "kind": "suburb",
+      "lat": 36.883833,
+      "lng": 10.1996772
+    },
+    {
+      "id": "osm:node:10820674793",
+      "name": "منزل حمزة الغربية",
+      "kind": "village",
+      "lat": 35.401796,
+      "lng": 10.794249
+    },
+    {
+      "id": "osm:node:10820734093",
+      "name": "Hara Kebira",
+      "kind": "quarter",
+      "lat": 33.8648403,
+      "lng": 10.8670792
+    },
+    {
+      "id": "osm:node:1083324475",
+      "name": "ببوش",
+      "kind": "village",
+      "lat": 36.802166,
+      "lng": 8.6776724
+    },
+    {
+      "id": "osm:node:10844854592",
+      "name": "El Jebalia",
+      "kind": "quarter",
+      "lat": 33.7262819,
+      "lng": 10.7736743
+    },
+    {
+      "id": "osm:node:10844854593",
+      "name": "Adeloun",
+      "kind": "hamlet",
+      "lat": 33.767684,
+      "lng": 10.7948492
+    },
+    {
+      "id": "osm:node:10882938805",
+      "name": "بوسعادة",
+      "kind": "village",
+      "lat": 36.8616178,
+      "lng": 9.2548682
+    },
+    {
+      "id": "osm:node:1088455110",
+      "name": "مكثر",
+      "kind": "town",
+      "lat": 35.8558974,
+      "lng": 9.2057475
+    },
+    {
+      "id": "osm:node:10911452269",
+      "name": "غدير الربايع",
+      "kind": "village",
+      "lat": 34.4667767,
+      "lng": 9.9267861
+    },
+    {
+      "id": "osm:node:10931447240",
+      "name": "قصر الحمام",
+      "kind": "village",
+      "lat": 34.8744726,
+      "lng": 9.8569636
+    },
+    {
+      "id": "osm:node:10990187578",
+      "name": "Tezdaine",
+      "kind": "village",
+      "lat": 33.8008771,
+      "lng": 11.032161
+    },
+    {
+      "id": "osm:node:10990187579",
+      "name": "El Haddada",
+      "kind": "village",
+      "lat": 33.7844104,
+      "lng": 11.0361658
+    },
+    {
+      "id": "osm:node:10993897112",
+      "name": "شبابية",
+      "kind": "village",
+      "lat": 33.7662313,
+      "lng": 10.9841255
+    },
+    {
+      "id": "osm:node:1099411041",
+      "name": "حشاد",
+      "kind": "suburb",
+      "lat": 36.8193511,
+      "lng": 10.136907
+    },
+    {
+      "id": "osm:node:10996632224",
+      "name": "طريفة",
+      "kind": "quarter",
+      "lat": 33.8279267,
+      "lng": 10.9899878
+    },
+    {
+      "id": "osm:node:11011313761",
+      "name": "Henchir el Benia",
+      "kind": "hamlet",
+      "lat": 33.1941422,
+      "lng": 10.1796067
+    },
+    {
+      "id": "osm:node:11013507623",
+      "name": "Cheguimi",
+      "kind": "hamlet",
+      "lat": 33.3903526,
+      "lng": 10.1346376
+    },
+    {
+      "id": "osm:node:11019885887",
+      "name": "Ksar el Kharba",
+      "kind": "hamlet",
+      "lat": 33.2759498,
+      "lng": 10.2253475
+    },
+    {
+      "id": "osm:node:11026544734",
+      "name": "El Kherba",
+      "kind": "hamlet",
+      "lat": 33.511106,
+      "lng": 10.0909292
+    },
+    {
+      "id": "osm:node:11026607039",
+      "name": "El Braouka",
+      "kind": "hamlet",
+      "lat": 33.5044575,
+      "lng": 10.1113536
+    },
+    {
+      "id": "osm:node:11026607040",
+      "name": "Beni Rechid",
+      "kind": "hamlet",
+      "lat": 33.4865675,
+      "lng": 10.1334479
+    },
+    {
+      "id": "osm:node:11036360079",
+      "name": "Bou Dhafeur",
+      "kind": "hamlet",
+      "lat": 33.5732936,
+      "lng": 9.9061631
+    },
+    {
+      "id": "osm:node:11036399362",
+      "name": "Beni Issa",
+      "kind": "hamlet",
+      "lat": 33.6029812,
+      "lng": 9.8988026
+    },
+    {
+      "id": "osm:node:11047496963",
+      "name": "برقوق",
+      "kind": "hamlet",
+      "lat": 33.4171292,
+      "lng": 10.1301561
+    },
+    {
+      "id": "osm:node:11057005334",
+      "name": "Sidi Rabah",
+      "kind": "hamlet",
+      "lat": 36.0334557,
+      "lng": 8.3432787
+    },
+    {
+      "id": "osm:node:1109384824",
+      "name": "تينجة",
+      "kind": "village",
+      "lat": 37.1639232,
+      "lng": 9.7705573
+    },
+    {
+      "id": "osm:node:1114749818",
+      "name": "الزهور 2",
+      "kind": "suburb",
+      "lat": 36.794148,
+      "lng": 10.129109
+    },
+    {
+      "id": "osm:node:1115570559",
+      "name": "السيجومي",
+      "kind": "suburb",
+      "lat": 36.7923034,
+      "lng": 10.1611757
+    },
+    {
+      "id": "osm:node:11164215628",
+      "name": "قصر معاند",
+      "kind": "hamlet",
+      "lat": 32.8253295,
+      "lng": 10.5162876
+    },
+    {
+      "id": "osm:node:11164298956",
+      "name": "مزاتة",
+      "kind": "village",
+      "lat": 33.5210068,
+      "lng": 10.0816671
+    },
+    {
+      "id": "osm:node:11179727011",
+      "name": "بو منجل",
+      "kind": "hamlet",
+      "lat": 33.7789282,
+      "lng": 10.7690308
+    },
+    {
+      "id": "osm:node:11180251348",
+      "name": "Fadhloun",
+      "kind": "hamlet",
+      "lat": 33.8221166,
+      "lng": 10.959814
+    },
+    {
+      "id": "osm:node:11180282351",
+      "name": "أولاد عمر",
+      "kind": "village",
+      "lat": 33.8292343,
+      "lng": 10.9764147
+    },
+    {
+      "id": "osm:node:1121427516",
+      "name": "الزهور",
+      "kind": "suburb",
+      "lat": 36.7978108,
+      "lng": 10.1441276
+    },
+    {
+      "id": "osm:node:1121428168",
+      "name": "الزهور 3",
+      "kind": "suburb",
+      "lat": 36.799924,
+      "lng": 10.1343265
+    },
+    {
+      "id": "osm:node:11215399479",
+      "name": "Hafi Rassa",
+      "kind": "hamlet",
+      "lat": 33.5110772,
+      "lng": 10.006578
+    },
+    {
+      "id": "osm:node:11228292293",
+      "name": "Sidi el Hadj Mabrouk",
+      "kind": "hamlet",
+      "lat": 33.283124,
+      "lng": 10.194941
+    },
+    {
+      "id": "osm:node:11229148555",
+      "name": "El Hassian",
+      "kind": "hamlet",
+      "lat": 33.2977866,
+      "lng": 10.183145
+    },
+    {
+      "id": "osm:node:11229148626",
+      "name": "El Kosba",
+      "kind": "hamlet",
+      "lat": 33.284515,
+      "lng": 10.195166
+    },
+    {
+      "id": "osm:node:11230028572",
+      "name": "قصر الجؤامع",
+      "kind": "village",
+      "lat": 33.2538427,
+      "lng": 10.2529122
+    },
+    {
+      "id": "osm:node:11233650619",
+      "name": "Margane",
+      "kind": "hamlet",
+      "lat": 33.854177,
+      "lng": 10.7837128
+    },
+    {
+      "id": "osm:node:11233650620",
+      "name": "Jaabira",
+      "kind": "hamlet",
+      "lat": 33.800846,
+      "lng": 10.8000175
+    },
+    {
+      "id": "osm:node:11233650621",
+      "name": "أورير",
+      "kind": "village",
+      "lat": 33.7789473,
+      "lng": 10.814504
+    },
+    {
+      "id": "osm:node:11233688598",
+      "name": "El Jlidat",
+      "kind": "hamlet",
+      "lat": 33.8651551,
+      "lng": 10.947445
+    },
+    {
+      "id": "osm:node:11233688599",
+      "name": "Tajdit",
+      "kind": "hamlet",
+      "lat": 33.8600832,
+      "lng": 10.8962892
+    },
+    {
+      "id": "osm:node:11233689762",
+      "name": "Bahbah",
+      "kind": "hamlet",
+      "lat": 33.806027,
+      "lng": 10.973093
+    },
+    {
+      "id": "osm:node:11233689763",
+      "name": "القايد",
+      "kind": "village",
+      "lat": 33.8199197,
+      "lng": 10.9455837
+    },
+    {
+      "id": "osm:node:1123401313",
+      "name": "حي النجاح",
+      "kind": "suburb",
+      "lat": 36.7941476,
+      "lng": 10.1541051
+    },
+    {
+      "id": "osm:node:1124133881",
+      "name": "بني خلاد",
+      "kind": "village",
+      "lat": 36.6494614,
+      "lng": 10.5917633
+    },
+    {
+      "id": "osm:node:1124134746",
+      "name": "قرمبالية",
+      "kind": "town",
+      "lat": 36.5984231,
+      "lng": 10.4990402
+    },
+    {
+      "id": "osm:node:11256424282",
+      "name": "غرداية",
+      "kind": "village",
+      "lat": 33.7163618,
+      "lng": 10.9358141
+    },
+    {
+      "id": "osm:node:11256425588",
+      "name": "المحاميد",
+      "kind": "hamlet",
+      "lat": 33.6940052,
+      "lng": 10.9119599
+    },
+    {
+      "id": "osm:node:11256425593",
+      "name": "Tala",
+      "kind": "hamlet",
+      "lat": 33.707639,
+      "lng": 10.9117752
+    },
+    {
+      "id": "osm:node:11256427632",
+      "name": "Talbet",
+      "kind": "hamlet",
+      "lat": 33.7126979,
+      "lng": 10.9244903
+    },
+    {
+      "id": "osm:node:11256435282",
+      "name": "تيواجن",
+      "kind": "village",
+      "lat": 33.7630117,
+      "lng": 10.8282467
+    },
+    {
+      "id": "osm:node:1127119919",
+      "name": "أولاد الشامخ",
+      "kind": "village",
+      "lat": 35.4915017,
+      "lng": 10.314841
+    },
+    {
+      "id": "osm:node:1128656865",
+      "name": "المرناقية",
+      "kind": "hamlet",
+      "lat": 36.8484841,
+      "lng": 10.649507
+    },
+    {
+      "id": "osm:node:1128665422",
+      "name": "قربص",
+      "kind": "village",
+      "lat": 36.8162845,
+      "lng": 10.5689263
+    },
+    {
+      "id": "osm:node:1130137942",
+      "name": "غار الفاس",
+      "kind": "hamlet",
+      "lat": 35.5599509,
+      "lng": 11.0224657
+    },
+    {
+      "id": "osm:node:1131738794",
+      "name": "زانة",
+      "kind": "village",
+      "lat": 37.0364634,
+      "lng": 10.0400884
+    },
+    {
+      "id": "osm:node:1132950382",
+      "name": "ماتلين",
+      "kind": "village",
+      "lat": 37.2441137,
+      "lng": 10.047511
+    },
+    {
+      "id": "osm:node:11342676210",
+      "name": "Sidi Mohamed el Touati",
+      "kind": "hamlet",
+      "lat": 33.4976313,
+      "lng": 10.2231218
+    },
+    {
+      "id": "osm:node:11360894975",
+      "name": "Sidi Mansour",
+      "kind": "village",
+      "lat": 36.1972083,
+      "lng": 8.7280728
+    },
+    {
+      "id": "osm:node:1136725407",
+      "name": "الصفصاف",
+      "kind": "suburb",
+      "lat": 36.8831755,
+      "lng": 10.3314137
+    },
+    {
+      "id": "osm:node:1136725873",
+      "name": "الكرم",
+      "kind": "town",
+      "lat": 36.8348312,
+      "lng": 10.3181518
+    },
+    {
+      "id": "osm:node:1136727088",
+      "name": "حي الطيب المهيري",
+      "kind": "suburb",
+      "lat": 36.8524349,
+      "lng": 10.2654885
+    },
+    {
+      "id": "osm:node:1136727604",
+      "name": "قمرت العليا",
+      "kind": "suburb",
+      "lat": 36.9005944,
+      "lng": 10.3122326
+    },
+    {
+      "id": "osm:node:1143501777",
+      "name": "الملاسين",
+      "kind": "suburb",
+      "lat": 36.7986702,
+      "lng": 10.1598749
+    },
+    {
+      "id": "osm:node:1144116784",
+      "name": "برج فليفل",
+      "kind": "suburb",
+      "lat": 36.799633,
+      "lng": 10.1579677
+    },
+    {
+      "id": "osm:node:11448954292",
+      "name": "Ksar Chouline",
+      "kind": "hamlet",
+      "lat": 33.0400257,
+      "lng": 10.4310981
+    },
+    {
+      "id": "osm:node:1147369793",
+      "name": "حي الطابق",
+      "kind": "suburb",
+      "lat": 36.8774874,
+      "lng": 10.3129961
+    },
+    {
+      "id": "osm:node:1147369801",
+      "name": "حي الخليل",
+      "kind": "suburb",
+      "lat": 36.8882285,
+      "lng": 10.3042439
+    },
+    {
+      "id": "osm:node:1147369832",
+      "name": "الرياض",
+      "kind": "suburb",
+      "lat": 36.8826682,
+      "lng": 10.3080504
+    },
+    {
+      "id": "osm:node:11493025904",
+      "name": "Tazeghdent",
+      "kind": "hamlet",
+      "lat": 32.7987885,
+      "lng": 10.5225495
+    },
+    {
+      "id": "osm:node:11498934614",
+      "name": "Ben Khezet",
+      "kind": "hamlet",
+      "lat": 32.8485931,
+      "lng": 10.5712341
+    },
+    {
+      "id": "osm:node:11503753822",
+      "name": "Sidi Ahmed Ben Mohammed",
+      "kind": "hamlet",
+      "lat": 32.8383408,
+      "lng": 10.5292862
+    },
+    {
+      "id": "osm:node:11522289870",
+      "name": "حاف أولاد حامد",
+      "kind": "hamlet",
+      "lat": 32.7922759,
+      "lng": 10.2297856
+    },
+    {
+      "id": "osm:node:11524754440",
+      "name": "Merbah",
+      "kind": "hamlet",
+      "lat": 33.0215225,
+      "lng": 10.3147839
+    },
+    {
+      "id": "osm:node:11525318199",
+      "name": "طويل أولاد زايد",
+      "kind": "hamlet",
+      "lat": 32.7671737,
+      "lng": 10.2628336
+    },
+    {
+      "id": "osm:node:11539356616",
+      "name": "Sidi Said ben Salah",
+      "kind": "hamlet",
+      "lat": 33.2466868,
+      "lng": 10.258731
+    },
+    {
+      "id": "osm:node:1158752159",
+      "name": "حي التحرير",
+      "kind": "suburb",
+      "lat": 36.8229323,
+      "lng": 10.1339881
+    },
+    {
+      "id": "osm:node:1165828355",
+      "name": "بني حسان",
+      "kind": "village",
+      "lat": 35.5670718,
+      "lng": 10.8080266
+    },
+    {
+      "id": "osm:node:1165828361",
+      "name": "جمال",
+      "kind": "village",
+      "lat": 35.6239297,
+      "lng": 10.7592359
+    },
+    {
+      "id": "osm:node:1166000786",
+      "name": "حي القضاة",
+      "kind": "suburb",
+      "lat": 36.8831907,
+      "lng": 10.3158038
+    },
+    {
+      "id": "osm:node:11683399241",
+      "name": "Bir el Hamlia",
+      "kind": "hamlet",
+      "lat": 33.2793551,
+      "lng": 10.1467814
+    },
+    {
+      "id": "osm:node:11702067241",
+      "name": "Ben Ghazial",
+      "kind": "village",
+      "lat": 33.27044,
+      "lng": 10.4403627
+    },
+    {
+      "id": "osm:node:11746105080",
+      "name": "Missaoui",
+      "kind": "hamlet",
+      "lat": 32.7962139,
+      "lng": 10.5150858
+    },
+    {
+      "id": "osm:node:11754533159",
+      "name": "قصر أولاد ابراهيم",
+      "kind": "hamlet",
+      "lat": 33.2640168,
+      "lng": 10.1691678
+    },
+    {
+      "id": "osm:node:11780165926",
+      "name": "Sidi Salem",
+      "kind": "hamlet",
+      "lat": 33.5564481,
+      "lng": 9.9070015
+    },
+    {
+      "id": "osm:node:11794261527",
+      "name": "الزريبة",
+      "kind": "village",
+      "lat": 33.4745564,
+      "lng": 10.0338045
+    },
+    {
+      "id": "osm:node:11794290346",
+      "name": "شعبة السماعة",
+      "kind": "village",
+      "lat": 33.5010312,
+      "lng": 9.9904376
+    },
+    {
+      "id": "osm:node:11820052133",
+      "name": "Ksar Karrouz",
+      "kind": "hamlet",
+      "lat": 33.0211915,
+      "lng": 10.8365297
+    },
+    {
+      "id": "osm:node:11833229908",
+      "name": "Tamazzout",
+      "kind": "hamlet",
+      "lat": 32.9208107,
+      "lng": 10.4816246
+    },
+    {
+      "id": "osm:node:11833946235",
+      "name": "El Beniya",
+      "kind": "hamlet",
+      "lat": 32.9261824,
+      "lng": 10.5190727
+    },
+    {
+      "id": "osm:node:1183575561",
+      "name": "الحدائق",
+      "kind": "suburb",
+      "lat": 36.8245304,
+      "lng": 10.1841278
+    },
+    {
+      "id": "osm:node:1184918055",
+      "name": "أكودة",
+      "kind": "village",
+      "lat": 35.8657303,
+      "lng": 10.5678382
+    },
+    {
+      "id": "osm:node:1185290849",
+      "name": "حي الخضراء",
+      "kind": "suburb",
+      "lat": 36.8302177,
+      "lng": 10.1970639
+    },
+    {
+      "id": "osm:node:1185766493",
+      "name": "حدائق المنزه 1",
+      "kind": "suburb",
+      "lat": 36.843532,
+      "lng": 10.1342046
+    },
+    {
+      "id": "osm:node:1185779583",
+      "name": "حدائق المنزه 2",
+      "kind": "suburb",
+      "lat": 36.8563728,
+      "lng": 10.137747
+    },
+    {
+      "id": "osm:node:1187489040",
+      "name": "حاجب العيون",
+      "kind": "village",
+      "lat": 35.395434,
+      "lng": 9.5424162
+    },
+    {
+      "id": "osm:node:1187534930",
+      "name": "سيدي عمر بوحجلة",
+      "kind": "town",
+      "lat": 35.3981921,
+      "lng": 10.0508652
+    },
+    {
+      "id": "osm:node:1187534954",
+      "name": "الهوارب",
+      "kind": "village",
+      "lat": 35.5675325,
+      "lng": 9.7697136
+    },
+    {
+      "id": "osm:node:1190877055",
+      "name": "دوار الحاج محمد",
+      "kind": "hamlet",
+      "lat": 36.64,
+      "lng": 10.39667
+    },
+    {
+      "id": "osm:node:1190877566",
+      "name": "Camp Servière",
+      "kind": "hamlet",
+      "lat": 36.64639,
+      "lng": 10.44278
+    },
+    {
+      "id": "osm:node:1190877693",
+      "name": "دوار أبو سام",
+      "kind": "village",
+      "lat": 36.51667,
+      "lng": 10.6
+    },
+    {
+      "id": "osm:node:1190878345",
+      "name": "بوعرقوب",
+      "kind": "village",
+      "lat": 36.5342202,
+      "lng": 10.5498743
+    },
+    {
+      "id": "osm:node:1191111511",
+      "name": "المنار 2",
+      "kind": "suburb",
+      "lat": 36.8423974,
+      "lng": 10.1571247
+    },
+    {
+      "id": "osm:node:11934192765",
+      "name": "تغزويسن",
+      "kind": "hamlet",
+      "lat": 33.7852853,
+      "lng": 10.7934342
+    },
+    {
+      "id": "osm:node:11950999722",
+      "name": "تملال",
+      "kind": "village",
+      "lat": 33.8014256,
+      "lng": 11.0073878
+    },
+    {
+      "id": "osm:node:11965706860",
+      "name": "Abarda",
+      "kind": "village",
+      "lat": 33.7871178,
+      "lng": 10.7739371
+    },
+    {
+      "id": "osm:node:11965733942",
+      "name": "مڨماڨ",
+      "kind": "village",
+      "lat": 33.8055781,
+      "lng": 10.8304649
+    },
+    {
+      "id": "osm:node:11965742169",
+      "name": "Majin",
+      "kind": "village",
+      "lat": 33.8185621,
+      "lng": 10.8350322
+    },
+    {
+      "id": "osm:node:11965749225",
+      "name": "غندري",
+      "kind": "village",
+      "lat": 33.7577088,
+      "lng": 10.7741731
+    },
+    {
+      "id": "osm:node:11979577406",
+      "name": "التوتة",
+      "kind": "village",
+      "lat": 33.8025916,
+      "lng": 10.9503453
+    },
+    {
+      "id": "osm:node:11982198992",
+      "name": "تيانست",
+      "kind": "village",
+      "lat": 33.8178115,
+      "lng": 10.9000022
+    },
+    {
+      "id": "osm:node:11983749556",
+      "name": "الفاهمين",
+      "kind": "village",
+      "lat": 33.7131918,
+      "lng": 10.8644163
+    },
+    {
+      "id": "osm:node:11984528289",
+      "name": "واد أمغار",
+      "kind": "village",
+      "lat": 33.785086,
+      "lng": 10.8717054
+    },
+    {
+      "id": "osm:node:11984545835",
+      "name": "الفوقانيين",
+      "kind": "village",
+      "lat": 33.8025099,
+      "lng": 10.8972357
+    },
+    {
+      "id": "osm:node:11984545836",
+      "name": "بني ديغت",
+      "kind": "hamlet",
+      "lat": 33.8093583,
+      "lng": 10.8663584
+    },
+    {
+      "id": "osm:node:1200000228",
+      "name": "نرجس 2",
+      "kind": "suburb",
+      "lat": 35.8910383,
+      "lng": 10.5861159
+    },
+    {
+      "id": "osm:node:1200000229",
+      "name": "خليج الملائكة",
+      "kind": "suburb",
+      "lat": 35.8947856,
+      "lng": 10.5768419
+    },
+    {
+      "id": "osm:node:1200000230",
+      "name": "نرجس 1",
+      "kind": "suburb",
+      "lat": 35.8907852,
+      "lng": 10.5913819
+    },
+    {
+      "id": "osm:node:1200000231",
+      "name": "زيتونة 2",
+      "kind": "suburb",
+      "lat": 35.8978378,
+      "lng": 10.5802518
+    },
+    {
+      "id": "osm:node:1200000232",
+      "name": "زيتونة 1",
+      "kind": "suburb",
+      "lat": 35.8945249,
+      "lng": 10.5824311
+    },
+    {
+      "id": "osm:node:1201923151",
+      "name": "دوار الفدام",
+      "kind": "hamlet",
+      "lat": 37.11523,
+      "lng": 9.666757
+    },
+    {
+      "id": "osm:node:1201923189",
+      "name": "دوار عبد القادر",
+      "kind": "hamlet",
+      "lat": 37.1219282,
+      "lng": 9.675329
+    },
+    {
+      "id": "osm:node:1201923313",
+      "name": "دوار نشمايا",
+      "kind": "hamlet",
+      "lat": 37.1253,
+      "lng": 9.6819071
+    },
+    {
+      "id": "osm:node:1204588103",
+      "name": "الزهراء",
+      "kind": "town",
+      "lat": 36.7404497,
+      "lng": 10.3029461
+    },
+    {
+      "id": "osm:node:1205570513",
+      "name": "شطرانة 3",
+      "kind": "suburb",
+      "lat": 36.8924081,
+      "lng": 10.2289033
+    },
+    {
+      "id": "osm:node:1205571123",
+      "name": "دار فضال",
+      "kind": "suburb",
+      "lat": 36.8672102,
+      "lng": 10.2541607
+    },
+    {
+      "id": "osm:node:1206558973",
+      "name": "الوردانين",
+      "kind": "village",
+      "lat": 35.7097268,
+      "lng": 10.67649
+    },
+    {
+      "id": "osm:node:1206559008",
+      "name": "الساحلين",
+      "kind": "town",
+      "lat": 35.7512612,
+      "lng": 10.7116486
+    },
+    {
+      "id": "osm:node:1209940751",
+      "name": "بلي المحطة",
+      "kind": "village",
+      "lat": 36.5612189,
+      "lng": 10.5289073
+    },
+    {
+      "id": "osm:node:1212253279",
+      "name": "بنبلة",
+      "kind": "village",
+      "lat": 35.6919328,
+      "lng": 10.7921125
+    },
+    {
+      "id": "osm:node:1212270314",
+      "name": "مَزدُور",
+      "kind": "village",
+      "lat": 35.6819517,
+      "lng": 10.7278001
+    },
+    {
+      "id": "osm:node:12148104399",
+      "name": "سيدي جمور",
+      "kind": "hamlet",
+      "lat": 33.8408603,
+      "lng": 10.7514478
+    },
+    {
+      "id": "osm:node:1215553264",
+      "name": "الحي الأولمبي",
+      "kind": "suburb",
+      "lat": 36.8361769,
+      "lng": 10.1945276
+    },
+    {
+      "id": "osm:node:12170591176",
+      "name": "El Methania",
+      "kind": "quarter",
+      "lat": 33.7272145,
+      "lng": 10.7671638
+    },
+    {
+      "id": "osm:node:12170591177",
+      "name": "El Gebleine",
+      "kind": "quarter",
+      "lat": 33.7206534,
+      "lng": 10.765801
+    },
+    {
+      "id": "osm:node:12170591178",
+      "name": "El Trifa",
+      "kind": "quarter",
+      "lat": 33.7221917,
+      "lng": 10.7551236
+    },
+    {
+      "id": "osm:node:12170625122",
+      "name": "El Jadoui",
+      "kind": "quarter",
+      "lat": 33.7332698,
+      "lng": 10.7562618
+    },
+    {
+      "id": "osm:node:12170640622",
+      "name": "El Asaida",
+      "kind": "hamlet",
+      "lat": 33.7535801,
+      "lng": 10.8068615
+    },
+    {
+      "id": "osm:node:12170715856",
+      "name": "Bou Hachem",
+      "kind": "hamlet",
+      "lat": 33.7696024,
+      "lng": 10.7901703
+    },
+    {
+      "id": "osm:node:12170719195",
+      "name": "القنطرة",
+      "kind": "suburb",
+      "lat": 36.0076473,
+      "lng": 9.4357463
+    },
+    {
+      "id": "osm:node:12171078121",
+      "name": "حومة الخاوي",
+      "kind": "hamlet",
+      "lat": 33.7343458,
+      "lng": 10.8411813
+    },
+    {
+      "id": "osm:node:12171078159",
+      "name": "تافرطاست",
+      "kind": "village",
+      "lat": 33.7418591,
+      "lng": 10.9041383
+    },
+    {
+      "id": "osm:node:1217721026",
+      "name": "منارة",
+      "kind": "village",
+      "lat": 35.6978443,
+      "lng": 10.7834876
+    },
+    {
+      "id": "osm:node:1217741814",
+      "name": "موتوالفيل",
+      "kind": "suburb",
+      "lat": 36.8334618,
+      "lng": 10.1708613
+    },
+    {
+      "id": "osm:node:12187398586",
+      "name": "الأرباح",
+      "kind": "village",
+      "lat": 33.8060494,
+      "lng": 10.8506635
+    },
+    {
+      "id": "osm:node:12187492785",
+      "name": "برا",
+      "kind": "hamlet",
+      "lat": 33.7915677,
+      "lng": 10.9506993
+    },
+    {
+      "id": "osm:node:12189397654",
+      "name": "El Karraba",
+      "kind": "hamlet",
+      "lat": 34.7187105,
+      "lng": 11.1584073
+    },
+    {
+      "id": "osm:node:12189733260",
+      "name": "بني باندو",
+      "kind": "suburb",
+      "lat": 33.8805495,
+      "lng": 10.8414973
+    },
+    {
+      "id": "osm:node:12189733265",
+      "name": "Boumlal",
+      "kind": "quarter",
+      "lat": 33.879209,
+      "lng": 10.8510781
+    },
+    {
+      "id": "osm:node:12190081839",
+      "name": "خبنة الطمامة",
+      "kind": "hamlet",
+      "lat": 35.2308124,
+      "lng": 9.7318208
+    },
+    {
+      "id": "osm:node:12198018866",
+      "name": "Souf Azdai",
+      "kind": "neighbourhood",
+      "lat": 33.7421982,
+      "lng": 10.9271403
+    },
+    {
+      "id": "osm:node:12198018912",
+      "name": "Teghalla",
+      "kind": "neighbourhood",
+      "lat": 33.7463022,
+      "lng": 10.9246649
+    },
+    {
+      "id": "osm:node:12198018913",
+      "name": "Tmasset",
+      "kind": "neighbourhood",
+      "lat": 33.7432886,
+      "lng": 10.9135474
+    },
+    {
+      "id": "osm:node:12198029657",
+      "name": "El Souatir (Eddhira)",
+      "kind": "hamlet",
+      "lat": 33.7445242,
+      "lng": 10.9356817
+    },
+    {
+      "id": "osm:node:12202914812",
+      "name": "Benian",
+      "kind": "village",
+      "lat": 33.7627331,
+      "lng": 10.9072706
+    },
+    {
+      "id": "osm:node:12202921351",
+      "name": "الشهود",
+      "kind": "hamlet",
+      "lat": 33.7820205,
+      "lng": 10.8897285
+    },
+    {
+      "id": "osm:node:12207902692",
+      "name": "Tiniza",
+      "kind": "hamlet",
+      "lat": 33.7951736,
+      "lng": 10.9112029
+    },
+    {
+      "id": "osm:node:12207902693",
+      "name": "السكالة",
+      "kind": "village",
+      "lat": 33.7927818,
+      "lng": 10.8995609
+    },
+    {
+      "id": "osm:node:12211699220",
+      "name": "Tamgret",
+      "kind": "neighbourhood",
+      "lat": 33.7512184,
+      "lng": 10.9202687
+    },
+    {
+      "id": "osm:node:1222501018",
+      "name": "بوسليم",
+      "kind": "hamlet",
+      "lat": 36.3968112,
+      "lng": 10.2878806
+    },
+    {
+      "id": "osm:node:12229092546",
+      "name": "تغديمس",
+      "kind": "hamlet",
+      "lat": 33.8314561,
+      "lng": 10.8588134
+    },
+    {
+      "id": "osm:node:12229106391",
+      "name": "Tahrizit",
+      "kind": "village",
+      "lat": 33.8480016,
+      "lng": 10.875296
+    },
+    {
+      "id": "osm:node:12230629412",
+      "name": "Ouchachna",
+      "kind": "village",
+      "lat": 33.8088771,
+      "lng": 10.8901979
+    },
+    {
+      "id": "osm:node:12231455400",
+      "name": "Beni Baous",
+      "kind": "hamlet",
+      "lat": 33.7913457,
+      "lng": 11.0406651
+    },
+    {
+      "id": "osm:node:12231507427",
+      "name": "Temlel el Melh",
+      "kind": "hamlet",
+      "lat": 33.7975657,
+      "lng": 11.0171764
+    },
+    {
+      "id": "osm:node:12232008022",
+      "name": "عين زكار",
+      "kind": "village",
+      "lat": 36.0244601,
+      "lng": 9.5381103
+    },
+    {
+      "id": "osm:node:12247648836",
+      "name": "وادي الخيل",
+      "kind": "village",
+      "lat": 33.1616887,
+      "lng": 10.3496222
+    },
+    {
+      "id": "osm:node:1224796678",
+      "name": "حمام بنت الجديدي",
+      "kind": "village",
+      "lat": 36.3940415,
+      "lng": 10.3772322
+    },
+    {
+      "id": "osm:node:12270083735",
+      "name": "El Mahrab",
+      "kind": "hamlet",
+      "lat": 33.7959603,
+      "lng": 10.9423623
+    },
+    {
+      "id": "osm:node:1228573687",
+      "name": "Dechret Bou Dabouss",
+      "kind": "hamlet",
+      "lat": 35.9065377,
+      "lng": 9.805553
+    },
+    {
+      "id": "osm:node:12293313489",
+      "name": "المقارسة",
+      "kind": "village",
+      "lat": 33.8169826,
+      "lng": 11.0027005
+    },
+    {
+      "id": "osm:node:12294038471",
+      "name": "Tifrouin",
+      "kind": "hamlet",
+      "lat": 33.7701565,
+      "lng": 10.9539262
+    },
+    {
+      "id": "osm:node:12294172134",
+      "name": "Essaigh",
+      "kind": "village",
+      "lat": 33.7878499,
+      "lng": 10.9993471
+    },
+    {
+      "id": "osm:node:12296216958",
+      "name": "El Henchir",
+      "kind": "hamlet",
+      "lat": 33.7937889,
+      "lng": 10.9717737
+    },
+    {
+      "id": "osm:node:12296413638",
+      "name": "Maghraoua",
+      "kind": "hamlet",
+      "lat": 33.7978854,
+      "lng": 10.9882358
+    },
+    {
+      "id": "osm:node:12297649573",
+      "name": "Aourassen",
+      "kind": "hamlet",
+      "lat": 33.8425656,
+      "lng": 10.8441776
+    },
+    {
+      "id": "osm:node:12298714536",
+      "name": "El Bellaz",
+      "kind": "hamlet",
+      "lat": 33.8068182,
+      "lng": 10.7688891
+    },
+    {
+      "id": "osm:node:12299565803",
+      "name": "El Chergeyin",
+      "kind": "hamlet",
+      "lat": 33.8015973,
+      "lng": 10.9106178
+    },
+    {
+      "id": "osm:node:12322933959",
+      "name": "Zian",
+      "kind": "village",
+      "lat": 33.8492082,
+      "lng": 10.9199422
+    },
+    {
+      "id": "osm:node:1232453286",
+      "name": "الدلوسي",
+      "kind": "village",
+      "lat": 35.8959305,
+      "lng": 10.0851884
+    },
+    {
+      "id": "osm:node:1232796661",
+      "name": "Barroukch",
+      "kind": "hamlet",
+      "lat": 35.872546,
+      "lng": 9.759793
+    },
+    {
+      "id": "osm:node:12342334644",
+      "name": "تالوين",
+      "kind": "hamlet",
+      "lat": 33.7366952,
+      "lng": 10.8544448
+    },
+    {
+      "id": "osm:node:12345176897",
+      "name": "Bouimmin",
+      "kind": "neighbourhood",
+      "lat": 33.7998813,
+      "lng": 10.8767188
+    },
+    {
+      "id": "osm:node:12345241893",
+      "name": "بني يلداسن",
+      "kind": "hamlet",
+      "lat": 33.7913705,
+      "lng": 10.8656162
+    },
+    {
+      "id": "osm:node:12373562064",
+      "name": "تلاكين",
+      "kind": "neighbourhood",
+      "lat": 33.8581393,
+      "lng": 10.9318755
+    },
+    {
+      "id": "osm:node:1237968887",
+      "name": "حي دوبو",
+      "kind": "suburb",
+      "lat": 36.7800329,
+      "lng": 10.1904156
+    },
+    {
+      "id": "osm:node:1247811403",
+      "name": "الرتيبة",
+      "kind": "village",
+      "lat": 36.885665,
+      "lng": 10.7671335
+    },
+    {
+      "id": "osm:node:1247812086",
+      "name": "بئر مروة",
+      "kind": "village",
+      "lat": 36.7928794,
+      "lng": 10.6248045
+    },
+    {
+      "id": "osm:node:12497591683",
+      "name": "هنشير الماجل",
+      "kind": "village",
+      "lat": 33.3304399,
+      "lng": 10.3042067
+    },
+    {
+      "id": "osm:node:12509941321",
+      "name": "الفجارنية",
+      "kind": "neighbourhood",
+      "lat": 35.7603921,
+      "lng": 9.6481995
+    },
+    {
+      "id": "osm:node:12509949525",
+      "name": "البرايكية",
+      "kind": "neighbourhood",
+      "lat": 35.7704678,
+      "lng": 9.6575428
+    },
+    {
+      "id": "osm:node:1251030962",
+      "name": "الإزدهار",
+      "kind": "suburb",
+      "lat": 36.8576026,
+      "lng": 10.1862894
+    },
+    {
+      "id": "osm:node:1251049351",
+      "name": "أريانة الجديدة",
+      "kind": "suburb",
+      "lat": 36.8512722,
+      "lng": 10.1852853
+    },
+    {
+      "id": "osm:node:12526608990",
+      "name": "حي العمال hay al omal",
+      "kind": "neighbourhood",
+      "lat": 35.8533794,
+      "lng": 9.5903024
+    },
+    {
+      "id": "osm:node:12526639027",
+      "name": "العجيلات al ajilat",
+      "kind": "neighbourhood",
+      "lat": 35.743109,
+      "lng": 9.6323301
+    },
+    {
+      "id": "osm:node:12526658663",
+      "name": "حي العمال hay al omal",
+      "kind": "neighbourhood",
+      "lat": 35.8533794,
+      "lng": 9.5903024
+    },
+    {
+      "id": "osm:node:12526674882",
+      "name": "ڨاع المزود gaa al mezwed",
+      "kind": "neighbourhood",
+      "lat": 35.8451641,
+      "lng": 9.5862013
+    },
+    {
+      "id": "osm:node:12526684280",
+      "name": "ڨاع المزود gaa al mezwed",
+      "kind": "neighbourhood",
+      "lat": 35.8451641,
+      "lng": 9.5862013
+    },
+    {
+      "id": "osm:node:12534865868",
+      "name": "الصغايرية al sghairia",
+      "kind": "neighbourhood",
+      "lat": 35.7495314,
+      "lng": 9.6676769
+    },
+    {
+      "id": "osm:node:12534869979",
+      "name": "اللطايفية al ltaifia",
+      "kind": "neighbourhood",
+      "lat": 35.7572479,
+      "lng": 9.6579487
+    },
+    {
+      "id": "osm:node:1253816341",
+      "name": "التعمير1",
+      "kind": "suburb",
+      "lat": 36.8642986,
+      "lng": 10.1876038
+    },
+    {
+      "id": "osm:node:1254004330",
+      "name": "المنزه 4",
+      "kind": "suburb",
+      "lat": 36.8399448,
+      "lng": 10.1772314
+    },
+    {
+      "id": "osm:node:1254005393",
+      "name": "المنزه 1",
+      "kind": "suburb",
+      "lat": 36.8440263,
+      "lng": 10.1890857
+    },
+    {
+      "id": "osm:node:1254022064",
+      "name": "التعمير 4",
+      "kind": "suburb",
+      "lat": 36.8581122,
+      "lng": 10.19913
+    },
+    {
+      "id": "osm:node:1254053612",
+      "name": "النزهة",
+      "kind": "suburb",
+      "lat": 36.8667895,
+      "lng": 10.1946049
+    },
+    {
+      "id": "osm:node:1255623181",
+      "name": "المستقبل",
+      "kind": "suburb",
+      "lat": 36.8735753,
+      "lng": 10.1831532
+    },
+    {
+      "id": "osm:node:1255626528",
+      "name": "البلدية",
+      "kind": "suburb",
+      "lat": 36.8681945,
+      "lng": 10.1847845
+    },
+    {
+      "id": "osm:node:1256202705",
+      "name": "مدينة تونس العتيقة",
+      "kind": "suburb",
+      "lat": 36.7986588,
+      "lng": 10.1721131
+    },
+    {
+      "id": "osm:node:1256204446",
+      "name": "مونفلوري",
+      "kind": "suburb",
+      "lat": 36.7897886,
+      "lng": 10.1707683
+    },
+    {
+      "id": "osm:node:12563665860",
+      "name": "البلوكات al blouket",
+      "kind": "village",
+      "lat": 35.7934223,
+      "lng": 9.6421092
+    },
+    {
+      "id": "osm:node:12563677142",
+      "name": "العالية al âlia",
+      "kind": "village",
+      "lat": 35.7305584,
+      "lng": 9.609916
+    },
+    {
+      "id": "osm:node:12563693811",
+      "name": "الصدارة al sdara",
+      "kind": "village",
+      "lat": 35.7902963,
+      "lng": 9.6495366
+    },
+    {
+      "id": "osm:node:1257403631",
+      "name": "باب الجديد",
+      "kind": "suburb",
+      "lat": 36.7924083,
+      "lng": 10.1705385
+    },
+    {
+      "id": "osm:node:1257404621",
+      "name": "باب الفلة",
+      "kind": "suburb",
+      "lat": 36.7913264,
+      "lng": 10.1761593
+    },
+    {
+      "id": "osm:node:1258831465",
+      "name": "باب سويقة",
+      "kind": "suburb",
+      "lat": 36.8052053,
+      "lng": 10.1679884
+    },
+    {
+      "id": "osm:node:1258833897",
+      "name": "باب الخضراء",
+      "kind": "suburb",
+      "lat": 36.8081501,
+      "lng": 10.1755957
+    },
+    {
+      "id": "osm:node:1259515493",
+      "name": "غيزن",
+      "kind": "village",
+      "lat": 33.8627474,
+      "lng": 10.9273434
+    },
+    {
+      "id": "osm:node:1259515727",
+      "name": "ودران",
+      "kind": "village",
+      "lat": 33.7640616,
+      "lng": 10.9671957
+    },
+    {
+      "id": "osm:node:1259515746",
+      "name": "Esrandi",
+      "kind": "village",
+      "lat": 33.7757161,
+      "lng": 10.8262715
+    },
+    {
+      "id": "osm:node:1259515867",
+      "name": "أغير",
+      "kind": "village",
+      "lat": 33.7652032,
+      "lng": 11.0173648
+    },
+    {
+      "id": "osm:node:1259515919",
+      "name": "بدوين",
+      "kind": "village",
+      "lat": 33.7786385,
+      "lng": 10.9397999
+    },
+    {
+      "id": "osm:node:1260351290",
+      "name": "لافايات",
+      "kind": "suburb",
+      "lat": 36.813211,
+      "lng": 10.1815418
+    },
+    {
+      "id": "osm:node:1261495436",
+      "name": "مونبليزير",
+      "kind": "suburb",
+      "lat": 36.8170312,
+      "lng": 10.1863745
+    },
+    {
+      "id": "osm:node:1263647437",
+      "name": "نوتردام",
+      "kind": "suburb",
+      "lat": 36.8327914,
+      "lng": 10.1641859
+    },
+    {
+      "id": "osm:node:12732166877",
+      "name": "Troguet",
+      "kind": "hamlet",
+      "lat": 33.8091796,
+      "lng": 11.0228705
+    },
+    {
+      "id": "osm:node:12751558998",
+      "name": "العلامات",
+      "kind": "hamlet",
+      "lat": 33.8241617,
+      "lng": 10.8719072
+    },
+    {
+      "id": "osm:node:12764556494",
+      "name": "الظهيرة",
+      "kind": "village",
+      "lat": 33.7499418,
+      "lng": 10.9414838
+    },
+    {
+      "id": "osm:node:12764581648",
+      "name": "El Maamoura",
+      "kind": "hamlet",
+      "lat": 33.7775905,
+      "lng": 11.0346319
+    },
+    {
+      "id": "osm:node:12764581668",
+      "name": "تاقرماس",
+      "kind": "village",
+      "lat": 33.8201365,
+      "lng": 11.0335882
+    },
+    {
+      "id": "osm:node:12778062528",
+      "name": "بوعكازين",
+      "kind": "quarter",
+      "lat": 33.8720491,
+      "lng": 10.8542621
+    },
+    {
+      "id": "osm:node:1278361178",
+      "name": "الذهيبة",
+      "kind": "town",
+      "lat": 32.0103463,
+      "lng": 10.6999924
+    },
+    {
+      "id": "osm:node:1278361348",
+      "name": "رمادة",
+      "kind": "town",
+      "lat": 32.3146481,
+      "lng": 10.3987008
+    },
+    {
+      "id": "osm:node:12784817430",
+      "name": "Adhroum",
+      "kind": "hamlet",
+      "lat": 33.7768708,
+      "lng": 10.7539856
+    },
+    {
+      "id": "osm:node:12798087645",
+      "name": "Ouled Ali Boulimen",
+      "kind": "hamlet",
+      "lat": 33.79577,
+      "lng": 10.7914314
+    },
+    {
+      "id": "osm:node:12825683205",
+      "name": "Touririn",
+      "kind": "neighbourhood",
+      "lat": 33.7968266,
+      "lng": 10.8979795
+    },
+    {
+      "id": "osm:node:12913570990",
+      "name": "Bou Sebah",
+      "kind": "hamlet",
+      "lat": 33.6118397,
+      "lng": 9.9019064
+    },
+    {
+      "id": "osm:node:12925453903",
+      "name": "فرانسفيل",
+      "kind": "suburb",
+      "lat": 36.8167451,
+      "lng": 10.1672949
+    },
+    {
+      "id": "osm:node:1309378861",
+      "name": "بنان",
+      "kind": "village",
+      "lat": 35.6760294,
+      "lng": 10.8357531
+    },
+    {
+      "id": "osm:node:13141822280",
+      "name": "Ouled Amor el Qadima",
+      "kind": "neighbourhood",
+      "lat": 33.8356934,
+      "lng": 10.9791703
+    },
+    {
+      "id": "osm:node:13155689075",
+      "name": "Errighaine",
+      "kind": "hamlet",
+      "lat": 33.8362097,
+      "lng": 10.9684912
+    },
+    {
+      "id": "osm:node:13159027208",
+      "name": "Temlel el Hlou",
+      "kind": "hamlet",
+      "lat": 33.798866,
+      "lng": 11.0023478
+    },
+    {
+      "id": "osm:node:13161836592",
+      "name": "ڨرونوبل",
+      "kind": "hamlet",
+      "lat": 36.9407506,
+      "lng": 8.8045046
+    },
+    {
+      "id": "osm:node:13161836593",
+      "name": "عين مازوز",
+      "kind": "neighbourhood",
+      "lat": 36.9403319,
+      "lng": 8.7536935
+    },
+    {
+      "id": "osm:node:13161836594",
+      "name": "حي البساتين",
+      "kind": "neighbourhood",
+      "lat": 36.9453516,
+      "lng": 8.7536754
+    },
+    {
+      "id": "osm:node:13161836595",
+      "name": "الدّشرة",
+      "kind": "neighbourhood",
+      "lat": 36.9533744,
+      "lng": 8.7488508
+    },
+    {
+      "id": "osm:node:13161836596",
+      "name": "سيدي بدر",
+      "kind": "neighbourhood",
+      "lat": 36.9414949,
+      "lng": 8.7987175
+    },
+    {
+      "id": "osm:node:13161836597",
+      "name": "الحوامدية",
+      "kind": "hamlet",
+      "lat": 36.9133099,
+      "lng": 8.7829871
+    },
+    {
+      "id": "osm:node:13161836598",
+      "name": "السْلايمية",
+      "kind": "hamlet",
+      "lat": 36.903655,
+      "lng": 8.7708519
+    },
+    {
+      "id": "osm:node:13235749767",
+      "name": "Bou Chwouat",
+      "kind": "hamlet",
+      "lat": 33.7894361,
+      "lng": 10.9654048
+    },
+    {
+      "id": "osm:node:13274901586",
+      "name": "Touiren",
+      "kind": "quarter",
+      "lat": 33.7279105,
+      "lng": 10.7589874
+    },
+    {
+      "id": "osm:node:13274901587",
+      "name": "Ferjeyine",
+      "kind": "quarter",
+      "lat": 33.7296779,
+      "lng": 10.7488313
+    },
+    {
+      "id": "osm:node:13387964421",
+      "name": "Tifjan",
+      "kind": "hamlet",
+      "lat": 33.7965629,
+      "lng": 10.8152706
+    },
+    {
+      "id": "osm:node:13387964422",
+      "name": "Tajmout",
+      "kind": "hamlet",
+      "lat": 33.7914977,
+      "lng": 10.8353454
+    },
+    {
+      "id": "osm:node:13411824366",
+      "name": "القبليين",
+      "kind": "neighbourhood",
+      "lat": 33.7219657,
+      "lng": 10.8589348
+    },
+    {
+      "id": "osm:node:13411824367",
+      "name": "تمماست",
+      "kind": "neighbourhood",
+      "lat": 33.7274076,
+      "lng": 10.8491548
+    },
+    {
+      "id": "osm:node:13429991965",
+      "name": "Kasbine",
+      "kind": "neighbourhood",
+      "lat": 33.7283989,
+      "lng": 10.8577905
+    },
+    {
+      "id": "osm:node:13485390154",
+      "name": "El Oued",
+      "kind": "neighbourhood",
+      "lat": 33.7988164,
+      "lng": 10.8868559
+    },
+    {
+      "id": "osm:node:1365035167",
+      "name": "سلوم",
+      "kind": "village",
+      "lat": 36.2826173,
+      "lng": 10.4753498
+    },
+    {
+      "id": "osm:node:13730191446",
+      "name": "Beni Merzouisen",
+      "kind": "hamlet",
+      "lat": 33.7812983,
+      "lng": 10.8815899
+    },
+    {
+      "id": "osm:node:1374298056",
+      "name": "المرجة",
+      "kind": "hamlet",
+      "lat": 36.7223143,
+      "lng": 10.5304315
+    },
+    {
+      "id": "osm:node:1374298064",
+      "name": "النشع",
+      "kind": "hamlet",
+      "lat": 36.897945,
+      "lng": 10.8491636
+    },
+    {
+      "id": "osm:node:1374298069",
+      "name": "فرجون",
+      "kind": "hamlet",
+      "lat": 37.0375853,
+      "lng": 10.9972578
+    },
+    {
+      "id": "osm:node:1374298081",
+      "name": "غرمان",
+      "kind": "hamlet",
+      "lat": 37.0183015,
+      "lng": 10.9446359
+    },
+    {
+      "id": "osm:node:1374298083",
+      "name": "منزل سالم",
+      "kind": "hamlet",
+      "lat": 37.032521,
+      "lng": 10.9724282
+    },
+    {
+      "id": "osm:node:1374298091",
+      "name": "صاحب الجبل",
+      "kind": "village",
+      "lat": 37.0115567,
+      "lng": 10.9538316
+    },
+    {
+      "id": "osm:node:1374298108",
+      "name": "زقاق",
+      "kind": "hamlet",
+      "lat": 36.8923925,
+      "lng": 10.8033572
+    },
+    {
+      "id": "osm:node:13751653571",
+      "name": "El Jouamaa",
+      "kind": "suburb",
+      "lat": 33.8741856,
+      "lng": 10.8449896
+    },
+    {
+      "id": "osm:node:1390303177",
+      "name": "سيدي مَديَن",
+      "kind": "village",
+      "lat": 36.3343195,
+      "lng": 10.0894842
+    },
+    {
+      "id": "osm:node:14024804549",
+      "name": "حي البانكة",
+      "kind": "neighbourhood",
+      "lat": 36.7456993,
+      "lng": 10.2135882
+    },
+    {
+      "id": "osm:node:14024804550",
+      "name": "حي التراكن",
+      "kind": "neighbourhood",
+      "lat": 36.7463618,
+      "lng": 10.2187882
+    },
+    {
+      "id": "osm:node:14024804552",
+      "name": "حي التعمير",
+      "kind": "neighbourhood",
+      "lat": 36.749138,
+      "lng": 10.217523
+    },
+    {
+      "id": "osm:node:14024804553",
+      "name": "حي المستوصف",
+      "kind": "neighbourhood",
+      "lat": 36.7539516,
+      "lng": 10.2165637
+    },
+    {
+      "id": "osm:node:14024804554",
+      "name": "حي الملعب",
+      "kind": "neighbourhood",
+      "lat": 36.7546196,
+      "lng": 10.2257554
+    },
+    {
+      "id": "osm:node:14025164228",
+      "name": "حي عيشة",
+      "kind": "neighbourhood",
+      "lat": 36.7219687,
+      "lng": 10.2366809
+    },
+    {
+      "id": "osm:node:14066816144",
+      "name": "مركز بن مصباح",
+      "kind": "hamlet",
+      "lat": 35.2089291,
+      "lng": 10.2226545
+    },
+    {
+      "id": "osm:node:14090213947",
+      "name": "العلالشة",
+      "kind": "village",
+      "lat": 35.501949,
+      "lng": 10.537857
+    },
+    {
+      "id": "osm:node:1419131100",
+      "name": "صواف",
+      "kind": "village",
+      "lat": 36.2275534,
+      "lng": 10.1712341
+    },
+    {
+      "id": "osm:node:1432078784",
+      "name": "جميل",
+      "kind": "hamlet",
+      "lat": 36.948069,
+      "lng": 9.049854
+    },
+    {
+      "id": "osm:node:1432078789",
+      "name": "نفزة",
+      "kind": "village",
+      "lat": 36.9748659,
+      "lng": 9.0748388
+    },
+    {
+      "id": "osm:node:1432323476",
+      "name": "الصفاية",
+      "kind": "hamlet",
+      "lat": 36.9084743,
+      "lng": 9.1788288
+    },
+    {
+      "id": "osm:node:1433130924",
+      "name": "جومين",
+      "kind": "village",
+      "lat": 36.9253535,
+      "lng": 9.3889921
+    },
+    {
+      "id": "osm:node:1435053835",
+      "name": "Oued Ezarga",
+      "kind": "hamlet",
+      "lat": 36.8720697,
+      "lng": 9.6273461
+    },
+    {
+      "id": "osm:node:1435708256",
+      "name": "طبربة",
+      "kind": "town",
+      "lat": 36.8302496,
+      "lng": 9.8413482
+    },
+    {
+      "id": "osm:node:1439531927",
+      "name": "ذيبية",
+      "kind": "hamlet",
+      "lat": 36.0953965,
+      "lng": 10.2907467
+    },
+    {
+      "id": "osm:node:1444704282",
+      "name": "بومرادة",
+      "kind": "hamlet",
+      "lat": 35.9798716,
+      "lng": 10.4571625
+    },
+    {
+      "id": "osm:node:1444704283",
+      "name": "المهاذبة الشرقية",
+      "kind": "hamlet",
+      "lat": 35.995079,
+      "lng": 10.4379924
+    },
+    {
+      "id": "osm:node:1455372145",
+      "name": "المهاذبة الغربية",
+      "kind": "hamlet",
+      "lat": 35.983974,
+      "lng": 10.4043874
+    },
+    {
+      "id": "osm:node:1494839482",
+      "name": "كروسية",
+      "kind": "village",
+      "lat": 35.7553294,
+      "lng": 10.3212831
+    },
+    {
+      "id": "osm:node:1495587105",
+      "name": "القلعة الصغرى",
+      "kind": "village",
+      "lat": 35.8241499,
+      "lng": 10.5610794
+    },
+    {
+      "id": "osm:node:1513517120",
+      "name": "الخيتمين",
+      "kind": "village",
+      "lat": 37.1458987,
+      "lng": 9.9850034
+    },
+    {
+      "id": "osm:node:1525093055",
+      "name": "أولاد جبس",
+      "kind": "hamlet",
+      "lat": 35.6670661,
+      "lng": 10.690614
+    },
+    {
+      "id": "osm:node:1542566698",
+      "name": "مرسى القنطاوي",
+      "kind": "suburb",
+      "lat": 35.8936974,
+      "lng": 10.5965202
+    },
+    {
+      "id": "osm:node:1544651749",
+      "name": "القصيبة",
+      "kind": "village",
+      "lat": 35.7696159,
+      "lng": 10.6245659
+    },
+    {
+      "id": "osm:node:1567848345",
+      "name": "حي الرياض",
+      "kind": "suburb",
+      "lat": 35.804617,
+      "lng": 10.6050818
+    },
+    {
+      "id": "osm:node:1567848386",
+      "name": "حي الزهور",
+      "kind": "suburb",
+      "lat": 35.793814,
+      "lng": 10.5845431
+    },
+    {
+      "id": "osm:node:1692829408",
+      "name": "نَقطة",
+      "kind": "village",
+      "lat": 34.5752799,
+      "lng": 10.5828006
+    },
+    {
+      "id": "osm:node:1694693776",
+      "name": "الحشيشينة",
+      "kind": "hamlet",
+      "lat": 34.4212263,
+      "lng": 10.1846863
+    },
+    {
+      "id": "osm:node:1718389538",
+      "name": "جنان الحمامات",
+      "kind": "suburb",
+      "lat": 36.3894962,
+      "lng": 10.5521826
+    },
+    {
+      "id": "osm:node:1738650159",
+      "name": "الزراوة الجديدة",
+      "kind": "village",
+      "lat": 33.6600367,
+      "lng": 9.7956604
+    },
+    {
+      "id": "osm:node:1761154967",
+      "name": "أولاد العابد",
+      "kind": "village",
+      "lat": 35.9994146,
+      "lng": 10.2089802
+    },
+    {
+      "id": "osm:node:1761268130",
+      "name": "جوقار",
+      "kind": "village",
+      "lat": 36.2560168,
+      "lng": 9.9450299
+    },
+    {
+      "id": "osm:node:1762634620",
+      "name": "جباس",
+      "kind": "hamlet",
+      "lat": 36.4421951,
+      "lng": 9.9256994
+    },
+    {
+      "id": "osm:node:1796083922",
+      "name": "Hammam Mellegue",
+      "kind": "hamlet",
+      "lat": 36.1834171,
+      "lng": 8.5756205
+    },
+    {
+      "id": "osm:node:1796355393",
+      "name": "بن عمَّار",
+      "kind": "hamlet",
+      "lat": 36.3588216,
+      "lng": 10.0466041
+    },
+    {
+      "id": "osm:node:1837920578",
+      "name": "بوزريعة",
+      "kind": "village",
+      "lat": 37.2776487,
+      "lng": 9.7480075
+    },
+    {
+      "id": "osm:node:1839362661",
+      "name": "العالية",
+      "kind": "town",
+      "lat": 37.1689041,
+      "lng": 10.0338705
+    },
+    {
+      "id": "osm:node:1857113818",
+      "name": "العباسية",
+      "kind": "village",
+      "lat": 34.7197942,
+      "lng": 11.2417131
+    },
+    {
+      "id": "osm:node:1870317876",
+      "name": "طويبية",
+      "kind": "village",
+      "lat": 37.1162119,
+      "lng": 10.0296088
+    },
+    {
+      "id": "osm:node:1919409931",
+      "name": "مركز معلى",
+      "kind": "suburb",
+      "lat": 34.7579978,
+      "lng": 10.7000928
+    },
+    {
+      "id": "osm:node:1938641768",
+      "name": "عين مذكر",
+      "kind": "village",
+      "lat": 36.200547,
+      "lng": 10.2792795
+    },
+    {
+      "id": "osm:node:1941892766",
+      "name": "الزريبة",
+      "kind": "hamlet",
+      "lat": 35.9327297,
+      "lng": 9.5086296
+    },
+    {
+      "id": "osm:node:1974940233",
+      "name": "برج بورقيبة",
+      "kind": "village",
+      "lat": 32.2046642,
+      "lng": 10.0302214
+    },
+    {
+      "id": "osm:node:1974940236",
+      "name": "الكامور",
+      "kind": "village",
+      "lat": 32.4975116,
+      "lng": 9.6849863
+    },
+    {
+      "id": "osm:node:1975898150",
+      "name": "بني بركة",
+      "kind": "village",
+      "lat": 32.8915948,
+      "lng": 10.4427282
+    },
+    {
+      "id": "osm:node:1975898151",
+      "name": "بني بلال",
+      "kind": "hamlet",
+      "lat": 32.8902996,
+      "lng": 10.5318154
+    },
+    {
+      "id": "osm:node:1975898154",
+      "name": "Khatma",
+      "kind": "hamlet",
+      "lat": 32.8523757,
+      "lng": 10.5336523
+    },
+    {
+      "id": "osm:node:1975898158",
+      "name": "مزطورية",
+      "kind": "village",
+      "lat": 32.8646156,
+      "lng": 10.4743032
+    },
+    {
+      "id": "osm:node:1975898159",
+      "name": "مغيت",
+      "kind": "hamlet",
+      "lat": 32.7707376,
+      "lng": 10.5365105
+    },
+    {
+      "id": "osm:node:1975898160",
+      "name": "Mghit",
+      "kind": "hamlet",
+      "lat": 32.7789063,
+      "lng": 10.5327044
+    },
+    {
+      "id": "osm:node:1975898161",
+      "name": "Tamelest",
+      "kind": "village",
+      "lat": 32.7978424,
+      "lng": 10.4696057
+    },
+    {
+      "id": "osm:node:1975899618",
+      "name": "شنني",
+      "kind": "village",
+      "lat": 32.9147021,
+      "lng": 10.2781706
+    },
+    {
+      "id": "osm:node:1977214842",
+      "name": "المكارم",
+      "kind": "village",
+      "lat": 35.2162626,
+      "lng": 9.60776
+    },
+    {
+      "id": "osm:node:1977376170",
+      "name": "El Horria",
+      "kind": "hamlet",
+      "lat": 33.0528143,
+      "lng": 10.4092898
+    },
+    {
+      "id": "osm:node:1977376171",
+      "name": "غرماسة",
+      "kind": "village",
+      "lat": 32.9846925,
+      "lng": 10.2635684
+    },
+    {
+      "id": "osm:node:1980186910",
+      "name": "بئر مرة",
+      "kind": "hamlet",
+      "lat": 32.8145833,
+      "lng": 11.0933403
+    },
+    {
+      "id": "osm:node:1996259774",
+      "name": "حلق الجمل",
+      "kind": "village",
+      "lat": 33.4056374,
+      "lng": 10.1969172
+    },
+    {
+      "id": "osm:node:1997334607",
+      "name": "تونين",
+      "kind": "village",
+      "lat": 33.5103458,
+      "lng": 10.142946
+    },
+    {
+      "id": "osm:node:1997440362",
+      "name": "تيجمة",
+      "kind": "village",
+      "lat": 33.5810179,
+      "lng": 9.9780968
+    },
+    {
+      "id": "osm:node:2017271470",
+      "name": "السرس",
+      "kind": "village",
+      "lat": 36.0734659,
+      "lng": 9.0192905
+    },
+    {
+      "id": "osm:node:2095681748",
+      "name": "Mahjouba",
+      "kind": "village",
+      "lat": 35.8093373,
+      "lng": 8.501141
+    },
+    {
+      "id": "osm:node:2095681750",
+      "name": "ربيبة",
+      "kind": "hamlet",
+      "lat": 35.8014999,
+      "lng": 8.3790926
+    },
+    {
+      "id": "osm:node:2131332953",
+      "name": "الوسلاتية",
+      "kind": "town",
+      "lat": 35.8476563,
+      "lng": 9.5932661
+    },
+    {
+      "id": "osm:node:2131413683",
+      "name": "قصر لمسة",
+      "kind": "hamlet",
+      "lat": 36.0320875,
+      "lng": 9.6913799
+    },
+    {
+      "id": "osm:node:2133913651",
+      "name": "القنارة",
+      "kind": "village",
+      "lat": 35.975121,
+      "lng": 9.5425672
+    },
+    {
+      "id": "osm:node:2136330964",
+      "name": "الغمالية",
+      "kind": "village",
+      "lat": 35.9474806,
+      "lng": 9.5234588
+    },
+    {
+      "id": "osm:node:2157169856",
+      "name": "المنقطة الصناعية الشرقية 1",
+      "kind": "neighbourhood",
+      "lat": 36.8406119,
+      "lng": 10.2079928
+    },
+    {
+      "id": "osm:node:2157169857",
+      "name": "المنقطة الصناعية الشرقية 2",
+      "kind": "neighbourhood",
+      "lat": 36.8545279,
+      "lng": 10.2079247
+    },
+    {
+      "id": "osm:node:2161965264",
+      "name": "المنزه 7",
+      "kind": "suburb",
+      "lat": 36.8541206,
+      "lng": 10.1626718
+    },
+    {
+      "id": "osm:node:2164244487",
+      "name": "عين زينة",
+      "kind": "village",
+      "lat": 35.6486146,
+      "lng": 9.7379559
+    },
+    {
+      "id": "osm:node:2173790702",
+      "name": "بدار",
+      "kind": "village",
+      "lat": 36.7446844,
+      "lng": 10.612649
+    },
+    {
+      "id": "osm:node:2181318277",
+      "name": "حي المهرجان",
+      "kind": "neighbourhood",
+      "lat": 36.8300553,
+      "lng": 10.1788217
+    },
+    {
+      "id": "osm:node:2183784564",
+      "name": "أولاد لسود",
+      "kind": "hamlet",
+      "lat": 35.9236601,
+      "lng": 10.366118
+    },
+    {
+      "id": "osm:node:2191295540",
+      "name": "العيثة",
+      "kind": "hamlet",
+      "lat": 36.6759762,
+      "lng": 10.6428741
+    },
+    {
+      "id": "osm:node:2203045897",
+      "name": "غنوش",
+      "kind": "town",
+      "lat": 33.939816,
+      "lng": 10.0650345
+    },
+    {
+      "id": "osm:node:2203976293",
+      "name": "سيدي بلال",
+      "kind": "village",
+      "lat": 35.9748077,
+      "lng": 10.1541859
+    },
+    {
+      "id": "osm:node:2208907789",
+      "name": "Dhamen El Karoub",
+      "kind": "hamlet",
+      "lat": 36.0753605,
+      "lng": 9.6762259
+    },
+    {
+      "id": "osm:node:2209270316",
+      "name": "سيدي ناجي",
+      "kind": "village",
+      "lat": 36.0514125,
+      "lng": 10.0489374
+    },
+    {
+      "id": "osm:node:2235474650",
+      "name": "العوينات",
+      "kind": "village",
+      "lat": 33.9925089,
+      "lng": 10.0014394
+    },
+    {
+      "id": "osm:node:2235566335",
+      "name": "محبوبين",
+      "kind": "village",
+      "lat": 33.7970169,
+      "lng": 10.9635103
+    },
+    {
+      "id": "osm:node:2245539847",
+      "name": "حي التحرير",
+      "kind": "neighbourhood",
+      "lat": 32.9958033,
+      "lng": 10.4628552
+    },
+    {
+      "id": "osm:node:2248607512",
+      "name": "الدويريات",
+      "kind": "neighbourhood",
+      "lat": 34.7130409,
+      "lng": 11.1953504
+    },
+    {
+      "id": "osm:node:2248611907",
+      "name": "الرملة القديمة",
+      "kind": "neighbourhood",
+      "lat": 34.7125085,
+      "lng": 11.1993337
+    },
+    {
+      "id": "osm:node:2248611908",
+      "name": "Bineaala",
+      "kind": "neighbourhood",
+      "lat": 34.7136676,
+      "lng": 11.201598
+    },
+    {
+      "id": "osm:node:2248611909",
+      "name": "العزازبة",
+      "kind": "neighbourhood",
+      "lat": 34.7106861,
+      "lng": 11.1975734
+    },
+    {
+      "id": "osm:node:2248611910",
+      "name": "الحي",
+      "kind": "neighbourhood",
+      "lat": 34.7065127,
+      "lng": 11.2005866
+    },
+    {
+      "id": "osm:node:2289495092",
+      "name": "حي النسيم",
+      "kind": "suburb",
+      "lat": 36.8731029,
+      "lng": 10.3275623
+    },
+    {
+      "id": "osm:node:2307148393",
+      "name": "حي الملعب",
+      "kind": "suburb",
+      "lat": 36.8767342,
+      "lng": 10.3210797
+    },
+    {
+      "id": "osm:node:2307148417",
+      "name": "كرنيش المرسى",
+      "kind": "suburb",
+      "lat": 36.8820812,
+      "lng": 10.3383306
+    },
+    {
+      "id": "osm:node:2307148429",
+      "name": "كوب المرسى",
+      "kind": "suburb",
+      "lat": 36.887746,
+      "lng": 10.3275135
+    },
+    {
+      "id": "osm:node:2307148436",
+      "name": "سيدي عبد العزيز",
+      "kind": "suburb",
+      "lat": 36.8894736,
+      "lng": 10.3242449
+    },
+    {
+      "id": "osm:node:2402352381",
+      "name": "رجيش",
+      "kind": "village",
+      "lat": 35.4655214,
+      "lng": 11.0416985
+    },
+    {
+      "id": "osm:node:2406170704",
+      "name": "دشرة بو عبد الله",
+      "kind": "hamlet",
+      "lat": 35.8535935,
+      "lng": 9.4212434
+    },
+    {
+      "id": "osm:node:2419847402",
+      "name": "واد الزبيب",
+      "kind": "village",
+      "lat": 33.7893831,
+      "lng": 10.828002
+    },
+    {
+      "id": "osm:node:2491425515",
+      "name": "أولاد يانق",
+      "kind": "village",
+      "lat": 34.6730329,
+      "lng": 11.139758
+    },
+    {
+      "id": "osm:node:2491613772",
+      "name": "سيدي يوسف",
+      "kind": "village",
+      "lat": 34.6554171,
+      "lng": 10.9722264
+    },
+    {
+      "id": "osm:node:2492568685",
+      "name": "سيدي المجاهد",
+      "kind": "hamlet",
+      "lat": 34.7777412,
+      "lng": 11.2215774
+    },
+    {
+      "id": "osm:node:2498876728",
+      "name": "جوابر",
+      "kind": "village",
+      "lat": 34.7671645,
+      "lng": 11.2579661
+    },
+    {
+      "id": "osm:node:2510984506",
+      "name": "زواغة",
+      "kind": "hamlet",
+      "lat": 36.1358143,
+      "lng": 10.1192633
+    },
+    {
+      "id": "osm:node:2519121789",
+      "name": "عين كميشة",
+      "kind": "village",
+      "lat": 36.5044991,
+      "lng": 10.6766828
+    },
+    {
+      "id": "osm:node:2520334591",
+      "name": "المهاذبة",
+      "kind": "hamlet",
+      "lat": 36.5584289,
+      "lng": 10.5770072
+    },
+    {
+      "id": "osm:node:2520403775",
+      "name": "Zone Touristique Elmrezka",
+      "kind": "neighbourhood",
+      "lat": 36.4220419,
+      "lng": 10.6701415
+    },
+    {
+      "id": "osm:node:2534432407",
+      "name": "ليماقس",
+      "kind": "village",
+      "lat": 33.7663157,
+      "lng": 9.0788955
+    },
+    {
+      "id": "osm:node:2534432408",
+      "name": "رضوان",
+      "kind": "hamlet",
+      "lat": 33.7389291,
+      "lng": 9.2345731
+    },
+    {
+      "id": "osm:node:2535817652",
+      "name": "بئر السلطان",
+      "kind": "hamlet",
+      "lat": 33.2840653,
+      "lng": 9.710439
+    },
+    {
+      "id": "osm:node:2537855079",
+      "name": "سندس",
+      "kind": "village",
+      "lat": 34.354274,
+      "lng": 7.8695016
+    },
+    {
+      "id": "osm:node:2587154200",
+      "name": "الكرارشة",
+      "kind": "village",
+      "lat": 35.4966419,
+      "lng": 10.9186363
+    },
+    {
+      "id": "osm:node:2589798541",
+      "name": "الخروع",
+      "kind": "suburb",
+      "lat": 34.503341,
+      "lng": 10.2029804
+    },
+    {
+      "id": "osm:node:2592110574",
+      "name": "المنصورة",
+      "kind": "village",
+      "lat": 35.7968306,
+      "lng": 9.4874284
+    },
+    {
+      "id": "osm:node:2593122311",
+      "name": "الزنقة الكحلة",
+      "kind": "suburb",
+      "lat": 34.7741023,
+      "lng": 10.690362
+    },
+    {
+      "id": "osm:node:2608576899",
+      "name": "بير بصير",
+      "kind": "hamlet",
+      "lat": 33.4902412,
+      "lng": 10.3426387
+    },
+    {
+      "id": "osm:node:2608576900",
+      "name": "كوتين 1",
+      "kind": "hamlet",
+      "lat": 33.4442409,
+      "lng": 10.3838386
+    },
+    {
+      "id": "osm:node:2608576901",
+      "name": "كوتين 2",
+      "kind": "hamlet",
+      "lat": 33.4589057,
+      "lng": 10.3732613
+    },
+    {
+      "id": "osm:node:2610858576",
+      "name": "برج العيفة",
+      "kind": "village",
+      "lat": 36.2181338,
+      "lng": 8.8515373
+    },
+    {
+      "id": "osm:node:2610858584",
+      "name": "دار السلام",
+      "kind": "hamlet",
+      "lat": 36.2762248,
+      "lng": 8.9666375
+    },
+    {
+      "id": "osm:node:2611157751",
+      "name": "برج المسعودي",
+      "kind": "village",
+      "lat": 36.2898932,
+      "lng": 9.0614516
+    },
+    {
+      "id": "osm:node:2622754291",
+      "name": "سيدي سالم",
+      "kind": "neighbourhood",
+      "lat": 37.2857197,
+      "lng": 9.8716632
+    },
+    {
+      "id": "osm:node:264881676",
+      "name": "دوز",
+      "kind": "town",
+      "lat": 33.4571102,
+      "lng": 9.0249829
+    },
+    {
+      "id": "osm:node:264885332",
+      "name": "تطاوين",
+      "kind": "town",
+      "lat": 32.9315242,
+      "lng": 10.4503959
+    },
+    {
+      "id": "osm:node:2657639396",
+      "name": "وافيسن",
+      "kind": "hamlet",
+      "lat": 33.6635354,
+      "lng": 10.3260898
+    },
+    {
+      "id": "osm:node:2677320377",
+      "name": "المرسى",
+      "kind": "hamlet",
+      "lat": 33.6957592,
+      "lng": 10.7346952
+    },
+    {
+      "id": "osm:node:2723544887",
+      "name": "شط العوامر",
+      "kind": "hamlet",
+      "lat": 33.6447824,
+      "lng": 10.3953659
+    },
+    {
+      "id": "osm:node:2723561360",
+      "name": "Jouabit",
+      "kind": "hamlet",
+      "lat": 33.4988496,
+      "lng": 10.1233177
+    },
+    {
+      "id": "osm:node:2735157275",
+      "name": "العمايم",
+      "kind": "village",
+      "lat": 36.3317683,
+      "lng": 9.8453853
+    },
+    {
+      "id": "osm:node:2738129293",
+      "name": "زواغة",
+      "kind": "hamlet",
+      "lat": 36.0594142,
+      "lng": 9.3236069
+    },
+    {
+      "id": "osm:node:2740890402",
+      "name": "حمام كسرى",
+      "kind": "village",
+      "lat": 35.8115222,
+      "lng": 9.3173617
+    },
+    {
+      "id": "osm:node:2778243022",
+      "name": "الخرمية",
+      "kind": "hamlet",
+      "lat": 36.5674182,
+      "lng": 10.4677201
+    },
+    {
+      "id": "osm:node:2778243023",
+      "name": "السبالة",
+      "kind": "hamlet",
+      "lat": 36.5811309,
+      "lng": 10.4834428
+    },
+    {
+      "id": "osm:node:2778243024",
+      "name": "سبع وديان",
+      "kind": "hamlet",
+      "lat": 36.5477588,
+      "lng": 10.4538171
+    },
+    {
+      "id": "osm:node:2813148640",
+      "name": "عرقوب",
+      "kind": "village",
+      "lat": 33.6345259,
+      "lng": 10.2850554
+    },
+    {
+      "id": "osm:node:2828880513",
+      "name": "القريعات",
+      "kind": "village",
+      "lat": 36.6584997,
+      "lng": 9.78636
+    },
+    {
+      "id": "osm:node:2828880515",
+      "name": "المساعدين",
+      "kind": "neighbourhood",
+      "lat": 36.6928845,
+      "lng": 9.8314195
+    },
+    {
+      "id": "osm:node:2828881305",
+      "name": "عيدان",
+      "kind": "neighbourhood",
+      "lat": 36.6472282,
+      "lng": 9.6567323
+    },
+    {
+      "id": "osm:node:2837038876",
+      "name": "حكيم",
+      "kind": "hamlet",
+      "lat": 36.458596,
+      "lng": 8.6133181
+    },
+    {
+      "id": "osm:node:2840204367",
+      "name": "حي العياشي",
+      "kind": "neighbourhood",
+      "lat": 36.464883,
+      "lng": 8.5653707
+    },
+    {
+      "id": "osm:node:2840204369",
+      "name": "وادي مليز",
+      "kind": "village",
+      "lat": 36.4678121,
+      "lng": 8.5500007
+    },
+    {
+      "id": "osm:node:2843086204",
+      "name": "الزيتونة",
+      "kind": "village",
+      "lat": 35.8177633,
+      "lng": 8.9865801
+    },
+    {
+      "id": "osm:node:286354073",
+      "name": "فوشانة",
+      "kind": "town",
+      "lat": 36.6987224,
+      "lng": 10.1693582
+    },
+    {
+      "id": "osm:node:2874824483",
+      "name": "الزنايدية",
+      "kind": "hamlet",
+      "lat": 35.3951226,
+      "lng": 9.1203599
+    },
+    {
+      "id": "osm:node:2874826396",
+      "name": "القنة",
+      "kind": "hamlet",
+      "lat": 35.4445809,
+      "lng": 9.1205946
+    },
+    {
+      "id": "osm:node:287612727",
+      "name": "مساكن",
+      "kind": "town",
+      "lat": 35.7330411,
+      "lng": 10.5751923
+    },
+    {
+      "id": "osm:node:287613682",
+      "name": "ميدون",
+      "kind": "town",
+      "lat": 33.8074152,
+      "lng": 10.9910666
+    },
+    {
+      "id": "osm:node:287618126",
+      "name": "منزل بورقيبة",
+      "kind": "town",
+      "lat": 37.1549869,
+      "lng": 9.79259
+    },
+    {
+      "id": "osm:node:287620228",
+      "name": "القلعة الكبرى",
+      "kind": "town",
+      "lat": 35.8704108,
+      "lng": 10.5365372
+    },
+    {
+      "id": "osm:node:2876213834",
+      "name": "شراع",
+      "kind": "hamlet",
+      "lat": 35.1595212,
+      "lng": 9.3276819
+    },
+    {
+      "id": "osm:node:287625095",
+      "name": "جندوبة",
+      "kind": "town",
+      "lat": 36.4967177,
+      "lng": 8.775699
+    },
+    {
+      "id": "osm:node:2876402066",
+      "name": "الحوامد",
+      "kind": "hamlet",
+      "lat": 35.0044475,
+      "lng": 9.639493
+    },
+    {
+      "id": "osm:node:2876921759",
+      "name": "المكناسي",
+      "kind": "village",
+      "lat": 34.6047708,
+      "lng": 9.6022455
+    },
+    {
+      "id": "osm:node:2876974934",
+      "name": "المش",
+      "kind": "hamlet",
+      "lat": 34.5065488,
+      "lng": 9.5051281
+    },
+    {
+      "id": "osm:node:2879019718",
+      "name": "بن غيلوف",
+      "kind": "village",
+      "lat": 33.8811404,
+      "lng": 9.6191566
+    },
+    {
+      "id": "osm:node:2880052271",
+      "name": "مزرع ناجي",
+      "kind": "hamlet",
+      "lat": 33.7919289,
+      "lng": 9.3055644
+    },
+    {
+      "id": "osm:node:2883150051",
+      "name": "بشني",
+      "kind": "village",
+      "lat": 33.4841371,
+      "lng": 8.7923607
+    },
+    {
+      "id": "osm:node:2884977017",
+      "name": "استفطيمي",
+      "kind": "village",
+      "lat": 33.7999855,
+      "lng": 9.0116107
+    },
+    {
+      "id": "osm:node:2886155095",
+      "name": "العمائم",
+      "kind": "hamlet",
+      "lat": 34.2538964,
+      "lng": 9.1079964
+    },
+    {
+      "id": "osm:node:2888243906",
+      "name": "سند الجبل",
+      "kind": "village",
+      "lat": 34.4631998,
+      "lng": 9.2629268
+    },
+    {
+      "id": "osm:node:2889204496",
+      "name": "العواينية",
+      "kind": "village",
+      "lat": 34.6631683,
+      "lng": 9.9282565
+    },
+    {
+      "id": "osm:node:2889204497",
+      "name": "البوع",
+      "kind": "village",
+      "lat": 34.4809069,
+      "lng": 9.6984345
+    },
+    {
+      "id": "osm:node:2889204498",
+      "name": "مركز فراح",
+      "kind": "hamlet",
+      "lat": 34.6505273,
+      "lng": 9.9239565
+    },
+    {
+      "id": "osm:node:297760994",
+      "name": "شنني",
+      "kind": "village",
+      "lat": 32.9107032,
+      "lng": 10.2615519
+    },
+    {
+      "id": "osm:node:298018887",
+      "name": "توزر",
+      "kind": "town",
+      "lat": 33.9239001,
+      "lng": 8.1370639
+    },
+    {
+      "id": "osm:node:298019989",
+      "name": "قبلي",
+      "kind": "town",
+      "lat": 33.7061148,
+      "lng": 8.9698376
+    },
+    {
+      "id": "osm:node:298020344",
+      "name": "الحامة",
+      "kind": "town",
+      "lat": 33.8894378,
+      "lng": 9.7997111
+    },
+    {
+      "id": "osm:node:2988370656",
+      "name": "المحمدية",
+      "kind": "town",
+      "lat": 36.6796879,
+      "lng": 10.1570438
+    },
+    {
+      "id": "osm:node:299240195",
+      "name": "الجم",
+      "kind": "town",
+      "lat": 35.2966435,
+      "lng": 10.71284
+    },
+    {
+      "id": "osm:node:299265771",
+      "name": "مجاز الباب",
+      "kind": "town",
+      "lat": 36.6471499,
+      "lng": 9.616516
+    },
+    {
+      "id": "osm:node:3057404031",
+      "name": "صانغو",
+      "kind": "village",
+      "lat": 33.5912919,
+      "lng": 11.0728134
+    },
+    {
+      "id": "osm:node:3060784999",
+      "name": "قرية تلات",
+      "kind": "village",
+      "lat": 33.751742,
+      "lng": 10.8469044
+    },
+    {
+      "id": "osm:node:3068578605",
+      "name": "سويحل",
+      "kind": "hamlet",
+      "lat": 33.546057,
+      "lng": 11.1079976
+    },
+    {
+      "id": "osm:node:3078064354",
+      "name": "جدارية",
+      "kind": "hamlet",
+      "lat": 33.2807642,
+      "lng": 11.2883338
+    },
+    {
+      "id": "osm:node:312490313",
+      "name": "حمام الزريبة",
+      "kind": "town",
+      "lat": 36.3512115,
+      "lng": 10.207921
+    },
+    {
+      "id": "osm:node:3143761493",
+      "name": "9 أفريل",
+      "kind": "hamlet",
+      "lat": 33.5503387,
+      "lng": 10.4933333
+    },
+    {
+      "id": "osm:node:3143808121",
+      "name": "زريق",
+      "kind": "suburb",
+      "lat": 33.8557453,
+      "lng": 10.0959339
+    },
+    {
+      "id": "osm:node:3145829326",
+      "name": "سيدي حسين",
+      "kind": "town",
+      "lat": 36.7708432,
+      "lng": 10.1102505
+    },
+    {
+      "id": "osm:node:3145829327",
+      "name": "الحرايرية",
+      "kind": "village",
+      "lat": 36.7868778,
+      "lng": 10.1056176
+    },
+    {
+      "id": "osm:node:3147203492",
+      "name": "وادي الحجل",
+      "kind": "village",
+      "lat": 33.7734051,
+      "lng": 10.2277527
+    },
+    {
+      "id": "osm:node:3147214790",
+      "name": "Cite el Ain",
+      "kind": "neighbourhood",
+      "lat": 33.6618266,
+      "lng": 10.3498823
+    },
+    {
+      "id": "osm:node:3147214791",
+      "name": "Cite el Waha",
+      "kind": "neighbourhood",
+      "lat": 33.6669024,
+      "lng": 10.3536699
+    },
+    {
+      "id": "osm:node:3148875770",
+      "name": "جبل الجلود",
+      "kind": "village",
+      "lat": 36.7708045,
+      "lng": 10.1997843
+    },
+    {
+      "id": "osm:node:3160236048",
+      "name": "تلالة",
+      "kind": "hamlet",
+      "lat": 36.3284661,
+      "lng": 9.539707
+    },
+    {
+      "id": "osm:node:332247375",
+      "name": "المروج 5",
+      "kind": "village",
+      "lat": 36.7133259,
+      "lng": 10.2045405
+    },
+    {
+      "id": "osm:node:349293657",
+      "name": "خلف الله",
+      "kind": "hamlet",
+      "lat": 33.4422986,
+      "lng": 10.9247514
+    },
+    {
+      "id": "osm:node:349294959",
+      "name": "العلامات",
+      "kind": "hamlet",
+      "lat": 33.3656001,
+      "lng": 10.6487959
+    },
+    {
+      "id": "osm:node:349297566",
+      "name": "أم التمر",
+      "kind": "village",
+      "lat": 33.3716737,
+      "lng": 10.4388415
+    },
+    {
+      "id": "osm:node:349297567",
+      "name": "علامة ملشوك",
+      "kind": "hamlet",
+      "lat": 33.3961676,
+      "lng": 10.3278295
+    },
+    {
+      "id": "osm:node:349303620",
+      "name": "زعفران",
+      "kind": "village",
+      "lat": 33.4427576,
+      "lng": 8.915679
+    },
+    {
+      "id": "osm:node:349303622",
+      "name": "غيدمة",
+      "kind": "village",
+      "lat": 33.4316482,
+      "lng": 8.8159209
+    },
+    {
+      "id": "osm:node:349303785",
+      "name": "الصابرية",
+      "kind": "village",
+      "lat": 33.3546845,
+      "lng": 8.7471305
+    },
+    {
+      "id": "osm:node:351568938",
+      "name": "قليبية",
+      "kind": "hamlet",
+      "lat": 33.522485,
+      "lng": 8.8303148
+    },
+    {
+      "id": "osm:node:351575544",
+      "name": "سوق الأحد",
+      "kind": "town",
+      "lat": 33.7783142,
+      "lng": 8.8525855
+    },
+    {
+      "id": "osm:node:351581998",
+      "name": "بوهلال",
+      "kind": "hamlet",
+      "lat": 34.0099439,
+      "lng": 8.2689451
+    },
+    {
+      "id": "osm:node:351582010",
+      "name": "دقاش",
+      "kind": "town",
+      "lat": 33.9841058,
+      "lng": 8.2154584
+    },
+    {
+      "id": "osm:node:352749777",
+      "name": "Rahmat",
+      "kind": "hamlet",
+      "lat": 33.6429175,
+      "lng": 8.9961025
+    },
+    {
+      "id": "osm:node:352749778",
+      "name": "جمنة",
+      "kind": "village",
+      "lat": 33.5695675,
+      "lng": 9.0159998
+    },
+    {
+      "id": "osm:node:352752191",
+      "name": "بني عيسى الجديدة",
+      "kind": "village",
+      "lat": 33.6565681,
+      "lng": 9.9119149
+    },
+    {
+      "id": "osm:node:352752196",
+      "name": "الدويويرة",
+      "kind": "hamlet",
+      "lat": 33.6537082,
+      "lng": 9.964995
+    },
+    {
+      "id": "osm:node:352753595",
+      "name": "مغراوية",
+      "kind": "hamlet",
+      "lat": 33.6490516,
+      "lng": 10.6141292
+    },
+    {
+      "id": "osm:node:352839778",
+      "name": "تماسنت",
+      "kind": "hamlet",
+      "lat": 33.6886712,
+      "lng": 10.7056489
+    },
+    {
+      "id": "osm:node:3530082990",
+      "name": "رأس زبيب",
+      "kind": "village",
+      "lat": 37.2491558,
+      "lng": 10.0680336
+    },
+    {
+      "id": "osm:node:3794158071",
+      "name": "تاوجوت",
+      "kind": "village",
+      "lat": 33.5631221,
+      "lng": 9.8666217
+    },
+    {
+      "id": "osm:node:3794158072",
+      "name": "الزراوة القديمة",
+      "kind": "village",
+      "lat": 33.5737739,
+      "lng": 9.8239794
+    },
+    {
+      "id": "osm:node:3804757286",
+      "name": "الصايخة",
+      "kind": "hamlet",
+      "lat": 33.4117127,
+      "lng": 10.2843149
+    },
+    {
+      "id": "osm:node:4050109330",
+      "name": "المنارة",
+      "kind": "suburb",
+      "lat": 33.8660207,
+      "lng": 10.1067134
+    },
+    {
+      "id": "osm:node:4099579144",
+      "name": "عمدون",
+      "kind": "town",
+      "lat": 36.7686376,
+      "lng": 9.0894667
+    },
+    {
+      "id": "osm:node:4102400181",
+      "name": "القشعيين",
+      "kind": "village",
+      "lat": 33.8337183,
+      "lng": 10.9071829
+    },
+    {
+      "id": "osm:node:4125819044",
+      "name": "ورقش",
+      "kind": "village",
+      "lat": 36.527096,
+      "lng": 8.4573117
+    },
+    {
+      "id": "osm:node:412906875",
+      "name": "مركز سحنون",
+      "kind": "suburb",
+      "lat": 34.7913277,
+      "lng": 10.7168421
+    },
+    {
+      "id": "osm:node:4217577517",
+      "name": "قصر أولاد بوعبيد",
+      "kind": "hamlet",
+      "lat": 33.2221619,
+      "lng": 10.1580538
+    },
+    {
+      "id": "osm:node:4219244094",
+      "name": "قصر دغارة",
+      "kind": "village",
+      "lat": 32.8492224,
+      "lng": 10.4756672
+    },
+    {
+      "id": "osm:node:4219274628",
+      "name": "قصر تونكت",
+      "kind": "village",
+      "lat": 32.8764423,
+      "lng": 10.4850491
+    },
+    {
+      "id": "osm:node:4275407242",
+      "name": "بركوك",
+      "kind": "village",
+      "lat": 33.8487833,
+      "lng": 10.8547257
+    },
+    {
+      "id": "osm:node:429661517",
+      "name": "مركز دمق",
+      "kind": "suburb",
+      "lat": 34.7772153,
+      "lng": 10.7000387
+    },
+    {
+      "id": "osm:node:4333706013",
+      "name": "الحزم",
+      "kind": "village",
+      "lat": 33.7901704,
+      "lng": 10.925097
+    },
+    {
+      "id": "osm:node:4333774784",
+      "name": "خزرون",
+      "kind": "village",
+      "lat": 33.8152479,
+      "lng": 10.9647061
+    },
+    {
+      "id": "osm:node:4339685052",
+      "name": "باب البحر",
+      "kind": "suburb",
+      "lat": 33.88677,
+      "lng": 10.1073625
+    },
+    {
+      "id": "osm:node:4360554072",
+      "name": "أولاد عامر",
+      "kind": "village",
+      "lat": 35.4778473,
+      "lng": 9.6603447
+    },
+    {
+      "id": "osm:node:4394922298",
+      "name": "الضمرانة",
+      "kind": "hamlet",
+      "lat": 33.4732248,
+      "lng": 9.0503565
+    },
+    {
+      "id": "osm:node:4394953973",
+      "name": "حمام الأتف",
+      "kind": "town",
+      "lat": 36.7313788,
+      "lng": 10.3363985
+    },
+    {
+      "id": "osm:node:4396821689",
+      "name": "بلدية تبلبو",
+      "kind": "suburb",
+      "lat": 33.8481292,
+      "lng": 10.1126771
+    },
+    {
+      "id": "osm:node:443160117",
+      "name": "الشابة",
+      "kind": "town",
+      "lat": 35.2365477,
+      "lng": 11.1129712
+    },
+    {
+      "id": "osm:node:443160128",
+      "name": "عين تركية",
+      "kind": "village",
+      "lat": 34.8444336,
+      "lng": 10.6181709
+    },
+    {
+      "id": "osm:node:443479891",
+      "name": "مركز دمق",
+      "kind": "suburb",
+      "lat": 34.7511449,
+      "lng": 10.7167163
+    },
+    {
+      "id": "osm:node:4470234827",
+      "name": "دوار علي بن الزين",
+      "kind": "hamlet",
+      "lat": 36.5015676,
+      "lng": 8.5189306
+    },
+    {
+      "id": "osm:node:4567288631",
+      "name": "حمام بورقيبة",
+      "kind": "village",
+      "lat": 36.7626788,
+      "lng": 8.5895118
+    },
+    {
+      "id": "osm:node:469845572",
+      "name": "رأس الجبل",
+      "kind": "town",
+      "lat": 37.2146189,
+      "lng": 10.1245603
+    },
+    {
+      "id": "osm:node:471061641",
+      "name": "منزل عبد الرحمان",
+      "kind": "village",
+      "lat": 37.2361332,
+      "lng": 9.8631083
+    },
+    {
+      "id": "osm:node:475589717",
+      "name": "سيدي فرج",
+      "kind": "hamlet",
+      "lat": 34.6881279,
+      "lng": 11.1375138
+    },
+    {
+      "id": "osm:node:475591250",
+      "name": "أولاد بو علي",
+      "kind": "village",
+      "lat": 34.703122,
+      "lng": 11.193232
+    },
+    {
+      "id": "osm:node:475591962",
+      "name": "أولاد عز الدين",
+      "kind": "village",
+      "lat": 34.6556937,
+      "lng": 11.0912539
+    },
+    {
+      "id": "osm:node:494264588",
+      "name": "صفاقس الجديدة",
+      "kind": "suburb",
+      "lat": 34.7402587,
+      "lng": 10.7552176
+    },
+    {
+      "id": "osm:node:494264870",
+      "name": "حي النور",
+      "kind": "suburb",
+      "lat": 34.7371992,
+      "lng": 10.7089927
+    },
+    {
+      "id": "osm:node:500182808",
+      "name": "البرمة",
+      "kind": "village",
+      "lat": 31.6880101,
+      "lng": 9.2186132
+    },
+    {
+      "id": "osm:node:5041242744",
+      "name": "Jaïdane Mohamed",
+      "kind": "hamlet",
+      "lat": 35.8678334,
+      "lng": 10.5687973
+    },
+    {
+      "id": "osm:node:5056972445",
+      "name": "دوار الرقيبة",
+      "kind": "hamlet",
+      "lat": 35.2189571,
+      "lng": 8.4611574
+    },
+    {
+      "id": "osm:node:506035292",
+      "name": "مركز العلوي",
+      "kind": "suburb",
+      "lat": 34.7710852,
+      "lng": 10.6794551
+    },
+    {
+      "id": "osm:node:5061819994",
+      "name": "دوار عين جنان",
+      "kind": "hamlet",
+      "lat": 35.3123769,
+      "lng": 8.3507643
+    },
+    {
+      "id": "osm:node:5077814443",
+      "name": "حي الزهور",
+      "kind": "quarter",
+      "lat": 35.1599954,
+      "lng": 8.828978
+    },
+    {
+      "id": "osm:node:5094361603",
+      "name": "مزرع بن سلامة",
+      "kind": "village",
+      "lat": 33.4722057,
+      "lng": 10.2591393
+    },
+    {
+      "id": "osm:node:520157034",
+      "name": "المرعنية",
+      "kind": "village",
+      "lat": 34.7281639,
+      "lng": 10.4914732
+    },
+    {
+      "id": "osm:node:5239666199",
+      "name": "بني مهيرة",
+      "kind": "village",
+      "lat": 32.8634378,
+      "lng": 10.8172175
+    },
+    {
+      "id": "osm:node:5340400120",
+      "name": "الكراشوة",
+      "kind": "village",
+      "lat": 33.7651588,
+      "lng": 10.8800744
+    },
+    {
+      "id": "osm:node:558814817",
+      "name": "طبلبة",
+      "kind": "village",
+      "lat": 35.6417897,
+      "lng": 10.9658372
+    },
+    {
+      "id": "osm:node:558814858",
+      "name": "البقالطة",
+      "kind": "village",
+      "lat": 35.6172948,
+      "lng": 10.9891336
+    },
+    {
+      "id": "osm:node:558816747",
+      "name": "خنيس",
+      "kind": "village",
+      "lat": 35.71457,
+      "lng": 10.8182735
+    },
+    {
+      "id": "osm:node:558816759",
+      "name": "صيادة",
+      "kind": "village",
+      "lat": 35.6682749,
+      "lng": 10.8913213
+    },
+    {
+      "id": "osm:node:558826610",
+      "name": "البرجين",
+      "kind": "village",
+      "lat": 35.6625046,
+      "lng": 10.5820958
+    },
+    {
+      "id": "osm:node:558841158",
+      "name": "أولاد دوادي",
+      "kind": "village",
+      "lat": 35.4483425,
+      "lng": 10.8747533
+    },
+    {
+      "id": "osm:node:558841302",
+      "name": "الدخيلة",
+      "kind": "village",
+      "lat": 35.5190092,
+      "lng": 10.9744519
+    },
+    {
+      "id": "osm:node:558855447",
+      "name": "غبغوب",
+      "kind": "village",
+      "lat": 35.6926983,
+      "lng": 10.4029415
+    },
+    {
+      "id": "osm:node:558962249",
+      "name": "سيدي علوان",
+      "kind": "village",
+      "lat": 35.3750157,
+      "lng": 10.9378385
+    },
+    {
+      "id": "osm:node:558962262",
+      "name": "قصور الساف",
+      "kind": "town",
+      "lat": 35.4162835,
+      "lng": 10.9987172
+    },
+    {
+      "id": "osm:node:559400503",
+      "name": "المطوية",
+      "kind": "village",
+      "lat": 33.9589064,
+      "lng": 10.0014342
+    },
+    {
+      "id": "osm:node:5604049345",
+      "name": "Habhab",
+      "kind": "hamlet",
+      "lat": 33.1378762,
+      "lng": 10.4650022
+    },
+    {
+      "id": "osm:node:560792911",
+      "name": "الفوار",
+      "kind": "village",
+      "lat": 33.355963,
+      "lng": 8.6732515
+    },
+    {
+      "id": "osm:node:560792912",
+      "name": "الدرجين",
+      "kind": "hamlet",
+      "lat": 33.4630348,
+      "lng": 8.7196225
+    },
+    {
+      "id": "osm:node:5627564471",
+      "name": "بني عيشون",
+      "kind": "village",
+      "lat": 36.5769278,
+      "lng": 10.8407885
+    },
+    {
+      "id": "osm:node:5629636916",
+      "name": "كريز المحسن",
+      "kind": "village",
+      "lat": 34.0366878,
+      "lng": 8.3372594
+    },
+    {
+      "id": "osm:node:5654347073",
+      "name": "حي حشاد",
+      "kind": "neighbourhood",
+      "lat": 36.5076888,
+      "lng": 10.5659365
+    },
+    {
+      "id": "osm:node:5657552449",
+      "name": "حي السوس",
+      "kind": "neighbourhood",
+      "lat": 37.1670815,
+      "lng": 10.02801
+    },
+    {
+      "id": "osm:node:5657552450",
+      "name": "الفوارة",
+      "kind": "neighbourhood",
+      "lat": 37.167154,
+      "lng": 10.0322339
+    },
+    {
+      "id": "osm:node:5657552451",
+      "name": "باب تونس",
+      "kind": "neighbourhood",
+      "lat": 37.1683513,
+      "lng": 10.0361306
+    },
+    {
+      "id": "osm:node:5657552452",
+      "name": "الزريبة",
+      "kind": "neighbourhood",
+      "lat": 37.1694125,
+      "lng": 10.0379883
+    },
+    {
+      "id": "osm:node:5657552453",
+      "name": "باب رأس الجبل",
+      "kind": "neighbourhood",
+      "lat": 37.1717141,
+      "lng": 10.038331
+    },
+    {
+      "id": "osm:node:5657552454",
+      "name": "االعوينة",
+      "kind": "neighbourhood",
+      "lat": 37.1717726,
+      "lng": 10.0334725
+    },
+    {
+      "id": "osm:node:5657552455",
+      "name": "بئر معيشيش",
+      "kind": "neighbourhood",
+      "lat": 37.1768428,
+      "lng": 10.0319102
+    },
+    {
+      "id": "osm:node:5658873754",
+      "name": "الحماري",
+      "kind": "suburb",
+      "lat": 37.1892399,
+      "lng": 10.2074907
+    },
+    {
+      "id": "osm:node:5826137835",
+      "name": "سيدي الظريف",
+      "kind": "town",
+      "lat": 36.8810026,
+      "lng": 10.3356799
+    },
+    {
+      "id": "osm:node:6039044550",
+      "name": "منزل تميم",
+      "kind": "town",
+      "lat": 36.7807127,
+      "lng": 10.9939105
+    },
+    {
+      "id": "osm:node:6039111046",
+      "name": "سيدي جمال الدين",
+      "kind": "village",
+      "lat": 36.7924046,
+      "lng": 11.0172802
+    },
+    {
+      "id": "osm:node:6167343821",
+      "name": "بئر الغول",
+      "kind": "neighbourhood",
+      "lat": 36.448808,
+      "lng": 10.7236517
+    },
+    {
+      "id": "osm:node:616794273",
+      "name": "ضفاف البحيرة 2",
+      "kind": "suburb",
+      "lat": 36.8455252,
+      "lng": 10.2708553
+    },
+    {
+      "id": "osm:node:6171465247",
+      "name": "مدينة المنستير العتيقة",
+      "kind": "suburb",
+      "lat": 35.7736841,
+      "lng": 10.8295852
+    },
+    {
+      "id": "osm:node:6214200489",
+      "name": "التيايرة",
+      "kind": "village",
+      "lat": 35.5711683,
+      "lng": 10.768031
+    },
+    {
+      "id": "osm:node:6215539235",
+      "name": "نصر الله",
+      "kind": "town",
+      "lat": 35.3528502,
+      "lng": 9.8275155
+    },
+    {
+      "id": "osm:node:631655121",
+      "name": "حي ابن خلدون",
+      "kind": "suburb",
+      "lat": 36.82794,
+      "lng": 10.1379805
+    },
+    {
+      "id": "osm:node:6329687284",
+      "name": "وادي سهيل",
+      "kind": "neighbourhood",
+      "lat": 36.4453147,
+      "lng": 10.7244326
+    },
+    {
+      "id": "osm:node:6389607508",
+      "name": "بئر شوكات",
+      "kind": "village",
+      "lat": 34.7074216,
+      "lng": 10.0251465
+    },
+    {
+      "id": "osm:node:6389607509",
+      "name": "اللطايفة",
+      "kind": "village",
+      "lat": 34.7544951,
+      "lng": 10.1839023
+    },
+    {
+      "id": "osm:node:6392145468",
+      "name": "أولاد موسى",
+      "kind": "village",
+      "lat": 33.5101883,
+      "lng": 10.5190896
+    },
+    {
+      "id": "osm:node:6513256947",
+      "name": "مركز السماوي",
+      "kind": "suburb",
+      "lat": 34.7783828,
+      "lng": 10.6992088
+    },
+    {
+      "id": "osm:node:6616567215",
+      "name": "اللواتة",
+      "kind": "village",
+      "lat": 35.0520857,
+      "lng": 11.0033681
+    },
+    {
+      "id": "osm:node:6617808421",
+      "name": "البرادعة",
+      "kind": "village",
+      "lat": 35.3485947,
+      "lng": 10.991142
+    },
+    {
+      "id": "osm:node:6644849698",
+      "name": "أولاد بوسمير",
+      "kind": "village",
+      "lat": 35.0839628,
+      "lng": 10.9709738
+    },
+    {
+      "id": "osm:node:6649597250",
+      "name": "الكتاتنة",
+      "kind": "hamlet",
+      "lat": 34.939487,
+      "lng": 10.8657468
+    },
+    {
+      "id": "osm:node:6650069701",
+      "name": "السعادي",
+      "kind": "village",
+      "lat": 34.8871163,
+      "lng": 10.8464164
+    },
+    {
+      "id": "osm:node:6651424498",
+      "name": "الغرابة",
+      "kind": "village",
+      "lat": 34.9447095,
+      "lng": 10.7451069
+    },
+    {
+      "id": "osm:node:6654735998",
+      "name": "أولاد الحاج عمر",
+      "kind": "village",
+      "lat": 34.8389118,
+      "lng": 10.8410246
+    },
+    {
+      "id": "osm:node:6654816113",
+      "name": "مركز كمون",
+      "kind": "village",
+      "lat": 35.0799709,
+      "lng": 10.6390621
+    },
+    {
+      "id": "osm:node:6655027585",
+      "name": "بوغرارة",
+      "kind": "hamlet",
+      "lat": 34.9915623,
+      "lng": 10.5479018
+    },
+    {
+      "id": "osm:node:6655027587",
+      "name": "زواد قرمدة",
+      "kind": "village",
+      "lat": 35.0082264,
+      "lng": 10.5677686
+    },
+    {
+      "id": "osm:node:6665615472",
+      "name": "دخان",
+      "kind": "hamlet",
+      "lat": 34.9894931,
+      "lng": 10.7606186
+    },
+    {
+      "id": "osm:node:6665615477",
+      "name": "الغيب",
+      "kind": "hamlet",
+      "lat": 35.0461637,
+      "lng": 10.7160237
+    },
+    {
+      "id": "osm:node:6665615478",
+      "name": "ليماية",
+      "kind": "village",
+      "lat": 35.0289429,
+      "lng": 10.1868154
+    },
+    {
+      "id": "osm:node:6672532608",
+      "name": "أولاد عبد الله",
+      "kind": "village",
+      "lat": 35.1852482,
+      "lng": 10.9888412
+    },
+    {
+      "id": "osm:node:6672532618",
+      "name": "زالبة",
+      "kind": "village",
+      "lat": 35.2022707,
+      "lng": 10.8493494
+    },
+    {
+      "id": "osm:node:6677934270",
+      "name": "منزل حمزة الشرقية",
+      "kind": "hamlet",
+      "lat": 35.4235226,
+      "lng": 10.8090183
+    },
+    {
+      "id": "osm:node:6677938928",
+      "name": "أولاد بوسيف",
+      "kind": "village",
+      "lat": 35.4659032,
+      "lng": 10.8387131
+    },
+    {
+      "id": "osm:node:6677938930",
+      "name": "الصغيرات",
+      "kind": "village",
+      "lat": 35.4846253,
+      "lng": 10.8279232
+    },
+    {
+      "id": "osm:node:6677938932",
+      "name": "أولاد فائزة",
+      "kind": "village",
+      "lat": 35.497516,
+      "lng": 10.8352325
+    },
+    {
+      "id": "osm:node:6677938940",
+      "name": "الحوم",
+      "kind": "village",
+      "lat": 35.521447,
+      "lng": 10.8852219
+    },
+    {
+      "id": "osm:node:6680613725",
+      "name": "حي المعز",
+      "kind": "suburb",
+      "lat": 34.6843572,
+      "lng": 10.7076552
+    },
+    {
+      "id": "osm:node:6681297621",
+      "name": "الشواشين",
+      "kind": "village",
+      "lat": 35.570799,
+      "lng": 10.8449771
+    },
+    {
+      "id": "osm:node:6681328578",
+      "name": "مساكن",
+      "kind": "village",
+      "lat": 35.7252583,
+      "lng": 10.5832842
+    },
+    {
+      "id": "osm:node:674390385",
+      "name": "نويل",
+      "kind": "village",
+      "lat": 33.4906977,
+      "lng": 8.8656896
+    },
+    {
+      "id": "osm:node:674390390",
+      "name": "البليدات",
+      "kind": "village",
+      "lat": 33.5792278,
+      "lng": 8.8412999
+    },
+    {
+      "id": "osm:node:674390400",
+      "name": "غليسية",
+      "kind": "village",
+      "lat": 33.5952423,
+      "lng": 8.9037178
+    },
+    {
+      "id": "osm:node:674390466",
+      "name": "Ain Zigzaou",
+      "kind": "village",
+      "lat": 33.7292132,
+      "lng": 9.217841
+    },
+    {
+      "id": "osm:node:675145084",
+      "name": "العزائزة",
+      "kind": "village",
+      "lat": 33.5842055,
+      "lng": 10.2662847
+    },
+    {
+      "id": "osm:node:675145102",
+      "name": "سيدي منصور",
+      "kind": "village",
+      "lat": 34.2583244,
+      "lng": 9.5556317
+    },
+    {
+      "id": "osm:node:6753470037",
+      "name": "سيدي عاشور",
+      "kind": "neighbourhood",
+      "lat": 36.4540905,
+      "lng": 10.7233803
+    },
+    {
+      "id": "osm:node:6753470038",
+      "name": "Rotonde",
+      "kind": "neighbourhood",
+      "lat": 36.4427134,
+      "lng": 10.74469
+    },
+    {
+      "id": "osm:node:6753470040",
+      "name": "Quartier de la plage",
+      "kind": "neighbourhood",
+      "lat": 36.4411853,
+      "lng": 10.7271593
+    },
+    {
+      "id": "osm:node:6753470041",
+      "name": "بئر شلوف",
+      "kind": "neighbourhood",
+      "lat": 36.4489911,
+      "lng": 10.7220301
+    },
+    {
+      "id": "osm:node:6753470042",
+      "name": "La Jarre",
+      "kind": "neighbourhood",
+      "lat": 36.4517317,
+      "lng": 10.7373024
+    },
+    {
+      "id": "osm:node:6753470043",
+      "name": "المدينة العتيقة",
+      "kind": "neighbourhood",
+      "lat": 36.4541051,
+      "lng": 10.7355361
+    },
+    {
+      "id": "osm:node:6753470044",
+      "name": "Centre-Ville",
+      "kind": "neighbourhood",
+      "lat": 36.4522902,
+      "lng": 10.7318254
+    },
+    {
+      "id": "osm:node:6753470045",
+      "name": "Quartier de la gare",
+      "kind": "neighbourhood",
+      "lat": 36.4513076,
+      "lng": 10.7298392
+    },
+    {
+      "id": "osm:node:6753470046",
+      "name": "Jasmins",
+      "kind": "neighbourhood",
+      "lat": 36.4386047,
+      "lng": 10.7170973
+    },
+    {
+      "id": "osm:node:6757003469",
+      "name": "حي النسيم",
+      "kind": "neighbourhood",
+      "lat": 36.444937,
+      "lng": 10.711315
+    },
+    {
+      "id": "osm:node:6757003470",
+      "name": "حي الوفاء",
+      "kind": "neighbourhood",
+      "lat": 36.4396312,
+      "lng": 10.6844671
+    },
+    {
+      "id": "osm:node:6757003471",
+      "name": "أبو دخان",
+      "kind": "village",
+      "lat": 36.7626883,
+      "lng": 10.8395594
+    },
+    {
+      "id": "osm:node:6757003472",
+      "name": "Hammamet Sud",
+      "kind": "neighbourhood",
+      "lat": 36.405222,
+      "lng": 10.5681321
+    },
+    {
+      "id": "osm:node:6757003474",
+      "name": "Hammamet Intérieure",
+      "kind": "neighbourhood",
+      "lat": 36.4084246,
+      "lng": 10.615503
+    },
+    {
+      "id": "osm:node:6861745969",
+      "name": "مشطة برزيك",
+      "kind": "village",
+      "lat": 36.4670786,
+      "lng": 8.3865825
+    },
+    {
+      "id": "osm:node:6912936777",
+      "name": "فج بوزيان",
+      "kind": "village",
+      "lat": 34.4366939,
+      "lng": 7.982531
+    },
+    {
+      "id": "osm:node:6913884817",
+      "name": "أولاد سعد",
+      "kind": "village",
+      "lat": 34.9802777,
+      "lng": 9.9864871
+    },
+    {
+      "id": "osm:node:6913885024",
+      "name": "أولاد بلقاسم",
+      "kind": "village",
+      "lat": 35.0010722,
+      "lng": 9.9713812
+    },
+    {
+      "id": "osm:node:6913887728",
+      "name": "أولاد بوعلي",
+      "kind": "village",
+      "lat": 35.0373694,
+      "lng": 9.984047
+    },
+    {
+      "id": "osm:node:6913900774",
+      "name": "براهمية",
+      "kind": "village",
+      "lat": 35.0132479,
+      "lng": 10.0203958
+    },
+    {
+      "id": "osm:node:6915295920",
+      "name": "بني عوف",
+      "kind": "hamlet",
+      "lat": 37.314624,
+      "lng": 9.7845
+    },
+    {
+      "id": "osm:node:6916167254",
+      "name": "منزل المهيري",
+      "kind": "village",
+      "lat": 35.425906,
+      "lng": 9.8518721
+    },
+    {
+      "id": "osm:node:6916167255",
+      "name": "الفلايلية",
+      "kind": "hamlet",
+      "lat": 35.4053809,
+      "lng": 9.8952552
+    },
+    {
+      "id": "osm:node:6916227160",
+      "name": "الذويبات",
+      "kind": "village",
+      "lat": 35.0905554,
+      "lng": 9.9425111
+    },
+    {
+      "id": "osm:node:6917823081",
+      "name": "أولاد لحمر",
+      "kind": "hamlet",
+      "lat": 35.2437913,
+      "lng": 10.8803188
+    },
+    {
+      "id": "osm:node:6917923469",
+      "name": "بئر البرادعة",
+      "kind": "hamlet",
+      "lat": 35.3020284,
+      "lng": 11.0035685
+    },
+    {
+      "id": "osm:node:7019115862",
+      "name": "مركز القصاص",
+      "kind": "suburb",
+      "lat": 34.7541613,
+      "lng": 10.7099728
+    },
+    {
+      "id": "osm:node:7019212130",
+      "name": "مركز والي",
+      "kind": "suburb",
+      "lat": 34.7863744,
+      "lng": 10.7037145
+    },
+    {
+      "id": "osm:node:7021422907",
+      "name": "سيدي بوشوشة",
+      "kind": "village",
+      "lat": 37.2541901,
+      "lng": 10.0605252
+    },
+    {
+      "id": "osm:node:7021444396",
+      "name": "القعايد",
+      "kind": "village",
+      "lat": 37.2508153,
+      "lng": 10.0526893
+    },
+    {
+      "id": "osm:node:7021678552",
+      "name": "الشريشيرة",
+      "kind": "hamlet",
+      "lat": 35.6345381,
+      "lng": 9.8180863
+    },
+    {
+      "id": "osm:node:7023094688",
+      "name": "الخمارة",
+      "kind": "village",
+      "lat": 35.3021365,
+      "lng": 11.0442907
+    },
+    {
+      "id": "osm:node:7023299504",
+      "name": "دوار زعبة",
+      "kind": "hamlet",
+      "lat": 36.814204,
+      "lng": 10.6635299
+    },
+    {
+      "id": "osm:node:7023542479",
+      "name": "تزغران",
+      "kind": "village",
+      "lat": 36.8941115,
+      "lng": 10.8691256
+    },
+    {
+      "id": "osm:node:7023622192",
+      "name": "منزل عيسى",
+      "kind": "hamlet",
+      "lat": 36.8615612,
+      "lng": 10.9136846
+    },
+    {
+      "id": "osm:node:7023651600",
+      "name": "سيدي عبد المنعم",
+      "kind": "hamlet",
+      "lat": 36.8466698,
+      "lng": 10.948642
+    },
+    {
+      "id": "osm:node:7023800964",
+      "name": "بئر الجدي",
+      "kind": "hamlet",
+      "lat": 36.9250388,
+      "lng": 10.8412212
+    },
+    {
+      "id": "osm:node:7025699940",
+      "name": "بوحبيب",
+      "kind": "hamlet",
+      "lat": 37.0329845,
+      "lng": 11.0061754
+    },
+    {
+      "id": "osm:node:7025729391",
+      "name": "العرقوب",
+      "kind": "hamlet",
+      "lat": 37.0490161,
+      "lng": 10.9708071
+    },
+    {
+      "id": "osm:node:7025729418",
+      "name": "الفطح",
+      "kind": "hamlet",
+      "lat": 37.0257519,
+      "lng": 10.9924741
+    },
+    {
+      "id": "osm:node:7025761781",
+      "name": "سيدي داود",
+      "kind": "village",
+      "lat": 37.0213301,
+      "lng": 10.9134484
+    },
+    {
+      "id": "osm:node:7025787725",
+      "name": "برج الصالحي",
+      "kind": "hamlet",
+      "lat": 37.0373962,
+      "lng": 10.9130613
+    },
+    {
+      "id": "osm:node:7026314952",
+      "name": "كاف الشامي",
+      "kind": "hamlet",
+      "lat": 36.8584914,
+      "lng": 10.9555769
+    },
+    {
+      "id": "osm:node:7026501958",
+      "name": "داموس",
+      "kind": "hamlet",
+      "lat": 36.7619474,
+      "lng": 10.9224557
+    },
+    {
+      "id": "osm:node:7027046900",
+      "name": "سيدي حسون",
+      "kind": "hamlet",
+      "lat": 36.8511134,
+      "lng": 10.8511868
+    },
+    {
+      "id": "osm:node:7027171437",
+      "name": "جبل الحداد",
+      "kind": "hamlet",
+      "lat": 36.5978577,
+      "lng": 10.7923009
+    },
+    {
+      "id": "osm:node:7027171451",
+      "name": "قصر سعد",
+      "kind": "hamlet",
+      "lat": 36.6535112,
+      "lng": 10.9038247
+    },
+    {
+      "id": "osm:node:7027219524",
+      "name": "الأثلاث",
+      "kind": "hamlet",
+      "lat": 36.6366443,
+      "lng": 10.8259652
+    },
+    {
+      "id": "osm:node:7027234023",
+      "name": "الكشايشة",
+      "kind": "hamlet",
+      "lat": 36.6102803,
+      "lng": 10.7705839
+    },
+    {
+      "id": "osm:node:7028188921",
+      "name": "الحلالفة",
+      "kind": "hamlet",
+      "lat": 35.2158629,
+      "lng": 10.7502545
+    },
+    {
+      "id": "osm:node:7028704003",
+      "name": "جروالة",
+      "kind": "hamlet",
+      "lat": 34.2748578,
+      "lng": 9.9630012
+    },
+    {
+      "id": "osm:node:7029117703",
+      "name": "السواني",
+      "kind": "hamlet",
+      "lat": 34.3118366,
+      "lng": 10.0211846
+    },
+    {
+      "id": "osm:node:7030967057",
+      "name": "السوينية",
+      "kind": "hamlet",
+      "lat": 34.583579,
+      "lng": 10.1414158
+    },
+    {
+      "id": "osm:node:7030985203",
+      "name": "راس فرطوط",
+      "kind": "hamlet",
+      "lat": 34.7919238,
+      "lng": 10.1335657
+    },
+    {
+      "id": "osm:node:7031699784",
+      "name": "بئر أولاد محمود",
+      "kind": "hamlet",
+      "lat": 34.8300714,
+      "lng": 10.0454139
+    },
+    {
+      "id": "osm:node:7034505117",
+      "name": "العيايطة",
+      "kind": "hamlet",
+      "lat": 35.367984,
+      "lng": 10.8852824
+    },
+    {
+      "id": "osm:node:7036024844",
+      "name": "سيدي عبد الكافي",
+      "kind": "hamlet",
+      "lat": 34.9115856,
+      "lng": 10.6603659
+    },
+    {
+      "id": "osm:node:7036695816",
+      "name": "المراعنية",
+      "kind": "village",
+      "lat": 35.0744886,
+      "lng": 10.4871611
+    },
+    {
+      "id": "osm:node:7036738535",
+      "name": "العوابد",
+      "kind": "village",
+      "lat": 34.8723108,
+      "lng": 10.8975463
+    },
+    {
+      "id": "osm:node:7036738536",
+      "name": "مركز اللجمي",
+      "kind": "suburb",
+      "lat": 34.7862281,
+      "lng": 10.799548
+    },
+    {
+      "id": "osm:node:7037664472",
+      "name": "بئر بن عياد",
+      "kind": "hamlet",
+      "lat": 34.9100611,
+      "lng": 10.5927219
+    },
+    {
+      "id": "osm:node:7038401028",
+      "name": "أولاد منصر",
+      "kind": "village",
+      "lat": 35.0163071,
+      "lng": 10.9544442
+    },
+    {
+      "id": "osm:node:7038628593",
+      "name": "أولاد أحمد",
+      "kind": "hamlet",
+      "lat": 35.2138079,
+      "lng": 10.5472547
+    },
+    {
+      "id": "osm:node:7040401356",
+      "name": "مركز الشيحية",
+      "kind": "suburb",
+      "lat": 34.7925117,
+      "lng": 10.743728
+    },
+    {
+      "id": "osm:node:7046796753",
+      "name": "بني دراج",
+      "kind": "hamlet",
+      "lat": 36.4033313,
+      "lng": 10.2576604
+    },
+    {
+      "id": "osm:node:7046861315",
+      "name": "عين الصابون",
+      "kind": "village",
+      "lat": 36.3824058,
+      "lng": 10.3215807
+    },
+    {
+      "id": "osm:node:7047085523",
+      "name": "وادي الكنز",
+      "kind": "village",
+      "lat": 36.3004591,
+      "lng": 10.2667637
+    },
+    {
+      "id": "osm:node:7049501593",
+      "name": "المناقع",
+      "kind": "village",
+      "lat": 36.5556547,
+      "lng": 9.9449427
+    },
+    {
+      "id": "osm:node:7049577105",
+      "name": "سيدي عويدات",
+      "kind": "village",
+      "lat": 36.2217837,
+      "lng": 9.7440661
+    },
+    {
+      "id": "osm:node:7049621723",
+      "name": "ذراع بن جودر",
+      "kind": "village",
+      "lat": 36.272782,
+      "lng": 10.0199919
+    },
+    {
+      "id": "osm:node:7049751062",
+      "name": "قليب الجمل",
+      "kind": "hamlet",
+      "lat": 36.3627604,
+      "lng": 9.8519975
+    },
+    {
+      "id": "osm:node:7051550601",
+      "name": "ضمدة",
+      "kind": "hamlet",
+      "lat": 36.280553,
+      "lng": 9.9076699
+    },
+    {
+      "id": "osm:node:7056910053",
+      "name": "بوسماعیل",
+      "kind": "village",
+      "lat": 33.7524211,
+      "lng": 10.7513491
+    },
+    {
+      "id": "osm:node:7057312181",
+      "name": "برج المرقاب",
+      "kind": "village",
+      "lat": 34.7267529,
+      "lng": 10.4831299
+    },
+    {
+      "id": "osm:node:7057330398",
+      "name": "دوار إسرحايرة",
+      "kind": "village",
+      "lat": 34.7464294,
+      "lng": 10.4849072
+    },
+    {
+      "id": "osm:node:7057330399",
+      "name": "التراكة",
+      "kind": "village",
+      "lat": 34.7303468,
+      "lng": 10.5655107
+    },
+    {
+      "id": "osm:node:7078433783",
+      "name": "البرغوثية",
+      "kind": "village",
+      "lat": 33.6041653,
+      "lng": 8.9146413
+    },
+    {
+      "id": "osm:node:7078434534",
+      "name": "كلوامن",
+      "kind": "village",
+      "lat": 33.5881042,
+      "lng": 8.9101957
+    },
+    {
+      "id": "osm:node:7090084103",
+      "name": "حي المرجان",
+      "kind": "neighbourhood",
+      "lat": 36.9430258,
+      "lng": 8.794592
+    },
+    {
+      "id": "osm:node:7099056700",
+      "name": "الوكالة العقارية للسكنى",
+      "kind": "neighbourhood",
+      "lat": 36.4456128,
+      "lng": 8.4299962
+    },
+    {
+      "id": "osm:node:7099056701",
+      "name": "حي الزهور",
+      "kind": "neighbourhood",
+      "lat": 36.4555622,
+      "lng": 8.435366
+    },
+    {
+      "id": "osm:node:7099056715",
+      "name": "حومة الوصفة",
+      "kind": "neighbourhood",
+      "lat": 36.4493264,
+      "lng": 8.4365361
+    },
+    {
+      "id": "osm:node:7099108306",
+      "name": "دوار بو شبنا",
+      "kind": "village",
+      "lat": 36.5046827,
+      "lng": 8.1800102
+    },
+    {
+      "id": "osm:node:7108512415",
+      "name": "حي المهرجان",
+      "kind": "neighbourhood",
+      "lat": 32.952055,
+      "lng": 10.4674395
+    },
+    {
+      "id": "osm:node:7179436766",
+      "name": "حي السوالمية",
+      "kind": "neighbourhood",
+      "lat": 34.4843126,
+      "lng": 8.2858997
+    },
+    {
+      "id": "osm:node:7179592671",
+      "name": "حي الزهور",
+      "kind": "neighbourhood",
+      "lat": 34.4826349,
+      "lng": 8.2582593
+    },
+    {
+      "id": "osm:node:7179592672",
+      "name": "حي الكسيلة",
+      "kind": "neighbourhood",
+      "lat": 34.4931197,
+      "lng": 8.2602996
+    },
+    {
+      "id": "osm:node:7179612035",
+      "name": "هنشير السويطير",
+      "kind": "hamlet",
+      "lat": 34.5337118,
+      "lng": 8.3729785
+    },
+    {
+      "id": "osm:node:7179613734",
+      "name": "العيون",
+      "kind": "hamlet",
+      "lat": 34.4265725,
+      "lng": 8.2899115
+    },
+    {
+      "id": "osm:node:7312474745",
+      "name": "النفاتيّة",
+      "kind": "village",
+      "lat": 35.1596533,
+      "lng": 10.4303091
+    },
+    {
+      "id": "osm:node:7312777304",
+      "name": "الشحدة",
+      "kind": "village",
+      "lat": 35.2570845,
+      "lng": 10.3261512
+    },
+    {
+      "id": "osm:node:7312905084",
+      "name": "الملاهمة",
+      "kind": "village",
+      "lat": 35.444323,
+      "lng": 10.6149905
+    },
+    {
+      "id": "osm:node:7340150505",
+      "name": "الشوايحية",
+      "kind": "hamlet",
+      "lat": 35.2021947,
+      "lng": 10.0358568
+    },
+    {
+      "id": "osm:node:7344355583",
+      "name": "أولاد منصر",
+      "kind": "hamlet",
+      "lat": 34.7449357,
+      "lng": 9.07592
+    },
+    {
+      "id": "osm:node:7354181937",
+      "name": "القنارة",
+      "kind": "suburb",
+      "lat": 36.639284,
+      "lng": 9.5854682
+    },
+    {
+      "id": "osm:node:7359163036",
+      "name": "سوق السبت",
+      "kind": "village",
+      "lat": 36.5524048,
+      "lng": 8.8834672
+    },
+    {
+      "id": "osm:node:7359785747",
+      "name": "الجديدة",
+      "kind": "town",
+      "lat": 36.8492607,
+      "lng": 9.9353189
+    },
+    {
+      "id": "osm:node:7359958254",
+      "name": "سبعة عوينات",
+      "kind": "hamlet",
+      "lat": 37.0395756,
+      "lng": 9.7788065
+    },
+    {
+      "id": "osm:node:7359958256",
+      "name": "برج السبعي",
+      "kind": "village",
+      "lat": 37.0346555,
+      "lng": 9.7046585
+    },
+    {
+      "id": "osm:node:7360164293",
+      "name": "تمرة",
+      "kind": "hamlet",
+      "lat": 37.0763862,
+      "lng": 9.1406951
+    },
+    {
+      "id": "osm:node:7363760966",
+      "name": "بوشـكارة",
+      "kind": "village",
+      "lat": 37.1784006,
+      "lng": 9.9600797
+    },
+    {
+      "id": "osm:node:7363760969",
+      "name": "جدارة",
+      "kind": "village",
+      "lat": 37.1888992,
+      "lng": 9.9545276
+    },
+    {
+      "id": "osm:node:7366543308",
+      "name": "العريمة",
+      "kind": "village",
+      "lat": 36.9916522,
+      "lng": 9.6025051
+    },
+    {
+      "id": "osm:node:7366758868",
+      "name": "فج الريح",
+      "kind": "village",
+      "lat": 36.777485,
+      "lng": 8.7132206
+    },
+    {
+      "id": "osm:node:7371930429",
+      "name": "أولاد تليجان",
+      "kind": "village",
+      "lat": 34.4632342,
+      "lng": 8.9748404
+    },
+    {
+      "id": "osm:node:7372876054",
+      "name": "القصر",
+      "kind": "village",
+      "lat": 34.3978553,
+      "lng": 8.8045119
+    },
+    {
+      "id": "osm:node:7376165294",
+      "name": "ميتول",
+      "kind": "village",
+      "lat": 36.4236823,
+      "lng": 8.7619309
+    },
+    {
+      "id": "osm:node:7385863145",
+      "name": "الشعاليل الجنوبية",
+      "kind": "village",
+      "lat": 36.1007019,
+      "lng": 10.0971521
+    },
+    {
+      "id": "osm:node:7385967850",
+      "name": "صوغاس الشمالية",
+      "kind": "hamlet",
+      "lat": 36.0787071,
+      "lng": 9.9163622
+    },
+    {
+      "id": "osm:node:7386057025",
+      "name": "المعيذر",
+      "kind": "hamlet",
+      "lat": 36.1309932,
+      "lng": 10.0232243
+    },
+    {
+      "id": "osm:node:7386090323",
+      "name": "صوغاس الجنوبية",
+      "kind": "hamlet",
+      "lat": 36.064691,
+      "lng": 9.9476732
+    },
+    {
+      "id": "osm:node:7390818324",
+      "name": "سكرة",
+      "kind": "village",
+      "lat": 36.8749751,
+      "lng": 10.2454267
+    },
+    {
+      "id": "osm:node:7417979578",
+      "name": "جالطة",
+      "kind": "neighbourhood",
+      "lat": 37.0718399,
+      "lng": 9.5347116
+    },
+    {
+      "id": "osm:node:7429400517",
+      "name": "أولاد حمودة",
+      "kind": "village",
+      "lat": 35.730844,
+      "lng": 10.207996
+    },
+    {
+      "id": "osm:node:7429423422",
+      "name": "المرازيق",
+      "kind": "village",
+      "lat": 35.6926367,
+      "lng": 10.2002739
+    },
+    {
+      "id": "osm:node:7433333155",
+      "name": "دار الجمعية",
+      "kind": "village",
+      "lat": 36.0332417,
+      "lng": 10.1932854
+    },
+    {
+      "id": "osm:node:7433415028",
+      "name": "هندي الزيتونة",
+      "kind": "village",
+      "lat": 35.9993803,
+      "lng": 10.0969483
+    },
+    {
+      "id": "osm:node:7495724516",
+      "name": "أولاد سالم",
+      "kind": "village",
+      "lat": 34.919258,
+      "lng": 8.3902297
+    },
+    {
+      "id": "osm:node:7635838483",
+      "name": "سيدي سهيل",
+      "kind": "village",
+      "lat": 35.6305142,
+      "lng": 8.7325693
+    },
+    {
+      "id": "osm:node:7648224726",
+      "name": "سيدي يأتي",
+      "kind": "village",
+      "lat": 33.8157134,
+      "lng": 11.0175983
+    },
+    {
+      "id": "osm:node:7648224727",
+      "name": "الفيتوري",
+      "kind": "hamlet",
+      "lat": 33.81845,
+      "lng": 11.0267948
+    },
+    {
+      "id": "osm:node:7648224729",
+      "name": "المهيري",
+      "kind": "hamlet",
+      "lat": 33.8131349,
+      "lng": 11.0034608
+    },
+    {
+      "id": "osm:node:7716925563",
+      "name": "بومهل البساتين",
+      "kind": "town",
+      "lat": 36.7244212,
+      "lng": 10.3010512
+    },
+    {
+      "id": "osm:node:7716925564",
+      "name": "مقرين",
+      "kind": "town",
+      "lat": 36.7703354,
+      "lng": 10.2315885
+    },
+    {
+      "id": "osm:node:7784003393",
+      "name": "الهوايدية",
+      "kind": "village",
+      "lat": 36.9211316,
+      "lng": 8.8895549
+    },
+    {
+      "id": "osm:node:7797139018",
+      "name": "أولاد المبروك",
+      "kind": "village",
+      "lat": 35.1325582,
+      "lng": 11.0162306
+    },
+    {
+      "id": "osm:node:7831856311",
+      "name": "سماش",
+      "kind": "village",
+      "lat": 36.6245325,
+      "lng": 10.4612201
+    },
+    {
+      "id": "osm:node:7855480158",
+      "name": "مركز بشة",
+      "kind": "suburb",
+      "lat": 34.777495,
+      "lng": 10.7775465
+    },
+    {
+      "id": "osm:node:7855480160",
+      "name": "مركز الحطاب",
+      "kind": "suburb",
+      "lat": 34.7950804,
+      "lng": 10.7815116
+    },
+    {
+      "id": "osm:node:7855480161",
+      "name": "مركز البقلوطي",
+      "kind": "suburb",
+      "lat": 34.7912224,
+      "lng": 10.80559
+    },
+    {
+      "id": "osm:node:7855551512",
+      "name": "مركز بن عامر",
+      "kind": "suburb",
+      "lat": 34.7657592,
+      "lng": 10.7842737
+    },
+    {
+      "id": "osm:node:7856141141",
+      "name": "مركز حمودة",
+      "kind": "suburb",
+      "lat": 34.7819664,
+      "lng": 10.7960483
+    },
+    {
+      "id": "osm:node:7856141142",
+      "name": "مركز درويش",
+      "kind": "suburb",
+      "lat": 34.7624026,
+      "lng": 10.7398161
+    },
+    {
+      "id": "osm:node:7856141144",
+      "name": "العقاربة",
+      "kind": "village",
+      "lat": 34.8947457,
+      "lng": 10.8253124
+    },
+    {
+      "id": "osm:node:7856141165",
+      "name": "لدباع",
+      "kind": "hamlet",
+      "lat": 34.8508234,
+      "lng": 10.8695596
+    },
+    {
+      "id": "osm:node:7856141166",
+      "name": "الجوالين",
+      "kind": "hamlet",
+      "lat": 34.8460894,
+      "lng": 10.8521774
+    },
+    {
+      "id": "osm:node:7856141178",
+      "name": "رجال الكدوة",
+      "kind": "hamlet",
+      "lat": 34.8861176,
+      "lng": 10.8764005
+    },
+    {
+      "id": "osm:node:7856141179",
+      "name": "الحمايزية",
+      "kind": "village",
+      "lat": 34.8896613,
+      "lng": 10.8850323
+    },
+    {
+      "id": "osm:node:7856369371",
+      "name": "سيدي مخلوف",
+      "kind": "hamlet",
+      "lat": 34.9669533,
+      "lng": 10.9082565
+    },
+    {
+      "id": "osm:node:7856369372",
+      "name": "الفيض",
+      "kind": "hamlet",
+      "lat": 34.9607902,
+      "lng": 10.8957152
+    },
+    {
+      "id": "osm:node:7856369377",
+      "name": "أولاد مسلّم",
+      "kind": "hamlet",
+      "lat": 34.9638604,
+      "lng": 10.849758
+    },
+    {
+      "id": "osm:node:7856369380",
+      "name": "المهارة",
+      "kind": "village",
+      "lat": 34.9728004,
+      "lng": 10.8131012
+    },
+    {
+      "id": "osm:node:7856537996",
+      "name": "دوار أولاد الحاج صالح",
+      "kind": "hamlet",
+      "lat": 34.9474341,
+      "lng": 10.8185801
+    },
+    {
+      "id": "osm:node:7856537998",
+      "name": "سيدي محمد بن عمُر",
+      "kind": "hamlet",
+      "lat": 34.9385645,
+      "lng": 10.7846197
+    },
+    {
+      "id": "osm:node:7856569900",
+      "name": "العيايدة",
+      "kind": "hamlet",
+      "lat": 34.9888455,
+      "lng": 10.6777193
+    },
+    {
+      "id": "osm:node:7856569901",
+      "name": "الطاوس",
+      "kind": "hamlet",
+      "lat": 34.917769,
+      "lng": 10.6098735
+    },
+    {
+      "id": "osm:node:7856569902",
+      "name": "القوادرية",
+      "kind": "hamlet",
+      "lat": 34.9655696,
+      "lng": 10.6412748
+    },
+    {
+      "id": "osm:node:7859496543",
+      "name": "برج الفراتي",
+      "kind": "hamlet",
+      "lat": 34.9942807,
+      "lng": 10.5952338
+    },
+    {
+      "id": "osm:node:7859497115",
+      "name": "عقلة معدان",
+      "kind": "hamlet",
+      "lat": 34.9951404,
+      "lng": 10.5091019
+    },
+    {
+      "id": "osm:node:7859497122",
+      "name": "زعيبيط",
+      "kind": "hamlet",
+      "lat": 34.956622,
+      "lng": 10.4641711
+    },
+    {
+      "id": "osm:node:7861280082",
+      "name": "أولاد أحمد",
+      "kind": "hamlet",
+      "lat": 34.8435284,
+      "lng": 10.4096809
+    },
+    {
+      "id": "osm:node:7861280084",
+      "name": "دوار أولاد الحاج أحمد",
+      "kind": "hamlet",
+      "lat": 34.82774,
+      "lng": 10.4902055
+    },
+    {
+      "id": "osm:node:7861280093",
+      "name": "بئر عباس",
+      "kind": "hamlet",
+      "lat": 34.8675584,
+      "lng": 10.7091449
+    },
+    {
+      "id": "osm:node:7861280101",
+      "name": "مسكون",
+      "kind": "hamlet",
+      "lat": 34.8354505,
+      "lng": 10.5919296
+    },
+    {
+      "id": "osm:node:7861535074",
+      "name": "مركز معلول",
+      "kind": "suburb",
+      "lat": 34.7876504,
+      "lng": 10.8214538
+    },
+    {
+      "id": "osm:node:7862602244",
+      "name": "العيايدة",
+      "kind": "hamlet",
+      "lat": 36.3286382,
+      "lng": 9.3924193
+    },
+    {
+      "id": "osm:node:7867289872",
+      "name": "أم الزيد",
+      "kind": "hamlet",
+      "lat": 36.2645889,
+      "lng": 9.3199935
+    },
+    {
+      "id": "osm:node:7867289873",
+      "name": "كرامت",
+      "kind": "hamlet",
+      "lat": 36.2560448,
+      "lng": 9.3143279
+    },
+    {
+      "id": "osm:node:7867290279",
+      "name": "عوينات شراقة",
+      "kind": "hamlet",
+      "lat": 36.2610007,
+      "lng": 9.353645
+    },
+    {
+      "id": "osm:node:7867290280",
+      "name": "العرقوب الأبيض",
+      "kind": "hamlet",
+      "lat": 36.3020138,
+      "lng": 9.3271628
+    },
+    {
+      "id": "osm:node:7867290322",
+      "name": "الرحاحلة",
+      "kind": "hamlet",
+      "lat": 36.2510475,
+      "lng": 9.3946696
+    },
+    {
+      "id": "osm:node:7867290323",
+      "name": "الشهايبية",
+      "kind": "hamlet",
+      "lat": 36.2546767,
+      "lng": 9.4061316
+    },
+    {
+      "id": "osm:node:7867290324",
+      "name": "بطن الزرايب",
+      "kind": "hamlet",
+      "lat": 36.2566025,
+      "lng": 9.4471893
+    },
+    {
+      "id": "osm:node:7867290327",
+      "name": "الفراشيش",
+      "kind": "hamlet",
+      "lat": 36.3254231,
+      "lng": 9.4132462
+    },
+    {
+      "id": "osm:node:7867290340",
+      "name": "دوار الدخانية",
+      "kind": "hamlet",
+      "lat": 36.3292711,
+      "lng": 9.1967676
+    },
+    {
+      "id": "osm:node:7867290342",
+      "name": "الطرابلسية",
+      "kind": "hamlet",
+      "lat": 36.2352052,
+      "lng": 9.4232178
+    },
+    {
+      "id": "osm:node:7867580388",
+      "name": "الرحاحلة",
+      "kind": "hamlet",
+      "lat": 36.2415976,
+      "lng": 9.3898413
+    },
+    {
+      "id": "osm:node:7867580389",
+      "name": "كراميت",
+      "kind": "hamlet",
+      "lat": 36.2491857,
+      "lng": 9.3303499
+    },
+    {
+      "id": "osm:node:7867580414",
+      "name": "الخلايلية",
+      "kind": "hamlet",
+      "lat": 36.2521024,
+      "lng": 9.3130303
+    },
+    {
+      "id": "osm:node:7867580415",
+      "name": "الحصحاصية",
+      "kind": "hamlet",
+      "lat": 36.2326254,
+      "lng": 9.2995865
+    },
+    {
+      "id": "osm:node:7867580421",
+      "name": "بن نورية",
+      "kind": "hamlet",
+      "lat": 36.1730927,
+      "lng": 9.3334005
+    },
+    {
+      "id": "osm:node:7867580423",
+      "name": "حي البراج",
+      "kind": "suburb",
+      "lat": 36.1632032,
+      "lng": 9.3597237
+    },
+    {
+      "id": "osm:node:7867580425",
+      "name": "الكريب محطة",
+      "kind": "village",
+      "lat": 36.2530546,
+      "lng": 9.1860745
+    },
+    {
+      "id": "osm:node:7867580434",
+      "name": "دوار أولاد بوصلاح",
+      "kind": "hamlet",
+      "lat": 36.2393997,
+      "lng": 9.183799
+    },
+    {
+      "id": "osm:node:7867580435",
+      "name": "دوار الحاج ضيف الله",
+      "kind": "hamlet",
+      "lat": 36.2367642,
+      "lng": 9.1665185
+    },
+    {
+      "id": "osm:node:7867580436",
+      "name": "الرزايقية",
+      "kind": "hamlet",
+      "lat": 36.2159819,
+      "lng": 9.1384398
+    },
+    {
+      "id": "osm:node:7867580437",
+      "name": "دوار أولاد رجب",
+      "kind": "hamlet",
+      "lat": 36.1931046,
+      "lng": 9.1314275
+    },
+    {
+      "id": "osm:node:7867580438",
+      "name": "دوار الرويسين",
+      "kind": "hamlet",
+      "lat": 36.1915777,
+      "lng": 9.1362977
+    },
+    {
+      "id": "osm:node:7867872724",
+      "name": "الصغايرية",
+      "kind": "hamlet",
+      "lat": 36.1753262,
+      "lng": 9.1547769
+    },
+    {
+      "id": "osm:node:7867872728",
+      "name": "أولاد سليط",
+      "kind": "hamlet",
+      "lat": 36.2526534,
+      "lng": 9.1106358
+    },
+    {
+      "id": "osm:node:7867872729",
+      "name": "الحساينية",
+      "kind": "hamlet",
+      "lat": 36.2612724,
+      "lng": 9.1161559
+    },
+    {
+      "id": "osm:node:7868848413",
+      "name": "أولاد عائشة",
+      "kind": "hamlet",
+      "lat": 34.7421582,
+      "lng": 11.1946303
+    },
+    {
+      "id": "osm:node:7875668083",
+      "name": "دوار مقورة",
+      "kind": "hamlet",
+      "lat": 36.5145352,
+      "lng": 10.6743245
+    },
+    {
+      "id": "osm:node:7875668092",
+      "name": "دوار البطين",
+      "kind": "hamlet",
+      "lat": 36.5022521,
+      "lng": 10.7036542
+    },
+    {
+      "id": "osm:node:7875668095",
+      "name": "دوار الولجة",
+      "kind": "hamlet",
+      "lat": 36.5765633,
+      "lng": 10.594289
+    },
+    {
+      "id": "osm:node:7875668096",
+      "name": "القبة",
+      "kind": "village",
+      "lat": 36.6003731,
+      "lng": 10.5840923
+    },
+    {
+      "id": "osm:node:7875668097",
+      "name": "المزنين",
+      "kind": "hamlet",
+      "lat": 36.6031928,
+      "lng": 10.6904667
+    },
+    {
+      "id": "osm:node:7875668098",
+      "name": "قبة لاغة",
+      "kind": "village",
+      "lat": 36.6158845,
+      "lng": 10.7150147
+    },
+    {
+      "id": "osm:node:7875711070",
+      "name": "غرداية",
+      "kind": "village",
+      "lat": 36.5475559,
+      "lng": 10.7154299
+    },
+    {
+      "id": "osm:node:7875711078",
+      "name": "الكنايس",
+      "kind": "hamlet",
+      "lat": 36.5193788,
+      "lng": 10.7866545
+    },
+    {
+      "id": "osm:node:7913117876",
+      "name": "الروايسية",
+      "kind": "hamlet",
+      "lat": 36.9431154,
+      "lng": 8.6758263
+    },
+    {
+      "id": "osm:node:7913218846",
+      "name": "البياضة",
+      "kind": "hamlet",
+      "lat": 36.920686,
+      "lng": 8.7019612
+    },
+    {
+      "id": "osm:node:7913334847",
+      "name": "الدورة",
+      "kind": "hamlet",
+      "lat": 36.926881,
+      "lng": 8.7428805
+    },
+    {
+      "id": "osm:node:7913334848",
+      "name": "برارم",
+      "kind": "hamlet",
+      "lat": 36.9344528,
+      "lng": 8.7511013
+    },
+    {
+      "id": "osm:node:7913334849",
+      "name": "الدوايدية",
+      "kind": "hamlet",
+      "lat": 36.9366867,
+      "lng": 8.7957903
+    },
+    {
+      "id": "osm:node:7913334850",
+      "name": "سيدي عمر",
+      "kind": "hamlet",
+      "lat": 36.9240855,
+      "lng": 8.7925953
+    },
+    {
+      "id": "osm:node:7938334020",
+      "name": "أولاد سليمان",
+      "kind": "village",
+      "lat": 34.8298106,
+      "lng": 9.3767845
+    },
+    {
+      "id": "osm:node:7951514917",
+      "name": "ودران",
+      "kind": "village",
+      "lat": 34.6693404,
+      "lng": 9.9365867
+    },
+    {
+      "id": "osm:node:7955459940",
+      "name": "القزقازية",
+      "kind": "hamlet",
+      "lat": 34.4703661,
+      "lng": 9.8736593
+    },
+    {
+      "id": "osm:node:7955471853",
+      "name": "الزعافرية",
+      "kind": "village",
+      "lat": 35.0345765,
+      "lng": 9.3263711
+    },
+    {
+      "id": "osm:node:8027679311",
+      "name": "حي الرياض",
+      "kind": "suburb",
+      "lat": 36.8351488,
+      "lng": 9.9832848
+    },
+    {
+      "id": "osm:node:8031782101",
+      "name": "أم هاني",
+      "kind": "village",
+      "lat": 37.1199793,
+      "lng": 9.8398607
+    },
+    {
+      "id": "osm:node:8032406625",
+      "name": "برج شلوف",
+      "kind": "village",
+      "lat": 37.2576523,
+      "lng": 9.7947502
+    },
+    {
+      "id": "osm:node:8032406649",
+      "name": "بني نافع",
+      "kind": "village",
+      "lat": 37.2612311,
+      "lng": 9.8150434
+    },
+    {
+      "id": "osm:node:8035791884",
+      "name": "الذواودة",
+      "kind": "village",
+      "lat": 37.0331728,
+      "lng": 9.4336813
+    },
+    {
+      "id": "osm:node:8035805791",
+      "name": "حي حشاد",
+      "kind": "neighbourhood",
+      "lat": 37.0641228,
+      "lng": 9.5968142
+    },
+    {
+      "id": "osm:node:8170684497",
+      "name": "الزوازي",
+      "kind": "village",
+      "lat": 35.3355184,
+      "lng": 10.8190217
+    },
+    {
+      "id": "osm:node:8589212728",
+      "name": "الجليدة",
+      "kind": "village",
+      "lat": 36.3713219,
+      "lng": 9.5560599
+    },
+    {
+      "id": "osm:node:8589212731",
+      "name": "وادي العرعار",
+      "kind": "village",
+      "lat": 36.3892965,
+      "lng": 9.4227612
+    },
+    {
+      "id": "osm:node:8646395782",
+      "name": "العضلة",
+      "kind": "village",
+      "lat": 34.9585377,
+      "lng": 9.2747567
+    },
+    {
+      "id": "osm:node:8675991629",
+      "name": "دار يوسف",
+      "kind": "village",
+      "lat": 35.928053,
+      "lng": 10.3469293
+    },
+    {
+      "id": "osm:node:8675991630",
+      "name": "أولاد الصلعاني",
+      "kind": "hamlet",
+      "lat": 35.9314037,
+      "lng": 10.3657756
+    },
+    {
+      "id": "osm:node:8708933589",
+      "name": "أولاد بوزيد",
+      "kind": "village",
+      "lat": 35.461121,
+      "lng": 10.3607664
+    },
+    {
+      "id": "osm:node:8718373495",
+      "name": "وادي الرخام",
+      "kind": "village",
+      "lat": 34.7727712,
+      "lng": 10.0121253
+    },
+    {
+      "id": "osm:node:8719488017",
+      "name": "بئر الوصفان",
+      "kind": "village",
+      "lat": 35.2032321,
+      "lng": 10.1484083
+    },
+    {
+      "id": "osm:node:8719488025",
+      "name": "جهينة",
+      "kind": "village",
+      "lat": 35.3079814,
+      "lng": 9.9583537
+    },
+    {
+      "id": "osm:node:8719488026",
+      "name": "لودي",
+      "kind": "hamlet",
+      "lat": 35.2543318,
+      "lng": 10.1377943
+    },
+    {
+      "id": "osm:node:9035062540",
+      "name": "المالحة",
+      "kind": "village",
+      "lat": 34.199605,
+      "lng": 9.9028812
+    },
+    {
+      "id": "osm:node:9039880669",
+      "name": "السلاطنية",
+      "kind": "hamlet",
+      "lat": 35.044035,
+      "lng": 9.2764955
+    },
+    {
+      "id": "osm:node:9040179233",
+      "name": "حي سلتان",
+      "kind": "neighbourhood",
+      "lat": 36.6940085,
+      "lng": 10.4132584
+    },
+    {
+      "id": "osm:node:9040329141",
+      "name": "التوتة",
+      "kind": "village",
+      "lat": 36.639363,
+      "lng": 10.471562
+    },
+    {
+      "id": "osm:node:9052831005",
+      "name": "حسي النور",
+      "kind": "hamlet",
+      "lat": 33.2731309,
+      "lng": 10.8031385
+    },
+    {
+      "id": "osm:node:9052889223",
+      "name": "وادي الربايع",
+      "kind": "hamlet",
+      "lat": 33.2009194,
+      "lng": 10.9417342
+    },
+    {
+      "id": "osm:node:9055379023",
+      "name": "الشعابنة",
+      "kind": "hamlet",
+      "lat": 35.27537,
+      "lng": 11.0579572
+    },
+    {
+      "id": "osm:node:9244088817",
+      "name": "حي منازل جربة",
+      "kind": "quarter",
+      "lat": 33.8150309,
+      "lng": 10.9886264
+    },
+    {
+      "id": "osm:node:9273035585",
+      "name": "الفرفار",
+      "kind": "hamlet",
+      "lat": 34.4609958,
+      "lng": 9.732129
+    },
+    {
+      "id": "osm:node:9324876242",
+      "name": "عجاج",
+      "kind": "village",
+      "lat": 32.8029434,
+      "lng": 10.6758007
+    },
+    {
+      "id": "osm:node:9347210382",
+      "name": "عمرة الجديدة",
+      "kind": "village",
+      "lat": 33.4313067,
+      "lng": 10.565757
+    },
+    {
+      "id": "osm:node:9347210387",
+      "name": "الصعدان",
+      "kind": "hamlet",
+      "lat": 33.4661247,
+      "lng": 10.6118384
+    },
+    {
+      "id": "osm:node:9363301703",
+      "name": "بن بشير",
+      "kind": "village",
+      "lat": 36.5705769,
+      "lng": 8.8562884
+    },
+    {
+      "id": "osm:node:9415158599",
+      "name": "حي الوردية",
+      "kind": "quarter",
+      "lat": 33.8048362,
+      "lng": 10.9841298
+    },
+    {
+      "id": "osm:node:9415158600",
+      "name": "حي الزياتين",
+      "kind": "quarter",
+      "lat": 33.8161665,
+      "lng": 10.9853347
+    },
+    {
+      "id": "osm:node:9415158601",
+      "name": "حي الأنوار",
+      "kind": "quarter",
+      "lat": 33.8019491,
+      "lng": 10.9871373
+    },
+    {
+      "id": "osm:node:9415158602",
+      "name": "حي الجرة",
+      "kind": "quarter",
+      "lat": 33.7818893,
+      "lng": 11.046579
+    },
+    {
+      "id": "osm:node:9772521629",
+      "name": "رقوبة",
+      "kind": "village",
+      "lat": 33.4570855,
+      "lng": 10.4343172
+    },
+    {
+      "id": "osm:node:9828158709",
+      "name": "شعبة الحوت",
+      "kind": "village",
+      "lat": 37.1488988,
+      "lng": 9.3373873
+    },
+    {
+      "id": "osm:node:9843640645",
+      "name": "العياطي",
+      "kind": "village",
+      "lat": 33.6224107,
+      "lng": 10.7171673
+    },
+    {
+      "id": "osm:node:9939322046",
+      "name": "الغويلات",
+      "kind": "village",
+      "lat": 36.0473749,
+      "lng": 10.2913031
+    },
+    {
+      "id": "osm:node:9945093900",
+      "name": "بني محمد",
+      "kind": "village",
+      "lat": 33.5724927,
+      "lng": 8.8865999
+    },
+    {
+      "id": "osm:node:9945140209",
+      "name": "منصورة",
+      "kind": "village",
+      "lat": 33.7255066,
+      "lng": 8.9369375
+    },
+    {
+      "id": "osm:node:9947246733",
+      "name": "جرسين",
+      "kind": "village",
+      "lat": 33.530208,
+      "lng": 8.8273725
+    },
+    {
+      "id": "osm:node:9949605492",
+      "name": "عين سليم",
+      "kind": "village",
+      "lat": 33.7330875,
+      "lng": 8.9035972
+    },
+    {
+      "id": "osm:node:9949645742",
+      "name": "بروكة",
+      "kind": "village",
+      "lat": 34.6570945,
+      "lng": 8.5789248
+    },
+    {
+      "id": "osm:node:9949758506",
+      "name": "العبابسة",
+      "kind": "village",
+      "lat": 34.7310502,
+      "lng": 8.9464786
+    },
+    {
+      "id": "osm:node:9952853123",
+      "name": "كنانة",
+      "kind": "village",
+      "lat": 35.9480309,
+      "lng": 10.3923359
+    },
+    {
+      "id": "osm:node:9953079730",
+      "name": "سيدي سعيدان",
+      "kind": "hamlet",
+      "lat": 36.0551026,
+      "lng": 10.2259365
+    },
+    {
+      "id": "osm:node:9985844506",
+      "name": "الفالتة",
+      "kind": "hamlet",
+      "lat": 35.2095751,
+      "lng": 9.437119
+    },
+    {
+      "id": "osm:node:9985876230",
+      "name": "الحسناوي",
+      "kind": "hamlet",
+      "lat": 35.4657355,
+      "lng": 9.2258463
+    },
+    {
+      "id": "osm:node:9988092251",
+      "name": "أولاد بعيوي",
+      "kind": "hamlet",
+      "lat": 35.6215772,
+      "lng": 9.5844369
+    },
+    {
+      "id": "osm:node:9988092280",
+      "name": "النقاز",
+      "kind": "hamlet",
+      "lat": 35.6138878,
+      "lng": 9.4800405
+    },
+    {
+      "id": "osm:node:9988409348",
+      "name": "الجمعة",
+      "kind": "village",
+      "lat": 35.8790894,
+      "lng": 9.1358476
+    },
+    {
+      "id": "osm:node:9988409351",
+      "name": "حوش الصفايا",
+      "kind": "hamlet",
+      "lat": 35.9090494,
+      "lng": 9.1362188
+    },
+    {
+      "id": "osm:node:9988859675",
+      "name": "قرية السعادة",
+      "kind": "suburb",
+      "lat": 36.2695219,
+      "lng": 8.8042007
+    },
+    {
+      "id": "osm:node:9989497150",
+      "name": "حي ملاك",
+      "kind": "suburb",
+      "lat": 34.7979292,
+      "lng": 10.8142829
+    },
+    {
+      "id": "osm:node:9990790989",
+      "name": "مركز بن حليمة",
+      "kind": "suburb",
+      "lat": 34.7675385,
+      "lng": 10.7084577
+    },
+    {
+      "id": "osm:node:9995234638",
+      "name": "الخيور",
+      "kind": "hamlet",
+      "lat": 35.1746655,
+      "lng": 10.5071787
+    },
+    {
+      "id": "osm:node:9995234639",
+      "name": "أولاد شريفة",
+      "kind": "hamlet",
+      "lat": 35.1866527,
+      "lng": 10.539297
+    }
+  ]
+}

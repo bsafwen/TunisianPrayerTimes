@@ -9,9 +9,21 @@ import java.time.temporal.ChronoField
 
 enum class ManualSilenceMode { UNTIL_STOPPED, DURATION, UNTIL_PRAYER }
 
+data class SavedLocationSelection(
+    val delegationId: Int,
+    val localityId: String?,
+    val name: String?,
+    val kind: String?,
+    val fromGps: Boolean,
+)
+
 object PrefsManager {
     private const val PREFS_NAME = "prayer_silence_prefs"
     private const val KEY_DELEGATION_ID = "delegation_id"
+    private const val KEY_LOCALITY_ID = "locality_id"
+    private const val KEY_LOCALITY_NAME = "locality_name"
+    private const val KEY_LOCALITY_KIND = "locality_kind"
+    private const val KEY_LOCATION_FROM_GPS = "location_from_gps"
     private const val KEY_ENABLED = "silence_enabled"
     private const val KEY_FIRST_LAUNCH = "first_launch_done"
     private const val KEY_AUTO_SILENCE_ACTIVE = "auto_silence_active"
@@ -43,7 +55,61 @@ object PrefsManager {
     }
 
     fun setDelegationId(context: Context, id: Int) {
-        prefs(context).edit().putInt(KEY_DELEGATION_ID, id).apply()
+        val settings = prefs(context)
+        val edit = settings.edit().putInt(KEY_DELEGATION_ID, id)
+        if (getDelegationId(context) != id) {
+            edit.remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME).remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS)
+        }
+        edit.apply()
+    }
+
+    fun getLocalityId(context: Context): String? = prefs(context).getString(KEY_LOCALITY_ID, null)
+
+    fun setLocality(context: Context, locality: Locality) {
+        prefs(context).edit()
+            .putInt(KEY_DELEGATION_ID, locality.delegationId)
+            .putString(KEY_LOCALITY_ID, locality.id)
+            .putString(KEY_LOCALITY_NAME, locality.name)
+            .putString(KEY_LOCALITY_KIND, locality.kind)
+            .putBoolean(KEY_LOCATION_FROM_GPS, false)
+            .apply()
+    }
+
+    fun clearLocality(context: Context) {
+        prefs(context).edit().remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME)
+            .remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS).apply()
+    }
+
+    /** The label and the timetable are independent results of the same GPS fix. */
+    fun setGpsLocation(context: Context, result: DelegationLocationResult.Success) {
+        prefs(context).edit()
+            .putInt(KEY_DELEGATION_ID, result.delegation.id)
+            .putString(KEY_LOCALITY_ID, result.locality?.id)
+            .putString(KEY_LOCALITY_NAME, result.locality?.name)
+            .putString(KEY_LOCALITY_KIND, result.locality?.kind)
+            .putBoolean(KEY_LOCATION_FROM_GPS, true)
+            .apply()
+    }
+
+    fun getLocationSelection(context: Context): SavedLocationSelection {
+        val values = prefs(context).all
+        return SavedLocationSelection(
+            delegationId = values[KEY_DELEGATION_ID] as? Int ?: DEFAULT_DELEGATION_ID,
+            localityId = values[KEY_LOCALITY_ID] as? String,
+            name = values[KEY_LOCALITY_NAME] as? String,
+            kind = values[KEY_LOCALITY_KIND] as? String,
+            fromGps = values[KEY_LOCATION_FROM_GPS] as? Boolean ?: false,
+        )
+    }
+
+    fun observeLocationSelection(context: Context, onChanged: () -> Unit): () -> Unit {
+        val settings = prefs(context)
+        val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS)
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            if (key == null || key in keys) onChanged()
+        }
+        settings.registerOnSharedPreferenceChangeListener(listener)
+        return { settings.unregisterOnSharedPreferenceChangeListener(listener) }
     }
 
     fun isEnabled(context: Context): Boolean {

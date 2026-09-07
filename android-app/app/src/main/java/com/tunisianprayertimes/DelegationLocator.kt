@@ -8,13 +8,17 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Looper
-import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.CurrentLocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import kotlinx.coroutines.withTimeoutOrNull
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 
@@ -77,7 +81,7 @@ internal fun isInsideTunisiaBounds(lat: Double, lng: Double): Boolean {
 }
 
 sealed interface DelegationLocationResult {
-    data class Success(val delegation: Delegation) : DelegationLocationResult
+    data class Success(val delegation: Delegation, val locality: Locality? = null) : DelegationLocationResult
     data object PermissionDenied : DelegationLocationResult
     data object LocationUnavailable : DelegationLocationResult
     data object NoDelegationFound : DelegationLocationResult
@@ -93,8 +97,6 @@ internal data class LocationPermissionState(
 }
 
 object DelegationLocator {
-    private const val TAG = "DelegationLocator"
-
     internal var locationProvider: DelegationLocationProvider = AndroidDelegationLocationProvider
 
     val requestedPermissions: Array<String> = arrayOf(
@@ -110,7 +112,7 @@ object DelegationLocator {
         val permissionState = locationPermissionState(context)
         if (!permissionState.hasAny) return null
 
-        return locationProvider.findCurrentLocation(context, permissionState)
+        return findCurrentLocation(context, permissionState)
     }
 
     /**
@@ -151,14 +153,13 @@ object DelegationLocator {
         if (location == null) return false
         if (!isUsableSilentUpdateLocation(location)) return false
 
-        val delegation = findDelegationForLocation(context, location) ?: return false
-
+        val result = withContext(Dispatchers.IO) {
+            resolveGpsLocation(context, location.latitude, location.longitude)
+        } as? DelegationLocationResult.Success ?: return false
         val currentId = PrefsManager.getDelegationId(context)
-        if (delegation.id == currentId) return false
-
-        Log.d(TAG, "Delegation changed: $currentId -> ${delegation.id} (${delegation.nomAr})")
-        PrefsManager.setDelegationId(context, delegation.id)
-        return true
+        // Refresh the neighborhood even when travel stays within one timetable's area.
+        PrefsManager.setGpsLocation(context, result)
+        return result.delegation.id != currentId
     }
 
     suspend fun detectNearestDelegation(context: Context): DelegationLocationResult {
@@ -170,17 +171,9 @@ object DelegationLocator {
         val location = findCurrentLocation(context, permissionState)
             ?: return DelegationLocationResult.LocationUnavailable
 
-        val nearest = findDelegationForLocation(context, location)
-
-        if (nearest != null) {
-            return DelegationLocationResult.Success(nearest)
+        return withContext(Dispatchers.IO) {
+            resolveGpsLocation(context, location.latitude, location.longitude)
         }
-
-        if (!isInsideTunisiaBounds(location.latitude, location.longitude)) {
-            return DelegationLocationResult.OutsideTunisia
-        }
-
-        return DelegationLocationResult.NoDelegationFound
     }
 
     internal fun resetLocationProviderForTests() {
@@ -192,30 +185,25 @@ object DelegationLocator {
         permissionState: LocationPermissionState
     ): Location? {
         return locationProvider.findCurrentLocation(context, permissionState)
+            ?.takeIf { isUsableLocation(it) }
     }
 
-    private fun findDelegationForLocation(context: Context, location: Location): Delegation? {
-        val lat = location.latitude
-        val lng = location.longitude
-
-        if (!isInsideTunisiaBounds(lat, lng)) return null
-
-        return DelegationBoundaryRepository.findDelegationForLocation(
-            context = context,
-            lat = lat,
-            lng = lng
-        ) ?: GouvernoratRepository.findNearestDelegation(
-            context = context,
-            lat = lat,
-            lng = lng
-        )
+    internal fun resolveGpsLocation(context: Context, lat: Double, lng: Double): DelegationLocationResult {
+        if (!validCoordinates(lat, lng)) return DelegationLocationResult.LocationUnavailable
+        val index = runCatching { NeighborhoodRepository.load(context) }.getOrNull()
+        val insideCountry = index?.isInsideCountry(lat, lng) ?: isInsideTunisiaBounds(lat, lng)
+        if (!insideCountry) return DelegationLocationResult.OutsideTunisia
+        val nearest = GouvernoratRepository.findNearestDelegation(context, lat, lng)
+            ?: return DelegationLocationResult.NoDelegationFound
+        // Containment determines only the user's visible location. Timetables are
+        // selected by distance from the GPS fix, never by an administrative alias.
+        val locality = index?.find(lat, lng)?.copy(delegationId = nearest.id)
+        return DelegationLocationResult.Success(nearest, locality)
     }
 
     private fun isUsableSilentUpdateLocation(location: Location): Boolean {
-        val ageMs = System.currentTimeMillis() - location.time
-        if (location.time <= 0L || ageMs < 0L || ageMs > MAX_LAST_LOCATION_AGE_MS) return false
-        if (location.hasAccuracy() && location.accuracy > MAX_SILENT_UPDATE_ACCURACY_METERS) return false
-        return true
+        return isUsableLocation(location) && location.hasAccuracy() &&
+            location.accuracy <= MAX_SILENT_UPDATE_ACCURACY_METERS
     }
 }
 
@@ -249,16 +237,20 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
         context: Context,
         permissionState: LocationPermissionState
     ): Location? {
-        return runCatching { lastFusedLocation(context) }.getOrNull()
-            ?: recentKnownLocation(context, permissionState)
+        return chooseBestLocation(listOfNotNull(
+            runCatching { lastFusedLocation(context) }.getOrNull(),
+            recentKnownLocation(context, permissionState)
+        ))
     }
 
     override suspend fun findFreshLocation(
         context: Context,
         permissionState: LocationPermissionState
     ): Location? {
-        return runCatching { currentFusedLocation(context, permissionState) }.getOrNull()
-            ?: recentKnownLocation(context, permissionState)
+        return chooseBestLocation(listOfNotNull(
+            runCatching { currentFusedLocation(context, permissionState) }.getOrNull(),
+            recentKnownLocation(context, permissionState)
+        ))
     }
 
     @SuppressLint("MissingPermission")
@@ -266,37 +258,22 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
         context: Context,
         permissionState: LocationPermissionState
     ): Location? {
-        val candidates = mutableListOf<Location>()
-
-        // Try fused location (may return a cached/coarse fix)
-        runCatching { currentFusedLocation(context, permissionState) }
-            .getOrNull()
-            ?.let { candidates.add(it) }
-
-        // Always also try NETWORK_PROVIDER — it consistently returns
-        // a fresh, accurate fix that is good enough for delegation matching.
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val networkProvider = LocationManager.NETWORK_PROVIDER
-        if (isProviderEnabled(locationManager, networkProvider) && permissionState.hasAny) {
-            currentProviderLocation(locationManager, networkProvider)
-                ?.let { candidates.add(it) }
+        val knownLocation = freshestKnownLocation(locationManager, permissionState)
+        // Fine GPS must get a chance even when fused/network returns a coarse fix.
+        // The requests run together, keeping the live lookup within one timeout.
+        val liveLocations = coroutineScope {
+            val requests = mutableListOf(async {
+                runCatching { currentFusedLocation(context, permissionState) }.getOrNull()
+            })
+            fallbackProviders(permissionState)
+                .filter { isProviderEnabled(locationManager, it) }
+                .forEach { provider ->
+                    requests += async { currentProviderLocation(locationManager, provider) }
+                }
+            requests.awaitAll().filterNotNull()
         }
-
-        // If we have candidates, pick the most accurate one
-        if (candidates.isNotEmpty()) {
-            return chooseBestLocation(candidates)
-        }
-
-        // Fall back to other providers (GPS, passive)
-        for (provider in fallbackProviders(permissionState)) {
-            if (provider == networkProvider) continue // already tried
-            if (!isProviderEnabled(locationManager, provider)) continue
-
-            val liveLocation = currentProviderLocation(locationManager, provider)
-            if (liveLocation != null) return liveLocation
-        }
-
-        return freshestKnownLocation(locationManager, permissionState)
+        return chooseBestLocation(liveLocations + listOfNotNull(knownLocation))
     }
 
     @SuppressLint("MissingPermission")
@@ -378,6 +355,7 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
                 suspendCancellableCoroutine { continuation ->
                     val currentListener = object : LocationListener {
                         override fun onLocationChanged(location: Location) {
+                            if (!isUsableLocation(location)) return
                             runCatching { locationManager.removeUpdates(this) }
                             if (continuation.isActive) {
                                 continuation.resume(location)
@@ -427,13 +405,11 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
         locationManager: LocationManager,
         permissionState: LocationPermissionState
     ): Location? {
-        val now = System.currentTimeMillis()
         val candidates = fallbackProviders(permissionState)
             .filter { isProviderEnabled(locationManager, it) }
             .mapNotNull { provider ->
                 runCatching { locationManager.getLastKnownLocation(provider) }.getOrNull()
             }
-            .filter { location -> now - location.time <= MAX_LAST_LOCATION_AGE_MS }
 
         return chooseBestLocation(candidates)
     }
@@ -473,11 +449,21 @@ internal fun fallbackProviders(permissionState: LocationPermissionState): List<S
     }
 }
 
-internal fun chooseBestLocation(candidates: List<Location>): Location? {
+internal fun isUsableLocation(location: Location, nowMs: Long = System.currentTimeMillis()): Boolean {
+    if (!validCoordinates(location.latitude, location.longitude)) return false
+    if (location.time <= 0L || location.time > nowMs || nowMs - location.time > MAX_LAST_LOCATION_AGE_MS) return false
+    // An omitted accuracy is unknown; a supplied nonpositive/nonfinite value is invalid.
+    return !location.hasAccuracy() || (location.accuracy.isFinite() && location.accuracy > 0f)
+}
+
+internal fun chooseBestLocation(
+    candidates: List<Location>,
+    nowMs: Long = System.currentTimeMillis()
+): Location? {
     return chooseBestCandidate(
-        candidates = candidates,
+        candidates = candidates.filter { isUsableLocation(it, nowMs) },
         timeSelector = { it.time },
-        accuracySelector = { it.accuracy }
+        accuracySelector = { if (it.hasAccuracy()) it.accuracy else Float.POSITIVE_INFINITY }
     )
 }
 
@@ -488,7 +474,9 @@ internal fun <T> chooseBestCandidate(
 ): T? {
     return candidates.maxWithOrNull { left, right ->
         // Prefer better accuracy (lower value) first; break ties with recency
-        val accuracyComparison = accuracySelector(right).compareTo(accuracySelector(left))
+        val leftAccuracy = accuracySelector(left).takeIf { it.isFinite() && it > 0f } ?: Float.POSITIVE_INFINITY
+        val rightAccuracy = accuracySelector(right).takeIf { it.isFinite() && it > 0f } ?: Float.POSITIVE_INFINITY
+        val accuracyComparison = rightAccuracy.compareTo(leftAccuracy)
         if (accuracyComparison != 0) {
             accuracyComparison
         } else {

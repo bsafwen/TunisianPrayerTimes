@@ -3,7 +3,7 @@ set -euo pipefail
 
 # ──────────────────────────────────────────────
 # release.sh — Bump version, commit, tag, push → CI builds & publishes
-# Usage:  ./release.sh "Short description of changes"
+# Usage:  ./release.sh [--skip-local-build] "Short description of changes"
 #
 # This script bumps the Android version, commits, tags, and pushes.
 # The GitHub Actions release workflow (triggered by push to main with
@@ -16,9 +16,16 @@ cd "$SCRIPT_DIR"
 APP_DIR="$SCRIPT_DIR/android-app"
 GRADLE_FILE="$APP_DIR/app/build.gradle.kts"
 
+# ── Allow CI to build and sign when no local signing setup is available ──
+SKIP_LOCAL_BUILD=false
+if [[ "${1:-}" == "--skip-local-build" ]]; then
+  SKIP_LOCAL_BUILD=true
+  shift
+fi
+
 # ── Require a release message (English only) ─
 if [[ $# -lt 1 ]]; then
-  echo "Usage: $0 \"Release description (English only)\""
+  echo "Usage: $0 [--skip-local-build] \"Release description (English only)\""
   exit 1
 fi
 RELEASE_MSG="$1"
@@ -47,8 +54,10 @@ echo "╚═══════════════════════�
 echo ""
 
 # ── Bump version in build.gradle.kts ─────────
-sed -i '' "s/versionCode = ${CURRENT_CODE}/versionCode = ${NEXT_CODE}/" "$GRADLE_FILE"
-sed -i '' "s/versionName = \"${CURRENT_NAME}\"/versionName = \"${NEXT_NAME}\"/" "$GRADLE_FILE"
+sed -e "s/versionCode = ${CURRENT_CODE}/versionCode = ${NEXT_CODE}/" \
+    -e "s/versionName = \"${CURRENT_NAME}\"/versionName = \"${NEXT_NAME}\"/" \
+    "$GRADLE_FILE" > "$GRADLE_FILE.tmp"
+mv "$GRADLE_FILE.tmp" "$GRADLE_FILE"
 echo "✓ Bumped version in build.gradle.kts"
 
 # ── Build signed AAB locally (only if android-app source changed, not just version bump) ──
@@ -62,7 +71,10 @@ elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.k
     ANDROID_CHANGED=true
 fi
 
-if [[ "$ANDROID_CHANGED" == "false" ]]; then
+if [[ "$SKIP_LOCAL_BUILD" == "true" ]]; then
+    echo ""
+    echo "Skipping local AAB build; GitHub Actions will build and sign the release."
+elif [[ "$ANDROID_CHANGED" == "false" ]]; then
     echo ""
     echo "⏭ No android-app changes since $LAST_TAG — skipping AAB build."
 else

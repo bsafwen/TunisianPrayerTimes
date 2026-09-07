@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "bouarada-archive-2018",
+      "provider": "Commune de Bouarada / OpenBaladiati",
+      "catalogUrl": "https://catalog.data.gov.tn/fr/dataset/quartiers-dans-la-zone-municipale-de-bouarada",
+      "url": "http://openbaladiati.tn/dataset/a444cad1-9911-40b0-896c-ee070794132e/resource/0b6b7ff9-e6b2-4448-a9ff-7de6839a419a/download/repartition_quarties.geojson",
+      "archiveUrl": "https://web.archive.org/web/20180618182551id_/http://openbaladiati.tn:80/dataset/a444cad1-9911-40b0-896c-ee070794132e/resource/0b6b7ff9-e6b2-4448-a9ff-7de6839a419a/download/repartition_quarties.geojson",
+      "archiveTimestamp": "20180618182551",
+      "license": "CC-BY (version unspecified by catalog)",
+      "catalogLicense": "cc-by",
+      "licenseMetadataUrl": "https://catalog.data.gov.tn/fr/api/3/action/package_show?id=quartiers-dans-la-zone-municipale-de-bouarada",
+      "licenseCheckedDate": "2026-09-06",
+      "currency": "Archived in 2018; current municipal boundaries have not been independently certified.",
+      "file": "sources/bouarada-20180618.geojson",
+      "sha256": "861f15e4dfd4ce83e6f670ed29560329b7ebee2ed6b09c5793cc2bac98c3e886",
+      "featureCount": 21,
+      "idPrefix": "municipal:bouarada:",
+      "kindOverrides": {"cite_20": "locality"}
+    }
+  ]
+}

@@ -73,8 +73,8 @@ object GouvernoratRepository {
     /** Find the nearest available delegation to the given coordinates using Haversine distance. */
     fun findNearestDelegation(context: Context, lat: Double, lng: Double): Delegation? {
         return loadAllDelegations(context)
-            .filter { it.lat != 0.0 && it.lng != 0.0 }
-            .minByOrNull { haversineKm(lat, lng, it.lat, it.lng) }
+            .filter { it.lat != 0.0 && it.lng != 0.0 && validCoordinates(it.lat, it.lng) }
+            .minWithOrNull(compareBy<Delegation> { haversineKm(lat, lng, it.lat, it.lng) }.thenBy { it.id })
     }
 }
 
