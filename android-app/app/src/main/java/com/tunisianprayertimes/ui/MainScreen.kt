@@ -89,6 +89,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -144,6 +145,10 @@ import com.tunisianprayertimes.DelegationLocationResult
 import com.tunisianprayertimes.DelegationLocator
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.GouvernoratRepository
+import com.tunisianprayertimes.Locality
+import com.tunisianprayertimes.LocalityRepository
+import com.tunisianprayertimes.normalizeLocalitySearch
+import com.tunisianprayertimes.withAvailablePrayerSource
 import com.tunisianprayertimes.ManualSilenceMode
 import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.MainTabNavigation
@@ -206,6 +211,8 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -354,6 +361,14 @@ fun MainScreen(
         mutableStateOf(PrefsManager.isAutoLocationUpdateEnabled(context))
     }
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
+    DisposableEffect(context) {
+        // Background location updates must refresh the timetable alongside the label.
+        val unsubscribe = PrefsManager.observeLocationSelection(context) {
+            delegationId = PrefsManager.getDelegationId(context)
+        }
+        delegationId = PrefsManager.getDelegationId(context)
+        onDispose { unsubscribe() }
+    }
     var manualSilenceMode by rememberSaveable { mutableStateOf(PrefsManager.getManualSilenceMode(context)) }
     var manualTargetPrayer by rememberSaveable {
         mutableStateOf(
@@ -1413,11 +1428,30 @@ private fun LocationPickerCard(
     onOutsideTunisia: () -> Unit = {}
 ) {
     val context = LocalContext.current
-    val gouvernorats = remember { GouvernoratRepository.loadAll(context) }
     val allDelegations = remember { GouvernoratRepository.loadAllDelegations(context) }
     val availableIds = remember { allDelegations.map { it.id }.toSet() }
+    val gouvernorats = remember { GouvernoratRepository.loadAll(context) }
+    val delegationRows = remember(allDelegations) {
+        gouvernorats.flatMap { gov ->
+            gov.delegations.filter { it.id in availableIds }.map { d ->
+                Locality("delegation:${d.id}", d.nomAr, d.nomAr, gov.id, d.id,
+                    normalizeLocalitySearch("${d.nomAr} ${d.nomFr} ${d.nomEn} ${gov.nomAr} ${gov.nomFr} ${gov.nomEn}"))
+            }
+        }
+    }
+    // Prepare names while the main screen is visible; opening the sheet never waits for polygons.
+    val pickerCatalog by produceState(delegationRows, allDelegations) {
+        value = withContext(Dispatchers.Default) { LocalityRepository.loadAvailable(context, allDelegations) }
+    }
     val savedDelegation = remember(delegationId) { GouvernoratRepository.findDelegationById(context, delegationId) }
 
+    var selectedLocation by remember { mutableStateOf(PrefsManager.getLocationSelection(context)) }
+    DisposableEffect(context) {
+        val unsubscribe = PrefsManager.observeLocationSelection(context) {
+            selectedLocation = PrefsManager.getLocationSelection(context)
+        }
+        onDispose { unsubscribe() }
+    }
     var showSheet by remember { mutableStateOf(false) }
     var locating by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
@@ -1439,6 +1473,8 @@ private fun LocationPickerCard(
                     }
                     AnalyticsTracker.markDelegationSource(context, "gps_success")
                     onDelegationSelected(result.delegation)
+                    PrefsManager.setGpsLocation(context, result)
+                    selectedLocation = PrefsManager.getLocationSelection(context)
                 }
                 DelegationLocationResult.PermissionDenied -> {
                     AnalyticsTracker.permissionStepResult(
@@ -1555,7 +1591,9 @@ private fun LocationPickerCard(
                 )
                 Spacer(Modifier.width(12.dp))
                 Text(
-                    text = savedDelegation?.displayName()
+                    text = selectedLocation.name
+                        ?: if (selectedLocation.fromGps) stringResource(R.string.location_current_position)
+                        else savedDelegation?.displayName()
                         ?: stringResource(R.string.hint_search_delegation),
                     fontSize = 14.sp,
                     color = if (savedDelegation != null) TextDark else TextMuted,
@@ -1595,19 +1633,33 @@ private fun LocationPickerCard(
                     )
                 }
             }
+            if (selectedLocation.fromGps && selectedLocation.name == null) {
+                Text(
+                    text = stringResource(R.string.location_neighborhood_unavailable),
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    modifier = Modifier.padding(top = 6.dp),
+                )
+            }
         }
     }
 
     if (showSheet) {
-        DelegationPickerSheet(
+        LocalityPickerSheet(
+            catalog = pickerCatalog,
             gouvernorats = gouvernorats,
-            availableIds = availableIds,
-            currentDelegationId = delegationId,
+            selectedId = selectedLocation.localityId ?: if (selectedLocation.fromGps) "" else "delegation:$delegationId",
             onDismiss = { showSheet = false },
-            onSelect = { delegation ->
-                showSheet = false
-                AnalyticsTracker.markDelegationSource(context, "manual")
-                onDelegationSelected(delegation)
+            onSelect = { locality ->
+                val mapped = withAvailablePrayerSource(locality, allDelegations)
+                val delegation = mapped?.let { selection -> allDelegations.firstOrNull { it.id == selection.delegationId } }
+                if (delegation != null) {
+                    showSheet = false
+                    AnalyticsTracker.markDelegationSource(context, "manual")
+                    onDelegationSelected(delegation)
+                    PrefsManager.setLocality(context, mapped)
+                    selectedLocation = PrefsManager.getLocationSelection(context)
+                }
             }
         )
     }
@@ -1626,201 +1678,6 @@ internal fun delegationSearchScore(delegation: Delegation, terms: List<String>):
         names.any { it.startsWith(query) } -> 3
         names.any { n -> terms.any { n.contains(it) } } -> 2
         else -> 0
-    }
-}
-
-/** Flat list item: either a gouvernorat header or a delegation row. */
-private sealed class PickerItem {
-    data class Header(val govName: String) : PickerItem()
-    data class DelegationRow(val delegation: Delegation, val isSelected: Boolean) : PickerItem()
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun DelegationPickerSheet(
-    gouvernorats: List<Gouvernorat>,
-    availableIds: Set<Int>,
-    currentDelegationId: Int,
-    onDismiss: () -> Unit,
-    onSelect: (Delegation) -> Unit
-) {
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    var searchText by rememberSaveable { mutableStateOf("") }
-    val focusRequester = remember { FocusRequester() }
-    val listState = rememberLazyListState()
-
-    // Build flat list of headers + delegation rows, filtering by search
-    val items by remember(searchText) {
-        derivedStateOf {
-            val terms = searchText.lowercase().trim().split(" ").filter { it.isNotEmpty() }
-            val result = mutableListOf<PickerItem>()
-            gouvernorats.forEach { gov ->
-                val govSearchable = "${gov.nomFr} ${gov.nomAr} ${gov.nomEn}".lowercase()
-                val govMatches = terms.isEmpty() || terms.all { govSearchable.contains(it) }
-                val filtered = gov.delegations
-                    .filter { it.id in availableIds }
-                    .filter { d ->
-                        if (terms.isEmpty()) true
-                        else if (govMatches) true
-                        else terms.all { term -> d.searchableText().contains(term) }
-                    }
-                    .let { list ->
-                        if (terms.isEmpty()) list
-                        else list.sortedByDescending { delegationSearchScore(it, terms) }
-                    }
-                if (filtered.isNotEmpty()) {
-                    result.add(PickerItem.Header(gov.nomAr))
-                    filtered.forEach { d ->
-                        result.add(PickerItem.DelegationRow(d, d.id == currentDelegationId))
-                    }
-                }
-            }
-            result as List<PickerItem>
-        }
-    }
-
-    // Scroll to selected delegation on first open
-    LaunchedEffect(Unit) {
-        val idx = items.indexOfFirst { it is PickerItem.DelegationRow && it.isSelected }
-        if (idx > 0) listState.scrollToItem((idx - 1).coerceAtLeast(0))
-    }
-
-    // Scroll to top when search text changes
-    LaunchedEffect(searchText) {
-        if (searchText.isNotEmpty()) listState.scrollToItem(0)
-    }
-
-    // Auto-focus search field
-    LaunchedEffect(Unit) {
-        try { focusRequester.requestFocus() } catch (_: Exception) {}
-    }
-
-    ModalBottomSheet(
-        onDismissRequest = onDismiss,
-        sheetState = sheetState,
-        containerColor = Color.White,
-        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .navigationBarsPadding()
-        ) {
-            // Search bar
-            OutlinedCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                shape = RoundedCornerShape(10.dp),
-                border = androidx.compose.foundation.BorderStroke(1.dp, GoldLight)
-            ) {
-                BasicTextField(
-                    value = searchText,
-                    onValueChange = { searchText = it },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 14.dp, vertical = 12.dp)
-                        .focusRequester(focusRequester),
-                    textStyle = TextStyle(
-                        fontSize = 15.sp,
-                        color = TextDark,
-                        textAlign = TextAlign.Start
-                    ),
-                    singleLine = true,
-                    decorationBox = { innerTextField ->
-                        if (searchText.isEmpty()) {
-                            Text(
-                                text = stringResource(R.string.hint_search_delegation),
-                                fontSize = 15.sp,
-                                color = TextMuted
-                            )
-                        }
-                        innerTextField()
-                    }
-                )
-            }
-
-            Spacer(Modifier.height(8.dp))
-
-            if (items.isEmpty()) {
-                // No results
-                Text(
-                    text = "لا توجد نتائج",
-                    fontSize = 14.sp,
-                    color = TextMuted,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(32.dp),
-                    textAlign = TextAlign.Center
-                )
-            } else {
-                // Grouped delegation list — fill remaining space
-                LazyColumn(
-                    state = listState,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
-                    items(
-                        count = items.size,
-                        key = { i ->
-                            when (val item = items[i]) {
-                                is PickerItem.Header -> "h_${item.govName}"
-                                is PickerItem.DelegationRow -> item.delegation.id
-                            }
-                        }
-                    ) { index ->
-                        when (val item = items[index]) {
-                            is PickerItem.Header -> {
-                                Text(
-                                    text = item.govName,
-                                    fontSize = 13.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = GreenPrimary,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .background(BgCream)
-                                        .padding(horizontal = 20.dp, vertical = 8.dp)
-                                )
-                            }
-                            is PickerItem.DelegationRow -> {
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .clickable { onSelect(item.delegation) }
-                                        .background(
-                                            if (item.isSelected) GoldLight.copy(alpha = 0.2f)
-                                            else Color.Transparent
-                                        )
-                                        .padding(horizontal = 28.dp, vertical = 12.dp),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Text(
-                                        text = item.delegation.nomAr,
-                                        fontSize = 15.sp,
-                                        color = if (item.isSelected) GreenPrimaryDark else TextDark,
-                                        fontWeight = if (item.isSelected) FontWeight.Bold else FontWeight.Normal
-                                    )
-                                    if (item.isSelected) {
-                                        Icon(
-                                            painter = painterResource(R.drawable.ic_check),
-                                            contentDescription = null,
-                                            tint = GreenPrimary,
-                                            modifier = Modifier.size(18.dp),
-                                        )
-                                    }
-                                }
-                                HorizontalDivider(
-                                    color = Divider,
-                                    modifier = Modifier.padding(horizontal = 20.dp)
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -5170,6 +5027,7 @@ private fun PrayerRow(
             softWrap = false,
             autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
             modifier = Modifier
+                .testTag("prayer_time_${prayer.name}")
                 .weight(1.5f)
                 .then(
                     if (onPrayerTimeClick != null) Modifier
@@ -6785,4 +6643,3 @@ private fun formatTimeOfDay(targetTimeInMillis: Long): String {
         calendar.get(Calendar.MINUTE)
     )
 }
-

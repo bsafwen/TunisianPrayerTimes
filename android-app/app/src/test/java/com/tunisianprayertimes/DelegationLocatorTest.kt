@@ -64,6 +64,135 @@ class DelegationLocatorTest {
     }
 
     @Test
+    fun `GPS button rejects stale future and malformed fixes from provider`() = runBlocking {
+        val invalidLocations = listOf(
+            mouroujLocation(ageMs = 10 * 60 * 1_000L),
+            mouroujLocation(ageMs = -60_000L),
+            mouroujLocation().apply { time = 0L },
+            mouroujLocation().apply { latitude = Double.NaN },
+            mouroujLocation().apply { longitude = Double.POSITIVE_INFINITY },
+            mouroujLocation().apply { latitude = 91.0 },
+            mouroujLocation(accuracyMeters = Float.NaN),
+            mouroujLocation(accuracyMeters = Float.POSITIVE_INFINITY),
+            mouroujLocation(accuracyMeters = -1f),
+            mouroujLocation(accuracyMeters = 0f)
+        )
+        invalidLocations.forEach { invalid ->
+            DelegationLocator.locationProvider = FakeLocationProvider(invalid)
+            assertEquals(DelegationLocationResult.LocationUnavailable, DelegationLocator.detectNearestDelegation(context))
+            assertNull(DelegationLocator.detectCurrentLocation(context))
+        }
+    }
+
+    @Test
+    fun `silent updates keep saved selection when accuracy is unknown or invalid`() = runBlocking {
+        PrefsManager.setDelegationId(context, 386)
+        val invalidLocations = listOf(
+            mouroujLocation().apply { removeAccuracy() },
+            mouroujLocation(accuracyMeters = Float.NaN),
+            mouroujLocation(accuracyMeters = Float.POSITIVE_INFINITY),
+            mouroujLocation(accuracyMeters = 0f),
+            mouroujLocation(ageMs = -60_000L),
+            mouroujLocation().apply { longitude = Double.NaN }
+        )
+        invalidLocations.forEach { invalid ->
+            DelegationLocator.locationProvider = FakeLocationProvider(invalid)
+            assertFalse(DelegationLocator.updateDelegationFromLastLocation(context))
+            assertFalse(DelegationLocator.updateDelegationFromCurrentLocation(context))
+            assertEquals(386, PrefsManager.getDelegationId(context))
+            assertFalse(PrefsManager.getLocationSelection(context).fromGps)
+        }
+    }
+
+    @Test
+    fun `best location ignores invalid fixes before comparing accuracy`() {
+        val now = System.currentTimeMillis()
+        val usable = mouroujLocation(accuracyMeters = 40f).apply { time = now - 1_000L }
+        val rejected = listOf(
+            mouroujLocation(accuracyMeters = 1f).apply { time = now - 300_001L },
+            mouroujLocation(accuracyMeters = 1f).apply { time = now + 1L },
+            mouroujLocation(accuracyMeters = 1f).apply { time = 0L },
+            mouroujLocation(accuracyMeters = 1f).apply { time = now; latitude = Double.NaN },
+            mouroujLocation(accuracyMeters = Float.NaN).apply { time = now },
+            mouroujLocation(accuracyMeters = 0f).apply { time = now }
+        )
+        assertEquals(usable, chooseBestLocation(rejected + usable, now))
+        assertNull(chooseBestLocation(rejected, now))
+    }
+
+    @Test
+    fun `unknown accuracy ranks after a usable measured accuracy`() {
+        val now = System.currentTimeMillis()
+        val unknown = mouroujLocation().apply { time = now; removeAccuracy() }
+        val measured = mouroujLocation(accuracyMeters = 1_000f).apply { time = now - 1_000L }
+        assertEquals(measured, chooseBestLocation(listOf(unknown, measured), now))
+        assertEquals(unknown, chooseBestLocation(listOf(unknown), now))
+    }
+
+    @Test
+    fun `known fine GPS beats coarse network fix within usable age window`() {
+        val now = System.currentTimeMillis()
+        val fine = Location(LocationManager.GPS_PROVIDER).apply {
+            latitude = 36.8640
+            longitude = 10.1647
+            time = now - 10_000L
+            accuracy = 8f
+        }
+        val coarse = Location(LocationManager.NETWORK_PROVIDER).apply {
+            latitude = 36.88
+            longitude = 10.18
+            time = now
+            accuracy = 2_000f
+        }
+        assertEquals(fine, chooseBestLocation(listOf(coarse, fine), now))
+        val result = DelegationLocator.resolveGpsLocation(context, fine.latitude, fine.longitude)
+            as DelegationLocationResult.Success
+        assertEquals("النصر 2", result.locality?.name)
+    }
+
+    @Test
+    fun `GPS returns neighborhood label and independently nearest timetable`() {
+        val result = DelegationLocator.resolveGpsLocation(context, 36.8428, 10.1465)
+            as DelegationLocationResult.Success
+        assertEquals("المنزه 9 أ", result.locality?.name)
+        assertEquals(GouvernoratRepository.findNearestDelegation(context, 36.8428, 10.1465)?.id, result.delegation.id)
+        assertEquals(result.delegation.id, result.locality?.delegationId)
+    }
+
+    @Test
+    fun `GPS button obtains a named polygon from device coordinates`() = runBlocking {
+        DelegationLocator.locationProvider = FakeLocationProvider(testLocation(36.8640, 10.1647))
+        val result = DelegationLocator.detectNearestDelegation(context) as DelegationLocationResult.Success
+        assertEquals("النصر 2", result.locality?.name)
+        PrefsManager.setGpsLocation(context, result)
+        assertEquals("النصر 2", PrefsManager.getLocationSelection(context).name)
+        assertTrue(PrefsManager.getLocationSelection(context).fromGps)
+    }
+
+    @Test
+    fun `moving between neighborhoods updates label even when timetable does not change`() = runBlocking {
+        DelegationLocator.locationProvider = FakeLocationProvider(testLocation(36.810562, 10.146875))
+        DelegationLocator.updateDelegationFromLastLocation(context)
+        assertEquals("بوشوشة", PrefsManager.getLocationSelection(context).name)
+        assertEquals(394, PrefsManager.getDelegationId(context))
+        DelegationLocator.locationProvider = FakeLocationProvider(testLocation(36.805274, 10.126553))
+        assertFalse(DelegationLocator.updateDelegationFromLastLocation(context))
+        assertEquals("خزندار", PrefsManager.getLocationSelection(context).name)
+        assertEquals(394, PrefsManager.getDelegationId(context))
+    }
+
+    @Test
+    fun `GPS without neighborhood geometry clears stale neighborhood label`() {
+        PrefsManager.setLocality(context, LocalityRepository.loadAll(context).first())
+        val source = GouvernoratRepository.loadAllDelegations(context).first()
+        PrefsManager.setGpsLocation(context, DelegationLocationResult.Success(source))
+        assertNull(PrefsManager.getLocationSelection(context).name)
+        assertNull(PrefsManager.getLocalityId(context))
+        assertTrue(PrefsManager.getLocationSelection(context).fromGps)
+        assertEquals(source.id, PrefsManager.getDelegationId(context))
+    }
+
+    @Test
     fun `silent update ignores low accuracy location`() = runBlocking {
         PrefsManager.setDelegationId(context, 386)
         DelegationLocator.locationProvider = FakeLocationProvider(

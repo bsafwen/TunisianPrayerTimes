@@ -73,7 +73,7 @@
     <string name="ramadan_active">رمضان — إسكات العشاء ممتد إلى ساعة ونصف 🌙</string>
     <string name="location_title">الموقع</string>
     <string name="label_delegation">المعتمدية</string>
-    <string name="hint_search_delegation">ابحث عن معتمدية…</string>
+    <string name="hint_search_delegation">ابحث عن حيّ أو منطقة أو معتمدية…</string>
     <string name="label_change">تغيير</string>
     <string name="gps_auto_detect">تحديد الموقع تلقائيًا 📍</string>
     <string name="gps_locating">جاري تحديد الموقع…</string>
@@ -448,4 +448,7 @@
     <string name="wake_editor_silence_toggle">إسكات الهاتف حتى يرنّ المنبه</string>
     <string name="wake_editor_silence_hint">سَيَتِمُّ إسْكَاتُ الهاتف عند الحفظ ويعود للوضع الطبيعي عند رنين المنبه</string>
 
+    <string name="locality_no_results">لم نجد هذه المنطقة في القائمة. جرّب اسم المعتمدية أو ارجع واستعمل تحديد الموقع.</string>
+    <string name="location_current_position">موقعك الحالي</string>
+    <string name="location_neighborhood_unavailable">تم تحديد موقعك، لكن اسم الحي غير متوفر. يمكنك اختياره يدويًا.</string>
 </resources>

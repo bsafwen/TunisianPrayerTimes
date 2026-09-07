@@ -1,0 +1,46 @@
+Neighborhood and local-area database
+
+OpenStreetMap source
+Copyright OpenStreetMap contributors
+Source extract: Geofabrik, Tunisia, 2026-09-05T20:22:06Z
+
+This derived database (neighborhoods.json and neighborhoods.bin) is available under
+the Open Database License 1.0:
+https://opendatacommons.org/licenses/odbl/1-0/
+
+OpenStreetMap individual contents are available under the Database Contents License:
+https://opendatacommons.org/licenses/dbcl/1-0/
+
+Attribution and contributor information:
+https://www.openstreetmap.org/copyright
+
+Changes: selected named local-area polygons and points, reconstructed and validated
+polygons, clipped to Tunisia, quantized coordinates, merged matching name aliases,
+added a spatial index and prayer-location references, encoded geometry, and recorded
+conflicting peer polygons for location-specific ambiguity handling. The original
+borders are retained; conflicts are not resolved by inventing dividing lines.
+No affiliation with or endorsement by OpenStreetMap or Geofabrik is implied.
+
+Bouarada municipal source
+Attribution: Commune de Bouarada / OpenBaladiati
+Dataset: Liste des quartiers dans la zone municipale de BOUARADA
+Original geometry archived on June 18, 2018 (20180618182551).
+Catalog:
+https://catalog.data.gov.tn/fr/dataset/quartiers-dans-la-zone-municipale-de-bouarada
+Archive:
+https://web.archive.org/web/20180618182551id_/http://openbaladiati.tn:80/dataset/a444cad1-9911-40b0-896c-ee070794132e/resource/0b6b7ff9-e6b2-4448-a9ff-7de6839a419a/download/repartition_quarties.geojson
+
+The catalog identifies this source's license as "cc-by" (Creative Commons
+Attribution), with no version or license URL supplied, checked September 6, 2026.
+That source identification is preserved; no particular CC-BY version is asserted.
+Retain this attribution and the catalog/archive links with the municipal contents.
+
+The source's 21 polygons retain their original Arabic/French names and municipal
+identifiers. Changes: quantized coordinates, generic classification for the
+industrial zone, integration into the attributed database and spatial index,
+prayer-location references, and conflict metadata. The original source GeoJSON is
+preserved unchanged in scripts/neighborhoods/sources/bouarada-20180618.geojson.
+An archive date is not a certification of current boundaries. No affiliation with
+or endorsement by the Commune de Bouarada or OpenBaladiati is implied.
+
+Source and reproduction details are in scripts/neighborhoods/README.md.
