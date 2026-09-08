@@ -1,0 +1,2040 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:2876921759",
+  "baseId": 505,
+  "rawCurrent": {
+    "id": "osm:node:2876921759",
+    "sourceId": "osm",
+    "name": "المكناسي",
+    "aliases": [
+      "Meknassy",
+      "المکناسی"
+    ],
+    "kind": "village",
+    "parentName": "المكناسي الغربية",
+    "contextAliases": [
+      "Délégation Meknassy",
+      "Meknassy",
+      "Meknassy Ouest",
+      "المكناسي الغربية",
+      "معتمدية المكناسي"
+    ],
+    "governorateId": 355,
+    "lat": 34.6047708,
+    "lng": 9.6022455,
+    "delegationId": 505,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:2876921759"
+  },
+  "baseCurrent": {
+    "id": 505,
+    "nomFr": "Meknassi",
+    "nomAr": "المكناسي",
+    "nomEn": "Meknassi",
+    "lat": 34.6,
+    "lng": 9.6
+  },
+  "expectedGovernor": {
+    "id": 355,
+    "nomFr": "Sidi Bouzid",
+    "nomAr": "سيدي بوزيد",
+    "nomEn": "Sidi Bouzid",
+    "lat": 35.0382,
+    "lng": 9.4849
+  },
+  "originalSourceNode": {
+    "id": "osm:node:2876921759",
+    "tags": {
+      "name": "المكناسي",
+      "name:ar": "المكناسي",
+      "name:en": "Meknassy",
+      "name:fa": "المکناسی",
+      "name:fr": "Meknassy",
+      "place": "village",
+      "population": "13742",
+      "postal_code": "9140",
+      "wikidata": "Q117943",
+      "wikipedia": "ar:المكناسي"
+    },
+    "lat": 34.6047708,
+    "lng": 9.6022455
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/four-town-2026-09/source-identity-review.json",
+    "sha256": "19389ee363b1edc90b69c1585afee9dd335927ca65b448e1907cd3977c5314c0"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/four-town-2026-09/independent-source-review.json",
+    "sha256": "8b4790794fd4c906710e7d7e38e425bbf068910ca30c34d90c4df1407b3be065"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/four-town-2026-09/node-2876921759.json",
+    "sha256": "fd79fc1ad866e45b5aa388af3e8238bd68e3b17a922bd10666c638b190cc6b4b",
+    "url": "https://api.openstreetmap.org/api/0.6/node/2876921759.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/2876921759.json",
+    "sha256": "fd79fc1ad866e45b5aa388af3e8238bd68e3b17a922bd10666c638b190cc6b4b",
+    "exactElement": {
+      "type": "node",
+      "id": 2876921759,
+      "lat": 34.6047708,
+      "lon": 9.6022455,
+      "timestamp": "2022-01-20T07:23:52Z",
+      "version": 7,
+      "changeset": 116371405,
+      "user": "Anis Ben Makhlouf",
+      "uid": 10001069,
+      "tags": {
+        "name": "المكناسي",
+        "name:ar": "المكناسي",
+        "name:en": "Meknassy",
+        "name:fa": "المکناسی",
+        "name:fr": "Meknassy",
+        "place": "village",
+        "population": "13742",
+        "postal_code": "9140",
+        "wikidata": "Q117943",
+        "wikipedia": "ar:المكناسي"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/meknassy-social-ministry-neighborhood.html",
+      "sha256": "db48e129f183454ce594cdd5c78f132ab82b265f07011541863b6fff950ed86b",
+      "url": "https://www.social.gov.tn/en/node/2747",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "حي الانطلاقة المكناسي 9140سيدي بوزيد"
+      ],
+      "qualification": "Official inhabited-neighborhood address in Meknassy/Sidi Bouzid. The separate MEHAT atlas page70 explicitly identifies the city; the office map coordinate is not the town or INM anchor."
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/retrieval.json",
+      "sha256": "995e927b851af4baca02b3e65bbcaadf6953f7f384ce208cc974f69ec85f5ee3"
+    },
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/fallback-primary-retrieval.json",
+      "sha256": "ac4673c7027676f5c59ec315fe3fc375dc18dcb8f07bc5862d5ff757d35bcd25"
+    },
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/atlas-retrieval.json",
+      "sha256": "52e91b50f73170e507ff5660eb2ae05110564982ef2f3e1dd4d2bf87e7284e09"
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7169561",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435851",
+        "sectorFr": "El jebbes",
+        "sectorAr": "الجباس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55860,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2729,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2724
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الجباس",
+        "name:ar": "الجباس",
+        "name:fr": "El Jebbes",
+        "ref:tn:codegeo": "435851"
+      },
+      "sourceGeometrySha256": "82b34cf60a384a1299c4a5df4623fe906cfdf9749253f650a2c7243015eae686",
+      "currentMetadata": {
+        "id": "osm:relation:7169561",
+        "sourceId": "osm",
+        "name": "الجباس",
+        "aliases": [
+          "El Jebbes"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.72085,
+        "lng": 9.634814,
+        "delegationId": 505,
+        "hasBoundary": true,
+        "bbox": [
+          9.574476,
+          34.65681,
+          9.712863,
+          34.786
+        ],
+        "areaKm2": 91.01153352414993,
+        "pickerGroupId": "osm:relation:7169561",
+        "offset": 3876616,
+        "length": 1788
+      },
+      "packedGeometrySha256": "650efd8fa8bbcf166d327ebf14db2840da92baa2e5d5401dc94c1b3266ebad9a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169558",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435852",
+        "sectorFr": "Gheris ouest",
+        "sectorAr": "الغريس الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55894,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2731,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2726
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الغريس الغربية",
+        "name:ar": "الغريس الغربية",
+        "name:fr": "Gheris Ouest",
+        "ref:tn:codegeo": "435852"
+      },
+      "sourceGeometrySha256": "05c0114b7695d0a4ddd195c4b56fdd1b6e568fefbdce36034425fba858466d73",
+      "currentMetadata": {
+        "id": "osm:relation:7169558",
+        "sourceId": "osm",
+        "name": "الغريس الغربية",
+        "aliases": [
+          "Gheris Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.646645,
+        "lng": 9.767083,
+        "delegationId": 511,
+        "hasBoundary": true,
+        "bbox": [
+          9.673008,
+          34.59976,
+          9.84126,
+          34.69317
+        ],
+        "areaKm2": 90.25425385476933,
+        "pickerGroupId": "osm:relation:7169558",
+        "offset": 3869300,
+        "length": 1348
+      },
+      "packedGeometrySha256": "5d085b281a17380b04018abd3479f05f796dd8c01ab65dbe621b055ebe86a360",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169557",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435853",
+        "sectorFr": "Mech",
+        "sectorAr": "مش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55928,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2733,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2728
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مش",
+        "name:ar": "مش",
+        "name:fr": "Mech",
+        "ref:tn:codegeo": "435853"
+      },
+      "sourceGeometrySha256": "25fc4a6947b64813c3b222f5dcf82263464b32b6f47f24a4ea09341c674dc7d1",
+      "currentMetadata": {
+        "id": "osm:relation:7169557",
+        "sourceId": "osm",
+        "name": "مش",
+        "aliases": [
+          "Mech"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.506415,
+        "lng": 9.517909,
+        "delegationId": 510,
+        "hasBoundary": true,
+        "bbox": [
+          9.434245,
+          34.48254,
+          9.60177,
+          34.53173
+        ],
+        "areaKm2": 63.16917795570613,
+        "pickerGroupId": "osm:relation:7169557",
+        "offset": 3868112,
+        "length": 1188
+      },
+      "packedGeometrySha256": "03c98f6928141cfb14c659c1133d1fd0672ae9ab606007bbd1482dc0c60ac2c3",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169608",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435854",
+        "sectorFr": "Meknassy ouest",
+        "sectorAr": "المكناسي الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55962,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2735,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2730
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المكناسي الشرقية",
+        "name:ar": "المكناسي الشرقية",
+        "name:fr": "Meknassy Est",
+        "ref:tn:codegeo": "435854"
+      },
+      "sourceGeometrySha256": "13325a2526ad50f4c23ab022b9baaf1ff633636609c9d3a691ba699c380c4eef",
+      "currentMetadata": {
+        "id": "osm:relation:7169608",
+        "sourceId": "osm",
+        "name": "المكناسي الشرقية",
+        "aliases": [
+          "Meknassy Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.58679,
+        "lng": 9.655704,
+        "delegationId": 505,
+        "hasBoundary": true,
+        "bbox": [
+          9.605573,
+          34.50319,
+          9.708165,
+          34.6699
+        ],
+        "areaKm2": 68.9798658984872,
+        "pickerGroupId": "osm:relation:7169608",
+        "offset": 3953356,
+        "length": 2228
+      },
+      "packedGeometrySha256": "aebfb65f6feefe4ddc549b9b3bd2e65713ab97f8d8ab9f6930f08caa737f3d89",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169606",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435855",
+        "sectorFr": "Meknassy ouest",
+        "sectorAr": "المكناسي الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55996,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2737,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2732
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المكناسي الغربية",
+        "name:ar": "المكناسي الغربية",
+        "name:fr": "Meknassy Ouest",
+        "ref:tn:codegeo": "435855"
+      },
+      "sourceGeometrySha256": "a04307e488d9360a4f1e35b05ae17740f20ad1d51bf99d69c593f9d50c28c139",
+      "currentMetadata": {
+        "id": "osm:relation:7169606",
+        "sourceId": "osm",
+        "name": "المكناسي الغربية",
+        "aliases": [
+          "Meknassy Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.55161,
+        "lng": 9.620239,
+        "delegationId": 505,
+        "hasBoundary": true,
+        "bbox": [
+          9.587106,
+          34.49629,
+          9.656724,
+          34.60646
+        ],
+        "areaKm2": 52.56513219434051,
+        "pickerGroupId": "osm:relation:7169606",
+        "offset": 3950556,
+        "length": 1724
+      },
+      "packedGeometrySha256": "ab9eae066630f6faefdb58dbf4ecdf4c8237b3d52e87f6e0a130098917cf22b1",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169604",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435856",
+        "sectorFr": "Meknassy nord",
+        "sectorAr": "المكناسي الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 56030,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2739,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2734
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المكناسي الشمالية",
+        "name:ar": "المكناسي الشمالية",
+        "name:fr": "Meknassy Nord",
+        "ref:tn:codegeo": "435856"
+      },
+      "sourceGeometrySha256": "55cbbf254670202665e38661561a252d4ecc6cfab6bb50c91791fe2be238a96f",
+      "currentMetadata": {
+        "id": "osm:relation:7169604",
+        "sourceId": "osm",
+        "name": "المكناسي الشمالية",
+        "aliases": [
+          "Meknassy Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.62242,
+        "lng": 9.601631,
+        "delegationId": 505,
+        "hasBoundary": true,
+        "bbox": [
+          9.542651,
+          34.584,
+          9.666367,
+          34.6607
+        ],
+        "areaKm2": 41.864397100032626,
+        "pickerGroupId": "osm:relation:7169604",
+        "offset": 3946252,
+        "length": 1772
+      },
+      "packedGeometrySha256": "eb8a7f3f98904ba8b523b634a9b0d222f35e478e25daee1c1e392431af6ce64e",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169603",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435857",
+        "sectorFr": "Ezzouaraa",
+        "sectorAr": "الزوارع",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 56064,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2741,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2736
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الزوارع",
+        "name:ar": "الزوارع",
+        "name:fr": "Ezzouaraa",
+        "ref:tn:codegeo": "435857"
+      },
+      "sourceGeometrySha256": "ce19680157c0ca6b628e771c038f14f998045db964ac46a6d9b9088b059bf836",
+      "currentMetadata": {
+        "id": "osm:relation:7169603",
+        "sourceId": "osm",
+        "name": "الزوارع",
+        "aliases": [
+          "Ezzouaraa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.7325,
+        "lng": 9.703556,
+        "delegationId": 504,
+        "hasBoundary": true,
+        "bbox": [
+          9.631357,
+          34.67465,
+          9.754989,
+          34.78709
+        ],
+        "areaKm2": 46.965947565458144,
+        "pickerGroupId": "osm:relation:7169603",
+        "offset": 3945192,
+        "length": 1060
+      },
+      "packedGeometrySha256": "2691ed445f256aa82a3f66f9ff860355c97594253df5d9f20098a37f9aba4324",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169602",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435858",
+        "sectorFr": "El mabrouka",
+        "sectorAr": "المبروكة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 56098,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2743,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2738
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المبروكة",
+        "name:ar": "المبروكة",
+        "name:fr": "El Mabrouka",
+        "ref:tn:codegeo": "435858"
+      },
+      "sourceGeometrySha256": "f8bc6907b4fcab89bc7321b3c00c9a5012b32f53bd5d8aaf5b0fccef82cb91e5",
+      "currentMetadata": {
+        "id": "osm:relation:7169602",
+        "sourceId": "osm",
+        "name": "المبروكة",
+        "aliases": [
+          "El Mabrouka"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.67898,
+        "lng": 9.586025,
+        "delegationId": 505,
+        "hasBoundary": true,
+        "bbox": [
+          9.491305,
+          34.58154,
+          9.627012,
+          34.77498
+        ],
+        "areaKm2": 107.27140298633633,
+        "pickerGroupId": "osm:relation:7169602",
+        "offset": 3942380,
+        "length": 2812
+      },
+      "packedGeometrySha256": "41a38eec78f1ca34431c449aaa9eeb1c58deb200d88e3c6fbc2c8ce92fd6a9fe",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169569",
+      "officialIdentity": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4358",
+        "delegationFr": "Meknassy",
+        "delegationAr": "المكناسي",
+        "sectorCode": "435859",
+        "sectorFr": "Ennasr",
+        "sectorAr": "النصر",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 56132,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2745,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2740
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النصر",
+        "name:ar": "النصر",
+        "name:fr": "Ennasr",
+        "ref:tn:codegeo": "435859"
+      },
+      "sourceGeometrySha256": "372fc4cf379786b19d60ae31ebac4f74fa96d4c7c58394c6c7819e8839608d49",
+      "currentMetadata": {
+        "id": "osm:relation:7169569",
+        "sourceId": "osm",
+        "name": "النصر",
+        "aliases": [
+          "Ennasr"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المكناسي",
+        "contextAliases": [
+          "Délégation Meknassy",
+          "Meknassy",
+          "معتمدية المكناسي"
+        ],
+        "governorateId": 355,
+        "lat": 34.56387,
+        "lng": 9.533136,
+        "delegationId": 505,
+        "hasBoundary": true,
+        "bbox": [
+          9.476943,
+          34.52516,
+          9.59099,
+          34.59938
+        ],
+        "areaKm2": 63.16878563069258,
+        "pickerGroupId": "osm:relation:7169569",
+        "offset": 3891576,
+        "length": 716
+      },
+      "packedGeometrySha256": "377449bc7b3bf3f6422cea19d7f8e1dad757175c8f8fe0075a8befe167df4723",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:2876921759",
+      "kind": "village",
+      "tags": {
+        "name": "المكناسي",
+        "name:ar": "المكناسي",
+        "name:en": "Meknassy",
+        "name:fa": "المکناسی",
+        "name:fr": "Meknassy",
+        "place": "village",
+        "population": "13742",
+        "postal_code": "9140",
+        "wikidata": "Q117943",
+        "wikipedia": "ar:المكناسي"
+      }
+    },
+    {
+      "id": "osm:relation:7169669",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Meknassy",
+        "boundary": "administrative",
+        "name": "معتمدية المكناسي",
+        "name:ar": "معتمدية المكناسي",
+        "name:fr": "Délégation Meknassy",
+        "ref:tn:codegeo": "4358",
+        "ref:tn:hasc_2": "TN.SZ.ME",
+        "wikidata": "Q3304821"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1435831": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-43",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Sidi Bouzid",
+        "boundary": "administrative",
+        "name": "ولاية سيدي بوزيد",
+        "name:ar": "ولاية سيدي بوزيد",
+        "name:az": "Sidi-Bu-Zid (vilayət)",
+        "name:azb": "سیدی بوزید",
+        "name:be": "Сідзі-Бу-Зід (вілает)",
+        "name:be-tarask": "Сідзі-Бу-Зід (вілает)",
+        "name:bg": "Сиди Бузид (област)",
+        "name:ca": "Governació de Sidi Bou Zid",
+        "name:ceb": "Gouvernorat de Sidi Bouzid",
+        "name:cy": "Sidi Bouzid (talaith)",
+        "name:de": "Sayyidi Buzaid",
+        "name:el": "Σιντί Μπουζίντ (Κυβερνείο)",
+        "name:en": "Sidi Bouzid",
+        "name:es": "Gobernación de Sidi Bouzid",
+        "name:fa": "سیدی بوزید",
+        "name:fi": "Sidi Bouzid (kuvernementti)",
+        "name:fr": "Gouvernorat Sidi Bouzid",
+        "name:frr": "Sidi Bouzid (Guwernement)",
+        "name:id": "Kegubernuran Sidi Bou Said",
+        "name:it": "Sidi Bouzid",
+        "name:ja": "シディブジッド県",
+        "name:kab": "سيدي بوزيد",
+        "name:ko": "시디부지드주",
+        "name:ks": "سیدی بوزید",
+        "name:ms": "Kawasan kegabenoran Sidi Bou Said",
+        "name:nl": "Sidi Bouzid (gouvernement)",
+        "name:no": "Sidi Bouzid (guvernement)",
+        "name:pl": "Gubernatorstwo Sidi Bu Zajd",
+        "name:pt": "Sidi Bouzid (província)",
+        "name:ro": "Guvernoratul Sidi Bouzid",
+        "name:ru": "Сиди-Бу-Зид (вилайет)",
+        "name:sco": "Sidi Bou Zid Govrenorate",
+        "name:sh": "Sidi Bouzid (vilajet)",
+        "name:tr": "Sidi Bu Zeyd ili",
+        "name:uk": "Сіді-Бузід (вілаєт)",
+        "name:ur": "سیدی بوزید",
+        "name:zh": "西迪布濟德省",
+        "name:zu": "Sidi Bouzid Governorate",
+        "official_name": "ولاية سيدي بوزيد",
+        "official_name:ar": "ولاية سيدي بوزيد",
+        "official_name:en": "Sidi Bouzid Governorate",
+        "official_name:fa": "استان سیدی بوزید",
+        "official_name:fr": "Gouvernorat de Sidi Bouzid",
+        "official_name:it": "Governatorato di Sidi Bouzid",
+        "official_name:ur": "ولایت سیدی بوزید",
+        "population": "429912",
+        "population:date": "2014",
+        "ref:tn:codegeo": "43",
+        "wikidata": "Q327097",
+        "wikipedia": "ar:ولاية سيدي بوزيد"
+      },
+      "sourceGeometrySha256": "88ff6be1cfb347db8e3d59ef3b116ac618248a9a382b492daee3fd16e8491d07"
+    },
+    "osm:relation:7169669": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Meknassy",
+        "boundary": "administrative",
+        "name": "معتمدية المكناسي",
+        "name:ar": "معتمدية المكناسي",
+        "name:fr": "Délégation Meknassy",
+        "ref:tn:codegeo": "4358",
+        "ref:tn:hasc_2": "TN.SZ.ME",
+        "wikidata": "Q3304821"
+      },
+      "sourceGeometrySha256": "8381095b6fa00c562e97da2544ddade59fc77d595fe9ac7f627980842fa837f7"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:2876921759",
+    "field": "pickerGroupId",
+    "before": "osm:node:2876921759",
+    "after": "delegation:505"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:2876921759"
+      ],
+      [
+        "delegation:505"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:505",
+        "osm:node:2876921759"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "Exact settlement display association only. Preserve every imada, complete existing group, source kind, name, alias, context, coordinate, prayer default and packed geometry.",
+  "coordinatePolicy": "Both legacy timetable anchor and distinct cached OSM point are preserved. No original INM-anchor, exact settlement boundary or common administrative extent is claimed.",
+  "sourcePhaseQualification": "Complete existing imada/residential groups require the installed typed closure; no source transition or plural-parent exception is needed.",
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "4358"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:2876921759",
+        "original": {
+          "tags": {
+            "name": "المكناسي",
+            "name:ar": "المكناسي",
+            "name:en": "Meknassy",
+            "name:fa": "المکناسی",
+            "name:fr": "Meknassy",
+            "place": "village",
+            "population": "13742",
+            "postal_code": "9140",
+            "wikidata": "Q117943",
+            "wikipedia": "ar:المكناسي"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "ba7dc470fc564d4f22f92d668d01cb758f0e31d8b3b2b166d22de1a827326fb8"
+        },
+        "effective": {
+          "tags": {
+            "name": "المكناسي",
+            "name:ar": "المكناسي",
+            "name:en": "Meknassy",
+            "name:fa": "المکناسی",
+            "name:fr": "Meknassy",
+            "place": "village",
+            "population": "13742",
+            "postal_code": "9140",
+            "wikidata": "Q117943",
+            "wikipedia": "ar:المكناسي"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "ba7dc470fc564d4f22f92d668d01cb758f0e31d8b3b2b166d22de1a827326fb8"
+        }
+      },
+      {
+        "id": "osm:relation:1435831",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-43",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Sidi Bouzid",
+            "boundary": "administrative",
+            "name": "ولاية سيدي بوزيد",
+            "name:ar": "ولاية سيدي بوزيد",
+            "name:az": "Sidi-Bu-Zid (vilayət)",
+            "name:azb": "سیدی بوزید",
+            "name:be": "Сідзі-Бу-Зід (вілает)",
+            "name:be-tarask": "Сідзі-Бу-Зід (вілает)",
+            "name:bg": "Сиди Бузид (област)",
+            "name:ca": "Governació de Sidi Bou Zid",
+            "name:ceb": "Gouvernorat de Sidi Bouzid",
+            "name:cy": "Sidi Bouzid (talaith)",
+            "name:de": "Sayyidi Buzaid",
+            "name:el": "Σιντί Μπουζίντ (Κυβερνείο)",
+            "name:en": "Sidi Bouzid",
+            "name:es": "Gobernación de Sidi Bouzid",
+            "name:fa": "سیدی بوزید",
+            "name:fi": "Sidi Bouzid (kuvernementti)",
+            "name:fr": "Gouvernorat Sidi Bouzid",
+            "name:frr": "Sidi Bouzid (Guwernement)",
+            "name:id": "Kegubernuran Sidi Bou Said",
+            "name:it": "Sidi Bouzid",
+            "name:ja": "シディブジッド県",
+            "name:kab": "سيدي بوزيد",
+            "name:ko": "시디부지드주",
+            "name:ks": "سیدی بوزید",
+            "name:ms": "Kawasan kegabenoran Sidi Bou Said",
+            "name:nl": "Sidi Bouzid (gouvernement)",
+            "name:no": "Sidi Bouzid (guvernement)",
+            "name:pl": "Gubernatorstwo Sidi Bu Zajd",
+            "name:pt": "Sidi Bouzid (província)",
+            "name:ro": "Guvernoratul Sidi Bouzid",
+            "name:ru": "Сиди-Бу-Зид (вилайет)",
+            "name:sco": "Sidi Bou Zid Govrenorate",
+            "name:sh": "Sidi Bouzid (vilajet)",
+            "name:tr": "Sidi Bu Zeyd ili",
+            "name:uk": "Сіді-Бузід (вілаєт)",
+            "name:ur": "سیدی بوزید",
+            "name:zh": "西迪布濟德省",
+            "name:zu": "Sidi Bouzid Governorate",
+            "official_name": "ولاية سيدي بوزيد",
+            "official_name:ar": "ولاية سيدي بوزيد",
+            "official_name:en": "Sidi Bouzid Governorate",
+            "official_name:fa": "استان سیدی بوزید",
+            "official_name:fr": "Gouvernorat de Sidi Bouzid",
+            "official_name:it": "Governatorato di Sidi Bouzid",
+            "official_name:ur": "ولایت سیدی بوزید",
+            "population": "429912",
+            "population:date": "2014",
+            "ref:tn:codegeo": "43",
+            "wikidata": "Q327097",
+            "wikipedia": "ar:ولاية سيدي بوزيد"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "88ff6be1cfb347db8e3d59ef3b116ac618248a9a382b492daee3fd16e8491d07"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-43",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Sidi Bouzid",
+            "boundary": "administrative",
+            "name": "ولاية سيدي بوزيد",
+            "name:ar": "ولاية سيدي بوزيد",
+            "name:az": "Sidi-Bu-Zid (vilayət)",
+            "name:azb": "سیدی بوزید",
+            "name:be": "Сідзі-Бу-Зід (вілает)",
+            "name:be-tarask": "Сідзі-Бу-Зід (вілает)",
+            "name:bg": "Сиди Бузид (област)",
+            "name:ca": "Governació de Sidi Bou Zid",
+            "name:ceb": "Gouvernorat de Sidi Bouzid",
+            "name:cy": "Sidi Bouzid (talaith)",
+            "name:de": "Sayyidi Buzaid",
+            "name:el": "Σιντί Μπουζίντ (Κυβερνείο)",
+            "name:en": "Sidi Bouzid",
+            "name:es": "Gobernación de Sidi Bouzid",
+            "name:fa": "سیدی بوزید",
+            "name:fi": "Sidi Bouzid (kuvernementti)",
+            "name:fr": "Gouvernorat Sidi Bouzid",
+            "name:frr": "Sidi Bouzid (Guwernement)",
+            "name:id": "Kegubernuran Sidi Bou Said",
+            "name:it": "Sidi Bouzid",
+            "name:ja": "シディブジッド県",
+            "name:kab": "سيدي بوزيد",
+            "name:ko": "시디부지드주",
+            "name:ks": "سیدی بوزید",
+            "name:ms": "Kawasan kegabenoran Sidi Bou Said",
+            "name:nl": "Sidi Bouzid (gouvernement)",
+            "name:no": "Sidi Bouzid (guvernement)",
+            "name:pl": "Gubernatorstwo Sidi Bu Zajd",
+            "name:pt": "Sidi Bouzid (província)",
+            "name:ro": "Guvernoratul Sidi Bouzid",
+            "name:ru": "Сиди-Бу-Зид (вилайет)",
+            "name:sco": "Sidi Bou Zid Govrenorate",
+            "name:sh": "Sidi Bouzid (vilajet)",
+            "name:tr": "Sidi Bu Zeyd ili",
+            "name:uk": "Сіді-Бузід (вілаєт)",
+            "name:ur": "سیدی بوزید",
+            "name:zh": "西迪布濟德省",
+            "name:zu": "Sidi Bouzid Governorate",
+            "official_name": "ولاية سيدي بوزيد",
+            "official_name:ar": "ولاية سيدي بوزيد",
+            "official_name:en": "Sidi Bouzid Governorate",
+            "official_name:fa": "استان سیدی بوزید",
+            "official_name:fr": "Gouvernorat de Sidi Bouzid",
+            "official_name:it": "Governatorato di Sidi Bouzid",
+            "official_name:ur": "ولایت سیدی بوزید",
+            "population": "429912",
+            "population:date": "2014",
+            "ref:tn:codegeo": "43",
+            "wikidata": "Q327097",
+            "wikipedia": "ar:ولاية سيدي بوزيد"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "88ff6be1cfb347db8e3d59ef3b116ac618248a9a382b492daee3fd16e8491d07"
+        }
+      },
+      {
+        "id": "osm:relation:7169557",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مش",
+            "name:ar": "مش",
+            "name:fr": "Mech",
+            "ref:tn:codegeo": "435853"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "25fc4a6947b64813c3b222f5dcf82263464b32b6f47f24a4ea09341c674dc7d1"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مش",
+            "name:ar": "مش",
+            "name:fr": "Mech",
+            "ref:tn:codegeo": "435853"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "25fc4a6947b64813c3b222f5dcf82263464b32b6f47f24a4ea09341c674dc7d1"
+        }
+      },
+      {
+        "id": "osm:relation:7169558",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الغريس الغربية",
+            "name:ar": "الغريس الغربية",
+            "name:fr": "Gheris Ouest",
+            "ref:tn:codegeo": "435852"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "05c0114b7695d0a4ddd195c4b56fdd1b6e568fefbdce36034425fba858466d73"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الغريس الغربية",
+            "name:ar": "الغريس الغربية",
+            "name:fr": "Gheris Ouest",
+            "ref:tn:codegeo": "435852"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "05c0114b7695d0a4ddd195c4b56fdd1b6e568fefbdce36034425fba858466d73"
+        }
+      },
+      {
+        "id": "osm:relation:7169561",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجباس",
+            "name:ar": "الجباس",
+            "name:fr": "El Jebbes",
+            "ref:tn:codegeo": "435851"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "82b34cf60a384a1299c4a5df4623fe906cfdf9749253f650a2c7243015eae686"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجباس",
+            "name:ar": "الجباس",
+            "name:fr": "El Jebbes",
+            "ref:tn:codegeo": "435851"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "82b34cf60a384a1299c4a5df4623fe906cfdf9749253f650a2c7243015eae686"
+        }
+      },
+      {
+        "id": "osm:relation:7169569",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النصر",
+            "name:ar": "النصر",
+            "name:fr": "Ennasr",
+            "ref:tn:codegeo": "435859"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "372fc4cf379786b19d60ae31ebac4f74fa96d4c7c58394c6c7819e8839608d49"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النصر",
+            "name:ar": "النصر",
+            "name:fr": "Ennasr",
+            "ref:tn:codegeo": "435859"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "372fc4cf379786b19d60ae31ebac4f74fa96d4c7c58394c6c7819e8839608d49"
+        }
+      },
+      {
+        "id": "osm:relation:7169602",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المبروكة",
+            "name:ar": "المبروكة",
+            "name:fr": "El Mabrouka",
+            "ref:tn:codegeo": "435858"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "f8bc6907b4fcab89bc7321b3c00c9a5012b32f53bd5d8aaf5b0fccef82cb91e5"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المبروكة",
+            "name:ar": "المبروكة",
+            "name:fr": "El Mabrouka",
+            "ref:tn:codegeo": "435858"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "f8bc6907b4fcab89bc7321b3c00c9a5012b32f53bd5d8aaf5b0fccef82cb91e5"
+        }
+      },
+      {
+        "id": "osm:relation:7169603",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزوارع",
+            "name:ar": "الزوارع",
+            "name:fr": "Ezzouaraa",
+            "ref:tn:codegeo": "435857"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "ce19680157c0ca6b628e771c038f14f998045db964ac46a6d9b9088b059bf836"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزوارع",
+            "name:ar": "الزوارع",
+            "name:fr": "Ezzouaraa",
+            "ref:tn:codegeo": "435857"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "ce19680157c0ca6b628e771c038f14f998045db964ac46a6d9b9088b059bf836"
+        }
+      },
+      {
+        "id": "osm:relation:7169604",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكناسي الشمالية",
+            "name:ar": "المكناسي الشمالية",
+            "name:fr": "Meknassy Nord",
+            "ref:tn:codegeo": "435856"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "55cbbf254670202665e38661561a252d4ecc6cfab6bb50c91791fe2be238a96f"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكناسي الشمالية",
+            "name:ar": "المكناسي الشمالية",
+            "name:fr": "Meknassy Nord",
+            "ref:tn:codegeo": "435856"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "55cbbf254670202665e38661561a252d4ecc6cfab6bb50c91791fe2be238a96f"
+        }
+      },
+      {
+        "id": "osm:relation:7169606",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكناسي الغربية",
+            "name:ar": "المكناسي الغربية",
+            "name:fr": "Meknassy Ouest",
+            "ref:tn:codegeo": "435855"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "a04307e488d9360a4f1e35b05ae17740f20ad1d51bf99d69c593f9d50c28c139"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكناسي الغربية",
+            "name:ar": "المكناسي الغربية",
+            "name:fr": "Meknassy Ouest",
+            "ref:tn:codegeo": "435855"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "a04307e488d9360a4f1e35b05ae17740f20ad1d51bf99d69c593f9d50c28c139"
+        }
+      },
+      {
+        "id": "osm:relation:7169608",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكناسي الشرقية",
+            "name:ar": "المكناسي الشرقية",
+            "name:fr": "Meknassy Est",
+            "ref:tn:codegeo": "435854"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "13325a2526ad50f4c23ab022b9baaf1ff633636609c9d3a691ba699c380c4eef"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكناسي الشرقية",
+            "name:ar": "المكناسي الشرقية",
+            "name:fr": "Meknassy Est",
+            "ref:tn:codegeo": "435854"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "13325a2526ad50f4c23ab022b9baaf1ff633636609c9d3a691ba699c380c4eef"
+        }
+      },
+      {
+        "id": "osm:relation:7169669",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Meknassy",
+            "boundary": "administrative",
+            "name": "معتمدية المكناسي",
+            "name:ar": "معتمدية المكناسي",
+            "name:fr": "Délégation Meknassy",
+            "ref:tn:codegeo": "4358",
+            "ref:tn:hasc_2": "TN.SZ.ME",
+            "wikidata": "Q3304821"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "8381095b6fa00c562e97da2544ddade59fc77d595fe9ac7f627980842fa837f7"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Meknassy",
+            "boundary": "administrative",
+            "name": "معتمدية المكناسي",
+            "name:ar": "معتمدية المكناسي",
+            "name:fr": "Délégation Meknassy",
+            "ref:tn:codegeo": "4358",
+            "ref:tn:hasc_2": "TN.SZ.ME",
+            "wikidata": "Q3304821"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "8381095b6fa00c562e97da2544ddade59fc77d595fe9ac7f627980842fa837f7"
+        }
+      },
+      {
+        "id": "osm:way:192752617",
+        "original": {
+          "tags": {
+            "landuse": "residential",
+            "name": "النصر",
+            "name:ar": "النصر",
+            "name:fr": "Ennasr"
+          },
+          "kind": "residential",
+          "sourceId": null,
+          "geometrySha256": "6cec1557a4a1efad37f052c89ee62d25c3e9fa510f09fde06531fc3d10f44623"
+        },
+        "effective": {
+          "tags": {
+            "landuse": "residential",
+            "name": "النصر",
+            "name:ar": "النصر",
+            "name:fr": "Ennasr"
+          },
+          "kind": "residential",
+          "sourceId": "osm",
+          "geometrySha256": "6cec1557a4a1efad37f052c89ee62d25c3e9fa510f09fde06531fc3d10f44623"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1435831": null,
+      "osm:relation:7169557": null,
+      "osm:relation:7169558": null,
+      "osm:relation:7169561": null,
+      "osm:relation:7169569": null,
+      "osm:relation:7169602": null,
+      "osm:relation:7169603": null,
+      "osm:relation:7169604": null,
+      "osm:relation:7169606": null,
+      "osm:relation:7169608": null,
+      "osm:relation:7169669": null,
+      "osm:way:192752617": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:2876921759",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:2876921759",
+          "sourceId": "osm",
+          "name": "المكناسي",
+          "aliases": [
+            "Meknassy",
+            "المکناسی"
+          ],
+          "kind": "village",
+          "parentName": "المكناسي الغربية",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "Meknassy Ouest",
+            "المكناسي الغربية",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.6047708,
+          "lng": 9.6022455,
+          "delegationId": 505,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2876921759"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7169557",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169557",
+          "sourceId": "osm",
+          "name": "مش",
+          "aliases": [
+            "Mech"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.506415,
+          "lng": 9.517909,
+          "delegationId": 510,
+          "hasBoundary": true,
+          "bbox": [
+            9.434245,
+            34.48254,
+            9.60177,
+            34.53173
+          ],
+          "areaKm2": 63.16917795570613,
+          "pickerGroupId": "osm:relation:7169557",
+          "offset": 3868112,
+          "length": 1188
+        },
+        "packedGeometrySha256": "03c98f6928141cfb14c659c1133d1fd0672ae9ab606007bbd1482dc0c60ac2c3"
+      },
+      {
+        "id": "osm:relation:7169558",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169558",
+          "sourceId": "osm",
+          "name": "الغريس الغربية",
+          "aliases": [
+            "Gheris Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.646645,
+          "lng": 9.767083,
+          "delegationId": 511,
+          "hasBoundary": true,
+          "bbox": [
+            9.673008,
+            34.59976,
+            9.84126,
+            34.69317
+          ],
+          "areaKm2": 90.25425385476933,
+          "pickerGroupId": "osm:relation:7169558",
+          "offset": 3869300,
+          "length": 1348
+        },
+        "packedGeometrySha256": "5d085b281a17380b04018abd3479f05f796dd8c01ab65dbe621b055ebe86a360"
+      },
+      {
+        "id": "osm:relation:7169561",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169561",
+          "sourceId": "osm",
+          "name": "الجباس",
+          "aliases": [
+            "El Jebbes"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.72085,
+          "lng": 9.634814,
+          "delegationId": 505,
+          "hasBoundary": true,
+          "bbox": [
+            9.574476,
+            34.65681,
+            9.712863,
+            34.786
+          ],
+          "areaKm2": 91.01153352414993,
+          "pickerGroupId": "osm:relation:7169561",
+          "offset": 3876616,
+          "length": 1788
+        },
+        "packedGeometrySha256": "650efd8fa8bbcf166d327ebf14db2840da92baa2e5d5401dc94c1b3266ebad9a"
+      },
+      {
+        "id": "osm:relation:7169569",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169569",
+          "sourceId": "osm",
+          "name": "النصر",
+          "aliases": [
+            "Ennasr"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.56387,
+          "lng": 9.533136,
+          "delegationId": 505,
+          "hasBoundary": true,
+          "bbox": [
+            9.476943,
+            34.52516,
+            9.59099,
+            34.59938
+          ],
+          "areaKm2": 63.16878563069258,
+          "pickerGroupId": "osm:relation:7169569",
+          "offset": 3891576,
+          "length": 716
+        },
+        "packedGeometrySha256": "377449bc7b3bf3f6422cea19d7f8e1dad757175c8f8fe0075a8befe167df4723"
+      },
+      {
+        "id": "osm:relation:7169602",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169602",
+          "sourceId": "osm",
+          "name": "المبروكة",
+          "aliases": [
+            "El Mabrouka"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.67898,
+          "lng": 9.586025,
+          "delegationId": 505,
+          "hasBoundary": true,
+          "bbox": [
+            9.491305,
+            34.58154,
+            9.627012,
+            34.77498
+          ],
+          "areaKm2": 107.27140298633633,
+          "pickerGroupId": "osm:relation:7169602",
+          "offset": 3942380,
+          "length": 2812
+        },
+        "packedGeometrySha256": "41a38eec78f1ca34431c449aaa9eeb1c58deb200d88e3c6fbc2c8ce92fd6a9fe"
+      },
+      {
+        "id": "osm:relation:7169603",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169603",
+          "sourceId": "osm",
+          "name": "الزوارع",
+          "aliases": [
+            "Ezzouaraa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.7325,
+          "lng": 9.703556,
+          "delegationId": 504,
+          "hasBoundary": true,
+          "bbox": [
+            9.631357,
+            34.67465,
+            9.754989,
+            34.78709
+          ],
+          "areaKm2": 46.965947565458144,
+          "pickerGroupId": "osm:relation:7169603",
+          "offset": 3945192,
+          "length": 1060
+        },
+        "packedGeometrySha256": "2691ed445f256aa82a3f66f9ff860355c97594253df5d9f20098a37f9aba4324"
+      },
+      {
+        "id": "osm:relation:7169604",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169604",
+          "sourceId": "osm",
+          "name": "المكناسي الشمالية",
+          "aliases": [
+            "Meknassy Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.62242,
+          "lng": 9.601631,
+          "delegationId": 505,
+          "hasBoundary": true,
+          "bbox": [
+            9.542651,
+            34.584,
+            9.666367,
+            34.6607
+          ],
+          "areaKm2": 41.864397100032626,
+          "pickerGroupId": "osm:relation:7169604",
+          "offset": 3946252,
+          "length": 1772
+        },
+        "packedGeometrySha256": "eb8a7f3f98904ba8b523b634a9b0d222f35e478e25daee1c1e392431af6ce64e"
+      },
+      {
+        "id": "osm:relation:7169606",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169606",
+          "sourceId": "osm",
+          "name": "المكناسي الغربية",
+          "aliases": [
+            "Meknassy Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.55161,
+          "lng": 9.620239,
+          "delegationId": 505,
+          "hasBoundary": true,
+          "bbox": [
+            9.587106,
+            34.49629,
+            9.656724,
+            34.60646
+          ],
+          "areaKm2": 52.56513219434051,
+          "pickerGroupId": "osm:relation:7169606",
+          "offset": 3950556,
+          "length": 1724
+        },
+        "packedGeometrySha256": "ab9eae066630f6faefdb58dbf4ecdf4c8237b3d52e87f6e0a130098917cf22b1"
+      },
+      {
+        "id": "osm:relation:7169608",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7169608",
+          "sourceId": "osm",
+          "name": "المكناسي الشرقية",
+          "aliases": [
+            "Meknassy Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Meknassy",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.58679,
+          "lng": 9.655704,
+          "delegationId": 505,
+          "hasBoundary": true,
+          "bbox": [
+            9.605573,
+            34.50319,
+            9.708165,
+            34.6699
+          ],
+          "areaKm2": 68.9798658984872,
+          "pickerGroupId": "osm:relation:7169608",
+          "offset": 3953356,
+          "length": 2228
+        },
+        "packedGeometrySha256": "aebfb65f6feefe4ddc549b9b3bd2e65713ab97f8d8ab9f6930f08caa737f3d89"
+      },
+      {
+        "id": "osm:way:192752617",
+        "kind": "residential",
+        "currentMetadata": {
+          "id": "osm:way:192752617",
+          "sourceId": "osm",
+          "name": "النصر",
+          "aliases": [
+            "Ennasr"
+          ],
+          "kind": "residential",
+          "parentName": "معتمدية المكناسي",
+          "contextAliases": [
+            "Délégation Meknassy",
+            "Ennasr",
+            "Meknassy",
+            "النصر",
+            "معتمدية المكناسي"
+          ],
+          "governorateId": 355,
+          "lat": 34.578607,
+          "lng": 9.519738,
+          "delegationId": 505,
+          "hasBoundary": true,
+          "bbox": [
+            9.513401,
+            34.575153,
+            9.526369,
+            34.581407
+          ],
+          "areaKm2": 0.6239298288789561,
+          "pickerGroupId": "osm:relation:7169569",
+          "offset": 5315060,
+          "length": 108
+        },
+        "packedGeometrySha256": "4c7757594e471386f3022060db267bbd576db2d8bd24bc792a4a52407e95da2b"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:2876921759": [
+        "osm:node:2876921759"
+      ],
+      "osm:relation:7169557": [
+        "osm:relation:7169557"
+      ],
+      "osm:relation:7169558": [
+        "osm:relation:7169558"
+      ],
+      "osm:relation:7169561": [
+        "osm:relation:7169561"
+      ],
+      "osm:relation:7169569": [
+        "osm:relation:7169569",
+        "osm:way:192752617"
+      ],
+      "osm:relation:7169602": [
+        "osm:relation:7169602"
+      ],
+      "osm:relation:7169603": [
+        "osm:relation:7169603"
+      ],
+      "osm:relation:7169604": [
+        "osm:relation:7169604"
+      ],
+      "osm:relation:7169606": [
+        "osm:relation:7169606"
+      ],
+      "osm:relation:7169608": [
+        "osm:relation:7169608"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7169557": [
+        "osm:relation:7169557"
+      ],
+      "osm:relation:7169558": [
+        "osm:relation:7169558"
+      ],
+      "osm:relation:7169561": [
+        "osm:relation:7169561"
+      ],
+      "osm:relation:7169569": [
+        "osm:relation:7169569",
+        "osm:way:192752617"
+      ],
+      "osm:relation:7169602": [
+        "osm:relation:7169602"
+      ],
+      "osm:relation:7169603": [
+        "osm:relation:7169603"
+      ],
+      "osm:relation:7169604": [
+        "osm:relation:7169604"
+      ],
+      "osm:relation:7169606": [
+        "osm:relation:7169606"
+      ],
+      "osm:relation:7169608": [
+        "osm:relation:7169608"
+      ],
+      "delegation:505": [
+        "osm:node:2876921759"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "schemaVersion": 1,
+    "reviewedBoundaries": null,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:2876921759",
+        "osm:relation:7169669"
+      ],
+      "effective": [
+        "osm:node:2876921759",
+        "osm:relation:7169669"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1435831": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7169557": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169558": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169561": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169569": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169602": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169603": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169604": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169606": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7169608": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7169669": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    }
+  },
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/meknassy-mehat-sidi-bouzid-atlas.pdf",
+      "sha256": "174bb321509a5bbcef05e6db83f3160438e58cb4584834e24b63c605d1405c18",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSidiBouzidAr.pdf",
+      "pdfPage": 70,
+      "printedPage": 69,
+      "role": "official_city_identity",
+      "qualification": "MEHAT2019 urban hierarchy calls Meknassy a city and subregional centre. No atlas population, geometry or map anchor is adopted."
+    }
+  ]
+}

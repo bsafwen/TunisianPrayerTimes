@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "status": "CONTEXT_CORRECTION_SUPPORTED_NAMES_SEPARATELY_REVIEWABLE_NO_MERGE",
+  "reviewedAt": "2026-09-07T18:28:42.887798+00:00",
+  "currentMetadataSha256": "e4847923c9d5ae90104520b153bbcc118721e89cad297e33dc31938584958ae4",
+  "currentBinarySha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceProof": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\chenini-exact-node-context-source-proof.json",
+    "sha256": "ab1461afe3044aec5c7ef66f4ee62c978e9c1664ce50f50b4bf20efb7f431a1b"
+  },
+  "currentNodes": [
+    {
+      "id": "osm:node:1975899618",
+      "sourceId": "osm",
+      "name": "شنني",
+      "aliases": [
+        "Chenini"
+      ],
+      "kind": "village",
+      "parentName": "شنني الجديدة",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Nouvelle Chnini",
+        "Tataouine Sud",
+        "شنني الجديدة",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.9147021,
+      "lng": 10.2781706,
+      "delegationId": 624,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1975899618"
+    },
+    {
+      "id": "osm:node:297760994",
+      "sourceId": "osm",
+      "name": "شنني",
+      "aliases": [
+        "Chenini"
+      ],
+      "kind": "village",
+      "parentName": "شنني الجديدة",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Nouvelle Chnini",
+        "Tataouine Sud",
+        "شنني الجديدة",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.9107032,
+      "lng": 10.2615519,
+      "delegationId": 624,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:297760994"
+    }
+  ],
+  "nodeSeparationMeters": 1616.2542861496706,
+  "contextCorrectionProposal": {
+    "id": "osm:node:297760994",
+    "status": "SUPPORTED_CONTEXT_ONLY_PROPOSAL_FOR_INDEPENDENT_IMPLEMENTATION",
+    "expectedOriginalTags": {
+      "addr:city": "Chenini",
+      "name": "شنني",
+      "name:ar": "شنني",
+      "name:en": "Chenini",
+      "name:fr": "Chenini",
+      "place": "village",
+      "wikidata": "Q2317502",
+      "wikimedia_commons": "Category:Chenini",
+      "wikipedia": "ar:شنني (تطاوين)"
+    },
+    "expectedKind": "village",
+    "expectedCoordinates": {
+      "lat": 32.9107032,
+      "lng": 10.2615519
+    },
+    "expectedCurrentFeature": {
+      "id": "osm:node:297760994",
+      "sourceId": "osm",
+      "name": "شنني",
+      "aliases": [
+        "Chenini"
+      ],
+      "kind": "village",
+      "parentName": "شنني الجديدة",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Nouvelle Chnini",
+        "Tataouine Sud",
+        "شنني الجديدة",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.9107032,
+      "lng": 10.2615519,
+      "delegationId": 624,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:297760994"
+    },
+    "sourceContextId": "osm:relation:7143881",
+    "currentOfficialSector": {
+      "governorateCode": "53",
+      "governorateFr": "Tataouine",
+      "governorateAr": "تطاوين",
+      "delegationCode": "5352",
+      "delegationFr": "Tataouine sud",
+      "delegationAr": "تطاوين الجنوبية",
+      "sectorCode": "535259",
+      "sectorFr": "Chenini",
+      "sectorAr": "شنني",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64189,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3155,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3149
+      }
+    },
+    "expectedCurrentParentName": "شنني الجديدة",
+    "proposedParentName": "معتمدية تطاوين الجنوبية",
+    "proposedContextAliases": [
+      "Chenini",
+      "Délégation Tataouine Sud",
+      "Tataouine Sud",
+      "شنني",
+      "معتمدية تطاوين الجنوبية"
+    ],
+    "reason": "Exact point is safely inside the official wholeChenini535259 circle and outside the officialNewChenini535258 circle in two independently registered source maps. The sector primary equals the village primary, so display the existing delegation context as subtitle while keeping the correct sector aliases searchable.",
+    "preserve": [
+      "rawID",
+      "primaryNameشنني",
+      "aliasesChenini",
+      "pointCoordinates",
+      "kindvillage",
+      "governorate351",
+      "prayerDefault624",
+      "pickerGroupID",
+      "allpolygons"
+    ],
+    "removeIncorrectContextAliases": [
+      "Nouvelle Chnini",
+      "شنني الجديدة"
+    ],
+    "boundaryImport": false
+  },
+  "unchangedEasternContext": {
+    "id": "osm:node:1975899618",
+    "sectorCode": "535258",
+    "sectorName": "شنني الجديدة",
+    "sourceInsideDistanceMeters": 505.0849594648145,
+    "action": "Retain existing administrative context; do not merge with western village"
+  },
+  "separateNameProposal": {
+    "status": "REVIEWABLE_IDENTITY_QUALIFICATION_SEPARATE_FROM_INITIAL_CONTEXT_FIX",
+    "eastern": {
+      "id": "osm:node:1975899618",
+      "proposedDisplayName": "شنني الجديدة",
+      "retainSourceAliases": [
+        "شنني",
+        "Chenini"
+      ],
+      "identityInference": "The exact eastern source village falls in the officialNewChenini circle, by505m, in the eastern settlement visible on the official map. Independent2018 IRA/IRD field research states the two imadas correspond to old/new villages. Fresh PBF school address and post-office names additionally identify this exact eastern built-up area as NewChenini. This is a combined reviewed inference; the official primary maps do not publish the OSMnode ID."
+    },
+    "western": {
+      "id": "osm:node:297760994",
+      "primaryNameRecommendation": "Keep شنني for initial action",
+      "optionalQualifiedDisplayName": "شنني القديمة",
+      "retainSourceAliases": [
+        "شنني",
+        "Chenini"
+      ],
+      "identityInference": "Western node is in officialChenini by906m and among coordinates explicitly described by GMG as the old troglodyte village and its oil mills. The fresh source also has separately named oldChenini school/postoffice nearby. An old-village qualifier is supported descriptively, but is not the official sectorname."
+    },
+    "notCombinedIntoInitialContextProposal": true
+  },
+  "primaryResearchFindings": [
+    {
+      "source": "IRA/IRD2018, page166/PDF2",
+      "url": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers19-10/010076861.pdf",
+      "finding": "Fieldwork-based paper explicitly describes two Chenini imadas corresponding to old/new villages. Its regional figure lacks controls suitable for exact node positioning; no coordinates are extracted from it.",
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\ira-ird-chenini-2018-page2.png",
+        "sha256": "0ec725823e3795933345b441c3e2b92a4ea283f17ed1526ee12ac3ce4ce5eaa6"
+      }
+    },
+    {
+      "source": "GMG village andoil-mill field inventory",
+      "url": "https://www.dahargmg.info/fr/histoire-de-l-homme/villages-troglodytes/habitat-trogloditique-horizontal/chenini",
+      "finding": "The historical hill-village GPS reference and three explicitly old-village oil mills lie near the westernsource node, independently corroborating its identity. POIcoordinates are not substituted for the village reference or polygon."
+    }
+  ],
+  "rejectedBasis": [
+    "Identical generic GoogleMaps cards do not establish source-node identity. No new phone/ledger accesses made.",
+    "Shared Wikidata/Wikipedia objects do not justify merging thetwo villages.",
+    "GeoNamesadministrative representative points farwest are not settlementcenters; no coordinate substitution proposed.",
+    "Official imada footprints are used only as source-specific context evidence; they do not become inferred village polygons."
+  ],
+  "limits": [
+    "Current OSMsector polygons differ substantially from these official2023 footprints. Correcting this exact context does not certify or replace any sector/village extent.",
+    "IndependentPDF registrations have finite controlprecision; bothnodes arehundreds ofmeters fromthe relevant boundaries, not seamcases.",
+    "Further exact naming remains separated from the minimumcontext fix; no appmetadata or generator changes are performed by this report."
+  ],
+  "operations": {
+    "repoMutations": 0,
+    "phoneActions": 0,
+    "ledgerMutations": 0,
+    "tests": 0,
+    "builds": 0,
+    "newISIEMapDownloads": 2,
+    "freshPBFPasses": 1,
+    "appImports": 0
+  }
+}

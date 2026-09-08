@@ -1,0 +1,4178 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:298019989",
+  "baseId": 482,
+  "rawCurrent": {
+    "id": "osm:node:298019989",
+    "sourceId": "osm",
+    "name": "قبلي",
+    "aliases": [
+      "Kebili",
+      "قبلی",
+      "קבילי",
+      "Kibili",
+      "Кебили"
+    ],
+    "kind": "town",
+    "parentName": "جنعورة",
+    "contextAliases": [
+      "Délégation Kébili Sud",
+      "Janoura",
+      "Kébili Sud",
+      "جنعورة",
+      "معتمدية قبلي الجنوبية"
+    ],
+    "governorateId": 1012,
+    "lat": 33.7061148,
+    "lng": 8.9698376,
+    "delegationId": 482,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:298019989"
+  },
+  "baseCurrent": {
+    "id": 482,
+    "nomFr": "Kebili",
+    "nomAr": "قبلي",
+    "nomEn": "Kebili",
+    "lat": 33.7072,
+    "lng": 8.9697
+  },
+  "expectedGovernor": {
+    "id": 1012,
+    "nomFr": "Kébili",
+    "nomAr": "قبلي",
+    "nomEn": "Kebili",
+    "lat": 33.7072,
+    "lng": 8.9697
+  },
+  "originalSourceNode": {
+    "id": "osm:node:298019989",
+    "tags": {
+      "name": "قبلي",
+      "name:ar": "قبلي",
+      "name:en": "Kebili",
+      "name:eo": "Kebili",
+      "name:fa": "قبلی",
+      "name:fr": "Kebili",
+      "name:he": "קבילי",
+      "name:ks": "قبلی",
+      "name:pl": "Kibili",
+      "name:ru": "Кебили",
+      "name:ur": "قبلی",
+      "place": "town",
+      "wikidata": "Q27157",
+      "wikimedia_commons": "Category:Kebili",
+      "wikipedia": "ar:قبلي (تونس)"
+    },
+    "lat": 33.7061148,
+    "lng": 8.9698376
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-identity-review.json",
+    "sha256": "9152e9be8763f75128ceecb4cc557ccbc2756a4ccc2eb1a46475a6ea3c8ed766"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/town-preservation-2026-09/independent-source-review.json",
+    "sha256": "8c40557610a4a84c9c544a3e96e84dd179a0160888b588d32d2ada95aaaf1ec0"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/town-preservation-2026-09/node-298019989.json",
+    "sha256": "3be492b14ad7ae24c7afaba6316f536d50a24e256881002cd0b1963a3ab71d41",
+    "url": "https://api.openstreetmap.org/api/0.6/node/298019989.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/298019989.json",
+    "sha256": "3be492b14ad7ae24c7afaba6316f536d50a24e256881002cd0b1963a3ab71d41",
+    "exactElement": {
+      "type": "node",
+      "id": 298019989,
+      "lat": 33.7061148,
+      "lon": 8.9698376,
+      "timestamp": "2025-12-23T14:42:30Z",
+      "version": 14,
+      "changeset": 176312090,
+      "user": "Yovân El-Mekh",
+      "uid": 23638457,
+      "tags": {
+        "name": "قبلي",
+        "name:ar": "قبلي",
+        "name:en": "Kebili",
+        "name:eo": "Kebili",
+        "name:fa": "قبلی",
+        "name:fr": "Kebili",
+        "name:he": "קבילי",
+        "name:ks": "قبلی",
+        "name:pl": "Kibili",
+        "name:ru": "Кебили",
+        "name:ur": "قبلی",
+        "place": "town",
+        "wikidata": "Q27157",
+        "wikimedia_commons": "Category:Kebili",
+        "wikipedia": "ar:قبلي (تونس)"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/town-preservation-2026-09/kebili-interior-city-article.html",
+      "sha256": "9d94f2c7aef84ef06fb80c163c193c61a9bdb030c936256baf1561e8ea8a2e50",
+      "url": "https://www.interieur.gov.tn/actualite/1371/%D8%A8%D9%80%D9%80%D9%84%D8%A7%D8%BA",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "بمدخل مدينة قبلي مستوى مفترق جنعورة"
+      ],
+      "qualification": "City identity and Janoura street-context corroboration only; the incident report does not certify a city outline or the current imada line."
+    }
+  ],
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/town-preservation-2026-09/kebili-article-retrieval.json",
+      "sha256": "eaaf8bcc44527f7b25f75f76aada9ce7c9c48112043db119ade23f5629cd80f3",
+      "role": "authentic_primary_retrieval_metadata"
+    }
+  ],
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-retrieval.json",
+    "sha256": "84e514139b4ec6f6000248e916ab162799cf5ddeb14d5f78565a68b70c378ac8"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7109812",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635151",
+        "sectorFr": "Kebili sud",
+        "sectorAr": "قبلي الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69267,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3396,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3389
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قبلي الجنوبية",
+        "name:ar": "قبلي الجنوبية",
+        "name:fr": "Kebili Sud",
+        "ref:tn:codegeo": "635151"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109812",
+        "sourceId": "osm",
+        "name": "قبلي الجنوبية",
+        "aliases": [
+          "Kebili Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.706827,
+        "lng": 9.021877,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.986857,
+          33.684435,
+          9.067444,
+          33.731233
+        ],
+        "areaKm2": 13.942991254714824,
+        "pickerGroupId": "osm:relation:7109812",
+        "offset": 601208,
+        "length": 252
+      },
+      "sourceGeometrySha256": "c9bd59b5f4e078e400a474c38552d5db4108be76e82dbc1573ae0ca443ae5ae0",
+      "packedGeometrySha256": "cc825aac714e74e2262b461134f0c4c3983eae159c37315b59ecf6a5090f4822",
+      "expectedCuration": {
+        "id": "osm:relation:7109812",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "قبلي الجنوبية",
+          "ref:tn:codegeo": "635151"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110466",
+        "reason": "ISIE lists the Kebili Sud sector in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7109821",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635152",
+        "sectorFr": "Bazma",
+        "sectorAr": "بازمة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69301,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3397,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3390
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بازمة",
+        "name:ar": "‫بازمة‬",
+        "name:fr": "Bazma",
+        "ref:tn:codegeo": "635152"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109821",
+        "sourceId": "osm",
+        "name": "بازمة",
+        "aliases": [
+          "Bazma"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.664445,
+        "lng": 9.043987,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.955497,
+          33.600234,
+          9.138061,
+          33.730523
+        ],
+        "areaKm2": 115.97456194426123,
+        "pickerGroupId": "osm:relation:7109821",
+        "offset": 605248,
+        "length": 460
+      },
+      "sourceGeometrySha256": "b3843aa6b16bee5791b18c3d73dbf6118e40a58635f67b4864853e9b57cef189",
+      "packedGeometrySha256": "10ec0676c13b21341542f861dca69912694f246fdb59930a9f7b29d17eaa7eab",
+      "expectedCuration": {
+        "id": "osm:relation:7109821",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "‫بازمة‬",
+          "ref:tn:codegeo": "635152"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110466",
+        "reason": "ISIE lists Bazma in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7082187",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635153",
+        "sectorFr": "Jemna nord",
+        "sectorAr": "جمنة الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69335,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3399,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3392
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جمنة الشمالية",
+        "name:ar": "جمنة الشمالية",
+        "name:fr": "Jemna Nord",
+        "ref:tn:codegeo": "635153"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082187",
+        "sourceId": "osm",
+        "name": "جمنة الشمالية",
+        "aliases": [
+          "Jemna Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.618246,
+        "lng": 9.257501,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.926962,
+          33.528344,
+          9.463677,
+          33.709542
+        ],
+        "areaKm2": 268.13261305539083,
+        "pickerGroupId": "osm:relation:7082187",
+        "offset": 82472,
+        "length": 1668
+      },
+      "sourceGeometrySha256": "7592930ae8cf04402081b55cc3e2d1c09de5a68f40a7c2a1b96c1dd13e86a1bf",
+      "packedGeometrySha256": "1960eff711a89ff9bbf2ac183a86c74051cab03daa8176719c6e40728dcc5d2b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7082186",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635154",
+        "sectorFr": "Jemna sud",
+        "sectorAr": "جمنة الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69369,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3401,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3394
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جمنة الجنوبية",
+        "name:ar": "جمنة الجنوبية",
+        "name:fr": "Jemna Sud",
+        "ref:tn:codegeo": "635154"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082186",
+        "sourceId": "osm",
+        "name": "جمنة الجنوبية",
+        "aliases": [
+          "Jemna Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.575958,
+        "lng": 9.264689,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.922306,
+          33.514847,
+          9.54085,
+          33.636586
+        ],
+        "areaKm2": 413.4823413054457,
+        "pickerGroupId": "osm:relation:7082186",
+        "offset": 80924,
+        "length": 1548
+      },
+      "sourceGeometrySha256": "6f160b42e7d8aced8caa3c88fea9e6604a28203cf1fcb1343815bb6b1ca009e4",
+      "packedGeometrySha256": "a8533675cc545c01ccc1a1dc3c2be6fe6df4d218d1de52501f0771dbbf2e6bf8",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7082747",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635155",
+        "sectorFr": "Bechelli",
+        "sectorAr": "بشلى",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69403,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3403,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3396
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بشلي",
+        "name:ar": "بشلي",
+        "name:fr": "Bchelli",
+        "ref:tn:codegeo": "635155"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082747",
+        "sourceId": "osm",
+        "name": "بشلي",
+        "aliases": [
+          "Bchelli"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.610018,
+        "lng": 8.943168,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.904577,
+          33.573407,
+          9.004581,
+          33.646869
+        ],
+        "areaKm2": 38.26484488532346,
+        "pickerGroupId": "osm:relation:7082747",
+        "offset": 88864,
+        "length": 652
+      },
+      "sourceGeometrySha256": "9677588c9ebf30c944d5811bdd6d3cf31593dcd747136cfabf1b51b9268e3f08",
+      "packedGeometrySha256": "e1069ff92ac6e8e4d77dd6575d26f3a1c70f9524cc0e5e0582e88b88c415be12",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7082714",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635156",
+        "sectorFr": "Jersine",
+        "sectorAr": "جرسين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69437,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3405,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3398
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جرسین",
+        "name:fr": "Jersine",
+        "ref:tn:codegeo": "635156"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082714",
+        "sourceId": "osm",
+        "name": "جرسين",
+        "aliases": [
+          "Jersine",
+          "Zarsin",
+          "جرسین"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.530208,
+        "lng": 8.8273725,
+        "delegationId": 484,
+        "hasBoundary": true,
+        "bbox": [
+          8.590938,
+          33.508813,
+          8.883406,
+          33.72973
+        ],
+        "areaKm2": 149.95089209376042,
+        "manualPointId": "osm:node:9947246733",
+        "pickerGroupId": "osm:relation:7082714",
+        "offset": 88012,
+        "length": 852
+      },
+      "sourceGeometrySha256": "bea80bbec021baefc050a8a110db4f4f3320db2a2dd74bd9944e405772c70a60",
+      "packedGeometrySha256": "fd95d9933ea6553632628ae489b5baba280e57cf015dc48c5eec0f01bfec5d10",
+      "expectedCuration": {
+        "id": "osm:relation:7082714",
+        "action": "name_tags",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جرسین",
+          "name:fr": "Jersine",
+          "ref:tn:codegeo": "635156"
+        },
+        "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+        "evidence": [
+          {
+            "source": "Independent official name and source point review",
+            "officialCode": "635156",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "officialSourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69437,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3405,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3398
+            },
+            "pointId": "osm:node:9947246733",
+            "pointLatitude": 33.530208,
+            "pointLongitude": 8.8273725,
+            "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+          }
+        ],
+        "nameTags": {
+          "name": "جرسين",
+          "name:ar": "جرسين",
+          "name:fr": "Jersine",
+          "alt_name": "جرسین"
+        },
+        "manualPointId": "osm:node:9947246733"
+      }
+    },
+    {
+      "id": "osm:relation:7082707",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635157",
+        "sectorFr": "El blidete",
+        "sectorAr": "البليدات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69471,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3407,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3400
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البليدات",
+        "name:fr": "El Blidete",
+        "ref:tn:codegeo": "635157"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082707",
+        "sourceId": "osm",
+        "name": "البليدات",
+        "aliases": [
+          "El Blidete"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.61906,
+        "lng": 8.778933,
+        "delegationId": 483,
+        "hasBoundary": true,
+        "bbox": [
+          8.700529,
+          33.551441,
+          8.842938,
+          33.685971
+        ],
+        "areaKm2": 56.1876422033364,
+        "pickerGroupId": "osm:relation:7082707",
+        "offset": 87472,
+        "length": 540
+      },
+      "sourceGeometrySha256": "7cb0f686df25ff4b338d1628a4bb041e6c96fd29a098d21c93d6f544384ba028",
+      "packedGeometrySha256": "fb9870856c295cebf495f38602d42f15f8d7fc51fa8784d0b3c9165c12b1323f",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7082748",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635158",
+        "sectorFr": "Beni mehemed",
+        "sectorAr": "بني محمّد",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69505,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3409,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3402
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بن محمد",
+        "name:ar": "بن محمد",
+        "name:fr": "Ben Mehemed",
+        "ref:tn:codegeo": "635158"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082748",
+        "sourceId": "osm",
+        "name": "بني محمّد",
+        "aliases": [
+          "Ben Mehemed",
+          "Beni Mhammad",
+          "Beni mehemed",
+          "بن محمد",
+          "بني محمد"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.5724927,
+        "lng": 8.8865999,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.813472,
+          33.519749,
+          8.973724,
+          33.623874
+        ],
+        "areaKm2": 87.21418668107206,
+        "manualPointId": "osm:node:9945093900",
+        "pickerGroupId": "osm:relation:7082748",
+        "offset": 89516,
+        "length": 1716
+      },
+      "sourceGeometrySha256": "992ba00a7b62f5d2dc23ec5e6b7aadd4dd488c55b809e411e4f8cc94042c6dd4",
+      "packedGeometrySha256": "bbbfd96704e448ac64fe80ed2996d6f3d798c4f575a2fdd6533d7889ff687a89",
+      "expectedCuration": {
+        "id": "osm:relation:7082748",
+        "action": "name_tags",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بن محمد",
+          "name:ar": "بن محمد",
+          "name:fr": "Ben Mehemed",
+          "ref:tn:codegeo": "635158"
+        },
+        "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+        "evidence": [
+          {
+            "source": "Independent official name and source point review",
+            "officialCode": "635158",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "officialSourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69505,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3409,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3402
+            },
+            "pointId": "osm:node:9945093900",
+            "pointLatitude": 33.5724927,
+            "pointLongitude": 8.8865999,
+            "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+          }
+        ],
+        "nameTags": {
+          "name": "بني محمّد",
+          "name:ar": "بني محمّد",
+          "name:fr": "Beni mehemed",
+          "alt_name": "بن محمد;Ben Mehemed"
+        },
+        "manualPointId": "osm:node:9945093900"
+      }
+    },
+    {
+      "id": "osm:relation:7109817",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6351",
+        "delegationFr": "Kebili sud",
+        "delegationAr": "قبلي الجنوبية",
+        "sectorCode": "635159",
+        "sectorFr": "Janoura",
+        "sectorAr": "جنعورة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69539,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3410,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3403
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جنعورة",
+        "name:ar": "‫جنعورة‬",
+        "name:fr": "Janoura",
+        "ref:tn:codegeo": "635159"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109817",
+        "sourceId": "osm",
+        "name": "جنعورة",
+        "aliases": [
+          "Janoura"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الجنوبية",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Kébili Sud",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.673089,
+        "lng": 8.971634,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.938073,
+          33.634828,
+          8.99306,
+          33.711009
+        ],
+        "areaKm2": 24.8623301378072,
+        "pickerGroupId": "osm:relation:7109817",
+        "offset": 603488,
+        "length": 628
+      },
+      "sourceGeometrySha256": "005b506736c3c6157436661095fe9b3a69bd562a263725e9bca30eb840021b6b",
+      "packedGeometrySha256": "948770dc1d3c9b9c5136c990c43496b75edcdd121469d91a63c1b2417421c9f4",
+      "expectedCuration": {
+        "id": "osm:relation:7109817",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "‫جنعورة‬",
+          "ref:tn:codegeo": "635159"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110466",
+        "reason": "ISIE lists Janoura in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7109813",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635251",
+        "sectorFr": "Kebeli nord",
+        "sectorAr": "قبلي الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69573,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3411,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3404
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قبلي الشمالية",
+        "name:ar": "‫‫قبلي الشمالية‬‬",
+        "name:fr": "Kébili Nord",
+        "ref:tn:codegeo": "635251"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109813",
+        "sourceId": "osm",
+        "name": "قبلي الشمالية",
+        "aliases": [
+          "Kébili Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.723677,
+        "lng": 9.006452,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.972216,
+          33.700218,
+          9.042639,
+          33.747566
+        ],
+        "areaKm2": 17.99556681072666,
+        "pickerGroupId": "osm:relation:7109813",
+        "offset": 601460,
+        "length": 692
+      },
+      "sourceGeometrySha256": "7544a413209760a9db103676ea87aab811569e368b4448c10f697498fcb46367",
+      "packedGeometrySha256": "29232e6e491742b7eb8b8b62d85b8ca086b2b81466a7e86c2b488211340dca58",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7109815",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635252",
+        "sectorFr": "El mansoura",
+        "sectorAr": "المنصورة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69607,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3413,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3406
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المنصورة",
+        "name:ar": "‫المنصورة‬",
+        "name:fr": "El Mansoura",
+        "ref:tn:codegeo": "635252"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109815",
+        "sourceId": "osm",
+        "name": "المنصورة",
+        "aliases": [
+          "El Mansoura"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.730137,
+        "lng": 8.957156,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.92213,
+          33.70775,
+          8.992369,
+          33.752412
+        ],
+        "areaKm2": 18.228577532609684,
+        "pickerGroupId": "osm:relation:7109815",
+        "offset": 602152,
+        "length": 732
+      },
+      "sourceGeometrySha256": "b8db87d3275cf2d46bad4c17dbf634b3d2d94f29e57ad4d543436471cccfd7ae",
+      "packedGeometrySha256": "4ee86fbdb2754f248a3bd7b2512afc387c6a9d4738bde370c19683bf018b7da8",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7109818",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635253",
+        "sectorFr": "Errabta",
+        "sectorAr": "الرابطة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69641,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3415,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3408
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الرابطة",
+        "name:ar": "‫الرابطة‬",
+        "name:fr": "Errabta",
+        "ref:tn:codegeo": "635253"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109818",
+        "sourceId": "osm",
+        "name": "الرابطة",
+        "aliases": [
+          "Errabta"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.734703,
+        "lng": 8.925516,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.902949,
+          33.71787,
+          8.960327,
+          33.752065
+        ],
+        "areaKm2": 6.90825812600552,
+        "pickerGroupId": "osm:relation:7109818",
+        "offset": 604116,
+        "length": 468
+      },
+      "sourceGeometrySha256": "ff673bf73c2633cc8b92c5c34ea0e962b17796f156a610b532c3556d6a1e1257",
+      "packedGeometrySha256": "265b6cca49ed74cdadde3cde5d951cb8b818a456d5f40104721ddee458f71f0a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7109820",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635254",
+        "sectorFr": "Tonbar",
+        "sectorAr": "طنبار",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69675,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3417,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3410
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "طنبار",
+        "name:ar": "‫طنبار‬",
+        "name:fr": "Tombar",
+        "ref:tn:codegeo": "635254"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109820",
+        "sourceId": "osm",
+        "name": "طنبار",
+        "aliases": [
+          "Tombar",
+          "Tonmbar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.731245,
+        "lng": 8.896617,
+        "delegationId": 483,
+        "hasBoundary": true,
+        "bbox": [
+          8.880846,
+          33.712506,
+          8.937253,
+          33.74956
+        ],
+        "areaKm2": 8.35206605854752,
+        "pickerGroupId": "osm:relation:7109820",
+        "offset": 604972,
+        "length": 276
+      },
+      "sourceGeometrySha256": "9f48eb9d23c55aae2399b275c91c5a6dad8605b45fc081990506da43fc3a68b4",
+      "packedGeometrySha256": "d0594dd238687762b7c5242c77069db0dfddd06aa62c2a6b09a14f6669ca2a3f",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7108236",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635255",
+        "sectorFr": "Limagues_estiftimia",
+        "sectorAr": "ليماقس_اسطفطيمية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69709,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3418,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3411
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ليماقس استفطيمي",
+        "name:ar": "ليماقس استفطيمي",
+        "name:fr": "Limagues Steftimi",
+        "ref:tn:codegeo": "635255"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7108236",
+        "sourceId": "osm",
+        "name": "ليماقس استفطيمي",
+        "aliases": [
+          "Limagues Steftimi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.94746,
+        "lng": 9.179049,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          9.001343,
+          33.709542,
+          9.350783,
+          34.185428
+        ],
+        "areaKm2": 643.676987768548,
+        "pickerGroupId": "osm:relation:7108236",
+        "offset": 559272,
+        "length": 4828
+      },
+      "sourceGeometrySha256": "e64ec71bce768802b6107b73c9a8dcb0a772f31aaa01e756a5726f22265dfa8b",
+      "packedGeometrySha256": "398709b8e8fedebb767f2c9be03257b4580781aee1ef885592f8ff44211c75f4",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7109816",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635256",
+        "sectorFr": "Telmine",
+        "sectorAr": "تلمين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69743,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3420,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3413
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تلمين",
+        "name:ar": "‫تلمين‬",
+        "name:fr": "Telmine",
+        "ref:tn:codegeo": "635256"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109816",
+        "sourceId": "osm",
+        "name": "تلمين",
+        "aliases": [
+          "Telmine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.706843,
+        "lng": 8.910198,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.895951,
+          33.694009,
+          8.92396,
+          33.720081
+        ],
+        "areaKm2": 2.089442289906644,
+        "pickerGroupId": "osm:relation:7109816",
+        "offset": 602884,
+        "length": 604
+      },
+      "sourceGeometrySha256": "6d80ee328b2ed29f08b1b5b5cfa2c93703d6c34db094f09ce5c7862ff8ee28c8",
+      "packedGeometrySha256": "cb047d26d2fa99fed9bbce75ac467d894187bf74145509a432377d6ba2d1415a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7109819",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635257",
+        "sectorFr": "Tenbib",
+        "sectorAr": "تنبيت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69777,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3421,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3414
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تنبيب",
+        "name:ar": "‫تنبيب‬",
+        "name:fr": "Tenbib",
+        "ref:tn:codegeo": "635257"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109819",
+        "sourceId": "osm",
+        "name": "تنبيب",
+        "aliases": [
+          "Tenbib"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.710832,
+        "lng": 8.895189,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.878915,
+          33.693039,
+          8.915754,
+          33.728259
+        ],
+        "areaKm2": 6.727034024064657,
+        "pickerGroupId": "osm:relation:7109819",
+        "offset": 604584,
+        "length": 388
+      },
+      "sourceGeometrySha256": "6ef9192085d4610f630e30d637bc5bab0f1e76975c996f7d0e622e36a1058bd7",
+      "packedGeometrySha256": "1b36b2184a14016e2008b4ba00d35af466b936c04271f52b3fd51bed8187edcb",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7108237",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635258",
+        "sectorFr": "Saidane",
+        "sectorAr": "سعيدان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69811,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3422,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3415
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سعيدان",
+        "name:ar": "‫سعيدان‬",
+        "name:fr": "Saïdane",
+        "ref:tn:codegeo": "635258"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7108237",
+        "sourceId": "osm",
+        "name": "سعيدان",
+        "aliases": [
+          "Saidane",
+          "Saïdane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.762389,
+        "lng": 9.243973,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          9.138061,
+          33.645259,
+          9.40106,
+          33.870419
+        ],
+        "areaKm2": 355.9404164582224,
+        "pickerGroupId": "osm:relation:7108237",
+        "offset": 564100,
+        "length": 812
+      },
+      "sourceGeometrySha256": "93ce140045acb455c84154a3ba86e91ee8a979bdf98b2115faefc38292923d71",
+      "packedGeometrySha256": "86ce43888dd34603997c6f617de6353d81ed277682a27a7ceb84a35c26287bc5",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7082695",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635259",
+        "sectorFr": "Gataya",
+        "sectorAr": "قطعاية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69845,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3424,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3417
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القطعاية",
+        "name:ar": "القطعاية",
+        "name:fr": "El Gattaya",
+        "ref:tn:codegeo": "635259"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7082695",
+        "sourceId": "osm",
+        "name": "القطعاية",
+        "aliases": [
+          "El Gattaya"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.632452,
+        "lng": 8.882991,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.791563,
+          33.552044,
+          8.960433,
+          33.714741
+        ],
+        "areaKm2": 104.63687388123493,
+        "pickerGroupId": "osm:relation:7082695",
+        "offset": 85420,
+        "length": 2052
+      },
+      "sourceGeometrySha256": "d34b1c0860c00c709d8287bc9c6fd64a9261358d90120a7cefc49e889f165878",
+      "packedGeometrySha256": "5ac038e1b44a980d9a708862d0b5d268e087e1b32658ac5f4fbeaa3ff0667828",
+      "expectedCuration": {
+        "id": "osm:relation:7082695",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "القطعاية",
+          "ref:tn:codegeo": "635259"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110523",
+        "reason": "ISIE lists Gataaya in Kebili Nord. Conflicting source geometry places it in Kebili Sud.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7109996",
+      "officialIdentity": {
+        "governorateCode": "63",
+        "governorateFr": "Kebili",
+        "governorateAr": "قبلي",
+        "delegationCode": "6352",
+        "delegationFr": "Kebeli nord",
+        "delegationAr": "قبلي الشمالية",
+        "sectorCode": "635260",
+        "sectorFr": "Kebeli est",
+        "sectorAr": "قبلي الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69879,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3426,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3419
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قبلي الشرقية",
+        "name:ar": "قبلي الشرقية",
+        "name:fr": "Kebili Est",
+        "ref:tn:codegeo": "635260"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7109996",
+        "sourceId": "osm",
+        "name": "قبلي الشرقية",
+        "aliases": [
+          "Kebili Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قبلي الشمالية",
+        "contextAliases": [
+          "Délégation Kébili Nord",
+          "Kébili Nord",
+          "معتمدية قبلي الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.706677,
+        "lng": 8.961056,
+        "delegationId": 482,
+        "hasBoundary": true,
+        "bbox": [
+          8.950297,
+          33.690896,
+          9.013392,
+          33.778858
+        ],
+        "areaKm2": 7.097221526529421,
+        "pickerGroupId": "osm:relation:7109996",
+        "offset": 605708,
+        "length": 860
+      },
+      "sourceGeometrySha256": "ad6bfe4255022a11c8eea958859912dd41f0da692167b177d46a6f45ea2dceec",
+      "packedGeometrySha256": "b02bf0838eaae217d6805e74f785850b8682c4b16f7c11c87cd4b6c140370941",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:298019989",
+      "kind": "town",
+      "tags": {
+        "name": "قبلي",
+        "name:ar": "قبلي",
+        "name:en": "Kebili",
+        "name:eo": "Kebili",
+        "name:fa": "قبلی",
+        "name:fr": "Kebili",
+        "name:he": "קבילי",
+        "name:ks": "قبلی",
+        "name:pl": "Kibili",
+        "name:ru": "Кебили",
+        "name:ur": "قبلی",
+        "place": "town",
+        "wikidata": "Q27157",
+        "wikimedia_commons": "Category:Kebili",
+        "wikipedia": "ar:قبلي (تونس)"
+      }
+    },
+    {
+      "id": "osm:relation:1434950",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-73",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية قبلي",
+        "name:ar": "ولاية قبلي",
+        "name:az": "Kebili (vilayət)",
+        "name:be": "Кебілі (вілает)",
+        "name:be-tarask": "Кебілі (вілает)",
+        "name:bg": "Кебили (област)",
+        "name:ca": "Governació de Kébili",
+        "name:ceb": "Gouvernorat de Kébili",
+        "name:cy": "Kébili (talaith)",
+        "name:de": "Gouvernement Kebili",
+        "name:el": "Κεμπιλί (Κυβερνείο)",
+        "name:en": "Kébili",
+        "name:eo": "Kebili",
+        "name:es": "Gobernación de Kebili",
+        "name:fa": "قبلی",
+        "name:fr": "Gouvernorat Kébili",
+        "name:frr": "Kébili (Guwernement)",
+        "name:id": "Kegubernuran Kebili",
+        "name:it": "Kébili",
+        "name:ja": "ケビリ県",
+        "name:ko": "케빌리주",
+        "name:ks": "قبلی",
+        "name:ms": "Kawasan kegabenoran Kebili",
+        "name:nl": "Kébili (gouvernement)",
+        "name:no": "Kebili (guvernement)",
+        "name:pl": "Kibili",
+        "name:pt": "Kebili (província)",
+        "name:ro": "Guvernoratul Kebili",
+        "name:ru": "Кебили (вилайет)",
+        "name:sco": "Kebili Govrenorate",
+        "name:sh": "Kébili (vilajet)",
+        "name:tr": "Kabili ili",
+        "name:uk": "Кебілі (вілаєт)",
+        "name:ur": "قبلی",
+        "name:zh": "吉比利省",
+        "name:zu": "Kebili Governorate",
+        "official_name": "ولاية قبلي",
+        "official_name:ar": "ولاية قبلي",
+        "official_name:en": "Kebili Governorate",
+        "official_name:eo": "Gubernio de Kebili",
+        "official_name:fa": "استان قبلی",
+        "official_name:fr": "Gouvernorat de Kébili",
+        "official_name:it": "Governatorato di Kébili",
+        "official_name:pl": "Gubernatorstwo Kibili",
+        "official_name:ur": "ولایت قبلی",
+        "population": "156961",
+        "population:date": "2014",
+        "ref:tn:codegeo": "63",
+        "wikidata": "Q286063",
+        "wikipedia": "ar:ولاية قبلي"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434950": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-73",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية قبلي",
+        "name:ar": "ولاية قبلي",
+        "name:az": "Kebili (vilayət)",
+        "name:be": "Кебілі (вілает)",
+        "name:be-tarask": "Кебілі (вілает)",
+        "name:bg": "Кебили (област)",
+        "name:ca": "Governació de Kébili",
+        "name:ceb": "Gouvernorat de Kébili",
+        "name:cy": "Kébili (talaith)",
+        "name:de": "Gouvernement Kebili",
+        "name:el": "Κεμπιλί (Κυβερνείο)",
+        "name:en": "Kébili",
+        "name:eo": "Kebili",
+        "name:es": "Gobernación de Kebili",
+        "name:fa": "قبلی",
+        "name:fr": "Gouvernorat Kébili",
+        "name:frr": "Kébili (Guwernement)",
+        "name:id": "Kegubernuran Kebili",
+        "name:it": "Kébili",
+        "name:ja": "ケビリ県",
+        "name:ko": "케빌리주",
+        "name:ks": "قبلی",
+        "name:ms": "Kawasan kegabenoran Kebili",
+        "name:nl": "Kébili (gouvernement)",
+        "name:no": "Kebili (guvernement)",
+        "name:pl": "Kibili",
+        "name:pt": "Kebili (província)",
+        "name:ro": "Guvernoratul Kebili",
+        "name:ru": "Кебили (вилайет)",
+        "name:sco": "Kebili Govrenorate",
+        "name:sh": "Kébili (vilajet)",
+        "name:tr": "Kabili ili",
+        "name:uk": "Кебілі (вілаєт)",
+        "name:ur": "قبلی",
+        "name:zh": "吉比利省",
+        "name:zu": "Kebili Governorate",
+        "official_name": "ولاية قبلي",
+        "official_name:ar": "ولاية قبلي",
+        "official_name:en": "Kebili Governorate",
+        "official_name:eo": "Gubernio de Kebili",
+        "official_name:fa": "استان قبلی",
+        "official_name:fr": "Gouvernorat de Kébili",
+        "official_name:it": "Governatorato di Kébili",
+        "official_name:pl": "Gubernatorstwo Kibili",
+        "official_name:ur": "ولایت قبلی",
+        "population": "156961",
+        "population:date": "2014",
+        "ref:tn:codegeo": "63",
+        "wikidata": "Q286063",
+        "wikipedia": "ar:ولاية قبلي"
+      },
+      "sourceGeometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+    },
+    "osm:relation:7110466": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Kébili Sud",
+        "boundary": "administrative",
+        "name": "معتمدية قبلي الجنوبية",
+        "name:ar": "معتمدية قبلي الجنوبية",
+        "name:fr": "Délégation Kébili Sud",
+        "official_name": "معتمدية قبلي الجنوبية",
+        "official_name:ar": "معتمدية قبلي الجنوبية",
+        "ref:tn:codegeo": "6351",
+        "ref:tn:hasc_2": "TN.KB.KS",
+        "wikidata": "Q3201086",
+        "wikipedia": "ar:معتمدية قبلي الجنوبية"
+      },
+      "sourceGeometrySha256": "ce8d07af2907a90107ea248b9d31cd1d924e25693d62b57987ffa9e8df4808d0"
+    },
+    "osm:relation:7110523": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Kébili Nord",
+        "boundary": "administrative",
+        "name": "معتمدية قبلي الشمالية",
+        "name:ar": "معتمدية قبلي الشمالية",
+        "name:fr": "Délégation Kébili Nord",
+        "official_name": "معتمدية قبلي الشمالية",
+        "official_name:ar": "معتمدية قبلي الشمالية",
+        "ref:tn:codegeo": "6352",
+        "ref:tn:hasc_2": "TN.KB.KN",
+        "wikidata": "Q3201083",
+        "wikipedia": "ar:معتمدية قبلي الشمالية"
+      },
+      "sourceGeometrySha256": "8ff71d7b67b7a8639cd0dd8374701a1a10b8d3611fb08fb5a8c4c2e7cb569b16"
+    }
+  },
+  "townPreservationExtension": {
+    "schemaVersion": 1,
+    "officialDelegationCodes": [
+      "6351",
+      "6352"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:298019989",
+        "original": {
+          "tags": {
+            "name": "قبلي",
+            "name:ar": "قبلي",
+            "name:en": "Kebili",
+            "name:eo": "Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Kebili",
+            "name:he": "קבילי",
+            "name:ks": "قبلی",
+            "name:pl": "Kibili",
+            "name:ru": "Кебили",
+            "name:ur": "قبلی",
+            "place": "town",
+            "wikidata": "Q27157",
+            "wikimedia_commons": "Category:Kebili",
+            "wikipedia": "ar:قبلي (تونس)"
+          },
+          "kind": "town",
+          "sourceId": null,
+          "geometrySha256": "27b3324e4a03531b1f3cf9ca20e72aadcb2152c93f754920d79098003987e5e0"
+        },
+        "effective": {
+          "tags": {
+            "name": "قبلي",
+            "name:ar": "قبلي",
+            "name:en": "Kebili",
+            "name:eo": "Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Kebili",
+            "name:he": "קבילי",
+            "name:ks": "قبلی",
+            "name:pl": "Kibili",
+            "name:ru": "Кебили",
+            "name:ur": "قبلی",
+            "place": "town",
+            "wikidata": "Q27157",
+            "wikimedia_commons": "Category:Kebili",
+            "wikipedia": "ar:قبلي (تونس)"
+          },
+          "kind": "town",
+          "sourceId": "osm",
+          "geometrySha256": "27b3324e4a03531b1f3cf9ca20e72aadcb2152c93f754920d79098003987e5e0"
+        }
+      },
+      {
+        "id": "osm:node:9945093900",
+        "original": {
+          "tags": {
+            "name": "بني محمد",
+            "name:ar": "بني محمد",
+            "name:fr": "Beni Mhammad",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "eeec0251ef4f4d7f037e02a33ea95a6a718b6fe7277f24ec201662b0f3960c29"
+        },
+        "effective": {
+          "tags": {
+            "name": "بني محمد",
+            "name:ar": "بني محمد",
+            "name:fr": "Beni Mhammad",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "eeec0251ef4f4d7f037e02a33ea95a6a718b6fe7277f24ec201662b0f3960c29"
+        }
+      },
+      {
+        "id": "osm:node:9947246733",
+        "original": {
+          "tags": {
+            "name": "جرسين",
+            "name:ar": "جرسين",
+            "name:fr": "Zarsin",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "e7f073e0f62ebc94927b0890ae5b9f98d846fa863773395b9cdd42e4388d3825"
+        },
+        "effective": {
+          "tags": {
+            "name": "جرسين",
+            "name:ar": "جرسين",
+            "name:fr": "Zarsin",
+            "place": "village"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "e7f073e0f62ebc94927b0890ae5b9f98d846fa863773395b9cdd42e4388d3825"
+        }
+      },
+      {
+        "id": "osm:relation:1434950",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-73",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قبلي",
+            "name:ar": "ولاية قبلي",
+            "name:az": "Kebili (vilayət)",
+            "name:be": "Кебілі (вілает)",
+            "name:be-tarask": "Кебілі (вілает)",
+            "name:bg": "Кебили (област)",
+            "name:ca": "Governació de Kébili",
+            "name:ceb": "Gouvernorat de Kébili",
+            "name:cy": "Kébili (talaith)",
+            "name:de": "Gouvernement Kebili",
+            "name:el": "Κεμπιλί (Κυβερνείο)",
+            "name:en": "Kébili",
+            "name:eo": "Kebili",
+            "name:es": "Gobernación de Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Gouvernorat Kébili",
+            "name:frr": "Kébili (Guwernement)",
+            "name:id": "Kegubernuran Kebili",
+            "name:it": "Kébili",
+            "name:ja": "ケビリ県",
+            "name:ko": "케빌리주",
+            "name:ks": "قبلی",
+            "name:ms": "Kawasan kegabenoran Kebili",
+            "name:nl": "Kébili (gouvernement)",
+            "name:no": "Kebili (guvernement)",
+            "name:pl": "Kibili",
+            "name:pt": "Kebili (província)",
+            "name:ro": "Guvernoratul Kebili",
+            "name:ru": "Кебили (вилайет)",
+            "name:sco": "Kebili Govrenorate",
+            "name:sh": "Kébili (vilajet)",
+            "name:tr": "Kabili ili",
+            "name:uk": "Кебілі (вілаєт)",
+            "name:ur": "قبلی",
+            "name:zh": "吉比利省",
+            "name:zu": "Kebili Governorate",
+            "official_name": "ولاية قبلي",
+            "official_name:ar": "ولاية قبلي",
+            "official_name:en": "Kebili Governorate",
+            "official_name:eo": "Gubernio de Kebili",
+            "official_name:fa": "استان قبلی",
+            "official_name:fr": "Gouvernorat de Kébili",
+            "official_name:it": "Governatorato di Kébili",
+            "official_name:pl": "Gubernatorstwo Kibili",
+            "official_name:ur": "ولایت قبلی",
+            "population": "156961",
+            "population:date": "2014",
+            "ref:tn:codegeo": "63",
+            "wikidata": "Q286063",
+            "wikipedia": "ar:ولاية قبلي"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-73",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قبلي",
+            "name:ar": "ولاية قبلي",
+            "name:az": "Kebili (vilayət)",
+            "name:be": "Кебілі (вілает)",
+            "name:be-tarask": "Кебілі (вілает)",
+            "name:bg": "Кебили (област)",
+            "name:ca": "Governació de Kébili",
+            "name:ceb": "Gouvernorat de Kébili",
+            "name:cy": "Kébili (talaith)",
+            "name:de": "Gouvernement Kebili",
+            "name:el": "Κεμπιλί (Κυβερνείο)",
+            "name:en": "Kébili",
+            "name:eo": "Kebili",
+            "name:es": "Gobernación de Kebili",
+            "name:fa": "قبلی",
+            "name:fr": "Gouvernorat Kébili",
+            "name:frr": "Kébili (Guwernement)",
+            "name:id": "Kegubernuran Kebili",
+            "name:it": "Kébili",
+            "name:ja": "ケビリ県",
+            "name:ko": "케빌리주",
+            "name:ks": "قبلی",
+            "name:ms": "Kawasan kegabenoran Kebili",
+            "name:nl": "Kébili (gouvernement)",
+            "name:no": "Kebili (guvernement)",
+            "name:pl": "Kibili",
+            "name:pt": "Kebili (província)",
+            "name:ro": "Guvernoratul Kebili",
+            "name:ru": "Кебили (вилайет)",
+            "name:sco": "Kebili Govrenorate",
+            "name:sh": "Kébili (vilajet)",
+            "name:tr": "Kabili ili",
+            "name:uk": "Кебілі (вілаєт)",
+            "name:ur": "قبلی",
+            "name:zh": "吉比利省",
+            "name:zu": "Kebili Governorate",
+            "official_name": "ولاية قبلي",
+            "official_name:ar": "ولاية قبلي",
+            "official_name:en": "Kebili Governorate",
+            "official_name:eo": "Gubernio de Kebili",
+            "official_name:fa": "استان قبلی",
+            "official_name:fr": "Gouvernorat de Kébili",
+            "official_name:it": "Governatorato di Kébili",
+            "official_name:pl": "Gubernatorstwo Kibili",
+            "official_name:ur": "ولایت قبلی",
+            "population": "156961",
+            "population:date": "2014",
+            "ref:tn:codegeo": "63",
+            "wikidata": "Q286063",
+            "wikipedia": "ar:ولاية قبلي"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "7f441d5370dbddd9a7215d77b988a0138b8194c57d53bee40955e2b9c6f12815"
+        }
+      },
+      {
+        "id": "osm:relation:7082186",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمنة الجنوبية",
+            "name:ar": "جمنة الجنوبية",
+            "name:fr": "Jemna Sud",
+            "ref:tn:codegeo": "635154"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "6f160b42e7d8aced8caa3c88fea9e6604a28203cf1fcb1343815bb6b1ca009e4"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمنة الجنوبية",
+            "name:ar": "جمنة الجنوبية",
+            "name:fr": "Jemna Sud",
+            "ref:tn:codegeo": "635154"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "6f160b42e7d8aced8caa3c88fea9e6604a28203cf1fcb1343815bb6b1ca009e4"
+        }
+      },
+      {
+        "id": "osm:relation:7082187",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمنة الشمالية",
+            "name:ar": "جمنة الشمالية",
+            "name:fr": "Jemna Nord",
+            "ref:tn:codegeo": "635153"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "7592930ae8cf04402081b55cc3e2d1c09de5a68f40a7c2a1b96c1dd13e86a1bf"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمنة الشمالية",
+            "name:ar": "جمنة الشمالية",
+            "name:fr": "Jemna Nord",
+            "ref:tn:codegeo": "635153"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "7592930ae8cf04402081b55cc3e2d1c09de5a68f40a7c2a1b96c1dd13e86a1bf"
+        }
+      },
+      {
+        "id": "osm:relation:7082695",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القطعاية",
+            "name:ar": "القطعاية",
+            "name:fr": "El Gattaya",
+            "ref:tn:codegeo": "635259"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "d34b1c0860c00c709d8287bc9c6fd64a9261358d90120a7cefc49e889f165878"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القطعاية",
+            "name:ar": "القطعاية",
+            "name:fr": "El Gattaya",
+            "ref:tn:codegeo": "635259"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "d34b1c0860c00c709d8287bc9c6fd64a9261358d90120a7cefc49e889f165878"
+        }
+      },
+      {
+        "id": "osm:relation:7082707",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البليدات",
+            "name:fr": "El Blidete",
+            "ref:tn:codegeo": "635157"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "7cb0f686df25ff4b338d1628a4bb041e6c96fd29a098d21c93d6f544384ba028"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البليدات",
+            "name:fr": "El Blidete",
+            "ref:tn:codegeo": "635157"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "7cb0f686df25ff4b338d1628a4bb041e6c96fd29a098d21c93d6f544384ba028"
+        }
+      },
+      {
+        "id": "osm:relation:7082714",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جرسین",
+            "name:fr": "Jersine",
+            "ref:tn:codegeo": "635156"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "bea80bbec021baefc050a8a110db4f4f3320db2a2dd74bd9944e405772c70a60"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "ref:tn:codegeo": "635156",
+            "name": "جرسين",
+            "name:ar": "جرسين",
+            "name:fr": "Jersine",
+            "alt_name": "جرسین"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "bea80bbec021baefc050a8a110db4f4f3320db2a2dd74bd9944e405772c70a60"
+        }
+      },
+      {
+        "id": "osm:relation:7082747",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بشلي",
+            "name:ar": "بشلي",
+            "name:fr": "Bchelli",
+            "ref:tn:codegeo": "635155"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "9677588c9ebf30c944d5811bdd6d3cf31593dcd747136cfabf1b51b9268e3f08"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بشلي",
+            "name:ar": "بشلي",
+            "name:fr": "Bchelli",
+            "ref:tn:codegeo": "635155"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "9677588c9ebf30c944d5811bdd6d3cf31593dcd747136cfabf1b51b9268e3f08"
+        }
+      },
+      {
+        "id": "osm:relation:7082748",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بن محمد",
+            "name:ar": "بن محمد",
+            "name:fr": "Ben Mehemed",
+            "ref:tn:codegeo": "635158"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "992ba00a7b62f5d2dc23ec5e6b7aadd4dd488c55b809e411e4f8cc94042c6dd4"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "ref:tn:codegeo": "635158",
+            "name": "بني محمّد",
+            "name:ar": "بني محمّد",
+            "name:fr": "Beni mehemed",
+            "alt_name": "بن محمد;Ben Mehemed"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "992ba00a7b62f5d2dc23ec5e6b7aadd4dd488c55b809e411e4f8cc94042c6dd4"
+        }
+      },
+      {
+        "id": "osm:relation:7108236",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ليماقس استفطيمي",
+            "name:ar": "ليماقس استفطيمي",
+            "name:fr": "Limagues Steftimi",
+            "ref:tn:codegeo": "635255"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "e64ec71bce768802b6107b73c9a8dcb0a772f31aaa01e756a5726f22265dfa8b"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ليماقس استفطيمي",
+            "name:ar": "ليماقس استفطيمي",
+            "name:fr": "Limagues Steftimi",
+            "ref:tn:codegeo": "635255"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "e64ec71bce768802b6107b73c9a8dcb0a772f31aaa01e756a5726f22265dfa8b"
+        }
+      },
+      {
+        "id": "osm:relation:7108237",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سعيدان",
+            "name:ar": "‫سعيدان‬",
+            "name:fr": "Saïdane",
+            "ref:tn:codegeo": "635258"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "93ce140045acb455c84154a3ba86e91ee8a979bdf98b2115faefc38292923d71"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سعيدان",
+            "name:ar": "‫سعيدان‬",
+            "name:fr": "Saïdane",
+            "ref:tn:codegeo": "635258"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "93ce140045acb455c84154a3ba86e91ee8a979bdf98b2115faefc38292923d71"
+        }
+      },
+      {
+        "id": "osm:relation:7109812",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قبلي الجنوبية",
+            "name:ar": "قبلي الجنوبية",
+            "name:fr": "Kebili Sud",
+            "ref:tn:codegeo": "635151"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "c9bd59b5f4e078e400a474c38552d5db4108be76e82dbc1573ae0ca443ae5ae0"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قبلي الجنوبية",
+            "name:ar": "قبلي الجنوبية",
+            "name:fr": "Kebili Sud",
+            "ref:tn:codegeo": "635151"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "c9bd59b5f4e078e400a474c38552d5db4108be76e82dbc1573ae0ca443ae5ae0"
+        }
+      },
+      {
+        "id": "osm:relation:7109813",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قبلي الشمالية",
+            "name:ar": "‫‫قبلي الشمالية‬‬",
+            "name:fr": "Kébili Nord",
+            "ref:tn:codegeo": "635251"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "7544a413209760a9db103676ea87aab811569e368b4448c10f697498fcb46367"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قبلي الشمالية",
+            "name:ar": "‫‫قبلي الشمالية‬‬",
+            "name:fr": "Kébili Nord",
+            "ref:tn:codegeo": "635251"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "7544a413209760a9db103676ea87aab811569e368b4448c10f697498fcb46367"
+        }
+      },
+      {
+        "id": "osm:relation:7109815",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المنصورة",
+            "name:ar": "‫المنصورة‬",
+            "name:fr": "El Mansoura",
+            "ref:tn:codegeo": "635252"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "b8db87d3275cf2d46bad4c17dbf634b3d2d94f29e57ad4d543436471cccfd7ae"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المنصورة",
+            "name:ar": "‫المنصورة‬",
+            "name:fr": "El Mansoura",
+            "ref:tn:codegeo": "635252"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "b8db87d3275cf2d46bad4c17dbf634b3d2d94f29e57ad4d543436471cccfd7ae"
+        }
+      },
+      {
+        "id": "osm:relation:7109816",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تلمين",
+            "name:ar": "‫تلمين‬",
+            "name:fr": "Telmine",
+            "ref:tn:codegeo": "635256"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "6d80ee328b2ed29f08b1b5b5cfa2c93703d6c34db094f09ce5c7862ff8ee28c8"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تلمين",
+            "name:ar": "‫تلمين‬",
+            "name:fr": "Telmine",
+            "ref:tn:codegeo": "635256"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "6d80ee328b2ed29f08b1b5b5cfa2c93703d6c34db094f09ce5c7862ff8ee28c8"
+        }
+      },
+      {
+        "id": "osm:relation:7109817",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جنعورة",
+            "name:ar": "‫جنعورة‬",
+            "name:fr": "Janoura",
+            "ref:tn:codegeo": "635159"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "005b506736c3c6157436661095fe9b3a69bd562a263725e9bca30eb840021b6b"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جنعورة",
+            "name:ar": "‫جنعورة‬",
+            "name:fr": "Janoura",
+            "ref:tn:codegeo": "635159"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "005b506736c3c6157436661095fe9b3a69bd562a263725e9bca30eb840021b6b"
+        }
+      },
+      {
+        "id": "osm:relation:7109818",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الرابطة",
+            "name:ar": "‫الرابطة‬",
+            "name:fr": "Errabta",
+            "ref:tn:codegeo": "635253"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "ff673bf73c2633cc8b92c5c34ea0e962b17796f156a610b532c3556d6a1e1257"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الرابطة",
+            "name:ar": "‫الرابطة‬",
+            "name:fr": "Errabta",
+            "ref:tn:codegeo": "635253"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "ff673bf73c2633cc8b92c5c34ea0e962b17796f156a610b532c3556d6a1e1257"
+        }
+      },
+      {
+        "id": "osm:relation:7109819",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تنبيب",
+            "name:ar": "‫تنبيب‬",
+            "name:fr": "Tenbib",
+            "ref:tn:codegeo": "635257"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "6ef9192085d4610f630e30d637bc5bab0f1e76975c996f7d0e622e36a1058bd7"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تنبيب",
+            "name:ar": "‫تنبيب‬",
+            "name:fr": "Tenbib",
+            "ref:tn:codegeo": "635257"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "6ef9192085d4610f630e30d637bc5bab0f1e76975c996f7d0e622e36a1058bd7"
+        }
+      },
+      {
+        "id": "osm:relation:7109820",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طنبار",
+            "name:ar": "‫طنبار‬",
+            "name:fr": "Tombar",
+            "ref:tn:codegeo": "635254"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "9f48eb9d23c55aae2399b275c91c5a6dad8605b45fc081990506da43fc3a68b4"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طنبار",
+            "name:ar": "‫طنبار‬",
+            "name:fr": "Tombar",
+            "ref:tn:codegeo": "635254"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "9f48eb9d23c55aae2399b275c91c5a6dad8605b45fc081990506da43fc3a68b4"
+        }
+      },
+      {
+        "id": "osm:relation:7109821",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بازمة",
+            "name:ar": "‫بازمة‬",
+            "name:fr": "Bazma",
+            "ref:tn:codegeo": "635152"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "b3843aa6b16bee5791b18c3d73dbf6118e40a58635f67b4864853e9b57cef189"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بازمة",
+            "name:ar": "‫بازمة‬",
+            "name:fr": "Bazma",
+            "ref:tn:codegeo": "635152"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "b3843aa6b16bee5791b18c3d73dbf6118e40a58635f67b4864853e9b57cef189"
+        }
+      },
+      {
+        "id": "osm:relation:7109996",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قبلي الشرقية",
+            "name:ar": "قبلي الشرقية",
+            "name:fr": "Kebili Est",
+            "ref:tn:codegeo": "635260"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "ad6bfe4255022a11c8eea958859912dd41f0da692167b177d46a6f45ea2dceec"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قبلي الشرقية",
+            "name:ar": "قبلي الشرقية",
+            "name:fr": "Kebili Est",
+            "ref:tn:codegeo": "635260"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "ad6bfe4255022a11c8eea958859912dd41f0da692167b177d46a6f45ea2dceec"
+        }
+      },
+      {
+        "id": "osm:relation:7110466",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Sud",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الجنوبية",
+            "name:ar": "معتمدية قبلي الجنوبية",
+            "name:fr": "Délégation Kébili Sud",
+            "official_name": "معتمدية قبلي الجنوبية",
+            "official_name:ar": "معتمدية قبلي الجنوبية",
+            "ref:tn:codegeo": "6351",
+            "ref:tn:hasc_2": "TN.KB.KS",
+            "wikidata": "Q3201086",
+            "wikipedia": "ar:معتمدية قبلي الجنوبية"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "ce8d07af2907a90107ea248b9d31cd1d924e25693d62b57987ffa9e8df4808d0"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Sud",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الجنوبية",
+            "name:ar": "معتمدية قبلي الجنوبية",
+            "name:fr": "Délégation Kébili Sud",
+            "official_name": "معتمدية قبلي الجنوبية",
+            "official_name:ar": "معتمدية قبلي الجنوبية",
+            "ref:tn:codegeo": "6351",
+            "ref:tn:hasc_2": "TN.KB.KS",
+            "wikidata": "Q3201086",
+            "wikipedia": "ar:معتمدية قبلي الجنوبية"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "ce8d07af2907a90107ea248b9d31cd1d924e25693d62b57987ffa9e8df4808d0"
+        }
+      },
+      {
+        "id": "osm:relation:7110523",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Nord",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الشمالية",
+            "name:ar": "معتمدية قبلي الشمالية",
+            "name:fr": "Délégation Kébili Nord",
+            "official_name": "معتمدية قبلي الشمالية",
+            "official_name:ar": "معتمدية قبلي الشمالية",
+            "ref:tn:codegeo": "6352",
+            "ref:tn:hasc_2": "TN.KB.KN",
+            "wikidata": "Q3201083",
+            "wikipedia": "ar:معتمدية قبلي الشمالية"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "8ff71d7b67b7a8639cd0dd8374701a1a10b8d3611fb08fb5a8c4c2e7cb569b16"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kébili Nord",
+            "boundary": "administrative",
+            "name": "معتمدية قبلي الشمالية",
+            "name:ar": "معتمدية قبلي الشمالية",
+            "name:fr": "Délégation Kébili Nord",
+            "official_name": "معتمدية قبلي الشمالية",
+            "official_name:ar": "معتمدية قبلي الشمالية",
+            "ref:tn:codegeo": "6352",
+            "ref:tn:hasc_2": "TN.KB.KN",
+            "wikidata": "Q3201083",
+            "wikipedia": "ar:معتمدية قبلي الشمالية"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "8ff71d7b67b7a8639cd0dd8374701a1a10b8d3611fb08fb5a8c4c2e7cb569b16"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:node:9945093900": {
+        "id": "osm:node:9945093900",
+        "action": "preserve_point",
+        "expectedKind": "village",
+        "expectedTags": {
+          "name": "بني محمد",
+          "name:ar": "بني محمد",
+          "name:fr": "Beni Mhammad",
+          "place": "village"
+        },
+        "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+        "evidence": [
+          {
+            "source": "Pinned source point and independent manual-reference review",
+            "sectorId": "osm:relation:7082748",
+            "officialCode": "635158",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+          }
+        ]
+      },
+      "osm:node:9947246733": {
+        "id": "osm:node:9947246733",
+        "action": "preserve_point",
+        "expectedKind": "village",
+        "expectedTags": {
+          "name": "جرسين",
+          "name:ar": "جرسين",
+          "name:fr": "Zarsin",
+          "place": "village"
+        },
+        "reason": "Retain this already selectable source point and its coordinate after the containing sector spelling correction. Normal picker grouping joins matching labels while saved point selections remain valid.",
+        "evidence": [
+          {
+            "source": "Pinned source point and independent manual-reference review",
+            "sectorId": "osm:relation:7082714",
+            "officialCode": "635156",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "previousCatalogSha256": "02c1e63b250314c400215521980185b9a52a314a28963b929a83dd0647776d1b"
+          }
+        ]
+      },
+      "osm:relation:1434950": null,
+      "osm:relation:7082186": null,
+      "osm:relation:7082187": null,
+      "osm:relation:7082695": {
+        "id": "osm:relation:7082695",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "القطعاية",
+          "ref:tn:codegeo": "635259"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110523",
+        "reason": "ISIE lists Gataaya in Kebili Nord. Conflicting source geometry places it in Kebili Sud.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      },
+      "osm:relation:7082707": null,
+      "osm:relation:7082714": {
+        "id": "osm:relation:7082714",
+        "action": "name_tags",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "جرسین",
+          "name:fr": "Jersine",
+          "ref:tn:codegeo": "635156"
+        },
+        "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+        "evidence": [
+          {
+            "source": "Independent official name and source point review",
+            "officialCode": "635156",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "officialSourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69437,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3405,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3398
+            },
+            "pointId": "osm:node:9947246733",
+            "pointLatitude": 33.530208,
+            "pointLongitude": 8.8273725,
+            "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+          }
+        ],
+        "nameTags": {
+          "name": "جرسين",
+          "name:ar": "جرسين",
+          "name:fr": "Jersine",
+          "alt_name": "جرسین"
+        },
+        "manualPointId": "osm:node:9947246733"
+      },
+      "osm:relation:7082747": null,
+      "osm:relation:7082748": {
+        "id": "osm:relation:7082748",
+        "action": "name_tags",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بن محمد",
+          "name:ar": "بن محمد",
+          "name:fr": "Ben Mehemed",
+          "ref:tn:codegeo": "635158"
+        },
+        "reason": "Use the reviewed INS2024 sector spelling, retaining documented older spelling aliases. Use its unique same-name existing settlement point as the manual reference, so grouping preserves the settlement prayer-source choice. Source polygon and actual-GPS lookup are unchanged.",
+        "evidence": [
+          {
+            "source": "Independent official name and source point review",
+            "officialCode": "635158",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/eight-point-sector-spelling-review.json",
+                "sha256": "6c86ab4e7200ac936bd22ba362922506d32395abab1004fb75fa1c4d8d3b9b98"
+              },
+              {
+                "file": "name-reviews/eight-point-sector-spelling-independent-verification.json",
+                "sha256": "2d1b857b8e7adc5cd813a65db3287850fd6326edff16bf45b226ab8f5f9487cb"
+              },
+              {
+                "file": "name-reviews/eight-proposed-manual-anchors-independent-review.json",
+                "sha256": "962a85a340364908329c03e5aded6f7a71ede7f90cf11f303651fdb8e1165dce"
+              }
+            ],
+            "officialSourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69505,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3409,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3402
+            },
+            "pointId": "osm:node:9945093900",
+            "pointLatitude": 33.5724927,
+            "pointLongitude": 8.8865999,
+            "scope": "Name, alias and manual-reference metadata only; not a certification of the polygon boundary."
+          }
+        ],
+        "nameTags": {
+          "name": "بني محمّد",
+          "name:ar": "بني محمّد",
+          "name:fr": "Beni mehemed",
+          "alt_name": "بن محمد;Ben Mehemed"
+        },
+        "manualPointId": "osm:node:9945093900"
+      },
+      "osm:relation:7108236": null,
+      "osm:relation:7108237": null,
+      "osm:relation:7109812": {
+        "id": "osm:relation:7109812",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "قبلي الجنوبية",
+          "ref:tn:codegeo": "635151"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110466",
+        "reason": "ISIE lists the Kebili Sud sector in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      },
+      "osm:relation:7109813": null,
+      "osm:relation:7109815": null,
+      "osm:relation:7109816": null,
+      "osm:relation:7109817": {
+        "id": "osm:relation:7109817",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "‫جنعورة‬",
+          "ref:tn:codegeo": "635159"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110466",
+        "reason": "ISIE lists Janoura in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      },
+      "osm:relation:7109818": null,
+      "osm:relation:7109819": null,
+      "osm:relation:7109820": null,
+      "osm:relation:7109821": {
+        "id": "osm:relation:7109821",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "‫بازمة‬",
+          "ref:tn:codegeo": "635152"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7110466",
+        "reason": "ISIE lists Bazma in Kebili Sud. Conflicting source geometry places it in Kebili Nord.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=59"
+        ],
+        "unresolved": [
+          "Reviewed administrative membership does not certify the source polygon border. The sector and delegation source geometries disagree."
+        ]
+      },
+      "osm:relation:7109996": null,
+      "osm:relation:7110466": null,
+      "osm:relation:7110523": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:298019989",
+        "osm:relation:1434950"
+      ],
+      "effective": [
+        "osm:node:298019989",
+        "osm:relation:1434950"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1434950": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7082186": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7082187": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7082695": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7082707": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7082714": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7082747": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7082748": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7108236": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7108237": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109812": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109813": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109815": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109816": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109817": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109818": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109819": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109820": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109821": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7109996": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7110466": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7110523": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:298019989",
+        "kind": "town",
+        "currentMetadata": {
+          "id": "osm:node:298019989",
+          "sourceId": "osm",
+          "name": "قبلي",
+          "aliases": [
+            "Kebili",
+            "قبلی",
+            "קבילי",
+            "Kibili",
+            "Кебили"
+          ],
+          "kind": "town",
+          "parentName": "جنعورة",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Janoura",
+            "Kébili Sud",
+            "جنعورة",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.7061148,
+          "lng": 8.9698376,
+          "delegationId": 482,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:298019989"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:node:9945093900",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:9945093900",
+          "sourceId": "osm",
+          "name": "بني محمد",
+          "aliases": [
+            "Beni Mhammad"
+          ],
+          "kind": "village",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Ben Mehemed",
+            "Beni mehemed",
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "بن محمد",
+            "بني محمّد",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.5724927,
+          "lng": 8.8865999,
+          "delegationId": 482,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:relation:7082748"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:node:9947246733",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:9947246733",
+          "sourceId": "osm",
+          "name": "جرسين",
+          "aliases": [
+            "Zarsin"
+          ],
+          "kind": "village",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Jersine",
+            "Kébili Sud",
+            "جرسين",
+            "جرسین",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.530208,
+          "lng": 8.8273725,
+          "delegationId": 484,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:relation:7082714"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7082186",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7082186",
+          "sourceId": "osm",
+          "name": "جمنة الجنوبية",
+          "aliases": [
+            "Jemna Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.575958,
+          "lng": 9.264689,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.922306,
+            33.514847,
+            9.54085,
+            33.636586
+          ],
+          "areaKm2": 413.4823413054457,
+          "pickerGroupId": "osm:relation:7082186",
+          "offset": 80924,
+          "length": 1548
+        },
+        "packedGeometrySha256": "a8533675cc545c01ccc1a1dc3c2be6fe6df4d218d1de52501f0771dbbf2e6bf8"
+      },
+      {
+        "id": "osm:relation:7082187",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7082187",
+          "sourceId": "osm",
+          "name": "جمنة الشمالية",
+          "aliases": [
+            "Jemna Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.618246,
+          "lng": 9.257501,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.926962,
+            33.528344,
+            9.463677,
+            33.709542
+          ],
+          "areaKm2": 268.13261305539083,
+          "pickerGroupId": "osm:relation:7082187",
+          "offset": 82472,
+          "length": 1668
+        },
+        "packedGeometrySha256": "1960eff711a89ff9bbf2ac183a86c74051cab03daa8176719c6e40728dcc5d2b"
+      },
+      {
+        "id": "osm:relation:7082695",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7082695",
+          "sourceId": "osm",
+          "name": "القطعاية",
+          "aliases": [
+            "El Gattaya"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.632452,
+          "lng": 8.882991,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.791563,
+            33.552044,
+            8.960433,
+            33.714741
+          ],
+          "areaKm2": 104.63687388123493,
+          "pickerGroupId": "osm:relation:7082695",
+          "offset": 85420,
+          "length": 2052
+        },
+        "packedGeometrySha256": "5ac038e1b44a980d9a708862d0b5d268e087e1b32658ac5f4fbeaa3ff0667828"
+      },
+      {
+        "id": "osm:relation:7082707",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7082707",
+          "sourceId": "osm",
+          "name": "البليدات",
+          "aliases": [
+            "El Blidete"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.61906,
+          "lng": 8.778933,
+          "delegationId": 483,
+          "hasBoundary": true,
+          "bbox": [
+            8.700529,
+            33.551441,
+            8.842938,
+            33.685971
+          ],
+          "areaKm2": 56.1876422033364,
+          "pickerGroupId": "osm:relation:7082707",
+          "offset": 87472,
+          "length": 540
+        },
+        "packedGeometrySha256": "fb9870856c295cebf495f38602d42f15f8d7fc51fa8784d0b3c9165c12b1323f"
+      },
+      {
+        "id": "osm:relation:7082714",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7082714",
+          "sourceId": "osm",
+          "name": "جرسين",
+          "aliases": [
+            "Jersine",
+            "Zarsin",
+            "جرسین"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.530208,
+          "lng": 8.8273725,
+          "delegationId": 484,
+          "hasBoundary": true,
+          "bbox": [
+            8.590938,
+            33.508813,
+            8.883406,
+            33.72973
+          ],
+          "areaKm2": 149.95089209376042,
+          "manualPointId": "osm:node:9947246733",
+          "pickerGroupId": "osm:relation:7082714",
+          "offset": 88012,
+          "length": 852
+        },
+        "packedGeometrySha256": "fd95d9933ea6553632628ae489b5baba280e57cf015dc48c5eec0f01bfec5d10"
+      },
+      {
+        "id": "osm:relation:7082747",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7082747",
+          "sourceId": "osm",
+          "name": "بشلي",
+          "aliases": [
+            "Bchelli"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.610018,
+          "lng": 8.943168,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.904577,
+            33.573407,
+            9.004581,
+            33.646869
+          ],
+          "areaKm2": 38.26484488532346,
+          "pickerGroupId": "osm:relation:7082747",
+          "offset": 88864,
+          "length": 652
+        },
+        "packedGeometrySha256": "e1069ff92ac6e8e4d77dd6575d26f3a1c70f9524cc0e5e0582e88b88c415be12"
+      },
+      {
+        "id": "osm:relation:7082748",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7082748",
+          "sourceId": "osm",
+          "name": "بني محمّد",
+          "aliases": [
+            "Ben Mehemed",
+            "Beni Mhammad",
+            "Beni mehemed",
+            "بن محمد",
+            "بني محمد"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.5724927,
+          "lng": 8.8865999,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.813472,
+            33.519749,
+            8.973724,
+            33.623874
+          ],
+          "areaKm2": 87.21418668107206,
+          "manualPointId": "osm:node:9945093900",
+          "pickerGroupId": "osm:relation:7082748",
+          "offset": 89516,
+          "length": 1716
+        },
+        "packedGeometrySha256": "bbbfd96704e448ac64fe80ed2996d6f3d798c4f575a2fdd6533d7889ff687a89"
+      },
+      {
+        "id": "osm:relation:7108236",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7108236",
+          "sourceId": "osm",
+          "name": "ليماقس استفطيمي",
+          "aliases": [
+            "Limagues Steftimi"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.94746,
+          "lng": 9.179049,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            9.001343,
+            33.709542,
+            9.350783,
+            34.185428
+          ],
+          "areaKm2": 643.676987768548,
+          "pickerGroupId": "osm:relation:7108236",
+          "offset": 559272,
+          "length": 4828
+        },
+        "packedGeometrySha256": "398709b8e8fedebb767f2c9be03257b4580781aee1ef885592f8ff44211c75f4"
+      },
+      {
+        "id": "osm:relation:7108237",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7108237",
+          "sourceId": "osm",
+          "name": "سعيدان",
+          "aliases": [
+            "Saidane",
+            "Saïdane"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.762389,
+          "lng": 9.243973,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            9.138061,
+            33.645259,
+            9.40106,
+            33.870419
+          ],
+          "areaKm2": 355.9404164582224,
+          "pickerGroupId": "osm:relation:7108237",
+          "offset": 564100,
+          "length": 812
+        },
+        "packedGeometrySha256": "86ce43888dd34603997c6f617de6353d81ed277682a27a7ceb84a35c26287bc5"
+      },
+      {
+        "id": "osm:relation:7109812",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109812",
+          "sourceId": "osm",
+          "name": "قبلي الجنوبية",
+          "aliases": [
+            "Kebili Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.706827,
+          "lng": 9.021877,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.986857,
+            33.684435,
+            9.067444,
+            33.731233
+          ],
+          "areaKm2": 13.942991254714824,
+          "pickerGroupId": "osm:relation:7109812",
+          "offset": 601208,
+          "length": 252
+        },
+        "packedGeometrySha256": "cc825aac714e74e2262b461134f0c4c3983eae159c37315b59ecf6a5090f4822"
+      },
+      {
+        "id": "osm:relation:7109813",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109813",
+          "sourceId": "osm",
+          "name": "قبلي الشمالية",
+          "aliases": [
+            "Kébili Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.723677,
+          "lng": 9.006452,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.972216,
+            33.700218,
+            9.042639,
+            33.747566
+          ],
+          "areaKm2": 17.99556681072666,
+          "pickerGroupId": "osm:relation:7109813",
+          "offset": 601460,
+          "length": 692
+        },
+        "packedGeometrySha256": "29232e6e491742b7eb8b8b62d85b8ca086b2b81466a7e86c2b488211340dca58"
+      },
+      {
+        "id": "osm:relation:7109815",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109815",
+          "sourceId": "osm",
+          "name": "المنصورة",
+          "aliases": [
+            "El Mansoura"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.730137,
+          "lng": 8.957156,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.92213,
+            33.70775,
+            8.992369,
+            33.752412
+          ],
+          "areaKm2": 18.228577532609684,
+          "pickerGroupId": "osm:relation:7109815",
+          "offset": 602152,
+          "length": 732
+        },
+        "packedGeometrySha256": "4ee86fbdb2754f248a3bd7b2512afc387c6a9d4738bde370c19683bf018b7da8"
+      },
+      {
+        "id": "osm:relation:7109816",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109816",
+          "sourceId": "osm",
+          "name": "تلمين",
+          "aliases": [
+            "Telmine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.706843,
+          "lng": 8.910198,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.895951,
+            33.694009,
+            8.92396,
+            33.720081
+          ],
+          "areaKm2": 2.089442289906644,
+          "pickerGroupId": "osm:relation:7109816",
+          "offset": 602884,
+          "length": 604
+        },
+        "packedGeometrySha256": "cb047d26d2fa99fed9bbce75ac467d894187bf74145509a432377d6ba2d1415a"
+      },
+      {
+        "id": "osm:relation:7109817",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109817",
+          "sourceId": "osm",
+          "name": "جنعورة",
+          "aliases": [
+            "Janoura"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.673089,
+          "lng": 8.971634,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.938073,
+            33.634828,
+            8.99306,
+            33.711009
+          ],
+          "areaKm2": 24.8623301378072,
+          "pickerGroupId": "osm:relation:7109817",
+          "offset": 603488,
+          "length": 628
+        },
+        "packedGeometrySha256": "948770dc1d3c9b9c5136c990c43496b75edcdd121469d91a63c1b2417421c9f4"
+      },
+      {
+        "id": "osm:relation:7109818",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109818",
+          "sourceId": "osm",
+          "name": "الرابطة",
+          "aliases": [
+            "Errabta"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.734703,
+          "lng": 8.925516,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.902949,
+            33.71787,
+            8.960327,
+            33.752065
+          ],
+          "areaKm2": 6.90825812600552,
+          "pickerGroupId": "osm:relation:7109818",
+          "offset": 604116,
+          "length": 468
+        },
+        "packedGeometrySha256": "265b6cca49ed74cdadde3cde5d951cb8b818a456d5f40104721ddee458f71f0a"
+      },
+      {
+        "id": "osm:relation:7109819",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109819",
+          "sourceId": "osm",
+          "name": "تنبيب",
+          "aliases": [
+            "Tenbib"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.710832,
+          "lng": 8.895189,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.878915,
+            33.693039,
+            8.915754,
+            33.728259
+          ],
+          "areaKm2": 6.727034024064657,
+          "pickerGroupId": "osm:relation:7109819",
+          "offset": 604584,
+          "length": 388
+        },
+        "packedGeometrySha256": "1b36b2184a14016e2008b4ba00d35af466b936c04271f52b3fd51bed8187edcb"
+      },
+      {
+        "id": "osm:relation:7109820",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109820",
+          "sourceId": "osm",
+          "name": "طنبار",
+          "aliases": [
+            "Tombar",
+            "Tonmbar"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.731245,
+          "lng": 8.896617,
+          "delegationId": 483,
+          "hasBoundary": true,
+          "bbox": [
+            8.880846,
+            33.712506,
+            8.937253,
+            33.74956
+          ],
+          "areaKm2": 8.35206605854752,
+          "pickerGroupId": "osm:relation:7109820",
+          "offset": 604972,
+          "length": 276
+        },
+        "packedGeometrySha256": "d0594dd238687762b7c5242c77069db0dfddd06aa62c2a6b09a14f6669ca2a3f"
+      },
+      {
+        "id": "osm:relation:7109821",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109821",
+          "sourceId": "osm",
+          "name": "بازمة",
+          "aliases": [
+            "Bazma"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الجنوبية",
+          "contextAliases": [
+            "Délégation Kébili Sud",
+            "Kébili Sud",
+            "معتمدية قبلي الجنوبية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.664445,
+          "lng": 9.043987,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.955497,
+            33.600234,
+            9.138061,
+            33.730523
+          ],
+          "areaKm2": 115.97456194426123,
+          "pickerGroupId": "osm:relation:7109821",
+          "offset": 605248,
+          "length": 460
+        },
+        "packedGeometrySha256": "10ec0676c13b21341542f861dca69912694f246fdb59930a9f7b29d17eaa7eab"
+      },
+      {
+        "id": "osm:relation:7109996",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7109996",
+          "sourceId": "osm",
+          "name": "قبلي الشرقية",
+          "aliases": [
+            "Kebili Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قبلي الشمالية",
+          "contextAliases": [
+            "Délégation Kébili Nord",
+            "Kébili Nord",
+            "معتمدية قبلي الشمالية"
+          ],
+          "governorateId": 1012,
+          "lat": 33.706677,
+          "lng": 8.961056,
+          "delegationId": 482,
+          "hasBoundary": true,
+          "bbox": [
+            8.950297,
+            33.690896,
+            9.013392,
+            33.778858
+          ],
+          "areaKm2": 7.097221526529421,
+          "pickerGroupId": "osm:relation:7109996",
+          "offset": 605708,
+          "length": 860
+        },
+        "packedGeometrySha256": "b02bf0838eaae217d6805e74f785850b8682c4b16f7c11c87cd4b6c140370941"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:298019989": [
+        "osm:node:298019989"
+      ],
+      "osm:relation:7082186": [
+        "osm:relation:7082186"
+      ],
+      "osm:relation:7082187": [
+        "osm:relation:7082187"
+      ],
+      "osm:relation:7082695": [
+        "osm:relation:7082695"
+      ],
+      "osm:relation:7082707": [
+        "osm:relation:7082707"
+      ],
+      "osm:relation:7082714": [
+        "osm:node:9947246733",
+        "osm:relation:7082714"
+      ],
+      "osm:relation:7082747": [
+        "osm:relation:7082747"
+      ],
+      "osm:relation:7082748": [
+        "osm:node:9945093900",
+        "osm:relation:7082748"
+      ],
+      "osm:relation:7108236": [
+        "osm:relation:7108236"
+      ],
+      "osm:relation:7108237": [
+        "osm:relation:7108237"
+      ],
+      "osm:relation:7109812": [
+        "osm:relation:7109812"
+      ],
+      "osm:relation:7109813": [
+        "osm:relation:7109813"
+      ],
+      "osm:relation:7109815": [
+        "osm:relation:7109815"
+      ],
+      "osm:relation:7109816": [
+        "osm:relation:7109816"
+      ],
+      "osm:relation:7109817": [
+        "osm:relation:7109817"
+      ],
+      "osm:relation:7109818": [
+        "osm:relation:7109818"
+      ],
+      "osm:relation:7109819": [
+        "osm:relation:7109819"
+      ],
+      "osm:relation:7109820": [
+        "osm:relation:7109820"
+      ],
+      "osm:relation:7109821": [
+        "osm:relation:7109821"
+      ],
+      "osm:relation:7109996": [
+        "osm:relation:7109996"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7082186": [
+        "osm:relation:7082186"
+      ],
+      "osm:relation:7082187": [
+        "osm:relation:7082187"
+      ],
+      "osm:relation:7082695": [
+        "osm:relation:7082695"
+      ],
+      "osm:relation:7082707": [
+        "osm:relation:7082707"
+      ],
+      "osm:relation:7082714": [
+        "osm:node:9947246733",
+        "osm:relation:7082714"
+      ],
+      "osm:relation:7082747": [
+        "osm:relation:7082747"
+      ],
+      "osm:relation:7082748": [
+        "osm:node:9945093900",
+        "osm:relation:7082748"
+      ],
+      "osm:relation:7108236": [
+        "osm:relation:7108236"
+      ],
+      "osm:relation:7108237": [
+        "osm:relation:7108237"
+      ],
+      "osm:relation:7109812": [
+        "osm:relation:7109812"
+      ],
+      "osm:relation:7109813": [
+        "osm:relation:7109813"
+      ],
+      "osm:relation:7109815": [
+        "osm:relation:7109815"
+      ],
+      "osm:relation:7109816": [
+        "osm:relation:7109816"
+      ],
+      "osm:relation:7109817": [
+        "osm:relation:7109817"
+      ],
+      "osm:relation:7109818": [
+        "osm:relation:7109818"
+      ],
+      "osm:relation:7109819": [
+        "osm:relation:7109819"
+      ],
+      "osm:relation:7109820": [
+        "osm:relation:7109820"
+      ],
+      "osm:relation:7109821": [
+        "osm:relation:7109821"
+      ],
+      "osm:relation:7109996": [
+        "osm:relation:7109996"
+      ],
+      "delegation:482": [
+        "osm:node:298019989"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:298019989",
+    "field": "pickerGroupId",
+    "before": "osm:node:298019989",
+    "after": "delegation:482"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:298019989"
+      ],
+      [
+        "delegation:482"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:482",
+        "osm:node:298019989"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "One exact town/village point joins its empty raw timetable display group. Every imada and complete existing group remains separate, with all names, aliases, current contexts, coordinates, defaults and geometry retained.",
+  "coordinatePolicy": "Preserve both recorded reference coordinates. Source city identity does not certify a legacy INM calculation anchor or exact settlement boundary.",
+  "sourcePhasePolicy": "Typed original/effective records bind existing name-only changes or accepted official replacements, with existing manual/context effects retained independently. No new source transition or ownership is authorized.",
+  "geometryHashConvention": "Generator aggregate mapping geometry, compact unsorted JSON/default ensure_ascii. Original provider null; effective osm or exact current official provider.",
+  "dependencyPolicy": "Operational references are relative to scripts/neighborhoods. Absolute research paths inside unchanged frozen reports are provenance only.",
+  "administrativeQualification": "Janoura7109817 already assigns the point to Kebili Sud7110466 although both references lie geometrically in Nord7110523. Retain true/false memberships and that exact accepted assignment separately."
+}

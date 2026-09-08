@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osmChange version="0.6" generator="openstreetmap-cgimap 2.1.0 (244694 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <create>
+  <node id="9830587944" visible="true" version="1" changeset="122572164" timestamp="2022-06-19T09:26:56Z" user="najib aidoudi" uid="16097413" lat="32.7628212" lon="10.2516528">
+   <tag k="name" v="Tadarromt Home"/>
+   <tag k="name:fr" v="Tadarromt Home"/>
+   <tag k="phone" v="+216 25090340"/>
+   <tag k="tourism" v="motel"/>
+  </node>
+ </create>
+ <modify>
+  <way id="148643072" visible="true" version="2" changeset="122572164" timestamp="2022-06-19T09:26:56Z" user="najib aidoudi" uid="16097413">
+   <nd ref="1617177272"/>
+   <nd ref="1617177262"/>
+   <nd ref="1617177268"/>
+   <nd ref="1617177287"/>
+   <nd ref="1617177332"/>
+   <nd ref="1617177349"/>
+   <nd ref="1617177359"/>
+   <nd ref="1617177366"/>
+   <nd ref="1617177372"/>
+   <nd ref="1617177377"/>
+   <nd ref="1617177386"/>
+   <nd ref="1617177391"/>
+   <nd ref="1617177393"/>
+   <nd ref="1617177390"/>
+   <nd ref="1617177387"/>
+   <nd ref="1617177384"/>
+   <nd ref="1617177382"/>
+   <nd ref="1617177379"/>
+   <nd ref="1617177378"/>
+   <nd ref="1617177368"/>
+   <nd ref="1617177361"/>
+   <nd ref="1617177351"/>
+   <nd ref="1617177338"/>
+   <nd ref="1617177323"/>
+   <nd ref="1617177308"/>
+   <nd ref="1617177288"/>
+   <nd ref="1617177255"/>
+   <nd ref="1617177269"/>
+   <nd ref="1617177297"/>
+   <nd ref="1617177316"/>
+   <nd ref="1617177340"/>
+   <nd ref="1617177346"/>
+   <nd ref="1617177354"/>
+   <nd ref="1617177364"/>
+   <nd ref="1617177373"/>
+   <nd ref="1617177383"/>
+   <nd ref="1617177396"/>
+   <nd ref="1617177401"/>
+   <nd ref="1617177400"/>
+   <nd ref="1617177404"/>
+   <nd ref="1617177408"/>
+   <nd ref="1617177415"/>
+   <nd ref="1617177414"/>
+   <nd ref="1617177413"/>
+   <nd ref="1617177398"/>
+   <nd ref="1617177380"/>
+   <nd ref="1617177370"/>
+   <nd ref="1617177362"/>
+   <nd ref="1617177356"/>
+   <nd ref="1617177336"/>
+   <nd ref="1617177300"/>
+   <nd ref="1617177278"/>
+   <nd ref="1617177267"/>
+   <nd ref="1617177246"/>
+   <nd ref="1617177230"/>
+   <nd ref="1617177232"/>
+   <nd ref="1617177233"/>
+   <nd ref="1617177272"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="الطرومة"/>
+   <tag k="name:fr" v="ettarouma"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="377996284" visible="true" version="2" changeset="122572164" timestamp="2022-06-19T09:26:56Z" user="najib aidoudi" uid="16097413">
+   <nd ref="3814110884"/>
+   <nd ref="3814110898"/>
+   <nd ref="3814110909"/>
+   <nd ref="3814110916"/>
+   <nd ref="3814110923"/>
+   <nd ref="3814110940"/>
+   <nd ref="3814110955"/>
+   <nd ref="3814111077"/>
+   <nd ref="3814111100"/>
+   <nd ref="3814111113"/>
+   <nd ref="3814111121"/>
+   <nd ref="3814111142"/>
+   <nd ref="3814111289"/>
+   <nd ref="3814111304"/>
+   <nd ref="3814111310"/>
+   <nd ref="3814111313"/>
+   <nd ref="3814111303"/>
+   <nd ref="3814111273"/>
+   <nd ref="3814111148"/>
+   <nd ref="3814111118"/>
+   <nd ref="3814111085"/>
+   <nd ref="3814111059"/>
+   <nd ref="3814110943"/>
+   <nd ref="3814110928"/>
+   <nd ref="3814110924"/>
+   <nd ref="3814110917"/>
+   <nd ref="3814110912"/>
+   <nd ref="3814110905"/>
+   <nd ref="3814110892"/>
+   <nd ref="3814110881"/>
+   <nd ref="3814110871"/>
+   <nd ref="3814110865"/>
+   <nd ref="3814110867"/>
+   <nd ref="3814110874"/>
+   <nd ref="3814110882"/>
+   <nd ref="3814110893"/>
+   <nd ref="3814110908"/>
+   <nd ref="3814110929"/>
+   <nd ref="3814110939"/>
+   <nd ref="3814110950"/>
+   <nd ref="3814111072"/>
+   <nd ref="3814111092"/>
+   <nd ref="3814111094"/>
+   <nd ref="3814111095"/>
+   <nd ref="3814111103"/>
+   <nd ref="3814111125"/>
+   <nd ref="3814111134"/>
+   <nd ref="3814111145"/>
+   <nd ref="3814111300"/>
+   <nd ref="3814111318"/>
+   <nd ref="3814111337"/>
+   <nd ref="3814111343"/>
+   <nd ref="3814111341"/>
+   <nd ref="3814111334"/>
+   <nd ref="3814111323"/>
+   <nd ref="3814111308"/>
+   <nd ref="3814111291"/>
+   <nd ref="3814111264"/>
+   <nd ref="3814111141"/>
+   <nd ref="3814111128"/>
+   <nd ref="3814111119"/>
+   <nd ref="3814111111"/>
+   <nd ref="3814111104"/>
+   <nd ref="3814111084"/>
+   <nd ref="3814111057"/>
+   <nd ref="3814110948"/>
+   <nd ref="3814110938"/>
+   <nd ref="3814110930"/>
+   <nd ref="3814110919"/>
+   <nd ref="3814110902"/>
+   <nd ref="3814110887"/>
+   <nd ref="3814110880"/>
+   <nd ref="3814110876"/>
+   <nd ref="3814110877"/>
+   <nd ref="3814110878"/>
+   <nd ref="3814110884"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="طويل اولاد زايد"/>
+   <tag k="name:ar" v="طويل اولاد زايد"/>
+   <tag k="name:fr" v="touil wlad zayid"/>
+  </way>
+ </modify>
+</osmChange>

@@ -1,0 +1,1842 @@
+{
+  "schemaVersion": 1,
+  "administrativeScopeReview": {
+  "file": "official/accepted76-whole-imada-scope-review.json",
+  "sha256": "b95908cfbb781e419b2b8a5ac015b95c41979448bfa0443b39813d090f554027"
+},
+  "sources": [
+    {
+      "id": "isie-local-sectors-2023-megrine",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/megrine-isie2023-sectors.geojson",
+      "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7174630",
+          "officialCode": "135954",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل مبروك",
+            "name:ar": "منزل مبروك",
+            "name:fr": "Menzel Mabrouk",
+            "ref:tn:codegeo": "135954"
+          }
+        },
+        {
+          "id": "isie:sector:135956",
+          "officialCode": "135956",
+          "action": "add"
+        },
+        {
+          "id": "osm:relation:7174628",
+          "officialCode": "135955",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مقرين شاكر",
+            "name:ar": "مقرين شاكر",
+            "name:fr": "Megrine Chaker",
+            "ref:tn:codegeo": "135955"
+          }
+        },
+        {
+          "id": "osm:relation:7174626",
+          "officialCode": "135952",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مقرين الرياض",
+            "name:ar": "مقرين الرياض",
+            "name:fr": "Megrine Riadh",
+            "ref:tn:codegeo": "135952"
+          }
+        },
+        {
+          "id": "osm:relation:7174627",
+          "officialCode": "135951",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مقرين العليا",
+            "name:ar": "مقرين العليا",
+            "name:fr": "Megrine Superieure",
+            "ref:tn:codegeo": "135951"
+          }
+        },
+        {
+          "id": "osm:relation:7174591",
+          "officialCode": "135953",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جوهرة",
+            "name:ar": "جوهرة",
+            "name:fr": "Jawhara",
+            "ref:tn:codegeo": "135953"
+          }
+        },
+        {
+          "id": "osm:relation:7174613",
+          "officialCode": "135957",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي رزيق",
+            "name:ar": "سيدي رزيق",
+            "name:fr": "Sidi Rezig",
+            "ref:tn:codegeo": "135957"
+          }
+        },
+        {
+          "id": "osm:relation:7174612",
+          "officialCode": "135958",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي رزيق 2",
+            "name:ar": "سيدي رزيق 2",
+            "name:fr": "Sidi Rezig (2)",
+            "ref:tn:codegeo": "135958"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024 sector registry; population, housing and households workbooks agree",
+        "acceptance": "Individually reviewed complete closed electoral-sector vectors, PDF geographic controls and visual identity. Stable IDs retained only for reviewed original identity.",
+        "repair": "Only Megrine Jawhara: reviewed make_valid preserves both polygon components; no other repair.",
+        "uncertainty": "Independent PDF registration leaves small overlaps and gaps. Preserve these; runtime conflict handling excludes overlapping sector claims only at their intersections. This does not establish survey accuracy, later boundary currency or complete neighborhood coverage.",
+        "evidenceFile": "official/megrine-isie2023-acceptance-review.json",
+        "aliasReview": "Only explicit equivalents of the reviewed North/South and Fifth identities are retained, supported by the official registry/map labels and phone place-card review. Old contradictory source names are not copied.",
+        "evidenceSha256": "f2e58906e3ced6f758634108f261b3921265ddbbc9f4e4945ad41b70b7aa0f96"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-identity-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/identity-review-isie2023-sectors.geojson",
+      "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7110676",
+          "officialCode": "326151",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قصرهلال",
+            "name:ar": "قصرهلال",
+            "name:fr": "Ksar Hellal",
+            "ref:tn:codegeo": "326151"
+          }
+        },
+        {
+          "id": "osm:relation:7110673",
+          "officialCode": "326153",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قصر هلال",
+            "name:ar": "قصر هلال",
+            "name:fr": "Ksar Hellal",
+            "ref:tn:codegeo": "326153"
+          }
+        },
+        {
+          "id": "osm:relation:7164965",
+          "officialCode": "426153",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "loc_name": "خمودة الجنوبية",
+            "name": "خمودة الجنوبية",
+            "name:ar": "خمودة الجنوبية",
+            "name:fr": "Khmouda sud",
+            "ref:tn:codegeo": "426153"
+          }
+        },
+        {
+          "id": "osm:relation:7164980",
+          "officialCode": "426154",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "خمودة الشمالية",
+            "name:ar": "خمودة الشمالية",
+            "name:fr": "Khmouda nord",
+            "ref:tn:codegeo": "426154"
+          }
+        },
+        {
+          "id": "osm:relation:7102675",
+          "officialCode": "156351",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني خلاد الشمالية",
+            "name:ar": "بني خلاد الشمالية",
+            "name:fr": "Beni Khalled Nord",
+            "ref:tn:codegeo": "156351"
+          },
+          "aliases": [
+            "بني خلاد الشمالية"
+          ]
+        },
+        {
+          "id": "osm:relation:7102674",
+          "officialCode": "156352",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني خلاد الجوفية",
+            "name:ar": "بني خلاد الجوفية",
+            "name:fr": "Beni Khalled Sud",
+            "ref:tn:codegeo": "156352"
+          },
+          "aliases": [
+            "بني خلاد الجنوبية",
+            "Beni Khalled Sud"
+          ]
+        },
+        {
+          "id": "osm:relation:7115053",
+          "officialCode": "125156",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التعمير",
+            "name:ar": "التعمير 2",
+            "name:fr": "Ettaamir I",
+            "ref:tn:codegeo": "125156"
+          }
+        },
+        {
+          "id": "osm:relation:7114904",
+          "officialCode": "125257",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التعمير",
+            "name:ar": "التعمير 2",
+            "name:fr": "Ettaamir",
+            "ref:tn:codegeo": "125257"
+          },
+          "aliases": [
+            "التعمير 5",
+            "Ettaamir V"
+          ],
+          "resolvedCatalogReview": {
+            "id": "osm:relation:7114904",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "التعمير 2",
+              "ref:tn:codegeo": "125257"
+            },
+            "reason": "The source labels old code125257 as Ettaamir / التعمير 2 in Soukra. INS2024 retains125257 in Soukra but calls it Etaamir kamesse / التعمير الخامس. A name-only match to125156 in Ariana is a different sector and has no geometric overlap with this polygon. Retain current membership and review the exact sector title separately.",
+            "evidence": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "unresolved": [
+              "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+            ]
+          }
+        },
+        {
+          "id": "osm:relation:7147636",
+          "officialCode": "346653",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أولاد قاسم",
+            "name:ar": "أولاد قاسم",
+            "name:fr": "Ouled Kacem",
+            "ref:tn:codegeo": "346653"
+          },
+          "resolvedCatalogReview": {
+            "id": "osm:relation:7147636",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "أولاد قاسم",
+              "ref:tn:codegeo": "346653"
+            },
+            "reason": "The source calls this Kerkennah polygon Ouled Kacem but assigns346653, which INS2012 and INS2024 assign to Sidi Frej. The adjacent source polygon7147638 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+            "evidence": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "unresolved": [
+              "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+            ]
+          }
+        },
+        {
+          "id": "osm:relation:7147638",
+          "officialCode": "346660",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي فرج",
+            "name:ar": "سيدي فرج",
+            "name:fr": "Sidi Fraj",
+            "ref:tn:codegeo": "346660"
+          },
+          "resolvedCatalogReview": {
+            "id": "osm:relation:7147638",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "سيدي فرج",
+              "ref:tn:codegeo": "346660"
+            },
+            "reason": "The source calls this Kerkennah polygon Sidi Fraj but assigns346660, which INS2024 assigns to Ouled Kacem. The adjacent source polygon7147636 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+            "evidence": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "unresolved": [
+              "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+            ]
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024 sector registry; population, housing and households workbooks agree",
+        "acceptance": "Individually reviewed complete closed electoral-sector vectors, PDF geographic controls and visual identity. Stable IDs retained only for reviewed original identity.",
+        "repair": "No repair, clipping, buffering, snapping or simplification.",
+        "uncertainty": "Independent PDF registration leaves small overlaps and gaps. Preserve these; runtime conflict handling excludes overlapping sector claims only at their intersections. This does not establish survey accuracy, later boundary currency or complete neighborhood coverage.",
+        "evidenceFile": "official/identity-review-isie2023-sector-decisions.json",
+        "aliasReview": "Only explicit equivalents of the reviewed North/South and Fifth identities are retained, supported by the official registry/map labels and phone place-card review. Old contradictory source names are not copied.",
+        "evidenceSha256": "8dbe2274eda9ecfe2e5eb865dc0ed8c06a056f170a080550cb58e5bf6697752d"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-identity-review-2",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/next-identity-review-isie2023-sectors.geojson",
+      "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7142911",
+          "officialCode": "525552",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "20مارس",
+            "name:ar": "20مارس",
+            "name:fr": "20 Mars",
+            "ref:tn:codegeo": "525552"
+          },
+          "resolvedCatalogReview": {
+            "id": "osm:relation:7142911",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "20مارس",
+              "ref:tn:codegeo": "525552"
+            },
+            "reason": "The source calls code525552 in Zarzis 20 Mars. INS2024 calls525552 2 mars; the same-name20 mars sector525154 belongs to Medenine Nord, whose polygon has no overlap with this source. Preserve Zarzis membership and the existing name until the source identity/title is resolved.",
+            "evidence": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "unresolved": [
+              "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+            ]
+          }
+        },
+        {
+          "id": "osm:relation:7169580",
+          "officialCode": "435256",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكارم الشرقية",
+            "name:ar": "المكارم الشرقية",
+            "name:fr": "El Makarem Est",
+            "ref:tn:codegeo": "435256"
+          }
+        },
+        {
+          "id": "osm:relation:7169578",
+          "officialCode": "435257",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المكارم الغربية",
+            "name:ar": "المكارم الغربية",
+            "name:fr": "El Makarem Ouest",
+            "ref:tn:codegeo": "435257"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024 sector registry; three agreeing workbooks.",
+        "acceptance": "Three individually reviewed complete source vectors with official code/name/parent identity, PDF control points and visual map-label verification. Retain original IDs and replace geometry and name tags together.",
+        "repair": "No repair, snapping, buffering, clipping or simplification.",
+        "uncertainty": "Rounded independent map registrations and disagreements with old neighboring polygons remain explicit conflicts, not a certified partition. Source date does not certify current ground accuracy.",
+        "evidenceFile": "official/next-identity-review-isie2023-decisions.json",
+        "evidenceSha256": "6b3ac1a843d38208d6d4a01aac4742a805a56fb281014270e8f4dabd5b8d8953"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-neighbor-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/neighbor-review-isie2023-sectors.geojson",
+      "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7103676",
+          "officialCode": "156353",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زاوية الجديدي",
+            "name:ar": "زاوية الجديدي",
+            "name:fr": "Zaouiet Jdidi",
+            "ref:tn:codegeo": "156353"
+          }
+        },
+        {
+          "id": "osm:relation:7165010",
+          "officialCode": "425959",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زلفان",
+            "name:ar": "زلفان",
+            "name:fr": "Zelfane",
+            "ref:tn:codegeo": "425959"
+          }
+        },
+        {
+          "id": "osm:relation:7164966",
+          "officialCode": "426152",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فوسانة الأحواز",
+            "name:ar": "فوسانة الأحواز",
+            "name:fr": "Foussana Lahouaz",
+            "ref:tn:codegeo": "426152"
+          }
+        },
+        {
+          "id": "osm:relation:7164967",
+          "officialCode": "426151",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فوسانة",
+            "name:ar": "فوسانة",
+            "name:fr": "Foussana",
+            "ref:tn:codegeo": "426151"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024 sector registry; three agreeing workbooks.",
+        "acceptance": "Four complete visually reviewed and code-matched sector outlines. Foussana city is identified by its distinct interior red label and registry identity on the Ahwaz page.",
+        "repair": "Foussana Ahwaz joins two source strokes only at exactly matching endpoints, with identical segment inventory. Zelfan removes only an exactly retraced zero-area stroke: exact rational area equality and no new vertex or boundary segment. Raw line/path evidence retained. No positive-area territory discarded; no snapping, buffering or clipping.",
+        "uncertainty": "Neighbor replacements resolve three large old-source disagreements; independent map registration and further old-neighbor discrepancies remain conflicts. This does not establish a seamless partition or current survey accuracy.",
+        "evidenceFile": "official/neighbor-review-isie2023-sector-decisions.json",
+        "evidenceSha256": "2d13e279f81f9abee98e70becdd2a82b30d213a198ea61f0ce028db25e00e616"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7111933",
+          "officialCode": "325951",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طبلبة",
+            "name:ar": "طبلبة",
+            "name:fr": "Téboulba",
+            "ref:tn:codegeo": "325951"
+          },
+          "scopeKind": "exhaustive_electoral_parts"
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-north-aggregate-independent-review.json",
+        "evidenceSha256": "9ce783d5e415631eed80f536f80d3ce64ecfe51bfa109b54eede5bdd7ff906aa"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-bekalta-neighbors-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bekalta-neighbors-review-isie2023-sectors.geojson",
+      "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7111785",
+          "officialCode": "326052",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الفضلين",
+            "name:ar": "الفضلين",
+            "name:fr": "El Fadhline",
+            "ref:tn:codegeo": "326052"
+          }
+        },
+        {
+          "id": "osm:relation:7111784",
+          "officialCode": "326053",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العيايشة",
+            "name:ar": "العيايشة",
+            "name:fr": "El Aïaïcha",
+            "ref:tn:codegeo": "326053"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-neighbors-review-isie2023-decisions.json",
+        "evidenceSha256": "8dd2bea2de7865eb5826abe1b861b6fc481ab9e9755c01fafdcefebb036e9a2c"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-bekalta-south-east-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+      "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7111931",
+          "officialCode": "325952",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الجنوبية",
+            "name:ar": "البقالطة الجنوبية",
+            "name:fr": "Beklta Sud",
+            "ref:tn:codegeo": "325952"
+          }
+        },
+        {
+          "id": "osm:relation:7111932",
+          "officialCode": "325954",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الشرقية",
+            "name:ar": "البقالطة الشرقية",
+            "name:fr": "Bekalta Est",
+            "ref:tn:codegeo": "325954"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-south-east-review-isie2023-decisions.json",
+        "evidenceSha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-baghdadi-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/baghdadi-review-isie2023-sector.geojson",
+      "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7111930",
+          "officialCode": "325953",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البغدادي",
+            "name:ar": "البغدادي",
+            "name:fr": "El Baghdadi",
+            "ref:tn:codegeo": "325953"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/baghdadi-review-isie2023-decision.json",
+        "evidenceSha256": "a9c5b40970cb04f4ec1c92ef3429dfbf11a20396af183564162eb4883e172512"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-hiboun-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/hiboun-review-isie2023-sector.geojson",
+      "sha256": "b1f3b459d642e6be62ab60f27fed66068df3222fbc726e970bfed3276c5b642c",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7152283",
+          "officialCode": "335161",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "هيبون",
+            "name:ar": "هيبون",
+            "name:fr": "Hiboun",
+            "ref:tn:codegeo": "335161",
+            "wikidata": "Q3135175"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/hiboun-review-isie2023-decision.json",
+        "evidenceSha256": "e92a054bc9bf582ad06d6254f83338c8e4b18964f9d04307ee62c74b0e5574a5"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-chenini-two-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7143881",
+          "officialCode": "535259",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "شنني",
+            "name:ar": "شنني",
+            "name:fr": "Chenini",
+            "ref:tn:codegeo": "535259"
+          },
+          "aliases": [
+            "Chenini"
+          ]
+        },
+        {
+          "id": "osm:relation:7143823",
+          "officialCode": "535258",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "شنني الجديدة",
+            "name:ar": "شنني الجديدة",
+            "name:fr": "Nouvelle Chnini",
+            "ref:tn:codegeo": "535258"
+          },
+          "aliases": [
+            "Nouvelle Chnini"
+          ]
+        }
+      ],
+      "review": "Exact two complete whole-imada outlines and distinct old/new village identities are source-reviewed. Retain source-registration overlaps and gaps unchanged; root must approve this staged import and prospective conflict behavior before generation or app installation."
+    },
+    {
+      "id": "isie-local-sectors-2023-bizerte-three-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bizerte-three-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7118631",
+          "officialCode": "175154",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المدينة",
+            "name:ar": "المدينة",
+            "name:fr": "El Medina",
+            "ref:tn:codegeo": "175154"
+          },
+          "aliases": [
+            "El Medina"
+          ]
+        },
+        {
+          "id": "osm:relation:7118632",
+          "officialCode": "175155",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الشيخ ادريس",
+            "name:ar": "الشيخ ادريس",
+            "name:fr": "Cheikh Dris",
+            "ref:tn:codegeo": "175155"
+          },
+          "aliases": [
+            "Cheikh Dris",
+            "الشيخ ادريس"
+          ]
+        },
+        {
+          "id": "osm:relation:7118630",
+          "officialCode": "175160",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المؤتمر",
+            "name:ar": "المؤتمر",
+            "name:fr": "El Mootamar",
+            "ref:tn:codegeo": "175160"
+          },
+          "aliases": [
+            "El Mootamar"
+          ]
+        }
+      ],
+      "review": "Three distinct complete source outlines, decree annex A page29, original INS identities and current packed coverage impact. Retire the exact uncoded Cheikh clone only with guarded saved-ID replacement. Remaining source conflicts stay explicit."
+    },
+    {
+      "id": "isie-local-sectors-2023-bembla-seven-source-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bembla-seven-native-source-candidates.geojson",
+      "sha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7107801",
+          "officialCode": "325751",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بنبلة",
+            "name:ar": "بنبلة",
+            "name:fr": "Bembla",
+            "ref:tn:codegeo": "325751"
+          },
+          "aliases": [
+            "Bembla"
+          ]
+        },
+        {
+          "id": "osm:relation:7107800",
+          "officialCode": "325752",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بنبلة الغربية",
+            "name:ar": "بنبلة الغربية",
+            "name:fr": "Bembla Ouest",
+            "ref:tn:codegeo": "325752"
+          },
+          "aliases": [
+            "Bembla Ouest"
+          ]
+        },
+        {
+          "id": "osm:relation:7105910",
+          "officialCode": "325159",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "خنيس الشمالية",
+            "name:ar": "خنيس الشمالية",
+            "name:fr": "Khenis Nord",
+            "ref:tn:codegeo": "325159"
+          },
+          "aliases": [
+            "Khenis Nord"
+          ]
+        },
+        {
+          "id": "osm:relation:7105911",
+          "officialCode": "325158",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "خنيس",
+            "name:ar": "خنيس",
+            "name:fr": "Khenis",
+            "ref:tn:codegeo": "325158"
+          },
+          "aliases": [
+            "Khenis"
+          ]
+        },
+        {
+          "id": "osm:relation:7107799",
+          "officialCode": "325753",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المنارة",
+            "name:ar": "المنارة",
+            "name:fr": "El Manara",
+            "ref:tn:codegeo": "325753"
+          },
+          "aliases": [
+            "El Manara"
+          ]
+        },
+        {
+          "id": "osm:relation:7107974",
+          "officialCode": "325754",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل النور",
+            "name:ar": "منزل النور",
+            "name:fr": "Menzel Ennour",
+            "ref:tn:codegeo": "325754"
+          },
+          "aliases": [
+            "Menzel Ennour",
+            "Menzel Nour"
+          ]
+        },
+        {
+          "id": "osm:relation:7109599",
+          "officialCode": "326255",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بوضر",
+            "name:ar": "بوضر",
+            "name:fr": "Bodher",
+            "ref:tn:codegeo": "326255"
+          },
+          "aliases": [
+            "Bodher",
+            "Bodheur"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "qualification": "Complete unchanged native ISIE red outlines, independently checked controls, closure, active clips, country containment, original and quantized validity, current INS identities and whole-imada decree correspondence.",
+        "state": "Source qualified; actual generated catalog and app installation remain separate acceptance steps.",
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/bembla-eight-official-source-independent-review.json",
+          "sha256": "ccfc52a52fdae1d1efade401a6f1205ab540b3042e77f8ade918f525e99db829"
+        },
+        "prospectiveCoverageReview": {
+          "root": "task",
+          "file": "outputs/bembla-nine-impact-and-proposal-supplement.json",
+          "sha256": "4ec83460fb3ee22fe149e5557ac3dcf112009698b9766d2c79d2498a98c69f78"
+        },
+        "representativePrecisionReview": {
+          "root": "task",
+          "file": "outputs/bembla-eight-representative-precision-addendum.json",
+          "sha256": "4bb1bbdcb7ac11276d9577356690eb95ec747ba9010f54926d004ee43b638420"
+        },
+        "uncertainty": "Preserve original source registration differences and all conflicts. The nine-source preview retains14 external old-peer conflicts; these include substantive legacy disagreements, not only narrow strips. Near-border GPS uncertainty remains."
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-bennane-joufia-source-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bembla-bennane-joufia-native-source-candidate.geojson",
+      "sha256": "395e9bb9803d0ae544977aad8178e0b06e74de7ff013d0c3c5346b4078f00497",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7109597",
+          "officialCode": "326254",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بنان الجوفية",
+            "name:ar": "بنان الجوفية",
+            "name:fr": "Benen Nord",
+            "ref:tn:codegeo": "326254"
+          },
+          "aliases": [
+            "Benen Nord"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "qualification": "Complete unchanged native ISIE red outlines, independently checked controls, closure, active clips, country containment, original and quantized validity, current INS identities and whole-imada decree correspondence.",
+        "state": "Source qualified; actual generated catalog and app installation remain separate acceptance steps.",
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/bembla-eight-official-source-independent-review.json",
+          "sha256": "ccfc52a52fdae1d1efade401a6f1205ab540b3042e77f8ade918f525e99db829"
+        },
+        "prospectiveCoverageReview": {
+          "root": "task",
+          "file": "outputs/bembla-nine-impact-and-proposal-supplement.json",
+          "sha256": "4ec83460fb3ee22fe149e5557ac3dcf112009698b9766d2c79d2498a98c69f78"
+        },
+        "representativePrecisionReview": {
+          "root": "task",
+          "file": "outputs/bembla-eight-representative-precision-addendum.json",
+          "sha256": "4bb1bbdcb7ac11276d9577356690eb95ec747ba9010f54926d004ee43b638420"
+        },
+        "uncertainty": "Preserve original source registration differences and all conflicts. The nine-source preview retains14 external old-peer conflicts; these include substantive legacy disagreements, not only narrow strips. Near-border GPS uncertainty remains."
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-bennane-keblia-source-review",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/bembla-bennane-keblia-native-source-candidate.geojson",
+      "sha256": "760dd75369b87109b81609ec18cf77c171486aed45dea79ea04d34964d793cf5",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7109598",
+          "officialCode": "326253",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بنان القبلية",
+            "name:ar": "بنان القبلية",
+            "name:fr": "Benen Sud",
+            "ref:tn:codegeo": "326253"
+          },
+          "aliases": [
+            "Benen Sud"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "qualification": "Complete unchanged native ISIE red outlines, independently checked controls, closure, active clips, country containment, original and quantized validity, current INS identities and whole-imada decree correspondence.",
+        "state": "Source qualified; actual generated catalog and app installation remain separate acceptance steps.",
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/bembla-ninth-source-point-independent-review.json",
+          "sha256": "478cf0ebf546675080f8a41facca6a1ea049c9898750989719a78f699662b786"
+        },
+        "prospectiveCoverageReview": {
+          "root": "task",
+          "file": "outputs/bembla-nine-impact-and-proposal-supplement.json",
+          "sha256": "4ec83460fb3ee22fe149e5557ac3dcf112009698b9766d2c79d2498a98c69f78"
+        },
+        "representativePrecisionReview": {
+          "root": "task",
+          "file": "outputs/bembla-eight-representative-precision-addendum.json",
+          "sha256": "4bb1bbdcb7ac11276d9577356690eb95ec747ba9010f54926d004ee43b638420"
+        },
+        "uncertainty": "Preserve original source registration differences and all conflicts. The nine-source preview retains14 external old-peer conflicts; these include substantive legacy disagreements, not only narrow strips. Near-border GPS uncertainty remains.",
+        "originalSourceReview": {
+          "root": "task",
+          "file": "outputs/bembla-bennane-keblia-source-followup-review.json",
+          "sha256": "095f1ba24d09139b1a5a6d932d0c8405262e02ed13641d2dc3b53de0538223a3"
+        }
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-carthage",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/carthage-isie2023-six-sectors.geojson",
+      "sha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7116249",
+          "officialCode": "115151",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "int_name": "Sidi Bou Said",
+            "name": "سيدي بو سعيد",
+            "name:ar": "سيدي بو سعيد",
+            "name:fr": "Sidi Bou Said",
+            "ref:tn:codegeo": "115151",
+            "wikidata": "Q877391",
+            "wikipedia": "ar:سيدي بوسعيد"
+          },
+          "aliases": [
+            "سيدي بوسعيد"
+          ]
+        },
+        {
+          "id": "osm:relation:7116250",
+          "officialCode": "115152",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أميلكار",
+            "name:ar": "أميلكار",
+            "name:fr": "Amilcar",
+            "ref:tn:codegeo": "115152"
+          },
+          "aliases": []
+        },
+        {
+          "id": "osm:relation:7116451",
+          "officialCode": "115153",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قرطاج بيرصة",
+            "name:ar": "قرطاج بيرصة",
+            "name:fr": "Carthage Byrsa",
+            "ref:tn:codegeo": "115153"
+          },
+          "aliases": [
+            "قرطاج بيرصا"
+          ]
+        },
+        {
+          "id": "osm:relation:7116452",
+          "officialCode": "115156",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حي محمد علي",
+            "name:ar": "حي محمد علي",
+            "ref:tn:codegeo": "115156"
+          },
+          "aliases": []
+        },
+        {
+          "id": "osm:relation:7116453",
+          "officialCode": "115155",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الياسمين",
+            "name:ar": "الياسمين",
+            "name:fr": "Le Jasmin",
+            "ref:tn:codegeo": "115155"
+          },
+          "aliases": [
+            "الياسمين"
+          ]
+        },
+        {
+          "id": "osm:relation:7116454",
+          "officialCode": "115154",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قرطاج الشاطئ",
+            "name:ar": "قرطاج الشاطئ",
+            "name:es": "Cartago Playa",
+            "name:fr": "Carthage Plage",
+            "ref:tn:codegeo": "115154"
+          },
+          "aliases": [
+            "Cartago Playa",
+            "قرطاج الشاطىء"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "state": "Source reviewed; actual generated catalog and installation remain separate acceptance gates.",
+        "evidenceFile": "official/carthage-isie2023-six-acceptance-review.json",
+        "evidenceSha256": "6821a7459929b93d6ce2e5756eb0e4971f32bd56b4c3586ba84a0f0999d3e745",
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/carthage-six-native-boundary-source-review.json",
+          "sha256": "e5af5546cba2a18c2066b00c591cc48f9296fa8ed423fa2c36176ef1526259e1"
+        },
+        "nameIdentityReview": {
+          "root": "task",
+          "file": "outputs/carthage-four-sector-identity-name-source-review.json",
+          "sha256": "6b5879dfb0cd9b9072cb1a719fe70cbbd716bcd0ddd3f235d61c66d94da8f588"
+        },
+        "uncertainty": "Seven internal and fourteen external prospective overlap pairs remain source differences; conflict suppression is not an accuracy certificate. The parent second component is Punic-harbour water and most is included by the official Plage map; preserve exact native outlines without clipping, filling or inferred repair. Complete source-reviewed corrections do not require replacing every unrelated neighboring boundary first."
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-le-kram",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/le-kram-isie2023-six-sectors.geojson",
+      "sha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7063887",
+          "officialCode": "117051",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كرم الشرقية",
+            "name:ar": "كرم الشرقية",
+            "name:fr": "Le Kram Est",
+            "ref:tn:codegeo": "117051"
+          },
+          "aliases": [
+            "كرم الشرقية"
+          ]
+        },
+        {
+          "id": "osm:relation:7079234",
+          "officialCode": "117052",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الرياض",
+            "name:ar": "الرياض",
+            "name:fr": "Erriadh",
+            "ref:tn:codegeo": "117052"
+          },
+          "aliases": []
+        },
+        {
+          "id": "osm:relation:7079245",
+          "officialCode": "117057",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بير لحلو",
+            "name:ar": "بير لحلو",
+            "name:fr": "Bir El Helou",
+            "ref:tn:codegeo": "117057"
+          },
+          "aliases": [
+            "بير لحلو"
+          ]
+        },
+        {
+          "id": "osm:relation:7079335",
+          "officialCode": "117055",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الكرم الغربية",
+            "name:ar": "الكرم الغربية",
+            "name:fr": "Le Kram Ouest",
+            "ref:tn:codegeo": "117055"
+          },
+          "aliases": [
+            "الكرم الغربية"
+          ]
+        },
+        {
+          "id": "osm:relation:7079355",
+          "officialCode": "117056",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي عمر",
+            "name:ar": "سيدي عمر",
+            "name:fr": "Sidi Amor",
+            "ref:tn:codegeo": "117056"
+          },
+          "aliases": []
+        },
+        {
+          "id": "osm:relation:7079365",
+          "officialCode": "117053",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البحيرة",
+            "name:ar": "البحيرة",
+            "name:fr": "El Bouhaira",
+            "ref:tn:codegeo": "117053"
+          },
+          "aliases": []
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/le-kram-six-native-boundary-source-review.json",
+          "sha256": "c2bd1fea602e0a0630e106aa086b00f8358a9aa23145f8aa588387a6c7537878"
+        },
+        "nameIdentityReview": {
+          "root": "task",
+          "file": "outputs/kram-goulette-nine-sector-name-source-review.json",
+          "sha256": "8ddb5341ce39d441331012146c98e229eea60b1ef9fe1143823cf8688b1b0c35"
+        },
+        "state": "Native whole-imada source review; generated catalog and display identity migration require independent acceptance.",
+        "uncertainty": "Native map precision is preserved; map fit is not ground accuracy, and administrative boundaries need not equal commonly named neighborhoods.",
+        "evidenceFile": "official/kram-goulette-isie2023-nine-source-review.json",
+        "evidenceSha256": "198b3ce6111db37d1da8d57a5466613f81b2ce7d615eae48259dfcdd0fbd1017"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-la-goulette",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/la-goulette-isie2023-three-sectors.geojson",
+      "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7117889",
+          "officialCode": "116952",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حلق الوادي الكازينو",
+            "name:ar": "حلق الوادي الكازينو",
+            "name:fr": "La Goulette Casino",
+            "ref:tn:codegeo": "116952"
+          },
+          "aliases": []
+        },
+        {
+          "id": "osm:relation:7117890",
+          "officialCode": "116953",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "خير الدين",
+            "name:ar": "خير الدين",
+            "name:fr": "Kheredine",
+            "ref:tn:codegeo": "116953",
+            "wikidata": "Q12211002"
+          },
+          "aliases": [
+            "Kheireddine"
+          ]
+        },
+        {
+          "id": "osm:relation:7117933",
+          "officialCode": "116951",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حلق الوادي",
+            "name:ar": "حلق الوادي",
+            "name:azb": "حلق الوادی",
+            "name:de": "Ḥalq al-Wādī",
+            "name:es": "La Goleta",
+            "name:fr": "La Goulette",
+            "ref:tn:codegeo": "116951"
+          },
+          "aliases": [
+            "La Goleta",
+            "La Goletta",
+            "Хальк-эль-Уэд",
+            "לה גולט",
+            "حلق الوادی",
+            "Ḥalq al-Wādī"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/la-goulette-three-native-source-review.json",
+          "sha256": "a68223fa5a2f34c9534b79172c2c1535f54eb1dfdca89cc71a23aa674df63ef8"
+        },
+        "nameIdentityReview": {
+          "root": "task",
+          "file": "outputs/kram-goulette-nine-sector-name-source-review.json",
+          "sha256": "8ddb5341ce39d441331012146c98e229eea60b1ef9fe1143823cf8688b1b0c35"
+        },
+        "state": "Native whole-imada source review; generated catalog and display identity migration require independent acceptance.",
+        "uncertainty": "Native map precision is preserved; map fit is not ground accuracy, and administrative boundaries need not equal commonly named neighborhoods.",
+        "evidenceFile": "official/kram-goulette-isie2023-nine-source-review.json",
+        "evidenceSha256": "198b3ce6111db37d1da8d57a5466613f81b2ce7d615eae48259dfcdd0fbd1017"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-beni-hassan",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+      "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7113965",
+          "officialCode": "325552",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني حسان الجوفية",
+            "name:ar": "بني حسان الجوفية",
+            "name:fr": "Beni Hassen Nord",
+            "ref:tn:codegeo": "325552"
+          },
+          "aliases": [
+            "Beni Hassen Nord"
+          ]
+        },
+        {
+          "id": "osm:relation:7113975",
+          "officialCode": "325551",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بني حسان القبلية",
+            "name:ar": "بني حسان القبلية",
+            "name:fr": "Beni Hassen Sud",
+            "ref:tn:codegeo": "325551"
+          },
+          "aliases": [
+            "Beni Hassen Sud"
+          ]
+        },
+        {
+          "id": "osm:relation:7114530",
+          "officialCode": "325554",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجنائحة",
+            "name:ar": "الجنائحة",
+            "name:fr": "EL Jnaïha",
+            "ref:tn:codegeo": "325554"
+          },
+          "aliases": [
+            "EL Jnaïha"
+          ]
+        },
+        {
+          "id": "osm:relation:7114531",
+          "officialCode": "325555",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الغنادة",
+            "name:ar": "الغنادة",
+            "name:fr": "Ghnada",
+            "ref:tn:codegeo": "325555"
+          },
+          "aliases": [
+            "Ghenada",
+            "Ghnada"
+          ]
+        },
+        {
+          "id": "osm:relation:7114532",
+          "officialCode": "325553",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حاتم",
+            "name:ar": "حاتم",
+            "name:fr": "Hatem",
+            "ref:tn:codegeo": "325553"
+          },
+          "aliases": [
+            "Hatem"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/beni-hassan-five-native-source-review.json",
+          "sha256": "61af7973593798faed4d1fa8d9f3bf10eb8a9a2ea08c35edd2f8ffb051bbedf8"
+        },
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/beni-hassan-five-native-source-independent-review.json",
+          "sha256": "e0e3e6a0477ba19ca6dad57d4614ac0442ae04a441c130182c11fa6da18c2626"
+        },
+        "nameIdentityReview": {
+          "root": "task",
+          "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+          "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+        },
+        "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+        "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+        "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+        "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-saouaf",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/saouaf-isie2023-five-sectors.geojson",
+      "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7114526",
+          "officialCode": "165651",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صواف الشرقية",
+            "name:ar": "صواف الشرقية",
+            "name:fr": "Saouaf Est",
+            "ref:tn:codegeo": "165651"
+          },
+          "aliases": [
+            "Saouaf Est",
+            "Saouef Est"
+          ]
+        },
+        {
+          "id": "osm:relation:7114549",
+          "officialCode": "165653",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحميرة",
+            "name:ar": "الحميرة",
+            "name:fr": "El Hamira",
+            "ref:tn:codegeo": "165653"
+          },
+          "aliases": [
+            "El Hamira",
+            "El Hmira"
+          ]
+        },
+        {
+          "id": "osm:relation:7116957",
+          "officialCode": "165652",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صواف الغربية",
+            "name:ar": "صواف الغربية",
+            "name:fr": "Saouaf Ouest",
+            "ref:tn:codegeo": "165652"
+          },
+          "aliases": [
+            "Saouaf Ouest",
+            "Saouef Ouest"
+          ]
+        },
+        {
+          "id": "osm:relation:7119808",
+          "officialCode": "165654",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدغافلة الشرقية",
+            "name:ar": "الدغافلة الشرقية",
+            "name:fr": "Deghafla Est",
+            "ref:tn:codegeo": "165654"
+          },
+          "aliases": [
+            "Deghafla Est"
+          ]
+        },
+        {
+          "id": "osm:relation:7119809",
+          "officialCode": "165655",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدغافلة الغربية",
+            "name:ar": "الدغافلة الغربية",
+            "name:fr": "Deghafla Ouest",
+            "ref:tn:codegeo": "165655"
+          },
+          "aliases": [
+            "Deghafla Ouest"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/saouaf-five-native-source-review.json",
+          "sha256": "36829b54ac6ad8ce0633dbef86c7f8a7096c17cc2c1aa417d5a202db00b3a776"
+        },
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/saouaf-five-native-source-independent-review.json",
+          "sha256": "9591e0cc20f219cede9183388aac273ffbb65b39f8ccb8e5899c8765932e3d0b"
+        },
+        "nameIdentityReview": {
+          "root": "task",
+          "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+          "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+        },
+        "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+        "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+        "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+        "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-zeramdine-south",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/zeramdine-south-isie2023-sectors.geojson",
+      "sha256": "7af1bc235260fcdbaf61332f2317a6ae9911fed1982746cdb1a78fd6fd1328c1",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7114249",
+          "officialCode": "325455",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زرميدين الجنوبية",
+            "name:ar": "زرميدين الجنوبية",
+            "name:fr": "Zéramdine Sud",
+            "ref:tn:codegeo": "325455"
+          },
+          "aliases": [
+            "Zéramdine Sud",
+            "زرميدين الجنوبية"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/zeramdine-nadhour-adjoining-native-source-review.json",
+          "sha256": "ccf3367977d8a4ae4fdb638464905f48de1a254ba8e19335c3f56bb91e260f60"
+        },
+        "independentSourceReview": null,
+        "nameIdentityReview": {
+          "root": "task",
+          "file": "outputs/zeramdine-nadhour-adjoining-native-source-review.json",
+          "sha256": "ccf3367977d8a4ae4fdb638464905f48de1a254ba8e19335c3f56bb91e260f60"
+        },
+        "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+        "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+        "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+        "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-nadhour",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/nadhour-isie2023-sectors.geojson",
+      "sha256": "5c7f6a16500866daf3a2937eb92e1b3be6798e1c34d2dcb6ef6c7bb5d2f8024e",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7119798",
+          "officialCode": "165551",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الناظور",
+            "name:ar": "الناظور",
+            "name:fr": "Ennadhour",
+            "ref:tn:codegeo": "165551"
+          },
+          "aliases": [
+            "Ennadhour",
+            "Nadour"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/zeramdine-nadhour-adjoining-native-source-review.json",
+          "sha256": "ccf3367977d8a4ae4fdb638464905f48de1a254ba8e19335c3f56bb91e260f60"
+        },
+        "independentSourceReview": null,
+        "nameIdentityReview": {
+          "root": "task",
+          "file": "outputs/zeramdine-nadhour-adjoining-native-source-review.json",
+          "sha256": "ccf3367977d8a4ae4fdb638464905f48de1a254ba8e19335c3f56bb91e260f60"
+        },
+        "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+        "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+        "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+        "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-jammel",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/jammel-isie2023-two-sectors.geojson",
+      "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7113923",
+          "officialCode": "325654",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمال الغربية",
+            "name:ar": "جمال الغربية",
+            "name:fr": "Jammel Ouest",
+            "ref:tn:codegeo": "325654"
+          },
+          "aliases": [
+            "Jammel Ouest"
+          ]
+        },
+        {
+          "id": "osm:relation:7113920",
+          "officialCode": "325659",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الطيايرة",
+            "name:ar": "الطيايرة",
+            "name:fr": "Et-Teyaïra",
+            "ref:tn:codegeo": "325659"
+          },
+          "aliases": [
+            "Et-Teyaïra"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/next-three-interface-native-source-review.json",
+          "sha256": "c25fc986791c27e9c69f768dc93917c42202b5bb150371bb993bd94e5a651d70"
+        },
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/next-three-interface-native-source-independent-review.json",
+          "sha256": "dba9679c52e264442b900caafe3e6b6bfe8fa734af9a3bf9901f43004b8f6277"
+        },
+        "nativeCandidate": {
+          "root": "task",
+          "file": "outputs/next-three-interface-native-source-candidates.geojson",
+          "sha256": "a107c120d8c4f1ea81c54aff450832624f6b7d7d0339d50015f2a7af69690f60"
+        },
+        "namePolicy": "Preserve the four exact current Arabic primaries and source French names/aliases; no name normalization.",
+        "geometryPolicy": "Complete qualified native coordinate arrays, unchanged. No clipping, snapping, repair or scope merging.",
+        "qualification": "Source acceptance only. Residual native seams and mixed-source administrative discrepancies remain explicit in the source reviews; source-phase proof migration and actual-data verification are separate."
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-nadhour-souar",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/nadhour-souar-isie2023-sectors.geojson",
+      "sha256": "8c2fda9b927cb8e0c5761df51adede563a96d3a2c683649586ddf181fa32582f",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7119796",
+          "officialCode": "165553",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صوار",
+            "name:ar": "صوار",
+            "name:fr": "Saouar",
+            "ref:tn:codegeo": "165553"
+          },
+          "aliases": [
+            "Saouar",
+            "Souar"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/next-three-interface-native-source-review.json",
+          "sha256": "c25fc986791c27e9c69f768dc93917c42202b5bb150371bb993bd94e5a651d70"
+        },
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/next-three-interface-native-source-independent-review.json",
+          "sha256": "dba9679c52e264442b900caafe3e6b6bfe8fa734af9a3bf9901f43004b8f6277"
+        },
+        "nativeCandidate": {
+          "root": "task",
+          "file": "outputs/next-three-interface-native-source-candidates.geojson",
+          "sha256": "a107c120d8c4f1ea81c54aff450832624f6b7d7d0339d50015f2a7af69690f60"
+        },
+        "namePolicy": "Preserve the four exact current Arabic primaries and source French names/aliases; no name normalization.",
+        "geometryPolicy": "Complete qualified native coordinate arrays, unchanged. No clipping, snapping, repair or scope merging.",
+        "qualification": "Source acceptance only. Residual native seams and mixed-source administrative discrepancies remain explicit in the source reviews; source-phase proof migration and actual-data verification are separate."
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-zeramdine-north",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/zeramdine-north-isie2023-sectors.geojson",
+      "sha256": "8f3f52ecf69ea9df4136a53e83241e57775399c1d5c805ffea16862372812361",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7114248",
+          "officialCode": "325454",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زرمدين الشمالية",
+            "name:ar": "زرمدين الشمالية",
+            "name:fr": "Zéramdine Nord",
+            "ref:tn:codegeo": "325454"
+          },
+          "aliases": [
+            "Zéramdine Nord"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-08",
+        "geometryEdition": 2023,
+        "nativeSourceReview": {
+          "root": "task",
+          "file": "outputs/zeramdine-north-native-source-review.json",
+          "sha256": "0a9761c2cc15eba0861ee6cd79e36bb5e7137f38198205d8ee1dda8b5b8f1000"
+        },
+        "independentSourceReview": {
+          "root": "task",
+          "file": "outputs/zeramdine-north-native-source-independent-review.json",
+          "sha256": "c036cb1a887d713ff0a31eb23b3e118408cbb0e812017984778a169730cf6f08"
+        },
+        "nativeCandidate": {
+          "root": "task",
+          "file": "outputs/zeramdine-north-native-source-candidate.geojson",
+          "sha256": "da13cb3df63e4ad2bcbdb8182a92255798351c28ceb3edc3268cd66dda697a79"
+        },
+        "namePolicy": "Preserve the four exact current Arabic primaries and source French names/aliases; no name normalization.",
+        "geometryPolicy": "Complete qualified native coordinate arrays, unchanged. No clipping, snapping, repair or scope merging.",
+        "qualification": "Source acceptance only. Residual native seams and mixed-source administrative discrepancies remain explicit in the source reviews; source-phase proof migration and actual-data verification are separate."
+      }
+    }
+  ],
+  "aggregateScopeReview": {
+    "file": "official/bekalta-north-aggregate-scope-review.json",
+    "sha256": "a7d50ab1078b336be39c46eeaa8d55d183cd441437ffbaf1fc4f9d71c734f989"
+  }
+}

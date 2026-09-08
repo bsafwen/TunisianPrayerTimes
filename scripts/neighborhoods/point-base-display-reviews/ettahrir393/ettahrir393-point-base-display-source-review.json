@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPPORTED_DISPLAY_IDENTITY_PENDING_TYPED_PEER_FORMAT",
+  "baselineMetadataSha256": "d769190af16ba9c4e560ccaab7f23572f38faa3b9734e090bedff4c2416a1f78",
+  "currentBaselineQualification": "Khadra was installed during this review. This report pins current d769 metadata; the Ettahrir point and base393 retain the earlier triage fields, and the complete five-imada inventory was freshly read.",
+  "decision": "Support one explicitly reviewed Ettahrir picker identity by associating the existing suburb point with timetable base393. Preserve both accepted coordinates and every administrative or unrelated same-name choice.",
+  "reasoning": [
+    "The cached and fresh OSM object is explicitly a suburb named Hay/Cite Ettahrir. MSSA uses Hay Ettahrir as a Tunis address locality; Enda independently describes its Cite Ettahrir community space and inhabitants of the quarter. These identify an inhabited quarter, not merely the delegation title.",
+    "The app constructs base393 from a point-based timetable row named Ettahrir, separately from administrative polygon records. Associating the unqualified quarter point with that row is a reviewed display inference supported by the source names and locality evidence; it does not equate the suburb with any imada or redefine delegation1157.",
+    "No same-name competing settlement occurs within the current Tunis context inventory. All three non-target raw name peers are in other governorates and remain distinct. Distance and nearest-source arithmetic are corroboration only."
+  ],
+  "proposedFieldChange": {
+    "id": "osm:node:1158752159",
+    "field": "pickerGroupId",
+    "before": "osm:node:1158752159",
+    "after": "delegation:393"
+  },
+  "currentPoint": {
+    "id": "osm:node:1158752159",
+    "sourceId": "osm",
+    "name": "حي التحرير",
+    "aliases": [
+      "Cité Ettahrir",
+      "Hay Ettahrir"
+    ],
+    "kind": "suburb",
+    "parentName": "الحديقة",
+    "contextAliases": [
+      "Délégation Ettahrir",
+      "El Hadika",
+      "Ettahrir",
+      "الحديقة",
+      "معتمدية التحرير"
+    ],
+    "governorateId": 342,
+    "lat": 36.8229323,
+    "lng": 10.1339881,
+    "delegationId": 393,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1158752159"
+  },
+  "base393": {
+    "id": 393,
+    "nomFr": "Ettahrir",
+    "nomAr": "التحرير",
+    "nomEn": "Ettahrir",
+    "lat": 36.8244,
+    "lng": 10.1283
+  },
+  "currentGroups": {
+    "osm:node:1158752159": [
+      "osm:node:1158752159"
+    ],
+    "delegation:393": [
+      "delegation:393"
+    ]
+  },
+  "baseCoordinateProvenance": {
+    "currentAndroidAndDocsRowEqual": true,
+    "trackedHeadAndroidRowEqual": "Verified read-only git show in terminal1e1830; same name and numeric row.",
+    "manifestCorrection393": null,
+    "manifestOriginalAssetProvenance": {
+      "path": "android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8",
+      "coordinateProvenance": "Legacy bundled reference coordinates; an external origin for these coordinates was not documented."
+    },
+    "distanceToSuburbMetres": 531.9496944641929,
+    "limitation": "The current reference is an existing app timetable anchor. No evidence here certifies it as an original INM station/measurement or proves it wrong. An older TV asset differs and is not a reason to move the current reference.",
+    "timetableAvailability": "Twelve current 2026 CSV files exist for393. No new CSV validity audit or full nearest-source matrix was run."
+  },
+  "administrativeScope": {
+    "delegationId": "osm:relation:4130434",
+    "code": "1157",
+    "fiveImadas": [
+      {
+        "id": "osm:relation:7201527",
+        "code": "115751",
+        "nameAr": "التحرير الأول"
+      },
+      {
+        "id": "osm:relation:7201531",
+        "code": "115752",
+        "nameAr": "التحرير الثاني"
+      },
+      {
+        "id": "osm:relation:7201529",
+        "code": "115753",
+        "nameAr": "التحرير الثالث"
+      },
+      {
+        "id": "osm:relation:7201528",
+        "code": "115754",
+        "nameAr": "التحرير العلوي"
+      },
+      {
+        "id": "osm:relation:7201530",
+        "code": "115755",
+        "nameAr": "الحديقة"
+      }
+    ],
+    "suburbPointCurrentImada": "115755 الحديقة",
+    "baseReferenceCurrentImada": "115753 التحرير الثالث",
+    "qualification": "Different cached imadas within the same delegation. This is not evidence of different unnumbered inhabited quarters, and no common-imada containment is claimed. Cached geometry is context evidence, not newly certified official boundaries."
+  },
+  "sourcePeers": [
+    {
+      "id": "osm:node:1158752159",
+      "kind": "suburb",
+      "completeRawGroup": [
+        "osm:node:1158752159"
+      ]
+    },
+    {
+      "id": "osm:node:2245539847",
+      "kind": "neighbourhood",
+      "completeRawGroup": [
+        "osm:node:2245539847"
+      ]
+    },
+    {
+      "id": "osm:relation:4130434",
+      "kind": "delegation",
+      "completeRawGroup": []
+    },
+    {
+      "id": "osm:relation:7154897",
+      "kind": "sector",
+      "completeRawGroup": [
+        "osm:relation:7154897"
+      ]
+    },
+    {
+      "id": "osm:way:1321465756",
+      "kind": "residential",
+      "completeRawGroup": [
+        "osm:way:1321465756"
+      ]
+    }
+  ],
+  "externalSameNameRawIds": [
+    "osm:relation:7154897",
+    "osm:way:1321465756",
+    "osm:node:2245539847"
+  ],
+  "sourceEvidence": [
+    {
+      "provider": "Ministry of Social Affairs",
+      "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-التحرير-تونس",
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\ministry-social-ettahrir.html",
+        "sha256": "8b4a5c89d389137db049cb6ea1a8a5029005b492fa7b7603083a0f0565fa0351"
+      },
+      "address": "إقامة الشريفة حي التحرير",
+      "role": "Official inhabited-locality address; office map point is not a suburb reference or boundary."
+    },
+    {
+      "provider": "Enda inter-arabe, primary local NGO account",
+      "url": "https://www.endarabe.org.tn/2026/02/15/soirees-ramadanesques-2026-lespace-el-kahina-le-coeur-vibrant-de-la-culture-pour-tous/",
+      "readVia": "web open, lines80/104/107",
+      "role": "Calls its Cite Ettahrir community location a quarter with inhabitants. Independent primary participant account, not a government source. Direct curl returned403; no pinned original HTML claimed."
+    },
+    {
+      "provider": "OpenStreetMap API",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1158752159.json",
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\node-1158752159.json",
+        "sha256": "75e71a06eca685e3651a80e2ca2f926f1c71ea492cf72a55af1914bcadeb12bc"
+      },
+      "version": 13,
+      "timestamp": "2021-02-03T23:54:37Z",
+      "fullCachedEquality": true
+    },
+    {
+      "provider": "INS RGPH2024",
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "role": "Complete five-imada inventory of delegation1157, separately preserved."
+    }
+  ],
+  "proofFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\exact-peer-scope-facts.json",
+    "sha256": "d69b86bb0547388fc217457dda8eedd6003aef739fa66a6baa6260d6ac5f5b9e"
+  },
+  "retrieval": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\retrieval.json",
+    "sha256": "877e7b3c71d1d4695b01ba47c4e7197cc51996d2a02b15e888f003ff956bd14b"
+  },
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "fb5af4a572c1df0eb813deecc83ddb4ff16c5d2ea5a4d73f04ee08fe850a8c6e"
+  },
+  "currentFormatGaps": [
+    {
+      "id": "osm:node:2245539847",
+      "kind": "neighbourhood",
+      "issue": "The installed suburb validator requires every preservedNamePeer to have a Polygon/MultiPolygon source shape and hasBoundary=true. This unrelated point cannot satisfy that format and must not be dropped from the complete inventory."
+    },
+    {
+      "id": "osm:relation:4130434",
+      "kind": "delegation",
+      "issue": "The exact Ettahrir alt_name:fr makes the read-only parent delegation a matching source peer. It has no raw picker row. The installed expected_peer_ids subtracts only target and preservedSectors, so it incorrectly requires this context peer to be an extra raw polygon row for this proposal. A future explicit typed context-peer proof must preserve the complete inventory without inventing a row or globally reserving the parent."
+    }
+  ],
+  "implementationPrerequisites": [
+    "Independent proposal review and a typed peer format covering preserved points and read-only name-matching contexts; no automatic alias or approximate-name merge, and no change to existing proof semantics.",
+    "Bind exact raw/current/base/source peers, all five imadas and three unrelated name peers, current original/effective source states, and complete before/after groups.",
+    "Preserve point kind/name/aliases/parent/context/source393, both coordinates, polygon bytes and all saved raw IDs; only the group field is proposed."
+  ],
+  "limitations": [
+    "No official complete quarter polygon or original INM coordinate provenance is established. Neither is inferred from an address-office point.",
+    "No root phone observations were read, no live ledger/device access occurred, and no repository/helper/generator/test execution or catalog mutation was performed."
+  ],
+  "priorTriage": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\four-tunis-suburb-source-context-triage.json",
+    "sha256": "080e4cc6a8e34c24915df74ccc9512e5ef9d2a6db470eaa025f0645363e42a2f"
+  }
+}

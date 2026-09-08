@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr"  dir="ltr">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="HAICOP">
+<meta name="keywords" content="HAICOP">
+<meta name="csrf-token" content="szwWsntI8Wv0dDk3oljivMODV34lBivqC9oPWbp7">
+<link rel="icon" href="https://www.marchespublics.gov.tn/haicop/assets/favicon.png" type="image/x-icon"/>
+<title>HAICOP</title>
+    <link rel="alternate" hreflang="fr" href="https://www.marchespublics.gov.tn/fr/projets-annuels"/>
+    <link rel="alternate" hreflang="ar" href="https://www.marchespublics.gov.tn/ar/المخططات-التقديرية-السنوية"/>
+    <link rel="stylesheet" href="https://www.marchespublics.gov.tn/haicop/assets/css/bootstrap.min.css" />
+
+<link rel="stylesheet" href="https://www.marchespublics.gov.tn/haicop/assets/css/built.min.css">
+
+
+
+
+        </head>
+
+<body>
+<nav class="menu-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-8">
+                <div class="rt-wrap">
+                    <img class="flag" src="https://www.marchespublics.gov.tn/haicop/assets/images/rt-logo.jpg" alt="République Tunisienne présidence du gouvernement ">
+                    <span class="rt-text"> <span>REPUBLIQUE TUNISIENNE</span> <br />Présidence du Gouvernement</span>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-4 text-right menu-top-wrap">
+                <ul class="menu-top-liste">
+                                                            <li class="menu-top-element"><a href="https://www.marchespublics.gov.tn/fr/liste-dexclusion-">Liste d&#039;exclusion</a></li>
+                                        <li class="menu-top-element"><a href="https://www.marchespublics.gov.tn/fr/avis-du-cosem-6">Avis du cosem</a></li>
+                                        <li class="menu-top-element"><a href="https://www.marchespublics.gov.tn/fr/avis-cscamp">Avis Cscamp</a></li>
+                                    </ul>
+
+                <select class="lang selectpicker" name="langues" id="redirect-tanslation-url">
+                                            <option value="https://www.marchespublics.gov.tn/fr/projets-annuels"
+                                 selected >  Français</option>
+                                            <option value="https://www.marchespublics.gov.tn/ar/المخططات-التقديرية-السنوية"
+                                >  العربية</option>
+                                    </select>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-xs-6">
+
+                                <a class="logo" href="https://www.marchespublics.gov.tn/fr">
+                    <img src="https://www.marchespublics.gov.tn/haicop/assets/images/logo.png" alt="HAICOP">
+                    
+                </a>
+                
+            </div>
+            <div class="col-sm-8 col-xs-6">
+                <div class="membre">
+                                            <a href="javascript:" data-toggle="modal" data-target="#modal-login">
+                            <span class="text-right">Vous êtes fournisseur ou acheteur public
+                                <br/>
+                                <strong class="medium text-black">Inscription</strong>
+                            </span>
+                            <img src="https://www.marchespublics.gov.tn/haicop/assets/images/membre.png" alt="membre">
+
+                            <span class="text-left">Connexion
+                                
+                            </span>
+                        </a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="modal-login" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-body p-0">
+                <div class="row">
+                    <div class="col-md-4 bg-white">
+                        <button type="button" class="close mt-2 mr-2" data-dismiss="modal"><i
+                                class="fas fa-xs fa-times"></i></button>
+                        <div class="px-3 py-5">
+                            <form action="https://www.marchespublics.gov.tn/fr/login" method="post" id="ajax-login">
+                                <input type="hidden" name="_token" value="szwWsntI8Wv0dDk3oljivMODV34lBivqC9oPWbp7">
+                                <h5 class="text-center my-3 pb-3">Vous avez déjà un compte?</h5>
+                                <div id="login-error-message"></div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control haicop-input" name="email"
+                                           placeholder="Login" required/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control haicop-input" name="password"
+                                           placeholder="Mot de passe" required/>
+                                    <p class="my-2"><a href="https://www.marchespublics.gov.tn/fr/password/reset">Mot de passe oublié ?</a></p>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn-fill btn-block btn-black">Se connecter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8 bg-main-blue-9 text-white">
+                        <div class="px-3 py-5 mb-4">
+                            <h5 class="text-center my-3 pb-3">Créez votre compte</h5>
+                            <div class="pt-3">
+                                <h4>Acheteur public</h4>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p>Vous voulez insérer les données relatives aux marchés publics?</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="https://www.marchespublics.gov.tn/fr/acheteur-public/inscription"
+                                           class="btn-fill btn-main-red px-4 btn-sm">S&#039;inscrire</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-3">
+                                <h4>Fournisseur</h4>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p>Vous voulez bénéficier des services en ligne?</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="https://www.marchespublics.gov.tn/fr/fournisseur/inscription"
+                                           class="btn-fill btn-main-red px-4 btn-sm">S&#039;inscrire</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<nav class="navbar menu" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle toggler-icon" data-toggle="collapse"
+                    data-target="#navbar-collapse">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav menu-liste">
+                                                    <li class="menu-element active has-child">
+                        <a class="nav-link active dropdown-toggle" data-toggle=dropdown role=button
+                         aria-haspopup=true aria-expanded=false
+                        >HAICOP</a>
+
+                                                    <ul class="dropdown-menu">
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/presentationHAICOP">Présentation</a>
+                                        
+                                    </li>
+                                                                    <li>
+                                                                                    <div class="link-submenu">Structures et attributions</div>
+                                            <ul class="ss_menu">
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/la-commision-superieure-de-controle-et-daudit-des-marches-publics"><i
+                                                                        class="fas fa-angle-right"></i> La commision supérieure de contrôle et d&#039;audit des marchés publics
+                                                            </a>
+                                                                                                            </li>
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/le-comite-de-suivi-et-denquete-des-marches-publics"><i
+                                                                        class="fas fa-angle-right"></i> Le Comité de suivi et d&#039;enquête des marchés publics
+                                                            </a>
+                                                                                                            </li>
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/le-secretariat-permanent-du-conseil-national-de-la-commande-publique"><i
+                                                                        class="fas fa-angle-right"></i> Le Secrétariat permanent du conseil national de la commande publique
+                                                            </a>
+                                                                                                            </li>
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/le-secretariat-permanent-du-comite-consultatif-de-reglement-amiable-des-litiges"><i
+                                                                        class="fas fa-angle-right"></i> Le Secrétariat permanent du comité consultatif de règlement amiable des litiges
+                                                            </a>
+                                                                                                            </li>
+                                                                                            </ul>
+                                        
+                                    </li>
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/organigramme">Organigramme</a>
+                                        
+                                    </li>
+                                                                    <li>
+                                                                                    <div class="link-submenu">Autres intervenants dans la commande publique</div>
+                                            <ul class="ss_menu">
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/la-commission-departementale-de-controle-des-marches-publics"><i
+                                                                        class="fas fa-angle-right"></i> La commission départementale de contrôle des marchés publics
+                                                            </a>
+                                                                                                            </li>
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/la-commission-regionale-de-controle-des-marches-publics"><i
+                                                                        class="fas fa-angle-right"></i> La commission régionale de contrôle des marchés publics
+                                                            </a>
+                                                                                                            </li>
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/la-commission-communale-de-controle-des-marches-publics"><i
+                                                                        class="fas fa-angle-right"></i> La commission communale de contrôle des marchés publics
+                                                            </a>
+                                                                                                            </li>
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/la-commission-interne-de-controle-des-marches-de-lentreprise-publique"><i
+                                                                        class="fas fa-angle-right"></i> La commission  interne de contrôle des marchés de l&#039;entreprise  publique
+                                                            </a>
+                                                                                                            </li>
+                                                                                            </ul>
+                                        
+                                    </li>
+                                                            </ul>
+                                            </li>
+                                    <li class="menu-element active has-child">
+                        <a class="nav-link active dropdown-toggle" data-toggle=dropdown role=button
+                         aria-haspopup=true aria-expanded=false
+                        >Procédures des marchés publics</a>
+
+                                                    <ul class="dropdown-menu">
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/presentation">Présentation</a>
+                                        
+                                    </li>
+                                                                    <li>
+                                                                                    <div class="link-submenu">Appel d’Offres</div>
+                                            <ul class="ss_menu">
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu"><i
+                                                                        class="fas fa-angle-right"></i> Appels d&#039;offres avec procédure normale
+                                                            </a>
+
+                                                            
+                                                            <ul class="sss_menu">
+                                                                                                                                    <li>
+                                                                        <a href="https://www.marchespublics.gov.tn/fr/ao-ouvert"> AO ouvert</a>
+                                                                    </li>
+                                                                                                                                    <li>
+                                                                        <a href="https://www.marchespublics.gov.tn/fr/ao-restreint"> AO restreint</a>
+                                                                    </li>
+                                                                                                                                    <li>
+                                                                        <a href="https://www.marchespublics.gov.tn/fr/ao-en-deux-etapes"> AO en deux étapes</a>
+                                                                    </li>
+                                                                                                                                    <li>
+                                                                        <a href="https://www.marchespublics.gov.tn/fr/ao-avec-concours"> AO avec concours</a>
+                                                                    </li>
+                                                                                                                            </ul>
+                                                                                                            </li>
+                                                                                                    <li>
+                                                                                                                    <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/appels-doffres-avec-procedure-simplifiee"><i
+                                                                        class="fas fa-angle-right"></i> Appels d&#039;offres avec procédure simplifiée
+                                                            </a>
+                                                                                                            </li>
+                                                                                            </ul>
+                                        
+                                    </li>
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/marches-negocies01">Marchés Négociés</a>
+                                        
+                                    </li>
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/dispositions-particulieres-pour-le-choix-du-titulaire-du-marche-dans-les-marches-detudes">Dispositions particulières pour le choix du titulaire du marché dans les marchés d&#039;études</a>
+                                        
+                                    </li>
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/appel-doffres-avec-concours">Appel d&#039;offres avec concours</a>
+                                        
+                                    </li>
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/marches-negocies-01">Marchés Négociés</a>
+                                        
+                                    </li>
+                                                                    <li>
+                                        
+                                            <a class="link-submenu" href="https://www.marchespublics.gov.tn/fr/appel-doffres-en-deux-etapes">Appel d&#039;offres en deux étapes</a>
+                                        
+                                    </li>
+                                                            </ul>
+                                            </li>
+                                    <li class="menu-element active ">
+                        <a class="nav-link active " href=https://www.marchespublics.gov.tn/fr/legislation
+                        >Législation</a>
+
+                                            </li>
+                                    <li class="menu-element active ">
+                        <a class="nav-link active " href=https://www.marchespublics.gov.tn/fr/documentation
+                        >Documentation</a>
+
+                                            </li>
+                                    <li class="menu-element active ">
+                        <a class="nav-link active " href=https://www.marchespublics.gov.tn/fr/faq-84
+                        >FAQ</a>
+
+                                            </li>
+                                    <li class="menu-element active ">
+                        <a class="nav-link active " href=https://www.marchespublics.gov.tn/fr/annonces
+                        >ANNONCES</a>
+
+                                            </li>
+                            </ul>
+            <ul class="nav navbar-nav  navbar-right " id="right_main">
+
+                <li class="menu_appel_offre">
+                    <a class="right_nav_link"
+                       href="https://www.marchespublics.gov.tn/fr/appels-doffres"><span>Consultez</span>
+                        les appels d’offres</a>
+                </li>
+                <li class="acheteur_public">
+                    <a class="right_nav_link"
+                       href="https://www.marchespublics.gov.tn/fr/resultats"><span>Consultez</span>
+                        les résultats des AOs</a>
+                </li>
+            </ul>
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<div class="recherche">
+    <div class="container ">
+        <div class="row no-gutters">
+            <div class="col-lg-12 col-md-12 recherche-input-wrap">
+                <form autocomplete="off" method="GET" action="https://www.marchespublics.gov.tn/fr/recherche" class="form_search">
+                    <input class="recherche-input" type="text"
+                           name="keywords"
+                           value=""
+                           placeholder="Mots clés, Avis, Résultats, Plans prévisionnels...">
+                    <button class="recherche-btn" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+    <div class="container liste_projet details page-cms">
+        <div class="row">
+            <h1 class="font-weight-9">Parachèvement des travaux d’aménagement et de revêtement des pistes rurales dans la zone du PDAI Gabès II (Lot n° 1: Piste ladbech vers stade (4.95 km) et piste oued tmessa vers stade (4.05 km) à la Délégation de Dkhilet Toujane).</h1>
+            <h2 class="font-weight-4"></h2>
+                            <p class="medium m-0 ">
+                    Date de publication :
+                    <strong>15-04-2026</strong>
+                    <a class="btn-fill btn-sm btn-main-lightblue ml-4" href="#">Publié</a>
+                </p>
+                        <div class="row flex-stretch-row">
+                <div class="col-md-6 flex-stretch-box">
+                    <div class="gray-box">
+                        <p class="medium m-0"><strong>Numéro projet : </strong> P2026-142618</p>
+                        <p class="medium m-0"><strong>Année :</strong> 2026</p>
+                        <p class="medium m-0">
+                            <strong>Acheteur Public :</strong> Commissariat Régional au Développement Agricole de Gabès</p>
+                        <p class="medium m-0">
+                            <strong>Procédure de passation</strong> Appel d’offres ouvert
+                        </p>
+                        <p class="medium m-0">
+                            <strong>Procédures (simplifiées/ordinaires) :</strong> Procédures ordinaires</p>
+                        <p class="medium m-0">
+                            <strong>Type de commande : </strong> Revêtement routier
+                        </p>
+                                                <p class="medium m-0"><strong>Mode de financement :</strong> Budget</p>
+                    </div>
+                </div>
+                <div class="col-md-6 flex-stretch-box">
+                    <div class="gray-box bg-white bordered">
+                        <p class="medium m-0">
+                            <strong>Réservé aux petites entreprises : </strong> Non
+                        </p>
+                        <p class="medium m-0">
+                            <strong>Délai d’exécution (en nombre de jours) : </strong> 180</p>
+                    </div>
+                </div>
+            </div>
+            <h3>Les dates les plus importantes</h3>
+            <ul class="list-stripped">
+                                    <li>
+                       <p>Date de publication de l&#039;avis : </p>
+                        <span>10/03/2026</span>
+                    </li>
+                                                     <li>
+                       <p>Date d&#039;élaboration du cahier des charges : </p>
+                        <span>05/03/2026</span>
+                    </li>
+                                                    <li>
+                       <p>Date d’ouverture des offres : </p>
+                        <span>10/04/2026</span>
+                    </li>
+                                                                                        <li>
+                       <p>Date de transmission du dossier à la commision des marchés : </p>
+                        <span>20/05/2026</span>
+                    </li>
+                                                    <li>
+                       <p>Date d&#039;émission de l&#039;avis de la commission des marchés : </p>
+                        <span>08/06/2026</span>
+                    </li>
+                                                    <li>
+                       <p>Date de publication des résultats : </p>
+                        <span>09/06/2026</span>
+                    </li>
+                                                    <li>
+                       <p>Date de notification du marché : </p>
+                        <span>17/06/2026</span>
+                    </li>
+                                                    <li>
+                        <p> Date de début d’exécution du marché : </p>
+                        <span>17/07/2026</span>
+                    </li>
+                            </ul>
+            <p class="mt-5">
+                <a class="btn-outline btn-square btn-black font-weight-bold mr-2"
+                   href="https://www.marchespublics.gov.tn/fr/projets-annuels"><i class="fas fa-fw fa-lg fa-long-arrow-alt-left"></i></a>
+                <a class="btn-outline btn-black font-weight-bold"
+                   href="https://www.marchespublics.gov.tn/fr/projets-annuels">Liste de projets</a>
+            </p>
+        </div>
+    </div>
+
+
+<footer class="footer">
+    <div class="container">
+        
+        <nav class="menu-bottom">
+                        <ul>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/avis-du-cosem">Avis du cosem</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/formation">Formation</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/evenements-de-formation">Evènements de formation</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/actualites">Actualités</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/faq-84-96">FAQ</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/contact">Contact</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/liens-utiles">Liens utiles</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/plan-du-site">Plan du site</a></li>
+                                    <li><a href="https://www.marchespublics.gov.tn/fr/charte-dutilisation">Charte d&#039;utilisation</a></li>
+                                                    <li class="social-btn">
+                                                                                                                    </li>
+                            </ul>
+        </nav>
+
+                    <div class="container-fluid footer-info">
+                <div class="row row-footer">
+                    <div class="col-md-3 footer-box"><img src="data:image/jpeg;base64,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" style="box-sizing: border-box; border: 0px; vertical-align: middle; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; width: 100%; border-radius: 0px !important;"><br>
+                        
+                    
+                </div>
+                <div class="col-md-3 footer-box">
+                    <p style="line-height: 1.6;"><b>Siège HAICOP :</b> Rue Laassel – face stade municipal de Bab Laassel (croisement 10 rue Béchir Sfar et rue Laassel)<br></p>
+                </div>
+                <div class="col-md-4 footer-box" style="line-height: 1.6;">
+                    <ul class="contact-info">
+                        <li style="line-height: 1.6;"><b>Tél. :</b> <a href="tel:+21671566199">(+216) 71 566 199</a></li>
+                        <li style="line-height: 1.6;"><b>Fax :</b> <a href="tel:+21671566458">(+216) 71 566 458</a></li>
+                        <li style="line-height: 1.6;"><b>Email :</b> <a href="mailto:observatoire.marches@pm.gov.tn">observatoire.marches@pm.gov.tn</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 footer-box" style="line-height: 1.6;"><p class="medianet" style="line-height: 1.6;"><img src="data:image/jpeg;base64,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" style="width: 100%;"><br></p>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="calltoaction">
+            <div class="container">
+
+                                                                                                        
+                    
+
+                
+            </div>
+        </div>
+    
+</footer>
+
+<script src="https://www.marchespublics.gov.tn/haicop/assets/js/built.min.js"></script>
+
+
+    <script src="https://www.marchespublics.gov.tn/haicop/assets/js/main.min.js"></script>
+<script>
+    $('#redirect-tanslation-url').on('change', function () {
+        //alert($(this).val());
+        location.href = $(this).val();
+    });
+</script>
+    <script>
+        $(document).ready(function () {
+
+            $("#ajax-login").submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    method: "POST",
+                    data: $("#ajax-login").serialize(),
+                    url: "https://www.marchespublics.gov.tn/fr/login"
+                })
+                    .done(function (data) {
+
+                        if (data.status == 'success') {
+                            window.location.replace("https://www.marchespublics.gov.tn/fr/login");
+                        }
+
+                    }).fail(function (data) {
+                    var response = JSON.parse(data.responseText);
+                    var msg = [];
+                    if (typeof response.errors != 'undefined') {
+                        $('#login-error-message').html(response.errors);
+                        $.each(response.errors, function (i, v) {
+                            if ($.isArray(v)) {
+                                $.each(v, function (k, elem) {
+                                   msg.push(elem)
+                                });
+                            } else {
+                                msg.push(v)
+                            }
+                        })
+                        if(msg.length) {
+                            $('#login-error-message').html(msg.join('<br>'));
+                        }
+                    } else {
+                        $('#login-error-message').html('Ces identifiants ne correspondent pas à nos enregistrements');
+                    }
+                });
+            });
+        });
+    </script>
+<script type="text/javascript" src="/bnith__3UE7jrsjjvPPcuxm5sDzFKuDdW3vKSoZRPUtRyCMjQWMkjTodf4G6ageBxHqRvHKS2zCoU1feBE="></script> <script language="JavaScript" type="text/javascript">const _0x35e8=['visitorId','18127kSXadA','356575NPKVMA','7306axxsAH','get','657833TzFjkt','717302TQdBjl','34lMHocq','x-bni-rncf=1788812708400;expires=Thu, 01 Jan 2037 00:00:00 UTC;path=/;','61XMWbpU','cookie',';expires=Thu, 01 Jan 2037 00:00:00 UTC;path=/;','then','651866OSUgMa','811155xdatvf','x-bni-fpc='];function _0x258e(_0x5954fe,_0x43567d){return _0x258e=function(_0x35e81f,_0x258e26){_0x35e81f=_0x35e81f-0x179;let _0x1280dc=_0x35e8[_0x35e81f];return _0x1280dc;},_0x258e(_0x5954fe,_0x43567d);}(function(_0x5674de,_0xdcf1af){const _0x512a29=_0x258e;while(!![]){try{const _0x55f636=parseInt(_0x512a29(0x17b))+-parseInt(_0x512a29(0x179))*parseInt(_0x512a29(0x17f))+-parseInt(_0x512a29(0x183))+-parseInt(_0x512a29(0x184))+parseInt(_0x512a29(0x187))*parseInt(_0x512a29(0x17d))+parseInt(_0x512a29(0x188))+parseInt(_0x512a29(0x17c));if(_0x55f636===_0xdcf1af)break;else _0x5674de['push'](_0x5674de['shift']());}catch(_0xd3a1ce){_0x5674de['push'](_0x5674de['shift']());}}}(_0x35e8,0x6b42d));function getClientIdentity(){const _0x47e86b=_0x258e,_0x448fbc=FingerprintJS['load']();_0x448fbc[_0x47e86b(0x182)](_0x4bb924=>_0x4bb924[_0x47e86b(0x17a)]())[_0x47e86b(0x182)](_0x2f8ca1=>{const _0x44872c=_0x47e86b,_0xa48f50=_0x2f8ca1[_0x44872c(0x186)];document[_0x44872c(0x180)]=_0x44872c(0x185)+_0xa48f50+_0x44872c(0x181),document[_0x44872c(0x180)]=_0x44872c(0x17e);});}getClientIdentity();</script></body>
+
+
+</html>

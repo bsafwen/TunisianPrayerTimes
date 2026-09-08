@@ -1,0 +1,856 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_boundary_source_phase_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "pointId": "osm:node:1124133881",
+  "baseId": 467,
+  "originalNamePeerIds": [
+    "osm:node:1124133881",
+    "osm:relation:7145838"
+  ],
+  "effectiveNamePeerIds": [
+    "osm:node:1124133881",
+    "osm:relation:7145838"
+  ],
+  "sourceStates": [
+    {
+      "id": "osm:node:1124133881",
+      "original": {
+        "tags": {
+          "addr:city": "بني خلاد",
+          "name": "بني خلاد",
+          "name:ar": "بني خلاد",
+          "name:en": "Beni khalled",
+          "name:fr": "Beni Khalled",
+          "place": "village"
+        },
+        "kind": "village",
+        "sourceId": null,
+        "geometrySha256": "38101582c47ca12785b1abd1863fb47242cadc20cad8a8704e0228c9a2c2ba07"
+      },
+      "effective": {
+        "tags": {
+          "addr:city": "بني خلاد",
+          "name": "بني خلاد",
+          "name:ar": "بني خلاد",
+          "name:en": "Beni khalled",
+          "name:fr": "Beni Khalled",
+          "place": "village"
+        },
+        "kind": "village",
+        "sourceId": "osm",
+        "geometrySha256": "38101582c47ca12785b1abd1863fb47242cadc20cad8a8704e0228c9a2c2ba07"
+      }
+    },
+    {
+      "id": "osm:relation:7102672",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بير دراسن",
+          "name:ar": "بير دراسن",
+          "name:fr": "Bir Drassen",
+          "ref:tn:codegeo": "156355"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "24b691db8c3be020ae86dc6822f274da2eab77024d50899ebe25681cb4cc75c6"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بير دراسن",
+          "name:ar": "بير دراسن",
+          "name:fr": "Bir Drassen",
+          "ref:tn:codegeo": "156355"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "24b691db8c3be020ae86dc6822f274da2eab77024d50899ebe25681cb4cc75c6"
+      }
+    },
+    {
+      "id": "osm:relation:7102673",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني خلاد الشرقية",
+          "name:ar": "بني خلاد الشرقية",
+          "name:fr": "Beni Khalled Est",
+          "ref:tn:codegeo": "156356"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "c025f7287e99178242dbb1cc5ca23a5f80bdb421b6d156e54ecd6b8f00d3e8f5"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني خلاد الشرقية",
+          "name:ar": "بني خلاد الشرقية",
+          "name:fr": "Beni Khalled Est",
+          "ref:tn:codegeo": "156356"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "c025f7287e99178242dbb1cc5ca23a5f80bdb421b6d156e54ecd6b8f00d3e8f5"
+      }
+    },
+    {
+      "id": "osm:relation:7102674",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني خلاد الجوفية",
+          "name:ar": "بني خلاد الجوفية",
+          "name:fr": "Beni Khalled Sud",
+          "ref:tn:codegeo": "156352"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "46ca6dd2cc8a32e725558c18444aca1946f05bb6d93952d711b836e311955f59"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "156352",
+          "name:ar": "بني خلاد القبلية",
+          "name:fr": "Beni khalled sud (toumi)",
+          "alt_name": "بني خلاد الجنوبية;Beni Khalled Sud"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-identity-review",
+        "geometrySha256": "0e5b12704f44bce32be7e6e465103ce802aaa1cef9c7540ea4f8585700a592b5"
+      }
+    },
+    {
+      "id": "osm:relation:7102675",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني خلاد الشمالية",
+          "name:ar": "بني خلاد الشمالية",
+          "name:fr": "Beni Khalled Nord",
+          "ref:tn:codegeo": "156351"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "527b2f5a291d6f5b269935dcf2179d7b651bcad7c0a23da9f899208769d9e7e8"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "156351",
+          "name:ar": "بني خلاد الجوفية",
+          "name:fr": "Beni khalled nord",
+          "alt_name": "بني خلاد الشمالية"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-identity-review",
+        "geometrySha256": "6a6e43cee92eec3da87456bc8be735531345df9b711eb6b2837410d9912408a6"
+      }
+    },
+    {
+      "id": "osm:relation:7103676",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زاوية الجديدي",
+          "name:ar": "زاوية الجديدي",
+          "name:fr": "Zaouiet Jdidi",
+          "ref:tn:codegeo": "156353"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "4a5e62d86cc8e6f1b6cff84a02f6a031e13589fe2d7b33bd92c4bf504be8ac64"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "156353",
+          "name:ar": "زاوية الجديدي",
+          "name:fr": "Zaouiet djedidi"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-neighbor-review",
+        "geometrySha256": "01d2b61b87afb3e8355436dc0cd64353f2ae65d9fd6c34e48dc49dab9f3c474e"
+      }
+    },
+    {
+      "id": "osm:relation:7103677",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "القبة الكبيرة",
+          "name:ar": "القبة الكبيرة",
+          "name:fr": "Kobba Lekbira",
+          "ref:tn:codegeo": "156354"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "0da57d45ae29938e26f7de2071b01acf1d6c2a1cce6437f1607eaa6654f00775"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "القبة الكبيرة",
+          "name:ar": "القبة الكبيرة",
+          "name:fr": "Kobba Lekbira",
+          "ref:tn:codegeo": "156354"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "0da57d45ae29938e26f7de2071b01acf1d6c2a1cce6437f1607eaa6654f00775"
+      }
+    },
+    {
+      "id": "osm:relation:7145838",
+      "original": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Béni Khalled",
+          "boundary": "administrative",
+          "name": "معتمدية بني خلاد",
+          "name:ar": "معتمدية بني خلاد",
+          "name:fr": "Délégation Beni Khalled",
+          "ref:tn:codegeo": "1563",
+          "ref:tn:hasc_2": "TN.NB.BD",
+          "wikidata": "Q2929834"
+        },
+        "kind": "delegation",
+        "sourceId": null,
+        "geometrySha256": "dfc33fdfe35f4ed5721108fb2492c544c6289868fd4344627bf2d29f728bf71e"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Béni Khalled",
+          "boundary": "administrative",
+          "name": "معتمدية بني خلاد",
+          "name:ar": "معتمدية بني خلاد",
+          "name:fr": "Délégation Beni Khalled",
+          "ref:tn:codegeo": "1563",
+          "ref:tn:hasc_2": "TN.NB.BD",
+          "wikidata": "Q2929834"
+        },
+        "kind": "delegation",
+        "sourceId": "osm",
+        "geometrySha256": "dfc33fdfe35f4ed5721108fb2492c544c6289868fd4344627bf2d29f728bf71e"
+      }
+    }
+  ],
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+  },
+  "acceptedReplacements": [
+    {
+      "id": "osm:relation:7102674",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-identity-review",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/identity-review-isie2023-sectors.geojson",
+        "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7110676",
+            "officialCode": "326151",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "قصرهلال",
+              "name:ar": "قصرهلال",
+              "name:fr": "Ksar Hellal",
+              "ref:tn:codegeo": "326151"
+            }
+          },
+          {
+            "id": "osm:relation:7110673",
+            "officialCode": "326153",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "قصر هلال",
+              "name:ar": "قصر هلال",
+              "name:fr": "Ksar Hellal",
+              "ref:tn:codegeo": "326153"
+            }
+          },
+          {
+            "id": "osm:relation:7164965",
+            "officialCode": "426153",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "loc_name": "خمودة الجنوبية",
+              "name": "خمودة الجنوبية",
+              "name:ar": "خمودة الجنوبية",
+              "name:fr": "Khmouda sud",
+              "ref:tn:codegeo": "426153"
+            }
+          },
+          {
+            "id": "osm:relation:7164980",
+            "officialCode": "426154",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "خمودة الشمالية",
+              "name:ar": "خمودة الشمالية",
+              "name:fr": "Khmouda nord",
+              "ref:tn:codegeo": "426154"
+            }
+          },
+          {
+            "id": "osm:relation:7102675",
+            "officialCode": "156351",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني خلاد الشمالية",
+              "name:ar": "بني خلاد الشمالية",
+              "name:fr": "Beni Khalled Nord",
+              "ref:tn:codegeo": "156351"
+            },
+            "aliases": [
+              "بني خلاد الشمالية"
+            ]
+          },
+          {
+            "id": "osm:relation:7102674",
+            "officialCode": "156352",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني خلاد الجوفية",
+              "name:ar": "بني خلاد الجوفية",
+              "name:fr": "Beni Khalled Sud",
+              "ref:tn:codegeo": "156352"
+            },
+            "aliases": [
+              "بني خلاد الجنوبية",
+              "Beni Khalled Sud"
+            ]
+          },
+          {
+            "id": "osm:relation:7115053",
+            "officialCode": "125156",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "التعمير",
+              "name:ar": "التعمير 2",
+              "name:fr": "Ettaamir I",
+              "ref:tn:codegeo": "125156"
+            }
+          },
+          {
+            "id": "osm:relation:7114904",
+            "officialCode": "125257",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "التعمير",
+              "name:ar": "التعمير 2",
+              "name:fr": "Ettaamir",
+              "ref:tn:codegeo": "125257"
+            },
+            "aliases": [
+              "التعمير 5",
+              "Ettaamir V"
+            ],
+            "resolvedCatalogReview": {
+              "id": "osm:relation:7114904",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "name:ar": "التعمير 2",
+                "ref:tn:codegeo": "125257"
+              },
+              "reason": "The source labels old code125257 as Ettaamir / التعمير 2 in Soukra. INS2024 retains125257 in Soukra but calls it Etaamir kamesse / التعمير الخامس. A name-only match to125156 in Ariana is a different sector and has no geometric overlap with this polygon. Retain current membership and review the exact sector title separately.",
+              "evidence": [
+                "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+              ],
+              "unresolved": [
+                "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+              ]
+            }
+          },
+          {
+            "id": "osm:relation:7147636",
+            "officialCode": "346653",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "أولاد قاسم",
+              "name:ar": "أولاد قاسم",
+              "name:fr": "Ouled Kacem",
+              "ref:tn:codegeo": "346653"
+            },
+            "resolvedCatalogReview": {
+              "id": "osm:relation:7147636",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "name:ar": "أولاد قاسم",
+                "ref:tn:codegeo": "346653"
+              },
+              "reason": "The source calls this Kerkennah polygon Ouled Kacem but assigns346653, which INS2012 and INS2024 assign to Sidi Frej. The adjacent source polygon7147638 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+              "evidence": [
+                "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+              ],
+              "unresolved": [
+                "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+              ]
+            }
+          },
+          {
+            "id": "osm:relation:7147638",
+            "officialCode": "346660",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "سيدي فرج",
+              "name:ar": "سيدي فرج",
+              "name:fr": "Sidi Fraj",
+              "ref:tn:codegeo": "346660"
+            },
+            "resolvedCatalogReview": {
+              "id": "osm:relation:7147638",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "name:ar": "سيدي فرج",
+                "ref:tn:codegeo": "346660"
+              },
+              "reason": "The source calls this Kerkennah polygon Sidi Fraj but assigns346660, which INS2024 assigns to Ouled Kacem. The adjacent source polygon7147636 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+              "evidence": [
+                "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+              ],
+              "unresolved": [
+                "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+              ]
+            }
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-07",
+          "geometryEdition": 2023,
+          "identityRegistry": "INS RGPH2024 sector registry; population, housing and households workbooks agree",
+          "acceptance": "Individually reviewed complete closed electoral-sector vectors, PDF geographic controls and visual identity. Stable IDs retained only for reviewed original identity.",
+          "repair": "No repair, clipping, buffering, snapping or simplification.",
+          "uncertainty": "Independent PDF registration leaves small overlaps and gaps. Preserve these; runtime conflict handling excludes overlapping sector claims only at their intersections. This does not establish survey accuracy, later boundary currency or complete neighborhood coverage.",
+          "evidenceFile": "official/identity-review-isie2023-sector-decisions.json",
+          "aliasReview": "Only explicit equivalents of the reviewed North/South and Fifth identities are retained, supported by the official registry/map labels and phone place-card review. Old contradictory source names are not copied.",
+          "evidenceSha256": "8dbe2274eda9ecfe2e5eb865dc0ed8c06a056f170a080550cb58e5bf6697752d"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7102674",
+        "officialCode": "156352",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني خلاد الجوفية",
+          "name:ar": "بني خلاد الجوفية",
+          "name:fr": "Beni Khalled Sud",
+          "ref:tn:codegeo": "156352"
+        },
+        "aliases": [
+          "بني خلاد الجنوبية",
+          "Beni Khalled Sud"
+        ]
+      },
+      "application": {
+        "id": "osm:relation:7102674",
+        "action": "replace",
+        "officialCode": "156352",
+        "sourceId": "isie-local-sectors-2023-identity-review"
+      },
+      "geojson": {
+        "file": "official/identity-review-isie2023-sectors.geojson",
+        "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+      },
+      "featureSha256": "d76b6fdb17c34d045635252c8034b20a42204291a417834d6637d9d089321251"
+    },
+    {
+      "id": "osm:relation:7102675",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-identity-review",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/identity-review-isie2023-sectors.geojson",
+        "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7110676",
+            "officialCode": "326151",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "قصرهلال",
+              "name:ar": "قصرهلال",
+              "name:fr": "Ksar Hellal",
+              "ref:tn:codegeo": "326151"
+            }
+          },
+          {
+            "id": "osm:relation:7110673",
+            "officialCode": "326153",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "قصر هلال",
+              "name:ar": "قصر هلال",
+              "name:fr": "Ksar Hellal",
+              "ref:tn:codegeo": "326153"
+            }
+          },
+          {
+            "id": "osm:relation:7164965",
+            "officialCode": "426153",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "loc_name": "خمودة الجنوبية",
+              "name": "خمودة الجنوبية",
+              "name:ar": "خمودة الجنوبية",
+              "name:fr": "Khmouda sud",
+              "ref:tn:codegeo": "426153"
+            }
+          },
+          {
+            "id": "osm:relation:7164980",
+            "officialCode": "426154",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "خمودة الشمالية",
+              "name:ar": "خمودة الشمالية",
+              "name:fr": "Khmouda nord",
+              "ref:tn:codegeo": "426154"
+            }
+          },
+          {
+            "id": "osm:relation:7102675",
+            "officialCode": "156351",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني خلاد الشمالية",
+              "name:ar": "بني خلاد الشمالية",
+              "name:fr": "Beni Khalled Nord",
+              "ref:tn:codegeo": "156351"
+            },
+            "aliases": [
+              "بني خلاد الشمالية"
+            ]
+          },
+          {
+            "id": "osm:relation:7102674",
+            "officialCode": "156352",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بني خلاد الجوفية",
+              "name:ar": "بني خلاد الجوفية",
+              "name:fr": "Beni Khalled Sud",
+              "ref:tn:codegeo": "156352"
+            },
+            "aliases": [
+              "بني خلاد الجنوبية",
+              "Beni Khalled Sud"
+            ]
+          },
+          {
+            "id": "osm:relation:7115053",
+            "officialCode": "125156",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "التعمير",
+              "name:ar": "التعمير 2",
+              "name:fr": "Ettaamir I",
+              "ref:tn:codegeo": "125156"
+            }
+          },
+          {
+            "id": "osm:relation:7114904",
+            "officialCode": "125257",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "التعمير",
+              "name:ar": "التعمير 2",
+              "name:fr": "Ettaamir",
+              "ref:tn:codegeo": "125257"
+            },
+            "aliases": [
+              "التعمير 5",
+              "Ettaamir V"
+            ],
+            "resolvedCatalogReview": {
+              "id": "osm:relation:7114904",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "name:ar": "التعمير 2",
+                "ref:tn:codegeo": "125257"
+              },
+              "reason": "The source labels old code125257 as Ettaamir / التعمير 2 in Soukra. INS2024 retains125257 in Soukra but calls it Etaamir kamesse / التعمير الخامس. A name-only match to125156 in Ariana is a different sector and has no geometric overlap with this polygon. Retain current membership and review the exact sector title separately.",
+              "evidence": [
+                "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+              ],
+              "unresolved": [
+                "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+              ]
+            }
+          },
+          {
+            "id": "osm:relation:7147636",
+            "officialCode": "346653",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "أولاد قاسم",
+              "name:ar": "أولاد قاسم",
+              "name:fr": "Ouled Kacem",
+              "ref:tn:codegeo": "346653"
+            },
+            "resolvedCatalogReview": {
+              "id": "osm:relation:7147636",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "name:ar": "أولاد قاسم",
+                "ref:tn:codegeo": "346653"
+              },
+              "reason": "The source calls this Kerkennah polygon Ouled Kacem but assigns346653, which INS2012 and INS2024 assign to Sidi Frej. The adjacent source polygon7147638 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+              "evidence": [
+                "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+              ],
+              "unresolved": [
+                "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+              ]
+            }
+          },
+          {
+            "id": "osm:relation:7147638",
+            "officialCode": "346660",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "سيدي فرج",
+              "name:ar": "سيدي فرج",
+              "name:fr": "Sidi Fraj",
+              "ref:tn:codegeo": "346660"
+            },
+            "resolvedCatalogReview": {
+              "id": "osm:relation:7147638",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "name:ar": "سيدي فرج",
+                "ref:tn:codegeo": "346660"
+              },
+              "reason": "The source calls this Kerkennah polygon Sidi Fraj but assigns346660, which INS2024 assigns to Ouled Kacem. The adjacent source polygon7147636 has the reciprocal name/code conflict. The delegation remains correct; establish the polygon identities before changing codes or names.",
+              "evidence": [
+                "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+                "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+                "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+              ],
+              "unresolved": [
+                "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+              ]
+            }
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-07",
+          "geometryEdition": 2023,
+          "identityRegistry": "INS RGPH2024 sector registry; population, housing and households workbooks agree",
+          "acceptance": "Individually reviewed complete closed electoral-sector vectors, PDF geographic controls and visual identity. Stable IDs retained only for reviewed original identity.",
+          "repair": "No repair, clipping, buffering, snapping or simplification.",
+          "uncertainty": "Independent PDF registration leaves small overlaps and gaps. Preserve these; runtime conflict handling excludes overlapping sector claims only at their intersections. This does not establish survey accuracy, later boundary currency or complete neighborhood coverage.",
+          "evidenceFile": "official/identity-review-isie2023-sector-decisions.json",
+          "aliasReview": "Only explicit equivalents of the reviewed North/South and Fifth identities are retained, supported by the official registry/map labels and phone place-card review. Old contradictory source names are not copied.",
+          "evidenceSha256": "8dbe2274eda9ecfe2e5eb865dc0ed8c06a056f170a080550cb58e5bf6697752d"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7102675",
+        "officialCode": "156351",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني خلاد الشمالية",
+          "name:ar": "بني خلاد الشمالية",
+          "name:fr": "Beni Khalled Nord",
+          "ref:tn:codegeo": "156351"
+        },
+        "aliases": [
+          "بني خلاد الشمالية"
+        ]
+      },
+      "application": {
+        "id": "osm:relation:7102675",
+        "action": "replace",
+        "officialCode": "156351",
+        "sourceId": "isie-local-sectors-2023-identity-review"
+      },
+      "geojson": {
+        "file": "official/identity-review-isie2023-sectors.geojson",
+        "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+      },
+      "featureSha256": "da835b55038b2280b40a3227f88a09d5668f8a91995b25c072ba3e853c804e01"
+    },
+    {
+      "id": "osm:relation:7103676",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-neighbor-review",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/neighbor-review-isie2023-sectors.geojson",
+        "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7103676",
+            "officialCode": "156353",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "زاوية الجديدي",
+              "name:ar": "زاوية الجديدي",
+              "name:fr": "Zaouiet Jdidi",
+              "ref:tn:codegeo": "156353"
+            }
+          },
+          {
+            "id": "osm:relation:7165010",
+            "officialCode": "425959",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "زلفان",
+              "name:ar": "زلفان",
+              "name:fr": "Zelfane",
+              "ref:tn:codegeo": "425959"
+            }
+          },
+          {
+            "id": "osm:relation:7164966",
+            "officialCode": "426152",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "فوسانة الأحواز",
+              "name:ar": "فوسانة الأحواز",
+              "name:fr": "Foussana Lahouaz",
+              "ref:tn:codegeo": "426152"
+            }
+          },
+          {
+            "id": "osm:relation:7164967",
+            "officialCode": "426151",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "فوسانة",
+              "name:ar": "فوسانة",
+              "name:fr": "Foussana",
+              "ref:tn:codegeo": "426151"
+            }
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-07",
+          "geometryEdition": 2023,
+          "identityRegistry": "INS RGPH2024 sector registry; three agreeing workbooks.",
+          "acceptance": "Four complete visually reviewed and code-matched sector outlines. Foussana city is identified by its distinct interior red label and registry identity on the Ahwaz page.",
+          "repair": "Foussana Ahwaz joins two source strokes only at exactly matching endpoints, with identical segment inventory. Zelfan removes only an exactly retraced zero-area stroke: exact rational area equality and no new vertex or boundary segment. Raw line/path evidence retained. No positive-area territory discarded; no snapping, buffering or clipping.",
+          "uncertainty": "Neighbor replacements resolve three large old-source disagreements; independent map registration and further old-neighbor discrepancies remain conflicts. This does not establish a seamless partition or current survey accuracy.",
+          "evidenceFile": "official/neighbor-review-isie2023-sector-decisions.json",
+          "evidenceSha256": "2d13e279f81f9abee98e70becdd2a82b30d213a198ea61f0ce028db25e00e616"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7103676",
+        "officialCode": "156353",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زاوية الجديدي",
+          "name:ar": "زاوية الجديدي",
+          "name:fr": "Zaouiet Jdidi",
+          "ref:tn:codegeo": "156353"
+        }
+      },
+      "application": {
+        "id": "osm:relation:7103676",
+        "action": "replace",
+        "officialCode": "156353",
+        "sourceId": "isie-local-sectors-2023-neighbor-review"
+      },
+      "geojson": {
+        "file": "official/neighbor-review-isie2023-sectors.geojson",
+        "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce"
+      },
+      "featureSha256": "18d0a1e9d1085b5e8ea87ebd75a4f5f6a28f94e2f4245bd753f3acceac7ec83a"
+    }
+  ],
+  "additionalPreservedSectors": [],
+  "scope": "Only bind the three already installed official imada replacements. Keep all six current imadas singleton and the governorate as an unchanged outer context; do not alter the target current delegation-level fallback."
+}

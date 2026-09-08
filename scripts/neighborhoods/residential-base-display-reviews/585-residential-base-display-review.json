@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "reviewed_residential_base_display_identity",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_residential_base_display_identity",
+    "id": "osm:way:179549823",
+    "targetDelegationId": 585
+  },
+  "sourceReview": {
+    "file": "residential-base-display-reviews/bourouis-jerissa-display-identity-review.json",
+    "sha256": "a2d640370fd801439fd0ff7b67dd92cca0293d0a68115c68faccfcd3208393fc"
+  },
+  "sourceReviewRecordBaseId": 585,
+  "sourceFacts": {
+    "file": "residential-base-display-reviews/585-exact-source-and-current-facts.json",
+    "sha256": "d743cc80538b9fa437a12d43b813264dca569a83a149dbdd67e0b01e985cb8e7"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "governorate": {
+    "id": 363,
+    "nomAr": "الكاف",
+    "nomFr": "Le kef"
+  },
+  "governorSourceId": "osm:relation:1435838",
+  "primarySources": [
+    {
+      "file": "residential-base-display-reviews/interior-sector-directory.html",
+      "sha256": "a3d231b09f8b42dbf1747e3c42566dc6afa747860d6d86a5a53607ece2f4cb95"
+    }
+  ],
+  "baseNameCorrection": {
+    "reviewEvidence": {
+      "file": "residential-base-display-reviews/jerissa585-saved-name-search-implementation-addendum.json",
+      "sha256": "f5971e2dfc7d30bde06f8c3d6614aa717d3536b4150017906ae9e97cf10d865b"
+    },
+    "beforeBase": {
+      "id": 585,
+      "nomFr": "Jerissa",
+      "nomAr": "الجريسة",
+      "nomEn": "Jerissa",
+      "lat": 35.8466,
+      "lng": 8.6353
+    },
+    "afterBase": {
+      "id": 585,
+      "nomFr": "Jerissa",
+      "nomAr": "الجريصة",
+      "nomEn": "Jerissa",
+      "lat": 35.8466,
+      "lng": 8.6353
+    },
+    "savedName": {
+      "id": "delegation:585",
+      "name": "الجريصة",
+      "kind": "delegation"
+    },
+    "historicalSearchAlias": "الجريسة"
+  }
+}

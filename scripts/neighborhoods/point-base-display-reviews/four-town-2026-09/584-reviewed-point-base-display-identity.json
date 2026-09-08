@@ -1,0 +1,852 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:2017271470",
+  "baseId": 584,
+  "rawCurrent": {
+    "id": "osm:node:2017271470",
+    "sourceId": "osm",
+    "name": "السرس",
+    "aliases": [
+      "Le Sers",
+      "Sers",
+      "بلدية السرس"
+    ],
+    "kind": "village",
+    "parentName": "السرس الجنوبية",
+    "contextAliases": [
+      "Délégation Sers",
+      "Délégation de Sers",
+      "Es-Sers Sud",
+      "Le Sers",
+      "السرس الجنوبية",
+      "معتمدية السرس"
+    ],
+    "governorateId": 363,
+    "lat": 36.0734659,
+    "lng": 9.0192905,
+    "delegationId": 584,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:2017271470"
+  },
+  "baseCurrent": {
+    "id": 584,
+    "nomFr": "Le Sers",
+    "nomAr": "السرس",
+    "nomEn": "Le Sers",
+    "lat": 36.07,
+    "lng": 9.03
+  },
+  "expectedGovernor": {
+    "id": 363,
+    "nomFr": "Le kef",
+    "nomAr": "الكاف",
+    "nomEn": "Le kef",
+    "lat": 36.1747,
+    "lng": 8.7049
+  },
+  "originalSourceNode": {
+    "id": "osm:node:2017271470",
+    "tags": {
+      "addr:city": "السرس",
+      "addr:postcode": "7180",
+      "name": "السرس",
+      "name:ar": "السرس",
+      "name:en": "Sers",
+      "name:fr": "Le Sers",
+      "official_name": "بلدية السرس",
+      "official_name:ar": "بلدية السرس",
+      "place": "village",
+      "population": "11927",
+      "website": "https://www.commune-sers.gov.tn/",
+      "wikidata": "Q3102750",
+      "wikimedia_commons": "Category:Le Sers",
+      "wikipedia": "ar:السرس (تونس)"
+    },
+    "lat": 36.0734659,
+    "lng": 9.0192905
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/four-town-2026-09/source-identity-review.json",
+    "sha256": "19389ee363b1edc90b69c1585afee9dd335927ca65b448e1907cd3977c5314c0"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/four-town-2026-09/independent-source-review.json",
+    "sha256": "8b4790794fd4c906710e7d7e38e425bbf068910ca30c34d90c4df1407b3be065"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/four-town-2026-09/node-2017271470.json",
+    "sha256": "0ef861733f167da559fb1da6234ec62093ac792a35288f7e3eee3c957802d607",
+    "url": "https://api.openstreetmap.org/api/0.6/node/2017271470.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/2017271470.json",
+    "sha256": "0ef861733f167da559fb1da6234ec62093ac792a35288f7e3eee3c957802d607",
+    "exactElement": {
+      "type": "node",
+      "id": 2017271470,
+      "lat": 36.0734659,
+      "lon": 9.0192905,
+      "timestamp": "2023-11-30T19:22:38Z",
+      "version": 10,
+      "changeset": 144637436,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:city": "السرس",
+        "addr:postcode": "7180",
+        "name": "السرس",
+        "name:ar": "السرس",
+        "name:en": "Sers",
+        "name:fr": "Le Sers",
+        "official_name": "بلدية السرس",
+        "official_name:ar": "بلدية السرس",
+        "place": "village",
+        "population": "11927",
+        "website": "https://www.commune-sers.gov.tn/",
+        "wikidata": "Q3102750",
+        "wikimedia_commons": "Category:Le Sers",
+        "wikipedia": "ar:السرس (تونس)"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/sers-mehat-city-flood-protection.html",
+      "sha256": "6d19849b7f1143ff275e6921589927ee24ca71201c64dc2a139e318b57c628b8",
+      "url": "https://intranet.mehat.gov.tn/geao.nsf/AvisAR.xsp?action=openDocument&documentId=E70D41196681C88741257CE60046F295",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "8 / DHU / 2014",
+        "&#1605;&#1583;&#1610;&#1606;&#1577; &#1575;&#1604;&#1587;&#1585;&#1587;"
+      ],
+      "qualification": "Official public urban-water tender identifies flood-protection works for Le Sers city, rather than a municipal office. The Arabic name is encoded as numeric HTML entities in the authentic payload.",
+      "decodedRequiredText": "مدينة السرس"
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/retrieval.json",
+      "sha256": "995e927b851af4baca02b3e65bbcaadf6953f7f384ce208cc974f69ec85f5ee3"
+    },
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/fallback-primary-retrieval.json",
+      "sha256": "ac4673c7027676f5c59ec315fe3fc375dc18dcb8f07bc5862d5ff757d35bcd25"
+    },
+    {
+      "file": "point-base-display-reviews/four-town-2026-09/atlas-retrieval.json",
+      "sha256": "52e91b50f73170e507ff5660eb2ae05110564982ef2f3e1dd4d2bf87e7284e09"
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7198246",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236151",
+        "sectorFr": "Es-sers nord",
+        "sectorAr": "السرس الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29035,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1357,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1356
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السرس الشمالية",
+        "name:ar": "السرس الشمالية",
+        "name:fr": "Es-Sers Nord",
+        "ref:tn:codegeo": "236151"
+      },
+      "sourceGeometrySha256": "686f76ca4671d5b1d13854eebcd428d0c1d884d466d0446e0b8fedf1874add7d",
+      "currentMetadata": {
+        "id": "osm:relation:7198246",
+        "sourceId": "osm",
+        "name": "السرس الشمالية",
+        "aliases": [
+          "Es-Sers Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.130221,
+        "lng": 9.026786,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          8.944733,
+          36.07855,
+          9.096808,
+          36.183014
+        ],
+        "areaKm2": 68.48708059944312,
+        "pickerGroupId": "osm:relation:7198246",
+        "offset": 5047812,
+        "length": 2228
+      },
+      "packedGeometrySha256": "87a19ecb822ade00dfeb570b5b95c570fab0dd5eaeba1aeb01ad9f5f89f9790f",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198245",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236152",
+        "sectorFr": "Es-sers sud",
+        "sectorAr": "السرس الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29069,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1359,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1358
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السرس الجنوبية",
+        "name:ar": "السرس الجنوبية",
+        "name:fr": "Es-Sers Sud",
+        "ref:tn:codegeo": "236152"
+      },
+      "sourceGeometrySha256": "0b343657de60570c7594df0a7033f4cd92b7972ec6eab08ff16c1eac3f22b8c7",
+      "currentMetadata": {
+        "id": "osm:relation:7198245",
+        "sourceId": "osm",
+        "name": "السرس الجنوبية",
+        "aliases": [
+          "Es-Sers Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.084965,
+        "lng": 9.086968,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          9.001891,
+          36.04981,
+          9.124025,
+          36.120079
+        ],
+        "areaKm2": 37.683035487650116,
+        "pickerGroupId": "osm:relation:7198245",
+        "offset": 5042680,
+        "length": 5132
+      },
+      "packedGeometrySha256": "416b15b1b2700a786858ca4a7056144761002feb830159ef88a81c9b20216ecf",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198249",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236153",
+        "sectorFr": "Cite ennour",
+        "sectorAr": "حي النور",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29103,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1361,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1360
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي النور",
+        "name:ar": "حي النور",
+        "name:fr": "Cite Ennour",
+        "ref:tn:codegeo": "236153"
+      },
+      "sourceGeometrySha256": "c558b4a3f5f146e0cd21cef9e24c500109a7725651153b4512d064230547b8a0",
+      "currentMetadata": {
+        "id": "osm:relation:7198249",
+        "sourceId": "osm",
+        "name": "حي النور",
+        "aliases": [
+          "Cite Ennour"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.08485,
+        "lng": 9.00887,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          8.988378,
+          36.07548,
+          9.039201,
+          36.09445
+        ],
+        "areaKm2": 6.144513960695467,
+        "pickerGroupId": "osm:relation:7198249",
+        "offset": 5056384,
+        "length": 1132
+      },
+      "packedGeometrySha256": "c94f3b817b04a7532154aba710f2912c8c5b550c708054e24bf45a62a27ab984",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198248",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236154",
+        "sectorFr": "Bousliaa",
+        "sectorAr": "بوصليعة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29137,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1362,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1361
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوصليعة",
+        "name:ar": "بوصليعة",
+        "name:fr": "Bousliaa",
+        "ref:tn:codegeo": "236154"
+      },
+      "sourceGeometrySha256": "dd5fc5da2ccbd547e6342a0394adb6b41e467015a347eacc7185d8c3b5b627ea",
+      "currentMetadata": {
+        "id": "osm:relation:7198248",
+        "sourceId": "osm",
+        "name": "بوصليعة",
+        "aliases": [
+          "Bousliaa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.03619,
+        "lng": 8.983555,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          8.923519,
+          35.97519,
+          9.029454,
+          36.097246
+        ],
+        "areaKm2": 75.8618995990991,
+        "pickerGroupId": "osm:relation:7198248",
+        "offset": 5053236,
+        "length": 3148
+      },
+      "packedGeometrySha256": "34f82a691a8ee97ad8b5186c0f9dbf1cc2c3609b157fd09ed125e613a5eec985",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198244",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236155",
+        "sectorFr": "L orboss",
+        "sectorAr": "االاربص",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29171,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1364,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1363
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الأربص",
+        "name:ar": "الأربص",
+        "name:fr": "Lorbous",
+        "ref:tn:codegeo": "236155"
+      },
+      "sourceGeometrySha256": "b6301cf90d093169a7a42d705310f22b1255447e83c796c306f514ce9f1124e1",
+      "currentMetadata": {
+        "id": "osm:relation:7198244",
+        "sourceId": "osm",
+        "name": "الأربص",
+        "aliases": [
+          "Lorbous"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.094276,
+        "lng": 8.85806,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          8.766873,
+          36.038625,
+          8.944733,
+          36.15215
+        ],
+        "areaKm2": 97.51851518572226,
+        "pickerGroupId": "osm:relation:7198244",
+        "offset": 5041804,
+        "length": 876
+      },
+      "packedGeometrySha256": "6139cf5fd2d5b6dd1caa367ef7815a28ac9deb7dbee7d7265f8f7caf861d8116",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198247",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236156",
+        "sectorFr": "El marja",
+        "sectorAr": "المرجى",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29205,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1366,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1365
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المرجى",
+        "name:ar": "المرجى",
+        "name:fr": "El Marja",
+        "ref:tn:codegeo": "236156"
+      },
+      "sourceGeometrySha256": "b17a19f0e559dc56cbc3bb52eea32b377a1c26a655071faebf641ecae59db040",
+      "currentMetadata": {
+        "id": "osm:relation:7198247",
+        "sourceId": "osm",
+        "name": "المرجى",
+        "aliases": [
+          "El Marja"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.033255,
+        "lng": 9.069446,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          9.024376,
+          35.9976,
+          9.123037,
+          36.0688
+        ],
+        "areaKm2": 40.00153100818496,
+        "pickerGroupId": "osm:relation:7198247",
+        "offset": 5050040,
+        "length": 3196
+      },
+      "packedGeometrySha256": "c20301d6f40dd26751010bda536a92e66a3dfbdcd698abab1e5968e3bc637b7b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198243",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236157",
+        "sectorFr": "El abar",
+        "sectorAr": "الآبار",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29239,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1367,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1366
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الأبار",
+        "name:ar": "الأبار",
+        "name:fr": "El Abar",
+        "ref:tn:codegeo": "236157"
+      },
+      "sourceGeometrySha256": "4441666710615137a817722b9288eaa54956aad0835e26a683c16822e94a2d4e",
+      "currentMetadata": {
+        "id": "osm:relation:7198243",
+        "sourceId": "osm",
+        "name": "الأبار",
+        "aliases": [
+          "El Abar",
+          "Labar",
+          "الآبار"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.014803,
+        "lng": 9.129849,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          9.085512,
+          35.97851,
+          9.170756,
+          36.0508
+        ],
+        "areaKm2": 27.665197231422496,
+        "pickerGroupId": "osm:relation:7198243",
+        "offset": 5039280,
+        "length": 2524
+      },
+      "packedGeometrySha256": "2139cd1833188346d6687a75f4263d6c2717a3e75bad1330b3096b4b2744dfc7",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198242",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236158",
+        "sectorFr": "El abar est",
+        "sectorAr": "الآبار الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29273,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1368,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1367
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الأبار الشرقية",
+        "name:ar": "الأبار الشرقية",
+        "name:fr": "El Abar Est",
+        "ref:tn:codegeo": "236158"
+      },
+      "sourceGeometrySha256": "6bca62469190aa8055832875749bc0ec5262e6678c251788a7b9cd4f24db9268",
+      "currentMetadata": {
+        "id": "osm:relation:7198242",
+        "sourceId": "osm",
+        "name": "الأبار الشرقية",
+        "aliases": [
+          "El Abar Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 36.066095,
+        "lng": 9.133235,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          9.104927,
+          36.02771,
+          9.163618,
+          36.10385
+        ],
+        "areaKm2": 24.16929320985644,
+        "pickerGroupId": "osm:relation:7198242",
+        "offset": 5035236,
+        "length": 4044
+      },
+      "packedGeometrySha256": "76e492ff5b64897412eb143fa6bce9e31deed6c1afd6911027161fbfa92a489e",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7198241",
+      "officialIdentity": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2361",
+        "delegationFr": "Es-sers",
+        "delegationAr": "السرس",
+        "sectorCode": "236159",
+        "sectorFr": "Elless",
+        "sectorAr": "اللاّس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 29307,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1370,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1369
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "اللاس",
+        "name:ar": "اللاس",
+        "name:fr": "Elles",
+        "ref:tn:codegeo": "236159",
+        "wikidata": "Q391320"
+      },
+      "sourceGeometrySha256": "7cd46fc36407677d07d0fc734b524c56c66827ad05e4db43dd88edcefbc824b6",
+      "currentMetadata": {
+        "id": "osm:relation:7198241",
+        "sourceId": "osm",
+        "name": "اللاس",
+        "aliases": [
+          "Elles"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السرس",
+        "contextAliases": [
+          "Délégation Sers",
+          "Délégation de Sers",
+          "Le Sers",
+          "معتمدية السرس"
+        ],
+        "governorateId": 363,
+        "lat": 35.984855,
+        "lng": 9.060035,
+        "delegationId": 584,
+        "hasBoundary": true,
+        "bbox": [
+          8.979961,
+          35.943082,
+          9.122471,
+          36.02667
+        ],
+        "areaKm2": 56.47148000677587,
+        "pickerGroupId": "osm:relation:7198241",
+        "offset": 5033128,
+        "length": 2108
+      },
+      "packedGeometrySha256": "85153ca5499f40327370e233fc4dff05f41825dcff077018d526595900aae938",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:2017271470",
+      "kind": "village",
+      "tags": {
+        "addr:city": "السرس",
+        "addr:postcode": "7180",
+        "name": "السرس",
+        "name:ar": "السرس",
+        "name:en": "Sers",
+        "name:fr": "Le Sers",
+        "official_name": "بلدية السرس",
+        "official_name:ar": "بلدية السرس",
+        "place": "village",
+        "population": "11927",
+        "website": "https://www.commune-sers.gov.tn/",
+        "wikidata": "Q3102750",
+        "wikimedia_commons": "Category:Le Sers",
+        "wikipedia": "ar:السرس (تونس)"
+      }
+    },
+    {
+      "id": "osm:relation:4752920",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Le Sers",
+        "boundary": "administrative",
+        "name": "معتمدية السرس",
+        "name:ar": "معتمدية السرس",
+        "name:fr": "Délégation Sers",
+        "official_name": "معتمدية السرس",
+        "official_name:ar": "معتمدية السرس",
+        "official_name:fr": "Délégation de Sers",
+        "ref:tn:codegeo": "2361",
+        "ref:tn:hasc_2": "TN.KF.ES",
+        "wikidata": "Q3479991",
+        "wikipedia": "ar:معتمدية السرس"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1435838": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-33",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Kef",
+        "boundary": "administrative",
+        "name": "ولاية الكاف",
+        "name:ar": "ولاية الكاف",
+        "name:az": "Kef (vilayət)",
+        "name:be": "Эль-Кеф (вілает)",
+        "name:be-tarask": "Эль-Кеф (вілает)",
+        "name:bg": "Кеф (област)",
+        "name:ca": "Governació del Kef",
+        "name:ceb": "Gouvernorat de Kef",
+        "name:cy": "El Kef (talaith)",
+        "name:de": "Al-Kaf",
+        "name:el": "Αλ Καφ (Κυβερνείο)",
+        "name:en": "Al Kaf",
+        "name:es": "Gobernación de Al-Kāf",
+        "name:fa": "کاف",
+        "name:fi": "Kef (kuvernementti)",
+        "name:fr": "Gouvernorat Le Kef",
+        "name:frr": "Kef (Guwernement)",
+        "name:id": "Kegubernuran Kef",
+        "name:it": "Le Kef",
+        "name:ja": "ケフ県",
+        "name:ko": "케프주 (튀니지)",
+        "name:ms": "Kawasan kegabenoran Kef",
+        "name:nl": "Kef (gouvernement)",
+        "name:no": "Kef (guvernement)",
+        "name:pl": "Gubernatorstwo Al-Kaf",
+        "name:pt": "Kef (província)",
+        "name:ro": "Guvernoratul Kef",
+        "name:ru": "Эль-Кеф (вилайет)",
+        "name:sco": "Kef Govrenorate",
+        "name:sh": "Kef (vilajet)",
+        "name:tr": "Kâf ili",
+        "name:uk": "Ель-Кеф (вілаєт)",
+        "name:ur": "کاف",
+        "name:zh": "卡夫省",
+        "name:zu": "Kef Governorate",
+        "official_name": "ولاية الكاف",
+        "official_name:ar": "ولاية الكاف",
+        "official_name:en": "El Kef Governorate",
+        "official_name:fr": "Gouvernorat du Kef",
+        "official_name:it": "Governatorato del Kef",
+        "population": "258790",
+        "population:date": "2004",
+        "ref:tn:codegeo": "23",
+        "wikidata": "Q328199",
+        "wikipedia": "ar:ولاية الكاف"
+      },
+      "sourceGeometrySha256": "a05ac1c3ce0ca8c52ff1923978f6572743d4befbdfc73ded8254762f6ac2e155"
+    },
+    "osm:relation:4752920": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Le Sers",
+        "boundary": "administrative",
+        "name": "معتمدية السرس",
+        "name:ar": "معتمدية السرس",
+        "name:fr": "Délégation Sers",
+        "official_name": "معتمدية السرس",
+        "official_name:ar": "معتمدية السرس",
+        "official_name:fr": "Délégation de Sers",
+        "ref:tn:codegeo": "2361",
+        "ref:tn:hasc_2": "TN.KF.ES",
+        "wikidata": "Q3479991",
+        "wikipedia": "ar:معتمدية السرس"
+      },
+      "sourceGeometrySha256": "f950f480e6a068f368c28afc4f854c029f8f237e187f314ec007fcd9e3d55c05"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:2017271470",
+    "field": "pickerGroupId",
+    "before": "osm:node:2017271470",
+    "after": "delegation:584"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:2017271470"
+      ],
+      [
+        "delegation:584"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:584",
+        "osm:node:2017271470"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "Exact settlement display association only. Preserve every imada, complete existing group, source kind, name, alias, context, coordinate, prayer default and packed geometry.",
+  "coordinatePolicy": "Both legacy timetable anchor and distinct cached OSM point are preserved. No original INM-anchor, exact settlement boundary or common administrative extent is claimed.",
+  "sourcePhaseQualification": "Nine singleton imadas and one unchanged common delegation/governorate. Preserve municipal official_name aliases pending the independent settlement identity review.",
+  "officialDelegationCode": "2361",
+  "sourceHistory": {
+    "file": "point-base-display-reviews/four-town-2026-09/node-2017271470-history.json",
+    "sha256": "ece287679ac3ddedbdc54c574765419ff9c6eb38585c5b0bfec79ce8677d3a64",
+    "qualification": "All10 versions are village points. Municipal official_name first appears atv8; no office/government/building/amenity tag in any version. Retain the settlement and alias."
+  }
+}

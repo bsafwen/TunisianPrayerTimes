@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_PROPOSAL_PENDING_CODE_AND_ACTUAL_GENERATION",
+  "metadataSha256": "34135e143e509842fc5673d290fbc6571c334bc26739eb2c03a17e5c6ac73d17",
+  "geometrySha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-city-base-split-proposal\\neighborhoods\\three-city-source-facts.json",
+    "sha256": "e733c1e54fd534e91c5779c892ea07c1f6dd9f1c1a0b0cc5de57da1d634afd30"
+  },
+  "priorScopeReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\eight-base-sector-settlement-scope-review.json",
+    "sha256": "7bf454fbcd356fed762cd3c730445562fa4c0c6bae8ac3e678f120bf79f99b57"
+  },
+  "sourceIdentityAssessment": "All three existing town polygons can be associated with their existing same-name base while preserving independently coded imadas. This is a reviewed display-identity inference from source naming/address/point evidence and current official sector identity.",
+  "primaryCorroboration": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\dar-chaabane-reviews\\nabeul-panorama.html",
+      "sha256": "6a149fea33192d62ddd6da095c85ebf19ec465bbf3d843443de6e6b91d110653",
+      "url": "https://www.nabeul.gov.tn/fr/panorama-des-villes/",
+      "finding": "Soliman and Slimane are explicitly described as the same city; source-name evidence only, not an outline."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "finding": "Unique current INS sector identities156154/535551/145451; source workbook provenance/row numbers are retained in each proposal."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eight-base-sector-scope-review\\decree-page-34.png",
+      "sha256": "ee2d5fa823c82db50abec972e425deade8687bb3bf94f87759dcf85d8b353c46",
+      "finding": "Previously visually reviewed JORT5131/PDF34 lists Ghomrassen as one whole imada and one circle."
+    }
+  ],
+  "proposals": [
+    {
+      "key": "soliman",
+      "status": "SUPPORTED_IDENTITY_PENDING_CODE_AND_GENERATION",
+      "residentialId": "osm:way:177385463",
+      "sectorId": "osm:relation:7100693",
+      "absorbedSourcePointId": "osm:node:1124155543",
+      "targetBaseId": "delegation:465",
+      "targetDelegationId": 465,
+      "currentBase": {
+        "id": 465,
+        "nomFr": "Slimane",
+        "nomAr": "سليمان",
+        "nomEn": "Slimane",
+        "lat": 36.7067,
+        "lng": 10.4875,
+        "governorateId": 350
+      },
+      "beforeGroups": [
+        {
+          "id": "osm:relation:7100693",
+          "memberIds": [
+            "osm:relation:7100693",
+            "osm:way:177385463"
+          ],
+          "canonicalName": "سليمان",
+          "manualSource": 465
+        },
+        {
+          "id": "delegation:465",
+          "memberIds": [
+            "delegation:465"
+          ],
+          "canonicalName": "سليمان",
+          "manualSource": 465
+        }
+      ],
+      "afterDistinctGuardGroups": [
+        {
+          "id": "osm:relation:7100693",
+          "memberIds": [
+            "osm:relation:7100693"
+          ],
+          "canonicalName": "سليمان",
+          "manualSource": 465
+        },
+        {
+          "id": "osm:way:177385463",
+          "memberIds": [
+            "osm:way:177385463"
+          ],
+          "canonicalName": "سليمان",
+          "manualSource": 465
+        },
+        {
+          "id": "delegation:465",
+          "memberIds": [
+            "delegation:465"
+          ],
+          "canonicalName": "سليمان",
+          "manualSource": 465
+        }
+      ],
+      "afterGroups": [
+        {
+          "id": "osm:relation:7100693",
+          "memberIds": [
+            "osm:relation:7100693"
+          ],
+          "canonicalName": "سليمان",
+          "manualSource": 465
+        },
+        {
+          "id": "delegation:465",
+          "memberIds": [
+            "delegation:465",
+            "osm:way:177385463"
+          ],
+          "canonicalName": "سليمان",
+          "manualSource": 465
+        }
+      ],
+      "exactMetadataChanges": [
+        {
+          "id": "osm:way:177385463",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7100693",
+          "after": "delegation:465"
+        }
+      ],
+      "officialSectorIdentity": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1561",
+        "delegationFr": "Soliman",
+        "delegationAr": "سليمان",
+        "sectorCode": "156154",
+        "sectorFr": "Soliman",
+        "sectorAr": "سليمان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13499,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 544,
+          "Nombre_de_menages_par_Secteurs.xlsx": 543
+        }
+      },
+      "geometryFactsNotBoundaryCertification": {
+        "sector": {
+          "containsBase": false,
+          "containsSourceSettlementPoint": false,
+          "baseOutsideDistanceM": 182.48208470357102,
+          "originalContainsBase": false,
+          "originalContainsSourceSettlementPoint": false
+        },
+        "settlement": {
+          "containsBase": true,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 0.0,
+          "originalContainsBase": true,
+          "originalContainsSourceSettlementPoint": true,
+          "percentageOutsideSourceSector": 73.27605292496787
+        }
+      },
+      "sourceIdentity": {
+        "exactArabicAcrossBaseResidentialPoint": true,
+        "sourcePointPlace": "village",
+        "sourcePointInsideOriginalAndPackedResidential": true,
+        "baseInsideOriginalAndPackedResidential": true,
+        "rawAndCanonicalPrayerSourcesEqual": true,
+        "sourcePointIsEvidenceOnlyNeverRestored": true,
+        "relationshipEvidence": "Residential and village point both explicitly carry addr:city=سليمان; cached Nabeul governorate city page calls Soliman and Slimane the same city.",
+        "inferenceLimit": "Display association of existing source features. No legal town perimeter, current population count, or equality with the imada is claimed."
+      },
+      "preserve": {
+        "allRawNamesAliasesContextsCoordinatesDefaultsAndPackedBytes": true,
+        "rawSourcePointAbsent": true,
+        "savedRawManualAndGpsIds": true,
+        "retiredIdsReplacementsReviewedNames": true
+      },
+      "representation": "The existing base is the canonical town browsing choice; the original imada remains a standalone sector choice. Total picker count is unchanged.",
+      "requiredDistinctPair": {
+        "ids": [
+          "osm:relation:7100693",
+          "osm:way:177385463"
+        ],
+        "reviewEvidence": {
+          "file": "soliman-town-sector-distinct-choices.json",
+          "sha256": "72716d8bc66bbbcb19d1d3288563d5c658ae1997f3bb85da1ec5745e17148d10"
+        }
+      }
+    },
+    {
+      "key": "ghomrassen",
+      "status": "SUPPORTED_IDENTITY_PENDING_CODE_AND_GENERATION",
+      "residentialId": "osm:relation:15063268",
+      "sectorId": "osm:relation:7143816",
+      "absorbedSourcePointId": "osm:node:1655884872",
+      "targetBaseId": "delegation:473",
+      "targetDelegationId": 473,
+      "currentBase": {
+        "id": 473,
+        "nomFr": "Ghomrassen",
+        "nomAr": "غمراسن",
+        "nomEn": "Ghomrassen",
+        "lat": 33.06,
+        "lng": 10.34,
+        "governorateId": 351
+      },
+      "beforeGroups": [
+        {
+          "id": "osm:relation:7143816",
+          "memberIds": [
+            "osm:relation:15063268",
+            "osm:relation:7143816"
+          ],
+          "canonicalName": "غمراسن",
+          "manualSource": 473
+        },
+        {
+          "id": "delegation:473",
+          "memberIds": [
+            "delegation:473"
+          ],
+          "canonicalName": "غمراسن",
+          "manualSource": 473
+        }
+      ],
+      "afterDistinctGuardGroups": [
+        {
+          "id": "osm:relation:7143816",
+          "memberIds": [
+            "osm:relation:7143816"
+          ],
+          "canonicalName": "غمراسن",
+          "manualSource": 473
+        },
+        {
+          "id": "osm:relation:15063268",
+          "memberIds": [
+            "osm:relation:15063268"
+          ],
+          "canonicalName": "غمراسن",
+          "manualSource": 473
+        },
+        {
+          "id": "delegation:473",
+          "memberIds": [
+            "delegation:473"
+          ],
+          "canonicalName": "غمراسن",
+          "manualSource": 473
+        }
+      ],
+      "afterGroups": [
+        {
+          "id": "osm:relation:7143816",
+          "memberIds": [
+            "osm:relation:7143816"
+          ],
+          "canonicalName": "غمراسن",
+          "manualSource": 473
+        },
+        {
+          "id": "delegation:473",
+          "memberIds": [
+            "delegation:473",
+            "osm:relation:15063268"
+          ],
+          "canonicalName": "غمراسن",
+          "manualSource": 473
+        }
+      ],
+      "exactMetadataChanges": [
+        {
+          "id": "osm:relation:15063268",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7143816",
+          "after": "delegation:473"
+        }
+      ],
+      "officialSectorIdentity": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5355",
+        "delegationFr": "Ghomrassen",
+        "delegationAr": "غمراسن",
+        "sectorCode": "535551",
+        "sectorFr": "Ghomrassen",
+        "sectorAr": "غمراسن",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64763,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3182,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3176
+        }
+      },
+      "geometryFactsNotBoundaryCertification": {
+        "sector": {
+          "containsBase": false,
+          "containsSourceSettlementPoint": false,
+          "baseOutsideDistanceM": 60.22925181593946,
+          "originalContainsBase": false,
+          "originalContainsSourceSettlementPoint": false
+        },
+        "settlement": {
+          "containsBase": true,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 0.0,
+          "originalContainsBase": true,
+          "originalContainsSourceSettlementPoint": true,
+          "percentageOutsideSourceSector": 85.5891751756644
+        }
+      },
+      "sourceIdentity": {
+        "exactArabicAcrossBaseResidentialPoint": true,
+        "sourcePointPlace": "town",
+        "sourcePointInsideOriginalAndPackedResidential": true,
+        "baseInsideOriginalAndPackedResidential": true,
+        "rawAndCanonicalPrayerSourcesEqual": true,
+        "sourcePointIsEvidenceOnlyNeverRestored": true,
+        "relationshipEvidence": "Residential and town point share exact bilingual names, population11300 and postal_code3220; point explicitly carries addr:city=غمراسن. The town extent and imada scope differ.",
+        "inferenceLimit": "Display association of existing source features. No legal town perimeter, current population count, or equality with the imada is claimed."
+      },
+      "preserve": {
+        "allRawNamesAliasesContextsCoordinatesDefaultsAndPackedBytes": true,
+        "rawSourcePointAbsent": true,
+        "savedRawManualAndGpsIds": true,
+        "retiredIdsReplacementsReviewedNames": true
+      },
+      "representation": "The existing base is the canonical town browsing choice; the original imada remains a standalone sector choice. Total picker count is unchanged.",
+      "requiredDistinctPair": {
+        "ids": [
+          "osm:relation:7143816",
+          "osm:relation:15063268"
+        ],
+        "reviewEvidence": {
+          "file": "ghomrassen-town-sector-distinct-choices.json",
+          "sha256": "aa5775000d7fd9511085bfa73cdf4dee517cedae82977602e2256a56fe02775a"
+        }
+      }
+    },
+    {
+      "key": "mornaguia",
+      "status": "SUPPORTED_IDENTITY_PENDING_CODE_AND_GENERATION",
+      "residentialId": "osm:way:142985514",
+      "sectorId": "osm:relation:7102308",
+      "absorbedSourcePointId": "osm:node:1564481999",
+      "targetBaseId": "delegation:555",
+      "targetDelegationId": 555,
+      "currentBase": {
+        "id": 555,
+        "nomFr": "Mornaguia",
+        "nomAr": "المرناقية",
+        "nomEn": "Mornaguia",
+        "lat": 36.752,
+        "lng": 10.008,
+        "governorateId": 360
+      },
+      "beforeGroups": [
+        {
+          "id": "osm:relation:7102308",
+          "memberIds": [
+            "osm:relation:7102308",
+            "osm:way:142985514"
+          ],
+          "canonicalName": "المرناقية",
+          "manualSource": 555
+        },
+        {
+          "id": "delegation:555",
+          "memberIds": [
+            "delegation:555"
+          ],
+          "canonicalName": "المرناقية",
+          "manualSource": 555
+        }
+      ],
+      "afterDistinctGuardGroups": [
+        {
+          "id": "osm:relation:7102308",
+          "memberIds": [
+            "osm:relation:7102308"
+          ],
+          "canonicalName": "المرناقية",
+          "manualSource": 555
+        },
+        {
+          "id": "osm:way:142985514",
+          "memberIds": [
+            "osm:way:142985514"
+          ],
+          "canonicalName": "المرناقية",
+          "manualSource": 555
+        },
+        {
+          "id": "delegation:555",
+          "memberIds": [
+            "delegation:555"
+          ],
+          "canonicalName": "المرناقية",
+          "manualSource": 555
+        }
+      ],
+      "afterGroups": [
+        {
+          "id": "osm:relation:7102308",
+          "memberIds": [
+            "osm:relation:7102308"
+          ],
+          "canonicalName": "المرناقية",
+          "manualSource": 555
+        },
+        {
+          "id": "delegation:555",
+          "memberIds": [
+            "delegation:555",
+            "osm:way:142985514"
+          ],
+          "canonicalName": "المرناقية",
+          "manualSource": 555
+        }
+      ],
+      "exactMetadataChanges": [
+        {
+          "id": "osm:way:142985514",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7102308",
+          "after": "delegation:555"
+        }
+      ],
+      "officialSectorIdentity": {
+        "governorateCode": "14",
+        "governorateFr": "Manouba",
+        "governorateAr": "منوبة",
+        "delegationCode": "1454",
+        "delegationFr": "Mornaguia",
+        "delegationAr": "المرناقية",
+        "sectorCode": "145451",
+        "sectorFr": "Mornaguia",
+        "sectorAr": "المرناقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10371,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 365,
+          "Nombre_de_menages_par_Secteurs.xlsx": 364
+        }
+      },
+      "geometryFactsNotBoundaryCertification": {
+        "sector": {
+          "containsBase": false,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 578.2287871505152,
+          "originalContainsBase": false,
+          "originalContainsSourceSettlementPoint": true
+        },
+        "settlement": {
+          "containsBase": true,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 0.0,
+          "originalContainsBase": true,
+          "originalContainsSourceSettlementPoint": true,
+          "percentageOutsideSourceSector": 61.915108334474866
+        }
+      },
+      "sourceIdentity": {
+        "exactArabicAcrossBaseResidentialPoint": true,
+        "sourcePointPlace": "village",
+        "sourcePointInsideOriginalAndPackedResidential": true,
+        "baseInsideOriginalAndPackedResidential": true,
+        "rawAndCanonicalPrayerSourcesEqual": true,
+        "sourcePointIsEvidenceOnlyNeverRestored": true,
+        "relationshipEvidence": "Residential carries addr:city and addr:city:ar=المرناقية; its contained source village has the exact Arabic/French name. Exclude the different-governorate Nabeul hamlet1128656865.",
+        "inferenceLimit": "Display association of existing source features. No legal town perimeter, current population count, or equality with the imada is claimed."
+      },
+      "preserve": {
+        "allRawNamesAliasesContextsCoordinatesDefaultsAndPackedBytes": true,
+        "rawSourcePointAbsent": true,
+        "savedRawManualAndGpsIds": true,
+        "retiredIdsReplacementsReviewedNames": true
+      },
+      "representation": "The existing base is the canonical town browsing choice; the original imada remains a standalone sector choice. Total picker count is unchanged.",
+      "requiredDistinctPair": {
+        "ids": [
+          "osm:relation:7102308",
+          "osm:way:142985514"
+        ],
+        "reviewEvidence": {
+          "file": "mornaguia-town-sector-distinct-choices.json",
+          "sha256": "a4dee9cb1e86fc48323246960f8c313c7993f67ba7660c036f8e7a247f6e25d8"
+        }
+      }
+    }
+  ],
+  "proposedDistinctPairs": [
+    {
+      "ids": [
+        "osm:relation:7100693",
+        "osm:way:177385463"
+      ],
+      "reviewEvidence": {
+        "file": "soliman-town-sector-distinct-choices.json",
+        "sha256": "72716d8bc66bbbcb19d1d3288563d5c658ae1997f3bb85da1ec5745e17148d10"
+      }
+    },
+    {
+      "ids": [
+        "osm:relation:7143816",
+        "osm:relation:15063268"
+      ],
+      "reviewEvidence": {
+        "file": "ghomrassen-town-sector-distinct-choices.json",
+        "sha256": "aa5775000d7fd9511085bfa73cdf4dee517cedae82977602e2256a56fe02775a"
+      }
+    },
+    {
+      "ids": [
+        "osm:relation:7102308",
+        "osm:way:142985514"
+      ],
+      "reviewEvidence": {
+        "file": "mornaguia-town-sector-distinct-choices.json",
+        "sha256": "a4dee9cb1e86fc48323246960f8c313c7993f67ba7660c036f8e7a247f6e25d8"
+      }
+    }
+  ],
+  "requiredImplementationGuards": [
+    "Keep the existing Dar Chaabane exception unchanged: its helper hard-codes623/468, outside-base policy, different city/sector names and a town-kind point; these cases must not fake those facts.",
+    "Use a separate contained-settlement/base method if independently approved. Permit source residential relation as well as way IDs, and source point kind town or village.",
+    "Bind the exact installed two-member before group, then require distinctPairs to leave source city and sector singletons before the base association. Require base target to have no other raw members.",
+    "Reserve city ID, sector ID, absorbed point ID and base target against every other old/new reviewed record. Recheck final exact memberships after all context/name/group phases; transitive joins must not reunite city and sector.",
+    "Require exact source/effective tags, geometry hashes, no target curation, full current metadata and packed-byte hashes. Source points remain absent raw and are never used as new manual coordinates.",
+    "Require the unchanged base and absorbed point inside both original and packed residential geometry, exact Arabic identity and equal raw city/sector/base prayer source. Do not require base inside the imada.",
+    "Do not require shared Wikidata or a common displayed parent: these are absent or differ. Preserve Ghomrassen residential governorate-only context exactly.",
+    "A future generator pass must check relevant source/name and code inventories against live inputs; this cached subset is not a fresh global uniqueness claim."
+  ],
+  "expectedDataDelta": {
+    "rawMetadataFieldsChanged": 3,
+    "fields": [
+      "pickerGroupId"
+    ],
+    "rawRecords": 3631,
+    "polygons": 2726,
+    "points": 905,
+    "pickerRowsBefore": 3607,
+    "pickerRowsAfter": 3607,
+    "geometryChanges": 0,
+    "manualDefaultChanges": 0,
+    "rawIdsRemoved": 0,
+    "savedNameChanges": 0
+  },
+  "currentManifestPreservation": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "sha256": "35d5cd5364ce61201107b1df6b7e96f9147dce5f09796d8cbdae6ccc38487cb1",
+    "baseRecords": 95,
+    "localRecords": 8,
+    "distinctPairs": 3,
+    "cityAssociations": 1
+  },
+  "codeGeneratedOrInstalled": false,
+  "testsRun": false,
+  "phoneOrLedgerAccessed": false
+}

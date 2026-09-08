@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T18:41:35.279884+00:00",
+  "status": "PASS_EXACT_BIR_TEDREKHET_CONTEXT_CORRECTION_SUPPORTED_NO_IMPORT",
+  "metadataSha256": "e4847923c9d5ae90104520b153bbcc118721e89cad297e33dc31938584958ae4",
+  "binarySha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "screen": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tataouine-four-context-screen.json",
+    "sha256": "3751826a675e8974e3ac5a1039e2f46edec9812ea58a0ba884a35d79f88d4f42",
+    "bytes": 7326
+  },
+  "directSourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bir-tedrekhet-context-review\\fresh-pbf-source-facts.json",
+    "sha256": "3aa2617ebac9229b52de2dd54888893997460c5dc691af397d345e76eb619b6d",
+    "bytes": 7146
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "newOfficialSector": {
+    "governorateCode": "53",
+    "governorateFr": "Tataouine",
+    "governorateAr": "تطاوين",
+    "delegationCode": "5352",
+    "delegationFr": "Tataouine sud",
+    "delegationAr": "تطاوين الجنوبية",
+    "sectorCode": "535260",
+    "sectorFr": "Eddouiret",
+    "sectorAr": "الدويرات",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64223,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 3156,
+      "Nombre_de_menages_par_Secteurs.xlsx": 3150
+    }
+  },
+  "oldOfficialSector": {
+    "governorateCode": "53",
+    "governorateFr": "Tataouine",
+    "governorateAr": "تطاوين",
+    "delegationCode": "5352",
+    "delegationFr": "Tataouine sud",
+    "delegationAr": "تطاوين الجنوبية",
+    "sectorCode": "535263",
+    "sectorFr": "Ras el ouedi",
+    "sectorAr": "رأس الوادي",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64325,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 3162,
+      "Nombre_de_menages_par_Secteurs.xlsx": 3156
+    }
+  },
+  "newSectorSourceId": "osm:relation:7143879",
+  "newSectorSourceTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "name": "الدويرات",
+    "name:ar": "الدويرات",
+    "name:fr": "Edouiret",
+    "ref:tn:codegeo": "535260"
+  },
+  "administrativeScopeEvidence": {
+    "decree": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "bytes": 10636520
+    },
+    "decreeUrl": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "eddouiret": {
+      "pdfPage": 32,
+      "jortPage": 5129,
+      "wholeImadaCircle": true,
+      "imada": "الدويرات",
+      "circle": "الدويرات"
+    },
+    "rasElOued": {
+      "pdfPage": 33,
+      "jortPage": 5130,
+      "wholeImadaCircle": true,
+      "imada": "رأس الوادي",
+      "circle": "رأس الوادي"
+    },
+    "review": "Root personally read both full decree table pages and both complete official maps; both rows are one-circle/one-imada under Tataouine Sud.",
+    "page32Render": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-32.png",
+      "sha256": "78d998c22e5be7a136ca904fbc33ae126710e7ef6264de2ae968afeec320433a",
+      "bytes": 322545
+    },
+    "page33Render": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\decree-33.png",
+      "sha256": "73f3ebfde85cbc5696d9429bbe987cb16e6d240ac15e14c8cc84fcc588491a0f",
+      "bytes": 485721
+    }
+  },
+  "reviewedOfficialMapProof": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\haf-oulad-hamed-context-review.json",
+    "sha256": "e687788401a1cdd84dd7093156a391aa966e330eec451d811038db11540c7431",
+    "bytes": 91031
+  },
+  "independentMapReconstruction": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\haf-context-independent-review.json",
+    "sha256": "dffe8622ff4752ab974d14519dcd4f192f04744686e08f9255a0b3420be41010",
+    "bytes": 13612
+  },
+  "mapEvidenceReuse": "Exact hash-pinned Eddouiret path559 and Ras El Oued path496 were independently reconstructed and both full maps/decree pages personally viewed in the Haf audit. Source files are rehashed here; no new fetch or reconstruction is needed for identical source bytes.",
+  "records": [
+    {
+      "id": "osm:way:378117273",
+      "expectedCurrent": {
+        "id": "osm:way:378117273",
+        "sourceId": "osm",
+        "name": "Bir Tedrekhet",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "رأس الوادي",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Ras El Oued",
+          "Tataouine Sud",
+          "رأس الوادي",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.794076,
+        "lng": 10.244553,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          10.243567,
+          32.793671,
+          10.244674,
+          32.79451
+        ],
+        "areaKm2": 0.002424411648517045,
+        "pickerGroupId": "osm:way:378117273",
+        "offset": 5394548,
+        "length": 444
+      },
+      "expectedSourceTags": {
+        "landuse": "residential",
+        "name": "Bir Tedrekhet"
+      },
+      "originalSourceGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.243567,
+                32.7938649
+              ],
+              [
+                10.2435779,
+                32.7938407
+              ],
+              [
+                10.2435998,
+                32.7938143
+              ],
+              [
+                10.2436334,
+                32.7937901
+              ],
+              [
+                10.2437395,
+                32.7937352
+              ],
+              [
+                10.2437962,
+                32.7937193
+              ],
+              [
+                10.2439534,
+                32.7936866
+              ],
+              [
+                10.2440929,
+                32.7936714
+              ],
+              [
+                10.2441819,
+                32.7936711
+              ],
+              [
+                10.244276,
+                32.793693
+              ],
+              [
+                10.2443693,
+                32.7937248
+              ],
+              [
+                10.2444767,
+                32.7937901
+              ],
+              [
+                10.2445226,
+                32.7938732
+              ],
+              [
+                10.2445893,
+                32.7939858
+              ],
+              [
+                10.2446462,
+                32.7941722
+              ],
+              [
+                10.2446737,
+                32.7943171
+              ],
+              [
+                10.2446593,
+                32.7944278
+              ],
+              [
+                10.2446162,
+                32.7944638
+              ],
+              [
+                10.2444082,
+                32.7945017
+              ],
+              [
+                10.24429,
+                32.7945093
+              ],
+              [
+                10.2442316,
+                32.7945102
+              ],
+              [
+                10.2441164,
+                32.7944863
+              ],
+              [
+                10.2439934,
+                32.7944364
+              ],
+              [
+                10.2439095,
+                32.794416
+              ],
+              [
+                10.2438307,
+                32.7943678
+              ],
+              [
+                10.2437345,
+                32.7943216
+              ],
+              [
+                10.2437586,
+                32.7942852
+              ],
+              [
+                10.243987,
+                32.794379
+              ],
+              [
+                10.244147,
+                32.7944091
+              ],
+              [
+                10.2443241,
+                32.7944119
+              ],
+              [
+                10.2444773,
+                32.7944048
+              ],
+              [
+                10.2445403,
+                32.7943843
+              ],
+              [
+                10.2445469,
+                32.7943565
+              ],
+              [
+                10.2445477,
+                32.7943138
+              ],
+              [
+                10.2445079,
+                32.7941437
+              ],
+              [
+                10.2444715,
+                32.7940072
+              ],
+              [
+                10.2444096,
+                32.7938873
+              ],
+              [
+                10.2443745,
+                32.7938488
+              ],
+              [
+                10.2443015,
+                32.7938142
+              ],
+              [
+                10.2441616,
+                32.7937667
+              ],
+              [
+                10.244128,
+                32.7937617
+              ],
+              [
+                10.2440372,
+                32.7937596
+              ],
+              [
+                10.2439404,
+                32.7937819
+              ],
+              [
+                10.2438086,
+                32.7938234
+              ],
+              [
+                10.2436831,
+                32.793871
+              ],
+              [
+                10.243689,
+                32.7938841
+              ],
+              [
+                10.2436707,
+                32.7939062
+              ],
+              [
+                10.2436618,
+                32.7939518
+              ],
+              [
+                10.2436023,
+                32.793959
+              ],
+              [
+                10.2435916,
+                32.7939405
+              ],
+              [
+                10.2435938,
+                32.793916
+              ],
+              [
+                10.243616,
+                32.7939137
+              ],
+              [
+                10.243627,
+                32.7938756
+              ],
+              [
+                10.243567,
+                32.7938649
+              ]
+            ]
+          ]
+        ]
+      },
+      "originalSourceGeometrySha256": "2f0b03efabf78a775297db91f7ac37308ef3e05e3e4e2d52d2d68f3e9f3048f5",
+      "originalAssembledGeometrySha256": "0c578e1656048735747a62da03b9e03e748fc2a0f68d306cb1231d62587029f7",
+      "packedGeometrySha256": "e53dffe7833f2f6660fc8ed87cdd55ccd79e832855592012ea295f2796147345",
+      "packedMatchesOriginalAtCatalogPrecision": true,
+      "freshPbfMatchesExistingCompilerSourceExactly": true,
+      "originalAndPackedFullyInsideEddouiret": true,
+      "originalAndPackedEntirelyOutsideRasElOued": true,
+      "spatialChecks": {
+        "original": {
+          "fullyInsideEddouiret": true,
+          "entirelyOutsideRasElOued": true,
+          "minimumDistanceInsideEddouiretMeters": 677.1343434273508,
+          "minimumDistanceOutsideRasElOuedMeters": 677.8174585970028
+        },
+        "packaged": {
+          "fullyInsideEddouiret": true,
+          "entirelyOutsideRasElOued": true,
+          "minimumDistanceInsideEddouiretMeters": 677.1230229367294,
+          "minimumDistanceOutsideRasElOuedMeters": 677.7732218224701
+        }
+      },
+      "proposedParentName": "الدويرات",
+      "proposedContextAliases": [
+        "Délégation Tataouine Sud",
+        "Edouiret",
+        "Tataouine Sud",
+        "الدويرات",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "preserveRawNameAliasesCoordinatesGeometryPrayerSourceAndPickerGroup": true
+    }
+  ],
+  "finding": "The entire original Bir Tedrekhet residential source and its complete packaged polygon are safely within official Eddouiret and wholly outside official Ras El Oued. The original tags and assembled geometry were freshly read from the pinned PBF and match the existing compiler source exactly. Only this recorded feature context is supported for correction.",
+  "approvedChange": {
+    "ids": [
+      "osm:way:378117273"
+    ],
+    "fields": [
+      "parentName",
+      "contextAliases"
+    ],
+    "prayerSource624PreservedAndIndependentlyNearest": true,
+    "singletonPickerGroupPreserved": true,
+    "noNameChange": true,
+    "noDuplicateMerge": true,
+    "noBoundaryImport": true
+  },
+  "limits": [
+    "No claim that Bir Tedrekhet spelling or whole inhabited-locality identity is independently certified.",
+    "This corrects the administrative context at the exact retained source footprint; it does not certify or replace the old sector polygons.",
+    "2023 official maps and 2024 registry supply dated evidence, not a claim of absolute current ground completeness.",
+    "No distance threshold or source-name rule is generalized to other features."
+  ],
+  "operations": {
+    "freshExactPbfReadCompleted": true,
+    "noNewMapFetch": true,
+    "noRepoPhoneLedgerEdits": true,
+    "noGenerationTestsBuild": true
+  }
+}

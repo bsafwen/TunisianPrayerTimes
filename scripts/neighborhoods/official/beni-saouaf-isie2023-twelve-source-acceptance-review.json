@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_ACCEPTANCE_PROPOSAL_PENDING_DEPENDENCY_MIGRATIONS_AND_ACTUAL_DATA_REVIEW",
+  "baselineMetadataSha256": "137428788a5f8c159bf8fe95fe60727cf4a21320ea461a79191b37b5d50edeb6",
+  "nativeSourceReviews": [
+    {
+      "root": "task",
+      "file": "outputs/beni-hassan-five-native-source-review.json",
+      "sha256": "61af7973593798faed4d1fa8d9f3bf10eb8a9a2ea08c35edd2f8ffb051bbedf8"
+    },
+    {
+      "root": "task",
+      "file": "outputs/saouaf-five-native-source-review.json",
+      "sha256": "36829b54ac6ad8ce0633dbef86c7f8a7096c17cc2c1aa417d5a202db00b3a776"
+    },
+    {
+      "root": "task",
+      "file": "outputs/zeramdine-nadhour-adjoining-native-source-review.json",
+      "sha256": "ccf3367977d8a4ae4fdb638464905f48de1a254ba8e19335c3f56bb91e260f60"
+    }
+  ],
+  "independentSourceReviews": [
+    {
+      "root": "task",
+      "file": "outputs/beni-hassan-five-native-source-independent-review.json",
+      "sha256": "e0e3e6a0477ba19ca6dad57d4614ac0442ae04a441c130182c11fa6da18c2626"
+    },
+    {
+      "root": "task",
+      "file": "outputs/saouaf-five-native-source-independent-review.json",
+      "sha256": "9591e0cc20f219cede9183388aac273ffbb65b39f8ccb8e5899c8765932e3d0b"
+    }
+  ],
+  "nameIdentityReview": {
+    "root": "task",
+    "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+    "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+  },
+  "nativeCandidates": [
+    {
+      "root": "task",
+      "file": "outputs/beni-hassan-five-native-source-candidates.geojson",
+      "sha256": "db667ef4faad8b74ae7e7eee49e1f04d8e86550ddcd11de04f99c5f6cd2eeff8"
+    },
+    {
+      "root": "task",
+      "file": "outputs/saouaf-five-native-source-candidates.geojson",
+      "sha256": "b23a1f4add20810956d55215c5cbc861c1b52edf3a2a7ebff30f344b0245522b"
+    },
+    {
+      "root": "task",
+      "file": "outputs/zeramdine-nadhour-adjoining-native-source-candidates.geojson",
+      "sha256": "6b78a0a31fcafb77143533acc5ee8b48e3cb38797bb4a4e937ba5504374c9af5"
+    }
+  ],
+  "geometryExports": [
+    {
+      "file": "official/beni-hassan-isie2023-five-sectors.geojson",
+      "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+    },
+    {
+      "file": "official/saouaf-isie2023-five-sectors.geojson",
+      "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+    },
+    {
+      "file": "official/zeramdine-south-isie2023-sectors.geojson",
+      "sha256": "7af1bc235260fcdbaf61332f2317a6ae9911fed1982746cdb1a78fd6fd1328c1"
+    },
+    {
+      "file": "official/nadhour-isie2023-sectors.geojson",
+      "sha256": "5c7f6a16500866daf3a2937eb92e1b3be6798e1c34d2dcb6ef6c7bb5d2f8024e"
+    }
+  ],
+  "acceptedNames": [
+    {
+      "id": "osm:relation:7113965",
+      "sourceId": "isie-local-sectors-2023-beni-hassan",
+      "officialCode": "325552",
+      "nameAr": "بني حسان الجوفية",
+      "nameFr": "Beni Hassen Nord",
+      "aliases": [
+        "Beni Hassen Nord"
+      ],
+      "beforeName": "بني حسان الجوفية",
+      "beforeAliases": [
+        "Beni Hassen Nord"
+      ],
+      "parentAr": "معتمدية بني حسان",
+      "parentFr": "Délégation Beni Hassen",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7113975",
+      "sourceId": "isie-local-sectors-2023-beni-hassan",
+      "officialCode": "325551",
+      "nameAr": "بني حسان القبلية",
+      "nameFr": "Beni Hassen Sud",
+      "aliases": [
+        "Beni Hassen Sud"
+      ],
+      "beforeName": "بني حسان القبلية",
+      "beforeAliases": [
+        "Beni Hassen Sud"
+      ],
+      "parentAr": "معتمدية بني حسان",
+      "parentFr": "Délégation Beni Hassen",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7114530",
+      "sourceId": "isie-local-sectors-2023-beni-hassan",
+      "officialCode": "325554",
+      "nameAr": "الجنائحة",
+      "nameFr": "EL Jnaïha",
+      "aliases": [
+        "EL Jnaïha"
+      ],
+      "beforeName": "الجنائحة",
+      "beforeAliases": [
+        "EL Jnaïha"
+      ],
+      "parentAr": "معتمدية بني حسان",
+      "parentFr": "Délégation Beni Hassen",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7114531",
+      "sourceId": "isie-local-sectors-2023-beni-hassan",
+      "officialCode": "325555",
+      "nameAr": "الغنادة",
+      "nameFr": "Ghnada",
+      "aliases": [
+        "Ghenada",
+        "Ghnada"
+      ],
+      "beforeName": "الغنادة",
+      "beforeAliases": [
+        "Ghenada",
+        "Ghnada"
+      ],
+      "parentAr": "معتمدية بني حسان",
+      "parentFr": "Délégation Beni Hassen",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7114532",
+      "sourceId": "isie-local-sectors-2023-beni-hassan",
+      "officialCode": "325553",
+      "nameAr": "حاتم",
+      "nameFr": "Hatem",
+      "aliases": [
+        "Hatem"
+      ],
+      "beforeName": "حاتم",
+      "beforeAliases": [
+        "Hatem"
+      ],
+      "parentAr": "معتمدية بني حسان",
+      "parentFr": "Délégation Beni Hassen",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7114526",
+      "sourceId": "isie-local-sectors-2023-saouaf",
+      "officialCode": "165651",
+      "nameAr": "صواف الشرقية",
+      "nameFr": "Saouaf Est",
+      "aliases": [
+        "Saouaf Est",
+        "Saouef Est"
+      ],
+      "beforeName": "صواف الشرقية",
+      "beforeAliases": [
+        "Saouaf Est"
+      ],
+      "parentAr": "معتمدية صواف",
+      "parentFr": "Délégation Saouaf",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7114549",
+      "sourceId": "isie-local-sectors-2023-saouaf",
+      "officialCode": "165653",
+      "nameAr": "الحميرة",
+      "nameFr": "El Hamira",
+      "aliases": [
+        "El Hamira",
+        "El Hmira"
+      ],
+      "beforeName": "الحميرة",
+      "beforeAliases": [
+        "El Hamira",
+        "El Hmira"
+      ],
+      "parentAr": "معتمدية صواف",
+      "parentFr": "Délégation Saouaf",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7116957",
+      "sourceId": "isie-local-sectors-2023-saouaf",
+      "officialCode": "165652",
+      "nameAr": "صواف الغربية",
+      "nameFr": "Saouaf Ouest",
+      "aliases": [
+        "Saouaf Ouest",
+        "Saouef Ouest"
+      ],
+      "beforeName": "صواف الغربية",
+      "beforeAliases": [
+        "Saouaf Ouest"
+      ],
+      "parentAr": "معتمدية صواف",
+      "parentFr": "Délégation Saouaf",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7119808",
+      "sourceId": "isie-local-sectors-2023-saouaf",
+      "officialCode": "165654",
+      "nameAr": "الدغافلة الشرقية",
+      "nameFr": "Deghafla Est",
+      "aliases": [
+        "Deghafla Est"
+      ],
+      "beforeName": "الدغافلة الشرقية",
+      "beforeAliases": [
+        "Deghafla Est"
+      ],
+      "parentAr": "معتمدية صواف",
+      "parentFr": "Délégation Saouaf",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7119809",
+      "sourceId": "isie-local-sectors-2023-saouaf",
+      "officialCode": "165655",
+      "nameAr": "الدغافلة الغربية",
+      "nameFr": "Deghafla Ouest",
+      "aliases": [
+        "Deghafla Ouest"
+      ],
+      "beforeName": "الدغافلة الغربية",
+      "beforeAliases": [
+        "Deghafla Ouest"
+      ],
+      "parentAr": "معتمدية صواف",
+      "parentFr": "Délégation Saouaf",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+        "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+      }
+    },
+    {
+      "id": "osm:relation:7114249",
+      "sourceId": "isie-local-sectors-2023-zeramdine-south",
+      "officialCode": "325455",
+      "nameAr": "زرمدين الجنوبية",
+      "nameFr": "Zéramdine Sud",
+      "aliases": [
+        "Zéramdine Sud",
+        "زرميدين الجنوبية"
+      ],
+      "beforeName": "زرميدين الجنوبية",
+      "beforeAliases": [
+        "Zéramdine Sud"
+      ],
+      "parentAr": "معتمدية زرمدين",
+      "parentFr": "Délégation Zeramdine",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/zeramdine-nadhour-adjoining-native-source-review.json",
+        "sha256": "ccf3367977d8a4ae4fdb638464905f48de1a254ba8e19335c3f56bb91e260f60"
+      }
+    },
+    {
+      "id": "osm:relation:7119798",
+      "sourceId": "isie-local-sectors-2023-nadhour",
+      "officialCode": "165551",
+      "nameAr": "الناظور",
+      "nameFr": "Ennadhour",
+      "aliases": [
+        "Ennadhour",
+        "Nadour"
+      ],
+      "beforeName": "الناظور",
+      "beforeAliases": [
+        "Ennadhour",
+        "Nadour"
+      ],
+      "parentAr": "معتمدية الناظور",
+      "parentFr": "Délégation Ennadhour",
+      "evidence": {
+        "root": "task",
+        "file": "outputs/zeramdine-nadhour-adjoining-native-source-review.json",
+        "sha256": "ccf3367977d8a4ae4fdb638464905f48de1a254ba8e19335c3f56bb91e260f60"
+      }
+    }
+  ],
+  "geometryPolicy": "All twelve qualified native coordinate arrays remain exact. No clipping, snapping, buffering, repair, added segment, merged component or filled gap.",
+  "scopePolicy": "Twelve one-to-one whole-imada records appended; all prior60 whole records and the independent Bekalta North aggregate remain unchanged.",
+  "remainingRequirements": [
+    "Exact accepted source-phase migrations for existing protected source states and display owners before generation.",
+    "Finite representative, nearest-reference, point absorption, context, grouping and conflict review precedes installation. This package makes no runtime-delta claim.",
+    "Additional adjoining maps are separate source work. Residual outer disagreements are not hidden or resolved by modifying native geometry."
+  ]
+}

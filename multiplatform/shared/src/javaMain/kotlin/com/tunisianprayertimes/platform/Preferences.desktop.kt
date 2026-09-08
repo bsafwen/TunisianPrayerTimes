@@ -138,6 +138,12 @@ actual object Preferences {
     }
 
     actual fun getRamadanOverrideJson(): String? = prefs.get("ramadan_override_json", null)
+    actual fun getOfficialIslamicDatesJson(hijriYear: Int): String? =
+        prefs.get("official_islamic_dates_$hijriYear", null)
+    actual fun setOfficialIslamicDatesJson(hijriYear: Int, json: String) {
+        prefs.put("official_islamic_dates_$hijriYear", json)
+        prefs.flush()
+    }
     actual fun setRamadanOverrideJson(json: String?) {
         if (json != null) prefs.put("ramadan_override_json", json)
         else prefs.remove("ramadan_override_json")

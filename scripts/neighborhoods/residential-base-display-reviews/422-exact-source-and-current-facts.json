@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "cachedExtractionSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "historicalSourceFacts": {
+    "file": "residential-base-display-reviews/current-two-pair-source-facts.json",
+    "sha256": "130694e6ec4b259697fd992724165a2c9ad33ec41eab6dd9a7109e96b4d480ed"
+  },
+  "sourceReview": {
+    "file": "residential-base-display-reviews/bourouis-jerissa-display-identity-review.json",
+    "sha256": "a2d640370fd801439fd0ff7b67dd92cca0293d0a68115c68faccfcd3208393fc"
+  },
+  "records": {
+    "osm:way:191084856": {
+      "kind": "residential",
+      "tags": {
+        "addr:city": "Sidi Bourouis",
+        "addr:country": "TN",
+        "addr:governorate": "Siliana",
+        "addr:postcode": "6113",
+        "landuse": "residential",
+        "name": "سيدي بورويس",
+        "name:ar": "سيدي بورويس",
+        "name:en": "Sidi Bou Rouis",
+        "name:fr": "Sidi Bou Rouis",
+        "population": "3700",
+        "wikipedia": "fr:Sidi Bou Rouis"
+      },
+      "geometrySha256": "b54d929958dafe6dd71881c84f632260f8eacd634c024ed66e75a52d359af376",
+      "metadata": {
+        "id": "osm:way:191084856",
+        "sourceId": "osm",
+        "name": "سيدي بورويس",
+        "aliases": [
+          "Sidi Bou Rouis"
+        ],
+        "kind": "residential",
+        "parentName": "بورويس الشمالية",
+        "contextAliases": [
+          "Bourouis Nord",
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "بورويس الشمالية",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.176898,
+        "lng": 9.12591,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.115156,
+          36.170299,
+          9.135389,
+          36.183445
+        ],
+        "areaKm2": 1.3123465839668453,
+        "pickerGroupId": "osm:way:191084856"
+      },
+      "packedGeometrySha256": "2e8093244efdd063ed96a219af370d0df1c69096315b5edbe1d5c03c46815c2a"
+    },
+    "osm:node:2016708619": {
+      "kind": "village",
+      "tags": {
+        "addr:city": "Sidi Bourouis",
+        "addr:governorate": "Siliana",
+        "addr:postcode": "6113",
+        "name": "سيدي بورويس",
+        "name:ar": "سيدي بورويس",
+        "name:en": "Sidi Bou Rouis",
+        "name:fr": "Sidi Bou Rouis",
+        "place": "village",
+        "population": "3700",
+        "wikidata": "Q3123769",
+        "wikipedia": "fr:Sidi Bou Rouis"
+      },
+      "geometrySha256": "e258f525781881dfd71502fc1ccd0f8f27ab8848e9dc450306277cb1fab49b07"
+    },
+    "osm:relation:7154133": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Sidi Bourouis",
+        "boundary": "administrative",
+        "name": "معتمدية سيدي بورويس",
+        "name:ar": "معتمدية سيدي بورويس",
+        "name:fr": "Délégation Sidi Bourouis",
+        "ref:tn:codegeo": "2456",
+        "ref:tn:hasc_2": "TN.SL.BR",
+        "wikidata": "Q3483200"
+      },
+      "geometrySha256": "58232a3d3ab08206fa1e88832d92bb03d34f8c44c37488b671886c6385f26e63"
+    },
+    "osm:relation:1435829": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-34",
+        "admin_level": "4",
+        "alt_name:en": "Siliana Governorate",
+        "alt_name:es": "Gobernación de Siliana",
+        "alt_name:it": "Governatorato di Siliana",
+        "alt_name:ur": "ولایت سلیانہ",
+        "boundary": "administrative",
+        "name": "ولاية سليانة",
+        "name:ar": "ولاية سليانة",
+        "name:be": "Сільяна",
+        "name:be-tarask": "Сільяна",
+        "name:bg": "Силиана (област)",
+        "name:ca": "Governació de Siliana",
+        "name:ceb": "Gouvernorat de Siliana",
+        "name:cy": "Siliana (talaith)",
+        "name:de": "Gouvernement Siliana",
+        "name:el": "Σιλγιάνα",
+        "name:en": "Siliana",
+        "name:fa": "سلیانه",
+        "name:fi": "Siliana",
+        "name:fr": "Gouvernorat Siliana",
+        "name:frr": "Siliana",
+        "name:id": "Kegubernuran Siliana",
+        "name:it": "Siliana",
+        "name:ja": "シリアナ県",
+        "name:ko": "실리아나주",
+        "name:ms": "Kawasan kegabenoran Siliana",
+        "name:nl": "Siliana",
+        "name:no": "Siliana",
+        "name:pl": "Gubernatorstwo Siljana",
+        "name:pt": "Siliana",
+        "name:ro": "Guvernoratul Siliana",
+        "name:ru": "Сильяна",
+        "name:sco": "Siliana Govrenorate",
+        "name:sh": "Siliana",
+        "name:tr": "Silyana ili",
+        "name:uk": "Сільяна",
+        "name:ur": "سلیانہ",
+        "name:zh": "錫勒亞奈省",
+        "name:zu": "Siliana Governorate",
+        "official_name": "ولاية سليانة",
+        "official_name:ar": "ولاية سليانة",
+        "official_name:en": "Siliana Governorate",
+        "official_name:fr": "Gouvernorat de Siliana",
+        "official_name:it": "Governatorato di Siliana",
+        "population": "233985",
+        "population:date": "2004",
+        "ref:tn:codegeo": "24",
+        "wikidata": "Q328115",
+        "wikipedia": "ar:ولاية سليانة"
+      },
+      "geometrySha256": "582177f1d9663eaa55f23b0a3b5e96b2ee68102c689481083954edb96d6960f8"
+    },
+    "osm:relation:7126144": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التريشة",
+        "name:ar": "التريشة",
+        "name:fr": "Ettricha",
+        "ref:tn:codegeo": "245653"
+      },
+      "geometrySha256": "3818afae08d514a820304a964e3fa5f2218c1c275da47b058821726bd6a97216",
+      "metadata": {
+        "id": "osm:relation:7126144",
+        "sourceId": "osm",
+        "name": "التريشة",
+        "aliases": [
+          "Ettricha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بورويس",
+        "contextAliases": [
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.124708,
+        "lng": 9.144548,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.107382,
+          36.084829,
+          9.192308,
+          36.164908
+        ],
+        "areaKm2": 37.60545589282708,
+        "pickerGroupId": "osm:relation:7126144"
+      },
+      "packedGeometrySha256": "1d2ac61dc0201fa6af8ad8676986a8a4ff52394e933bde16519eac479fceac8e"
+    },
+    "osm:relation:7126145": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بورويس الجنوبية",
+        "name:ar": "بورويس الجنوبية",
+        "name:fr": "Bourouis Sud",
+        "ref:tn:codegeo": "245652"
+      },
+      "geometrySha256": "2e8ec80a3a590b929bda00455e265193a4017aa6fcdae6438d9ce1d6c2be0cb1",
+      "metadata": {
+        "id": "osm:relation:7126145",
+        "sourceId": "osm",
+        "name": "بورويس الجنوبية",
+        "aliases": [
+          "Bourouis Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بورويس",
+        "contextAliases": [
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.170698,
+        "lng": 9.179662,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.115575,
+          36.112564,
+          9.244622,
+          36.227933
+        ],
+        "areaKm2": 78.94153442255507,
+        "pickerGroupId": "osm:relation:7126145"
+      },
+      "packedGeometrySha256": "9887da232b32c2d03d6e163b9cef4fcd7ddbabcee26722553b559a233241ae15"
+    },
+    "osm:relation:7126146": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بورويس الشمالية",
+        "name:ar": "بورويس الشمالية",
+        "name:fr": "Bourouis Nord",
+        "ref:tn:codegeo": "245651"
+      },
+      "geometrySha256": "87048156b486ea8c93ce296ddb051e626b71885435ae92a8e3d8941994c9b52c",
+      "metadata": {
+        "id": "osm:relation:7126146",
+        "sourceId": "osm",
+        "name": "بورويس الشمالية",
+        "aliases": [
+          "Bourouis Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بورويس",
+        "contextAliases": [
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.177661,
+        "lng": 9.128204,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.107688,
+          36.16331,
+          9.147019,
+          36.191334
+        ],
+        "areaKm2": 6.799590421832902,
+        "pickerGroupId": "osm:relation:7126146"
+      },
+      "packedGeometrySha256": "7d7a76350ca3af4e1326962708a619f7d4a3531f57d50a8c40755bf28801a446"
+    },
+    "osm:relation:7126147": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العباسي",
+        "name:ar": "العباسي",
+        "name:fr": "El Abbassi",
+        "ref:tn:codegeo": "245654"
+      },
+      "geometrySha256": "382b5e0d94fc82d2f9f583d346399823e2034b8956153f0a772aa5a3ecf923ef",
+      "metadata": {
+        "id": "osm:relation:7126147",
+        "sourceId": "osm",
+        "name": "العباسي",
+        "aliases": [
+          "El Abbasi",
+          "El Abbassi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بورويس",
+        "contextAliases": [
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.238111,
+        "lng": 9.103466,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.060352,
+          36.182125,
+          9.163236,
+          36.293458
+        ],
+        "areaKm2": 61.170337705249736,
+        "pickerGroupId": "osm:relation:7126147"
+      },
+      "packedGeometrySha256": "3d32a0d7e2b9ebdc94473c69a0778a093b950cd7f8a536b25110c566da22ce1e"
+    },
+    "osm:relation:7126148": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين عاشور",
+        "name:ar": "عين عاشور",
+        "name:fr": "Ain Achour",
+        "ref:tn:codegeo": "245655"
+      },
+      "geometrySha256": "0c4653ed95e0f91503c7bd783d805705b9c4b86bc30840033fa7dfb83457f418",
+      "metadata": {
+        "id": "osm:relation:7126148",
+        "sourceId": "osm",
+        "name": "عين عاشور",
+        "aliases": [
+          "Ain Achour"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بورويس",
+        "contextAliases": [
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.180295,
+        "lng": 9.075974,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.032151,
+          36.114172,
+          9.122381,
+          36.246073
+        ],
+        "areaKm2": 68.97139659531811,
+        "pickerGroupId": "osm:relation:7126148"
+      },
+      "packedGeometrySha256": "8df97f01d81743e90a5e2485bde123808d78526ca7777e709d5040c14bf9324c"
+    },
+    "osm:relation:7126149": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "محطة الكريب",
+        "name:ar": "محطة الكريب",
+        "name:fr": "El Krib Gare",
+        "ref:tn:codegeo": "245656"
+      },
+      "geometrySha256": "c02cb54b85b35eb013134bf08fa27dcf02b25eb11904406c5e6b8937f0eb13ec",
+      "metadata": {
+        "id": "osm:relation:7126149",
+        "sourceId": "osm",
+        "name": "محطة الكريب",
+        "aliases": [
+          "El Krib Gare"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بورويس",
+        "contextAliases": [
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.239532,
+        "lng": 9.169119,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.13672,
+          36.206365,
+          9.234013,
+          36.272857
+        ],
+        "areaKm2": 22.932001062080918,
+        "pickerGroupId": "osm:relation:7126149"
+      },
+      "packedGeometrySha256": "c7bfdc912665c14a69ddb25f1cddaa2567dd37e9cf34a4776d6198a581085d39"
+    }
+  },
+  "sourceNamePeerIds": [
+    "osm:node:2016708619",
+    "osm:relation:7154133",
+    "osm:way:191084856"
+  ],
+  "qualification": "Exact cached original source geometry/tag facts; no new PBF pass or guessed perimeter. Metadata is independently pinned at proposal assembly."
+}

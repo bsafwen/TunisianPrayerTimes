@@ -1,0 +1,793 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_suburb_point_base_display_identity",
+  "identityDecision": "same_named_inhabited_quarter_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:1158752159",
+  "baseId": 393,
+  "rawCurrent": {
+    "id": "osm:node:1158752159",
+    "sourceId": "osm",
+    "name": "حي التحرير",
+    "aliases": [
+      "Cité Ettahrir",
+      "Hay Ettahrir"
+    ],
+    "kind": "suburb",
+    "parentName": "الحديقة",
+    "contextAliases": [
+      "Délégation Ettahrir",
+      "El Hadika",
+      "Ettahrir",
+      "الحديقة",
+      "معتمدية التحرير"
+    ],
+    "governorateId": 342,
+    "lat": 36.8229323,
+    "lng": 10.1339881,
+    "delegationId": 393,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1158752159"
+  },
+  "baseCurrent": {
+    "id": 393,
+    "nomFr": "Ettahrir",
+    "nomAr": "التحرير",
+    "nomEn": "Ettahrir",
+    "lat": 36.8244,
+    "lng": 10.1283
+  },
+  "expectedGovernor": {
+    "id": 342,
+    "nomFr": "Tunis",
+    "nomAr": "تونس",
+    "nomEn": "Tunis",
+    "lat": 36.8065,
+    "lng": 10.1815
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1158752159",
+    "tags": {
+      "name": "حي التحرير",
+      "name:ar": "حي التحرير",
+      "name:en": "Hay Ettahrir",
+      "name:fr": "Cité Ettahrir",
+      "place": "suburb"
+    },
+    "lat": 36.8229323,
+    "lng": 10.1339881
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/ettahrir393/ettahrir393-point-base-display-source-review.json",
+    "sha256": "20acd394ae1abd2a8c4f64e3c4fb2364fbee69872b645b201e78d33a0015e7cc"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/ettahrir393/ettahrir393-display-source-prerequisites-independent-review.json",
+    "sha256": "76f4862aa93cb389e0ee15635928062f9b4916e863017fb596ca05a92d0729e3"
+  },
+  "sourceFacts": {
+    "file": "point-base-display-reviews/ettahrir393/exact-peer-scope-facts.json",
+    "sha256": "d69b86bb0547388fc217457dda8eedd6003aef739fa66a6baa6260d6ac5f5b9e"
+  },
+  "typedPeerDesign": {
+    "file": "point-base-display-reviews/ettahrir393/ettahrir393-typed-name-peer-design-review.json",
+    "sha256": "4ca3e6a381635b36629f1bbd6d7915182a395b6f37dc88318414d38931cf1789"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/ettahrir393/node-1158752159.json",
+    "sha256": "75e71a06eca685e3651a80e2ca2f926f1c71ea492cf72a55af1914bcadeb12bc",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1158752159.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1158752159.json",
+    "sha256": "75e71a06eca685e3651a80e2ca2f926f1c71ea492cf72a55af1914bcadeb12bc",
+    "exactElement": {
+      "type": "node",
+      "id": 1158752159,
+      "lat": 36.8229323,
+      "lon": 10.1339881,
+      "timestamp": "2021-02-03T23:54:37Z",
+      "version": 13,
+      "changeset": 98670574,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "name": "حي التحرير",
+        "name:ar": "حي التحرير",
+        "name:en": "Hay Ettahrir",
+        "name:fr": "Cité Ettahrir",
+        "place": "suburb"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/ettahrir393/ministry-social-ettahrir.html",
+      "sha256": "8b4a5c89d389137db049cb6ea1a8a5029005b492fa7b7603083a0f0565fa0351",
+      "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-التحرير-تونس",
+      "role": "official_inhabited_quarter_identity",
+      "requiredText": [
+        "الوحدة المحلية للنهوض الاجتماعي التحرير تونس",
+        "إقامة الشريفة حي التحرير"
+      ]
+    }
+  ],
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "1157",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7201527",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1157",
+        "delegationFr": "Ettahrir",
+        "delegationAr": "التحرير",
+        "sectorCode": "115751",
+        "sectorFr": "Ettahrir (1)",
+        "sectorAr": "التحرير الأول",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1770,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 55,
+          "Nombre_de_menages_par_Secteurs.xlsx": 55
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير الأول",
+        "name:ar": "التحرير الأول",
+        "name:fr": "Ettahrir (1)",
+        "ref:tn:codegeo": "115751"
+      },
+      "sourceGeometrySha256": "c09e3c4f77ec0dc9da52c038282a3baa00f4e99c27bb7d1cd8bf72e21239fac9",
+      "currentMetadata": {
+        "id": "osm:relation:7201527",
+        "sourceId": "osm",
+        "name": "التحرير الأول",
+        "aliases": [
+          "Ettahrir (1)"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.823585,
+        "lng": 10.12428,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.120349,
+          36.819969,
+          10.127355,
+          36.82726
+        ],
+        "areaKm2": 0.25141995320959026,
+        "pickerGroupId": "osm:relation:7201527",
+        "offset": 5095236,
+        "length": 604
+      },
+      "packedGeometrySha256": "d5bf503204fa7b1540d83b0c9c8b37d5754aacf40ec66efcb748fa7a96717290",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7201531",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1157",
+        "delegationFr": "Ettahrir",
+        "delegationAr": "التحرير",
+        "sectorCode": "115752",
+        "sectorFr": "Ettahrir (2)",
+        "sectorAr": "التحرير الثاني",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1804,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 56,
+          "Nombre_de_menages_par_Secteurs.xlsx": 56
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير الثاني",
+        "name:ar": "التحرير الثاني",
+        "name:fr": "Ettahrir (2)",
+        "ref:tn:codegeo": "115752"
+      },
+      "sourceGeometrySha256": "bd25e946a32099afc9d78b047c564da2a0216ad2dfd7e4be28193a0ec79e34ff",
+      "currentMetadata": {
+        "id": "osm:relation:7201531",
+        "sourceId": "osm",
+        "name": "التحرير الثاني",
+        "aliases": [
+          "Ettahrir (2)"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.829179,
+        "lng": 10.123594,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.118142,
+          36.82553,
+          10.129109,
+          36.833209
+        ],
+        "areaKm2": 0.3781130798867597,
+        "pickerGroupId": "osm:relation:7201531",
+        "offset": 5097692,
+        "length": 1020
+      },
+      "packedGeometrySha256": "6e51b4659956ae51108b8d959889268226b4aa2a80b58459c02878b2bac7a740",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7201529",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1157",
+        "delegationFr": "Ettahrir",
+        "delegationAr": "التحرير",
+        "sectorCode": "115753",
+        "sectorFr": "Ettahrir (3)",
+        "sectorAr": "التحرير الثالث",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1838,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 57,
+          "Nombre_de_menages_par_Secteurs.xlsx": 57
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير الثالث",
+        "name:ar": "التحرير الثالث",
+        "name:fr": "Ettahrir (3)",
+        "ref:tn:codegeo": "115753"
+      },
+      "sourceGeometrySha256": "114c244a500adda16bde30f928a185f12aa38d69d2b3c695588b8002557444a9",
+      "currentMetadata": {
+        "id": "osm:relation:7201529",
+        "sourceId": "osm",
+        "name": "التحرير الثالث",
+        "aliases": [
+          "Ettahrir (3)"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.824175,
+        "lng": 10.129215,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.124214,
+          36.819424,
+          10.132713,
+          36.828778
+        ],
+        "areaKm2": 0.3175087452914075,
+        "pickerGroupId": "osm:relation:7201529",
+        "offset": 5096468,
+        "length": 684
+      },
+      "packedGeometrySha256": "e31ce5a22e00a8b23eade2d85e1a44f9ec5093a29b020bedd8f9c676a6b788bc",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7201528",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1157",
+        "delegationFr": "Ettahrir",
+        "delegationAr": "التحرير",
+        "sectorCode": "115754",
+        "sectorFr": "Ettahrirsuerieur",
+        "sectorAr": "التحرير العلوي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1872,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 58,
+          "Nombre_de_menages_par_Secteurs.xlsx": 58
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير العلوي",
+        "name:ar": "التحرير العلوي",
+        "name:fr": "Ettahrir Superieur",
+        "ref:tn:codegeo": "115754"
+      },
+      "sourceGeometrySha256": "94d86a9c906976b2f8217d4aeeac59f611a305859a2ef85eccec5c0957bb5d7b",
+      "currentMetadata": {
+        "id": "osm:relation:7201528",
+        "sourceId": "osm",
+        "name": "التحرير العلوي",
+        "aliases": [
+          "Ettahrir Superieur"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.833487,
+        "lng": 10.120896,
+        "delegationId": 392,
+        "hasBoundary": true,
+        "bbox": [
+          10.117549,
+          36.830806,
+          10.12419,
+          36.836577
+        ],
+        "areaKm2": 0.2319788599409428,
+        "pickerGroupId": "osm:relation:7201528",
+        "offset": 5095840,
+        "length": 628
+      },
+      "packedGeometrySha256": "6ffdef7c026f747cb8dc46865616ec2f9a7bb13f24ec34228367c4c5238ba778",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7201530",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1157",
+        "delegationFr": "Ettahrir",
+        "delegationAr": "التحرير",
+        "sectorCode": "115755",
+        "sectorFr": "El hadika",
+        "sectorAr": "الحديقة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1906,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 59,
+          "Nombre_de_menages_par_Secteurs.xlsx": 59
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحديقة",
+        "name:ar": "الحديقة",
+        "name:fr": "El Hadika",
+        "ref:tn:codegeo": "115755"
+      },
+      "sourceGeometrySha256": "a412410fe3ce29f66759ee4ca672ffa6a8d7a888057470d30ff69d9fc7ebccc2",
+      "currentMetadata": {
+        "id": "osm:relation:7201530",
+        "sourceId": "osm",
+        "name": "الحديقة",
+        "aliases": [
+          "El Hadika"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.82245,
+        "lng": 10.133446,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.124414,
+          36.817639,
+          10.138212,
+          36.827437
+        ],
+        "areaKm2": 0.4921017668906218,
+        "pickerGroupId": "osm:relation:7201530",
+        "offset": 5097152,
+        "length": 540
+      },
+      "packedGeometrySha256": "4a93188416c50f13bdbd8673778b2aa06cbf0bf505b12aa6051be5f3d5924efa",
+      "expectedCuration": null
+    }
+  ],
+  "preservedNamePeers": [
+    {
+      "id": "osm:relation:7154897",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير",
+        "name:ar": "التحرير",
+        "name:fr": "Ettahir",
+        "ref:tn:codegeo": "625456"
+      },
+      "sourceGeometrySha256": "37d4f6610cf0aca335a6525fad26641fcdcccbdc3813e89909198e1a5c9e69ea",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7154897",
+        "sourceId": "osm",
+        "name": "التحرير",
+        "aliases": [
+          "Ettahir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفطة",
+        "contextAliases": [
+          "Délégation Nefta",
+          "Nefta",
+          "معتمدية نفطة"
+        ],
+        "governorateId": 352,
+        "lat": 33.8704,
+        "lng": 7.883205,
+        "delegationId": 477,
+        "hasBoundary": true,
+        "bbox": [
+          7.881956,
+          33.86817,
+          7.886327,
+          33.87264
+        ],
+        "areaKm2": 0.0844990753947317,
+        "pickerGroupId": "osm:relation:7154897",
+        "offset": 3115992,
+        "length": 620
+      },
+      "packedGeometrySha256": "587b7fd2da7757949c41f837713b5b309cf499c73472d74e2ca7860920479634",
+      "completeRawGroup": [
+        "osm:relation:7154897"
+      ]
+    },
+    {
+      "id": "osm:way:1321465756",
+      "kind": "residential",
+      "originalTags": {
+        "landuse": "residential",
+        "name": "حي التحرير",
+        "residential": "rural"
+      },
+      "sourceGeometrySha256": "35e38d760fa7a0034da5f4e02981ffc37845c8a87cc77a779c14fbd77c71bde8",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:1321465756",
+        "sourceId": "osm",
+        "name": "حي التحرير",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "ولاية تطاوين",
+        "contextAliases": [],
+        "governorateId": 351,
+        "lat": 33.059935,
+        "lng": 10.345,
+        "delegationId": 473,
+        "hasBoundary": true,
+        "bbox": [
+          10.340625,
+          33.056905,
+          10.349951,
+          33.063618
+        ],
+        "areaKm2": 0.38871473350343805,
+        "pickerGroupId": "osm:way:1321465756",
+        "offset": 5215180,
+        "length": 108
+      },
+      "packedGeometrySha256": "c25e71185a34c5c98cd2a1cd872125c9ae1f5dc2b9c9d6f3ac2f8daec3755968",
+      "completeRawGroup": [
+        "osm:way:1321465756"
+      ]
+    }
+  ],
+  "typedNamePeerExtension": {
+    "schemaVersion": 1,
+    "rawPointPeers": [
+      {
+        "id": "osm:node:2245539847",
+        "kind": "neighbourhood",
+        "originalTags": {
+          "addr:postcode": "3263",
+          "name": "حي التحرير",
+          "name:ar": "حي التحرير",
+          "name:en": "Hay Ettahrir",
+          "name:fr": "Cité Ettahrir",
+          "place": "neighbourhood"
+        },
+        "sourceGeometrySha256": "f440ea7e75bfe4ca89bd80e7407894c02f08e0639fab9fde81e28f8ecdbd4b2d",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:node:2245539847",
+          "sourceId": "osm",
+          "name": "حي التحرير",
+          "aliases": [
+            "Cité Ettahrir",
+            "Hay Ettahrir"
+          ],
+          "kind": "neighbourhood",
+          "parentName": "برورمت",
+          "contextAliases": [
+            "Berourmet",
+            "Délégation Tataouine Nord",
+            "برورمت",
+            "معتمدية تطاوين الشمالية"
+          ],
+          "governorateId": 351,
+          "lat": 32.9958033,
+          "lng": 10.4628552,
+          "delegationId": 624,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2245539847"
+        },
+        "completeRawGroup": [
+          "osm:node:2245539847"
+        ]
+      }
+    ],
+    "readOnlyContextPeers": [
+      {
+        "id": "osm:relation:4130434",
+        "kind": "delegation",
+        "expectedCuration": null,
+        "expectedRawPresence": false,
+        "completeRawGroup": []
+      }
+    ]
+  },
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1158752159",
+      "tags": {
+        "name": "حي التحرير",
+        "name:ar": "حي التحرير",
+        "name:en": "Hay Ettahrir",
+        "name:fr": "Cité Ettahrir",
+        "place": "suburb"
+      },
+      "kind": "suburb"
+    },
+    {
+      "id": "osm:node:2245539847",
+      "tags": {
+        "addr:postcode": "3263",
+        "name": "حي التحرير",
+        "name:ar": "حي التحرير",
+        "name:en": "Hay Ettahrir",
+        "name:fr": "Cité Ettahrir",
+        "place": "neighbourhood"
+      },
+      "kind": "neighbourhood"
+    },
+    {
+      "id": "osm:relation:4130434",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ettahrir",
+        "boundary": "administrative",
+        "name": "معتمدية التحرير",
+        "name:ar": "معتمدية التحرير",
+        "name:fr": "Délégation Ettahrir",
+        "ref:tn:codegeo": "1157",
+        "ref:tn:hasc_2": "TN.TU.TA",
+        "wikidata": "Q3059384"
+      },
+      "kind": "delegation"
+    },
+    {
+      "id": "osm:relation:7154897",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير",
+        "name:ar": "التحرير",
+        "name:fr": "Ettahir",
+        "ref:tn:codegeo": "625456"
+      },
+      "kind": "sector"
+    },
+    {
+      "id": "osm:way:1321465756",
+      "tags": {
+        "landuse": "residential",
+        "name": "حي التحرير",
+        "residential": "rural"
+      },
+      "kind": "residential"
+    }
+  ],
+  "contexts": {
+    "osm:relation:4130434": {
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ettahrir",
+        "boundary": "administrative",
+        "name": "معتمدية التحرير",
+        "name:ar": "معتمدية التحرير",
+        "name:fr": "Délégation Ettahrir",
+        "ref:tn:codegeo": "1157",
+        "ref:tn:hasc_2": "TN.TU.TA",
+        "wikidata": "Q3059384"
+      },
+      "kind": "delegation",
+      "sourceGeometrySha256": "1cee44ede6a4600ac6d3501348f2518d10d750a43e246fec023861a2f18ad2ab"
+    },
+    "osm:relation:1435835": {
+      "tags": {
+        "ISO3166-2": "TN-11",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Tunis",
+        "alt_name:ko": "튀니스주",
+        "alt_name:ru": "Тунис (вилайет)",
+        "boundary": "administrative",
+        "long_name:ar": "ولاية تونس",
+        "long_name:en": "Tunis Governorate",
+        "long_name:fr": "Gouvernorat de Tunis",
+        "long_name:it": "Governatorato di Tunisi",
+        "name": "ولاية تونس",
+        "name:ar": "ولاية تونس",
+        "name:be": "Туніс (вілает)",
+        "name:be-tarask": "Туніс (вілает)",
+        "name:bg": "Тунис (област)",
+        "name:ca": "Governació de Tunis",
+        "name:ceb": "Gouvernorat de Tunis",
+        "name:cy": "Tiwnis (talaith)",
+        "name:de": "Tunis",
+        "name:en": "Tunis",
+        "name:es": "Gobernación de Túnez",
+        "name:fa": "استان تونس",
+        "name:fr": "Gouvernorat Tunis",
+        "name:id": "Kegubernuran Tunis",
+        "name:it": "Tunisi",
+        "name:ja": "チュニス県",
+        "name:ko": "튀니스",
+        "name:ms": "Kawasan kegabenoran Tunis",
+        "name:nl": "Tunis (gouvernement)",
+        "name:no": "Tunis (guvernement)",
+        "name:pl": "Gubernatorstwo Tunis",
+        "name:pt": "Túnis (província)",
+        "name:ro": "Guvernoratul Tunis",
+        "name:ru": "Тунис",
+        "name:sco": "Tunis Govrenorate",
+        "name:sh": "Tunis (vilajet)",
+        "name:sv": "Tunis (guvernement)",
+        "name:tr": "Tunus ili",
+        "name:uk": "Туніс (вілаєт)",
+        "name:ur": "ولایت تونس",
+        "name:zh": "突尼斯省",
+        "name:zu": "Tunis Governorate",
+        "population": "983861",
+        "ref:tn:codegeo": "11",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q328109",
+        "wikipedia": "ar:ولاية تونس"
+      },
+      "kind": "governorate",
+      "sourceGeometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1158752159",
+    "field": "pickerGroupId",
+    "before": "osm:node:1158752159",
+    "after": "delegation:393"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1158752159"
+      ],
+      [
+        "delegation:393"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:393",
+        "osm:node:1158752159"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "geometryHashConventions": [
+    {
+      "id": "osm:node:1158752159",
+      "generatorAggregateSha256": "cf92c8d4b085d6b7b5dc158e1203d735839ed14cab31b84816f8d4b740c334d3",
+      "sortedResearchSha256": "14f91d3ff48434bc5d610a1246f036e1e3a5edecafd14ee1eaa1b3f58dabc018",
+      "matchesIndependentSortedDigest": true
+    },
+    {
+      "id": "osm:node:2245539847",
+      "generatorAggregateSha256": "f440ea7e75bfe4ca89bd80e7407894c02f08e0639fab9fde81e28f8ecdbd4b2d",
+      "sortedResearchSha256": "b88fbfef962799bf8582abf8e0e46839d43967f44c59a65fc11405edb5b6b772",
+      "matchesIndependentSortedDigest": true
+    },
+    {
+      "id": "osm:relation:1435835",
+      "generatorAggregateSha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468",
+      "sortedResearchSha256": "052f1311c8a20819843199eb9c94e8f9313c1a89c1bc785a0a30e26d3eabd349",
+      "matchesIndependentSortedDigest": false
+    },
+    {
+      "id": "osm:relation:4130434",
+      "generatorAggregateSha256": "1cee44ede6a4600ac6d3501348f2518d10d750a43e246fec023861a2f18ad2ab",
+      "sortedResearchSha256": "dc2df6021c732c747dfa55ad7dfe1b851038eb7e365dc79450a17230d65013f2",
+      "matchesIndependentSortedDigest": true
+    },
+    {
+      "id": "osm:relation:7154897",
+      "generatorAggregateSha256": "37d4f6610cf0aca335a6525fad26641fcdcccbdc3813e89909198e1a5c9e69ea",
+      "sortedResearchSha256": "a156b25370fadc7f8b363b6a934f6cbc638bac77dff51f6196b23c31de2ab02f",
+      "matchesIndependentSortedDigest": true
+    },
+    {
+      "id": "osm:relation:7201527",
+      "generatorAggregateSha256": "c09e3c4f77ec0dc9da52c038282a3baa00f4e99c27bb7d1cd8bf72e21239fac9",
+      "sortedResearchSha256": "774eb27cf0feac26ead409a41b3ed8b9806aa7fca27d1f86d91aff6879c8907d",
+      "matchesIndependentSortedDigest": false
+    },
+    {
+      "id": "osm:relation:7201528",
+      "generatorAggregateSha256": "94d86a9c906976b2f8217d4aeeac59f611a305859a2ef85eccec5c0957bb5d7b",
+      "sortedResearchSha256": "3bf971cf0c6a445e06f00c62b2bf81eb44c538edb33c649411d06e0e31d1452a",
+      "matchesIndependentSortedDigest": false
+    },
+    {
+      "id": "osm:relation:7201529",
+      "generatorAggregateSha256": "114c244a500adda16bde30f928a185f12aa38d69d2b3c695588b8002557444a9",
+      "sortedResearchSha256": "b3c41f2704de095e7311a05f3b733e2cde85a6930bcf5af3ebd673c81fc69e37",
+      "matchesIndependentSortedDigest": false
+    },
+    {
+      "id": "osm:relation:7201530",
+      "generatorAggregateSha256": "a412410fe3ce29f66759ee4ca672ffa6a8d7a888057470d30ff69d9fc7ebccc2",
+      "sortedResearchSha256": "adb8728caf15f16fcf831e3c8f9c74b99156ea130f416c06a2d3a1d4dd3a028b",
+      "matchesIndependentSortedDigest": false
+    },
+    {
+      "id": "osm:relation:7201531",
+      "generatorAggregateSha256": "bd25e946a32099afc9d78b047c564da2a0216ad2dfd7e4be28193a0ec79e34ff",
+      "sortedResearchSha256": "08aeca66f281b293a95418ecf5c151a18c79dacd66d4c2ae134f7fc18abed376",
+      "matchesIndependentSortedDigest": false
+    },
+    {
+      "id": "osm:way:1321465756",
+      "generatorAggregateSha256": "35e38d760fa7a0034da5f4e02981ffc37845c8a87cc77a779c14fbd77c71bde8",
+      "sortedResearchSha256": "4014edcd4e00a6338e2453053fec42bcb0e6c2bdeb520e1094ca9140dffa914d",
+      "matchesIndependentSortedDigest": true
+    }
+  ],
+  "sourceGeometryHashConvention": "Generator aggregate_geometry_sha256 uses compact unsorted mapping JSON with default ensure_ascii. Sorted research digests are separately labeled and never substituted.",
+  "scope": "One explicitly reviewed inhabited-quarter point/base display identity. Preserve all five independently coded imadas, three unrelated raw namesakes and the source-only matching parent; no automatic name/proximity merge.",
+  "coordinateQualification": "Both references are preserved in their respective cached imadas. No same-imada equality, complete neighborhood outline or original INM measurement-location certification is claimed.",
+  "supplementaryEvidenceQualification": "The historical proposal discusses Enda participant reporting; no original Enda HTML was pinned, so it is not mandatory runtime evidence. The byte-pinned Ministry address is the required primary source."
+}

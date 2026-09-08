@@ -1,0 +1,101 @@
+[
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/2876921759.json",
+    "retrievedAt": "2026-09-08T15:30:36.327332+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/2876921759.json\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-2876921759.json",
+    "sha256": "fd79fc1ad866e45b5aa388af3e8238bd68e3b17a922bd10666c638b190cc6b4b",
+    "bytes": 692
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1432078789.json",
+    "retrievedAt": "2026-09-08T15:30:36.329338+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/1432078789.json\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-1432078789.json",
+    "sha256": "be638b54c0e0558cadb2294fd127e26d2d0428de5d18b4dee9adf8d3a7f5732f",
+    "bytes": 664
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/2017271470.json",
+    "retrievedAt": "2026-09-08T15:30:36.329338+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/2017271470.json\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-2017271470.json",
+    "sha256": "0ef861733f167da559fb1da6234ec62093ac792a35288f7e3eee3c957802d607",
+    "bytes": 836
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1124133881.json",
+    "retrievedAt": "2026-09-08T15:30:36.330330+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/1124133881.json\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-1124133881.json",
+    "sha256": "4aae76339e0be9b816dc3e78123247f03e4f6c24493eadf25c394b424c7b7fb3",
+    "bytes": 595
+  },
+  {
+    "url": "https://api.openstreetmap.org/api/0.6/node/2017271470/history.json",
+    "retrievedAt": "2026-09-08T15:30:36.332349+00:00",
+    "curlExit": 0,
+    "response": "https://api.openstreetmap.org/api/0.6/node/2017271470/history.json\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\node-2017271470-history.json",
+    "sha256": "ece287679ac3ddedbdc54c574765419ff9c6eb38585c5b0bfec79ce8677d3a64",
+    "bytes": 6095
+  },
+  {
+    "url": "https://www.commune-meknassy.gov.tn/ar/ville.php",
+    "retrievedAt": "2026-09-08T15:30:36.333387+00:00",
+    "curlExit": 28,
+    "response": "https://www.commune-meknassy.gov.tn/ar/ville.php\r\n000\r\n0",
+    "error": "curl: (28) Failed to connect to www.commune-meknassy.gov.tn:443 after 21171 ms: Could not connect to server\r\n",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\meknassy-municipal-city.html",
+    "sha256": null,
+    "bytes": 0
+  },
+  {
+    "url": "https://www.commune-sers.gov.tn/page_2.html",
+    "retrievedAt": "2026-09-08T15:30:36.561899+00:00",
+    "curlExit": 35,
+    "response": "https://www.commune-sers.gov.tn/page_2.html\r\n000\r\n0",
+    "error": "curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate has expired.\r\n",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\sers-municipal-city-history.html",
+    "sha256": null,
+    "bytes": 0
+  },
+  {
+    "url": "https://www.commune-benikhalled.gov.tn/index.php?Itemid=135&id=9&lang=ar&option=com_content&view=article",
+    "retrievedAt": "2026-09-08T15:30:36.562901+00:00",
+    "curlExit": 28,
+    "response": "https://www.commune-benikhalled.gov.tn/index.php?Itemid=135&id=9&lang=ar&option=com_content&view=article\r\n000\r\n0",
+    "error": "curl: (28) Failed to connect to www.commune-benikhalled.gov.tn:443 after 21156 ms: Could not connect to server\r\n",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\beni-khalled-municipal-city-history.html",
+    "sha256": null,
+    "bytes": 0
+  },
+  {
+    "url": "https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A5%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D9%86%D9%81%D8%B2%D8%A9-%D8%A8%D8%A7%D8%AC%D8%A9",
+    "retrievedAt": "2026-09-08T15:30:36.567969+00:00",
+    "curlExit": 0,
+    "response": "https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A5%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D9%86%D9%81%D8%B2%D8%A9-%D8%A8%D8%A7%D8%AC%D8%A9\r\n200\r\n0",
+    "error": "",
+    "verifiedTLS": true,
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next-four-town-base-source-review\\nefza-social-ministry-city-address.html",
+    "sha256": "5c8d78f42904d6cd607d9d1f94b31206760934ac3958754df6dd070b77b2f9aa",
+    "bytes": 67029
+  }
+]

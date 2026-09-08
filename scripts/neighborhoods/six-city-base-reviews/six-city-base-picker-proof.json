@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "six-city-base-reviews/six-city-base-source-facts.json",
+    "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+  },
+  "records": [
+    {
+      "id": "osm:way:98620323",
+      "targetDelegationId": 386,
+      "governorateId": 342,
+      "name": "المرسى",
+      "basePoint": {
+        "lat": 36.8783,
+        "lng": 10.3247
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:98620323"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:386"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_contained_settlement_reference",
+          "id": "osm:node:287547219",
+          "accepted": true,
+          "residentialId": "osm:way:98620323",
+          "targetDelegationId": 386,
+          "reviewEvidence": {
+            "file": "six-city-base-reviews/six-city-base-source-facts.json",
+            "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+          }
+        }
+      ],
+      "requiredCurations": []
+    },
+    {
+      "id": "osm:way:604767502",
+      "targetDelegationId": 617,
+      "governorateId": 344,
+      "name": "سليانة",
+      "basePoint": {
+        "lat": 36.0849,
+        "lng": 9.3708
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:604767502"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:617"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_contained_settlement_reference",
+          "id": "osm:node:2930586474",
+          "accepted": true,
+          "residentialId": "osm:way:604767502",
+          "targetDelegationId": 617,
+          "reviewEvidence": {
+            "file": "six-city-base-reviews/six-city-base-source-facts.json",
+            "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+          }
+        }
+      ],
+      "requiredCurations": []
+    },
+    {
+      "id": "osm:way:207294838",
+      "targetDelegationId": 458,
+      "governorateId": 350,
+      "name": "منزل بوزلفة",
+      "basePoint": {
+        "lat": 36.685,
+        "lng": 10.58
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:207294838"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:458"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_contained_settlement_reference",
+          "id": "osm:node:1124136154",
+          "accepted": true,
+          "residentialId": "osm:way:207294838",
+          "targetDelegationId": 458,
+          "reviewEvidence": {
+            "file": "six-city-base-reviews/six-city-base-source-facts.json",
+            "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+          }
+        }
+      ],
+      "requiredCurations": []
+    },
+    {
+      "id": "osm:way:256592014",
+      "targetDelegationId": 568,
+      "governorateId": 361,
+      "name": "جرزونة",
+      "basePoint": {
+        "lat": 37.2642,
+        "lng": 9.8768
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:256592014"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:568"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_contained_settlement_reference",
+          "id": "osm:node:2622426837",
+          "accepted": true,
+          "residentialId": "osm:way:256592014",
+          "targetDelegationId": 568,
+          "reviewEvidence": {
+            "file": "six-city-base-reviews/six-city-base-source-facts.json",
+            "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+          }
+        }
+      ],
+      "requiredCurations": []
+    },
+    {
+      "id": "osm:way:179056480",
+      "targetDelegationId": 636,
+      "governorateId": 363,
+      "name": "الكاف",
+      "basePoint": {
+        "lat": 36.1747,
+        "lng": 8.7049
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:179056480"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:636"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_contained_settlement_reference",
+          "id": "osm:node:287622372",
+          "accepted": true,
+          "residentialId": "osm:way:179056480",
+          "targetDelegationId": 636,
+          "reviewEvidence": {
+            "file": "six-city-base-reviews/six-city-base-source-facts.json",
+            "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+          }
+        }
+      ],
+      "requiredCurations": []
+    },
+    {
+      "id": "osm:way:206318231",
+      "targetDelegationId": 638,
+      "governorateId": 365,
+      "name": "قفصة",
+      "basePoint": {
+        "lat": 34.425,
+        "lng": 8.7842
+      },
+      "status": "eligible_proposal",
+      "members": [
+        {
+          "id": "osm:way:206318231"
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:638"
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_contained_settlement_reference",
+          "id": "osm:node:287545859",
+          "accepted": true,
+          "residentialId": "osm:way:206318231",
+          "targetDelegationId": 638,
+          "reviewEvidence": {
+            "file": "six-city-base-reviews/six-city-base-source-facts.json",
+            "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+          }
+        }
+      ],
+      "requiredCurations": []
+    }
+  ]
+}

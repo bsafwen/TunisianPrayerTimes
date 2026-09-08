@@ -1,0 +1,3392 @@
+{
+  "schemaVersion": 1,
+  "status": "READ_ONLY_CURRENT_THREE_SOURCE_AND_CLONE_RETIREMENT_IMPACT",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "378899b486efa44f93cd07ed9ee558529cb7bad11165a52cbe6e860b3e7edddc",
+    "bytes": 1841527
+  },
+  "baselineBinary": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "8c0a2f48c73e927ea357c0f7696e33ff91d38587a1649e071d80cc0dca801ad2",
+    "bytes": 5497748
+  },
+  "sourceCandidates": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bizerte-three-review-isie2023-sectors.geojson",
+    "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+    "bytes": 118572
+  },
+  "script": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_bizerte_three_current_coverage.py",
+    "sha256": "dff5ce281a0d6f68be39d3a99780f50dcfa8bee08dc820a75c7265d8387f6c50",
+    "bytes": 9156
+  },
+  "method": {
+    "allRawCoordinatesScanned": 3632,
+    "allPrayerSourceAnchorsScanned": 259,
+    "actualPackedPolygons": 2727,
+    "removedRawId": "osm:relation:7152490",
+    "officialGeometryIds": [
+      "osm:relation:7118630",
+      "osm:relation:7118631",
+      "osm:relation:7118632"
+    ],
+    "testOrFixtureExecution": false,
+    "catalogGeneration": false,
+    "prayerMappingOrMetadataMutations": false,
+    "conflictsBefore": 185,
+    "conflictsAfter": 191
+  },
+  "counts": {
+    "rawCoordinatesInScope": 7,
+    "changedWinners": 2,
+    "changedWinnerRoles": {
+      "sector_representative": 2
+    },
+    "namedPointsLosingLabel": 0,
+    "lostSectorCoverageMeters2": 175430.44435909163,
+    "gainedSectorCoverageMeters2": 37646.147534285934,
+    "lostComponentsOver1m2": 17
+  },
+  "allCurrentRawCoordinatesInScope": [
+    {
+      "id": "osm:relation:7118630",
+      "name": "المؤتمر",
+      "kind": "sector",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "delegationId": 634,
+      "coordinateRole": "sector_representative",
+      "coordinate": [
+        9.872912,
+        37.278024
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118631"
+      ]
+    },
+    {
+      "id": "osm:relation:7118631",
+      "name": "المدينة",
+      "kind": "sector",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "delegationId": 634,
+      "coordinateRole": "sector_representative",
+      "coordinate": [
+        9.871494,
+        37.274271
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7118632",
+          "name": "الشيخ إدريس",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118632"
+      ]
+    },
+    {
+      "id": "osm:relation:7118632",
+      "name": "الشيخ ادريس",
+      "kind": "sector",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "delegationId": 634,
+      "coordinateRole": "sector_representative",
+      "coordinate": [
+        9.859211,
+        37.274933
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ ادريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:275008604",
+            "name": "oued laassal",
+            "kind": "neighbourhood",
+            "parentName": "الشيخ ادريس"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:275008604",
+          "name": "oued laassal",
+          "kind": "neighbourhood",
+          "parentName": "الشيخ ادريس"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:275008604",
+            "name": "oued laassal",
+            "kind": "neighbourhood",
+            "parentName": "الشيخ ادريس"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:275008604",
+          "name": "oued laassal",
+          "kind": "neighbourhood",
+          "parentName": "الشيخ ادريس"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118630"
+      ]
+    },
+    {
+      "id": "osm:relation:7152490",
+      "name": "الشيخ إدريس",
+      "kind": "sector",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "delegationId": 634,
+      "coordinateRole": "sector_representative",
+      "coordinate": [
+        9.871494,
+        37.274271
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7118632",
+          "name": "الشيخ إدريس",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118632"
+      ]
+    },
+    {
+      "id": "osm:way:164467494",
+      "name": "القصبة",
+      "kind": "residential",
+      "parentName": "المؤتمر",
+      "delegationId": 634,
+      "coordinateRole": "locality_polygon_representative",
+      "coordinate": [
+        9.875893,
+        37.277311
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:way:164467494",
+            "name": "القصبة",
+            "kind": "residential",
+            "parentName": "المؤتمر"
+          },
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:164467494",
+          "name": "القصبة",
+          "kind": "residential",
+          "parentName": "المؤتمر"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:way:164467494",
+            "name": "القصبة",
+            "kind": "residential",
+            "parentName": "المؤتمر"
+          },
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:164467494",
+          "name": "القصبة",
+          "kind": "residential",
+          "parentName": "المؤتمر"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118631"
+      ]
+    },
+    {
+      "id": "osm:way:256615867",
+      "name": "المدينة العتيقة",
+      "kind": "suburb",
+      "parentName": "معتمدية بنزرت الشمالية",
+      "delegationId": 634,
+      "coordinateRole": "locality_polygon_representative",
+      "coordinate": [
+        9.871712,
+        37.276147
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118631"
+      ]
+    },
+    {
+      "id": "osm:way:275008604",
+      "name": "oued laassal",
+      "kind": "neighbourhood",
+      "parentName": "الشيخ ادريس",
+      "delegationId": 634,
+      "coordinateRole": "locality_polygon_representative",
+      "coordinate": [
+        9.858418,
+        37.275356
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ ادريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:275008604",
+            "name": "oued laassal",
+            "kind": "neighbourhood",
+            "parentName": "الشيخ ادريس"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:275008604",
+          "name": "oued laassal",
+          "kind": "neighbourhood",
+          "parentName": "الشيخ ادريس"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:275008604",
+            "name": "oued laassal",
+            "kind": "neighbourhood",
+            "parentName": "الشيخ ادريس"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:way:275008604",
+          "name": "oued laassal",
+          "kind": "neighbourhood",
+          "parentName": "الشيخ ادريس"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118630"
+      ]
+    }
+  ],
+  "originalPrayerSourceAnchorsInScope": [
+    {
+      "id": 634,
+      "name": "بنزرت",
+      "coordinate": [
+        9.8739,
+        37.2744
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7118630",
+          "name": "المؤتمر",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7118631",
+          "name": "المدينة",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118631"
+      ]
+    }
+  ],
+  "lostCoverageComponentsOver1m2": [
+    {
+      "areaMeters2": 97671.02732612591,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.857234,
+              37.268764
+            ],
+            [
+              9.857148,
+              37.269498
+            ],
+            [
+              9.856804,
+              37.270616
+            ],
+            [
+              9.856403,
+              37.271825
+            ],
+            [
+              9.855166,
+              37.275809
+            ],
+            [
+              9.855046,
+              37.276712
+            ],
+            [
+              9.855241,
+              37.278403
+            ],
+            [
+              9.855764,
+              37.279858
+            ],
+            [
+              9.856418,
+              37.281019
+            ],
+            [
+              9.85718,
+              37.281933
+            ],
+            [
+              9.858489,
+              37.282795
+            ],
+            [
+              9.859326,
+              37.283315
+            ],
+            [
+              9.859846,
+              37.283017
+            ],
+            [
+              9.862239,
+              37.282223
+            ],
+            [
+              9.86432,
+              37.281429
+            ],
+            [
+              9.865715,
+              37.280994
+            ],
+            [
+              9.86741,
+              37.280652
+            ],
+            [
+              9.869223,
+              37.280515
+            ],
+            [
+              9.86904012526096,
+              37.2800984519833
+            ],
+            [
+              9.869046,
+              37.280123
+            ],
+            [
+              9.869073,
+              37.280187
+            ],
+            [
+              9.8691,
+              37.28025
+            ],
+            [
+              9.86618,
+              37.280761
+            ],
+            [
+              9.865689,
+              37.280829
+            ],
+            [
+              9.86451,
+              37.281209
+            ],
+            [
+              9.863769,
+              37.281512
+            ],
+            [
+              9.863305,
+              37.281686
+            ],
+            [
+              9.863027,
+              37.281816
+            ],
+            [
+              9.862617,
+              37.281999
+            ],
+            [
+              9.862259,
+              37.282076
+            ],
+            [
+              9.861941,
+              37.282153
+            ],
+            [
+              9.861808,
+              37.282197
+            ],
+            [
+              9.861609,
+              37.282262
+            ],
+            [
+              9.861397,
+              37.282338
+            ],
+            [
+              9.860709,
+              37.282566
+            ],
+            [
+              9.859874,
+              37.282817
+            ],
+            [
+              9.859464,
+              37.283022
+            ],
+            [
+              9.857038,
+              37.281414
+            ],
+            [
+              9.856876,
+              37.281202
+            ],
+            [
+              9.856714,
+              37.280991
+            ],
+            [
+              9.856565,
+              37.280769
+            ],
+            [
+              9.856416,
+              37.280547
+            ],
+            [
+              9.856267,
+              37.280325
+            ],
+            [
+              9.856145,
+              37.280092
+            ],
+            [
+              9.856009,
+              37.279859
+            ],
+            [
+              9.855914,
+              37.279658
+            ],
+            [
+              9.855818,
+              37.279456
+            ],
+            [
+              9.855736,
+              37.279244
+            ],
+            [
+              9.855654,
+              37.279043
+            ],
+            [
+              9.855572,
+              37.278831
+            ],
+            [
+              9.855503,
+              37.278619
+            ],
+            [
+              9.855447,
+              37.278407
+            ],
+            [
+              9.855392,
+              37.278195
+            ],
+            [
+              9.855377,
+              37.278057
+            ],
+            [
+              9.855274,
+              37.27726
+            ],
+            [
+              9.855246,
+              37.277101
+            ],
+            [
+              9.855231,
+              37.276931
+            ],
+            [
+              9.855216,
+              37.276772
+            ],
+            [
+              9.855227,
+              37.276602
+            ],
+            [
+              9.855225,
+              37.276442
+            ],
+            [
+              9.85525,
+              37.276272
+            ],
+            [
+              9.855274,
+              37.276112
+            ],
+            [
+              9.855299,
+              37.275942
+            ],
+            [
+              9.855337,
+              37.275782
+            ],
+            [
+              9.855389,
+              37.275623
+            ],
+            [
+              9.85544,
+              37.275463
+            ],
+            [
+              9.855645,
+              37.274813
+            ],
+            [
+              9.856017,
+              37.273641
+            ],
+            [
+              9.856402,
+              37.272426
+            ],
+            [
+              9.857326,
+              37.269529
+            ],
+            [
+              9.857365,
+              37.26938
+            ],
+            [
+              9.857403,
+              37.269231
+            ],
+            [
+              9.857428,
+              37.269071
+            ],
+            [
+              9.857439,
+              37.268922
+            ],
+            [
+              9.857464,
+              37.268773
+            ],
+            [
+              9.857462,
+              37.268614
+            ],
+            [
+              9.857461,
+              37.268465
+            ],
+            [
+              9.857394,
+              37.267317
+            ],
+            [
+              9.857421,
+              37.267317
+            ],
+            [
+              9.857793,
+              37.267336
+            ],
+            [
+              9.8579,
+              37.267335
+            ],
+            [
+              9.857993,
+              37.267345
+            ],
+            [
+              9.858086,
+              37.267365
+            ],
+            [
+              9.85818,
+              37.267397
+            ],
+            [
+              9.858273,
+              37.267428
+            ],
+            [
+              9.858353,
+              37.26747
+            ],
+            [
+              9.858434,
+              37.267512
+            ],
+            [
+              9.858514,
+              37.267564
+            ],
+            [
+              9.858581,
+              37.267617
+            ],
+            [
+              9.858635,
+              37.26768
+            ],
+            [
+              9.858702,
+              37.267744
+            ],
+            [
+              9.858743,
+              37.267807
+            ],
+            [
+              9.858784,
+              37.267881
+            ],
+            [
+              9.858961,
+              37.268284
+            ],
+            [
+              9.859398,
+              37.269258
+            ],
+            [
+              9.859876,
+              37.270328
+            ],
+            [
+              9.860285,
+              37.27125
+            ],
+            [
+              9.860367,
+              37.271462
+            ],
+            [
+              9.860681,
+              37.27215
+            ],
+            [
+              9.860608,
+              37.272682
+            ],
+            [
+              9.860497,
+              37.27347
+            ],
+            [
+              9.860781775020707,
+              37.27358668050427
+            ],
+            [
+              9.861048,
+              37.271624
+            ],
+            [
+              9.859588,
+              37.267534
+            ],
+            [
+              9.856906,
+              37.266843
+            ],
+            [
+              9.857234,
+              37.268764
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [
+        {
+          "id": "osm:way:1026778596",
+          "name": "حي الهناء",
+          "areaMeters2": 1146.0298359907538
+        }
+      ],
+      "sample": {
+        "coordinate": [
+          9.855458420055223,
+          37.275138
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118632",
+              "name": "الشيخ ادريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ ادريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 29371.554302190314,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.884458,
+              37.280343
+            ],
+            [
+              9.886596866679453,
+              37.27905773261751
+            ],
+            [
+              9.886404,
+              37.279132
+            ],
+            [
+              9.885586,
+              37.279185
+            ],
+            [
+              9.885538,
+              37.279232
+            ],
+            [
+              9.88548,
+              37.279264
+            ],
+            [
+              9.885373,
+              37.279296
+            ],
+            [
+              9.885237,
+              37.279343
+            ],
+            [
+              9.885179,
+              37.279375
+            ],
+            [
+              9.88514,
+              37.279406
+            ],
+            [
+              9.885112,
+              37.279469
+            ],
+            [
+              9.885054,
+              37.279524
+            ],
+            [
+              9.885005,
+              37.279555
+            ],
+            [
+              9.884947,
+              37.279602
+            ],
+            [
+              9.884841,
+              37.27965
+            ],
+            [
+              9.884763,
+              37.279689
+            ],
+            [
+              9.884686,
+              37.279706
+            ],
+            [
+              9.884569,
+              37.279777
+            ],
+            [
+              9.884521,
+              37.2798
+            ],
+            [
+              9.884463,
+              37.279824
+            ],
+            [
+              9.884405,
+              37.279871
+            ],
+            [
+              9.884356,
+              37.279903
+            ],
+            [
+              9.884299,
+              37.27995
+            ],
+            [
+              9.884221,
+              37.279997
+            ],
+            [
+              9.884134,
+              37.280029
+            ],
+            [
+              9.884056,
+              37.280061
+            ],
+            [
+              9.884018,
+              37.2801
+            ],
+            [
+              9.883999,
+              37.280155
+            ],
+            [
+              9.88397,
+              37.280178
+            ],
+            [
+              9.883941,
+              37.28021
+            ],
+            [
+              9.883902,
+              37.280241
+            ],
+            [
+              9.883806,
+              37.280296
+            ],
+            [
+              9.883728,
+              37.280343
+            ],
+            [
+              9.883661,
+              37.280422
+            ],
+            [
+              9.883622,
+              37.280477
+            ],
+            [
+              9.883574,
+              37.2805
+            ],
+            [
+              9.883516,
+              37.280509
+            ],
+            [
+              9.883477,
+              37.280548
+            ],
+            [
+              9.883439,
+              37.280595
+            ],
+            [
+              9.883381,
+              37.280626
+            ],
+            [
+              9.883352,
+              37.280665
+            ],
+            [
+              9.883303,
+              37.280697
+            ],
+            [
+              9.883226,
+              37.280752
+            ],
+            [
+              9.883188,
+              37.280791
+            ],
+            [
+              9.883159,
+              37.280823
+            ],
+            [
+              9.88313,
+              37.280877
+            ],
+            [
+              9.883062,
+              37.280925
+            ],
+            [
+              9.882995,
+              37.280972
+            ],
+            [
+              9.882927,
+              37.281011
+            ],
+            [
+              9.882849,
+              37.281059
+            ],
+            [
+              9.882782,
+              37.281098
+            ],
+            [
+              9.882704,
+              37.281137
+            ],
+            [
+              9.882646,
+              37.281177
+            ],
+            [
+              9.882608,
+              37.281208
+            ],
+            [
+              9.882559,
+              37.281255
+            ],
+            [
+              9.882482,
+              37.281303
+            ],
+            [
+              9.882231,
+              37.281476
+            ],
+            [
+              9.882028,
+              37.281633
+            ],
+            [
+              9.881883,
+              37.281735
+            ],
+            [
+              9.881738,
+              37.281845
+            ],
+            [
+              9.881525,
+              37.281972
+            ],
+            [
+              9.881515,
+              37.281972
+            ],
+            [
+              9.881428,
+              37.282042
+            ],
+            [
+              9.881331,
+              37.282105
+            ],
+            [
+              9.881273,
+              37.282145
+            ],
+            [
+              9.881264,
+              37.282137
+            ],
+            [
+              9.881244,
+              37.282129
+            ],
+            [
+              9.880399,
+              37.281497
+            ],
+            [
+              9.880025,
+              37.281228
+            ],
+            [
+              9.879666432162423,
+              37.28124615533355
+            ],
+            [
+              9.880413,
+              37.28186
+            ],
+            [
+              9.881431,
+              37.282628
+            ],
+            [
+              9.883089,
+              37.281404
+            ],
+            [
+              9.884458,
+              37.280343
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.88347416093308,
+          37.28085
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 28804.4491004587,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.870584,
+              37.272283
+            ],
+            [
+              9.870697,
+              37.272142
+            ],
+            [
+              9.87072705146341,
+              37.27210844253253
+            ],
+            [
+              9.870553,
+              37.272
+            ],
+            [
+              9.869684,
+              37.273579
+            ],
+            [
+              9.870006,
+              37.274962
+            ],
+            [
+              9.869727,
+              37.276294
+            ],
+            [
+              9.870468,
+              37.277515
+            ],
+            [
+              9.870972,
+              37.278138
+            ],
+            [
+              9.872924,
+              37.279401
+            ],
+            [
+              9.87359,
+              37.279828
+            ],
+            [
+              9.874646,
+              37.280225
+            ],
+            [
+              9.875098,
+              37.279541
+            ],
+            [
+              9.877098,
+              37.28007523545332
+            ],
+            [
+              9.877098,
+              37.280074
+            ],
+            [
+              9.875759,
+              37.279703
+            ],
+            [
+              9.874048,
+              37.279233
+            ],
+            [
+              9.874028,
+              37.279225
+            ],
+            [
+              9.873699,
+              37.279422
+            ],
+            [
+              9.87338,
+              37.279603
+            ],
+            [
+              9.872191,
+              37.278709
+            ],
+            [
+              9.871002,
+              37.277869
+            ],
+            [
+              9.870525,
+              37.277102
+            ],
+            [
+              9.870554,
+              37.277086
+            ],
+            [
+              9.870129,
+              37.27649
+            ],
+            [
+              9.870543,
+              37.276051
+            ],
+            [
+              9.870679,
+              37.276073
+            ],
+            [
+              9.870881177443863,
+              37.27594053891609
+            ],
+            [
+              9.870876,
+              37.27594
+            ],
+            [
+              9.87068,
+              37.276072
+            ],
+            [
+              9.870539,
+              37.276048
+            ],
+            [
+              9.870122,
+              37.276489
+            ],
+            [
+              9.870083,
+              37.27644
+            ],
+            [
+              9.870018,
+              37.276353
+            ],
+            [
+              9.870303,
+              37.2749
+            ],
+            [
+              9.870241,
+              37.274789
+            ],
+            [
+              9.870183,
+              37.274677
+            ],
+            [
+              9.870133,
+              37.274562
+            ],
+            [
+              9.870086,
+              37.274447
+            ],
+            [
+              9.870051,
+              37.274332
+            ],
+            [
+              9.870011,
+              37.274193
+            ],
+            [
+              9.869983,
+              37.274056
+            ],
+            [
+              9.869959,
+              37.273917
+            ],
+            [
+              9.869946,
+              37.273778
+            ],
+            [
+              9.869945,
+              37.273662
+            ],
+            [
+              9.869944,
+              37.27355
+            ],
+            [
+              9.86995,
+              37.273438
+            ],
+            [
+              9.869965,
+              37.273325
+            ],
+            [
+              9.870031,
+              37.27317
+            ],
+            [
+              9.870109,
+              37.273015
+            ],
+            [
+              9.870191,
+              37.272862
+            ],
+            [
+              9.870277,
+              37.272713
+            ],
+            [
+              9.870374,
+              37.272567
+            ],
+            [
+              9.870476,
+              37.272423
+            ],
+            [
+              9.870584,
+              37.272283
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [
+        {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "areaMeters2": 8974.919587577697
+        }
+      ],
+      "sample": {
+        "coordinate": [
+          9.869900696000585,
+          37.2761835
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "winner": null
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 15635.401437890832,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.868785,
+              37.27834
+            ],
+            [
+              9.869197156066072,
+              37.278448462122654
+            ],
+            [
+              9.869246,
+              37.278362
+            ],
+            [
+              9.865138,
+              37.277647
+            ],
+            [
+              9.863397,
+              37.275611
+            ],
+            [
+              9.862571,
+              37.274254
+            ],
+            [
+              9.861582568762143,
+              37.27391847242343
+            ],
+            [
+              9.862115,
+              37.274255
+            ],
+            [
+              9.86244,
+              37.274752
+            ],
+            [
+              9.86406,
+              37.276802
+            ],
+            [
+              9.864464,
+              37.277224
+            ],
+            [
+              9.864745,
+              37.277434
+            ],
+            [
+              9.86492,
+              37.277571
+            ],
+            [
+              9.864947,
+              37.277614
+            ],
+            [
+              9.864988,
+              37.277751
+            ],
+            [
+              9.86491,
+              37.277869
+            ],
+            [
+              9.86491,
+              37.27788
+            ],
+            [
+              9.864937,
+              37.277911
+            ],
+            [
+              9.864964,
+              37.277911
+            ],
+            [
+              9.865056,
+              37.277878
+            ],
+            [
+              9.865162,
+              37.277856
+            ],
+            [
+              9.865269,
+              37.277845
+            ],
+            [
+              9.865375,
+              37.277834
+            ],
+            [
+              9.865481,
+              37.277833
+            ],
+            [
+              9.865574,
+              37.277832
+            ],
+            [
+              9.865668,
+              37.277831
+            ],
+            [
+              9.865747,
+              37.277841
+            ],
+            [
+              9.866467,
+              37.277953
+            ],
+            [
+              9.868785,
+              37.27834
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [
+        {
+          "id": "osm:way:275008604",
+          "name": "oued laassal",
+          "areaMeters2": 566.8225483910894
+        }
+      ],
+      "sample": {
+        "coordinate": [
+          9.86374781330143,
+          37.2762065
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118632",
+              "name": "الشيخ ادريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ ادريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 1491.2596705598896,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.882287,
+              37.278825
+            ],
+            [
+              9.879570295213542,
+              37.27904263657129
+            ],
+            [
+              9.880117,
+              37.279055
+            ],
+            [
+              9.882318,
+              37.278883
+            ],
+            [
+              9.882321902793748,
+              37.27859731549753
+            ],
+            [
+              9.882283,
+              37.278605
+            ],
+            [
+              9.882287,
+              37.278825
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.882121698087445,
+          37.278853999999995
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 1131.1572966796248,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.878493,
+              37.278525
+            ],
+            [
+              9.878503,
+              37.278426
+            ],
+            [
+              9.878403,
+              37.278419
+            ],
+            [
+              9.878407,
+              37.27838
+            ],
+            [
+              9.87844,
+              37.278084
+            ],
+            [
+              9.878515,
+              37.277405
+            ],
+            [
+              9.878568,
+              37.276931
+            ],
+            [
+              9.878493448064752,
+              37.27688535178746
+            ],
+            [
+              9.878342217154836,
+              37.278584590079994
+            ],
+            [
+              9.878425,
+              37.27857
+            ],
+            [
+              9.878493,
+              37.278525
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.87844724226509,
+          37.2777445
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 713.2605866057097,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.882363302472918,
+              37.27851506212931
+            ],
+            [
+              9.883862,
+              37.278443
+            ],
+            [
+              9.884412848086138,
+              37.278363617130445
+            ],
+            [
+              9.882363,
+              37.278483
+            ],
+            [
+              9.882363302472918,
+              37.27851506212931
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.883934377746764,
+          37.278403308565224
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 341.35491370431606,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.890801,
+              37.278514
+            ],
+            [
+              9.890822,
+              37.278465
+            ],
+            [
+              9.890825,
+              37.278415
+            ],
+            [
+              9.890813,
+              37.278367
+            ],
+            [
+              9.890788,
+              37.278327
+            ],
+            [
+              9.890753,
+              37.278294
+            ],
+            [
+              9.89071,
+              37.278267
+            ],
+            [
+              9.890639,
+              37.278246
+            ],
+            [
+              9.890563,
+              37.278243
+            ],
+            [
+              9.890508,
+              37.278253
+            ],
+            [
+              9.890458,
+              37.278274
+            ],
+            [
+              9.890407,
+              37.278311
+            ],
+            [
+              9.890396072409006,
+              37.278325674193624
+            ],
+            [
+              9.890721,
+              37.278298
+            ],
+            [
+              9.890732,
+              37.278399
+            ],
+            [
+              9.890750721711616,
+              37.278564091456985
+            ],
+            [
+              9.890764,
+              37.278556
+            ],
+            [
+              9.890801,
+              37.278514
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.890777953608247,
+          37.278407
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 109.10048097628469,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.878305886017534,
+              37.27899280860986
+            ],
+            [
+              9.878304,
+              37.279014
+            ],
+            [
+              9.878865447443735,
+              37.27902669682581
+            ],
+            [
+              9.87881,
+              37.279005
+            ],
+            [
+              9.878305886017534,
+              37.27899280860986
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.878562950248284,
+          37.2790095
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 37.992491076192834,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.87298608989672,
+              37.27396375000016
+            ],
+            [
+              9.873048,
+              37.27486
+            ],
+            [
+              9.873055,
+              37.274869
+            ],
+            [
+              9.872744,
+              37.274896
+            ],
+            [
+              9.872744,
+              37.274899
+            ],
+            [
+              9.872711,
+              37.274987
+            ],
+            [
+              9.872697714285716,
+              37.27499851428571
+            ],
+            [
+              9.872714,
+              37.274992
+            ],
+            [
+              9.872752,
+              37.274906
+            ],
+            [
+              9.872751,
+              37.274898
+            ],
+            [
+              9.873063,
+              37.274872
+            ],
+            [
+              9.873053,
+              37.274865
+            ],
+            [
+              9.87298608989672,
+              37.27396375000016
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [
+        {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "areaMeters2": 15.262073950889068
+        }
+      ],
+      "sample": {
+        "coordinate": [
+          9.873018202146554,
+          37.274411875000084
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "winner": null
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 32.82979478364118,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.888519,
+              37.278385
+            ],
+            [
+              9.88851806925529,
+              37.27838493625036
+            ],
+            [
+              9.888725,
+              37.278468
+            ],
+            [
+              9.889197719697698,
+              37.2784277383023
+            ],
+            [
+              9.888705,
+              37.278457
+            ],
+            [
+              9.888519,
+              37.278385
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.888572833569913,
+          37.27840636915115
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 25.139875416457688,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.8852,
+              37.278666
+            ],
+            [
+              9.885641500008106,
+              37.27862349830222
+            ],
+            [
+              9.885190332706912,
+              37.27865535261269
+            ],
+            [
+              9.8852,
+              37.278666
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.885445983967823,
+          37.278639425457456
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 23.70701411063713,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.890637,
+              37.278613
+            ],
+            [
+              9.890689251315798,
+              37.278598071052635
+            ],
+            [
+              9.890297066191495,
+              37.278628786602006
+            ],
+            [
+              9.890587,
+              37.278617
+            ],
+            [
+              9.890637,
+              37.278613
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.890542548780473,
+          37.278615
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 23.53363665480687,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.872201,
+              37.275385
+            ],
+            [
+              9.872607,
+              37.27507
+            ],
+            [
+              9.872607,
+              37.275064
+            ],
+            [
+              9.872606,
+              37.275064
+            ],
+            [
+              9.872199,
+              37.275383
+            ],
+            [
+              9.872048,
+              37.275502
+            ],
+            [
+              9.87204739399333,
+              37.27550269810901
+            ],
+            [
+              9.872201,
+              37.275385
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [
+        {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "areaMeters2": 23.533636654807083
+        }
+      ],
+      "sample": {
+        "coordinate": [
+          9.872401980651338,
+          37.2752265
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "winner": {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [
+            {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 10.457161767188268,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.872031038894404,
+              37.27552153889478
+            ],
+            [
+              9.871594,
+              37.276025
+            ],
+            [
+              9.871475578793708,
+              37.27598134241243
+            ],
+            [
+              9.871595,
+              37.276028
+            ],
+            [
+              9.872031038894404,
+              37.27552153889478
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [
+        {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "areaMeters2": 10.457161767188222
+        }
+      ],
+      "sample": {
+        "coordinate": [
+          9.871832286385256,
+          37.27575144065361
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "winner": {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [
+            {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 6.68882259072379,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.883680913496974,
+              37.27528167528574
+            ],
+            [
+              9.883774838235297,
+              37.27528843014706
+            ],
+            [
+              9.883706,
+              37.275269
+            ],
+            [
+              9.883680913496974,
+              37.27528167528574
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [],
+      "sample": {
+        "coordinate": [
+          9.883710955055896,
+          37.27527533764287
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118630",
+              "name": "المؤتمر",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [],
+          "excluded": [],
+          "winner": null
+        },
+        "officialContainingTargetIds": []
+      }
+    },
+    {
+      "areaMeters2": 1.4581383772745187,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.871288751196595,
+              37.275953748803786
+            ],
+            [
+              9.871145,
+              37.275968
+            ],
+            [
+              9.870990440097458,
+              37.2759519119804
+            ],
+            [
+              9.871146,
+              37.275969
+            ],
+            [
+              9.871288751196595,
+              37.275953748803786
+            ]
+          ]
+        ]
+      },
+      "namedPointIds": [],
+      "finerPolygonIntersections": [
+        {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "areaMeters2": 1.4581383772745187
+        }
+      ],
+      "sample": {
+        "coordinate": [
+          9.871219465598344,
+          37.27596087440189
+        ],
+        "before": {
+          "candidates": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [
+            {
+              "id": "osm:relation:7118631",
+              "name": "المدينة",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            },
+            {
+              "id": "osm:relation:7152490",
+              "name": "الشيخ إدريس",
+              "kind": "sector",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "winner": {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "after": {
+          "candidates": [
+            {
+              "id": "osm:way:256615867",
+              "name": "المدينة العتيقة",
+              "kind": "suburb",
+              "parentName": "معتمدية بنزرت الشمالية"
+            }
+          ],
+          "excluded": [],
+          "winner": {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        },
+        "officialContainingTargetIds": [
+          "osm:relation:7118631"
+        ]
+      }
+    }
+  ],
+  "allTargetConflictSamples": [
+    {
+      "ids": [
+        "osm:relation:7118628",
+        "osm:relation:7118632"
+      ],
+      "previousConflict": false,
+      "areaMeters2": 3858.6698109291247,
+      "coordinate": [
+        9.87138812518699,
+        37.27243072126626
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118628",
+            "name": "بوبكر باكير",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7118628",
+          "name": "بوبكر باكير",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118628",
+            "name": "بوبكر باكير",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118628",
+            "name": "بوبكر باكير",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": null
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118632"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7118629",
+        "osm:relation:7118630"
+      ],
+      "previousConflict": false,
+      "areaMeters2": 2443.9559900825607,
+      "coordinate": [
+        9.86891770473251,
+        37.279278500000004
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118629",
+            "name": "حسن نوري",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7118629",
+          "name": "حسن نوري",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118629",
+            "name": "حسن نوري",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118629",
+            "name": "حسن نوري",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": null
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118630"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7118629",
+        "osm:relation:7118631"
+      ],
+      "previousConflict": false,
+      "areaMeters2": 18207.50472486321,
+      "coordinate": [
+        9.877495496234289,
+        37.281002577666776
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118629",
+            "name": "حسن نوري",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7118629",
+          "name": "حسن نوري",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118629",
+            "name": "حسن نوري",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118629",
+            "name": "حسن نوري",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": null
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118631"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7118630",
+        "osm:relation:7152491"
+      ],
+      "previousConflict": false,
+      "areaMeters2": 252.65581770472494,
+      "coordinate": [
+        9.861203347316414,
+        37.273776
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7152491",
+            "name": "الحبيب بو قطفة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7152491",
+          "name": "الحبيب بو قطفة",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7152491",
+            "name": "الحبيب بو قطفة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118630",
+            "name": "المؤتمر",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152491",
+            "name": "الحبيب بو قطفة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": null
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118630"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7118631",
+        "osm:relation:7118632"
+      ],
+      "previousConflict": false,
+      "areaMeters2": 14.237607835571046,
+      "coordinate": [
+        9.870937240908383,
+        37.275946225448244
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152490",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:way:256615867",
+            "name": "المدينة العتيقة",
+            "kind": "suburb",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": {
+          "id": "osm:way:256615867",
+          "name": "المدينة العتيقة",
+          "kind": "suburb",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118631"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7118631",
+        "osm:relation:7152489"
+      ],
+      "previousConflict": false,
+      "areaMeters2": 17472.481185235647,
+      "coordinate": [
+        9.875265418285338,
+        37.274756867422965
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7152489",
+            "name": "القنال",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7152489",
+          "name": "القنال",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7152489",
+            "name": "القنال",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118631",
+            "name": "المدينة",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152489",
+            "name": "القنال",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": null
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118631"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7118632",
+        "osm:relation:7152489"
+      ],
+      "previousConflict": false,
+      "areaMeters2": 362.30288990123216,
+      "coordinate": [
+        9.872847284079786,
+        37.273334
+      ],
+      "before": {
+        "candidates": [
+          {
+            "id": "osm:relation:7152489",
+            "name": "القنال",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [],
+        "winner": {
+          "id": "osm:relation:7152489",
+          "name": "القنال",
+          "kind": "sector",
+          "parentName": "معتمدية بنزرت الشمالية"
+        }
+      },
+      "after": {
+        "candidates": [
+          {
+            "id": "osm:relation:7152489",
+            "name": "القنال",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "excluded": [
+          {
+            "id": "osm:relation:7118632",
+            "name": "الشيخ إدريس",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          },
+          {
+            "id": "osm:relation:7152489",
+            "name": "القنال",
+            "kind": "sector",
+            "parentName": "معتمدية بنزرت الشمالية"
+          }
+        ],
+        "winner": null
+      },
+      "officialContainingTargetIds": [
+        "osm:relation:7118632"
+      ]
+    }
+  ],
+  "limitations": [
+    "The source candidates supply sector identity, not certified current ground accuracy.",
+    "Runtime samples model actual packed lookup, not a whole population survey.",
+    "Representative coordinates are not proof of settlement population.",
+    "Saved-ID transition and final generated grouping are separate required work.",
+    "No neighbor boundary, data asset, phone evidence, test or app build was modified."
+  ]
+}

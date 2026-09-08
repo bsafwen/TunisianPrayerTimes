@@ -64,6 +64,10 @@ object PrefsManager {
     }
 
     fun getLocalityId(context: Context): String? = prefs(context).getString(KEY_LOCALITY_ID, null)
+        ?.let { id ->
+            LocalityRepository.reviewedReplacement(context, id)?.replacementId
+                ?: id.takeUnless { LocalityRepository.isRetired(context, it) }
+        }
 
     fun setLocality(context: Context, locality: Locality) {
         prefs(context).edit()
@@ -93,13 +97,29 @@ object PrefsManager {
 
     fun getLocationSelection(context: Context): SavedLocationSelection {
         val values = prefs(context).all
-        return SavedLocationSelection(
+        val selection = SavedLocationSelection(
             delegationId = values[KEY_DELEGATION_ID] as? Int ?: DEFAULT_DELEGATION_ID,
             localityId = values[KEY_LOCALITY_ID] as? String,
             name = values[KEY_LOCALITY_NAME] as? String,
             kind = values[KEY_LOCALITY_KIND] as? String,
             fromGps = values[KEY_LOCATION_FROM_GPS] as? Boolean ?: false,
         )
+        val localityId = selection.localityId ?: return selection
+        // Apply only reviewed stable-ID label changes. GPS selections keep the
+        // timetable chosen from their actual fix; no representative point is used.
+        // Missing or damaged update metadata preserves the saved selection.
+        LocalityRepository.reviewedReplacement(context, localityId)?.let { replacement ->
+            return selection.copy(
+                localityId = replacement.replacementId,
+                name = replacement.name,
+                kind = replacement.kind,
+            )
+        }
+        if (LocalityRepository.isRetired(context, localityId)) {
+            return selection.copy(localityId = null, name = null, kind = null)
+        }
+        val reviewed = LocalityRepository.reviewedName(context, localityId) ?: return selection
+        return selection.copy(name = reviewed.name, kind = reviewed.kind)
     }
 
     fun observeLocationSelection(context: Context, onChanged: () -> Unit): () -> Unit {
@@ -451,6 +471,31 @@ object PrefsManager {
             delayFixedHour = getDelayFixedHour(context, prayer),
             delayFixedMinute = getDelayFixedMinute(context, prayer)
         )
+    }
+
+    /** Publish the whole window together so readers never observe half of an edit. */
+    fun setConfig(context: Context, prayer: Prayer, config: PrayerSilenceConfig) {
+        prefs(context).edit()
+            .putString("mode_${prayer.name}", config.mode.name)
+            .putInt("after_${prayer.name}", config.afterMinutes)
+            .putInt("fixed_hour_${prayer.name}", config.fixedHour)
+            .putInt("fixed_minute_${prayer.name}", config.fixedMinute)
+            .putString("delay_mode_${prayer.name}", config.delayMode.name)
+            .putInt("delay_${prayer.name}", config.delayMinutes)
+            .putInt("delay_fixed_hour_${prayer.name}", config.delayFixedHour)
+            .putInt("delay_fixed_minute_${prayer.name}", config.delayFixedMinute)
+            .apply()
+    }
+
+    fun observeConfigChanges(context: Context, prayer: Prayer, onChanged: () -> Unit): () -> Unit {
+        val settings = prefs(context)
+        val keys = listOf("mode", "after", "fixed_hour", "fixed_minute", "delay_mode", "delay", "delay_fixed_hour", "delay_fixed_minute")
+            .mapTo(mutableSetOf()) { "${it}_${prayer.name}" }
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            if (key == null || key in keys) onChanged()
+        }
+        settings.registerOnSharedPreferenceChangeListener(listener)
+        return { settings.unregisterOnSharedPreferenceChangeListener(listener) }
     }
 
     // --- Jomoaa custom time (defaults to -1 = use Dhuhr time) ---

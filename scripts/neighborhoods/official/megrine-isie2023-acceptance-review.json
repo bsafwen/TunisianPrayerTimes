@@ -1,0 +1,1735 @@
+{
+  "status": "REVIEWED_CANDIDATES_EXPORTED_NO_REPOSITORY_OR_ASSET_CHANGES",
+  "reviewedDate": "2026-09-07",
+  "dataset": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\megrine-isie2023-sectors.geojson",
+  "datasetSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+  "sourceId": "isie-local-sectors-2023-megrine",
+  "sourceManifestSha256": "fce643ca3ec401809ae3dd6663021f67d8d17746b7664748bf4e8e685b143f91",
+  "sourceOsmAreasSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "officialRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+  "featureCount": 8,
+  "replaceCount": 7,
+  "addCount": 1,
+  "newCode": "135956",
+  "newId": "isie:sector:135956",
+  "features": [
+    {
+      "id": "osm:relation:7174630",
+      "code": "135954",
+      "name": "منزل مبروك",
+      "mapNumber": 1,
+      "areaMeters2": 427994.477662644,
+      "boundsWgs84": [
+        10.227349246819776,
+        36.77262188355465,
+        10.24086468829858,
+        36.7800177920071
+      ],
+      "valid": true,
+      "geometryHash": "a0a2599ad751a70c9c870e86fd8cbe225439998c82ae2784e5029cda175a596c",
+      "partCount": 1,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 427994.477662644,
+        "newAreaCoveredByReferenceFraction": 1.0,
+        "referenceAreaCoveredByNewFraction": 0.0006357116694127786,
+        "iou": 0.0006357116694127781,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 672824516.4570392,
+        "hausdorffMeters": 36429.99196029608,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 427994.477662644,
+        "newAreaCoveredByReferenceFraction": 1.0,
+        "referenceAreaCoveredByNewFraction": 0.04227336977737828,
+        "iou": 0.042273369777378285,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 9696452.187378863,
+        "hausdorffMeters": 2082.140202653246,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 427994.477662644,
+        "newAreaCoveredByReferenceFraction": 1.0,
+        "referenceAreaCoveredByNewFraction": 0.04089007862978535,
+        "iou": 0.04089007862978544,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 10038957.213422665,
+        "hausdorffMeters": 2082.140202653246,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": {
+        "intersectionAreaMeters2": 417326.24165445426,
+        "newAreaCoveredByReferenceFraction": 0.975073893321122,
+        "referenceAreaCoveredByNewFraction": 0.9788062402039726,
+        "iou": 0.9549128708255956,
+        "newOutsideReferenceAreaMeters2": 10668.236008185171,
+        "referenceOutsideNewAreaMeters2": 9036.223676262563,
+        "hausdorffMeters": 37.862370075764986,
+        "newRepresentativePointInsideReference": true
+      },
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174630",
+          "name": "منزل مبروك",
+          "officialAreaCoveredByOldFraction": 0.975073893321122,
+          "iou": 0.9549128708255957
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 1,
+        "partCount": 1,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 427915.02085502516,
+            "coordinateCount": 55,
+            "boundsWgs84": [
+              10.227349,
+              36.772622,
+              10.240865,
+              36.780018
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.06467634302176634,
+        "symmetricDifferenceAreaMeters2": 112.55090619224171,
+        "quantizedGeometryHash": "e9013a876ac33d4a9d26333ae685bd82408581e3bd3b8068a02e5080b61f4989"
+      }
+    },
+    {
+      "id": "isie:sector:135956",
+      "code": "135956",
+      "name": "مقرين شاكر2",
+      "mapNumber": 2,
+      "areaMeters2": 531915.6642219828,
+      "boundsWgs84": [
+        10.219425708697374,
+        36.77928452315809,
+        10.234198721290449,
+        36.78614134826617
+      ],
+      "valid": true,
+      "geometryHash": "b64bc46d413977f001168466ace97cd1da1cd6be3e89f1497dc9f4dfe3cf974c",
+      "partCount": 1,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 531915.6642219827,
+        "newAreaCoveredByReferenceFraction": 0.9999999999999998,
+        "referenceAreaCoveredByNewFraction": 0.0007900685932585748,
+        "iou": 0.0007900685932585741,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 672720595.2704799,
+        "hausdorffMeters": 37236.67728317416,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 417686.10939914925,
+        "newAreaCoveredByReferenceFraction": 0.7852487480512278,
+        "referenceAreaCoveredByNewFraction": 0.041255203688451335,
+        "iou": 0.040794932902437464,
+        "newOutsideReferenceAreaMeters2": 114229.55482276468,
+        "referenceOutsideNewAreaMeters2": 9706760.555642463,
+        "hausdorffMeters": 3020.9464561449354,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 417686.10939910327,
+        "newAreaCoveredByReferenceFraction": 0.7852487480511413,
+        "referenceAreaCoveredByNewFraction": 0.039905229500088846,
+        "iou": 0.03947443103865443,
+        "newOutsideReferenceAreaMeters2": 114229.55482288767,
+        "referenceOutsideNewAreaMeters2": 10049265.581686119,
+        "hausdorffMeters": 3020.9464561449354,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": null,
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174628",
+          "name": "مقرين شاكر",
+          "officialAreaCoveredByOldFraction": 0.7852487480512281,
+          "iou": 0.12230074548612216
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 1,
+        "partCount": 1,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 531900.6264000101,
+            "coordinateCount": 74,
+            "boundsWgs84": [
+              10.219426,
+              36.779285,
+              10.234199,
+              36.786141
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.05953245444202831,
+        "symmetricDifferenceAreaMeters2": 73.71777352439872,
+        "quantizedGeometryHash": "b370479d4719e83ab73608582aa36782a89d820e4a16cd573ced4f80290b5af9"
+      }
+    },
+    {
+      "id": "osm:relation:7174628",
+      "code": "135955",
+      "name": "مقرين شاكر",
+      "mapNumber": 3,
+      "areaMeters2": 1943239.7998162608,
+      "boundsWgs84": [
+        10.222053879465317,
+        36.77436519029929,
+        10.251084288439975,
+        36.78782256678614
+      ],
+      "valid": true,
+      "geometryHash": "2dcca82c21daf4f4a9f31e7fd17384273e3374a2b113205b93382186ff561723",
+      "partCount": 1,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 1943239.7998162608,
+        "newAreaCoveredByReferenceFraction": 1.0,
+        "referenceAreaCoveredByNewFraction": 0.002886346160251804,
+        "iou": 0.0028863461602518015,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 671309271.1348857,
+        "hausdorffMeters": 36539.53282688504,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 1838089.117429282,
+        "newAreaCoveredByReferenceFraction": 0.9458889827200323,
+        "referenceAreaCoveredByNewFraction": 0.18154958767040394,
+        "iou": 0.17968342790064631,
+        "newOutsideReferenceAreaMeters2": 105150.68238697878,
+        "referenceOutsideNewAreaMeters2": 8286357.54761208,
+        "hausdorffMeters": 2158.2198064784943,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 1838089.117429282,
+        "newAreaCoveredByReferenceFraction": 0.9458889827200323,
+        "referenceAreaCoveredByNewFraction": 0.17560882783043474,
+        "iou": 0.17386221325679338,
+        "newOutsideReferenceAreaMeters2": 105150.68238697878,
+        "referenceOutsideNewAreaMeters2": 8628862.573655976,
+        "hausdorffMeters": 2158.2198064784943,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": {
+        "intersectionAreaMeters2": 1691628.1648976891,
+        "newAreaCoveredByReferenceFraction": 0.8705195133702169,
+        "referenceAreaCoveredByNewFraction": 0.5124580495368734,
+        "iou": 0.4761635914114028,
+        "newOutsideReferenceAreaMeters2": 251611.63491862244,
+        "referenceOutsideNewAreaMeters2": 1609379.9204010875,
+        "hausdorffMeters": 1499.0251138175852,
+        "newRepresentativePointInsideReference": true
+      },
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174628",
+          "name": "مقرين شاكر",
+          "officialAreaCoveredByOldFraction": 0.8705195133702169,
+          "iou": 0.4761635914114026
+        },
+        {
+          "id": "osm:relation:7174627",
+          "name": "مقرين العليا",
+          "officialAreaCoveredByOldFraction": 0.07536946934984137,
+          "iou": 0.028750019045763554
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 1,
+        "partCount": 1,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 1943226.5911231085,
+            "coordinateCount": 81,
+            "boundsWgs84": [
+              10.222054,
+              36.774365,
+              10.251084,
+              36.787823
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.05950585342009242,
+        "symmetricDifferenceAreaMeters2": 155.0828437177737,
+        "quantizedGeometryHash": "909043d7e7a4d018fa23a7dd7baf09a167c75361a5fdc5b612c774acad76a63f"
+      }
+    },
+    {
+      "id": "osm:relation:7174626",
+      "code": "135952",
+      "name": "مقرين الرياض",
+      "mapNumber": 4,
+      "areaMeters2": 1162134.5987098457,
+      "boundsWgs84": [
+        10.209727266382226,
+        36.76396875485124,
+        10.231602411172249,
+        36.776952236848224
+      ],
+      "valid": true,
+      "geometryHash": "6b91df919d2f3b7d3c8e406c2ea6bbf7d594121fcd7b24629c8e00062cc25b43",
+      "partCount": 1,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 1161849.0015682944,
+        "newAreaCoveredByReferenceFraction": 0.9997542477937853,
+        "referenceAreaCoveredByNewFraction": 0.0017257254636232346,
+        "iou": 0.001725724731562023,
+        "newOutsideReferenceAreaMeters2": 285.5971415256612,
+        "referenceOutsideNewAreaMeters2": 672090661.9331315,
+        "hausdorffMeters": 35535.573253916235,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 1161841.8841968633,
+        "newAreaCoveredByReferenceFraction": 0.9997481233986947,
+        "referenceAreaCoveredByNewFraction": 0.11475608718534347,
+        "iou": 0.11475276949281601,
+        "newOutsideReferenceAreaMeters2": 292.7145129576112,
+        "referenceOutsideNewAreaMeters2": 8962604.780844763,
+        "hausdorffMeters": 2901.0439317775567,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 1161849.0015682944,
+        "newAreaCoveredByReferenceFraction": 0.9997542477937853,
+        "referenceAreaCoveredByNewFraction": 0.11100165892213272,
+        "iou": 0.11099863025701161,
+        "newOutsideReferenceAreaMeters2": 285.5971415256612,
+        "referenceOutsideNewAreaMeters2": 9305102.689517003,
+        "hausdorffMeters": 2901.0439317775567,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": {
+        "intersectionAreaMeters2": 1149271.5015960315,
+        "newAreaCoveredByReferenceFraction": 0.9889314911301201,
+        "referenceAreaCoveredByNewFraction": 0.9904497974085787,
+        "iou": 0.979590544130741,
+        "newOutsideReferenceAreaMeters2": 12863.097113790755,
+        "referenceOutsideNewAreaMeters2": 11081.607267196443,
+        "hausdorffMeters": 12.570857863592884,
+        "newRepresentativePointInsideReference": true
+      },
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174626",
+          "name": "مقرين الرياض",
+          "officialAreaCoveredByOldFraction": 0.9889314911301201,
+          "iou": 0.9795905441307408
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 1,
+        "partCount": 1,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 1162123.6206723365,
+            "coordinateCount": 89,
+            "boundsWgs84": [
+              10.209727,
+              36.763969,
+              10.231602,
+              36.776952
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.0666878936952157,
+        "symmetricDifferenceAreaMeters2": 119.54146369860112,
+        "quantizedGeometryHash": "e9ecacbb5d81c88a761653dff82ed651c39842a62182d8ce82568f0fd86c6cdd"
+      }
+    },
+    {
+      "id": "osm:relation:7174627",
+      "code": "135951",
+      "name": "مقرين العليا",
+      "mapNumber": 5,
+      "areaMeters2": 3162311.501660905,
+      "boundsWgs84": [
+        10.225178358786009,
+        36.76671254194189,
+        10.264117342731808,
+        36.78527548709349
+      ],
+      "valid": true,
+      "geometryHash": "c126f7580a5cc6bd3a5b11de30fb97b5c9aa4be92eae8a465f5a5055f5029a41",
+      "partCount": 1,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 3162311.5016609053,
+        "newAreaCoveredByReferenceFraction": 1.0000000000000002,
+        "referenceAreaCoveredByNewFraction": 0.004697066034362874,
+        "iou": 0.00469706603436287,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 670090199.433041,
+        "hausdorffMeters": 35591.338816360876,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 3154712.8415444205,
+        "newAreaCoveredByReferenceFraction": 0.9975971184013677,
+        "referenceAreaCoveredByNewFraction": 0.31159360564733507,
+        "iou": 0.311359921941049,
+        "newOutsideReferenceAreaMeters2": 7598.660116666722,
+        "referenceOutsideNewAreaMeters2": 6969733.823497093,
+        "hausdorffMeters": 1481.2843643774804,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 3154712.8415444205,
+        "newAreaCoveredByReferenceFraction": 0.9975971184013677,
+        "referenceAreaCoveredByNewFraction": 0.3013974779525617,
+        "iou": 0.30117883209969076,
+        "newOutsideReferenceAreaMeters2": 7598.660116666722,
+        "referenceOutsideNewAreaMeters2": 7312238.849540904,
+        "hausdorffMeters": 1863.3477302639171,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": {
+        "intersectionAreaMeters2": 3127317.2546276096,
+        "newAreaCoveredByReferenceFraction": 0.9889339658617073,
+        "referenceAreaCoveredByNewFraction": 0.9483869851506268,
+        "iou": 0.9384280868974981,
+        "newOutsideReferenceAreaMeters2": 34994.24703346088,
+        "referenceOutsideNewAreaMeters2": 170194.52441783593,
+        "hausdorffMeters": 256.0913433139958,
+        "newRepresentativePointInsideReference": true
+      },
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174627",
+          "name": "مقرين العليا",
+          "officialAreaCoveredByOldFraction": 0.988933965861707,
+          "iou": 0.9384280868974975
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 1,
+        "partCount": 1,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 3162280.2562655914,
+            "coordinateCount": 139,
+            "boundsWgs84": [
+              10.225178,
+              36.766713,
+              10.264117,
+              36.785275
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.06653336680370876,
+        "symmetricDifferenceAreaMeters2": 187.83632322465698,
+        "quantizedGeometryHash": "47a33152ed5357645734ac8be8554a3140df6289624c7ee80408cc97ad7b4eeb"
+      }
+    },
+    {
+      "id": "osm:relation:7174591",
+      "code": "135953",
+      "name": "جوهرة",
+      "mapNumber": 6,
+      "areaMeters2": 1512234.1752160138,
+      "boundsWgs84": [
+        10.205721401533582,
+        36.772277440689315,
+        10.232054386069125,
+        36.78521323027772
+      ],
+      "valid": true,
+      "geometryHash": "a611fa2691b7c0198fbacced7ac7eb888f931381235ba8e87f4cb1ba09bc9334",
+      "partCount": 2,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 1510410.8689698877,
+        "newAreaCoveredByReferenceFraction": 0.9987942963622908,
+        "referenceAreaCoveredByNewFraction": 0.0022434537479450742,
+        "iou": 0.0022434476722274373,
+        "newOutsideReferenceAreaMeters2": 1823.3062461358397,
+        "referenceOutsideNewAreaMeters2": 671742100.065731,
+        "hausdorffMeters": 36466.609126601674,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 1169142.1126452817,
+        "newAreaCoveredByReferenceFraction": 0.7731223985056922,
+        "referenceAreaCoveredByNewFraction": 0.11547713680809721,
+        "iou": 0.11169216977064322,
+        "newOutsideReferenceAreaMeters2": 343092.06257077074,
+        "referenceOutsideNewAreaMeters2": 8955304.552396484,
+        "hausdorffMeters": 2981.1843093019647,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 1499575.4289341138,
+        "newAreaCoveredByReferenceFraction": 0.9916291097705872,
+        "referenceAreaCoveredByNewFraction": 0.1432676363846503,
+        "iou": 0.14309457759871352,
+        "newOutsideReferenceAreaMeters2": 12658.746281853222,
+        "referenceOutsideNewAreaMeters2": 8967376.262151117,
+        "hausdorffMeters": 2981.1843093019647,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": {
+        "intersectionAreaMeters2": 1475342.8719457965,
+        "newAreaCoveredByReferenceFraction": 0.9756047681802009,
+        "referenceAreaCoveredByNewFraction": 0.9886844133056473,
+        "iou": 0.9648315660888523,
+        "newOutsideReferenceAreaMeters2": 36891.30327021696,
+        "referenceOutsideNewAreaMeters2": 16885.43881818645,
+        "hausdorffMeters": 101.21685793694516,
+        "newRepresentativePointInsideReference": true
+      },
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174591",
+          "name": "جوهرة",
+          "officialAreaCoveredByOldFraction": 0.9756047681801996,
+          "iou": 0.96483156608885
+        },
+        {
+          "id": "osm:relation:7174628",
+          "name": "مقرين شاكر",
+          "officialAreaCoveredByOldFraction": 0.7684270990398773,
+          "iou": 0.3182629131270185
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 2,
+        "partCount": 2,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 1512207.1511676298,
+            "coordinateCount": 201,
+            "boundsWgs84": [
+              10.205721,
+              36.772277,
+              10.232054,
+              36.785213
+            ]
+          },
+          {
+            "areaMeters2": 0.12872825842922028,
+            "coordinateCount": 4,
+            "boundsWgs84": [
+              10.230002,
+              36.77345,
+              10.230018,
+              36.773452
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.06764360204496529,
+        "symmetricDifferenceAreaMeters2": 150.3352178749399,
+        "quantizedGeometryHash": "1d79ffef209d2b4993ea4a1f33df3870abc41d206879b343785da7efecf10620"
+      }
+    },
+    {
+      "id": "osm:relation:7174613",
+      "code": "135957",
+      "name": "سيدي رزيق",
+      "mapNumber": 7,
+      "areaMeters2": 484913.06481107074,
+      "boundsWgs84": [
+        10.243065268674128,
+        36.75995905954049,
+        10.257737521723184,
+        36.76748040803281
+      ],
+      "valid": true,
+      "geometryHash": "7c21b744065c629e75c1c2de059e916438ee91b10387a40219e110d5962388db",
+      "partCount": 1,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 484913.06481107074,
+        "newAreaCoveredByReferenceFraction": 1.0,
+        "referenceAreaCoveredByNewFraction": 0.0007202543725204204,
+        "iou": 0.0007202543725204197,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 672767597.8698908,
+        "hausdorffMeters": 34886.905549682284,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 435763.133300155,
+        "newAreaCoveredByReferenceFraction": 0.8986417667874853,
+        "referenceAreaCoveredByNewFraction": 0.04304068634237489,
+        "iou": 0.04283275134457608,
+        "newOutsideReferenceAreaMeters2": 49149.93151089989,
+        "referenceOutsideNewAreaMeters2": 9688683.53174134,
+        "hausdorffMeters": 3165.0347775717637,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 435763.133300155,
+        "newAreaCoveredByReferenceFraction": 0.8986417667874853,
+        "referenceAreaCoveredByNewFraction": 0.0416322866638711,
+        "iou": 0.041437706570257825,
+        "newOutsideReferenceAreaMeters2": 49149.93151089989,
+        "referenceOutsideNewAreaMeters2": 10031188.557785157,
+        "hausdorffMeters": 3560.5502552336734,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": {
+        "intersectionAreaMeters2": 435703.3370057572,
+        "newAreaCoveredByReferenceFraction": 0.8985184533551671,
+        "referenceAreaCoveredByNewFraction": 0.9660879381248854,
+        "iou": 0.8710454981826775,
+        "newOutsideReferenceAreaMeters2": 49209.72780528302,
+        "referenceOutsideNewAreaMeters2": 15294.258359557976,
+        "hausdorffMeters": 153.80752475204167,
+        "newRepresentativePointInsideReference": true
+      },
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174613",
+          "name": "سيدي رزيق",
+          "officialAreaCoveredByOldFraction": 0.8985184533551672,
+          "iou": 0.871045498182677
+        },
+        {
+          "id": "osm:relation:7174606",
+          "name": "رادس الغابة",
+          "officialAreaCoveredByOldFraction": 0.08225511010335627,
+          "iou": 0.007439213356576863
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 1,
+        "partCount": 1,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 484921.1306646863,
+            "coordinateCount": 67,
+            "boundsWgs84": [
+              10.243065,
+              36.759959,
+              10.257738,
+              36.76748
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.06424358158233968,
+        "symmetricDifferenceAreaMeters2": 65.01571066823458,
+        "quantizedGeometryHash": "63036cc1a535f32678a318a21f460a2cc5dd101c3c68601b93553a853e93a66a"
+      }
+    },
+    {
+      "id": "osm:relation:7174612",
+      "code": "135958",
+      "name": "سيدي رزيق 2",
+      "mapNumber": 8,
+      "areaMeters2": 1487444.015521448,
+      "boundsWgs84": [
+        10.226655764824509,
+        36.75563741050458,
+        10.24877560559676,
+        36.768776640695435
+      ],
+      "valid": true,
+      "geometryHash": "a7f39ec0231de3f707badbc1c2cfbc3685924d40456139aab6afac559f25dd9a",
+      "partCount": 1,
+      "outsideTunisiaOsmAreaMeters2": 0.0,
+      "governorateOsmComparison": {
+        "intersectionAreaMeters2": 1487444.0155214488,
+        "newAreaCoveredByReferenceFraction": 1.0000000000000004,
+        "referenceAreaCoveredByNewFraction": 0.0022093404649265627,
+        "iou": 0.002209340464926561,
+        "newOutsideReferenceAreaMeters2": 0.0,
+        "referenceOutsideNewAreaMeters2": 671765066.9191805,
+        "hausdorffMeters": 34424.051470087805,
+        "newRepresentativePointInsideReference": true
+      },
+      "delegationOsmComparison": {
+        "intersectionAreaMeters2": 1486941.8217841117,
+        "newAreaCoveredByReferenceFraction": 0.9996623780578656,
+        "referenceAreaCoveredByNewFraction": 0.14686647784104018,
+        "iou": 0.14685919331778666,
+        "newOutsideReferenceAreaMeters2": 502.1937373610326,
+        "referenceOutsideNewAreaMeters2": 8637504.84325741,
+        "hausdorffMeters": 2294.745039227481,
+        "newRepresentativePointInsideReference": true
+      },
+      "legacySevenSectorUnionComparison": {
+        "intersectionAreaMeters2": 1486941.8217841117,
+        "newAreaCoveredByReferenceFraction": 0.9996623780578656,
+        "referenceAreaCoveredByNewFraction": 0.14206063672296634,
+        "iou": 0.14205382112455311,
+        "newOutsideReferenceAreaMeters2": 502.1937373610326,
+        "referenceOutsideNewAreaMeters2": 8980009.869301219,
+        "hausdorffMeters": 2435.2793720821646,
+        "newRepresentativePointInsideReference": true
+      },
+      "sameCodeOldSectorComparison": {
+        "intersectionAreaMeters2": 1478343.9266722111,
+        "newAreaCoveredByReferenceFraction": 0.9938820629520992,
+        "referenceAreaCoveredByNewFraction": 0.9933680862349341,
+        "iou": 0.9873307824127351,
+        "newOutsideReferenceAreaMeters2": 9100.088849212458,
+        "referenceOutsideNewAreaMeters2": 9869.70446570119,
+        "hausdorffMeters": 18.70474058760478,
+        "newRepresentativePointInsideReference": true
+      },
+      "overlappingOldSectors": [
+        {
+          "id": "osm:relation:7174612",
+          "name": "سيدي رزيق 2",
+          "officialAreaCoveredByOldFraction": 0.993882062952099,
+          "iou": 0.9873307824127352
+        }
+      ],
+      "quantization": {
+        "gridDegrees": 1e-06,
+        "approxGridLatitudeMeters": 0.111,
+        "approxGridLongitudeMetersAtMegrine": 0.089,
+        "operation": "shapely.set_precision(wgs84_geometry, 1 / 1000000)",
+        "sourcePartCount": 1,
+        "partCount": 1,
+        "allPositiveAreaComponentsSurvive": true,
+        "parts": [
+          {
+            "areaMeters2": 1487478.0090802684,
+            "coordinateCount": 62,
+            "boundsWgs84": [
+              10.226656,
+              36.755637,
+              10.248776,
+              36.768777
+            ]
+          }
+        ],
+        "hausdorffMeters": 0.05797447722391554,
+        "symmetricDifferenceAreaMeters2": 119.7375582775992,
+        "quantizedGeometryHash": "500df54c0468933463a969f875ad180ab74bacd628b046542b78a22ee2b55aed"
+      }
+    }
+  ],
+  "frameReview": {
+    "decision": "Use each sector's own complete, finer-scale source page. Retain independent source frames and disclose overlap uncertainty. Do not pick frames solely to minimize overlap area.",
+    "commonCompletePageAvailableAmongEightReviewed": false,
+    "eligibleMenzelAlternatives": [
+      {
+        "sectorCode": "135954",
+        "mapNumber": 1,
+        "drawingIndex": 186,
+        "touchesViewport": false,
+        "areaMeters2": 427994.477662644,
+        "scaleMetersPerPagePoint": [
+          1.588042914622846,
+          1.5882576891348905
+        ],
+        "pairwiseOverlapAreaSumMeters2": 3476.980061349968,
+        "overlapUnionAreaMeters2": 3476.5621618484447,
+        "differenceFromOwnPage": {
+          "intersectionAreaMeters2": 427994.477662644,
+          "newAreaCoveredByReferenceFraction": 1.0,
+          "referenceAreaCoveredByNewFraction": 1.0,
+          "iou": 1.0,
+          "newOutsideReferenceAreaMeters2": 0.0,
+          "referenceOutsideNewAreaMeters2": 0.0,
+          "hausdorffMeters": 0.0,
+          "newRepresentativePointInsideReference": true
+        },
+        "decision": "selected"
+      },
+      {
+        "sectorCode": "135954",
+        "mapNumber": 3,
+        "drawingIndex": 192,
+        "touchesViewport": false,
+        "areaMeters2": 428501.53712166694,
+        "scaleMetersPerPagePoint": [
+          3.4061691657369164,
+          3.4050407495041255
+        ],
+        "pairwiseOverlapAreaSumMeters2": 3809.228616986427,
+        "overlapUnionAreaMeters2": 3808.810717434821,
+        "differenceFromOwnPage": {
+          "intersectionAreaMeters2": 427712.33485194464,
+          "newAreaCoveredByReferenceFraction": 0.9981582276809938,
+          "referenceAreaCoveredByNewFraction": 0.9993407793197703,
+          "iou": 0.9975014322360978,
+          "newOutsideReferenceAreaMeters2": 789.2022696854178,
+          "referenceOutsideNewAreaMeters2": 282.1428106809384,
+          "hausdorffMeters": 1.0015524708549541,
+          "newRepresentativePointInsideReference": true
+        },
+        "decision": "not selected: coarser repeated outline changes other cross-page seams and cannot establish a common frame for all eight sectors"
+      },
+      {
+        "sectorCode": "135954",
+        "mapNumber": 5,
+        "drawingIndex": 341,
+        "touchesViewport": false,
+        "areaMeters2": 428531.549025568,
+        "scaleMetersPerPagePoint": [
+          4.5674539739576225,
+          4.566611936154501
+        ],
+        "pairwiseOverlapAreaSumMeters2": 3598.893217537507,
+        "overlapUnionAreaMeters2": 3598.4572430354465,
+        "differenceFromOwnPage": {
+          "intersectionAreaMeters2": 427615.9613193514,
+          "newAreaCoveredByReferenceFraction": 0.9978634298727864,
+          "referenceAreaCoveredByNewFraction": 0.9991156046092937,
+          "iou": 0.9969828079267252,
+          "newOutsideReferenceAreaMeters2": 915.5877061526803,
+          "referenceOutsideNewAreaMeters2": 378.5163432256759,
+          "hausdorffMeters": 1.1942828480794525,
+          "newRepresentativePointInsideReference": true
+        },
+        "decision": "not selected: coarser repeated outline changes other cross-page seams and cannot establish a common frame for all eight sectors"
+      }
+    ],
+    "otherRepeatedRingsRejectedAsReplacement": [
+      {
+        "map": 3,
+        "drawing": 194,
+        "code": "135956",
+        "reason": "Ring reaches viewport edge; own-sector map 2 is fully interior and finer scale."
+      },
+      {
+        "map": 5,
+        "drawing": 342,
+        "code": "135955",
+        "reason": "Ring reaches viewport edge; own-sector map 3 is fully interior and finer scale."
+      },
+      {
+        "map": 6,
+        "drawing": 332,
+        "code": "135956",
+        "reason": "Ring reaches viewport edge; not Jawhara, and own-sector map 2 is fully interior and finer scale."
+      }
+    ],
+    "samePageSharedEdgeEvidence": [
+      {
+        "map": 3,
+        "drawings": [
+          192,
+          193
+        ],
+        "gapMeters": 0.0,
+        "overlapAreaMeters2": 0.0,
+        "sharedBoundaryLengthMeters": 1005.7594234386777
+      },
+      {
+        "map": 3,
+        "drawings": [
+          192,
+          194
+        ],
+        "gapMeters": 0.0,
+        "overlapAreaMeters2": 0.0,
+        "sharedBoundaryLengthMeters": 0.0
+      },
+      {
+        "map": 3,
+        "drawings": [
+          193,
+          194
+        ],
+        "gapMeters": 0.0,
+        "overlapAreaMeters2": 0.0,
+        "sharedBoundaryLengthMeters": 1505.0384168081648
+      },
+      {
+        "map": 5,
+        "drawings": [
+          338,
+          341
+        ],
+        "gapMeters": 0.0,
+        "overlapAreaMeters2": 0.0,
+        "sharedBoundaryLengthMeters": 1255.0557557345908
+      },
+      {
+        "map": 5,
+        "drawings": [
+          338,
+          342
+        ],
+        "gapMeters": 0.0,
+        "overlapAreaMeters2": 0.0,
+        "sharedBoundaryLengthMeters": 1743.3652054305965
+      },
+      {
+        "map": 5,
+        "drawings": [
+          341,
+          342
+        ],
+        "gapMeters": 0.0,
+        "overlapAreaMeters2": 0.0,
+        "sharedBoundaryLengthMeters": 1006.3311929530356
+      }
+    ],
+    "crossMapRepeatedGeometryEvidence": [
+      {
+        "maps": [
+          1,
+          3
+        ],
+        "drawings": [
+          186,
+          192
+        ],
+        "iou": 0.9975014322362823,
+        "hausdorffMeters": 1.0015524708549541,
+        "symmetricDifferenceMeters2": 1071.3450802870416
+      },
+      {
+        "maps": [
+          1,
+          5
+        ],
+        "drawings": [
+          186,
+          341
+        ],
+        "iou": 0.9969828079279982,
+        "hausdorffMeters": 1.194282848521809,
+        "symmetricDifferenceMeters2": 1294.1040488317851
+      },
+      {
+        "maps": [
+          2,
+          3
+        ],
+        "drawings": [
+          132,
+          194
+        ],
+        "iou": 0.9983676591453744,
+        "hausdorffMeters": 1.161752368739246,
+        "symmetricDifferenceMeters2": 868.9214881323362
+      },
+      {
+        "maps": [
+          2,
+          6
+        ],
+        "drawings": [
+          132,
+          332
+        ],
+        "iou": 0.9980316682954902,
+        "hausdorffMeters": 0.9401668583759464,
+        "symmetricDifferenceMeters2": 1047.8945498069083
+      },
+      {
+        "maps": [
+          3,
+          5
+        ],
+        "drawings": [
+          192,
+          341
+        ],
+        "iou": 0.9975833623243721,
+        "hausdorffMeters": 1.6404310475712058,
+        "symmetricDifferenceMeters2": 1036.822034217072
+      },
+      {
+        "maps": [
+          3,
+          5
+        ],
+        "drawings": [
+          193,
+          342
+        ],
+        "iou": 0.9986448151569365,
+        "hausdorffMeters": 1.202473295446033,
+        "symmetricDifferenceMeters2": 2635.0270857210267
+      },
+      {
+        "maps": [
+          3,
+          6
+        ],
+        "drawings": [
+          194,
+          332
+        ],
+        "iou": 0.9981371938848825,
+        "hausdorffMeters": 1.106348711962526,
+        "symmetricDifferenceMeters2": 991.5995312617522
+      }
+    ],
+    "caveat": "The eight reviewed PDFs do not contain a single complete common-frame set. This is not a claim that ISIE has no other source file."
+  },
+  "rawFrameOverlapReview": {
+    "pairs": [
+      {
+        "maps": [
+          1,
+          2
+        ],
+        "codes": [
+          "135954",
+          "135956"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "isie:sector:135956"
+        ],
+        "minimumGapMeters": 0.05272558672903696,
+        "overlapAreaMeters2": 0.0,
+        "boundaryLengthWithin2mMeters": 4.574652081312635,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.0
+      },
+      {
+        "maps": [
+          1,
+          3
+        ],
+        "codes": [
+          "135954",
+          "135955"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "osm:relation:7174628"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 77.15390795289954,
+        "boundaryLengthWithin2mMeters": 1010.1721692373555,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.07637698830205156
+      },
+      {
+        "maps": [
+          1,
+          5
+        ],
+        "codes": [
+          "135954",
+          "135951"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "osm:relation:7174627"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 228.5209151932596,
+        "boundaryLengthWithin2mMeters": 1259.6843774630934,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.18141124815208315
+      },
+      {
+        "maps": [
+          1,
+          6
+        ],
+        "codes": [
+          "135954",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 53.41824051255322,
+        "boundaryLengthWithin2mMeters": 994.8913516347774,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.053692536802916094
+      },
+      {
+        "maps": [
+          2,
+          3
+        ],
+        "codes": [
+          "135956",
+          "135955"
+        ],
+        "ids": [
+          "isie:sector:135956",
+          "osm:relation:7174628"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 335.6913168857155,
+        "boundaryLengthWithin2mMeters": 1508.0724644610418,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.22259627756394687
+      },
+      {
+        "maps": [
+          2,
+          6
+        ],
+        "codes": [
+          "135956",
+          "135953"
+        ],
+        "ids": [
+          "isie:sector:135956",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 150.91012521682444,
+        "boundaryLengthWithin2mMeters": 1511.9175322522397,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.09981372793000158
+      },
+      {
+        "maps": [
+          3,
+          5
+        ],
+        "codes": [
+          "135955",
+          "135951"
+        ],
+        "ids": [
+          "osm:relation:7174628",
+          "osm:relation:7174627"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 585.1713883702967,
+        "boundaryLengthWithin2mMeters": 1748.2217114981588,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.334723785044877
+      },
+      {
+        "maps": [
+          3,
+          6
+        ],
+        "codes": [
+          "135955",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174628",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.3229272260966497,
+        "overlapAreaMeters2": 0.0,
+        "boundaryLengthWithin2mMeters": 4.021804031560846,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.0
+      },
+      {
+        "maps": [
+          4,
+          5
+        ],
+        "codes": [
+          "135952",
+          "135951"
+        ],
+        "ids": [
+          "osm:relation:7174626",
+          "osm:relation:7174627"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 312.4674829197446,
+        "boundaryLengthWithin2mMeters": 821.7793603538086,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.38023281916598023
+      },
+      {
+        "maps": [
+          4,
+          6
+        ],
+        "codes": [
+          "135952",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174626",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 591.1482622770964,
+        "boundaryLengthWithin2mMeters": 1481.2840357140585,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.3990782645491289
+      },
+      {
+        "maps": [
+          4,
+          8
+        ],
+        "codes": [
+          "135952",
+          "135958"
+        ],
+        "ids": [
+          "osm:relation:7174626",
+          "osm:relation:7174612"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 63.93200130916375,
+        "boundaryLengthWithin2mMeters": 634.6049479668617,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.10074299217802854
+      },
+      {
+        "maps": [
+          5,
+          6
+        ],
+        "codes": [
+          "135951",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174627",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 88.40716691736046,
+        "boundaryLengthWithin2mMeters": 475.48661009392634,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.1859298769736055
+      },
+      {
+        "maps": [
+          5,
+          7
+        ],
+        "codes": [
+          "135951",
+          "135957"
+        ],
+        "ids": [
+          "osm:relation:7174627",
+          "osm:relation:7174613"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 245.41130860628135,
+        "boundaryLengthWithin2mMeters": 1165.1845312898017,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.21062012240638242
+      },
+      {
+        "maps": [
+          5,
+          8
+        ],
+        "codes": [
+          "135951",
+          "135958"
+        ],
+        "ids": [
+          "osm:relation:7174627",
+          "osm:relation:7174612"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 495.2500360048781,
+        "boundaryLengthWithin2mMeters": 1156.2809510052966,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.42831289019705515
+      },
+      {
+        "maps": [
+          7,
+          8
+        ],
+        "codes": [
+          "135957",
+          "135958"
+        ],
+        "ids": [
+          "osm:relation:7174613",
+          "osm:relation:7174612"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 249.49790918389425,
+        "boundaryLengthWithin2mMeters": 945.3181540501132,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.26393009392123434
+      }
+    ],
+    "pairwiseOverlapAreaSumMeters2": 3476.980061349968,
+    "overlapUnionAreaMeters2": 3476.5621618484447,
+    "unionAreaMeters2": 10708710.526509035,
+    "unionPartCount": 1,
+    "unionHoleAreasMeters2": [
+      258.9424794961524,
+      244.7779809313979,
+      145.09570089499493,
+      117.5124454306912,
+      110.52355296159847,
+      102.0859454064589,
+      81.76550015176197,
+      53.76791047689888,
+      52.18845262037222,
+      50.307871117313105,
+      46.60175140132742,
+      42.9938625566709,
+      39.68240928375798,
+      35.7211625973251,
+      33.58733195003729,
+      33.27116506870425,
+      31.749175619830638,
+      19.041170749946104,
+      18.71096627329043,
+      18.57706112587651,
+      18.158203638717197,
+      18.11693637944063,
+      15.591799660339529,
+      14.04283196597368,
+      11.408047830665504,
+      9.695783226678103,
+      9.333695861902399,
+      8.654611509555963,
+      6.8537649350014185,
+      6.7574900721761395,
+      5.975654265484081,
+      5.848644125918124,
+      5.578069179281567,
+      5.077357014186223,
+      4.96281646665614,
+      4.183254923764773,
+      4.159148428104626,
+      3.433234039246981,
+      3.3944069772287175,
+      2.945989920521157,
+      2.6583655556037495,
+      2.5907130291085902,
+      2.296253241542942,
+      2.045187106309926,
+      1.821585285979326,
+      1.8149676377115447,
+      1.4060304606978207,
+      1.3808434891041257,
+      1.3528220674074023,
+      0.6934386170978241,
+      0.6177787784334009,
+      0.4473738230994442,
+      0.3858868721402442,
+      0.3411298102639413,
+      0.27813797187829375,
+      0.14560102252371693,
+      0.13296940341705332,
+      0.09403488163205749,
+      0.06505950750422668,
+      0.0413980305283859,
+      0.03322489063592453,
+      0.02718451891394387,
+      0.026886732661686216,
+      0.005802620165276426
+    ]
+  },
+  "postCompilerQuantizationOverlapReview": {
+    "pairs": [
+      {
+        "maps": [
+          1,
+          2
+        ],
+        "codes": [
+          "135954",
+          "135956"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "isie:sector:135956"
+        ],
+        "minimumGapMeters": 0.11672584601410153,
+        "overlapAreaMeters2": 0.0,
+        "boundaryLengthWithin2mMeters": 4.581236238015976,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.0
+      },
+      {
+        "maps": [
+          1,
+          3
+        ],
+        "codes": [
+          "135954",
+          "135955"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "osm:relation:7174628"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 72.66119121879774,
+        "boundaryLengthWithin2mMeters": 1010.3121040499412,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.07191954934275041
+      },
+      {
+        "maps": [
+          1,
+          5
+        ],
+        "codes": [
+          "135954",
+          "135951"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "osm:relation:7174627"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 226.88802945444743,
+        "boundaryLengthWithin2mMeters": 1259.9559625152685,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.1800761583773988
+      },
+      {
+        "maps": [
+          1,
+          6
+        ],
+        "codes": [
+          "135954",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174630",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 31.76561459513626,
+        "boundaryLengthWithin2mMeters": 994.9748860387876,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.03192604661772129
+      },
+      {
+        "maps": [
+          2,
+          3
+        ],
+        "codes": [
+          "135956",
+          "135955"
+        ],
+        "ids": [
+          "isie:sector:135956",
+          "osm:relation:7174628"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 307.70501970753014,
+        "boundaryLengthWithin2mMeters": 1508.0172647784052,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.20404608547551722
+      },
+      {
+        "maps": [
+          2,
+          6
+        ],
+        "codes": [
+          "135956",
+          "135953"
+        ],
+        "ids": [
+          "isie:sector:135956",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 153.64671874024123,
+        "boundaryLengthWithin2mMeters": 1511.6161987452017,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.10164400121392186
+      },
+      {
+        "maps": [
+          3,
+          5
+        ],
+        "codes": [
+          "135955",
+          "135951"
+        ],
+        "ids": [
+          "osm:relation:7174628",
+          "osm:relation:7174627"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 559.5714950266446,
+        "boundaryLengthWithin2mMeters": 1748.0907610773086,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.32010437185869767
+      },
+      {
+        "maps": [
+          3,
+          6
+        ],
+        "codes": [
+          "135955",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174628",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.38220791988428193,
+        "overlapAreaMeters2": 0.0,
+        "boundaryLengthWithin2mMeters": 3.919799108190767,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.0
+      },
+      {
+        "maps": [
+          4,
+          5
+        ],
+        "codes": [
+          "135952",
+          "135951"
+        ],
+        "ids": [
+          "osm:relation:7174626",
+          "osm:relation:7174627"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 305.4628178503708,
+        "boundaryLengthWithin2mMeters": 821.6819861520074,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.3717530906097552
+      },
+      {
+        "maps": [
+          4,
+          6
+        ],
+        "codes": [
+          "135952",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174626",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 579.9759867427049,
+        "boundaryLengthWithin2mMeters": 1481.2765266913307,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.39153795816786113
+      },
+      {
+        "maps": [
+          4,
+          8
+        ],
+        "codes": [
+          "135952",
+          "135958"
+        ],
+        "ids": [
+          "osm:relation:7174626",
+          "osm:relation:7174612"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 68.61016405253031,
+        "boundaryLengthWithin2mMeters": 634.5680304298384,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.10812105363400631
+      },
+      {
+        "maps": [
+          5,
+          6
+        ],
+        "codes": [
+          "135951",
+          "135953"
+        ],
+        "ids": [
+          "osm:relation:7174627",
+          "osm:relation:7174591"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 84.09195725295147,
+        "boundaryLengthWithin2mMeters": 475.52473775594405,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.1768403419973293
+      },
+      {
+        "maps": [
+          5,
+          7
+        ],
+        "codes": [
+          "135951",
+          "135957"
+        ],
+        "ids": [
+          "osm:relation:7174627",
+          "osm:relation:7174613"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 234.96686059744866,
+        "boundaryLengthWithin2mMeters": 1165.0641057104428,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.20167719479621984
+      },
+      {
+        "maps": [
+          5,
+          8
+        ],
+        "codes": [
+          "135951",
+          "135958"
+        ],
+        "ids": [
+          "osm:relation:7174627",
+          "osm:relation:7174612"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 479.63135878976254,
+        "boundaryLengthWithin2mMeters": 1156.3125134464308,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.4147938841898408
+      },
+      {
+        "maps": [
+          7,
+          8
+        ],
+        "codes": [
+          "135957",
+          "135958"
+        ],
+        "ids": [
+          "osm:relation:7174613",
+          "osm:relation:7174612"
+        ],
+        "minimumGapMeters": 0.0,
+        "overlapAreaMeters2": 288.5421427233613,
+        "boundaryLengthWithin2mMeters": 945.403716067218,
+        "overlapAreaDividedByNearbyBoundaryLengthMeters": 0.3052052132010511
+      }
+    ],
+    "pairwiseOverlapAreaSumMeters2": 3393.5193567519273,
+    "overlapUnionAreaMeters2": 3393.0493534888956,
+    "unionAreaMeters2": 10708659.250601888,
+    "unionPartCount": 1,
+    "unionHoleAreasMeters2": [
+      263.1131975447024,
+      254.69629734969203,
+      144.30515558184507,
+      128.45041315022323,
+      109.73037623082254,
+      105.21878537873229,
+      98.57405328815923,
+      80.82330427287911,
+      53.65166957531864,
+      47.06920919428672,
+      44.282663396073836,
+      44.05917132624563,
+      41.56946873932664,
+      35.54587697020975,
+      31.5275938115892,
+      31.266909702371812,
+      28.266980024149024,
+      27.965915687207175,
+      21.13481519530424,
+      20.025713198067592,
+      17.27322409802204,
+      13.956002153310692,
+      12.748854857351485,
+      10.689154073768817,
+      8.686178987820096,
+      8.471792933959257,
+      8.355277047346334,
+      8.241406577466046,
+      7.48121725483693,
+      5.573971664857652,
+      5.307827599152297,
+      5.266944340798823,
+      4.938870703437317,
+      4.341033015441052,
+      4.1793315191770795,
+      3.7232395678619805,
+      3.2540999853332777,
+      2.8103193730571903,
+      2.549082385976441,
+      2.2742363378689556,
+      2.180752438438714,
+      2.141336284097759,
+      2.122150096669043,
+      2.0753469795107873,
+      1.8026599352837251,
+      1.4082433331135298,
+      0.629015930646359,
+      0.5632122117959759,
+      0.35535611649264215,
+      0.23140991091233507,
+      0.12256919049657872,
+      0.12089218381293723,
+      0.11444189845896358,
+      0.09266761366763654,
+      0.07177593532086614,
+      0.03135676077027625,
+      0.02972082821014685,
+      0.01792707634111121,
+      0.0011321627232470377,
+      9.013120312816467e-05
+    ]
+  },
+  "derivedUnionReview": {
+    "boundsWgs84": [
+      10.205721401533582,
+      36.75563741050458,
+      10.264117342731808,
+      36.78782256678614
+    ],
+    "allSectorRepresentativePointsInsideUnion": true,
+    "allEightFullyCoveredByDerivedUnion": true,
+    "caveat": "Containment in the union is a construction check, not independent evidence. OSM governorate/delegation containment results are separate below.",
+    "governorateOsmComparison": {
+      "intersectionAreaMeters2": 10706601.62312135,
+      "newAreaCoveredByReferenceFraction": 0.9998030665426556,
+      "referenceAreaCoveredByNewFraction": 0.015902802364980383,
+      "iou": 0.015902752551027716,
+      "newOutsideReferenceAreaMeters2": 2108.903387661501,
+      "referenceOutsideNewAreaMeters2": 662545909.31158,
+      "hausdorffMeters": 34424.051470087805,
+      "newRepresentativePointInsideReference": true
+    },
+    "delegationOsmComparison": {
+      "intersectionAreaMeters2": 10088943.822199859,
+      "newAreaCoveredByReferenceFraction": 0.9421249922878234,
+      "referenceAreaCoveredByNewFraction": 0.9964933547465624,
+      "iou": 0.9390118639099004,
+      "newOutsideReferenceAreaMeters2": 619766.7043092917,
+      "referenceOutsideNewAreaMeters2": 35502.84284174337,
+      "hausdorffMeters": 1481.4439696580462,
+      "newRepresentativePointInsideReference": true
+    },
+    "legacySectorUnionComparison": {
+      "intersectionAreaMeters2": 10419383.376605919,
+      "newAreaCoveredByReferenceFraction": 0.9729820738746371,
+      "referenceAreaCoveredByNewFraction": 0.9954553803358118,
+      "iou": 0.9686791808428392,
+      "newOutsideReferenceAreaMeters2": 289327.1499032187,
+      "referenceOutsideNewAreaMeters2": 47568.31447937503,
+      "hausdorffMeters": 1481.4439696580462,
+      "newRepresentativePointInsideReference": true
+    }
+  },
+  "oldReferenceDifferenceInterpretation": "The analytical overlay shows the old delegation has a near-straight northern boundary cutting across the official Jawhara, Chaker 2 and Chaker outlines, plus a smaller southeastern discrepancy at Sidi Rezig. All official sector representative points remain inside the old delegation and governorate. No independent municipal Megrine polygon exists among the locally collected municipal sources; do not present the derived sector union as an independently surveyed delegation boundary.",
+  "limitations": [
+    "The 2023 official electoral sector maps plus the 2024 INS identity registry establish a dated, authoritative source, not all informal neighborhoods or 100 percent current ground accuracy.",
+    "All eight own-sector paths are fully inside their map viewport; the page label, code identity and current parent have been explicitly reviewed.",
+    "Four rounded five-decimal GPTS controls per PDF limit registration accuracy. Sub-meter residuals are fit consistency only.",
+    "Cross-map overlap strips are retained and should remain ambiguous in the runtime. Nearby gaps and any union holes are not filled.",
+    "OSM administrative references have their own inaccuracies; no source geometry was clipped to them."
+  ]
+}

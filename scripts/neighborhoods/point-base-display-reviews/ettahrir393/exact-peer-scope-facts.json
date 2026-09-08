@@ -1,0 +1,578 @@
+{
+  "schemaVersion": 1,
+  "baselineMetadataSha256": "d769190af16ba9c4e560ccaab7f23572f38faa3b9734e090bedff4c2416a1f78",
+  "normalizedIdentityKeys": [
+    "citeettahrir",
+    "ettahrir",
+    "hayettahrir",
+    "التحرير",
+    "حيالتحرير"
+  ],
+  "originalSourcePeers": [
+    "osm:node:1158752159",
+    "osm:node:2245539847",
+    "osm:relation:4130434",
+    "osm:relation:7154897",
+    "osm:way:1321465756"
+  ],
+  "effectiveSourcePeers": [
+    "osm:node:1158752159",
+    "osm:node:2245539847",
+    "osm:relation:4130434",
+    "osm:relation:7154897",
+    "osm:way:1321465756"
+  ],
+  "peers": [
+    {
+      "id": "osm:node:1158752159",
+      "kind": "suburb",
+      "sourceTags": {
+        "name": "حي التحرير",
+        "name:ar": "حي التحرير",
+        "name:en": "Hay Ettahrir",
+        "name:fr": "Cité Ettahrir",
+        "place": "suburb"
+      },
+      "effectiveTagsEqualOriginal": true,
+      "current": {
+        "id": "osm:node:1158752159",
+        "sourceId": "osm",
+        "name": "حي التحرير",
+        "aliases": [
+          "Cité Ettahrir",
+          "Hay Ettahrir"
+        ],
+        "kind": "suburb",
+        "parentName": "الحديقة",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "El Hadika",
+          "Ettahrir",
+          "الحديقة",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.8229323,
+        "lng": 10.1339881,
+        "delegationId": 393,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1158752159"
+      },
+      "completeRawGroup": [
+        "osm:node:1158752159"
+      ]
+    },
+    {
+      "id": "osm:node:2245539847",
+      "kind": "neighbourhood",
+      "sourceTags": {
+        "addr:postcode": "3263",
+        "name": "حي التحرير",
+        "name:ar": "حي التحرير",
+        "name:en": "Hay Ettahrir",
+        "name:fr": "Cité Ettahrir",
+        "place": "neighbourhood"
+      },
+      "effectiveTagsEqualOriginal": true,
+      "current": {
+        "id": "osm:node:2245539847",
+        "sourceId": "osm",
+        "name": "حي التحرير",
+        "aliases": [
+          "Cité Ettahrir",
+          "Hay Ettahrir"
+        ],
+        "kind": "neighbourhood",
+        "parentName": "برورمت",
+        "contextAliases": [
+          "Berourmet",
+          "Délégation Tataouine Nord",
+          "برورمت",
+          "معتمدية تطاوين الشمالية"
+        ],
+        "governorateId": 351,
+        "lat": 32.9958033,
+        "lng": 10.4628552,
+        "delegationId": 624,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2245539847"
+      },
+      "completeRawGroup": [
+        "osm:node:2245539847"
+      ]
+    },
+    {
+      "id": "osm:relation:4130434",
+      "kind": "delegation",
+      "sourceTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ettahrir",
+        "boundary": "administrative",
+        "name": "معتمدية التحرير",
+        "name:ar": "معتمدية التحرير",
+        "name:fr": "Délégation Ettahrir",
+        "ref:tn:codegeo": "1157",
+        "ref:tn:hasc_2": "TN.TU.TA",
+        "wikidata": "Q3059384"
+      },
+      "effectiveTagsEqualOriginal": true,
+      "current": null,
+      "completeRawGroup": []
+    },
+    {
+      "id": "osm:relation:7154897",
+      "kind": "sector",
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير",
+        "name:ar": "التحرير",
+        "name:fr": "Ettahir",
+        "ref:tn:codegeo": "625456"
+      },
+      "effectiveTagsEqualOriginal": true,
+      "current": {
+        "id": "osm:relation:7154897",
+        "sourceId": "osm",
+        "name": "التحرير",
+        "aliases": [
+          "Ettahir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نفطة",
+        "contextAliases": [
+          "Délégation Nefta",
+          "Nefta",
+          "معتمدية نفطة"
+        ],
+        "governorateId": 352,
+        "lat": 33.8704,
+        "lng": 7.883205,
+        "delegationId": 477,
+        "hasBoundary": true,
+        "bbox": [
+          7.881956,
+          33.86817,
+          7.886327,
+          33.87264
+        ],
+        "areaKm2": 0.0844990753947317,
+        "pickerGroupId": "osm:relation:7154897",
+        "offset": 3115992,
+        "length": 620
+      },
+      "completeRawGroup": [
+        "osm:relation:7154897"
+      ]
+    },
+    {
+      "id": "osm:way:1321465756",
+      "kind": "residential",
+      "sourceTags": {
+        "landuse": "residential",
+        "name": "حي التحرير",
+        "residential": "rural"
+      },
+      "effectiveTagsEqualOriginal": true,
+      "current": {
+        "id": "osm:way:1321465756",
+        "sourceId": "osm",
+        "name": "حي التحرير",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "ولاية تطاوين",
+        "contextAliases": [],
+        "governorateId": 351,
+        "lat": 33.059935,
+        "lng": 10.345,
+        "delegationId": 473,
+        "hasBoundary": true,
+        "bbox": [
+          10.340625,
+          33.056905,
+          10.349951,
+          33.063618
+        ],
+        "areaKm2": 0.38871473350343805,
+        "pickerGroupId": "osm:way:1321465756",
+        "offset": 5215180,
+        "length": 108
+      },
+      "completeRawGroup": [
+        "osm:way:1321465756"
+      ]
+    }
+  ],
+  "allFiveImadas": [
+    {
+      "id": "osm:relation:7201527",
+      "code": "115751",
+      "nameAr": "التحرير الأول",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1770,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 55,
+        "Nombre_de_menages_par_Secteurs.xlsx": 55
+      },
+      "coversSuburbPoint": false,
+      "coversBaseReference": false,
+      "current": {
+        "id": "osm:relation:7201527",
+        "sourceId": "osm",
+        "name": "التحرير الأول",
+        "aliases": [
+          "Ettahrir (1)"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.823585,
+        "lng": 10.12428,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.120349,
+          36.819969,
+          10.127355,
+          36.82726
+        ],
+        "areaKm2": 0.25141995320959026,
+        "pickerGroupId": "osm:relation:7201527",
+        "offset": 5095236,
+        "length": 604
+      },
+      "completeGroup": [
+        "osm:relation:7201527"
+      ],
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير الأول",
+        "name:ar": "التحرير الأول",
+        "name:fr": "Ettahrir (1)",
+        "ref:tn:codegeo": "115751"
+      }
+    },
+    {
+      "id": "osm:relation:7201531",
+      "code": "115752",
+      "nameAr": "التحرير الثاني",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1804,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 56,
+        "Nombre_de_menages_par_Secteurs.xlsx": 56
+      },
+      "coversSuburbPoint": false,
+      "coversBaseReference": false,
+      "current": {
+        "id": "osm:relation:7201531",
+        "sourceId": "osm",
+        "name": "التحرير الثاني",
+        "aliases": [
+          "Ettahrir (2)"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.829179,
+        "lng": 10.123594,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.118142,
+          36.82553,
+          10.129109,
+          36.833209
+        ],
+        "areaKm2": 0.3781130798867597,
+        "pickerGroupId": "osm:relation:7201531",
+        "offset": 5097692,
+        "length": 1020
+      },
+      "completeGroup": [
+        "osm:relation:7201531"
+      ],
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير الثاني",
+        "name:ar": "التحرير الثاني",
+        "name:fr": "Ettahrir (2)",
+        "ref:tn:codegeo": "115752"
+      }
+    },
+    {
+      "id": "osm:relation:7201529",
+      "code": "115753",
+      "nameAr": "التحرير الثالث",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1838,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 57,
+        "Nombre_de_menages_par_Secteurs.xlsx": 57
+      },
+      "coversSuburbPoint": false,
+      "coversBaseReference": true,
+      "current": {
+        "id": "osm:relation:7201529",
+        "sourceId": "osm",
+        "name": "التحرير الثالث",
+        "aliases": [
+          "Ettahrir (3)"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.824175,
+        "lng": 10.129215,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.124214,
+          36.819424,
+          10.132713,
+          36.828778
+        ],
+        "areaKm2": 0.3175087452914075,
+        "pickerGroupId": "osm:relation:7201529",
+        "offset": 5096468,
+        "length": 684
+      },
+      "completeGroup": [
+        "osm:relation:7201529"
+      ],
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير الثالث",
+        "name:ar": "التحرير الثالث",
+        "name:fr": "Ettahrir (3)",
+        "ref:tn:codegeo": "115753"
+      }
+    },
+    {
+      "id": "osm:relation:7201528",
+      "code": "115754",
+      "nameAr": "التحرير العلوي",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1872,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 58,
+        "Nombre_de_menages_par_Secteurs.xlsx": 58
+      },
+      "coversSuburbPoint": false,
+      "coversBaseReference": false,
+      "current": {
+        "id": "osm:relation:7201528",
+        "sourceId": "osm",
+        "name": "التحرير العلوي",
+        "aliases": [
+          "Ettahrir Superieur"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.833487,
+        "lng": 10.120896,
+        "delegationId": 392,
+        "hasBoundary": true,
+        "bbox": [
+          10.117549,
+          36.830806,
+          10.12419,
+          36.836577
+        ],
+        "areaKm2": 0.2319788599409428,
+        "pickerGroupId": "osm:relation:7201528",
+        "offset": 5095840,
+        "length": 628
+      },
+      "completeGroup": [
+        "osm:relation:7201528"
+      ],
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "التحرير العلوي",
+        "name:ar": "التحرير العلوي",
+        "name:fr": "Ettahrir Superieur",
+        "ref:tn:codegeo": "115754"
+      }
+    },
+    {
+      "id": "osm:relation:7201530",
+      "code": "115755",
+      "nameAr": "الحديقة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1906,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 59,
+        "Nombre_de_menages_par_Secteurs.xlsx": 59
+      },
+      "coversSuburbPoint": true,
+      "coversBaseReference": false,
+      "current": {
+        "id": "osm:relation:7201530",
+        "sourceId": "osm",
+        "name": "الحديقة",
+        "aliases": [
+          "El Hadika"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية التحرير",
+        "contextAliases": [
+          "Délégation Ettahrir",
+          "Ettahrir",
+          "معتمدية التحرير"
+        ],
+        "governorateId": 342,
+        "lat": 36.82245,
+        "lng": 10.133446,
+        "delegationId": 393,
+        "hasBoundary": true,
+        "bbox": [
+          10.124414,
+          36.817639,
+          10.138212,
+          36.827437
+        ],
+        "areaKm2": 0.4921017668906218,
+        "pickerGroupId": "osm:relation:7201530",
+        "offset": 5097152,
+        "length": 540
+      },
+      "completeGroup": [
+        "osm:relation:7201530"
+      ],
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحديقة",
+        "name:ar": "الحديقة",
+        "name:fr": "El Hadika",
+        "ref:tn:codegeo": "115755"
+      }
+    }
+  ],
+  "base393": {
+    "id": 393,
+    "nomFr": "Ettahrir",
+    "nomAr": "التحرير",
+    "nomEn": "Ettahrir",
+    "lat": 36.8244,
+    "lng": 10.1283
+  },
+  "baseGovernorateId": 342,
+  "source393Corrections": [],
+  "sourcePoint": {
+    "id": "osm:node:1158752159",
+    "tags": {
+      "name": "حي التحرير",
+      "name:ar": "حي التحرير",
+      "name:en": "Hay Ettahrir",
+      "name:fr": "Cité Ettahrir",
+      "place": "suburb"
+    },
+    "lat": 36.8229323,
+    "lng": 10.1339881
+  },
+  "liveNode": {
+    "type": "node",
+    "id": 1158752159,
+    "lat": 36.8229323,
+    "lon": 10.1339881,
+    "timestamp": "2021-02-03T23:54:37Z",
+    "version": 13,
+    "changeset": 98670574,
+    "user": "user_11422772",
+    "uid": 11422772,
+    "tags": {
+      "name": "حي التحرير",
+      "name:ar": "حي التحرير",
+      "name:en": "Hay Ettahrir",
+      "name:fr": "Cité Ettahrir",
+      "place": "suburb"
+    }
+  },
+  "liveEqualsCachedTagsAndCoordinates": true,
+  "nearestReferenceForThisPointOnly": [
+    [
+      531.9496944641929,
+      393
+    ],
+    [
+      1434.1923010561825,
+      392
+    ]
+  ],
+  "distanceMetres": 531.9496944641929,
+  "administrativeDelegation": {
+    "id": "osm:relation:4130434",
+    "tags": {
+      "admin_level": "5",
+      "alt_name:fr": "Ettahrir",
+      "boundary": "administrative",
+      "name": "معتمدية التحرير",
+      "name:ar": "معتمدية التحرير",
+      "name:fr": "Délégation Ettahrir",
+      "ref:tn:codegeo": "1157",
+      "ref:tn:hasc_2": "TN.TU.TA",
+      "wikidata": "Q3059384"
+    },
+    "bothReferencesInsideCachedPolygon": true
+  },
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "d769190af16ba9c4e560ccaab7f23572f38faa3b9734e090bedff4c2416a1f78"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "4363863c86939c4df8fd0e7417d3848a92168b443b90776bb0f1c80a646859dc"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ]
+}

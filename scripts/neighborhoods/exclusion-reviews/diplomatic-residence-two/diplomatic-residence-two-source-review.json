@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_SCOPE_SUPPORTED_NO_CATALOG_CHANGE",
+  "reviewedAt": "2026-09-08T15:56:48.629815+00:00",
+  "baselineMetadataSha256": "552b098b4e8da9201c1fa46d3315e7fe627fcb251dcaf569b9ef87c1b19f03a4",
+  "inputPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "552b098b4e8da9201c1fa46d3315e7fe627fcb251dcaf569b9ef87c1b19f03a4"
+    },
+    "beforeFourTownMetadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-next-four-town-point-display-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "0a5157a80a85612dde242e7ab4a99c09aeec0669fee29bbf28a0d2b9d2d21104"
+    },
+    "originalScreen": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-source-tag-scope-priority-screen6.json",
+      "sha256": "78c639a73ad305fbb7a67ffc0cd6347c9e454a1fab495e09bd7641adc87f8560"
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "37eb930fb6ddc9712b26b11ab7d585e2f13cb5c171309d2cfdb3e37b1098a86f"
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "1b5857848336e1b60f3ca7836898fa963e41f231c0a302d36dff24b94ba4b529"
+    },
+    "pickerGroups": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427"
+    },
+    "reviewedBoundaries": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    "unchangedFrozenFourTownReadiness": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-four-town-point-display-stage-readiness.json",
+      "sha256": "976c1cbc1a5765e58094db12717fa2d2303dce0ed760cf380308070e4e10527a"
+    },
+    "priorMarsaChildScopeReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\marsa-four-sector-identity-source-review.json",
+      "sha256": "e9bd0abf2aaa56c963e809cb2e8575788c4fb63ce2d9bba591ec5dfb7f0649b9"
+    }
+  },
+  "records": [
+    {
+      "id": "osm:way:131384751",
+      "disposition": "SUPPORTED_SINGLE_INSTITUTIONAL_RESIDENCE_PROPERTY_NOT_GENERAL_LOCALITY",
+      "currentEssentialFields": {
+        "id": "osm:way:131384751",
+        "sourceId": "osm",
+        "name": "سكن السفير الفرنسي",
+        "aliases": [
+          "Résidence de l'ambassadeur de France",
+          "Residence of the French Ambassador"
+        ],
+        "kind": "residential",
+        "parentName": "المرسى الشاطئ",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "La Marsa Plage",
+          "المرسى الشاطئ",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "areaKm2": 0.04487140565031383,
+        "pickerGroupId": "osm:way:131384751"
+      },
+      "currentWholeRawRecordSha256": "acbb2ad220d79304b297bab79088a503917d21349ad9d319e1c36ad2304e0b7a",
+      "fullRawRecordHashConvention": "Canonical UTF-8 JSON; sorted keys, compact separators, ensure_ascii=False. Coordinates intentionally not repeated in this review.",
+      "unchangedFromScreenAndBeforeFourTownSnapshot": true,
+      "completeCurrentRawGroup": [
+        "osm:way:131384751"
+      ],
+      "originalTags": {
+        "access": "private",
+        "barrier": "wall",
+        "country": "FR",
+        "diplomatic": "embassy",
+        "embassy": "residence",
+        "landuse": "residential",
+        "name": "سكن السفير الفرنسي",
+        "name:ar": "سكن السفير الفرنسي",
+        "name:en": "Residence of the French Ambassador",
+        "name:fr": "Résidence de l'ambassadeur de France",
+        "office": "diplomatic",
+        "target": "TN"
+      },
+      "cachedGeometrySha256": "2c4618f3fe0625692a64a73774ace7d89a4840bee4945c9a2ea612f486e029d8",
+      "packedGeometrySha256": "403bd7cb090fdeaf9410c789123ab19982a0db5cfdd2b1b39a394c6660df172e",
+      "packedBytes": 188,
+      "authenticCurrentWay": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-131384751.json",
+        "sha256": "268d67a35508b0f11830505657b42076a3cdf9e3f8424f60b3680e8d35299860"
+      },
+      "authenticWayHistory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-131384751-history.json",
+        "sha256": "bd8564ce07d50d436d4fe43522ada283f9d8237034ccce09ac4422b425be4384"
+      },
+      "currentVersion": 8,
+      "currentTimestamp": "2022-03-04T11:51:32Z",
+      "currentChangeset": 118090096,
+      "apiTagsMatchCache": true,
+      "currentNodeReferenceCount": 22,
+      "currentWayClosedByNodeReference": true,
+      "historicalVersionCount": 8,
+      "history": [
+        {
+          "version": 1,
+          "timestamp": "2011-09-26T08:48:07Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "landuse": "residential",
+            "name": "Residence of the French Ambassador to Tunisia",
+            "name:en": "Residence of the French Ambassador to Tunisia"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        },
+        {
+          "version": 2,
+          "timestamp": "2012-11-15T12:16:53Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "landuse": "residential",
+            "name:en": "Residence of the French Ambassador",
+            "name:fr": "Résidence de l'ambassadeur de France"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        },
+        {
+          "version": 3,
+          "timestamp": "2012-11-20T10:06:09Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "country": "FR",
+            "landuse": "residential",
+            "name": "Résidence de l'ambassadeur de France",
+            "name:en": "Residence of the French Ambassador",
+            "name:fr": "Résidence de l'ambassadeur de France"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        },
+        {
+          "version": 4,
+          "timestamp": "2014-03-08T12:44:54Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "country": "FR",
+            "diplomatic": "residence",
+            "landuse": "residential",
+            "name": "Résidence de l'ambassadeur de France",
+            "name:en": "Residence of the French Ambassador",
+            "name:fr": "Résidence de l'ambassadeur de France"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        },
+        {
+          "version": 5,
+          "timestamp": "2014-03-08T16:16:40Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "country": "FR",
+            "diplomatic": "ambassadors_residence",
+            "landuse": "residential",
+            "name": "Résidence de l'ambassadeur de France",
+            "name:en": "Residence of the French Ambassador",
+            "name:fr": "Résidence de l'ambassadeur de France"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        },
+        {
+          "version": 6,
+          "timestamp": "2018-05-04T21:04:08Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "country": "FR",
+            "diplomatic": "ambassadors_residence",
+            "landuse": "residential",
+            "name": "سكن السفير الفرنسي",
+            "name:ar": "سكن السفير الفرنسي",
+            "name:en": "Residence of the French Ambassador",
+            "name:fr": "Résidence de l'ambassadeur de France"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        },
+        {
+          "version": 7,
+          "timestamp": "2022-01-11T21:24:20Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "country": "FR",
+            "diplomatic": "embassy",
+            "embassy": "residence",
+            "landuse": "residential",
+            "name": "سكن السفير الفرنسي",
+            "name:ar": "سكن السفير الفرنسي",
+            "name:en": "Residence of the French Ambassador",
+            "name:fr": "Résidence de l'ambassadeur de France",
+            "office": "diplomatic"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        },
+        {
+          "version": 8,
+          "timestamp": "2022-03-04T11:51:32Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "country": "FR",
+            "diplomatic": "embassy",
+            "embassy": "residence",
+            "landuse": "residential",
+            "name": "سكن السفير الفرنسي",
+            "name:ar": "سكن السفير الفرنسي",
+            "name:en": "Residence of the French Ambassador",
+            "name:fr": "Résidence de l'ambassadeur de France",
+            "office": "diplomatic",
+            "target": "TN"
+          },
+          "nodeReferenceCount": 22,
+          "nodeReferencesSha256": "062e7debc5c1bac0d91ee016ab87dd4008cb2619088b5c245fcea390b1c8f061"
+        }
+      ],
+      "allVersionsPrivateWalledResidentialWithInstitutionalResidenceName": true,
+      "placeTagInAnyVersion": false,
+      "directCurationOrPickerRecordReferences": {
+        "curationIds": [],
+        "pickerRecords": []
+      },
+      "parentSectorToPreserve": {
+        "id": "osm:relation:7062337",
+        "name": "المرسى الشاطئ",
+        "wholeRawRecordSha256": "3488c615154739b2f91bc56cbcd129e64a13f0dd5ddef16c55e6b3a20d8ed713",
+        "completeRawGroup": [
+          "osm:relation:7062337"
+        ]
+      },
+      "sourceDecisionReason": "The exact object has persistent private, walled, singular diplomatic-residence naming; the public institutional source describes a government residence estate rather than an inhabited quarter. Residential land use describes the property use, not settlement status.",
+      "institutionalCorroborationKey": "france",
+      "limits": [
+        "Public institutional identity corroboration does not certify the exact OSM parcel boundary or its current occupancy.",
+        "The fresh way API establishes current tags and node references only; boundary-node coordinates were not fetched or matched to the cached geometry.",
+        "No resident identities or private addresses were sought or used."
+      ]
+    },
+    {
+      "id": "osm:way:149824801",
+      "disposition": "SUPPORTED_SINGLE_INSTITUTIONAL_RESIDENCE_PROPERTY_NOT_GENERAL_LOCALITY",
+      "currentEssentialFields": {
+        "id": "osm:way:149824801",
+        "sourceId": "osm",
+        "name": "سكن السفير البريطاني",
+        "aliases": [
+          "Residence of the British Ambassador to Tunisia"
+        ],
+        "kind": "residential",
+        "parentName": "المرسى المنتزه",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "La Marsa El Montazeh",
+          "المرسى المنتزه",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "areaKm2": 0.027479932502142333,
+        "pickerGroupId": "osm:way:149824801"
+      },
+      "currentWholeRawRecordSha256": "1753777afb82764de59b0c22854ac9cf00c32c6924ae050a028144c38de17829",
+      "fullRawRecordHashConvention": "Canonical UTF-8 JSON; sorted keys, compact separators, ensure_ascii=False. Coordinates intentionally not repeated in this review.",
+      "unchangedFromScreenAndBeforeFourTownSnapshot": true,
+      "completeCurrentRawGroup": [
+        "osm:way:149824801"
+      ],
+      "originalTags": {
+        "access": "private",
+        "barrier": "wall",
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "سكن السفير البريطاني",
+        "name:ar": "سكن السفير البريطاني",
+        "name:en": "Residence of the British Ambassador to Tunisia"
+      },
+      "cachedGeometrySha256": "23a5d047d5790df693e79f887d3580506913787ad20ecebcd7f014785b3cb0ac",
+      "packedGeometrySha256": "e54315f2f105d95b9e9afcbe81af00bf61141d841af39e0cd8b274cb7c33cbdf",
+      "packedBytes": 140,
+      "authenticCurrentWay": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-149824801.json",
+        "sha256": "41412f846fa938e1177e8decbb3da3a796fe5c3585b857671077b12a37afa0dd"
+      },
+      "authenticWayHistory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\way-149824801-history.json",
+        "sha256": "ab33665d2f16b6ab7f465cf5c914cadc3f01186b51fa79f4c0f842076e9f4889"
+      },
+      "currentVersion": 5,
+      "currentTimestamp": "2018-05-04T21:04:10Z",
+      "currentChangeset": 58691599,
+      "apiTagsMatchCache": true,
+      "currentNodeReferenceCount": 16,
+      "currentWayClosedByNodeReference": true,
+      "historicalVersionCount": 5,
+      "history": [
+        {
+          "version": 1,
+          "timestamp": "2012-02-11T01:14:15Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "landuse": "residential",
+            "name": "Residence of the British Ambassador to Tunisia",
+            "name:en": "Residence of the British Ambassador to Tunisia"
+          },
+          "nodeReferenceCount": 16,
+          "nodeReferencesSha256": "47893018a248a38731f7eb37a68d813262ae637dadc9a474c1169397be97b596"
+        },
+        {
+          "version": 2,
+          "timestamp": "2013-03-08T17:45:42Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "landuse": "residential",
+            "leisure": "garden",
+            "name": "Residence of the British Ambassador to Tunisia",
+            "name:en": "Residence of the British Ambassador to Tunisia"
+          },
+          "nodeReferenceCount": 16,
+          "nodeReferencesSha256": "47893018a248a38731f7eb37a68d813262ae637dadc9a474c1169397be97b596"
+        },
+        {
+          "version": 3,
+          "timestamp": "2013-03-15T00:10:02Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "landuse": "residential",
+            "leisure": "garden",
+            "name": "Residence of the British Ambassador to Tunisia",
+            "name:en": "Residence of the British Ambassador to Tunisia"
+          },
+          "nodeReferenceCount": 14,
+          "nodeReferencesSha256": "68ebf551ac65410db3659c7cee6bf9064439c82880d3e49982f839f345742107"
+        },
+        {
+          "version": 4,
+          "timestamp": "2013-05-02T18:49:33Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "landuse": "residential",
+            "leisure": "garden",
+            "name": "Residence of the British Ambassador to Tunisia",
+            "name:en": "Residence of the British Ambassador to Tunisia"
+          },
+          "nodeReferenceCount": 16,
+          "nodeReferencesSha256": "35b53ff43015ab8eb59e4f2b2b19445a3781b63c1c9d91f59fe5c5d75e527937"
+        },
+        {
+          "version": 5,
+          "timestamp": "2018-05-04T21:04:10Z",
+          "tags": {
+            "access": "private",
+            "barrier": "wall",
+            "landuse": "residential",
+            "leisure": "garden",
+            "name": "سكن السفير البريطاني",
+            "name:ar": "سكن السفير البريطاني",
+            "name:en": "Residence of the British Ambassador to Tunisia"
+          },
+          "nodeReferenceCount": 16,
+          "nodeReferencesSha256": "35b53ff43015ab8eb59e4f2b2b19445a3781b63c1c9d91f59fe5c5d75e527937"
+        }
+      ],
+      "allVersionsPrivateWalledResidentialWithInstitutionalResidenceName": true,
+      "placeTagInAnyVersion": false,
+      "directCurationOrPickerRecordReferences": {
+        "curationIds": [],
+        "pickerRecords": []
+      },
+      "parentSectorToPreserve": {
+        "id": "osm:relation:7062421",
+        "name": "المرسى المنتزه",
+        "wholeRawRecordSha256": "9def19c25ebf099bdc9049dcf2c172e57499c06f15d94205068dcc700f05e949",
+        "completeRawGroup": [
+          "osm:relation:7062421"
+        ]
+      },
+      "sourceDecisionReason": "The exact object has persistent private, walled, singular diplomatic-residence naming; the public institutional source describes a government residence estate rather than an inhabited quarter. Residential land use describes the property use, not settlement status.",
+      "institutionalCorroborationKey": "britain",
+      "limits": [
+        "Public institutional identity corroboration does not certify the exact OSM parcel boundary or its current occupancy.",
+        "The fresh way API establishes current tags and node references only; boundary-node coordinates were not fetched or matched to the cached geometry.",
+        "No resident identities or private addresses were sought or used."
+      ]
+    }
+  ],
+  "primaryInstitutionalEvidence": {
+    "france": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\france-afe-institutional-estate-response.html",
+        "sha256": "431bea7ce01fcd5af2169ad83e08d0999bb657179ce53adec09152ded340792e"
+      },
+      "url": "https://www.assemblee-afe.fr/question/vente-de-la-maison-du-consul-sise-avec-dautres-maisons-sur-le-terrain-de-la-residence-de-france-a-tunis/",
+      "publisher": "Assemblée des Français de l’étranger, ministry response by MAE/DGA/DIL",
+      "publicationDate": "2013-09-13",
+      "summary": "The ministry property response describes the preserved French diplomatic residence estate and its park at La Marsa. This is direct institutional-property evidence, not a neighborhood or current cadastral survey.",
+      "extentQualification": "The response describes a 6.5-hectare park; the cached OSM object is about 4.487 hectares. That mismatch prevents claiming the exact same full parcel/estate extent. It does not turn the residence object into a locality.",
+      "rawPageQualification": "Authentic downloaded HTML contains the full question/response. The browser extraction returned an incomplete homepage-like view; the frozen raw response was read directly.",
+      "indexedLeadOnly": [
+        {
+          "url": "https://www.institutfrancais-tunisie.com/sites/default/files/files/Espaces-France_Tarifs.pdf",
+          "scope": "Indexed official venue brochure also describes the residence gardens/patio, but direct retrieval returned 404; not used as a byte-pinned acceptance source."
+        },
+        {
+          "url": "https://www.diplomatie.gouv.fr/IMG/pdf/ambassades_et_edifices_20200204_cle4aed84.pdf",
+          "scope": "Indexed official bibliography lead; direct retrieval redirected to the ministry homepage and is not the requested PDF."
+        }
+      ]
+    },
+    "britain": {
+      "sources": [
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\britain-gac-residence-institution.html",
+          "sha256": "6530db53d7ad2925438c25f6f08672bbd7a96c526e1bced777d1e96c66ee3920"
+        },
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\britain-gac-institutional-estates-2018-2019.pdf",
+          "sha256": "0750e601ddc5d0435833386ebe2c557108133b0c8c1acc2a73d8bcbd596c2f80"
+        }
+      ],
+      "urls": [
+        "https://artcollection.dcms.gov.uk/artwork/17675/",
+        "https://artcollection.dcms.gov.uk/wp-content/uploads/2021/03/GAC_Annual-Report-2018-2019.pdf"
+      ],
+      "publisher": "UK Department for Culture, Media and Sport / Government Art Collection",
+      "reportPeriod": "2018-2019",
+      "pdfPage": 10,
+      "pageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\britain-gac-p10.png",
+        "sha256": "ca22e22b544f94f9854645679d5baf2aa35092fc577a433208e1827a84ebf94d"
+      },
+      "pagePersonallyViewed": true,
+      "summary": "The government collection page identifies the British diplomatic residence at La Marsa; its annual report describes the Tunis residence as an FCO Estates building. These establish institutional property scope, without parcel or current-occupant certification."
+    }
+  },
+  "retrievalEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\retrieval.json",
+      "sha256": "15b00beeb8135809da1703495eb8757bf7c35da398f29b6320635163b180c87d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\france-primary-retrieval.json",
+      "sha256": "5b38bd89fbebe522fc7f023ae1e851b5216d0c153ba2db6ef4f67170c83630b4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\diplomatic-residence-two-source-review\\france-afe-retrieval.json",
+      "sha256": "a83b4b69ff41352ad22d042013287ad418f64031b50d81578bde73e0bba2b820"
+    }
+  ],
+  "currentDecision": "Both records are supported non-locality institutional-property candidates. No exclusion rule, alias replacement, source stage or live mutation has been prepared. Root may authorize a separate bounded exclusion-impact/proof stage.",
+  "beforeAnyImplementation": [
+    "Preserve the actual Marsa town/base and separate parent imadas; never merge a property with them as an alias.",
+    "Check source point absorption, geometry conflicts, complete protected groups, saved-ID retirement and active proof closure for the exact two IDs. Those implementation effects were not audited here."
+  ],
+  "privacyScope": "Institutional scope only. Report omits coordinates, street addresses, current residents and personal details. Raw public-source bytes are retained for authenticity; no personal-profile research or boundary-node download was conducted.",
+  "notPerformed": [
+    "phone or ledger access",
+    "generator or product-helper execution",
+    "tests or Android build",
+    "repo or frozen source-stage edits",
+    "resident research",
+    "university-residence review"
+  ]
+}

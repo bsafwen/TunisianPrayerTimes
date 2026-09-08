@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7144493",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوسالم الشمالية",
+        "name:ar": "بوسالم الشمالية",
+        "name:fr": "Bou Salem",
+        "ref:tn:codegeo": "225351"
+      },
+      "originalGeometrySha256": "7c06b528eac074de5a7c28f03cdd6cc42716a5b4beac75baf4aaee17384703e0",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوسالم الشمالية",
+        "name:ar": "بوسالم الشمالية",
+        "name:fr": "Bou Salem",
+        "ref:tn:codegeo": "225351"
+      },
+      "effectiveGeometrySha256": "7c06b528eac074de5a7c28f03cdd6cc42716a5b4beac75baf4aaee17384703e0",
+      "expectedMetadata": {
+        "name": "بوسالم الشمالية",
+        "aliases": [
+          "Bou Salem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بوسالم",
+        "governorateId": 354,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:172866902",
+      "originalKind": "residential",
+      "originalTags": {
+        "addr:city": "بوسالم",
+        "landuse": "residential",
+        "name": "بوسالم",
+        "name:ar": "بوسالم",
+        "name:fr": "Bou Salem",
+        "old_name": "Souk El Khemis",
+        "population": "21000"
+      },
+      "originalGeometrySha256": "5ef80dc60200fbcfbd0bc0645491fa4f463d3c50bf31452f77fb880ee53b3b9f",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "addr:city": "بوسالم",
+        "landuse": "residential",
+        "name": "بوسالم",
+        "name:ar": "بوسالم",
+        "name:fr": "Bou Salem",
+        "old_name": "Souk El Khemis",
+        "population": "21000"
+      },
+      "effectiveGeometrySha256": "5ef80dc60200fbcfbd0bc0645491fa4f463d3c50bf31452f77fb880ee53b3b9f",
+      "expectedMetadata": {
+        "name": "بوسالم",
+        "aliases": [
+          "Bou Salem",
+          "Bousalem",
+          "Bu Salem",
+          "Бу Салем",
+          "Бу-Салим"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية جندوبة",
+        "governorateId": 354,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "bousalem-reviews/bousalem-complete-choice-source-review.json",
+      "sha256": "81632f2c6bf81bfa8b9721a2630cac72e71078562a6b3ecfe9cb7863a6c81faf"
+    },
+    {
+      "file": "bousalem-reviews/direct-pbf-source-facts.json",
+      "sha256": "8d68a952c625c60092548ea29e2064568a964f0aa1f90df86eed8544947dac0c"
+    },
+    {
+      "file": "bousalem-reviews/jendouba-development-summary.pdf",
+      "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e"
+    },
+    {
+      "file": "bousalem-reviews/development-page-85.png",
+      "sha256": "d5832c864a7180ad6b737781b28dd2ad77e1c93ba01440ce257a25fc170edc32"
+    },
+    {
+      "file": "bousalem-reviews/development-page-86.png",
+      "sha256": "7493aa8a3f49230ac5e7b8b56a5a1592513bfb795d3497f8fb722a4790752d9c"
+    }
+  ],
+  "reason": "The unqualified town depiction and the current INS225351 North sector have different scopes. Preserve both identities; separately associate only the town depiction with its exact reviewed original base town reference."
+}

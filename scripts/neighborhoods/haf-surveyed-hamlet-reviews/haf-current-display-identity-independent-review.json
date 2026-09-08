@@ -1,0 +1,286 @@
+{
+  "status": "PASS_supported_exact_three_record_display_association",
+  "scope": "Independent source/history and current-data readiness only. No implementation or generated-data approval.",
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "7b194f55483fb015d3bd762cd41ce5bff25865f9c62f61250bc763669b55c148",
+    "bytes": 1842923
+  },
+  "currentGeometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+    "bytes": 5498784
+  },
+  "exactCurrentRecords": [
+    {
+      "id": "osm:way:1187366129",
+      "sourceId": "osm",
+      "name": "حاف أولاد حامد",
+      "aliases": [
+        "Oualed Hamed"
+      ],
+      "kind": "residential",
+      "parentName": "الدويرات",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Edouiret",
+        "Tataouine Sud",
+        "الدويرات",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.791897,
+      "lng": 10.229528,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        10.228894,
+        32.791342,
+        10.230043,
+        32.792479
+      ],
+      "areaKm2": 0.0018914142146176324,
+      "pickerGroupId": "osm:way:1187366129",
+      "offset": 5207456,
+      "length": 324
+    },
+    {
+      "id": "osm:way:1187366130",
+      "sourceId": "osm",
+      "name": "حاف أولاد حامد",
+      "aliases": [
+        "Oualed Hamed"
+      ],
+      "kind": "residential",
+      "parentName": "الدويرات",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Edouiret",
+        "Tataouine Sud",
+        "الدويرات",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.793267,
+      "lng": 10.22938,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "bbox": [
+        10.229145,
+        32.793068,
+        10.229524,
+        32.79344
+      ],
+      "areaKm2": 0.0007227356008872879,
+      "pickerGroupId": "osm:way:1187366130",
+      "offset": 5207780,
+      "length": 124
+    },
+    {
+      "id": "osm:node:11522289870",
+      "sourceId": "osm",
+      "name": "حاف أولاد حامد",
+      "aliases": [
+        "Oualed Hamed"
+      ],
+      "kind": "hamlet",
+      "parentName": "الدويرات",
+      "contextAliases": [
+        "Délégation Tataouine Sud",
+        "Edouiret",
+        "Tataouine Sud",
+        "الدويرات",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "governorateId": 351,
+      "lat": 32.7922759,
+      "lng": 10.2297856,
+      "delegationId": 624,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:11522289870"
+    }
+  ],
+  "proposedAssociation": {
+    "canonicalPickerGroupId": "osm:node:11522289870",
+    "canonicalKind": "hamlet",
+    "canonicalName": "حاف أولاد حامد",
+    "members": [
+      "osm:node:11522289870",
+      "osm:way:1187366129",
+      "osm:way:1187366130"
+    ],
+    "expectedSourceGroups": [
+      {
+        "pickerGroupId": "osm:way:1187366129",
+        "memberIds": [
+          "osm:way:1187366129"
+        ]
+      },
+      {
+        "pickerGroupId": "osm:way:1187366130",
+        "memberIds": [
+          "osm:way:1187366130"
+        ]
+      }
+    ],
+    "expectedTargetMembers": [
+      "osm:node:11522289870"
+    ],
+    "exactPermittedChanges": [
+      {
+        "id": "osm:way:1187366129",
+        "field": "pickerGroupId",
+        "before": "osm:way:1187366129",
+        "after": "osm:node:11522289870"
+      },
+      {
+        "id": "osm:way:1187366130",
+        "field": "pickerGroupId",
+        "before": "osm:way:1187366130",
+        "after": "osm:node:11522289870"
+      }
+    ],
+    "manualSourceIdBeforeAndAfter": 624,
+    "parentNameBeforeAndAfter": "الدويرات",
+    "rawIdsShapesNamesAliasesContextsCoordinatesToPreserve": true
+  },
+  "sourceEvidenceChain": {
+    "report": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-independent-review\\actual-haf-history-coordinate-chain.json",
+      "sha256": "a7a3a02e89d624363ac44b78ae848795a5fcba437f1c2868cda0bc2eec0cc049",
+      "bytes": 46248
+    },
+    "historyPins": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\way-1187366129-history.xml",
+        "sha256": "e48db0519a5de01c071043892afb67f13b62793fbe327477dd75ebcbcc4c9e18",
+        "bytes": 4397
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\way-1187366130-history.xml",
+        "sha256": "adccfb4c86a24340dbe00f0356739478e1ff8046bb1ff398c7911edab7659ce1",
+        "bytes": 1708
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\node-11522289870-history.xml",
+        "sha256": "bd54be631928afb637ca76f1ea2b419072e5157f7971f83d666e44b27ddbf1c8",
+        "bytes": 1039
+      }
+    ],
+    "oscPins": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\changeset-138116777-download.osc",
+        "sha256": "0673f8a345e3376e9b28399a0726f3c2c0c0a6485409bd733a2640a04f7fc9d9",
+        "bytes": 34119
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\changeset-146329970-download.osc",
+        "sha256": "e2cf9f08e496831baebe2f28e7340b5b6f3817567d6c76f1de54f535c198ed6e",
+        "bytes": 19017
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-identity-followup\\changeset-180432269-download.osc",
+        "sha256": "ad829a346c64a5d2a17fac22c2250f180827c3084c02bcbdf4575faa0750c4b6",
+        "bytes": 30366
+      }
+    ],
+    "2023": "The same source edit explicitly creates both exact residential ways with the same Oualed Hamed/حاف اولاد حامد names. It cites survey and aerial imagery.",
+    "2024": "The same mapper explicitly creates the same-named hamlet, normalizes the first residential Latin name, and moves all51 constituent vertices of both footprints. Applying the actual OSC edits reproduces both current PBF source geometries exactly.",
+    "2026": "A different naming-unification edit gives all three identical Arabic and bilingual tags; this is not a new survey and does not change the target point or footprint vertices.",
+    "otherNamedObjects": "The reviewed edits also name different nearby ruins (Ksar Oum er Roumanat and Ksar Sidi Hallel). Those have separate names/kinds and are excluded from this association."
+  },
+  "geometryHistoryCorrection": {
+    "finding": "Do not say the residential shapes are unchanged across history. Only their way-node-reference lists are unchanged; actual constituent coordinates changed in2024.",
+    "measurements": [
+      {
+        "id": "osm:way:1187366129",
+        "unchangedWayNodeReferenceList": true,
+        "uniqueVertices": 38,
+        "verticesMovedIn2024": 38,
+        "currentEquals2024ActualCoordinateEditResultExactly": true,
+        "currentEqualsAfter2026PayloadExactly": true,
+        "sourcePbfGeometryPin": "9ec8cdba6dd95b32867e1a4c149afdc0374a7120d3c2c715960cb7fbbbcff65b",
+        "creationToCurrent": {
+          "areaBeforeMeters2": 1737.821910455456,
+          "areaAfterMeters2": 1886.6242633493814,
+          "symmetricDifferenceMeters2": 1224.7062200831024,
+          "hausdorffMeters": 8.842662050253104
+        }
+      },
+      {
+        "id": "osm:way:1187366130",
+        "unchangedWayNodeReferenceList": true,
+        "uniqueVertices": 13,
+        "verticesMovedIn2024": 13,
+        "currentEquals2024ActualCoordinateEditResultExactly": true,
+        "currentEqualsAfter2026PayloadExactly": true,
+        "sourcePbfGeometryPin": "b38086feded1cd4b03bfeb8652f117fbca4fecfde5d328c2a5ba4c57f1075561",
+        "creationToCurrent": {
+          "areaBeforeMeters2": 721.3267886166711,
+          "areaAfterMeters2": 721.3267977435481,
+          "symmetricDifferenceMeters2": 519.7195076776676,
+          "hausdorffMeters": 6.546345054206291
+        }
+      }
+    ],
+    "appImplication": "All current packaged polygon bytes are still identical to the separately reviewed context checkpoint. The proposed display association changes no shape."
+  },
+  "administrativeContext": {
+    "proof": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\haf-oulad-hamed-context-review.json",
+      "sha256": "e687788401a1cdd84dd7093156a391aa966e330eec451d811038db11540c7431",
+      "bytes": 91031
+    },
+    "independentProof": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\haf-context-independent-review.json",
+      "sha256": "dffe8622ff4752ab974d14519dcd4f192f04744686e08f9255a0b3420be41010",
+      "bytes": 13612
+    },
+    "directOriginalSourceFacts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "bytes": 529199
+    },
+    "finding": "The installed Eddouiret context is independently reviewed and retained. It does not itself prove common settlement identity, but it prevents reviving the obsolete Ras El Oued display context."
+  },
+  "externalContext": [
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-independent-review\\douiret-historical-blog-2009.html",
+        "url": "https://douiret.blogspot.com/2009/",
+        "resolvedUrl": "https://douiret.blogspot.com/2009/",
+        "sha256": "037580575a3b3a47947b41ae13e0740aef69f1a4e5c31bc464c9ac2fa42bd4cc",
+        "bytes": 26869
+      },
+      "classification": "historical secondary local-history synthesis",
+      "finding": "The2009 text explicitly mentions an inhabited Haf Ouled Hamed in the Ras El Oued region while discussing1929 events.",
+      "limit": "It is not a modern boundary, government location inventory, or proof locating each current source footprint. Its historical regional wording does not override current official Eddouiret membership."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-current-display-independent-review\\gmg-douiret-family-context.html",
+        "url": "https://www.dahargmg.info/fr/histoire-de-l-homme/villages-troglodytes/habitat-trogloditique-horizontal/douiret",
+        "resolvedUrl": "https://www.dahargmg.info/fr/histoire-de-l-homme/villages-troglodytes/habitat-trogloditique-horizontal/douiret",
+        "sha256": "703cbc52ed8a7d9c192a7f579468f91a36a9105a3e8a5c78370c4e402fdb2357",
+        "bytes": 84893
+      },
+      "classification": "primary heritage field inventory, contextual to Douiret",
+      "finding": "The GMG Douiret inventory includes Ouled Hamed among Douiri families.",
+      "limit": "This supports regional name/family context only. Its GPS coordinate refers to old Douiret, not Haf or the three target objects."
+    }
+  ],
+  "independentConclusion": {
+    "supported": true,
+    "reason": "The exact residential names deliberately assigned in the original survey-tagged edit, the subsequent same-mapper hamlet creation plus refinement of both original footprints, unchanged local source identity through the2026 cleanup, and historical inhabited-place documentation support a bounded common-settlement display association. The basis is more specific than shared timestamp, proximity, aliases, or a generic family-name match.",
+    "evidentialLimit": "The mapper’s survey tag is self-reported source provenance. There is no independently certified per-footprint cadastral assignment or exhaustive village perimeter. These are not required to preserve raw footprints while grouping the exact three known source choices.",
+    "noBlockingSourceIssueAfterWordingCorrection": true,
+    "implementationConditions": [
+      "Only two pickerGroupId fields may change; canonical must remain existing hamlet11522289870.",
+      "Preserve all three current raw IDs, original and packed geometry, exact names/aliases, coordinates, context, default624 and GPS identity.",
+      "Guard the complete exact three singleton input groups and source identities; do not include nearby ruins or infer a new settlement polygon.",
+      "Do not claim historical phone landmark results verify this association, and do not invoke new phone access."
+    ]
+  },
+  "phoneEvidenceUsed": false,
+  "testsBuildsGenerationRepositoryEdits": false
+}

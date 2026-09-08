@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - "multiplatform/**"
+      - "test-data/islamic-calendar/**"
       - ".github/workflows/desktop-tests.yml"
   pull_request:
     branches: [main]
     paths:
       - "multiplatform/**"
+      - "test-data/islamic-calendar/**"
       - ".github/workflows/desktop-tests.yml"
 
 env:

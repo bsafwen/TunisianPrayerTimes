@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPPORTED_REVIEWED_SETTLEMENT_REFERENCE_AND_EXACT_POINT_BASE_IDENTITY_PROPOSAL_ONLY",
+  "createdAt": "2026-09-08T02:05:50.928217+00:00",
+  "baselineMetadataSha256": "689cbf3993f7fa01297dc1ee2f2f70f46d75fa8ff41e901441de0a051a3adb38",
+  "sourceFacts": {
+    "file": "work\\oued-meliz-reference-review\\current-source-facts.json",
+    "root": "TASK",
+    "sha256": "38f3e5e6afc1364b6dd595e5db661b35e3aa5fc7a0c87ebb476146dc0790450a",
+    "bytes": 19996
+  },
+  "decision": {
+    "sourceIdentityReviewed": true,
+    "referenceCorrectionSupported": true,
+    "delegationId": 500,
+    "expectedGovernorateId": 354,
+    "pointId": "osm:node:2840204369",
+    "before": {
+      "lat": 36.4539,
+      "lng": 8.5501
+    },
+    "after": {
+      "lat": 36.4678121,
+      "lng": 8.5500007
+    },
+    "distanceMeters": 1546.9804280099577,
+    "policy": "Replace an unsupported legacy locality representative with a reviewed settlement reference; preserve timetable500 and actual-fix nearest-source policy. This is not a claim to restore certified INM calculation coordinates.",
+    "nameEquivalence": {
+      "baseArabic": "واد مليز",
+      "sourceArabic": "وادي مليز",
+      "exactSourceAlias": "واد مليز",
+      "officialDelegationArabic": "وادي مليز",
+      "frenchBase": "Oued Mliz",
+      "frenchSource": "Oued Meliz"
+    },
+    "sourceReason": "One exact village node with unchanged live tags/coordinates, direct official social-unit coordinate/address at that node, INS current identity and an official georeferenced map placing the node at the named town/railway junction. The old reference is1.547km south without a supporting place/reference assertion in the reviewed sources."
+  },
+  "primaryEvidence": [
+    {
+      "authority": "Ministry of Social Affairs",
+      "source": {
+        "file": "work\\oued-meliz-reference-review\\ministry-social-local-unit.html",
+        "root": "TASK",
+        "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2",
+        "bytes": 65601
+      },
+      "url": "https://www.social.gov.tn/en/node/3498",
+      "title": "الوحدة المحلية للنهوض الاجتماعي وادى مليز جندوبة",
+      "address": "شارع البيئة وادي مليز 8115",
+      "positionMap": "POINT (8.5500007 36.4678121)",
+      "htmlLines": [
+        906,
+        1024,
+        1036
+      ],
+      "qualification": "An official published facility/place geolocation exactly coincides with the named village node. The page does not identify an INM station or a surveyed town centroid; exact equality may be a reused town geocode."
+    },
+    {
+      "authority": "ISIE2023 published East electoral map",
+      "source": {
+        "file": "work\\oued-meliz-reference-review\\isie-oued-meliz-east.pdf",
+        "root": "TASK",
+        "sha256": "982825f69ed8fa02dcbc5fcc27227b2f1e42fb476ca7c6b3cb520da075c8f312",
+        "bytes": 1148661
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9/%D9%88%D8%A7%D8%AF%D9%8A%20%D9%85%D9%84%D9%8A%D8%B2/%D9%88%D8%A7%D8%AF%D9%8A%20%D9%85%D9%84%D9%8A%D8%B2%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "mapPositionData": {
+        "file": "work\\oued-meliz-reference-review\\map-position-review-data.json",
+        "root": "TASK",
+        "sha256": "a82ad1b6218b014a5fa250876ede28122e363a1c05bbf32f6bbb9fe5df2e4cc7",
+        "bytes": 3447
+      },
+      "fitMaxResidualMeters": 0.11330422874707287,
+      "points": [
+        {
+          "role": "oldBase500",
+          "lat": 36.4539,
+          "lng": 8.5501,
+          "pageCoordinates": [
+            372.4585619865304,
+            254.00426148361566
+          ],
+          "onPage": 1
+        },
+        {
+          "role": "proposedVillage2840204369",
+          "lat": 36.4678121,
+          "lng": 8.5500007,
+          "pageCoordinates": [
+            372.3725971696067,
+            173.7788746548151
+          ],
+          "onPage": 1
+        }
+      ],
+      "personalVisualReview": {
+        "fullPage": "isie-oued-meliz-east-full.png",
+        "oldCrop": "oldBase500-map-context.png",
+        "newCrop": "proposedVillage2840204369-map-context.png",
+        "findings": "Proposed point falls at the Wadi Maliz/Oued Meliz town and railway junction. Old point lies south in visibly agricultural surroundings; its exact page location is partially obscured by the large red imada name. Official white labels identify the railway, Palestine street and municipal limits near town. Both are within the map viewport.",
+        "limitations": "No exact parcel/land-cover certification; no extraction or approval of an imada/municipal boundary. Satellite/base labels are supplied on the official map and may share a mapping provider with other evidence."
+      }
+    },
+    {
+      "authority": "MEHAT DGAT Jendouba SDAD final summary2018",
+      "source": {
+        "file": "work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+        "root": "TASK",
+        "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+        "bytes": 7131225
+      },
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+      "pdfPage": 9,
+      "printedPage": 6,
+      "personallyViewed": true,
+      "finding": "Administrative overview marks Oued Mliz as a commune and separately names East/West sectors. The map source is INS2014 / URAM2016 and is not used for current polygon or exact-reference validation."
+    }
+  ],
+  "liveOsm": {
+    "response": {
+      "file": "work\\oued-meliz-reference-review\\osm-node-2840204369.xml",
+      "root": "TASK",
+      "sha256": "46f916a7fa28a88e8ef3b7c13f699745aa897963f8b1058ed9b9e979d3a0763e",
+      "bytes": 865
+    },
+    "url": "https://api.openstreetmap.org/api/0.6/node/2840204369",
+    "version": 8,
+    "timestamp": "2020-07-17T08:38:41Z",
+    "tagsAndCoordinatesEqualCached": true
+  },
+  "legacyPointAssessment": {
+    "supportingPrimaryReferenceFound": false,
+    "knownFact": "The old coordinate is the current bundled reference,1.547km south of the uniquely named village node. Prior source-coordinate review had only the near-northern OSM/GeoNames candidates and did not identify a separate named settlement at the old coordinate.",
+    "limits": "Lack of a source citation is not proof the old coordinate was fraudulent or outside all municipal land. No full town boundary is invented, and no certificate of original INM station coordinates was found."
+  },
+  "corroboration": {
+    "archivedGeoNames": [
+      {
+        "id": "2464157",
+        "name": "Wadi Maliz",
+        "aliases": [
+          "Wadi Maliz",
+          "Wadi Maliz",
+          "Oued Meliz",
+          "Wadi Maliz",
+          "Wādī Malīz",
+          "wady mlyz",
+          "وادي مليز"
+        ],
+        "lat": 36.46813,
+        "lng": 8.54951,
+        "featureCode": "PPL",
+        "modified": "2022-01-11",
+        "sameGovernorate": true,
+        "distanceKm": 1.5831832900009122,
+        "distanceToCurrentNodeMeters": 56.34653360146084
+      }
+    ],
+    "qualification": "Corroboration only; possible common upstream mapping.",
+    "phone": "Root independently owns and reviews current phone captures. No phone/ledger files read or mutated by this source review. Root reported name/coordinate map support and an erroneous auto-selected Western Union card for the old point; that card is not used as identity authority."
+  },
+  "minimumFutureImplementation": {
+    "coordinateManifest": "Append one reviewed correction500 after the existing29, preserving all existing objects; change only base500 lat/lng after impact approval.",
+    "pointCuration": "Retain node2840204369 with preserve_point and exact pickerBaseDelegationId500. Bind the reviewed Arabic alias واد مليز to primary وادي مليز using a narrowly approved per-ID name proof; do not widen generic normalization.",
+    "expectedPointGroupChange": {
+      "id": "osm:node:2840204369",
+      "field": "pickerGroupId",
+      "before": "osm:node:2840204369",
+      "after": "delegation:500"
+    },
+    "preserve": [
+      "Every source name/ID/governorate and timetable500",
+      "Raw village coordinates/name/context and all five independently coded imadas",
+      "All packed geometry and GPS conflict behavior",
+      "Existing29 reference corrections,121 curations and46 accepted official boundaries"
+    ],
+    "remainingRequiredChecks": [
+      "One bounded current all-coordinate nearest-source impact preview before implementation; this source-only report recomputes the proposed point only.",
+      "Inventory and migrate any active manifest dependency on the old29-reference manifest hash while retaining historical proof bytes.",
+      "Validate current exact point/base spelling-equivalence proof schema and saved-source behavior; no generator or app changes made here."
+    ],
+    "noProposedBoundaryImport": true
+  },
+  "transportNotes": {
+    "initialFetchResults": {
+      "file": "work\\oued-meliz-reference-review\\source-retrievals.json",
+      "root": "TASK",
+      "sha256": "038626e330b406d0afe0b65200f842e6415fff799db106e33eee6f4960d87b2a",
+      "bytes": 2536
+    },
+    "ministryRecovery": {
+      "file": "ministry-social-local-unit.html",
+      "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2",
+      "method": "curl.exe with Windows Schannel certificate verification; requests certificate-chain failure retained in source-retrievals.json",
+      "url": "https://www.social.gov.tn/en/node/3498",
+      "retrievedAtApproxUtc": "2026-09-08T02:01:10.925061+00:00",
+      "timestampBasis": "Local completed response file mtime; exact request start was not separately logged for curl recovery."
+    },
+    "municipalWebsite": "HTTPS municipality and local-government directory downloads timed out; search-index excerpts supplied address/name leads but are not treated as a downloaded georeferenced primary proof."
+  },
+  "executionScope": {
+    "sourceDownloadsOnly": true,
+    "generatorExecuted": false,
+    "testsExecuted": false,
+    "appEdited": false,
+    "phoneIo": false,
+    "ledgerAccess": false
+  }
+}

@@ -1,0 +1,1288 @@
+{
+  "schemaVersion": 1,
+  "baselineMetadataSha256": "b50f62fba68c6ba0989f3a4cb673a0cfad820dcd059164b26a0ac208467c9600",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baseId": 516,
+  "polygonId": "osm:way:278951683",
+  "sourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/tibar-ayoun-source-review.json",
+    "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25"
+  },
+  "originalFrozenSourceFacts": {
+    "file": "settlement-polygon-display-reviews/three-town/516-current-source-facts.json",
+    "sha256": "b9061ccb6895a8ad7613230e2e0a5cd3fe134df54ace8393bf08f6b58951c81f"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "sourceReviewBinding": {
+    "status": "BOUNDED_CURRENT_SOURCE_TRIAGE_COMPLETE_NOT_IMPLEMENTED",
+    "selector": [
+      "records",
+      0
+    ],
+    "record": {
+      "baseId": 516,
+      "baseCurrent": {
+        "id": 516,
+        "nomFr": "Tibar",
+        "nomAr": "تيبار",
+        "nomEn": "Tibar",
+        "lat": 36.5301,
+        "lng": 9.1124,
+        "governorateId": 356
+      },
+      "sectorId": "osm:relation:7189438",
+      "settlementId": "osm:way:278951683",
+      "sourceSettlementPoint": {
+        "id": "osm:node:2832036076",
+        "tags": {
+          "addr:postcode": "9022",
+          "name": "تيبار",
+          "name:ar": "تيبار",
+          "name:en": "Thibar",
+          "name:fr": "Thibar",
+          "place": "village",
+          "population": "3334",
+          "wikidata": "Q3523994",
+          "wikimedia_commons": "Category:Thibar",
+          "wikipedia": "ar:تيبار (تونس)",
+          "wikipedia:ar": "تيبار (تونس)"
+        },
+        "lat": 36.5218222,
+        "lng": 9.1049848
+      },
+      "sourcePointAbsentFromRaw": true,
+      "currentRawMembers": [
+        {
+          "currentMetadata": {
+            "id": "osm:relation:7189438",
+            "sourceId": "osm",
+            "name": "تيبار",
+            "aliases": [
+              "Tibar"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.528105,
+            "lng": 9.121965,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.058241,
+              36.50875,
+              9.170241,
+              36.54754
+            ],
+            "areaKm2": 30.88826931704252,
+            "pickerGroupId": "osm:relation:7189438",
+            "offset": 4648156,
+            "length": 2516
+          },
+          "packedGeometrySha256": "66a1b046d065d707d38736d1875e8016f818bcfed670cc49966ac17f8dfd33e4"
+        },
+        {
+          "currentMetadata": {
+            "id": "osm:way:278951683",
+            "sourceId": "osm",
+            "name": "Thibar",
+            "aliases": [
+              "تيبار"
+            ],
+            "kind": "residential",
+            "parentName": "تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "Tibar",
+              "تيبار",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.523724,
+            "lng": 9.106197,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.095232,
+              36.517539,
+              9.117924,
+              36.529468
+            ],
+            "areaKm2": 1.2914265753157057,
+            "pickerGroupId": "osm:relation:7189438",
+            "offset": 5377268,
+            "length": 1324
+          },
+          "packedGeometrySha256": "6c6dc8489d146c953837da1982e42767969daf201b3e5b63347a47297d00d1fc"
+        }
+      ],
+      "currentMembersAllSemanticFieldsAndPackedBytesExactSincePriorScopeReview": true,
+      "priorScopeAssessment": {
+        "decision": "Separate sector7189438 from the inhabited footprint; town/base association needs explicit coarse-anchor qualification.",
+        "finding": "Source village2832036076 has Arabicتيبار and French/English Thibar and is inside residential278951683 whose original primary is Thibar. This resolves the earlier primary-name spelling obstacle as a bilingual settlement relationship without renaming the sector. Sector215651 is independently recorded as Tibar/تيبار.",
+        "missingLink": "Base516 lies outside the residential shape. A reviewed association must bind the named village and coarse base independently; do not treat same-parent context or sector containment as sufficient proof."
+      },
+      "reusedGeometricFacts": {
+        "sector": {
+          "containsBase": true,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 0.0,
+          "originalContainsBase": true,
+          "originalContainsSourceSettlementPoint": true
+        },
+        "settlement": {
+          "containsBase": false,
+          "containsSourceSettlementPoint": true,
+          "baseOutsideDistanceM": 330.87685416630217,
+          "originalContainsBase": false,
+          "originalContainsSourceSettlementPoint": true,
+          "percentageOutsideSourceSector": 0.0
+        }
+      },
+      "geometryCalculationNotRepeated": "Current complete semantic records and packed bytes equal the historical scope evidence; geometric predicates are carried forward.",
+      "originalExactNamePeers": [
+        {
+          "id": "osm:node:2832036076",
+          "kind": "village",
+          "tags": {
+            "addr:postcode": "9022",
+            "name": "تيبار",
+            "name:ar": "تيبار",
+            "name:en": "Thibar",
+            "name:fr": "Thibar",
+            "place": "village",
+            "population": "3334",
+            "wikidata": "Q3523994",
+            "wikimedia_commons": "Category:Thibar",
+            "wikipedia": "ar:تيبار (تونس)",
+            "wikipedia:ar": "تيبار (تونس)"
+          },
+          "rawPresent": false,
+          "currentGroup": null
+        },
+        {
+          "id": "osm:relation:7189438",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تيبار",
+            "name:ar": "تيبار",
+            "name:fr": "Tibar",
+            "ref:tn:codegeo": "215651"
+          },
+          "rawPresent": true,
+          "currentGroup": "osm:relation:7189438",
+          "currentGovernorateId": 356,
+          "currentDefaultSourceId": 516,
+          "currentPrimaryName": "تيبار"
+        },
+        {
+          "id": "osm:way:278951683",
+          "kind": "residential",
+          "tags": {
+            "landuse": "residential",
+            "name": "Thibar"
+          },
+          "rawPresent": true,
+          "currentGroup": "osm:relation:7189438",
+          "currentGovernorateId": 356,
+          "currentDefaultSourceId": 516,
+          "currentPrimaryName": "Thibar"
+        }
+      ],
+      "completeCachedImadas": [
+        {
+          "id": "osm:relation:7189438",
+          "code": "215651",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تيبار",
+            "name:ar": "تيبار",
+            "name:fr": "Tibar",
+            "ref:tn:codegeo": "215651"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "21",
+              "governorateFr": "Beja",
+              "governorateAr": "باجة",
+              "delegationCode": "2156",
+              "delegationFr": "Tibar",
+              "delegationAr": "تيبار",
+              "sectorCode": "215651",
+              "sectorFr": "Tibar",
+              "sectorAr": "تيبار",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21997,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 999,
+                "Nombre_de_menages_par_Secteurs.xlsx": 998
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7189438",
+            "sourceId": "osm",
+            "name": "تيبار",
+            "aliases": [
+              "Tibar"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.528105,
+            "lng": 9.121965,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.058241,
+              36.50875,
+              9.170241,
+              36.54754
+            ],
+            "areaKm2": 30.88826931704252,
+            "pickerGroupId": "osm:relation:7189438",
+            "offset": 4648156,
+            "length": 2516
+          },
+          "packedGeometrySha256": "66a1b046d065d707d38736d1875e8016f818bcfed670cc49966ac17f8dfd33e4"
+        },
+        {
+          "id": "osm:relation:7189445",
+          "code": "215652",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دجبة",
+            "name:ar": "دجبة",
+            "name:fr": "Djebba",
+            "ref:tn:codegeo": "215652"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "21",
+              "governorateFr": "Beja",
+              "governorateAr": "باجة",
+              "delegationCode": "2156",
+              "delegationFr": "Tibar",
+              "delegationAr": "تيبار",
+              "sectorCode": "215652",
+              "sectorFr": "Djebba",
+              "sectorAr": "دجبة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22031,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 1001,
+                "Nombre_de_menages_par_Secteurs.xlsx": 1000
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7189445",
+            "sourceId": "osm",
+            "name": "دجبة",
+            "aliases": [
+              "Djebba"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.480995,
+            "lng": 9.115037,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.075354,
+              36.45188,
+              9.161269,
+              36.51066
+            ],
+            "areaKm2": 34.322889404284915,
+            "pickerGroupId": "osm:relation:7189445",
+            "offset": 4672736,
+            "length": 2356
+          },
+          "packedGeometrySha256": "36ac5cd7808d3f7b90001621bac218437f32f54310a8618953afa7008312c38e"
+        },
+        {
+          "id": "osm:relation:7189468",
+          "code": "215653",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين الدفالي",
+            "name:ar": "عين الدفالي",
+            "name:fr": "Ain Ed-Defali",
+            "ref:tn:codegeo": "215653"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "21",
+              "governorateFr": "Beja",
+              "governorateAr": "باجة",
+              "delegationCode": "2156",
+              "delegationFr": "Tibar",
+              "delegationAr": "تيبار",
+              "sectorCode": "215653",
+              "sectorFr": "Ain ed-defali",
+              "sectorAr": "عين الدفالي",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22065,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 1003,
+                "Nombre_de_menages_par_Secteurs.xlsx": 1002
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7189468",
+            "sourceId": "osm",
+            "name": "عين الدفالي",
+            "aliases": [
+              "Ain Ed-Defali",
+              "Ain Eddafali"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.475043,
+            "lng": 9.066383,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.016151,
+              36.43484,
+              9.090852,
+              36.51546
+            ],
+            "areaKm2": 30.028512929339485,
+            "pickerGroupId": "osm:relation:7189468",
+            "offset": 4757924,
+            "length": 2412
+          },
+          "packedGeometrySha256": "53d136e0ecdd16b78a6e47e896fb5eed33a73e345d3eea479eb91a53ba18ec31"
+        },
+        {
+          "id": "osm:relation:7189425",
+          "code": "215654",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النشيمة",
+            "name:ar": "النشيمة",
+            "name:fr": "En-Nechima",
+            "ref:tn:codegeo": "215654"
+          },
+          "officialRecords": [
+            {
+              "governorateCode": "21",
+              "governorateFr": "Beja",
+              "governorateAr": "باجة",
+              "delegationCode": "2156",
+              "delegationFr": "Tibar",
+              "delegationAr": "تيبار",
+              "sectorCode": "215654",
+              "sectorFr": "En-nechima",
+              "sectorAr": "النشيمة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22099,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 1004,
+                "Nombre_de_menages_par_Secteurs.xlsx": 1003
+              }
+            }
+          ],
+          "currentMetadata": {
+            "id": "osm:relation:7189425",
+            "sourceId": "osm",
+            "name": "النشيمة",
+            "aliases": [
+              "En-Nechima"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.57249,
+            "lng": 9.087046,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.067611,
+              36.54237,
+              9.12257,
+              36.6025
+            ],
+            "areaKm2": 19.199638022616195,
+            "pickerGroupId": "osm:relation:7189425",
+            "offset": 4599184,
+            "length": 3036
+          },
+          "packedGeometrySha256": "622e4b802946d5fbc27c61db831ca4915754c25829f881e4767217b51375340e"
+        }
+      ],
+      "currentOfficialImadaCount": 4,
+      "existingCuration": [],
+      "ownCoordinateCorrections": [],
+      "beforeGroups": {
+        "osm:relation:7189438": [
+          "osm:relation:7189438",
+          "osm:way:278951683"
+        ],
+        "delegation:516": [
+          "delegation:516"
+        ]
+      },
+      "conditionalAfterGroups": {
+        "osm:relation:7189438": [
+          "osm:relation:7189438"
+        ],
+        "delegation:516": [
+          "delegation:516",
+          "osm:way:278951683"
+        ]
+      },
+      "conditionalRawFieldChanges": [
+        {
+          "id": "osm:way:278951683",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7189438",
+          "after": "delegation:516"
+        }
+      ],
+      "decision": "SOURCE_SUPPORTED_SETTLEMENT_DISPLAY_CANDIDATE_KEEP_IMADA_SEPARATE_NOT_IMPLEMENTATION_READY",
+      "newEvidence": "HAICOP Tender99641 explicitly uses MUNICIPALITE TIBAR and Commune de Thibar at9022 in the same official notice; the Social Ministry gives a Tibar street address9022. This corroborates the bilingual locality identity already connected by village2832036076 inside residential278951683.",
+      "requiredQualification": "Base516 is an unchanged legacy settlement reference, not a certified centre or boundary point. Its331m-scale outside-footprint relation is preserved explicitly, never used as positive identity evidence.",
+      "remainingImplementationFacts": [
+        "Acquire/pin exact source village API version/timestamp/changeset if the chosen runtime proof requires fresh API evidence; cache and PBF provenance alone are already frozen.",
+        "An exact distinct-pair guard must split sector7189438 and residential278951683 before assigning only the residential row to base516.",
+        "Current noncoincident helper requires point town, residential name:ar/addr:city/name:fr and raw primary equal baseArabic. Actual point is village and raw residential source has only name=Thibar. Add a narrowly typed bilingual-source identity mode; preserve raw Thibar/baseتيبار and all numeric fields.",
+        "Pin all three original exact-name peers plus the separate read-only administrative parent7189390 and governor context; preserve all4 coded current imadas and complete raw groups. The existing noncoincident branch hardcodes5 imadas and needs an explicit complete-count proof for4."
+      ],
+      "primaryEvidence": [
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tibar-ayoun-borj-current-scope-triage\\tibar-haicop.html",
+          "sha256": "89cd33a1853972dbe4883945b9b28cb3ed5b70b351de5866e83c409c0f1a171c",
+          "url": "https://www.marchespublics.gov.tn/fr/appels-doffres/Tender-99641"
+        },
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tibar-ayoun-borj-current-scope-triage\\tibar-social-ministry.html",
+          "sha256": "e872b770183db65e1a48c988e863db654ba7b508d8da76ff1e04b471cb93891b",
+          "url": "https://www.social.gov.tn/ar/societes?categorie=35&keyword=&page=9&service=All&type=All&ville=All"
+        }
+      ]
+    }
+  },
+  "records": {
+    "osm:node:2832036076": {
+      "id": "osm:node:2832036076",
+      "kind": "village",
+      "originalSourceId": null,
+      "originalTags": {
+        "addr:postcode": "9022",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:en": "Thibar",
+        "name:fr": "Thibar",
+        "place": "village",
+        "population": "3334",
+        "wikidata": "Q3523994",
+        "wikimedia_commons": "Category:Thibar",
+        "wikipedia": "ar:تيبار (تونس)",
+        "wikipedia:ar": "تيبار (تونس)"
+      },
+      "originalGeometrySha256": "7f76fbb010f965576ac08d1bcfb7ea987ec7db32d09800d726277a2a5fce083e",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "addr:postcode": "9022",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:en": "Thibar",
+        "name:fr": "Thibar",
+        "place": "village",
+        "population": "3334",
+        "wikidata": "Q3523994",
+        "wikimedia_commons": "Category:Thibar",
+        "wikipedia": "ar:تيبار (تونس)",
+        "wikipedia:ar": "تيبار (تونس)"
+      },
+      "effectiveGeometrySha256": "7f76fbb010f965576ac08d1bcfb7ea987ec7db32d09800d726277a2a5fce083e",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:1435833": {
+      "id": "osm:relation:1435833",
+      "kind": "governorate",
+      "originalSourceId": null,
+      "originalTags": {
+        "ISO3166-2": "TN-31",
+        "admin_level": "4",
+        "alt_name:fa": "استان باجه",
+        "alt_name:ur": "ولایت باجہ",
+        "boundary": "administrative",
+        "name": "ولاية باجة",
+        "name:ar": "ولاية باجة",
+        "name:az": "Beca (vilayət)",
+        "name:azb": "باجه",
+        "name:be": "Беджа (вілает)",
+        "name:be-tarask": "Бэджа (вілает)",
+        "name:bg": "Бежа (област)",
+        "name:ca": "Governació de Béja",
+        "name:ceb": "Gouvernorat de Béja",
+        "name:cy": "Béja (talaith)",
+        "name:de": "Gouvernement Beja",
+        "name:el": "Μπετζά (Κυβερνείο)",
+        "name:en": "Béja",
+        "name:es": "Gobernación de Béja",
+        "name:fa": "باجه",
+        "name:fi": "Béja (kuvernoraatti)",
+        "name:fr": "Gouvernorat Béja",
+        "name:frr": "Béja (Guwernement)",
+        "name:hu": "Béja kormányzóság",
+        "name:id": "Kegubernuran Béja",
+        "name:it": "Béja",
+        "name:ja": "ベジャ県",
+        "name:ka": "ბეჯის ვილაიეთი",
+        "name:ko": "베자주",
+        "name:lt": "Badžos vilajetas",
+        "name:ms": "Kawasan kegabenoran Béja",
+        "name:nl": "Béja (gouvernement)",
+        "name:no": "Béja (guvernement)",
+        "name:pl": "Gubernatorstwo Badża",
+        "name:pt": "Béja (província)",
+        "name:ro": "Guvernoratul Béja",
+        "name:ru": "Беджа (вилайет)",
+        "name:sco": "Béja Govrenorate",
+        "name:sh": "Béja (vilajet)",
+        "name:tr": "Bace ili",
+        "name:uk": "Беджа (вілаєт)",
+        "name:ur": "باجہ",
+        "name:zh": "巴傑省",
+        "name:zu": "Béja Governorate",
+        "official_name": "ولاية باجة",
+        "official_name:ar": "ولاية باجة",
+        "official_name:en": "Béja Governorate",
+        "official_name:fr": "Gouvernorat de Béja",
+        "official_name:it": "Governatorato di Béja",
+        "population": "304501",
+        "ref:tn:codegeo": "21",
+        "wikidata": "Q276576",
+        "wikipedia": "ar:ولاية باجة"
+      },
+      "originalGeometrySha256": "5307dbee8c626f75a89063083fc65c30d5e8bc3a2d52deac08407154b9091e15",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "ISO3166-2": "TN-31",
+        "admin_level": "4",
+        "alt_name:fa": "استان باجه",
+        "alt_name:ur": "ولایت باجہ",
+        "boundary": "administrative",
+        "name": "ولاية باجة",
+        "name:ar": "ولاية باجة",
+        "name:az": "Beca (vilayət)",
+        "name:azb": "باجه",
+        "name:be": "Беджа (вілает)",
+        "name:be-tarask": "Бэджа (вілает)",
+        "name:bg": "Бежа (област)",
+        "name:ca": "Governació de Béja",
+        "name:ceb": "Gouvernorat de Béja",
+        "name:cy": "Béja (talaith)",
+        "name:de": "Gouvernement Beja",
+        "name:el": "Μπετζά (Κυβερνείο)",
+        "name:en": "Béja",
+        "name:es": "Gobernación de Béja",
+        "name:fa": "باجه",
+        "name:fi": "Béja (kuvernoraatti)",
+        "name:fr": "Gouvernorat Béja",
+        "name:frr": "Béja (Guwernement)",
+        "name:hu": "Béja kormányzóság",
+        "name:id": "Kegubernuran Béja",
+        "name:it": "Béja",
+        "name:ja": "ベジャ県",
+        "name:ka": "ბეჯის ვილაიეთი",
+        "name:ko": "베자주",
+        "name:lt": "Badžos vilajetas",
+        "name:ms": "Kawasan kegabenoran Béja",
+        "name:nl": "Béja (gouvernement)",
+        "name:no": "Béja (guvernement)",
+        "name:pl": "Gubernatorstwo Badża",
+        "name:pt": "Béja (província)",
+        "name:ro": "Guvernoratul Béja",
+        "name:ru": "Беджа (вилайет)",
+        "name:sco": "Béja Govrenorate",
+        "name:sh": "Béja (vilajet)",
+        "name:tr": "Bace ili",
+        "name:uk": "Беджа (вілаєт)",
+        "name:ur": "باجہ",
+        "name:zh": "巴傑省",
+        "name:zu": "Béja Governorate",
+        "official_name": "ولاية باجة",
+        "official_name:ar": "ولاية باجة",
+        "official_name:en": "Béja Governorate",
+        "official_name:fr": "Gouvernorat de Béja",
+        "official_name:it": "Governatorato di Béja",
+        "population": "304501",
+        "ref:tn:codegeo": "21",
+        "wikidata": "Q276576",
+        "wikipedia": "ar:ولاية باجة"
+      },
+      "effectiveGeometrySha256": "5307dbee8c626f75a89063083fc65c30d5e8bc3a2d52deac08407154b9091e15",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7189390": {
+      "id": "osm:relation:7189390",
+      "kind": "delegation",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "long_name": "معتمدية تيبار",
+        "long_name:ar": "معتمدية تيبار",
+        "long_name:fr": "Délégation de Thibar",
+        "name": "معتمدية تيبار",
+        "name:ar": "معتمدية تيبار",
+        "name:fr": "Délégation Tibar",
+        "ref:tn:codegeo": "2156",
+        "ref:tn:hasc_2": "TN.BJ.TH",
+        "sorting_name": "تيبار",
+        "sorting_name:ar": "تيبار",
+        "sorting_name:fr": "Thibar",
+        "wikidata": "Q3523989",
+        "wikipedia": "ar:معتمدية تيبار",
+        "wikipedia:ar": "معتمدية تيبار"
+      },
+      "originalGeometrySha256": "28040f5addc0256d7c53b9b0198c465898d766f2680b04c89ab03085e009f1b1",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "long_name": "معتمدية تيبار",
+        "long_name:ar": "معتمدية تيبار",
+        "long_name:fr": "Délégation de Thibar",
+        "name": "معتمدية تيبار",
+        "name:ar": "معتمدية تيبار",
+        "name:fr": "Délégation Tibar",
+        "ref:tn:codegeo": "2156",
+        "ref:tn:hasc_2": "TN.BJ.TH",
+        "sorting_name": "تيبار",
+        "sorting_name:ar": "تيبار",
+        "sorting_name:fr": "Thibar",
+        "wikidata": "Q3523989",
+        "wikipedia": "ar:معتمدية تيبار",
+        "wikipedia:ar": "معتمدية تيبار"
+      },
+      "effectiveGeometrySha256": "28040f5addc0256d7c53b9b0198c465898d766f2680b04c89ab03085e009f1b1",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7189425": {
+      "id": "osm:relation:7189425",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النشيمة",
+        "name:ar": "النشيمة",
+        "name:fr": "En-Nechima",
+        "ref:tn:codegeo": "215654"
+      },
+      "originalGeometrySha256": "5f808b2ac914a23d2872f57e3dab29ecf637729524349f423308e802440c9d44",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النشيمة",
+        "name:ar": "النشيمة",
+        "name:fr": "En-Nechima",
+        "ref:tn:codegeo": "215654"
+      },
+      "effectiveGeometrySha256": "5f808b2ac914a23d2872f57e3dab29ecf637729524349f423308e802440c9d44",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7189425",
+        "sourceId": "osm",
+        "name": "النشيمة",
+        "aliases": [
+          "En-Nechima"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تيبار",
+        "contextAliases": [
+          "Délégation Tibar",
+          "معتمدية تيبار"
+        ],
+        "governorateId": 356,
+        "lat": 36.57249,
+        "lng": 9.087046,
+        "delegationId": 516,
+        "hasBoundary": true,
+        "bbox": [
+          9.067611,
+          36.54237,
+          9.12257,
+          36.6025
+        ],
+        "areaKm2": 19.199638022616195,
+        "pickerGroupId": "osm:relation:7189425"
+      },
+      "packedGeometrySha256": "622e4b802946d5fbc27c61db831ca4915754c25829f881e4767217b51375340e"
+    },
+    "osm:relation:7189438": {
+      "id": "osm:relation:7189438",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:fr": "Tibar",
+        "ref:tn:codegeo": "215651"
+      },
+      "originalGeometrySha256": "4a24f9de4309b4beb1d4f907b010836a5041d49109281d6d73f4284d785a09db",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:fr": "Tibar",
+        "ref:tn:codegeo": "215651"
+      },
+      "effectiveGeometrySha256": "4a24f9de4309b4beb1d4f907b010836a5041d49109281d6d73f4284d785a09db",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7189438",
+        "sourceId": "osm",
+        "name": "تيبار",
+        "aliases": [
+          "Tibar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تيبار",
+        "contextAliases": [
+          "Délégation Tibar",
+          "معتمدية تيبار"
+        ],
+        "governorateId": 356,
+        "lat": 36.528105,
+        "lng": 9.121965,
+        "delegationId": 516,
+        "hasBoundary": true,
+        "bbox": [
+          9.058241,
+          36.50875,
+          9.170241,
+          36.54754
+        ],
+        "areaKm2": 30.88826931704252,
+        "pickerGroupId": "osm:relation:7189438"
+      },
+      "packedGeometrySha256": "66a1b046d065d707d38736d1875e8016f818bcfed670cc49966ac17f8dfd33e4"
+    },
+    "osm:relation:7189445": {
+      "id": "osm:relation:7189445",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دجبة",
+        "name:ar": "دجبة",
+        "name:fr": "Djebba",
+        "ref:tn:codegeo": "215652"
+      },
+      "originalGeometrySha256": "44eb45d1bc2ecc99b80920bca0060c5eb7aaeb71bf773136b4dc154bbc818cec",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دجبة",
+        "name:ar": "دجبة",
+        "name:fr": "Djebba",
+        "ref:tn:codegeo": "215652"
+      },
+      "effectiveGeometrySha256": "44eb45d1bc2ecc99b80920bca0060c5eb7aaeb71bf773136b4dc154bbc818cec",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7189445",
+        "sourceId": "osm",
+        "name": "دجبة",
+        "aliases": [
+          "Djebba"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تيبار",
+        "contextAliases": [
+          "Délégation Tibar",
+          "معتمدية تيبار"
+        ],
+        "governorateId": 356,
+        "lat": 36.480995,
+        "lng": 9.115037,
+        "delegationId": 516,
+        "hasBoundary": true,
+        "bbox": [
+          9.075354,
+          36.45188,
+          9.161269,
+          36.51066
+        ],
+        "areaKm2": 34.322889404284915,
+        "pickerGroupId": "osm:relation:7189445"
+      },
+      "packedGeometrySha256": "36ac5cd7808d3f7b90001621bac218437f32f54310a8618953afa7008312c38e"
+    },
+    "osm:relation:7189468": {
+      "id": "osm:relation:7189468",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين الدفالي",
+        "name:ar": "عين الدفالي",
+        "name:fr": "Ain Ed-Defali",
+        "ref:tn:codegeo": "215653"
+      },
+      "originalGeometrySha256": "77a63778094a385170f0ff1f560cc28ed2bbd3945e8b3c0aac148dd38e5f3d90",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين الدفالي",
+        "name:ar": "عين الدفالي",
+        "name:fr": "Ain Ed-Defali",
+        "ref:tn:codegeo": "215653"
+      },
+      "effectiveGeometrySha256": "77a63778094a385170f0ff1f560cc28ed2bbd3945e8b3c0aac148dd38e5f3d90",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7189468",
+        "sourceId": "osm",
+        "name": "عين الدفالي",
+        "aliases": [
+          "Ain Ed-Defali",
+          "Ain Eddafali"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تيبار",
+        "contextAliases": [
+          "Délégation Tibar",
+          "معتمدية تيبار"
+        ],
+        "governorateId": 356,
+        "lat": 36.475043,
+        "lng": 9.066383,
+        "delegationId": 516,
+        "hasBoundary": true,
+        "bbox": [
+          9.016151,
+          36.43484,
+          9.090852,
+          36.51546
+        ],
+        "areaKm2": 30.028512929339485,
+        "pickerGroupId": "osm:relation:7189468"
+      },
+      "packedGeometrySha256": "53d136e0ecdd16b78a6e47e896fb5eed33a73e345d3eea479eb91a53ba18ec31"
+    },
+    "osm:way:278951683": {
+      "id": "osm:way:278951683",
+      "kind": "residential",
+      "originalSourceId": null,
+      "originalTags": {
+        "landuse": "residential",
+        "name": "Thibar"
+      },
+      "originalGeometrySha256": "8bc411f078c4585a906c4fd0ba09a76c82a533a99ad5ee8f162c59e2c7d8c9a2",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "Thibar"
+      },
+      "effectiveGeometrySha256": "8bc411f078c4585a906c4fd0ba09a76c82a533a99ad5ee8f162c59e2c7d8c9a2",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:278951683",
+        "sourceId": "osm",
+        "name": "Thibar",
+        "aliases": [
+          "تيبار"
+        ],
+        "kind": "residential",
+        "parentName": "تيبار",
+        "contextAliases": [
+          "Délégation Tibar",
+          "Tibar",
+          "تيبار",
+          "معتمدية تيبار"
+        ],
+        "governorateId": 356,
+        "lat": 36.523724,
+        "lng": 9.106197,
+        "delegationId": 516,
+        "hasBoundary": true,
+        "bbox": [
+          9.095232,
+          36.517539,
+          9.117924,
+          36.529468
+        ],
+        "areaKm2": 1.2914265753157057,
+        "pickerGroupId": "osm:relation:7189438"
+      },
+      "packedGeometrySha256": "6c6dc8489d146c953837da1982e42767969daf201b3e5b63347a47297d00d1fc"
+    },
+    "osm:way:609966860": {
+      "id": "osm:way:609966860",
+      "kind": "residential",
+      "originalSourceId": null,
+      "originalTags": {
+        "landuse": "residential",
+        "name": "Djebba",
+        "wikidata": "Q12211477",
+        "wikimedia_commons": "Category:Djebba",
+        "wikipedia": "fr:Djebba"
+      },
+      "originalGeometrySha256": "8f71746f375eeea14201c2a09b27d0cd57043be4607984dd489451fe3851366a",
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "Djebba",
+        "wikidata": "Q12211477",
+        "wikimedia_commons": "Category:Djebba",
+        "wikipedia": "fr:Djebba"
+      },
+      "effectiveGeometrySha256": "8f71746f375eeea14201c2a09b27d0cd57043be4607984dd489451fe3851366a",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:609966860",
+        "sourceId": "osm",
+        "name": "Djebba",
+        "aliases": [
+          "دجبة"
+        ],
+        "kind": "residential",
+        "parentName": "دجبة",
+        "contextAliases": [
+          "Djebba",
+          "Délégation Tibar",
+          "دجبة",
+          "معتمدية تيبار"
+        ],
+        "governorateId": 356,
+        "lat": 36.483985,
+        "lng": 9.093075,
+        "delegationId": 516,
+        "hasBoundary": true,
+        "bbox": [
+          9.091373,
+          36.482915,
+          9.094677,
+          36.485167
+        ],
+        "areaKm2": 0.03979182288783873,
+        "pickerGroupId": "osm:relation:7189445"
+      },
+      "packedGeometrySha256": "f894b1e713928fbaafd859ddf7a013899011485809f0c2910cef33df440b472b"
+    }
+  },
+  "expected": {
+    "baseCurrent": {
+      "id": 516,
+      "nomFr": "Tibar",
+      "nomAr": "تيبار",
+      "nomEn": "Tibar",
+      "lat": 36.5301,
+      "lng": 9.1124
+    },
+    "governorCurrent": {
+      "id": 356,
+      "nomFr": "Béja",
+      "nomAr": "باجة",
+      "nomEn": "Beja",
+      "lat": 36.7256,
+      "lng": 9.1817
+    },
+    "pointId": "osm:node:2832036076",
+    "sourcePointCoordinates": {
+      "lat": 36.5218222,
+      "lng": 9.1049848
+    },
+    "separateSectorId": "osm:relation:7189438",
+    "parentSourceId": "osm:relation:7189390",
+    "governorSourceId": "osm:relation:1435833",
+    "preservedImadas": [
+      {
+        "id": "osm:relation:7189438",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215651",
+          "sectorFr": "Tibar",
+          "sectorAr": "تيبار",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21997,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 999,
+            "Nombre_de_menages_par_Secteurs.xlsx": 998
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7189445",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215652",
+          "sectorFr": "Djebba",
+          "sectorAr": "دجبة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22031,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1001,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1000
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7189468",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215653",
+          "sectorFr": "Ain ed-defali",
+          "sectorAr": "عين الدفالي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22065,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1003,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1002
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7189425",
+        "official": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2156",
+          "delegationFr": "Tibar",
+          "delegationAr": "تيبار",
+          "sectorCode": "215654",
+          "sectorFr": "En-nechima",
+          "sectorAr": "النشيمة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 22099,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1004,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1003
+          }
+        }
+      }
+    ],
+    "protectedRawIds": [
+      "osm:relation:7189425",
+      "osm:relation:7189438",
+      "osm:relation:7189445",
+      "osm:relation:7189468",
+      "osm:way:278951683",
+      "osm:way:609966860"
+    ],
+    "originalNamePeerIds": [
+      "osm:node:2832036076",
+      "osm:relation:7189438",
+      "osm:way:278951683"
+    ],
+    "effectiveNamePeerIds": [
+      "osm:node:2832036076",
+      "osm:relation:7189438",
+      "osm:way:278951683"
+    ],
+    "nameQueries": [
+      "thibar",
+      "tibar",
+      "تيبار"
+    ],
+    "currentWholeGroups": {
+      "osm:relation:7189425": [
+        "osm:relation:7189425"
+      ],
+      "osm:relation:7189438": [
+        "osm:relation:7189438",
+        "osm:way:278951683"
+      ],
+      "osm:relation:7189445": [
+        "osm:relation:7189445",
+        "osm:way:609966860"
+      ],
+      "osm:relation:7189468": [
+        "osm:relation:7189468"
+      ],
+      "delegation:516": [
+        "delegation:516"
+      ]
+    },
+    "requiredGroupsAfterDistinctGuard": {
+      "osm:relation:7189425": [
+        "osm:relation:7189425"
+      ],
+      "osm:relation:7189438": [
+        "osm:relation:7189438"
+      ],
+      "osm:relation:7189445": [
+        "osm:relation:7189445",
+        "osm:way:609966860"
+      ],
+      "osm:relation:7189468": [
+        "osm:relation:7189468"
+      ],
+      "delegation:516": [
+        "delegation:516"
+      ],
+      "osm:way:278951683": [
+        "osm:way:278951683"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "osm:relation:7189425": [
+        "osm:relation:7189425"
+      ],
+      "osm:relation:7189438": [
+        "osm:relation:7189438"
+      ],
+      "osm:relation:7189445": [
+        "osm:relation:7189445",
+        "osm:way:609966860"
+      ],
+      "osm:relation:7189468": [
+        "osm:relation:7189468"
+      ],
+      "delegation:516": [
+        "delegation:516",
+        "osm:way:278951683"
+      ]
+    },
+    "distinctPair": {
+      "ids": [
+        "osm:relation:7189438",
+        "osm:way:278951683"
+      ],
+      "reviewEvidence": {
+        "file": "settlement-polygon-display-reviews/three-town/516-distinct.json",
+        "sha256": "638a3022618e67a845cf57f84e08dad2e7c1c0238bacecf405570720b3d20c16"
+      }
+    },
+    "baseInsideSettlementPolygon": {
+      "original": false,
+      "effective": false,
+      "packed": false
+    },
+    "coordinatePolicy": "preserve_all_reference_and_raw_coordinates",
+    "reviewedNoncontainmentReason": "Base516 is an unchanged legacy settlement reference, not a certified centre or boundary point. Its331m-scale outside-footprint relation is preserved explicitly, never used as positive identity evidence.",
+    "namesakeSectorReferenceContainment": {
+      "original": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "effective": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "packed": {
+        "base": true,
+        "sourcePoint": true
+      }
+    },
+    "settlementWithinNamesakeSector": {
+      "original": true,
+      "effective": true,
+      "packed": true
+    },
+    "coordinateCorrections": [],
+    "nearestReferenceIds": {
+      "base": 516,
+      "settlementPolygon": 516,
+      "sourcePoint": 516,
+      "separateSector": 516
+    },
+    "publicNodeElement": {
+      "type": "node",
+      "id": 2832036076,
+      "lat": 36.5218222,
+      "lon": 9.1049848,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 7,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:postcode": "9022",
+        "name": "تيبار",
+        "name:ar": "تيبار",
+        "name:en": "Thibar",
+        "name:fr": "Thibar",
+        "place": "village",
+        "population": "3334",
+        "wikidata": "Q3523994",
+        "wikimedia_commons": "Category:Thibar",
+        "wikipedia": "ar:تيبار (تونس)",
+        "wikipedia:ar": "تيبار (تونس)"
+      }
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:278951683",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7189438",
+        "after": "delegation:516"
+      }
+    ]
+  },
+  "primaryEvidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/tibar-haicop.html",
+      "sha256": "89cd33a1853972dbe4883945b9b28cb3ed5b70b351de5866e83c409c0f1a171c",
+      "url": "https://www.marchespublics.gov.tn/fr/appels-doffres/Tender-99641"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/tibar-social-ministry.html",
+      "sha256": "e872b770183db65e1a48c988e863db654ba7b508d8da76ff1e04b471cb93891b",
+      "url": "https://www.social.gov.tn/ar/societes?categorie=35&keyword=&page=9&service=All&type=All&ville=All"
+    }
+  ]
+}

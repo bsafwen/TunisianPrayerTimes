@@ -1,0 +1,1013 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_noncoincident_official_boundary_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_noncoincident_town_residential_base_identity",
+    "id": "osm:way:93164500",
+    "targetDelegationId": 388
+  },
+  "historicalSourceFacts": {
+    "file": "noncoincident-town-display-reviews/frozen-source-facts.json",
+    "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc"
+  },
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "ee6db3469c37d1f02762b855df240cdf637bd054fb08fdee55098721ac51330a"
+  },
+  "sourceStates": [
+    {
+      "id": "osm:node:283645091",
+      "original": {
+        "kind": "town",
+        "tags": {
+          "addr:city": "حلق الوادي",
+          "addr:postcode": "2060",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:azb": "حلق الوادی",
+          "name:de": "Ḥalq al-Wādī",
+          "name:en": "La Goulette",
+          "name:es": "La Goleta",
+          "name:fa": "حلق الوادی",
+          "name:fr": "La Goulette",
+          "name:he": "לה גולט",
+          "name:it": "La Goletta",
+          "name:ru": "Хальк-эль-Уэд",
+          "place": "town",
+          "wikidata": "Q798445",
+          "wikimedia_commons": "Category:La Goulette",
+          "wikipedia": "ar:حلق الوادي",
+          "wikipedia:es": "La Goleta"
+        },
+        "sourceId": null,
+        "geometrySha256": "5f96406f7f8fef111aff221eb8d21c2f51dc094d422ced1567dc582fb09384ef"
+      },
+      "effective": {
+        "kind": "town",
+        "tags": {
+          "addr:city": "حلق الوادي",
+          "addr:postcode": "2060",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:azb": "حلق الوادی",
+          "name:de": "Ḥalq al-Wādī",
+          "name:en": "La Goulette",
+          "name:es": "La Goleta",
+          "name:fa": "حلق الوادی",
+          "name:fr": "La Goulette",
+          "name:he": "לה גולט",
+          "name:it": "La Goletta",
+          "name:ru": "Хальк-эль-Уэд",
+          "place": "town",
+          "wikidata": "Q798445",
+          "wikimedia_commons": "Category:La Goulette",
+          "wikipedia": "ar:حلق الوادي",
+          "wikipedia:es": "La Goleta"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "5f96406f7f8fef111aff221eb8d21c2f51dc094d422ced1567dc582fb09384ef"
+      }
+    },
+    {
+      "id": "osm:relation:1435835",
+      "original": {
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-11",
+          "admin_level": "4",
+          "alt_name:de": "Gouvernement Tunis",
+          "alt_name:ko": "튀니스주",
+          "alt_name:ru": "Тунис (вилайет)",
+          "boundary": "administrative",
+          "long_name:ar": "ولاية تونس",
+          "long_name:en": "Tunis Governorate",
+          "long_name:fr": "Gouvernorat de Tunis",
+          "long_name:it": "Governatorato di Tunisi",
+          "name": "ولاية تونس",
+          "name:ar": "ولاية تونس",
+          "name:be": "Туніс (вілает)",
+          "name:be-tarask": "Туніс (вілает)",
+          "name:bg": "Тунис (област)",
+          "name:ca": "Governació de Tunis",
+          "name:ceb": "Gouvernorat de Tunis",
+          "name:cy": "Tiwnis (talaith)",
+          "name:de": "Tunis",
+          "name:en": "Tunis",
+          "name:es": "Gobernación de Túnez",
+          "name:fa": "استان تونس",
+          "name:fr": "Gouvernorat Tunis",
+          "name:id": "Kegubernuran Tunis",
+          "name:it": "Tunisi",
+          "name:ja": "チュニス県",
+          "name:ko": "튀니스",
+          "name:ms": "Kawasan kegabenoran Tunis",
+          "name:nl": "Tunis (gouvernement)",
+          "name:no": "Tunis (guvernement)",
+          "name:pl": "Gubernatorstwo Tunis",
+          "name:pt": "Túnis (província)",
+          "name:ro": "Guvernoratul Tunis",
+          "name:ru": "Тунис",
+          "name:sco": "Tunis Govrenorate",
+          "name:sh": "Tunis (vilajet)",
+          "name:sv": "Tunis (guvernement)",
+          "name:tr": "Tunus ili",
+          "name:uk": "Туніс (вілаєт)",
+          "name:ur": "ولایت تونس",
+          "name:zh": "突尼斯省",
+          "name:zu": "Tunis Governorate",
+          "population": "983861",
+          "ref:tn:codegeo": "11",
+          "source:population": "INS TN 2004",
+          "wikidata": "Q328109",
+          "wikipedia": "ar:ولاية تونس"
+        },
+        "sourceId": null,
+        "geometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468"
+      },
+      "effective": {
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-11",
+          "admin_level": "4",
+          "alt_name:de": "Gouvernement Tunis",
+          "alt_name:ko": "튀니스주",
+          "alt_name:ru": "Тунис (вилайет)",
+          "boundary": "administrative",
+          "long_name:ar": "ولاية تونس",
+          "long_name:en": "Tunis Governorate",
+          "long_name:fr": "Gouvernorat de Tunis",
+          "long_name:it": "Governatorato di Tunisi",
+          "name": "ولاية تونس",
+          "name:ar": "ولاية تونس",
+          "name:be": "Туніс (вілает)",
+          "name:be-tarask": "Туніс (вілает)",
+          "name:bg": "Тунис (област)",
+          "name:ca": "Governació de Tunis",
+          "name:ceb": "Gouvernorat de Tunis",
+          "name:cy": "Tiwnis (talaith)",
+          "name:de": "Tunis",
+          "name:en": "Tunis",
+          "name:es": "Gobernación de Túnez",
+          "name:fa": "استان تونس",
+          "name:fr": "Gouvernorat Tunis",
+          "name:id": "Kegubernuran Tunis",
+          "name:it": "Tunisi",
+          "name:ja": "チュニス県",
+          "name:ko": "튀니스",
+          "name:ms": "Kawasan kegabenoran Tunis",
+          "name:nl": "Tunis (gouvernement)",
+          "name:no": "Tunis (guvernement)",
+          "name:pl": "Gubernatorstwo Tunis",
+          "name:pt": "Túnis (província)",
+          "name:ro": "Guvernoratul Tunis",
+          "name:ru": "Тунис",
+          "name:sco": "Tunis Govrenorate",
+          "name:sh": "Tunis (vilajet)",
+          "name:sv": "Tunis (guvernement)",
+          "name:tr": "Tunus ili",
+          "name:uk": "Туніс (вілаєт)",
+          "name:ur": "ولایت تونس",
+          "name:zh": "突尼斯省",
+          "name:zu": "Tunis Governorate",
+          "population": "983861",
+          "ref:tn:codegeo": "11",
+          "source:population": "INS TN 2004",
+          "wikidata": "Q328109",
+          "wikipedia": "ar:ولاية تونس"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468"
+      }
+    },
+    {
+      "id": "osm:relation:4134886",
+      "original": {
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "name": "معتمدية حلق الوادي",
+          "name:ar": "معتمدية حلق الوادي",
+          "name:es": "Delegación de La Goleta",
+          "name:fr": "Délégation La Goulette",
+          "ref:tn:codegeo": "1169",
+          "ref:tn:hasc_2": "TN.TU.LG",
+          "short_name": "حلق الوادي",
+          "short_name:ar": "حلق الوادي",
+          "short_name:es": "La Goleta",
+          "wikidata": "Q3209432",
+          "wikipedia": "ar:معتمدية حلق الوادي"
+        },
+        "sourceId": null,
+        "geometrySha256": "9acc86f546f0f1f9dade23f86323d3965da301781d9cdd0cb412da5bcff6ca69"
+      },
+      "effective": {
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "name": "معتمدية حلق الوادي",
+          "name:ar": "معتمدية حلق الوادي",
+          "name:es": "Delegación de La Goleta",
+          "name:fr": "Délégation La Goulette",
+          "ref:tn:codegeo": "1169",
+          "ref:tn:hasc_2": "TN.TU.LG",
+          "short_name": "حلق الوادي",
+          "short_name:ar": "حلق الوادي",
+          "short_name:es": "La Goleta",
+          "wikidata": "Q3209432",
+          "wikipedia": "ar:معتمدية حلق الوادي"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "9acc86f546f0f1f9dade23f86323d3965da301781d9cdd0cb412da5bcff6ca69"
+      }
+    },
+    {
+      "id": "osm:relation:7117889",
+      "original": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حلق الوادي الكازينو",
+          "name:ar": "حلق الوادي الكازينو",
+          "name:fr": "La Goulette Casino",
+          "ref:tn:codegeo": "116952"
+        },
+        "sourceId": null,
+        "geometrySha256": "84906ae2f8175ad5140b66ed4c806c493f0a7ec1d44b627d2e78ffad54940cb2"
+      },
+      "effective": {
+        "kind": "sector",
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "116952",
+          "name:ar": "حلق الوادي الكازينو",
+          "name:fr": "La Goulette Casino"
+        },
+        "sourceId": "isie-local-sectors-2023-la-goulette",
+        "geometrySha256": "e81688c93870906b4d624a61da077498ec2f299fffc6041b0791d5fbb2b98e21"
+      }
+    },
+    {
+      "id": "osm:relation:7117890",
+      "original": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "خير الدين",
+          "name:ar": "خير الدين",
+          "name:fr": "Kheredine",
+          "ref:tn:codegeo": "116953",
+          "wikidata": "Q12211002"
+        },
+        "sourceId": null,
+        "geometrySha256": "5c4c260eb6299ad502f7de03eb7884ae5629f1589fa832dd7672a16d47a047cd"
+      },
+      "effective": {
+        "kind": "sector",
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "116953",
+          "name:ar": "خير الدين",
+          "name:fr": "Kheredine",
+          "alt_name": "Kheireddine"
+        },
+        "sourceId": "isie-local-sectors-2023-la-goulette",
+        "geometrySha256": "7ba5b219f070bd7837fb6aa008620d8882504a42bfadb0a65b02691bc970161e"
+      }
+    },
+    {
+      "id": "osm:relation:7117891",
+      "original": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حي السلامة",
+          "name:ar": "حي السلامة",
+          "name:fr": "Cité Essalema",
+          "ref:tn:codegeo": "116955"
+        },
+        "sourceId": null,
+        "geometrySha256": "af90deb746660c4845ef7b0c0237ba1c90d03002229b71a7c178c66217f08991"
+      },
+      "effective": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حي السلامة",
+          "name:ar": "حي السلامة",
+          "name:fr": "Cité Essalema",
+          "ref:tn:codegeo": "116955"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "af90deb746660c4845ef7b0c0237ba1c90d03002229b71a7c178c66217f08991"
+      }
+    },
+    {
+      "id": "osm:relation:7117932",
+      "original": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطيب مهيري",
+          "name:ar": "الطيب مهيري",
+          "name:fr": "Taieb Mhiri",
+          "ref:tn:codegeo": "116954"
+        },
+        "sourceId": null,
+        "geometrySha256": "897432cd2ab943e349506a1931aecda8aacb4396aa235a2a95a2a914bf34c447"
+      },
+      "effective": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطيب مهيري",
+          "name:ar": "الطيب مهيري",
+          "name:fr": "Taieb Mhiri",
+          "ref:tn:codegeo": "116954"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "897432cd2ab943e349506a1931aecda8aacb4396aa235a2a95a2a914bf34c447"
+      }
+    },
+    {
+      "id": "osm:relation:7117933",
+      "original": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:azb": "حلق الوادی",
+          "name:de": "Ḥalq al-Wādī",
+          "name:es": "La Goleta",
+          "name:fr": "La Goulette",
+          "ref:tn:codegeo": "116951"
+        },
+        "sourceId": null,
+        "geometrySha256": "1b99463754515fcedb5b6f3857548e8e3ad7a7ab78946c7013ba00cc3d9d591a"
+      },
+      "effective": {
+        "kind": "sector",
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "116951",
+          "name:ar": "حلق الوادي",
+          "name:fr": "La Goulette",
+          "alt_name": "La Goleta;La Goletta;Хальк-эль-Уэд;לה גולט;حلق الوادی;Ḥalq al-Wādī"
+        },
+        "sourceId": "isie-local-sectors-2023-la-goulette",
+        "geometrySha256": "1a845d48b8700b53d36a518d527be027fe348c0c0fc709ce3cfffe1863e28df6"
+      }
+    },
+    {
+      "id": "osm:way:93164500",
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "حلق الوادي",
+          "landuse": "residential",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:fr": "La Goulette"
+        },
+        "sourceId": null,
+        "geometrySha256": "2589d552f9945ba6b3e9c0ca0c35375b4bf81c6ed7ded9aa8d27c156adeddb9e"
+      },
+      "effective": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "حلق الوادي",
+          "landuse": "residential",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:fr": "La Goulette"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "2589d552f9945ba6b3e9c0ca0c35375b4bf81c6ed7ded9aa8d27c156adeddb9e"
+      }
+    }
+  ],
+  "acceptedReplacements": [
+    {
+      "id": "osm:relation:7117889",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-la-goulette",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/la-goulette-isie2023-three-sectors.geojson",
+        "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7117889",
+            "officialCode": "116952",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حلق الوادي الكازينو",
+              "name:ar": "حلق الوادي الكازينو",
+              "name:fr": "La Goulette Casino",
+              "ref:tn:codegeo": "116952"
+            },
+            "aliases": []
+          },
+          {
+            "id": "osm:relation:7117890",
+            "officialCode": "116953",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "خير الدين",
+              "name:ar": "خير الدين",
+              "name:fr": "Kheredine",
+              "ref:tn:codegeo": "116953",
+              "wikidata": "Q12211002"
+            },
+            "aliases": [
+              "Kheireddine"
+            ]
+          },
+          {
+            "id": "osm:relation:7117933",
+            "officialCode": "116951",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حلق الوادي",
+              "name:ar": "حلق الوادي",
+              "name:azb": "حلق الوادی",
+              "name:de": "Ḥalq al-Wādī",
+              "name:es": "La Goleta",
+              "name:fr": "La Goulette",
+              "ref:tn:codegeo": "116951"
+            },
+            "aliases": [
+              "La Goleta",
+              "La Goletta",
+              "Хальк-эль-Уэд",
+              "לה גולט",
+              "حلق الوادی",
+              "Ḥalq al-Wādī"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/la-goulette-three-native-source-review.json",
+            "sha256": "a68223fa5a2f34c9534b79172c2c1535f54eb1dfdca89cc71a23aa674df63ef8"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/kram-goulette-nine-sector-name-source-review.json",
+            "sha256": "8ddb5341ce39d441331012146c98e229eea60b1ef9fe1143823cf8688b1b0c35"
+          },
+          "state": "Native whole-imada source review; generated catalog and display identity migration require independent acceptance.",
+          "uncertainty": "Native map precision is preserved; map fit is not ground accuracy, and administrative boundaries need not equal commonly named neighborhoods.",
+          "evidenceFile": "official/kram-goulette-isie2023-nine-source-review.json",
+          "evidenceSha256": "198b3ce6111db37d1da8d57a5466613f81b2ce7d615eae48259dfcdd0fbd1017"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7117889",
+        "officialCode": "116952",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حلق الوادي الكازينو",
+          "name:ar": "حلق الوادي الكازينو",
+          "name:fr": "La Goulette Casino",
+          "ref:tn:codegeo": "116952"
+        },
+        "aliases": []
+      },
+      "application": {
+        "id": "osm:relation:7117889",
+        "action": "replace",
+        "officialCode": "116952",
+        "sourceId": "isie-local-sectors-2023-la-goulette"
+      },
+      "geojson": {
+        "file": "official/la-goulette-isie2023-three-sectors.geojson",
+        "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f"
+      },
+      "featureSha256": "954362331dfa9875d172c973465bff364b0c2109c6b3c1d414f4f9f8202c45fe"
+    },
+    {
+      "id": "osm:relation:7117890",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-la-goulette",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/la-goulette-isie2023-three-sectors.geojson",
+        "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7117889",
+            "officialCode": "116952",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حلق الوادي الكازينو",
+              "name:ar": "حلق الوادي الكازينو",
+              "name:fr": "La Goulette Casino",
+              "ref:tn:codegeo": "116952"
+            },
+            "aliases": []
+          },
+          {
+            "id": "osm:relation:7117890",
+            "officialCode": "116953",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "خير الدين",
+              "name:ar": "خير الدين",
+              "name:fr": "Kheredine",
+              "ref:tn:codegeo": "116953",
+              "wikidata": "Q12211002"
+            },
+            "aliases": [
+              "Kheireddine"
+            ]
+          },
+          {
+            "id": "osm:relation:7117933",
+            "officialCode": "116951",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حلق الوادي",
+              "name:ar": "حلق الوادي",
+              "name:azb": "حلق الوادی",
+              "name:de": "Ḥalq al-Wādī",
+              "name:es": "La Goleta",
+              "name:fr": "La Goulette",
+              "ref:tn:codegeo": "116951"
+            },
+            "aliases": [
+              "La Goleta",
+              "La Goletta",
+              "Хальк-эль-Уэд",
+              "לה גולט",
+              "حلق الوادی",
+              "Ḥalq al-Wādī"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/la-goulette-three-native-source-review.json",
+            "sha256": "a68223fa5a2f34c9534b79172c2c1535f54eb1dfdca89cc71a23aa674df63ef8"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/kram-goulette-nine-sector-name-source-review.json",
+            "sha256": "8ddb5341ce39d441331012146c98e229eea60b1ef9fe1143823cf8688b1b0c35"
+          },
+          "state": "Native whole-imada source review; generated catalog and display identity migration require independent acceptance.",
+          "uncertainty": "Native map precision is preserved; map fit is not ground accuracy, and administrative boundaries need not equal commonly named neighborhoods.",
+          "evidenceFile": "official/kram-goulette-isie2023-nine-source-review.json",
+          "evidenceSha256": "198b3ce6111db37d1da8d57a5466613f81b2ce7d615eae48259dfcdd0fbd1017"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7117890",
+        "officialCode": "116953",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "خير الدين",
+          "name:ar": "خير الدين",
+          "name:fr": "Kheredine",
+          "ref:tn:codegeo": "116953",
+          "wikidata": "Q12211002"
+        },
+        "aliases": [
+          "Kheireddine"
+        ]
+      },
+      "application": {
+        "id": "osm:relation:7117890",
+        "action": "replace",
+        "officialCode": "116953",
+        "sourceId": "isie-local-sectors-2023-la-goulette"
+      },
+      "geojson": {
+        "file": "official/la-goulette-isie2023-three-sectors.geojson",
+        "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f"
+      },
+      "featureSha256": "f8d6287f4ed126a4bb383ad99cbf06eb33718e8c921946da4239d068d811f44d"
+    },
+    {
+      "id": "osm:relation:7117933",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-la-goulette",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/la-goulette-isie2023-three-sectors.geojson",
+        "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7117889",
+            "officialCode": "116952",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حلق الوادي الكازينو",
+              "name:ar": "حلق الوادي الكازينو",
+              "name:fr": "La Goulette Casino",
+              "ref:tn:codegeo": "116952"
+            },
+            "aliases": []
+          },
+          {
+            "id": "osm:relation:7117890",
+            "officialCode": "116953",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "خير الدين",
+              "name:ar": "خير الدين",
+              "name:fr": "Kheredine",
+              "ref:tn:codegeo": "116953",
+              "wikidata": "Q12211002"
+            },
+            "aliases": [
+              "Kheireddine"
+            ]
+          },
+          {
+            "id": "osm:relation:7117933",
+            "officialCode": "116951",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "حلق الوادي",
+              "name:ar": "حلق الوادي",
+              "name:azb": "حلق الوادی",
+              "name:de": "Ḥalq al-Wādī",
+              "name:es": "La Goleta",
+              "name:fr": "La Goulette",
+              "ref:tn:codegeo": "116951"
+            },
+            "aliases": [
+              "La Goleta",
+              "La Goletta",
+              "Хальк-эль-Уэд",
+              "לה גולט",
+              "حلق الوادی",
+              "Ḥalq al-Wādī"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/la-goulette-three-native-source-review.json",
+            "sha256": "a68223fa5a2f34c9534b79172c2c1535f54eb1dfdca89cc71a23aa674df63ef8"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/kram-goulette-nine-sector-name-source-review.json",
+            "sha256": "8ddb5341ce39d441331012146c98e229eea60b1ef9fe1143823cf8688b1b0c35"
+          },
+          "state": "Native whole-imada source review; generated catalog and display identity migration require independent acceptance.",
+          "uncertainty": "Native map precision is preserved; map fit is not ground accuracy, and administrative boundaries need not equal commonly named neighborhoods.",
+          "evidenceFile": "official/kram-goulette-isie2023-nine-source-review.json",
+          "evidenceSha256": "198b3ce6111db37d1da8d57a5466613f81b2ce7d615eae48259dfcdd0fbd1017"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7117933",
+        "officialCode": "116951",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حلق الوادي",
+          "name:ar": "حلق الوادي",
+          "name:azb": "حلق الوادی",
+          "name:de": "Ḥalq al-Wādī",
+          "name:es": "La Goleta",
+          "name:fr": "La Goulette",
+          "ref:tn:codegeo": "116951"
+        },
+        "aliases": [
+          "La Goleta",
+          "La Goletta",
+          "Хальк-эль-Уэд",
+          "לה גולט",
+          "حلق الوادی",
+          "Ḥalq al-Wādī"
+        ]
+      },
+      "application": {
+        "id": "osm:relation:7117933",
+        "action": "replace",
+        "officialCode": "116951",
+        "sourceId": "isie-local-sectors-2023-la-goulette"
+      },
+      "geojson": {
+        "file": "official/la-goulette-isie2023-three-sectors.geojson",
+        "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f"
+      },
+      "featureSha256": "e5fade3287e173ab21024c71b89fface42522824ed8adb5786c128dc20bb1562"
+    }
+  ],
+  "protectedRaw": [
+    {
+      "id": "osm:relation:7117889",
+      "expectedMetadata": {
+        "id": "osm:relation:7117889",
+        "sourceId": "isie-local-sectors-2023-la-goulette",
+        "name": "حلق الوادي الكازينو",
+        "aliases": [
+          "La Goulette Casino"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.822325,
+        "lng": 10.307038,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "bbox": [
+          10.298579,
+          36.818051,
+          10.314066,
+          36.826627
+        ],
+        "areaKm2": 0.6846235628996585,
+        "pickerGroupId": "osm:relation:7117889"
+      },
+      "packedGeometrySha256": "592af541d4f99c3b0f3356ece76d53b66ecd4084421c0934595e341242c7d314"
+    },
+    {
+      "id": "osm:relation:7117890",
+      "expectedMetadata": {
+        "id": "osm:relation:7117890",
+        "sourceId": "isie-local-sectors-2023-la-goulette",
+        "name": "خير الدين",
+        "aliases": [
+          "Kheredine",
+          "Kheireddine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.830638,
+        "lng": 10.30771,
+        "delegationId": 406,
+        "hasBoundary": true,
+        "bbox": [
+          10.296185,
+          36.821711,
+          10.31871,
+          36.839722
+        ],
+        "areaKm2": 1.3306297543241021,
+        "pickerGroupId": "osm:relation:7117890"
+      },
+      "packedGeometrySha256": "4071d2b0ef18e82e11b69107a3cd560a637df5a46dd5da9ae6d2f58dd25e7cde"
+    },
+    {
+      "id": "osm:relation:7117891",
+      "expectedMetadata": {
+        "id": "osm:relation:7117891",
+        "sourceId": "osm",
+        "name": "حي السلامة",
+        "aliases": [
+          "Cité Essalema"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.855453,
+        "lng": 10.270085,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.266895,
+          36.852162,
+          10.272286,
+          36.858832
+        ],
+        "areaKm2": 0.2054957293095274,
+        "pickerGroupId": "osm:relation:7117891"
+      },
+      "packedGeometrySha256": "73c6a6f829774b6ce4223e39782b52ee87e73491df3f849af62793c0324f7046"
+    },
+    {
+      "id": "osm:relation:7117932",
+      "expectedMetadata": {
+        "id": "osm:relation:7117932",
+        "sourceId": "osm",
+        "name": "الطيب مهيري",
+        "aliases": [
+          "Taieb Mhiri"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.836049,
+        "lng": 10.278915,
+        "delegationId": 406,
+        "hasBoundary": true,
+        "bbox": [
+          10.239206,
+          36.810457,
+          10.30779,
+          36.862359
+        ],
+        "areaKm2": 17.2850050701517,
+        "pickerGroupId": "osm:relation:7117932"
+      },
+      "packedGeometrySha256": "0badd7769ca8854a2231a11b273e409254b376fa0eee5c5496976b005b12620a"
+    },
+    {
+      "id": "osm:relation:7117933",
+      "expectedMetadata": {
+        "id": "osm:relation:7117933",
+        "sourceId": "isie-local-sectors-2023-la-goulette",
+        "name": "حلق الوادي",
+        "aliases": [
+          "La Goulette",
+          "La Goleta",
+          "La Goletta",
+          "Хальк-эль-Уэд",
+          "לה גולט",
+          "حلق الوادی",
+          "Ḥalq al-Wādī"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.814918,
+        "lng": 10.293156,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "bbox": [
+          10.279918,
+          36.806349,
+          10.310993,
+          36.823185
+        ],
+        "areaKm2": 2.174070745156123,
+        "pickerGroupId": "osm:relation:7117933"
+      },
+      "packedGeometrySha256": "e17383de12bcb1c8879f146592cdf631a23665fad09a3af459d7a07e8fec215a"
+    },
+    {
+      "id": "osm:way:93164500",
+      "expectedMetadata": {
+        "id": "osm:way:93164500",
+        "sourceId": "osm",
+        "name": "حلق الوادي",
+        "aliases": [
+          "La Goleta",
+          "La Goletta",
+          "La Goulette",
+          "Хальк-эль-Уэд",
+          "לה גולט",
+          "حلق الوادی",
+          "Ḥalq al-Wādī"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.816185,
+        "lng": 10.294957,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "bbox": [
+          10.279961,
+          36.806327,
+          10.313079,
+          36.825935
+        ],
+        "areaKm2": 2.1205906386256106,
+        "pickerGroupId": "osm:way:93164500"
+      },
+      "packedGeometrySha256": "d4796b4da6a119b125b885041dbcebf35cde1cb11660b47a3b1d8925f8c3211c"
+    }
+  ],
+  "absorbedTown": {
+    "id": "osm:node:283645091",
+    "originalHostId": "osm:relation:7117933",
+    "effectiveHostId": "osm:way:93164500",
+    "matchingPolygonIds": [
+      "osm:relation:7117933",
+      "osm:way:93164500"
+    ],
+    "aliasesBeforeAbsorption": [
+      "La Goulette"
+    ],
+    "aliasesAfterAbsorption": [
+      "La Goleta",
+      "La Goletta",
+      "La Goulette",
+      "Хальк-эль-Уэд",
+      "לה גולט",
+      "حلق الوادی",
+      "Ḥalq al-Wādī"
+    ]
+  },
+  "expectedLateAliasTransition": {
+    "id": "osm:way:93164500",
+    "before": [
+      "La Goleta",
+      "La Goletta",
+      "La Goulette",
+      "Хальк-эль-Уэд",
+      "לה גולט",
+      "حلق الوادی",
+      "Ḥalq al-Wādī"
+    ],
+    "after": [
+      "La Goleta",
+      "La Goletta",
+      "La Goulette",
+      "Хальк-эль-Уэд",
+      "לה גולט",
+      "حلق الواد",
+      "حلق الوادی",
+      "Ḥalq al-Wādī"
+    ]
+  },
+  "independentFiniteImpactProvenance": {
+    "root": "task",
+    "file": "outputs/kram-goulette-nine-finite-impact-inventory.json",
+    "sha256": "aaa191c86a4a1faf9e591b20446bf0a3d61249a6f98952bc00dbf3ad31ed30cb",
+    "qualification": "Independent preparation provenance; operative metadata, packed hashes and source states are fully embedded above and checked against actual compiler inputs/outputs."
+  },
+  "scope": "Only three accepted effective sector replacements. All nine original sources and six unchanged effective sources remain exact. The unchanged smallest-area absorption rule now adds the existing town names to the residential footprint. No source point, base coordinate, raw default or picker group is changed; no complete town-vs-imada boundary identity is inferred."
+}

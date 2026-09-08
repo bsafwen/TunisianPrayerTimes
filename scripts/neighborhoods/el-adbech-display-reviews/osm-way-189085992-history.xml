@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (244699 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="189085992" visible="true" version="1" changeset="13750226" timestamp="2012-11-04T17:27:02Z" user="ulrichm" uid="192829">
+  <nd ref="1997332423"/>
+  <nd ref="1997332415"/>
+  <nd ref="1997332424"/>
+  <nd ref="1997332462"/>
+  <nd ref="1997332490"/>
+  <nd ref="1997332520"/>
+  <nd ref="1997332546"/>
+  <nd ref="1997332584"/>
+  <nd ref="1997332566"/>
+  <nd ref="1997332563"/>
+  <nd ref="1997332681"/>
+  <nd ref="1997332766"/>
+  <nd ref="1997332675"/>
+  <nd ref="1997332643"/>
+  <nd ref="1997332624"/>
+  <nd ref="1997332645"/>
+  <nd ref="1997332553"/>
+  <nd ref="1997332530"/>
+  <nd ref="1997332484"/>
+  <nd ref="1997332446"/>
+  <nd ref="1997332421"/>
+  <nd ref="1997332464"/>
+  <nd ref="1997332510"/>
+  <nd ref="1997332532"/>
+  <nd ref="1997332549"/>
+  <nd ref="1997332531"/>
+  <nd ref="1997332501"/>
+  <nd ref="1997332477"/>
+  <nd ref="1997332449"/>
+  <nd ref="1997332423"/>
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabes; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+ </way>
+ <way id="189085992" visible="true" version="2" changeset="34880828" timestamp="2015-10-26T12:43:46Z" user="Wüstenrose" uid="1900013">
+  <nd ref="1997332423"/>
+  <nd ref="1997332415"/>
+  <nd ref="1997332424"/>
+  <nd ref="1997332462"/>
+  <nd ref="1997332490"/>
+  <nd ref="1997332520"/>
+  <nd ref="1997332546"/>
+  <nd ref="1997332584"/>
+  <nd ref="1997332566"/>
+  <nd ref="1997332563"/>
+  <nd ref="1997332681"/>
+  <nd ref="1997332766"/>
+  <nd ref="1997332675"/>
+  <nd ref="1997332643"/>
+  <nd ref="1997332624"/>
+  <nd ref="1997332645"/>
+  <nd ref="1997332553"/>
+  <nd ref="1997332530"/>
+  <nd ref="1997332484"/>
+  <nd ref="3803482830"/>
+  <nd ref="3803482821"/>
+  <nd ref="3803482818"/>
+  <nd ref="1997332446"/>
+  <nd ref="3803482975"/>
+  <nd ref="3803482987"/>
+  <nd ref="3803482991"/>
+  <nd ref="3803482837"/>
+  <nd ref="3803482764"/>
+  <nd ref="1997332421"/>
+  <nd ref="1997332464"/>
+  <nd ref="1997332510"/>
+  <nd ref="1997332532"/>
+  <nd ref="1997332549"/>
+  <nd ref="1997332531"/>
+  <nd ref="1997332501"/>
+  <nd ref="1997332477"/>
+  <nd ref="1997332449"/>
+  <nd ref="1997332423"/>
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabes; Tunisia; Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:en" v="El Adbech"/>
+  <tag k="name:fr" v="El Adbech"/>
+ </way>
+ <way id="189085992" visible="true" version="3" changeset="83272065" timestamp="2020-04-08T21:03:20Z" user="Anis Ben Makhlouf" uid="10001069">
+  <nd ref="1997332423"/>
+  <nd ref="1997332415"/>
+  <nd ref="1997332424"/>
+  <nd ref="1997332462"/>
+  <nd ref="1997332490"/>
+  <nd ref="1997332520"/>
+  <nd ref="1997332546"/>
+  <nd ref="1997332584"/>
+  <nd ref="1997332566"/>
+  <nd ref="1997332563"/>
+  <nd ref="1997332681"/>
+  <nd ref="1997332766"/>
+  <nd ref="1997332675"/>
+  <nd ref="1997332643"/>
+  <nd ref="1997332624"/>
+  <nd ref="1997332645"/>
+  <nd ref="1997332553"/>
+  <nd ref="1997332530"/>
+  <nd ref="1997332484"/>
+  <nd ref="3803482830"/>
+  <nd ref="3803482821"/>
+  <nd ref="3803482818"/>
+  <nd ref="1997332446"/>
+  <nd ref="3803482975"/>
+  <nd ref="3803482987"/>
+  <nd ref="3803482991"/>
+  <nd ref="3803482837"/>
+  <nd ref="3803482764"/>
+  <nd ref="1997332421"/>
+  <nd ref="1997332464"/>
+  <nd ref="1997332510"/>
+  <nd ref="1997332532"/>
+  <nd ref="1997332549"/>
+  <nd ref="1997332531"/>
+  <nd ref="1997332501"/>
+  <nd ref="1997332477"/>
+  <nd ref="1997332449"/>
+  <nd ref="1997332423"/>
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="addr:country" v="TN"/>
+  <tag k="addr:governorate" v="Gabès"/>
+  <tag k="is_in" v="Gabes;Tunisia;Africa"/>
+  <tag k="is_in:continent" v="Africa"/>
+  <tag k="is_in:country" v="Tunisia"/>
+  <tag k="is_in:governorate" v="Gabès"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="الأدباش"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:fr" v="El Adbech"/>
+ </way>
+ <way id="189085992" visible="true" version="4" changeset="94393307" timestamp="2020-11-18T20:16:40Z" user="user_9535554" uid="9535554">
+  <nd ref="1997332423"/>
+  <nd ref="1997332415"/>
+  <nd ref="1997332424"/>
+  <nd ref="1997332462"/>
+  <nd ref="1997332490"/>
+  <nd ref="1997332520"/>
+  <nd ref="1997332546"/>
+  <nd ref="1997332584"/>
+  <nd ref="1997332566"/>
+  <nd ref="1997332563"/>
+  <nd ref="1997332681"/>
+  <nd ref="1997332766"/>
+  <nd ref="1997332675"/>
+  <nd ref="1997332643"/>
+  <nd ref="1997332624"/>
+  <nd ref="1997332645"/>
+  <nd ref="1997332553"/>
+  <nd ref="1997332530"/>
+  <nd ref="1997332484"/>
+  <nd ref="3803482830"/>
+  <nd ref="3803482821"/>
+  <nd ref="3803482818"/>
+  <nd ref="1997332446"/>
+  <nd ref="3803482975"/>
+  <nd ref="3803482987"/>
+  <nd ref="3803482991"/>
+  <nd ref="3803482837"/>
+  <nd ref="3803482764"/>
+  <nd ref="1997332421"/>
+  <nd ref="1997332464"/>
+  <nd ref="1997332510"/>
+  <nd ref="1997332532"/>
+  <nd ref="1997332549"/>
+  <nd ref="1997332531"/>
+  <nd ref="1997332501"/>
+  <nd ref="1997332477"/>
+  <nd ref="1997332449"/>
+  <nd ref="1997332423"/>
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="الأدباش"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:fr" v="El Adbech"/>
+ </way>
+ <way id="189085992" visible="true" version="5" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+  <nd ref="1997332423"/>
+  <nd ref="1997332415"/>
+  <nd ref="1997332424"/>
+  <nd ref="1997332462"/>
+  <nd ref="1997332490"/>
+  <nd ref="1997332520"/>
+  <nd ref="1997332546"/>
+  <nd ref="1997332584"/>
+  <nd ref="1997332566"/>
+  <nd ref="1997332563"/>
+  <nd ref="1997332681"/>
+  <nd ref="1997332766"/>
+  <nd ref="1997332675"/>
+  <nd ref="1997332643"/>
+  <nd ref="1997332624"/>
+  <nd ref="1997332645"/>
+  <nd ref="1997332553"/>
+  <nd ref="1997332530"/>
+  <nd ref="1997332484"/>
+  <nd ref="3803482830"/>
+  <nd ref="3803482821"/>
+  <nd ref="3803482818"/>
+  <nd ref="1997332446"/>
+  <nd ref="3803482975"/>
+  <nd ref="3803482987"/>
+  <nd ref="3803482991"/>
+  <nd ref="3803482837"/>
+  <nd ref="3803482764"/>
+  <nd ref="1997332421"/>
+  <nd ref="1997332464"/>
+  <nd ref="1997332510"/>
+  <nd ref="1997332532"/>
+  <nd ref="1997332549"/>
+  <nd ref="1997332531"/>
+  <nd ref="1997332501"/>
+  <nd ref="1997332477"/>
+  <nd ref="1997332449"/>
+  <nd ref="1997332423"/>
+  <tag k="addr:city" v="El Adbech"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="El Adbech"/>
+  <tag k="name:ar" v="الأدباش"/>
+  <tag k="name:fr" v="El Adbech"/>
+ </way>
+</osm>

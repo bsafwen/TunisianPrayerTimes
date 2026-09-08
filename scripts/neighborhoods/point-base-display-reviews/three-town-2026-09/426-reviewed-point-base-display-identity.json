@@ -1,0 +1,995 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:558962249",
+  "baseId": 426,
+  "rawCurrent": {
+    "id": "osm:node:558962249",
+    "sourceId": "osm",
+    "name": "سيدي علوان",
+    "aliases": [
+      "Sidi Alouane"
+    ],
+    "kind": "village",
+    "parentName": "سيدي علوان الشرقية",
+    "contextAliases": [
+      "Délégation Sidi Alouane",
+      "Sidi Alouane",
+      "Sidi Alouane Est",
+      "سيدي علوان الشرقية",
+      "معتمدية سيدي علوان"
+    ],
+    "governorateId": 345,
+    "lat": 35.3750157,
+    "lng": 10.9378385,
+    "delegationId": 426,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:558962249"
+  },
+  "baseCurrent": {
+    "id": 426,
+    "nomFr": "Sidi Alouane",
+    "nomAr": "سيدي علوان",
+    "nomEn": "Sidi Alouane",
+    "lat": 35.377,
+    "lng": 10.9383
+  },
+  "expectedGovernor": {
+    "id": 345,
+    "nomFr": "Mahdia",
+    "nomAr": "المهدية",
+    "nomEn": "Mahdia",
+    "lat": 35.5047,
+    "lng": 11.0622
+  },
+  "originalSourceNode": {
+    "id": "osm:node:558962249",
+    "tags": {
+      "addr:governorate": "Mahdia",
+      "name": "سيدي علوان",
+      "name:ar": "سيدي علوان",
+      "name:en": "Sidi Alouane",
+      "name:fr": "Sidi Alouane",
+      "place": "village",
+      "wikidata": "Q3178416",
+      "wikipedia": "fr:Sidi Alouane"
+    },
+    "lat": 35.3750157,
+    "lng": 10.9378385
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-identity-review.json",
+    "sha256": "9152e9be8763f75128ceecb4cc557ccbc2756a4ccc2eb1a46475a6ea3c8ed766"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/three-town-2026-09/independent-source-review.json",
+    "sha256": "c737cf8f0c0d485cb896c8c4fc2e0ab7370697a376d677496d1f404f18e08905"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/three-town-2026-09/node-558962249.json",
+    "sha256": "83ff46be34987104e422b3d1998c800905814d63c72bcd50fe09f594762c5e51",
+    "url": "https://api.openstreetmap.org/api/0.6/node/558962249.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/558962249.json",
+    "sha256": "83ff46be34987104e422b3d1998c800905814d63c72bcd50fe09f594762c5e51",
+    "exactElement": {
+      "type": "node",
+      "id": 558962249,
+      "lat": 35.3750157,
+      "lon": 10.9378385,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "version": 13,
+      "changeset": 98539602,
+      "user": "user_11422772",
+      "uid": 11422772,
+      "tags": {
+        "addr:governorate": "Mahdia",
+        "name": "سيدي علوان",
+        "name:ar": "سيدي علوان",
+        "name:en": "Sidi Alouane",
+        "name:fr": "Sidi Alouane",
+        "place": "village",
+        "wikidata": "Q3178416",
+        "wikipedia": "fr:Sidi Alouane"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/three-town-2026-09/interior-municipal-directory.html",
+      "sha256": "e920362ac113c9deaab49014e1b5dd3c9bf1f8ee2cf945e91c4dd750baf9bb66",
+      "url": "https://opendata.interieur.gov.tn/fr/catalog/annuaire-des-municipalites",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "سيدي علوان",
+        "شارع ابن زيدون"
+      ],
+      "qualification": "Municipality names and civic addresses; corroborates settlement name use, not municipal borders or legacy prayer-reference coordinates."
+    }
+  ],
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/three-town-2026-09/sidi-alouane-assembly-written-question.pdf",
+      "sha256": "24f8a4590ad9cf73c0886bb6472e626939d423e8e7e74ed1c0a9b29de9663688",
+      "url": "https://www.arp.tn/document/download/119213",
+      "role": "contextual_primary_settlement_identity",
+      "pdfPage": 53,
+      "support": "The Interior Minister response separately identifies central Sidi Alouane city and the northern and southern portions of Sidi Alouane delegation.",
+      "qualification": "Direct distinction between town and larger delegation. Operational civil-protection descriptions do not establish city or imada polygons. Binary PDF is supplemental evidence; no UTF-8 compiler text assertion is claimed."
+    }
+  ],
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/three-town-2026-09/source-retrieval.json",
+    "sha256": "84e514139b4ec6f6000248e916ab162799cf5ddeb14d5f78565a68b70c378ac8"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "3360",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7152234",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336051",
+        "sectorFr": "Sidi alouane ouest",
+        "sectorAr": "سيدي علوان الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41173,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1972,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1968
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي علوان الغربية",
+        "name:ar": "سيدي علوان الغربية",
+        "name:fr": "Sidi Alouane Ouest",
+        "ref:tn:codegeo": "336051"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152234",
+        "sourceId": "osm",
+        "name": "سيدي علوان الغربية",
+        "aliases": [
+          "Sidi Alouane Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.36373,
+        "lng": 10.917942,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.892965,
+          35.33312,
+          10.944807,
+          35.39458
+        ],
+        "areaKm2": 17.451831982607153,
+        "pickerGroupId": "osm:relation:7152234",
+        "offset": 2963148,
+        "length": 2852
+      },
+      "sourceGeometrySha256": "2185cf4f8adad480c683a437474bceae9b2b0cef141d3617ab74767fd38e1b9a",
+      "packedGeometrySha256": "e15539082cfcc717f4504a38452d55b66945eab604820d7d42388ab575161be8",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152252",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336052",
+        "sectorFr": "Sidi alouane est",
+        "sectorAr": "سيدي علوان الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41207,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1974,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1970
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي علوان الشرقية",
+        "name:ar": "سيدي علوان الشرقية",
+        "name:fr": "Sidi Alouane Est",
+        "ref:tn:codegeo": "336052"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152252",
+        "sourceId": "osm",
+        "name": "سيدي علوان الشرقية",
+        "aliases": [
+          "Sidi Alouane Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.36086,
+        "lng": 10.950554,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.931474,
+          35.33537,
+          10.959872,
+          35.3861
+        ],
+        "areaKm2": 9.035675305066498,
+        "pickerGroupId": "osm:relation:7152252",
+        "offset": 3003372,
+        "length": 1444
+      },
+      "sourceGeometrySha256": "90074c8d5d2c4e5cf67669e370b94136cb814db3daeeec3be34596fde0c4a757",
+      "packedGeometrySha256": "535006360f72f6d1a676f231ac29afa7928006b2be13697ab5a37296aa0f9efc",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152250",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336053",
+        "sectorFr": "Zorda",
+        "sectorAr": "زردة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41241,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1976,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1972
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "زردة",
+        "name:ar": "زردة",
+        "name:fr": "Zorda",
+        "ref:tn:codegeo": "336053"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152250",
+        "sourceId": "osm",
+        "name": "زردة",
+        "aliases": [
+          "Zorda"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.29287,
+        "lng": 10.917942,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.88413,
+          35.25349,
+          10.948731,
+          35.33182
+        ],
+        "areaKm2": 32.79543154957991,
+        "pickerGroupId": "osm:relation:7152250",
+        "offset": 3000332,
+        "length": 1708
+      },
+      "sourceGeometrySha256": "7c75b083ad937819f404ad7c354384f64c6a44a5b589f84df037f5fd214b2e34",
+      "packedGeometrySha256": "cfb3830e6342239f74746c0cd26a2949532c00cb1b83d81a8e616a03bfd6f710",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152248",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336054",
+        "sectorFr": "Sakiet el khadem",
+        "sectorAr": "ساقية الخادم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41275,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1978,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1974
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ساقيةالخادم",
+        "name:ar": "ساقيةالخادم",
+        "name:fr": "Sakiet El Khadem",
+        "ref:tn:codegeo": "336054"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152248",
+        "sourceId": "osm",
+        "name": "ساقيةالخادم",
+        "aliases": [
+          "Sakiet El Khadem",
+          "ساقية الخادم"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.37883,
+        "lng": 10.880321,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.858729,
+          35.3269,
+          10.921858,
+          35.43046
+        ],
+        "areaKm2": 15.266030695856026,
+        "pickerGroupId": "osm:relation:7152248",
+        "offset": 2993372,
+        "length": 5188
+      },
+      "sourceGeometrySha256": "e949f6e0ffe92bbceada113ef5b055064ee54e96ffd8d788f1e751c7eece1d22",
+      "packedGeometrySha256": "d46c04619bd28f48d42fd53a9a22fc5c7e0bc4f6dcaa30b71a3e096b074fed4e",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152202",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336055",
+        "sectorFr": "El bassatine",
+        "sectorAr": "البساتين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41309,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1980,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1976
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البساتين",
+        "name:ar": "البساتين",
+        "name:fr": "El Bassatine",
+        "ref:tn:codegeo": "336055"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152202",
+        "sourceId": "osm",
+        "name": "البساتين",
+        "aliases": [
+          "El Bassatine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.39473,
+        "lng": 10.904062,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.864991,
+          35.37618,
+          10.91776,
+          35.41322
+        ],
+        "areaKm2": 7.41742369709114,
+        "pickerGroupId": "osm:relation:7152202",
+        "offset": 2901504,
+        "length": 2732
+      },
+      "sourceGeometrySha256": "70465b12f870bdb4e67829ab2eea42214a5d236bed71991533a7afd3bd5c35fb",
+      "packedGeometrySha256": "6f6f65e3d6c332979f2ea21371388ce09c4890353182edcb2daf3a4c560913d6",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152214",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336056",
+        "sectorFr": "Oued beja nord",
+        "sectorAr": "وادي باجة اللشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41343,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1982,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1978
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي باجة الشمالية",
+        "name:ar": "وادي باجة الشمالية",
+        "name:fr": "Oued Beja Nord",
+        "ref:tn:codegeo": "336056"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152214",
+        "sourceId": "osm",
+        "name": "وادي باجة الشمالية",
+        "aliases": [
+          "Oued Beja Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.35549,
+        "lng": 10.863752,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.843428,
+          35.33041,
+          10.907923,
+          35.38067
+        ],
+        "areaKm2": 18.058542919485266,
+        "pickerGroupId": "osm:relation:7152214",
+        "offset": 2926740,
+        "length": 2652
+      },
+      "sourceGeometrySha256": "25a4094d6b50f178c959076679954909bf6ae8f57927caf74cd04329ee69b429",
+      "packedGeometrySha256": "0dac941807d65568f08defba66bbedd3a79095fe9dceb2ef93a003d9e4c9f65d",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152212",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336057",
+        "sectorFr": "Oued beja sud",
+        "sectorAr": "وادي باجة الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41377,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1984,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1980
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي باجة الجنوبية",
+        "name:ar": "وادي باجة الجنوبية",
+        "name:fr": "Oued Beja Sud",
+        "ref:tn:codegeo": "336057"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152212",
+        "sourceId": "osm",
+        "name": "وادي باجة الجنوبية",
+        "aliases": [
+          "Oued Beja Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.30152,
+        "lng": 10.856861,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.815102,
+          35.26909,
+          10.894421,
+          35.33391
+        ],
+        "areaKm2": 34.81270622881426,
+        "pickerGroupId": "osm:relation:7152212",
+        "offset": 2922964,
+        "length": 1588
+      },
+      "sourceGeometrySha256": "93b766424a53ccc6765a0d4e0b4ec28eb5b01f7d05263fa8f26a9bc8fb59f21d",
+      "packedGeometrySha256": "eddf03725fb7a3c46d5f0a8dbf5fc07ac5dd8785a89192eb978f45fe47da4fb5",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152210",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336058",
+        "sectorFr": "Zalba est",
+        "sectorAr": "زالبة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41411,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1986,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1982
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "زالبة الشرقية",
+        "name:ar": "زالبة الشرقية",
+        "name:fr": "Zalba Est",
+        "ref:tn:codegeo": "336058"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152210",
+        "sourceId": "osm",
+        "name": "زالبة الشرقية",
+        "aliases": [
+          "Zalba Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.22805,
+        "lng": 10.892024,
+        "delegationId": 425,
+        "hasBoundary": true,
+        "bbox": [
+          10.837565,
+          35.168734,
+          10.942364,
+          35.28623
+        ],
+        "areaKm2": 56.26807723221189,
+        "pickerGroupId": "osm:relation:7152210",
+        "offset": 2917772,
+        "length": 2068
+      },
+      "sourceGeometrySha256": "bee9a2b46e110ad88ddc9d69637bd2c69719196d8d7b388b29a62e450eb2337b",
+      "packedGeometrySha256": "dbf7559a8f02e4e7dfc01c8fdb134bc485d9673cbf2117f96ba36e5268f7094a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152209",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336059",
+        "sectorFr": "Zalba ouest",
+        "sectorAr": "زالبة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41445,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1988,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1984
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "زالبة الغربية",
+        "name:ar": "زالبة الغربية",
+        "name:fr": "Zalba Ouest",
+        "ref:tn:codegeo": "336059"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152209",
+        "sourceId": "osm",
+        "name": "زالبة الغربية",
+        "aliases": [
+          "Zalba Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.21641,
+        "lng": 10.829736,
+        "delegationId": 541,
+        "hasBoundary": true,
+        "bbox": [
+          10.802374,
+          35.17814,
+          10.892042,
+          35.25541
+        ],
+        "areaKm2": 37.642780428267606,
+        "pickerGroupId": "osm:relation:7152209",
+        "offset": 2916296,
+        "length": 1476
+      },
+      "sourceGeometrySha256": "270984836d3f0e18df9dfd70bd8606830996b30745d11f2e8b75fae14a4ea404",
+      "packedGeometrySha256": "0549aefa95c1562285abc95e275824303af6655ec56e9d0f7cb79810122d6a55",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152258",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336060",
+        "sectorFr": "En-nozha",
+        "sectorAr": "النزهة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41479,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1990,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1986
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النزهة",
+        "name:ar": "النزهة",
+        "name:fr": "Ennozha",
+        "ref:tn:codegeo": "336060"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152258",
+        "sourceId": "osm",
+        "name": "النزهة",
+        "aliases": [
+          "Ennozha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.173085,
+        "lng": 10.861315,
+        "delegationId": 425,
+        "hasBoundary": true,
+        "bbox": [
+          10.814337,
+          35.145155,
+          10.894889,
+          35.20142
+        ],
+        "areaKm2": 22.595570362328438,
+        "pickerGroupId": "osm:relation:7152258",
+        "offset": 3016012,
+        "length": 1068
+      },
+      "sourceGeometrySha256": "1f3079ba14b019cb60bd037c0fe44818803fea9cea3a7680a99b3c5484131caf",
+      "packedGeometrySha256": "f7c79d4db039eecabe6c7985c20d7a47e0696754cd6e7f8a49911c7d21e2c2b9",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152201",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336061",
+        "sectorFr": "Oued guellat",
+        "sectorAr": "وادي قلات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41513,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1992,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1988
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي قلات",
+        "name:ar": "وادي قلات",
+        "name:fr": "Oued Guellat",
+        "ref:tn:codegeo": "336061"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152201",
+        "sourceId": "osm",
+        "name": "وادي قلات",
+        "aliases": [
+          "Oued Guellat",
+          "واد قلات"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.39918,
+        "lng": 10.842496,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.814628,
+          35.37025,
+          10.86759,
+          35.42751
+        ],
+        "areaKm2": 15.229142885520412,
+        "pickerGroupId": "osm:relation:7152201",
+        "offset": 2898972,
+        "length": 2532
+      },
+      "sourceGeometrySha256": "3993e95ec93ad6d562f6987d604a08aaae8a6ca93ba0d931c322d4615ea9c737",
+      "packedGeometrySha256": "5409558ef90be817cc41e7184c4def3362b36272142dd9f37d2089d7f38d1240",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7152255",
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3360",
+        "delegationFr": "Sidi alouane",
+        "delegationAr": "سيدي علوان",
+        "sectorCode": "336062",
+        "sectorFr": "Es- saada",
+        "sectorAr": "السعادة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41547,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1994,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1990
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السعادة",
+        "name:ar": "السعادة",
+        "name:fr": "Essaada",
+        "ref:tn:codegeo": "336062"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152255",
+        "sourceId": "osm",
+        "name": "السعادة",
+        "aliases": [
+          "Essaada"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي علوان",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.361965,
+        "lng": 10.824427,
+        "delegationId": 426,
+        "hasBoundary": true,
+        "bbox": [
+          10.793874,
+          35.32752,
+          10.857935,
+          35.39679
+        ],
+        "areaKm2": 22.848185495979894,
+        "pickerGroupId": "osm:relation:7152255",
+        "offset": 3008080,
+        "length": 1844
+      },
+      "sourceGeometrySha256": "262a300b9dafffce90a8089da16c03130206bfabb1c42dee497289add2a96e1f",
+      "packedGeometrySha256": "56933d545f250ca9522a25d9ee4c5c0eafa57d9572e816c3bbffde3308a8137f",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:558962249",
+      "kind": "village",
+      "tags": {
+        "addr:governorate": "Mahdia",
+        "name": "سيدي علوان",
+        "name:ar": "سيدي علوان",
+        "name:en": "Sidi Alouane",
+        "name:fr": "Sidi Alouane",
+        "place": "village",
+        "wikidata": "Q3178416",
+        "wikipedia": "fr:Sidi Alouane"
+      }
+    },
+    {
+      "id": "osm:relation:7152203",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Sidi Alouane",
+        "boundary": "administrative",
+        "name": "معتمدية سيدي علوان",
+        "name:ar": "معتمدية سيدي علوان",
+        "name:fr": "Délégation Sidi Alouane",
+        "ref:tn:codegeo": "3360",
+        "ref:tn:hasc_2": "TN.MH.SA",
+        "wikidata": "Q12243955"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7152203": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Sidi Alouane",
+        "boundary": "administrative",
+        "name": "معتمدية سيدي علوان",
+        "name:ar": "معتمدية سيدي علوان",
+        "name:fr": "Délégation Sidi Alouane",
+        "ref:tn:codegeo": "3360",
+        "ref:tn:hasc_2": "TN.MH.SA",
+        "wikidata": "Q12243955"
+      },
+      "sourceGeometrySha256": "ff4fb4f061da00255bdc5ac8a9240b307bca555f05a328debec06f55e91cb28c"
+    },
+    "osm:relation:1434955": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-53",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية المهدية",
+        "name:ar": "ولاية المهدية",
+        "name:ast": "Gobernación de Mahdía",
+        "name:az": "Mahdiya (vilayət)",
+        "name:azb": "المهدیه",
+        "name:be": "Махдзія (вілает)",
+        "name:be-tarask": "Махдзія (вілает)",
+        "name:bg": "Махдия (област)",
+        "name:ca": "Governació de Mahdia",
+        "name:ceb": "Gouvernorat de Mahdia",
+        "name:ckb": "مەهدیە",
+        "name:cy": "Mahdia (talaith)",
+        "name:de": "Gouvernement Mahdia",
+        "name:el": "Αλ-Μαχντίγια (Κυβερνείο)",
+        "name:en": "Mahdia",
+        "name:es": "Gobernación de Mahdía",
+        "name:fa": "المهدیه",
+        "name:fi": "Mahdia (kuvernementti)",
+        "name:fr": "Gouvernorat Mahdia",
+        "name:frr": "Mahdia (Guwernement)",
+        "name:id": "Kegubernuran Mahdia",
+        "name:it": "Mahdia",
+        "name:ja": "マーディア県",
+        "name:ko": "마디아주",
+        "name:ms": "Kawasan kegabenoran Mahdia",
+        "name:nl": "Mahdia (gouvernement)",
+        "name:no": "Mahdia (guvernement)",
+        "name:pl": "Gubernatorstwo Al-Mahdijja",
+        "name:pt": "Mádia (província)",
+        "name:ro": "Guvernoratul Mahdia",
+        "name:ru": "Махдия (вилайет)",
+        "name:sco": "Mahdia Govrenorate",
+        "name:sh": "Mahdia (vilajet)",
+        "name:tr": "Mehdiye ili",
+        "name:uk": "Махдія (вілаєт)",
+        "name:ur": "مہدیہ",
+        "name:zh": "馬赫迪耶省",
+        "name:zu": "Mahdia Governorate",
+        "official_name": "ولاية المهدية",
+        "official_name:ar": "ولاية المهدية",
+        "official_name:en": "Mahdia Governorate",
+        "official_name:fa": "استان مهدیه",
+        "official_name:fr": "Gouvernorat de Mahdia",
+        "official_name:it": "Governatorato di Mahdia",
+        "official_name:ur": "ولایت مہدیہ",
+        "population": "410812",
+        "population:date": "2014",
+        "ref:tn:codegeo": "33",
+        "wikidata": "Q328164",
+        "wikipedia": "ar:ولاية المهدية"
+      },
+      "sourceGeometrySha256": "34be1e4d583e6fb4788cc9239230c11edd8e281c27fdeb7313a8ce0e8c6b42d1"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:558962249",
+    "field": "pickerGroupId",
+    "before": "osm:node:558962249",
+    "after": "delegation:426"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:558962249"
+      ],
+      [
+        "delegation:426"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:426",
+        "osm:node:558962249"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Preserve the independent OSM node coordinate and legacy timetable coordinate exactly. Neither city identity nor proximity certifies a historical INM calculation anchor. No reference moves.",
+  "scope": "Associate the retained village point with its existing timetable picker choice. Preserve all12 complete imadas, their geometry and groups, the coded delegation and governorate, raw kind and inherited context.",
+  "spellingPolicy": "Keep every current Arabic and Latin name and alias; published variants are identity evidence only.",
+  "sourcePhasePolicy": "Original snapshots have provider None, effective snapshots osm. Every selected point, context and imada retains exact tags, kind and geometry; no optional lineage, typed peer or deferred extension.",
+  "geometryHashConvention": "Runtime mapping geometry with compact JSON insertion order; no sorted-key research digest substitution.",
+  "dependencyPolicy": "Operational references are relative to scripts/neighborhoods. Absolute paths within frozen source reports record research provenance only."
+}

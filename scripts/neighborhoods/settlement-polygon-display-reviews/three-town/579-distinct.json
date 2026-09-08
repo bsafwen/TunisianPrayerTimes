@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7164958",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "425851",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      },
+      "originalGeometrySha256": "48646d745fb147e50375245bd75a0dfffd5b5b2bed9672fdc304af56eecbb971",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:fr": "El Ayoun",
+        "ref:tn:codegeo": "425851",
+        "wikidata": "Q3049722",
+        "wikipedia": "ar:العيون (تونس)"
+      },
+      "effectiveGeometrySha256": "48646d745fb147e50375245bd75a0dfffd5b5b2bed9672fdc304af56eecbb971",
+      "expectedMetadata": {
+        "name": "العيون",
+        "aliases": [
+          "El Ayoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية العيون",
+        "governorateId": 362,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:543781477",
+      "originalKind": "village",
+      "originalTags": {
+        "addr:postcode": "1216",
+        "landuse": "residential",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village"
+      },
+      "originalGeometrySha256": "d211247934eb8eedb81634069247c6a6e45cec11cfd22f9acffba68a6a600b92",
+      "effectiveKind": "village",
+      "effectiveTags": {
+        "addr:postcode": "1216",
+        "landuse": "residential",
+        "name": "العيون",
+        "name:ar": "العيون",
+        "name:en": "El Ayoun",
+        "name:fr": "El Ayoun",
+        "place": "village"
+      },
+      "effectiveGeometrySha256": "d211247934eb8eedb81634069247c6a6e45cec11cfd22f9acffba68a6a600b92",
+      "expectedMetadata": {
+        "name": "العيون",
+        "aliases": [
+          "El Ayoun"
+        ],
+        "kind": "village",
+        "parentName": "معتمدية العيون",
+        "governorateId": 362,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/tibar-ayoun-source-review.json",
+      "sha256": "4c967fea72040a2636ef988a1247ac81fdf87ac85b67d977a54d91541ac20e25"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/579-current-source-facts.json",
+      "sha256": "3507068e4e8340b34172c2182100e3b88b7f8c212819348ec7eae97c17dddbec"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/independent-source-review.json",
+      "sha256": "88297770c4116ad4c7011ba9d745a5d184b9a274a298901751c6256afb261a70"
+    }
+  ],
+  "scope": "The independently coded imada remains a separate choice. Only this exact inhabited settlement polygon may later join its unchanged timetable base; all names, references and geometry remain."
+}

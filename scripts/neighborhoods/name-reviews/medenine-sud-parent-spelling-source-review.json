@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": 1,
+  "status": "ONE_SUPPORTED_PARENT_TYPO_AND_ONE_ACCEPTED_VARIANT_SOURCE_ONLY",
+  "reviewedAt": "2026-09-08T04:29:29.533050+00:00",
+  "baselineMetadataSha256": "1a7004d2f07f2405f11b66883bcea7d35d8498204601116508a629fe5e947656",
+  "screen": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-delegation-parent-spelling-screen.json",
+    "sha256": "92699ca5e9c88124485e11217fc651e5f19ad212846b84af803a538f9cd6bf96"
+  },
+  "inputPins": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": "1a7004d2f07f2405f11b66883bcea7d35d8498204601116508a629fe5e947656",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json": "27f3140a326eb71c96b358eba0800e8b3ba7415055fb9c9cbfea23e8b6b19471",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json": "7721615cf0644b099a4427399212e0f92e84066d4329b46ffa4cdf323f37a431",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json": "193239d60f7b55f6d057127533c08ebb71ef83df6aa843fceeb4e834ae8a3961",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json": "03b090a756cd59f58cadb6034a56a6c43ad101605e24b94f801ca868e5585428",
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py": "73960e5c5c6c5192df5a9f6987e68bb849b80cfa01185f5650684f4460d58583",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\held28-current-identity-reassessment.json": "c78442fe4c49e764353c9ebfcda66b8b0551238a495d1d00bb497001bdd65daf",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-base-locality110-strict-proposal.json": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+  },
+  "records": [
+    {
+      "sourceId": "osm:relation:7142936",
+      "officialDelegationCode": "5252",
+      "governorateCode": "52",
+      "governorateName": "مدنين",
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Médenine Sud",
+        "boundary": "administrative",
+        "name": "معتمدية مدنين االجنوبية",
+        "name:ar": "معتمدية مدنين االجنوبية",
+        "name:fr": "Délégation Medenine Sud",
+        "official_name": "معتمدية مدنين الجنوبية",
+        "official_name:ar": "معتمدية مدنين الجنوبية",
+        "ref:tn:codegeo": "5252",
+        "ref:tn:hasc_2": "TN.ME.MS",
+        "wikidata": "Q3332487",
+        "wikipedia": "ar:معتمدية مدنين الجنوبية"
+      },
+      "sourceGeometrySha256": "8f52e05bda10fa726f1cded278cb14495864c6e4f462061d3e091d1ad2425b90",
+      "sourceBoundsLonLat": [
+        10.4456795,
+        33.2037121,
+        10.7752465,
+        33.6401812
+      ],
+      "sourceCodeClaimCount": 1,
+      "officialRegistryRows": [
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525251",
+          "sectorFr": "Mednine sud",
+          "sectorAr": "مدنين الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60484,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2971,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2965
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525252",
+          "sectorFr": "Mednine est",
+          "sectorAr": "مدنين الشرقية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60518,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2972,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2966
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525253",
+          "sectorFr": "El labba",
+          "sectorAr": "اللبة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60552,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2974,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2968
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525254",
+          "sectorFr": "Hessi amor",
+          "sectorAr": "حسي عمر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60586,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2976,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2970
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525255",
+          "sectorFr": "Oued esseder",
+          "sectorAr": "وادي السدر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60620,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2978,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2972
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525256",
+          "sectorFr": "Hessi mednine",
+          "sectorAr": "حسي مدنين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60654,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2980,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2974
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525257",
+          "sectorFr": "Darghoulia",
+          "sectorAr": "الدرغولية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60688,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2982,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2976
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525258",
+          "sectorFr": "Souitir",
+          "sectorAr": "السويطير",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60722,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2984,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2978
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525259",
+          "sectorFr": "Nouvelle amra",
+          "sectorAr": "عمرة الجديدة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60756,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2986,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2980
+          }
+        },
+        {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5252",
+          "delegationFr": "Medenine sud",
+          "delegationAr": "مدنين الجنوبية",
+          "sectorCode": "525260",
+          "sectorFr": "Bou-ghrara",
+          "sectorAr": "بوغرارة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60790,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2988,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2982
+          }
+        }
+      ],
+      "protectedCurrentRows": {
+        "osm:relation:7142909": {
+          "currentMetadata": {
+            "id": "osm:relation:7142909",
+            "sourceId": "osm",
+            "name": "اللبة",
+            "aliases": [
+              "El Labba"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.281857,
+            "lng": 10.510683,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.44568,
+              33.207052,
+              10.556316,
+              33.360438
+            ],
+            "areaKm2": 99.88418953654003,
+            "pickerGroupId": "osm:relation:7142909",
+            "offset": 1774096,
+            "length": 1700
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142909"
+          ],
+          "packedGeometrySha256": "7b83a7934520a934626cb4bec9f90fc9aa3b34859e45a72ecbd23d6c65225ba3"
+        },
+        "osm:relation:7142912": {
+          "currentMetadata": {
+            "id": "osm:relation:7142912",
+            "sourceId": "osm",
+            "name": "السويطير",
+            "aliases": [
+              "Souitir"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.396602,
+            "lng": 10.725235,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.648495,
+              33.331192,
+              10.775247,
+              33.462002
+            ],
+            "areaKm2": 74.42367520763048,
+            "pickerGroupId": "osm:relation:7142912",
+            "offset": 1788132,
+            "length": 1420
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142912"
+          ],
+          "packedGeometrySha256": "4cf0122e78ebbabad65a77d0213d49def1193c62c12e434b09cf51ab1022bafe"
+        },
+        "osm:relation:7142913": {
+          "currentMetadata": {
+            "id": "osm:relation:7142913",
+            "sourceId": "osm",
+            "name": "مدنين الجنوبية",
+            "aliases": [
+              "Medenine Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.329706,
+            "lng": 10.500414,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.47964,
+              33.307192,
+              10.534201,
+              33.351886
+            ],
+            "areaKm2": 11.383935956286976,
+            "pickerGroupId": "osm:relation:7142913",
+            "offset": 1789552,
+            "length": 2740
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142913"
+          ],
+          "packedGeometrySha256": "0ee175093158716a24f9754717c8a52fad84f76cecad5443cd83cbe6ff33974a"
+        },
+        "osm:relation:7142914": {
+          "currentMetadata": {
+            "id": "osm:relation:7142914",
+            "sourceId": "osm",
+            "name": "مدنين الشرقية",
+            "aliases": [
+              "Medenine Est"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.356527,
+            "lng": 10.515474,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.491066,
+              33.342002,
+              10.532948,
+              33.371282
+            ],
+            "areaKm2": 6.792214074547978,
+            "pickerGroupId": "osm:relation:7142914",
+            "offset": 1792292,
+            "length": 1476
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142914"
+          ],
+          "packedGeometrySha256": "f6a957ec164dafcf56cc32fafcb8740498cc99a38d9a27cd6231eca61c558088"
+        },
+        "osm:relation:7142915": {
+          "currentMetadata": {
+            "id": "osm:relation:7142915",
+            "sourceId": "osm",
+            "name": "حسي عمر",
+            "aliases": [
+              "Hassi Amor",
+              "Hessi Amor"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.304207,
+            "lng": 10.577027,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.548993,
+              33.242072,
+              10.666582,
+              33.365482
+            ],
+            "areaKm2": 68.8147037483378,
+            "pickerGroupId": "osm:relation:7142915",
+            "offset": 1793768,
+            "length": 1492
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142915"
+          ],
+          "packedGeometrySha256": "4500f6e5b32b60fa48d39eb1eb5d31864db7dfd0a4601dcc04470aa348184d5d"
+        },
+        "osm:relation:7142948": {
+          "currentMetadata": {
+            "id": "osm:relation:7142948",
+            "sourceId": "osm",
+            "name": "وادي السدر",
+            "aliases": [
+              "Oued Esseder"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.275102,
+            "lng": 10.653606,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.549354,
+              33.203712,
+              10.742708,
+              33.346442
+            ],
+            "areaKm2": 156.07445244956938,
+            "pickerGroupId": "osm:relation:7142948",
+            "offset": 1921256,
+            "length": 1772
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142948"
+          ],
+          "packedGeometrySha256": "efe76ec0a138a1302f0b71336791b7224f4f8b41deb47fee2643c1eb96871202"
+        },
+        "osm:relation:7142949": {
+          "currentMetadata": {
+            "id": "osm:relation:7142949",
+            "sourceId": "osm",
+            "name": "حسي مدنين",
+            "aliases": [
+              "Hessi Medenine"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.437387,
+            "lng": 10.627279,
+            "delegationId": 496,
+            "hasBoundary": true,
+            "bbox": [
+              10.512267,
+              33.351886,
+              10.732312,
+              33.522367
+            ],
+            "areaKm2": 67.11491524954158,
+            "pickerGroupId": "osm:relation:7142949",
+            "offset": 1923028,
+            "length": 3508
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142949"
+          ],
+          "packedGeometrySha256": "ff806fdbc781857fa4ddfe715a027dea76d5db34e3cd9aad5ccff87c53af5c01"
+        },
+        "osm:relation:7142958": {
+          "currentMetadata": {
+            "id": "osm:relation:7142958",
+            "sourceId": "osm",
+            "name": "عمر الجديدة",
+            "aliases": [
+              "Nouvelle Amra"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.455647,
+            "lng": 10.616712,
+            "delegationId": 496,
+            "hasBoundary": true,
+            "bbox": [
+              10.518362,
+              33.382482,
+              10.700516,
+              33.527122
+            ],
+            "areaKm2": 41.832555060733235,
+            "pickerGroupId": "osm:relation:7142958",
+            "offset": 1951840,
+            "length": 804
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142958"
+          ],
+          "packedGeometrySha256": "d4f13c71ef9839346fc6bba5855e9458c998cdcaea319d7b01f2a0289d166089"
+        },
+        "osm:relation:7142959": {
+          "currentMetadata": {
+            "id": "osm:relation:7142959",
+            "sourceId": "osm",
+            "name": "بوغرارة",
+            "aliases": [
+              "Boughrara"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.565995,
+            "lng": 10.662665,
+            "delegationId": 496,
+            "hasBoundary": true,
+            "bbox": [
+              10.585748,
+              33.491901,
+              10.736449,
+              33.640181
+            ],
+            "areaKm2": 101.93598260327991,
+            "pickerGroupId": "osm:relation:7142959",
+            "offset": 1952644,
+            "length": 5332
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142959"
+          ],
+          "packedGeometrySha256": "34e799f9daa0835fcc5e62bb3fe4fdad22cfb17816059d0b0990416eadcd887c"
+        },
+        "osm:relation:7142983": {
+          "currentMetadata": {
+            "id": "osm:relation:7142983",
+            "sourceId": "osm",
+            "name": "الدرغولية",
+            "aliases": [
+              "Darghoulia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مدنين االجنوبية",
+            "contextAliases": [
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.423102,
+            "lng": 10.669856,
+            "delegationId": 626,
+            "hasBoundary": true,
+            "bbox": [
+              10.561352,
+              33.359524,
+              10.767356,
+              33.486934
+            ],
+            "areaKm2": 107.47997853996394,
+            "pickerGroupId": "osm:relation:7142983",
+            "offset": 2025120,
+            "length": 2716
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7142983"
+          ],
+          "packedGeometrySha256": "26d610d4bd4c9d1151df8e1054140387969bd227aa721f1fc4599942e18043e5"
+        },
+        "osm:way:1062690914": {
+          "currentMetadata": {
+            "id": "osm:way:1062690914",
+            "sourceId": "osm",
+            "name": "Ben Slama - بن سلامة",
+            "aliases": [
+              "Ben Slama",
+              "بن سلامة"
+            ],
+            "kind": "quarter",
+            "parentName": "بوغرارة",
+            "contextAliases": [
+              "Boughrara",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "بوغرارة",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.590742,
+            "lng": 10.702108,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.694029,
+              33.584602,
+              10.710069,
+              33.598526
+            ],
+            "areaKm2": 1.1139795595171567,
+            "pickerGroupId": "osm:way:1062690914",
+            "offset": 5199368,
+            "length": 60
+          },
+          "currentRawGroupMembers": [
+            "osm:way:1062690914",
+            "osm:way:958708445"
+          ],
+          "packedGeometrySha256": "36c9104d83921535f383359111320dd0cddc4270da2ac3c4752e29f1a0cd00aa"
+        },
+        "osm:way:958706905": {
+          "currentMetadata": {
+            "id": "osm:way:958706905",
+            "sourceId": "osm",
+            "name": "بن سلامة - Ben Slama",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "بوغرارة",
+            "contextAliases": [
+              "Boughrara",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "بوغرارة",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.590841,
+            "lng": 10.703345,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.69848,
+              33.587698,
+              10.705104,
+              33.594055
+            ],
+            "areaKm2": 0.25630645504723937,
+            "pickerGroupId": "osm:way:958706905",
+            "offset": 5443196,
+            "length": 196
+          },
+          "currentRawGroupMembers": [
+            "osm:way:958706905"
+          ],
+          "packedGeometrySha256": "bf534c308892ce60fe1274afba73896a07c673077df3978e65f5226a8c6f3dc5"
+        },
+        "osm:node:349294959": {
+          "currentMetadata": {
+            "id": "osm:node:349294959",
+            "sourceId": "osm",
+            "name": "العلامات",
+            "aliases": [
+              "El Alamat"
+            ],
+            "kind": "hamlet",
+            "parentName": "الدرغولية",
+            "contextAliases": [
+              "Darghoulia",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "الدرغولية",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.3656001,
+            "lng": 10.6487959,
+            "delegationId": 626,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:349294959"
+          },
+          "currentRawGroupMembers": [
+            "osm:node:349294959"
+          ],
+          "packedGeometrySha256": null
+        },
+        "osm:node:9843640645": {
+          "currentMetadata": {
+            "id": "osm:node:9843640645",
+            "sourceId": "osm",
+            "name": "العياطي",
+            "aliases": [
+              "El Ayati"
+            ],
+            "kind": "village",
+            "parentName": "بوغرارة",
+            "contextAliases": [
+              "Boughrara",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "بوغرارة",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.6224107,
+            "lng": 10.7171673,
+            "delegationId": 493,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:9843640645"
+          },
+          "currentRawGroupMembers": [
+            "osm:node:9843640645"
+          ],
+          "packedGeometrySha256": null
+        }
+      },
+      "decision": "SUPPORTED_EXACT_PARENT_TYPO_CORRECTION_NOT_IMPLEMENTED",
+      "finding": "The extra alif in source name/name:ar conflicts with the same object official_name/official_name:ar, current INS5252 and independent official geographic usage. This is a parent label typo, not a different administrative identity.",
+      "proposedConsumedNameTags": {
+        "alt_name:fr": "Médenine Sud",
+        "name": "معتمدية مدنين الجنوبية",
+        "name:ar": "معتمدية مدنين الجنوبية",
+        "name:fr": "Délégation Medenine Sud",
+        "official_name": "معتمدية مدنين الجنوبية",
+        "official_name:ar": "معتمدية مدنين الجنوبية",
+        "alt_name:ar": "معتمدية مدنين االجنوبية"
+      },
+      "exactExpectedMetadataChanges": [
+        {
+          "id": "osm:relation:7142909",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142912",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142913",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142914",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142915",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142948",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142949",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142958",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142959",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        },
+        {
+          "id": "osm:relation:7142983",
+          "field": "parentName",
+          "before": "معتمدية مدنين االجنوبية",
+          "after": "معتمدية مدنين الجنوبية"
+        }
+      ],
+      "unchangedContextOnlyRawIds": [
+        "osm:way:1062690914",
+        "osm:way:958706905",
+        "osm:node:349294959",
+        "osm:node:9843640645"
+      ],
+      "counts": {
+        "parentNameFields": 10,
+        "rawRowsChanged": 10,
+        "protectedRows": 14,
+        "contextAliasFieldsChanged": 0,
+        "rawNamesOrAliasesChanged": 0,
+        "groupChanges": 0,
+        "coordinateOrDefaultChanges": 0,
+        "tinyNameChanges": 0
+      },
+      "preservation": "Retaining the exact old spelling as alt_name:ar preserves the already existing complete parent-name set. All 14 contextAliases arrays, 4 deeper locality records and all raw names/groups/geometry/defaults remain exact. No source code rewrite, base name change or tiny-name addition.",
+      "currentPrayerDefaults": {
+        "osm:relation:7142909": 626,
+        "osm:relation:7142912": 626,
+        "osm:relation:7142913": 626,
+        "osm:relation:7142914": 626,
+        "osm:relation:7142915": 626,
+        "osm:relation:7142948": 626,
+        "osm:relation:7142949": 496,
+        "osm:relation:7142958": 496,
+        "osm:relation:7142959": 496,
+        "osm:relation:7142983": 626,
+        "osm:way:1062690914": 493,
+        "osm:way:958706905": 493,
+        "osm:node:349294959": 626,
+        "osm:node:9843640645": 493
+      },
+      "implementationNote": "Existing name_tags supports the exact delegation. A future stage should guard all original consumed names, apply only the shown replacements and preserve all other tags; actual generation must confirm the 10-field prediction. No package or curation decision has been written."
+    },
+    {
+      "sourceId": "osm:relation:4752899",
+      "officialDelegationCode": "2357",
+      "governorateCode": "23",
+      "governorateName": "الكاف",
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Kalâat Khasba",
+        "boundary": "administrative",
+        "name": "معتمدية القلعة الخصبة",
+        "name:ar": "معتمدية القلعة الخصبة",
+        "name:fr": "Délégation Kalaat Khasba",
+        "official_name": "معتمدية القلعة الخصبة",
+        "official_name:ar": "معتمدية القلعة الخصبة",
+        "official_name:fr": "Délégation de Kalaat Khasbat",
+        "old_name": "القلعة الجردة",
+        "old_name:ar": "القلعة الجردة",
+        "old_name:fr": "Kalâa Djerda",
+        "ref:tn:codegeo": "2357",
+        "ref:tn:hasc_2": "TN.KF.KR",
+        "wikidata": "Q3192288"
+      },
+      "sourceGeometrySha256": "752c74c473a7cf3fbf3800404f13fe0e9e029d1fc624746b42740d0d9b4dd77f",
+      "sourceBoundsLonLat": [
+        8.4117825,
+        35.6373286,
+        8.6306574,
+        35.8177604
+      ],
+      "sourceCodeClaimCount": 1,
+      "officialRegistryRows": [
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2357",
+          "delegationFr": "Kalaat khasbah",
+          "delegationAr": "القلعة الخصباء",
+          "sectorCode": "235751",
+          "sectorFr": "Kalaat khasba",
+          "sectorAr": "القلعة الخصباء",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28185,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1319,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1318
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2357",
+          "delegationFr": "Kalaat khasbah",
+          "delegationAr": "القلعة الخصباء",
+          "sectorCode": "235752",
+          "sectorFr": "Hentaia",
+          "sectorAr": "هنطاية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28219,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1321,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1320
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2357",
+          "delegationFr": "Kalaat khasbah",
+          "delegationAr": "القلعة الخصباء",
+          "sectorCode": "235753",
+          "sectorFr": "Sidi ahmed essalah",
+          "sectorAr": "سيدي أحمد الصالح",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28253,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1322,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1321
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2357",
+          "delegationFr": "Kalaat khasbah",
+          "delegationAr": "القلعة الخصباء",
+          "sectorCode": "235754",
+          "sectorFr": "En-nadhour",
+          "sectorAr": "الناظور",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28287,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1323,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1322
+          }
+        }
+      ],
+      "protectedCurrentRows": {
+        "osm:relation:7125195": {
+          "currentMetadata": {
+            "id": "osm:relation:7125195",
+            "sourceId": "osm",
+            "name": "القلعة الخصبة",
+            "aliases": [
+              "Kalaat Khasba"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية القلعة الخصبة",
+            "contextAliases": [
+              "Délégation Kalaat Khasba",
+              "Délégation de Kalaat Khasbat",
+              "Kalâat Khasba",
+              "معتمدية القلعة الخصبة"
+            ],
+            "governorateId": 363,
+            "lat": 35.661474,
+            "lng": 8.582025,
+            "delegationId": 587,
+            "hasBoundary": true,
+            "bbox": [
+              8.543464,
+              35.637329,
+              8.626155,
+              35.685658
+            ],
+            "areaKm2": 20.615189800784613,
+            "pickerGroupId": "delegation:587",
+            "offset": 1298832,
+            "length": 1428
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7125195",
+            "osm:way:191578331"
+          ],
+          "packedGeometrySha256": "8967845ccaf156e6e9fece9f133df925ea66ee95941d8f38e8de75f9ada7f2a4"
+        },
+        "osm:relation:7125196": {
+          "currentMetadata": {
+            "id": "osm:relation:7125196",
+            "sourceId": "osm",
+            "name": "الناظور",
+            "aliases": [
+              "Nadhour-En"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية القلعة الخصبة",
+            "contextAliases": [
+              "Délégation Kalaat Khasba",
+              "Délégation de Kalaat Khasbat",
+              "Kalâat Khasba",
+              "معتمدية القلعة الخصبة"
+            ],
+            "governorateId": 363,
+            "lat": 35.716796,
+            "lng": 8.481466,
+            "delegationId": 587,
+            "hasBoundary": true,
+            "bbox": [
+              8.411783,
+              35.668013,
+              8.541702,
+              35.76407
+            ],
+            "areaKm2": 84.10456742036503,
+            "pickerGroupId": "osm:relation:7125196",
+            "offset": 1300260,
+            "length": 1100
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7125196"
+          ],
+          "packedGeometrySha256": "6e2870242abfcd2eec8db95a44694a4adb2821a44f273b3ba603f8c0c8593e5e"
+        },
+        "osm:relation:7125197": {
+          "currentMetadata": {
+            "id": "osm:relation:7125197",
+            "sourceId": "osm",
+            "name": "سيدي أحمد الصالح",
+            "aliases": [
+              "Sidi Ahmed Essalah"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية القلعة الخصبة",
+            "contextAliases": [
+              "Délégation Kalaat Khasba",
+              "Délégation de Kalaat Khasbat",
+              "Kalâat Khasba",
+              "معتمدية القلعة الخصبة"
+            ],
+            "governorateId": 363,
+            "lat": 35.748562,
+            "lng": 8.569098,
+            "delegationId": 587,
+            "hasBoundary": true,
+            "bbox": [
+              8.520219,
+              35.679747,
+              8.630657,
+              35.81776
+            ],
+            "areaKm2": 79.1034064693915,
+            "pickerGroupId": "osm:relation:7125197",
+            "offset": 1301360,
+            "length": 1892
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7125197"
+          ],
+          "packedGeometrySha256": "2e927745ab25be6ee21eec132471f8a1c208b4affa371dcc1ae92cc392fdf34e"
+        },
+        "osm:relation:7125198": {
+          "currentMetadata": {
+            "id": "osm:relation:7125198",
+            "sourceId": "osm",
+            "name": "هنطاية",
+            "aliases": [
+              "Hentaïa"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية القلعة الخصبة",
+            "contextAliases": [
+              "Délégation Kalaat Khasba",
+              "Délégation de Kalaat Khasbat",
+              "Kalâat Khasba",
+              "معتمدية القلعة الخصبة"
+            ],
+            "governorateId": 363,
+            "lat": 35.691468,
+            "lng": 8.548672,
+            "delegationId": 587,
+            "hasBoundary": true,
+            "bbox": [
+              8.503228,
+              35.65726,
+              8.575371,
+              35.725538
+            ],
+            "areaKm2": 22.125708151529093,
+            "pickerGroupId": "osm:relation:7125198",
+            "offset": 1303252,
+            "length": 996
+          },
+          "currentRawGroupMembers": [
+            "osm:relation:7125198"
+          ],
+          "packedGeometrySha256": "f76f78069d0a1025fe6e662e731550e186b59370483b87135ef9cba2d8e73eb6"
+        }
+      },
+      "decision": "RETAIN_ACCEPTED_PARENT_VARIANT_NO_CORRECTION",
+      "finding": "Both الخصبة and الخصباء are used in official administrative publications. The Interior delegation list uses الخصبة while its sector table uses الخصباء for the namesake imada; INS2012/2024 and ISIE2022 use الخصباء. This is already an exact code-bound accepted equivalence, not evidence that the installed parent is misspelled.",
+      "existingAcceptedIdentity": {
+        "id": "osm:relation:7125195",
+        "accepted": true,
+        "reasons": [],
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "القلعة الخصبة",
+          "name:ar": "القلعة الخصبة",
+          "name:fr": "Kalaat Khasba",
+          "old_name": "القلعة الجردة",
+          "old_name:ar": "القلعة الجردة",
+          "ref:tn:codegeo": "235751",
+          "wikidata": "Q3105864",
+          "wikipedia": "ar:القلعة الخصبة"
+        },
+        "effectiveOriginalGeometrySha256": "db55c98df6426a4d79c35ca7a12a4e7c5c03701249456a6488327742d67f5f06",
+        "method": "reviewed_current_sector_name_equivalence",
+        "sourceCode": "235751",
+        "currentCode": "235751",
+        "code": "235751",
+        "currentOfficialRecord": {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2357",
+          "delegationFr": "Kalaat khasbah",
+          "delegationAr": "القلعة الخصباء",
+          "sectorCode": "235751",
+          "sectorFr": "Kalaat khasba",
+          "sectorAr": "القلعة الخصباء",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28185,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1319,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1318
+          }
+        },
+        "expectedCuration": null,
+        "nameEquivalence": {
+          "displayName": "القلعة الخصبة",
+          "displayParentName": "معتمدية القلعة الخصبة",
+          "officialSectorAr": "القلعة الخصباء",
+          "officialDelegationAr": "القلعة الخصباء"
+        },
+        "originalCodedParentEvidence": [
+          {
+            "id": "osm:relation:4752899",
+            "sourceCode": "2357",
+            "expectedOriginalTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Kalâat Khasba",
+              "boundary": "administrative",
+              "name": "معتمدية القلعة الخصبة",
+              "name:ar": "معتمدية القلعة الخصبة",
+              "name:fr": "Délégation Kalaat Khasba",
+              "official_name": "معتمدية القلعة الخصبة",
+              "official_name:ar": "معتمدية القلعة الخصبة",
+              "official_name:fr": "Délégation de Kalaat Khasbat",
+              "old_name": "القلعة الجردة",
+              "old_name:ar": "القلعة الجردة",
+              "old_name:fr": "Kalâa Djerda",
+              "ref:tn:codegeo": "2357",
+              "ref:tn:hasc_2": "TN.KF.KR",
+              "wikidata": "Q3192288"
+            },
+            "effectiveOriginalGeometrySha256": "752c74c473a7cf3fbf3800404f13fe0e9e029d1fc624746b42740d0d9b4dd77f",
+            "containsSourceSector": true,
+            "containsEveryGroupMember": false
+          }
+        ],
+        "sourceVintageEvidence": {
+          "oldSourceCode": "235751",
+          "oldOfficialRows": [
+            {
+              "code": "235751",
+              "nameFr": "Kalâat Khasba",
+              "nameAr": "القلعة الخصباء",
+              "delegationHeading": "Delegation Kalaat Khasba",
+              "page": 71
+            }
+          ],
+          "isie2022MembershipEvidence": [
+            {
+              "governorate": "الكاف",
+              "delegation": "القلعة الخصباء",
+              "sector": "القلعة الخصباء",
+              "pages": [
+                16
+              ]
+            }
+          ],
+          "currentCode": "235751",
+          "finding": "Source/local display القلعة الخصبة corresponds to unique sector235751 and French Kalaat Khasba; both INS editions and ISIE2022 use القلعة الخصباء. All group members currently share the local primary and prayer choice.",
+          "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."
+        }
+      },
+      "existingBase587Rule": {
+        "id": "osm:relation:7125195",
+        "targetDelegationId": 587,
+        "expectedGovernorateId": 363,
+        "expectedBase": {
+          "nomAr": "القلعة الخصبة",
+          "lat": 35.6576,
+          "lng": 8.5886
+        },
+        "expectedExistingMemberIds": [
+          "osm:relation:7125195",
+          "osm:way:191578331"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:587"
+        ],
+        "members": [
+          {
+            "id": "osm:relation:7125195",
+            "expectedKind": "sector",
+            "expectedSourceId": "osm",
+            "expectedName": "القلعة الخصبة",
+            "expectedParentName": "معتمدية القلعة الخصبة",
+            "expectedDelegationId": 587,
+            "expectedLat": 35.661474,
+            "expectedLng": 8.582025,
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "القلعة الخصبة",
+              "name:ar": "القلعة الخصبة",
+              "name:fr": "Kalaat Khasba",
+              "old_name": "القلعة الجردة",
+              "old_name:ar": "القلعة الجردة",
+              "ref:tn:codegeo": "235751",
+              "wikidata": "Q3105864",
+              "wikipedia": "ar:القلعة الخصبة"
+            },
+            "originalGeometrySha256": "db55c98df6426a4d79c35ca7a12a4e7c5c03701249456a6488327742d67f5f06",
+            "packedGeometrySha256": "8967845ccaf156e6e9fece9f133df925ea66ee95941d8f38e8de75f9ada7f2a4"
+          },
+          {
+            "id": "osm:way:191578331",
+            "expectedKind": "residential",
+            "expectedSourceId": "osm",
+            "expectedName": "القلعة الخصبة",
+            "expectedParentName": "ولاية الكاف",
+            "expectedDelegationId": 587,
+            "expectedLat": 35.658375,
+            "expectedLng": 8.587201,
+            "expectedOriginalTags": {
+              "addr:city": "القلعة الخصبة",
+              "addr:city:ar": "القلعة الخصبة",
+              "addr:postcode": "7113",
+              "landuse": "residential",
+              "name": "القلعة الخصبة",
+              "name:ar": "القلعة الخصبة",
+              "name:fr": "Kalâat Khasba",
+              "population": "2871"
+            },
+            "originalGeometrySha256": "a184393ed029ed99a8651be5d13ffa8efc92bcf9706ce03145623bb21d345365",
+            "packedGeometrySha256": "bb7e32be05d1950864ddea67dbc4c7098955186d5bae8113dfac7804a0317e3c"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "id": "osm:relation:7125195",
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "القلعة الخصبة",
+              "name:ar": "القلعة الخصبة",
+              "name:fr": "Kalaat Khasba",
+              "old_name": "القلعة الجردة",
+              "old_name:ar": "القلعة الجردة",
+              "ref:tn:codegeo": "235751",
+              "wikidata": "Q3105864",
+              "wikipedia": "ar:القلعة الخصبة"
+            },
+            "effectiveOriginalGeometrySha256": "db55c98df6426a4d79c35ca7a12a4e7c5c03701249456a6488327742d67f5f06",
+            "method": "reviewed_current_sector_name_equivalence",
+            "sourceCode": "235751",
+            "currentCode": "235751",
+            "code": "235751",
+            "currentOfficialRecord": {
+              "governorateCode": "23",
+              "governorateFr": "Le kef",
+              "governorateAr": "الكاف",
+              "delegationCode": "2357",
+              "delegationFr": "Kalaat khasbah",
+              "delegationAr": "القلعة الخصباء",
+              "sectorCode": "235751",
+              "sectorFr": "Kalaat khasba",
+              "sectorAr": "القلعة الخصباء",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28185,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 1319,
+                "Nombre_de_menages_par_Secteurs.xlsx": 1318
+              }
+            },
+            "expectedCuration": null,
+            "nameEquivalence": {
+              "displayName": "القلعة الخصبة",
+              "displayParentName": "معتمدية القلعة الخصبة",
+              "officialSectorAr": "القلعة الخصباء",
+              "officialDelegationAr": "القلعة الخصباء"
+            },
+            "originalCodedParentEvidence": [
+              {
+                "id": "osm:relation:4752899",
+                "sourceCode": "2357",
+                "expectedOriginalTags": {
+                  "admin_level": "5",
+                  "alt_name:fr": "Kalâat Khasba",
+                  "boundary": "administrative",
+                  "name": "معتمدية القلعة الخصبة",
+                  "name:ar": "معتمدية القلعة الخصبة",
+                  "name:fr": "Délégation Kalaat Khasba",
+                  "official_name": "معتمدية القلعة الخصبة",
+                  "official_name:ar": "معتمدية القلعة الخصبة",
+                  "official_name:fr": "Délégation de Kalaat Khasbat",
+                  "old_name": "القلعة الجردة",
+                  "old_name:ar": "القلعة الجردة",
+                  "old_name:fr": "Kalâa Djerda",
+                  "ref:tn:codegeo": "2357",
+                  "ref:tn:hasc_2": "TN.KF.KR",
+                  "wikidata": "Q3192288"
+                },
+                "effectiveOriginalGeometrySha256": "752c74c473a7cf3fbf3800404f13fe0e9e029d1fc624746b42740d0d9b4dd77f",
+                "containsSourceSector": true,
+                "containsEveryGroupMember": false
+              }
+            ],
+            "sourceVintageEvidence": {
+              "oldSourceCode": "235751",
+              "oldOfficialRows": [
+                {
+                  "code": "235751",
+                  "nameFr": "Kalâat Khasba",
+                  "nameAr": "القلعة الخصباء",
+                  "delegationHeading": "Delegation Kalaat Khasba",
+                  "page": 71
+                }
+              ],
+              "isie2022MembershipEvidence": [
+                {
+                  "governorate": "الكاف",
+                  "delegation": "القلعة الخصباء",
+                  "sector": "القلعة الخصباء",
+                  "pages": [
+                    16
+                  ]
+                }
+              ],
+              "currentCode": "235751",
+              "finding": "Source/local display القلعة الخصبة corresponds to unique sector235751 and French Kalaat Khasba; both INS editions and ISIE2022 use القلعة الخصباء. All group members currently share the local primary and prayer choice.",
+              "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."
+            }
+          }
+        ]
+      },
+      "exactExpectedMetadataChanges": [],
+      "counts": {
+        "parentNameFields": 0,
+        "rawRowsChanged": 0,
+        "protectedParentRows": 4,
+        "groupChanges": 0,
+        "coordinateOrDefaultChanges": 0,
+        "tinyNameChanges": 0
+      },
+      "geographicAndGroupQualification": "Code2357 identifies the Le Kef delegation and235751 its namesake sector. The residential member191578331 keeps governorate-only context; the existing accepted base587 group contains that residential row and sector7125195. Its scope is unchanged by this review.",
+      "blockedBlindRename": "A parent rename would also violate the currently pinned displayParentName/expectedParentName guard of the accepted base587 rule. There is no source reason to replace that accepted variant solely to match registry text."
+    }
+  ],
+  "primaryPublicEvidence": [
+    {
+      "url": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+      "publisher": "Tunisian Ministry of Interior",
+      "retrieval": "Search-indexed official table inspected; direct open timed out.",
+      "exactRelevantRow": "القلعة الخصبة | 4 | القلعة الخصباء، هنطاية، سيدي أحمد الصالح، الناظور.",
+      "supports": "Official usage of both spellings for the same coded administrative context, corroborating the existing explicit equivalence."
+    },
+    {
+      "url": "https://opendata.interieur.gov.tn/ar/catalog/delegations-par-gouvernorats-de-la-republique",
+      "publisher": "Tunisian Ministry of Interior",
+      "retrieval": "Search-indexed official delegation list inspected; direct open timed out.",
+      "relevantName": "القلعة الخصبة",
+      "supports": "The current parent variant appears in the official Le Kef delegation list."
+    },
+    {
+      "url": "https://www.mehat.gov.tn/2025/01/%D9%81%D8%AA%D8%AD-%D8%A7%D9%84%D8%B7%D9%91%D8%B1%D9%8A%D9%82-%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9-%D8%A5%D9%86%D8%AC%D8%A7%D8%B2-%D8%A7%D9%84%D9%88%D8%B5%D9%84%D8%A9-%D8%A7%D9%84%D8%B1%D9%91%D8%A7/",
+      "publisher": "Tunisian Ministry of Equipment and Housing",
+      "eventDate": "2025-01-30",
+      "retrieval": "Indexed primary article inspected.",
+      "relevantName": "معتمدية مدنين الجنوبية",
+      "supports": "Correct spelling independently used for the Medenine delegation crossed by the Tataouine-A1 road project."
+    }
+  ],
+  "limits": [
+    "Current INS registry rows and previously reviewed INS2012/ISIE2022 citations were read; original workbooks/PDFs were not reopened in this bounded follow-up.",
+    "No claim about original prayer calculation anchors or polygon boundary accuracy. Existing raw defaults, including multiple sources under5252, are preserved.",
+    "The earlier held28 Kalaa recommendation is historical; the current installed reviewed_current_sector_name_equivalence rule is authoritative for current grouping.",
+    "Do not extrapolate these two decisions to other screen entries, including possible registry transcription errors."
+  ],
+  "execution": {
+    "sourceOnly": true,
+    "packageWritten": false,
+    "generatorOrHelperExecuted": false,
+    "testsOrBuild": false,
+    "phoneOrLedgerIo": false,
+    "pbfOrApiScan": false,
+    "primaryWebLookup": true,
+    "appEdits": false
+  }
+}

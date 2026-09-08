@@ -1,0 +1,1093 @@
+{
+  "schemaVersion": 1,
+  "baselineMetadataSha256": "b50f62fba68c6ba0989f3a4cb673a0cfad820dcd059164b26a0ac208467c9600",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baseId": 460,
+  "polygonId": "osm:way:97396877",
+  "sourceReview": {
+    "file": "settlement-polygon-display-reviews/three-town/beni-khiar-source-review.json",
+    "sha256": "f99e8ceb81f8127db54b253d1c5c3405a27772869c05b165ed520f36a031676c"
+  },
+  "originalFrozenSourceFacts": {
+    "file": "settlement-polygon-display-reviews/three-town/beni-khiar-original-source-facts.json",
+    "sha256": "5166ae5a38c93739a94300e3516b36b77f69ddcefa762d71796c75bff4a461a3"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "sourceReviewBinding": {
+    "status": "BENI_KHIAR_TOWN_ONLY_DISPLAY_SOURCE_SUPPORTED_NOT_IMPLEMENTED",
+    "selector": [
+      "sourceDecision"
+    ],
+    "record": {
+      "baseId": 460,
+      "settlementId": "osm:way:97396877",
+      "sourceTownId": "osm:node:1128018620",
+      "separateImadaId": "osm:relation:7103009",
+      "finding": "The Nabeul governorate explicitly distinguishes Beni Khiar town from its five-imada delegation and two neighboring towns. The Social Ministry publishes a local street-address office inside the named town polygon. Current OSM town and residential sources share bilingual identity and Wikidata Q2737310; the live node exactly matches cache. This supports associating the timetable locality with the town while retaining the separate imada scope.",
+      "coordinatePolicy": "Preserve legacy base460 36.46/10.78 and every raw coordinate. Its approximately6.5m polygon noncontainment is explicit, not a reason to move it or expand a border. No original INM coordinate provenance is claimed.",
+      "currentWholeGroups": {
+        "osm:relation:7102854": [
+          "osm:relation:7102854",
+          "osm:way:174740047"
+        ],
+        "osm:relation:7102855": [
+          "osm:relation:7102855",
+          "osm:way:176000340"
+        ],
+        "osm:relation:7103009": [
+          "osm:relation:7103009",
+          "osm:way:97396877"
+        ],
+        "osm:relation:7103011": [
+          "osm:relation:7103011",
+          "osm:way:176000341"
+        ],
+        "osm:relation:7103012": [
+          "osm:relation:7103012"
+        ],
+        "delegation:460": [
+          "delegation:460"
+        ]
+      },
+      "expectedFinalWholeGroups": {
+        "osm:relation:7102854": [
+          "osm:relation:7102854",
+          "osm:way:174740047"
+        ],
+        "osm:relation:7102855": [
+          "osm:relation:7102855",
+          "osm:way:176000340"
+        ],
+        "osm:relation:7103009": [
+          "osm:relation:7103009"
+        ],
+        "osm:relation:7103011": [
+          "osm:relation:7103011",
+          "osm:way:176000341"
+        ],
+        "osm:relation:7103012": [
+          "osm:relation:7103012"
+        ],
+        "delegation:460": [
+          "delegation:460",
+          "osm:way:97396877"
+        ]
+      },
+      "exactRawFieldChanges": [
+        {
+          "id": "osm:way:97396877",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7103009",
+          "after": "delegation:460"
+        }
+      ],
+      "preservedNamesAliasesCoordinatesAndDefaults": true,
+      "sectorDefaultMustRemain": 468,
+      "townDefaultMustRemain": 460,
+      "allFiveImadasPreserved": [
+        "osm:relation:7102854",
+        "osm:relation:7102855",
+        "osm:relation:7103009",
+        "osm:relation:7103011",
+        "osm:relation:7103012"
+      ],
+      "missingImplementationProofs": [
+        "Distinct ownership must separate only residential97396877 before a late explicit town/base association; complete prior/final groups and all five imadas remain bound.",
+        "Existing388 validator requires namesake-sector default==base, five imadas, town kind and addr:city/name-change patterns; existing596 validator is also not a truthful drop-in. A separate explicit method must preserve old validation branches and allow this documented different sector default without treating it as a town reference.",
+        "Freeze and independently review the new source/proof/guard package before one actual generation."
+      ]
+    }
+  },
+  "records": {
+    "osm:node:1128018620": {
+      "id": "osm:node:1128018620",
+      "kind": "town",
+      "originalSourceId": null,
+      "originalTags": {
+        "addr:governorate": "Nabeul",
+        "int_name": "Béni Khiar",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:en": "Béni Khiar",
+        "name:fr": "Béni Khiar",
+        "name:uk": "Бені-Х'яр",
+        "place": "town",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "en:Béni Khiar"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "addr:governorate": "Nabeul",
+        "int_name": "Béni Khiar",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:en": "Béni Khiar",
+        "name:fr": "Béni Khiar",
+        "name:uk": "Бені-Х'яр",
+        "place": "town",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "en:Béni Khiar"
+      },
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "originalGeometrySha256": "041274bb40d10a33de5468d1e3b0e9b70b04fbedafe8ebc8785d70e880122d0c",
+      "effectiveGeometrySha256": "041274bb40d10a33de5468d1e3b0e9b70b04fbedafe8ebc8785d70e880122d0c",
+      "packedGeometrySha256": null
+    },
+    "osm:relation:1435825": {
+      "id": "osm:relation:1435825",
+      "kind": "governorate",
+      "originalSourceId": null,
+      "originalTags": {
+        "ISO3166-2": "TN-21",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية نابل",
+        "name:ar": "ولاية نابل",
+        "name:az": "Nabul (vilayət)",
+        "name:be": "Набуль (вілает)",
+        "name:be-tarask": "Набуль (вілает)",
+        "name:bg": "Набил (област)",
+        "name:ca": "Governació de Nabeul",
+        "name:ceb": "Gouvernorat de Nabeul",
+        "name:cy": "Nabeul (talaith)",
+        "name:de": "Gouvernement Nabeul",
+        "name:el": "Ναμπέλ (Κυβερνείο)",
+        "name:en": "Nabeul",
+        "name:es": "Gobernación de Nabeul",
+        "name:fa": "نابل",
+        "name:fi": "Nabeul (kuvernementti)",
+        "name:fr": "Gouvernorat Nabeul",
+        "name:frr": "Nabeul (Guwernement)",
+        "name:id": "Kegubernuran Nabeul",
+        "name:it": "Nabeul",
+        "name:ja": "ナブール県",
+        "name:ko": "나뵐주",
+        "name:ks": "نابل",
+        "name:ms": "Kawasan kegabenoran Nabeul",
+        "name:nl": "Nabeul (gouvernement)",
+        "name:no": "Nabeul (guvernement)",
+        "name:pl": "Gubernatorstwo Nabul",
+        "name:pt": "Nabeul (província)",
+        "name:ro": "Guvernoratul Nabeul",
+        "name:ru": "Набуль (вилайет)",
+        "name:sco": "Nabeul Govrenorate",
+        "name:sh": "Nabeul (vilajet)",
+        "name:tr": "Nabil ili",
+        "name:uk": "Набуль (вілаєт)",
+        "name:ur": "نابل",
+        "name:zh": "納布勒省",
+        "name:zu": "Nabeul Governorate",
+        "official_name": "ولاية نابل",
+        "official_name:ar": "ولاية نابل",
+        "official_name:en": "Nabeul Governorate",
+        "official_name:fa": "استان نابل",
+        "official_name:fr": "Gouvernorat de Nabeul",
+        "official_name:it": "Governatorato di Nabeul",
+        "official_name:ur": "ولاية نابل",
+        "population": "787920",
+        "population:date": "2014",
+        "ref:tn:codegeo": "15",
+        "wikidata": "Q328145",
+        "wikipedia": "ar:ولاية نابل"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "ISO3166-2": "TN-21",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية نابل",
+        "name:ar": "ولاية نابل",
+        "name:az": "Nabul (vilayət)",
+        "name:be": "Набуль (вілает)",
+        "name:be-tarask": "Набуль (вілает)",
+        "name:bg": "Набил (област)",
+        "name:ca": "Governació de Nabeul",
+        "name:ceb": "Gouvernorat de Nabeul",
+        "name:cy": "Nabeul (talaith)",
+        "name:de": "Gouvernement Nabeul",
+        "name:el": "Ναμπέλ (Κυβερνείο)",
+        "name:en": "Nabeul",
+        "name:es": "Gobernación de Nabeul",
+        "name:fa": "نابل",
+        "name:fi": "Nabeul (kuvernementti)",
+        "name:fr": "Gouvernorat Nabeul",
+        "name:frr": "Nabeul (Guwernement)",
+        "name:id": "Kegubernuran Nabeul",
+        "name:it": "Nabeul",
+        "name:ja": "ナブール県",
+        "name:ko": "나뵐주",
+        "name:ks": "نابل",
+        "name:ms": "Kawasan kegabenoran Nabeul",
+        "name:nl": "Nabeul (gouvernement)",
+        "name:no": "Nabeul (guvernement)",
+        "name:pl": "Gubernatorstwo Nabul",
+        "name:pt": "Nabeul (província)",
+        "name:ro": "Guvernoratul Nabeul",
+        "name:ru": "Набуль (вилайет)",
+        "name:sco": "Nabeul Govrenorate",
+        "name:sh": "Nabeul (vilajet)",
+        "name:tr": "Nabil ili",
+        "name:uk": "Набуль (вілаєт)",
+        "name:ur": "نابل",
+        "name:zh": "納布勒省",
+        "name:zu": "Nabeul Governorate",
+        "official_name": "ولاية نابل",
+        "official_name:ar": "ولاية نابل",
+        "official_name:en": "Nabeul Governorate",
+        "official_name:fa": "استان نابل",
+        "official_name:fr": "Gouvernorat de Nabeul",
+        "official_name:it": "Governatorato di Nabeul",
+        "official_name:ur": "ولاية نابل",
+        "population": "787920",
+        "population:date": "2014",
+        "ref:tn:codegeo": "15",
+        "wikidata": "Q328145",
+        "wikipedia": "ar:ولاية نابل"
+      },
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "originalGeometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700",
+      "effectiveGeometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700",
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7102854": {
+      "id": "osm:relation:7102854",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المعمورة",
+        "name:ar": "المعمورة",
+        "name:fr": "El Maamoura",
+        "ref:tn:codegeo": "155353"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المعمورة",
+        "name:ar": "المعمورة",
+        "name:fr": "El Maamoura",
+        "ref:tn:codegeo": "155353"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7102854",
+        "sourceId": "osm",
+        "name": "المعمورة",
+        "aliases": [
+          "El Maamoura"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.485232,
+        "lng": 10.808409,
+        "delegationId": 460,
+        "hasBoundary": true,
+        "bbox": [
+          10.79094,
+          36.454895,
+          10.83582,
+          36.515614
+        ],
+        "areaKm2": 11.770145046566963,
+        "pickerGroupId": "osm:relation:7102854"
+      },
+      "originalGeometrySha256": "a2bb90ff1b396a031704e9265a08cede4f6ccda35a574c646461774d1329348a",
+      "effectiveGeometrySha256": "a2bb90ff1b396a031704e9265a08cede4f6ccda35a574c646461774d1329348a",
+      "packedGeometrySha256": "19e0e27bd6838a67f01cb0e702de73691ab6ab553d93b9dfc9a5364c2e4e32b5"
+    },
+    "osm:relation:7102855": {
+      "id": "osm:relation:7102855",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ديار بن سالم",
+        "name:ar": "ديار بن سالم",
+        "name:fr": "Diar Ben Salem",
+        "ref:tn:codegeo": "155352"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ديار بن سالم",
+        "name:ar": "ديار بن سالم",
+        "name:fr": "Diar Ben Salem",
+        "ref:tn:codegeo": "155352"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7102855",
+        "sourceId": "osm",
+        "name": "ديار بن سالم",
+        "aliases": [
+          "Diar Ben Salem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.504351,
+        "lng": 10.798,
+        "delegationId": 460,
+        "hasBoundary": true,
+        "bbox": [
+          10.76126,
+          36.486053,
+          10.821013,
+          36.52278
+        ],
+        "areaKm2": 11.575104541410985,
+        "pickerGroupId": "osm:relation:7102855"
+      },
+      "originalGeometrySha256": "22e12139ad23a65268252bc4f75dcbb73e7110c26ad7af39984904e252cc6228",
+      "effectiveGeometrySha256": "22e12139ad23a65268252bc4f75dcbb73e7110c26ad7af39984904e252cc6228",
+      "packedGeometrySha256": "2e899ae329943ce288badf890298b641a5c49db95aea977c160935ba6260aa37"
+    },
+    "osm:relation:7103009": {
+      "id": "osm:relation:7103009",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Beni Khiar",
+        "ref:tn:codegeo": "155351"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Beni Khiar",
+        "ref:tn:codegeo": "155351"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7103009",
+        "sourceId": "osm",
+        "name": "بني خيار",
+        "aliases": [
+          "Beni Khiar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.507937,
+        "lng": 10.760805,
+        "delegationId": 468,
+        "hasBoundary": true,
+        "bbox": [
+          10.694861,
+          36.449426,
+          10.802516,
+          36.566397
+        ],
+        "areaKm2": 33.20706196077058,
+        "pickerGroupId": "osm:relation:7103009"
+      },
+      "originalGeometrySha256": "dc7bcd936311077229e537514915b899282a6beb59b51e09680dbb8bd86c0d12",
+      "effectiveGeometrySha256": "dc7bcd936311077229e537514915b899282a6beb59b51e09680dbb8bd86c0d12",
+      "packedGeometrySha256": "f72f5b7542dad50f82c12c02b783e72806a36389bed7222cf3d2ce3302700e0a"
+    },
+    "osm:relation:7103011": {
+      "id": "osm:relation:7103011",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صمعة",
+        "name:ar": "صمعة",
+        "name:fr": "Somaa",
+        "ref:tn:codegeo": "155354"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صمعة",
+        "name:ar": "صمعة",
+        "name:fr": "Somaa",
+        "ref:tn:codegeo": "155354"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7103011",
+        "sourceId": "osm",
+        "name": "صمعة",
+        "aliases": [
+          "Somaa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.551865,
+        "lng": 10.770973,
+        "delegationId": 459,
+        "hasBoundary": true,
+        "bbox": [
+          10.720592,
+          36.514273,
+          10.821727,
+          36.590568
+        ],
+        "areaKm2": 38.649817076967395,
+        "pickerGroupId": "osm:relation:7103011"
+      },
+      "originalGeometrySha256": "ddb4446ea1eb92d6988e3bb2662ad8431e36aedc9e4f9412107e0fe10d30d59f",
+      "effectiveGeometrySha256": "ddb4446ea1eb92d6988e3bb2662ad8431e36aedc9e4f9412107e0fe10d30d59f",
+      "packedGeometrySha256": "7e97045798e611ef3d2499ff93cf0403e66e12bdcfe2c7c6377e883d10342808"
+    },
+    "osm:relation:7103012": {
+      "id": "osm:relation:7103012",
+      "kind": "sector",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حلفة",
+        "name:ar": "حلفة",
+        "name:fr": "Halfa",
+        "ref:tn:codegeo": "155355"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حلفة",
+        "name:ar": "حلفة",
+        "name:fr": "Halfa",
+        "ref:tn:codegeo": "155355"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7103012",
+        "sourceId": "osm",
+        "name": "حلفة",
+        "aliases": [
+          "Halfa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.578193,
+        "lng": 10.712443,
+        "delegationId": 459,
+        "hasBoundary": true,
+        "bbox": [
+          10.685768,
+          36.559449,
+          10.747808,
+          36.596706
+        ],
+        "areaKm2": 11.267188458433031,
+        "pickerGroupId": "osm:relation:7103012"
+      },
+      "originalGeometrySha256": "c7f8464c86a77618799a407e2066e29b2bbb05e00e4308e7c3fd8fc36fa7269c",
+      "effectiveGeometrySha256": "c7f8464c86a77618799a407e2066e29b2bbb05e00e4308e7c3fd8fc36fa7269c",
+      "packedGeometrySha256": "4ea386237a633af62d8e30a4f3c0ebe7e969a76257f8b38db11ecce71bdb6c55"
+    },
+    "osm:relation:7145299": {
+      "id": "osm:relation:7145299",
+      "kind": "delegation",
+      "originalSourceId": null,
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Béni Khiar",
+        "boundary": "administrative",
+        "name": "معتمدية بني خيار",
+        "name:ar": "معتمدية بني خيار",
+        "name:fr": "Délégation Beni Khiar",
+        "ref:tn:codegeo": "1553",
+        "ref:tn:hasc_2": "TN.NB.BR",
+        "wikidata": "Q2929836"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Béni Khiar",
+        "boundary": "administrative",
+        "name": "معتمدية بني خيار",
+        "name:ar": "معتمدية بني خيار",
+        "name:fr": "Délégation Beni Khiar",
+        "ref:tn:codegeo": "1553",
+        "ref:tn:hasc_2": "TN.NB.BR",
+        "wikidata": "Q2929836"
+      },
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "originalGeometrySha256": "05eb4c55bb1ce75973047237e4c7c3e855854b7d0a02b0fd2f9ab2b9764ebb75",
+      "effectiveGeometrySha256": "05eb4c55bb1ce75973047237e4c7c3e855854b7d0a02b0fd2f9ab2b9764ebb75",
+      "packedGeometrySha256": null
+    },
+    "osm:way:174740047": {
+      "id": "osm:way:174740047",
+      "kind": "residential",
+      "originalSourceId": null,
+      "originalTags": {
+        "landuse": "residential",
+        "name": "المعمورة",
+        "name:ar": "المعمورة"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "المعمورة",
+        "name:ar": "المعمورة"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:174740047",
+        "sourceId": "osm",
+        "name": "المعمورة",
+        "aliases": [
+          "Maâmoura"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "El Maamoura",
+          "المعمورة",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.463385,
+        "lng": 10.805036,
+        "delegationId": 460,
+        "hasBoundary": true,
+        "bbox": [
+          10.798175,
+          36.455933,
+          10.812269,
+          36.471267
+        ],
+        "areaKm2": 1.547068466531967,
+        "pickerGroupId": "osm:relation:7102854"
+      },
+      "originalGeometrySha256": "270fa44d849d205c38e23e44250fa4e15f64dc0ea830974594fa93ab22f90c33",
+      "effectiveGeometrySha256": "270fa44d849d205c38e23e44250fa4e15f64dc0ea830974594fa93ab22f90c33",
+      "packedGeometrySha256": "a07b183c84403fe2260c7d2d0a14ee9db8f0b4d793dfa8ba8d4f4683d59127db"
+    },
+    "osm:way:176000340": {
+      "id": "osm:way:176000340",
+      "kind": "residential",
+      "originalSourceId": null,
+      "originalTags": {
+        "landuse": "residential",
+        "name": "ديار بن سالم",
+        "name:ar": "ديار بن سالم"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "ديار بن سالم",
+        "name:ar": "ديار بن سالم"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:176000340",
+        "sourceId": "osm",
+        "name": "ديار بن سالم",
+        "aliases": [
+          "Diar Ben Salem"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Béni Khiar",
+          "Diar Ben Salem",
+          "Délégation Beni Khiar",
+          "ديار بن سالم",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.511438,
+        "lng": 10.802282,
+        "delegationId": 460,
+        "hasBoundary": true,
+        "bbox": [
+          10.797189,
+          36.507325,
+          10.80765,
+          36.51631
+        ],
+        "areaKm2": 0.3266502045733793,
+        "pickerGroupId": "osm:relation:7102855"
+      },
+      "originalGeometrySha256": "21ecc2db8ed47d953c0a67b9c966081f012c3607a2dc802d7a19b9ee106af347",
+      "effectiveGeometrySha256": "21ecc2db8ed47d953c0a67b9c966081f012c3607a2dc802d7a19b9ee106af347",
+      "packedGeometrySha256": "e5c95e790ee507ee2a1c763fb2f4ca436846a2f09ddc0b405de5bbb70d1ec1bf"
+    },
+    "osm:way:176000341": {
+      "id": "osm:way:176000341",
+      "kind": "town",
+      "originalSourceId": null,
+      "originalTags": {
+        "landuse": "residential",
+        "name": "الصمعة",
+        "name:ar": "الصمعة",
+        "name:en": "Somâa",
+        "name:fr": "Somâa",
+        "name:ru": "Эс-Сомаа",
+        "place": "town"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "الصمعة",
+        "name:ar": "الصمعة",
+        "name:en": "Somâa",
+        "name:fr": "Somâa",
+        "name:ru": "Эс-Сомаа",
+        "place": "town"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:176000341",
+        "sourceId": "osm",
+        "name": "الصمعة",
+        "aliases": [
+          "Somâa",
+          "Эс-Сомаа"
+        ],
+        "kind": "town",
+        "parentName": "صمعة",
+        "contextAliases": [
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "Somaa",
+          "صمعة",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.541775,
+        "lng": 10.780672,
+        "delegationId": 459,
+        "hasBoundary": true,
+        "bbox": [
+          10.774236,
+          36.536068,
+          10.788588,
+          36.54787
+        ],
+        "areaKm2": 0.8709552943982057,
+        "pickerGroupId": "osm:relation:7103011"
+      },
+      "originalGeometrySha256": "862cd0370ee5b175eee1eb40004acc5998ed094bcefb9831822afe6e2df21bf8",
+      "effectiveGeometrySha256": "862cd0370ee5b175eee1eb40004acc5998ed094bcefb9831822afe6e2df21bf8",
+      "packedGeometrySha256": "9307a4e0fb808ec2286bee0eb6155956de873a0d64c8c6849eac165697482c0f"
+    },
+    "osm:way:97396877": {
+      "id": "osm:way:97396877",
+      "kind": "residential",
+      "originalSourceId": null,
+      "originalTags": {
+        "landuse": "residential",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Béni Khiar",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "fr:Béni Khiar"
+      },
+      "effectiveSourceId": "osm",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:fr": "Béni Khiar",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "fr:Béni Khiar"
+      },
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:97396877",
+        "sourceId": "osm",
+        "name": "بني خيار",
+        "aliases": [
+          "Béni Khiar",
+          "Бені-Х'яр"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية بني خيار",
+        "contextAliases": [
+          "Beni Khiar",
+          "Béni Khiar",
+          "Délégation Beni Khiar",
+          "بني خيار",
+          "معتمدية بني خيار"
+        ],
+        "governorateId": 350,
+        "lat": 36.463188,
+        "lng": 10.780953,
+        "delegationId": 460,
+        "hasBoundary": true,
+        "bbox": [
+          10.768596,
+          36.450942,
+          10.79889,
+          36.475357
+        ],
+        "areaKm2": 3.0463471041906556,
+        "pickerGroupId": "osm:relation:7103009"
+      },
+      "originalGeometrySha256": "fa285e42e47d21fe04d900eeac485b5dc034d3a5f8fcca9a5b6ed7112a714418",
+      "effectiveGeometrySha256": "fa285e42e47d21fe04d900eeac485b5dc034d3a5f8fcca9a5b6ed7112a714418",
+      "packedGeometrySha256": "eb7fa6b8e76b92559cc0abbd735b478330654d7f8158706091dea95627707db5"
+    }
+  },
+  "expected": {
+    "baseCurrent": {
+      "id": 460,
+      "nomFr": "Beni Khiar",
+      "nomAr": "بني خيار ",
+      "nomEn": "Beni Khiar",
+      "lat": 36.46,
+      "lng": 10.78
+    },
+    "governorCurrent": {
+      "id": 350,
+      "nomFr": "Nabeul",
+      "nomAr": "نابل",
+      "nomEn": "Nabeul",
+      "lat": 36.4561,
+      "lng": 10.7376
+    },
+    "pointId": "osm:node:1128018620",
+    "sourcePointCoordinates": {
+      "lat": 36.4693627,
+      "lng": 10.7809776
+    },
+    "separateSectorId": "osm:relation:7103009",
+    "parentSourceId": "osm:relation:7145299",
+    "governorSourceId": "osm:relation:1435825",
+    "preservedImadas": [
+      {
+        "id": "osm:relation:7103009",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155351",
+          "sectorFr": "Beni khiar",
+          "sectorAr": "بني خيار",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11697,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 438,
+            "Nombre_de_menages_par_Secteurs.xlsx": 437
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7102855",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155352",
+          "sectorFr": "Diar ben salem",
+          "sectorAr": "ديار بنسالم",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11731,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 440,
+            "Nombre_de_menages_par_Secteurs.xlsx": 439
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7102854",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155353",
+          "sectorFr": "El maamoura",
+          "sectorAr": "المعمورة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11765,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 442,
+            "Nombre_de_menages_par_Secteurs.xlsx": 441
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7103011",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155354",
+          "sectorFr": "Somaa",
+          "sectorAr": "الصمعة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11799,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 444,
+            "Nombre_de_menages_par_Secteurs.xlsx": 443
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7103012",
+        "official": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1553",
+          "delegationFr": "Beni khiar",
+          "delegationAr": "بني خيار",
+          "sectorCode": "155355",
+          "sectorFr": "Halfa",
+          "sectorAr": "حلفاء",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11833,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 446,
+            "Nombre_de_menages_par_Secteurs.xlsx": 445
+          }
+        }
+      }
+    ],
+    "protectedRawIds": [
+      "osm:relation:7102854",
+      "osm:relation:7102855",
+      "osm:relation:7103009",
+      "osm:relation:7103011",
+      "osm:relation:7103012",
+      "osm:way:174740047",
+      "osm:way:176000340",
+      "osm:way:176000341",
+      "osm:way:97396877"
+    ],
+    "originalNamePeerIds": [
+      "osm:node:1128018620",
+      "osm:relation:7103009",
+      "osm:relation:7145299",
+      "osm:way:97396877"
+    ],
+    "effectiveNamePeerIds": [
+      "osm:node:1128018620",
+      "osm:relation:7103009",
+      "osm:relation:7145299",
+      "osm:way:97396877"
+    ],
+    "nameQueries": [
+      "benikhiar",
+      "беніхяр",
+      "بنيخيار"
+    ],
+    "currentWholeGroups": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009",
+        "osm:way:97396877"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460"
+      ]
+    },
+    "requiredGroupsAfterDistinctGuard": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460"
+      ],
+      "osm:way:97396877": [
+        "osm:way:97396877"
+      ]
+    },
+    "expectedFinalWholeGroups": {
+      "osm:relation:7102854": [
+        "osm:relation:7102854",
+        "osm:way:174740047"
+      ],
+      "osm:relation:7102855": [
+        "osm:relation:7102855",
+        "osm:way:176000340"
+      ],
+      "osm:relation:7103009": [
+        "osm:relation:7103009"
+      ],
+      "osm:relation:7103011": [
+        "osm:relation:7103011",
+        "osm:way:176000341"
+      ],
+      "osm:relation:7103012": [
+        "osm:relation:7103012"
+      ],
+      "delegation:460": [
+        "delegation:460",
+        "osm:way:97396877"
+      ]
+    },
+    "distinctPair": {
+      "ids": [
+        "osm:relation:7103009",
+        "osm:way:97396877"
+      ],
+      "reviewEvidence": {
+        "file": "settlement-polygon-display-reviews/three-town/460-distinct.json",
+        "sha256": "081053cea358a218133e1c1121c545562a40f8b0b6ac08ba48c2ad9b2bcc0005"
+      }
+    },
+    "baseInsideSettlementPolygon": {
+      "original": false,
+      "effective": false,
+      "packed": false
+    },
+    "coordinatePolicy": "preserve_all_reference_and_raw_coordinates",
+    "reviewedNoncontainmentReason": "Preserve legacy base460 36.46/10.78 and every raw coordinate. Its approximately6.5m polygon noncontainment is explicit, not a reason to move it or expand a border. No original INM coordinate provenance is claimed.",
+    "namesakeSectorReferenceContainment": {
+      "original": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "effective": {
+        "base": true,
+        "sourcePoint": true
+      },
+      "packed": {
+        "base": true,
+        "sourcePoint": true
+      }
+    },
+    "settlementWithinNamesakeSector": {
+      "original": true,
+      "effective": true,
+      "packed": true
+    },
+    "coordinateCorrections": [],
+    "nearestReferenceIds": {
+      "base": 460,
+      "settlementPolygon": 460,
+      "sourcePoint": 460,
+      "separateSector": 468
+    },
+    "publicNodeElement": {
+      "type": "node",
+      "id": 1128018620,
+      "lat": 36.4693627,
+      "lon": 10.7809776,
+      "timestamp": "2023-10-25T21:12:37Z",
+      "version": 17,
+      "changeset": 143134733,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "addr:governorate": "Nabeul",
+        "int_name": "Béni Khiar",
+        "name": "بني خيار",
+        "name:ar": "بني خيار",
+        "name:en": "Béni Khiar",
+        "name:fr": "Béni Khiar",
+        "name:uk": "Бені-Х'яр",
+        "place": "town",
+        "wikidata": "Q2737310",
+        "wikimedia_commons": "Category:Beni Khiar",
+        "wikipedia": "en:Béni Khiar"
+      }
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:97396877",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7103009",
+        "after": "delegation:460"
+      }
+    ]
+  },
+  "primaryEvidence": [
+    {
+      "file": "settlement-polygon-display-reviews/three-town/beni-khiar-social-unit.html",
+      "sha256": "d455d1280b402e395b1bd302ebe322d6f890fae5e86fb4f5186573ff108c4682",
+      "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببني-خيار-نابل"
+    },
+    {
+      "file": "settlement-polygon-display-reviews/three-town/nabeul-delegations.html",
+      "sha256": "8db10a1b820b26c7378f45d2b5c15b0fa2d8568afdd9579f23f8076795dbdf79",
+      "url": "https://www.nabeul.gov.tn/ar/بانوراما-المعتمديات-2/"
+    }
+  ]
+}

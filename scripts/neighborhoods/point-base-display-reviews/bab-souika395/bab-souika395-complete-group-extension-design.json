@@ -1,0 +1,980 @@
+{
+  "schemaVersion": 1,
+  "status": "DESIGN_ONLY_PENDING_INDEPENDENT_SOURCE_APPROVAL_AND_IMPLEMENTATION_REVIEW",
+  "baselineMetadataSha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86",
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "b18643d50429019a15f9e3d89f410d5841ac09ba6160428f0e2ba2a21b809d33"
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\montfleury-bab-souika-point-base-source-review.json",
+    "sha256": "7da80723ce458c69aba76abfb6ae96ffe7cacca3d5886388d473522903221907"
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\montfleury-bab-souika-source-review\\exact-current-source-and-scope-facts.json",
+    "sha256": "928a5896d10a31cbb4a697b8f03367e233ca6206b142e5e4207dca682d3d466d"
+  },
+  "objective": "Add only node1258831465 to the existing Bab Souika395 picker group, preserving its strict sector owner and every current raw field, coordinate, geometry, timetable default and imada group assignment.",
+  "exactMetadataFieldChange": {
+    "id": "osm:node:1258831465",
+    "field": "pickerGroupId",
+    "before": "osm:node:1258831465",
+    "after": "delegation:395"
+  },
+  "currentFormatBlockers": [
+    {
+      "location": "validate_reviewed_point_base_display completePickerGroups",
+      "reason": "Only a standalone point and base singleton are admitted; the existing base group also contains sector7201474."
+    },
+    {
+      "location": "metadata -> assign_picker_groups -> apply_reviewed_picker_groups",
+      "reason": "Setting base_picker_groups for the point early adds it to395 before the strict owner runs. The unchanged owner expects no raw target member yet and must fail. Early source validation must not assign the point."
+    },
+    {
+      "location": "verify_reviewed_point_base_names groups.get(target)",
+      "reason": "It currently requires target raw members to equal the point alone, whereas the correct final raw target members are point plus existing sector."
+    },
+    {
+      "location": "verify_reviewed_point_base_names preservedSectors loop",
+      "reason": "It requires each imada to be its own singleton. Both existing sector7201474 in base395 and Borj Zouara7201476 with residential180268046 violate this premise. All memberships must be pinned, not waived."
+    }
+  ],
+  "proposedFormat": {
+    "name": "deferredCompleteGroupExtension",
+    "placement": "Optional, strictly keyed extension of reviewed_explicit_suburb_point_base_display_identity. Absent extension retains every existing simple point/base path unchanged.",
+    "admission": "One current raw suburb singleton may extend one base group whose existing raw sector member is owned by one successful unchanged strict coded-sector/base record. No arbitrary multi-source regrouping, guessed group expansion, reclassification or owner eviction.",
+    "fields": [
+      "schemaVersion=1",
+      "strictOwner: active picker manifest record ID plus exact expected record object and its approved evidence reference",
+      "expectedBeforeGroups: complete explicit display memberships including virtual base IDs",
+      "expectedAfterGroups: exactly the point-group removal and insertion into its existing base target",
+      "protectedRawRecords: every preexisting member from those groups, typed full current metadata and source/packed geometry pins"
+    ],
+    "beforeGroups": {
+      "delegation:395": [
+        "delegation:395",
+        "osm:relation:7201474"
+      ],
+      "osm:node:1258831465": [
+        "osm:node:1258831465"
+      ],
+      "osm:relation:7201468": [
+        "osm:relation:7201468"
+      ],
+      "osm:relation:7201469": [
+        "osm:relation:7201469"
+      ],
+      "osm:relation:7201470": [
+        "osm:relation:7201470"
+      ],
+      "osm:relation:7201471": [
+        "osm:relation:7201471"
+      ],
+      "osm:relation:7201472": [
+        "osm:relation:7201472"
+      ],
+      "osm:relation:7201473": [
+        "osm:relation:7201473"
+      ],
+      "osm:relation:7201475": [
+        "osm:relation:7201475"
+      ],
+      "osm:relation:7201476": [
+        "osm:relation:7201476",
+        "osm:way:180268046"
+      ],
+      "osm:relation:7201477": [
+        "osm:relation:7201477"
+      ],
+      "osm:relation:7201478": [
+        "osm:relation:7201478"
+      ]
+    },
+    "afterGroups": {
+      "delegation:395": [
+        "delegation:395",
+        "osm:node:1258831465",
+        "osm:relation:7201474"
+      ],
+      "osm:relation:7201468": [
+        "osm:relation:7201468"
+      ],
+      "osm:relation:7201469": [
+        "osm:relation:7201469"
+      ],
+      "osm:relation:7201470": [
+        "osm:relation:7201470"
+      ],
+      "osm:relation:7201471": [
+        "osm:relation:7201471"
+      ],
+      "osm:relation:7201472": [
+        "osm:relation:7201472"
+      ],
+      "osm:relation:7201473": [
+        "osm:relation:7201473"
+      ],
+      "osm:relation:7201475": [
+        "osm:relation:7201475"
+      ],
+      "osm:relation:7201476": [
+        "osm:relation:7201476",
+        "osm:way:180268046"
+      ],
+      "osm:relation:7201477": [
+        "osm:relation:7201477"
+      ],
+      "osm:relation:7201478": [
+        "osm:relation:7201478"
+      ]
+    },
+    "baseCurrent": {
+      "id": 395,
+      "nomFr": "Bab Souika",
+      "nomAr": "باب سويقة",
+      "nomEn": "Bab Souika",
+      "lat": 36.8083,
+      "lng": 10.17
+    },
+    "expectedGovernor": {
+      "id": 342,
+      "nomFr": "Tunis",
+      "nomAr": "تونس",
+      "nomEn": "Tunis",
+      "lat": 36.8065,
+      "lng": 10.1815
+    },
+    "implementationShape": "Reuse the current source identity validator, add one explicit deferred-application helper, and add a bounded branch to the final read-only verifier. Keep assign_picker_groups and apply_reviewed_picker_groups unchanged."
+  },
+  "strictOwner": {
+    "activeManifestBaseline": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c"
+    },
+    "recordId": "osm:relation:7201474",
+    "zeroBasedRecordIndex": 1,
+    "expectedRecord": {
+      "id": "osm:relation:7201474",
+      "targetDelegationId": 395,
+      "expectedGovernorateId": 342,
+      "expectedBase": {
+        "nomAr": "باب سويقة",
+        "lat": 36.8083,
+        "lng": 10.17
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7201474"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:395"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7201474",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "باب سويقة",
+          "expectedParentName": "معتمدية باب سويقة",
+          "expectedDelegationId": 395,
+          "expectedLat": 36.806945,
+          "expectedLng": 10.168962,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:fr": "Bab Souika",
+            "ref:tn:codegeo": "115457"
+          },
+          "originalGeometrySha256": "4b808635be096e6d9e6782835fe43d8527efe7aa647ea04b14bef5c912b3eb44",
+          "packedGeometrySha256": "f1fb82dba03ed9f4d84503f91afcd4bcc770ecde553d71d860b0cbc507c86b85"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7201474",
+          "code": "115457",
+          "currentOfficialRecord": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115457",
+            "sectorFr": "Bab souika",
+            "sectorAr": "باب سويقة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1090,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 35,
+              "Nombre_de_menages_par_Secteurs.xlsx": 35
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:fr": "Bab Souika",
+            "ref:tn:codegeo": "115457"
+          },
+          "effectiveOriginalGeometrySha256": "4b808635be096e6d9e6782835fe43d8527efe7aa647ea04b14bef5c912b3eb44"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:4133433",
+          "code": "1154",
+          "name": "معتمدية باب سويقة",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bab Souika",
+            "boundary": "administrative",
+            "name": "معتمدية باب سويقة",
+            "name:ar": "معتمدية باب سويقة",
+            "name:fr": "Délégation Bab Souika",
+            "ref:tn:codegeo": "1154",
+            "ref:tn:hasc_2": "TN.TU.BS",
+            "wikidata": "Q2877693"
+          },
+          "effectiveOriginalGeometrySha256": "80195b48ecbc41cc1135f3240fd91aa4a05ad6448ad01508f9a0510a8d2801d3",
+          "currentOfficialRecord": {
+            "governorateCode": "11",
+            "governorateAr": "تونس",
+            "governorateFr": "Tunis",
+            "delegationCode": "1154",
+            "delegationAr": "باب سويقة",
+            "delegationFr": "Bab souika"
+          }
+        }
+      ]
+    },
+    "expectedRecordObjectSha256": "d28926915e148722c851d35b526370271ddd47a3443db5e1e76319cbba328c55",
+    "proof": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviews\\base-locality110-strict-proposal.json",
+      "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+    },
+    "proofRecordId": "osm:relation:7201474",
+    "zeroBasedProofRecordIndex": 2,
+    "proofRecordObjectSha256": "475c7090671e05d1eb908de920bbdb422338dd2ccb78d061b80080dd738787b5",
+    "expectedAppliedReceipt": {
+      "pickerGroupId": "delegation:395",
+      "ids": [
+        "osm:relation:7201474"
+      ]
+    },
+    "receiptEvidence": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "12a44d72efcf5216142f47406544200d771121fda0c4377b4ac1cfa3a8d80002"
+    },
+    "ownershipRule": "The old picker manifest remains byte-identical in this proposed change. Its existing loader must independently validate the original sector/base record and source proof. Do not append a duplicate owner or widen expectedExistingMemberIds/expectedTargetMemberIds.",
+    "futureBinding": "Use the active reviewed_picker_groups argument and require the exact owner record object/reference plus one successful matching application. A frozen whole-manifest SHA is a baseline artifact pin, not a new perpetual runtime dependency on unrelated future manifest append operations."
+  },
+  "phaseContract": [
+    {
+      "phase": "early_source_validation",
+      "behavior": "Validate all existing common point/base checks, complete11-imada and source-name inventories, exact current/raw/base/source coordinates and own empty correction395 subset. Parse and validate the extension. Retain the raw point via preserve_point, store its validated deferred review, but leave base_group and base_picker_groups unchanged for this point."
+    },
+    {
+      "phase": "existing_grouping",
+      "behavior": "Run automatic grouping and the unchanged strict picker-base owner normally. It sees its original expected singleton sector group and empty raw base target. Preserve its exact successful application and existing global reservations."
+    },
+    {
+      "phase": "explicit_deferred_commit",
+      "behavior": "After all existing group/context/residential mutations and before final verification, validate every pending extension before any mutation. Bind the actual active owner record and successful strict application; check complete beforeGroups, all13 raw records,12 packed polygon slices and base fields. Reject any extra member, missing member, new competing target owner or change to the existing record. Then set only the target point pickerGroupId and register its explicit point/base ownership."
+    },
+    {
+      "phase": "final_read_only_verification",
+      "behavior": "Require the exact afterGroups and all preserved raw fields/packed bytes. Only the point group field differs. Check old strict sector ownership separately from explicit point ownership. The verifier performs no mutations and never removes the grouped sector from the complete11-imada inventory."
+    },
+    {
+      "phase": "coverage",
+      "behavior": "Refresh pickerDuplicateGroups from actual final groups once. Keep the existing strict owner application exactly sector7201474->395; the added point is accounted as its own reviewed display/preserve-point application. Freeze actual coverage expectations with implementation, without inventing a second strict-base record."
+    }
+  ],
+  "finalOwnershipChecks": {
+    "targetRawMembers": [
+      "osm:node:1258831465",
+      "osm:relation:7201474"
+    ],
+    "targetDisplayMembers": [
+      "delegation:395",
+      "osm:node:1258831465",
+      "osm:relation:7201474"
+    ],
+    "explicitBasePickerGroupsInverse": {
+      "delegation:395": [
+        "osm:node:1258831465"
+      ]
+    },
+    "strictPickerOwnerInverse": {
+      "delegation:395": [
+        "osm:relation:7201474"
+      ]
+    },
+    "pointGroupAbsent": "osm:node:1258831465",
+    "readOnlyNameContext": "osm:relation:4133433",
+    "readOnlyContextMustRemainAbsentFromRawAndGroupOwnership": true,
+    "noCollisionRule": "Pending extensions must have unique point IDs and base targets and cannot overlap another transition. Existing strict-base ownership is the sole explicitly authorized shared target. Read-only administrative contexts are not globally monopolized."
+  },
+  "protectedScope": {
+    "imadaIds": [
+      "osm:relation:7201472",
+      "osm:relation:7201470",
+      "osm:relation:7201478",
+      "osm:relation:7201476",
+      "osm:relation:7201469",
+      "osm:relation:7201468",
+      "osm:relation:7201474",
+      "osm:relation:7201471",
+      "osm:relation:7201477",
+      "osm:relation:7201473",
+      "osm:relation:7201475"
+    ],
+    "officialImadaCount": 11,
+    "additionalExistingRawMember": "osm:way:180268046",
+    "protectedRawRecordCount": 13,
+    "protectedPolygonCount": 12,
+    "sourcePointCount": 1,
+    "unrelatedExistingGroup": {
+      "id": "osm:relation:7201476",
+      "beforeAndAfter": [
+        "osm:relation:7201476",
+        "osm:way:180268046"
+      ]
+    },
+    "noIdentityReinterpretation": "Preserving the Borj Zouara group does not recertify its original automatic grouping or call its residential member an imada."
+  },
+  "protectedRawRecords": [
+    {
+      "id": "osm:node:1258831465",
+      "kind": "suburb",
+      "currentMetadata": {
+        "id": "osm:node:1258831465",
+        "sourceId": "osm",
+        "name": "باب سويقة",
+        "aliases": [
+          "Bab Souika"
+        ],
+        "kind": "suburb",
+        "parentName": "سيدي الجبالي",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "Sidi Djebali",
+          "سيدي الجبالي",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.8052053,
+        "lng": 10.1679884,
+        "delegationId": 395,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1258831465"
+      },
+      "originalTags": {
+        "name": "باب سويقة",
+        "name:ar": "باب سويقة",
+        "name:en": "Bab Souika",
+        "name:fr": "Bab Souika",
+        "place": "suburb"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "ed9e5d884991bbcf28354ee53fafe1e692b0fbbbd5667d9c2546704f1f556860",
+      "expectedCuration": null,
+      "packedGeometrySha256": null
+    },
+    {
+      "id": "osm:relation:7201468",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201468",
+        "sourceId": "osm",
+        "name": "الحلفاوين",
+        "aliases": [
+          "El Halfaouine",
+          "Halfaouine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.80739,
+        "lng": 10.165629,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.163291,
+          36.80532,
+          10.170699,
+          36.809409
+        ],
+        "areaKm2": 0.1243226673398442,
+        "pickerGroupId": "osm:relation:7201468",
+        "offset": 5072792,
+        "length": 1172
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحلفاوين",
+        "name:ar": "الحلفاوين",
+        "name:fr": "El Halfaouine",
+        "ref:tn:codegeo": "115456"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "ad9f62e484a7d14c2ceb7182c15fcf032ace96fd853ecf6c74d636fa0bc87902",
+      "expectedCuration": null,
+      "packedGeometrySha256": "c6cbc22906136454b30cdc404f4d1510842d66cfe9479a67c704bed79459f21e"
+    },
+    {
+      "id": "osm:relation:7201469",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201469",
+        "sourceId": "osm",
+        "name": "باب العسل",
+        "aliases": [
+          "Bab El Assel",
+          "Bab Laassal",
+          "באב לעסאל"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.81138,
+        "lng": 10.167046,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.165482,
+          36.808925,
+          10.17339,
+          36.813704
+        ],
+        "areaKm2": 0.1808309590801098,
+        "pickerGroupId": "osm:relation:7201469",
+        "offset": 5073964,
+        "length": 516
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باب العسل",
+        "name:ar": "باب العسل",
+        "name:fr": "Bab El Assel",
+        "ref:tn:codegeo": "115455"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "1a8d6762626b7cbdd9d91a7ce7b7529af234e5ffe51f248336d3387a2b48c952",
+      "expectedCuration": null,
+      "packedGeometrySha256": "afb7284a4f02a039fe4da5658bdfb93d54f3cf12b886a1cb5c42e072d97104f1"
+    },
+    {
+      "id": "osm:relation:7201470",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201470",
+        "sourceId": "osm",
+        "name": "باب الخضراء",
+        "aliases": [
+          "Bab El Khadra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.81039,
+        "lng": 10.171332,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.168344,
+          36.80736,
+          10.174532,
+          36.813119
+        ],
+        "areaKm2": 0.18003380376700187,
+        "pickerGroupId": "osm:relation:7201470",
+        "offset": 5074480,
+        "length": 420
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باب الخضراء",
+        "name:ar": "باب الخضراء",
+        "name:fr": "Bab El Khadra",
+        "ref:tn:codegeo": "115452"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "590a0f7d91d1966d349de104d1ee82e52fa642e2b82495855f3d51d449b91773",
+      "expectedCuration": null,
+      "packedGeometrySha256": "dd18039beb0c5ce7d00ec962384e8a91c459bd05d206405343d2f494d8717fcc"
+    },
+    {
+      "id": "osm:relation:7201471",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201471",
+        "sourceId": "osm",
+        "name": "باب سيدي عبد السلام",
+        "aliases": [
+          "Bab Sidi Abdessalem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.80936,
+        "lng": 10.164873,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.162744,
+          36.80749,
+          10.166755,
+          36.811255
+        ],
+        "areaKm2": 0.07699635484644876,
+        "pickerGroupId": "osm:relation:7201471",
+        "offset": 5074900,
+        "length": 276
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باب سيدي عبد السلام",
+        "name:ar": "باب سيدي عبد السلام",
+        "name:fr": "Bab Sidi Abdessalem",
+        "ref:tn:codegeo": "115458"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "bf4bd060fb59e7da82866d2906595e0882d815baed963197852e31d2dc796cab",
+      "expectedCuration": null,
+      "packedGeometrySha256": "5b8351689cffc1c657030093df88ab82ca1de255361e363cc360ffd91cc6d3c9"
+    },
+    {
+      "id": "osm:relation:7201472",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201472",
+        "sourceId": "osm",
+        "name": "ترنجة",
+        "aliases": [
+          "Tronja"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.804015,
+        "lng": 10.173932,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.169037,
+          36.802254,
+          10.17558,
+          36.8057
+        ],
+        "areaKm2": 0.10832280735888199,
+        "pickerGroupId": "osm:relation:7201472",
+        "offset": 5075176,
+        "length": 716
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ترنجة",
+        "name:ar": "ترنجة",
+        "name:fr": "Tronja",
+        "ref:tn:codegeo": "115451"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "171376968eda54d73258de83d1f4e84624fa7e09bf07ef960345d627064161f9",
+      "expectedCuration": null,
+      "packedGeometrySha256": "0ff8e946d9e2b583a3ce2def37ba91cc74583c5f381ba1271af51e4e9f3fb81e"
+    },
+    {
+      "id": "osm:relation:7201473",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201473",
+        "sourceId": "osm",
+        "name": "حمام الرميمي",
+        "aliases": [
+          "Hammam El Rmimi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.806945,
+        "lng": 10.172509,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.169686,
+          36.80548,
+          10.175084,
+          36.808278
+        ],
+        "areaKm2": 0.09484700050520663,
+        "pickerGroupId": "osm:relation:7201473",
+        "offset": 5075892,
+        "length": 748
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حمام الرميمي",
+        "name:ar": "حمام الرميمي",
+        "name:fr": "Hammam El Rmimi",
+        "ref:tn:codegeo": "115460"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "f04b912af635c39b43f61635decd589bdb9084947ac6647992f41945203035d7",
+      "expectedCuration": null,
+      "packedGeometrySha256": "f59d4373d9ae4c12bda14e547ada27d5ace0e5cedd514e2b27f7b8513fca0b2a"
+    },
+    {
+      "id": "osm:relation:7201474",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201474",
+        "sourceId": "osm",
+        "name": "باب سويقة",
+        "aliases": [
+          "Bab Souika"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.806945,
+        "lng": 10.168962,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.167321,
+          36.805201,
+          10.171384,
+          36.808832
+        ],
+        "areaKm2": 0.07867054536765061,
+        "pickerGroupId": "delegation:395",
+        "offset": 5076640,
+        "length": 556
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باب سويقة",
+        "name:ar": "باب سويقة",
+        "name:fr": "Bab Souika",
+        "ref:tn:codegeo": "115457"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "4b808635be096e6d9e6782835fe43d8527efe7aa647ea04b14bef5c912b3eb44",
+      "expectedCuration": null,
+      "packedGeometrySha256": "f1fb82dba03ed9f4d84503f91afcd4bcc770ecde553d71d860b0cbc507c86b85"
+    },
+    {
+      "id": "osm:relation:7201475",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201475",
+        "sourceId": "osm",
+        "name": "سيدي الجبالي",
+        "aliases": [
+          "Sidi Djebali"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.804434,
+        "lng": 10.165552,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.162848,
+          36.802669,
+          10.16804,
+          36.80625
+        ],
+        "areaKm2": 0.08879844032162756,
+        "pickerGroupId": "osm:relation:7201475",
+        "offset": 5077196,
+        "length": 852
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي الجبالي",
+        "name:ar": "سيدي الجبالي",
+        "name:fr": "Sidi Djebali",
+        "ref:tn:codegeo": "115461"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "761ee2fd5fa02b8c622bae6e388def17a8a430ab075fc8aff93eaa8788c04c11",
+      "expectedCuration": null,
+      "packedGeometrySha256": "42c532a50f1b79af85185a0c6b34a351b43ef7e4e170bc7842d3f4afe5924b7d"
+    },
+    {
+      "id": "osm:relation:7201476",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201476",
+        "sourceId": "osm",
+        "name": "برج زوارة",
+        "aliases": [
+          "Borj Zouara"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.804285,
+        "lng": 10.156628,
+        "delegationId": 405,
+        "hasBoundary": true,
+        "bbox": [
+          10.148721,
+          36.79893,
+          10.163759,
+          36.809706
+        ],
+        "areaKm2": 1.0789045703050397,
+        "pickerGroupId": "osm:relation:7201476",
+        "offset": 5078048,
+        "length": 980
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "برج زوارة",
+        "name:ar": "برج زوارة",
+        "name:fr": "Borj Zouara",
+        "ref:tn:codegeo": "115454"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "a3fa65b556baac8286df07d41342955913f04c3e50ec01b5279115b34f4db2c7",
+      "expectedCuration": null,
+      "packedGeometrySha256": "61928f1307fa555f163504d85988d9da0c431d69786bfc94ab74997307af4003"
+    },
+    {
+      "id": "osm:relation:7201477",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201477",
+        "sourceId": "osm",
+        "name": "الزاوية البكرية",
+        "aliases": [
+          "Zaouiet El Bekria"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.808355,
+        "lng": 10.161482,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.159066,
+          36.8069,
+          10.164074,
+          36.809809
+        ],
+        "areaKm2": 0.07445646418621639,
+        "pickerGroupId": "osm:relation:7201477",
+        "offset": 5079028,
+        "length": 444
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الزاوية البكرية",
+        "name:ar": "الزاوية البكرية",
+        "name:fr": "Zaouiet El Bekria",
+        "ref:tn:codegeo": "115459"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "b661a697e11eca143f36256784dec59e3b04ed99091154459cd8a29b5dddc143",
+      "expectedCuration": null,
+      "packedGeometrySha256": "0ac045bee1367315dbd70c6af4eacf451c8d32459958160ed99ce3b26e537eb2"
+    },
+    {
+      "id": "osm:relation:7201478",
+      "kind": "sector",
+      "currentMetadata": {
+        "id": "osm:relation:7201478",
+        "sourceId": "osm",
+        "name": "باب سعدون",
+        "aliases": [
+          "Bab Saadoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باب سويقة",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.80636,
+        "lng": 10.162991,
+        "delegationId": 395,
+        "hasBoundary": true,
+        "bbox": [
+          10.159208,
+          36.80421,
+          10.165249,
+          36.8085
+        ],
+        "areaKm2": 0.09742033379533174,
+        "pickerGroupId": "osm:relation:7201478",
+        "offset": 5079472,
+        "length": 1412
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باب سعدون",
+        "name:ar": "باب سعدون",
+        "name:fr": "Bab Saadoun",
+        "ref:tn:codegeo": "115453"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "28a2d7355ffe51a91df7dd35c7b935f43422517713041c559b334d24d001e2ce",
+      "expectedCuration": null,
+      "packedGeometrySha256": "5d742352e2e5bda19b22c30e1698ea2174eb140cecdc88a51325b0b6bcb47fb0"
+    },
+    {
+      "id": "osm:way:180268046",
+      "kind": "residential",
+      "currentMetadata": {
+        "id": "osm:way:180268046",
+        "sourceId": "osm",
+        "name": "برج زوارة",
+        "aliases": [
+          "Borj Zouara"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية تونس",
+        "contextAliases": [],
+        "governorateId": 342,
+        "lat": 36.804457,
+        "lng": 10.156456,
+        "delegationId": 405,
+        "hasBoundary": true,
+        "bbox": [
+          10.148687,
+          36.799046,
+          10.163458,
+          36.809763
+        ],
+        "areaKm2": 1.0347116114401633,
+        "pickerGroupId": "osm:relation:7201476",
+        "offset": 5271456,
+        "length": 428
+      },
+      "originalTags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "landuse": "residential",
+        "name": "برج زوارة",
+        "name:ar": "برج زوارة",
+        "name:en": "Borj Zouara",
+        "name:fr": "Borj Zouara"
+      },
+      "originalAndEffectiveSourceGeometrySha256": "2d5f094f2023fadd471b2c893a1c099d352766586a7342de169946a32c435699",
+      "expectedCuration": null,
+      "packedGeometrySha256": "6e60c2d03d4999f91695ccc23834221054787960965f6051c05867729bd560bb"
+    }
+  ],
+  "hashConventions": {
+    "sourceGeometry": "sha256(json.dumps(mapping(shapely geometry),separators=(comma,colon)).encode(utf8)); unsorted mapping/default ensure_ascii, same as installed aggregate_geometry_sha256, without invoking it.",
+    "recordObject": "sha256(json.dumps(object,ensure_ascii=False,sort_keys=True,separators=(comma,colon)).encode(utf8)); full expected object equality remains authoritative.",
+    "packedGeometry": "SHA256 of current exact offset/length binary slice, independently of offset changes."
+  },
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "dbc3462e2f1e73df3630ffcb43a95089d3416c5035828005149b453930b77b14"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\montfleury-bab-souika-source-review\\node-1258831465.json",
+      "sha256": "a987aa39f7dceebbf03847beb11ed920858aebc52a772b6fd3400d67d68e81b4"
+    }
+  ],
+  "notPerformed": [
+    "implementation",
+    "stage preparation",
+    "repository mutation",
+    "generator/helper/test execution",
+    "phone/device access",
+    "live ledger access",
+    "new source fetch",
+    "geometry or coordinate changes"
+  ]
+}

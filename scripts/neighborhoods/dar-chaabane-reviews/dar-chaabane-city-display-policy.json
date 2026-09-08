@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "reviewed_city_display_association",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_city_display_association",
+    "id": "osm:way:174739936",
+    "targetDelegationId": 468
+  },
+  "sourceReview": {
+    "file": "dar-chaabane-reviews/dar-chaabane-complete-display-transition-review.json",
+    "sha256": "fc535dce2f0268940743580ec2aab381d3f196f887c57efdfdef669efdc2e09e"
+  },
+  "sourceFacts": {
+    "file": "dar-chaabane-reviews/direct-pbf-source-facts.json",
+    "sha256": "455683e0a6c82d563e5513f32f1b80d8b8faf41eea87081d3b7ed52eb3461da8"
+  },
+  "officialRegistry": {
+    "file": "dar-chaabane-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "requiredDistinctPair": {
+    "ids": [
+      "osm:relation:7103335",
+      "osm:way:174739936"
+    ],
+    "reviewEvidence": {
+      "file": "dar-chaabane-reviews/dar-chaabane-town-sector-distinct-choices.json",
+      "sha256": "679d291d327f62cfffec746efec240e5ca968bd16828fc41946d4f2b9ff8f5db"
+    }
+  },
+  "acceptedPolicy": {
+    "method": "reviewed_city_display_association",
+    "sourceIdentitySupported": true,
+    "requiresRootPolicyAcceptance": true,
+    "scope": "Exact reviewed combined-city name association. Not a territorial equality, manual-reference correction or prayer-source-coordinate correction.",
+    "preserveRawRepresentativeAndDefault": true,
+    "preserveExistingCityCanonicalSource": true,
+    "preserveSavedRawManual623AndGpsSources": true,
+    "basePointOutsideResidentialAcknowledged": true,
+    "rawDefault623DiffersFromCanonical468Acknowledged": true,
+    "townNodeIsIdentityEvidenceOnly": true,
+    "notACompleteTownBoundaryClaim": true,
+    "noGenericOrTransitiveNameMatching": true
+  },
+  "primarySources": [
+    {
+      "file": "dar-chaabane-reviews/nabeul-panorama.html",
+      "sha256": "6a149fea33192d62ddd6da095c85ebf19ec465bbf3d843443de6e6b91d110653",
+      "url": "https://www.nabeul.gov.tn/fr/panorama-des-villes/"
+    },
+    {
+      "file": "dar-chaabane-reviews/nabeul-municipalities.html",
+      "sha256": "9e4a2e8b9593a0ebbcae7344e61b53bf1e288601814c605fa9e6e1e47c2619ee",
+      "url": "https://www.nabeul.gov.tn/fr/administration-du-gouvernorat/les-municipalites-2/"
+    },
+    {
+      "file": "dar-chaabane-reviews/nabeul-stonecraft.html",
+      "sha256": "8d9cf075ed4e18b54bb3f770d10bc741305020e39dd20c66203167a8230d286a",
+      "url": "https://www.nabeul.gov.tn/fr/les-pierres-de-taile-de-dar-chaabane/"
+    }
+  ],
+  "implementationScope": "Exact display-only canonical city association. Preserve raw623 reference and saved selection; new city picks retain468. Source review was frozen independently before implementation."
+}

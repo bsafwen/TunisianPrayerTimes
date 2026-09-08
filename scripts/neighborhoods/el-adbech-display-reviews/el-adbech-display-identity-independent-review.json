@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "status": "supported_bounded_display_identity_with_explicit_inference_limits",
+  "reviewedAtUtc": "2026-09-07T20:34:01.341233+00:00",
+  "reviewedProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-adbech-current-identity-followup.json",
+    "sha256": "15091a4f44cb3d8c11e35ff1e5c94f146994317a2410c95dbbd4131c01c1630b",
+    "bytes": 50090
+  },
+  "sourceFreeze": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\freeze-manifest.json",
+    "sha256": "c8f04fba257ebcd9d9be0d6551f2ee8d18fd07ab7f7fb3566f29df961dd8b10f",
+    "bytes": 6670
+  },
+  "verifiedFrozenResearchArtifacts": 22,
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "378899b486efa44f93cd07ed9ee558529cb7bad11165a52cbe6e860b3e7edddc",
+    "bytes": 1841527
+  },
+  "currentGeometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "8c0a2f48c73e927ea357c0f7696e33ff91d38587a1649e071d80cc0dca801ad2",
+    "bytes": 5497748
+  },
+  "currentTargetsMatchFrozenProposalIgnoringStorageOffsets": true,
+  "sourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\direct-pbf-context-inventory.json",
+    "sha256": "61ef7c5d06737930d86e3f8239801fc96c904b0c05172b07b4368013e7646490",
+    "bytes": 150558
+  },
+  "exactCurrentSourceIds": [
+    "osm:way:1265702650",
+    "osm:way:1265702651",
+    "osm:way:189085992"
+  ],
+  "absorbedVillageId": "osm:node:1997440361",
+  "absorbedVillageAbsentFromCurrentRawCatalog": true,
+  "targetSourceTagsEqualLatestHistoryAndPinnedPbf": true,
+  "exactOriginalSourceGeometryAndCurrentPackedBytesMatch": true,
+  "editingEvidence": {
+    "changesetId": 149074040,
+    "sourceTags": {
+      "changesets_count": "4242",
+      "comment": "supplementation of information, line correction",
+      "created_by": "iD 2.28.1",
+      "host": "https://www.openstreetmap.org/edit",
+      "imagery_used": "Bing Maps Aerial",
+      "locale": "cs",
+      "source": "aerial imagery;local knowledge",
+      "warnings:crossing_ways:highway-waterway": "1",
+      "warnings:disconnected_way:highway": "1"
+    },
+    "targetEdits": [
+      {
+        "id": "osm:way:1265702650",
+        "action": "create",
+        "version": 1,
+        "tags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        }
+      },
+      {
+        "id": "osm:way:1265702651",
+        "action": "create",
+        "version": 1,
+        "tags": {
+          "landuse": "residential",
+          "name": "El Adbech",
+          "residential": "rural"
+        }
+      },
+      {
+        "id": "osm:way:189085992",
+        "action": "modify",
+        "version": 5,
+        "tags": {
+          "addr:city": "El Adbech",
+          "landuse": "residential",
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:fr": "El Adbech"
+        }
+      },
+      {
+        "id": "osm:node:1997440361",
+        "action": "modify",
+        "version": 8,
+        "tags": {
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:en": "El Adbech",
+          "name:fr": "El Adbech",
+          "place": "village"
+        }
+      }
+    ],
+    "largeWayActualTagDelta": {
+      "name": {
+        "before": "الأدباش",
+        "after": "El Adbech"
+      }
+    },
+    "largeWayAddressUnchangedSince2012": "addr:city=El Adbech",
+    "smallWayLineage": [
+      {
+        "id": "osm:way:1265702650",
+        "allBoundaryNodesCreatedInReviewedEdit": true,
+        "sharesBoundaryNodeWithLargeWay": false,
+        "addressTags": {}
+      },
+      {
+        "id": "osm:way:1265702651",
+        "allBoundaryNodesCreatedInReviewedEdit": true,
+        "sharesBoundaryNodeWithLargeWay": false,
+        "addressTags": {}
+      }
+    ],
+    "largeWayNodeSequenceUnchanged": true,
+    "largeWayBoundaryNodesAlsoModified": [
+      1997332624
+    ],
+    "largeWayGeometryCaveat": "Equal way node-reference lists do not prove historical geometry equality, because one referenced node was edited. No unchanged 2020-to2024 coordinate claim is made.",
+    "villageUpgradeAndMove": {
+      "before": {
+        "version": 7,
+        "changeset": 138528828,
+        "tags": {
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:en": "El Adbech",
+          "name:fr": "El Adbech",
+          "place": "hamlet"
+        },
+        "nodeRefs": [],
+        "coordinates": [
+          10.0914315,
+          33.4858657
+        ]
+      },
+      "after": {
+        "version": 8,
+        "changeset": 149074040,
+        "tags": {
+          "name": "El Adbech",
+          "name:ar": "الأدباش",
+          "name:en": "El Adbech",
+          "name:fr": "El Adbech",
+          "place": "village"
+        },
+        "nodeRefs": [],
+        "coordinates": [
+          10.0910266,
+          33.485959
+        ]
+      }
+    },
+    "villageAddressChronology": "Historical addr:city=El Adbech on village versions1–5; removed at version6 in2021. No addr:city was added to either new small way or village in2024.",
+    "sourceAssertionLimit": "Local knowledge is a mapper declaration covering the changeset. The comment is generic and does not literally state that these are three parts of one village."
+  },
+  "identityInventory": {
+    "matchingSourcePlaceIds": [
+      "osm:node:1997440361"
+    ],
+    "matchingResidentialSourceIds": [
+      "osm:way:1265702650",
+      "osm:way:1265702651",
+      "osm:way:189085992"
+    ],
+    "canonicalContainsExistingSourceVillagePoint": true,
+    "pairDistancesForConsistencyOnly": [
+      {
+        "ids": [
+          "osm:way:1265702650",
+          "osm:way:1265702651"
+        ],
+        "distanceMeters": 76.20517285922138,
+        "intersects": false
+      },
+      {
+        "ids": [
+          "osm:way:1265702650",
+          "osm:way:189085992"
+        ],
+        "distanceMeters": 209.11104088530712,
+        "intersects": false
+      },
+      {
+        "ids": [
+          "osm:way:1265702651",
+          "osm:way:189085992"
+        ],
+        "distanceMeters": 204.40639587251155,
+        "intersects": false
+      }
+    ],
+    "noGenericDistanceThresholdUsed": true
+  },
+  "independentPrimaryReview": {
+    "personallyViewedRenders": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\official\\inp-inventory-page-1489.png",
+        "sha256": "83e1ce78607e48520ff3302064eda7d77f8f10ec6ce1d91a1c093d630c209423",
+        "bytes": 132432
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tijma-adbech-display-review\\official\\inp-inventory-page-1490.png",
+        "sha256": "8d654b98cc3f0f60b7c254a3329d1b2ef7fde8cfdfe1e2378a06a2912999f630",
+        "bytes": 154635
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ussd-page-80.png",
+        "sha256": "a9021c38c1057bcc23509082094682691ad7e56f39ea46f63c88d9926a747b9c",
+        "bytes": 215865
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ain-tounine-full.png",
+        "sha256": "4d8e15be4a14476f56fb23b62960fbcaa173981626567d0d67c2e1d010109ad6",
+        "bytes": 621332
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ain-tounine-adbech-context-crop.png",
+        "sha256": "dfeefcce2049607e99e29623dcec6bbb976c7e67ba28932aeaff0cac24625dc8",
+        "bytes": 1191114
+      }
+    ],
+    "inp": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\inp-touslessites.pdf",
+        "sha256": "780035dfd174a6f128b01ba2c1be0626e20a28672e2047eaf86b1c7bed5977bc",
+        "bytes": 9070904
+      },
+      "site168099": "The inventory explicitly places Henchir el Guesirat in the locality of Ladbech; its documented site position is between the southern rural patches. This corroborates use of the locality name in the southern setting independently of the mapper. The monument remains a separate object.",
+      "site168100": "Names Ladbech as a rural locality and describes troglodytic houses among small hills. This supports a dispersed inhabited place, not its full perimeter or each exact OSM patch.",
+      "coordinateOperation": {
+        "sourceCRS": "EPSG:22332",
+        "targetCRS": "EPSG:4326",
+        "reportedTransformationAccuracyMeters": -1.0,
+        "qualification": "Datum transformation accuracy is not source field-location accuracy; coordinates are context only."
+      },
+      "recomputedSiteCoordinates": [
+        {
+          "name": "Henchir el Guesirat",
+          "site": "168.099",
+          "pdfPage": 1489,
+          "sourceXY": [
+            600702.45624,
+            3704582.92469
+          ],
+          "coordinates": [
+            10.084376025177285,
+            33.48011517649046
+          ],
+          "distancesToSourceFeaturesMeters": {
+            "osm:way:1265702650": 94.68996906226232,
+            "osm:way:1265702651": 23.74230712247817,
+            "osm:way:189085992": 348.3994421030785,
+            "osm:node:1997440361": 895.3913510702271
+          }
+        },
+        {
+          "name": "Ladbech",
+          "site": "168.100",
+          "pdfPage": 1490,
+          "sourceXY": [
+            600697.3711,
+            3705280.92687
+          ],
+          "coordinates": [
+            10.084399739708427,
+            33.48641024724098
+          ],
+          "distancesToSourceFeaturesMeters": {
+            "osm:way:1265702650": 466.8515332503101,
+            "osm:way:1265702651": 563.9334516257312,
+            "osm:way:189085992": 17.762813486251478,
+            "osm:node:1997440361": 617.7434016780268
+          }
+        }
+      ]
+    },
+    "isie2022": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\isie-ussd2022.pdf",
+        "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97",
+        "bytes": 3391771
+      },
+      "pdfPage": 80,
+      "rowCode": "5216",
+      "finding": "The viewed row names the Adbech primary school in Ain Tounine, Dkhilet Toujane, Gabes. It corroborates locality spelling/context and does not place every residential fragment in that imada."
+    },
+    "haicop": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\haicop-ladbech-road-2026.html",
+        "sha256": "9c5271df6e4a925a95d1b9145f7663f0e3dfaeb0d789e98288496856ecd95258",
+        "bytes": 62336
+      },
+      "project": "P2026-142618",
+      "finding": "The public procurement names the Ladbech-to-stadium rural road in Dkhilet Toujane. No alignment or three-patch inventory is supplied."
+    },
+    "isie2023": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-adbech-identity-followup\\ain-tounine-isie2023.pdf",
+        "sha256": "988e6e40f08b58e7418876249aebd3a8978b8c27d31403361b985480f3662fd4",
+        "bytes": 1630685
+      },
+      "crs": "EPSG:32632",
+      "independentlyReconstructedAffine": [
+        [
+          17.21014666913023,
+          -0.00027604171204942933
+        ],
+        [
+          -0.0002744070397966425,
+          -17.204854345745844
+        ],
+        [
+          597556.3659776001,
+          3712659.318474437
+        ]
+      ],
+      "controlResidualMeters": [
+        0.1492482142331636,
+        0.14924821432875393,
+        0.14924821384901107,
+        0.14924821755950013
+      ],
+      "sourcePositionReconstructionAgrees": true,
+      "positions": [
+        {
+          "id": "osm:way:1265702650",
+          "pageXY": [
+            177.5486962380816,
+            438.91634435838864
+          ]
+        },
+        {
+          "id": "osm:way:1265702651",
+          "pageXY": [
+            189.90186622763787,
+            439.90861758860825
+          ]
+        },
+        {
+          "id": "osm:way:189085992",
+          "pageXY": [
+            195.12716449796088,
+            407.3120740043227
+          ]
+        },
+        {
+          "id": "osm:node:1997440361",
+          "pageXY": [
+            220.97043261448096,
+            404.78480582284845
+          ]
+        }
+      ],
+      "finding": "Viewed full map and context crop locate Adbech school near an administrative edge. This does not resolve village boundaries or authorize a common imada subtitle."
+    }
+  },
+  "decision": {
+    "supportedClaim": "A single explicitly reviewed El Adbech/الأدباش picker choice for exactly these three source residential records.",
+    "reasoning": "Taken together, deliberate same-village names assigned to the two rural patches while the same editor updates the already-addressed bilingual residential anchor and its contained village, the unique matching source village inventory, and independent INP documentation of Ladbech both near the northern anchor and in the southern setting support the narrow display association. The decision uses this combined identity evidence, not edit time, proximity or common spelling alone.",
+    "evidenceLevel": "The exact per-patch association remains an inference from source-mapper evidence corroborated by primary locality documentation. It is not direct governmental enumeration of the three OSM footprints.",
+    "canonicalId": "osm:way:189085992",
+    "approvedCandidateFields": [
+      {
+        "id": "osm:way:1265702650",
+        "field": "pickerGroupId",
+        "before": "osm:way:1265702650",
+        "after": "osm:way:189085992"
+      },
+      {
+        "id": "osm:way:1265702651",
+        "field": "pickerGroupId",
+        "before": "osm:way:1265702651",
+        "after": "osm:way:189085992"
+      }
+    ],
+    "noNewPointOrGeometry": true,
+    "notAuthorizedByReview": "No app import, generic merge rule, new alias, name/context/prayer correction, village boundary union/hull/buffer, or retirement of raw IDs.",
+    "strongerEvidenceStillMissing": "A georeferenced primary municipal address/local map expressly enumerating the residential fragments would independently verify mapper membership; a complete village polygon is unnecessary for the proposed display group."
+  },
+  "runtimeSourceRead": {
+    "file": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\LocalityRepository.kt",
+      "sha256": "f669062cea7140b132c3952b4a9c2cc26742de6b5cffd1adfe10efe8b4545544",
+      "bytes": 9955
+    },
+    "finding": "Existing grouping preserves the canonical row fields while combining all member searchText and pickerMemberIds. Therefore the stated group IDs can preserve old raw selection matching and member-context search. All3 current source defaults are1022. No runtime execution or app change was performed.",
+    "implementationRequirements": [
+      "Pin all three exact before features and original/packed geometry/source tags; require exact singleton group inventories and all3 expected prayer1022.",
+      "Use the existing Arabic way189085992 as canonical; do not resurrect absent village1997440361 or select it as a missing canonical ID.",
+      "Allow only the two specified pickerGroupId assignments. Keep all raw names, aliases, geometry, coordinates and parent/context fields unchanged.",
+      "Retain and search all member contexts despite differing canonical governorate-only subtitle. Do not manufacture common imada containment.",
+      "Do not generalize this source-specific decision into alias, distance or transitive grouping."
+    ]
+  },
+  "operations": {
+    "repositoryEdits": 0,
+    "sourceDownloads": 0,
+    "newPbfScans": 0,
+    "testsOrBuilds": 0,
+    "generation": 0,
+    "phoneOrLedgerIo": 0
+  }
+}

@@ -1,0 +1,2069 @@
+{
+  "type": "FeatureCollection",
+  "sourceId": "isie-local-sectors-2023-le-kram",
+  "status": "REVIEWED_NATIVE_SOURCE_WITH_PRESERVED_GEOMETRIES",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "osm:relation:7063887",
+      "properties": {
+        "id": "osm:relation:7063887",
+        "officialCode": "117051",
+        "nameAr": "الكرم الشرقي",
+        "nameFr": "Le Kram Est",
+        "governorateCode": "11",
+        "delegationCode": "1170",
+        "parentAr": "الكرم",
+        "parentFr": "Le Kram",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "كرم الشرقية",
+          "name:ar": "كرم الشرقية",
+          "name:fr": "Le Kram Est",
+          "ref:tn:codegeo": "117051"
+        },
+        "sourceOriginalGeometrySha256": "9bfbacecdde78c2541795d78962d44e1305e483eddfeba7522418e15e58c13ab",
+        "currentAliasesToPreserveInFutureProposal": [
+          "Le Kram Est"
+        ],
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D9%83%D8%B1%D9%85/%D8%A7%D9%84%D9%83%D8%B1%D9%85%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A.pdf",
+        "sourcePdfSha256": "3e83148dad63d28406018840e8d95fa6e17f41bd976a29f853439bbb350eabd8",
+        "sourceDrawingIndices": [
+          258
+        ],
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceCrsEpsg": 32632,
+        "sourceGeometrySha256": "eeef1c1412badf211f1a9b9beb0540f39e0d3eba45619ceb8461aa563aeb0468",
+        "sourceControlPointMaxResidualMeters": 0.30758625308015186,
+        "sourceExtraction": {
+          "file": "outputs\\le-kram-six-geopdf-source-data.json",
+          "sha256": "36834b00863b85af9d356d914182b1ad9a31b8707abb43299e7aa37e640787e1"
+        },
+        "rawNativePath": {
+          "file": "work\\le-kram-six-native-source-review\\kram-est-raw-native-path.json",
+          "sha256": "f87717ee2cb86e20ba59dc1b1ff34693e24a4cc67b2e2fd84a0a6102f087436e"
+        },
+        "administrativeScope": {
+          "conclusion": "whole_imada",
+          "pdfPage": 37,
+          "jortPage": 5134,
+          "imadaName": "الكرم الشرقي",
+          "circleName": "الكرم الشرقي",
+          "decree": {
+            "file": "work\\electoral-circle-semantics\\decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+          },
+          "render": {
+            "file": "work\\le-kram-six-native-source-review\\decree-37.png",
+            "sha256": "6dbcc7e3ded18a49743c4fa2dee62fe8e7a7ddd3beaf6710c287ff004596f935"
+          },
+          "personallyViewed": true,
+          "observation": "Exact one-to-one row in complete seven-imada Le Kram block; this six-map review leaves Sidi Fredj117054 unchanged."
+        },
+        "currentOfficialIdentity": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1170",
+          "delegationFr": "Le kram",
+          "delegationAr": "الكرم",
+          "sectorCode": "117051",
+          "sectorFr": "Le kram est",
+          "sectorAr": "الكرم الشرقي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4965,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 156,
+            "Nombre_de_menages_par_Secteurs.xlsx": 156
+          }
+        },
+        "boundaryManipulation": "None: entire explicitly closed native source outline; no clip, repair, buffer, trim, snap, connector or harbor fill.",
+        "officialRegistryNameAr": "الكرم الشرقي",
+        "officialRegistryNameFr": "Le kram est",
+        "sourceId": "isie-local-sectors-2023-le-kram"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.32309605528862,
+              36.83697704926694
+            ],
+            [
+              10.322913755891966,
+              36.83680940481975
+            ],
+            [
+              10.322698928524314,
+              36.836591218188914
+            ],
+            [
+              10.323568217329916,
+              36.83558024941346
+            ],
+            [
+              10.323503885663943,
+              36.835521580050084
+            ],
+            [
+              10.322440732847845,
+              36.83630564087795
+            ],
+            [
+              10.322398667336087,
+              36.836314598377825
+            ],
+            [
+              10.322367009386525,
+              36.83631495417993
+            ],
+            [
+              10.322335206361267,
+              36.836306826889256
+            ],
+            [
+              10.322282298046414,
+              36.83629893677526
+            ],
+            [
+              10.32222938974173,
+              36.83629104663748
+            ],
+            [
+              10.322197441680121,
+              36.8362744362246
+            ],
+            [
+              10.322026280502635,
+              36.83614060478116
+            ],
+            [
+              10.321919593999196,
+              36.83607392573172
+            ],
+            [
+              10.321683956344957,
+              36.83587294043156
+            ],
+            [
+              10.321587678101825,
+              36.83579765944269
+            ],
+            [
+              10.321437912320789,
+              36.83568055551788
+            ],
+            [
+              10.321255766384157,
+              36.83552139214662
+            ],
+            [
+              10.321180739015945,
+              36.83545435689756
+            ],
+            [
+              10.321072459970175,
+              36.83529436377664
+            ],
+            [
+              10.320962877127645,
+              36.83505802272702
+            ],
+            [
+              10.320875993838136,
+              36.834914757916444
+            ],
+            [
+              10.320854454197471,
+              36.83488954556663
+            ],
+            [
+              10.320758322914763,
+              36.8348227476639
+            ],
+            [
+              10.320620417541118,
+              36.834781871995006
+            ],
+            [
+              10.320577338516255,
+              36.83473144719256
+            ],
+            [
+              10.320534114680893,
+              36.834672539280135
+            ],
+            [
+              10.320491180650142,
+              36.834630598255245
+            ],
+            [
+              10.32044737750939,
+              36.834537757934854
+            ],
+            [
+              10.320297327153714,
+              36.83440368626753
+            ],
+            [
+              10.320263642271627,
+              36.83428527889439
+            ],
+            [
+              10.320230102317815,
+              36.834175353882934
+            ],
+            [
+              10.320196417649768,
+              36.834056946482285
+            ],
+            [
+              10.320321887107845,
+              36.833987660852735
+            ],
+            [
+              10.32047828814244,
+              36.83387560436235
+            ],
+            [
+              10.32071925296265,
+              36.83377108393674
+            ],
+            [
+              10.320949084284996,
+              36.83363274842012
+            ],
+            [
+              10.320873914175127,
+              36.83355722982143
+            ],
+            [
+              10.320611991429,
+              36.83367047122424
+            ],
+            [
+              10.320277505220131,
+              36.833860888069424
+            ],
+            [
+              10.319913224971295,
+              36.83354255642084
+            ],
+            [
+              10.3197501632336,
+              36.8332643911519
+            ],
+            [
+              10.319734254466049,
+              36.83295063561077
+            ],
+            [
+              10.31972109644706,
+              36.832798058918605
+            ],
+            [
+              10.31969767584914,
+              36.83266256605114
+            ],
+            [
+              10.319706201293963,
+              36.832543684317535
+            ],
+            [
+              10.319637387700102,
+              36.83222203808805
+            ],
+            [
+              10.319664846009298,
+              36.83197567316121
+            ],
+            [
+              10.319679291283597,
+              36.83158521530756
+            ],
+            [
+              10.319782495109584,
+              36.83144830218293
+            ],
+            [
+              10.319813861544922,
+              36.831430980908735
+            ],
+            [
+              10.319845372740309,
+              36.83142214272636
+            ],
+            [
+              10.3198875806945,
+              36.83142166926998
+            ],
+            [
+              10.319929787753015,
+              36.83142119580866
+            ],
+            [
+              10.320889871744392,
+              36.83140193721277
+            ],
+            [
+              10.3209083676749,
+              36.831249005286075
+            ],
+            [
+              10.320180863296414,
+              36.8312911089033
+            ],
+            [
+              10.31967465910664,
+              36.831313756814716
+            ],
+            [
+              10.319314735111577,
+              36.83124991523928
+            ],
+            [
+              10.319282789786836,
+              36.83123330397503
+            ],
+            [
+              10.319250700662842,
+              36.831208209589676
+            ],
+            [
+              10.319229162623602,
+              36.831182996898754
+            ],
+            [
+              10.31910990787424,
+              36.83099767067503
+            ],
+            [
+              10.318926329570898,
+              36.83075367227887
+            ],
+            [
+              10.318752148021929,
+              36.8304416904545
+            ],
+            [
+              10.318503091972069,
+              36.83007115429752
+            ],
+            [
+              10.318492107216782,
+              36.830045823926305
+            ],
+            [
+              10.31845958411616,
+              36.829995279997895
+            ],
+            [
+              10.318427205669087,
+              36.82995321916609
+            ],
+            [
+              10.318351318696285,
+              36.82983528327031
+            ],
+            [
+              10.31825418384831,
+              36.82970910064615
+            ],
+            [
+              10.31824348749963,
+              36.829700735754294
+            ],
+            [
+              10.318243342911247,
+              36.82969225264654
+            ],
+            [
+              10.318157338480031,
+              36.82959988415008
+            ],
+            [
+              10.318135512133722,
+              36.829557706459724
+            ],
+            [
+              10.3181029894813,
+              36.82950716242094
+            ],
+            [
+              10.318081453201223,
+              36.82948194948804
+            ],
+            [
+              10.318059916040749,
+              36.829456736560886
+            ],
+            [
+              10.31803837889455,
+              36.82943152362943
+            ],
+            [
+              10.31802739348223,
+              36.82940619249874
+            ],
+            [
+              10.318005856361205,
+              36.8293809795607
+            ],
+            [
+              10.317994726408141,
+              36.82934716531732
+            ],
+            [
+              10.317973044758258,
+              36.82931346926334
+            ],
+            [
+              10.317940666872415,
+              36.82927140828332
+            ],
+            [
+              10.317929536965222,
+              36.82923759403235
+            ],
+            [
+              10.317907999924746,
+              36.829212381074306
+            ],
+            [
+              10.317896870041187,
+              36.8291785668195
+            ],
+            [
+              10.31787518848355,
+              36.82914487074493
+            ],
+            [
+              10.31786391408165,
+              36.829102573376304
+            ],
+            [
+              10.317842232585258,
+              36.829068878732656
+            ],
+            [
+              10.317820406545538,
+              36.82902669953628
+            ],
+            [
+              10.317809421266476,
+              36.82900136838118
+            ],
+            [
+              10.317719660469624,
+              36.828688438653074
+            ],
+            [
+              10.317719082369129,
+              36.82865450620901
+            ],
+            [
+              10.317697980028338,
+              36.82865474252917
+            ],
+            [
+              10.317236021232008,
+              36.828795670637426
+            ],
+            [
+              10.316774205115598,
+              36.82894508009448
+            ],
+            [
+              10.315673065135963,
+              36.82935617869102
+            ],
+            [
+              10.315022465782691,
+              36.82957557000274
+            ],
+            [
+              10.313994016746149,
+              36.82991796286689
+            ],
+            [
+              10.313868980231696,
+              36.830012691210904
+            ],
+            [
+              10.313795982080919,
+              36.830064414718656
+            ],
+            [
+              10.312868535643734,
+              36.8307620280827
+            ],
+            [
+              10.31284771978475,
+              36.83077922981253
+            ],
+            [
+              10.315052091359082,
+              36.83380062192785
+            ],
+            [
+              10.316352014668336,
+              36.835763020206485
+            ],
+            [
+              10.316595148327817,
+              36.836405137069846
+            ],
+            [
+              10.317223962645041,
+              36.83800170628726
+            ],
+            [
+              10.31816303881075,
+              36.83984085182824
+            ],
+            [
+              10.318239369771861,
+              36.839984236020385
+            ],
+            [
+              10.318797983141268,
+              36.84117431730042
+            ],
+            [
+              10.318798272561756,
+              36.84119128347934
+            ],
+            [
+              10.319482499999364,
+              36.8410817952513
+            ],
+            [
+              10.320040666054766,
+              36.84100765638483
+            ],
+            [
+              10.321322654785284,
+              36.84067084833845
+            ],
+            [
+              10.321521136465313,
+              36.840549833185825
+            ],
+            [
+              10.321499739983901,
+              36.840533104093076
+            ],
+            [
+              10.320728316246125,
+              36.83986299148371
+            ],
+            [
+              10.320738724472896,
+              36.83985438993505
+            ],
+            [
+              10.320728171329694,
+              36.83985450839895
+            ],
+            [
+              10.32249981386537,
+              36.83790858337021
+            ],
+            [
+              10.322478417929874,
+              36.83789185443599
+            ],
+            [
+              10.322360595377678,
+              36.837791362861715
+            ],
+            [
+              10.32233919950519,
+              36.83777463390085
+            ],
+            [
+              10.3230269762308,
+              36.83725782013397
+            ],
+            [
+              10.323046630210593,
+              36.83717275272412
+            ],
+            [
+              10.323067009938018,
+              36.83713009999518
+            ],
+            [
+              10.32309605528862,
+              36.83697704926694
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm:relation:7079234",
+      "properties": {
+        "id": "osm:relation:7079234",
+        "officialCode": "117052",
+        "nameAr": "الرياض",
+        "nameFr": "Erriadh",
+        "governorateCode": "11",
+        "delegationCode": "1170",
+        "parentAr": "الكرم",
+        "parentFr": "Le Kram",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الرياض",
+          "name:ar": "الرياض",
+          "name:fr": "Erriadh",
+          "ref:tn:codegeo": "117052"
+        },
+        "sourceOriginalGeometrySha256": "eafc27ce7624b6fd141e2b08805575540c5b87b8d797336b47f07ce1f9f7eb83",
+        "currentAliasesToPreserveInFutureProposal": [
+          "Erriadh"
+        ],
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D9%83%D8%B1%D9%85/%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%20-%20%28%D8%A7%D9%84%D9%83%D8%B1%D9%85%29.pdf",
+        "sourcePdfSha256": "e398123a0119b1f538870cb2eaebb653a02d31d91154a9f1000fff085eb5bd94",
+        "sourceDrawingIndices": [
+          379
+        ],
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceCrsEpsg": 32632,
+        "sourceGeometrySha256": "f804bfd8d363341e7cd8d96e66ee2be0bf63b8a8a1ad6f8b05fd30b4b451465b",
+        "sourceControlPointMaxResidualMeters": 0.291356308390068,
+        "sourceExtraction": {
+          "file": "outputs\\le-kram-six-geopdf-source-data.json",
+          "sha256": "36834b00863b85af9d356d914182b1ad9a31b8707abb43299e7aa37e640787e1"
+        },
+        "rawNativePath": {
+          "file": "work\\le-kram-six-native-source-review\\erriadh-raw-native-path.json",
+          "sha256": "508ceb07fea5e36ad460591b8dc6eab8b82c94e48ab3580d0f43704fa3f69530"
+        },
+        "administrativeScope": {
+          "conclusion": "whole_imada",
+          "pdfPage": 37,
+          "jortPage": 5134,
+          "imadaName": "الرياض",
+          "circleName": "الرياض - (الكرم)",
+          "decree": {
+            "file": "work\\electoral-circle-semantics\\decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+          },
+          "render": {
+            "file": "work\\le-kram-six-native-source-review\\decree-37.png",
+            "sha256": "6dbcc7e3ded18a49743c4fa2dee62fe8e7a7ddd3beaf6710c287ff004596f935"
+          },
+          "personallyViewed": true,
+          "observation": "Exact one-to-one row in complete seven-imada Le Kram block; this six-map review leaves Sidi Fredj117054 unchanged."
+        },
+        "currentOfficialIdentity": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1170",
+          "delegationFr": "Le kram",
+          "delegationAr": "الكرم",
+          "sectorCode": "117052",
+          "sectorFr": "Erriadh",
+          "sectorAr": "الرياض",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4999,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 157,
+            "Nombre_de_menages_par_Secteurs.xlsx": 157
+          }
+        },
+        "boundaryManipulation": "None: entire explicitly closed native source outline; no clip, repair, buffer, trim, snap, connector or harbor fill.",
+        "officialRegistryNameAr": "الرياض",
+        "officialRegistryNameFr": "Erriadh",
+        "sourceId": "isie-local-sectors-2023-le-kram"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.317825400588447,
+              36.841415597730425
+            ],
+            [
+              10.318803437569755,
+              36.84119027221939
+            ],
+            [
+              10.31880314030621,
+              36.84117312147199
+            ],
+            [
+              10.318238258594416,
+              36.83998721434552
+            ],
+            [
+              10.31816103570961,
+              36.83984226536293
+            ],
+            [
+              10.317232606798495,
+              36.837999973382004
+            ],
+            [
+              10.316596627017573,
+              36.8364031519802
+            ],
+            [
+              10.316350751297152,
+              36.835762611820286
+            ],
+            [
+              10.315057406999967,
+              36.83379570607598
+            ],
+            [
+              10.312838991247167,
+              36.8307840794935
+            ],
+            [
+              10.312468949662463,
+              36.830985457812105
+            ],
+            [
+              10.312480654605205,
+              36.83104536730261
+            ],
+            [
+              10.310269220292401,
+              36.83276813450626
+            ],
+            [
+              10.308340182921366,
+              36.83416180989104
+            ],
+            [
+              10.307528591130563,
+              36.834754021751664
+            ],
+            [
+              10.305944959804497,
+              36.835757874262995
+            ],
+            [
+              10.305332690064631,
+              36.836150599038454
+            ],
+            [
+              10.304760596501136,
+              36.8363970676607
+            ],
+            [
+              10.303775430170079,
+              36.836828205390496
+            ],
+            [
+              10.302512519353645,
+              36.83724523898096
+            ],
+            [
+              10.302448935634168,
+              36.83727167029187
+            ],
+            [
+              10.302665286523203,
+              36.83744082882825
+            ],
+            [
+              10.3029332298273,
+              36.83750649331792
+            ],
+            [
+              10.304821870447194,
+              36.83810322029019
+            ],
+            [
+              10.307358603562086,
+              36.839147337423704
+            ],
+            [
+              10.309358750584375,
+              36.84001722356877
+            ],
+            [
+              10.309799217541777,
+              36.8401838869955
+            ],
+            [
+              10.310153726515303,
+              36.84031719347494
+            ],
+            [
+              10.310175216475889,
+              36.84032553248078
+            ],
+            [
+              10.310487042050454,
+              36.84045931000582
+            ],
+            [
+              10.31272380019343,
+              36.841429440689794
+            ],
+            [
+              10.314283576116443,
+              36.84213258917493
+            ],
+            [
+              10.314960169334416,
+              36.84237380257623
+            ],
+            [
+              10.315035313880447,
+              36.842398698259146
+            ],
+            [
+              10.315187233699794,
+              36.84254281870672
+            ],
+            [
+              10.315555843460187,
+              36.84287322233052
+            ],
+            [
+              10.316009680267156,
+              36.84319409952447
+            ],
+            [
+              10.316536146175933,
+              36.843394089592685
+            ],
+            [
+              10.316621813553118,
+              36.8434102901001
+            ],
+            [
+              10.316778904100962,
+              36.84261945750533
+            ],
+            [
+              10.316910047859112,
+              36.841563024793686
+            ],
+            [
+              10.317814729320288,
+              36.841415716620034
+            ],
+            [
+              10.317825400588447,
+              36.841415597730425
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm:relation:7079245",
+      "properties": {
+        "id": "osm:relation:7079245",
+        "officialCode": "117057",
+        "nameAr": "البئر الحلو",
+        "nameFr": "Bir El Helou",
+        "governorateCode": "11",
+        "delegationCode": "1170",
+        "parentAr": "الكرم",
+        "parentFr": "Le Kram",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بير لحلو",
+          "name:ar": "بير لحلو",
+          "name:fr": "Bir El Helou",
+          "ref:tn:codegeo": "117057"
+        },
+        "sourceOriginalGeometrySha256": "7bf5f401e9c7b24845c8dc2de1920452f4540ce974d0074a403dbe2427b66977",
+        "currentAliasesToPreserveInFutureProposal": [
+          "Bir El Helou"
+        ],
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D9%83%D8%B1%D9%85/%D8%A7%D9%84%D8%A8%D8%A6%D8%B1%20%D8%A7%D9%84%D8%AD%D9%84%D9%88.pdf",
+        "sourcePdfSha256": "9c19d0531f40d30af170669f8cbc39e5cb90bf5f97dbc5f91acb9a2988e0c298",
+        "sourceDrawingIndices": [
+          186
+        ],
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceCrsEpsg": 32632,
+        "sourceGeometrySha256": "7e108795ab919defcdf8ea90704acd25de7f9c13d07f43c758fd9a1829c616c8",
+        "sourceControlPointMaxResidualMeters": 0.042231760829435,
+        "sourceExtraction": {
+          "file": "outputs\\le-kram-six-geopdf-source-data.json",
+          "sha256": "36834b00863b85af9d356d914182b1ad9a31b8707abb43299e7aa37e640787e1"
+        },
+        "rawNativePath": {
+          "file": "work\\le-kram-six-native-source-review\\bir-el-helou-raw-native-path.json",
+          "sha256": "3e4dacd0cbddff4a91791d8ca5619ad890d74076c3148f177d1a5e37d0b43d1a"
+        },
+        "administrativeScope": {
+          "conclusion": "whole_imada",
+          "pdfPage": 37,
+          "jortPage": 5134,
+          "imadaName": "البئر الحلو",
+          "circleName": "البئر الحلو",
+          "decree": {
+            "file": "work\\electoral-circle-semantics\\decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+          },
+          "render": {
+            "file": "work\\le-kram-six-native-source-review\\decree-37.png",
+            "sha256": "6dbcc7e3ded18a49743c4fa2dee62fe8e7a7ddd3beaf6710c287ff004596f935"
+          },
+          "personallyViewed": true,
+          "observation": "Exact one-to-one row in complete seven-imada Le Kram block; this six-map review leaves Sidi Fredj117054 unchanged."
+        },
+        "currentOfficialIdentity": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1170",
+          "delegationFr": "Le kram",
+          "delegationAr": "الكرم",
+          "sectorCode": "117057",
+          "sectorFr": "Bir el helou",
+          "sectorAr": "البئر الحلو",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5169,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 162,
+            "Nombre_de_menages_par_Secteurs.xlsx": 162
+          }
+        },
+        "boundaryManipulation": "None: entire explicitly closed native source outline; no clip, repair, buffer, trim, snap, connector or harbor fill.",
+        "officialRegistryNameAr": "البئر الحلو",
+        "officialRegistryNameFr": "Bir el helou",
+        "sourceId": "isie-local-sectors-2023-le-kram"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.316612812575753,
+              36.84341407111634
+            ],
+            [
+              10.316538653547475,
+              36.84339267008656
+            ],
+            [
+              10.316000178219346,
+              36.84319119689549
+            ],
+            [
+              10.315551807091879,
+              36.842870129575225
+            ],
+            [
+              10.315186293517215,
+              36.84254072024354
+            ],
+            [
+              10.315026916136544,
+              36.842394281159926
+            ],
+            [
+              10.314952627084047,
+              36.842365468943505
+            ],
+            [
+              10.314284552322293,
+              36.84213579564869
+            ],
+            [
+              10.312722795949341,
+              36.841434389713115
+            ],
+            [
+              10.310483012297123,
+              36.840458911727275
+            ],
+            [
+              10.310167036338662,
+              36.840321626831425
+            ],
+            [
+              10.30958631017231,
+              36.841380518289625
+            ],
+            [
+              10.309487766450744,
+              36.84154466772852
+            ],
+            [
+              10.309303038731136,
+              36.84205069887363
+            ],
+            [
+              10.309055989553242,
+              36.8426834176417
+            ],
+            [
+              10.308869424697058,
+              36.84308571075901
+            ],
+            [
+              10.308681418294098,
+              36.843406495361826
+            ],
+            [
+              10.308553507387892,
+              36.84347462413153
+            ],
+            [
+              10.308400419805697,
+              36.843683848737534
+            ],
+            [
+              10.307998504549351,
+              36.84390326029141
+            ],
+            [
+              10.307596456538333,
+              36.844115260334945
+            ],
+            [
+              10.307417140371907,
+              36.84440630042765
+            ],
+            [
+              10.307816507386093,
+              36.84456489602653
+            ],
+            [
+              10.309219044861315,
+              36.845127328488246
+            ],
+            [
+              10.309312038202272,
+              36.84517075825981
+            ],
+            [
+              10.311888489999559,
+              36.84640188693365
+            ],
+            [
+              10.312148905458974,
+              36.84652496572766
+            ],
+            [
+              10.31452050294746,
+              36.847120956441
+            ],
+            [
+              10.316030103846174,
+              36.847474591578866
+            ],
+            [
+              10.316056082178548,
+              36.84634037120239
+            ],
+            [
+              10.31620206117745,
+              36.84521221608579
+            ],
+            [
+              10.316612812575753,
+              36.84341407111634
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm:relation:7079335",
+      "properties": {
+        "id": "osm:relation:7079335",
+        "officialCode": "117055",
+        "nameAr": "الكرم الغربي",
+        "nameFr": "Le Kram Ouest",
+        "governorateCode": "11",
+        "delegationCode": "1170",
+        "parentAr": "الكرم",
+        "parentFr": "Le Kram",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الكرم الغربية",
+          "name:ar": "الكرم الغربية",
+          "name:fr": "Le Kram Ouest",
+          "ref:tn:codegeo": "117055"
+        },
+        "sourceOriginalGeometrySha256": "e3995e0d650f223f4699b520de8e573b9411f11bf713a7a3666740b2618ce11f",
+        "currentAliasesToPreserveInFutureProposal": [
+          "Le Kram Ouest"
+        ],
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D9%83%D8%B1%D9%85/%D8%A7%D9%84%D9%83%D8%B1%D9%85%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A.pdf",
+        "sourcePdfSha256": "1376f3a1db6c0c7e8a567aef46af618feb7407a01136ddd41ff7575477a0fbb0",
+        "sourceDrawingIndices": [
+          243
+        ],
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceCrsEpsg": 32632,
+        "sourceGeometrySha256": "f3390ab157a52a5e05ac8933adfbc37696a4a2ab0f9c462131070778c852d8af",
+        "sourceControlPointMaxResidualMeters": 0.33217760378632394,
+        "sourceExtraction": {
+          "file": "outputs\\le-kram-six-geopdf-source-data.json",
+          "sha256": "36834b00863b85af9d356d914182b1ad9a31b8707abb43299e7aa37e640787e1"
+        },
+        "rawNativePath": {
+          "file": "work\\le-kram-six-native-source-review\\kram-ouest-raw-native-path.json",
+          "sha256": "5265faecac88a4bbcdde8ed129a10e2ccc1e56a69efefe63376653beadf48a68"
+        },
+        "administrativeScope": {
+          "conclusion": "whole_imada",
+          "pdfPage": 37,
+          "jortPage": 5134,
+          "imadaName": "الكرم الغربي",
+          "circleName": "الكرم الغربي",
+          "decree": {
+            "file": "work\\electoral-circle-semantics\\decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+          },
+          "render": {
+            "file": "work\\le-kram-six-native-source-review\\decree-37.png",
+            "sha256": "6dbcc7e3ded18a49743c4fa2dee62fe8e7a7ddd3beaf6710c287ff004596f935"
+          },
+          "personallyViewed": true,
+          "observation": "Exact one-to-one row in complete seven-imada Le Kram block; this six-map review leaves Sidi Fredj117054 unchanged."
+        },
+        "currentOfficialIdentity": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1170",
+          "delegationFr": "Le kram",
+          "delegationAr": "الكرم",
+          "sectorCode": "117055",
+          "sectorFr": "Le kram ouest",
+          "sectorAr": "الكرم الغربي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5101,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 160,
+            "Nombre_de_menages_par_Secteurs.xlsx": 160
+          }
+        },
+        "boundaryManipulation": "None: entire explicitly closed native source outline; no clip, repair, buffer, trim, snap, connector or harbor fill.",
+        "officialRegistryNameAr": "الكرم الغربي",
+        "officialRegistryNameFr": "Le kram ouest",
+        "sourceId": "isie-local-sectors-2023-le-kram"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.309584804247564,
+              36.84138277575817
+            ],
+            [
+              10.310171035760149,
+              36.84032083374171
+            ],
+            [
+              10.310151244995412,
+              36.84031577077504
+            ],
+            [
+              10.309794295344554,
+              36.84018242184213
+            ],
+            [
+              10.309351438030546,
+              36.84001833684709
+            ],
+            [
+              10.307359648235499,
+              36.83914797482145
+            ],
+            [
+              10.304826385413646,
+              36.83810398837397
+            ],
+            [
+              10.302931268659814,
+              36.837506955992865
+            ],
+            [
+              10.302674004702768,
+              36.8374411211494
+            ],
+            [
+              10.302447791800317,
+              36.83726939245596
+            ],
+            [
+              10.300217959645787,
+              36.83785289953034
+            ],
+            [
+              10.299240230039631,
+              36.838296218700876
+            ],
+            [
+              10.298158218758728,
+              36.83878815306026
+            ],
+            [
+              10.296673126169841,
+              36.8395271933223
+            ],
+            [
+              10.296275824503798,
+              36.83972674394243
+            ],
+            [
+              10.29651232835229,
+              36.8405106091145
+            ],
+            [
+              10.296852845589143,
+              36.8412300208956
+            ],
+            [
+              10.297215552540555,
+              36.841706409843646
+            ],
+            [
+              10.297483213544613,
+              36.841999093551856
+            ],
+            [
+              10.297489780880339,
+              36.84199902292873
+            ],
+            [
+              10.299064820904515,
+              36.84152817661342
+            ],
+            [
+              10.29947002601995,
+              36.841407699238914
+            ],
+            [
+              10.301293431903904,
+              36.840865535588044
+            ],
+            [
+              10.301306476992188,
+              36.8408601174329
+            ],
+            [
+              10.301498971581863,
+              36.84097943239492
+            ],
+            [
+              10.303125394290706,
+              36.84199634239397
+            ],
+            [
+              10.304995340143709,
+              36.84342754827533
+            ],
+            [
+              10.305420920125155,
+              36.84373433907269
+            ],
+            [
+              10.305673606599166,
+              36.84391633053334
+            ],
+            [
+              10.305846414077996,
+              36.8440358513345
+            ],
+            [
+              10.306144000798806,
+              36.84415402143065
+            ],
+            [
+              10.30652624844908,
+              36.84422905074816
+            ],
+            [
+              10.306638251517782,
+              36.844248948391154
+            ],
+            [
+              10.307310628152972,
+              36.84438944509003
+            ],
+            [
+              10.307416063162426,
+              36.84440941406561
+            ],
+            [
+              10.307595024910906,
+              36.844117191044575
+            ],
+            [
+              10.307998706360236,
+              36.84390697736038
+            ],
+            [
+              10.308402206383777,
+              36.8436862084928
+            ],
+            [
+              10.308556327257676,
+              36.84347869934213
+            ],
+            [
+              10.308679940873583,
+              36.84340874623774
+            ],
+            [
+              10.30887149119344,
+              36.843084717371546
+            ],
+            [
+              10.309055129253418,
+              36.84268160560582
+            ],
+            [
+              10.309300670842989,
+              36.842056150949034
+            ],
+            [
+              10.309482511083788,
+              36.84154750051624
+            ],
+            [
+              10.309584804247564,
+              36.84138277575817
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm:relation:7079355",
+      "properties": {
+        "id": "osm:relation:7079355",
+        "officialCode": "117056",
+        "nameAr": "سيدي عمر",
+        "nameFr": "Sidi Amor",
+        "governorateCode": "11",
+        "delegationCode": "1170",
+        "parentAr": "الكرم",
+        "parentFr": "Le Kram",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سيدي عمر",
+          "name:ar": "سيدي عمر",
+          "name:fr": "Sidi Amor",
+          "ref:tn:codegeo": "117056"
+        },
+        "sourceOriginalGeometrySha256": "bf56d461015b304d4fe0ce66143fc9417df8448914f6627a3d1f0515bc139d70",
+        "currentAliasesToPreserveInFutureProposal": [
+          "Sidi Amor"
+        ],
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D9%83%D8%B1%D9%85/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%B9%D9%85%D8%B1%20-%20%28%D8%A7%D9%84%D9%83%D8%B1%D9%85%29.pdf",
+        "sourcePdfSha256": "1e60ab53526efc59a3831a18b35ca19e13dcb87feff4531c1b84b3d97f16dfe2",
+        "sourceDrawingIndices": [
+          183
+        ],
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceCrsEpsg": 32632,
+        "sourceGeometrySha256": "5d25914edf2da009423928891857dac5db4b8239cfe6e742a821677741110311",
+        "sourceControlPointMaxResidualMeters": 0.12287212334244774,
+        "sourceExtraction": {
+          "file": "outputs\\le-kram-six-geopdf-source-data.json",
+          "sha256": "36834b00863b85af9d356d914182b1ad9a31b8707abb43299e7aa37e640787e1"
+        },
+        "rawNativePath": {
+          "file": "work\\le-kram-six-native-source-review\\sidi-amor-raw-native-path.json",
+          "sha256": "7ad88b5951b6ebd50927283a5694cbbe57cdb59efac167e6bb9f13b0c7a390be"
+        },
+        "administrativeScope": {
+          "conclusion": "whole_imada",
+          "pdfPage": 37,
+          "jortPage": 5134,
+          "imadaName": "سيدي عمر",
+          "circleName": "سيدي عمر - (الكرم)",
+          "decree": {
+            "file": "work\\electoral-circle-semantics\\decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+          },
+          "render": {
+            "file": "work\\le-kram-six-native-source-review\\decree-37.png",
+            "sha256": "6dbcc7e3ded18a49743c4fa2dee62fe8e7a7ddd3beaf6710c287ff004596f935"
+          },
+          "personallyViewed": true,
+          "observation": "Exact one-to-one row in complete seven-imada Le Kram block; this six-map review leaves Sidi Fredj117054 unchanged."
+        },
+        "currentOfficialIdentity": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1170",
+          "delegationFr": "Le kram",
+          "delegationAr": "الكرم",
+          "sectorCode": "117056",
+          "sectorFr": "Sidi amor",
+          "sectorAr": "سيدي عمر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5135,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 161,
+            "Nombre_de_menages_par_Secteurs.xlsx": 161
+          }
+        },
+        "boundaryManipulation": "None: entire explicitly closed native source outline; no clip, repair, buffer, trim, snap, connector or harbor fill.",
+        "officialRegistryNameAr": "سيدي عمر",
+        "officialRegistryNameFr": "Sidi amor",
+        "sourceId": "isie-local-sectors-2023-le-kram"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.30854461690755,
+              36.8495724686755
+            ],
+            [
+              10.308379550663297,
+              36.84926583587332
+            ],
+            [
+              10.30837824401383,
+              36.849188741182594
+            ],
+            [
+              10.30833713001696,
+              36.84864942427615
+            ],
+            [
+              10.3078508602088,
+              36.84762661417481
+            ],
+            [
+              10.307795550140082,
+              36.847507270305556
+            ],
+            [
+              10.307411866161658,
+              36.846877451734535
+            ],
+            [
+              10.307049791489698,
+              36.84626453196452
+            ],
+            [
+              10.307016954835284,
+              36.846213484180225
+            ],
+            [
+              10.307016809818549,
+              36.8462049180138
+            ],
+            [
+              10.30714546760838,
+              36.84562090685061
+            ],
+            [
+              10.30711951778437,
+              36.84534702303305
+            ],
+            [
+              10.307106395214948,
+              36.84520151461517
+            ],
+            [
+              10.307105670108736,
+              36.8451586837771
+            ],
+            [
+              10.30720236166842,
+              36.84457502169531
+            ],
+            [
+              10.30741271134137,
+              36.84440993746887
+            ],
+            [
+              10.307305723634075,
+              36.844385403253064
+            ],
+            [
+              10.30663197982599,
+              36.84424711114987
+            ],
+            [
+              10.306525137526723,
+              36.844231142392154
+            ],
+            [
+              10.306150756885996,
+              36.844149552439816
+            ],
+            [
+              10.305850383140847,
+              36.844032883307634
+            ],
+            [
+              10.305677871746834,
+              36.84391481742729
+            ],
+            [
+              10.305418961737075,
+              36.843729152654156
+            ],
+            [
+              10.304998198868152,
+              36.84342530413835
+            ],
+            [
+              10.303130432970878,
+              36.841997713338856
+            ],
+            [
+              10.301493415144272,
+              36.84097883452041
+            ],
+            [
+              10.301310263374743,
+              36.840860877858525
+            ],
+            [
+              10.301288953790499,
+              36.8408611096108
+            ],
+            [
+              10.299475780978353,
+              36.841403446973764
+            ],
+            [
+              10.299062259168286,
+              36.8415278858944
+            ],
+            [
+              10.297492966538849,
+              36.84199900307871
+            ],
+            [
+              10.297482311572757,
+              36.841999118616286
+            ],
+            [
+              10.298066174096586,
+              36.84249828273899
+            ],
+            [
+              10.299707505603957,
+              36.84377419462696
+            ],
+            [
+              10.300626470690933,
+              36.84455244059779
+            ],
+            [
+              10.301222760407137,
+              36.84515426666308
+            ],
+            [
+              10.302166246867678,
+              36.846120724215105
+            ],
+            [
+              10.303648950439781,
+              36.84809229095996
+            ],
+            [
+              10.304019493691268,
+              36.84857661324943
+            ],
+            [
+              10.30411756693941,
+              36.848704060536235
+            ],
+            [
+              10.30457509986395,
+              36.849290245748676
+            ],
+            [
+              10.304978491761787,
+              36.849825612424816
+            ],
+            [
+              10.305414147382066,
+              36.85037776255069
+            ],
+            [
+              10.305533972138,
+              36.850530673766514
+            ],
+            [
+              10.306241692975515,
+              36.8514139921467
+            ],
+            [
+              10.30643741965244,
+              36.8516431833487
+            ],
+            [
+              10.307199894009218,
+              36.852611575177434
+            ],
+            [
+              10.307960063440374,
+              36.85344290243271
+            ],
+            [
+              10.307959773120071,
+              36.85342577012717
+            ],
+            [
+              10.308229205123341,
+              36.85234329176143
+            ],
+            [
+              10.308248630412177,
+              36.85223169870812
+            ],
+            [
+              10.30826950754055,
+              36.852205767912366
+            ],
+            [
+              10.309250423917133,
+              36.850969853058324
+            ],
+            [
+              10.308544762112536,
+              36.84958103483186
+            ],
+            [
+              10.30854461690755,
+              36.8495724686755
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm:relation:7079365",
+      "properties": {
+        "id": "osm:relation:7079365",
+        "officialCode": "117053",
+        "nameAr": "البحيرة",
+        "nameFr": "El Bouhaira",
+        "governorateCode": "11",
+        "delegationCode": "1170",
+        "parentAr": "الكرم",
+        "parentFr": "Le Kram",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البحيرة",
+          "name:ar": "البحيرة",
+          "name:fr": "El Bouhaira",
+          "ref:tn:codegeo": "117053"
+        },
+        "sourceOriginalGeometrySha256": "b670831e1ff0879676c7118e397bc401934527966f69f76d608a3d2696116075",
+        "currentAliasesToPreserveInFutureProposal": [
+          "El Bouhaira"
+        ],
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D9%83%D8%B1%D9%85/%D8%A7%D9%84%D8%A8%D8%AD%D9%8A%D8%B1%D8%A9%20-%20%28%D8%A7%D9%84%D9%83%D8%B1%D9%85%29.pdf",
+        "sourcePdfSha256": "98238cb9753b7a3677c2f620e70289c4f06f364b9b93192494be9422b15d4cb7",
+        "sourceDrawingIndices": [
+          695
+        ],
+        "sourceVectorLayer": "circonscription_isie2023",
+        "sourceCrsEpsg": 32632,
+        "sourceGeometrySha256": "559055df4fff8dc31622714ea2307bf9dd129f04071ac8a865dc51f2c0534cfc",
+        "sourceControlPointMaxResidualMeters": 0.06820306959794485,
+        "sourceExtraction": {
+          "file": "outputs\\le-kram-six-geopdf-source-data.json",
+          "sha256": "36834b00863b85af9d356d914182b1ad9a31b8707abb43299e7aa37e640787e1"
+        },
+        "rawNativePath": {
+          "file": "work\\le-kram-six-native-source-review\\el-bouhaira-raw-native-path.json",
+          "sha256": "a3b376c169cc971896a75243d08fde42574b226376c77a01edb6ba303aee35d2"
+        },
+        "administrativeScope": {
+          "conclusion": "whole_imada",
+          "pdfPage": 37,
+          "jortPage": 5134,
+          "imadaName": "البحيرة",
+          "circleName": "البحيرة - (الكرم)",
+          "decree": {
+            "file": "work\\electoral-circle-semantics\\decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+          },
+          "render": {
+            "file": "work\\le-kram-six-native-source-review\\decree-37.png",
+            "sha256": "6dbcc7e3ded18a49743c4fa2dee62fe8e7a7ddd3beaf6710c287ff004596f935"
+          },
+          "personallyViewed": true,
+          "observation": "Exact one-to-one row in complete seven-imada Le Kram block; this six-map review leaves Sidi Fredj117054 unchanged."
+        },
+        "currentOfficialIdentity": {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1170",
+          "delegationFr": "Le kram",
+          "delegationAr": "الكرم",
+          "sectorCode": "117053",
+          "sectorFr": "El bouhaira",
+          "sectorAr": "البحيرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5033,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 158,
+            "Nombre_de_menages_par_Secteurs.xlsx": 158
+          }
+        },
+        "boundaryManipulation": "None: entire explicitly closed native source outline; no clip, repair, buffer, trim, snap, connector or harbor fill.",
+        "officialRegistryNameAr": "البحيرة",
+        "officialRegistryNameFr": "El bouhaira",
+        "sourceId": "isie-local-sectors-2023-le-kram"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.315975418856771,
+              36.857130223186566
+            ],
+            [
+              10.315814506955443,
+              36.857106215334575
+            ],
+            [
+              10.314688584165191,
+              36.85696393692905
+            ],
+            [
+              10.314430512202959,
+              36.85688941910829
+            ],
+            [
+              10.31368442155641,
+              36.856433428163605
+            ],
+            [
+              10.313167397270696,
+              36.85623281511775
+            ],
+            [
+              10.312779635882556,
+              36.856082352941385
+            ],
+            [
+              10.310253041449604,
+              36.85474330681235
+            ],
+            [
+              10.309152659345088,
+              36.85421382068964
+            ],
+            [
+              10.308764032488867,
+              36.85401177090714
+            ],
+            [
+              10.308016684945432,
+              36.85347838252898
+            ],
+            [
+              10.307952060537879,
+              36.85345330326007
+            ],
+            [
+              10.307199455569288,
+              36.85261046930023
+            ],
+            [
+              10.306444669325346,
+              36.851638695465354
+            ],
+            [
+              10.30624817423787,
+              36.85140873214024
+            ],
+            [
+              10.305527257212223,
+              36.85053974564351
+            ],
+            [
+              10.305428356783706,
+              36.85038608453543
+            ],
+            [
+              10.304969441153823,
+              36.849823712320934
+            ],
+            [
+              10.304575156196814,
+              36.849286420994545
+            ],
+            [
+              10.30411581563433,
+              36.84869826044865
+            ],
+            [
+              10.304017354267957,
+              36.848570382747475
+            ],
+            [
+              10.303656048479555,
+              36.84808430991692
+            ],
+            [
+              10.302178332558052,
+              36.84611456705999
+            ],
+            [
+              10.301231581352381,
+              36.84517065555805
+            ],
+            [
+              10.30061141430595,
+              36.844558449926424
+            ],
+            [
+              10.299699408533057,
+              36.843768893756405
+            ],
+            [
+              10.298073208830992,
+              36.842497098337894
+            ],
+            [
+              10.297487354574304,
+              36.84201345822188
+            ],
+            [
+              10.297225429249437,
+              36.841706820458015
+            ],
+            [
+              10.296864195376807,
+              36.84122072500475
+            ],
+            [
+              10.296499050882707,
+              36.84050254545407
+            ],
+            [
+              10.296261386883572,
+              36.83973138762542
+            ],
+            [
+              10.29591234978933,
+              36.8399673240613
+            ],
+            [
+              10.294291141011964,
+              36.84088771159874
+            ],
+            [
+              10.293814178583807,
+              36.841150823939344
+            ],
+            [
+              10.293273907898657,
+              36.84146620948101
+            ],
+            [
+              10.291588892666702,
+              36.8424130464901
+            ],
+            [
+              10.288409535826492,
+              36.84420141616717
+            ],
+            [
+              10.28723306647469,
+              36.84485896549001
+            ],
+            [
+              10.285992831608274,
+              36.845542984994864
+            ],
+            [
+              10.285609919810835,
+              36.84567609019057
+            ],
+            [
+              10.285292480627534,
+              36.84588585915816
+            ],
+            [
+              10.282648023146251,
+              36.84704928362645
+            ],
+            [
+              10.281691787243185,
+              36.84744648431181
+            ],
+            [
+              10.280449310262766,
+              36.848001512979714
+            ],
+            [
+              10.28006723689541,
+              36.84818617381206
+            ],
+            [
+              10.277741381171772,
+              36.849217097508834
+            ],
+            [
+              10.27646546872818,
+              36.84969507097608
+            ],
+            [
+              10.274514341659957,
+              36.850102902827544
+            ],
+            [
+              10.27248914049933,
+              36.85185266425631
+            ],
+            [
+              10.272425384204395,
+              36.851879138662085
+            ],
+            [
+              10.272330817971813,
+              36.85198331842764
+            ],
+            [
+              10.271979942840828,
+              36.85211603676003
+            ],
+            [
+              10.271755298793815,
+              36.85211844287698
+            ],
+            [
+              10.271113032049511,
+              36.85209952851032
+            ],
+            [
+              10.271889219756291,
+              36.85245230082137
+            ],
+            [
+              10.27243905952514,
+              36.85270432556186
+            ],
+            [
+              10.274734732008172,
+              36.85371137133539
+            ],
+            [
+              10.278743419202081,
+              36.85542210156056
+            ],
+            [
+              10.281296864413223,
+              36.85647782476537
+            ],
+            [
+              10.283043714790598,
+              36.85728429581493
+            ],
+            [
+              10.287571473259044,
+              36.859298612564686
+            ],
+            [
+              10.291644052249332,
+              36.86095662756797
+            ],
+            [
+              10.29216192147702,
+              36.861208907389525
+            ],
+            [
+              10.295723336273367,
+              36.86300129923423
+            ],
+            [
+              10.29747135437222,
+              36.86385912415342
+            ],
+            [
+              10.298215246327638,
+              36.86418628357115
+            ],
+            [
+              10.298377036779033,
+              36.86426188771952
+            ],
+            [
+              10.298535339102646,
+              36.86413119783334
+            ],
+            [
+              10.29878905729965,
+              36.863947881881465
+            ],
+            [
+              10.299172035236776,
+              36.86381473656758
+            ],
+            [
+              10.300453713342362,
+              36.86367174698327
+            ],
+            [
+              10.302344338703907,
+              36.86347048373717
+            ],
+            [
+              10.30269608636544,
+              36.86338925018331
+            ],
+            [
+              10.302855690607034,
+              36.863335915184514
+            ],
+            [
+              10.303110709126479,
+              36.863229950689195
+            ],
+            [
+              10.304670713940457,
+              36.86246486518877
+            ],
+            [
+              10.304734906651241,
+              36.862464159820036
+            ],
+            [
+              10.309580038043752,
+              36.86045066299031
+            ],
+            [
+              10.31015290622912,
+              36.86016063670971
+            ],
+            [
+              10.312921779488875,
+              36.85876310198783
+            ],
+            [
+              10.315975418856771,
+              36.857130223186566
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

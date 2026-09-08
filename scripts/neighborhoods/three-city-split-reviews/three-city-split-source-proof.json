@@ -1,0 +1,932 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceReview": {
+    "file": "three-city-split-reviews/three-city-base-split-frozen-proposal.json",
+    "sha256": "9ed8b32229dce9746cc003ffb4f6a936befd5f515c04f3ae648673942adedb18"
+  },
+  "sourceFacts": {
+    "file": "three-city-source-facts.json",
+    "sha256": "e733c1e54fd534e91c5779c892ea07c1f6dd9f1c1a0b0cc5de57da1d634afd30"
+  },
+  "officialRegistry": {
+    "file": "touil-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "primaryCorroboration": [
+    {
+      "file": "dar-chaabane-reviews/nabeul-panorama.html",
+      "sha256": "6a149fea33192d62ddd6da095c85ebf19ec465bbf3d843443de6e6b91d110653"
+    },
+    {
+      "file": "touil-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "three-city-split-reviews/decree-page-34.png",
+      "sha256": "ee2d5fa823c82db50abec972e425deade8687bb3bf94f87759dcf85d8b353c46"
+    }
+  ],
+  "baselineMetadataSha256": "454aa824d70e9bbcd3ef339971c9124ef269c7b824d758bf8e85024ca23fd15f",
+  "records": [
+    {
+      "id": "osm:way:177385463",
+      "sourceReviewRecord": {
+        "key": "soliman",
+        "status": "SUPPORTED_IDENTITY_PENDING_CODE_AND_GENERATION",
+        "residentialId": "osm:way:177385463",
+        "sectorId": "osm:relation:7100693",
+        "absorbedSourcePointId": "osm:node:1124155543",
+        "targetBaseId": "delegation:465",
+        "targetDelegationId": 465,
+        "currentBase": {
+          "id": 465,
+          "nomFr": "Slimane",
+          "nomAr": "سليمان",
+          "nomEn": "Slimane",
+          "lat": 36.7067,
+          "lng": 10.4875,
+          "governorateId": 350
+        },
+        "beforeGroups": [
+          {
+            "id": "osm:relation:7100693",
+            "memberIds": [
+              "osm:relation:7100693",
+              "osm:way:177385463"
+            ],
+            "canonicalName": "سليمان",
+            "manualSource": 465
+          },
+          {
+            "id": "delegation:465",
+            "memberIds": [
+              "delegation:465"
+            ],
+            "canonicalName": "سليمان",
+            "manualSource": 465
+          }
+        ],
+        "afterDistinctGuardGroups": [
+          {
+            "id": "osm:relation:7100693",
+            "memberIds": [
+              "osm:relation:7100693"
+            ],
+            "canonicalName": "سليمان",
+            "manualSource": 465
+          },
+          {
+            "id": "osm:way:177385463",
+            "memberIds": [
+              "osm:way:177385463"
+            ],
+            "canonicalName": "سليمان",
+            "manualSource": 465
+          },
+          {
+            "id": "delegation:465",
+            "memberIds": [
+              "delegation:465"
+            ],
+            "canonicalName": "سليمان",
+            "manualSource": 465
+          }
+        ],
+        "afterGroups": [
+          {
+            "id": "osm:relation:7100693",
+            "memberIds": [
+              "osm:relation:7100693"
+            ],
+            "canonicalName": "سليمان",
+            "manualSource": 465
+          },
+          {
+            "id": "delegation:465",
+            "memberIds": [
+              "delegation:465",
+              "osm:way:177385463"
+            ],
+            "canonicalName": "سليمان",
+            "manualSource": 465
+          }
+        ],
+        "exactMetadataChanges": [
+          {
+            "id": "osm:way:177385463",
+            "field": "pickerGroupId",
+            "before": "osm:relation:7100693",
+            "after": "delegation:465"
+          }
+        ],
+        "officialSectorIdentity": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1561",
+          "delegationFr": "Soliman",
+          "delegationAr": "سليمان",
+          "sectorCode": "156154",
+          "sectorFr": "Soliman",
+          "sectorAr": "سليمان",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13499,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 544,
+            "Nombre_de_menages_par_Secteurs.xlsx": 543
+          }
+        },
+        "geometryFactsNotBoundaryCertification": {
+          "sector": {
+            "containsBase": false,
+            "containsSourceSettlementPoint": false,
+            "baseOutsideDistanceM": 182.48208470357102,
+            "originalContainsBase": false,
+            "originalContainsSourceSettlementPoint": false
+          },
+          "settlement": {
+            "containsBase": true,
+            "containsSourceSettlementPoint": true,
+            "baseOutsideDistanceM": 0.0,
+            "originalContainsBase": true,
+            "originalContainsSourceSettlementPoint": true,
+            "percentageOutsideSourceSector": 73.27605292496787
+          }
+        },
+        "sourceIdentity": {
+          "exactArabicAcrossBaseResidentialPoint": true,
+          "sourcePointPlace": "village",
+          "sourcePointInsideOriginalAndPackedResidential": true,
+          "baseInsideOriginalAndPackedResidential": true,
+          "rawAndCanonicalPrayerSourcesEqual": true,
+          "sourcePointIsEvidenceOnlyNeverRestored": true,
+          "relationshipEvidence": "Residential and village point both explicitly carry addr:city=سليمان; cached Nabeul governorate city page calls Soliman and Slimane the same city.",
+          "inferenceLimit": "Display association of existing source features. No legal town perimeter, current population count, or equality with the imada is claimed."
+        },
+        "preserve": {
+          "allRawNamesAliasesContextsCoordinatesDefaultsAndPackedBytes": true,
+          "rawSourcePointAbsent": true,
+          "savedRawManualAndGpsIds": true,
+          "retiredIdsReplacementsReviewedNames": true
+        },
+        "representation": "The existing base is the canonical town browsing choice; the original imada remains a standalone sector choice. Total picker count is unchanged.",
+        "requiredDistinctPair": {
+          "ids": [
+            "osm:relation:7100693",
+            "osm:way:177385463"
+          ],
+          "reviewEvidence": {
+            "file": "soliman-town-sector-distinct-choices.json",
+            "sha256": "72716d8bc66bbbcb19d1d3288563d5c658ae1997f3bb85da1ec5745e17148d10"
+          }
+        }
+      },
+      "requiredDistinctPair": {
+        "ids": [
+          "osm:relation:7100693",
+          "osm:way:177385463"
+        ],
+        "reviewEvidence": {
+          "file": "soliman-town-sector-distinct-choices.json",
+          "sha256": "72716d8bc66bbbcb19d1d3288563d5c658ae1997f3bb85da1ec5745e17148d10"
+        }
+      },
+      "peerNameValues": [
+        "Slimane",
+        "Soliman",
+        "سليمان"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:node:1124155543",
+        "osm:relation:7100693",
+        "osm:relation:7145292",
+        "osm:way:177385463"
+      ],
+      "governorSourceId": "osm:relation:1435825",
+      "sourceAssertions": [
+        {
+          "id": "osm:node:1124155543",
+          "kind": "village",
+          "tags": {
+            "addr:city": "سليمان",
+            "name": "سليمان",
+            "name:ar": "سليمان",
+            "name:en": "Soliman",
+            "name:fr": "Soliman",
+            "place": "village",
+            "wikidata": "Q726858",
+            "wikimedia_commons": "Category:Soliman, Tunisia",
+            "wikipedia": "ar:سليمان (تونس)"
+          },
+          "geometrySha256": "e7f42816cdf1fb57f9e04fd7245c9e456acb02b5f1b479a8afeb8ae12c0bc2a3"
+        },
+        {
+          "id": "osm:relation:1435825",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-21",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية نابل",
+            "name:ar": "ولاية نابل",
+            "name:az": "Nabul (vilayət)",
+            "name:be": "Набуль (вілает)",
+            "name:be-tarask": "Набуль (вілает)",
+            "name:bg": "Набил (област)",
+            "name:ca": "Governació de Nabeul",
+            "name:ceb": "Gouvernorat de Nabeul",
+            "name:cy": "Nabeul (talaith)",
+            "name:de": "Gouvernement Nabeul",
+            "name:el": "Ναμπέλ (Κυβερνείο)",
+            "name:en": "Nabeul",
+            "name:es": "Gobernación de Nabeul",
+            "name:fa": "نابل",
+            "name:fi": "Nabeul (kuvernementti)",
+            "name:fr": "Gouvernorat Nabeul",
+            "name:frr": "Nabeul (Guwernement)",
+            "name:id": "Kegubernuran Nabeul",
+            "name:it": "Nabeul",
+            "name:ja": "ナブール県",
+            "name:ko": "나뵐주",
+            "name:ks": "نابل",
+            "name:ms": "Kawasan kegabenoran Nabeul",
+            "name:nl": "Nabeul (gouvernement)",
+            "name:no": "Nabeul (guvernement)",
+            "name:pl": "Gubernatorstwo Nabul",
+            "name:pt": "Nabeul (província)",
+            "name:ro": "Guvernoratul Nabeul",
+            "name:ru": "Набуль (вилайет)",
+            "name:sco": "Nabeul Govrenorate",
+            "name:sh": "Nabeul (vilajet)",
+            "name:tr": "Nabil ili",
+            "name:uk": "Набуль (вілаєт)",
+            "name:ur": "نابل",
+            "name:zh": "納布勒省",
+            "name:zu": "Nabeul Governorate",
+            "official_name": "ولاية نابل",
+            "official_name:ar": "ولاية نابل",
+            "official_name:en": "Nabeul Governorate",
+            "official_name:fa": "استان نابل",
+            "official_name:fr": "Gouvernorat de Nabeul",
+            "official_name:it": "Governatorato di Nabeul",
+            "official_name:ur": "ولاية نابل",
+            "population": "787920",
+            "population:date": "2014",
+            "ref:tn:codegeo": "15",
+            "wikidata": "Q328145",
+            "wikipedia": "ar:ولاية نابل"
+          },
+          "geometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700"
+        },
+        {
+          "id": "osm:relation:7100693",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سليمان",
+            "name:ar": "سليمان",
+            "name:fr": "Soliman",
+            "ref:tn:codegeo": "156154"
+          },
+          "geometrySha256": "f2ab72174e970cb20848ed06b2352db41453bb21d47c75b55956f96c68b3c071"
+        },
+        {
+          "id": "osm:relation:7145292",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Soliman",
+            "boundary": "administrative",
+            "name": "معتمدية سليمان",
+            "name:ar": "معتمدية سليمان",
+            "name:fr": "Délégation Soliman",
+            "ref:tn:codegeo": "1561",
+            "ref:tn:hasc_2": "TN.NB.SO",
+            "wikidata": "Q3489485"
+          },
+          "geometrySha256": "174c79bac0661ccf010c1a0a27abf326da92e77536edda601b85934874b449ba"
+        },
+        {
+          "id": "osm:way:177385463",
+          "kind": "residential",
+          "tags": {
+            "addr:city": "سليمان",
+            "addr:country": "TN",
+            "addr:governorate": "Nabeul",
+            "landuse": "residential",
+            "name": "سليمان",
+            "name:ar": "سليمان",
+            "name:fr": "Soliman"
+          },
+          "geometrySha256": "1e90189af413c2ea32ece7ca663c3692170c2a2599b2f7569556220140aae69d"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:15063268",
+      "sourceReviewRecord": {
+        "key": "ghomrassen",
+        "status": "SUPPORTED_IDENTITY_PENDING_CODE_AND_GENERATION",
+        "residentialId": "osm:relation:15063268",
+        "sectorId": "osm:relation:7143816",
+        "absorbedSourcePointId": "osm:node:1655884872",
+        "targetBaseId": "delegation:473",
+        "targetDelegationId": 473,
+        "currentBase": {
+          "id": 473,
+          "nomFr": "Ghomrassen",
+          "nomAr": "غمراسن",
+          "nomEn": "Ghomrassen",
+          "lat": 33.06,
+          "lng": 10.34,
+          "governorateId": 351
+        },
+        "beforeGroups": [
+          {
+            "id": "osm:relation:7143816",
+            "memberIds": [
+              "osm:relation:15063268",
+              "osm:relation:7143816"
+            ],
+            "canonicalName": "غمراسن",
+            "manualSource": 473
+          },
+          {
+            "id": "delegation:473",
+            "memberIds": [
+              "delegation:473"
+            ],
+            "canonicalName": "غمراسن",
+            "manualSource": 473
+          }
+        ],
+        "afterDistinctGuardGroups": [
+          {
+            "id": "osm:relation:7143816",
+            "memberIds": [
+              "osm:relation:7143816"
+            ],
+            "canonicalName": "غمراسن",
+            "manualSource": 473
+          },
+          {
+            "id": "osm:relation:15063268",
+            "memberIds": [
+              "osm:relation:15063268"
+            ],
+            "canonicalName": "غمراسن",
+            "manualSource": 473
+          },
+          {
+            "id": "delegation:473",
+            "memberIds": [
+              "delegation:473"
+            ],
+            "canonicalName": "غمراسن",
+            "manualSource": 473
+          }
+        ],
+        "afterGroups": [
+          {
+            "id": "osm:relation:7143816",
+            "memberIds": [
+              "osm:relation:7143816"
+            ],
+            "canonicalName": "غمراسن",
+            "manualSource": 473
+          },
+          {
+            "id": "delegation:473",
+            "memberIds": [
+              "delegation:473",
+              "osm:relation:15063268"
+            ],
+            "canonicalName": "غمراسن",
+            "manualSource": 473
+          }
+        ],
+        "exactMetadataChanges": [
+          {
+            "id": "osm:relation:15063268",
+            "field": "pickerGroupId",
+            "before": "osm:relation:7143816",
+            "after": "delegation:473"
+          }
+        ],
+        "officialSectorIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5355",
+          "delegationFr": "Ghomrassen",
+          "delegationAr": "غمراسن",
+          "sectorCode": "535551",
+          "sectorFr": "Ghomrassen",
+          "sectorAr": "غمراسن",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64763,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3182,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3176
+          }
+        },
+        "geometryFactsNotBoundaryCertification": {
+          "sector": {
+            "containsBase": false,
+            "containsSourceSettlementPoint": false,
+            "baseOutsideDistanceM": 60.22925181593946,
+            "originalContainsBase": false,
+            "originalContainsSourceSettlementPoint": false
+          },
+          "settlement": {
+            "containsBase": true,
+            "containsSourceSettlementPoint": true,
+            "baseOutsideDistanceM": 0.0,
+            "originalContainsBase": true,
+            "originalContainsSourceSettlementPoint": true,
+            "percentageOutsideSourceSector": 85.5891751756644
+          }
+        },
+        "sourceIdentity": {
+          "exactArabicAcrossBaseResidentialPoint": true,
+          "sourcePointPlace": "town",
+          "sourcePointInsideOriginalAndPackedResidential": true,
+          "baseInsideOriginalAndPackedResidential": true,
+          "rawAndCanonicalPrayerSourcesEqual": true,
+          "sourcePointIsEvidenceOnlyNeverRestored": true,
+          "relationshipEvidence": "Residential and town point share exact bilingual names, population11300 and postal_code3220; point explicitly carries addr:city=غمراسن. The town extent and imada scope differ.",
+          "inferenceLimit": "Display association of existing source features. No legal town perimeter, current population count, or equality with the imada is claimed."
+        },
+        "preserve": {
+          "allRawNamesAliasesContextsCoordinatesDefaultsAndPackedBytes": true,
+          "rawSourcePointAbsent": true,
+          "savedRawManualAndGpsIds": true,
+          "retiredIdsReplacementsReviewedNames": true
+        },
+        "representation": "The existing base is the canonical town browsing choice; the original imada remains a standalone sector choice. Total picker count is unchanged.",
+        "requiredDistinctPair": {
+          "ids": [
+            "osm:relation:7143816",
+            "osm:relation:15063268"
+          ],
+          "reviewEvidence": {
+            "file": "ghomrassen-town-sector-distinct-choices.json",
+            "sha256": "aa5775000d7fd9511085bfa73cdf4dee517cedae82977602e2256a56fe02775a"
+          }
+        }
+      },
+      "requiredDistinctPair": {
+        "ids": [
+          "osm:relation:7143816",
+          "osm:relation:15063268"
+        ],
+        "reviewEvidence": {
+          "file": "ghomrassen-town-sector-distinct-choices.json",
+          "sha256": "aa5775000d7fd9511085bfa73cdf4dee517cedae82977602e2256a56fe02775a"
+        }
+      },
+      "peerNameValues": [
+        "Ghomrassen",
+        "غمراسن"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:node:1655884872",
+        "osm:relation:15063268",
+        "osm:relation:7143816",
+        "osm:relation:7143858"
+      ],
+      "governorSourceId": "osm:relation:1434953",
+      "sourceAssertions": [
+        {
+          "id": "osm:node:1655884872",
+          "kind": "town",
+          "tags": {
+            "addr:city": "غمراسن",
+            "name": "غمراسن",
+            "name:ar": "غمراسن",
+            "name:en": "Ghomrassen",
+            "name:fr": "Ghomrassen",
+            "name:ru": "Гумрасен",
+            "place": "town",
+            "population": "11300",
+            "postal_code": "3220",
+            "wikipedia": "ar:غمراسن"
+          },
+          "geometrySha256": "7a79ff4d1f226d894de7d17ad77821d298e50a748da342c37febd02cafdf21af"
+        },
+        {
+          "id": "osm:relation:1434953",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-83",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية تطاوين",
+            "name:ar": "ولاية تطاوين",
+            "name:be": "Татавін (вілает)",
+            "name:be-tarask": "Татаўін (вілает)",
+            "name:bg": "Татауин (област)",
+            "name:ca": "Governació de Tataouine",
+            "name:ceb": "Tataouine (lalawigan)",
+            "name:cy": "Tataouine (talaith)",
+            "name:de": "Gouvernement Tataouine",
+            "name:el": "Ταταουίν (Κυβερνείο)",
+            "name:en": "Tataouine",
+            "name:es": "Gobernación de Tataouine",
+            "name:fa": "تطاوین",
+            "name:fi": "Tataouine (kuvernementti)",
+            "name:fr": "Gouvernorat Tataouine",
+            "name:frr": "Tataouine (Guwernement)",
+            "name:id": "Kegubernuran Tataouine",
+            "name:it": "Tataouine",
+            "name:ja": "タタウイヌ県",
+            "name:ko": "타타우인주",
+            "name:ms": "Kawasan kegabenoran Tataouine",
+            "name:nl": "Tataouine (gouvernement)",
+            "name:no": "Tataouine (guvernement)",
+            "name:pl": "Gubernatorstwo Tatawin",
+            "name:pt": "Tataouine (província)",
+            "name:ro": "Guvernoratul Tataouine",
+            "name:ru": "Татавин (вилайет)",
+            "name:sco": "Tataouine Govrenorate",
+            "name:sh": "Tataouine (vilajet)",
+            "name:sv": "Tataouine (guvernement)",
+            "name:tr": "Tatavin ili",
+            "name:uk": "Татауїн (вілаєт)",
+            "name:ur": "تطاوین",
+            "name:zh": "泰塔溫省",
+            "name:zu": "Tataouine Governorate",
+            "official_name": "ولاية تطاوين",
+            "official_name:ar": "ولاية تطاوين",
+            "official_name:en": "Tataouine Governorate",
+            "official_name:fa": "استان تطاوین",
+            "official_name:fr": "Gouvernorat de Tataouine",
+            "official_name:it": "Governatorato di Tataouine",
+            "official_name:ur": "ولایت تطاوین",
+            "population": "143524",
+            "population:date": "2004",
+            "ref:tn:codegeo": "53",
+            "wikidata": "Q327045",
+            "wikipedia": "ar:ولاية تطاوين"
+          },
+          "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0"
+        },
+        {
+          "id": "osm:relation:15063268",
+          "kind": "residential",
+          "tags": {
+            "landuse": "residential",
+            "name": "غمراسن",
+            "name:ar": "غمراسن",
+            "name:fr": "Ghomrassen",
+            "name:zgh": "ⵖⵎⵔⴰⵙⵏ",
+            "population": "11300",
+            "postal_code": "3220"
+          },
+          "geometrySha256": "ac27e08c391854a7f5f2e929b0d452a200a80fe63aa4427f24445f543e77d83a"
+        },
+        {
+          "id": "osm:relation:7143816",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غمراسن",
+            "name:ar": "غمراسن",
+            "name:fr": "GHOMRASSEN",
+            "ref:tn:codegeo": "535551"
+          },
+          "geometrySha256": "da9953fd28a83fb3db987e46293fdbc9db3d927aba4378bbd9b9791273fa3ef9"
+        },
+        {
+          "id": "osm:relation:7143858",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Ghomrassen",
+            "boundary": "administrative",
+            "name": "معتمدية غمراسن",
+            "name:ar": "معتمدية غمراسن",
+            "name:fr": "Délégation Ghomrassen",
+            "ref:tn:codegeo": "5355",
+            "ref:tn:hasc_2": "TN.TA.GH",
+            "wikidata": "Q3104928"
+          },
+          "geometrySha256": "fcbe2ff2b0437a4942953790d23136c88ab25088da8d6318206e7225d1598ea4"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:142985514",
+      "sourceReviewRecord": {
+        "key": "mornaguia",
+        "status": "SUPPORTED_IDENTITY_PENDING_CODE_AND_GENERATION",
+        "residentialId": "osm:way:142985514",
+        "sectorId": "osm:relation:7102308",
+        "absorbedSourcePointId": "osm:node:1564481999",
+        "targetBaseId": "delegation:555",
+        "targetDelegationId": 555,
+        "currentBase": {
+          "id": 555,
+          "nomFr": "Mornaguia",
+          "nomAr": "المرناقية",
+          "nomEn": "Mornaguia",
+          "lat": 36.752,
+          "lng": 10.008,
+          "governorateId": 360
+        },
+        "beforeGroups": [
+          {
+            "id": "osm:relation:7102308",
+            "memberIds": [
+              "osm:relation:7102308",
+              "osm:way:142985514"
+            ],
+            "canonicalName": "المرناقية",
+            "manualSource": 555
+          },
+          {
+            "id": "delegation:555",
+            "memberIds": [
+              "delegation:555"
+            ],
+            "canonicalName": "المرناقية",
+            "manualSource": 555
+          }
+        ],
+        "afterDistinctGuardGroups": [
+          {
+            "id": "osm:relation:7102308",
+            "memberIds": [
+              "osm:relation:7102308"
+            ],
+            "canonicalName": "المرناقية",
+            "manualSource": 555
+          },
+          {
+            "id": "osm:way:142985514",
+            "memberIds": [
+              "osm:way:142985514"
+            ],
+            "canonicalName": "المرناقية",
+            "manualSource": 555
+          },
+          {
+            "id": "delegation:555",
+            "memberIds": [
+              "delegation:555"
+            ],
+            "canonicalName": "المرناقية",
+            "manualSource": 555
+          }
+        ],
+        "afterGroups": [
+          {
+            "id": "osm:relation:7102308",
+            "memberIds": [
+              "osm:relation:7102308"
+            ],
+            "canonicalName": "المرناقية",
+            "manualSource": 555
+          },
+          {
+            "id": "delegation:555",
+            "memberIds": [
+              "delegation:555",
+              "osm:way:142985514"
+            ],
+            "canonicalName": "المرناقية",
+            "manualSource": 555
+          }
+        ],
+        "exactMetadataChanges": [
+          {
+            "id": "osm:way:142985514",
+            "field": "pickerGroupId",
+            "before": "osm:relation:7102308",
+            "after": "delegation:555"
+          }
+        ],
+        "officialSectorIdentity": {
+          "governorateCode": "14",
+          "governorateFr": "Manouba",
+          "governorateAr": "منوبة",
+          "delegationCode": "1454",
+          "delegationFr": "Mornaguia",
+          "delegationAr": "المرناقية",
+          "sectorCode": "145451",
+          "sectorFr": "Mornaguia",
+          "sectorAr": "المرناقية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10371,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 365,
+            "Nombre_de_menages_par_Secteurs.xlsx": 364
+          }
+        },
+        "geometryFactsNotBoundaryCertification": {
+          "sector": {
+            "containsBase": false,
+            "containsSourceSettlementPoint": true,
+            "baseOutsideDistanceM": 578.2287871505152,
+            "originalContainsBase": false,
+            "originalContainsSourceSettlementPoint": true
+          },
+          "settlement": {
+            "containsBase": true,
+            "containsSourceSettlementPoint": true,
+            "baseOutsideDistanceM": 0.0,
+            "originalContainsBase": true,
+            "originalContainsSourceSettlementPoint": true,
+            "percentageOutsideSourceSector": 61.915108334474866
+          }
+        },
+        "sourceIdentity": {
+          "exactArabicAcrossBaseResidentialPoint": true,
+          "sourcePointPlace": "village",
+          "sourcePointInsideOriginalAndPackedResidential": true,
+          "baseInsideOriginalAndPackedResidential": true,
+          "rawAndCanonicalPrayerSourcesEqual": true,
+          "sourcePointIsEvidenceOnlyNeverRestored": true,
+          "relationshipEvidence": "Residential carries addr:city and addr:city:ar=المرناقية; its contained source village has the exact Arabic/French name. Exclude the different-governorate Nabeul hamlet1128656865.",
+          "inferenceLimit": "Display association of existing source features. No legal town perimeter, current population count, or equality with the imada is claimed."
+        },
+        "preserve": {
+          "allRawNamesAliasesContextsCoordinatesDefaultsAndPackedBytes": true,
+          "rawSourcePointAbsent": true,
+          "savedRawManualAndGpsIds": true,
+          "retiredIdsReplacementsReviewedNames": true
+        },
+        "representation": "The existing base is the canonical town browsing choice; the original imada remains a standalone sector choice. Total picker count is unchanged.",
+        "requiredDistinctPair": {
+          "ids": [
+            "osm:relation:7102308",
+            "osm:way:142985514"
+          ],
+          "reviewEvidence": {
+            "file": "mornaguia-town-sector-distinct-choices.json",
+            "sha256": "a4dee9cb1e86fc48323246960f8c313c7993f67ba7660c036f8e7a247f6e25d8"
+          }
+        }
+      },
+      "requiredDistinctPair": {
+        "ids": [
+          "osm:relation:7102308",
+          "osm:way:142985514"
+        ],
+        "reviewEvidence": {
+          "file": "mornaguia-town-sector-distinct-choices.json",
+          "sha256": "a4dee9cb1e86fc48323246960f8c313c7993f67ba7660c036f8e7a247f6e25d8"
+        }
+      },
+      "peerNameValues": [
+        "Mornaguia",
+        "المرناقية"
+      ],
+      "matchingExtractedSourceIds": [
+        "osm:node:1128656865",
+        "osm:node:1564481999",
+        "osm:relation:7102308",
+        "osm:relation:7204611",
+        "osm:way:142985514"
+      ],
+      "governorSourceId": "osm:relation:1435828",
+      "sourceAssertions": [
+        {
+          "id": "osm:node:1128656865",
+          "kind": "hamlet",
+          "tags": {
+            "addr:governorate": "Nabeul",
+            "name": "المرناقية",
+            "name:ar": "المرناقية",
+            "name:en": "Mornaguia",
+            "name:fr": "Mornaguia",
+            "place": "hamlet"
+          },
+          "geometrySha256": "42d364630d7c6d6ca85ce8bfb1f0a313ab634591e6c186d6e67f803532c7e641"
+        },
+        {
+          "id": "osm:node:1564481999",
+          "kind": "village",
+          "tags": {
+            "name": "المرناقية",
+            "name:ar": "المرناقية",
+            "name:ca": "Mornaguia",
+            "name:ceb": "La Mornaghia",
+            "name:de": "Mornaguia",
+            "name:en": "Mornaguia",
+            "name:es": "Mornaguia",
+            "name:fr": "Mornaguia",
+            "name:it": "Mornaguia",
+            "place": "village",
+            "wikidata": "Q3105883",
+            "wikipedia": "ar:المرناقية"
+          },
+          "geometrySha256": "4a937421af937f93ff71db8530b4b16e2f67d679aa44c351994abd1578cfc5e4"
+        },
+        {
+          "id": "osm:relation:1435828",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-14",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية منوبة",
+            "name:ar": "ولاية منوبة",
+            "name:arz": "ولاية منوبه",
+            "name:az": "Manuba (vilayət)",
+            "name:be": "Мануба (вілает)",
+            "name:be-tarask": "Мануба (вілает)",
+            "name:bg": "Мануба (област)",
+            "name:bjn": "Tunisia",
+            "name:ca": "Governació de Manouba",
+            "name:ceb": "Manouba (lalawigan)",
+            "name:cy": "Manouba (talaith)",
+            "name:de": "Gouvernement Manouba",
+            "name:el": "Λα Μανουμπά (Κυβερνείο)",
+            "name:en": "Manouba",
+            "name:es": "Gobernación de Manouba",
+            "name:fa": "منوبه",
+            "name:fr": "Gouvernorat La Manouba",
+            "name:frr": "Manouba (Guwernement)",
+            "name:id": "Kegubernuran Manouba",
+            "name:it": "Manouba",
+            "name:ja": "マヌーバ県",
+            "name:ko": "마누바주",
+            "name:ms": "Kawasan kegabenoran Manouba",
+            "name:nl": "Manouba (gouvernement)",
+            "name:no": "Manouba (guvernement)",
+            "name:pl": "Gubernatorstwo Manuba",
+            "name:pt": "Manouba (província)",
+            "name:ro": "Guvernoratul Manouba",
+            "name:ru": "Мануба (вилайет)",
+            "name:sco": "Manouba Govrenorate",
+            "name:sh": "Manouba (vilajet)",
+            "name:sv": "Manouba (guvernement)",
+            "name:tr": "Manuba ili",
+            "name:uk": "Мануба (вілаєт)",
+            "name:ur": "منوبہ",
+            "name:zh": "馬努巴省",
+            "name:zu": "Manouba Governorate",
+            "official_name": "ولاية منوبة",
+            "official_name:ar": "ولاية منوبة",
+            "official_name:en": "Manouba Governorate",
+            "official_name:fa": "استان منوبه",
+            "official_name:fr": "Gouvernorat de la Manouba",
+            "official_name:it": "Governatorato di Manouba",
+            "official_name:ur": "ولایت منوبہ",
+            "population": "335912",
+            "population:date": "2014",
+            "ref:tn:codegeo": "14",
+            "wikidata": "Q734328",
+            "wikipedia": "ar:ولاية منوبة"
+          },
+          "geometrySha256": "45240f4735b249f476a71af8d94d323efbbed6659fdf79ef387b32d052ba16a5"
+        },
+        {
+          "id": "osm:relation:7102308",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المرناقية",
+            "name:ar": "المرناقية",
+            "name:fr": "Mornaguia",
+            "ref:tn:codegeo": "145451"
+          },
+          "geometrySha256": "382d868e0227343b09445e5e3fa188698c4081c65af95bae8ebf6d92b81a1065"
+        },
+        {
+          "id": "osm:relation:7204611",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Mornaguia",
+            "boundary": "administrative",
+            "name": "معتمدية المرناقية",
+            "name:ar": "معتمدية المرناقية",
+            "name:fr": "Délégation Mornaguia",
+            "ref:tn:codegeo": "1454",
+            "ref:tn:hasc_2": "TN.MN.MO",
+            "wikidata": "Q3324188"
+          },
+          "geometrySha256": "f48d5d4c003c2cf2cd4c67835b62bf39a1d22186c55ffe3ccd3bb2b4c88a187d"
+        },
+        {
+          "id": "osm:way:142985514",
+          "kind": "residential",
+          "tags": {
+            "addr:city": "المرناقية",
+            "addr:city:ar": "المرناقية",
+            "landuse": "residential",
+            "name": "المرناقية",
+            "name:ar": "المرناقية",
+            "name:de": "Al Murnaqiyya",
+            "name:en": "Al Murnaqiyya",
+            "name:fr": "Mornaguia"
+          },
+          "geometrySha256": "e1cff0f3db2f247ac794889386f28d9105413d02db869449d0b2ff290959dcee"
+        }
+      ]
+    }
+  ]
+}

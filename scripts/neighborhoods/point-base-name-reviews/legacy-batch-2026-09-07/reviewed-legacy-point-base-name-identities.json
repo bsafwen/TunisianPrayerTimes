@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_legacy_batch_point_base_identity",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "sourceProposal": {
+    "file": "point-base-name-reviews/legacy-batch-2026-09-07/rejiche-metline-point-base-identity-proposal.json",
+    "sha256": "ed1ea2d21d7c921a12fa2501014df712a341e8233e148247c9a379d988344f9f"
+  },
+  "sourceBatch": {
+    "file": "point-base-name-reviews/legacy-batch-2026-09-07/candidate-place-nodes-second-live.json",
+    "sha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+  },
+  "sourceBatchUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+  "expectedBatchNodeIds": [
+    287588734,
+    298020344,
+    352839775,
+    434547646,
+    559394563,
+    1132950382,
+    1165832678,
+    1439531928,
+    1444704293,
+    1837034352,
+    2028879938,
+    2165194615,
+    2177334841,
+    2402352381,
+    3203082588
+  ],
+  "originalReferenceProposal": {
+    "file": "point-base-name-reviews/legacy-batch-2026-09-07/original-coordinate-proposals.json",
+    "sha256": "fa48457e551385ca9660915b2d627706907a1db421b47ca855b10cc1bde2b0e4"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "admittedPairs": [
+    {
+      "pointId": "osm:node:2402352381",
+      "baseId": 1084,
+      "pointNameAr": "رجيش",
+      "baseNameAr": "الرجيش",
+      "correctionSha256": "08785297bee530ae5d15cecd79a4c5cc442ebe5ffa773d2892db63f72454d846",
+      "historicalSourceReview": {
+        "file": "point-base-name-reviews/legacy-batch-2026-09-07/phone-source-point-second-review-first-eight.json",
+        "sha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73"
+      }
+    },
+    {
+      "pointId": "osm:node:1132950382",
+      "baseId": 569,
+      "pointNameAr": "ماتلين",
+      "baseNameAr": "المتلين",
+      "correctionSha256": "9f3a83eb595475631df5898d107ddcf1385389ff2ab6744cd9d3a726274187b0",
+      "historicalSourceReview": {
+        "file": "point-base-name-reviews/legacy-batch-2026-09-07/phone-source-point-second-review-last-seven.json",
+        "sha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea"
+      }
+    }
+  ],
+  "scope": "Only these two exact retained village/base display identities. Full batch evidence is preserved, but the other13 source nodes are not admitted to this grouping format.",
+  "correctionBinding": "Exact current correction object and canonical per-object checksum; do not rewrite or bind all29 historical correction records.",
+  "administrativeScope": "Keep the complete two-sector Rejiche and seven-sector Ras Jebel inventories. Exact already-reviewed Rejiche old/current code curation rules remain mandatory.",
+  "historicalEvidenceQualification": "The copied phone reports and original source proposal remain historical read-only provenance. Absolute paths inside them are citations, not current compiler input files; the explicit relative wrapper references are the complete current evidence dependency set. No observation is copied into or promoted within a phone ledger.",
+  "unchangedKalaaFormat": "The existing pickerBaseNameReview validator and final verifier remain unchanged. This separate field does not create optional fallbacks for Kalaa-required source metadata.",
+  "sourceQualification": "Named settlement identity/reference evidence, not a full-town boundary or certification of original INM calculation coordinates."
+}

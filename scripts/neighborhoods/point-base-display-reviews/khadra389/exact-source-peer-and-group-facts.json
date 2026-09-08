@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": 1,
+  "method": "Independent read-only source data inventory, using documented clean/norm/names rules and declarative name/exclusion/official-identity overlays. No generator/helper execution or PBF extraction.",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "originalSourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "bytes": 25378903
+  },
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "63a1c2c7f3a8c5e29160b66452be1acedecaba8f8152c9aa75b02efc355923f5",
+    "bytes": 1854325
+  },
+  "geometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "bytes": 5493496
+  },
+  "coordinateScale": 1000000,
+  "baseCurrent": {
+    "id": 389,
+    "nomFr": "Cite El Khadhra",
+    "nomAr": "حي الخضراء",
+    "nomEn": "Cite El Khadhra",
+    "lat": 36.8305,
+    "lng": 10.1969
+  },
+  "expectedGovernor": {
+    "id": 342,
+    "nomFr": "Tunis",
+    "nomAr": "تونس",
+    "nomEn": "Tunis",
+    "lat": 36.8065,
+    "lng": 10.1815
+  },
+  "rawCurrent": {
+    "id": "osm:node:1185290849",
+    "sourceId": "osm",
+    "name": "حي الخضراء",
+    "aliases": [
+      "Cité El Khadra",
+      "Hay El Khadra",
+      "Cité el Khadra"
+    ],
+    "kind": "suburb",
+    "parentName": "فرحات حشاد",
+    "contextAliases": [
+      "Délégation Cité El Khadra",
+      "Farhat Hached",
+      "la cité El Khadra",
+      "فرحات حشاد",
+      "معتمدية حي الخضراء"
+    ],
+    "governorateId": 342,
+    "lat": 36.8302177,
+    "lng": 10.1970639,
+    "delegationId": 389,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1185290849"
+  },
+  "normalizedKeys": [
+    "citeelkhadhra",
+    "citeelkhadra",
+    "hayelkhadra",
+    "حيالخضراء"
+  ],
+  "originalSourceNamePeerIds": [
+    "osm:node:1185290849",
+    "osm:relation:7201241",
+    "osm:way:685813205"
+  ],
+  "effectiveSourceNamePeerIds": [
+    "osm:node:1185290849",
+    "osm:relation:7201241",
+    "osm:way:685813205"
+  ],
+  "currentNamedRawIds": [
+    "osm:node:1185290849",
+    "osm:relation:7201241",
+    "osm:way:685813205"
+  ],
+  "currentNamedBases": [
+    {
+      "governorateId": 342,
+      "id": 389,
+      "nomFr": "Cite El Khadhra",
+      "nomAr": "حي الخضراء",
+      "nomEn": "Cite El Khadhra",
+      "lat": 36.8305,
+      "lng": 10.1969
+    }
+  ],
+  "states": [
+    {
+      "id": "osm:node:1185290849",
+      "kind": "suburb",
+      "originalTags": {
+        "alt_name": "Cité el Khadra",
+        "int_name": "El Khadra",
+        "name": "حي الخضراء",
+        "name:ar": "حي الخضراء",
+        "name:en": "Hay El Khadra",
+        "name:fr": "Cité El Khadra",
+        "place": "suburb"
+      },
+      "effectiveTags": {
+        "alt_name": "Cité el Khadra",
+        "int_name": "El Khadra",
+        "name": "حي الخضراء",
+        "name:ar": "حي الخضراء",
+        "name:en": "Hay El Khadra",
+        "name:fr": "Cité El Khadra",
+        "place": "suburb"
+      },
+      "sourceGeometrySha256": "8cd76700153862dba6cc77b94b8f03047f165ec2f8ba0b3266b84e41b3bb94ac",
+      "sourceGeometryType": "Point",
+      "sourceGeometryBounds": [
+        10.1970639,
+        36.8302177,
+        10.1970639,
+        36.8302177
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:node:1185290849",
+        "sourceId": "osm",
+        "name": "حي الخضراء",
+        "aliases": [
+          "Cité El Khadra",
+          "Hay El Khadra",
+          "Cité el Khadra"
+        ],
+        "kind": "suburb",
+        "parentName": "فرحات حشاد",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "Farhat Hached",
+          "la cité El Khadra",
+          "فرحات حشاد",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.8302177,
+        "lng": 10.1970639,
+        "delegationId": 389,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1185290849"
+      },
+      "currentGroupMembers": [
+        "osm:node:1185290849"
+      ]
+    },
+    {
+      "id": "osm:relation:1435835",
+      "kind": "governorate",
+      "originalTags": {
+        "ISO3166-2": "TN-11",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Tunis",
+        "alt_name:ko": "튀니스주",
+        "alt_name:ru": "Тунис (вилайет)",
+        "boundary": "administrative",
+        "long_name:ar": "ولاية تونس",
+        "long_name:en": "Tunis Governorate",
+        "long_name:fr": "Gouvernorat de Tunis",
+        "long_name:it": "Governatorato di Tunisi",
+        "name": "ولاية تونس",
+        "name:ar": "ولاية تونس",
+        "name:be": "Туніс (вілает)",
+        "name:be-tarask": "Туніс (вілает)",
+        "name:bg": "Тунис (област)",
+        "name:ca": "Governació de Tunis",
+        "name:ceb": "Gouvernorat de Tunis",
+        "name:cy": "Tiwnis (talaith)",
+        "name:de": "Tunis",
+        "name:en": "Tunis",
+        "name:es": "Gobernación de Túnez",
+        "name:fa": "استان تونس",
+        "name:fr": "Gouvernorat Tunis",
+        "name:id": "Kegubernuran Tunis",
+        "name:it": "Tunisi",
+        "name:ja": "チュニス県",
+        "name:ko": "튀니스",
+        "name:ms": "Kawasan kegabenoran Tunis",
+        "name:nl": "Tunis (gouvernement)",
+        "name:no": "Tunis (guvernement)",
+        "name:pl": "Gubernatorstwo Tunis",
+        "name:pt": "Túnis (província)",
+        "name:ro": "Guvernoratul Tunis",
+        "name:ru": "Тунис",
+        "name:sco": "Tunis Govrenorate",
+        "name:sh": "Tunis (vilajet)",
+        "name:sv": "Tunis (guvernement)",
+        "name:tr": "Tunus ili",
+        "name:uk": "Туніс (вілаєт)",
+        "name:ur": "ولایت تونس",
+        "name:zh": "突尼斯省",
+        "name:zu": "Tunis Governorate",
+        "population": "983861",
+        "ref:tn:codegeo": "11",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q328109",
+        "wikipedia": "ar:ولاية تونس"
+      },
+      "effectiveTags": {
+        "ISO3166-2": "TN-11",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Tunis",
+        "alt_name:ko": "튀니스주",
+        "alt_name:ru": "Тунис (вилайет)",
+        "boundary": "administrative",
+        "long_name:ar": "ولاية تونس",
+        "long_name:en": "Tunis Governorate",
+        "long_name:fr": "Gouvernorat de Tunis",
+        "long_name:it": "Governatorato di Tunisi",
+        "name": "ولاية تونس",
+        "name:ar": "ولاية تونس",
+        "name:be": "Туніс (вілает)",
+        "name:be-tarask": "Туніс (вілает)",
+        "name:bg": "Тунис (област)",
+        "name:ca": "Governació de Tunis",
+        "name:ceb": "Gouvernorat de Tunis",
+        "name:cy": "Tiwnis (talaith)",
+        "name:de": "Tunis",
+        "name:en": "Tunis",
+        "name:es": "Gobernación de Túnez",
+        "name:fa": "استان تونس",
+        "name:fr": "Gouvernorat Tunis",
+        "name:id": "Kegubernuran Tunis",
+        "name:it": "Tunisi",
+        "name:ja": "チュニス県",
+        "name:ko": "튀니스",
+        "name:ms": "Kawasan kegabenoran Tunis",
+        "name:nl": "Tunis (gouvernement)",
+        "name:no": "Tunis (guvernement)",
+        "name:pl": "Gubernatorstwo Tunis",
+        "name:pt": "Túnis (província)",
+        "name:ro": "Guvernoratul Tunis",
+        "name:ru": "Тунис",
+        "name:sco": "Tunis Govrenorate",
+        "name:sh": "Tunis (vilajet)",
+        "name:sv": "Tunis (guvernement)",
+        "name:tr": "Tunus ili",
+        "name:uk": "Туніс (вілаєт)",
+        "name:ur": "ولایت تونس",
+        "name:zh": "突尼斯省",
+        "name:zu": "Tunis Governorate",
+        "population": "983861",
+        "ref:tn:codegeo": "11",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q328109",
+        "wikipedia": "ar:ولاية تونس"
+      },
+      "sourceGeometrySha256": "052f1311c8a20819843199eb9c94e8f9313c1a89c1bc785a0a30e26d3eabd349",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.0037899,
+        36.6925111,
+        10.3548094,
+        36.9430196
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "rawCatalogPresence": false
+    },
+    {
+      "id": "osm:relation:4133739",
+      "kind": "delegation",
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "la cité El Khadra",
+        "boundary": "administrative",
+        "name": "معتمدية حي الخضراء",
+        "name:ar": "معتمدية حي الخضراء",
+        "name:fr": "Délégation Cité El Khadra",
+        "ref:tn:codegeo": "1159",
+        "ref:tn:hasc_2": "TN.TU.KH",
+        "wikidata": "Q2974652"
+      },
+      "effectiveTags": {
+        "admin_level": "5",
+        "alt_name:fr": "la cité El Khadra",
+        "boundary": "administrative",
+        "name": "معتمدية حي الخضراء",
+        "name:ar": "معتمدية حي الخضراء",
+        "name:fr": "Délégation Cité El Khadra",
+        "ref:tn:codegeo": "1159",
+        "ref:tn:hasc_2": "TN.TU.KH",
+        "wikidata": "Q2974652"
+      },
+      "sourceGeometrySha256": "a3fdf68af6594be69be4c11c243def67ed50ea3ada228d50bd705bc230dbbc39",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.1784308,
+        36.8028905,
+        10.2720918,
+        36.8712919
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "rawCatalogPresence": false
+    },
+    {
+      "id": "osm:relation:7201234",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "فرحات حشاد",
+        "name:ar": "فرحات حشاد",
+        "name:fr": "Farhat Hached",
+        "ref:tn:codegeo": "115956"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "فرحات حشاد",
+        "name:ar": "فرحات حشاد",
+        "name:fr": "Farhat Hached",
+        "ref:tn:codegeo": "115956"
+      },
+      "sourceGeometrySha256": "2f0c244986c95e9cbadc63b98e12b796026e416d050c4427685f15ae60b9865b",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.1902979,
+        36.82382,
+        10.201111,
+        36.83613
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201234",
+        "sourceId": "osm",
+        "name": "فرحات حشاد",
+        "aliases": [
+          "Farhat Hached"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.829985,
+        "lng": 10.197124,
+        "delegationId": 389,
+        "hasBoundary": true,
+        "bbox": [
+          10.190298,
+          36.82382,
+          10.201111,
+          36.83613
+        ],
+        "areaKm2": 0.6720986524235105,
+        "pickerGroupId": "osm:relation:7201234",
+        "offset": 5048816,
+        "length": 884
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201234"
+      ],
+      "packedGeometrySha256": "cbb99dbbcc2c92356160e110f70071007b33311fd459415ba40bccf112cacecf"
+    },
+    {
+      "id": "osm:relation:7201235",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الشرقية",
+        "name:ar": "الشرقية",
+        "name:fr": "Ech-Charguia",
+        "ref:tn:codegeo": "115953"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الشرقية",
+        "name:ar": "الشرقية",
+        "name:fr": "Ech-Charguia",
+        "ref:tn:codegeo": "115953"
+      },
+      "sourceGeometrySha256": "6e7b6ba29470bec2cf20c2504d8bbb06f4502b1a2b8be203c38caca742358127",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.19983,
+        36.82467,
+        10.2502616,
+        36.8712919
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201235",
+        "sourceId": "osm",
+        "name": "الشرقية",
+        "aliases": [
+          "Ech-Charguia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.847325,
+        "lng": 10.224886,
+        "delegationId": 631,
+        "hasBoundary": true,
+        "bbox": [
+          10.19983,
+          36.82467,
+          10.250262,
+          36.871292
+        ],
+        "areaKm2": 10.560892730073157,
+        "pickerGroupId": "osm:relation:7201235",
+        "offset": 5049700,
+        "length": 2436
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201235"
+      ],
+      "packedGeometrySha256": "aabb7f316af94c280a541fbeb831987d393f63828c561b4ecbfb833ec6342468"
+    },
+    {
+      "id": "osm:relation:7201236",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي السلام",
+        "name:ar": "حي السلام",
+        "name:fr": "Hay Es Salem",
+        "ref:tn:codegeo": "115958"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي السلام",
+        "name:ar": "حي السلام",
+        "name:fr": "Hay Es Salem",
+        "ref:tn:codegeo": "115958"
+      },
+      "sourceGeometrySha256": "373eac6b70e9d79c2ed427eb7d5da4b79f5bcd17841803f3a124c8ae6ca9e153",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.1803256,
+        36.82948,
+        10.2023063,
+        36.8513999
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201236",
+        "sourceId": "osm",
+        "name": "حي السلام",
+        "aliases": [
+          "Hay Es Salem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.840011,
+        "lng": 10.191711,
+        "delegationId": 390,
+        "hasBoundary": true,
+        "bbox": [
+          10.180326,
+          36.82948,
+          10.202306,
+          36.8514
+        ],
+        "areaKm2": 2.799388050782032,
+        "pickerGroupId": "osm:relation:7201236",
+        "offset": 5052136,
+        "length": 852
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201236"
+      ],
+      "packedGeometrySha256": "c3c2287a0f103cbec7c4bb02258d2549b0f139d8ab688f965477716bd92fd97c"
+    },
+    {
+      "id": "osm:relation:7201237",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي الحدائق",
+        "name:ar": "حي الحدائق",
+        "name:fr": "Cite Jardin",
+        "ref:tn:codegeo": "115952"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي الحدائق",
+        "name:ar": "حي الحدائق",
+        "name:fr": "Cite Jardin",
+        "ref:tn:codegeo": "115952"
+      },
+      "sourceGeometrySha256": "3936ad4791d13fcef93aa810de3996bf4d20a4a0b2c7c7cd31a756fe5e9f6d8e",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.1784308,
+        36.819865,
+        10.191088,
+        36.8330207
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201237",
+        "sourceId": "osm",
+        "name": "حي الحدائق",
+        "aliases": [
+          "Cite Jardin"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.826233,
+        "lng": 10.183987,
+        "delegationId": 389,
+        "hasBoundary": true,
+        "bbox": [
+          10.178431,
+          36.819865,
+          10.191088,
+          36.833021
+        ],
+        "areaKm2": 0.8935387025417862,
+        "pickerGroupId": "osm:relation:7201237",
+        "offset": 5052988,
+        "length": 540
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201237"
+      ],
+      "packedGeometrySha256": "1f644fd3437c0c97041a87d2aeac9dd1db3ffc75812351762dba3b5bede3af8a"
+    },
+    {
+      "id": "osm:relation:7201238",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "علي بلهوان",
+        "name:ar": "علي بلهوان",
+        "name:fr": "Ali Belhouane",
+        "ref:tn:codegeo": "115955"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "علي بلهوان",
+        "name:ar": "علي بلهوان",
+        "name:fr": "Ali Belhouane",
+        "ref:tn:codegeo": "115955"
+      },
+      "sourceGeometrySha256": "85285384a1efb50bc401aae6d193c83305d04b263128d422a0b0842a6af2515b",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.190083,
+        36.83232,
+        10.201336,
+        36.83958
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201238",
+        "sourceId": "osm",
+        "name": "علي بلهوان",
+        "aliases": [
+          "Ali Belhouane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.835895,
+        "lng": 10.195562,
+        "delegationId": 389,
+        "hasBoundary": true,
+        "bbox": [
+          10.190083,
+          36.83232,
+          10.201336,
+          36.83958
+        ],
+        "areaKm2": 0.5261882039834033,
+        "pickerGroupId": "osm:relation:7201238",
+        "offset": 5053528,
+        "length": 700
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201238"
+      ],
+      "packedGeometrySha256": "bbf6a24093578bccc5aacd366a66f86ea8f04c2f575125a01df85ade7f6f7074"
+    },
+    {
+      "id": "osm:relation:7201239",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "خير الدين باشا",
+        "name:ar": "خير الدين باشا",
+        "name:fr": "Khereiddine Pacha",
+        "ref:tn:codegeo": "115954"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "خير الدين باشا",
+        "name:ar": "خير الدين باشا",
+        "name:fr": "Khereiddine Pacha",
+        "ref:tn:codegeo": "115954"
+      },
+      "sourceGeometrySha256": "c3f5d251c0e214446686cebdc06f2d0dd4c4c44790820b4135b161b0e81a972d",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.1817379,
+        36.8140006,
+        10.19983,
+        36.8278937
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201239",
+        "sourceId": "osm",
+        "name": "خير الدين باشا",
+        "aliases": [
+          "Khereiddine Pacha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.82084,
+        "lng": 10.189786,
+        "delegationId": 389,
+        "hasBoundary": true,
+        "bbox": [
+          10.181738,
+          36.814001,
+          10.19983,
+          36.827894
+        ],
+        "areaKm2": 1.2016105393158745,
+        "pickerGroupId": "osm:relation:7201239",
+        "offset": 5054228,
+        "length": 668
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201239"
+      ],
+      "packedGeometrySha256": "f76bef58892852f5c30c779c8249e80b969a4aa0075e13718e04eb44061c917b"
+    },
+    {
+      "id": "osm:relation:7201240",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "int_name": "Lac 1",
+        "name": "البحيرة",
+        "name:ar": "البحيرة",
+        "name:fr": "El Bouhaira",
+        "ref:tn:codegeo": "115957"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "int_name": "Lac 1",
+        "name": "البحيرة",
+        "name:ar": "البحيرة",
+        "name:fr": "El Bouhaira",
+        "ref:tn:codegeo": "115957"
+      },
+      "sourceGeometrySha256": "592a241e4252ba9b36874963d8ac84c62e4f813b94a5e5f91e60d4199fc5f057",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.1889076,
+        36.8028905,
+        10.2720918,
+        36.8436939
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201240",
+        "sourceId": "osm",
+        "name": "البحيرة",
+        "aliases": [
+          "El Bouhaira"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.823415,
+        "lng": 10.231352,
+        "delegationId": 389,
+        "hasBoundary": true,
+        "bbox": [
+          10.188908,
+          36.802891,
+          10.272092,
+          36.843694
+        ],
+        "areaKm2": 19.771503111383176,
+        "pickerGroupId": "osm:relation:7201240",
+        "offset": 5054896,
+        "length": 1708
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201240"
+      ],
+      "packedGeometrySha256": "6e16e1d4a2f4c3af467b0abcf62b206654ef0fe2c4a58659b5cbf463d0ad5135"
+    },
+    {
+      "id": "osm:relation:7201241",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي الخضراء",
+        "name:ar": "حي الخضراء",
+        "name:fr": "Cite El Khadra",
+        "ref:tn:codegeo": "115951"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي الخضراء",
+        "name:ar": "حي الخضراء",
+        "name:fr": "Cite El Khadra",
+        "ref:tn:codegeo": "115951"
+      },
+      "sourceGeometrySha256": "24dec90f73c2c776751ee1ece8bd35a5824d802ec6db31778a137b883afffed7",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.189325,
+        36.82866,
+        10.196012,
+        36.83569
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:relation:7201241",
+        "sourceId": "osm",
+        "name": "حي الخضراء",
+        "aliases": [
+          "Cite El Khadra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي الخضراء",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "la cité El Khadra",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.832165,
+        "lng": 10.192716,
+        "delegationId": 389,
+        "hasBoundary": true,
+        "bbox": [
+          10.189325,
+          36.82866,
+          10.196012,
+          36.83569
+        ],
+        "areaKm2": 0.2911908508938638,
+        "pickerGroupId": "osm:relation:7201241",
+        "offset": 5056604,
+        "length": 684
+      },
+      "currentGroupMembers": [
+        "osm:relation:7201241"
+      ],
+      "packedGeometrySha256": "9f85feec8c19e2cdcf807668c119b5435c85a83eff59734bdd8dff579d6717b8"
+    },
+    {
+      "id": "osm:way:685813205",
+      "kind": "residential",
+      "originalTags": {
+        "landuse": "residential",
+        "name": "حي الخضراء",
+        "name:ar": "حي الخضراء",
+        "name:fr": "Cité El Khadhra"
+      },
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "حي الخضراء",
+        "name:ar": "حي الخضراء",
+        "name:fr": "Cité El Khadhra"
+      },
+      "sourceGeometrySha256": "b99d6830318ddac83692246fe9decf27ef477dfbb22865457f8eed13db149610",
+      "sourceGeometryType": "MultiPolygon",
+      "sourceGeometryBounds": [
+        10.5210357,
+        34.7369542,
+        10.5251398,
+        34.7409518
+      ],
+      "sourcePhaseStateUnchanged": true,
+      "expectedCuration": null,
+      "officialBoundaryReplacement": false,
+      "currentMetadata": {
+        "id": "osm:way:685813205",
+        "sourceId": "osm",
+        "name": "حي الخضراء",
+        "aliases": [
+          "Cité El Khadhra"
+        ],
+        "kind": "residential",
+        "parentName": "عقارب",
+        "contextAliases": [
+          "Agareb",
+          "Délégation Agareb",
+          "عقارب",
+          "معتمدية عقارب"
+        ],
+        "governorateId": 359,
+        "lat": 34.738993,
+        "lng": 10.522983,
+        "delegationId": 540,
+        "hasBoundary": true,
+        "bbox": [
+          10.521036,
+          34.736954,
+          10.52514,
+          34.740952
+        ],
+        "areaKm2": 0.07614180814702878,
+        "pickerGroupId": "osm:way:685813205",
+        "offset": 5413084,
+        "length": 276
+      },
+      "currentGroupMembers": [
+        "osm:way:685813205"
+      ],
+      "packedGeometrySha256": "d24dcf0f50ebf6fe9dd373944e4663a2a60dd400579268d83154599c2f841fb1"
+    }
+  ],
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7201241",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115951",
+        "sectorFr": "Cite el khadra",
+        "sectorAr": "حي الخضراء",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2110,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 65,
+          "Nombre_de_menages_par_Secteurs.xlsx": 65
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7201237",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115952",
+        "sectorFr": "Cite jardin",
+        "sectorAr": "حي الحدائق",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2144,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 66,
+          "Nombre_de_menages_par_Secteurs.xlsx": 66
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7201235",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115953",
+        "sectorFr": "Ech-charguia",
+        "sectorAr": "الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2178,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 67,
+          "Nombre_de_menages_par_Secteurs.xlsx": 67
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7201239",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115954",
+        "sectorFr": "Khereiddine pacha",
+        "sectorAr": "خير الدين باشا",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2212,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 68,
+          "Nombre_de_menages_par_Secteurs.xlsx": 68
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7201238",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115955",
+        "sectorFr": "Ali belhouane",
+        "sectorAr": "علي البلهوان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2246,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 69,
+          "Nombre_de_menages_par_Secteurs.xlsx": 69
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7201234",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115956",
+        "sectorFr": "Farhat hached",
+        "sectorAr": "فرحات حشاد",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2280,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 70,
+          "Nombre_de_menages_par_Secteurs.xlsx": 70
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7201240",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115957",
+        "sectorFr": "El bouhaira",
+        "sectorAr": "البحيرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2314,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 71,
+          "Nombre_de_menages_par_Secteurs.xlsx": 71
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7201236",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1159",
+        "delegationFr": "Cite el khadhra",
+        "delegationAr": "حي الخضراء",
+        "sectorCode": "115958",
+        "sectorFr": "Hay es salem",
+        "sectorAr": "حي السلام",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2348,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 73,
+          "Nombre_de_menages_par_Secteurs.xlsx": 73
+        }
+      }
+    }
+  ],
+  "readOnlyContexts": [
+    "osm:relation:4133739",
+    "osm:relation:1435835"
+  ],
+  "sourceNamePeerDecisions": {
+    "osm:node:1185290849": "Target inhabited-quarter point; proposed member of base389 only.",
+    "osm:relation:7201241": "Separately coded imada115951; preserve own group and geometry.",
+    "osm:way:685813205": "Different residential locality in Agareb/Sfax, source540; preserve exact fields/group/geometry."
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "delegation:389"
+      ],
+      [
+        "osm:node:1185290849"
+      ]
+    ],
+    "proposedAfter": [
+      [
+        "delegation:389",
+        "osm:node:1185290849"
+      ]
+    ],
+    "otherPeerAndImadaGroupsRemainUnchanged": true
+  },
+  "existingExplicitGroupReferencesToProtectedRawIds": [],
+  "inputManifests": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "c172ed7d2e9470f6ea1c6408b41c6e241aa7d891ba7b7d2c0ad43349324c6931",
+      "bytes": 214140
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c",
+      "bytes": 551680
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25",
+      "bytes": 106368
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4",
+      "bytes": 47507
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\municipal-sources.json",
+      "sha256": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+      "bytes": 1324
+    }
+  ],
+  "officialIdentitySourcePins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\megrine-isie2023-sectors.geojson",
+      "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "bytes": 380383
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\identity-review-isie2023-sectors.geojson",
+      "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "bytes": 495834
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\next-identity-review-isie2023-sectors.geojson",
+      "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02",
+      "bytes": 133496
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\neighbor-review-isie2023-sectors.geojson",
+      "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+      "bytes": 938527
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+      "bytes": 46356
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-neighbors-review-isie2023-sectors.geojson",
+      "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+      "bytes": 69449
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-south-east-review-isie2023-sectors.geojson",
+      "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+      "bytes": 100007
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\baghdadi-review-isie2023-sector.geojson",
+      "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a",
+      "bytes": 61470
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\hiboun-review-isie2023-sector.geojson",
+      "sha256": "b1f3b459d642e6be62ab60f27fed66068df3222fbc726e970bfed3276c5b642c",
+      "bytes": 90460
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "bytes": 109094
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bizerte-three-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+      "bytes": 118572
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-seven-native-source-candidates.geojson",
+      "sha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "bytes": 164552
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-joufia-native-source-candidate.geojson",
+      "sha256": "395e9bb9803d0ae544977aad8178e0b06e74de7ff013d0c3c5346b4078f00497",
+      "bytes": 26774
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-keblia-native-source-candidate.geojson",
+      "sha256": "760dd75369b87109b81609ec18cf77c171486aed45dea79ea04d34964d793cf5",
+      "bytes": 21856
+    }
+  ],
+  "municipalSourcePins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\sources\\bouarada-20180618.geojson",
+      "sha256": "861f15e4dfd4ce83e6f670ed29560329b7ebee2ed6b09c5793cc2bac98c3e886",
+      "bytes": 10527
+    }
+  ],
+  "officialNewOrRemovedMatchingPeerIds": [],
+  "curationNewOrRemovedMatchingPeerIds": [],
+  "geometryHashMethod": "SHA256 UTF-8 json.dumps(mapping(source shape/point), sort_keys=True, separators=(comma,colon), ensure_ascii=False, allow_nan=False)",
+  "qualification": "Original PBF identity comes from the existing pinned extract and manifest source SHA, not a new PBF scan. Effective sources are independently checked against current exact configuration; source-name inventory has three peers in both phases. No whole-catalog geometry recomputation."
+}

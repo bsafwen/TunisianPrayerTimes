@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "status": "COMPACT_CURRENT_SOURCE_PROPOSAL_NOT_IMPLEMENTED",
+  "baselineMetadataSha256": "1a7004d2f07f2405f11b66883bcea7d35d8498204601116508a629fe5e947656",
+  "baselineInputPins": {
+    "android-app/app/src/main/assets/neighborhoods.json": "1a7004d2f07f2405f11b66883bcea7d35d8498204601116508a629fe5e947656",
+    "android-app/app/src/main/assets/neighborhoods.bin": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea",
+    "android-app/app/src/main/assets/gouvernorats.json": "27f3140a326eb71c96b358eba0800e8b3ba7415055fb9c9cbfea23e8b6b19471",
+    "android-app/app/src/main/assets/retired-localities.json": "7721615cf0644b099a4427399212e0f92e84066d4329b46ffa4cdf323f37a431",
+    "scripts/neighborhoods/reviewed-picker-groups.json": "03b090a756cd59f58cadb6034a56a6c43ad101605e24b94f801ca868e5585428",
+    "scripts/neighborhoods/prayer-source-coordinates.json": "e0e4949330e6ba8a55714586cc1c06729918c601199d076a4b0f69bc57fb39c5",
+    "scripts/neighborhoods/catalog-curation.json": "193239d60f7b55f6d057127533c08ebb71ef83df6aa843fceeb4e834ae8a3961",
+    "scripts/neighborhoods/reviewed-boundaries.json": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4",
+    "scripts/generate_neighborhoods.py": "73960e5c5c6c5192df5a9f6987e68bb849b80cfa01185f5650684f4460d58583"
+  },
+  "frozenSourceReview": {
+    "file": "outputs\\la-goulette-new-matmata-display-source-triage.json",
+    "sha256": "8bad7b5b75c3f6c3b5630d59e7f118cd193d9918dac6c34e0d7a70dd9e031409"
+  },
+  "frozenSourceFacts": {
+    "file": "work\\la-goulette-new-matmata-display-review\\frozen-c5-source-facts.json",
+    "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc"
+  },
+  "records": [
+    {
+      "targetBaseId": 388,
+      "residentialId": "osm:way:93164500",
+      "separateSectorId": "osm:relation:7117933",
+      "sourceTownId": "osm:node:283645091",
+      "decision": "SOURCE_SUPPORTED_EXACT_DISPLAY_TRANSITION_NO_NUMERIC_CHANGE",
+      "currentWholeGroups": {
+        "delegation:388": [
+          "delegation:388"
+        ],
+        "osm:relation:7117890": [
+          "osm:relation:7117890"
+        ],
+        "osm:relation:7117891": [
+          "osm:relation:7117891"
+        ],
+        "osm:relation:7117889": [
+          "osm:relation:7117889"
+        ],
+        "osm:relation:7117933": [
+          "osm:relation:7117933",
+          "osm:way:93164500"
+        ],
+        "osm:relation:7117932": [
+          "osm:relation:7117932"
+        ]
+      },
+      "requiredGroupsAfterDistinctGuardBeforeDisplay": {
+        "delegation:388": [
+          "delegation:388"
+        ],
+        "osm:relation:7117890": [
+          "osm:relation:7117890"
+        ],
+        "osm:relation:7117891": [
+          "osm:relation:7117891"
+        ],
+        "osm:relation:7117889": [
+          "osm:relation:7117889"
+        ],
+        "osm:relation:7117933": [
+          "osm:relation:7117933"
+        ],
+        "osm:relation:7117932": [
+          "osm:relation:7117932"
+        ],
+        "osm:way:93164500": [
+          "osm:way:93164500"
+        ]
+      },
+      "expectedFinalWholeGroups": {
+        "delegation:388": [
+          "delegation:388",
+          "osm:way:93164500"
+        ],
+        "osm:relation:7117890": [
+          "osm:relation:7117890"
+        ],
+        "osm:relation:7117891": [
+          "osm:relation:7117891"
+        ],
+        "osm:relation:7117889": [
+          "osm:relation:7117889"
+        ],
+        "osm:relation:7117933": [
+          "osm:relation:7117933"
+        ],
+        "osm:relation:7117932": [
+          "osm:relation:7117932"
+        ]
+      },
+      "newDistinctPair": {
+        "ids": [
+          "osm:relation:7117933",
+          "osm:way:93164500"
+        ],
+        "requiredConclusion": "distinct_locality_choices"
+      },
+      "baseBefore": {
+        "id": 388,
+        "nomFr": "La Goulette",
+        "nomAr": "حلق الواد",
+        "nomEn": "Goulette",
+        "lat": 36.8181,
+        "lng": 10.305
+      },
+      "baseAfter": {
+        "id": 388,
+        "nomFr": "La Goulette",
+        "nomAr": "حلق الوادي",
+        "nomEn": "Goulette",
+        "lat": 36.8181,
+        "lng": 10.305
+      },
+      "exactRawFieldChanges": [
+        {
+          "id": "osm:way:93164500",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7117933",
+          "after": "delegation:388"
+        },
+        {
+          "id": "osm:way:93164500",
+          "field": "aliases",
+          "before": [
+            "La Goulette"
+          ],
+          "after": [
+            "La Goulette",
+            "حلق الواد"
+          ]
+        }
+      ],
+      "exactTinyNameAppend": {
+        "id": "delegation:388",
+        "name": "حلق الوادي",
+        "kind": "delegation"
+      },
+      "preservedImadas": [
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116951",
+            "sectorFr": "La goulette",
+            "sectorAr": "حلق الوادي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4795,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 150,
+              "Nombre_de_menages_par_Secteurs.xlsx": 150
+            }
+          },
+          "sourceId": "osm:relation:7117933"
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116952",
+            "sectorFr": "La goulette casino",
+            "sectorAr": "حلق الوادي كازينو",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4829,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 152,
+              "Nombre_de_menages_par_Secteurs.xlsx": 152
+            }
+          },
+          "sourceId": "osm:relation:7117889"
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116953",
+            "sectorFr": "Kheireddine",
+            "sectorAr": "خير الدين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4863,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 153,
+              "Nombre_de_menages_par_Secteurs.xlsx": 153
+            }
+          },
+          "sourceId": "osm:relation:7117890"
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116954",
+            "sectorFr": "Taieb mhiri",
+            "sectorAr": "الطيب المهيري",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4897,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 154,
+              "Nombre_de_menages_par_Secteurs.xlsx": 154
+            }
+          },
+          "sourceId": "osm:relation:7117932"
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1169",
+            "delegationFr": "La goulette",
+            "delegationAr": "حلق الوادي",
+            "sectorCode": "116955",
+            "sectorFr": "Cite essalama",
+            "sectorAr": "حي السلامة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4931,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 155,
+              "Nombre_de_menages_par_Secteurs.xlsx": 155
+            }
+          },
+          "sourceId": "osm:relation:7117891"
+        }
+      ],
+      "protectedRawIds": [
+        "osm:relation:7117889",
+        "osm:relation:7117890",
+        "osm:relation:7117891",
+        "osm:relation:7117932",
+        "osm:relation:7117933",
+        "osm:way:93164500"
+      ],
+      "expectedRawMetadataSource": {
+        "file": "work\\la-goulette-new-matmata-display-review\\frozen-c5-source-facts.json",
+        "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc",
+        "key": "records[id].currentMetadata",
+        "currentRowsExactlyEqualHistoricalC5": true
+      },
+      "beforeDisplayRawMetadataOverrides": {
+        "osm:way:93164500": {
+          "pickerGroupId": "osm:way:93164500"
+        }
+      },
+      "retainedSourceTown": {
+        "id": "osm:node:283645091",
+        "rawPresenceBeforeAfter": false,
+        "pointCoordinates": {
+          "lat": 36.8159278,
+          "lng": 10.3042378
+        },
+        "currentAbsorptionHost": "osm:relation:7117933",
+        "doNotRestoreOrMovePoint": true,
+        "aliasPolicy": "Preserve all current raw alias lists, including aliases absorbed into the original host; add only the old base Arabic variant to the residential row late."
+      },
+      "identityEvidence": {
+        "requiredOriginalSourceNames": {
+          "residentialTags": {
+            "addr:city": "حلق الوادي",
+            "landuse": "residential",
+            "name": "حلق الوادي",
+            "name:ar": "حلق الوادي",
+            "name:fr": "La Goulette"
+          },
+          "sourceTownTags": {
+            "addr:city": "حلق الوادي",
+            "addr:postcode": "2060",
+            "name": "حلق الوادي",
+            "name:ar": "حلق الوادي",
+            "name:azb": "حلق الوادی",
+            "name:de": "Ḥalq al-Wādī",
+            "name:en": "La Goulette",
+            "name:es": "La Goleta",
+            "name:fa": "حلق الوادی",
+            "name:fr": "La Goulette",
+            "name:he": "לה גולט",
+            "name:it": "La Goletta",
+            "name:ru": "Хальк-эль-Уэд",
+            "place": "town",
+            "wikidata": "Q798445",
+            "wikimedia_commons": "Category:La Goulette",
+            "wikipedia": "ar:حلق الوادي",
+            "wikipedia:es": "La Goleta"
+          }
+        },
+        "exactTownArabic": "حلق الوادي",
+        "exactLatinCorrespondence": {
+          "baseNomFr": "La Goulette",
+          "residentialNameFr": "La Goulette",
+          "townNameFr": "La Goulette"
+        },
+        "requiredSourcePeerIds": [
+          "osm:node:283645091",
+          "osm:relation:4134886",
+          "osm:relation:7117933",
+          "osm:way:93164500"
+        ],
+        "officialIdentityRows": "The complete five INS rows above have three independent source-workbook row indices and distinguish the namesake imada from its four peers.",
+        "primaryCorroboration": [
+          {
+            "url": "https://www.collectiviteslocales.gov.tn/site_web_communes/",
+            "type": "Indexed official directory",
+            "support": "Municipality1114 La Goulette/حلق الوادي; municipality5118 Nouvelle Matmata/مطماطة الجديدة and6044 address, distinct from5117 old Matmata."
+          },
+          {
+            "url": "https://www.commune-lagoulette.gov.tn/index.php/ar/9-uncategorised?limit=3&start=36",
+            "type": "Indexed municipal city description",
+            "support": "Explicit urban identity and official حلق الوادي spelling; not imada boundary equality."
+          }
+        ],
+        "identityInference": "The addressed residential and unique source place=town name the same settlement as the bilingual base. This is supported by exact named source objects and official town/INS names, not inferred from distances or equal timetable IDs."
+      },
+      "explicitReferencePolicy": {
+        "policy": "PRESERVE_LEGACY_BASE_COORDINATES_AND_ALL_RAW_DEFAULTS",
+        "baseInsideOriginalAndPackedResidential": true,
+        "reviewedBaseDistanceOutsideResidentialM": 0.0,
+        "reviewedBaseToTownNodeKm": 0.25088628007772085,
+        "baseInsideOriginalAndPackedNamesakeSector": true,
+        "baseInsideOriginalDelegation": true,
+        "sourceTownInsideOriginalAndPackedResidential": true,
+        "rawAndTownNearestExistingUsableBase": 388,
+        "distanceDefaultQualification": "Distances and nearest-source agreement are preservation checks only. They do not establish settlement identity, validate the legacy base as a surveyed town centre, or justify moving it.",
+        "requiredNoncontainmentEvidence": [],
+        "referenceRelocationDecision": "No relocation is proposed or needed for this display identity. A future move would require a separately qualified settlement-reference and full mapping-impact review."
+      },
+      "wholeTownVsSectorScope": {
+        "residentialAreaKm2": 2.1205906386256106,
+        "sectorAreaKm2": 1.7649760805297365,
+        "residentialOutsideSectorM2": 427947.3338636723,
+        "boundaryCertification": false
+      }
+    },
+    {
+      "targetBaseId": 1023,
+      "residentialId": "osm:way:186705198",
+      "separateSectorId": "osm:relation:7145430",
+      "sourceTownId": "osm:node:352752197",
+      "decision": "SOURCE_SUPPORTED_EXACT_DISPLAY_TRANSITION_NO_NUMERIC_CHANGE",
+      "currentWholeGroups": {
+        "delegation:1023": [
+          "delegation:1023"
+        ],
+        "osm:relation:7145390": [
+          "osm:relation:7145390"
+        ],
+        "osm:relation:7145389": [
+          "osm:relation:7145389"
+        ],
+        "osm:relation:7145427": [
+          "osm:relation:7145427"
+        ],
+        "osm:relation:7145430": [
+          "osm:relation:7145430",
+          "osm:way:186705198"
+        ],
+        "osm:relation:7145405": [
+          "osm:relation:7145405",
+          "osm:way:377951368"
+        ]
+      },
+      "requiredGroupsAfterDistinctGuardBeforeDisplay": {
+        "delegation:1023": [
+          "delegation:1023"
+        ],
+        "osm:relation:7145390": [
+          "osm:relation:7145390"
+        ],
+        "osm:relation:7145389": [
+          "osm:relation:7145389"
+        ],
+        "osm:relation:7145427": [
+          "osm:relation:7145427"
+        ],
+        "osm:relation:7145430": [
+          "osm:relation:7145430"
+        ],
+        "osm:relation:7145405": [
+          "osm:relation:7145405",
+          "osm:way:377951368"
+        ],
+        "osm:way:186705198": [
+          "osm:way:186705198"
+        ]
+      },
+      "expectedFinalWholeGroups": {
+        "delegation:1023": [
+          "delegation:1023",
+          "osm:way:186705198"
+        ],
+        "osm:relation:7145390": [
+          "osm:relation:7145390"
+        ],
+        "osm:relation:7145389": [
+          "osm:relation:7145389"
+        ],
+        "osm:relation:7145427": [
+          "osm:relation:7145427"
+        ],
+        "osm:relation:7145430": [
+          "osm:relation:7145430"
+        ],
+        "osm:relation:7145405": [
+          "osm:relation:7145405",
+          "osm:way:377951368"
+        ]
+      },
+      "newDistinctPair": {
+        "ids": [
+          "osm:relation:7145430",
+          "osm:way:186705198"
+        ],
+        "requiredConclusion": "distinct_locality_choices"
+      },
+      "baseBefore": {
+        "id": 1023,
+        "nomFr": "Matmata Nouvelle",
+        "nomAr": "مطماطا الجديدة",
+        "nomEn": "Matmata Nouvelle",
+        "lat": 33.67,
+        "lng": 9.99
+      },
+      "baseAfter": {
+        "id": 1023,
+        "nomFr": "Matmata Nouvelle",
+        "nomAr": "مطماطة الجديدة",
+        "nomEn": "Matmata Nouvelle",
+        "lat": 33.67,
+        "lng": 9.99
+      },
+      "exactRawFieldChanges": [
+        {
+          "id": "osm:way:186705198",
+          "field": "pickerGroupId",
+          "before": "osm:relation:7145430",
+          "after": "delegation:1023"
+        },
+        {
+          "id": "osm:way:186705198",
+          "field": "aliases",
+          "before": [
+            "Matmata Nouvelle",
+            "New Matmata",
+            "Nouvelle Matmata"
+          ],
+          "after": [
+            "Matmata Nouvelle",
+            "New Matmata",
+            "Nouvelle Matmata",
+            "مطماطا الجديدة"
+          ]
+        }
+      ],
+      "exactTinyNameAppend": {
+        "id": "delegation:1023",
+        "name": "مطماطة الجديدة",
+        "kind": "delegation"
+      },
+      "preservedImadas": [
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515951",
+            "sectorFr": "Nouvelle matmata",
+            "sectorAr": "مطماطة الجديدة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59226,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2905,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2899
+            }
+          },
+          "sourceId": "osm:relation:7145430"
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515952",
+            "sectorFr": "Heddaj",
+            "sectorAr": "هداج",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59260,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2907,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2901
+            }
+          },
+          "sourceId": "osm:relation:7145427"
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515953",
+            "sectorFr": "Ez-zeraoua",
+            "sectorAr": "الزراوة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59294,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2909,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2903
+            }
+          },
+          "sourceId": "osm:relation:7145390"
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515954",
+            "sectorFr": "Beni aissa",
+            "sectorAr": "بني عيسى",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59328,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2911,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2905
+            }
+          },
+          "sourceId": "osm:relation:7145389"
+        },
+        {
+          "official": {
+            "governorateCode": "51",
+            "governorateFr": "Gabes",
+            "governorateAr": "قابس",
+            "delegationCode": "5159",
+            "delegationFr": "Nouvelle matmata",
+            "delegationAr": "مطماطة الجديدة",
+            "sectorCode": "515955",
+            "sectorFr": "Beni zalten",
+            "sectorAr": "بني زلطن",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59362,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2912,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2906
+            }
+          },
+          "sourceId": "osm:relation:7145405"
+        }
+      ],
+      "protectedRawIds": [
+        "osm:relation:7145389",
+        "osm:relation:7145390",
+        "osm:relation:7145405",
+        "osm:relation:7145427",
+        "osm:relation:7145430",
+        "osm:way:186705198",
+        "osm:way:377951368"
+      ],
+      "expectedRawMetadataSource": {
+        "file": "work\\la-goulette-new-matmata-display-review\\frozen-c5-source-facts.json",
+        "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc",
+        "key": "records[id].currentMetadata",
+        "currentRowsExactlyEqualHistoricalC5": true
+      },
+      "beforeDisplayRawMetadataOverrides": {
+        "osm:way:186705198": {
+          "pickerGroupId": "osm:way:186705198"
+        }
+      },
+      "retainedSourceTown": {
+        "id": "osm:node:352752197",
+        "rawPresenceBeforeAfter": false,
+        "pointCoordinates": {
+          "lat": 33.6688822,
+          "lng": 10.0144336
+        },
+        "currentAbsorptionHost": "osm:way:186705198",
+        "doNotRestoreOrMovePoint": true,
+        "aliasPolicy": "Preserve all current raw alias lists, including aliases absorbed into the original host; add only the old base Arabic variant to the residential row late."
+      },
+      "identityEvidence": {
+        "requiredOriginalSourceNames": {
+          "residentialTags": {
+            "addr:city": "مطماطة الجديدة",
+            "addr:postcode": "6044",
+            "landuse": "residential",
+            "name": "مطماطة الجديدة",
+            "name:ar": "مطماطة الجديدة",
+            "name:fr": "Matmata Nouvelle"
+          },
+          "sourceTownTags": {
+            "name": "مطماطة الجديدة",
+            "name:aeb": "مطماطة الجديدة",
+            "name:ar": "مطماطة الجديدة",
+            "name:en": "New Matmata",
+            "name:fr": "Nouvelle Matmata",
+            "place": "town",
+            "population": "30000",
+            "wikipedia": "ar:مطماطة الجديدة"
+          }
+        },
+        "exactTownArabic": "مطماطة الجديدة",
+        "exactLatinCorrespondence": {
+          "baseNomFr": "Matmata Nouvelle",
+          "residentialNameFr": "Matmata Nouvelle",
+          "townNameFr": "Nouvelle Matmata"
+        },
+        "requiredSourcePeerIds": [
+          "osm:node:352752197",
+          "osm:relation:7145430",
+          "osm:way:186705198"
+        ],
+        "officialIdentityRows": "The complete five INS rows above have three independent source-workbook row indices and distinguish the namesake imada from its four peers.",
+        "primaryCorroboration": [
+          {
+            "url": "https://www.collectiviteslocales.gov.tn/site_web_communes/",
+            "type": "Indexed official directory",
+            "support": "Municipality1114 La Goulette/حلق الوادي; municipality5118 Nouvelle Matmata/مطماطة الجديدة and6044 address, distinct from5117 old Matmata."
+          },
+          {
+            "url": "https://www.commune-lagoulette.gov.tn/index.php/ar/9-uncategorised?limit=3&start=36",
+            "type": "Indexed municipal city description",
+            "support": "Explicit urban identity and official حلق الوادي spelling; not imada boundary equality."
+          }
+        ],
+        "identityInference": "The addressed residential and unique source place=town name the same settlement as the bilingual base. This is supported by exact named source objects and official town/INS names, not inferred from distances or equal timetable IDs."
+      },
+      "explicitReferencePolicy": {
+        "policy": "PRESERVE_LEGACY_BASE_COORDINATES_AND_ALL_RAW_DEFAULTS",
+        "baseInsideOriginalAndPackedResidential": false,
+        "reviewedBaseDistanceOutsideResidentialM": 2103.9456607117,
+        "reviewedBaseToTownNodeKm": 2.2645470889226744,
+        "baseInsideOriginalAndPackedNamesakeSector": true,
+        "baseInsideOriginalDelegation": true,
+        "sourceTownInsideOriginalAndPackedResidential": true,
+        "rawAndTownNearestExistingUsableBase": 1023,
+        "distanceDefaultQualification": "Distances and nearest-source agreement are preservation checks only. They do not establish settlement identity, validate the legacy base as a surveyed town centre, or justify moving it.",
+        "requiredNoncontainmentEvidence": [
+          "An independently reviewed policy expressly accepting existing base1023 outside the residential patch by2103.9456607117m while preserving its33.67,9.99 coordinate.",
+          "Byte-pin exact source town352752197 tags/point and residential186705198 original/packed geometry; the town point is contained by the residential patch.",
+          "Byte-pin parent7145382 and namesake imada7145430 plus the complete five-imada/current group inventory. Both base and town lie in the same source administrative context; no boundary equality is claimed.",
+          "Bind official Nouvelle Matmata/مطماطة الجديدة identity and6044 municipal address separately from old Matmata; keep base1022 and all unrelated choices unchanged.",
+          "Bind explicit base/residential/node coordinates, all original defaults, and expected current groups, with no generic distance threshold or automatic noncontainment relaxation."
+        ],
+        "referenceRelocationDecision": "No relocation is proposed or needed for this display identity. A future move would require a separately qualified settlement-reference and full mapping-impact review."
+      },
+      "wholeTownVsSectorScope": {
+        "residentialAreaKm2": 1.7793987143776042,
+        "sectorAreaKm2": 111.7649425377035,
+        "residentialOutsideSectorM2": 0.0,
+        "boundaryCertification": false
+      }
+    }
+  ],
+  "counts": {
+    "cases": 2,
+    "preservedImadas": 10,
+    "protectedRawRows": 13,
+    "rawGroupFieldChanges": 2,
+    "rawAliasFieldChanges": 2,
+    "baseArabicFields": 2,
+    "tinyNameAppends": 2,
+    "coordinateChanges": 0,
+    "defaultChanges": 0,
+    "curationChanges": 0,
+    "newRawPoints": 0,
+    "newDistinctPairs": 2,
+    "pickerRowsBeforeAfter": 3590,
+    "rawRecordsBeforeAfter": 3631,
+    "tinyReviewedNamesBefore": 65,
+    "tinyReviewedNamesAfter": 67
+  },
+  "exactConfigRecipe": [
+    "Governor asset: only delegation388.nomAr حلق الواد→حلق الوادي and delegation1023.nomAr مطماطا الجديدة→مطماطة الجديدة; all numeric/string fields otherwise exact.",
+    "Coordinate manifest: preserve all30 correction objects and raw tokens exactly, including the now-current596 expected-name correction. Change only reviewedSourceAssetSha256 to the prospective governor asset hash. Neither388 nor1023 has a coordinate correction.",
+    "Picker manifest: preserve104base/8local/6distinct/1city/5residential rules except the necessary active Bousalem hash/proof pointer. Append2 exact distinct pairs and2 separately reviewed residential associations.",
+    "New Bousalem name388-1023/reference30 proof: derive from the current name596 proof, retaining every historical revision and correction499. Update only current coordinate-manifest checksum and add explicit name-only dependency provenance; switch active additionalReviewEvidence[1].",
+    "Generated metadata: only the four exact raw fields listed in records. Generated tiny index: append the two reviewed delegation name records, preserve all65 prior names and retirement/replacement lists."
+  ],
+  "currentBousalemDependency": {
+    "file": "bousalem-reviews/bousalem-absorbed-town-base-name596-reference30-proof.json",
+    "sha256": "abb86e3f26825573fd6679d71eec718bebe20bea7ae7a31295b0c97bba4def89"
+  },
+  "currentReferenceManifestSha256": "e0e4949330e6ba8a55714586cc1c06729918c601199d076a4b0f69bc57fb39c5",
+  "currentSourceBoundaryManifestUnchanged": true,
+  "minimalImplementationConstraints": [
+    "Run distinct-pair validation before automatic grouping. Proofs must describe both current grouped state and the resulting singleton residential before late association; do not feed stale grouped metadata to a singleton guard.",
+    "Preserve all old methods. Current73960 source-bound extracted modes require the source town point equal the base and a coordinate correction; neither case meets those constraints. Any reuse needs a distinct explicitly reviewed non-coincident-reference mode.",
+    "La Goulette may require distinct-point equality relaxation only under exact reviewed source/base bindings, with both points contained. Nouvelle Matmata also requires the expressly reviewed base noncontainment policy above.",
+    "Do not require all protected imadas to be singleton: retain Beni Zalten7145405+377951368 unchanged.",
+    "Validate all source/metadata/group and name/history evidence before changing two group IDs and two late alias lists. Final checks must preserve the two separated imadas and every complete protected group.",
+    "Name corrections are preferred official spellings, not generic Arabic normalization. Preserve old variants for search and saved IDs; no persistent preference or GPS-source mutation."
+  ],
+  "sourceLimitations": [
+    "Municipal corroboration is frozen search-provider text; direct HTTPS downloads failed. Do not package it as original HTML.",
+    "Existing cached PBF objects supply source geometry/tags; this proposal does not claim a fresh live OSM API review or new whole-town boundary certification.",
+    "No further numerical preview, broad screen, helper, generator, test, device or ledger access was performed for this current proposal."
+  ],
+  "preparer": {
+    "file": "work\\prepare_la_goulette_new_matmata_current_proposal.py",
+    "sha256": "baa15ea6c56ad67351d47551eb376c308bfeb1f26753e458039dfa629c134307"
+  }
+}

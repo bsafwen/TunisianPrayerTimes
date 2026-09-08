@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "status": "supported_exact_per_id_primary_spelling_correction_staged",
+  "sourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle10-next-two-review\\direct-pbf-context-inventory.json",
+    "sha256": "0b874f17a6f69d73e8cc18b40ad0b592307a3f6723f70296e0e72e228e430271"
+  },
+  "primarySource": {
+    "url": "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa",
+    "file": "ksar-jouamaa-primary-source.html",
+    "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832",
+    "finding": "The primary Arabic field inventory title and explicit inhabited-village reference both use قصر الجوامع. The separately described fortress shares the name; its GPS position is not a village coordinate."
+  },
+  "records": [
+    {
+      "id": "osm:way:377116351",
+      "expectedOriginalTags": {
+        "landuse": "residential",
+        "name": "قصر الجؤامع",
+        "name:aeb": "قصر الجؤامع",
+        "name:ar": "قصر الجؤامع",
+        "name:en": "Ksar Jouamaa"
+      },
+      "originalGeometrySha256": "73874f1d151f36304b7a7bc17b40b5a51b9cb76ff9f9d7ec464f4bcd5a2f5b50",
+      "nameTags": {
+        "name": "قصر الجوامع",
+        "name:aeb": "قصر الجوامع",
+        "name:ar": "قصر الجوامع",
+        "name:en": "Ksar Jouamaa",
+        "alt_name": "قصر الجؤامع"
+      },
+      "oldArabicRetainedAsAlias": "قصر الجؤامع",
+      "latinRetainedUnchanged": "Ksar Jouamaa"
+    },
+    {
+      "id": "osm:node:11230028572",
+      "expectedOriginalTags": {
+        "name": "قصر الجؤامع",
+        "name:aeb": "قصر الجؤامع",
+        "name:ar": "قصر الجؤامع",
+        "name:en": "Ksar Jouamaa",
+        "place": "village"
+      },
+      "originalGeometrySha256": "9d1578f8a2336059be6cb9eea1486d96761227c312c30be6480fddc2a25ef39c",
+      "nameTags": {
+        "name": "قصر الجوامع",
+        "name:aeb": "قصر الجوامع",
+        "name:ar": "قصر الجوامع",
+        "name:en": "Ksar Jouamaa",
+        "alt_name": "قصر الجؤامع"
+      },
+      "oldArabicRetainedAsAlias": "قصر الجؤامع",
+      "latinRetainedUnchanged": "Ksar Jouamaa"
+    }
+  ],
+  "reviewContext": "Root independently read the live primary Arabic page. This addendum corrects the two identified locality names without altering the frozen source research/proposal or borrowing fortress coordinates.",
+  "scope": "Two name-only decisions coupled to an independently reviewed display link. Preserve IDs, original source geometry/coordinates, administrative context and prayer489. No POI name or geometry is changed."
+}

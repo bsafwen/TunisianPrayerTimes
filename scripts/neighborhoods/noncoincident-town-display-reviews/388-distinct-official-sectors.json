@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7117933",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حلق الوادي",
+        "name:ar": "حلق الوادي",
+        "name:azb": "حلق الوادی",
+        "name:de": "Ḥalq al-Wādī",
+        "name:es": "La Goleta",
+        "name:fr": "La Goulette",
+        "ref:tn:codegeo": "116951"
+      },
+      "originalGeometrySha256": "1b99463754515fcedb5b6f3857548e8e3ad7a7ab78946c7013ba00cc3d9d591a",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "boundary": "administrative",
+        "admin_level": "6",
+        "ref:tn:codegeo": "116951",
+        "name:ar": "حلق الوادي",
+        "name:fr": "La Goulette",
+        "alt_name": "La Goleta;La Goletta;Хальк-эль-Уэд;לה גולט;حلق الوادی;Ḥalq al-Wādī"
+      },
+      "effectiveGeometrySha256": "1a845d48b8700b53d36a518d527be027fe348c0c0fc709ce3cfffe1863e28df6",
+      "expectedMetadata": {
+        "name": "حلق الوادي",
+        "aliases": [
+          "La Goulette",
+          "La Goleta",
+          "La Goletta",
+          "Хальк-эль-Уэд",
+          "לה גולט",
+          "حلق الوادی",
+          "Ḥalq al-Wādī"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "governorateId": 342,
+        "sourceId": "isie-local-sectors-2023-la-goulette"
+      }
+    },
+    {
+      "id": "osm:way:93164500",
+      "originalKind": "residential",
+      "originalTags": {
+        "addr:city": "حلق الوادي",
+        "landuse": "residential",
+        "name": "حلق الوادي",
+        "name:ar": "حلق الوادي",
+        "name:fr": "La Goulette"
+      },
+      "originalGeometrySha256": "2589d552f9945ba6b3e9c0ca0c35375b4bf81c6ed7ded9aa8d27c156adeddb9e",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "addr:city": "حلق الوادي",
+        "landuse": "residential",
+        "name": "حلق الوادي",
+        "name:ar": "حلق الوادي",
+        "name:fr": "La Goulette"
+      },
+      "effectiveGeometrySha256": "2589d552f9945ba6b3e9c0ca0c35375b4bf81c6ed7ded9aa8d27c156adeddb9e",
+      "expectedMetadata": {
+        "name": "حلق الوادي",
+        "aliases": [
+          "La Goleta",
+          "La Goletta",
+          "La Goulette",
+          "Хальк-эль-Уэд",
+          "לה גולט",
+          "حلق الوادی",
+          "Ḥalq al-Wādī"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية حلق الوادي",
+        "governorateId": 342,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "noncoincident-town-display-reviews/source-proposal.json",
+      "sha256": "b3ae87a84f65059bb5d45daf26fa52264e9d32e4893a4da00e66f45e54f49d82"
+    },
+    {
+      "file": "noncoincident-town-display-reviews/source-identity-review.json",
+      "sha256": "8bad7b5b75c3f6c3b5630d59e7f118cd193d9918dac6c34e0d7a70dd9e031409"
+    },
+    {
+      "file": "noncoincident-town-display-reviews/frozen-source-facts.json",
+      "sha256": "cfce65e575c3d4c17be88666b1825023649a8e4da0f06cf97dccc69842d6a6dc"
+    },
+    {
+      "file": "noncoincident-town-display-reviews/388-accepted-boundary-lineage.json",
+      "sha256": "7f4ce08ca1e4b8469323768d3976a58a72143eb43e7ad93c30c6d77f43d62547"
+    }
+  ],
+  "scope": "The addressed town residential and independently coded imada are separate choices. Full raw footprints and current names remain. A separately validated late residential application may add the exact old base alias. Versioned accepted-boundary phase: original states unchanged; namesake effective source and current six-field metadata are exact. Residential effective geometry/tags remain unchanged; expected aliases include the existing absorbed town before the late historical base spelling is added."
+}

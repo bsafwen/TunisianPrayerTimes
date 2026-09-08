@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "primarySource": {
+    "title": "Tunisian decree2023-590 of21September2023, annex1 tableA and annex6 introduction",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "date": "2023-09-21",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "pages": 190,
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "records": [
+    {
+      "id": "osm:relation:7111933",
+      "officialCode": "325951",
+      "boundarySourceSha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+      "conclusion": "whole_imada_from_exhaustive_electoral_parts",
+      "pdfPage": 15,
+      "jortPage": 5112,
+      "imadaName": "البقالطة الشمالية",
+      "delegationCode": "3259",
+      "governorateCode": "32",
+      "decreeInventory": {
+        "completeForDelegation": true,
+        "delegationCode": "3259",
+        "rows": [
+          {
+            "officialCode": "325953",
+            "imadaName": "البغدادي",
+            "circleNames": [
+              "البغدادي"
+            ]
+          },
+          {
+            "officialCode": "325952",
+            "imadaName": "البقالطة الجنوبية",
+            "circleNames": [
+              "البقالطة الجنوبية"
+            ]
+          },
+          {
+            "officialCode": "325954",
+            "imadaName": "البقالطة الشرقية",
+            "circleNames": [
+              "البقالطة الشرقية"
+            ]
+          },
+          {
+            "officialCode": "325951",
+            "imadaName": "البقالطة الشمالية",
+            "circleNames": [
+              "البقالطة الشمالية 1",
+              "البقالطة الشمالية 2"
+            ]
+          }
+        ]
+      },
+      "sourceParts": {
+        "file": "official/bekalta-north-aggregate-source-parts.geojson",
+        "sha256": "7a4966f8ae07440cd7d77db733c22adfb0eec4af6fccf74d1facf36c5b34f509"
+      },
+      "parts": [
+        {
+          "id": "bekalta-north-1",
+          "circleName": "البقالطة الشمالية 1",
+          "parentImadaCode": "325951",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9.pdf",
+          "sourcePdfSha256": "44da4d4631854a63048c32acf144bb49e5dc583f8dd4b4b492675432430b7bbf",
+          "geometrySha256": "d0e62b8f72da802caf5254fadea9f9b9a0854041d98c9bd042a1252dbe67f809"
+        },
+        {
+          "id": "bekalta-north-2",
+          "circleName": "البقالطة الشمالية 2",
+          "parentImadaCode": "325951",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9%20%282%29.pdf",
+          "sourcePdfSha256": "c2f5d298778222de1ef8a4cd19b41c58653b8a247c6d7197c1d653eb80018252",
+          "geometrySha256": "8c9d7948345a1201e02abbeff2ab5008e595154590cde720aed9270944bd615e"
+        }
+      ],
+      "geometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e",
+      "quantization": {
+        "coordinateScale": 1000000,
+        "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+        "review": {
+          "file": "official/bekalta-north-coordinate-precision-acceptance.json",
+          "sha256": "02a1e3bab75a5b9042e25ac0bf6330bd83b691c03b127b044f3e312ba960fab2"
+        }
+      }
+    }
+  ]
+}

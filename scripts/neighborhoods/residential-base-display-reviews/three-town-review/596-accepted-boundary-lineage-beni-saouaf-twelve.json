@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_source_bound_residential_official_boundary_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_source_bound_residential_base_display_identity",
+    "id": "osm:way:139010911",
+    "targetDelegationId": 596
+  },
+  "historicalSourceFacts": {
+    "file": "residential-base-display-reviews/three-town-review/current-source-facts.json",
+    "sha256": "1ad3ad73308e56a1969531ea5d1c0f5ebd5503c75f0e41ef0633a0a7d8397242"
+  },
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "da7472703a3ab83283b220ded7384890fa4ff97b45415d41b7383abb19e78728"
+  },
+  "replacements": [
+    {
+      "id": "osm:relation:7114249",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زرميدين الجنوبية",
+          "name:ar": "زرميدين الجنوبية",
+          "name:fr": "Zéramdine Sud",
+          "ref:tn:codegeo": "325455"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زرميدين الجنوبية",
+          "name:ar": "زرميدين الجنوبية",
+          "name:fr": "Zéramdine Sud",
+          "ref:tn:codegeo": "325455"
+        },
+        "originalGeometrySha256": "d15a3eacf55332187ac849631a5ea2169081799d87c6dc4db0464c1267d53000",
+        "effectiveGeometrySha256": "d15a3eacf55332187ac849631a5ea2169081799d87c6dc4db0464c1267d53000",
+        "triageResearchGeometrySha256": "aa541320e0cca977197118756f57e29c479d4a0566caee05e14757b61ec7d9a5",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7114249",
+          "sourceId": "osm",
+          "name": "زرميدين الجنوبية",
+          "aliases": [
+            "Zéramdine Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية زرمدين",
+          "contextAliases": [
+            "Délégation Zeramdine",
+            "Zéramdine",
+            "معتمدية زرمدين"
+          ],
+          "governorateId": 364,
+          "lat": 35.545063,
+          "lng": 10.69833,
+          "delegationId": 596,
+          "hasBoundary": true,
+          "bbox": [
+            10.646357,
+            35.501266,
+            10.761426,
+            35.589182
+          ],
+          "areaKm2": 47.59482246292234,
+          "pickerGroupId": "osm:relation:7114249"
+        },
+        "packedGeometrySha256": "7065fa0b0fbc75405ac4673e4a4368d63526a89ddbc2b86e8e3417c337db38c3"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-zeramdine-south",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زرميدين الجنوبية",
+          "name:ar": "زرميدين الجنوبية",
+          "name:fr": "Zéramdine Sud",
+          "ref:tn:codegeo": "325455"
+        },
+        "effectiveTags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325455",
+          "name:ar": "زرمدين الجنوبية",
+          "name:fr": "Zéramdine Sud",
+          "alt_name": "Zéramdine Sud;زرميدين الجنوبية"
+        },
+        "originalGeometrySha256": "d15a3eacf55332187ac849631a5ea2169081799d87c6dc4db0464c1267d53000",
+        "effectiveGeometrySha256": "4eba465317fe86e8c16b08f0e8d7633c19c3edd59352aedba24dbdd15a98f90b",
+        "triageResearchGeometrySha256": "aa541320e0cca977197118756f57e29c479d4a0566caee05e14757b61ec7d9a5",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7114249",
+          "sourceId": "isie-local-sectors-2023-zeramdine-south",
+          "name": "زرمدين الجنوبية",
+          "aliases": [
+            "Zéramdine Sud",
+            "زرميدين الجنوبية"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية زرمدين",
+          "contextAliases": [
+            "Délégation Zeramdine",
+            "Zéramdine",
+            "معتمدية زرمدين"
+          ],
+          "governorateId": 364,
+          "lat": 35.556191,
+          "lng": 10.726994,
+          "delegationId": 596,
+          "hasBoundary": true,
+          "bbox": [
+            10.660002,
+            35.513969,
+            10.776687,
+            35.598505
+          ],
+          "areaKm2": 45.025091797120176,
+          "pickerGroupId": "osm:relation:7114249"
+        },
+        "packedGeometrySha256": "6609d0f9eff517b781ee04f6198de0e9820ba8578b0d53a9870d029de44e723f"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7114249",
+        "action": "replace",
+        "officialCode": "325455",
+        "sourceId": "isie-local-sectors-2023-zeramdine-south"
+      }
+    }
+  ]
+}

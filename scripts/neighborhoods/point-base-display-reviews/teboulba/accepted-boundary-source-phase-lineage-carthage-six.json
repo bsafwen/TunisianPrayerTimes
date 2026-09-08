@@ -1,0 +1,511 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_boundary_source_phase_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "pointId": "osm:node:558814817",
+  "baseId": 594,
+  "originalNamePeerIds": [
+    "osm:node:558814817",
+    "osm:relation:7111933",
+    "osm:relation:7154981"
+  ],
+  "effectiveNamePeerIds": [
+    "osm:node:558814817",
+    "osm:relation:7154981"
+  ],
+  "sourceStates": [
+    {
+      "id": "osm:node:558814817",
+      "original": {
+        "tags": {
+          "addr:city": "طبلبة",
+          "name": "طبلبة",
+          "name:ar": "طبلبة",
+          "name:en": "Téboulba",
+          "name:fr": "Teboulba",
+          "place": "village",
+          "population": "40000",
+          "wikidata": "Q2400416",
+          "wikimedia_commons": "Category:Teboulba",
+          "wikipedia": "ar:طبلبة"
+        },
+        "kind": "village",
+        "sourceId": null,
+        "geometrySha256": "b2e9800060637ceb835148586bd972ca470688987ea658ce6d1938504159bd35"
+      },
+      "effective": {
+        "tags": {
+          "addr:city": "طبلبة",
+          "name": "طبلبة",
+          "name:ar": "طبلبة",
+          "name:en": "Téboulba",
+          "name:fr": "Teboulba",
+          "place": "village",
+          "population": "40000",
+          "wikidata": "Q2400416",
+          "wikimedia_commons": "Category:Teboulba",
+          "wikipedia": "ar:طبلبة"
+        },
+        "kind": "village",
+        "sourceId": "osm",
+        "geometrySha256": "b2e9800060637ceb835148586bd972ca470688987ea658ce6d1938504159bd35"
+      }
+    },
+    {
+      "id": "osm:relation:7111783",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "السكرين",
+          "name:ar": "السكرين",
+          "name:fr": "Sokrine",
+          "ref:tn:codegeo": "326054"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "d5e1fd66a67f0e8fe7ffc8bb0fef043075470975068347dc683d354d6594ae91"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "السكرين",
+          "name:ar": "السكرين",
+          "name:fr": "Sokrine",
+          "ref:tn:codegeo": "326054"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "d5e1fd66a67f0e8fe7ffc8bb0fef043075470975068347dc683d354d6594ae91"
+      }
+    },
+    {
+      "id": "osm:relation:7111784",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "العيايشة",
+          "name:ar": "العيايشة",
+          "name:fr": "El Aïaïcha",
+          "ref:tn:codegeo": "326053"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "daf2bdbf447797f0156b08939f1c9c41d5c1ee978b4fda16c690afee38b92ccf"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "326053",
+          "name:ar": "العيايشة",
+          "name:fr": "El aiaicha"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "geometrySha256": "45fb1abc8304dbbe6ad33ad88907da12e55b05314ff784362ab3095044fa3d2a"
+      }
+    },
+    {
+      "id": "osm:relation:7111785",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الفضلين",
+          "name:ar": "الفضلين",
+          "name:fr": "El Fadhline",
+          "ref:tn:codegeo": "326052"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "6cbb6e6a2e67d155404436abf719f505fab5697342909f17bc68f01c07b74bf4"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "326052",
+          "name:ar": "الفضلين",
+          "name:fr": "El fadhline"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "geometrySha256": "94a0d10eeda90f6b26e7004bf6e6f78630a2964531179f192b7f2593cfb17599"
+      }
+    },
+    {
+      "id": "osm:relation:7111786",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بودريس",
+          "name:ar": "بودريس",
+          "name:fr": "Bou-driss",
+          "ref:tn:codegeo": "326055"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "d6f0d9edba3ff2e6de0deba1251500cb6e1b64d08f8d592461804fa437bbd2a2"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بودريس",
+          "name:ar": "بودريس",
+          "name:fr": "Bou-driss",
+          "ref:tn:codegeo": "326055"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "d6f0d9edba3ff2e6de0deba1251500cb6e1b64d08f8d592461804fa437bbd2a2"
+      }
+    },
+    {
+      "id": "osm:relation:7111787",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حومة السوق",
+          "name:ar": "حومة السوق",
+          "name:fr": "Houmet Essouk",
+          "ref:tn:codegeo": "326051"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "12da290b26b9b4b7ece202a96880f2ec5ed58098b5fd6bd18c2f34dc934dbb2e"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "حومة السوق",
+          "name:ar": "حومة السوق",
+          "name:fr": "Houmet Essouk",
+          "ref:tn:codegeo": "326051"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "12da290b26b9b4b7ece202a96880f2ec5ed58098b5fd6bd18c2f34dc934dbb2e"
+      }
+    },
+    {
+      "id": "osm:relation:7111933",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "طبلبة",
+          "name:ar": "طبلبة",
+          "name:fr": "Téboulba",
+          "ref:tn:codegeo": "325951"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "325951",
+          "name:ar": "البقالطة الشمالية",
+          "name:fr": "Bekalta nord"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+        "geometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e"
+      }
+    },
+    {
+      "id": "osm:relation:7154981",
+      "original": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Téboulba",
+          "boundary": "administrative",
+          "name": "معتمدية طبلبة",
+          "name:ar": "معتمدية طبلبة",
+          "name:fr": "Délégation Teboulba",
+          "ref:tn:codegeo": "3260",
+          "ref:tn:hasc_2": "TN.MS.TE",
+          "wikidata": "Q12243965"
+        },
+        "kind": "delegation",
+        "sourceId": null,
+        "geometrySha256": "0ea9d8248c6c1559376fd3de54bdda94156694292a546651231e130fada96a1a"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Téboulba",
+          "boundary": "administrative",
+          "name": "معتمدية طبلبة",
+          "name:ar": "معتمدية طبلبة",
+          "name:fr": "Délégation Teboulba",
+          "ref:tn:codegeo": "3260",
+          "ref:tn:hasc_2": "TN.MS.TE",
+          "wikidata": "Q12243965"
+        },
+        "kind": "delegation",
+        "sourceId": "osm",
+        "geometrySha256": "0ea9d8248c6c1559376fd3de54bdda94156694292a546651231e130fada96a1a"
+      }
+    }
+  ],
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "2d2e5c2df3cf070a1d6390d093f81cde5b3ae7d3153a78594e9663b947aff2dd"
+  },
+  "acceptedReplacements": [
+    {
+      "id": "osm:relation:7111784",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/bekalta-neighbors-review-isie2023-sectors.geojson",
+        "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7111785",
+            "officialCode": "326052",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الفضلين",
+              "name:ar": "الفضلين",
+              "name:fr": "El Fadhline",
+              "ref:tn:codegeo": "326052"
+            }
+          },
+          {
+            "id": "osm:relation:7111784",
+            "officialCode": "326053",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "العيايشة",
+              "name:ar": "العيايشة",
+              "name:fr": "El Aïaïcha",
+              "ref:tn:codegeo": "326053"
+            }
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-07",
+          "geometryEdition": 2023,
+          "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+          "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+          "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+          "evidenceFile": "official/bekalta-neighbors-review-isie2023-decisions.json",
+          "evidenceSha256": "8dd2bea2de7865eb5826abe1b861b6fc481ab9e9755c01fafdcefebb036e9a2c"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7111784",
+        "officialCode": "326053",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "العيايشة",
+          "name:ar": "العيايشة",
+          "name:fr": "El Aïaïcha",
+          "ref:tn:codegeo": "326053"
+        }
+      },
+      "geojson": {
+        "file": "official/bekalta-neighbors-review-isie2023-sectors.geojson",
+        "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4"
+      },
+      "featureSha256": "41c5249416735a8cab2564b4dec0a2c0694238f628a2c6973485924c7eacc8ce",
+      "application": {
+        "id": "osm:relation:7111784",
+        "action": "replace",
+        "officialCode": "326053",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review"
+      }
+    },
+    {
+      "id": "osm:relation:7111785",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-bekalta-neighbors-review",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/bekalta-neighbors-review-isie2023-sectors.geojson",
+        "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7111785",
+            "officialCode": "326052",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الفضلين",
+              "name:ar": "الفضلين",
+              "name:fr": "El Fadhline",
+              "ref:tn:codegeo": "326052"
+            }
+          },
+          {
+            "id": "osm:relation:7111784",
+            "officialCode": "326053",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "العيايشة",
+              "name:ar": "العيايشة",
+              "name:fr": "El Aïaïcha",
+              "ref:tn:codegeo": "326053"
+            }
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-07",
+          "geometryEdition": 2023,
+          "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+          "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+          "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+          "evidenceFile": "official/bekalta-neighbors-review-isie2023-decisions.json",
+          "evidenceSha256": "8dd2bea2de7865eb5826abe1b861b6fc481ab9e9755c01fafdcefebb036e9a2c"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7111785",
+        "officialCode": "326052",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الفضلين",
+          "name:ar": "الفضلين",
+          "name:fr": "El Fadhline",
+          "ref:tn:codegeo": "326052"
+        }
+      },
+      "geojson": {
+        "file": "official/bekalta-neighbors-review-isie2023-sectors.geojson",
+        "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4"
+      },
+      "featureSha256": "4b0c1cc3dc32382cea41f4b2319abde5aab462a81bcffa3fe48958122398d664",
+      "application": {
+        "id": "osm:relation:7111785",
+        "action": "replace",
+        "officialCode": "326052",
+        "sourceId": "isie-local-sectors-2023-bekalta-neighbors-review"
+      }
+    },
+    {
+      "id": "osm:relation:7111933",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+        "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7111933",
+            "officialCode": "325951",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "طبلبة",
+              "name:ar": "طبلبة",
+              "name:fr": "Téboulba",
+              "ref:tn:codegeo": "325951"
+            },
+            "scopeKind": "exhaustive_electoral_parts"
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-07",
+          "geometryEdition": 2023,
+          "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+          "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+          "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+          "evidenceFile": "official/bekalta-north-aggregate-independent-review.json",
+          "evidenceSha256": "9ce783d5e415631eed80f536f80d3ce64ecfe51bfa109b54eede5bdd7ff906aa"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7111933",
+        "officialCode": "325951",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "طبلبة",
+          "name:ar": "طبلبة",
+          "name:fr": "Téboulba",
+          "ref:tn:codegeo": "325951"
+        },
+        "scopeKind": "exhaustive_electoral_parts"
+      },
+      "geojson": {
+        "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+        "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+      },
+      "featureSha256": "e2a0fc6211be1eb9d86589594993f6038d7d4a0e7826a56b398482af690ed8ea",
+      "application": {
+        "id": "osm:relation:7111933",
+        "action": "replace",
+        "officialCode": "325951",
+        "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review"
+      }
+    }
+  ],
+  "additionalPreservedSectors": [
+    {
+      "id": "osm:relation:7111933",
+      "currentMetadata": {
+        "id": "osm:relation:7111933",
+        "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+        "name": "البقالطة الشمالية",
+        "aliases": [
+          "Bekalta nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية البقالطة",
+        "contextAliases": [
+          "Bekalta",
+          "Délégation Bekalta",
+          "معتمدية البقالطة"
+        ],
+        "governorateId": 364,
+        "lat": 35.626695,
+        "lng": 11.010987,
+        "delegationId": 601,
+        "hasBoundary": true,
+        "bbox": [
+          10.973385,
+          35.613826,
+          11.036008,
+          35.63977
+        ],
+        "areaKm2": 9.297071014496208,
+        "pickerGroupId": "osm:relation:7111933",
+        "offset": 752824,
+        "length": 2028
+      },
+      "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+      "completeRawGroup": [
+        "osm:relation:7111933"
+      ]
+    }
+  ]
+}

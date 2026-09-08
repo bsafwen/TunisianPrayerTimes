@@ -16,6 +16,7 @@ class SilenceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action ?: return
         Log.d(TAG, "Received action: $action")
+        if (SilenceScheduler.handleEidAlarm(context, intent)) return
 
         when (action) {
             "com.tunisianprayertimes.ACTION_SILENCE" -> {

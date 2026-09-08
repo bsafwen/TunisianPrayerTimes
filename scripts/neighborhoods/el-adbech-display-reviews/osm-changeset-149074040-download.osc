@@ -1,0 +1,2145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osmChange version="0.6" generator="openstreetmap-cgimap 2.1.0 (244687 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <create>
+  <node id="11757105558" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4820274" lon="10.0815126"/>
+ </create>
+ <create>
+  <node id="11757105559" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4819541" lon="10.0812183"/>
+ </create>
+ <create>
+  <node id="11757105560" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4818551" lon="10.0807933"/>
+ </create>
+ <create>
+  <node id="11757105561" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4817640" lon="10.0807268"/>
+ </create>
+ <create>
+  <node id="11757105562" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4814155" lon="10.0808574"/>
+ </create>
+ <create>
+  <node id="11757105563" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4811541" lon="10.0808864"/>
+ </create>
+ <create>
+  <node id="11757105564" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4810763" lon="10.0808759"/>
+ </create>
+ <create>
+  <node id="11757105565" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4809325" lon="10.0810994"/>
+ </create>
+ <create>
+  <node id="11757105566" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4809421" lon="10.0815279"/>
+ </create>
+ <create>
+  <node id="11757105567" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4809342" lon="10.0819790"/>
+ </create>
+ <create>
+  <node id="11757105568" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4808847" lon="10.0823707"/>
+ </create>
+ <create>
+  <node id="11757120669" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4808669" lon="10.0825250"/>
+ </create>
+ <create>
+  <node id="11757120670" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4806371" lon="10.0826390"/>
+ </create>
+ <create>
+  <node id="11757120671" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4802965" lon="10.0827411"/>
+ </create>
+ <create>
+  <node id="11757120672" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4799441" lon="10.0828645"/>
+ </create>
+ <create>
+  <node id="11757120673" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4798530" lon="10.0829714"/>
+ </create>
+ <create>
+  <node id="11757120674" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4794395" lon="10.0827418"/>
+ </create>
+ <create>
+  <node id="11757120675" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4794028" lon="10.0823776"/>
+ </create>
+ <create>
+  <node id="11757120676" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4791850" lon="10.0821877"/>
+ </create>
+ <create>
+  <node id="11757120677" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4790192" lon="10.0819255"/>
+ </create>
+ <create>
+  <node id="11757120678" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4790162" lon="10.0817531"/>
+ </create>
+ <create>
+  <node id="11757120679" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4787153" lon="10.0812955"/>
+ </create>
+ <create>
+  <node id="11757120680" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4782838" lon="10.0809101"/>
+ </create>
+ <create>
+  <node id="11757120681" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4781311" lon="10.0811389"/>
+ </create>
+ <create>
+  <node id="11757120682" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4785280" lon="10.0817791"/>
+ </create>
+ <create>
+  <node id="11757120683" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4786085" lon="10.0820312"/>
+ </create>
+ <create>
+  <node id="11757120684" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4785637" lon="10.0821009"/>
+ </create>
+ <create>
+  <node id="11757120685" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4786532" lon="10.0824603"/>
+ </create>
+ <create>
+  <node id="11757120686" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4791253" lon="10.0827768"/>
+ </create>
+ <create>
+  <node id="11757120687" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4791029" lon="10.0832704"/>
+ </create>
+ <create>
+  <node id="11757120688" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4792241" lon="10.0833895"/>
+ </create>
+ <create>
+  <node id="11757120689" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4792983" lon="10.0833364"/>
+ </create>
+ <create>
+  <node id="11757120690" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4794596" lon="10.0834631"/>
+ </create>
+ <create>
+  <node id="11757120691" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4796189" lon="10.0835264"/>
+ </create>
+ <create>
+  <node id="11757120692" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4797241" lon="10.0834701"/>
+ </create>
+ <create>
+  <node id="11757120693" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4797726" lon="10.0832486"/>
+ </create>
+ <create>
+  <node id="11757120694" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4799060" lon="10.0832721"/>
+ </create>
+ <create>
+  <node id="11757120695" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4800545" lon="10.0830629"/>
+ </create>
+ <create>
+  <node id="11757120696" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4803023" lon="10.0831556"/>
+ </create>
+ <create>
+  <node id="11757120697" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4806319" lon="10.0832018"/>
+ </create>
+ <create>
+  <node id="11757120698" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4811908" lon="10.0839671"/>
+ </create>
+ <create>
+  <node id="11757120699" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4814437" lon="10.0838102"/>
+ </create>
+ <create>
+  <node id="11757120700" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4812541" lon="10.0834242"/>
+ </create>
+ <create>
+  <node id="11757120701" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4813094" lon="10.0832285"/>
+ </create>
+ <create>
+  <node id="11757120702" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4814837" lon="10.0828632"/>
+ </create>
+ <create>
+  <node id="11757120703" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4815512" lon="10.0829581"/>
+ </create>
+ <create>
+  <node id="11757120704" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4817266" lon="10.0825657"/>
+ </create>
+ <create>
+  <node id="11757120705" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4821345" lon="10.0826948"/>
+ </create>
+ <create>
+  <node id="11757120706" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4821596" lon="10.0826600"/>
+ </create>
+ <create>
+  <node id="11757120707" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4822884" lon="10.0826532"/>
+ </create>
+ <create>
+  <node id="11757120708" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4822837" lon="10.0823589"/>
+ </create>
+ <create>
+  <node id="11757120709" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4822526" lon="10.0820445"/>
+ </create>
+ <create>
+  <node id="11757120710" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4822987" lon="10.0820547"/>
+ </create>
+ <create>
+  <node id="11757120711" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4824095" lon="10.0816706"/>
+ </create>
+ <create>
+  <node id="11757120712" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4824661" lon="10.0813211"/>
+ </create>
+ <create>
+  <node id="11757120713" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825457" lon="10.0812078"/>
+ </create>
+ <create>
+  <node id="11757120714" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4829679" lon="10.0812721"/>
+ </create>
+ <create>
+  <node id="11757120715" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4830795" lon="10.0813262"/>
+ </create>
+ <create>
+  <node id="11757120716" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4831463" lon="10.0812124"/>
+ </create>
+ <create>
+  <node id="11757120717" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4830781" lon="10.0811553"/>
+ </create>
+ <create>
+  <node id="11757120718" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4830946" lon="10.0811121"/>
+ </create>
+ <create>
+  <node id="11757120719" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4830482" lon="10.0810070"/>
+ </create>
+ <create>
+  <node id="11757120720" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4829785" lon="10.0809613"/>
+ </create>
+ <create>
+  <node id="11757120721" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4826933" lon="10.0805537"/>
+ </create>
+ <create>
+  <node id="11757120722" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825772" lon="10.0807724"/>
+ </create>
+ <create>
+  <node id="11757120723" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4824628" lon="10.0810627"/>
+ </create>
+ <create>
+  <node id="11757120724" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4824064" lon="10.0812058"/>
+ </create>
+ <create>
+  <node id="11757120725" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4822058" lon="10.0813987"/>
+ </create>
+ <create>
+  <node id="11757120726" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4820897" lon="10.0814802"/>
+ </create>
+ <create>
+  <node id="11757120727" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4813619" lon="10.0819102"/>
+ </create>
+ <create>
+  <node id="11757120728" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4809351" lon="10.0823712"/>
+ </create>
+ <create>
+  <node id="11757120729" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4808296" lon="10.0832866"/>
+ </create>
+ <create>
+  <node id="11757120730" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4809560" lon="10.0834952"/>
+ </create>
+ <create>
+  <node id="11757120731" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4814008" lon="10.0836742"/>
+ </create>
+ <create>
+  <node id="11757120732" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4819256" lon="10.0826919"/>
+ </create>
+ <create>
+  <node id="11757120733" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4820609" lon="10.0827164"/>
+ </create>
+ <create>
+  <node id="11757120734" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4822472" lon="10.0821330"/>
+ </create>
+ <create>
+  <node id="11757120735" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4824093" lon="10.0817895"/>
+ </create>
+ <create>
+  <node id="11757120736" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4828466" lon="10.0812572"/>
+ </create>
+ <create>
+  <node id="11757120737" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825204" lon="10.0800429"/>
+ </create>
+ <create>
+  <node id="11757120738" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4807756" lon="10.0846509"/>
+ </create>
+ <create>
+  <node id="11757120739" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4813436" lon="10.0849268"/>
+ </create>
+ <create>
+  <node id="11757120740" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4811852" lon="10.0853171"/>
+ </create>
+ <create>
+  <node id="11757120741" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4810645" lon="10.0854603"/>
+ </create>
+ <create>
+  <node id="11757120742" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4808580" lon="10.0854485"/>
+ </create>
+ <create>
+  <node id="11757120743" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4807867" lon="10.0856120"/>
+ </create>
+ <create>
+  <node id="11757120744" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4806491" lon="10.0856872"/>
+ </create>
+ <create>
+  <node id="11757120745" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4802866" lon="10.0856394"/>
+ </create>
+ <create>
+  <node id="11757120746" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4802771" lon="10.0852848"/>
+ </create>
+ <create>
+  <node id="11757120747" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4800460" lon="10.0851831"/>
+ </create>
+ <create>
+  <node id="11757120748" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4800903" lon="10.0850446"/>
+ </create>
+ <create>
+  <node id="11757120749" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4798418" lon="10.0849130"/>
+ </create>
+ <create>
+  <node id="11757120750" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4799747" lon="10.0845758"/>
+ </create>
+ <create>
+  <node id="11757120751" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4801211" lon="10.0846705"/>
+ </create>
+ <create>
+  <node id="11757120752" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4802675" lon="10.0846497"/>
+ </create>
+ <create>
+  <node id="11757120753" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4804081" lon="10.0847490"/>
+ </create>
+ <create>
+  <node id="11757120754" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4804697" lon="10.0847167"/>
+ </create>
+ <create>
+  <node id="11757120755" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4807297" lon="10.0847629"/>
+ </create>
+ <create>
+  <node id="11757120756" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4869707" lon="10.0836680"/>
+ </create>
+ <create>
+  <node id="11757120757" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4870035" lon="10.0834920"/>
+ </create>
+ <create>
+  <node id="11757120758" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4868908" lon="10.0840978"/>
+ </create>
+ <create>
+  <node id="11757120759" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4868562" lon="10.0843064"/>
+ </create>
+ <create>
+  <node id="11757120760" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4868183" lon="10.0845565"/>
+ </create>
+ <create>
+  <node id="11757120761" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4867784" lon="10.0849761"/>
+ </create>
+ <create>
+  <node id="11757120762" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866229" lon="10.0866886"/>
+ </create>
+ <create>
+  <node id="11757120763" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861758" lon="10.0883717"/>
+ </create>
+ <create>
+  <node id="11757120764" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861123" lon="10.0884851"/>
+ </create>
+ <create>
+  <node id="11757120765" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4860798" lon="10.0885573"/>
+ </create>
+ <create>
+  <node id="11757120766" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4860560" lon="10.0886881"/>
+ </create>
+ <create>
+  <node id="11757120767" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4860567" lon="10.0887906"/>
+ </create>
+ <create>
+  <node id="11757120768" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4860728" lon="10.0889071"/>
+ </create>
+ <create>
+  <node id="11757120769" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861077" lon="10.0890128"/>
+ </create>
+ <create>
+  <node id="11757120770" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861822" lon="10.0891300"/>
+ </create>
+ <create>
+  <node id="11757120771" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863509" lon="10.0894883"/>
+ </create>
+ <create>
+  <node id="11757120772" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863751" lon="10.0895892"/>
+ </create>
+ <create>
+  <node id="11757120773" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863751" lon="10.0896821"/>
+ </create>
+ <create>
+  <node id="11757120774" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863751" lon="10.0897971"/>
+ </create>
+ <create>
+  <node id="11757120775" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863494" lon="10.0899821"/>
+ </create>
+ <create>
+  <node id="11757120776" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863575" lon="10.0900712"/>
+ </create>
+ <create>
+  <node id="11757120777" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866921" lon="10.0894960"/>
+ </create>
+ <create>
+  <node id="11757120778" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866321" lon="10.0895589"/>
+ </create>
+ <create>
+  <node id="11757120779" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866014" lon="10.0896278"/>
+ </create>
+ <create>
+  <node id="11757120780" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865925" lon="10.0896998"/>
+ </create>
+ <create>
+  <node id="11757120781" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865925" lon="10.0897871"/>
+ </create>
+ <create>
+  <node id="11757120782" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866065" lon="10.0898545"/>
+ </create>
+ <create>
+  <node id="11757120783" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866474" lon="10.0899526"/>
+ </create>
+ <create>
+  <node id="11757120784" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866870" lon="10.0900323"/>
+ </create>
+ <create>
+  <node id="11757120785" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4867011" lon="10.0900859"/>
+ </create>
+ <create>
+  <node id="11757120786" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866960" lon="10.0901303"/>
+ </create>
+ <create>
+  <node id="11757120787" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866743" lon="10.0901701"/>
+ </create>
+ <create>
+  <node id="11757120788" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866257" lon="10.0902084"/>
+ </create>
+ <create>
+  <node id="11757120789" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865835" lon="10.0902299"/>
+ </create>
+ <create>
+  <node id="11757120790" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865286" lon="10.0902314"/>
+ </create>
+ <create>
+  <node id="11757120791" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4864102" lon="10.0879698"/>
+ </create>
+ <create>
+  <node id="11757120792" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863094" lon="10.0879720"/>
+ </create>
+ <create>
+  <node id="11757120793" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863590" lon="10.0880769"/>
+ </create>
+ <create>
+  <node id="11757120794" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863373" lon="10.0880235"/>
+ </create>
+ <create>
+  <node id="11757120795" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861374" lon="10.0879224"/>
+ </create>
+ <create>
+  <node id="11757120796" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4859724" lon="10.0878820"/>
+ </create>
+ <create>
+  <node id="11757120797" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4858966" lon="10.0878533"/>
+ </create>
+ <create>
+  <node id="11757120798" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4858334" lon="10.0878197"/>
+ </create>
+ <create>
+  <node id="11757120799" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4857787" lon="10.0877793"/>
+ </create>
+ <create>
+  <node id="11757120800" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4857263" lon="10.0877277"/>
+ </create>
+ <create>
+  <node id="11757120801" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4856752" lon="10.0876511"/>
+ </create>
+ <create>
+  <node id="11757120802" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4856369" lon="10.0875760"/>
+ </create>
+ <create>
+  <node id="11757120803" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4856050" lon="10.0875025"/>
+ </create>
+ <create>
+  <node id="11757120804" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4855781" lon="10.0874013"/>
+ </create>
+ <create>
+  <node id="11757120805" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4855564" lon="10.0873140"/>
+ </create>
+ <create>
+  <node id="11757120806" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4855334" lon="10.0872512"/>
+ </create>
+ <create>
+  <node id="11757120807" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4854887" lon="10.0871670"/>
+ </create>
+ <create>
+  <node id="11757120808" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4853916" lon="10.0870536"/>
+ </create>
+ <create>
+  <node id="11757120809" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4852689" lon="10.0868881"/>
+ </create>
+ <create>
+  <node id="11757120810" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4852063" lon="10.0868008"/>
+ </create>
+ <create>
+  <node id="11757120811" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4851118" lon="10.0867227"/>
+ </create>
+ <create>
+  <node id="11757120812" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4850300" lon="10.0866522"/>
+ </create>
+ <create>
+  <node id="11757120813" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4849878" lon="10.0866032"/>
+ </create>
+ <create>
+  <node id="11757120814" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4849508" lon="10.0865603"/>
+ </create>
+ <create>
+  <node id="11757120815" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4849227" lon="10.0864806"/>
+ </create>
+ <create>
+  <node id="11757120816" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4848907" lon="10.0864270"/>
+ </create>
+ <create>
+  <node id="11757120817" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4848370" lon="10.0863519"/>
+ </create>
+ <create>
+  <node id="11757120818" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4847770" lon="10.0862401"/>
+ </create>
+ <create>
+  <node id="11757120819" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4847284" lon="10.0861650"/>
+ </create>
+ <create>
+  <node id="11757120820" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4847016" lon="10.0861022"/>
+ </create>
+ <create>
+  <node id="11757120821" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4846735" lon="10.0860225"/>
+ </create>
+ <create>
+  <node id="11757120822" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4846454" lon="10.0859490"/>
+ </create>
+ <create>
+  <node id="11757120823" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4846275" lon="10.0859076"/>
+ </create>
+ <create>
+  <node id="11757120824" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4845904" lon="10.0858464"/>
+ </create>
+ <create>
+  <node id="11757120825" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4844882" lon="10.0857085"/>
+ </create>
+ <create>
+  <node id="11757120826" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4843694" lon="10.0855660"/>
+ </create>
+ <create>
+  <node id="11757120827" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865760" lon="10.0904654"/>
+ </create>
+ <create>
+  <node id="11757120828" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865225" lon="10.0904642"/>
+ </create>
+ <create>
+  <node id="11757120829" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865198" lon="10.0906393"/>
+ </create>
+ <create>
+  <node id="11757120830" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865733" lon="10.0906405"/>
+ </create>
+ <create>
+  <node id="11757120831" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863931" lon="10.0902262"/>
+ </create>
+ <create>
+  <node id="11757120832" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4862982" lon="10.0917329"/>
+ </create>
+ <create>
+  <node id="11757120833" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863898" lon="10.0920503"/>
+ </create>
+ <create>
+  <node id="11757120834" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863343" lon="10.0920964"/>
+ </create>
+ <create>
+  <way id="1265702650" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757105558"/>
+   <nd ref="11757105559"/>
+   <nd ref="11757105560"/>
+   <nd ref="11757105561"/>
+   <nd ref="11757105562"/>
+   <nd ref="11757105563"/>
+   <nd ref="11757105564"/>
+   <nd ref="11757105565"/>
+   <nd ref="11757105566"/>
+   <nd ref="11757105567"/>
+   <nd ref="11757105568"/>
+   <nd ref="11757120669"/>
+   <nd ref="11757120670"/>
+   <nd ref="11757120671"/>
+   <nd ref="11757120672"/>
+   <nd ref="11757120673"/>
+   <nd ref="11757120674"/>
+   <nd ref="11757120675"/>
+   <nd ref="11757120676"/>
+   <nd ref="11757120677"/>
+   <nd ref="11757120678"/>
+   <nd ref="11757120679"/>
+   <nd ref="11757120680"/>
+   <nd ref="11757120681"/>
+   <nd ref="11757120682"/>
+   <nd ref="11757120683"/>
+   <nd ref="11757120684"/>
+   <nd ref="11757120685"/>
+   <nd ref="11757120686"/>
+   <nd ref="11757120687"/>
+   <nd ref="11757120688"/>
+   <nd ref="11757120689"/>
+   <nd ref="11757120690"/>
+   <nd ref="11757120691"/>
+   <nd ref="11757120692"/>
+   <nd ref="11757120693"/>
+   <nd ref="11757120694"/>
+   <nd ref="11757120695"/>
+   <nd ref="11757120696"/>
+   <nd ref="11757120697"/>
+   <nd ref="11757120729"/>
+   <nd ref="11757120730"/>
+   <nd ref="11757120698"/>
+   <nd ref="11757120699"/>
+   <nd ref="11757120731"/>
+   <nd ref="11757120700"/>
+   <nd ref="11757120701"/>
+   <nd ref="11757120702"/>
+   <nd ref="11757120703"/>
+   <nd ref="11757120704"/>
+   <nd ref="11757120732"/>
+   <nd ref="11757120733"/>
+   <nd ref="11757120705"/>
+   <nd ref="11757120706"/>
+   <nd ref="11757120707"/>
+   <nd ref="11757120708"/>
+   <nd ref="11757120734"/>
+   <nd ref="11757120709"/>
+   <nd ref="11757120710"/>
+   <nd ref="11757120735"/>
+   <nd ref="11757120711"/>
+   <nd ref="11757120712"/>
+   <nd ref="11757120713"/>
+   <nd ref="11757120736"/>
+   <nd ref="11757120714"/>
+   <nd ref="11757120715"/>
+   <nd ref="11757120716"/>
+   <nd ref="11757120717"/>
+   <nd ref="11757120718"/>
+   <nd ref="11757120719"/>
+   <nd ref="11757120720"/>
+   <nd ref="11757120721"/>
+   <nd ref="11757120722"/>
+   <nd ref="11757120723"/>
+   <nd ref="11757120724"/>
+   <nd ref="11757120725"/>
+   <nd ref="11757120726"/>
+   <nd ref="11757105558"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="El Adbech"/>
+   <tag k="residential" v="rural"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702651" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120738"/>
+   <nd ref="11757120739"/>
+   <nd ref="11757120740"/>
+   <nd ref="11757120741"/>
+   <nd ref="11757120742"/>
+   <nd ref="11757120743"/>
+   <nd ref="11757120744"/>
+   <nd ref="11757120745"/>
+   <nd ref="11757120746"/>
+   <nd ref="11757120747"/>
+   <nd ref="11757120748"/>
+   <nd ref="11757120749"/>
+   <nd ref="11757120750"/>
+   <nd ref="11757120751"/>
+   <nd ref="11757120752"/>
+   <nd ref="11757120753"/>
+   <nd ref="11757120754"/>
+   <nd ref="11757120755"/>
+   <nd ref="11757120738"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="El Adbech"/>
+   <tag k="residential" v="rural"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702652" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120777"/>
+   <nd ref="11757120778"/>
+   <nd ref="11757120779"/>
+   <nd ref="11757120780"/>
+   <nd ref="11757120781"/>
+   <nd ref="11757120782"/>
+   <nd ref="11757120783"/>
+   <nd ref="11757120784"/>
+   <nd ref="11757120785"/>
+   <nd ref="11757120786"/>
+   <nd ref="11757120787"/>
+   <nd ref="11757120788"/>
+   <nd ref="11757120789"/>
+   <nd ref="11757120790"/>
+   <nd ref="11047450175"/>
+   <tag k="highway" v="service"/>
+   <tag k="motor_vehicle" v="destination"/>
+   <tag k="service" v="driveway"/>
+   <tag k="surface" v="ground"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702653" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11047450174"/>
+   <nd ref="11757120831"/>
+   <nd ref="11047450175"/>
+   <tag k="foot" v="yes"/>
+   <tag k="highway" v="service"/>
+   <tag k="motor_vehicle" v="destination"/>
+   <tag k="service" v="driveway"/>
+   <tag k="surface" v="ground"/>
+   <tag k="tracktype" v="grade4"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702654" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120791"/>
+   <nd ref="11757120792"/>
+   <nd ref="11757120794"/>
+   <nd ref="11757120793"/>
+   <tag k="highway" v="track"/>
+   <tag k="surface" v="ground"/>
+   <tag k="tracktype" v="grade3"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702655" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120792"/>
+   <nd ref="11757120795"/>
+   <nd ref="11757120796"/>
+   <nd ref="11757120797"/>
+   <nd ref="11757120798"/>
+   <nd ref="11757120799"/>
+   <nd ref="11757120800"/>
+   <nd ref="11757120801"/>
+   <nd ref="11757120802"/>
+   <nd ref="11757120803"/>
+   <nd ref="11757120804"/>
+   <nd ref="11757120805"/>
+   <nd ref="11757120806"/>
+   <nd ref="11757120807"/>
+   <nd ref="11757120808"/>
+   <tag k="highway" v="track"/>
+   <tag k="surface" v="ground"/>
+   <tag k="tracktype" v="grade3"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702656" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120815"/>
+   <nd ref="11757120816"/>
+   <nd ref="11757120817"/>
+   <nd ref="11757120818"/>
+   <nd ref="11757120819"/>
+   <nd ref="11757120820"/>
+   <nd ref="11757120821"/>
+   <nd ref="11757120822"/>
+   <nd ref="11757120823"/>
+   <nd ref="11757120824"/>
+   <nd ref="11757120825"/>
+   <nd ref="11757120826"/>
+   <tag k="highway" v="track"/>
+   <tag k="motor_vehicle" v="destination"/>
+   <tag k="surface" v="ground"/>
+   <tag k="tracktype" v="grade5"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702657" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120808"/>
+   <nd ref="11757120809"/>
+   <nd ref="11757120810"/>
+   <nd ref="11757120811"/>
+   <nd ref="11757120812"/>
+   <nd ref="11757120813"/>
+   <nd ref="11757120814"/>
+   <nd ref="11757120815"/>
+   <tag k="highway" v="track"/>
+   <tag k="surface" v="ground"/>
+   <tag k="tracktype" v="grade4"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702658" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120827"/>
+   <nd ref="11757120828"/>
+   <nd ref="11757120829"/>
+   <nd ref="11757120830"/>
+   <nd ref="11757120827"/>
+   <tag k="building" v="yes"/>
+  </way>
+ </create>
+ <create>
+  <way id="1265702659" visible="true" version="1" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11757120833"/>
+   <nd ref="11757120834"/>
+   <nd ref="6574554161"/>
+   <tag k="highway" v="unclassified"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </create>
+ <modify>
+  <node id="1997332624" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4868881" lon="10.0889660"/>
+ </modify>
+ <modify>
+  <node id="4783837744" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863817" lon="10.0895378"/>
+ </modify>
+ <modify>
+  <node id="6574554161" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4862758" lon="10.0921148"/>
+ </modify>
+ <modify>
+  <node id="6693909076" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861256" lon="10.0910426"/>
+ </modify>
+ <modify>
+  <node id="6693909077" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861465" lon="10.0908660"/>
+ </modify>
+ <modify>
+  <node id="6693909078" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861334" lon="10.0911319"/>
+ </modify>
+ <modify>
+  <node id="11047450174" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863215" lon="10.0902564"/>
+ </modify>
+ <modify>
+  <node id="11047450175" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4864472" lon="10.0902116"/>
+ </modify>
+ <modify>
+  <node id="11047450177" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866704" lon="10.0903365"/>
+ </modify>
+ <modify>
+  <node id="11047450178" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4867224" lon="10.0903851"/>
+ </modify>
+ <modify>
+  <node id="11047450179" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4868013" lon="10.0904744"/>
+ </modify>
+ <modify>
+  <node id="11047450180" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4869535" lon="10.0905305"/>
+ </modify>
+ <modify>
+  <node id="11047450181" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4871429" lon="10.0906153"/>
+ </modify>
+ <modify>
+  <node id="11047450182" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4872508" lon="10.0906448"/>
+ </modify>
+ <modify>
+  <node id="11047450185" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4877165" lon="10.0906192"/>
+ </modify>
+ <modify>
+  <node id="11047450188" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4879824" lon="10.0905579"/>
+ </modify>
+ <modify>
+  <node id="11047450189" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4880375" lon="10.0905118"/>
+ </modify>
+ <modify>
+  <node id="11047450190" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4880939" lon="10.0904667"/>
+ </modify>
+ <modify>
+  <node id="11047450191" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4881687" lon="10.0904270"/>
+ </modify>
+ <modify>
+  <node id="11047450192" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4882640" lon="10.0903931"/>
+ </modify>
+ <modify>
+  <way id="1099960252" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="3287800679"/>
+   <nd ref="3287800678"/>
+   <nd ref="3287800677"/>
+   <nd ref="3287800676"/>
+   <nd ref="3287800675"/>
+   <nd ref="3287800674"/>
+   <nd ref="3287800673"/>
+   <nd ref="3287800672"/>
+   <nd ref="3287800671"/>
+   <nd ref="3287800670"/>
+   <nd ref="3287800669"/>
+   <nd ref="10069702326"/>
+   <nd ref="3287800668"/>
+   <nd ref="3287800667"/>
+   <nd ref="3287800666"/>
+   <nd ref="10069702325"/>
+   <nd ref="3287800665"/>
+   <nd ref="3287800664"/>
+   <nd ref="10069702324"/>
+   <nd ref="3287800663"/>
+   <nd ref="3287800662"/>
+   <nd ref="3287800661"/>
+   <nd ref="10069702323"/>
+   <nd ref="3287800560"/>
+   <nd ref="3287800559"/>
+   <nd ref="3287800558"/>
+   <nd ref="10069702322"/>
+   <nd ref="3287800549"/>
+   <nd ref="3287800546"/>
+   <nd ref="10069702321"/>
+   <nd ref="3287800544"/>
+   <nd ref="3287800535"/>
+   <nd ref="3287800530"/>
+   <nd ref="3287800525"/>
+   <nd ref="3287800522"/>
+   <nd ref="3287800519"/>
+   <nd ref="3287800517"/>
+   <nd ref="3287800518"/>
+   <nd ref="3287800523"/>
+   <nd ref="3287800527"/>
+   <nd ref="3287800529"/>
+   <nd ref="3287800528"/>
+   <nd ref="3803482450"/>
+   <nd ref="3287800524"/>
+   <nd ref="10069702320"/>
+   <nd ref="3287800520"/>
+   <nd ref="10069702319"/>
+   <nd ref="3287800515"/>
+   <nd ref="3287800516"/>
+   <nd ref="3287800521"/>
+   <nd ref="3287800526"/>
+   <nd ref="3287800531"/>
+   <nd ref="3287800533"/>
+   <nd ref="3287800536"/>
+   <nd ref="6572508010"/>
+   <nd ref="3287800542"/>
+   <nd ref="3287800547"/>
+   <nd ref="6572508009"/>
+   <nd ref="3287800551"/>
+   <nd ref="6572508008"/>
+   <nd ref="6572508007"/>
+   <nd ref="3287800557"/>
+   <nd ref="3287800556"/>
+   <nd ref="3287800555"/>
+   <nd ref="3287800554"/>
+   <nd ref="3287800553"/>
+   <nd ref="3287800552"/>
+   <nd ref="3287800550"/>
+   <nd ref="3287800548"/>
+   <nd ref="3287800545"/>
+   <nd ref="3287800541"/>
+   <nd ref="11757120737"/>
+   <nd ref="3287800538"/>
+   <tag k="highway" v="unclassified"/>
+   <tag k="surface" v="compacted"/>
+   <tag k="tracktype" v="grade4"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="1189771130" visible="true" version="2" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11047450175"/>
+   <nd ref="11047450176"/>
+   <nd ref="11047450177"/>
+   <nd ref="11047450178"/>
+   <nd ref="11047450179"/>
+   <nd ref="11047450180"/>
+   <nd ref="11047450181"/>
+   <nd ref="11047450182"/>
+   <nd ref="11047450183"/>
+   <nd ref="11047450184"/>
+   <nd ref="11047450185"/>
+   <nd ref="11047450186"/>
+   <nd ref="11047450187"/>
+   <nd ref="11047450188"/>
+   <nd ref="11047450189"/>
+   <nd ref="11047450190"/>
+   <nd ref="11047450191"/>
+   <nd ref="11047450192"/>
+   <nd ref="11047450193"/>
+   <nd ref="11047450194"/>
+   <nd ref="11047450197"/>
+   <tag k="foot" v="yes"/>
+   <tag k="highway" v="track"/>
+   <tag k="motor_vehicle" v="destination"/>
+   <tag k="smoothness" v="very_horrible"/>
+   <tag k="surface" v="ground"/>
+   <tag k="tracktype" v="grade5"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="3287800541" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825460" lon="10.0799601"/>
+ </modify>
+ <modify>
+  <node id="3287800545" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825982" lon="10.0798556"/>
+ </modify>
+ <modify>
+  <node id="6574536315" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861908" lon="10.0913842"/>
+ </modify>
+ <modify>
+  <node id="6574536316" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861814" lon="10.0907359"/>
+ </modify>
+ <modify>
+  <node id="6693909080" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861110" lon="10.0888928"/>
+ </modify>
+ <modify>
+  <node id="6693909082" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861161" lon="10.0885481"/>
+ </modify>
+ <modify>
+  <node id="6693909083" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865065" lon="10.0877032"/>
+ </modify>
+ <modify>
+  <node id="6693909084" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4866372" lon="10.0866912"/>
+ </modify>
+ <modify>
+  <node id="6693909085" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4868639" lon="10.0843064"/>
+ </modify>
+ <modify>
+  <node id="6693909086" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4868287" lon="10.0845565"/>
+ </modify>
+ <modify>
+  <node id="6693909087" visible="true" version="3" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4870154" lon="10.0834920"/>
+ </modify>
+ <modify>
+  <node id="3287800499" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4809954" lon="10.0822951"/>
+ </modify>
+ <modify>
+  <node id="3287800500" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4810981" lon="10.0821116"/>
+ </modify>
+ <modify>
+  <node id="3287800502" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4811571" lon="10.0820380"/>
+ </modify>
+ <modify>
+  <node id="3287800503" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4812216" lon="10.0819844"/>
+ </modify>
+ <modify>
+  <node id="3287800504" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4812962" lon="10.0819360"/>
+ </modify>
+ <modify>
+  <node id="3287800506" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4814511" lon="10.0818861"/>
+ </modify>
+ <modify>
+  <node id="3287800510" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4818818" lon="10.0816887"/>
+ </modify>
+ <modify>
+  <node id="3287800514" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4821588" lon="10.0814885"/>
+ </modify>
+ <modify>
+  <node id="3287800532" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4822961" lon="10.0813724"/>
+ </modify>
+ <modify>
+  <node id="3287800537" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825219" lon="10.0803275"/>
+ </modify>
+ <modify>
+  <node id="3287800538" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825053" lon="10.0801449"/>
+ </modify>
+ <modify>
+  <node id="3287800540" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825307" lon="10.0808635"/>
+ </modify>
+ <modify>
+  <node id="3287800543" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4825351" lon="10.0805163"/>
+ </modify>
+ <modify>
+  <node id="6572495151" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861000" lon="10.0886301"/>
+ </modify>
+ <modify>
+  <node id="6572495152" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4864217" lon="10.0879425"/>
+ </modify>
+ <modify>
+  <node id="6572495153" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4867006" lon="10.0860277"/>
+ </modify>
+ <modify>
+  <node id="6574536317" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863016" lon="10.0903262"/>
+ </modify>
+ <modify>
+  <node id="6574536318" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863905" lon="10.0896399"/>
+ </modify>
+ <modify>
+  <node id="6648486568" visible="true" version="4" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4797117" lon="10.0831126"/>
+ </modify>
+ <modify>
+  <node id="1997332556" visible="true" version="5" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861302" lon="10.0909587"/>
+ </modify>
+ <modify>
+  <node id="1997332631" visible="true" version="5" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4869012" lon="10.0840925"/>
+ </modify>
+ <modify>
+  <node id="6572495150" visible="true" version="5" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863005" lon="10.0892689"/>
+ </modify>
+ <modify>
+  <way id="189085992" visible="true" version="5" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="1997332423"/>
+   <nd ref="1997332415"/>
+   <nd ref="1997332424"/>
+   <nd ref="1997332462"/>
+   <nd ref="1997332490"/>
+   <nd ref="1997332520"/>
+   <nd ref="1997332546"/>
+   <nd ref="1997332584"/>
+   <nd ref="1997332566"/>
+   <nd ref="1997332563"/>
+   <nd ref="1997332681"/>
+   <nd ref="1997332766"/>
+   <nd ref="1997332675"/>
+   <nd ref="1997332643"/>
+   <nd ref="1997332624"/>
+   <nd ref="1997332645"/>
+   <nd ref="1997332553"/>
+   <nd ref="1997332530"/>
+   <nd ref="1997332484"/>
+   <nd ref="3803482830"/>
+   <nd ref="3803482821"/>
+   <nd ref="3803482818"/>
+   <nd ref="1997332446"/>
+   <nd ref="3803482975"/>
+   <nd ref="3803482987"/>
+   <nd ref="3803482991"/>
+   <nd ref="3803482837"/>
+   <nd ref="3803482764"/>
+   <nd ref="1997332421"/>
+   <nd ref="1997332464"/>
+   <nd ref="1997332510"/>
+   <nd ref="1997332532"/>
+   <nd ref="1997332549"/>
+   <nd ref="1997332531"/>
+   <nd ref="1997332501"/>
+   <nd ref="1997332477"/>
+   <nd ref="1997332449"/>
+   <nd ref="1997332423"/>
+   <tag k="addr:city" v="El Adbech"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="El Adbech"/>
+   <tag k="name:ar" v="الأدباش"/>
+   <tag k="name:fr" v="El Adbech"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="1997332554" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4860897" lon="10.0887167"/>
+ </modify>
+ <modify>
+  <node id="1997332557" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4862220" lon="10.0883295"/>
+ </modify>
+ <modify>
+  <node id="1997332565" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861448" lon="10.0889862"/>
+ </modify>
+ <modify>
+  <node id="1997332570" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863065" lon="10.0881828"/>
+ </modify>
+ <modify>
+  <node id="1997332594" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4864716" lon="10.0878227"/>
+ </modify>
+ <modify>
+  <node id="1997332611" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865754" lon="10.0873480"/>
+ </modify>
+ <modify>
+  <node id="3287800489" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4799586" lon="10.0828031"/>
+ </modify>
+ <modify>
+  <node id="3287804653" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4864404" lon="10.0922258"/>
+ </modify>
+ <modify>
+  <node id="3803483178" visible="true" version="6" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4869796" lon="10.0836716"/>
+ </modify>
+ <modify>
+  <node id="297776075" visible="true" version="7" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4867894" lon="10.0849748"/>
+ </modify>
+ <modify>
+  <node id="297776082" visible="true" version="7" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861522" lon="10.0912352"/>
+ </modify>
+ <modify>
+  <node id="297776343" visible="true" version="7" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4862468" lon="10.0905223"/>
+ </modify>
+ <modify>
+  <node id="1997332588" visible="true" version="7" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863894" lon="10.0897483"/>
+ </modify>
+ <modify>
+  <node id="1997332590" visible="true" version="7" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863641" lon="10.0894500"/>
+ </modify>
+ <modify>
+  <node id="297776078" visible="true" version="8" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4860937" lon="10.0887989"/>
+ </modify>
+ <modify>
+  <node id="297776339" visible="true" version="8" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4865469" lon="10.0875287"/>
+ </modify>
+ <modify>
+  <node id="297776340" visible="true" version="8" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4861585" lon="10.0884389"/>
+ </modify>
+ <modify>
+  <node id="1997440361" visible="true" version="8" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4859590" lon="10.0910266">
+   <tag k="name" v="El Adbech"/>
+   <tag k="name:ar" v="الأدباش"/>
+   <tag k="name:en" v="El Adbech"/>
+   <tag k="name:fr" v="El Adbech"/>
+   <tag k="place" v="village"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="485607551" visible="true" version="8" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="2977432364"/>
+   <nd ref="10904500341"/>
+   <nd ref="4783838371"/>
+   <nd ref="4783838714"/>
+   <nd ref="4783838369"/>
+   <nd ref="4783838712"/>
+   <nd ref="4783838713"/>
+   <nd ref="4783830461"/>
+   <nd ref="4783838701"/>
+   <nd ref="4783838700"/>
+   <nd ref="4783838334"/>
+   <nd ref="4783838699"/>
+   <nd ref="4783830460"/>
+   <nd ref="4783838697"/>
+   <nd ref="4783838698"/>
+   <nd ref="4783838695"/>
+   <nd ref="4783838696"/>
+   <nd ref="2977432225"/>
+   <nd ref="4783838333"/>
+   <nd ref="10904500337"/>
+   <nd ref="10904500336"/>
+   <nd ref="4783838694"/>
+   <nd ref="2977432219"/>
+   <nd ref="4783830459"/>
+   <nd ref="4783838693"/>
+   <nd ref="4783830458"/>
+   <nd ref="4783838332"/>
+   <nd ref="4783838705"/>
+   <nd ref="4783838340"/>
+   <nd ref="4783838339"/>
+   <nd ref="4783830465"/>
+   <nd ref="4783830464"/>
+   <nd ref="4783838704"/>
+   <nd ref="4783838703"/>
+   <nd ref="4783838338"/>
+   <nd ref="4783838337"/>
+   <nd ref="4783830463"/>
+   <nd ref="4783829324"/>
+   <nd ref="4783838721"/>
+   <nd ref="4783838702"/>
+   <nd ref="4783838336"/>
+   <nd ref="4783838335"/>
+   <nd ref="4783830462"/>
+   <nd ref="4783838322"/>
+   <nd ref="11339561612"/>
+   <nd ref="4783837789"/>
+   <nd ref="4783838321"/>
+   <nd ref="4783837788"/>
+   <nd ref="4783838220"/>
+   <nd ref="4783837787"/>
+   <nd ref="4783838219"/>
+   <nd ref="4783837786"/>
+   <nd ref="4783838218"/>
+   <nd ref="4783837785"/>
+   <nd ref="4783838217"/>
+   <nd ref="4783837784"/>
+   <nd ref="4783838216"/>
+   <nd ref="4783837783"/>
+   <nd ref="4783838215"/>
+   <nd ref="4783837782"/>
+   <nd ref="4783830457"/>
+   <nd ref="4783838331"/>
+   <nd ref="4783830456"/>
+   <nd ref="4783838330"/>
+   <nd ref="4783830455"/>
+   <nd ref="4783838329"/>
+   <nd ref="4783830454"/>
+   <nd ref="4783838328"/>
+   <nd ref="4783838438"/>
+   <nd ref="4783838327"/>
+   <nd ref="4783838437"/>
+   <nd ref="4783838326"/>
+   <nd ref="4783838324"/>
+   <nd ref="4783838325"/>
+   <nd ref="4783838323"/>
+   <nd ref="4783837790"/>
+   <nd ref="4783835848"/>
+   <nd ref="4783837773"/>
+   <nd ref="4783835847"/>
+   <nd ref="4783837772"/>
+   <nd ref="4783835846"/>
+   <nd ref="4783837771"/>
+   <nd ref="4783835845"/>
+   <nd ref="4783837770"/>
+   <nd ref="4783835844"/>
+   <nd ref="4783837769"/>
+   <nd ref="4783837598"/>
+   <nd ref="4783837768"/>
+   <nd ref="4783837597"/>
+   <nd ref="4783837767"/>
+   <nd ref="4783837766"/>
+   <nd ref="4783837596"/>
+   <nd ref="4783838214"/>
+   <nd ref="4783837781"/>
+   <nd ref="4783838213"/>
+   <nd ref="4783837780"/>
+   <nd ref="4783838212"/>
+   <nd ref="4783837779"/>
+   <nd ref="4783838211"/>
+   <nd ref="4783837778"/>
+   <nd ref="4783838210"/>
+   <nd ref="4783837777"/>
+   <nd ref="4783838209"/>
+   <nd ref="4783837776"/>
+   <nd ref="4783838208"/>
+   <nd ref="4783837775"/>
+   <nd ref="10893712469"/>
+   <nd ref="4783835922"/>
+   <nd ref="4783837774"/>
+   <nd ref="4783837586"/>
+   <nd ref="4783837587"/>
+   <nd ref="4783837720"/>
+   <nd ref="4783837757"/>
+   <nd ref="4783837756"/>
+   <nd ref="4783837585"/>
+   <nd ref="10943130336"/>
+   <nd ref="4783837584"/>
+   <nd ref="4783837719"/>
+   <nd ref="4783829323"/>
+   <nd ref="4783837755"/>
+   <nd ref="4783837754"/>
+   <nd ref="4783837583"/>
+   <nd ref="4783837582"/>
+   <nd ref="4783837714"/>
+   <nd ref="4783837713"/>
+   <nd ref="4783837753"/>
+   <nd ref="4783837765"/>
+   <nd ref="4783837595"/>
+   <nd ref="4783837764"/>
+   <nd ref="4783837594"/>
+   <nd ref="4783837763"/>
+   <nd ref="4783837593"/>
+   <nd ref="4783837762"/>
+   <nd ref="4783837592"/>
+   <nd ref="4783837761"/>
+   <nd ref="4783837591"/>
+   <nd ref="4783837760"/>
+   <nd ref="4783837590"/>
+   <nd ref="4783837759"/>
+   <nd ref="4783837589"/>
+   <nd ref="4783837758"/>
+   <nd ref="4783837588"/>
+   <nd ref="4783837707"/>
+   <nd ref="4783837739"/>
+   <nd ref="4783837738"/>
+   <nd ref="4783837575"/>
+   <nd ref="4783837574"/>
+   <nd ref="4783837706"/>
+   <nd ref="4783837705"/>
+   <nd ref="4783837737"/>
+   <nd ref="4783835139"/>
+   <nd ref="4783837573"/>
+   <nd ref="4783835843"/>
+   <nd ref="4783837704"/>
+   <nd ref="4783830453"/>
+   <nd ref="4783837736"/>
+   <nd ref="4783835138"/>
+   <nd ref="11757120775"/>
+   <nd ref="4783837572"/>
+   <nd ref="11757120774"/>
+   <nd ref="11757120773"/>
+   <nd ref="11757120772"/>
+   <nd ref="11757120771"/>
+   <nd ref="4783837581"/>
+   <nd ref="11757120770"/>
+   <nd ref="11757120769"/>
+   <nd ref="4783837580"/>
+   <nd ref="11757120768"/>
+   <nd ref="11757120767"/>
+   <nd ref="4783837712"/>
+   <nd ref="11757120766"/>
+   <nd ref="11757120765"/>
+   <nd ref="4783837711"/>
+   <nd ref="11757120764"/>
+   <nd ref="4783837743"/>
+   <nd ref="11757120763"/>
+   <nd ref="4783837742"/>
+   <nd ref="10069703498"/>
+   <nd ref="4783837579"/>
+   <nd ref="4783837578"/>
+   <nd ref="11757120762"/>
+   <nd ref="11757120761"/>
+   <nd ref="11757120760"/>
+   <nd ref="4783837710"/>
+   <nd ref="11757120759"/>
+   <nd ref="11757120758"/>
+   <nd ref="11757120756"/>
+   <nd ref="11757120757"/>
+   <nd ref="6572495154"/>
+   <nd ref="6693909090"/>
+   <nd ref="4783837709"/>
+   <nd ref="6693909089"/>
+   <nd ref="4783837741"/>
+   <nd ref="4783837740"/>
+   <nd ref="10069703499"/>
+   <nd ref="4783837577"/>
+   <nd ref="4783837576"/>
+   <nd ref="6521745093"/>
+   <nd ref="6521693577"/>
+   <nd ref="4783837708"/>
+   <nd ref="297776069"/>
+   <nd ref="4783837699"/>
+   <nd ref="4783837566"/>
+   <nd ref="4783837697"/>
+   <nd ref="4783837698"/>
+   <nd ref="4783837695"/>
+   <nd ref="4783837696"/>
+   <nd ref="4783837693"/>
+   <nd ref="4783837694"/>
+   <nd ref="4783837558"/>
+   <nd ref="4783837692"/>
+   <nd ref="4783837691"/>
+   <nd ref="4783837731"/>
+   <nd ref="4783837730"/>
+   <nd ref="6521693582"/>
+   <nd ref="4783837557"/>
+   <nd ref="4783837556"/>
+   <nd ref="4783837690"/>
+   <nd ref="4783837571"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="297776341" visible="true" version="9" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863394" lon="10.0893599"/>
+ </modify>
+ <modify>
+  <node id="297776342" visible="true" version="9" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703" lat="33.4863800" lon="10.0899027"/>
+ </modify>
+ <modify>
+  <way id="322016202" visible="true" version="12" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="3287800538"/>
+   <nd ref="3287800537"/>
+   <nd ref="3287800543"/>
+   <nd ref="6572508005"/>
+   <nd ref="3287800540"/>
+   <nd ref="3287800539"/>
+   <nd ref="6572508004"/>
+   <nd ref="3287800534"/>
+   <nd ref="3287800532"/>
+   <nd ref="3287800514"/>
+   <nd ref="3287800510"/>
+   <nd ref="3287800509"/>
+   <nd ref="3287800507"/>
+   <nd ref="3287800506"/>
+   <nd ref="11757120727"/>
+   <nd ref="3287800504"/>
+   <nd ref="3287800503"/>
+   <nd ref="3287800502"/>
+   <nd ref="3287800500"/>
+   <nd ref="3287800499"/>
+   <nd ref="11757120728"/>
+   <nd ref="6572508003"/>
+   <nd ref="3287800497"/>
+   <nd ref="3287800495"/>
+   <nd ref="3287800493"/>
+   <nd ref="3287800492"/>
+   <nd ref="3287800489"/>
+   <nd ref="10069702327"/>
+   <nd ref="3287800487"/>
+   <nd ref="3287800486"/>
+   <nd ref="3287800485"/>
+   <nd ref="6648486568"/>
+   <nd ref="6572508002"/>
+   <nd ref="3287800484"/>
+   <nd ref="3287800483"/>
+   <nd ref="6572508001"/>
+   <nd ref="3287800482"/>
+   <nd ref="3287800480"/>
+   <nd ref="3287800479"/>
+   <nd ref="6572508000"/>
+   <nd ref="10069699894"/>
+   <nd ref="3287800478"/>
+   <nd ref="3287804584"/>
+   <nd ref="3287804582"/>
+   <nd ref="3287804581"/>
+   <nd ref="3287804579"/>
+   <nd ref="3287804575"/>
+   <nd ref="3287804572"/>
+   <nd ref="3287804573"/>
+   <nd ref="3803481949"/>
+   <nd ref="3287804574"/>
+   <nd ref="3287804578"/>
+   <nd ref="3287804576"/>
+   <nd ref="6648486565"/>
+   <nd ref="10073809983"/>
+   <nd ref="3287804571"/>
+   <nd ref="3287804570"/>
+   <nd ref="3287804568"/>
+   <nd ref="3287804562"/>
+   <nd ref="3287804561"/>
+   <nd ref="3287804563"/>
+   <nd ref="3287804564"/>
+   <nd ref="10069702330"/>
+   <nd ref="3287804566"/>
+   <nd ref="6648486561"/>
+   <nd ref="3287804567"/>
+   <nd ref="6648486560"/>
+   <nd ref="6648486559"/>
+   <nd ref="6574554173"/>
+   <nd ref="3287804580"/>
+   <nd ref="6574554172"/>
+   <nd ref="3287804586"/>
+   <nd ref="6648486558"/>
+   <nd ref="3287804587"/>
+   <nd ref="6648486557"/>
+   <nd ref="3287804588"/>
+   <nd ref="3287804589"/>
+   <nd ref="6648486556"/>
+   <nd ref="3287804590"/>
+   <nd ref="6648486555"/>
+   <nd ref="6648486554"/>
+   <nd ref="3287804594"/>
+   <nd ref="3287804593"/>
+   <nd ref="6648486552"/>
+   <nd ref="3287804592"/>
+   <nd ref="6572507999"/>
+   <nd ref="3287804591"/>
+   <nd ref="3287804595"/>
+   <nd ref="6572507998"/>
+   <nd ref="3287804596"/>
+   <nd ref="3287804597"/>
+   <nd ref="3287804598"/>
+   <nd ref="3287804599"/>
+   <nd ref="3287804600"/>
+   <nd ref="3287804601"/>
+   <nd ref="3287804602"/>
+   <nd ref="3287804603"/>
+   <nd ref="3287804604"/>
+   <nd ref="3287804605"/>
+   <nd ref="3287804606"/>
+   <nd ref="3287804607"/>
+   <nd ref="3287804608"/>
+   <nd ref="3287804609"/>
+   <nd ref="3287804610"/>
+   <nd ref="3287804611"/>
+   <nd ref="3287804612"/>
+   <nd ref="3287804613"/>
+   <nd ref="3287804614"/>
+   <nd ref="3287804615"/>
+   <nd ref="3287804616"/>
+   <nd ref="10069702334"/>
+   <nd ref="3287804617"/>
+   <nd ref="3287804618"/>
+   <nd ref="6572507997"/>
+   <nd ref="6572507996"/>
+   <nd ref="3287804619"/>
+   <nd ref="3287804620"/>
+   <nd ref="3287804621"/>
+   <nd ref="6574554171"/>
+   <nd ref="3287804622"/>
+   <nd ref="6574554170"/>
+   <nd ref="6574554169"/>
+   <nd ref="3287804623"/>
+   <nd ref="3287804629"/>
+   <nd ref="3287804634"/>
+   <nd ref="6574554168"/>
+   <nd ref="3287804633"/>
+   <nd ref="3287804631"/>
+   <nd ref="3287804624"/>
+   <nd ref="6574554167"/>
+   <nd ref="3287804625"/>
+   <nd ref="3287804626"/>
+   <nd ref="3287804628"/>
+   <nd ref="3287804627"/>
+   <nd ref="3287804630"/>
+   <nd ref="3287804635"/>
+   <nd ref="3803482838"/>
+   <nd ref="3287804636"/>
+   <nd ref="3287804637"/>
+   <nd ref="3287804638"/>
+   <nd ref="3287804639"/>
+   <nd ref="3287804640"/>
+   <nd ref="3287804641"/>
+   <nd ref="3287804642"/>
+   <nd ref="3287804643"/>
+   <nd ref="3287804644"/>
+   <nd ref="3287804645"/>
+   <nd ref="6574554165"/>
+   <nd ref="3287804646"/>
+   <nd ref="3287804647"/>
+   <nd ref="6574554164"/>
+   <nd ref="3287804648"/>
+   <nd ref="3287804649"/>
+   <nd ref="6574554163"/>
+   <nd ref="6574554162"/>
+   <nd ref="3287804650"/>
+   <nd ref="3287804651"/>
+   <nd ref="3287804652"/>
+   <nd ref="6574554161"/>
+   <nd ref="3287804653"/>
+   <tag k="highway" v="unclassified"/>
+   <tag k="lanes" v="2"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="376974465" visible="true" version="27" changeset="149074040" timestamp="2024-03-24T03:37:12Z" user="Petr Jenč" uid="15169703">
+   <nd ref="3803455305"/>
+   <nd ref="1997363849"/>
+   <nd ref="6690516501"/>
+   <nd ref="297776303"/>
+   <nd ref="6690516502"/>
+   <nd ref="6690516503"/>
+   <nd ref="1997363851"/>
+   <nd ref="1997363853"/>
+   <nd ref="297776304"/>
+   <nd ref="1997363867"/>
+   <nd ref="6690516499"/>
+   <nd ref="6690516500"/>
+   <nd ref="1997363866"/>
+   <nd ref="297776305"/>
+   <nd ref="6690516498"/>
+   <nd ref="6690516497"/>
+   <nd ref="6690516496"/>
+   <nd ref="1997363863"/>
+   <nd ref="297776306"/>
+   <nd ref="1997363835"/>
+   <nd ref="1997363833"/>
+   <nd ref="6690516495"/>
+   <nd ref="297776307"/>
+   <nd ref="6690516494"/>
+   <nd ref="1997363829"/>
+   <nd ref="6690516493"/>
+   <nd ref="6690516492"/>
+   <nd ref="297776014"/>
+   <nd ref="6690516491"/>
+   <nd ref="1997363831"/>
+   <nd ref="1997363836"/>
+   <nd ref="6690516490"/>
+   <nd ref="297776309"/>
+   <nd ref="6690516489"/>
+   <nd ref="1997363845"/>
+   <nd ref="6690516488"/>
+   <nd ref="1997363846"/>
+   <nd ref="1997363848"/>
+   <nd ref="6690516485"/>
+   <nd ref="6690516486"/>
+   <nd ref="6690516487"/>
+   <nd ref="297776018"/>
+   <nd ref="1997363855"/>
+   <nd ref="6690494484"/>
+   <nd ref="1997363865"/>
+   <nd ref="297776311"/>
+   <nd ref="6690494482"/>
+   <nd ref="6690494483"/>
+   <nd ref="1997363869"/>
+   <nd ref="297776020"/>
+   <nd ref="6690494481"/>
+   <nd ref="6690494480"/>
+   <nd ref="297776021"/>
+   <nd ref="6690494478"/>
+   <nd ref="6690494479"/>
+   <nd ref="1997363847"/>
+   <nd ref="1997363837"/>
+   <nd ref="6690494477"/>
+   <nd ref="6690494476"/>
+   <nd ref="297776022"/>
+   <nd ref="6690494475"/>
+   <nd ref="1997363825"/>
+   <nd ref="6690494474"/>
+   <nd ref="297776312"/>
+   <nd ref="6690494472"/>
+   <nd ref="6690494473"/>
+   <nd ref="1997363791"/>
+   <nd ref="297776313"/>
+   <nd ref="6690494469"/>
+   <nd ref="1997363788"/>
+   <nd ref="297776314"/>
+   <nd ref="6690494471"/>
+   <nd ref="6690494470"/>
+   <nd ref="6690494468"/>
+   <nd ref="1997363785"/>
+   <nd ref="6690494467"/>
+   <nd ref="6690494466"/>
+   <nd ref="6690494465"/>
+   <nd ref="1997363778"/>
+   <nd ref="6690494464"/>
+   <nd ref="6709509768"/>
+   <nd ref="297776026"/>
+   <nd ref="1997363777"/>
+   <nd ref="6693801344"/>
+   <nd ref="297776027"/>
+   <nd ref="1997363783"/>
+   <nd ref="6693801342"/>
+   <nd ref="6693801343"/>
+   <nd ref="1997363784"/>
+   <nd ref="297776315"/>
+   <nd ref="6693801341"/>
+   <nd ref="297776316"/>
+   <nd ref="6693801340"/>
+   <nd ref="1997363775"/>
+   <nd ref="6693801339"/>
+   <nd ref="1997363774"/>
+   <nd ref="297776030"/>
+   <nd ref="6693801337"/>
+   <nd ref="6693801338"/>
+   <nd ref="1997363773"/>
+   <nd ref="1997363772"/>
+   <nd ref="6693801336"/>
+   <nd ref="1997363771"/>
+   <nd ref="6693801335"/>
+   <nd ref="297776317"/>
+   <nd ref="6693801334"/>
+   <nd ref="1997363770"/>
+   <nd ref="1997363769"/>
+   <nd ref="1997363757"/>
+   <nd ref="6693801332"/>
+   <nd ref="297776032"/>
+   <nd ref="6693801333"/>
+   <nd ref="1997363756"/>
+   <nd ref="297776318"/>
+   <nd ref="1997363755"/>
+   <nd ref="6693801331"/>
+   <nd ref="6693801330"/>
+   <nd ref="297776319"/>
+   <nd ref="6693801329"/>
+   <nd ref="1997363754"/>
+   <nd ref="6693801328"/>
+   <nd ref="297776036"/>
+   <nd ref="1997363753"/>
+   <nd ref="6693801326"/>
+   <nd ref="6693801327"/>
+   <nd ref="297776037"/>
+   <nd ref="1997363752"/>
+   <nd ref="6693801325"/>
+   <nd ref="6693801324"/>
+   <nd ref="1997363751"/>
+   <nd ref="6693801323"/>
+   <nd ref="1997363750"/>
+   <nd ref="6693801322"/>
+   <nd ref="297776039"/>
+   <nd ref="6693801321"/>
+   <nd ref="1997363749"/>
+   <nd ref="297776040"/>
+   <nd ref="6693801320"/>
+   <nd ref="8722309379"/>
+   <nd ref="1997363741"/>
+   <nd ref="1997363738"/>
+   <nd ref="6693801318"/>
+   <nd ref="6693801319"/>
+   <nd ref="297776321"/>
+   <nd ref="297776322"/>
+   <nd ref="1997363734"/>
+   <nd ref="297776043"/>
+   <nd ref="6693801317"/>
+   <nd ref="6693801316"/>
+   <nd ref="1997363732"/>
+   <nd ref="1997363733"/>
+   <nd ref="297776044"/>
+   <nd ref="6693801315"/>
+   <nd ref="297776045"/>
+   <nd ref="6693801314"/>
+   <nd ref="1997363730"/>
+   <nd ref="1997363724"/>
+   <nd ref="297776046"/>
+   <nd ref="6693801313"/>
+   <nd ref="1997363720"/>
+   <nd ref="6693801312"/>
+   <nd ref="1997363718"/>
+   <nd ref="297776323"/>
+   <nd ref="6693801310"/>
+   <nd ref="6693801311"/>
+   <nd ref="1997363719"/>
+   <nd ref="1997363722"/>
+   <nd ref="297776049"/>
+   <nd ref="6693801309"/>
+   <nd ref="1997363726"/>
+   <nd ref="1997363725"/>
+   <nd ref="1997363723"/>
+   <nd ref="6693801308"/>
+   <nd ref="297776325"/>
+   <nd ref="1997363717"/>
+   <nd ref="1997363716"/>
+   <nd ref="1997363714"/>
+   <nd ref="6693801307"/>
+   <nd ref="1997363708"/>
+   <nd ref="297776051"/>
+   <nd ref="6693801306"/>
+   <nd ref="1997363707"/>
+   <nd ref="297776052"/>
+   <nd ref="6693801305"/>
+   <nd ref="1997363706"/>
+   <nd ref="297776053"/>
+   <nd ref="6693801304"/>
+   <nd ref="6693801303"/>
+   <nd ref="1997363709"/>
+   <nd ref="297776326"/>
+   <nd ref="6693801302"/>
+   <nd ref="1997363712"/>
+   <nd ref="1997363710"/>
+   <nd ref="1997363711"/>
+   <nd ref="6693801301"/>
+   <nd ref="1997363713"/>
+   <nd ref="6693801298"/>
+   <nd ref="6693801299"/>
+   <nd ref="297776055"/>
+   <nd ref="6693801300"/>
+   <nd ref="297776056"/>
+   <nd ref="1997363715"/>
+   <nd ref="6521693579"/>
+   <nd ref="6521745901"/>
+   <nd ref="1997363721"/>
+   <nd ref="297776327"/>
+   <nd ref="297776059"/>
+   <nd ref="11342839284"/>
+   <nd ref="11342839280"/>
+   <nd ref="11342839279"/>
+   <nd ref="3287800679"/>
+   <nd ref="6693909119"/>
+   <nd ref="6521745902"/>
+   <nd ref="1997363735"/>
+   <nd ref="6693909116"/>
+   <nd ref="6521693580"/>
+   <nd ref="1997363736"/>
+   <nd ref="6693909115"/>
+   <nd ref="297776328"/>
+   <nd ref="6521693581"/>
+   <nd ref="6693909114"/>
+   <nd ref="1997363740"/>
+   <nd ref="6693909113"/>
+   <nd ref="6521745903"/>
+   <nd ref="6521693582"/>
+   <nd ref="1997363742"/>
+   <nd ref="297776329"/>
+   <nd ref="6693909111"/>
+   <nd ref="6693909112"/>
+   <nd ref="6693909110"/>
+   <nd ref="1997363743"/>
+   <nd ref="1997363745"/>
+   <nd ref="6693909109"/>
+   <nd ref="6521693583"/>
+   <nd ref="1997363748"/>
+   <nd ref="297776332"/>
+   <nd ref="6521693584"/>
+   <nd ref="6693909107"/>
+   <nd ref="6693909108"/>
+   <nd ref="1997363744"/>
+   <nd ref="6521745085"/>
+   <nd ref="6521745904"/>
+   <nd ref="6521745086"/>
+   <nd ref="1997363739"/>
+   <nd ref="1997363737"/>
+   <nd ref="6693909106"/>
+   <nd ref="6693909105"/>
+   <nd ref="6521745087"/>
+   <nd ref="297776063"/>
+   <nd ref="6693909103"/>
+   <nd ref="6693909104"/>
+   <nd ref="1997363731"/>
+   <nd ref="6521745089"/>
+   <nd ref="6521745090"/>
+   <nd ref="6521745088"/>
+   <nd ref="6693909102"/>
+   <nd ref="297776064"/>
+   <nd ref="1997363729"/>
+   <nd ref="6693909099"/>
+   <nd ref="6693909100"/>
+   <nd ref="6693909101"/>
+   <nd ref="297776065"/>
+   <nd ref="6521745091"/>
+   <nd ref="1997363727"/>
+   <nd ref="6693909097"/>
+   <nd ref="6693909098"/>
+   <nd ref="297776334"/>
+   <nd ref="6693909095"/>
+   <nd ref="6693909096"/>
+   <nd ref="1997363728"/>
+   <nd ref="297776335"/>
+   <nd ref="6693909094"/>
+   <nd ref="6521745092"/>
+   <nd ref="6693909093"/>
+   <nd ref="1997332567"/>
+   <nd ref="297776068"/>
+   <nd ref="1997332610"/>
+   <nd ref="1997332618"/>
+   <nd ref="6521693578"/>
+   <nd ref="297776069"/>
+   <nd ref="6521693577"/>
+   <nd ref="6521745093"/>
+   <nd ref="1997332630"/>
+   <nd ref="297776336"/>
+   <nd ref="1997332632"/>
+   <nd ref="10069703500"/>
+   <nd ref="1997332626"/>
+   <nd ref="297776071"/>
+   <nd ref="6693909091"/>
+   <nd ref="1997332628"/>
+   <nd ref="1997332634"/>
+   <nd ref="6572495155"/>
+   <nd ref="297776337"/>
+   <nd ref="1997332651"/>
+   <nd ref="1997332655"/>
+   <nd ref="6693909089"/>
+   <nd ref="6693909090"/>
+   <nd ref="297776074"/>
+   <nd ref="6572495154"/>
+   <nd ref="6693909088"/>
+   <nd ref="6693909087"/>
+   <nd ref="3803483178"/>
+   <nd ref="1997332631"/>
+   <nd ref="6693909085"/>
+   <nd ref="6693909086"/>
+   <nd ref="297776075"/>
+   <nd ref="6572495153"/>
+   <nd ref="6693909084"/>
+   <nd ref="1997332611"/>
+   <nd ref="297776339"/>
+   <nd ref="6693909083"/>
+   <nd ref="1997332594"/>
+   <nd ref="6572495152"/>
+   <nd ref="11757120791"/>
+   <nd ref="11757120793"/>
+   <nd ref="1997332570"/>
+   <nd ref="1997332557"/>
+   <nd ref="297776340"/>
+   <nd ref="6693909082"/>
+   <nd ref="6572495151"/>
+   <nd ref="1997332554"/>
+   <nd ref="297776078"/>
+   <nd ref="6693909080"/>
+   <nd ref="1997332565"/>
+   <nd ref="6572495150"/>
+   <nd ref="297776341"/>
+   <nd ref="1997332590"/>
+   <nd ref="4783837744"/>
+   <nd ref="6574536318"/>
+   <nd ref="1997332588"/>
+   <nd ref="297776342"/>
+   <nd ref="11757120776"/>
+   <nd ref="11047450174"/>
+   <nd ref="6574536317"/>
+   <nd ref="297776343"/>
+   <nd ref="6574536316"/>
+   <nd ref="6693909077"/>
+   <nd ref="1997332556"/>
+   <nd ref="6693909076"/>
+   <nd ref="6693909078"/>
+   <nd ref="297776082"/>
+   <nd ref="6574536315"/>
+   <nd ref="11757120832"/>
+   <nd ref="11757120833"/>
+   <nd ref="3287804653"/>
+   <nd ref="1997332596"/>
+   <nd ref="1997332617"/>
+   <nd ref="6693909074"/>
+   <nd ref="297776344"/>
+   <nd ref="1997332638"/>
+   <nd ref="1997332649"/>
+   <nd ref="6574536314"/>
+   <nd ref="6693909073"/>
+   <nd ref="297776345"/>
+   <nd ref="1997332680"/>
+   <nd ref="1997332799"/>
+   <nd ref="1997332810"/>
+   <nd ref="1997332816"/>
+   <nd ref="1997332829"/>
+   <nd ref="6574536313"/>
+   <nd ref="297776346"/>
+   <nd ref="6693909072"/>
+   <nd ref="1997332844"/>
+   <nd ref="6574536312"/>
+   <nd ref="1997332858"/>
+   <nd ref="6693909071"/>
+   <nd ref="1997332877"/>
+   <nd ref="6693909070"/>
+   <nd ref="1997332885"/>
+   <nd ref="1997332893"/>
+   <nd ref="6693909069"/>
+   <nd ref="1997332896"/>
+   <nd ref="297776348"/>
+   <nd ref="1997332904"/>
+   <nd ref="6693909067"/>
+   <nd ref="1997332908"/>
+   <nd ref="6693909065"/>
+   <nd ref="1997332962"/>
+   <nd ref="6693909063"/>
+   <nd ref="297776088"/>
+   <nd ref="6693909061"/>
+   <nd ref="6693909059"/>
+   <nd ref="6693909060"/>
+   <nd ref="1997333003"/>
+   <nd ref="1997333002"/>
+   <nd ref="297775142"/>
+   <nd ref="1997332960"/>
+   <nd ref="6693909055"/>
+   <nd ref="6693909057"/>
+   <nd ref="1997332955"/>
+   <nd ref="297775143"/>
+   <nd ref="6693909052"/>
+   <nd ref="6693909054"/>
+   <nd ref="1997332968"/>
+   <nd ref="1997333001"/>
+   <nd ref="6693909051"/>
+   <nd ref="6693909050"/>
+   <nd ref="297776089"/>
+   <nd ref="6693909049"/>
+   <nd ref="6693909048"/>
+   <nd ref="6566777589"/>
+   <nd ref="6693909047"/>
+   <nd ref="297776350"/>
+   <nd ref="1997333020"/>
+   <nd ref="6693909044"/>
+   <nd ref="6566777590"/>
+   <nd ref="1997333021"/>
+   <nd ref="6566777591"/>
+   <nd ref="1997333019"/>
+   <nd ref="6566777592"/>
+   <nd ref="1997333017"/>
+   <nd ref="297776353"/>
+   <nd ref="6693909040"/>
+   <nd ref="6693909041"/>
+   <nd ref="1997333012"/>
+   <nd ref="1997333009"/>
+   <nd ref="6693909038"/>
+   <nd ref="297776092"/>
+   <nd ref="6693909036"/>
+   <nd ref="1997332964"/>
+   <nd ref="6693909035"/>
+   <nd ref="1997332913"/>
+   <nd ref="6693909033"/>
+   <nd ref="6693909034"/>
+   <nd ref="297776355"/>
+   <nd ref="6693909031"/>
+   <nd ref="6693909032"/>
+   <nd ref="1997332905"/>
+   <nd ref="1997332901"/>
+   <nd ref="6693909030"/>
+   <nd ref="297775150"/>
+   <nd ref="6693909029"/>
+   <nd ref="1997332895"/>
+   <nd ref="6693909028"/>
+   <nd ref="297776094"/>
+   <nd ref="6693909027"/>
+   <nd ref="6693909026"/>
+   <nd ref="1997332886"/>
+   <nd ref="6693909025"/>
+   <nd ref="297776357"/>
+   <nd ref="1997332882"/>
+   <nd ref="6693909024"/>
+   <nd ref="6693909023"/>
+   <nd ref="1997332880"/>
+   <nd ref="6693909022"/>
+   <nd ref="297776096"/>
+   <nd ref="1997332878"/>
+   <nd ref="6693909021"/>
+   <nd ref="1997332876"/>
+   <nd ref="6693909020"/>
+   <nd ref="1997332873"/>
+   <nd ref="6693909019"/>
+   <nd ref="297775154"/>
+   <nd ref="6693909018"/>
+   <nd ref="1997332863"/>
+   <nd ref="6563017282"/>
+   <nd ref="297775155"/>
+   <nd ref="6563031032"/>
+   <nd ref="1997332850"/>
+   <nd ref="6563031031"/>
+   <nd ref="1997332840"/>
+   <nd ref="1997332837"/>
+   <nd ref="6563031035"/>
+   <nd ref="297775156"/>
+   <nd ref="6563031036"/>
+   <nd ref="6693909017"/>
+   <nd ref="1997332825"/>
+   <nd ref="6563017283"/>
+   <nd ref="297776359"/>
+   <nd ref="6563031034"/>
+   <nd ref="1997332796"/>
+   <nd ref="6563031033"/>
+   <nd ref="297775159"/>
+   <nd ref="6693909016"/>
+   <nd ref="1997332757"/>
+   <nd ref="6693909015"/>
+   <nd ref="1997332684"/>
+   <nd ref="6567896705"/>
+   <nd ref="6693909014"/>
+   <nd ref="6693909013"/>
+   <nd ref="297775160"/>
+   <nd ref="1997332670"/>
+   <nd ref="6693909012"/>
+   <nd ref="6693909011"/>
+   <nd ref="297776099"/>
+   <nd ref="6693909010"/>
+   <nd ref="1997332673"/>
+   <nd ref="6693909009"/>
+   <nd ref="6693909008"/>
+   <nd ref="1997332742"/>
+   <nd ref="6693909007"/>
+   <nd ref="297775162"/>
+   <nd ref="1997332754"/>
+   <nd ref="1997332751"/>
+   <nd ref="6693909006"/>
+   <nd ref="6693909005"/>
+   <nd ref="297775163"/>
+   <nd ref="6693909004"/>
+   <nd ref="1997332686"/>
+   <nd ref="297776100"/>
+   <nd ref="1997332668"/>
+   <nd ref="1997332641"/>
+   <nd ref="297775165"/>
+   <nd ref="1997332629"/>
+   <nd ref="1997332627"/>
+   <nd ref="297775166"/>
+   <nd ref="6693909003"/>
+   <nd ref="1997332633"/>
+   <nd ref="6693909002"/>
+   <nd ref="297775167"/>
+   <nd ref="1997332666"/>
+   <nd ref="6693909001"/>
+   <nd ref="1997332667"/>
+   <nd ref="1997332653"/>
+   <nd ref="2977431485"/>
+   <nd ref="1997332647"/>
+   <nd ref="1997332639"/>
+   <nd ref="297776361"/>
+   <nd ref="6693909000"/>
+   <nd ref="1997332623"/>
+   <nd ref="297775169"/>
+   <nd ref="1997332572"/>
+   <nd ref="6693908999"/>
+   <nd ref="6693908998"/>
+   <nd ref="1997332561"/>
+   <nd ref="1997332555"/>
+   <nd ref="1997332551"/>
+   <nd ref="6693908997"/>
+   <nd ref="297776102"/>
+   <nd ref="6693908996"/>
+   <nd ref="6693908995"/>
+   <nd ref="297776363"/>
+   <nd ref="6693908994"/>
+   <nd ref="1997332543"/>
+   <nd ref="6693908993"/>
+   <nd ref="1997332541"/>
+   <nd ref="297776104"/>
+   <nd ref="1997332533"/>
+   <nd ref="6693908992"/>
+   <nd ref="1997332527"/>
+   <nd ref="297775174"/>
+   <nd ref="6693908991"/>
+   <nd ref="6693908990"/>
+   <nd ref="1997332468"/>
+   <nd ref="1997332455"/>
+   <nd ref="297775175"/>
+   <nd ref="6693908989"/>
+   <nd ref="1997332437"/>
+   <nd ref="1997332422"/>
+   <nd ref="1997332408"/>
+   <nd ref="1997332390"/>
+   <nd ref="297775176"/>
+   <nd ref="6693908988"/>
+   <nd ref="1997332352"/>
+   <nd ref="6584300562"/>
+   <nd ref="6570171411"/>
+   <nd ref="6584300561"/>
+   <nd ref="6570171410"/>
+   <nd ref="6584300560"/>
+   <nd ref="6570171409"/>
+   <nd ref="1997332300"/>
+   <nd ref="6693908987"/>
+   <nd ref="1997332295"/>
+   <nd ref="6570171408"/>
+   <nd ref="3803267175"/>
+   <nd ref="1997332280"/>
+   <nd ref="11298987397"/>
+   <nd ref="297775177"/>
+   <nd ref="6570171407"/>
+   <nd ref="1997332231"/>
+   <nd ref="6693908986"/>
+   <nd ref="1997332212"/>
+   <nd ref="297776105"/>
+   <nd ref="6693908985"/>
+   <nd ref="6570171406"/>
+   <nd ref="6570171405"/>
+   <nd ref="1997332096"/>
+   <nd ref="6687367605"/>
+   <nd ref="6687367606"/>
+   <nd ref="6693899084"/>
+   <nd ref="297775180"/>
+   <nd ref="6693899083"/>
+   <nd ref="1997332031"/>
+   <nd ref="6570171404"/>
+   <nd ref="1997331891"/>
+   <nd ref="1997331879"/>
+   <nd ref="297775182"/>
+   <nd ref="6570171403"/>
+   <nd ref="1997331872"/>
+   <nd ref="1997331791"/>
+   <nd ref="6570171402"/>
+   <nd ref="6570171401"/>
+   <nd ref="297775183"/>
+   <tag k="highway" v="primary"/>
+   <tag k="lanes" v="2"/>
+   <tag k="name" v="الطريق الوطنية مدنين - حزوة"/>
+   <tag k="name:ar" v="الطريق الوطنية مدنين - حزوة"/>
+   <tag k="name:fr" v="Route Nationale Medenine - Hazoua"/>
+   <tag k="ref" v="RN20"/>
+   <tag k="surface" v="asphalt"/>
+  </way>
+ </modify>
+</osmChange>

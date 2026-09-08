@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "scope": "EXACT_SINGLE_HOTEL_SOURCE_EXCLUSION",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\lido-hotel-exclusion-source-review.json",
+    "sha256": "aaf0d6ce774532d91775b3b1a095ba6e55ac314a95d1969e3dc5a85dea82a1f5"
+  },
+  "proposedDecision": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\proposed-lido-exclusion-record.json",
+    "sha256": "a3fa25310db2c37a2382bbce6f6485d7261b524edab46ff95579971499dc4c86"
+  },
+  "baselineMetadataSha256": "31ac2b52bbeec196cc3da2eacae11851b23ca08584027ceaf0665e40fc6bb21f",
+  "generatorSha256": "c4bba701f4c06fb2f9f09862e06aa00761233bde91980517522ee9de4429e4b5",
+  "findings": [],
+  "independentChecks": {
+    "fullApiPolygonAndTagsEqualCache": true,
+    "exactPackedGeometryAnd92ByteSlice": true,
+    "allFourHistoryVersionsRead": true,
+    "hotelIdentityPredatesResidentialGardenRetagging": true,
+    "primaryJortPagePersonallyViewed": {
+      "pdfPage": 20,
+      "printedPage": 276,
+      "notice": "2021400217VEPA1",
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\lido-jort-page20.png",
+        "sha256": "0557d0f6ac73dc198eb922612783f514ddf121be796896f071e906b89439c0b9"
+      }
+    },
+    "completeSingletonGroup": [
+      "osm:way:533465358"
+    ],
+    "protectedFullRawRecordsAndGroups": 6,
+    "protectedImadas": 4,
+    "preservedBase": 468,
+    "onlyIntersectingPolygon": "osm:relation:7103336",
+    "sectorCoversWholeHotel": true,
+    "sourceOrCurrentPointMembershipChanges": [],
+    "conflictsInvolvingTarget": [],
+    "activeTargetBoundDependencies": [],
+    "onlyProposedRule": {
+      "id": "osm:way:533465358",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "Lido hôtel & spa nabeul"
+      },
+      "reason": "Exact named hotel compound, with original OSM hotel identity and primary JORT corroboration; not an inhabited-locality choice. Preserve the surrounding El Fehri sector, Dar Chaabane town and Princesse apartment residence. No replacement locality or parcel geometry is inferred.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/lido/lido-hotel-exclusion-source-review.json",
+          "sha256": "aaf0d6ce774532d91775b3b1a095ba6e55ac314a95d1969e3dc5a85dea82a1f5"
+        }
+      ]
+    }
+  },
+  "decision": "Support exclusion of the exact named hotel compound, retiring its saved ID with no replacement. Preserve Princesse658923544, Dar Chaabane174739936/base468 and all four imadas. Ksar Rahache remains unchanged and outside this approval.",
+  "limits": [
+    "The 2021 legal notice supports historical hotel identity/use. Its parcel area is not equated to this OSM ring, and current operation/ownership is not certified.",
+    "No phone or ledger was accessed; phone corroboration was not required for this source conclusion.",
+    "The reported binary splice is for Lido alone. Combined boundaries/exclusions require independent actual generated-data checks."
+  ],
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\way-533465358-full.json",
+      "sha256": "bf2933e3d58ec0bebcc2d86bf6afdb442e17f7d2f4d5605702df47ece37b206a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\queue-eight-source-provenance\\way-533465358-history.json",
+      "sha256": "7647a7dd0474aa842f0c52676aa82e33a02fc939d5dd159353469682ef2c933c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\lido-ksar-exclusion-qualification\\lido-jort-2021-012.pdf",
+      "sha256": "6c0cebf012a761002ceed0db0e0d06a7d96beba2380f882dcd2aaa3cd5f78aea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "7928f3e7291512f152e6ece5452ab87f52d0416a5f68470c78b5e687e4bf03fd"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "cfe5c6df542ec9a02a608c71af7d696533d6ec46b4ffdeca3ff2f5a203ca0807"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_and_stage_lido_exclusion_independently.py",
+      "sha256": "0e97d49c25812ca04b3eec35914c5daad663c6f5aeb01063e62068a6c908fcbd"
+    }
+  ],
+  "operations": {
+    "newFetches": 0,
+    "productHelperOrGeneratorExecution": false,
+    "testsOrBuilds": false,
+    "liveRepoPhoneLedgerMutation": false
+  }
+}

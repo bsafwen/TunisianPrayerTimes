@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "status": "NARROW_FUTURE_IMPLEMENTATION_ADDENDUM_NOT_APPLIED",
+  "originalFrozenReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bourouis-jerissa-display-identity-review.json",
+    "sha256": "a2d640370fd801439fd0ff7b67dd92cca0293d0a68115c68faccfcd3208393fc"
+  },
+  "currentImplementationPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\PrefsManager.kt",
+      "sha256": "ec05edff734624fce4f698967000a51c512cf0560eb7cdcfaca1c7e94e81b77d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\LocalityRepository.kt",
+      "sha256": "77eb4acb077c68377c97eb59a6e7034af77c58476b19c248c6a8402e951d000b"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\GouvernoratRepository.kt",
+      "sha256": "912546adb72fd1ea7ba9703e2f6650b51e32878f33806e39c8123161c5994563"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "c901a7cc582ddf8f0a99e4b93db891e07f785490d5e4e836c3995a312c20e407"
+    }
+  ],
+  "finding": "Updating governors.nomAr alone changes future base rows but does not replace an already saved locality name. PrefsManager reads the saved name and applies only an exact-ID entry from the lightweight reviewedNames index. The current generator populates that index only from raw nameTags curations and official context IDs, so delegation:585 is not presently emitted by that path.",
+  "proposedExactCombinedChanges": [
+    {
+      "component": "base585",
+      "field": "nomAr",
+      "before": "الجريسة",
+      "after": "الجريصة",
+      "keep": [
+        "id",
+        "nomFr",
+        "nomEn",
+        "lat",
+        "lng",
+        "governorate",
+        "timetable"
+      ]
+    },
+    {
+      "component": "generated retired-localities.json reviewedNames",
+      "append": {
+        "id": "delegation:585",
+        "name": "الجريصة",
+        "kind": "delegation"
+      },
+      "guard": "Derive only from a separately reviewed exact base-name correction bound to source/official identity and exact old/new base data. Reject duplicate IDs or contradictory names; preserve all old entries, retirements and replacements."
+    },
+    {
+      "component": "osm:way:179549823 grouped search aliases",
+      "appendAlias": "الجريسة",
+      "guard": "The old base spelling becomes an explicit reviewed historical search alias only after the supported exact residential/base identity is accepted. Preserve all existing source names/aliases and label its provenance as the old app base spelling, not an original OSM tag."
+    },
+    {
+      "component": "picker grouping",
+      "id": "osm:way:179549823",
+      "field": "pickerGroupId",
+      "before": "osm:way:179549823",
+      "after": "delegation:585",
+      "guard": "Keep exact two-member final group and all six imadas separate. Every raw coordinate, geometry, parent, default and source ID stays unchanged; the absorbed town node remains evidence only."
+    }
+  ],
+  "whyExistingKotlinIsEnough": [
+    "LocalityRepository accepts any nonblank non-retired reviewedNames stable ID; delegation:585 with kind delegation already fits the reader.",
+    "PrefsManager selection.copy(name,kind) preserves localityId, source ID and fromGps. The same confirmed label update therefore applies to saved manual or GPS selections with that exact ID, without moving a GPS fix.",
+    "The existing groupPickerLocalities combines member searchText. An explicitly reviewed old-spelling alias on the retained residential member keeps الجريسة searchable on the canonical base group; no global Arabic character normalization is necessary.",
+    "Selections with only a source ID and no saved locality ID already resolve through the current base record; no extra migration is inferred."
+  ],
+  "requiredFinalDeltaReview": "The later actual stage must enumerate the base name, exact raw alias/group additions and one tiny-index entry. Check automatic grouping/context effects because adding a name alias early can affect existing compiler matching; do not hide additional deltas. No map, source-coordinate or timetable correction is part of this addendum.",
+  "screenContext": "Current cross-group candidate screen has24 candidates, not23. The additional Metline569/sector7119207 alias candidate reflects the newly grouped town aliases and a separately preserved imada; it does not certify an accidental merge. Current name audit137groups/139pairs/0sameSubtitle is separate from this two-case source decision.",
+  "executionScope": "Source-only implementation note. Original review remains frozen; no app, generator, tiny index, phone, ledger, tests or builds changed."
+}

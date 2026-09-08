@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_AND_SCOPE_REVIEW_COMPLETE_PHONE_REVIEW_PENDING",
+  "reviewedAt": "2026-09-07T08:30:11.748954+00:00",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "metadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+  "geometrySha256": "6e1cef46ba7b353741317850ade4b24505d44a0f9dd1f31723ba01f37c5fc168",
+  "records": [
+    {
+      "id": "osm:way:315007832",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:street": "Route Nationale 1",
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "SOS Village d'enfants Mahrès",
+        "website": "https://www.sosve.org/"
+      },
+      "sourceObject": {
+        "id": "osm:way:315007832",
+        "version": 4,
+        "timestamp": "2019-09-27 20:27:40+00:00",
+        "tags": {
+          "addr:street": "Route Nationale 1",
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "SOS Village d'enfants Mahrès",
+          "website": "https://www.sosve.org/"
+        },
+        "nodeCount": 7
+      },
+      "currentFeature": {
+        "id": "osm:way:315007832",
+        "sourceId": "osm",
+        "name": "SOS Village d'enfants Mahrès",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المحرس",
+        "contextAliases": [
+          "Délégation El Mahrès",
+          "El Mahrès",
+          "Mahrès",
+          "المحرس",
+          "محرس",
+          "معتمدية المحرس"
+        ],
+        "governorateId": 359,
+        "lat": 34.530307,
+        "lng": 10.519812,
+        "delegationId": 537,
+        "hasBoundary": true,
+        "bbox": [
+          10.518627,
+          34.529302,
+          10.521009,
+          34.531545
+        ],
+        "areaKm2": 0.030571372607066345,
+        "pickerGroupId": "osm:way:315007832",
+        "offset": 5386024,
+        "length": 68
+      },
+      "classification": "standalone_child_care_institution",
+      "proposedAction": "exclude",
+      "reason": "The source is the walled SOS children care campus on Route Nationale 1. Its operator describes family care homes, a sports field and administration. This is a reviewed standalone institution outside the neighborhood picker scope; the facility exists and is not mislabeled as nonexistent.",
+      "officialProviderEvidence": {
+        "url": "https://www.soschildrensvillages.ca/tunisia/sos-childrens-village-mahres",
+        "resolvedUrl": "https://www.soschildrensvillages.ca/tunisia/sos-childrens-village-mahres",
+        "retrievedAt": "2026-09-07T08:30:11.532447+00:00",
+        "sha256": "c8239dc7fe778ee7f739f425ef85640a30712f88c88eccd436f24c6c4e2842a4",
+        "pageTitle": "SOS Children's Village Mahrès",
+        "finding": "The operator describes children care homes, a football ground and an administrative building in Mahres.",
+        "tunisianOperatorPage": "https://www.sosve.tn/village-sos-mahres/",
+        "tunisianOperatorPageAccess": "Read through web browser extraction; direct urllib archival request returned HTTP403. No raw page hash claimed for that page."
+      },
+      "fullFootprintContainingLocalities": [
+        {
+          "id": "osm:relation:7110921",
+          "name": "المحرس",
+          "kind": "sector",
+          "areaKm2": 23.600835480025687
+        }
+      ],
+      "packedGeometrySha256": "e042842a641bd0ae4a449872a43a42751903eb4ba04086814c975ec4dfa872d3",
+      "savedSelectionHandling": "Add the ID to the existing retired-localities asset so a stale label clears while its prayer source is preserved."
+    },
+    {
+      "id": "osm:way:691401654",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "مشكلة حق الطريق",
+        "name:ar": "مشكلة حق الطريق",
+        "name:fr": "Probleme ouverture d'emprise"
+      },
+      "sourceObject": {
+        "id": "osm:way:691401654",
+        "version": 3,
+        "timestamp": "2019-12-15 01:08:43+00:00",
+        "tags": {
+          "landuse": "residential",
+          "name": "مشكلة حق الطريق",
+          "name:ar": "مشكلة حق الطريق",
+          "name:fr": "Probleme ouverture d'emprise"
+        },
+        "nodeCount": 12
+      },
+      "currentFeature": {
+        "id": "osm:way:691401654",
+        "sourceId": "osm",
+        "name": "مشكلة حق الطريق",
+        "aliases": [
+          "Probleme ouverture d'emprise"
+        ],
+        "kind": "residential",
+        "parentName": "عقارب",
+        "contextAliases": [
+          "Agareb",
+          "Délégation Agareb",
+          "عقارب",
+          "معتمدية عقارب"
+        ],
+        "governorateId": 359,
+        "lat": 34.740203,
+        "lng": 10.516765,
+        "delegationId": 540,
+        "hasBoundary": true,
+        "bbox": [
+          10.516186,
+          34.739542,
+          10.51883,
+          34.740942
+        ],
+        "areaKm2": 0.011084847681064434,
+        "pickerGroupId": "osm:way:691401654",
+        "offset": 5423776,
+        "length": 108
+      },
+      "classification": "generic_mapping_issue_annotation",
+      "proposedAction": "exclude",
+      "reason": "Both Arabic and French source labels describe a right-of-way/opening problem rather than identify a named locality. The object has only residential landuse and these annotation names, with no independent place or administrative identity.",
+      "officialProviderEvidence": null,
+      "fullFootprintContainingLocalities": [
+        {
+          "id": "osm:way:685815670",
+          "name": "Cité El Dhiret et Arfawin",
+          "kind": "residential",
+          "areaKm2": 0.35648332265223054
+        },
+        {
+          "id": "osm:relation:7046892",
+          "name": "عقارب",
+          "kind": "sector",
+          "areaKm2": 40.72574937068836
+        }
+      ],
+      "packedGeometrySha256": "5667054b502524788ae743c177b18a4454ec7518e4bcc2c3de264fec3c960f2a",
+      "savedSelectionHandling": "Add the ID to the existing retired-localities asset so a stale label clears while its prayer source is preserved."
+    }
+  ],
+  "limits": "These two individually reviewed scope exclusions do not establish a generic word filter or certify the remaining localities."
+}

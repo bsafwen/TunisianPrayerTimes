@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T18:31:17.343382+00:00",
+  "status": "PASS_EXACT_THREE_METADATA_CONTEXT_CORRECTIONS_SUPPORTED",
+  "proposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\haf-oulad-hamed-context-review.json",
+    "sha256": "e687788401a1cdd84dd7093156a391aa966e330eec451d811038db11540c7431"
+  },
+  "metadataSha256": "e4847923c9d5ae90104520b153bbcc118721e89cad297e33dc31938584958ae4",
+  "binarySha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\direct-pbf-source-facts.json",
+    "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+    "bytes": 529199
+  },
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "officialIndex": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+    "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651"
+  },
+  "registryAndSourceIdentity": {
+    "newCode": "535260",
+    "newName": "الدويرات",
+    "newSourceId": "osm:relation:7143879",
+    "oldCode": "535263",
+    "oldName": "رأس الوادي",
+    "parentCode": "5352",
+    "parentName": "تطاوين الجنوبية",
+    "bothUniqueExactRegistryMatches": true,
+    "newSourceTagsMatchUniqueCachedCode": true,
+    "note": "Per-locality original tags/geometries reuse the pinned direct PBF facts; no full-PBF reread. The context source id/code/name is checked against current catalog/cache and the independently pinned INS registry. Its old polygon is not used to establish this correction."
+  },
+  "administrativeScope": {
+    "decree": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "bytes": 10636520
+    },
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "personallyViewedBothFullPages": true,
+    "rows": [
+      {
+        "pdfPage": 32,
+        "jortPage": 5129,
+        "imadaName": "الدويرات",
+        "circleName": "الدويرات",
+        "result": "whole_imada",
+        "parent": "تطاوين الجنوبية"
+      },
+      {
+        "pdfPage": 33,
+        "jortPage": 5130,
+        "imadaName": "رأس الوادي",
+        "circleName": "رأس الوادي",
+        "result": "whole_imada",
+        "parent": "تطاوين الجنوبية",
+        "parentContinuationFromPreviousPage": true
+      }
+    ]
+  },
+  "maps": {
+    "eddouiret": {
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-oulad-hamed-identity-review\\eddouiret-isie2023.pdf",
+        "sha256": "b2635175b1ea744418441f1410f4899eab8b498c4785e6207bdd06bd6f7d7e9f"
+      },
+      "primaryUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/الدويرات.pdf",
+      "drawingIndex": 559,
+      "explicitlyClosed": true,
+      "sourcePathItemCount": 169,
+      "sourcePathVertices": 170,
+      "sourcePathGeometryUnrepaired": true,
+      "fullShapeMatchesProposedGeometryExactly": true,
+      "activeClipCount": 2,
+      "fullyInsideEveryActiveClip": true,
+      "epsg": 32632,
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          32.66183,
+          9.8566
+        ],
+        [
+          32.96284,
+          9.85949
+        ],
+        [
+          32.95828,
+          10.37053
+        ],
+        [
+          32.65732,
+          10.36592
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.06041790661759309,
+        0.06041790562304114,
+        0.06041790440697781,
+        0.06041790514697783
+      ],
+      "canonicalGeometrySha256": "8f4621dee602c5d11abfb381bf3a49265b844cf26096d9d6aadbd1ee110ce010",
+      "fullPagePersonallyViewed": true,
+      "visualFinding": "Title and map region identify الدويرات; this is the closed red circle/sector outline, not a neighboring outline or raster annotation.",
+      "livePrimaryBytesMatchCachedSha256": "b2635175b1ea744418441f1410f4899eab8b498c4785e6207bdd06bd6f7d7e9f"
+    },
+    "ras-el-oued": {
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\haf-oulad-hamed-identity-review\\ras-el-oued-isie2023.pdf",
+        "sha256": "7e8815f85903655f68f2aa73c2ce894c42cd801e0980ccb125771779bcd405ea"
+      },
+      "primaryUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/تطاوين الجنوبية/رأس الوادي.pdf",
+      "drawingIndex": 496,
+      "explicitlyClosed": true,
+      "sourcePathItemCount": 563,
+      "sourcePathVertices": 564,
+      "sourcePathGeometryUnrepaired": true,
+      "fullShapeMatchesProposedGeometryExactly": true,
+      "activeClipCount": 2,
+      "fullyInsideEveryActiveClip": true,
+      "epsg": 32632,
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          32.55318,
+          9.85587
+        ],
+        [
+          32.8502,
+          9.85871
+        ],
+        [
+          32.84573,
+          10.36232
+        ],
+        [
+          32.54876,
+          10.35782
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.10717870838542852,
+        0.10717870854312465,
+        0.10717870845962536,
+        0.10717870916460674
+      ],
+      "canonicalGeometrySha256": "b0e874ab04a18c83fb78bcf059b16b3e9bd79dcd17b9b51f8491d763ca6c53d8",
+      "fullPagePersonallyViewed": true,
+      "visualFinding": "Title and map region identify رأس الوادي; this is the closed red circle/sector outline, not a neighboring outline or raster annotation.",
+      "livePrimaryBytesMatchCachedSha256": "7e8815f85903655f68f2aa73c2ce894c42cd801e0980ccb125771779bcd405ea"
+    }
+  },
+  "records": [
+    {
+      "id": "osm:way:1187366129",
+      "sourceKind": "residential",
+      "sourceTagsMatchPinnedPbfFacts": true,
+      "currentFieldsExactlyMatchProposal": true,
+      "originalGeometrySha256": "9ec8cdba6dd95b32867e1a4c149afdc0374a7120d3c2c715960cb7fbbbcff65b",
+      "packedGeometrySha256": "c02b049c38fc4e03605150a78a08f6387f0f069cb0d8d3cd88af690e2ad0118b",
+      "checks": {
+        "originalEntirelyInsideEddouiret": true,
+        "originalEntirelyOutsideRasElOued": true,
+        "packagedEntirelyInsideEddouiret": true,
+        "packagedEntirelyOutsideRasElOued": true
+      },
+      "margins": {
+        "original": {
+          "insideEddouiretMeters": 808.9470697914137,
+          "outsideRasElOuedMeters": 806.1507676071451
+        },
+        "packaged": {
+          "insideEddouiretMeters": 808.9272645114139,
+          "outsideRasElOuedMeters": 806.1309622994435
+        }
+      },
+      "proposedParentName": "الدويرات",
+      "proposedContextAliases": [
+        "Délégation Tataouine Sud",
+        "Edouiret",
+        "Tataouine Sud",
+        "الدويرات",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "preservedManualPrayerSourceId": 624,
+      "preservedPickerGroupId": "osm:way:1187366129"
+    },
+    {
+      "id": "osm:way:1187366130",
+      "sourceKind": "residential",
+      "sourceTagsMatchPinnedPbfFacts": true,
+      "currentFieldsExactlyMatchProposal": true,
+      "originalGeometrySha256": "b38086feded1cd4b03bfeb8652f117fbca4fecfde5d328c2a5ba4c57f1075561",
+      "packedGeometrySha256": "7368d7c555c9fdf38262a866e26bd3a0d8a73a37bac378b94c1c5d94dd5b1289",
+      "checks": {
+        "originalEntirelyInsideEddouiret": true,
+        "originalEntirelyOutsideRasElOued": true,
+        "packagedEntirelyInsideEddouiret": true,
+        "packagedEntirelyOutsideRasElOued": true
+      },
+      "margins": {
+        "original": {
+          "insideEddouiretMeters": 956.5698904160339,
+          "outsideRasElOuedMeters": 952.8809972351229
+        },
+        "packaged": {
+          "insideEddouiretMeters": 956.5181241210873,
+          "outsideRasElOuedMeters": 952.8290023403441
+        }
+      },
+      "proposedParentName": "الدويرات",
+      "proposedContextAliases": [
+        "Délégation Tataouine Sud",
+        "Edouiret",
+        "Tataouine Sud",
+        "الدويرات",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "preservedManualPrayerSourceId": 624,
+      "preservedPickerGroupId": "osm:way:1187366130"
+    },
+    {
+      "id": "osm:node:11522289870",
+      "sourceKind": "hamlet",
+      "sourceTagsMatchPinnedPbfFacts": true,
+      "currentFieldsExactlyMatchProposal": true,
+      "originalGeometrySha256": "a007e1b78feb0e45c37c4df46da11ac50fb59b88a33ab2383e8fe8bf2d427372",
+      "packedGeometrySha256": null,
+      "checks": {
+        "originalEntirelyInsideEddouiret": true,
+        "originalEntirelyOutsideRasElOued": true,
+        "packagedEntirelyInsideEddouiret": true,
+        "packagedEntirelyOutsideRasElOued": true
+      },
+      "margins": {
+        "original": {
+          "insideEddouiretMeters": 856.024488589037,
+          "outsideRasElOuedMeters": 852.4716738303808
+        },
+        "packaged": {
+          "insideEddouiretMeters": 856.024488589037,
+          "outsideRasElOuedMeters": 852.4716738303808
+        }
+      },
+      "proposedParentName": "الدويرات",
+      "proposedContextAliases": [
+        "Délégation Tataouine Sud",
+        "Edouiret",
+        "Tataouine Sud",
+        "الدويرات",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "preservedManualPrayerSourceId": 624,
+      "preservedPickerGroupId": "osm:node:11522289870"
+    }
+  ],
+  "conclusion": {
+    "authoritativeEvidenceSufficientForTheseMetadataCorrections": true,
+    "reason": "The two complete official administrative-equivalent circle maps independently agree that each entire source object lies in Eddouiret and well outside Ras El Oued. More than800m clearance for original and packaged objects is much larger than the measured control residuals and small cross-map registration discrepancy. Current INS confirms the unchanged sector/delegation identities. This supports the exact parent-context labels at these recorded sites without adopting either complete boundary into the runtime catalog.",
+    "allowedFieldsOnly": [
+      "parentName",
+      "contextAliases"
+    ],
+    "allowedIds": [
+      "osm:way:1187366129",
+      "osm:way:1187366130",
+      "osm:node:11522289870"
+    ],
+    "displayMergeApproved": false,
+    "bulkBoundaryImportApproved": false,
+    "nameOrWholeVillageIdentityCertified": false,
+    "guardRequirements": [
+      "Pin each exact source id, original tags/shape or point coordinates and current expected fields.",
+      "Pin the two map source bytes, selected exact paths/controls/clips, whole-imada decree rows and current sector identity.",
+      "Change only context fields for these three records; retain raw IDs, names/aliases, coordinates, polygons, governorate, prayer source624 and all three current picker groups.",
+      "Do not transfer this conclusion automatically to another feature or import the full administrative outlines."
+    ]
+  },
+  "limits": [
+    "Source maps are dated2023 and current registry2024; no claim of complete or absolute current ground accuracy.",
+    "Control residual measures transformation fit, not all real-world source-map error; the wide geometric clearance and two-source agreement make this narrowly scoped correction well supported.",
+    "The underlying older sector geometry remains unreviewed in the app; the explicit context curation must not be mistaken for a full boundary repair.",
+    "The three source-name identities and their duplicate merge remain held independently."
+  ],
+  "operations": {
+    "actualCachedPdfReconstruction": true,
+    "primaryPdfBytesRevalidatedLive": true,
+    "originalAndPackagedGeometryArithmetic": true,
+    "noWholePbfRescan": true,
+    "noRepoOrLedgerOrPhoneChanges": true,
+    "noGenerationTestsOrBuild": true
+  },
+  "errors": []
+}

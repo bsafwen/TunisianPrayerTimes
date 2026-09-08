@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "metadataSha256": "bcde0c23d1981d9e0a50a4eb371e5f8a591ff16f01dcd045e34cfc1f2cb1ff47",
+  "geometrySha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272",
+  "method": "Exact subset of the previously fresh full-PBF area/node inventory, rechecked against current packed bytes and original cache. No new PBF pass; original complete extraction remains byte pinned.",
+  "reusedFullPbfInventory": {
+    "file": "el-adbech-display-reviews/direct-pbf-context-inventory.json",
+    "sha256": "61ef7c5d06737930d86e3f8239801fc96c904b0c05172b07b4368013e7646490"
+  },
+  "records": [
+    {
+      "id": "osm:way:1265702650",
+      "kind": "residential",
+      "sourceId": "osm",
+      "tags": {
+        "landuse": "residential",
+        "name": "El Adbech",
+        "residential": "rural"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.0805537,
+                33.4826933
+              ],
+              [
+                10.0807724,
+                33.4825772
+              ],
+              [
+                10.0810627,
+                33.4824628
+              ],
+              [
+                10.0812058,
+                33.4824064
+              ],
+              [
+                10.0813987,
+                33.4822058
+              ],
+              [
+                10.0814802,
+                33.4820897
+              ],
+              [
+                10.0815126,
+                33.4820274
+              ],
+              [
+                10.0812183,
+                33.4819541
+              ],
+              [
+                10.0807933,
+                33.4818551
+              ],
+              [
+                10.0807268,
+                33.481764
+              ],
+              [
+                10.0808574,
+                33.4814155
+              ],
+              [
+                10.0808864,
+                33.4811541
+              ],
+              [
+                10.0808759,
+                33.4810763
+              ],
+              [
+                10.0810994,
+                33.4809325
+              ],
+              [
+                10.0815279,
+                33.4809421
+              ],
+              [
+                10.081979,
+                33.4809342
+              ],
+              [
+                10.0823707,
+                33.4808847
+              ],
+              [
+                10.082525,
+                33.4808669
+              ],
+              [
+                10.082639,
+                33.4806371
+              ],
+              [
+                10.0827411,
+                33.4802965
+              ],
+              [
+                10.0828645,
+                33.4799441
+              ],
+              [
+                10.0829714,
+                33.479853
+              ],
+              [
+                10.0827418,
+                33.4794395
+              ],
+              [
+                10.0823776,
+                33.4794028
+              ],
+              [
+                10.0821877,
+                33.479185
+              ],
+              [
+                10.0819255,
+                33.4790192
+              ],
+              [
+                10.0817531,
+                33.4790162
+              ],
+              [
+                10.0812955,
+                33.4787153
+              ],
+              [
+                10.0809101,
+                33.4782838
+              ],
+              [
+                10.0811389,
+                33.4781311
+              ],
+              [
+                10.0817791,
+                33.478528
+              ],
+              [
+                10.0820312,
+                33.4786085
+              ],
+              [
+                10.0821009,
+                33.4785637
+              ],
+              [
+                10.0824603,
+                33.4786532
+              ],
+              [
+                10.0827768,
+                33.4791253
+              ],
+              [
+                10.0832704,
+                33.4791029
+              ],
+              [
+                10.0833895,
+                33.4792241
+              ],
+              [
+                10.0833364,
+                33.4792983
+              ],
+              [
+                10.0834631,
+                33.4794596
+              ],
+              [
+                10.0835264,
+                33.4796189
+              ],
+              [
+                10.0834701,
+                33.4797241
+              ],
+              [
+                10.0832486,
+                33.4797726
+              ],
+              [
+                10.0832721,
+                33.479906
+              ],
+              [
+                10.0830629,
+                33.4800545
+              ],
+              [
+                10.0831556,
+                33.4803023
+              ],
+              [
+                10.0832018,
+                33.4806319
+              ],
+              [
+                10.0832866,
+                33.4808296
+              ],
+              [
+                10.0834952,
+                33.480956
+              ],
+              [
+                10.0839671,
+                33.4811908
+              ],
+              [
+                10.0838102,
+                33.4814437
+              ],
+              [
+                10.0836742,
+                33.4814008
+              ],
+              [
+                10.0834242,
+                33.4812541
+              ],
+              [
+                10.0832285,
+                33.4813094
+              ],
+              [
+                10.0828632,
+                33.4814837
+              ],
+              [
+                10.0829581,
+                33.4815512
+              ],
+              [
+                10.0825657,
+                33.4817266
+              ],
+              [
+                10.0826919,
+                33.4819256
+              ],
+              [
+                10.0827164,
+                33.4820609
+              ],
+              [
+                10.0826948,
+                33.4821345
+              ],
+              [
+                10.08266,
+                33.4821596
+              ],
+              [
+                10.0826532,
+                33.4822884
+              ],
+              [
+                10.0823589,
+                33.4822837
+              ],
+              [
+                10.082133,
+                33.4822472
+              ],
+              [
+                10.0820445,
+                33.4822526
+              ],
+              [
+                10.0820547,
+                33.4822987
+              ],
+              [
+                10.0817895,
+                33.4824093
+              ],
+              [
+                10.0816706,
+                33.4824095
+              ],
+              [
+                10.0813211,
+                33.4824661
+              ],
+              [
+                10.0812078,
+                33.4825457
+              ],
+              [
+                10.0812572,
+                33.4828466
+              ],
+              [
+                10.0812721,
+                33.4829679
+              ],
+              [
+                10.0813262,
+                33.4830795
+              ],
+              [
+                10.0812124,
+                33.4831463
+              ],
+              [
+                10.0811553,
+                33.4830781
+              ],
+              [
+                10.0811121,
+                33.4830946
+              ],
+              [
+                10.081007,
+                33.4830482
+              ],
+              [
+                10.0809613,
+                33.4829785
+              ],
+              [
+                10.0805537,
+                33.4826933
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometrySha256": "17d8f420f4fd340f9f131c0950efc792f066543cc06f38b4a195d4c72868ef00",
+      "sourceFactGeometrySha256": "17d8f420f4fd340f9f131c0950efc792f066543cc06f38b4a195d4c72868ef00",
+      "currentMetadata": {
+        "id": "osm:way:1265702650",
+        "sourceId": "osm",
+        "name": "El Adbech",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "عين تونين",
+        "contextAliases": [
+          "Ain Tounine",
+          "Dkhilet Toujane",
+          "دخيلة توجان",
+          "عين تونين",
+          "معتمدية دخيلة توجان"
+        ],
+        "governorateId": 347,
+        "lat": 33.480734,
+        "lng": 10.082918,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.080554,
+          33.478131,
+          10.083967,
+          33.483146
+        ],
+        "areaKm2": 0.05228457126955565,
+        "pickerGroupId": "osm:way:1265702650",
+        "offset": 5216068,
+        "length": 636
+      },
+      "packedGeometrySha256": "1814bfc260fa32d92d9535dcf1b041c37f51da07626ec1aa4fc05a66ac0141a5"
+    },
+    {
+      "id": "osm:way:1265702651",
+      "kind": "residential",
+      "sourceId": "osm",
+      "tags": {
+        "landuse": "residential",
+        "name": "El Adbech",
+        "residential": "rural"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.0845758,
+                33.4799747
+              ],
+              [
+                10.084913,
+                33.4798418
+              ],
+              [
+                10.0850446,
+                33.4800903
+              ],
+              [
+                10.0851831,
+                33.480046
+              ],
+              [
+                10.0852848,
+                33.4802771
+              ],
+              [
+                10.0856394,
+                33.4802866
+              ],
+              [
+                10.0856872,
+                33.4806491
+              ],
+              [
+                10.085612,
+                33.4807867
+              ],
+              [
+                10.0854485,
+                33.480858
+              ],
+              [
+                10.0854603,
+                33.4810645
+              ],
+              [
+                10.0853171,
+                33.4811852
+              ],
+              [
+                10.0849268,
+                33.4813436
+              ],
+              [
+                10.0846509,
+                33.4807756
+              ],
+              [
+                10.0847629,
+                33.4807297
+              ],
+              [
+                10.0847167,
+                33.4804697
+              ],
+              [
+                10.084749,
+                33.4804081
+              ],
+              [
+                10.0846497,
+                33.4802675
+              ],
+              [
+                10.0846705,
+                33.4801211
+              ],
+              [
+                10.0845758,
+                33.4799747
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometrySha256": "1a32bd584c9dda4d2de1e255c91037e07ae4d2feb676a6a7117823d32747f9b1",
+      "sourceFactGeometrySha256": "1a32bd584c9dda4d2de1e255c91037e07ae4d2feb676a6a7117823d32747f9b1",
+      "currentMetadata": {
+        "id": "osm:way:1265702651",
+        "sourceId": "osm",
+        "name": "El Adbech",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "عين تونين",
+        "contextAliases": [
+          "Ain Tounine",
+          "Dkhilet Toujane",
+          "دخيلة توجان",
+          "عين تونين",
+          "معتمدية دخيلة توجان"
+        ],
+        "governorateId": 347,
+        "lat": 33.48056,
+        "lng": 10.085204,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.084576,
+          33.479842,
+          10.085687,
+          33.481344
+        ],
+        "areaKm2": 0.010069491066740944,
+        "pickerGroupId": "osm:way:1265702651",
+        "offset": 5216704,
+        "length": 164
+      },
+      "packedGeometrySha256": "3c22b92008dcd73b49c0f8dfcefe9abe3ee03ff7482dbf424bf37d98329fdb11"
+    },
+    {
+      "id": "osm:way:189085992",
+      "kind": "residential",
+      "sourceId": "osm",
+      "tags": {
+        "addr:city": "El Adbech",
+        "landuse": "residential",
+        "name": "El Adbech",
+        "name:ar": "الأدباش",
+        "name:fr": "El Adbech"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.0830563,
+                33.4853953
+              ],
+              [
+                10.0832746,
+                33.4842522
+              ],
+              [
+                10.0835179,
+                33.4841592
+              ],
+              [
+                10.0836696,
+                33.483971
+              ],
+              [
+                10.0839199,
+                33.4839445
+              ],
+              [
+                10.0840566,
+                33.4839487
+              ],
+              [
+                10.0844031,
+                33.4849916
+              ],
+              [
+                10.0847663,
+                33.4851181
+              ],
+              [
+                10.0850872,
+                33.4851475
+              ],
+              [
+                10.0851507,
+                33.4842622
+              ],
+              [
+                10.0849356,
+                33.4833033
+              ],
+              [
+                10.0853002,
+                33.4831603
+              ],
+              [
+                10.0857361,
+                33.4841441
+              ],
+              [
+                10.086749,
+                33.484989
+              ],
+              [
+                10.0885313,
+                33.4854809
+              ],
+              [
+                10.0901725,
+                33.485791
+              ],
+              [
+                10.0912111,
+                33.4853953
+              ],
+              [
+                10.0909803,
+                33.4848499
+              ],
+              [
+                10.0893776,
+                33.4843687
+              ],
+              [
+                10.088121,
+                33.4838019
+              ],
+              [
+                10.0881851,
+                33.4832138
+              ],
+              [
+                10.089493,
+                33.4829785
+              ],
+              [
+                10.090929,
+                33.4832244
+              ],
+              [
+                10.0926087,
+                33.48408
+              ],
+              [
+                10.0931601,
+                33.4846468
+              ],
+              [
+                10.0924164,
+                33.4852777
+              ],
+              [
+                10.0924933,
+                33.4857375
+              ],
+              [
+                10.0938781,
+                33.4863578
+              ],
+              [
+                10.0947244,
+                33.4862615
+              ],
+              [
+                10.0955706,
+                33.4862081
+              ],
+              [
+                10.0955706,
+                33.4876517
+              ],
+              [
+                10.0938781,
+                33.4882078
+              ],
+              [
+                10.0924549,
+                33.4874485
+              ],
+              [
+                10.0906854,
+                33.4870743
+              ],
+              [
+                10.088966,
+                33.4868881
+              ],
+              [
+                10.0871594,
+                33.487085
+              ],
+              [
+                10.0836333,
+                33.4860049
+              ],
+              [
+                10.0830563,
+                33.4853953
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometrySha256": "0e713d30d888dbe3a02a332292db08dfe54ed383a39fb05a1c28ac389a76c2f9",
+      "sourceFactGeometrySha256": "0e713d30d888dbe3a02a332292db08dfe54ed383a39fb05a1c28ac389a76c2f9",
+      "currentMetadata": {
+        "id": "osm:way:189085992",
+        "sourceId": "osm",
+        "name": "الأدباش",
+        "aliases": [
+          "El Adbech"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية قابس",
+        "contextAliases": [],
+        "governorateId": 347,
+        "lat": 33.485609,
+        "lng": 10.086235,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.083056,
+          33.482979,
+          10.095571,
+          33.488208
+        ],
+        "areaKm2": 0.29550161938013964,
+        "pickerGroupId": "osm:way:189085992",
+        "offset": 5293892,
+        "length": 316
+      },
+      "packedGeometrySha256": "ea4928df3a3da3b1615392c3379d24859c2ceda0dd1d54d855912b5bc887e202"
+    },
+    {
+      "id": "osm:node:1997440361",
+      "kind": "village",
+      "sourceId": "osm",
+      "tags": {
+        "name": "الأدباش",
+        "name:ar": "الأدباش",
+        "name:en": "El Adbech",
+        "name:fr": "El Adbech",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0910266,
+          33.485959
+        ]
+      },
+      "geometrySha256": "a0866ab3b4f7b9883ee853b260c2fbe95950f11206ecc0622b8134e542a796ec",
+      "currentRawRowAbsent": true,
+      "containedBySourceAndPackedMemberId": "osm:way:189085992"
+    }
+  ],
+  "namePeerInventory": {
+    "comparison": "Exact normalized complete place/residential names only; POI names with suffixes remain separate.",
+    "nameKeys": [
+      "الأدباش",
+      "El Adbech"
+    ],
+    "matchingPlaceSourceIds": [
+      "osm:node:1997440361"
+    ],
+    "matchingResidentialSourceIds": [
+      "osm:way:189085992",
+      "osm:way:1265702650",
+      "osm:way:1265702651"
+    ],
+    "fullCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "fullFreshPbfInventory": {
+      "file": "el-adbech-display-reviews/direct-pbf-context-inventory.json",
+      "sha256": "61ef7c5d06737930d86e3f8239801fc96c904b0c05172b07b4368013e7646490"
+    }
+  },
+  "historicalMetadataPreservation": [
+    {
+      "id": "osm:way:1265702650",
+      "groupMembers": [
+        "osm:way:1265702650"
+      ],
+      "metadataUnchangedExceptOffset": true,
+      "packedBytesUnchangedFrom378899Snapshot": true,
+      "packedGeometrySha256": "1814bfc260fa32d92d9535dcf1b041c37f51da07626ec1aa4fc05a66ac0141a5",
+      "oldOffset": 5215032,
+      "currentOffset": 5216068
+    },
+    {
+      "id": "osm:way:1265702651",
+      "groupMembers": [
+        "osm:way:1265702651"
+      ],
+      "metadataUnchangedExceptOffset": true,
+      "packedBytesUnchangedFrom378899Snapshot": true,
+      "packedGeometrySha256": "3c22b92008dcd73b49c0f8dfcefe9abe3ee03ff7482dbf424bf37d98329fdb11",
+      "oldOffset": 5215668,
+      "currentOffset": 5216704
+    },
+    {
+      "id": "osm:way:189085992",
+      "groupMembers": [
+        "osm:way:189085992"
+      ],
+      "metadataUnchangedExceptOffset": true,
+      "packedBytesUnchangedFrom378899Snapshot": true,
+      "packedGeometrySha256": "ea4928df3a3da3b1615392c3379d24859c2ceda0dd1d54d855912b5bc887e202",
+      "oldOffset": 5292856,
+      "currentOffset": 5293892
+    }
+  ]
+}

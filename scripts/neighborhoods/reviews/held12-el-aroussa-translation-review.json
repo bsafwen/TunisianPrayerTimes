@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "status": "supported_translation_only",
+  "id": "osm:way:190914701",
+  "oldPrimaryName": "El Aroussa",
+  "newPrimaryName": "العروسة",
+  "expectedOriginalTags": {
+    "addr:city": "El Aroussa",
+    "addr:country": "TN",
+    "addr:governorate": "Siliana",
+    "landuse": "residential",
+    "name": "El Aroussa",
+    "name:en": "El Aroussa",
+    "name:fr": "L'aroussa"
+  },
+  "originalGeometrySha256": "40afa2ba9081ee322dad443b475c313897cf261c2016f389e7791cde2861fa6b",
+  "sourceFacts": {
+    "file": "direct-pbf-source-facts.json",
+    "sha256": "ec3f10fea74bebd597211981cf729d4d2c073b8d117477c0e4e31483d5f0a878"
+  },
+  "bilingualSector": {
+    "id": "osm:relation:7125149",
+    "expectedOriginalTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "العروسة",
+      "name:ar": "العروسة",
+      "name:fr": "El Aroussa",
+      "ref:tn:codegeo": "246151"
+    },
+    "geometrySha256": "9ad5b482eb7e6a32c60eeba3b61afcaa594976565a2e6dbbbc1c93b64f3737e5"
+  },
+  "bilingualParent": {
+    "id": "osm:relation:7154128",
+    "expectedOriginalTags": {
+      "admin_level": "5",
+      "alt_name:fr": "El Aroussa",
+      "boundary": "administrative",
+      "name": "العروسة",
+      "name:ar": "العروسة",
+      "name:fr": "Aroussa",
+      "ref:tn:codegeo": "2461",
+      "ref:tn:hasc_2": "TN.SL.LA",
+      "wikidata": "Q3049710"
+    },
+    "geometrySha256": "fc1bb7e4009a87cb1798e2e7e4c156ea5fb0d143ada4f8dfd00e51dd5cee9b3d"
+  },
+  "currentOfficialRecord": {
+    "governorateCode": "24",
+    "governorateFr": "Siliana",
+    "governorateAr": "سليانة",
+    "delegationCode": "2461",
+    "delegationFr": "El aroussa",
+    "delegationAr": "العروسة",
+    "sectorCode": "246151",
+    "sectorFr": "El aroussa",
+    "sectorAr": "العروسة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32231,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 1524,
+      "Nombre_de_menages_par_Secteurs.xlsx": 1523
+    }
+  },
+  "registrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+  "sources": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "findings": [
+    "Direct PBF source residential name and address city El Aroussa match the exact bilingual coded sector and parent.",
+    "The entire unchanged residential geometry is contained by both coded sector246151 and coded parent2461.",
+    "INS2024 independently pairs El aroussa and العروسة in sector246151 and delegation2461.",
+    "Adding Arabic primary is justified by the source identity, not by a desire to bypass the grouping guard. Preserve original French/English names."
+  ],
+  "scope": "Name:ar addition only. No rename of another place, geometry edit, prayer-source change, parent change or source code rewrite."
+}

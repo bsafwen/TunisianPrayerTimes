@@ -1,0 +1,446 @@
+{
+  "status": "TWO_PRIMARY_SUPPORTED_SETTLEMENT_DISPLAY_IDENTITIES_SOURCE_ONLY",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "012d83671e12e8cba3f8e5b64066e85637886502aa93f174b472709d8931894d"
+  },
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "d4f2463cec169a4ac1bbd2e2df6905db9fa0a0646f841a19ae2a582142e727f5"
+  },
+  "triage": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-hassan-saouaf-picker-candidate-triage.json",
+    "sha256": "80c943d260ae027e1a2b60940116b6cadeca4cb9ad7716b661477a326ae5fc17"
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\retrieval-manifest.json",
+    "sha256": "13b65f69da71751b2766aa4117aa5385f9bb4ce8faf68d76329f1161b6dea16b"
+  },
+  "records": [
+    {
+      "baseId": 597,
+      "nodeId": "osm:node:1165828355",
+      "decision": "SUPPORTED_EXACT_POINT_BASE_DISPLAY_ASSOCIATION_PRESERVING_COORDINATES",
+      "baseCurrent": {
+        "id": 597,
+        "nomFr": "Beni Hassan",
+        "nomAr": "بني حسان",
+        "nomEn": "Beni Hassan",
+        "lat": 35.5672,
+        "lng": 10.8079
+      },
+      "rawCurrent": {
+        "id": "osm:node:1165828355",
+        "sourceId": "osm",
+        "name": "بني حسان",
+        "aliases": [
+          "Beni Hassen"
+        ],
+        "kind": "village",
+        "parentName": "بني حسان الجوفية",
+        "contextAliases": [
+          "Beni Hassen",
+          "Beni Hassen Nord",
+          "Délégation Beni Hassen",
+          "بني حسان الجوفية",
+          "معتمدية بني حسان"
+        ],
+        "governorateId": 364,
+        "lat": 35.5670718,
+        "lng": 10.8080266,
+        "delegationId": 597,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1165828355"
+      },
+      "beforeGroups": {
+        "delegation:597": [
+          "delegation:597"
+        ],
+        "osm:node:1165828355": [
+          "osm:node:1165828355"
+        ]
+      },
+      "afterGroups": {
+        "delegation:597": [
+          "delegation:597",
+          "osm:node:1165828355"
+        ]
+      },
+      "exactProposedRawChange": {
+        "id": "osm:node:1165828355",
+        "field": "pickerGroupId",
+        "before": "osm:node:1165828355",
+        "after": "delegation:597"
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\node-1165828355.json",
+        "sha256": "eadc84f817faec131f4ed88a699f02d37edb709d498922fc63307c03906d1a5e",
+        "url": "https://api.openstreetmap.org/api/0.6/node/1165828355.json",
+        "retrievedAt": "2026-09-08T11:32:20.901328+00:00",
+        "node": {
+          "type": "node",
+          "id": 1165828355,
+          "lat": 35.5670718,
+          "lon": 10.8080266,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "version": 15,
+          "changeset": 179509225,
+          "user": "Johnwhelan",
+          "uid": 186592,
+          "tags": {
+            "addr:city": "Beni Hassen",
+            "addr:governorate": "Monastir",
+            "name": "بني حسان",
+            "name:ar": "بني حسان",
+            "name:en": "Beni Hassen",
+            "name:fr": "Beni Hassen",
+            "place": "village",
+            "wikidata": "Q1124789",
+            "wikimedia_commons": "Category:Beni Hassen",
+            "wikipedia": "en:Beni Hassen"
+          }
+        },
+        "fullTagsEqualCached": true,
+        "coordinatesEqualCachedAndCurrent": true,
+        "provenance": "Fresh public OSM API JSON; matching the cache is verified, not claimed as a PBF API response."
+      },
+      "primaryEvidence": [
+        {
+          "role": "official_settlement_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\social-beni-hassen.html",
+          "sha256": "72c66630bc33b3133977694fe332d1e72afd94ef3e58757e1bf658c0d5c86428",
+          "url": "https://www.social.gov.tn/fr/node/3186",
+          "requiredText": [
+            "شارع حبيب بورقيبة 5014 بني حسان",
+            "المنستير"
+          ],
+          "finding": "The named local Social Ministry office gives an inhabited-locality street address and governorate; its facility point corroborates local context, not an INM reference or town boundary.",
+          "facilityPoint": {
+            "lat": 35.56913,
+            "lng": 10.805901
+          }
+        },
+        {
+          "role": "official_explicit_city_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-activity-2019.pdf",
+          "sha256": "f9fb23a2e73de7a6c4b74ed1ab3b7d374c848f43bd477f53e2725584b02b583b",
+          "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/11/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%86%D8%B4%D8%A7%D8%B7-2019-.pdf",
+          "pdfPage": 87,
+          "printedPage": 87,
+          "tableRow": 14,
+          "visuallyReadText": "حماية مدينة بني حسان",
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-page-87.png",
+            "sha256": "d5a608332ed343c2c7d4166ab474d323eaa9efd057ca98881879ce30739c5a8e"
+          },
+          "personallyViewed": true,
+          "finding": "The ministry lists the locality as a city in its flood-protection projects. This distinguishes inhabited settlement usage from delegation-only nomenclature."
+        }
+      ],
+      "identityReason": "The exact source point declares place=village, addr:city and addr:governorate. Its Arabic settlement name equals the base label; its bilingual names match the unique official delegation/locality identity and the primary inhabited-city/address evidence. The only other exact source-name peer is the separately coded administrative parent. There is no evidence here of a second same-named settlement.",
+      "spellingPolicy": "Keep the base Beni Hassan and source Beni Hassen spellings, with Arabic بني حسان unchanged. Their exact bilingual identity is reviewed for this pair only.",
+      "referencePolicy": "Both existing point coordinates remain unchanged. Neither equality of boundaries, a surveyed city centre, nor INM calculation-anchor certification is claimed. Coordinate proximity and matching nearest defaults are compatibility facts, not the reason for identity approval.",
+      "phoneQualification": "Root reports the historical base and new node queries selected the same named town outline; supplemental only, with no phone files accessed by this review.",
+      "preservedOfficialContext": {
+        "delegationCode": "3255",
+        "delegationAr": "بني حسان",
+        "delegationFr": "Beni hassen",
+        "imadaCount": 5,
+        "imadas": [
+          {
+            "id": "osm:relation:7113965",
+            "code": "325552",
+            "name": "بني حسان الجوفية",
+            "pickerGroupId": "osm:relation:7113965"
+          },
+          {
+            "id": "osm:relation:7113975",
+            "code": "325551",
+            "name": "بني حسان القبلية",
+            "pickerGroupId": "osm:relation:7113975"
+          },
+          {
+            "id": "osm:relation:7114530",
+            "code": "325554",
+            "name": "الجنائحة",
+            "pickerGroupId": "osm:relation:7114530"
+          },
+          {
+            "id": "osm:relation:7114531",
+            "code": "325555",
+            "name": "الغنادة",
+            "pickerGroupId": "osm:relation:7114531"
+          },
+          {
+            "id": "osm:relation:7114532",
+            "code": "325553",
+            "name": "حاتم",
+            "pickerGroupId": "osm:relation:7114532"
+          }
+        ]
+      },
+      "sourceNamePeers": [
+        {
+          "id": "osm:node:1165828355",
+          "tags": {
+            "addr:city": "Beni Hassen",
+            "addr:governorate": "Monastir",
+            "name": "بني حسان",
+            "name:ar": "بني حسان",
+            "name:en": "Beni Hassen",
+            "name:fr": "Beni Hassen",
+            "place": "village",
+            "wikidata": "Q1124789",
+            "wikimedia_commons": "Category:Beni Hassen",
+            "wikipedia": "en:Beni Hassen"
+          },
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7154977",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Beni Hassen",
+            "boundary": "administrative",
+            "name": "معتمدية بني حسان",
+            "name:ar": "معتمدية بني حسان",
+            "name:fr": "Délégation Beni Hassen",
+            "ref:tn:codegeo": "3255",
+            "ref:tn:hasc_2": "TN.MS.BH",
+            "wikidata": "Q2400649"
+          },
+          "rawPresent": false
+        }
+      ],
+      "expectedCoordinateCorrections": [],
+      "requiredImplementationScope": "Use the existing explicitly reviewed village point/base display method if independently accepted. Preserve the raw node kind, names, aliases, coordinates, default, parent and all five imadas; preserve the matching parent as source-only. No generic proximity or fuzzy-name merge.",
+      "identityBlockers": []
+    },
+    {
+      "baseId": 413,
+      "nodeId": "osm:node:1419131100",
+      "decision": "SUPPORTED_EXACT_POINT_BASE_DISPLAY_ASSOCIATION_PRESERVING_COORDINATES",
+      "baseCurrent": {
+        "id": 413,
+        "nomFr": "Saouaf",
+        "nomAr": "صواف",
+        "nomEn": "Saouaf",
+        "lat": 36.2273,
+        "lng": 10.1725
+      },
+      "rawCurrent": {
+        "id": "osm:node:1419131100",
+        "sourceId": "osm",
+        "name": "صواف",
+        "aliases": [
+          "Saouaf",
+          "Sawwaf"
+        ],
+        "kind": "village",
+        "parentName": "صواف الغربية",
+        "contextAliases": [
+          "Délégation Saouaf",
+          "Saouaf",
+          "Saouaf Ouest",
+          "صواف الغربية",
+          "معتمدية صواف"
+        ],
+        "governorateId": 343,
+        "lat": 36.2275534,
+        "lng": 10.1712341,
+        "delegationId": 413,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1419131100"
+      },
+      "beforeGroups": {
+        "delegation:413": [
+          "delegation:413"
+        ],
+        "osm:node:1419131100": [
+          "osm:node:1419131100"
+        ]
+      },
+      "afterGroups": {
+        "delegation:413": [
+          "delegation:413",
+          "osm:node:1419131100"
+        ]
+      },
+      "exactProposedRawChange": {
+        "id": "osm:node:1419131100",
+        "field": "pickerGroupId",
+        "before": "osm:node:1419131100",
+        "after": "delegation:413"
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\node-1419131100.json",
+        "sha256": "ff717341a43fa51318d9e5d4bd0c0363724d750e2715211db89f7c14b9ec7965",
+        "url": "https://api.openstreetmap.org/api/0.6/node/1419131100.json",
+        "retrievedAt": "2026-09-08T11:32:20.903374+00:00",
+        "node": {
+          "type": "node",
+          "id": 1419131100,
+          "lat": 36.2275534,
+          "lon": 10.1712341,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "version": 11,
+          "changeset": 179509225,
+          "user": "Johnwhelan",
+          "uid": 186592,
+          "tags": {
+            "addr:city": "Sawwaf",
+            "addr:governorate": "Zaghouan",
+            "name": "صواف",
+            "name:ar": "صواف",
+            "name:en": "Sawwaf",
+            "name:fr": "Saouaf",
+            "place": "village"
+          }
+        },
+        "fullTagsEqualCached": true,
+        "coordinatesEqualCachedAndCurrent": true,
+        "provenance": "Fresh public OSM API JSON; matching the cache is verified, not claimed as a PBF API response."
+      },
+      "primaryEvidence": [
+        {
+          "role": "official_settlement_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\social-saouaf.html",
+          "sha256": "681bca6c896c69bed092b503b1a9aba24cc28dba42e06dc2fc9db59c19512f3b",
+          "url": "https://www.social.gov.tn/en/node/1277",
+          "requiredText": [
+            "شارع عقبة بن نافع 1115 صواف",
+            "زغوان"
+          ],
+          "finding": "The named local Social Ministry office gives an inhabited-locality street address and governorate; its facility point corroborates local context, not an INM reference or town boundary.",
+          "facilityPoint": {
+            "lat": 36.230147,
+            "lng": 10.1705942
+          }
+        },
+        {
+          "role": "official_explicit_city_identity",
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-activity-2019.pdf",
+          "sha256": "f9fb23a2e73de7a6c4b74ed1ab3b7d374c848f43bd477f53e2725584b02b583b",
+          "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/11/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%86%D8%B4%D8%A7%D8%B7-2019-.pdf",
+          "pdfPage": 87,
+          "printedPage": 87,
+          "tableRow": 9,
+          "visuallyReadText": "حماية مدينة صواف",
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-hassan-saouaf-source-identity\\mehat-page-87.png",
+            "sha256": "d5a608332ed343c2c7d4166ab474d323eaa9efd057ca98881879ce30739c5a8e"
+          },
+          "personallyViewed": true,
+          "finding": "The ministry lists the locality as a city in its flood-protection projects. This distinguishes inhabited settlement usage from delegation-only nomenclature."
+        }
+      ],
+      "identityReason": "The exact source point declares place=village, addr:city and addr:governorate. Its Arabic settlement name equals the base label; its bilingual names match the unique official delegation/locality identity and the primary inhabited-city/address evidence. The only other exact source-name peer is the separately coded administrative parent. There is no evidence here of a second same-named settlement.",
+      "spellingPolicy": "Keep official/source صواف and Saouaf. The phone label سواف does not justify a primary-name correction.",
+      "referencePolicy": "Both existing point coordinates remain unchanged. Neither equality of boundaries, a surveyed city centre, nor INM calculation-anchor certification is claimed. Coordinate proximity and matching nearest defaults are compatibility facts, not the reason for identity approval.",
+      "phoneQualification": "Root reports the historical Arabic base query selected broad rural Saouaf territory, whereas the recent French node query selected the built-up town. Those two observations do not establish equal scope. This proposal concerns the base settlement-reference picker label and the named village point only; it does not associate the administrative parent or import either Maps outline.",
+      "preservedOfficialContext": {
+        "delegationCode": "1656",
+        "delegationAr": "صواف",
+        "delegationFr": "Saouaf",
+        "imadaCount": 5,
+        "imadas": [
+          {
+            "id": "osm:relation:7114526",
+            "code": "165651",
+            "name": "صواف الشرقية",
+            "pickerGroupId": "osm:relation:7114526"
+          },
+          {
+            "id": "osm:relation:7114549",
+            "code": "165653",
+            "name": "الحميرة",
+            "pickerGroupId": "osm:relation:7114549"
+          },
+          {
+            "id": "osm:relation:7116957",
+            "code": "165652",
+            "name": "صواف الغربية",
+            "pickerGroupId": "osm:relation:7116957"
+          },
+          {
+            "id": "osm:relation:7119808",
+            "code": "165654",
+            "name": "الدغافلة الشرقية",
+            "pickerGroupId": "osm:relation:7119808"
+          },
+          {
+            "id": "osm:relation:7119809",
+            "code": "165655",
+            "name": "الدغافلة الغربية",
+            "pickerGroupId": "osm:relation:7119809"
+          }
+        ]
+      },
+      "sourceNamePeers": [
+        {
+          "id": "osm:node:1419131100",
+          "tags": {
+            "addr:city": "Sawwaf",
+            "addr:governorate": "Zaghouan",
+            "name": "صواف",
+            "name:ar": "صواف",
+            "name:en": "Sawwaf",
+            "name:fr": "Saouaf",
+            "place": "village"
+          },
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7167811",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Saouaf",
+            "boundary": "administrative",
+            "name": "معتمدية صواف",
+            "name:ar": "معتمدية صواف",
+            "name:fr": "Délégation Saouaf",
+            "ref:tn:codegeo": "1656",
+            "ref:tn:hasc_2": "TN.ZA.SA",
+            "wikidata": "Q3473078"
+          },
+          "rawPresent": false
+        }
+      ],
+      "expectedCoordinateCorrections": [],
+      "requiredImplementationScope": "Use the existing explicitly reviewed village point/base display method if independently accepted. Preserve the raw node kind, names, aliases, coordinates, default, parent and all five imadas; preserve the matching parent as source-only. No generic proximity or fuzzy-name merge.",
+      "identityBlockers": []
+    }
+  ],
+  "exactExpectedMetadataChanges": [
+    {
+      "id": "osm:node:1165828355",
+      "field": "pickerGroupId",
+      "before": "osm:node:1165828355",
+      "after": "delegation:597"
+    },
+    {
+      "id": "osm:node:1419131100",
+      "field": "pickerGroupId",
+      "before": "osm:node:1419131100",
+      "after": "delegation:413"
+    }
+  ],
+  "evidenceLimitations": [
+    "The official municipal directory was discoverable in search but its raw response timed out; that failed GET is retained and is not operative evidence. The two Social Ministry HTML responses, original INS registry already pinned in triage, and visually checked MEHAT PDF provide the identity support.",
+    "The Beni Hassen municipal website did not open through web retrieval; no content from an unrelated Moroccan municipality was used.",
+    "The API latest version is a shared mapper changeset on both nodes; independent primary government evidence supplies the inhabited-settlement corroboration.",
+    "The separately coded administrative delegation and five imadas per locality retain distinct scope; the display association does not equate them to a town footprint."
+  ],
+  "noRepoOrStageMutation": true,
+  "noGeneratorHelperTestsBuildPhoneOrLedgerAccess": true,
+  "sourceFetches": {
+    "planned": 6,
+    "successful": 5,
+    "failed": 1,
+    "automaticRetries": 0
+  },
+  "reviewScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_beni_hassan_saouaf_source_identity.py",
+    "sha256": "d3c7ff348e8cab5c09825b8441cbebccdf0862540fc5ceb9b99f53c46aeccd84"
+  }
+}

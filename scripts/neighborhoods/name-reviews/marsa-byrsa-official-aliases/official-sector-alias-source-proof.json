@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_SUPPORTED_EXACT_ALIAS_ADDITIONS",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "0610f96e09ed1bf0360b5f0374218d16f057350ef5f8be4586986c225b78b311",
+  "records": [
+    {
+      "id": "osm:relation:7062740",
+      "officialCode": "117153",
+      "officialRegistryRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1171",
+        "delegationFr": "La marsa",
+        "delegationAr": "المرسى",
+        "sectorCode": "117153",
+        "sectorFr": "La marsa hadayek",
+        "sectorAr": "المرسى الحدائق",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5271,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 166,
+          "Nombre_de_menages_par_Secteurs.xlsx": 166
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المرسى حدائق",
+        "name:ar": "المرسى حدائق",
+        "name:fr": "La Marsa Hadayek",
+        "ref:tn:codegeo": "117153"
+      },
+      "beforeRaw": {
+        "id": "osm:relation:7062740",
+        "sourceId": "osm",
+        "name": "المرسى حدائق",
+        "aliases": [
+          "La Marsa Hadayek"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "lat": 36.877578,
+        "lng": 10.311676,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "bbox": [
+          10.304516,
+          36.870224,
+          10.319154,
+          36.884479
+        ],
+        "areaKm2": 1.0075202840688793,
+        "pickerGroupId": "osm:relation:7062740",
+        "offset": 73176,
+        "length": 252
+      },
+      "nameTags": {
+        "name": "المرسى حدائق",
+        "name:ar": "المرسى حدائق",
+        "name:fr": "La Marsa Hadayek",
+        "alt_name:ar": "المرسى الحدائق"
+      },
+      "expectedAliases": [
+        "La Marsa Hadayek",
+        "المرسى الحدائق"
+      ],
+      "completeRawGroup": [
+        "osm:relation:7062740"
+      ],
+      "dependentContextIds": [
+        "osm:node:1147369793",
+        "osm:node:1147369832"
+      ],
+      "packedGeometrySha256": "1f7fd2a9db32b702dc8172704cdb863df8a1b61446e92f2014b6bea3283d7982",
+      "policy": "Add the exact published Arabic variant as a search alias. Preserve every consumed existing name tag, primary title, group, parent, geometry, coordinate and prayer source."
+    },
+    {
+      "id": "osm:relation:7062770",
+      "officialCode": "117152",
+      "officialRegistryRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1171",
+        "delegationFr": "La marsa",
+        "delegationAr": "المرسى",
+        "sectorCode": "117152",
+        "sectorFr": "La marsa medina",
+        "sectorAr": "المرسى المدينة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5237,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 165,
+          "Nombre_de_menages_par_Secteurs.xlsx": 165
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المرسى مدينة",
+        "name:ar": "المرسى مدينة",
+        "name:fr": "La Marsa Medina",
+        "ref:tn:codegeo": "117152"
+      },
+      "beforeRaw": {
+        "id": "osm:relation:7062770",
+        "sourceId": "osm",
+        "name": "المرسى مدينة",
+        "aliases": [
+          "La Marsa Medina"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "lat": 36.880495,
+        "lng": 10.320543,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "bbox": [
+          10.311585,
+          36.873414,
+          10.328791,
+          36.887555
+        ],
+        "areaKm2": 1.2727752135141446,
+        "pickerGroupId": "osm:relation:7062770",
+        "offset": 76796,
+        "length": 460
+      },
+      "nameTags": {
+        "name": "المرسى مدينة",
+        "name:ar": "المرسى مدينة",
+        "name:fr": "La Marsa Medina",
+        "alt_name:ar": "المرسى المدينة"
+      },
+      "expectedAliases": [
+        "La Marsa Medina",
+        "المرسى المدينة"
+      ],
+      "completeRawGroup": [
+        "osm:relation:7062770"
+      ],
+      "dependentContextIds": [
+        "osm:node:1166000786",
+        "osm:node:2307148393"
+      ],
+      "packedGeometrySha256": "bbcbf2bbbca421cd684f67dfecfbb81c431010ad17b288c6acceb10bd06bdb75",
+      "policy": "Add the exact published Arabic variant as a search alias. Preserve every consumed existing name tag, primary title, group, parent, geometry, coordinate and prayer source."
+    },
+    {
+      "id": "osm:relation:7116451",
+      "officialCode": "115153",
+      "officialRegistryRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1151",
+        "delegationFr": "Carthage",
+        "delegationAr": "قرطاج",
+        "sectorCode": "115153",
+        "sectorFr": "Carthage byrsa",
+        "sectorAr": "قرطاج بيرصا",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 4,
+          "Nombre_de_menages_par_Secteurs.xlsx": 4
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قرطاج بيرصة",
+        "name:ar": "قرطاج بيرصة",
+        "name:fr": "Carthage Byrsa",
+        "ref:tn:codegeo": "115153"
+      },
+      "beforeRaw": {
+        "id": "osm:relation:7116451",
+        "sourceId": "osm",
+        "name": "قرطاج بيرصة",
+        "aliases": [
+          "Carthage Byrsa"
+        ],
+        "kind": "sector",
+        "parentName": "قرطاج",
+        "contextAliases": [
+          "Cartagine",
+          "Cartago",
+          "Carthage",
+          "Delegación de Cartago",
+          "Delegation Karthago",
+          "Kartagina",
+          "Karthago",
+          "Καρχηδόνα",
+          "Καρχηδών",
+          "Картаген",
+          "Карфаген",
+          "Կարթագեն",
+          "Կարթագէն",
+          "قرطاج",
+          "قرطاجنہ",
+          "معتمدية قرطاج",
+          "کارتاژ",
+          "ܩܪܬܐܓܘ"
+        ],
+        "governorateId": 342,
+        "lat": 36.856113,
+        "lng": 10.323588,
+        "delegationId": 387,
+        "hasBoundary": true,
+        "bbox": [
+          10.31563,
+          36.841421,
+          10.336552,
+          36.871981
+        ],
+        "areaKm2": 3.4259036568760464,
+        "pickerGroupId": "osm:relation:7116451",
+        "offset": 959556,
+        "length": 620
+      },
+      "nameTags": {
+        "name": "قرطاج بيرصة",
+        "name:ar": "قرطاج بيرصة",
+        "name:fr": "Carthage Byrsa",
+        "alt_name:ar": "قرطاج بيرصا"
+      },
+      "expectedAliases": [
+        "Carthage Byrsa",
+        "قرطاج بيرصا"
+      ],
+      "completeRawGroup": [
+        "osm:relation:7116451"
+      ],
+      "dependentContextIds": [
+        "osm:way:144557476"
+      ],
+      "packedGeometrySha256": "bb9599cdbf95f6d70fa372832800a8e6bffc924e355e0b9b201cb84a021feb52",
+      "policy": "Add the exact published Arabic variant as a search alias. Preserve every consumed existing name tag, primary title, group, parent, geometry, coordinate and prayer source."
+    }
+  ],
+  "exactMetadataChanges": [
+    {
+      "id": "osm:relation:7062740",
+      "field": "aliases",
+      "before": [
+        "La Marsa Hadayek"
+      ],
+      "after": [
+        "La Marsa Hadayek",
+        "المرسى الحدائق"
+      ]
+    },
+    {
+      "id": "osm:node:1147369793",
+      "field": "contextAliases",
+      "before": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Hadayek",
+        "المرسى حدائق",
+        "معتمدية المرسى"
+      ],
+      "after": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Hadayek",
+        "المرسى الحدائق",
+        "المرسى حدائق",
+        "معتمدية المرسى"
+      ]
+    },
+    {
+      "id": "osm:node:1147369832",
+      "field": "contextAliases",
+      "before": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Hadayek",
+        "المرسى حدائق",
+        "معتمدية المرسى"
+      ],
+      "after": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Hadayek",
+        "المرسى الحدائق",
+        "المرسى حدائق",
+        "معتمدية المرسى"
+      ]
+    },
+    {
+      "id": "osm:relation:7062770",
+      "field": "aliases",
+      "before": [
+        "La Marsa Medina"
+      ],
+      "after": [
+        "La Marsa Medina",
+        "المرسى المدينة"
+      ]
+    },
+    {
+      "id": "osm:node:1166000786",
+      "field": "contextAliases",
+      "before": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Medina",
+        "المرسى مدينة",
+        "معتمدية المرسى"
+      ],
+      "after": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Medina",
+        "المرسى المدينة",
+        "المرسى مدينة",
+        "معتمدية المرسى"
+      ]
+    },
+    {
+      "id": "osm:node:2307148393",
+      "field": "contextAliases",
+      "before": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Medina",
+        "المرسى مدينة",
+        "معتمدية المرسى"
+      ],
+      "after": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Medina",
+        "المرسى المدينة",
+        "المرسى مدينة",
+        "معتمدية المرسى"
+      ]
+    },
+    {
+      "id": "osm:relation:7116451",
+      "field": "aliases",
+      "before": [
+        "Carthage Byrsa"
+      ],
+      "after": [
+        "Carthage Byrsa",
+        "قرطاج بيرصا"
+      ]
+    },
+    {
+      "id": "osm:way:144557476",
+      "field": "contextAliases",
+      "before": [
+        "Cartagine",
+        "Cartago",
+        "Carthage",
+        "Carthage Byrsa",
+        "Delegación de Cartago",
+        "Delegation Karthago",
+        "Kartagina",
+        "Karthago",
+        "Καρχηδόνα",
+        "Καρχηδών",
+        "Картаген",
+        "Карфаген",
+        "Կարթագեն",
+        "Կարթագէն",
+        "قرطاج",
+        "قرطاج بيرصة",
+        "قرطاجنہ",
+        "معتمدية قرطاج",
+        "کارتاژ",
+        "ܩܪܬܐܓܘ"
+      ],
+      "after": [
+        "Cartagine",
+        "Cartago",
+        "Carthage",
+        "Carthage Byrsa",
+        "Delegación de Cartago",
+        "Delegation Karthago",
+        "Kartagina",
+        "Karthago",
+        "Καρχηδόνα",
+        "Καρχηδών",
+        "Картаген",
+        "Карфаген",
+        "Կարթագեն",
+        "Կարթագէն",
+        "قرطاج",
+        "قرطاج بيرصا",
+        "قرطاج بيرصة",
+        "قرطاجنہ",
+        "معتمدية قرطاج",
+        "کارتاژ",
+        "ܩܪܬܐܓܘ"
+      ]
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "file": "el-adbech-display-reviews/isie-ussd2022.pdf",
+      "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97"
+    },
+    {
+      "file": "residential-base-display-reviews/interior-sector-directory.html",
+      "sha256": "a3d231b09f8b42dbf1747e3c42566dc6afa747860d6d86a5a53607ece2f4cb95"
+    },
+    {
+      "file": "point-retention-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "name-reviews/marsa-byrsa-official-aliases/finance-carthage-byrsa-office.html",
+      "sha256": "360467a83d231dd4b73ae8872b63d77a8b8fef98988979d8f79594fce32a72de",
+      "url": "https://www.finances.gov.tn/ar/node/1527"
+    }
+  ],
+  "sourceQualifications": [
+    "Current INS codes117153/117152/115153 independently identify these three imadas and the exact proposed Arabic aliases.",
+    "ISIE2022 PDF page3 row1144 and rows1148-1152 use Marsa Hadayek/Medina official article forms; page4 rows1198/1199 use Carthage Byrsa بيرصا.",
+    "The historical Interior directory corroborates both Marsa official article forms.",
+    "Finance Ministry office address uses قرطاج بيرصة, supporting retention of the current primary spelling alongside the independently supported بيرصا alias.",
+    "Administrative school/address usage supports name identity only. No official perimeter, point or timetable coordinate certification is claimed."
+  ],
+  "mechanism": "Existing name_tags replaces the consumed name-tag set. This proof preserves that complete set and adds only alt_name:ar. Existing child contextAliases inherit the extra name; no parentName changes. The existing small saved-name index gains three rows with unchanged current primary names and kind.",
+  "preservation": "No generator change, automatic fuzzy/distance association, coordinates/default/group changes, retirement, boundary import or name normalization."
+}

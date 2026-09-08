@@ -1,0 +1,1030 @@
+{
+  "status": "READ_ONLY_CONFIRMED_SOURCE_GEOMETRY_CLONE_AND_BROADER_IDENTITY_DISPLACEMENT",
+  "reviewedDate": "2026-09-07",
+  "sourceSnapshotSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "cloneIds": [
+    "osm:relation:7118631",
+    "osm:relation:7152490"
+  ],
+  "sourceGeometryDictionariesIdentical": true,
+  "exactCoordinateSequenceIdentical": true,
+  "rawRecords": [
+    {
+      "id": "osm:relation:7118631",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المدينة",
+        "name:ar": "المدينة",
+        "name:fr": "El Medina",
+        "ref:tn:codegeo": "175154"
+      },
+      "bounds": [
+        9.8696843,
+        37.2719995,
+        9.8735681,
+        37.2764646
+      ],
+      "areaMeters2": 111856.52745908212,
+      "geometrySha256": "6db0b1259ac462932066c5f1736592a0d205901dd6f9ee983cbfce58b7159153",
+      "currentIdentity": [
+        {
+          "governorateCode": "17",
+          "governorateFr": "Bizerte",
+          "governorateAr": "بنزرت",
+          "delegationCode": "1751",
+          "delegationFr": "Bizerte nord",
+          "delegationAr": "بنزرت الشمالية",
+          "sectorCode": "175154",
+          "sectorFr": "La medina",
+          "sectorAr": "المدينة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16524,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 709,
+            "Nombre_de_menages_par_Secteurs.xlsx": 708
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7152490",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "loc_name": "الشيخ ادريس",
+        "loc_name:ar": "الشيخ ادريس",
+        "name": "الشيخ إدريس",
+        "name:ar": "الشيخ إدريس",
+        "name:fr": "Cheikh Dris"
+      },
+      "bounds": [
+        9.8696843,
+        37.2719995,
+        9.8735681,
+        37.2764646
+      ],
+      "areaMeters2": 111856.52745908212,
+      "geometrySha256": "6db0b1259ac462932066c5f1736592a0d205901dd6f9ee983cbfce58b7159153",
+      "currentIdentity": []
+    },
+    {
+      "id": "osm:relation:7118632",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الشيخ ادريس",
+        "name:ar": "الشيخ ادريس",
+        "name:fr": "Cheikh Dris",
+        "ref:tn:codegeo": "175155"
+      },
+      "bounds": [
+        9.8550455,
+        37.2668425,
+        9.8692455,
+        37.2833154
+      ],
+      "areaMeters2": 1082854.999096445,
+      "geometrySha256": "73fa35c367ff815cff73a2802e68c06a92e9b33a0d7da8b22b2a412b160b4a66",
+      "currentIdentity": [
+        {
+          "governorateCode": "17",
+          "governorateFr": "Bizerte",
+          "governorateAr": "بنزرت",
+          "delegationCode": "1751",
+          "delegationFr": "Bizerte nord",
+          "delegationAr": "بنزرت الشمالية",
+          "sectorCode": "175155",
+          "sectorFr": "Cheikh Driss",
+          "sectorAr": "الشيخ إدريس",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16558,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 710,
+            "Nombre_de_menages_par_Secteurs.xlsx": 709
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7118630",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المؤتمر",
+        "name:ar": "المؤتمر",
+        "name:fr": "El Mootamar",
+        "ref:tn:codegeo": "175160"
+      },
+      "bounds": [
+        9.8697272,
+        37.273357,
+        9.8908253,
+        37.2826279
+      ],
+      "areaMeters2": 486384.35196690273,
+      "geometrySha256": "79e5c6b0f41e1abf4fdd642f9a0c59d78d3a4b33e3eb685d867150f7030402df",
+      "currentIdentity": [
+        {
+          "governorateCode": "17",
+          "governorateFr": "Bizerte",
+          "governorateAr": "بنزرت",
+          "delegationCode": "1751",
+          "delegationFr": "Bizerte nord",
+          "delegationAr": "بنزرت الشمالية",
+          "sectorCode": "175160",
+          "sectorFr": "El motamar",
+          "sectorAr": "المؤتمر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16728,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 716,
+            "Nombre_de_menages_par_Secteurs.xlsx": 715
+          }
+        }
+      ]
+    }
+  ],
+  "officialRecords": [
+    {
+      "id": "osm:relation:7118631",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20-%20%28%D8%A8%D9%86%D8%B2%D8%B1%D8%AA%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9%29.pdf",
+      "sourcePdfSha256": "58432ca876919adda114863dec1db9f62fca0ceb511b8e6af29616b812beb280",
+      "dataFile": "outputs\\medina-bizerte-sector-geopdf-data.json",
+      "dataSha256": "114e812aeaa027fef71102e21e518429b3140af79134769f1500f27888e5dcfa",
+      "drawingIndex": 59,
+      "areaMeters2": 524652.6026379067,
+      "bounds": [
+        9.870128638527126,
+        37.27324594798087,
+        9.89075370950151,
+        37.28216965131639
+      ],
+      "sourceVertices": 130,
+      "explicitlyClosed": true,
+      "activeClipCount": 2,
+      "outsideClips": [
+        0.0,
+        0.0
+      ],
+      "outsideViewport": 0.0,
+      "countryContainsOriginal": true,
+      "countryContainsQuantized": true,
+      "controlResidualMeters": 0.1376152503026644,
+      "overlapsAllOldSectors": [
+        {
+          "id": "osm:relation:7118630",
+          "sourceName": "المؤتمر",
+          "sourceCode": "175160",
+          "intersectionMeters2": 432951.51113489014,
+          "officialCoveredFraction": 0.8252155978223464,
+          "sourceCoveredFraction": 0.8901427634011372,
+          "iou": 0.7489403444173991
+        },
+        {
+          "id": "osm:relation:7118631",
+          "sourceName": "المدينة",
+          "sourceCode": "175154",
+          "intersectionMeters2": 18370.40951594131,
+          "officialCoveredFraction": 0.03501442559052699,
+          "sourceCoveredFraction": 0.16423189538635846,
+          "iou": 0.029718910827448
+        },
+        {
+          "id": "osm:relation:7152490",
+          "sourceName": "الشيخ إدريس",
+          "sourceCode": null,
+          "intersectionMeters2": 18370.40951594131,
+          "officialCoveredFraction": 0.03501442559052699,
+          "sourceCoveredFraction": 0.16423189538635846,
+          "iou": 0.029718910827448
+        },
+        {
+          "id": "osm:relation:7118629",
+          "sourceName": "حسن نوري",
+          "sourceCode": "175151",
+          "intersectionMeters2": 18204.751389735877,
+          "officialCoveredFraction": 0.03469867736899427,
+          "sourceCoveredFraction": 0.021034916239679582,
+          "iou": 0.013269718974462883
+        },
+        {
+          "id": "osm:relation:7152489",
+          "sourceName": "القنال",
+          "sourceCode": "175156",
+          "intersectionMeters2": 17462.35271083105,
+          "officialCoveredFraction": 0.03328364830943732,
+          "sourceCoveredFraction": 0.05499992162571525,
+          "iou": 0.02117449531793429
+        }
+      ],
+      "sourceGeometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.880117298327614,
+              37.279054872384584
+            ],
+            [
+              9.87830422049261,
+              37.27901395563608
+            ],
+            [
+              9.878537402236033,
+              37.27639635400937
+            ],
+            [
+              9.878410285182776,
+              37.27635837878704
+            ],
+            [
+              9.877832362091038,
+              37.276098002941
+            ],
+            [
+              9.87764633707491,
+              37.276021540864555
+            ],
+            [
+              9.87296651821478,
+              37.27324594798087
+            ],
+            [
+              9.87293808319541,
+              37.27331622663422
+            ],
+            [
+              9.873053122990186,
+              37.27486464473368
+            ],
+            [
+              9.873062954916676,
+              37.274872356917996
+            ],
+            [
+              9.872751416893744,
+              37.274898029011084
+            ],
+            [
+              9.872751505331285,
+              37.274905814327326
+            ],
+            [
+              9.872713502890523,
+              37.27499173467654
+            ],
+            [
+              9.872694103525188,
+              37.27499966422423
+            ],
+            [
+              9.872607115784986,
+              37.27506259344787
+            ],
+            [
+              9.872607204200705,
+              37.27507037810438
+            ],
+            [
+              9.872201496352371,
+              37.27538480540165
+            ],
+            [
+              9.872046918785163,
+              37.27550273297411
+            ],
+            [
+              9.871594870529828,
+              37.2760277052684
+            ],
+            [
+              9.87137953103803,
+              37.27594366632841
+            ],
+            [
+              9.871145939940098,
+              37.27596875552482
+            ],
+            [
+              9.870882499118377,
+              37.27593956920417
+            ],
+            [
+              9.870679374912509,
+              37.27607342647343
+            ],
+            [
+              9.87054269404594,
+              37.276051084345134
+            ],
+            [
+              9.870128638527126,
+              37.276490130826716
+            ],
+            [
+              9.870554425757735,
+              37.27708644132133
+            ],
+            [
+              9.870525369765227,
+              37.27710222744963
+            ],
+            [
+              9.871001826162225,
+              37.2778694366134
+            ],
+            [
+              9.872190513614171,
+              37.278709206433646
+            ],
+            [
+              9.873379846784083,
+              37.279603455744905
+            ],
+            [
+              9.873699377134235,
+              37.27942201561303
+            ],
+            [
+              9.874028474063334,
+              37.279224933428935
+            ],
+            [
+              9.874048051514976,
+              37.279232572952154
+            ],
+            [
+              9.875758826249601,
+              37.279702508757744
+            ],
+            [
+              9.87709817326446,
+              37.28007398744363
+            ],
+            [
+              9.877098351053377,
+              37.280089556724846
+            ],
+            [
+              9.876925058503865,
+              37.28198267504773
+            ],
+            [
+              9.876907524311774,
+              37.28215408203988
+            ],
+            [
+              9.876907702074929,
+              37.28216965131639
+            ],
+            [
+              9.87773552283264,
+              37.28126815663653
+            ],
+            [
+              9.878197480599047,
+              37.280758657867985
+            ],
+            [
+              9.878370747170774,
+              37.28057051477369
+            ],
+            [
+              9.879216889531769,
+              37.28127264041349
+            ],
+            [
+              9.879314247278364,
+              37.28126412581825
+            ],
+            [
+              9.880025250821696,
+              37.28122765615636
+            ],
+            [
+              9.880398671129267,
+              37.28149734082132
+            ],
+            [
+              9.881244038635497,
+              37.282129389814735
+            ],
+            [
+              9.881263617550804,
+              37.28213702812166
+            ],
+            [
+              9.881273451675513,
+              37.28214473958848
+            ],
+            [
+              9.881331473756394,
+              37.28210537745164
+            ],
+            [
+              9.88142820605344,
+              37.28204236937056
+            ],
+            [
+              9.881515104879231,
+              37.28197164909972
+            ],
+            [
+              9.881524849650784,
+              37.28197157591689
+            ],
+            [
+              9.881737804562984,
+              37.28184541163523
+            ],
+            [
+              9.881882723561091,
+              37.28173532940529
+            ],
+            [
+              9.882027732362513,
+              37.28163303096361
+            ],
+            [
+              9.882230582235248,
+              37.28147580118785
+            ],
+            [
+              9.882481975781916,
+              37.28130263552094
+            ],
+            [
+              9.882559396477923,
+              37.281255341642044
+            ],
+            [
+              9.882607583065946,
+              37.28120826753027
+            ],
+            [
+              9.882646203868804,
+              37.2811768359291
+            ],
+            [
+              9.882704224488124,
+              37.28113747313176
+            ],
+            [
+              9.882781733539442,
+              37.28109796440364
+            ],
+            [
+              9.882849498677448,
+              37.28105852825069
+            ],
+            [
+              9.882926918891604,
+              37.28101123413566
+            ],
+            [
+              9.882994683875312,
+              37.280971797900975
+            ],
+            [
+              9.883062359276456,
+              37.28092457700108
+            ],
+            [
+              9.883130034592844,
+              37.28087735606321
+            ],
+            [
+              9.88315864183086,
+              37.280822644389914
+            ],
+            [
+              9.8831875175921,
+              37.28079128593096
+            ],
+            [
+              9.88322604841258,
+              37.280752069517284
+            ],
+            [
+              9.883303376888021,
+              37.28069699054618
+            ],
+            [
+              9.88335174173827,
+              37.28066548539136
+            ],
+            [
+              9.883380527816438,
+              37.28062634225948
+            ],
+            [
+              9.883438637178273,
+              37.28059476373568
+            ],
+            [
+              9.883477078223295,
+              37.28054776327505
+            ],
+            [
+              9.88351560877001,
+              37.280508546769056
+            ],
+            [
+              9.883573986672603,
+              37.280500322059986
+            ],
+            [
+              9.883622440851255,
+              37.280476601423146
+            ],
+            [
+              9.883660792143091,
+              37.28042181561783
+            ],
+            [
+              9.883728108329612,
+              37.28034345649853
+            ],
+            [
+              9.883805527258819,
+              37.28029616181973
+            ],
+            [
+              9.883902345581324,
+              37.28024093571435
+            ],
+            [
+              9.883940963698482,
+              37.28020950371141
+            ],
+            [
+              9.883969838902125,
+              37.28017814506561
+            ],
+            [
+              9.88399880368729,
+              37.28015457103906
+            ],
+            [
+              9.884017665505471,
+              37.28009993254657
+            ],
+            [
+              9.884056195544492,
+              37.28006071586824
+            ],
+            [
+              9.884133793215655,
+              37.28002899023107
+            ],
+            [
+              9.884221135330808,
+              37.27999719114219
+            ],
+            [
+              9.884298553594622,
+              37.279949896146725
+            ],
+            [
+              9.884356482766488,
+              37.2799027479289
+            ],
+            [
+              9.884404846667433,
+              37.27987124235183
+            ],
+            [
+              9.884462775720236,
+              37.279824094742814
+            ],
+            [
+              9.884520973667025,
+              37.2798003003228
+            ],
+            [
+              9.884569427096233,
+              37.27977657930516
+            ],
+            [
+              9.884685552134362,
+              37.27970563647004
+            ],
+            [
+              9.884763328536529,
+              37.27968947967685
+            ],
+            [
+              9.884840835832977,
+              37.27964996895783
+            ],
+            [
+              9.884947486728477,
+              37.279602453844205
+            ],
+            [
+              9.885005415219542,
+              37.27955530465489
+            ],
+            [
+              9.885053778632788,
+              37.279523799477026
+            ],
+            [
+              9.88511161728704,
+              37.27946886627183
+            ],
+            [
+              9.88514013284024,
+              37.2794063688476
+            ],
+            [
+              9.885178751667443,
+              37.27937493643615
+            ],
+            [
+              9.885236857663589,
+              37.27934335771735
+            ],
+            [
+              9.885372741115846,
+              37.27929562111045
+            ],
+            [
+              9.885479570673942,
+              37.27926367411417
+            ],
+            [
+              9.885537678101628,
+              37.27923209457756
+            ],
+            [
+              9.885585861545504,
+              37.27918501927805
+            ],
+            [
+              9.886403850402061,
+              37.279132133642776
+            ],
+            [
+              9.887247921738956,
+              37.2788065603626
+            ],
+            [
+              9.888660398181933,
+              37.278756950408
+            ],
+            [
+              9.89075370950151,
+              37.27859316471147
+            ],
+            [
+              9.890731963549124,
+              37.27839869788928
+            ],
+            [
+              9.89072104547673,
+              37.27829757249644
+            ],
+            [
+              9.88872527532799,
+              37.27846840381537
+            ],
+            [
+              9.888441341381185,
+              37.27835377351253
+            ],
+            [
+              9.885199819925843,
+              37.278666317087215
+            ],
+            [
+              9.884982663789753,
+              37.27842661070653
+            ],
+            [
+              9.884677034434493,
+              37.27642809657415
+            ],
+            [
+              9.883894178966498,
+              37.27529734232211
+            ],
+            [
+              9.883601593157316,
+              37.27527618907743
+            ],
+            [
+              9.883554127246814,
+              37.27538553999108
+            ],
+            [
+              9.884423332263884,
+              37.276398867041465
+            ],
+            [
+              9.884659936019615,
+              37.27832783502309
+            ],
+            [
+              9.883862161326164,
+              37.27844283813627
+            ],
+            [
+              9.8823232785592,
+              37.2785166975818
+            ],
+            [
+              9.882317737302092,
+              37.278882647188986
+            ],
+            [
+              9.880117298327614,
+              37.279054872384584
+            ]
+          ]
+        ]
+      },
+      "identityQualification": "Complete map visually reviewed. The Medina qualified label lies over the excluded harbor water/indented coastline; its centroid does not select the land polygon. Ring59 follows the single whole Medina area between HassenNouri, CheikhIdris, canal and shore. Ring60 in the Medina page is the separately reviewed CheikhIdris neighbor."
+    },
+    {
+      "id": "osm:relation:7118632",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9/%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D8%A5%D8%AF%D8%B1%D9%8A%D8%B3.pdf",
+      "sourcePdfSha256": "02256a2b0f869788dae9d36c456caa3b8b4da02ea16a9dc4ac6fe6f3993c0130",
+      "dataFile": "outputs\\cheikh-idris-sector-geopdf-data.json",
+      "dataSha256": "6f2838cc473f8acb2ce5dc1d45c86486b5fd69582248643296ee1ae9e90ffc17",
+      "drawingIndex": 2,
+      "areaMeters2": 89040.98436849582,
+      "bounds": [
+        9.869944036432965,
+        37.27200785469622,
+        9.873055378984986,
+        37.27648864125111
+      ],
+      "sourceVertices": 46,
+      "explicitlyClosed": true,
+      "activeClipCount": 2,
+      "outsideClips": [
+        0.0,
+        0.0
+      ],
+      "outsideViewport": 0.0,
+      "countryContainsOriginal": true,
+      "countryContainsQuantized": true,
+      "controlResidualMeters": 0.012763676633407006,
+      "overlapsAllOldSectors": [
+        {
+          "id": "osm:relation:7118631",
+          "sourceName": "المدينة",
+          "sourceCode": "175154",
+          "intersectionMeters2": 84170.37401343296,
+          "officialCoveredFraction": 0.9452992305778443,
+          "sourceCoveredFraction": 0.7524851336389202,
+          "iou": 0.7210865921122523
+        },
+        {
+          "id": "osm:relation:7152490",
+          "sourceName": "الشيخ إدريس",
+          "sourceCode": null,
+          "intersectionMeters2": 84170.37401343296,
+          "officialCoveredFraction": 0.9452992305778443,
+          "sourceCoveredFraction": 0.7524851336389202,
+          "iou": 0.7210865921122523
+        },
+        {
+          "id": "osm:relation:7118628",
+          "sourceName": "بوبكر باكير",
+          "sourceCode": "175157",
+          "intersectionMeters2": 3851.4349417042768,
+          "officialCoveredFraction": 0.04325463121302799,
+          "sourceCoveredFraction": 0.004221730373592442,
+          "iou": 0.0038611736627050877
+        },
+        {
+          "id": "osm:relation:7118630",
+          "sourceName": "المؤتمر",
+          "sourceCode": "175160",
+          "intersectionMeters2": 657.4249165653803,
+          "officialCoveredFraction": 0.007383396772037351,
+          "sourceCoveredFraction": 0.0013516572108185677,
+          "iou": 0.0011438093594029453
+        },
+        {
+          "id": "osm:relation:7152489",
+          "sourceName": "القنال",
+          "sourceCode": "175156",
+          "intersectionMeters2": 361.75049679986756,
+          "officialCoveredFraction": 0.0040627414371652085,
+          "sourceCoveredFraction": 0.0011393796300836136,
+          "iou": 0.0008906227811830006
+        }
+      ],
+      "sourceGeometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.872966695377302,
+              37.273240850088946
+            ],
+            [
+              9.87207716992558,
+              37.27275335236588
+            ],
+            [
+              9.870816788572828,
+              37.27200785469622
+            ],
+            [
+              9.870696665537638,
+              37.27214230658302
+            ],
+            [
+              9.870584195789514,
+              37.27228276542042
+            ],
+            [
+              9.87047552176241,
+              37.27242319409237
+            ],
+            [
+              9.87037447034557,
+              37.27256659666491
+            ],
+            [
+              9.870277245417942,
+              37.272713002954326
+            ],
+            [
+              9.870191438982678,
+              37.272862352611675
+            ],
+            [
+              9.870109459412722,
+              37.27301470601175
+            ],
+            [
+              9.870031306400088,
+              37.27317006316459
+            ],
+            [
+              9.869964541297422,
+              37.273325330391636
+            ],
+            [
+              9.869950492692718,
+              37.27343770298564
+            ],
+            [
+              9.869944036432965,
+              37.27355001523086
+            ],
+            [
+              9.869945172559843,
+              37.273662267899525
+            ],
+            [
+              9.869946339394621,
+              37.273777553907564
+            ],
+            [
+              9.869959140526253,
+              37.273917020881925
+            ],
+            [
+              9.86998333036542,
+              37.27405639771386
+            ],
+            [
+              9.870011285812057,
+              37.274192710376944
+            ],
+            [
+              9.87005066077419,
+              37.274331966997465
+            ],
+            [
+              9.87008599361994,
+              37.27444698255182
+            ],
+            [
+              9.870132715631854,
+              37.274561908194144
+            ],
+            [
+              9.870183234038294,
+              37.274676803761345
+            ],
+            [
+              9.870241314070105,
+              37.274788605341264
+            ],
+            [
+              9.87030319085877,
+              37.274900376829194
+            ],
+            [
+              9.870017966835718,
+              37.27635292967116
+            ],
+            [
+              9.87008339523866,
+              37.27644040009201
+            ],
+            [
+              9.870121849763436,
+              37.27648864125111
+            ],
+            [
+              9.870538816967345,
+              37.27604843104636
+            ],
+            [
+              9.870679526307926,
+              37.276071589136734
+            ],
+            [
+              9.870875612146753,
+              37.27593957015669
+            ],
+            [
+              9.871145457211957,
+              37.275967772759884
+            ],
+            [
+              9.871376816620256,
+              37.27594470067036
+            ],
+            [
+              9.871594036665348,
+              37.2760248990308
+            ],
+            [
+              9.872048123887257,
+              37.27550246858637
+            ],
+            [
+              9.872198773963403,
+              37.275382943951314
+            ],
+            [
+              9.872605566432977,
+              37.27506417084405
+            ],
+            [
+              9.872609362699242,
+              37.275064140713354
+            ],
+            [
+              9.872696029637952,
+              37.27499973675962
+            ],
+            [
+              9.87271109141696,
+              37.27498748106957
+            ],
+            [
+              9.872744363994059,
+              37.27489922812012
+            ],
+            [
+              9.872744333176625,
+              37.274896194524175
+            ],
+            [
+              9.873055378984986,
+              37.27486945222915
+            ],
+            [
+              9.873047693976384,
+              37.274860410960166
+            ],
+            [
+              9.872940831148457,
+              37.27331083919566
+            ],
+            [
+              9.872966695377302,
+              37.273240850088946
+            ]
+          ]
+        ]
+      },
+      "identityQualification": "Complete CheikhIdris map visually reviewed; central red target label and uniquely closed ring2 identify the small sector east of HabibBougatfa, south of HassenNouri and north of Canal/BoubakerBakir."
+    }
+  ],
+  "officialPairOverlapMeters2": 14.237722473378135,
+  "codedOldCheikhToOfficialDistanceMeters": 221.86788797473326,
+  "codedOldCheikhOfficialIntersectionMeters2": 0.0,
+  "wholeImadaEvidence": {
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "PDFPage": 29,
+    "JORTPage": 5126,
+    "visualReviewImage": "work/electoral-circle-semantics/review-29.png",
+    "decision": "Distinct whole-imada one-to-one rows for الشيخ إدريس and المدينة - (بنزرت الشمالية) under BizerteNord; المؤتمر is also a distinct whole-imada row. They are neither aliases nor two pieces of one imada."
+  },
+  "recommendation": [
+    "Do not merge Medina and CheikhIdris solely because their current source geometries coincide. They are distinct current official imadas.",
+    "A reviewed corrected CheikhIdris footprint belongs to existing coded identity7118632/175155. The uncoded7152490 has the Cheikh name but duplicates the wrongly placed Medina footprint; explicitly review retirement or saved-ID migration rather than keeping two claims.",
+    "A reviewed corrected Medina footprint belongs to7118631/175154; however it overlaps old Moutamar7118630 strongly. Review the official Moutamar map before a coherent connected import; do not automatically swap source labels or overwrite a code based on spatial overlap."
+  ],
+  "scope": "Downloaded only the requested additional official Medina map; no candidate import, repository, phone, tests or build action."
+}

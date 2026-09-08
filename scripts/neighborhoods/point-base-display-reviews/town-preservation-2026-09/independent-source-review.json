@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Independent identity prerequisites only for three additional town/base display associations. The optional format, source-phase proofs and isolated implementation require a separate gate.",
+  "baselineMetadataSha256": "ce487e995d35df511a7b92200ece5f00355412e5b9f53c4ab57dfde4f6bf985c",
+  "generatorSha256": "c4bba701f4c06fb2f9f09862e06aa00761233bde91980517522ee9de4429e4b5",
+  "currentCuration": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "13a99d8ce1861bbb44b8a1b778ee6de3644f21f62cb84f01f0f2eb6638b1881d"
+  },
+  "sourceProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\six-town-base-source-identity-review.json",
+    "sha256": "9152e9be8763f75128ceecb4cc557ccbc2756a4ccc2eb1a46475a6ea3c8ed766"
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\exact-six-source-and-current-facts.json",
+    "sha256": "e36d9256c312ccaacfa8beccdfc76c8f931925db68804e06604ea53c47d3adc2"
+  },
+  "geographyReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\six-town-geography-schema-review.json",
+    "sha256": "d1995886bad28408213518fd7c256e1decbcd9a556b73bda669e1352b745be9d"
+  },
+  "geographyFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-geography-schema-review\\six-geography-dependency-facts.json",
+    "sha256": "4144bf7797868449966f40ac626db5a02f36cea72f5a225cb7140d79505653c3"
+  },
+  "design": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\kebili-sayada-tataouine-point-display-schema-design.md",
+    "sha256": "84d128863c61c767a91b097882072613a4ab6ea9ac6d72f856cabd04fde5ce02"
+  },
+  "primaryEvidence": {
+    "kebili": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\kebili-interior-city-article.html",
+      "sha256": "9d94f2c7aef84ef06fb80c163c193c61a9bdb030c936256baf1561e8ea8a2e50",
+      "url": "https://www.interieur.gov.tn/actualite/1371/%D8%A8%D9%80%D9%80%D9%84%D8%A7%D8%BA",
+      "publisher": "Tunisian Ministry of Interior",
+      "publicationDate": "2017-03-12",
+      "support": "Direct public report names the entrance to Kebili city at the Janoura junction.",
+      "requiredText": [
+        "بمدخل مدينة قبلي مستوى مفترق جنعورة"
+      ],
+      "qualification": "City identity and Janoura street-context corroboration only; the incident report does not certify a city outline or the current imada line."
+    },
+    "sayada": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\lamta-governorate-geography.pdf",
+      "sha256": "0e8f7740d311b5baf5dfc261197063f11046d7337e891f136363b1fee966e694",
+      "url": "https://g-monastir.tn/images/pdf_files/lamta.pdf",
+      "publisher": "Monastir Governorate",
+      "title": "Lamta city document, geographical setting",
+      "pdfPage": 4,
+      "personallyViewedRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\lamta-page4.png",
+        "sha256": "7dc490fdac7b4172da1114e913f55c1b9b89dc51b5f2ff42e586f008cec43230"
+      },
+      "support": "The geographical account names Sayada city south of Lamta and Bouhjar to the west, treating those settlements distinctly.",
+      "shortExcerpt": "تحدها جنوبا مدينة صيادة",
+      "qualification": "Visual reading used because the PDF text encoding is damaged. This supports Sayada as an inhabited city, not equivalence with Lamta, Bouhjar or the compound delegation."
+    },
+    "tataouine": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\tataouine-municipal-geography.html",
+      "sha256": "df0aa870d60c5f739f68d73de28c97dbea50425026ab735c57af73d4eddd4de8",
+      "url": "https://www.commune-tataouine.gov.tn/index.php?Itemid=131&id=8&lang=ar&option=com_content&view=article",
+      "publisher": "Tataouine Municipality",
+      "support": "Official municipal page identifies Tataouine city and municipality; the Interior directory separately locates its civic address in Tataouine.",
+      "requiredText": [
+        "تقع مدينة تطاوين"
+      ],
+      "qualification": "The article mixes city and governorate population/geographical description. Only city-name/municipal-address usage is used; the broad numerical/extent claims and embedded office map are not treated as settlement or prayer-reference certification."
+    },
+    "interiorDirectory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\interior-municipal-directory.html",
+      "sha256": "e920362ac113c9deaab49014e1b5dd3c9bf1f8ee2cf945e91c4dd750baf9bb66",
+      "url": "https://opendata.interieur.gov.tn/fr/catalog/annuaire-des-municipalites",
+      "publisher": "Tunisian Ministry of Interior",
+      "qualification": "Municipality names and civic addresses; corroborates settlement name use, not municipal borders or legacy prayer-reference coordinates.",
+      "selectedRows": {
+        "الوردانين": "الوردانين شارع الحبيب بورقيبة 5010 73.519.016 73.518.203",
+        "صيادة": "صيادة شارع الحبيب بورقيبة صيادةة 5053 73.430.093 73.430.439",
+        "سيدي علوان": "سيدي علوان شارع ابن زيدون 73.659.041 73.658.230",
+        "تطاوين": "تطاوين تطاوين شارع فرحات حشاد تطاوين 3200 75.860.002 75.862.564 75.860.650",
+        "قبلي": "قبلي قبلي شارع الحبيب بورقيبة قبلي 011 490 75 711 490 75"
+      }
+    }
+  },
+  "records": [
+    {
+      "id": "osm:node:298019989",
+      "baseId": 482,
+      "currentRaw": {
+        "id": "osm:node:298019989",
+        "sourceId": "osm",
+        "name": "قبلي",
+        "aliases": [
+          "Kebili",
+          "قبلی",
+          "קבילי",
+          "Kibili",
+          "Кебили"
+        ],
+        "kind": "town",
+        "parentName": "جنعورة",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Janoura",
+          "Kébili Sud",
+          "جنعورة",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.7061148,
+        "lng": 8.9698376,
+        "delegationId": 482,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:298019989"
+      },
+      "baseCurrent": {
+        "id": 482,
+        "nomFr": "Kebili",
+        "nomAr": "قبلي",
+        "nomEn": "Kebili",
+        "lat": 33.7072,
+        "lng": 8.9697
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-298019989.json",
+        "sha256": "3be492b14ad7ae24c7afaba6316f536d50a24e256881002cd0b1963a3ab71d41"
+      },
+      "sourceNodeVersion": {
+        "version": 14,
+        "timestamp": "2025-12-23T14:42:30Z",
+        "changeset": 176312090
+      },
+      "completeOriginalNamePeerIds": [
+        "osm:node:298019989",
+        "osm:relation:1434950"
+      ],
+      "officialDelegationCodes": [
+        "6351",
+        "6352"
+      ],
+      "preservedImadas": 19,
+      "protectedRawRecords": 22,
+      "preservedMultiMemberGroups": [
+        {
+          "id": "osm:relation:7082714",
+          "pickerGroupId": "osm:relation:7082714",
+          "members": [
+            "osm:node:9947246733",
+            "osm:relation:7082714"
+          ]
+        },
+        {
+          "id": "osm:relation:7082748",
+          "pickerGroupId": "osm:relation:7082748",
+          "members": [
+            "osm:node:9945093900",
+            "osm:relation:7082748"
+          ]
+        }
+      ],
+      "onlyProposedRawChange": {
+        "id": "osm:node:298019989",
+        "field": "pickerGroupId",
+        "before": "osm:node:298019989",
+        "after": "delegation:482"
+      }
+    },
+    {
+      "id": "osm:node:558816759",
+      "baseId": 600,
+      "currentRaw": {
+        "id": "osm:node:558816759",
+        "sourceId": "osm",
+        "name": "صيادة",
+        "aliases": [
+          "Sayada",
+          "صیاده"
+        ],
+        "kind": "village",
+        "parentName": "صيادة الشرقية",
+        "contextAliases": [
+          "Délégation Sayada-Lamta-Bou Hjar",
+          "Sayada Est",
+          "Sayada-Lamta-Bou Hajar",
+          "صيادة الشرقية",
+          "معتمدية صيادة - لمطة - بوحجر"
+        ],
+        "governorateId": 364,
+        "lat": 35.6682749,
+        "lng": 10.8913213,
+        "delegationId": 600,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:558816759"
+      },
+      "baseCurrent": {
+        "id": 600,
+        "nomFr": "Sayada Lamta Bouhjar",
+        "nomAr": "صيادة",
+        "nomEn": "Sayada Lamta Bouhjar",
+        "lat": 35.67,
+        "lng": 10.89
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-558816759.json",
+        "sha256": "9c8dfdf4f9019e785d3a53236fd986c17feadba0424613a30b5cca371bfc0e76"
+      },
+      "sourceNodeVersion": {
+        "version": 17,
+        "timestamp": "2023-10-25T21:12:37Z",
+        "changeset": 143134733
+      },
+      "completeOriginalNamePeerIds": [
+        "osm:node:558816759"
+      ],
+      "officialDelegationCodes": [
+        "3263"
+      ],
+      "preservedImadas": 4,
+      "protectedRawRecords": 6,
+      "preservedMultiMemberGroups": [
+        {
+          "id": "osm:relation:7109667",
+          "pickerGroupId": "osm:relation:7109667",
+          "members": [
+            "osm:relation:7109667",
+            "osm:way:26289690"
+          ]
+        }
+      ],
+      "onlyProposedRawChange": {
+        "id": "osm:node:558816759",
+        "field": "pickerGroupId",
+        "before": "osm:node:558816759",
+        "after": "delegation:600"
+      }
+    },
+    {
+      "id": "osm:node:264885332",
+      "baseId": 624,
+      "currentRaw": {
+        "id": "osm:node:264885332",
+        "sourceId": "osm",
+        "name": "تطاوين",
+        "aliases": [
+          "Tataouine",
+          "ⵜⵉⵟⵟⴰⵡⵉⵏ",
+          "تطاوین",
+          "תטאווין",
+          "Татавин"
+        ],
+        "kind": "town",
+        "parentName": "تطاوين المدينة",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "Tataouine Ville",
+          "تطاوين المدينة",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.9315242,
+        "lng": 10.4503959,
+        "delegationId": 624,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:264885332"
+      },
+      "baseCurrent": {
+        "id": 624,
+        "nomFr": "Tataouine",
+        "nomAr": "تطاوين",
+        "nomEn": "Tataouine",
+        "lat": 32.9297,
+        "lng": 10.4518
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-264885332.json",
+        "sha256": "02de5b550fee38cc66c6ec15dca76a0afbd9e2acdf0bc35600feed4b182f3723"
+      },
+      "sourceNodeVersion": {
+        "version": 23,
+        "timestamp": "2025-12-23T14:01:11Z",
+        "changeset": 176310106
+      },
+      "completeOriginalNamePeerIds": [
+        "osm:node:264885332",
+        "osm:relation:1434953"
+      ],
+      "officialDelegationCodes": [
+        "5351",
+        "5352"
+      ],
+      "preservedImadas": 30,
+      "protectedRawRecords": 36,
+      "preservedMultiMemberGroups": [
+        {
+          "id": "osm:relation:7143860",
+          "pickerGroupId": "osm:relation:7143860",
+          "members": [
+            "osm:relation:7143860",
+            "osm:way:389764461"
+          ]
+        },
+        {
+          "id": "osm:relation:7143826",
+          "pickerGroupId": "osm:relation:7143826",
+          "members": [
+            "osm:relation:7143826",
+            "osm:way:216513518"
+          ]
+        },
+        {
+          "id": "osm:relation:7143825",
+          "pickerGroupId": "osm:relation:7143825",
+          "members": [
+            "osm:relation:7143825",
+            "osm:way:216513440"
+          ]
+        },
+        {
+          "id": "osm:relation:7143823",
+          "pickerGroupId": "osm:relation:7143823",
+          "members": [
+            "osm:node:1975899618",
+            "osm:relation:7143823"
+          ]
+        },
+        {
+          "id": "osm:relation:7143881",
+          "pickerGroupId": "osm:relation:7143881",
+          "members": [
+            "osm:node:297760994",
+            "osm:relation:7143881"
+          ]
+        }
+      ],
+      "onlyProposedRawChange": {
+        "id": "osm:node:264885332",
+        "field": "pickerGroupId",
+        "before": "osm:node:264885332",
+        "after": "delegation:624"
+      }
+    }
+  ],
+  "identityConclusions": {
+    "482": "Kebili inhabited-city usage and the Janoura entrance are independently identified by the Interior Ministry. The exact authentic town and existing Arabic/French city-named reference support one display choice, preserving the accepted Janoura/Sud context despite both coordinates being geometrically Nord.",
+    "600": "Accept only the narrow Arabic settlement interpretation of existing reference600: its Arabic name صيادة identifies Sayada town, and both retained coordinates lie in Sayada Est. The official Monastir geography document names Sayada separately from Lamta and Bou Hjar; this supports the town identity and explicitly prevents treating the three settlements or their compound delegation as equivalent. Existing French/English Sayada Lamta Bouhjar labels remain byte-exact legacy reference labels.",
+    "624": "The official municipal city-name usage, municipal civic address and exact authentic town record support Tataouine city identity. The city display association spans distinct retained source contexts: node in South and base in North. Neither reparenting nor a common-delegation containment claim is supported."
+  },
+  "requiredSourceProofFacts": [
+    "Exact current target/base objects, three authentic node payloads and original/effective complete name-peer inventories.",
+    "All53 official imadas,64 current raw records and every complete typed group; retain the eight existing non-singleton imada groups and their polygon/point members.",
+    "Explicit positive and negative membership for each source delegation and common governorate, distinguishing geometric membership from existing administrative_context effects.",
+    "Preserve and bind every existing name_tags, preserve_point, manualPointId, administrative_context and Chenini official replacement in its actual processing order; no fabricated boundary-only lineage for name changes.",
+    "Explicit Sayada Arabic settlement identity and unchanged compound Latin labels, with separate Lamta and Bou Hjar imadas/groups.",
+    "Only three target pickerGroupId fields; no name/kind/coordinate/default/context/boundary/tiny changes; preserve both Tataouine localRecords and all existing guards."
+  ],
+  "independentChecks": {
+    "all64CurrentRawRecordsEqualFrozen46acFactsOnCurrentCe487": true,
+    "all53ImadaPackedSlicesAndCompleteGroupsExact": true,
+    "threeAuthenticAPIsCacheTagsCoordinatesVersionsExact": true,
+    "completeOriginalNamePeersRecomputed": true,
+    "threeBaseGovernorObjectsExact": true,
+    "registryComplete": true,
+    "existingCurationRecordsRetained": true,
+    "sourceContainmentBooleansRecomputed": true,
+    "coordinateCorrectionSubsetsEmpty": true,
+    "primaryHtmlDirectlyRead": true,
+    "sayadaPrimaryPDF4PersonallyViewed": true
+  },
+  "limitations": [
+    "This is an explicitly reviewed display association; no administrative area, city perimeter, legal extent or INM calculation-anchor equality is certified.",
+    "Tataouine municipal prose mixes city and governorate geography/population. Only literal city-name and civic-address evidence is used; numerical and extent claims are excluded.",
+    "Primary documents support the identity inference but not the two coordinates as separately surveyed official anchors.",
+    "No phone files or ledger were read; the root-reported phone cards are supplementary and unnecessary to this source conclusion."
+  ],
+  "findings": [],
+  "notPerformed": [
+    "new source fetch",
+    "generator/product helper execution",
+    "tests/builds",
+    "repo/stage writes",
+    "phone/ledger access"
+  ]
+}

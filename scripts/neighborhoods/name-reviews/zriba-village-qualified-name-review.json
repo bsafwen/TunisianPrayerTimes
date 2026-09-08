@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T10:54:36.356262+00:00",
+  "status": "SUPPORTED_QUALIFIED_NAME_ONLY_PENDING_STAGED_GENERATION",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "id": "osm:relation:7113328",
+  "expectedKind": "sector",
+  "expectedOriginalTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "name": "الزريبة",
+    "name:ar": "الزريبة",
+    "name:fr": "Ezzriba",
+    "ref:tn:codegeo": "165255"
+  },
+  "originalGeometrySha256": "71f1dcfa5c11eef6d8eeeb146a3dc411324677fd326c192eaa7b9a0f4b997d81",
+  "currentPackedGeometrySha256": "9d881913b7f729612cb801ef35c2712a224ba8307c8d5b1dddd1ff325a16c77b",
+  "currentFeature": {
+    "id": "osm:relation:7113328",
+    "sourceId": "osm",
+    "name": "الزريبة",
+    "aliases": [
+      "Ezzriba",
+      "Zriba"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية الزريبة",
+    "contextAliases": [
+      "Délégation Zriba",
+      "Zriba",
+      "معتمدية الزريبة"
+    ],
+    "governorateId": 343,
+    "lat": 36.330921,
+    "lng": 10.254651,
+    "delegationId": 409,
+    "hasBoundary": true,
+    "bbox": [
+      10.222524,
+      36.297341,
+      10.303869,
+      36.364542
+    ],
+    "areaKm2": 30.17809978759438,
+    "pickerGroupId": "osm:relation:7113328",
+    "offset": 817724,
+    "length": 4380
+  },
+  "proposedNameTags": {
+    "name": "الزريبة القرية",
+    "name:ar": "الزريبة القرية",
+    "name:fr": "Ez-zeriba village",
+    "alt_name": "الزريبة;Ezzriba"
+  },
+  "sourceFacts": {
+    "file": "name-reviews/zriba-direct-pbf-source-facts.json",
+    "sha256": "32897bec0b78171392d3ed19d6ede7de13eb7f9e007ef0e208bfee5cc4fc30fb",
+    "directPbfRead": true
+  },
+  "codedParent": {
+    "id": "osm:relation:7167806",
+    "expectedOriginalTags": {
+      "admin_level": "5",
+      "alt_name:fr": "Zriba",
+      "boundary": "administrative",
+      "name": "معتمدية الزريبة",
+      "name:ar": "معتمدية الزريبة",
+      "name:fr": "Délégation Zriba",
+      "ref:tn:codegeo": "1652",
+      "ref:tn:hasc_2": "TN.ZA.ZR",
+      "wikidata": "Q3576220"
+    },
+    "originalGeometrySha256": "fcb1208aff1c5dbc1302a720cd147717989c5e4da47232f8191ba25594faf165",
+    "containsEntireOriginalSector": true,
+    "sourceCodeClaimUnique": true
+  },
+  "currentOfficialRecord": {
+    "governorateCode": "16",
+    "governorateFr": "Zaghouan",
+    "governorateAr": "زغوان",
+    "delegationCode": "1652",
+    "delegationFr": "Ez-zeriba",
+    "delegationAr": "الزريبة",
+    "sectorCode": "165255",
+    "sectorFr": "Ez-zeriba village",
+    "sectorAr": "الزريبة القرية",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 15233,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 640,
+      "Nombre_de_menages_par_Secteurs.xlsx": 639
+    }
+  },
+  "currentOfficialRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+  "currentOfficialSources": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "previousOfficialRecords": [
+    {
+      "code": "165255",
+      "nameFr": "Ez­Zeriba Village",
+      "nameAr": "الزريبة القرية",
+      "delegationHeading": "Delegation Eez-zeriba",
+      "page": 53
+    }
+  ],
+  "isie2022MembershipEvidence": [
+    {
+      "governorate": "زغوان",
+      "delegation": "الزريبة",
+      "sector": "الزريبة القرية",
+      "pages": [
+        34
+      ]
+    }
+  ],
+  "priorIdentityReassessment": {
+    "file": "outputs/held28-current-identity-reassessment.json",
+    "sha256": "c78442fe4c49e764353c9ebfcda66b8b0551238a495d1d00bb497001bdd65daf",
+    "classification": "specific_sector_qualifier_missing",
+    "originalSourceAndCurrentSectorMetadataRevalidated": true,
+    "primaryOfficialSources": {
+      "INS2012": {
+        "url": "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+        "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+        "extractionCaveat": "pdfplumber table text; missing Unicode recovered from original Times New Roman glyph IDs; Arabic presentation forms normalized and visual order reversed. Candidate extraction requires visual inspection for ambiguous rows."
+      },
+      "INS2024": [
+        {
+          "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+          "httpHeaders": {
+            "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+            "Server": "Apache/2.4.38 (Debian)",
+            "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+            "ETag": "\"8d1a5c-636842926ae2a\"",
+            "Accept-Ranges": "bytes",
+            "Content-Length": "9247324",
+            "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "Connection": "close"
+          },
+          "bytes": 9247324,
+          "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+          "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population"
+        },
+        {
+          "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+          "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+          "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+          "httpHeaders": {
+            "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+            "Server": "Apache/2.4.38 (Debian)",
+            "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+            "ETag": "\"b8855-6433d8623825d\"",
+            "Accept-Ranges": "bytes",
+            "Content-Length": "755797",
+            "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "Connection": "close"
+          },
+          "bytes": 755797,
+          "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+          "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements"
+        },
+        {
+          "file": "Nombre_de_menages_par_Secteurs.xlsx",
+          "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+          "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+          "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+          "httpHeaders": {
+            "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+            "Server": "Apache/2.4.38 (Debian)",
+            "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+            "ETag": "\"9ea73-6433d95004ce0\"",
+            "Accept-Ranges": "bytes",
+            "Content-Length": "649843",
+            "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "Connection": "close"
+          },
+          "bytes": 649843,
+          "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+          "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages"
+        }
+      ],
+      "ISIE2022": {
+        "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf",
+        "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97"
+      }
+    }
+  },
+  "officialMapNameEvidence": {
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B2%D8%BA%D9%88%D8%A7%D9%86/%D8%A7%D9%84%D8%B2%D8%B1%D9%8A%D8%A8%D8%A9/%D8%A7%D9%84%D8%B2%D8%B1%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D9%82%D8%B1%D9%8A%D8%A9.pdf",
+    "pdfSha256": "6548098d802e1eebb62479165e02bdc6377404fffe664e8daa1d30ccbaf7d166",
+    "page": 1,
+    "sourceTitleAr": "الزريبة القرية",
+    "sourceParentAr": "الزريبة",
+    "dataFile": "outputs/zriba-sector-geopdf-data.json",
+    "dataSha256": "ef7eaa41e72e222a96e1cf29f980798b576ef5f6c04f9c715e84ebef0642dd18",
+    "renderFile": "work/isie-sector-maps-zriba/zriba-village.png",
+    "renderSha256": "3efed9d70da37f9b0d1692c7596665e39f7f0da6e32adca4982742366a5d9ddd",
+    "personallyVisuallyReviewedForName": true,
+    "visualFinding": "The page title and central red sector label both read الزريبة القرية. Separate red labels identify الزريبة الحمام الشمالية and الزريبة الحمام الجنوبية, while the blue delegation label is الزريبة. This supports restoring the sector-specific village qualifier, not renaming the generic delegation.",
+    "geometryExtractionStatusAsRead": "READ_ONLY_UNREVIEWED_EXTRACTION_CANDIDATES",
+    "geometryCertificationByThisNameReview": false
+  },
+  "preservedAliases": {
+    "rawOldArabic": "الزريبة",
+    "rawOldFrench": "Ezzriba",
+    "currentAbsorbedPointAlias": "Zriba",
+    "method": "Preserve exact old source names through alt_name; retain existing point-derived aliases through unchanged point absorption. The actual generated delta must confirm all old search names survive."
+  },
+  "unchangedGenericTimetableBase": {
+    "id": 409,
+    "nomFr": "Zeriba",
+    "nomAr": "الزريبة",
+    "nomEn": "Zeriba",
+    "lat": 36.32,
+    "lng": 10.25
+  },
+  "findings": [
+    "The original PBF has one sector claimant for165255 and one parent claimant for1652; its complete original sector geometry is contained by that parent.",
+    "INS2012, INS2024 and ISIE2022 all distinguish Zriba Village from the Hammam north/south sectors. This is a missing qualifier, not a homonymous-sector code transfer.",
+    "The official ISIE map visibly names the same qualified sector. The generic parent name does not justify merging the sector into base409.",
+    "Only derived name tags change. Exact old Arabic/French names remain searchable, the source PBF is untouched, and the compiled geometry/coordinates/context/group IDs must remain unchanged."
+  ],
+  "scope": "Name and saved-label normalization only. No polygon import, point relocation, parent transfer, prayer-source adjustment or base/locality merge.",
+  "boundaryReviewSeparate": true,
+  "base409IdentityCoordinateAmbiguityStillHeld": true
+}

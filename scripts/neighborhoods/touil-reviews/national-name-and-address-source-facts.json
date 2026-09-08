@@ -1,0 +1,5302 @@
+{
+  "scope": "Fresh full PBF national target-name/address and relation membership scan; nearby public locality/address features inside explicit bbox, not a locality boundary. Full geometry retained without repair.",
+  "source": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "searchBbox": [
+    10.23,
+    32.74,
+    10.31,
+    32.8
+  ],
+  "countedObjects": {
+    "nodes": 11466039,
+    "ways": 1111892,
+    "relations": 7461
+  },
+  "records": [
+    {
+      "id": "osm:node:10899059789",
+      "tags": {
+        "name": "رأس الوادي",
+        "name:ar": "رأس الوادي",
+        "name:en": "Ras El Oued",
+        "name:fr": "Ras El Oued",
+        "place": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2572704,
+          32.7683493
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11026040841",
+      "tags": {
+        "access": "yes",
+        "historic": "ruins",
+        "name": "Ksar Bir Tedrekhet",
+        "ruins": "building"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2441271,
+          32.794029
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11026180771",
+      "tags": {
+        "amenity": "place_of_worship",
+        "name": "جامع الدغارية",
+        "name:aeb": "جامع الدغارية",
+        "name:ar": "جامع الدغارية",
+        "name:en": "Jamaa Dghariat",
+        "religion": "muslim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2765699,
+          32.7658657
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11062156627",
+      "tags": {
+        "addr:street": "بئر بوزيد",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "مركز الصحة الأساسية الطويلة بئر بوزيد"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.405387,
+          35.0285483
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {
+        "name": "مركز الصحة الأساسية الطويلة بئر بوزيد"
+      },
+      "withinReviewExtent": false,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11062161780",
+      "tags": {
+        "addr:street": "بئر بوزيد",
+        "amenity": "clinic",
+        "name": "مركز الصحة الأساسية الطويلة بئر بوزيد",
+        "social_facility": "healthcare"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.4055288,
+          35.0286319
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {
+        "name": "مركز الصحة الأساسية الطويلة بئر بوزيد"
+      },
+      "withinReviewExtent": false,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11062164695",
+      "tags": {
+        "addr:street": "بئر بوزيد",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "مركز الصحة الأساسية الطويلة بئر بوزيد"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.4053764,
+          35.028628
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {
+        "name": "مركز الصحة الأساسية الطويلة بئر بوزيد"
+      },
+      "withinReviewExtent": false,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11076218350",
+      "tags": {
+        "access": "yes",
+        "historic": "archaeological_site",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2339205,
+          32.7718193
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11076218358",
+      "tags": {
+        "access": "yes",
+        "archaeological_site": "fortification",
+        "historic": "archaeological_site",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2354592,
+          32.7698257
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11076242235",
+      "tags": {
+        "historic": "archaeological_site",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2312649,
+          32.7767784
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11076242248",
+      "tags": {
+        "access": "yes",
+        "archaeological_site": "fortification",
+        "historic": "archaeological_site",
+        "name": "Ras El Oued muraille",
+        "ruins": "fortifcation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2323016,
+          32.7745448
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11076247162",
+      "tags": {
+        "access": "yes",
+        "historic": "archaeological_site",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2329442,
+          32.7725515
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11076281942",
+      "tags": {
+        "access": "yes",
+        "historic": "archaeological_site",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2351515,
+          32.7688899
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11525312957",
+      "tags": {
+        "access": "yes",
+        "historic": "ruins",
+        "historic:civilization": "modern",
+        "name": "قصر الدغارية",
+        "name:ar": "قصر الدغارية",
+        "name:en": "Ksar Dghariat",
+        "ruins": "building"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2761404,
+          32.7657318
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11525318199",
+      "tags": {
+        "name": "طويل أولاد زايد",
+        "name:aeb": "طويل أولاد زايد",
+        "name:ar": "طويل أولاد زايد",
+        "name:en": "Touil Ouled Zayed",
+        "name:fr": "Touil Ouled Zayed",
+        "place": "hamlet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2628336,
+          32.7671737
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {
+        "name": "طويل أولاد زايد",
+        "name:aeb": "طويل أولاد زايد",
+        "name:ar": "طويل أولاد زايد",
+        "name:en": "Touil Ouled Zayed",
+        "name:fr": "Touil Ouled Zayed"
+      },
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11525830166",
+      "tags": {
+        "access": "yes",
+        "historic": "ruins",
+        "historic:civilization": "modern",
+        "name": "أولاد حامد",
+        "name:aeb": "أولاد حامد",
+        "name:ar": "أولاد حامد",
+        "name:en": "Kasbet Ouled Hamed",
+        "name:fr": "Kasbet Ouled Hamed",
+        "ruins": "building"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2434751,
+          32.754127
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11528548947",
+      "tags": {
+        "access": "yes",
+        "historic": "archaeological_site",
+        "historic:civilization": "modern",
+        "name": "Kasbet el Agoum 01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2311067,
+          32.748141
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11528548952",
+      "tags": {
+        "access": "yes",
+        "historic": "archaeological_site",
+        "name": "Kasbet el Agoum 02"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2375522,
+          32.7455637
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:11528548953",
+      "tags": {
+        "access": "yes",
+        "historic": "archaeological_site",
+        "historic:civilization": "modern",
+        "name": "Kasbet el Agoum 03"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2335894,
+          32.7437303
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:3814109595",
+      "tags": {
+        "name": "Ksar Rahache",
+        "natural": "peak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2501429,
+          32.757415
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:3814110946",
+      "tags": {
+        "name": "طويل أولاد زايد",
+        "name:aeb": "طويل أولاد زايد",
+        "name:ar": "طويل أولاد زايد",
+        "name:en": "Touil Ouled Zayed",
+        "name:fr": "Touil Ouled Zayed",
+        "natural": "peak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2638953,
+          32.7659643
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {
+        "name": "طويل أولاد زايد",
+        "name:aeb": "طويل أولاد زايد",
+        "name:ar": "طويل أولاد زايد",
+        "name:en": "Touil Ouled Zayed",
+        "name:fr": "Touil Ouled Zayed"
+      },
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:9811039106",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "shop": "convenience"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2549435,
+          32.7676271
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:9811073738",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2567398,
+          32.7691792
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:9811073750",
+      "tags": {
+        "name": "بيع مواد غذائية",
+        "name:ar": "بيع مواد غذائية",
+        "name:fr": "alimentation générale",
+        "shop": "convenience"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2569302,
+          32.7689063
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:node:9830587944",
+      "tags": {
+        "name": "Tadarromt Home",
+        "name:fr": "Tadarromt Home",
+        "phone": "+216 25 090 340",
+        "tourism": "motel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2513363,
+          32.7627829
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original node"
+    },
+    {
+      "id": "osm:way:1068796766",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "amenity": "school",
+        "barrier": "wall",
+        "name": "المدرسة الابتدائية برأس الوادي",
+        "name:ar": "المدرسة الابتدائية برأس الوادي",
+        "name:fr": "École Primaire Ras El Oued"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2572599,
+                32.7698268
+              ],
+              [
+                10.2573072,
+                32.769664
+              ],
+              [
+                10.2573389,
+                32.7695674
+              ],
+              [
+                10.2574609,
+                32.7692227
+              ],
+              [
+                10.2574742,
+                32.7691851
+              ],
+              [
+                10.2575831,
+                32.7691963
+              ],
+              [
+                10.2576086,
+                32.7691991
+              ],
+              [
+                10.2577043,
+                32.7692071
+              ],
+              [
+                10.25805,
+                32.7692444
+              ],
+              [
+                10.2580931,
+                32.7693621
+              ],
+              [
+                10.2579328,
+                32.7698924
+              ],
+              [
+                10.257631,
+                32.7699142
+              ],
+              [
+                10.2572599,
+                32.7698268
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068800522",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2575053,
+                32.7686437
+              ],
+              [
+                10.2575831,
+                32.7685332
+              ],
+              [
+                10.2577253,
+                32.7685963
+              ],
+              [
+                10.2576368,
+                32.7687046
+              ],
+              [
+                10.2575053,
+                32.7686437
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068800523",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2574851,
+                32.7684763
+              ],
+              [
+                10.2575629,
+                32.7683449
+              ],
+              [
+                10.2576632,
+                32.7683869
+              ],
+              [
+                10.2576341,
+                32.7684362
+              ],
+              [
+                10.2575402,
+                32.7684993
+              ],
+              [
+                10.2574851,
+                32.7684763
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068800524",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2569172,
+                32.7695656
+              ],
+              [
+                10.256933,
+                32.7695363
+              ],
+              [
+                10.2570101,
+                32.7695656
+              ],
+              [
+                10.2569799,
+                32.7696007
+              ],
+              [
+                10.2569172,
+                32.7695656
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068802928",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2574736,
+                32.7678979
+              ],
+              [
+                10.2575721,
+                32.767892
+              ],
+              [
+                10.2575826,
+                32.7679689
+              ],
+              [
+                10.2574912,
+                32.7679748
+              ],
+              [
+                10.2574736,
+                32.7678979
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068802929",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2571358,
+                32.7678772
+              ],
+              [
+                10.2572659,
+                32.767895
+              ],
+              [
+                10.2573363,
+                32.7679127
+              ],
+              [
+                10.2573187,
+                32.7680103
+              ],
+              [
+                10.2572413,
+                32.7680044
+              ],
+              [
+                10.2571674,
+                32.7679867
+              ],
+              [
+                10.2571358,
+                32.7678772
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068806698",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج النسرين",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2565516,
+                32.7676139
+              ],
+              [
+                10.2566959,
+                32.7674067
+              ],
+              [
+                10.2569317,
+                32.7675251
+              ],
+              [
+                10.2567839,
+                32.7677293
+              ],
+              [
+                10.2565516,
+                32.7676139
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068811025",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2552038,
+                32.7671091
+              ],
+              [
+                10.2552686,
+                32.7670149
+              ],
+              [
+                10.2554015,
+                32.7670938
+              ],
+              [
+                10.2553327,
+                32.7671744
+              ],
+              [
+                10.2552038,
+                32.7671091
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068811026",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2551437,
+                32.767193
+              ],
+              [
+                10.2552038,
+                32.7671091
+              ],
+              [
+                10.2553327,
+                32.7671744
+              ],
+              [
+                10.25527,
+                32.7672594
+              ],
+              [
+                10.2551437,
+                32.767193
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068811027",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2550819,
+                32.7672821
+              ],
+              [
+                10.2551437,
+                32.767193
+              ],
+              [
+                10.25527,
+                32.7672594
+              ],
+              [
+                10.2552107,
+                32.7673429
+              ],
+              [
+                10.2550819,
+                32.7672821
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068811028",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2550129,
+                32.7673685
+              ],
+              [
+                10.2550819,
+                32.7672821
+              ],
+              [
+                10.2552107,
+                32.7673429
+              ],
+              [
+                10.2551429,
+                32.7674357
+              ],
+              [
+                10.2550129,
+                32.7673685
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068811029",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2549309,
+                32.7674846
+              ],
+              [
+                10.2550129,
+                32.7673685
+              ],
+              [
+                10.2551429,
+                32.7674357
+              ],
+              [
+                10.2550489,
+                32.7675425
+              ],
+              [
+                10.2549309,
+                32.7674846
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068811030",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2548923,
+                32.7675513
+              ],
+              [
+                10.2549309,
+                32.7674846
+              ],
+              [
+                10.2550489,
+                32.7675425
+              ],
+              [
+                10.2549946,
+                32.7676203
+              ],
+              [
+                10.2549227,
+                32.767581
+              ],
+              [
+                10.2548923,
+                32.7675513
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068811031",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2548776,
+                32.767642
+              ],
+              [
+                10.2549227,
+                32.767581
+              ],
+              [
+                10.2549946,
+                32.7676203
+              ],
+              [
+                10.2549557,
+                32.7676785
+              ],
+              [
+                10.2548776,
+                32.767642
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812306",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2552901,
+                32.7669476
+              ],
+              [
+                10.2553569,
+                32.7668488
+              ],
+              [
+                10.2555043,
+                32.7669211
+              ],
+              [
+                10.2554266,
+                32.7670215
+              ],
+              [
+                10.2552901,
+                32.7669476
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812307",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2553569,
+                32.7668488
+              ],
+              [
+                10.2554452,
+                32.7667215
+              ],
+              [
+                10.2555927,
+                32.7667938
+              ],
+              [
+                10.2555043,
+                32.7669211
+              ],
+              [
+                10.2553569,
+                32.7668488
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812308",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2554689,
+                32.766626
+              ],
+              [
+                10.2555805,
+                32.7664701
+              ],
+              [
+                10.2557458,
+                32.7665648
+              ],
+              [
+                10.2556403,
+                32.7667128
+              ],
+              [
+                10.2554689,
+                32.766626
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812310",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2557706,
+                32.7669858
+              ],
+              [
+                10.255858,
+                32.7668626
+              ],
+              [
+                10.2559902,
+                32.7669343
+              ],
+              [
+                10.2559371,
+                32.7670163
+              ],
+              [
+                10.2558795,
+                32.766985
+              ],
+              [
+                10.2558503,
+                32.767026
+              ],
+              [
+                10.2557706,
+                32.7669858
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812311",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.255858,
+                32.7668626
+              ],
+              [
+                10.2559139,
+                32.766786
+              ],
+              [
+                10.2560436,
+                32.766859
+              ],
+              [
+                10.2559902,
+                32.7669343
+              ],
+              [
+                10.255858,
+                32.7668626
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812312",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2559139,
+                32.766786
+              ],
+              [
+                10.2559753,
+                32.7666945
+              ],
+              [
+                10.2561114,
+                32.766761
+              ],
+              [
+                10.2560436,
+                32.766859
+              ],
+              [
+                10.2559139,
+                32.766786
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812313",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2556529,
+                32.766884
+              ],
+              [
+                10.2557234,
+                32.7667881
+              ],
+              [
+                10.255858,
+                32.7668626
+              ],
+              [
+                10.2557706,
+                32.7669858
+              ],
+              [
+                10.2556885,
+                32.7669498
+              ],
+              [
+                10.2557137,
+                32.7669155
+              ],
+              [
+                10.2556529,
+                32.766884
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812314",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2557234,
+                32.7667881
+              ],
+              [
+                10.2557832,
+                32.766713
+              ],
+              [
+                10.2559139,
+                32.766786
+              ],
+              [
+                10.255858,
+                32.7668626
+              ],
+              [
+                10.2557234,
+                32.7667881
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068812315",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2557832,
+                32.766713
+              ],
+              [
+                10.2558476,
+                32.7666257
+              ],
+              [
+                10.2559753,
+                32.7666945
+              ],
+              [
+                10.2559139,
+                32.766786
+              ],
+              [
+                10.2557832,
+                32.766713
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816455",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2566245,
+                32.7691871
+              ],
+              [
+                10.2567042,
+                32.7690701
+              ],
+              [
+                10.2568128,
+                32.7691224
+              ],
+              [
+                10.2567332,
+                32.7692394
+              ],
+              [
+                10.2566245,
+                32.7691871
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816456",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج القرنفل",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2564282,
+                32.7690766
+              ],
+              [
+                10.2565304,
+                32.7689433
+              ],
+              [
+                10.2566359,
+                32.7690005
+              ],
+              [
+                10.2565337,
+                32.7691338
+              ],
+              [
+                10.2564282,
+                32.7690766
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816457",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2566611,
+                32.7690525
+              ],
+              [
+                10.2567111,
+                32.7689739
+              ],
+              [
+                10.2567343,
+                32.7689467
+              ],
+              [
+                10.256884,
+                32.7690228
+              ],
+              [
+                10.2568128,
+                32.7691224
+              ],
+              [
+                10.2567042,
+                32.7690701
+              ],
+              [
+                10.2566611,
+                32.7690525
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816458",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2567343,
+                32.7689467
+              ],
+              [
+                10.2567606,
+                32.7689045
+              ],
+              [
+                10.2567814,
+                32.7688754
+              ],
+              [
+                10.2569353,
+                32.7689475
+              ],
+              [
+                10.256884,
+                32.7690228
+              ],
+              [
+                10.2567343,
+                32.7689467
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816459",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2567814,
+                32.7688754
+              ],
+              [
+                10.2568003,
+                32.7688473
+              ],
+              [
+                10.2568338,
+                32.7687962
+              ],
+              [
+                10.2569877,
+                32.7688683
+              ],
+              [
+                10.2569353,
+                32.7689475
+              ],
+              [
+                10.2567814,
+                32.7688754
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816460",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج القرنفل",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2566466,
+                32.7687634
+              ],
+              [
+                10.2566839,
+                32.7687149
+              ],
+              [
+                10.2568338,
+                32.7687962
+              ],
+              [
+                10.2568003,
+                32.7688473
+              ],
+              [
+                10.2566466,
+                32.7687634
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816461",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج القرنفل",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2566025,
+                32.7688248
+              ],
+              [
+                10.2566466,
+                32.7687634
+              ],
+              [
+                10.2568003,
+                32.7688473
+              ],
+              [
+                10.2567606,
+                32.7689045
+              ],
+              [
+                10.2566025,
+                32.7688248
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068816462",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.256553,
+                32.7688942
+              ],
+              [
+                10.2566025,
+                32.7688248
+              ],
+              [
+                10.2567606,
+                32.7689045
+              ],
+              [
+                10.2567111,
+                32.7689739
+              ],
+              [
+                10.256553,
+                32.7688942
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068817862",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2559792,
+                32.76556
+              ],
+              [
+                10.2560836,
+                32.765412
+              ],
+              [
+                10.25621,
+                32.765475
+              ],
+              [
+                10.2563127,
+                32.7653902
+              ],
+              [
+                10.256393,
+                32.7655105
+              ],
+              [
+                10.2563483,
+                32.7655739
+              ],
+              [
+                10.256474,
+                32.7656366
+              ],
+              [
+                10.2563852,
+                32.7657625
+              ],
+              [
+                10.2559792,
+                32.76556
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068817863",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2561608,
+                32.7658242
+              ],
+              [
+                10.2561995,
+                32.7657946
+              ],
+              [
+                10.2562874,
+                32.765836
+              ],
+              [
+                10.2562523,
+                32.7658715
+              ],
+              [
+                10.2561608,
+                32.7658242
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068817864",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الاقحوان",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2563754,
+                32.7659159
+              ],
+              [
+                10.2564528,
+                32.7658271
+              ],
+              [
+                10.2565197,
+                32.7658627
+              ],
+              [
+                10.256488,
+                32.7658952
+              ],
+              [
+                10.2565408,
+                32.7659248
+              ],
+              [
+                10.2564845,
+                32.7659721
+              ],
+              [
+                10.2563754,
+                32.7659159
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068819186",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج  النرجس",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2563798,
+                32.7686686
+              ],
+              [
+                10.2564339,
+                32.7685943
+              ],
+              [
+                10.2565743,
+                32.7686607
+              ],
+              [
+                10.2565154,
+                32.7687481
+              ],
+              [
+                10.2563798,
+                32.7686686
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068819187",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج  النرجس",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2563147,
+                32.7687635
+              ],
+              [
+                10.2563798,
+                32.7686686
+              ],
+              [
+                10.2565154,
+                32.7687481
+              ],
+              [
+                10.2564531,
+                32.7688364
+              ],
+              [
+                10.2563147,
+                32.7687635
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068819188",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج  النرجس",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2562457,
+                32.7688676
+              ],
+              [
+                10.2563147,
+                32.7687635
+              ],
+              [
+                10.2564531,
+                32.7688364
+              ],
+              [
+                10.2563861,
+                32.7689401
+              ],
+              [
+                10.2562457,
+                32.7688676
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068819189",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج  النرجس",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2561805,
+                32.7689808
+              ],
+              [
+                10.2562457,
+                32.7688676
+              ],
+              [
+                10.2563861,
+                32.7689401
+              ],
+              [
+                10.256318,
+                32.7690443
+              ],
+              [
+                10.2561805,
+                32.7689808
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068819190",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج القرنفل",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2562463,
+                32.7686015
+              ],
+              [
+                10.2563053,
+                32.7685219
+              ],
+              [
+                10.2564339,
+                32.7685943
+              ],
+              [
+                10.2563798,
+                32.7686686
+              ],
+              [
+                10.2562463,
+                32.7686015
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068819191",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج النسرين",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2561795,
+                32.7687001
+              ],
+              [
+                10.2562463,
+                32.7686015
+              ],
+              [
+                10.2563798,
+                32.7686686
+              ],
+              [
+                10.2563147,
+                32.7687635
+              ],
+              [
+                10.2561795,
+                32.7687001
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068819192",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج النسرين",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2561104,
+                32.7688042
+              ],
+              [
+                10.2561795,
+                32.7687001
+              ],
+              [
+                10.2563147,
+                32.7687635
+              ],
+              [
+                10.2562457,
+                32.7688676
+              ],
+              [
+                10.2561104,
+                32.7688042
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068822283",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج الياسمين",
+        "building": "house",
+        "building:levels": "1"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2559479,
+                32.7671643
+              ],
+              [
+                10.2560227,
+                32.7670614
+              ],
+              [
+                10.2561533,
+                32.7671295
+              ],
+              [
+                10.2562275,
+                32.7671699
+              ],
+              [
+                10.2562071,
+                32.7672012
+              ],
+              [
+                10.2560624,
+                32.7671195
+              ],
+              [
+                10.2560283,
+                32.7671647
+              ],
+              [
+                10.2561035,
+                32.7672018
+              ],
+              [
+                10.2560829,
+                32.7672308
+              ],
+              [
+                10.2559479,
+                32.7671643
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828938",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج  النرجس",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2551666,
+                32.7684357
+              ],
+              [
+                10.2552344,
+                32.7683399
+              ],
+              [
+                10.2553688,
+                32.7684101
+              ],
+              [
+                10.2552948,
+                32.7685044
+              ],
+              [
+                10.2551666,
+                32.7684357
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828939",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج  النرجس",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2552344,
+                32.7683399
+              ],
+              [
+                10.2552731,
+                32.768293
+              ],
+              [
+                10.255406,
+                32.7683593
+              ],
+              [
+                10.2553688,
+                32.7684101
+              ],
+              [
+                10.2552344,
+                32.7683399
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828940",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.255051,
+                32.7683767
+              ],
+              [
+                10.2551556,
+                32.7682306
+              ],
+              [
+                10.2552731,
+                32.768293
+              ],
+              [
+                10.2551666,
+                32.7684357
+              ],
+              [
+                10.255051,
+                32.7683767
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828941",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج النسرين",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2552731,
+                32.768293
+              ],
+              [
+                10.2553752,
+                32.7681595
+              ],
+              [
+                10.2555014,
+                32.7682325
+              ],
+              [
+                10.255406,
+                32.7683593
+              ],
+              [
+                10.2552731,
+                32.768293
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828942",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج النسرين",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2553752,
+                32.7681595
+              ],
+              [
+                10.2553977,
+                32.7681321
+              ],
+              [
+                10.2554494,
+                32.7680665
+              ],
+              [
+                10.2555778,
+                32.7681392
+              ],
+              [
+                10.2555014,
+                32.7682325
+              ],
+              [
+                10.2553752,
+                32.7681595
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828943",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2552791,
+                32.768066
+              ],
+              [
+                10.2553309,
+                32.7680004
+              ],
+              [
+                10.2554494,
+                32.7680665
+              ],
+              [
+                10.2553977,
+                32.7681321
+              ],
+              [
+                10.2552791,
+                32.768066
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828944",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2551556,
+                32.7682306
+              ],
+              [
+                10.2552791,
+                32.768066
+              ],
+              [
+                10.2553977,
+                32.7681321
+              ],
+              [
+                10.2552731,
+                32.768293
+              ],
+              [
+                10.2551556,
+                32.7682306
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828945",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2550572,
+                32.767971
+              ],
+              [
+                10.2551109,
+                32.7679062
+              ],
+              [
+                10.25523,
+                32.7679808
+              ],
+              [
+                10.2551861,
+                32.7680394
+              ],
+              [
+                10.2550572,
+                32.767971
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828946",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "addr:street": "نهج السوسن",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2550096,
+                32.7680673
+              ],
+              [
+                10.255046,
+                32.7680156
+              ],
+              [
+                10.2551555,
+                32.7680701
+              ],
+              [
+                10.2551191,
+                32.7681218
+              ],
+              [
+                10.2550096,
+                32.7680673
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828947",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2552088,
+                32.7687988
+              ],
+              [
+                10.2553137,
+                32.7686373
+              ],
+              [
+                10.2554307,
+                32.768691
+              ],
+              [
+                10.2553259,
+                32.7688526
+              ],
+              [
+                10.2552088,
+                32.7687988
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1068828948",
+      "tags": {
+        "addr:city": "رأس الوادي",
+        "addr:postcode": "3264",
+        "building": "house"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2553259,
+                32.7688526
+              ],
+              [
+                10.2554307,
+                32.768691
+              ],
+              [
+                10.2555509,
+                32.7687426
+              ],
+              [
+                10.2554536,
+                32.7689121
+              ],
+              [
+                10.2553259,
+                32.7688526
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1088209850",
+      "tags": {
+        "building": "yes",
+        "healthcare": "hospital",
+        "name": "مركز الصحة الأساسية برأس الوادي",
+        "name:ar": "مركز الصحة الأساسية برأس الوادي",
+        "name:fr": "Centre de santé de base Ras El Oued"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2578127,
+                32.7691426
+              ],
+              [
+                10.2578185,
+                32.7690961
+              ],
+              [
+                10.257868,
+                32.7691004
+              ],
+              [
+                10.257871,
+                32.7690761
+              ],
+              [
+                10.2579682,
+                32.7690845
+              ],
+              [
+                10.2579565,
+                32.7691803
+              ],
+              [
+                10.2578896,
+                32.7691745
+              ],
+              [
+                10.2578927,
+                32.7691496
+              ],
+              [
+                10.2578127,
+                32.7691426
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1187366129",
+      "tags": {
+        "landuse": "residential",
+        "name": "حاف أولاد حامد",
+        "name:aeb": "حاف أولاد حامد",
+        "name:ar": "حاف أولاد حامد",
+        "name:en": "Oualed Hamed",
+        "name:fr": "Oualed Hamed",
+        "residential": "osada"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2288943,
+                32.7914118
+              ],
+              [
+                10.2289221,
+                32.7913418
+              ],
+              [
+                10.2291938,
+                32.7914471
+              ],
+              [
+                10.2293607,
+                32.7915726
+              ],
+              [
+                10.2295122,
+                32.7917585
+              ],
+              [
+                10.2296081,
+                32.7919269
+              ],
+              [
+                10.2297573,
+                32.7921066
+              ],
+              [
+                10.2297607,
+                32.7921242
+              ],
+              [
+                10.2300165,
+                32.7921841
+              ],
+              [
+                10.2300426,
+                32.7922543
+              ],
+              [
+                10.2299956,
+                32.7922704
+              ],
+              [
+                10.2299591,
+                32.7922236
+              ],
+              [
+                10.2298808,
+                32.7922134
+              ],
+              [
+                10.2297886,
+                32.7922002
+              ],
+              [
+                10.2297538,
+                32.7922045
+              ],
+              [
+                10.2297308,
+                32.7922295
+              ],
+              [
+                10.2296666,
+                32.7922719
+              ],
+              [
+                10.2295782,
+                32.7923184
+              ],
+              [
+                10.2295001,
+                32.7923258
+              ],
+              [
+                10.229368,
+                32.7923506
+              ],
+              [
+                10.2290411,
+                32.792479
+              ],
+              [
+                10.2289943,
+                32.7924334
+              ],
+              [
+                10.2291172,
+                32.7923579
+              ],
+              [
+                10.2291938,
+                32.7923259
+              ],
+              [
+                10.2292737,
+                32.7923142
+              ],
+              [
+                10.2294562,
+                32.7922608
+              ],
+              [
+                10.2295532,
+                32.7922488
+              ],
+              [
+                10.2296609,
+                32.7922008
+              ],
+              [
+                10.2296685,
+                32.7921841
+              ],
+              [
+                10.2296442,
+                32.7921198
+              ],
+              [
+                10.2295067,
+                32.7919397
+              ],
+              [
+                10.2294357,
+                32.7918665
+              ],
+              [
+                10.2293312,
+                32.7916664
+              ],
+              [
+                10.2292861,
+                32.7916224
+              ],
+              [
+                10.2292421,
+                32.7915769
+              ],
+              [
+                10.2291258,
+                32.7915228
+              ],
+              [
+                10.229023,
+                32.7914512
+              ],
+              [
+                10.2289623,
+                32.7914398
+              ],
+              [
+                10.2288943,
+                32.7914118
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:1193250617",
+      "tags": {
+        "barrier": "city_wall",
+        "material": "limestone",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2312649,
+            32.7767784
+          ],
+          [
+            10.2313166,
+            32.7767395
+          ],
+          [
+            10.2314528,
+            32.7765549
+          ],
+          [
+            10.2315798,
+            32.7763577
+          ],
+          [
+            10.2317197,
+            32.7761583
+          ],
+          [
+            10.2318291,
+            32.7759824
+          ],
+          [
+            10.2319301,
+            32.7757534
+          ],
+          [
+            10.2319829,
+            32.7755873
+          ],
+          [
+            10.2320215,
+            32.7754265
+          ],
+          [
+            10.2320675,
+            32.7752146
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193250618",
+      "tags": {
+        "barrier": "city_wall",
+        "material": "limestone",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2320847,
+            32.7751341
+          ],
+          [
+            10.2321412,
+            32.7749149
+          ],
+          [
+            10.2321898,
+            32.7747406
+          ],
+          [
+            10.2322615,
+            32.7746888
+          ],
+          [
+            10.2322731,
+            32.7746749
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193251625",
+      "tags": {
+        "barrier": "city_wall",
+        "material": "stone",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2329849,
+            32.7725024
+          ],
+          [
+            10.2330651,
+            32.7724354
+          ],
+          [
+            10.2331193,
+            32.7723466
+          ],
+          [
+            10.2332307,
+            32.772235
+          ],
+          [
+            10.2333527,
+            32.772118
+          ],
+          [
+            10.2334191,
+            32.7720596
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193251626",
+      "tags": {
+        "barrier": "city_wall",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2323674,
+            32.7737608
+          ],
+          [
+            10.2324274,
+            32.7736852
+          ],
+          [
+            10.2325623,
+            32.7734977
+          ],
+          [
+            10.2326818,
+            32.7733575
+          ],
+          [
+            10.2327295,
+            32.7732706
+          ],
+          [
+            10.2328251,
+            32.7730279
+          ],
+          [
+            10.2328732,
+            32.7729205
+          ],
+          [
+            10.2328994,
+            32.7728114
+          ],
+          [
+            10.2329099,
+            32.7726625
+          ],
+          [
+            10.2329442,
+            32.7725515
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193252084",
+      "tags": {
+        "barrier": "city_wall",
+        "material": "limestone",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2334524,
+            32.7720311
+          ],
+          [
+            10.2337173,
+            32.7719089
+          ],
+          [
+            10.2339205,
+            32.7718193
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193252085",
+      "tags": {
+        "barrier": "city_wall",
+        "material": "stone",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2359152,
+            32.7703671
+          ],
+          [
+            10.2359008,
+            32.7703235
+          ],
+          [
+            10.2358522,
+            32.770292
+          ],
+          [
+            10.2357102,
+            32.7701514
+          ],
+          [
+            10.2356254,
+            32.7700671
+          ],
+          [
+            10.2356095,
+            32.7700444
+          ],
+          [
+            10.2355296,
+            32.7699383
+          ],
+          [
+            10.2354592,
+            32.7698257
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193252086",
+      "tags": {
+        "barrier": "city_wall",
+        "material": "stone",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2354442,
+            32.7697994
+          ],
+          [
+            10.2353923,
+            32.7696945
+          ],
+          [
+            10.2353025,
+            32.7695309
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193252088",
+      "tags": {
+        "barrier": "city_wall",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2352143,
+            32.7693647
+          ],
+          [
+            10.2351493,
+            32.7692481
+          ],
+          [
+            10.2350724,
+            32.7691101
+          ],
+          [
+            10.2350646,
+            32.7690759
+          ],
+          [
+            10.2350919,
+            32.7690334
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1193257099",
+      "tags": {
+        "barrier": "city_wall",
+        "material": "limestone",
+        "name": "Ras El Oued muraille"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2351515,
+            32.7688899
+          ],
+          [
+            10.2352255,
+            32.7686898
+          ],
+          [
+            10.2352584,
+            32.7685426
+          ],
+          [
+            10.2353197,
+            32.7683249
+          ],
+          [
+            10.235347,
+            32.7681833
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1240203734",
+      "tags": {
+        "name": "Djebel Nekrif",
+        "natural": "ridge"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2527613,
+            32.7984952
+          ],
+          [
+            10.2572004,
+            32.8047801
+          ],
+          [
+            10.254244,
+            32.8081675
+          ],
+          [
+            10.2563361,
+            32.8141729
+          ],
+          [
+            10.2550855,
+            32.815852
+          ],
+          [
+            10.2552465,
+            32.818092
+          ],
+          [
+            10.2589394,
+            32.8232391
+          ],
+          [
+            10.2636213,
+            32.8267408
+          ],
+          [
+            10.2644209,
+            32.8269727
+          ],
+          [
+            10.2661787,
+            32.8281689
+          ],
+          [
+            10.2669073,
+            32.8325878
+          ],
+          [
+            10.2698045,
+            32.8336278
+          ],
+          [
+            10.2714472,
+            32.8349686
+          ],
+          [
+            10.2724478,
+            32.8359599
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:1240582379",
+      "tags": {
+        "name": "وادي الجلوش",
+        "name:ar": "وادي الجلوش",
+        "name:en": "Oued Jallouch",
+        "natural": "valley"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2516412,
+            32.7516521
+          ],
+          [
+            10.2472376,
+            32.7517863
+          ],
+          [
+            10.243561,
+            32.7510871
+          ],
+          [
+            10.2390153,
+            32.7502383
+          ],
+          [
+            10.2332488,
+            32.7511822
+          ],
+          [
+            10.2313062,
+            32.7514495
+          ],
+          [
+            10.2252694,
+            32.7500756
+          ],
+          [
+            10.2197698,
+            32.7497534
+          ],
+          [
+            10.216391,
+            32.7505896
+          ],
+          [
+            10.2136797,
+            32.7519558
+          ],
+          [
+            10.2095583,
+            32.7548258
+          ],
+          [
+            10.2074862,
+            32.7562259
+          ],
+          [
+            10.2049835,
+            32.756467
+          ],
+          [
+            10.2021922,
+            32.7555575
+          ],
+          [
+            10.1988483,
+            32.7543751
+          ],
+          [
+            10.1980827,
+            32.7529899
+          ],
+          [
+            10.1966015,
+            32.7490623
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643056",
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "نهج  النرجس",
+        "name:ar": "نهج النرجس",
+        "name:fr": "rue Narcèses",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2566559,
+            32.7686654
+          ],
+          [
+            10.2563335,
+            32.7691282
+          ],
+          [
+            10.2561744,
+            32.769394
+          ],
+          [
+            10.256026,
+            32.7696066
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643057",
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "name": "نهج الزعفران",
+        "name:ar": "نهج الزعفران",
+        "name:fr": "rue safran",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2569915,
+            32.7676352
+          ],
+          [
+            10.2571358,
+            32.7681459
+          ],
+          [
+            10.2571511,
+            32.7682083
+          ],
+          [
+            10.2572393,
+            32.7685816
+          ],
+          [
+            10.2572374,
+            32.7686515
+          ],
+          [
+            10.2570813,
+            32.7688814
+          ],
+          [
+            10.2567679,
+            32.7693402
+          ],
+          [
+            10.2564636,
+            32.7697837
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643064",
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "نهج الأقحوان",
+        "name:ar": "نهج الأقحوان",
+        "name:fr": "rue marguerite",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2548633,
+            32.7679193
+          ],
+          [
+            10.254948,
+            32.7677755
+          ],
+          [
+            10.2554661,
+            32.7670849
+          ],
+          [
+            10.2558319,
+            32.7665771
+          ],
+          [
+            10.2562777,
+            32.7659739
+          ],
+          [
+            10.2565155,
+            32.765652
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643065",
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "نهج السوسن",
+        "name:ar": "نهج السوسن",
+        "name:fr": "rue iriss",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2550011,
+            32.7683886
+          ],
+          [
+            10.2553061,
+            32.7679596
+          ],
+          [
+            10.2558084,
+            32.7672698
+          ],
+          [
+            10.2561954,
+            32.7667619
+          ],
+          [
+            10.256623,
+            32.7661505
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643066",
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "نهج النسرين",
+        "name:ar": "نهج النسرين",
+        "name:fr": "Rue Nessrine",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2569915,
+            32.7676352
+          ],
+          [
+            10.2565883,
+            32.7680989
+          ],
+          [
+            10.2565476,
+            32.7681557
+          ],
+          [
+            10.2562972,
+            32.7684828
+          ],
+          [
+            10.2559744,
+            32.7689426
+          ],
+          [
+            10.2557277,
+            32.7692848
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643068",
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "نهج الياسمين",
+        "name:ar": "نهج الياسمين",
+        "name:fr": "Rue Jasmin",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.2573481,
+            32.7657883
+          ],
+          [
+            10.2572836,
+            32.7659282
+          ],
+          [
+            10.257165,
+            32.7660899
+          ],
+          [
+            10.2570147,
+            32.7662998
+          ],
+          [
+            10.256994,
+            32.7663287
+          ],
+          [
+            10.2568259,
+            32.7665605
+          ],
+          [
+            10.2565502,
+            32.7669341
+          ],
+          [
+            10.2561688,
+            32.7674564
+          ],
+          [
+            10.2559444,
+            32.7677607
+          ],
+          [
+            10.255654,
+            32.7681504
+          ],
+          [
+            10.2553285,
+            32.768605
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643070",
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "30",
+        "name": "نهج القرنفل",
+        "name:ar": "نهج القرنفل",
+        "name:fr": "Rue du Girofle",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            10.254948,
+            32.7677755
+          ],
+          [
+            10.2553061,
+            32.7679596
+          ],
+          [
+            10.255654,
+            32.7681504
+          ],
+          [
+            10.2559474,
+            32.7683
+          ],
+          [
+            10.2562972,
+            32.7684828
+          ],
+          [
+            10.2566559,
+            32.7686654
+          ],
+          [
+            10.2570813,
+            32.7688814
+          ],
+          [
+            10.2574666,
+            32.7690643
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original way line; assembled areas replace where available"
+    },
+    {
+      "id": "osm:way:148643072",
+      "tags": {
+        "landuse": "residential",
+        "name": "الطرومة",
+        "name:aeb": "الطرومة",
+        "name:ar": "الطرومة",
+        "name:en": "El Tarouma",
+        "name:fr": "ettarouma"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2511056,
+                32.7632368
+              ],
+              [
+                10.2511189,
+                32.7629651
+              ],
+              [
+                10.2511866,
+                32.7627281
+              ],
+              [
+                10.251235,
+                32.762601
+              ],
+              [
+                10.2512867,
+                32.7625369
+              ],
+              [
+                10.2514426,
+                32.7624653
+              ],
+              [
+                10.2516275,
+                32.7624264
+              ],
+              [
+                10.2517548,
+                32.7624299
+              ],
+              [
+                10.2521347,
+                32.7624762
+              ],
+              [
+                10.2521224,
+                32.7626705
+              ],
+              [
+                10.2518379,
+                32.7626369
+              ],
+              [
+                10.2515866,
+                32.7626637
+              ],
+              [
+                10.2515117,
+                32.762703
+              ],
+              [
+                10.2514365,
+                32.7628386
+              ],
+              [
+                10.2513862,
+                32.7629716
+              ],
+              [
+                10.2513378,
+                32.7632808
+              ],
+              [
+                10.2514181,
+                32.7634617
+              ],
+              [
+                10.2514742,
+                32.763593
+              ],
+              [
+                10.251609,
+                32.7636812
+              ],
+              [
+                10.2517326,
+                32.7637568
+              ],
+              [
+                10.2518936,
+                32.7638229
+              ],
+              [
+                10.2521183,
+                32.7638323
+              ],
+              [
+                10.2523804,
+                32.7638134
+              ],
+              [
+                10.2527698,
+                32.7637568
+              ],
+              [
+                10.2530431,
+                32.7637316
+              ],
+              [
+                10.2533839,
+                32.7637221
+              ],
+              [
+                10.2536197,
+                32.7636938
+              ],
+              [
+                10.2536507,
+                32.7636417
+              ],
+              [
+                10.2535769,
+                32.7636017
+              ],
+              [
+                10.2534118,
+                32.7635112
+              ],
+              [
+                10.2532334,
+                32.7633685
+              ],
+              [
+                10.2530707,
+                32.7632176
+              ],
+              [
+                10.252888,
+                32.7630565
+              ],
+              [
+                10.2527016,
+                32.7629127
+              ],
+              [
+                10.2522871,
+                32.7627307
+              ],
+              [
+                10.2524202,
+                32.7625117
+              ],
+              [
+                10.252715,
+                32.7625927
+              ],
+              [
+                10.2529792,
+                32.7626998
+              ],
+              [
+                10.2531799,
+                32.7628415
+              ],
+              [
+                10.2532783,
+                32.7629347
+              ],
+              [
+                10.2534006,
+                32.7630722
+              ],
+              [
+                10.2534962,
+                32.7631333
+              ],
+              [
+                10.2537995,
+                32.7634293
+              ],
+              [
+                10.253923,
+                32.7636151
+              ],
+              [
+                10.2539155,
+                32.7637284
+              ],
+              [
+                10.2538219,
+                32.7638355
+              ],
+              [
+                10.253631,
+                32.763889
+              ],
+              [
+                10.2533849,
+                32.7639171
+              ],
+              [
+                10.2530833,
+                32.763938
+              ],
+              [
+                10.2527085,
+                32.7639984
+              ],
+              [
+                10.2521782,
+                32.7640653
+              ],
+              [
+                10.251931,
+                32.764059
+              ],
+              [
+                10.2517101,
+                32.7640087
+              ],
+              [
+                10.2514705,
+                32.7638607
+              ],
+              [
+                10.2512795,
+                32.7636969
+              ],
+              [
+                10.2511822,
+                32.7635615
+              ],
+              [
+                10.2511073,
+                32.7633758
+              ],
+              [
+                10.2511056,
+                32.7632368
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:377996281",
+      "tags": {
+        "access": "yes",
+        "historic": "ruins",
+        "landuse": "residential",
+        "name": "Ksar Rahache",
+        "ruins": "building"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2493274,
+                32.7573571
+              ],
+              [
+                10.2493768,
+                32.7571711
+              ],
+              [
+                10.249472,
+                32.7571383
+              ],
+              [
+                10.2495841,
+                32.7570418
+              ],
+              [
+                10.2497421,
+                32.7569604
+              ],
+              [
+                10.2499157,
+                32.7568597
+              ],
+              [
+                10.2498402,
+                32.7567059
+              ],
+              [
+                10.250094,
+                32.7566134
+              ],
+              [
+                10.2502949,
+                32.7565588
+              ],
+              [
+                10.2507082,
+                32.756658
+              ],
+              [
+                10.2508005,
+                32.756963
+              ],
+              [
+                10.2507657,
+                32.7573011
+              ],
+              [
+                10.2507639,
+                32.7574661
+              ],
+              [
+                10.2506936,
+                32.7576347
+              ],
+              [
+                10.2506465,
+                32.7577388
+              ],
+              [
+                10.2504961,
+                32.7577507
+              ],
+              [
+                10.2504454,
+                32.7576518
+              ],
+              [
+                10.2504505,
+                32.757494
+              ],
+              [
+                10.2504819,
+                32.7574185
+              ],
+              [
+                10.2504618,
+                32.7573132
+              ],
+              [
+                10.2505294,
+                32.757239
+              ],
+              [
+                10.2505142,
+                32.7571683
+              ],
+              [
+                10.2504667,
+                32.7571158
+              ],
+              [
+                10.2503411,
+                32.7570707
+              ],
+              [
+                10.2501776,
+                32.7570257
+              ],
+              [
+                10.2500086,
+                32.7570837
+              ],
+              [
+                10.2498833,
+                32.7571504
+              ],
+              [
+                10.2496581,
+                32.7572783
+              ],
+              [
+                10.2496303,
+                32.757419
+              ],
+              [
+                10.2496759,
+                32.7574683
+              ],
+              [
+                10.2497987,
+                32.7575547
+              ],
+              [
+                10.2499193,
+                32.7576439
+              ],
+              [
+                10.2500895,
+                32.7577854
+              ],
+              [
+                10.2501892,
+                32.7579519
+              ],
+              [
+                10.2502823,
+                32.7580263
+              ],
+              [
+                10.2502374,
+                32.7581692
+              ],
+              [
+                10.2501129,
+                32.7581808
+              ],
+              [
+                10.250058,
+                32.7582887
+              ],
+              [
+                10.2499062,
+                32.7582622
+              ],
+              [
+                10.2499476,
+                32.7580102
+              ],
+              [
+                10.2499298,
+                32.7578781
+              ],
+              [
+                10.2497636,
+                32.7578183
+              ],
+              [
+                10.2496957,
+                32.7577206
+              ],
+              [
+                10.2494998,
+                32.7576347
+              ],
+              [
+                10.2493836,
+                32.7574939
+              ],
+              [
+                10.2493274,
+                32.7573571
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:377996284",
+      "tags": {
+        "landuse": "residential",
+        "name": "طويل أولاد زايد",
+        "name:ar": "طويل أولاد زايد",
+        "name:fr": "Touil Ouled Zayed"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2624482,
+                32.7672796
+              ],
+              [
+                10.2624507,
+                32.7671854
+              ],
+              [
+                10.2624736,
+                32.7670547
+              ],
+              [
+                10.2625297,
+                32.7669175
+              ],
+              [
+                10.2625934,
+                32.7668125
+              ],
+              [
+                10.2627004,
+                32.7666626
+              ],
+              [
+                10.2627947,
+                32.7665769
+              ],
+              [
+                10.2628304,
+                32.7664933
+              ],
+              [
+                10.2628304,
+                32.7663262
+              ],
+              [
+                10.2628176,
+                32.7660326
+              ],
+              [
+                10.2628227,
+                32.7658741
+              ],
+              [
+                10.2628533,
+                32.7657498
+              ],
+              [
+                10.2629068,
+                32.7656341
+              ],
+              [
+                10.2629858,
+                32.7654927
+              ],
+              [
+                10.2632483,
+                32.7652484
+              ],
+              [
+                10.2634266,
+                32.7650856
+              ],
+              [
+                10.2635591,
+                32.7650127
+              ],
+              [
+                10.2636738,
+                32.7649742
+              ],
+              [
+                10.2637961,
+                32.7649742
+              ],
+              [
+                10.2638751,
+                32.7649763
+              ],
+              [
+                10.2639923,
+                32.765062
+              ],
+              [
+                10.2640458,
+                32.7652013
+              ],
+              [
+                10.2636712,
+                32.7653213
+              ],
+              [
+                10.2634062,
+                32.765467
+              ],
+              [
+                10.2633069,
+                32.7655441
+              ],
+              [
+                10.2631565,
+                32.7657798
+              ],
+              [
+                10.2631208,
+                32.7659898
+              ],
+              [
+                10.2631616,
+                32.7662983
+              ],
+              [
+                10.2631896,
+                32.7664633
+              ],
+              [
+                10.263182,
+                32.7665854
+              ],
+              [
+                10.2631285,
+                32.7666818
+              ],
+              [
+                10.2629425,
+                32.766924
+              ],
+              [
+                10.2626902,
+                32.7671811
+              ],
+              [
+                10.2626724,
+                32.7672539
+              ],
+              [
+                10.2626877,
+                32.7672925
+              ],
+              [
+                10.2627488,
+                32.7673032
+              ],
+              [
+                10.2629221,
+                32.7672518
+              ],
+              [
+                10.2634903,
+                32.7670996
+              ],
+              [
+                10.2637044,
+                32.7669604
+              ],
+              [
+                10.2639693,
+                32.7666604
+              ],
+              [
+                10.2643312,
+                32.7663519
+              ],
+              [
+                10.2648026,
+                32.7660712
+              ],
+              [
+                10.2653886,
+                32.7658055
+              ],
+              [
+                10.2659186,
+                32.765602
+              ],
+              [
+                10.266046,
+                32.7655462
+              ],
+              [
+                10.2661097,
+                32.7654734
+              ],
+              [
+                10.2661454,
+                32.765392
+              ],
+              [
+                10.2661454,
+                32.7652848
+              ],
+              [
+                10.266153,
+                32.7651499
+              ],
+              [
+                10.2661785,
+                32.7650149
+              ],
+              [
+                10.2662448,
+                32.7649356
+              ],
+              [
+                10.2664155,
+                32.764912
+              ],
+              [
+                10.2665531,
+                32.7649185
+              ],
+              [
+                10.2666448,
+                32.7649613
+              ],
+              [
+                10.2666626,
+                32.7650234
+              ],
+              [
+                10.2666524,
+                32.7651649
+              ],
+              [
+                10.2665378,
+                32.765317
+              ],
+              [
+                10.2663645,
+                32.7656298
+              ],
+              [
+                10.2662422,
+                32.7657777
+              ],
+              [
+                10.2661454,
+                32.7658848
+              ],
+              [
+                10.2654166,
+                32.7662447
+              ],
+              [
+                10.2650242,
+                32.7663862
+              ],
+              [
+                10.26493,
+                32.7663904
+              ],
+              [
+                10.2648306,
+                32.7663947
+              ],
+              [
+                10.2645987,
+                32.7664826
+              ],
+              [
+                10.2643159,
+                32.7667333
+              ],
+              [
+                10.2643006,
+                32.7668511
+              ],
+              [
+                10.2642394,
+                32.7669497
+              ],
+              [
+                10.2638343,
+                32.7672303
+              ],
+              [
+                10.2636457,
+                32.7673503
+              ],
+              [
+                10.2633196,
+                32.7674682
+              ],
+              [
+                10.2630597,
+                32.7675003
+              ],
+              [
+                10.2626291,
+                32.7674917
+              ],
+              [
+                10.262517,
+                32.7674575
+              ],
+              [
+                10.2624482,
+                32.7673803
+              ],
+              [
+                10.2624482,
+                32.7672796
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {
+        "name": "طويل أولاد زايد",
+        "name:ar": "طويل أولاد زايد",
+        "name:fr": "Touil Ouled Zayed"
+      },
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:378117273",
+      "tags": {
+        "landuse": "residential",
+        "name": "Bir Tedrekhet"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.243567,
+                32.7938649
+              ],
+              [
+                10.2435779,
+                32.7938407
+              ],
+              [
+                10.2435998,
+                32.7938143
+              ],
+              [
+                10.2436334,
+                32.7937901
+              ],
+              [
+                10.2437395,
+                32.7937352
+              ],
+              [
+                10.2437962,
+                32.7937193
+              ],
+              [
+                10.2439534,
+                32.7936866
+              ],
+              [
+                10.2440929,
+                32.7936714
+              ],
+              [
+                10.2441819,
+                32.7936711
+              ],
+              [
+                10.244276,
+                32.793693
+              ],
+              [
+                10.2443693,
+                32.7937248
+              ],
+              [
+                10.2444767,
+                32.7937901
+              ],
+              [
+                10.2445226,
+                32.7938732
+              ],
+              [
+                10.2445893,
+                32.7939858
+              ],
+              [
+                10.2446462,
+                32.7941722
+              ],
+              [
+                10.2446737,
+                32.7943171
+              ],
+              [
+                10.2446593,
+                32.7944278
+              ],
+              [
+                10.2446162,
+                32.7944638
+              ],
+              [
+                10.2444082,
+                32.7945017
+              ],
+              [
+                10.24429,
+                32.7945093
+              ],
+              [
+                10.2442316,
+                32.7945102
+              ],
+              [
+                10.2441164,
+                32.7944863
+              ],
+              [
+                10.2439934,
+                32.7944364
+              ],
+              [
+                10.2439095,
+                32.794416
+              ],
+              [
+                10.2438307,
+                32.7943678
+              ],
+              [
+                10.2437345,
+                32.7943216
+              ],
+              [
+                10.2437586,
+                32.7942852
+              ],
+              [
+                10.243987,
+                32.794379
+              ],
+              [
+                10.244147,
+                32.7944091
+              ],
+              [
+                10.2443241,
+                32.7944119
+              ],
+              [
+                10.2444773,
+                32.7944048
+              ],
+              [
+                10.2445403,
+                32.7943843
+              ],
+              [
+                10.2445469,
+                32.7943565
+              ],
+              [
+                10.2445477,
+                32.7943138
+              ],
+              [
+                10.2445079,
+                32.7941437
+              ],
+              [
+                10.2444715,
+                32.7940072
+              ],
+              [
+                10.2444096,
+                32.7938873
+              ],
+              [
+                10.2443745,
+                32.7938488
+              ],
+              [
+                10.2443015,
+                32.7938142
+              ],
+              [
+                10.2441616,
+                32.7937667
+              ],
+              [
+                10.244128,
+                32.7937617
+              ],
+              [
+                10.2440372,
+                32.7937596
+              ],
+              [
+                10.2439404,
+                32.7937819
+              ],
+              [
+                10.2438086,
+                32.7938234
+              ],
+              [
+                10.2436831,
+                32.793871
+              ],
+              [
+                10.243689,
+                32.7938841
+              ],
+              [
+                10.2436707,
+                32.7939062
+              ],
+              [
+                10.2436618,
+                32.7939518
+              ],
+              [
+                10.2436023,
+                32.793959
+              ],
+              [
+                10.2435916,
+                32.7939405
+              ],
+              [
+                10.2435938,
+                32.793916
+              ],
+              [
+                10.243616,
+                32.7939137
+              ],
+              [
+                10.243627,
+                32.7938756
+              ],
+              [
+                10.243567,
+                32.7938649
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:378122271",
+      "tags": {
+        "access": "yes",
+        "building": "yes",
+        "historic": "ruins",
+        "name": "Ksar Chitana",
+        "ruins": "building"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.3026358,
+                32.7919794
+              ],
+              [
+                10.302645,
+                32.7919458
+              ],
+              [
+                10.3026957,
+                32.7918838
+              ],
+              [
+                10.3026748,
+                32.7918701
+              ],
+              [
+                10.3027816,
+                32.7917767
+              ],
+              [
+                10.3028444,
+                32.7917053
+              ],
+              [
+                10.3029885,
+                32.7916393
+              ],
+              [
+                10.3030519,
+                32.7916051
+              ],
+              [
+                10.3032272,
+                32.7915766
+              ],
+              [
+                10.3033071,
+                32.7915561
+              ],
+              [
+                10.3034821,
+                32.7915394
+              ],
+              [
+                10.3034889,
+                32.7915963
+              ],
+              [
+                10.3033488,
+                32.79162
+              ],
+              [
+                10.3033569,
+                32.7916512
+              ],
+              [
+                10.3032103,
+                32.7916813
+              ],
+              [
+                10.3029993,
+                32.791703
+              ],
+              [
+                10.3029724,
+                32.7916984
+              ],
+              [
+                10.3029047,
+                32.791729
+              ],
+              [
+                10.302857,
+                32.7917768
+              ],
+              [
+                10.3028639,
+                32.7917848
+              ],
+              [
+                10.3028152,
+                32.7918214
+              ],
+              [
+                10.3027587,
+                32.791893
+              ],
+              [
+                10.3027467,
+                32.7918868
+              ],
+              [
+                10.302697,
+                32.792006
+              ],
+              [
+                10.3026358,
+                32.7919794
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    },
+    {
+      "id": "osm:way:422172469",
+      "tags": {
+        "access": "yes",
+        "building": "yes",
+        "historic": "ruins",
+        "name": "Ksar Chitana",
+        "ruins": "building"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.303575,
+                32.791609
+              ],
+              [
+                10.3036145,
+                32.7915409
+              ],
+              [
+                10.3036813,
+                32.7915819
+              ],
+              [
+                10.3038216,
+                32.7917514
+              ],
+              [
+                10.3039034,
+                32.7918426
+              ],
+              [
+                10.3039822,
+                32.7919627
+              ],
+              [
+                10.3041157,
+                32.7921637
+              ],
+              [
+                10.3041682,
+                32.7922476
+              ],
+              [
+                10.3043772,
+                32.7924186
+              ],
+              [
+                10.3043368,
+                32.7924539
+              ],
+              [
+                10.304166,
+                32.7923848
+              ],
+              [
+                10.3040653,
+                32.7923136
+              ],
+              [
+                10.3039897,
+                32.7922099
+              ],
+              [
+                10.3038945,
+                32.7920478
+              ],
+              [
+                10.3037457,
+                32.7918166
+              ],
+              [
+                10.3037267,
+                32.7917787
+              ],
+              [
+                10.303575,
+                32.791609
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometryValid": true,
+      "nationalNameOrAddressMatches": {},
+      "withinReviewExtent": true,
+      "geometrySource": "original assembled area; no repair"
+    }
+  ],
+  "relations": [],
+  "errors": [],
+  "nationalMatchingIds": [
+    "osm:node:11062156627",
+    "osm:node:11062161780",
+    "osm:node:11062164695",
+    "osm:node:11525318199",
+    "osm:node:3814110946",
+    "osm:way:377996284"
+  ],
+  "nearbyAddressIds": [
+    "osm:node:9811039106",
+    "osm:node:9811073738",
+    "osm:way:1068796766",
+    "osm:way:1068800522",
+    "osm:way:1068800523",
+    "osm:way:1068800524",
+    "osm:way:1068802928",
+    "osm:way:1068802929",
+    "osm:way:1068806698",
+    "osm:way:1068811025",
+    "osm:way:1068811026",
+    "osm:way:1068811027",
+    "osm:way:1068811028",
+    "osm:way:1068811029",
+    "osm:way:1068811030",
+    "osm:way:1068811031",
+    "osm:way:1068812306",
+    "osm:way:1068812307",
+    "osm:way:1068812308",
+    "osm:way:1068812310",
+    "osm:way:1068812311",
+    "osm:way:1068812312",
+    "osm:way:1068812313",
+    "osm:way:1068812314",
+    "osm:way:1068812315",
+    "osm:way:1068816455",
+    "osm:way:1068816456",
+    "osm:way:1068816457",
+    "osm:way:1068816458",
+    "osm:way:1068816459",
+    "osm:way:1068816460",
+    "osm:way:1068816461",
+    "osm:way:1068816462",
+    "osm:way:1068817862",
+    "osm:way:1068817863",
+    "osm:way:1068817864",
+    "osm:way:1068819186",
+    "osm:way:1068819187",
+    "osm:way:1068819188",
+    "osm:way:1068819189",
+    "osm:way:1068819190",
+    "osm:way:1068819191",
+    "osm:way:1068819192",
+    "osm:way:1068822283",
+    "osm:way:1068828938",
+    "osm:way:1068828939",
+    "osm:way:1068828940",
+    "osm:way:1068828941",
+    "osm:way:1068828942",
+    "osm:way:1068828943",
+    "osm:way:1068828944",
+    "osm:way:1068828945",
+    "osm:way:1068828946",
+    "osm:way:1068828947",
+    "osm:way:1068828948"
+  ]
+}

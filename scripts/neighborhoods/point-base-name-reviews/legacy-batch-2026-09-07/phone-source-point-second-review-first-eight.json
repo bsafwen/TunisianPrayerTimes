@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T06:30:30.541397+00:00",
+  "reviewer": "mapping_audit",
+  "scope": "Independent visual review of all sixteen saved original/proposed screenshots for the first eight second-round source-coordinate proposals, plus the earlier Zriba name-search image. No phone control, ledger writes, app or manifest changes.",
+  "proposalFile": "prayer-source-coordinate-second-proposals.json",
+  "proposalSha256": "fa48457e551385ca9660915b2d627706907a1db421b47ca855b10cc1bde2b0e4",
+  "sourceEvidenceHandling": "OSM and GeoNames points and source IDs were read from the supplied proposal artifact; this screenshot review did not fetch those databases again.",
+  "limitations": [
+    "Every coordinate screenshot shows Search here rather than the numeric query. Exact query-to-role/point agreement was checked in its captured observation JSON; the image alone does not establish the requested coordinates.",
+    "Google coordinate searches selected locality, road, address or POI cards. These may snap away from the requested coordinate. All replacement points remain the sourced OSM values, never extracted Google pin coordinates.",
+    "Sparse original-point map views do not prove absence of buildings, exclusion from a municipality or an incorrect prayer calculation.",
+    "No INM calculation reference, official delegation boundary or neighborhood polygon is verified by this review.",
+    "Zriba409 is approved only as a Zriba Village reference. The generic timetable name does not resolve Zriba Village versus Zriba Hammam; this application caveat remains open."
+  ],
+  "counts": {
+    "proposalsReviewed": 8,
+    "coordinateScreenshotsVisuallyReviewed": 16,
+    "supplementaryScreenshotsVisuallyReviewed": 1,
+    "approvedAsObservedSettlementReference": 8,
+    "timetableIdentityCaveatIds": [
+      409
+    ]
+  },
+  "reviews": [
+    {
+      "delegationId": 409,
+      "nameAr": "الزريبة",
+      "nameFr": "Zeriba",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 36.32,
+        "lng": 10.25
+      },
+      "proposed": {
+        "lat": 36.3406138,
+        "lng": 10.2491768
+      },
+      "movedKm": 2.2933358852527626,
+      "osmEvidence": {
+        "id": "osm:node:2028879938",
+        "url": "https://www.openstreetmap.org/node/2028879938",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2028879938.json",
+        "version": 9,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "name": "الزريبة",
+        "place": "village"
+      },
+      "geonamesEvidence": {
+        "id": "2463988",
+        "name": "Zriba-Village",
+        "lat": 36.34265,
+        "lng": 10.24905,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2463988",
+        "distanceToProposedKm": 0.22669977128012708
+      },
+      "proposedVisualEvidence": "The proposed capture places the selected road pin on C133 among the mapped streets directly labelled Zriba Village / زريبة قرية. This supports the OSM village reference, with GeoNames Zriba-Village nearby.",
+      "originalVisualEvidence": "The original capture shows a pin in mostly blank map context with only sparse roads and an Unnamed location card saying Near Ez-Zeriba Village. That card identifies a vicinity, not an administrative boundary.",
+      "caveat": "The observed settlement is Zriba Village. The screenshots do not establish that meteo source409 intends this village rather than Zriba Hammam. Confirm the intended settlement identity before applying this proposal to the generically named timetable source.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 36.3406138,
+            "lng": 10.2491768
+          },
+          "requestedQuery": "36.3406138,10.2491768",
+          "observedAt": "2026-09-07T06:24:51.559708+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_409-2.png",
+          "screenshotSha256": "06af1b1b696ca894f1b61eb7e21341b5026c261fe6f146a25854cff97df60ba9",
+          "observationJson": "phone-maps-review/delegation_409-2.json",
+          "observationJsonSha256": "7343ac834551098410fc11e9411401436cdf1948616480b56ee30b6d54a4231d",
+          "cardTitles": [
+            "C133, C133"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 36.32,
+            "lng": 10.25
+          },
+          "requestedQuery": "36.32,10.25",
+          "observedAt": "2026-09-07T06:24:58.482260+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_409-3.png",
+          "screenshotSha256": "fcdf4c90418398cdf4f7e24d454cd6522c146abb472085eb2a3499fc6609053c",
+          "observationJson": "phone-maps-review/delegation_409-3.json",
+          "observationJsonSha256": "3220137054ce058edf92b5303ecb53434561a6ed08e954b7ac1c99396ca83fe9",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ],
+      "observedSettlementIdentity": "Zriba Village / الزريبة قرية",
+      "timetableSettlementIdentityResolved": false,
+      "applicationRecommendation": "Resolve Zriba Village versus Zriba Hammam identity for meteo409 before applying this otherwise supported village reference.",
+      "supplementaryNameSearch": {
+        "query": "الزريبة زغوان Tunisia",
+        "screenshot": "phone-maps-review/delegation_409-1.png",
+        "screenshotSha256": "12067a25923f170410dee702cb6a8e00cf9d30689b6f245ada44da897f548d3a",
+        "observationJsonSha256": "0404b2809c67153a4f8ea61af2cefb2885a57ab3feb307d24977b1f57fc6fd43",
+        "visuallyReviewed": true,
+        "evidence": "The Arabic الزريبة زغوان Tunisia search is visible; the displayed locality card is Zriba Village / الزريبة. Its dotted highlighted shape is not accepted as verified geometry."
+      }
+    },
+    {
+      "delegationId": 1084,
+      "nameAr": "الرجيش",
+      "nameFr": "Rejiche",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 35.4621,
+        "lng": 11.0132
+      },
+      "proposed": {
+        "lat": 35.4655214,
+        "lng": 11.0416985
+      },
+      "movedKm": 2.6088912877312027,
+      "osmEvidence": {
+        "id": "osm:node:2402352381",
+        "url": "https://www.openstreetmap.org/node/2402352381",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2402352381.json",
+        "version": 17,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "رجيش",
+        "place": "village"
+      },
+      "geonamesEvidence": {
+        "id": "2473274",
+        "name": "Rejiche",
+        "lat": 35.46665,
+        "lng": 11.03848,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473274",
+        "distanceToProposedKm": 0.3173469632204843
+      },
+      "proposedVisualEvidence": "The proposed pin is embedded in the dense street network directly on the Rejiche / رجيش settlement label. The selected NurvaDev business address explicitly says Place de l'indépendance Rejiche.",
+      "originalVisualEvidence": "The original view has sparse roads and a pin away from the dense mapped town network; the card says Unnamed location, Near Rejiche.",
+      "caveat": "The business card may be a nearby selection. The map context supports a Rejiche settlement reference, not the exact coordinates of that business.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 35.4655214,
+            "lng": 11.0416985
+          },
+          "requestedQuery": "35.4655214,11.0416985",
+          "observedAt": "2026-09-07T06:25:06.276397+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_1084-2.png",
+          "screenshotSha256": "32ca8dd18a363178618bebca395d0040015fd595f5034e856572528c87898727",
+          "observationJson": "phone-maps-review/delegation_1084-2.json",
+          "observationJsonSha256": "aa91e740480ce4485f1feba01bcefbda5b6470834d5885a6161fb783a3285d5b",
+          "cardTitles": [
+            "NurvaDev, Place de l'indépendance Rejiche"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 35.4621,
+            "lng": 11.0132
+          },
+          "requestedQuery": "35.4621,11.0132",
+          "observedAt": "2026-09-07T06:25:13.114072+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_1084-3.png",
+          "screenshotSha256": "374a75c99c79cf527542d98b63463d4da2ced8ea1887dbf0c8ba72df3e18ae6f",
+          "observationJson": "phone-maps-review/delegation_1084-3.json",
+          "observationJsonSha256": "f6be07b761704bee2292cb5f4a99e7a2d02b746c52d629a7d69ec2faf1afdb01",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ]
+    },
+    {
+      "delegationId": 1020,
+      "nameAr": "مارث",
+      "nameFr": "Mareth",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 33.63,
+        "lng": 10.24
+      },
+      "proposed": {
+        "lat": 33.617159,
+        "lng": 10.2882317
+      },
+      "movedKm": 4.688544489619358,
+      "osmEvidence": {
+        "id": "osm:node:352839775",
+        "url": "https://www.openstreetmap.org/node/352839775",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/352839775.json",
+        "version": 21,
+        "timestamp": "2025-11-02T11:21:25Z",
+        "name": "مارث",
+        "place": "town"
+      },
+      "geonamesEvidence": {
+        "id": "2469174",
+        "name": "Mareth",
+        "lat": 33.61794,
+        "lng": 10.28536,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2469174",
+        "distanceToProposedKm": 0.2797346441724725
+      },
+      "proposedVisualEvidence": "The proposed capture shows a dense street network near the P1 road and Mareth Regional Hospital, with the selected locality card explicitly labelled Mareth.",
+      "originalVisualEvidence": "The original view shows sparse roads around an Unnamed location whose card says Near Mareth Nord.",
+      "caveat": "The locality card supports the settlement identity, but the numeric query is absent and the pin is not an official calculation point.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 33.617159,
+            "lng": 10.2882317
+          },
+          "requestedQuery": "33.617159,10.2882317",
+          "observedAt": "2026-09-07T06:25:20.586989+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_1020-2.png",
+          "screenshotSha256": "aee4b5ef8b8407b2daf3a6955e0207d4846357e40e1f073d29c775f825cb74fb",
+          "observationJson": "phone-maps-review/delegation_1020-2.json",
+          "observationJsonSha256": "d6a0f81bf630757ae1ddc6ab2211e73a95d13b0f2412ca28e879d272b4bbe103",
+          "cardTitles": [
+            "Mareth"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 33.63,
+            "lng": 10.24
+          },
+          "requestedQuery": "33.63,10.24",
+          "observedAt": "2026-09-07T06:25:27.526167+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_1020-3.png",
+          "screenshotSha256": "a3102439f45ac8d199458bf8143eefba6ec04d086bdfbd19bf5e17e6f5bf899a",
+          "observationJson": "phone-maps-review/delegation_1020-3.json",
+          "observationJsonSha256": "4852848b799800048c9b10fe04c38738f57e91a2f6d88f2527d14bd467becc67",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ]
+    },
+    {
+      "delegationId": 1024,
+      "nameAr": "الحامة",
+      "nameFr": "El Hamma",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 33.89,
+        "lng": 9.75
+      },
+      "proposed": {
+        "lat": 33.8894378,
+        "lng": 9.7997111
+      },
+      "movedKm": 4.588973178117307,
+      "osmEvidence": {
+        "id": "osm:node:298020344",
+        "url": "https://www.openstreetmap.org/node/298020344",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/298020344.json",
+        "version": 13,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "الحامة",
+        "place": "town"
+      },
+      "geonamesEvidence": {
+        "id": "2473747",
+        "name": "El Hamma",
+        "lat": 33.89152,
+        "lng": 9.79629,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473747",
+        "distanceToProposedKm": 0.3915645340113349
+      },
+      "proposedVisualEvidence": "The proposed capture shows the pin on P16 within the dense El Hamma / الحامة town network. The road address says P16, El Hamma, and the nearby supermarket label also names El Hamma.",
+      "originalVisualEvidence": "The original capture shows sparse roads and an Unnamed location card saying Near Bechima El Borj.",
+      "caveat": "Google selected a road address, so the displayed pin is evidence of settlement context rather than certification of the requested coordinate.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 33.8894378,
+            "lng": 9.7997111
+          },
+          "requestedQuery": "33.8894378,9.7997111",
+          "observedAt": "2026-09-07T06:25:34.885304+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_1024-2.png",
+          "screenshotSha256": "7614a700c1b57b3746908f6420104b097f11e02f7fa29e5cd23e78c933223714",
+          "observationJson": "phone-maps-review/delegation_1024-2.json",
+          "observationJsonSha256": "7b22a6df2b28feecfe4637b435306c25db7a6fb3e41ef99041587b5608d99e81",
+          "cardTitles": [
+            "P16, P16"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 33.89,
+            "lng": 9.75
+          },
+          "requestedQuery": "33.89,9.75",
+          "observedAt": "2026-09-07T06:25:41.901709+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_1024-3.png",
+          "screenshotSha256": "19691570f8fccdd1fc8193eb2a7761115cff7ee8202f9a4bb5a7d829a5553e0c",
+          "observationJson": "phone-maps-review/delegation_1024-3.json",
+          "observationJsonSha256": "1b590179ac79606857049d1606672aff638340a5e3c653218196b819a696e807",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ]
+    },
+    {
+      "delegationId": 434,
+      "nameAr": "النفيضة",
+      "nameFr": "Enfida",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 36.16,
+        "lng": 10.39
+      },
+      "proposed": {
+        "lat": 36.1341194,
+        "lng": 10.3779916
+      },
+      "movedKm": 3.073155756687769,
+      "osmEvidence": {
+        "id": "osm:node:1439531928",
+        "url": "https://www.openstreetmap.org/node/1439531928",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1439531928.json",
+        "version": 18,
+        "timestamp": "2025-11-02T11:21:25Z",
+        "name": "النفيضة",
+        "place": "town"
+      },
+      "geonamesEvidence": {
+        "id": "2473358",
+        "name": "Enfidha",
+        "lat": 36.13528,
+        "lng": 10.38083,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2473358",
+        "distanceToProposedKm": 0.2857087034292308
+      },
+      "proposedVisualEvidence": "The proposed capture places the pin directly among the Enfidha / النفيضة street network and labels, with Enfidaville and Enfidha Stadium nearby. The selected photographer business address is Enfidha 4030.",
+      "originalVisualEvidence": "The original capture shows sparse roads and an Unnamed location card saying Near Chegarnia, without the dense Enfidha town network in view.",
+      "caveat": "The photographer card is a nearby POI result. Its exact location is not used as the replacement coordinate.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 36.1341194,
+            "lng": 10.3779916
+          },
+          "requestedQuery": "36.1341194,10.3779916",
+          "observedAt": "2026-09-07T06:25:49.305818+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_434-2.png",
+          "screenshotSha256": "3db9d6cf04e297a110c4d9d12d25c435714c4966bbaa19cb5f83ace1d79d7f9e",
+          "observationJson": "phone-maps-review/delegation_434-2.json",
+          "observationJsonSha256": "52440afff0010c04a430733b7f146aa2369a3e4ab968a40575518aa1bc42e998",
+          "cardTitles": [
+            "tayari faten"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 36.16,
+            "lng": 10.39
+          },
+          "requestedQuery": "36.16,10.39",
+          "observedAt": "2026-09-07T06:25:56.344085+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_434-3.png",
+          "screenshotSha256": "1ee21fabd5d5b7ac1dc333e4c68821978dac4dae0e8652eac9bb60c12def34b0",
+          "observationJson": "phone-maps-review/delegation_434-3.json",
+          "observationJsonSha256": "0cff9394b2f1bd5ec94be6f2a49c1627d9452f51ad7531edbad62cb44a31c3c8",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ]
+    },
+    {
+      "delegationId": 436,
+      "nameAr": "سيدي بوعلي",
+      "nameFr": "Sidi Bouali",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 35.95,
+        "lng": 10.5
+      },
+      "proposed": {
+        "lat": 35.9563486,
+        "lng": 10.470397
+      },
+      "movedKm": 2.7565491243275875,
+      "osmEvidence": {
+        "id": "osm:node:1444704293",
+        "url": "https://www.openstreetmap.org/node/1444704293",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1444704293.json",
+        "version": 9,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "name": "سيدي بو علي",
+        "place": "village"
+      },
+      "geonamesEvidence": {
+        "id": "2466034",
+        "name": "Sidi Bou Ali",
+        "lat": 35.95667,
+        "lng": 10.47306,
+        "featureCode": "PPL",
+        "modified": "2024-12-02",
+        "url": "https://www.geonames.org/2466034",
+        "distanceToProposedKm": 0.24234138496468685
+      },
+      "proposedVisualEvidence": "The proposed capture shows the pin within the dense Sidi Bou Ali / سيدي بوعلي street network, near a pharmacy and Station OLA. The selected locality card says Sidi Bou Ali.",
+      "originalVisualEvidence": "The original capture shows much sparser roads around an Unnamed location card saying Near Sidi Bou Ali.",
+      "caveat": "Both captures use the same broader place name; the proposed map context better supports a central settlement reference, not a boundary change.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 35.9563486,
+            "lng": 10.470397
+          },
+          "requestedQuery": "35.9563486,10.470397",
+          "observedAt": "2026-09-07T06:26:03.713827+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_436-2.png",
+          "screenshotSha256": "7e3f5d63c339a0b78e50748133ebccbcdcd7f2079b2daff4c2a22034de2ae58f",
+          "observationJson": "phone-maps-review/delegation_436-2.json",
+          "observationJsonSha256": "acef6e3f83a3ecc001d2c3a659090fd3acc327b57a5aab50f0807352fd45f8a5",
+          "cardTitles": [
+            "Sidi Bou Ali"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 35.95,
+            "lng": 10.5
+          },
+          "requestedQuery": "35.95,10.5",
+          "observedAt": "2026-09-07T06:26:10.763741+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_436-3.png",
+          "screenshotSha256": "931e27eea5ab066a89d7cbedf1a79ddf16d6840e4ebcd7452a7ed05a695e08a8",
+          "observationJson": "phone-maps-review/delegation_436-3.json",
+          "observationJsonSha256": "dde8f99069bbc17d7cca3417f8d1650e8689049739b49c9d1e74efd9e1809e07",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ]
+    },
+    {
+      "delegationId": 488,
+      "nameAr": "بن قردان",
+      "nameFr": "Ben Guerdene",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 33.17,
+        "lng": 11.22
+      },
+      "proposed": {
+        "lat": 33.1403223,
+        "lng": 11.2170109
+      },
+      "movedKm": 3.3117204707469865,
+      "osmEvidence": {
+        "id": "osm:node:287588734",
+        "url": "https://www.openstreetmap.org/node/287588734",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/287588734.json",
+        "version": 20,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "name": "بن قردان",
+        "place": "town"
+      },
+      "geonamesEvidence": {
+        "id": "2472431",
+        "name": "Ben Gardane",
+        "lat": 33.13783,
+        "lng": 11.21965,
+        "featureCode": "PPL",
+        "modified": "2026-07-28",
+        "url": "https://www.geonames.org/2472431",
+        "distanceToProposedKm": 0.3703801398291166
+      },
+      "proposedVisualEvidence": "The proposed capture shows the pin within the Ben Gardane / بن قردان street network. The selected market card explicitly says Cente ville Ben Gardane and its address is in Ben Gardane.",
+      "originalVisualEvidence": "The original view has sparse roads around an Unnamed location near Ben Gardane, with C110 at the western side of the capture.",
+      "caveat": "The market card may be a nearby snapped result. The sourced OSM place coordinate remains the proposed reference.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 33.1403223,
+            "lng": 11.2170109
+          },
+          "requestedQuery": "33.1403223,11.2170109",
+          "observedAt": "2026-09-07T06:26:18.199872+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_488-2.png",
+          "screenshotSha256": "b005a51113b6d1642120785824b30c92b019f52d35eedf66ee2dd334f1a627be",
+          "observationJson": "phone-maps-review/delegation_488-2.json",
+          "observationJsonSha256": "71d6c6f39cb89388a08adc110b09e20f4ff45322a41e087eabc6021cbbc738d9",
+          "cardTitles": [
+            "Cente ville Ben Gardane, 46R8+4R5"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 33.17,
+            "lng": 11.22
+          },
+          "requestedQuery": "33.17,11.22",
+          "observedAt": "2026-09-07T06:26:25.073055+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_488-3.png",
+          "screenshotSha256": "2e46f53c038f103e1808e24db44aecad82d87a07aea206b72625bfe4fbd68bd8",
+          "observationJson": "phone-maps-review/delegation_488-3.json",
+          "observationJsonSha256": "f59c244b106635cbdf8bf203fb2be5e5d5d5cf4e2aa702e9dc7b6cafcca40243",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ]
+    },
+    {
+      "delegationId": 499,
+      "nameAr": "بوسالم",
+      "nameFr": "Bou Salem",
+      "decision": "approve_as_settlement_reference",
+      "decisionScope": "Approve the proposed sourced point as a reference within the observed named settlement; no official INM point or boundary certification.",
+      "original": {
+        "lat": 36.5673,
+        "lng": 8.9671
+      },
+      "proposed": {
+        "lat": 36.607408,
+        "lng": 8.9696535
+      },
+      "movedKm": 4.465629672718391,
+      "osmEvidence": {
+        "id": "osm:node:1837034352",
+        "url": "https://www.openstreetmap.org/node/1837034352",
+        "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1837034352.json",
+        "version": 13,
+        "timestamp": "2025-11-30T16:07:31Z",
+        "name": "بوسالم",
+        "place": "town"
+      },
+      "geonamesEvidence": {
+        "id": "2471956",
+        "name": "Bou Salem",
+        "lat": 36.60732,
+        "lng": 8.96981,
+        "featureCode": "PPL",
+        "modified": "2026-06-23",
+        "url": "https://www.geonames.org/2471956",
+        "distanceToProposedKm": 0.01705551516255584
+      },
+      "proposedVisualEvidence": "The proposed capture places the pin on a roundabout amid the Bou Salem street network beside Bou Salem Regional Hospital. The selected Fountain Roundabout card names Fontaine de Bousalem / نافورة بوسالم.",
+      "originalVisualEvidence": "The original capture shows sparse roads and an Unnamed location whose card says Near Bir Lakhdar.",
+      "caveat": "The fountain card supports the named settlement context; it does not certify the exact query coordinate or an INM reference point.",
+      "observations": [
+        {
+          "role": "proposed",
+          "point": {
+            "lat": 36.607408,
+            "lng": 8.9696535
+          },
+          "requestedQuery": "36.607408,8.9696535",
+          "observedAt": "2026-09-07T06:26:32.434570+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_499-2.png",
+          "screenshotSha256": "6bcd082a343522e33f7fbb1fc279afab896476a973f80acc111c2ec03fa89523",
+          "observationJson": "phone-maps-review/delegation_499-2.json",
+          "observationJsonSha256": "14d1779902bb142d952e1651e05dbac35e6dc1c3845a912c7d86e6d18665a85f",
+          "cardTitles": [
+            "Fountain Roundabout, JX49+XRH"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        },
+        {
+          "role": "original",
+          "point": {
+            "lat": 36.5673,
+            "lng": 8.9671
+          },
+          "requestedQuery": "36.5673,8.9671",
+          "observedAt": "2026-09-07T06:26:39.268492+00:00",
+          "queryVisibleInScreenshot": false,
+          "screenshot": "phone-maps-review/delegation_499-3.png",
+          "screenshotSha256": "75aeb0e286b268f1ed500f186b80cf8ec5a53296999eedb495e5e7d70cff69e3",
+          "observationJson": "phone-maps-review/delegation_499-3.json",
+          "observationJsonSha256": "952ff7f0c562bc8310a59e5081f995762ae62f30ef0031450480d6fadb449a0e",
+          "cardTitles": [
+            "Unnamed location"
+          ],
+          "visuallyReviewed": true,
+          "exactGoogleCoordinateVerified": false,
+          "boundaryVerified": false
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ package com.tunisianprayertimes.ui
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -45,6 +46,16 @@ internal fun LocalityPickerSheet(
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val listState = rememberLazyListState()
     val focusRequester = remember { FocusRequester() }
+    // Decide from the complete catalog so a row keeps its context while searching.
+    // A delegation and its namesake sector are different administrative levels.
+    val rowsWithTypeContext = remember(catalog) {
+        catalog.groupBy { it.governorateId to it.normalizedName }
+            .values.filter { rows ->
+                rows.any { it.kind == "delegation" } &&
+                    rows.map { localityKindLabel(it.kind) }.distinct().size > 1
+            }
+            .flatten().mapTo(mutableSetOf()) { it.id }
+    }
     val groups = remember(catalog, query, gouvernorats) {
         val matches = searchLocalities(catalog, query).groupBy { it.governorateId }
         val names = gouvernorats.associate { it.id to it.nomAr }
@@ -56,7 +67,7 @@ internal fun LocalityPickerSheet(
         var selectedIndex = 0
         if (query.isBlank()) {
             for ((_, _, rows) in groups) {
-                val index = rows.indexOfFirst { it.id == selectedId }
+                val index = rows.indexOfFirst { it.representsSelection(selectedId) }
                 if (index >= 0) {
                     // Leave one item above the selection so the sticky header cannot cover it.
                     selectedIndex += index
@@ -116,10 +127,17 @@ internal fun LocalityPickerSheet(
                             )
                         }
                         items(rows, key = { it.id }, contentType = { "locality" }) { locality ->
-                            val selected = locality.id == selectedId
+                            val selected = locality.representsSelection(selectedId)
+                            val parent = locality.parentName.takeIf {
+                                it.isNotBlank() && it != locality.name && it != governorName
+                            }
+                            val type = if (locality.id in rowsWithTypeContext) {
+                                stringResource(localityKindLabel(locality.kind))
+                            } else null
+                            val subtitle = listOfNotNull(type, parent).joinToString(" · ")
                             Row(
                                 modifier = Modifier.fillMaxWidth().testTag("locality_row_${locality.id}")
-                                    .clickable { onSelect(locality) }
+                                    .selectable(selected = selected, role = Role.RadioButton, onClick = { onSelect(locality) })
                                     .background(if (selected) GoldLight.copy(alpha = 0.2f) else Color.Transparent)
                                     .padding(horizontal = 28.dp, vertical = 12.dp),
                                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -131,9 +149,8 @@ internal fun LocalityPickerSheet(
                                         color = if (selected) GreenPrimaryDark else TextDark,
                                         fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
                                     )
-                                    if (locality.parentName.isNotBlank() && locality.parentName != locality.name &&
-                                        locality.parentName != governorName) {
-                                        Text(locality.parentName, fontSize = 12.sp, color = TextMuted)
+                                    if (subtitle.isNotBlank()) {
+                                        Text(subtitle, fontSize = 12.sp, color = TextMuted)
                                     }
                                 }
                                 if (selected) Icon(
@@ -148,4 +165,16 @@ internal fun LocalityPickerSheet(
             }
         }
     }
+}
+
+private fun localityKindLabel(kind: String): Int = when (kind) {
+    "delegation" -> R.string.locality_kind_delegation
+    "sector" -> R.string.locality_kind_sector
+    "municipality" -> R.string.locality_kind_municipality
+    "town", "city" -> R.string.locality_kind_town
+    "village" -> R.string.locality_kind_village
+    "hamlet" -> R.string.locality_kind_hamlet
+    "neighbourhood", "quarter", "suburb", "city_district" -> R.string.locality_kind_neighborhood
+    "residential" -> R.string.locality_kind_residential
+    else -> R.string.locality_kind_area
 }

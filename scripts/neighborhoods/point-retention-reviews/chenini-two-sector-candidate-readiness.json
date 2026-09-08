@@ -1,0 +1,1061 @@
+{
+  "schemaVersion": 1,
+  "status": "COMPLETE_SOURCE_SCOPE_CONFIRMED_NOT_IMPORT_READY_SUBSTANTIAL_NEIGHBOR_DISAGREEMENT",
+  "reviewedAt": "2026-09-07T19:11:39.181939+00:00",
+  "candidate": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-sector-candidate-readiness.geojson",
+    "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+    "bytes": 109094
+  },
+  "sourceId": "isie-local-sectors-2023-chenini-two-review",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+    "bytes": 1839172
+  },
+  "baselineBinary": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+    "bytes": 5496428
+  },
+  "prayerSources": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+    "sha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e",
+    "bytes": 54548
+  },
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceProof": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\chenini-exact-node-context-source-proof.json",
+    "sha256": "ab1461afe3044aec5c7ef66f4ee62c978e9c1664ce50f50b4bf20efb7f431a1b",
+    "bytes": 51459
+  },
+  "frozenSourceGeometry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\official-two-sector-context-evidence.geojson",
+    "sha256": "fd875eca09776380339b20663d7061b285bf12c350856b4773d0b1a3247212ba",
+    "bytes": 45911
+  },
+  "freshSourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\fresh-pbf-identity-facts.json",
+    "sha256": "a5a0257054959568f6e509b54172c3190cb3007399655e7836febd0ce45df8a7",
+    "bytes": 13618
+  },
+  "originalSourceGeometry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\original-two-sector-source-geometries.json",
+    "sha256": "c1ad42c37e53d74fac8272447909695b28fe5f836a6a0c347e6d5bc3bcd74eb7",
+    "bytes": 27352
+  },
+  "registry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "registryWorkbooks": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "primarySource": {
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "bytes": 10636520
+  },
+  "candidateScopeRecords": [
+    {
+      "id": "osm:relation:7143881",
+      "officialCode": "535259",
+      "boundarySourceSha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "conclusion": "whole_imada",
+      "pdfPage": 33,
+      "jortPage": 5130,
+      "imadaName": "شنني",
+      "circleName": "شنني",
+      "delegationName": "تطاوين الجنوبية",
+      "parentStartsPdfPage": 32
+    },
+    {
+      "id": "osm:relation:7143823",
+      "officialCode": "535258",
+      "boundarySourceSha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "conclusion": "whole_imada",
+      "pdfPage": 33,
+      "jortPage": 5130,
+      "imadaName": "شنني الجديدة",
+      "circleName": "شنني الجديدة",
+      "delegationName": "تطاوين الجنوبية",
+      "parentStartsPdfPage": 32
+    }
+  ],
+  "sourceChecks": [
+    {
+      "id": "osm:relation:7143881",
+      "officialCode": "535259",
+      "sourceMapPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\maps\\chenini.pdf",
+        "sha256": "6de89fef69504d0be66d75e07cacc9b4c135b2fffa64ff1bb9d74fb74ac8f4f5",
+        "bytes": 830972
+      },
+      "scope": {
+        "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+        "wholeCircleEqualsWholeImada": true,
+        "decreeAnnex": 1,
+        "decreeTable": "A",
+        "decreePDFPage": 33,
+        "decreeJORTPage": 5130,
+        "parentContinuationPDFPage": 32,
+        "parentContinuationJORTPage": 5129,
+        "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "imadaNameAr": "شنني",
+        "circleNameAr": "شنني",
+        "expectedCircleCount": 1
+      },
+      "validation": {
+        "valid": true,
+        "countryFullyContains": true,
+        "countryOutsideAreaMeters2": 0.0,
+        "sourceUnchanged": true,
+        "quantizedValid": true,
+        "quantizedCountryFullyContains": true,
+        "quantizedPackedCountryFullyContains": true,
+        "sourceHoleCount": 0,
+        "quantizedHoleCount": 0,
+        "quantizedSymmetricDifferenceMeters2": 2298.8092393871084,
+        "quantizedHausdorffMeters": 0.0656463377538621,
+        "quantizationGridDegrees": 1e-06,
+        "packedGeometrySha256": "50c0356663aee7812fb2e7cc48822109e747bea12e159ed6e29d3da97d3f33b4",
+        "packedGeometryBytes": 2924
+      },
+      "pointMembership": [
+        {
+          "villageId": "osm:node:297760994",
+          "sourceContains": true,
+          "quantizedContains": true,
+          "sourceClearanceMeters": 906.3896454165728,
+          "quantizedClearanceMeters": 906.3685401717177,
+          "oldSourceContains": false,
+          "oldPackedContains": false
+        },
+        {
+          "villageId": "osm:node:1975899618",
+          "sourceContains": false,
+          "quantizedContains": false,
+          "sourceClearanceMeters": 499.252194499842,
+          "quantizedClearanceMeters": 499.22541294245076,
+          "oldSourceContains": false,
+          "oldPackedContains": false
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7143823",
+      "officialCode": "535258",
+      "sourceMapPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\maps\\new-chenini.pdf",
+        "sha256": "c91ebd050f74d8a97dbe38a2a69cfe505ba92166f1918c3a5b300d2ee74355cb",
+        "bytes": 1172254
+      },
+      "scope": {
+        "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+        "wholeCircleEqualsWholeImada": true,
+        "decreeAnnex": 1,
+        "decreeTable": "A",
+        "decreePDFPage": 33,
+        "decreeJORTPage": 5130,
+        "parentContinuationPDFPage": 32,
+        "parentContinuationJORTPage": 5129,
+        "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "imadaNameAr": "شنني الجديدة",
+        "circleNameAr": "شنني الجديدة",
+        "expectedCircleCount": 1
+      },
+      "validation": {
+        "valid": true,
+        "countryFullyContains": true,
+        "countryOutsideAreaMeters2": 0.0,
+        "sourceUnchanged": true,
+        "quantizedValid": true,
+        "quantizedCountryFullyContains": true,
+        "quantizedPackedCountryFullyContains": true,
+        "sourceHoleCount": 0,
+        "quantizedHoleCount": 0,
+        "quantizedSymmetricDifferenceMeters2": 534.3397680574111,
+        "quantizedHausdorffMeters": 0.06546655229400583,
+        "quantizationGridDegrees": 1e-06,
+        "packedGeometrySha256": "5219035c71ebd7270eab1f92de6db3ec1853f65bcaf354c0c1d8b9a337127768",
+        "packedGeometryBytes": 700
+      },
+      "pointMembership": [
+        {
+          "villageId": "osm:node:297760994",
+          "sourceContains": false,
+          "quantizedContains": false,
+          "sourceClearanceMeters": 907.6749661825061,
+          "quantizedClearanceMeters": 907.6152606483691,
+          "oldSourceContains": true,
+          "oldPackedContains": true
+        },
+        {
+          "villageId": "osm:node:1975899618",
+          "sourceContains": true,
+          "quantizedContains": true,
+          "sourceClearanceMeters": 505.0849594648145,
+          "quantizedClearanceMeters": 505.06523532133883,
+          "oldSourceContains": true,
+          "oldPackedContains": true
+        }
+      ]
+    }
+  ],
+  "proposedChoices": [
+    {
+      "sectorId": "osm:relation:7143881",
+      "villageId": "osm:node:297760994",
+      "officialCode": "535259",
+      "primaryName": "شنني",
+      "sourceIdentityReviewed": true,
+      "manualPointId": "osm:node:297760994",
+      "canonicalPickerGroupId": "osm:relation:7143881",
+      "expectedCompleteBeforeGroups": {
+        "osm:relation:7143881": [
+          "osm:relation:7143881"
+        ],
+        "osm:node:297760994": [
+          "osm:node:297760994"
+        ]
+      },
+      "expectedCompleteAfterGroupMembers": [
+        "osm:node:297760994",
+        "osm:relation:7143881"
+      ],
+      "expectedCurrentSector": {
+        "id": "osm:relation:7143881",
+        "sourceId": "osm",
+        "name": "شنني",
+        "aliases": [
+          "Chenini"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تطاوين الجنوبية",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.939332,
+        "lng": 10.188169,
+        "delegationId": 473,
+        "hasBoundary": true,
+        "bbox": [
+          9.968677,
+          32.901307,
+          10.387947,
+          32.977276
+        ],
+        "areaKm2": 201.9900087004591,
+        "pickerGroupId": "osm:relation:7143881",
+        "offset": 2139036,
+        "length": 1356
+      },
+      "expectedCurrentVillage": {
+        "id": "osm:node:297760994",
+        "sourceId": "osm",
+        "name": "شنني",
+        "aliases": [
+          "Chenini"
+        ],
+        "kind": "village",
+        "parentName": "معتمدية تطاوين الجنوبية",
+        "contextAliases": [
+          "Chenini",
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "شنني",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.9107032,
+        "lng": 10.2615519,
+        "delegationId": 624,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:297760994"
+      },
+      "expectedOriginalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "شنني",
+        "name:ar": "شنني",
+        "name:fr": "Chenini",
+        "ref:tn:codegeo": "535259",
+        "type": "boundary"
+      },
+      "expectedOriginalVillage": {
+        "id": "osm:node:297760994",
+        "version": 13,
+        "timestamp": "2025-09-14 10:19:40+00:00",
+        "tags": {
+          "addr:city": "Chenini",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "place": "village",
+          "wikidata": "Q2317502",
+          "wikimedia_commons": "Category:Chenini",
+          "wikipedia": "ar:شنني (تطاوين)"
+        },
+        "lat": 32.9107032,
+        "lng": 10.2615519
+      },
+      "manualPoint": {
+        "lat": 32.9107032,
+        "lng": 10.2615519,
+        "delegationId": 624
+      },
+      "sectorManualSourceBefore": 473,
+      "sectorManualSourceAfter": 624,
+      "nearestSourcesAtCurrentSectorReference": [
+        {
+          "id": 473,
+          "nomAr": "غمراسن",
+          "distanceMeters": 19506.855705429454
+        },
+        {
+          "id": 624,
+          "nomAr": "تطاوين",
+          "distanceMeters": 24626.70925576457
+        },
+        {
+          "id": 489,
+          "nomAr": "بني خداش",
+          "distanceMeters": 34032.343327435956
+        }
+      ],
+      "nearestSourcesAtVillageReference": [
+        {
+          "id": 624,
+          "nomAr": "تطاوين",
+          "distanceMeters": 17883.0057960222
+        },
+        {
+          "id": 473,
+          "nomAr": "غمراسن",
+          "distanceMeters": 18142.03808037733
+        },
+        {
+          "id": 474,
+          "nomAr": "بئر الأحمر",
+          "distanceMeters": 34248.35055108474
+        }
+      ],
+      "uniqueRetainedPlacePointInsideOfficialSector": [
+        "osm:node:297760994"
+      ],
+      "nameDecision": "Keep primary شنني and Chenini alias.",
+      "identityBasis": "Primary IRA/IRD field study links the two imadas to old/new villages; official whole-sector identities and separate point membership plus GMG old-village references and distinct old/new school/postal source tags identify the two unique corresponding settlements. Administrative membership alone is insufficient; no boundary equality is claimed.",
+      "requiresWholeBoundaryAndChoiceTransition": true
+    },
+    {
+      "sectorId": "osm:relation:7143823",
+      "villageId": "osm:node:1975899618",
+      "officialCode": "535258",
+      "primaryName": "شنني الجديدة",
+      "sourceIdentityReviewed": true,
+      "manualPointId": "osm:node:1975899618",
+      "canonicalPickerGroupId": "osm:relation:7143823",
+      "expectedCompleteBeforeGroups": {
+        "osm:relation:7143823": [
+          "osm:relation:7143823"
+        ],
+        "osm:node:1975899618": [
+          "osm:node:1975899618"
+        ]
+      },
+      "expectedCompleteAfterGroupMembers": [
+        "osm:node:1975899618",
+        "osm:relation:7143823"
+      ],
+      "expectedCurrentSector": {
+        "id": "osm:relation:7143823",
+        "sourceId": "osm",
+        "name": "شنني الجديدة",
+        "aliases": [
+          "Nouvelle Chnini"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تطاوين الجنوبية",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.911087,
+        "lng": 10.009609,
+        "delegationId": 473,
+        "hasBoundary": true,
+        "bbox": [
+          9.930962,
+          32.859987,
+          10.342622,
+          32.962276
+        ],
+        "areaKm2": 204.7316422458039,
+        "pickerGroupId": "osm:relation:7143823",
+        "offset": 2047168,
+        "length": 948
+      },
+      "expectedCurrentVillage": {
+        "id": "osm:node:1975899618",
+        "sourceId": "osm",
+        "name": "شنني",
+        "aliases": [
+          "Chenini"
+        ],
+        "kind": "village",
+        "parentName": "شنني الجديدة",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Nouvelle Chnini",
+          "Tataouine Sud",
+          "شنني الجديدة",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.9147021,
+        "lng": 10.2781706,
+        "delegationId": 624,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1975899618"
+      },
+      "expectedOriginalSectorTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "شنني الجديدة",
+        "name:ar": "شنني الجديدة",
+        "name:fr": "Nouvelle Chnini",
+        "ref:tn:codegeo": "535258",
+        "type": "boundary"
+      },
+      "expectedOriginalVillage": {
+        "id": "osm:node:1975899618",
+        "version": 10,
+        "timestamp": "2025-09-14 10:19:40+00:00",
+        "tags": {
+          "addr:city": "شنني",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "place": "village",
+          "wikidata": "Q2317502",
+          "wikimedia_commons": "Category:Chenini",
+          "wikipedia": "ar:شنني (تطاوين)"
+        },
+        "lat": 32.9147021,
+        "lng": 10.2781706
+      },
+      "manualPoint": {
+        "lat": 32.9147021,
+        "lng": 10.2781706,
+        "delegationId": 624
+      },
+      "sectorManualSourceBefore": 473,
+      "sectorManualSourceAfter": 624,
+      "nearestSourcesAtCurrentSectorReference": [
+        {
+          "id": 473,
+          "nomAr": "غمراسن",
+          "distanceMeters": 34982.9173020557
+        },
+        {
+          "id": 489,
+          "nomAr": "بني خداش",
+          "distanceMeters": 41213.83557842415
+        },
+        {
+          "id": 624,
+          "nomAr": "تطاوين",
+          "distanceMeters": 41325.97796184627
+        }
+      ],
+      "nearestSourcesAtVillageReference": [
+        {
+          "id": 624,
+          "nomAr": "تطاوين",
+          "distanceMeters": 16291.832034807223
+        },
+        {
+          "id": 473,
+          "nomAr": "غمراسن",
+          "distanceMeters": 17154.750978095326
+        },
+        {
+          "id": 474,
+          "nomAr": "بئر الأحمر",
+          "distanceMeters": 33120.18443433681
+        }
+      ],
+      "uniqueRetainedPlacePointInsideOfficialSector": [
+        "osm:node:1975899618"
+      ],
+      "nameDecision": "Qualify eastern village primary as شنني الجديدة, retaining original شنني and Chenini aliases; update saved-name index. Canonical sector uses INS spelling; retain existing Nouvelle Chnini capitalization as a reviewed alias.",
+      "identityBasis": "Primary IRA/IRD field study links the two imadas to old/new villages; official whole-sector identities and separate point membership plus GMG old-village references and distinct old/new school/postal source tags identify the two unique corresponding settlements. Administrative membership alone is insufficient; no boundary equality is claimed.",
+      "requiresWholeBoundaryAndChoiceTransition": true
+    }
+  ],
+  "nationalNeighborDecision": {
+    "evidence": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-candidate-neighbor-review.json",
+      "sha256": "ef15e00dacb2e501eba9d24bdaeec2fc6625f4af3a15ddbb338dd1b6661b7a75",
+      "bytes": 17561
+    },
+    "importReady": false,
+    "reportedByIndependentRootReview": {
+      "overlapPairs": 8,
+      "overlapAreaKm2": 101.631,
+      "distinctEnclosedGaps": 33,
+      "gapAreaKm2": 29.1095
+    },
+    "requiredPeers": [
+      "osm:relation:7143841",
+      "osm:relation:7143878",
+      "osm:relation:7143879",
+      "osm:relation:7143876",
+      "osm:relation:7107072",
+      "osm:relation:7107232",
+      "osm:relation:7107233"
+    ],
+    "qualification": "These values are rounded from the pinned independent national-neighbor report, not recomputed here. Exact values and overlap/gap definitions remain in that report. The correct two-point result does not bypass substantial neighbor conflicts."
+  },
+  "identityEvidence": {
+    "fieldStudy": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\ira-ird-chenini-2018.pdf",
+      "sha256": "8a9d3350aa878ed3e6f1750f146f42c6db10e0f59631f71313a2460603cbf164",
+      "bytes": 1126867
+    },
+    "fieldStudyPage": {
+      "pdfPage": 2,
+      "printedPage": 166,
+      "personallyViewed": true
+    },
+    "fieldStudyFinding": "Chenini region is divided into two imadas, old and new village, and includes12 named quarters across46,606ha; this supports shared settlement/sector user choices but not identical built-up/admin extents.",
+    "westernVillagePrimary": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\gmg-chenini-village.html",
+      "sha256": "53ff898e44d47f3e402a1fa63378c0f0d38d23c0171373811f25615c3ab1e07c",
+      "bytes": 87477
+    },
+    "westernOilMillPrimary": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-identity-review\\gmg-oil-mills.html",
+      "sha256": "515d0aa660f237b43fed34142ecbc1abec72197fe215922fdd6a64f9e9865e06",
+      "bytes": 92624
+    },
+    "easternNameAddendum": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-eastern-name-only-addendum.json",
+      "sha256": "57fc874ac6198d55a59367e1b9e8c3f1e4ce4d689bf5f242888b5dedeb4caa7a",
+      "bytes": 23382
+    },
+    "earlierIndependentContextReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-context-name-independent-review.json",
+      "sha256": "4afd2a6e337abc91ff30660b333f07b930c5c87145c571b3fda9768bc3ed124f",
+      "bytes": 14059
+    },
+    "namePeerInventory": [
+      {
+        "id": "osm:node:297760994",
+        "originalTags": {
+          "addr:city": "Chenini",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "place": "village",
+          "wikidata": "Q2317502",
+          "wikimedia_commons": "Category:Chenini",
+          "wikipedia": "ar:شنني (تطاوين)"
+        },
+        "originalGeometryHash": "477504621ef445e8e9a525ff374771e6038a2ab1d8d6861e8d85fd1203b077ae",
+        "intersectsOfficialUnion": true,
+        "currentFeature": {
+          "id": "osm:node:297760994",
+          "sourceId": "osm",
+          "name": "شنني",
+          "aliases": [
+            "Chenini"
+          ],
+          "kind": "village",
+          "parentName": "معتمدية تطاوين الجنوبية",
+          "contextAliases": [
+            "Chenini",
+            "Délégation Tataouine Sud",
+            "Tataouine Sud",
+            "شنني",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.9107032,
+          "lng": 10.2615519,
+          "delegationId": 624,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:297760994"
+        }
+      },
+      {
+        "id": "osm:node:1975899618",
+        "originalTags": {
+          "addr:city": "شنني",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "place": "village",
+          "wikidata": "Q2317502",
+          "wikimedia_commons": "Category:Chenini",
+          "wikipedia": "ar:شنني (تطاوين)"
+        },
+        "originalGeometryHash": "345123348675809bb4378b6cd839e883c5bbfb1eb381c7f12a1f5bdb8d5b6730",
+        "intersectsOfficialUnion": true,
+        "currentFeature": {
+          "id": "osm:node:1975899618",
+          "sourceId": "osm",
+          "name": "شنني",
+          "aliases": [
+            "Chenini"
+          ],
+          "kind": "village",
+          "parentName": "شنني الجديدة",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Nouvelle Chnini",
+            "Tataouine Sud",
+            "شنني الجديدة",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.9147021,
+          "lng": 10.2781706,
+          "delegationId": 624,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1975899618"
+        }
+      },
+      {
+        "id": "osm:node:2967203258",
+        "originalTags": {
+          "int_name": "Chenini",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "place": "suburb"
+        },
+        "originalGeometryHash": "b2988afbddb0c783284f90a2a7d339a8b409d41f1d2dea88681e5461f5545552",
+        "intersectsOfficialUnion": false,
+        "currentFeature": null
+      },
+      {
+        "id": "osm:way:293047299",
+        "originalTags": {
+          "landuse": "residential",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:fr": "Chenini"
+        },
+        "originalGeometryHash": "1846be2c98e97f3027397931c0830131bc41e3530e14d4ea1617b5061860ea23",
+        "intersectsOfficialUnion": false,
+        "currentFeature": {
+          "id": "osm:way:293047299",
+          "sourceId": "osm",
+          "name": "شنني",
+          "aliases": [
+            "Chenini"
+          ],
+          "kind": "residential",
+          "parentName": "معتمدية قابس الغربية",
+          "contextAliases": [
+            "Délégation Gabès Ouest",
+            "Gabès Ouest",
+            "معتمدية قابس الغربية"
+          ],
+          "governorateId": 347,
+          "lat": 33.87132,
+          "lng": 10.053175,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.042905,
+            33.864268,
+            10.065377,
+            33.878215
+          ],
+          "areaKm2": 1.9558708579266326,
+          "pickerGroupId": "osm:way:293047299",
+          "offset": 5378508,
+          "length": 708
+        }
+      },
+      {
+        "id": "osm:relation:7143881",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:fr": "Chenini",
+          "ref:tn:codegeo": "535259"
+        },
+        "originalGeometryHash": "61051f7026a4d61c9bc5d66da61b8e497128d2b3ab95437f855eba13b2e2401c",
+        "intersectsOfficialUnion": true,
+        "currentFeature": {
+          "id": "osm:relation:7143881",
+          "sourceId": "osm",
+          "name": "شنني",
+          "aliases": [
+            "Chenini"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تطاوين الجنوبية",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Tataouine Sud",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.939332,
+          "lng": 10.188169,
+          "delegationId": 473,
+          "hasBoundary": true,
+          "bbox": [
+            9.968677,
+            32.901307,
+            10.387947,
+            32.977276
+          ],
+          "areaKm2": 201.9900087004591,
+          "pickerGroupId": "osm:relation:7143881",
+          "offset": 2139036,
+          "length": 1356
+        }
+      },
+      {
+        "id": "osm:relation:7143823",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني الجديدة",
+          "name:ar": "شنني الجديدة",
+          "name:fr": "Nouvelle Chnini",
+          "ref:tn:codegeo": "535258"
+        },
+        "originalGeometryHash": "6539aa1c0a637b81b0aa6040a441d82cdf7ae4f2ae2efa2073385796a1262a06",
+        "intersectsOfficialUnion": true,
+        "currentFeature": {
+          "id": "osm:relation:7143823",
+          "sourceId": "osm",
+          "name": "شنني الجديدة",
+          "aliases": [
+            "Nouvelle Chnini"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تطاوين الجنوبية",
+          "contextAliases": [
+            "Délégation Tataouine Sud",
+            "Tataouine Sud",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "governorateId": 351,
+          "lat": 32.911087,
+          "lng": 10.009609,
+          "delegationId": 473,
+          "hasBoundary": true,
+          "bbox": [
+            9.930962,
+            32.859987,
+            10.342622,
+            32.962276
+          ],
+          "areaKm2": 204.7316422458039,
+          "pickerGroupId": "osm:relation:7143823",
+          "offset": 2047168,
+          "length": 948
+        }
+      },
+      {
+        "id": "osm:relation:7145373",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني الشرقية",
+          "name:ar": "شنني الشرقية",
+          "name:fr": "Chenini Est",
+          "ref:tn:codegeo": "515256"
+        },
+        "originalGeometryHash": "c7028dd37b5b2499c3378b6bf1fb61e8e711f05100388411f9a746d8e800cc8e",
+        "intersectsOfficialUnion": false,
+        "currentFeature": {
+          "id": "osm:relation:7145373",
+          "sourceId": "osm",
+          "name": "شنني الشرقية",
+          "aliases": [
+            "Chenini Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الغربية",
+          "contextAliases": [
+            "Délégation Gabès Ouest",
+            "Gabès Ouest",
+            "معتمدية قابس الغربية"
+          ],
+          "governorateId": 347,
+          "lat": 33.869365,
+          "lng": 10.057183,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.051416,
+            33.864515,
+            10.06358,
+            33.874635
+          ],
+          "areaKm2": 0.8544256090462162,
+          "pickerGroupId": "osm:relation:7145373",
+          "offset": 2178528,
+          "length": 828
+        }
+      },
+      {
+        "id": "osm:relation:7145374",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني الشمالية",
+          "name:ar": "شنني الشمالية",
+          "name:fr": "Chenini Nord",
+          "ref:tn:codegeo": "515255"
+        },
+        "originalGeometryHash": "fdb9ff5eaa56f10869d4db31e22d37da89f54c7aaf20e0ce23961c84062c1d89",
+        "intersectsOfficialUnion": false,
+        "currentFeature": {
+          "id": "osm:relation:7145374",
+          "sourceId": "osm",
+          "name": "شنني الشمالية",
+          "aliases": [
+            "Chenini Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الغربية",
+          "contextAliases": [
+            "Délégation Gabès Ouest",
+            "Gabès Ouest",
+            "معتمدية قابس الغربية"
+          ],
+          "governorateId": 347,
+          "lat": 33.865495,
+          "lng": 10.013655,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            9.977092,
+            33.850845,
+            10.06408,
+            33.880236
+          ],
+          "areaKm2": 13.685172252739232,
+          "pickerGroupId": "osm:relation:7145374",
+          "offset": 2179356,
+          "length": 1988
+        }
+      },
+      {
+        "id": "osm:relation:7145372",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني الغربية",
+          "name:ar": "شنني الغربية",
+          "name:fr": "Chenini Ouest",
+          "ref:tn:codegeo": "515257"
+        },
+        "originalGeometryHash": "f0e5f035a44a060d266d59540302c6965b0be2ab4b864cdbd7020976ce034812",
+        "intersectsOfficialUnion": false,
+        "currentFeature": {
+          "id": "osm:relation:7145372",
+          "sourceId": "osm",
+          "name": "شنني الغربية",
+          "aliases": [
+            "Chenini Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الغربية",
+          "contextAliases": [
+            "Délégation Gabès Ouest",
+            "Gabès Ouest",
+            "معتمدية قابس الغربية"
+          ],
+          "governorateId": 347,
+          "lat": 33.859505,
+          "lng": 10.062176,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.0327,
+            33.840425,
+            10.081911,
+            33.878335
+          ],
+          "areaKm2": 10.25487641436724,
+          "pickerGroupId": "osm:relation:7145372",
+          "offset": 2176156,
+          "length": 2372
+        }
+      }
+    ],
+    "namePeerSource": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "namePeerExtractionScript": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\extract_osm.py",
+      "sha256": "0e363290dc3c1ba57a4713065d3a958bfb566c22fea519eac7b0f5ef2ed36947",
+      "bytes": 1773
+    },
+    "inventoryScope": "All3018 named retained administrative/place/residential areas and1742 retained place nodes. Fresh separate source pass covers all target code claims and16 named surrounding nodes. Only the four target named objects intersect the two official outlines. This is exact within the documented retained source scopes, not a universal census of every OSM tag."
+  },
+  "manifestSourceProposal": {
+    "id": "isie-local-sectors-2023-chenini-two-review",
+    "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+    "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+    "file": "official/chenini-two-sector-candidate-readiness.geojson",
+    "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+    "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "records": [
+      {
+        "id": "osm:relation:7143881",
+        "officialCode": "535259",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:fr": "Chenini",
+          "ref:tn:codegeo": "535259"
+        },
+        "aliases": [
+          "Chenini"
+        ]
+      },
+      {
+        "id": "osm:relation:7143823",
+        "officialCode": "535258",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني الجديدة",
+          "name:ar": "شنني الجديدة",
+          "name:fr": "Nouvelle Chnini",
+          "ref:tn:codegeo": "535258"
+        },
+        "aliases": [
+          "Nouvelle Chnini"
+        ]
+      }
+    ],
+    "review": "Source scope and point identity ready; root must separately accept national neighbor/conflict effects and the complete saved-ID/manual-choice transition before integration."
+  },
+  "pairedOfficialOutlineOverlapMeters2": 23976.017437543116,
+  "integrationRequirements": [
+    "Both full boundaries together; no clipping, seam snapping or invented settlement extents.",
+    "Extend the existing whole-imada scope inventory with exactly these two rows and the candidate file hash; preserve all accepted records.",
+    "Each sector canonical must explicitly use its corresponding existing village point as manualPointId and source624; now both references lie inside the matching source and quantized official outlines.",
+    "Retain both raw point IDs before any eastern name correction or absorption; group each point only with its corresponding sector. Keep old Arabic/French search names and saved selections.",
+    "Pin the exact identity and original/effective name-peer inventory. Current fields are expectations from40c6 and must be deliberately updated for imported source identity in the staged wrapper.",
+    "Reconcile the installed western locality_context wrapper with the same official source without weakening its identity or source pins.",
+    "Root owns complete national neighbor overlap/gap/conflict acceptance and runtime GPS checks, including at both exact points. Target-pair-only membership is not global GPS certification.",
+    "Verify actual GPS continues to select a timetable from actual coordinates. Manual saved sector choices need an explicit473-to624 remap; prior GPS selections must not inherit manual representative changes."
+  ],
+  "limits": [
+    "Source outlines retain finite georeferencing accuracy and ordinary1e-6-degree quantization.",
+    "Unique paired user-choice identity is a combined reviewed inference, not proof that village boundaries equal whole sectors.",
+    "Shared Wikidata/Wikipedia and repeated Google cards are not identity evidence.",
+    "Neighbor and implementation acceptance remain pending; this report imports nothing and does not certify the remaining catalog."
+  ],
+  "operations": {
+    "newSourceFetches": 0,
+    "newPbfPasses": 0,
+    "catalogGenerations": 0,
+    "repoEdits": 0,
+    "phoneActions": 0,
+    "ledgerEdits": 0,
+    "tests": 0,
+    "builds": 0,
+    "existingFullPdfRingsIndependentlyReconstructed": 2,
+    "actualTargetPairQuantizationAndPointChecks": true
+  },
+  "reviewScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_chenini_two_sector_candidates.py",
+    "sha256": "24cfd61d9f5e58a97ab3d0b4611b9217ebb8d1e7d523a9e70dc73a69e14435c0",
+    "bytes": 23225
+  }
+}

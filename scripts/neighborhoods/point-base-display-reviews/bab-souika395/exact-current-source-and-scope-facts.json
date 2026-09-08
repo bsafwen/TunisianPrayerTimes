@@ -1,0 +1,1889 @@
+{
+  "schemaVersion": 1,
+  "baselineMetadataSha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86",
+  "records": [
+    {
+      "pointId": "osm:node:1256204446",
+      "baseId": 402,
+      "point": {
+        "id": "osm:node:1256204446",
+        "sourceId": "osm",
+        "name": "مونفلوري",
+        "aliases": [
+          "Montfleury"
+        ],
+        "kind": "suburb",
+        "parentName": "معقل الزعيم",
+        "contextAliases": [
+          "Délégation Sidi El Béchir",
+          "Maakel Ezzaim",
+          "Sidi El Béchir",
+          "معتمدية سيدي البشير",
+          "معقل الزعيم"
+        ],
+        "governorateId": 342,
+        "lat": 36.7897886,
+        "lng": 10.1707683,
+        "delegationId": 402,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1256204446"
+      },
+      "base": {
+        "id": 402,
+        "nomFr": "Sidi El Bechir",
+        "nomAr": "سيدي البشير",
+        "nomEn": "Sidi El Bechir",
+        "lat": 36.79,
+        "lng": 10.17
+      },
+      "baseCoordinateCorrection": [],
+      "androidAndDocsBaseEqual": true,
+      "distanceMetres": 72.34195496622978,
+      "normalizedSourcePeerKeys": [
+        "montfleury",
+        "sidielbechir",
+        "سيديالبشير",
+        "مونفلوري"
+      ],
+      "originalAndEffectivePeers": [
+        {
+          "id": "osm:node:1237971782",
+          "kind": "suburb",
+          "originalTags": {
+            "name": "سيدي البشير",
+            "name:ar": "سيدي البشير",
+            "name:en": "Sidi Al Bachir",
+            "name:fr": "Sidi Al Bachir",
+            "place": "suburb"
+          },
+          "effectiveTags": {
+            "name": "سيدي البشير",
+            "name:ar": "سيدي البشير",
+            "name:en": "Sidi Al Bachir",
+            "name:fr": "Sidi Al Bachir",
+            "place": "suburb"
+          },
+          "current": null,
+          "currentRawGroup": []
+        },
+        {
+          "id": "osm:node:1256204446",
+          "kind": "suburb",
+          "originalTags": {
+            "name": "مونفلوري",
+            "name:ar": "مونفلوري",
+            "name:en": "Montfleury",
+            "name:fr": "Montfleury",
+            "place": "suburb",
+            "wikidata": "Q12246393",
+            "wikimedia_commons": "Category:Montfleury (Tunis)",
+            "wikipedia": "fr:Montfleury (Tunis)"
+          },
+          "effectiveTags": {
+            "name": "مونفلوري",
+            "name:ar": "مونفلوري",
+            "name:en": "Montfleury",
+            "name:fr": "Montfleury",
+            "place": "suburb",
+            "wikidata": "Q12246393",
+            "wikimedia_commons": "Category:Montfleury (Tunis)",
+            "wikipedia": "fr:Montfleury (Tunis)"
+          },
+          "current": {
+            "id": "osm:node:1256204446",
+            "sourceId": "osm",
+            "name": "مونفلوري",
+            "aliases": [
+              "Montfleury"
+            ],
+            "kind": "suburb",
+            "parentName": "معقل الزعيم",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Maakel Ezzaim",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير",
+              "معقل الزعيم"
+            ],
+            "governorateId": 342,
+            "lat": 36.7897886,
+            "lng": 10.1707683,
+            "delegationId": 402,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:1256204446"
+          },
+          "currentRawGroup": [
+            "osm:node:1256204446"
+          ]
+        },
+        {
+          "id": "osm:relation:4133966",
+          "kind": "delegation",
+          "originalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sidi El Béchir",
+            "boundary": "administrative",
+            "name": "معتمدية سيدي البشير",
+            "name:ar": "معتمدية سيدي البشير",
+            "name:fr": "Délégation Sidi El Béchir",
+            "ref:tn:codegeo": "1167",
+            "ref:tn:hasc_2": "TN.TU.SB",
+            "wikidata": "Q3483223"
+          },
+          "effectiveTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sidi El Béchir",
+            "boundary": "administrative",
+            "name": "معتمدية سيدي البشير",
+            "name:ar": "معتمدية سيدي البشير",
+            "name:fr": "Délégation Sidi El Béchir",
+            "ref:tn:codegeo": "1167",
+            "ref:tn:hasc_2": "TN.TU.SB",
+            "wikidata": "Q3483223"
+          },
+          "current": null,
+          "currentRawGroup": []
+        },
+        {
+          "id": "osm:relation:7202774",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي البشير",
+            "name:ar": "سيدي البشير",
+            "name:fr": "Sidi El Bechir",
+            "ref:tn:codegeo": "116751"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي البشير",
+            "name:ar": "سيدي البشير",
+            "name:fr": "Sidi El Bechir",
+            "ref:tn:codegeo": "116751"
+          },
+          "current": {
+            "id": "osm:relation:7202774",
+            "sourceId": "osm",
+            "name": "سيدي البشير",
+            "aliases": [
+              "Sidi Al Bachir",
+              "Sidi El Bechir"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي البشير",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير"
+            ],
+            "governorateId": 342,
+            "lat": 36.788224,
+            "lng": 10.182686,
+            "delegationId": 404,
+            "hasBoundary": true,
+            "bbox": [
+              10.176007,
+              36.781319,
+              10.190808,
+              36.795047
+            ],
+            "areaKm2": 0.7346442707361454,
+            "pickerGroupId": "osm:relation:7202774",
+            "offset": 5156276,
+            "length": 1108
+          },
+          "currentRawGroup": [
+            "osm:relation:7202774"
+          ],
+          "packedGeometrySha256": "f5a4ebb7305041d69aa6fa1c7863f886ae647c06150ff996d100483412a527e5"
+        }
+      ],
+      "completePointGroup": [
+        "osm:node:1256204446"
+      ],
+      "completeBaseGroup": [
+        "delegation:402"
+      ],
+      "allOfficialImadas": [
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1167",
+            "delegationFr": "Sidi el bechir",
+            "delegationAr": "سيدي البشير",
+            "sectorCode": "116751",
+            "sectorFr": "Sidi el bechir",
+            "sectorAr": "سيدي البشير",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4354,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 137,
+              "Nombre_de_menages_par_Secteurs.xlsx": 137
+            }
+          },
+          "id": "osm:relation:7202774",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي البشير",
+            "name:ar": "سيدي البشير",
+            "name:fr": "Sidi El Bechir",
+            "ref:tn:codegeo": "116751"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي البشير",
+            "name:ar": "سيدي البشير",
+            "name:fr": "Sidi El Bechir",
+            "ref:tn:codegeo": "116751"
+          },
+          "current": {
+            "id": "osm:relation:7202774",
+            "sourceId": "osm",
+            "name": "سيدي البشير",
+            "aliases": [
+              "Sidi Al Bachir",
+              "Sidi El Bechir"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي البشير",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير"
+            ],
+            "governorateId": 342,
+            "lat": 36.788224,
+            "lng": 10.182686,
+            "delegationId": 404,
+            "hasBoundary": true,
+            "bbox": [
+              10.176007,
+              36.781319,
+              10.190808,
+              36.795047
+            ],
+            "areaKm2": 0.7346442707361454,
+            "pickerGroupId": "osm:relation:7202774",
+            "offset": 5156276,
+            "length": 1108
+          },
+          "currentRawGroup": [
+            "osm:relation:7202774"
+          ],
+          "packedGeometrySha256": "f5a4ebb7305041d69aa6fa1c7863f886ae647c06150ff996d100483412a527e5",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1167",
+            "delegationFr": "Sidi el bechir",
+            "delegationAr": "سيدي البشير",
+            "sectorCode": "116752",
+            "sectorFr": "Sidi mansour",
+            "sectorAr": "سيدي منصور",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4388,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 138,
+              "Nombre_de_menages_par_Secteurs.xlsx": 138
+            }
+          },
+          "id": "osm:relation:7202775",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي منصور",
+            "name:ar": "سيدي منصور",
+            "name:fr": "Sidi Mansour",
+            "ref:tn:codegeo": "116752"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي منصور",
+            "name:ar": "سيدي منصور",
+            "name:fr": "Sidi Mansour",
+            "ref:tn:codegeo": "116752"
+          },
+          "current": {
+            "id": "osm:relation:7202775",
+            "sourceId": "osm",
+            "name": "سيدي منصور",
+            "aliases": [
+              "Sidi Mansour"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي البشير",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير"
+            ],
+            "governorateId": 342,
+            "lat": 36.790095,
+            "lng": 10.174914,
+            "delegationId": 402,
+            "hasBoundary": true,
+            "bbox": [
+              10.172611,
+              36.78776,
+              10.178126,
+              36.792425
+            ],
+            "areaKm2": 0.1631666608268676,
+            "pickerGroupId": "osm:relation:7202775",
+            "offset": 5157384,
+            "length": 996
+          },
+          "currentRawGroup": [
+            "osm:relation:7202775"
+          ],
+          "packedGeometrySha256": "ed3f13dd10d931e740fd10c003c7e82c3c97534003c770377fc7456d29ffa419",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1167",
+            "delegationFr": "Sidi el bechir",
+            "delegationAr": "سيدي البشير",
+            "sectorCode": "116753",
+            "sectorFr": "Maakel ezzaim",
+            "sectorAr": "معقل الزعيم",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4422,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 139,
+              "Nombre_de_menages_par_Secteurs.xlsx": 139
+            }
+          },
+          "id": "osm:relation:7202779",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "معقل الزعيم",
+            "name:ar": "معقل الزعيم",
+            "name:fr": "Maakel Ezzaim",
+            "ref:tn:codegeo": "116753"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "معقل الزعيم",
+            "name:ar": "معقل الزعيم",
+            "name:fr": "Maakel Ezzaim",
+            "ref:tn:codegeo": "116753"
+          },
+          "current": {
+            "id": "osm:relation:7202779",
+            "sourceId": "osm",
+            "name": "معقل الزعيم",
+            "aliases": [
+              "Maakel Ezzaim"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي البشير",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير"
+            ],
+            "governorateId": 342,
+            "lat": 36.790865,
+            "lng": 10.168808,
+            "delegationId": 402,
+            "hasBoundary": true,
+            "bbox": [
+              10.163028,
+              36.78801,
+              10.173706,
+              36.793699
+            ],
+            "areaKm2": 0.3035756011703486,
+            "pickerGroupId": "osm:relation:7202779",
+            "offset": 5160848,
+            "length": 916
+          },
+          "currentRawGroup": [
+            "osm:relation:7202779"
+          ],
+          "packedGeometrySha256": "04ddfd74dea859604a29a46919f4423d3fbbae29e3d898791b47a303c8d5d986",
+          "coversPointAndBase": [
+            true,
+            true
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1167",
+            "delegationFr": "Sidi el bechir",
+            "delegationAr": "سيدي البشير",
+            "sectorCode": "116754",
+            "sectorFr": "Farhat hached - ( sidi el bechir )",
+            "sectorAr": "فرحات حشاد –( سيدي البشير )",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4456,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 140,
+              "Nombre_de_menages_par_Secteurs.xlsx": 140
+            }
+          },
+          "id": "osm:relation:7202778",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فرحات حشاد",
+            "name:ar": "فرحات حشاد",
+            "name:fr": "Farhat Hached",
+            "ref:tn:codegeo": "116754"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فرحات حشاد",
+            "name:ar": "فرحات حشاد",
+            "name:fr": "Farhat Hached",
+            "ref:tn:codegeo": "116754"
+          },
+          "current": {
+            "id": "osm:relation:7202778",
+            "sourceId": "osm",
+            "name": "فرحات حشاد",
+            "aliases": [
+              "Farhat Hached"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي البشير",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير"
+            ],
+            "governorateId": 342,
+            "lat": 36.78011,
+            "lng": 10.17704,
+            "delegationId": 399,
+            "hasBoundary": true,
+            "bbox": [
+              10.17041,
+              36.774517,
+              10.183317,
+              36.785735
+            ],
+            "areaKm2": 0.694106376947429,
+            "pickerGroupId": "osm:relation:7202778",
+            "offset": 5159980,
+            "length": 868
+          },
+          "currentRawGroup": [
+            "osm:relation:7202778"
+          ],
+          "packedGeometrySha256": "35dbf220ebecd8393de7106d8287d0380a787f2319eb624e20035a49d21f5f5b",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1167",
+            "delegationFr": "Sidi el bechir",
+            "delegationAr": "سيدي البشير",
+            "sectorCode": "116755",
+            "sectorFr": "Abulkacem ech-chebbi",
+            "sectorAr": "أبو القاسم الشابي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4490,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 141,
+              "Nombre_de_menages_par_Secteurs.xlsx": 141
+            }
+          },
+          "id": "osm:relation:7202776",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أبو القاسم الشابي",
+            "name:ar": "أبو القاسم الشابي",
+            "name:fr": "Abulkacem Ech-Chebbi",
+            "ref:tn:codegeo": "116755"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أبو القاسم الشابي",
+            "name:ar": "أبو القاسم الشابي",
+            "name:fr": "Abulkacem Ech-Chebbi",
+            "ref:tn:codegeo": "116755"
+          },
+          "current": {
+            "id": "osm:relation:7202776",
+            "sourceId": "osm",
+            "name": "أبو القاسم الشابي",
+            "aliases": [
+              "Abulkacem Ech-Chebbi"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي البشير",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير"
+            ],
+            "governorateId": 342,
+            "lat": 36.787249,
+            "lng": 10.173535,
+            "delegationId": 402,
+            "hasBoundary": true,
+            "bbox": [
+              10.167084,
+              36.78409,
+              10.180264,
+              36.78998
+            ],
+            "areaKm2": 0.41179732199137137,
+            "pickerGroupId": "osm:relation:7202776",
+            "offset": 5158380,
+            "length": 1020
+          },
+          "currentRawGroup": [
+            "osm:relation:7202776"
+          ],
+          "packedGeometrySha256": "a08794c87a75a3e6f69d44555a24b536991bc2bbfde374b4acce0716707ab69f",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1167",
+            "delegationFr": "Sidi el bechir",
+            "delegationAr": "سيدي البشير",
+            "sectorCode": "116756",
+            "sectorFr": "Saida manoubia",
+            "sectorAr": "السيدة المنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4524,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 142,
+              "Nombre_de_menages_par_Secteurs.xlsx": 142
+            }
+          },
+          "id": "osm:relation:7202777",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "السيدة المنوبية",
+            "name:ar": "السيدة المنوبية",
+            "name:fr": "Saida Manoubia",
+            "ref:tn:codegeo": "116756"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "السيدة المنوبية",
+            "name:ar": "السيدة المنوبية",
+            "name:fr": "Saida Manoubia",
+            "ref:tn:codegeo": "116756"
+          },
+          "current": {
+            "id": "osm:relation:7202777",
+            "sourceId": "osm",
+            "name": "السيدة المنوبية",
+            "aliases": [
+              "Saida Manoubia",
+              "Sayda El Manoubia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي البشير",
+            "contextAliases": [
+              "Délégation Sidi El Béchir",
+              "Sidi El Béchir",
+              "معتمدية سيدي البشير"
+            ],
+            "governorateId": 342,
+            "lat": 36.780115,
+            "lng": 10.170241,
+            "delegationId": 402,
+            "hasBoundary": true,
+            "bbox": [
+              10.167638,
+              36.775109,
+              10.177166,
+              36.785107
+            ],
+            "areaKm2": 0.40491647177800516,
+            "pickerGroupId": "osm:relation:7202777",
+            "offset": 5159400,
+            "length": 580
+          },
+          "currentRawGroup": [
+            "osm:relation:7202777"
+          ],
+          "packedGeometrySha256": "5a0c95c9566db187406d97ac70abac030996f76afb350821f0b56a47edcdadc6",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        }
+      ],
+      "delegation": {
+        "id": "osm:relation:4133966",
+        "kind": "delegation",
+        "originalTags": {
+          "admin_level": "5",
+          "alt_name:fr": "Sidi El Béchir",
+          "boundary": "administrative",
+          "name": "معتمدية سيدي البشير",
+          "name:ar": "معتمدية سيدي البشير",
+          "name:fr": "Délégation Sidi El Béchir",
+          "ref:tn:codegeo": "1167",
+          "ref:tn:hasc_2": "TN.TU.SB",
+          "wikidata": "Q3483223"
+        },
+        "effectiveTags": {
+          "admin_level": "5",
+          "alt_name:fr": "Sidi El Béchir",
+          "boundary": "administrative",
+          "name": "معتمدية سيدي البشير",
+          "name:ar": "معتمدية سيدي البشير",
+          "name:fr": "Délégation Sidi El Béchir",
+          "ref:tn:codegeo": "1167",
+          "ref:tn:hasc_2": "TN.TU.SB",
+          "wikidata": "Q3483223"
+        },
+        "current": null,
+        "currentRawGroup": []
+      },
+      "delegationCoversPointAndBase": [
+        true,
+        true
+      ],
+      "relatedExistingBaseGroupingRecords": [],
+      "relatedCurationDecisions": [],
+      "liveNode": {
+        "url": "https://api.openstreetmap.org/api/0.6/node/1256204446.json",
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\montfleury-bab-souika-source-review\\node-1256204446.json",
+          "sha256": "a910f3160db880935504d0ac3a92358537501ad3d41a120d785f12a508af2cba"
+        },
+        "version": 11,
+        "timestamp": "2023-08-27T13:23:50Z",
+        "changeset": 140451568,
+        "completeTagsAndCoordinatesEqualCached": true,
+        "verifiedTls": true
+      }
+    },
+    {
+      "pointId": "osm:node:1258831465",
+      "baseId": 395,
+      "point": {
+        "id": "osm:node:1258831465",
+        "sourceId": "osm",
+        "name": "باب سويقة",
+        "aliases": [
+          "Bab Souika"
+        ],
+        "kind": "suburb",
+        "parentName": "سيدي الجبالي",
+        "contextAliases": [
+          "Bab Souika",
+          "Délégation Bab Souika",
+          "Sidi Djebali",
+          "سيدي الجبالي",
+          "معتمدية باب سويقة"
+        ],
+        "governorateId": 342,
+        "lat": 36.8052053,
+        "lng": 10.1679884,
+        "delegationId": 395,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1258831465"
+      },
+      "base": {
+        "id": 395,
+        "nomFr": "Bab Souika",
+        "nomAr": "باب سويقة",
+        "nomEn": "Bab Souika",
+        "lat": 36.8083,
+        "lng": 10.17
+      },
+      "baseCoordinateCorrection": [],
+      "androidAndDocsBaseEqual": true,
+      "distanceMetres": 387.92896593226214,
+      "normalizedSourcePeerKeys": [
+        "babsouika",
+        "بابسويقة"
+      ],
+      "originalAndEffectivePeers": [
+        {
+          "id": "osm:node:1258831465",
+          "kind": "suburb",
+          "originalTags": {
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:en": "Bab Souika",
+            "name:fr": "Bab Souika",
+            "place": "suburb"
+          },
+          "effectiveTags": {
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:en": "Bab Souika",
+            "name:fr": "Bab Souika",
+            "place": "suburb"
+          },
+          "current": {
+            "id": "osm:node:1258831465",
+            "sourceId": "osm",
+            "name": "باب سويقة",
+            "aliases": [
+              "Bab Souika"
+            ],
+            "kind": "suburb",
+            "parentName": "سيدي الجبالي",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "Sidi Djebali",
+              "سيدي الجبالي",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.8052053,
+            "lng": 10.1679884,
+            "delegationId": 395,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:1258831465"
+          },
+          "currentRawGroup": [
+            "osm:node:1258831465"
+          ]
+        },
+        {
+          "id": "osm:relation:4133433",
+          "kind": "delegation",
+          "originalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bab Souika",
+            "boundary": "administrative",
+            "name": "معتمدية باب سويقة",
+            "name:ar": "معتمدية باب سويقة",
+            "name:fr": "Délégation Bab Souika",
+            "ref:tn:codegeo": "1154",
+            "ref:tn:hasc_2": "TN.TU.BS",
+            "wikidata": "Q2877693"
+          },
+          "effectiveTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bab Souika",
+            "boundary": "administrative",
+            "name": "معتمدية باب سويقة",
+            "name:ar": "معتمدية باب سويقة",
+            "name:fr": "Délégation Bab Souika",
+            "ref:tn:codegeo": "1154",
+            "ref:tn:hasc_2": "TN.TU.BS",
+            "wikidata": "Q2877693"
+          },
+          "current": null,
+          "currentRawGroup": []
+        },
+        {
+          "id": "osm:relation:7201474",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:fr": "Bab Souika",
+            "ref:tn:codegeo": "115457"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:fr": "Bab Souika",
+            "ref:tn:codegeo": "115457"
+          },
+          "current": {
+            "id": "osm:relation:7201474",
+            "sourceId": "osm",
+            "name": "باب سويقة",
+            "aliases": [
+              "Bab Souika"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.806945,
+            "lng": 10.168962,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.167321,
+              36.805201,
+              10.171384,
+              36.808832
+            ],
+            "areaKm2": 0.07867054536765061,
+            "pickerGroupId": "delegation:395",
+            "offset": 5076640,
+            "length": 556
+          },
+          "currentRawGroup": [
+            "delegation:395",
+            "osm:relation:7201474"
+          ],
+          "packedGeometrySha256": "f1fb82dba03ed9f4d84503f91afcd4bcc770ecde553d71d860b0cbc507c86b85"
+        }
+      ],
+      "completePointGroup": [
+        "osm:node:1258831465"
+      ],
+      "completeBaseGroup": [
+        "delegation:395",
+        "osm:relation:7201474"
+      ],
+      "allOfficialImadas": [
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115451",
+            "sectorFr": "Tronja",
+            "sectorAr": "ترنجة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 886,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 29,
+              "Nombre_de_menages_par_Secteurs.xlsx": 29
+            }
+          },
+          "id": "osm:relation:7201472",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ترنجة",
+            "name:ar": "ترنجة",
+            "name:fr": "Tronja",
+            "ref:tn:codegeo": "115451"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ترنجة",
+            "name:ar": "ترنجة",
+            "name:fr": "Tronja",
+            "ref:tn:codegeo": "115451"
+          },
+          "current": {
+            "id": "osm:relation:7201472",
+            "sourceId": "osm",
+            "name": "ترنجة",
+            "aliases": [
+              "Tronja"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.804015,
+            "lng": 10.173932,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.169037,
+              36.802254,
+              10.17558,
+              36.8057
+            ],
+            "areaKm2": 0.10832280735888199,
+            "pickerGroupId": "osm:relation:7201472",
+            "offset": 5075176,
+            "length": 716
+          },
+          "currentRawGroup": [
+            "osm:relation:7201472"
+          ],
+          "packedGeometrySha256": "0ff8e946d9e2b583a3ce2def37ba91cc74583c5f381ba1271af51e4e9f3fb81e",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115452",
+            "sectorFr": "Bab el khadra",
+            "sectorAr": "باب الخضراء",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 920,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 30,
+              "Nombre_de_menages_par_Secteurs.xlsx": 30
+            }
+          },
+          "id": "osm:relation:7201470",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب الخضراء",
+            "name:ar": "باب الخضراء",
+            "name:fr": "Bab El Khadra",
+            "ref:tn:codegeo": "115452"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب الخضراء",
+            "name:ar": "باب الخضراء",
+            "name:fr": "Bab El Khadra",
+            "ref:tn:codegeo": "115452"
+          },
+          "current": {
+            "id": "osm:relation:7201470",
+            "sourceId": "osm",
+            "name": "باب الخضراء",
+            "aliases": [
+              "Bab El Khadra"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.81039,
+            "lng": 10.171332,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.168344,
+              36.80736,
+              10.174532,
+              36.813119
+            ],
+            "areaKm2": 0.18003380376700187,
+            "pickerGroupId": "osm:relation:7201470",
+            "offset": 5074480,
+            "length": 420
+          },
+          "currentRawGroup": [
+            "osm:relation:7201470"
+          ],
+          "packedGeometrySha256": "dd18039beb0c5ce7d00ec962384e8a91c459bd05d206405343d2f494d8717fcc",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115453",
+            "sectorFr": "Bab saadoun",
+            "sectorAr": "باب سعدون",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 954,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 31,
+              "Nombre_de_menages_par_Secteurs.xlsx": 31
+            }
+          },
+          "id": "osm:relation:7201478",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سعدون",
+            "name:ar": "باب سعدون",
+            "name:fr": "Bab Saadoun",
+            "ref:tn:codegeo": "115453"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سعدون",
+            "name:ar": "باب سعدون",
+            "name:fr": "Bab Saadoun",
+            "ref:tn:codegeo": "115453"
+          },
+          "current": {
+            "id": "osm:relation:7201478",
+            "sourceId": "osm",
+            "name": "باب سعدون",
+            "aliases": [
+              "Bab Saadoun"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.80636,
+            "lng": 10.162991,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.159208,
+              36.80421,
+              10.165249,
+              36.8085
+            ],
+            "areaKm2": 0.09742033379533174,
+            "pickerGroupId": "osm:relation:7201478",
+            "offset": 5079472,
+            "length": 1412
+          },
+          "currentRawGroup": [
+            "osm:relation:7201478"
+          ],
+          "packedGeometrySha256": "5d742352e2e5bda19b22c30e1698ea2174eb140cecdc88a51325b0b6bcb47fb0",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115454",
+            "sectorFr": "Borj zouara",
+            "sectorAr": "برج زوارة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 988,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 32,
+              "Nombre_de_menages_par_Secteurs.xlsx": 32
+            }
+          },
+          "id": "osm:relation:7201476",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "برج زوارة",
+            "name:ar": "برج زوارة",
+            "name:fr": "Borj Zouara",
+            "ref:tn:codegeo": "115454"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "برج زوارة",
+            "name:ar": "برج زوارة",
+            "name:fr": "Borj Zouara",
+            "ref:tn:codegeo": "115454"
+          },
+          "current": {
+            "id": "osm:relation:7201476",
+            "sourceId": "osm",
+            "name": "برج زوارة",
+            "aliases": [
+              "Borj Zouara"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.804285,
+            "lng": 10.156628,
+            "delegationId": 405,
+            "hasBoundary": true,
+            "bbox": [
+              10.148721,
+              36.79893,
+              10.163759,
+              36.809706
+            ],
+            "areaKm2": 1.0789045703050397,
+            "pickerGroupId": "osm:relation:7201476",
+            "offset": 5078048,
+            "length": 980
+          },
+          "currentRawGroup": [
+            "osm:relation:7201476",
+            "osm:way:180268046"
+          ],
+          "packedGeometrySha256": "61928f1307fa555f163504d85988d9da0c431d69786bfc94ab74997307af4003",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115455",
+            "sectorFr": "Bab el assel",
+            "sectorAr": "باب العسل",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1022,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 33,
+              "Nombre_de_menages_par_Secteurs.xlsx": 33
+            }
+          },
+          "id": "osm:relation:7201469",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب العسل",
+            "name:ar": "باب العسل",
+            "name:fr": "Bab El Assel",
+            "ref:tn:codegeo": "115455"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب العسل",
+            "name:ar": "باب العسل",
+            "name:fr": "Bab El Assel",
+            "ref:tn:codegeo": "115455"
+          },
+          "current": {
+            "id": "osm:relation:7201469",
+            "sourceId": "osm",
+            "name": "باب العسل",
+            "aliases": [
+              "Bab El Assel",
+              "Bab Laassal",
+              "באב לעסאל"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.81138,
+            "lng": 10.167046,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.165482,
+              36.808925,
+              10.17339,
+              36.813704
+            ],
+            "areaKm2": 0.1808309590801098,
+            "pickerGroupId": "osm:relation:7201469",
+            "offset": 5073964,
+            "length": 516
+          },
+          "currentRawGroup": [
+            "osm:relation:7201469"
+          ],
+          "packedGeometrySha256": "afb7284a4f02a039fe4da5658bdfb93d54f3cf12b886a1cb5c42e072d97104f1",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115456",
+            "sectorFr": "El halfaouine",
+            "sectorAr": "الحلفاوين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1056,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 34,
+              "Nombre_de_menages_par_Secteurs.xlsx": 34
+            }
+          },
+          "id": "osm:relation:7201468",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحلفاوين",
+            "name:ar": "الحلفاوين",
+            "name:fr": "El Halfaouine",
+            "ref:tn:codegeo": "115456"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحلفاوين",
+            "name:ar": "الحلفاوين",
+            "name:fr": "El Halfaouine",
+            "ref:tn:codegeo": "115456"
+          },
+          "current": {
+            "id": "osm:relation:7201468",
+            "sourceId": "osm",
+            "name": "الحلفاوين",
+            "aliases": [
+              "El Halfaouine",
+              "Halfaouine"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.80739,
+            "lng": 10.165629,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.163291,
+              36.80532,
+              10.170699,
+              36.809409
+            ],
+            "areaKm2": 0.1243226673398442,
+            "pickerGroupId": "osm:relation:7201468",
+            "offset": 5072792,
+            "length": 1172
+          },
+          "currentRawGroup": [
+            "osm:relation:7201468"
+          ],
+          "packedGeometrySha256": "c6cbc22906136454b30cdc404f4d1510842d66cfe9479a67c704bed79459f21e",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115457",
+            "sectorFr": "Bab souika",
+            "sectorAr": "باب سويقة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1090,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 35,
+              "Nombre_de_menages_par_Secteurs.xlsx": 35
+            }
+          },
+          "id": "osm:relation:7201474",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:fr": "Bab Souika",
+            "ref:tn:codegeo": "115457"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سويقة",
+            "name:ar": "باب سويقة",
+            "name:fr": "Bab Souika",
+            "ref:tn:codegeo": "115457"
+          },
+          "current": {
+            "id": "osm:relation:7201474",
+            "sourceId": "osm",
+            "name": "باب سويقة",
+            "aliases": [
+              "Bab Souika"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.806945,
+            "lng": 10.168962,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.167321,
+              36.805201,
+              10.171384,
+              36.808832
+            ],
+            "areaKm2": 0.07867054536765061,
+            "pickerGroupId": "delegation:395",
+            "offset": 5076640,
+            "length": 556
+          },
+          "currentRawGroup": [
+            "delegation:395",
+            "osm:relation:7201474"
+          ],
+          "packedGeometrySha256": "f1fb82dba03ed9f4d84503f91afcd4bcc770ecde553d71d860b0cbc507c86b85",
+          "coversPointAndBase": [
+            false,
+            true
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115458",
+            "sectorFr": "Bab sidi abdessalem",
+            "sectorAr": "باب سيدي عبد السلام",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1124,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 36,
+              "Nombre_de_menages_par_Secteurs.xlsx": 36
+            }
+          },
+          "id": "osm:relation:7201471",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سيدي عبد السلام",
+            "name:ar": "باب سيدي عبد السلام",
+            "name:fr": "Bab Sidi Abdessalem",
+            "ref:tn:codegeo": "115458"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "باب سيدي عبد السلام",
+            "name:ar": "باب سيدي عبد السلام",
+            "name:fr": "Bab Sidi Abdessalem",
+            "ref:tn:codegeo": "115458"
+          },
+          "current": {
+            "id": "osm:relation:7201471",
+            "sourceId": "osm",
+            "name": "باب سيدي عبد السلام",
+            "aliases": [
+              "Bab Sidi Abdessalem"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.80936,
+            "lng": 10.164873,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.162744,
+              36.80749,
+              10.166755,
+              36.811255
+            ],
+            "areaKm2": 0.07699635484644876,
+            "pickerGroupId": "osm:relation:7201471",
+            "offset": 5074900,
+            "length": 276
+          },
+          "currentRawGroup": [
+            "osm:relation:7201471"
+          ],
+          "packedGeometrySha256": "5b8351689cffc1c657030093df88ab82ca1de255361e363cc360ffd91cc6d3c9",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115459",
+            "sectorFr": "Zaouiet el bekria",
+            "sectorAr": "الزاوية البكرية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1158,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 37,
+              "Nombre_de_menages_par_Secteurs.xlsx": 37
+            }
+          },
+          "id": "osm:relation:7201477",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزاوية البكرية",
+            "name:ar": "الزاوية البكرية",
+            "name:fr": "Zaouiet El Bekria",
+            "ref:tn:codegeo": "115459"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزاوية البكرية",
+            "name:ar": "الزاوية البكرية",
+            "name:fr": "Zaouiet El Bekria",
+            "ref:tn:codegeo": "115459"
+          },
+          "current": {
+            "id": "osm:relation:7201477",
+            "sourceId": "osm",
+            "name": "الزاوية البكرية",
+            "aliases": [
+              "Zaouiet El Bekria"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.808355,
+            "lng": 10.161482,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.159066,
+              36.8069,
+              10.164074,
+              36.809809
+            ],
+            "areaKm2": 0.07445646418621639,
+            "pickerGroupId": "osm:relation:7201477",
+            "offset": 5079028,
+            "length": 444
+          },
+          "currentRawGroup": [
+            "osm:relation:7201477"
+          ],
+          "packedGeometrySha256": "0ac045bee1367315dbd70c6af4eacf451c8d32459958160ed99ce3b26e537eb2",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115460",
+            "sectorFr": "Hammam el rmimi",
+            "sectorAr": "حمام الرميمي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1192,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 38,
+              "Nombre_de_menages_par_Secteurs.xlsx": 38
+            }
+          },
+          "id": "osm:relation:7201473",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حمام الرميمي",
+            "name:ar": "حمام الرميمي",
+            "name:fr": "Hammam El Rmimi",
+            "ref:tn:codegeo": "115460"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حمام الرميمي",
+            "name:ar": "حمام الرميمي",
+            "name:fr": "Hammam El Rmimi",
+            "ref:tn:codegeo": "115460"
+          },
+          "current": {
+            "id": "osm:relation:7201473",
+            "sourceId": "osm",
+            "name": "حمام الرميمي",
+            "aliases": [
+              "Hammam El Rmimi"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.806945,
+            "lng": 10.172509,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.169686,
+              36.80548,
+              10.175084,
+              36.808278
+            ],
+            "areaKm2": 0.09484700050520663,
+            "pickerGroupId": "osm:relation:7201473",
+            "offset": 5075892,
+            "length": 748
+          },
+          "currentRawGroup": [
+            "osm:relation:7201473"
+          ],
+          "packedGeometrySha256": "f59d4373d9ae4c12bda14e547ada27d5ace0e5cedd514e2b27f7b8513fca0b2a",
+          "coversPointAndBase": [
+            false,
+            false
+          ]
+        },
+        {
+          "official": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1154",
+            "delegationFr": "Bab souika",
+            "delegationAr": "باب سويقة",
+            "sectorCode": "115461",
+            "sectorFr": "Sidi djebali",
+            "sectorAr": "سيدي الجبالي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1226,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 39,
+              "Nombre_de_menages_par_Secteurs.xlsx": 39
+            }
+          },
+          "id": "osm:relation:7201475",
+          "kind": "sector",
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الجبالي",
+            "name:ar": "سيدي الجبالي",
+            "name:fr": "Sidi Djebali",
+            "ref:tn:codegeo": "115461"
+          },
+          "effectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الجبالي",
+            "name:ar": "سيدي الجبالي",
+            "name:fr": "Sidi Djebali",
+            "ref:tn:codegeo": "115461"
+          },
+          "current": {
+            "id": "osm:relation:7201475",
+            "sourceId": "osm",
+            "name": "سيدي الجبالي",
+            "aliases": [
+              "Sidi Djebali"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية باب سويقة",
+            "contextAliases": [
+              "Bab Souika",
+              "Délégation Bab Souika",
+              "معتمدية باب سويقة"
+            ],
+            "governorateId": 342,
+            "lat": 36.804434,
+            "lng": 10.165552,
+            "delegationId": 395,
+            "hasBoundary": true,
+            "bbox": [
+              10.162848,
+              36.802669,
+              10.16804,
+              36.80625
+            ],
+            "areaKm2": 0.08879844032162756,
+            "pickerGroupId": "osm:relation:7201475",
+            "offset": 5077196,
+            "length": 852
+          },
+          "currentRawGroup": [
+            "osm:relation:7201475"
+          ],
+          "packedGeometrySha256": "42c532a50f1b79af85185a0c6b34a351b43ef7e4e170bc7842d3f4afe5924b7d",
+          "coversPointAndBase": [
+            true,
+            false
+          ]
+        }
+      ],
+      "delegation": {
+        "id": "osm:relation:4133433",
+        "kind": "delegation",
+        "originalTags": {
+          "admin_level": "5",
+          "alt_name:fr": "Bab Souika",
+          "boundary": "administrative",
+          "name": "معتمدية باب سويقة",
+          "name:ar": "معتمدية باب سويقة",
+          "name:fr": "Délégation Bab Souika",
+          "ref:tn:codegeo": "1154",
+          "ref:tn:hasc_2": "TN.TU.BS",
+          "wikidata": "Q2877693"
+        },
+        "effectiveTags": {
+          "admin_level": "5",
+          "alt_name:fr": "Bab Souika",
+          "boundary": "administrative",
+          "name": "معتمدية باب سويقة",
+          "name:ar": "معتمدية باب سويقة",
+          "name:fr": "Délégation Bab Souika",
+          "ref:tn:codegeo": "1154",
+          "ref:tn:hasc_2": "TN.TU.BS",
+          "wikidata": "Q2877693"
+        },
+        "current": null,
+        "currentRawGroup": []
+      },
+      "delegationCoversPointAndBase": [
+        true,
+        true
+      ],
+      "relatedExistingBaseGroupingRecords": [
+        {
+          "id": "osm:relation:7201474",
+          "targetDelegationId": 395,
+          "expectedGovernorateId": 342,
+          "expectedBase": {
+            "nomAr": "باب سويقة",
+            "lat": 36.8083,
+            "lng": 10.17
+          },
+          "expectedExistingMemberIds": [
+            "osm:relation:7201474"
+          ],
+          "expectedTargetMemberIds": [
+            "delegation:395"
+          ],
+          "members": [
+            {
+              "id": "osm:relation:7201474",
+              "expectedKind": "sector",
+              "expectedSourceId": "osm",
+              "expectedName": "باب سويقة",
+              "expectedParentName": "معتمدية باب سويقة",
+              "expectedDelegationId": 395,
+              "expectedLat": 36.806945,
+              "expectedLng": 10.168962,
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "باب سويقة",
+                "name:ar": "باب سويقة",
+                "name:fr": "Bab Souika",
+                "ref:tn:codegeo": "115457"
+              },
+              "originalGeometrySha256": "4b808635be096e6d9e6782835fe43d8527efe7aa647ea04b14bef5c912b3eb44",
+              "packedGeometrySha256": "f1fb82dba03ed9f4d84503f91afcd4bcc770ecde553d71d860b0cbc507c86b85"
+            }
+          ],
+          "identityEvidence": [
+            {
+              "method": "current_coded_sector",
+              "id": "osm:relation:7201474",
+              "code": "115457",
+              "currentOfficialRecord": {
+                "governorateCode": "11",
+                "governorateFr": "Tunis",
+                "governorateAr": "تونس",
+                "delegationCode": "1154",
+                "delegationFr": "Bab souika",
+                "delegationAr": "باب سويقة",
+                "sectorCode": "115457",
+                "sectorFr": "Bab souika",
+                "sectorAr": "باب سويقة",
+                "sourceRows": {
+                  "Population_Secteur_Age_Sexe_Dynamique.xlsx": 1090,
+                  "Nombre_de_Logements_par_Secteurs.xlsx": 35,
+                  "Nombre_de_menages_par_Secteurs.xlsx": 35
+                }
+              },
+              "accepted": true,
+              "reasons": [],
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "باب سويقة",
+                "name:ar": "باب سويقة",
+                "name:fr": "Bab Souika",
+                "ref:tn:codegeo": "115457"
+              },
+              "effectiveOriginalGeometrySha256": "4b808635be096e6d9e6782835fe43d8527efe7aa647ea04b14bef5c912b3eb44"
+            },
+            {
+              "method": "current_coded_namesake_administrative_parent",
+              "id": "osm:relation:4133433",
+              "code": "1154",
+              "name": "معتمدية باب سويقة",
+              "accepted": true,
+              "reasons": [],
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Bab Souika",
+                "boundary": "administrative",
+                "name": "معتمدية باب سويقة",
+                "name:ar": "معتمدية باب سويقة",
+                "name:fr": "Délégation Bab Souika",
+                "ref:tn:codegeo": "1154",
+                "ref:tn:hasc_2": "TN.TU.BS",
+                "wikidata": "Q2877693"
+              },
+              "effectiveOriginalGeometrySha256": "80195b48ecbc41cc1135f3240fd91aa4a05ad6448ad01508f9a0510a8d2801d3",
+              "currentOfficialRecord": {
+                "governorateCode": "11",
+                "governorateAr": "تونس",
+                "governorateFr": "Tunis",
+                "delegationCode": "1154",
+                "delegationAr": "باب سويقة",
+                "delegationFr": "Bab souika"
+              }
+            }
+          ]
+        }
+      ],
+      "relatedCurationDecisions": [],
+      "liveNode": {
+        "url": "https://api.openstreetmap.org/api/0.6/node/1258831465.json",
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\montfleury-bab-souika-source-review\\node-1258831465.json",
+          "sha256": "a987aa39f7dceebbf03847beb11ed920858aebc52a772b6fd3400d67d68e81b4"
+        },
+        "version": 12,
+        "timestamp": "2021-02-03T23:54:37Z",
+        "changeset": 98670574,
+        "completeTagsAndCoordinatesEqualCached": true,
+        "verifiedTls": true
+      }
+    }
+  ],
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "dbc3462e2f1e73df3630ffcb43a95089d3416c5035828005149b453930b77b14"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "bc66b1e1affd0d0454da476717ae79cd57277365935a46ad911ea28261fb73e4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ]
+}

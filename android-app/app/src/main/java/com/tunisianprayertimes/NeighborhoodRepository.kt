@@ -24,13 +24,16 @@ internal fun parseNeighborhoodLocalities(json: JSONObject): List<Locality> {
         val row = records.getJSONObject(index)
         val aliases = row.getJSONArray("aliases")
         val names = List(aliases.length()) { aliases.getString(it) }
+        val contextAliases = row.optJSONArray("contextAliases")
+        val contextNames = List(contextAliases?.length() ?: 0) { contextAliases!!.getString(it) }
         Locality(
             id = row.getString("id"), name = row.getString("name"),
             parentName = row.getString("parentName"), governorateId = row.getInt("governorateId"),
             delegationId = row.getInt("delegationId"),
-            searchText = normalizeLocalitySearch((names + row.getString("name") + row.getString("parentName")).joinToString(" ")),
+            searchText = normalizeLocalitySearch((names + contextNames + row.getString("name") + row.getString("parentName")).joinToString(" ")),
             lat = row.getDouble("lat"), lng = row.getDouble("lng"),
             hasBoundary = row.getBoolean("hasBoundary"), kind = row.getString("kind"),
+            pickerGroupId = row.optString("pickerGroupId").takeIf { it.isNotBlank() },
         ).also { locality ->
             require(locality.id.isNotBlank() && locality.name.isNotBlank())
             require(validCoordinates(locality.lat!!, locality.lng!!))

@@ -44,6 +44,7 @@ class PrayerWakeRepository(private val context: Context) {
             "Wake alarms are only supported for supported prayer rows."
         }
 
+        var awakeCheckEventIdsToCancel = emptySet<String>()
         context.prayerWakeDataStore.edit { preferences ->
             val current = decodePrayerWakeStore(preferences[prayerWakeStoreKey])
             val resolvedId = config.id.takeIf { id -> id.isNotBlank() }
@@ -51,9 +52,18 @@ class PrayerWakeRepository(private val context: Context) {
                 ?: generatedAlarmId(config.prayer, current.alarms.size)
 
             val updatedConfig = config.copy(id = resolvedId)
+            if (!updatedConfig.enabled) {
+                awakeCheckEventIdsToCancel = buildSet {
+                    add(wakeMainEventId(resolvedId))
+                    val subAlarms = current.alarmFor(resolvedId)?.subAlarms.orEmpty() + updatedConfig.subAlarms
+                    subAlarms.forEach { subAlarm -> add(wakeSubAlarmEventId(resolvedId, subAlarm.id)) }
+                }
+            }
             val updated = current.alarms.replaceOrAppend(updatedConfig)
             preferences[prayerWakeStoreKey] = encodePrayerWakeStore(PrayerWakeStore(alarms = updated))
         }
+        // Awake checks use separate PendingIntents from the regular wake alarm schedule.
+        awakeCheckEventIdsToCancel.forEach { eventId -> AwakeCheckScheduler.cancel(context, eventId) }
     }
 
     suspend fun replaceWakeConfigs(configs: Collection<PrayerWakeConfig>) {

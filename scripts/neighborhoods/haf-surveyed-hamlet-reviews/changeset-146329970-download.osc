@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osmChange version="0.6" generator="openstreetmap-cgimap 2.1.0 (244702 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <create>
+  <node id="11522289870" visible="true" version="1" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922759" lon="10.2297856">
+   <tag k="name" v="Ouled Hamed"/>
+   <tag k="name:aeb" v="حاف اولاد حامد"/>
+   <tag k="place" v="hamlet"/>
+  </node>
+ </create>
+ <create>
+  <node id="11522289871" visible="true" version="1" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7953577" lon="10.2211249"/>
+ </create>
+ <create>
+  <node id="11522289872" visible="true" version="1" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955228" lon="10.2208694"/>
+ </create>
+ <modify>
+  <node id="5624967213" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7920774" lon="10.2206540">
+   <tag k="natural" v="peak"/>
+  </node>
+ </modify>
+ <delete>
+  <node id="5624967214" visible="false" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703"/>
+ </delete>
+ <modify>
+  <node id="11026082492" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7914118" lon="10.2288943"/>
+ </modify>
+ <modify>
+  <node id="11026082493" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7913418" lon="10.2289221"/>
+ </modify>
+ <modify>
+  <node id="11026082494" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7914471" lon="10.2291938"/>
+ </modify>
+ <modify>
+  <node id="11026082495" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7915726" lon="10.2293607"/>
+ </modify>
+ <modify>
+  <node id="11026082496" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7917585" lon="10.2295122"/>
+ </modify>
+ <modify>
+  <node id="11026082497" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7919269" lon="10.2296081"/>
+ </modify>
+ <modify>
+  <node id="11026082498" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7921066" lon="10.2297573"/>
+ </modify>
+ <modify>
+  <node id="11026082499" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7921242" lon="10.2297607"/>
+ </modify>
+ <modify>
+  <node id="11026082500" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7921841" lon="10.2300165"/>
+ </modify>
+ <modify>
+  <node id="11026082501" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922543" lon="10.2300426"/>
+ </modify>
+ <modify>
+  <node id="11026082502" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922704" lon="10.2299956"/>
+ </modify>
+ <modify>
+  <node id="11026082503" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922236" lon="10.2299591"/>
+ </modify>
+ <modify>
+  <node id="11026082504" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922134" lon="10.2298808"/>
+ </modify>
+ <modify>
+  <node id="11026092205" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922002" lon="10.2297886"/>
+ </modify>
+ <modify>
+  <node id="11026092206" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922045" lon="10.2297538"/>
+ </modify>
+ <modify>
+  <node id="11026092207" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922295" lon="10.2297308"/>
+ </modify>
+ <modify>
+  <node id="11026092208" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922719" lon="10.2296666"/>
+ </modify>
+ <modify>
+  <node id="11026092209" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7923184" lon="10.2295782"/>
+ </modify>
+ <modify>
+  <node id="11026092210" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7923258" lon="10.2295001"/>
+ </modify>
+ <modify>
+  <node id="11026092211" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7923506" lon="10.2293680"/>
+ </modify>
+ <modify>
+  <node id="11026092212" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7924790" lon="10.2290411"/>
+ </modify>
+ <modify>
+  <node id="11026092213" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7924334" lon="10.2289943"/>
+ </modify>
+ <modify>
+  <node id="11026092214" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7923579" lon="10.2291172"/>
+ </modify>
+ <modify>
+  <node id="11026092215" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7923259" lon="10.2291938"/>
+ </modify>
+ <modify>
+  <node id="11026092216" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7923142" lon="10.2292737"/>
+ </modify>
+ <modify>
+  <node id="11026092217" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922608" lon="10.2294562"/>
+ </modify>
+ <modify>
+  <node id="11026092218" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922488" lon="10.2295532"/>
+ </modify>
+ <modify>
+  <node id="11026092219" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7922008" lon="10.2296609"/>
+ </modify>
+ <modify>
+  <node id="11026092220" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7921841" lon="10.2296685"/>
+ </modify>
+ <modify>
+  <node id="11026092221" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7921198" lon="10.2296442"/>
+ </modify>
+ <modify>
+  <node id="11026092222" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7919397" lon="10.2295067"/>
+ </modify>
+ <modify>
+  <node id="11026092223" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7918665" lon="10.2294357"/>
+ </modify>
+ <modify>
+  <node id="11026092224" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7916664" lon="10.2293312"/>
+ </modify>
+ <modify>
+  <node id="11026092225" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7916224" lon="10.2292861"/>
+ </modify>
+ <modify>
+  <node id="11026092226" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7915769" lon="10.2292421"/>
+ </modify>
+ <modify>
+  <node id="11026092227" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7915228" lon="10.2291258"/>
+ </modify>
+ <modify>
+  <node id="11026092228" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7914512" lon="10.2290230"/>
+ </modify>
+ <modify>
+  <node id="11026092229" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7914398" lon="10.2289623"/>
+ </modify>
+ <modify>
+  <node id="11026092230" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7931034" lon="10.2291452"/>
+ </modify>
+ <modify>
+  <node id="11026092231" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7930683" lon="10.2292095"/>
+ </modify>
+ <modify>
+  <node id="11026092232" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7931575" lon="10.2292983"/>
+ </modify>
+ <modify>
+  <node id="11026092233" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7931253" lon="10.2293835"/>
+ </modify>
+ <modify>
+  <node id="11026092234" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7932145" lon="10.2294792"/>
+ </modify>
+ <modify>
+  <node id="11026092235" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7933096" lon="10.2295192"/>
+ </modify>
+ <modify>
+  <node id="11026092236" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7933608" lon="10.2295244"/>
+ </modify>
+ <modify>
+  <node id="11026092237" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7934076" lon="10.2294914"/>
+ </modify>
+ <modify>
+  <node id="11026092238" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7934397" lon="10.2294409"/>
+ </modify>
+ <modify>
+  <node id="11026092239" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7934324" lon="10.2293748"/>
+ </modify>
+ <modify>
+  <node id="11026092240" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7934193" lon="10.2293487"/>
+ </modify>
+ <modify>
+  <node id="11026092241" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7933345" lon="10.2293035"/>
+ </modify>
+ <modify>
+  <node id="11026092242" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7932233" lon="10.2292287"/>
+ </modify>
+ <modify>
+  <node id="11026092243" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7951432" lon="10.2203679"/>
+ </modify>
+ <modify>
+  <node id="11026092244" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7952409" lon="10.2204445"/>
+ </modify>
+ <modify>
+  <node id="11026092245" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955653" lon="10.2206081"/>
+ </modify>
+ <modify>
+  <node id="11026092246" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7957438" lon="10.2208235"/>
+ </modify>
+ <modify>
+  <node id="11026092247" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7957639" lon="10.2210691"/>
+ </modify>
+ <modify>
+  <node id="11026092248" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7956319" lon="10.2212500"/>
+ </modify>
+ <modify>
+  <node id="11026092249" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7954369" lon="10.2213558"/>
+ </modify>
+ <modify>
+  <node id="11026092250" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7951325" lon="10.2213365"/>
+ </modify>
+ <modify>
+  <node id="11026092251" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7949682" lon="10.2212706"/>
+ </modify>
+ <modify>
+  <node id="11026092252" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7950643" lon="10.2210795"/>
+ </modify>
+ <modify>
+  <node id="11026092253" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7954560" lon="10.2211272"/>
+ </modify>
+ <modify>
+  <node id="11026092254" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955052" lon="10.2211370"/>
+ </modify>
+ <modify>
+  <node id="11026092255" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955467" lon="10.2211078"/>
+ </modify>
+ <modify>
+  <node id="11026092256" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955793" lon="10.2210784"/>
+ </modify>
+ <modify>
+  <node id="11026092257" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955782" lon="10.2209387"/>
+ </modify>
+ <modify>
+  <node id="11026092258" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7954634" lon="10.2208209"/>
+ </modify>
+ <modify>
+  <node id="11026092259" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7951679" lon="10.2206923"/>
+ </modify>
+ <modify>
+  <node id="11026092260" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7950293" lon="10.2206080"/>
+ </modify>
+ <delete>
+  <node id="11026092261" visible="false" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703"/>
+ </delete>
+ <modify>
+  <node id="11026092262" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955960" lon="10.2210096"/>
+ </modify>
+ <modify>
+  <node id="11026092263" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7952582" lon="10.2213662"/>
+ </modify>
+ <modify>
+  <node id="11026092264" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7955310" lon="10.2213204"/>
+ </modify>
+ <modify>
+  <node id="11026092265" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7956911" lon="10.2211979"/>
+ </modify>
+ <modify>
+  <node id="11026092266" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7957653" lon="10.2209419"/>
+ </modify>
+ <modify>
+  <node id="11026092267" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7956830" lon="10.2207224"/>
+ </modify>
+ <modify>
+  <way id="1187366129" visible="true" version="2" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11026082492"/>
+   <nd ref="11026082493"/>
+   <nd ref="11026082494"/>
+   <nd ref="11026082495"/>
+   <nd ref="11026082496"/>
+   <nd ref="11026082497"/>
+   <nd ref="11026082498"/>
+   <nd ref="11026082499"/>
+   <nd ref="11026082500"/>
+   <nd ref="11026082501"/>
+   <nd ref="11026082502"/>
+   <nd ref="11026082503"/>
+   <nd ref="11026082504"/>
+   <nd ref="11026092205"/>
+   <nd ref="11026092206"/>
+   <nd ref="11026092207"/>
+   <nd ref="11026092208"/>
+   <nd ref="11026092209"/>
+   <nd ref="11026092210"/>
+   <nd ref="11026092211"/>
+   <nd ref="11026092212"/>
+   <nd ref="11026092213"/>
+   <nd ref="11026092214"/>
+   <nd ref="11026092215"/>
+   <nd ref="11026092216"/>
+   <nd ref="11026092217"/>
+   <nd ref="11026092218"/>
+   <nd ref="11026092219"/>
+   <nd ref="11026092220"/>
+   <nd ref="11026092221"/>
+   <nd ref="11026092222"/>
+   <nd ref="11026092223"/>
+   <nd ref="11026092224"/>
+   <nd ref="11026092225"/>
+   <nd ref="11026092226"/>
+   <nd ref="11026092227"/>
+   <nd ref="11026092228"/>
+   <nd ref="11026092229"/>
+   <nd ref="11026082492"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="Ouled Hamed"/>
+   <tag k="name:aeb" v="حاف اولاد حامد"/>
+   <tag k="residential" v="osada"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="5624967215" visible="true" version="3" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703" lat="32.7941291" lon="10.2194347">
+   <tag k="natural" v="peak"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="1187366131" visible="true" version="3" changeset="146329970" timestamp="2024-01-16T16:19:24Z" user="Petr Jenč" uid="15169703">
+   <nd ref="11026092243"/>
+   <nd ref="11026092244"/>
+   <nd ref="11026092245"/>
+   <nd ref="11026092267"/>
+   <nd ref="11026092246"/>
+   <nd ref="11026092266"/>
+   <nd ref="11026092247"/>
+   <nd ref="11026092265"/>
+   <nd ref="11026092248"/>
+   <nd ref="11026092264"/>
+   <nd ref="11026092249"/>
+   <nd ref="11026092263"/>
+   <nd ref="11026092250"/>
+   <nd ref="11026092251"/>
+   <nd ref="11026092252"/>
+   <nd ref="11522289871"/>
+   <nd ref="11026092253"/>
+   <nd ref="11026092254"/>
+   <nd ref="11026092255"/>
+   <nd ref="11026092256"/>
+   <nd ref="11026092262"/>
+   <nd ref="11026092257"/>
+   <nd ref="11522289872"/>
+   <nd ref="11026092258"/>
+   <nd ref="11026092259"/>
+   <nd ref="11026092260"/>
+   <nd ref="11026092243"/>
+   <tag k="access" v="yes"/>
+   <tag k="historic" v="ruins"/>
+   <tag k="name" v="Ksar Sidi Hallel"/>
+   <tag k="ruins" v="building"/>
+  </way>
+ </modify>
+</osmChange>

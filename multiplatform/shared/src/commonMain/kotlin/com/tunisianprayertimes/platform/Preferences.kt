@@ -66,6 +66,10 @@ expect object Preferences {
     fun getRamadanOverrideJson(): String?
     fun setRamadanOverrideJson(json: String?)
 
+    // Historical and future official-date records, keyed by their Hijri year.
+    fun getOfficialIslamicDatesJson(hijriYear: Int): String?
+    fun setOfficialIslamicDatesJson(hijriYear: Int, json: String)
+
     // Config bundle
     fun getConfig(prayer: Prayer): PrayerSilenceConfig
 }

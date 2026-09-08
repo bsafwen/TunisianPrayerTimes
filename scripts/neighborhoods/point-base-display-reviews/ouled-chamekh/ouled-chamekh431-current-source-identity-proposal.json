@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "decision": "SUPPORT_EXACT_SAME_TOWN_DISPLAY_ASSOCIATION_PRESERVE_BOTH_COORDINATES",
+  "createdAt": "2026-09-08T02:04:50.815187+00:00",
+  "baselineMetadataSha256": "689cbf3993f7fa01297dc1ee2f2f70f46d75fa8ff41e901441de0a051a3adb38",
+  "baselineInputPins": {
+    "android-app\\app\\src\\main\\assets\\neighborhoods.json": "689cbf3993f7fa01297dc1ee2f2f70f46d75fa8ff41e901441de0a051a3adb38",
+    "android-app\\app\\src\\main\\assets\\gouvernorats.json": "20cdb11ccc5eb4f4eb07198b222a16bd1f5493224487185e6f3a6cf593857084",
+    "scripts\\neighborhoods\\prayer-source-coordinates.json": "726b1c6480a0d6c1a46f11bfd5e2fd8b39de2f52badd979f2089e0e8b9f8926b"
+  },
+  "sourceId": 431,
+  "rawNodeId": "osm:node:1127119919",
+  "sourceEvidence": {
+    "municipalTownPage": {
+      "file": "work\\ouled-chamekh431-source-review\\alternate-official-downloads\\municipal-location-http.html",
+      "sha256": "e6e53caf25616af5eab6f75b98d2caed085ebfd11f377a297a7b53a6e7c7fcae",
+      "url": "http://www.commune-ouledchamekh.gov.tn/ar/maw9a3.php",
+      "exactShortQuote": "مدينة أولاد الشامخ إحدى مدن الجمهورية التونسية، تابعة لولاية المهدية.",
+      "relevance": "Explicitly identifies a city named أولاد الشامخ in Mahdia; supplies town identity, not a town polygon or reference centroid."
+    },
+    "socialMinistryLocalUnit": {
+      "file": "work\\ouled-chamekh431-source-review\\social-local-unit.html",
+      "sha256": "c70c63a82aaf44c7d47137aa5946ea8b021ea97762faf4a40a841c83dd7d5367",
+      "url": "https://www.social.gov.tn/ar/%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9-%D9%84%D9%84%D9%86%D9%87%D9%88%D8%B6-%D8%A7%D9%84%D8%A5%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%A8%D8%A3%D9%88%D9%84%D8%A7%D8%AF-%D8%A7%D9%84%D8%B4%D8%A7%D9%85%D8%AE-%D8%A7%D9%84%D9%85%D9%87%D8%AF%D9%8A%D8%A9",
+      "address": "المنطقة البلدية- اولاد الشامخ 5120",
+      "facilityCoordinate": {
+        "lat": 35.489925,
+        "lng": 10.316453
+      },
+      "distanceFromExistingReferenceMeters": 282.4037483794412,
+      "distanceFromNamedNodeMeters": 228.11645805699524,
+      "relevance": "Independently identifies the named municipal locality and a local public office; this facility location is not an INM or settlement-reference coordinate."
+    },
+    "liveOsmNode": {
+      "file": "work\\ouled-chamekh431-source-review\\osm-node-1127119919.json",
+      "sha256": "a5bbaf3dea6defc42cd26938850f6727eccc52a9dc6517762896e65d0ae2284f",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1127119919.json",
+      "exactElement": {
+        "type": "node",
+        "id": 1127119919,
+        "lat": 35.4915017,
+        "lon": 10.314841,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "version": 11,
+        "changeset": 179509225,
+        "user": "Johnwhelan",
+        "uid": 186592,
+        "tags": {
+          "addr:city": "Ouled Chamekh",
+          "addr:governorate": "Mahdia",
+          "name": "أولاد الشامخ",
+          "name:ar": "أولاد الشامخ",
+          "name:en": "Ouled Chamekh",
+          "name:fr": "Ouled Chamekh",
+          "place": "village"
+        }
+      },
+      "allTagsAndCoordinatesEqualCachedPbfNode": true
+    },
+    "cachedOriginalSource": {
+      "file": "work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "currentOfficialRegistry": {
+      "file": "outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "priorTriage": {
+      "file": "outputs\\three-remaining-point-base-alias-candidate-triage.json",
+      "sha256": "bf63ffdeaee90436fe80c3e537d6a5bf0971e326ca79cadf5fa54276fe8d4b38"
+    },
+    "primaryDirectoryDiscovery": {
+      "file": "work\\ouled-chamekh431-source-review\\official-discovery-and-transport.json",
+      "sha256": "690b087cd024740e2d749c8054387bd56cd22d9118253e9bf9f8901326be14a5"
+    }
+  },
+  "currentBaseRow": {
+    "id": 431,
+    "nomFr": "Ouled Chamekh",
+    "nomAr": "أولاد شامخ",
+    "nomEn": "Ouled Chamekh",
+    "lat": 35.4915,
+    "lng": 10.3189
+  },
+  "currentNode": {
+    "id": "osm:node:1127119919",
+    "sourceId": "osm",
+    "name": "أولاد الشامخ",
+    "aliases": [
+      "Ouled Chamekh"
+    ],
+    "kind": "village",
+    "parentName": "أولاد الشامخ الجنوبية",
+    "contextAliases": [
+      "Délégation Ouled Chamekh",
+      "Ouled Chamekh",
+      "Ouled Chamekh Sud",
+      "أولاد الشامخ الجنوبية",
+      "معتمدية أولاد الشامخ"
+    ],
+    "governorateId": 345,
+    "lat": 35.4915017,
+    "lng": 10.314841,
+    "delegationId": 431,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1127119919"
+  },
+  "currentOriginalSourceNode": {
+    "id": "osm:node:1127119919",
+    "tags": {
+      "addr:city": "Ouled Chamekh",
+      "addr:governorate": "Mahdia",
+      "name": "أولاد الشامخ",
+      "name:ar": "أولاد الشامخ",
+      "name:en": "Ouled Chamekh",
+      "name:fr": "Ouled Chamekh",
+      "place": "village"
+    },
+    "lat": 35.4915017,
+    "lng": 10.314841
+  },
+  "distanceBetweenRetainedReferencesMeters": 367.4819899576638,
+  "identityReasoning": [
+    "The official municipal page explicitly names the city, closing the earlier need for primary township evidence beyond a same-named delegation.",
+    "The current source node explicitly uses that Arabic city name, addr:city=Ouled Chamekh and addr:governorate=Mahdia. All tags and coordinates exactly match the independently retrieved current version11 node.",
+    "The base431 French/English Ouled Chamekh matches the town/address name. Its Arabic أولاد شامخ is also the current official delegation spelling, while the city and North/South imadas use أولاد الشامخ.",
+    "The cached source contains only this matching named place point within10km. No evidence establishes a different nearby settlement represented by the base.",
+    "This supports the same named town as a picker choice. It does not equate the municipality, delegation or individual imada footprints."
+  ],
+  "proposedDisplayDelta": {
+    "id": "osm:node:1127119919",
+    "field": "pickerGroupId",
+    "before": "osm:node:1127119919",
+    "after": "delegation:431"
+  },
+  "proposedCompletePickerGroups": {
+    "before": [
+      [
+        "osm:node:1127119919"
+      ],
+      [
+        "delegation:431"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:431",
+        "osm:node:1127119919"
+      ]
+    ]
+  },
+  "referenceDecision": {
+    "relocate431": false,
+    "coordinateChanges": [],
+    "reason": "No retrieved primary source demonstrates that the legacy point is wrong or outside the town. Do not move431 just to satisfy a coincident-coordinate grouping guard or because the OSM node has more decimals.",
+    "namedNodeQualification": "The node is a documented named-settlement reference candidate, but choosing it instead of another point in the same town is not a proven geographic correction.",
+    "facilityCoordinateRejectedAsReplacement": true,
+    "notClaimed": [
+      "INM original calculation coordinates",
+      "surveyed town centroid",
+      "full municipal or town boundary",
+      "legacy point outside town"
+    ]
+  },
+  "implementationRequirements": [
+    "Use an explicit evidence-bound same-town association that permits these two exact differing coordinates; do not weaken the existing coincident-reference validators or introduce fuzzy matching.",
+    "Bind exact node/base IDs, complete current node tags/version11 response, both coordinates, governorate345, names, existing source431, two singleton source groups and final complete group membership.",
+    "Change only this raw pickerGroupId; preserve the node ID, aliases, parent/context, point coordinates and default431, and preserve all base431 names/coordinates/default.",
+    "Retain all8 official imada IDs, names, geometries, groups and source defaults, including separate North335352 and South335351.",
+    "Do not absorb the point, assign a polygon to it, copy Google boundaries, or silently merge any named imada. Saved point selections must still resolve through the retained raw ID."
+  ],
+  "preservedEightImadas": [
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335356",
+        "sectorFr": "Es-somra",
+        "sectorAr": "السمرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39541,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1885,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1881
+        }
+      },
+      "sourceId": "osm:relation:7152206",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السمرة",
+        "name:ar": "السمرة",
+        "name:fr": "Es-Somra",
+        "ref:tn:codegeo": "335356"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152206",
+        "sourceId": "osm",
+        "name": "السمرة",
+        "aliases": [
+          "Es-Somra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.44042,
+        "lng": 10.279306,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.240685,
+          35.40386,
+          10.33909,
+          35.47697
+        ],
+        "areaKm2": 36.369522870496944,
+        "pickerGroupId": "osm:relation:7152206",
+        "offset": 2899848,
+        "length": 3268
+      }
+    },
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335351",
+        "sectorFr": "Ouled chamekh sud",
+        "sectorAr": "أولاد الشامخ الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39371,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1876,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1872
+        }
+      },
+      "sourceId": "osm:relation:7152232",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أولاد الشامخ الجنوبية",
+        "name:ar": "أولاد الشامخ الجنوبية",
+        "name:fr": "Ouled Chamekh Sud",
+        "ref:tn:codegeo": "335351"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152232",
+        "sourceId": "osm",
+        "name": "أولاد الشامخ الجنوبية",
+        "aliases": [
+          "Ouled Chamekh Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.493202,
+        "lng": 10.318119,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.273562,
+          35.44058,
+          10.353541,
+          35.544377
+        ],
+        "areaKm2": 44.83705934533236,
+        "pickerGroupId": "osm:relation:7152232",
+        "offset": 2950912,
+        "length": 2012
+      }
+    },
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335358",
+        "sectorFr": "Meharza nord",
+        "sectorAr": "المحارزة الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39609,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1889,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1885
+        }
+      },
+      "sourceId": "osm:relation:7152204",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المحارزة الشمالية",
+        "name:ar": "المحارزة الشمالية",
+        "name:fr": "Meharza Nord",
+        "ref:tn:codegeo": "335358"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152204",
+        "sourceId": "osm",
+        "name": "المحارزة الشمالية",
+        "aliases": [
+          "Meharza Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.3926,
+        "lng": 10.279419,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.191024,
+          35.36779,
+          10.350735,
+          35.41731
+        ],
+        "areaKm2": 48.85484166899705,
+        "pickerGroupId": "osm:relation:7152204",
+        "offset": 2895536,
+        "length": 1932
+      }
+    },
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335355",
+        "sectorFr": "El ajilet",
+        "sectorAr": "العجيلات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39507,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1883,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1879
+        }
+      },
+      "sourceId": "osm:relation:7152226",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العجيلات",
+        "name:ar": "العجيلات",
+        "name:fr": "El Ajilet",
+        "ref:tn:codegeo": "335355"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152226",
+        "sourceId": "osm",
+        "name": "العجيلات",
+        "aliases": [
+          "El Ajilet"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.428635,
+        "lng": 10.352304,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.316641,
+          35.36417,
+          10.412881,
+          35.493234
+        ],
+        "areaKm2": 52.90763603439988,
+        "pickerGroupId": "osm:relation:7152226",
+        "offset": 2939256,
+        "length": 4500
+      }
+    },
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335354",
+        "sectorFr": "Chehimet nord",
+        "sectorAr": "الشحيمات الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39473,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1881,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1877
+        }
+      },
+      "sourceId": "osm:relation:7152228",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الشحيمات الشمالية",
+        "name:ar": "الشحيمات الشمالية",
+        "name:fr": "Chehimet Nord",
+        "ref:tn:codegeo": "335354"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152228",
+        "sourceId": "osm",
+        "name": "الشحيمات الشمالية",
+        "aliases": [
+          "Chehimet Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.430905,
+        "lng": 10.390386,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.361221,
+          35.38797,
+          10.426655,
+          35.473839
+        ],
+        "areaKm2": 27.158756334025316,
+        "pickerGroupId": "osm:relation:7152228",
+        "offset": 2943756,
+        "length": 2620
+      }
+    },
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335353",
+        "sectorFr": "Ouled amor",
+        "sectorAr": "أولاد عمر",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39439,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1880,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1876
+        }
+      },
+      "sourceId": "osm:relation:7152229",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أولاد عمر",
+        "name:ar": "أولاد عمر",
+        "name:fr": "Ouled Amor",
+        "ref:tn:codegeo": "335353"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152229",
+        "sourceId": "osm",
+        "name": "أولاد عمر",
+        "aliases": [
+          "Ouled Amor"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.469059,
+        "lng": 10.419453,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.375595,
+          35.44026,
+          10.462834,
+          35.498366
+        ],
+        "areaKm2": 26.85481837474666,
+        "pickerGroupId": "osm:relation:7152229",
+        "offset": 2946376,
+        "length": 1980
+      }
+    },
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335357",
+        "sectorFr": "Bou slim",
+        "sectorAr": "بوسليم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39575,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1887,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1883
+        }
+      },
+      "sourceId": "osm:relation:7152205",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوسليم",
+        "name:ar": "بوسليم",
+        "name:fr": "Bou Slim",
+        "ref:tn:codegeo": "335357"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152205",
+        "sourceId": "osm",
+        "name": "بوسليم",
+        "aliases": [
+          "Bou Slim"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.455425,
+        "lng": 10.236301,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.185923,
+          35.41217,
+          10.273562,
+          35.498789
+        ],
+        "areaKm2": 32.30870768437051,
+        "pickerGroupId": "osm:relation:7152205",
+        "offset": 2897468,
+        "length": 2380
+      }
+    },
+    {
+      "officialIdentity": {
+        "governorateCode": "33",
+        "governorateFr": "Mahdia",
+        "governorateAr": "المهدية",
+        "delegationCode": "3353",
+        "delegationFr": "Ouled chamekh",
+        "delegationAr": "أولاد شامخ",
+        "sectorCode": "335352",
+        "sectorFr": "Ouled chamekh nord",
+        "sectorAr": "أولاد الشامخ الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 39405,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1878,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1874
+        }
+      },
+      "sourceId": "osm:relation:7152231",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أولاد الشامخ الشمالية",
+        "name:ar": "أولاد الشامخ الشمالية",
+        "name:fr": "Ouled Chamekh Nord",
+        "ref:tn:codegeo": "335352"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7152231",
+        "sourceId": "osm",
+        "name": "أولاد الشامخ الشمالية",
+        "aliases": [
+          "Ouled Chamekh Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد الشامخ",
+        "contextAliases": [
+          "Délégation Ouled Chamekh",
+          "Ouled Chamekh",
+          "معتمدية أولاد الشامخ"
+        ],
+        "governorateId": 345,
+        "lat": 35.536672,
+        "lng": 10.253902,
+        "delegationId": 431,
+        "hasBoundary": true,
+        "bbox": [
+          10.207294,
+          35.47697,
+          10.331323,
+          35.595433
+        ],
+        "areaKm2": 56.18958857371512,
+        "pickerGroupId": "osm:relation:7152231",
+        "offset": 2948356,
+        "length": 2556
+      }
+    }
+  ],
+  "phoneEvidence": {
+    "existingPriorObservation": {
+      "observedAt": "2026-09-07T05:35:52.759204+00:00",
+      "query": "أولاد شامخ المهدية Tunisia",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "Ouled Chamekh"
+      ],
+      "publicUiText": [
+        "Ouled Chamekh",
+        "أولاد الشامخ",
+        "Tunisia",
+        "Directions to Ouled Chamekh",
+        "Directions",
+        "Share Ouled Chamekh",
+        "Share",
+        "Save Ouled Chamekh to lists",
+        "Save",
+        "Photo",
+        "Close",
+        "أولاد شامخ المهدية Tunisia",
+        "Clear",
+        "Restaurants",
+        "Hotels",
+        "Attractions"
+      ],
+      "observationStatus": "candidate_observed",
+      "screenshot": "delegation_431-1.png",
+      "boundaryVerified": false
+    },
+    "qualification": "The existing name-query locality card supports spelling identity, not exact coordinates or boundaries. Root owns any fresh phone observations; none were captured or consumed as new evidence here."
+  },
+  "sourceLimitations": [
+    "Municipal town page was retrieved overHTTP after HTTPS timeouts; exact response bytes and failed attempts are retained.",
+    "The municipality page has an old copied-template Sousse comment; its official host, OuledChamekh copyright metadata and explicit OuledChamekh city content supply the actual source attribution.",
+    "The Social Ministry point describes a public office. It does not prove independent measurement of the town or INM reference.",
+    "INS rows establish identity and parent hierarchy, not polygon accuracy. Existing source membership calculations remain cached OSM claims.",
+    "This is a source/display proposal only; a future implementation needs separate static and actual catalog validation."
+  ],
+  "notPerformed": [
+    "app or source-manifest edit",
+    "reference-coordinate change",
+    "catalog generation",
+    "tests",
+    "build",
+    "phone/device/ledger operation",
+    "Google API/key use",
+    "PBF scan",
+    "polygon extraction"
+  ],
+  "preparation": {
+    "file": "work\\freeze_ouled_chamekh431_identity_proposal.py",
+    "sha256": "cc87ec1a089ec88779fa4128ceb585d911e53f0d16b21f8ff13ef89dce67d2e2"
+  }
+}

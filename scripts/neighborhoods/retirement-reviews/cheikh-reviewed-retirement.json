@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "redundant_uncoded_sector_with_corrected_coded_replacement",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "id": "osm:relation:7152490",
+  "replacementId": "osm:relation:7118632",
+  "expectedOriginalTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "loc_name": "الشيخ ادريس",
+    "loc_name:ar": "الشيخ ادريس",
+    "name": "الشيخ إدريس",
+    "name:ar": "الشيخ إدريس",
+    "name:fr": "Cheikh Dris"
+  },
+  "expectedOriginalGeometrySha256": "9e2566c12a77d80d780beadc826cc7c9f2dea9e2a7b1a7f6097e76d489cf3350",
+  "originalGeometryCloneId": "osm:relation:7118631",
+  "replacementName": "الشيخ إدريس",
+  "replacementKind": "sector",
+  "replacementOfficialCode": "175155",
+  "replacementGovernorateId": 361,
+  "replacementParentName": "معتمدية بنزرت الشمالية",
+  "boundarySource": {
+    "file": "official/bizerte-three-isie2023-sectors.geojson",
+    "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140"
+  },
+  "requiredBoundaryIds": [
+    "osm:relation:7118630",
+    "osm:relation:7118631",
+    "osm:relation:7118632"
+  ],
+  "officialRegistry": {
+    "file": "locality-context-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "evidence": [
+    {
+      "file": "retirement-reviews/bizerte-uncoded-cheikh-retirement-proposal.json",
+      "sha256": "039ebd05c83dc69749a66d7d47b98567dc17f95d16a4d701988024896fcdab4e"
+    },
+    {
+      "file": "retirement-reviews/bizerte-medina-cheikh-source-clone-diagnosis.json",
+      "sha256": "c1ac9235a969f8c5717e5bf7f3ba6e21c76d071c5a98351575e96d2624d15cae"
+    },
+    {
+      "file": "retirement-reviews/cheikh-retirement-current-source-and-runtime-review.json",
+      "sha256": "8e95264357a57efe50907f3bc247322d5a5d65ddedff97a47a703d98a1fcc351"
+    },
+    {
+      "file": "retirement-reviews/cheikh-retirement-minimum-transition-plan.json",
+      "sha256": "c41d4ab100a2d400b600ba702325325bf085ce134564b91511a17f5c39ce8657"
+    },
+    {
+      "file": "retirement-reviews/bizerte-three-current-packed-coverage-review.json",
+      "sha256": "fa7aa663741e88ea14f218fe356b10e1d107e1f8de85f345a965c432999477c7"
+    }
+  ],
+  "savedSelectionPolicy": "Resolve only the exact retired ID; preserve saved prayer source and GPS origin. No guessed coordinates or persistent preference rewrite."
+}

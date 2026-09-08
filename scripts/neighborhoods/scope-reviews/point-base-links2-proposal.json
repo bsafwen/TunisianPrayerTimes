@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T08:39:05.731293+00:00",
+  "status": "PROPOSED_EXPLICIT_GROUPING_PENDING_INDEPENDENT_REVIEW",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "metadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+  "records": [
+    {
+      "id": "osm:node:7372876054",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "القصر",
+        "name:ar": "القصر",
+        "name:en": "El Ksar",
+        "name:fr": "El Ksar",
+        "place": "village"
+      },
+      "sourceObject": {
+        "id": "osm:node:7372876054",
+        "version": 2,
+        "timestamp": "2021-02-02 00:59:52+00:00",
+        "lat": 34.3978553,
+        "lng": 8.8045119,
+        "tags": {
+          "name": "القصر",
+          "name:ar": "القصر",
+          "name:en": "El Ksar",
+          "name:fr": "El Ksar",
+          "place": "village"
+        }
+      },
+      "action": "preserve_point",
+      "pickerBaseDelegationId": 608,
+      "reason": "This exact existing settlement point already supplies the reviewed coordinates of the namesake original timetable row. Keeping a second display row duplicates the same manual location and prayer choice. Retain the point ID and search/context aliases as members of the original row.",
+      "evidence": {
+        "sourceCoordinateReview": {
+          "delegationId": 608,
+          "expectedGovernorateId": 365,
+          "expectedNames": {
+            "nomAr": "القصر",
+            "nomFr": "El Ksar",
+            "nomEn": "El Ksar"
+          },
+          "reviewedDate": "2026-09-07",
+          "original": {
+            "lat": 34.349,
+            "lng": 8.7701
+          },
+          "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+          "proposed": {
+            "lat": 34.3978553,
+            "lng": 8.8045119
+          },
+          "movedKm": 6.283798029929493,
+          "osm": {
+            "id": "osm:node:7372876054",
+            "url": "https://www.openstreetmap.org/node/7372876054",
+            "apiUrl": "https://api.openstreetmap.org/api/0.6/node/7372876054.json",
+            "version": 2,
+            "timestamp": "2021-02-02T00:59:52Z",
+            "name": "القصر",
+            "place": "village"
+          },
+          "geonames": {
+            "id": 2473466,
+            "name": "El Ksar",
+            "lat": 34.3992,
+            "lng": 8.80399,
+            "featureClass": "P",
+            "featureCode": "PPLX",
+            "modified": "2024-12-02",
+            "url": "https://www.geonames.org/2473466",
+            "distanceToProposedKm": 0.1570040864058775
+          },
+          "phoneVisualReview": {
+            "reviewedDate": "2026-09-07",
+            "decision": "approved_settlement_reference",
+            "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+            "observation": "The proposed pin is in the urban grid just north of Gafsa Gare; its coordinate result explicitly resolves to El Ksar Est.",
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        },
+        "sourceCoordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+        "currentMetadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+        "expectedPickerGroupId": "delegation:608",
+        "expectedPointAndOriginalNames": "القصر",
+        "pointCoordinatesExactlyEqualOriginalRow": true,
+        "manualPrayerSourceUnchanged": true,
+        "boundaryChange": false
+      }
+    },
+    {
+      "id": "osm:node:351575544",
+      "expectedKind": "town",
+      "expectedTags": {
+        "name": "سوق الأحد",
+        "name:ar": "سوق الأحد",
+        "name:en": "Souk Lahad",
+        "name:fr": "Souk Lahad",
+        "name:ru": "Сук-Ляхад",
+        "place": "town",
+        "wikidata": "Q3051223",
+        "wikimedia_commons": "Category:Souk Lahad",
+        "wikipedia": "ar:سوق الأحد (تونس)"
+      },
+      "sourceObject": {
+        "id": "osm:node:351575544",
+        "version": 10,
+        "timestamp": "2025-09-14 10:19:40+00:00",
+        "lat": 33.7783142,
+        "lng": 8.8525855,
+        "tags": {
+          "name": "سوق الأحد",
+          "name:ar": "سوق الأحد",
+          "name:en": "Souk Lahad",
+          "name:fr": "Souk Lahad",
+          "name:ru": "Сук-Ляхад",
+          "place": "town",
+          "wikidata": "Q3051223",
+          "wikimedia_commons": "Category:Souk Lahad",
+          "wikipedia": "ar:سوق الأحد (تونس)"
+        }
+      },
+      "action": "preserve_point",
+      "pickerBaseDelegationId": 483,
+      "reason": "This exact existing settlement point already supplies the reviewed coordinates of the namesake original timetable row. Keeping a second display row duplicates the same manual location and prayer choice. Retain the point ID and search/context aliases as members of the original row.",
+      "evidence": {
+        "sourceCoordinateReview": {
+          "delegationId": 483,
+          "expectedGovernorateId": 1012,
+          "expectedNames": {
+            "nomAr": "سوق الأحد",
+            "nomFr": "Souk El Ahad",
+            "nomEn": "Souk El Ahad"
+          },
+          "reviewedDate": "2026-09-07",
+          "original": {
+            "lat": 33.9537,
+            "lng": 8.8361
+          },
+          "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+          "proposed": {
+            "lat": 33.7783142,
+            "lng": 8.8525855
+          },
+          "movedKm": 19.561319977017398,
+          "osm": {
+            "id": "osm:node:351575544",
+            "url": "https://www.openstreetmap.org/node/351575544",
+            "apiUrl": "https://api.openstreetmap.org/api/0.6/node/351575544.json",
+            "version": 10,
+            "timestamp": "2025-09-14T10:19:40Z",
+            "name": "سوق الأحد",
+            "place": "town"
+          },
+          "geonames": {
+            "id": 11862824,
+            "name": "Souk Lahad",
+            "lat": 33.77579,
+            "lng": 8.85992,
+            "featureClass": "P",
+            "featureCode": "PPL",
+            "modified": "2024-12-02",
+            "url": "https://www.geonames.org/11862824",
+            "distanceToProposedKm": 0.7337076303282382
+          },
+          "phoneVisualReview": {
+            "reviewedDate": "2026-09-07",
+            "decision": "approved_settlement_reference",
+            "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+            "observation": "Proposed capture shows P16 within a dense street network, a Souk Lahad address, and nearby SOUK LAHAD business labelling. Original capture is an unnamed location near Oum Essoumaa without visible roads or settlement detail at that viewport.",
+            "exactCoordinateCertified": false,
+            "boundaryVerified": false
+          }
+        },
+        "sourceCoordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+        "currentMetadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+        "expectedPickerGroupId": "delegation:483",
+        "expectedPointAndOriginalNames": "سوق الأحد",
+        "pointCoordinatesExactlyEqualOriginalRow": true,
+        "manualPrayerSourceUnchanged": true,
+        "boundaryChange": false
+      }
+    }
+  ],
+  "limits": "These two exact source-point links do not establish a general rule for same-name polygons, imadas or nearby places."
+}

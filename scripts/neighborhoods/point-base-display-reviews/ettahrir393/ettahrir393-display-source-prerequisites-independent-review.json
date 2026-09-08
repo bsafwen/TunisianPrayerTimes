@@ -1,0 +1,200 @@
+{
+  "status": "PASS",
+  "decision": "SOURCE_SUPPORT_FOR_BOUNDED_DISPLAY_INFERENCE; TYPED_PEER_STAGE_REQUIRED_BEFORE_GENERATION",
+  "baselineMetadataSha256": "d769190af16ba9c4e560ccaab7f23572f38faa3b9734e090bedff4c2416a1f78",
+  "sourceProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\ettahrir393-point-base-display-source-review.json",
+    "sha256": "20acd394ae1abd2a8c4f64e3c4fb2364fbee69872b645b201e78d33a0015e7cc"
+  },
+  "exactFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\exact-peer-scope-facts.json",
+    "sha256": "d69b86bb0547388fc217457dda8eedd6003aef739fa66a6baa6260d6ac5f5b9e"
+  },
+  "findings": [],
+  "supportedInference": "The exact source suburb is the unique unqualified named Ettahrir neighborhood within this Tunis source inventory. The official Ministry of Social Affairs address explicitly uses Hay Ettahrir as an inhabited locality, and current base393 is the existing point-based Ettahrir timetable choice. These support a reviewed single display identity while retaining both stored references. This is not a claim that the quarter equals delegation1157 or any one imada.",
+  "primaryEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\ministry-social-ettahrir.html",
+    "sha256": "8b4a5c89d389137db049cb6ea1a8a5029005b492fa7b7603083a0f0565fa0351",
+    "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-التحرير-تونس",
+    "directContentRead": true,
+    "textEvidence": [
+      "الوحدة المحلية للنهوض الاجتماعي التحرير تونس",
+      "إقامة الشريفة حي التحرير"
+    ],
+    "limitation": "The page map coordinates identify an office, not the neighborhood representative, perimeter or INM anchor."
+  },
+  "supplementaryEnda": {
+    "url": "https://www.endarabe.org.tn/2026/02/15/soirees-ramadanesques-2026-lespace-el-kahina-le-coeur-vibrant-de-la-culture-pour-tous/",
+    "status": "UNPINNED_SUPPLEMENTARY_ONLY",
+    "qualification": "Proposal reports primary participant webpage reading, but no original HTML was pinned. Not independently re-fetched here and not relied upon as byte-bound runtime evidence; do not declare this an archived primary document or make it mandatory proof without a frozen response."
+  },
+  "exactSourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ettahrir393-source-review\\node-1158752159.json",
+    "sha256": "75e71a06eca685e3651a80e2ca2f926f1c71ea492cf72a55af1914bcadeb12bc",
+    "id": 1158752159,
+    "version": 13,
+    "timestamp": "2021-02-03T23:54:37Z",
+    "changeset": 98670574,
+    "cachedTagsAndCoordinatesMatch": true
+  },
+  "administrativeDistinction": {
+    "pointImada": "115755 الحديقة",
+    "baseImada": "115753 التحرير الثالث",
+    "bothWithinCachedDelegation1157": true,
+    "conclusion": "Different cached imadas do not establish separate unnumbered neighborhoods; retain both current imada relationships and all five separate sector choices. No geometry or context correction is supported."
+  },
+  "coordinateProvenance": {
+    "base393": {
+      "id": 393,
+      "nomFr": "Ettahrir",
+      "nomAr": "التحرير",
+      "nomEn": "Ettahrir",
+      "lat": 36.8244,
+      "lng": 10.1283
+    },
+    "source393Correction": null,
+    "legacyOriginalAssetStatement": {
+      "path": "android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8",
+      "coordinateProvenance": "Legacy bundled reference coordinates; an external origin for these coordinates was not documented."
+    },
+    "conclusion": "Preserve both current coordinates and all defaults. External origin of the legacy base coordinate remains undocumented; neither correct nor incorrect original INM placement is certified."
+  },
+  "preservedImadas": [
+    {
+      "id": "osm:relation:7201527",
+      "code": "115751",
+      "name": "التحرير الأول",
+      "packedSha256": "d5bf503204fa7b1540d83b0c9c8b37d5754aacf40ec66efcb748fa7a96717290"
+    },
+    {
+      "id": "osm:relation:7201531",
+      "code": "115752",
+      "name": "التحرير الثاني",
+      "packedSha256": "6e51b4659956ae51108b8d959889268226b4aa2a80b58459c02878b2bac7a740"
+    },
+    {
+      "id": "osm:relation:7201529",
+      "code": "115753",
+      "name": "التحرير الثالث",
+      "packedSha256": "e31ce5a22e00a8b23eade2d85e1a44f9ec5093a29b020bedd8f9c676a6b788bc"
+    },
+    {
+      "id": "osm:relation:7201528",
+      "code": "115754",
+      "name": "التحرير العلوي",
+      "packedSha256": "6ffdef7c026f747cb8dc46865616ec2f9a7bb13f24ec34228367c4c5238ba778"
+    },
+    {
+      "id": "osm:relation:7201530",
+      "code": "115755",
+      "name": "الحديقة",
+      "packedSha256": "4a93188416c50f13bdbd8673778b2aa06cbf0bf505b12aa6051be5f3d5924efa"
+    }
+  ],
+  "completeSourcePeerIds": [
+    "osm:node:1158752159",
+    "osm:node:2245539847",
+    "osm:relation:4130434",
+    "osm:relation:7154897",
+    "osm:way:1321465756"
+  ],
+  "typedRawPeers": [
+    {
+      "id": "osm:node:1158752159",
+      "kind": "suburb",
+      "governorateId": 342,
+      "prayerSourceId": 393,
+      "completeRawGroup": [
+        "osm:node:1158752159"
+      ],
+      "hasBoundary": false,
+      "point": {
+        "lat": 36.8229323,
+        "lng": 10.1339881
+      }
+    },
+    {
+      "id": "osm:node:2245539847",
+      "kind": "neighbourhood",
+      "governorateId": 351,
+      "prayerSourceId": 624,
+      "completeRawGroup": [
+        "osm:node:2245539847"
+      ],
+      "hasBoundary": false,
+      "point": {
+        "lat": 32.9958033,
+        "lng": 10.4628552
+      }
+    },
+    {
+      "id": "osm:relation:7154897",
+      "kind": "sector",
+      "governorateId": 352,
+      "prayerSourceId": 477,
+      "completeRawGroup": [
+        "osm:relation:7154897"
+      ],
+      "hasBoundary": true,
+      "packedSha256": "587b7fd2da7757949c41f837713b5b309cf499c73472d74e2ca7860920479634"
+    },
+    {
+      "id": "osm:way:1321465756",
+      "kind": "residential",
+      "governorateId": 351,
+      "prayerSourceId": 473,
+      "completeRawGroup": [
+        "osm:way:1321465756"
+      ],
+      "hasBoundary": true,
+      "packedSha256": "c25e71185a34c5c98cd2a1cd872125c9ae1f5dc2b9c9d6f3ac2f8daec3755968"
+    }
+  ],
+  "readOnlyMatchingContext": {
+    "id": "osm:relation:4130434",
+    "kind": "delegation",
+    "code": "1157",
+    "rawCatalogRowAbsent": true,
+    "expectedGroup": [],
+    "sourceNameMatchReason": "Exact alt_name:fr=Ettahrir"
+  },
+  "sourceGeometryFacts": {
+    "osm:node:1158752159": {
+      "type": "Point",
+      "canonicalSortedGeometrySha256": "14f91d3ff48434bc5d610a1246f036e1e3a5edecafd14ee1eaa1b3f58dabc018"
+    },
+    "osm:node:2245539847": {
+      "type": "Point",
+      "canonicalSortedGeometrySha256": "b88fbfef962799bf8582abf8e0e46839d43967f44c59a65fc11405edb5b6b772"
+    },
+    "osm:relation:4130434": {
+      "type": "MultiPolygon",
+      "canonicalSortedGeometrySha256": "dc2df6021c732c747dfa55ad7dfe1b851038eb7e365dc79450a17230d65013f2"
+    },
+    "osm:relation:7154897": {
+      "type": "MultiPolygon",
+      "canonicalSortedGeometrySha256": "a156b25370fadc7f8b363b6a934f6cbc638bac77dff51f6196b23c31de2ab02f"
+    },
+    "osm:way:1321465756": {
+      "type": "MultiPolygon",
+      "canonicalSortedGeometrySha256": "4014edcd4e00a6338e2453053fec42bcb0e6c2bdeb520e1094ca9140dffa914d"
+    }
+  },
+  "requiredTypedProofFacts": [
+    "Keep the complete original/effective peer inventory of five IDs. Explicitly distinguish target, preserved raw point, preserved raw polygons and read-only context; never drop the matching delegation to satisfy a raw-row guard.",
+    "The external node2245539847 requires exact original/effective source Point coordinates/tags/kind/provider, full current metadata/default624 and exact singleton group. No polygon, offset or packed-geometry field may be invented.",
+    "The external sector7154897 and residential1321465756 require their real source Polygon/MultiPolygon hashes, full current metadata/default477 and473 respectively, exact packed slices and exact singleton groups.",
+    "The matching delegation4130434 must be an explicit validated member of the existing read-only context inventory with exact source tags/code/shape in both phases and no raw row/group. Do not reserve every descendant locality as a display member.",
+    "Retain exact current/base/governor metadata, own coordinate-correction subset, all five imadas/source/packed/current groups and primary MSSA byte pin. Preserve old reviewed formats when the typed format is absent.",
+    "Final verification must permit exactly the proposed one raw pickerGroupId field, keep all raw IDs and metadata, keep unrelated raw peers unchanged according to their true representation, and ensure no new administrative row is materialized."
+  ],
+  "onlySupportedRawChange": {
+    "id": "osm:node:1158752159",
+    "field": "pickerGroupId",
+    "before": "osm:node:1158752159",
+    "after": "delegation:393"
+  },
+  "stageApproval": false,
+  "limitations": "Source-prerequisite approval only. Existing installed polygon-only peer format cannot express this proposal unchanged. No generator/helper/tests, numeric matrix, phone/live ledger, repository or stage mutation occurred. Canonical source-shape hashes here are sorted research hashes; any generator-specific unsorted hash binding must be derived explicitly."
+}

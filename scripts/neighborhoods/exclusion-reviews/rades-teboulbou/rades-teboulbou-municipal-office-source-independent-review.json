@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\rades-teboulbou-municipal-office-source-review.json",
+    "sha256": "7e451293699eaf774985fb337b881bfabfdcba4de22a31f8a932451ce7fcb684"
+  },
+  "proposedDecisions": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\proposed-curation-records.json",
+    "sha256": "f86af1153fe0fb8947fbe2b9cf7cd299365d16eb6d284a8e748d499713bcf892"
+  },
+  "baselineMetadataSha256": "31ac2b52bbeec196cc3da2eacae11851b23ca08584027ceaf0665e40fc6bb21f",
+  "decision": "Support only the two exact non-locality exclusions, with no replacement ID or alias to a town. Source-stage and actual generated output review remain separate.",
+  "findings": [],
+  "evidenceReview": {
+    "rades": "Independently reconstructed the current full API polygon and matched cached geometry/tags exactly. All four source versions consistently identify the tiny municipal object; its non-locality interpretation is supported. This does not establish which old/new office site it is or its current use.",
+    "teboulbou": "Exact API point/tags match cache. Its original government-office record predates the added suburb tag. Personally viewed JORT PDF12/printed1392, notice2020T00557APSF1: municipal premises on Avenue Chebbi, Teboulbou/Gabes, corroborate source street and institution.",
+    "interiorDirectory": "Personally read the Radès municipal directory address; it is contextual institutional evidence, not a coordinate or building identity assertion.",
+    "phone": "No screenshots or device accessed for this review. The new-site result is explicitly excluded from coordinate equivalence."
+  },
+  "preservationReview": {
+    "fullRawRecordsAndPackedSlices": 17,
+    "imadas": 15,
+    "fullExistingGroupsVerified": true,
+    "genuineRadesTown": "osm:relation:8893221",
+    "preservedRadesBase": 449,
+    "preservedTeboulbouImada": "osm:relation:7145448",
+    "preservedGabesBase": 620,
+    "removedIds": [
+      "osm:node:4396821689",
+      "osm:way:386486798"
+    ],
+    "removedPolygonBytes": 60,
+    "cachedSourcePointsInsideRemovedPolygon": 0,
+    "registeredConflictsInvolvingTargets": 0,
+    "expectedRetiredIds": 19,
+    "reviewedNamesUnchanged": 99,
+    "existingDirectActiveDependencies": []
+  },
+  "qualification": "Radès exclusion rests on exact source municipal identity and premises scale, not proof of the Google new office location. Neither decision deletes an actual municipality, town or imada. Binary offsets and grid indices will need mechanical regeneration; all retained semantic fields and geometry slices must remain exact.",
+  "actions": {
+    "newNetworkFetches": 0,
+    "generatorOrHelperExecuted": false,
+    "testsRun": false,
+    "repoStagePhoneLedgerMutation": false
+  }
+}

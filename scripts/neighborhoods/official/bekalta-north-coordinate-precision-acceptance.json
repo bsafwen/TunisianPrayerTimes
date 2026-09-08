@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_existing_catalog_coordinate_precision",
+  "id": "osm:relation:7111933",
+  "sourceGeometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e",
+  "coordinateScale": 1000000,
+  "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+  "decision": "Accept the existing one-millionth-degree coordinate format for this dated administrative map. The exterior changes about 0.062 metres. Four hole components survive, but a very thin branch of hole4 collapses, covering about 11.55 square metres previously in that source gap. Exact source parts and unrounded union remain preserved; no gap filling or snapping is performed before the normal compiler rounding.",
+  "limitation": "The approximately 87-metre all-ring Hausdorff value is the collapsed long thin interior branch, not an 87-metre displacement of the exterior. Packed geometry does not preserve every source gap exactly.",
+  "sourceMeasurementReview": {
+    "file": "official/bekalta-north-aggregate-quantization-review.json",
+    "sha256": "49c635f1d1a9176e72d1f114d347c4320c884498ab7808cdac16b3b899e98c26"
+  },
+  "clusterReview": {
+    "file": "official/bekalta-seven-record-cluster-topology-review.json",
+    "sha256": "f63ec777e73cc5619175cb4c059af4e706f44c11fb84d948f85bbebfac86082a"
+  }
+}

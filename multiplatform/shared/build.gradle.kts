@@ -48,6 +48,8 @@ kotlin {
         }
 
         val javaTest by getting {
+            // The Python publisher and app parser verify the same correction payload.
+            resources.srcDir(rootProject.file("../test-data"))
             dependencies {
                 implementation(kotlin("test"))
             }

@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed_imported_sector_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "scope": "Exact two existing sector/village choices with separately reviewed complete official boundaries. This evidence does not assert built-up village geometry equals an imada or certify every source-overlap location.",
+  "sourceReadiness": {
+    "file": "point-retention-reviews/chenini-two-sector-candidate-readiness.json",
+    "sha256": "681038666dd2e5fd62b9edb18bca2278f26257375c059e63f55757ee7af108ae"
+  },
+  "baselineMetadata": {
+    "file": "point-retention-reviews/before-neighborhoods.json",
+    "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0"
+  },
+  "baselineBinary": {
+    "file": "point-retention-reviews/before-neighborhoods.bin",
+    "sha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850"
+  },
+  "originalSectorGeometry": {
+    "file": "point-retention-reviews/original-two-sector-source-geometries.json",
+    "sha256": "c1ad42c37e53d74fac8272447909695b28fe5f836a6a0c347e6d5bc3bcd74eb7"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialBoundary": {
+    "file": "official/chenini-two-sector-candidate-readiness.geojson",
+    "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d"
+  },
+  "supportingEvidence": [
+    {
+      "file": "point-retention-reviews/fresh-pbf-identity-facts.json",
+      "sha256": "a5a0257054959568f6e509b54172c3190cb3007399655e7836febd0ce45df8a7"
+    },
+    {
+      "file": "point-retention-reviews/chenini-exact-node-context-source-proof.json",
+      "sha256": "ab1461afe3044aec5c7ef66f4ee62c978e9c1664ce50f50b4bf20efb7f431a1b"
+    },
+    {
+      "file": "point-retention-reviews/ira-ird-chenini-2018.pdf",
+      "sha256": "8a9d3350aa878ed3e6f1750f146f42c6db10e0f59631f71313a2460603cbf164"
+    },
+    {
+      "file": "point-retention-reviews/gmg-chenini-village.html",
+      "sha256": "53ff898e44d47f3e402a1fa63378c0f0d38d23c0171373811f25615c3ab1e07c"
+    },
+    {
+      "file": "point-retention-reviews/gmg-oil-mills.html",
+      "sha256": "515d0aa660f237b43fed34142ecbc1abec72197fe215922fdd6a64f9e9865e06"
+    },
+    {
+      "file": "point-retention-reviews/chenini-eastern-name-only-addendum.json",
+      "sha256": "57fc874ac6198d55a59367e1b9e8c3f1e4ce4d689bf5f242888b5dedeb4caa7a"
+    },
+    {
+      "file": "point-retention-reviews/chenini-context-name-independent-review.json",
+      "sha256": "4afd2a6e337abc91ff30660b333f07b930c5c87145c571b3fda9768bc3ed124f"
+    },
+    {
+      "file": "point-retention-reviews/fresh-pbf-area-facts.json",
+      "sha256": "44e892d4404e9262117ef30ae0cdaaef6c49e62b42bb2321092b27b6d5782cef"
+    },
+    {
+      "file": "point-retention-reviews/decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+    },
+    {
+      "file": "point-retention-reviews/chenini.pdf",
+      "sha256": "6de89fef69504d0be66d75e07cacc9b4c135b2fffa64ff1bb9d74fb74ac8f4f5"
+    },
+    {
+      "file": "point-retention-reviews/new-chenini.pdf",
+      "sha256": "c91ebd050f74d8a97dbe38a2a69cfe505ba92166f1918c3a5b300d2ee74355cb"
+    },
+    {
+      "file": "point-retention-reviews/superseded-west-context-proof.json",
+      "sha256": "1a91de46e8df006525b4b7ce2a82cb040c768be0d2d4ca1c023623c18141cc11"
+    }
+  ],
+  "records": [
+    {
+      "pointId": "osm:node:297760994",
+      "sectorId": "osm:relation:7143881",
+      "officialCode": "535259",
+      "pointDecision": {
+        "id": "osm:node:297760994",
+        "expectedKind": "village",
+        "expectedTags": {
+          "addr:city": "Chenini",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "place": "village",
+          "wikidata": "Q2317502",
+          "wikimedia_commons": "Category:Chenini",
+          "wikipedia": "ar:شنني (تطاوين)"
+        },
+        "action": "preserve_point",
+        "reason": "Retain this exact previously selectable village ID and coordinate when its independently reviewed matching official sector is imported. Its own settlement coordinate remains the manual prayer reference; a paired final-group guard prevents merging the old and new villages.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A.pdf"
+        ]
+      },
+      "sectorDecision": {
+        "id": "osm:relation:7143881",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:fr": "Chenini",
+          "ref:tn:codegeo": "535259"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7143863",
+        "manualPointId": "osm:node:297760994",
+        "reason": "The complete official whole-imada source identifies this exact sector and existing village as one manual location choice. Use only that preserved source point inside both original official and packed footprints, retaining actual GPS lookup from the device coordinate.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A.pdf"
+        ]
+      },
+      "officialRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5352",
+        "delegationFr": "Tataouine sud",
+        "delegationAr": "تطاوين الجنوبية",
+        "sectorCode": "535259",
+        "sectorFr": "Chenini",
+        "sectorAr": "شنني",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64189,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3155,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3149
+        }
+      },
+      "originalGeometrySha256": "61051f7026a4d61c9bc5d66da61b8e497128d2b3ab95437f855eba13b2e2401c",
+      "previousPackedGeometrySha256": "39672a40c1e20894f5b35766c42648431ea3f0a8331bd28edc52c036b150d2ef",
+      "officialGeometrySha256": "ba710846883051dd13797a89954f1bbb704db4ba574911f2c464d19a65693bd8",
+      "officialPackedGeometrySha256": "50c0356663aee7812fb2e7cc48822109e747bea12e159ed6e29d3da97d3f33b4",
+      "expectedParentName": "معتمدية تطاوين الجنوبية"
+    },
+    {
+      "pointId": "osm:node:1975899618",
+      "sectorId": "osm:relation:7143823",
+      "officialCode": "535258",
+      "pointDecision": {
+        "id": "osm:node:1975899618",
+        "expectedKind": "village",
+        "expectedTags": {
+          "addr:city": "شنني",
+          "name": "شنني",
+          "name:ar": "شنني",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "place": "village",
+          "wikidata": "Q2317502",
+          "wikimedia_commons": "Category:Chenini",
+          "wikipedia": "ar:شنني (تطاوين)"
+        },
+        "action": "preserve_point",
+        "reason": "Retain this exact previously selectable village ID and coordinate when its independently reviewed matching official sector is imported. Its own settlement coordinate remains the manual prayer reference; a paired final-group guard prevents merging the old and new villages.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.pdf"
+        ],
+        "nameTags": {
+          "name": "شنني الجديدة",
+          "name:ar": "شنني الجديدة",
+          "name:en": "Chenini",
+          "name:fr": "Chenini",
+          "alt_name": "شنني"
+        }
+      },
+      "sectorDecision": {
+        "id": "osm:relation:7143823",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شنني الجديدة",
+          "name:ar": "شنني الجديدة",
+          "name:fr": "Nouvelle Chnini",
+          "ref:tn:codegeo": "535258"
+        },
+        "action": "administrative_context",
+        "delegationId": "osm:relation:7143863",
+        "manualPointId": "osm:node:1975899618",
+        "reason": "The complete official whole-imada source identifies this exact sector and existing village as one manual location choice. Use only that preserved source point inside both original official and packed footprints, retaining actual GPS lookup from the device coordinate.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.pdf"
+        ]
+      },
+      "officialRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5352",
+        "delegationFr": "Tataouine sud",
+        "delegationAr": "تطاوين الجنوبية",
+        "sectorCode": "535258",
+        "sectorFr": "Nouvelle chnini",
+        "sectorAr": "شنني الجديدة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64155,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3154,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3148
+        }
+      },
+      "originalGeometrySha256": "6539aa1c0a637b81b0aa6040a441d82cdf7ae4f2ae2efa2073385796a1262a06",
+      "previousPackedGeometrySha256": "f4906ed5896be12518fcd95dac2e123687b6072fffe250fd564825e4fed8b8fe",
+      "officialGeometrySha256": "7f15f951e731940e984903c5d81258cdf76d050a185a9d2c728b375602509863",
+      "officialPackedGeometrySha256": "5219035c71ebd7270eab1f92de6db3ec1853f65bcaf354c0c1d8b9a337127768",
+      "expectedParentName": "معتمدية تطاوين الجنوبية"
+    }
+  ],
+  "supersession": {
+    "pointId": "osm:node:297760994",
+    "previousDecision": {
+      "id": "osm:node:297760994",
+      "expectedKind": "village",
+      "expectedTags": {
+        "addr:city": "Chenini",
+        "name": "شنني",
+        "name:ar": "شنني",
+        "name:en": "Chenini",
+        "name:fr": "Chenini",
+        "place": "village",
+        "wikidata": "Q2317502",
+        "wikimedia_commons": "Category:Chenini",
+        "wikipedia": "ar:شنني (تطاوين)"
+      },
+      "action": "locality_context",
+      "reason": "Exact point is safely inside the official wholeChenini535259 circle and outside the officialNewChenini535258 circle in two independently registered source maps. The sector primary equals the village primary, so display the existing delegation context as subtitle while keeping the correct sector aliases searchable.",
+      "evidence": [
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.pdf",
+        "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf"
+      ],
+      "reviewEvidence": {
+        "file": "locality-context-reviews/chenini-west-context-proof.json",
+        "sha256": "1a91de46e8df006525b4b7ce2a82cb040c768be0d2d4ca1c023623c18141cc11"
+      }
+    },
+    "previousCuration": {
+      "file": "point-retention-reviews/before-catalog-curation.json",
+      "sha256": "f8d29f98f781266c4b94656cc02a589a59727a20de7c18277c2abeee6df00866"
+    },
+    "reason": "Import of the complete official Chenini boundary now supplies the correct administrative context before grouping. Retaining the old post-context before-record assertion would contradict this reviewed boundary/group transition. Preserve its original source proof unchanged as historical evidence."
+  }
+}

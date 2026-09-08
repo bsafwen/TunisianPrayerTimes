@@ -1,0 +1,1431 @@
+{
+  "schemaVersion": 1,
+  "status": "TWO_EXACT_POINT_BASE_IDENTITIES_SUPPORTED_IMPLEMENTATION_NOT_STAGED",
+  "createdAt": "2026-09-08T01:05:57.237746+00:00",
+  "inputPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "f3df92c8e4c5fe5878d6e8f506cff13ec037a86ae1fa75f6326eb7c67d72f789"
+    },
+    "geometry": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272"
+    },
+    "governors": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "20cdb11ccc5eb4f4eb07198b222a16bd1f5493224487185e6f3a6cf593857084"
+    },
+    "coordinateManifest": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "726b1c6480a0d6c1a46f11bfd5e2fd8b39de2f52badd979f2089e0e8b9f8926b"
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "87693004701c62e3095001af8fdffd740d924c0e634b5d66b45821118c66f3ce"
+    },
+    "picker": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "14ea87aa0a2bcff26007668803c04d7ed2420dba4b6ed7452966767b658b7e98"
+    },
+    "generator": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "b795dde8c62cdefb77ac8701162de0088bafb835c3f3fe435ef22d256c2ef51f"
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "liveBatchSnapshot": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\candidate-place-nodes-second-live.json",
+      "sha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+    },
+    "originalReferenceProposal": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\prayer-source-coordinate-second-proposals.json",
+      "sha256": "fa48457e551385ca9660915b2d627706907a1db421b47ca855b10cc1bde2b0e4"
+    },
+    "originalReferenceAcquisitionScript": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\prepare_source_points_second_review.py",
+      "sha256": "f93b3972094ca9117033e9dc740d941bdf5c9414a58c70b8eebc025dfa2449f3"
+    },
+    "originalReferenceApplicationScript": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\apply_second_source_coordinate_corrections.py",
+      "sha256": "0df6487fb87f6431e8102cf651cd38eb4d93504da606cdd9d965684d2b925329"
+    },
+    "officialRegistry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "candidateScreen": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\kalaa-current-cross-group-base-alias-screen.json",
+      "sha256": "8fe74b9b11785606fc8d291b204d91764671bc436aaff84dc5e42dfc702195f3"
+    }
+  },
+  "records": [
+    {
+      "baseId": 1084,
+      "pointId": "osm:node:2402352381",
+      "decision": "SUPPORTED_EXACT_POINT_BASE_DISPLAY_ASSOCIATION",
+      "currentPoint": {
+        "id": "osm:node:2402352381",
+        "sourceId": "osm",
+        "name": "رجيش",
+        "aliases": [
+          "Rejiche",
+          "Реджиш"
+        ],
+        "kind": "village",
+        "parentName": "رجيش الجنوبية",
+        "contextAliases": [
+          "Rejiche",
+          "Rejiche Sud",
+          "رجيش",
+          "رجيش الجنوبية",
+          "معتمدية رجيش"
+        ],
+        "governorateId": 345,
+        "lat": 35.4655214,
+        "lng": 11.0416985,
+        "delegationId": 1084,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2402352381"
+      },
+      "currentBase": {
+        "id": 1084,
+        "nomFr": "Rejiche",
+        "nomAr": "الرجيش",
+        "nomEn": "Rejiche",
+        "lat": 35.4655214,
+        "lng": 11.0416985
+      },
+      "governorate": {
+        "id": 345,
+        "nomFr": "Mahdia",
+        "nomAr": "المهدية",
+        "nomEn": "Mahdia",
+        "lat": 35.5047,
+        "lng": 11.0622
+      },
+      "existingCorrection": {
+        "delegationId": 1084,
+        "expectedGovernorateId": 345,
+        "expectedNames": {
+          "nomAr": "الرجيش",
+          "nomFr": "Rejiche",
+          "nomEn": "Rejiche"
+        },
+        "reviewedDate": "2026-09-07",
+        "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+        "original": {
+          "lat": 35.4621,
+          "lng": 11.0132
+        },
+        "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+        "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+        "proposed": {
+          "lat": 35.4655214,
+          "lng": 11.0416985
+        },
+        "movedKm": 2.6088912877312027,
+        "osm": {
+          "id": "osm:node:2402352381",
+          "url": "https://www.openstreetmap.org/node/2402352381",
+          "apiUrl": "https://api.openstreetmap.org/api/0.6/node/2402352381.json",
+          "version": 17,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "name": "رجيش",
+          "place": "village"
+        },
+        "osmEvidence": {
+          "retrieved": "2026-09-07",
+          "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+          "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+        },
+        "geonames": {
+          "id": 2473274,
+          "name": "Rejiche",
+          "lat": 35.46665,
+          "lng": 11.03848,
+          "featureCode": "PPL",
+          "modified": "2026-06-23",
+          "url": "https://www.geonames.org/2473274",
+          "distanceToProposedKm": 0.3173469632204843,
+          "featureClass": "P"
+        },
+        "phoneVisualReview": {
+          "reviewedDate": "2026-09-07",
+          "decision": "approved_settlement_reference",
+          "report": "outputs/phone-source-point-second-review-first-eight.json",
+          "reportSha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73",
+          "proposedObservation": "The proposed pin is embedded in the dense street network directly on the Rejiche / رجيش settlement label. The selected NurvaDev business address explicitly says Place de l'indépendance Rejiche.",
+          "originalObservation": "The original view has sparse roads and a pin away from the dense mapped town network; the card says Unnamed location, Near Rejiche.",
+          "limitation": "The business card may be a nearby selection. The map context supports a Rejiche settlement reference, not the exact coordinates of that business.",
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false,
+          "observations": [
+            {
+              "role": "proposed",
+              "point": {
+                "lat": 35.4655214,
+                "lng": 11.0416985
+              },
+              "requestedQuery": "35.4655214,11.0416985",
+              "observedAt": "2026-09-07T06:25:06.276397+00:00",
+              "screenshot": "outputs/phone-maps-review/delegation_1084-2.png",
+              "screenshotSha256": "32ca8dd18a363178618bebca395d0040015fd595f5034e856572528c87898727",
+              "observationJson": "outputs/phone-maps-review/delegation_1084-2.json",
+              "observationJsonSha256": "aa91e740480ce4485f1feba01bcefbda5b6470834d5885a6161fb783a3285d5b",
+              "visuallyReviewed": true,
+              "exactCoordinateCertified": false,
+              "boundaryVerified": false
+            },
+            {
+              "role": "original",
+              "point": {
+                "lat": 35.4621,
+                "lng": 11.0132
+              },
+              "requestedQuery": "35.4621,11.0132",
+              "observedAt": "2026-09-07T06:25:13.114072+00:00",
+              "screenshot": "outputs/phone-maps-review/delegation_1084-3.png",
+              "screenshotSha256": "374a75c99c79cf527542d98b63463d4da2ced8ea1887dbf0c8ba72df3e18ae6f",
+              "observationJson": "outputs/phone-maps-review/delegation_1084-3.json",
+              "observationJsonSha256": "f6be07b761704bee2292cb5f4a99e7a2d02b746c52d629a7d69ec2faf1afdb01",
+              "visuallyReviewed": true,
+              "exactCoordinateCertified": false,
+              "boundaryVerified": false
+            }
+          ]
+        }
+      },
+      "existingCorrectionCanonicalSha256": "08785297bee530ae5d15cecd79a4c5cc442ebe5ffa773d2892db63f72454d846",
+      "originalCachedNode": {
+        "id": "osm:node:2402352381",
+        "tags": {
+          "addr:city": "Rejiche",
+          "addr:governorate": "Mahdia",
+          "name": "رجيش",
+          "name:ar": "رجيش",
+          "name:en": "Rejiche",
+          "name:fr": "Rejiche",
+          "name:ru": "Реджиш",
+          "place": "village",
+          "population": "8925",
+          "postal_code": "5121",
+          "wikidata": "Q2742387",
+          "wikimedia_commons": "Category:Rejiche",
+          "wikipedia": "fr:Rejiche"
+        },
+        "lat": 35.4655214,
+        "lng": 11.0416985
+      },
+      "exactLiveBatchNode": {
+        "type": "node",
+        "id": 2402352381,
+        "lat": 35.4655214,
+        "lon": 11.0416985,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "version": 17,
+        "changeset": 179509225,
+        "user": "Johnwhelan",
+        "uid": 186592,
+        "tags": {
+          "addr:city": "Rejiche",
+          "addr:governorate": "Mahdia",
+          "name": "رجيش",
+          "name:ar": "رجيش",
+          "name:en": "Rejiche",
+          "name:fr": "Rejiche",
+          "name:ru": "Реджиш",
+          "place": "village",
+          "population": "8925",
+          "postal_code": "5121",
+          "wikidata": "Q2742387",
+          "wikimedia_commons": "Category:Rejiche",
+          "wikipedia": "fr:Rejiche"
+        }
+      },
+      "originalAndLiveTagsAndCoordinatesEqual": true,
+      "completeMatchingSourceNameInventory": [
+        {
+          "id": "osm:relation:7152268",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رجيش",
+            "name:ar": "رجيش",
+            "name:fr": "Rejiche",
+            "ref:tn:codegeo": "335154"
+          },
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "osm:node:2402352381",
+          "tags": {
+            "addr:city": "Rejiche",
+            "addr:governorate": "Mahdia",
+            "name": "رجيش",
+            "name:ar": "رجيش",
+            "name:en": "Rejiche",
+            "name:fr": "Rejiche",
+            "name:ru": "Реджиш",
+            "place": "village",
+            "population": "8925",
+            "postal_code": "5121",
+            "wikidata": "Q2742387",
+            "wikimedia_commons": "Category:Rejiche",
+            "wikipedia": "fr:Rejiche"
+          },
+          "lat": 35.4655214,
+          "lng": 11.0416985
+        }
+      ],
+      "completeMatchingCurrentNameInventory": [
+        {
+          "id": "osm:relation:7152268",
+          "sourceId": "osm",
+          "name": "رجيش",
+          "aliases": [
+            "Rejiche"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رجيش",
+          "contextAliases": [
+            "Rejiche",
+            "رجيش",
+            "معتمدية رجيش"
+          ],
+          "governorateId": 345,
+          "lat": 35.46223,
+          "lng": 11.013784,
+          "delegationId": 1084,
+          "hasBoundary": true,
+          "bbox": [
+            10.969256,
+            35.442606,
+            11.054202,
+            35.481876
+          ],
+          "areaKm2": 8.418822076245583,
+          "pickerGroupId": "osm:relation:7152268",
+          "offset": 3037180,
+          "length": 2420
+        },
+        {
+          "id": "osm:node:2402352381",
+          "sourceId": "osm",
+          "name": "رجيش",
+          "aliases": [
+            "Rejiche",
+            "Реджиш"
+          ],
+          "kind": "village",
+          "parentName": "رجيش الجنوبية",
+          "contextAliases": [
+            "Rejiche",
+            "Rejiche Sud",
+            "رجيش",
+            "رجيش الجنوبية",
+            "معتمدية رجيش"
+          ],
+          "governorateId": 345,
+          "lat": 35.4655214,
+          "lng": 11.0416985,
+          "delegationId": 1084,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2402352381"
+        }
+      ],
+      "officialParentCode": "3362",
+      "officialParentName": "رجيش",
+      "preservedSectorInventory": [
+        {
+          "id": "osm:relation:7152268",
+          "officialIdentity": {
+            "governorateCode": "33",
+            "governorateFr": "Mahdia",
+            "governorateAr": "المهدية",
+            "delegationCode": "3362",
+            "delegationFr": "Rejiche",
+            "delegationAr": "رجيش",
+            "sectorCode": "336251",
+            "sectorFr": "Rejiche",
+            "sectorAr": "رجيش",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41819,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2010,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2006
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رجيش",
+            "name:ar": "رجيش",
+            "name:fr": "Rejiche",
+            "ref:tn:codegeo": "335154"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7152268",
+            "sourceId": "osm",
+            "name": "رجيش",
+            "aliases": [
+              "Rejiche"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رجيش",
+            "contextAliases": [
+              "Rejiche",
+              "رجيش",
+              "معتمدية رجيش"
+            ],
+            "governorateId": 345,
+            "lat": 35.46223,
+            "lng": 11.013784,
+            "delegationId": 1084,
+            "hasBoundary": true,
+            "bbox": [
+              10.969256,
+              35.442606,
+              11.054202,
+              35.481876
+            ],
+            "areaKm2": 8.418822076245583,
+            "pickerGroupId": "osm:relation:7152268",
+            "offset": 3037180,
+            "length": 2420
+          },
+          "originalSourceGeometrySha256": "2dc9564cb4ecb5d8678e7b28bf9697a825e404aa8dcbec452d1bed25583e74c6",
+          "packedGeometrySha256": "d7195073dc2d1324ec6ce07a00eb9b05f7413114ef24717229430058a7287687",
+          "sourceCoversNamedPoint": false,
+          "existingCurationForSourceToCurrentCode": {
+            "id": "osm:relation:7152268",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "رجيش",
+              "ref:tn:codegeo": "335154"
+            },
+            "action": "administrative_context",
+            "parentNames": [
+              "معتمدية رجيش",
+              "رجيش",
+              "Rejiche"
+            ],
+            "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3362 (Rejiche), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+            "evidence": [
+              "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=86",
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "reviewedOfficialSector": {
+              "sectorCode": "336251",
+              "sectorAr": "رجيش",
+              "sectorFr": "Rejiche",
+              "delegationCode": "3362",
+              "delegationAr": "رجيش",
+              "delegationFr": "Rejiche",
+              "governorateCode": "33",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41819,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2010,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2006
+              }
+            },
+            "identityReview": {
+              "oldOfficialSectorCode": "335154",
+              "oldOfficialPages": [
+                86
+              ],
+              "oldParentSourceIds": [
+                "osm:relation:7152227"
+              ],
+              "oldParentFullyContainsSourceSector": true,
+              "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+            },
+            "unresolved": [
+              "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+            ]
+          },
+          "codeRelationship": "reviewed old3351-to-current3362 transfer; do not mutate old source tags"
+        },
+        {
+          "id": "osm:relation:7152267",
+          "officialIdentity": {
+            "governorateCode": "33",
+            "governorateFr": "Mahdia",
+            "governorateAr": "المهدية",
+            "delegationCode": "3362",
+            "delegationFr": "Rejiche",
+            "delegationAr": "رجيش",
+            "sectorCode": "336252",
+            "sectorFr": "Rejiche sud",
+            "sectorAr": "رجيش الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41853,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2012,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2008
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رجيش الجنوبية",
+            "name:ar": "رجيش الجنوبية",
+            "name:fr": "Rejiche Sud",
+            "ref:tn:codegeo": "335155"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7152267",
+            "sourceId": "osm",
+            "name": "رجيش الجنوبية",
+            "aliases": [
+              "Rejiche Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رجيش",
+            "contextAliases": [
+              "Rejiche",
+              "رجيش",
+              "معتمدية رجيش"
+            ],
+            "governorateId": 345,
+            "lat": 35.460833,
+            "lng": 11.036551,
+            "delegationId": 1084,
+            "hasBoundary": true,
+            "bbox": [
+              11.011985,
+              35.44045,
+              11.054919,
+              35.481331
+            ],
+            "areaKm2": 7.111064829556625,
+            "pickerGroupId": "osm:relation:7152267",
+            "offset": 3035328,
+            "length": 1852
+          },
+          "originalSourceGeometrySha256": "2d136c05fbf1be26fe1ea874b159d58063abce05e405666307bd864c7d80cfa7",
+          "packedGeometrySha256": "acc2379787af2b1dc72639fdfd4e9714aa0f6683ddde2e64850e77e899395617",
+          "sourceCoversNamedPoint": true,
+          "existingCurationForSourceToCurrentCode": {
+            "id": "osm:relation:7152267",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "رجيش الجنوبية",
+              "ref:tn:codegeo": "335155"
+            },
+            "action": "administrative_context",
+            "parentNames": [
+              "معتمدية رجيش",
+              "رجيش",
+              "Rejiche"
+            ],
+            "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 3362 (Rejiche), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+            "evidence": [
+              "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=86",
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "reviewedOfficialSector": {
+              "sectorCode": "336252",
+              "sectorAr": "رجيش الجنوبية",
+              "sectorFr": "Rejiche sud",
+              "delegationCode": "3362",
+              "delegationAr": "رجيش",
+              "delegationFr": "Rejiche",
+              "governorateCode": "33",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 41853,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2012,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2008
+              }
+            },
+            "identityReview": {
+              "oldOfficialSectorCode": "335155",
+              "oldOfficialPages": [
+                86
+              ],
+              "oldParentSourceIds": [
+                "osm:relation:7152227"
+              ],
+              "oldParentFullyContainsSourceSector": true,
+              "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+            },
+            "unresolved": [
+              "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+            ]
+          },
+          "codeRelationship": "reviewed old3351-to-current3362 transfer; do not mutate old source tags"
+        }
+      ],
+      "sourceGovernoratePolygon": {
+        "id": "osm:relation:1434955",
+        "sourceGeometrySha256": "34be1e4d583e6fb4788cc9239230c11edd8e281c27fdeb7313a8ce0e8c6b42d1",
+        "containsPoint": true
+      },
+      "cachedPhoneEvidencePersonallyViewed": {
+        "review": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-source-point-second-review-first-eight.json",
+          "sha256": "d70e23af0c0b01e967af6cf4cf868e45e089df5949cb9ac4843a2e7a16772c73"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1084-2.png",
+          "sha256": "32ca8dd18a363178618bebca395d0040015fd595f5034e856572528c87898727"
+        },
+        "capture": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1084-2.json",
+          "sha256": "aa91e740480ce4485f1feba01bcefbda5b6470834d5885a6161fb783a3285d5b"
+        },
+        "qualification": "Rejiche: nearby business card, settlement label/context only; not the exact business coordinate."
+      },
+      "identityReason": "The approved correction expressly names this exact OSM village and binds its coordinate to this source row. Its full source name/address tags and INS locality identity corroborate the same settlement; differing bundled Arabic spelling is not a second place. Coincidence/shared aliases alone are not used as identity proof.",
+      "proposedOnlyRawChange": {
+        "id": "osm:node:2402352381",
+        "field": "pickerGroupId",
+        "before": "osm:node:2402352381",
+        "after": "delegation:1084"
+      },
+      "expectedBeforeGroups": [
+        {
+          "id": "osm:node:2402352381",
+          "memberIds": [
+            "osm:node:2402352381"
+          ]
+        },
+        {
+          "id": "delegation:1084",
+          "memberIds": [
+            "delegation:1084"
+          ]
+        }
+      ],
+      "expectedAfterGroups": [
+        {
+          "id": "delegation:1084",
+          "memberIds": [
+            "delegation:1084",
+            "osm:node:2402352381"
+          ]
+        }
+      ],
+      "sectorScopeQualification": "Retain both Rejiche imadas, their old source codes and reviewed3362 context."
+    },
+    {
+      "baseId": 569,
+      "pointId": "osm:node:1132950382",
+      "decision": "SUPPORTED_EXACT_POINT_BASE_DISPLAY_ASSOCIATION",
+      "currentPoint": {
+        "id": "osm:node:1132950382",
+        "sourceId": "osm",
+        "name": "ماتلين",
+        "aliases": [
+          "Metline",
+          "Al Matlin",
+          "Метлин"
+        ],
+        "kind": "village",
+        "parentName": "الماتلين الغربية",
+        "contextAliases": [
+          "Délégation Ras Jebel",
+          "Metline-Ouest",
+          "Ras Jebel",
+          "الماتلين الغربية",
+          "معتمدية رأس الجبل"
+        ],
+        "governorateId": 361,
+        "lat": 37.2441137,
+        "lng": 10.047511,
+        "delegationId": 569,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1132950382"
+      },
+      "currentBase": {
+        "id": 569,
+        "nomFr": "Al Matlin ",
+        "nomAr": "المتلين",
+        "nomEn": "Al Matlin ",
+        "lat": 37.2441137,
+        "lng": 10.047511
+      },
+      "governorate": {
+        "id": 361,
+        "nomFr": "Bizerte",
+        "nomAr": "بنزرت",
+        "nomEn": "Bizerte",
+        "lat": 37.2744,
+        "lng": 9.8739
+      },
+      "existingCorrection": {
+        "delegationId": 569,
+        "expectedGovernorateId": 361,
+        "expectedNames": {
+          "nomAr": "المتلين",
+          "nomFr": "Al Matlin ",
+          "nomEn": "Al Matlin "
+        },
+        "reviewedDate": "2026-09-07",
+        "reviewBatchId": "2026-09-07-second-settlement-reference-review",
+        "original": {
+          "lat": 37.21,
+          "lng": 10.02
+        },
+        "originalSourceAssetSha256": "95a595ba8b1f89790c8e3503fbf9834b9239bdf46787c7b3d5a0904802b3432b",
+        "originalProvenance": "Legacy coordinate in the pre-second-review Android source asset identified by originalSourceAssetSha256. The earlier twelve corrections were already present; the external origin of this unchanged legacy point was not documented.",
+        "proposed": {
+          "lat": 37.2441137,
+          "lng": 10.047511
+        },
+        "movedKm": 4.507983344566727,
+        "osm": {
+          "id": "osm:node:1132950382",
+          "url": "https://www.openstreetmap.org/node/1132950382",
+          "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1132950382.json",
+          "version": 8,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "name": "ماتلين",
+          "place": "village"
+        },
+        "osmEvidence": {
+          "retrieved": "2026-09-07",
+          "liveNodeResponseUrl": "https://api.openstreetmap.org/api/0.6/nodes.json?nodes=2028879938,2402352381,352839775,298020344,1439531928,1444704293,287588734,1837034352,434547646,559394563,1132950382,1165832678,2165194615,3203082588,2177334841",
+          "liveNodeResponseSha256": "9dc0109132d20c5abc3a081d95f84e3563053ddfcd0a3c5c7ff40129ab6602f5"
+        },
+        "geonames": {
+          "id": 2473533,
+          "name": "Al Matlīn",
+          "lat": 37.24516,
+          "lng": 10.05,
+          "featureCode": "PPL",
+          "modified": "2024-12-02",
+          "url": "https://www.geonames.org/2473533",
+          "distanceToProposedKm": 0.24915232644298219,
+          "featureClass": "P"
+        },
+        "phoneVisualReview": {
+          "reviewedDate": "2026-09-07",
+          "decision": "approved_settlement_reference",
+          "report": "outputs/phone-source-point-second-review-last-seven.json",
+          "reportSha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea",
+          "proposedObservation": "Pin is in the Metline street network beside the Metline/ماتلين label, near CTRE VILLE/وسط البلاد. The card is Metline.",
+          "originalObservation": "Pin is on a green land area without a settlement street grid; the card says Unnamed location, Near El Garia.",
+          "limitation": "This supports moving the town reference into Metline; it does not certify an administrative boundary or the land cover at the old point.",
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false,
+          "observations": [
+            {
+              "role": "proposed",
+              "point": {
+                "lat": 37.2441137,
+                "lng": 10.047511
+              },
+              "requestedQuery": "37.2441137,10.047511",
+              "observedAt": "2026-09-07T06:27:15.367672+00:00",
+              "screenshot": "outputs/phone-maps-review/delegation_569-2.png",
+              "screenshotSha256": "ca07de52606d925dab8caafa76596e36d2cf57b98905eaa54d7e2725918d3e76",
+              "observationJson": "outputs/phone-maps-review/delegation_569-2.json",
+              "observationJsonSha256": "e4eaa35c357e0621c26ea32b80ed9c322f98b36024125924ffdc2cb875a666a0",
+              "visuallyReviewed": true,
+              "exactCoordinateCertified": false,
+              "boundaryVerified": false
+            },
+            {
+              "role": "original",
+              "point": {
+                "lat": 37.21,
+                "lng": 10.02
+              },
+              "requestedQuery": "37.21,10.02",
+              "observedAt": "2026-09-07T06:27:22.188644+00:00",
+              "screenshot": "outputs/phone-maps-review/delegation_569-3.png",
+              "screenshotSha256": "12955311b790af959dc6e49f733ac9f4f5f67a4fd411910d770c5fdc9175a2d2",
+              "observationJson": "outputs/phone-maps-review/delegation_569-3.json",
+              "observationJsonSha256": "4bbbf1071e3de7eccd080d7a2757e0585bb29b02d82de581aa973f2a06dcc48f",
+              "visuallyReviewed": true,
+              "exactCoordinateCertified": false,
+              "boundaryVerified": false
+            }
+          ]
+        }
+      },
+      "existingCorrectionCanonicalSha256": "9f3a83eb595475631df5898d107ddcf1385389ff2ab6744cd9d3a726274187b0",
+      "originalCachedNode": {
+        "id": "osm:node:1132950382",
+        "tags": {
+          "addr:city": "الماتلين",
+          "name": "ماتلين",
+          "name:ar": "ماتلين",
+          "name:de": "Al Matlin",
+          "name:en": "Al Matlin",
+          "name:fr": "Metline",
+          "name:ru": "Метлин",
+          "place": "village"
+        },
+        "lat": 37.2441137,
+        "lng": 10.047511
+      },
+      "exactLiveBatchNode": {
+        "type": "node",
+        "id": 1132950382,
+        "lat": 37.2441137,
+        "lon": 10.047511,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "version": 8,
+        "changeset": 179509225,
+        "user": "Johnwhelan",
+        "uid": 186592,
+        "tags": {
+          "addr:city": "الماتلين",
+          "name": "ماتلين",
+          "name:ar": "ماتلين",
+          "name:de": "Al Matlin",
+          "name:en": "Al Matlin",
+          "name:fr": "Metline",
+          "name:ru": "Метлин",
+          "place": "village"
+        }
+      },
+      "originalAndLiveTagsAndCoordinatesEqual": true,
+      "completeMatchingSourceNameInventory": [
+        {
+          "id": "osm:relation:7119207",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ماتلين",
+            "name:ar": "ماتلين",
+            "name:fr": "Metline",
+            "ref:tn:codegeo": "176453"
+          },
+          "lat": null,
+          "lng": null
+        },
+        {
+          "id": "osm:node:1132950382",
+          "tags": {
+            "addr:city": "الماتلين",
+            "name": "ماتلين",
+            "name:ar": "ماتلين",
+            "name:de": "Al Matlin",
+            "name:en": "Al Matlin",
+            "name:fr": "Metline",
+            "name:ru": "Метлин",
+            "place": "village"
+          },
+          "lat": 37.2441137,
+          "lng": 10.047511
+        }
+      ],
+      "completeMatchingCurrentNameInventory": [
+        {
+          "id": "osm:relation:7119207",
+          "sourceId": "osm",
+          "name": "ماتلين",
+          "aliases": [
+            "Metline"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رأس الجبل",
+          "contextAliases": [
+            "Délégation Ras Jebel",
+            "Ras Jebel",
+            "معتمدية رأس الجبل"
+          ],
+          "governorateId": 361,
+          "lat": 37.242091,
+          "lng": 10.06795,
+          "delegationId": 569,
+          "hasBoundary": true,
+          "bbox": [
+            10.024955,
+            37.215142,
+            10.089341,
+            37.268906
+          ],
+          "areaKm2": 12.181490390124239,
+          "pickerGroupId": "osm:relation:7119207",
+          "offset": 1056956,
+          "length": 7236
+        },
+        {
+          "id": "osm:node:1132950382",
+          "sourceId": "osm",
+          "name": "ماتلين",
+          "aliases": [
+            "Metline",
+            "Al Matlin",
+            "Метлин"
+          ],
+          "kind": "village",
+          "parentName": "الماتلين الغربية",
+          "contextAliases": [
+            "Délégation Ras Jebel",
+            "Metline-Ouest",
+            "Ras Jebel",
+            "الماتلين الغربية",
+            "معتمدية رأس الجبل"
+          ],
+          "governorateId": 361,
+          "lat": 37.2441137,
+          "lng": 10.047511,
+          "delegationId": 569,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:1132950382"
+        }
+      ],
+      "officialParentCode": "1764",
+      "officialParentName": "راس الجبل",
+      "preservedSectorInventory": [
+        {
+          "id": "osm:relation:7119270",
+          "officialIdentity": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1764",
+            "delegationFr": "Ras djebel",
+            "delegationAr": "راس الجبل",
+            "sectorCode": "176451",
+            "sectorFr": "Ras el djebel nord",
+            "sectorAr": "رأس الجبل الشمالية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19618,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 868,
+              "Nombre_de_menages_par_Secteurs.xlsx": 867
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رأس الجبل الشمالية",
+            "name:ar": "رأس الجبل الشمالية",
+            "name:fr": "Ras Jebel Nord",
+            "ref:tn:codegeo": "176451"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7119270",
+            "sourceId": "osm",
+            "name": "رأس الجبل الشمالية",
+            "aliases": [
+              "Ras Jebel Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رأس الجبل",
+            "contextAliases": [
+              "Délégation Ras Jebel",
+              "Ras Jebel",
+              "معتمدية رأس الجبل"
+            ],
+            "governorateId": 361,
+            "lat": 37.218277,
+            "lng": 10.142804,
+            "delegationId": 564,
+            "hasBoundary": true,
+            "bbox": [
+              10.08,
+              37.196742,
+              10.165549,
+              37.239799
+            ],
+            "areaKm2": 14.98761180629358,
+            "pickerGroupId": "osm:relation:7119270",
+            "offset": 1068764,
+            "length": 3572
+          },
+          "originalSourceGeometrySha256": "4f9f955cb52cbad1144e95d08bd2db39173c1f76a6ebf7c006243ec970874f75",
+          "packedGeometrySha256": "72692f7b68b103013c54b825da717245cb63b5ffc308af0d64b004cf5199d98f",
+          "sourceCoversNamedPoint": false,
+          "existingCurationForSourceToCurrentCode": null,
+          "codeRelationship": "same original/current official code"
+        },
+        {
+          "id": "osm:relation:7119269",
+          "officialIdentity": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1764",
+            "delegationFr": "Ras djebel",
+            "delegationAr": "راس الجبل",
+            "sectorCode": "176452",
+            "sectorFr": "Ras el djebel sud",
+            "sectorAr": "رأس الجبل الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19652,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 870,
+              "Nombre_de_menages_par_Secteurs.xlsx": 869
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رأس الجبل الجنوبية",
+            "name:ar": "رأس الجبل الجنوبية",
+            "name:fr": "Ras Jebel Sud",
+            "ref:tn:codegeo": "176452"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7119269",
+            "sourceId": "osm",
+            "name": "رأس الجبل الجنوبية",
+            "aliases": [
+              "Ras Jebel Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رأس الجبل",
+            "contextAliases": [
+              "Délégation Ras Jebel",
+              "Ras Jebel",
+              "معتمدية رأس الجبل"
+            ],
+            "governorateId": 361,
+            "lat": 37.211978,
+            "lng": 10.105746,
+            "delegationId": 564,
+            "hasBoundary": true,
+            "bbox": [
+              10.063569,
+              37.19004,
+              10.135522,
+              37.234015
+            ],
+            "areaKm2": 14.56812414275906,
+            "pickerGroupId": "osm:relation:7119269",
+            "offset": 1067680,
+            "length": 1084
+          },
+          "originalSourceGeometrySha256": "40e212b7cbc6f737543e2039fb077f89905994b44aac9a92738527cdcf9de631",
+          "packedGeometrySha256": "1855c4995caa5c5e035c9e1029ef63f9d422603a4ea3f5811ff399f3a3d3204a",
+          "sourceCoversNamedPoint": false,
+          "existingCurationForSourceToCurrentCode": null,
+          "codeRelationship": "same original/current official code"
+        },
+        {
+          "id": "osm:relation:7119207",
+          "officialIdentity": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1764",
+            "delegationFr": "Ras djebel",
+            "delegationAr": "راس الجبل",
+            "sectorCode": "176453",
+            "sectorFr": "Metline",
+            "sectorAr": "الماتلين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19686,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 872,
+              "Nombre_de_menages_par_Secteurs.xlsx": 871
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ماتلين",
+            "name:ar": "ماتلين",
+            "name:fr": "Metline",
+            "ref:tn:codegeo": "176453"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7119207",
+            "sourceId": "osm",
+            "name": "ماتلين",
+            "aliases": [
+              "Metline"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رأس الجبل",
+            "contextAliases": [
+              "Délégation Ras Jebel",
+              "Ras Jebel",
+              "معتمدية رأس الجبل"
+            ],
+            "governorateId": 361,
+            "lat": 37.242091,
+            "lng": 10.06795,
+            "delegationId": 569,
+            "hasBoundary": true,
+            "bbox": [
+              10.024955,
+              37.215142,
+              10.089341,
+              37.268906
+            ],
+            "areaKm2": 12.181490390124239,
+            "pickerGroupId": "osm:relation:7119207",
+            "offset": 1056956,
+            "length": 7236
+          },
+          "originalSourceGeometrySha256": "af4b7343a9dae5993abe542b2331e713ea86ceb875898533efa04ea70161bc8b",
+          "packedGeometrySha256": "3454c3b8ee46e0ca47b1b1f4df79edc7df1f1277cbe65dae00854c95738568b4",
+          "sourceCoversNamedPoint": false,
+          "existingCurationForSourceToCurrentCode": null,
+          "codeRelationship": "same original/current official code"
+        },
+        {
+          "id": "osm:relation:7119206",
+          "officialIdentity": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1764",
+            "delegationFr": "Ras djebel",
+            "delegationAr": "راس الجبل",
+            "sectorCode": "176454",
+            "sectorFr": "Metline ouest",
+            "sectorAr": "الماتلين الغربية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19720,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 874,
+              "Nombre_de_menages_par_Secteurs.xlsx": 873
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الماتلين الغربية",
+            "name:ar": "الماتلين الغربية",
+            "name:fr": "Metline-Ouest",
+            "ref:tn:codegeo": "176454"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7119206",
+            "sourceId": "osm",
+            "name": "الماتلين الغربية",
+            "aliases": [
+              "Metline-Ouest"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رأس الجبل",
+            "contextAliases": [
+              "Délégation Ras Jebel",
+              "Ras Jebel",
+              "معتمدية رأس الجبل"
+            ],
+            "governorateId": 361,
+            "lat": 37.240219,
+            "lng": 10.030888,
+            "delegationId": 569,
+            "hasBoundary": true,
+            "bbox": [
+              10.00847,
+              37.225812,
+              10.069306,
+              37.254668
+            ],
+            "areaKm2": 9.86423808460235,
+            "pickerGroupId": "osm:relation:7119206",
+            "offset": 1054280,
+            "length": 2676
+          },
+          "originalSourceGeometrySha256": "a7ebd3dbc20ab70a793ef6bdc10604aad0f09af367aaadb4bcacd60b1f24f671",
+          "packedGeometrySha256": "a439de0eaeebba19cb2f08813b9092ff910c5160cf6ca7af47aede00def26be6",
+          "sourceCoversNamedPoint": true,
+          "existingCurationForSourceToCurrentCode": null,
+          "codeRelationship": "same original/current official code"
+        },
+        {
+          "id": "osm:relation:7119336",
+          "officialIdentity": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1764",
+            "delegationFr": "Ras djebel",
+            "delegationAr": "راس الجبل",
+            "sectorCode": "176455",
+            "sectorFr": "Sounine",
+            "sectorAr": "صونين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19754,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 876,
+              "Nombre_de_menages_par_Secteurs.xlsx": 875
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "صونين",
+            "name:ar": "صونين",
+            "name:fr": "Sounine",
+            "ref:tn:codegeo": "176455",
+            "wikidata": "Q3491805"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7119336",
+            "sourceId": "osm",
+            "name": "صونين",
+            "aliases": [
+              "Sounine"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رأس الجبل",
+            "contextAliases": [
+              "Délégation Ras Jebel",
+              "Ras Jebel",
+              "معتمدية رأس الجبل"
+            ],
+            "governorateId": 361,
+            "lat": 37.20439,
+            "lng": 10.168592,
+            "delegationId": 563,
+            "hasBoundary": true,
+            "bbox": [
+              10.135892,
+              37.192645,
+              10.19321,
+              37.216657
+            ],
+            "areaKm2": 6.098941190481688,
+            "pickerGroupId": "osm:relation:7119336",
+            "offset": 1080684,
+            "length": 2756
+          },
+          "originalSourceGeometrySha256": "2aaaf120bbcf51332c230483af8766ff70127c6c71ed5de895a938ea94bf9ed1",
+          "packedGeometrySha256": "282856ed7f0f3442ab8afd75abbf08ed242c520784f7f63b665e9b5fc46affd2",
+          "sourceCoversNamedPoint": false,
+          "existingCurationForSourceToCurrentCode": null,
+          "codeRelationship": "same original/current official code"
+        },
+        {
+          "id": "osm:relation:7119335",
+          "officialIdentity": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1764",
+            "delegationFr": "Ras djebel",
+            "delegationAr": "راس الجبل",
+            "sectorCode": "176456",
+            "sectorFr": "Rafraf",
+            "sectorAr": "رفراف",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19788,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 878,
+              "Nombre_de_menages_par_Secteurs.xlsx": 877
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رفراف",
+            "name:ar": "رفراف",
+            "name:fr": "Rafraf",
+            "ref:tn:codegeo": "176456"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7119335",
+            "sourceId": "osm",
+            "name": "رفراف",
+            "aliases": [
+              "Rafraf"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رأس الجبل",
+            "contextAliases": [
+              "Délégation Ras Jebel",
+              "Ras Jebel",
+              "معتمدية رأس الجبل"
+            ],
+            "governorateId": 361,
+            "lat": 37.192281,
+            "lng": 10.169351,
+            "delegationId": 563,
+            "hasBoundary": true,
+            "bbox": [
+              10.125432,
+              37.176116,
+              10.279643,
+              37.20845
+            ],
+            "areaKm2": 16.03783281311167,
+            "pickerGroupId": "osm:relation:7119335",
+            "offset": 1072336,
+            "length": 8348
+          },
+          "originalSourceGeometrySha256": "9b6bf2fa1c243867fc5e4dd40f0f0562a194dd46067d17b5f188309811e5fac3",
+          "packedGeometrySha256": "9926d5d18e831d6ce7ac9d741755a1a40e55a6f6d8952cd4ccaf6c9455f8f8b4",
+          "sourceCoversNamedPoint": false,
+          "existingCurationForSourceToCurrentCode": null,
+          "codeRelationship": "same original/current official code"
+        },
+        {
+          "id": "osm:relation:7119205",
+          "officialIdentity": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1764",
+            "delegationFr": "Ras djebel",
+            "delegationAr": "راس الجبل",
+            "sectorCode": "176457",
+            "sectorFr": "El garia",
+            "sectorAr": "القرية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19822,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 880,
+              "Nombre_de_menages_par_Secteurs.xlsx": 879
+            }
+          },
+          "originalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القرية",
+            "name:ar": "القرية",
+            "name:fr": "El Garia",
+            "ref:tn:codegeo": "176457"
+          },
+          "currentMetadata": {
+            "id": "osm:relation:7119205",
+            "sourceId": "osm",
+            "name": "القرية",
+            "aliases": [
+              "El Garia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رأس الجبل",
+            "contextAliases": [
+              "Délégation Ras Jebel",
+              "Ras Jebel",
+              "معتمدية رأس الجبل"
+            ],
+            "governorateId": 361,
+            "lat": 37.218844,
+            "lng": 10.034981,
+            "delegationId": 569,
+            "hasBoundary": true,
+            "bbox": [
+              10.008127,
+              37.201295,
+              10.06624,
+              37.236098
+            ],
+            "areaKm2": 10.425870170502032,
+            "pickerGroupId": "osm:relation:7119205",
+            "offset": 1053516,
+            "length": 764
+          },
+          "originalSourceGeometrySha256": "562b081c7cc90bbe616e80756ba01a570e945ca12b5e51cf7bef074507f5549d",
+          "packedGeometrySha256": "5c52eb14c4413eae30db0797afb43dc88bf15eae266d3428a724dcae72dfec7f",
+          "sourceCoversNamedPoint": false,
+          "existingCurationForSourceToCurrentCode": null,
+          "codeRelationship": "same original/current official code"
+        }
+      ],
+      "sourceGovernoratePolygon": {
+        "id": "osm:relation:1435827",
+        "sourceGeometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4",
+        "containsPoint": true
+      },
+      "cachedPhoneEvidencePersonallyViewed": {
+        "review": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-source-point-second-review-last-seven.json",
+          "sha256": "ab01fadbdd2d742c16740a34c9e42504f8cc32c23ed7683bfe48f1daf218beea"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_569-2.png",
+          "sha256": "ca07de52606d925dab8caafa76596e36d2cf57b98905eaa54d7e2725918d3e76"
+        },
+        "capture": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_569-2.json",
+          "sha256": "e4eaa35c357e0621c26ea32b80ed9c322f98b36024125924ffdc2cb875a666a0"
+        },
+        "qualification": "Metline locality card plus settlement label/context; not a boundary or independent survey."
+      },
+      "identityReason": "The approved correction expressly names this exact OSM village and binds its coordinate to this source row. Its full source name/address tags and INS locality identity corroborate the same settlement; differing bundled Arabic spelling is not a second place. Coincidence/shared aliases alone are not used as identity proof.",
+      "proposedOnlyRawChange": {
+        "id": "osm:node:1132950382",
+        "field": "pickerGroupId",
+        "before": "osm:node:1132950382",
+        "after": "delegation:569"
+      },
+      "expectedBeforeGroups": [
+        {
+          "id": "osm:node:1132950382",
+          "memberIds": [
+            "osm:node:1132950382"
+          ]
+        },
+        {
+          "id": "delegation:569",
+          "memberIds": [
+            "delegation:569"
+          ]
+        }
+      ],
+      "expectedAfterGroups": [
+        {
+          "id": "delegation:569",
+          "memberIds": [
+            "delegation:569",
+            "osm:node:1132950382"
+          ]
+        }
+      ],
+      "sectorScopeQualification": "Metline is a named town within Ras Jebel1764, not a separate INS delegation. Retain Metline and Metline West and the full seven-sector Ras Jebel inventory; base569 is a prayer timetable location, not an administrative-code assertion."
+    }
+  ],
+  "supportedCount": 2,
+  "heldForIdentityCount": 0,
+  "rawChangesProposed": [
+    {
+      "id": "osm:node:2402352381",
+      "field": "pickerGroupId",
+      "before": "osm:node:2402352381",
+      "after": "delegation:1084"
+    },
+    {
+      "id": "osm:node:1132950382",
+      "field": "pickerGroupId",
+      "before": "osm:node:1132950382",
+      "after": "delegation:569"
+    }
+  ],
+  "expectedPickerCountDelta": -2,
+  "expectedRawCountDelta": 0,
+  "expectedUnchanged": [
+    "All point coordinates/defaults/raw IDs/names/context and aliases.",
+    "All29 coordinate correction objects and governor source rows.",
+    "All polygons/GPS data and every existing imada display group.",
+    "All retired-ID/name records."
+  ],
+  "existingKalaaGuardCompatibility": {
+    "directReuse": false,
+    "reasons": [
+      "Both legacy corrections omit inline osm.tags and osm.changeset; the byte-pinned15-node response contains the complete actual fields.",
+      "They use osmEvidence.liveNodeResponseSha256/liveNodeResponseUrl for one batch response, not the newer single-node liveResponse file reference.",
+      "They have reviewed OSM/GeoNames/cached phone evidence, not Kalaa-specific primaryCorroboration and sourceReviews fields. The source identity has separate existing INS corroboration.",
+      "Rejiche current official codes336251/336252 differ from original335154/335155. Two existing reviewed administrative_context decisions already establish that transition; the Kalaa helper currently requires source and current official codes to be identical.",
+      "Metline protected official inventory belongs to Ras Jebel1764. A portable proof must not infer a namesake administrative delegation from base569."
+    ],
+    "recommendedProofSchema": {
+      "method": "explicit versioned reviewed_legacy_batch_point_base_identity, separate from the unchanged current Kalaa v1 path",
+      "pair": "Exact pointId/baseId, both current primary names, full baseline metadata/default, full base and governor objects.",
+      "sourceReference": "Exact current correction object plus canonical per-object SHA; no whole-manifest dependency and no historical object rewrite.",
+      "batchSource": "Relative byte-pinned complete15-node JSON, exact known URL and expected15-ID inventory; require exactly one matching node and full version/timestamp/changeset/tags/coordinate equality with the new review and cached source.",
+      "existingSourceChecks": "Preserve all existing point-only, sourceId, kind, coordinate, governorate, named-reference ID and nearest available timetable checks. Original snapshot sourceId is absent; effective sourceId is osm.",
+      "administrativeIdentity": "Per-sector exact original tags/code and current official record. Same-code entries require equality; transferred entries require the exact existing curation object and old/current code mapping, without waiving any unrelated identity check.",
+      "evidence": "Pin the original reference proposal, cached review/report and current INS registry. Keep phone evidence historical with its original observation IDs; do not promote/copy observations or claim independent coordinate certification.",
+      "finalGuards": "Complete singleton-before and base+point-after groups, preserved raw fields/IDs and matching peer inventories, every protected sector metadata/packed bytes/group unchanged."
+    },
+    "notRecommended": [
+      "Making Kalaa-required keys optional with .get() fallbacks.",
+      "Adding missing tags/ministry fields into historical correction objects merely to satisfy a loader.",
+      "A generic fuzzy or shared-alias name equivalence rule.",
+      "Merging either namesake sector into its town/base."
+    ]
+  },
+  "implementationDecision": "Source-supported proposal only. No code or curation stage is produced in this task; the explicit legacy-proof branch and two exact records require separate authorized implementation/review.",
+  "limitations": [
+    "Official INS labels identify administrative units, not full urban boundaries. Their corroboration is combined with the explicit reviewed named-node reference.",
+    "Existing sector polygons remain unverified as current boundaries; this display-only change does not rely on treating their extent as a whole-town boundary.",
+    "No new primary source fetch, PBF scan, live phone action, ledger change, generator/helper execution, tests, build or app modification. Cached screenshots were read only."
+  ],
+  "reviewScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_rejiche_metline_point_base_identities.py",
+    "sha256": "ee7c2cc8c13c9008f19784731e109ae60d3ce86cb3f0089420204e81d99483e5"
+  }
+}

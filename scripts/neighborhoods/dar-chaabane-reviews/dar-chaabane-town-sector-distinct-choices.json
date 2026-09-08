@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "distinct_locality_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "records": [
+    {
+      "id": "osm:relation:7103335",
+      "originalKind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دار شعبان",
+        "name:ar": "دار شعبان",
+        "name:fr": "Dar Chaabane",
+        "ref:tn:codegeo": "155251"
+      },
+      "originalGeometrySha256": "3176dcdd680c683123e26a8474d17a9fde549e913a451c87ef865e30009d53b4",
+      "effectiveKind": "sector",
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دار شعبان",
+        "name:ar": "دار شعبان",
+        "name:fr": "Dar Chaabane",
+        "ref:tn:codegeo": "155251"
+      },
+      "effectiveGeometrySha256": "3176dcdd680c683123e26a8474d17a9fde549e913a451c87ef865e30009d53b4",
+      "expectedMetadata": {
+        "name": "دار شعبان",
+        "aliases": [
+          "Dar Chaabane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دار شعبان الفهري",
+        "governorateId": 350,
+        "sourceId": "osm"
+      }
+    },
+    {
+      "id": "osm:way:174739936",
+      "originalKind": "residential",
+      "originalTags": {
+        "landuse": "residential",
+        "name": "دار شعبان الفهري",
+        "name:ar": "دار شعبان الفهري",
+        "name:fr": "Dar Chaâbane El Fehri",
+        "wikidata": "Q2478232",
+        "wikimedia_commons": "Category:Dar Chaâbane",
+        "wikipedia": "ar:دار شعبان الفهري"
+      },
+      "originalGeometrySha256": "352372b42bb57863998ec3e5e3de90e79c7370ff3a26462daa10bc2c7a0f3f04",
+      "effectiveKind": "residential",
+      "effectiveTags": {
+        "landuse": "residential",
+        "name": "دار شعبان الفهري",
+        "name:ar": "دار شعبان الفهري",
+        "name:fr": "Dar Chaâbane El Fehri",
+        "wikidata": "Q2478232",
+        "wikimedia_commons": "Category:Dar Chaâbane",
+        "wikipedia": "ar:دار شعبان الفهري"
+      },
+      "effectiveGeometrySha256": "352372b42bb57863998ec3e5e3de90e79c7370ff3a26462daa10bc2c7a0f3f04",
+      "expectedMetadata": {
+        "name": "دار شعبان الفهري",
+        "aliases": [
+          "Dar Caɛban",
+          "Dar Chaabane",
+          "Dar Chaâbane",
+          "Dar Chaâbane El Fehri",
+          "Дар-Шаабан"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية نابل",
+        "governorateId": 350,
+        "sourceId": "osm"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "file": "dar-chaabane-reviews/dar-chaabane-complete-display-transition-review.json",
+      "sha256": "fc535dce2f0268940743580ec2aab381d3f196f887c57efdfdef669efdc2e09e"
+    },
+    {
+      "file": "dar-chaabane-reviews/direct-pbf-source-facts.json",
+      "sha256": "455683e0a6c82d563e5513f32f1b80d8b8faf41eea87081d3b7ed52eb3461da8"
+    }
+  ],
+  "scope": "City residential and coded Dar Chaabane imada retain separate choices and legitimate shared aliases."
+}

@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "touil-reviews/source-facts.json",
+    "sha256": "660ee19570fa5bb2489781cfc03a91f1a076020799a2ac0f5b387938e81a8f47"
+  },
+  "researchReview": {
+    "file": "touil-reviews/research-review.json",
+    "sha256": "8f166af1d3660c8354e65996309c0db9f2934549bf833a5dd87b71cf4d04fd07"
+  },
+  "reviewedMetadataSha256": "ae8202fbf2ce97cfde0cfa4c270a8a93e77cdd09b5fa22e8623f978debc154bf",
+  "records": [
+    {
+      "id": "osm:way:377996284",
+      "method": "reviewed_primary_source_named_settlement",
+      "targetPickerGroupId": "osm:node:11525318199",
+      "expectedExistingMemberIds": [
+        "osm:way:377996284"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:11525318199"
+      ],
+      "expectedGovernorateId": 351,
+      "expectedParentName": "رأس الوادي",
+      "expectedContextAliases": [
+        "Délégation Tataouine Sud",
+        "Ras El Oued",
+        "Tataouine Sud",
+        "رأس الوادي",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "expectedDelegationId": 624,
+      "status": "eligible_proposal",
+      "approvalScope": "Isolated proof proposal for the existing guarded method; no current catalog change or generation.",
+      "members": [
+        {
+          "id": "osm:way:377996284",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "طويل أولاد زايد",
+          "expectedAliases": [
+            "Touil Ouled Zayed"
+          ],
+          "expectedContextAliases": [
+            "Délégation Tataouine Sud",
+            "Ras El Oued",
+            "Tataouine Sud",
+            "رأس الوادي",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "expectedLat": 32.766158,
+          "expectedLng": 10.265125,
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "طويل أولاد زايد",
+            "name:ar": "طويل أولاد زايد",
+            "name:fr": "Touil Ouled Zayed"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "طويل أولاد زايد",
+            "name:ar": "طويل أولاد زايد",
+            "name:fr": "Touil Ouled Zayed"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "5063ccdb840da4d24c78f72a98b3a6f3a1644c4bfe10dbf6f36f4bf4325d07e7",
+          "effectiveOriginalGeometrySha256": "5063ccdb840da4d24c78f72a98b3a6f3a1644c4bfe10dbf6f36f4bf4325d07e7",
+          "packedGeometrySha256": "ce3e4b625d73393f336201c30b9dec22e930d15bc4524010851badba92873171"
+        },
+        {
+          "id": "osm:node:11525318199",
+          "expectedKind": "hamlet",
+          "expectedSourceId": "osm",
+          "expectedName": "طويل أولاد زايد",
+          "expectedAliases": [
+            "Touil Ouled Zayed"
+          ],
+          "expectedContextAliases": [
+            "Délégation Tataouine Sud",
+            "Ras El Oued",
+            "Tataouine Sud",
+            "رأس الوادي",
+            "معتمدية تطاوين الجنوبية"
+          ],
+          "expectedLat": 32.7671737,
+          "expectedLng": 10.2628336,
+          "expectedOriginalTags": {
+            "name": "طويل أولاد زايد",
+            "name:aeb": "طويل أولاد زايد",
+            "name:ar": "طويل أولاد زايد",
+            "name:en": "Touil Ouled Zayed",
+            "name:fr": "Touil Ouled Zayed",
+            "place": "hamlet"
+          },
+          "expectedEffectiveTags": {
+            "name": "طويل أولاد زايد",
+            "name:aeb": "طويل أولاد زايد",
+            "name:ar": "طويل أولاد زايد",
+            "name:en": "Touil Ouled Zayed",
+            "name:fr": "Touil Ouled Zayed",
+            "place": "hamlet"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "7f01e9b105ae16882d3bf9fa810408ea84adbdad7576f2cdceb6128de91dd748",
+          "effectiveOriginalGeometrySha256": "7f01e9b105ae16882d3bf9fa810408ea84adbdad7576f2cdceb6128de91dd748",
+          "packedGeometrySha256": null
+        }
+      ],
+      "settlementPointId": "osm:node:11525318199",
+      "expectedPointKind": "hamlet",
+      "expectedContextRole": "sector",
+      "nameEvidence": {
+        "arabic": "طويل أولاد زايد",
+        "originalArabic": "طويل أولاد زايد",
+        "latin": "Touil Ouled Zayed",
+        "arabicNameTag": "name:ar",
+        "latinNameTag": "name:fr"
+      },
+      "codedContext": {
+        "id": "osm:relation:7143876",
+        "expectedKind": "sector",
+        "expectedSourceId": "osm",
+        "expectedName": "رأس الوادي",
+        "expectedAliases": [
+          "Ras El Oued"
+        ],
+        "expectedContextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "expectedLat": 32.713426,
+        "expectedLng": 10.100541,
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "رأس الوادي",
+          "name:ar": "رأس الوادي",
+          "name:fr": "Ras El Oued",
+          "ref:tn:codegeo": "535263"
+        },
+        "expectedEffectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "رأس الوادي",
+          "name:ar": "رأس الوادي",
+          "name:fr": "Ras El Oued",
+          "ref:tn:codegeo": "535263"
+        },
+        "expectedCuration": null,
+        "originalGeometrySha256": "c9c248316b6e60e316ce7b905a56b8982b8d2131914bccb101d628bea82e8e0d",
+        "effectiveOriginalGeometrySha256": "c9c248316b6e60e316ce7b905a56b8982b8d2131914bccb101d628bea82e8e0d",
+        "packedGeometrySha256": "dfd6724a3afafa4e10e1768dc99ee085c447ddbde210e3bda972f1e853e5cc8f",
+        "expectedParentName": "معتمدية تطاوين الجنوبية",
+        "expectedDelegationId": 624,
+        "currentOfficialRecord": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5352",
+          "delegationFr": "Tataouine sud",
+          "delegationAr": "تطاوين الجنوبية",
+          "sectorCode": "535263",
+          "sectorFr": "Ras el ouedi",
+          "sectorAr": "رأس الوادي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64325,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3162,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3156
+          }
+        },
+        "originalContainsEveryMember": true,
+        "packagedContainsEveryMember": true
+      },
+      "expectedGlobalMatchingPlaceSourceIds": [
+        "osm:node:11525318199"
+      ],
+      "expectedContextMatchingPlaceSourceIds": [
+        "osm:node:11525318199"
+      ],
+      "expectedGlobalMatchingResidentialSourceIds": [
+        "osm:way:377996284"
+      ],
+      "expectedContextMatchingResidentialSourceIds": [
+        "osm:way:377996284"
+      ],
+      "primaryEvidence": {
+        "sourceChain": {
+          "file": "touil-reviews/exact-object-and-coordinate-chain.json",
+          "sha256": "923998b85e70f9bd77bd0bd09723f495daead0c591be491df7ffbf369e81a5df"
+        },
+        "sources": [
+          {
+            "file": "touil-reviews/osm-node-11525318199-history.xml",
+            "sha256": "d9dc1baf201929e86b38b495e67803526399ca773d592e5c78cba6d134cc3ae2",
+            "url": "https://api.openstreetmap.org/api/0.6/node/11525318199/history"
+          },
+          {
+            "file": "touil-reviews/osm-way-377996284-history.xml",
+            "sha256": "097be1abfb62f2c57a0776c9d771503c76f0fb4f61833bf12da2f757957ef8c6",
+            "url": "https://api.openstreetmap.org/api/0.6/way/377996284/history"
+          },
+          {
+            "file": "touil-reviews/osm-node-3814110946-history.xml",
+            "sha256": "31fa541aa34571e8ee454980f74846f4578e323d37c9f55639199526d1d79708",
+            "url": "https://api.openstreetmap.org/api/0.6/node/3814110946/history"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-35038528.xml",
+            "sha256": "6f8e3f59d8786a049970973d19c4f7862b3b8b49fbbcf0cc1730270894a50f2e",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/35038528"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-35038528-download.osc",
+            "sha256": "6dceaebd4af6cf0d20e7706a4634b25811977240d080573ccb71090dbd12fe6d",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/35038528/download"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-122572164.xml",
+            "sha256": "4b68964c452ac65337a3ce4ce51d4e7a6445ad018b5e11d68f1227cb91d30de3",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/122572164"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-122572164-download.osc",
+            "sha256": "6f9c7c64fd1432e785a6b08f9e4becb414fecd680868566e7923ff07f7218db9",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/122572164/download"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-146375270.xml",
+            "sha256": "c2fd14eb5b5da858279444d3b159b326161b359e19b4a1b50701fa08a1aa9ac2",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/146375270"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-146375270-download.osc",
+            "sha256": "340e957c90e5defba60dc225ab97e0ee6c24b6d58c45b2a0cc7ccb022c2e58ba",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/146375270/download"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-146876838.xml",
+            "sha256": "5e244b749a316e94b312e557051a0860a56dcd840be91837a68d2071ea0dba74",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838"
+          },
+          {
+            "file": "touil-reviews/osm-changeset-146876838-download.osc",
+            "sha256": "975344b8f4a6d7a7b0c5fb6c2027eda5f2ae966ab9e0f252c35042697b7f0f79",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838/download"
+          },
+          {
+            "file": "touil-reviews/changeset-180432269.xml",
+            "sha256": "5ebf22bcc06418a95456256ddaf44f97b0d6cd7d38f4fbf9d19fc8187f1cb71d",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269"
+          },
+          {
+            "file": "touil-reviews/changeset-180432269-download.osc",
+            "sha256": "ad829a346c64a5d2a17fac22c2250f180827c3084c02bcbdf4575faa0750c4b6",
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269/download"
+          }
+        ],
+        "independentReview": {
+          "file": "touil-reviews/touil-surveyed-source-chain-independent-review.json",
+          "sha256": "547f45190c354c5283f94401a5e93af71c9a79d303e51bfd7e587db9f8c907cc"
+        },
+        "finding": "Deliberate earlier residential naming and later survey-tagged name reaffirmation plus creation of the same-name hamlet support this bounded shared-settlement display interpretation."
+      },
+      "reviewerInference": "Associate exactly these two inhabited-place representations. Keep the separately typed natural peak excluded. This is a reviewed inference from primary source history, not an administrative or cadastral identity certification.",
+      "limitations": [
+        "The source hamlet point is outside the residential ring. The existing method deliberately requires both inside the same uniquely coded source sector, not point-in-residential containment.",
+        "Survey provenance is mapper-declared; no independently certified field survey, shared address or complete village outline is claimed.",
+        "All names, aliases, current contexts, coordinates, raw IDs, shapes and prayer624 remain unchanged. Only the residential pickerGroupId joins the existing hamlet.",
+        "No landmark/peak or historical Google result establishes the extent of either inhabited object."
+      ]
+    }
+  ]
+}

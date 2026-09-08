@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "status": "ACCEPT_TWO_COMPLETE_SOURCE_OUTLINES_FOR_ISOLATED_GENERATION",
+  "reviewedAt": "2026-09-07T19:47:55.630011+00:00",
+  "decisionOwner": "root",
+  "boundaryIds": [
+    "osm:relation:7143881",
+    "osm:relation:7143823"
+  ],
+  "baselineMetadataSha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+  "baselineGeometrySha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "evidence": {
+    "sourceReadiness": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-sector-candidate-readiness.json",
+      "sha256": "681038666dd2e5fd62b9edb18bca2278f26257375c059e63f55757ee7af108ae",
+      "bytes": 41761
+    },
+    "candidateGeometry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "bytes": 109094
+    },
+    "allNeighborGeometryAudit": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-candidate-neighbor-review.json",
+      "sha256": "ef15e00dacb2e501eba9d24bdaeec2fc6625f4af3a15ddbb338dd1b6661b7a75",
+      "bytes": 17561
+    },
+    "existingConflictPolicyAudit": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-boundary-conflict-policy-evaluation.json",
+      "sha256": "288ae02d96352701086d0d747420794a770324b97e99504212cce633165350e8",
+      "bytes": 25399
+    },
+    "allCatalogCoordinateCoverageAudit": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-only-coverage-impact-review.json",
+      "sha256": "643e9c41d478ec5688b22d53bed90d582a8a1146e323a7fb11f98dce6920c69e",
+      "bytes": 96170
+    },
+    "completeTransitionPlan": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-official-boundary-transition-plan.json",
+      "sha256": "85cd3f1799663df461967aaf8a46585c762eb62ee34dbad432b65011b4d0886c",
+      "bytes": 11019
+    },
+    "easternIdentityReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-eastern-name-only-addendum.json",
+      "sha256": "57fc874ac6198d55a59367e1b9e8c3f1e4ce4d689bf5f242888b5dedeb4caa7a",
+      "bytes": 23382
+    }
+  },
+  "decision": "Accept the two complete independently reviewed official whole-imada footprints under the existing source-preserving conflict policy. This replaces the proven false New Chenini GPS label at the western village, while retaining explicit ambiguity in conflicting areas. This is a bounded data improvement, not a seamless regional partition or complete catalog certification.",
+  "reviewOfPreviousHold": "The source-readiness hold required root review of the substantial mixed-source overlap and coverage delta. That review is now complete. Existing accepted-boundary policy and actual runtime do not require replacing every obsolete neighbor first. The previous hold is resolved for these two identities only; all neighboring candidates remain separate.",
+  "sourceAcceptance": {
+    "wholeImadaCodes": [
+      "535259",
+      "535258"
+    ],
+    "names": [
+      "شنني",
+      "شنني الجديدة"
+    ],
+    "parentCode": "5352",
+    "fullSourceRingsPreserved": true,
+    "noSourceRepairs": true,
+    "sourceAndQuantizedCountryContained": true,
+    "noSourceHolesLost": true,
+    "sourceDate": "2023",
+    "identityCrosscheck": "Current INS registry based on original 2024 census workbooks; dated 2023 decree establishes one whole-imada electoral circle per identity. Separate old/new village identity evidence includes the IRA/IRD field study and public landmarks."
+  },
+  "coverageAcceptance": {
+    "overlapSummary": {
+      "current": {
+        "pairs": 0,
+        "sumAreaMeters2": 0,
+        "unionAreaMeters2": 0.0
+      },
+      "proposed": {
+        "pairs": 8,
+        "sumAreaMeters2": 101631347.61307102,
+        "unionAreaMeters2": 101631347.61307108
+      }
+    },
+    "enclosedGaps": {
+      "current": {
+        "count": 0,
+        "countOverOneSquareMeter": 0,
+        "sumAreaMeters2": 0,
+        "distinctAreaMeters2": 0.0,
+        "coveredIslandsRetained": 0
+      },
+      "proposed": {
+        "count": 33,
+        "countOverOneSquareMeter": 29,
+        "sumAreaMeters2": 29109515.45787161,
+        "distinctAreaMeters2": 29109515.457871612,
+        "coveredIslandsRetained": 0
+      }
+    },
+    "legacyCoverageDelta": {
+      "newClaimedAreaMeters2": 4.507508128141942e-11,
+      "oldClaimedAreaLostMeters2": 29109515.4578716,
+      "meaning": "Changes relative to older sector claims, including open areas; not certified land coverage."
+    },
+    "conflictsBefore": 177,
+    "conflictsAfter": 185,
+    "reason": "Preserve and mark every positive-area source disagreement using the existing conflict detector. Do not prefer one conflicting claim or invent a border. Reduced specificity is accepted in these disputed intersections and uncovered source gaps because no supported precise identity is available there.",
+    "actualCoordinateReview": "All3632 raw catalog coordinates and259 original prayer-source anchors were examined. Only the two villages and the two artificial sector references lie in old/proposed Chenini2 coverage; western village resolves correctly, eastern remains correct, and no current named source point loses a polygon label. The old New Chenini sector representative is corrected through its separately reviewed eastern village manual anchor.",
+    "gapEvidence": "33 unique enclosed components total about29.11km2. No current catalog point or nonsector locality footprint intersects them. This does not establish absence of inhabitants, unnamed places, or omitted settlements. The29 components above1m2 return no precise locality at their examined interior points. Four numerically degenerate tiny components retain explicitly reported edge/projection effects.",
+    "limits": [
+      "Masks suppress only the strict intersections of conflicting claims. Old unique claims outside these intersections can still be wrong.",
+      "Finer independent containing locality polygons remain eligible under unchanged runtime ranking.",
+      "No statement of100percent ground accuracy or complete neighborhood coverage follows from source registration or this import."
+    ]
+  },
+  "requiredCompleteTransition": [
+    "Retain both stable sector IDs and both exact village point IDs/coordinates.",
+    "Rename the eastern retained village to شنني الجديدة with supported historical aliases retained on its own searchable point.",
+    "Use each exact corresponding village as its canonical sector manual reference; nearest prayer source624 is computed from the real coordinate and available timetables, never forced.",
+    "Keep the two display groups separate; no alias propagation from the renamed retained point into the other sector and no unintended transitive merge.",
+    "Supersede only the western active locality_context rule because the official footprint is now effective geometry. Preserve all other110existing curation decisions and94base/fourlocal group rules.",
+    "Preserve saved manual IDs and reviewed names; leave old GPS selections unchanged until a new GPS fix because stored IDs cannot recover the prior coordinate.",
+    "Review staged code/proof, run one actual isolated data generation, inspect exact field/geometry/source/group delta, and independently verify installed bytes before app integration."
+  ],
+  "notAuthorizedByThisDecision": [
+    "Import of any neighboring candidate",
+    "Clipping, snapping, buffering, filling gaps or drawing substitute borders",
+    "New phone actions, API key spending, tests, Android builds, APK/AAB generation, installation, commits or releases"
+  ],
+  "operations": "Root read-only source, geometry, policy and coverage review; no app or catalog generation occurred while writing this decision."
+}

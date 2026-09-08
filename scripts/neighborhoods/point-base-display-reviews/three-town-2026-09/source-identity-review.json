@@ -1,0 +1,966 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_REVIEW_COMPLETE_IMPLEMENTATION_NOT_APPROVED",
+  "scope": "Six exact town/base identity candidates. Source-only research; no configuration stage, generator, app, phone or ledger access.",
+  "baselineMetadataSha256": "46ac2a5a4bfc1efcab7cda7833874b571180ab474310909a81d80308898b01bb",
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\exact-six-source-and-current-facts.json",
+    "sha256": "e36d9256c312ccaacfa8beccdfc76c8f931925db68804e06604ea53c47d3adc2"
+  },
+  "retrievals": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\retrieval.json",
+      "sha256": "84e514139b4ec6f6000248e916ab162799cf5ddeb14d5f78565a68b70c378ac8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\extra-primary-retrieval.json",
+      "sha256": "750dea70660d729c96b9353ce6423d9279ad6667e97c8fbe9ea04e161e7ba2bf"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\kebili-article-retrieval.json",
+      "sha256": "eaaf8bcc44527f7b25f75f76aada9ce7c9c48112043db119ade23f5629cd80f3"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-official-retrieval.json",
+      "sha256": "1dbe88439da6c5ad6663a563c95064b0d994d91a92b9fff788e6d4848700387f"
+    }
+  ],
+  "primaryEvidence": {
+    "interiorDirectory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\interior-municipal-directory.html",
+      "sha256": "e920362ac113c9deaab49014e1b5dd3c9bf1f8ee2cf945e91c4dd750baf9bb66",
+      "url": "https://opendata.interieur.gov.tn/fr/catalog/annuaire-des-municipalites",
+      "publisher": "Tunisian Ministry of Interior",
+      "qualification": "Municipality names and civic addresses; corroborates settlement name use, not municipal borders or legacy prayer-reference coordinates.",
+      "selectedRows": {
+        "الوردانين": "الوردانين شارع الحبيب بورقيبة 5010 73.519.016 73.518.203",
+        "صيادة": "صيادة شارع الحبيب بورقيبة صيادةة 5053 73.430.093 73.430.439",
+        "سيدي علوان": "سيدي علوان شارع ابن زيدون 73.659.041 73.658.230",
+        "تطاوين": "تطاوين تطاوين شارع فرحات حشاد تطاوين 3200 75.860.002 75.862.564 75.860.650",
+        "قبلي": "قبلي قبلي شارع الحبيب بورقيبة قبلي 011 490 75 711 490 75"
+      }
+    },
+    "kebili": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\kebili-interior-city-article.html",
+      "sha256": "9d94f2c7aef84ef06fb80c163c193c61a9bdb030c936256baf1561e8ea8a2e50",
+      "url": "https://www.interieur.gov.tn/actualite/1371/%D8%A8%D9%80%D9%80%D9%84%D8%A7%D8%BA",
+      "publisher": "Tunisian Ministry of Interior",
+      "publicationDate": "2017-03-12",
+      "support": "Direct public report names the entrance to Kebili city at the Janoura junction.",
+      "requiredText": [
+        "بمدخل مدينة قبلي مستوى مفترق جنعورة"
+      ],
+      "qualification": "City identity and Janoura street-context corroboration only; the incident report does not certify a city outline or the current imada line."
+    },
+    "joumine": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-ird-firsthand-locality.pdf",
+      "sha256": "34affd3016a9ba3ef18e5a731b336415c826a2669184a84897088465224084da",
+      "url": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/doc34-01/35171.pdf",
+      "publisher": "ORSTOM and Institut Pasteur de Tunis; hosted by IRD",
+      "title": "Ethologie et capacité vectorielle des anophèles de Tunisie — campagne juin-octobre 1991",
+      "pdfPage": 13,
+      "printedPage": 12,
+      "personallyViewedRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-page13.png",
+        "sha256": "ed04f4e8a5bf107935cf949a75687956705947bcafe594d33672a1a11c60574a"
+      },
+      "support": "Firsthand field description identifies inhabited Joumine, its administrative amenities and the Esenam and Mélassine quarters.",
+      "shortExcerpt": "Notre seconde station, Joumine, est une petite localité administrative",
+      "qualification": "Historical inhabited-settlement evidence, not a present population, legal municipal status, exact village perimeter, or exact prayer-reference anchor certification."
+    },
+    "sidiAlouane": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\sidi-alouane-assembly-written-question.pdf",
+      "sha256": "24f8a4590ad9cf73c0886bb6472e626939d423e8e7e74ed1c0a9b29de9663688",
+      "url": "https://www.arp.tn/document/download/119213",
+      "publisher": "Assembly of the Representatives of the People; response attributed to Minister of Interior",
+      "title": "Délibérations, issue 34, sitting dated 16 December 2025",
+      "pdfPage": 53,
+      "printedPage": 3441,
+      "personallyViewedRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\sidi-alouane-page53.png",
+        "sha256": "97fd5c2418fed37c9a982c99fea13d2a1d7508681a952ecdea7f0a4da21db935"
+      },
+      "support": "The Interior Minister response separately identifies central Sidi Alouane city and the northern and southern portions of Sidi Alouane delegation.",
+      "shortExcerpt": "وسط مدينة سيدي علوان",
+      "qualification": "Direct distinction between town and larger delegation. Operational civil-protection descriptions do not establish city or imada polygons."
+    },
+    "sayada": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\lamta-governorate-geography.pdf",
+      "sha256": "0e8f7740d311b5baf5dfc261197063f11046d7337e891f136363b1fee966e694",
+      "url": "https://g-monastir.tn/images/pdf_files/lamta.pdf",
+      "publisher": "Monastir Governorate",
+      "title": "Lamta city document, geographical setting",
+      "pdfPage": 4,
+      "personallyViewedRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\lamta-page4.png",
+        "sha256": "7dc490fdac7b4172da1114e913f55c1b9b89dc51b5f2ff42e586f008cec43230"
+      },
+      "support": "The geographical account names Sayada city south of Lamta and Bouhjar to the west, treating those settlements distinctly.",
+      "shortExcerpt": "تحدها جنوبا مدينة صيادة",
+      "qualification": "Visual reading used because the PDF text encoding is damaged. This supports Sayada as an inhabited city, not equivalence with Lamta, Bouhjar or the compound delegation."
+    },
+    "ouerdanine": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\ouerdanine-governorate-city.html",
+      "sha256": "37e4f4b42f4458fa835c393fb051761901dab93b534530547bdcbcbaa5a43654",
+      "url": "https://www.g-monastir.tn/news/1221-67-22-1952",
+      "publisher": "Monastir Governorate",
+      "publicationDate": "2019-01-22",
+      "support": "Official governorate report explicitly describes the city, its residents and events in its centre, separately mentioning the delegate and mayor.",
+      "requiredText": [
+        "مدينة الوردانين",
+        "أهالي الوردانين"
+      ],
+      "qualification": "Settlement identity only; OSM Ouardanine and base Ouerdanine are retained spelling variants, not a proposed renaming."
+    },
+    "tataouine": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\tataouine-municipal-geography.html",
+      "sha256": "df0aa870d60c5f739f68d73de28c97dbea50425026ab735c57af73d4eddd4de8",
+      "url": "https://www.commune-tataouine.gov.tn/index.php?Itemid=131&id=8&lang=ar&option=com_content&view=article",
+      "publisher": "Tataouine Municipality",
+      "support": "Official municipal page identifies Tataouine city and municipality; the Interior directory separately locates its civic address in Tataouine.",
+      "requiredText": [
+        "تقع مدينة تطاوين"
+      ],
+      "qualification": "The article mixes city and governorate population/geographical description. Only city-name/municipal-address usage is used; the broad numerical/extent claims and embedded office map are not treated as settlement or prayer-reference certification."
+    },
+    "joumineOfficial": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\joumine-social-ministry-local-village.html",
+      "sha256": "6e90595c7ff2580126d649e89acb827f3e360ab509a4c333f4cdb3a01938b49b",
+      "url": "https://www.social.gov.tn/en/node/1186",
+      "publisher": "Tunisian Ministry of Social Affairs",
+      "support": "The local social-promotion unit is identified in Joumine/Bizerte with a civic address in Essman village, Joumine. This is direct official inhabited-address usage; historical firsthand research separately identifies Joumine settlement and its Esenam quarter.",
+      "requiredText": [
+        "الوحدة المحلية للنهوض الاجتماعي بجومين بنزرت",
+        "قرية السمان جومين"
+      ],
+      "displayedCoordinate": [
+        36.9253535,
+        9.3889921
+      ],
+      "qualification": "The displayed coordinate exactly matches the OSM village node. Its provenance is not supplied, so it is not counted as an independently surveyed point or proof of office/building occupancy or village extent."
+    }
+  },
+  "pairs": [
+    {
+      "id": "osm:node:298019989",
+      "baseId": 482,
+      "status": "SETTLEMENT_IDENTITY_SUPPORTED_IMPLEMENTATION_HOLD",
+      "identityConclusion": "The unique current Kebili town point and Arabic/French Kebili base name refer to the inhabited city. Source support is sufficient to investigate an exact display association, while retaining both distinct coordinates.",
+      "implementationQualification": "The point lies in Janoura7109817, whose accepted administrative_context assigns Kebili Sud7110466; original geometric parent is Kebili Nord7110523. Base482 lies in sector7109996 instead. A future rule must explicitly retain the inherited Sud context and sector scopes; do not pass a common-parent guard by erasing the accepted correction.",
+      "currentRaw": {
+        "id": "osm:node:298019989",
+        "sourceId": "osm",
+        "name": "قبلي",
+        "aliases": [
+          "Kebili",
+          "قبلی",
+          "קבילי",
+          "Kibili",
+          "Кебили"
+        ],
+        "kind": "town",
+        "parentName": "جنعورة",
+        "contextAliases": [
+          "Délégation Kébili Sud",
+          "Janoura",
+          "Kébili Sud",
+          "جنعورة",
+          "معتمدية قبلي الجنوبية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.7061148,
+        "lng": 8.9698376,
+        "delegationId": 482,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:298019989"
+      },
+      "baseCurrent": {
+        "id": 482,
+        "nomFr": "Kebili",
+        "nomAr": "قبلي",
+        "nomEn": "Kebili",
+        "lat": 33.7072,
+        "lng": 8.9697
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-298019989.json",
+        "sha256": "3be492b14ad7ae24c7afaba6316f536d50a24e256881002cd0b1963a3ab71d41"
+      },
+      "sourceNodeVersion": {
+        "version": 14,
+        "timestamp": "2025-12-23T14:42:30Z",
+        "changeset": 176312090
+      },
+      "sourceTags": {
+        "name": "قبلي",
+        "name:ar": "قبلي",
+        "name:en": "Kebili",
+        "name:eo": "Kebili",
+        "name:fa": "قبلی",
+        "name:fr": "Kebili",
+        "name:he": "קבילי",
+        "name:ks": "قبلی",
+        "name:pl": "Kibili",
+        "name:ru": "Кебили",
+        "name:ur": "قبلی",
+        "place": "town",
+        "wikidata": "Q27157",
+        "wikimedia_commons": "Category:Kebili",
+        "wikipedia": "ar:قبلي (تونس)"
+      },
+      "authenticNodeCacheAndCurrentCoordinatesMatch": true,
+      "rawUnchangedAcross31acTo46acBatch": true,
+      "primaryEvidenceKeys": [
+        "kebili",
+        "interiorDirectory"
+      ],
+      "namePeers": [
+        {
+          "id": "osm:node:298019989",
+          "kind": "town",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:1434950",
+          "kind": "governorate",
+          "rawPresent": false
+        }
+      ],
+      "sourceContainment": [
+        {
+          "id": "osm:relation:7109996",
+          "kind": "sector",
+          "point": false,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7109817",
+          "kind": "sector",
+          "point": true,
+          "base": false
+        },
+        {
+          "id": "osm:relation:7110523",
+          "kind": "delegation",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:1434950",
+          "kind": "governorate",
+          "point": true,
+          "base": true
+        }
+      ],
+      "preservation": {
+        "officialImadaCount": 19,
+        "delegationCodes": [
+          "6351",
+          "6352"
+        ],
+        "completeLocalRawRecordCount": 22,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:298019989"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [
+          "osm:relation:7082695",
+          "osm:relation:7109812",
+          "osm:relation:7109817",
+          "osm:relation:7109821",
+          "osm:relation:7082748",
+          "osm:node:9945093900",
+          "osm:relation:7082714",
+          "osm:node:9947246733"
+        ],
+        "localAcceptedBoundaryIds": []
+      },
+      "candidateOnlyRawChange": {
+        "id": "osm:node:298019989",
+        "field": "pickerGroupId",
+        "before": "osm:node:298019989",
+        "after": "delegation:482"
+      },
+      "implementationApproved": false,
+      "selectedForNextSourceProofReview": false
+    },
+    {
+      "id": "osm:node:1433130924",
+      "baseId": 558,
+      "status": "SOURCE_IDENTITY_SUPPORTED_PENDING_EXACT_PROOF",
+      "identityConclusion": "The official Social Ministry address in Essman village/Joumine and historical firsthand description of inhabited Joumine corroborate the unique authentic village node and identically named prayer reference. A bounded display association is supported in identity scope.",
+      "implementationQualification": "Use historical settlement evidence honestly; preserve all nine coded imadas, the Essman parent, exact village kind, aliases and both coordinates. No direct target curation or accepted-boundary replacement exists.",
+      "currentRaw": {
+        "id": "osm:node:1433130924",
+        "sourceId": "osm",
+        "name": "جومين",
+        "aliases": [
+          "Joumine"
+        ],
+        "kind": "village",
+        "parentName": "السمان",
+        "contextAliases": [
+          "Délégation Joumine",
+          "Essman",
+          "Joumine",
+          "السمان",
+          "معتمدية جومين"
+        ],
+        "governorateId": 361,
+        "lat": 36.9253535,
+        "lng": 9.3889921,
+        "delegationId": 558,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1433130924"
+      },
+      "baseCurrent": {
+        "id": 558,
+        "nomFr": "Joumine",
+        "nomAr": "جومين",
+        "nomEn": "Joumine",
+        "lat": 36.9262,
+        "lng": 9.3874
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-1433130924.json",
+        "sha256": "5906477199e03404a33815341bd127e7e2c792e78b5bb1d10cfcf07b7b730d16"
+      },
+      "sourceNodeVersion": {
+        "version": 6,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "changeset": 98539602
+      },
+      "sourceTags": {
+        "addr:governorate": "Bizerte",
+        "name": "جومين",
+        "name:ar": "جومين",
+        "name:en": "Joumine",
+        "name:fr": "Joumine",
+        "place": "village"
+      },
+      "authenticNodeCacheAndCurrentCoordinatesMatch": true,
+      "rawUnchangedAcross31acTo46acBatch": true,
+      "primaryEvidenceKeys": [
+        "joumineOfficial",
+        "joumine"
+      ],
+      "namePeers": [
+        {
+          "id": "osm:node:1433130924",
+          "kind": "village",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7151756",
+          "kind": "delegation",
+          "rawPresent": false
+        }
+      ],
+      "sourceContainment": [
+        {
+          "id": "osm:relation:7124441",
+          "kind": "sector",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7151756",
+          "kind": "delegation",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:1435827",
+          "kind": "governorate",
+          "point": true,
+          "base": true
+        }
+      ],
+      "preservation": {
+        "officialImadaCount": 9,
+        "delegationCodes": [
+          "1755"
+        ],
+        "completeLocalRawRecordCount": 10,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:1433130924"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [],
+        "localAcceptedBoundaryIds": []
+      },
+      "candidateOnlyRawChange": {
+        "id": "osm:node:1433130924",
+        "field": "pickerGroupId",
+        "before": "osm:node:1433130924",
+        "after": "delegation:558"
+      },
+      "implementationApproved": false,
+      "selectedForNextSourceProofReview": true
+    },
+    {
+      "id": "osm:node:558962249",
+      "baseId": 426,
+      "status": "SOURCE_IDENTITY_SUPPORTED_PENDING_EXACT_PROOF",
+      "identityConclusion": "Official city-centre usage expressly distinguished from the delegation supports associating the unique Sidi Alouane village display point with its identically named prayer reference.",
+      "implementationQualification": "Preserve all twelve imadas and the read-only parent7152203. The source village kind is retained; official prose calling it a city does not trigger an unrequested kind change.",
+      "currentRaw": {
+        "id": "osm:node:558962249",
+        "sourceId": "osm",
+        "name": "سيدي علوان",
+        "aliases": [
+          "Sidi Alouane"
+        ],
+        "kind": "village",
+        "parentName": "سيدي علوان الشرقية",
+        "contextAliases": [
+          "Délégation Sidi Alouane",
+          "Sidi Alouane",
+          "Sidi Alouane Est",
+          "سيدي علوان الشرقية",
+          "معتمدية سيدي علوان"
+        ],
+        "governorateId": 345,
+        "lat": 35.3750157,
+        "lng": 10.9378385,
+        "delegationId": 426,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:558962249"
+      },
+      "baseCurrent": {
+        "id": 426,
+        "nomFr": "Sidi Alouane",
+        "nomAr": "سيدي علوان",
+        "nomEn": "Sidi Alouane",
+        "lat": 35.377,
+        "lng": 10.9383
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-558962249.json",
+        "sha256": "83ff46be34987104e422b3d1998c800905814d63c72bcd50fe09f594762c5e51"
+      },
+      "sourceNodeVersion": {
+        "version": 13,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "changeset": 98539602
+      },
+      "sourceTags": {
+        "addr:governorate": "Mahdia",
+        "name": "سيدي علوان",
+        "name:ar": "سيدي علوان",
+        "name:en": "Sidi Alouane",
+        "name:fr": "Sidi Alouane",
+        "place": "village",
+        "wikidata": "Q3178416",
+        "wikipedia": "fr:Sidi Alouane"
+      },
+      "authenticNodeCacheAndCurrentCoordinatesMatch": true,
+      "rawUnchangedAcross31acTo46acBatch": true,
+      "primaryEvidenceKeys": [
+        "sidiAlouane",
+        "interiorDirectory"
+      ],
+      "namePeers": [
+        {
+          "id": "osm:node:558962249",
+          "kind": "village",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7152203",
+          "kind": "delegation",
+          "rawPresent": false
+        }
+      ],
+      "sourceContainment": [
+        {
+          "id": "osm:relation:7152252",
+          "kind": "sector",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7152203",
+          "kind": "delegation",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:1434955",
+          "kind": "governorate",
+          "point": true,
+          "base": true
+        }
+      ],
+      "preservation": {
+        "officialImadaCount": 12,
+        "delegationCodes": [
+          "3360"
+        ],
+        "completeLocalRawRecordCount": 13,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:558962249"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [],
+        "localAcceptedBoundaryIds": []
+      },
+      "candidateOnlyRawChange": {
+        "id": "osm:node:558962249",
+        "field": "pickerGroupId",
+        "before": "osm:node:558962249",
+        "after": "delegation:426"
+      },
+      "implementationApproved": false,
+      "selectedForNextSourceProofReview": true
+    },
+    {
+      "id": "osm:node:558816759",
+      "baseId": 600,
+      "status": "SETTLEMENT_IDENTITY_SUPPORTED_IMPLEMENTATION_HOLD",
+      "identityConclusion": "Sayada is a distinct settlement. Base600 Arabic name is exactly صيادة, and both stored points are in Sayada Est; a display-only association can be considered for that Arabic-named prayer reference.",
+      "implementationQualification": "Base600 French/English is Sayada Lamta Bouhjar, which is the compound delegation label. Evidence does not equate the three towns. Preserve that existing base label in this scope, preserve separate Lamta7109801 and Bouhjar7109667 group including way26289690, and both Sayada imadas; any base-label cleanup needs its own explicit review.",
+      "currentRaw": {
+        "id": "osm:node:558816759",
+        "sourceId": "osm",
+        "name": "صيادة",
+        "aliases": [
+          "Sayada",
+          "صیاده"
+        ],
+        "kind": "village",
+        "parentName": "صيادة الشرقية",
+        "contextAliases": [
+          "Délégation Sayada-Lamta-Bou Hjar",
+          "Sayada Est",
+          "Sayada-Lamta-Bou Hajar",
+          "صيادة الشرقية",
+          "معتمدية صيادة - لمطة - بوحجر"
+        ],
+        "governorateId": 364,
+        "lat": 35.6682749,
+        "lng": 10.8913213,
+        "delegationId": 600,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:558816759"
+      },
+      "baseCurrent": {
+        "id": 600,
+        "nomFr": "Sayada Lamta Bouhjar",
+        "nomAr": "صيادة",
+        "nomEn": "Sayada Lamta Bouhjar",
+        "lat": 35.67,
+        "lng": 10.89
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-558816759.json",
+        "sha256": "9c8dfdf4f9019e785d3a53236fd986c17feadba0424613a30b5cca371bfc0e76"
+      },
+      "sourceNodeVersion": {
+        "version": 17,
+        "timestamp": "2023-10-25T21:12:37Z",
+        "changeset": 143134733
+      },
+      "sourceTags": {
+        "addr:city": "صيادة",
+        "name": "صيادة",
+        "name:ar": "صيادة",
+        "name:azb": "صیاده",
+        "name:en": "Sayada",
+        "name:fa": "صیاده",
+        "name:fr": "Sayada",
+        "place": "village",
+        "wikidata": "Q2539054",
+        "wikimedia_commons": "Category:Sayada",
+        "wikipedia": "ar:صيادة"
+      },
+      "authenticNodeCacheAndCurrentCoordinatesMatch": true,
+      "rawUnchangedAcross31acTo46acBatch": true,
+      "primaryEvidenceKeys": [
+        "sayada",
+        "interiorDirectory"
+      ],
+      "namePeers": [
+        {
+          "id": "osm:node:558816759",
+          "kind": "village",
+          "rawPresent": true
+        }
+      ],
+      "sourceContainment": [
+        {
+          "id": "osm:relation:7110096",
+          "kind": "sector",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7154980",
+          "kind": "delegation",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:1434954",
+          "kind": "governorate",
+          "point": true,
+          "base": true
+        }
+      ],
+      "preservation": {
+        "officialImadaCount": 4,
+        "delegationCodes": [
+          "3263"
+        ],
+        "completeLocalRawRecordCount": 6,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:558816759"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [],
+        "localAcceptedBoundaryIds": []
+      },
+      "candidateOnlyRawChange": {
+        "id": "osm:node:558816759",
+        "field": "pickerGroupId",
+        "before": "osm:node:558816759",
+        "after": "delegation:600"
+      },
+      "implementationApproved": false,
+      "selectedForNextSourceProofReview": false
+    },
+    {
+      "id": "osm:node:1206558973",
+      "baseId": 593,
+      "status": "SOURCE_IDENTITY_SUPPORTED_PENDING_EXACT_PROOF",
+      "identityConclusion": "Official city and resident descriptions support the unique Ouerdanine/Ouardanine village identity and its identically Arabic-named prayer reference.",
+      "implementationQualification": "Preserve OSM aliases Ouardanine/Wardanin, base Ouerdanine, five imadas and read-only delegation7154975. The different Latin spellings do not justify an automatic name edit.",
+      "currentRaw": {
+        "id": "osm:node:1206558973",
+        "sourceId": "osm",
+        "name": "الوردانين",
+        "aliases": [
+          "Ouardanine",
+          "Wardanin"
+        ],
+        "kind": "village",
+        "parentName": "الوردانين الجنوبية",
+        "contextAliases": [
+          "Délégation El Ouerdanine",
+          "Ouerdanine",
+          "Ouerdanine Sud",
+          "الوردانين الجنوبية",
+          "معتمدية الوردانين"
+        ],
+        "governorateId": 364,
+        "lat": 35.7097268,
+        "lng": 10.67649,
+        "delegationId": 593,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1206558973"
+      },
+      "baseCurrent": {
+        "id": 593,
+        "nomFr": "Ouerdanine",
+        "nomAr": "الوردانين",
+        "nomEn": "Ouerdanine",
+        "lat": 35.7087,
+        "lng": 10.6788
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-1206558973.json",
+        "sha256": "424296bd8cc64824ac1fcbd1838dc3f66a6edeec2f5692b399548315db32ec16"
+      },
+      "sourceNodeVersion": {
+        "version": 11,
+        "timestamp": "2022-05-17T00:37:18Z",
+        "changeset": 121073689
+      },
+      "sourceTags": {
+        "addr:governorate": "Monastir",
+        "name": "الوردانين",
+        "name:ar": "الوردانين",
+        "name:en": "Ouardanine",
+        "name:fr": "Ouardanine",
+        "name:kab": "Wardanin",
+        "place": "village",
+        "postal_code": "5010",
+        "wikipedia": "fr:Ouerdanine"
+      },
+      "authenticNodeCacheAndCurrentCoordinatesMatch": true,
+      "rawUnchangedAcross31acTo46acBatch": true,
+      "primaryEvidenceKeys": [
+        "ouerdanine",
+        "interiorDirectory"
+      ],
+      "namePeers": [
+        {
+          "id": "osm:node:1206558973",
+          "kind": "village",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:7154975",
+          "kind": "delegation",
+          "rawPresent": false
+        }
+      ],
+      "sourceContainment": [
+        {
+          "id": "osm:relation:7107445",
+          "kind": "sector",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7154975",
+          "kind": "delegation",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:1434954",
+          "kind": "governorate",
+          "point": true,
+          "base": true
+        }
+      ],
+      "preservation": {
+        "officialImadaCount": 5,
+        "delegationCodes": [
+          "3252"
+        ],
+        "completeLocalRawRecordCount": 6,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:1206558973"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [],
+        "localAcceptedBoundaryIds": []
+      },
+      "candidateOnlyRawChange": {
+        "id": "osm:node:1206558973",
+        "field": "pickerGroupId",
+        "before": "osm:node:1206558973",
+        "after": "delegation:593"
+      },
+      "implementationApproved": false,
+      "selectedForNextSourceProofReview": true
+    },
+    {
+      "id": "osm:node:264885332",
+      "baseId": 624,
+      "status": "SETTLEMENT_IDENTITY_SUPPORTED_IMPLEMENTATION_HOLD",
+      "identityConclusion": "Tataouine city identity is independently supported and distinct from Tataouine governorate. The point and base both name that city, but a current single-delegation guard does not fit.",
+      "implementationQualification": "The node is in Sud7143863/sector7143851 while base624 is in Nord7143811/sector7143867. Preserve both coordinates and all30 coded North/South imadas. A display-only cross-context proof requires explicit truthful containment states; do not move the reference or reparent the node to manufacture common context.",
+      "currentRaw": {
+        "id": "osm:node:264885332",
+        "sourceId": "osm",
+        "name": "تطاوين",
+        "aliases": [
+          "Tataouine",
+          "ⵜⵉⵟⵟⴰⵡⵉⵏ",
+          "تطاوین",
+          "תטאווין",
+          "Татавин"
+        ],
+        "kind": "town",
+        "parentName": "تطاوين المدينة",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "Tataouine Ville",
+          "تطاوين المدينة",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.9315242,
+        "lng": 10.4503959,
+        "delegationId": 624,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:264885332"
+      },
+      "baseCurrent": {
+        "id": 624,
+        "nomFr": "Tataouine",
+        "nomAr": "تطاوين",
+        "nomEn": "Tataouine",
+        "lat": 32.9297,
+        "lng": 10.4518
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-town-base-source-review\\node-264885332.json",
+        "sha256": "02de5b550fee38cc66c6ec15dca76a0afbd9e2acdf0bc35600feed4b182f3723"
+      },
+      "sourceNodeVersion": {
+        "version": 23,
+        "timestamp": "2025-12-23T14:01:11Z",
+        "changeset": 176310106
+      },
+      "sourceTags": {
+        "addr:city": "تطاوين",
+        "addr:city:ar": "تطاوين",
+        "name": "تطاوين",
+        "name:ar": "تطاوين",
+        "name:ber": "ⵜⵉⵟⵟⴰⵡⵉⵏ",
+        "name:en": "Tataouine",
+        "name:fa": "تطاوین",
+        "name:fr": "Tataouine",
+        "name:he": "תטאווין",
+        "name:ru": "Татавин",
+        "name:ur": "تطاوین",
+        "place": "town",
+        "population": "56000",
+        "wikidata": "Q817149",
+        "wikimedia_commons": "Category:Tataouine",
+        "wikipedia": "ar:تطاوين",
+        "wikipedia:ar": "تطاوين"
+      },
+      "authenticNodeCacheAndCurrentCoordinatesMatch": true,
+      "rawUnchangedAcross31acTo46acBatch": true,
+      "primaryEvidenceKeys": [
+        "tataouine",
+        "interiorDirectory"
+      ],
+      "namePeers": [
+        {
+          "id": "osm:node:264885332",
+          "kind": "town",
+          "rawPresent": true
+        },
+        {
+          "id": "osm:relation:1434953",
+          "kind": "governorate",
+          "rawPresent": false
+        }
+      ],
+      "sourceContainment": [
+        {
+          "id": "osm:relation:1434953",
+          "kind": "governorate",
+          "point": true,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7143867",
+          "kind": "sector",
+          "point": false,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7143851",
+          "kind": "sector",
+          "point": true,
+          "base": false
+        },
+        {
+          "id": "osm:relation:7143811",
+          "kind": "delegation",
+          "point": false,
+          "base": true
+        },
+        {
+          "id": "osm:relation:7143863",
+          "kind": "delegation",
+          "point": true,
+          "base": false
+        }
+      ],
+      "preservation": {
+        "officialImadaCount": 30,
+        "delegationCodes": [
+          "5351",
+          "5352"
+        ],
+        "completeLocalRawRecordCount": 36,
+        "baseRawMembers": [],
+        "pointRawGroup": [
+          "osm:node:264885332"
+        ],
+        "directTargetCuration": [],
+        "directTargetOfficialBoundary": [],
+        "localCurationIds": [
+          "osm:node:297760994",
+          "osm:relation:7143881",
+          "osm:node:1975899618",
+          "osm:relation:7143823"
+        ],
+        "localAcceptedBoundaryIds": [
+          "osm:relation:7143881",
+          "osm:relation:7143823"
+        ]
+      },
+      "candidateOnlyRawChange": {
+        "id": "osm:node:264885332",
+        "field": "pickerGroupId",
+        "before": "osm:node:264885332",
+        "after": "delegation:624"
+      },
+      "implementationApproved": false,
+      "selectedForNextSourceProofReview": false
+    }
+  ],
+  "overallConclusion": "Source support is ready for independent review of only Joumine558, SidiAlouane426 and Ouerdanine593. Kebili482, Sayada600 and Tataouine624 retain supported settlement identities but implementation is held for their exact group/context dependencies. No imada, parent or municipal footprint is declared equivalent to a town.",
+  "untouchedScope": [
+    "all base coordinates and prayer-reference semantics",
+    "all source node coordinates and kinds",
+    "all aliases and names",
+    "all separate imadas and their full current groups",
+    "all nearest-default assignments",
+    "all existing boundaries, curation and proof dependencies"
+  ],
+  "phoneScope": "Root reports six selected locality cards plus one non-evidence route result; this report has not read phone/ledger artifacts and does not derive source approval from them.",
+  "remainingGates": [
+    "Independent exact current group/reference/schema review, including all source-name peers and inherited context rules.",
+    "Truthful Kebili reviewed-context and Tataouine two-delegation treatment; no common-containment assertion where false.",
+    "Any later source-only proof must preserve exact groups and old metadata except separately approved point pickerGroupId changes.",
+    "Primary documents establish settlement identity; none certifies the legacy INM reference as the unique geographic centre or a town/imada boundary."
+  ],
+  "notUsedAsPrimaryProof": [
+    "Search-result-only Mahdia city article, whose raw download timed out; replaced by byte-pinned Parliament/Interior response.",
+    "The municipal Tataouine page population/area figures and embedded office-map coordinates.",
+    "Proximity, matching defaults, Google outlines, Wikipedia metadata and administrative name overlap alone."
+  ],
+  "revisionNote": "Final source freeze incorporates the root-selected three-support/three-implementation-hold split and a newly acquired raw Social Ministry Joumine village-address record. The 1991 field study remains historical supplementary evidence, not relabeled as current official settlement certification.",
+  "selectedSourceSupportedPairs": [
+    {
+      "id": "osm:node:1433130924",
+      "baseId": 558
+    },
+    {
+      "id": "osm:node:558962249",
+      "baseId": 426
+    },
+    {
+      "id": "osm:node:1206558973",
+      "baseId": 593
+    }
+  ],
+  "implementationHeldPairs": [
+    {
+      "id": "osm:node:298019989",
+      "baseId": 482,
+      "reason": "Inherited reviewed Janoura/Sud context, different base sector and existing local groups require a separate exact dependency design."
+    },
+    {
+      "id": "osm:node:558816759",
+      "baseId": 600,
+      "reason": "Compound base label and existing Bouhjar multi-member imada group require separate complete-group preservation design; no town equivalence assumed."
+    },
+    {
+      "id": "osm:node:264885332",
+      "baseId": 624,
+      "reason": "Point and base in different North/South delegation source polygons; existing accepted boundaries and local groups require separate design."
+    }
+  ]
+}

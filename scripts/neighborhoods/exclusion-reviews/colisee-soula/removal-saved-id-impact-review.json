@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_REMOVAL_IMPACT",
+  "scope": "Read-only prospective impact of excluding the named residential record. Source classification acceptance and any implementation remain separate. No generator or application runtime was executed.",
+  "baselineMetadataSha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86",
+  "sourceAssessment": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\colisee-soula-source-and-phone-review.json",
+    "sha256": "b2ccb5966c599c7e7ffa7ae6c26c16137fb23109149ae502708a0fc75393832f"
+  },
+  "catalogInputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "1aeb913229c19855a6b300eaa42cbf0054ac8c6a0659c7e88c29fc57ae5875af"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "dbc3462e2f1e73df3630ffcb43a95089d3416c5035828005149b453930b77b14"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    }
+  ],
+  "target": {
+    "id": "osm:relation:1622298",
+    "sourceId": "osm",
+    "name": "كولزي صولة",
+    "aliases": [
+      "Colisée Soula"
+    ],
+    "kind": "residential",
+    "parentName": "ولاية تونس",
+    "contextAliases": [],
+    "governorateId": 342,
+    "lat": 36.83717,
+    "lng": 10.15397,
+    "delegationId": 391,
+    "hasBoundary": true,
+    "bbox": [
+      10.135734,
+      36.827688,
+      10.168428,
+      36.84675
+    ],
+    "areaKm2": 2.532622157445949,
+    "pickerGroupId": "osm:relation:1622298",
+    "offset": 19292,
+    "length": 1380
+  },
+  "expectedTags": {
+    "addr:city": "تونس",
+    "addr:city:ar": "تونس",
+    "landuse": "residential",
+    "name": "كولزي صولة",
+    "name:ar": "كولزي صولة",
+    "name:fr": "Colisée Soula"
+  },
+  "sourceGeometrySha256": "6aac341727dae9f3a9a53246f3016505acc38080df21574bb33a83936d025c04",
+  "packedGeometrySha256": "154e7a3103a463dc788b8fca30a683cbe00d79e57ff1f2f5f24a26a5d4dc1e07",
+  "disposition": "If the source classification review is accepted, use one exact exclude decision for relation1622298. Do not rename it to El Manar, invent a smaller shopping-centre boundary, merge it into one imada, or create a shopping-centre point in the locality catalog.",
+  "sourceAndDependencyChecks": {
+    "currentGroup": [
+      "osm:relation:1622298"
+    ],
+    "completeExtractedNamePeers": [
+      "osm:relation:1622298"
+    ],
+    "activeCurationOrPickerReference": false,
+    "targetCurrentlyRetired": false,
+    "targetInTinyReviewedNamesOrReplacement": false,
+    "parentDependency": "Residential features are not administrative context parents; removing this one cannot itself rename child parents. No matching source name peer was found to create an automatic alias/group bridge."
+  },
+  "cachedPlacePointsInsideFootprint": [
+    {
+      "id": "osm:node:1178986839",
+      "source": {
+        "id": "osm:node:1178986839",
+        "tags": {
+          "name": "المنار 1",
+          "name:ar": "المنار 1",
+          "name:en": "El Mostaqbel",
+          "name:fr": "El Manar 1",
+          "place": "suburb"
+        },
+        "lat": 36.8370597,
+        "lng": 10.1477835
+      },
+      "currentRawAbsent": true,
+      "afterRemoval": "Remains absorbed into existing namesake sector7201546. Its primary Arabic and Latin names match that containing sector; they do not match Colisée. Preserve existing sector aliases including El Mostaqbel."
+    },
+    {
+      "id": "osm:node:1191111511",
+      "currentMetadata": {
+        "id": "osm:node:1191111511",
+        "sourceId": "osm",
+        "name": "المنار 2",
+        "aliases": [
+          "El Manar 2"
+        ],
+        "kind": "suburb",
+        "parentName": "المنار",
+        "contextAliases": [
+          "Délégation El Menzah",
+          "El Manar",
+          "El Menzah",
+          "المنار",
+          "معتمدية المنزه"
+        ],
+        "governorateId": 342,
+        "lat": 36.8423974,
+        "lng": 10.1571247,
+        "delegationId": 390,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1191111511"
+      },
+      "afterRemoval": "Remains the existing separate Manar2 suburb point with the same context/default390. Numbered2 does not match unnumbered Manar for point absorption."
+    }
+  ],
+  "expectedNewlySurfacedRawPoints": [],
+  "spatialReview": {
+    "method": "Decoded current big-endian packed geometry directly with struct/Shapely; inspected current Kotlin strict-interior conflict suppression and smallest-area selection. This is a bounded analytical scenario, not a generator/helper/runtime test or boundary certification.",
+    "positiveAreaAlternatives": [
+      {
+        "id": "osm:relation:7201546",
+        "name": "المنار 1",
+        "areaKm2": 1.5234805566268192,
+        "fractionOfQuestionedFootprint": 0.45281887736506127
+      },
+      {
+        "id": "osm:relation:7201547",
+        "name": "المنار",
+        "areaKm2": 3.0450727927523493,
+        "fractionOfQuestionedFootprint": 0.5471811182458916
+      },
+      {
+        "id": "osm:relation:7115052",
+        "name": "المنزه 6",
+        "areaKm2": 0.8382818953868073,
+        "fractionOfQuestionedFootprint": 4.389047257478413e-09,
+        "qualification": "Minute quantized edge sliver, retained unchanged."
+      }
+    ],
+    "targetOrAlternativeConflictRecords": [],
+    "positiveAreaUncoveredByRemainingPolygons": 0,
+    "samples": [
+      {
+        "lat": 36.83717,
+        "lng": 10.15397,
+        "role": "old polygon representative",
+        "before": "osm:relation:1622298",
+        "after": "osm:relation:7201547"
+      },
+      {
+        "lat": 36.8423974,
+        "lng": 10.1571247,
+        "role": "existing Manar2 point",
+        "before": "osm:relation:1622298",
+        "after": "osm:relation:7201547"
+      },
+      {
+        "lat": 36.8370597,
+        "lng": 10.1477835,
+        "role": "absorbed Manar1 source point",
+        "before": "osm:relation:7201546",
+        "after": "osm:relation:7201546"
+      }
+    ],
+    "effect": "Removing the smaller misleading residential polygon lets Manar7201547 win over approximately54.72% of the questioned area. Manar1 and the tiny Menzah6 overlap already beat it by area. No new positive-area label gap is indicated in these current packed shapes. Edge tolerances and fresh generated output still require the normal actual-data acceptance."
+  },
+  "preservedElMenzahImadas": [
+    {
+      "id": "osm:relation:7201543",
+      "code": "115851",
+      "name": "جوان 01",
+      "default": 390,
+      "completeGroup": [
+        "osm:relation:7201543"
+      ],
+      "packedGeometrySha256": "81aaf936612db2c52557b12b551a11ced9d25cb674a0b23a7ee45ce35ef45e44"
+    },
+    {
+      "id": "osm:relation:7201545",
+      "code": "115852",
+      "name": "المنزه",
+      "default": 390,
+      "completeGroup": [
+        "delegation:390",
+        "osm:relation:7201545"
+      ],
+      "packedGeometrySha256": "657f31aa5b43b8dd65eee5d4e37665b14da65680fab2c664e4a235c52038d6ce"
+    },
+    {
+      "id": "osm:relation:7201544",
+      "code": "115853",
+      "name": "الفتح",
+      "default": 392,
+      "completeGroup": [
+        "osm:relation:7201544"
+      ],
+      "packedGeometrySha256": "0aaa1f72f688a6af4964877efc38a3c55310ba63e89dcdaaf371d0b7d89e8030"
+    },
+    {
+      "id": "osm:relation:7201547",
+      "code": "115854",
+      "name": "المنار",
+      "default": 390,
+      "completeGroup": [
+        "osm:relation:7201547"
+      ],
+      "packedGeometrySha256": "959752b25b03521e9984f77fdcfdf19810524bc587cd0e29fc03a450843cad61"
+    },
+    {
+      "id": "osm:relation:7201546",
+      "code": "115855",
+      "name": "المنار 1",
+      "default": 391,
+      "completeGroup": [
+        "osm:relation:7201546"
+      ],
+      "packedGeometrySha256": "809d06d5634bb17141e17df6ac4878450492ae5084cfaadaff509baea343a755"
+    }
+  ],
+  "exactProspectiveDelta": {
+    "rawIdsRemoved": [
+      "osm:relation:1622298"
+    ],
+    "rawRecordsDelta": -1,
+    "polygonsDelta": -1,
+    "pointsDelta": 0,
+    "pickerRowsDelta": -1,
+    "allOtherGroupsAndMeaningfulMetadataUnchanged": true,
+    "retiredLocalityIdsAddition": [
+      "osm:relation:1622298"
+    ],
+    "retiredIdsBefore": 16,
+    "retiredIdsAfter": 17,
+    "reviewedNamesCountUnchanged": 70,
+    "replacementsCountUnchanged": 1,
+    "savedReplacementProposed": null,
+    "binarySliceToRemove": {
+      "offset": 19292,
+      "length": 1380
+    },
+    "expectedBinary": "Old bytes before offset19292 followed directly by old bytes from20672 onward. All other polygon and country slice bytes remain exact; subsequent polygon/country offsets shift by-1380.",
+    "followingPolygonOffsetCount": 2695,
+    "currentBinaryBytes": 5493496,
+    "prospectiveBinaryBytes": 5492116,
+    "qualification": "Counts describe this exclusion as an incremental change from the reviewed1b9 baseline. Rebase against the separately installed Bab Souika group change before staging; do not overwrite that change."
+  },
+  "savedSelectionImpact": {
+    "implementation": "Existing exclude handling already adds the ID to both retired-ID indexes. No reviewed replacement is supported.",
+    "getLocalityId": "Returns null for a retired ID without a replacement.",
+    "getLocationSelection": "Returns the saved selection with localityId/name/kind cleared, preserving delegationId and fromGps. It does not silently assign Manar or move saved coordinates.",
+    "currentManualDefault391": "The removed picker row used391; a saved timetable source is retained by retirement handling. Actual future GPS timetable selection remains independent of the polygon label.",
+    "sourceLocations": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\PrefsManager.kt",
+        "lines": [
+          66,
+          99,
+          118
+        ]
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\LocalityRepository.kt",
+        "lines": [
+          133,
+          184
+        ]
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\NeighborhoodRepository.kt",
+        "lines": [
+          109,
+          134
+        ]
+      }
+    ]
+  },
+  "futureAcceptance": [
+    "Pin the exact source exclusion and preserve every prior decision.",
+    "Require exactly one removed raw polygon, no new point and no new display association; all surviving names/aliases/contexts/defaults/coordinates and complete groups remain exact.",
+    "Check the binary differs solely by the target slice, with remapped offsets/cells and unchanged conflict objects; reviewedNames70 and existing replacement remain exact, retired IDs gain only the target.",
+    "Preserve all five El Menzah imadas, including base390+sector7201545, and the separate Manar2 point. Do not migrate the retired ID to one of the two Manar sectors."
+  ],
+  "notPerformed": [
+    "new source fetch",
+    "phone/device or live ledger access",
+    "generator/helper execution",
+    "tests/builds",
+    "repository/stage edits",
+    "coordinate/default recomputation",
+    "Google geometry extraction"
+  ]
+}

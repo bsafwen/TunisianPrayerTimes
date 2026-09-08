@@ -1,0 +1,20 @@
+{
+  "url": "https://api.openstreetmap.org/api/0.6/way/117426430/full.json",
+  "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\outer-way-117426430-full.json",
+  "sha256": "86262cfe062e2c12426f51ab00a633bc8819cdb245a986678d7974cd0c889ca9",
+  "wayId": 117426430,
+  "version": 9,
+  "timestamp": "2017-05-01T15:54:07Z",
+  "tags": {},
+  "nodeCount": 171,
+  "currentPolygonValid": true,
+  "currentBounds": [
+    10.1357341,
+    36.827688,
+    10.1684278,
+    36.8467504
+  ],
+  "exactTopologicalEqualityToCachedGeometry": true,
+  "symmetricDifferenceDegreesSquared": 0.0,
+  "scope": "Fresh outer way and node coordinates support current geometry comparison only, not historical polygon coordinates."
+}

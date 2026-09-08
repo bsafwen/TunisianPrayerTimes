@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reference point map-position review only; no boundary extraction/import approval",
+  "source": {
+    "file": "isie-oued-meliz-east.pdf",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9/%D9%88%D8%A7%D8%AF%D9%8A%20%D9%85%D9%84%D9%8A%D8%B2/%D9%88%D8%A7%D8%AF%D9%8A%20%D9%85%D9%84%D9%8A%D8%B2%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+    "retrievedAt": "2026-09-08T02:02:18.691956+00:00",
+    "sha256": "982825f69ed8fa02dcbc5fcc27227b2f1e42fb476ca7c6b3cb520da075c8f312"
+  },
+  "geoPdfControls": {
+    "crsWkt": "PROJCRS[\"WGS 84 / UTM zone 32N\",BASEGEOGCRS[\"WGS 84\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"Degree\",0.0174532925199433]]],CONVERSION[\"UTM zone 32N\",METHOD[\"Transverse Mercator\",ID[\"EPSG\",9807]],PARAMETER[\"Latitude of natural origin\",0,ANGLEUNIT[\"Degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",9,ANGLEUNIT[\"Degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Scale factor at natural origin\",0.9996,SCALEUNIT[\"unity\",1],ID[\"EPSG\",8805]],PARAMETER[\"False easting\",500000,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]],ID[\"EPSG\",16032]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "viewportBBox": [
+      4.31908,
+      590.46173,
+      841.50095,
+      5.38791
+    ],
+    "lpts": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        1.0,
+        1.0
+      ]
+    ],
+    "gpts": [
+      [
+        36.39529,
+        8.47144
+      ],
+      [
+        36.49675,
+        8.47075
+      ],
+      [
+        36.49741,
+        8.65063
+      ],
+      [
+        36.39595,
+        8.65109
+      ]
+    ],
+    "pageToProjectedAffine": [
+      [
+        19.243683894375142,
+        -0.00014928398380934145
+      ],
+      [
+        0.0005119603747516521,
+        -19.236180011832403
+      ],
+      [
+        452517.4879676916,
+        4039274.6853971523
+      ]
+    ],
+    "fitResidualMeters": [
+      0.11330422620815707,
+      0.11330422708412376,
+      0.11330422547273201,
+      0.11330422874707287
+    ]
+  },
+  "points": [
+    {
+      "role": "oldBase500",
+      "lat": 36.4539,
+      "lng": 8.5501,
+      "pageCoordinates": [
+        372.4585619865304,
+        254.00426148361566
+      ],
+      "onPage": 1
+    },
+    {
+      "role": "proposedVillage2840204369",
+      "lat": 36.4678121,
+      "lng": 8.5500007,
+      "pageCoordinates": [
+        372.3725971696067,
+        173.7788746548151
+      ],
+      "onPage": 1
+    }
+  ],
+  "ministryRecovery": {
+    "file": "ministry-social-local-unit.html",
+    "sha256": "fa744f61a9f898efa6f6757d5f017bde038b7183dde42caa3fee4f2a96e3b9a2",
+    "method": "curl.exe with Windows Schannel certificate verification; requests certificate-chain failure retained in source-retrievals.json",
+    "url": "https://www.social.gov.tn/en/node/3498",
+    "retrievedAtApproxUtc": "2026-09-08T02:02:00Z"
+  }
+}

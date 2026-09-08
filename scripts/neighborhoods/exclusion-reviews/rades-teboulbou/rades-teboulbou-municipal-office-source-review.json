@@ -1,0 +1,1436 @@
+{
+  "status": "TWO_EXACT_NONLOCALITY_EXCLUSIONS_SUPPORTED_WITH_RADES_PREMISES_QUALIFICATION",
+  "baselineMetadataSha256": "31ac2b52bbeec196cc3da2eacae11851b23ca08584027ceaf0665e40fc6bb21f",
+  "records": [
+    {
+      "id": "osm:way:386486798",
+      "recommendation": "EXCLUDE_EXACT_NONLOCALITY_MUNICIPAL_OBJECT",
+      "currentMetadata": {
+        "id": "osm:way:386486798",
+        "sourceId": "osm",
+        "name": "بلدية رادس",
+        "aliases": [
+          "Municipalité de Radès",
+          "Municipality of Rades"
+        ],
+        "kind": "suburb",
+        "parentName": "المنجي سليم",
+        "contextAliases": [
+          "Délégation Radès",
+          "Mongi Slim",
+          "Radès",
+          "المنجي سليم",
+          "معتمدية رادس"
+        ],
+        "governorateId": 349,
+        "lat": 36.769792,
+        "lng": 10.2709,
+        "delegationId": 449,
+        "hasBoundary": true,
+        "bbox": [
+          10.27074,
+          36.769627,
+          10.271078,
+          36.769913
+        ],
+        "areaKm2": 0.0006496919019306013,
+        "pickerGroupId": "osm:way:386486798",
+        "offset": 5402940,
+        "length": 60
+      },
+      "currentRawFingerprintSha256": "dceb157322d19aa5ec32625696724bcda517ff00e6a330a4605d2160a33d0e06",
+      "sourceTags": {
+        "name": "بلدية رادس",
+        "name:ar": "بلدية رادس",
+        "name:en": "Municipality of Rades",
+        "name:fr": "Municipalité de Radès",
+        "place": "suburb"
+      },
+      "currentApiObject": {
+        "type": "way",
+        "id": 386486798,
+        "timestamp": "2024-03-24T10:07:40Z",
+        "version": 4,
+        "changeset": 149081369,
+        "user": "selimachour",
+        "uid": 400177,
+        "nodes": [
+          3898297127,
+          3898297128,
+          3898297129,
+          3898297130,
+          3898297131,
+          3898297127
+        ],
+        "tags": {
+          "name": "بلدية رادس",
+          "name:ar": "بلدية رادس",
+          "name:en": "Municipality of Rades",
+          "name:fr": "Municipalité de Radès",
+          "place": "suburb"
+        }
+      },
+      "completeCurrentRawGroup": [
+        {
+          "id": "osm:way:386486798",
+          "sourceId": "osm",
+          "name": "بلدية رادس",
+          "aliases": [
+            "Municipalité de Radès",
+            "Municipality of Rades"
+          ],
+          "kind": "suburb",
+          "parentName": "المنجي سليم",
+          "contextAliases": [
+            "Délégation Radès",
+            "Mongi Slim",
+            "Radès",
+            "المنجي سليم",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.769792,
+          "lng": 10.2709,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.27074,
+            36.769627,
+            10.271078,
+            36.769913
+          ],
+          "areaKm2": 0.0006496919019306013,
+          "pickerGroupId": "osm:way:386486798",
+          "offset": 5402940,
+          "length": 60
+        }
+      ],
+      "exactSourceNamePeerIds": [
+        "osm:way:386486798"
+      ],
+      "originalGeometrySha256": "81ff3564b83bcfd5c448a2fcbf7034ab865e47eaa9640f5d0675ca40a45d6cf2",
+      "packedGeometrySha256": "2a807cfff980b5d2436e03192b6cc1c13f11693ae81f29965d8b61306dd958ef",
+      "sourceHistory": {
+        "versions": 4,
+        "firstVersion": {
+          "type": "way",
+          "id": 386486798,
+          "timestamp": "2015-12-18T13:21:16Z",
+          "version": 1,
+          "changeset": 36027840,
+          "user": "Touzrimounir",
+          "uid": 3087689,
+          "nodes": [
+            3898297127,
+            3898297128,
+            3898297129,
+            3898297130,
+            3898297131,
+            3898297127
+          ],
+          "tags": {
+            "name": "municipalité de Rades",
+            "place": "suburb"
+          }
+        },
+        "lastVersion": {
+          "type": "way",
+          "id": 386486798,
+          "timestamp": "2024-03-24T10:07:40Z",
+          "version": 4,
+          "changeset": 149081369,
+          "user": "selimachour",
+          "uid": 400177,
+          "nodes": [
+            3898297127,
+            3898297128,
+            3898297129,
+            3898297130,
+            3898297131,
+            3898297127
+          ],
+          "tags": {
+            "name": "بلدية رادس",
+            "name:ar": "بلدية رادس",
+            "name:en": "Municipality of Rades",
+            "name:fr": "Municipalité de Radès",
+            "place": "suburb"
+          }
+        },
+        "qualification": "All four way versions use institutional municipality names and retain exactly the same five-corner closed node sequence; no historical office/building tag or independent locality name is claimed."
+      },
+      "support": "The unchanged649.69m² premises-scale institutional object has no administrative code/boundary or inhabited-quarter name, and the actual Radès town remains separately available. This supports rejecting it as a locality; its exact municipal-premises function/location is an inference from the record, not certified by the newer phone card.",
+      "limitations": [
+        "Neither the official RepublicSquare address nor the phone new-site result was spatially equated to this tiny polygon. Old versus new municipal-office occupancy remains unverified; no claim of current office location or surveyed premise boundary."
+      ],
+      "savedIdentityPolicy": {
+        "retireId": "osm:way:386486798",
+        "replacementId": null,
+        "inventedAliasToTown": false
+      },
+      "noExistingDirectCurationPickerOrBoundaryDependency": true
+    },
+    {
+      "id": "osm:node:4396821689",
+      "recommendation": "EXCLUDE_EXACT_NONLOCALITY_MUNICIPAL_OBJECT",
+      "currentMetadata": {
+        "id": "osm:node:4396821689",
+        "sourceId": "osm",
+        "name": "بلدية تبلبو",
+        "aliases": [
+          "Municipalité de Téboulbou",
+          "Municipalité Téboulbou"
+        ],
+        "kind": "suburb",
+        "parentName": "تبلبو",
+        "contextAliases": [
+          "Délégation Gabès Sud",
+          "Gabès Sud",
+          "Teboulbou",
+          "تبلبو",
+          "معتمدية قابس الجنوبية"
+        ],
+        "governorateId": 347,
+        "lat": 33.8481292,
+        "lng": 10.1126771,
+        "delegationId": 620,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:4396821689"
+      },
+      "currentRawFingerprintSha256": "e71a7d9d4a6a037922e263da05ea6fdc03b91ca1ad01f2cd8c11a84d7bc91e8c",
+      "sourceTags": {
+        "addr:city": "قابس",
+        "addr:street": "شارع أبو القاسم الشابي",
+        "name": "بلدية تبلبو",
+        "name:ar": "بلدية تبلبو",
+        "name:en": "Municipalité Téboulbou",
+        "name:fr": "Municipalité de Téboulbou",
+        "office": "government",
+        "place": "suburb"
+      },
+      "currentApiObject": {
+        "type": "node",
+        "id": 4396821689,
+        "lat": 33.8481292,
+        "lon": 10.1126771,
+        "timestamp": "2024-03-24T10:07:40Z",
+        "version": 8,
+        "changeset": 149081369,
+        "user": "selimachour",
+        "uid": 400177,
+        "tags": {
+          "addr:city": "قابس",
+          "addr:street": "شارع أبو القاسم الشابي",
+          "name": "بلدية تبلبو",
+          "name:ar": "بلدية تبلبو",
+          "name:en": "Municipalité Téboulbou",
+          "name:fr": "Municipalité de Téboulbou",
+          "office": "government",
+          "place": "suburb"
+        }
+      },
+      "completeCurrentRawGroup": [
+        {
+          "id": "osm:node:4396821689",
+          "sourceId": "osm",
+          "name": "بلدية تبلبو",
+          "aliases": [
+            "Municipalité de Téboulbou",
+            "Municipalité Téboulbou"
+          ],
+          "kind": "suburb",
+          "parentName": "تبلبو",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "Teboulbou",
+            "تبلبو",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.8481292,
+          "lng": 10.1126771,
+          "delegationId": 620,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:4396821689"
+        }
+      ],
+      "exactSourceNamePeerIds": [
+        "osm:node:4396821689"
+      ],
+      "originalGeometrySha256": "8a2ee1e79e1d2641bb7f5031871933ef8ec59626974b7c34e174ad58d20ac887",
+      "packedGeometrySha256": null,
+      "sourceHistory": {
+        "versions": 8,
+        "firstVersion": {
+          "type": "node",
+          "id": 4396821689,
+          "lat": 33.8481107,
+          "lon": 10.1127238,
+          "timestamp": "2016-09-11T23:08:40Z",
+          "version": 1,
+          "changeset": 42089112,
+          "user": "Midosport",
+          "uid": 4562599,
+          "tags": {
+            "addr:street": "Avenue Aboulkacem chebbi",
+            "name": "بلدية تبلبو",
+            "name:ar": "بلدية تبلبو",
+            "name:fr": "Municipalité Téboulbou",
+            "office": "government"
+          }
+        },
+        "lastVersion": {
+          "type": "node",
+          "id": 4396821689,
+          "lat": 33.8481292,
+          "lon": 10.1126771,
+          "timestamp": "2024-03-24T10:07:40Z",
+          "version": 8,
+          "changeset": 149081369,
+          "user": "selimachour",
+          "uid": 400177,
+          "tags": {
+            "addr:city": "قابس",
+            "addr:street": "شارع أبو القاسم الشابي",
+            "name": "بلدية تبلبو",
+            "name:ar": "بلدية تبلبو",
+            "name:en": "Municipalité Téboulbou",
+            "name:fr": "Municipalité de Téboulbou",
+            "office": "government",
+            "place": "suburb"
+          }
+        },
+        "qualification": "Created as a government-office address in2016 without a place tag. Version4 in2022 added place=suburb and briefly a settlement name while retaining office=government; later names again identify only the municipality."
+      },
+      "support": "The exact API history explicitly identifies government-office premises. The2020 official legal notice names the municipal staff association local at Municipalité de Teboulbou,AvenueChebbi6032Gabès, matching the source street and institutional identity.",
+      "limitations": [
+        "The legal notice corroborates premises/street identity but not exact surveyed coordinates or continued office occupancy. It does not convert the separate67.74km² imada into an office."
+      ],
+      "savedIdentityPolicy": {
+        "retireId": "osm:node:4396821689",
+        "replacementId": null,
+        "inventedAliasToTown": false
+      },
+      "noExistingDirectCurationPickerOrBoundaryDependency": true
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\interior-municipal-directory.html",
+        "sha256": "e920362ac113c9deaab49014e1b5dd3c9bf1f8ee2cf945e91c4dd750baf9bb66"
+      },
+      "url": "https://opendata.interieur.gov.tn/fr/catalog/annuaire-des-municipalites",
+      "support": "Official municipal office directory gives Radès at RepublicSquare2040. This confirms institutional/address context, not identity of the catalog polygon with that address."
+    },
+    {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\teboulbou-jort-2020-046.pdf",
+        "sha256": "9e45fd534513ed2a3b70e805de0a0d41ad7ee74069696cd30cb555d51e0a4600"
+      },
+      "url": "https://lake.jort.tn/annonces-legales/fr/2020/046.pdf",
+      "pdfPage": 12,
+      "printedPage": 1392,
+      "date": "2020-07-07",
+      "notice": "2020T00557APSF1",
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\teboulbou-jort-page12.png",
+        "sha256": "8c2ac905fe056b435a83568db8bd1bdd1682a8f3495ae4193529f7d3e9df998c"
+      },
+      "personallyViewed": true,
+      "support": "Notice for municipal staff association names its premises at the Teboulbou municipality on AvenueChebbi6032Gabès; matches the exact government-office OSM record."
+    }
+  ],
+  "protectedLocalityChoices": {
+    "imadaCount": 15,
+    "imadaIds": [
+      "osm:relation:7145415",
+      "osm:relation:7145445",
+      "osm:relation:7145444",
+      "osm:relation:7145424",
+      "osm:relation:7145419",
+      "osm:relation:7145448",
+      "osm:relation:7145421",
+      "osm:relation:7174578",
+      "osm:relation:7174609",
+      "osm:relation:7174566",
+      "osm:relation:7174606",
+      "osm:relation:7174607",
+      "osm:relation:7174632",
+      "osm:relation:7174610",
+      "osm:relation:7174608"
+    ],
+    "registryRows": [
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135851",
+        "sectorFr": "Rades ville",
+        "sectorAr": "رادس المدينة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8331,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 277,
+          "Nombre_de_menages_par_Secteurs.xlsx": 277
+        }
+      },
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135852",
+        "sectorFr": "Rades mellaha",
+        "sectorAr": "رادس الملاحة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8365,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 278,
+          "Nombre_de_menages_par_Secteurs.xlsx": 278
+        }
+      },
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135853",
+        "sectorFr": "Taieb mehiri",
+        "sectorAr": "الطيب المهيري",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8399,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 279,
+          "Nombre_de_menages_par_Secteurs.xlsx": 279
+        }
+      },
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135854",
+        "sectorFr": "Rades remada",
+        "sectorAr": "رادس رمادة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8433,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 280,
+          "Nombre_de_menages_par_Secteurs.xlsx": 280
+        }
+      },
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135855",
+        "sectorFr": "Mongi slim",
+        "sectorAr": "المنجي سليم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8467,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 281,
+          "Nombre_de_menages_par_Secteurs.xlsx": 281
+        }
+      },
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135856",
+        "sectorFr": "Rades foret",
+        "sectorAr": "رادس الغابة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8501,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 282,
+          "Nombre_de_menages_par_Secteurs.xlsx": 282
+        }
+      },
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135857",
+        "sectorFr": "Rades meliane",
+        "sectorAr": "رادس مليان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8535,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 283,
+          "Nombre_de_menages_par_Secteurs.xlsx": 283
+        }
+      },
+      {
+        "governorateCode": "13",
+        "governorateFr": "Ben arous",
+        "governorateAr": "بن عروس",
+        "delegationCode": "1358",
+        "delegationFr": "Rades",
+        "delegationAr": "رادس",
+        "sectorCode": "135858",
+        "sectorFr": "Noubou",
+        "sectorAr": "نوبو",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 8569,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 284,
+          "Nombre_de_menages_par_Secteurs.xlsx": 284
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5153",
+        "delegationFr": "Gabes sud",
+        "delegationAr": "قابس الجنوبية",
+        "sectorCode": "515351",
+        "sectorFr": "Teboulbou",
+        "sectorAr": "تبلبو",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58138,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2846,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2841
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5153",
+        "delegationFr": "Gabes sud",
+        "delegationAr": "قابس الجنوبية",
+        "sectorCode": "515352",
+        "sectorFr": "Sidi boulbaba",
+        "sectorAr": "سيدي بولبابة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58172,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2848,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2843
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5153",
+        "delegationFr": "Gabes sud",
+        "delegationAr": "قابس الجنوبية",
+        "sectorCode": "515353",
+        "sectorFr": "Zrig eddakhlania",
+        "sectorAr": "زريق الدخلانية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58206,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2850,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2844
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5153",
+        "delegationFr": "Gabes sud",
+        "delegationAr": "قابس الجنوبية",
+        "sectorCode": "515354",
+        "sectorFr": "Secteur (5)",
+        "sectorAr": "المنطقة الخامسة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58240,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2851,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2845
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5153",
+        "delegationFr": "Gabes sud",
+        "delegationAr": "قابس الجنوبية",
+        "sectorCode": "515355",
+        "sectorFr": "El medou",
+        "sectorAr": "المدو",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58274,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2853,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2847
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5153",
+        "delegationFr": "Gabes sud",
+        "delegationAr": "قابس الجنوبية",
+        "sectorCode": "515356",
+        "sectorFr": "Limaoua",
+        "sectorAr": "ليماوة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58308,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2855,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2849
+        }
+      },
+      {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5153",
+        "delegationFr": "Gabes sud",
+        "delegationAr": "قابس الجنوبية",
+        "sectorCode": "515357",
+        "sectorFr": "El amazir",
+        "sectorAr": "الأمازير",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58342,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2857,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2851
+        }
+      }
+    ],
+    "completeRawGroups": {
+      "delegation:449": [
+        "osm:relation:8893221"
+      ],
+      "osm:relation:7145415": [
+        "osm:relation:7145415"
+      ],
+      "osm:relation:7145419": [
+        "osm:relation:7145419"
+      ],
+      "osm:relation:7145421": [
+        "osm:relation:7145421",
+        "osm:way:185560569"
+      ],
+      "osm:relation:7145424": [
+        "osm:relation:7145424"
+      ],
+      "osm:relation:7145444": [
+        "osm:relation:7145444"
+      ],
+      "osm:relation:7145445": [
+        "osm:relation:7145445"
+      ],
+      "osm:relation:7145448": [
+        "osm:relation:7145448"
+      ],
+      "osm:relation:7174566": [
+        "osm:relation:7174566"
+      ],
+      "osm:relation:7174578": [
+        "osm:relation:7174578"
+      ],
+      "osm:relation:7174606": [
+        "osm:relation:7174606"
+      ],
+      "osm:relation:7174607": [
+        "osm:relation:7174607"
+      ],
+      "osm:relation:7174608": [
+        "osm:relation:7174608"
+      ],
+      "osm:relation:7174609": [
+        "osm:relation:7174609"
+      ],
+      "osm:relation:7174610": [
+        "osm:relation:7174610"
+      ],
+      "osm:relation:7174632": [
+        "osm:relation:7174632"
+      ]
+    },
+    "rawRecords": [
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7145415",
+          "sourceId": "osm",
+          "name": "الموازير",
+          "aliases": [
+            "El Mouazir"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.75112,
+          "lng": 9.974771,
+          "delegationId": 1023,
+          "hasBoundary": true,
+          "bbox": [
+            9.938021,
+            33.714275,
+            10.070979,
+            33.787985
+          ],
+          "areaKm2": 42.19498058788498,
+          "pickerGroupId": "osm:relation:7145415",
+          "offset": 2308508,
+          "length": 1900
+        },
+        "packedGeometrySha256": "641e6b4f887496f32c4332800c461204dbd533a319c2f7ce3a834911685b0ef9"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7145419",
+          "sourceId": "osm",
+          "name": "ليماوة",
+          "aliases": [
+            "Limaoua",
+            "Limawa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.730315,
+          "lng": 10.094804,
+          "delegationId": 1023,
+          "hasBoundary": true,
+          "bbox": [
+            10.039934,
+            33.675895,
+            10.133028,
+            33.784675
+          ],
+          "areaKm2": 51.729034382991046,
+          "pickerGroupId": "osm:relation:7145419",
+          "offset": 2329896,
+          "length": 2372
+        },
+        "packedGeometrySha256": "fa4be7fe1d4a0f9abb063d63447f09819bb9b971d3ab23759aa596ab05b3db24"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7145421",
+          "sourceId": "osm",
+          "name": "المدو",
+          "aliases": [
+            "El Medou"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.80002,
+          "lng": 10.018244,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            9.933915,
+            33.745935,
+            10.113925,
+            33.854055
+          ],
+          "areaKm2": 118.29626586996169,
+          "pickerGroupId": "osm:relation:7145421",
+          "offset": 2337744,
+          "length": 3860
+        },
+        "packedGeometrySha256": "201e81cd953a956d3ad05192063f3a3dc8c4e4d89dd4fe6d0fc3fd788be2d1f4"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7145424",
+          "sourceId": "osm",
+          "name": "المنطقة الخامسة",
+          "aliases": [
+            "Secteur 5"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.86813,
+          "lng": 10.116842,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.093756,
+            33.852675,
+            10.135336,
+            33.883527
+          ],
+          "areaKm2": 5.930995609324137,
+          "pickerGroupId": "osm:relation:7145424",
+          "offset": 2349356,
+          "length": 1852
+        },
+        "packedGeometrySha256": "dc4ab0533a53f752a810617bdc8c8b1173e4112bda33e32fb519c366292ecc82"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7145444",
+          "sourceId": "osm",
+          "name": "زريق الدخلانية",
+          "aliases": [
+            "Zrig Eddakhlania"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.85437,
+          "lng": 10.100682,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.093745,
+            33.844495,
+            10.107635,
+            33.864565
+          ],
+          "areaKm2": 1.952335046498149,
+          "pickerGroupId": "osm:relation:7145444",
+          "offset": 2435544,
+          "length": 1380
+        },
+        "packedGeometrySha256": "fe69257462f3131d4629e10215eacb12be78e82fb433a07d43ea347f28699f22"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7145445",
+          "sourceId": "osm",
+          "name": "سيدي بولبابة",
+          "aliases": [
+            "Sidi Boulbaba"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.856545,
+          "lng": 10.088091,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.062176,
+            33.840115,
+            10.101964,
+            33.872855
+          ],
+          "areaKm2": 6.309845624996409,
+          "pickerGroupId": "osm:relation:7145445",
+          "offset": 2436924,
+          "length": 2436
+        },
+        "packedGeometrySha256": "1a90c1d13830125534b75d8efdc4a4efed231a430854567eadf05f0d812ac213"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7145448",
+          "sourceId": "osm",
+          "name": "تبلبو",
+          "aliases": [
+            "Teboulbou"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "Gabès Sud",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.81254,
+          "lng": 10.135449,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.075429,
+            33.756675,
+            10.182599,
+            33.868637
+          ],
+          "areaKm2": 67.74271006399145,
+          "pickerGroupId": "osm:relation:7145448",
+          "offset": 2450560,
+          "length": 4188
+        },
+        "packedGeometrySha256": "7d50f771c507ecaac17ce79f570bfab1362162667c255a7cf9f63c3aa6bedbf8"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174566",
+          "sourceId": "osm",
+          "name": "الطيب المهيري",
+          "aliases": [
+            "Taieb Mehiri"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.782926,
+          "lng": 10.280245,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.273608,
+            36.77201,
+            10.291707,
+            36.793835
+          ],
+          "areaKm2": 2.1536678383299277,
+          "pickerGroupId": "osm:relation:7174566",
+          "offset": 4210276,
+          "length": 3692
+        },
+        "packedGeometrySha256": "d92c39d2074c771f16be826b1ed30d9c0dddf58ec505cb8e0c34e39d5d5a1630"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174578",
+          "sourceId": "osm",
+          "name": "المنجي سليم",
+          "aliases": [
+            "Mongi Slim"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.770895,
+          "lng": 10.269651,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.258636,
+            36.76668,
+            10.273483,
+            36.77516
+          ],
+          "areaKm2": 0.4334828148934937,
+          "pickerGroupId": "osm:relation:7174578",
+          "offset": 4259324,
+          "length": 2220
+        },
+        "packedGeometrySha256": "da2aae8bd49c12cac8df26f7e8548446a18b4d2bc701cd89a1504910cb68dd79"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174606",
+          "sourceId": "osm",
+          "name": "رادس الغابة",
+          "aliases": [
+            "Rades Foret"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.75305,
+          "lng": 10.265684,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.246812,
+            36.73958,
+            10.282841,
+            36.7665
+          ],
+          "areaKm2": 4.928475879171549,
+          "pickerGroupId": "osm:relation:7174606",
+          "offset": 4358144,
+          "length": 7516
+        },
+        "packedGeometrySha256": "d526b13d56682c597cecce0c9501e14af976231e5a1effeba588123784a2a884"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174607",
+          "sourceId": "osm",
+          "name": "رادس المدينة",
+          "aliases": [
+            "Rades Ville"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.76364,
+          "lng": 10.266673,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.255621,
+            36.75822,
+            10.278296,
+            36.76907
+          ],
+          "areaKm2": 1.5936210476481347,
+          "pickerGroupId": "osm:relation:7174607",
+          "offset": 4365660,
+          "length": 6220
+        },
+        "packedGeometrySha256": "df65510e6bfd57c34fe49f64546d51120821d000917430e4384dbd76c6044ed6"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174608",
+          "sourceId": "osm",
+          "name": "رادس الملاحة",
+          "aliases": [
+            "Rades Mellaha"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.78963,
+          "lng": 10.271994,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.256041,
+            36.76668,
+            10.307129,
+            36.812548
+          ],
+          "areaKm2": 6.154549847114463,
+          "pickerGroupId": "osm:relation:7174608",
+          "offset": 4371880,
+          "length": 6172
+        },
+        "packedGeometrySha256": "dca6d25193d28012c8b9ed6fd7592d388529a3f8040f0407d2b82e6b9686ccbc"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174609",
+          "sourceId": "osm",
+          "name": "رادس رمادة",
+          "aliases": [
+            "Rades Remada"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.774725,
+          "lng": 10.277899,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.272489,
+            36.7665,
+            10.286888,
+            36.78296
+          ],
+          "areaKm2": 1.073025597456192,
+          "pickerGroupId": "osm:relation:7174609",
+          "offset": 4378052,
+          "length": 3572
+        },
+        "packedGeometrySha256": "32c57d7ff9d9c15c188f2f79220431c47df1f74d5f4bc17b6e2ad67323225080"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174610",
+          "sourceId": "osm",
+          "name": "رادس مليان",
+          "aliases": [
+            "Rades Meliane"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.764815,
+          "lng": 10.288042,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.275044,
+            36.75379,
+            10.301147,
+            36.77583
+          ],
+          "areaKm2": 2.914644098870093,
+          "pickerGroupId": "osm:relation:7174610",
+          "offset": 4381624,
+          "length": 4716
+        },
+        "packedGeometrySha256": "c78bd3a7cedc757b0772544a82c2b60e5b1a6f2e8e16d304a777c01f91aa8bf0"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:7174632",
+          "sourceId": "osm",
+          "name": "نوبو",
+          "aliases": [
+            "Noubou"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.757765,
+          "lng": 10.279176,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.273594,
+            36.75251,
+            10.286491,
+            36.763
+          ],
+          "areaKm2": 0.4198145588067501,
+          "pickerGroupId": "osm:relation:7174632",
+          "offset": 4484204,
+          "length": 3660
+        },
+        "packedGeometrySha256": "9079002a2a0721b55c81a8e4a5e62ccd9536f377506b45dfdb683a197019b362"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:relation:8893221",
+          "sourceId": "osm",
+          "name": "رادس",
+          "aliases": [
+            "Rades",
+            "Radès",
+            "Радес",
+            "ראדס"
+          ],
+          "kind": "town",
+          "parentName": "معتمدية رادس",
+          "contextAliases": [
+            "Délégation Radès",
+            "Radès",
+            "معتمدية رادس"
+          ],
+          "governorateId": 349,
+          "lat": 36.775946,
+          "lng": 10.280177,
+          "delegationId": 449,
+          "hasBoundary": true,
+          "bbox": [
+            10.246812,
+            36.73958,
+            10.307129,
+            36.812548
+          ],
+          "areaKm2": 19.67028158090051,
+          "pickerGroupId": "delegation:449",
+          "offset": 5176044,
+          "length": 8492
+        },
+        "packedGeometrySha256": "422b322a6c97117f64e21f490ccd80d8321d3217260399d7816b3125f199f413"
+      },
+      {
+        "currentMetadata": {
+          "id": "osm:way:185560569",
+          "sourceId": "osm",
+          "name": "المدو",
+          "aliases": [
+            "El Medou"
+          ],
+          "kind": "residential",
+          "parentName": "معتمدية قابس الجنوبية",
+          "contextAliases": [
+            "Délégation Gabès Sud",
+            "El Medou",
+            "Gabès Sud",
+            "المدو",
+            "معتمدية قابس الجنوبية"
+          ],
+          "governorateId": 347,
+          "lat": 33.804535,
+          "lng": 10.069034,
+          "delegationId": 620,
+          "hasBoundary": true,
+          "bbox": [
+            10.062445,
+            33.799203,
+            10.071377,
+            33.809883
+          ],
+          "areaKm2": 0.36810474972859697,
+          "pickerGroupId": "osm:relation:7145421",
+          "offset": 5286580,
+          "length": 1004
+        },
+        "packedGeometrySha256": "f827d22593221978533030778d4013e02312c591938987c34f5a9a4da1fbbf13"
+      }
+    ],
+    "unchangedBases": [
+      {
+        "governorateId": 347,
+        "base": {
+          "id": 620,
+          "nomFr": "Gabes",
+          "nomAr": "قابس",
+          "nomEn": "Gabes",
+          "lat": 33.8815,
+          "lng": 10.0982
+        }
+      },
+      {
+        "governorateId": 349,
+        "base": {
+          "id": 449,
+          "nomFr": "Rades",
+          "nomAr": "رادس",
+          "nomEn": "Rades",
+          "lat": 36.7683,
+          "lng": 10.275
+        }
+      }
+    ],
+    "qualification": "Preserve the genuine Radès town/base449 association, every Radès/GabèsSud imada including Teboulbou7145448, and all existing complete group members. No office ID replacement or new Teboulbou base is proposed."
+  },
+  "finiteRemovalScope": {
+    "removedRawIds": [
+      "osm:way:386486798",
+      "osm:node:4396821689"
+    ],
+    "rawRowsBefore": 3630,
+    "rawRowsAfter": 3628,
+    "removedPolygonCount": 1,
+    "removedPointCount": 1,
+    "removedPackedSlice": {
+      "offset": 5402940,
+      "length": 60,
+      "sha256": "2a807cfff980b5d2436e03192b6cc1c13f11693ae81f29965d8b61306dd958ef"
+    },
+    "expectedBinaryAfterSha256": "572b4885ef5c294efdda5e586fca1f75c68f0544324586e2aee8cf58ed13c171",
+    "rawGroupCountBefore": 3497,
+    "rawGroupCountAfter": 3495,
+    "expectedRetiredLocalityIds": [
+      "osm:node:4396821689",
+      "osm:relation:1622298",
+      "osm:relation:7152490",
+      "osm:way:186951648",
+      "osm:way:239859673",
+      "osm:way:256591660",
+      "osm:way:256592012",
+      "osm:way:286523036",
+      "osm:way:315007832",
+      "osm:way:386486798",
+      "osm:way:623836961",
+      "osm:way:623836962",
+      "osm:way:623836963",
+      "osm:way:623836964",
+      "osm:way:623836965",
+      "osm:way:691401654",
+      "osm:way:695712523",
+      "osm:way:705793858",
+      "osm:way:705793860"
+    ],
+    "reviewedSavedNamesUnchanged": true,
+    "savedReplacementsUnchanged": true,
+    "cachedPointsInsideRemovedWay": [],
+    "conflictRegistrationsInvolvingRemovedIds": [],
+    "curationDecisionCountBefore": 138,
+    "curationDecisionCountAfter": 140,
+    "curationApplicationReceipts": "Existing exclude filtering occurs before generation; no name/preserve_point receipt is appended. Old receipts remain unchanged.",
+    "otherMeaningfulMetadataChangesExpected": [],
+    "coordinateDefaultOrBaseChangesExpected": false,
+    "qualification": "Source-only expectation, not generated-data verification. Later binary offsets and cell indices shift normally; retained packed slices/country and semantic metadata must remain exact."
+  },
+  "dependencyInventory": {
+    "activeManifestsContainingTargets": [],
+    "otherInstalledMentions": [
+      "scripts/neighborhoods/coverage.json",
+      "scripts/neighborhoods/picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+      "scripts/neighborhoods/official/chenini-two-choice-staged-data-independent-review.json",
+      "scripts/neighborhoods/point-retention-reviews/before-neighborhoods.json"
+    ],
+    "qualification": "Coverage is regenerated output; the three remaining mentions are frozen historical full-catalog evidence. No target-bound active grouping, name, coordinate or official-boundary rule exists."
+  },
+  "phoneQualification": "Root reports office cards for both. Radès was explicitly a newer-site result; neither screenshot is treated as exact polygon proof. This reviewer did not access phone or ledger.",
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "31ac2b52bbeec196cc3da2eacae11851b23ca08584027ceaf0665e40fc6bb21f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "7928f3e7291512f152e6ece5452ab87f52d0416a5f68470c78b5e687e4bf03fd"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "41b9056cd0f31150bacc07ab7afe2f968e0237edf24478df994252870c18b9fb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "cfe5c6df542ec9a02a608c71af7d696533d6ec46b4ffdeca3ff2f5a203ca0807"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "a24df16930331fb3c2c0307c20d3022bf9b83bebbc62e0fc7af97907e1fdc4f1"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "da7472703a3ab83283b220ded7384890fa4ff97b45415d41b7383abb19e78728"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "c4bba701f4c06fb2f9f09862e06aa00761233bde91980517522ee9de4429e4b5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ],
+  "sourceFiles": {
+    "history-retrieval.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\history-retrieval.json",
+      "sha256": "3c695d57668e9ca93731d43ddc7a02a859ef8c108e046b874c476bf576dda891"
+    },
+    "interior-municipal-directory.html": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\interior-municipal-directory.html",
+      "sha256": "e920362ac113c9deaab49014e1b5dd3c9bf1f8ee2cf945e91c4dd750baf9bb66"
+    },
+    "interior-retrieval.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\interior-retrieval.json",
+      "sha256": "84a024472daaccf9566037df47697a9b0ec14d9b25841d7aadf90f5a597a200f"
+    },
+    "municipal-official-directory.html-headers.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\municipal-official-directory.html-headers.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "node-4396821689-headers.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\node-4396821689-headers.txt",
+      "sha256": "1a6a8f92a9dcdbd184689d47105b481ce73a722564049a57553aa4b2a34608be"
+    },
+    "node-4396821689-history.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\node-4396821689-history.json",
+      "sha256": "4266fe46b9ba6f33a68e98623f1b29416f0a32135fc0131bc8f493c10a47e492"
+    },
+    "node-4396821689.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\node-4396821689.json",
+      "sha256": "9e39ed5bb37d8568d64829ae5c2e560f51239df35602a8051a5d9f7a0e1a66f9"
+    },
+    "primary-retrieval.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\primary-retrieval.json",
+      "sha256": "e358175c269e96a63931ee09b23ce5de515590a68b8abbc10b255b35fcfdc678"
+    },
+    "rades-bounded-premises-context.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\rades-bounded-premises-context.json",
+      "sha256": "7503493de86e94e36b91079f5d95d76b927d2690ad28bf7df50aab42306ec54c"
+    },
+    "rades-context-retrieval.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\rades-context-retrieval.json",
+      "sha256": "aa3bf78f0913008345cd3bfc90add1afe94aa556a2610920212501718f7a0643"
+    },
+    "rades-official.html-headers.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\rades-official.html-headers.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-retrieval.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\source-retrieval.json",
+      "sha256": "37b0811023d8a1e541700cc81414eb21634e3f4bec8486530a86d6190b9dca31"
+    },
+    "teboulbou-jort-2020-046.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\teboulbou-jort-2020-046.pdf",
+      "sha256": "9e45fd534513ed2a3b70e805de0a0d41ad7ee74069696cd30cb555d51e0a4600"
+    },
+    "teboulbou-jort-2020-046.pdf-headers.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\teboulbou-jort-2020-046.pdf-headers.txt",
+      "sha256": "cb9d8f20db013f8f646f2b2fa277cf1cfb2cc8b392f5f5fb8d91acbb06ed3919"
+    },
+    "teboulbou-jort-page12.png": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\teboulbou-jort-page12.png",
+      "sha256": "8c2ac905fe056b435a83568db8bd1bdd1682a8f3495ae4193529f7d3e9df998c"
+    },
+    "way-386486798-full-headers.txt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\way-386486798-full-headers.txt",
+      "sha256": "5f62c93561e8bd37624ac16e0b15874734a6ac98834745bc8f00bd54d60be162"
+    },
+    "way-386486798-full.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\way-386486798-full.json",
+      "sha256": "24ae6ceaf6f35cf4b1c08cd1df78153c8f04f3ae0a07bbaa08e1fc01bfba5c94"
+    },
+    "way-386486798-history.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rades-teboulbou-municipal-office-source-review\\way-386486798-history.json",
+      "sha256": "4c31b5d30d0cf6e77686be50de692b004565dd47fa7c9f87d5b1fa10cbc6809e"
+    }
+  },
+  "notPerformed": [
+    "live edits or source staging",
+    "catalog generator/helper execution",
+    "phone or ledger I/O",
+    "tests/Android/APK",
+    "automatic institutional-name rule",
+    "association to newer-site coordinates"
+  ]
+}

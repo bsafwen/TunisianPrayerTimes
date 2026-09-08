@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (244699 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="1187366130" visible="true" version="1" changeset="138116777" timestamp="2023-07-04T17:22:08Z" user="Petr Jenč" uid="15169703">
+  <nd ref="11026092230"/>
+  <nd ref="11026092231"/>
+  <nd ref="11026092232"/>
+  <nd ref="11026092233"/>
+  <nd ref="11026092234"/>
+  <nd ref="11026092235"/>
+  <nd ref="11026092236"/>
+  <nd ref="11026092237"/>
+  <nd ref="11026092238"/>
+  <nd ref="11026092239"/>
+  <nd ref="11026092240"/>
+  <nd ref="11026092241"/>
+  <nd ref="11026092242"/>
+  <nd ref="11026092230"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="Oualed Hamed"/>
+  <tag k="name:aeb" v="حاف اولاد حامد"/>
+ </way>
+ <way id="1187366130" visible="true" version="2" changeset="180432269" timestamp="2026-03-26T00:33:46Z" user="user_16642036" uid="16642036">
+  <nd ref="11026092230"/>
+  <nd ref="11026092231"/>
+  <nd ref="11026092232"/>
+  <nd ref="11026092233"/>
+  <nd ref="11026092234"/>
+  <nd ref="11026092235"/>
+  <nd ref="11026092236"/>
+  <nd ref="11026092237"/>
+  <nd ref="11026092238"/>
+  <nd ref="11026092239"/>
+  <nd ref="11026092240"/>
+  <nd ref="11026092241"/>
+  <nd ref="11026092242"/>
+  <nd ref="11026092230"/>
+  <tag k="landuse" v="residential"/>
+  <tag k="name" v="حاف أولاد حامد"/>
+  <tag k="name:aeb" v="حاف أولاد حامد"/>
+  <tag k="name:ar" v="حاف أولاد حامد"/>
+  <tag k="name:en" v="Oualed Hamed"/>
+  <tag k="name:fr" v="Oualed Hamed"/>
+ </way>
+</osm>

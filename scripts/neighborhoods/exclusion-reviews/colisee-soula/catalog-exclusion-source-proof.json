@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPPORTED_EXCLUSION_SOURCE_PACKAGE_PENDING_CURRENT_MANIFEST_ASSEMBLY_AND_ACTUAL_DATA_REVIEW",
+  "id": "osm:relation:1622298",
+  "expectedKind": "residential",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "historicalBaselineMetadataSha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86",
+  "expectedTags": {
+    "addr:city": "تونس",
+    "addr:city:ar": "تونس",
+    "landuse": "residential",
+    "name": "كولزي صولة",
+    "name:ar": "كولزي صولة",
+    "name:fr": "Colisée Soula"
+  },
+  "sourceTagQualification": "The area collector omits the relation type=multipolygon tag. All six consumed cached source tags are preserved here exactly; the authentic relation response retains type separately.",
+  "currentMetadata": {
+    "id": "osm:relation:1622298",
+    "sourceId": "osm",
+    "name": "كولزي صولة",
+    "aliases": [
+      "Colisée Soula"
+    ],
+    "kind": "residential",
+    "parentName": "ولاية تونس",
+    "contextAliases": [],
+    "governorateId": 342,
+    "lat": 36.83717,
+    "lng": 10.15397,
+    "delegationId": 391,
+    "hasBoundary": true,
+    "bbox": [
+      10.135734,
+      36.827688,
+      10.168428,
+      36.84675
+    ],
+    "areaKm2": 2.532622157445949,
+    "pickerGroupId": "osm:relation:1622298",
+    "offset": 19292,
+    "length": 1380
+  },
+  "completeCurrentGroup": [
+    "osm:relation:1622298"
+  ],
+  "sourceGeometrySha256": "6aac341727dae9f3a9a53246f3016505acc38080df21574bb33a83936d025c04",
+  "sourceGeometryEncoding": "Compact JSON of the cached geometry with its existing key order, no sort_keys; SHA256 over UTF-8 bytes.",
+  "packedGeometrySha256": "154e7a3103a463dc788b8fca30a683cbe00d79e57ff1f2f5f24a26a5d4dc1e07",
+  "decision": "Exclude this unsupported named residential-locality record. Positive primary tenant addresses identify Colisée Soula as a shopping centre in El Manar2, while the source polygon spans a much larger residential area. This does not assert that the land is nonresidential or direct an OSM deletion.",
+  "primarySources": [
+    {
+      "url": "https://www.comar.tn/nos-agences/abdou-amar",
+      "response": {
+        "file": "comar-agency.html",
+        "sha256": "cf6c184912dd354fa168d899213d9e10198ba8863175d0179d32600fb72d25dc"
+      },
+      "finding": "First-floor address in Centre commercial Colisée Soula,2092 El Manar2.",
+      "coordinateCaveat": "Embedded35.5130542,11.0374401 is inconsistent with that address and is not adopted."
+    },
+    {
+      "url": "https://aquadreamtunisie.com/index.php/contact.html",
+      "response": {
+        "file": "aquadream-contact.html",
+        "sha256": "6a4a7c1394d6ecafcd863b1e1d30dbc4c5c9209596337437bf9c81ee0f4bfe7b"
+      },
+      "finding": "Its own contact description locates the business in the Colisée Soula shopping centre in cité El Manar2."
+    }
+  ],
+  "sourceIdentity": [
+    {
+      "file": "relation-current.json",
+      "sha256": "f0625ca0d6b53127483b02aaf1ae0f6086afdd46bbfad4d5a3cb510dffcc27cd"
+    },
+    {
+      "file": "relation-history.json",
+      "sha256": "a1bbfd2ce120b425affa6203419838ad69927dca7bdc569655262fa26bdb768d"
+    }
+  ],
+  "outerWayCurrentGeometry": {
+    "comparison": {
+      "file": "outer-way-current-comparison.json",
+      "sha256": "5b498ff84fb8955a7af93412abf03c77b774319bbe59c205d665fb1a631e894d"
+    },
+    "response": {
+      "file": "outer-way-117426430-full.json",
+      "sha256": "86262cfe062e2c12426f51ab00a633bc8819cdb245a986678d7974cd0c889ca9"
+    },
+    "url": "https://api.openstreetmap.org/api/0.6/way/117426430/full.json",
+    "wayId": 117426430,
+    "version": 9,
+    "timestamp": "2017-05-01T15:54:07Z",
+    "nodeCount": 171,
+    "currentTopologyEqualsCachedGeometry": true,
+    "qualification": "Current way and complete node coordinates support current geometry equality. They do not reconstruct all historical vertex changes."
+  },
+  "reviews": {
+    "originalSourceReview": {
+      "file": "source-and-phone-review.json",
+      "sha256": "b2ccb5966c599c7e7ffa7ae6c26c16137fb23109149ae502708a0fc75393832f"
+    },
+    "independentSourceScope": {
+      "file": "catalog-scope-independent-review.json",
+      "sha256": "bad8f5cc61d8131101e98fa40d826211d0fd9d1ca7a256d8f965bdfd1abaa072"
+    },
+    "independentRemovalAndSavedIdImpact": {
+      "file": "removal-saved-id-impact-review.json",
+      "sha256": "ddd2ce0872745c24658e876e9765037a94f9e19341a3c4eefdf564e4de829000"
+    }
+  },
+  "preservedImadas": [
+    {
+      "id": "osm:relation:7201543",
+      "code": "115851",
+      "name": "جوان 01",
+      "default": 390,
+      "completeGroup": [
+        "osm:relation:7201543"
+      ],
+      "packedGeometrySha256": "81aaf936612db2c52557b12b551a11ced9d25cb674a0b23a7ee45ce35ef45e44"
+    },
+    {
+      "id": "osm:relation:7201545",
+      "code": "115852",
+      "name": "المنزه",
+      "default": 390,
+      "completeGroup": [
+        "delegation:390",
+        "osm:relation:7201545"
+      ],
+      "packedGeometrySha256": "657f31aa5b43b8dd65eee5d4e37665b14da65680fab2c664e4a235c52038d6ce"
+    },
+    {
+      "id": "osm:relation:7201544",
+      "code": "115853",
+      "name": "الفتح",
+      "default": 392,
+      "completeGroup": [
+        "osm:relation:7201544"
+      ],
+      "packedGeometrySha256": "0aaa1f72f688a6af4964877efc38a3c55310ba63e89dcdaaf371d0b7d89e8030"
+    },
+    {
+      "id": "osm:relation:7201547",
+      "code": "115854",
+      "name": "المنار",
+      "default": 390,
+      "completeGroup": [
+        "osm:relation:7201547"
+      ],
+      "packedGeometrySha256": "959752b25b03521e9984f77fdcfdf19810524bc587cd0e29fc03a450843cad61"
+    },
+    {
+      "id": "osm:relation:7201546",
+      "code": "115855",
+      "name": "المنار 1",
+      "default": 391,
+      "completeGroup": [
+        "osm:relation:7201546"
+      ],
+      "packedGeometrySha256": "809d06d5634bb17141e17df6ac4878450492ae5084cfaadaff509baea343a755"
+    }
+  ],
+  "removalImpact": {
+    "removedRawIds": [
+      "osm:relation:1622298"
+    ],
+    "newRawIds": [],
+    "newlySurfacedPoints": [],
+    "preserveAbsorbedSourceNode": "osm:node:1178986839 remains absent raw and absorbed into7201546",
+    "preserveExistingManar2Point": "osm:node:1191111511 remains unchanged and separate",
+    "meaningfulSurvivingMetadataChanges": [],
+    "allSurvivingGroupChanges": [],
+    "packedSliceRemoved": {
+      "offset": 19292,
+      "length": 1380
+    },
+    "allOtherPackedGeometryBytesUnchanged": true,
+    "coverage": "Existing packed sectors cover the footprint without a positive-area gap or conflict record. Actual generation must verify the recorded bounded impact and offset/cell updates."
+  },
+  "savedSelection": {
+    "retiredIdAddition": "osm:relation:1622298",
+    "retiredIdsBefore": 16,
+    "retiredIdsAfter": 17,
+    "reviewedNamesCountUnchanged": 70,
+    "replacementsCountUnchanged": 1,
+    "replacementId": null,
+    "behavior": "Existing preference handling clears the retired locality ID/name/kind and keeps the saved timetable source/fromGps. The record has no supported one-to-one replacement."
+  },
+  "rebaseRequirement": "Append this single decision to the current full curation only after the separate Bab Souika import. Revalidate this target and preserved local records, retain all current decisions and the Bab group extension. This package contains no full curation manifest or generator.",
+  "provenanceQualification": "Copied historical reports retain their original absolute citation paths and root-reported phone/ledger metadata. These are historical provenance, not new live-state dependencies. The phone files and ledger were neither read nor copied. The relative source files above are the portable evidence supplied by this package."
+}

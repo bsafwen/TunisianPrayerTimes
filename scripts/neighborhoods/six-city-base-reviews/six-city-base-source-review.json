@@ -1,0 +1,677 @@
+{
+  "schemaVersion": 1,
+  "status": "six_source_supported_display_candidates_no_existing_method_fit",
+  "reviewedAt": "2026-09-07T23:16:56.793507+00:00",
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "5555e696b7cac1b1adbccbb7d88fdf1f42f598be22dc637f7633df4ce39dcc6d"
+  },
+  "currentGeometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "97fd6b113c7daf66dbb217b978966ba3e7b5802d47855c1b8dd5a1c3724f2272"
+  },
+  "currentGenerator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "ef609927bc10233a78af78fa73bc97553ca0ea8efd7190fd4e07b369c94ec58b"
+  },
+  "currentPickerManifest": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "sha256": "35d5cd5364ce61201107b1df6b7e96f9147dce5f09796d8cbdae6ccc38487cb1"
+  },
+  "currentNameAudit": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-picker-name-audit.json",
+    "sha256": "4cd36498b11f214e58bbdee6d5943dc02b0558f0f01e5e8cf6c431be24327402"
+  },
+  "sourceEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviews\\base-locality110-strict-proposal.json",
+      "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviews\\held12-current-identity-proposal.json",
+      "sha256": "f670006b560fbc0fcd334b4f5eaaa2df623a9c7ee50b566866ece96a556a5f33"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\held28-current-identity-reassessment.json",
+      "sha256": "c78442fe4c49e764353c9ebfcda66b8b0551238a495d1d00bb497001bdd65daf"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\osm-city-nodes.json",
+      "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\prayer-source-coordinate-review.json",
+      "sha256": "ba33f7cff8af77a871f14954547913fb6f1f2c6d8f643afe5dc883ecc6be13eb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-held-locality28-visual-review.json",
+      "sha256": "e31e7f7c24a7d19e78ffdda1278007beb8c787a43854410b7d29db151f217ef7"
+    }
+  ],
+  "counts": {
+    "reviewedPairs": 6,
+    "samePrimaryGovernorateAndDefault": 6,
+    "baseInsideOriginalAndPacked": 6,
+    "namedSettlementInsideOriginalAndPacked": 6,
+    "typedSourceAnchorsInCurrentExtract": 3,
+    "cityAnchorsInHistoricalSupplement": 3,
+    "existingMethodReady": 0
+  },
+  "conclusion": "The earlier geometry/default blockers are absent for all six; the remaining work is an exact display-identity contract. Existing source settlement anchors supply a concrete lead for every pair, so repeating a whole-boundary or generic Google-name hold is unnecessary. A new separately reviewed method is required; none fits the existing narrowly asserted Bousalem/Dar methods unchanged.",
+  "records": [
+    {
+      "baseId": 386,
+      "id": "osm:way:98620323",
+      "name": "المرسى",
+      "reasonStillSeparate": [
+        "no_independently_supported_namesake_identity"
+      ],
+      "currentGroupMembers": [
+        "osm:way:98620323"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:386"
+      ],
+      "primaryNameMatchesBase": true,
+      "governorateId": 342,
+      "currentParentName": "ولاية تونس",
+      "manualReference": {
+        "lat": 36.887334,
+        "lng": 10.315339,
+        "storedSource": 386,
+        "nearestEligibleSource": 386
+      },
+      "baseReference": {
+        "nomAr": "المرسى",
+        "nomFr": "La Marsa",
+        "lat": 36.8783,
+        "lng": 10.3247
+      },
+      "baseInsideOriginalAndPacked": true,
+      "rawSourceTags": {
+        "addr:city": "المرسى",
+        "addr:country": "TN",
+        "addr:postcode": "2070",
+        "landuse": "residential",
+        "name": "المرسى",
+        "name:ar": "المرسى",
+        "name:fr": "La Marsa"
+      },
+      "originalGeometrySha256": "bb1163ac99ffdc38fdd71578870206eba30ce8fd8ce9cc71ffc8a294c99e3b02",
+      "packedGeometrySha256": "efb341e83c47d01a3a49aee1a9a982749e9445a9efa75856dfacd9868d00609c",
+      "geometryMatchesPriorHeldReview": true,
+      "sourceSettlement": {
+        "id": "osm:node:287547219",
+        "tags": {
+          "name": "المرسى",
+          "name:ar": "المرسى",
+          "name:en": "La Marsa",
+          "name:fa": "مرسا",
+          "name:fr": "La Marsa",
+          "name:he": "לה מרסה",
+          "name:ru": "Эль-Марса",
+          "place": "town",
+          "wikidata": "Q27230",
+          "wikimedia_commons": "Category:La Marsa",
+          "wikipedia": "en:La Marsa"
+        },
+        "lat": 36.8790882,
+        "lng": 10.327678,
+        "sourceFile": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+          "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+        },
+        "insideOriginalAndPackedResidential": true,
+        "nearestEligibleSource": 386,
+        "baseCoordinateDistanceMeters": 279.0036008109,
+        "rawCatalogAbsent": true,
+        "compilerDisposition": "retained source node absorbed into a containing matching label",
+        "sourceProvenanceQualification": "Existing pinned PBF extraction; no new scan."
+      },
+      "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+      "existingMethodReady": false,
+      "existingMethodBlockers": [
+        "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+        "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+        "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+      ],
+      "nextAction": "Prepare a separate exact settlement/base display proof using this contained town and the existing addr:city/name evidence. Keep point kind and differing base coordinate explicit; do not relax the existing Bousalem or Dar rule.",
+      "specificAdditionalCheck": "Bind the exact member, base and source settlement plus complete matching source/context inventory in the new proof; La Marsa must explicitly retain the distant same-name Djerba hamlet as a separate identity.",
+      "proposedOnlyDelta": {
+        "id": "osm:way:98620323",
+        "field": "pickerGroupId",
+        "before": "osm:way:98620323",
+        "after": "delegation:386"
+      },
+      "noPrayerOrCoordinateCorrectionRequired": true,
+      "geonamesContextReuse": [
+        {
+          "id": "2473540",
+          "name": "La Marsa",
+          "featureCode": "PPLA2",
+          "lat": 36.87818,
+          "lng": 10.32466,
+          "sameGovernorate": true
+        }
+      ],
+      "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+    },
+    {
+      "baseId": 617,
+      "id": "osm:way:604767502",
+      "name": "سليانة",
+      "reasonStillSeparate": [
+        "no_independently_supported_namesake_identity"
+      ],
+      "currentGroupMembers": [
+        "osm:way:604767502"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:617"
+      ],
+      "primaryNameMatchesBase": true,
+      "governorateId": 344,
+      "currentParentName": "ولاية سليانة",
+      "manualReference": {
+        "lat": 36.08714,
+        "lng": 9.371878,
+        "storedSource": 617,
+        "nearestEligibleSource": 617
+      },
+      "baseReference": {
+        "nomAr": "سليانة",
+        "nomFr": "Siliana",
+        "lat": 36.0849,
+        "lng": 9.3708
+      },
+      "baseInsideOriginalAndPacked": true,
+      "rawSourceTags": {
+        "addr:city": "Siliana",
+        "addr:governorate": "Siliana",
+        "alt_name": "Seliana",
+        "landuse": "residential",
+        "name": "سليانة",
+        "name:ar": "سليانة",
+        "name:en": "Siliana",
+        "name:fr": "Siliana",
+        "name:ru": "Сильяна"
+      },
+      "originalGeometrySha256": "0e786f666099bda984324210acb749b8b8adabf43ff5ca6ada7eca6059c0461c",
+      "packedGeometrySha256": "92c8ef5943840073b047e057ad568c0d2f960a77c41464939131e787cdd8d4b6",
+      "geometryMatchesPriorHeldReview": true,
+      "sourceSettlement": {
+        "id": "osm:node:2930586474",
+        "tags": {
+          "addr:governorate": "Siliana",
+          "alt_name": "Seliana",
+          "name": "سليانة",
+          "name:ar": "سليانة",
+          "name:en": "Siliana",
+          "name:fa": "سليانه",
+          "name:fr": "Siliana",
+          "name:he": "סיליאנה",
+          "name:kab": "Silyana",
+          "name:ru": "Сильяна",
+          "place": "city",
+          "population": "24243",
+          "source:name": "GNS",
+          "wikidata": "Q27216",
+          "wikimedia_commons": "Category:Siliana",
+          "wikipedia": "ar:سليانة"
+        },
+        "lat": 36.0846651,
+        "lng": 9.3743733,
+        "sourceFile": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\osm-city-nodes.json",
+          "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+        },
+        "insideOriginalAndPackedResidential": true,
+        "nearestEligibleSource": 617,
+        "baseCoordinateDistanceMeters": 322.16365807453093,
+        "rawCatalogAbsent": true,
+        "compilerDisposition": "excluded place=city kind; not absorbed",
+        "sourceProvenanceQualification": "Existing historical city-node cache and coordinate audit agree; this cache is not itself a fresh exact-PBF/source-version assertion."
+      },
+      "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+      "existingMethodReady": false,
+      "existingMethodBlockers": [
+        "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+        "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+        "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+      ],
+      "nextAction": "For a separate exact city/base display method, pin this already known city-node source object as evidence without globally admitting city nodes or restoring raw choices; keep source617 and both base/representative coordinates unchanged.",
+      "specificAdditionalCheck": "Bind the city-node cached tags/coordinate to the exact pinned PBF or a byte-pinned original source response and complete same-name/context inventory before compiler integration.",
+      "proposedOnlyDelta": {
+        "id": "osm:way:604767502",
+        "field": "pickerGroupId",
+        "before": "osm:way:604767502",
+        "after": "delegation:617"
+      },
+      "noPrayerOrCoordinateCorrectionRequired": true,
+      "geonamesContextReuse": [
+        {
+          "id": "2465030",
+          "name": "Siliana",
+          "featureCode": "PPLA",
+          "lat": 36.08497,
+          "lng": 9.37082,
+          "sameGovernorate": true
+        }
+      ],
+      "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+    },
+    {
+      "baseId": 458,
+      "id": "osm:way:207294838",
+      "name": "منزل بوزلفة",
+      "reasonStillSeparate": [
+        "no_independently_supported_namesake_identity"
+      ],
+      "currentGroupMembers": [
+        "osm:way:207294838"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:458"
+      ],
+      "primaryNameMatchesBase": true,
+      "governorateId": 350,
+      "currentParentName": "ولاية نابل",
+      "manualReference": {
+        "lat": 36.681832,
+        "lng": 10.583044,
+        "storedSource": 458,
+        "nearestEligibleSource": 458
+      },
+      "baseReference": {
+        "nomAr": "منزل بوزلفة",
+        "nomFr": "Menzel Bouzelfa",
+        "lat": 36.685,
+        "lng": 10.58
+      },
+      "baseInsideOriginalAndPacked": true,
+      "rawSourceTags": {
+        "addr:city": "Menzel Bouzelfa",
+        "addr:country": "TN",
+        "addr:governorate": "Nabeul",
+        "landuse": "residential",
+        "name": "منزل بوزلفة",
+        "name:ar": "منزل بوزلفة",
+        "name:fr": "Menzel Bouzelfa"
+      },
+      "originalGeometrySha256": "6f49d9c83562cdaf329e4adf386e111007606c423321f97541709a4fd04985e5",
+      "packedGeometrySha256": "2fc16a471e30b2d300486c698106f11a933d3cc13626d7f9537308c195132b11",
+      "geometryMatchesPriorHeldReview": true,
+      "sourceSettlement": {
+        "id": "osm:node:1124136154",
+        "tags": {
+          "addr:governorate": "Nabeul",
+          "name": "منزل بوزلفة",
+          "name:ar": "منزل بوزلفة",
+          "name:en": "Menzel Bou Zelfa",
+          "name:fr": "Menzel Bou Zelfa",
+          "place": "village"
+        },
+        "lat": 36.6821495,
+        "lng": 10.5846752,
+        "sourceFile": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+          "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+        },
+        "insideOriginalAndPackedResidential": true,
+        "nearestEligibleSource": 458,
+        "baseCoordinateDistanceMeters": 523.70707056227,
+        "rawCatalogAbsent": true,
+        "compilerDisposition": "retained source node absorbed into a containing matching label",
+        "sourceProvenanceQualification": "Existing pinned PBF extraction; no new scan."
+      },
+      "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+      "existingMethodReady": false,
+      "existingMethodBlockers": [
+        "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+        "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+        "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+      ],
+      "nextAction": "Prepare a separate exact settlement/base display proof using this contained village and the existing addr:city/name evidence. Keep point kind and differing base coordinate explicit; do not relax the existing Bousalem or Dar rule.",
+      "specificAdditionalCheck": "Bind the exact member, base and source settlement plus complete matching source/context inventory in the new proof.",
+      "proposedOnlyDelta": {
+        "id": "osm:way:207294838",
+        "field": "pickerGroupId",
+        "before": "osm:way:207294838",
+        "after": "delegation:458"
+      },
+      "noPrayerOrCoordinateCorrectionRequired": true,
+      "geonamesContextReuse": [
+        {
+          "id": "2469262",
+          "name": "Mennzel Bou Zelfa",
+          "featureCode": "PPL",
+          "lat": 36.68312,
+          "lng": 10.58431,
+          "sameGovernorate": true
+        }
+      ],
+      "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+    },
+    {
+      "baseId": 568,
+      "id": "osm:way:256592014",
+      "name": "جرزونة",
+      "reasonStillSeparate": [
+        "no_independently_supported_namesake_identity"
+      ],
+      "currentGroupMembers": [
+        "osm:way:256592014"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:568"
+      ],
+      "primaryNameMatchesBase": true,
+      "governorateId": 361,
+      "currentParentName": "ولاية بنزرت",
+      "manualReference": {
+        "lat": 37.255597,
+        "lng": 9.875276,
+        "storedSource": 568,
+        "nearestEligibleSource": 568
+      },
+      "baseReference": {
+        "nomAr": "جرزونة",
+        "nomFr": "Zarzouna",
+        "lat": 37.2642,
+        "lng": 9.8768
+      },
+      "baseInsideOriginalAndPacked": true,
+      "rawSourceTags": {
+        "addr:city": "جرزونة",
+        "addr:country": "TN",
+        "addr:postcode": "7021",
+        "landuse": "residential",
+        "name": "جرزونة",
+        "name:ar": "جرزونة",
+        "name:de": "Dscharzuna",
+        "name:en": "Jarzuna",
+        "name:fr": "Zarzouna",
+        "population": "24428",
+        "wikipedia": "ar:جرزونة"
+      },
+      "originalGeometrySha256": "6d831c39bdef8d73dd358d85679faee1a2f2db317471b0ded32b065965c5584d",
+      "packedGeometrySha256": "f534a1dfba16797e90ae9fac789e947e666844cbf3884866678921c2fd91071e",
+      "geometryMatchesPriorHeldReview": true,
+      "sourceSettlement": {
+        "id": "osm:node:2622426837",
+        "tags": {
+          "addr:postcode": "7021",
+          "name": "جرزونة",
+          "name:ar": "جرزونة",
+          "name:de": "Dscharzuna",
+          "name:en": "Jarzuna",
+          "name:fr": "Zarzouna",
+          "place": "village",
+          "population": "24428",
+          "wikidata": "Q3574882",
+          "wikipedia": "ar:جرزونة"
+        },
+        "lat": 37.2649034,
+        "lng": 9.8854698,
+        "sourceFile": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+          "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+        },
+        "insideOriginalAndPackedResidential": true,
+        "nearestEligibleSource": 568,
+        "baseCoordinateDistanceMeters": 771.2042309820573,
+        "rawCatalogAbsent": true,
+        "compilerDisposition": "retained source node absorbed into a containing matching label",
+        "sourceProvenanceQualification": "Existing pinned PBF extraction; no new scan."
+      },
+      "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+      "existingMethodReady": false,
+      "existingMethodBlockers": [
+        "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+        "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+        "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+      ],
+      "nextAction": "Prepare a separate exact settlement/base display proof using this contained village and the existing addr:city/name evidence. Keep point kind and differing base coordinate explicit; do not relax the existing Bousalem or Dar rule.",
+      "specificAdditionalCheck": "Bind the exact member, base and source settlement plus complete matching source/context inventory in the new proof.",
+      "proposedOnlyDelta": {
+        "id": "osm:way:256592014",
+        "field": "pickerGroupId",
+        "before": "osm:way:256592014",
+        "after": "delegation:568"
+      },
+      "noPrayerOrCoordinateCorrectionRequired": true,
+      "geonamesContextReuse": [
+        {
+          "id": "2463967",
+          "name": "Zarzouna",
+          "featureCode": "PPL",
+          "lat": 37.26424,
+          "lng": 9.8767,
+          "sameGovernorate": true
+        }
+      ],
+      "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+    },
+    {
+      "baseId": 636,
+      "id": "osm:way:179056480",
+      "name": "الكاف",
+      "reasonStillSeparate": [
+        "no_independently_supported_namesake_identity"
+      ],
+      "currentGroupMembers": [
+        "osm:way:179056480"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:636"
+      ],
+      "primaryNameMatchesBase": true,
+      "governorateId": 363,
+      "currentParentName": "ولاية الكاف",
+      "manualReference": {
+        "lat": 36.17076,
+        "lng": 8.703368,
+        "storedSource": 636,
+        "nearestEligibleSource": 636
+      },
+      "baseReference": {
+        "nomAr": "الكاف",
+        "nomFr": "Le Kef",
+        "lat": 36.1747,
+        "lng": 8.7049
+      },
+      "baseInsideOriginalAndPacked": true,
+      "rawSourceTags": {
+        "addr:city": "الكاف",
+        "addr:city:ar": "الكاف",
+        "landuse": "residential",
+        "name": "الكاف",
+        "name:ar": "الكاف",
+        "name:de": "Al-Kaf",
+        "name:en": "Al-Kaf",
+        "name:fr": "Le Kef"
+      },
+      "originalGeometrySha256": "9539c63b1c2c288ec7d50cc83b6c5fbc0a8718c25c59dec0d7cdb0872d170824",
+      "packedGeometrySha256": "1da2bad68abe4e34bd03f1ccb177b190655f233feb74837878758eb315fc0ef2",
+      "geometryMatchesPriorHeldReview": true,
+      "sourceSettlement": {
+        "id": "osm:node:287622372",
+        "tags": {
+          "name": "الكاف",
+          "name:ar": "الكاف",
+          "name:azb": "الکاف",
+          "name:de": "Al-Kaf",
+          "name:en": "Al-Kaf",
+          "name:fa": "الکاف",
+          "name:fr": "Le Kef",
+          "name:he": "אל-כאף",
+          "name:kab": "Lkaf",
+          "name:ks": "الکاف",
+          "name:ru": "Эль-Кеф",
+          "name:ur": "الکاف",
+          "place": "city",
+          "population": "73710",
+          "wikidata": "Q27155",
+          "wikimedia_commons": "Category:Le Kef",
+          "wikipedia": "ar:الكاف"
+        },
+        "lat": 36.1784491,
+        "lng": 8.707347,
+        "sourceFile": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\osm-city-nodes.json",
+          "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+        },
+        "insideOriginalAndPackedResidential": true,
+        "nearestEligibleSource": 636,
+        "baseCoordinateDistanceMeters": 471.19963883372554,
+        "rawCatalogAbsent": true,
+        "compilerDisposition": "excluded place=city kind; not absorbed",
+        "sourceProvenanceQualification": "Existing historical city-node cache and coordinate audit agree; this cache is not itself a fresh exact-PBF/source-version assertion."
+      },
+      "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+      "existingMethodReady": false,
+      "existingMethodBlockers": [
+        "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+        "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+        "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+      ],
+      "nextAction": "For a separate exact city/base display method, pin this already known city-node source object as evidence without globally admitting city nodes or restoring raw choices; keep source636 and both base/representative coordinates unchanged.",
+      "specificAdditionalCheck": "Bind the city-node cached tags/coordinate to the exact pinned PBF or a byte-pinned original source response and complete same-name/context inventory before compiler integration.",
+      "proposedOnlyDelta": {
+        "id": "osm:way:179056480",
+        "field": "pickerGroupId",
+        "before": "osm:way:179056480",
+        "after": "delegation:636"
+      },
+      "noPrayerOrCoordinateCorrectionRequired": true,
+      "geonamesContextReuse": [
+        {
+          "id": "2473634",
+          "name": "El Kef",
+          "featureCode": "PPLA",
+          "lat": 36.17424,
+          "lng": 8.70486,
+          "sameGovernorate": true
+        }
+      ],
+      "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+    },
+    {
+      "baseId": 638,
+      "id": "osm:way:206318231",
+      "name": "قفصة",
+      "reasonStillSeparate": [
+        "no_independently_supported_namesake_identity"
+      ],
+      "currentGroupMembers": [
+        "osm:way:206318231"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:638"
+      ],
+      "primaryNameMatchesBase": true,
+      "governorateId": 365,
+      "currentParentName": "ولاية قفصة",
+      "manualReference": {
+        "lat": 34.430663,
+        "lng": 8.786524,
+        "storedSource": 638,
+        "nearestEligibleSource": 638
+      },
+      "baseReference": {
+        "nomAr": "قفصة",
+        "nomFr": "Gafsa",
+        "lat": 34.425,
+        "lng": 8.7842
+      },
+      "baseInsideOriginalAndPacked": true,
+      "rawSourceTags": {
+        "int_name": "Qafsa",
+        "landuse": "residential",
+        "name": "قفصة",
+        "name:ar": "قفصة",
+        "name:en": "Qafsa",
+        "name:fr": "Gafsa"
+      },
+      "originalGeometrySha256": "70b3495a030f750bfc8b58456f748127c90c002456d5fc0fe98a4c6f427eae4b",
+      "packedGeometrySha256": "380062174bc02bfd354d9a9de0a3f4b3e883787f0a41dde6d94fddee1dd2e22c",
+      "geometryMatchesPriorHeldReview": true,
+      "sourceSettlement": {
+        "id": "osm:node:287545859",
+        "tags": {
+          "alt_name:tr": "Gafsa",
+          "int_name": "Qafsa",
+          "name": "قفصة",
+          "name:ar": "قفصة",
+          "name:en": "Gafsa",
+          "name:fr": "Gafsa",
+          "name:he": "גאפסה",
+          "name:ru": "Гафса",
+          "name:tr": "Kafsa",
+          "place": "city",
+          "population": "111170",
+          "wikidata": "Q466006",
+          "wikimedia_commons": "Category:Gafsa",
+          "wikipedia": "ar:قفصة"
+        },
+        "lat": 34.4224374,
+        "lng": 8.7843862,
+        "sourceFile": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\source-coordinates\\osm-city-nodes.json",
+          "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+        },
+        "insideOriginalAndPackedResidential": true,
+        "nearestEligibleSource": 638,
+        "baseCoordinateDistanceMeters": 285.45947703749385,
+        "rawCatalogAbsent": true,
+        "compilerDisposition": "excluded place=city kind; not absorbed",
+        "sourceProvenanceQualification": "Existing historical city-node cache and coordinate audit agree; this cache is not itself a fresh exact-PBF/source-version assertion."
+      },
+      "sourceIdentityAssessment": "Supports a narrow city-name display association: exact independently typed settlement name plus named residential footprint, both source/base points inside, same governorate and unchanged base/default. Does not prove a whole-city perimeter.",
+      "existingMethodReady": false,
+      "existingMethodBlockers": [
+        "Original strict82 proof only accepts a coded sector/parent or an explicit place object as the identity; this raw member is residential.",
+        "Bousalem absorbed-town method requires a town node exactly equal to the already reviewed base coordinate, historical-name correspondence and its specific distinct-sector proof; these facts do not hold here.",
+        "Dar city method requires the explicitly different623/468 defaults and base noncontainment; this pair instead has equal defaults and base containment."
+      ],
+      "nextAction": "For a separate exact city/base display method, pin this already known city-node source object as evidence without globally admitting city nodes or restoring raw choices; keep source638 and both base/representative coordinates unchanged.",
+      "specificAdditionalCheck": "Bind the city-node cached tags/coordinate to the exact pinned PBF or a byte-pinned original source response and complete same-name/context inventory before compiler integration.",
+      "proposedOnlyDelta": {
+        "id": "osm:way:206318231",
+        "field": "pickerGroupId",
+        "before": "osm:way:206318231",
+        "after": "delegation:638"
+      },
+      "noPrayerOrCoordinateCorrectionRequired": true,
+      "geonamesContextReuse": [
+        {
+          "id": "2468353",
+          "name": "Gafsa",
+          "featureCode": "PPLA",
+          "lat": 34.425,
+          "lng": 8.78417,
+          "sameGovernorate": true
+        }
+      ],
+      "phoneEvidence": "Historical matching locality cards are contextual name support only; no phone action or polygon certification."
+    }
+  ],
+  "implementationProposal": "One optional narrow base-city display association: exact approved pair and proof; singleton source/base inventories; exact source/effective residential tags and shapes; primary Arabic and governorate match; base and reviewed settlement both inside original+packed footprint; raw nearest default equals existing base; preserve all IDs/names/contexts/coordinates/defaults/geometry. Point kinds and coordinate differences must be explicit. Do not require invented whole-city geometry, borrow a coded sector identity, or add a transitive/proximity rule.",
+  "limitations": [
+    "This is a source/data proposal, not permission to import a generalized method or certify urban perimeters.",
+    "City-only cached nodes are currently excluded from the compiler. Their historical evidence must be bound explicitly before implementation.",
+    "Historical source/phone reports retain their own metadata hashes; target current fields and packed geometry were independently compared here.",
+    "No new web/API requests, PBF/source scans, tests, generation, phone/ledger access or repository edits were performed."
+  ],
+  "operations": {
+    "sourceScanOrFetch": false,
+    "generatorOrHelperExecuted": false,
+    "testsOrBuilds": false,
+    "phoneOrLedgerAccess": false,
+    "repositoryEdits": false
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "status": "SHOPPING_CENTRE_VERSUS_LARGE_RESIDENTIAL_POLYGON_DISCREPANCY_PENDING_INDEPENDENT_REVIEW",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86"
+  },
+  "currentRawRecord": {
+    "id": "osm:relation:1622298",
+    "sourceId": "osm",
+    "name": "كولزي صولة",
+    "aliases": [
+      "Colisée Soula"
+    ],
+    "kind": "residential",
+    "parentName": "ولاية تونس",
+    "contextAliases": [],
+    "governorateId": 342,
+    "lat": 36.83717,
+    "lng": 10.15397,
+    "delegationId": 391,
+    "hasBoundary": true,
+    "bbox": [
+      10.135734,
+      36.827688,
+      10.168428,
+      36.84675
+    ],
+    "areaKm2": 2.532622157445949,
+    "pickerGroupId": "osm:relation:1622298",
+    "offset": 19292,
+    "length": 1380
+  },
+  "sourceTags": {
+    "addr:city": "تونس",
+    "addr:city:ar": "تونس",
+    "landuse": "residential",
+    "name": "كولزي صولة",
+    "name:ar": "كولزي صولة",
+    "name:fr": "Colisée Soula"
+  },
+  "sourceGeometrySha256": "6aac341727dae9f3a9a53246f3016505acc38080df21574bb33a83936d025c04",
+  "packedGeometrySha256": "154e7a3103a463dc788b8fca30a683cbe00d79e57ff1f2f5f24a26a5d4dc1e07",
+  "cachedGeometryBounds": [
+    10.1357341,
+    36.827688,
+    10.1684278,
+    36.8467504
+  ],
+  "geometryAreaKm2": 2.5277617536785844,
+  "overlappingCachedSectors": [
+    {
+      "id": "osm:relation:7201547",
+      "name": "المنار",
+      "code": "115854",
+      "sharedAreaKm2": 1.383085689253944,
+      "percentOfQuestionedArea": 54.72
+    },
+    {
+      "id": "osm:relation:7201546",
+      "name": "المنار 1",
+      "code": "115855",
+      "sharedAreaKm2": 1.1446760265757903,
+      "percentOfQuestionedArea": 45.28
+    }
+  ],
+  "currentSource": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\relation-current.json",
+    "sha256": "f0625ca0d6b53127483b02aaf1ae0f6086afdd46bbfad4d5a3cb510dffcc27cd"
+  },
+  "sourceHistory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\relation-history.json",
+    "sha256": "a1bbfd2ce120b425affa6203419838ad69927dca7bdc569655262fa26bdb768d"
+  },
+  "historySummary": [
+    {
+      "version": 1,
+      "timestamp": "2011-06-12T22:47:04Z",
+      "tags": {
+        "type": "multipolygon"
+      },
+      "members": [
+        {
+          "type": "way",
+          "ref": 117426384,
+          "role": "inner"
+        },
+        {
+          "type": "way",
+          "ref": 117426430,
+          "role": "outer"
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "timestamp": "2011-06-13T10:51:25Z",
+      "tags": {
+        "type": "multipolygon"
+      },
+      "members": [
+        {
+          "type": "way",
+          "ref": 117426430,
+          "role": "outer"
+        }
+      ]
+    },
+    {
+      "version": 3,
+      "timestamp": "2013-08-26T09:33:27Z",
+      "tags": {
+        "name": "Colisée Soula",
+        "type": "multipolygon"
+      },
+      "members": [
+        {
+          "type": "way",
+          "ref": 117426430,
+          "role": "outer"
+        }
+      ]
+    },
+    {
+      "version": 4,
+      "timestamp": "2017-05-01T15:54:09Z",
+      "tags": {
+        "landuse": "residential",
+        "name": "Colisée Soula",
+        "type": "multipolygon"
+      },
+      "members": [
+        {
+          "type": "way",
+          "ref": 117426430,
+          "role": "outer"
+        }
+      ]
+    },
+    {
+      "version": 5,
+      "timestamp": "2018-06-22T08:00:03Z",
+      "tags": {
+        "addr:city": "تونس",
+        "landuse": "residential",
+        "name": "كولزي صولة",
+        "name:ar": "كولزي صولة",
+        "name:fr": "Colisée Soula",
+        "type": "multipolygon"
+      },
+      "members": [
+        {
+          "type": "way",
+          "ref": 117426430,
+          "role": "outer"
+        }
+      ]
+    },
+    {
+      "version": 6,
+      "timestamp": "2020-12-06T16:29:14Z",
+      "tags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "landuse": "residential",
+        "name": "كولزي صولة",
+        "name:ar": "كولزي صولة",
+        "name:fr": "Colisée Soula",
+        "type": "multipolygon"
+      },
+      "members": [
+        {
+          "type": "way",
+          "ref": 117426430,
+          "role": "outer"
+        }
+      ]
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\comar-agency.html",
+      "sha256": "cf6c184912dd354fa168d899213d9e10198ba8863175d0179d32600fb72d25dc",
+      "url": "https://www.comar.tn/nos-agences/abdou-amar",
+      "excerpt": "MAR Locate 35.5130542, 11.0374401 Code Agence : 121 Adresse Centre commercial Colisée Soula 1er étage- 2092 El Manar 2 Tél 71 883 515 Fax 71 883 401 Email abdou.amar@comar.tn Vous avez besoin d'aide ? Nous "
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\colisee-soula-source-review\\aquadream-contact.html",
+      "sha256": "6a4a7c1394d6ecafcd863b1e1d30dbc4c5c9209596337437bf9c81ee0f4bfe7b",
+      "url": "https://aquadreamtunisie.com/index.php/contact.html",
+      "excerpt": "a REUSSITE de votre projet. Installée au centre commercial \"Colisée Soula\" de la cité EL MANAR 2, toute notre équipe est à votre disposition pour Votre Satisfaction. Ainsi Aquadream assure"
+    }
+  ],
+  "phone": {
+    "record": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_1622298-1.json",
+      "sha256": "bf24a3070717b95843357a2d0f3840fa396fae2d5bcab94e2bdc6aa497b50aef"
+    },
+    "screenshot": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_1622298-1.png",
+      "sha256": "385c2d030fdf2c35d0f9c5fac5bcf4faa21173182927afae702542c2d0c319e3"
+    },
+    "visuallyReviewedByRoot": true,
+    "interpretation": "Selected مجمع كوليزي صولة التجاري / Colisée Soula, explicitly categorized as مركز تسوق. Pin on circular shopping-centre building by Av. Slimen and Av. Youssef Rouissi. No neighborhood outline is shown."
+  },
+  "inference": "The named shopping centre is real, but neither its selected point nor these business addresses support the catalog 2.53 square kilometre residential outline. OSM naming appears in2013 and residential tagging in2017; source longevity alone does not certify the extent.",
+  "decision": "No app change yet. Independently review whether this is a commercial name applied to a much broader landuse polygon before any removal, rename or boundary alteration. Do not invent a replacement boundary from the selected phone pin.",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_1622298-1\\ledger.json",
+    "sha256": "dd01896d798079fe632666c264eb9e438ed6bd105ea23350ee50b866d2adc258"
+  },
+  "currentLedgerSha256": "fdd4d210fff3a8f95bb150dd97a51c68c86ee19925ba874ce8d855c2d0356d36",
+  "priorObservationsPreservedExactly": 869,
+  "phoneCounts": {
+    "currentRows": 3587,
+    "historicalRows": 159,
+    "currentRowsWithObservations": 601,
+    "currentObservations": 724,
+    "historicalObservations": 146,
+    "statuses": {
+      "pending": 3229,
+      "observed_needs_review": 358
+    }
+  },
+  "phoneObservationsAdded": 1,
+  "appChanges": [],
+  "facetsPromotedToVerified": false
+}

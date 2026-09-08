@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "reviewedDate": "2026-09-07",
+  "readOnly": true,
+  "sources": {
+    "rawPbf": {
+      "path": "work\\geo\\tunisia-260905.osm.pbf",
+      "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd"
+    },
+    "rawCacheSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "coordinateManifestSha256": "952329c423843235b7bd51c01bd79f52440ffcaf8975992d382dfb551cd150aa",
+    "metadataSha256": "2a97056c0e34596495673c8ad09c6d1d3cc9140988d54ec8d344702a0fd9645e",
+    "governoratesSha256": "4e9d60df6b939fb90c2d3ec37ed4c96525537020f27ef804913850e03bf0505e"
+  },
+  "records": [
+    {
+      "pointId": "osm:node:351575544",
+      "baseDelegationId": 483,
+      "decision": "supported_exact_reviewed_source_identity_link",
+      "rawPbfPoint": {
+        "id": "osm:node:351575544",
+        "version": 10,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "lat": 33.7783142,
+        "lng": 8.8525855,
+        "tags": {
+          "name": "سوق الأحد",
+          "name:ar": "سوق الأحد",
+          "name:en": "Souk Lahad",
+          "name:fr": "Souk Lahad",
+          "name:ru": "Сук-Ляхад",
+          "place": "town",
+          "wikidata": "Q3051223",
+          "wikimedia_commons": "Category:Souk Lahad",
+          "wikipedia": "ar:سوق الأحد (تونس)"
+        }
+      },
+      "currentBase": {
+        "id": 483,
+        "nomFr": "Souk El Ahad",
+        "nomAr": "سوق الأحد",
+        "nomEn": "Souk El Ahad",
+        "lat": 33.7783142,
+        "lng": 8.8525855
+      },
+      "currentGovernorate": {
+        "id": 1012,
+        "name": "قبلي"
+      },
+      "currentFeature": {
+        "id": "osm:node:351575544",
+        "sourceId": "osm",
+        "name": "سوق الأحد",
+        "aliases": [
+          "Souk Lahad",
+          "Сук-Ляхад"
+        ],
+        "kind": "town",
+        "parentName": "المنشية",
+        "contextAliases": [
+          "Délégation Souk El Ahad",
+          "El Menchia",
+          "Souk Lahad",
+          "المنشية",
+          "معتمدية سوق الأحد"
+        ],
+        "governorateId": 1012,
+        "lat": 33.7783142,
+        "lng": 8.8525855,
+        "delegationId": 483,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:351575544"
+      },
+      "reviewedCoordinateCorrection": {
+        "delegationId": 483,
+        "expectedGovernorateId": 1012,
+        "expectedNames": {
+          "nomAr": "سوق الأحد",
+          "nomFr": "Souk El Ahad",
+          "nomEn": "Souk El Ahad"
+        },
+        "reviewedDate": "2026-09-07",
+        "original": {
+          "lat": 33.9537,
+          "lng": 8.8361
+        },
+        "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+        "proposed": {
+          "lat": 33.7783142,
+          "lng": 8.8525855
+        },
+        "movedKm": 19.561319977017398,
+        "osm": {
+          "id": "osm:node:351575544",
+          "url": "https://www.openstreetmap.org/node/351575544",
+          "apiUrl": "https://api.openstreetmap.org/api/0.6/node/351575544.json",
+          "version": 10,
+          "timestamp": "2025-09-14T10:19:40Z",
+          "name": "سوق الأحد",
+          "place": "town"
+        },
+        "geonames": {
+          "id": 11862824,
+          "name": "Souk Lahad",
+          "lat": 33.77579,
+          "lng": 8.85992,
+          "featureClass": "P",
+          "featureCode": "PPL",
+          "modified": "2024-12-02",
+          "url": "https://www.geonames.org/11862824",
+          "distanceToProposedKm": 0.7337076303282382
+        },
+        "phoneVisualReview": {
+          "reviewedDate": "2026-09-07",
+          "decision": "approved_settlement_reference",
+          "reportSha256": "ebca547014aaa1dfdf115ca578ce882ece63690a15bcce8f7ddf03d07a93cbdf",
+          "observation": "Proposed capture shows P16 within a dense street network, a Souk Lahad address, and nearby SOUK LAHAD business labelling. Original capture is an unnamed location near Oum Essoumaa without visible roads or settlement detail at that viewport.",
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false
+        }
+      },
+      "sourceAndManifestIdentityUnique": true,
+      "primaryArabicNamesExactlyEqual": true,
+      "rawCacheExactlyMatchesPbf": true,
+      "coordinatesExactlyEqualAcrossPbfManifestBaseFeature": true,
+      "currentManualSourceMatchesBase": true,
+      "nearestSourcesByIndependentHaversine": [
+        {
+          "id": 483,
+          "name": "سوق الأحد",
+          "km": 0.0
+        },
+        {
+          "id": 482,
+          "name": "قبلي",
+          "km": 13.408621919425979
+        },
+        {
+          "id": 484,
+          "name": "دوز",
+          "km": 38.640764254284996
+        }
+      ],
+      "exactCoordinateSourceNodeIds": [
+        "osm:node:351575544"
+      ],
+      "completePrayerMonthCount": 12,
+      "firstCompletePrayerMonth": {
+        "path": "android-app\\app\\src\\main\\assets\\csv\\483\\2026\\01.csv",
+        "sha256": "1cc461368705e76eed274b821021846d8ee11b6ff357f2fcfa0b02f6a90335ba"
+      },
+      "scope": "Explicit link between an existing settlement point and its original timetable row whose reviewed anchor is exactly that point. Preserve point ID, aliases and GPS behavior; no polygon or homonym inference."
+    },
+    {
+      "pointId": "osm:node:7372876054",
+      "baseDelegationId": 608,
+      "decision": "supported_exact_reviewed_source_identity_link",
+      "rawPbfPoint": {
+        "id": "osm:node:7372876054",
+        "version": 2,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "lat": 34.3978553,
+        "lng": 8.8045119,
+        "tags": {
+          "name": "القصر",
+          "name:ar": "القصر",
+          "name:en": "El Ksar",
+          "name:fr": "El Ksar",
+          "place": "village"
+        }
+      },
+      "currentBase": {
+        "id": 608,
+        "nomFr": "El Ksar",
+        "nomAr": "القصر",
+        "nomEn": "El Ksar",
+        "lat": 34.3978553,
+        "lng": 8.8045119
+      },
+      "currentGovernorate": {
+        "id": 365,
+        "name": "قفصة"
+      },
+      "currentFeature": {
+        "id": "osm:node:7372876054",
+        "sourceId": "osm",
+        "name": "القصر",
+        "aliases": [
+          "El Ksar"
+        ],
+        "kind": "village",
+        "parentName": "القصر الشرقية",
+        "contextAliases": [
+          "Délégation El Ksar",
+          "El Ksar",
+          "El Ksar Est",
+          "القصر الشرقية",
+          "معتمدية القصر"
+        ],
+        "governorateId": 365,
+        "lat": 34.3978553,
+        "lng": 8.8045119,
+        "delegationId": 608,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:7372876054"
+      },
+      "reviewedCoordinateCorrection": {
+        "delegationId": 608,
+        "expectedGovernorateId": 365,
+        "expectedNames": {
+          "nomAr": "القصر",
+          "nomFr": "El Ksar",
+          "nomEn": "El Ksar"
+        },
+        "reviewedDate": "2026-09-07",
+        "original": {
+          "lat": 34.349,
+          "lng": 8.7701
+        },
+        "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+        "proposed": {
+          "lat": 34.3978553,
+          "lng": 8.8045119
+        },
+        "movedKm": 6.283798029929493,
+        "osm": {
+          "id": "osm:node:7372876054",
+          "url": "https://www.openstreetmap.org/node/7372876054",
+          "apiUrl": "https://api.openstreetmap.org/api/0.6/node/7372876054.json",
+          "version": 2,
+          "timestamp": "2021-02-02T00:59:52Z",
+          "name": "القصر",
+          "place": "village"
+        },
+        "geonames": {
+          "id": 2473466,
+          "name": "El Ksar",
+          "lat": 34.3992,
+          "lng": 8.80399,
+          "featureClass": "P",
+          "featureCode": "PPLX",
+          "modified": "2024-12-02",
+          "url": "https://www.geonames.org/2473466",
+          "distanceToProposedKm": 0.1570040864058775
+        },
+        "phoneVisualReview": {
+          "reviewedDate": "2026-09-07",
+          "decision": "approved_settlement_reference",
+          "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+          "observation": "The proposed pin is in the urban grid just north of Gafsa Gare; its coordinate result explicitly resolves to El Ksar Est.",
+          "exactCoordinateCertified": false,
+          "boundaryVerified": false
+        }
+      },
+      "sourceAndManifestIdentityUnique": true,
+      "primaryArabicNamesExactlyEqual": true,
+      "rawCacheExactlyMatchesPbf": true,
+      "coordinatesExactlyEqualAcrossPbfManifestBaseFeature": true,
+      "currentManualSourceMatchesBase": true,
+      "nearestSourcesByIndependentHaversine": [
+        {
+          "id": 608,
+          "name": "القصر",
+          "km": 0.0
+        },
+        {
+          "id": 638,
+          "name": "قفصة",
+          "km": 3.5471756014465288
+        },
+        {
+          "id": 611,
+          "name": "القطار",
+          "km": 14.87813540438962
+        }
+      ],
+      "exactCoordinateSourceNodeIds": [
+        "osm:node:7372876054"
+      ],
+      "completePrayerMonthCount": 12,
+      "firstCompletePrayerMonth": {
+        "path": "android-app\\app\\src\\main\\assets\\csv\\608\\2026\\01.csv",
+        "sha256": "4a750eaa433b1f831953c8fb09eac32c87553d2e44ab0b1f211e10d6d4602b8c"
+      },
+      "scope": "Explicit link between an existing settlement point and its original timetable row whose reviewed anchor is exactly that point. Preserve point ID, aliases and GPS behavior; no polygon or homonym inference."
+    }
+  ],
+  "blockingFindings": [],
+  "limitations": [
+    "The reviewed prayer-source anchor is a settlement reference, not a certified INM calculation coordinate.",
+    "The nearest-distance audit includes every original source with coordinates; the zero-distance winner is separately verified to have complete prayer months.",
+    "No phone, app, compiler, metadata, tests, fixtures or build changes were made."
+  ]
+}

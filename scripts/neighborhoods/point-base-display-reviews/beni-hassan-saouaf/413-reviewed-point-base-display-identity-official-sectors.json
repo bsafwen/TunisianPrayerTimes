@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-08",
+  "pointId": "osm:node:1419131100",
+  "baseId": 413,
+  "rawCurrent": {
+    "id": "osm:node:1419131100",
+    "sourceId": "osm",
+    "name": "صواف",
+    "aliases": [
+      "Saouaf",
+      "Sawwaf"
+    ],
+    "kind": "village",
+    "parentName": "صواف الغربية",
+    "contextAliases": [
+      "Délégation Saouaf",
+      "Saouaf",
+      "Saouaf Ouest",
+      "Saouef Ouest",
+      "صواف الغربية",
+      "معتمدية صواف"
+    ],
+    "governorateId": 343,
+    "lat": 36.2275534,
+    "lng": 10.1712341,
+    "delegationId": 413,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1419131100"
+  },
+  "baseCurrent": {
+    "id": 413,
+    "nomFr": "Saouaf",
+    "nomAr": "صواف",
+    "nomEn": "Saouaf",
+    "lat": 36.2273,
+    "lng": 10.1725
+  },
+  "expectedGovernor": {
+    "id": 343,
+    "nomFr": "Zaghouan",
+    "nomAr": "زغوان",
+    "nomEn": "Zaghouan",
+    "lat": 36.4029,
+    "lng": 10.1429
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1419131100",
+    "tags": {
+      "addr:city": "Sawwaf",
+      "addr:governorate": "Zaghouan",
+      "name": "صواف",
+      "name:ar": "صواف",
+      "name:en": "Sawwaf",
+      "name:fr": "Saouaf",
+      "place": "village"
+    },
+    "lat": 36.2275534,
+    "lng": 10.1712341
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/source-identity-review.json",
+    "sha256": "000b869270ccbe044f4991fd4002a69df027729739f364f9468b4be5dce3edfa"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/finite-scope-independent-review.json",
+    "sha256": "9e38ed293e3a6baa52a73029b6d97ce970debcd0831c2390e5ef2b3d964269ef"
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/node-1419131100.json",
+    "sha256": "ff717341a43fa51318d9e5d4bd0c0363724d750e2715211db89f7c14b9ec7965",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1419131100.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1419131100.json",
+    "sha256": "ff717341a43fa51318d9e5d4bd0c0363724d750e2715211db89f7c14b9ec7965",
+    "exactElement": {
+      "type": "node",
+      "id": 1419131100,
+      "lat": 36.2275534,
+      "lon": 10.1712341,
+      "timestamp": "2026-03-07T20:28:17Z",
+      "version": 11,
+      "changeset": 179509225,
+      "user": "Johnwhelan",
+      "uid": 186592,
+      "tags": {
+        "addr:city": "Sawwaf",
+        "addr:governorate": "Zaghouan",
+        "name": "صواف",
+        "name:ar": "صواف",
+        "name:en": "Sawwaf",
+        "name:fr": "Saouaf",
+        "place": "village"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/beni-hassan-saouaf/social-saouaf.html",
+      "sha256": "681bca6c896c69bed092b503b1a9aba24cc28dba42e06dc2fc9db59c19512f3b",
+      "url": "https://www.social.gov.tn/en/node/1277",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "شارع عقبة بن نافع 1115 صواف",
+        "زغوان"
+      ]
+    }
+  ],
+  "contextualPrimaryEvidence": [
+    {
+      "file": "point-base-display-reviews/beni-hassan-saouaf/mehat-activity-2019.pdf",
+      "sha256": "f9fb23a2e73de7a6c4b74ed1ab3b7d374c848f43bd477f53e2725584b02b583b",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/11/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%86%D8%B4%D8%A7%D8%B7-2019-.pdf",
+      "role": "official_explicit_city_identity",
+      "pdfPage": 87,
+      "visuallyReadText": "حماية مدينة صواف",
+      "qualification": "Contextual city usage personally viewed by both source reviewers; binary PDF is not a UTF-8 compiler text assertion."
+    }
+  ],
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/retrieval-manifest.json",
+    "sha256": "13b65f69da71751b2766aa4117aa5385f9bb4ce8faf68d76329f1161b6dea16b"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialDelegationCode": "1656",
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7114526",
+      "officialIdentity": {
+        "governorateCode": "16",
+        "governorateFr": "Zaghouan",
+        "governorateAr": "زغوان",
+        "delegationCode": "1656",
+        "delegationFr": "Saouaf",
+        "delegationAr": "صواف",
+        "sectorCode": "165651",
+        "sectorFr": "Saouef est",
+        "sectorAr": "صواف الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16252,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 695,
+          "Nombre_de_menages_par_Secteurs.xlsx": 694
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صواف الشرقية",
+        "name:ar": "صواف الشرقية",
+        "name:fr": "Saouaf Est",
+        "ref:tn:codegeo": "165651"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7114526",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "name": "صواف الشرقية",
+        "aliases": [
+          "Saouaf Est",
+          "Saouef Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صواف",
+        "contextAliases": [
+          "Délégation Saouaf",
+          "Saouaf",
+          "معتمدية صواف"
+        ],
+        "governorateId": 343,
+        "lat": 36.250501,
+        "lng": 10.16472,
+        "delegationId": 413,
+        "hasBoundary": true,
+        "bbox": [
+          10.100499,
+          36.207194,
+          10.217166,
+          36.294147
+        ],
+        "areaKm2": 51.39644119997053,
+        "pickerGroupId": "osm:relation:7114526",
+        "offset": 912776,
+        "length": 1484
+      },
+      "sourceGeometrySha256": "822db66cf6ce7c926bbe999def9ee925845a69a098cb306598d46914ebe9ffe6",
+      "packedGeometrySha256": "649e5aaf5ba72c6b1d9024ce944559d544a1b7d7b9e46087b1de7b1d9fc379df",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7114549",
+      "officialIdentity": {
+        "governorateCode": "16",
+        "governorateFr": "Zaghouan",
+        "governorateAr": "زغوان",
+        "delegationCode": "1656",
+        "delegationFr": "Saouaf",
+        "delegationAr": "صواف",
+        "sectorCode": "165653",
+        "sectorFr": "El hamira",
+        "sectorAr": "الحميرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16320,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 699,
+          "Nombre_de_menages_par_Secteurs.xlsx": 698
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحميرة",
+        "name:ar": "الحميرة",
+        "name:fr": "El Hamira",
+        "ref:tn:codegeo": "165653"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7114549",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "name": "الحميرة",
+        "aliases": [
+          "El Hamira",
+          "El Hmira"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صواف",
+        "contextAliases": [
+          "Délégation Saouaf",
+          "Saouaf",
+          "معتمدية صواف"
+        ],
+        "governorateId": 343,
+        "lat": 36.210386,
+        "lng": 10.231205,
+        "delegationId": 413,
+        "hasBoundary": true,
+        "bbox": [
+          10.176531,
+          36.156403,
+          10.26555,
+          36.264598
+        ],
+        "areaKm2": 54.97011617022483,
+        "pickerGroupId": "osm:relation:7114549",
+        "offset": 924440,
+        "length": 2652
+      },
+      "sourceGeometrySha256": "2b98b09674b5c132e2f36a8326609872087896c410c33f257143ee64c45e13cf",
+      "packedGeometrySha256": "3891db6e475a37fcac1aaec6048b36328a311fc7c0966a0a4f1aca7e5f8bf515",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7116957",
+      "officialIdentity": {
+        "governorateCode": "16",
+        "governorateFr": "Zaghouan",
+        "governorateAr": "زغوان",
+        "delegationCode": "1656",
+        "delegationFr": "Saouaf",
+        "delegationAr": "صواف",
+        "sectorCode": "165652",
+        "sectorFr": "Saouef ouest",
+        "sectorAr": "صواف الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16286,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 697,
+          "Nombre_de_menages_par_Secteurs.xlsx": 696
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "صواف الغربية",
+        "name:ar": "صواف الغربية",
+        "name:fr": "Saouaf Ouest",
+        "ref:tn:codegeo": "165652"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7116957",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "name": "صواف الغربية",
+        "aliases": [
+          "Saouaf Ouest",
+          "Saouef Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صواف",
+        "contextAliases": [
+          "Délégation Saouaf",
+          "Saouaf",
+          "معتمدية صواف"
+        ],
+        "governorateId": 343,
+        "lat": 36.19458,
+        "lng": 10.157906,
+        "delegationId": 413,
+        "hasBoundary": true,
+        "bbox": [
+          10.101056,
+          36.137584,
+          10.196374,
+          36.251501
+        ],
+        "areaKm2": 61.43820075609717,
+        "pickerGroupId": "osm:relation:7116957",
+        "offset": 970556,
+        "length": 3484
+      },
+      "sourceGeometrySha256": "b6e4b2cd228becc58a22ff58f6b76d8f58d8a84c9158cce68527e4991472b35d",
+      "packedGeometrySha256": "d1fb7b1baa7e5eebc9aa4591a97676ba8f7eb29d7619772664143161ea4e73f3",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7119808",
+      "officialIdentity": {
+        "governorateCode": "16",
+        "governorateFr": "Zaghouan",
+        "governorateAr": "زغوان",
+        "delegationCode": "1656",
+        "delegationFr": "Saouaf",
+        "delegationAr": "صواف",
+        "sectorCode": "165654",
+        "sectorFr": "Deghafla est",
+        "sectorAr": "الدغافلة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16354,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 701,
+          "Nombre_de_menages_par_Secteurs.xlsx": 700
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الدغافلة الشرقية",
+        "name:ar": "الدغافلة الشرقية",
+        "name:fr": "Deghafla Est",
+        "ref:tn:codegeo": "165654"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7119808",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "name": "الدغافلة الشرقية",
+        "aliases": [
+          "Deghafla Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صواف",
+        "contextAliases": [
+          "Délégation Saouaf",
+          "Saouaf",
+          "معتمدية صواف"
+        ],
+        "governorateId": 343,
+        "lat": 36.191099,
+        "lng": 10.11475,
+        "delegationId": 413,
+        "hasBoundary": true,
+        "bbox": [
+          10.070411,
+          36.13591,
+          10.142755,
+          36.246206
+        ],
+        "areaKm2": 30.496663697323786,
+        "pickerGroupId": "osm:relation:7119808",
+        "offset": 1149604,
+        "length": 3244
+      },
+      "sourceGeometrySha256": "5c53f9522b8dbea6660525398499b6ce4d7ed92000500bed6ee4a18ab2c3d38a",
+      "packedGeometrySha256": "03b955c25d693e223fd56b96aedf296bdcc99aebed0446f953f364fea30b0844",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7119809",
+      "officialIdentity": {
+        "governorateCode": "16",
+        "governorateFr": "Zaghouan",
+        "governorateAr": "زغوان",
+        "delegationCode": "1656",
+        "delegationFr": "Saouaf",
+        "delegationAr": "صواف",
+        "sectorCode": "165655",
+        "sectorFr": "Deghafla ouest",
+        "sectorAr": "الدغافلة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 16388,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 703,
+          "Nombre_de_menages_par_Secteurs.xlsx": 702
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الدغافلة الغربية",
+        "name:ar": "الدغافلة الغربية",
+        "name:fr": "Deghafla Ouest",
+        "ref:tn:codegeo": "165655"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7119809",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "name": "الدغافلة الغربية",
+        "aliases": [
+          "Deghafla Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية صواف",
+        "contextAliases": [
+          "Délégation Saouaf",
+          "Saouaf",
+          "معتمدية صواف"
+        ],
+        "governorateId": 343,
+        "lat": 36.195922,
+        "lng": 10.071861,
+        "delegationId": 412,
+        "hasBoundary": true,
+        "bbox": [
+          9.998437,
+          36.142876,
+          10.107665,
+          36.249903
+        ],
+        "areaKm2": 56.78329354830078,
+        "pickerGroupId": "osm:relation:7119809",
+        "offset": 1152848,
+        "length": 3652
+      },
+      "sourceGeometrySha256": "067785268582265ae81331e104b13d79777896ac3e68cd559fc041b8f127691d",
+      "packedGeometrySha256": "e0ae128e24f9687ec8cb89fef8d705dfdace81459f55137867c7314f285f724c",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1419131100",
+      "kind": "village",
+      "tags": {
+        "addr:city": "Sawwaf",
+        "addr:governorate": "Zaghouan",
+        "name": "صواف",
+        "name:ar": "صواف",
+        "name:en": "Sawwaf",
+        "name:fr": "Saouaf",
+        "place": "village"
+      }
+    },
+    {
+      "id": "osm:relation:7167811",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Saouaf",
+        "boundary": "administrative",
+        "name": "معتمدية صواف",
+        "name:ar": "معتمدية صواف",
+        "name:fr": "Délégation Saouaf",
+        "ref:tn:codegeo": "1656",
+        "ref:tn:hasc_2": "TN.ZA.SA",
+        "wikidata": "Q3473078"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:7167811": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Saouaf",
+        "boundary": "administrative",
+        "name": "معتمدية صواف",
+        "name:ar": "معتمدية صواف",
+        "name:fr": "Délégation Saouaf",
+        "ref:tn:codegeo": "1656",
+        "ref:tn:hasc_2": "TN.ZA.SA",
+        "wikidata": "Q3473078"
+      },
+      "sourceGeometrySha256": "eeecbf567e6d656c77d21a20dbae9b7b7475861d6789bb32d2e5887e173be8e8"
+    },
+    "osm:relation:1435837": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-22",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية زغوان",
+        "name:ar": "ولاية زغوان",
+        "name:be": "Загван (вілает)",
+        "name:be-tarask": "Загўан (вілает)",
+        "name:bg": "Загуан (област)",
+        "name:ca": "Governació de Zaghouan",
+        "name:ceb": "Gouvernorat de Zaghouan",
+        "name:cy": "Zaghouan (talaith)",
+        "name:de": "Gouvernement Zaghouan",
+        "name:el": "Ζαγκουάν (Κυβερνείο)",
+        "name:en": "Zaghouan Governorate",
+        "name:es": "Gobernación de Zaghouan",
+        "name:fa": "استان زغوان",
+        "name:fr": "Gouvernorat Zaghouan",
+        "name:frr": "Zaghouan (Guwernement)",
+        "name:id": "Kegubernuran Zaghouan",
+        "name:it": "Governatorato di Zaghouan",
+        "name:ja": "ザグアン県",
+        "name:ko": "자구완주",
+        "name:ms": "Kawasan kegabenoran Zaghouan",
+        "name:nl": "Zaghouan (gouvernement)",
+        "name:no": "Zaghouan (guvernement)",
+        "name:pl": "Gubernatorstwo Zaghwan",
+        "name:pt": "Zaguã (província)",
+        "name:ro": "Guvernoratul Zaghouan",
+        "name:ru": "Загван (вилайет)",
+        "name:sco": "Zaghouan Govrenorate",
+        "name:sh": "Zaghouan (vilajet)",
+        "name:tr": "Zağvan ili",
+        "name:uk": "Загуан (вілаєт)",
+        "name:ur": "ولایت زغوان",
+        "name:zh": "宰格萬省",
+        "name:zu": "Zaghouan Governorate",
+        "population": "176945",
+        "population:date": "2014",
+        "ref:tn:codegeo": "16",
+        "sorting_name": "زغوان",
+        "sorting_name:ar": "زغوان",
+        "sorting_name:fa": "زغوان",
+        "sorting_name:ur": "زغوان",
+        "wikidata": "Q27916",
+        "wikipedia": "ar:ولاية زغوان",
+        "wikipedia:ar": "ولاية زغوان"
+      },
+      "sourceGeometrySha256": "5160c238ee8855f45a4427ea33f94934e27c993c4eb0688ea7a3021e1a0f0f30"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1419131100",
+    "field": "pickerGroupId",
+    "before": "osm:node:1419131100",
+    "after": "delegation:413"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1419131100"
+      ],
+      [
+        "delegation:413"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:413",
+        "osm:node:1419131100"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Both existing point coordinates remain unchanged. Neither equality of boundaries, a surveyed city centre, nor INM calculation-anchor certification is claimed. Coordinate proximity and matching nearest defaults are compatibility facts, not the reason for identity approval.",
+  "scope": "Associate the retained village point with the existing prayer-source picker choice. The coded delegation and all five imadas remain separate administrative identities; no geometry or containment equivalence is inferred.",
+  "spellingPolicy": "Keep official/source صواف and Saouaf. The phone label سواف does not justify a primary-name correction.",
+  "phoneQualification": "Root reports the historical Arabic base query selected broad rural Saouaf territory, whereas the recent French node query selected the built-up town. Those two observations do not establish equal scope. This proposal concerns the base settlement-reference picker label and the named village point only; it does not associate the administrative parent or import either Maps outline.",
+  "preservedPointImadaContainment": [
+    {
+      "role": "base",
+      "sectorId": "osm:relation:7114526",
+      "sourceContains": true,
+      "packedContains": true
+    },
+    {
+      "role": "node",
+      "sectorId": "osm:relation:7116957",
+      "sourceContains": true,
+      "packedContains": true
+    }
+  ],
+  "sourcePhasePolicy": "Original cached source states remain unchanged with provider None. The five named imadas have exact accepted official effective tags/shapes/provider and new packed metadata, bound through sourcePhaseLineage. Target village and delegation peer remain unchanged osm sources.",
+  "geometryHashConvention": "Runtime mapping geometry, compact JSON, insertion order, UTF-8. Copied research reports label their separate sorted-key geometry digests.",
+  "dependencyPolicy": "Explicit file references in this wrapper are relative to scripts/neighborhoods. Absolute paths inside immutable source reports document research provenance, not additional compiler dependencies.",
+  "sourcePhaseLineage": {
+    "file": "point-base-display-reviews/beni-hassan-saouaf/413-accepted-boundary-source-phase-lineage.json",
+    "sha256": "b35e62cd795349bfbed84564a6b9b1739cca92ab504be94dc91eb7a7dd3a0f30"
+  }
+}

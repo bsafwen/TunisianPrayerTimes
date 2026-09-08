@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "reviewScope": "Independent source identity and complete-group prerequisites only; no implementation or generation approval.",
+  "baselineMetadataSha256": "1b9c7fc9c7ccc0fc41f28c3debb5602a8e9dc50369745145b11f3856d0274a86",
+  "proposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\montfleury-bab-souika-point-base-source-review.json",
+    "sha256": "7da80723ce458c69aba76abfb6ae96ffe7cacca3d5886388d473522903221907"
+  },
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\montfleury-bab-souika-source-review\\exact-current-source-and-scope-facts.json",
+    "sha256": "928a5896d10a31cbb4a697b8f03367e233ca6206b142e5e4207dca682d3d466d"
+  },
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "b18643d50429019a15f9e3d89f410d5841ac09ba6160428f0e2ba2a21b809d33"
+  },
+  "decision": "Support associating the existing Bab Souika suburb point with the existing Bab Souika timetable display choice while retaining the reviewed sector member. This is an explicit display-identity inference, not a claim that the inhabited quarter is identical to the imada or delegation.",
+  "sourceEvidence": [
+    {
+      "provider": "Institut National du Patrimoine",
+      "url": "https://www.inp2020.tn/ar/2020/01/28/medina-de-tunis/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\medina403-scope-review\\inp-medina.html",
+        "sha256": "a79a406642ab2c4995b5db5af1d01e67e98667357b097229e653edc429a2de10"
+      },
+      "exactPhrase": "بين ضاحيتي باب سويقة شمالا وباب الجزيرة جنوبا",
+      "supports": "Names Bab Souika as the northern historic suburb; direct cached HTML phrase verified."
+    },
+    {
+      "provider": "Cities Alliance, Femmedina urban field assessment, 2021",
+      "url": "https://www.citiesalliance.org/sites/default/files/2021-10/Femmedina%20Assessment%20Report%20AR%202021.pdf",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tunis-three-gate-quarter-source-review\\femmedina-assessment-ar2021.pdf",
+        "sha256": "755e5328cd7e28b846c5e51e547377168e26264463722fb0b4413c408f7ee73c"
+      },
+      "personallyViewedPdfPages": [
+        66,
+        72
+      ],
+      "page66": "Explicit Bab Souika quarter profile describes households, housing and residents. Its perception map and demographic summary are not certified administrative boundaries.",
+      "page72": "Separately identifies Bab Souika square/former gate and adjoining residential, commercial and cultural streets. This distinguishes the inhabited quarter from the monument/square alone.",
+      "qualification": "Primary urban field assessment. Author findings are not a legal boundary instrument. No map vertices or demographic extent were adopted."
+    },
+    {
+      "provider": "OSM exact target node",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1258831465.json",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\montfleury-bab-souika-source-review\\node-1258831465.json",
+        "sha256": "a987aa39f7dceebbf03847beb11ed920858aebc52a772b6fd3400d67d68e81b4"
+      },
+      "version": 12,
+      "timestamp": "2021-02-03T23:54:37Z",
+      "changeset": 98670574,
+      "verification": "Complete tags and coordinates independently equal the cached source and current raw point. Source explicitly classifies a suburb, with matching Arabic and Latin names; no POI or gate tag is asserted."
+    },
+    {
+      "provider": "INS RGPH2024 registry",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "verification": "All 11 records under delegation1154 exactly match the current frozen registry, including its three original workbook row references."
+    }
+  ],
+  "unreliedSupplement": "SNIT indexed text remains unpinned because direct retrieval failed certificate validation in the original proposal. It is not necessary to this PASS. No phone or ledger evidence was read.",
+  "currentPoint": {
+    "id": "osm:node:1258831465",
+    "sourceId": "osm",
+    "name": "باب سويقة",
+    "aliases": [
+      "Bab Souika"
+    ],
+    "kind": "suburb",
+    "parentName": "سيدي الجبالي",
+    "contextAliases": [
+      "Bab Souika",
+      "Délégation Bab Souika",
+      "Sidi Djebali",
+      "سيدي الجبالي",
+      "معتمدية باب سويقة"
+    ],
+    "governorateId": 342,
+    "lat": 36.8052053,
+    "lng": 10.1679884,
+    "delegationId": 395,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1258831465"
+  },
+  "currentBase": {
+    "id": 395,
+    "nomFr": "Bab Souika",
+    "nomAr": "باب سويقة",
+    "nomEn": "Bab Souika",
+    "lat": 36.8083,
+    "lng": 10.17
+  },
+  "baseReferenceProvenance": {
+    "docsBaseMatches": true,
+    "docsAsset": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\docs\\gouvernorats.json",
+      "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8"
+    },
+    "coordinateCorrectionsFor395": [],
+    "legacyProvenance": {
+      "path": "android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8",
+      "coordinateProvenance": "Legacy bundled reference coordinates; an external origin for these coordinates was not documented."
+    },
+    "qualification": "Coordinates remain fixed at36.8083/10.17. Existing source395 is a timetable reference; this review does not identify or certify its original INM calculation anchor."
+  },
+  "sourcePeers": [
+    {
+      "id": "osm:node:1258831465",
+      "kind": "suburb",
+      "originalTags": {
+        "name": "باب سويقة",
+        "name:ar": "باب سويقة",
+        "name:en": "Bab Souika",
+        "name:fr": "Bab Souika",
+        "place": "suburb"
+      },
+      "effectiveTags": {
+        "name": "باب سويقة",
+        "name:ar": "باب سويقة",
+        "name:en": "Bab Souika",
+        "name:fr": "Bab Souika",
+        "place": "suburb"
+      }
+    },
+    {
+      "id": "osm:relation:4133433",
+      "kind": "delegation",
+      "originalTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Bab Souika",
+        "boundary": "administrative",
+        "name": "معتمدية باب سويقة",
+        "name:ar": "معتمدية باب سويقة",
+        "name:fr": "Délégation Bab Souika",
+        "ref:tn:codegeo": "1154",
+        "ref:tn:hasc_2": "TN.TU.BS",
+        "wikidata": "Q2877693"
+      },
+      "effectiveTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Bab Souika",
+        "boundary": "administrative",
+        "name": "معتمدية باب سويقة",
+        "name:ar": "معتمدية باب سويقة",
+        "name:fr": "Délégation Bab Souika",
+        "ref:tn:codegeo": "1154",
+        "ref:tn:hasc_2": "TN.TU.BS",
+        "wikidata": "Q2877693"
+      }
+    },
+    {
+      "id": "osm:relation:7201474",
+      "kind": "sector",
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باب سويقة",
+        "name:ar": "باب سويقة",
+        "name:fr": "Bab Souika",
+        "ref:tn:codegeo": "115457"
+      },
+      "effectiveTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باب سويقة",
+        "name:ar": "باب سويقة",
+        "name:fr": "Bab Souika",
+        "ref:tn:codegeo": "115457"
+      }
+    }
+  ],
+  "sourceInventoryChecks": {
+    "allNineFactsInputPinsVerified": true,
+    "completeOriginalNamePeerInventoryReconstructed": 3,
+    "all14AcceptedSourceFilesByteVerifiedAndNoNewBabSouikaNamePeer": true,
+    "noPeerOrImadaCurationOrBoundaryReplacement": true,
+    "noCurationNameTagsIntroduceBabSouikaPeer": true,
+    "sourceOnlyDelegationAbsentRaw": "osm:relation:4133433",
+    "all11ImadaMetadataAndPackedSlicesExact": true,
+    "additionalGroupedResidentialPackedSliceExact": true
+  },
+  "contexts": {
+    "point": "115461 سيدي الجبالي",
+    "base": "115457 باب سويقة",
+    "bothInsideCachedDelegation": "1154 باب سويقة",
+    "qualification": "The broader inhabited-quarter name does not require both reference points to be in one imada. Preserve the current Sidi Djebali point parent/context and every imada boundary; no new administrative containment is certified."
+  },
+  "existingReviewedSectorRule": {
+    "manifest": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "e6120ba7f8bb78620f04cae054eca6347f0fdf67db52743a9173464ad323021c"
+    },
+    "recordId": "osm:relation:7201474",
+    "canonicalRecordSha256": "d28926915e148722c851d35b526370271ddd47a3443db5e1e76319cbba328c55",
+    "canonicalEncoding": "UTF-8 ensure_ascii=False, sorted keys, compact separators",
+    "preserveEntireRecord": true,
+    "originalExpectedExistingMemberIds": [
+      "osm:relation:7201474"
+    ],
+    "originalExpectedTargetMemberIds": [
+      "delegation:395"
+    ]
+  },
+  "beforePointGroup": [
+    "osm:node:1258831465"
+  ],
+  "beforeTargetGroup": [
+    "delegation:395",
+    "osm:relation:7201474"
+  ],
+  "requiredFinalTargetGroup": [
+    "delegation:395",
+    "osm:node:1258831465",
+    "osm:relation:7201474"
+  ],
+  "all11ImadaGroupsBefore": {
+    "osm:relation:7201472": [
+      "osm:relation:7201472"
+    ],
+    "osm:relation:7201470": [
+      "osm:relation:7201470"
+    ],
+    "osm:relation:7201478": [
+      "osm:relation:7201478"
+    ],
+    "osm:relation:7201476": [
+      "osm:relation:7201476",
+      "osm:way:180268046"
+    ],
+    "osm:relation:7201469": [
+      "osm:relation:7201469"
+    ],
+    "osm:relation:7201468": [
+      "osm:relation:7201468"
+    ],
+    "osm:relation:7201474": [
+      "delegation:395",
+      "osm:relation:7201474"
+    ],
+    "osm:relation:7201471": [
+      "osm:relation:7201471"
+    ],
+    "osm:relation:7201477": [
+      "osm:relation:7201477"
+    ],
+    "osm:relation:7201473": [
+      "osm:relation:7201473"
+    ],
+    "osm:relation:7201475": [
+      "osm:relation:7201475"
+    ]
+  },
+  "all11ImadaGroupsAfter": {
+    "osm:relation:7201472": [
+      "osm:relation:7201472"
+    ],
+    "osm:relation:7201470": [
+      "osm:relation:7201470"
+    ],
+    "osm:relation:7201478": [
+      "osm:relation:7201478"
+    ],
+    "osm:relation:7201476": [
+      "osm:relation:7201476",
+      "osm:way:180268046"
+    ],
+    "osm:relation:7201469": [
+      "osm:relation:7201469"
+    ],
+    "osm:relation:7201468": [
+      "osm:relation:7201468"
+    ],
+    "osm:relation:7201474": [
+      "delegation:395",
+      "osm:node:1258831465",
+      "osm:relation:7201474"
+    ],
+    "osm:relation:7201471": [
+      "osm:relation:7201471"
+    ],
+    "osm:relation:7201477": [
+      "osm:relation:7201477"
+    ],
+    "osm:relation:7201473": [
+      "osm:relation:7201473"
+    ],
+    "osm:relation:7201475": [
+      "osm:relation:7201475"
+    ]
+  },
+  "additionalPreservedGroupMember": {
+    "currentMetadata": {
+      "id": "osm:way:180268046",
+      "sourceId": "osm",
+      "name": "برج زوارة",
+      "aliases": [
+        "Borj Zouara"
+      ],
+      "kind": "residential",
+      "parentName": "ولاية تونس",
+      "contextAliases": [],
+      "governorateId": 342,
+      "lat": 36.804457,
+      "lng": 10.156456,
+      "delegationId": 405,
+      "hasBoundary": true,
+      "bbox": [
+        10.148687,
+        36.799046,
+        10.163458,
+        36.809763
+      ],
+      "areaKm2": 1.0347116114401633,
+      "pickerGroupId": "osm:relation:7201476",
+      "offset": 5271456,
+      "length": 428
+    },
+    "packedGeometrySha256": "6e60c2d03d4999f91695ccc23834221054787960965f6051c05867729bd560bb",
+    "completeGroup": [
+      "osm:relation:7201476",
+      "osm:way:180268046"
+    ],
+    "qualification": "Borj Zouara is already a two-raw-member group. Preserve its residential member, governorate-only context and source405; do not treat all non-target imadas as singleton groups."
+  },
+  "exactProposedMetadataFieldChanges": [
+    {
+      "id": "osm:node:1258831465",
+      "field": "pickerGroupId",
+      "before": "osm:node:1258831465",
+      "after": "delegation:395"
+    }
+  ],
+  "completeGroupExtensionPrerequisites": [
+    "Bind the exact current target point, base395, both original/effective source phases, primary documents and complete three-source name-peer inventory. Preserve the source-only delegation without creating a raw row.",
+    "Pin the entire existing reviewed7201474-to-base395 record and its accepted metadata/source/packed geometry. Preserve its original strict expected membership and ownership semantics.",
+    "Defer this point association until the existing sector-to-base rule has successfully run. Do not assign the point to base395 before that rule or broaden its base-only input guard.",
+    "Reserve the target point and complete existing target group; reject missing, added, overlapping or transitively absorbed members. Require final group exactly[delegation:395,osm:node:1258831465,osm:relation:7201474].",
+    "Pin all11 imada records and complete groups, including Borj Zouara7201476 plus residential180268046. Across these and the target there are13 current raw records and12 packed polygon slices to preserve, except the target point group field.",
+    "Final verification must preserve all raw names, aliases, parents, context aliases, kinds, source IDs, coordinates, defaults and geometry bytes, including source395 and unrelated source405. Preserve all other groups, reviewed records and saved IDs. No tiny-name addition or coordinate change is indicated."
+  ],
+  "implementationReady": false,
+  "remainingScope": "A separately reviewed complete-group extension is required; source identity has no remaining blocker. Existing singleton-only proof checks cannot simply be bypassed.",
+  "reviewRenders": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bab-souika395-independent-source-review\\femmedina-page66.png",
+      "sha256": "3f60146e5a04176d1d6f8b1a94a08215675ad1211a519586e359dab2521bc385"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bab-souika395-independent-source-review\\femmedina-page72.png",
+      "sha256": "e73330141d52e9af5acfd1a887b5ea9a288113943ac7a4135c5948a448ebe067"
+    }
+  ],
+  "notPerformed": [
+    "network retrieval",
+    "PBF scan",
+    "generator or helper execution",
+    "tests or builds",
+    "repository or stage edits",
+    "phone/device access",
+    "live ledger access",
+    "coordinate or boundary changes"
+  ]
+}

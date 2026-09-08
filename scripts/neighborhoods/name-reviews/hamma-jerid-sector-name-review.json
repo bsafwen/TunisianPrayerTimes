@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T11:16:18.638750+00:00",
+  "status": "SUPPORTED_EXACT_SECTOR_NAME_PENDING_GENERATED_DELTA",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "id": "osm:relation:7154898",
+  "expectedOriginalTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "name": "حامة الجريد",
+    "name:ar": "حامة الجريد",
+    "name:fr": "El Hamma du Jerid",
+    "ref:tn:codegeo": "625256",
+    "wikidata": "Q1026317"
+  },
+  "sourceFacts": {
+    "file": "name-reviews/hamma-jerid-direct-pbf-source-facts.json",
+    "sha256": "b082503a2c58c29d446bda6e3efda394e9568129bda82cd1073498881cc43e91"
+  },
+  "originalGeometrySha256": "ebd22540600bf9182090693bd425e91f18c8ed519ddf29e972a5681a38723e2e",
+  "packedGeometrySha256": "6949d0c5ecd29f60ade54ba477d53fbba2689c7960a803a6b45a45c5a21e6e38",
+  "oldSourceCode": "625256",
+  "currentOfficialRecord": {
+    "governorateCode": "62",
+    "governorateFr": "Tozeur",
+    "governorateAr": "توزر",
+    "delegationCode": "6256",
+    "delegationFr": "Hammat ejrid",
+    "delegationAr": "حامة الجريد",
+    "sectorCode": "625651",
+    "sectorFr": "El hamma",
+    "sectorAr": "الحامة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69166,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 3391,
+      "Nombre_de_menages_par_Secteurs.xlsx": 3384
+    }
+  },
+  "historicalOfficialRecords": [
+    {
+      "code": "625256",
+      "nameFr": "El Hamma",
+      "nameAr": "الحامة",
+      "delegationHeading": "Delegation Degach",
+      "page": 127
+    }
+  ],
+  "isie2022MembershipEvidence": [
+    {
+      "governorate": "توزر",
+      "delegation": "حامة الجريد",
+      "sector": "الحامة",
+      "pages": [
+        58
+      ]
+    }
+  ],
+  "originalCodedParent": {
+    "id": "osm:relation:7154892",
+    "tags": {
+      "admin_level": "5",
+      "alt_name:fr": "Degache",
+      "boundary": "administrative",
+      "name": "معتمدية دقاش",
+      "name:ar": "معتمدية دقاش",
+      "name:fr": "Délégation Degache",
+      "ref:tn:codegeo": "6252",
+      "ref:tn:hasc_2": "TN.TO.DE",
+      "wikidata": "Q3021228"
+    },
+    "geometrySha256": "1da6dc7b398581770d30d24cd552e968dcfb3b1e2ec86136b3bf87d78ed36891",
+    "containsWholeOldSector": true,
+    "isCurrentParent": false
+  },
+  "officialRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+  "officialSources": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "workbookRows": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sourceSha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "sheet": "Population",
+      "row": 69166,
+      "header": [
+        "Code_Département",
+        "District",
+        "الإقليم",
+        "Code_Gouvernorat",
+        "Gouvernorat",
+        "الولاية",
+        "Code_Delegation",
+        "Délégations",
+        "المعتمدية",
+        "Code_secteur_D",
+        "Secteurs",
+        "العمادة"
+      ],
+      "cells": [
+        {
+          "cell": "A69166",
+          "value": "4"
+        },
+        {
+          "cell": "B69166",
+          "value": "District 4"
+        },
+        {
+          "cell": "C69166",
+          "value": "إقليم 4"
+        },
+        {
+          "cell": "D69166",
+          "value": "62"
+        },
+        {
+          "cell": "E69166",
+          "value": "Tozeur"
+        },
+        {
+          "cell": "F69166",
+          "value": "توزر"
+        },
+        {
+          "cell": "G69166",
+          "value": "6256"
+        },
+        {
+          "cell": "H69166",
+          "value": "Hammat ejrid"
+        },
+        {
+          "cell": "I69166",
+          "value": "حامة الجريد"
+        },
+        {
+          "cell": "J69166",
+          "value": "625651"
+        },
+        {
+          "cell": "K69166",
+          "value": "El hamma"
+        },
+        {
+          "cell": "L69166",
+          "value": "الحامة"
+        }
+      ]
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "sourceSha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "sheet": "Logements",
+      "row": 3391,
+      "header": [
+        "Code_Département",
+        "District",
+        "الإقليم",
+        "Code_Gouvernorat",
+        "Gouvernorat",
+        "الولاية",
+        "Code_Delegation",
+        "Délégations",
+        "المعتمدية",
+        "Secteurs",
+        "العمادة",
+        "Code_Secteur"
+      ],
+      "cells": [
+        {
+          "cell": "A3391",
+          "value": "4"
+        },
+        {
+          "cell": "B3391",
+          "value": "District 4"
+        },
+        {
+          "cell": "C3391",
+          "value": "إقليم 4"
+        },
+        {
+          "cell": "D3391",
+          "value": "62"
+        },
+        {
+          "cell": "E3391",
+          "value": "Tozeur"
+        },
+        {
+          "cell": "F3391",
+          "value": "توزر"
+        },
+        {
+          "cell": "G3391",
+          "value": "6256"
+        },
+        {
+          "cell": "H3391",
+          "value": "Hammat ejrid"
+        },
+        {
+          "cell": "I3391",
+          "value": "حامة الجريد"
+        },
+        {
+          "cell": "J3391",
+          "value": "El hamma"
+        },
+        {
+          "cell": "K3391",
+          "value": "الحامة"
+        },
+        {
+          "cell": "L3391",
+          "value": "625651"
+        }
+      ]
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "sourceSha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "sheet": "Ménages",
+      "row": 3384,
+      "header": [
+        "Code_Département",
+        "District",
+        "الإقليم",
+        "Code_Gouvernorat",
+        "Gouvernorat",
+        "الولاية",
+        "Code_Delegation",
+        "Délégations",
+        "المعتمدية",
+        "Secteurs",
+        "العمادة",
+        "Code_Secteur"
+      ],
+      "cells": [
+        {
+          "cell": "A3384",
+          "value": "4"
+        },
+        {
+          "cell": "B3384",
+          "value": "District 4"
+        },
+        {
+          "cell": "C3384",
+          "value": "إقليم 4"
+        },
+        {
+          "cell": "D3384",
+          "value": "62"
+        },
+        {
+          "cell": "E3384",
+          "value": "Tozeur"
+        },
+        {
+          "cell": "F3384",
+          "value": "توزر"
+        },
+        {
+          "cell": "G3384",
+          "value": "6256"
+        },
+        {
+          "cell": "H3384",
+          "value": "Hammat ejrid"
+        },
+        {
+          "cell": "I3384",
+          "value": "حامة الجريد"
+        },
+        {
+          "cell": "J3384",
+          "value": "El hamma"
+        },
+        {
+          "cell": "K3384",
+          "value": "الحامة"
+        },
+        {
+          "cell": "L3384",
+          "value": "625651"
+        }
+      ]
+    }
+  ],
+  "workbookEvidenceSha256": "7705c7026fa40dbab2277d55b09ed1cc2d85451bcade5e2df1b5e7df9e075f2d",
+  "currentFeature": {
+    "id": "osm:relation:7154898",
+    "sourceId": "osm",
+    "name": "حامة الجريد",
+    "aliases": [
+      "El Hamma du Jerid",
+      "El Hamma du Jérid"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية حامة الجريد",
+    "contextAliases": [
+      "El Hamma du Jerid",
+      "حامة الجريد",
+      "معتمدية حامة الجريد"
+    ],
+    "governorateId": 352,
+    "lat": 34.07814,
+    "lng": 8.103427,
+    "delegationId": 481,
+    "hasBoundary": true,
+    "bbox": [
+      8.028019,
+      33.97404,
+      8.241751,
+      34.18041
+    ],
+    "areaKm2": 124.86320542221993,
+    "pickerGroupId": "osm:relation:7154898",
+    "offset": 3119544,
+    "length": 2628
+  },
+  "unchangedBase": {
+    "id": 481,
+    "nomFr": "Hammat Al Jarid",
+    "nomAr": "حامة الجريد",
+    "nomEn": "Hammat Al Jarid",
+    "lat": 33.9991,
+    "lng": 8.1612
+  },
+  "existingCuration": {
+    "id": "osm:relation:7154898",
+    "expectedKind": "sector",
+    "expectedTags": {
+      "name:ar": "حامة الجريد",
+      "ref:tn:codegeo": "625256"
+    },
+    "action": "administrative_context",
+    "parentNames": [
+      "معتمدية حامة الجريد",
+      "حامة الجريد",
+      "El Hamma du Jerid"
+    ],
+    "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+    "evidence": [
+      "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=58"
+    ],
+    "unresolved": [
+      "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+    ]
+  },
+  "proposedNameTags": {
+    "name": "الحامة",
+    "name:ar": "الحامة",
+    "name:fr": "El hamma",
+    "alt_name": "حامة الجريد;El Hamma du Jerid"
+  },
+  "maps": [
+    {
+      "text": "الحامة.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/توزر/حامة الجريد/الحامة.pdf",
+      "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/توزر/حامة الجريد/الحامة.pdf",
+      "retrievedAt": "2026-09-07T11:11:53.731424+00:00",
+      "resolvedURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D8%B2%D8%B1/%D8%AD%D8%A7%D9%85%D8%A9%20%D8%A7%D9%84%D8%AC%D8%B1%D9%8A%D8%AF/%D8%A7%D9%84%D8%AD%D8%A7%D9%85%D8%A9.pdf",
+      "sha256": "f05e09f9a2ce9c1dd3e522e771c8a37ed5c678d7c6e2046b7b034322ebf98fc0",
+      "bytes": 933542,
+      "file": "work\\hamma-jerid-name-stage\\official-maps\\hamma-1.pdf",
+      "renderFile": "work\\hamma-jerid-name-stage\\official-maps\\hamma-1.png",
+      "renderSha256": "b97cfb27783ae5ce297a285c2bd97f91aa6274ef586a212d1e5b5d3bb0263bd3"
+    },
+    {
+      "text": "الحامة 2.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/توزر/حامة الجريد/الحامة 2.pdf",
+      "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/توزر/حامة الجريد/الحامة 2.pdf",
+      "retrievedAt": "2026-09-07T11:11:54.340587+00:00",
+      "resolvedURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D8%B2%D8%B1/%D8%AD%D8%A7%D9%85%D8%A9%20%D8%A7%D9%84%D8%AC%D8%B1%D9%8A%D8%AF/%D8%A7%D9%84%D8%AD%D8%A7%D9%85%D8%A9%202.pdf",
+      "sha256": "b6540922bf16f587b0e54d2b54818c7b4c9e37b5167ebd9319056479ec3abd97",
+      "bytes": 836960,
+      "file": "work\\hamma-jerid-name-stage\\official-maps\\hamma-2.pdf",
+      "renderFile": "work\\hamma-jerid-name-stage\\official-maps\\hamma-2.png",
+      "renderSha256": "2cb8389ff08e5b3c48de25acf243479310c19247edf9f5f5c1925829d4bbac44"
+    }
+  ],
+  "personalMapReview": {
+    "bothFullPagesViewed": true,
+    "finding": "The first file is visibly titled الحامة 1 and labels الحامة 1 inside red electoral borders. The second labels الحامة 2. Blue parent text reads حامة الجريد; neighboring النملات parts and شاكمو are distinct. These are electoral subdivisions, not two new whole imadas.",
+    "scope": "Map labels corroborate the sector versus parent distinction. No polygon extracted or accepted from these images; no electoral-part suffix added to the sector name."
+  },
+  "reason": "Unique old625256 is الحامة in INS2012 under Degache, and ISIE2022 plus all three current INS tables place the same named sector under the newer Hamma Jerid delegation as625651. Existing membership curation already records this transfer. Correct the sector primary to its official name while preserving broader old aliases and the generic meteo choice.",
+  "limits": [
+    "Keep the existing sector ID, raw source code and polygon. This reviewed name does not certify the old boundary.",
+    "Keep meteo481 and existing parent context unchanged; do not merge the sector with the wider locality from a name alone.",
+    "Any later official sector geometry must review the exhaustive electoral parts, rather than importing one map as the whole imada."
+  ],
+  "historicalOfficialSources": [
+    {
+      "source": "INS2012",
+      "url": "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+      "file": "work\\official-codes\\ins-2012.pdf",
+      "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+      "page": 127,
+      "renderFile": "work\\hamma-jerid-name-stage\\official-maps\\ins-2012-page-127.png",
+      "renderSha256": "0411b3b2a92d454a2e2ee6fc039ab5b207523f3f48a2ad076b6bb8d6028b0681",
+      "personallyVisuallyReviewed": true
+    },
+    {
+      "source": "ISIE2022",
+      "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf",
+      "file": "work\\official-codes\\isie-2022.pdf",
+      "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97",
+      "page": 58,
+      "renderFile": "work\\hamma-jerid-name-stage\\official-maps\\isie-2022-page-58.png",
+      "renderSha256": "6c6502c66e1feb98dd670954ae3229b4d297bd2cdc448117c500855be53006b1",
+      "personallyVisuallyReviewed": true
+    }
+  ],
+  "historicalVisualFinding": "INS2012 p127 prints El Hamma / الحامة opposite625256 under Degach. ISIE2022 p58 includes sector الحامة under حامة الجريد, particularly the Hamma Jerid Village Hamma school row4072. Individual school rows do not certify source polygon boundaries.",
+  "priorIdentityReview": {
+    "file": "outputs/held28-current-identity-reassessment.json",
+    "sha256": "c78442fe4c49e764353c9ebfcda66b8b0551238a495d1d00bb497001bdd65daf"
+  }
+}

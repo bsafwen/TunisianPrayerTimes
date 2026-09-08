@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2026-09-08T12:55:35.422614+00:00",
+  "transport": "Windows curl Schannel, default verified TLS, three exact public GETs returned HTTP200; no API keys.",
+  "records": [
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/node/1128018620.json",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\beni-khiar-node-1128018620.json",
+        "sha256": "a34fc261be8423a9ee6a11f0c8b1b8c1765656900b4dbb37c7f4c25f51a84d91"
+      },
+      "bytes": 733
+    },
+    {
+      "url": "https://www.social.gov.tn/ar/الوحدة-المحلية-للنهوض-الاجتماعي-ببني-خيار-نابل",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\beni-khiar-social-unit.html",
+        "sha256": "d455d1280b402e395b1bd302ebe322d6f890fae5e86fb4f5186573ff108c4682"
+      },
+      "bytes": 67204
+    },
+    {
+      "url": "https://www.nabeul.gov.tn/ar/بانوراما-المعتمديات-2/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bargou-beni-khiar-hazoua-display-triage\\nabeul-delegations.html",
+        "sha256": "8db10a1b820b26c7378f45d2b5c15b0fa2d8568afdd9579f23f8076795dbdf79"
+      },
+      "bytes": 175347
+    }
+  ],
+  "liveNode": {
+    "type": "node",
+    "id": 1128018620,
+    "lat": 36.4693627,
+    "lon": 10.7809776,
+    "timestamp": "2023-10-25T21:12:37Z",
+    "version": 17,
+    "changeset": 143134733,
+    "user": "tg4567",
+    "uid": 12500589,
+    "tags": {
+      "addr:governorate": "Nabeul",
+      "int_name": "Béni Khiar",
+      "name": "بني خيار",
+      "name:ar": "بني خيار",
+      "name:en": "Béni Khiar",
+      "name:fr": "Béni Khiar",
+      "name:uk": "Бені-Х'яр",
+      "place": "town",
+      "wikidata": "Q2737310",
+      "wikimedia_commons": "Category:Beni Khiar",
+      "wikipedia": "en:Béni Khiar"
+    }
+  },
+  "liveNodeEntireTagsAndCoordinatesEqualCache": true,
+  "historicalCoordinateProvenance": "Beni Khiar460 and Hazoua479 are unchanged legacy app references; no original per-coordinate INM provenance established."
+}

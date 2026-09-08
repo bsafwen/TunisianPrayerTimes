@@ -1,0 +1,1861 @@
+{
+  "schemaVersion": 1,
+  "metadataSha256": "e77621878bf06f0cd668d011e1774f230ccdbb20c1e3635da453c28887677286",
+  "geometrySha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "directSourceFacts": {
+    "file": "direct-pbf-source-facts.json",
+    "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+  },
+  "inputAudit": {
+    "file": "current-picker-name-audit.json",
+    "sha256": "673ab0520c201d9ba7707f4af1d1faf95b5f43ec573af625d3f4994aa880b2ff"
+  },
+  "scope": {
+    "sameSubtitlePairs": 12,
+    "separatelyHeldPairs": 2,
+    "reviewedPairs": 10,
+    "reviewedClusters": 8,
+    "eligibleMergePairs": 1,
+    "heldReviewedPairs": 9,
+    "eligibleGroupMemberCount": 3,
+    "expectedRawGroupIdChanges": 1,
+    "expectedPickerRowReduction": 1
+  },
+  "separatelyHeld": [
+    {
+      "ids": [
+        "osm:relation:7118632",
+        "osm:relation:7152490"
+      ],
+      "reason": "Separate Bizerte Cheikh coded footprint and redundant identity review."
+    },
+    {
+      "ids": [
+        "osm:node:1975899618",
+        "osm:node:297760994"
+      ],
+      "reason": "Separate Chenini old/new village identity review; do not merge from shared external references alone."
+    }
+  ],
+  "records": [
+    {
+      "cluster": "haf_oulad_hamed",
+      "status": "held_fragment_identity",
+      "finding": "Two residential fragments and one hamlet share names and coded Ras El Oued context. No explicit common settlement footprint, shared reference or address relationship establishes the complete group. The historical-landmark phone result does not identify these residential objects.",
+      "members": [
+        {
+          "id": "osm:way:1187366129",
+          "current": {
+            "id": "osm:way:1187366129",
+            "sourceId": "osm",
+            "name": "حاف أولاد حامد",
+            "aliases": [
+              "Oualed Hamed"
+            ],
+            "kind": "residential",
+            "parentName": "رأس الوادي",
+            "contextAliases": [
+              "Délégation Tataouine Sud",
+              "Ras El Oued",
+              "Tataouine Sud",
+              "رأس الوادي",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "governorateId": 351,
+            "lat": 32.791897,
+            "lng": 10.229528,
+            "delegationId": 624,
+            "hasBoundary": true,
+            "bbox": [
+              10.228894,
+              32.791342,
+              10.230043,
+              32.792479
+            ],
+            "areaKm2": 0.0018914142146176324,
+            "pickerGroupId": "osm:way:1187366129",
+            "offset": 5205100,
+            "length": 324
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed",
+            "residential": "osada"
+          },
+          "originalGeometrySha256": "084d774d046270bc1deeea3fbf6ac62331d139032360dd734c2c6278c1527bdb",
+          "packedGeometrySha256": "c02b049c38fc4e03605150a78a08f6387f0f069cb0d8d3cd88af690e2ad0118b",
+          "independentNearestPrayerSource": 624
+        },
+        {
+          "id": "osm:way:1187366130",
+          "current": {
+            "id": "osm:way:1187366130",
+            "sourceId": "osm",
+            "name": "حاف أولاد حامد",
+            "aliases": [
+              "Oualed Hamed"
+            ],
+            "kind": "residential",
+            "parentName": "رأس الوادي",
+            "contextAliases": [
+              "Délégation Tataouine Sud",
+              "Ras El Oued",
+              "Tataouine Sud",
+              "رأس الوادي",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "governorateId": 351,
+            "lat": 32.793267,
+            "lng": 10.22938,
+            "delegationId": 624,
+            "hasBoundary": true,
+            "bbox": [
+              10.229145,
+              32.793068,
+              10.229524,
+              32.79344
+            ],
+            "areaKm2": 0.0007227356008872879,
+            "pickerGroupId": "osm:way:1187366130",
+            "offset": 5205424,
+            "length": 124
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed"
+          },
+          "originalGeometrySha256": "ea4f0567bfc29e25d0863c85af8ec02ab18127ef81e9659e89533d3e6e42bd84",
+          "packedGeometrySha256": "7368d7c555c9fdf38262a866e26bd3a0d8a73a37bac378b94c1c5d94dd5b1289",
+          "independentNearestPrayerSource": 624
+        },
+        {
+          "id": "osm:node:11522289870",
+          "current": {
+            "id": "osm:node:11522289870",
+            "sourceId": "osm",
+            "name": "حاف أولاد حامد",
+            "aliases": [
+              "Oualed Hamed"
+            ],
+            "kind": "hamlet",
+            "parentName": "رأس الوادي",
+            "contextAliases": [
+              "Délégation Tataouine Sud",
+              "Ras El Oued",
+              "Tataouine Sud",
+              "رأس الوادي",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "governorateId": 351,
+            "lat": 32.7922759,
+            "lng": 10.2297856,
+            "delegationId": 624,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11522289870"
+          },
+          "expectedOriginalTags": {
+            "name": "حاف أولاد حامد",
+            "name:aeb": "حاف أولاد حامد",
+            "name:ar": "حاف أولاد حامد",
+            "name:en": "Oualed Hamed",
+            "name:fr": "Oualed Hamed",
+            "place": "hamlet"
+          },
+          "originalGeometrySha256": null,
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 624
+        }
+      ],
+      "pairCount": 3,
+      "currentGroupInventories": {
+        "osm:node:11522289870": [
+          "osm:node:11522289870"
+        ],
+        "osm:way:1187366129": [
+          "osm:way:1187366129"
+        ],
+        "osm:way:1187366130": [
+          "osm:way:1187366130"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:1187366129",
+            "osm:way:1187366130"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 67.21464979316119,
+          "packedGapMeters": 67.19552857697518
+        },
+        {
+          "ids": [
+            "osm:way:1187366129",
+            "osm:node:11522289870"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 7.26663704525455,
+          "packedGapMeters": 7.292845653478598
+        },
+        {
+          "ids": [
+            "osm:way:1187366130",
+            "osm:node:11522289870"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 101.42618015641713,
+          "packedGapMeters": 101.37791558165699
+        }
+      ]
+    },
+    {
+      "cluster": "ksar_ouled_soltane",
+      "status": "held_fragment_identity",
+      "finding": "The direct village node11493025894 is inside the southern fragment only and already absorbed. A separately tagged ruins/attraction relation2516832 and mosque use the same name. The northern fragment cannot be joined solely from proximity, shared names or the tourist monument result.",
+      "members": [
+        {
+          "id": "osm:way:1264348269",
+          "current": {
+            "id": "osm:way:1264348269",
+            "sourceId": "osm",
+            "name": "قصر أولاد سلطان",
+            "aliases": [
+              "Ksar Ouled Soltane"
+            ],
+            "kind": "residential",
+            "parentName": "القلعة الشرقية",
+            "contextAliases": [
+              "Délégation Tataouine Nord",
+              "El Galaa Est",
+              "القلعة الشرقية",
+              "معتمدية تطاوين الشمالية"
+            ],
+            "governorateId": 351,
+            "lat": 32.792254,
+            "lng": 10.518313,
+            "delegationId": 624,
+            "hasBoundary": true,
+            "bbox": [
+              10.516506,
+              32.789897,
+              10.521192,
+              32.794528
+            ],
+            "areaKm2": 0.11053746530568001,
+            "pickerGroupId": "osm:way:1264348269",
+            "offset": 5212208,
+            "length": 764
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "قصر أولاد سلطان",
+            "name:ar": "قصر أولاد سلطان",
+            "name:en": "Ksar Ouled Soltane"
+          },
+          "originalGeometrySha256": "940014d4e203e51859a735e15722a78604370e77bf49d8533d7bb3cfd3f69675",
+          "packedGeometrySha256": "a7ce8c33641e2d3117cb8ac92052a108619897171cc1b4361818003ff582bdaf",
+          "independentNearestPrayerSource": 624
+        },
+        {
+          "id": "osm:way:1264348270",
+          "current": {
+            "id": "osm:way:1264348270",
+            "sourceId": "osm",
+            "name": "قصر أولاد سلطان",
+            "aliases": [
+              "Ksar Ouled Soltane"
+            ],
+            "kind": "residential",
+            "parentName": "القلعة الشرقية",
+            "contextAliases": [
+              "Délégation Tataouine Nord",
+              "El Galaa Est",
+              "القلعة الشرقية",
+              "معتمدية تطاوين الشمالية"
+            ],
+            "governorateId": 351,
+            "lat": 32.788021,
+            "lng": 10.519467,
+            "delegationId": 624,
+            "hasBoundary": true,
+            "bbox": [
+              10.514313,
+              32.786085,
+              10.520198,
+              32.789881
+            ],
+            "areaKm2": 0.064808399523089,
+            "pickerGroupId": "osm:way:1264348270",
+            "offset": 5212972,
+            "length": 740
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "قصر أولاد سلطان",
+            "name:ar": "قصر أولاد سلطان",
+            "name:en": "Ksar Ouled Soltane"
+          },
+          "originalGeometrySha256": "49f36c15986a3d244d3656622c66913658e171b850616701b57378e57d4a90c8",
+          "packedGeometrySha256": "aa6e118ee4cf3c92026570b92d4b595ad78f7d224acaeb791d9a48aa5f5ec0f0",
+          "independentNearestPrayerSource": 624
+        }
+      ],
+      "pairCount": 1,
+      "currentGroupInventories": {
+        "osm:way:1264348269": [
+          "osm:way:1264348269"
+        ],
+        "osm:way:1264348270": [
+          "osm:way:1264348270"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:1264348269",
+            "osm:way:1264348270"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 30.920566975060833,
+          "packedGapMeters": 30.92533794071869
+        }
+      ]
+    },
+    {
+      "cluster": "el_adbech",
+      "status": "held_incomplete_cluster",
+      "finding": "A third current row way189085992 is Arabic الأدباش with El Adbech alias and addr:city; it contains the bilingual village node1997440361. The two English fragments have no explicit address relationship and lie outside that footprint. A two-row merge would ignore a third current identity candidate. Preserve all three pending an independently supported complete locality review.",
+      "members": [
+        {
+          "id": "osm:way:1265702650",
+          "current": {
+            "id": "osm:way:1265702650",
+            "sourceId": "osm",
+            "name": "El Adbech",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "عين تونين",
+            "contextAliases": [
+              "Ain Tounine",
+              "Dkhilet Toujane",
+              "دخيلة توجان",
+              "عين تونين",
+              "معتمدية دخيلة توجان"
+            ],
+            "governorateId": 347,
+            "lat": 33.480734,
+            "lng": 10.082918,
+            "delegationId": 1022,
+            "hasBoundary": true,
+            "bbox": [
+              10.080554,
+              33.478131,
+              10.083967,
+              33.483146
+            ],
+            "areaKm2": 0.05228457126955565,
+            "pickerGroupId": "osm:way:1265702650",
+            "offset": 5213712,
+            "length": 636
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "El Adbech",
+            "residential": "rural"
+          },
+          "originalGeometrySha256": "17d8f420f4fd340f9f131c0950efc792f066543cc06f38b4a195d4c72868ef00",
+          "packedGeometrySha256": "1814bfc260fa32d92d9535dcf1b041c37f51da07626ec1aa4fc05a66ac0141a5",
+          "independentNearestPrayerSource": 1022
+        },
+        {
+          "id": "osm:way:1265702651",
+          "current": {
+            "id": "osm:way:1265702651",
+            "sourceId": "osm",
+            "name": "El Adbech",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "عين تونين",
+            "contextAliases": [
+              "Ain Tounine",
+              "Dkhilet Toujane",
+              "دخيلة توجان",
+              "عين تونين",
+              "معتمدية دخيلة توجان"
+            ],
+            "governorateId": 347,
+            "lat": 33.48056,
+            "lng": 10.085204,
+            "delegationId": 1022,
+            "hasBoundary": true,
+            "bbox": [
+              10.084576,
+              33.479842,
+              10.085687,
+              33.481344
+            ],
+            "areaKm2": 0.010069491066740944,
+            "pickerGroupId": "osm:way:1265702651",
+            "offset": 5214348,
+            "length": 164
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "El Adbech",
+            "residential": "rural"
+          },
+          "originalGeometrySha256": "1a32bd584c9dda4d2de1e255c91037e07ae4d2feb676a6a7117823d32747f9b1",
+          "packedGeometrySha256": "3c22b92008dcd73b49c0f8dfcefe9abe3ee03ff7482dbf424bf37d98329fdb11",
+          "independentNearestPrayerSource": 1022
+        }
+      ],
+      "pairCount": 1,
+      "currentGroupInventories": {
+        "osm:way:1265702650": [
+          "osm:way:1265702650"
+        ],
+        "osm:way:1265702651": [
+          "osm:way:1265702651"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:1265702650",
+            "osm:way:1265702651"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 76.20517285922138,
+          "packedGapMeters": 76.21638527970282
+        }
+      ]
+    },
+    {
+      "cluster": "essfaya",
+      "status": "held_point_outside_fragment",
+      "finding": "The hamlet and residential area share multilingual names and unique El Ghraba sector context, but the point is outside the source and packaged fragment. No explicit shared identity reference or locality extent resolves membership; nearby distance and mixed phone results are insufficient.",
+      "members": [
+        {
+          "id": "osm:way:129895999",
+          "current": {
+            "id": "osm:way:129895999",
+            "sourceId": "osm",
+            "name": "الصفاية",
+            "aliases": [
+              "Essfaya"
+            ],
+            "kind": "residential",
+            "parentName": "الغرابة",
+            "contextAliases": [
+              "Béja Nord",
+              "Délégation Béja Nord",
+              "El Ghraba",
+              "الغرابة",
+              "معتمدية باجة الشمالية"
+            ],
+            "governorateId": 356,
+            "lat": 36.910262,
+            "lng": 9.178116,
+            "delegationId": 514,
+            "hasBoundary": true,
+            "bbox": [
+              9.176499,
+              36.907132,
+              9.181714,
+              36.913705
+            ],
+            "areaKm2": 0.06916678699487354,
+            "pickerGroupId": "osm:way:129895999",
+            "offset": 5216432,
+            "length": 380
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:fr": "Essfaya"
+          },
+          "originalGeometrySha256": "a973914972b3655e7de0d654ec5b6ab61ee3f9ad0833c68c543a45e82ffa7ad3",
+          "packedGeometrySha256": "a44dcb637d7d13b16bb1a51a8109cc07dfd59390cb4e97d5de5032caa40eefc0",
+          "independentNearestPrayerSource": 514
+        },
+        {
+          "id": "osm:node:1432323476",
+          "current": {
+            "id": "osm:node:1432323476",
+            "sourceId": "osm",
+            "name": "الصفاية",
+            "aliases": [
+              "Essfaya"
+            ],
+            "kind": "hamlet",
+            "parentName": "الغرابة",
+            "contextAliases": [
+              "Béja Nord",
+              "Délégation Béja Nord",
+              "El Ghraba",
+              "الغرابة",
+              "معتمدية باجة الشمالية"
+            ],
+            "governorateId": 356,
+            "lat": 36.9084743,
+            "lng": 9.1788288,
+            "delegationId": 514,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:1432323476"
+          },
+          "expectedOriginalTags": {
+            "addr:governorate": "Béja",
+            "name": "الصفاية",
+            "name:ar": "الصفاية",
+            "name:en": "Essfaya",
+            "name:fr": "Essfaya",
+            "place": "hamlet"
+          },
+          "originalGeometrySha256": null,
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 514
+        }
+      ],
+      "pairCount": 1,
+      "currentGroupInventories": {
+        "osm:node:1432323476": [
+          "osm:node:1432323476"
+        ],
+        "osm:way:129895999": [
+          "osm:way:129895999"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:129895999",
+            "osm:node:1432323476"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 6.54652473414073,
+          "packedGapMeters": 6.528707206479968
+        }
+      ]
+    },
+    {
+      "cluster": "taouaicha",
+      "status": "eligible_exact_named_village_group",
+      "finding": "The explicit Ettwaycha village polygon contains both Arabic الطوايشة residential pieces in original and packaged geometry. The bilingual village node9843640664 is inside that village and the second piece; it directly links the Latin village label and Arabic residential names. All three raw members share governorate353, governorate-only parent and prayer source493.",
+      "members": [
+        {
+          "id": "osm:way:312733902",
+          "current": {
+            "id": "osm:way:312733902",
+            "sourceId": "osm",
+            "name": "الطوايشة",
+            "aliases": [
+              "Ettwaycha"
+            ],
+            "kind": "residential",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.638365,
+            "lng": 10.719325,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.716498,
+              33.636195,
+              10.72001,
+              33.640558
+            ],
+            "areaKm2": 0.03389975217948967,
+            "pickerGroupId": "osm:way:312733902",
+            "offset": 5381000,
+            "length": 644
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "originalGeometrySha256": "35e62f74d2814c3a71d1b7c5be956cc35e94c191601adab2d9bef96d0cb9e15c",
+          "packedGeometrySha256": "af0e42c89242de4960a6dc9d2b9c4795b968c91cb7a427e90b126fc25b98e63d",
+          "independentNearestPrayerSource": 493
+        },
+        {
+          "id": "osm:way:969654331",
+          "current": {
+            "id": "osm:way:969654331",
+            "sourceId": "osm",
+            "name": "Ettwaycha",
+            "aliases": [],
+            "kind": "village",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.6531,
+            "lng": 10.718154,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.698384,
+              33.631547,
+              10.741008,
+              33.676282
+            ],
+            "areaKm2": 13.297017498945184,
+            "pickerGroupId": "osm:way:312733902",
+            "offset": 5448500,
+            "length": 196
+          },
+          "expectedOriginalTags": {
+            "name": "Ettwaycha",
+            "place": "village"
+          },
+          "originalGeometrySha256": "28d0a6b3592d4ac16e9643050a0bde216ee974ff0b8599da12c7f32ea8e80ecc",
+          "packedGeometrySha256": "3a5a875cbd4663b45712f3b3afa48b1a2759ca22a48c569589e1672849fec4d5",
+          "independentNearestPrayerSource": 493
+        },
+        {
+          "id": "osm:way:378448709",
+          "current": {
+            "id": "osm:way:378448709",
+            "sourceId": "osm",
+            "name": "الطوايشة",
+            "aliases": [
+              "Ettwaycha"
+            ],
+            "kind": "residential",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.637169,
+            "lng": 10.720368,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.719804,
+              33.635944,
+              10.721753,
+              33.638416
+            ],
+            "areaKm2": 0.025973496952857493,
+            "pickerGroupId": "osm:way:378448709",
+            "offset": 5396256,
+            "length": 348
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "originalGeometrySha256": "8b526a7198d35925174a3e7c876d4171f7b8c73a19cc178259a0817d70824683",
+          "packedGeometrySha256": "36e19ec587288144ff0aadf8729083543742931ed1906f009cefb23035e26708",
+          "independentNearestPrayerSource": 493
+        }
+      ],
+      "pairCount": 1,
+      "currentGroupInventories": {
+        "osm:way:312733902": [
+          "osm:way:312733902",
+          "osm:way:969654331"
+        ],
+        "osm:way:378448709": [
+          "osm:way:378448709"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:312733902",
+            "osm:way:969654331"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": true,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": true,
+          "originalGapMeters": 0.0,
+          "packedGapMeters": 0.0
+        },
+        {
+          "ids": [
+            "osm:way:312733902",
+            "osm:way:378448709"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 3.311212295796743,
+          "packedGapMeters": 3.260241774423949
+        },
+        {
+          "ids": [
+            "osm:way:969654331",
+            "osm:way:378448709"
+          ],
+          "originalLeftCoversRight": true,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": true,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 0.0,
+          "packedGapMeters": 0.0
+        }
+      ]
+    },
+    {
+      "cluster": "ksar_jouamaa",
+      "status": "held_point_outside_fragment",
+      "finding": "The primary Dahar field inventory explicitly distinguishes a village from the nearby historic fortress; direct PBF has separate hotel, restaurant and ruins objects. Keep the village and residential objects as settlement candidates rather than removing them as POIs. No enclosing settlement footprint or explicit address relation supports their merger yet. Arabic قصر الجوامع is supported by Dahar and the INP monument list, but this spelling lead is held rather than changing names to force a merge.",
+      "members": [
+        {
+          "id": "osm:way:377116351",
+          "current": {
+            "id": "osm:way:377116351",
+            "sourceId": "osm",
+            "name": "قصر الجؤامع",
+            "aliases": [
+              "Ksar Jouamaa"
+            ],
+            "kind": "residential",
+            "parentName": "رحالة",
+            "contextAliases": [
+              "Beni Khedache",
+              "Délégation Beni Khedech",
+              "Rahala",
+              "رحالة",
+              "معتمدية بني خداش"
+            ],
+            "governorateId": 353,
+            "lat": 33.254487,
+            "lng": 10.253962,
+            "delegationId": 489,
+            "hasBoundary": true,
+            "bbox": [
+              10.251712,
+              33.253768,
+              10.255851,
+              33.255249
+            ],
+            "areaKm2": 0.031242931025491163,
+            "pickerGroupId": "osm:way:377116351",
+            "offset": 5391092,
+            "length": 260
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "قصر الجؤامع",
+            "name:aeb": "قصر الجؤامع",
+            "name:ar": "قصر الجؤامع",
+            "name:en": "Ksar Jouamaa"
+          },
+          "originalGeometrySha256": "73874f1d151f36304b7a7bc17b40b5a51b9cb76ff9f9d7ec464f4bcd5a2f5b50",
+          "packedGeometrySha256": "6e24821a504961d2e7c280fff260858d387ec767d66d0b5c8ed00aacb2afba6d",
+          "independentNearestPrayerSource": 489
+        },
+        {
+          "id": "osm:node:11230028572",
+          "current": {
+            "id": "osm:node:11230028572",
+            "sourceId": "osm",
+            "name": "قصر الجؤامع",
+            "aliases": [
+              "Ksar Jouamaa"
+            ],
+            "kind": "village",
+            "parentName": "رحالة",
+            "contextAliases": [
+              "Beni Khedache",
+              "Délégation Beni Khedech",
+              "Rahala",
+              "رحالة",
+              "معتمدية بني خداش"
+            ],
+            "governorateId": 353,
+            "lat": 33.2538427,
+            "lng": 10.2529122,
+            "delegationId": 489,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11230028572"
+          },
+          "expectedOriginalTags": {
+            "name": "قصر الجؤامع",
+            "name:aeb": "قصر الجؤامع",
+            "name:ar": "قصر الجؤامع",
+            "name:en": "Ksar Jouamaa",
+            "place": "village"
+          },
+          "originalGeometrySha256": null,
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 489
+        }
+      ],
+      "pairCount": 1,
+      "currentGroupInventories": {
+        "osm:node:11230028572": [
+          "osm:node:11230028572"
+        ],
+        "osm:way:377116351": [
+          "osm:way:377116351"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:377116351",
+            "osm:node:11230028572"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 2.834604018778866,
+          "packedGapMeters": 2.8373920430461728
+        }
+      ]
+    },
+    {
+      "cluster": "touil_oulad_zayed",
+      "status": "held_point_outside_fragment",
+      "finding": "The hamlet and residential area share names and Ras El Oued context, while a distinct direct source natural=peak node3814110946 also carries the name. A religious-destination phone card cannot identify the source hamlet or residential extent. No explicit shared source relation establishes their merger.",
+      "members": [
+        {
+          "id": "osm:way:377996284",
+          "current": {
+            "id": "osm:way:377996284",
+            "sourceId": "osm",
+            "name": "طويل أولاد زايد",
+            "aliases": [
+              "Touil Ouled Zayed"
+            ],
+            "kind": "residential",
+            "parentName": "رأس الوادي",
+            "contextAliases": [
+              "Délégation Tataouine Sud",
+              "Ras El Oued",
+              "Tataouine Sud",
+              "رأس الوادي",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "governorateId": 351,
+            "lat": 32.766158,
+            "lng": 10.265125,
+            "delegationId": 624,
+            "hasBoundary": true,
+            "bbox": [
+              10.262448,
+              32.764912,
+              10.266663,
+              32.7675
+            ],
+            "areaKm2": 0.026324605121398816,
+            "pickerGroupId": "osm:way:377996284",
+            "offset": 5393928,
+            "length": 620
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "طويل أولاد زايد",
+            "name:ar": "طويل أولاد زايد",
+            "name:fr": "Touil Ouled Zayed"
+          },
+          "originalGeometrySha256": "5063ccdb840da4d24c78f72a98b3a6f3a1644c4bfe10dbf6f36f4bf4325d07e7",
+          "packedGeometrySha256": "ce3e4b625d73393f336201c30b9dec22e930d15bc4524010851badba92873171",
+          "independentNearestPrayerSource": 624
+        },
+        {
+          "id": "osm:node:11525318199",
+          "current": {
+            "id": "osm:node:11525318199",
+            "sourceId": "osm",
+            "name": "طويل أولاد زايد",
+            "aliases": [
+              "Touil Ouled Zayed"
+            ],
+            "kind": "hamlet",
+            "parentName": "رأس الوادي",
+            "contextAliases": [
+              "Délégation Tataouine Sud",
+              "Ras El Oued",
+              "Tataouine Sud",
+              "رأس الوادي",
+              "معتمدية تطاوين الجنوبية"
+            ],
+            "governorateId": 351,
+            "lat": 32.7671737,
+            "lng": 10.2628336,
+            "delegationId": 624,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:11525318199"
+          },
+          "expectedOriginalTags": {
+            "name": "طويل أولاد زايد",
+            "name:aeb": "طويل أولاد زايد",
+            "name:ar": "طويل أولاد زايد",
+            "name:en": "Touil Ouled Zayed",
+            "name:fr": "Touil Ouled Zayed",
+            "place": "hamlet"
+          },
+          "originalGeometrySha256": null,
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 624
+        }
+      ],
+      "pairCount": 1,
+      "currentGroupInventories": {
+        "osm:node:11525318199": [
+          "osm:node:11525318199"
+        ],
+        "osm:way:377996284": [
+          "osm:way:377996284"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:377996284",
+            "osm:node:11525318199"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 9.817441910756074,
+          "packedGapMeters": 9.824628536365466
+        }
+      ]
+    },
+    {
+      "cluster": "tijma",
+      "status": "held_address_link_without_extent",
+      "finding": "Both exact source objects have addr:place=تيجمة and matching Arabic/English names, and INP2012 p1447 independently names Tijma as a rural locality with dispersed troglodyte houses. These are useful same-locality identity indications, but the village point is outside the residential fragment and the source supplies no whole locality footprint. Hold merger and parent changes: the INP page does not state delegation membership or provide a locality polygon.",
+      "members": [
+        {
+          "id": "osm:way:379743528",
+          "current": {
+            "id": "osm:way:379743528",
+            "sourceId": "osm",
+            "name": "تيجمة",
+            "aliases": [
+              "Tijma"
+            ],
+            "kind": "residential",
+            "parentName": "مطماطة الجديدة",
+            "contextAliases": [
+              "Délégation Nouvelle Matmata",
+              "Nouvelle Matmata",
+              "مطماطة الجديدة",
+              "معتمدية مطماطة الجديدة"
+            ],
+            "governorateId": 347,
+            "lat": 33.583446,
+            "lng": 9.98215,
+            "delegationId": 1022,
+            "hasBoundary": true,
+            "bbox": [
+              9.981424,
+              33.582811,
+              9.982816,
+              33.584084
+            ],
+            "areaKm2": 0.009800497762583134,
+            "pickerGroupId": "osm:way:379743528",
+            "offset": 5396856,
+            "length": 156
+          },
+          "expectedOriginalTags": {
+            "addr:place": "تيجمة",
+            "landuse": "residential",
+            "name": "تيجمة",
+            "name:aeb": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma"
+          },
+          "originalGeometrySha256": "08917a124d0dbdd1287ea833cca376a1a698f1fb1f580b06822e06064991e624",
+          "packedGeometrySha256": "cab36ca98c0d81dbeb0fb775c337a833baab1fad06b1324f29dbe366dc89e3de",
+          "independentNearestPrayerSource": 1022
+        },
+        {
+          "id": "osm:node:1997440362",
+          "current": {
+            "id": "osm:node:1997440362",
+            "sourceId": "osm",
+            "name": "تيجمة",
+            "aliases": [
+              "Tidjma",
+              "Tijma"
+            ],
+            "kind": "village",
+            "parentName": "مطماطة الجديدة",
+            "contextAliases": [
+              "Délégation Nouvelle Matmata",
+              "Nouvelle Matmata",
+              "مطماطة الجديدة",
+              "معتمدية مطماطة الجديدة"
+            ],
+            "governorateId": 347,
+            "lat": 33.5810179,
+            "lng": 9.9780968,
+            "delegationId": 1022,
+            "hasBoundary": false,
+            "pickerGroupId": "osm:node:1997440362"
+          },
+          "expectedOriginalTags": {
+            "addr:place": "تيجمة",
+            "name": "تيجمة",
+            "name:ar": "تيجمة",
+            "name:en": "Tijma",
+            "name:fr": "Tidjma",
+            "place": "village"
+          },
+          "originalGeometrySha256": null,
+          "packedGeometrySha256": null,
+          "independentNearestPrayerSource": 1022
+        }
+      ],
+      "pairCount": 1,
+      "currentGroupInventories": {
+        "osm:node:1997440362": [
+          "osm:node:1997440362"
+        ],
+        "osm:way:379743528": [
+          "osm:way:379743528"
+        ]
+      },
+      "allMembersShareManualPrayerSource": true,
+      "spatial": [
+        {
+          "ids": [
+            "osm:way:379743528",
+            "osm:node:1997440362"
+          ],
+          "originalLeftCoversRight": false,
+          "originalRightCoversLeft": false,
+          "packedLeftCoversRight": false,
+          "packedRightCoversLeft": false,
+          "originalGapMeters": 391.3136952675636,
+          "packedGapMeters": 391.30195204473637
+        }
+      ]
+    }
+  ],
+  "administrativeContexts": [
+    {
+      "id": "osm:relation:7142959",
+      "sourceCode": "525260",
+      "currentOfficialRecord": {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5252",
+        "delegationFr": "Medenine sud",
+        "delegationAr": "مدنين الجنوبية",
+        "sectorCode": "525260",
+        "sectorFr": "Bou-ghrara",
+        "sectorAr": "بوغرارة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60790,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2988,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2982
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7142959",
+        "sourceId": "osm",
+        "name": "بوغرارة",
+        "aliases": [
+          "Boughrara"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مدنين االجنوبية",
+        "contextAliases": [
+          "Délégation Medenine Sud",
+          "Médenine Sud",
+          "معتمدية مدنين االجنوبية",
+          "معتمدية مدنين الجنوبية"
+        ],
+        "governorateId": 353,
+        "lat": 33.565995,
+        "lng": 10.662665,
+        "delegationId": 496,
+        "hasBoundary": true,
+        "bbox": [
+          10.585748,
+          33.491901,
+          10.736449,
+          33.640181
+        ],
+        "areaKm2": 101.93598260327991,
+        "pickerGroupId": "osm:relation:7142959",
+        "offset": 1956812,
+        "length": 5332
+      },
+      "reviewedCuration": null,
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    },
+    {
+      "id": "osm:relation:7142977",
+      "sourceCode": "525352",
+      "currentOfficialRecord": {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5253",
+        "delegationFr": "Beni khedech",
+        "delegationAr": "بني خداش",
+        "sectorCode": "525352",
+        "sectorFr": "Rahala",
+        "sectorAr": "رحالة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60858,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2992,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2986
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7142977",
+        "sourceId": "osm",
+        "name": "رحالة",
+        "aliases": [
+          "Rahala"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خداش",
+        "contextAliases": [
+          "Beni Khedache",
+          "Délégation Beni Khedech",
+          "معتمدية بني خداش"
+        ],
+        "governorateId": 353,
+        "lat": 33.236867,
+        "lng": 10.264415,
+        "delegationId": 489,
+        "hasBoundary": true,
+        "bbox": [
+          10.223343,
+          33.204252,
+          10.299397,
+          33.269492
+        ],
+        "areaKm2": 30.494456613710096,
+        "pickerGroupId": "osm:relation:7142977",
+        "offset": 2013928,
+        "length": 1324
+      },
+      "reviewedCuration": null,
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    },
+    {
+      "id": "osm:relation:7142981",
+      "sourceCode": "525954",
+      "currentOfficialRecord": {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5259",
+        "delegationFr": "Sidi makhloulf",
+        "delegationAr": "سيدي مخلوف",
+        "sectorCode": "525954",
+        "sectorFr": "El jourf",
+        "sectorAr": "الجرف",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63136,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3103,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3097
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7142981",
+        "sourceId": "osm",
+        "name": "الجرف",
+        "aliases": [
+          "El Jourf"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي مخلوف",
+        "contextAliases": [
+          "Délégation Sidi Makhlouf",
+          "Sidi Makhlouf",
+          "معتمدية سيدي مخلوف"
+        ],
+        "governorateId": 353,
+        "lat": 33.655336,
+        "lng": 10.686099,
+        "delegationId": 493,
+        "hasBoundary": true,
+        "bbox": [
+          10.623521,
+          33.602961,
+          10.745139,
+          33.708089
+        ],
+        "areaKm2": 74.53253391983162,
+        "pickerGroupId": "osm:relation:7142981",
+        "offset": 2024908,
+        "length": 4380
+      },
+      "reviewedCuration": null,
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    },
+    {
+      "id": "osm:relation:7143835",
+      "sourceCode": "535163",
+      "currentOfficialRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5351",
+        "delegationFr": "Tataouine nord",
+        "delegationAr": "تطاوين الشمالية",
+        "sectorCode": "535163",
+        "sectorFr": "El galaa est",
+        "sectorAr": "القلعة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63815,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3137,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3131
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7143835",
+        "sourceId": "osm",
+        "name": "القلعة الشرقية",
+        "aliases": [
+          "El Galaa Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تطاوين الشمالية",
+        "contextAliases": [
+          "Délégation Tataouine Nord",
+          "معتمدية تطاوين الشمالية"
+        ],
+        "governorateId": 351,
+        "lat": 32.656537,
+        "lng": 10.600536,
+        "delegationId": 1524,
+        "hasBoundary": true,
+        "bbox": [
+          10.485971,
+          32.477287,
+          10.693157,
+          32.828647
+        ],
+        "areaKm2": 393.1270263146737,
+        "pickerGroupId": "osm:relation:7143835",
+        "offset": 2070528,
+        "length": 1028
+      },
+      "reviewedCuration": null,
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    },
+    {
+      "id": "osm:relation:7143876",
+      "sourceCode": "535263",
+      "currentOfficialRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5352",
+        "delegationFr": "Tataouine sud",
+        "delegationAr": "تطاوين الجنوبية",
+        "sectorCode": "535263",
+        "sectorFr": "Ras el ouedi",
+        "sectorAr": "رأس الوادي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64325,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3162,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3156
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7143876",
+        "sourceId": "osm",
+        "name": "رأس الوادي",
+        "aliases": [
+          "Ras El Oued"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تطاوين الجنوبية",
+        "contextAliases": [
+          "Délégation Tataouine Sud",
+          "Tataouine Sud",
+          "معتمدية تطاوين الجنوبية"
+        ],
+        "governorateId": 351,
+        "lat": 32.713426,
+        "lng": 10.100541,
+        "delegationId": 624,
+        "hasBoundary": true,
+        "bbox": [
+          9.879862,
+          32.575847,
+          10.344625,
+          32.855837
+        ],
+        "areaKm2": 708.5587393602234,
+        "pickerGroupId": "osm:relation:7143876",
+        "offset": 2130720,
+        "length": 3540
+      },
+      "reviewedCuration": null,
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    },
+    {
+      "id": "osm:relation:7145430",
+      "sourceCode": "515951",
+      "currentOfficialRecord": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5159",
+        "delegationFr": "Nouvelle matmata",
+        "delegationAr": "مطماطة الجديدة",
+        "sectorCode": "515951",
+        "sectorFr": "Nouvelle matmata",
+        "sectorAr": "مطماطة الجديدة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59226,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2905,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2899
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7145430",
+        "sourceId": "osm",
+        "name": "مطماطة الجديدة",
+        "aliases": [
+          "Nouvelle Matmata"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مطماطة الجديدة",
+        "contextAliases": [
+          "Délégation Nouvelle Matmata",
+          "معتمدية مطماطة الجديدة"
+        ],
+        "governorateId": 347,
+        "lat": 33.654405,
+        "lng": 9.980098,
+        "delegationId": 1023,
+        "hasBoundary": true,
+        "bbox": [
+          9.943657,
+          33.571235,
+          10.061625,
+          33.737595
+        ],
+        "areaKm2": 111.7649425377035,
+        "pickerGroupId": "osm:relation:7145430",
+        "offset": 2358032,
+        "length": 2556
+      },
+      "reviewedCuration": null,
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    },
+    {
+      "id": "osm:relation:7145435",
+      "sourceCode": "516064",
+      "currentOfficialRecord": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5161",
+        "delegationFr": "Dkhilet toujen",
+        "delegationAr": "دخيلة توجان",
+        "sectorCode": "516153",
+        "sectorFr": "Ain tounine",
+        "sectorAr": "عين تونين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59838,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2936,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2930
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7145435",
+        "sourceId": "osm",
+        "name": "عين تونين",
+        "aliases": [
+          "Ain Tounine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دخيلة توجان",
+        "contextAliases": [
+          "Dkhilet Toujane",
+          "دخيلة توجان",
+          "معتمدية دخيلة توجان"
+        ],
+        "governorateId": 347,
+        "lat": 33.497545,
+        "lng": 10.136983,
+        "delegationId": 1022,
+        "hasBoundary": true,
+        "bbox": [
+          10.071236,
+          33.461195,
+          10.186193,
+          33.533995
+        ],
+        "areaKm2": 42.341847883866436,
+        "pickerGroupId": "osm:relation:7145435",
+        "offset": 2393164,
+        "length": 6132
+      },
+      "reviewedCuration": {
+        "id": "osm:relation:7145435",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "name:ar": "عين تونين",
+          "ref:tn:codegeo": "516064"
+        },
+        "action": "administrative_context",
+        "parentNames": [
+          "معتمدية دخيلة توجان",
+          "دخيلة توجان",
+          "Dkhilet Toujane"
+        ],
+        "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+        "evidence": [
+          "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=80"
+        ],
+        "unresolved": [
+          "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+        ]
+      },
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    },
+    {
+      "id": "osm:relation:7189408",
+      "sourceCode": "215163",
+      "currentOfficialRecord": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2151",
+        "delegationFr": "Beja nord",
+        "delegationAr": "باجة الشمالية",
+        "sectorCode": "215163",
+        "sectorFr": "El ghraba",
+        "sectorAr": "الغرابة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20264,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 901,
+          "Nombre_de_menages_par_Secteurs.xlsx": 900
+        }
+      },
+      "currentDisplay": {
+        "id": "osm:relation:7189408",
+        "sourceId": "osm",
+        "name": "الغرابة",
+        "aliases": [
+          "El Ghraba"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باجة الشمالية",
+        "contextAliases": [
+          "Béja Nord",
+          "Délégation Béja Nord",
+          "معتمدية باجة الشمالية"
+        ],
+        "governorateId": 356,
+        "lat": 36.89209,
+        "lng": 9.206346,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.142816,
+          36.86225,
+          9.275024,
+          36.92198
+        ],
+        "areaKm2": 41.8043428558259,
+        "pickerGroupId": "osm:relation:7189408",
+        "offset": 4534708,
+        "length": 7956
+      },
+      "reviewedCuration": null,
+      "limitation": "Official registry identifies the administrative sector; containment by its source polygon does not independently identify or certify every named settlement within it."
+    }
+  ],
+  "additionalExactNameSourceIds": [
+    "osm:node:10204325737",
+    "osm:node:10204327795",
+    "osm:node:11493025894",
+    "osm:node:1997440361",
+    "osm:node:3814110946",
+    "osm:node:3830724524",
+    "osm:node:9843640664",
+    "osm:relation:2516832",
+    "osm:way:1394472968",
+    "osm:way:189085992",
+    "osm:way:375936003"
+  ],
+  "extraCurrentElAdbechRow": {
+    "id": "osm:way:189085992",
+    "current": {
+      "id": "osm:way:189085992",
+      "sourceId": "osm",
+      "name": "الأدباش",
+      "aliases": [
+        "El Adbech"
+      ],
+      "kind": "residential",
+      "parentName": "ولاية قابس",
+      "contextAliases": [],
+      "governorateId": 347,
+      "lat": 33.485609,
+      "lng": 10.086235,
+      "delegationId": 1022,
+      "hasBoundary": true,
+      "bbox": [
+        10.083056,
+        33.482979,
+        10.095571,
+        33.488208
+      ],
+      "areaKm2": 0.29550161938013964,
+      "pickerGroupId": "osm:way:189085992",
+      "offset": 5291536,
+      "length": 316
+    },
+    "expectedOriginalTags": {
+      "addr:city": "El Adbech",
+      "landuse": "residential",
+      "name": "El Adbech",
+      "name:ar": "الأدباش",
+      "name:fr": "El Adbech"
+    },
+    "originalGeometrySha256": "0e713d30d888dbe3a02a332292db08dfe54ed383a39fb05a1c28ac389a76c2f9",
+    "packedGeometrySha256": "ea4928df3a3da3b1615392c3379d24859c2ceda0dd1d54d855912b5bc887e202",
+    "independentNearestPrayerSource": 1022
+  },
+  "officialRegistry": {
+    "file": "current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "sources": [
+      {
+        "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+          "ETag": "\"8d1a5c-636842926ae2a\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "9247324",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 9247324,
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sheet": "Population"
+      },
+      {
+        "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+          "ETag": "\"b8855-6433d8623825d\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "755797",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 755797,
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sheet": "Logements"
+      },
+      {
+        "file": "Nombre_de_menages_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+          "ETag": "\"9ea73-6433d95004ce0\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "649843",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 649843,
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sheet": "Ménages"
+      }
+    ]
+  },
+  "primaryAuthoritySources": [
+    {
+      "url": "https://www.inp2020.tn/inventaire/Touslessites.pdf",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\inp-touslessites.pdf",
+      "sha256": "780035dfd174a6f128b01ba2c1be0626e20a28672e2047eaf86b1c7bed5977bc",
+      "bytes": 9070904,
+      "retrievedAt": "2026-09-07T10:44:44.060445+00:00"
+    },
+    {
+      "url": "https://www.dahargmg.info/ar/histoire-de-l-homme/gsour/gsour-de-montagne/gasr-el-jouamaa",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\dahar-ksar-jouamaa.html",
+      "sha256": "7f51b5e71e1409df61937354d6d2a5a9fa4e8cc83047c1491ed323911ab0a832",
+      "bytes": 73613,
+      "retrievedAt": "2026-09-07T10:44:45.258204+00:00"
+    },
+    {
+      "url": "https://www.inp2020.tn/documents/liste_monuments_classes.pdf",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\same-subtitle12-source-stage\\official\\inp-protected-monuments.pdf",
+      "sha256": "835628b1e6d4f049d3ef01fa6fe6fc91ef48a446989469c4b94f907aa37b0119",
+      "bytes": 1698046,
+      "pages": 31
+    }
+  ],
+  "visualEvidence": [
+    {
+      "file": "official/inp-page-1447.png",
+      "sha256": "c71e03f5a62ae19db6fd272d0163d7efab69af36079cffb8836232205cde957e",
+      "pdfPage": 1447,
+      "finding": "INP inventory identifies Tijma site168.014 and Sidi Touati168.015 in Tijma. It has site coordinates and a delimitation flag but no downloadable locality polygon or delegation entry on this page."
+    },
+    {
+      "file": "official/inp-monuments-page-28.png",
+      "sha256": "327b921b792352a43d5e266113dc2b923d3f13fe47933983511f3bff0ab3026a",
+      "pdfPage": 28,
+      "printedPage": 27,
+      "finding": "INP list dated18March2025, row35, writes قصر الجوامع in بني خداش with protection date21January2021. This names the monument; the Dahar project separately distinguishes the village."
+    }
+  ],
+  "phoneEvidence": [
+    {
+      "file": "phone-same-subtitle13-visual-review.json",
+      "sha256": "96b9466305dc966ce505f64f9ced19c0dc2206f2bb2d2bb9cb9d5f2406c275dc",
+      "scope": "Existing visually reviewed public Maps observations only; no new phone/ledger access and no geometry certification."
+    },
+    {
+      "file": "phone-same-subtitle8-followup-visual-review.json",
+      "sha256": "85e93218271a410c0a4e512da9fe9db3a34a1e9f6d81b5d3257b964966c77939",
+      "scope": "Existing visually reviewed public Maps observations only; no new phone/ledger access and no geometry certification."
+    }
+  ],
+  "proposals": [
+    {
+      "schemaVersion": 1,
+      "status": "eligible_proposal",
+      "id": "osm:way:378448709",
+      "targetPickerGroupId": "osm:way:312733902",
+      "expectedExistingMemberIds": [
+        "osm:way:378448709"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:way:312733902",
+        "osm:way:969654331"
+      ],
+      "expectedGovernorateId": 353,
+      "expectedParentName": "ولاية مدنين",
+      "expectedDelegationId": 493,
+      "members": [
+        {
+          "id": "osm:way:312733902",
+          "current": {
+            "id": "osm:way:312733902",
+            "sourceId": "osm",
+            "name": "الطوايشة",
+            "aliases": [
+              "Ettwaycha"
+            ],
+            "kind": "residential",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.638365,
+            "lng": 10.719325,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.716498,
+              33.636195,
+              10.72001,
+              33.640558
+            ],
+            "areaKm2": 0.03389975217948967,
+            "pickerGroupId": "osm:way:312733902",
+            "offset": 5381000,
+            "length": 644
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "originalGeometrySha256": "35e62f74d2814c3a71d1b7c5be956cc35e94c191601adab2d9bef96d0cb9e15c",
+          "packedGeometrySha256": "af0e42c89242de4960a6dc9d2b9c4795b968c91cb7a427e90b126fc25b98e63d",
+          "independentNearestPrayerSource": 493
+        },
+        {
+          "id": "osm:way:378448709",
+          "current": {
+            "id": "osm:way:378448709",
+            "sourceId": "osm",
+            "name": "الطوايشة",
+            "aliases": [
+              "Ettwaycha"
+            ],
+            "kind": "residential",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.637169,
+            "lng": 10.720368,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.719804,
+              33.635944,
+              10.721753,
+              33.638416
+            ],
+            "areaKm2": 0.025973496952857493,
+            "pickerGroupId": "osm:way:378448709",
+            "offset": 5396256,
+            "length": 348
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "الطوايشة",
+            "name:aeb": "الطوايشة",
+            "name:ar": "الطوايشة",
+            "name:en": "Ettwaycha"
+          },
+          "originalGeometrySha256": "8b526a7198d35925174a3e7c876d4171f7b8c73a19cc178259a0817d70824683",
+          "packedGeometrySha256": "36e19ec587288144ff0aadf8729083543742931ed1906f009cefb23035e26708",
+          "independentNearestPrayerSource": 493
+        },
+        {
+          "id": "osm:way:969654331",
+          "current": {
+            "id": "osm:way:969654331",
+            "sourceId": "osm",
+            "name": "Ettwaycha",
+            "aliases": [],
+            "kind": "village",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.6531,
+            "lng": 10.718154,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.698384,
+              33.631547,
+              10.741008,
+              33.676282
+            ],
+            "areaKm2": 13.297017498945184,
+            "pickerGroupId": "osm:way:312733902",
+            "offset": 5448500,
+            "length": 196
+          },
+          "expectedOriginalTags": {
+            "name": "Ettwaycha",
+            "place": "village"
+          },
+          "originalGeometrySha256": "28d0a6b3592d4ac16e9643050a0bde216ee974ff0b8599da12c7f32ea8e80ecc",
+          "packedGeometrySha256": "3a5a875cbd4663b45712f3b3afa48b1a2759ca22a48c569589e1672849fec4d5",
+          "independentNearestPrayerSource": 493
+        }
+      ],
+      "anchorId": "osm:way:969654331",
+      "bilingualNode": {
+        "id": "osm:node:9843640664",
+        "tags": {
+          "name": "الطوايشة",
+          "name:aeb": "الطوايشة",
+          "name:ar": "الطوايشة",
+          "name:fr": "Ettwaycha",
+          "place": "village"
+        },
+        "lat": 33.6368796,
+        "lng": 10.720083,
+        "matchingNameTags": {
+          "name": "الطوايشة",
+          "name:aeb": "الطوايشة",
+          "name:ar": "الطوايشة",
+          "name:fr": "Ettwaycha"
+        }
+      },
+      "nameEvidence": {
+        "arabic": "الطوايشة",
+        "latin": "Ettwaycha",
+        "anchorLatinTag": "name",
+        "nodeArabicTag": "name:ar",
+        "nodeLatinTag": "name:fr",
+        "residentialArabicTag": "name:ar",
+        "residentialLatinTag": "name:en"
+      },
+      "sourceFacts": {
+        "file": "direct-pbf-source-facts.json",
+        "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41"
+      },
+      "change": {
+        "field": "pickerGroupId",
+        "id": "osm:way:378448709",
+        "before": "osm:way:378448709",
+        "after": "osm:way:312733902"
+      },
+      "limits": [
+        "A display identity grouping, not an official or certified village boundary.",
+        "Keep all three IDs, names, aliases, coordinates, defaults and polygon bytes unchanged.",
+        "Keep governorate-only parent context: village footprint crosses Bou Ghrara525260 and El Jorf525954 source sectors.",
+        "The bilingual source village node is already absorbed; do not add or remove any raw catalog point.",
+        "Do not apply this relation transitively to another nearby name or automatically expand the exact group inventory."
+      ]
+    }
+  ],
+  "preservation": "Research and proposal only. No repository, app, tests, builds, phone or ledger changes. All other candidates remain held; disjoint geometry alone is not proof of separate homonyms."
+}

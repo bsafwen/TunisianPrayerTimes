@@ -1,0 +1,313 @@
+{
+  "status": "PASS_NO_ACTIONABLE_CODE_OR_PROOF_FINDING_BEFORE_GENERATION",
+  "generator": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\generate_neighborhoods.py",
+    "sha256": "6700d8a64d869464afa639d296a44f70cdc84de28a85cfd54da2df2eaae50d70",
+    "bytes": 159907
+  },
+  "installedGenerator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "7fb28baff58e5d6134dc19d62646d145987078fb96be20cdf008d15ee28c689c",
+    "bytes": 145538
+  },
+  "diff": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-choice-generator-review.diff",
+    "sha256": "3193706bd8228cac72cd754f11bc8484d1fcd361afde23b8b2e1fb6d31a06792",
+    "bytes": 17333
+  },
+  "stagePreparation": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-choice-stage-preparation.json",
+    "sha256": "b03985d407d831c154bb5e097dc9b1ddb1d1d652bf10105b551564b9b41a73b1",
+    "bytes": 7451
+  },
+  "rootSourceCoverageAcceptance": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\chenini-two-source-and-coverage-acceptance.json",
+    "sha256": "1e1b444a61bdbc434499b54d20202fc564b058bb65756d2c4b83e71b72eea51b",
+    "bytes": 8442
+  },
+  "reviewedFunctions": {
+    "added": [
+      "load_reviewed_point_retentions",
+      "verify_reviewed_point_choices"
+    ],
+    "changed": [
+      "build",
+      "load_catalog_curation"
+    ],
+    "removed": []
+  },
+  "verifiedStagePins": [
+    {
+      "file": "catalog-curation.json",
+      "sha256": "bafc2c095170a1e6c05811e9ce8032fef3f0d19780bfd8d311f6a1a10ea5127a"
+    },
+    {
+      "file": "reviewed-boundaries.json",
+      "sha256": "eeb294f37af2c5b1f7c581b0bf7fc8a097b87976a183b762ffeb81b97f3fe7d3"
+    },
+    {
+      "file": "reviewed-picker-groups.json",
+      "sha256": "99b6a8c888ad0a70f0721ffa7b22bbe3d8e69dd802179d61a2eed94d2520a17e"
+    },
+    {
+      "file": "official/accepted33-whole-imada-scope-review.json",
+      "sha256": "9e5ec97aaef26e7373870dd4d41f3631e5455e454ec346518b99960d953a7d71"
+    },
+    {
+      "file": "point-retention-reviews/chenini-saved-point-retention-review.json",
+      "sha256": "bb47133ab6690be51508a21e375e1fa627284b04697aaeb6d67cf10fc0c5fa36"
+    },
+    {
+      "file": "official/chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d"
+    }
+  ],
+  "verifiedSourceEvidencePins": [
+    {
+      "file": "point-retention-reviews/before-catalog-curation.json",
+      "sha256": "f8d29f98f781266c4b94656cc02a589a59727a20de7c18277c2abeee6df00866",
+      "bytes": 184578
+    },
+    {
+      "file": "point-retention-reviews/before-neighborhoods.bin",
+      "sha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+      "bytes": 5496428
+    },
+    {
+      "file": "point-retention-reviews/before-neighborhoods.json",
+      "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+      "bytes": 1839172
+    },
+    {
+      "file": "point-retention-reviews/chenini-context-name-independent-review.json",
+      "sha256": "4afd2a6e337abc91ff30660b333f07b930c5c87145c571b3fda9768bc3ed124f",
+      "bytes": 14059
+    },
+    {
+      "file": "point-retention-reviews/chenini-eastern-name-only-addendum.json",
+      "sha256": "57fc874ac6198d55a59367e1b9e8c3f1e4ce4d689bf5f242888b5dedeb4caa7a",
+      "bytes": 23382
+    },
+    {
+      "file": "point-retention-reviews/chenini-exact-node-context-source-proof.json",
+      "sha256": "ab1461afe3044aec5c7ef66f4ee62c978e9c1664ce50f50b4bf20efb7f431a1b",
+      "bytes": 51459
+    },
+    {
+      "file": "point-retention-reviews/chenini-saved-point-retention-review.json",
+      "sha256": "bb47133ab6690be51508a21e375e1fa627284b04697aaeb6d67cf10fc0c5fa36",
+      "bytes": 13157
+    },
+    {
+      "file": "point-retention-reviews/chenini-two-sector-candidate-readiness.json",
+      "sha256": "681038666dd2e5fd62b9edb18bca2278f26257375c059e63f55757ee7af108ae",
+      "bytes": 41761
+    },
+    {
+      "file": "point-retention-reviews/chenini.pdf",
+      "sha256": "6de89fef69504d0be66d75e07cacc9b4c135b2fffa64ff1bb9d74fb74ac8f4f5",
+      "bytes": 830972
+    },
+    {
+      "file": "point-retention-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    {
+      "file": "point-retention-reviews/decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "bytes": 10636520
+    },
+    {
+      "file": "point-retention-reviews/fresh-pbf-area-facts.json",
+      "sha256": "44e892d4404e9262117ef30ae0cdaaef6c49e62b42bb2321092b27b6d5782cef",
+      "bytes": 105674
+    },
+    {
+      "file": "point-retention-reviews/fresh-pbf-identity-facts.json",
+      "sha256": "a5a0257054959568f6e509b54172c3190cb3007399655e7836febd0ce45df8a7",
+      "bytes": 13618
+    },
+    {
+      "file": "point-retention-reviews/gmg-chenini-village.html",
+      "sha256": "53ff898e44d47f3e402a1fa63378c0f0d38d23c0171373811f25615c3ab1e07c",
+      "bytes": 87477
+    },
+    {
+      "file": "point-retention-reviews/gmg-oil-mills.html",
+      "sha256": "515d0aa660f237b43fed34142ecbc1abec72197fe215922fdd6a64f9e9865e06",
+      "bytes": 92624
+    },
+    {
+      "file": "point-retention-reviews/ira-ird-chenini-2018.pdf",
+      "sha256": "8a9d3350aa878ed3e6f1750f146f42c6db10e0f59631f71313a2460603cbf164",
+      "bytes": 1126867
+    },
+    {
+      "file": "point-retention-reviews/new-chenini.pdf",
+      "sha256": "c91ebd050f74d8a97dbe38a2a69cfe505ba92166f1918c3a5b300d2ee74355cb",
+      "bytes": 1172254
+    },
+    {
+      "file": "point-retention-reviews/original-two-sector-source-geometries.json",
+      "sha256": "c1ad42c37e53d74fac8272447909695b28fe5f836a6a0c347e6d5bc3bcd74eb7",
+      "bytes": 27352
+    },
+    {
+      "file": "point-retention-reviews/superseded-west-context-proof.json",
+      "sha256": "1a91de46e8df006525b4b7ce2a82cb040c768be0d2d4ca1c023623c18141cc11",
+      "bytes": 53299
+    }
+  ],
+  "verifiedProofDependencies": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\chenini-two-sector-candidate-readiness.json",
+      "sha256": "681038666dd2e5fd62b9edb18bca2278f26257375c059e63f55757ee7af108ae",
+      "bytes": 41761
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\before-neighborhoods.json",
+      "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+      "bytes": 1839172
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\before-neighborhoods.bin",
+      "sha256": "fcde8ed3db5ffc54736cb64d881a01e90715e9af843b28984e485d998651d850",
+      "bytes": 5496428
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\original-two-sector-source-geometries.json",
+      "sha256": "c1ad42c37e53d74fac8272447909695b28fe5f836a6a0c347e6d5bc3bcd74eb7",
+      "bytes": 27352
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\official\\chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "bytes": 109094
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\fresh-pbf-identity-facts.json",
+      "sha256": "a5a0257054959568f6e509b54172c3190cb3007399655e7836febd0ce45df8a7",
+      "bytes": 13618
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\chenini-exact-node-context-source-proof.json",
+      "sha256": "ab1461afe3044aec5c7ef66f4ee62c978e9c1664ce50f50b4bf20efb7f431a1b",
+      "bytes": 51459
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\ira-ird-chenini-2018.pdf",
+      "sha256": "8a9d3350aa878ed3e6f1750f146f42c6db10e0f59631f71313a2460603cbf164",
+      "bytes": 1126867
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\gmg-chenini-village.html",
+      "sha256": "53ff898e44d47f3e402a1fa63378c0f0d38d23c0171373811f25615c3ab1e07c",
+      "bytes": 87477
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\gmg-oil-mills.html",
+      "sha256": "515d0aa660f237b43fed34142ecbc1abec72197fe215922fdd6a64f9e9865e06",
+      "bytes": 92624
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\chenini-eastern-name-only-addendum.json",
+      "sha256": "57fc874ac6198d55a59367e1b9e8c3f1e4ce4d689bf5f242888b5dedeb4caa7a",
+      "bytes": 23382
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\chenini-context-name-independent-review.json",
+      "sha256": "4afd2a6e337abc91ff30660b333f07b930c5c87145c571b3fda9768bc3ed124f",
+      "bytes": 14059
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\fresh-pbf-area-facts.json",
+      "sha256": "44e892d4404e9262117ef30ae0cdaaef6c49e62b42bb2321092b27b6d5782cef",
+      "bytes": 105674
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "bytes": 10636520
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\chenini.pdf",
+      "sha256": "6de89fef69504d0be66d75e07cacc9b4c135b2fffa64ff1bb9d74fb74ac8f4f5",
+      "bytes": 830972
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\new-chenini.pdf",
+      "sha256": "c91ebd050f74d8a97dbe38a2a69cfe505ba92166f1918c3a5b300d2ee74355cb",
+      "bytes": 1172254
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\superseded-west-context-proof.json",
+      "sha256": "1a91de46e8df006525b4b7ce2a82cb040c768be0d2d4ca1c023623c18141cc11",
+      "bytes": 53299
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\point-retention-reviews\\before-catalog-curation.json",
+      "sha256": "f8d29f98f781266c4b94656cc02a589a59727a20de7c18277c2abeee6df00866",
+      "bytes": 184578
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\chenini-two-choice-stage\\scripts\\neighborhoods\\locality-context-reviews\\chenini-west-context-proof.json",
+      "sha256": "1a91de46e8df006525b4b7ce2a82cb040c768be0d2d4ca1c023623c18141cc11",
+      "bytes": 53299
+    }
+  ],
+  "manifestDelta": {
+    "oldCurationCount": 111,
+    "newCurationCount": 114,
+    "other110DecisionsExact": true,
+    "supersededWestContextExact": true,
+    "newDecisionIds": [
+      "osm:node:1975899618",
+      "osm:relation:7143823",
+      "osm:relation:7143881"
+    ],
+    "oldBoundarySourceRecordsRetained": 32,
+    "newBoundaryRecords": 34,
+    "old31WholeScopeRecordsExact": true,
+    "newWholeScopeRecords": 33,
+    "aggregateScopeReferenceUnchanged": true,
+    "94BaseAnd4LocalGroupManifestByteIdentical": true
+  },
+  "findings": [],
+  "reviewConclusions": [
+    "The only preserved+renamed point exception requires a byte-pinned pointRetentionReview; all other curation-name action restrictions remain.",
+    "The loader checks untouched PBF checksum/tags/coordinates and original geometry, before metadata and packed slices, explicit choice/counterpart IDs, unique official code/name/parent, imported provider and full/packed geometry hashes, and point containment in both imported original and quantized footprints.",
+    "Manual reference construction still computes min(distance, source ID) over usable sources. The review expected624 is a postcondition, not a forced metadata assignment. Original dual-containment guard is unchanged.",
+    "Both source village IDs survive same-name polygon matching because preserve_point remains active. The eastern generic historical aliases are retained on the point and do not propagate to the newly named sector, preventing sector alias bridging.",
+    "Final verification occurs after all automatic and reviewed grouping and active locality-context changes; it checks exact two-member groups, point kind/source/coordinates, canonical manualPointId, actual delegation624, both names, parent subtitle and governorate.",
+    "The west supersession is independently pinned to the exact previous locality_context rule and its unchanged source proof; other110 curation rules are structurally identical.",
+    "No Kotlin changes are needed for raw saved IDs: retained nodes remain present and canonical sectors obtain the reviewed manual point. Actual generated slices, contexts, metadata and runtime-equivalent fix lookup still need the pending data audit."
+  ],
+  "evidenceRoleClarification": {
+    "file": "point-retention-reviews/fresh-pbf-area-facts.json",
+    "sha256": "44e892d4404e9262117ef30ae0cdaaef6c49e62b42bb2321092b27b6d5782cef",
+    "role": "Exact fresh parent delegation7143863/code5352 source facts. The incidental Masreb7143878/code535261 row is not Chenini sector evidence.",
+    "actualCheniniGeometryEvidence": [
+      "original-two-sector-source-geometries.json c1ad42c3...",
+      "official/chenini-two-sector-candidate-readiness.geojson f016c2cc..."
+    ],
+    "resolvedWithAuthor": true
+  },
+  "scopeLimits": [
+    "Static implementation and actual frozen proof/config audit only; the generator was not executed.",
+    "No claim about the upcoming generated metadata delta or final installed bytes is made yet.",
+    "Root separately accepts source disagreement suppression; this code review does not turn the region into a seamless partition."
+  ],
+  "operations": {
+    "generatorRuns": 0,
+    "appWrites": 0,
+    "phoneActions": 0,
+    "tests": 0,
+    "builds": 0
+  }
+}

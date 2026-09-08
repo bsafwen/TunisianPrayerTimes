@@ -1,0 +1,584 @@
+{
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "689cbf3993f7fa01297dc1ee2f2f70f46d75fa8ff41e901441de0a051a3adb38"
+  },
+  "geometry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "546163335db91ad6b2b2616c2dc2cce63fab2c2f59631bff2b9cbd6ae4d5ebea"
+  },
+  "governors": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+    "sha256": "20cdb11ccc5eb4f4eb07198b222a16bd1f5493224487185e6f3a6cf593857084"
+  },
+  "cachedExtraction": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "registry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "records": [
+    {
+      "baseId": 422,
+      "base": {
+        "id": 422,
+        "nomFr": "Sidi Bou Rouis",
+        "nomAr": "بورويس",
+        "nomEn": "Sidi Bou Rouis",
+        "lat": 36.1772,
+        "lng": 9.1262
+      },
+      "governorate": {
+        "id": 344,
+        "nomAr": "سليانة",
+        "nomFr": "Siliana"
+      },
+      "currentResidential": {
+        "id": "osm:way:191084856",
+        "sourceId": "osm",
+        "name": "سيدي بورويس",
+        "aliases": [
+          "Sidi Bou Rouis"
+        ],
+        "kind": "residential",
+        "parentName": "بورويس الشمالية",
+        "contextAliases": [
+          "Bourouis Nord",
+          "Délégation Sidi Bourouis",
+          "Sidi Bourouis",
+          "بورويس الشمالية",
+          "معتمدية سيدي بورويس"
+        ],
+        "governorateId": 344,
+        "lat": 36.176898,
+        "lng": 9.12591,
+        "delegationId": 422,
+        "hasBoundary": true,
+        "bbox": [
+          9.115156,
+          36.170299,
+          9.135389,
+          36.183445
+        ],
+        "areaKm2": 1.3123465839668453,
+        "pickerGroupId": "osm:way:191084856",
+        "offset": 5300076,
+        "length": 1108
+      },
+      "originalResidentialTags": {
+        "addr:city": "Sidi Bourouis",
+        "addr:country": "TN",
+        "addr:governorate": "Siliana",
+        "addr:postcode": "6113",
+        "landuse": "residential",
+        "name": "سيدي بورويس",
+        "name:ar": "سيدي بورويس",
+        "name:en": "Sidi Bou Rouis",
+        "name:fr": "Sidi Bou Rouis",
+        "population": "3700",
+        "wikipedia": "fr:Sidi Bou Rouis"
+      },
+      "originalGeometrySha256": "b54d929958dafe6dd71881c84f632260f8eacd634c024ed66e75a52d359af376",
+      "packedGeometrySha256": "2e8093244efdd063ed96a219af370d0df1c69096315b5edbe1d5c03c46815c2a",
+      "absorbedSourceSettlement": {
+        "id": "osm:node:2016708619",
+        "tags": {
+          "addr:city": "Sidi Bourouis",
+          "addr:governorate": "Siliana",
+          "addr:postcode": "6113",
+          "name": "سيدي بورويس",
+          "name:ar": "سيدي بورويس",
+          "name:en": "Sidi Bou Rouis",
+          "name:fr": "Sidi Bou Rouis",
+          "place": "village",
+          "population": "3700",
+          "wikidata": "Q3123769",
+          "wikipedia": "fr:Sidi Bou Rouis"
+        },
+        "lat": 36.1770871,
+        "lng": 9.1256499
+      },
+      "sourceNodeAbsentCurrentRaw": true,
+      "currentRawGroupMembers": [
+        "osm:way:191084856"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:422"
+      ],
+      "exactOriginalNamePeerInventory": [
+        {
+          "id": "osm:way:191084856",
+          "tags": {
+            "addr:city": "Sidi Bourouis",
+            "addr:country": "TN",
+            "addr:governorate": "Siliana",
+            "addr:postcode": "6113",
+            "landuse": "residential",
+            "name": "سيدي بورويس",
+            "name:ar": "سيدي بورويس",
+            "name:en": "Sidi Bou Rouis",
+            "name:fr": "Sidi Bou Rouis",
+            "population": "3700",
+            "wikipedia": "fr:Sidi Bou Rouis"
+          },
+          "kind": "residential"
+        },
+        {
+          "id": "osm:node:2016708619",
+          "tags": {
+            "addr:city": "Sidi Bourouis",
+            "addr:governorate": "Siliana",
+            "addr:postcode": "6113",
+            "name": "سيدي بورويس",
+            "name:ar": "سيدي بورويس",
+            "name:en": "Sidi Bou Rouis",
+            "name:fr": "Sidi Bou Rouis",
+            "place": "village",
+            "population": "3700",
+            "wikidata": "Q3123769",
+            "wikipedia": "fr:Sidi Bou Rouis"
+          },
+          "kind": "village"
+        }
+      ],
+      "baseAndSettlementChecks": {
+        "legacyBase": {
+          "lat": 36.1772,
+          "lng": 9.1262,
+          "nativeContains": true,
+          "packedContains": true,
+          "distanceToNativeBoundaryM": 209.76493331913878,
+          "distanceToPackedBoundaryM": 209.77007178348498,
+          "currentContainingSectorIds": [
+            "osm:relation:7126146"
+          ]
+        },
+        "absorbedSettlement": {
+          "lat": 36.1770871,
+          "lng": 9.1256499,
+          "nativeContains": true,
+          "packedContains": true,
+          "distanceToNativeBoundaryM": 192.57927816576205,
+          "distanceToPackedBoundaryM": 192.59093725717617,
+          "currentContainingSectorIds": [
+            "osm:relation:7126146"
+          ]
+        }
+      },
+      "sameStoredPrayerSourceAtThreeReferences": 422,
+      "currentOfficialDelegationCode": "2456",
+      "officialSectorInventory": [
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2456",
+          "delegationFr": "Bourouis",
+          "delegationAr": "بورويس",
+          "sectorCode": "245651",
+          "sectorFr": "Bourouis nord",
+          "sectorAr": "بورويس الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30735,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1444,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1443
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2456",
+          "delegationFr": "Bourouis",
+          "delegationAr": "بورويس",
+          "sectorCode": "245652",
+          "sectorFr": "Bourouis sud",
+          "sectorAr": "بورويس الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30769,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1446,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1445
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2456",
+          "delegationFr": "Bourouis",
+          "delegationAr": "بورويس",
+          "sectorCode": "245653",
+          "sectorFr": "Ettricha",
+          "sectorAr": "التريشة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30803,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1448,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1447
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2456",
+          "delegationFr": "Bourouis",
+          "delegationAr": "بورويس",
+          "sectorCode": "245654",
+          "sectorFr": "El abbassi",
+          "sectorAr": "العباسي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30837,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1450,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1449
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2456",
+          "delegationFr": "Bourouis",
+          "delegationAr": "بورويس",
+          "sectorCode": "245655",
+          "sectorFr": "Ain achour",
+          "sectorAr": "عين عاشور",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30871,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1452,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1451
+          }
+        },
+        {
+          "governorateCode": "24",
+          "governorateFr": "Siliana",
+          "governorateAr": "سليانة",
+          "delegationCode": "2456",
+          "delegationFr": "Bourouis",
+          "delegationAr": "بورويس",
+          "sectorCode": "245656",
+          "sectorFr": "El krib gare",
+          "sectorAr": "محطة الكريب",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 30905,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1454,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1453
+          }
+        }
+      ],
+      "currentSectorPolygonIds": [
+        "osm:relation:7126144",
+        "osm:relation:7126145",
+        "osm:relation:7126146",
+        "osm:relation:7126147",
+        "osm:relation:7126148",
+        "osm:relation:7126149"
+      ],
+      "residentialIntersectionsWithOwnDelegationSectors": [
+        {
+          "id": "osm:relation:7126146",
+          "code": "245651",
+          "name": "بورويس الشمالية",
+          "areaM2": 1308594.8497101185,
+          "fractionResidentialArea": 1.0,
+          "containsWholeResidential": true,
+          "groupId": "osm:relation:7126146",
+          "default": 422
+        }
+      ],
+      "coordinateReferencePreviouslyReviewed": false
+    },
+    {
+      "baseId": 585,
+      "base": {
+        "id": 585,
+        "nomFr": "Jerissa",
+        "nomAr": "الجريسة",
+        "nomEn": "Jerissa",
+        "lat": 35.8466,
+        "lng": 8.6353
+      },
+      "governorate": {
+        "id": 363,
+        "nomAr": "الكاف",
+        "nomFr": "Le kef"
+      },
+      "currentResidential": {
+        "id": "osm:way:179549823",
+        "sourceId": "osm",
+        "name": "الجريصة",
+        "aliases": [
+          "Jerissa",
+          "Jérissa",
+          "Джериса"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية الجريصة",
+        "contextAliases": [
+          "Délégation Djérissa",
+          "معتمدية الجريصة"
+        ],
+        "governorateId": 363,
+        "lat": 35.845263,
+        "lng": 8.637432,
+        "delegationId": 585,
+        "hasBoundary": true,
+        "bbox": [
+          8.616681,
+          35.836246,
+          8.654295,
+          35.854215
+        ],
+        "areaKm2": 3.058875260709983,
+        "pickerGroupId": "osm:way:179549823",
+        "offset": 5270936,
+        "length": 340
+      },
+      "originalResidentialTags": {
+        "landuse": "residential",
+        "name": "الجريصة",
+        "name:ar": "الجريصة",
+        "name:ca": "Jerissa",
+        "name:en": "Jérissa",
+        "name:fr": "Jérissa"
+      },
+      "originalGeometrySha256": "4e9360572925f469ebceb787e5d4c3aa9f61a3c941b06354552becf3abeceaa4",
+      "packedGeometrySha256": "33ad97f77875419ddd4958c6de6ed997a6078f804d82d5aa1121467bad8bb652",
+      "absorbedSourceSettlement": {
+        "id": "osm:node:1899219943",
+        "tags": {
+          "name": "الجريصة",
+          "name:ar": "الجريصة",
+          "name:en": "Jérissa",
+          "name:fr": "Jérissa",
+          "name:ru": "Джериса",
+          "place": "town",
+          "population": "11298",
+          "population:date": "2004",
+          "wikidata": "Q2717622",
+          "wikimedia_commons": "Category:Jerissa",
+          "wikipedia": "ar:الجريصة",
+          "wikipedia:ar": "الجريصة"
+        },
+        "lat": 35.8450091,
+        "lng": 8.6310155
+      },
+      "sourceNodeAbsentCurrentRaw": true,
+      "currentRawGroupMembers": [
+        "osm:way:179549823"
+      ],
+      "currentBaseGroupMembers": [
+        "delegation:585"
+      ],
+      "exactOriginalNamePeerInventory": [
+        {
+          "id": "osm:way:179549823",
+          "tags": {
+            "landuse": "residential",
+            "name": "الجريصة",
+            "name:ar": "الجريصة",
+            "name:ca": "Jerissa",
+            "name:en": "Jérissa",
+            "name:fr": "Jérissa"
+          },
+          "kind": "residential"
+        },
+        {
+          "id": "osm:node:1899219943",
+          "tags": {
+            "name": "الجريصة",
+            "name:ar": "الجريصة",
+            "name:en": "Jérissa",
+            "name:fr": "Jérissa",
+            "name:ru": "Джериса",
+            "place": "town",
+            "population": "11298",
+            "population:date": "2004",
+            "wikidata": "Q2717622",
+            "wikimedia_commons": "Category:Jerissa",
+            "wikipedia": "ar:الجريصة",
+            "wikipedia:ar": "الجريصة"
+          },
+          "kind": "town"
+        }
+      ],
+      "baseAndSettlementChecks": {
+        "legacyBase": {
+          "lat": 35.8466,
+          "lng": 8.6353,
+          "nativeContains": false,
+          "packedContains": false,
+          "distanceToNativeBoundaryM": 17.423386295770896,
+          "distanceToPackedBoundaryM": 17.43796173283625,
+          "currentContainingSectorIds": [
+            "osm:relation:7140825"
+          ]
+        },
+        "absorbedSettlement": {
+          "lat": 35.8450091,
+          "lng": 8.6310155,
+          "nativeContains": true,
+          "packedContains": true,
+          "distanceToNativeBoundaryM": 181.2696365927134,
+          "distanceToPackedBoundaryM": 181.24109967528003,
+          "currentContainingSectorIds": [
+            "osm:relation:7140826"
+          ]
+        }
+      },
+      "sameStoredPrayerSourceAtThreeReferences": 585,
+      "currentOfficialDelegationCode": "2358",
+      "officialSectorInventory": [
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2358",
+          "delegationFr": "Djerissa",
+          "delegationAr": "الجريصة",
+          "sectorCode": "235851",
+          "sectorFr": "Djerissa centre",
+          "sectorAr": "الجريصة المركزية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28321,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1324,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1323
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2358",
+          "delegationFr": "Djerissa",
+          "delegationAr": "الجريصة",
+          "sectorCode": "235852",
+          "sectorFr": "Djerissa nord",
+          "sectorAr": "الجريصة الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28355,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1326,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1325
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2358",
+          "delegationFr": "Djerissa",
+          "delegationAr": "الجريصة",
+          "sectorCode": "235853",
+          "sectorFr": "Djerissa sud",
+          "sectorAr": "الجريصة الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28389,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1328,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1327
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2358",
+          "delegationFr": "Djerissa",
+          "delegationAr": "الجريصة",
+          "sectorCode": "235854",
+          "sectorFr": "Besseriana",
+          "sectorAr": "بسريانة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28423,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1330,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1329
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2358",
+          "delegationFr": "Djerissa",
+          "delegationAr": "الجريصة",
+          "sectorCode": "235855",
+          "sectorFr": "Fej ettameur",
+          "sectorAr": "فج التمر",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28457,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1331,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1330
+          }
+        },
+        {
+          "governorateCode": "23",
+          "governorateFr": "Le kef",
+          "governorateAr": "الكاف",
+          "delegationCode": "2358",
+          "delegationFr": "Djerissa",
+          "delegationAr": "الجريصة",
+          "sectorCode": "235856",
+          "sectorFr": "Ennaayem",
+          "sectorAr": "النعايم",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 28491,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1333,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1332
+          }
+        }
+      ],
+      "currentSectorPolygonIds": [
+        "osm:relation:7140824",
+        "osm:relation:7140825",
+        "osm:relation:7140826",
+        "osm:relation:7140827",
+        "osm:relation:7140828",
+        "osm:relation:7140829"
+      ],
+      "residentialIntersectionsWithOwnDelegationSectors": [
+        {
+          "id": "osm:relation:7140824",
+          "code": "235853",
+          "name": "الجريصة الجنوبية",
+          "areaM2": 930765.5482010129,
+          "fractionResidentialArea": 0.3051501756933142,
+          "containsWholeResidential": false,
+          "groupId": "osm:relation:7140824",
+          "default": 585
+        },
+        {
+          "id": "osm:relation:7140825",
+          "code": "235852",
+          "name": "الجريصة الشمالية",
+          "areaM2": 1013749.0109224231,
+          "fractionResidentialArea": 0.3323744071383787,
+          "containsWholeResidential": false,
+          "groupId": "osm:relation:7140825",
+          "default": 585
+        },
+        {
+          "id": "osm:relation:7140826",
+          "code": "235851",
+          "name": "الجريصة المركزية",
+          "areaM2": 924253.1288830506,
+          "fractionResidentialArea": 0.3030327749071631,
+          "containsWholeResidential": false,
+          "groupId": "osm:relation:7140826",
+          "default": 585
+        },
+        {
+          "id": "osm:relation:7140829",
+          "code": "235855",
+          "name": "فج التمر",
+          "areaM2": 181291.47948553937,
+          "fractionResidentialArea": 0.05944264226111235,
+          "containsWholeResidential": false,
+          "groupId": "osm:relation:7140829",
+          "default": 585
+        }
+      ],
+      "coordinateReferencePreviouslyReviewed": false
+    }
+  ],
+  "qualification": "Existing byte-pinned extraction and current catalog only; no new PBF or public OSM scan. Source-node absence and metadata aliases are consistent with existing name-based absorption; no new raw node is proposed."
+}
