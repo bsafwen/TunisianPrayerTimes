@@ -11,14 +11,29 @@ object PrayerTimesRepository {
     private const val TAG = "PrayerTimesRepository"
 
     /**
-     * Returns true if a CSV file exists for the given delegation, year, and month.
+     * Returns true when every day in the month has usable prayer times.
+     * Some source files contain only day numbers and empty time columns; their
+     * presence must not make a delegation eligible for automatic selection.
      */
     fun hasPrayerData(context: Context, delegationId: Int, year: Int, month: Int): Boolean {
-        val path = "csv/$delegationId/$year/${String.format(Locale.US, "%02d", month)}.csv"
-        return try {
-            context.assets.open(path).use { true }
-        } catch (_: Exception) {
-            false
+        if (year <= 0 || month !in 1..12) return false
+        val daysInMonth = java.util.GregorianCalendar(year, month - 1, 1)
+            .getActualMaximum(java.util.Calendar.DAY_OF_MONTH)
+        val days = loadPrayerTimes(context, delegationId, year, month)
+        if (days.size != daysInMonth) return false
+        return days.withIndex().all { (index, day) ->
+            val times = listOf(
+                day.fajr.hour to day.fajr.minute,
+                day.shurukHour to day.shurukMinute,
+                day.dhuhr.hour to day.dhuhr.minute,
+                day.asr.hour to day.asr.minute,
+                day.maghrib.hour to day.maghrib.minute,
+                day.isha.hour to day.isha.minute,
+            )
+            day.day == index + 1 &&
+                times.all { (hour, minute) -> hour in 0..23 && minute in 0..59 } &&
+                times.map { (hour, minute) -> hour * 60 + minute }
+                    .zipWithNext().all { (earlier, later) -> earlier < later }
         }
     }
 

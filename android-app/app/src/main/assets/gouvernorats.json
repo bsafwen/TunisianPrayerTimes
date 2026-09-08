@@ -25,7 +25,7 @@
         {
           "id": 388,
           "nomFr": "La Goulette",
-          "nomAr": "حلق الواد",
+          "nomAr": "حلق الوادي",
           "nomEn": "Goulette",
           "lat": 36.8181,
           "lng": 10.305
@@ -271,16 +271,16 @@
           "nomFr": "Rouhia",
           "nomAr": "الروحية",
           "nomEn": "Rouhia",
-          "lat": 35.6978,
-          "lng": 9.1456
+          "lat": 35.651431,
+          "lng": 9.0563411
         },
         {
           "id": 417,
           "nomFr": "Bargou",
           "nomAr": "برقو",
           "nomEn": "Bargou",
-          "lat": 36.09,
-          "lng": 9.53
+          "lat": 36.0914446,
+          "lng": 9.5667337
         },
         {
           "id": 418,
@@ -433,8 +433,8 @@
           "nomFr": "Rejiche",
           "nomAr": "الرجيش",
           "nomEn": "Rejiche",
-          "lat": 35.4621,
-          "lng": 11.0132
+          "lat": 35.4655214,
+          "lng": 11.0416985
         }
       ],
       "lat": 35.5047,
@@ -459,16 +459,16 @@
           "nomFr": "Ghannouch",
           "nomAr": "غنوش",
           "nomEn": "Ghannouch",
-          "lat": 33.92,
-          "lng": 10.06
+          "lat": 33.939816,
+          "lng": 10.0650345
         },
         {
           "id": 1020,
           "nomFr": "Mareth",
           "nomAr": "مارث",
           "nomEn": "Mareth",
-          "lat": 33.63,
-          "lng": 10.24
+          "lat": 33.617159,
+          "lng": 10.2882317
         },
         {
           "id": 1021,
@@ -483,13 +483,13 @@
           "nomFr": "Matmata",
           "nomAr": "مطماطا",
           "nomEn": "Matmata",
-          "lat": 33.4552,
-          "lng": 9.7679
+          "lat": 33.5457377,
+          "lng": 9.9671116
         },
         {
           "id": 1023,
           "nomFr": "Matmata Nouvelle",
-          "nomAr": "مطماطا الجديدة",
+          "nomAr": "مطماطة الجديدة",
           "nomEn": "Matmata Nouvelle",
           "lat": 33.67,
           "lng": 9.99
@@ -499,8 +499,8 @@
           "nomFr": "El Hamma",
           "nomAr": "الحامة",
           "nomEn": "El Hamma",
-          "lat": 33.89,
-          "lng": 9.75
+          "lat": 33.8894378,
+          "lng": 9.7997111
         },
         {
           "id": 1025,
@@ -533,8 +533,8 @@
           "nomFr": "Enfida",
           "nomAr": "النفيضة",
           "nomEn": "Enfida",
-          "lat": 36.16,
-          "lng": 10.39
+          "lat": 36.1341194,
+          "lng": 10.3779916
         },
         {
           "id": 435,
@@ -549,8 +549,8 @@
           "nomFr": "Sidi Bouali",
           "nomAr": "سيدي بوعلي",
           "nomEn": "Sidi Bouali",
-          "lat": 35.95,
-          "lng": 10.5
+          "lat": 35.9563486,
+          "lng": 10.470397
         },
         {
           "id": 437,
@@ -605,8 +605,8 @@
           "nomFr": "Kalaa Seghira",
           "nomAr": "القلعة الصغيرة",
           "nomEn": "Kalaa Seghira",
-          "lat": 35.805,
-          "lng": 10.575
+          "lat": 35.8241499,
+          "lng": 10.5610794
         },
         {
           "id": 621,
@@ -849,8 +849,8 @@
           "nomFr": "Hammam Ghezaz",
           "nomAr": "حمام الغزاز",
           "nomEn": "Hammam Ghezaz",
-          "lat": 36.9402,
-          "lng": 11.0599
+          "lat": 36.873986,
+          "lng": 11.1082328
         },
         {
           "id": 623,
@@ -981,8 +981,8 @@
           "nomFr": "Tameghza",
           "nomAr": "تمغزة",
           "nomEn": "Tameghza",
-          "lat": 34.2087,
-          "lng": 7.9157
+          "lat": 34.3863938,
+          "lng": 7.9334946
         },
         {
           "id": 481,
@@ -1015,8 +1015,8 @@
           "nomFr": "Ben Guerdene",
           "nomAr": "بن قردان",
           "nomEn": "Ben Guerdene",
-          "lat": 33.17,
-          "lng": 11.22
+          "lat": 33.1403223,
+          "lng": 11.2170109
         },
         {
           "id": 489,
@@ -1121,16 +1121,16 @@
           "nomFr": "Bou Salem",
           "nomAr": "بوسالم",
           "nomEn": "Bou Salem",
-          "lat": 36.5673,
-          "lng": 8.9671
+          "lat": 36.607408,
+          "lng": 8.9696535
         },
         {
           "id": 500,
           "nomFr": "Oued Mliz",
           "nomAr": "واد مليز",
           "nomEn": "Oued Mliz",
-          "lat": 36.4539,
-          "lng": 8.5501
+          "lat": 36.4678121,
+          "lng": 8.5500007
         },
         {
           "id": 501,
@@ -1227,8 +1227,8 @@
           "nomFr": "Menzel Bouzayane",
           "nomAr": "منزل بو زيان",
           "nomEn": "Menzel Bouzayane",
-          "lat": 34.6308,
-          "lng": 9.4117
+          "lat": 34.5731138,
+          "lng": 9.4269175
         },
         {
           "id": 511,
@@ -1563,8 +1563,8 @@
           "nomFr": "Menzel Chaker",
           "nomAr": "منزل شاكر",
           "nomEn": "Menzel Chaker",
-          "lat": 34.9877,
-          "lng": 10.3947
+          "lat": 34.970059,
+          "lng": 10.3715504
         },
         {
           "id": 543,
@@ -1595,8 +1595,8 @@
           "nomFr": "Skhira",
           "nomAr": "الصخيرة",
           "nomEn": "Skhira",
-          "lat": 34.28,
-          "lng": 10.07
+          "lat": 34.2988183,
+          "lng": 10.0690355
         },
         {
           "id": 547,
@@ -1653,8 +1653,8 @@
           "nomFr": "El Battan",
           "nomAr": "البطان",
           "nomEn": "El Battan",
-          "lat": 36.7862,
-          "lng": 9.7902
+          "lat": 36.804353,
+          "lng": 9.844442
         },
         {
           "id": 552,
@@ -1815,8 +1815,8 @@
           "nomFr": "Al Matlin ",
           "nomAr": "المتلين",
           "nomEn": "Al Matlin ",
-          "lat": 37.21,
-          "lng": 10.02
+          "lat": 37.2441137,
+          "lng": 10.047511
         },
         {
           "id": 570,
@@ -1945,8 +1945,8 @@
           "nomFr": "Kasserine",
           "nomAr": "القصرين",
           "nomEn": "Kasserine",
-          "lat": 35.1308,
-          "lng": 8.7916
+          "lat": 35.1687646,
+          "lng": 8.8365654
         }
       ],
       "lat": 35.1676,
@@ -1977,7 +1977,7 @@
         {
           "id": 585,
           "nomFr": "Jerissa",
-          "nomAr": "الجريسة",
+          "nomAr": "الجريصة",
           "nomEn": "Jerissa",
           "lat": 35.8466,
           "lng": 8.6353
@@ -1987,8 +1987,8 @@
           "nomFr": "Tejerouine",
           "nomAr": "تاجروين",
           "nomEn": "Tejerouine",
-          "lat": 36.003,
-          "lng": 8.5282
+          "lat": 35.8913691,
+          "lng": 8.5530477
         },
         {
           "id": 587,
@@ -2091,10 +2091,10 @@
         {
           "id": 596,
           "nomFr": "Zeramdine",
-          "nomAr": "زرامدين",
+          "nomAr": "زرمدين",
           "nomEn": "Zeramdine",
-          "lat": 35.61,
-          "lng": 10.72
+          "lat": 35.5791762,
+          "lng": 10.7379156
         },
         {
           "id": 597,
@@ -2149,8 +2149,8 @@
           "nomFr": "Benbla",
           "nomAr": "بنبلة",
           "nomEn": "Benbla",
-          "lat": 35.682,
-          "lng": 10.7662
+          "lat": 35.6919328,
+          "lng": 10.7921125
         },
         {
           "id": 637,
@@ -2175,8 +2175,8 @@
           "nomFr": "Moulares",
           "nomAr": "أم العرايس",
           "nomEn": "Moulares",
-          "lat": 34.48,
-          "lng": 8.24
+          "lat": 34.485737,
+          "lng": 8.2733836
         },
         {
           "id": 605,
@@ -2207,8 +2207,8 @@
           "nomFr": "El Ksar",
           "nomAr": "القصر",
           "nomEn": "El Ksar",
-          "lat": 34.349,
-          "lng": 8.7701
+          "lat": 34.3978553,
+          "lng": 8.8045119
         },
         {
           "id": 609,
@@ -2223,24 +2223,24 @@
           "nomFr": "Sidi Aich",
           "nomAr": "سيدي عيش",
           "nomEn": "Sidi Aich",
-          "lat": 34.6976,
-          "lng": 8.8142
+          "lat": 34.7328584,
+          "lng": 8.7827624
         },
         {
           "id": 611,
           "nomFr": "El Guettar",
           "nomAr": "القطار",
           "nomEn": "El Guettar",
-          "lat": 34.32,
-          "lng": 8.94
+          "lat": 34.3394652,
+          "lng": 8.950364
         },
         {
           "id": 612,
           "nomFr": "Belkhir",
           "nomAr": "بلخير",
           "nomEn": "Belkhir",
-          "lat": 34.3672,
-          "lng": 9.4117
+          "lat": 34.2742071,
+          "lng": 9.3914392
         },
         {
           "id": 638,
@@ -2273,8 +2273,8 @@
           "nomFr": "Souk El Ahad",
           "nomAr": "سوق الأحد",
           "nomEn": "Souk El Ahad",
-          "lat": 33.9537,
-          "lng": 8.8361
+          "lat": 33.7783142,
+          "lng": 8.8525855
         },
         {
           "id": 484,

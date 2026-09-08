@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calendar_open_picker">اختيار التاريخ</string>
+    <string name="calendar_previous_day">اليوم السابق</string>
+    <string name="calendar_next_day">اليوم التالي</string>
+    <string name="calendar_previous_month">الشهر الهجري السابق</string>
+    <string name="calendar_next_month">الشهر الهجري التالي</string>
+    <string name="calendar_selected_date">التاريخ المحدد</string>
+    <string name="calendar_today">اليوم</string>
+    <string name="calendar_confirm">تأكيد</string>
+    <string name="calendar_cancel">إلغاء</string>
+    <string name="calendar_gregorian_month">%1$s م</string>
+    <string name="calendar_month_range">%1$s – %2$s</string>
+    <string name="calendar_day_description">%1$s، الموافق %2$s</string>
+    <string name="calendar_official_start_short">بداية الشهر مؤكدة في تونس</string>
+    <string name="calendar_calculation_method">نعتمد بدايات رمضان وشوال وذي الحجة المعلنة في تونس عند توفرها. بقية التواريخ محسوبة انطلاقًا من تقويم أم القرى، وقد تتغير مع الإعلان الرسمي.</string>
+</resources>

@@ -3,6 +3,7 @@ package com.tunisianprayertimes
 import android.content.Context
 import java.text.Normalizer
 import java.util.Locale
+import org.json.JSONObject
 
 data class Locality(
     val id: String,
@@ -15,8 +16,12 @@ data class Locality(
     val lng: Double? = null,
     val hasBoundary: Boolean = false,
     val kind: String = "delegation",
+    val pickerGroupId: String? = null,
+    val pickerMemberIds: Set<String> = emptySet(),
 ) {
     val normalizedName = normalizeLocalitySearch(name)
+
+    fun representsSelection(selectedId: String): Boolean = id == selectedId || selectedId in pickerMemberIds
 }
 
 private val combiningMarks = Regex("\\p{M}+")
@@ -74,6 +79,16 @@ internal fun filterAvailableLocalities(localities: List<Locality>, available: Li
     }
 }
 
+/** Merge only compiler-confirmed matches; homonyms elsewhere remain separate choices. */
+internal fun groupPickerLocalities(localities: List<Locality>): List<Locality> =
+    localities.groupBy { it.pickerGroupId ?: it.id }.map { (groupId, members) ->
+        val canonical = members.firstOrNull { it.id == groupId } ?: members.first()
+        if (members.size == 1) canonical else canonical.copy(
+            searchText = members.joinToString(" ") { it.searchText },
+            pickerMemberIds = members.flatMapTo(mutableSetOf()) { it.pickerMemberIds + it.id },
+        )
+    }
+
 internal fun enrichLocalityCatalog(localities: List<Locality>, governors: List<Gouvernorat>): List<Locality> {
     val delegations = governors.flatMap { it.delegations }
     val sourcesById = delegations.associateBy { it.id }
@@ -84,11 +99,9 @@ internal fun enrichLocalityCatalog(localities: List<Locality>, governors: List<G
         // but do not repeat thousands of nearest-neighbor searches just to browse names.
         val mapped = if (locality.delegationId in sourcesById) locality
             else withAvailablePrayerSource(locality, delegations) ?: locality
-        val source = sourcesById[mapped.delegationId]
         val governor = governorsById[mapped.governorateId]
         val terms = listOfNotNull(
             mapped.searchText, mapped.name, mapped.parentName,
-            source?.nomAr, source?.nomFr, source?.nomEn,
             governor?.nomAr, governor?.nomFr, governor?.nomEn
         )
         mapped.copy(searchText = normalizeLocalitySearch(terms.joinToString(" ")))
@@ -101,6 +114,80 @@ object LocalityRepository {
     private data class SourceKey(val id: Int, val lat: Double, val lng: Double)
     private data class AvailableCatalog(val sources: List<SourceKey>, val localities: List<Locality>)
     @Volatile private var availableCatalog: AvailableCatalog? = null
+    internal data class ReviewedLocalityName(val name: String, val kind: String)
+    internal data class ReviewedLocalityReplacement(val replacementId: String, val name: String, val kind: String)
+    private data class SavedLocalityUpdates(
+        val retiredIds: Set<String> = emptySet(),
+        val reviewedNames: Map<String, ReviewedLocalityName> = emptyMap(),
+        val replacements: Map<String, ReviewedLocalityReplacement> = emptyMap(),
+    )
+    @Volatile private var savedLocalityUpdates: SavedLocalityUpdates? = null
+    private val savedLocalityUpdatesLock = Any()
+
+    private fun savedLocalityUpdates(context: Context): SavedLocalityUpdates {
+        savedLocalityUpdates?.let { return it }
+        return synchronized(savedLocalityUpdatesLock) {
+            savedLocalityUpdates ?: runCatching {
+                // Only explicitly reviewed ID changes are read here. Keep
+                // preference reads independent of full metadata and geometry.
+                val json = JSONObject(context.assets.open("retired-localities.json").bufferedReader().use { it.readText() })
+                require(json.getInt("schemaVersion") == 1)
+                val values = json.getJSONArray("retiredLocalityIds")
+                val retiredIds = buildSet {
+                    for (index in 0 until values.length()) {
+                        val id = values.get(index)
+                        require(id is String && id.isNotBlank())
+                        require(add(id))
+                    }
+                }
+                val reviewedNames = buildMap {
+                    if (json.has("reviewedNames")) {
+                        val names = json.getJSONArray("reviewedNames")
+                        for (index in 0 until names.length()) {
+                            val row = names.getJSONObject(index)
+                            val id = row.get("id")
+                            val name = row.get("name")
+                            val kind = row.get("kind")
+                            require(id is String && id.isNotBlank() && id !in retiredIds)
+                            require(name is String && name.isNotBlank())
+                            require(kind is String && kind.isNotBlank())
+                            require(put(id, ReviewedLocalityName(name, kind)) == null)
+                        }
+                    }
+                }
+                val replacements = buildMap {
+                    if (json.has("replacements")) {
+                        val entries = json.getJSONArray("replacements")
+                        val targetIds = mutableSetOf<String>()
+                        for (index in 0 until entries.length()) {
+                            val row = entries.getJSONObject(index)
+                            val id = row.get("id")
+                            val replacementId = row.get("replacementId")
+                            val name = row.get("name")
+                            val kind = row.get("kind")
+                            require(id is String && id.isNotBlank() && id in retiredIds)
+                            require(replacementId is String && replacementId.isNotBlank() && replacementId !in retiredIds)
+                            require(name is String && name.isNotBlank())
+                            require(kind is String && kind.isNotBlank())
+                            require(targetIds.add(replacementId))
+                            require(reviewedNames[replacementId] == ReviewedLocalityName(name, kind))
+                            require(put(id, ReviewedLocalityReplacement(replacementId, name, kind)) == null)
+                        }
+                    }
+                }
+                SavedLocalityUpdates(retiredIds, reviewedNames, replacements)
+            }.getOrDefault(SavedLocalityUpdates()).also { savedLocalityUpdates = it }
+        }
+    }
+
+    internal fun isRetired(context: Context, localityId: String): Boolean =
+        localityId in savedLocalityUpdates(context).retiredIds
+
+    internal fun reviewedName(context: Context, localityId: String): ReviewedLocalityName? =
+        savedLocalityUpdates(context).reviewedNames[localityId]
+
+    internal fun reviewedReplacement(context: Context, localityId: String): ReviewedLocalityReplacement? =
+        savedLocalityUpdates(context).replacements[localityId]
 
     fun loadAll(context: Context): List<Locality> {
         cached?.let { return it }
@@ -130,7 +217,7 @@ object LocalityRepository {
         val sources = available.map { SourceKey(it.id, it.lat, it.lng) }
             .sortedWith(compareBy<SourceKey> { it.id }.thenBy { it.lat }.thenBy { it.lng })
         availableCatalog?.takeIf { it.sources == sources }?.let { return it.localities }
-        return filterAvailableLocalities(loadAll(context), available).also {
+        return groupPickerLocalities(filterAvailableLocalities(loadAll(context), available)).also {
             availableCatalog = AvailableCatalog(sources, it)
         }
     }

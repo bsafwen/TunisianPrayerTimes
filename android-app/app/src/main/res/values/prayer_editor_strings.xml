@@ -1,0 +1,29 @@
+<resources>
+    <string name="prayer_editor_title">إسكات %1$s</string>
+    <string name="prayer_editor_daily_note">تتكرر هذه الإعدادات في مواعيد هذه الصلاة، ولا تخص التاريخ المعروض فقط.</string>
+    <string name="prayer_editor_preview">الفترة بعد التعديل</string>
+    <string name="prayer_editor_preview_duration">المدة: %1$d دقيقة</string>
+    <string name="prayer_editor_start">بداية الإسكات</string>
+    <string name="prayer_editor_end">نهاية الإسكات</string>
+    <string name="prayer_editor_offset_mode">بالدقائق قبل الأذان أو بعده</string>
+    <string name="prayer_editor_start_clock_mode">في وقت ثابت</string>
+    <string name="prayer_editor_duration_mode">بعد مدة من بداية الإسكات</string>
+    <string name="prayer_editor_end_clock_mode">عند وقت ثابت</string>
+    <string name="prayer_editor_offset_label">عدد الدقائق من الأذان</string>
+    <string name="prayer_editor_duration_label">مدة الإسكات بالدقائق</string>
+    <string name="prayer_editor_minutes_unit">دقيقة</string>
+    <string name="prayer_editor_offset_help">٠ عند الأذان، قيمة موجبة بعده، وقيمة سالبة قبله.</string>
+    <string name="prayer_editor_choose_start_clock">اختيار وقت البداية</string>
+    <string name="prayer_editor_choose_end_clock">اختيار وقت النهاية</string>
+    <string name="prayer_editor_start_clock_help">الوقت بنظام ٢٤ ساعة، في يوم الصلاة نفسه.</string>
+    <string name="prayer_editor_end_clock_help">إذا سبق وقت النهاية البداية، تعود الأصوات في هذا الوقت من اليوم التالي. تساوي الوقتين يعني مدة صفر.</string>
+    <string name="prayer_editor_previous_day">اليوم السابق</string>
+    <string name="prayer_editor_next_day">اليوم التالي</string>
+    <string name="prayer_editor_days_before">قبل %1$d يوم</string>
+    <string name="prayer_editor_days_after">بعد %1$d يوم</string>
+    <string name="prayer_editor_invalid_number">أدخل عدداً صحيحاً صالحاً لإكمال التعديل.</string>
+    <string name="prayer_editor_invalid_window">أكمل القيم الصحيحة لعرض الفترة وحفظها.</string>
+    <string name="prayer_editor_mode_unavailable">لا يمكن الاحتفاظ بالفترة الحالية بهذا الخيار. أكمل القيم أو عدّل الفترة أولاً.</string>
+    <string name="prayer_editor_save">حفظ</string>
+    <string name="prayer_editor_cancel">إلغاء</string>
+</resources>

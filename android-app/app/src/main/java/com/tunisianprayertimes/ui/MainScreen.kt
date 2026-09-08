@@ -4,7 +4,9 @@ import android.Manifest
 import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
+import android.content.BroadcastReceiver
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -69,6 +71,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
@@ -100,6 +103,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
@@ -113,6 +117,7 @@ import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 
@@ -120,24 +125,28 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.core.content.ContextCompat
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.ClockTime
-import com.tunisianprayertimes.DelayMode
 import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Delegation
@@ -162,9 +171,9 @@ import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.RamadanDetector
 import com.tunisianprayertimes.RamadanOverrideChecker
+import com.tunisianprayertimes.OfficialIslamicDates
 import com.tunisianprayertimes.RingtonePreset
 import com.tunisianprayertimes.ScheduleRefreshCoordinator
-import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
@@ -212,6 +221,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -227,16 +237,6 @@ private enum class WakeQuickPreset {
     FIXED_TIME,
     TIMER,
 }
-
-private enum class PrayerRowValidationTarget {
-    DELAY,
-    DURATION,
-}
-
-private data class PrayerRowValidationWarning(
-    val messageRes: Int,
-    val target: PrayerRowValidationTarget,
-)
 
 private data class WakeSilenceConflictEditorState(
     val draftConfig: PrayerWakeConfig,
@@ -298,6 +298,7 @@ fun MainScreen(
 ) {
     val context = LocalContext.current
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
+    val officialDateRecords by OfficialIslamicDates.updates.collectAsStateWithLifecycle()
     val schedulerScope = rememberCoroutineScope()
 
     // Reactive state that gets refreshed on resume
@@ -361,6 +362,7 @@ fun MainScreen(
         mutableStateOf(PrefsManager.isAutoLocationUpdateEnabled(context))
     }
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
+    var locationPickerRequested by remember { mutableStateOf(false) }
     DisposableEffect(context) {
         // Background location updates must refresh the timetable alongside the label.
         val unsubscribe = PrefsManager.observeLocationSelection(context) {
@@ -435,6 +437,15 @@ fun MainScreen(
     LaunchedEffect(Unit) {
         AnalyticsTracker.installRamadanOverrideReporter(context)
         RamadanOverrideChecker.startPollingIfNeeded()
+    }
+
+    // Scheduling follows announcements for the process lifetime in Application.
+    // Refresh the visible controls here without scheduling the same update twice.
+    val currentOfficialDates = officialDateRecords[algorithmicHijriYear(LocalDate.now())]
+    LaunchedEffect(currentOfficialDates) {
+        if (currentOfficialDates != null) {
+            refreshSilenceState()
+        }
     }
 
     LaunchedEffect(hasDnd, hasAlarm, hasBattery) {
@@ -694,6 +705,7 @@ fun MainScreen(
                     MainDestination.Today -> {
                         TodayNextPrayerCard(
                             delegationId = delegationId,
+                            selectedDate = prayerTableSelectedDate,
                             isPhoneSilenced = phoneSilenced,
                             hasDnd = hasDnd,
                             autoSilenceActive = autoSilenceActive,
@@ -736,6 +748,8 @@ fun MainScreen(
 
                         LocationPickerCard(
                             delegationId = delegationId,
+                            openRequested = locationPickerRequested,
+                            onOpenRequestHandled = { locationPickerRequested = false },
                             onDelegationSelected = { delegation ->
                                 delegationId = delegation.id
                                 PrefsManager.setDelegationId(context, delegation.id)
@@ -750,6 +764,7 @@ fun MainScreen(
                         PrayerSettingsCard(
                             delegationId = delegationId,
                             activity = activity,
+                            onChooseLocation = { locationPickerRequested = true },
                             selectedDate = prayerTableSelectedDate,
                             onSelectedDateChange = { selectedDate ->
                                 prayerTableSelectedDate = startOfDayMillis(selectedDate)
@@ -1086,7 +1101,6 @@ fun MainScreen(
                     wakeSilenceConflictEditor?.let { editorState ->
                         WakeSilenceConflictPrayerEditor(
                             delegationId = delegationId,
-                            activity = activity,
                             editorState = editorState,
                             onConfigChanged = { updatedSilenceConfig ->
                                 wakeSilenceConflictEditor = wakeSilenceConflictEditor?.let { state ->
@@ -1254,12 +1268,10 @@ private fun PhoneStatusNotice(
         Spacer(Modifier.width(6.dp))
         Text(
             text = statusText,
-            fontSize = 11.sp,
+            modifier = Modifier.weight(1f, fill = false),
+            fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             color = accentColor,
-            maxLines = 1,
-            softWrap = false,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
         )
     }
 }
@@ -1425,12 +1437,49 @@ private fun BatteryBanner(context: Context) {
 private fun LocationPickerCard(
     delegationId: Int,
     onDelegationSelected: (Delegation) -> Unit,
-    onOutsideTunisia: () -> Unit = {}
+    onOutsideTunisia: () -> Unit = {},
+    openRequested: Boolean = false,
+    onOpenRequestHandled: () -> Unit = {},
 ) {
     val context = LocalContext.current
-    val allDelegations = remember { GouvernoratRepository.loadAllDelegations(context) }
-    val availableIds = remember { allDelegations.map { it.id }.toSet() }
     val gouvernorats = remember { GouvernoratRepository.loadAll(context) }
+    // Show the lightweight name list immediately while current-period timetable
+    // availability is checked in the background. Selection always rechecks it.
+    var allDelegations by remember { mutableStateOf(gouvernorats.flatMap { it.delegations }) }
+    var sourcesChecked by remember { mutableStateOf(false) }
+    val availableIds = remember(allDelegations) { allDelegations.map { it.id }.toSet() }
+    val scope = rememberCoroutineScope()
+    var sourceRefreshJob by remember { mutableStateOf<Job?>(null) }
+    var selectionJob by remember { mutableStateOf<Job?>(null) }
+    fun refreshSources() {
+        sourceRefreshJob?.cancel()
+        sourceRefreshJob = scope.launch {
+            allDelegations = withContext(Dispatchers.IO) {
+                GouvernoratRepository.loadAllDelegations(context)
+            }
+            sourcesChecked = true
+        }
+    }
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(context, lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) refreshSources()
+        }
+        val receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) = refreshSources()
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        ContextCompat.registerReceiver(context, receiver, IntentFilter().apply {
+            addAction(Intent.ACTION_DATE_CHANGED)
+            addAction(Intent.ACTION_TIME_CHANGED)
+            addAction(Intent.ACTION_TIMEZONE_CHANGED)
+        }, ContextCompat.RECEIVER_NOT_EXPORTED)
+        refreshSources()
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+            context.unregisterReceiver(receiver)
+        }
+    }
     val delegationRows = remember(allDelegations) {
         gouvernorats.flatMap { gov ->
             gov.delegations.filter { it.id in availableIds }.map { d ->
@@ -1443,7 +1492,7 @@ private fun LocationPickerCard(
     val pickerCatalog by produceState(delegationRows, allDelegations) {
         value = withContext(Dispatchers.Default) { LocalityRepository.loadAvailable(context, allDelegations) }
     }
-    val savedDelegation = remember(delegationId) { GouvernoratRepository.findDelegationById(context, delegationId) }
+    val savedDelegation = remember(delegationId, allDelegations) { allDelegations.find { it.id == delegationId } }
 
     var selectedLocation by remember { mutableStateOf(PrefsManager.getLocationSelection(context)) }
     DisposableEffect(context) {
@@ -1452,9 +1501,37 @@ private fun LocationPickerCard(
         }
         onDispose { unsubscribe() }
     }
+    LaunchedEffect(sourcesChecked, allDelegations, selectedLocation) {
+        val saved = selectedLocation
+        if (!sourcesChecked || saved.fromGps) return@LaunchedEffect
+        val id = saved.localityId?.takeUnless { it.startsWith("delegation:") } ?: return@LaunchedEffect
+        val sources = allDelegations
+        val repaired = withContext(Dispatchers.Default) {
+            // A manual locality has a defined representative point. Recompute
+            // after source coordinates change too, even if the old source remains
+            // usable. Legacy GPS selections need their actual fix for this repair.
+            runCatching { LocalityRepository.loadAll(context).find { it.id == id } }.getOrNull()
+                ?.takeIf { it.lat != null && it.lng != null }
+                ?.let { withAvailablePrayerSource(it, sources) }
+        } ?: return@LaunchedEffect
+        if (repaired.delegationId == saved.delegationId) return@LaunchedEffect
+        val source = sources.find { it.id == repaired.delegationId } ?: return@LaunchedEffect
+        if (PrefsManager.getLocationSelection(context) != saved) return@LaunchedEffect
+        PrefsManager.setLocality(context, repaired)
+        onDelegationSelected(source)
+        selectedLocation = PrefsManager.getLocationSelection(context)
+    }
+    val savedSourceUnavailable = sourcesChecked && selectedLocation.delegationId !in availableIds
     var showSheet by remember { mutableStateOf(false) }
     var locating by remember { mutableStateOf(false) }
-    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(openRequested) {
+        if (openRequested) {
+            refreshSources()
+            showSheet = true
+            onOpenRequestHandled()
+        }
+    }
 
     fun startLocationLookup() {
         if (locating) {
@@ -1601,7 +1678,10 @@ private fun LocationPickerCard(
                         .weight(1f)
                         .clip(RoundedCornerShape(8.dp))
                         .background(GoldLight.copy(alpha = 0.25f))
-                        .clickable { showSheet = true }
+                        .clickable {
+                            refreshSources()
+                            showSheet = true
+                        }
                         .padding(horizontal = 12.dp, vertical = 8.dp)
                 )
                 Spacer(Modifier.width(8.dp))
@@ -1633,7 +1713,16 @@ private fun LocationPickerCard(
                     )
                 }
             }
-            if (selectedLocation.fromGps && selectedLocation.name == null) {
+            if (savedSourceUnavailable) {
+                Text(
+                    text = stringResource(if (allDelegations.isEmpty()) {
+                        R.string.location_no_current_prayer_data
+                    } else R.string.location_saved_source_unavailable),
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    modifier = Modifier.padding(top = 6.dp),
+                )
+            } else if (selectedLocation.fromGps && selectedLocation.name == null) {
                 Text(
                     text = stringResource(R.string.location_neighborhood_unavailable),
                     fontSize = 12.sp,
@@ -1649,16 +1738,32 @@ private fun LocationPickerCard(
             catalog = pickerCatalog,
             gouvernorats = gouvernorats,
             selectedId = selectedLocation.localityId ?: if (selectedLocation.fromGps) "" else "delegation:$delegationId",
-            onDismiss = { showSheet = false },
+            onDismiss = {
+                selectionJob?.cancel()
+                showSheet = false
+            },
             onSelect = { locality ->
-                val mapped = withAvailablePrayerSource(locality, allDelegations)
-                val delegation = mapped?.let { selection -> allDelegations.firstOrNull { it.id == selection.delegationId } }
-                if (delegation != null) {
-                    showSheet = false
-                    AnalyticsTracker.markDelegationSource(context, "manual")
-                    onDelegationSelected(delegation)
-                    PrefsManager.setLocality(context, mapped)
-                    selectedLocation = PrefsManager.getLocationSelection(context)
+                // A sheet can stay open across a month boundary; selection must
+                // use sources with prayer data for the current period.
+                selectionJob?.cancel()
+                selectionJob = scope.launch {
+                    val currentDelegations = withContext(Dispatchers.IO) {
+                        GouvernoratRepository.loadAllDelegations(context)
+                    }
+                    if (!showSheet) return@launch
+                    allDelegations = currentDelegations
+                    sourcesChecked = true
+                    val mapped = withAvailablePrayerSource(locality, currentDelegations)
+                    val delegation = mapped?.let { selection -> currentDelegations.firstOrNull { it.id == selection.delegationId } }
+                    if (delegation != null) {
+                        showSheet = false
+                        AnalyticsTracker.markDelegationSource(context, "manual")
+                        onDelegationSelected(delegation)
+                        PrefsManager.setLocality(context, mapped)
+                        selectedLocation = PrefsManager.getLocationSelection(context)
+                    } else {
+                        Toast.makeText(context, R.string.location_no_match, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         )
@@ -1684,6 +1789,7 @@ internal fun delegationSearchScore(delegation: Delegation, terms: List<String>):
 @Composable
 private fun TodayNextPrayerCard(
     delegationId: Int,
+    selectedDate: Long,
     isPhoneSilenced: Boolean,
     hasDnd: Boolean,
     autoSilenceActive: Boolean,
@@ -1777,6 +1883,7 @@ private fun TodayNextPrayerCard(
             isPhoneSilenced = isPhoneSilenced,
             hasDnd = hasDnd,
             silenceReason = silenceReason,
+            showLiveDateContext = !isSameCalendarDay(selectedDate, currentDayMillis),
         )
     }
 }
@@ -1785,11 +1892,16 @@ private fun TodayNextPrayerCard(
 private fun PrayerSettingsCard(
     delegationId: Int,
     activity: androidx.appcompat.app.AppCompatActivity,
+    onChooseLocation: () -> Unit,
     selectedDate: Long,
     onSelectedDateChange: (Long) -> Unit,
     onConfigChanged: () -> Unit
 ) {
     val context = LocalContext.current
+    var selectedTimelinePrayer by rememberSaveable { mutableStateOf<Prayer?>(null) }
+    LaunchedEffect(selectedDate, delegationId) { selectedTimelinePrayer = null }
+    val correctedCalendar = rememberTunisianHijriCalendar()
+    val selectedHijriYear = correctedCalendar.date(calendarLocalDate(selectedDate)).year
     val lifecycleOwner = LocalLifecycleOwner.current
     var currentTimeMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
     val currentCalendar = remember(currentTimeMillis) {
@@ -1852,6 +1964,9 @@ private fun PrayerSettingsCard(
             )
         } catch (e: Exception) { null }
     }
+    val nextDayFajr = remember(delegationId, selectedDate) {
+        loadNextDayFajr(context, delegationId, selectedDate)
+    }
 
     val canGoBack = remember(delegationId, selectedDate) {
         val prev = Calendar.getInstance().apply {
@@ -1887,7 +2002,7 @@ private fun PrayerSettingsCard(
         Prayer.AID_ADHA to stringResource(R.string.prayer_aid_adha)
     )
 
-    val isAidFitr = remember(selectedDate, displayTimes, currentTimeMillis) {
+    val isAidFitr = remember(selectedDate, displayTimes, currentTimeMillis, correctedCalendar) {
         val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
         val gregDate = LocalDate.of(
             cal.get(Calendar.YEAR),
@@ -1903,7 +2018,7 @@ private fun PrayerSettingsCard(
             isToday = isToday,
         )
     }
-    val isAidAdha = remember(selectedDate, displayTimes, currentTimeMillis) {
+    val isAidAdha = remember(selectedDate, displayTimes, currentTimeMillis, correctedCalendar) {
         val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
         val gregDate = LocalDate.of(
             cal.get(Calendar.YEAR),
@@ -1929,8 +2044,8 @@ private fun PrayerSettingsCard(
     // Aid Fitr custom time from prefs (or Shuruk of Eid day as fallback)
     var aidFitrH by rememberSaveable { mutableIntStateOf(PrefsManager.getAidFitrTimeHour(context)) }
     var aidFitrM by rememberSaveable { mutableIntStateOf(PrefsManager.getAidFitrTimeMinute(context)) }
-    val defaultAidFitrTime = remember(delegationId) {
-        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidFitrDate())
+    val defaultAidFitrTime = remember(delegationId, selectedHijriYear, correctedCalendar) {
+        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidFitrDate(selectedHijriYear))
     }
     val resolvedAidFitrH = if (aidFitrH >= 0) aidFitrH else defaultAidFitrTime?.first ?: -1
     val resolvedAidFitrM = if (aidFitrM >= 0) aidFitrM else defaultAidFitrTime?.second ?: -1
@@ -1938,8 +2053,8 @@ private fun PrayerSettingsCard(
     // Aid Adha custom time from prefs (or Shuruk of Eid day as fallback)
     var aidAdhaH by rememberSaveable { mutableIntStateOf(PrefsManager.getAidAdhaTimeHour(context)) }
     var aidAdhaM by rememberSaveable { mutableIntStateOf(PrefsManager.getAidAdhaTimeMinute(context)) }
-    val defaultAidAdhaTime = remember(delegationId) {
-        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidAdhaDate())
+    val defaultAidAdhaTime = remember(delegationId, selectedHijriYear, correctedCalendar) {
+        RamadanOverrideChecker.getDefaultEidPrayerTime(delegationId, RamadanOverrideChecker.getEidAdhaDate(selectedHijriYear))
     }
     val resolvedAidAdhaH = if (aidAdhaH >= 0) aidAdhaH else defaultAidAdhaTime?.first ?: -1
     val resolvedAidAdhaM = if (aidAdhaM >= 0) aidAdhaM else defaultAidAdhaTime?.second ?: -1
@@ -1979,7 +2094,7 @@ private fun PrayerSettingsCard(
                         color = PrayerNameColor,
                     )
                     Text(
-                        text = stringResource(R.string.prayer_settings_subtitle),
+                        text = stringResource(R.string.prayer_timeline_subtitle),
                         fontSize = 12.sp,
                         color = TextMuted,
                         lineHeight = 17.sp,
@@ -2011,24 +2126,29 @@ private fun PrayerSettingsCard(
             )
 
             if (displayTimes != null) {
-                PrayerRowHeader()
-                HorizontalDivider(color = Divider, thickness = 1.dp)
-
                 val prayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
                 prayers.forEachIndexed { index, prayer ->
                     val prayerTime = displayTimes.allPrayers().find { it.prayer == prayer }
                     val nextPrayerTime = if (index < prayers.size - 1) {
                         displayTimes.allPrayers().find { it.prayer == prayers[index + 1] }
-                    } else null
-                    PrayerRow(
-                        prayer = prayer,
-                        prayerName = prayerNames[prayer] ?: prayer.name,
-                        prayerTime = prayerTime,
-                        nextPrayerTime = nextPrayerTime,
-                        isNextPrayer = prayer == nextPrayer,
-                        activity = activity,
-                        onConfigChanged = onConfigChanged,
-                    )
+                    } else nextDayFajr
+                    key(prayer) {
+                        PrayerRow(
+                            prayer = prayer,
+                            prayerName = prayerNames[prayer] ?: prayer.name,
+                            prayerTime = prayerTime,
+                            nextPrayerTime = nextPrayerTime,
+                            nextPrayerIsTomorrow = index == prayers.lastIndex,
+                            isNextPrayer = prayer == nextPrayer,
+                            selected = selectedTimelinePrayer == prayer,
+                            onSelect = { selectedTimelinePrayer = prayer },
+                            onDeselect = { selectedTimelinePrayer = null },
+                            onConfigChanged = onConfigChanged,
+                        )
+                    }
+                    if (index < prayers.lastIndex) {
+                        HorizontalDivider(color = Divider.copy(alpha = 0.6f), thickness = 1.dp)
+                    }
                 }
 
                 // JOMOAA row — always shown as the last row, time editable
@@ -2040,7 +2160,9 @@ private fun PrayerSettingsCard(
                         prayerTime = PrayerTime(Prayer.JOMOAA, resolvedJomoaaH, resolvedJomoaaM),
                         nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.ASR },
                         isNextPrayer = Prayer.JOMOAA == nextPrayer,
-                        activity = activity,
+                        selected = selectedTimelinePrayer == Prayer.JOMOAA,
+                        onSelect = { selectedTimelinePrayer = Prayer.JOMOAA },
+                        onDeselect = { selectedTimelinePrayer = null },
                         onConfigChanged = onConfigChanged,
                         onPrayerTimeClick = {
                             val picker = MaterialTimePicker.Builder()
@@ -2070,7 +2192,9 @@ private fun PrayerSettingsCard(
                             prayerTime = PrayerTime(Prayer.AID_FITR, resolvedAidFitrH, resolvedAidFitrM),
                             nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
                             isNextPrayer = false,
-                            activity = activity,
+                            selected = selectedTimelinePrayer == Prayer.AID_FITR,
+                            onSelect = { selectedTimelinePrayer = Prayer.AID_FITR },
+                            onDeselect = { selectedTimelinePrayer = null },
                             onConfigChanged = onConfigChanged,
                             onPrayerTimeClick = {
                                 val picker = MaterialTimePicker.Builder()
@@ -2101,7 +2225,9 @@ private fun PrayerSettingsCard(
                             prayerTime = PrayerTime(Prayer.AID_ADHA, resolvedAidAdhaH, resolvedAidAdhaM),
                             nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
                             isNextPrayer = false,
-                            activity = activity,
+                            selected = selectedTimelinePrayer == Prayer.AID_ADHA,
+                            onSelect = { selectedTimelinePrayer = Prayer.AID_ADHA },
+                            onDeselect = { selectedTimelinePrayer = null },
                             onConfigChanged = onConfigChanged,
                             onPrayerTimeClick = {
                                 val picker = MaterialTimePicker.Builder()
@@ -2122,15 +2248,11 @@ private fun PrayerSettingsCard(
                     }
                 }
             } else {
-                Spacer(Modifier.height(16.dp))
-                Text(
-                    text = stringResource(R.string.no_prayer_data),
-                    fontSize = 13.sp,
-                    color = TextMuted,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
+                PrayerDataUnavailable(
+                    isToday = isToday,
+                    onReturnToToday = { onSelectedDateChange(startOfDayMillis(System.currentTimeMillis())) },
+                    onChooseLocation = onChooseLocation,
                 )
-                Spacer(Modifier.height(16.dp))
             }
         }
     }
@@ -2185,6 +2307,7 @@ private data class NightTimesCardData(
     val sunriseTime: String,
     val sunriseMinuteOfDay: Int,
     val currentMinuteOfDay: Int,
+    val showCurrentTime: Boolean,
     val nightRange: String,
     val statusText: String,
     val activeThird: Int?,
@@ -2201,6 +2324,7 @@ private fun SunriseAndNightTimesCard(
     onEditWakeAlarm: (String) -> Unit = {},
 ) {
     val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
     var currentTimeMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
     val currentDayMillis = remember(currentTimeMillis) { startOfDayMillis(currentTimeMillis) }
     val selectedDayMillis = remember(selectedDate) { startOfDayMillis(selectedDate) }
@@ -2215,13 +2339,33 @@ private fun SunriseAndNightTimesCard(
     }
 
     val selectedTimes = remember(delegationId, selectedDayMillis) {
-        loadDayPrayerTimesWithFallback(context, delegationId, selectedCalendar)
+        try {
+            PrayerTimesRepository.loadDayPrayerTimes(
+                context,
+                delegationId,
+                selectedCalendar.get(Calendar.YEAR),
+                selectedCalendar.get(Calendar.MONTH) + 1,
+                selectedCalendar.get(Calendar.DAY_OF_MONTH),
+            )
+        } catch (e: Exception) {
+            null
+        }
     }
     val previousTimes = remember(delegationId, selectedDayMillis) {
         loadDayPrayerTimesWithFallback(context, delegationId, previousCalendar)
     }
     val nextTimes = remember(delegationId, selectedDayMillis) {
         loadDayPrayerTimesWithFallback(context, delegationId, nextCalendar)
+    }
+
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                currentTimeMillis = System.currentTimeMillis()
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
     LaunchedEffect(Unit) {
@@ -2254,7 +2398,8 @@ private fun SunriseAndNightTimesCard(
             .sortedBy { alarm -> alarm.minuteOfDay }
     }
     val selectedFajrMillis = prayerTimeMillis(selectedCalendar, selectedTimesForDay.fajr)
-    val usePreviousNight = isSameCalendarDay(selectedDayMillis, currentDayMillis) &&
+    val isToday = isSameCalendarDay(selectedDayMillis, currentDayMillis)
+    val usePreviousNight = isToday &&
         currentTimeMillis < selectedFajrMillis && previousTimes != null
     val nightStartCalendar = if (usePreviousNight) previousCalendar else selectedCalendar
     val nightEndCalendar = if (usePreviousNight) selectedCalendar else nextCalendar
@@ -2269,12 +2414,13 @@ private fun SunriseAndNightTimesCard(
     val firstEndMillis = nightStartMillis + thirdDurationMillis
     val secondEndMillis = nightStartMillis + thirdDurationMillis * 2L
     val activeThird = when {
+        !isToday -> null
         currentTimeMillis >= nightStartMillis && currentTimeMillis < firstEndMillis -> 0
         currentTimeMillis >= firstEndMillis && currentTimeMillis < secondEndMillis -> 1
         currentTimeMillis >= secondEndMillis && currentTimeMillis < nightEndMillis -> 2
         else -> null
     }
-    val statusText = when (activeThird) {
+    val statusText = if (!isToday) stringResource(R.string.prayer_timeline_selected_night) else when (activeThird) {
         0 -> "الآن: الثلث الأول"
         1 -> "الآن: الثلث الثاني"
         2 -> "الآن: الثلث الأخير"
@@ -2309,6 +2455,7 @@ private fun SunriseAndNightTimesCard(
         sunriseTime = formatClockTime(selectedTimesForDay.shurukHour, selectedTimesForDay.shurukMinute),
         sunriseMinuteOfDay = selectedTimesForDay.shurukHour * 60 + selectedTimesForDay.shurukMinute,
         currentMinuteOfDay = minuteOfDay(currentTimeMillis),
+        showCurrentTime = isToday,
         nightRange = "من ${formatTimeOfDay(nightStartMillis)} إلى ${formatTimeOfDay(nightEndMillis)}",
         statusText = statusText,
         activeThird = activeThird,
@@ -2380,6 +2527,13 @@ private fun NightTimesDayNightHorizon(
             border = BorderStroke(1.dp, Gold.copy(alpha = 0.18f)),
         ) {
             Column(modifier = Modifier.padding(8.dp)) {
+                Text(
+                    text = data.statusText,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = GreenPrimaryDark,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 8.dp),
+                )
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
                     BoxWithConstraints(
                         modifier = Modifier
@@ -3648,15 +3802,17 @@ private fun NightTimesDayNightHorizon(
                             center = circleCenter,
                             style = Stroke(width = 1.4f * scaleX),
                         )
-                        drawArc(
-                            color = Color(0xFFFFC247),
-                            startAngle = activeSegmentStartAngle,
-                            sweepAngle = clockwiseSweepDegrees(activeSegmentStartAngle, activeSegmentEndAngle),
-                            useCenter = false,
-                            topLeft = Offset(circleLeftPx, circleTopPx),
-                            size = Size(circleRadiusPx * 2f, circleRadiusPx * 2f),
-                            style = Stroke(width = 3f * scaleX),
-                        )
+                        if (data.showCurrentTime) {
+                            drawArc(
+                                color = Color(0xFFFFC247),
+                                startAngle = activeSegmentStartAngle,
+                                sweepAngle = clockwiseSweepDegrees(activeSegmentStartAngle, activeSegmentEndAngle),
+                                useCenter = false,
+                                topLeft = Offset(circleLeftPx, circleTopPx),
+                                size = Size(circleRadiusPx * 2f, circleRadiusPx * 2f),
+                                style = Stroke(width = 3f * scaleX),
+                            )
+                        }
                         timelineAlarmPlacements.forEach { placement ->
                             val marker = Offset(placement.iconCenterX * scaleX, placement.iconCenterY * scaleY)
                             val labelCenter = Offset(placement.labelCenterX * scaleX, placement.labelCenterY * scaleY)
@@ -4467,7 +4623,15 @@ private fun NextPrayerHeroCard(
     isPhoneSilenced: Boolean,
     hasDnd: Boolean,
     silenceReason: PhoneSilenceReason?,
+    showLiveDateContext: Boolean,
 ) {
+    val context = LocalContext.current
+    val textMeasurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    val inheritedStyle = LocalTextStyle.current
+    val titleText = stringResource(R.string.next_prayer_countdown_title)
+    val liveDateText = stringResource(R.string.prayer_hero_today_live)
+    val statusText = phoneStatusNoticeText(context, isPhoneSilenced, hasDnd, silenceReason)
     val prayerTimeText = String.format(Locale.US, "%02d:%02d", countdown.hour, countdown.minute)
     val prayerTimeLineText = if (countdown.isTomorrow) {
         stringResource(R.string.next_prayer_countdown_at_tomorrow, prayerTimeText)
@@ -4496,10 +4660,10 @@ private fun NextPrayerHeroCard(
         label = "nextPrayerHeroPillText"
     )
 
-    Box(
+    BoxWithConstraints(
         modifier = Modifier
             .fillMaxWidth()
-            .height(MainHeroCardHeight)
+            .heightIn(min = MainHeroCardHeight)
             .testTag(TestTags.STATUS_CARD)
             .clip(shape)
             .background(
@@ -4511,78 +4675,121 @@ private fun NextPrayerHeroCard(
             )
             .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape)
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 18.dp, vertical = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
+        // Measure at the user's actual font scale, including Android's nonlinear scaling.
+        // Keep the requested text sizes and move content onto another row when necessary.
+        fun textWidth(text: String, size: androidx.compose.ui.unit.TextUnit, weight: FontWeight): Int =
+            textMeasurer.measure(
+                text = text,
+                style = inheritedStyle.copy(fontSize = size, fontWeight = weight),
+                softWrap = false,
+                maxLines = 1,
+            ).size.width
+
+        val contentWidth = (constraints.maxWidth - with(density) { 36.dp.roundToPx() }).coerceAtLeast(0)
+        val gapWidth = with(density) { 12.dp.roundToPx() }
+        val headingWidth = maxOf(
+            textWidth(titleText, 12.sp, FontWeight.Bold),
+            if (showLiveDateContext) textWidth(liveDateText, 12.sp, FontWeight.SemiBold) else 0,
+        )
+        val statusWidth = statusText?.let {
+            textWidth(it, 12.sp, FontWeight.SemiBold) + with(density) { 11.dp.roundToPx() }
+        } ?: 0
+        val stackHeader = statusText != null && headingWidth + gapWidth + statusWidth > contentWidth
+        val detailsWidth = maxOf(
+            textWidth(prayerName, 28.sp, FontWeight.Bold),
+            textWidth(prayerTimeLineText, 14.sp, FontWeight.SemiBold),
+        )
+        val remainingWidth = textWidth(remainingText, 14.sp, FontWeight.Bold) +
+            with(density) { 24.dp.roundToPx() }
+        val stackCountdown = detailsWidth + gapWidth + remainingWidth > contentWidth
+
+        val heading: @Composable (Modifier) -> Unit = { headingModifier ->
+            Column(modifier = headingModifier, verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(
-                    text = stringResource(R.string.next_prayer_countdown_title),
+                    text = titleText,
                     fontSize = 12.sp,
                     color = Color.White.copy(alpha = 0.78f),
                     fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    modifier = Modifier.weight(1f),
                 )
-
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    PhoneStatusNotice(
-                        isPhoneSilenced = isPhoneSilenced,
-                        hasDnd = hasDnd,
-                        silenceReason = silenceReason,
+                if (showLiveDateContext) {
+                    Text(
+                        text = liveDateText,
+                        fontSize = 12.sp,
+                        color = Color.White.copy(alpha = 0.90f),
+                        fontWeight = FontWeight.SemiBold,
                     )
                 }
             }
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom,
+        }
+        val prayerDetails: @Composable (Modifier) -> Unit = { detailsModifier ->
+            Column(
+                modifier = detailsModifier,
+                verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                Column(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                ) {
-                    Text(
-                        text = prayerName,
-                        fontSize = 28.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        maxLines = 1,
-                        softWrap = false,
-                        autoSize = TextAutoSize.StepBased(maxFontSize = 28.sp),
-                    )
-                    Text(
-                        text = prayerTimeLineText,
-                        fontSize = 14.sp,
-                        color = Color.White.copy(alpha = 0.82f),
-                        fontWeight = FontWeight.SemiBold,
-                        maxLines = 1,
-                    )
-                }
-
                 Text(
-                    text = remainingText,
-                    fontSize = 14.sp,
-                    color = countdownPillTextColor,
+                    text = prayerName,
+                    fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    maxLines = 1,
-                    softWrap = false,
-                    autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                        .clip(RoundedCornerShape(50))
-                        .background(countdownPillBackgroundColor)
-                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                    color = Color.White,
                 )
+                Text(
+                    text = prayerTimeLineText,
+                    fontSize = 14.sp,
+                    color = Color.White.copy(alpha = 0.82f),
+                    fontWeight = FontWeight.SemiBold,
+                )
+            }
+        }
+        val remainingPill: @Composable () -> Unit = {
+            Text(
+                text = remainingText,
+                fontSize = 14.sp,
+                color = countdownPillTextColor,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(countdownPillBackgroundColor)
+                    .padding(horizontal = 12.dp, vertical = 6.dp),
+            )
+        }
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp),
+        ) {
+            if (stackHeader) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    heading(Modifier.fillMaxWidth())
+                    PhoneStatusNotice(isPhoneSilenced, hasDnd, silenceReason, Modifier.fillMaxWidth())
+                }
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    heading(Modifier.weight(1f))
+                    PhoneStatusNotice(isPhoneSilenced, hasDnd, silenceReason)
+                }
+            }
+
+            if (stackCountdown) {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    prayerDetails(Modifier.fillMaxWidth())
+                    remainingPill()
+                }
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    prayerDetails(Modifier.weight(1f))
+                    remainingPill()
+                }
             }
         }
     }
@@ -4647,613 +4854,160 @@ private fun WakeAlarmFeatureChip(text: String) {
 }
 
 @Composable
-private fun DateNavigationRow(
-    delegationId: Int,
-    selectedDate: Long,
-    isToday: Boolean,
-    canGoBack: Boolean,
-    canGoForward: Boolean,
-    onPrevious: () -> Unit,
-    onNext: () -> Unit,
-    onDateSelected: (Long) -> Unit
-) {
-    val context = LocalContext.current
-    val dateFormat = remember { SimpleDateFormat("EEEE d MMMM yyyy", Locale.forLanguageTag("ar-TN-u-nu-latn")) }
-    val dateText = remember(selectedDate) { dateFormat.format(selectedDate) }
-    val dateRange = remember(delegationId) { PrayerTimesRepository.getDateRange(context, delegationId) }
-    val openDatePicker = {
-        val cal = Calendar.getInstance().apply { timeInMillis = selectedDate }
-        val arabicLocale = Locale.forLanguageTag("ar-TN-u-nu-latn")
-        val config = android.content.res.Configuration(context.resources.configuration).apply {
-            setLocale(arabicLocale)
-        }
-        val arabicContext = android.view.ContextThemeWrapper(context, R.style.Theme_TunisianPrayerTimes)
-        arabicContext.applyOverrideConfiguration(config)
-        android.app.DatePickerDialog(
-            arabicContext,
-            { _, year, month, dayOfMonth ->
-                val picked = Calendar.getInstance().apply {
-                    set(Calendar.YEAR, year)
-                    set(Calendar.MONTH, month)
-                    set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                }
-                onDateSelected(picked.timeInMillis)
-            },
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
-        ).apply {
-            dateRange?.let { (minMs, maxMs) ->
-                datePicker.minDate = minMs
-                datePicker.maxDate = maxMs
-            }
-        }.show()
-    }
-
-    val shape = RoundedCornerShape(12.dp)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(GoldLight.copy(alpha = 0.18f))
-            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.18f)), shape)
-            .padding(horizontal = 5.dp, vertical = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        // Previous day
-        Text(
-            text = "‹",
-            fontSize = 22.sp,
-            color = if (canGoBack) GreenPrimary else TextMuted.copy(alpha = 0.3f),
-            modifier = Modifier
-                .testTag(TestTags.DATE_PREVIOUS_BUTTON)
-                .clip(RoundedCornerShape(10.dp))
-                .background(if (canGoBack) Color.White.copy(alpha = 0.70f) else Color.Transparent)
-                .then(if (canGoBack) Modifier.clickable { onPrevious() } else Modifier)
-                .padding(horizontal = 12.dp, vertical = 1.dp)
-        )
-
-        // Date label — tap to open date picker
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .testTag(TestTags.DATE_LABEL)
-                .weight(1f)
-                .clip(RoundedCornerShape(8.dp))
-                .clickable(onClick = openDatePicker)
-                .padding(horizontal = 4.dp, vertical = 4.dp)
-        ) {
-            Text(
-                text = dateText,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                color = GreenPrimaryDark,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp),
-            )
-            if (!isToday) {
-                Spacer(Modifier.width(8.dp))
-                Text(
-                    text = stringResource(R.string.date_go_back_today),
-                    fontSize = 10.sp,
-                    color = GreenPrimary,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    modifier = Modifier
-                        .testTag(TestTags.DATE_TODAY_BUTTON)
-                        .clip(RoundedCornerShape(50))
-                        .background(GreenPrimary.copy(alpha = 0.1f))
-                        .clickable { onDateSelected(Calendar.getInstance().timeInMillis) }
-                        .padding(horizontal = 7.dp, vertical = 2.dp)
-                )
-            }
-        }
-
-        // Next day
-        Text(
-            text = "›",
-            fontSize = 22.sp,
-            color = if (canGoForward) GreenPrimary else TextMuted.copy(alpha = 0.3f),
-            modifier = Modifier
-                .testTag(TestTags.DATE_NEXT_BUTTON)
-                .clip(RoundedCornerShape(10.dp))
-                .background(if (canGoForward) Color.White.copy(alpha = 0.70f) else Color.Transparent)
-                .then(if (canGoForward) Modifier.clickable { onNext() } else Modifier)
-                .padding(horizontal = 12.dp, vertical = 1.dp)
-        )
-    }
-}
-
-@Composable
-private fun PrayerRowHeader() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(9.dp))
-            .background(GoldLight.copy(alpha = 0.14f))
-            .padding(horizontal = 8.dp, vertical = 7.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = stringResource(R.string.col_prayer),
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Bold,
-            color = TextMuted,
-            maxLines = 1,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
-            modifier = Modifier.weight(1.5f)
-        )
-        Text(
-            text = stringResource(R.string.col_time),
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Bold,
-            color = TextMuted,
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
-            modifier = Modifier.weight(1.5f)
-        )
-        Row(modifier = Modifier.weight(2.2f)) {
-            Text(
-                text = stringResource(R.string.col_delay),
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
-                color = TextMuted,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
-                modifier = Modifier.weight(1f)
-            )
-            Spacer(modifier = Modifier.weight(0.4f))
-        }
-        Row(modifier = Modifier.weight(2.5f)) {
-            Text(
-                text = stringResource(R.string.col_duration),
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
-                color = TextMuted,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                autoSize = TextAutoSize.StepBased(maxFontSize = 11.sp),
-                modifier = Modifier.weight(1f)
-            )
-            Spacer(modifier = Modifier.weight(0.4f))
-        }
-    }
-}
-
-@Composable
 private fun PrayerRow(
     prayer: Prayer,
     prayerName: String,
     prayerTime: PrayerTime?,
     nextPrayerTime: PrayerTime?,
+    nextPrayerIsTomorrow: Boolean = false,
     isNextPrayer: Boolean,
-    activity: androidx.appcompat.app.AppCompatActivity,
     highlighted: Boolean = false,
+    selected: Boolean = false,
+    onSelect: () -> Unit = {},
+    onDeselect: (() -> Unit)? = null,
     draftSilenceConfig: PrayerSilenceConfig? = null,
     onDraftSilenceConfigChange: ((PrayerSilenceConfig) -> Unit)? = null,
     onConfigChanged: () -> Unit,
     onPrayerTimeClick: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
-    val usesDraftSilenceConfig = draftSilenceConfig != null && onDraftSilenceConfigChange != null
+    val usesDraft = draftSilenceConfig != null && onDraftSilenceConfigChange != null
+    var savedConfig by remember(context, prayer) { mutableStateOf(PrefsManager.getConfig(context, prayer)) }
+    val config = if (usesDraft) requireNotNull(draftSilenceConfig) else savedConfig
+    var editorOpen by rememberSaveable(prayer) { mutableStateOf(false) }
+    var undoBefore by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
+    var undoAfter by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
 
-    fun draftDelayFixedHour(): Int = draftSilenceConfig?.delayFixedHour?.takeIf { it >= 0 }
-        ?: prayerTime?.hour
-        ?: 12
-
-    fun draftDelayFixedMinute(): Int = draftSilenceConfig?.delayFixedMinute?.takeIf { it >= 0 }
-        ?: prayerTime?.minute
-        ?: 0
-
-    fun computeDraftFixedEndTime(): Pair<Int, Int> {
-        val config = draftSilenceConfig
-        if (config != null && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-            return config.fixedHour to config.fixedMinute
+    DisposableEffect(context, prayer, usesDraft) {
+        val stopObserving = if (usesDraft) ({}) else {
+            PrefsManager.observeConfigChanges(context, prayer) {
+                savedConfig = PrefsManager.getConfig(context, prayer)
+            }
         }
-        if (prayerTime != null) {
-            val calendar = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, prayerTime.hour)
-                set(Calendar.MINUTE, prayerTime.minute)
-                add(Calendar.MINUTE, config?.afterMinutes ?: PrefsManager.getAfterMinutes(context, prayer))
-            }
-            return calendar.get(Calendar.HOUR_OF_DAY) to calendar.get(Calendar.MINUTE)
+        onDispose { stopObserving() }
+    }
+    LaunchedEffect(config) {
+        if (undoAfter != null && config != undoAfter) {
+            undoBefore = null
+            undoAfter = null
         }
-        return 12 to 0
     }
 
-    // Delay state
-    var delayMode by rememberSaveable(prayer, draftSilenceConfig?.delayMode) {
-        mutableStateOf(draftSilenceConfig?.delayMode ?: PrefsManager.getDelayMode(context, prayer))
-    }
-    var delayMinutes by rememberSaveable(prayer, draftSilenceConfig?.delayMinutes) {
-        mutableStateOf((draftSilenceConfig?.delayMinutes ?: PrefsManager.getDelayMinutes(context, prayer)).toString())
-    }
-    var delayFixedH by rememberSaveable(prayer, draftSilenceConfig?.delayFixedHour) {
-        mutableIntStateOf(
-            if (usesDraftSilenceConfig) {
-                draftDelayFixedHour()
-            } else {
-                initDelayFixedHour(context, prayer, prayerTime)
-            }
-        )
-    }
-    var delayFixedM by rememberSaveable(prayer, draftSilenceConfig?.delayFixedMinute) {
-        mutableIntStateOf(
-            if (usesDraftSilenceConfig) {
-                draftDelayFixedMinute()
-            } else {
-                initDelayFixedMinute(context, prayer, prayerTime)
-            }
-        )
+    fun applyConfig(updated: PrayerSilenceConfig) {
+        if (usesDraft) {
+            onDraftSilenceConfigChange?.invoke(updated)
+        } else {
+            savedConfig = updated
+            persistPrayerSilenceConfig(context, prayer, updated)
+        }
+        onConfigChanged()
     }
 
-    // Duration/end state
-    var silenceMode by rememberSaveable(prayer, draftSilenceConfig?.mode) {
-        mutableStateOf(draftSilenceConfig?.mode ?: PrefsManager.getSilenceMode(context, prayer))
-    }
-    var afterMinutes by rememberSaveable(prayer, draftSilenceConfig?.afterMinutes) {
-        mutableStateOf((draftSilenceConfig?.afterMinutes ?: PrefsManager.getAfterMinutes(context, prayer)).toString())
-    }
-    val initialDraftFixedEndTime = remember(prayerTime, draftSilenceConfig) { computeDraftFixedEndTime() }
-    var fixedH by rememberSaveable(prayer, draftSilenceConfig?.fixedHour) {
-        mutableIntStateOf(
-            if (usesDraftSilenceConfig) {
-                initialDraftFixedEndTime.first
-            } else {
-                initFixedHour(context, prayer, prayerTime)
-            }
-        )
-    }
-    var fixedM by rememberSaveable(prayer, draftSilenceConfig?.fixedMinute) {
-        mutableIntStateOf(
-            if (usesDraftSilenceConfig) {
-                initialDraftFixedEndTime.second
-            } else {
-                initFixedMinute(context, prayer, prayerTime)
-            }
-        )
+    fun commitConfig(updated: PrayerSilenceConfig) {
+        val previous = if (usesDraft) config else PrefsManager.getConfig(context, prayer)
+        if (updated == previous) return
+        undoBefore = previous
+        undoAfter = updated
+        applyConfig(updated)
     }
 
-    fun stagedSilenceConfig(
-        currentSilenceMode: SilenceMode = silenceMode,
-        currentAfterMinutes: Int = afterMinutes.toIntOrNull() ?: 0,
-        currentFixedHour: Int = fixedH,
-        currentFixedMinute: Int = fixedM,
-        currentDelayMode: DelayMode = delayMode,
-        currentDelayMinutes: Int = delayMinutes.toIntOrNull() ?: 0,
-        currentDelayFixedHour: Int = delayFixedH,
-        currentDelayFixedMinute: Int = delayFixedM,
-    ): PrayerSilenceConfig = PrayerSilenceConfig(
-        mode = currentSilenceMode,
-        afterMinutes = currentAfterMinutes,
-        fixedHour = currentFixedHour,
-        fixedMinute = currentFixedMinute,
-        delayMode = currentDelayMode,
-        delayMinutes = currentDelayMinutes,
-        delayFixedHour = currentDelayFixedHour,
-        delayFixedMinute = currentDelayFixedMinute,
-    )
-
-    fun logSilenceConfigChange(
-        currentSilenceMode: SilenceMode = silenceMode,
-        currentAfterMinutes: Int = afterMinutes.toIntOrNull() ?: 0,
-        currentDelayMode: DelayMode = delayMode,
-    ) {
-        AnalyticsTracker.silenceConfigChanged(
-            context = context,
-            prayer = prayer,
-            mode = currentSilenceMode,
-            durationMinutes = currentAfterMinutes,
-            delayMode = currentDelayMode,
-        )
+    val validPrayerTime = prayerTime?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
+    val window = validPrayerTime?.let { resolvePrayerTimelineWindow(it, config) }
+    val warningRes = when {
+        window == null -> null
+        window.endMinutes < window.startMinutes -> R.string.prayer_timeline_invalid_window
+        nextPrayerTime != null && nextPrayerTime.hour in 0..23 && nextPrayerTime.minute in 0..59 -> {
+            val nextMinute = nextPrayerTime.minutesOfDay() + if (nextPrayerIsTomorrow) 1440 else 0
+            R.string.warning_overlaps_next_prayer.takeIf { window.endMinutes > nextMinute }
+        }
+        else -> null
     }
-
-    val validationWarning = remember(
-        prayerTime,
-        nextPrayerTime,
-        silenceMode,
-        afterMinutes,
-        fixedH,
-        fixedM,
-        delayMode,
-        delayMinutes,
-        delayFixedH,
-        delayFixedM,
-    ) {
-        resolvePrayerRowValidationWarning(
-            prayerTime = prayerTime,
-            nextPrayerTime = nextPrayerTime,
-            silenceMode = silenceMode,
-            afterMinutes = afterMinutes.toIntOrNull() ?: 0,
-            fixedHour = fixedH,
-            fixedMinute = fixedM,
-            delayMode = delayMode,
-            delayMinutes = delayMinutes.toIntOrNull() ?: 0,
-            delayFixedHour = delayFixedH,
-            delayFixedMinute = delayFixedM,
-        )
-    }
-
     val rowBackground = when {
         highlighted -> GoldLight.copy(alpha = 0.30f)
-        isNextPrayer -> NextPrayerBg
+        selected -> GreenPrimary.copy(alpha = 0.035f)
         else -> Color.Transparent
     }
-
-    Column {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(IntrinsicSize.Min)
-            .then(
-                if (highlighted || isNextPrayer) Modifier
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(rowBackground)
-                else Modifier
-            )
-            .padding(vertical = 10.dp, horizontal = 4.dp),
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp))
+            .background(rowBackground)
+            .border(1.dp, if (selected) GreenPrimary.copy(alpha = 0.18f) else Color.Transparent, RoundedCornerShape(12.dp))
+            .padding(horizontal = 10.dp, vertical = 12.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        // Prayer name
-        Text(
-            text = prayerName,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Bold,
-            color = when {
-                highlighted -> GreenPrimaryDark
-                isNextPrayer -> GreenPrimary
-                else -> PrayerNameColor
-            },
-            maxLines = 1,
-            softWrap = false,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
-            modifier = Modifier.weight(1.5f)
+        PrayerTimelineRowHeader(
+            prayer = prayer,
+            prayerName = prayerName,
+            time = validPrayerTime?.let { String.format(Locale.US, "%02d:%02d", it.hour, it.minute) } ?: "--:--",
+            isNextPrayer = isNextPrayer,
+            onPrayerTimeClick = onPrayerTimeClick,
         )
-
-        // Prayer time
-        Text(
-            text = if (prayerTime != null) {
-                String.format(Locale.US, "%02d:%02d", prayerTime.hour, prayerTime.minute)
-            } else "--:--",
-            fontSize = 14.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-            softWrap = false,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
-            modifier = Modifier
-                .testTag("prayer_time_${prayer.name}")
-                .weight(1.5f)
-                .then(
-                    if (onPrayerTimeClick != null) Modifier
-                        .clip(RoundedCornerShape(6.dp))
-                        .background(GoldLight.copy(alpha = 0.3f))
-                        .clickable(onClick = onPrayerTimeClick)
-                        .padding(vertical = 4.dp)
-                    else Modifier
-                )
-        )
-
-        // Delay control
-        Row(
-            modifier = Modifier.weight(2.2f),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
-            if (delayMode == DelayMode.MINUTES) {
-                NumberInput(
-                    value = delayMinutes,
-                    onValueChange = {
-                        delayMinutes = it
-                        val updatedDelayMinutes = it.toIntOrNull() ?: 0
-                        if (usesDraftSilenceConfig) {
-                            onDraftSilenceConfigChange?.invoke(
-                                stagedSilenceConfig(currentDelayMinutes = updatedDelayMinutes)
-                            )
-                        } else {
-                            PrefsManager.setDelayMinutes(context, prayer, updatedDelayMinutes)
-                            logSilenceConfigChange()
-                        }
-                        onConfigChanged()
-                    },
-                    modifier = Modifier.weight(1f),
-                    allowNegative = true,
-                    keyboardType = KeyboardType.Number
-                )
-            } else {
-                TimeDisplay(
-                    hour = delayFixedH,
-                    minute = delayFixedM,
-                    onClick = {
-                        val picker = MaterialTimePicker.Builder()
-                            .setTimeFormat(TimeFormat.CLOCK_24H)
-                            .setHour(if (delayFixedH >= 0) delayFixedH else 12)
-                            .setMinute(if (delayFixedM >= 0) delayFixedM else 0)
-                            .setTitleText(context.getString(R.string.pick_delay_time))
-                            .build()
-                        picker.addOnPositiveButtonClickListener {
-                            if (prayerTime != null && (picker.hour < prayerTime.hour || (picker.hour == prayerTime.hour && picker.minute < prayerTime.minute))) {
-                                Toast.makeText(context, context.getString(R.string.error_start_before_athan), Toast.LENGTH_SHORT).show()
-                                return@addOnPositiveButtonClickListener
-                            }
-                            if (silenceMode == SilenceMode.FIXED_TIME) {
-                                if (fixedH >= 0 && fixedM >= 0 && (picker.hour > fixedH || (picker.hour == fixedH && picker.minute >= fixedM))) {
-                                    Toast.makeText(context, context.getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
-                                    return@addOnPositiveButtonClickListener
-                                }
-                            }
-                            delayFixedH = picker.hour
-                            delayFixedM = picker.minute
-                            if (usesDraftSilenceConfig) {
-                                onDraftSilenceConfigChange?.invoke(
-                                    stagedSilenceConfig(
-                                        currentDelayFixedHour = picker.hour,
-                                        currentDelayFixedMinute = picker.minute,
-                                    )
-                                )
-                            } else {
-                                PrefsManager.setDelayFixedTime(context, prayer, picker.hour, picker.minute)
-                                logSilenceConfigChange()
-                            }
-                            onConfigChanged()
-                        }
-                        picker.show(activity.supportFragmentManager, "delay_picker_${prayer.name}")
-                    },
-                    modifier = Modifier.weight(1f)
-                )
-            }
-
+        if (validPrayerTime != null) {
+            PrayerSilenceTimeline(
+                prayerTime = validPrayerTime,
+                config = config,
+                selected = selected,
+                onSelect = onSelect,
+                onCommit = ::commitConfig,
+                onEdit = { onSelect(); editorOpen = true },
+                onDeselect = onDeselect,
+            )
+        } else {
+            Text(stringResource(R.string.no_prayer_data), fontSize = 13.sp, color = TextMuted)
+        }
+        warningRes?.let {
             Text(
-                text = if (delayMode == DelayMode.MINUTES) stringResource(R.string.label_delay_minutes)
-                else stringResource(R.string.label_delay_at),
+                text = stringResource(it),
+                modifier = Modifier.fillMaxWidth().testTag(TestTags.OVERLAP_WARNING)
+                    .clip(RoundedCornerShape(8.dp)).background(SilenceRed.copy(alpha = 0.06f))
+                    .padding(horizontal = 10.dp, vertical = 8.dp),
                 fontSize = 12.sp,
-                color = Gold,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1,
-                softWrap = false,
-                autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp),
-                modifier = Modifier
-                    .weight(0.4f)
-                    .clickable {
-                        val newMode = if (delayMode == DelayMode.MINUTES) DelayMode.FIXED_TIME else DelayMode.MINUTES
-                        delayMode = newMode
-                        if (usesDraftSilenceConfig) {
-                            onDraftSilenceConfigChange?.invoke(
-                                stagedSilenceConfig(currentDelayMode = newMode)
-                            )
-                        } else {
-                            PrefsManager.setDelayMode(context, prayer, newMode)
-                            logSilenceConfigChange(currentDelayMode = newMode)
-                        }
-                        onConfigChanged()
-                    }
-                    .padding(2.dp)
+                color = SilenceRed,
+                lineHeight = 18.sp,
             )
         }
-
-        // Duration/end control
-        Row(
-            modifier = Modifier.weight(2.5f),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
-            if (silenceMode == SilenceMode.DURATION) {
-                NumberInput(
-                    value = afterMinutes,
-                    onValueChange = {
-                        afterMinutes = it
-                        val updatedAfterMinutes = it.toIntOrNull() ?: 0
-                        if (usesDraftSilenceConfig) {
-                            onDraftSilenceConfigChange?.invoke(
-                                stagedSilenceConfig(currentAfterMinutes = updatedAfterMinutes)
-                            )
-                        } else {
-                            PrefsManager.setAfterMinutes(context, prayer, updatedAfterMinutes)
-                            logSilenceConfigChange(currentAfterMinutes = updatedAfterMinutes)
-                        }
-                        onConfigChanged()
-                    },
-                    modifier = Modifier.weight(1f).testTag(TestTags.durationInput(prayer.name))
+        if (selected && undoBefore != null && undoAfter == config) {
+            FlowRow(
+                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp))
+                    .background(GreenPrimary.copy(alpha = 0.06f)).padding(horizontal = 10.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                Text(
+                    text = stringResource(R.string.prayer_timeline_saved),
+                    modifier = Modifier.align(Alignment.CenterVertically),
+                    fontSize = 12.sp,
+                    color = TextMuted,
                 )
-            } else {
-                TimeDisplay(
-                    hour = fixedH,
-                    minute = fixedM,
+                TextButton(
                     onClick = {
-                        val picker = MaterialTimePicker.Builder()
-                            .setTimeFormat(TimeFormat.CLOCK_24H)
-                            .setHour(if (fixedH >= 0) fixedH else 12)
-                            .setMinute(if (fixedM >= 0) fixedM else 0)
-                            .setTitleText(context.getString(R.string.pick_end_time))
-                            .build()
-                        picker.addOnPositiveButtonClickListener {
-                            val pickedMinutes = picker.hour * 60 + picker.minute
-                            if (prayerTime != null && (picker.hour < prayerTime.hour || (picker.hour == prayerTime.hour && picker.minute < prayerTime.minute))) {
-                                Toast.makeText(context, context.getString(R.string.error_end_before_athan), Toast.LENGTH_SHORT).show()
-                                return@addOnPositiveButtonClickListener
-                            }
-                            val startMinutes = when (delayMode) {
-                                DelayMode.FIXED_TIME -> minutesOfDayOrNull(delayFixedH, delayFixedM)
-                                DelayMode.MINUTES -> prayerTime?.minutesOfDay()?.plus(delayMinutes.toIntOrNull() ?: 0)
-                            }
-                            if (startMinutes != null && pickedMinutes <= startMinutes) {
-                                Toast.makeText(context, context.getString(R.string.error_start_after_end), Toast.LENGTH_SHORT).show()
-                                return@addOnPositiveButtonClickListener
-                            }
-                            if (nextPrayerTime != null) {
-                                val nextMinutes = nextPrayerTime.hour * 60 + nextPrayerTime.minute
-                                if (pickedMinutes > nextMinutes) {
-                                    Toast.makeText(context, context.getString(R.string.error_overlaps_next_prayer), Toast.LENGTH_SHORT).show()
-                                    return@addOnPositiveButtonClickListener
-                                }
-                            }
-                            fixedH = picker.hour
-                            fixedM = picker.minute
-                            if (usesDraftSilenceConfig) {
-                                onDraftSilenceConfigChange?.invoke(
-                                    stagedSilenceConfig(
-                                        currentFixedHour = picker.hour,
-                                        currentFixedMinute = picker.minute,
-                                    )
-                                )
-                            } else {
-                                PrefsManager.setFixedTime(context, prayer, picker.hour, picker.minute)
-                                logSilenceConfigChange()
-                            }
-                            onConfigChanged()
-                        }
-                        picker.show(activity.supportFragmentManager, "picker_${prayer.name}")
+                        val previous = undoBefore
+                        val current = if (usesDraft) config else PrefsManager.getConfig(context, prayer)
+                        if (previous != null && current == undoAfter) applyConfig(previous)
+                        undoBefore = null
+                        undoAfter = null
                     },
-                    modifier = Modifier.weight(1f)
-                )
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("prayer_timeline_undo_${prayer.name}"),
+                ) {
+                    Text(stringResource(R.string.prayer_timeline_undo), color = GreenPrimaryDark)
+                }
             }
-
-            Text(
-                text = if (silenceMode == SilenceMode.DURATION) stringResource(R.string.label_duration)
-                else stringResource(R.string.label_fixed_time),
-                fontSize = 12.sp,
-                color = Gold,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1,
-                softWrap = false,
-                autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp),
-                modifier = Modifier
-                    .weight(0.4f)
-                    .clickable {
-                        val newMode = if (silenceMode == SilenceMode.DURATION) SilenceMode.FIXED_TIME else SilenceMode.DURATION
-                        silenceMode = newMode
-                        if (usesDraftSilenceConfig) {
-                            onDraftSilenceConfigChange?.invoke(
-                                stagedSilenceConfig(currentSilenceMode = newMode)
-                            )
-                        } else {
-                            PrefsManager.setSilenceMode(context, prayer, newMode)
-                            logSilenceConfigChange(currentSilenceMode = newMode)
-                        }
-                        onConfigChanged()
-                    }
-                    .padding(2.dp)
-            )
         }
     }
-
-        validationWarning?.let { warning ->
-            PrayerRowValidationWarningMessage(warning = warning)
-        }
-    } // Column
+    if (editorOpen && validPrayerTime != null) {
+        PrayerSilenceEditorSheet(
+            prayer = prayer,
+            prayerName = prayerName,
+            prayerTime = validPrayerTime,
+            config = config,
+            onDismiss = { editorOpen = false },
+            onSave = { updated -> commitConfig(updated); editorOpen = false },
+        )
+    }
 }
 
 @Composable
 private fun WakeSilenceConflictPrayerEditor(
     delegationId: Int,
-    activity: androidx.appcompat.app.AppCompatActivity,
     editorState: WakeSilenceConflictEditorState,
     onConfigChanged: (PrayerSilenceConfig) -> Unit,
 ) {
@@ -5297,7 +5051,10 @@ private fun WakeSilenceConflictPrayerEditor(
     }
     val prayerIndex = scheduledPrayers.indexOfFirst { prayerTime -> prayerTime.prayer == targetPrayer }
     val prayerTime = scheduledPrayers.getOrNull(prayerIndex)
-    val nextPrayerTime = scheduledPrayers.getOrNull(prayerIndex + 1)
+    val nextDayFajr = remember(delegationId, conflict.silenceStartAtMillis) {
+        loadNextDayFajr(context, delegationId, conflict.silenceStartAtMillis)
+    }
+    val nextPrayerTime = scheduledPrayers.getOrNull(prayerIndex + 1) ?: nextDayFajr
 
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         PrayerRow(
@@ -5305,8 +5062,9 @@ private fun WakeSilenceConflictPrayerEditor(
             prayerName = prayerName(context, targetPrayer),
             prayerTime = prayerTime,
             nextPrayerTime = nextPrayerTime,
+            nextPrayerIsTomorrow = prayerIndex == scheduledPrayers.lastIndex,
             isNextPrayer = false,
-            activity = activity,
+            selected = true,
             highlighted = false,
             draftSilenceConfig = editorState.draftSilenceConfig,
             onDraftSilenceConfigChange = onConfigChanged,
@@ -5315,114 +5073,21 @@ private fun WakeSilenceConflictPrayerEditor(
     }
 }
 
-@Composable
-private fun PrayerRowValidationWarningMessage(
-    warning: PrayerRowValidationWarning,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 4.dp, vertical = 2.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Spacer(modifier = Modifier.weight(1.5f))
-        Spacer(modifier = Modifier.weight(1.5f))
-        if (warning.target == PrayerRowValidationTarget.DURATION) {
-            Spacer(modifier = Modifier.weight(2.2f))
-        }
-        Box(
-            modifier = Modifier
-                .weight(
-                    if (warning.target == PrayerRowValidationTarget.DELAY) {
-                        2.2f
-                    } else {
-                        2.5f
-                    }
-                )
-                .testTag(TestTags.OVERLAP_WARNING)
-                .clip(RoundedCornerShape(8.dp))
-                .background(SilenceRed.copy(alpha = 0.08f))
-                .padding(horizontal = 6.dp, vertical = 5.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = stringResource(warning.messageRes),
-                fontSize = 10.sp,
-                color = SilenceRed,
-                textAlign = TextAlign.Center,
-                lineHeight = 13.sp,
-            )
-        }
-        if (warning.target == PrayerRowValidationTarget.DELAY) {
-            Spacer(modifier = Modifier.weight(2.5f))
-        }
-    }
-}
-
-private fun resolvePrayerRowValidationWarning(
-    prayerTime: PrayerTime?,
-    nextPrayerTime: PrayerTime?,
-    silenceMode: SilenceMode,
-    afterMinutes: Int,
-    fixedHour: Int,
-    fixedMinute: Int,
-    delayMode: DelayMode,
-    delayMinutes: Int,
-    delayFixedHour: Int,
-    delayFixedMinute: Int,
-): PrayerRowValidationWarning? {
-    val prayerMinutes = prayerTime?.minutesOfDay() ?: return null
-    val fixedStartMinutes = if (delayMode == DelayMode.FIXED_TIME) {
-        minutesOfDayOrNull(delayFixedHour, delayFixedMinute)
-    } else {
-        null
-    }
-    if (fixedStartMinutes != null && fixedStartMinutes < prayerMinutes) {
-        return PrayerRowValidationWarning(
-            messageRes = R.string.error_start_before_athan,
-            target = PrayerRowValidationTarget.DELAY,
-        )
-    }
-
-    val fixedEndMinutes = if (silenceMode == SilenceMode.FIXED_TIME) {
-        minutesOfDayOrNull(fixedHour, fixedMinute)
-    } else {
-        null
-    }
-    if (fixedEndMinutes != null && fixedEndMinutes < prayerMinutes) {
-        return PrayerRowValidationWarning(
-            messageRes = R.string.error_end_before_athan,
-            target = PrayerRowValidationTarget.DURATION,
-        )
-    }
-
-    val startMinutes = fixedStartMinutes ?: prayerMinutes + delayMinutes
-    if (fixedEndMinutes != null && startMinutes >= fixedEndMinutes) {
-        return PrayerRowValidationWarning(
-            messageRes = R.string.error_start_after_end,
-            target = PrayerRowValidationTarget.DURATION,
-        )
-    }
-
-    val endMinutes = when (silenceMode) {
-        SilenceMode.DURATION -> startMinutes + afterMinutes
-        SilenceMode.FIXED_TIME -> fixedEndMinutes
-    }
-    val nextPrayerMinutes = nextPrayerTime?.minutesOfDay()
-    if (endMinutes != null && nextPrayerMinutes != null && endMinutes > nextPrayerMinutes) {
-        return PrayerRowValidationWarning(
-            messageRes = R.string.warning_overlaps_next_prayer,
-            target = PrayerRowValidationTarget.DURATION,
-        )
-    }
-
-    return null
-}
-
 private fun PrayerTime.minutesOfDay(): Int = hour * 60 + minute
 
-private fun minutesOfDayOrNull(hour: Int, minute: Int): Int? =
-    if (hour >= 0 && minute >= 0) hour * 60 + minute else null
+private fun loadNextDayFajr(context: Context, delegationId: Int, dayMillis: Long): PrayerTime? {
+    val nextDay = Calendar.getInstance().apply {
+        timeInMillis = dayMillis
+        add(Calendar.DAY_OF_MONTH, 1)
+    }
+    return PrayerTimesRepository.loadDayPrayerTimes(
+        context,
+        delegationId,
+        nextDay.get(Calendar.YEAR),
+        nextDay.get(Calendar.MONTH) + 1,
+        nextDay.get(Calendar.DAY_OF_MONTH),
+    )?.fajr
+}
 
 @Composable
 private fun WakeAlarmRow(
@@ -5626,12 +5291,17 @@ private fun NumberInput(
     modifier: Modifier = Modifier,
     allowNegative: Boolean = false,
     keyboardType: KeyboardType = KeyboardType.Number,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    inputDescription: String? = null,
 ) {
     val focusManager = LocalFocusManager.current
+    // Intermediate edits belong to the field, never to saved scheduling settings.
+    // Keying by the committed value also reflects changes from another editor.
+    var editingValue by remember(value) { mutableStateOf(value) }
+    var lastValidValue by remember(value) { mutableStateOf(value) }
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         BasicTextField(
-            value = value,
+            value = editingValue,
             enabled = enabled,
             onValueChange = { new ->
                 // Normalize Eastern Arabic (٠-٩) and Extended Arabic-Indic (۰-۹) to 0-9
@@ -5640,15 +5310,23 @@ private fun NumberInput(
                     // Allow optional leading '-' followed by up to 3 digits
                     val negative = normalized.startsWith("-")
                     val digits = normalized.filter { it in '0'..'9' }.take(3)
-                    if (negative && digits.isNotEmpty()) "-$digits" else digits
+                    if (negative) "-$digits" else digits
                 } else {
                     // Only allow digits, max 3 chars
                     normalized.filter { it in '0'..'9' }.take(3)
                 }
-                onValueChange(filtered)
+                editingValue = filtered
+                if (filtered.toIntOrNull() != null) {
+                    lastValidValue = filtered
+                    if (filtered != value) onValueChange(filtered)
+                }
             },
             modifier = modifier
-                .heightIn(min = 36.dp)
+                .heightIn(min = 48.dp)
+                .onFocusChanged { focusState ->
+                    if (!focusState.isFocused) editingValue = lastValidValue
+                }
+                .semantics { inputDescription?.let { contentDescription = it } }
                 .clip(RoundedCornerShape(6.dp))
                 .background(Color.White)
                 .then(
@@ -5665,15 +5343,20 @@ private fun NumberInput(
                 textDirection = TextDirection.Ltr
             ),
             keyboardOptions = KeyboardOptions(
-                keyboardType = if (allowNegative) KeyboardType.Phone else keyboardType
+                keyboardType = if (allowNegative) KeyboardType.Phone else keyboardType,
+                imeAction = ImeAction.Done,
             ),
-            keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+            keyboardActions = KeyboardActions(onDone = {
+                editingValue = lastValidValue
+                focusManager.clearFocus()
+            }),
             singleLine = true,
             decorationBox = { innerTextField ->
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .heightIn(min = 40.dp)
                         .background(
                             color = Color.White,
                             shape = RoundedCornerShape(6.dp)
@@ -5689,34 +5372,6 @@ private fun NumberInput(
                     innerTextField()
                 }
             }
-        )
-    }
-}
-
-@Composable
-private fun TimeDisplay(
-    hour: Int,
-    minute: Int,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-            .heightIn(min = 36.dp)
-            .clip(RoundedCornerShape(6.dp))
-            .background(GoldLight.copy(alpha = 0.3f))
-            .clickable(onClick = onClick)
-            .padding(horizontal = 2.dp)
-    ) {
-        Text(
-            text = if (hour >= 0 && minute >= 0) String.format(Locale.US, "%02d:%02d", hour, minute) else "--:--",
-            fontSize = 13.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-            softWrap = false,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 13.sp)
         )
     }
 }
@@ -5922,31 +5577,40 @@ private fun ManualSilenceButton(
 
             Spacer(Modifier.height(12.dp))
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                ManualSilenceModeChip(
-                    text = stringResource(R.string.manual_silence_mode_until),
-                    selected = manualSilenceMode == ManualSilenceMode.UNTIL_STOPPED,
-                    testTag = TestTags.MANUAL_SILENCE_MODE_UNTIL,
-                    onClick = { onModeChange(ManualSilenceMode.UNTIL_STOPPED) },
-                    modifier = Modifier.weight(1f)
-                )
-                ManualSilenceModeChip(
-                    text = stringResource(R.string.manual_silence_mode_duration),
-                    selected = manualSilenceMode == ManualSilenceMode.DURATION,
-                    testTag = TestTags.MANUAL_SILENCE_MODE_DURATION,
-                    onClick = { onModeChange(ManualSilenceMode.DURATION) },
-                    modifier = Modifier.weight(1f)
-                )
-                ManualSilenceModeChip(
-                    text = stringResource(R.string.manual_silence_mode_prayer),
-                    selected = manualUsesPrayer,
-                    testTag = TestTags.MANUAL_SILENCE_MODE_PRAYER,
-                    onClick = { onModeChange(ManualSilenceMode.UNTIL_PRAYER) },
-                    modifier = Modifier.weight(1f)
-                )
+            BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+                val fontScale = LocalDensity.current.fontScale
+                val minimumChoiceWidth = (92f * fontScale.coerceAtLeast(1f)).dp
+                val choiceCount = ((maxWidth + 8.dp) / (minimumChoiceWidth + 8.dp))
+                    .toInt().coerceIn(1, 3)
+                val choiceWidth = (maxWidth - 8.dp * (choiceCount - 1)) / choiceCount
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    maxItemsInEachRow = choiceCount,
+                ) {
+                    ManualSilenceModeChip(
+                        text = stringResource(R.string.manual_silence_mode_until),
+                        selected = manualSilenceMode == ManualSilenceMode.UNTIL_STOPPED,
+                        testTag = TestTags.MANUAL_SILENCE_MODE_UNTIL,
+                        onClick = { onModeChange(ManualSilenceMode.UNTIL_STOPPED) },
+                        modifier = Modifier.width(choiceWidth),
+                    )
+                    ManualSilenceModeChip(
+                        text = stringResource(R.string.manual_silence_mode_duration),
+                        selected = manualSilenceMode == ManualSilenceMode.DURATION,
+                        testTag = TestTags.MANUAL_SILENCE_MODE_DURATION,
+                        onClick = { onModeChange(ManualSilenceMode.DURATION) },
+                        modifier = Modifier.width(choiceWidth),
+                    )
+                    ManualSilenceModeChip(
+                        text = stringResource(R.string.manual_silence_mode_prayer),
+                        selected = manualUsesPrayer,
+                        testTag = TestTags.MANUAL_SILENCE_MODE_PRAYER,
+                        onClick = { onModeChange(ManualSilenceMode.UNTIL_PRAYER) },
+                        modifier = Modifier.width(choiceWidth),
+                    )
+                }
             }
 
             AnimatedVisibility(
@@ -5954,44 +5618,66 @@ private fun ManualSilenceButton(
                 enter = expandVertically(),
                 exit = shrinkVertically()
             ) {
-                Row(
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(
                         text = stringResource(R.string.manual_silence_duration_label),
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,
                         color = PrayerNameColor,
-                        modifier = Modifier.width(48.dp)
                     )
-                    NumberInput(
-                        value = manualDurationHours,
-                        onValueChange = onDurationHoursChange,
-                        modifier = Modifier
-                            .width(56.dp)
-                            .testTag(TestTags.MANUAL_SILENCE_DURATION_INPUT)
-                    )
-                    Spacer(Modifier.width(4.dp))
-                    Text(
-                        text = stringResource(R.string.manual_silence_hours_label),
-                        fontSize = 13.sp,
-                        color = TextMuted
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    NumberInput(
-                        value = manualDurationMinutes,
-                        onValueChange = onDurationMinutesChange,
-                        modifier = Modifier.width(56.dp)
-                    )
-                    Spacer(Modifier.width(4.dp))
-                    Text(
-                        text = stringResource(R.string.manual_silence_minutes_label),
-                        fontSize = 13.sp,
-                        color = TextMuted
-                    )
+                    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+                        val fontScale = LocalDensity.current.fontScale
+                        val minimumFieldWidth = (96f * fontScale.coerceAtLeast(1f)).dp
+                        val fieldCount = if (maxWidth >= minimumFieldWidth * 2 + 8.dp) 2 else 1
+                        val fieldWidth = (maxWidth - 8.dp * (fieldCount - 1)) / fieldCount
+                        FlowRow(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            maxItemsInEachRow = fieldCount,
+                        ) {
+                            Column(
+                                modifier = Modifier.width(fieldWidth),
+                                verticalArrangement = Arrangement.spacedBy(4.dp),
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.manual_silence_hours_label),
+                                    fontSize = 13.sp,
+                                    color = PrayerNameColor,
+                                )
+                                NumberInput(
+                                    value = manualDurationHours,
+                                    onValueChange = onDurationHoursChange,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .heightIn(min = 48.dp)
+                                        .testTag(TestTags.MANUAL_SILENCE_DURATION_INPUT),
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.width(fieldWidth),
+                                verticalArrangement = Arrangement.spacedBy(4.dp),
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.manual_silence_minutes_label),
+                                    fontSize = 13.sp,
+                                    color = PrayerNameColor,
+                                )
+                                NumberInput(
+                                    value = manualDurationMinutes,
+                                    onValueChange = onDurationMinutesChange,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .heightIn(min = 48.dp),
+                                )
+                            }
+                        }
+                    }
                 }
             }
 
@@ -6041,9 +5727,10 @@ private fun ManualSilenceButton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp)
-                    .height(56.dp)
+                    .heightIn(min = 56.dp)
                     .testTag(TestTags.MANUAL_SILENCE_BUTTON),
                 shape = RoundedCornerShape(16.dp),
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = bgColor)
             ) {
                 Text(
@@ -6068,7 +5755,7 @@ private fun ManualSilenceModeChip(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-            .height(74.dp)
+            .heightIn(min = 74.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(if (selected) GreenPrimary.copy(alpha = 0.14f) else GoldLight.copy(alpha = 0.18f))
             .clickable(onClick = onClick)
@@ -6077,13 +5764,11 @@ private fun ManualSilenceModeChip(
     ) {
         Text(
             text = text,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             color = if (selected) GreenPrimaryDark else TextDark,
             fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
             textAlign = TextAlign.Center,
-            lineHeight = 18.sp,
-            maxLines = 2,
-            autoSize = TextAutoSize.StepBased(maxFontSize = 12.sp)
+            lineHeight = 20.sp,
         )
     }
 }
@@ -6099,6 +5784,8 @@ private fun ManualSilencePrayerChip(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
+            .heightIn(min = 48.dp)
+            .widthIn(min = 48.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(if (selected) GreenPrimary.copy(alpha = 0.14f) else Color.White)
             .clickable(onClick = onClick)
@@ -6107,7 +5794,7 @@ private fun ManualSilencePrayerChip(
     ) {
         Text(
             text = text,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             color = if (selected) GreenPrimaryDark else TextDark,
             fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
             textAlign = TextAlign.Center
@@ -6312,54 +5999,6 @@ private fun isIgnoringBatteryOptimizations(context: Context): Boolean {
     return pm.isIgnoringBatteryOptimizations(context.packageName)
 }
 
-private fun initDelayFixedHour(context: Context, prayer: Prayer, prayerTime: PrayerTime?): Int {
-    val h = PrefsManager.getDelayFixedHour(context, prayer)
-    if (h >= 0) return h
-    if (prayerTime != null) {
-        PrefsManager.setDelayFixedTime(context, prayer, prayerTime.hour, prayerTime.minute)
-        return prayerTime.hour
-    }
-    return 12
-}
-
-private fun initDelayFixedMinute(context: Context, prayer: Prayer, prayerTime: PrayerTime?): Int {
-    val m = PrefsManager.getDelayFixedMinute(context, prayer)
-    if (m >= 0) return m
-    if (prayerTime != null) return prayerTime.minute
-    return 0
-}
-
-private fun initFixedHour(context: Context, prayer: Prayer, prayerTime: PrayerTime?): Int {
-    val h = PrefsManager.getFixedTimeHour(context, prayer)
-    if (h >= 0) return h
-    if (prayerTime != null) {
-        val cal = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, prayerTime.hour)
-            set(Calendar.MINUTE, prayerTime.minute)
-            add(Calendar.MINUTE, PrefsManager.getAfterMinutes(context, prayer))
-        }
-        val fh = cal.get(Calendar.HOUR_OF_DAY)
-        val fm = cal.get(Calendar.MINUTE)
-        PrefsManager.setFixedTime(context, prayer, fh, fm)
-        return fh
-    }
-    return 12
-}
-
-private fun initFixedMinute(context: Context, prayer: Prayer, prayerTime: PrayerTime?): Int {
-    val m = PrefsManager.getFixedTimeMinute(context, prayer)
-    if (m >= 0) return m
-    if (prayerTime != null) {
-        val cal = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, prayerTime.hour)
-            set(Calendar.MINUTE, prayerTime.minute)
-            add(Calendar.MINUTE, PrefsManager.getAfterMinutes(context, prayer))
-        }
-        return cal.get(Calendar.MINUTE)
-    }
-    return 0
-}
-
 private fun startOfDayMillis(sourceTimeInMillis: Long): Long {
     val calendar = Calendar.getInstance().apply {
         timeInMillis = sourceTimeInMillis
@@ -6493,12 +6132,7 @@ private fun persistPrayerSilenceConfig(
     prayer: Prayer,
     config: PrayerSilenceConfig,
 ) {
-    PrefsManager.setSilenceMode(context, prayer, config.mode)
-    PrefsManager.setAfterMinutes(context, prayer, config.afterMinutes)
-    PrefsManager.setFixedTime(context, prayer, config.fixedHour, config.fixedMinute)
-    PrefsManager.setDelayMode(context, prayer, config.delayMode)
-    PrefsManager.setDelayMinutes(context, prayer, config.delayMinutes)
-    PrefsManager.setDelayFixedTime(context, prayer, config.delayFixedHour, config.delayFixedMinute)
+    PrefsManager.setConfig(context, prayer, config)
     AnalyticsTracker.silenceConfigChanged(
         context = context,
         prayer = prayer,

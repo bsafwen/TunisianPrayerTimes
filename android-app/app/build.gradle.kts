@@ -1,9 +1,15 @@
 import org.gradle.api.GradleException
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.FileSystemOperations
+import javax.inject.Inject
 import java.util.Properties
 
+val unsignedRelease = providers.gradleProperty("unsignedRelease")
+    .map { it.toBooleanStrict() }
+    .getOrElse(false)
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 val keystoreProperties = Properties().apply {
-    if (keystorePropertiesFile.exists()) {
+    if (!unsignedRelease && keystorePropertiesFile.exists()) {
         keystorePropertiesFile.inputStream().use(::load)
     }
 }
@@ -15,7 +21,7 @@ fun requireKeystoreProperty(name: String): String {
         ?: throw GradleException("Missing '$name' in ${keystorePropertiesFile.name}.")
 }
 
-if (isReleaseTask && !keystorePropertiesFile.exists()) {
+if (isReleaseTask && !unsignedRelease && !keystorePropertiesFile.exists()) {
     throw GradleException("Missing ${keystorePropertiesFile.path}. Create it before running release builds.")
 }
 
@@ -26,13 +32,48 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+// Package the canonical announcements for offline calendar browsing without
+// maintaining a second hand-copied set of official dates in app/src/main/assets.
+abstract class BundleOfficialIslamicDates : DefaultTask() {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val announcements: DirectoryProperty
+
+    @get:OutputDirectory
+    abstract val outputDirectory: DirectoryProperty
+
+    @get:Inject
+    abstract val fileSystem: FileSystemOperations
+
+    @TaskAction
+    fun bundle() {
+        fileSystem.sync {
+            from(announcements) {
+                include("*.json")
+                into("official-islamic-dates")
+            }
+            into(outputDirectory)
+        }
+    }
+}
+
+val bundleOfficialIslamicDates by tasks.registering(BundleOfficialIslamicDates::class) {
+    announcements.set(rootProject.layout.projectDirectory.dir("../data/official-islamic-dates"))
+    outputDirectory.set(layout.buildDirectory.dir("generated/officialIslamicDatesAssets"))
+}
+
+androidComponents.onVariants { variant ->
+    variant.sources.assets?.addGeneratedSourceDirectory(bundleOfficialIslamicDates, BundleOfficialIslamicDates::outputDirectory)
+}
+
 android {
     namespace = "com.tunisianprayertimes"
     compileSdk = 36
 
+
     signingConfigs {
         create("release") {
-            if (keystorePropertiesFile.exists()) {
+            if (!unsignedRelease && keystorePropertiesFile.exists()) {
                 storeFile = file(requireKeystoreProperty("storeFile"))
                 storePassword = requireKeystoreProperty("storePassword")
                 keyAlias = requireKeystoreProperty("keyAlias")
@@ -66,7 +107,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (unsignedRelease) null else signingConfigs.getByName("release")
             ndk {
                 debugSymbolLevel = "FULL"
             }
@@ -128,6 +169,8 @@ dependencies {
     testImplementation("androidx.test.ext:junit:1.3.0")
     testImplementation("androidx.test:runner:1.7.0")
     testImplementation("androidx.work:work-testing:2.10.1")
+    testImplementation(platform("androidx.compose:compose-bom:2025.04.01"))
+    testImplementation("androidx.compose.ui:ui-test-junit4")
 
     // Instrumented tests (Compose)
     androidTestImplementation("androidx.test:core:1.7.0")

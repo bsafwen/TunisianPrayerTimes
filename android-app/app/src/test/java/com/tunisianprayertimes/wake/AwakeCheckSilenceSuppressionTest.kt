@@ -10,6 +10,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceModeController
+import kotlinx.coroutines.runBlocking
 import java.util.Calendar
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -33,6 +34,7 @@ class AwakeCheckSilenceSuppressionTest {
     @Before
     fun setup() {
         context = ApplicationProvider.getApplicationContext()
+        runBlocking { PrayerWakeRepository(context).clearAllWakeConfigs() }
         context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE)
             .edit()
             .clear()
@@ -160,8 +162,8 @@ class AwakeCheckSilenceSuppressionTest {
         scheduledTriggerAtMillis: Long? = null,
         autoSilenceOverrideAllowed: Boolean = false,
     ) {
-        AwakeCheckReceiver().onReceive(
-            context,
+        context.deliverWakeBroadcast(
+            AwakeCheckReceiver(),
             Intent(context, AwakeCheckReceiver::class.java)
                 .setAction(AwakeCheckReceiver.ACTION_START_AWAKE_CHECK)
                 .putExtra(EXTRA_EVENT_ID, eventId)

@@ -66,6 +66,58 @@ class LocalityRepositoryTest {
         assertTrue(searchLocalities(LocalityRepository.loadAll(context), "zzzznonexistent").isEmpty())
     }
 
+    @Test fun `Megrine picker has one row per repeated place and keeps Sidi Rezig 2 separate`() {
+        val rows = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        val matches = searchLocalities(rows, "megrine")
+        listOf("مقرين", "جوهرة", "مقرين الرياض", "سيدي رزيق", "سيدي رزيق 2", "منزل مبروك").forEach { name ->
+            assertEquals("Repeated or missing $name", 1, matches.count { it.name == name })
+        }
+        listOf("جوهرة", "مقرين الرياض", "سيدي رزيق").forEach { name ->
+            assertEquals("معتمدية مقرين", matches.single { it.name == name }.parentName)
+        }
+        assertEquals(matches.map { it.id }, searchLocalities(rows, "Mégrine").map { it.id })
+        assertEquals(matches.map { it.id }.toSet(), searchLocalities(rows, "مقرين").map { it.id }.toSet())
+    }
+
+    @Test fun `both original Megrine polygon selections highlight their single picker row`() {
+        val all = LocalityRepository.loadAll(context)
+        val picker = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        listOf(
+            "osm:relation:7174626" to "osm:way:124689902",
+            "osm:relation:7174613" to "osm:way:103565487",
+        ).forEach { (sectorId, suburbId) ->
+            val row = picker.single { it.id == sectorId }
+            assertTrue(row.representsSelection(sectorId))
+            assertTrue(row.representsSelection(suburbId))
+            assertTrue(all.any { it.id == sectorId && it.hasBoundary })
+            val suburb = all.single { it.id == suburbId && it.hasBoundary }
+            PrefsManager.setLocality(context, suburb)
+            assertEquals(suburbId, LocalityRepository.selected(context)?.id)
+            assertTrue(row.representsSelection(LocalityRepository.selected(context)!!.id))
+        }
+    }
+
+    @Test fun `grouping preserves aliases but never merges unverified homonyms`() {
+        val sector = Locality("sector", "Same name", "Parent", 1, 1, "same name official")
+        val suburb = sector.copy(id = "suburb", searchText = "same name local alias", pickerGroupId = "sector")
+        val separatePlace = sector.copy(id = "elsewhere", searchText = "same name elsewhere")
+        val rows = groupPickerLocalities(listOf(sector, suburb, separatePlace))
+        assertEquals(listOf("sector", "elsewhere"), rows.map { it.id })
+        assertEquals("sector", searchLocalities(rows, "local alias").single().id)
+        assertTrue(rows.first().representsSelection("suburb"))
+        assertFalse(rows.last().representsSelection("suburb"))
+    }
+
+    @Test fun `nearest timetable name does not make a place part of its delegation in search`() {
+        val source = Delegation(id = 1, nomAr = "مصدر قريب", nomFr = "Nearby source", nomEn = "Nearby source", lat = 36.8, lng = 10.1)
+        val governor = Gouvernorat(id = 1, nomAr = "ولاية", nomFr = "Governorate", nomEn = "Governorate", delegations = listOf(source))
+        val place = Locality("test", "Actual place", "Actual parent", 1, 1, "actual place actual parent", lat = 36.8, lng = 10.1)
+        val rows = enrichLocalityCatalog(listOf(place), listOf(governor))
+        assertTrue(searchLocalities(rows, "Nearby source").isEmpty())
+        assertEquals(place.id, searchLocalities(rows, "Actual parent").single().id)
+        assertEquals(1, withAvailablePrayerSource(rows.single(), listOf(source))?.delegationId)
+    }
+
     @Test fun `manual place uses nearest available source regardless of its stored parent`() {
         val place = Locality("test", "Test", "Parent", 1, 1, "test", lat = 36.8, lng = 10.1)
         val distant = Delegation(id = 1, nomAr = "A", nomFr = "A", nomEn = "A", lat = 36.9, lng = 10.2)

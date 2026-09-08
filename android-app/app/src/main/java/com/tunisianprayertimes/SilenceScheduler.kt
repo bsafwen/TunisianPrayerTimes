@@ -1,6 +1,7 @@
 package com.tunisianprayertimes
 
 import android.app.AlarmManager
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -18,6 +19,9 @@ object SilenceScheduler {
     private const val ACTION_DELEGATION_CHECK = "com.tunisianprayertimes.ACTION_DELEGATION_CHECK"
     private const val ACTION_RESCHEDULE = "com.tunisianprayertimes.ACTION_RESCHEDULE"
     private const val EXTRA_PRAYER = "extra_prayer"
+    private const val EXTRA_EID_EVENT_DAY = "extra_eid_event_day"
+    private const val EXTRA_EID_WINDOW_START = "extra_eid_window_start"
+    private const val EXTRA_EID_WINDOW_END = "extra_eid_window_end"
     private const val DELEGATION_CHECK_REQUEST_CODE_BASE = 10_000
     private const val POST_FINAL_WINDOW_RESCHEDULE_REQUEST_CODE = 9998
     private const val MIDNIGHT_RESCHEDULE_REQUEST_CODE = 9999
@@ -36,6 +40,31 @@ object SilenceScheduler {
         scheduleAllInternal(context, Calendar.getInstance())
     }
 
+    /** Called when announcements change, including while no screen is open. */
+    @Synchronized
+    fun onOfficialDatesChanged(context: Context) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (!PrefsManager.isEnabled(context) ||
+            !notificationManager.isNotificationPolicyAccessGranted ||
+            (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms())) {
+            cancelAll(context)
+            return
+        }
+        if (PrefsManager.isDisabledOutsideTunisia(context)) {
+            EidSilenceWindows.prayers.forEach { cancelPrayerAlarms(context, it) }
+            return
+        }
+        val now = Calendar.getInstance()
+        if (EidSilenceWindows.hasNormalCarryOver(context, now)) {
+            // The normal scheduler prepares today's prayers. Leave yesterday's
+            // still-active normal window and its end alarm intact during this refresh.
+            reconcileEidAlarms(context, now)
+        } else {
+            scheduleAllInternal(context, now, allowDelegationBridge = false)
+        }
+    }
+
     /**
      * Returns the [Prayer] whose silence window currently contains [now], or null.
      * Also returns the nearest upcoming prayer if auto-silence is already active
@@ -44,11 +73,12 @@ object SilenceScheduler {
     fun currentSilenceWindowPrayer(context: Context): Prayer? {
         RamadanOverrideChecker.loadCachedOverrideIfNeeded()
         val now = Calendar.getInstance()
+        val carriedEid = EidSilenceWindows.nearby(context, now).firstOrNull { it.contains(now.timeInMillis) }
         val delegationId = PrefsManager.getDelegationId(context)
         val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
             context, delegationId,
             now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH),
-        ) ?: return null
+        ) ?: return carriedEid?.prayer
         val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
@@ -96,6 +126,7 @@ object SilenceScheduler {
         }
         // If auto-silence is active but we're in the gap between old/new delegation times,
         // return the imminent prayer so the UI can record dismissal correctly.
+        if (carriedEid != null) return carriedEid.prayer
         if (nearestImminentPrayer != null && PrefsManager.isAutoSilenceActive(context)) {
             return nearestImminentPrayer
         }
@@ -103,13 +134,15 @@ object SilenceScheduler {
     }
 
     @VisibleForTesting
-    internal fun scheduleAllInternal(context: Context, now: Calendar) {
+    @Synchronized
+    internal fun scheduleAllInternal(context: Context, now: Calendar, allowDelegationBridge: Boolean = true) {
         if (!PrefsManager.isEnabled(context)) {
             cancelAll(context)
             return
         }
 
         PrefsManager.applyRamadanIshaOverrideIfNeeded(context)
+        val eidWindows = reconcileEidAlarms(context, now)
 
         val delegationId = PrefsManager.getDelegationId(context)
         val year = now.get(Calendar.YEAR)
@@ -121,20 +154,20 @@ object SilenceScheduler {
 
         if (todayTimes == null) {
             Log.w(TAG, "No prayer times found for $delegationId/$year/$month/$day")
-            if (SilenceModeController.disableAutoSilence(context)) {
+            if (eidWindows.none { it.contains(now.timeInMillis) } && SilenceModeController.disableAutoSilence(context)) {
                 SilenceModeController.notifyIfMissedCallDuringSilence(context)
             }
             return
         }
 
-        var currentlyInSilenceWindow = false
-        var earliestUpcomingSilenceMs = Long.MAX_VALUE
-        var latestWindowEndMs = Long.MIN_VALUE
+        var currentlyInSilenceWindow = eidWindows.any { it.contains(now.timeInMillis) }
+        var earliestUpcomingSilenceMs = eidWindows.filter { it.start > now.timeInMillis }.minOfOrNull { it.start } ?: Long.MAX_VALUE
+        var latestWindowEndMs = eidWindows.filter { !it.eventDate.isAfter(now.toLocalDate()) }.maxOfOrNull { it.end } ?: Long.MIN_VALUE
 
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
-        for (prayerTime in scheduledPrayersForDate(context, todayTimes, now, isFriday, jomoaaH, jomoaaM)) {
+        for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
             val prayerStartTime = prayerStartTime(now, prayerTime)
@@ -230,7 +263,7 @@ object SilenceScheduler {
         // MAX_DELEGATION_SHIFT_MS, a delegation change likely shifted the window
         // slightly — keep the phone silenced so the user isn't interrupted.
         if (!currentlyInSilenceWindow) {
-            val imminentWindow = PrefsManager.isAutoSilenceActive(context)
+            val imminentWindow = allowDelegationBridge && PrefsManager.isAutoSilenceActive(context)
                 && earliestUpcomingSilenceMs - now.timeInMillis <= MAX_DELEGATION_SHIFT_MS
             if (!imminentWindow) {
                 if (SilenceModeController.disableAutoSilence(context)) {
@@ -263,7 +296,9 @@ object SilenceScheduler {
      * This acts as a safety net: if the midnight reschedule alarm is killed by aggressive
      * OEM battery optimization, prayers will still fire because they were set hours in advance.
      */
+    @Synchronized
     internal fun scheduleTomorrowPrayers(context: Context, delegationId: Int, now: Calendar) {
+        reconcileEidAlarms(context, now)
         val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         val tYear = tomorrow.get(Calendar.YEAR)
         val tMonth = tomorrow.get(Calendar.MONTH) + 1
@@ -277,7 +312,7 @@ object SilenceScheduler {
         val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
-        for (prayerTime in scheduledPrayersForDate(context, tomorrowTimes, tomorrow, isFriday, jomoaaH, jomoaaM)) {
+        for (prayerTime in tomorrowTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
             val prayerStartTime = prayerStartTime(tomorrow, prayerTime)
             scheduleDelegationCheckIfNeeded(context, now, prayerStartTime, prayerTime.prayer)
@@ -326,15 +361,11 @@ object SilenceScheduler {
         }
     }
 
+    @Synchronized
     fun cancelAll(context: Context) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         for (prayer in Prayer.values()) {
-            val silenceIntent = createPendingIntent(context, ACTION_SILENCE, prayer)
-            val unsilenceIntent = createPendingIntent(context, ACTION_UNSILENCE, prayer)
-            val delegationCheckIntent = createPendingIntent(context, ACTION_DELEGATION_CHECK, prayer)
-            alarmManager.cancel(silenceIntent)
-            alarmManager.cancel(unsilenceIntent)
-            alarmManager.cancel(delegationCheckIntent)
+            cancelPrayerAlarms(context, prayer)
         }
         // Cancel daily reschedule safety nets.
         alarmManager.cancel(createReschedulePendingIntent(context, MIDNIGHT_RESCHEDULE_REQUEST_CODE))
@@ -343,9 +374,10 @@ object SilenceScheduler {
         SilenceModeController.disableAutoSilence(context)
     }
 
-    private fun scheduleExactAlarm(context: Context, triggerAtMillis: Long, action: String, prayer: Prayer) {
+    private fun scheduleExactAlarm(context: Context, triggerAtMillis: Long, action: String, prayer: Prayer,
+        eidWindow: EidSilenceWindows.Window? = null) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val pendingIntent = createPendingIntent(context, action, prayer)
+        val pendingIntent = createPendingIntent(context, action, prayer, eidWindow)
 
         // Check exact alarm permission on Android 12+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
@@ -365,7 +397,8 @@ object SilenceScheduler {
         )
     }
 
-    private fun scheduleDelegationCheckIfNeeded(context: Context, now: Calendar, prayerStartTime: Calendar, prayer: Prayer) {
+    private fun scheduleDelegationCheckIfNeeded(context: Context, now: Calendar, prayerStartTime: Calendar, prayer: Prayer,
+        eidWindow: EidSilenceWindows.Window? = null) {
         if (!PrefsManager.isAutoLocationUpdateEnabled(context) || !DelegationLocator.hasLocationPermission(context)) {
             return
         }
@@ -375,10 +408,11 @@ object SilenceScheduler {
 
         val idealTriggerAtMillis = prayerStartTime.timeInMillis - TimeUnit.MINUTES.toMillis(DELEGATION_CHECK_LEAD_MINUTES)
         val triggerAtMillis = maxOf(idealTriggerAtMillis, now.timeInMillis)
-        scheduleDelegationCheckAlarm(context, triggerAtMillis, prayer)
+        scheduleDelegationCheckAlarm(context, triggerAtMillis, prayer, eidWindow)
     }
 
-    private fun scheduleDelegationCheckAlarm(context: Context, triggerAtMillis: Long, prayer: Prayer) {
+    private fun scheduleDelegationCheckAlarm(context: Context, triggerAtMillis: Long, prayer: Prayer,
+        eidWindow: EidSilenceWindows.Window? = null) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
@@ -389,7 +423,7 @@ object SilenceScheduler {
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             triggerAtMillis,
-            createPendingIntent(context, ACTION_DELEGATION_CHECK, prayer),
+            createPendingIntent(context, ACTION_DELEGATION_CHECK, prayer, eidWindow),
         )
     }
 
@@ -453,10 +487,91 @@ object SilenceScheduler {
     }
 
     private fun cancelPrayerAlarms(context: Context, prayer: Prayer) {
-        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(createPendingIntent(context, ACTION_SILENCE, prayer))
-        alarmManager.cancel(createPendingIntent(context, ACTION_UNSILENCE, prayer))
-        alarmManager.cancel(createPendingIntent(context, ACTION_DELEGATION_CHECK, prayer))
+        cancelPrayerAlarm(context, ACTION_SILENCE, prayer)
+        cancelPrayerAlarm(context, ACTION_UNSILENCE, prayer)
+        cancelPrayerAlarm(context, ACTION_DELEGATION_CHECK, prayer)
+    }
+
+    private fun reconcileEidAlarms(context: Context, now: Calendar): List<EidSilenceWindows.Window> {
+        val windows = EidSilenceWindows.nearby(context, now)
+        for (prayer in EidSilenceWindows.prayers) {
+            val window = windows.firstOrNull { it.prayer == prayer }
+            if (window == null) {
+                // Omitted Eid prayers still have request codes from yesterday's
+                // estimate. Cancel their start, end and pre-prayer location check.
+                cancelPrayerAlarms(context, prayer)
+                continue
+            }
+            if (window.start > now.timeInMillis) {
+                scheduleExactAlarm(context, window.start, ACTION_SILENCE, prayer, window)
+            } else {
+                cancelPrayerAlarm(context, ACTION_SILENCE, prayer)
+            }
+            scheduleExactAlarm(context, window.end, ACTION_UNSILENCE, prayer, window)
+            if (window.prayerStart > now.timeInMillis && PrefsManager.isAutoLocationUpdateEnabled(context) &&
+                DelegationLocator.hasLocationPermission(context)) {
+                val start = (now.clone() as Calendar).apply { timeInMillis = window.prayerStart }
+                scheduleDelegationCheckIfNeeded(context, now, start, prayer, window)
+            } else {
+                cancelPrayerAlarm(context, ACTION_DELEGATION_CHECK, prayer)
+            }
+            if (window.contains(now.timeInMillis)) {
+                val dismissed = PrefsManager.getAutoSilenceDismissedPrayer(context) == prayer.name &&
+                    PrefsManager.getAutoSilenceDismissedUntilMillis(context) >= window.start - MAX_DELEGATION_SHIFT_MS
+                if (!dismissed) {
+                    PrefsManager.clearAutoSilenceDismissed(context)
+                    SilenceModeController.enableAutoSilence(context, prayer)
+                }
+            }
+        }
+        return windows
+    }
+
+    /**
+     * AlarmManager cancellation cannot retract an already-dispatched broadcast.
+     * Old untagged intents remain compatible, but must match a current Eid window.
+     */
+    internal fun handleEidAlarm(context: Context, intent: Intent): Boolean {
+        val prayer = runCatching { Prayer.valueOf(intent.getStringExtra(EXTRA_PRAYER) ?: "") }.getOrNull()
+            ?: return false
+        if (prayer !in EidSilenceWindows.prayers || intent.action !in listOf(ACTION_SILENCE, ACTION_UNSILENCE, ACTION_DELEGATION_CHECK)) return false
+
+        // Reconcile the whole current state at an Eid end. In particular, a
+        // delayed/stale end must not force normal mode during another prayer.
+        if (intent.action == ACTION_UNSILENCE) {
+            onOfficialDatesChanged(context)
+            return true
+        }
+        val now = Calendar.getInstance()
+        val candidates = if (intent.hasExtra(EXTRA_EID_EVENT_DAY)) {
+            runCatching { LocalDate.ofEpochDay(intent.getLongExtra(EXTRA_EID_EVENT_DAY, Long.MIN_VALUE)) }
+                .getOrNull()?.let { EidSilenceWindows.forDate(context, prayer, it, now) }?.let(::listOf).orEmpty()
+        } else {
+            EidSilenceWindows.nearby(context, now).filter { it.prayer == prayer }
+        }
+        val matches = candidates.any { window ->
+            val sameWindow = (!intent.hasExtra(EXTRA_EID_WINDOW_START) || intent.getLongExtra(EXTRA_EID_WINDOW_START, Long.MIN_VALUE) == window.start) &&
+                (!intent.hasExtra(EXTRA_EID_WINDOW_END) || intent.getLongExtra(EXTRA_EID_WINDOW_END, Long.MIN_VALUE) == window.end)
+            sameWindow && when (intent.action) {
+                ACTION_SILENCE -> window.contains(now.timeInMillis)
+                ACTION_DELEGATION_CHECK -> now.timeInMillis >= window.prayerStart - MAX_DELEGATION_SHIFT_MS &&
+                    now.timeInMillis <= window.prayerStart
+                else -> false
+            }
+        }
+        if (!matches || !PrefsManager.isEnabled(context) || PrefsManager.isDisabledOutsideTunisia(context)) {
+            Log.d(TAG, "Ignoring obsolete Eid alarm ${intent.action} for $prayer")
+            onOfficialDatesChanged(context)
+            return true
+        }
+        return false
+    }
+
+    private fun cancelPrayerAlarm(context: Context, action: String, prayer: Prayer) {
+        val pendingIntent = PendingIntent.getBroadcast(context, requestCode(action, prayer),
+            prayerIntent(context, action, prayer), PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE) ?: return
+        (context.getSystemService(Context.ALARM_SERVICE) as AlarmManager).cancel(pendingIntent)
+        pendingIntent.cancel()
     }
 
     private fun prayerStartTime(date: Calendar, prayerTime: PrayerTime): Calendar {
@@ -514,20 +629,30 @@ object SilenceScheduler {
         get(Calendar.DAY_OF_MONTH),
     )
 
-    private fun createPendingIntent(context: Context, action: String, prayer: Prayer): PendingIntent {
-        val requestCode = when (action) {
+    private fun requestCode(action: String, prayer: Prayer): Int = when (action) {
             ACTION_SILENCE -> prayer.ordinal * 2
             ACTION_UNSILENCE -> prayer.ordinal * 2 + 1
             ACTION_DELEGATION_CHECK -> DELEGATION_CHECK_REQUEST_CODE_BASE + prayer.ordinal
             else -> prayer.ordinal * 2
-        }
-        val intent = Intent(context, SilenceReceiver::class.java).apply {
+    }
+
+    private fun prayerIntent(context: Context, action: String, prayer: Prayer) = Intent(context, SilenceReceiver::class.java).apply {
             this.action = action
             putExtra(EXTRA_PRAYER, prayer.name)
+    }
+
+    private fun createPendingIntent(context: Context, action: String, prayer: Prayer,
+        eidWindow: EidSilenceWindows.Window? = null): PendingIntent {
+        val intent = prayerIntent(context, action, prayer).apply {
+            eidWindow?.let {
+                putExtra(EXTRA_EID_EVENT_DAY, it.eventDate.toEpochDay())
+                putExtra(EXTRA_EID_WINDOW_START, it.start)
+                putExtra(EXTRA_EID_WINDOW_END, it.end)
+            }
         }
         return PendingIntent.getBroadcast(
             context,
-            requestCode,
+            requestCode(action, prayer),
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )

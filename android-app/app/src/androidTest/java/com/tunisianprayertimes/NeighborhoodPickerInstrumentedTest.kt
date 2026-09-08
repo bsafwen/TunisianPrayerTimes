@@ -115,6 +115,32 @@ class NeighborhoodPickerInstrumentedTest {
         saveScreenshot("neighborhood-gps.png")
     }
 
+    @Test fun megrineSearchMergesDuplicateAreasAndKeepsGpsSelectionHighlighted() {
+        coordinate = 36.767638 to 10.223168
+        pressGpsAndExpect("مقرين الرياض")
+        assertEquals("osm:way:124689902", PrefsManager.getLocationSelection(context).localityId)
+        compose.onNode(hasText("مقرين الرياض") and hasAnyAncestor(hasTestTag(TestTags.LOCATION_PICKER))).performClick()
+        compose.onNodeWithTag("locality_search").performTextInput("megrine")
+        androidx.test.espresso.Espresso.closeSoftKeyboard()
+        val riadh = "locality_row_osm:relation:7174626"
+        compose.onNodeWithTag("locality_list").performScrollToNode(hasTestTag(riadh))
+        compose.onNodeWithTag(riadh).assertIsDisplayed().assertIsSelected()
+        compose.onNode(hasText("معتمدية مقرين") and hasAnyAncestor(hasTestTag(riadh)), useUnmergedTree = true).assertIsDisplayed()
+        compose.onAllNodes(hasText("مقرين الرياض") and hasAnyAncestor(hasTestTag("locality_list"))).assertCountEquals(1)
+        compose.onNodeWithTag("locality_row_osm:way:124689902").assertDoesNotExist()
+        saveScreenshot("megrine-picker-fixed.png")
+
+        val sidiRezig = "locality_row_osm:relation:7174613"
+        compose.onNodeWithTag("locality_list").performScrollToNode(hasTestTag(sidiRezig))
+        compose.onNodeWithTag(sidiRezig).assertIsDisplayed()
+        compose.onNode(hasText("معتمدية مقرين") and hasAnyAncestor(hasTestTag(sidiRezig)), useUnmergedTree = true).assertIsDisplayed()
+        compose.onAllNodes(hasText("سيدي رزيق") and hasAnyAncestor(hasTestTag("locality_list"))).assertCountEquals(1)
+        compose.onNodeWithTag("locality_row_osm:way:103565487").assertDoesNotExist()
+        compose.onNodeWithTag(sidiRezig).performClick()
+        compose.waitUntil(5_000) { PrefsManager.getLocationSelection(context).name == "سيدي رزيق" }
+        assertEquals(448, PrefsManager.getDelegationId(context))
+    }
+
     @Test fun labelRefreshesForBackgroundMoveWithUnchangedTimetable() {
         coordinate = 36.810562 to 10.146875
         pressGpsAndExpect("بوشوشة")

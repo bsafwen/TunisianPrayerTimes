@@ -22,17 +22,16 @@ import kotlin.test.assertTrue
  *   10 Dhul Hijja = 2026-05-27
  */
 class PollingDecisionTest {
+    private lateinit var environment: OfficialDateTestEnvironment
 
     @BeforeTest
     fun setup() {
-        RamadanOverrideChecker.cachedOverride = null
-        RamadanOverrideChecker.testDateOverride = null
+        environment = OfficialDateTestEnvironment()
     }
 
     @AfterTest
     fun cleanup() {
-        RamadanOverrideChecker.cachedOverride = null
-        RamadanOverrideChecker.testDateOverride = null
+        environment.close()
     }
 
     // ── Helper to assert Hijri date from Gregorian (validates our assumptions) ──
@@ -552,15 +551,14 @@ class PollingDecisionTest {
     }
 
     @Test
-    fun stopPolling_ramadan_gotRamadanStartOnly_stops() {
-        // In Ramadan (month 9), once we have ramadanStart, stop the current poll.
-        // A new poll for Eid Fitr will start separately when the window opens.
+    fun stopPolling_ramadan_gotRamadanStartOnly_continuesDuringFitrWindow() {
+        // Ramadan's announcement does not satisfy the active Fitr polling window.
         RamadanOverrideChecker.testDateOverride = LocalDate.of(2026, 3, 19) // 30 Ramadan
-        assertTrue(
+        assertFalse(
             RamadanOverrideChecker.shouldStopPolling(
                 overrideWith(ramadanStart = LocalDate.of(2026, 2, 19))
             ),
-            "Should stop polling in Ramadan once ramadanStart is fetched"
+            "Fitr is still unannounced during its active window"
         )
     }
 
@@ -629,10 +627,10 @@ class PollingDecisionTest {
     }
 
     @Test
-    fun stopPolling_muharram_everythingCached_doesNotStop() {
-        // In Muharram (month 1), none of the stop conditions match
+    fun stopPolling_muharram_noActiveWindow_stops() {
+        // A poller must shut down once it leaves all announcement windows.
         RamadanOverrideChecker.testDateOverride = LocalDate.from(HijrahDate.of(1447, 1, 15))
-        assertFalse(
+        assertTrue(
             RamadanOverrideChecker.shouldStopPolling(
                 overrideWith(
                     ramadanStart = LocalDate.of(2026, 2, 19),
@@ -640,7 +638,7 @@ class PollingDecisionTest {
                     eidAdhaDate = LocalDate.of(2026, 5, 28),
                 )
             ),
-            "Stop conditions should not match outside event months"
+            "No announcement needs polling outside event windows"
         )
     }
 
@@ -738,20 +736,5 @@ class PollingDecisionTest {
         assertTrue(result == null || result.ramadanStart == null)
     }
 
-    // ───────────────────────────────────────────────
-    // fetchOverride year selection
-    // ───────────────────────────────────────────────
-
-    @Test
-    fun fetchOverride_usesTestDateForHijriYear() {
-        // When testDateOverride is set, fetchOverride should use the Hijri year
-        // from that date, not the real current date
-        RamadanOverrideChecker.testDateOverride = LocalDate.of(2026, 2, 17) // 1447
-        val year1447 = HijrahDate.from(LocalDate.of(2026, 2, 17)).get(ChronoField.YEAR)
-        assertEquals(1447, year1447, "Feb 17, 2026 should be Hijri year 1447")
-
-        RamadanOverrideChecker.testDateOverride = LocalDate.of(2027, 2, 10) // 1448
-        val year1448 = HijrahDate.from(LocalDate.of(2027, 2, 10)).get(ChronoField.YEAR)
-        assertEquals(1448, year1448, "Feb 10, 2027 should be Hijri year 1448")
-    }
+    // Actual fetch URL/year selection is exercised by OfficialDateFetchTest's offline transport.
 }

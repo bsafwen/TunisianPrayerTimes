@@ -449,6 +449,17 @@
     <string name="wake_editor_silence_hint">سَيَتِمُّ إسْكَاتُ الهاتف عند الحفظ ويعود للوضع الطبيعي عند رنين المنبه</string>
 
     <string name="locality_no_results">لم نجد هذه المنطقة في القائمة. جرّب اسم المعتمدية أو ارجع واستعمل تحديد الموقع.</string>
+    <string name="locality_kind_delegation">معتمدية</string>
+    <string name="locality_kind_sector">عمادة</string>
+    <string name="locality_kind_municipality">بلدية</string>
+    <string name="locality_kind_town">مدينة</string>
+    <string name="locality_kind_village">قرية</string>
+    <string name="locality_kind_hamlet">تجمع سكني</string>
+    <string name="locality_kind_neighborhood">حي</string>
+    <string name="locality_kind_residential">منطقة سكنية</string>
+    <string name="locality_kind_area">منطقة</string>
     <string name="location_current_position">موقعك الحالي</string>
     <string name="location_neighborhood_unavailable">تم تحديد موقعك، لكن اسم الحي غير متوفر. يمكنك اختياره يدويًا.</string>
+    <string name="location_saved_source_unavailable">أوقات الصلاة غير متوفرة للاختيار المحفوظ. استخدم تحديد الموقع أو اختر منطقة أخرى من القائمة.</string>
+    <string name="location_no_current_prayer_data">لا تتوفر بيانات أوقات الصلاة لهذا الشهر في إصدار التطبيق الحالي.</string>
 </resources>
