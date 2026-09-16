@@ -1,0 +1,344 @@
+{
+  "status": "PASS_EXACT_EXISTING_ARABIC_ALIAS_DISPLAY_PROMOTION",
+  "scope": "Promote only Tafertast588420478 existing Arabic alias; preserve all other identity, geometry, administrative and prayer-reference fields.",
+  "baselineMetadataSha256": "d88eb5bb2d07eb709ec028980a1f010f0f1d648869e390db8a3213b70e3645c6",
+  "baselineCurationSha256": "e5eb89f784a14e17cd4851806f8e537aabc285c277fd71f511d37a62c9afc037",
+  "compilerSha256": "b4210755827fff89a6660c5439aee5081f6932776144ba515f736913664aead3",
+  "freshOriginalInventorySha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+  "id": "osm:way:588420478",
+  "originalSource": {
+    "id": "osm:way:588420478",
+    "kind": "residential",
+    "tags": {
+      "alt_name": "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+      "alt_name:ar": "طافرطاست",
+      "alt_name:fr": "TAFERTAST",
+      "alt_name:tzm": "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+      "description": "Tafertast is an ancient village located in Biadha, Sened delegation, Gafsa Governorate, Tunisia.\nThe site has been occupied since Antiquity, with settlement dating back to the Carthaginian and Roman periods.",
+      "landuse": "residential",
+      "name": "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+      "residential": "rural"
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              9.1811913,
+              34.4579979
+            ],
+            [
+              9.1819474,
+              34.4559102
+            ],
+            [
+              9.1857164,
+              34.452273
+            ],
+            [
+              9.1930245,
+              34.4514057
+            ],
+            [
+              9.1958099,
+              34.4521755
+            ],
+            [
+              9.2005736,
+              34.4537515
+            ],
+            [
+              9.2032919,
+              34.4550503
+            ],
+            [
+              9.2069041,
+              34.4564841
+            ],
+            [
+              9.2074549,
+              34.4571172
+            ],
+            [
+              9.2074872,
+              34.4583046
+            ],
+            [
+              9.2072532,
+              34.4635044
+            ],
+            [
+              9.2065174,
+              34.4654963
+            ],
+            [
+              9.2040916,
+              34.4677732
+            ],
+            [
+              9.2024802,
+              34.4677676
+            ],
+            [
+              9.2002735,
+              34.4670653
+            ],
+            [
+              9.1958215,
+              34.465835
+            ],
+            [
+              9.1875596,
+              34.462848
+            ],
+            [
+              9.1824324,
+              34.4602916
+            ],
+            [
+              9.1811913,
+              34.4579979
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "currentRaw": {
+    "id": "osm:way:588420478",
+    "sourceId": "osm",
+    "name": "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+    "aliases": [
+      "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+      "طافرطاست",
+      "TAFERTAST"
+    ],
+    "kind": "residential",
+    "parentName": "السند",
+    "contextAliases": [
+      "Délégation Sened",
+      "Sened",
+      "Sned",
+      "السند",
+      "معتمدية السند"
+    ],
+    "governorateId": 365,
+    "lat": 34.459299,
+    "lng": 9.194668,
+    "delegationId": 609,
+    "hasBoundary": true,
+    "bbox": [
+      9.181191,
+      34.451406,
+      9.207487,
+      34.467773
+    ],
+    "areaKm2": 2.9939452724514557,
+    "pickerGroupId": "osm:way:588420478",
+    "offset": 5453604,
+    "length": 164
+  },
+  "expectedRawAfterNameOnly": {
+    "id": "osm:way:588420478",
+    "sourceId": "osm",
+    "name": "طافرطاست",
+    "aliases": [
+      "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+      "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+      "TAFERTAST"
+    ],
+    "kind": "residential",
+    "parentName": "السند",
+    "contextAliases": [
+      "Délégation Sened",
+      "Sened",
+      "Sned",
+      "السند",
+      "معتمدية السند"
+    ],
+    "governorateId": 365,
+    "lat": 34.459299,
+    "lng": 9.194668,
+    "delegationId": 609,
+    "hasBoundary": true,
+    "bbox": [
+      9.181191,
+      34.451406,
+      9.207487,
+      34.467773
+    ],
+    "areaKm2": 2.9939452724514557,
+    "pickerGroupId": "osm:way:588420478",
+    "offset": 5453604,
+    "length": 164
+  },
+  "exactMetadataFieldChanges": [
+    {
+      "id": "osm:way:588420478",
+      "field": "name",
+      "before": "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+      "after": "طافرطاست"
+    },
+    {
+      "id": "osm:way:588420478",
+      "field": "aliases",
+      "before": [
+        "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "طافرطاست",
+        "TAFERTAST"
+      ],
+      "after": [
+        "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "TAFERTAST"
+      ]
+    }
+  ],
+  "proposedNameTags": {
+    "alt_name": "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+    "alt_name:ar": "طافرطاست",
+    "alt_name:fr": "TAFERTAST",
+    "name": "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+    "name:ar": "طافرطاست"
+  },
+  "identityConclusion": "The already consumed Arabic source alias طافرطاست exactly matches the Minister of Equipment and Housing answer in the original parliamentary record. Original rural residential source classification and the public place card support an inhabited locality role. The source history has a2018 residential place and a2026 richer multilingual village description; this does not independently certify its claimed antiquity or exact polygon.",
+  "primary": {
+    "originalEvidenceKey": "arp-115764-original.pdf",
+    "document": "JORT, parliamentary proceedings, issue5, sitting7November2025",
+    "physicalPage": 51,
+    "printedPage": 803,
+    "wholePageAndCoverPersonallyViewed": true,
+    "speaker": "Minister of Equipment and Housing, answer to MP Nouri Jridi",
+    "exactQuote": "بخصوص إتمام مشاريع المسالك الريفية بكل من طافرطاست والنوامر الشرقية في معتمدية السند",
+    "quoteQualification": "Line breaks normalized for this short quotation; the complete derived page text and original PDF retain the full context. The preceding MP question uses طفرطاست and mentions Sened Sud; that variant is disclosed, not installed as a new alias.",
+    "completePageText": {
+      "file": "name-reviews/tafertast-arabic-2026-09/originals/arp-115764-physical51-full-derived.txt",
+      "sha256": "d15667d957f4682cf02cc023a6868d7ba48286bdb6fde18911a28a57ffae7113",
+      "bytes": 8426
+    },
+    "textDerivation": "PyMuPDF get_text default, whole page, UTF-8 LF; original PDF unchanged"
+  },
+  "originalEvidence": {
+    "way-588420478-current.json": {
+      "original": {
+        "file": "name-reviews/tafertast-arabic-2026-09/originals/way-588420478-current.json",
+        "sha256": "600356a3f8fee7de4fcc5100c3c9b2c3d8f90000e2e7e9dc8285f61cebc55804",
+        "bytes": 1110
+      },
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/588420478.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/588420478.json",
+      "httpStatus": 200,
+      "retrievedAtUtc": "2026-09-12T22:26:30.953010+00:00",
+      "tlsVerification": true,
+      "provenance": "Original HTTP response body bytes; not rewritten"
+    },
+    "way-588420478-history.json": {
+      "original": {
+        "file": "name-reviews/tafertast-arabic-2026-09/originals/way-588420478-history.json",
+        "sha256": "836a72023b4c9f34d780b9bb4bf3028a610b37e9811bc0d4f2654865236e82a9",
+        "bytes": 1392
+      },
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/588420478/history.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/588420478/history.json",
+      "httpStatus": 200,
+      "retrievedAtUtc": "2026-09-12T22:26:30.953010+00:00",
+      "tlsVerification": true,
+      "provenance": "Original HTTP response body bytes; not rewritten"
+    },
+    "way-588420478-full.json": {
+      "original": {
+        "file": "name-reviews/tafertast-arabic-2026-09/originals/way-588420478-full.json",
+        "sha256": "f94b0c25287882ca044d42203abc92aaefdc595c10e23a86bd7b4bd2b806f958",
+        "bytes": 4232
+      },
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/588420478/full.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/588420478/full.json",
+      "httpStatus": 200,
+      "retrievedAtUtc": "2026-09-12T22:26:30.953010+00:00",
+      "tlsVerification": true,
+      "provenance": "Original HTTP response body bytes; not rewritten"
+    },
+    "arp-115764-original.pdf": {
+      "original": {
+        "file": "name-reviews/tafertast-arabic-2026-09/originals/arp-115764-original.pdf",
+        "sha256": "71de37324ad865a6fedbf85f4ec3595d04cfd4a869d1c01cdc47c39324e8f76a",
+        "bytes": 9023813
+      },
+      "requestedUrl": "https://arp.tn/document/download/115764",
+      "finalUrl": "https://arp.tn/document/download/115764",
+      "httpStatus": 200,
+      "retrievedAtUtc": "2026-09-12T22:26:30.954009+00:00",
+      "tlsVerification": true,
+      "provenance": "Original HTTP response body bytes; not rewritten"
+    }
+  },
+  "preservation": {
+    "packedGeometry": {
+      "sha256": "eb79c85d3669cb53717c112e4c7549c3a0f7f833e71e08143aaab8f0f826419f",
+      "bytes": 164
+    },
+    "currentCompleteRawGroup": [
+      "osm:way:588420478"
+    ],
+    "containedSourcePoints": [],
+    "otherRawRepresentativesInside": [],
+    "sourceNamePeers": [],
+    "rawNamePeers": [],
+    "baseNamePeers": [],
+    "normalizedSearchNameSetUnchanged": true,
+    "oldCombinedPrimaryRetainedAsAlias": true,
+    "allConsumedLatinAndTifinaghNamesRetained": true,
+    "unconsumedAltNameTzmTagRetained": true,
+    "originalSourceAndCurrentAdminContextNotChanged": true,
+    "prayerDefault609NotChanged": true,
+    "sourceKindResidentialNotReclassified": true,
+    "allExistingCurationsTokensAndExteriorMustRemainExact": true
+  },
+  "dependencyChecks": {
+    "directManifestHits": [],
+    "immediateActiveJSONReferenceScan": {
+      "distinctFilesInspected": 209,
+      "matchingFiles": [],
+      "scope": "Only immediate JSON file/path references from current curation,picker,boundary,coordinate manifests, plus the complete manifest text. Historical reference closure is not recursively audited."
+    },
+    "noCurrentReceipt": true,
+    "noSameNameSectorAnchorOrBasePeer": true,
+    "noAutomaticTownBaseEligibility": "kind remains residential; existing matching_base_delegation requires town",
+    "metadataConflicts": [],
+    "coverageConflicts": []
+  },
+  "expectedReceipt": {
+    "id": "osm:way:588420478",
+    "decisionId": "osm:way:588420478",
+    "action": "name_tags",
+    "inherited": false
+  },
+  "expectedSavedName": {
+    "id": "osm:way:588420478",
+    "name": "طافرطاست",
+    "kind": "residential"
+  },
+  "expectedCounts": {
+    "curationBefore": 281,
+    "curationAfter": 282,
+    "receiptsBefore": 399,
+    "receiptsAfter": 400,
+    "savedNamesBefore": 131,
+    "savedNamesAfter": 132
+  },
+  "qualifications": [
+    "Google exact place card supports spelling and locality identity only; its Zannouch address does not authorize administrative reassignment. No Google outline or vertex is copied.",
+    "Original/current source context is Sened; ministerial answer says Sened and parliamentary question says Sened Sud. Preserve administrative placement in this name-only proposal.",
+    "No surveyed or official exact locality footprint is claimed. Current source topology and packed geometry remain exact.",
+    "The2018 historical spelling TAFERTASET is preserved in authentic history; it is not introduced as a new current alias.",
+    "The proposed two raw field changes are independently derived from current name-consumer semantics. Actual generation has not run."
+  ],
+  "researchProvenance": {
+    "sourceFactsSha256": "f68676ffe0c7ca31218cc0300e8761aa72b1ec68863058794e8f6928728b2aab",
+    "retrievalManifestSha256": "3cae553d610fa2578cef6886937be596e9d7a501d4d631e32b7697f5accceaab",
+    "phoneRecordSha256": "6ef13a577e31fa302ce0015e1a6cca0ae7ce8a387ef8e105583c7987e4101354",
+    "phonePngSha256": "6c2ccaca29a0d4900dc9f7b8e1cb77d1d0464987b5f97b53fc881e94d4c6c1b5",
+    "phoneMeaning": "Exact طافرطاست/Tafertast locality card and dotted area; broad address Zannouch. Use name corroboration only, no Google vertices or administrative reassignment."
+  }
+}

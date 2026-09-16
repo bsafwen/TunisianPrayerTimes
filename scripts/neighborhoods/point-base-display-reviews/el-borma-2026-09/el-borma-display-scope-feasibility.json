@@ -1,0 +1,193 @@
+{
+  "status": "EXISTING_SCHEMA_FEASIBLE; QUALIFIED_NAMED_LOCALITY_DISPLAY_PROPOSAL_PENDING_INDEPENDENT_SCOPE_DECISION",
+  "baselineMetadataSha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+  "generatorSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\finite-source-group-facts.json",
+    "sha256": "83f9b3c04049276c98d83a5571938988029e09423fbe38e779f74ca45139b997"
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-borma-town-point-source-review-20260912.json",
+    "sha256": "d7fe7e20ec827d9f254d7756db0292ccb5a7ba4d0fbded2e81fc0f371ff0622e"
+  },
+  "priorIndependentScopeHold": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-borma-root-scope-holds-20260912.json",
+    "sha256": "d4e5df986785630e710959b05c46c4a02c119a9a3f4fdbfd0509e2fd77db4777"
+  },
+  "schemaAssessment": {
+    "status": "EXISTING_TOWN_PRESERVATION_EXTENSION_FEASIBLE",
+    "method": "reviewed_explicit_point_base_display_identity",
+    "extension": "townPreservationExtension",
+    "officialDelegationCodes": [
+      "5357"
+    ],
+    "targetTimetableReferenceId": 476,
+    "sameNameOfficialDelegationRequired": false,
+    "reason": "The contract validates the actual containing Remada delegation and all of its sectors independently of the named target timetable reference. It does not require their names or IDs to coincide. All six sector groups remain separate.",
+    "topLevelCompletePickerGroups": {
+      "before": [
+        [
+          "osm:node:500182808"
+        ],
+        [
+          "delegation:476"
+        ]
+      ],
+      "after": [
+        [
+          "delegation:476",
+          "osm:node:500182808"
+        ]
+      ]
+    },
+    "sourceNodeRequirement": "Use authentic historical /node/500182808/8.json because currentv9 tags differ from the frozen source. Existing ordinary explicit-town contract permits this honest pinned snapshot; no retainedTownPoint is used.",
+    "noReplacementManifestRequirement": "acceptedBoundaryReplacements=[] and reviewedBoundaries=null; pin the active unchanged manifest in research inputs only.",
+    "extraNamePeerIds": [],
+    "extraAdministrativeContainerIds": [],
+    "noCompilerChangeNeeded": true,
+    "notAllowed": [
+      "fabricated El Borma administration code",
+      "current-v9 response described as matching cachev8",
+      "forced common camp footprint",
+      "camp-image digitization",
+      "coordinate migration",
+      "sector display association",
+      "claim of legal administrative boundary"
+    ]
+  },
+  "finiteCounts": {
+    "officialRemadaSectors": 6,
+    "protectedRawRows": 7,
+    "sourceStates": 9,
+    "originalEffectivePhases": 2,
+    "contexts": 2,
+    "acceptedLocalReplacements": 0,
+    "provider": "osm",
+    "boundExistingCurations": 0,
+    "touchingPriorPickerRecords": 0,
+    "boundedReferenceComparisons": 516
+  },
+  "exactReferences": {
+    "point": {
+      "coordinate": {
+        "lat": 31.6880101,
+        "lng": 9.2186132
+      },
+      "nearest": {
+        "id": 476,
+        "kilometers": 1.4118669322418183
+      },
+      "runnerUp": {
+        "id": 471,
+        "kilometers": 130.9138816197738
+      }
+    },
+    "base": {
+      "coordinate": {
+        "lat": 31.6916,
+        "lng": 9.2043
+      },
+      "nearest": {
+        "id": 476,
+        "kilometers": 0.0
+      },
+      "runnerUp": {
+        "id": 471,
+        "kilometers": 131.84072261803456
+      }
+    }
+  },
+  "sectorsPreserved": [
+    {
+      "id": "osm:relation:7143844",
+      "code": "535754",
+      "officialName": "كنبوت",
+      "currentName": "كمبوت",
+      "currentDefault": 471,
+      "group": "osm:relation:7143844"
+    },
+    {
+      "id": "osm:relation:7143846",
+      "code": "535753",
+      "officialName": "نكريف",
+      "currentName": "نكريف",
+      "currentDefault": 471,
+      "group": "osm:relation:7143846"
+    },
+    {
+      "id": "osm:relation:7143848",
+      "code": "535752",
+      "officialName": "رمادة الغربية",
+      "currentName": "رمادة الغربية",
+      "currentDefault": 476,
+      "group": "osm:relation:7143848"
+    },
+    {
+      "id": "osm:relation:7143850",
+      "code": "535751",
+      "officialName": "رمادة الشرقية",
+      "currentName": "رمادة الشرقية",
+      "currentDefault": 471,
+      "group": "osm:relation:7143850"
+    },
+    {
+      "id": "osm:relation:7143871",
+      "code": "535757",
+      "officialName": "مغنى",
+      "currentName": "مغنى",
+      "currentDefault": 471,
+      "group": "osm:relation:7143871"
+    },
+    {
+      "id": "osm:relation:7143874",
+      "code": "535755",
+      "officialName": "بئر عمير",
+      "currentName": "بئر عمير",
+      "currentDefault": 471,
+      "group": "osm:relation:7143874"
+    }
+  ],
+  "onlyConditionalMetadataChange": {
+    "id": "osm:node:500182808",
+    "field": "pickerGroupId",
+    "before": "osm:node:500182808",
+    "after": "delegation:476"
+  },
+  "scopeProposal": {
+    "identityDecision": "same_named_settlement_display_only",
+    "supportedScope": "One manual El Borma locality/timetable choice, encompassing the named inhabited worker locality context. It is neither a declaration of a civilian town or municipality nor an assertion that both saved anchors fall in the residential camp.",
+    "primaryChain": [
+      "SITEP explicitly describes its inhabited residential camp and medical centre at El Borma in Tunisia.",
+      "Authentic OSM history consistently identifies one village El Borma; version8 matches the shipped source, version9 only changes the primary-name string.",
+      "Original public INM476 response names El Borma/البرمة under Tataouine351, independently anchoring the timetable reference identity.",
+      "Both unchanged stored points are in current cached Remada5357 and Remada Ouest535752 and independently choose476 as nearest usable timetable."
+    ],
+    "preservedSemantics": [
+      "Raw village point and coordinates",
+      "Stored base476 coordinates and timetableID",
+      "All six distinct Remada sectors and all original/effective states",
+      "All existing raw names/parents/defaults/polygons",
+      "No El Borma official delegation code created"
+    ],
+    "remainingDecision": "Root independently reviews the scope evidence and targeted phone observations. Exact residential-camp polygon certification is not required for this display-only named locality association, and this proposal does not provide one.",
+    "currentSourceHoldNotAutomaticallyOverridden": true
+  },
+  "limitations": [
+    "Google may label the near-border base query as near Al Borma Algeria; this external country-label conflict does not override Tunisian primary operator/timetable identity or certify a boundary.",
+    "Current OSMv9 differs from frozen cachev8; truthful historical source binding is mandatory.",
+    "The INM476 published coordinate differs from the stored anchor; no coordinate correction is proposed in this task.",
+    "No primary georeferenced residential-camp polygon was found."
+  ],
+  "notPerformed": [
+    "source stage",
+    "compiler changes/import/execution",
+    "generation",
+    "live product writes",
+    "tests/build",
+    "phone/ledger"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\prepare_finite_facts.py",
+    "sha256": "f2f5f0df6c45137b37ccbf1273c357567eb653d743fd406978907a20956f4714"
+  }
+}

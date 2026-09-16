@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "administrativeScopeReview": {
-  "file": "official/accepted76-whole-imada-scope-review.json",
-  "sha256": "b95908cfbb781e419b2b8a5ac015b95c41979448bfa0443b39813d090f554027"
+  "file": "official/arima-joufia-receivers-20260912/accepted90-whole-imada-scope-review.json",
+  "sha256": "b9c78637a2cb6e26482283c696e34b9828223a1df91d29adcae365c4b73a5d58"
 },
   "sources": [
     {
@@ -1833,10 +1833,244 @@
         "geometryPolicy": "Complete qualified native coordinate arrays, unchanged. No clipping, snapping, repair or scope merging.",
         "qualification": "Source acceptance only. Residual native seams and mixed-source administrative discrepancies remain explicit in the source reviews; source-phase proof migration and actual-data verification are separate."
       }
+    },
+    {
+      "id": "isie-local-sectors-2023-soliman-thirteen-native",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7100603",
+          "officialCode": "156151",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المريسة",
+            "name:ar": "المريسة",
+            "name:fr": "El Mraissa",
+            "ref:tn:codegeo": "156151"
+          }
+        },
+        {
+          "id": "osm:relation:7100693",
+          "officialCode": "156154",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سليمان",
+            "name:ar": "سليمان",
+            "name:fr": "Soliman",
+            "ref:tn:codegeo": "156154"
+          }
+        },
+        {
+          "id": "osm:relation:7100694",
+          "officialCode": "156155",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سليمان الجنوبية",
+            "name:ar": "سليمان الجنوبية",
+            "name:fr": "Soliman Sud",
+            "ref:tn:codegeo": "156155"
+          }
+        },
+        {
+          "id": "osm:relation:7101601",
+          "officialCode": "156254",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزلفة الجنوبية",
+            "name:ar": "منزل بوزلفة الجنوبية",
+            "name:fr": "Menzel Bouzelfa Sud",
+            "ref:tn:codegeo": "156254"
+          }
+        },
+        {
+          "id": "osm:relation:7101606",
+          "officialCode": "156255",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزلفة الغربية",
+            "name:ar": "منزل بوزلفة الغربية",
+            "name:fr": "Menzel Bouzelfa Ouest",
+            "ref:tn:codegeo": "156255"
+          }
+        },
+        {
+          "id": "osm:relation:7102534",
+          "officialCode": "156153",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بو شراي",
+            "name:ar": "بو شراي",
+            "name:fr": "Bou Charray",
+            "ref:tn:codegeo": "156153"
+          }
+        },
+        {
+          "id": "osm:relation:7102535",
+          "officialCode": "156152",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الشريفات",
+            "name:ar": "الشريفات",
+            "name:fr": "Ech Cherifet",
+            "ref:tn:codegeo": "156152"
+          }
+        },
+        {
+          "id": "osm:relation:7103805",
+          "officialCode": "156457",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قرمبالية الغربية",
+            "name:ar": "قرمبالية الغربية",
+            "name:fr": "Grombalia Ouest",
+            "ref:tn:codegeo": "156457"
+          }
+        },
+        {
+          "id": "osm:relation:7103806",
+          "officialCode": "156456",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قرنبالية الشرقية",
+            "name:ar": "قرنبالية الشرقية",
+            "name:fr": "Grombalia Est",
+            "ref:tn:codegeo": "156456"
+          }
+        },
+        {
+          "id": "osm:relation:7104933",
+          "officialCode": "156455",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "خنقة الحجاج",
+            "name:ar": "خنقة الحجاج",
+            "name:fr": "Khannguet el Hadjadj",
+            "ref:tn:codegeo": "156455"
+          }
+        },
+        {
+          "id": "osm:relation:7104934",
+          "officialCode": "156452",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "شماس",
+            "name:ar": "شماس",
+            "name:fr": "Chammes",
+            "ref:tn:codegeo": "156452"
+          }
+        },
+        {
+          "id": "osm:relation:7104935",
+          "officialCode": "156451",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فندق الجديد",
+            "name:ar": "فندق الجديد",
+            "name:fr": "Fondouk Jedid",
+            "ref:tn:codegeo": "156451"
+          }
+        },
+        {
+          "id": "osm:relation:7174585",
+          "officialCode": "135552",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "برج السدرية",
+            "name:ar": "برج السدرية",
+            "name:fr": "Borj Cedria",
+            "ref:tn:codegeo": "135552"
+          },
+          "scopeKind": "exhaustive_electoral_parts"
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-12",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-source-acceptance-proof.json",
+        "evidenceSha256": "bdb1f28beff4e1edb8abb6fd10fa5389b77055b52a173c5d464a0a492e1ec2bf",
+        "geometryPolicy": "Twelve exact unrounded own-map administrative regions plus legal exhaustive union of both complete Borj electoral parts. No source clip, snap, buffer, repair or restored old strips. Mraissa qualified stroke-only region retains its touching hole.",
+        "namePolicy": "Canonical current INS Arabic/French identities. Canonical156254 القبلية is explicitly source-reviewed; no automatic old aliases. All old full tags preserved in expectedOriginalTags.",
+        "qualification": "Source-only proposal; known source seams and uncertain outer coverage margins remain explicit. Separate effective proof successors and actual catalog verification remain required."
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-arima-joufia-receivers",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/arima-joufia-receivers-20260912/arima-joufia-whole-source-boundaries.geojson",
+      "sha256": "5bbe3bf118e99adc441209092bb9a805f2efa67977c0d746cbf3ff95c340b5c0",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7100361",
+          "officialCode": "156053",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العريمة",
+            "name:ar": "العريمة",
+            "name:fr": "El Arima",
+            "ref:tn:codegeo": "156053"
+          }
+        },
+        {
+          "id": "osm:relation:7101605",
+          "officialCode": "156253",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزلفة الشمالية",
+            "name:ar": "منزل بوزلفة الشمالية",
+            "name:fr": "Menzel Bouzelfa Nord",
+            "ref:tn:codegeo": "156253"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-12",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/arima-joufia-receivers-20260912/arima-joufia-source-acceptance-proof.json",
+        "evidenceSha256": "21e3a687dd8226f9800fa30ef0728a45126fd2cada21785e0f7577dfb5b79437",
+        "geometryPolicy": "Two complete unchanged native own-map polygons. No clipping, snapping, repair, old-coverage graft or inferred edge.",
+        "namePolicy": "Canonical original INS/decree/own-map Arima and Joufia identities; exact complete old source tags are bound, no automatic old aliases.",
+        "qualification": "Source-only receiver extension, preserving close-edge Baddar primary identity qualification and actual source seams. Full integrated proof/context and actual-data review remain required."
+      }
     }
   ],
   "aggregateScopeReview": {
-    "file": "official/bekalta-north-aggregate-scope-review.json",
-    "sha256": "a7d50ab1078b336be39c46eeaa8d55d183cd441437ffbaf1fc4f9d71c734f989"
-  }
+  "file": "official/soliman-thirteen-native-20260912/accepted2-exhaustive-aggregate-scope-review.json",
+  "sha256": "c370d7122b4e614de33957441e0b22fcada79e50a02a16324417082cfee6453d"
+}
 }

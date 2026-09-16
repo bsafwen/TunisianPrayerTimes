@@ -1,0 +1,38 @@
+{
+  "status": "PASS_CODE_REVIEW_PENDING_FULL_CATALOG_GENERATION",
+  "baselineCompiler": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738"
+  },
+  "stagedCompiler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-retained-town-compiler-stage\\scripts\\generate_neighborhoods.py",
+    "sha256": "5c608285466bf95a6ac35236907155a17a207911791317978e1a54710866235d"
+  },
+  "changedDefinitions": [
+    "validate_reviewed_point_base_display",
+    "validate_reviewed_town_preservation_extension",
+    "verify_reviewed_town_preservation"
+  ],
+  "rootReadWholeDiff": true,
+  "findings": [
+    "Optional retainedTownPoint is limited to one distinct uncurated town whose primary identity matches the candidate and actual prayer base.",
+    "Authentic retained-node response and original/effective/raw state parity are checked; automatic grouping is reproduced against actual source delegations and governor.",
+    "All three coordinate roles and complete sector/raw groups are checked; only the candidate point joins the existing group.",
+    "Final group and base-owner sets require exactly the retained and added points.",
+    "Old no-option branches retain existing pair requirements; deferred suburb, typed-peer and separate lineage contracts are not relaxed."
+  ],
+  "remainingValidation": "One actual isolated catalog generation must preserve all existing metadata and geometry except the reviewed batch changes.",
+  "generatorExecuted": false,
+  "unitTests": false,
+  "liveEdits": false,
+  "supersedes": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-retained-town-compiler-independent-review.json",
+    "sha256": "353f684c2e0eeb381fca984832a9df7d3ba9ce6e0b827e024fff427f71d87a02"
+  },
+  "reviewedCorrection": "Original source objects lack an id member. Iterating dictionary items preserves the source IDs for context closure, while matching_base_delegation receives the unchanged source values it expects. The original branch would have raised KeyError before generating a catalog.",
+  "correctionDiff": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-retained-town-compiler-stage\\source-id-correction.diff",
+    "sha256": "3e7e77db09371dca89b17385fbe7e8ed8aed82a15fb4394bf58439379cdcacda"
+  },
+  "rootReadCorrectionAndOriginalSourceConstruction": true
+}

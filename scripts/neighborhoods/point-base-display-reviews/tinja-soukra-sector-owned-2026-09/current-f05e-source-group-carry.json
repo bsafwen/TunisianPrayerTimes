@@ -1,0 +1,747 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_LOCAL_CARRY_TO_F05E_SOURCE_PHASE_BEFORE_DISPLAY",
+  "baselineMetadata": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json",
+    "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+    "bytes": 1883630
+  },
+  "baselineMetadataSha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+  "baselineGeneratorSha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9",
+  "proposedGeneratorSha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+  "historicalFacts": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/finite-source-group-facts.json",
+    "sha256": "70c565a5c47e9e6b62fa7d809a3d447fc1c0c1c1c2468ca25b07f2862a51f499",
+    "bytes": 137856
+  },
+  "historicalDesign": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/sector-owned-settlement-contract-design.json",
+    "sha256": "64804d3b6357ea428b18d95a433ccd72b3ad862dad9c8273f6c66561ed3d28fc",
+    "bytes": 155052
+  },
+  "carryReport": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-post-beni-teboursouk-facts-design-carry.json",
+    "sha256": "fbdc7b744b35076af88065e5723bdfda8b14aefe26c7f1550fffbdf3c9440420",
+    "bytes": 32859
+  },
+  "independentCarryReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-post-beni-teboursouk-carry-independent-review.json",
+    "sha256": "0c8d7c77e3924016fa3add0a742bbcdf1f134f830e9eead8ba6823e414b7897d",
+    "bytes": 13251
+  },
+  "finiteIndependentReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-finite-facts-independent-review.json",
+    "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62",
+    "bytes": 15797
+  },
+  "oldEpoch": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+  "currentSourceInputs": {
+    "picker": {
+      "file": "reviewed-picker-groups.json",
+      "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352"
+    },
+    "boundaries": {
+      "file": "reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    "coordinates": {
+      "file": "prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+    },
+    "governorateAssetSha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+    "curationSha256": "e5772ed17165b4a472e62e57d18aa6601878b5948e11cb532230970cbc0c1c53"
+  },
+  "currentMetadataFields": {
+    "osm:node:1109384824": {
+      "id": "osm:node:1109384824",
+      "sourceId": "osm",
+      "name": "تينجة",
+      "aliases": [
+        "Tinja"
+      ],
+      "kind": "village",
+      "parentName": "قنقلة",
+      "contextAliases": [
+        "Délégation Tinja",
+        "Guengla",
+        "Tinja",
+        "قنقلة",
+        "معتمدية تينجة"
+      ],
+      "governorateId": 361,
+      "lat": 37.1639232,
+      "lng": 9.7705573,
+      "delegationId": 565,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1109384824"
+    },
+    "osm:node:1201923151": {
+      "id": "osm:node:1201923151",
+      "sourceId": "osm",
+      "name": "دوار الفدام",
+      "aliases": [
+        "Douar El Feddam"
+      ],
+      "kind": "hamlet",
+      "parentName": "الزعرور",
+      "contextAliases": [
+        "Délégation Tinja",
+        "Tinja",
+        "Zaarour",
+        "الزعرور",
+        "معتمدية تينجة"
+      ],
+      "governorateId": 361,
+      "lat": 37.11523,
+      "lng": 9.666757,
+      "delegationId": 559,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1201923151"
+    },
+    "osm:node:1201923189": {
+      "id": "osm:node:1201923189",
+      "sourceId": "osm",
+      "name": "دوار عبد القادر",
+      "aliases": [
+        "Douar Abdelkader",
+        "Dawar Abd al-Qadir"
+      ],
+      "kind": "hamlet",
+      "parentName": "الزعرور",
+      "contextAliases": [
+        "Délégation Tinja",
+        "Tinja",
+        "Zaarour",
+        "الزعرور",
+        "معتمدية تينجة"
+      ],
+      "governorateId": 361,
+      "lat": 37.1219282,
+      "lng": 9.675329,
+      "delegationId": 565,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1201923189"
+    },
+    "osm:node:1201923313": {
+      "id": "osm:node:1201923313",
+      "sourceId": "osm",
+      "name": "دوار نشمايا",
+      "aliases": [
+        "Douar Nechmaya"
+      ],
+      "kind": "hamlet",
+      "parentName": "الزعرور",
+      "contextAliases": [
+        "Délégation Tinja",
+        "Tinja",
+        "Zaarour",
+        "الزعرور",
+        "معتمدية تينجة"
+      ],
+      "governorateId": 361,
+      "lat": 37.1253,
+      "lng": 9.6819071,
+      "delegationId": 565,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1201923313"
+    },
+    "osm:relation:7119647": {
+      "id": "osm:relation:7119647",
+      "sourceId": "osm",
+      "name": "الزعرور",
+      "aliases": [
+        "Zaarour",
+        "زعرور"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تينجة",
+      "contextAliases": [
+        "Délégation Tinja",
+        "Tinja",
+        "معتمدية تينجة"
+      ],
+      "governorateId": 361,
+      "lat": 37.107037,
+      "lng": 9.747301,
+      "delegationId": 565,
+      "hasBoundary": true,
+      "bbox": [
+        9.615156,
+        37.071957,
+        9.779396,
+        37.142889
+      ],
+      "areaKm2": 47.963323798746444,
+      "pickerGroupId": "osm:relation:7119647",
+      "offset": 1119388,
+      "length": 1372
+    },
+    "osm:relation:7119648": {
+      "id": "osm:relation:7119648",
+      "sourceId": "osm",
+      "name": "قنقلة",
+      "aliases": [
+        "Guengla"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تينجة",
+      "contextAliases": [
+        "Délégation Tinja",
+        "Tinja",
+        "معتمدية تينجة"
+      ],
+      "governorateId": 361,
+      "lat": 37.172654,
+      "lng": 9.776252,
+      "delegationId": 565,
+      "hasBoundary": true,
+      "bbox": [
+        9.75984,
+        37.159146,
+        9.787983,
+        37.186339
+      ],
+      "areaKm2": 3.4948811706220595,
+      "pickerGroupId": "osm:relation:7119648",
+      "offset": 1120760,
+      "length": 996
+    },
+    "osm:relation:7119649": {
+      "id": "osm:relation:7119649",
+      "sourceId": "osm",
+      "name": "تينجة",
+      "aliases": [
+        "Tinja"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تينجة",
+      "contextAliases": [
+        "Délégation Tinja",
+        "Tinja",
+        "معتمدية تينجة"
+      ],
+      "governorateId": 361,
+      "lat": 37.148433,
+      "lng": 9.762066,
+      "delegationId": 565,
+      "hasBoundary": true,
+      "bbox": [
+        9.748119,
+        37.125312,
+        9.777491,
+        37.171361
+      ],
+      "areaKm2": 6.902821611661433,
+      "pickerGroupId": "delegation:565",
+      "offset": 1121756,
+      "length": 580
+    },
+    "osm:node:1080388142": {
+      "id": "osm:node:1080388142",
+      "sourceId": "osm",
+      "name": "شطرانة",
+      "aliases": [
+        "Chotrana"
+      ],
+      "kind": "village",
+      "parentName": "التعمير الخامس",
+      "contextAliases": [
+        "Délégation Soukra",
+        "Etaamir kamesse",
+        "Ettaamir V",
+        "La Soukra",
+        "التعمير 5",
+        "التعمير الخامس",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.8811985,
+      "lng": 10.211819,
+      "delegationId": 631,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1080388142"
+    },
+    "osm:node:1080390577": {
+      "id": "osm:node:1080390577",
+      "sourceId": "osm",
+      "name": "حي المنصورة 1",
+      "aliases": [
+        "Cité Mansoura 1",
+        "Mansoura 1"
+      ],
+      "kind": "suburb",
+      "parentName": "النسيم",
+      "contextAliases": [
+        "Délégation Soukra",
+        "Ennassim",
+        "La Soukra",
+        "النسيم",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.883833,
+      "lng": 10.1996772,
+      "delegationId": 631,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1080390577"
+    },
+    "osm:node:1205570513": {
+      "id": "osm:node:1205570513",
+      "sourceId": "osm",
+      "name": "شطرانة 3",
+      "aliases": [
+        "Chotrana III"
+      ],
+      "kind": "suburb",
+      "parentName": "شطرانة",
+      "contextAliases": [
+        "Chotrana",
+        "Délégation Soukra",
+        "La Soukra",
+        "شطرانة",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.8924081,
+      "lng": 10.2289033,
+      "delegationId": 532,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1205570513"
+    },
+    "osm:node:1205571123": {
+      "id": "osm:node:1205571123",
+      "sourceId": "osm",
+      "name": "دار فضال",
+      "aliases": [
+        "Dar Fadhal"
+      ],
+      "kind": "suburb",
+      "parentName": "سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "Soukra",
+        "سكرة",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.8672102,
+      "lng": 10.2541607,
+      "delegationId": 532,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1205571123"
+    },
+    "osm:node:2157169857": {
+      "id": "osm:node:2157169857",
+      "sourceId": "osm",
+      "name": "المنطقة الصناعية الشرقية 2",
+      "aliases": [
+        "Zone Industrielle La Charguia II",
+        "المنقطة الصناعية الشرقية 2"
+      ],
+      "kind": "neighbourhood",
+      "parentName": "برج الوزير",
+      "contextAliases": [
+        "Borj Louzir",
+        "Délégation Soukra",
+        "La Soukra",
+        "برج الوزير",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.8545279,
+      "lng": 10.2079247,
+      "delegationId": 631,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:2157169857"
+    },
+    "osm:node:7390818324": {
+      "id": "osm:node:7390818324",
+      "sourceId": "osm",
+      "name": "سكرة",
+      "aliases": [
+        "La Soukra"
+      ],
+      "kind": "village",
+      "parentName": "البساتين",
+      "contextAliases": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "La Soukra",
+        "البساتين",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.8749751,
+      "lng": 10.2454267,
+      "delegationId": 532,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:7390818324"
+    },
+    "osm:relation:7114900": {
+      "id": "osm:relation:7114900",
+      "sourceId": "osm",
+      "name": "سكرة",
+      "aliases": [
+        "Soukra"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.876348,
+      "lng": 10.258199,
+      "delegationId": 532,
+      "hasBoundary": true,
+      "bbox": [
+        10.236409,
+        36.861799,
+        10.288739,
+        36.890763
+      ],
+      "areaKm2": 8.467930614714383,
+      "pickerGroupId": "delegation:532",
+      "offset": 935976,
+      "length": 980
+    },
+    "osm:relation:7114901": {
+      "id": "osm:relation:7114901",
+      "sourceId": "osm",
+      "name": "شطرانة",
+      "aliases": [
+        "Chotrana"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.894779,
+      "lng": 10.220174,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.191185,
+        36.877173,
+        10.245584,
+        36.913829
+      ],
+      "areaKm2": 6.5396358780917465,
+      "pickerGroupId": "osm:relation:7114901",
+      "offset": 936956,
+      "length": 748
+    },
+    "osm:relation:7114902": {
+      "id": "osm:relation:7114902",
+      "sourceId": "osm",
+      "name": "البساتين",
+      "aliases": [
+        "El Bassatine"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.87628,
+      "lng": 10.231171,
+      "delegationId": 532,
+      "hasBoundary": true,
+      "bbox": [
+        10.216997,
+        36.865139,
+        10.245671,
+        36.887692
+      ],
+      "areaKm2": 3.1291807974184263,
+      "pickerGroupId": "osm:relation:7114902",
+      "offset": 937704,
+      "length": 340
+    },
+    "osm:relation:7114903": {
+      "id": "osm:relation:7114903",
+      "sourceId": "osm",
+      "name": "دار فضال",
+      "aliases": [
+        "Dar Fadhal"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.865331,
+      "lng": 10.242531,
+      "delegationId": 532,
+      "hasBoundary": true,
+      "bbox": [
+        10.231111,
+        36.856894,
+        10.253956,
+        36.874643
+      ],
+      "areaKm2": 2.2727293796031294,
+      "pickerGroupId": "osm:relation:7114903",
+      "offset": 938044,
+      "length": 284
+    },
+    "osm:relation:7114904": {
+      "id": "osm:relation:7114904",
+      "sourceId": "isie-local-sectors-2023-identity-review",
+      "name": "التعمير الخامس",
+      "aliases": [
+        "Etaamir kamesse",
+        "التعمير 5",
+        "Ettaamir V"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.874419,
+      "lng": 10.211079,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.199603,
+        36.864471,
+        10.219946,
+        36.885127
+      ],
+      "areaKm2": 2.0092179045206304,
+      "pickerGroupId": "osm:relation:7114904",
+      "offset": 938328,
+      "length": 1140
+    },
+    "osm:relation:7114905": {
+      "id": "osm:relation:7114905",
+      "sourceId": "osm",
+      "name": "النسيم",
+      "aliases": [
+        "Ennassim"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.876794,
+      "lng": 10.195223,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.185503,
+        36.865126,
+        10.20876,
+        36.887761
+      ],
+      "areaKm2": 2.679947002139019,
+      "pickerGroupId": "osm:relation:7114905",
+      "offset": 939468,
+      "length": 356
+    },
+    "osm:relation:7114906": {
+      "id": "osm:relation:7114906",
+      "sourceId": "osm",
+      "name": "برج الوزير",
+      "aliases": [
+        "Borj Louzir"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.860654,
+      "lng": 10.208701,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.200396,
+        36.848547,
+        10.225259,
+        36.872933
+      ],
+      "areaKm2": 2.9220117666167105,
+      "pickerGroupId": "osm:relation:7114906",
+      "offset": 939824,
+      "length": 556
+    },
+    "osm:relation:7147558": {
+      "id": "osm:relation:7147558",
+      "sourceId": "osm",
+      "name": "سكرة",
+      "aliases": [
+        "Soukra"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية صفاقس الغربية",
+      "contextAliases": [
+        "Délégation Sfax Ouest",
+        "Sfax Ouest",
+        "معتمدية صفاقس الغربية"
+      ],
+      "governorateId": 359,
+      "lat": 34.725925,
+      "lng": 10.733506,
+      "delegationId": 632,
+      "hasBoundary": true,
+      "bbox": [
+        10.724515,
+        34.71598,
+        10.748677,
+        34.735889
+      ],
+      "areaKm2": 2.5116211786147478,
+      "pickerGroupId": "osm:relation:7147558",
+      "offset": 2486944,
+      "length": 716
+    },
+    "osm:way:1346769253": {
+      "id": "osm:way:1346769253",
+      "sourceId": "osm",
+      "name": "اقامة جوهرة",
+      "aliases": [
+        "Résidence Jawhara"
+      ],
+      "kind": "residential",
+      "parentName": "برج الوزير",
+      "contextAliases": [
+        "Borj Louzir",
+        "Délégation Soukra",
+        "La Soukra",
+        "برج الوزير",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.864991,
+      "lng": 10.219709,
+      "delegationId": 631,
+      "hasBoundary": true,
+      "bbox": [
+        10.218957,
+        36.86459,
+        10.220475,
+        36.86551
+      ],
+      "areaKm2": 0.007053381333194259,
+      "pickerGroupId": "osm:way:1346769253",
+      "offset": 5223800,
+      "length": 68
+    },
+    "osm:way:93676034": {
+      "id": "osm:way:93676034",
+      "sourceId": "osm",
+      "name": "السوادية",
+      "aliases": [
+        "Essouadia"
+      ],
+      "kind": "residential",
+      "parentName": "سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "Soukra",
+        "سكرة",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.866001,
+      "lng": 10.283885,
+      "delegationId": 532,
+      "hasBoundary": true,
+      "bbox": [
+        10.280831,
+        36.863274,
+        10.288508,
+        36.869046
+      ],
+      "areaKm2": 0.2267869794262522,
+      "pickerGroupId": "osm:way:93676034",
+      "offset": 5448924,
+      "length": 356
+    }
+  },
+  "currentCurationBindings": {
+    "osm:node:1109384824": null,
+    "osm:node:1201923151": null,
+    "osm:node:1201923189": null,
+    "osm:node:1201923313": null,
+    "osm:node:7366238620": null,
+    "osm:relation:1435827": null,
+    "osm:relation:7119647": null,
+    "osm:relation:7119648": null,
+    "osm:relation:7119649": null,
+    "osm:relation:7151752": null,
+    "osm:node:1080388142": null,
+    "osm:node:1080390577": null,
+    "osm:node:1205570513": null,
+    "osm:node:1205571123": null,
+    "osm:node:2157169857": {
+      "id": "osm:node:2157169857",
+      "expectedKind": "neighbourhood",
+      "expectedTags": {
+        "addr:neighbourhood": "المنقطة الصناعية الشرقية 2",
+        "addr:postcode": "2035",
+        "name": "المنقطة الصناعية الشرقية 2",
+        "name:ar": "المنقطة الصناعية الشرقية 2",
+        "name:en": "Zone Industrielle La Charguia II",
+        "name:fr": "Zone Industrielle La Charguia II",
+        "place": "neighbourhood"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "المنطقة الصناعية الشرقية 2",
+        "name:ar": "المنطقة الصناعية الشرقية 2",
+        "name:en": "Zone Industrielle La Charguia II",
+        "name:fr": "Zone Industrielle La Charguia II",
+        "alt_name:ar": "المنقطة الصناعية الشرقية 2"
+      },
+      "reason": "Correct the exact Arabic transposition المنقطة to المنطقة in this separately identified industrial locality. MEHAT primary addresses use المنطقة الصناعية الشرقية with the same zone number. Preserve the exact old Arabic spelling as a historical search alias, all Latin name tags, current source point, context, governorate and prayer default.",
+      "evidence": [
+        {
+          "file": "name-reviews/charguia-two-point-name/charguia-two-node-spelling-source-review.json",
+          "sha256": "653a482fda42902dabb74c975e398f6704a19d362d594fb7994599e77d97498e"
+        }
+      ]
+    },
+    "osm:node:7390818324": null,
+    "osm:relation:1435830": null,
+    "osm:relation:4184709": null,
+    "osm:relation:7114900": null,
+    "osm:relation:7114901": null,
+    "osm:relation:7114902": null,
+    "osm:relation:7114903": null,
+    "osm:relation:7114904": null,
+    "osm:relation:7114905": null,
+    "osm:relation:7114906": null,
+    "osm:relation:7147558": null,
+    "osm:way:1346769253": null,
+    "osm:way:93676034": null
+  },
+  "scope": "Only membership proposals for Tinja and La Soukra; all 23 raw records, 28 source objects, 10 local sectors, separate Sfax peer, independent points and existing corrected source phases remain preserved.",
+  "historicalEvidencePolicy": "Frozen research bytes are not relabelled; embedded workstation paths and broader candidate references are historical provenance, not operative dependencies."
+}

@@ -1,0 +1,140 @@
+{
+  "status": "SOURCE_IDENTITY_ACCEPTED_FOR_FINITE_DISPLAY_PROOF_REVIEW_ONLY",
+  "reviewedAt": "2026-09-12T12:10:46.249400+00:00",
+  "sourceReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "sourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "metadataObserved": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4"
+  },
+  "checks": [
+    {
+      "rawId": "osm:way:96369466",
+      "baseId": 518,
+      "sourceVersion": 15,
+      "sourceHistoryVersions": 15,
+      "authenticSourceGeometryExact": true,
+      "primaryOriginalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\mehat-beja-atlas.pdf",
+        "sha256": "c7d51ef83cd9553b021a4be2f4c5101e17828e0f10d3721f1c663dc6cf065201",
+        "bytes": 29396451
+      },
+      "personallyViewedCompletePage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\beja-page60.png",
+        "sha256": "5ea7c7f64ce4f99e52fd278e85e72e242539b336146800b9bd08fd6150bf69f6",
+        "bytes": 1469846
+      },
+      "preservedSectorIds": [
+        "osm:relation:7189423",
+        "osm:relation:7189429",
+        "osm:relation:7189435",
+        "osm:relation:7189446",
+        "osm:relation:7189448",
+        "osm:relation:7189467",
+        "osm:relation:7189469",
+        "osm:relation:7189470",
+        "osm:relation:7189471",
+        "osm:relation:7189476"
+      ],
+      "identityAssessment": "Inhabited town identity supports subsequent bounded residential display proof review. Residential extent is not certified as the complete town, municipality, delegation or sector boundary.",
+      "finiteCoordinateContext": {
+        "rawRepresentative": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7189435"
+          ],
+          "inTargetResidentialPolygon": true
+        },
+        "legacyBase": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7189435"
+          ],
+          "inTargetResidentialPolygon": false
+        }
+      },
+      "baseOutsideResidentialPolygonMustBeExplicitlyBoundInProof": true,
+      "contractAssessment": "The ordinary reviewed_residential_base_display_identity contract explicitly accepts a reviewed outside base. A specialized noncoincident-town contract is not required merely because the base lies outside the residential polygon. Full schema feasibility remains a separate review."
+    },
+    {
+      "rawId": "osm:way:43944790",
+      "baseId": 441,
+      "sourceVersion": 5,
+      "sourceHistoryVersions": 5,
+      "authenticSourceGeometryExact": true,
+      "primaryOriginalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "bytes": 30603494
+      },
+      "personallyViewedCompletePage": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\sousse-page84.png",
+        "sha256": "d93bb5e9240970e084fd9ad14fe70a5f1bd34d0d3277b0720e7a425119319fe0",
+        "bytes": 1263560
+      },
+      "preservedSectorIds": [
+        "osm:relation:7113806",
+        "osm:relation:7113807",
+        "osm:relation:7113808",
+        "osm:relation:7113809",
+        "osm:relation:7113811",
+        "osm:relation:7135672"
+      ],
+      "identityAssessment": "Inhabited town identity supports subsequent bounded residential display proof review. Residential extent is not certified as the complete town, municipality, delegation or sector boundary.",
+      "finiteCoordinateContext": {
+        "rawRepresentative": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7113809"
+          ],
+          "inTargetResidentialPolygon": true
+        },
+        "legacyBase": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7113806"
+          ],
+          "inTargetResidentialPolygon": false
+        }
+      },
+      "baseOutsideResidentialPolygonMustBeExplicitlyBoundInProof": true,
+      "contractAssessment": "The ordinary reviewed_residential_base_display_identity contract explicitly accepts a reviewed outside base. A specialized noncoincident-town contract is not required merely because the base lies outside the residential polygon. Full schema feasibility remains a separate review."
+    }
+  ],
+  "supplementaryPhoneReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\borma-next-six-beni-mhira-phone-review-20260912.json",
+    "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f"
+  },
+  "metlaouiHold": "No rename, deletion or merge of way923739218: the phone Ouled Bel Hassen lead and source fragment lineage still require independently located neighborhood/extent evidence.",
+  "limitations": [
+    "Town descriptions do not certify residential polygon completeness.",
+    "Both legacy reference coordinates are outside the target residential footprint; no coordinate movement is authorized by this review.",
+    "A complete current finite preservation contract and independent review are required before any stage or product change."
+  ],
+  "productChanges": false,
+  "compilerOrGeneratorExecuted": false,
+  "phoneActions": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\correct_two_town_root_schema_note.py",
+    "sha256": "f40880f40b060739b1f51f3976c355b04d2271dc870a0c3918c224c6dc53f0cc"
+  },
+  "supersedesRootSchemaInference": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\two-town-residential-root-scope-review.json",
+    "sha256": "ef31924b2ef49b32b3dea8ed74f698a708a7ec18534ba775887acad351af2055"
+  },
+  "schemaCorrectionBasis": {
+    "engine": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263"
+    },
+    "function": "apply_reviewed_residential_display_associations",
+    "rootPersonallyRead": true,
+    "description": "The ordinary branch validates an explicit boolean base containment result, while requiring the absorbed settlement point inside. It separately requires point/base inside the administrative context."
+  }
+}

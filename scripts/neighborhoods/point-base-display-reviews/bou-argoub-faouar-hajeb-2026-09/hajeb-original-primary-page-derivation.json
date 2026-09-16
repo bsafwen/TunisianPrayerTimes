@@ -1,0 +1,76 @@
+{
+  "originalPdf": {
+    "file": "mehat-atlas-kairouan-fr.pdf",
+    "sha256": "7b683b60e43de90b14d42b19cc7f4836594b3729ee1a9c993e47bd718bc92641",
+    "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf"
+  },
+  "method": "PyMuPDF get_text(text, sort=False), complete one-based source pages, UTF8, no rewriting; derived text is not original HTTP bytes. PNG renders use Matrix(1.6,1.6), alpha=False.",
+  "pymupdfVersion": "1.28.2",
+  "pages": [
+    {
+      "page": 1,
+      "text": "mehat-atlas-kairouan-page1.txt",
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "render": "mehat-atlas-kairouan-page1.png",
+      "renderSha256": "231e61d53b9d75268dcf1d616becfb2d9b5be3041032cb14428338273384646a",
+      "pageRect": [
+        0.0,
+        0.0,
+        1123.739990234375,
+        817.2000122070312
+      ]
+    },
+    {
+      "page": 5,
+      "text": "mehat-atlas-kairouan-page5.txt",
+      "textSha256": "45ab16a6797f619b23a1fcbd853bf7c46f8bbf1a1d6e646fe1f800a3d41a8aa8",
+      "render": "mehat-atlas-kairouan-page5.png",
+      "renderSha256": "34354a926e13288a43515b02f3be09e7ddc742a0f816bf27f358baaa0c5e98a5",
+      "pageRect": [
+        0.0,
+        0.0,
+        1191.0,
+        842.0
+      ]
+    },
+    {
+      "page": 40,
+      "text": "mehat-atlas-kairouan-page40.txt",
+      "textSha256": "20836f50a5181bb2476be5f7f22d183fff44fdc87f6608832a83c3d76725ab6c",
+      "render": "mehat-atlas-kairouan-page40.png",
+      "renderSha256": "b3cbda664b83690491601b5604012859b7934a44246ec486a2de1c18c730232b",
+      "pageRect": [
+        0.0,
+        0.0,
+        1191.0,
+        842.0
+      ]
+    },
+    {
+      "page": 48,
+      "text": "mehat-atlas-kairouan-page48.txt",
+      "textSha256": "e4e820d35d2c5ba95fdfe94544c0c4550be8f529d04d911a310f50b67d79e06f",
+      "render": "mehat-atlas-kairouan-page48.png",
+      "renderSha256": "43f4e7c8754b2a1154330512cf2401e46779e392b64b55a32fe9f58cb9917790",
+      "pageRect": [
+        0.0,
+        0.0,
+        1191.0,
+        842.0
+      ]
+    },
+    {
+      "page": 82,
+      "text": "mehat-atlas-kairouan-page82.txt",
+      "textSha256": "e0a171afed230140e6aa42d5f147e06f39ea6ae3bf59e1e23887753735e54a1f",
+      "render": "mehat-atlas-kairouan-page82.png",
+      "renderSha256": "7b77559cb9e4717f02ff356698971fde3c6b0174cf81285822579dbeef20e813",
+      "pageRect": [
+        0.0,
+        0.0,
+        1191.0,
+        842.0
+      ]
+    }
+  ]
+}

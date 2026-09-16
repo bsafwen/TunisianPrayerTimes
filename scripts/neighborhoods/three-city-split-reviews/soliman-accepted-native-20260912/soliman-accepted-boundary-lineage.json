@@ -1,0 +1,579 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_soliman_split_accepted_boundary_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "residentialId": "osm:way:177385463",
+  "sectorId": "osm:relation:7100693",
+  "pointId": "osm:node:1124155543",
+  "baseId": 465,
+  "historicalProof": {
+    "file": "three-city-split-reviews/three-city-split-source-proof.json",
+    "sha256": "ff66bf2aedeed7e18832b077175acf02968aefddb23cb2850d8c79af9f3f2f62"
+  },
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421"
+  },
+  "sourceStates": [
+    {
+      "id": "osm:node:1124155543",
+      "original": {
+        "kind": "village",
+        "tags": {
+          "addr:city": "سليمان",
+          "name": "سليمان",
+          "name:ar": "سليمان",
+          "name:en": "Soliman",
+          "name:fr": "Soliman",
+          "place": "village",
+          "wikidata": "Q726858",
+          "wikimedia_commons": "Category:Soliman, Tunisia",
+          "wikipedia": "ar:سليمان (تونس)"
+        },
+        "sourceId": null,
+        "geometrySha256": "e7f42816cdf1fb57f9e04fd7245c9e456acb02b5f1b479a8afeb8ae12c0bc2a3"
+      },
+      "effective": {
+        "kind": "village",
+        "tags": {
+          "addr:city": "سليمان",
+          "name": "سليمان",
+          "name:ar": "سليمان",
+          "name:en": "Soliman",
+          "name:fr": "Soliman",
+          "place": "village",
+          "wikidata": "Q726858",
+          "wikimedia_commons": "Category:Soliman, Tunisia",
+          "wikipedia": "ar:سليمان (تونس)"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "e7f42816cdf1fb57f9e04fd7245c9e456acb02b5f1b479a8afeb8ae12c0bc2a3"
+      }
+    },
+    {
+      "id": "osm:relation:1435825",
+      "original": {
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-21",
+          "admin_level": "4",
+          "boundary": "administrative",
+          "name": "ولاية نابل",
+          "name:ar": "ولاية نابل",
+          "name:az": "Nabul (vilayət)",
+          "name:be": "Набуль (вілает)",
+          "name:be-tarask": "Набуль (вілает)",
+          "name:bg": "Набил (област)",
+          "name:ca": "Governació de Nabeul",
+          "name:ceb": "Gouvernorat de Nabeul",
+          "name:cy": "Nabeul (talaith)",
+          "name:de": "Gouvernement Nabeul",
+          "name:el": "Ναμπέλ (Κυβερνείο)",
+          "name:en": "Nabeul",
+          "name:es": "Gobernación de Nabeul",
+          "name:fa": "نابل",
+          "name:fi": "Nabeul (kuvernementti)",
+          "name:fr": "Gouvernorat Nabeul",
+          "name:frr": "Nabeul (Guwernement)",
+          "name:id": "Kegubernuran Nabeul",
+          "name:it": "Nabeul",
+          "name:ja": "ナブール県",
+          "name:ko": "나뵐주",
+          "name:ks": "نابل",
+          "name:ms": "Kawasan kegabenoran Nabeul",
+          "name:nl": "Nabeul (gouvernement)",
+          "name:no": "Nabeul (guvernement)",
+          "name:pl": "Gubernatorstwo Nabul",
+          "name:pt": "Nabeul (província)",
+          "name:ro": "Guvernoratul Nabeul",
+          "name:ru": "Набуль (вилайет)",
+          "name:sco": "Nabeul Govrenorate",
+          "name:sh": "Nabeul (vilajet)",
+          "name:tr": "Nabil ili",
+          "name:uk": "Набуль (вілаєт)",
+          "name:ur": "نابل",
+          "name:zh": "納布勒省",
+          "name:zu": "Nabeul Governorate",
+          "official_name": "ولاية نابل",
+          "official_name:ar": "ولاية نابل",
+          "official_name:en": "Nabeul Governorate",
+          "official_name:fa": "استان نابل",
+          "official_name:fr": "Gouvernorat de Nabeul",
+          "official_name:it": "Governatorato di Nabeul",
+          "official_name:ur": "ولاية نابل",
+          "population": "787920",
+          "population:date": "2014",
+          "ref:tn:codegeo": "15",
+          "wikidata": "Q328145",
+          "wikipedia": "ar:ولاية نابل"
+        },
+        "sourceId": null,
+        "geometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700"
+      },
+      "effective": {
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-21",
+          "admin_level": "4",
+          "boundary": "administrative",
+          "name": "ولاية نابل",
+          "name:ar": "ولاية نابل",
+          "name:az": "Nabul (vilayət)",
+          "name:be": "Набуль (вілает)",
+          "name:be-tarask": "Набуль (вілает)",
+          "name:bg": "Набил (област)",
+          "name:ca": "Governació de Nabeul",
+          "name:ceb": "Gouvernorat de Nabeul",
+          "name:cy": "Nabeul (talaith)",
+          "name:de": "Gouvernement Nabeul",
+          "name:el": "Ναμπέλ (Κυβερνείο)",
+          "name:en": "Nabeul",
+          "name:es": "Gobernación de Nabeul",
+          "name:fa": "نابل",
+          "name:fi": "Nabeul (kuvernementti)",
+          "name:fr": "Gouvernorat Nabeul",
+          "name:frr": "Nabeul (Guwernement)",
+          "name:id": "Kegubernuran Nabeul",
+          "name:it": "Nabeul",
+          "name:ja": "ナブール県",
+          "name:ko": "나뵐주",
+          "name:ks": "نابل",
+          "name:ms": "Kawasan kegabenoran Nabeul",
+          "name:nl": "Nabeul (gouvernement)",
+          "name:no": "Nabeul (guvernement)",
+          "name:pl": "Gubernatorstwo Nabul",
+          "name:pt": "Nabeul (província)",
+          "name:ro": "Guvernoratul Nabeul",
+          "name:ru": "Набуль (вилайет)",
+          "name:sco": "Nabeul Govrenorate",
+          "name:sh": "Nabeul (vilajet)",
+          "name:tr": "Nabil ili",
+          "name:uk": "Набуль (вілаєт)",
+          "name:ur": "نابل",
+          "name:zh": "納布勒省",
+          "name:zu": "Nabeul Governorate",
+          "official_name": "ولاية نابل",
+          "official_name:ar": "ولاية نابل",
+          "official_name:en": "Nabeul Governorate",
+          "official_name:fa": "استان نابل",
+          "official_name:fr": "Gouvernorat de Nabeul",
+          "official_name:it": "Governatorato di Nabeul",
+          "official_name:ur": "ولاية نابل",
+          "population": "787920",
+          "population:date": "2014",
+          "ref:tn:codegeo": "15",
+          "wikidata": "Q328145",
+          "wikipedia": "ar:ولاية نابل"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "85a709dbeeb45529e23e5883e237cfbeda01b59595cf7343cdf13b7e97005700"
+      }
+    },
+    {
+      "id": "osm:relation:7100693",
+      "original": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سليمان",
+          "name:ar": "سليمان",
+          "name:fr": "Soliman",
+          "ref:tn:codegeo": "156154"
+        },
+        "sourceId": null,
+        "geometrySha256": "f2ab72174e970cb20848ed06b2352db41453bb21d47c75b55956f96c68b3c071"
+      },
+      "effective": {
+        "kind": "sector",
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "156154",
+          "name:ar": "سليمان",
+          "name:fr": "Soliman"
+        },
+        "sourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+        "geometrySha256": "5768995908c28c19b2afdb816ee259e15c68d3fcce35c9004a85fb2ec34a9175"
+      }
+    },
+    {
+      "id": "osm:relation:7145292",
+      "original": {
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Soliman",
+          "boundary": "administrative",
+          "name": "معتمدية سليمان",
+          "name:ar": "معتمدية سليمان",
+          "name:fr": "Délégation Soliman",
+          "ref:tn:codegeo": "1561",
+          "ref:tn:hasc_2": "TN.NB.SO",
+          "wikidata": "Q3489485"
+        },
+        "sourceId": null,
+        "geometrySha256": "174c79bac0661ccf010c1a0a27abf326da92e77536edda601b85934874b449ba"
+      },
+      "effective": {
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Soliman",
+          "boundary": "administrative",
+          "name": "معتمدية سليمان",
+          "name:ar": "معتمدية سليمان",
+          "name:fr": "Délégation Soliman",
+          "ref:tn:codegeo": "1561",
+          "ref:tn:hasc_2": "TN.NB.SO",
+          "wikidata": "Q3489485"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "174c79bac0661ccf010c1a0a27abf326da92e77536edda601b85934874b449ba"
+      }
+    },
+    {
+      "id": "osm:way:177385463",
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "سليمان",
+          "addr:country": "TN",
+          "addr:governorate": "Nabeul",
+          "landuse": "residential",
+          "name": "سليمان",
+          "name:ar": "سليمان",
+          "name:fr": "Soliman"
+        },
+        "sourceId": null,
+        "geometrySha256": "1e90189af413c2ea32ece7ca663c3692170c2a2599b2f7569556220140aae69d"
+      },
+      "effective": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "سليمان",
+          "addr:country": "TN",
+          "addr:governorate": "Nabeul",
+          "landuse": "residential",
+          "name": "سليمان",
+          "name:ar": "سليمان",
+          "name:fr": "Soliman"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "1e90189af413c2ea32ece7ca663c3692170c2a2599b2f7569556220140aae69d"
+      }
+    }
+  ],
+  "originalNamePeerIds": [
+    "osm:node:1124155543",
+    "osm:relation:7100693",
+    "osm:relation:7145292",
+    "osm:way:177385463"
+  ],
+  "effectiveNamePeerIds": [
+    "osm:node:1124155543",
+    "osm:relation:7100693",
+    "osm:relation:7145292",
+    "osm:way:177385463"
+  ],
+  "acceptedReplacement": {
+    "sourceRecord": {
+      "id": "isie-local-sectors-2023-soliman-thirteen-native",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7100603",
+          "officialCode": "156151",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المريسة",
+            "name:ar": "المريسة",
+            "name:fr": "El Mraissa",
+            "ref:tn:codegeo": "156151"
+          }
+        },
+        {
+          "id": "osm:relation:7100693",
+          "officialCode": "156154",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سليمان",
+            "name:ar": "سليمان",
+            "name:fr": "Soliman",
+            "ref:tn:codegeo": "156154"
+          }
+        },
+        {
+          "id": "osm:relation:7100694",
+          "officialCode": "156155",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سليمان الجنوبية",
+            "name:ar": "سليمان الجنوبية",
+            "name:fr": "Soliman Sud",
+            "ref:tn:codegeo": "156155"
+          }
+        },
+        {
+          "id": "osm:relation:7101601",
+          "officialCode": "156254",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزلفة الجنوبية",
+            "name:ar": "منزل بوزلفة الجنوبية",
+            "name:fr": "Menzel Bouzelfa Sud",
+            "ref:tn:codegeo": "156254"
+          }
+        },
+        {
+          "id": "osm:relation:7101606",
+          "officialCode": "156255",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزلفة الغربية",
+            "name:ar": "منزل بوزلفة الغربية",
+            "name:fr": "Menzel Bouzelfa Ouest",
+            "ref:tn:codegeo": "156255"
+          }
+        },
+        {
+          "id": "osm:relation:7102534",
+          "officialCode": "156153",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بو شراي",
+            "name:ar": "بو شراي",
+            "name:fr": "Bou Charray",
+            "ref:tn:codegeo": "156153"
+          }
+        },
+        {
+          "id": "osm:relation:7102535",
+          "officialCode": "156152",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الشريفات",
+            "name:ar": "الشريفات",
+            "name:fr": "Ech Cherifet",
+            "ref:tn:codegeo": "156152"
+          }
+        },
+        {
+          "id": "osm:relation:7103805",
+          "officialCode": "156457",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قرمبالية الغربية",
+            "name:ar": "قرمبالية الغربية",
+            "name:fr": "Grombalia Ouest",
+            "ref:tn:codegeo": "156457"
+          }
+        },
+        {
+          "id": "osm:relation:7103806",
+          "officialCode": "156456",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قرنبالية الشرقية",
+            "name:ar": "قرنبالية الشرقية",
+            "name:fr": "Grombalia Est",
+            "ref:tn:codegeo": "156456"
+          }
+        },
+        {
+          "id": "osm:relation:7104933",
+          "officialCode": "156455",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "خنقة الحجاج",
+            "name:ar": "خنقة الحجاج",
+            "name:fr": "Khannguet el Hadjadj",
+            "ref:tn:codegeo": "156455"
+          }
+        },
+        {
+          "id": "osm:relation:7104934",
+          "officialCode": "156452",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "شماس",
+            "name:ar": "شماس",
+            "name:fr": "Chammes",
+            "ref:tn:codegeo": "156452"
+          }
+        },
+        {
+          "id": "osm:relation:7104935",
+          "officialCode": "156451",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فندق الجديد",
+            "name:ar": "فندق الجديد",
+            "name:fr": "Fondouk Jedid",
+            "ref:tn:codegeo": "156451"
+          }
+        },
+        {
+          "id": "osm:relation:7174585",
+          "officialCode": "135552",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "برج السدرية",
+            "name:ar": "برج السدرية",
+            "name:fr": "Borj Cedria",
+            "ref:tn:codegeo": "135552"
+          },
+          "scopeKind": "exhaustive_electoral_parts"
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-12",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-source-acceptance-proof.json",
+        "evidenceSha256": "bdb1f28beff4e1edb8abb6fd10fa5389b77055b52a173c5d464a0a492e1ec2bf",
+        "geometryPolicy": "Twelve exact unrounded own-map administrative regions plus legal exhaustive union of both complete Borj electoral parts. No source clip, snap, buffer, repair or restored old strips. Mraissa qualified stroke-only region retains its touching hole.",
+        "namePolicy": "Canonical current INS Arabic/French identities. Canonical156254 القبلية is explicitly source-reviewed; no automatic old aliases. All old full tags preserved in expectedOriginalTags.",
+        "qualification": "Source-only proposal; known source seams and uncertain outer coverage margins remain explicit. Separate effective proof successors and actual catalog verification remain required."
+      }
+    },
+    "record": {
+      "id": "osm:relation:7100693",
+      "officialCode": "156154",
+      "action": "replace",
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سليمان",
+        "name:ar": "سليمان",
+        "name:fr": "Soliman",
+        "ref:tn:codegeo": "156154"
+      }
+    },
+    "application": {
+      "id": "osm:relation:7100693",
+      "action": "replace",
+      "officialCode": "156154",
+      "sourceId": "isie-local-sectors-2023-soliman-thirteen-native"
+    },
+    "geojson": {
+      "file": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857"
+    },
+    "featureSha256": "617380ed5bbc451f7278a8c81b0c80403c32fcb0f21cf0fd8c70a5a0e40cb177"
+  },
+  "sectorProjection": {
+    "metadata": {
+      "id": "osm:relation:7100693",
+      "sourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "name": "سليمان",
+      "aliases": [
+        "Soliman"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.698864,
+      "lng": 10.453989,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.40464,
+        36.667588,
+        10.493036,
+        36.730238
+      ],
+      "areaKm2": 26.130680871163893,
+      "pickerGroupId": "osm:relation:7100693"
+    },
+    "packedGeometrySha256": "95956c0f49b29b7789cb9f4c6c4a2ccd8a6e294a143cefff94bf39076a960bd6"
+  },
+  "sectorContainment": {
+    "original": {
+      "containsBase": false,
+      "containsSourceSettlementPoint": false
+    },
+    "effective": {
+      "containsBase": false,
+      "containsSourceSettlementPoint": true
+    },
+    "packed": {
+      "containsBase": false,
+      "containsSourceSettlementPoint": true
+    }
+  },
+  "sourceAbsorption": {
+    "pointId": "osm:node:1124155543",
+    "receiverId": "osm:way:177385463",
+    "pointCoordinates": {
+      "lat": 36.6944327,
+      "lng": 10.4865924
+    },
+    "originalPackedMatches": [
+      {
+        "id": "osm:way:177385463",
+        "packedGeometrySha256": "52f7783eded902f217331da4c6234de553f1c17d0477da130f4d45d8869ebdd6",
+        "areaKm2": 4.073446556171929
+      }
+    ],
+    "effectivePackedMatches": [
+      {
+        "id": "osm:relation:7100693",
+        "packedGeometrySha256": "95956c0f49b29b7789cb9f4c6c4a2ccd8a6e294a143cefff94bf39076a960bd6",
+        "areaKm2": 26.130680871163893
+      },
+      {
+        "id": "osm:way:177385463",
+        "packedGeometrySha256": "52f7783eded902f217331da4c6234de553f1c17d0477da130f4d45d8869ebdd6",
+        "areaKm2": 4.073446556171929
+      }
+    ],
+    "receiverAliases": [
+      "Soliman"
+    ]
+  },
+  "currentDistinctPair": {
+    "ids": [
+      "osm:relation:7100693",
+      "osm:way:177385463"
+    ],
+    "reviewEvidence": {
+      "file": "three-city-split-reviews/soliman-accepted-native-20260912/soliman-town-sector-distinct-native.json",
+      "sha256": "5b36b3a3389d81ab221c1127be09acf199d1c15d83778670d6fbab632e252184"
+    }
+  }
+}

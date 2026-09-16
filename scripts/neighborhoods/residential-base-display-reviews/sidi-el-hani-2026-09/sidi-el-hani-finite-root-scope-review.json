@@ -1,0 +1,48 @@
+{
+  "status": "FINITE_SIDI_EL_HANI_SCOPE_ACCEPTED_FOR_SOURCE_STAGE_REVIEW",
+  "reviewedAt": "2026-09-12T12:27:25.242515+00:00",
+  "finiteFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-residential-display-feasibility\\finite-source-schema-facts.json",
+    "sha256": "e8163672bd26da8e5c280c6ee0110986dab20dc543e3c6ab06ef140fddd27707"
+  },
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1"
+  },
+  "sourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "preservedSectors": [
+    "osm:relation:7113806",
+    "osm:relation:7113807",
+    "osm:relation:7113808",
+    "osm:relation:7113809",
+    "osm:relation:7113811",
+    "osm:relation:7135672"
+  ],
+  "preservedRawIds": [
+    "osm:relation:7113806",
+    "osm:relation:7113807",
+    "osm:relation:7113808",
+    "osm:relation:7113809",
+    "osm:relation:7113811",
+    "osm:relation:7135672",
+    "osm:way:43944790"
+  ],
+  "sourceAssertions": 10,
+  "wholeSectorGroupsAreSingletons": true,
+  "absorbedPointId": "osm:node:558855437",
+  "absorbedPointAbsentFromRawAndGroups": true,
+  "sourcePointSector": "osm:relation:7113809",
+  "legacyBaseSector": "osm:relation:7113806",
+  "legacyBaseOutsideNativeAndPackedResidential": true,
+  "rootDecodedSevenPackedSlicesIndependently": true,
+  "qualification": "This checks the finite source and display-preservation scope. The earlier primary and phone evidence supports broad town identity; no exact exhaustive town boundary is certified.",
+  "futureExistingSourceChanges": "One picker append plus two exact prior-proof manifest-pin successors and their two curation references; no compiler or geometry changes.",
+  "teboursoukHeld": "Ain Jemala has a real two-member group. Preserve it and use a separately reviewed complete-group extension before applying that town change.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_sidi_el_hani_finite_root_scope.py",
+    "sha256": "2602878fb40021bb2834ea03f29a2d0235da0c5db1e225fb59465da7404237d5"
+  }
+}

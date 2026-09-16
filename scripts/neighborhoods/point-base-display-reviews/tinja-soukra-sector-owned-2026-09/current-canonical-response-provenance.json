@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824.json",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824.json",
+      "retrievedAt": "2026-09-12T12:17:44.779279+00:00",
+      "httpStatus": "200",
+      "exitCode": 0,
+      "response": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-current.json",
+        "sha256": "763557e325f2fa49bb0495ff740eb9b56d156541c52d65f54314e11db49a6cfb",
+        "bytes": 572,
+        "url": "https://api.openstreetmap.org/api/0.6/node/1109384824.json"
+      },
+      "headers": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-current.json.headers",
+        "sha256": "1565ed8cb9392f5d995a946374c401d7f199c4f7d23ba4d8956f928ee51ed877",
+        "bytes": 566
+      },
+      "historicalRetrievalManifest": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/retrieval-manifest.json",
+        "sha256": "7ac0344351d7b40f597756486517137aa29ac6556fb1f619e57a0e56f6d99d84",
+        "bytes": 17540
+      },
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json",
+      "retrievedAt": "2026-09-12T12:17:44.779279+00:00",
+      "httpStatus": "200",
+      "exitCode": 0,
+      "response": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-history.json",
+        "sha256": "7d63522df1f0209d887032debb4e62d1a4c81528dcce2f1b17e1562d47b1abd2",
+        "bytes": 2708,
+        "url": "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json"
+      },
+      "headers": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-history.json.headers",
+        "sha256": "7a3536cb9260aa8c1badce77b22d7e0b839f4a61b3e0a672405683bc7f83aa80",
+        "bytes": 566
+      },
+      "historicalRetrievalManifest": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/retrieval-manifest.json",
+        "sha256": "7ac0344351d7b40f597756486517137aa29ac6556fb1f619e57a0e56f6d99d84",
+        "bytes": 17540
+      },
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "requestedUrl": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8",
+      "effectiveUrl": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8",
+      "retrievedAt": "2026-09-12T12:28:07.043707+00:00",
+      "httpStatus": "200",
+      "exitCode": 0,
+      "response": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/interior-tinja-city-article.html",
+        "sha256": "cbdbd3274bad4e07bc780c41d595a4ccdbe219633f775139eee4809e24cd21e7",
+        "bytes": 51445,
+        "url": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8"
+      },
+      "headers": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/interior-tinja-city-article.html.headers",
+        "sha256": "38ada78a7c03752e8d926dbf25b712a6aef0444ceb471723fcea4182e08b118e",
+        "bytes": 670
+      },
+      "historicalRetrievalManifest": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-article-retrieval.json",
+        "sha256": "644efcf36907922f755a06cbcaa71cd2014dd78bb4911074b22377e931a905aa",
+        "bytes": 3003
+      },
+      "bodySemantics": "Original decoded HTTP response bytes. Normal TLS. Article URL extracted verbatim from primary listing href; no conversion or rewriting.",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "requestedUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/",
+      "effectiveUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/",
+      "retrievedAt": "2026-09-12T12:22:51.697595+00:00",
+      "httpStatus": "200",
+      "exitCode": 0,
+      "response": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-urban-planning.html",
+        "sha256": "c3170bececcf41da05792e76e7d9fdc12194f0b83cf26291e7e0ebf58479e108",
+        "bytes": 181081,
+        "url": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/"
+      },
+      "headers": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-urban-planning.html.headers",
+        "sha256": "4a9d37763b8e6468ba425e6ede36ad9d76245af820b620e86e2cd7c932247edb",
+        "bytes": 794
+      },
+      "historicalRetrievalManifest": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/primary-retrieval-manifest.json",
+        "sha256": "88b1ac0f6a4126dff7d6d569aa5c4c17fb2ba57267eaff86477a72f6d16afb22",
+        "bytes": 8422
+      },
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no certificate bypass or body rewriting. Explicit HTTP URLs are public unencrypted sources.",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324.json",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324.json",
+      "retrievedAt": "2026-09-12T12:17:44.982717+00:00",
+      "httpStatus": "200",
+      "exitCode": 0,
+      "response": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-7390818324-current.json",
+        "sha256": "815b87cab09e395612c7238dd42a188089475def4a11fcec997e9ad006eef38e",
+        "bytes": 631,
+        "url": "https://api.openstreetmap.org/api/0.6/node/7390818324.json"
+      },
+      "headers": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-7390818324-current.json.headers",
+        "sha256": "eda8549e0a692a6e09ef9a4cddd6d2be88f5209cc888a2343bcff4563c15a244",
+        "bytes": 566
+      },
+      "historicalRetrievalManifest": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/retrieval-manifest.json",
+        "sha256": "7ac0344351d7b40f597756486517137aa29ac6556fb1f619e57a0e56f6d99d84",
+        "bytes": 17540
+      },
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324/history.json",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324/history.json",
+      "retrievedAt": "2026-09-12T12:17:44.988236+00:00",
+      "httpStatus": "200",
+      "exitCode": 0,
+      "response": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-7390818324-history.json",
+        "sha256": "0448dc12d8e4e276eaca90fe87c76081c363327e706b11cb4d7d7b83560ed24d",
+        "bytes": 1219,
+        "url": "https://api.openstreetmap.org/api/0.6/node/7390818324/history.json"
+      },
+      "headers": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-7390818324-history.json.headers",
+        "sha256": "0444450744c151580e363ec7cc635eb846f31de29570633bd980f8d2c2da77b2",
+        "bytes": 566
+      },
+      "historicalRetrievalManifest": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/retrieval-manifest.json",
+        "sha256": "7ac0344351d7b40f597756486517137aa29ac6556fb1f619e57a0e56f6d99d84",
+        "bytes": 17540
+      },
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "requestedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf",
+      "effectiveUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf",
+      "retrievedAt": "2026-09-12T12:22:51.182988+00:00",
+      "httpStatus": "200",
+      "exitCode": 0,
+      "response": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-ariana-atlas.pdf",
+        "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800",
+        "bytes": 15340414,
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf"
+      },
+      "headers": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-ariana-atlas.pdf.headers",
+        "sha256": "d329ee7d180e4c1f1e8eb0f901ebc4817f70cd775b2f1ff65628c9fae165043d",
+        "bytes": 631
+      },
+      "historicalRetrievalManifest": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/primary-retrieval-manifest.json",
+        "sha256": "88b1ac0f6a4126dff7d6d569aa5c4c17fb2ba57267eaff86477a72f6d16afb22",
+        "bytes": 8422
+      },
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no certificate bypass or body rewriting. Explicit HTTP URLs are public unencrypted sources.",
+      "originalResponseBytesPreserved": true
+    }
+  ],
+  "scope": "Two authentic current/history node responses and three successful primary responses only. Hrairia, failed requests and unrelated phone data are not operative inputs.",
+  "historicalPaths": "Original retrieval files preserve historical command/path strings; response and header references here are canonical and complete."
+}

@@ -1,0 +1,589 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_SOURCE_QUALIFIED_EXACT_TWO_APARTMENT_PARCEL_EXCLUSIONS",
+  "reviewedAt": "2026-09-12T15:37:15.440208+00:00",
+  "baselineMetadataSha256": "94f028c265be535ed15d698b01b87e16abdad53f4afb49c1b785116327ad85b1",
+  "sourceAuthorReport": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/cafe-immeuble-parcel-source-scope-review.json",
+    "sha256": "12d7c50713ee17c1644f545158896a9bd63573f40fa07b488d96d6afa22d561c",
+    "bytes": 9465
+  },
+  "sourceAuthorFacts": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/exact-source-finite-facts.json",
+    "sha256": "5203b2988a4f2d27070a098bc296de925c8246f2c99ab2ee8ffda70d5bf08546",
+    "bytes": 21758
+  },
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "94f028c265be535ed15d698b01b87e16abdad53f4afb49c1b785116327ad85b1",
+      "bytes": 1881741
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "79051a40e3e718de85aea0221a59110b4fca25a6b5a25582294bdebdbf65d6cf",
+      "bytes": 5501248
+    },
+    "tiny": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/retired-localities.json",
+      "sha256": "3e95f7de2a2136d670d0d40ec3d66493187a73ef47f496d21792cfd976c6fc8a",
+      "bytes": 8728
+    },
+    "governors": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "168171ba79f771c0ac94f9cc75d1bfa8354247415cf848116d4f4900309d9ec7",
+      "bytes": 288830
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+      "bytes": 555201
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "coordinates": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193",
+      "bytes": 113816
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "712824687be122062109d967b4e1b5186217a83f6b6bbea23b6034430c59ee1f",
+      "bytes": 900595
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+      "bytes": 543279
+    },
+    "cache": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "gpsResolver": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/DelegationLocator.kt",
+      "sha256": "08b0e71b6ea14a071a6928d71138d32785d563904f61f33e13627e545dd68609",
+      "bytes": 19321
+    },
+    "prefs": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/PrefsManager.kt",
+      "sha256": "91ca89263e11f86913e186b95a9f1629365742ba1ce4d5523e6b271df354505f",
+      "bytes": 23162
+    },
+    "nameAudit": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/current-picker-name-audit.json",
+      "sha256": "619af7c7636f49bd14038ac4a01836e6a24853d2c65c761903caeede9a7e4049",
+      "bytes": 115118
+    },
+    "nearestResolver": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/GouvernoratRepository.kt",
+      "sha256": "912546adb72fd1ea7ba9703e2f6650b51e32878f33806e39c8123161c5994563",
+      "bytes": 5265
+    }
+  },
+  "scope": "Exactly source ways1123877044 and1209108779. Acceptance concerns individual apartment-parcel source objects in the locality catalog; no general residential/apartment filter and no business, occupant, ownership or legal-parcel certification.",
+  "method": "Personally read all six authentic way responses and both changeset responses. Independently reconstructed native rings from full-response node order, unpacked current binary, checked cached place-point absorption, whole-footprint containers/groups/selectors/receipts, and two nearest prayer calculations without importing the author script or product code.",
+  "retrievals": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/osm-retrievals.json",
+      "sha256": "b9f297c34152dd01c224027a1f9451f24bc91539457887ed2ed81440045e6cef",
+      "bytes": 6692
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/context-and-changeset-retrievals.json",
+      "sha256": "b526bbcb079d59861b1fcf812d315a7415713e979ff63757c0f0aa6c79397c95",
+      "bytes": 3156
+    }
+  ],
+  "originalResponseCountChecked": 9,
+  "records": [
+    {
+      "id": "osm:way:1123877044",
+      "currentRaw": {
+        "id": "osm:way:1123877044",
+        "sourceId": "osm",
+        "name": "café",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "حي السلام",
+        "contextAliases": [
+          "Délégation Cité El Khadra",
+          "Hay Es Salem",
+          "la cité El Khadra",
+          "حي السلام",
+          "معتمدية حي الخضراء"
+        ],
+        "governorateId": 342,
+        "lat": 36.845487,
+        "lng": 10.184237,
+        "delegationId": 390,
+        "hasBoundary": true,
+        "bbox": [
+          10.18413,
+          36.845396,
+          10.184337,
+          36.845564
+        ],
+        "areaKm2": 0.000199344179297358,
+        "pickerGroupId": "osm:way:1123877044",
+        "offset": 5210288,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:1123877044",
+        "tags": {
+          "addr:city": "menzah 4",
+          "addr:postcode": "1004",
+          "addr:street": "شارع 10 ديسمبر 1948",
+          "landuse": "residential",
+          "name": "café",
+          "residential": "apartments"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.1841301,
+                  36.8455271
+                ],
+                [
+                  10.1842133,
+                  36.8453961
+                ],
+                [
+                  10.1843367,
+                  36.8454455
+                ],
+                [
+                  10.1842803,
+                  36.8455635
+                ],
+                [
+                  10.1841301,
+                  36.8455271
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "originalResponses": {
+        "current": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/way-1123877044-current.json",
+          "sha256": "b7cb8f1cf40e16ab7390c17ed0e7f6ec0f292d23490aa57ca0726590ec6952f5",
+          "bytes": 636
+        },
+        "history": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/way-1123877044-history.json",
+          "sha256": "74ce03b0e1e03ce50791737e12c10c5ddda9392e6275571556373f5c3c9f7a48",
+          "bytes": 636
+        },
+        "full": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/way-1123877044-full.json",
+          "sha256": "4f8469c47510399d713f6a5aeae9fadae1c6d58bb4f7ff2a5e895f1e4f2592f7",
+          "bytes": 1312
+        },
+        "changeset": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/changeset-130331885.json",
+          "sha256": "ecbf2b488148d5303753282bc8eb633eff204a6d76d371c02377c697a11268b9",
+          "bytes": 1096
+        }
+      },
+      "currentFullLastHistoryIdentical": true,
+      "nativeFullRingEqualsFrozenCache": true,
+      "historyVersionCount": 1,
+      "fourVertexVersions": 1,
+      "packedBytes": 52,
+      "packedSha256": "67e35a25dd72b4246fa5b2db03295d294fa7c98f75bd8fb023bf281c3dcc0827",
+      "changeset": {
+        "id": 130331885,
+        "comment": "habitat individuel",
+        "created": 21,
+        "modified": 7,
+        "deleted": 0,
+        "qualification": "Source-editor intent only; not independent cadastral or operating-business certification."
+      },
+      "cachedPlacePointsInsideSourceOrPacked": {
+        "source": [],
+        "packed": []
+      },
+      "otherCurrentRawRepresentativesInside": [],
+      "completeCurrentGroup": [
+        "osm:way:1123877044"
+      ],
+      "remainingWholeFootprintContainer": {
+        "currentRaw": {
+          "id": "osm:relation:7201236",
+          "sourceId": "osm",
+          "name": "حي السلام",
+          "aliases": [
+            "Hay Es Salem"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية حي الخضراء",
+          "contextAliases": [
+            "Délégation Cité El Khadra",
+            "la cité El Khadra",
+            "معتمدية حي الخضراء"
+          ],
+          "governorateId": 342,
+          "lat": 36.840011,
+          "lng": 10.191711,
+          "delegationId": 390,
+          "hasBoundary": true,
+          "bbox": [
+            10.180326,
+            36.82948,
+            10.202306,
+            36.8514
+          ],
+          "areaKm2": 2.799388050782032,
+          "pickerGroupId": "osm:relation:7201236",
+          "offset": 5060836,
+          "length": 852
+        },
+        "packedSha256": "c3c2287a0f103cbec7c4bb02258d2549b0f139d8ab688f965477716bd92fd97c",
+        "wholePackedFootprintCovered": true
+      },
+      "targetReceipts": [],
+      "targetConflicts": [],
+      "directManifestReferences": [],
+      "nearestPrayerSourcesAtRepresentative": [
+        {
+          "id": 390,
+          "distanceKm": 0.7172264447091673
+        },
+        {
+          "id": 389,
+          "distanceKm": 2.011739875529943
+        },
+        {
+          "id": 631,
+          "distanceKm": 2.144972741312996
+        }
+      ],
+      "nearestAvailabilityBasis": "Existing pinned coverage258 available references excludes495. No monthlyCSV audit; two representative distance calculations only.",
+      "surroundingSectorDefault": 390
+    },
+    {
+      "id": "osm:way:1209108779",
+      "currentRaw": {
+        "id": "osm:way:1209108779",
+        "sourceId": "osm",
+        "name": "immeuble le boucher",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.706378,
+        "lng": 10.423468,
+        "delegationId": 452,
+        "hasBoundary": true,
+        "bbox": [
+          10.423281,
+          36.70621,
+          10.42365,
+          36.70652
+        ],
+        "areaKm2": 0.0007826411049652554,
+        "pickerGroupId": "osm:way:1209108779",
+        "offset": 5211936,
+        "length": 52
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:1209108779",
+        "tags": {
+          "addr:city": "Cite erriadh",
+          "landuse": "residential",
+          "name": "immeuble le boucher",
+          "residential": "apartments"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.4232813,
+                  36.7062694
+                ],
+                [
+                  10.4235661,
+                  36.7062095
+                ],
+                [
+                  10.4236502,
+                  36.7064866
+                ],
+                [
+                  10.4233677,
+                  36.7065203
+                ],
+                [
+                  10.4232813,
+                  36.7062694
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "originalResponses": {
+        "current": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/way-1209108779-current.json",
+          "sha256": "45ef96eeb692717037e26d31ba69ea2b6d7183fe14a42092371b1dc50a941ff1",
+          "bytes": 589
+        },
+        "history": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/way-1209108779-history.json",
+          "sha256": "1eeedbe515b20962cc2fbd3420ea564854fdfe0c8ba7c24bb8fc6f5df3ea4993",
+          "bytes": 589
+        },
+        "full": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/way-1209108779-full.json",
+          "sha256": "adbc614abd62401787159f41d96be707659a472eb0df7af99b22d9eb7d29ea6d",
+          "bytes": 1281
+        },
+        "changeset": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/changeset-141473134.json",
+          "sha256": "ee5c487b881c0ecd890fdd7a3237a6475fe63eb0a503d3bb046bdd0cee1ab0e1",
+          "bytes": 719
+        }
+      },
+      "currentFullLastHistoryIdentical": true,
+      "nativeFullRingEqualsFrozenCache": true,
+      "historyVersionCount": 1,
+      "fourVertexVersions": 1,
+      "packedBytes": 52,
+      "packedSha256": "dd457d3707fcfa1d890ca9d75e8c16e23c30a37a76f9554a2d56e9ceb38d70ec",
+      "changeset": {
+        "id": 141473134,
+        "comment": "immeuble ezazazzar",
+        "created": 5,
+        "modified": 0,
+        "deleted": 0,
+        "qualification": "Source-editor intent only; not independent cadastral or operating-business certification."
+      },
+      "cachedPlacePointsInsideSourceOrPacked": {
+        "source": [],
+        "packed": []
+      },
+      "otherCurrentRawRepresentativesInside": [],
+      "completeCurrentGroup": [
+        "osm:way:1209108779"
+      ],
+      "remainingWholeFootprintContainer": {
+        "currentRaw": {
+          "id": "osm:relation:7100693",
+          "sourceId": "osm",
+          "name": "سليمان",
+          "aliases": [
+            "Soliman"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سليمان",
+          "contextAliases": [
+            "Délégation Soliman",
+            "Soliman",
+            "معتمدية سليمان"
+          ],
+          "governorateId": 350,
+          "lat": 36.720223,
+          "lng": 10.482011,
+          "delegationId": 465,
+          "hasBoundary": true,
+          "bbox": [
+            10.403797,
+            36.687246,
+            10.54891,
+            36.753043
+          ],
+          "areaKm2": 42.290533211050594,
+          "pickerGroupId": "osm:relation:7100693",
+          "offset": 289116,
+          "length": 2836
+        },
+        "packedSha256": "3b83009c9ef208de7170a8e446eec1da239a6e0189b60111850001a0c157681f",
+        "wholePackedFootprintCovered": true
+      },
+      "targetReceipts": [],
+      "targetConflicts": [],
+      "directManifestReferences": [],
+      "nearestPrayerSourcesAtRepresentative": [
+        {
+          "id": 452,
+          "distanceKm": 4.995630994982744
+        },
+        {
+          "id": 465,
+          "distanceKm": 5.708296006343667
+        },
+        {
+          "id": 451,
+          "distanceKm": 8.576143253557756
+        }
+      ],
+      "nearestAvailabilityBasis": "Existing pinned coverage258 available references excludes495. No monthlyCSV audit; two representative distance calculations only.",
+      "surroundingSectorDefault": 465
+    }
+  ],
+  "identityAssessment": [
+    {
+      "id": "osm:way:1123877044",
+      "conclusion": "Generic cafe label on one tiny apartment-subtype quadrilateral, accompanied by a habitat-individuel creation context, is source-object scope rather than an inhabited-neighborhood name. Exact cafe/business use is unknown.",
+      "qualification": "Changeset affects28 objects and requests review; its comments are supporting mapping intent, not an independent institutional or current-business assertion."
+    },
+    {
+      "id": "osm:way:1209108779",
+      "conclusion": "The generic individual-building label and apartment subtype agree with its single five-object creation changeset and four-corner footprint. Excluding this source object from locality choices is supportable without identifying a business or occupant.",
+      "qualification": "Its named building, exact roof/cadastral extent and current use remain unverified; nearby phone businesses are not adopted as identity."
+    }
+  ],
+  "independentPublicContext": {
+    "medianetOriginal": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/cafe-immeuble-parcel-source-review/medianet-contact.html",
+      "sha256": "e6d62655540d91c6cc9e02c0704265cac7c29338a841bb7702ebd187f5ffd322",
+      "bytes": 102933
+    },
+    "requestedUrl": "https://www.medianet.tn/fr/contactez-nous",
+    "effectiveUrl": "https://www.medianet-group.com/fr/contactez-nous",
+    "qualification": "Original company contact page supports only nearby Essaadi/Menzah4 building-area context. It does not identify either target as that company or a cafe.",
+    "phoneReport": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/four-parcel-phone-scope-review-20260912.json",
+      "sha256": "f73b67169bc3a9dabd8cd8ff54da1ee60f86e230080684b1b72e20130e4a8b18",
+      "bytes": 9756
+    },
+    "phoneQualification": "Root report supplies personally viewed neighborhood/building context. This reviewer did not operate the phone or view its screenshots; no copied Google geometry."
+  },
+  "expectedExactFiniteDelta": {
+    "rawRecords": {
+      "before": 3620,
+      "after": 3618
+    },
+    "polygons": {
+      "before": 2716,
+      "after": 2714
+    },
+    "points": {
+      "before": 904,
+      "after": 904
+    },
+    "rawGroups": {
+      "before": 3484,
+      "after": 3482
+    },
+    "pickerRows": {
+      "before": 3547,
+      "after": 3545
+    },
+    "eligiblePickerRows": {
+      "before": 3546,
+      "after": 3544
+    },
+    "curationDecisions": {
+      "before": 174,
+      "after": 176
+    },
+    "retiredIds": {
+      "before": 27,
+      "after": 29
+    },
+    "reviewedSavedNames": {
+      "before": 105,
+      "after": 105
+    },
+    "curationApplications": {
+      "before": 360,
+      "after": 360
+    },
+    "duplicateGroupReceipts": {
+      "before": 308,
+      "after": 308
+    },
+    "registeredPolygonConflicts": {
+      "before": 318,
+      "after": 318
+    },
+    "binaryBytes": {
+      "before": 5501248,
+      "after": 5501144
+    }
+  },
+  "governorCountDelta": {
+    "342": {
+      "raw": -1,
+      "polygons": -1
+    },
+    "350": {
+      "raw": -1,
+      "polygons": -1
+    }
+  },
+  "preservationContract": {
+    "removeOnlyIds": [
+      "osm:way:1123877044",
+      "osm:way:1209108779"
+    ],
+    "binaryBytesRemoved": 104,
+    "retireOnlyIds": [
+      "osm:way:1123877044",
+      "osm:way:1209108779"
+    ],
+    "appendOnlyExactExcludeDecisions": 2,
+    "existingCurationCount": 174,
+    "existingCurationObjectsSha256": "319f9e08ddd8b5344db3545b682b17d48f8bce3db9080746df7c8d263f80cb22",
+    "existingCurationTokensAndExteriorMustRemainExact": true,
+    "all360ReceiptObjectsAndOrderMustRemainExact": "4efa50135fb777d89dd98b6f28a39754eef0216523b91ce98bf6153b57ca4b0d",
+    "all308DuplicateReportsAnd318ConflictsMustRemainExact": true,
+    "all105ReviewedNamesAndOneExistingReplacementMustRemainExact": true,
+    "remainingCoordinatesGroupsNamesDefaultsAndPackedGeometryBytesMustRemainExact": true,
+    "noNewCachedPointSurfaced": true,
+    "noSharedGroupMemberLost": true,
+    "sectorFallbacksPreserved": [
+      "osm:relation:7201236",
+      "osm:relation:7100693"
+    ],
+    "mechanicalChangesOnly": "Remove two records and52bytes each; recompute later offsets, grid indices, aggregates and retired lists. No other raw semantic changes."
+  },
+  "gpsAndSavedSelection": {
+    "sourceCodeRead": true,
+    "gps": "Existing GPS resolver computes nearest timetable from the actual fix, then overrides locality.delegationId. At the second representative this remains452, not the surrounding Soliman sector representative465. Neither coordinate nor reference is changed.",
+    "saved": "Retired ID without replacement clears saved localityId/name/kind while retaining stored prayer delegation and GPS preference; no invented replacement association."
+  },
+  "limitations": [
+    "Acceptance is qualified source-object locality filtering, not survey-grade parcel or official neighborhood boundary certification.",
+    "No operator, current business, resident or owner identity is established.",
+    "No source stage or actual generation exists under this review; later assembled bytes and generated catalog require their own checks."
+  ],
+  "notPerformed": [
+    "source-stage assembly",
+    "live edits",
+    "product imports/generation",
+    "tests",
+    "Android build or packages",
+    "phone/ledger access",
+    "private-person research"
+  ],
+  "reviewer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/review_cafe_immeuble_independent_source_impact.py",
+    "sha256": "cf5b327bcce00fecf61b448dcb58cf171c1fbef8a7cb13a3da9ec81806a3b6f0",
+    "bytes": 14058
+  }
+}

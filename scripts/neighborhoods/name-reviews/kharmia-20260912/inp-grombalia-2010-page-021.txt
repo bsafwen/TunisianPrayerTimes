@@ -1,0 +1,66 @@
+ 
+16
+Occupation actuelle: Arbres, arbustes  
+ 
+Description: Hanout non visité. Description et relevé du hanout, voir Deyrolle, Annotations à l'Atlas Archéologique de la Tunisie, feuille de Grombalia, 
+BSAS, 1903, pp. 176-177 ; APT, 6 (La Goulette), Rome, 1987, pp. 45-48, fig. 51-54. 
+ 
+Site n°029.039 
+Oued Hammed; Henchir Ganyouba 
+Id_Ipamed : 21029NE069  
+Nature: Rural 
+Municipalité: Grombalia 
+Propriété: Privé 
+Accessibilité: Autoroute vers El Hammamet, 3 km après l'embranchement vers Grombalia (la MC34), côté Nord de l'autoroute. 
+Occupation actuelle: Labours 
+ 
+Etat de conservation: Moyen 
+Description: Le tracé indiqué sur l'Atlas Archéologique de la Tunisie d'un aqueduc n'est pas apparent; par contre, sur la rive droite de l'Oued Hammade: 
+réemploi de 2blocs antiques et abondance de céramique sigillée africaine. 
+ 
+Site n°029.040 
+Oued Hammed 
+Id_Ipamed : 21029NE301 
+Nature: Rural 
+Municipalité: Grombalia 
+Accessibilité: Même accès que Sidi Attaya. 
+Occupation actuelle: Vergers 
+ 
+Etat de conservation: Détruit 
+Description: Le site RR sur la carte a disparu lors de la construction de bassins modernes. 
+ 
+Site n°029.041 
+Ferme ed Damous 
+Id_Ipamed : 21029NE302 
+Nature: Rural 
+Municipalité: Grombalia 
+Accessibilité: De Sidi Attaya vers Grombalia, prendre une piste à gauche. 
+Occupation actuelle: Vergers 
+ 
+Etat de conservation: Mauvais 
+Description: Site inédit; pan de mur (L.:20m / épaisseur 0,60m), enduit étanche sur une hauteur de 1,20m, céramique antique abondante. 
+ 
+Site n°029.042 
+El Karmia ; El Kalbia (?) 
+Id_Ipamed : 21029NE303 ; X: 631159,43973 ;   Y: 4047444,13402 
+Nature: Rural 
+Municipalité: Grombalia 
+Localité: El Karmia 
+Accessibilité: Prendre le GP 1, aller à El Karmia; le site se trouve à la sortie du village au niveau du collège. 
+Occupation actuelle: Bâti 
+Description: Les vestiges sont en grande partie détruits lors de la construction du collège; un alignement de 7blocs en grand appareil, bien équarris, sont 
+encore en place; blocs épars. 
+ 
+Site n°029.043 
+Bnat el Chikh 
+Id_Ipamed : 21029NE304 ; X: 630706,63682 ;   Y: 4047193,95729 
+Nature: Rural 
+Municipalité: Grombalia 
+Localité: El Karmia 
+Accessibilité: Prendre le GP1 jusqu'à Karmia puis vers Bnat Echikh après la sortie du village. 
+Occupation actuelle: Bâti 
+Etat de conservation: Détruit 
+Description: Réemploi de blocs en grand appareil; tronçons de fûts de colonnes ; marches d'escaliers faites de blocs en petit appareil. 
+ 
+ 
+ 

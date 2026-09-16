@@ -1,0 +1,1215 @@
+{
+  "status": "FOUR_ARABIC_NAME_ADDITIONS_SUPPORTED_SCOPE_PRESERVED_SOURCE_ONLY",
+  "baselineMetadataSha256": "c173c3051ca1ab9ec6ba077c5b86a52b4e78aa695820d8caf3e2ad3d170250e9",
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\source-finite-facts.json",
+    "sha256": "5078a6106634d733b8f4dc76ba58c6616b93c72a6124f0695196b8b7599ea743",
+    "bytes": 83789
+  },
+  "baselineInputs": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "c173c3051ca1ab9ec6ba077c5b86a52b4e78aa695820d8caf3e2ad3d170250e9",
+      "bytes": 1851719
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "8a93a45c63ca38ca119f1d54edc982b383349671e33e5d8f68754c74c6dde597",
+      "bytes": 5536256
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "660f481f680bad551df14b56b5909d65714856492498d826b468d129c02a16bd",
+      "bytes": 381051
+    },
+    "picker": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "fb18cff7e851c69220869c3324e2351b90f50e6e682726de4d9d784af4106cd7",
+      "bytes": 555357
+    },
+    "boundaries": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421",
+      "bytes": 90241
+    },
+    "sourceInventory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "priorWholePolygonScreen": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-polygon-governorate-screen-20260912\\whole-polygon-screen-facts.json",
+      "sha256": "e93c417d1a4d7326c86b3a6c829df7660896ae23bc8ce906361566cbbbdc5277",
+      "bytes": 3134311
+    }
+  },
+  "records": [
+    {
+      "id": "osm:way:144986790",
+      "currentName": "Cité Wifek",
+      "proposedArabicName": "حي الوفاق",
+      "kind": "residential",
+      "governorateId": 342,
+      "parentName": "المرسى المنتزه",
+      "lat": 36.872857,
+      "lng": 10.322675,
+      "delegationId": 386,
+      "primaryEvidence": [
+        {
+          "source": "Original JORT legal notices, issue32, 13 March2024",
+          "url": "https://lake.jort.tn/annonces-legales/ar/2024/032.pdf",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\jort-legal-notices-2024-032.pdf",
+            "sha256": "077d51f613b7065ebf1fe1ae043965bc6c796604a3efa2c8c3383b36336cbed0",
+            "bytes": 1291229
+          },
+          "pageOneBased": 8,
+          "printedPage": 587,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\jort-page8.png",
+            "sha256": "f396c9d3dd1ef7ca943cb2d044a0ecf302fd86f0a6e43c7865ea21515ca49ee3",
+            "bytes": 554687
+          },
+          "shortVerifiedWording": "كائن بنهج أميلكار عدد 37 حي الوفاق المرسى",
+          "supports": "Published Arabic neighborhood name in an explicit La Marsa address; the legal notice concerns an individual property, not the whole neighborhood polygon.",
+          "visualReview": "Agent personally inspected the complete original page render."
+        },
+        {
+          "source": "Toufoula public childcare establishment register",
+          "url": "https://www.toufoula.tn/gouvernorat/11?direction=desc&page=27&sort=delegation.nom",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-tunis-wifek.html",
+            "sha256": "15c3e499c29365d59a9e95b90383036f54969997317097bdd1f8ad03a70e861d",
+            "bytes": 107861
+          },
+          "derivedText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-tunis-wifek.txt",
+            "sha256": "ffb7592a74e2e2e51ea4312318b2715301dfc35ec6e6a1ab2db9c1a05fded23f",
+            "bytes": 12461
+          },
+          "shortVerifiedWording": "7 نهج اميلكار حي الوفاق المرسى الشاطيء",
+          "supports": "Independent published childcare establishment address uses the same Arabic neighborhood and street. The portal states that its data source is the Ministry of Family childcare lists; this report does not independently certify government ownership of the portal."
+        }
+      ],
+      "disposition": "SUPPORTED_ARABIC_NAME_ADDITION_ONLY",
+      "identityQualification": "The Arabic wording is attested by geographically qualified public sources; association to this existing named source footprint is a qualified naming inference. No administrative boundary, exact address coordinate or whole-footprint geometry is independently certified."
+    },
+    {
+      "id": "osm:way:219469525",
+      "currentName": "Cité Sofiène",
+      "proposedArabicName": "حي سفيان",
+      "kind": "residential",
+      "governorateId": 342,
+      "parentName": "المرسى المنتزه",
+      "lat": 36.872048,
+      "lng": 10.325977,
+      "delegationId": 386,
+      "primaryEvidence": [
+        {
+          "source": "FTUSA original register of experts and loss assessors,27 March2026",
+          "url": "https://www.ftusanet.org/wp-content/uploads/2026/03/قائمة-الخبراء-و-معايني-الأضرار-27-03-2026.pdf",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ftusa-experts-2026-03-27.pdf",
+            "sha256": "403c5e0ad2530744cd9e7a1a32029e10237c4eccea96fdd5636ad5de5389f77e",
+            "bytes": 6110691
+          },
+          "pageOneBased": 1,
+          "tableRow": 9,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ftusa-page1.png",
+            "sha256": "b383dc6e363adc8458675ae6fe92c7b3036ef1364e16defc83acc7d6d35519dc",
+            "bytes": 235313
+          },
+          "shortVerifiedWording": "حي سفيان",
+          "supports": "The professional federation publishes an address at Rue Tirmidhi, Cité Sofiene, La Marsa. The source table mixes RTL text and house number2; no numbered neighborhood subdivision is inferred. It is a professional register, not a municipal boundary instrument.",
+          "visualReview": "Agent personally inspected the complete page and relevant address cell. This short wording is a manual visual transcription, not a fabricated UTF8 extraction of the scanned PDF."
+        },
+        {
+          "source": "Toufoula current filtered public establishment register",
+          "url": "https://www.toufoula.tn/rechercher?direction=asc&gouv=11&page=1&sort=type.nom&statut=2",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-sofiene-filtered.html",
+            "sha256": "573e0282d389f9f3339ff7870e367bd116a8cdea7b3c9172a2c082dfb2cc4723",
+            "bytes": 57340
+          },
+          "derivedText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-sofiene-filtered.txt",
+            "sha256": "f0a5216baaaef9fe186c538a4aed392d535b502acf05fb0298a83f3e8e489fb3",
+            "bytes": 7558
+          },
+          "shortVerifiedWording": "1 نهج الترمذي حي سفيان المرسى الشاطيء",
+          "supports": "The downloaded current entry for Generation2000 explicitly uses the unnumbered حي سفيان neighborhood and La Marsa. The initially fetched paginated page18 no longer contains this entry; its search-index snippet alone was not accepted."
+        }
+      ],
+      "disposition": "SUPPORTED_ARABIC_NAME_ADDITION_ONLY",
+      "identityQualification": "The Arabic wording is attested by geographically qualified public sources; association to this existing named source footprint is a qualified naming inference. No administrative boundary, exact address coordinate or whole-footprint geometry is independently certified."
+    },
+    {
+      "id": "osm:way:171986322",
+      "currentName": "Borj Baccouche",
+      "proposedArabicName": "برج البكوش",
+      "kind": "residential",
+      "governorateId": 358,
+      "parentName": "ولاية أريانة",
+      "lat": 36.855081,
+      "lng": 10.199271,
+      "delegationId": 631,
+      "primaryEvidence": [
+        {
+          "source": "Ariana municipal facilities directory",
+          "url": "http://www.commune-ariana.gov.tn/web/detailSM/4",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ariana-municipal-facilities-http.html",
+            "sha256": "bafb68979d6b8461380d435e0d78d454b6c39ff1c03b03fe31396fad3ad86780",
+            "bytes": 69281
+          },
+          "derivedText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ariana-municipal-facilities-http.txt",
+            "sha256": "5f26b3e5a0730142a468595cd95e6e8841175c0d065ded058b61fd3ad7cbea4c",
+            "bytes": 4306
+          },
+          "shortVerifiedWording": "برج البكوش / أريانة المدينة",
+          "supports": "The municipality publishes this Arabic address and Ariana City district. The successful HTTP original is kept separately from the failed HTTPS retrieval."
+        },
+        {
+          "source": "Official Assembly proceedings,21 July2025, Interior Ministry answer",
+          "url": "https://www.arp.tn/document/download/113522",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\arp-borj-baccouche-question-answer.pdf",
+            "sha256": "27482a7801795cdf7037051dda9f7453cfd3ad682772ff5d60d883b678d4d0a5",
+            "bytes": 9451173
+          },
+          "pageOneBased": 60,
+          "printedPage": 5132,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\arp-page-60.png",
+            "sha256": "8ccb07abb296afbde1ba08de4f5453fdea3f9265a9920e24cc28dae6058c5116",
+            "bytes": 433270
+          },
+          "shortVerifiedWording": "تعبيد برج البكوش وحي التعمير",
+          "supports": "The official answer treats Borj Baccouche as a named neighborhood roadworks area alongside Taamir, corroborating broader locality usage rather than merely a palace name. It does not fix the complete neighborhood boundary.",
+          "visualReview": "Agent inspected whole pages60 and61; the relevant answer is on60."
+        }
+      ],
+      "disposition": "SUPPORTED_ARABIC_NAME_ADDITION_ONLY",
+      "identityQualification": "The Arabic wording is attested by geographically qualified public sources; association to this existing named source footprint is a qualified naming inference. No administrative boundary, exact address coordinate or whole-footprint geometry is independently certified."
+    },
+    {
+      "id": "osm:way:161243229",
+      "currentName": "Cité des Oranges",
+      "proposedArabicName": "حي البرتقال",
+      "kind": "residential",
+      "governorateId": 360,
+      "parentName": "ولاية منوبة",
+      "lat": 36.813241,
+      "lng": 10.077814,
+      "delegationId": 633,
+      "primaryEvidence": [
+        {
+          "source": "Ministry of Youth and Sport,Manouba regional project review,25 February2026",
+          "url": "https://www.mjs.tn/index.php/ar/1/5029-gv-manouba.html",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\mjs-manouba-projects-2026.html",
+            "sha256": "9fc2e80a6326c4416b8602c1a856d8c87c128297e0222ddd7ea68dfe5cc909b2",
+            "bytes": 104961
+          },
+          "derivedText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\mjs-manouba-projects-2026.txt",
+            "sha256": "2a1ca9f6d6798d1e02cf2e6d12323c6f984327f6e7d4b5db6b7e2d60bf1a4d26",
+            "bytes": 20452
+          },
+          "shortVerifiedWording": "احداث ملاعب أحياء بكل من حي الحبيب وحي البرتقال وبجاوة",
+          "supports": "Explicit Arabic neighborhood usage in Manouba government project reporting. This supports the established local name, not a mechanical translation or surveyed equivalence of the entire OSM footprint."
+        }
+      ],
+      "disposition": "SUPPORTED_ARABIC_NAME_ADDITION_ONLY",
+      "identityQualification": "The Arabic wording is attested by geographically qualified public sources; association to this existing named source footprint is a qualified naming inference. No administrative boundary, exact address coordinate or whole-footprint geometry is independently certified."
+    }
+  ],
+  "exactProposedCurations": [
+    {
+      "id": "osm:way:144986790",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "المرسى",
+        "addr:city:ar": "المرسى",
+        "landuse": "residential",
+        "name": "Cité Wifek"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Cité Wifek",
+        "name:ar": "حي الوفاق"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name حي الوفاق, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "Original JORT legal notices, issue32, 13 March2024",
+          "url": "https://lake.jort.tn/annonces-legales/ar/2024/032.pdf",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\jort-legal-notices-2024-032.pdf",
+            "sha256": "077d51f613b7065ebf1fe1ae043965bc6c796604a3efa2c8c3383b36336cbed0",
+            "bytes": 1291229
+          }
+        },
+        {
+          "source": "Toufoula public childcare establishment register",
+          "url": "https://www.toufoula.tn/gouvernorat/11?direction=desc&page=27&sort=delegation.nom",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-tunis-wifek.html",
+            "sha256": "15c3e499c29365d59a9e95b90383036f54969997317097bdd1f8ad03a70e861d",
+            "bytes": 107861
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:way:219469525",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "المرسى",
+        "addr:city:ar": "المرسى",
+        "addr:postcode": "2070",
+        "landuse": "residential",
+        "name": "Cité Sofiène",
+        "name:fr": "Cité Sofiène"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Cité Sofiène",
+        "name:ar": "حي سفيان"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name حي سفيان, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "FTUSA original register of experts and loss assessors,27 March2026",
+          "url": "https://www.ftusanet.org/wp-content/uploads/2026/03/قائمة-الخبراء-و-معايني-الأضرار-27-03-2026.pdf",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ftusa-experts-2026-03-27.pdf",
+            "sha256": "403c5e0ad2530744cd9e7a1a32029e10237c4eccea96fdd5636ad5de5389f77e",
+            "bytes": 6110691
+          }
+        },
+        {
+          "source": "Toufoula current filtered public establishment register",
+          "url": "https://www.toufoula.tn/rechercher?direction=asc&gouv=11&page=1&sort=type.nom&statut=2",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-sofiene-filtered.html",
+            "sha256": "573e0282d389f9f3339ff7870e367bd116a8cdea7b3c9172a2c082dfb2cc4723",
+            "bytes": 57340
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:way:171986322",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "designation": "Borj Baccouche",
+        "landuse": "residential",
+        "name": "Borj Baccouche"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Borj Baccouche",
+        "name:ar": "برج البكوش"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name برج البكوش, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "Ariana municipal facilities directory",
+          "url": "http://www.commune-ariana.gov.tn/web/detailSM/4",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ariana-municipal-facilities-http.html",
+            "sha256": "bafb68979d6b8461380d435e0d78d454b6c39ff1c03b03fe31396fad3ad86780",
+            "bytes": 69281
+          }
+        },
+        {
+          "source": "Official Assembly proceedings,21 July2025, Interior Ministry answer",
+          "url": "https://www.arp.tn/document/download/113522",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\arp-borj-baccouche-question-answer.pdf",
+            "sha256": "27482a7801795cdf7037051dda9f7453cfd3ad682772ff5d60d883b678d4d0a5",
+            "bytes": 9451173
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:way:161243229",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Cité des Oranges"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Cité des Oranges",
+        "name:ar": "حي البرتقال"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name حي البرتقال, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "Ministry of Youth and Sport,Manouba regional project review,25 February2026",
+          "url": "https://www.mjs.tn/index.php/ar/1/5029-gv-manouba.html",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\mjs-manouba-projects-2026.html",
+            "sha256": "9fc2e80a6326c4416b8602c1a856d8c87c128297e0222ddd7ea68dfe5cc909b2",
+            "bytes": 104961
+          }
+        }
+      ]
+    }
+  ],
+  "proposedNameOnlyContract": {
+    "expectedMetadataChanges": [
+      {
+        "id": "osm:way:144986790",
+        "field": "name",
+        "before": "Cité Wifek",
+        "after": "حي الوفاق"
+      },
+      {
+        "id": "osm:way:144986790",
+        "field": "aliases",
+        "before": [],
+        "after": [
+          "Cité Wifek"
+        ]
+      },
+      {
+        "id": "osm:way:219469525",
+        "field": "name",
+        "before": "Cité Sofiène",
+        "after": "حي سفيان"
+      },
+      {
+        "id": "osm:way:219469525",
+        "field": "aliases",
+        "before": [],
+        "after": [
+          "Cité Sofiène"
+        ]
+      },
+      {
+        "id": "osm:way:171986322",
+        "field": "name",
+        "before": "Borj Baccouche",
+        "after": "برج البكوش"
+      },
+      {
+        "id": "osm:way:171986322",
+        "field": "aliases",
+        "before": [],
+        "after": [
+          "Borj Baccouche"
+        ]
+      },
+      {
+        "id": "osm:way:161243229",
+        "field": "name",
+        "before": "Cité des Oranges",
+        "after": "حي البرتقال"
+      },
+      {
+        "id": "osm:way:161243229",
+        "field": "aliases",
+        "before": [],
+        "after": [
+          "Cité des Oranges"
+        ]
+      }
+    ],
+    "unchangedRawCount": 3525,
+    "unchangedPolygonCount": 2621,
+    "unchangedPointCount": 904,
+    "unchangedPickerCount": 3452,
+    "unchangedEligiblePickerCount": 3451,
+    "curationsBeforeAfter": [
+      271,
+      275
+    ],
+    "curationReceiptsBeforeAfter": [
+      390,
+      394
+    ],
+    "reviewedSavedNamesBeforeAfter": [
+      122,
+      126
+    ],
+    "retiredIdsUnchanged": 122,
+    "savedReplacementsUnchanged": 1,
+    "actualGenerationStillRequired": true
+  },
+  "preservationContract": {
+    "changeOnlyRawIds": [
+      "osm:way:144986790",
+      "osm:way:219469525",
+      "osm:way:171986322",
+      "osm:way:161243229"
+    ],
+    "changeOnlyFields": [
+      "name",
+      "aliases"
+    ],
+    "noGeometryCoordinateGovernorateParentContextDefaultOrGroupChanges": true,
+    "retainEveryOtherRawRecordExactly": true,
+    "retainDistinctCoveredPoint": {
+      "id": "osm:node:1254022064",
+      "name": "التعمير 4",
+      "pickerGroupId": "osm:node:1254022064",
+      "mustRemainSelectableAndUnabsorbed": true
+    },
+    "retainAll271PriorCurationsExactly": true,
+    "noCompilerChangeOrHistoricalProofRewriteProposed": true,
+    "noSameArabicOrLatinRawNamePeerFound": true,
+    "directCurrentManifestIdBindings": 0,
+    "targetConflicts": 0,
+    "targetDuplicateGroups": 0
+  },
+  "dependencyInventory": {
+    "directManifestScanInFacts": true,
+    "literalIdOccurrencesOutsideDirectManifests": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\picker-distinct-reviews\\bizerte-three-staged-data-independent-review.json",
+        "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197",
+        "bytes": 440669
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-choice-staged-data-independent-review.json",
+        "sha256": "56121c5cfb3ea4c02df6156f80138f969f921ac989a0ebfff2dd06e43b927fe7",
+        "bytes": 314070
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\beni-mhira-successor-2026-09\\post-sidi-el-hani-neighborhoods.json",
+        "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+        "bytes": 1883636
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\tinja-soukra-sector-owned-2026-09\\current-baseline-neighborhoods-f05e.json",
+        "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+        "bytes": 1883630
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\before-neighborhoods.json",
+        "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+        "bytes": 1839172
+      }
+    ],
+    "qualification": "These five files are historical complete-catalog snapshots or countrywide data review tables. They are immutable history; no direct current dedicated target proof/selector exists. Full generated checks must still confirm all unrelated source proofs and rows remain valid."
+  },
+  "sourceLimits": [
+    "Municipal Manouba2019 participation PDF was found in search but its host failed DNS retrieval. No downloaded original, rendered page or primary-byte proof is claimed for it; current Youth Ministry original is the operative Arabic source.",
+    "Borj Baccouche crosses original Ariana/Tunis administrative source polygons; Oranges crosses original Manouba/Oued Ellil sectors. Preserve current broad governorate subtitles and all geometry. This naming review does not resolve those boundaries.",
+    "Sofiene professional-directory house-number layout is not used to invent a numbered neighborhood; the separate current childcare register explicitly supplies the unnumbered name.",
+    "Phone results and their scope remain supplementary and root-reviewed, never a source of copied vertices.",
+    "All four complete authentic current OSM ways/history/full responses match the fresh PBF and current packed rings. Their versions are12,4,5,5; historical node coordinates were not reconstructed."
+  ],
+  "retrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\original-retrieval-manifest.json",
+      "sha256": "d548ddac09ef17a64794acb23ad2cad456b72f93fa119e2e8059757d6f7cc544",
+      "bytes": 22796
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\supplement-retrieval-manifest.json",
+      "sha256": "a8ba09e3b63b80902d4e4375f74537c821da4042b1d58a713d25e0043a7e6c8c",
+      "bytes": 3062
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\sofiene-supplement-retrieval.json",
+      "sha256": "12a553486f9272ebed234b3919f292d6d8ca39c26de1ca20ab001fccccad6573",
+      "bytes": 2107
+    }
+  ],
+  "retrievals": [
+    {
+      "file": "way-144986790-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/144986790.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/144986790.json",
+      "retrievedAtUtc": "2026-09-12T21:01:41.748711+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "a2c1ef208b0a8d6dbfb9f28c32303cb9cd423be47fce5fcbfdf5d3aefe0c96d6",
+      "bytes": 1787,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150090-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246902.164527,VS0,VE46",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-144986790-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/144986790/history.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/144986790/history.json",
+      "retrievedAtUtc": "2026-09-12T21:01:41.750734+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "778a99068685ab1a7c408dce29d7a1fd2a829bd54780ea834d2706fb84fb8980",
+      "bytes": 15241,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150070-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246902.163989,VS0,VE55",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-144986790-full.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/144986790/full.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/144986790/full.json",
+      "retrievedAtUtc": "2026-09-12T21:01:41.876110+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "d76a72865f0f6b891a97ef10aed5cedb1d9fd8266efdfd9389fa9ae284113980",
+      "bytes": 20693,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150037-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246902.282061,VS0,VE58",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-219469525-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/219469525.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/219469525.json",
+      "retrievedAtUtc": "2026-09-12T21:01:41.893288+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "9c179b756731a8d80da5b81f87e806466dbe6a304bf9b0f94dd172640dcaf126",
+      "bytes": 1124,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150068-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246902.293381,VS0,VE44",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-219469525-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/219469525/history.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/219469525/history.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.002922+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "0f37bd8f20ed97afd484b1644e3767cf8624478d4c33144920f3713d199c3dda",
+      "bytes": 3610,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150026-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246902.402491,VS0,VE46",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-219469525-full.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/219469525/full.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/219469525/full.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.009473+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "5ea5479f12b9195eefeea0a3b0598c4d5b5057a6925ab6f1d38794c4c91c5369",
+      "bytes": 9211,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150096-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246902.411306,VS0,VE56",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-171986322-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/171986322.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/171986322.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.118921+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "a7fa01fd4715015cc67daaa7313957869458c251e6eeada2a2e7204207daf2e3",
+      "bytes": 800,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150043-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246903.506465,VS0,VE44",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-171986322-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/171986322/history.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/171986322/history.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.132977+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "16b85fb9b8fa9d592736ca4bceb16bf6df7aea3b8195ea3447c8f62b6f4783e8",
+      "bytes": 2859,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150050-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246903.512563,VS0,VE49",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-171986322-full.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/171986322/full.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/171986322/full.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.214946+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "5f57d03f0c41642e9ee35496627b1b33cd7f58b78fbe6cc62cb8b79d70d3e1c1",
+      "bytes": 5225,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150063-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246903.600776,VS0,VE49",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-161243229-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/161243229.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/161243229.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.226830+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "66de405fc37a8595b9412346310764950a6f3c620bad9b0912705b681b90a984",
+      "bytes": 898,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150047-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246903.614592,VS0,VE44",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-161243229-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/161243229/history.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/161243229/history.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.314242+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "e5e733b041011c77a050ce38a32ecc3bc0640ceaf70b3a7b2b8b745ce7dbbe92",
+      "bytes": 2593,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150070-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246903.705845,VS0,VE19",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "way-161243229-full.json",
+      "url": "https://api.openstreetmap.org/api/0.6/way/161243229/full.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/161243229/full.json",
+      "retrievedAtUtc": "2026-09-12T21:01:42.322975+00:00",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "44b3fe1f406f410e90df7f68d1191d72ebb858e3ccbf2305ddc940881c58b70e",
+      "bytes": 6850,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 21:01:42 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150044-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789246903.728272,VS0,VE56",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      }
+    },
+    {
+      "file": "ariana-municipal-facilities.html",
+      "url": "https://www.commune-ariana.gov.tn/web/detailSM/4",
+      "retrievedAtUtc": "2026-09-12T21:01:42.388390+00:00",
+      "error": "HTTPSConnectionPool(host='www.commune-ariana.gov.tn', port=443): Max retries exceeded with url: /web/detailSM/4 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1010)')))"
+    },
+    {
+      "file": "manouba-participatory-area2-2019.pdf",
+      "url": "https://manouba.mamunicipalite.tn/uploads/file/May2020/mrhr7yyJIEZXXgAn5UGj.pdf",
+      "retrievedAtUtc": "2026-09-12T21:01:42.447133+00:00",
+      "error": "HTTPSConnectionPool(host='manouba.mamunicipalite.tn', port=443): Max retries exceeded with url: /uploads/file/May2020/mrhr7yyJIEZXXgAn5UGj.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='manouba.mamunicipalite.tn', port=443): Failed to resolve 'manouba.mamunicipalite.tn' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    {
+      "file": "jort-legal-notices-2024-032.pdf",
+      "url": "https://lake.jort.tn/annonces-legales/ar/2024/032.pdf",
+      "finalUrl": "https://lake.jort.tn/annonces-legales/ar/2024/032.pdf",
+      "retrievedAtUtc": "2026-09-12T21:01:42.467735+00:00",
+      "status": 200,
+      "contentType": "application/pdf",
+      "sha256": "077d51f613b7065ebf1fe1ae043965bc6c796604a3efa2c8c3383b36336cbed0",
+      "bytes": 1291229,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 21:01:43 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "1291229",
+        "Connection": "keep-alive",
+        "Accept-Ranges": "bytes",
+        "ETag": "\"93e716d3aca00008468adbcd29a2366b\"",
+        "Last-Modified": "Tue, 07 Apr 2026 16:59:07 GMT",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Server": "cloudflare",
+        "Cache-Control": "max-age=14400",
+        "cf-cache-status": "MISS",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=EVB9265xrFncakHybYsij2Ez8xx9leTHaDpw%2F0%2FSHiSvKrDVOmSjAvCTspE2yNP9zuoueo8wB6RRp3DvszI2oqoNTKpLMSH%2Bm4eWXUJ7GYan%2FzZImOUbBhectaqShnCDMQ0pHmp0h40rXqw%3D\"}]}",
+        "CF-RAY": "a3a1d9572c7b9eb1-CDG"
+      }
+    },
+    {
+      "file": "ftusa-experts-2026-03-27.pdf",
+      "url": "https://www.ftusanet.org/wp-content/uploads/2026/03/قائمة-الخبراء-و-معايني-الأضرار-27-03-2026.pdf",
+      "finalUrl": "https://www.ftusanet.org/wp-content/uploads/2026/03/%D9%82%D8%A7%D8%A6%D9%85%D8%A9-%D8%A7%D9%84%D8%AE%D8%A8%D8%B1%D8%A7%D8%A1-%D9%88-%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D9%8A-%D8%A7%D9%84%D8%A3%D8%B6%D8%B1%D8%A7%D8%B1-27-03-2026.pdf",
+      "retrievedAtUtc": "2026-09-12T21:01:42.575852+00:00",
+      "status": 200,
+      "contentType": "application/pdf",
+      "sha256": "403c5e0ad2530744cd9e7a1a32029e10237c4eccea96fdd5636ad5de5389f77e",
+      "bytes": 6110691,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 21:01:43 GMT",
+        "Server": "Apache",
+        "Last-Modified": "Fri, 27 Mar 2026 08:04:51 GMT",
+        "ETag": "\"5d3de3-64dfcf4a75f50\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "6110691",
+        "X-Powered-By": "PleskLin",
+        "Keep-Alive": "timeout=5, max=100",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/pdf"
+      }
+    },
+    {
+      "file": "toufoula-tunis-sofiene.html",
+      "url": "https://www.toufoula.tn/gouvernorat/11?direction=asc&page=18&sort=type.nom",
+      "finalUrl": "https://www.toufoula.tn/gouvernorat/11?direction=asc&page=18&sort=type.nom",
+      "retrievedAtUtc": "2026-09-12T21:01:42.797108+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "sha256": "ad116c59cee32dc82328e896194c38a06c056797aa0793b73601f7b313b63e5f",
+      "bytes": 107667,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 21:01:43 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "x-powered-by": "PHP/8.4.25, PleskLin",
+        "Cache-Control": "no-cache, private",
+        "Set-Cookie": "XSRF-TOKEN=eyJpdiI6IlpZNTBmMm1oSzQ2YnN1ZTJxTmNuSVE9PSIsInZhbHVlIjoiVWpWUGJlUWlRcVNJOVlsbmc4UGF1UUFRWHZzRGFLamNNUW5rc2xxcGQ3WXIzL0treDFnbkNKQkpjUnlHL0xxcmJVcXFXdWFmc2JQQzV3c3REUWlCeGxPMDZMWWEzUm9ITXhDSU9zcTB3OW4yWXRBTXZsSUlSOEhGa2ZxN1kwTVUiLCJtYWMiOiI1NmQ4MzdhOTNiZjBmMTNlNjA1YzkyZTU5MGNjYTk3NGQ2NjJjZTcxOTIxYTNmYjU0OTNjOWZjNzAxMDY5Y2ZlIiwidGFnIjoiIn0%3D; expires=Sat, 12 Sep 2026 23:01:43 GMT; Max-Age=7200; path=/; samesite=lax, toufoulatn_session=eyJpdiI6IkFoU2haRDJRaHgremFHdE1MRERBK0E9PSIsInZhbHVlIjoiazFYN0l6MFd5RllBKzhJRzd3R3pxMGxvaHBOUFdhOS9SMU9URkh6ZGpoekZRV3hyQkRjWWhTbzk3T3E4T2QrSC83U3RGakhpQ2gvZHAzS3kwcnRHTzAxMTI1UGplTGU0RGZ0YU1BNzdzQ2tESnFaRTFsdExJT09JVWpiZ3J1azAiLCJtYWMiOiJhYzUzMDkxYjhiMzk2MWQ1MjdmZWUwOTFhNWJhZDUxYmI3NWI0MTlhNjBlZmQ1NDc0ZTYxMTYxYTBhODNlZGYyIiwidGFnIjoiIn0%3D; expires=Sat, 12 Sep 2026 23:01:43 GMT; Max-Age=7200; path=/; httponly; samesite=lax",
+        "vary": "Accept-Encoding",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "cf-cache-status": "DYNAMIC",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=HVQzBuu%2F3VynSwHoQYQIGjVVFEmva4fnaiydqApJ5LBD%2FLDr1m09rLgHWnRzFfk76DRRSBR%2BbLCn06oehouzWfsebOsNhEQItAgBeX%2BfurBBQ8tB49HpULss9VZV%2FqUYuIRe3n%2FJxtNo8dEKZOE%3D\"}]}",
+        "Content-Encoding": "gzip",
+        "CF-RAY": "a3a1d95939e65455-CDG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      }
+    },
+    {
+      "file": "toufoula-tunis-wifek.html",
+      "url": "https://www.toufoula.tn/gouvernorat/11?direction=desc&page=27&sort=delegation.nom",
+      "finalUrl": "https://www.toufoula.tn/gouvernorat/11?direction=desc&page=27&sort=delegation.nom",
+      "retrievedAtUtc": "2026-09-12T21:01:42.803185+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "sha256": "15c3e499c29365d59a9e95b90383036f54969997317097bdd1f8ad03a70e861d",
+      "bytes": 107861,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 21:01:43 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "x-powered-by": "PHP/8.4.25, PleskLin",
+        "Cache-Control": "no-cache, private",
+        "Set-Cookie": "XSRF-TOKEN=eyJpdiI6Ilc4SHd4dDlTTmt5b2UyNWZvOGFicVE9PSIsInZhbHVlIjoiZnF4ZnJWeWozMm1WM25vUkRiekFBT3prNUhGcFhmZFRUV0Z5Z2xtbmJuMmNyS2Q1MmxTbGF2V05vakp0MjJ5dlNHQ1B6WGNiZHZWVTQ1UWZ4UDdicWNaUHlqNVhiZVByeUVjeVRvM0g2U21Mb2xWWWxIQ01GZERTUXZyT3pyTXkiLCJtYWMiOiIwZWM2MzM1YmViZWM4ZDg3ZGM1ODQyZThhN2Q4YjEzMjJlZWVhNTY4OTUzMmQ0Y2ZmYzI0MmFlM2NjOTZkMTI0IiwidGFnIjoiIn0%3D; expires=Sat, 12 Sep 2026 23:01:43 GMT; Max-Age=7200; path=/; samesite=lax, toufoulatn_session=eyJpdiI6IjdpUUNmTC9wWHhmck5tQjlmYWF1UXc9PSIsInZhbHVlIjoiaWErbkdpR0VBTzNxaVdZOUVFaHRDVk1oSnloTkR4eVJjV2JCZElkUVdiOHd5aWJaeGFEbkxPUTgwVnoraWErMWZWelJpeTg1dkZORE9HeEpxMmN5ZFpGUGNiYzFoZCsvTm85N2R2bmw4TWNlMG1pSUdyZE1mcmk1WjlwcGJEc0giLCJtYWMiOiJiOWY1ZjNiYzNjZGVjYTA5MGQ5ZjYxYTZmYjFmNmNiYzAxYmJiYTlhZmRlYTEzYmZlMDMxODQyNmU5OWQ4ZDI0IiwidGFnIjoiIn0%3D; expires=Sat, 12 Sep 2026 23:01:43 GMT; Max-Age=7200; path=/; httponly; samesite=lax",
+        "vary": "Accept-Encoding",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "cf-cache-status": "DYNAMIC",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Wj2krPGOHW67xmTStkWNtIb5el14l7PXjl4E62%2FEuoFk1B4k%2FhxVf%2Bdt0toVZL%2FHED1sAKcIzt8kU1DqB0G9krtbhpDBguYstCIeUF7MUqSO3o745hEsp7kanyuxJ6U3B6RmDhBmN2O9z0z6r3g%3D\"}]}",
+        "Content-Encoding": "gzip",
+        "CF-RAY": "a3a1d9592cb7d10f-CDG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      }
+    },
+    {
+      "file": "ariana-municipal-facilities-http.html",
+      "url": "http://www.commune-ariana.gov.tn/web/detailSM/4",
+      "retrievedAtUtc": "2026-09-12T21:02:56.869726+00:00",
+      "status": 200,
+      "finalUrl": "http://www.commune-ariana.gov.tn/web/detailSM/4",
+      "sha256": "bafb68979d6b8461380d435e0d78d454b6c39ff1c03b03fe31396fad3ad86780",
+      "bytes": 69281,
+      "headers": {
+        "Content-Type": "text/html;charset=UTF-8",
+        "Content-Language": "ar",
+        "Transfer-Encoding": "chunked",
+        "Date": "Sat, 12 Sep 2026 21:03:01 GMT",
+        "Keep-Alive": "timeout=20",
+        "Connection": "keep-alive"
+      }
+    },
+    {
+      "file": "arp-borj-baccouche-question-answer.pdf",
+      "url": "https://www.arp.tn/document/download/113522",
+      "retrievedAtUtc": "2026-09-12T21:02:56.869726+00:00",
+      "status": 200,
+      "finalUrl": "https://www.arp.tn/document/download/113522",
+      "sha256": "27482a7801795cdf7037051dda9f7453cfd3ad682772ff5d60d883b678d4d0a5",
+      "bytes": 9451173,
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 12 Sep 2026 21:02:57 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "9451173",
+        "Connection": "keep-alive",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "ETag": "\"83bcbec0912881af70f9cbbfb4e3fade\"",
+        "Cache-Control": "max-age=0",
+        "Set-Cookie": "frontend_lang=ar_SY; Path=/; Secure; HttpOnly; SameSite=Strict, frontend_lang=ar_SY; Path=/; Secure; HttpOnly; SameSite=Strict, session_id=404968478737609c79bac44b29c94f762a5282a9; Expires=Fri, 11-Dec-2026 21:02:57 GMT; Max-Age=7776000; HttpOnly; Path=/; Secure; HttpOnly; SameSite=Strict, Secure; HttpOnly; SameSite=Strict",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block"
+      }
+    },
+    {
+      "file": "mjs-manouba-projects-2026.html",
+      "url": "https://www.mjs.tn/index.php/ar/1/5029-gv-manouba.html",
+      "retrievedAtUtc": "2026-09-12T21:02:57.021849+00:00",
+      "status": 200,
+      "finalUrl": "https://www.mjs.tn/index.php/ar/1/5029-gv-manouba.html",
+      "sha256": "9fc2e80a6326c4416b8602c1a856d8c87c128297e0222ddd7ea68dfe5cc909b2",
+      "bytes": 104961,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 21:02:58 GMT",
+        "Server": "Apache",
+        "X-Powered-By": "PHP/5.6.40",
+        "Set-Cookie": "9e803f1ae3097c16d3dd53252d99626f=9db4b4f32bc6f4694923804f06486173; path=/; secure, ac861987b3955e01b0f7505755391ba4=ar-AA; expires=Sun, 12-Sep-2027 21:02:58 GMT; Max-Age=31536000; path=/",
+        "P3P": "CP=\"NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM\"",
+        "ETag": "67df518745e7fd271781b186ddaabd2d",
+        "Content-Encoding": "gzip",
+        "X-Content-Encoded-By": "Joomla! 2.5",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Keep-Alive": "timeout=100, max=100",
+        "Connection": "Keep-Alive",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "text/html; charset=UTF-8"
+      }
+    },
+    {
+      "url": "https://www.toufoula.tn/rechercher?direction=asc&gouv=11&page=1&sort=type.nom&statut=2",
+      "file": "toufoula-sofiene-filtered.html",
+      "finalUrl": "https://www.toufoula.tn/rechercher?direction=asc&gouv=11&page=1&sort=type.nom&statut=2",
+      "status": 200,
+      "sha256": "573e0282d389f9f3339ff7870e367bd116a8cdea7b3c9172a2c082dfb2cc4723",
+      "bytes": 57340,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 21:07:05 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "x-powered-by": "PHP/8.4.25, PleskLin",
+        "Cache-Control": "no-cache, private",
+        "Set-Cookie": "XSRF-TOKEN=eyJpdiI6IjRTWENvOUl3Y3ZxUVEzdHdOZGsvMGc9PSIsInZhbHVlIjoiTmtndE5MU2RYazBqQ3ZwQ25tOUNsZysyb3cwS2pSZ3EzNzhzWnJZZkJCSW1pZjlZVCtUVWZmNXlwWktneXFKS2RyL2F3RGcyUUc5VXVwalQvMkVnamUySTNERFZVcWozblVGbDlpSzJwbE9MdVFaZUp2aUoySFhIWFZtd0ZsckciLCJtYWMiOiJiZmU1ZTU4OTNkZTU2Yzk3YmU5ODEwOWRiMDZjNDRhMWM4ZWUyOGVlNjNiNWNjODFkZjBjOWNiZDNlMWU5ZmQ3IiwidGFnIjoiIn0%3D; expires=Sat, 12 Sep 2026 23:07:05 GMT; Max-Age=7200; path=/; samesite=lax, toufoulatn_session=eyJpdiI6IjZmVDhiaWRoWkxkWTFRY3AwWGRUZUE9PSIsInZhbHVlIjoiTmE0SG1ZT2diVksxc1FOb0F1eXVGL0ZuL2FGK0tFcklwVmU1QUM4Rms3NlFLSjJOcktDYWhQdkI5WHR3RTM0Wmh5YTZvMTJJeG5ZQ0NUS3Ewb3pvcm02b3F0VGZ0NXBlWFUyaThuWHVCWSs4SW5DSWlPbnRzTWFGYlBuaWJDNmIiLCJtYWMiOiI0NzlhYjE0MjliMTI1OGQyZTE0Y2I5YWY0NTVkOTIxYWViMjg1ZWNkN2E2YmViZDdiODEwZTZmNjhiMWYxNDgxIiwidGFnIjoiIn0%3D; expires=Sat, 12 Sep 2026 23:07:05 GMT; Max-Age=7200; path=/; httponly; samesite=lax",
+        "vary": "Accept-Encoding",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "cf-cache-status": "DYNAMIC",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zbsdSxs2fSfwLoc%2BIQCRH3lMPrV1YngvkMD3KJotVbreeOArAwv4VsCrP3v4qAaYhN0rvfPX%2Fwec9KeUTpSwQtGhizwJqrMsk1N%2BRbFpQd7SXX3Ft9SlWsvqvvkjsdKEJz7dq3Jpe7jVvwK7Niw%3D\"}]}",
+        "Content-Encoding": "gzip",
+        "CF-RAY": "a3a1e135ace5d093-CDG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      }
+    }
+  ],
+  "additionalTextDerivations": [
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-sofiene-filtered.html",
+        "sha256": "573e0282d389f9f3339ff7870e367bd116a8cdea7b3c9172a2c082dfb2cc4723",
+        "bytes": 57340
+      },
+      "derivedVisibleText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-sofiene-filtered.txt",
+        "sha256": "f0a5216baaaef9fe186c538a4aed392d535b502acf05fb0298a83f3e8e489fb3",
+        "bytes": 7558
+      },
+      "method": "UTF8 HTMLParser, scripts/styles omitted, whitespace normalized; original HTTP bytes retained separately."
+    },
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\arp-borj-baccouche-question-answer.pdf",
+        "sha256": "27482a7801795cdf7037051dda9f7453cfd3ad682772ff5d60d883b678d4d0a5",
+        "bytes": 9451173
+      },
+      "derivedCompletePageText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\arp-page60-complete-extracted-text.txt",
+        "sha256": "672fa12c67e916010d61410a2a8fc73edc251b6896ddbb9373dabb2667847207",
+        "bytes": 8369
+      },
+      "pageOneBased": 60,
+      "printedPage": 5132,
+      "method": "PyMuPDF Page.get_text(), unchanged complete-page extraction; Poppler whole pages60/61 separately inspected. Missing-font warnings did not obscure the inspected Arabic passages."
+    }
+  ],
+  "minimalOriginalEvidence": {
+    "osm:way:144986790": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-144986790-current.json",
+        "sha256": "a2c1ef208b0a8d6dbfb9f28c32303cb9cd423be47fce5fcbfdf5d3aefe0c96d6",
+        "bytes": 1787
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-144986790-history.json",
+        "sha256": "778a99068685ab1a7c408dce29d7a1fd2a829bd54780ea834d2706fb84fb8980",
+        "bytes": 15241
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-144986790-full.json",
+        "sha256": "d76a72865f0f6b891a97ef10aed5cedb1d9fd8266efdfd9389fa9ae284113980",
+        "bytes": 20693
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\jort-legal-notices-2024-032.pdf",
+        "sha256": "077d51f613b7065ebf1fe1ae043965bc6c796604a3efa2c8c3383b36336cbed0",
+        "bytes": 1291229
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-tunis-wifek.html",
+        "sha256": "15c3e499c29365d59a9e95b90383036f54969997317097bdd1f8ad03a70e861d",
+        "bytes": 107861
+      }
+    ],
+    "osm:way:219469525": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-219469525-current.json",
+        "sha256": "9c179b756731a8d80da5b81f87e806466dbe6a304bf9b0f94dd172640dcaf126",
+        "bytes": 1124
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-219469525-history.json",
+        "sha256": "0f37bd8f20ed97afd484b1644e3767cf8624478d4c33144920f3713d199c3dda",
+        "bytes": 3610
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-219469525-full.json",
+        "sha256": "5ea5479f12b9195eefeea0a3b0598c4d5b5057a6925ab6f1d38794c4c91c5369",
+        "bytes": 9211
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ftusa-experts-2026-03-27.pdf",
+        "sha256": "403c5e0ad2530744cd9e7a1a32029e10237c4eccea96fdd5636ad5de5389f77e",
+        "bytes": 6110691
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-sofiene-filtered.html",
+        "sha256": "573e0282d389f9f3339ff7870e367bd116a8cdea7b3c9172a2c082dfb2cc4723",
+        "bytes": 57340
+      }
+    ],
+    "osm:way:171986322": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-171986322-current.json",
+        "sha256": "a7fa01fd4715015cc67daaa7313957869458c251e6eeada2a2e7204207daf2e3",
+        "bytes": 800
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-171986322-history.json",
+        "sha256": "16b85fb9b8fa9d592736ca4bceb16bf6df7aea3b8195ea3447c8f62b6f4783e8",
+        "bytes": 2859
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-171986322-full.json",
+        "sha256": "5f57d03f0c41642e9ee35496627b1b33cd7f58b78fbe6cc62cb8b79d70d3e1c1",
+        "bytes": 5225
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ariana-municipal-facilities-http.html",
+        "sha256": "bafb68979d6b8461380d435e0d78d454b6c39ff1c03b03fe31396fad3ad86780",
+        "bytes": 69281
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\arp-borj-baccouche-question-answer.pdf",
+        "sha256": "27482a7801795cdf7037051dda9f7453cfd3ad682772ff5d60d883b678d4d0a5",
+        "bytes": 9451173
+      }
+    ],
+    "osm:way:161243229": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-161243229-current.json",
+        "sha256": "66de405fc37a8595b9412346310764950a6f3c620bad9b0912705b681b90a984",
+        "bytes": 898
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-161243229-history.json",
+        "sha256": "e5e733b041011c77a050ce38a32ecc3bc0640ceaf70b3a7b2b8b745ce7dbbe92",
+        "bytes": 2593
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\way-161243229-full.json",
+        "sha256": "44b3fe1f406f410e90df7f68d1191d72ebb858e3ccbf2305ddc940881c58b70e",
+        "bytes": 6850
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\mjs-manouba-projects-2026.html",
+        "sha256": "9fc2e80a6326c4416b8602c1a856d8c87c128297e0222ddd7ea68dfe5cc909b2",
+        "bytes": 104961
+      }
+    ]
+  },
+  "execution": {
+    "sourceOnly": true,
+    "liveFilesChanged": false,
+    "sourceStageCreated": false,
+    "generatorExecuted": false,
+    "productImports": false,
+    "testsOrBuild": false,
+    "phoneOrLedgerAccess": false
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\freeze_source_review.py",
+    "sha256": "df912838c0c4f194985c81570da009dfbb436ad64745c346510c9681fdff96ff",
+    "bytes": 12838
+  }
+}

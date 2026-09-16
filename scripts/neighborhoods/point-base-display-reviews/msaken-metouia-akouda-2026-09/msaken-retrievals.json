@@ -1,0 +1,122 @@
+[
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-6681328578-current.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/6681328578.json",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/6681328578.json",
+    "retrievedAt": "2026-09-12T09:12:14.401604+00:00",
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "bytes": 567,
+    "sha256": "fc552c28bdb39e71a5d36dc9cbf69acfed079ce2e80ddc64bc38cb30e200860a",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-6681328578-history.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/6681328578/history",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/6681328578/history",
+    "retrievedAt": "2026-09-12T09:12:14.550103+00:00",
+    "status": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 1350,
+    "sha256": "c146c6fcd38a8a8aedbcee1d831dcde7a5512df0fb5c65141b9b888d47b826e0",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-287612727-current.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/287612727.json",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287612727.json",
+    "retrievedAt": "2026-09-12T09:12:14.644804+00:00",
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "bytes": 681,
+    "sha256": "c5cafff1e78ee2a6cf0bc403477ccdc698b526ed0f0c3dfc200c9c4b2d5b8f25",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-node-287612727-history.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/287612727/history",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287612727/history",
+    "retrievedAt": "2026-09-12T09:12:14.728034+00:00",
+    "status": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 11248,
+    "sha256": "0c70eff236f632090ca42d27e1c5f3989b8ee44a1588e221b710824c47930d67",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-72989127.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/changeset/72989127?include_discussion=true",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/72989127?include_discussion=true",
+    "retrievedAt": "2026-09-12T09:13:10.411094+00:00",
+    "status": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 869,
+    "sha256": "869911c15fc70c999c8148d8aa88604e45f40f2433067e8e43be3c665b48cb18",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-82458263.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/changeset/82458263?include_discussion=true",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/82458263?include_discussion=true",
+    "retrievedAt": "2026-09-12T09:13:10.538518+00:00",
+    "status": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 870,
+    "sha256": "ae91122a460a5c78d8452810b3f9d7780409040e8b426f438d586daf647d05ef",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-53810590.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/changeset/53810590?include_discussion=true",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/53810590?include_discussion=true",
+    "retrievedAt": "2026-09-12T09:13:10.645516+00:00",
+    "status": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 864,
+    "sha256": "ebc16714d7171587dbb80f76a735951a0b0daf92a28f2d87257cb7caf197e7d8",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "url": "https://www.commune-msaken.gov.tn/lieuxHistoriques.html",
+    "attemptedAt": "2026-09-12T09:13:10.738357+00:00",
+    "error": "HTTP Error 503: Service Unavailable"
+  },
+  {
+    "url": "https://www.collectiviteslocales.gov.tn/fr/sites-web-des-municipalites/",
+    "attemptedAt": "2026-09-12T09:13:11.336990+00:00",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-72989127-download.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/changeset/72989127/download",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/72989127/download",
+    "retrievedAt": "2026-09-12T09:13:58.974467+00:00",
+    "status": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 4520,
+    "sha256": "f1426c440ebf4f0ffd52c0d6bc2cff6fb6c3958daa6f8a44947a53a71904a422",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\osm-changeset-82458263-download.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/changeset/82458263/download",
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/changeset/82458263/download",
+    "retrievedAt": "2026-09-12T09:13:58.976517+00:00",
+    "status": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 1184,
+    "sha256": "1894580286b99adde4f61e6af5ad08b869bee83988e18b5c121eb8c6cf25772a",
+    "originalResponseBytesPreserved": true
+  },
+  {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+    "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+    "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+    "retrievedAt": "2026-09-12T09:13:58.977509+00:00",
+    "status": 200,
+    "contentType": "application/pdf",
+    "bytes": 30603494,
+    "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+    "originalResponseBytesPreserved": true
+  }
+]

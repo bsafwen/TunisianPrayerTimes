@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "conclusion": "reviewed_residential_base_display_identity",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_residential_base_display_identity",
+    "id": "osm:way:96369466",
+    "targetDelegationId": 518
+  },
+  "sourceReview": {
+    "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/two-town-source-identity-wrapper-teboursouk-overlay.json",
+    "sha256": "e52c88c3034875951998d4a9789b70883c85343da4521601d6efb0e8fd7b00f4"
+  },
+  "sourceReviewRecordBaseId": 518,
+  "sourceFacts": {
+    "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/518-exact-source-and-current-facts.json",
+    "sha256": "754858902443d98619a9425f730cdf3d22855c744727f95ad673a947f93943bc"
+  },
+  "completeSectorGroupPreservation": {
+    "schemaVersion": 1,
+    "preservedSectorIds": [
+      "osm:relation:7189423",
+      "osm:relation:7189429",
+      "osm:relation:7189435",
+      "osm:relation:7189446",
+      "osm:relation:7189448",
+      "osm:relation:7189467",
+      "osm:relation:7189469",
+      "osm:relation:7189470",
+      "osm:relation:7189471",
+      "osm:relation:7189476"
+    ],
+    "protectedRawIds": [
+      "osm:relation:7189423",
+      "osm:relation:7189429",
+      "osm:relation:7189435",
+      "osm:relation:7189446",
+      "osm:relation:7189448",
+      "osm:relation:7189467",
+      "osm:relation:7189469",
+      "osm:relation:7189470",
+      "osm:relation:7189471",
+      "osm:relation:7189476",
+      "osm:way:218868212",
+      "osm:way:96369466"
+    ],
+    "expectedBeforeGroups": {
+      "osm:relation:7189423": [
+        "osm:relation:7189423"
+      ],
+      "osm:relation:7189429": [
+        "osm:relation:7189429"
+      ],
+      "osm:relation:7189435": [
+        "osm:relation:7189435"
+      ],
+      "osm:relation:7189446": [
+        "osm:relation:7189446"
+      ],
+      "osm:relation:7189448": [
+        "osm:relation:7189448"
+      ],
+      "osm:relation:7189467": [
+        "osm:relation:7189467"
+      ],
+      "osm:relation:7189469": [
+        "osm:relation:7189469"
+      ],
+      "osm:relation:7189470": [
+        "osm:relation:7189470"
+      ],
+      "osm:relation:7189471": [
+        "osm:relation:7189471",
+        "osm:way:218868212"
+      ],
+      "osm:relation:7189476": [
+        "osm:relation:7189476"
+      ],
+      "osm:way:96369466": [
+        "osm:way:96369466"
+      ],
+      "delegation:518": [
+        "delegation:518"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7189423": [
+        "osm:relation:7189423"
+      ],
+      "osm:relation:7189429": [
+        "osm:relation:7189429"
+      ],
+      "osm:relation:7189435": [
+        "osm:relation:7189435"
+      ],
+      "osm:relation:7189446": [
+        "osm:relation:7189446"
+      ],
+      "osm:relation:7189448": [
+        "osm:relation:7189448"
+      ],
+      "osm:relation:7189467": [
+        "osm:relation:7189467"
+      ],
+      "osm:relation:7189469": [
+        "osm:relation:7189469"
+      ],
+      "osm:relation:7189470": [
+        "osm:relation:7189470"
+      ],
+      "osm:relation:7189471": [
+        "osm:relation:7189471",
+        "osm:way:218868212"
+      ],
+      "osm:relation:7189476": [
+        "osm:relation:7189476"
+      ],
+      "delegation:518": [
+        "delegation:518",
+        "osm:way:96369466"
+      ]
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:96369466",
+        "field": "pickerGroupId",
+        "before": "osm:way:96369466",
+        "after": "delegation:518"
+      }
+    ]
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "governorate": {
+    "id": 356,
+    "nomAr": "باجة",
+    "nomFr": "Béja"
+  },
+  "governorSourceId": "osm:relation:1435833",
+  "primarySources": [
+    {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/mehat-beja-atlas.pdf",
+      "sha256": "c7d51ef83cd9553b021a4be2f4c5101e17828e0f10d3721f1c663dc6cf065201",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasGouvernoratBejaFr.pdf",
+      "artifactKind": "original_pdf_response",
+      "role": "official_inhabited_town_identity"
+    },
+    {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/beja-atlas-full-page60-derived.txt",
+      "sha256": "eeb48829cb95b9c7e4336671c63f5ae9fb7c4844d40722fb0f97a6f5d452e734",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasGouvernoratBejaFr.pdf#page=60",
+      "artifactKind": "derived_full_page_utf8",
+      "role": "official_inhabited_town_identity",
+      "provenance": {
+        "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/beja-page60-derived-provenance.json",
+        "sha256": "e02f3a310e226c6b1304a2250e94b0a7185017c1cd06994469ea36e08304ad09"
+      },
+      "isOriginalHttpResponseBytes": false
+    }
+  ],
+  "independentSourceReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-residential-root-scope-review-v2.json",
+    "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098"
+  },
+  "finiteSchemaReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-residential-display-feasibility.json",
+    "sha256": "7dcfc576c5872a0877d67dd5dea7c7c3455e22c922b26fe8c91a690c2b2437ef"
+  },
+  "baselineMetadataSha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+  "currentLocalCarry": {
+    "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/518-current-source-group-carry.json",
+    "sha256": "3b0f6b0e6de61b9c312769a23124db662d215dc7233cf29f276211ee7d78d7f8"
+  },
+  "retainedSourceResponses": {
+    "current": {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/osm-way-96369466-current.json",
+      "sha256": "faa27b2f300c621f9af901541a3237f3880191a8d02ec62357d7d9dd2db5c429"
+    },
+    "history": {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/osm-way-96369466-history.json",
+      "sha256": "f629afd04694885b01e2c299b6257cdcec041c4f0e9301d16b7cbb5830f9ee3e"
+    },
+    "full": {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/osm-way-96369466-full.json",
+      "sha256": "f69da25422398f1d387401c082e9f76585bb2210aa6fd067d9784b60ad4c40cd"
+    }
+  },
+  "sourceResponseProvenance": {
+    "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/teboursouk-original-response-provenance.json",
+    "sha256": "e1b2c9de3b24bd99e97066223780cbfb51a4575b00f359e66c1dbf414c8fa62b"
+  },
+  "noBaseNameCorrection": true,
+  "onlyRawChange": {
+    "id": "osm:way:96369466",
+    "field": "pickerGroupId",
+    "before": "osm:way:96369466",
+    "after": "delegation:518"
+  },
+  "scope": "Preserve twelve raw rows and fifteen original/effective source assertions across all ten sector groups. Only the separate Teboursouk residential choice joins base518. Ain Jemala sector7189471 retains residential218868212 as an exact two-member group."
+}

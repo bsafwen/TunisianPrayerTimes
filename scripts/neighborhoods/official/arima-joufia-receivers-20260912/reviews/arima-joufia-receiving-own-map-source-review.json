@@ -1,0 +1,1684 @@
+{
+  "status": "QUALIFIED_TWO_RECEIVING_OWN_MAPS_SUPPORT_CONTEXT_CORRECTION_PENDING_INDEPENDENT_SOURCE_REVIEW",
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "sourceSelection": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-own-map-source-selection-facts.json",
+    "sha256": "0bb60e9953475b957cde85d7ba857cc3483b2ffcbde6106e08c559895e4098fa",
+    "bytes": 125684
+  },
+  "finiteFacts": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-receiving-source-finite-effects.json",
+    "sha256": "e420a0c7e3cd3aa3cb3147edfd105a77fa0934407c6b6ef366f55c81468930e7",
+    "bytes": 48816
+  },
+  "registrationAndQuantizationDiagnostic": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-receiver-registration-quantization-diagnostic.json",
+    "sha256": "e17e52f5cf57e3ba4300e03677f41cee0e8ce79445a2a880e4656d811826c9b7",
+    "bytes": 4799
+  },
+  "nativeBundle": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-whole-native-source-polygons.geojson",
+    "sha256": "1cda298b6956e7dbde26a334ee9dae1d3457ac43a03f1f4abdc5441eed454427",
+    "bytes": 139631
+  },
+  "retrievalManifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/retrieval-manifest.json",
+    "sha256": "dd7adf0cbb851dd5f4d7557fe4ce6420fd770d9605857d38ec12a489dcb06868",
+    "bytes": 8166
+  },
+  "originalExtractionInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/unreviewed-native-path-inventory.json",
+    "sha256": "e62e68308526d7255fbe447728b5936029aff8dec0a4ce646d302f277849f399",
+    "bytes": 1197007
+  },
+  "currentInputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+      "bytes": 1842364
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "b7ac659019ec21f24d0fa518d09be46edd75034aba764ea204b437ee087933be",
+      "bytes": 5495792
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "626031d4136dceeb49085bd80311cb1d930a4cf22b906b81a818a5127a5369e2",
+      "bytes": 373017
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+      "bytes": 555201
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "29dd3b4e381151993cc244ad3ab8500c041bc55a81999488aaedcadd67e2e70f",
+      "bytes": 987522
+    },
+    "governors": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "sourceCache": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "newBundle": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-whole-native-source-polygons.geojson",
+      "sha256": "1cda298b6956e7dbde26a334ee9dae1d3457ac43a03f1f4abdc5441eed454427",
+      "bytes": 139631
+    },
+    "sourceSelection": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-own-map-source-selection-facts.json",
+      "sha256": "0bb60e9953475b957cde85d7ba857cc3483b2ffcbde6106e08c559895e4098fa",
+      "bytes": 125684
+    },
+    "frozenThirteenReadiness": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-thirteen-native-source-stage-readiness-20260912.json",
+      "sha256": "3ec47bb2007f8de140d897644ed0c15103b446cdce55aae7ad77278dff2c2306",
+      "bytes": 25443
+    },
+    "frozenThirteenPackage": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/source-package-manifest.json",
+      "sha256": "171752fefd84e6be834e795140b2c53168984f08cd15aa384928b9c3b52ffddc",
+      "bytes": 49230
+    },
+    "frozenThirteenBundle": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/scripts/neighborhoods/official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "bytes": 704024
+    },
+    "priorThirteenFacts": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/five-receiver-eight-thirteen-cohort-facts.json",
+      "sha256": "fb2d1811d540910456784e3485af43996f0afd2e8d4fc527de1f8f134a7e77a9",
+      "bytes": 357446
+    },
+    "primaryPoints": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/baddar-aitha-kharmia-essabala-name-source-review.json",
+      "sha256": "b3c47138b89438ffb4e1b435e623fefe21b9590e61c9202f5bd2c280258466b0",
+      "bytes": 11608
+    }
+  },
+  "scope": "Exactly Arima7100361/156053 and Menzel Bouzelfa Joufia7101605/156253. Source-only receiving-map review; the frozen thirteen-boundary package is unchanged.",
+  "sourceFindings": [
+    {
+      "id": "osm:relation:7100361",
+      "code": "156053",
+      "nameAr": "العريمة",
+      "delegationCode": "1560",
+      "delegationName": "تاكلسة",
+      "originalPdf": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.pdf",
+        "sha256": "6411d48b0acb4b3cffde4c17d52004deb54fbb93d5fd0a6922aec2842dd55a6b",
+        "bytes": 1404326
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9.pdf",
+      "selectedNativeDrawing": 601,
+      "originalEdgeCount": 858,
+      "completeOwnMapPathPersonallyViewed": true,
+      "insideBothClipsAndFullCountry": true,
+      "decreeWholeImadaScope": {
+        "file": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "bytes": 10636520
+        },
+        "pdfPage": 76,
+        "jortPage": 5173,
+        "wholePageRender": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598",
+          "bytes": 306070
+        },
+        "wholePagePersonallyViewed": true,
+        "imadaName": "العريمة",
+        "circleName": "العريمة",
+        "conclusion": "one_whole_imada_one_electoral_circle"
+      }
+    },
+    {
+      "id": "osm:relation:7101605",
+      "code": "156253",
+      "nameAr": "منزل بوزلفة الجوفية",
+      "delegationCode": "1562",
+      "delegationName": "منزل بوزلفة",
+      "originalPdf": {
+        "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.pdf",
+        "sha256": "b828a2a54b8cde4e2dbdb0894319a3ca051c08066fa89fc07d76c18928a15b58",
+        "bytes": 1633073
+      },
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "selectedNativeDrawing": 374,
+      "originalEdgeCount": 577,
+      "completeOwnMapPathPersonallyViewed": true,
+      "insideBothClipsAndFullCountry": true,
+      "decreeWholeImadaScope": {
+        "file": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "bytes": 10636520
+        },
+        "pdfPage": 77,
+        "jortPage": 5174,
+        "wholePageRender": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134",
+          "bytes": 313154
+        },
+        "wholePagePersonallyViewed": true,
+        "imadaName": "منزل بوزلفة الجوفية",
+        "circleName": "منزل بوزلفة الجوفية",
+        "conclusion": "one_whole_imada_one_electoral_circle"
+      }
+    }
+  ],
+  "pointDisposition": [
+    {
+      "id": "osm:node:2173790702",
+      "decision": "Preserve Baddar village; primary-supported parent Arima156053 within Takelsa1560. Reject final Soliman fallback.",
+      "currentFields": {
+        "id": "osm:node:2173790702",
+        "sourceId": "osm",
+        "name": "بدار",
+        "aliases": [
+          "Baddar"
+        ],
+        "kind": "village",
+        "parentName": "المريسة",
+        "contextAliases": [
+          "Délégation Soliman",
+          "El Mraissa",
+          "Soliman",
+          "المريسة",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.7446844,
+        "lng": 10.612649,
+        "delegationId": 462,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2173790702"
+      },
+      "ownSourceMembership": {
+        "id": "osm:node:2173790702",
+        "currentRaw": {
+          "id": "osm:node:2173790702",
+          "sourceId": "osm",
+          "name": "بدار",
+          "aliases": [
+            "Baddar"
+          ],
+          "kind": "village",
+          "parentName": "المريسة",
+          "contextAliases": [
+            "Délégation Soliman",
+            "El Mraissa",
+            "Soliman",
+            "المريسة",
+            "معتمدية سليمان"
+          ],
+          "governorateId": 350,
+          "lat": 36.7446844,
+          "lng": 10.612649,
+          "delegationId": 462,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2173790702"
+        },
+        "sourceCacheRecord": {
+          "id": "osm:node:2173790702",
+          "tags": {
+            "name": "بدار",
+            "name:ar": "بدار",
+            "name:en": "Baddar",
+            "name:fr": "Baddar",
+            "place": "village"
+          },
+          "lat": 36.7446844,
+          "lng": 10.612649
+        },
+        "currentPackedSectorMembership": [
+          "osm:relation:7100603"
+        ],
+        "thirteenNativeMembership": [],
+        "twoReceiverNativeMembership": [
+          "osm:relation:7100361"
+        ],
+        "remainingCurrentSectorMembershipAfterFifteen": [],
+        "candidateSectorBoundaryDistanceMeters": 0.9009742922197997,
+        "cachedAdministrativeContextMembership": [
+          {
+            "id": "osm:relation:7145292",
+            "tags": {
+              "admin_level": "5",
+              "alt_name:fr": "Soliman",
+              "boundary": "administrative",
+              "name": "معتمدية سليمان",
+              "name:ar": "معتمدية سليمان",
+              "name:fr": "Délégation Soliman",
+              "ref:tn:codegeo": "1561",
+              "ref:tn:hasc_2": "TN.NB.SO",
+              "wikidata": "Q3489485"
+            }
+          }
+        ],
+        "qualifiedReceivingDelegationCode": "1560",
+        "preservePointNameCoordinatesPickerAndPrayerDefault": true
+      },
+      "primaryIndependentIdentity": [
+        {
+          "sha256": "7b2b35ae9facfa169e4c132f05e11f7fb7c1e8d44ecf3c2dc5e557c9e75bab3b",
+          "date": "2016-10-13",
+          "finding": "Governorate visit explicitly describes Baddar village in Takelsa.",
+          "exactShortText": "إلى معتمدية تاكلسة يوم الخميس 13 أكتوبر 2016 بقرية بدار",
+          "original": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/baddar-aitha-kharmia-essabala-source-review/baddar-governorate-village-2016.html",
+            "sha256": "7b2b35ae9facfa169e4c132f05e11f7fb7c1e8d44ecf3c2dc5e557c9e75bab3b",
+            "bytes": 114615
+          }
+        },
+        {
+          "sha256": "c11bfbad49d0098ca907520839be9c629b079ca892b661bee88123f806d79f19",
+          "date": "2022-08-05",
+          "finding": "Governorate environmental inspection explicitly identifies El Arima (Baddar) in Takelsa.",
+          "exactShortText": "بمنطقة العريمة (بدّار) بمعتمدية تاكلسة من ولاية نابل",
+          "original": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/baddar-aitha-kharmia-essabala-source-review/baddar-governorate-arima-2022.html",
+            "sha256": "c11bfbad49d0098ca907520839be9c629b079ca892b661bee88123f806d79f19",
+            "bytes": 126625
+          }
+        }
+      ],
+      "boundaryQualification": "Point is about0.9m inside this native edge. Original-decimal reconstruction and declared1e-6 quantization preserve that hit, but primary place identity is necessary independent support; no GPS or survey100% claim.",
+      "integrationRequirement": "The cached Soliman delegation7145292 contains the point and disagrees with the two governorate primary pages. Derive qualified parent context from the reviewed official Arima/Takelsa identity; do not carry the cached Soliman context as verified. No coordinate change is warranted."
+    },
+    {
+      "id": "osm:node:2191295540",
+      "decision": "Preserve El Aitha hamlet; whole own map places the unchanged point in Menzel Bouzelfa Joufia156253.",
+      "currentFields": {
+        "id": "osm:node:2191295540",
+        "sourceId": "osm",
+        "name": "العيثة",
+        "aliases": [
+          "El Aitha"
+        ],
+        "kind": "hamlet",
+        "parentName": "منزل بوزلفة الجنوبية",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "Menzel Bouzelfa Sud",
+          "معتمدية منزل بوزلفة",
+          "منزل بوزلفة الجنوبية"
+        ],
+        "governorateId": 350,
+        "lat": 36.6759762,
+        "lng": 10.6428741,
+        "delegationId": 458,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2191295540"
+      },
+      "ownSourceMembership": {
+        "id": "osm:node:2191295540",
+        "currentRaw": {
+          "id": "osm:node:2191295540",
+          "sourceId": "osm",
+          "name": "العيثة",
+          "aliases": [
+            "El Aitha"
+          ],
+          "kind": "hamlet",
+          "parentName": "منزل بوزلفة الجنوبية",
+          "contextAliases": [
+            "Délégation Menzel Bouzelfa",
+            "Menzel Bouzelfa",
+            "Menzel Bouzelfa Sud",
+            "معتمدية منزل بوزلفة",
+            "منزل بوزلفة الجنوبية"
+          ],
+          "governorateId": 350,
+          "lat": 36.6759762,
+          "lng": 10.6428741,
+          "delegationId": 458,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2191295540"
+        },
+        "sourceCacheRecord": {
+          "id": "osm:node:2191295540",
+          "tags": {
+            "addr:governorate": "Nabeul",
+            "name": "العيثة",
+            "name:ar": "العيثة",
+            "name:en": "El Aitha",
+            "name:fr": "El Aitha",
+            "place": "hamlet"
+          },
+          "lat": 36.6759762,
+          "lng": 10.6428741
+        },
+        "currentPackedSectorMembership": [
+          "osm:relation:7101601"
+        ],
+        "thirteenNativeMembership": [],
+        "twoReceiverNativeMembership": [
+          "osm:relation:7101605"
+        ],
+        "remainingCurrentSectorMembershipAfterFifteen": [],
+        "candidateSectorBoundaryDistanceMeters": 1688.5262258038508,
+        "cachedAdministrativeContextMembership": [
+          {
+            "id": "osm:relation:7145839",
+            "tags": {
+              "admin_level": "5",
+              "alt_name:fr": "Menzel Bouzelfa",
+              "boundary": "administrative",
+              "name": "معتمدية منزل بوزلفة",
+              "name:ar": "معتمدية منزل بوزلفة",
+              "name:fr": "Délégation Menzel Bouzelfa",
+              "ref:tn:codegeo": "1562",
+              "ref:tn:hasc_2": "TN.NB.MB",
+              "wikidata": "Q3306140"
+            }
+          }
+        ],
+        "qualifiedReceivingDelegationCode": "1562",
+        "preservePointNameCoordinatesPickerAndPrayerDefault": true
+      },
+      "integrationRequirement": "Correct the stale Keblia/Sud parent claim after whole-source acceptance, retaining the inhabited hamlet point and timetable458. This does not equate the hamlet to its complete receiving imada."
+    }
+  ],
+  "finiteEffects": {
+    "receiverMeasurements": [
+      {
+        "id": "osm:relation:7100361",
+        "code": "156053",
+        "nameAr": "العريمة",
+        "delegationCode": "1560",
+        "currentRaw": {
+          "id": "osm:relation:7100361",
+          "sourceId": "osm",
+          "name": "العريمة",
+          "aliases": [
+            "El Arima"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تاكلسة",
+          "contextAliases": [
+            "Délégation Takelsa",
+            "Takelsa",
+            "معتمدية تاكلسة"
+          ],
+          "governorateId": 350,
+          "lat": 36.728936,
+          "lng": 10.653706,
+          "delegationId": 462,
+          "hasBoundary": true,
+          "bbox": [
+            10.610098,
+            36.676121,
+            10.722472,
+            36.781448
+          ],
+          "areaKm2": 59.66378112859707,
+          "pickerGroupId": "osm:relation:7100361",
+          "offset": 260560,
+          "length": 1940
+        },
+        "nativeAreaM2": 62051763.609632134,
+        "currentPackedAreaM2": 59527810.313531116,
+        "oldRelativeGainM2": 10765665.376597408,
+        "oldRelativeLossM2": 8241712.080496326,
+        "nativeOutsideCurrentCountryM2": 0.0,
+        "receivesThirteenOldRelativeUncoveredLossM2": 141510.67784945105,
+        "receivesLargestOld156254EastLossComponentM2": 0.0,
+        "nativeCachedDelegationShares": {
+          "osm:relation:7145293": 0.9911165363974271,
+          "osm:relation:7145839": 0.006459096302465375,
+          "osm:relation:7145292": 0.002424367300107723
+        },
+        "nativeRepresentativeWgs84": {
+          "lng": 10.654280300548056,
+          "lat": 36.732446381898455
+        },
+        "sourceScope": {
+          "file": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+            "bytes": 10636520
+          },
+          "pdfPage": 76,
+          "jortPage": 5173,
+          "wholePageRender": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-76.png",
+            "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598",
+            "bytes": 306070
+          },
+          "wholePagePersonallyViewed": true,
+          "imadaName": "العريمة",
+          "circleName": "العريمة",
+          "conclusion": "one_whole_imada_one_electoral_circle"
+        }
+      },
+      {
+        "id": "osm:relation:7101605",
+        "code": "156253",
+        "nameAr": "منزل بوزلفة الجوفية",
+        "delegationCode": "1562",
+        "currentRaw": {
+          "id": "osm:relation:7101605",
+          "sourceId": "osm",
+          "name": "منزل بوزلفة الشمالية",
+          "aliases": [
+            "Menzel Bouzelfa Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية منزل بوزلفة",
+          "contextAliases": [
+            "Délégation Menzel Bouzelfa",
+            "Menzel Bouzelfa",
+            "معتمدية منزل بوزلفة"
+          ],
+          "governorateId": 350,
+          "lat": 36.698792,
+          "lng": 10.624021,
+          "delegationId": 458,
+          "hasBoundary": true,
+          "bbox": [
+            10.584203,
+            36.670276,
+            10.687293,
+            36.727516
+          ],
+          "areaKm2": 27.40516154478187,
+          "pickerGroupId": "osm:relation:7101605",
+          "offset": 302836,
+          "length": 1148
+        },
+        "nativeAreaM2": 46045156.7927974,
+        "currentPackedAreaM2": 27345986.432420075,
+        "oldRelativeGainM2": 20532290.754823606,
+        "oldRelativeLossM2": 1833120.394446342,
+        "nativeOutsideCurrentCountryM2": 0.0,
+        "receivesThirteenOldRelativeUncoveredLossM2": 15609789.506108336,
+        "receivesLargestOld156254EastLossComponentM2": 13046406.769517213,
+        "nativeCachedDelegationShares": {
+          "osm:relation:7145293": 0.10671971132233579,
+          "osm:relation:7145839": 0.8924646027280514,
+          "osm:relation:7145292": 0.000756065074694484
+        },
+        "nativeRepresentativeWgs84": {
+          "lng": 10.631804350920842,
+          "lat": 36.68966343521065
+        },
+        "sourceScope": {
+          "file": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/electoral-circle-semantics/decree2023-590.pdf",
+            "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+            "bytes": 10636520
+          },
+          "pdfPage": 77,
+          "jortPage": 5174,
+          "wholePageRender": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-source-scope-support/decree-page-77.png",
+            "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134",
+            "bytes": 313154
+          },
+          "wholePagePersonallyViewed": true,
+          "imadaName": "منزل بوزلفة الجوفية",
+          "circleName": "منزل بوزلفة الجوفية",
+          "conclusion": "one_whole_imada_one_electoral_circle"
+        }
+      }
+    ],
+    "oldThirteenCoverageComparison": {
+      "uncoveredLossM2": 26656722.94994887,
+      "largestOld156254EastLoss": {
+        "areaM2": 16177720.859386068,
+        "boundsWgs84": [
+          10.593268918973648,
+          36.637855,
+          10.697625,
+          36.68442621698292
+        ],
+        "representativeWgs84": {
+          "lng": 10.664572817702963,
+          "lat": 36.66061400063512
+        }
+      },
+      "bothNewReceiversCoverM2": 15751300.183957787,
+      "unreceivedRemainderM2": 10905422.765991006
+    },
+    "rawRepresentativeChanges": [
+      {
+        "currentRaw": {
+          "id": "osm:relation:7101601",
+          "sourceId": "osm",
+          "name": "منزل بوزلفة الجنوبية",
+          "aliases": [
+            "Menzel Bouzelfa Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية منزل بوزلفة",
+          "contextAliases": [
+            "Délégation Menzel Bouzelfa",
+            "Menzel Bouzelfa",
+            "معتمدية منزل بوزلفة"
+          ],
+          "governorateId": 350,
+          "lat": 36.662463,
+          "lng": 10.662059,
+          "delegationId": 467,
+          "hasBoundary": true,
+          "bbox": [
+            10.541107,
+            36.637855,
+            10.697625,
+            36.687044
+          ],
+          "areaKm2": 26.350579787689828,
+          "pickerGroupId": "osm:relation:7101601",
+          "offset": 297368,
+          "length": 1476
+        },
+        "beforeTwoSectorIds": [],
+        "afterTwoNativeSectorIds": [
+          "osm:relation:7101605"
+        ],
+        "otherThirteenNativeIds": [],
+        "remainingCurrentSectorIds": []
+      },
+      {
+        "currentRaw": {
+          "id": "osm:node:2173790702",
+          "sourceId": "osm",
+          "name": "بدار",
+          "aliases": [
+            "Baddar"
+          ],
+          "kind": "village",
+          "parentName": "المريسة",
+          "contextAliases": [
+            "Délégation Soliman",
+            "El Mraissa",
+            "Soliman",
+            "المريسة",
+            "معتمدية سليمان"
+          ],
+          "governorateId": 350,
+          "lat": 36.7446844,
+          "lng": 10.612649,
+          "delegationId": 462,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2173790702"
+        },
+        "beforeTwoSectorIds": [],
+        "afterTwoNativeSectorIds": [
+          "osm:relation:7100361"
+        ],
+        "otherThirteenNativeIds": [],
+        "remainingCurrentSectorIds": []
+      },
+      {
+        "currentRaw": {
+          "id": "osm:node:2191295540",
+          "sourceId": "osm",
+          "name": "العيثة",
+          "aliases": [
+            "El Aitha"
+          ],
+          "kind": "hamlet",
+          "parentName": "منزل بوزلفة الجنوبية",
+          "contextAliases": [
+            "Délégation Menzel Bouzelfa",
+            "Menzel Bouzelfa",
+            "Menzel Bouzelfa Sud",
+            "معتمدية منزل بوزلفة",
+            "منزل بوزلفة الجنوبية"
+          ],
+          "governorateId": 350,
+          "lat": 36.6759762,
+          "lng": 10.6428741,
+          "delegationId": 458,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2191295540"
+        },
+        "beforeTwoSectorIds": [],
+        "afterTwoNativeSectorIds": [
+          "osm:relation:7101605"
+        ],
+        "otherThirteenNativeIds": [],
+        "remainingCurrentSectorIds": []
+      }
+    ],
+    "sourcePointChanges": [
+      {
+        "sourceCacheRecord": {
+          "id": "osm:node:2173790702",
+          "tags": {
+            "name": "بدار",
+            "name:ar": "بدار",
+            "name:en": "Baddar",
+            "name:fr": "Baddar",
+            "place": "village"
+          },
+          "lat": 36.7446844,
+          "lng": 10.612649
+        },
+        "currentRaw": {
+          "id": "osm:node:2173790702",
+          "sourceId": "osm",
+          "name": "بدار",
+          "aliases": [
+            "Baddar"
+          ],
+          "kind": "village",
+          "parentName": "المريسة",
+          "contextAliases": [
+            "Délégation Soliman",
+            "El Mraissa",
+            "Soliman",
+            "المريسة",
+            "معتمدية سليمان"
+          ],
+          "governorateId": 350,
+          "lat": 36.7446844,
+          "lng": 10.612649,
+          "delegationId": 462,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2173790702"
+        },
+        "beforeSourceSectorIds": [],
+        "afterNativeSectorIds": [
+          "osm:relation:7100361"
+        ],
+        "retainedContainingLocalityPolygons": [],
+        "thirteenNativeIds": []
+      },
+      {
+        "sourceCacheRecord": {
+          "id": "osm:node:2191295540",
+          "tags": {
+            "addr:governorate": "Nabeul",
+            "name": "العيثة",
+            "name:ar": "العيثة",
+            "name:en": "El Aitha",
+            "name:fr": "El Aitha",
+            "place": "hamlet"
+          },
+          "lat": 36.6759762,
+          "lng": 10.6428741
+        },
+        "currentRaw": {
+          "id": "osm:node:2191295540",
+          "sourceId": "osm",
+          "name": "العيثة",
+          "aliases": [
+            "El Aitha"
+          ],
+          "kind": "hamlet",
+          "parentName": "منزل بوزلفة الجنوبية",
+          "contextAliases": [
+            "Délégation Menzel Bouzelfa",
+            "Menzel Bouzelfa",
+            "Menzel Bouzelfa Sud",
+            "معتمدية منزل بوزلفة",
+            "منزل بوزلفة الجنوبية"
+          ],
+          "governorateId": 350,
+          "lat": 36.6759762,
+          "lng": 10.6428741,
+          "delegationId": 458,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2191295540"
+        },
+        "beforeSourceSectorIds": [],
+        "afterNativeSectorIds": [
+          "osm:relation:7101605"
+        ],
+        "retainedContainingLocalityPolygons": [],
+        "thirteenNativeIds": []
+      }
+    ],
+    "twoReceiverLocalClosureCount": 15,
+    "twoReceiverLocalClosure": [
+      {
+        "id": "osm:relation:7100359",
+        "sourceId": "osm",
+        "name": "بير الزيت",
+        "aliases": [
+          "Bir Ezzit"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تاكلسة",
+        "contextAliases": [
+          "Délégation Takelsa",
+          "Takelsa",
+          "معتمدية تاكلسة"
+        ],
+        "governorateId": 350,
+        "lat": 36.785819,
+        "lng": 10.694625,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.633811,
+          36.75462,
+          10.773138,
+          36.816843
+        ],
+        "areaKm2": 46.87345941603558,
+        "pickerGroupId": "osm:relation:7100359",
+        "offset": 255904,
+        "length": 3204
+      },
+      {
+        "id": "osm:relation:7100360",
+        "sourceId": "osm",
+        "name": "تاكلسة الوسطى",
+        "aliases": [
+          "Takelsa Centre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تاكلسة",
+        "contextAliases": [
+          "Délégation Takelsa",
+          "Takelsa",
+          "معتمدية تاكلسة"
+        ],
+        "governorateId": 350,
+        "lat": 36.789503,
+        "lng": 10.615019,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.588476,
+          36.743123,
+          10.646557,
+          36.835911
+        ],
+        "areaKm2": 29.65043813872522,
+        "pickerGroupId": "osm:relation:7100360",
+        "offset": 259108,
+        "length": 1452
+      },
+      {
+        "id": "osm:relation:7100361",
+        "sourceId": "osm",
+        "name": "العريمة",
+        "aliases": [
+          "El Arima"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تاكلسة",
+        "contextAliases": [
+          "Délégation Takelsa",
+          "Takelsa",
+          "معتمدية تاكلسة"
+        ],
+        "governorateId": 350,
+        "lat": 36.728936,
+        "lng": 10.653706,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.610098,
+          36.676121,
+          10.722472,
+          36.781448
+        ],
+        "areaKm2": 59.66378112859707,
+        "pickerGroupId": "osm:relation:7100361",
+        "offset": 260560,
+        "length": 1940
+      },
+      {
+        "id": "osm:relation:7100603",
+        "sourceId": "osm",
+        "name": "المريسة",
+        "aliases": [
+          "El Mraissa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.793954,
+        "lng": 10.5739,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.527123,
+          36.723914,
+          10.6137,
+          36.863998
+        ],
+        "areaKm2": 49.165943536331746,
+        "pickerGroupId": "osm:relation:7100603",
+        "offset": 282296,
+        "length": 6820
+      },
+      {
+        "id": "osm:relation:7101601",
+        "sourceId": "osm",
+        "name": "منزل بوزلفة الجنوبية",
+        "aliases": [
+          "Menzel Bouzelfa Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.662463,
+        "lng": 10.662059,
+        "delegationId": 467,
+        "hasBoundary": true,
+        "bbox": [
+          10.541107,
+          36.637855,
+          10.697625,
+          36.687044
+        ],
+        "areaKm2": 26.350579787689828,
+        "pickerGroupId": "osm:relation:7101601",
+        "offset": 297368,
+        "length": 1476
+      },
+      {
+        "id": "osm:relation:7101602",
+        "sourceId": "osm",
+        "name": "الرحمة",
+        "aliases": [
+          "Errahma"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.69794,
+        "lng": 10.730479,
+        "delegationId": 457,
+        "hasBoundary": true,
+        "bbox": [
+          10.683051,
+          36.660184,
+          10.776091,
+          36.735506
+        ],
+        "areaKm2": 39.8837759901388,
+        "pickerGroupId": "osm:relation:7101602",
+        "offset": 298844,
+        "length": 1772
+      },
+      {
+        "id": "osm:relation:7101603",
+        "sourceId": "osm",
+        "name": "داموس الهجة",
+        "aliases": [
+          "Damous El Hajja"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.741104,
+        "lng": 10.739039,
+        "delegationId": 457,
+        "hasBoundary": true,
+        "bbox": [
+          10.701199,
+          36.712744,
+          10.770415,
+          36.769486
+        ],
+        "areaKm2": 23.617220752932877,
+        "pickerGroupId": "osm:relation:7101603",
+        "offset": 300616,
+        "length": 2220
+      },
+      {
+        "id": "osm:relation:7101605",
+        "sourceId": "osm",
+        "name": "منزل بوزلفة الشمالية",
+        "aliases": [
+          "Menzel Bouzelfa Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.698792,
+        "lng": 10.624021,
+        "delegationId": 458,
+        "hasBoundary": true,
+        "bbox": [
+          10.584203,
+          36.670276,
+          10.687293,
+          36.727516
+        ],
+        "areaKm2": 27.40516154478187,
+        "pickerGroupId": "osm:relation:7101605",
+        "offset": 302836,
+        "length": 1148
+      },
+      {
+        "id": "osm:relation:7101606",
+        "sourceId": "osm",
+        "name": "منزل بوزلفة الغربية",
+        "aliases": [
+          "Menzel Bouzelfa Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.706454,
+        "lng": 10.573511,
+        "delegationId": 458,
+        "hasBoundary": true,
+        "bbox": [
+          10.549029,
+          36.682534,
+          10.609975,
+          36.730506
+        ],
+        "areaKm2": 16.771261536976528,
+        "pickerGroupId": "osm:relation:7101606",
+        "offset": 303984,
+        "length": 932
+      },
+      {
+        "id": "osm:relation:7102673",
+        "sourceId": "osm",
+        "name": "بني خلاد الشرقية",
+        "aliases": [
+          "Beni Khalled Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خلاد",
+        "contextAliases": [
+          "Béni Khalled",
+          "Délégation Beni Khalled",
+          "معتمدية بني خلاد"
+        ],
+        "governorateId": 350,
+        "lat": 36.651483,
+        "lng": 10.622876,
+        "delegationId": 467,
+        "hasBoundary": true,
+        "bbox": [
+          10.584769,
+          36.631703,
+          10.672601,
+          36.671041
+        ],
+        "areaKm2": 16.442292405441425,
+        "pickerGroupId": "osm:relation:7102673",
+        "offset": 358896,
+        "length": 1028
+      },
+      {
+        "id": "osm:way:207294838",
+        "sourceId": "osm",
+        "name": "منزل بوزلفة",
+        "aliases": [
+          "Menzel Bou Zelfa",
+          "Menzel Bouzelfa"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية نابل",
+        "contextAliases": [],
+        "governorateId": 350,
+        "lat": 36.681832,
+        "lng": 10.583044,
+        "delegationId": 458,
+        "hasBoundary": true,
+        "bbox": [
+          10.569733,
+          36.669603,
+          10.595502,
+          36.694169
+        ],
+        "areaKm2": 2.0962102191336647,
+        "pickerGroupId": "delegation:458",
+        "offset": 5328896,
+        "length": 2260
+      },
+      {
+        "id": "osm:way:97468182",
+        "sourceId": "osm",
+        "name": "المريسة",
+        "aliases": [
+          "Marisa"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "El Mraissa",
+          "Soliman",
+          "المريسة",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.75571,
+        "lng": 10.555342,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.550921,
+          36.749334,
+          10.557847,
+          36.76218
+        ],
+        "areaKm2": 0.20876039608116823,
+        "pickerGroupId": "osm:relation:7100603",
+        "offset": 5450148,
+        "length": 348
+      },
+      {
+        "id": "osm:way:99721438",
+        "sourceId": "osm",
+        "name": "Errahma",
+        "aliases": [
+          "الرحمة"
+        ],
+        "kind": "village",
+        "parentName": "الرحمة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Errahma",
+          "Menzel Bouzelfa",
+          "الرحمة",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.716885,
+        "lng": 10.724602,
+        "delegationId": 457,
+        "hasBoundary": true,
+        "bbox": [
+          10.722333,
+          36.715429,
+          10.727384,
+          36.718765
+        ],
+        "areaKm2": 0.0859902866805645,
+        "pickerGroupId": "osm:relation:7101602",
+        "offset": 5457096,
+        "length": 180
+      },
+      {
+        "id": "osm:node:2173790702",
+        "sourceId": "osm",
+        "name": "بدار",
+        "aliases": [
+          "Baddar"
+        ],
+        "kind": "village",
+        "parentName": "المريسة",
+        "contextAliases": [
+          "Délégation Soliman",
+          "El Mraissa",
+          "Soliman",
+          "المريسة",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.7446844,
+        "lng": 10.612649,
+        "delegationId": 462,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2173790702"
+      },
+      {
+        "id": "osm:node:2191295540",
+        "sourceId": "osm",
+        "name": "العيثة",
+        "aliases": [
+          "El Aitha"
+        ],
+        "kind": "hamlet",
+        "parentName": "منزل بوزلفة الجنوبية",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "Menzel Bouzelfa Sud",
+          "معتمدية منزل بوزلفة",
+          "منزل بوزلفة الجنوبية"
+        ],
+        "governorateId": 350,
+        "lat": 36.6759762,
+        "lng": 10.6428741,
+        "delegationId": 458,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2191295540"
+      }
+    ],
+    "combinedWithFrozenThirteenClosureCount": 43,
+    "newClosureRowsBeyondFrozenThirteen": [
+      {
+        "id": "osm:relation:7100359",
+        "sourceId": "osm",
+        "name": "بير الزيت",
+        "aliases": [
+          "Bir Ezzit"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تاكلسة",
+        "contextAliases": [
+          "Délégation Takelsa",
+          "Takelsa",
+          "معتمدية تاكلسة"
+        ],
+        "governorateId": 350,
+        "lat": 36.785819,
+        "lng": 10.694625,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.633811,
+          36.75462,
+          10.773138,
+          36.816843
+        ],
+        "areaKm2": 46.87345941603558,
+        "pickerGroupId": "osm:relation:7100359",
+        "offset": 255904,
+        "length": 3204
+      },
+      {
+        "id": "osm:relation:7100361",
+        "sourceId": "osm",
+        "name": "العريمة",
+        "aliases": [
+          "El Arima"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تاكلسة",
+        "contextAliases": [
+          "Délégation Takelsa",
+          "Takelsa",
+          "معتمدية تاكلسة"
+        ],
+        "governorateId": 350,
+        "lat": 36.728936,
+        "lng": 10.653706,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.610098,
+          36.676121,
+          10.722472,
+          36.781448
+        ],
+        "areaKm2": 59.66378112859707,
+        "pickerGroupId": "osm:relation:7100361",
+        "offset": 260560,
+        "length": 1940
+      },
+      {
+        "id": "osm:relation:7101602",
+        "sourceId": "osm",
+        "name": "الرحمة",
+        "aliases": [
+          "Errahma"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.69794,
+        "lng": 10.730479,
+        "delegationId": 457,
+        "hasBoundary": true,
+        "bbox": [
+          10.683051,
+          36.660184,
+          10.776091,
+          36.735506
+        ],
+        "areaKm2": 39.8837759901388,
+        "pickerGroupId": "osm:relation:7101602",
+        "offset": 298844,
+        "length": 1772
+      },
+      {
+        "id": "osm:relation:7101603",
+        "sourceId": "osm",
+        "name": "داموس الهجة",
+        "aliases": [
+          "Damous El Hajja"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.741104,
+        "lng": 10.739039,
+        "delegationId": 457,
+        "hasBoundary": true,
+        "bbox": [
+          10.701199,
+          36.712744,
+          10.770415,
+          36.769486
+        ],
+        "areaKm2": 23.617220752932877,
+        "pickerGroupId": "osm:relation:7101603",
+        "offset": 300616,
+        "length": 2220
+      },
+      {
+        "id": "osm:way:99721438",
+        "sourceId": "osm",
+        "name": "Errahma",
+        "aliases": [
+          "الرحمة"
+        ],
+        "kind": "village",
+        "parentName": "الرحمة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Errahma",
+          "Menzel Bouzelfa",
+          "الرحمة",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.716885,
+        "lng": 10.724602,
+        "delegationId": 457,
+        "hasBoundary": true,
+        "bbox": [
+          10.722333,
+          36.715429,
+          10.727384,
+          36.718765
+        ],
+        "areaKm2": 0.0859902866805645,
+        "pickerGroupId": "osm:relation:7101602",
+        "offset": 5457096,
+        "length": 180
+      }
+    ],
+    "directCurrentBindings": {
+      "curation": [],
+      "picker": [
+        {
+          "path": "$.records[97]",
+          "record": {
+            "id": "osm:way:207294838",
+            "targetDelegationId": 458,
+            "expectedGovernorateId": 350,
+            "expectedBase": {
+              "nomAr": "منزل بوزلفة",
+              "lat": 36.685,
+              "lng": 10.58
+            },
+            "expectedExistingMemberIds": [
+              "osm:way:207294838"
+            ],
+            "expectedTargetMemberIds": [
+              "delegation:458"
+            ],
+            "members": [
+              {
+                "id": "osm:way:207294838",
+                "expectedKind": "residential",
+                "expectedSourceId": "osm",
+                "expectedName": "منزل بوزلفة",
+                "expectedParentName": "ولاية نابل",
+                "expectedDelegationId": 458,
+                "expectedLat": 36.681832,
+                "expectedLng": 10.583044,
+                "expectedOriginalTags": {
+                  "addr:city": "Menzel Bouzelfa",
+                  "addr:country": "TN",
+                  "addr:governorate": "Nabeul",
+                  "landuse": "residential",
+                  "name": "منزل بوزلفة",
+                  "name:ar": "منزل بوزلفة",
+                  "name:fr": "Menzel Bouzelfa"
+                },
+                "originalGeometrySha256": "6f49d9c83562cdaf329e4adf386e111007606c423321f97541709a4fd04985e5",
+                "packedGeometrySha256": "2fc16a471e30b2d300486c698106f11a933d3cc13626d7f9537308c195132b11"
+              }
+            ],
+            "identityEvidence": [
+              {
+                "method": "reviewed_contained_settlement_reference",
+                "id": "osm:node:1124136154",
+                "accepted": true,
+                "residentialId": "osm:way:207294838",
+                "targetDelegationId": 458,
+                "reviewEvidence": {
+                  "file": "six-city-base-reviews/six-city-base-source-facts.json",
+                  "sha256": "8739fcabda16b63ac44e68e7ebc4cc4e3aa0046ae11fe321dcf64605739cde25"
+                }
+              }
+            ],
+            "requiredCurations": []
+          }
+        }
+      ],
+      "boundaries": []
+    },
+    "relevantCurationReceipts": [],
+    "actualNativeSeams": [
+      {
+        "ids": [
+          "osm:relation:7100361",
+          "osm:relation:7100603"
+        ],
+        "nativeOverlapM2": 9965.773001953665,
+        "largestComponents": [
+          {
+            "areaM2": 963.1313380063282,
+            "boundsWgs84": [
+              10.605309901823086,
+              36.743345155802935,
+              10.607590196451463,
+              36.74410911897847
+            ],
+            "representativeWgs84": {
+              "lng": 10.606456514817891,
+              "lat": 36.74373465948519
+            }
+          },
+          {
+            "areaM2": 859.002624748866,
+            "boundsWgs84": [
+              10.610259523795035,
+              36.72786005814112,
+              10.611310707117093,
+              36.730038097242904
+            ],
+            "representativeWgs84": {
+              "lng": 10.610846920312193,
+              "lat": 36.72896916386719
+            }
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7100361",
+          "osm:relation:7101605"
+        ],
+        "nativeOverlapM2": 6921.108259493869,
+        "largestComponents": [
+          {
+            "areaM2": 906.4684005524773,
+            "boundsWgs84": [
+              10.654478181097984,
+              36.711347438957254,
+              10.664186674666976,
+              36.714494353333
+            ],
+            "representativeWgs84": {
+              "lng": 10.657446348248717,
+              "lat": 36.71320364085711
+            }
+          },
+          {
+            "areaM2": 791.3477828151526,
+            "boundsWgs84": [
+              10.64287335963752,
+              36.7192293998369,
+              10.64638885434779,
+              36.72083711898389
+            ],
+            "representativeWgs84": {
+              "lng": 10.644145379316498,
+              "lat": 36.719804026404084
+            }
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7101605",
+          "osm:relation:7101601"
+        ],
+        "nativeOverlapM2": 4436.159762767494,
+        "largestComponents": [
+          {
+            "areaM2": 1186.6945368569811,
+            "boundsWgs84": [
+              10.596836162091085,
+              36.69526068153724,
+              10.600986668979859,
+              36.697285854511016
+            ],
+            "representativeWgs84": {
+              "lng": 10.598039578814246,
+              "lat": 36.695841030397936
+            }
+          },
+          {
+            "areaM2": 537.0474148533135,
+            "boundsWgs84": [
+              10.594484350343922,
+              36.68104649840327,
+              10.596850268462497,
+              36.68305813602787
+            ],
+            "representativeWgs84": {
+              "lng": 10.596318399141113,
+              "lat": 36.68159609939607
+            }
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7101605",
+          "osm:relation:7101606"
+        ],
+        "nativeOverlapM2": 3420.3102711488427,
+        "largestComponents": [
+          {
+            "areaM2": 776.061606813852,
+            "boundsWgs84": [
+              10.592763589686848,
+              36.70812245649315,
+              10.595234574404355,
+              36.71050447339101
+            ],
+            "representativeWgs84": {
+              "lng": 10.593833071095945,
+              "lat": 36.709444855593524
+            }
+          },
+          {
+            "areaM2": 549.6283261824175,
+            "boundsWgs84": [
+              10.587145657447289,
+              36.722788222697964,
+              10.588937892740914,
+              36.724952698330064
+            ],
+            "representativeWgs84": {
+              "lng": 10.588045214748286,
+              "lat": 36.72370921355946
+            }
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7101605",
+          "osm:relation:7100603"
+        ],
+        "nativeOverlapM2": 2130.884480344283,
+        "largestComponents": [
+          {
+            "areaM2": 686.574867750501,
+            "boundsWgs84": [
+              10.588165574143135,
+              36.72601406496971,
+              10.590288196111056,
+              36.72740851122841
+            ],
+            "representativeWgs84": {
+              "lng": 10.588651292828978,
+              "lat": 36.726652806217885
+            }
+          },
+          {
+            "areaM2": 605.9190229182321,
+            "boundsWgs84": [
+              10.601011023026015,
+              36.728208214040016,
+              10.602497376001637,
+              36.728730969397404
+            ],
+            "representativeWgs84": {
+              "lng": 10.601560135141261,
+              "lat": 36.7284251944377
+            }
+          }
+        ]
+      }
+    ],
+    "anchorDiagnostics": [
+      {
+        "id": "osm:relation:7100361",
+        "sourceGeometrySha256": "a24dd0e4e7872751868bad04b3d2821dbc09fdde72ce4fcd59072de26b44c764",
+        "declaredCoordinateScale": 1000000,
+        "quantizedGeometrySha256": "3cbd6a1953c668a2fe3dd515fa04bccf98b625dbd5b2c8a3b98788a9bf7e4d4f",
+        "packedGeometrySha256": "52c589f8e667e78f8f5e4b3383ee4a9daa733a8b313022491d7e7d9f62bbb0d5",
+        "packedBytes": 6884,
+        "sourceEdges": 858,
+        "quantizedEdges": 858,
+        "sourceHoles": 0,
+        "quantizedHoles": 0,
+        "sourceAndQuantizedWithinFullCountry": true,
+        "pointId": "osm:node:2173790702",
+        "pointCoveredByNativeApiGeometry": true,
+        "pointCoveredByOriginalDecimalControlGeometry": true,
+        "pointCoveredAfterDeclaredCoordinateQuantization": true,
+        "pointBoundaryDistanceMeters": {
+          "nativeApi": 0.9009742922197997,
+          "originalDecimalControls": 0.9012578190343288,
+          "declaredCoordinateQuantization": 0.8642659470371824
+        },
+        "maxRawDecimalVsNativePipelineDisplacementMeters": 0.0013653198969970006,
+        "maxOriginalControlResidualMeters": 0.08961302822342196,
+        "diagnosticPackedRepresentative": {
+          "lat": 36.732514,
+          "lng": 10.654238,
+          "nearestPrayer": {
+            "id": 462,
+            "distanceKm": 6.0978884266848095
+          }
+        },
+        "unchangedPointNearestPrayer": {
+          "id": 462,
+          "distanceKm": 3.981139797532864
+        },
+        "sourceGeometryRemainsUnroundedAndUnchanged": true,
+        "qualification": "This compares original-decimal and native API registration plus the declared serialization grid. It does not quantify map surveying error, device GPS uncertainty or legal parcel accuracy. No packed asset is written."
+      },
+      {
+        "id": "osm:relation:7101605",
+        "sourceGeometrySha256": "15b6306adc3a8f03d08e9977437f0591465bda35b3ff08f305ce31dff5c87cf6",
+        "declaredCoordinateScale": 1000000,
+        "quantizedGeometrySha256": "946c2cfc5084c4c26f3601ae3a097d4c1dae48e36e4c7a24b8112cc0df7d1fb7",
+        "packedGeometrySha256": "7a114f44c57059cb30863d6293c5905439f0a62823d04d128967e97fc8c64cf0",
+        "packedBytes": 4636,
+        "sourceEdges": 577,
+        "quantizedEdges": 577,
+        "sourceHoles": 0,
+        "quantizedHoles": 0,
+        "sourceAndQuantizedWithinFullCountry": true,
+        "pointId": "osm:node:2191295540",
+        "pointCoveredByNativeApiGeometry": true,
+        "pointCoveredByOriginalDecimalControlGeometry": true,
+        "pointCoveredAfterDeclaredCoordinateQuantization": true,
+        "pointBoundaryDistanceMeters": {
+          "nativeApi": 1688.5262258038508,
+          "originalDecimalControls": 1688.525960080836,
+          "declaredCoordinateQuantization": 1688.4695332758747
+        },
+        "maxRawDecimalVsNativePipelineDisplacementMeters": 0.0011105104641894465,
+        "maxOriginalControlResidualMeters": 0.09352890856804899,
+        "diagnosticPackedRepresentative": {
+          "lat": 36.689906,
+          "lng": 10.631708,
+          "nearestPrayer": {
+            "id": 458,
+            "distanceKm": 4.642855518623268
+          }
+        },
+        "unchangedPointNearestPrayer": {
+          "id": 458,
+          "distanceKm": 5.695937641575217
+        },
+        "sourceGeometryRemainsUnroundedAndUnchanged": true,
+        "qualification": "This compares original-decimal and native API registration plus the declared serialization grid. It does not quantify map surveying error, device GPS uncertainty or legal parcel accuracy. No packed asset is written."
+      }
+    ]
+  },
+  "recommendedNextAction": "Independent review of the exact two original outlines and close-edge Baddar interpretation, then separately integrate accepted receiver sources and truthful parent claims with the existing thirteen package. Preserve all names, distinct locality IDs, raw point coordinates and current nearest prayer defaults; separately audit actual packed anchors/context/source proof closure.",
+  "limitations": [
+    "No source stage, manifest append, compiler edit or generation occurs in this task.",
+    "The two native receivers do not receive all old strips. Joufia receives13.0464km² of the16.1777km² largest old156254 east loss component. Remaining margins are reported, not inferred.",
+    "Actual official-map overlap seams are preserved and measured. No clip, snap, repair or old OSM strip is substituted.",
+    "The fifteen-member union is used only to identify local membership/closure effects; this is not a full coherent fifteen-source acceptance.",
+    "Canonical Joufia is supported by own map/decree/INS; old OSM الشمالية wording is not silently approved as a source-authoritative canonical name.",
+    "The prior thirteen source report remains historical. Its Baddar cached Soliman fallback is explicitly superseded as a final acceptance by this primary contradiction."
+  ],
+  "preservation": {
+    "frozenThirteenReadinessUnchanged": true,
+    "frozenThirteenPackageUnchanged": true,
+    "allPinnedInputsUnchanged": true,
+    "noProductImportsGenerationOrAssetChanges": true
+  },
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/freeze_receiving_map_report.py",
+    "sha256": "3d7a70aa6d91d6c56df891ceb2ec8bd01e4270fd975a6ebe5e75838d048082ba",
+    "bytes": 11339
+  }
+}

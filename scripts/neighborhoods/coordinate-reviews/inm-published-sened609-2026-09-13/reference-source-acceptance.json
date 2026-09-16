@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_QUALIFIED_OFFICIAL_REFERENCE_ADOPTION_PROPOSAL_NOT_GENERATED",
+  "reviewedDate": "2026-09-13",
+  "referenceId": 609,
+  "baselineMetadataSha256": "57037e014ef90f5aaaa666d1b4e5804ee183fbcd03aadb54b24294ba3be20a63",
+  "originalPublicEvidence": {
+    "prayer": {
+      "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/inm-prayer-609-2026-09-12.json",
+      "sha256": "7968b7ae601a813181d54917366dc469422d9d4cf2be04e21f93b14b061755cf",
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/609/"
+    },
+    "sun": {
+      "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/inm-sun-609-2026-09-12.json",
+      "sha256": "8d2067a1ec2a93d41519121eb5c98343ff4e0624c29b0f61da3bcc6fa1e85963",
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/609/"
+    },
+    "retrievalManifest": {
+      "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/retrieval-manifest.json",
+      "sha256": "0c3d97183aa188a913e14e6210531c86134aee5cbb10bb51d2da9de99798c0fe"
+    }
+  },
+  "historicalWorkEvidence": {
+    "sourceReview": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/sened-reference-review-20260913/source-review.json",
+      "sha256": "e8a1763d03a4bf1d20ee6081ab2193b75832eb27c02d0d7337485a891eb47fa5",
+      "bytes": 38164
+    },
+    "sourceFacts": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/sened-reference-review-20260913/source-finite-facts.json",
+      "sha256": "63cf39026d9fb058e1e4269058b0c4beb0ac4f2e4f4b189cc66d03220cc02620",
+      "bytes": 79235
+    },
+    "existingAutomaticGroupContract": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/sened-reference-adoption-proposal-20260913/existing-contract-source-adoption-proposal.json",
+      "sha256": "84b7eb1126c6d67ee82bf250c0fdb034392e8adc2405eb6e0122c1857fe6ab24",
+      "bytes": 190862
+    },
+    "arithmetic": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/three-published-reference-impact-20260913/impact-preview.json",
+      "sha256": "5fca0781d5324bc19f716abf7b59aaf39843452a466018587fac566d64ccdc10",
+      "bytes": 70103
+    }
+  },
+  "historicalWorkEvidenceQualification": "Pinned workspace review artifacts retain their original epochs and dispositions; these provenance pointers are not changed into original HTTP sources or mandatory shipping-loader dependencies.",
+  "publishedIdentity": {
+    "governorateId": 365,
+    "delegationId": 609,
+    "names": {
+      "nomAr": "السند",
+      "nomFr": "Sened",
+      "nomEn": "Sened"
+    },
+    "serviceDate": "2026-09-12",
+    "originalLiteralCoordinates": {
+      "lat": "34.462",
+      "lng": " 9.262"
+    },
+    "numericCoordinates": {
+      "lat": 34.462,
+      "lng": 9.262
+    }
+  },
+  "exactAssetFieldChanges": [
+    {
+      "delegationId": 609,
+      "governorateId": 365,
+      "field": "lat",
+      "before": 34.5406,
+      "after": 34.462
+    },
+    {
+      "delegationId": 609,
+      "governorateId": 365,
+      "field": "lng",
+      "before": 9.254,
+      "after": 9.262
+    }
+  ],
+  "qualification": "The official prayer and sunrise records agree on date, names, parent and published reference fields. They do not certify the backend astronomical inputs, survey precision, a settlement centre, or any polygon boundary.",
+  "settlementPreservation": {
+    "northernTownId": "osm:way:270160718",
+    "absorbedNorthernNodeId": "osm:node:2178146164",
+    "separateSouthernVillageId": "osm:node:2888243906",
+    "existing609RawGroupIds": [
+      "osm:relation:7150185",
+      "osm:way:270160718"
+    ],
+    "matchingAdministrativeSourceId": "osm:relation:7150157",
+    "matchingAdministrativeCode": "6161",
+    "baseInsideNorthernTownAfter": false,
+    "baseInsideNamesakeDelegationAfter": true,
+    "newPickerRuleRequired": false,
+    "compilerChangeRequired": false,
+    "geometryOrNameChangePermitted": false
+  },
+  "predictedRawDefaultChanges": [
+    {
+      "id": "osm:relation:7150211",
+      "field": "delegationId",
+      "before": 612,
+      "after": 609
+    },
+    {
+      "id": "osm:relation:7150239",
+      "field": "delegationId",
+      "before": 609,
+      "after": 509
+    },
+    {
+      "id": "osm:relation:7169625",
+      "field": "delegationId",
+      "before": 609,
+      "after": 510
+    },
+    {
+      "id": "osm:way:285155889",
+      "field": "delegationId",
+      "before": 612,
+      "after": 609
+    },
+    {
+      "id": "osm:node:10008679396",
+      "field": "delegationId",
+      "before": 510,
+      "after": 609
+    },
+    {
+      "id": "osm:node:10008679398",
+      "field": "delegationId",
+      "before": 612,
+      "after": 609
+    }
+  ],
+  "scope": "Adopt only official published reference609. Preserve all named town/village/sector rows and whole geometries. Final generation must retain every picker association and validate the exact six nearest-reference changes; no false town containment is introduced."
+}

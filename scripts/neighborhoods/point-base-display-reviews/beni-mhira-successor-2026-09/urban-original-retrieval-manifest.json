@@ -1,0 +1,128 @@
+{
+  "scope": "Beni Mhira public urban identity and planning only",
+  "responses": [
+    {
+      "file": "mehat-approval-announcement.html",
+      "requestedUrl": "https://www.mehat.gov.tn/2024/03/المصادقة-على-أمثلة-التهيئة-العمرانية/",
+      "retrievedAt": "2026-09-12T11:43:57.804589+00:00",
+      "status": 200,
+      "finalUrl": "https://www.mehat.gov.tn/2024/03/%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D8%AF%D9%82%D8%A9-%D8%B9%D9%84%D9%89-%D8%A3%D9%85%D8%AB%D9%84%D8%A9-%D8%A7%D9%84%D8%AA%D9%87%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A7%D9%86%D9%8A%D8%A9/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 11:43:57 GMT",
+        "Server": "Apache/2.4.57 (Oracle Linux Server) OpenSSL/3.0.7",
+        "X-Powered-By": "PHP/8.0.30",
+        "Link": "<https://www.mehat.gov.tn/wp-json/>; rel=\"https://api.w.org/\", <https://www.mehat.gov.tn/wp-json/wp/v2/posts/22526>; rel=\"alternate\"; type=\"application/json\", <https://www.mehat.gov.tn/?p=22526>; rel=shortlink",
+        "Set-Cookie": "pll_language=ar; expires=Sun, 12-Sep-2027 11:43:57 GMT; Max-Age=31536000; path=/; secure; SameSite=Lax",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Upgrade": "h2,h2c",
+        "Connection": "Upgrade, Keep-Alive",
+        "Vary": "Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Access-Control-Allow-Origin": "*",
+        "Referrer-Policy": "no-referrer-when-downgrade",
+        "Content-Length": "30011",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "text/html; charset=UTF-8"
+      },
+      "bytes": 168653,
+      "sha256": "8d917eaa93bb5c1697376d00c6e3adcd5df82f40e3465687a790cc03f7eecccc",
+      "provenance": "Original HTTP response body after content decoding, not rewritten."
+    },
+    {
+      "file": "mehat-geopau-link.html",
+      "requestedUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/s-i-g-web-pau/",
+      "retrievedAt": "2026-09-12T11:43:57.804589+00:00",
+      "status": 200,
+      "finalUrl": "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/s-i-g-web-pau/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 11:43:57 GMT",
+        "Server": "Apache/2.4.57 (Oracle Linux Server) OpenSSL/3.0.7",
+        "X-Powered-By": "PHP/8.0.30",
+        "Link": "<https://www.mehat.gov.tn/wp-json/>; rel=\"https://api.w.org/\", <https://www.mehat.gov.tn/wp-json/wp/v2/pages/11903>; rel=\"alternate\"; type=\"application/json\", <https://www.mehat.gov.tn/?p=11903>; rel=shortlink",
+        "Set-Cookie": "pll_language=fr; expires=Sun, 12-Sep-2027 11:43:57 GMT; Max-Age=31536000; path=/; secure; SameSite=Lax",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Upgrade": "h2,h2c",
+        "Connection": "Upgrade, Keep-Alive",
+        "Vary": "Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Access-Control-Allow-Origin": "*",
+        "Referrer-Policy": "no-referrer-when-downgrade",
+        "Content-Length": "26678",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "text/html; charset=UTF-8"
+      },
+      "bytes": 153162,
+      "sha256": "16b305b3e8d3b86b228c3766824759e6abb6adaa7000dcad72f1dc38d09e18c8",
+      "provenance": "Original HTTP response body after content decoding, not rewritten."
+    },
+    {
+      "file": "geopau-landing.html",
+      "requestedUrl": "https://geopau.gov.tn/",
+      "retrievedAt": "2026-09-12T11:43:57.805534+00:00",
+      "status": 200,
+      "finalUrl": "https://geopau.gov.tn/",
+      "headers": {
+        "Content-Type": "text/html",
+        "Last-Modified": "Thu, 19 Dec 2019 11:03:12 GMT",
+        "Accept-Ranges": "bytes",
+        "ETag": "\"34119e85bb6d51:0\"",
+        "Server": "Microsoft-IIS/8.5",
+        "X-Powered-By": "ASP.NET",
+        "Date": "Sat, 12 Sep 2026 11:42:50 GMT",
+        "Content-Length": "10015"
+      },
+      "bytes": 10015,
+      "sha256": "235d30f762586ec833201ad3be24e7ba978f6c53c2154bbbe108b2142aef10e6",
+      "provenance": "Original HTTP response body after content decoding, not rewritten."
+    },
+    {
+      "file": "arp-municipality-proposal-page.html",
+      "requestedUrl": "https://www.arp.tn/loi/project/4305",
+      "retrievedAt": "2026-09-12T11:43:57.805534+00:00",
+      "status": 200,
+      "finalUrl": "https://www.arp.tn/loi/project/4305",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 12 Sep 2026 11:44:02 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Set-Cookie": "frontend_lang=ar_SY; Path=/; Secure; HttpOnly; SameSite=Strict, frontend_lang=ar_SY; Path=/; Secure; HttpOnly; SameSite=Strict, session_id=108c559ae08f3bd15326ce978b0e35d1df33520f; Expires=Fri, 11-Dec-2026 11:44:02 GMT; Max-Age=7776000; HttpOnly; Path=/; Secure; HttpOnly; SameSite=Strict, Secure; HttpOnly; SameSite=Strict",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Content-Encoding": "gzip"
+      },
+      "bytes": 188519,
+      "sha256": "2f44a94dad67f7ffb01ea1ba39c35d56c10717be727762c5a5d9dbad2f6a32d8",
+      "provenance": "Original HTTP response body after content decoding, not rewritten."
+    },
+    {
+      "file": "arp-municipality-proposal-2026-032.pdf",
+      "requestedUrl": "https://www.arp.tn/document/download/119158",
+      "retrievedAt": "2026-09-12T11:43:57.805534+00:00",
+      "status": 200,
+      "finalUrl": "https://www.arp.tn/document/download/119158",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 12 Sep 2026 11:43:57 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "1817903",
+        "Connection": "keep-alive",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "ETag": "\"040fd0a6b4281922ce06c447c3950875\"",
+        "Cache-Control": "max-age=0",
+        "Set-Cookie": "frontend_lang=ar_SY; Path=/; Secure; HttpOnly; SameSite=Strict, frontend_lang=ar_SY; Path=/; Secure; HttpOnly; SameSite=Strict, session_id=f3f0ba78e8a7cd07f794d0a674e87c23cfcedbbb; Expires=Fri, 11-Dec-2026 11:43:57 GMT; Max-Age=7776000; HttpOnly; Path=/; Secure; HttpOnly; SameSite=Strict, Secure; HttpOnly; SameSite=Strict",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block"
+      },
+      "bytes": 1817903,
+      "sha256": "6a10defc0b1526b827084396528afe8366f1551600c50c7999589712ddf59e5a",
+      "provenance": "Original HTTP response body after content decoding, not rewritten."
+    }
+  ]
+}

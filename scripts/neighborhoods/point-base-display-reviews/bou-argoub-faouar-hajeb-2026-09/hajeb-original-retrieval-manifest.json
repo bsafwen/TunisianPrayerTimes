@@ -1,0 +1,107 @@
+{
+  "sources": [
+    {
+      "file": "osm-node-1187489040-current.json",
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/1187489040.json",
+      "retrievedAt": "2026-09-12T09:57:26.307544+00:00",
+      "status": 200,
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/1187489040.json",
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 09:57:26 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150060-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789207046.135757,VS0,VE43",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "redirects": [],
+      "bytes": 698,
+      "sha256": "184395482034cdeb111d6340c7495bfad64bf008da4bade361874979d8d0ac69",
+      "bodyProvenance": "Original HTTP response body bytes after HTTP content decoding; not rewritten or converted."
+    },
+    {
+      "file": "osm-node-1187489040-history.json",
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/1187489040/history.json",
+      "retrievedAt": "2026-09-12T09:57:26.308557+00:00",
+      "status": 200,
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/1187489040/history.json",
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 09:57:26 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150042-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789207046.139865,VS0,VE47",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "redirects": [],
+      "bytes": 6103,
+      "sha256": "20847dcdd6a14878e150aaab634528c54c24770b7dfaa095e813870e7b51f34f",
+      "bodyProvenance": "Original HTTP response body bytes after HTTP content decoding; not rewritten or converted."
+    },
+    {
+      "file": "mehat-atlas-kairouan-fr.pdf",
+      "requestedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf",
+      "retrievedAt": "2026-09-12T09:57:26.308557+00:00",
+      "status": 200,
+      "finalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 09:57:26 GMT",
+        "Server": "Apache/2.4.57 (Oracle Linux Server) OpenSSL/3.0.7",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Upgrade": "h2,h2c",
+        "Connection": "Upgrade, Keep-Alive",
+        "Last-Modified": "Thu, 07 Feb 2019 15:09:45 GMT",
+        "ETag": "\"24d3c78-5814f3b8c4040-gzip\"",
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "max-age=31536000, public",
+        "Expires": "Sun, 12 Sep 2027 09:57:26 GMT",
+        "Vary": "Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Access-Control-Allow-Origin": "*",
+        "Referrer-Policy": "no-referrer-when-downgrade",
+        "Pragma": "public",
+        "Keep-Alive": "timeout=5, max=100",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "application/pdf"
+      },
+      "redirects": [],
+      "bytes": 38616184,
+      "sha256": "7b683b60e43de90b14d42b19cc7f4836594b3729ee1a9c993e47bd718bc92641",
+      "bodyProvenance": "Original HTTP response body bytes after HTTP content decoding; not rewritten or converted."
+    },
+    {
+      "file": "official-commune-directory.html",
+      "requestedUrl": "https://www.collectiviteslocales.gov.tn/site_web_communes/",
+      "retrievedAt": "2026-09-12T09:57:26.309552+00:00",
+      "error": "HTTPSConnectionPool(host='www.collectiviteslocales.gov.tn', port=443): Max retries exceeded with url: /site_web_communes/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.collectiviteslocales.gov.tn', port=443) at 0x2632726f410>, 'Connection to www.collectiviteslocales.gov.tn timed out. (connect timeout=45)'))"
+    },
+    {
+      "file": "hajeb-municipality-index.html",
+      "requestedUrl": "http://www.commune-hadjebelayoun.gov.tn/",
+      "retrievedAt": "2026-09-12T09:57:26.312553+00:00",
+      "error": "HTTPConnectionPool(host='www.commune-hadjebelayoun.gov.tn', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPConnection(host='www.commune-hadjebelayoun.gov.tn', port=80) at 0x2632726fbf0>, 'Connection to www.commune-hadjebelayoun.gov.tn timed out. (connect timeout=45)'))"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "status": "PUBLIC_CONTEXT_OBSERVATIONS_REVIEWED_NO_IDENTITY_OR_BOUNDARY_CERTIFICATION",
+  "reviewedAt": "2026-09-12T11:03:05.026543+00:00",
+  "metadataSha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_node_558814858-1\\ledger.json",
+    "sha256": "1a0dc982f93955d7bba648c465ffcc8d42429a575b6302cf139d91af8970775c"
+  },
+  "afterLedgerSha256": "b55bb8bac63827e2eaf86eb5939e975344fe29e0ff7171e6572e46b86aba1127",
+  "newObservations": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_558814858-1.json",
+        "sha256": "b6ef754f8a37ea65b123f283feecaafcf436d2145737b6a5f2351f78c9cfa5a7"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_558814858-1.png",
+        "sha256": "4ae43d55f24da33a8fcf718d16aaa55de35ddd5bab573e77fee20f424c1e5626"
+      },
+      "query": "35.6172948,10.9891336",
+      "rootVisualConclusion": "Coordinates open a nearby bus-stop card in Al-Baqalitah. Bekalta streets and town label surround the pin. This is settlement context, not exact point equality.",
+      "rootViewed": true
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_558814858-2.json",
+        "sha256": "115d7858db782a80e31e2c47204aefcc3dd19e41f38628750b63df571879efbd"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_558814858-2.png",
+        "sha256": "05a1f7282a71748ff50b106c9e96b1c539c5b5becc4bcdb043544cd243936435"
+      },
+      "query": "البقالطة المنستير تونس",
+      "rootVisualConclusion": "Public Bekalta town card with a visible town outline. Context matches the first view; no Google boundary coordinates are extracted or certified.",
+      "rootViewed": true
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-1.json",
+        "sha256": "b17312144a46aec8b129d82fc9f402966f1094e365306e7392c40c8c2dcf25ab"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-1.png",
+        "sha256": "4783df9f2139cf23c2278ecc7c8f8ecf43a6f93b11984712eceea09482dc341b"
+      },
+      "query": "32.8634378,10.8172175",
+      "rootVisualConclusion": "Named Beni M'hira card at the pin amid local streets, beside a school labeled for new Beni Mhira. This does not establish equivalence of old/new settlement components or their boundaries.",
+      "rootViewed": true
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-2.json",
+        "sha256": "682a8579ee6ae64fec8e2a5ac5d99e6b2a012abfcf24265786ecec114086e120"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_5239666199-2.png",
+        "sha256": "897ceece4a2f68e198a96f7991c34667edd78fa13e1323a1ae5a621742575064"
+      },
+      "query": "بني مهيرة تطاوين تونس",
+      "rootVisualConclusion": "Multiple results: Beni M'hira, an eastern administrative area and a medical centre. It is not a unique locality identity result.",
+      "rootViewed": true
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-1.json",
+        "sha256": "38cb78662fdaed05f227a017defce534e018d4f40d32a207354aecc796cc5aee"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-1.png",
+        "sha256": "f773fb85d648edef5597d3ef0842938d8f07ad53f03acac782f739b4df1d3cf3"
+      },
+      "query": "31.6880101,9.2186132",
+      "rootVisualConclusion": "Coordinates open the SITEP mosque card near Al Borma and SITEP restaurant. This corroborates named local context, but does not identify the settlement extent or prove the raw point equals the timetable place.",
+      "rootViewed": true
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-2.json",
+        "sha256": "2b0d98aa5edd700b82043ec9af3a9bb7ac2dff2ff748f3ebf9d808d1c952aa77"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-2.png",
+        "sha256": "3788d6b382ec6eeb27c14b4c05afc6e8deaa877ea60d432bed130226dd8202f3"
+      },
+      "query": "البرمة تطاوين تونس",
+      "rootVisualConclusion": "Maps interpreted the search as a route between the two named places. No navigation, directions-button selection or trip action was performed. This result is not locality identity evidence.",
+      "rootViewed": true
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-3.json",
+        "sha256": "9d789bf97f47efc3ea8b9eaf21a37b4bbfb107b93f000a41c17c3396bba62976"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-3.png",
+        "sha256": "432189c805faf8ef9a456bdc53648be0f0c9d6ffe9c8633b4180cc83dc514d94"
+      },
+      "query": "Al Borma Tunisia",
+      "rootVisualConclusion": "Multiple results include a locality, airport and namesakes across a broad map. No individual result was selected; identity remains unresolved.",
+      "rootViewed": true
+    }
+  ],
+  "preservedEarlierObservations": 975,
+  "totalObservations": 982,
+  "counts": {
+    "currentRows": 3560,
+    "historicalRows": 186,
+    "currentRowsWithObservations": 652,
+    "currentObservations": 806,
+    "historicalObservations": 176,
+    "statuses": {
+      "pending": 3206,
+      "observed_needs_review": 354
+    }
+  },
+  "sourceFollowups": {
+    "558814858": "Bekalta primary town identity review underway.",
+    "5239666199": "Confirm named settlement and current transferred administrative context.",
+    "500182808": "Resolve inhabited settlement, petroleum-site and cross-border namesakes with primary evidence."
+  },
+  "facetsPromotedToVerified": false,
+  "productChanges": false,
+  "boundariesExtractedFromGoogle": false,
+  "navigationStarted": false,
+  "phoneChecks": "Fresh device and unlocked Maps foreground confirmed in533132/2c98d3. Searches only; no account, saved places, sharing or map edits.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_bekalta_beni_mhira_borma_phone_review.py",
+    "sha256": "1b73943b57d75fad230460939c8c4d211a56885d0ac0ac5c4b010790162d4b6f"
+  }
+}

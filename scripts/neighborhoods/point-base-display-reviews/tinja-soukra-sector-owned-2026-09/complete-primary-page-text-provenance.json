@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "originalPdf": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-ariana-atlas.pdf",
+        "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800",
+        "bytes": 15340414,
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf"
+      },
+      "derivedUtf8": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/derived/mehat-ariana-page-39.txt",
+        "sha256": "42008b6880090e677a02ee8c345e7d4a0b4184a85c4152a93bd487c14bf52e47",
+        "bytes": 3770
+      },
+      "physicalPage": 39,
+      "printedPage": 34,
+      "method": "PyMuPDF1.28.2: doc=pymupdf.open(original); doc[physicalPage-1].get_text().encode(\"utf8\"); Path.write_bytes. Complete pages, no OCR/rewrite/normalization.",
+      "isOriginalHttpResponseBytes": false,
+      "historicalDerivation": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/primary-complete-page-derivation.json",
+        "sha256": "ff8e1593714dae361a88dd988ef0dda5d85b4dbdfc7feb540db85de4605a3707",
+        "bytes": 3766
+      },
+      "independentCompletePageReview": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+        "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+        "bytes": 7728
+      }
+    },
+    {
+      "originalPdf": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-ariana-atlas.pdf",
+        "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800",
+        "bytes": 15340414,
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf"
+      },
+      "derivedUtf8": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/derived/mehat-ariana-page-71.txt",
+        "sha256": "a83b389b65051cf4755fe2a2a0252acd8ff8471e74bb0d1e38613a4274f4f254",
+        "bytes": 3720
+      },
+      "physicalPage": 71,
+      "printedPage": 66,
+      "method": "PyMuPDF1.28.2: doc=pymupdf.open(original); doc[physicalPage-1].get_text().encode(\"utf8\"); Path.write_bytes. Complete pages, no OCR/rewrite/normalization.",
+      "isOriginalHttpResponseBytes": false,
+      "historicalDerivation": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/primary-complete-page-derivation.json",
+        "sha256": "ff8e1593714dae361a88dd988ef0dda5d85b4dbdfc7feb540db85de4605a3707",
+        "bytes": 3766
+      },
+      "independentCompletePageReview": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+        "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+        "bytes": 7728
+      }
+    },
+    {
+      "originalPdf": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-ariana-atlas.pdf",
+        "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800",
+        "bytes": 15340414,
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf"
+      },
+      "derivedUtf8": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/derived/mehat-ariana-page-72.txt",
+        "sha256": "d05ecfa2525374dda08d6405496cf5941b6bc5b27bbbbb0d085a3b0dc2ca782d",
+        "bytes": 1268
+      },
+      "physicalPage": 72,
+      "printedPage": 67,
+      "method": "PyMuPDF1.28.2: doc=pymupdf.open(original); doc[physicalPage-1].get_text().encode(\"utf8\"); Path.write_bytes. Complete pages, no OCR/rewrite/normalization.",
+      "isOriginalHttpResponseBytes": false,
+      "historicalDerivation": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/primary-complete-page-derivation.json",
+        "sha256": "ff8e1593714dae361a88dd988ef0dda5d85b4dbdfc7feb540db85de4605a3707",
+        "bytes": 3766
+      },
+      "independentCompletePageReview": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+        "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+        "bytes": 7728
+      }
+    }
+  ],
+  "qualification": "Original PDF and already-derived full-page UTF8 copies retain exact bytes and separate hashes. No new extraction, OCR, normalization, rendering or polygon inference."
+}

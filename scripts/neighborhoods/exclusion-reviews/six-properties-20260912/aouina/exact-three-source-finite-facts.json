@@ -1,0 +1,1140 @@
+{
+  "status": "FINITE_EXACT_SOURCE_REVIEW_ONLY",
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64",
+      "bytes": 1853702
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "e79422caf9a2fa697a299e97126ffd61ab92440942793ec154b3f45e4dc188ab",
+      "bytes": 5536992
+    },
+    "sourceInventory": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "4c7538b267a3e03facdcaecafa55ce2755eef299b28b36fd59e944b81612d9b2",
+      "bytes": 374967
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "fb18cff7e851c69220869c3324e2351b90f50e6e682726de4d9d784af4106cd7",
+      "bytes": 555357
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "dfe24ddc5d5dcbda875b84f8a24248ad3aa41015eaad4bb602bef99152c723b3",
+      "bytes": 1020126
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "b4210755827fff89a6660c5439aee5081f6932776144ba515f736913664aead3",
+      "bytes": 563448
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421",
+      "bytes": 90241
+    },
+    "gpsResolver": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/DelegationLocator.kt",
+      "sha256": "08b0e71b6ea14a071a6928d71138d32785d563904f61f33e13627e545dd68609",
+      "bytes": 19321
+    },
+    "installedCheckpoint": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/palace-exclusion-catalog-checkpoint-20260912.json",
+      "sha256": "415fae7964e77fa363c77b900c7df25e12fe77a553dd173a0c8123c048bd6416",
+      "bytes": 4516
+    }
+  },
+  "baselineMetadataSha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64",
+  "records": [
+    {
+      "id": "osm:way:815233393",
+      "currentRaw": {
+        "id": "osm:way:815233393",
+        "sourceId": "osm",
+        "name": "Résidence Riadh Soukra",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "حي السلامة",
+        "contextAliases": [
+          "Cité Essalema",
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "حي السلامة",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.856853,
+        "lng": 10.268766,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.268203,
+          36.856419,
+          10.269642,
+          36.857269
+        ],
+        "areaKm2": 0.005310870182389313,
+        "pickerGroupId": "osm:way:815233393",
+        "offset": 5471280,
+        "length": 300
+      },
+      "sourceInventoryRecord": {
+        "id": "osm:way:815233393",
+        "kind": "residential",
+        "tags": {
+          "addr:city": "العوينة",
+          "addr:city:ar": "العوينة",
+          "addr:postcode": "2045",
+          "building:levels": "7",
+          "height": "21",
+          "landuse": "residential",
+          "name": "Résidence Riadh Soukra",
+          "residential": "apartments"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.2682027,
+                  36.8569051
+                ],
+                [
+                  10.2682605,
+                  36.8567502
+                ],
+                [
+                  10.268446,
+                  36.8567946
+                ],
+                [
+                  10.2685613,
+                  36.8567495
+                ],
+                [
+                  10.2685827,
+                  36.8566873
+                ],
+                [
+                  10.2684942,
+                  36.8566079
+                ],
+                [
+                  10.2683241,
+                  36.8565663
+                ],
+                [
+                  10.2683574,
+                  36.8564791
+                ],
+                [
+                  10.2685076,
+                  36.856434
+                ],
+                [
+                  10.2686686,
+                  36.8564898
+                ],
+                [
+                  10.2687383,
+                  36.8566787
+                ],
+                [
+                  10.2688295,
+                  36.8567045
+                ],
+                [
+                  10.2690119,
+                  36.8566229
+                ],
+                [
+                  10.269063,
+                  36.8564984
+                ],
+                [
+                  10.2689899,
+                  36.8564792
+                ],
+                [
+                  10.2690146,
+                  36.856419
+                ],
+                [
+                  10.2691943,
+                  36.8564276
+                ],
+                [
+                  10.2693016,
+                  36.856507
+                ],
+                [
+                  10.2692908,
+                  36.8565671
+                ],
+                [
+                  10.2691916,
+                  36.856653
+                ],
+                [
+                  10.2692774,
+                  36.8568418
+                ],
+                [
+                  10.2693579,
+                  36.8568676
+                ],
+                [
+                  10.2694759,
+                  36.8568096
+                ],
+                [
+                  10.2695805,
+                  36.8568418
+                ],
+                [
+                  10.2696422,
+                  36.8569856
+                ],
+                [
+                  10.2695632,
+                  36.8571712
+                ],
+                [
+                  10.2694545,
+                  36.8572691
+                ],
+                [
+                  10.2693123,
+                  36.857226
+                ],
+                [
+                  10.2692721,
+                  36.8570457
+                ],
+                [
+                  10.2691997,
+                  36.8570221
+                ],
+                [
+                  10.268977,
+                  36.8571122
+                ],
+                [
+                  10.2687973,
+                  36.8570607
+                ],
+                [
+                  10.2687517,
+                  36.8568847
+                ],
+                [
+                  10.2686766,
+                  36.8568633
+                ],
+                [
+                  10.2684674,
+                  36.8569684
+                ],
+                [
+                  10.2682027,
+                  36.8569051
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:815233393",
+        "tags": {
+          "addr:city": "العوينة",
+          "addr:city:ar": "العوينة",
+          "addr:postcode": "2045",
+          "building:levels": "7",
+          "height": "21",
+          "landuse": "residential",
+          "name": "Résidence Riadh Soukra",
+          "residential": "apartments"
+        }
+      },
+      "authenticOriginals": {
+        "current": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-815233393-current.json",
+          "sha256": "db51bf17a6eb8cb11688eff14df17e85a5b2961f7607ba3e365173db351e033e",
+          "bytes": 1019
+        },
+        "history": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-815233393-history.json",
+          "sha256": "66f4a28621c5631a89367975a00266a55eea88f8d2d659eb5da84119a6bd5707",
+          "bytes": 1735
+        },
+        "full": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-815233393-full.json",
+          "sha256": "c23625f36e0868b8a52c7852cef0f18a1b1b7def82a0fd4e6fcffeabea7e6bb7",
+          "bytes": 7074
+        }
+      },
+      "currentVersion": 2,
+      "allSourceVersions": [
+        {
+          "version": 1,
+          "timestamp": "2020-06-12T09:17:10Z",
+          "changeset": 86557026,
+          "nodeCount": 36,
+          "tags": {
+            "addr:city": "Aouina",
+            "addr:postcode": "2045",
+            "building:levels": "7",
+            "height": "21",
+            "landuse": "residential",
+            "name": "Résidence Riadh Soukra",
+            "residential": "apartments"
+          },
+          "changesetTags": {
+            "changesets_count": "20",
+            "comment": "Edit Deli.",
+            "created_by": "iD 2.17.3",
+            "host": "https://www.openstreetmap.org/edit",
+            "ideditor:walkthrough_completed": "yes",
+            "ideditor:walkthrough_progress": "welcome;navigation;point;area;line;building;startEditing",
+            "ideditor:walkthrough_started": "yes",
+            "imagery_used": "Bing aerial imagery",
+            "locale": "fr",
+            "source": "local knowledge"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-86557026.json",
+            "sha256": "90eed12afc89b943197393afe63bf66db4a3668d8f32fb66d0350f87a185bdb3",
+            "bytes": 909
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2021-01-30T04:56:34Z",
+          "changeset": 98399405,
+          "nodeCount": 36,
+          "tags": {
+            "addr:city": "العوينة",
+            "addr:city:ar": "العوينة",
+            "addr:postcode": "2045",
+            "building:levels": "7",
+            "height": "21",
+            "landuse": "residential",
+            "name": "Résidence Riadh Soukra",
+            "residential": "apartments"
+          },
+          "changesetTags": {
+            "comment": "العوينة",
+            "created_by": "JOSM/1.5 (17428 en)",
+            "source": "علم"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-98399405.json",
+            "sha256": "503701c34a96daa102b4fcbd3ee16a0b56de13a5fbd8c504300c5559c31d5fcd",
+            "bytes": 624
+          }
+        }
+      ],
+      "sourceRecordChecks": {
+        "currentEqualsLatestHistoryAndFullResponseWay": true,
+        "allLiteralSourceCoordinatesIdentical": true,
+        "sourceInventoryRingOrderRelativeToAuthenticWay": {
+          "startIndex": 25,
+          "direction": -1
+        },
+        "completeSourceGeometryTopologicallyExact": true,
+        "sourceGeometryValid": true,
+        "currentPackedSliceReproducedExactly": true
+      },
+      "sourceGeometrySha256": "af7a4cb47817ba6a48046243be7a67ba40060ab04f7cc2e19f5177412066a8f3",
+      "packedSha256": "0160895921624d29d81355b878d8d53d0f5fbd7adcf85b642288bda644533505",
+      "allFreshNamedSourceNodesCovered": [],
+      "otherCurrentRawRepresentativesCovered": [],
+      "otherCurrentWholeRawFootprintsCovered": [],
+      "currentGroupMemberIds": [
+        "osm:way:815233393"
+      ],
+      "directCurationRules": [],
+      "allExactCurationIdReferences": [],
+      "allExactPickerIdReferences": [],
+      "currentCurationReceipts": [],
+      "currentCoverageConflicts": [],
+      "currentMetadataConflicts": [],
+      "retainedContainingRawAtRepresentative": [
+        {
+          "id": "osm:relation:7117891",
+          "sourceId": "osm",
+          "name": "حي السلامة",
+          "aliases": [
+            "Cité Essalema"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية حلق الوادي",
+          "contextAliases": [
+            "Delegación de La Goleta",
+            "Délégation La Goulette",
+            "حلق الوادي",
+            "معتمدية حلق الوادي"
+          ],
+          "governorateId": 342,
+          "lat": 36.855453,
+          "lng": 10.270085,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.266895,
+            36.852162,
+            10.272286,
+            36.858832
+          ],
+          "areaKm2": 0.2054957293095274,
+          "pickerGroupId": "osm:relation:7117891",
+          "offset": 1020852,
+          "length": 228
+        },
+        {
+          "id": "osm:way:128946405",
+          "sourceId": "osm",
+          "name": "العوينة",
+          "aliases": [
+            "El Aouina",
+            "אל-עווינה",
+            "عوینه"
+          ],
+          "kind": "town",
+          "parentName": "ولاية تونس",
+          "contextAliases": [],
+          "governorateId": 342,
+          "lat": 36.857567,
+          "lng": 10.266723,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.24863,
+            36.847915,
+            10.294933,
+            36.867176
+          ],
+          "areaKm2": 4.064470809713356,
+          "pickerGroupId": "osm:way:128946405",
+          "offset": 5261452,
+          "length": 1252
+        }
+      ],
+      "retainedWholeContainingRawIds": [
+        "osm:relation:7117891",
+        "osm:way:128946405"
+      ],
+      "originalInventoryWholeContainingAdministrativeRecords": [
+        {
+          "id": "osm:relation:7117891",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حي السلامة",
+            "name:ar": "حي السلامة",
+            "name:fr": "Cité Essalema",
+            "ref:tn:codegeo": "116955"
+          }
+        },
+        {
+          "id": "osm:relation:4134886",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "boundary": "administrative",
+            "name": "معتمدية حلق الوادي",
+            "name:ar": "معتمدية حلق الوادي",
+            "name:es": "Delegación de La Goleta",
+            "name:fr": "Délégation La Goulette",
+            "ref:tn:codegeo": "1169",
+            "ref:tn:hasc_2": "TN.TU.LG",
+            "short_name": "حلق الوادي",
+            "short_name:ar": "حلق الوادي",
+            "short_name:es": "La Goleta",
+            "wikidata": "Q3209432",
+            "wikipedia": "ar:معتمدية حلق الوادي"
+          }
+        }
+      ],
+      "originalAdministrativeQualification": "Original PBF source contexts only; no new administrative boundary certification."
+    },
+    {
+      "id": "osm:way:522478927",
+      "currentRaw": {
+        "id": "osm:way:522478927",
+        "sourceId": "osm",
+        "name": "Residence Diar El Mesk",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سيدي فرج",
+        "contextAliases": [
+          "Kram",
+          "Le Kram",
+          "Sidi Fredj",
+          "الكرم",
+          "سيدي فرج"
+        ],
+        "governorateId": 342,
+        "lat": 36.860753,
+        "lng": 10.269876,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.269553,
+          36.860616,
+          10.270281,
+          36.860902
+        ],
+        "areaKm2": 0.0010309959706691137,
+        "pickerGroupId": "osm:way:522478927",
+        "offset": 5452576,
+        "length": 68
+      },
+      "sourceInventoryRecord": {
+        "id": "osm:way:522478927",
+        "kind": "residential",
+        "tags": {
+          "addr:city": "تونس",
+          "addr:city:ar": "تونس",
+          "building:levels": "6",
+          "height": "26",
+          "landuse": "residential",
+          "name": "Residence Diar El Mesk"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.269553,
+                  36.8607922
+                ],
+                [
+                  10.2697253,
+                  36.8606305
+                ],
+                [
+                  10.2700666,
+                  36.8607135
+                ],
+                [
+                  10.2701817,
+                  36.8606161
+                ],
+                [
+                  10.2702807,
+                  36.8606174
+                ],
+                [
+                  10.2700214,
+                  36.8609024
+                ],
+                [
+                  10.269553,
+                  36.8607922
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:522478927",
+        "tags": {
+          "addr:city": "تونس",
+          "addr:city:ar": "تونس",
+          "building:levels": "6",
+          "height": "26",
+          "landuse": "residential",
+          "name": "Residence Diar El Mesk"
+        }
+      },
+      "authenticOriginals": {
+        "current": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-522478927-current.json",
+          "sha256": "02539bb8f3ff4b4ee3bddbfeb3e8a25a5f65b7cfa754c757d4f0c6fe4e87531a",
+          "bytes": 637
+        },
+        "history": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-522478927-history.json",
+          "sha256": "2e5f6ee09f69cd697110d7fbb9c879d15b633415f22b47c802ae33f9957d68b6",
+          "bytes": 1849
+        },
+        "full": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-522478927-full.json",
+          "sha256": "617faaf772ed4f03da5c6f7a38590da38d90baaf912ef179b920d22ce8622679",
+          "bytes": 1645
+        }
+      },
+      "currentVersion": 5,
+      "allSourceVersions": [
+        {
+          "version": 1,
+          "timestamp": "2017-09-08T13:00:56Z",
+          "changeset": 51844653,
+          "nodeCount": 5,
+          "tags": {
+            "building": "yes",
+            "height": "26"
+          },
+          "changesetTags": {
+            "changesets_count": "26",
+            "comment": "BUIDING HEIGHTS AND CONTOUR LOCATION TO BASEMENT",
+            "created_by": "iD 2.4.1",
+            "host": "https://www.openstreetmap.org/edit",
+            "imagery_used": "Bing aerial imagery",
+            "locale": "en-US"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-51844653.json",
+            "sha256": "e29b1f240ce6b0352e749e09dde49b126ced08343ebb9e0978f5d959b6ae82aa",
+            "bytes": 756
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2017-09-18T00:45:52Z",
+          "changeset": 52129451,
+          "nodeCount": 5,
+          "tags": {
+            "addr:city": "Tunis",
+            "building": "yes",
+            "building:levels": "6",
+            "height": "26",
+            "name": "Residence Diar El Mesk"
+          },
+          "changesetTags": {
+            "changesets_count": "1",
+            "comment": "Batiment residentiel",
+            "created_by": "iD 2.4.1",
+            "host": "https://www.openstreetmap.org/edit",
+            "imagery_used": "Bing aerial imagery",
+            "locale": "fr"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-52129451.json",
+            "sha256": "c2fc749b49b53b712dc9fcbf8dc23fe138b9139fe3eae0b932f06b4fb8c22813",
+            "bytes": 715
+          }
+        },
+        {
+          "version": 3,
+          "timestamp": "2017-09-18T00:58:10Z",
+          "changeset": 52129553,
+          "nodeCount": 5,
+          "tags": {
+            "addr:city": "Tunis",
+            "building:levels": "6",
+            "height": "26",
+            "landuse": "residential",
+            "name": "Residence Diar El Mesk"
+          },
+          "changesetTags": {
+            "changesets_count": "4",
+            "comment": "Batiment residentiel",
+            "created_by": "iD 2.4.1",
+            "host": "https://www.openstreetmap.org/edit",
+            "imagery_used": "Bing aerial imagery",
+            "locale": "fr"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-52129553.json",
+            "sha256": "569e0db5edeaabd4aea135f555e3ad4a5b35fa88437397fd641d1e070a52c839",
+            "bytes": 715
+          }
+        },
+        {
+          "version": 4,
+          "timestamp": "2017-09-18T01:05:56Z",
+          "changeset": 52129617,
+          "nodeCount": 7,
+          "tags": {
+            "addr:city": "Tunis",
+            "building:levels": "6",
+            "height": "26",
+            "landuse": "residential",
+            "name": "Residence Diar El Mesk"
+          },
+          "changesetTags": {
+            "changesets_count": "8",
+            "comment": "Batiment residentiel",
+            "created_by": "iD 2.4.1",
+            "host": "https://www.openstreetmap.org/edit",
+            "imagery_used": "Bing aerial imagery",
+            "locale": "fr"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-52129617.json",
+            "sha256": "45cf26243d67043836276e1b56f2ddae41bd0506efa699a03ffb263f98290cf5",
+            "bytes": 715
+          }
+        },
+        {
+          "version": 5,
+          "timestamp": "2020-12-06T16:29:14Z",
+          "changeset": 95372525,
+          "nodeCount": 7,
+          "tags": {
+            "addr:city": "تونس",
+            "addr:city:ar": "تونس",
+            "building:levels": "6",
+            "height": "26",
+            "landuse": "residential",
+            "name": "Residence Diar El Mesk"
+          },
+          "changesetTags": {
+            "comment": "تونس",
+            "created_by": "JOSM/1.5 (17084 en)"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-95372525.json",
+            "sha256": "7b62a66d648bb9a243e6f8af19a13c46903356aad02e4fdd61286d66391af43e",
+            "bytes": 604
+          }
+        }
+      ],
+      "sourceRecordChecks": {
+        "currentEqualsLatestHistoryAndFullResponseWay": true,
+        "allLiteralSourceCoordinatesIdentical": true,
+        "sourceInventoryRingOrderRelativeToAuthenticWay": {
+          "startIndex": 0,
+          "direction": -1
+        },
+        "completeSourceGeometryTopologicallyExact": true,
+        "sourceGeometryValid": true,
+        "currentPackedSliceReproducedExactly": true
+      },
+      "sourceGeometrySha256": "7f74811e84ec9711f6ae1b9963dbae735f2ae0a75619798ff649d29a9a3310c4",
+      "packedSha256": "145c5b5682a32cf1df69dae648892819af09a51e17ff613879e153795e2840d5",
+      "allFreshNamedSourceNodesCovered": [],
+      "otherCurrentRawRepresentativesCovered": [],
+      "otherCurrentWholeRawFootprintsCovered": [],
+      "currentGroupMemberIds": [
+        "osm:way:522478927"
+      ],
+      "directCurationRules": [],
+      "allExactCurationIdReferences": [],
+      "allExactPickerIdReferences": [],
+      "currentCurationReceipts": [],
+      "currentCoverageConflicts": [],
+      "currentMetadataConflicts": [],
+      "retainedContainingRawAtRepresentative": [
+        {
+          "id": "osm:relation:7079364",
+          "sourceId": "osm",
+          "name": "سيدي فرج",
+          "aliases": [
+            "Sidi Fredj"
+          ],
+          "kind": "sector",
+          "parentName": "الكرم",
+          "contextAliases": [
+            "Kram",
+            "Le Kram",
+            "الكرم"
+          ],
+          "governorateId": 342,
+          "lat": 36.860043,
+          "lng": 10.277714,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.265267,
+            36.852698,
+            10.297763,
+            36.867113
+          ],
+          "areaKm2": 1.8235693280300844,
+          "pickerGroupId": "osm:relation:7079364",
+          "offset": 79740,
+          "length": 516
+        },
+        {
+          "id": "osm:way:128946405",
+          "sourceId": "osm",
+          "name": "العوينة",
+          "aliases": [
+            "El Aouina",
+            "אל-עווינה",
+            "عوینه"
+          ],
+          "kind": "town",
+          "parentName": "ولاية تونس",
+          "contextAliases": [],
+          "governorateId": 342,
+          "lat": 36.857567,
+          "lng": 10.266723,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.24863,
+            36.847915,
+            10.294933,
+            36.867176
+          ],
+          "areaKm2": 4.064470809713356,
+          "pickerGroupId": "osm:way:128946405",
+          "offset": 5261452,
+          "length": 1252
+        }
+      ],
+      "retainedWholeContainingRawIds": [
+        "osm:relation:7079364",
+        "osm:way:128946405"
+      ],
+      "originalInventoryWholeContainingAdministrativeRecords": [
+        {
+          "id": "osm:relation:7079364",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي فرج",
+            "name:ar": "سيدي فرج",
+            "name:fr": "Sidi Fredj",
+            "ref:tn:codegeo": "117054"
+          }
+        },
+        {
+          "id": "osm:relation:4135019",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kram",
+            "boundary": "administrative",
+            "name": "الكرم",
+            "name:ar": "الكرم",
+            "name:fr": "Le Kram",
+            "ref:tn:codegeo": "1170",
+            "ref:tn:hasc_2": "TN.TU.KR",
+            "wikidata": "Q3223844"
+          }
+        }
+      ],
+      "originalAdministrativeQualification": "Original PBF source contexts only; no new administrative boundary certification."
+    },
+    {
+      "id": "osm:way:525479443",
+      "currentRaw": {
+        "id": "osm:way:525479443",
+        "sourceId": "osm",
+        "name": "Résidence Sourour",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سيدي فرج",
+        "contextAliases": [
+          "Kram",
+          "Le Kram",
+          "Sidi Fredj",
+          "الكرم",
+          "سيدي فرج"
+        ],
+        "governorateId": 342,
+        "lat": 36.860449,
+        "lng": 10.269408,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.268846,
+          36.860224,
+          10.269769,
+          36.860782
+        ],
+        "areaKm2": 0.0026424356003249896,
+        "pickerGroupId": "osm:way:525479443",
+        "offset": 5452644,
+        "length": 68
+      },
+      "sourceInventoryRecord": {
+        "id": "osm:way:525479443",
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Sourour",
+          "residential": "apartments"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.2688459,
+                  36.8606335
+                ],
+                [
+                  10.269479,
+                  36.8602236
+                ],
+                [
+                  10.2697686,
+                  36.8603094
+                ],
+                [
+                  10.269597,
+                  36.8605884
+                ],
+                [
+                  10.2696694,
+                  36.8606249
+                ],
+                [
+                  10.2694897,
+                  36.8607815
+                ],
+                [
+                  10.2688459,
+                  36.8606335
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:525479443",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Sourour",
+          "residential": "apartments"
+        }
+      },
+      "authenticOriginals": {
+        "current": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-525479443-current.json",
+          "sha256": "647e0c7c82721aa2987a4b954175a5e680b88daccc093091a7ac53a58ea0c877",
+          "bytes": 573
+        },
+        "history": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-525479443-history.json",
+          "sha256": "329f71845129478c85c066bfd304d3ab7c63d3ff2e0c2ad2e1a32a4283212309",
+          "bytes": 825
+        },
+        "full": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/way-525479443-full.json",
+          "sha256": "b7fa251e849027a553181f20f7166b854bd4afb3ba62d3c5023150e5894aed7f",
+          "bytes": 1581
+        }
+      },
+      "currentVersion": 2,
+      "allSourceVersions": [
+        {
+          "version": 1,
+          "timestamp": "2017-09-18T01:06:35Z",
+          "changeset": 52129623,
+          "nodeCount": 7,
+          "tags": {
+            "landuse": "residential"
+          },
+          "changesetTags": {
+            "changesets_count": "9",
+            "comment": "Batiment residentiel",
+            "created_by": "iD 2.4.1",
+            "host": "https://www.openstreetmap.org/edit",
+            "imagery_used": "Bing aerial imagery",
+            "locale": "fr"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-52129623.json",
+            "sha256": "9e870f8de69971a6585fc44ad36211f40ba26cc7b4d3616db11298e9bda4b695",
+            "bytes": 716
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2023-06-14T09:07:09Z",
+          "changeset": 137318209,
+          "nodeCount": 7,
+          "tags": {
+            "landuse": "residential",
+            "name": "Résidence Sourour",
+            "residential": "apartments"
+          },
+          "changesetTags": {
+            "changesets_count": "2",
+            "comment": "Ajout résidence Sourour",
+            "created_by": "iD 2.25.2",
+            "host": "https://www.openstreetmap.org/edit",
+            "ideditor:walkthrough_progress": "welcome;startEditing",
+            "ideditor:walkthrough_started": "yes",
+            "imagery_used": "Bing Maps Aerial",
+            "locale": "fr-FR"
+          },
+          "originalChangeset": {
+            "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/changeset-137318209.json",
+            "sha256": "935fd81aecb55d49b974e999ed703e221f37c93583095aa499fc6b9df78b9b96",
+            "bytes": 813
+          }
+        }
+      ],
+      "sourceRecordChecks": {
+        "currentEqualsLatestHistoryAndFullResponseWay": true,
+        "allLiteralSourceCoordinatesIdentical": true,
+        "sourceInventoryRingOrderRelativeToAuthenticWay": {
+          "startIndex": 5,
+          "direction": -1
+        },
+        "completeSourceGeometryTopologicallyExact": true,
+        "sourceGeometryValid": true,
+        "currentPackedSliceReproducedExactly": true
+      },
+      "sourceGeometrySha256": "dcc60dc5801cef2b0f46a083264158e941f1ebd90121b9c8a59c7167bbe8b53e",
+      "packedSha256": "5ea5e7b7b68abb7ef851900951437d9ca0ec52c73c4254ce5a56c407fb7e57b1",
+      "allFreshNamedSourceNodesCovered": [],
+      "otherCurrentRawRepresentativesCovered": [],
+      "otherCurrentWholeRawFootprintsCovered": [],
+      "currentGroupMemberIds": [
+        "osm:way:525479443"
+      ],
+      "directCurationRules": [],
+      "allExactCurationIdReferences": [],
+      "allExactPickerIdReferences": [],
+      "currentCurationReceipts": [],
+      "currentCoverageConflicts": [],
+      "currentMetadataConflicts": [],
+      "retainedContainingRawAtRepresentative": [
+        {
+          "id": "osm:relation:7079364",
+          "sourceId": "osm",
+          "name": "سيدي فرج",
+          "aliases": [
+            "Sidi Fredj"
+          ],
+          "kind": "sector",
+          "parentName": "الكرم",
+          "contextAliases": [
+            "Kram",
+            "Le Kram",
+            "الكرم"
+          ],
+          "governorateId": 342,
+          "lat": 36.860043,
+          "lng": 10.277714,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.265267,
+            36.852698,
+            10.297763,
+            36.867113
+          ],
+          "areaKm2": 1.8235693280300844,
+          "pickerGroupId": "osm:relation:7079364",
+          "offset": 79740,
+          "length": 516
+        },
+        {
+          "id": "osm:way:128946405",
+          "sourceId": "osm",
+          "name": "العوينة",
+          "aliases": [
+            "El Aouina",
+            "אל-עווינה",
+            "عوینه"
+          ],
+          "kind": "town",
+          "parentName": "ولاية تونس",
+          "contextAliases": [],
+          "governorateId": 342,
+          "lat": 36.857567,
+          "lng": 10.266723,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.24863,
+            36.847915,
+            10.294933,
+            36.867176
+          ],
+          "areaKm2": 4.064470809713356,
+          "pickerGroupId": "osm:way:128946405",
+          "offset": 5261452,
+          "length": 1252
+        }
+      ],
+      "retainedWholeContainingRawIds": [
+        "osm:relation:7079364",
+        "osm:way:128946405"
+      ],
+      "originalInventoryWholeContainingAdministrativeRecords": [
+        {
+          "id": "osm:relation:7079364",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي فرج",
+            "name:ar": "سيدي فرج",
+            "name:fr": "Sidi Fredj",
+            "ref:tn:codegeo": "117054"
+          }
+        },
+        {
+          "id": "osm:relation:4135019",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kram",
+            "boundary": "administrative",
+            "name": "الكرم",
+            "name:ar": "الكرم",
+            "name:fr": "Le Kram",
+            "ref:tn:codegeo": "1170",
+            "ref:tn:hasc_2": "TN.TU.KR",
+            "wikidata": "Q3223844"
+          }
+        }
+      ],
+      "originalAdministrativeQualification": "Original PBF source contexts only; no new administrative boundary certification."
+    }
+  ],
+  "combinedProspectiveEffect": {
+    "removeOnlyIds": [
+      "osm:way:815233393",
+      "osm:way:522478927",
+      "osm:way:525479443"
+    ],
+    "rawCountBefore": 3529,
+    "rawCountAfter": 3526,
+    "polygonCountBefore": 2625,
+    "polygonCountAfter": 2622,
+    "pointCountPreserved": 904,
+    "rawGroupsBefore": 3393,
+    "rawGroupsAfter": 3390,
+    "curationDecisionsBefore": 266,
+    "curationDecisionsAfter": 269,
+    "retiredBefore": 118,
+    "retiredAfter": 121,
+    "binaryBytesBefore": 5536992,
+    "removedBytes": 436,
+    "binaryBytesAfter": 5536556,
+    "curationReceiptsBefore": 389,
+    "curationReceiptsRemoved": [],
+    "conflictsRemoved": [],
+    "governorateRemovals": {
+      "342": 3
+    },
+    "allThreeTimetableDefaults": [
+      532
+    ]
+  },
+  "gpsRuntimeSemantics": "Current DelegationLocator.resolveGpsLocation lines191-201 computes findNearestDelegation from exact GPS and overrides returned locality.delegationId. A surrounding sector default is not transferred to GPS timetable selection.",
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/aouina-three-properties-source-review-20260912/freeze_finite_facts.py",
+    "sha256": "b722f34c0fa3d609a073e7d59c7a05860103d1e462a92c5fa92d863a4b5af5ab",
+    "bytes": 8701
+  }
+}

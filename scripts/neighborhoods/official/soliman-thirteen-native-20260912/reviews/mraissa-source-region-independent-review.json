@@ -1,0 +1,223 @@
+{
+  "status": "PASS_QUALIFIED_MRAISSA_SOURCE_REGION_PROPOSAL",
+  "scope": "Independent exact original-command/topology/georeferencing review of Mraissa own-map area only. This is not a whole-cohort import approval or a new claim of authoritative GIS source intent.",
+  "sourcePdf": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa.pdf",
+    "sha256": "444feebb83c9c559fc645d590cda0824752ce91b2fc3f65539233eca7dacce2f",
+    "bytes": 1157011
+  },
+  "sourceRetrieval": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa-retrieval.json",
+    "sha256": "3107851f1dde1c95d279648e4ea9e926feb91a1aa5bd8c4d82782a59a0657365",
+    "bytes": 1403
+  },
+  "sourceAuthorReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\mraissa-borj-cedria-source-blocker-review.json",
+    "sha256": "8f38d0c9d4be7be69a17b9568b1231b7504394f2bf5eeeabce23590265aa193c",
+    "bytes": 17035
+  },
+  "authorTopologyFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\mraissa-exact-source-topology-facts.json",
+    "sha256": "647af6f48e419d6ee48cf4231ed8e3f5bec0b6926fbac5e9861929f79377179c",
+    "bytes": 224731
+  },
+  "independentFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-source-region-independent-review\\independent-original-path-region-facts.json",
+    "sha256": "43f1a7ff39ccad29bc363dc5c3612e6a9c9780782d4ff8223aa4591f6b84dda8",
+    "bytes": 128758
+  },
+  "sourceAuthorConditionalGeometry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\mraissa-conditional-closed-walk-region.geojson",
+    "sha256": "3219c5ed433374a28bcb18be70fa31851aa9dbb1a7ebe6214e81480b7c4e04fc",
+    "bytes": 142761
+  },
+  "independentOrientationNormalizedProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-source-region-independent-review\\mraissa-qualified-source-region-proposal.geojson",
+    "sha256": "f24f7160df5ad155d138a065dd7a0d327d812853c065014ce54c240d620efecc",
+    "bytes": 118476
+  },
+  "exactIdentityForFutureProposal": {
+    "proposedExistingSourceId": "osm:relation:7100603",
+    "registrySectorCode": "156151",
+    "sectorNameAr": "المريسة",
+    "delegationCode": "1561",
+    "delegationNameAr": "سليمان",
+    "identityEvidenceScope": "Own-map title and electoral-sector layer personally viewed; code/name linkage follows the pinned author source/registry review. This independent review does not redo the original INS workbook or statutory electoral-to-imada identity audit."
+  },
+  "independentChecks": {
+    "originalStreamOperators": "Exactly two m/l.../S paths at operations 5467–6491 and 6492–6968; no fill operation, inserted join, implicit close segment, or transformed source path.",
+    "sourceCurrentTransformMatrices": {
+      "5467": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "6492": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ]
+    },
+    "directPyMuPdfDrawingVerticesMatchAll1499HeldVerticesExactly": true,
+    "sourcePathsLayer": "circonscription_isie2023",
+    "sourceDrawings": [
+      507,
+      508
+    ],
+    "sourceSeqnos": [
+      515,
+      516
+    ],
+    "allOriginalVerticesStrictlyInsideOwnMapViewport": true,
+    "originalDirectedEdges": 1498,
+    "exteriorEdges": 1484,
+    "holeEdges": 4,
+    "zeroAreaSpurDirectedEdges": 10,
+    "properCrossings": 0,
+    "nonadjacentOriginalVertexTouches": 19,
+    "allFiveAdjacentReversePairsIndependentlyDetected": true,
+    "exactEdgePartitionIndependentlyReproducedWithoutAuthorCycleAlgorithm": true,
+    "oneFourEdgeOppositelyWoundInteriorLoopTouchesExteriorAtOneOriginalVertex": true,
+    "polygonValidInOriginalPdfCoordinatesAndUtmAndWgs84": true,
+    "bothMathematicalClosedWalkFillRulesAgreeOnEveryFace": true,
+    "everyProposedBoundaryCoordinateIsAnExactFrozenHeldSourceCoordinate": true,
+    "authorProposalEqualsIndependentProposalExactlyAsARegion": true,
+    "onlyRingOrderDifference": "Independent GeoJSON reverses both rings for outer CCW / inner CW winding; coordinate values and edges are exact."
+  },
+  "area": {
+    "exactPdfPointsSquared": "56816.0631569323",
+    "utm32nSquareMeters": 48898282.92644645,
+    "holeUtm32nSquareMeters": 111.53010617088813,
+    "wgs84EllipsoidSquareMeters": 48913586.87731403,
+    "holeWgs84EllipsoidSquareMeters": 111.56551203492563,
+    "qualification": "Projected and ellipsoidal area numbers differ normally because they use different measurement surfaces; the geographic vertex coordinates are identical."
+  },
+  "registration": {
+    "epsgResolvedFromOriginalEmbeddedWkt": 32632,
+    "independentFourControlMaxResidualMeters": 0.27557169151321476,
+    "allHeld1499GeographicCoordinatesReproducedExactly": true,
+    "maxOriginalDecimalVersusHeldFloat32PipelineDifferenceMeters": 0.0020651961903178874,
+    "qualification": "The 0.276 m control-fit residual is registration consistency, not survey accuracy or a tolerance allowing source geometry repair."
+  },
+  "visualSourceReview": {
+    "wholeOriginalPage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-source-region-independent-review\\original-mraissa-whole-page.png",
+      "sha256": "ac2d58ddf85de999de5a733f415fabfbd547262a04b835e56749577d83ad56d8",
+      "bytes": 2054862
+    },
+    "wholePagePersonallyViewed": true,
+    "titleAndLegend": "The own-map title names the Mraissa electoral district; the legend identifies red electoral-district/imada boundaries, blue delegation boundaries and black governorate boundaries.",
+    "sourceOverlayOnly": "Administrative vector commands are inspected; no geometry is extracted from the Google satellite basemap or its incidental labels.",
+    "originalHoleContextCrop": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-source-region-independent-review\\original-hole-context-crop.png",
+      "sha256": "706eb8040d37debd914c275b6a3aaf2fc4b7424aeb159ced913e432a9cc1b8fe",
+      "bytes": 1351
+    },
+    "cropPersonallyViewed": true,
+    "smallLoopQualification": "The small loop falls under thick overdraw in the rendered map. Original vector commands prove its mathematical presence; the rendered crop does not independently certify that a 111.53 m² hole was an intentional surveyed exclusion."
+  },
+  "sourceMeaningDecision": {
+    "recommendation": "The explicitly qualified finite-area interpretation is defensible for the next source-proposal and cohort-impact review. No further source is necessary merely to resolve this exact closed walk into its area component.",
+    "reason": "The own-map administrative linework forms one exact closed walk with no proper crossings. Its one exterior and one opposite-winding touching interior cycle determine the same area under both conventional winding rules. Every area-boundary edge and vertex is already present in the source; only zero-area reverse excursions are represented separately.",
+    "mandatoryQualification": "The PDF strokes two open paths and never fills a region. This proposal is a derived boundary-area interpretation, not a claim that ISIE exported this valid Polygon, explicitly specified a fill rule, or certified survey-level accuracy.",
+    "outsideSpur": "Original edges 1116 and 1117 make a ~10.56 m outward-and-back line excursion with exactly zero enclosed area. The area Polygon omits that one-dimensional support; it is retained in the original linework/edge-partition evidence. Claiming complete equality of the polygon boundary to every original stroked segment would be false.",
+    "whenAdditionalSourceIsNeeded": "If the requirement is to certify the publisher’s intended treatment of the tiny loop/spurs or an authoritative surveyed administrative vector, obtain the original ISIE/OTC/CNCT/Interior GIS source for code 156151. This review cannot elevate a stroke-only map into that stronger claim."
+  },
+  "preservationContractForAnyLaterStage": {
+    "sourceAndProvenancePinsRemainExact": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa.pdf",
+        "sha256": "444feebb83c9c559fc645d590cda0824752ce91b2fc3f65539233eca7dacce2f",
+        "bytes": 1157011
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\mraissa-native-two-path-reconstruction-held.json",
+        "sha256": "41cf724636693f43be37e5c3bc70a25f7b72a5d9108940223ed7658775133c46",
+        "bytes": 212711
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-borj-cedria-source-blocker-review\\mraissa-exact-source-topology-facts.json",
+        "sha256": "647af6f48e419d6ee48cf4231ed8e3f5bec0b6926fbac5e9861929f79377179c",
+        "bytes": 224731
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-source-region-independent-review\\independent-original-path-region-facts.json",
+        "sha256": "43f1a7ff39ccad29bc363dc5c3612e6a9c9780782d4ff8223aa4591f6b84dda8",
+        "bytes": 128758
+      }
+    ],
+    "acceptedAreaCoordinates": "Use either pinned proposal geometry exactly; only cyclic start position and complete ring reversal may change serialization. No added/deleted nonzero-area edge, smoothing, snapping, buffering, clipping, make_valid or hole filling.",
+    "requiredRingCounts": {
+      "exterior": 1,
+      "holes": 1,
+      "exteriorEdges": 1484,
+      "holeEdges": 4
+    },
+    "requiredHoleOriginalEdges": [
+      991,
+      992,
+      993,
+      994
+    ],
+    "requiredZeroAreaExcursionsPreservedAsSourceEvidence": [
+      [
+        999,
+        1000
+      ],
+      [
+        1116,
+        1117
+      ],
+      [
+        1197,
+        1198
+      ],
+      [
+        1306,
+        1307
+      ],
+      [
+        1414,
+        1415
+      ]
+    ],
+    "coordinatePipeline": "Preserve all selected coordinates from the pinned prior held WGS84 line; original decimal edge identity and the float32 page-to-UTM-to-WGS84 pipeline remain documented.",
+    "wholeMapArea": "No cropping to the old OSM boundary or neighboring candidate polygons.",
+    "cohortGate": "Before import, independently assess complete adjacent-sector topology and finite current source/raw/picker/default consequences. This report authorizes no isolated replacement, locality deletion, point relocation, name merge or prayer-reference change.",
+    "generationGate": "Any eventual packed serialization must retain the hole, its one-vertex contact and valid area topology; compare the exact finite effects. This source review has not run generation or that packed audit."
+  },
+  "reviewExecution": {
+    "firstAttempt": "review_original_region.py stopped before proposal/facts creation because the PDF GCS embeds WKT without an EPSG key. Original script retained.",
+    "operativeAttempt": "review_original_region_v2.py resolves EPSG from the unchanged embedded WKT; all original topology/coordinate guards retained.",
+    "productImportsGeneratorTestsBuildPhoneLedgerLiveOrStageWrites": false
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mraissa-source-region-independent-review\\freeze_independent_review.py",
+    "sha256": "20027716235f393c4a4ea15587f12d3bce704648a6e64347cd3710f5236c7151",
+    "bytes": 10856
+  }
+}

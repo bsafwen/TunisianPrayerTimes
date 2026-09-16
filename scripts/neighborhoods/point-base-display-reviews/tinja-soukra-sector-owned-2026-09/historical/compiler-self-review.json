@@ -1,0 +1,146 @@
+{
+  "status": "ISOLATED_COMPILER_SYNTAX_STATIC_SCOPE_PASS_REQUIRES_INDEPENDENT_REVIEW",
+  "createdAt": "2026-09-12T13:43:14.782051+00:00",
+  "baselineCompiler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\baseline\\generate_neighborhoods.py",
+    "sha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9",
+    "bytes": 498918
+  },
+  "proposedCompiler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\scripts\\generate_neighborhoods.py",
+    "sha256": "44284f49f11daedf4f0b0918510f98d623f1966d8b6e953b9fa8e6317c0fb29b",
+    "bytes": 543211
+  },
+  "schema": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\sector-owned-settlement-schema.json",
+    "sha256": "65bdcf606018eb5233423f5a4f8782cc7c57d93042ebe47c76688674ec124c87",
+    "bytes": 145829
+  },
+  "readableDiff": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\compiler.diff",
+    "sha256": "8b2f9bcd1615a6ffe0c1e6a9fe737699d78d8d8a553450eda49a320533f42aca",
+    "bytes": 49330
+  },
+  "helperSource": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-compiler-proposal\\sector_owned_helpers.py",
+    "sha256": "bebfcb8d323bdf008b790bf272144639b720d9c41148e2a4057c36ea74413165",
+    "bytes": 42401
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\prepare_tinja_soukra_sector_owned_compiler.py",
+    "sha256": "32164886881c137e21a411e2e47fd7038b2b75c98813edb80c352cc656f98587",
+    "bytes": 15852
+  },
+  "reviewedInputs": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\finite-source-group-facts.json",
+      "sha256": "70c565a5c47e9e6b62fa7d809a3d447fc1c0c1c1c2468ca25b07f2862a51f499",
+      "bytes": 137856
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-sector-owned-display-feasibility\\sector-owned-settlement-contract-design.json",
+      "sha256": "64804d3b6357ea428b18d95a433ccd72b3ad862dad9c8273f6c66561ed3d28fc",
+      "bytes": 155052
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-finite-facts-independent-review.json",
+      "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62",
+      "bytes": 15797
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-finite-facts-ordering-addendum.json",
+      "sha256": "a77f2f15c5683d4e7b8c6ce9727a384f774d107a08b6523aa79171f8f205b4a6",
+      "bytes": 4740
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-post-beni-teboursouk-facts-design-carry.json",
+      "sha256": "fbdc7b744b35076af88065e5723bdfda8b14aefe26c7f1550fffbdf3c9440420",
+      "bytes": 32859
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\tinja-soukra-post-beni-teboursouk-carry-independent-review.json",
+      "sha256": "0c8d7c77e3924016fa3add0a742bbcdf1f134f830e9eead8ba6823e414b7897d",
+      "bytes": 13251
+    }
+  ],
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "f05e153b61789ef999b695845713956eb44051fb4bc3bce7828af76c0aa2bf2b",
+    "bytes": 1883630
+  },
+  "changedExistingDefinitions": [
+    "build",
+    "validate_reviewed_point_base_display",
+    "verify_reviewed_point_base_names"
+  ],
+  "addedDefinitions": [
+    "apply_sector_owned_settlement_proposals",
+    "derive_sector_owned_settlement_closure",
+    "reserve_sector_owned_settlement_proposals",
+    "sector_owned_reservation_ids",
+    "sector_owned_source_state",
+    "validate_sector_owned_settlement_preservation",
+    "verify_sector_owned_settlement_state"
+  ],
+  "allOtherDefinitionsByteAndAstExact": true,
+  "moduleStatementsAstExact": true,
+  "surgicalEditsReversibleToExactBaselineBytes": true,
+  "editDescriptions": [
+    "seven isolated helpers",
+    "new final dispatch before old exact-pair branch",
+    "new explicit option gate",
+    "only new option bypasses old pair group form",
+    "dispatch after common source/primary/reference checks",
+    "defer early metadata assignment only for validated new option",
+    "shared reservation and before-state pass before any pending point assignment",
+    "new assignments after old pending dispatch and before every final verifier"
+  ],
+  "syntaxCompilePassedWithoutExecution": true,
+  "productImportsOrExecution": false,
+  "generationPerformed": false,
+  "testsOrBuildsPerformed": false,
+  "liveWrites": false,
+  "sourceStageOrManifestWritten": false,
+  "retainedInstalledSupport": [
+    "validate_reviewed_administrative_successor_identity",
+    "validate_reviewed_town_preservation_extension",
+    "verify_reviewed_town_preservation",
+    "validate_residential_complete_sector_groups",
+    "verify_residential_complete_sector_groups",
+    "apply_reviewed_residential_display_associations",
+    "verify_reviewed_city_display_associations"
+  ],
+  "expectedFutureDataScope": {
+    "candidatePoints": 2,
+    "preservedRawRecords": 23,
+    "sourceObjects": 28,
+    "localSectors": 10,
+    "separateForeignSector": 1,
+    "existingAcceptedBoundary": 1,
+    "existingNameCuration": 1,
+    "sourceOnlyAbsorbedPoint": 1,
+    "onlyPotentialMetadataChanges": [
+      {
+        "id": "osm:node:1109384824",
+        "field": "pickerGroupId",
+        "before": "osm:node:1109384824",
+        "after": "delegation:565"
+      },
+      {
+        "id": "osm:node:7390818324",
+        "field": "pickerGroupId",
+        "before": "osm:node:7390818324",
+        "after": "delegation:532"
+      }
+    ]
+  },
+  "selfReview": [
+    "The new common-review gate preserves source kind, primary evidence, actual point snapshot, unchanged coordinates/defaults and exact target references.",
+    "Local/raw/source closure is re-derived over full baseline and final catalogs/source dictionaries; supplied lists cannot hide extra members.",
+    "Original/effective changes require exact active provider feature/receipt/evidence or exact current curation; no invented phases or entities.",
+    "All source-only and foreign identities have explicit read-only descriptors; final packed/raw/owner checks preserve them.",
+    "Shared reservations compare every new write/target against all old/new protected IDs and all old writes against new protected IDs; the exact own strict-sector overlap is specifically bound.",
+    "No-option behavior uses the same old guards and application/report statements; new guarded helpers are not called without the new option. Installed Beni/Teboursouk helper/validator bodies are byte-identical.",
+    "Syntax and static scope checks are not a runtime validation. Independent whole-file review and separately authorized exact source-stage generation remain required."
+  ]
+}

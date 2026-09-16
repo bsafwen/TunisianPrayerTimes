@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Independent source-package schema, preservation and qualified provenance review only; not proof integration, generator execution, installation or whole-catalog certification.",
+  "readiness": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-thirteen-native-source-stage-readiness-20260912.json",
+    "sha256": "3ec47bb2007f8de140d897644ed0c15103b446cdce55aae7ad77278dff2c2306"
+  },
+  "packageManifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/source-package-manifest.json",
+    "sha256": "171752fefd84e6be834e795140b2c53168984f08cd15aa384928b9c3b52ffddc"
+  },
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "currentCompiler": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+    "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+    "bytes": 543279
+  },
+  "sourceManifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/scripts/neighborhoods/reviewed-boundaries.json",
+    "sha256": "1d9349952ed94fcf9d18666cb9474b5609c73993a2ef5270b9941acad4929a61"
+  },
+  "rootGeometryReviewUsedWithoutRecalculation": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-thirteen-stage-root-geometry-review-20260912.json",
+    "sha256": "76c9f55112e2faefcc4609092d20a63b90ab80832c3332f6be4931e0d0871a9f"
+  },
+  "checks": {
+    "selectedFiles": 70,
+    "newFiles": 69,
+    "onlyExistingReplacement": "scripts/neighborhoods/reviewed-boundaries.json",
+    "oldProviderObjectsAndTokenSpansExact": 24,
+    "oldBoundaryRecordsExact": 77,
+    "oldWholeScopeObjectsAndTokenSpansExact": 76,
+    "oldAggregateObjectAndTokenSpanExact": 1,
+    "newWholeRecords": 12,
+    "newAggregateRecords": 1,
+    "wholeScopeRecords": 88,
+    "aggregateScopeRecords": 2,
+    "totalUniqueRecordIdsAndCodes": 90,
+    "exactCacheExpectedTagsChecked": 13,
+    "canonicalRegistryNameCodeParentsChecked": 13,
+    "originalMapBodyAndRetrievalBindings": 14,
+    "confinedOperativeReferencePairsVerified": 69,
+    "exactOriginalRelocationCopiesChecked": 62,
+    "currentClosureRowsExact": 38,
+    "sourceSeamRecordsPreserved": 26
+  },
+  "loaderContract": {
+    "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+    "lines": [
+      163,
+      199,
+      314,
+      328,
+      366,
+      380,
+      404,
+      423,
+      435,
+      445,
+      453,
+      462
+    ],
+    "result": "Current whole-imada and exhaustive-electoral-parts schemas are satisfied structurally. All new scope IDs, source hashes, exact original tags and canonical codes/names agree. Existing loader behavior is not bypassed or executed."
+  },
+  "sourceQualification": {
+    "mraissa": "Acceptance wrapper, provider, Feature and precision review retain the qualified stroke-only closed-walk bounded-region interpretation, one touching hole, original drawing indices507/508 and separately preserved zero-area spur evidence. They do not present a fabricated filled polygon or assert source-author intent. Original/source-region independent report6be4 is pinned unchanged; root76c9 independently verified exact arrays and the encoded hole.",
+    "borj": "Existing unsuffixed code135552 is preserved as one imada. The complete three-imada/five-circle Hammam Chott inventory and both complete Borj parts agree with the original bridge7be6 and registry. The aggregate uses the whole two-part union and retains the part-overlap qualification; it does not treat either numbered circle as a new administrative unit.",
+    "decree": "New whole scope rows explicitly refer to direct decree pages76/77, distinguish derived transcription from original PDF text and bind staged whole-page images. Original legal byte hash matches the primary URL in both scope documents.",
+    "canonicalNames": [
+      {
+        "id": "osm:relation:7100603",
+        "code": "156151",
+        "nameAr": "المريسة",
+        "nameFr": "El mraissa"
+      },
+      {
+        "id": "osm:relation:7100693",
+        "code": "156154",
+        "nameAr": "سليمان",
+        "nameFr": "Soliman"
+      },
+      {
+        "id": "osm:relation:7100694",
+        "code": "156155",
+        "nameAr": "سليمان الجنوبية",
+        "nameFr": "Soliman sud"
+      },
+      {
+        "id": "osm:relation:7101601",
+        "code": "156254",
+        "nameAr": "منزل بوزلفة القبلية",
+        "nameFr": "Menzel bou zelfa keblia"
+      },
+      {
+        "id": "osm:relation:7101606",
+        "code": "156255",
+        "nameAr": "منزل بوزلفة الغربية",
+        "nameFr": "Menzel bou zelfa ouest"
+      },
+      {
+        "id": "osm:relation:7102534",
+        "code": "156153",
+        "nameAr": "بوشراي",
+        "nameFr": "Bou charray"
+      },
+      {
+        "id": "osm:relation:7102535",
+        "code": "156152",
+        "nameAr": "الشريفات",
+        "nameFr": "Ech-cherifet"
+      },
+      {
+        "id": "osm:relation:7103805",
+        "code": "156457",
+        "nameAr": "قرنبالية الغربية",
+        "nameFr": "Grombalia ouest"
+      },
+      {
+        "id": "osm:relation:7103806",
+        "code": "156456",
+        "nameAr": "قرنبالية الشرقية",
+        "nameFr": "Grombalia est"
+      },
+      {
+        "id": "osm:relation:7104933",
+        "code": "156455",
+        "nameAr": "خنقة الحجاج",
+        "nameFr": "Khanguet el hojjej"
+      },
+      {
+        "id": "osm:relation:7104934",
+        "code": "156452",
+        "nameAr": "شماس",
+        "nameFr": "Chammes"
+      },
+      {
+        "id": "osm:relation:7104935",
+        "code": "156451",
+        "nameAr": "فندق الجديد",
+        "nameFr": "Fondouk djedid"
+      },
+      {
+        "id": "osm:relation:7174585",
+        "code": "135552",
+        "nameAr": "برج السدرية",
+        "nameFr": "Borj cedria"
+      }
+    ]
+  },
+  "historicalReferenceQualification": {
+    "nonoperativeInheritedHeaders": [
+      "primarySource.cachedPath",
+      "officialIdentityRegistry.file",
+      "officialIdentityRegistry.sourceWorkbooks[].file/localFile"
+    ],
+    "finding": "Scope successors preserve historical primary/registry header fields. Some header basenames are not source-root-relative files; the current loader does not open those descriptive fields. Do not interpret them as operative confined references.",
+    "actualBindings": "The new acceptance wrapper, each new whole-scope evidence record and the new aggregate record pin actual confined PDF, registry, workbook and source-map copies. Original retrieved reports retain original path text honestly, with exact-byte relocation receipts. This review validates these operative copies and does not rewrite immutable historical paths.",
+    "notBlockingSourcePackageSchema": true
+  },
+  "remainingIntegrationGates": [
+    "Optional Soliman lineage compiler and completed proof successors require independent acceptance; this package intentionally contains none.",
+    "Ten active boundary-manifest and two picker-manifest dependencies remain to migrate with their protected closures verified.",
+    "Actual packed catalog metadata/default/context/group/conflict/receipt/retired-name effects require a separate reviewed generation and actual-data audit.",
+    "Root geometry review retains the Baddar primary-context contradiction and uncertain adjacent memberships as unresolved application questions. This source-package PASS does not override those facts or force a point into a sector."
+  ],
+  "noProductImportsOrExecution": true,
+  "noGeometryRecalculation": true,
+  "noStageOrLiveEdits": true,
+  "noGenerationTestsBuildPhoneLedger": true,
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/review_soliman_thirteen_source_package_independent_20260912.py",
+    "sha256": "dd2d2d92eb2b30cbe2add1b42390d76db4ccaf64b4ab2ed5e0a4ccded867a751"
+  }
+}

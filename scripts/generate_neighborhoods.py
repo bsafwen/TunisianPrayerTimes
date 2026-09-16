@@ -8,6 +8,7 @@ import argparse
 import calendar
 from collections import Counter, defaultdict
 import csv
+from datetime import date
 import hashlib
 import json
 import math
@@ -1037,12 +1038,106 @@ def complete_prayer_month(path):
         return False
 
 
+def validate_inm_published_reference(correction, governor, delegation, directory):
+    """Bind published INM reference coordinates to original daily response bytes.
+
+    These fields do not certify the server's internal calculation inputs or a
+    settlement point. They must never enter the OSM point-equality picker path.
+    """
+    identifier = correction['delegationId']
+    if ('osm' in correction or 'pointId' in correction
+            or type(identifier) is not int or identifier <= 0
+            or type(correction.get('expectedGovernorateId')) is not int
+            or correction['expectedGovernorateId'] <= 0):
+        raise ValueError(f'Invalid INM published reference identity: {identifier}')
+    evidence = correction.get('inmEvidence')
+    if (not isinstance(evidence, dict)
+            or set(evidence) != {'serviceDate', 'prayer', 'sun', 'retrievalManifest'}):
+        raise ValueError(f'Missing INM published reference evidence: {identifier}')
+    service_date = evidence['serviceDate']
+    if not isinstance(service_date, str) or not re.fullmatch(r'[0-9]{4}-[0-9]{2}-[0-9]{2}', service_date):
+        raise ValueError(f'Invalid INM service date: {identifier}')
+    try:
+        service_year = date.fromisoformat(service_date).year
+    except ValueError as exc:
+        raise ValueError(f'Invalid INM service date: {identifier}') from exc
+    retrieval_reference = evidence['retrievalManifest']
+    if not isinstance(retrieval_reference, dict) or set(retrieval_reference) != {'file', 'sha256'}:
+        raise ValueError(f'Invalid INM retrieval manifest reference: {identifier}')
+    retrieval = json.loads(aggregate_review_file(directory, retrieval_reference, 'INM retrieval manifest'))
+    if not isinstance(retrieval, dict) or not isinstance(retrieval.get('responses'), list):
+        raise ValueError(f'Invalid INM retrieval manifest: {identifier}')
+    retrieval_directory = (directory / retrieval_reference['file']).resolve().parent
+    name_fields = {'nomAr': 'intituleAr', 'nomFr': 'intituleFr', 'nomEn': 'intituleAn'}
+    for resource, endpoint, time_fields in (
+            ('prayer', 'horaire_gouvernorat', ('sobh', 'dhohr', 'aser', 'magreb', 'isha')),
+            ('sun', 'lever_coucher_gouvernorat', ('lever', 'pm', 'coucher'))):
+        reference = evidence[resource]
+        expected_url = (f'https://www.meteo.tn/{endpoint}/{service_date}/'
+                        f'{governor["id"]}/{identifier}/')
+        if (not isinstance(reference, dict) or set(reference) != {'file', 'sha256', 'url'}
+                or reference['url'] != expected_url):
+            raise ValueError(f'Invalid INM {resource} response reference: {identifier}')
+        response_bytes = aggregate_review_file(directory, reference, f'INM {resource} response')
+        response_path = (directory / reference['file']).resolve()
+        # Original retrieval filenames are relative to their own manifest. Moving
+        # that complete source folder preserves the original retrieval bytes.
+        matching_retrievals = [record for record in retrieval['responses']
+                               if isinstance(record, dict) and isinstance(record.get('file'), str)
+                               and record['file']
+                               and (retrieval_directory / record['file']).resolve() == response_path]
+        if len(matching_retrievals) != 1:
+            raise ValueError(f'Missing or duplicate INM {resource} retrieval: {identifier}')
+        record = matching_retrievals[0]
+        if (record.get('sha256') != reference['sha256']
+                or record.get('requestedUrl') != expected_url or record.get('finalUrl') != expected_url
+                or type(record.get('status')) is not int or record['status'] != 200):
+            raise ValueError(f'INM {resource} retrieval provenance changed: {identifier}')
+        response = json.loads(response_bytes)
+        if (not isinstance(response, dict) or response.get('method') != 'GET'
+                or not isinstance(response.get('data'), dict)):
+            raise ValueError(f'Invalid INM {resource} response: {identifier}')
+        data = response['data']
+        source_governor, source_delegation = data.get('gouvernorat'), data.get('delegation')
+        if (type(data.get('id')) is not int or data['id'] <= 0
+                or not isinstance(source_governor, dict) or not isinstance(source_delegation, dict)
+                or type(source_governor.get('id')) is not int or source_governor['id'] != governor['id']
+                or type(source_delegation.get('id')) is not int or source_delegation['id'] != identifier
+                or source_delegation.get('parent') != source_governor
+                or any(source_governor.get(source_key) != governor.get(asset_key)
+                       or source_delegation.get(source_key) != delegation.get(asset_key)
+                       for asset_key, source_key in name_fields.items())):
+            raise ValueError(f'INM {resource} response identity changed: {identifier}')
+        if (data.get('date') != f'{service_date} 00:00'
+                or type(data.get('annee')) is not int or data['annee'] != service_year
+                or data.get('active') is not True
+                or any(not isinstance(data.get(field), str)
+                       or not re.fullmatch(r'(?:[01][0-9]|2[0-3]):[0-5][0-9]', data[field])
+                       for field in time_fields)):
+            raise ValueError(f'INM {resource} service/date fields changed: {identifier}')
+        coordinates = {}
+        for key, limit in (('lat', 90), ('lng', 180)):
+            value = data.get(key)
+            if (not isinstance(value, str)
+                    or not re.fullmatch(r'[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)', value.strip())):
+                raise ValueError(f'Invalid INM {resource} coordinate string: {identifier}')
+            number = float(value.strip())
+            if not math.isfinite(number) or not -limit <= number <= limit:
+                raise ValueError(f'Invalid INM {resource} coordinate range: {identifier}')
+            coordinates[key] = number
+        if coordinates != correction['proposed']:
+            raise ValueError(f'INM {resource} coordinates differ from reviewed asset point: {identifier}')
+    return {'delegationId': identifier, 'governorateId': governor['id'], **correction['proposed'],
+            'serviceDate': service_date,
+            'sourceEvidence': {key: evidence[key] for key in ('prayer', 'sun', 'retrievalManifest')}}
+
+
 def validate_prayer_source_coordinates(governors, manifest_path):
     """Keep runtime anchors and generated nearest-source mappings in agreement.
 
-    These are reviewed settlement reference points, not certified INM calculation
-    coordinates. Refuse reverted or changed points instead of silently overriding
-    an in-memory copy while the app would still ship different coordinates.
+    Reviewed settlement points and published INM references do not certify INM
+    calculation inputs. Refuse changed points instead of overriding an in-memory
+    copy while the app would still ship different coordinates.
     """
     raw = Path(manifest_path).read_bytes()
     manifest = json.loads(raw)
@@ -1057,6 +1152,7 @@ def validate_prayer_source_coordinates(governors, manifest_path):
                 raise ValueError('Duplicate prayer source ID')
             by_id[delegation['id']] = (governor, delegation)
     reviewed = set()
+    official_references = []
     for correction in corrections:
         identifier = correction.get('delegationId')
         if identifier not in by_id or identifier in reviewed:
@@ -1075,17 +1171,27 @@ def validate_prayer_source_coordinates(governors, manifest_path):
                 raise ValueError(f'Invalid curated prayer source {field} point: {identifier}')
         if any(delegation.get(key) != value for key, value in correction['proposed'].items()):
             raise ValueError(f'Prayer source coordinates need review: {identifier}; restore the reviewed asset point or update its curation evidence')
-        if (not correction.get('reviewedDate') or not correction.get('originalProvenance')
-                or not all(correction.get('osm', {}).get(key) for key in ('id', 'url', 'version', 'timestamp'))):
+        if not correction.get('reviewedDate') or not correction.get('originalProvenance'):
             raise ValueError(f'Undocumented prayer source coordinate correction: {identifier}')
+        if 'referenceKind' not in correction:
+            if not all(correction.get('osm', {}).get(key) for key in ('id', 'url', 'version', 'timestamp')):
+                raise ValueError(f'Undocumented prayer source coordinate correction: {identifier}')
+        elif correction['referenceKind'] == 'inm_published_reference':
+            official_references.append(validate_inm_published_reference(
+                correction, governor, delegation, Path(manifest_path).parent))
+        else:
+            raise ValueError(f'Unknown prayer source reference kind: {identifier}')
         reviewed.add(identifier)
-    return {'manifestSha256': hashlib.sha256(raw).hexdigest(),
+    report = {'manifestSha256': hashlib.sha256(raw).hexdigest(),
             'reviewedDate': manifest['reviewedDate'], 'correctedSourceIds': sorted(reviewed),
             'settlementReferences': [{'delegationId': correction['delegationId'],
                                       'governorateId': correction['expectedGovernorateId'],
                                       'pointId': correction['osm']['id'], **correction['proposed']}
-                                     for correction in corrections],
+                                     for correction in corrections if 'referenceKind' not in correction],
             'scope': manifest['scope']}
+    if official_references:
+        report['officialPublishedReferences'] = official_references
+    return report
 
 
 def validate_reviewed_point_base_name(rule, manifest_path, coordinate_path, obj, original_sources,
@@ -1167,6 +1273,550 @@ def validate_reviewed_point_base_name(rule, manifest_path, coordinate_path, obj,
         return proposal
     except (OSError, UnicodeError, ValueError, KeyError, TypeError, AttributeError, IndexError) as error:
         raise ValueError('Missing, malformed or changed reviewed point/base name identity') from error
+
+
+def sector_owned_source_state(source):
+    """Describe an actual source object without fabricating an OSM entity."""
+    geometry = source.get('shape')
+    if geometry is None:
+        geometry = source.get('point')
+    if geometry is None or geometry.is_empty or geometry.geom_type not in ('Point', 'Polygon', 'MultiPolygon'):
+        raise ValueError('Reviewed sector-owned settlement source geometry is missing')
+    return {'tags': source['tags'], 'kind': source['kind'], 'sourceId': source.get('sourceId'),
+            'geometrySha256': aggregate_geometry_sha256(geometry)}
+
+
+def derive_sector_owned_settlement_closure(extension, features, source_phases, contexts, peer_keys, after):
+    """Derive complete identities from all rows and both real source phases."""
+    current = {row['id']: row for row in features}
+    if len(current) != len(features):
+        raise ValueError('Reviewed sector-owned settlement repeats a raw ID')
+    rows = {row['id']: row for row in extension['protectedRawRecords']}
+    states = {row['id']: row for row in extension['sourceStates']}
+    groups = defaultdict(set)
+    for row in features:
+        groups[row['pickerGroupId']].add(row['id'])
+    closure = extension['rawContextClosure']
+    local = sorted(row['id'] for row in features if row.get('governorateId') == closure['governorateId']
+                   and (row.get('parentName') == closure['administrativeParentName']
+                        or closure['administrativeParentName'] in row.get('contextAliases', [])))
+    if local != closure['expectedRawIds'] or local != extension['localProtectedRawIds']:
+        raise ValueError('Reviewed sector-owned settlement complete administrative raw closure changed')
+    sectors = set(closure['sourceSectorIds']['original'])
+    identifier = extension['onlyRawChange']['id']
+    if not sectors | {identifier} <= set(current):
+        raise ValueError('Reviewed sector-owned settlement lost a point or sector')
+    seed_groups = {current[sid]['pickerGroupId'] for sid in sectors | {identifier}}
+    protected = {sid for group in seed_groups for sid in groups[group]} | set(local)
+    required_sources = set(contexts)
+    for phase, sources in source_phases.items():
+        sector_ids = sorted(sid for sid, source in sources.items() if source['kind'] == 'sector'
+                            and source['tags'].get('ref:tn:codegeo', '')[:4] in extension['officialDelegationCodes'])
+        if sector_ids != closure['sourceSectorIds'][phase]:
+            raise ValueError('Reviewed sector-owned settlement complete source-sector inventory changed')
+        geometries = [sources[sid]['shape'] for sid in sector_ids]
+        covered_raw = sorted(row['id'] for row in features
+                             if any(geometry.covers(Point(row['lng'], row['lat'])) for geometry in geometries))
+        covered_points = sorted(sid for sid, source in sources.items() if source.get('point') is not None
+                                and source.get('shape') is None
+                                and any(geometry.covers(source['point']) for geometry in geometries))
+        peers = sorted(sid for sid, source in sources.items()
+                       if peer_keys & {norm(value) for value in names(source['tags'])})
+        if (covered_raw != closure['fullRowRepresentativeSectorCoverage'][phase]
+                or covered_points != closure['fullSourcePointCoverage'][phase]
+                or peers != extension['sourceNamePeerIds'][phase]):
+            raise ValueError('Reviewed sector-owned settlement global row, point or name-peer closure changed')
+        protected.update(covered_raw)
+        protected.update(set(covered_points) & set(current))
+        protected.update(set(peers) & set(current))
+        required_sources.update(covered_points)
+        required_sources.update(peers)
+        for sid, record in states.items():
+            if sid not in sources or sector_owned_source_state(sources[sid]) != record[phase]:
+                raise ValueError('Reviewed sector-owned settlement exact source phase changed')
+    while True:
+        expanded = protected | {sid for rid in protected for sid in groups[current[rid]['pickerGroupId']]}
+        if expanded == protected:
+            break
+        protected = expanded
+    if protected != set(rows) or required_sources | protected != set(states):
+        raise ValueError('Reviewed sector-owned settlement hidden or lost raw/source member')
+    expected = extension['expectedAfterRawGroups' if after else 'expectedBeforeRawGroups']
+    actual = {group: sorted(groups[group]) for group in {current[sid]['pickerGroupId'] for sid in protected}}
+    if actual != expected:
+        raise ValueError('Reviewed sector-owned settlement complete raw group membership changed')
+    for sid, state in states.items():
+        if (sid in current) != state['rawPresent']:
+            raise ValueError('Reviewed sector-owned settlement source-only presence changed')
+    return current, groups
+
+
+def validate_sector_owned_settlement_preservation(directory, review, rule, registry, original_sources,
+                                                   effective_sources, curation, source_sha256,
+                                                   reviewed_boundaries, official_report, picker_path):
+    """Validate a village/town joining its already-reviewed sector-owned base."""
+    extension = review['sectorOwnedSettlementPreservation']
+    keys = {'schemaVersion', 'strictOwner', 'officialDelegationCodes', 'localProtectedRawIds',
+            'readOnlyRawNamePeers', 'sourceOnlyAbsorbedPoints', 'rawContextClosure', 'protectedRawRecords',
+            'sourceStates', 'curationBindings', 'acceptedBoundaryReplacements', 'reviewedBoundaries',
+            'sourceNamePeerIds', 'coordinateContextMembership', 'expectedBeforeRawGroups',
+            'expectedAfterRawGroups', 'completePickerGroups', 'onlyRawChange'}
+    if (review['method'] != 'reviewed_explicit_point_base_display_identity'
+            or any(key in review for key in ('townPreservationExtension', 'deferredCompleteGroupExtension',
+                'typedNamePeerExtension', 'sourcePhaseLineage', 'retainedTownPoint', 'officialDelegationCode'))
+            or not isinstance(extension, dict) or set(extension) != keys
+            or type(extension['schemaVersion']) is not int or extension['schemaVersion'] != 1):
+        raise ValueError('Malformed or mixed sector-owned settlement preservation contract')
+    identifier, target = review['pointId'], f"delegation:{review['baseId']}"
+    change = {'id': identifier, 'field': 'pickerGroupId', 'before': identifier, 'after': target}
+    if extension['onlyRawChange'] != change or review['onlyRawChange'] != change:
+        raise ValueError('Reviewed sector-owned settlement requested more than point membership')
+    reviewed_complete_group_owner(picker_path, extension['strictOwner'], source_sha256, review['baseId'])
+    owner = extension['strictOwner']['recordId']
+    sectors = review['preservedSectors']; sector_ids = {row['id'] for row in sectors}
+    contexts = review['contexts']; codes = extension['officialDelegationCodes']
+    if (not isinstance(codes, list) or len(codes) != 1 or not re.fullmatch(r'[0-9]{4}', codes[0])
+            or not sectors or len(sector_ids) != len(sectors) or owner not in sector_ids
+            or sorted([r for r in registry['sectors'] if r['delegationCode'] in codes], key=lambda r: r['sectorCode'])
+                != sorted([r['officialIdentity'] for r in sectors], key=lambda r: r['sectorCode'])
+            or len({r['officialIdentity']['sectorCode'] for r in sectors}) != len(sectors)
+            or not isinstance(contexts, dict) or set(contexts) & sector_ids
+            or sorted(c['kind'] for c in contexts.values()) != ['delegation', 'governorate']):
+        raise ValueError('Reviewed sector-owned settlement complete official sector/context inventory changed')
+    parent_id = next(sid for sid, context in contexts.items() if context['kind'] == 'delegation')
+    governor_id = next(sid for sid, context in contexts.items() if context['kind'] == 'governorate')
+    if (contexts[parent_id]['tags'].get('ref:tn:codegeo') != codes[0]
+            or contexts[governor_id]['tags'].get('ref:tn:codegeo') != codes[0][:2]
+            or contexts[parent_id]['tags'].get('name:ar') != 'معتمدية ' + review['baseCurrent']['nomAr']
+            or picker_review_name_key(contexts[governor_id]['tags'].get('name:ar', ''))
+                != picker_review_name_key('ولاية ' + review['expectedGovernor']['nomAr'])):
+        raise ValueError('Reviewed sector-owned settlement real administrative identity changed')
+    records = extension['sourceStates']; protected = extension['protectedRawRecords']
+    states = {r['id']: r for r in records}; raw = {r['id']: r for r in protected}
+    state_keys = {'tags', 'kind', 'sourceId', 'geometrySha256'}
+    if (not records or [r['id'] for r in records] != sorted(states)
+            or any(set(r) != {'id', 'rawPresent', 'expectedCuration', 'original', 'effective'}
+                   or type(r['rawPresent']) is not bool
+                   or any(set(r[phase]) != state_keys for phase in ('original', 'effective')) for r in records)
+            or not protected or [r['id'] for r in protected] != sorted(raw)
+            or any(set(r) != {'id', 'kind', 'currentMetadata', 'packedGeometrySha256'} for r in protected)
+            or not sector_ids | {identifier} <= set(raw) or set(raw) & set(contexts)
+            or {sid for sid, r in states.items() if r['rawPresent']} != set(raw)
+            or not isinstance(extension['curationBindings'], dict)
+            or set(extension['curationBindings']) != set(states)
+            or extension['localProtectedRawIds'] != sorted(set(extension['localProtectedRawIds']))
+            or not sector_ids | {identifier} <= set(extension['localProtectedRawIds'])
+            or raw[identifier]['currentMetadata'] != review['rawCurrent']):
+        raise ValueError('Reviewed sector-owned settlement typed source/raw inventory is malformed')
+    bindings = extension['curationBindings']
+    if bindings[identifier] is not None or curation.get(identifier) != rule:
+        raise ValueError('Reviewed sector-owned settlement new point curation differs')
+    primary_name = norm(review['rawCurrent']['name'])
+    if (not primary_name or norm(review['baseCurrent']['nomAr']) != primary_name
+            or norm(raw[owner]['currentMetadata']['name']) != primary_name):
+        raise ValueError('Reviewed sector-owned settlement lacks the exact shared primary place name')
+    phases = {'original': original_sources, 'effective': effective_sources}
+    for sid, record in states.items():
+        if record['expectedCuration'] != bindings[sid] or (sid != identifier and curation.get(sid) != bindings[sid]):
+            raise ValueError('Reviewed sector-owned settlement existing curation binding changed')
+        decision = bindings[sid]
+        if decision is not None:
+            if (decision['id'] != sid or decision.get('action') not in ('name_tags', 'preserve_point', 'administrative_context')):
+                raise ValueError('Unsupported sector-owned settlement source curation')
+            for reference in decision.get('evidence', []):
+                if isinstance(reference, dict) and 'file' in reference:
+                    aggregate_review_file(directory, reference, 'preserved sector-owned settlement curation evidence')
+        for phase, sources in phases.items():
+            if (sid not in sources or sector_owned_source_state(sources[sid]) != record[phase]
+                    or (phase == 'original' and record[phase]['sourceId'] is not None)
+                    or record['original']['kind'] != record['effective']['kind']):
+                raise ValueError('Reviewed sector-owned settlement authentic source phase changed')
+    replacements = extension['acceptedBoundaryReplacements']; replaced = {r['id']: r for r in replacements}
+    if ([r['id'] for r in replacements] != sorted(replaced)
+            or set(replaced) != {sid for sid, r in states.items() if r['effective']['sourceId'] != 'osm'}
+            or not set(replaced) <= sector_ids):
+        raise ValueError('Reviewed sector-owned settlement accepted replacement coverage changed')
+    manifest = None
+    if replacements:
+        reference = extension['reviewedBoundaries']
+        manifest = json.loads(aggregate_review_file(directory, reference, 'sector-owned active boundaries'))
+        if (reviewed_boundaries is None or official_report is None
+                or (directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
+                or official_report['manifestSha256'] != reference['sha256']):
+            raise ValueError('Reviewed sector-owned settlement boundary reference is not the active loader')
+    elif extension['reviewedBoundaries'] is not None:
+        raise ValueError('Reviewed sector-owned settlement has an unexpected replacement manifest')
+    for sid, record in states.items():
+        original, effective = record['original'], record['effective']
+        tags = dict(original['tags']); geometry_sha = original['geometrySha256']; provider = 'osm'
+        if sid in replaced:
+            replacement = replaced[sid]
+            if set(replacement) != {'id', 'sourceRecord', 'record', 'application', 'geojson', 'featureSha256', 'providerEvidence'}:
+                raise ValueError('Malformed sector-owned settlement accepted replacement')
+            source, accepted = replacement['sourceRecord'], replacement['record']
+            application = {'id': sid, 'action': 'replace', 'officialCode': accepted['officialCode'], 'sourceId': source['id']}
+            if ([s for s in manifest['sources'] if s['id'] == source['id']] != [source]
+                    or [r for r in source['records'] if r['id'] == sid] != [accepted]
+                    or accepted['action'] != 'replace' or source['sourceSha256'] != source_sha256
+                    or source['id'] == 'osm' or original['kind'] != 'sector'
+                    or not accepted['expectedOriginalTags']
+                    or any(original['tags'].get(k) != v for k, v in accepted['expectedOriginalTags'].items())
+                    or accepted['officialCode'] != original['tags'].get('ref:tn:codegeo')
+                    or replacement['application'] != application
+                    or [r for r in official_report['applications'] if r['id'] == sid] != [application]
+                    or official_report['sources'].get(source['id']) != {k: v for k, v in source.items() if k not in ('file', 'records')}
+                    or replacement['geojson'] != {'file': source['file'], 'sha256': source['sha256']}
+                    or (bindings[sid] is not None and 'nameTags' in bindings[sid])):
+                raise ValueError('Reviewed sector-owned settlement replacement differs from the accepted loader')
+            collection = json.loads(aggregate_review_file(Path(reviewed_boundaries).parent,
+                                    replacement['geojson'], 'sector-owned accepted boundary feature'))
+            matches = [f for f in collection['features'] if f['id'] == sid]
+            if len(matches) != 1:
+                raise ValueError('Reviewed sector-owned settlement accepted feature is not unique')
+            feature = matches[0]; properties = feature['properties']
+            if (feature['type'] != 'Feature' or properties['sourceId'] != source['id']
+                    or properties['officialCode'] != accepted['officialCode']
+                    or hashlib.sha256(json.dumps(feature, ensure_ascii=False, sort_keys=True,
+                        separators=(',', ':')).encode('utf-8')).hexdigest() != replacement['featureSha256']):
+                raise ValueError('Reviewed sector-owned settlement accepted feature changed')
+            proof = replacement['providerEvidence']
+            aggregate_review_file(directory, proof, 'sector-owned accepted provider decision')
+            if ((directory / proof['file']).resolve() != (Path(reviewed_boundaries).parent / source['review']['evidenceFile']).resolve()
+                    or proof['sha256'] != source['review']['evidenceSha256']):
+                raise ValueError('Reviewed sector-owned settlement provider decision is not active')
+            tags = {'boundary': 'administrative', 'admin_level': '6', 'ref:tn:codegeo': accepted['officialCode'],
+                    'name:ar': properties['nameAr'], 'name:fr': properties['nameFr']}
+            if accepted.get('aliases'):
+                tags['alt_name'] = ';'.join(accepted['aliases'])
+            geometry_sha = aggregate_geometry_sha256(shape(feature['geometry'])); provider = source['id']
+        if bindings[sid] is not None and 'nameTags' in bindings[sid]:
+            tags = {k: v for k, v in tags.items() if not is_current_name_tag(k)}
+            tags.update(bindings[sid]['nameTags'])
+        if effective != {'tags': tags, 'kind': original['kind'], 'sourceId': provider, 'geometrySha256': geometry_sha}:
+            raise ValueError('Reviewed sector-owned settlement source transformation is unaccounted for')
+    for sector in sectors:
+        sid = sector['id']
+        if (sector['originalTags'] != states[sid]['original']['tags']
+                or sector['sourceGeometrySha256'] != states[sid]['original']['geometrySha256']
+                or sector['originalTags'].get('ref:tn:codegeo') != sector['officialIdentity']['sectorCode']
+                or sector['expectedCuration'] != bindings[sid]
+                or sector['currentMetadata'] != raw[sid]['currentMetadata']
+                or sector['packedGeometrySha256'] != raw[sid]['packedGeometrySha256']):
+            raise ValueError('Reviewed sector-owned settlement preserved sector bindings disagree')
+        for sources in phases.values():
+            if [i for i, s in sources.items() if s['kind'] == 'sector'
+                    and s['tags'].get('ref:tn:codegeo') == sector['officialIdentity']['sectorCode']] != [sid]:
+                raise ValueError('Reviewed sector-owned settlement coded source is not unique')
+    for sid, context in contexts.items():
+        original = states[sid]['original']
+        if (context != {'kind': original['kind'], 'tags': original['tags'],
+                        'sourceGeometrySha256': original['geometrySha256']} or bindings[sid] is not None):
+            raise ValueError('Reviewed sector-owned settlement read-only context changed')
+        for sources in phases.values():
+            if [i for i, s in sources.items() if s['kind'] == context['kind']
+                    and s['tags'].get('ref:tn:codegeo') == context['tags']['ref:tn:codegeo']] != [sid]:
+                raise ValueError('Reviewed sector-owned settlement source context is not unique')
+    peers = extension['readOnlyRawNamePeers']; foreign = {r['id']: r for r in peers}
+    if [r['id'] for r in peers] != sorted(foreign) or set(raw) - set(extension['localProtectedRawIds']) != set(foreign):
+        raise ValueError('Reviewed sector-owned settlement foreign peer closure changed')
+    coordinates = {'point': Point(review['rawCurrent']['lng'], review['rawCurrent']['lat']),
+                   'base': Point(review['baseCurrent']['lng'], review['baseCurrent']['lat'])}
+    for sid, peer in foreign.items():
+        expected_keys = {'id', 'reason', 'officialIdentity', 'original', 'effective', 'currentMetadata',
+                         'packedGeometrySha256', 'expectedCuration', 'expectedRawGroup',
+                         'candidatePointMembership', 'candidateBaseMembership'}
+        official = peer['officialIdentity']; original = states[sid]['original']; effective = states[sid]['effective']
+        if (set(peer) != expected_keys or original['kind'] != 'sector' or effective['kind'] != 'sector'
+                or peer['original'] != original or peer['effective'] != effective
+                or original['tags'] != effective['tags'] or original['geometrySha256'] != effective['geometrySha256']
+                or effective['sourceId'] != 'osm' or original['tags'].get('ref:tn:codegeo') != official['sectorCode']
+                or [r for r in registry['sectors'] if r['sectorCode'] == official['sectorCode']] != [official]
+                or official['delegationCode'] in codes or official['governorateCode'] == codes[0][:2]
+                or peer['currentMetadata'] != raw[sid]['currentMetadata']
+                or peer['currentMetadata']['governorateId'] == review['expectedGovernor']['id']
+                or peer['packedGeometrySha256'] != raw[sid]['packedGeometrySha256']
+                or peer['expectedCuration'] is not None or bindings[sid] is not None
+                or peer['expectedRawGroup'] != [sid]
+                or any(peer[key] != {'original': False, 'effective': False, 'packed': False}
+                       for key in ('candidatePointMembership', 'candidateBaseMembership'))):
+            raise ValueError('Reviewed sector-owned settlement distinct foreign namesake changed')
+        for sources in phases.values():
+            if (any(sources[sid]['shape'].covers(point) for point in coordinates.values())
+                    or [i for i, source in sources.items() if source['kind'] == 'sector'
+                        and source['tags'].get('ref:tn:codegeo') == official['sectorCode']] != [sid]):
+                raise ValueError('Reviewed sector-owned settlement foreign peer is not distinct')
+    for sid, row in raw.items():
+        current = row['currentMetadata']; source = effective_sources[sid]; polygon = source.get('shape') is not None
+        if (current['id'] != sid or current['kind'] != row['kind'] or row['kind'] != source['kind']
+                or current['sourceId'] != source.get('sourceId') or type(current['hasBoundary']) is not bool
+                or current['hasBoundary'] != polygon
+                or (sid not in foreign and current['governorateId'] != review['expectedGovernor']['id'])
+                or (polygon and (source['shape'].geom_type not in ('Polygon', 'MultiPolygon')
+                    or not isinstance(row['packedGeometrySha256'], str)
+                    or not re.fullmatch(r'[0-9a-f]{64}', row['packedGeometrySha256'])))
+                or (not polygon and (source['point'].geom_type != 'Point'
+                    or source['point'].coords[:] != [(current['lng'], current['lat'])]
+                    or row['packedGeometrySha256'] is not None or 'offset' in current or 'length' in current))):
+            raise ValueError('Reviewed sector-owned settlement protected raw source representation changed')
+    absent = extension['sourceOnlyAbsorbedPoints']; absent_ids = {r['id'] for r in absent}
+    if ([r['id'] for r in absent] != sorted(absent_ids)
+            or set(states) != set(raw) | set(contexts) | absent_ids):
+        raise ValueError('Reviewed sector-owned settlement source-only inventory changed')
+    for record in absent:
+        sid = record['id']; receiver = record['absorbedBySectorId']
+        expected_keys = {'id', 'original', 'effective', 'exactCachedSource', 'expectedCuration', 'expectedRawPresence',
+                         'expectedGroupPresence', 'matchingPackedRawReceiverIds', 'sourceSectorCoveringIds',
+                         'absorbedBySectorId', 'receiverOriginalSourceNameIntersection', 'qualification'}
+        cached = record['exactCachedSource']; source = original_sources[sid]; point = source.get('point')
+        if (set(record) != expected_keys or receiver not in sector_ids or sid in raw or sid in contexts
+                or record['original'] != states[sid]['original'] or record['effective'] != states[sid]['effective']
+                or source['kind'] not in ('town', 'village') or point is None or source.get('shape') is not None
+                or cached != {'id': sid, 'tags': source['tags'], 'lat': point.y, 'lng': point.x}
+                or record['expectedRawPresence'] is not False or record['expectedGroupPresence'] is not False
+                or record['expectedCuration'] is not None or bindings[sid] is not None
+                or record['matchingPackedRawReceiverIds'] != [receiver] or record['sourceSectorCoveringIds'] != [receiver]):
+            raise ValueError('Reviewed sector-owned settlement absorbed source identity changed')
+        for sources in phases.values():
+            if (sources[sid].get('shape') is not None or sources[sid]['point'].coords[:] != point.coords[:]
+                    or sources[sid]['tags'] != cached['tags']
+                    or sorted(i for i in sector_ids if sources[i]['shape'].covers(point)) != [receiver]
+                    or sorted({norm(v) for v in names(sources[sid]['tags'])}
+                        & {norm(v) for v in names(sources[receiver]['tags'])}) != record['receiverOriginalSourceNameIntersection']
+                    or not record['receiverOriginalSourceNameIntersection']):
+                raise ValueError('Reviewed sector-owned settlement absorbed source/receiver phase changed')
+    before, after = extension['expectedBeforeRawGroups'], extension['expectedAfterRawGroups']
+    if (not isinstance(before, dict) or not isinstance(after, dict)
+            or any(not isinstance(g, str) or not isinstance(ids, list) or not ids or ids != sorted(set(ids))
+                   for g, ids in before.items())
+            or before.get(identifier) != [identifier] or before.get(target) != [owner]
+            or any(before.get(sid) != [sid] for sid in sector_ids - {owner})
+            or any(before.get(sid) != [sid] for sid in foreign)
+            or after != {**{g: ids for g, ids in before.items() if g != identifier}, target: sorted([owner, identifier])}
+            or extension['completePickerGroups'] != {phase: {g: sorted(ids + ([g] if g.startswith('delegation:') else []))
+                for g, ids in groups.items()} for phase, groups in (('before', before), ('after', after))}
+            or review['completePickerGroups'] != extension['completePickerGroups']):
+        raise ValueError('Reviewed sector-owned settlement group transition is not the exact point append')
+    closure = extension['rawContextClosure']
+    closure_keys = {'baselineMetadata', 'governorateId', 'administrativeParentName', 'expectedRawIds',
+                    'sourceSectorIds', 'fullRowRepresentativeSectorCoverage', 'fullSourcePointCoverage'}
+    if (not isinstance(closure, dict) or set(closure) != closure_keys
+            or closure['governorateId'] != review['expectedGovernor']['id']
+            or closure['administrativeParentName'] != contexts[parent_id]['tags']['name:ar']
+            or any(not isinstance(closure[key], dict) or set(closure[key]) != {'original', 'effective'}
+                   for key in ('sourceSectorIds', 'fullRowRepresentativeSectorCoverage', 'fullSourcePointCoverage'))
+            or any(closure['sourceSectorIds'][phase] != sorted(sector_ids) for phase in phases)):
+        raise ValueError('Malformed sector-owned settlement complete-row closure evidence')
+    baseline = json.loads(aggregate_review_file(directory, closure['baselineMetadata'], 'sector-owned full baseline raw catalog'))['features']
+    baseline_rows = {row['id']: row for row in baseline}
+    if len(baseline_rows) != len(baseline) or any(baseline_rows.get(sid) != row['currentMetadata'] for sid, row in raw.items()):
+        raise ValueError('Reviewed sector-owned settlement baseline raw records changed')
+    peer_keys = {norm(value) for value in [review['rawCurrent']['name'], *review['rawCurrent']['aliases'],
+                 review['baseCurrent']['nomAr'], review['baseCurrent']['nomFr'], review['baseCurrent']['nomEn']]}
+    if (not isinstance(extension['sourceNamePeerIds'], dict) or set(extension['sourceNamePeerIds']) != set(phases)
+            or sorted(review['sourceNamePeers'], key=lambda r: r['id']) != [{'id': sid,
+                'tags': states[sid]['original']['tags'], 'kind': states[sid]['original']['kind']}
+                for sid in extension['sourceNamePeerIds']['original']]):
+        raise ValueError('Reviewed sector-owned settlement top-level source-name peers disagree')
+    derive_sector_owned_settlement_closure(extension, baseline, phases, contexts, peer_keys, False)
+    membership = extension['coordinateContextMembership']
+    if not isinstance(membership, dict) or set(membership) != sector_ids | set(contexts):
+        raise ValueError('Reviewed sector-owned settlement coordinate-context inventory is incomplete')
+    for sid in membership:
+        if not isinstance(membership[sid], dict) or set(membership[sid]) != set(phases):
+            raise ValueError('Malformed sector-owned settlement coordinate source phases')
+        for phase, sources in phases.items():
+            geometry = sources[sid]['shape']
+            if (set(membership[sid][phase]) != set(coordinates)
+                    or any(membership[sid][phase][role] != {'contains': geometry.contains(point), 'covers': geometry.covers(point)}
+                           or any(type(v) is not bool for v in membership[sid][phase][role].values())
+                           for role, point in coordinates.items())):
+                raise ValueError('Reviewed sector-owned settlement original/effective coordinate context changed')
+            if sid in contexts and not all(membership[sid][phase][role]['contains'] for role in coordinates):
+                raise ValueError('Reviewed sector-owned settlement lacks positive real administrative context')
+    # These dictionaries are in-memory loader objects, never output evidence files.
+    return {'exactPair': {'basePickerId': target, 'rawCurrent': review['rawCurrent']}, 'preservedSectors': [],
+            'sectorOwnedSettlementPreservation': {'proof': extension, 'contexts': contexts,
+                'sourcePhases': phases, 'peerKeys': peer_keys, 'sourceSha256': source_sha256,
+                'baseCurrent': review['baseCurrent'], 'expectedGovernor': review['expectedGovernor'],
+                'curation': curation, 'pointRule': rule}}
+
+
+def verify_sector_owned_settlement_state(proposal, features, geometries, base_groups, after):
+    """Recheck complete source, raw, packed-shape and owner state at both phases."""
+    runtime = proposal['sectorOwnedSettlementPreservation']; extension = runtime['proof']
+    identifier = extension['onlyRawChange']['id']; target = extension['onlyRawChange']['after']
+    owner = extension['strictOwner']['recordId']
+    current, groups = derive_sector_owned_settlement_closure(extension, features, runtime['sourcePhases'],
+        runtime['contexts'], runtime['peerKeys'], after)
+    indices = {row['id']: index for index, row in enumerate(features)}
+    protected = {r['id'] for r in extension['protectedRawRecords']}
+    expected_raw_owners = {owner, identifier} if after else {owner}
+    expected_explicit_owners = {identifier} if after else set()
+    if (groups.get(target) != expected_raw_owners or (after and groups.get(identifier))
+            or {sid for sid, group in base_groups.items() if group == target} != expected_explicit_owners
+            or set(base_groups) & (protected - expected_explicit_owners)):
+        raise ValueError('Reviewed sector-owned settlement raw or explicit ownership changed')
+    for sid, expected in extension['curationBindings'].items():
+        if runtime['curation'].get(sid) != (runtime['pointRule'] if sid == identifier else expected):
+            raise ValueError('Reviewed sector-owned settlement final source curation changed')
+    for row in extension['protectedRawRecords']:
+        sid = row['id']; index = indices[sid]; expected = dict(row['currentMetadata'])
+        if after and sid == identifier:
+            expected['pickerGroupId'] = target
+        if ({k: v for k, v in current[sid].items() if k not in ('offset', 'length')}
+                != {k: v for k, v in expected.items() if k not in ('offset', 'length')}):
+            raise ValueError('Reviewed sector-owned settlement retained raw fields changed')
+        if expected['hasBoundary']:
+            if (index >= len(geometries) or hashlib.sha256(packed_geometry_bytes(geometries[index])).hexdigest()
+                    != row['packedGeometrySha256']):
+                raise ValueError('Reviewed sector-owned settlement retained packed polygon changed')
+        elif (index < len(geometries) or current[sid] != expected or row['packedGeometrySha256'] is not None
+                or 'offset' in current[sid] or 'length' in current[sid]):
+            raise ValueError('Reviewed sector-owned settlement retained point acquired a polygon')
+    absent = set(runtime['contexts']) | {r['id'] for r in extension['sourceOnlyAbsorbedPoints']}
+    for sid in absent:
+        if sid in indices or groups.get(sid) or sid in base_groups or sid in base_groups.values():
+            raise ValueError('Reviewed sector-owned settlement absent source/context acquired a raw row or owner')
+    for peer in extension['readOnlyRawNamePeers']:
+        sid = peer['id']; geometry = geometries[indices[sid]]
+        if (groups.get(sid) != set(peer['expectedRawGroup'])
+                or any(geometry.covers(Point(row['lng'], row['lat']))
+                       for row in (proposal['exactPair']['rawCurrent'], runtime['baseCurrent']))):
+            raise ValueError('Reviewed sector-owned settlement foreign namesake joined or overlaps the candidate')
+    for record in extension['sourceOnlyAbsorbedPoints']:
+        sid = record['id']; source = runtime['sourcePhases']['effective'][sid]; point = source['point']
+        labels = names(source['tags']); identity = {'name': labels[0], 'aliases': labels[1:]}
+        matching = sorted(features[index]['id'] for index, geometry in enumerate(geometries)
+                          if geometry.covers(point) and same_picker_name(identity, features[index]))
+        if matching != record['matchingPackedRawReceiverIds']:
+            raise ValueError('Reviewed sector-owned settlement absorbed source gained a hidden/lost receiver')
+
+
+def sector_owned_reservation_ids(value):
+    """Read concrete catalog IDs from descriptors; never interpret file text as code."""
+    if isinstance(value, str):
+        return {value} if re.fullmatch(r'(?:osm:(?:node|way|relation):[0-9]+|delegation:[0-9]+)', value) else set()
+    if isinstance(value, dict):
+        result = set()
+        for key, member in value.items():
+            result.update(sector_owned_reservation_ids(key))
+            result.update(sector_owned_reservation_ids(member))
+        return result
+    if isinstance(value, (list, tuple, set)):
+        return set().union(*(sector_owned_reservation_ids(member) for member in value)) if value else set()
+    return set()
+
+
+def reserve_sector_owned_settlement_proposals(reviews, manifest_path, strict_report, city_report,
+                                               residential_report, deferred_hamlets, features,
+                                               geometries, governors, base_groups, curation_applications):
+    """Cross-check new writes against ALL existing mutation/protection contracts.
+
+    Shared read-only dependencies are legal. A mutation/ownership claim against
+    another protected raw or absent source is not. The exact approved owner
+    record is the sole intentional strict-record overlap for its new point.
+    """
+    pending = [(sid, p) for sid, p in reviews.items() if 'sectorOwnedSettlementPreservation' in p]
+    if not pending:
+        return
+    claims = []
+    for sid, proposal in reviews.items():
+        pair = proposal['exactPair']; target = pair['basePickerId']
+        if 'sectorOwnedSettlementPreservation' in proposal:
+            ext = proposal['sectorOwnedSettlementPreservation']['proof']
+            protected = {r['id'] for r in ext['sourceStates']} | {target}
+        else:
+            # Returned descriptors omit original sourceStates. Select their
+            # actual raw/absent/context descriptors rather than inventing them.
+            protected = sector_owned_reservation_ids({k: v for k, v in proposal.items()
+                if k in ('exactPair', 'preservedSectors', 'preservedNamePeers', 'preservedNamePoints',
+                         'readOnlyNameContexts', 'deferredCompleteGroupExtension', 'townPreservationExtension')})
+        claims.append({'label': ('point', sid), 'read': protected, 'write': {sid, target}})
+    manifest = json.loads(Path(manifest_path).read_bytes())
+    for section in ('records', 'localRecords', 'cityDisplayAssociations', 'residentialDisplayAssociations'):
+        for record in manifest.get(section, []):
+            target = record.get('targetPickerGroupId')
+            if target is None and record.get('targetDelegationId') is not None:
+                target = f"delegation:{record['targetDelegationId']}"
+            writes = {record['id']}
+            if target is not None:
+                writes.add(target)
+            if section in ('records', 'localRecords'):
+                writes.update(record.get('expectedExistingMemberIds', []))
+                writes.update(member['id'] for member in record.get('members', []))
+            claims.append({'label': (section, record['id']), 'read': sector_owned_reservation_ids(record),
+                           'write': writes, 'record': record})
+    for report_label, report in (('city-report', city_report), ('residential-report', residential_report),
+                                 ('split-report', strict_report.get('splitSettlementReferences'))):
+        if report is None:
+            continue
+        for application in report['applications']:
+            protected = sector_owned_reservation_ids({key: application[key] for key in (
+                'id', 'pickerGroupId', 'protectedMetadata', 'finalGroups', 'preservedAbsorbedPointId',
+                'preservedNonCatalogPlace', 'preservedAbsentSourceIds', 'exclusiveSourceIds',
+                'completeSectorGroupPreservation') if key in application})
+            writes = {application['id'], application['pickerGroupId']}
+            claims.append({'label': (report_label, application['id']), 'read': protected, 'write': writes})
+    for record in deferred_hamlets:
+        writes = {record['id'], record['targetPickerGroupId'], *record['expectedExistingMemberIds']}
+        writes.update(member['id'] for member in record['members'])
+        claims.append({'label': ('deferred-hamlet', record['id']),
+                       'read': sector_owned_reservation_ids(record), 'write': writes})
+    for sid, proposal in pending:
+        runtime = proposal['sectorOwnedSettlementPreservation']; ext = runtime['proof']
+        target = proposal['exactPair']['basePickerId']; mine = next(c for c in claims if c['label'] == ('point', sid))
+        reviewed_complete_group_owner(manifest_path, ext['strictOwner'], runtime['sourceSha256'], runtime['baseCurrent']['id'])
+        owner = ext['strictOwner']['recordId']; receipt = ext['strictOwner']['expectedAppliedReceipt']
+        if ([r for r in strict_report['applications'] if r.get('pickerGroupId') == target or owner in r.get('ids', [])] != [receipt]
+                or any(r.get('id') == sid and r.get('action') == 'picker_base_display' for r in curation_applications)):
+            raise ValueError('Reviewed sector-owned settlement strict receipt or deferred phase changed')
+        matches = [(g, d) for g in governors for d in g['delegations'] if d['id'] == runtime['baseCurrent']['id']]
+        if (len(matches) != 1 or matches[0][1] != runtime['baseCurrent']
+                or {k: v for k, v in matches[0][0].items() if k != 'delegations'} != runtime['expectedGovernor']):
+            raise ValueError('Reviewed sector-owned settlement retained timetable reference changed')
+        for other in claims:
+            if other is mine:
+                continue
+            if other['label'] == ('records', owner):
+                if (other['record'] != ext['strictOwner']['expectedRecord']
+                        or other['write'] != {owner, target} or mine['write'] & other['read'] != {target}
+                        or other['write'] & mine['read'] != {owner, target}):
+                    raise ValueError('Reviewed sector-owned settlement owner reservation is not the one approved overlap')
+                continue
+            if (mine['write'] & (other['read'] | other['write'])
+                    or other['write'] & (mine['read'] | mine['write'])):
+                raise ValueError('Reviewed sector-owned settlement conflicts with an existing or pending protected identity')
+        verify_sector_owned_settlement_state(proposal, features, geometries, base_groups, False)
+    # Validate old pending point states too before either old or new pending
+    # dispatcher commits. Their existing apply still performs its own checks.
+    for proposal in reviews.values():
+        if 'deferredCompleteGroupExtension' in proposal:
+            verify_reviewed_complete_group_state(proposal, features, geometries, base_groups, False)
+    for sid, proposal in pending:
+        proposal['sectorOwnedSettlementPreservation']['sharedReservationValidated'] = True
+
+
+def apply_sector_owned_settlement_proposals(reviews, features, geometries, base_groups, curation_applications):
+    """After shared reservations, verify every before-state then append points."""
+    pending = [(sid, p) for sid, p in reviews.items() if 'sectorOwnedSettlementPreservation' in p]
+    if not pending:
+        return None
+    for sid, proposal in pending:
+        if proposal['sectorOwnedSettlementPreservation'].get('sharedReservationValidated') is not True:
+            raise ValueError('Reviewed sector-owned settlement lacks shared pending-contract reservations')
+        verify_sector_owned_settlement_state(proposal, features, geometries, base_groups, False)
+    indices = {row['id']: index for index, row in enumerate(features)}
+    for sid, proposal in pending:
+        target = proposal['exactPair']['basePickerId']
+        features[indices[sid]]['pickerGroupId'] = target
+        base_groups[sid] = target
+        curation_applications.append({'id': sid, 'decisionId': sid, 'action': 'picker_base_display',
+                                     'pickerGroupId': target, 'inherited': False})
+    groups = defaultdict(list)
+    for feature in features:
+        groups[feature['pickerGroupId']].append(feature['id'])
+    return [{'pickerGroupId': group, 'ids': sorted(ids)} for group, ids in sorted(groups.items())
+            if len(ids) > 1 or group.startswith('delegation:')]
 
 
 def reviewed_complete_group_owner(manifest_path, owner, source_sha256, target):
@@ -1365,6 +2015,9 @@ def verify_reviewed_point_base_names(reviews, features, geometries, base_groups)
     for feature in features:
         groups[feature['pickerGroupId']].add(feature['id'])
     for identifier, proposal in reviews.items():
+        if 'sectorOwnedSettlementPreservation' in proposal:
+            verify_sector_owned_settlement_state(proposal, features, geometries, base_groups, True)
+            continue
         if 'townPreservationExtension' in proposal:
             verify_reviewed_town_preservation(proposal, features, geometries, base_groups)
             continue
@@ -1648,27 +2301,234 @@ def validate_reviewed_source_phase_lineage(directory, review, original_sources, 
                 'packedGeometrySha256': row['packedGeometrySha256']} for row in extra]}
 
 
+def validate_reviewed_administrative_successor_identity(directory, review, registry, original_sources,
+                                                        effective_sources, curation, states, raw, bindings,
+                                                        source_sha256):
+    """Validate unchanged source sectors with reviewed successor membership.
+
+    The actual historical delegation stays a source context. No successor
+    polygon or source-code rewrite is inferred from the reviewed membership.
+    """
+    extension = review['townPreservationExtension']
+    value = extension['administrativeSuccession']
+    keys = {'schemaVersion', 'method', 'sourceDelegationCode', 'currentDelegationCode',
+            'historicalDelegationContextId', 'currentDelegationSourceContextIds', 'reviewedParentNames',
+            'sectorSuccessions', 'independentPointIds', 'coordinateReviewedSectorIds', 'evidence',
+            'reviewEvidence', 'rawContextClosure', 'sourceOnlyAbsorbedPoints'}
+    if (not isinstance(value, dict) or set(value) != keys
+            or type(value['schemaVersion']) is not int or value['schemaVersion'] != 1
+            or value['method'] != 'reviewed_unchanged_sector_administrative_successor_identity'
+            or extension['acceptedBoundaryReplacements'] != [] or extension['reviewedBoundaries'] is not None):
+        raise ValueError('Malformed or incompatible reviewed administrative succession')
+    old_code, new_code = value['sourceDelegationCode'], value['currentDelegationCode']
+    if (any(not isinstance(code, str) or not re.fullmatch(r'[0-9]{4}', code) for code in (old_code, new_code))
+            or old_code == new_code or old_code[:2] != new_code[:2]
+            or extension['officialDelegationCodes'] != [new_code]):
+        raise ValueError('Reviewed administrative succession requires one same-governorate successor')
+    identifier = review['pointId']
+    sectors = {row['id']: row for row in review['preservedSectors']}
+    contexts = review['contexts']
+    historical_id = value['historicalDelegationContextId']
+    if (len(contexts) != 2 or historical_id not in contexts
+            or contexts[historical_id]['kind'] != 'delegation'
+            or contexts[historical_id]['tags'].get('ref:tn:codegeo') != old_code
+            or value['currentDelegationSourceContextIds'] != {'original': [], 'effective': []}
+            or {sid for sid, row in raw.items() if row['currentMetadata']['hasBoundary']} != set(sectors)):
+        raise ValueError('Reviewed successor actual source context or preserved polygon set changed')
+    for phase, sources in (('original', original_sources), ('effective', effective_sources)):
+        if sorted(sid for sid, source in sources.items() if source['kind'] == 'delegation'
+                  and source['tags'].get('ref:tn:codegeo') == new_code) != value['currentDelegationSourceContextIds'][phase]:
+            raise ValueError('Reviewed successor delegation source is no longer absent')
+    for state in states.values():
+        if state['effective'] != {**state['original'], 'sourceId': 'osm'}:
+            raise ValueError('Reviewed successor membership cannot rewrite source identity or geometry')
+
+    successions = value['sectorSuccessions']
+    if (not isinstance(successions, list) or [row['id'] for row in successions] != sorted(sectors)
+            or len({row['originalSectorCode'] for row in successions}) != len(sectors)
+            or len({row['currentSectorCode'] for row in successions}) != len(sectors)):
+        raise ValueError('Reviewed successor sector mapping is not a complete bijection')
+    parents = value['reviewedParentNames']
+    official = [row for row in registry['sectors'] if row['delegationCode'] == new_code]
+    if (not isinstance(parents, list) or len(parents) != 3 or len(set(parents)) != 3
+            or any(not isinstance(name, str) or not name for name in parents)
+            or parents[0] != 'معتمدية ' + parents[1]
+            or not official or any(norm(row['delegationAr']) != norm(parents[1])
+                                  or norm(row['delegationFr']) != norm(parents[2]) for row in official)
+            or norm(review['baseCurrent']['nomAr']) != norm(parents[1])):
+        raise ValueError('Reviewed successor parent names lack the exact current identity')
+    for row in successions:
+        sid, old_sector, new_sector = row['id'], row['originalSectorCode'], row['currentSectorCode']
+        sector = sectors[sid]
+        decision = bindings[sid]
+        if (set(row) != {'id', 'originalSectorCode', 'currentSectorCode', 'officialIdentity', 'expectedAdministrativeCuration'}
+                or not isinstance(old_sector, str) or not re.fullmatch(old_code + r'[0-9]{2}', old_sector)
+                or not isinstance(new_sector, str) or not re.fullmatch(new_code + r'[0-9]{2}', new_sector)
+                or row['officialIdentity'] != sector['officialIdentity'] or row['officialIdentity'] not in official
+                or row['officialIdentity']['sectorCode'] != new_sector
+                or row['expectedAdministrativeCuration'] != decision or curation.get(sid) != decision
+                or not isinstance(decision, dict)
+                or set(decision) != {'id', 'expectedKind', 'expectedTags', 'action', 'parentNames',
+                                     'reason', 'evidence', 'unresolved'}
+                or decision['id'] != sid or decision['action'] != 'administrative_context'
+                or decision['expectedKind'] != 'sector' or decision['parentNames'] != parents
+                or decision['expectedTags'] != {'name:ar': row['officialIdentity']['sectorAr'], 'ref:tn:codegeo': old_sector}):
+            raise ValueError('Reviewed successor sector identity or parent-only curation changed')
+        for phase, sources in (('original', original_sources), ('effective', effective_sources)):
+            if (states[sid][phase]['tags'].get('ref:tn:codegeo') != old_sector
+                    or states[sid][phase]['tags'].get('name:ar') != row['officialIdentity']['sectorAr']
+                    or sorted(key for key, source in sources.items() if source['kind'] == 'sector'
+                              and source['tags'].get('ref:tn:codegeo') == old_sector) != [sid]):
+                raise ValueError('Reviewed successor unchanged source sector is not unique')
+
+    evidence = value['evidence']
+    if not isinstance(evidence, list) or not evidence:
+        raise ValueError('Reviewed successor membership lacks primary evidence')
+    has_derived_primary = False
+    for reference in evidence:
+        content = aggregate_review_file(directory, reference, 'successor primary membership evidence')
+        if (reference.get('role') != 'official_current_sector_membership'
+                or not isinstance(reference.get('url'), str) or not reference['url'].startswith(('https://', 'http://'))
+                or not isinstance(reference.get('requiredText'), list) or not reference['requiredText']
+                or any(not isinstance(text, str) or not text or text not in content.decode('utf-8')
+                       for text in reference['requiredText'])):
+            raise ValueError('Reviewed successor primary membership text changed')
+        if 'derivedProvenance' in reference:
+            provenance = json.loads(aggregate_review_file(directory, reference['derivedProvenance'],
+                                                          'successor derived primary provenance'))
+            pdf = aggregate_review_file(directory, provenance['originalPdf'], 'successor original primary PDF')
+            text = aggregate_review_file(directory, provenance['derivedText'], 'successor derived whole-page text')
+            if (provenance.get('derivedTextIsOriginalResponseBytes') is not False or not pdf.startswith(b'%PDF-')
+                    or text != content or provenance['derivedText']['sha256'] != reference['sha256']
+                    or provenance['originalUrl'] != reference['url'].split('#', 1)[0]
+                    or not isinstance(provenance.get('method'), str) or not provenance['method']):
+                raise ValueError('Reviewed successor PDF-derived evidence provenance changed')
+            has_derived_primary = True
+    if not has_derived_primary:
+        raise ValueError('Reviewed successor membership requires its pinned original-PDF-derived evidence')
+    aggregate_review_file(directory, value['reviewEvidence'], 'successor independent identity scope review')
+
+    closure = value['rawContextClosure']
+    if (not isinstance(closure, dict) or set(closure) != {'baselineMetadata', 'governorateId',
+                                                        'administrativeParentName', 'expectedRawIds'}
+            or type(closure['governorateId']) is not int or closure['governorateId'] != review['expectedGovernor']['id']
+            or closure['administrativeParentName'] != parents[0] or closure['expectedRawIds'] != sorted(raw)):
+        raise ValueError('Malformed reviewed successor full raw-context closure')
+    baseline = json.loads(aggregate_review_file(directory, closure['baselineMetadata'], 'successor complete baseline catalog'))
+    baseline_rows = baseline['features']
+    baseline_ids = {row['id'] for row in baseline_rows}
+    observed = sorted(row['id'] for row in baseline_rows if row.get('governorateId') == closure['governorateId']
+                      and (row.get('parentName') == closure['administrativeParentName']
+                           or closure['administrativeParentName'] in row.get('contextAliases', [])))
+    if (baseline.get('schemaVersion') != 1 or baseline['source']['sha256'] != source_sha256
+            or len(baseline_ids) != len(baseline_rows) or observed != closure['expectedRawIds']
+            or any(row != raw[row['id']]['currentMetadata'] for row in baseline_rows if row['id'] in raw)):
+        raise ValueError('Reviewed successor complete baseline raw-context set or exact records changed')
+    independent = value['independentPointIds']
+    if (not isinstance(independent, list) or independent != sorted(set(independent))
+            or set(independent) != {sid for sid, row in raw.items() if not row['currentMetadata']['hasBoundary']} - {identifier}
+            or not independent):
+        raise ValueError('Reviewed successor independent point set is incomplete')
+    for sid in independent:
+        row = raw[sid]
+        if (not re.fullmatch(r'osm:node:[0-9]+', sid) or row['kind'] != 'hamlet'
+                or bindings.get(sid) is not None or curation.get(sid) is not None
+                or row['currentMetadata']['pickerGroupId'] != sid
+                or extension['expectedBeforeGroups'].get(sid) != [sid]
+                or extension['expectedAfterGroups'].get(sid) != [sid]):
+            raise ValueError('Reviewed successor independent hamlet lost its separate singleton identity')
+
+    coordinates = {'point': Point(review['rawCurrent']['lng'], review['rawCurrent']['lat']),
+                   'base': Point(review['baseCurrent']['lng'], review['baseCurrent']['lat'])}
+    coordinates.update({f'independentPoint:{sid}': Point(raw[sid]['currentMetadata']['lng'], raw[sid]['currentMetadata']['lat'])
+                        for sid in independent})
+    reviewed_membership = value['coordinateReviewedSectorIds']
+    if not isinstance(reviewed_membership, dict) or set(reviewed_membership) != set(coordinates):
+        raise ValueError('Reviewed successor sector-coordinate inventory changed')
+    for role, point in coordinates.items():
+        if set(reviewed_membership[role]) != {'original', 'effective'}:
+            raise ValueError('Malformed reviewed successor sector-coordinate phases')
+        for phase, sources in (('original', original_sources), ('effective', effective_sources)):
+            hits = sorted(sid for sid, source in sources.items() if source['kind'] == 'sector'
+                          and source.get('shape') is not None and source['shape'].covers(point))
+            if len(hits) != 1 or hits[0] not in sectors or reviewed_membership[role][phase] != hits:
+                raise ValueError('Reviewed successor point lacks unique unchanged transferred-sector context')
+
+    absent = value['sourceOnlyAbsorbedPoints']
+    if (not isinstance(absent, list) or not absent
+            or [row['id'] for row in absent] != sorted({row['id'] for row in absent})):
+        raise ValueError('Malformed reviewed successor absorbed source-only point inventory')
+    absent_ids = {row['id'] for row in absent}
+    if absent_ids & (set(states) | baseline_ids):
+        raise ValueError('Reviewed successor absorbed point gained a raw/context identity')
+    for row in absent:
+        sid, receiver = row['id'], row['absorbedBySectorId']
+        if (set(row) != {'id', 'original', 'effective', 'expectedCuration', 'absorbedBySectorId', 'expectedRawPresence'}
+                or not re.fullmatch(r'osm:node:[0-9]+', sid) or receiver not in sectors
+                or row['expectedRawPresence'] is not False or row['expectedCuration'] is not None
+                or curation.get(sid) is not None
+                or row['effective'] != {**row['original'], 'sourceId': 'osm'}
+                or any(r.get('pickerGroupId') == sid for r in baseline_rows)):
+            raise ValueError('Reviewed successor source-only point presence, receiver or curation changed')
+        for phase, sources in (('original', original_sources), ('effective', effective_sources)):
+            source = sources[sid]
+            point = source.get('point')
+            if (point is None or point.geom_type != 'Point' or point.is_empty or source.get('shape') is not None
+                    or source['kind'] != 'village' or row[phase] != {'tags': source['tags'], 'kind': source['kind'],
+                        'sourceId': source.get('sourceId'), 'geometrySha256': aggregate_geometry_sha256(point)}
+                    or row['original']['sourceId'] is not None):
+                raise ValueError('Reviewed successor absorbed source point changed')
+            labels = names(source['tags'])
+            identity = {'name': labels[0], 'aliases': labels[1:]}
+            matching = sorted(key for key, area in sources.items() if area.get('shape') is not None
+                              and area['shape'].covers(point) and names(area['tags'])
+                              and same_picker_name(identity, {'name': names(area['tags'])[0], 'aliases': names(area['tags'])[1:]}))
+            if matching != [receiver]:
+                raise ValueError('Reviewed successor absorbed point no longer has one exact source receiver')
+    # This is an additional source-point closure, separate from raw/catalog rows.
+    for sources in (original_sources, effective_sources):
+        covered = {sid for sid, source in sources.items() if source.get('point') is not None
+                   and any(sources[sector_id]['shape'].covers(source['point']) for sector_id in sectors)}
+        if covered != {identifier, *independent, *absent_ids}:
+            raise ValueError('Reviewed successor complete covered source-point inventory changed')
+    return {'independentPointIds': independent,
+            'finalDescriptor': {'governorateId': closure['governorateId'],
+                                'administrativeParentName': closure['administrativeParentName'],
+                                'expectedRawIds': closure['expectedRawIds'],
+                                'sourceOnlyAbsentIds': sorted(absent_ids)}}
+
 def validate_reviewed_town_preservation_extension(directory, review, rule, registry, original_sources,
                                                   effective_sources, curation, source_sha256,
-                                                  reviewed_boundaries, official_report, reviewed_picker_groups):
+                                                  reviewed_boundaries, official_report, reviewed_picker_groups,
+                                                  governor=None):
     """Preserve complete town-adjacent groups and their actual source phases.
 
     This reads the existing decisions and source objects; it never changes them.
     Geometry membership and reviewed administrative context are separate facts.
+    An optional retained town point must already own the base automatically;
+    only the reviewed new point joins that complete group.
     """
     extension = review['townPreservationExtension']
     keys = {'schemaVersion', 'officialDelegationCodes', 'sourceStates', 'curationBindings',
             'acceptedBoundaryReplacements', 'reviewedBoundaries', 'sourceNamePeerIds',
             'coordinateContextMembership', 'protectedRawRecords', 'expectedBeforeGroups',
             'expectedAfterGroups', 'priorPickerBindings'}
+    has_retained_town = isinstance(extension, dict) and 'retainedTownPoint' in extension
+    has_successor = isinstance(extension, dict) and 'administrativeSuccession' in extension
+    if has_retained_town:
+        keys = keys | {'retainedTownPoint'}
+    if has_successor:
+        keys = keys | {'administrativeSuccession'}
     if (review['method'] != 'reviewed_explicit_point_base_display_identity'
             or any(key in review for key in ('sourcePhaseLineage', 'typedNamePeerExtension',
                                              'deferredCompleteGroupExtension', 'officialDelegationCode'))
             or not isinstance(extension, dict) or set(extension) != keys
+            or (has_successor and (has_retained_town or not isinstance(extension['administrativeSuccession'], dict)))
             or type(extension['schemaVersion']) is not int or extension['schemaVersion'] != 1):
         raise ValueError('Malformed or incompatible reviewed town preservation extension')
     identifier, target = review['pointId'], f"delegation:{review['baseId']}"
     codes = extension['officialDelegationCodes']
+    context_codes = [extension['administrativeSuccession'].get('sourceDelegationCode')] if has_successor else codes
     sectors = review['preservedSectors']
     sector_ids = {row['id'] for row in sectors}
     contexts = review['contexts']
@@ -1683,7 +2543,7 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
             or {r['officialIdentity']['delegationCode'] for r in sectors} != set(codes)
             or not isinstance(contexts, dict) or set(contexts) & sector_ids
             or sorted(c['kind'] for c in contexts.values()) != ['delegation'] * len(codes) + ['governorate']
-            or sorted(c['tags'].get('ref:tn:codegeo') for c in contexts.values() if c['kind'] == 'delegation') != codes):
+            or sorted(c['tags'].get('ref:tn:codegeo') for c in contexts.values() if c['kind'] == 'delegation') != context_codes):
         raise ValueError('Reviewed town complete plural imada or context inventory changed')
     governor_id = next(i for i, c in contexts.items() if c['kind'] == 'governorate')
     if (contexts[governor_id]['tags'].get('ref:tn:codegeo') != codes[0][:2]
@@ -1794,12 +2654,18 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
         if effective != {'tags': tags, 'kind': original['kind'], 'sourceId': provider, 'geometrySha256': geometry_sha}:
             raise ValueError('Reviewed town effective state lacks its exact accepted transformation')
 
+    successor = None
+    independent_point_ids = set()
+    if has_successor:
+        successor = validate_reviewed_administrative_successor_identity(
+            directory, review, registry, original_sources, effective_sources, curation, states, raw, bindings, source_sha256)
+        independent_point_ids = set(successor['independentPointIds'])
     for sector in sectors:
         sid = sector['id']
         if (states[sid]['original']['kind'] != 'sector'
                 or sector['originalTags'] != states[sid]['original']['tags']
                 or sector['sourceGeometrySha256'] != states[sid]['original']['geometrySha256']
-                or sector['originalTags'].get('ref:tn:codegeo') != sector['officialIdentity']['sectorCode']
+                or (not has_successor and sector['originalTags'].get('ref:tn:codegeo') != sector['officialIdentity']['sectorCode'])
                 or sector['expectedCuration'] != bindings[sid]
                 or sector['currentMetadata'] != raw[sid]['currentMetadata']
                 or sector['packedGeometrySha256'] != raw[sid]['packedGeometrySha256']):
@@ -1825,6 +2691,59 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
                     or source['point'].coords[:] != [(metadata['lng'], metadata['lat'])]))):
             raise ValueError('Reviewed town typed raw source representation changed')
 
+    retained_town_id = None
+    if has_retained_town:
+        retained = extension['retainedTownPoint']
+        if (not isinstance(retained, dict) or set(retained) != {'id', 'sourceNode', 'sourceNodeIdentity'}
+                or not isinstance(retained['id'], str) or not re.fullmatch(r'osm:node:[0-9]+', retained['id'])
+                or retained['id'] == identifier or retained['id'] not in raw):
+            raise ValueError('Malformed reviewed retained town point')
+        retained_town_id = retained['id']
+        owner = raw[retained_town_id]['currentMetadata']
+        if (owner['kind'] != 'town' or owner['hasBoundary'] is not False
+                or owner['pickerGroupId'] != target or owner['delegationId'] != review['baseId']
+                or bindings.get(retained_town_id) is not None or curation.get(retained_town_id) is not None
+                or {sid for sid, row in raw.items() if row['currentMetadata']['hasBoundary'] is False}
+                    != {identifier, retained_town_id}
+                or not isinstance(governor, dict)
+                or {k: v for k, v in governor.items() if k != 'delegations'} != review['expectedGovernor']
+                or [base for base in governor['delegations'] if base['id'] == review['baseId']]
+                    != [review['baseCurrent']]):
+            raise ValueError('Reviewed retained town ownership or complete point inventory changed')
+        primary = norm(review['rawCurrent']['name'])
+        if (not primary or norm(owner['name']) != primary
+                or norm(review['baseCurrent']['nomAr']) != primary):
+            raise ValueError('Reviewed retained town lacks the same primary settlement identity')
+        reference, identity = retained['sourceNode'], retained['sourceNodeIdentity']
+        if (not isinstance(reference, dict) or set(reference) != {'file', 'sha256', 'url'}
+                or not isinstance(identity, dict) or set(identity) != {'url', 'sha256', 'exactElement'}):
+            raise ValueError('Malformed reviewed retained town source snapshot')
+        snapshot = json.loads(aggregate_review_file(directory, reference, 'retained town exact source node'))['elements']
+        element = identity['exactElement']
+        if (not isinstance(element, dict) or snapshot != [element]
+                or element['type'] != 'node' or type(element['id']) is not int or element['id'] <= 0
+                or f"osm:node:{element['id']}" != retained_town_id
+                or element['tags'] != states[retained_town_id]['original']['tags']
+                or element['lat'] != owner['lat'] or element['lon'] != owner['lng']
+                or type(element['version']) is not int or element['version'] <= 0
+                or not isinstance(element['timestamp'], str) or not element['timestamp']
+                or type(element['changeset']) is not int or element['changeset'] <= 0
+                or reference['sha256'] != identity['sha256'] or reference['url'] != identity['url']
+                or reference['url'] != f"https://api.openstreetmap.org/api/0.6/node/{element['id']}.json"):
+            raise ValueError('Reviewed retained town authentic source node changed')
+        for sources in (original_sources, effective_sources):
+            source = sources[retained_town_id]
+            point = source.get('point')
+            if (source['kind'] != 'town' or source.get('shape') is not None or point is None
+                    or point.geom_type != 'Point' or point.coords[:] != [(owner['lng'], owner['lat'])]
+                    or source['tags'] != element['tags'] or norm(names(source['tags'])[0]) != primary):
+                raise ValueError('Reviewed retained town original/effective identity changed')
+            actual_delegations = [(sid, area) for sid, area in sources.items() if area['kind'] == 'delegation'
+                                  and area.get('shape') is not None and area['shape'].covers(point)]
+            if (not actual_delegations or any(sid not in contexts for sid, area in actual_delegations)
+                    or matching_base_delegation(owner, point, [area for sid, area in actual_delegations], governor) != target):
+                raise ValueError('Reviewed retained town automatic base ownership changed')
+
     peer_keys = {norm(v) for v in [review['rawCurrent']['name'], *review['rawCurrent']['aliases'],
                  review['baseCurrent']['nomAr'], review['baseCurrent']['nomFr'], review['baseCurrent']['nomEn']]}
     peer_ids = extension['sourceNamePeerIds']
@@ -1846,6 +2765,8 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
         raise ValueError('Reviewed town coordinate/context inventory is incomplete')
     coordinates = {'point': Point(review['rawCurrent']['lng'], review['rawCurrent']['lat']),
                    'base': Point(review['baseCurrent']['lng'], review['baseCurrent']['lat'])}
+    if has_retained_town:
+        coordinates['retainedTown'] = Point(owner['lng'], owner['lat'])
     delegation_ids = {sid for sid, context in contexts.items() if context['kind'] == 'delegation'}
     for sid, expected in membership.items():
         if not isinstance(expected, dict) or set(expected) != {'original', 'effective'}:
@@ -1853,7 +2774,7 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
         for phase, sources in (('original', original_sources), ('effective', effective_sources)):
             geometry = sources[sid].get('shape')
             if (geometry is None or geometry.geom_type not in ('Polygon', 'MultiPolygon')
-                    or set(expected[phase]) != {'point', 'base'}):
+                    or set(expected[phase]) != set(coordinates)):
                 raise ValueError('Reviewed town administrative context is not a polygon')
             for role, point in coordinates.items():
                 value = expected[phase][role]
@@ -1871,12 +2792,25 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
     if not isinstance(before, dict) or not isinstance(after, dict):
         raise ValueError('Malformed reviewed town complete group maps')
     members = [sid for values in before.values() for sid in values]
-    if (len(members) != len(raw) or set(members) != set(raw)
-            or set(before) != sector_ids | {identifier} or before.get(identifier) != [identifier]
+    if has_retained_town:
+        expected_after = {group: values for group, values in before.items() if group != identifier}
+        expected_after[target] = sorted([identifier, retained_town_id])
+        if (len(members) != len(raw) or set(members) != set(raw)
+                or set(before) != sector_ids | {identifier, target}
+                or before.get(identifier) != [identifier] or before.get(target) != [retained_town_id]
+                or any(not isinstance(values, list) or not values or values != sorted(set(values))
+                       or (group != target and group not in values)
+                       or any(raw[sid]['currentMetadata']['pickerGroupId'] != group for sid in values)
+                       or (group not in (identifier, target) and set(values) & sector_ids != {group})
+                       for group, values in before.items())
+                or after != expected_after or review['completePickerGroups'] != {'before': before, 'after': after}):
+            raise ValueError('Reviewed retained town complete group transition changed')
+    elif (len(members) != len(raw) or set(members) != set(raw)
+            or set(before) != sector_ids | {identifier} | independent_point_ids or before.get(identifier) != [identifier]
             or target in before
             or any(not isinstance(values, list) or not values or values != sorted(set(values))
                    or group not in values or any(raw[sid]['currentMetadata']['pickerGroupId'] != group for sid in values)
-                   or (group != identifier and set(values) & sector_ids != {group})
+                   or (group != identifier and group not in independent_point_ids and set(values) & sector_ids != {group})
                    for group, values in before.items())
             or after != {**{group: values for group, values in before.items() if group != identifier}, target: [identifier]}):
         raise ValueError('Reviewed town group closure or single point transition changed')
@@ -1889,7 +2823,10 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
     if picker.get('sourceSha256') != source_sha256 or picker.get('schemaVersion') != 1:
         raise ValueError('Reviewed town active prior picker source changed')
     touching = []
-    quoted_ids = [json.dumps(sid) for sid in states]
+    prior_ids = set(states)
+    if has_successor:
+        prior_ids.update(successor['finalDescriptor']['sourceOnlyAbsentIds'])
+    quoted_ids = [json.dumps(sid) for sid in sorted(prior_ids)]
     for section in ('records', 'localRecords', 'distinctPairs', 'cityDisplayAssociations', 'residentialDisplayAssociations'):
         for record in picker.get(section, []):
             if (record.get('targetDelegationId') == review['baseId'] or record.get('targetPickerGroupId') == target):
@@ -1907,10 +2844,15 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
             raise ValueError('Reviewed town prior picker pin does not bind the active manifest')
     elif prior['manifest'] is not None:
         raise ValueError('Reviewed town empty prior picker inventory has an unexpected manifest claim')
+    preserved_extension = {'protectedRawRecords': rows, 'expectedAfterGroups': after,
+                           'readOnlyContextIds': sorted(contexts)}
+    if has_retained_town:
+        preserved_extension['retainedTownPointId'] = retained_town_id
+    if has_successor:
+        preserved_extension['administrativeSuccession'] = successor['finalDescriptor']
     return {'exactPair': {'basePickerId': target, 'rawCurrent': review['rawCurrent']},
             'preservedSectors': [],
-            'townPreservationExtension': {'protectedRawRecords': rows, 'expectedAfterGroups': after,
-                                          'readOnlyContextIds': sorted(contexts)}}
+            'townPreservationExtension': preserved_extension}
 
 
 def verify_reviewed_town_preservation(proposal, features, geometries, base_groups):
@@ -1928,9 +2870,22 @@ def verify_reviewed_town_preservation(proposal, features, geometries, base_group
         if groups.get(group) != set(members):
             raise ValueError('Reviewed town final complete raw group changed')
     protected = {row['id'] for row in extension['protectedRawRecords']}
-    if (groups.get(identifier) or groups.get(target) != {identifier}
-            or {sid for sid, group in base_groups.items() if group == target} != {identifier}
-            or set(base_groups) & (protected - {identifier})):
+    if 'administrativeSuccession' in extension:
+        successor = extension['administrativeSuccession']
+        observed = sorted(row['id'] for row in features if row.get('governorateId') == successor['governorateId']
+                          and (row.get('parentName') == successor['administrativeParentName']
+                               or successor['administrativeParentName'] in row.get('contextAliases', [])))
+        if observed != successor['expectedRawIds'] or set(observed) != protected:
+            raise ValueError('Reviewed successor final complete administrative raw-context closure changed')
+        for sid in successor['sourceOnlyAbsentIds']:
+            if sid in indices or groups.get(sid) or sid in base_groups or sid in base_groups.values():
+                raise ValueError('Reviewed successor absorbed source-only point gained a raw row or owner')
+    expected_owners = {identifier}
+    if 'retainedTownPointId' in extension:
+        expected_owners.add(extension['retainedTownPointId'])
+    if (groups.get(identifier) or groups.get(target) != expected_owners
+            or {sid for sid, group in base_groups.items() if group == target} != expected_owners
+            or set(base_groups) & (protected - expected_owners)):
         raise ValueError('Reviewed town final explicit ownership changed')
     for row in extension['protectedRawRecords']:
         sid = row['id']
@@ -1983,8 +2938,19 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
             suburb_review = True
         else:
             raise ValueError('Unknown reviewed point/base display method')
+        sector_owned_extension = 'sectorOwnedSettlementPreservation' in review
+        if sector_owned_extension and (suburb_review or any(key in review for key in (
+                'townPreservationExtension', 'deferredCompleteGroupExtension', 'typedNamePeerExtension',
+                'sourcePhaseLineage', 'retainedTownPoint', 'officialDelegationCode'))):
+            raise ValueError('Sector-owned settlement requires its unmixed explicit settlement contract')
         if 'deferredCompleteGroupExtension' in review and not suburb_review:
             raise ValueError('Deferred complete-group extension requires the explicit suburb method')
+        retained_town_extension = (isinstance(review.get('townPreservationExtension'), dict)
+                                  and 'retainedTownPoint' in review['townPreservationExtension'])
+        if retained_town_extension and (suburb_review or any(key in review for key in (
+                'deferredCompleteGroupExtension', 'typedNamePeerExtension', 'sourcePhaseLineage',
+                'officialDelegationCode'))):
+            raise ValueError('Retained town point requires the unmixed town preservation contract')
         typed_extension = None
         preserved_name_points, read_only_name_contexts = [], []
         if 'typedNamePeerExtension' in review:
@@ -2013,8 +2979,8 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
                     'lat': current['lat'], 'lng': current['lng']}
                 or review['onlyRawChange'] != {'id': identifier, 'field': 'pickerGroupId',
                     'before': identifier, 'after': f'delegation:{target}'}
-                or ('deferredCompleteGroupExtension' not in review
-                    and review['completePickerGroups'] != {'before': [[identifier], [f'delegation:{target}']],
+                or ('deferredCompleteGroupExtension' not in review and not retained_town_extension
+                    and not sector_owned_extension and review['completePickerGroups'] != {'before': [[identifier], [f'delegation:{target}']],
                         'after': [[f'delegation:{target}', identifier]]})
                 or review['displayPhaseCoordinateChanges'] != []):
             raise ValueError('Reviewed town display identity or either retained coordinate changed')
@@ -2043,10 +3009,14 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
                            for text in reference['requiredText'])):
                 raise ValueError('Reviewed primary town identity content changed')
         registry = json.loads(aggregate_review_file(directory, review['officialRegistry'], 'official imada identities'))
+        if sector_owned_extension:
+            return validate_sector_owned_settlement_preservation(
+                directory, review, rule, registry, original_sources, effective_sources, curation,
+                source_sha256, reviewed_boundaries, official_report, reviewed_picker_groups)
         if 'townPreservationExtension' in review:
             return validate_reviewed_town_preservation_extension(
                 directory, review, rule, registry, original_sources, effective_sources, curation,
-                source_sha256, reviewed_boundaries, official_report, reviewed_picker_groups)
+                source_sha256, reviewed_boundaries, official_report, reviewed_picker_groups, governor)
         sectors = review['preservedSectors']
         official = [r for r in registry['sectors'] if r['delegationCode'] == review['officialDelegationCode']]
         if (not sectors or len({r['id'] for r in sectors}) != len(sectors)
@@ -3829,9 +4799,9 @@ def validate_reviewed_city_display_associations(manifest_path, manifest, feature
     """Validate an explicit city-name display policy, never a spatial base merge.
 
     The source residential keeps its own reference, nearest source and saved ID.
-    Only the canonical browsing choice uses the existing named city's base row.
-    Noncontainment and differing raw/manual sources must be reviewed facts, not
-    optional exemptions from the separate existing base-group guards.
+    The canonical browsing choice keeps the named city's base identity while
+    manual prayer selection uses its authentic retained locality representative.
+    Historical fixed-source policy is preserved as evidence, not a runtime rule.
     """
     entries = manifest.get('cityDisplayAssociations', [])
     if not isinstance(entries, list):
@@ -3878,17 +4848,40 @@ def validate_reviewed_city_display_associations(manifest_path, manifest, feature
                     or review['inputPins']['sourceFacts']['sha256'] != proof['sourceFacts']['sha256']
                     or review['inputPins']['officialRegistry']['sha256'] != proof['officialRegistry']['sha256']):
                 raise ValueError('City display source evidence changed')
+            historical_ref = proof.get('historicalPolicyProof')
+            if (not isinstance(historical_ref, dict)
+                    or historical_ref.get('sha256') != '91ed841f8fa31963ab89361ab8232a7b5995884314c098ac71bafedf71baeea3'):
+                raise ValueError('City nearest policy lacks its immutable historical proof')
+            historical_proof = document(historical_ref, 'historical fixed-source policy')
+            if (historical_proof.get('application') != application
+                    or review.get('historicalPolicyReview') != historical_proof['sourceReview']):
+                raise ValueError('City nearest policy changed its historical identity lineage')
+            historical_review = document(review['historicalPolicyReview'], 'historical source review')
+            preserved_fields = ('primarySources', 'primaryFindings', 'identity', 'sourceAssertions',
+                                'context', 'currentBase', 'geometryAndPrayerFacts')
+            if (any(review.get(key) != historical_review.get(key) for key in preserved_fields)
+                    or proof.get('sourceFacts') != historical_proof.get('sourceFacts')
+                    or proof.get('officialRegistry') != historical_proof.get('officialRegistry')
+                    or proof.get('requiredDistinctPair') != historical_proof.get('requiredDistinctPair')
+                    or proof.get('primarySources') != historical_proof.get('primarySources')
+                    or review['completeTransition']['beforeGroups']
+                       != historical_review['completeTransition']['beforeGroups']):
+                raise ValueError('City nearest policy altered preserved identity or historical before-groups')
             policy = review['recommendedPolicy']
-            required_true = ('sourceIdentitySupported', 'preserveRawRepresentativeAndDefault',
-                             'preserveExistingCityCanonicalSource', 'preserveSavedRawManual623AndGpsSources',
-                             'basePointOutsideResidentialAcknowledged',
-                             'rawDefault623DiffersFromCanonical468Acknowledged',
-                             'townNodeIsIdentityEvidenceOnly', 'notACompleteTownBoundaryClaim',
-                             'noGenericOrTransitiveNameMatching')
-            if (proof.get('acceptedPolicy') != policy
-                    or policy.get('method') != application['method']
-                    or any(policy.get(key) is not True for key in required_true)):
-                raise ValueError('Missing explicit reviewed city display-only policy')
+            expected_policy = {
+                'method': 'reviewed_city_display_association', 'sourceIdentitySupported': True,
+                'requiresRootPolicyAcceptance': True,
+                'scope': 'Exact city display identity with nearest available prayer selection at its retained raw locality representative.',
+                'preserveRawRepresentativeAndDefault': True, 'preserveCanonicalDisplayIdentity': True,
+                'selectNearestAvailableAtRetainedRepresentative': True,
+                'recomputeSavedManualCanonicalIds': True,
+                'preserveSavedRawManual623AndGpsSources': True,
+                'basePointOutsideResidentialAcknowledged': True, 'historicalFixed468PolicySuperseded': True,
+                'townNodeIsIdentityEvidenceOnly': True, 'notACompleteTownBoundaryClaim': True,
+                'noGenericOrTransitiveNameMatching': True}
+            if (proof.get('acceptedPolicy') != policy or policy != expected_policy
+                    or any(type(policy[key]) is not type(value) for key, value in expected_policy.items())):
+                raise ValueError('Missing exact retained-locality nearest-source city policy')
             identity, transition = review['identity'], review['completeTransition']
             sector_id, point_id = identity['distinctSectorId'], identity['absorbedTownNodeId']
             if (identity['residentialId'] != identifier or identity['townBaseId'] != target_group
@@ -3913,7 +4906,7 @@ def validate_reviewed_city_display_associations(manifest_path, manifest, feature
                 {'id': sector_id, 'memberIds': [sector_id],
                  'canonicalName': identity['sectorArabic'], 'manualSource': target},
                 {'id': target_group, 'memberIds': sorted([target_group, identifier]),
-                 'canonicalName': identity['cityArabic'], 'manualSource': target}]
+                 'canonicalName': identity['cityArabic'], 'manualSource': 623}]
             if (before != expected_before or after != expected_after
                     or transition.get('afterDistinctSourceMemberIds') != [identifier]
                     or transition.get('targetMemberIdsBefore') != [target_group]
@@ -4076,13 +5069,45 @@ def validate_reviewed_city_display_associations(manifest_path, manifest, feature
                     or original_sources[parent_id]['shape'].covers(original_sources[identifier]['shape'])
                     or effective_sources[parent_id]['shape'].covers(effective_sources[identifier]['shape'])):
                 raise ValueError('City explicit raw623/canonical468/noncontainment policy no longer applies')
+            # This exact one-city policy is not a configurable nearest-source bypass.
+            # The retained raw metadata and packed geometry were bound above and
+            # are checked again after all overrides by the final display verifier.
+            manual_selection = proof.get('manualPrayerSelection')
+            expected_selection = {
+                'method': 'nearest_available_at_retained_locality', 'displayGroupId': 'delegation:468',
+                'representativeId': 'osm:way:174739936',
+                'representative': {'lat': 36.465982, 'lng': 10.74479},
+                'expectedCurrentNearestSourceId': 623,
+                'expectedNearestSourceCoordinates': {'lat': 36.4561, 'lng': 10.7376},
+                'expectedNearestDistanceKm': 1.2731349096201334,
+                'historicalCanonicalSourceId': 468,
+                'distanceMetric': 'haversine_6371km_distance_then_id',
+                'savedManualCanonicalIdsRecompute': True, 'savedRawLocalityIdsPreserved': True,
+                'gpsUsesActualFix': True}
+            nearest_manual = min(timetables, key=lambda d: (
+                distance(residential['lat'], residential['lng'], d), d['id']))
+            if (manual_selection != expected_selection
+                    or any(type(manual_selection[key]) is not type(value)
+                           for key, value in expected_selection.items())
+                    or review.get('manualPrayerSelection') != manual_selection
+                    or identifier != expected_selection['representativeId']
+                    or target_group != expected_selection['displayGroupId']
+                    or {key: residential[key] for key in ('lat', 'lng')} != expected_selection['representative']
+                    or nearest_manual['id'] != expected_selection['expectedCurrentNearestSourceId']
+                    or residential['delegationId'] != nearest_manual['id']
+                    or {key: nearest_manual[key] for key in ('lat', 'lng')}
+                       != expected_selection['expectedNearestSourceCoordinates']
+                    or abs(distance(residential['lat'], residential['lng'], nearest_manual)
+                           - expected_selection['expectedNearestDistanceKm']) > 1e-9):
+                raise ValueError('City retained manual representative or nearest-source result changed')
             staged.append((target_group, {identifier}))
             used.update(expected)
             used.add(target_group)
             applications.append({'id': identifier, 'pickerGroupId': target_group,
                                  'reviewEvidence': entry['reviewEvidence'], 'finalGroups': expected_after,
                                  'protectedMetadata': protected, 'preservedRawSource': residential['delegationId'],
-                                 'canonicalManualSource': target, 'preservedAbsorbedPointId': point_id})
+                                 'canonicalManualSource': nearest_manual['id'],
+                                 'manualPrayerSelection': manual_selection, 'preservedAbsorbedPointId': point_id})
         except (OSError, UnicodeError, ValueError, KeyError, TypeError, AttributeError, IndexError) as error:
             raise ValueError('Missing, malformed or changed reviewed city display policy') from error
     return staged, {'reviewedGroupCount': len(staged), 'preservedMemberCount': len(staged),
@@ -4954,6 +5979,99 @@ def validate_explicit_settlement_polygon_display(entry, manifest_path, current, 
     return (identifier,target_group,list(polygon['aliases'])),result,None,reserved
 
 
+def validate_residential_complete_sector_groups(extension, decision, facts, current, groups,
+                                                 identifier, point_id, parent_id, governor_id,
+                                                 target_group):
+    """Preserve actual sector-owned groups without inferring a new name merge."""
+    keys = {'schemaVersion', 'preservedSectorIds', 'protectedRawIds',
+            'expectedBeforeGroups', 'expectedAfterGroups', 'exactRawFieldChanges'}
+    if (not isinstance(extension, dict) or set(extension) != keys
+            or type(extension['schemaVersion']) is not int or extension['schemaVersion'] != 1
+            or facts.get('completeSectorGroupPreservation') != extension
+            or decision.get('completeSectorGroupPreservation') != extension):
+        raise ValueError('Residential complete-group evidence is not identically source-bound')
+    sector_ids = decision['preservedCurrentSectorIds']
+    if (not isinstance(sector_ids, list) or not sector_ids
+            or any(not isinstance(i, str) for i in sector_ids)
+            or len(sector_ids) != len(set(sector_ids))
+            or extension['preservedSectorIds'] != sorted(sector_ids)
+            or len({identifier, point_id, parent_id, governor_id}) != 4
+            or {identifier, point_id, parent_id, governor_id, target_group} & set(sector_ids)):
+        raise ValueError('Residential complete-group typed inventory changed')
+    sector_set = set(sector_ids)
+    # Derive membership from every actual row, not the supplied protected list
+    # or a source-review claim that each sector is a singleton.
+    actual_groups = {i: sorted(sid for sid, row in current.items()
+                              if row['pickerGroupId'] == i) for i in sorted(sector_ids)}
+    if (any(i not in current or current[i]['kind'] != 'sector'
+            or current[i]['pickerGroupId'] != i for i in sector_ids)
+            or any(groups.get(i, set()) != set(ids) for i, ids in actual_groups.items())
+            or not any(len(ids) > 1 for ids in actual_groups.values())):
+        raise ValueError('Residential complete-group extension requires existing sector-owned groups')
+    protected = {identifier} | {sid for ids in actual_groups.values() for sid in ids}
+    before = {**actual_groups, identifier: [identifier], target_group: [target_group]}
+    after = {**actual_groups, target_group: sorted([target_group, identifier])}
+    change = [{'id': identifier, 'field': 'pickerGroupId', 'before': identifier, 'after': target_group}]
+    if (extension['protectedRawIds'] != sorted(protected)
+            or extension['expectedBeforeGroups'] != before
+            or extension['expectedAfterGroups'] != after
+            or extension['exactRawFieldChanges'] != change
+            or sorted(sid for sid, row in current.items() if row['pickerGroupId'] == identifier) != [identifier]
+            or any(row['pickerGroupId'] == target_group for row in current.values())
+            or target_group in current or identifier not in current
+            or any(current[i]['kind'] != 'residential' for i in protected - sector_set)
+            or any(current[i]['sourceId'] != 'osm' or current[i]['hasBoundary'] is not True for i in protected)):
+        raise ValueError('Residential complete raw membership or exact one-field transition changed')
+    source_only = {point_id, parent_id, governor_id}
+    records = facts['records']
+    if (protected & source_only or set(records) != protected | source_only
+            or any(r.get('expectedCuration') is not None or r.get('originalSourceId') is not None
+                   or r.get('effectiveSourceId') != 'osm' for r in records.values())
+            or any(i in current or i in groups or records[i]['metadata'] is not None
+                   or records[i]['packedGeometrySha256'] is not None for i in source_only)):
+        raise ValueError('Residential complete-group source-only inventory changed')
+    return protected, {'schemaVersion': 1, 'preservedSectorIds': sorted(sector_ids),
+                       'protectedRawIds': sorted(protected), 'preservedSourceOnlyIds': sorted(source_only),
+                       'expectedAfterGroups': after, 'exactRawFieldChanges': change}
+
+
+def verify_residential_complete_sector_groups(application, current, groups):
+    """Re-derive all preserved members after every late display override."""
+    proof = application['completeSectorGroupPreservation']
+    keys = {'schemaVersion', 'preservedSectorIds', 'protectedRawIds', 'preservedSourceOnlyIds',
+            'expectedAfterGroups', 'exactRawFieldChanges'}
+    if (not isinstance(proof, dict) or set(proof) != keys
+            or type(proof['schemaVersion']) is not int or proof['schemaVersion'] != 1):
+        raise ValueError('Residential final complete-group guard is malformed')
+    sector_ids, protected, absent = (proof['preservedSectorIds'], proof['protectedRawIds'],
+                                     proof['preservedSourceOnlyIds'])
+    if any(not isinstance(ids, list) or any(not isinstance(i, str) for i in ids)
+           or ids != sorted(set(ids)) for ids in (sector_ids, protected, absent)):
+        raise ValueError('Residential final complete-group IDs are repeated or malformed')
+    identifier, target_group = application['id'], application['pickerGroupId']
+    if (not sector_ids or len(absent) != 3
+            or {identifier, target_group} & set(sector_ids)
+            or set(protected) & set(absent)
+            or application['preservedAbsorbedPointId'] not in absent
+            or any(i in current or i in groups for i in absent)
+            or identifier not in current or current[identifier]['pickerGroupId'] != target_group
+            or identifier in groups or target_group in current
+            or any(i not in current or current[i]['kind'] != 'sector'
+                   or current[i]['pickerGroupId'] != i for i in sector_ids)):
+        raise ValueError('Residential final complete-group owners or source-only state changed')
+    actual = {i: sorted(sid for sid, row in current.items()
+                        if row['pickerGroupId'] == i) for i in sector_ids}
+    derived = {identifier} | {sid for ids in actual.values() for sid in ids}
+    actual[target_group] = sorted([target_group] + [sid for sid, row in current.items()
+                                                   if row['pickerGroupId'] == target_group])
+    if (sorted(derived) != protected or set(application['protectedMetadata']) != derived
+            or actual != proof['expectedAfterGroups']
+            or application['finalGroups'] != [{'id': i, 'memberIds': ids} for i, ids in actual.items()]
+            or proof['exactRawFieldChanges'] != [{'id': identifier, 'field': 'pickerGroupId',
+                                                 'before': identifier, 'after': target_group}]):
+        raise ValueError('Residential complete sector groups gained or lost members')
+
+
 def apply_reviewed_residential_display_associations(manifest_path, features, geometries,
                                                    governors, timetables, original_sources,
                                                    effective_sources, source_sha256, curation,
@@ -5054,18 +6172,27 @@ def apply_reviewed_residential_display_associations(manifest_path, features, geo
             decision = matches[0]
             point_id, parent_id = decision['absorbedSettlementEvidenceId'], decision['sourceDelegationId']
             sector_ids = decision['preservedCurrentSectorIds']
+            complete_groups = proof.get('completeSectorGroupPreservation')
+            protected_ids, complete_group_report = {identifier, *sector_ids}, None
+            if complete_groups is not None:
+                if proof.get('baseNameCorrection') is not None:
+                    raise ValueError('Residential complete-group preservation permits only a picker-group change')
+                protected_ids, complete_group_report = validate_residential_complete_sector_groups(
+                    complete_groups, decision, facts, current, groups, identifier, point_id,
+                    parent_id, proof['governorSourceId'], target_group)
             if (decision['residentialId'] != identifier
                     or not decision['decision'].startswith('SUPPORT_EXACT_SETTLEMENT_DISPLAY_ASSOCIATION;')
                     or decision['rawPointRestoration'] is not False
                     or decision['prayerSourceUnchanged'] != target
                     or point_id in current or groups.get(identifier) != {identifier}
                     or groups.get(target_group) or len(set(sector_ids)) != len(sector_ids)
-                    or any(groups.get(i) != {i} for i in sector_ids)
-                    or used & {identifier, point_id, target_group, *sector_ids}):
+                    or (complete_groups is None and any(groups.get(i) != {i} for i in sector_ids))
+                    or used & {point_id, target_group, *protected_ids}):
                 raise ValueError('Residential display requires separate unchanged settlement and imada choices')
             records = facts['records']
-            expected_ids = {identifier, point_id, parent_id, proof['governorSourceId'], *sector_ids}
-            if (set(records) != expected_ids or len(expected_ids) != len(sector_ids) + 4
+            expected_ids = protected_ids | {point_id, parent_id, proof['governorSourceId']}
+            if (set(records) != expected_ids
+                    or len(expected_ids) != (len(sector_ids) + 4 if complete_groups is None else len(protected_ids) + 3)
                     or proof['governorate'] != {k: governor[k] for k in ('id', 'nomAr', 'nomFr')}
                     or proof['sourceReviewRecordBaseId'] != target):
                 raise ValueError('Residential full source/context inventory changed')
@@ -5080,7 +6207,7 @@ def apply_reviewed_residential_display_associations(manifest_path, features, geo
                             or geometry is None or aggregate_geometry_sha256(geometry) != expected['geometrySha256']
                             or curation.get(source_id) is not None):
                         raise ValueError('Residential source tags, geometry, kind or curation changed')
-                if source_id in {identifier, *sector_ids}:
+                if source_id in protected_ids:
                     actual = current.get(source_id)
                     if (actual is None or indices[source_id] >= len(geometries)
                             or {k: v for k, v in actual.items() if k not in {'offset', 'length'}} != expected['metadata']
@@ -5178,16 +6305,21 @@ def apply_reviewed_residential_display_associations(manifest_path, features, geo
                 aliases = sorted(set(aliases + [before['nomAr']]))
                 reviewed_names.append(saved_name)
             protected = {i: {k: v for k, v in current[i].items() if k not in {'pickerGroupId', 'offset', 'length'}}
-                         for i in [identifier, *sector_ids]}
+                         for i in ([identifier, *sector_ids] if complete_groups is None else sorted(protected_ids))}
             protected[identifier] = {**protected[identifier], 'aliases': aliases}
             final_groups = [{'id': target_group, 'memberIds': sorted([target_group, identifier])}]
             final_groups.extend({'id': i, 'memberIds': [i]} for i in sector_ids)
-            applications.append({'id': identifier, 'pickerGroupId': target_group,
-                                 'reviewEvidence': entry['reviewEvidence'], 'finalGroups': final_groups,
-                                 'protectedMetadata': protected, 'preservedAbsorbedPointId': point_id,
-                                 'preservedRawSource': target, 'canonicalManualSource': target})
+            result = {'id': identifier, 'pickerGroupId': target_group,
+                      'reviewEvidence': entry['reviewEvidence'], 'finalGroups': final_groups,
+                      'protectedMetadata': protected, 'preservedAbsorbedPointId': point_id,
+                      'preservedRawSource': target, 'canonicalManualSource': target}
+            if complete_group_report is not None:
+                result['finalGroups'] = [{'id': i, 'memberIds': ids}
+                                         for i, ids in complete_group_report['expectedAfterGroups'].items()]
+                result['completeSectorGroupPreservation'] = complete_group_report
+            applications.append(result)
             staged.append((identifier, target_group, aliases))
-            used.update({identifier, point_id, target_group, *sector_ids})
+            used.update({point_id, target_group, *protected_ids})
         # No mutation until every application passes; existing final verifiers
         # also run after this phase, so no earlier reviewed choice can be hidden.
         for identifier, target_group, aliases in staged:
@@ -5214,6 +6346,8 @@ def verify_reviewed_city_display_associations(features, report):
     for feature in features:
         groups[feature['pickerGroupId']].add(feature['id'])
     for application in report['applications']:
+        if 'completeSectorGroupPreservation' in application:
+            verify_residential_complete_sector_groups(application, current, groups)
         for group in application['finalGroups']:
             members = groups.get(group['id'], set())
             if group['id'].startswith('delegation:'):
@@ -5240,6 +6374,16 @@ def verify_reviewed_city_display_associations(features, report):
                 raise ValueError('Source-bound display unexpectedly recreated an evidence-only place')
         elif application['preservedAbsorbedPointId'] in current:
             raise ValueError('City display association unexpectedly recreated its absorbed source point')
+        if 'acceptedBoundaryAbsorption' in application:
+            absorption = application['acceptedBoundaryAbsorption']
+            if (set(absorption) != {'pointId', 'receiverId', 'receiverAliases'}
+                    or absorption['pointId'] != application['preservedAbsorbedPointId']
+                    or absorption['receiverId'] != application['id']
+                    or absorption['pointId'] in current or groups.get(absorption['pointId'])
+                    or any(feature.get('manualPointId') == absorption['pointId'] for feature in features)
+                    or absorption['receiverAliases'] != application['protectedMetadata'][absorption['receiverId']]['aliases']
+                    or current[absorption['receiverId']]['aliases'] != absorption['receiverAliases']):
+                raise ValueError('Accepted split boundary changed its final source-only absorption')
 
 def validate_reviewed_contained_settlement_reference(identity, manifest_path, record,
                                                       features, indices, geometries,
@@ -5419,10 +6563,230 @@ def validate_reviewed_contained_settlement_reference(identity, manifest_path, re
     except (OSError, UnicodeError, ValueError, KeyError, TypeError, AttributeError, IndexError, ET.ParseError) as error:
         raise ValueError('Missing, malformed or changed contained settlement/base evidence') from error
 
+def validate_soliman_split_boundary_lineage(directory, wrapper, row, proposal, facts,
+                                           original_sources, effective_sources, source_sha256,
+                                           features, indices, geometries, groups, base, governor,
+                                           curation, reviewed_boundaries, official_report):
+    """Bind only Soliman's accepted imada replacement to its unchanged town proof."""
+    document = lambda ref, label: json.loads(aggregate_review_file(directory, ref, label))
+    lineage = document(row['acceptedBoundaryLineage'], 'Soliman accepted boundary lineage')
+    identifier, sector_id, point_id = 'osm:way:177385463', 'osm:relation:7100693', 'osm:node:1124155543'
+    historical_ref = {'file': 'three-city-split-reviews/three-city-split-source-proof.json',
+                      'sha256': 'ff66bf2aedeed7e18832b077175acf02968aefddb23cb2850d8c79af9f3f2f62'}
+    fields = {'schemaVersion', 'method', 'sourceSha256', 'residentialId', 'sectorId', 'pointId',
+              'baseId', 'historicalProof', 'reviewedBoundaries', 'sourceStates',
+              'originalNamePeerIds', 'effectiveNamePeerIds', 'acceptedReplacement',
+              'currentDistinctPair', 'sectorProjection', 'sectorContainment', 'sourceAbsorption'}
+    if (not isinstance(lineage, dict) or set(lineage) != fields or lineage['schemaVersion'] != 1
+            or lineage['method'] != 'reviewed_soliman_split_accepted_boundary_lineage'
+            or lineage['sourceSha256'] != source_sha256 or lineage['residentialId'] != identifier
+            or lineage['sectorId'] != sector_id or lineage['pointId'] != point_id
+            or lineage['baseId'] != 465 or base['id'] != 465 or governor['id'] != 350
+            or row['id'] != identifier or proposal['sectorId'] != sector_id
+            or proposal['absorbedSourcePointId'] != point_id or lineage['historicalProof'] != historical_ref):
+        raise ValueError('Accepted split boundary lineage is not the exact reviewed Soliman case')
+    historical = document(historical_ref, 'historical three-city split proof')
+    # Preserve the original wrapper and every other city's row, not a newly
+    # labelled copy of effective source data masquerading as historical facts.
+    restored_rows = [{key: value for key, value in item.items() if key != 'acceptedBoundaryLineage'}
+                     if item.get('id') == identifier else item for item in wrapper['records']]
+    if ({**wrapper, 'records': restored_rows} != historical
+            or sum(item.get('id') == identifier for item in wrapper['records']) != 1
+            or any('acceptedBoundaryLineage' in item for item in wrapper['records'] if item.get('id') != identifier)
+            or wrapper['sourceFacts']['sha256'] != hashlib.sha256(
+                aggregate_review_file(directory, wrapper['sourceFacts'], 'historical split facts')).hexdigest()):
+        raise ValueError('Accepted split boundary lineage rewrote historical wrapper fields')
+    reference = lineage['reviewedBoundaries']
+    boundary_manifest = document(reference, 'active Soliman reviewed boundaries')
+    if (reviewed_boundaries is None or official_report is None
+            or (directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
+            or reference['sha256'] != official_report['manifestSha256']):
+        raise ValueError('Accepted split boundary lineage does not bind the active loader')
+    assertions = {item['id']: item for item in row['sourceAssertions']}
+    context_ids = {'osm:relation:1435825', 'osm:relation:7145292'}
+    required_ids = {identifier, sector_id, point_id} | context_ids
+    records = lineage['sourceStates']
+    states = {item['id']: item for item in records}
+    if (len(assertions) != len(row['sourceAssertions']) or set(assertions) != required_ids
+            or len(records) != len(states) or set(states) != required_ids
+            or any(set(item) != {'id', 'original', 'effective'} for item in records)):
+        raise ValueError('Accepted split boundary lineage needs the complete five-source closure')
+    keys = {clean(value).casefold() for value in row['peerNameValues']}
+    required_peers = sorted(row['matchingExtractedSourceIds'])
+    if len(required_peers) != len(set(required_peers)):
+        raise ValueError('Repeated historical Soliman source-name peer')
+    for phase, sources in (('original', original_sources), ('effective', effective_sources)):
+        peers = sorted(i for i, source in sources.items()
+                       if keys & {clean(value).casefold() for value in names(source['tags'])})
+        if lineage[phase + 'NamePeerIds'] != required_peers or peers != required_peers:
+            raise ValueError('Accepted split boundary lineage changed complete name peers')
+        for source_id, item in states.items():
+            source = sources[source_id]
+            geometry = source.get('shape') if source.get('shape') is not None else source.get('point')
+            actual = {'kind': source['kind'], 'tags': source['tags'], 'sourceId': source.get('sourceId'),
+                      'geometrySha256': aggregate_geometry_sha256(geometry)}
+            original = {key: value for key, value in assertions[source_id].items() if key != 'id'}
+            original['sourceId'] = None
+            if (actual != item[phase] or item['original'] != original
+                    or (source_id != sector_id and item['effective'] != {**original, 'sourceId': 'osm'})
+                    or curation.get(source_id) is not None):
+                raise ValueError('Accepted split boundary lineage altered an unreviewed source state')
+    replacement = lineage['acceptedReplacement']
+    if set(replacement) != {'sourceRecord', 'record', 'application', 'geojson', 'featureSha256'}:
+        raise ValueError('Malformed accepted Soliman replacement binding')
+    source, accepted = replacement['sourceRecord'], replacement['record']
+    original, effective = states[sector_id]['original'], states[sector_id]['effective']
+    application = {'id': sector_id, 'action': 'replace', 'officialCode': '156154', 'sourceId': source['id']}
+    if ([s for s in boundary_manifest['sources'] if s['id'] == source['id']] != [source]
+            or [r for r in source['records'] if r['id'] == sector_id] != [accepted]
+            or accepted['id'] != sector_id or accepted['action'] != 'replace'
+            or accepted['officialCode'] != '156154' or accepted['expectedOriginalTags'] != original['tags']
+            or source['sourceSha256'] != source_sha256 or not source.get('review')
+            or original['kind'] != 'sector' or effective['kind'] != 'sector'
+            or effective['sourceId'] != source['id'] or source['id'] == 'osm'
+            or replacement['application'] != application
+            or [r for r in official_report['applications'] if r['id'] == sector_id] != [application]
+            or official_report['sources'].get(source['id']) != {k: v for k, v in source.items() if k not in ('file', 'records')}
+            or replacement['geojson'] != {'file': source['file'], 'sha256': source['sha256']}):
+        raise ValueError('Soliman lineage differs from the actual accepted source record')
+    collection = json.loads(aggregate_review_file(Path(reviewed_boundaries).parent,
+                            replacement['geojson'], 'accepted Soliman native geometry'))
+    matches = [feature for feature in collection['features'] if feature['id'] == sector_id]
+    if len(matches) != 1:
+        raise ValueError('Accepted Soliman native feature is not unique')
+    native = matches[0]
+    properties = native['properties']
+    tags = {'boundary': 'administrative', 'admin_level': '6', 'ref:tn:codegeo': '156154',
+            'name:ar': properties['nameAr'], 'name:fr': properties['nameFr']}
+    if accepted.get('aliases'):
+        tags['alt_name'] = ';'.join(accepted['aliases'])
+    feature_sha = hashlib.sha256(json.dumps(native, ensure_ascii=False, sort_keys=True,
+                                            separators=(',', ':')).encode('utf-8')).hexdigest()
+    if (native['type'] != 'Feature' or properties['sourceId'] != source['id']
+            or properties['officialCode'] != '156154' or tags != effective['tags']
+            or replacement['featureSha256'] != feature_sha
+            or aggregate_geometry_sha256(shape(native['geometry'])) != effective['geometrySha256']):
+        raise ValueError('Accepted native geometry does not produce the effective Soliman source')
+    projection = lineage['sectorProjection']
+    if set(projection) != {'metadata', 'packedGeometrySha256'}:
+        raise ValueError('Malformed accepted Soliman packed projection')
+    old_fact = next(item for item in facts['records'] if item['id'] == sector_id)
+    old = {key: value for key, value in old_fact['currentMetadata'].items() if key not in {'offset', 'length'}}
+    new = projection['metadata']
+    allowed = {'sourceId', 'name', 'aliases', 'parentName', 'contextAliases', 'lat', 'lng', 'bbox', 'areaKm2', 'delegationId'}
+    index = indices[sector_id]
+    packed = geometries[index]
+    expected_packed = set_precision(effective_sources[sector_id]['shape'], 1 / SCALE)
+    expected_bytes = packed_geometry_bytes(expected_packed)
+    anchor = expected_packed.representative_point()
+    if (set(new) != set(old) or any(new[key] != old[key] for key in old if key not in allowed)
+            or new != {key: value for key, value in features[index].items() if key not in {'offset', 'length'}}
+            or new['sourceId'] != source['id'] or new['name'] != names(tags)[0]
+            or new['aliases'] != names(tags)[1:] or new['delegationId'] != 465
+            or new['lat'] != round(anchor.y, 7) or new['lng'] != round(anchor.x, 7)
+            or new['bbox'] != list(expected_packed.bounds)
+            or new['areaKm2'] != expected_packed.area * 111.32**2 * math.cos(math.radians(anchor.y))
+            or packed_geometry_bytes(packed) != expected_bytes
+            or projection['packedGeometrySha256'] != hashlib.sha256(expected_bytes).hexdigest()
+            or not packed.covers(Point(new['lng'], new['lat']))):
+        raise ValueError('Accepted Soliman projection altered its computed inside anchor or packed footprint')
+    pair = lineage['currentDistinctPair']
+    historical_pair = row['requiredDistinctPair']
+    if (set(pair) != set(historical_pair) or pair['ids'] != historical_pair['ids']
+            or pair['reviewEvidence'] == historical_pair['reviewEvidence']):
+        raise ValueError('Accepted Soliman lineage needs an exact distinct-pair successor')
+    old_proof = document(historical_pair['reviewEvidence'], 'historical Soliman distinct pair')
+    new_proof = document(pair['reviewEvidence'], 'effective Soliman distinct pair')
+    if (set(old_proof) != set(new_proof)
+            or any(old_proof[key] != new_proof[key] for key in old_proof if key not in {'records', 'evidence'})
+            or len(new_proof['records']) != len(old_proof['records'])
+            or new_proof['evidence'][:len(old_proof['evidence'])] != old_proof['evidence']):
+        raise ValueError('Soliman distinct-pair successor rewrote historical evidence')
+    mutable_pair_fields = {'effectiveTags', 'effectiveGeometrySha256', 'expectedMetadata'}
+    for before, after in zip(old_proof['records'], new_proof['records']):
+        if before['id'] != sector_id:
+            if after != before:
+                raise ValueError('Soliman distinct successor changed the protected residential record')
+        elif (set(after) != set(before)
+                or any(after[key] != before[key] for key in before if key not in mutable_pair_fields)
+                or after['effectiveTags'] != effective['tags']
+                or after['effectiveGeometrySha256'] != effective['geometrySha256']
+                or after['expectedMetadata'] != {key: new[key] for key in before['expectedMetadata']}):
+            raise ValueError('Soliman distinct successor differs from the accepted sector projection')
+    for evidence in new_proof['evidence']:
+        aggregate_review_file(directory, evidence, 'Soliman distinct successor source evidence')
+    point = effective_sources[point_id]['point']
+    base_point = Point(base['lng'], base['lat'])
+    containment = lineage['sectorContainment']
+    if set(containment) != {'original', 'effective', 'packed'}:
+        raise ValueError('Soliman needs separate original, native and packed containment claims')
+    for phase, geometry in (('original', original_sources[sector_id]['shape']),
+                            ('effective', effective_sources[sector_id]['shape']), ('packed', packed)):
+        actual = {'containsBase': geometry.covers(base_point),
+                  'containsSourceSettlementPoint': geometry.covers(point)}
+        if (set(containment[phase]) != set(actual)
+                or any(type(value) is not bool for value in containment[phase].values())
+                or containment[phase] != actual):
+            raise ValueError('Soliman source-phase containment claims do not match actual geometry')
+    old_claims = proposal['geometryFactsNotBoundaryCertification']['sector']
+    if (containment['original'] != {'containsBase': old_claims['originalContainsBase'],
+                                   'containsSourceSettlementPoint': old_claims['originalContainsSourceSettlementPoint']}
+            or containment['original'] != {'containsBase': False, 'containsSourceSettlementPoint': False}
+            or containment['effective'] != {'containsBase': False, 'containsSourceSettlementPoint': True}):
+        raise ValueError('Soliman lineage is not the reviewed village/base containment transition')
+    absorption = lineage['sourceAbsorption']
+    if (set(absorption) != {'pointId', 'receiverId', 'pointCoordinates', 'originalPackedMatches',
+                           'effectivePackedMatches', 'receiverAliases'}
+            or absorption['pointId'] != point_id or absorption['receiverId'] != identifier
+            or absorption['pointCoordinates'] != {'lat': point.y, 'lng': point.x}
+            or point_id in indices or groups.get(point_id)):
+        raise ValueError('Soliman absorption identity or global source-only absence changed')
+    point_names = names(effective_sources[point_id]['tags'])
+    point_identity = {'name': point_names[0], 'aliases': point_names[1:]}
+    original_matches = []
+    for source_id, obj in original_sources.items():
+        if obj['kind'] in ('country', 'governorate', 'delegation') or obj.get('shape') is None:
+            continue
+        labels = names(obj['tags'])
+        if not labels or not same_picker_name(point_identity, {'name': labels[0], 'aliases': labels[1:]}):
+            continue
+        candidate = set_precision(obj['shape'], 1 / SCALE)
+        if candidate.is_empty or not candidate.covers(point):
+            continue
+        if source_id not in indices or curation.get(source_id) is not None:
+            raise ValueError('Soliman original absorbing source is no longer an unchanged raw choice')
+        original_matches.append({'id': source_id,
+            'packedGeometrySha256': hashlib.sha256(packed_geometry_bytes(candidate)).hexdigest(),
+            'areaKm2': candidate.area * 111.32**2 * math.cos(math.radians(candidate.representative_point().y))})
+    effective_matches = [{'id': feature['id'],
+        'packedGeometrySha256': hashlib.sha256(packed_geometry_bytes(geometries[i])).hexdigest(),
+        'areaKm2': feature['areaKm2']}
+        for i, feature in enumerate(features[:len(geometries)])
+        if geometries[i].covers(point) and same_picker_name(point_identity, feature)]
+    for key, matches in (('originalPackedMatches', original_matches), ('effectivePackedMatches', effective_matches)):
+        matches.sort(key=lambda item: item['id'])
+        if (not matches or absorption[key] != matches
+                or not {item['id'] for item in matches} <= {identifier, sector_id}):
+            raise ValueError('Soliman complete original/effective absorbing polygon inventory changed')
+        ranked = sorted(matches, key=lambda item: (item['areaKm2'], item['id']))
+        if (ranked[0]['id'] != identifier
+                or len(ranked) > 1 and ranked[0]['areaKm2'] == ranked[1]['areaKm2']):
+            raise ValueError('Soliman source village changed its unique smallest-area receiver')
+    receiver = features[indices[identifier]]
+    if (absorption['receiverAliases'] != receiver['aliases']
+            or receiver['aliases'] != sorted(set(names(effective_sources[identifier]['tags'])[1:] + point_names)
+                                            - {receiver['name']})):
+        raise ValueError('Soliman absorbed village changed its receiver aliases')
+    return {'reference': row['acceptedBoundaryLineage'], 'states': states,
+            'currentDistinctPair': pair, 'sectorProjection': projection, 'sectorContainment': containment,
+            'absorption': {'pointId': point_id, 'receiverId': identifier,
+                           'receiverAliases': absorption['receiverAliases']}}
+
 def validate_reviewed_split_settlement_reference(identity, manifest_path, manifest, record,
                                                   features, indices, geometries, groups,
                                                   original_sources, effective_sources,
-                                                  source_sha256, base, governor, timetables, curation):
+                                                  source_sha256, base, governor, timetables, curation,
+                                                  reviewed_boundaries=None, official_report=None):
     """Associate three specifically reviewed towns while preserving their imadas.
 
     This is an identity validator in the strict base-group loop. It does not
@@ -5448,12 +6812,18 @@ def validate_reviewed_split_settlement_reference(identity, manifest_path, manife
         row, proposal = rows[0], proposals[0]
         sector_id, base_group = proposal['sectorId'], f'delegation:{target}'
         source_ids = {identifier, sector_id, point_id}
+        lineage = None
+        if 'acceptedBoundaryLineage' in row:
+            lineage = validate_soliman_split_boundary_lineage(
+                directory, wrapper, row, proposal, facts, original_sources, effective_sources, source_sha256,
+                features, indices, geometries, groups, base, governor, curation, reviewed_boundaries, official_report)
+        active_pair = lineage['currentDistinctPair'] if lineage is not None else row['requiredDistinctPair']
         if (row['sourceReviewRecord'] != proposal or proposal['absorbedSourcePointId'] != point_id
                 or proposal['targetDelegationId'] != target or proposal['targetBaseId'] != base_group
                 or proposal['currentBase'] != {**base, 'governorateId': governor['id']}
                 or row['requiredDistinctPair']['ids'] != [sector_id, identifier]
                 or row['requiredDistinctPair']['reviewEvidence']['sha256'] != proposal['requiredDistinctPair']['reviewEvidence']['sha256']
-                or sum(pair == row['requiredDistinctPair'] for pair in manifest.get('distinctPairs', [])) != 1
+                or sum(pair == active_pair for pair in manifest.get('distinctPairs', [])) != 1
                 or record['expectedExistingMemberIds'] != [identifier]
                 or record['expectedTargetMemberIds'] != [base_group]
                 or groups.get(identifier, set()) != {identifier}
@@ -5483,7 +6853,7 @@ def validate_reviewed_split_settlement_reference(identity, manifest_path, manife
 
         others = [r for r in manifest['records'] if r is not record]
         others += manifest.get('localRecords', []) + manifest.get('cityDisplayAssociations', [])
-        others += [pair for pair in manifest.get('distinctPairs', []) if pair != row['requiredDistinctPair']]
+        others += [pair for pair in manifest.get('distinctPairs', []) if pair != active_pair]
         if any(references(other) for other in others):
             raise ValueError('Split settlement city, sector or supporting point is used by another review')
         if sorted(r['sha256'] for r in wrapper['primaryCorroboration']) != sorted(r['sha256'] for r in review['primaryCorroboration']):
@@ -5508,18 +6878,22 @@ def validate_reviewed_split_settlement_reference(identity, manifest_path, manife
             if actual_peers != peers:
                 raise ValueError('Split settlement competing source inventory changed')
             for source_id, assertion in assertions.items():
+                accepted_effective_sector = lineage is not None and label == 'effective' and source_id == sector_id
+                phase_assertion = lineage['states'][source_id]['effective'] if accepted_effective_sector else assertion
+                phase_provider = (phase_assertion['sourceId'] if accepted_effective_sector
+                                  else None if label == 'original' else 'osm')
                 source = sources.get(source_id)
                 if source is None:
                     raise ValueError('Missing split settlement source')
                 geometry = source.get('shape')
                 if geometry is None:
                     geometry = source.get('point')
-                if (geometry is None or source.get('sourceId') != (None if label == 'original' else 'osm')
-                        or source['kind'] != assertion['kind'] or source['tags'] != assertion['tags']
-                        or aggregate_geometry_sha256(geometry) != assertion['geometrySha256']
+                if (geometry is None or source.get('sourceId') != phase_provider
+                        or source['kind'] != phase_assertion['kind'] or source['tags'] != phase_assertion['tags']
+                        or aggregate_geometry_sha256(geometry) != phase_assertion['geometrySha256']
                         or curation.get(source_id) is not None):
                     raise ValueError('Split settlement exact source tags, geometry or curation changed')
-                if source_id in source_ids:
+                if source_id in source_ids and not accepted_effective_sector:
                     fact = raw_facts[source_id]
                     if (fact['kind'] != source['kind'] or fact['tags'] != source['tags']
                             or fact['expectedCuration'] is not None
@@ -5531,12 +6905,18 @@ def validate_reviewed_split_settlement_reference(identity, manifest_path, manife
             index = indices[source_id]
             feature, fact = features[index], raw_facts[source_id]
             metadata = {k: v for k, v in fact['currentMetadata'].items() if k not in {'pickerGroupId', 'offset', 'length'}}
+            expected_provider, packed_sha = 'osm', fact['packedGeometrySha256']
+            if lineage is not None and source_id == sector_id:
+                projection = lineage['sectorProjection']
+                metadata = {k: v for k, v in projection['metadata'].items() if k != 'pickerGroupId'}
+                expected_provider = lineage['states'][sector_id]['effective']['sourceId']
+                packed_sha = projection['packedGeometrySha256']
             if (index >= len(geometries)
                     or {k: v for k, v in feature.items() if k not in {'pickerGroupId', 'offset', 'length'}} != metadata
                     or feature['governorateId'] != governor['id'] or feature['delegationId'] != target
-                    or feature['sourceId'] != 'osm' or feature['hasBoundary'] is not True
+                    or feature['sourceId'] != expected_provider or feature['hasBoundary'] is not True
                     or feature['name'] != base['nomAr'] or fact['currentMetadata']['pickerGroupId'] != sector_id
-                    or hashlib.sha256(packed_geometry_bytes(geometries[index])).hexdigest() != fact['packedGeometrySha256']):
+                    or hashlib.sha256(packed_geometry_bytes(geometries[index])).hexdigest() != packed_sha):
                 raise ValueError('Split settlement raw choice or packed footprint changed')
             protected[source_id] = metadata
         residential, sector, node = (effective_sources[i] for i in (identifier, sector_id, point_id))
@@ -5568,11 +6948,18 @@ def validate_reviewed_split_settlement_reference(identity, manifest_path, manife
                         and context.contains(sources[i]['point'])} != {point_id}):
                 raise ValueError('Split settlement containing context or unique source point changed')
             claims = proposal['geometryFactsNotBoundaryCertification']['sector']
+            if lineage is not None:
+                phase = 'original' if sources is original_sources else 'effective'
+                phase_claims = lineage['sectorContainment'][phase]
+                claims = {'originalContainsBase': phase_claims['containsBase'],
+                          'originalContainsSourceSettlementPoint': phase_claims['containsSourceSettlementPoint']}
             if (imada.covers(base_point) != claims['originalContainsBase']
                     or imada.covers(point) != claims['originalContainsSourceSettlementPoint']):
                 raise ValueError('Split settlement reviewed imada relation changed')
         city_packed, imada_packed = (geometries[indices[i]] for i in (identifier, sector_id))
         claims = proposal['geometryFactsNotBoundaryCertification']['sector']
+        if lineage is not None:
+            claims = lineage['sectorContainment']['packed']
         if (not city_packed.contains(point) or not city_packed.contains(base_point)
                 or imada_packed.covers(base_point) != claims['containsBase']
                 or imada_packed.covers(point) != claims['containsSourceSettlementPoint']):
@@ -5583,12 +6970,164 @@ def validate_reviewed_split_settlement_reference(identity, manifest_path, manife
                 raise ValueError('Split settlement references no longer share the reviewed timetable')
         return {'id': identifier, 'pickerGroupId': base_group, 'reviewEvidence': identity['reviewEvidence'],
                 'finalGroups': proposal['afterGroups'], 'protectedMetadata': protected,
-                'preservedAbsorbedPointId': point_id, 'exclusiveSourceIds': sorted(source_ids)}
+                'preservedAbsorbedPointId': point_id, 'exclusiveSourceIds': sorted(source_ids),
+                **({'acceptedBoundaryLineage': lineage['reference'],
+                    'acceptedBoundaryAbsorption': lineage['absorption']} if lineage is not None else {})}
     except (OSError, UnicodeError, ValueError, KeyError, TypeError, AttributeError, IndexError) as error:
         raise ValueError('Missing, malformed or changed reviewed town/sector split evidence') from error
 
+def validate_hichria_retained_display_reference(option, manifest_path, record, proof,
+                                                features, indices, geometries,
+                                                original_sources, effective_sources,
+                                                source_sha256, base, governor):
+    """Keep one reviewed delegation display separate from its published prayer point.
+
+    This exact Hichria contract preserves the existing administrative-transfer
+    checks. It cannot turn another name or nearby point into a display identity.
+    """
+    method = 'reviewed_hichria_retained_display_reference'
+    identifier, target = 'osm:relation:7169598', 1522
+    display = {'id': identifier, 'lat': 34.895, 'lng': 9.40957}
+    published = {'lat': 34.829, 'lng': 9.376}
+    directory = Path(manifest_path).parent
+    if (not isinstance(option, dict)
+            or set(option) != {'schemaVersion', 'method', 'reviewEvidence'}
+            or type(option['schemaVersion']) is not int or option['schemaVersion'] != 1
+            or option['method'] != method or proof.get('retainedDisplayReference') != option
+            or record.get('id') != identifier or record.get('targetDelegationId') != target
+            or type(record.get('targetDelegationId')) is not int
+            or base['id'] != target or governor['id'] != 355
+            or {key: base.get(key) for key in published} != published
+            or {key: base.get(key) for key in ('nomAr', 'nomFr', 'nomEn')}
+               != {'nomAr': 'الهيشرية', 'nomFr': 'Hichria', 'nomEn': 'Hichria'}):
+        raise ValueError('Invalid exact Hichria retained-display contract')
+    reference = option['reviewEvidence']
+    if not isinstance(reference, dict) or set(reference) != {'file', 'sha256'}:
+        raise ValueError('Missing Hichria retained-display proof')
+    review = json.loads(aggregate_review_file(directory, reference, 'Hichria retained-display proof'))
+    keys = {'schemaVersion', 'method', 'sourceSha256', 'id', 'targetDelegationId',
+            'governorateId', 'historicalReview', 'publishedPrayerReference',
+            'displayReference', 'absorbedNorthernVillage', 'manualSelection',
+            'protectedMetadata', 'finalGroups', 'qualifications'}
+    qualifications = {'publishedPointOutsideDisplaySector': True,
+                      'publishedCoordinatesAreNotDisplayGeometry': True,
+                      'southernVillageIdentityNotMerged': True,
+                      'sectorBoundaryNotCertified': True}
+    manual = {'method': 'nearest_available_at_retained_locality',
+              'representativeId': identifier, 'expectedNearestSourceId': target}
+    if (not isinstance(review, dict) or set(review) != keys
+            or type(review['schemaVersion']) is not int or review['schemaVersion'] != 1
+            or review['method'] != method or review['sourceSha256'] != source_sha256
+            or review['id'] != identifier or type(review['targetDelegationId']) is not int
+            or review['targetDelegationId'] != target or type(review['governorateId']) is not int
+            or review['governorateId'] != governor['id'] or review['displayReference'] != display
+            or review['manualSelection'] != manual
+            or type(review['manualSelection'].get('expectedNearestSourceId')) is not int
+            or review['qualifications'] != qualifications
+            or any(value is not True for value in review['qualifications'].values())):
+        raise ValueError('Hichria retained-display scope or representative changed')
+    historical = review['historicalReview']
+    if (not isinstance(historical, dict) or set(historical) != {'file', 'sha256'}
+            or historical['sha256'] != 'f670006b560fbc0fcd334b4f5eaaa2df623a9c7ee50b566866ece96a556a5f33'):
+        raise ValueError('Missing immutable Hichria administrative-transfer review')
+    old_document = json.loads(aggregate_review_file(directory, historical, 'historical Hichria review'))
+    old_matches = [item for item in old_document['records'] if item.get('id') == identifier]
+    if len(old_matches) != 1 or old_matches[0].get('status') != 'eligible_proposal':
+        raise ValueError('Historical Hichria reviewed identity changed')
+    # Rebuild the only permitted successor of the old active proof. The old
+    # base-point containment remains historical, never relabeled as current.
+    expected_proof = json.loads(json.dumps(old_matches[0]))
+    expected_proof['basePoint'] = published
+    expected_proof['displayReference'] = display
+    expected_proof['retainedDisplayReference'] = option
+    expected_proof['members'][0].update(originalContainsBasePoint=False,
+        packagedContainsBasePoint=False, originalContainsDisplayReference=True,
+        packagedContainsDisplayReference=True)
+    expected_proof['scope'] = ('Retain the reviewed Hichria delegation display at its unchanged sector '
+        'representative. Published prayer coordinates are separate and outside this sector; '
+        'do not infer southern village identity or certify a delegation boundary.')
+    if (proof != expected_proof or record.get('identityEvidence') != old_matches[0]['identityEvidence']
+            or record.get('expectedExistingMemberIds') != [identifier]
+            or record.get('expectedTargetMemberIds') != ['delegation:1522']
+            or len(record.get('members', [])) != 1 or record['members'][0].get('id') != identifier):
+        raise ValueError('Hichria successor changed the accepted identity or exact group')
+    prayer_reference = review['publishedPrayerReference']
+    if (not isinstance(prayer_reference, dict)
+            or set(prayer_reference) != {'file', 'sha256', 'expectedCorrection'}
+            or prayer_reference['file'] != 'prayer-source-coordinates.json'):
+        raise ValueError('Missing independently published Hichria prayer reference')
+    coordinates = json.loads(aggregate_review_file(directory, prayer_reference, 'Hichria prayer coordinates'))
+    corrections = [item for item in coordinates.get('corrections', []) if item.get('delegationId') == target]
+    if (len(corrections) != 1 or corrections[0] != prayer_reference['expectedCorrection']
+            or corrections[0].get('referenceKind') != 'inm_published_reference'
+            or corrections[0].get('expectedGovernorateId') != governor['id']
+            or corrections[0].get('expectedNames') != {key: base[key] for key in ('nomAr', 'nomFr', 'nomEn')}
+            or corrections[0].get('original') != {'lat': 34.895, 'lng': 9.3918}
+            or corrections[0].get('proposed') != published):
+        raise ValueError('Hichria published reference correction changed')
+    validate_inm_published_reference(corrections[0], governor, base, directory)
+    current = features[indices[identifier]]
+    source = effective_sources.get(identifier)
+    original = original_sources.get(identifier)
+    index = indices[identifier]
+    display_point = Point(display['lng'], display['lat'])
+    published_point = Point(published['lng'], published['lat'])
+    if (original is None or source is None or original['kind'] != 'sector' or source['kind'] != 'sector'
+            or current.get('kind') != 'sector' or not current.get('hasBoundary')
+            or {key: current.get(key) for key in ('id', 'lat', 'lng')} != display
+            or index >= len(geometries)
+            or any(item.get('shape') is None or not item['shape'].covers(display_point)
+                   or item['shape'].covers(published_point) for item in (original, source))
+            or not geometries[index].covers(display_point) or geometries[index].covers(published_point)):
+        raise ValueError('Hichria prayer/display point distinction or containment changed')
+    northern = {'id': 'osm:node:7938334046', 'kind': 'village',
+                'tags': {'name': 'الهيشرية', 'name:ar': 'الهيشرية', 'name:en': 'El Hichria',
+                         'name:fr': 'El Hichria', 'place': 'village'},
+                'lat': 34.8742313, 'lng': 9.435056}
+    if review['absorbedNorthernVillage'] != northern or northern['id'] in indices:
+        raise ValueError('Hichria northern village source-only identity changed')
+    for sources, receiver in ((original_sources, original), (effective_sources, source)):
+        point_source = sources.get(northern['id'])
+        if (point_source is None or point_source.get('kind') != northern['kind']
+                or point_source.get('tags') != northern['tags'] or point_source.get('shape') is not None
+                or point_source.get('point') is None or point_source['point'].geom_type != 'Point'
+                or point_source['point'].x != northern['lng'] or point_source['point'].y != northern['lat']
+                or not receiver['shape'].covers(point_source['point'])
+                or not geometries[index].covers(point_source['point'])):
+            raise ValueError('Hichria absorbed northern village or source containment changed')
+    protected_ids = {identifier, 'osm:relation:7169594', 'osm:relation:7169555',
+                     'osm:node:10006882480', 'osm:node:7938334020', 'osm:relation:7169579'}
+    if (not isinstance(review['protectedMetadata'], dict)
+            or set(review['protectedMetadata']) != protected_ids
+            or not protected_ids <= set(indices)):
+        raise ValueError('Missing Hichria preserved raw context or southern locality')
+    expected_metadata = {i: {key: value for key, value in features[indices[i]].items()
+                             if key not in {'pickerGroupId', 'offset', 'length'}} for i in protected_ids}
+    final_by_id = {i: ('delegation:1522' if i == identifier else features[indices[i]]['pickerGroupId'])
+                   for i in protected_ids}
+    expected_groups = []
+    for group_id in sorted(set(final_by_id.values())):
+        actual_members = {feature['id'] for feature in features
+                          if ('delegation:1522' if feature['id'] == identifier else feature['pickerGroupId']) == group_id}
+        if not actual_members <= protected_ids:
+            raise ValueError('Hichria protected group acquired an unreviewed member')
+        if group_id.startswith('delegation:'):
+            actual_members.add(group_id)
+        expected_groups.append({'id': group_id, 'memberIds': sorted(actual_members)})
+    if review['protectedMetadata'] != expected_metadata or review['finalGroups'] != expected_groups:
+        raise ValueError('Hichria retained display changed a preserved raw field or group')
+    return display_point, {'id': identifier, 'identityMethod': method,
+        'targetDelegationId': target, 'displayReference': display,
+        'publishedPrayerReference': published, 'manualSelection': manual,
+        'publishedPointOutsideDisplaySector': True,
+        'finalGroups': expected_groups, 'protectedMetadata': expected_metadata,
+        'preservedNonCatalogPlace': {'id': northern['id'], 'role': 'absorbed_extracted_village'}}
+
+
+
 def apply_reviewed_picker_groups(manifest_path, features, geometries, governors, timetables,
-                                 original_sources, effective_sources, source_sha256, curation):
+                                 original_sources, effective_sources, source_sha256, curation,
+                                 reviewed_boundaries=None, official_report=None):
     """Join exact reviewed display groups without modifying geographic records.
 
     The pre-existing locality and original-delegation group inventories must
@@ -5629,6 +7168,7 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
     available_ids = {d['id'] for d in timetables}
     staged, seen_ids, seen_targets, seen_members = [], set(), set(), set()
     split_applications = []
+    retained_display_applications = []
     for record in manifest['records']:
         identifier = record.get('id')
         target = record.get('targetDelegationId')
@@ -5674,6 +7214,13 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
                     for reference in source.get('reviewFiles', []):
                         aggregate_review_file(manifest_path.parent, reference, 'picker curation evidence')
         base_point = Point(base['lng'], base['lat'])
+        display_point = base_point
+        if 'retainedDisplayReference' in record or 'retainedDisplayReference' in proof:
+            display_point, display_application = validate_hichria_retained_display_reference(
+                record.get('retainedDisplayReference'), manifest_path, record, proof,
+                features, indices, geometries, original_sources, effective_sources,
+                source_sha256, base, governor)
+            retained_display_applications.append(display_application)
         primary = picker_review_name_key(base['nomAr'])
         if not primary or primary != picker_review_name_key(proof['name']):
             raise ValueError('Missing reviewed original picker name')
@@ -5699,8 +7246,8 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
                 raise ValueError(f'Reviewed picker member identity or default changed: {member_id}')
             source_geometry = effective.get('shape')
             packed_geometry = geometries[index]
-            if (source_geometry is None or not source_geometry.covers(base_point)
-                    or not packed_geometry.covers(base_point)
+            if (source_geometry is None or not source_geometry.covers(display_point)
+                    or not packed_geometry.covers(display_point)
                     or aggregate_geometry_sha256(source_geometry) != member.get('originalGeometrySha256')
                     or hashlib.sha256(packed_geometry_bytes(packed_geometry)).hexdigest() != member.get('packedGeometrySha256')):
                 raise ValueError(f'Reviewed picker geometry or containment changed: {member_id}')
@@ -5722,7 +7269,8 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
             if identity.get('method') == 'reviewed_split_settlement_reference':
                 split_applications.append(validate_reviewed_split_settlement_reference(
                     identity, manifest_path, manifest, record, features, indices, geometries, groups,
-                    original_sources, effective_sources, source_sha256, base, governor, timetables, curation))
+                    original_sources, effective_sources, source_sha256, base, governor, timetables, curation,
+                    reviewed_boundaries, official_report))
                 supported = True
                 continue
             if identity.get('method') == 'reviewed_contained_settlement_reference':
@@ -5898,6 +7446,11 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
         split_report = {'reviewedGroupCount': len(split_applications), 'applications': split_applications}
         verify_reviewed_city_display_associations(features, split_report)
         report['splitSettlementReferences'] = split_report
+    if retained_display_applications:
+        retained_report = {'reviewedGroupCount': len(retained_display_applications),
+                           'applications': retained_display_applications}
+        verify_reviewed_city_display_associations(features, retained_report)
+        report['retainedDisplayReferences'] = retained_report
     if local_report is not None:
         report['localityGroups'] = local_report
     if city_report is not None:
@@ -6116,7 +7669,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
             if geometry is not None or (base_group is not None and base_group != display_group):
                 raise ValueError('Reviewed point/base display association conflicts with another source choice')
             reviewed_point_base_names[obj['id']] = display_review
-            if 'deferredCompleteGroupExtension' in display_review:
+            if any(key in display_review for key in (
+                    'deferredCompleteGroupExtension', 'sectorOwnedSettlementPreservation')):
                 if base_group is not None:
                     raise ValueError('Reviewed deferred point already has an early base owner')
             else:
@@ -6202,7 +7756,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
         blocked_pairs=distinct_picker_pairs)
     picker_groups, reviewed_picker_report = apply_reviewed_picker_groups(
         reviewed_picker_groups, features + point_only, geometries, governors, timetables,
-        original_picker_sources, {obj['id']: obj for obj in areas + nodes}, source_sha256, curation)
+        original_picker_sources, {obj['id']: obj for obj in areas + nodes}, source_sha256, curation,
+        reviewed_boundaries, official_report)
     reviewed_locality_report = reviewed_picker_report.pop('localityGroups', None)
     deferred_hamlets = reviewed_locality_report.pop('_deferredSurveyedHamlets', []) if reviewed_locality_report else []
     reviewed_city_report = reviewed_picker_report.pop('cityDisplayAssociations', None)
@@ -6219,11 +7774,23 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
         reviewed_boundaries, official_report)
     if reviewed_residential_report is not None:
         picker_groups = residential_picker_groups
+    sector_owned_pending = any('sectorOwnedSettlementPreservation' in proposal
+                               for proposal in reviewed_point_base_names.values())
+    if sector_owned_pending:
+        reserve_sector_owned_settlement_proposals(
+            reviewed_point_base_names, reviewed_picker_groups, reviewed_picker_report, reviewed_city_report,
+            reviewed_residential_report, deferred_hamlets, features + point_only, geometries, governors,
+            base_picker_groups, curation_applications)
     extended_picker_groups = apply_deferred_point_base_group_extensions(
         reviewed_point_base_names, reviewed_picker_groups, reviewed_picker_report, features + point_only,
         geometries, governors, base_picker_groups, curation_applications)
     if extended_picker_groups is not None:
         picker_groups = extended_picker_groups
+    if sector_owned_pending:
+        sector_owned_picker_groups = apply_sector_owned_settlement_proposals(
+            reviewed_point_base_names, features + point_only, geometries, base_picker_groups, curation_applications)
+        if sector_owned_picker_groups is not None:
+            picker_groups = sector_owned_picker_groups
     verify_reviewed_city_display_associations(features + point_only, reviewed_residential_report)
     verify_reviewed_point_choices(retained_point_choices, features + point_only)
     verify_distinct_picker_groups(features + point_only, distinct_picker_pairs, distinct_picker_report,
@@ -6231,6 +7798,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
     verify_reviewed_city_display_associations(features + point_only, reviewed_city_report)
     verify_reviewed_city_display_associations(
         features + point_only, reviewed_picker_report.get('splitSettlementReferences'))
+    verify_reviewed_city_display_associations(
+        features + point_only, reviewed_picker_report.get('retainedDisplayReferences'))
     verify_reviewed_point_base_names(
         reviewed_point_base_names, features + point_only, geometries, base_picker_groups)
     saved_replacements = reviewed_saved_replacements(

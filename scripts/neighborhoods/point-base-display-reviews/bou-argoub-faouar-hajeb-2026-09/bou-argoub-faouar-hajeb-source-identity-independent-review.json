@@ -1,0 +1,154 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_FOR_DISPLAY_ASSOCIATIONS_ONLY",
+  "createdAt": "2026-09-12T10:07:24.303000+00:00",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "ad68201de32928467232f1aeb07675e84e993aaad79212406444a65634da1c87"
+  },
+  "sourceReviews": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bou-argoub-town-point-source-review.json",
+      "sha256": "c0be681b4afc62fce65a38e131e2b9d6a9baa966fcdb21a3875f6e24393f6fdd"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-faouar-town-point-source-review.json",
+      "sha256": "b46eef0ec5b43f07b6ab2c3f92dd3335ddadc62646f391989a972781bbbf07a4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\hajeb-el-ayoun-town-point-source-review.json",
+      "sha256": "55f1b613798694634635996bd7c740a19655c291c4edb81f2b961711dd73cbeb"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "osm:node:1190878345",
+      "current": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\osm-node-1190878345-current.json",
+        "sha256": "150723df61be020e28f56a2945106c22fb9b7b655f7e30ea25239794a750f73a"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\osm-node-1190878345-history.json",
+        "sha256": "6a86ea35510109a194eb8d07550598eaf62665c254cf01421d4fea0c5eb900e4"
+      },
+      "versionsIndependentlyCompared": 9,
+      "cacheAndRawParity": true,
+      "historyContainsInstitutionOrSectorRetag": false
+    },
+    {
+      "id": "osm:node:560792911",
+      "current": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\osm-node-560792911-current.json",
+        "sha256": "fdb150fc934c0bcbb196ce191103d3ca96f939edfd02852cab1bd30caaf48ad8"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\osm-node-560792911-history.json",
+        "sha256": "e15cd5ac3b4e64b822b7af0b56155592e0ea5e64d6349ec96f2496f98b753a70"
+      },
+      "versionsIndependentlyCompared": 9,
+      "cacheAndRawParity": true,
+      "historyContainsInstitutionOrSectorRetag": false
+    },
+    {
+      "id": "osm:node:1187489040",
+      "current": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\osm-node-1187489040-current.json",
+        "sha256": "184395482034cdeb111d6340c7495bfad64bf008da4bade361874979d8d0ac69"
+      },
+      "history": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\osm-node-1187489040-history.json",
+        "sha256": "20847dcdd6a14878e150aaab634528c54c24770b7dfaa095e813870e7b51f34f"
+      },
+      "versionsIndependentlyCompared": 13,
+      "cacheAndRawParity": true,
+      "historyContainsInstitutionOrSectorRetag": false
+    }
+  ],
+  "historyVersionsIndependentlyCompared": 31,
+  "primaryPageDerivations": [
+    {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\mehat-atlas-kairouan-fr.pdf",
+        "sha256": "7b683b60e43de90b14d42b19cc7f4836594b3729ee1a9c993e47bd718bc92641"
+      },
+      "pdfPage": 48,
+      "printedPage": 47,
+      "derivedCompleteText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\mehat-atlas-kairouan-page48.txt",
+        "sha256": "e4e820d35d2c5ba95fdfe94544c0c4550be8f529d04d911a310f50b67d79e06f"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\mehat-atlas-kairouan-page48.png",
+        "sha256": "43f4e7c8754b2a1154330512cf2401e46779e392b64b55a32fe9f58cb9917790"
+      },
+      "completePageBytesReproduced": true,
+      "rootViewedWholePageAndCover": true,
+      "documentDateFromCover": "May 2011",
+      "hostingDateIsNotDocumentDate": true,
+      "extractor": {
+        "library": "PyMuPDF",
+        "version": "1.28.2",
+        "operation": "get_text('text', sort=False).encode('utf8')"
+      },
+      "identityOnlyNoBoundaryOrCoordinatesExtracted": true
+    },
+    {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-sud-ouest.pdf",
+        "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598"
+      },
+      "pdfPage": 38,
+      "printedPage": 37,
+      "derivedCompleteText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-38.txt",
+        "sha256": "19f8370de49deb920ffb5d82211302fd42040e143ab06efb1bec40f1d64a7dea"
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-38.png",
+        "sha256": "eead08510d289fb13eeb4f348835b25aefd2ff8f3a1688501b98d0e6248ca732"
+      },
+      "completePageBytesReproduced": true,
+      "rootViewedWholePageAndCover": true,
+      "documentDateFromCover": "May 2010",
+      "hostingDateIsNotDocumentDate": true,
+      "extractor": {
+        "library": "PyMuPDF",
+        "version": "1.28.2",
+        "operation": "get_text('text', sort=False).encode('utf8')"
+      },
+      "identityOnlyNoBoundaryOrCoordinatesExtracted": true
+    }
+  ],
+  "bouArgoubMunicipalHtml": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\municipal-city-brief.html",
+    "sha256": "da118e28e881d8bd8569a50b924e1d9502573366f339b42c08b2a6bc60f33321"
+  },
+  "htmlInterpretation": "Official city-brief article explicitly describes Bou Argoub as a city in Nabeul on RN1. NFKC was used for reading Arabic presentation forms only; original HTML bytes remain unchanged and are the operative source.",
+  "phoneReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bou-argoub-faouar-hajeb-phone-review-20260912.json",
+    "sha256": "16bac80d9ffcd27ce60ac2a13a26c0cf7d583bdcbabd10518df6aff2739d5a9e"
+  },
+  "decisions": {
+    "osm:node:1190878345": "Same named settlement choice as Bou Argoub reference; preserve seven sectors.",
+    "osm:node:560792911": "Same named settlement choice as El Faouar reference; preserve five sectors and Ghidma group.",
+    "osm:node:1187489040": "Same named settlement choice as Hajeb El Ayoun reference; preserve nine sectors."
+  },
+  "reasoning": "Complete settlement histories, official inhabited-place descriptions and direct phone town cards support these display associations. Matching prayer defaults or distances alone would not establish identity.",
+  "referenceLimitations": "Phone views of the old Bou Argoub and Hajeb timetable coordinates show different local context from the mapped town points. They are not certified town centres or original INM anchors. This review does not authorize moving either point, changing administrative parentage or merging sectors.",
+  "remainingWork": [
+    "Review complete original/effective group closure",
+    "Assemble and independently review source wrappers",
+    "Generate catalog once and compare exact changes before installation"
+  ],
+  "notCertified": [
+    "Exact settlement centres",
+    "Legal city or neighborhood polygons",
+    "Original INM prayer-reference coordinates",
+    "Remaining catalog"
+  ],
+  "productChanges": false,
+  "testsOrBuild": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_bou_argoub_faouar_hajeb_source_identity.py",
+    "sha256": "28a6d59137a74e9f242de93f9e16b4412c13020476f1a83111fd9a5bc62d7e85"
+  }
+}

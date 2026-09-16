@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "derived_retrieval_index_not_original_HTTP_or_original_manifest_bytes",
+  "scope": "Only1522 daily prayer and sunrise originals; local filenames resolve beside this manifest. Both original HTTP bodies are unchanged.",
+  "responses": [
+    {
+      "file": "inm-prayer-1522-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/",
+      "sha256": "e549430d69fced86c75ed842d5df501c82e8d83e517bb255dc9897ffa7b799d6",
+      "bytes": 628,
+      "retrievedAtUtc": "2026-09-12T10:17:14.613001+00:00",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:13 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "628",
+        "Keep-Alive": "timeout=5, max=17",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten."
+    },
+    {
+      "file": "inm-sun-1522-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/",
+      "sha256": "543c5cfdcac7e3b959e7e1ead940f4e983042b2254994d3433911b132fb1c484",
+      "bytes": 597,
+      "retrievedAtUtc": "2026-09-12T22:13:06.485184+00:00",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 22:13:06 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade, Keep-Alive",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "597",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "application/json"
+      },
+      "provenance": "Original HTTP response body after content decoding, not rewritten."
+    }
+  ],
+  "derivation": {
+    "originalInventory": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/inm-reference-inventory-20260912/reference-inventory.json",
+      "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401",
+      "bytes": 1665727
+    },
+    "originalHichriaRetrievalManifest": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/hichria-reference-review-20260913/retrieval-manifest.json",
+      "sha256": "2326da13427d6f581f232b9bb186bf42d2a954b669ab37274a92e5eba09fe158",
+      "bytes": 11352
+    },
+    "historicalParentManifestPinsAreProvenanceNotShippingDependencyReferences": true,
+    "originalPrayerEntry": {
+      "expected": {
+        "governorateId": 355,
+        "delegationId": 1522,
+        "governorate": {
+          "id": 355,
+          "nomFr": "Sidi Bouzid",
+          "nomAr": "سيدي بوزيد",
+          "nomEn": "Sidi Bouzid",
+          "lat": 35.0382,
+          "lng": 9.4849
+        },
+        "delegation": {
+          "id": 1522,
+          "nomFr": "Hichria",
+          "nomAr": "الهيشرية",
+          "nomEn": "Hichria",
+          "lat": 34.895,
+          "lng": 9.3918
+        },
+        "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/"
+      },
+      "attempt": 1,
+      "retrievedAt": "2026-09-12T10:17:14.613001+00:00",
+      "reused": false,
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:13 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "628",
+        "Keep-Alive": "timeout=5, max=17",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-1522-2026-09-12.json",
+        "sha256": "e549430d69fced86c75ed842d5df501c82e8d83e517bb255dc9897ffa7b799d6",
+        "bytes": 628
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten.",
+      "analysis": {
+        "classification": "VALID_DAILY_REFERENCE",
+        "actual": {
+          "dailyRecordId": 829037,
+          "gouvernorat": {
+            "id": 355,
+            "intituleFr": "Sidi Bouzid",
+            "intituleAr": "سيدي بوزيد",
+            "intituleAn": "Sidi Bouzid"
+          },
+          "delegation": {
+            "id": 1522,
+            "intituleFr": "Hichria",
+            "intituleAr": "الهيشرية",
+            "intituleAn": "Hichria",
+            "parent": {
+              "id": 355,
+              "intituleFr": "Sidi Bouzid",
+              "intituleAr": "سيدي بوزيد",
+              "intituleAn": "Sidi Bouzid"
+            }
+          },
+          "date": "2026-09-12 00:00",
+          "year": 2026,
+          "active": true,
+          "method": "GET",
+          "lat": "34.829",
+          "lng": " 9.376",
+          "times": {
+            "sobh": "04:37",
+            "dhohr": "12:26",
+            "aser": "15:52",
+            "magreb": "18:39",
+            "isha": "19:59"
+          }
+        },
+        "validationErrors": [],
+        "nameDifferences": [],
+        "coordinateComparison": {
+          "numeric": {
+            "lat": "34.829",
+            "lng": "9.376"
+          },
+          "matchesCurrentAppNumbersExactly": false,
+          "currentApp": {
+            "lat": 34.895,
+            "lng": 9.3918
+          }
+        }
+      },
+      "accessChallengeSuspected": false,
+      "completedAt": "2026-09-12T10:17:14.883610+00:00"
+    },
+    "originalSunEntry": {
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/",
+      "retrievedAtUtc": "2026-09-12T22:13:06.485184+00:00",
+      "method": "GET",
+      "provenance": "Original HTTP response body after content decoding, not rewritten.",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 22:13:06 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade, Keep-Alive",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "597",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hichria-reference-review-20260913\\inm-sun-1522-2026-09-12.json",
+        "sha256": "543c5cfdcac7e3b959e7e1ead940f4e983042b2254994d3433911b132fb1c484",
+        "bytes": 597
+      }
+    },
+    "method": "Select the exact original prayer inventory entry and matching original sun request by their pinned body hashes; flatten body.file/hash/bytes and request URLs into local relative descriptors. Preserve both complete selected original retrieval entries here."
+  }
+}

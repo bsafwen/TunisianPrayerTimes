@@ -1,0 +1,968 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_boundary_source_phase_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "pointId": "osm:node:1419131100",
+  "baseId": 413,
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421"
+  },
+  "sourceStates": [
+    {
+      "id": "osm:node:1419131100",
+      "original": {
+        "tags": {
+          "addr:city": "Sawwaf",
+          "addr:governorate": "Zaghouan",
+          "name": "صواف",
+          "name:ar": "صواف",
+          "name:en": "Sawwaf",
+          "name:fr": "Saouaf",
+          "place": "village"
+        },
+        "kind": "village",
+        "sourceId": null,
+        "geometrySha256": "c50d06cc9f2071c96be86157933e3c067a5c3f7046774db18f2bd1c69590c44b"
+      },
+      "effective": {
+        "tags": {
+          "addr:city": "Sawwaf",
+          "addr:governorate": "Zaghouan",
+          "name": "صواف",
+          "name:ar": "صواف",
+          "name:en": "Sawwaf",
+          "name:fr": "Saouaf",
+          "place": "village"
+        },
+        "kind": "village",
+        "sourceId": "osm",
+        "geometrySha256": "c50d06cc9f2071c96be86157933e3c067a5c3f7046774db18f2bd1c69590c44b"
+      }
+    },
+    {
+      "id": "osm:relation:7114526",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "صواف الشرقية",
+          "name:ar": "صواف الشرقية",
+          "name:fr": "Saouaf Est",
+          "ref:tn:codegeo": "165651"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "822db66cf6ce7c926bbe999def9ee925845a69a098cb306598d46914ebe9ffe6"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "165651",
+          "name:ar": "صواف الشرقية",
+          "name:fr": "Saouaf Est",
+          "alt_name": "Saouaf Est;Saouef Est"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "geometrySha256": "c9b3c5afccaad3299094bdd0257c12cf70862425e38296d6d033104118286262"
+      }
+    },
+    {
+      "id": "osm:relation:7114549",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحميرة",
+          "name:ar": "الحميرة",
+          "name:fr": "El Hamira",
+          "ref:tn:codegeo": "165653"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "2b98b09674b5c132e2f36a8326609872087896c410c33f257143ee64c45e13cf"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "165653",
+          "name:ar": "الحميرة",
+          "name:fr": "El Hamira",
+          "alt_name": "El Hamira;El Hmira"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "geometrySha256": "16fe018258fb1cf3c0d31d4c50bdc334e3ac0bfc91e4266bc99edb33c5bf07a2"
+      }
+    },
+    {
+      "id": "osm:relation:7116957",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "صواف الغربية",
+          "name:ar": "صواف الغربية",
+          "name:fr": "Saouaf Ouest",
+          "ref:tn:codegeo": "165652"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "b6e4b2cd228becc58a22ff58f6b76d8f58d8a84c9158cce68527e4991472b35d"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "165652",
+          "name:ar": "صواف الغربية",
+          "name:fr": "Saouaf Ouest",
+          "alt_name": "Saouaf Ouest;Saouef Ouest"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "geometrySha256": "a40fbb97bd265399745591ddc4b6447cb4c457f9261b8928c03fb8a660ba48c9"
+      }
+    },
+    {
+      "id": "osm:relation:7119808",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الدغافلة الشرقية",
+          "name:ar": "الدغافلة الشرقية",
+          "name:fr": "Deghafla Est",
+          "ref:tn:codegeo": "165654"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "5c53f9522b8dbea6660525398499b6ce4d7ed92000500bed6ee4a18ab2c3d38a"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "165654",
+          "name:ar": "الدغافلة الشرقية",
+          "name:fr": "Deghafla Est",
+          "alt_name": "Deghafla Est"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "geometrySha256": "c0d018256983b7a3e39de20291d68532a6d08b459b79d10992c21a07263c3ca7"
+      }
+    },
+    {
+      "id": "osm:relation:7119809",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الدغافلة الغربية",
+          "name:ar": "الدغافلة الغربية",
+          "name:fr": "Deghafla Ouest",
+          "ref:tn:codegeo": "165655"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "067785268582265ae81331e104b13d79777896ac3e68cd559fc041b8f127691d"
+      },
+      "effective": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "165655",
+          "name:ar": "الدغافلة الغربية",
+          "name:fr": "Deghafla Ouest",
+          "alt_name": "Deghafla Ouest"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-saouaf",
+        "geometrySha256": "d82cee1d477fa1516d54536737e8e53b087f7f5adc22ba9a212925eac64d345a"
+      }
+    },
+    {
+      "id": "osm:relation:7167811",
+      "original": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Saouaf",
+          "boundary": "administrative",
+          "name": "معتمدية صواف",
+          "name:ar": "معتمدية صواف",
+          "name:fr": "Délégation Saouaf",
+          "ref:tn:codegeo": "1656",
+          "ref:tn:hasc_2": "TN.ZA.SA",
+          "wikidata": "Q3473078"
+        },
+        "kind": "delegation",
+        "sourceId": null,
+        "geometrySha256": "eeecbf567e6d656c77d21a20dbae9b7b7475861d6789bb32d2e5887e173be8e8"
+      },
+      "effective": {
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Saouaf",
+          "boundary": "administrative",
+          "name": "معتمدية صواف",
+          "name:ar": "معتمدية صواف",
+          "name:fr": "Délégation Saouaf",
+          "ref:tn:codegeo": "1656",
+          "ref:tn:hasc_2": "TN.ZA.SA",
+          "wikidata": "Q3473078"
+        },
+        "kind": "delegation",
+        "sourceId": "osm",
+        "geometrySha256": "eeecbf567e6d656c77d21a20dbae9b7b7475861d6789bb32d2e5887e173be8e8"
+      }
+    }
+  ],
+  "originalNamePeerIds": [
+    "osm:node:1419131100",
+    "osm:relation:7167811"
+  ],
+  "effectiveNamePeerIds": [
+    "osm:node:1419131100",
+    "osm:relation:7167811"
+  ],
+  "acceptedReplacements": [
+    {
+      "id": "osm:relation:7114526",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-saouaf",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7114526",
+            "officialCode": "165651",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الشرقية",
+              "name:ar": "صواف الشرقية",
+              "name:fr": "Saouaf Est",
+              "ref:tn:codegeo": "165651"
+            },
+            "aliases": [
+              "Saouaf Est",
+              "Saouef Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7114549",
+            "officialCode": "165653",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الحميرة",
+              "name:ar": "الحميرة",
+              "name:fr": "El Hamira",
+              "ref:tn:codegeo": "165653"
+            },
+            "aliases": [
+              "El Hamira",
+              "El Hmira"
+            ]
+          },
+          {
+            "id": "osm:relation:7116957",
+            "officialCode": "165652",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الغربية",
+              "name:ar": "صواف الغربية",
+              "name:fr": "Saouaf Ouest",
+              "ref:tn:codegeo": "165652"
+            },
+            "aliases": [
+              "Saouaf Ouest",
+              "Saouef Ouest"
+            ]
+          },
+          {
+            "id": "osm:relation:7119808",
+            "officialCode": "165654",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الشرقية",
+              "name:ar": "الدغافلة الشرقية",
+              "name:fr": "Deghafla Est",
+              "ref:tn:codegeo": "165654"
+            },
+            "aliases": [
+              "Deghafla Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7119809",
+            "officialCode": "165655",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الغربية",
+              "name:ar": "الدغافلة الغربية",
+              "name:fr": "Deghafla Ouest",
+              "ref:tn:codegeo": "165655"
+            },
+            "aliases": [
+              "Deghafla Ouest"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-review.json",
+            "sha256": "36829b54ac6ad8ce0633dbef86c7f8a7096c17cc2c1aa417d5a202db00b3a776"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-independent-review.json",
+            "sha256": "9591e0cc20f219cede9183388aac273ffbb65b39f8ccb8e5899c8765932e3d0b"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7114526",
+        "officialCode": "165651",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "صواف الشرقية",
+          "name:ar": "صواف الشرقية",
+          "name:fr": "Saouaf Est",
+          "ref:tn:codegeo": "165651"
+        },
+        "aliases": [
+          "Saouaf Est",
+          "Saouef Est"
+        ]
+      },
+      "geojson": {
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+      },
+      "featureSha256": "b9e4c91d1ae7394ad4a43c0798bbb963c3d76d75874b8131baac6b7c761a6d07",
+      "application": {
+        "id": "osm:relation:7114526",
+        "action": "replace",
+        "officialCode": "165651",
+        "sourceId": "isie-local-sectors-2023-saouaf"
+      }
+    },
+    {
+      "id": "osm:relation:7114549",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-saouaf",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7114526",
+            "officialCode": "165651",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الشرقية",
+              "name:ar": "صواف الشرقية",
+              "name:fr": "Saouaf Est",
+              "ref:tn:codegeo": "165651"
+            },
+            "aliases": [
+              "Saouaf Est",
+              "Saouef Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7114549",
+            "officialCode": "165653",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الحميرة",
+              "name:ar": "الحميرة",
+              "name:fr": "El Hamira",
+              "ref:tn:codegeo": "165653"
+            },
+            "aliases": [
+              "El Hamira",
+              "El Hmira"
+            ]
+          },
+          {
+            "id": "osm:relation:7116957",
+            "officialCode": "165652",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الغربية",
+              "name:ar": "صواف الغربية",
+              "name:fr": "Saouaf Ouest",
+              "ref:tn:codegeo": "165652"
+            },
+            "aliases": [
+              "Saouaf Ouest",
+              "Saouef Ouest"
+            ]
+          },
+          {
+            "id": "osm:relation:7119808",
+            "officialCode": "165654",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الشرقية",
+              "name:ar": "الدغافلة الشرقية",
+              "name:fr": "Deghafla Est",
+              "ref:tn:codegeo": "165654"
+            },
+            "aliases": [
+              "Deghafla Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7119809",
+            "officialCode": "165655",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الغربية",
+              "name:ar": "الدغافلة الغربية",
+              "name:fr": "Deghafla Ouest",
+              "ref:tn:codegeo": "165655"
+            },
+            "aliases": [
+              "Deghafla Ouest"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-review.json",
+            "sha256": "36829b54ac6ad8ce0633dbef86c7f8a7096c17cc2c1aa417d5a202db00b3a776"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-independent-review.json",
+            "sha256": "9591e0cc20f219cede9183388aac273ffbb65b39f8ccb8e5899c8765932e3d0b"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7114549",
+        "officialCode": "165653",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحميرة",
+          "name:ar": "الحميرة",
+          "name:fr": "El Hamira",
+          "ref:tn:codegeo": "165653"
+        },
+        "aliases": [
+          "El Hamira",
+          "El Hmira"
+        ]
+      },
+      "geojson": {
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+      },
+      "featureSha256": "9974c392d3e7cb38d6e707b44113f81e2947147611d4ade4b65efae888ec4dc1",
+      "application": {
+        "id": "osm:relation:7114549",
+        "action": "replace",
+        "officialCode": "165653",
+        "sourceId": "isie-local-sectors-2023-saouaf"
+      }
+    },
+    {
+      "id": "osm:relation:7116957",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-saouaf",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7114526",
+            "officialCode": "165651",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الشرقية",
+              "name:ar": "صواف الشرقية",
+              "name:fr": "Saouaf Est",
+              "ref:tn:codegeo": "165651"
+            },
+            "aliases": [
+              "Saouaf Est",
+              "Saouef Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7114549",
+            "officialCode": "165653",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الحميرة",
+              "name:ar": "الحميرة",
+              "name:fr": "El Hamira",
+              "ref:tn:codegeo": "165653"
+            },
+            "aliases": [
+              "El Hamira",
+              "El Hmira"
+            ]
+          },
+          {
+            "id": "osm:relation:7116957",
+            "officialCode": "165652",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الغربية",
+              "name:ar": "صواف الغربية",
+              "name:fr": "Saouaf Ouest",
+              "ref:tn:codegeo": "165652"
+            },
+            "aliases": [
+              "Saouaf Ouest",
+              "Saouef Ouest"
+            ]
+          },
+          {
+            "id": "osm:relation:7119808",
+            "officialCode": "165654",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الشرقية",
+              "name:ar": "الدغافلة الشرقية",
+              "name:fr": "Deghafla Est",
+              "ref:tn:codegeo": "165654"
+            },
+            "aliases": [
+              "Deghafla Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7119809",
+            "officialCode": "165655",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الغربية",
+              "name:ar": "الدغافلة الغربية",
+              "name:fr": "Deghafla Ouest",
+              "ref:tn:codegeo": "165655"
+            },
+            "aliases": [
+              "Deghafla Ouest"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-review.json",
+            "sha256": "36829b54ac6ad8ce0633dbef86c7f8a7096c17cc2c1aa417d5a202db00b3a776"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-independent-review.json",
+            "sha256": "9591e0cc20f219cede9183388aac273ffbb65b39f8ccb8e5899c8765932e3d0b"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7116957",
+        "officialCode": "165652",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "صواف الغربية",
+          "name:ar": "صواف الغربية",
+          "name:fr": "Saouaf Ouest",
+          "ref:tn:codegeo": "165652"
+        },
+        "aliases": [
+          "Saouaf Ouest",
+          "Saouef Ouest"
+        ]
+      },
+      "geojson": {
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+      },
+      "featureSha256": "dc207bcaf55782e3ff1661d3f75ac2870b4d18e2fa780297ce311ba36f05385e",
+      "application": {
+        "id": "osm:relation:7116957",
+        "action": "replace",
+        "officialCode": "165652",
+        "sourceId": "isie-local-sectors-2023-saouaf"
+      }
+    },
+    {
+      "id": "osm:relation:7119808",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-saouaf",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7114526",
+            "officialCode": "165651",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الشرقية",
+              "name:ar": "صواف الشرقية",
+              "name:fr": "Saouaf Est",
+              "ref:tn:codegeo": "165651"
+            },
+            "aliases": [
+              "Saouaf Est",
+              "Saouef Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7114549",
+            "officialCode": "165653",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الحميرة",
+              "name:ar": "الحميرة",
+              "name:fr": "El Hamira",
+              "ref:tn:codegeo": "165653"
+            },
+            "aliases": [
+              "El Hamira",
+              "El Hmira"
+            ]
+          },
+          {
+            "id": "osm:relation:7116957",
+            "officialCode": "165652",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الغربية",
+              "name:ar": "صواف الغربية",
+              "name:fr": "Saouaf Ouest",
+              "ref:tn:codegeo": "165652"
+            },
+            "aliases": [
+              "Saouaf Ouest",
+              "Saouef Ouest"
+            ]
+          },
+          {
+            "id": "osm:relation:7119808",
+            "officialCode": "165654",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الشرقية",
+              "name:ar": "الدغافلة الشرقية",
+              "name:fr": "Deghafla Est",
+              "ref:tn:codegeo": "165654"
+            },
+            "aliases": [
+              "Deghafla Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7119809",
+            "officialCode": "165655",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الغربية",
+              "name:ar": "الدغافلة الغربية",
+              "name:fr": "Deghafla Ouest",
+              "ref:tn:codegeo": "165655"
+            },
+            "aliases": [
+              "Deghafla Ouest"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-review.json",
+            "sha256": "36829b54ac6ad8ce0633dbef86c7f8a7096c17cc2c1aa417d5a202db00b3a776"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-independent-review.json",
+            "sha256": "9591e0cc20f219cede9183388aac273ffbb65b39f8ccb8e5899c8765932e3d0b"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7119808",
+        "officialCode": "165654",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الدغافلة الشرقية",
+          "name:ar": "الدغافلة الشرقية",
+          "name:fr": "Deghafla Est",
+          "ref:tn:codegeo": "165654"
+        },
+        "aliases": [
+          "Deghafla Est"
+        ]
+      },
+      "geojson": {
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+      },
+      "featureSha256": "4d8254c40bf3a76178b59f1ca66792d0b280f80a63e62589938d42f646e8935d",
+      "application": {
+        "id": "osm:relation:7119808",
+        "action": "replace",
+        "officialCode": "165654",
+        "sourceId": "isie-local-sectors-2023-saouaf"
+      }
+    },
+    {
+      "id": "osm:relation:7119809",
+      "sourceRecord": {
+        "id": "isie-local-sectors-2023-saouaf",
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "records": [
+          {
+            "id": "osm:relation:7114526",
+            "officialCode": "165651",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الشرقية",
+              "name:ar": "صواف الشرقية",
+              "name:fr": "Saouaf Est",
+              "ref:tn:codegeo": "165651"
+            },
+            "aliases": [
+              "Saouaf Est",
+              "Saouef Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7114549",
+            "officialCode": "165653",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الحميرة",
+              "name:ar": "الحميرة",
+              "name:fr": "El Hamira",
+              "ref:tn:codegeo": "165653"
+            },
+            "aliases": [
+              "El Hamira",
+              "El Hmira"
+            ]
+          },
+          {
+            "id": "osm:relation:7116957",
+            "officialCode": "165652",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "صواف الغربية",
+              "name:ar": "صواف الغربية",
+              "name:fr": "Saouaf Ouest",
+              "ref:tn:codegeo": "165652"
+            },
+            "aliases": [
+              "Saouaf Ouest",
+              "Saouef Ouest"
+            ]
+          },
+          {
+            "id": "osm:relation:7119808",
+            "officialCode": "165654",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الشرقية",
+              "name:ar": "الدغافلة الشرقية",
+              "name:fr": "Deghafla Est",
+              "ref:tn:codegeo": "165654"
+            },
+            "aliases": [
+              "Deghafla Est"
+            ]
+          },
+          {
+            "id": "osm:relation:7119809",
+            "officialCode": "165655",
+            "action": "replace",
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الدغافلة الغربية",
+              "name:ar": "الدغافلة الغربية",
+              "name:fr": "Deghafla Ouest",
+              "ref:tn:codegeo": "165655"
+            },
+            "aliases": [
+              "Deghafla Ouest"
+            ]
+          }
+        ],
+        "review": {
+          "reviewedDate": "2026-09-08",
+          "geometryEdition": 2023,
+          "nativeSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-review.json",
+            "sha256": "36829b54ac6ad8ce0633dbef86c7f8a7096c17cc2c1aa417d5a202db00b3a776"
+          },
+          "independentSourceReview": {
+            "root": "task",
+            "file": "outputs/saouaf-five-native-source-independent-review.json",
+            "sha256": "9591e0cc20f219cede9183388aac273ffbb65b39f8ccb8e5899c8765932e3d0b"
+          },
+          "nameIdentityReview": {
+            "root": "task",
+            "file": "outputs/beni-hassan-saouaf-ten-imada-name-identity-review.json",
+            "sha256": "5796e9a15d0728a71bebf3b0e848bd0bc4341ada034e7fd82da0e7d37158d608"
+          },
+          "state": "Source acceptance proposal only; dependent proof migrations, independent package review and actual-data review remain required.",
+          "uncertainty": "Exact native administrative outlines retain observed gaps/overlaps. Control residuals are not surveyed ground accuracy. Common settlement extents and timetable references remain distinct.",
+          "evidenceFile": "official/beni-saouaf-isie2023-twelve-source-acceptance-review.json",
+          "evidenceSha256": "be815062ec6ca216a9bff148ace7f47761ec663ef413414295e8e1189f470652"
+        }
+      },
+      "record": {
+        "id": "osm:relation:7119809",
+        "officialCode": "165655",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الدغافلة الغربية",
+          "name:ar": "الدغافلة الغربية",
+          "name:fr": "Deghafla Ouest",
+          "ref:tn:codegeo": "165655"
+        },
+        "aliases": [
+          "Deghafla Ouest"
+        ]
+      },
+      "geojson": {
+        "file": "official/saouaf-isie2023-five-sectors.geojson",
+        "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+      },
+      "featureSha256": "c13ff239f8e142cad2312f0aa88540bfc0db055a214317be25d9e2e939502f82",
+      "application": {
+        "id": "osm:relation:7119809",
+        "action": "replace",
+        "officialCode": "165655",
+        "sourceId": "isie-local-sectors-2023-saouaf"
+      }
+    }
+  ],
+  "additionalPreservedSectors": []
+}

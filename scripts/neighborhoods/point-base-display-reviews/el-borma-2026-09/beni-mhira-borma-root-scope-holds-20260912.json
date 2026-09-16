@@ -1,0 +1,71 @@
+{
+  "status": "PRIMARY_SCOPE_FINDINGS_REVIEWED_BOTH_DISPLAY_ASSOCIATIONS_HELD",
+  "reviewedAt": "2026-09-12T11:32:34.641809+00:00",
+  "reports": {
+    "beniMhira": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-town-point-source-review.json",
+      "sha256": "a5e9978f0390c05e1230c3cb2f05510cdaac2e3e441e73465b148ede87da2391"
+    },
+    "elBorma": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-borma-town-point-source-review-20260912.json",
+      "sha256": "d7fe7e20ec827d9f254d7756db0292ccb5a7ba4d0fbded2e81fc0f371ff0622e"
+    }
+  },
+  "primaryBodiesChecked": [
+    {
+      "url": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html",
+        "sha256": "cfd0c25c6699121dd29ab1723ad48aeae8082b7f8f8bcc43d9b98049de8b2fcd",
+        "bytes": 119531
+      }
+    },
+    {
+      "url": "https://www.mehat.gov.tn/fr/principaux-secteurs/urbanisme/activites/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\mehat-approved-urban-plans.html",
+        "sha256": "344191b6aed8fe5a53aef108190d7c622cea7806efbdfd597f52f22b5763e0b6",
+        "bytes": 183788
+      }
+    },
+    {
+      "url": "https://www.social.gov.tn/en/local-social-advancement-unit-beni-mhira-tataouine",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\social-beni-mhira-unit.html",
+        "sha256": "781be1c8bef6729d009e050e02d67609219f56b8e86a52eb7a5646e082202f23",
+        "bytes": 65289
+      }
+    },
+    {
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=5",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-social.html",
+        "sha256": "c43e2230e6a10bba8b16643eea25e60ff948bc6f2b718f5f6df2c69976f21e82"
+      }
+    },
+    {
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-field.html",
+        "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51"
+      }
+    }
+  ],
+  "beniMhiraPrimaryPdf": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\isie-page87-derivation-provenance.json",
+    "sha256": "3082c148c5ed41cc2f4798c63eee10a396d624b7876f20897284a916043f3434",
+    "bytes": 2003
+  },
+  "rootVisualReview": "Full rendered ISIE page87 personally viewed; rows5575 and5577 distinguish eastern and new/western school contexts. This is institution naming and administrative evidence, not a boundary or same-town proof.",
+  "decisions": {
+    "beniMhira": "Retain existing current Beni Mhira administrative assignments and both display rows. A Smar municipality reference does not imply Smar delegation membership. Old/new town scope and transferred-code source lineage remain unresolved for this merge.",
+    "elBorma": "Retain the inhabited worker locality. SITEP explicitly describes a residential camp and medical centre at El Borma. The prayer-reference name does not establish a current delegation or exact residential footprint; the display association remains unresolved."
+  },
+  "productChanges": false,
+  "phoneActions": false,
+  "testsOrBuild": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_beni_mhira_borma_root_holds.py",
+    "sha256": "9e123998458304e08dddc5a7018e03ac260522c931e172296a9711fa070ed029"
+  }
+}

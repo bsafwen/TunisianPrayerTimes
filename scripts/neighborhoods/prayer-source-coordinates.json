@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewedDate": "2026-09-08",
-  "scope": "Reviewed settlement reference points used to select the nearest available meteo.tn timetable. These are not certified INM prayer-calculation coordinates, delegation boundaries or neighborhood polygons.",
+  "reviewedDate": "2026-09-13",
+  "scope": "Reviewed references for nearest available meteo.tn timetable selection: 30 preserved OSM settlement references and five official INM-published references 463, 526, 607, 609, 1522. No internal calculation-input or boundary certification.",
   "originalSourceAsset": {
     "path": "android-app/app/src/main/assets/gouvernorats.json",
     "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8",
@@ -18,7 +18,7 @@
     "populatedPlaceRecords": 2245
   },
   "reviewLimitations": [
-    "Google Maps phone views were used only to check the named settlement context. All replacement coordinates come from the identified OSM place nodes; no Google coordinates or geometry are copied into the app.",
+    "For 30 original OSM settlement corrections, named OSM place nodes supply the reference coordinates. Official INM prayer and sunrise responses supply 463, 526, 607, 609, 1522. Public phone observations corroborate place context only; no Google coordinates or geometry are copied and internal calculation inputs remain uncertified.",
     "Coordinate searches can display a nearby address or POI. Phone screenshots do not certify exact pin coordinates, administrative membership or polygon borders.",
     "GeoNames disagrees for Rouhia. The conflicting point is retained; the Social Affairs Ministry record embeds exactly the selected OSM settlement coordinate."
   ],
@@ -2269,6 +2269,226 @@
         "Existing raw node coordinates, timetable ID500 and five coded imadas are preserved.",
         "Old auto-selected Western Union address is rejected as locality evidence."
       ]
+    },
+    {
+      "delegationId": 463,
+      "expectedGovernorateId": 350,
+      "expectedNames": {
+        "nomAr": "بوعرقوب",
+        "nomFr": "Bou Argoub",
+        "nomEn": "Bou Argoub"
+      },
+      "reviewedDate": "2026-09-12",
+      "original": {
+        "lat": 36.55,
+        "lng": 10.55
+      },
+      "proposed": {
+        "lat": 36.535,
+        "lng": 10.552
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d. Original external provenance is not certified by this migration.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-prayer-463-2026-09-12.json",
+          "sha256": "c95b48e575298a1d6bfd3c085969775a10591cfaf46c915ba1ebd79532a7fffc",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/350/463/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-sun-463-2026-09-12.json",
+          "sha256": "821a07ba0bf2944227a69cf1caa03700a2c8fddf8035c2cf1f6077fcb90b3edc",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/350/463/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+        }
+      },
+      "qualification": "Official public INM prayer and sunrise responses publish these reference values. This records published fields and does not certify internal calculation inputs, survey precision, an OSM node or any boundary.",
+      "reviewBatchId": "2026-09-12-inm-published-reference-463-526",
+      "originalSourceAssetSha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      }
+    },
+    {
+      "delegationId": 526,
+      "expectedGovernorateId": 357,
+      "expectedNames": {
+        "nomAr": "حاجب العيون",
+        "nomFr": "Hajeb El Ayoun",
+        "nomEn": "Hajeb El Ayoun"
+      },
+      "reviewedDate": "2026-09-12",
+      "original": {
+        "lat": 35.39,
+        "lng": 9.57
+      },
+      "proposed": {
+        "lat": 35.397,
+        "lng": 9.543
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d. Original external provenance is not certified by this migration.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-prayer-526-2026-09-12.json",
+          "sha256": "24a1faf1c1729fc619c0bddaf556d91b497e935c9d3d51a17cbc234a4036e3c5",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/357/526/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-sun-526-2026-09-12.json",
+          "sha256": "1fe20564a56468c8592fac5842dc0e4f06aef5e0b14aa8539831190f0fa60a21",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/357/526/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+        }
+      },
+      "qualification": "Official public INM prayer and sunrise responses publish these reference values. This records published fields and does not certify internal calculation inputs, survey precision, an OSM node or any boundary.",
+      "reviewBatchId": "2026-09-12-inm-published-reference-463-526",
+      "originalSourceAssetSha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      }
+    },
+    {
+      "delegationId": 607,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "المظيلة",
+        "nomFr": "Mdhilla",
+        "nomEn": "Mdhilla"
+      },
+      "reviewedDate": "2026-09-12",
+      "original": {
+        "lat": 34.25,
+        "lng": 8.76
+      },
+      "proposed": {
+        "lat": 34.293,
+        "lng": 8.751
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659; external origin was not documented. The source town node and legacy gazetteer mine are not substituted for the official published daily reference.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/inm-prayer-607-2026-09-12.json",
+          "sha256": "cdf5da5a76fd38d2b7afba892ba12445c22ef0da50df453df42e517b611a84f2",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/607/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/inm-sun-607-2026-09-12.json",
+          "sha256": "5870f50370a213668643f86f34fec8385035b916022d70dd4ea9845e5dc3c069",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/607/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "9e8ab961edaf86e158f71e91bff9017b7f6f0860179deabf080e5b00e63cc8bc"
+        }
+      },
+      "qualification": "The original daily INM prayer and sunrise responses publish matching607/Gafsa names, date and coordinates. These are official published timetable reference fields, not certified internal astronomical inputs, survey precision or polygon boundaries.",
+      "reviewBatchId": "2026-09-12-inm-published-mdhila607",
+      "originalSourceAssetSha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/before-gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+      }
+    },
+    {
+      "delegationId": 609,
+      "expectedGovernorateId": 365,
+      "expectedNames": {
+        "nomAr": "السند",
+        "nomFr": "Sened",
+        "nomEn": "Sened"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 34.5406,
+        "lng": 9.254
+      },
+      "proposed": {
+        "lat": 34.462,
+        "lng": 9.262
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f; external origin was not documented. This northern inhabited-town anchor is preserved as historical evidence, not relabelled as an OSM error.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/inm-prayer-609-2026-09-12.json",
+          "sha256": "7968b7ae601a813181d54917366dc469422d9d4cf2be04e21f93b14b061755cf",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/609/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/inm-sun-609-2026-09-12.json",
+          "sha256": "8d2067a1ec2a93d41519121eb5c98343ff4e0624c29b0f61da3bcc6fa1e85963",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/609/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "0c3d97183aa188a913e14e6210531c86134aee5cbb10bb51d2da9de99798c0fe"
+        }
+      },
+      "qualification": "The official prayer and sunrise records agree on date, names, parent and published reference fields. They do not certify the backend astronomical inputs, survey precision, a settlement centre, or any polygon boundary.",
+      "reviewBatchId": "2026-09-13-inm-published-sened609",
+      "originalSourceAssetSha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/before-gouvernorats.json",
+        "sha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f"
+      }
+    },
+    {
+      "delegationId": 1522,
+      "expectedGovernorateId": 355,
+      "expectedNames": {
+        "nomAr": "الهيشرية",
+        "nomFr": "Hichria",
+        "nomEn": "Hichria"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 34.895,
+        "lng": 9.3918
+      },
+      "proposed": {
+        "lat": 34.829,
+        "lng": 9.376
+      },
+      "originalProvenance": "Legacy bundled reference in gouvernorats.json SHA256b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4; external origin undocumented. Its original northern-sector containment remains historical evidence and is not relabelled as an OSM error.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-prayer-1522-2026-09-12.json",
+          "sha256": "e549430d69fced86c75ed842d5df501c82e8d83e517bb255dc9897ffa7b799d6",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-sun-1522-2026-09-12.json",
+          "sha256": "543c5cfdcac7e3b959e7e1ead940f4e983042b2254994d3433911b132fb1c484",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "e2db43e8ecc6f949c11a5e426e217b5746772a58f017fb7843ea1b4e941f09dd"
+        }
+      },
+      "qualification": "Official published daily timetable reference fields, corroborated by original prayer and sunrise responses. Their latitude/longitude are separate from data.delegation identity; no surveyed centre, internal calculation input or administrative boundary is certified.",
+      "reviewBatchId": "2026-09-13-inm-published-hichria1522",
+      "originalSourceAssetSha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-gouvernorats.json",
+        "sha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4"
+      }
     }
   ],
   "reviewBatches": [
@@ -2354,7 +2574,203 @@
       ],
       "phoneReviewPerformed": false,
       "scope": "Named OSM settlement references corroborated by primary published location/identity evidence. No INM calculation point or boundary certification."
+    },
+    {
+      "id": "2026-09-12-inm-published-reference-463-526",
+      "reviewedDate": "2026-09-12",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-prayer-source-coordinates.json",
+        "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+      },
+      "reviewedSourceAssetSha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/independent-source-semantics-review.json",
+        "sha256": "430fa85a60106015de0a057168ae9bc85f290d900d50d4852f51888f1f6f9f7a"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+        "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+      },
+      "appliedSourceIds": [
+        463,
+        526
+      ],
+      "preservedOriginalCorrectionCount": 30,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 463,
+          "governorateId": 350,
+          "field": "lat",
+          "before": 36.55,
+          "after": 36.535
+        },
+        {
+          "delegationId": 463,
+          "governorateId": 350,
+          "field": "lng",
+          "before": 10.55,
+          "after": 10.552
+        },
+        {
+          "delegationId": 526,
+          "governorateId": 357,
+          "field": "lat",
+          "before": 35.39,
+          "after": 35.397
+        },
+        {
+          "delegationId": 526,
+          "governorateId": 357,
+          "field": "lng",
+          "before": 9.57,
+          "after": 9.543
+        }
+      ],
+      "evidenceRelocation": "The five original HTTP body files and original retrieval manifest are relocated together without changing any byte or original record filename. Manifest basenames resolve from its own original-source directory. The source review is an unchanged historical review artifact; its original work paths remain truthful documentary provenance.",
+      "scope": "Only463/526 official published reference coordinates. Timetable IDs/names, all original OSM correction records, settlement display decisions and boundaries are preserved. No claim that the response fields are internal astronomical calculation inputs."
+    },
+    {
+      "id": "2026-09-12-inm-published-mdhila607",
+      "reviewedDate": "2026-09-12",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/before-gouvernorats.json",
+        "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/before-prayer-source-coordinates.json",
+        "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+      },
+      "reviewedSourceAssetSha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/source-proposal.json",
+        "sha256": "359db0f9cb423ff3cb57208e066ed149132d9e701144d78c646a14792c3486f5"
+      },
+      "currentSourceCarry": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/current-source-carry.json",
+        "sha256": "84a4dad64c67c65dbc46807074346e28d4969bde083a3cfd46ca3a3cd62aaed2"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/original-source/retrieval-manifest.json",
+        "sha256": "9e8ab961edaf86e158f71e91bff9017b7f6f0860179deabf080e5b00e63cc8bc"
+      },
+      "appliedSourceIds": [
+        607
+      ],
+      "preservedOriginalCorrectionCount": 32,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 607,
+          "governorateId": 365,
+          "field": "lat",
+          "before": 34.25,
+          "after": 34.293
+        },
+        {
+          "delegationId": 607,
+          "governorateId": 365,
+          "field": "lng",
+          "before": 8.76,
+          "after": 8.751
+        }
+      ],
+      "scope": "Only607 official published reference and intended Mdhila town display/name correction; preserve all existing reference objects and independent source polygons."
+    },
+    {
+      "id": "2026-09-13-inm-published-sened609",
+      "reviewedDate": "2026-09-13",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/before-gouvernorats.json",
+        "sha256": "a08605747568d112d3fd80dcd7435467424051499c88724580573a791539404f"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/before-prayer-source-coordinates.json",
+        "sha256": "bf440554a5ef6c6979eb6553d8c8a4dbfa93c4ddcdbe6ef2897469467eb04f86"
+      },
+      "reviewedSourceAssetSha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/reference-source-acceptance.json",
+        "sha256": "77ae67d7ce2fa4e5dc8d5d8281f3f2013a68f83c7aea410546694b4a1b87de41"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-sened609-2026-09-13/original-source/retrieval-manifest.json",
+        "sha256": "0c3d97183aa188a913e14e6210531c86134aee5cbb10bb51d2da9de99798c0fe"
+      },
+      "appliedSourceIds": [
+        609
+      ],
+      "preservedOriginalCorrectionCount": 33,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 609,
+          "governorateId": 365,
+          "field": "lat",
+          "before": 34.5406,
+          "after": 34.462
+        },
+        {
+          "delegationId": 609,
+          "governorateId": 365,
+          "field": "lng",
+          "before": 9.254,
+          "after": 9.262
+        }
+      ],
+      "scope": "Only609 official published reference, with unchanged northern town, distinct southern village and all existing picker memberships. No locality name, source coordinate or boundary changes."
+    },
+    {
+      "id": "2026-09-13-inm-published-hichria1522",
+      "reviewedDate": "2026-09-13",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-gouvernorats.json",
+        "sha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-prayer-source-coordinates.json",
+        "sha256": "55f9c5d0406d20e073ba887817436737ebdfb9d0c1e84967870f3eeb52bfc99e"
+      },
+      "reviewedSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/reference-source-acceptance.json",
+        "sha256": "bc9dad7a9583442e0a4bd7d9d3905f24598aaf2f91672e2b2985be8e5745343d"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/retrieval-manifest.json",
+        "sha256": "e2db43e8ecc6f949c11a5e426e217b5746772a58f017fb7843ea1b4e941f09dd"
+      },
+      "appliedSourceIds": [
+        1522
+      ],
+      "preservedOriginalCorrectionCount": 34,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 1522,
+          "governorateId": 355,
+          "field": "lat",
+          "before": 34.895,
+          "after": 34.829
+        },
+        {
+          "delegationId": 1522,
+          "governorateId": 355,
+          "field": "lng",
+          "before": 9.3918,
+          "after": 9.376
+        }
+      ],
+      "scope": "Only official published reference1522. Preserve existing Hichria group and all raw localities via separately reviewed retained-display evidence; no locality identity is inferred from the shifted daily-reference point."
     }
   ],
-  "reviewedSourceAssetSha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+  "reviewedSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
 }

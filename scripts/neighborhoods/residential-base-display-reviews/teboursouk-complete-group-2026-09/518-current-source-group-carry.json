@@ -1,0 +1,1334 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_LOCAL_SOURCE_AND_GROUP_CARRY_TO_POST_SIDI_NO_APPLICATION",
+  "checkpoint": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\sidi-el-hani-display-catalog-checkpoint.json",
+    "sha256": "dd666f4c1096e5a94fcbc40156318cb9722cbdb6f8958e366c9cc61c6925e313"
+  },
+  "metadataSha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a",
+  "historicalFiniteFacts": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/finite-source-schema-facts.json",
+    "sha256": "e8163672bd26da8e5c280c6ee0110986dab20dc543e3c6ab06ef140fddd27707"
+  },
+  "historicalSourceReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "historicalRootReview": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-residential-root-scope-review-v2.json",
+    "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098"
+  },
+  "historicalEpochs": {
+    "sourceReview": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+    "finiteFacts": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+    "current": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a"
+  },
+  "currentProtectedRows": {
+    "osm:relation:7189423": {
+      "id": "osm:relation:7189423",
+      "sourceId": "osm",
+      "name": "المنشية",
+      "aliases": [
+        "El Menchia"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.45378,
+      "lng": 9.203314,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.160143,
+        36.43671,
+        9.254434,
+        36.47087
+      ],
+      "areaKm2": 17.98823468906659,
+      "pickerGroupId": "osm:relation:7189423",
+      "offset": 4590832,
+      "length": 5316
+    },
+    "osm:relation:7189429": {
+      "id": "osm:relation:7189429",
+      "sourceId": "osm",
+      "name": "بئر التوتة",
+      "aliases": [
+        "Bir Ettouta"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.52583,
+      "lng": 9.258962,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.184075,
+        36.47087,
+        9.308402,
+        36.58147
+      ],
+      "areaKm2": 59.35938184532627,
+      "pickerGroupId": "osm:relation:7189429",
+      "offset": 4613904,
+      "length": 7404
+    },
+    "osm:relation:7189435": {
+      "id": "osm:relation:7189435",
+      "sourceId": "osm",
+      "name": "تبرسق المدينة",
+      "aliases": [
+        "Teboursouk Ville"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.456445,
+      "lng": 9.258549,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.232066,
+        36.45046,
+        9.279562,
+        36.46236
+      ],
+      "areaKm2": 3.0925908283810934,
+      "pickerGroupId": "osm:relation:7189435",
+      "offset": 4636904,
+      "length": 2132
+    },
+    "osm:relation:7189446": {
+      "id": "osm:relation:7189446",
+      "sourceId": "osm",
+      "name": "دقة",
+      "aliases": [
+        "Dougga"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.38979,
+      "lng": 9.245805,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.183696,
+        36.335449,
+        9.315302,
+        36.44415
+      ],
+      "areaKm2": 71.21333313095394,
+      "pickerGroupId": "osm:relation:7189446",
+      "offset": 4675700,
+      "length": 3668
+    },
+    "osm:relation:7189448": {
+      "id": "osm:relation:7189448",
+      "sourceId": "osm",
+      "name": "ريحانة",
+      "aliases": [
+        "Rihana"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.427089,
+      "lng": 9.131221,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.06789,
+        36.3888,
+        9.195409,
+        36.4655
+      ],
+      "areaKm2": 49.71766724877517,
+      "pickerGroupId": "osm:relation:7189448",
+      "offset": 4684188,
+      "length": 4580
+    },
+    "osm:relation:7189467": {
+      "id": "osm:relation:7189467",
+      "sourceId": "osm",
+      "name": "عين الحمام",
+      "aliases": [
+        "Ain El Hammam"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.401245,
+      "lng": 9.156595,
+      "delegationId": 421,
+      "hasBoundary": true,
+      "bbox": [
+        9.110642,
+        36.362601,
+        9.211082,
+        36.44005
+      ],
+      "areaKm2": 31.884983773037856,
+      "pickerGroupId": "osm:relation:7189467",
+      "offset": 4754688,
+      "length": 3844
+    },
+    "osm:relation:7189469": {
+      "id": "osm:relation:7189469",
+      "sourceId": "osm",
+      "name": "عين الكرمة",
+      "aliases": [
+        "Ain El Karma"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.468101,
+      "lng": 9.251761,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.205899,
+        36.45807,
+        9.284599,
+        36.47812
+      ],
+      "areaKm2": 8.717855485972402,
+      "pickerGroupId": "osm:relation:7189469",
+      "offset": 4760944,
+      "length": 3812
+    },
+    "osm:relation:7189470": {
+      "id": "osm:relation:7189470",
+      "sourceId": "osm",
+      "name": "عين المليتي",
+      "aliases": [
+        "Ain El Melliti"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.50431,
+      "lng": 9.193408,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.130921,
+        36.45004,
+        9.227187,
+        36.55821
+      ],
+      "areaKm2": 48.859621999303066,
+      "pickerGroupId": "osm:relation:7189470",
+      "offset": 4764756,
+      "length": 6012
+    },
+    "osm:relation:7189471": {
+      "id": "osm:relation:7189471",
+      "sourceId": "osm",
+      "name": "عين جمالة",
+      "aliases": [
+        "Ain Djammala"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.48305,
+      "lng": 9.298906,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.24546,
+        36.42708,
+        9.361192,
+        36.53934
+      ],
+      "areaKm2": 62.044524437497145,
+      "pickerGroupId": "osm:relation:7189471",
+      "offset": 4770768,
+      "length": 5292
+    },
+    "osm:relation:7189476": {
+      "id": "osm:relation:7189476",
+      "sourceId": "osm",
+      "name": "فدان السوق",
+      "aliases": [
+        "Fadden Es-Souk"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.41285,
+      "lng": 9.316433,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.252834,
+        36.37283,
+        9.362165,
+        36.45339
+      ],
+      "areaKm2": 43.87341587660949,
+      "pickerGroupId": "osm:relation:7189476",
+      "offset": 4799300,
+      "length": 2756
+    },
+    "osm:way:218868212": {
+      "id": "osm:way:218868212",
+      "sourceId": "osm",
+      "name": "عين جمالة",
+      "aliases": [
+        "Ain Jammala",
+        "عين جَمَّالة"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Ain Djammala",
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "عين جمالة",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.49523,
+      "lng": 9.315032,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.313975,
+        36.493929,
+        9.316611,
+        36.496456
+      ],
+      "areaKm2": 0.038312285166280394,
+      "pickerGroupId": "osm:relation:7189471",
+      "offset": 5343784,
+      "length": 172
+    },
+    "osm:way:96369466": {
+      "id": "osm:way:96369466",
+      "sourceId": "osm",
+      "name": "تبرسق",
+      "aliases": [
+        "Tabursuq",
+        "Téboursouk",
+        "Тебурсук"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية تبرسق",
+      "contextAliases": [
+        "Délégation Teboursouk",
+        "Téboursouk",
+        "معتمدية تبرسق"
+      ],
+      "governorateId": 356,
+      "lat": 36.457368,
+      "lng": 9.246191,
+      "delegationId": 518,
+      "hasBoundary": true,
+      "bbox": [
+        9.231327,
+        36.443317,
+        9.267215,
+        36.471907
+      ],
+      "areaKm2": 2.7421180825607117,
+      "pickerGroupId": "osm:way:96369466",
+      "offset": 5451760,
+      "length": 1860
+    }
+  },
+  "originalAndEffectiveSourceAssertions": {
+    "osm:node:1116804955": {
+      "kind": "town",
+      "tags": {
+        "addr:postcode": "9040",
+        "name": "تبرسق",
+        "name:ar": "تبرسق",
+        "name:azb": "تبرسق",
+        "name:ca": "Téboursouk",
+        "name:de": "Téboursouk",
+        "name:en": "Téboursouk",
+        "name:fa": "تبرسق",
+        "name:fr": "Téboursouk",
+        "name:hu": "Téboursouk",
+        "name:kab": "Tabursuq",
+        "name:uk": "Тебурсук",
+        "name:zu": "Téboursouk",
+        "place": "town",
+        "wikidata": "Q1890362",
+        "wikimedia_commons": "Category:Téboursouk",
+        "wikipedia": "ar:تبرسق",
+        "wikipedia:ar": "تبرسق"
+      },
+      "geometrySha256": "00925105b2c8ac74b86c99e6886d22b9a9272ade8522bc78fce2538d6ea3c61b",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:1435833": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-31",
+        "admin_level": "4",
+        "alt_name:fa": "استان باجه",
+        "alt_name:ur": "ولایت باجہ",
+        "boundary": "administrative",
+        "name": "ولاية باجة",
+        "name:ar": "ولاية باجة",
+        "name:az": "Beca (vilayət)",
+        "name:azb": "باجه",
+        "name:be": "Беджа (вілает)",
+        "name:be-tarask": "Бэджа (вілает)",
+        "name:bg": "Бежа (област)",
+        "name:ca": "Governació de Béja",
+        "name:ceb": "Gouvernorat de Béja",
+        "name:cy": "Béja (talaith)",
+        "name:de": "Gouvernement Beja",
+        "name:el": "Μπετζά (Κυβερνείο)",
+        "name:en": "Béja",
+        "name:es": "Gobernación de Béja",
+        "name:fa": "باجه",
+        "name:fi": "Béja (kuvernoraatti)",
+        "name:fr": "Gouvernorat Béja",
+        "name:frr": "Béja (Guwernement)",
+        "name:hu": "Béja kormányzóság",
+        "name:id": "Kegubernuran Béja",
+        "name:it": "Béja",
+        "name:ja": "ベジャ県",
+        "name:ka": "ბეჯის ვილაიეთი",
+        "name:ko": "베자주",
+        "name:lt": "Badžos vilajetas",
+        "name:ms": "Kawasan kegabenoran Béja",
+        "name:nl": "Béja (gouvernement)",
+        "name:no": "Béja (guvernement)",
+        "name:pl": "Gubernatorstwo Badża",
+        "name:pt": "Béja (província)",
+        "name:ro": "Guvernoratul Béja",
+        "name:ru": "Беджа (вилайет)",
+        "name:sco": "Béja Govrenorate",
+        "name:sh": "Béja (vilajet)",
+        "name:tr": "Bace ili",
+        "name:uk": "Беджа (вілаєт)",
+        "name:ur": "باجہ",
+        "name:zh": "巴傑省",
+        "name:zu": "Béja Governorate",
+        "official_name": "ولاية باجة",
+        "official_name:ar": "ولاية باجة",
+        "official_name:en": "Béja Governorate",
+        "official_name:fr": "Gouvernorat de Béja",
+        "official_name:it": "Governatorato di Béja",
+        "population": "304501",
+        "ref:tn:codegeo": "21",
+        "wikidata": "Q276576",
+        "wikipedia": "ar:ولاية باجة"
+      },
+      "geometrySha256": "5307dbee8c626f75a89063083fc65c30d5e8bc3a2d52deac08407154b9091e15",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7189388": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Téboursouk",
+        "boundary": "administrative",
+        "name": "معتمدية تبرسق",
+        "name:ar": "معتمدية تبرسق",
+        "name:fr": "Délégation Teboursouk",
+        "ref:tn:codegeo": "2155",
+        "ref:tn:hasc_2": "TN.BJ.TB",
+        "sorting_name": "تبرسق",
+        "sorting_name:ar": "تبرسق",
+        "sorting_name:azb": "تبرسق",
+        "sorting_name:fa": "تبرسق",
+        "wikidata": "Q3546458",
+        "wikipedia": "ar:معتمدية تبرسق",
+        "wikipedia:ar": "معتمدية تبرسق"
+      },
+      "geometrySha256": "69357e4ec16e3698fd0f1e457f99ab3614e290b72332db7c003a776c24fc0ca0",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": null,
+      "packedGeometrySha256": null
+    },
+    "osm:relation:7189423": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المنشية",
+        "name:ar": "المنشية",
+        "name:fr": "El Menchia",
+        "ref:tn:codegeo": "215553"
+      },
+      "geometrySha256": "c3c6bc8f8736dddfa0fa6aecc28eb49bdb3a4586ec323568aacf7e34bd27a4b6",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189423",
+        "sourceId": "osm",
+        "name": "المنشية",
+        "aliases": [
+          "El Menchia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.45378,
+        "lng": 9.203314,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.160143,
+          36.43671,
+          9.254434,
+          36.47087
+        ],
+        "areaKm2": 17.98823468906659,
+        "pickerGroupId": "osm:relation:7189423"
+      },
+      "packedGeometrySha256": "ca6752c8f69ec6f1aa3ff297b0e3f9867023f50e568fb11fa2fd766ee482ea20"
+    },
+    "osm:relation:7189429": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بئر التوتة",
+        "name:ar": "بئر التوتة",
+        "name:fr": "Bir Ettouta",
+        "ref:tn:codegeo": "215560"
+      },
+      "geometrySha256": "a4a791b092cbecf00890244ed3be4510ceeca45801d085f3e76deab8fc6bd3b2",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189429",
+        "sourceId": "osm",
+        "name": "بئر التوتة",
+        "aliases": [
+          "Bir Ettouta"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.52583,
+        "lng": 9.258962,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.184075,
+          36.47087,
+          9.308402,
+          36.58147
+        ],
+        "areaKm2": 59.35938184532627,
+        "pickerGroupId": "osm:relation:7189429"
+      },
+      "packedGeometrySha256": "bca3ede5f873f2a7d5cc386ba81734274499f57114619c373d8d32198ad5a08a"
+    },
+    "osm:relation:7189435": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "تبرسق المدينة",
+        "name:ar": "تبرسق المدينة",
+        "name:fr": "Teboursouk Ville",
+        "ref:tn:codegeo": "215551"
+      },
+      "geometrySha256": "89cb4660f0910006b3d1aeb700eda35a1de097a730ff93b1cb25d5f591fb1535",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189435",
+        "sourceId": "osm",
+        "name": "تبرسق المدينة",
+        "aliases": [
+          "Teboursouk Ville"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.456445,
+        "lng": 9.258549,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.232066,
+          36.45046,
+          9.279562,
+          36.46236
+        ],
+        "areaKm2": 3.0925908283810934,
+        "pickerGroupId": "osm:relation:7189435"
+      },
+      "packedGeometrySha256": "1bbdb6ff57582b7eb3c78b26d10b9aac730a84e304aafdf8cb3908f9f834d021"
+    },
+    "osm:relation:7189446": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دقة",
+        "name:ar": "دقة",
+        "name:fr": "Dougga",
+        "ref:tn:codegeo": "215554"
+      },
+      "geometrySha256": "a19838ff064c17708b4d348c898cbbb287d3475fc27b8eb35e5c0e22e72dde30",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189446",
+        "sourceId": "osm",
+        "name": "دقة",
+        "aliases": [
+          "Dougga"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.38979,
+        "lng": 9.245805,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.183696,
+          36.335449,
+          9.315302,
+          36.44415
+        ],
+        "areaKm2": 71.21333313095394,
+        "pickerGroupId": "osm:relation:7189446"
+      },
+      "packedGeometrySha256": "2f2c4b069f4630c3a83c19405428ba9824037da9028bfdbe935862bfd7e9f92b"
+    },
+    "osm:relation:7189448": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ريحانة",
+        "name:ar": "ريحانة",
+        "name:fr": "Rihana",
+        "ref:tn:codegeo": "215555"
+      },
+      "geometrySha256": "fb4ce5453217abcf90120a33196243e8cbe7e24f3fce10c349f2c5155a46f510",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189448",
+        "sourceId": "osm",
+        "name": "ريحانة",
+        "aliases": [
+          "Rihana"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.427089,
+        "lng": 9.131221,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.06789,
+          36.3888,
+          9.195409,
+          36.4655
+        ],
+        "areaKm2": 49.71766724877517,
+        "pickerGroupId": "osm:relation:7189448"
+      },
+      "packedGeometrySha256": "143a6dcba1839f44f65308119eec51b487a16a7877658e6a0c6dff17cb51c7d0"
+    },
+    "osm:relation:7189467": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين الحمام",
+        "name:ar": "عين الحمام",
+        "name:fr": "Ain El Hammam",
+        "ref:tn:codegeo": "215558"
+      },
+      "geometrySha256": "f4cdb28d6306a4e2dafe00d93e8a19d0bcd0b767cdf055b18ab342ff1e0d274f",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189467",
+        "sourceId": "osm",
+        "name": "عين الحمام",
+        "aliases": [
+          "Ain El Hammam"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.401245,
+        "lng": 9.156595,
+        "delegationId": 421,
+        "hasBoundary": true,
+        "bbox": [
+          9.110642,
+          36.362601,
+          9.211082,
+          36.44005
+        ],
+        "areaKm2": 31.884983773037856,
+        "pickerGroupId": "osm:relation:7189467"
+      },
+      "packedGeometrySha256": "2297efe652d22fcbeb8717f8f01b89d10e7285d5ce6a8e0c33c698e60b186aec"
+    },
+    "osm:relation:7189469": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين الكرمة",
+        "name:ar": "عين الكرمة",
+        "name:fr": "Ain El Karma",
+        "ref:tn:codegeo": "215552"
+      },
+      "geometrySha256": "bf627d14bb4bf61260e230c3e6536bf9897249fbbcb126f175995f75b08d349b",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189469",
+        "sourceId": "osm",
+        "name": "عين الكرمة",
+        "aliases": [
+          "Ain El Karma"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.468101,
+        "lng": 9.251761,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.205899,
+          36.45807,
+          9.284599,
+          36.47812
+        ],
+        "areaKm2": 8.717855485972402,
+        "pickerGroupId": "osm:relation:7189469"
+      },
+      "packedGeometrySha256": "25a9bdad5a779a6b52d8f6354b5f3f5cf48dc86fdcab28e81699b08b95f29946"
+    },
+    "osm:relation:7189470": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين المليتي",
+        "name:ar": "عين المليتي",
+        "name:fr": "Ain El Melliti",
+        "ref:tn:codegeo": "215556"
+      },
+      "geometrySha256": "66e674485d150b20f27ae0760673ddfaa3a87fba1f655d5752871b643d49a729",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189470",
+        "sourceId": "osm",
+        "name": "عين المليتي",
+        "aliases": [
+          "Ain El Melliti"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.50431,
+        "lng": 9.193408,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.130921,
+          36.45004,
+          9.227187,
+          36.55821
+        ],
+        "areaKm2": 48.859621999303066,
+        "pickerGroupId": "osm:relation:7189470"
+      },
+      "packedGeometrySha256": "870b365961178d2f25196a8754c938231f33e020f2c4a2d1f3623a1ec196d76c"
+    },
+    "osm:relation:7189471": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين جمالة",
+        "name:ar": "عين جمالة",
+        "name:fr": "Ain Djammala",
+        "ref:tn:codegeo": "215559"
+      },
+      "geometrySha256": "19379c8e2248e1fbdd07a6035d93ac74b683c7b4d1b3e2308c33d7525d5046cc",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189471",
+        "sourceId": "osm",
+        "name": "عين جمالة",
+        "aliases": [
+          "Ain Djammala"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.48305,
+        "lng": 9.298906,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.24546,
+          36.42708,
+          9.361192,
+          36.53934
+        ],
+        "areaKm2": 62.044524437497145,
+        "pickerGroupId": "osm:relation:7189471"
+      },
+      "packedGeometrySha256": "79d0ab998f2c617f3b26ea61149d0302539e42fddd036931d503452eaedd11e4"
+    },
+    "osm:relation:7189476": {
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "فدان السوق",
+        "name:ar": "فدان السوق",
+        "name:fr": "Fadden Es-Souk",
+        "ref:tn:codegeo": "215557"
+      },
+      "geometrySha256": "b82be6277fe9e9baaadfd3df2f827f8b3d6a60ec94e845459d2199f028ac600b",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:relation:7189476",
+        "sourceId": "osm",
+        "name": "فدان السوق",
+        "aliases": [
+          "Fadden Es-Souk"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.41285,
+        "lng": 9.316433,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.252834,
+          36.37283,
+          9.362165,
+          36.45339
+        ],
+        "areaKm2": 43.87341587660949,
+        "pickerGroupId": "osm:relation:7189476"
+      },
+      "packedGeometrySha256": "f3c5790a5aaa456f2200f7db6ffe342612284cf574802161b6fe2dc3ab2d720b"
+    },
+    "osm:way:218868212": {
+      "kind": "residential",
+      "tags": {
+        "addr:city": "عين جمالة",
+        "addr:country": "TN",
+        "landuse": "residential",
+        "name": "عين جمالة",
+        "name:ar": "عين جمالة",
+        "name:en": "Ain Jammala",
+        "name:fr": "Ain Jammala"
+      },
+      "geometrySha256": "ec05284ff9944fe8b76fff271b9adf7c5333b5e098d61e893cb4c1210c247ab7",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:way:218868212",
+        "sourceId": "osm",
+        "name": "عين جمالة",
+        "aliases": [
+          "Ain Jammala",
+          "عين جَمَّالة"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Ain Djammala",
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "عين جمالة",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.49523,
+        "lng": 9.315032,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.313975,
+          36.493929,
+          9.316611,
+          36.496456
+        ],
+        "areaKm2": 0.038312285166280394,
+        "pickerGroupId": "osm:relation:7189471"
+      },
+      "packedGeometrySha256": "71e41e3e79b236e45718a450ea85cc8db365b7ce86e93f4f04e941a88b6316f4"
+    },
+    "osm:way:96369466": {
+      "kind": "residential",
+      "tags": {
+        "addr:city": "تبرسق",
+        "addr:city:ar": "تبرسق",
+        "addr:postcode": "9040",
+        "landuse": "residential",
+        "name": "تبرسق",
+        "name:ar": "تبرسق",
+        "name:azb": "تبرسق",
+        "name:en": "Téboursouk",
+        "name:fa": "تبرسق",
+        "name:fr": "Téboursouk",
+        "wikidata": "Q1890362",
+        "wikimedia_commons": "Category:Téboursouk",
+        "wikipedia": "ar:تبرسق",
+        "wikipedia:ar": "تبرسق"
+      },
+      "geometrySha256": "045e6b0d39a6e238bc9caaf007b536138e9e45b237c16d013f5730df03457791",
+      "originalSourceId": null,
+      "effectiveSourceId": "osm",
+      "expectedCuration": null,
+      "metadata": {
+        "id": "osm:way:96369466",
+        "sourceId": "osm",
+        "name": "تبرسق",
+        "aliases": [
+          "Tabursuq",
+          "Téboursouk",
+          "Тебурсук"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.457368,
+        "lng": 9.246191,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.231327,
+          36.443317,
+          9.267215,
+          36.471907
+        ],
+        "areaKm2": 2.7421180825607117,
+        "pickerGroupId": "osm:way:96369466"
+      },
+      "packedGeometrySha256": "7bb866ba623b9c0a24894789c0d8dafd48d8877f0765ab8357b676876c71b0e6"
+    }
+  },
+  "currentSectorGroupsDerivedFromAllRawRows": {
+    "osm:relation:7189423": [
+      "osm:relation:7189423"
+    ],
+    "osm:relation:7189429": [
+      "osm:relation:7189429"
+    ],
+    "osm:relation:7189435": [
+      "osm:relation:7189435"
+    ],
+    "osm:relation:7189446": [
+      "osm:relation:7189446"
+    ],
+    "osm:relation:7189448": [
+      "osm:relation:7189448"
+    ],
+    "osm:relation:7189467": [
+      "osm:relation:7189467"
+    ],
+    "osm:relation:7189469": [
+      "osm:relation:7189469"
+    ],
+    "osm:relation:7189470": [
+      "osm:relation:7189470"
+    ],
+    "osm:relation:7189471": [
+      "osm:relation:7189471",
+      "osm:way:218868212"
+    ],
+    "osm:relation:7189476": [
+      "osm:relation:7189476"
+    ]
+  },
+  "currentWholeGroups": {
+    "osm:relation:7189423": [
+      "osm:relation:7189423"
+    ],
+    "osm:relation:7189429": [
+      "osm:relation:7189429"
+    ],
+    "osm:relation:7189435": [
+      "osm:relation:7189435"
+    ],
+    "osm:relation:7189446": [
+      "osm:relation:7189446"
+    ],
+    "osm:relation:7189448": [
+      "osm:relation:7189448"
+    ],
+    "osm:relation:7189467": [
+      "osm:relation:7189467"
+    ],
+    "osm:relation:7189469": [
+      "osm:relation:7189469"
+    ],
+    "osm:relation:7189470": [
+      "osm:relation:7189470"
+    ],
+    "osm:relation:7189471": [
+      "osm:relation:7189471",
+      "osm:way:218868212"
+    ],
+    "osm:relation:7189476": [
+      "osm:relation:7189476"
+    ],
+    "osm:way:96369466": [
+      "osm:way:96369466"
+    ],
+    "delegation:518": [
+      "delegation:518"
+    ]
+  },
+  "expectedFinalWholeGroups": {
+    "osm:relation:7189423": [
+      "osm:relation:7189423"
+    ],
+    "osm:relation:7189429": [
+      "osm:relation:7189429"
+    ],
+    "osm:relation:7189435": [
+      "osm:relation:7189435"
+    ],
+    "osm:relation:7189446": [
+      "osm:relation:7189446"
+    ],
+    "osm:relation:7189448": [
+      "osm:relation:7189448"
+    ],
+    "osm:relation:7189467": [
+      "osm:relation:7189467"
+    ],
+    "osm:relation:7189469": [
+      "osm:relation:7189469"
+    ],
+    "osm:relation:7189470": [
+      "osm:relation:7189470"
+    ],
+    "osm:relation:7189471": [
+      "osm:relation:7189471",
+      "osm:way:218868212"
+    ],
+    "osm:relation:7189476": [
+      "osm:relation:7189476"
+    ],
+    "delegation:518": [
+      "delegation:518",
+      "osm:way:96369466"
+    ]
+  },
+  "completeSectorGroupPreservation": {
+    "schemaVersion": 1,
+    "preservedSectorIds": [
+      "osm:relation:7189423",
+      "osm:relation:7189429",
+      "osm:relation:7189435",
+      "osm:relation:7189446",
+      "osm:relation:7189448",
+      "osm:relation:7189467",
+      "osm:relation:7189469",
+      "osm:relation:7189470",
+      "osm:relation:7189471",
+      "osm:relation:7189476"
+    ],
+    "protectedRawIds": [
+      "osm:relation:7189423",
+      "osm:relation:7189429",
+      "osm:relation:7189435",
+      "osm:relation:7189446",
+      "osm:relation:7189448",
+      "osm:relation:7189467",
+      "osm:relation:7189469",
+      "osm:relation:7189470",
+      "osm:relation:7189471",
+      "osm:relation:7189476",
+      "osm:way:218868212",
+      "osm:way:96369466"
+    ],
+    "expectedBeforeGroups": {
+      "osm:relation:7189423": [
+        "osm:relation:7189423"
+      ],
+      "osm:relation:7189429": [
+        "osm:relation:7189429"
+      ],
+      "osm:relation:7189435": [
+        "osm:relation:7189435"
+      ],
+      "osm:relation:7189446": [
+        "osm:relation:7189446"
+      ],
+      "osm:relation:7189448": [
+        "osm:relation:7189448"
+      ],
+      "osm:relation:7189467": [
+        "osm:relation:7189467"
+      ],
+      "osm:relation:7189469": [
+        "osm:relation:7189469"
+      ],
+      "osm:relation:7189470": [
+        "osm:relation:7189470"
+      ],
+      "osm:relation:7189471": [
+        "osm:relation:7189471",
+        "osm:way:218868212"
+      ],
+      "osm:relation:7189476": [
+        "osm:relation:7189476"
+      ],
+      "osm:way:96369466": [
+        "osm:way:96369466"
+      ],
+      "delegation:518": [
+        "delegation:518"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7189423": [
+        "osm:relation:7189423"
+      ],
+      "osm:relation:7189429": [
+        "osm:relation:7189429"
+      ],
+      "osm:relation:7189435": [
+        "osm:relation:7189435"
+      ],
+      "osm:relation:7189446": [
+        "osm:relation:7189446"
+      ],
+      "osm:relation:7189448": [
+        "osm:relation:7189448"
+      ],
+      "osm:relation:7189467": [
+        "osm:relation:7189467"
+      ],
+      "osm:relation:7189469": [
+        "osm:relation:7189469"
+      ],
+      "osm:relation:7189470": [
+        "osm:relation:7189470"
+      ],
+      "osm:relation:7189471": [
+        "osm:relation:7189471",
+        "osm:way:218868212"
+      ],
+      "osm:relation:7189476": [
+        "osm:relation:7189476"
+      ],
+      "delegation:518": [
+        "delegation:518",
+        "osm:way:96369466"
+      ]
+    },
+    "exactRawFieldChanges": [
+      {
+        "id": "osm:way:96369466",
+        "field": "pickerGroupId",
+        "before": "osm:way:96369466",
+        "after": "delegation:518"
+      }
+    ]
+  },
+  "sourceOnlyIdsRemainAbsent": [
+    "osm:node:1116804955",
+    "osm:relation:1435833",
+    "osm:relation:7189388"
+  ],
+  "activeCurationBindings": {
+    "osm:node:1116804955": null,
+    "osm:relation:1435833": null,
+    "osm:relation:7189388": null,
+    "osm:relation:7189423": null,
+    "osm:relation:7189429": null,
+    "osm:relation:7189435": null,
+    "osm:relation:7189446": null,
+    "osm:relation:7189448": null,
+    "osm:relation:7189467": null,
+    "osm:relation:7189469": null,
+    "osm:relation:7189470": null,
+    "osm:relation:7189471": null,
+    "osm:relation:7189476": null,
+    "osm:way:218868212": null,
+    "osm:way:96369466": null
+  },
+  "touchingCurrentPickerRecords": [],
+  "touchingAcceptedBoundaryRecords": [],
+  "currentBase": {
+    "id": 518,
+    "nomFr": "Teboursouk",
+    "nomAr": "تبرسق",
+    "nomEn": "Teboursouk",
+    "lat": 36.46,
+    "lng": 9.24
+  },
+  "currentGovernor": {
+    "id": 356,
+    "nomFr": "Béja",
+    "nomAr": "باجة",
+    "nomEn": "Beja",
+    "lat": 36.7256,
+    "lng": 9.1817
+  },
+  "coordinateCorrections": [],
+  "usableTargetTimetableWitness": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\518\\2026\\01.csv",
+    "sha256": "51b18f0f8b4c293c238cb2a2324d66dd8700a6306409f73147fc0397c6d5ea52",
+    "bytes": 1247
+  },
+  "unchangedGlobalCoordinateReferenceInputs": {
+    "governoratesSha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+    "prayerCoordinateManifestSha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+  },
+  "nearestEvidenceQualification": "Each role is nearest to the target even among every coordinate-bearing catalog reference, including unusable sources, and that target has a verified complete bundled month. Therefore it is also nearest among the usable subset containing that target. No country-wide locality distance matrix was rerun.",
+  "qualifications": [
+    "All twelve raw fields and twelve packed slices were compared directly; the ordinary source records remain exactly e816.",
+    "The new wrapper will bind the same complete-group object at proof/facts/selected-decision locations.",
+    "Historical reports and source bytes are unchanged. This does not claim a new primary-source retrieval or a certified complete town boundary."
+  ]
+}

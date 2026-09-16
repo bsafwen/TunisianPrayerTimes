@@ -1,0 +1,25 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-12T18:44:44.789091+00:00",
+  "query": "Résidence Bel Horizon Tabarka",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [],
+  "publicUiText": [
+    "الطبقات",
+    "Résidence Bel Horizon Tabarka",
+    "إغلاق",
+    "فلاتر إضافية",
+    "مفتوح الآن",
+    "الأعلى تقييمًا",
+    "أكثر من 3 مراجعات",
+    "مشاركة",
+    "حفظ",
+    "هل تبحث عن مكان آخر؟",
+    "إضافة مكان غير مدرج على الخريطة",
+    "محو"
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "osm_way_1430310523-1.png",
+  "boundaryVerified": false
+}

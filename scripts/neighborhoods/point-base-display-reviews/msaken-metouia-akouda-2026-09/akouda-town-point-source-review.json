@@ -1,0 +1,923 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_IDENTITY_SUPPORTS_SAME_NAMED_SETTLEMENT_DISPLAY_ONLY_PENDING_FINITE_SCHEMA_AND_PHONE_REVIEW",
+  "baselineMetadataSha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea",
+  "generatorSha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+  "curationSha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80",
+  "curationDecisions": 158,
+  "id": "osm:node:1184918055",
+  "baseId": 437,
+  "currentFeature": {
+    "id": "osm:node:1184918055",
+    "sourceId": "osm",
+    "name": "أكودة",
+    "aliases": [
+      "Akouda"
+    ],
+    "kind": "village",
+    "parentName": "أكودة الشرقية",
+    "contextAliases": [
+      "Akouda",
+      "Akouda Est",
+      "Délégation Akouda",
+      "أكودة الشرقية",
+      "معتمدية أكودة"
+    ],
+    "governorateId": 348,
+    "lat": 35.8657303,
+    "lng": 10.5678382,
+    "delegationId": 437,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1184918055"
+  },
+  "currentBase": {
+    "id": 437,
+    "nomFr": "Akouda",
+    "nomAr": "أكودة",
+    "nomEn": "Akouda",
+    "lat": 35.8747,
+    "lng": 10.5718
+  },
+  "expectedGovernor": {
+    "id": 348,
+    "nomFr": "Sousse",
+    "nomAr": "سوسة",
+    "nomEn": "Sousse",
+    "lat": 35.8254,
+    "lng": 10.6369
+  },
+  "cachedExactSource": {
+    "id": "osm:node:1184918055",
+    "tags": {
+      "addr:city": "Akouda",
+      "addr:governorate": "Sousse",
+      "addr:postcode": "4022",
+      "name": "أكودة",
+      "name:ar": "أكودة",
+      "name:en": "Akouda",
+      "name:fr": "Akouda",
+      "place": "village",
+      "population": "34494"
+    },
+    "lat": 35.8657303,
+    "lng": 10.5678382
+  },
+  "exactCurrentNode": {
+    "type": "node",
+    "id": 1184918055,
+    "lat": 35.8657303,
+    "lon": 10.5678382,
+    "timestamp": "2026-03-07T20:28:17Z",
+    "version": 14,
+    "changeset": 179509225,
+    "user": "Johnwhelan",
+    "uid": 186592,
+    "tags": {
+      "addr:city": "Akouda",
+      "addr:governorate": "Sousse",
+      "addr:postcode": "4022",
+      "name": "أكودة",
+      "name:ar": "أكودة",
+      "name:en": "Akouda",
+      "name:fr": "Akouda",
+      "place": "village",
+      "population": "34494"
+    }
+  },
+  "currentSourceEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\osm-node-1184918055-current.json",
+    "sha256": "e0f095820e59030b66848d2f60485e0f07af9903b5732d514d7f11fc4d5e1b2b",
+    "bytes": 636
+  },
+  "historyEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\osm-node-1184918055-history.json",
+    "sha256": "f26ee3a59f1df8302924e29be5bc10de7a563f2c6bde27e4e79cc058e5379c1d",
+    "bytes": 6003
+  },
+  "sourceNodeIdentity": {
+    "exactElement": {
+      "type": "node",
+      "id": 1184918055,
+      "lat": 35.8657303,
+      "lon": 10.5678382,
+      "timestamp": "2026-03-07T20:28:17Z",
+      "version": 14,
+      "changeset": 179509225,
+      "user": "Johnwhelan",
+      "uid": 186592,
+      "tags": {
+        "addr:city": "Akouda",
+        "addr:governorate": "Sousse",
+        "addr:postcode": "4022",
+        "name": "أكودة",
+        "name:ar": "أكودة",
+        "name:en": "Akouda",
+        "name:fr": "Akouda",
+        "place": "village",
+        "population": "34494"
+      }
+    },
+    "sha256": "e0f095820e59030b66848d2f60485e0f07af9903b5732d514d7f11fc4d5e1b2b",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1184918055.json"
+  },
+  "sourceRetrievals": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\osm-node-1184918055-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1184918055.json",
+      "retrievedAt": "2026-09-12T09:12:31.636129+00:00",
+      "statusCode": 200,
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/1184918055.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 636,
+      "sha256": "e0f095820e59030b66848d2f60485e0f07af9903b5732d514d7f11fc4d5e1b2b"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\osm-node-1184918055-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1184918055/history.json",
+      "retrievedAt": "2026-09-12T09:12:31.637151+00:00",
+      "statusCode": 200,
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/1184918055/history.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 6003,
+      "sha256": "f26ee3a59f1df8302924e29be5bc10de7a563f2c6bde27e4e79cc058e5379c1d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\municipal-geography.html",
+      "url": "https://www.commune-akouda.gov.tn/index.php/2021-03-24-14-59-55/menu-variations",
+      "retrievedAt": "2026-09-12T09:12:31.638132+00:00",
+      "statusCode": 404,
+      "finalUrl": "https://www.commune-akouda.gov.tn/2021-03-24-14-59-55/menu-variations/",
+      "contentType": "text/html",
+      "bytes": 146,
+      "sha256": "55f7d9e99b8e2d4e0e193b2f0275501e6d9c1ebd29cadbea6a0da48a8587e3e0"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\municipal-city-numbers.html",
+      "url": "https://www.commune-akouda.gov.tn/?page_id=37",
+      "retrievedAt": "2026-09-12T09:12:31.639127+00:00",
+      "statusCode": 200,
+      "finalUrl": "https://www.commune-akouda.gov.tn/?page_id=37",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 774582,
+      "sha256": "12a6f810120b262f1495a1aeb913d26c8065a1218b905c026fb232be379784c2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\municipal-geography-current.html",
+      "url": "https://www.commune-akouda.gov.tn/?page_id=33",
+      "retrievedAt": "2026-09-12T09:13:40.266854+00:00",
+      "statusCode": 200,
+      "finalUrl": "https://www.commune-akouda.gov.tn/?page_id=33",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 774076,
+      "sha256": "e6122dcd319a01cbe4d31141613db2ab552901d853326b44c31f7b7d02b501e7"
+    }
+  ],
+  "exactSourceMatchesCacheAndRaw": true,
+  "sourceHistory": {
+    "allVersionsReviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "namedVillageThroughout": true,
+    "institutionOrAdministrativeRetagFound": false,
+    "coordinateEpochs": [
+      {
+        "versions": [
+          1,
+          9
+        ],
+        "lat": 35.8703465,
+        "lng": 10.5683706
+      },
+      {
+        "versions": [
+          10,
+          11
+        ],
+        "lat": 35.865699,
+        "lng": 10.5678671
+      },
+      {
+        "versions": [
+          12,
+          14
+        ],
+        "lat": 35.8657303,
+        "lng": 10.5678382
+      }
+    ],
+    "populationAddedVersion": 10,
+    "populationProvenance": "34494 is not sourced in OSM tags; it equals the 2014 Akouda delegation figure in ministry table14,p28. This match is a scope warning, not proof of the original edit source."
+  },
+  "primaryEvidence": [
+    {
+      "role": "official_settlement_identity",
+      "publisher": "Ministry of Equipment and Housing; DGAT; SOMER",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "bytes": 30603494
+      },
+      "sourceRetrieval": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+        "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+        "retrievedAt": "2026-09-12T09:13:58.977509+00:00",
+        "status": 200,
+        "contentType": "application/pdf",
+        "bytes": 30603494,
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "originalResponseBytesPreserved": true
+      },
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "pdfPage": 82,
+      "printedPage": 82,
+      "section": "Chapter5 urban structure and urban centers; secondary centers, Akouda subsection",
+      "finding": "Explicitly describes Akouda as an inhabited city with urban facilities and RN1/R48 structuring its urban fabric. Municipal extent/population are discussed in the same subsection, but no coordinate or perimeter is imported.",
+      "derivedUtf8Evidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\mehat-sousse-ar-page-82.txt",
+        "sha256": "b968a8629d1ba54173fa974c4d7d6ff67b68a59ad6cf62b423d43020c7ab7fc7",
+        "bytes": 9331
+      },
+      "requiredText": [
+        "بلدية  أكودة",
+        "المحاور الرئيسية للمدينة",
+        "تهيكل نسيجها العمراني"
+      ]
+    }
+  ],
+  "sourceDerivations": [
+    {
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "bytes": 30603494
+      },
+      "sourceUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "pdfPage": 82,
+      "printedPage": 82,
+      "extractor": {
+        "library": "PyMuPDF",
+        "version": "1.28.2",
+        "operation": "document[page-1].get_text('text')",
+        "encoding": "UTF-8",
+        "normalization": "none",
+        "newline": "preserve extraction LF"
+      },
+      "derivedCompletePageText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\mehat-sousse-ar-page-82.txt",
+        "sha256": "b968a8629d1ba54173fa974c4d7d6ff67b68a59ad6cf62b423d43020c7ab7fc7",
+        "bytes": 9331
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\mehat-sousse-ar-page-82.png",
+        "sha256": "33bb27b87ca4a12574f731cd6def3dfd495e168b730f2b1d2233c188cbf4b92c",
+        "bytes": 360372
+      },
+      "personallyViewed": true,
+      "originalResponseBytes": false,
+      "qualification": "Derived full-page text; the separate PDF pin identifies original authority bytes."
+    },
+    {
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "bytes": 30603494
+      },
+      "sourceUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "pdfPage": 28,
+      "printedPage": 28,
+      "extractor": {
+        "library": "PyMuPDF",
+        "version": "1.28.2",
+        "operation": "document[page-1].get_text('text')",
+        "encoding": "UTF-8",
+        "normalization": "none",
+        "newline": "preserve extraction LF"
+      },
+      "derivedCompletePageText": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\mehat-sousse-ar-page-28.txt",
+        "sha256": "cc7dcaedc1c90d4f059fa735bf10579a8991a3224dcbd7dc8094c554faec3d61",
+        "bytes": 7304
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\mehat-sousse-ar-page-28.png",
+        "sha256": "5cc8ffa45d96424754a1e6572a2be4f82b32ddbe60038db80b8e1a4c87c877b4",
+        "bytes": 362573
+      },
+      "personallyViewed": true,
+      "originalResponseBytes": false,
+      "qualification": "Derived full-page text; the separate PDF pin identifies original authority bytes."
+    }
+  ],
+  "supplementaryMunicipalEvidence": {
+    "cityNumbers": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\akouda-town-point-source-review\\municipal-city-numbers.html",
+      "sha256": "12a6f810120b262f1495a1aeb913d26c8065a1218b905c026fb232be379784c2",
+      "bytes": 774582
+    },
+    "url": "https://www.commune-akouda.gov.tn/?page_id=37",
+    "finding": "Distinguishes named East and West imadas and Tantana/Chott Erromane in city/municipality statistics. This four-row municipal scope is not the complete six-sector delegation inventory.",
+    "reliabilityQualification": "Current municipal pages contain unrelated hidden link spam. They are corroboration only; ministry PDF is decisive primary identity evidence. No unrelated links followed.",
+    "oldGeographyUrl": "Returned404 after redirect; historical indexed prose is not represented as successful response bytes.",
+    "currentGeographyUrl": "Returns200 but contains only a municipality Maps iframe, not the historical city prose; no coordinate/identity inference taken from embed."
+  },
+  "originalSourceNamePeers": [
+    {
+      "id": "osm:relation:7150747",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Akouda",
+        "boundary": "administrative",
+        "name": "معتمدية أكودة",
+        "name:ar": "معتمدية أكودة",
+        "name:fr": "Délégation Akouda",
+        "ref:tn:codegeo": "3156",
+        "ref:tn:hasc_2": "TN.SS.AK",
+        "wikidata": "Q2829122"
+      },
+      "rawPresent": false,
+      "kind": "delegation"
+    },
+    {
+      "id": "osm:node:1184918055",
+      "tags": {
+        "addr:city": "Akouda",
+        "addr:governorate": "Sousse",
+        "addr:postcode": "4022",
+        "name": "أكودة",
+        "name:ar": "أكودة",
+        "name:en": "Akouda",
+        "name:fr": "Akouda",
+        "place": "village",
+        "population": "34494"
+      },
+      "rawPresent": true,
+      "kind": "village"
+    }
+  ],
+  "effectiveSourceNamePeersUnchanged": true,
+  "completeExistingProofRefs": [
+    "coverage.json",
+    "point-retention-reviews\\before-neighborhoods.json"
+  ],
+  "directActiveCuration": [],
+  "acceptedBoundaryReplacements": [],
+  "officialDelegationCode": "3156",
+  "separateSectorCount": 6,
+  "separateSectorFacts": [
+    {
+      "id": "osm:relation:7106467",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3156",
+        "delegationFr": "Akouda",
+        "delegationAr": "اكودة",
+        "sectorCode": "315651",
+        "sectorFr": "Akouda est",
+        "sectorAr": "أكودة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33183,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1555,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1554
+        }
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أكودة الشرقية",
+        "name:ar": "أكودة الشرقية",
+        "name:fr": "Akouda Est",
+        "ref:tn:codegeo": "315651"
+      },
+      "currentFeature": {
+        "id": "osm:relation:7106467",
+        "sourceId": "osm",
+        "name": "أكودة الشرقية",
+        "aliases": [
+          "Akouda Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أكودة",
+        "contextAliases": [
+          "Akouda",
+          "Délégation Akouda",
+          "معتمدية أكودة"
+        ],
+        "governorateId": 348,
+        "lat": 35.878734,
+        "lng": 10.573441,
+        "delegationId": 437,
+        "hasBoundary": true,
+        "bbox": [
+          10.565182,
+          35.865673,
+          10.586619,
+          35.892264
+        ],
+        "areaKm2": 2.988127286651804,
+        "pickerGroupId": "osm:relation:7106467",
+        "offset": 483060,
+        "length": 492
+      },
+      "completeRawGroup": [
+        "osm:relation:7106467"
+      ],
+      "sourceGeometrySha256": "51e20106b16b843f5447c81c89ed3367b09f7df0796bde63dfda59d94ddca875",
+      "packedGeometrySha256": "34f632a378694339f8f7bd5f47ee15f754a9068fb3de49c93688262c10bbe18b"
+    },
+    {
+      "id": "osm:relation:7106466",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3156",
+        "delegationFr": "Akouda",
+        "delegationAr": "اكودة",
+        "sectorCode": "315652",
+        "sectorFr": "Akouda ouest",
+        "sectorAr": "أكودة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33217,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1557,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1556
+        }
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أكودة الغربية",
+        "name:ar": "أكودة الغربية",
+        "name:fr": "Akouda Ouest",
+        "ref:tn:codegeo": "315652"
+      },
+      "currentFeature": {
+        "id": "osm:relation:7106466",
+        "sourceId": "osm",
+        "name": "أكودة الغربية",
+        "aliases": [
+          "Akouda Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أكودة",
+        "contextAliases": [
+          "Akouda",
+          "Délégation Akouda",
+          "معتمدية أكودة"
+        ],
+        "governorateId": 348,
+        "lat": 35.882578,
+        "lng": 10.557335,
+        "delegationId": 437,
+        "hasBoundary": true,
+        "bbox": [
+          10.546306,
+          35.864877,
+          10.56917,
+          35.900372
+        ],
+        "areaKm2": 5.293579881704197,
+        "pickerGroupId": "osm:relation:7106466",
+        "offset": 482424,
+        "length": 636
+      },
+      "completeRawGroup": [
+        "osm:relation:7106466"
+      ],
+      "sourceGeometrySha256": "bf4ee7dfc47d3f503a95a13e8410211d1b3b7c1509174c8a40955dcfaf558120",
+      "packedGeometrySha256": "6a3d50dbdbf45e30f9e1bfdc7b82009393ee5f9f430484fc7fd5fe0df902d696"
+    },
+    {
+      "id": "osm:relation:7106464",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3156",
+        "delegationFr": "Akouda",
+        "delegationAr": "اكودة",
+        "sectorCode": "315653",
+        "sectorFr": "Chott meriam",
+        "sectorAr": "شط مريم",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33251,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1559,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1558
+        }
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "شط مريم",
+        "name:ar": "شط مريم",
+        "name:fr": "Chott Mariem",
+        "postal_code": "4042",
+        "ref:tn:codegeo": "315653",
+        "wikidata": "Q1076701"
+      },
+      "currentFeature": {
+        "id": "osm:relation:7106464",
+        "sourceId": "osm",
+        "name": "شط مريم",
+        "aliases": [
+          "Chott Mariem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أكودة",
+        "contextAliases": [
+          "Akouda",
+          "Délégation Akouda",
+          "معتمدية أكودة"
+        ],
+        "governorateId": 348,
+        "lat": 35.937869,
+        "lng": 10.548994,
+        "delegationId": 439,
+        "hasBoundary": true,
+        "bbox": [
+          10.530374,
+          35.906831,
+          10.567407,
+          35.96873
+        ],
+        "areaKm2": 10.39270064756987,
+        "pickerGroupId": "osm:relation:7106464",
+        "offset": 480576,
+        "length": 1156
+      },
+      "completeRawGroup": [
+        "osm:relation:7106464"
+      ],
+      "sourceGeometrySha256": "eab8b4142dd78a6c9e11ce2a2822f204e98c4835a648978190695b8d54203f84",
+      "packedGeometrySha256": "c69a69e0d540bc666b30b0d77e5a11fb26e5a8f797ab03b5a52cd2f8e1e3d141"
+    },
+    {
+      "id": "osm:relation:7106469",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3156",
+        "delegationFr": "Akouda",
+        "delegationAr": "اكودة",
+        "sectorCode": "315654",
+        "sectorFr": "Chott er-romane",
+        "sectorAr": "شط الرمان",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33285,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1561,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1560
+        }
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "شط الرمان",
+        "name:ar": "شط الرمان",
+        "name:fr": "Chott Errommane",
+        "ref:tn:codegeo": "315654"
+      },
+      "currentFeature": {
+        "id": "osm:relation:7106469",
+        "sourceId": "osm",
+        "name": "شط الرمان",
+        "aliases": [
+          "Chott Errommane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أكودة",
+        "contextAliases": [
+          "Akouda",
+          "Délégation Akouda",
+          "معتمدية أكودة"
+        ],
+        "governorateId": 348,
+        "lat": 35.855849,
+        "lng": 10.55444,
+        "delegationId": 437,
+        "hasBoundary": true,
+        "bbox": [
+          10.523293,
+          35.841446,
+          10.589655,
+          35.869896
+        ],
+        "areaKm2": 6.627970784697376,
+        "pickerGroupId": "osm:relation:7106469",
+        "offset": 483552,
+        "length": 684
+      },
+      "completeRawGroup": [
+        "osm:relation:7106469"
+      ],
+      "sourceGeometrySha256": "335de8fea00cb74295dca52851ad08e114dac40a4e1f335c7618ef2a7e32d103",
+      "packedGeometrySha256": "e4031c6052e0bcf928171a61031f8978d32a345f152ac2ec727397e0572ef470"
+    },
+    {
+      "id": "osm:relation:7106394",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3156",
+        "delegationFr": "Akouda",
+        "delegationAr": "اكودة",
+        "sectorCode": "315655",
+        "sectorFr": "El fokaia",
+        "sectorAr": "الفقاعية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33319,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1562,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1561
+        }
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الفقاعية",
+        "name:ar": "الفقاعية",
+        "name:fr": "El Fokaia",
+        "ref:tn:codegeo": "315655"
+      },
+      "currentFeature": {
+        "id": "osm:relation:7106394",
+        "sourceId": "osm",
+        "name": "الفقاعية",
+        "aliases": [
+          "El Fokaia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أكودة",
+        "contextAliases": [
+          "Akouda",
+          "Délégation Akouda",
+          "معتمدية أكودة"
+        ],
+        "governorateId": 348,
+        "lat": 35.942645,
+        "lng": 10.524094,
+        "delegationId": 436,
+        "hasBoundary": true,
+        "bbox": [
+          10.504754,
+          35.915538,
+          10.539,
+          35.96947
+        ],
+        "areaKm2": 11.092999063992254,
+        "pickerGroupId": "osm:relation:7106394",
+        "offset": 479948,
+        "length": 628
+      },
+      "completeRawGroup": [
+        "osm:relation:7106394"
+      ],
+      "sourceGeometrySha256": "3f236e8e41a91c77e2b899e210486990f64e2e1dd691161ba0290aebd3aefee0",
+      "packedGeometrySha256": "6059384e383a1dae81936ad08b0cf6468d3c9047b43370977e4c75fe7b1a79ff"
+    },
+    {
+      "id": "osm:relation:7106465",
+      "officialIdentity": {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3156",
+        "delegationFr": "Akouda",
+        "delegationAr": "اكودة",
+        "sectorCode": "315656",
+        "sectorFr": "Ettantana",
+        "sectorAr": "الطنطانة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33353,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1564,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1563
+        }
+      },
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطنطانة",
+        "name:ar": "الطنطانة",
+        "name:fr": "Ettantana",
+        "postal_code": "4042",
+        "ref:tn:codegeo": "315656"
+      },
+      "currentFeature": {
+        "id": "osm:relation:7106465",
+        "sourceId": "osm",
+        "name": "الطنطانة",
+        "aliases": [
+          "Ettantana"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أكودة",
+        "contextAliases": [
+          "Akouda",
+          "Délégation Akouda",
+          "معتمدية أكودة"
+        ],
+        "governorateId": 348,
+        "lat": 35.910968,
+        "lng": 10.563196,
+        "delegationId": 437,
+        "hasBoundary": true,
+        "bbox": [
+          10.541423,
+          35.892264,
+          10.583745,
+          35.930172
+        ],
+        "areaKm2": 8.328634328012939,
+        "pickerGroupId": "osm:relation:7106465",
+        "offset": 481732,
+        "length": 692
+      },
+      "completeRawGroup": [
+        "osm:relation:7106465"
+      ],
+      "sourceGeometrySha256": "5c21f4874defad77aca2a225a24bfa8ab21685577a798bd47c116a59ab1c33ee",
+      "packedGeometrySha256": "8f72630afa794bff0c0a74e6904c055945a8e5260fa44ebe56db83170323c8ed"
+    }
+  ],
+  "sourceCoordinateAdministrativeMembership": [
+    {
+      "id": "osm:relation:7106467",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أكودة الشرقية",
+        "name:ar": "أكودة الشرقية",
+        "name:fr": "Akouda Est",
+        "ref:tn:codegeo": "315651"
+      },
+      "pointContains": true,
+      "baseContains": true
+    },
+    {
+      "id": "osm:relation:7150747",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Akouda",
+        "boundary": "administrative",
+        "name": "معتمدية أكودة",
+        "name:ar": "معتمدية أكودة",
+        "name:fr": "Délégation Akouda",
+        "ref:tn:codegeo": "3156",
+        "ref:tn:hasc_2": "TN.SS.AK",
+        "wikidata": "Q2829122"
+      },
+      "pointContains": true,
+      "baseContains": true
+    },
+    {
+      "id": "osm:relation:3152094",
+      "tags": {
+        "ISO3166-2": "TN-51",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية سوسة",
+        "name:ar": "ولاية سوسة",
+        "name:azb": "سوسه",
+        "name:be": "Сус (вілает)",
+        "name:be-tarask": "Сус (вілает)",
+        "name:bg": "Сус (област)",
+        "name:ca": "Governació de Sussa",
+        "name:ceb": "Gouvernorat de Sousse",
+        "name:ckb": "سوسە",
+        "name:cy": "Sousse (talaith)",
+        "name:de": "Gouvernement Sousse",
+        "name:el": "Σούσα (Κυβερνείο)",
+        "name:en": "Sousse",
+        "name:es": "Gobernación de Susa",
+        "name:fa": "سوسه",
+        "name:fi": "Sousse (kuvernementti)",
+        "name:fr": "Gouvernorat Sousse",
+        "name:frr": "Sousse (Guwernement)",
+        "name:he": "סוסה (מחוז)",
+        "name:id": "Kegubernuran Sousse",
+        "name:it": "Susa",
+        "name:ja": "スース県",
+        "name:ko": "수스주",
+        "name:ks": "سوسہ",
+        "name:lt": "Suso vilajetas",
+        "name:ms": "Kawasan kegabenoran Sousse",
+        "name:nl": "Sousse (gouvernement)",
+        "name:no": "Sousse (guvernement)",
+        "name:ota": "سوسه",
+        "name:pl": "Gubernatorstwo Susa",
+        "name:pt": "Susa (província)",
+        "name:ro": "Guvernoratul Sousse",
+        "name:ru": "Сус (вилайет)",
+        "name:sco": "Sousse Govrenorate",
+        "name:sh": "Sousse (vilajet)",
+        "name:tr": "Susa ili",
+        "name:uk": "Сус (вілаєт)",
+        "name:ur": "سوسہ",
+        "name:zh": "蘇塞省",
+        "name:zu": "Sousse Governorate",
+        "official_name": "ولاية سوسة",
+        "official_name:ar": "ولاية سوسة",
+        "official_name:en": "Sousse Governorate",
+        "official_name:es": "Gobernación de Susa",
+        "official_name:fa": "استان سوسه",
+        "official_name:fr": "Gouvernorat de Sousse",
+        "official_name:ur": "ولایت سوسہ",
+        "population": "674971",
+        "population:date": "2014",
+        "ref:tn:codegeo": "31",
+        "wikidata": "Q276565",
+        "wikipedia": "ar:ولاية سوسة"
+      },
+      "pointContains": true,
+      "baseContains": true
+    }
+  ],
+  "sourceConclusion": "The stable inhabited-place node and ministry city description support associating only the city point display with the existing Akouda base row. They do not identify the city with either Akouda East/West sector or the entire delegation.",
+  "mustPreserve": [
+    "All six sector identities,complete current picker groups,raw metadata and packed geometry.",
+    "Both point and base coordinates,the point village kind,all raw names/aliases/parent context and nearest prayer reference437.",
+    "Sector prayer defaults436 and439 where already present; sharing Akouda administrative context does not justify changing nearest prayer references.",
+    "No node population promoted as city population; no perimeter or exact representative-coordinate certification."
+  ],
+  "nextRequirements": [
+    "Independent finite original/effective source,complete group and existing schema review before any display decision is assembled.",
+    "Root reviews named public phone city evidence separately; exact-coordinate POI card alone is not city identity proof."
+  ],
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea",
+      "bytes": 1883684
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069",
+      "bytes": 5501548
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "bytes": 54579
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80",
+      "bytes": 256077
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427",
+      "bytes": 554337
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25",
+      "bytes": 106368
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    }
+  ],
+  "actions": {
+    "liveEdits": false,
+    "stageAssembly": false,
+    "generation": false,
+    "productHelper": false,
+    "tests": false,
+    "build": false,
+    "phone": false,
+    "ledger": false
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_akouda_town_point_source_review.py",
+    "sha256": "729bd7d0abc994fc96e03887bc026dab37ec4f0107e8bfdb7afeea854fa23037",
+    "bytes": 11570
+  }
+}

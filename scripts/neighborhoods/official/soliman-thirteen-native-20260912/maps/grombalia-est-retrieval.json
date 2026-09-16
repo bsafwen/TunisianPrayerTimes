@@ -1,0 +1,40 @@
+{
+  "key": "grombalia-est",
+  "currentRawId": "osm:relation:7103806",
+  "currentCode": "156456",
+  "officialName": "قرنبالية الشرقية",
+  "officialRegistryRow": {
+    "governorateCode": "15",
+    "governorateFr": "Nabeul",
+    "governorateAr": "نابل",
+    "delegationCode": "1564",
+    "delegationFr": "Grombalia",
+    "delegationAr": "قرنبالية",
+    "sectorCode": "156456",
+    "sectorFr": "Grombalia est",
+    "sectorAr": "قرنبالية الشرقية",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14111,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 580,
+      "Nombre_de_menages_par_Secteurs.xlsx": 579
+    }
+  },
+  "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+  "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+  "retrievedAt": "2026-09-12T16:37:47.075546+00:00",
+  "exitCode": 0,
+  "httpStatus": "200",
+  "response": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-est.pdf",
+    "sha256": "72a0cad3f3ecff7f65a93c7d9776ca13135124cc34bfb5a47878e448088c06a6",
+    "bytes": 1545659
+  },
+  "headers": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-est.headers",
+    "sha256": "a6eb8a6296a36f7793246e19043bd721a1b0a30d39ca43899c2f0e6e9acf8704",
+    "bytes": 322
+  },
+  "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.47M 100  1.47M   0      0  3.67M      0                              0\n100  1.47M 100  1.47M   0      0  3.67M      0                              0\n100  1.47M 100  1.47M   0      0  3.67M      0                              0\n",
+  "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+  "success": true
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "file": "osm-node-current-confirmed.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/500182808.json",
+    "finalUrl": "https://api.openstreetmap.org/api/0.6/node/500182808.json",
+    "status": 200,
+    "sha256": "b4cc8a5820330c7ccac48193ee5c8a6f58bb77a1ab56f4ce2ed534e0d1509565",
+    "bytes": 648,
+    "retrievedAt": "2026-09-12T11:27:48.378439+00:00",
+    "headers": {
+      "Connection": "keep-alive",
+      "Server": "Apache",
+      "Content-Encoding": "gzip",
+      "Cache-Control": "private, max-age=0, must-revalidate",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Content-Type": "application/json; charset=utf-8",
+      "Accept-Ranges": "bytes",
+      "Date": "Sat, 12 Sep 2026 11:27:48 GMT",
+      "Via": "1.1 varnish",
+      "X-Served-By": "cache-par-lfpb1150035-PAR",
+      "X-Cache": "MISS",
+      "X-Cache-Hits": "0",
+      "X-Timer": "S1789212468.145941,VS0,VE48",
+      "Vary": "Accept-Encoding",
+      "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+      "transfer-encoding": "chunked"
+    }
+  },
+  {
+    "file": "osm-node-history-confirmed.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/500182808/history.json",
+    "finalUrl": "https://api.openstreetmap.org/api/0.6/node/500182808/history.json",
+    "status": 200,
+    "sha256": "5c86593c1fe7935c86a31e9b631e98bb2243c08b95661c96eeb2f114bfef64fc",
+    "bytes": 3081,
+    "retrievedAt": "2026-09-12T11:27:48.501816+00:00",
+    "headers": {
+      "Connection": "keep-alive",
+      "Server": "Apache",
+      "Content-Encoding": "gzip",
+      "Cache-Control": "private, max-age=0, must-revalidate",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Content-Type": "application/json; charset=utf-8",
+      "Accept-Ranges": "bytes",
+      "Date": "Sat, 12 Sep 2026 11:27:48 GMT",
+      "Via": "1.1 varnish",
+      "X-Served-By": "cache-par-lfpb1150078-PAR",
+      "X-Cache": "MISS",
+      "X-Cache-Hits": "0",
+      "X-Timer": "S1789212468.276157,VS0,VE47",
+      "Vary": "Accept-Encoding",
+      "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+      "transfer-encoding": "chunked"
+    }
+  },
+  {
+    "file": "sitep-home-http.html",
+    "url": "http://www.sitep.com.tn/",
+    "finalUrl": "http://www.sitep.com.tn/",
+    "status": 200,
+    "sha256": "cc937cdc792d1989afaa30e580a4199fccf07f3ab236d4afe554bacfd93b4109",
+    "bytes": 15933,
+    "retrievedAt": "2026-09-12T11:27:48.670785+00:00",
+    "headers": {
+      "Date": "Sat, 12 Sep 2026 11:27:43 GMT",
+      "Server": "Apache",
+      "X-Powered-By": "PHP/5.2.6-1+lenny16",
+      "Set-Cookie": "PHPSESSID=2f8c7dd717b7c24c6dcaaff422f970b4; path=/",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "Content-Length": "4373",
+      "Keep-Alive": "timeout=5, max=100",
+      "Connection": "Keep-Alive",
+      "Content-Type": "text/html"
+    }
+  }
+]

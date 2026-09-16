@@ -1,0 +1,130 @@
+{
+  "scope": "Only463and526,onecalendar date,no full catalog",
+  "responses": [
+    {
+      "file": "inm-prayer-page.html",
+      "requestedUrl": "https://www.meteo.tn/fr/heures-prieres",
+      "retrievedAt": "2026-09-12T10:07:06.530581+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/fr/heures-prieres",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:07:05 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "Link": "<http://www.meteo.tn/fr/heures-prieres>; rel=\"canonical\", <http://www.meteo.tn/en/heures-prieres>; rel=\"alternate\"; hreflang=\"en\", <http://www.meteo.tn/fr/heures-prieres>; rel=\"alternate\"; hreflang=\"fr\", <http://www.meteo.tn/ar/heures-prieres>; rel=\"alternate\"; hreflang=\"ar\", <http://www.meteo.tn/fr/heures-prieres>; rel=\"revision\"",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Keep-Alive": "timeout=5, max=77",
+        "Connection": "Keep-Alive",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "text/html; charset=UTF-8"
+      },
+      "sha256": "97c03808b7dad0cf601ad7727572b32e3c8df69909c4237ae4bd27a3fa571709",
+      "bytes": 464193,
+      "provenance": "Original HTTP response body bytes after content decoding, not rewritten."
+    },
+    {
+      "file": "inm-prayer-463-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/350/463/",
+      "retrievedAt": "2026-09-12T10:07:06.531575+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/350/463/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:07:05 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade, Keep-Alive",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "545",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "application/json"
+      },
+      "sha256": "c95b48e575298a1d6bfd3c085969775a10591cfaf46c915ba1ebd79532a7fffc",
+      "bytes": 545,
+      "provenance": "Original HTTP response body bytes after content decoding, not rewritten."
+    },
+    {
+      "file": "inm-sun-463-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/350/463/",
+      "retrievedAt": "2026-09-12T10:07:06.531575+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/350/463/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:07:05 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade, Keep-Alive",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "514",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "application/json"
+      },
+      "sha256": "821a07ba0bf2944227a69cf1caa03700a2c8fddf8035c2cf1f6077fcb90b3edc",
+      "bytes": 514,
+      "provenance": "Original HTTP response body bytes after content decoding, not rewritten."
+    },
+    {
+      "file": "inm-prayer-526-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/357/526/",
+      "retrievedAt": "2026-09-12T10:07:06.804269+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/357/526/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:07:06 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade, Keep-Alive",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "628",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "application/json"
+      },
+      "sha256": "24a1faf1c1729fc619c0bddaf556d91b497e935c9d3d51a17cbc234a4036e3c5",
+      "bytes": 628,
+      "provenance": "Original HTTP response body bytes after content decoding, not rewritten."
+    },
+    {
+      "file": "inm-sun-526-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/357/526/",
+      "retrievedAt": "2026-09-12T10:07:06.828792+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/357/526/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:07:06 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade, Keep-Alive",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "597",
+        "Keep-Alive": "timeout=5, max=100",
+        "Content-Type": "application/json"
+      },
+      "sha256": "1fe20564a56468c8592fac5842dc0e4f06aef5e0b14aa8539831190f0fa60a21",
+      "bytes": 597,
+      "provenance": "Original HTTP response body bytes after content decoding, not rewritten."
+    }
+  ]
+}

@@ -1,0 +1,992 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:1187489040",
+  "baseId": 526,
+  "rawCurrent": {
+    "id": "osm:node:1187489040",
+    "sourceId": "osm",
+    "name": "حاجب العيون",
+    "aliases": [
+      "Hajeb El Ayoun"
+    ],
+    "kind": "village",
+    "parentName": "الحاجب المركز",
+    "contextAliases": [
+      "Délégation Hajeb El Ayoun",
+      "El Hajeb Centre",
+      "Hajeb El Ayoun",
+      "الحاجب المركز",
+      "معتمدية حاجب العيون"
+    ],
+    "governorateId": 357,
+    "lat": 35.395434,
+    "lng": 9.5424162,
+    "delegationId": 526,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1187489040"
+  },
+  "baseCurrent": {
+    "id": 526,
+    "nomFr": "Hajeb El Ayoun",
+    "nomAr": "حاجب العيون",
+    "nomEn": "Hajeb El Ayoun",
+    "lat": 35.397,
+    "lng": 9.543
+  },
+  "expectedGovernor": {
+    "id": 357,
+    "nomFr": "Kairouan",
+    "nomAr": "القيروان",
+    "nomEn": "Kairouan",
+    "lat": 35.6781,
+    "lng": 10.0963
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1187489040",
+    "tags": {
+      "name": "حاجب العيون",
+      "name:ar": "حاجب العيون",
+      "name:en": "Hajeb El Ayoun",
+      "name:fr": "Hajeb El Ayoun",
+      "place": "village",
+      "wikidata": "Q3108263",
+      "wikimedia_commons": "Category:Hajeb El Ayoun",
+      "wikipedia": "ar:حاجب العيون (تونس)"
+    },
+    "lat": 35.395434,
+    "lng": 9.5424162
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/hajeb/osm-node-1187489040-current.json",
+    "sha256": "184395482034cdeb111d6340c7495bfad64bf008da4bade361874979d8d0ac69",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1187489040.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1187489040.json",
+    "sha256": "184395482034cdeb111d6340c7495bfad64bf008da4bade361874979d8d0ac69",
+    "exactElement": {
+      "type": "node",
+      "id": 1187489040,
+      "lat": 35.395434,
+      "lon": 9.5424162,
+      "timestamp": "2026-03-07T20:28:17Z",
+      "version": 13,
+      "changeset": 179509225,
+      "user": "Johnwhelan",
+      "uid": 186592,
+      "tags": {
+        "name": "حاجب العيون",
+        "name:ar": "حاجب العيون",
+        "name:en": "Hajeb El Ayoun",
+        "name:fr": "Hajeb El Ayoun",
+        "place": "village",
+        "wikidata": "Q3108263",
+        "wikimedia_commons": "Category:Hajeb El Ayoun",
+        "wikipedia": "ar:حاجب العيون (تونس)"
+      }
+    }
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/hajeb-el-ayoun-town-point-source-review.json",
+    "sha256": "55f1b613798694634635996bd7c740a19655c291c4edb81f2b961711dd73cbeb"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+    "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+  },
+  "independentPrimaryFinding": "Same named settlement choice as Hajeb El Ayoun reference; preserve nine sectors.",
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-kairouan-page48.txt",
+      "sha256": "e4e820d35d2c5ba95fdfe94544c0c4550be8f529d04d911a310f50b67d79e06f",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "Hajeb El Ayoun",
+        "Ville prise en charge"
+      ],
+      "artifactKind": "derived_complete_page_text",
+      "isOriginalHttpResponseBytes": false,
+      "originalPdf": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-kairouan-fr.pdf",
+        "sha256": "7b683b60e43de90b14d42b19cc7f4836594b3729ee1a9c993e47bd718bc92641",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf"
+      },
+      "pdfPage": 48,
+      "printedPage": 47,
+      "finding": "Narrative explicitly classifies Hajeb el Ayoun as a ville; the ONAS Kairouan table identifies inhabited urban sanitation service. This establishes a town independently of an OSM name match or a municipal directory entry.",
+      "urlQualification": "URL identifies the original PDF; the pinned UTF8 file is a derived complete page.",
+      "derivationReview": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/complete-primary-page-text-provenance.json",
+        "sha256": "9f850f38021c54274ef46426a1f7b75e0f2558573d5fcc63cc7c6c736752d989"
+      }
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/hajeb-original-retrieval-manifest.json",
+      "sha256": "ab9735ea8a47ff316128adcdbd7185f3e2e3857d266f52e1c64924468151d874"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/hajeb/osm-node-1187489040-history.json",
+    "sha256": "20847dcdd6a14878e150aaab634528c54c24770b7dfaa095e813870e7b51f34f"
+  },
+  "sourceIdentityQualifications": {
+    "history": {
+      "versions": 13,
+      "firstTimestamp": "2011-03-05T16:41:44Z",
+      "firstKind": "town",
+      "laterKind": "village",
+      "sameTownFrenchNameAllVersions": true,
+      "coordinateStableFromVersion": 9,
+      "coordinateStableSince": "2019-10-25T15:09:30Z",
+      "versionsWithOfficeGovernmentAmenityBuildingShopLanduseTags": [],
+      "coordinateHistory": [
+        {
+          "version": 1,
+          "timestamp": "2011-03-05T16:41:44Z",
+          "lat": 35.3954084,
+          "lng": 9.5440981,
+          "kind": "town"
+        },
+        {
+          "version": 2,
+          "timestamp": "2011-03-19T20:27:31Z",
+          "lat": 35.3954084,
+          "lng": 9.5440981,
+          "kind": "village"
+        },
+        {
+          "version": 3,
+          "timestamp": "2011-09-23T00:15:12Z",
+          "lat": 35.3954084,
+          "lng": 9.5440981,
+          "kind": "village"
+        },
+        {
+          "version": 4,
+          "timestamp": "2011-09-23T15:48:52Z",
+          "lat": 35.3954084,
+          "lng": 9.5440981,
+          "kind": "village"
+        },
+        {
+          "version": 5,
+          "timestamp": "2011-12-11T23:09:19Z",
+          "lat": 35.3954084,
+          "lng": 9.5440981,
+          "kind": "village"
+        },
+        {
+          "version": 6,
+          "timestamp": "2011-12-12T19:27:17Z",
+          "lat": 35.3954084,
+          "lng": 9.5440981,
+          "kind": "village"
+        },
+        {
+          "version": 7,
+          "timestamp": "2016-11-20T21:45:48Z",
+          "lat": 35.3954084,
+          "lng": 9.5440981,
+          "kind": "village"
+        },
+        {
+          "version": 8,
+          "timestamp": "2017-02-14T21:17:05Z",
+          "lat": 35.3943589,
+          "lng": 9.5431969,
+          "kind": "village"
+        },
+        {
+          "version": 9,
+          "timestamp": "2019-10-25T15:09:30Z",
+          "lat": 35.395434,
+          "lng": 9.5424162,
+          "kind": "village"
+        },
+        {
+          "version": 10,
+          "timestamp": "2022-05-24T08:47:38Z",
+          "lat": 35.395434,
+          "lng": 9.5424162,
+          "kind": "village"
+        },
+        {
+          "version": 11,
+          "timestamp": "2023-09-05T15:40:34Z",
+          "lat": 35.395434,
+          "lng": 9.5424162,
+          "kind": "village"
+        },
+        {
+          "version": 12,
+          "timestamp": "2025-09-14T10:19:40Z",
+          "lat": 35.395434,
+          "lng": 9.5424162,
+          "kind": "village"
+        },
+        {
+          "version": 13,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "lat": 35.395434,
+          "lng": 9.5424162,
+          "kind": "village"
+        }
+      ],
+      "qualification": "Persistent OSM settlement-label history, not surveyed center certification. No exact urban extent follows from a point."
+    },
+    "identity": "The authentic node has continuous town/village identity, exact Arabic/French town names matching base526, and primary city-level corroboration in Kairouan. The legacy base is the named timetable reference for that city. This supports one reviewed display association preserving the raw village point, current timetable reference and all nine distinct sectors. It does not equate town, central imada, municipality and delegation extents.",
+    "primaryDate": "Cover personally inspected: Rapport définitif Mai2011. PDF file metadata was created/modified2015; current hosting path contains2024. This is historical city identity evidence, not a2024/2026 survey."
+  },
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-after-inm-geography-feasibility.json",
+    "sha256": "ddf07c5f2cae5747613e64a79022c3ade2e995f77fcd6f64aa534f50f56cee60"
+  },
+  "currentSourcePhaseFacts": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/finite-source-group-facts.json",
+    "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+  },
+  "historicalSourceReportQualification": "Original identity/phone reports describe their earlier frozen reference phase. Their identity observations remain evidence; only currentSourcePhaseFacts, rawCurrent, baseCurrent and expectedCoordinateCorrections bind current coordinates and containment.",
+  "supplementaryPhoneReview": {
+    "reference": {
+      "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-phone-review-20260912.json",
+      "sha256": "16bac80d9ffcd27ce60ac2a13a26c0cf7d583bdcbabd10518df6aff2739d5a9e"
+    },
+    "qualification": "Public candidate search observations only; no Google polygon or coordinate certification. Original reference searches predate the two official INM coordinate corrections."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7165245",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415852",
+        "sectorFr": "Ahouaz el hajeb",
+        "sectorAr": "أحواز الحاجب",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 48959,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2365,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2361
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "أحواز الحاجب",
+        "name:ar": "أحواز الحاجب",
+        "name:fr": "Ahouaz El Hajeb",
+        "ref:tn:codegeo": "415852"
+      },
+      "sourceGeometrySha256": "1ad301ab7dbdbbd8a8380588748d38a0fe4f4bb7e3b7cf666421e4193caea74a",
+      "currentMetadata": {
+        "id": "osm:relation:7165245",
+        "sourceId": "osm",
+        "name": "أحواز الحاجب",
+        "aliases": [
+          "Ahouaz El Hajeb"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.348795,
+        "lng": 9.52805,
+        "delegationId": 526,
+        "hasBoundary": true,
+        "bbox": [
+          9.459141,
+          35.29775,
+          9.584361,
+          35.40046
+        ],
+        "areaKm2": 46.154469773016814,
+        "pickerGroupId": "osm:relation:7165245",
+        "offset": 3469140,
+        "length": 2740
+      },
+      "packedGeometrySha256": "392d58c6fc7347b589632f5e49bb7b2a6a1582e8c68cd13074f19b1f4b792c97",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165263",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415851",
+        "sectorFr": "El hajeb centre",
+        "sectorAr": "الحاجب المركز",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 48925,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2363,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2359
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحاجب المركز",
+        "name:ar": "الحاجب المركز",
+        "name:fr": "El Hajeb Centre",
+        "ref:tn:codegeo": "415851"
+      },
+      "sourceGeometrySha256": "41afca368ce01a52ef47a7b039995b5061a1db94a46a8f8f908453cee7378442",
+      "currentMetadata": {
+        "id": "osm:relation:7165263",
+        "sourceId": "osm",
+        "name": "الحاجب المركز",
+        "aliases": [
+          "El Hajeb Centre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.398105,
+        "lng": 9.535388,
+        "delegationId": 526,
+        "hasBoundary": true,
+        "bbox": [
+          9.498521,
+          35.38025,
+          9.567731,
+          35.4165
+        ],
+        "areaKm2": 14.20362081765506,
+        "pickerGroupId": "osm:relation:7165263",
+        "offset": 3511764,
+        "length": 1332
+      },
+      "packedGeometrySha256": "e75ec8a519203864584b41e0611ad62e8393fa068750f9a270f25d7474b3b24c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165271",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415859",
+        "sectorFr": "Errehima",
+        "sectorAr": "الرحيمة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 49197,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2378,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2374
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "رحيمة",
+        "name:ar": "رحيمة",
+        "name:fr": "rehima",
+        "ref:tn:codegeo": "415859"
+      },
+      "sourceGeometrySha256": "570b6de411803308f6f591790c3cfcc1e7ec4f9d0dd4ec20ae40fb40bd05ed65",
+      "currentMetadata": {
+        "id": "osm:relation:7165271",
+        "sourceId": "osm",
+        "name": "رحيمة",
+        "aliases": [
+          "rehima"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.47563,
+        "lng": 9.629435,
+        "delegationId": 526,
+        "hasBoundary": true,
+        "bbox": [
+          9.534768,
+          35.42715,
+          9.673153,
+          35.52422
+        ],
+        "areaKm2": 52.374808399529485,
+        "pickerGroupId": "osm:relation:7165271",
+        "offset": 3542628,
+        "length": 2860
+      },
+      "packedGeometrySha256": "a418e50a33d6db80199f0ec71a00a6efebe4356783d0f21ddf06c2524699ae17",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165274",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415854",
+        "sectorFr": "Esserja",
+        "sectorAr": "السرجة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 49027,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2369,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2365
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السرجة",
+        "name:ar": "السرجة",
+        "name:fr": "Esserja",
+        "ref:tn:codegeo": "415854"
+      },
+      "sourceGeometrySha256": "5bc80d984f117d120801c43dd26fa855b10df18cde277234240c2f429c117973",
+      "currentMetadata": {
+        "id": "osm:relation:7165274",
+        "sourceId": "osm",
+        "name": "السرجة",
+        "aliases": [
+          "Esserja"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.538329,
+        "lng": 9.453104,
+        "delegationId": 524,
+        "hasBoundary": true,
+        "bbox": [
+          9.394854,
+          35.47487,
+          9.489854,
+          35.6028
+        ],
+        "areaKm2": 57.0188435974519,
+        "pickerGroupId": "osm:relation:7165274",
+        "offset": 3553432,
+        "length": 3892
+      },
+      "packedGeometrySha256": "618f241190f53e623108136d847fa8212430a82928abc754cbfd1d625e094c95",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165285",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415853",
+        "sectorFr": "Chaouachi",
+        "sectorAr": "الشواشي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 48993,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2367,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2363
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الشواشي",
+        "name:ar": "الشواشي",
+        "name:fr": "Chaouachi",
+        "ref:tn:codegeo": "415853"
+      },
+      "sourceGeometrySha256": "871789c7dd7392f582f558cdb1fe9e14100e3324ddaecb04f39e378fa61539f8",
+      "currentMetadata": {
+        "id": "osm:relation:7165285",
+        "sourceId": "osm",
+        "name": "الشواشي",
+        "aliases": [
+          "Chaouachi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.532125,
+        "lng": 9.523291,
+        "delegationId": 524,
+        "hasBoundary": true,
+        "bbox": [
+          9.469601,
+          35.46782,
+          9.587718,
+          35.59647
+        ],
+        "areaKm2": 87.78085761279787,
+        "pickerGroupId": "osm:relation:7165285",
+        "offset": 3590696,
+        "length": 6716
+      },
+      "packedGeometrySha256": "7bc6b9b43521be49068c1123ba932bda74f821bcc0768e7f3044ebbabd259676",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165294",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415857",
+        "sectorFr": "El ghouiba",
+        "sectorAr": "الغويبة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 49129,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2374,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2370
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الغويبة",
+        "name:ar": "الغويبة",
+        "name:fr": "El Ghouiba",
+        "ref:tn:codegeo": "415857"
+      },
+      "sourceGeometrySha256": "4dcccc2fbf6033a6c60b525d6bf8f3671ec74cedaa8dd0d6cc19f40855730a21",
+      "currentMetadata": {
+        "id": "osm:relation:7165294",
+        "sourceId": "osm",
+        "name": "الغويبة",
+        "aliases": [
+          "El Ghouiba"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.37182,
+        "lng": 9.579323,
+        "delegationId": 526,
+        "hasBoundary": true,
+        "bbox": [
+          9.542619,
+          35.33664,
+          9.627655,
+          35.40689
+        ],
+        "areaKm2": 37.505191384475665,
+        "pickerGroupId": "osm:relation:7165294",
+        "offset": 3626108,
+        "length": 3812
+      },
+      "packedGeometrySha256": "43a122424ecdabb0db2714daaef7150d915414d7378aca99bc1757a4ae4cd184",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165305",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415855",
+        "sectorFr": "El kantra",
+        "sectorAr": "القنطرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 49061,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2370,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2366
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القنطرة",
+        "name:ar": "القنطرة",
+        "name:fr": "El Kantra",
+        "ref:tn:codegeo": "415855"
+      },
+      "sourceGeometrySha256": "19d2af0394bcfed262beead345fa95f2fd1598e53b7a64bfc21dddbcfa61d207",
+      "currentMetadata": {
+        "id": "osm:relation:7165305",
+        "sourceId": "osm",
+        "name": "القنطرة",
+        "aliases": [
+          "El Kantra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.447925,
+        "lng": 9.512076,
+        "delegationId": 526,
+        "hasBoundary": true,
+        "bbox": [
+          9.474414,
+          35.41172,
+          9.570361,
+          35.48424
+        ],
+        "areaKm2": 39.242254013242295,
+        "pickerGroupId": "osm:relation:7165305",
+        "offset": 3659008,
+        "length": 2940
+      },
+      "packedGeometrySha256": "fc4233b39c111eaa8596ea7dde0e2e113997af23f5be4319fb720d8782a04691",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165320",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415856",
+        "sectorFr": "El hadaya",
+        "sectorAr": "الهدايا",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 49095,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2372,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2368
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الهدايا",
+        "name:ar": "الهدايا",
+        "name:fr": "El Hadaya",
+        "ref:tn:codegeo": "415856"
+      },
+      "sourceGeometrySha256": "1cd48879f6bf6c2e0a69bd57ad48ce80a795e6fe1189b535ca82b871c64ce6da",
+      "currentMetadata": {
+        "id": "osm:relation:7165320",
+        "sourceId": "osm",
+        "name": "الهدايا",
+        "aliases": [
+          "El Hadaya"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.4278,
+        "lng": 9.638727,
+        "delegationId": 526,
+        "hasBoundary": true,
+        "bbox": [
+          9.531741,
+          35.36584,
+          9.728166,
+          35.49037
+        ],
+        "areaKm2": 106.73700680643745,
+        "pickerGroupId": "osm:relation:7165320",
+        "offset": 3700768,
+        "length": 5092
+      },
+      "packedGeometrySha256": "6055b04fa5d341d6a73cfeda81908da6a4e1ba4ef5986707ca1ac42ed184f0f4",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7165361",
+      "officialIdentity": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4158",
+        "delegationFr": "Hajeb el ayoun",
+        "delegationAr": "حاجب العيون",
+        "sectorCode": "415858",
+        "sectorFr": "Oued el hajel",
+        "sectorAr": "وادي الحجل",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 49163,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2376,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2372
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي الحجل",
+        "name:ar": "وادي الحجل",
+        "name:fr": "Oued El Hajel",
+        "ref:tn:codegeo": "415858"
+      },
+      "sourceGeometrySha256": "b29a2de1c272c35021eb7af3ae68d4373149665b42f6c5272b81011168da5872",
+      "currentMetadata": {
+        "id": "osm:relation:7165361",
+        "sourceId": "osm",
+        "name": "وادي الحجل",
+        "aliases": [
+          "Oued El Hajel"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حاجب العيون",
+        "contextAliases": [
+          "Délégation Hajeb El Ayoun",
+          "Hajeb El Ayoun",
+          "معتمدية حاجب العيون"
+        ],
+        "governorateId": 357,
+        "lat": 35.313855,
+        "lng": 9.634482,
+        "delegationId": 526,
+        "hasBoundary": true,
+        "bbox": [
+          9.542451,
+          35.23074,
+          9.704548,
+          35.39667
+        ],
+        "areaKm2": 149.21863448903105,
+        "pickerGroupId": "osm:relation:7165361",
+        "offset": 3853044,
+        "length": 7044
+      },
+      "packedGeometrySha256": "5217d05be2682193a0866050397608af9727a209429f1cb2e93b799fe625eeed",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:relation:11318400",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Hajeb El Ayoun",
+        "boundary": "administrative",
+        "name": "معتمدية حاجب العيون",
+        "name:ar": "معتمدية حاجب العيون",
+        "name:fr": "Délégation Hajeb El Ayoun",
+        "ref:tn:codegeo": "4158",
+        "ref:tn:hasc_2": "TN.KR.HA",
+        "wikidata": "Q3125801",
+        "wikipedia": "ar:معتمدية حاجب العيون"
+      }
+    },
+    {
+      "id": "osm:node:1187489040",
+      "kind": "village",
+      "tags": {
+        "name": "حاجب العيون",
+        "name:ar": "حاجب العيون",
+        "name:en": "Hajeb El Ayoun",
+        "name:fr": "Hajeb El Ayoun",
+        "place": "village",
+        "wikidata": "Q3108263",
+        "wikimedia_commons": "Category:Hajeb El Ayoun",
+        "wikipedia": "ar:حاجب العيون (تونس)"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:11318400": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Hajeb El Ayoun",
+        "boundary": "administrative",
+        "name": "معتمدية حاجب العيون",
+        "name:ar": "معتمدية حاجب العيون",
+        "name:fr": "Délégation Hajeb El Ayoun",
+        "ref:tn:codegeo": "4158",
+        "ref:tn:hasc_2": "TN.KR.HA",
+        "wikidata": "Q3125801",
+        "wikipedia": "ar:معتمدية حاجب العيون"
+      },
+      "sourceGeometrySha256": "3828606b3d239b9ddfab464915b699c61dc4d5fc5ccb35f849b472ce9329d5ff"
+    },
+    "osm:relation:1435832": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-41",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية القيروان",
+        "name:ar": "ولاية القيروان",
+        "name:az": "Kayruan (vilayət)",
+        "name:azb": "قیروان",
+        "name:ba": "Каруан (виләйәт)",
+        "name:be": "Кайруан (вілает)",
+        "name:be-tarask": "Кайрўан (вілает)",
+        "name:bg": "Кайруан (област)",
+        "name:ca": "Governació de Kairuan",
+        "name:ceb": "Gouvernorat de Kairouan",
+        "name:cy": "Kairouan (talaith)",
+        "name:de": "Gouvernement Kairouan",
+        "name:el": "Καϊρουάν (Κυβερνείο)",
+        "name:en": "Kairouan",
+        "name:es": "Gobernación de Kairuán",
+        "name:fa": "قیروان",
+        "name:fr": "Gouvernorat Kairouan",
+        "name:frr": "Kairouan (Guwernement)",
+        "name:he": "קירואן (מחוז)",
+        "name:id": "Kegubernuran Kairouan",
+        "name:it": "Kairouan",
+        "name:ja": "ケルアン県",
+        "name:ko": "카이르완주",
+        "name:ks": "قیروان",
+        "name:ms": "Kawasan kegabenoran Kairouan",
+        "name:nl": "Kairouan (gouvernement)",
+        "name:no": "Kairouan (guvernement)",
+        "name:pl": "Gubernatorstwo Kairuan",
+        "name:pnb": "قیروان",
+        "name:pt": "Cairuão (província)",
+        "name:ro": "Guvernoratul Kairouan",
+        "name:ru": "Кайруан (вилайет)",
+        "name:sco": "Kairouan Govrenorate",
+        "name:sh": "Kairuan (vilajet)",
+        "name:tr": "Kayravan ili",
+        "name:uk": "Кайруан (вілаєт)",
+        "name:ur": "قیروان",
+        "name:zh": "凱魯萬省",
+        "name:zu": "Kairouan Governorate",
+        "official_name": "ولاية القيروان",
+        "official_name:ar": "ولاية القيروان",
+        "official_name:en": "Kairouan Governorate",
+        "official_name:fa": "استان قیروان",
+        "official_name:fr": "Gouvernorat de Kairouan",
+        "official_name:it": "Governatorato di Kairouan",
+        "official_name:ur": "ولایت قیروان",
+        "population": "546209",
+        "population:date": "2004",
+        "ref:tn:codegeo": "41",
+        "wikidata": "Q276574",
+        "wikipedia": "ar:ولاية القيروان"
+      },
+      "sourceGeometrySha256": "336a453cfaa42592e635b094bb74365ccc73a546935530bbbb2099bc45d62559"
+    }
+  },
+  "expectedCoordinateCorrections": [
+    {
+      "delegationId": 526,
+      "expectedGovernorateId": 357,
+      "expectedNames": {
+        "nomAr": "حاجب العيون",
+        "nomFr": "Hajeb El Ayoun",
+        "nomEn": "Hajeb El Ayoun"
+      },
+      "reviewedDate": "2026-09-12",
+      "original": {
+        "lat": 35.39,
+        "lng": 9.57
+      },
+      "proposed": {
+        "lat": 35.397,
+        "lng": 9.543
+      },
+      "originalProvenance": "Legacy bundled reference coordinates in gouvernorats.json SHA256 3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d. Original external provenance is not certified by this migration.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-prayer-526-2026-09-12.json",
+          "sha256": "24a1faf1c1729fc619c0bddaf556d91b497e935c9d3d51a17cbc234a4036e3c5",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/357/526/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/inm-sun-526-2026-09-12.json",
+          "sha256": "1fe20564a56468c8592fac5842dc0e4f06aef5e0b14aa8539831190f0fa60a21",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/357/526/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-463-526-2026-09-12/original-source/retrieval-manifest.json",
+          "sha256": "efcf39aacd417209ea23e115ec2d295ddb76201a41c9494ff9b457bea1b7a1af"
+        }
+      },
+      "qualification": "Official public INM prayer and sunrise responses publish these reference values. This records published fields and does not certify internal calculation inputs, survey precision, an OSM node or any boundary.",
+      "reviewBatchId": "2026-09-12-inm-published-reference-463-526",
+      "originalSourceAssetSha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-463-526-2026-09-12/before-gouvernorats.json",
+        "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+      }
+    }
+  ],
+  "onlyRawChange": {
+    "id": "osm:node:1187489040",
+    "field": "pickerGroupId",
+    "before": "osm:node:1187489040",
+    "after": "delegation:526"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1187489040"
+      ],
+      [
+        "delegation:526"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:526",
+        "osm:node:1187489040"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Both current point and timetable-reference coordinates are preserved. Published INM reference coordinates are not certified internal calculation inputs or administrative/urban boundaries.",
+  "scope": "Only the named point joins the existing manual town choice. Separate official sectors, all raw records, source identities, geometry, names, aliases, context and prayer defaults remain unchanged.",
+  "sourcePhaseQualification": "ACTUAL_ISOLATED_GENERATED_METADATA_AFTER_TWO_INM_REFERENCES_BEFORE_THREE_DISPLAY_RULES",
+  "officialDelegationCode": "4158"
+}

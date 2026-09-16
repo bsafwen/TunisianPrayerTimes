@@ -1,0 +1,40 @@
+{
+  "key": "grombalia-ouest",
+  "currentRawId": "osm:relation:7103805",
+  "currentCode": "156457",
+  "officialName": "قرنبالية الغربية",
+  "officialRegistryRow": {
+    "governorateCode": "15",
+    "governorateFr": "Nabeul",
+    "governorateAr": "نابل",
+    "delegationCode": "1564",
+    "delegationFr": "Grombalia",
+    "delegationAr": "قرنبالية",
+    "sectorCode": "156457",
+    "sectorFr": "Grombalia ouest",
+    "sectorAr": "قرنبالية الغربية",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14145,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 582,
+      "Nombre_de_menages_par_Secteurs.xlsx": 581
+    }
+  },
+  "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+  "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+  "retrievedAt": "2026-09-12T16:37:47.845108+00:00",
+  "exitCode": 0,
+  "httpStatus": "200",
+  "response": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-ouest.pdf",
+    "sha256": "a43d10bdb4ddce307148ee0f171eafafa9b3b1cbf92c01a39ab19233d32d5de8",
+    "bytes": 1454442
+  },
+  "headers": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/grombalia-ouest.headers",
+    "sha256": "a1fe1ee01e4179a57c473833d259e9187719eab397d04b5eb128aea4cdec435b",
+    "bytes": 560
+  },
+  "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.38M 100  1.38M   0      0  4.76M      0                              0\n100  1.38M 100  1.38M   0      0  4.76M      0                              0\n100  1.38M 100  1.38M   0      0  4.76M      0                              0\n",
+  "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+  "success": true
+}

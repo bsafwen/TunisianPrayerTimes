@@ -39,6 +39,13 @@ reverted or changed. Update the asset and its reviewed evidence together when a
 source needs a further correction. `coverage.json` records the manifest checksum
 and corrected source IDs.
 
+Hichria retains one display choice (`delegation:1522`) with its unchanged
+northern sector representative (`7169598`). The official INM daily reference
+coordinates are separate from that display identity and lie outside the sector.
+Manual selection uses the retained representative to choose the nearest available
+timetable. The southern Ouled Slimane village remains a separate locality; the
+reference update does not rename it or certify any administrative boundary.
+
 The picker retains governorate sections, search aliases and the selected-place
 highlight. Search metadata is prepared off the UI thread while the main screen
 is visible; the original delegation rows are immediately available. Browsing
@@ -124,12 +131,14 @@ Dar Chaabane's combined town record (`174739936`, دار شعبان الفهري
 reviewed display association with the existing `delegation:468` choice. It stays
 distinct from imada `7103335` (دار شعبان), whose shorter name also appears as a
 town alias. The current official registry and governorate city description
-support the difference in scope. This explicit association preserves the town
-choice's existing source 468 while retaining the raw residential representative
-and its nearest source 623 for existing saved raw selections. It acknowledges
-that the base point is outside the residential polygon; it does not relax the
-existing spatial base-group rules or claim that polygon is a complete city
-boundary. GPS still chooses its prayer source independently from the actual fix.
+support the difference in scope. Merged delegation choices retain their display
+identity and select the nearest available timetable from a retained raw locality
+representative. Saved manual selections re-evaluate through that same rule;
+saved raw locality IDs keep their original representative. Dar Chaabane's town
+choice now selects source 623, while the separate imada choice retains source
+468. This acknowledges that the base point is outside the residential polygon;
+it does not relax the existing spatial base-group rules or claim that polygon is
+a complete city boundary. GPS still selects independently from the actual fix.
 
 The manifest contains 69 reviewed administrative membership decisions. The latest
 additions use the INS RGPH2024 sector registry, historical INS identities and ISIE

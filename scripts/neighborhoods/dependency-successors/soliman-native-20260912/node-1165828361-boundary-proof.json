@@ -1,0 +1,874 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:1165828361",
+  "baseId": 595,
+  "rawCurrent": {
+    "id": "osm:node:1165828361",
+    "sourceId": "osm",
+    "name": "جمال",
+    "aliases": [
+      "Jemmel",
+      "Jemmal"
+    ],
+    "kind": "village",
+    "parentName": "جمال القبلية",
+    "contextAliases": [
+      "Délégation Jammel",
+      "Jammel Sud",
+      "Jemmal",
+      "جمال القبلية",
+      "معتمدية جمّال"
+    ],
+    "governorateId": 364,
+    "lat": 35.6239297,
+    "lng": 10.7592359,
+    "delegationId": 595,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1165828361"
+  },
+  "baseCurrent": {
+    "id": 595,
+    "nomFr": "Jammel",
+    "nomAr": "جمال",
+    "nomEn": "Jammel",
+    "lat": 35.63,
+    "lng": 10.76
+  },
+  "expectedGovernor": {
+    "id": 364,
+    "nomFr": "Monastir",
+    "nomAr": "المنستير",
+    "nomEn": "Monastir",
+    "lat": 35.7643,
+    "lng": 10.8113
+  },
+  "originalSourceNode": {
+    "id": "osm:node:1165828361",
+    "tags": {
+      "name": "جمال",
+      "name:ar": "جمال",
+      "name:en": "Jemmal",
+      "name:fr": "Jemmel",
+      "place": "village",
+      "population": "65420",
+      "source:population": "English Wikipedia",
+      "wikidata": "Q2545445",
+      "wikimedia_commons": "Category:Jemmal",
+      "wikipedia": "en:Jemmal"
+    },
+    "lat": 35.6239297,
+    "lng": 10.7592359
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/source-identity-review.json",
+    "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08"
+  },
+  "sourceFacts": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/exact-three-town-source-phase-facts.json",
+    "sha256": "c44993431b48653f60a0004320a3498c477dc49e6c845e73b7b88a55ed5d012f"
+  },
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/geography-schema-feasibility.json",
+    "sha256": "13787c850f50e80077b3ed92ec644e6247b3cee5ef9401313b35768955332402"
+  },
+  "geographyFacts": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/exact-three-geography-source-phase-facts.json",
+    "sha256": "ecbd81f7849d241c492af45b212cce0c19e1c00dc1d392048bfb34e58ef48dde"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/independent-source-prerequisites-review.json",
+    "sha256": "3cd6d48f2c02cebfdc02f90caca830ade6566fa9897903dd04f8e0aeea5fe169"
+  },
+  "independentSourceInspection": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/independent-source-inspection.json",
+    "sha256": "dedf72c24cd431dae504e179f03d51049ed7bf2656446da08e90f17cec7c2077"
+  },
+  "independentPrimaryFinding": {
+    "id": "osm:node:1165828361",
+    "finding": "Official Ministry tender06/2017 PDF1 explicitly identifies city flood works in Jemmal. Full page independently viewed.",
+    "classificationQualification": "All18 node versions use place=village; raw kind stays village. No source population value is promoted as certified city population.",
+    "geographicQualification": "The retained node is within Jemmal El Qeblia325651, while the legacy base anchor lies within Zaouiet Kontoch325655; both are in delegation3256 in original/effective/packed evidence. This difference is retained and does not license a coordinate or sector-boundary change."
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/osm-node-1165828361-current.json",
+    "sha256": "a79d1f93a6b3d22e2c386d973dbd70296cf245b15d05a827c062c4e840965e78",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1165828361.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1165828361.json",
+    "sha256": "a79d1f93a6b3d22e2c386d973dbd70296cf245b15d05a827c062c4e840965e78",
+    "exactElement": {
+      "type": "node",
+      "id": 1165828361,
+      "lat": 35.6239297,
+      "lon": 10.7592359,
+      "timestamp": "2026-03-07T20:28:17Z",
+      "version": 18,
+      "changeset": 179509225,
+      "user": "Johnwhelan",
+      "uid": 186592,
+      "tags": {
+        "name": "جمال",
+        "name:ar": "جمال",
+        "name:en": "Jemmal",
+        "name:fr": "Jemmel",
+        "place": "village",
+        "population": "65420",
+        "source:population": "English Wikipedia",
+        "wikidata": "Q2545445",
+        "wikimedia_commons": "Category:Jemmal",
+        "wikipedia": "en:Jemmal"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/remaining-three-town-2026-09/jemmal-mehat-tender2017-page1.txt",
+      "sha256": "a035c4abeb0de9443cf0f1f29028174ad2928a7802cf29950eddbce01a421371",
+      "url": "https://intranet.mehat.gov.tn/geao.nsf/xsp/.ibmmodres/domino/OpenAttachment/geao.nsf/251CD8B8DD61C6F4412581670029E05A/AvisAOfr/MEHAT_DHU_AO-06_2017_Fr.pdf",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "ville de Jemmal",
+        "Lot 2"
+      ],
+      "artifactKind": "derived_complete_page_text",
+      "isOriginalHttpResponseBytes": false,
+      "originalPdf": {
+        "file": "point-base-display-reviews/remaining-three-town-2026-09/jemmal-mehat-tender2017.pdf",
+        "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+        "url": "https://intranet.mehat.gov.tn/geao.nsf/xsp/.ibmmodres/domino/OpenAttachment/geao.nsf/251CD8B8DD61C6F4412581670029E05A/AvisAOfr/MEHAT_DHU_AO-06_2017_Fr.pdf"
+      },
+      "derivationReview": {
+        "file": "point-base-display-reviews/remaining-three-town-2026-09/three-town-primary-text-derivation-review.json",
+        "sha256": "243d67a243a13235a66398d36e2896ba3af8f4941f151a35fcf7093f5e420e75"
+      },
+      "pdfPage": 1,
+      "printedPage": null,
+      "urlQualification": "The URL identifies the original PDF. This UTF8 artifact is an explicitly derived complete page, not the original HTTP response."
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/remaining-three-town-2026-09/retrievals.json",
+      "sha256": "fea3dbec3427db6511db994b5bc72a5cb82cf7f7579eb29e83b29f77d29a44bc"
+    },
+    {
+      "file": "point-base-display-reviews/remaining-three-town-2026-09/remaining-three-town-exact-json-source-review.json",
+      "sha256": "3422357065b29d1f05000da99eb17cfa40652ae63c166a17cbbfa27f8406e6bd"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/osm-node-1165828361-history.xml",
+    "sha256": "403f10be78dcfcd165bfc0206ecd2d76df1abd42ea8b0783ee6ccaaea19169f1"
+  },
+  "comparedOriginalXml": {
+    "file": "point-base-display-reviews/remaining-three-town-2026-09/osm-node-1165828361-current.xml",
+    "sha256": "42aa5971868e3c88fd60ff17293419678f07c2304e4ec17d9dbbc4fb140af0db"
+  },
+  "sourceIdentityQualifications": [
+    "All18 versions retain a named village settlement classification. The current primary Ministry evidence calls Jemmal a town/city; this difference in size classification does not authorize changing raw kind or assigning a boundary.",
+    "The source population65420 was attributed to English Wikipedia. The retrieved PGES search extraction labels that number as delegation population, so it is not imported as town population or used as identity proof."
+  ],
+  "supplementaryPhoneReview": {
+    "references": [
+      {
+        "file": "point-base-display-reviews/remaining-three-town-2026-09/two-village-three-town-phone-review-20260912.json",
+        "sha256": "74eb8a8fcea72088ac4210792fe2848e23257b0ff0e5cdf482c36d529b9a101b"
+      }
+    ],
+    "qualification": "Public search/card observations only. No coordinate, city perimeter or survey certification."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7113924",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325651",
+        "sectorFr": "Jammel Sud",
+        "sectorAr": "جمال القبلية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36957,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1749,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1747
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جمال القبلية",
+        "name:ar": "جمال القبلية",
+        "name:fr": "Jammel Sud",
+        "ref:tn:codegeo": "325651"
+      },
+      "sourceGeometrySha256": "b17ddb7598493bb240066d7fc5dd832153117bb11d125cadb703b55831185320",
+      "currentMetadata": {
+        "id": "osm:relation:7113924",
+        "sourceId": "osm",
+        "name": "جمال القبلية",
+        "aliases": [
+          "Jammel Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.607646,
+        "lng": 10.768673,
+        "delegationId": 595,
+        "hasBoundary": true,
+        "bbox": [
+          10.757691,
+          35.590173,
+          10.792927,
+          35.625307
+        ],
+        "areaKm2": 5.853461097573152,
+        "pickerGroupId": "osm:relation:7113924",
+        "offset": 826688,
+        "length": 1540
+      },
+      "packedGeometrySha256": "27088e7df34075b4b10f2952fb43094baf079cc1d06e81a3516af4956f567ca9",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7113921",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325652",
+        "sectorFr": "Jammel Nord",
+        "sectorAr": "جمال الجوفية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36991,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1751,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1749
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جمال الجوفية",
+        "name:ar": "جمال الجوفية",
+        "name:fr": "Jammel Nord",
+        "ref:tn:codegeo": "325652"
+      },
+      "sourceGeometrySha256": "49d95c2c2ba68a0b35241c7f758c52d6f686a9df8e185a239884e01ab74d077f",
+      "currentMetadata": {
+        "id": "osm:relation:7113921",
+        "sourceId": "osm",
+        "name": "جمال الجوفية",
+        "aliases": [
+          "Jammel Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.632288,
+        "lng": 10.723776,
+        "delegationId": 595,
+        "hasBoundary": true,
+        "bbox": [
+          10.694784,
+          35.62026,
+          10.761316,
+          35.644244
+        ],
+        "areaKm2": 9.867977782378215,
+        "pickerGroupId": "osm:relation:7113921",
+        "offset": 822052,
+        "length": 844
+      },
+      "packedGeometrySha256": "a9118f6350468d32b0980de449283a20677751a2992f17bf294c3e59017bf84a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7113922",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325653",
+        "sectorFr": "Jammel Est",
+        "sectorAr": "جمال الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37025,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1753,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1751
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جمال الشرقية",
+        "name:ar": "جمال الشرقية",
+        "name:fr": "Jammel Est",
+        "ref:tn:codegeo": "325653"
+      },
+      "sourceGeometrySha256": "33d2568cd864eedf979f5801f599aa91d485684d10e4eb0cf7c15a7d3c2e84e4",
+      "currentMetadata": {
+        "id": "osm:relation:7113922",
+        "sourceId": "osm",
+        "name": "جمال الشرقية",
+        "aliases": [
+          "Jammel Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.617015,
+        "lng": 10.79631,
+        "delegationId": 595,
+        "hasBoundary": true,
+        "bbox": [
+          10.758741,
+          35.591087,
+          10.824492,
+          35.643492
+        ],
+        "areaKm2": 19.754260048271465,
+        "pickerGroupId": "osm:relation:7113922",
+        "offset": 822896,
+        "length": 1548
+      },
+      "packedGeometrySha256": "96c10a8b96eab69fff115de1efc23a80aeb26124aff65ca3ee97317ae229b44a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7113923",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325654",
+        "sectorFr": "Jammel Ouest",
+        "sectorAr": "جمال الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37059,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1755,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1753
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جمال الغربية",
+        "name:ar": "جمال الغربية",
+        "name:fr": "Jammel Ouest",
+        "ref:tn:codegeo": "325654"
+      },
+      "sourceGeometrySha256": "56caed31fc03899a0b1d9ed0e005f5d505aa17a7a0ad1df84666d844e8748268",
+      "currentMetadata": {
+        "id": "osm:relation:7113923",
+        "sourceId": "isie-local-sectors-2023-jammel",
+        "name": "جمال الغربية",
+        "aliases": [
+          "Jammel Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.607136,
+        "lng": 10.7272,
+        "delegationId": 596,
+        "hasBoundary": true,
+        "bbox": [
+          10.686977,
+          35.58944,
+          10.762236,
+          35.625221
+        ],
+        "areaKm2": 18.046837766574868,
+        "pickerGroupId": "osm:relation:7113923",
+        "offset": 824444,
+        "length": 2244
+      },
+      "packedGeometrySha256": "d8cce3244535f213f8372e2e9d5a5d5b33f92dacc4b8ae3267321806604d1596",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7112769",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325655",
+        "sectorFr": "Zaouiet kontoch",
+        "sectorAr": "زاوية قنطش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37093,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1757,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1755
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "زاوية قنطش",
+        "name:ar": "زاوية قنطش",
+        "name:fr": "Zaouiet Kontoch",
+        "ref:tn:codegeo": "325655",
+        "wikidata": "Q3574794"
+      },
+      "sourceGeometrySha256": "9c2f67c9bd0c01ab28428fbc751d9a07c9b6cfa3f0aa8cfd4e55d82da1b19def",
+      "currentMetadata": {
+        "id": "osm:relation:7112769",
+        "sourceId": "osm",
+        "name": "زاوية قنطش",
+        "aliases": [
+          "Zaouiet Kontoch",
+          "Zaouit Kontech"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.646935,
+        "lng": 10.762317,
+        "delegationId": 595,
+        "hasBoundary": true,
+        "bbox": [
+          10.723024,
+          35.628131,
+          10.803937,
+          35.665721
+        ],
+        "areaKm2": 12.191933253709186,
+        "pickerGroupId": "osm:relation:7112769",
+        "offset": 779652,
+        "length": 2340
+      },
+      "packedGeometrySha256": "5b98bd997804ce5c1f99607c51d2bea553f4c897d19164fb4dbc7bb9dbca04b8",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7114361",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325656",
+        "sectorFr": "Bir taieb",
+        "sectorAr": "بئر الطيب",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37127,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1759,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1757
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بئر الطيب",
+        "name:ar": "بئر الطيب",
+        "name:fr": "Bir Taïeb",
+        "ref:tn:codegeo": "325656"
+      },
+      "sourceGeometrySha256": "b6a53218746b550295edca7cf5c7c7161c87ab9bf1a92a1a783fd9576fc98586",
+      "currentMetadata": {
+        "id": "osm:relation:7114361",
+        "sourceId": "osm",
+        "name": "بئر الطيب",
+        "aliases": [
+          "Bir Taïeb"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.657284,
+        "lng": 10.677158,
+        "delegationId": 593,
+        "hasBoundary": true,
+        "bbox": [
+          10.636946,
+          35.642472,
+          10.722632,
+          35.672522
+        ],
+        "areaKm2": 12.167131332742317,
+        "pickerGroupId": "osm:relation:7114361",
+        "offset": 858832,
+        "length": 2300
+      },
+      "packedGeometrySha256": "6022c8dab974eb7f3b91ca6745a20d4a51c086a0001a406e1bac00ee5a3e3d81",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7114362",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325657",
+        "sectorFr": "Menzel kamel",
+        "sectorAr": "منزل كامل",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37161,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1760,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1758
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "منزل كامل",
+        "name:ar": "منزل كامل",
+        "name:fr": "Menzel Kamel",
+        "ref:tn:codegeo": "325657"
+      },
+      "sourceGeometrySha256": "af4a63ca6c0b81176ae190767209d8b27e583a0d724e4a9a2414b1dc9fefbbf1",
+      "currentMetadata": {
+        "id": "osm:relation:7114362",
+        "sourceId": "osm",
+        "name": "منزل كامل",
+        "aliases": [
+          "Menzel Kamel"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.636264,
+        "lng": 10.661692,
+        "delegationId": 593,
+        "hasBoundary": true,
+        "bbox": [
+          10.618713,
+          35.609751,
+          10.735814,
+          35.662659
+        ],
+        "areaKm2": 26.022473792335568,
+        "pickerGroupId": "osm:relation:7114362",
+        "offset": 861132,
+        "length": 2156
+      },
+      "packedGeometrySha256": "4bf60487208409d4d0557a802d68573c392d3fff75694203821e8afc4ecf9495",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7114360",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325658",
+        "sectorFr": "El hdadra",
+        "sectorAr": "الهدادرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37195,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1762,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1760
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الهدادرة",
+        "name:ar": "الهدادرة",
+        "name:fr": "El Hdadra",
+        "ref:tn:codegeo": "325658"
+      },
+      "sourceGeometrySha256": "2fc43eccd8dfbcd29d7d174ca3cae54dbbe32f6a59f1839a417f1d255e91ba14",
+      "currentMetadata": {
+        "id": "osm:relation:7114360",
+        "sourceId": "osm",
+        "name": "الهدادرة",
+        "aliases": [
+          "El Hdadra",
+          "Hdadra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.602145,
+        "lng": 10.630193,
+        "delegationId": 596,
+        "hasBoundary": true,
+        "bbox": [
+          10.577402,
+          35.55538,
+          10.66919,
+          35.648351
+        ],
+        "areaKm2": 42.395595062011324,
+        "pickerGroupId": "osm:relation:7114360",
+        "offset": 857476,
+        "length": 1356
+      },
+      "packedGeometrySha256": "57e80e99e21ed9221a375e2d8446fd0247277cb498b466b3e03aabc7a9f457a9",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7113920",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3256",
+        "delegationFr": "Jammel",
+        "delegationAr": "جمال",
+        "sectorCode": "325659",
+        "sectorFr": "Et-teyaira",
+        "sectorAr": "الطيايرة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37229,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1763,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1761
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الطيايرة",
+        "name:ar": "الطيايرة",
+        "name:fr": "Et-Teyaïra",
+        "ref:tn:codegeo": "325659"
+      },
+      "sourceGeometrySha256": "975a49d1495609fba869743ba63e4c972bc88774c405899dca87df95de9db4cd",
+      "currentMetadata": {
+        "id": "osm:relation:7113920",
+        "sourceId": "isie-local-sectors-2023-jammel",
+        "name": "الطيايرة",
+        "aliases": [
+          "Et-Teyaïra"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جمّال",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jemmal",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.578868,
+        "lng": 10.771911,
+        "delegationId": 596,
+        "hasBoundary": true,
+        "bbox": [
+          10.756953,
+          35.566223,
+          10.788982,
+          35.591316
+        ],
+        "areaKm2": 5.090551773561805,
+        "pickerGroupId": "osm:relation:7113920",
+        "offset": 820656,
+        "length": 1396
+      },
+      "packedGeometrySha256": "0bf13a7bbf0bd99604d027964c1d18a4aec9e246a55fb4994baf1011b3b876a6",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:1165828361",
+      "kind": "village",
+      "tags": {
+        "name": "جمال",
+        "name:ar": "جمال",
+        "name:en": "Jemmal",
+        "name:fr": "Jemmel",
+        "place": "village",
+        "population": "65420",
+        "source:population": "English Wikipedia",
+        "wikidata": "Q2545445",
+        "wikimedia_commons": "Category:Jemmal",
+        "wikipedia": "en:Jemmal"
+      }
+    },
+    {
+      "id": "osm:relation:7154978",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Jemmal",
+        "boundary": "administrative",
+        "name": "معتمدية جمّال",
+        "name:ar": "معتمدية جمّال",
+        "name:fr": "Délégation Jammel",
+        "ref:tn:codegeo": "3256",
+        "ref:tn:hasc_2": "TN.MS.JA",
+        "wikidata": "Q3176963"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434954": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-52",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Monastir",
+        "boundary": "administrative",
+        "long_name": "ولاية المنستير",
+        "long_name:ar": "ولاية المنستير",
+        "long_name:en": "Monastir Governorate",
+        "long_name:fr": "Gouvernorat de Monastir",
+        "long_name:it": "Governatorato di Monastir",
+        "name": "ولاية المنستير",
+        "name:ar": "ولاية المنستير",
+        "name:az": "Monastir (vilayət)",
+        "name:be": "Манасцір (вілает)",
+        "name:be-tarask": "Манастыр (вілает)",
+        "name:bg": "Монастир (област)",
+        "name:ca": "Governació de Monastir",
+        "name:ceb": "Gouvernorat de Monastir",
+        "name:cy": "Monastir (talaith)",
+        "name:de": "Al-Munastir",
+        "name:el": "Μοναστίρ (Κυβερνείο)",
+        "name:en": "Monastir",
+        "name:es": "Gobernación de Monastir",
+        "name:fa": "استان منستیر",
+        "name:fi": "Monastir (kuvernementti)",
+        "name:fr": "Gouvernorat Monastir",
+        "name:frr": "Monastir (Guwernement)",
+        "name:hr": "Monastir",
+        "name:id": "Kegubernuran Monastir",
+        "name:it": "Monastir",
+        "name:ja": "モナスティル県",
+        "name:ka": "მონასტირის ვილაიეთი",
+        "name:ko": "모나스티르주",
+        "name:ms": "Kawasan kegabenoran Monastir",
+        "name:nl": "Monastir (gouvernement)",
+        "name:no": "Monastir (guvernement)",
+        "name:pl": "Gubernatorstwo Monastyr",
+        "name:pt": "Monastir (província)",
+        "name:ro": "Guvernoratul Monastir",
+        "name:ru": "Монастир (вилайет)",
+        "name:sco": "Monastir Govrenorate",
+        "name:sh": "Monastir (vilajet)",
+        "name:sq": "Monastir",
+        "name:tr": "Munastır (vilayet)",
+        "name:uk": "Монастір (вілаєт)",
+        "name:ur": "ولایت منستیر",
+        "name:zh": "莫納斯提爾省",
+        "name:zu": "Monastir Governorate",
+        "population": "455590",
+        "ref:tn:codegeo": "32",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q318102",
+        "wikipedia": "ar:ولاية المنستير"
+      },
+      "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+    },
+    "osm:relation:7154978": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Jemmal",
+        "boundary": "administrative",
+        "name": "معتمدية جمّال",
+        "name:ar": "معتمدية جمّال",
+        "name:fr": "Délégation Jammel",
+        "ref:tn:codegeo": "3256",
+        "ref:tn:hasc_2": "TN.MS.JA",
+        "wikidata": "Q3176963"
+      },
+      "sourceGeometrySha256": "61b99af01b9269f01f8b96587dbd0c77b0aa362322c24304e4fb9bcedbad6072"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:1165828361",
+    "field": "pickerGroupId",
+    "before": "osm:node:1165828361",
+    "after": "delegation:595"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:1165828361"
+      ],
+      [
+        "delegation:595"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:595",
+        "osm:node:1165828361"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "Display association only. Preserve all raw IDs, kinds, names, aliases, coordinates, contexts, prayer defaults, coded imadas and packed geometry.",
+  "coordinatePolicy": "Both existing coordinates remain unchanged and uncertified. No original INM calculation anchor is established.",
+  "sourcePhaseQualification": "All nine sectors have singleton groups; two accepted official replacements need exact original/effective lineage.",
+  "officialDelegationCode": "3256",
+  "sourcePhaseLineage": {
+    "file": "dependency-successors/soliman-native-20260912/node-1165828361-boundary-lineage.json",
+    "sha256": "bf1bca5c9b24e4bc508b0121f671f18114c5bdef0970b2dee97d3bc4d4d6d2a2"
+  }
+}

@@ -1,0 +1,541 @@
+{
+  "status": "ISOLATED_SOURCE_ONLY_THIRTEEN_BOUNDARY_PROPOSAL_PENDING_INDEPENDENT_INTEGRATION",
+  "packageManifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/source-package-manifest.json",
+    "sha256": "171752fefd84e6be834e795140b2c53168984f08cd15aa384928b9c3b52ffddc",
+    "bytes": 49230
+  },
+  "stageRoot": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912",
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "providerId": "isie-local-sectors-2023-soliman-thirteen-native",
+  "manifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-thirteen-native-source-stage-20260912/scripts/neighborhoods/reviewed-boundaries.json",
+    "sha256": "1d9349952ed94fcf9d18666cb9474b5609c73993a2ef5270b9941acad4929a61",
+    "bytes": 88027
+  },
+  "providerBoundary": {
+    "file": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+    "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857"
+  },
+  "acceptanceProof": {
+    "file": "official/soliman-thirteen-native-20260912/soliman-thirteen-source-acceptance-proof.json",
+    "sha256": "bdb1f28beff4e1edb8abb6fd10fa5389b77055b52a173c5d464a0a492e1ec2bf"
+  },
+  "counts": {
+    "oldBoundaryRecords": 77,
+    "newBoundaryRecords": 90,
+    "wholeScopeRecords": 88,
+    "aggregateScopeRecords": 2,
+    "newSourcePolygons": 13,
+    "sourceMaps": 14,
+    "selectedFiles": 70,
+    "newFiles": 69
+  },
+  "stageFiles": [
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/accepted2-exhaustive-aggregate-scope-review.json",
+      "sha256": "c370d7122b4e614de33957441e0b22fcada79e50a02a16324417082cfee6453d",
+      "bytes": 8109,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/accepted88-whole-imada-scope-review.json",
+      "sha256": "a503c52598baa99bbea05fe2a7c410f622f7320716b6dead6c241720bcae49d1",
+      "bytes": 113590,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/borj-cedria-complete-source-parts.geojson",
+      "sha256": "24bbb909efd36d4a18e668c00f4eeaff8e451869ddf2c48356836ca01bd8d9b3",
+      "bytes": 81623,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/borj-mraissa-declared-coordinate-quantization-review.json",
+      "sha256": "0e75a9f5b5e90d7925b6138b15b3bd5520e3ea6009b9d9c725cb9f5a51143959",
+      "bytes": 2713,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/historical/accepted76-whole-imada-scope-review.json",
+      "sha256": "b95908cfbb781e419b2b8a5ac015b95c41979448bfa0443b39813d090f554027",
+      "bytes": 88005,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/historical/bekalta-north-aggregate-scope-review.json",
+      "sha256": "a7d50ab1078b336be39c46eeaa8d55d183cd441437ffbaf1fc4f9d71c734f989",
+      "bytes": 4300,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree-page-117.png",
+      "sha256": "2d94d2e723d181d7edb0deb77fe3d004e0061acaf792da9071dd359401594747",
+      "bytes": 606090,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree-page-118.png",
+      "sha256": "8b1faa44ef4669079d2b9a8e0772ceefb7cc3bd4778abae7073436a77d26c76f",
+      "bytes": 599988,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree-page-26.png",
+      "sha256": "9e7cdaa014e0e3641d1c8402fd70624ba49c49b63a3ef698f15d8685e9a0f064",
+      "bytes": 432908,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree-page-27.png",
+      "sha256": "4bc44455859460d03247f4a5b8980d71f15e85ed8232005458a2badaf57766e9",
+      "bytes": 385092,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree-page-76.png",
+      "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598",
+      "bytes": 306070,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+      "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134",
+      "bytes": 313154,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree-source.json",
+      "sha256": "4d32d381e259cbecab67ac7b2d268cb8e7892a2ffd6c36531f2e82236cbb5dae",
+      "bytes": 189,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "bytes": 10636520,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/Nombre_de_Logements_par_Secteurs.xlsx",
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "bytes": 755797,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/Nombre_de_menages_par_Secteurs.xlsx",
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "bytes": 649843,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/identity/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "bytes": 9247324,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/immutable-source-relocation-receipts.json",
+      "sha256": "44296f693192b0fa161b6337ddeb61670d71fc81c6e3249276fcc78f7a5c128b",
+      "bytes": 34659,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-1-retrieval.json",
+      "sha256": "44ffc9025119816c89103d6b5cb5f4d4ebacb8fe00100870d94e0b60bb1dd051",
+      "bytes": 1771,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-1.pdf",
+      "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc",
+      "bytes": 1529064,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-2-retrieval.json",
+      "sha256": "0e88a2117532572f612bd0366dec714be6dc845a779c5ea4c92a3c8bcd28e5c0",
+      "bytes": 1521,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-2.pdf",
+      "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849",
+      "bytes": 1737569,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/bouchray-retrieval.json",
+      "sha256": "b1b567a0ebd6e08ea5b876083cb09f47595301a58fe00ec75e2f9d4b6545eb40",
+      "bytes": 1641,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/bouchray.pdf",
+      "sha256": "3b54f8c69b91a27619da685b1f127bfd2317f8c031195b90aa55b6f57364796c",
+      "bytes": 1336507,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/chammes-retrieval.json",
+      "sha256": "326027ed29a9369aaa61d0c841e60af077499f404fb63b308201790606325c8d",
+      "bytes": 1386,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/chammes.pdf",
+      "sha256": "73f9a0b5a3b2c2ebd393be651755a4afa4a4de2051008905eef72c6efd1323c1",
+      "bytes": 1465929,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/cherifet-retrieval.json",
+      "sha256": "8aa61fcfc92eac66b5942127fd730689de9faa5b682127eacb4b40b8daf5b23c",
+      "bytes": 1669,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/cherifet.pdf",
+      "sha256": "fab1b73d8275448c7467c57f37e613439a1e1e444835e965d6a95155cb3b68f3",
+      "bytes": 1427213,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/fondouk-jedid-retrieval.json",
+      "sha256": "fb222f05c87c9a6da964be34ba310546bdc62974f0180df34e3dad07613413ea",
+      "bytes": 1733,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/fondouk-jedid.pdf",
+      "sha256": "30e8a44086627c679d90fe8c55dfbdf2e96280519d7660b691af408088440cef",
+      "bytes": 1531656,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/grombalia-est-retrieval.json",
+      "sha256": "88d463a51302a2268e1f2362f14b5d7a97c1286449fdda072548bab9d58ef935",
+      "bytes": 2594,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/grombalia-est.pdf",
+      "sha256": "72a0cad3f3ecff7f65a93c7d9776ca13135124cc34bfb5a47878e448088c06a6",
+      "bytes": 1545659,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/grombalia-ouest-retrieval.json",
+      "sha256": "80f25a460c61f798464037c82b8905eaa83cabe7c7955aa68f6e3a5978212b7b",
+      "bytes": 2602,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/grombalia-ouest.pdf",
+      "sha256": "a43d10bdb4ddce307148ee0f171eafafa9b3b1cbf92c01a39ab19233d32d5de8",
+      "bytes": 1454442,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/khanguet-el-hojjej-retrieval.json",
+      "sha256": "e52a99060bb1769bcdad4f3380367a77c14d4e6ff15220efa5bf17d555d71ae4",
+      "bytes": 2534,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/khanguet-el-hojjej.pdf",
+      "sha256": "88e5d0c527d10fc6837e5f7a5cbcc13b26cf40ae1dc1771b12382c6f5efd70c0",
+      "bytes": 1332791,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/menzel-bouzelfa-keblia-retrieval.json",
+      "sha256": "80397b69cc0c0e9a4b03c68123db3bfc73488ada6adc9d2384835a48a30764e0",
+      "bytes": 2712,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/menzel-bouzelfa-keblia.pdf",
+      "sha256": "00b47cf7be053ccd933f6b5ad19f1154a51f7b7d0280b1086d97d178f5876ea8",
+      "bytes": 1309030,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/menzel-bouzelfa-ouest-retrieval.json",
+      "sha256": "6c18df2437aff532c8ed4d01eb9c25649f1072e214211c98e6e06e02b3b17921",
+      "bytes": 2708,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/menzel-bouzelfa-ouest.pdf",
+      "sha256": "925c149e026c36ed48c3101eca887c5a7bc0d8bd3eb39dd36e5dd3a907c6142f",
+      "bytes": 1273530,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/mraissa-retrieval.json",
+      "sha256": "3107851f1dde1c95d279648e4ea9e926feb91a1aa5bd8c4d82782a59a0657365",
+      "bytes": 1403,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/mraissa.pdf",
+      "sha256": "444feebb83c9c559fc645d590cda0824752ce91b2fc3f65539233eca7dacce2f",
+      "bytes": 1157011,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/soliman-retrieval.json",
+      "sha256": "30d40d5cd9df8122e515e77fdecec765b5007c8264be1cb715c80fef8af70a21",
+      "bytes": 1731,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/soliman-sud-retrieval.json",
+      "sha256": "3bebd7a655e89ad540458f6feb282c28c607d09948afbb3537c30fc9f192ab8a",
+      "bytes": 1513,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/soliman-sud.pdf",
+      "sha256": "ce5884a3f7ebbadbfa5383b0b433e28e554760cd8531dc286354cf6405f3f3c0",
+      "bytes": 1503345,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/soliman.pdf",
+      "sha256": "912a5163030cbc29a62b1609f1f4a3dd4a579e4dac9e3cd4b35fe94fd46e0e27",
+      "bytes": 1391866,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/borj-cedria-official-imada-electoral-component-bridge.json",
+      "sha256": "7be6b471bba316575c81de4be33e53a08f71230d90137eec16d041a66ee4f4cb",
+      "bytes": 3905,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/coherent-six-sector-current-impact-facts.json",
+      "sha256": "521c46bdcb8a9de353296dbc4e8e187e61019975e4416005bf8a0a0b48a2f82f",
+      "bytes": 181989,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/five-original-path-identity-facts.json",
+      "sha256": "408d10b5a8e745cb02bdfa88cbdc175d86f82d4cb43f2aa8ae123eb6506a76ad",
+      "bytes": 197687,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/five-receiver-eight-thirteen-cohort-facts.json",
+      "sha256": "fb2d1811d540910456784e3485af43996f0afd2e8d4fc527de1f8f134a7e77a9",
+      "bytes": 357446,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/five-reviewed-whole-native-source-polygons.geojson",
+      "sha256": "fd0f4d1b6d6b7d3eb58a1fb42c7d9967bf31b84801e8e7601d78adc8143344a9",
+      "bytes": 213401,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/independent-original-path-region-facts.json",
+      "sha256": "43f1a7ff39ccad29bc363dc5c3612e6a9c9780782d4ff8223aa4591f6b84dda8",
+      "bytes": 128758,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/mraissa-borj-cedria-source-blocker-review.json",
+      "sha256": "8f38d0c9d4be7be69a17b9568b1231b7504394f2bf5eeeabce23590265aa193c",
+      "bytes": 17035,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/mraissa-conditional-closed-walk-region.geojson",
+      "sha256": "3219c5ed433374a28bcb18be70fa31851aa9dbb1a7ebe6214e81480b7c4e04fc",
+      "bytes": 142761,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/mraissa-exact-source-topology-facts.json",
+      "sha256": "647af6f48e419d6ee48cf4231ed8e3f5bec0b6926fbac5e9861929f79377179c",
+      "bytes": 224731,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/mraissa-native-two-path-reconstruction-held.json",
+      "sha256": "41cf724636693f43be37e5c3bc70a25f7b72a5d9108940223ed7658775133c46",
+      "bytes": 212711,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/mraissa-source-region-independent-review.json",
+      "sha256": "6be4c7b0a053c117b285eee266f9ed91dd50ce5322ae27a8887917d022883ed5",
+      "bytes": 12334,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/native-neighbor-source-records.json",
+      "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5",
+      "bytes": 957845,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/retrieval-manifest.json",
+      "sha256": "b926aa08fc3d08426452356e379a1d92a11b60e73ecd281a763ef5b3a62bd794",
+      "bytes": 15447,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/soliman-five-outer-own-map-source-independent-review.json",
+      "sha256": "24404f2360f25e7cddb4555d9a36a4ad41ef6155618707b17f345394b2645a88",
+      "bytes": 17087,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/soliman-five-own-map-eight-thirteen-source-impact-review.json",
+      "sha256": "f43ac13b9a1523891a9143d21d9cfcc5f019d1bcfce6bec69aa2e2bff7347907",
+      "bytes": 143514,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/soliman-immediate-native-source-cohort-review.json",
+      "sha256": "9deea58cbe45ac51bf8c1e8414cd5c7d3c45399dba5642fa4bf567d5eeafa510",
+      "bytes": 16070,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/soliman-six-sector-cohort-independent-impact-review.json",
+      "sha256": "f1e1e664d323872bdf2b4c232c35b00eb8f1a223f30af23ba15e7bb89ff8aa98",
+      "bytes": 89494,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/source-geography-facts.json",
+      "sha256": "df697da61dfa7af2f5576c58e2e88538df0197cebc59f049bc61045f1d796f78",
+      "bytes": 65265,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/unreviewed-native-path-inventory.json",
+      "sha256": "67f727fd0f6fb606ebd4153bbc039a256c667f4e4bfa9b382e8d7d8fc9bb6760",
+      "bytes": 1433950,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/reviews/whole-native-source-polygons.geojson",
+      "sha256": "c18e02069247cd0bd528464ee5da6b01e59bf07ed46e1ab37656d543688b935f",
+      "bytes": 380510,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/soliman-thirteen-source-acceptance-proof.json",
+      "sha256": "bdb1f28beff4e1edb8abb6fd10fa5389b77055b52a173c5d464a0a492e1ec2bf",
+      "bytes": 74225,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "bytes": 704024,
+      "existingReplacement": false,
+      "baselineSha256": null
+    },
+    {
+      "relativePath": "scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "1d9349952ed94fcf9d18666cb9474b5609c73993a2ef5270b9941acad4929a61",
+      "bytes": 88027,
+      "existingReplacement": true,
+      "baselineSha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    }
+  ],
+  "integrationObligations": [
+    "No product/compiler/picker/curation changes are included. Existing strict Soliman source proof requires a reviewed original/effective successor contract before any generation.",
+    "Preserve sector7100693 distinct from town177385463 and keep source1124155543 absent/absorbed. New effectiveSoliman contains the source point and excludes INMbase465.",
+    "Preserve whole town/parent footprints, all current group IDs and inherited saved IDs. Do not assign whole localities by representative membership.",
+    "Bind truthful new source IDs/tags, canonical156254 القبلية, source context changes and all future exact metadata differences. No old contradictory source labels are silently copied as aliases.",
+    "The13 representative diagnostics keep12 defaults;156254 shifts467→458. Final packed coordinates/default must be independently assessed. INM/base anchors remain unchanged.",
+    "Actual source seams remain and old-coverage differences are recorded; no old-coverage grafts, source clipping, filling, repair or automatic area assignment. Unknown margins use demonstrated broader context, not invented neighborhoods.",
+    "Baddar/ElAitha lose old sector membership; Kharmia/Essabala have multiple sector claims until adjacent source review. Existing runtime unique-context fallback must remain honest.",
+    "Mraissa source is a qualified stroke-only area with one touching hole and separate original zero-area spur evidence. Final generation must retain the hole/contact/validity and checked encoded bytes."
+  ],
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/assemble_soliman_thirteen_native_source_stage_v2.py",
+    "sha256": "91bb4726eb10dcef523c761474a201fc9bb5608efee371efe950c7175d4bc3a7",
+    "bytes": 27918
+  }
+}

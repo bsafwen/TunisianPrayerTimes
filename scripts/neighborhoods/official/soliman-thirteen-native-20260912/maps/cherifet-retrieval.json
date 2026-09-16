@@ -1,0 +1,30 @@
+{
+  "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/الشريفات.pdf",
+  "finalUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%A7%D9%84%D8%B4%D8%B1%D9%8A%D9%81%D8%A7%D8%AA.pdf",
+  "retrievedAt": "2026-09-12T15:51:04.863588+00:00",
+  "status": 200,
+  "headers": {
+    "Date": "Sat, 12 Sep 2026 15:51:04 GMT",
+    "X-Backend": "web1-10.10.117.2",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-Content-Type-Options": "nosniff, nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "Last-Modified": "Tue, 17 Oct 2023 00:44:02 GMT",
+    "ETag": "\"15c70d-607ded1aa5880\"",
+    "Accept-Ranges": "bytes",
+    "Content-Length": "1427213",
+    "Content-Security-Policy": "frame-ancestors 'self';",
+    "Keep-Alive": "timeout=5, max=100",
+    "Connection": "Keep-Alive",
+    "Content-Type": "application/pdf"
+  },
+  "bodyFile": "cherifet.pdf",
+  "sha256": "fab1b73d8275448c7467c57f37e613439a1e1e444835e965d6a95155cb3b68f3",
+  "exactDiscoveryEntry": {
+    "text": "الشريفات.pdf",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/الشريفات.pdf",
+    "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/سليمان/الشريفات.pdf"
+  }
+}

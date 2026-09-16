@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "derived_provenance_relocation",
+  "isOriginalProvenanceBytes": false,
+  "originalProvenance": {
+    "file": "point-base-display-reviews/beni-mhira-successor-2026-09/isie-page87-original-derivation-provenance.json",
+    "sha256": "3082c148c5ed41cc2f4798c63eee10a396d624b7876f20897284a916043f3434"
+  },
+  "originalPdf": {
+    "file": "el-adbech-display-reviews/isie-ussd2022.pdf",
+    "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97"
+  },
+  "derivedText": {
+    "file": "point-base-display-reviews/beni-mhira-successor-2026-09/isie-ussd2022-page87-derived.txt",
+    "sha256": "aabf4d6ce8208656dfa526f5a9158ac6d466f9d35714d7b9a56be1bc48fa952b",
+    "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=87"
+  },
+  "originalUrl": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf",
+  "method": "PyMuPDF 1.28.2, document[86].get_text('text'), UTF-8 write, entire PDF page87 without replacements or reordering.",
+  "derivedTextIsOriginalResponseBytes": false,
+  "qualification": "Whole original page text is unchanged. This derivative only resolves the original PDF and text inside the source tree; original provenance bytes and their historical file paths remain separately preserved."
+}

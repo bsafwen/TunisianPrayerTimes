@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "method": "exact_property_scope_exclusion",
+  "id": "osm:way:237115723",
+  "originalTags": {
+    "addr:city": "Les Jardins d'El Menzah",
+    "addr:postcode": "2096",
+    "building:levels": "6",
+    "landuse": "residential",
+    "name": "إقامة البانوراميك",
+    "name:ar": "إقامة البانوراميك",
+    "name:fr": "Résidence Panoramique"
+  },
+  "currentRaw": {
+    "id": "osm:way:237115723",
+    "sourceId": "osm",
+    "name": "إقامة البانوراميك",
+    "aliases": [
+      "Résidence Panoramique"
+    ],
+    "kind": "residential",
+    "parentName": "الرفاهة",
+    "contextAliases": [
+      "Délégation Mnihla",
+      "Errafaha",
+      "Mnihla",
+      "الرفاهة",
+      "معتمدية منيهلة"
+    ],
+    "governorateId": 358,
+    "lat": 36.853108,
+    "lng": 10.132433,
+    "delegationId": 392,
+    "hasBoundary": true,
+    "bbox": [
+      10.131833,
+      36.852859,
+      10.133311,
+      36.853765
+    ],
+    "areaKm2": 0.007051567811464462,
+    "pickerGroupId": "osm:way:237115723",
+    "offset": 5393236,
+    "length": 76
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\source-review.json",
+    "sha256": "3fefe6fe48485716db5c7271b9ac6d01abdabfa5aeec3cdb4fb388218b2069c5"
+  },
+  "evidence": [
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/elyssimmo-panorama-current-original-derived-text.txt",
+      "sha256": "4eb95bbf89277e56724dc4425f0a30021b57d78bda1529d4803519c5d0a50d50",
+      "bytes": 9598
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/elyssimmo-panorama-current-original.html",
+      "sha256": "ad1b098cdc73e8715eb8e6999f862d68c80900b4ee8bbef618724e9aaf1cc87a",
+      "bytes": 178039
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/elyssimmo-panorama-original-derived-text.txt",
+      "sha256": "72849ea06599a1ad901dfdeecf8f9a29a49bbc8dca2c281c6c706385fbf9822f",
+      "bytes": 15491
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/elyssimmo-panorama-original.html",
+      "sha256": "acc72e6c78fd7c9448c9bd4f9e313da1fc8c7e21f70ef681f3db6643aa2a828e",
+      "bytes": 229437
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/gadri-home-original.html",
+      "sha256": "415ff807abb2fd49ce840d67bf14cb4d647e78afa9ab115c2b2dd8c8614928dd",
+      "bytes": 358
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/osm-way-237115723-current.json",
+      "sha256": "97262dc95565694101fdf8e2f29203e2d365efc12c5fa3a3774fcecc3f9e8855",
+      "bytes": 737
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/osm-way-237115723-full.json",
+      "sha256": "7af3a62f2d6c5ea071ef643b38cdd3b6b6c2bae962c43e0c914978e60af9e667",
+      "bytes": 1934
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/osm-way-237115723-history.json",
+      "sha256": "9fa4a0f410dd092c812dc42152adf0e869ca52468f15d81a71ffaa24622d69ae",
+      "bytes": 1592
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/retrieval-manifest.json",
+      "sha256": "1a1ca875d800c0b0f5e072fe6ddbe168e87506ed2fe0d61f5ca8c0ca5586e47e",
+      "bytes": 10146
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/source-review.json",
+      "sha256": "3fefe6fe48485716db5c7271b9ac6d01abdabfa5aeec3cdb4fb388218b2069c5",
+      "bytes": 38036
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/panoramique/tunisair-gazelle57-original.pdf",
+      "sha256": "8e348ec80dabcfcb8489307a0760cdc8a163caa77a1ce22f070dc70f856604b8",
+      "bytes": 9359616
+    }
+  ],
+  "phoneScopeReview": {
+    "file": "exclusion-reviews/six-properties-20260912/phone/six-properties-phone-scope-review-20260912.json",
+    "sha256": "e612982064923d6876634833b038a174378374ccbbfd1886c3078c132cf1f043",
+    "bytes": 11383
+  },
+  "phoneObservations": [
+    {
+      "record": {
+        "file": "exclusion-reviews/six-properties-20260912/phone/osm_way_237115723-1.json",
+        "sha256": "7a3db140fba05b83deabada9594c5eb7edd176119b749408743f7efa9548fbc7"
+      },
+      "finding": "Three separate Panorama/Panoramique results: lodging in Jardins Menzah 2, apartment complex in Jardins Menzah 1 and a social center. Do not equate their identities.",
+      "screenshotSha256": "437b7e90474e974806c0bd00a7e0bd1f593ee8311a816a05f772aabdd0748ae8"
+    },
+    {
+      "record": {
+        "file": "exclusion-reviews/six-properties-20260912/phone/osm_way_237115723-2.json",
+        "sha256": "1e0108f28986bbb70a71c95ce097472ed843e8c172edb42fdb5d54bc52302719"
+      },
+      "finding": "Coordinate query gives اقامة الحدائق و البانوراميك housing complex, V43J+8V9, 1 نهج خالد بن الوليد, with broader Jardins Menzah 1 context. It supports compound scope without certifying source geometry or the developer-ad identity.",
+      "screenshotSha256": "ea3640d62ee0b7dd1d2d3b762d4d4a39e4cbdedae78275f09efb5a3cbd362514"
+    }
+  ],
+  "classificationReason": "This exact source way was first mapped as a six-floor residential building and was retagged as residential landuse less than four minutes later without changing its way-node outline. The named apartment-property scale is additionally consistent with the Panorama Residence project material for Jardins d El Menzah 2. Exclude this property choice only; preserve all surrounding neighborhoods, administration and prayer references.",
+  "qualification": "The exact mapped property is excluded from locality choices. Supporting advertisements and Maps results do not certify a legal parcel or neighborhood boundary. No Google geometry copied.",
+  "preservation": "Remove only this singleton source object; preserve all named points, surrounding polygons, prayer coordinates and mappings, existing receipts, conflicts and saved names."
+}

@@ -1,0 +1,40 @@
+{
+  "key": "khanguet-el-hojjej",
+  "currentRawId": "osm:relation:7104933",
+  "currentCode": "156455",
+  "officialName": "خنقة الحجاج",
+  "officialRegistryRow": {
+    "governorateCode": "15",
+    "governorateFr": "Nabeul",
+    "governorateAr": "نابل",
+    "delegationCode": "1564",
+    "delegationFr": "Grombalia",
+    "delegationAr": "قرنبالية",
+    "sectorCode": "156455",
+    "sectorFr": "Khanguet el hojjej",
+    "sectorAr": "خنقة الحجاج",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14077,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 578,
+      "Nombre_de_menages_par_Secteurs.xlsx": 577
+    }
+  },
+  "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D8%AE%D9%86%D9%82%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AC%D8%A7%D8%AC.pdf",
+  "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D8%AE%D9%86%D9%82%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AC%D8%A7%D8%AC.pdf",
+  "retrievedAt": "2026-09-12T16:37:47.075546+00:00",
+  "exitCode": 0,
+  "httpStatus": "200",
+  "response": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/khanguet-el-hojjej.pdf",
+    "sha256": "88e5d0c527d10fc6837e5f7a5cbcc13b26cf40ae1dc1771b12382c6f5efd70c0",
+    "bytes": 1332791
+  },
+  "headers": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-five-outer-own-map-source-review/khanguet-el-hojjej.headers",
+    "sha256": "8125be0cf84f9752ede822b5af3a586844cefa5da28e0141f455cf0e7edd12ed",
+    "bytes": 560
+  },
+  "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.27M 100  1.27M   0      0  3.30M      0                              0\n100  1.27M 100  1.27M   0      0  3.30M      0                              0\n100  1.27M 100  1.27M   0      0  3.30M      0                              0\n",
+  "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+  "success": true
+}

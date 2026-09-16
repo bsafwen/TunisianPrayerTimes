@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "status": "FINITE_FACTS_READY_AKOUDA_STANDARD_METOUIA_EXTENSION_MSAKEN_OPTION_REQUIRED",
+  "baselineMetadataSha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea",
+  "generatorSha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+  "sourceReviews": {
+    "440": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-second-point-source-review.json",
+      "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab"
+    },
+    "1025": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\metouia-town-point-source-review.json",
+      "sha256": "01f445a84f52ea7adc67971c529bd4a663937c30727d6a6e707d00fea87cdccb"
+    },
+    "437": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\akouda-town-point-source-review.json",
+      "sha256": "ccd0b18aa939de386d92edede69a8a66d871d10bba08fbfa5bca33f2584adc2b"
+    }
+  },
+  "metouiaSourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\exact-metouia-town-source-facts.json",
+    "sha256": "6d6ff31fca3ca562be8b3f3b82690d5a8b3563c98aebbeee75a161a76ed52ea1"
+  },
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-metouia-akouda-geography-feasibility\\finite-source-group-facts.json",
+    "sha256": "91f4f5e8678cc03d814cd850b40e8a5d9d4bfa27a767d8a7b2da6f2edf2caf57"
+  },
+  "candidates": [
+    {
+      "id": "osm:node:6681328578",
+      "baseId": 440,
+      "schemaAssessment": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": "townPreservationExtension.retainedTownPoint",
+        "status": "BOUNDED_OPTION_REQUIRED_AND_FACTS_AVAILABLE",
+        "reason": "Current411a requires an empty target base group; preserve its existing automatic town owner and attach only the second village display. Root delegated optional schema implementation separately.",
+        "neededBeforeTargetMembers": [
+          "osm:node:287612727"
+        ],
+        "neededAfterTargetMembers": [
+          "osm:node:287612727",
+          "osm:node:6681328578"
+        ],
+        "membershipAdditionalRole": "retainedTown",
+        "completePickerGroups": "For the proposed option, bind exactly these before/after maps including the existing target group."
+      },
+      "officialSectors": 17,
+      "protectedRaw": 19,
+      "sourceStates": 21,
+      "multiMemberGroups": {},
+      "sourceNamePeers": {
+        "original": [
+          "osm:node:287612727",
+          "osm:node:6681328578",
+          "osm:relation:7150924"
+        ],
+        "effective": [
+          "osm:node:287612727",
+          "osm:node:6681328578",
+          "osm:relation:7150924"
+        ]
+      },
+      "touchingPickerRecords": [],
+      "referenceGuards": {
+        "point": {
+          "coordinate": {
+            "lat": 35.7252583,
+            "lng": 10.5832842
+          },
+          "nearest": {
+            "id": 440,
+            "kilometers": 0.6048831907713621
+          },
+          "runnerUp": {
+            "id": 593,
+            "kilometers": 8.81757099846035
+          }
+        },
+        "base": {
+          "coordinate": {
+            "lat": 35.73,
+            "lng": 10.58
+          },
+          "nearest": {
+            "id": 440,
+            "kilometers": 0.0
+          },
+          "runnerUp": {
+            "id": 593,
+            "kilometers": 9.2285328439592
+          }
+        },
+        "retainedTown": {
+          "coordinate": {
+            "lat": 35.7330411,
+            "lng": 10.5751923
+          },
+          "nearest": {
+            "id": 440,
+            "kilometers": 0.5501557569276764
+          },
+          "runnerUp": {
+            "id": 593,
+            "kilometers": 9.737020933725171
+          }
+        }
+      },
+      "onlyPossibleRawChange": {
+        "id": "osm:node:6681328578",
+        "field": "pickerGroupId",
+        "before": "osm:node:6681328578",
+        "after": "delegation:440"
+      }
+    },
+    {
+      "id": "osm:node:559400503",
+      "baseId": 1025,
+      "schemaAssessment": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": "townPreservationExtension",
+        "status": "EXISTING_EXTENSION_FEASIBLE",
+        "reason": "Preserve the whole Akarit sector/residential group, all three current official Metouia sectors and source-only delegation. Standard singleton format does not fit."
+      },
+      "officialSectors": 3,
+      "protectedRaw": 5,
+      "sourceStates": 7,
+      "multiMemberGroups": {
+        "osm:relation:7145378": [
+          "osm:relation:7145378",
+          "osm:way:158297973"
+        ]
+      },
+      "sourceNamePeers": {
+        "original": [
+          "osm:node:559400503",
+          "osm:relation:7145411"
+        ],
+        "effective": [
+          "osm:node:559400503",
+          "osm:relation:7145411"
+        ]
+      },
+      "touchingPickerRecords": [],
+      "referenceGuards": {
+        "point": {
+          "coordinate": {
+            "lat": 33.9589064,
+            "lng": 10.0014342
+          },
+          "nearest": {
+            "id": 1025,
+            "kilometers": 1.061549919619016
+          },
+          "runnerUp": {
+            "id": 1019,
+            "kilometers": 6.238716503823665
+          }
+        },
+        "base": {
+          "coordinate": {
+            "lat": 33.96,
+            "lng": 9.99
+          },
+          "nearest": {
+            "id": 1025,
+            "kilometers": 0.0
+          },
+          "runnerUp": {
+            "id": 1019,
+            "kilometers": 7.275917060663642
+          }
+        }
+      },
+      "onlyPossibleRawChange": {
+        "id": "osm:node:559400503",
+        "field": "pickerGroupId",
+        "before": "osm:node:559400503",
+        "after": "delegation:1025"
+      }
+    },
+    {
+      "id": "osm:node:1184918055",
+      "baseId": 437,
+      "schemaAssessment": {
+        "method": "reviewed_explicit_point_base_display_identity",
+        "extension": null,
+        "status": "EXISTING_STANDARD_FORMAT_FEASIBLE",
+        "reason": "Six singleton sectors; one common delegation and governorate; unchanged complete source-name peers; no curation or replacement."
+      },
+      "officialSectors": 6,
+      "protectedRaw": 7,
+      "sourceStates": 9,
+      "multiMemberGroups": {},
+      "sourceNamePeers": {
+        "original": [
+          "osm:node:1184918055",
+          "osm:relation:7150747"
+        ],
+        "effective": [
+          "osm:node:1184918055",
+          "osm:relation:7150747"
+        ]
+      },
+      "touchingPickerRecords": [],
+      "referenceGuards": {
+        "point": {
+          "coordinate": {
+            "lat": 35.8657303,
+            "lng": 10.5678382
+          },
+          "nearest": {
+            "id": 437,
+            "kilometers": 1.0593461935456288
+          },
+          "runnerUp": {
+            "id": 439,
+            "kilometers": 3.133317449302076
+          }
+        },
+        "base": {
+          "coordinate": {
+            "lat": 35.8747,
+            "lng": 10.5718
+          },
+          "nearest": {
+            "id": 437,
+            "kilometers": 0.0
+          },
+          "runnerUp": {
+            "id": 439,
+            "kilometers": 3.3158894527840297
+          }
+        }
+      },
+      "onlyPossibleRawChange": {
+        "id": "osm:node:1184918055",
+        "field": "pickerGroupId",
+        "before": "osm:node:1184918055",
+        "after": "delegation:437"
+      }
+    }
+  ],
+  "finiteScope": {
+    "currentOfficialSectors": 26,
+    "protectedRawRows": 31,
+    "completeSourceStates": 37,
+    "existingAutomaticTownOwnerPreserved": "osm:node:287612727",
+    "adjacentTransferredSectors": 4,
+    "adjacentCompleteRawRows": 5,
+    "referenceComparisons": 1806,
+    "conditionalOnlyRawChanges": [
+      {
+        "id": "osm:node:6681328578",
+        "field": "pickerGroupId",
+        "before": "osm:node:6681328578",
+        "after": "delegation:440"
+      },
+      {
+        "id": "osm:node:559400503",
+        "field": "pickerGroupId",
+        "before": "osm:node:559400503",
+        "after": "delegation:1025"
+      },
+      {
+        "id": "osm:node:1184918055",
+        "field": "pickerGroupId",
+        "before": "osm:node:1184918055",
+        "after": "delegation:437"
+      }
+    ],
+    "rawRows": [
+      3623,
+      3623
+    ],
+    "polygonCount": [
+      2719,
+      2719
+    ],
+    "rawGroups": [
+      3490,
+      3489
+    ],
+    "pickerRows": [
+      3563,
+      3560
+    ],
+    "eligiblePickerRows": [
+      3562,
+      3559
+    ],
+    "curations": [
+      158,
+      161
+    ],
+    "wholeBinaryTinyCoordinatesNamesKindsParentsDefaultsUnchanged": true
+  },
+  "sourcePhaseMethod": "Independently rebuilt cache originals; all77 accepted boundary source transforms; all current nameTags and exclusions. No product helpers used. No protected source has a replacement or curation; adjacent transferred sectors retain their exact administrative_context decisions.",
+  "limitations": [
+    "Display identity does not equate towns with entire delegation or any sector extent.",
+    "Metouia original delegation polygon retains its old scope; four current Ouedhref imadas remain excluded from Metouia official inventory.",
+    "Nearest prayer reference agreement is a preservation guard, not identity evidence."
+  ],
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "3fe99e0967cca8e16bbe01387147617382b53fc28f28cbac83844c657c23becd"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    }
+  ],
+  "notPerformed": [
+    "primary-source reopening",
+    "network",
+    "generator/helper",
+    "live edits",
+    "stage assembly",
+    "phone/ledger",
+    "tests/build"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_msaken_metouia_akouda_geography.py",
+    "sha256": "fa627cae8bb80e70ff5ade8d1b8547df5995c0366389d508f89e8c6805b1df3a"
+  }
+}

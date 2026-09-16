@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "method": "explicit_complete_page_text_provenance",
+  "records": [
+    {
+      "baseId": 485,
+      "originalPdf": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-sud-ouest.pdf",
+        "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasSDARECOsudOuestFR.pdf"
+      },
+      "originalPdfIsOriginalHttpResponseBytes": true,
+      "derivedUtf8": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-page-38.txt",
+        "sha256": "19f8370de49deb920ffb5d82211302fd42040e143ab06efb1bec40f1d64a7dea",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasSDARECOsudOuestFR.pdf"
+      },
+      "isOriginalHttpResponseBytes": false,
+      "pdfPage": 38,
+      "printedPage": 37,
+      "requiredText": [
+        "Les agglomérations se sont alors étendues",
+        "frontières et sahariennes : Hezoua, El Faouar,",
+        "VII/ LE RESEAU URBAIN REGIONAL"
+      ],
+      "derivationSource": {
+        "originalPdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-sud-ouest.pdf",
+          "sha256": "e76e357dd9438e8b64390d1e5e665042e3d95ff2ee2693388dc269480d37a598"
+        },
+        "derivedCompletePageText": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-38.txt",
+          "sha256": "19f8370de49deb920ffb5d82211302fd42040e143ab06efb1bec40f1d64a7dea"
+        },
+        "pdfPage": 38,
+        "printedPage": 37,
+        "isOriginalHttpResponseBytes": false,
+        "extractor": {
+          "library": "PyMuPDF",
+          "version": "1.28.2",
+          "operation": "document[page-1].get_text('text').encode('utf8')",
+          "normalization": "none",
+          "scope": "complete page"
+        },
+        "wholePageRender": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-faouar-town-point-source-review\\mehat-atlas-page-38.png",
+          "sha256": "eead08510d289fb13eeb4f348835b25aefd2ff8f3a1688501b98d0e6248ca732"
+        },
+        "personallyViewed": true
+      },
+      "independentOriginalPdfAndFullPageReview": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+        "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+      },
+      "qualification": "Original PDF bytes and explicitly derived complete-page UTF8 bytes have separate pins. The text file is not an HTTP response from the PDF URL."
+    },
+    {
+      "baseId": 526,
+      "originalPdf": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-kairouan-fr.pdf",
+        "sha256": "7b683b60e43de90b14d42b19cc7f4836594b3729ee1a9c993e47bd718bc92641",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf"
+      },
+      "originalPdfIsOriginalHttpResponseBytes": true,
+      "derivedUtf8": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/mehat-atlas-kairouan-page48.txt",
+        "sha256": "e4e820d35d2c5ba95fdfe94544c0c4550be8f529d04d911a310f50b67d79e06f",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf"
+      },
+      "isOriginalHttpResponseBytes": false,
+      "pdfPage": 48,
+      "printedPage": 47,
+      "requiredText": [
+        "Hajeb El Ayoun",
+        "Ville prise en charge"
+      ],
+      "derivationSource": {
+        "originalDerivation": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/hajeb-original-primary-page-derivation.json",
+          "sha256": "110f10ad4d9c5639860902275ee4cd9ba1b23ae0cc004bf0b641019d0cbf9edd"
+        },
+        "sourceDateQualification": "Cover personally inspected: Rapport définitif Mai2011. PDF file metadata was created/modified2015; current hosting path contains2024. This is historical city identity evidence, not a2024/2026 survey."
+      },
+      "independentOriginalPdfAndFullPageReview": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+        "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+      },
+      "qualification": "Original PDF bytes and explicitly derived complete-page UTF8 bytes have separate pins. The text file is not an HTTP response from the PDF URL."
+    }
+  ],
+  "independentReview": {
+    "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+    "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+  },
+  "noGeometryOrCoordinatesImported": true
+}

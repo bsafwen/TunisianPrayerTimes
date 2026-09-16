@@ -1,0 +1,2136 @@
+{
+  "status": "SIDI_HANI_EXISTING_SCHEMA_FEASIBLE_TEBOURSOUK_COMPLETE_GROUP_EXTENSION_REQUIRED",
+  "reviewedAt": "2026-09-12T12:20:54.410610+00:00",
+  "sourceReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df",
+    "bytes": 112460
+  },
+  "rootSourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\two-town-residential-root-scope-review-v2.json",
+    "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098",
+    "bytes": 7311
+  },
+  "finiteFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-residential-display-feasibility\\finite-source-schema-facts.json",
+    "sha256": "e8163672bd26da8e5c280c6ee0110986dab20dc543e3c6ab06ef140fddd27707",
+    "bytes": 107332
+  },
+  "baselineMetadataSha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+  "generatorSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "currentEpochCarry": {
+    "metadataSha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+    "curationCount": 168,
+    "all18SourceReportRawRowsUnchanged": true,
+    "additionalCurrentRawGroupMemberBound": "osm:way:218868212",
+    "oldSourceReportRemainsAtIts5eEpoch": true
+  },
+  "currentCheckpoint": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-borma-display-catalog-checkpoint.json",
+    "sha256": "48a1539e72026630bf03330069872396ce1f02007cce478f9d8ea87ffabe5208",
+    "bytes": 6305
+  },
+  "findings": [
+    {
+      "id": "osm:way:43944790",
+      "baseId": 441,
+      "decision": "Existing ordinary residential display method is sufficient.",
+      "method": "reviewed_residential_base_display_identity",
+      "finiteScope": {
+        "separateSectors": 6,
+        "protectedRaw": 7,
+        "sourceAssertions": 10,
+        "absorbedSourcePoint": "osm:node:558855437"
+      },
+      "conditions": "Use a truthful source-review wrapper and exact source facts; preserve the polygon, all six singleton sector groups, the absorbed village point as source-only evidence, and the legacy base outside the footprint. Source point is in Central sector and base is in South sector; ordinary contract requires common real delegation/governorate context, which both have."
+    },
+    {
+      "id": "osm:way:96369466",
+      "baseId": 518,
+      "decision": "Town identity supported, but the existing ordinary contract has a concrete complete-group limitation.",
+      "finiteScope": {
+        "separateSectors": 10,
+        "protectedRaw": 12,
+        "sourceAssertions": 15,
+        "absorbedSourcePoint": "osm:node:1116804955"
+      },
+      "preservedAinJemalaGroup": {
+        "id": "osm:relation:7189471",
+        "members": [
+          "osm:relation:7189471",
+          "osm:way:218868212"
+        ]
+      },
+      "blockingGuards": [
+        {
+          "owner": "apply_reviewed_residential_display_associations",
+          "location": "ordinary method, currently around line5255",
+          "condition": "any(groups.get(i) != {i} for i in sector_ids)"
+        },
+        {
+          "owner": "same ordinary method",
+          "location": "currently around line5260",
+          "condition": "source records must equal residential, absorbed point, delegation, governorate and sector IDs only; the extra residential group member is omitted by this fixed inventory"
+        },
+        {
+          "owner": "same ordinary method",
+          "location": "currently around lines5373-5381",
+          "condition": "final protected metadata and finalGroups are built from the residential plus sector singletons, so would not preserve the complete Ain Jemala group"
+        }
+      ],
+      "requiredNarrowFollowUp": "Design/review an explicit complete-sector-group preservation extension for the ordinary method: bind all twelve raw rows and fifteen source objects; retain the existing Ain Jemala group and all fields/packed geometry; reserve every group member; change only the Téboursouk residential pickerGroupId. Do not split Ain Jemala, omit its residential member or forge a singleton proof."
+    }
+  ],
+  "actualScope": {
+    "pairs": 2,
+    "officialSectors": 16,
+    "protectedRaw": 19,
+    "sourceAssertions": 25,
+    "absorbedSourcePoints": 2,
+    "rawFieldChanges": 2
+  },
+  "sourceAndGeometryQualification": {
+    "evidenceGapForInhabitedTownIdentity": false,
+    "sourceEpoch": "Original report and root review retain their historical 5e464382 snapshot. This review independently compared its eighteen scoped raw rows to current2fbbba54 and additionally bound Ain Jemala residential218868212 from the current catalog.",
+    "freshPublicPointResponses": "No new HTTP fetch. The two exact absorbed settlement nodes are genuine frozen extraction records and remain absent from raw metadata. The ordinary validator binds them from the pinned source rather than requiring new public node snapshots.",
+    "boundaries": "No source footprint, representative coordinate, legacy reference, sector label or nearest timetable is changed or newly certified as an exhaustive town boundary.",
+    "hashSerialization": "The source report hashes sorted original GeoJSON; compiler-compatible facts hash Shapely mapping in insertion order. Both hashes and their distinct derivation are explicit.",
+    "finiteNearestChecks": "Six role coordinates were compared with every coordinate-bearing catalog base; both targets have independently verified complete-month witnesses. This establishes their nearest usable target without redoing the country-wide matrix."
+  },
+  "manifestAppendDependencies": {
+    "inventoryStatus": "COMPLETE_FOR_CURRENTLY_ENFORCED_WHOLE_PICKER_PINS",
+    "activeManifest": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877",
+      "bytes": 554334
+    },
+    "exactOperativeChainCount": 2,
+    "chains": [
+      {
+        "ownerManifest": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+          "sha256": "db243ff335c30f833ce78b23d3d7d380931c1de2fa67c8c8583cf48ef61d52f6",
+          "bytes": 277520
+        },
+        "ownerDecisionIndex": 146,
+        "ownerId": "osm:node:264885332",
+        "ownerField": "pickerBaseDisplayReview",
+        "activeProof": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\town-preservation-2026-09\\624-official463526-reference32-reviewed-point-base-display-identity.json",
+          "sha256": "3db53b05e1f5ef89c8da5a5bfb1176b1dee1283960bfba83fe1aed09bf6a554d",
+          "bytes": 259111
+        },
+        "operativeKey": "townPreservationExtension.priorPickerBindings.manifest",
+        "activeWholePickerReference": {
+          "file": "reviewed-picker-groups.json",
+          "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877"
+        },
+        "preservedTouchingRecords": [
+          {
+            "section": "localRecords",
+            "id": "osm:way:1264348269",
+            "record": {
+              "id": "osm:way:1264348269",
+              "status": "eligible_proposal",
+              "method": "reviewed_two_patch_settlement",
+              "targetPickerGroupId": "osm:way:1264348270",
+              "expectedExistingMemberIds": [
+                "osm:way:1264348269"
+              ],
+              "expectedTargetMemberIds": [
+                "osm:way:1264348270"
+              ],
+              "expectedGovernorateId": 351,
+              "expectedParentName": "القلعة الشرقية",
+              "expectedDelegationId": 624,
+              "nameEvidence": {
+                "arabic": "قصر أولاد سلطان",
+                "latin": "Ksar Ouled Soltane"
+              },
+              "members": [
+                {
+                  "id": "osm:way:1264348269",
+                  "expectedMetadata": {
+                    "id": "osm:way:1264348269",
+                    "sourceId": "osm",
+                    "name": "قصر أولاد سلطان",
+                    "aliases": [
+                      "Ksar Ouled Soltane"
+                    ],
+                    "kind": "residential",
+                    "parentName": "القلعة الشرقية",
+                    "contextAliases": [
+                      "Délégation Tataouine Nord",
+                      "El Galaa Est",
+                      "القلعة الشرقية",
+                      "معتمدية تطاوين الشمالية"
+                    ],
+                    "governorateId": 351,
+                    "lat": 32.792254,
+                    "lng": 10.518313,
+                    "delegationId": 624,
+                    "hasBoundary": true,
+                    "bbox": [
+                      10.516506,
+                      32.789897,
+                      10.521192,
+                      32.794528
+                    ],
+                    "areaKm2": 0.11053746530568001,
+                    "pickerGroupId": "osm:way:1264348269"
+                  },
+                  "expectedOriginalTags": {
+                    "landuse": "residential",
+                    "name": "قصر أولاد سلطان",
+                    "name:ar": "قصر أولاد سلطان",
+                    "name:en": "Ksar Ouled Soltane"
+                  },
+                  "expectedEffectiveTags": {
+                    "landuse": "residential",
+                    "name": "قصر أولاد سلطان",
+                    "name:ar": "قصر أولاد سلطان",
+                    "name:en": "Ksar Ouled Soltane"
+                  },
+                  "expectedCuration": null,
+                  "originalGeometrySha256": "940014d4e203e51859a735e15722a78604370e77bf49d8533d7bb3cfd3f69675",
+                  "effectiveOriginalGeometrySha256": "940014d4e203e51859a735e15722a78604370e77bf49d8533d7bb3cfd3f69675",
+                  "packedGeometrySha256": "a7ce8c33641e2d3117cb8ac92052a108619897171cc1b4361818003ff582bdaf"
+                },
+                {
+                  "id": "osm:way:1264348270",
+                  "expectedMetadata": {
+                    "id": "osm:way:1264348270",
+                    "sourceId": "osm",
+                    "name": "قصر أولاد سلطان",
+                    "aliases": [
+                      "Ksar Ouled Soltane"
+                    ],
+                    "kind": "residential",
+                    "parentName": "القلعة الشرقية",
+                    "contextAliases": [
+                      "Délégation Tataouine Nord",
+                      "El Galaa Est",
+                      "القلعة الشرقية",
+                      "معتمدية تطاوين الشمالية"
+                    ],
+                    "governorateId": 351,
+                    "lat": 32.788021,
+                    "lng": 10.519467,
+                    "delegationId": 624,
+                    "hasBoundary": true,
+                    "bbox": [
+                      10.514313,
+                      32.786085,
+                      10.520198,
+                      32.789881
+                    ],
+                    "areaKm2": 0.064808399523089,
+                    "pickerGroupId": "osm:way:1264348270"
+                  },
+                  "expectedOriginalTags": {
+                    "landuse": "residential",
+                    "name": "قصر أولاد سلطان",
+                    "name:ar": "قصر أولاد سلطان",
+                    "name:en": "Ksar Ouled Soltane"
+                  },
+                  "expectedEffectiveTags": {
+                    "landuse": "residential",
+                    "name": "قصر أولاد سلطان",
+                    "name:ar": "قصر أولاد سلطان",
+                    "name:en": "Ksar Ouled Soltane"
+                  },
+                  "expectedCuration": null,
+                  "originalGeometrySha256": "49f36c15986a3d244d3656622c66913658e171b850616701b57378e57d4a90c8",
+                  "effectiveOriginalGeometrySha256": "49f36c15986a3d244d3656622c66913658e171b850616701b57378e57d4a90c8",
+                  "packedGeometrySha256": "aa6e118ee4cf3c92026570b92d4b595ad78f7d224acaeb791d9a48aa5f5ec0f0"
+                }
+              ],
+              "absorbedVillage": {
+                "id": "osm:node:11493025894",
+                "expectedAbsentFromRawCatalog": true,
+                "containedByMemberId": "osm:way:1264348270",
+                "coordinates": [
+                  10.5175137,
+                  32.7892277
+                ],
+                "expectedOriginalTags": {
+                  "name": "قصر أولاد سلطان",
+                  "name:aeb": "قصر أولاد سلطان",
+                  "name:ar": "قصر أولاد سلطان",
+                  "name:en": "Ksar Ouled Soltane",
+                  "place": "village"
+                },
+                "expectedEffectiveTags": {
+                  "name": "قصر أولاد سلطان",
+                  "name:aeb": "قصر أولاد سلطان",
+                  "name:ar": "قصر أولاد سلطان",
+                  "name:en": "Ksar Ouled Soltane",
+                  "place": "village"
+                },
+                "expectedCuration": null,
+                "pointGeometrySha256": "e4e80780b95355ad7528dbe0c6b3c1da2ae0fbe723cd88fa7d3b304171021dbd"
+              },
+              "exclusiveSupportingSourceIds": [
+                "osm:node:11493025894"
+              ],
+              "contexts": [
+                {
+                  "id": "osm:relation:7143835",
+                  "expectedKind": "sector",
+                  "expectedOriginalTags": {
+                    "admin_level": "6",
+                    "boundary": "administrative",
+                    "name": "القلعة الشرقية",
+                    "name:ar": "القلعة الشرقية",
+                    "name:fr": "El Galaa Est",
+                    "ref:tn:codegeo": "535163"
+                  },
+                  "expectedEffectiveTags": {
+                    "admin_level": "6",
+                    "boundary": "administrative",
+                    "name": "القلعة الشرقية",
+                    "name:ar": "القلعة الشرقية",
+                    "name:fr": "El Galaa Est",
+                    "ref:tn:codegeo": "535163"
+                  },
+                  "expectedCuration": null,
+                  "originalGeometrySha256": "39f289880ec242667133b96d213a6c0501adaa91bc7f636b80826ec5af6f92b8",
+                  "expectedMetadata": {
+                    "id": "osm:relation:7143835",
+                    "sourceId": "osm",
+                    "name": "القلعة الشرقية",
+                    "aliases": [
+                      "El Galaa Est"
+                    ],
+                    "kind": "sector",
+                    "parentName": "معتمدية تطاوين الشمالية",
+                    "contextAliases": [
+                      "Délégation Tataouine Nord",
+                      "معتمدية تطاوين الشمالية"
+                    ],
+                    "governorateId": 351,
+                    "lat": 32.656537,
+                    "lng": 10.600536,
+                    "delegationId": 1524,
+                    "hasBoundary": true,
+                    "bbox": [
+                      10.485971,
+                      32.477287,
+                      10.693157,
+                      32.828647
+                    ],
+                    "areaKm2": 393.1270263146737,
+                    "pickerGroupId": "osm:relation:7143835"
+                  },
+                  "packedGeometrySha256": "719b28a12f25ffa27b011e4eecf43bac118ee57bc18d04fb91f1d827b955c64d"
+                },
+                {
+                  "id": "osm:relation:7143811",
+                  "expectedKind": "delegation",
+                  "expectedOriginalTags": {
+                    "admin_level": "5",
+                    "boundary": "administrative",
+                    "name": "معتمدية تطاوين الشمالية",
+                    "name:ar": "معتمدية تطاوين الشمالية",
+                    "name:fr": "Délégation Tataouine Nord",
+                    "ref:tn:codegeo": "5351",
+                    "ref:tn:hasc_2": "TN.TA.TN",
+                    "sorting_name": "تطاوين الشمالية",
+                    "sorting_name:ar": "تطاوين الشمالية",
+                    "sorting_name:fr": "Tataouine Nord",
+                    "wikidata": "Q3516010",
+                    "wikipedia": "ar:معتمدية تطاوين الشمالية",
+                    "wikipedia:ar": "معتمدية تطاوين الشمالية"
+                  },
+                  "expectedEffectiveTags": {
+                    "admin_level": "5",
+                    "boundary": "administrative",
+                    "name": "معتمدية تطاوين الشمالية",
+                    "name:ar": "معتمدية تطاوين الشمالية",
+                    "name:fr": "Délégation Tataouine Nord",
+                    "ref:tn:codegeo": "5351",
+                    "ref:tn:hasc_2": "TN.TA.TN",
+                    "sorting_name": "تطاوين الشمالية",
+                    "sorting_name:ar": "تطاوين الشمالية",
+                    "sorting_name:fr": "Tataouine Nord",
+                    "wikidata": "Q3516010",
+                    "wikipedia": "ar:معتمدية تطاوين الشمالية",
+                    "wikipedia:ar": "معتمدية تطاوين الشمالية"
+                  },
+                  "expectedCuration": null,
+                  "originalGeometrySha256": "7821aa4f2fbe0333f3e7fed640a21b441dc7a3dfef662863d95c711b9c7fd397"
+                }
+              ],
+              "officialRegistry": {
+                "file": "ksar-two-patch-reviews/current-official-sector-registry.json",
+                "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+              },
+              "currentOfficialRecord": {
+                "governorateCode": "53",
+                "governorateFr": "Tataouine",
+                "governorateAr": "تطاوين",
+                "delegationCode": "5351",
+                "delegationFr": "Tataouine nord",
+                "delegationAr": "تطاوين الشمالية",
+                "sectorCode": "535163",
+                "sectorFr": "El galaa est",
+                "sectorAr": "القلعة الشرقية",
+                "sourceRows": {
+                  "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63815,
+                  "Nombre_de_Logements_par_Secteurs.xlsx": 3137,
+                  "Nombre_de_menages_par_Secteurs.xlsx": 3131
+                }
+              },
+              "expectedMatchingPlaceSourceIds": [
+                "osm:node:11493025894"
+              ],
+              "expectedMatchingResidentialSourceIds": [
+                "osm:way:1264348269",
+                "osm:way:1264348270"
+              ],
+              "excludedSameNameSourceIds": [
+                "osm:relation:2516832",
+                "osm:way:1394472968"
+              ],
+              "sourceFacts": {
+                "file": "ksar-two-patch-reviews/ksar-two-patch-current-facts.json",
+                "sha256": "b2b4e0b80941eff70de18a27424f7705c2a9d28aae508e08e600fa044261658d"
+              },
+              "sourceEditEvidence": [
+                {
+                  "role": "surveyed_village_creation",
+                  "changesetId": 145942126,
+                  "mapperId": "15169703",
+                  "metadata": {
+                    "file": "ksar-two-patch-reviews/changeset-145942126.xml",
+                    "sha256": "f78c05f3dc81c7131fef70e3fd3e9880110b1d8e170c6e9f53ba1ce6e86a835f"
+                  },
+                  "download": {
+                    "file": "ksar-two-patch-reviews/changeset-145942126-download.osc",
+                    "sha256": "c37b946c3a7d00a6c060ffdd39d91e497bbf09908e317f259b38409472b8b9c7"
+                  },
+                  "expectedTags": {
+                    "changesets_count": "3959",
+                    "comment": "supplementation of information, line correction",
+                    "created_by": "iD 2.27.3",
+                    "host": "https://www.openstreetmap.org/edit",
+                    "imagery_used": "Bing Maps Aerial",
+                    "locale": "cs",
+                    "source": "aerial imagery;survey"
+                  },
+                  "requiredEdits": [
+                    {
+                      "id": "osm:node:11493025894",
+                      "action": "create",
+                      "version": 1,
+                      "changeset": 145942126,
+                      "mapperId": "15169703",
+                      "tags": {
+                        "name": "Ksar Ouled Soltane",
+                        "name:aeb": "قصر أولاد سلطان",
+                        "place": "village"
+                      },
+                      "nodeReferences": [],
+                      "coordinates": [
+                        10.5175137,
+                        32.7892277
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "role": "joint_patch_creation",
+                  "changesetId": 148885304,
+                  "mapperId": "15169703",
+                  "metadata": {
+                    "file": "ksar-two-patch-reviews/creation-changeset.xml",
+                    "sha256": "bdb8105f896d8948f18832ced3e10e64e5a41bb06c86d2c27860531b1e49f71d"
+                  },
+                  "download": {
+                    "file": "ksar-two-patch-reviews/creation-changeset-objects.osc",
+                    "sha256": "39ffe1fa73415e2a4e4506bfa471f6fce2338c34e0c2f1ff45278649d0a53890"
+                  },
+                  "expectedTags": {
+                    "changesets_count": "4201",
+                    "comment": "supplementation of information, line correction",
+                    "created_by": "iD 2.28.1",
+                    "host": "https://www.openstreetmap.org/edit",
+                    "imagery_used": "Bing Maps Aerial",
+                    "locale": "cs",
+                    "source": "aerial imagery"
+                  },
+                  "requiredEdits": [
+                    {
+                      "id": "osm:way:1264348269",
+                      "action": "create",
+                      "version": 1,
+                      "changeset": 148885304,
+                      "mapperId": "15169703",
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746808018",
+                        "11746808019",
+                        "11746860587",
+                        "11746808020",
+                        "11746808021",
+                        "11746808022",
+                        "11746808023",
+                        "11746860588",
+                        "11746860589",
+                        "11746860590",
+                        "11746860591",
+                        "11746808024",
+                        "11746808025",
+                        "11746808026",
+                        "11746808027",
+                        "11746808028",
+                        "11746808029",
+                        "11746808030",
+                        "11746808031",
+                        "11746808032",
+                        "11746808033",
+                        "11746808034",
+                        "11746808035",
+                        "11746808036",
+                        "11746808037",
+                        "11746808038",
+                        "11746860592",
+                        "11746860593",
+                        "11746808039",
+                        "11746808040",
+                        "11746808041",
+                        "11746860594",
+                        "11746808042",
+                        "11746808043",
+                        "11746808044",
+                        "11746808045",
+                        "11746860595",
+                        "11746808046",
+                        "11746808047",
+                        "11746860596",
+                        "11746808048",
+                        "11746860597",
+                        "11746808049",
+                        "11746808050",
+                        "11746808051",
+                        "11746808052",
+                        "11746808053",
+                        "11746808054",
+                        "11746860599",
+                        "11746808055",
+                        "11746860598",
+                        "11746808056",
+                        "11746860600",
+                        "11746808057",
+                        "11746860601",
+                        "11746808058",
+                        "11746808059",
+                        "11746808060",
+                        "11746808061",
+                        "11746808062",
+                        "11746808063",
+                        "11746860602",
+                        "11746808064",
+                        "11746808065",
+                        "11746860603",
+                        "11746860604",
+                        "11746808066",
+                        "11746808067",
+                        "11746808068",
+                        "11746860605",
+                        "11746860569",
+                        "11746860570",
+                        "11746860606",
+                        "11746860571",
+                        "11746860572",
+                        "11746860573",
+                        "11746860574",
+                        "11746860575",
+                        "11746860576",
+                        "11746860577",
+                        "11746860578",
+                        "11746860607",
+                        "11746860579",
+                        "11746860608",
+                        "11746860609",
+                        "11746860580",
+                        "11746860581",
+                        "11746860582",
+                        "11746860583",
+                        "11746860584",
+                        "11746860585",
+                        "11746860586",
+                        "11746860610",
+                        "11746808018"
+                      ],
+                      "coordinates": null
+                    },
+                    {
+                      "id": "osm:way:1264348270",
+                      "action": "create",
+                      "version": 1,
+                      "changeset": 148885304,
+                      "mapperId": "15169703",
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746860611",
+                        "11746860676",
+                        "11746860675",
+                        "11746860612",
+                        "11746860613",
+                        "11746860614",
+                        "11746860615",
+                        "11746860616",
+                        "11746860617",
+                        "11746860618",
+                        "11746860619",
+                        "11746860620",
+                        "11746860621",
+                        "11746860622",
+                        "11746860623",
+                        "11746860624",
+                        "11746860625",
+                        "11746860626",
+                        "11746860627",
+                        "11746860628",
+                        "11746860629",
+                        "11746860630",
+                        "11746860730",
+                        "11746860731",
+                        "11746860729",
+                        "11746860631",
+                        "11746860728",
+                        "11746860632",
+                        "11746860633",
+                        "11746860634",
+                        "11746860635",
+                        "11746860636",
+                        "11746860727",
+                        "11746860726",
+                        "11746860637",
+                        "11746860638",
+                        "11746860639",
+                        "11746860725",
+                        "11746860724",
+                        "11746860723",
+                        "11746860640",
+                        "11746860641",
+                        "11746860722",
+                        "11746860642",
+                        "11746860643",
+                        "11746860644",
+                        "11746860721",
+                        "11746860720",
+                        "11746860719",
+                        "11746860645",
+                        "11746860646",
+                        "11746860718",
+                        "11746860717",
+                        "11746860647",
+                        "11746860716",
+                        "11746860648",
+                        "11746860715",
+                        "11746860649",
+                        "11746860650",
+                        "11746860714",
+                        "11746860713",
+                        "11746860651",
+                        "11746860652",
+                        "11746860653",
+                        "11746860712",
+                        "11746860654",
+                        "11746860711",
+                        "11746860655",
+                        "11746860710",
+                        "11746860709",
+                        "11746860708",
+                        "11746860656",
+                        "11746860707",
+                        "11746860657",
+                        "11746860658",
+                        "11746860706",
+                        "11746860705",
+                        "11746860704",
+                        "11746860659",
+                        "11746860660",
+                        "11746860661",
+                        "11746860662",
+                        "11746860683",
+                        "11746860682",
+                        "11746860681",
+                        "11746860663",
+                        "11746860680",
+                        "11746860679",
+                        "11746860678",
+                        "11746860677",
+                        "11746860611"
+                      ],
+                      "coordinates": null
+                    }
+                  ]
+                },
+                {
+                  "role": "duplicate_label_discussion",
+                  "changesetId": 177353601,
+                  "mapperId": "16642036",
+                  "metadata": {
+                    "file": "ksar-two-patch-reviews/changeset-177353601.xml",
+                    "sha256": "5e4b6664f80c5cd35a9e478803b2b6999f8426adc6c633d202b7be0040156637"
+                  },
+                  "download": {
+                    "file": "ksar-two-patch-reviews/changeset-177353601-download.osc",
+                    "sha256": "003532fe08be2812c82a252b8310c864146d6e8e7626d2cadb2f9265c878a15c"
+                  },
+                  "expectedTags": {
+                    "changesets_count": "1409",
+                    "comment": "Missing names added",
+                    "created_by": "iD 2.37.3",
+                    "host": "https://www.openstreetmap.org/edit",
+                    "imagery_used": "OpenStreetMap (Standard)",
+                    "locale": "ar"
+                  },
+                  "requiredEdits": [
+                    {
+                      "id": "osm:node:11493025894",
+                      "action": "modify",
+                      "version": 2,
+                      "changeset": 177353601,
+                      "mapperId": "16642036",
+                      "tags": {
+                        "name": "قصر أولاد سلطان",
+                        "name:aeb": "قصر أولاد سلطان",
+                        "name:ar": "قصر أولاد سلطان",
+                        "name:en": "Ksar Ouled Soltane",
+                        "place": "village"
+                      },
+                      "nodeReferences": [],
+                      "coordinates": [
+                        10.5175137,
+                        32.7892277
+                      ]
+                    },
+                    {
+                      "id": "osm:way:1264348269",
+                      "action": "modify",
+                      "version": 2,
+                      "changeset": 177353601,
+                      "mapperId": "16642036",
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "قصر أولاد سلطان",
+                        "name:ar": "قصر أولاد سلطان",
+                        "name:en": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746808018",
+                        "11746808019",
+                        "11746860587",
+                        "11746808020",
+                        "11746808021",
+                        "11746808022",
+                        "11746808023",
+                        "11746860588",
+                        "11746860589",
+                        "11746860590",
+                        "11746860591",
+                        "11746808024",
+                        "11746808025",
+                        "11746808026",
+                        "11746808027",
+                        "11746808028",
+                        "11746808029",
+                        "11746808030",
+                        "11746808031",
+                        "11746808032",
+                        "11746808033",
+                        "11746808034",
+                        "11746808035",
+                        "11746808036",
+                        "11746808037",
+                        "11746808038",
+                        "11746860592",
+                        "11746860593",
+                        "11746808039",
+                        "11746808040",
+                        "11746808041",
+                        "11746860594",
+                        "11746808042",
+                        "11746808043",
+                        "11746808044",
+                        "11746808045",
+                        "11746860595",
+                        "11746808046",
+                        "11746808047",
+                        "11746860596",
+                        "11746808048",
+                        "11746860597",
+                        "11746808049",
+                        "11746808050",
+                        "11746808051",
+                        "11746808052",
+                        "11746808053",
+                        "11746808054",
+                        "11746860599",
+                        "11746808055",
+                        "11746860598",
+                        "11746808056",
+                        "11746860600",
+                        "11746808057",
+                        "11746860601",
+                        "11746808058",
+                        "11746808059",
+                        "11746808060",
+                        "11746808061",
+                        "11746808062",
+                        "11746808063",
+                        "11746860602",
+                        "11746808064",
+                        "11746808065",
+                        "11746860603",
+                        "11746860604",
+                        "11746808066",
+                        "11746808067",
+                        "11746808068",
+                        "11746860605",
+                        "11746860569",
+                        "11746860570",
+                        "11746860606",
+                        "11746860571",
+                        "11746860572",
+                        "11746860573",
+                        "11746860574",
+                        "11746860575",
+                        "11746860576",
+                        "11746860577",
+                        "11746860578",
+                        "11746860607",
+                        "11746860579",
+                        "11746860608",
+                        "11746860609",
+                        "11746860580",
+                        "11746860581",
+                        "11746860582",
+                        "11746860583",
+                        "11746860584",
+                        "11746860585",
+                        "11746860586",
+                        "11746860610",
+                        "11746808018"
+                      ],
+                      "coordinates": null
+                    },
+                    {
+                      "id": "osm:way:1264348270",
+                      "action": "modify",
+                      "version": 2,
+                      "changeset": 177353601,
+                      "mapperId": "16642036",
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "قصر أولاد سلطان",
+                        "name:ar": "قصر أولاد سلطان",
+                        "name:en": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746860611",
+                        "11746860676",
+                        "11746860675",
+                        "11746860612",
+                        "11746860613",
+                        "11746860614",
+                        "11746860615",
+                        "11746860616",
+                        "11746860617",
+                        "11746860618",
+                        "11746860619",
+                        "11746860620",
+                        "11746860621",
+                        "11746860622",
+                        "11746860623",
+                        "11746860624",
+                        "11746860625",
+                        "11746860626",
+                        "11746860627",
+                        "11746860628",
+                        "11746860629",
+                        "11746860630",
+                        "11746860730",
+                        "11746860731",
+                        "11746860729",
+                        "11746860631",
+                        "11746860728",
+                        "11746860632",
+                        "11746860633",
+                        "11746860634",
+                        "11746860635",
+                        "11746860636",
+                        "11746860727",
+                        "11746860726",
+                        "11746860637",
+                        "11746860638",
+                        "11746860639",
+                        "11746860725",
+                        "11746860724",
+                        "11746860723",
+                        "11746860640",
+                        "11746860641",
+                        "11746860722",
+                        "11746860642",
+                        "11746860643",
+                        "11746860644",
+                        "11746860721",
+                        "11746860720",
+                        "11746860719",
+                        "11746860645",
+                        "11746860646",
+                        "11746860718",
+                        "11746860717",
+                        "11746860647",
+                        "11746860716",
+                        "11746860648",
+                        "11746860715",
+                        "11746860649",
+                        "11746860650",
+                        "11746860714",
+                        "11746860713",
+                        "11746860651",
+                        "11746860652",
+                        "11746860653",
+                        "11746860712",
+                        "11746860654",
+                        "11746860711",
+                        "11746860655",
+                        "11746860710",
+                        "11746860709",
+                        "11746860708",
+                        "11746860656",
+                        "11746860707",
+                        "11746860657",
+                        "11746860658",
+                        "11746860706",
+                        "11746860705",
+                        "11746860704",
+                        "11746860659",
+                        "11746860660",
+                        "11746860661",
+                        "11746860662",
+                        "11746860683",
+                        "11746860682",
+                        "11746860681",
+                        "11746860663",
+                        "11746860680",
+                        "11746860679",
+                        "11746860678",
+                        "11746860677",
+                        "11746860611"
+                      ],
+                      "coordinates": null
+                    }
+                  ],
+                  "discussion": [
+                    {
+                      "id": "1542534",
+                      "mapperId": "23603490",
+                      "textSha256": "c541802322a4d6e9bd674d478a98962e6ba2d0cc7bf20fd58139f09743e578b0"
+                    },
+                    {
+                      "id": "1543720",
+                      "mapperId": "16642036",
+                      "textSha256": "ff372e786be575e61bd380e9b953e8a1e47b74df22e0e51812ffe2728da5a1b2"
+                    },
+                    {
+                      "id": "1544462",
+                      "mapperId": "23603490",
+                      "textSha256": "5fadf5b794d6795506c3db8ea445ca8faf4220ae58aa056a4c9a6ebc4169c534"
+                    }
+                  ]
+                }
+              ],
+              "sourceHistories": [
+                {
+                  "id": "osm:way:1264348269",
+                  "reference": {
+                    "file": "ksar-two-patch-reviews/north-history.xml",
+                    "sha256": "9910c6695327c85ca74430fc7c77ba1c59d42169d98a4fe962a5bcdb7480d215"
+                  },
+                  "records": [
+                    {
+                      "version": 1,
+                      "changeset": 148885304,
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746808018",
+                        "11746808019",
+                        "11746860587",
+                        "11746808020",
+                        "11746808021",
+                        "11746808022",
+                        "11746808023",
+                        "11746860588",
+                        "11746860589",
+                        "11746860590",
+                        "11746860591",
+                        "11746808024",
+                        "11746808025",
+                        "11746808026",
+                        "11746808027",
+                        "11746808028",
+                        "11746808029",
+                        "11746808030",
+                        "11746808031",
+                        "11746808032",
+                        "11746808033",
+                        "11746808034",
+                        "11746808035",
+                        "11746808036",
+                        "11746808037",
+                        "11746808038",
+                        "11746860592",
+                        "11746860593",
+                        "11746808039",
+                        "11746808040",
+                        "11746808041",
+                        "11746860594",
+                        "11746808042",
+                        "11746808043",
+                        "11746808044",
+                        "11746808045",
+                        "11746860595",
+                        "11746808046",
+                        "11746808047",
+                        "11746860596",
+                        "11746808048",
+                        "11746860597",
+                        "11746808049",
+                        "11746808050",
+                        "11746808051",
+                        "11746808052",
+                        "11746808053",
+                        "11746808054",
+                        "11746860599",
+                        "11746808055",
+                        "11746860598",
+                        "11746808056",
+                        "11746860600",
+                        "11746808057",
+                        "11746860601",
+                        "11746808058",
+                        "11746808059",
+                        "11746808060",
+                        "11746808061",
+                        "11746808062",
+                        "11746808063",
+                        "11746860602",
+                        "11746808064",
+                        "11746808065",
+                        "11746860603",
+                        "11746860604",
+                        "11746808066",
+                        "11746808067",
+                        "11746808068",
+                        "11746860605",
+                        "11746860569",
+                        "11746860570",
+                        "11746860606",
+                        "11746860571",
+                        "11746860572",
+                        "11746860573",
+                        "11746860574",
+                        "11746860575",
+                        "11746860576",
+                        "11746860577",
+                        "11746860578",
+                        "11746860607",
+                        "11746860579",
+                        "11746860608",
+                        "11746860609",
+                        "11746860580",
+                        "11746860581",
+                        "11746860582",
+                        "11746860583",
+                        "11746860584",
+                        "11746860585",
+                        "11746860586",
+                        "11746860610",
+                        "11746808018"
+                      ],
+                      "coordinates": null
+                    },
+                    {
+                      "version": 2,
+                      "changeset": 177353601,
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "قصر أولاد سلطان",
+                        "name:ar": "قصر أولاد سلطان",
+                        "name:en": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746808018",
+                        "11746808019",
+                        "11746860587",
+                        "11746808020",
+                        "11746808021",
+                        "11746808022",
+                        "11746808023",
+                        "11746860588",
+                        "11746860589",
+                        "11746860590",
+                        "11746860591",
+                        "11746808024",
+                        "11746808025",
+                        "11746808026",
+                        "11746808027",
+                        "11746808028",
+                        "11746808029",
+                        "11746808030",
+                        "11746808031",
+                        "11746808032",
+                        "11746808033",
+                        "11746808034",
+                        "11746808035",
+                        "11746808036",
+                        "11746808037",
+                        "11746808038",
+                        "11746860592",
+                        "11746860593",
+                        "11746808039",
+                        "11746808040",
+                        "11746808041",
+                        "11746860594",
+                        "11746808042",
+                        "11746808043",
+                        "11746808044",
+                        "11746808045",
+                        "11746860595",
+                        "11746808046",
+                        "11746808047",
+                        "11746860596",
+                        "11746808048",
+                        "11746860597",
+                        "11746808049",
+                        "11746808050",
+                        "11746808051",
+                        "11746808052",
+                        "11746808053",
+                        "11746808054",
+                        "11746860599",
+                        "11746808055",
+                        "11746860598",
+                        "11746808056",
+                        "11746860600",
+                        "11746808057",
+                        "11746860601",
+                        "11746808058",
+                        "11746808059",
+                        "11746808060",
+                        "11746808061",
+                        "11746808062",
+                        "11746808063",
+                        "11746860602",
+                        "11746808064",
+                        "11746808065",
+                        "11746860603",
+                        "11746860604",
+                        "11746808066",
+                        "11746808067",
+                        "11746808068",
+                        "11746860605",
+                        "11746860569",
+                        "11746860570",
+                        "11746860606",
+                        "11746860571",
+                        "11746860572",
+                        "11746860573",
+                        "11746860574",
+                        "11746860575",
+                        "11746860576",
+                        "11746860577",
+                        "11746860578",
+                        "11746860607",
+                        "11746860579",
+                        "11746860608",
+                        "11746860609",
+                        "11746860580",
+                        "11746860581",
+                        "11746860582",
+                        "11746860583",
+                        "11746860584",
+                        "11746860585",
+                        "11746860586",
+                        "11746860610",
+                        "11746808018"
+                      ],
+                      "coordinates": null
+                    }
+                  ]
+                },
+                {
+                  "id": "osm:way:1264348270",
+                  "reference": {
+                    "file": "ksar-two-patch-reviews/south-history.xml",
+                    "sha256": "faf6519eadfb5ec16f67fd92fcaee1342baecdda87461f0cba713b230f714dd5"
+                  },
+                  "records": [
+                    {
+                      "version": 1,
+                      "changeset": 148885304,
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746860611",
+                        "11746860676",
+                        "11746860675",
+                        "11746860612",
+                        "11746860613",
+                        "11746860614",
+                        "11746860615",
+                        "11746860616",
+                        "11746860617",
+                        "11746860618",
+                        "11746860619",
+                        "11746860620",
+                        "11746860621",
+                        "11746860622",
+                        "11746860623",
+                        "11746860624",
+                        "11746860625",
+                        "11746860626",
+                        "11746860627",
+                        "11746860628",
+                        "11746860629",
+                        "11746860630",
+                        "11746860730",
+                        "11746860731",
+                        "11746860729",
+                        "11746860631",
+                        "11746860728",
+                        "11746860632",
+                        "11746860633",
+                        "11746860634",
+                        "11746860635",
+                        "11746860636",
+                        "11746860727",
+                        "11746860726",
+                        "11746860637",
+                        "11746860638",
+                        "11746860639",
+                        "11746860725",
+                        "11746860724",
+                        "11746860723",
+                        "11746860640",
+                        "11746860641",
+                        "11746860722",
+                        "11746860642",
+                        "11746860643",
+                        "11746860644",
+                        "11746860721",
+                        "11746860720",
+                        "11746860719",
+                        "11746860645",
+                        "11746860646",
+                        "11746860718",
+                        "11746860717",
+                        "11746860647",
+                        "11746860716",
+                        "11746860648",
+                        "11746860715",
+                        "11746860649",
+                        "11746860650",
+                        "11746860714",
+                        "11746860713",
+                        "11746860651",
+                        "11746860652",
+                        "11746860653",
+                        "11746860712",
+                        "11746860654",
+                        "11746860711",
+                        "11746860655",
+                        "11746860710",
+                        "11746860709",
+                        "11746860708",
+                        "11746860656",
+                        "11746860707",
+                        "11746860657",
+                        "11746860658",
+                        "11746860706",
+                        "11746860705",
+                        "11746860704",
+                        "11746860659",
+                        "11746860660",
+                        "11746860661",
+                        "11746860662",
+                        "11746860683",
+                        "11746860682",
+                        "11746860681",
+                        "11746860663",
+                        "11746860680",
+                        "11746860679",
+                        "11746860678",
+                        "11746860677",
+                        "11746860611"
+                      ],
+                      "coordinates": null
+                    },
+                    {
+                      "version": 2,
+                      "changeset": 177353601,
+                      "tags": {
+                        "landuse": "residential",
+                        "name": "قصر أولاد سلطان",
+                        "name:ar": "قصر أولاد سلطان",
+                        "name:en": "Ksar Ouled Soltane"
+                      },
+                      "nodeReferences": [
+                        "11746860611",
+                        "11746860676",
+                        "11746860675",
+                        "11746860612",
+                        "11746860613",
+                        "11746860614",
+                        "11746860615",
+                        "11746860616",
+                        "11746860617",
+                        "11746860618",
+                        "11746860619",
+                        "11746860620",
+                        "11746860621",
+                        "11746860622",
+                        "11746860623",
+                        "11746860624",
+                        "11746860625",
+                        "11746860626",
+                        "11746860627",
+                        "11746860628",
+                        "11746860629",
+                        "11746860630",
+                        "11746860730",
+                        "11746860731",
+                        "11746860729",
+                        "11746860631",
+                        "11746860728",
+                        "11746860632",
+                        "11746860633",
+                        "11746860634",
+                        "11746860635",
+                        "11746860636",
+                        "11746860727",
+                        "11746860726",
+                        "11746860637",
+                        "11746860638",
+                        "11746860639",
+                        "11746860725",
+                        "11746860724",
+                        "11746860723",
+                        "11746860640",
+                        "11746860641",
+                        "11746860722",
+                        "11746860642",
+                        "11746860643",
+                        "11746860644",
+                        "11746860721",
+                        "11746860720",
+                        "11746860719",
+                        "11746860645",
+                        "11746860646",
+                        "11746860718",
+                        "11746860717",
+                        "11746860647",
+                        "11746860716",
+                        "11746860648",
+                        "11746860715",
+                        "11746860649",
+                        "11746860650",
+                        "11746860714",
+                        "11746860713",
+                        "11746860651",
+                        "11746860652",
+                        "11746860653",
+                        "11746860712",
+                        "11746860654",
+                        "11746860711",
+                        "11746860655",
+                        "11746860710",
+                        "11746860709",
+                        "11746860708",
+                        "11746860656",
+                        "11746860707",
+                        "11746860657",
+                        "11746860658",
+                        "11746860706",
+                        "11746860705",
+                        "11746860704",
+                        "11746860659",
+                        "11746860660",
+                        "11746860661",
+                        "11746860662",
+                        "11746860683",
+                        "11746860682",
+                        "11746860681",
+                        "11746860663",
+                        "11746860680",
+                        "11746860679",
+                        "11746860678",
+                        "11746860677",
+                        "11746860611"
+                      ],
+                      "coordinates": null
+                    }
+                  ]
+                },
+                {
+                  "id": "osm:node:11493025894",
+                  "reference": {
+                    "file": "ksar-two-patch-reviews/village-history.xml",
+                    "sha256": "852b1757c569327f9d403c18e8520635b80c28ff41cb9a7cb29c2a442ea7bd6d"
+                  },
+                  "records": [
+                    {
+                      "version": 1,
+                      "changeset": 145942126,
+                      "tags": {
+                        "name": "Ksar Ouled Soltane",
+                        "name:aeb": "قصر أولاد سلطان",
+                        "place": "village"
+                      },
+                      "nodeReferences": [],
+                      "coordinates": [
+                        10.5175137,
+                        32.7892277
+                      ]
+                    },
+                    {
+                      "version": 2,
+                      "changeset": 177353601,
+                      "tags": {
+                        "name": "قصر أولاد سلطان",
+                        "name:aeb": "قصر أولاد سلطان",
+                        "name:ar": "قصر أولاد سلطان",
+                        "name:en": "Ksar Ouled Soltane",
+                        "place": "village"
+                      },
+                      "nodeReferences": [],
+                      "coordinates": [
+                        10.5175137,
+                        32.7892277
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "primaryDocuments": [
+                {
+                  "file": "ksar-two-patch-reviews/municipal-localities-2024.html",
+                  "sha256": "09171609cd6e27331461ead8c7fa88dcc9cd7108d0b4f2e49a03765a275f3e91"
+                },
+                {
+                  "file": "ksar-two-patch-reviews/municipal-planning-inquiry-2026.html",
+                  "sha256": "8b58ca9292a04cf30e277215e6f65ad8060e9cddec174d8b6c2b0e6ffc63d19d"
+                }
+              ],
+              "researchEvidence": [
+                {
+                  "file": "ksar-two-patch-reviews/ksar-ouled-soltane-source-chain-review.json",
+                  "sha256": "478bae19152b68e6eedb3e86be92e33312a5b2976539f82b6f0af5da45148260"
+                },
+                {
+                  "file": "ksar-two-patch-reviews/ksar-ouled-soltane-source-chain-independent-review.json",
+                  "sha256": "2d01926c2391b18202d4276540783989af7e35a55b20638c6a25602da32463cc"
+                }
+              ],
+              "scope": "Display association only; both current raw polygons, coordinates, names, contexts and source624 remain unchanged. The absorbed village is supporting identity, not restored. Historic fortress and mosque remain excluded. Creation/current vertex differences3/9 are acknowledged; only exact current source geometry is pinned."
+            }
+          },
+          {
+            "section": "localRecords",
+            "id": "osm:way:377996284",
+            "record": {
+              "id": "osm:way:377996284",
+              "method": "reviewed_primary_source_named_settlement",
+              "targetPickerGroupId": "osm:node:11525318199",
+              "expectedExistingMemberIds": [
+                "osm:way:377996284"
+              ],
+              "expectedTargetMemberIds": [
+                "osm:node:11525318199"
+              ],
+              "expectedGovernorateId": 351,
+              "expectedParentName": "رأس الوادي",
+              "expectedContextAliases": [
+                "Délégation Tataouine Sud",
+                "Ras El Oued",
+                "Tataouine Sud",
+                "رأس الوادي",
+                "معتمدية تطاوين الجنوبية"
+              ],
+              "expectedDelegationId": 624,
+              "status": "eligible_proposal",
+              "approvalScope": "Isolated proof proposal for the existing guarded method; no current catalog change or generation.",
+              "members": [
+                {
+                  "id": "osm:way:377996284",
+                  "expectedKind": "residential",
+                  "expectedSourceId": "osm",
+                  "expectedName": "طويل أولاد زايد",
+                  "expectedAliases": [
+                    "Touil Ouled Zayed"
+                  ],
+                  "expectedContextAliases": [
+                    "Délégation Tataouine Sud",
+                    "Ras El Oued",
+                    "Tataouine Sud",
+                    "رأس الوادي",
+                    "معتمدية تطاوين الجنوبية"
+                  ],
+                  "expectedLat": 32.766158,
+                  "expectedLng": 10.265125,
+                  "expectedOriginalTags": {
+                    "landuse": "residential",
+                    "name": "طويل أولاد زايد",
+                    "name:ar": "طويل أولاد زايد",
+                    "name:fr": "Touil Ouled Zayed"
+                  },
+                  "expectedEffectiveTags": {
+                    "landuse": "residential",
+                    "name": "طويل أولاد زايد",
+                    "name:ar": "طويل أولاد زايد",
+                    "name:fr": "Touil Ouled Zayed"
+                  },
+                  "expectedCuration": null,
+                  "originalGeometrySha256": "5063ccdb840da4d24c78f72a98b3a6f3a1644c4bfe10dbf6f36f4bf4325d07e7",
+                  "effectiveOriginalGeometrySha256": "5063ccdb840da4d24c78f72a98b3a6f3a1644c4bfe10dbf6f36f4bf4325d07e7",
+                  "packedGeometrySha256": "ce3e4b625d73393f336201c30b9dec22e930d15bc4524010851badba92873171"
+                },
+                {
+                  "id": "osm:node:11525318199",
+                  "expectedKind": "hamlet",
+                  "expectedSourceId": "osm",
+                  "expectedName": "طويل أولاد زايد",
+                  "expectedAliases": [
+                    "Touil Ouled Zayed"
+                  ],
+                  "expectedContextAliases": [
+                    "Délégation Tataouine Sud",
+                    "Ras El Oued",
+                    "Tataouine Sud",
+                    "رأس الوادي",
+                    "معتمدية تطاوين الجنوبية"
+                  ],
+                  "expectedLat": 32.7671737,
+                  "expectedLng": 10.2628336,
+                  "expectedOriginalTags": {
+                    "name": "طويل أولاد زايد",
+                    "name:aeb": "طويل أولاد زايد",
+                    "name:ar": "طويل أولاد زايد",
+                    "name:en": "Touil Ouled Zayed",
+                    "name:fr": "Touil Ouled Zayed",
+                    "place": "hamlet"
+                  },
+                  "expectedEffectiveTags": {
+                    "name": "طويل أولاد زايد",
+                    "name:aeb": "طويل أولاد زايد",
+                    "name:ar": "طويل أولاد زايد",
+                    "name:en": "Touil Ouled Zayed",
+                    "name:fr": "Touil Ouled Zayed",
+                    "place": "hamlet"
+                  },
+                  "expectedCuration": null,
+                  "originalGeometrySha256": "7f01e9b105ae16882d3bf9fa810408ea84adbdad7576f2cdceb6128de91dd748",
+                  "effectiveOriginalGeometrySha256": "7f01e9b105ae16882d3bf9fa810408ea84adbdad7576f2cdceb6128de91dd748",
+                  "packedGeometrySha256": null
+                }
+              ],
+              "settlementPointId": "osm:node:11525318199",
+              "expectedPointKind": "hamlet",
+              "expectedContextRole": "sector",
+              "nameEvidence": {
+                "arabic": "طويل أولاد زايد",
+                "originalArabic": "طويل أولاد زايد",
+                "latin": "Touil Ouled Zayed",
+                "arabicNameTag": "name:ar",
+                "latinNameTag": "name:fr"
+              },
+              "codedContext": {
+                "id": "osm:relation:7143876",
+                "expectedKind": "sector",
+                "expectedSourceId": "osm",
+                "expectedName": "رأس الوادي",
+                "expectedAliases": [
+                  "Ras El Oued"
+                ],
+                "expectedContextAliases": [
+                  "Délégation Tataouine Sud",
+                  "Tataouine Sud",
+                  "معتمدية تطاوين الجنوبية"
+                ],
+                "expectedLat": 32.713426,
+                "expectedLng": 10.100541,
+                "expectedOriginalTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "رأس الوادي",
+                  "name:ar": "رأس الوادي",
+                  "name:fr": "Ras El Oued",
+                  "ref:tn:codegeo": "535263"
+                },
+                "expectedEffectiveTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "رأس الوادي",
+                  "name:ar": "رأس الوادي",
+                  "name:fr": "Ras El Oued",
+                  "ref:tn:codegeo": "535263"
+                },
+                "expectedCuration": null,
+                "originalGeometrySha256": "c9c248316b6e60e316ce7b905a56b8982b8d2131914bccb101d628bea82e8e0d",
+                "effectiveOriginalGeometrySha256": "c9c248316b6e60e316ce7b905a56b8982b8d2131914bccb101d628bea82e8e0d",
+                "packedGeometrySha256": "dfd6724a3afafa4e10e1768dc99ee085c447ddbde210e3bda972f1e853e5cc8f",
+                "expectedParentName": "معتمدية تطاوين الجنوبية",
+                "expectedDelegationId": 624,
+                "currentOfficialRecord": {
+                  "governorateCode": "53",
+                  "governorateFr": "Tataouine",
+                  "governorateAr": "تطاوين",
+                  "delegationCode": "5352",
+                  "delegationFr": "Tataouine sud",
+                  "delegationAr": "تطاوين الجنوبية",
+                  "sectorCode": "535263",
+                  "sectorFr": "Ras el ouedi",
+                  "sectorAr": "رأس الوادي",
+                  "sourceRows": {
+                    "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64325,
+                    "Nombre_de_Logements_par_Secteurs.xlsx": 3162,
+                    "Nombre_de_menages_par_Secteurs.xlsx": 3156
+                  }
+                },
+                "originalContainsEveryMember": true,
+                "packagedContainsEveryMember": true
+              },
+              "expectedGlobalMatchingPlaceSourceIds": [
+                "osm:node:11525318199"
+              ],
+              "expectedContextMatchingPlaceSourceIds": [
+                "osm:node:11525318199"
+              ],
+              "expectedGlobalMatchingResidentialSourceIds": [
+                "osm:way:377996284"
+              ],
+              "expectedContextMatchingResidentialSourceIds": [
+                "osm:way:377996284"
+              ],
+              "primaryEvidence": {
+                "sourceChain": {
+                  "file": "touil-reviews/exact-object-and-coordinate-chain.json",
+                  "sha256": "923998b85e70f9bd77bd0bd09723f495daead0c591be491df7ffbf369e81a5df"
+                },
+                "sources": [
+                  {
+                    "file": "touil-reviews/osm-node-11525318199-history.xml",
+                    "sha256": "d9dc1baf201929e86b38b495e67803526399ca773d592e5c78cba6d134cc3ae2",
+                    "url": "https://api.openstreetmap.org/api/0.6/node/11525318199/history"
+                  },
+                  {
+                    "file": "touil-reviews/osm-way-377996284-history.xml",
+                    "sha256": "097be1abfb62f2c57a0776c9d771503c76f0fb4f61833bf12da2f757957ef8c6",
+                    "url": "https://api.openstreetmap.org/api/0.6/way/377996284/history"
+                  },
+                  {
+                    "file": "touil-reviews/osm-node-3814110946-history.xml",
+                    "sha256": "31fa541aa34571e8ee454980f74846f4578e323d37c9f55639199526d1d79708",
+                    "url": "https://api.openstreetmap.org/api/0.6/node/3814110946/history"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-35038528.xml",
+                    "sha256": "6f8e3f59d8786a049970973d19c4f7862b3b8b49fbbcf0cc1730270894a50f2e",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/35038528"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-35038528-download.osc",
+                    "sha256": "6dceaebd4af6cf0d20e7706a4634b25811977240d080573ccb71090dbd12fe6d",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/35038528/download"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-122572164.xml",
+                    "sha256": "4b68964c452ac65337a3ce4ce51d4e7a6445ad018b5e11d68f1227cb91d30de3",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/122572164"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-122572164-download.osc",
+                    "sha256": "6f9c7c64fd1432e785a6b08f9e4becb414fecd680868566e7923ff07f7218db9",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/122572164/download"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-146375270.xml",
+                    "sha256": "c2fd14eb5b5da858279444d3b159b326161b359e19b4a1b50701fa08a1aa9ac2",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/146375270"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-146375270-download.osc",
+                    "sha256": "340e957c90e5defba60dc225ab97e0ee6c24b6d58c45b2a0cc7ccb022c2e58ba",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/146375270/download"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-146876838.xml",
+                    "sha256": "5e244b749a316e94b312e557051a0860a56dcd840be91837a68d2071ea0dba74",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838"
+                  },
+                  {
+                    "file": "touil-reviews/osm-changeset-146876838-download.osc",
+                    "sha256": "975344b8f4a6d7a7b0c5fb6c2027eda5f2ae966ab9e0f252c35042697b7f0f79",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/146876838/download"
+                  },
+                  {
+                    "file": "touil-reviews/changeset-180432269.xml",
+                    "sha256": "5ebf22bcc06418a95456256ddaf44f97b0d6cd7d38f4fbf9d19fc8187f1cb71d",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269"
+                  },
+                  {
+                    "file": "touil-reviews/changeset-180432269-download.osc",
+                    "sha256": "ad829a346c64a5d2a17fac22c2250f180827c3084c02bcbdf4575faa0750c4b6",
+                    "url": "https://api.openstreetmap.org/api/0.6/changeset/180432269/download"
+                  }
+                ],
+                "independentReview": {
+                  "file": "touil-reviews/touil-surveyed-source-chain-independent-review.json",
+                  "sha256": "547f45190c354c5283f94401a5e93af71c9a79d303e51bfd7e587db9f8c907cc"
+                },
+                "finding": "Deliberate earlier residential naming and later survey-tagged name reaffirmation plus creation of the same-name hamlet support this bounded shared-settlement display interpretation."
+              },
+              "reviewerInference": "Associate exactly these two inhabited-place representations. Keep the separately typed natural peak excluded. This is a reviewed inference from primary source history, not an administrative or cadastral identity certification.",
+              "limitations": [
+                "The source hamlet point is outside the residential ring. The existing method deliberately requires both inside the same uniquely coded source sector, not point-in-residential containment.",
+                "Survey provenance is mapper-declared; no independently certified field survey, shared address or complete village outline is claimed.",
+                "All names, aliases, current contexts, coordinates, raw IDs, shapes and prayer624 remain unchanged. Only the residential pickerGroupId joins the existing hamlet.",
+                "No landmark/peak or historical Google result establishes the extent of either inhabited object."
+              ]
+            }
+          }
+        ],
+        "requiredFutureMigration": "Create a versioned successor proof changing only its operative active-picker reference to the appended manifest; update this one owner decision reference to the new proof. Preserve all identity, source states, groups and touching records."
+      },
+      {
+        "ownerManifest": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+          "sha256": "db243ff335c30f833ce78b23d3d7d380931c1de2fa67c8c8583cf48ef61d52f6",
+          "bytes": 277520
+        },
+        "ownerDecisionIndex": 164,
+        "ownerId": "osm:node:560792911",
+        "ownerField": "pickerBaseDisplayReview",
+        "activeProof": {
+          "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-base-display-reviews\\bou-argoub-faouar-hajeb-2026-09\\485-reviewed-point-base-display-identity.json",
+          "sha256": "445d6bb2214b9fa6ba50ffbe4e43d54cea909a98697e9ad0600a7f0cee3b38e4",
+          "bytes": 83011
+        },
+        "operativeKey": "townPreservationExtension.priorPickerBindings.manifest",
+        "activeWholePickerReference": {
+          "file": "reviewed-picker-groups.json",
+          "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877"
+        },
+        "preservedTouchingRecords": [
+          {
+            "section": "records",
+            "id": "osm:relation:7082336",
+            "record": {
+              "id": "osm:relation:7082336",
+              "targetDelegationId": 486,
+              "expectedGovernorateId": 1012,
+              "expectedBase": {
+                "nomAr": "المطروحة",
+                "lat": 33.3497,
+                "lng": 7.7825
+              },
+              "expectedExistingMemberIds": [
+                "osm:relation:7082336",
+                "osm:way:207572354"
+              ],
+              "expectedTargetMemberIds": [
+                "delegation:486"
+              ],
+              "members": [
+                {
+                  "id": "osm:relation:7082336",
+                  "expectedKind": "sector",
+                  "expectedSourceId": "osm",
+                  "expectedName": "المطروحة",
+                  "expectedParentName": "معتمدية رجيم معتوق",
+                  "expectedDelegationId": 486,
+                  "expectedLat": 33.352497,
+                  "expectedLng": 7.825295,
+                  "expectedOriginalTags": {
+                    "admin_level": "6",
+                    "boundary": "administrative",
+                    "name": "المطروحة",
+                    "name:ar": "المطروحة",
+                    "name:fr": "El Matrouha",
+                    "ref:tn:codegeo": "635656"
+                  },
+                  "originalGeometrySha256": "955a97b972f0eb939401063d3760793ababd1536898551e4c96f6db26e724521",
+                  "packedGeometrySha256": "4c7994cb267a2ba03ac2a7bae238e2d3af3efb0f607d07ff435e15ceecf8e924"
+                },
+                {
+                  "id": "osm:way:207572354",
+                  "expectedKind": "village",
+                  "expectedSourceId": "osm",
+                  "expectedName": "المطروحة",
+                  "expectedParentName": "معتمدية رجيم معتوق",
+                  "expectedDelegationId": 486,
+                  "expectedLat": 33.349773,
+                  "expectedLng": 7.782706,
+                  "expectedOriginalTags": {
+                    "landuse": "residential",
+                    "name": "المطروحة",
+                    "name:ar": "المطروحة",
+                    "name:en": "Matrouha",
+                    "name:fr": "Matrouha",
+                    "place": "village"
+                  },
+                  "originalGeometrySha256": "7215e5d986bcbb00e7185ff3cbdc3575db57681ff911f498e04c3643d1066f3f",
+                  "packedGeometrySha256": "c4108400a4257110307775fc63284aa76ff83a3aedeb32a8f53bdd0f71ab9192"
+                }
+              ],
+              "identityEvidence": [
+                {
+                  "id": "osm:relation:7082336",
+                  "accepted": true,
+                  "reasons": [],
+                  "expectedOriginalTags": {
+                    "admin_level": "6",
+                    "boundary": "administrative",
+                    "name": "المطروحة",
+                    "name:ar": "المطروحة",
+                    "name:fr": "El Matrouha",
+                    "ref:tn:codegeo": "635656"
+                  },
+                  "effectiveOriginalGeometrySha256": "955a97b972f0eb939401063d3760793ababd1536898551e4c96f6db26e724521",
+                  "method": "reviewed_current_sector_transfer",
+                  "sourceCode": "635656",
+                  "currentCode": "635752",
+                  "code": "635656",
+                  "currentOfficialRecord": {
+                    "governorateCode": "63",
+                    "governorateFr": "Kebili",
+                    "governorateAr": "قبلي",
+                    "delegationCode": "6357",
+                    "delegationFr": "Rjim maatoug",
+                    "delegationAr": "رجيم معتوق",
+                    "sectorCode": "635752",
+                    "sectorFr": "El matrouha",
+                    "sectorAr": "المطروحة",
+                    "sourceRows": {
+                      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70695,
+                      "Nombre_de_Logements_par_Secteurs.xlsx": 3470,
+                      "Nombre_de_menages_par_Secteurs.xlsx": 3463
+                    }
+                  },
+                  "expectedCuration": {
+                    "id": "osm:relation:7082336",
+                    "expectedKind": "sector",
+                    "expectedTags": {
+                      "name:ar": "المطروحة",
+                      "ref:tn:codegeo": "635656"
+                    },
+                    "action": "administrative_context",
+                    "parentNames": [
+                      "معتمدية رجيم معتوق",
+                      "رجيم معتوق",
+                      "Rejim Maatoug"
+                    ],
+                    "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+                    "evidence": [
+                      "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+                    ],
+                    "unresolved": [
+                      "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+                    ]
+                  },
+                  "nameEquivalence": {
+                    "displayName": "المطروحة",
+                    "displayParentName": "معتمدية رجيم معتوق",
+                    "officialSectorAr": "المطروحة",
+                    "officialDelegationAr": "رجيم معتوق"
+                  },
+                  "originalCodedParentEvidence": [
+                    {
+                      "id": "osm:relation:7107872",
+                      "sourceCode": "6356",
+                      "expectedOriginalTags": {
+                        "admin_level": "5",
+                        "alt_name:fr": "Faouar",
+                        "boundary": "administrative",
+                        "name": "معتمدية الفوار",
+                        "name:ar": "معتمدية الفوار",
+                        "name:fr": "Délégation El Faouar",
+                        "ref:tn:codegeo": "6356",
+                        "ref:tn:hasc_2": "TN.KB.FA",
+                        "wikidata": "Q12243833"
+                      },
+                      "effectiveOriginalGeometrySha256": "5513ceb7470370b4e8fe90cbfb9b5e5dbffabe6f6ac9e9b278ed66cdca052067",
+                      "containsSourceSector": true,
+                      "containsEveryGroupMember": true
+                    }
+                  ],
+                  "sourceVintageEvidence": {
+                    "oldSourceCode": "635656",
+                    "oldOfficialRows": [
+                      {
+                        "code": "635656",
+                        "nameFr": "El Matrouha",
+                        "nameAr": "المطروحة",
+                        "delegationHeading": "Delegation Faouar",
+                        "page": 130
+                      }
+                    ],
+                    "isie2022MembershipEvidence": [
+                      {
+                        "governorate": "قبلي",
+                        "delegation": "رجيم معتوق",
+                        "sector": "المطروحة",
+                        "pages": [
+                          60
+                        ]
+                      }
+                    ],
+                    "currentCode": "635752",
+                    "finding": "Existing curation already moves context from old Faouar code635656 to Rejim Maatoug. INS2012 p130, ISIE2022 p60, and all three INS2024 tables connect المطروحة to current635752; old code retention caused the strict blocker.",
+                    "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "section": "records",
+            "id": "osm:relation:7082340",
+            "record": {
+              "id": "osm:relation:7082340",
+              "targetDelegationId": 487,
+              "expectedGovernorateId": 1012,
+              "expectedBase": {
+                "nomAr": "رجيم معتوق",
+                "lat": 33.32,
+                "lng": 8.033
+              },
+              "expectedExistingMemberIds": [
+                "osm:relation:7082340",
+                "osm:way:186759798"
+              ],
+              "expectedTargetMemberIds": [
+                "delegation:487"
+              ],
+              "members": [
+                {
+                  "id": "osm:relation:7082340",
+                  "expectedKind": "sector",
+                  "expectedSourceId": "osm",
+                  "expectedName": "رجيم معتوق",
+                  "expectedParentName": "معتمدية رجيم معتوق",
+                  "expectedDelegationId": 487,
+                  "expectedLat": 33.424038,
+                  "expectedLng": 8.155351,
+                  "expectedOriginalTags": {
+                    "admin_level": "6",
+                    "boundary": "administrative",
+                    "name": "رجيم معتوق",
+                    "name:ar": "رجيم معتوق",
+                    "name:fr": "Rejim Mâatoug",
+                    "ref:tn:codegeo": "635655",
+                    "wikidata": "Q2912518",
+                    "wikipedia": "ar:رجيم معتوق"
+                  },
+                  "originalGeometrySha256": "79c2783be79a4b40f54f7c76b004d71d0d0170c004647f38c41f8cc1e50db0aa",
+                  "packedGeometrySha256": "74c7c2ec978797f6265b6484a06a74225fed98c20db7fb44bec65cf452ee9ca9"
+                },
+                {
+                  "id": "osm:way:186759798",
+                  "expectedKind": "residential",
+                  "expectedSourceId": "osm",
+                  "expectedName": "رجيم معتوق",
+                  "expectedParentName": "معتمدية رجيم معتوق",
+                  "expectedDelegationId": 487,
+                  "expectedLat": 33.318996,
+                  "expectedLng": 8.033431,
+                  "expectedOriginalTags": {
+                    "landuse": "residential",
+                    "name": "رجيم معتوق",
+                    "name:ar": "رجيم معتوق",
+                    "name:fr": "Rjim Maatoug"
+                  },
+                  "originalGeometrySha256": "49095b806ecf20289ad8ddc479770238de148c3daa90c09fbb31251221ffe4d0",
+                  "packedGeometrySha256": "e4fe55ee387d2649111aca25da0b1109c8fb66f5bee05a2f79b76df74f89f867"
+                }
+              ],
+              "identityEvidence": [
+                {
+                  "id": "osm:relation:7082340",
+                  "accepted": true,
+                  "reasons": [],
+                  "expectedOriginalTags": {
+                    "admin_level": "6",
+                    "boundary": "administrative",
+                    "name": "رجيم معتوق",
+                    "name:ar": "رجيم معتوق",
+                    "name:fr": "Rejim Mâatoug",
+                    "ref:tn:codegeo": "635655",
+                    "wikidata": "Q2912518",
+                    "wikipedia": "ar:رجيم معتوق"
+                  },
+                  "effectiveOriginalGeometrySha256": "79c2783be79a4b40f54f7c76b004d71d0d0170c004647f38c41f8cc1e50db0aa",
+                  "method": "reviewed_current_sector_transfer",
+                  "sourceCode": "635655",
+                  "currentCode": "635751",
+                  "code": "635655",
+                  "currentOfficialRecord": {
+                    "governorateCode": "63",
+                    "governorateFr": "Kebili",
+                    "governorateAr": "قبلي",
+                    "delegationCode": "6357",
+                    "delegationFr": "Rjim maatoug",
+                    "delegationAr": "رجيم معتوق",
+                    "sectorCode": "635751",
+                    "sectorFr": "Rejim maatoug",
+                    "sectorAr": "رجيم معتوق",
+                    "sourceRows": {
+                      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70661,
+                      "Nombre_de_Logements_par_Secteurs.xlsx": 3468,
+                      "Nombre_de_menages_par_Secteurs.xlsx": 3461
+                    }
+                  },
+                  "expectedCuration": {
+                    "id": "osm:relation:7082340",
+                    "expectedKind": "sector",
+                    "expectedTags": {
+                      "name:ar": "رجيم معتوق",
+                      "ref:tn:codegeo": "635655"
+                    },
+                    "action": "administrative_context",
+                    "parentNames": [
+                      "معتمدية رجيم معتوق",
+                      "رجيم معتوق",
+                      "Rejim Maatoug"
+                    ],
+                    "reason": "The ISIE 2022 directory lists this sector in this newer delegation. The source retains its former parent code and has no polygon for the newer delegation; use reviewed membership names without inventing an administrative boundary.",
+                    "evidence": [
+                      "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf#page=60"
+                    ],
+                    "unresolved": [
+                      "The newer delegation has no administrative polygon in the source. This decision establishes membership context only and does not validate the sector border."
+                    ]
+                  },
+                  "nameEquivalence": {
+                    "displayName": "رجيم معتوق",
+                    "displayParentName": "معتمدية رجيم معتوق",
+                    "officialSectorAr": "رجيم معتوق",
+                    "officialDelegationAr": "رجيم معتوق"
+                  },
+                  "originalCodedParentEvidence": [
+                    {
+                      "id": "osm:relation:7107872",
+                      "sourceCode": "6356",
+                      "expectedOriginalTags": {
+                        "admin_level": "5",
+                        "alt_name:fr": "Faouar",
+                        "boundary": "administrative",
+                        "name": "معتمدية الفوار",
+                        "name:ar": "معتمدية الفوار",
+                        "name:fr": "Délégation El Faouar",
+                        "ref:tn:codegeo": "6356",
+                        "ref:tn:hasc_2": "TN.KB.FA",
+                        "wikidata": "Q12243833"
+                      },
+                      "effectiveOriginalGeometrySha256": "5513ceb7470370b4e8fe90cbfb9b5e5dbffabe6f6ac9e9b278ed66cdca052067",
+                      "containsSourceSector": true,
+                      "containsEveryGroupMember": true
+                    }
+                  ],
+                  "sourceVintageEvidence": {
+                    "oldSourceCode": "635655",
+                    "oldOfficialRows": [
+                      {
+                        "code": "635655",
+                        "nameFr": "Rejim Mâatoug",
+                        "nameAr": "رجيم معتوق",
+                        "delegationHeading": "Delegation Faouar",
+                        "page": 130
+                      }
+                    ],
+                    "isie2022MembershipEvidence": [
+                      {
+                        "governorate": "قبلي",
+                        "delegation": "رجيم معتوق",
+                        "sector": "رجيم معتوق",
+                        "pages": [
+                          60
+                        ]
+                      }
+                    ],
+                    "currentCode": "635751",
+                    "finding": "Existing curation already moves context from old Faouar code635655 to Rejim Maatoug. INS2012 p130 plus ISIE2022 p60 and current635751 support the same رجيم معتوق identity.",
+                    "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "requiredFutureMigration": "Create a versioned successor proof changing only its operative active-picker reference to the appended manifest; update this one owner decision reference to the new proof. Preserve all identity, source states, groups and touching records."
+      }
+    ],
+    "independentInventoryMethod": "Agent remaining_pair_candidates inspected all168 active curation decisions,152 directly referenced JSON files and their bounded385-file reference closure through depth3, then the actual code readers. This reviewer independently read and checked the two returned operative chains and unchanged touching records.",
+    "operativeCodeOwner": "validate_reviewed_town_preservation_extension, lines2064–2089: when touching records exist, its manifest reference must bind the active reviewed-picker-groups.json file and full content.",
+    "requiredExistingCurationChanges": {
+      "referenceUpdates": 2,
+      "newDecisionCount": 0,
+      "otherDecisionObjectsToRetain": 166
+    },
+    "historicalPinsToLeaveUntouched": [
+      "624 proof official463526DependencyRevision.currentPickerManifest is historical provenance, not a compiler read.",
+      "Bou Argoub/Faouar/Hajeb finite-source facts and after-INM geography report record prior snapshots.",
+      "Bekalta and El Borma finite-facts input arrays and carry reports are historical snapshot statements.",
+      "Coverage report manifest hashes are regenerated outputs rather than source validation guards."
+    ],
+    "noAdditionalWholePins": "Other active town extensions have null prior-picker manifest references. The deferred suburb strict-owner guard binds unchanged exact records/proofs, not the whole picker hash. No active incoming references to these two proof hashes were found beyond their respective curation owners.",
+    "scopeWarning": "Even a Sidi-El-Hani-only append changes the whole picker manifest and requires these two operative migrations. The source facts file captured that inventory as pending; this report resolves that pending item without rewriting the earlier facts."
+  },
+  "exactProspectiveMetadataFieldChanges": [
+    {
+      "id": "osm:way:96369466",
+      "field": "pickerGroupId",
+      "before": "osm:way:96369466",
+      "after": "delegation:518"
+    },
+    {
+      "id": "osm:way:43944790",
+      "field": "pickerGroupId",
+      "before": "osm:way:43944790",
+      "after": "delegation:441"
+    }
+  ],
+  "stageReadiness": "NOT_A_STAGE. Sidi El Hani is ready for bounded source assembly after approval of the two manifest-pin migrations; Téboursouk additionally needs the narrowly reviewed complete-group contract. No existing source report is relabelled as install-ready.",
+  "notPerformed": [
+    "source stage",
+    "compiler edits/import/execution",
+    "generation",
+    "live product writes",
+    "phone",
+    "ledger",
+    "tests",
+    "build"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-residential-display-feasibility\\freeze_review.py",
+    "sha256": "0c4eef50916f745af994ce433482e3434e28334ef85f20a7a5888e9d942f9a04",
+    "bytes": 9593
+  }
+}

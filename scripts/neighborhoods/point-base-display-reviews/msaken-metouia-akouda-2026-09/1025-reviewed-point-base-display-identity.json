@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:559400503",
+  "baseId": 1025,
+  "rawCurrent": {
+    "id": "osm:node:559400503",
+    "sourceId": "osm",
+    "name": "المطوية",
+    "aliases": [
+      "Métouia"
+    ],
+    "kind": "village",
+    "parentName": "المطوية الجنوبية",
+    "contextAliases": [
+      "Délégation El Metouia",
+      "El Metouia Sud",
+      "Métouia",
+      "المطوية الجنوبية",
+      "معتمدية المطوية"
+    ],
+    "governorateId": 347,
+    "lat": 33.9589064,
+    "lng": 10.0014342,
+    "delegationId": 1025,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:559400503"
+  },
+  "baseCurrent": {
+    "id": 1025,
+    "nomFr": "Metouia",
+    "nomAr": "المطوية",
+    "nomEn": "Metouia",
+    "lat": 33.96,
+    "lng": 9.99
+  },
+  "expectedGovernor": {
+    "id": 347,
+    "nomFr": "Gabes",
+    "nomAr": "قابس",
+    "nomEn": "Gabes",
+    "lat": 33.8815,
+    "lng": 10.0982
+  },
+  "originalSourceNode": {
+    "id": "osm:node:559400503",
+    "tags": {
+      "name": "المطوية",
+      "name:ar": "المطوية",
+      "name:en": "Métouia",
+      "name:fr": "Métouia",
+      "place": "village",
+      "wikidata": "Q3127824",
+      "wikimedia_commons": "Category:Métouia",
+      "wikipedia": "ar:المطوية (تونس)"
+    },
+    "lat": 33.9589064,
+    "lng": 10.0014342
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/metouia-town-point-source-review.json",
+    "sha256": "01f445a84f52ea7adc67971c529bd4a663937c30727d6a6e707d00fea87cdccb"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-source-identity-independent-review.json",
+    "sha256": "9b89c7a0f7d1b8a77d42e6936e431821714804b0b3c5f41c138a369e4f8e6bd1"
+  },
+  "independentPrimaryFinding": "same Metouia settlement display; keep North/South/Akarit sectors distinct",
+  "sourceNode": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/osm-node-559400503-current.json",
+    "sha256": "66d45ffdcfae450e812c84588d052bf3195c9aaa6bbf9e1f7b55f47d2e9aa35e",
+    "url": "https://api.openstreetmap.org/api/0.6/node/559400503.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/559400503.json",
+    "sha256": "66d45ffdcfae450e812c84588d052bf3195c9aaa6bbf9e1f7b55f47d2e9aa35e",
+    "exactElement": {
+      "type": "node",
+      "id": 559400503,
+      "lat": 33.9589064,
+      "lon": 10.0014342,
+      "timestamp": "2025-09-14T10:19:40Z",
+      "version": 17,
+      "changeset": 171909432,
+      "user": "tg4567",
+      "uid": 12500589,
+      "tags": {
+        "name": "المطوية",
+        "name:ar": "المطوية",
+        "name:en": "Métouia",
+        "name:fr": "Métouia",
+        "place": "village",
+        "wikidata": "Q3127824",
+        "wikimedia_commons": "Category:Métouia",
+        "wikipedia": "ar:المطوية (تونس)"
+      }
+    }
+  },
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/metouia-national-catalog-producer.html",
+      "sha256": "f673f9c4552273d60d1c7b154d1547a1ce4c576b214986144aa030d7918f0052",
+      "url": "https://catalog.data.gov.tn/ar/producteurs-de-donnees/about/metouia",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "El Métouia est une ville",
+        "Commune de Métouia",
+        "ولاية قابس"
+      ],
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "finding": "The bilingual public-producer profile explicitly identifies El Métouia as an oasis town north of Gabes and as a municipality/delegation center. This identifies a named settlement and distinguishes its civic/administrative role without equating it with either north/south sector.",
+      "sourceLimitations": "Publisher-profile identity evidence only. It supplies no usable precise town border, survey coordinate or certified prayer-calculation anchor. Founding date and population are not imported."
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/metouia-retrievals.json",
+      "sha256": "ecdfd0d6a9f850edec53cf273fdba0be186df0dbdeda5a3e95fbe30a18524d21"
+    },
+    {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/metouia-town-point-source-review.json",
+      "sha256": "01f445a84f52ea7adc67971c529bd4a663937c30727d6a6e707d00fea87cdccb"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/osm-node-559400503-history.json",
+    "sha256": "6424969bf512193556017b12a973c5ca78bccc8ca7ab5ccc58fdbd5329e76489",
+    "url": "https://api.openstreetmap.org/api/0.6/node/559400503/history.json"
+  },
+  "sourceIdentityQualifications": [
+    "All17 source versions retain place=village, despite the civic profile using town/city language. Keep raw kind village.",
+    "Coordinates moved during earlier mapping edits; the current point has remained exact since version13 on2020-07-11. This history does not certify a surveyed center or the legacy meteo anchor.",
+    "Version7 in2012 incorrectly said is_in:governorate=Sfax; version8 in2013 changed it to Gabès, and the field was subsequently removed. The current cache and exact endpoint agree and contain no such governorate tag.",
+    "The point and prayer base coordinates remain distinct. Same display identity does not merge their coordinates, create a city boundary or prove any imada equals the whole city."
+  ],
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-geography-feasibility.json",
+    "sha256": "c7bc28495156a20e25b01565adbf9d80999717b7ff16008669dc540b22414f57"
+  },
+  "baselineGeographyFacts": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/finite-source-group-facts.json",
+    "sha256": "91f4f5e8678cc03d814cd850b40e8a5d9d4bfa27a767d8a7b2da6f2edf2caf57"
+  },
+  "projectedSourcePhaseFacts": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-projected-finite-facts-v2.json",
+    "sha256": "bfa50eb03d1f1f1793e5ecf73fa81d85ffc4856223bab193ca1f738d1e7c8472"
+  },
+  "supplementaryPhoneReview": {
+    "reference": {
+      "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-phone-review-20260912.json",
+      "sha256": "c1a1604b1f55ccdca9fdc40cb5aa9ca42e040779001af78fed919469a387a794"
+    },
+    "qualification": "Public search/card observations only. No coordinate, North/South identity, city perimeter or survey certification."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7145441",
+      "officialIdentity": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515551",
+        "sectorFr": "El metouia nord",
+        "sectorAr": "المطوية الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2860
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطويةالشمالية",
+        "name:ar": "المطويةالشمالية",
+        "name:fr": "El Metouia Nord",
+        "ref:tn:codegeo": "515551"
+      },
+      "sourceGeometrySha256": "f5981d26477163a297f839c18303708412e0d9d59fbe8f04c2600c73fc375a2f",
+      "currentMetadata": {
+        "id": "osm:relation:7145441",
+        "sourceId": "osm",
+        "name": "المطوية الشمالية",
+        "aliases": [
+          "El Metouia Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.030415,
+        "lng": 10.015376,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.980391,
+          33.940825,
+          10.057294,
+          34.119475
+        ],
+        "areaKm2": 69.34537911106504,
+        "pickerGroupId": "osm:relation:7145441",
+        "offset": 2416492,
+        "length": 6364
+      },
+      "packedGeometrySha256": "9e0fbf806439de9e68beb8fd853d927ebe849295d49f641667c060dcb3b40725",
+      "expectedCuration": {
+        "id": "osm:relation:7145441",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطويةالشمالية",
+          "name:ar": "المطويةالشمالية",
+          "name:fr": "El Metouia Nord",
+          "ref:tn:codegeo": "515551"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "المطوية الشمالية",
+          "name:ar": "المطوية الشمالية",
+          "name:fr": "El Metouia Nord"
+        },
+        "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+        "evidence": [
+          {
+            "source": "INS RGPH2024 three-workbook sector identity registry",
+            "officialRegistry": {
+              "file": "point-retention-reviews/current-official-sector-registry.json",
+              "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+            },
+            "sectorCode": "515551",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2860
+            },
+            "urls": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+            ]
+          }
+        ],
+        "officialIdentity": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5155",
+          "delegationFr": "El metouia",
+          "delegationAr": "المطوية",
+          "sectorCode": "515551",
+          "sectorFr": "El metouia nord",
+          "sectorAr": "المطوية الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2860
+          }
+        },
+        "unresolved": [
+          "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7145440",
+      "officialIdentity": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515552",
+        "sectorFr": "El metouia sud",
+        "sectorAr": "المطوية الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2862
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطورية الجنوبية",
+        "name:ar": "المطورية الجنوبية",
+        "name:fr": "El Metouia Sud",
+        "ref:tn:codegeo": "515552"
+      },
+      "sourceGeometrySha256": "49018be55ccef06623434a724fbe3ab03df092fa14219c4bf9d611fd0fc3d804",
+      "currentMetadata": {
+        "id": "osm:relation:7145440",
+        "sourceId": "osm",
+        "name": "المطوية الجنوبية",
+        "aliases": [
+          "El Metouia Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.945385,
+        "lng": 9.972873,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.910928,
+          33.911945,
+          10.026282,
+          33.975615
+        ],
+        "areaKm2": 41.15208843364106,
+        "pickerGroupId": "osm:relation:7145440",
+        "offset": 2414272,
+        "length": 2220
+      },
+      "packedGeometrySha256": "43c839c68605b433caf323fdaa62de92852c826b5baeab2a06984587e2f27556",
+      "expectedCuration": {
+        "id": "osm:relation:7145440",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطورية الجنوبية",
+          "name:ar": "المطورية الجنوبية",
+          "name:fr": "El Metouia Sud",
+          "ref:tn:codegeo": "515552"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "المطوية الجنوبية",
+          "name:ar": "المطوية الجنوبية",
+          "name:fr": "El Metouia Sud"
+        },
+        "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+        "evidence": [
+          {
+            "source": "INS RGPH2024 three-workbook sector identity registry",
+            "officialRegistry": {
+              "file": "point-retention-reviews/current-official-sector-registry.json",
+              "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+            },
+            "sectorCode": "515552",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2862
+            },
+            "urls": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+            ]
+          }
+        ],
+        "officialIdentity": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5155",
+          "delegationFr": "El metouia",
+          "delegationAr": "المطوية",
+          "sectorCode": "515552",
+          "sectorFr": "El metouia sud",
+          "sectorAr": "المطوية الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2862
+          }
+        },
+        "unresolved": [
+          "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7145378",
+      "officialIdentity": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515555",
+        "sectorFr": "El akarit",
+        "sectorAr": "العكاريت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58580,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2870,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2864
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العكاريت",
+        "name:ar": "العكاريت",
+        "name:fr": "El Akarit",
+        "ref:tn:codegeo": "515555"
+      },
+      "sourceGeometrySha256": "3a3f44a042ab5d0185c725195b7e8d0b252ae245ca275a304e24a35e044f4a8f",
+      "currentMetadata": {
+        "id": "osm:relation:7145378",
+        "sourceId": "osm",
+        "name": "العكاريت",
+        "aliases": [
+          "El Akarit"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.077055,
+        "lng": 9.975395,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.943368,
+          34.043475,
+          10.008513,
+          34.110875
+        ],
+        "areaKm2": 34.23280402513283,
+        "pickerGroupId": "osm:relation:7145378",
+        "offset": 2191664,
+        "length": 1940
+      },
+      "packedGeometrySha256": "9a6ebc57a5790fe3defe172246f6e4bf20736ee8a44afddcc733253e0f2a67d3",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:559400503",
+      "kind": "village",
+      "tags": {
+        "name": "المطوية",
+        "name:ar": "المطوية",
+        "name:en": "Métouia",
+        "name:fr": "Métouia",
+        "place": "village",
+        "wikidata": "Q3127824",
+        "wikimedia_commons": "Category:Métouia",
+        "wikipedia": "ar:المطوية (تونس)"
+      }
+    },
+    {
+      "id": "osm:relation:7145411",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Métouia",
+        "boundary": "administrative",
+        "name": "معتمدية المطوية",
+        "name:ar": "معتمدية المطوية",
+        "name:fr": "Délégation El Metouia",
+        "ref:tn:codegeo": "5155",
+        "ref:tn:hasc_2": "TN.GB.ME",
+        "wikidata": "Q3333752"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434956": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-81",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية قابس",
+        "name:ar": "ولاية قابس",
+        "name:az": "Qabes (vilayət)",
+        "name:azb": "قابس",
+        "name:be": "Габес (вілает)",
+        "name:be-tarask": "Габэс (вілает)",
+        "name:bg": "Габес (област)",
+        "name:ca": "Governació de Gabès",
+        "name:ceb": "Gouvernorat de Gabès",
+        "name:cy": "Gabès (talaith)",
+        "name:de": "Gouvernement Gabès",
+        "name:el": "Γκαμπές (Κυβερνείο)",
+        "name:en": "Gabès",
+        "name:es": "Gobernación de Gabès",
+        "name:fa": "قابس",
+        "name:fi": "Gabès (kuvernementti)",
+        "name:fr": "Gouvernorat Gabès",
+        "name:frr": "Gabès (Guwernement)",
+        "name:he": "גאבס (מחוז)",
+        "name:hu": "Gabès kormányzóság",
+        "name:id": "Kegubernuran Gabès",
+        "name:it": "Gabès",
+        "name:ja": "ガベズ県",
+        "name:ko": "가베스주",
+        "name:ks": "قابس",
+        "name:lt": "Gabeso vilajetas",
+        "name:ms": "Kawasan kegabenoran Gabès",
+        "name:nl": "Gabès (gouvernement)",
+        "name:no": "Gabès (guvernement)",
+        "name:pl": "Gubernatorstwo Kabis",
+        "name:pnb": "قابس",
+        "name:pt": "Gabès (província)",
+        "name:ro": "Guvernoratul Gabès",
+        "name:ru": "Габес (вилайет)",
+        "name:sco": "Gabès Govrenorate",
+        "name:sh": "Gabes (vilajet)",
+        "name:sv": "Gabès (guvernement)",
+        "name:tr": "Kabes Vilayeti",
+        "name:uk": "Габес (вілаєт)",
+        "name:ur": "قابس",
+        "name:zh": "加貝斯省",
+        "name:zu": "Gabès Governorate",
+        "official_name": "ولاية قابس",
+        "official_name:ar": "ولاية قابس",
+        "official_name:en": "Gabès Governorate",
+        "official_name:fa": "استان قابس",
+        "official_name:fr": "Gouvernorat de Gabès",
+        "official_name:it": "Governatorato di Gabès",
+        "official_name:ur": "ولایت قابس",
+        "population": "342630",
+        "population:date": "2004",
+        "ref:tn:codegeo": "51",
+        "wikidata": "Q242263",
+        "wikipedia": "ar:ولاية قابس"
+      },
+      "sourceGeometrySha256": "8a4df569adeebda2f0f5069ea56746b0b7860cacc39feab8c8b8421980239565"
+    },
+    "osm:relation:7145411": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Métouia",
+        "boundary": "administrative",
+        "name": "معتمدية المطوية",
+        "name:ar": "معتمدية المطوية",
+        "name:fr": "Délégation El Metouia",
+        "ref:tn:codegeo": "5155",
+        "ref:tn:hasc_2": "TN.GB.ME",
+        "wikidata": "Q3333752"
+      },
+      "sourceGeometrySha256": "a408b7a7cd17d956fbd56e6e694a2129ba7c1b93111edb822f84485f009da2db"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:559400503",
+    "field": "pickerGroupId",
+    "before": "osm:node:559400503",
+    "after": "delegation:1025"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:559400503"
+      ],
+      [
+        "delegation:1025"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:1025",
+        "osm:node:559400503"
+      ]
+    ]
+  },
+  "displayPhaseCoordinateChanges": [],
+  "scope": "This display decision changes only the candidate point pickerGroupId. All source geometries, points, separate coded imadas, other raw identities, aliases and prayer defaults are preserved. Métouia separately binds the two explicit name corrections in the same source package.",
+  "coordinatePolicy": "All existing point and base coordinates remain unchanged and uncertified. No original INM calculation anchor is established.",
+  "sourcePhaseQualification": "After two proposed sector name_tags transformations and before the three display pickerGroupId changes. currentRaw/currentMetadata in projectedCandidates are prospective compiler inputs, not claimed live state.",
+  "spellingSourceProposal": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/metouia-two-sector-spelling-source-proposal.json",
+    "sha256": "b4dd0e5fde92b5a05dbfa25b1fe4992e9081e040cf25c27cc4c062974522a8e5"
+  },
+  "spellingActiveDependencyReview": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/metouia-sector-spelling-active-dependency-review.json",
+    "sha256": "5f357f6f2c37b8a14c133cc4a804b460e80143e9d4e98bd6f29cd7d5768ce5cd"
+  },
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "5155"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:559400503",
+        "original": {
+          "tags": {
+            "name": "المطوية",
+            "name:ar": "المطوية",
+            "name:en": "Métouia",
+            "name:fr": "Métouia",
+            "place": "village",
+            "wikidata": "Q3127824",
+            "wikimedia_commons": "Category:Métouia",
+            "wikipedia": "ar:المطوية (تونس)"
+          },
+          "kind": "village",
+          "sourceId": null,
+          "geometrySha256": "fd3bacc1c923ff0ff3d675776e59243b7b6f54e0b7c95f093fde2ae7257e30bd"
+        },
+        "effective": {
+          "tags": {
+            "name": "المطوية",
+            "name:ar": "المطوية",
+            "name:en": "Métouia",
+            "name:fr": "Métouia",
+            "place": "village",
+            "wikidata": "Q3127824",
+            "wikimedia_commons": "Category:Métouia",
+            "wikipedia": "ar:المطوية (تونس)"
+          },
+          "kind": "village",
+          "sourceId": "osm",
+          "geometrySha256": "fd3bacc1c923ff0ff3d675776e59243b7b6f54e0b7c95f093fde2ae7257e30bd"
+        }
+      },
+      {
+        "id": "osm:relation:1434956",
+        "original": {
+          "tags": {
+            "ISO3166-2": "TN-81",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قابس",
+            "name:ar": "ولاية قابس",
+            "name:az": "Qabes (vilayət)",
+            "name:azb": "قابس",
+            "name:be": "Габес (вілает)",
+            "name:be-tarask": "Габэс (вілает)",
+            "name:bg": "Габес (област)",
+            "name:ca": "Governació de Gabès",
+            "name:ceb": "Gouvernorat de Gabès",
+            "name:cy": "Gabès (talaith)",
+            "name:de": "Gouvernement Gabès",
+            "name:el": "Γκαμπές (Κυβερνείο)",
+            "name:en": "Gabès",
+            "name:es": "Gobernación de Gabès",
+            "name:fa": "قابس",
+            "name:fi": "Gabès (kuvernementti)",
+            "name:fr": "Gouvernorat Gabès",
+            "name:frr": "Gabès (Guwernement)",
+            "name:he": "גאבס (מחוז)",
+            "name:hu": "Gabès kormányzóság",
+            "name:id": "Kegubernuran Gabès",
+            "name:it": "Gabès",
+            "name:ja": "ガベズ県",
+            "name:ko": "가베스주",
+            "name:ks": "قابس",
+            "name:lt": "Gabeso vilajetas",
+            "name:ms": "Kawasan kegabenoran Gabès",
+            "name:nl": "Gabès (gouvernement)",
+            "name:no": "Gabès (guvernement)",
+            "name:pl": "Gubernatorstwo Kabis",
+            "name:pnb": "قابس",
+            "name:pt": "Gabès (província)",
+            "name:ro": "Guvernoratul Gabès",
+            "name:ru": "Габес (вилайет)",
+            "name:sco": "Gabès Govrenorate",
+            "name:sh": "Gabes (vilajet)",
+            "name:sv": "Gabès (guvernement)",
+            "name:tr": "Kabes Vilayeti",
+            "name:uk": "Габес (вілаєт)",
+            "name:ur": "قابس",
+            "name:zh": "加貝斯省",
+            "name:zu": "Gabès Governorate",
+            "official_name": "ولاية قابس",
+            "official_name:ar": "ولاية قابس",
+            "official_name:en": "Gabès Governorate",
+            "official_name:fa": "استان قابس",
+            "official_name:fr": "Gouvernorat de Gabès",
+            "official_name:it": "Governatorato di Gabès",
+            "official_name:ur": "ولایت قابس",
+            "population": "342630",
+            "population:date": "2004",
+            "ref:tn:codegeo": "51",
+            "wikidata": "Q242263",
+            "wikipedia": "ar:ولاية قابس"
+          },
+          "kind": "governorate",
+          "sourceId": null,
+          "geometrySha256": "8a4df569adeebda2f0f5069ea56746b0b7860cacc39feab8c8b8421980239565"
+        },
+        "effective": {
+          "tags": {
+            "ISO3166-2": "TN-81",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية قابس",
+            "name:ar": "ولاية قابس",
+            "name:az": "Qabes (vilayət)",
+            "name:azb": "قابس",
+            "name:be": "Габес (вілает)",
+            "name:be-tarask": "Габэс (вілает)",
+            "name:bg": "Габес (област)",
+            "name:ca": "Governació de Gabès",
+            "name:ceb": "Gouvernorat de Gabès",
+            "name:cy": "Gabès (talaith)",
+            "name:de": "Gouvernement Gabès",
+            "name:el": "Γκαμπές (Κυβερνείο)",
+            "name:en": "Gabès",
+            "name:es": "Gobernación de Gabès",
+            "name:fa": "قابس",
+            "name:fi": "Gabès (kuvernementti)",
+            "name:fr": "Gouvernorat Gabès",
+            "name:frr": "Gabès (Guwernement)",
+            "name:he": "גאבס (מחוז)",
+            "name:hu": "Gabès kormányzóság",
+            "name:id": "Kegubernuran Gabès",
+            "name:it": "Gabès",
+            "name:ja": "ガベズ県",
+            "name:ko": "가베스주",
+            "name:ks": "قابس",
+            "name:lt": "Gabeso vilajetas",
+            "name:ms": "Kawasan kegabenoran Gabès",
+            "name:nl": "Gabès (gouvernement)",
+            "name:no": "Gabès (guvernement)",
+            "name:pl": "Gubernatorstwo Kabis",
+            "name:pnb": "قابس",
+            "name:pt": "Gabès (província)",
+            "name:ro": "Guvernoratul Gabès",
+            "name:ru": "Габес (вилайет)",
+            "name:sco": "Gabès Govrenorate",
+            "name:sh": "Gabes (vilajet)",
+            "name:sv": "Gabès (guvernement)",
+            "name:tr": "Kabes Vilayeti",
+            "name:uk": "Габес (вілаєт)",
+            "name:ur": "قابس",
+            "name:zh": "加貝斯省",
+            "name:zu": "Gabès Governorate",
+            "official_name": "ولاية قابس",
+            "official_name:ar": "ولاية قابس",
+            "official_name:en": "Gabès Governorate",
+            "official_name:fa": "استان قابس",
+            "official_name:fr": "Gouvernorat de Gabès",
+            "official_name:it": "Governatorato di Gabès",
+            "official_name:ur": "ولایت قابس",
+            "population": "342630",
+            "population:date": "2004",
+            "ref:tn:codegeo": "51",
+            "wikidata": "Q242263",
+            "wikipedia": "ar:ولاية قابس"
+          },
+          "kind": "governorate",
+          "sourceId": "osm",
+          "geometrySha256": "8a4df569adeebda2f0f5069ea56746b0b7860cacc39feab8c8b8421980239565"
+        }
+      },
+      {
+        "id": "osm:relation:7145378",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العكاريت",
+            "name:ar": "العكاريت",
+            "name:fr": "El Akarit",
+            "ref:tn:codegeo": "515555"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "3a3f44a042ab5d0185c725195b7e8d0b252ae245ca275a304e24a35e044f4a8f"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العكاريت",
+            "name:ar": "العكاريت",
+            "name:fr": "El Akarit",
+            "ref:tn:codegeo": "515555"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "3a3f44a042ab5d0185c725195b7e8d0b252ae245ca275a304e24a35e044f4a8f"
+        }
+      },
+      {
+        "id": "osm:relation:7145411",
+        "original": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Métouia",
+            "boundary": "administrative",
+            "name": "معتمدية المطوية",
+            "name:ar": "معتمدية المطوية",
+            "name:fr": "Délégation El Metouia",
+            "ref:tn:codegeo": "5155",
+            "ref:tn:hasc_2": "TN.GB.ME",
+            "wikidata": "Q3333752"
+          },
+          "kind": "delegation",
+          "sourceId": null,
+          "geometrySha256": "a408b7a7cd17d956fbd56e6e694a2129ba7c1b93111edb822f84485f009da2db"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Métouia",
+            "boundary": "administrative",
+            "name": "معتمدية المطوية",
+            "name:ar": "معتمدية المطوية",
+            "name:fr": "Délégation El Metouia",
+            "ref:tn:codegeo": "5155",
+            "ref:tn:hasc_2": "TN.GB.ME",
+            "wikidata": "Q3333752"
+          },
+          "kind": "delegation",
+          "sourceId": "osm",
+          "geometrySha256": "a408b7a7cd17d956fbd56e6e694a2129ba7c1b93111edb822f84485f009da2db"
+        }
+      },
+      {
+        "id": "osm:relation:7145440",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المطورية الجنوبية",
+            "name:ar": "المطورية الجنوبية",
+            "name:fr": "El Metouia Sud",
+            "ref:tn:codegeo": "515552"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "49018be55ccef06623434a724fbe3ab03df092fa14219c4bf9d611fd0fc3d804"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "ref:tn:codegeo": "515552",
+            "name": "المطوية الجنوبية",
+            "name:ar": "المطوية الجنوبية",
+            "name:fr": "El Metouia Sud"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "49018be55ccef06623434a724fbe3ab03df092fa14219c4bf9d611fd0fc3d804"
+        }
+      },
+      {
+        "id": "osm:relation:7145441",
+        "original": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المطويةالشمالية",
+            "name:ar": "المطويةالشمالية",
+            "name:fr": "El Metouia Nord",
+            "ref:tn:codegeo": "515551"
+          },
+          "kind": "sector",
+          "sourceId": null,
+          "geometrySha256": "f5981d26477163a297f839c18303708412e0d9d59fbe8f04c2600c73fc375a2f"
+        },
+        "effective": {
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "ref:tn:codegeo": "515551",
+            "name": "المطوية الشمالية",
+            "name:ar": "المطوية الشمالية",
+            "name:fr": "El Metouia Nord"
+          },
+          "kind": "sector",
+          "sourceId": "osm",
+          "geometrySha256": "f5981d26477163a297f839c18303708412e0d9d59fbe8f04c2600c73fc375a2f"
+        }
+      },
+      {
+        "id": "osm:way:158297973",
+        "original": {
+          "tags": {
+            "addr:city": "El Amarat",
+            "landuse": "residential",
+            "name": "العكاريت",
+            "name:ar": "العكاريت",
+            "name:en": "El Amarat",
+            "name:fr": "El Amarat"
+          },
+          "kind": "residential",
+          "sourceId": null,
+          "geometrySha256": "c6e0a38eb8ac0caddb4276ac5e3501b1e47857149e4fbc912a7d14051391ef7a"
+        },
+        "effective": {
+          "tags": {
+            "addr:city": "El Amarat",
+            "landuse": "residential",
+            "name": "العكاريت",
+            "name:ar": "العكاريت",
+            "name:en": "El Amarat",
+            "name:fr": "El Amarat"
+          },
+          "kind": "residential",
+          "sourceId": "osm",
+          "geometrySha256": "c6e0a38eb8ac0caddb4276ac5e3501b1e47857149e4fbc912a7d14051391ef7a"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1434956": null,
+      "osm:relation:7145378": null,
+      "osm:relation:7145411": null,
+      "osm:relation:7145440": {
+        "id": "osm:relation:7145440",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطورية الجنوبية",
+          "name:ar": "المطورية الجنوبية",
+          "name:fr": "El Metouia Sud",
+          "ref:tn:codegeo": "515552"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "المطوية الجنوبية",
+          "name:ar": "المطوية الجنوبية",
+          "name:fr": "El Metouia Sud"
+        },
+        "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+        "evidence": [
+          {
+            "source": "INS RGPH2024 three-workbook sector identity registry",
+            "officialRegistry": {
+              "file": "point-retention-reviews/current-official-sector-registry.json",
+              "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+            },
+            "sectorCode": "515552",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2862
+            },
+            "urls": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+            ]
+          }
+        ],
+        "officialIdentity": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5155",
+          "delegationFr": "El metouia",
+          "delegationAr": "المطوية",
+          "sectorCode": "515552",
+          "sectorFr": "El metouia sud",
+          "sectorAr": "المطوية الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2862
+          }
+        },
+        "unresolved": [
+          "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+        ]
+      },
+      "osm:relation:7145441": {
+        "id": "osm:relation:7145441",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطويةالشمالية",
+          "name:ar": "المطويةالشمالية",
+          "name:fr": "El Metouia Nord",
+          "ref:tn:codegeo": "515551"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "المطوية الشمالية",
+          "name:ar": "المطوية الشمالية",
+          "name:fr": "El Metouia Nord"
+        },
+        "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+        "evidence": [
+          {
+            "source": "INS RGPH2024 three-workbook sector identity registry",
+            "officialRegistry": {
+              "file": "point-retention-reviews/current-official-sector-registry.json",
+              "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+            },
+            "sectorCode": "515551",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2860
+            },
+            "urls": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+            ]
+          }
+        ],
+        "officialIdentity": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5155",
+          "delegationFr": "El metouia",
+          "delegationAr": "المطوية",
+          "sectorCode": "515551",
+          "sectorFr": "El metouia nord",
+          "sectorAr": "المطوية الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2860
+          }
+        },
+        "unresolved": [
+          "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+        ]
+      },
+      "osm:way:158297973": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "coordinateContextMembership": {
+      "osm:relation:1434956": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7145378": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7145411": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7145440": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7145441": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:559400503",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:559400503",
+          "sourceId": "osm",
+          "name": "المطوية",
+          "aliases": [
+            "Métouia"
+          ],
+          "kind": "village",
+          "parentName": "المطوية الجنوبية",
+          "contextAliases": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطوية الجنوبية",
+            "معتمدية المطوية"
+          ],
+          "governorateId": 347,
+          "lat": 33.9589064,
+          "lng": 10.0014342,
+          "delegationId": 1025,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:559400503"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7145378",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7145378",
+          "sourceId": "osm",
+          "name": "العكاريت",
+          "aliases": [
+            "El Akarit"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المطوية",
+          "contextAliases": [
+            "Délégation El Metouia",
+            "Métouia",
+            "معتمدية المطوية"
+          ],
+          "governorateId": 347,
+          "lat": 34.077055,
+          "lng": 9.975395,
+          "delegationId": 1025,
+          "hasBoundary": true,
+          "bbox": [
+            9.943368,
+            34.043475,
+            10.008513,
+            34.110875
+          ],
+          "areaKm2": 34.23280402513283,
+          "pickerGroupId": "osm:relation:7145378",
+          "offset": 2191664,
+          "length": 1940
+        },
+        "packedGeometrySha256": "9a6ebc57a5790fe3defe172246f6e4bf20736ee8a44afddcc733253e0f2a67d3"
+      },
+      {
+        "id": "osm:relation:7145440",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7145440",
+          "sourceId": "osm",
+          "name": "المطوية الجنوبية",
+          "aliases": [
+            "El Metouia Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المطوية",
+          "contextAliases": [
+            "Délégation El Metouia",
+            "Métouia",
+            "معتمدية المطوية"
+          ],
+          "governorateId": 347,
+          "lat": 33.945385,
+          "lng": 9.972873,
+          "delegationId": 1025,
+          "hasBoundary": true,
+          "bbox": [
+            9.910928,
+            33.911945,
+            10.026282,
+            33.975615
+          ],
+          "areaKm2": 41.15208843364106,
+          "pickerGroupId": "osm:relation:7145440",
+          "offset": 2414272,
+          "length": 2220
+        },
+        "packedGeometrySha256": "43c839c68605b433caf323fdaa62de92852c826b5baeab2a06984587e2f27556"
+      },
+      {
+        "id": "osm:relation:7145441",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7145441",
+          "sourceId": "osm",
+          "name": "المطوية الشمالية",
+          "aliases": [
+            "El Metouia Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المطوية",
+          "contextAliases": [
+            "Délégation El Metouia",
+            "Métouia",
+            "معتمدية المطوية"
+          ],
+          "governorateId": 347,
+          "lat": 34.030415,
+          "lng": 10.015376,
+          "delegationId": 1025,
+          "hasBoundary": true,
+          "bbox": [
+            9.980391,
+            33.940825,
+            10.057294,
+            34.119475
+          ],
+          "areaKm2": 69.34537911106504,
+          "pickerGroupId": "osm:relation:7145441",
+          "offset": 2416492,
+          "length": 6364
+        },
+        "packedGeometrySha256": "9e0fbf806439de9e68beb8fd853d927ebe849295d49f641667c060dcb3b40725"
+      },
+      {
+        "id": "osm:way:158297973",
+        "kind": "residential",
+        "currentMetadata": {
+          "id": "osm:way:158297973",
+          "sourceId": "osm",
+          "name": "العكاريت",
+          "aliases": [
+            "El Amarat",
+            "العمارات"
+          ],
+          "kind": "residential",
+          "parentName": "معتمدية المطوية",
+          "contextAliases": [
+            "Délégation El Metouia",
+            "El Akarit",
+            "Métouia",
+            "العكاريت",
+            "معتمدية المطوية"
+          ],
+          "governorateId": 347,
+          "lat": 34.054714,
+          "lng": 9.987073,
+          "delegationId": 1025,
+          "hasBoundary": true,
+          "bbox": [
+            9.985729,
+            34.053548,
+            9.98968,
+            34.055771
+          ],
+          "areaKm2": 0.06455994731545793,
+          "pickerGroupId": "osm:relation:7145378",
+          "offset": 5246564,
+          "length": 100
+        },
+        "packedGeometrySha256": "89ba5b1e8a1e5a1ca04817aa9e5a6a1abb71f169dae1290d08cd85f6eb792fe3"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:559400503": [
+        "osm:node:559400503"
+      ],
+      "osm:relation:7145378": [
+        "osm:relation:7145378",
+        "osm:way:158297973"
+      ],
+      "osm:relation:7145440": [
+        "osm:relation:7145440"
+      ],
+      "osm:relation:7145441": [
+        "osm:relation:7145441"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7145378": [
+        "osm:relation:7145378",
+        "osm:way:158297973"
+      ],
+      "osm:relation:7145440": [
+        "osm:relation:7145440"
+      ],
+      "osm:relation:7145441": [
+        "osm:relation:7145441"
+      ],
+      "delegation:1025": [
+        "osm:node:559400503"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "schemaVersion": 1,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:559400503",
+        "osm:relation:7145411"
+      ],
+      "effective": [
+        "osm:node:559400503",
+        "osm:relation:7145411"
+      ]
+    }
+  }
+}

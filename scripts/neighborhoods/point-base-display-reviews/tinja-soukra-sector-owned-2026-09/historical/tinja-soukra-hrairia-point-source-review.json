@@ -1,0 +1,1510 @@
+{
+  "status": "BOUNDED_SOURCE_REVIEW_COMPLETE",
+  "createdAt": "2026-09-12T12:31:52.840089+00:00",
+  "baselineMetadataSha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+  "baselineCurationCount": 168,
+  "inputPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+      "bytes": 1883638
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "db243ff335c30f833ce78b23d3d7d380931c1de2fa67c8c8583cf48ef61d52f6",
+      "bytes": 277520
+    },
+    "pickerManifest": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877",
+      "bytes": 554334
+    },
+    "engine": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+      "bytes": 473357
+    },
+    "governorates": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "officialSectorRegistry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "triage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-six-current-locality-verification-triage.json",
+      "sha256": "c6e5eb0c92dc07384d3cb8030e9de52147ae693368e7e0d69473ed635a654243",
+      "bytes": 45110
+    },
+    "phoneReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\borma-next-six-beni-mhira-phone-review-20260912.json",
+      "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f",
+      "bytes": 11637
+    }
+  },
+  "sourceRetrievals": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\retrieval-manifest.json",
+      "sha256": "7ac0344351d7b40f597756486517137aa29ac6556fb1f619e57a0e56f6d99d84",
+      "bytes": 17540
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\primary-retrieval-manifest.json",
+      "sha256": "88b1ac0f6a4126dff7d6d569aa5c4c17fb2ba57267eaff86477a72f6d16afb22",
+      "bytes": 8422
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\tinja-primary-retrieval-manifest.json",
+      "sha256": "d32edc326af299ef5a85fd0f42fae3ef6b381f262a42db069455e6406e51dfbe",
+      "bytes": 2147
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\tinja-article-retrieval.json",
+      "sha256": "644efcf36907922f755a06cbcaa71cd2014dd78bb4911074b22377e931a905aa",
+      "bytes": 3003
+    }
+  ],
+  "reusedPrimaryRetrieval": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\retrieval-manifest.json",
+    "sha256": "afa76c374caf480fe0dfd937615a02941c60eeb892ef53bdbab4a97280a51ab8",
+    "bytes": 11317
+  },
+  "derivedEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\primary-complete-page-derivation.json",
+    "sha256": "ff8e1593714dae361a88dd988ef0dda5d85b4dbdfc7feb540db85de4605a3707",
+    "bytes": 3766
+  },
+  "candidates": [
+    {
+      "id": "osm:node:1109384824",
+      "baseId": 565,
+      "currentRaw": {
+        "id": "osm:node:1109384824",
+        "sourceId": "osm",
+        "name": "تينجة",
+        "aliases": [
+          "Tinja"
+        ],
+        "kind": "village",
+        "parentName": "قنقلة",
+        "contextAliases": [
+          "Délégation Tinja",
+          "Guengla",
+          "Tinja",
+          "قنقلة",
+          "معتمدية تينجة"
+        ],
+        "governorateId": 361,
+        "lat": 37.1639232,
+        "lng": 9.7705573,
+        "delegationId": 565,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1109384824"
+      },
+      "currentBase": {
+        "governor": {
+          "id": 361,
+          "nomFr": "Bizerte",
+          "nomAr": "بنزرت",
+          "nomEn": "Bizerte",
+          "lat": 37.2744,
+          "lng": 9.8739
+        },
+        "base": {
+          "id": 565,
+          "nomFr": "Tinja",
+          "nomAr": "تينجة",
+          "nomEn": "Tinja",
+          "lat": 37.1634,
+          "lng": 9.7651
+        }
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-current.json",
+        "sha256": "763557e325f2fa49bb0495ff740eb9b56d156541c52d65f54314e11db49a6cfb",
+        "bytes": 572
+      },
+      "sourceHistory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-history.json",
+        "sha256": "7d63522df1f0209d887032debb4e62d1a4c81528dcce2f1b17e1562d47b1abd2",
+        "bytes": 2708
+      },
+      "sourceNodeIdentity": {
+        "type": "node",
+        "id": 1109384824,
+        "lat": 37.1639232,
+        "lon": 9.7705573,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "version": 7,
+        "changeset": 98539602,
+        "user": "user_11422772",
+        "uid": 11422772,
+        "tags": {
+          "addr:governorate": "Bizerte",
+          "name": "تينجة",
+          "name:ar": "تينجة",
+          "name:en": "Tinja",
+          "name:fr": "Tinja",
+          "place": "village"
+        }
+      },
+      "sourceHistorySummary": [
+        {
+          "version": 1,
+          "timestamp": "2011-01-18T19:21:51Z",
+          "changeset": 7013676,
+          "lat": 37.166067,
+          "lng": 9.7697796,
+          "tags": {
+            "name": "Tinjah",
+            "place": "village"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2011-02-18T18:02:02Z",
+          "changeset": 7324721,
+          "lat": 37.1660671,
+          "lng": 9.7697795,
+          "tags": {
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:fr": "Tinjah",
+            "place": "village"
+          }
+        },
+        {
+          "version": 3,
+          "timestamp": "2011-06-02T18:26:25Z",
+          "changeset": 8322747,
+          "lat": 37.1639232,
+          "lng": 9.7705573,
+          "tags": {
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Bizerte",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:fr": "Tinjah",
+            "place": "village"
+          }
+        },
+        {
+          "version": 4,
+          "timestamp": "2011-12-12T14:51:55Z",
+          "changeset": 10099690,
+          "lat": 37.1639232,
+          "lng": 9.7705573,
+          "tags": {
+            "addr:city": "Tinjah",
+            "addr:country": "TN",
+            "addr:governorate": "Bizerte",
+            "is_in": "Bizerte; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Bizerte",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:fr": "Tinjah",
+            "place": "village"
+          }
+        },
+        {
+          "version": 5,
+          "timestamp": "2016-11-20T21:49:18Z",
+          "changeset": 43833104,
+          "lat": 37.1639232,
+          "lng": 9.7705573,
+          "tags": {
+            "addr:city": "Tinjah",
+            "addr:governorate": "Bizerte",
+            "is_in": "Bizerte; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Bizerte",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:fr": "Tinjah",
+            "place": "village"
+          }
+        },
+        {
+          "version": 6,
+          "timestamp": "2020-07-16T12:36:12Z",
+          "changeset": 88089196,
+          "lat": 37.1639232,
+          "lng": 9.7705573,
+          "tags": {
+            "addr:city": "Tinjah",
+            "addr:governorate": "Bizerte",
+            "is_in": "Bizerte;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Bizerte",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:fr": "Tinja",
+            "place": "village"
+          }
+        },
+        {
+          "version": 7,
+          "timestamp": "2021-02-02T00:59:52Z",
+          "changeset": 98539602,
+          "lat": 37.1639232,
+          "lng": 9.7705573,
+          "tags": {
+            "addr:governorate": "Bizerte",
+            "name": "تينجة",
+            "name:ar": "تينجة",
+            "name:en": "Tinja",
+            "name:fr": "Tinja",
+            "place": "village"
+          }
+        }
+      ],
+      "cacheParityExact": true,
+      "triageToCurrentRawParityExact": true,
+      "directCurrentCurationDecisions": [],
+      "currentPickerRawOwners": [
+        {
+          "id": "osm:relation:7119649",
+          "sourceId": "osm",
+          "name": "تينجة",
+          "aliases": [
+            "Tinja"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تينجة",
+          "contextAliases": [
+            "Délégation Tinja",
+            "Tinja",
+            "معتمدية تينجة"
+          ],
+          "governorateId": 361,
+          "lat": 37.148433,
+          "lng": 9.762066,
+          "delegationId": 565,
+          "hasBoundary": true,
+          "bbox": [
+            9.748119,
+            37.125312,
+            9.777491,
+            37.171361
+          ],
+          "areaKm2": 6.902821611661433,
+          "pickerGroupId": "delegation:565",
+          "offset": 1121756,
+          "length": 580
+        }
+      ],
+      "existingStrictSectorPickerRecord": {
+        "id": "osm:relation:7119649",
+        "targetDelegationId": 565,
+        "expectedGovernorateId": 361,
+        "expectedBase": {
+          "nomAr": "تينجة",
+          "lat": 37.1634,
+          "lng": 9.7651
+        },
+        "expectedExistingMemberIds": [
+          "osm:relation:7119649"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:565"
+        ],
+        "members": [
+          {
+            "id": "osm:relation:7119649",
+            "expectedKind": "sector",
+            "expectedSourceId": "osm",
+            "expectedName": "تينجة",
+            "expectedParentName": "معتمدية تينجة",
+            "expectedDelegationId": 565,
+            "expectedLat": 37.148433,
+            "expectedLng": 9.762066,
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "تينجة",
+              "name:ar": "تينجة",
+              "name:fr": "Tinja",
+              "ref:tn:codegeo": "175951"
+            },
+            "originalGeometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f",
+            "packedGeometrySha256": "544f4a7913a643e769d5f57a9b086fcf71e95c3d4bd464cd292f02e212cf7fc9"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "method": "current_coded_sector",
+            "id": "osm:relation:7119649",
+            "code": "175951",
+            "currentOfficialRecord": {
+              "governorateCode": "17",
+              "governorateFr": "Bizerte",
+              "governorateAr": "بنزرت",
+              "delegationCode": "1759",
+              "delegationFr": "Tinja",
+              "delegationAr": "تينجة",
+              "sectorCode": "175951",
+              "sectorFr": "Tinja",
+              "sectorAr": "تينجة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18802,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 822,
+                "Nombre_de_menages_par_Secteurs.xlsx": 821
+              }
+            },
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "تينجة",
+              "name:ar": "تينجة",
+              "name:fr": "Tinja",
+              "ref:tn:codegeo": "175951"
+            },
+            "effectiveOriginalGeometrySha256": "e927b680e1cf2d8c809a2738b40e4c86ee9437a45657630c7a363f2bfd6df98f"
+          },
+          {
+            "method": "current_coded_namesake_administrative_parent",
+            "id": "osm:relation:7151752",
+            "code": "1759",
+            "name": "معتمدية تينجة",
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Tinja",
+              "boundary": "administrative",
+              "name": "معتمدية تينجة",
+              "name:ar": "معتمدية تينجة",
+              "name:fr": "Délégation Tinja",
+              "ref:tn:codegeo": "1759",
+              "ref:tn:hasc_2": "TN.BZ.TI",
+              "wikidata": "Q3529188"
+            },
+            "effectiveOriginalGeometrySha256": "0187eb28b3139acae59d90ab9f73219fe5284999c3f35a6b302a48ea696c894e",
+            "currentOfficialRecord": {
+              "governorateCode": "17",
+              "governorateAr": "بنزرت",
+              "governorateFr": "Bizerte",
+              "delegationCode": "1759",
+              "delegationAr": "تينجة",
+              "delegationFr": "Tinja"
+            }
+          }
+        ]
+      },
+      "officialSectorRowsToPreserve": [
+        {
+          "governorateCode": "17",
+          "governorateFr": "Bizerte",
+          "governorateAr": "بنزرت",
+          "delegationCode": "1759",
+          "delegationFr": "Tinja",
+          "delegationAr": "تينجة",
+          "sectorCode": "175951",
+          "sectorFr": "Tinja",
+          "sectorAr": "تينجة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18802,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 822,
+            "Nombre_de_menages_par_Secteurs.xlsx": 821
+          }
+        },
+        {
+          "governorateCode": "17",
+          "governorateFr": "Bizerte",
+          "governorateAr": "بنزرت",
+          "delegationCode": "1759",
+          "delegationFr": "Tinja",
+          "delegationAr": "تينجة",
+          "sectorCode": "175952",
+          "sectorFr": "Guengla",
+          "sectorAr": "قنقلة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18836,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 823,
+            "Nombre_de_menages_par_Secteurs.xlsx": 822
+          }
+        },
+        {
+          "governorateCode": "17",
+          "governorateFr": "Bizerte",
+          "governorateAr": "بنزرت",
+          "delegationCode": "1759",
+          "delegationFr": "Tinja",
+          "delegationAr": "تينجة",
+          "sectorCode": "175953",
+          "sectorFr": "Ez-zarour",
+          "sectorAr": "الزعرور",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18870,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 825,
+            "Nombre_de_menages_par_Secteurs.xlsx": 824
+          }
+        }
+      ],
+      "supplementaryPhone": {
+        "previousCoordinateReview": {
+          "id": "osm:node:1109384824",
+          "record": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1109384824-1.json",
+            "sha256": "ce70c58bb3c8fe5d8b9b2904fe472986fe3f210df90c3ebcc9648fbda4e1f75f"
+          },
+          "screenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1109384824-1.png",
+            "sha256": "2436a6d945ea35750a4d919f8b933f83e0701e530325af6b9c4bed52b76abcc4"
+          },
+          "query": "37.1639232,9.7705573",
+          "rootVisualConclusion": "Unnamed pin within the street grid near Hay El Iqbal/حي الإقبال in Tinja. The narrower neighborhood label is contextual evidence, not authorization to rename the broader Tinja point or invent its boundary.",
+          "rootViewed": true
+        },
+        "frozenRootReview": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\borma-next-six-beni-mhira-phone-review-20260912.json",
+          "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f",
+          "bytes": 11637
+        },
+        "newNameRecord": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1109384824-2.json",
+          "sha256": "ec37bea3b0104d54773b9ee53d9c3196ea29a8f7a04bcfc71d0a21f9d2727168",
+          "bytes": 968
+        },
+        "newNameScreenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1109384824-2.png",
+          "sha256": "a386df6a014ab2870d009a98fff030c18bc2111cb2a6daf6bac2c5669823fa05",
+          "bytes": 1158586
+        },
+        "newNameQuery": "Tinja Tunisie",
+        "newNameUiText": [
+          "تينجة",
+          "Tinja",
+          "تینجة، تونس‎",
+          "الاتجاهات إلى تينجة",
+          "الاتجاهات",
+          "مشاركة تينجة",
+          "مشاركة",
+          "حفظ تينجة في القوائم",
+          "حفظ",
+          "عرض المزيد من الإجراءات لهذا المكان",
+          "المزيد",
+          "صورة",
+          "إغلاق",
+          "Tinja Tunisie",
+          "محو",
+          "المطاعم",
+          "مَعالِم الجذب السياحي",
+          "الفنادق",
+          "المتنزهات"
+        ],
+        "newNameVisualAssessmentOrigin": "Root personally viewed the whole image and sent conclusion in task message; this source report reads its observation JSON and pins the original screenshot. No new phone action.",
+        "boundaryAuthority": false
+      },
+      "disposition": {
+        "status": "BROAD_TOWN_IDENTITY_SUPPORTED_DISPLAY_ASSOCIATION_NOT_YET_APPROVED",
+        "sourceIdentity": "Authentic village node named Tinja since2011. Coordinates have been unchanged sincev3 inJune2011; changes since then concern multilingual/context tags. The primary Interior article explicitly identifies the inhabited city Tinja, and MEHAT identifies its urban agglomeration with Menzel Bourguiba.",
+        "primaryEvidence": [
+          {
+            "role": "official_inhabited_city_identity",
+            "file": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\interior-tinja-city-article.html",
+              "sha256": "cbdbd3274bad4e07bc780c41d595a4ccdbe219633f775139eee4809e24cd21e7",
+              "bytes": 51445
+            },
+            "url": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8",
+            "exactRequiredText": "مدينة تينجة",
+            "qualification": "2020 public incident article used only for locality wording, not incident details or boundary assertions."
+          },
+          {
+            "role": "official_urban_agglomeration_context",
+            "file": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-urban-planning.html",
+              "sha256": "c3170bececcf41da05792e76e7d9fdc12194f0b83cf26291e7e0ebf58479e108",
+              "bytes": 181081
+            },
+            "url": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/",
+            "exactRequiredText": "L'agglomération urbaine de Menzel Bourguiba - Tinja",
+            "qualification": "The planning area is stated in terms of municipal territories; it is not a polygon of the inhabited Tinja town."
+          }
+        ],
+        "narrowerPhoneLabel": "Hay Iqbal is a nearby neighborhood label, not an authentic alternative name on the OSM point. Neither that label nor the current Guengla subtitle establishes that the broad Tinja point is erroneous.",
+        "nextAction": "If root accepts the bounded same-town display scope, derive the finite three-entity group preserving the existing coded-sector owner7119649 and every current sector. Review a narrowly scoped town/village-plus-existing-sector contract before source staging; do not relabel the village as suburb to fit the current contract."
+      }
+    },
+    {
+      "id": "osm:node:7390818324",
+      "baseId": 532,
+      "currentRaw": {
+        "id": "osm:node:7390818324",
+        "sourceId": "osm",
+        "name": "سكرة",
+        "aliases": [
+          "La Soukra"
+        ],
+        "kind": "village",
+        "parentName": "البساتين",
+        "contextAliases": [
+          "Délégation Soukra",
+          "El Bassatine",
+          "La Soukra",
+          "البساتين",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.8749751,
+        "lng": 10.2454267,
+        "delegationId": 532,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:7390818324"
+      },
+      "currentBase": {
+        "governor": {
+          "id": 358,
+          "nomFr": "Ariana",
+          "nomAr": "اريانة",
+          "nomEn": "Ariana",
+          "lat": 36.8625,
+          "lng": 10.1956
+        },
+        "base": {
+          "id": 532,
+          "nomFr": "Soukra",
+          "nomAr": "سكرة",
+          "nomEn": "Soukra",
+          "lat": 36.8791,
+          "lng": 10.2656
+        }
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-current.json",
+        "sha256": "815b87cab09e395612c7238dd42a188089475def4a11fcec997e9ad006eef38e",
+        "bytes": 631
+      },
+      "sourceHistory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-history.json",
+        "sha256": "0448dc12d8e4e276eaca90fe87c76081c363327e706b11cb4d7d7b83560ed24d",
+        "bytes": 1219
+      },
+      "sourceNodeIdentity": {
+        "type": "node",
+        "id": 7390818324,
+        "lat": 36.8749751,
+        "lon": 10.2454267,
+        "timestamp": "2023-08-27T13:23:50Z",
+        "version": 3,
+        "changeset": 140451568,
+        "user": "tg4567",
+        "uid": 12500589,
+        "tags": {
+          "name": "سكرة",
+          "name:ar": "سكرة",
+          "name:en": "La Soukra",
+          "name:fr": "La Soukra",
+          "place": "village",
+          "wikidata": "Q678697",
+          "wikimedia_commons": "Category:La Soukra",
+          "wikipedia": "en:La Soukra"
+        }
+      },
+      "sourceHistorySummary": [
+        {
+          "version": 1,
+          "timestamp": "2020-04-10T21:30:18Z",
+          "changeset": 83383073,
+          "lat": 36.8749751,
+          "lng": 10.2454267,
+          "tags": {
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:fr": "La Soukra",
+            "place": "village",
+            "wikidata": "Q678697"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2021-02-02T00:59:52Z",
+          "changeset": 98539602,
+          "lat": 36.8749751,
+          "lng": 10.2454267,
+          "tags": {
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:en": "La Soukra",
+            "name:fr": "La Soukra",
+            "place": "village",
+            "wikidata": "Q678697"
+          }
+        },
+        {
+          "version": 3,
+          "timestamp": "2023-08-27T13:23:50Z",
+          "changeset": 140451568,
+          "lat": 36.8749751,
+          "lng": 10.2454267,
+          "tags": {
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:en": "La Soukra",
+            "name:fr": "La Soukra",
+            "place": "village",
+            "wikidata": "Q678697",
+            "wikimedia_commons": "Category:La Soukra",
+            "wikipedia": "en:La Soukra"
+          }
+        }
+      ],
+      "cacheParityExact": true,
+      "triageToCurrentRawParityExact": true,
+      "directCurrentCurationDecisions": [],
+      "currentPickerRawOwners": [
+        {
+          "id": "osm:relation:7114900",
+          "sourceId": "osm",
+          "name": "سكرة",
+          "aliases": [
+            "Soukra"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سكرة",
+          "contextAliases": [
+            "Délégation Soukra",
+            "La Soukra",
+            "معتمدية سكرة"
+          ],
+          "governorateId": 358,
+          "lat": 36.876348,
+          "lng": 10.258199,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.236409,
+            36.861799,
+            10.288739,
+            36.890763
+          ],
+          "areaKm2": 8.467930614714383,
+          "pickerGroupId": "delegation:532",
+          "offset": 935976,
+          "length": 980
+        }
+      ],
+      "existingStrictSectorPickerRecord": {
+        "id": "osm:relation:7114900",
+        "targetDelegationId": 532,
+        "expectedGovernorateId": 358,
+        "expectedBase": {
+          "nomAr": "سكرة",
+          "lat": 36.8791,
+          "lng": 10.2656
+        },
+        "expectedExistingMemberIds": [
+          "osm:relation:7114900"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:532"
+        ],
+        "members": [
+          {
+            "id": "osm:relation:7114900",
+            "expectedKind": "sector",
+            "expectedSourceId": "osm",
+            "expectedName": "سكرة",
+            "expectedParentName": "معتمدية سكرة",
+            "expectedDelegationId": 532,
+            "expectedLat": 36.876348,
+            "expectedLng": 10.258199,
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "int_name": "Soukra",
+              "name": "سكرة",
+              "name:ar": "سكرة",
+              "name:fr": "Soukra",
+              "ref:tn:codegeo": "125251"
+            },
+            "originalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f",
+            "packedGeometrySha256": "db4b5309477bcfe72d8156e17be76fe3a94f2bc0e12f9967c08132815471e1e1"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "method": "current_coded_sector",
+            "id": "osm:relation:7114900",
+            "code": "125251",
+            "currentOfficialRecord": {
+              "governorateCode": "12",
+              "governorateFr": "Ariana",
+              "governorateAr": "أريانة",
+              "delegationCode": "1252",
+              "delegationFr": "Soukra",
+              "delegationAr": "سكرة",
+              "sectorCode": "125251",
+              "sectorFr": "Soukra",
+              "sectorAr": "سكرة",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5849,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 184,
+                "Nombre_de_menages_par_Secteurs.xlsx": 184
+              }
+            },
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "int_name": "Soukra",
+              "name": "سكرة",
+              "name:ar": "سكرة",
+              "name:fr": "Soukra",
+              "ref:tn:codegeo": "125251"
+            },
+            "effectiveOriginalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f"
+          },
+          {
+            "method": "current_coded_namesake_administrative_parent",
+            "id": "osm:relation:4184709",
+            "code": "1252",
+            "name": "معتمدية سكرة",
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "5",
+              "alt_name:fr": "La Soukra",
+              "boundary": "administrative",
+              "name": "معتمدية سكرة",
+              "name:ar": "معتمدية سكرة",
+              "name:fr": "Délégation Soukra",
+              "ref:tn:codegeo": "1252",
+              "ref:tn:hasc_2": "TN.AN.LS",
+              "wikidata": "Q3212913"
+            },
+            "effectiveOriginalGeometrySha256": "54330899ae5abfe895e9aad73a4d9106c3ca4d91a62669df72b52eda03cd728c",
+            "currentOfficialRecord": {
+              "governorateCode": "12",
+              "governorateAr": "أريانة",
+              "governorateFr": "Ariana",
+              "delegationCode": "1252",
+              "delegationAr": "سكرة",
+              "delegationFr": "Soukra"
+            }
+          }
+        ]
+      },
+      "officialSectorRowsToPreserve": [
+        {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125251",
+          "sectorFr": "Soukra",
+          "sectorAr": "سكرة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5849,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 184,
+            "Nombre_de_menages_par_Secteurs.xlsx": 184
+          }
+        },
+        {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125252",
+          "sectorFr": "Dar fadhal",
+          "sectorAr": "دار فضال",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5883,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 185,
+            "Nombre_de_menages_par_Secteurs.xlsx": 185
+          }
+        },
+        {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125253",
+          "sectorFr": "El bousten",
+          "sectorAr": "البستان",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5917,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 186,
+            "Nombre_de_menages_par_Secteurs.xlsx": 186
+          }
+        },
+        {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125254",
+          "sectorFr": "Chotrana",
+          "sectorAr": "شطرانة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5951,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 187,
+            "Nombre_de_menages_par_Secteurs.xlsx": 187
+          }
+        },
+        {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125255",
+          "sectorFr": "Borj el ouzir",
+          "sectorAr": "برج الوزير",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5985,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 188,
+            "Nombre_de_menages_par_Secteurs.xlsx": 188
+          }
+        },
+        {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125256",
+          "sectorFr": "Ennasim",
+          "sectorAr": "النسيم",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6019,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 189,
+            "Nombre_de_menages_par_Secteurs.xlsx": 189
+          }
+        },
+        {
+          "governorateCode": "12",
+          "governorateFr": "Ariana",
+          "governorateAr": "أريانة",
+          "delegationCode": "1252",
+          "delegationFr": "Soukra",
+          "delegationAr": "سكرة",
+          "sectorCode": "125257",
+          "sectorFr": "Etaamir kamesse",
+          "sectorAr": "التعمير الخامس",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6053,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 190,
+            "Nombre_de_menages_par_Secteurs.xlsx": 190
+          }
+        }
+      ],
+      "supplementaryPhone": {
+        "previousCoordinateReview": {
+          "id": "osm:node:7390818324",
+          "record": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_7390818324-1.json",
+            "sha256": "8b1654dfdebcb7df1b0c278183f0956b3c607286e84209bd13bc6bfb44a30a56"
+          },
+          "screenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_7390818324-1.png",
+            "sha256": "ff37234fcab7fe116c023f29c0950df7d6cb3ac8ad944a1b769835f3184204b3"
+          },
+          "query": "36.8749751,10.2454267",
+          "rootVisualConclusion": "Coordinate query selected Place de l'Equitation monument beside Golf Carthage/Centre Golf Soukra. The nearby POI confirms context only; the catalog's town point is not reclassified as that monument.",
+          "rootViewed": true
+        },
+        "frozenRootReview": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\borma-next-six-beni-mhira-phone-review-20260912.json",
+          "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f",
+          "bytes": 11637
+        },
+        "newNameRecord": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_7390818324-2.json",
+          "sha256": "de2aee63da221b41fa90d60b56118d9120fdfff81d6a5cbea9458856b3192fa2",
+          "bytes": 1052
+        },
+        "newNameScreenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_7390818324-2.png",
+          "sha256": "962e2ee0fcc1e1672b4e44eb9e15148d1c50c948e546d84ba4fcc66d117c47f3",
+          "bytes": 1366087
+        },
+        "newNameQuery": "La Soukra Tunisie",
+        "newNameUiText": [
+          "عرض صور سكرة من \"التجوّل الافتراضي\"",
+          "سكرة",
+          "La Soukra",
+          "تونس‎",
+          "الاتجاهات إلى سكرة",
+          "الاتجاهات",
+          "مشاركة سكرة",
+          "مشاركة",
+          "حفظ سكرة في القوائم",
+          "حفظ",
+          "عرض المزيد من الإجراءات لهذا المكان",
+          "المزيد",
+          "صورة",
+          "فيديو",
+          "إغلاق",
+          "La Soukra Tunisie",
+          "محو",
+          "المطاعم",
+          "مَعالِم الجذب السياحي",
+          "الفنادق",
+          "المتنزهات"
+        ],
+        "newNameVisualAssessmentOrigin": "Root personally viewed the whole image and sent conclusion in task message; this source report reads its observation JSON and pins the original screenshot. No new phone action.",
+        "boundaryAuthority": false
+      },
+      "disposition": {
+        "status": "BROAD_LOCALITY_IDENTITY_SUPPORTED_DISPLAY_ASSOCIATION_NOT_YET_APPROVED",
+        "sourceIdentity": "The authentic village point has always been La Soukra sincecreation2020 at the current coordinate. The originalversion already carried WikidataQ678697; later edits only added English and Wikimedia/Wikipedia links. It was never tagged as a monument, golf facility or named Bassatine component. MEHAT explicitly uses Soukra as a locality and shows inhabited urban land in its delegation while distinguishing the Soukra/Bassatine sectors.",
+        "primaryEvidence": [
+          {
+            "role": "official_locality_identity_and_scope",
+            "file": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\mehat-ariana-atlas.pdf",
+              "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800",
+              "bytes": 15340414
+            },
+            "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf",
+            "derivedCompletePages": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\primary-complete-page-derivation.json",
+              "sha256": "ff8e1593714dae361a88dd988ef0dda5d85b4dbdfc7feb540db85de4605a3707",
+              "bytes": 3766
+            },
+            "physicalPages": [
+              39,
+              71,
+              72
+            ],
+            "printedPages": [
+              34,
+              66,
+              67
+            ],
+            "exactRequiredText": "Certaines localités (Soukra, Raoued, Kalaat Andalous) sont",
+            "qualification": "Historical atlas supports a broader locality and separate administrative sectors; it does not survey the exact village-point position or define one present-day town footprint."
+          }
+        ],
+        "narrowerPhoneLabel": "The selected Place de l’Equitation monument is a nearby point of interest, not proof that the source village is a monument. The later La Soukra name card around the urban/Golf vicinity corroborates broad context only.",
+        "nextAction": "If root accepts the bounded broader-locality display identity, derive the complete three-entity group preserving sector7114900 and all other1252 sectors. Existing retainedTownPoint and suburb-only deferred contracts do not cover this village-plus-sector case. No coordinate, sector or POI rename is supported."
+      }
+    },
+    {
+      "id": "osm:node:3145829327",
+      "baseId": 397,
+      "currentRaw": {
+        "id": "osm:node:3145829327",
+        "sourceId": "osm",
+        "name": "الحرايرية",
+        "aliases": [
+          "El Hrairia"
+        ],
+        "kind": "village",
+        "parentName": "الزهور الخامس",
+        "contextAliases": [
+          "Délégation El Hrairia",
+          "Ezzouhour V",
+          "Hraïria",
+          "الزهور الخامس",
+          "معتمدية الحرائرية"
+        ],
+        "governorateId": 342,
+        "lat": 36.7868778,
+        "lng": 10.1056176,
+        "delegationId": 398,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:3145829327"
+      },
+      "currentBase": {
+        "governor": {
+          "id": 342,
+          "nomFr": "Tunis",
+          "nomAr": "تونس",
+          "nomEn": "Tunis",
+          "lat": 36.8065,
+          "lng": 10.1815
+        },
+        "base": {
+          "id": 397,
+          "nomFr": "El Hrairia",
+          "nomAr": "الحرايرية",
+          "nomEn": "El Hrairia",
+          "lat": 36.789,
+          "lng": 10.1213
+        }
+      },
+      "sourceNode": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-current.json",
+        "sha256": "89e0df690a385068619cce4365ce7e5a4ffae9a555d3c00f11961acbcfc606d7",
+        "bytes": 570
+      },
+      "sourceHistory": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-history.json",
+        "sha256": "65e0d33f6308c1d367d13fd2cc459a4d239b45a6e987828528586e5f5e7d37ac",
+        "bytes": 848
+      },
+      "sourceNodeIdentity": {
+        "type": "node",
+        "id": 3145829327,
+        "lat": 36.7868778,
+        "lon": 10.1056176,
+        "timestamp": "2021-02-01T19:14:03Z",
+        "version": 2,
+        "changeset": 98530544,
+        "user": "user_11422772",
+        "uid": 11422772,
+        "tags": {
+          "name": "الحرايرية",
+          "name:ar": "الحرايرية",
+          "name:en": "El Hrairia",
+          "name:fr": "El Hrairia",
+          "place": "village"
+        }
+      },
+      "sourceHistorySummary": [
+        {
+          "version": 1,
+          "timestamp": "2014-10-23T16:40:08Z",
+          "changeset": 26282158,
+          "lat": 36.7868778,
+          "lng": 10.1056176,
+          "tags": {
+            "name": "الحرايرية",
+            "name:ar": "الحرايرية",
+            "name:fr": "El Hrairia",
+            "place": "village"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2021-02-01T19:14:03Z",
+          "changeset": 98530544,
+          "lat": 36.7868778,
+          "lng": 10.1056176,
+          "tags": {
+            "name": "الحرايرية",
+            "name:ar": "الحرايرية",
+            "name:en": "El Hrairia",
+            "name:fr": "El Hrairia",
+            "place": "village"
+          }
+        }
+      ],
+      "cacheParityExact": true,
+      "triageToCurrentRawParityExact": true,
+      "directCurrentCurationDecisions": [],
+      "currentPickerRawOwners": [
+        {
+          "id": "osm:relation:7201587",
+          "sourceId": "osm",
+          "name": "الحرايرية",
+          "aliases": [
+            "El-Hrairia"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحرائرية",
+          "contextAliases": [
+            "Délégation El Hrairia",
+            "Hraïria",
+            "معتمدية الحرائرية"
+          ],
+          "governorateId": 342,
+          "lat": 36.789825,
+          "lng": 10.122277,
+          "delegationId": 397,
+          "hasBoundary": true,
+          "bbox": [
+            10.119209,
+            36.784691,
+            10.127948,
+            36.794972
+          ],
+          "areaKm2": 0.48587196468542887,
+          "pickerGroupId": "delegation:397",
+          "offset": 5130588,
+          "length": 348
+        }
+      ],
+      "existingStrictSectorPickerRecord": {
+        "id": "osm:relation:7201587",
+        "targetDelegationId": 397,
+        "expectedGovernorateId": 342,
+        "expectedBase": {
+          "nomAr": "الحرايرية",
+          "lat": 36.789,
+          "lng": 10.1213
+        },
+        "expectedExistingMemberIds": [
+          "osm:relation:7201587"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:397"
+        ],
+        "members": [
+          {
+            "id": "osm:relation:7201587",
+            "expectedKind": "sector",
+            "expectedSourceId": "osm",
+            "expectedName": "الحرايرية",
+            "expectedParentName": "معتمدية الحرائرية",
+            "expectedDelegationId": 397,
+            "expectedLat": 36.789825,
+            "expectedLng": 10.122277,
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الحرايرية",
+              "name:ar": "الحرايرية",
+              "name:fr": "El-Hrairia",
+              "ref:tn:codegeo": "116351"
+            },
+            "originalGeometrySha256": "e37d5b1d210fcb6acaeb786a06a02219a97b16b69571b13d11dc0b765e09e737",
+            "packedGeometrySha256": "a7f0137abfe1792414a3adc883aa029f2b666d6a8cfed1446e2669c3091c724c"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "method": "current_coded_sector",
+            "id": "osm:relation:7201587",
+            "code": "116351",
+            "currentOfficialRecord": {
+              "governorateCode": "11",
+              "governorateFr": "Tunis",
+              "governorateAr": "تونس",
+              "delegationCode": "1163",
+              "delegationFr": "El hrairia",
+              "delegationAr": "الحرائرية",
+              "sectorCode": "116351",
+              "sectorFr": "El-hrairia",
+              "sectorAr": "الحرايرية",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3266,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 100,
+                "Nombre_de_menages_par_Secteurs.xlsx": 100
+              }
+            },
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الحرايرية",
+              "name:ar": "الحرايرية",
+              "name:fr": "El-Hrairia",
+              "ref:tn:codegeo": "116351"
+            },
+            "effectiveOriginalGeometrySha256": "e37d5b1d210fcb6acaeb786a06a02219a97b16b69571b13d11dc0b765e09e737"
+          },
+          {
+            "method": "current_coded_namesake_administrative_parent",
+            "id": "osm:relation:4129675",
+            "code": "1163",
+            "name": "معتمدية الحرائرية",
+            "accepted": true,
+            "reasons": [],
+            "expectedOriginalTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Hraïria",
+              "boundary": "administrative",
+              "name": "معتمدية الحرائرية",
+              "name:ar": "معتمدية الحرائرية",
+              "name:fr": "Délégation El Hrairia",
+              "ref:tn:codegeo": "1163",
+              "ref:tn:hasc_2": "TN.TU.HA",
+              "wikidata": "Q3141711"
+            },
+            "effectiveOriginalGeometrySha256": "2d0dfdabe625e8a862a782e966796d8c67d5a5b1b1fbff29e53a5005a7c68911",
+            "currentOfficialRecord": {
+              "governorateCode": "11",
+              "governorateAr": "تونس",
+              "governorateFr": "Tunis",
+              "delegationCode": "1163",
+              "delegationAr": "الحرائرية",
+              "delegationFr": "El hrairia"
+            }
+          }
+        ]
+      },
+      "officialSectorRowsToPreserve": [
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116351",
+          "sectorFr": "El-hrairia",
+          "sectorAr": "الحرايرية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3266,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 100,
+            "Nombre_de_menages_par_Secteurs.xlsx": 100
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116352",
+          "sectorFr": "Ezzouhour v",
+          "sectorAr": "الزهور الخامس",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3300,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 101,
+            "Nombre_de_menages_par_Secteurs.xlsx": 101
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116353",
+          "sectorFr": "El akba",
+          "sectorAr": "العقبة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3334,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 102,
+            "Nombre_de_menages_par_Secteurs.xlsx": 102
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116354",
+          "sectorFr": "El akba superieur",
+          "sectorAr": "العقبة العليا",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3368,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 103,
+            "Nombre_de_menages_par_Secteurs.xlsx": 103
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116355",
+          "sectorFr": "Ghedir el golla",
+          "sectorAr": "غدير القلة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3402,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 104,
+            "Nombre_de_menages_par_Secteurs.xlsx": 104
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116356",
+          "sectorFr": "El antit",
+          "sectorAr": "العنتيت",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3436,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 106,
+            "Nombre_de_menages_par_Secteurs.xlsx": 106
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116357",
+          "sectorFr": "El foula",
+          "sectorAr": "الفلة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3470,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 107,
+            "Nombre_de_menages_par_Secteurs.xlsx": 107
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116358",
+          "sectorFr": "Tarak ibn ziad",
+          "sectorAr": "طارق بن زياد",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3504,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 108,
+            "Nombre_de_menages_par_Secteurs.xlsx": 108
+          }
+        },
+        {
+          "governorateCode": "11",
+          "governorateFr": "Tunis",
+          "governorateAr": "تونس",
+          "delegationCode": "1163",
+          "delegationFr": "El hrairia",
+          "delegationAr": "الحرائرية",
+          "sectorCode": "116359",
+          "sectorFr": "Ezzahrouni",
+          "sectorAr": "الزهروني",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3538,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 109,
+            "Nombre_de_menages_par_Secteurs.xlsx": 109
+          }
+        }
+      ],
+      "supplementaryPhone": {
+        "previousCoordinateReview": {
+          "id": "osm:node:3145829327",
+          "record": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_3145829327-1.json",
+            "sha256": "6d9de5b3d5148d90f5846c588b9b8941cbb308736228d83ab179eb59ea53eb6d"
+          },
+          "screenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_3145829327-1.png",
+            "sha256": "471f57d2abee0e959793fd0c81c8e79545b740178be5ee23707309eaa1462ae5"
+          },
+          "query": "36.7868778,10.1056176",
+          "rootVisualConclusion": "Selected El Agba/العقبة locality card around the Hrairia point, with Hrairia business labels also visible. Requires broader-versus-narrower locality scope review; neither a rename nor a delegation/default change follows from this view alone.",
+          "rootViewed": true
+        },
+        "frozenRootReview": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\borma-next-six-beni-mhira-phone-review-20260912.json",
+          "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f",
+          "bytes": 11637
+        },
+        "newNameRecord": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_3145829327-2.json",
+          "sha256": "74ea682d2777e96f9d3bcf67128db66d9c422eaf8ef4e31ff3446ec15fc69b6d",
+          "bytes": 1572
+        },
+        "newNameScreenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_3145829327-2.png",
+          "sha256": "ff960eb6ab86de47feae638fef2208d0ebfc2bf44c2f386f7083636cc2b79150",
+          "bytes": 630293
+        },
+        "newNameQuery": "Hrairia Tunisie",
+        "newNameUiText": [
+          "الحرايرية",
+          "El-Hrairia",
+          "تونس، تونس‎",
+          "الاتجاهات إلى الحرايرية",
+          "الاتجاهات",
+          "مشاركة الحرايرية",
+          "مشاركة",
+          "حفظ الحرايرية في القوائم",
+          "حفظ",
+          "عرض المزيد من الإجراءات لهذا المكان",
+          "المزيد",
+          "معتمدية الحرايرية إحدى معتمديات الجمهورية التونسية، تابعة لولاية تونس. مساحتها 24.01 كلم² أي مايمثل 8.33 % من مساحة الولاية و المقدرة بــ 288 كلــم ²",
+          "الوصف: معتمدية الحرايرية إحدى معتمديات الجمهورية التونسية، تابعة لولاية تونس. مساحتها 24.01 كلم² أي مايمثل 8.33 % من مساحة الولاية و المقدرة بــ 288 كلــم ²",
+          "لمحة",
+          "العنوان:‏ تونس، تونس‎",
+          "إضافة مكان غير مدرج على الخريطة",
+          "إغلاق",
+          "Hrairia Tunisie",
+          "محو"
+        ],
+        "newNameVisualAssessmentOrigin": "Root personally viewed the whole image and sent conclusion in task message; this source report reads its observation JSON and pins the original screenshot. No new phone action.",
+        "boundaryAuthority": false
+      },
+      "disposition": {
+        "status": "HOLD_EXACT_LOCALITY_IDENTITY_AND_DISPLAY_CONTRACT",
+        "sourceIdentity": "Two authentic source versions retain village El Hrairia at the identical coordinate since2014, with only an English-name addition in2021. This proves source intent and absence of a later accidental move, but not exact inhabited-locality identity. Official Interior data lists Hrairia, EzzouhourV and ElAgba as separate sectors inside the same delegation.",
+        "primaryEvidence": [
+          {
+            "role": "official_administrative_scope_distinction",
+            "file": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\interior-sectors.html",
+              "sha256": "cfd0c25c6699121dd29ab1723ad48aeae8082b7f8f8bcc43d9b98049de8b2fcd",
+              "bytes": 119531
+            },
+            "url": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+            "retrieval": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-town-point-source-review\\retrieval-manifest.json",
+              "sha256": "afa76c374caf480fe0dfd937615a02941c60eeb892ef53bdbab4a97280a51ab8",
+              "bytes": 11317
+            },
+            "exactRequiredText": "الحرائرية، الزهور الخامس، العقبة، العقبة العليا، غدير القلة، العنتيت، الفلة، طارق بن زياد، الزهروني.",
+            "qualification": "This is a delegation/sector hierarchy, not evidence that the source point denotes the same inhabited quarter as the coded Hrairia sector."
+          }
+        ],
+        "narrowerPhoneLabel": "The coordinate result ElAgba and later name-card description explicitly about Hrairia delegation are compatible with different levels of place naming. They do not prove ElAgba=Hrairia or justify renaming the node to ElAgba/EzzouhourV.",
+        "nextAction": "Hold association tobase397 and all source rename/move proposals pending authoritative inhabited-quarter identity at this coordinate or clear documented broad locality usage. Preserve nearest prayer default398, which is intentional arithmetic. Do not force397 or alter the prayer reference simply to enable a display association."
+      }
+    }
+  ],
+  "schemaFacts": {
+    "engine": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+      "bytes": 473357
+    },
+    "pointBaseDisplayRule": "Lines2202/2214 require existing raw nearest default to equal target. Lines2208-2210 allow only ordinary pair unless an explicitly supported option applies.",
+    "suburbOnlyDeferred": "Lines2172-2173 restrict deferredCompleteGroupExtension to suburb. All three authentic points are village.",
+    "retainedTownOption": "Lines1943-1953 require an existing uncurated OSM town node owner, not the strict coded sector present for each candidate.",
+    "consequence": "Tinja/Soukra need reviewed finite preservation plus a separately approved narrow existing-sector contract. Hrairia additionally fails the existing target/default397/398 requirement and remains source-identity held."
+  },
+  "limitations": [
+    "Source-qualified town/locality identity is not a surveyed polygon or100% guarantee.",
+    "No new geometry, no inferred boundaries or coordinate correction.",
+    "Existing official sector owners are distinct entities and remain preserved.",
+    "Historical atlas statistics and municipal planning scope are not promoted to current legal boundaries.",
+    "Municipal Tinja response500 and MenzelBourguiba/Soukra certificate failures were preserved; HTTP variants redirected to the same invalid TLS endpoint. No bypass or repeated retries. The inaccessible history page is not used as operative primary evidence.",
+    "Tinja city article used only for locality identity; sensitive incident details are not incorporated into findings."
+  ],
+  "notPerformed": [
+    "live repository writes",
+    "catalog/compiler changes",
+    "generator execution",
+    "product helper imports",
+    "tests",
+    "builds",
+    "phone or ledger writes",
+    "distance matrix or nationwide re-evaluation"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_tinja_soukra_hrairia_point_source_review.py",
+    "sha256": "e7ac16caf77f94d4cb6aa909701c28df916dda497bb60299c5a4d97a3e47a4ff",
+    "bytes": 14714
+  }
+}

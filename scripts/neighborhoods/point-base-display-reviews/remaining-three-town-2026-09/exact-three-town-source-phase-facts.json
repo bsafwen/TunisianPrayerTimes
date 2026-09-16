@@ -1,0 +1,4508 @@
+{
+  "schemaVersion": 1,
+  "status": "source facts frozen; no product decisions",
+  "createdAt": "2026-09-12T08:24:23.829433+00:00",
+  "baseline": {
+    "android-app\\app\\src\\main\\assets\\neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "82b8f2f4d8d716e4bc354a2f72dea37ec7df36bea4a97c2bd527917fe4a3aa6e",
+      "bytes": 1883697
+    },
+    "scripts\\neighborhoods\\catalog-curation.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "c8524f79a16ba3b345f8ddbde8017d871b19aa1c6b2c74ebe686ff788435cd70",
+      "bytes": 250385
+    },
+    "work\\geo\\osm-areas.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "outputs\\current-official-sector-registry.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "android-app\\app\\src\\main\\assets\\gouvernorats.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d",
+      "bytes": 54579
+    },
+    "scripts\\neighborhoods\\reviewed-picker-groups.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427",
+      "bytes": 554337
+    },
+    "scripts\\neighborhoods\\reviewed-boundaries.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "scripts\\neighborhoods\\prayer-source-coordinates.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25",
+      "bytes": 106368
+    },
+    "scripts\\generate_neighborhoods.py": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+      "bytes": 459609
+    }
+  },
+  "records": [
+    {
+      "id": "osm:node:287625095",
+      "baseId": 627,
+      "label": "Jendouba",
+      "status": "current settlement identity supported; display association not yet approved",
+      "currentFeature": {
+        "id": "osm:node:287625095",
+        "sourceId": "osm",
+        "name": "جندوبة",
+        "aliases": [
+          "Jendouba",
+          "جندوبه",
+          "ז'נדובה",
+          "Janduba",
+          "Джендуба"
+        ],
+        "kind": "town",
+        "parentName": "جندوبة الجنوبية",
+        "contextAliases": [
+          "Délégation Jendouba Sud",
+          "Délégation de Jendouba Sud",
+          "Jendouba Sud",
+          "جندوبة الجنوبية",
+          "معتمدية جندوبة الجنوبية"
+        ],
+        "governorateId": 354,
+        "lat": 36.4967177,
+        "lng": 8.775699,
+        "delegationId": 627,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:287625095"
+      },
+      "currentBase": {
+        "id": 627,
+        "nomFr": "Jendouba",
+        "nomAr": "جندوبة",
+        "nomEn": "Jendouba",
+        "lat": 36.5012,
+        "lng": 8.7802,
+        "governorateId": 354
+      },
+      "cachedExactSource": {
+        "id": "osm:node:287625095",
+        "tags": {
+          "addr:postcode": "8100",
+          "name": "جندوبة",
+          "name:ar": "جندوبة",
+          "name:en": "Jendouba",
+          "name:fa": "جندوبه",
+          "name:fr": "Jendouba",
+          "name:he": "ז'נדובה",
+          "name:kab": "Janduba",
+          "name:ru": "Джендуба",
+          "old_name": "سوق الأربعاء",
+          "old_name:ar": "سوق الأربعاء",
+          "old_name:fr": "Souk El Arba",
+          "place": "town",
+          "population": "45431",
+          "population:date": "2014-01-01",
+          "wikidata": "Q27064",
+          "wikimedia_commons": "Category:Jendouba",
+          "wikipedia": "ar:جندوبة"
+        },
+        "lat": 36.4967177,
+        "lng": 8.775699
+      },
+      "liveSource": {
+        "version": 30,
+        "timestamp": "2025-12-23T14:16:25Z",
+        "visible": "true",
+        "lat": 36.4967177,
+        "lng": 8.775699,
+        "tags": {
+          "addr:postcode": "8100",
+          "name": "جندوبة",
+          "name:ar": "جندوبة",
+          "name:en": "Jendouba",
+          "name:fa": "جندوبه",
+          "name:fr": "Jendouba",
+          "name:he": "ז'נדובה",
+          "name:kab": "Janduba",
+          "name:ru": "Джендуба",
+          "old_name": "سوق الأربعاء",
+          "old_name:ar": "سوق الأربعاء",
+          "old_name:fr": "Souk El Arba",
+          "place": "town",
+          "population": "45431",
+          "population:date": "2014-01-01",
+          "wikidata": "Q27064",
+          "wikimedia_commons": "Category:Jendouba",
+          "wikipedia": "ar:جندوبة"
+        }
+      },
+      "fullHistory": [
+        {
+          "version": 1,
+          "timestamp": "2008-08-13T16:07:42Z",
+          "visible": "true",
+          "lat": 36.5013871,
+          "lng": 8.781161,
+          "tags": {
+            "created_by": "Potlatch 0.10b",
+            "is_in": "Tunisia",
+            "name": "Jendouba جندوبة",
+            "place": "town"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2008-09-23T13:55:25Z",
+          "visible": "true",
+          "lat": 36.501389,
+          "lng": 8.7811676,
+          "tags": {
+            "created_by": "Potlatch 0.10b",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba, Tunisia",
+            "name": "Jendouba  جندوبة",
+            "name:ar": "جندوبة",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "44000"
+          }
+        },
+        {
+          "version": 3,
+          "timestamp": "2009-08-25T12:19:04Z",
+          "visible": "true",
+          "lat": 36.501389,
+          "lng": 8.7811676,
+          "tags": {
+            "int_name": "Jendouba",
+            "is_in": "Jendouba, Tunisia",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "44000"
+          }
+        },
+        {
+          "version": 4,
+          "timestamp": "2009-10-31T11:39:35Z",
+          "visible": "true",
+          "lat": 36.5013903,
+          "lng": 8.7811605,
+          "tags": {
+            "int_name": "Jendouba",
+            "is_in": "جندوبة",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "44000"
+          }
+        },
+        {
+          "version": 5,
+          "timestamp": "2009-11-26T09:53:38Z",
+          "visible": "true",
+          "lat": 36.5013903,
+          "lng": 8.7811605,
+          "tags": {
+            "int_name": "Jendouba",
+            "is_in": "جندوبة",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 6,
+          "timestamp": "2011-02-05T22:40:25Z",
+          "visible": "true",
+          "lat": 36.5013903,
+          "lng": 8.7811605,
+          "tags": {
+            "int_name": "Jendouba",
+            "is_in": "جندوبة",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 7,
+          "timestamp": "2011-02-12T01:16:00Z",
+          "visible": "true",
+          "lat": 36.5013903,
+          "lng": 8.7811605,
+          "tags": {
+            "int_name": "Jendouba",
+            "is_in": "جندوبة",
+            "name": "جندوبة / Jendouba",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 8,
+          "timestamp": "2011-02-18T09:20:53Z",
+          "visible": "true",
+          "lat": 36.50139,
+          "lng": 8.7811605,
+          "tags": {
+            "int_name": "Jendouba",
+            "is_in": "جندوبة",
+            "name": "جندوبة / Jendouba",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 9,
+          "timestamp": "2011-02-28T16:57:30Z",
+          "visible": "true",
+          "lat": 36.5013901,
+          "lng": 8.7811604,
+          "tags": {
+            "int_name": "Jendouba",
+            "is_in": "جندوبة",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 10,
+          "timestamp": "2011-12-12T14:50:28Z",
+          "visible": "true",
+          "lat": 36.5013901,
+          "lng": 8.7811604,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 11,
+          "timestamp": "2012-02-01T20:39:38Z",
+          "visible": "true",
+          "lat": 36.5013901,
+          "lng": 8.7811604,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 12,
+          "timestamp": "2012-05-30T19:03:52Z",
+          "visible": "true",
+          "lat": 36.5013901,
+          "lng": 8.7811604,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "Jendouba جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 13,
+          "timestamp": "2012-06-26T15:01:56Z",
+          "visible": "true",
+          "lat": 36.5013901,
+          "lng": 8.7811604,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "http://ar.wikipedia.org/wiki/%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "http://en.wikipedia.org/wiki/Jendouba",
+            "wikipedia:fr": "http://fr.wikipedia.org/wiki/Jendouba"
+          }
+        },
+        {
+          "version": 14,
+          "timestamp": "2014-03-26T23:34:14Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "ar:%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "en:Jendouba",
+            "wikipedia:fr": "fr:Jendouba"
+          }
+        },
+        {
+          "version": 15,
+          "timestamp": "2014-05-06T18:19:00Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "addr:postcode": "8100",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "ar:%D8%AC%D9%86%D8%AF%D9%88%D8%A8%D8%A9",
+            "wikipedia:en": "en:Jendouba",
+            "wikipedia:fr": "fr:Jendouba"
+          }
+        },
+        {
+          "version": 16,
+          "timestamp": "2014-09-14T13:25:14Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "addr:postcode": "8100",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "ar:جندوبة",
+            "wikipedia:en": "en:Jendouba",
+            "wikipedia:fr": "fr:Jendouba"
+          }
+        },
+        {
+          "version": 17,
+          "timestamp": "2016-02-15T14:20:57Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:country": "TN",
+            "addr:governorate": "Jendouba",
+            "addr:postcode": "8100",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "ar:جندوبة",
+            "wikipedia:en": "Jendouba",
+            "wikipedia:fr": "Jendouba"
+          }
+        },
+        {
+          "version": 18,
+          "timestamp": "2016-11-20T21:46:07Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:governorate": "Jendouba",
+            "addr:postcode": "8100",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikipedia": "ar:جندوبة",
+            "wikipedia:en": "Jendouba",
+            "wikipedia:fr": "Jendouba"
+          }
+        },
+        {
+          "version": 19,
+          "timestamp": "2017-09-11T04:10:42Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:governorate": "Jendouba",
+            "addr:postcode": "8100",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "43997",
+            "wikidata": "Q27064",
+            "wikipedia": "ar:جندوبة",
+            "wikipedia:en": "Jendouba",
+            "wikipedia:fr": "Jendouba"
+          }
+        },
+        {
+          "version": 20,
+          "timestamp": "2017-10-13T17:40:01Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "Jendouba",
+            "addr:governorate": "Jendouba",
+            "addr:postcode": "8100",
+            "int_name": "Jendouba",
+            "is_in": "Jendouba;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Jendouba",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "wikidata": "Q27064",
+            "wikipedia": "ar:جندوبة",
+            "wikipedia:en": "Jendouba",
+            "wikipedia:fr": "Jendouba"
+          }
+        },
+        {
+          "version": 21,
+          "timestamp": "2019-12-25T17:00:40Z",
+          "visible": "true",
+          "lat": 36.5013895,
+          "lng": 8.7811635,
+          "tags": {
+            "addr:city": "جندوبة",
+            "addr:postcode": "8100",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "postal_code": "8100",
+            "wikidata": "Q27064",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 22,
+          "timestamp": "2020-04-02T14:43:06Z",
+          "visible": "true",
+          "lat": 36.496868,
+          "lng": 8.7763928,
+          "tags": {
+            "addr:city": "جندوبة",
+            "addr:postcode": "8100",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "postal_code": "8100",
+            "wikidata": "Q27064",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 23,
+          "timestamp": "2020-04-07T16:38:29Z",
+          "visible": "true",
+          "lat": 36.4969228,
+          "lng": 8.7763566,
+          "tags": {
+            "addr:city": "جندوبة",
+            "addr:postcode": "8100",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "postal_code": "8100",
+            "wikidata": "Q27064",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 24,
+          "timestamp": "2021-12-23T15:45:45Z",
+          "visible": "true",
+          "lat": 36.4968705,
+          "lng": 8.7763973,
+          "tags": {
+            "addr:city": "جندوبة",
+            "addr:postcode": "8100",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "postal_code": "8100",
+            "wikidata": "Q27064",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 25,
+          "timestamp": "2023-11-30T19:22:38Z",
+          "visible": "true",
+          "lat": 36.4968705,
+          "lng": 8.7763973,
+          "tags": {
+            "addr:city": "جندوبة",
+            "addr:postcode": "8100",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "postal_code": "8100",
+            "wikidata": "Q27064",
+            "wikimedia_commons": "Category:Jendouba",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 26,
+          "timestamp": "2025-05-01T18:05:46Z",
+          "visible": "true",
+          "lat": 36.4967177,
+          "lng": 8.775699,
+          "tags": {
+            "addr:city": "جندوبة",
+            "addr:postcode": "8100",
+            "amenity": "bank",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "postal_code": "8100",
+            "wikidata": "Q27064",
+            "wikimedia_commons": "Category:Jendouba",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 27,
+          "timestamp": "2025-05-06T05:21:23Z",
+          "visible": "true",
+          "lat": 36.4967177,
+          "lng": 8.775699,
+          "tags": {
+            "addr:postcode": "8100",
+            "amenity": "bank",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "wikidata": "Q27064",
+            "wikimedia_commons": "Category:Jendouba",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 28,
+          "timestamp": "2025-11-02T11:21:25Z",
+          "visible": "true",
+          "lat": 36.4967177,
+          "lng": 8.775699,
+          "tags": {
+            "addr:postcode": "8100",
+            "amenity": "bank",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fa": "جندوبه",
+            "name:fr": "Jendouba",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "wikidata": "Q27064",
+            "wikimedia_commons": "Category:Jendouba",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 29,
+          "timestamp": "2025-12-23T14:12:12Z",
+          "visible": "true",
+          "lat": 36.4967177,
+          "lng": 8.775699,
+          "tags": {
+            "addr:postcode": "8100",
+            "amenity": "bank",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fa": "جندوبه",
+            "name:fr": "Jendouba",
+            "name:he": "ז'נדובה",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "wikidata": "Q27064",
+            "wikimedia_commons": "Category:Jendouba",
+            "wikipedia": "ar:جندوبة"
+          }
+        },
+        {
+          "version": 30,
+          "timestamp": "2025-12-23T14:16:25Z",
+          "visible": "true",
+          "lat": 36.4967177,
+          "lng": 8.775699,
+          "tags": {
+            "addr:postcode": "8100",
+            "name": "جندوبة",
+            "name:ar": "جندوبة",
+            "name:en": "Jendouba",
+            "name:fa": "جندوبه",
+            "name:fr": "Jendouba",
+            "name:he": "ז'נדובה",
+            "name:kab": "Janduba",
+            "name:ru": "Джендуба",
+            "old_name": "سوق الأربعاء",
+            "old_name:ar": "سوق الأربعاء",
+            "old_name:fr": "Souk El Arba",
+            "place": "town",
+            "population": "45431",
+            "population:date": "2014-01-01",
+            "wikidata": "Q27064",
+            "wikimedia_commons": "Category:Jendouba",
+            "wikipedia": "ar:جندوبة"
+          }
+        }
+      ],
+      "currentSourceEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-287625095-current.xml",
+        "sha256": "2815e47380f42e8341c8c05ace9c063e0acbe1a181b634d465c1dbbe33e774a2",
+        "bytes": 1189
+      },
+      "historyEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-287625095-history.xml",
+        "sha256": "ab80cb7fe3ecefa20b82a1eaf79bd3b7d900c4afd597c88f60624c6192ccfbda",
+        "bytes": 24981
+      },
+      "freshExactSourceEqualsCacheAndRawCoordinate": true,
+      "sourceRetrievals": [
+        {
+          "file": "work\\remaining-three-town-source-identity\\osm-node-287625095-current.xml",
+          "url": "https://api.openstreetmap.org/api/0.6/node/287625095",
+          "retrievedAt": "2026-09-12T08:19:22.505177+00:00",
+          "status": 200,
+          "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287625095",
+          "contentType": "application/xml; charset=utf-8",
+          "bytes": 1189,
+          "sha256": "2815e47380f42e8341c8c05ace9c063e0acbe1a181b634d465c1dbbe33e774a2"
+        },
+        {
+          "file": "work\\remaining-three-town-source-identity\\osm-node-287625095-history.xml",
+          "url": "https://api.openstreetmap.org/api/0.6/node/287625095/history",
+          "retrievedAt": "2026-09-12T08:19:22.505177+00:00",
+          "status": 200,
+          "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287625095/history",
+          "contentType": "application/xml; charset=utf-8",
+          "bytes": 24981,
+          "sha256": "ab80cb7fe3ecefa20b82a1eaf79bd3b7d900c4afd597c88f60624c6192ccfbda"
+        }
+      ],
+      "directActiveCurationRules": [],
+      "distinctAdministrativeScope": [
+        "معتمدية جندوبة الشمالية",
+        "معتمدية جندوبة الجنوبية"
+      ],
+      "separateSectorCount": 22,
+      "separateSectorFacts": [
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139121",
+            "sourceId": "osm",
+            "name": "الزهور",
+            "aliases": [
+              "Ezzouhour"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.575326,
+            "lng": 8.843494,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.797973,
+              36.530282,
+              8.875662,
+              36.618973
+            ],
+            "areaKm2": 34.70726125669417,
+            "pickerGroupId": "osm:relation:7139121",
+            "offset": 1717672,
+            "length": 700
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزهور",
+            "name:ar": "الزهور",
+            "name:fr": "Ezzouhour",
+            "ref:tn:codegeo": "225253"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225253",
+            "sectorFr": "Ezzouhour",
+            "sectorAr": "الزهور",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23765,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1092,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1091
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139122",
+            "sourceId": "osm",
+            "name": "بلاريجيا",
+            "aliases": [
+              "Bulla Regia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.552935,
+            "lng": 8.772783,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.724626,
+              36.521863,
+              8.820441,
+              36.583328
+            ],
+            "areaKm2": 35.49331122817,
+            "pickerGroupId": "osm:relation:7139122",
+            "offset": 1718372,
+            "length": 876
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بلاريجيا",
+            "name:ar": "بلاريجيا",
+            "name:fr": "Bulla Regia",
+            "ref:tn:codegeo": "225256"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225256",
+            "sectorFr": "Bulla-regja",
+            "sectorAr": "بلاريجيا",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23867,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1098,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1097
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139123",
+            "sourceId": "osm",
+            "name": "الفردوس",
+            "aliases": [
+              "El Ferdous"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.508101,
+            "lng": 8.72482,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.683305,
+              36.478792,
+              8.77025,
+              36.537502
+            ],
+            "areaKm2": 24.312246155998135,
+            "pickerGroupId": "osm:relation:7139123",
+            "offset": 1719248,
+            "length": 764
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الفردوس",
+            "name:ar": "الفردوس",
+            "name:fr": "El Ferdous",
+            "ref:tn:codegeo": "225251"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225251",
+            "sectorFr": "El ferdous",
+            "sectorAr": "الفردوس",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23697,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1088,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1087
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139124",
+            "sourceId": "osm",
+            "name": "زطفورة",
+            "aliases": [
+              "Zatfour"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.571551,
+            "lng": 8.681006,
+            "delegationId": 502,
+            "hasBoundary": true,
+            "bbox": [
+              8.633721,
+              36.54301,
+              8.732952,
+              36.599647
+            ],
+            "areaKm2": 36.57344516777842,
+            "pickerGroupId": "osm:relation:7139124",
+            "offset": 1720012,
+            "length": 1372
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زطفورة",
+            "name:ar": "زطفورة",
+            "name:fr": "Zatfour",
+            "ref:tn:codegeo": "225257"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225257",
+            "sectorFr": "Zatfoura",
+            "sectorAr": "زطفورة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23901,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1100,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1099
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139125",
+            "sourceId": "osm",
+            "name": "السواني",
+            "aliases": [
+              "Essouani"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.528502,
+            "lng": 8.669516,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.599967,
+              36.502061,
+              8.736895,
+              36.553633
+            ],
+            "areaKm2": 39.345481915964335,
+            "pickerGroupId": "osm:relation:7139125",
+            "offset": 1721384,
+            "length": 1740
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "السواني",
+            "name:ar": "السواني",
+            "name:fr": "Essouani",
+            "ref:tn:codegeo": "225255"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225255",
+            "sectorFr": "Es-souani",
+            "sectorAr": "السواني",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23833,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1096,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1095
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139126",
+            "sourceId": "osm",
+            "name": "شمتو",
+            "aliases": [
+              "Chemtou"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.524549,
+            "lng": 8.580394,
+            "delegationId": 500,
+            "hasBoundary": true,
+            "bbox": [
+              8.540297,
+              36.48292,
+              8.635803,
+              36.566129
+            ],
+            "areaKm2": 40.38621617755368,
+            "pickerGroupId": "osm:relation:7139126",
+            "offset": 1723124,
+            "length": 1292
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "شمتو",
+            "name:ar": "شمتو",
+            "name:fr": "Chemtou",
+            "ref:tn:codegeo": "225258"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225258",
+            "sectorFr": "Chemtou",
+            "sectorAr": "شمتو",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23935,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1102,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1101
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139127",
+            "sourceId": "osm",
+            "name": "سوق الجمعة",
+            "aliases": [
+              "Souk Djemaa",
+              "Souk Jomaa"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.580018,
+            "lng": 8.591901,
+            "delegationId": 500,
+            "hasBoundary": true,
+            "bbox": [
+              8.562815,
+              36.554185,
+              8.638761,
+              36.607327
+            ],
+            "areaKm2": 24.71481067426309,
+            "pickerGroupId": "osm:relation:7139127",
+            "offset": 1724416,
+            "length": 1100
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سوق الجمعة",
+            "name:ar": "سوق الجمعة",
+            "name:fr": "Souk Djemaa",
+            "ref:tn:codegeo": "225260"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225260",
+            "sectorFr": "Souk djemaa",
+            "sectorAr": "سوق الجمعة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 24003,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1106,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1105
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139128",
+            "sourceId": "osm",
+            "name": "الدير",
+            "aliases": [
+              "Eddir"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.57668,
+            "lng": 8.54005,
+            "delegationId": 500,
+            "hasBoundary": true,
+            "bbox": [
+              8.515617,
+              36.542187,
+              8.590903,
+              36.610867
+            ],
+            "areaKm2": 26.0869011845342,
+            "pickerGroupId": "osm:relation:7139128",
+            "offset": 1725516,
+            "length": 852
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدير",
+            "name:ar": "الدير",
+            "name:fr": "Eddir",
+            "ref:tn:codegeo": "225259"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225259",
+            "sectorFr": "Ed-dir",
+            "sectorAr": "الدير",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23969,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1104,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1103
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139129",
+            "sourceId": "osm",
+            "name": "النور",
+            "aliases": [
+              "Ennour"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.507408,
+            "lng": 8.787054,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.776769,
+              36.501711,
+              8.795266,
+              36.515458
+            ],
+            "areaKm2": 1.4419492881830587,
+            "pickerGroupId": "osm:relation:7139129",
+            "offset": 1726368,
+            "length": 108
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "النور",
+            "name:ar": "النور",
+            "name:fr": "Ennour",
+            "ref:tn:codegeo": "225153"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225153",
+            "sectorFr": "En-nour",
+            "sectorAr": "النور",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23357,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1070,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1069
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139130",
+            "sourceId": "osm",
+            "name": "جندوبة الجنوبية",
+            "aliases": [
+              "Jendouba Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.495536,
+            "lng": 8.781499,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.77025,
+              36.485634,
+              8.795266,
+              36.504954
+            ],
+            "areaKm2": 2.65225139886719,
+            "pickerGroupId": "osm:relation:7139130",
+            "offset": 1726476,
+            "length": 132
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جندوبة الجنوبية",
+            "name:ar": "جندوبة الجنوبية",
+            "name:fr": "Jendouba Sud",
+            "ref:tn:codegeo": "225152"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225152",
+            "sectorFr": "Jendouba sud",
+            "sectorAr": "جندوبة الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23323,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1069,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1068
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139131",
+            "sourceId": "osm",
+            "name": "الزغايدة",
+            "aliases": [
+              "Ezzghaida"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.497575,
+            "lng": 8.770491,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.764768,
+              36.491746,
+              8.778101,
+              36.51368
+            ],
+            "areaKm2": 1.562201642465731,
+            "pickerGroupId": "osm:relation:7139131",
+            "offset": 1726608,
+            "length": 132
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الزغايدة",
+            "name:ar": "الزغايدة",
+            "name:fr": "Ezzghaida",
+            "ref:tn:codegeo": "225151"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225151",
+            "sectorFr": "Ezzeghaida",
+            "sectorAr": "الزغادية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23289,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1068,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1067
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7139132",
+            "sourceId": "osm",
+            "name": "الهادي بن حسين",
+            "aliases": [
+              "El Hedi Ben Hassine"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.520443,
+            "lng": 8.768383,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.74059,
+              36.503403,
+              8.784676,
+              36.537002
+            ],
+            "areaKm2": 5.119176235870384,
+            "pickerGroupId": "osm:relation:7139132",
+            "offset": 1726740,
+            "length": 420
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الهادي بن حسين",
+            "name:ar": "الهادي بن حسين",
+            "name:fr": "El Hedi Ben Hassine",
+            "ref:tn:codegeo": "225252"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225252",
+            "sectorFr": "El hedi ben hassine",
+            "sectorAr": "الهادي بن حسين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23731,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1090,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1089
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144397",
+            "sourceId": "osm",
+            "name": "العزيمة",
+            "aliases": [
+              "El Azima"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.545857,
+            "lng": 8.870836,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.838926,
+              36.513082,
+              8.901774,
+              36.576858
+            ],
+            "areaKm2": 21.951614039447644,
+            "pickerGroupId": "osm:relation:7144397",
+            "offset": 2146244,
+            "length": 660
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العزيمة",
+            "name:ar": "العزيمة",
+            "name:fr": "El Azima",
+            "ref:tn:codegeo": "225162"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225162",
+            "sectorFr": "El azima",
+            "sectorAr": "العزيمة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23663,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1087,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1086
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144398",
+            "sourceId": "osm",
+            "name": "الملقى",
+            "aliases": [
+              "El Malga"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.503048,
+            "lng": 8.830675,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.78072,
+              36.466163,
+              8.870186,
+              36.540702
+            ],
+            "areaKm2": 33.19360687814872,
+            "pickerGroupId": "osm:relation:7144398",
+            "offset": 2146904,
+            "length": 1092
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الملقى",
+            "name:ar": "الملقى",
+            "name:fr": "El Malga",
+            "ref:tn:codegeo": "225155"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225155",
+            "sectorFr": "El malga",
+            "sectorAr": "الملقى",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23425,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1073,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1072
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144399",
+            "sourceId": "osm",
+            "name": "سوق السبت",
+            "aliases": [
+              "Souk Essebt"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.479868,
+            "lng": 8.902537,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.860098,
+              36.430164,
+              8.939878,
+              36.529507
+            ],
+            "areaKm2": 29.62456861645649,
+            "pickerGroupId": "osm:relation:7144399",
+            "offset": 2147996,
+            "length": 996
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سوق السبت",
+            "name:ar": "سوق السبت",
+            "name:fr": "Souk Essebt",
+            "ref:tn:codegeo": "225157"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225157",
+            "sectorFr": "Souk es-sebt",
+            "sectorAr": "سوق السبت",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23493,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1077,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1076
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144400",
+            "sourceId": "osm",
+            "name": "العيثة",
+            "aliases": [
+              "El Aitha"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.469782,
+            "lng": 8.878049,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.829776,
+              36.439548,
+              8.903488,
+              36.50062
+            ],
+            "areaKm2": 16.061205126677475,
+            "pickerGroupId": "osm:relation:7144400",
+            "offset": 2148992,
+            "length": 1028
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العيثة",
+            "name:ar": "العيثة",
+            "name:fr": "El Aitha",
+            "ref:tn:codegeo": "225158"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225158",
+            "sectorFr": "El aitha",
+            "sectorAr": "العيثة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23527,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1079,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1078
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144401",
+            "sourceId": "osm",
+            "name": "عين كريمة",
+            "aliases": [
+              "Ain Karima"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.447314,
+            "lng": 8.858296,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.812827,
+              36.413665,
+              8.904235,
+              36.480307
+            ],
+            "areaKm2": 25.589111513695187,
+            "pickerGroupId": "osm:relation:7144401",
+            "offset": 2150020,
+            "length": 892
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين كريمة",
+            "name:ar": "عين كريمة",
+            "name:fr": "Ain Karima",
+            "ref:tn:codegeo": "225159"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225159",
+            "sectorFr": "Ain karima",
+            "sectorAr": "عين كريمة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23561,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1081,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1080
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144402",
+            "sourceId": "osm",
+            "name": "التطور",
+            "aliases": [
+              "Ettataouer"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.47335,
+            "lng": 8.801223,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.777155,
+              36.446343,
+              8.829853,
+              36.500255
+            ],
+            "areaKm2": 16.46521202847944,
+            "pickerGroupId": "osm:relation:7144402",
+            "offset": 2150912,
+            "length": 412
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "التطور",
+            "name:ar": "التطور",
+            "name:fr": "Ettataouer",
+            "ref:tn:codegeo": "225156"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225156",
+            "sectorFr": "Ettataouer",
+            "sectorAr": "التطور",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23459,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1075,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1074
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144403",
+            "sourceId": "osm",
+            "name": "معلة",
+            "aliases": [
+              "Malla"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.421958,
+            "lng": 8.805554,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.748723,
+              36.392621,
+              8.857326,
+              36.452281
+            ],
+            "areaKm2": 34.31601677443702,
+            "pickerGroupId": "osm:relation:7144403",
+            "offset": 2151324,
+            "length": 1636
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "معلة",
+            "name:ar": "معلة",
+            "name:fr": "Malla",
+            "ref:tn:codegeo": "225160"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225160",
+            "sectorFr": "Maalla",
+            "sectorAr": "معلة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23595,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1083,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1082
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144404",
+            "sourceId": "osm",
+            "name": "السعادة",
+            "aliases": [
+              "Essaada"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.450028,
+            "lng": 8.763656,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.721084,
+              36.404721,
+              8.808724,
+              36.491746
+            ],
+            "areaKm2": 33.85163830760077,
+            "pickerGroupId": "osm:relation:7144404",
+            "offset": 2152960,
+            "length": 3628
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "السعادة",
+            "name:ar": "السعادة",
+            "name:fr": "Essaada",
+            "ref:tn:codegeo": "225154"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225154",
+            "sectorFr": "Es-saada",
+            "sectorAr": "السعادة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23391,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1071,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1070
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7144405",
+            "sourceId": "osm",
+            "name": "الجريف",
+            "aliases": [
+              "El Jerif"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الجنوبية",
+            "contextAliases": [
+              "Délégation Jendouba Sud",
+              "Délégation de Jendouba Sud",
+              "Jendouba Sud",
+              "معتمدية جندوبة الجنوبية"
+            ],
+            "governorateId": 354,
+            "lat": 36.430288,
+            "lng": 8.712394,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.657501,
+              36.392701,
+              8.752168,
+              36.468238
+            ],
+            "areaKm2": 38.48362358378632,
+            "pickerGroupId": "osm:relation:7144405",
+            "offset": 2156588,
+            "length": 4884
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الجريف",
+            "name:ar": "الجريف",
+            "name:fr": "El Jerif",
+            "ref:tn:codegeo": "225161"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2251",
+            "delegationFr": "Jendouba",
+            "delegationAr": "جندوبة",
+            "sectorCode": "225161",
+            "sectorFr": "El-jerif",
+            "sectorAr": "الجريف",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23629,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1085,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1084
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7153926",
+            "sourceId": "osm",
+            "name": "الخضراء",
+            "aliases": [
+              "El Khadhra"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جندوبة الشمالية",
+            "contextAliases": [
+              "Délégation Jendouba Nord",
+              "Délégation de Jendouba Nord",
+              "Jendouba Nord",
+              "معتمدية جندوبة الشمالية"
+            ],
+            "governorateId": 354,
+            "lat": 36.482141,
+            "lng": 8.703962,
+            "delegationId": 627,
+            "hasBoundary": true,
+            "bbox": [
+              8.646837,
+              36.452789,
+              8.747908,
+              36.511154
+            ],
+            "areaKm2": 31.954765304533577,
+            "pickerGroupId": "osm:relation:7153926",
+            "offset": 3114468,
+            "length": 6388
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الخضراء",
+            "name:ar": "الخضراء",
+            "name:fr": "El Khadhra",
+            "ref:tn:codegeo": "225254"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "22",
+            "governorateFr": "Jendouba",
+            "governorateAr": "جندوبة",
+            "delegationCode": "2252",
+            "delegationFr": "Jendouba nord",
+            "delegationAr": "جندوبة الشمالية",
+            "sectorCode": "225254",
+            "sectorFr": "El khadhra",
+            "sectorAr": "الخضراء",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23799,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1094,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1093
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        }
+      ],
+      "qualifications": [
+        "Versions1-25 are named town records. Version26 in May2025 replaced place=town with amenity=bank and moved to the current coordinate. Versions27-29 retained both town and bank; version30 removed bank. Current semantic town identity is supported, but the coordinate inherited from that edit is not certified by this review.",
+        "No assurance of surveyed center, original INM anchor or precise town boundary follows from current tags."
+      ],
+      "mustPreserve": [
+        "Raw point ID, kind, coordinates, aliases, parent and prayer delegation.",
+        "Base ID, names and coordinates.",
+        "All separately coded sector rows and their current geometry, including accepted replacement lineage."
+      ]
+    },
+    {
+      "id": "osm:node:264881676",
+      "baseId": 484,
+      "label": "Douz",
+      "status": "current settlement identity supported; display association not yet approved",
+      "currentFeature": {
+        "id": "osm:node:264881676",
+        "sourceId": "osm",
+        "name": "دوز",
+        "aliases": [
+          "Douz",
+          "Duz",
+          "Дуз"
+        ],
+        "kind": "town",
+        "parentName": "العبادلة",
+        "contextAliases": [
+          "Douz Nord",
+          "Délégation Douz Nord",
+          "Elabadla",
+          "العبادلة",
+          "معتمدية دوز الشمالية"
+        ],
+        "governorateId": 1012,
+        "lat": 33.4571102,
+        "lng": 9.0249829,
+        "delegationId": 484,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:264881676"
+      },
+      "currentBase": {
+        "id": 484,
+        "nomFr": "Douz",
+        "nomAr": "دوز",
+        "nomEn": "Douz",
+        "lat": 33.46,
+        "lng": 9.02,
+        "governorateId": 1012
+      },
+      "cachedExactSource": {
+        "id": "osm:node:264881676",
+        "tags": {
+          "name": "دوز",
+          "name:ar": "دوز",
+          "name:en": "Douz",
+          "name:eo": "Douz",
+          "name:fr": "Douz",
+          "name:kab": "Duz",
+          "name:pl": "Duz",
+          "name:ru": "Дуз",
+          "place": "town",
+          "wikidata": "Q1009268",
+          "wikimedia_commons": "Category:Douz",
+          "wikipedia": "ar:دوز"
+        },
+        "lat": 33.4571102,
+        "lng": 9.0249829
+      },
+      "liveSource": {
+        "version": 24,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "visible": "true",
+        "lat": 33.4571102,
+        "lng": 9.0249829,
+        "tags": {
+          "name": "دوز",
+          "name:ar": "دوز",
+          "name:en": "Douz",
+          "name:eo": "Douz",
+          "name:fr": "Douz",
+          "name:kab": "Duz",
+          "name:pl": "Duz",
+          "name:ru": "Дуз",
+          "place": "town",
+          "wikidata": "Q1009268",
+          "wikimedia_commons": "Category:Douz",
+          "wikipedia": "ar:دوز"
+        }
+      },
+      "fullHistory": [
+        {
+          "version": 1,
+          "timestamp": "2008-05-16T11:27:42Z",
+          "visible": "true",
+          "lat": 33.4741805,
+          "lng": 9.0084678,
+          "tags": {
+            "created_by": "Potlatch 0.9a"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2008-06-24T13:52:50Z",
+          "visible": "true",
+          "lat": 33.4741775,
+          "lng": 9.0084719,
+          "tags": {
+            "created_by": "Potlatch 0.9c",
+            "name": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 3,
+          "timestamp": "2009-02-25T17:35:37Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "created_by": "Potlatch 0.9c",
+            "name": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 4,
+          "timestamp": "2009-08-25T12:39:47Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 5,
+          "timestamp": "2011-01-23T16:33:46Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "name": "دوز / Douz",
+            "name:ar": "دوز",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 6,
+          "timestamp": "2011-03-10T14:04:25Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 7,
+          "timestamp": "2012-01-12T16:15:10Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "int_name": "Douz",
+            "name": "Douz دوز",
+            "name:ar": "دوز",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 8,
+          "timestamp": "2012-03-15T11:42:28Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "int_name": "Douz",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 9,
+          "timestamp": "2012-03-15T21:55:39Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "int_name": "Douz",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 10,
+          "timestamp": "2012-10-20T13:03:20Z",
+          "visible": "true",
+          "lat": 33.4595082,
+          "lng": 9.0214154,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:country": "TN",
+            "addr:governorate": "Gabès",
+            "int_name": "Douz",
+            "is_in": "Gabès; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Gabès",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 11,
+          "timestamp": "2013-03-03T21:31:19Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:country": "TN",
+            "addr:governorate": "Gabès",
+            "int_name": "Douz",
+            "is_in": "Gabès; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Gabès",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 12,
+          "timestamp": "2013-05-30T17:47:39Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:country": "TN",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Gabès",
+            "name": "دوز  DOUZ",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 13,
+          "timestamp": "2014-05-12T14:23:12Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:country": "TN",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Gabès",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 14,
+          "timestamp": "2016-03-25T16:53:27Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:country": "TN",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Gabès",
+            "name": "Douz دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:fr": "Douz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 15,
+          "timestamp": "2016-08-22T15:34:38Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:country": "TN",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Gabès",
+            "name": "Douz دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "place": "town"
+          }
+        },
+        {
+          "version": 16,
+          "timestamp": "2016-10-28T18:06:48Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:country": "TN",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Gabès",
+            "name": "Douz دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town"
+          }
+        },
+        {
+          "version": 17,
+          "timestamp": "2016-11-20T21:44:37Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "Douz",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Gabès",
+            "name": "Douz دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town"
+          }
+        },
+        {
+          "version": 18,
+          "timestamp": "2017-12-06T04:26:43Z",
+          "visible": "true",
+          "lat": 33.4570853,
+          "lng": 9.0250214,
+          "tags": {
+            "addr:city": "دوز",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Gabès",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town"
+          }
+        },
+        {
+          "version": 19,
+          "timestamp": "2018-05-23T00:17:25Z",
+          "visible": "true",
+          "lat": 33.4571574,
+          "lng": 9.0235934,
+          "tags": {
+            "addr:city": "دوز",
+            "addr:governorate": "Gabès",
+            "is_in": "Gabès;Tunisia;Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Gabès",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town"
+          }
+        },
+        {
+          "version": 20,
+          "timestamp": "2020-01-06T22:57:41Z",
+          "visible": "true",
+          "lat": 33.4571574,
+          "lng": 9.0235934,
+          "tags": {
+            "addr:city": "دوز",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town",
+            "wikidata": "Q1009268",
+            "wikipedia": "ar:دوز"
+          }
+        },
+        {
+          "version": 21,
+          "timestamp": "2020-04-09T00:49:21Z",
+          "visible": "true",
+          "lat": 33.457057,
+          "lng": 9.0248688,
+          "tags": {
+            "addr:city": "دوز",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town",
+            "wikidata": "Q1009268",
+            "wikipedia": "ar:دوز"
+          }
+        },
+        {
+          "version": 22,
+          "timestamp": "2022-02-28T18:21:11Z",
+          "visible": "true",
+          "lat": 33.4571102,
+          "lng": 9.0249829,
+          "tags": {
+            "addr:city": "دوز",
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town",
+            "wikidata": "Q1009268",
+            "wikipedia": "ar:دوز"
+          }
+        },
+        {
+          "version": 23,
+          "timestamp": "2022-05-17T00:18:34Z",
+          "visible": "true",
+          "lat": 33.4571102,
+          "lng": 9.0249829,
+          "tags": {
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:kab": "Duz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town",
+            "wikidata": "Q1009268",
+            "wikipedia": "ar:دوز"
+          }
+        },
+        {
+          "version": 24,
+          "timestamp": "2025-09-14T10:19:40Z",
+          "visible": "true",
+          "lat": 33.4571102,
+          "lng": 9.0249829,
+          "tags": {
+            "name": "دوز",
+            "name:ar": "دوز",
+            "name:en": "Douz",
+            "name:eo": "Douz",
+            "name:fr": "Douz",
+            "name:kab": "Duz",
+            "name:pl": "Duz",
+            "name:ru": "Дуз",
+            "place": "town",
+            "wikidata": "Q1009268",
+            "wikimedia_commons": "Category:Douz",
+            "wikipedia": "ar:دوز"
+          }
+        }
+      ],
+      "currentSourceEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-264881676-current.xml",
+        "sha256": "7ed039e0afe4457a057431b2070e3986599f24be49a64baa417dd44e426b5152",
+        "bytes": 862
+      },
+      "historyEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-264881676-history.xml",
+        "sha256": "cda1332e0f5e4c2577d453979958ca7f294544aeda143c12a60b3869be4c3e3e",
+        "bytes": 12132
+      },
+      "freshExactSourceEqualsCacheAndRawCoordinate": true,
+      "sourceRetrievals": [
+        {
+          "file": "work\\remaining-three-town-source-identity\\osm-node-264881676-current.xml",
+          "url": "https://api.openstreetmap.org/api/0.6/node/264881676",
+          "retrievedAt": "2026-09-12T08:19:22.506174+00:00",
+          "status": 200,
+          "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/264881676",
+          "contentType": "application/xml; charset=utf-8",
+          "bytes": 862,
+          "sha256": "7ed039e0afe4457a057431b2070e3986599f24be49a64baa417dd44e426b5152"
+        },
+        {
+          "file": "work\\remaining-three-town-source-identity\\osm-node-264881676-history.xml",
+          "url": "https://api.openstreetmap.org/api/0.6/node/264881676/history",
+          "retrievedAt": "2026-09-12T08:19:22.506174+00:00",
+          "status": 200,
+          "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/264881676/history",
+          "contentType": "application/xml; charset=utf-8",
+          "bytes": 12132,
+          "sha256": "cda1332e0f5e4c2577d453979958ca7f294544aeda143c12a60b3869be4c3e3e"
+        }
+      ],
+      "directActiveCurationRules": [],
+      "distinctAdministrativeScope": [
+        "معتمدية دوز الشمالية",
+        "معتمدية دوز الجنوبية"
+      ],
+      "separateSectorCount": 10,
+      "separateSectorFacts": [
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107054",
+            "sourceId": "osm",
+            "name": "العبادلة",
+            "aliases": [
+              "Elabadla"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الشمالية",
+            "contextAliases": [
+              "Douz Nord",
+              "Délégation Douz Nord",
+              "معتمدية دوز الشمالية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.515313,
+            "lng": 9.283726,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              8.996513,
+              33.428927,
+              9.61677,
+              33.601909
+            ],
+            "areaKm2": 380.55345227635036,
+            "pickerGroupId": "osm:relation:7107054",
+            "offset": 515200,
+            "length": 1524
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العبادلة",
+            "name:ar": "العبادلة",
+            "name:fr": "Elabadla",
+            "ref:tn:codegeo": "635455"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6354",
+            "delegationFr": "Douz nord",
+            "delegationAr": "دوز  الشمالية",
+            "sectorCode": "635455",
+            "sectorFr": "El abadla",
+            "sectorAr": "العبادلة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70287,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3448,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3441
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107072",
+            "sourceId": "osm",
+            "name": "دوز الشرقية",
+            "aliases": [
+              "Douz Est"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الشمالية",
+            "contextAliases": [
+              "Douz Nord",
+              "Délégation Douz Nord",
+              "معتمدية دوز الشمالية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.26421,
+            "lng": 9.575041,
+            "delegationId": 1022,
+            "hasBoundary": true,
+            "bbox": [
+              9.110943,
+              32.961422,
+              10.011664,
+              33.554129
+            ],
+            "areaKm2": 1568.908877002232,
+            "pickerGroupId": "osm:relation:7107072",
+            "offset": 516724,
+            "length": 1588
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوز الشرقية",
+            "name:ar": "دوز الشرقية",
+            "name:fr": "Douz Est",
+            "ref:tn:codegeo": "635451"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6354",
+            "delegationFr": "Douz nord",
+            "delegationAr": "دوز  الشمالية",
+            "sectorCode": "635451",
+            "sectorFr": "Douz est",
+            "sectorAr": "دوز الشرقية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70151,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3440,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3433
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107232",
+            "sourceId": "osm",
+            "name": "العوينة الجنوبية",
+            "aliases": [
+              "El Aouina Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الشمالية",
+            "contextAliases": [
+              "Douz Nord",
+              "Délégation Douz Nord",
+              "معتمدية دوز الشمالية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.119878,
+            "lng": 9.443692,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              9.007241,
+              32.810833,
+              9.97139,
+              33.430497
+            ],
+            "areaKm2": 848.0537469086778,
+            "pickerGroupId": "osm:relation:7107232",
+            "offset": 518312,
+            "length": 1916
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العوينة الجنوبية",
+            "name:ar": "العوينة الجنوبية",
+            "name:fr": "El Aouina Sud",
+            "ref:tn:codegeo": "635454"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6354",
+            "delegationFr": "Douz nord",
+            "delegationAr": "دوز  الشمالية",
+            "sectorCode": "635454",
+            "sectorFr": "El aouina sud",
+            "sectorAr": "العوينة الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70253,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3446,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3439
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107233",
+            "sourceId": "osm",
+            "name": "العوينة الشمالية",
+            "aliases": [
+              "El Aouina Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الشمالية",
+            "contextAliases": [
+              "Douz Nord",
+              "Délégation Douz Nord",
+              "معتمدية دوز الشمالية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.172786,
+            "lng": 9.515519,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              9.047596,
+              32.888505,
+              9.963547,
+              33.444933
+            ],
+            "areaKm2": 654.6340226609764,
+            "pickerGroupId": "osm:relation:7107233",
+            "offset": 520228,
+            "length": 500
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العوينة الشمالية",
+            "name:ar": "العوينة الشمالية",
+            "name:fr": "El Aouina Nord",
+            "ref:tn:codegeo": "635453"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6354",
+            "delegationFr": "Douz nord",
+            "delegationAr": "دوز  الشمالية",
+            "sectorCode": "635453",
+            "sectorFr": "Ouina nord",
+            "sectorAr": "العوينة الشمالية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70219,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3444,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3437
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107484",
+            "sourceId": "osm",
+            "name": "نويل الشمالية",
+            "aliases": [
+              "Nouil Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الجنوبية",
+            "contextAliases": [
+              "Douz Sud",
+              "Délégation Douz Sud",
+              "معتمدية دوز الجنوبية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.506286,
+            "lng": 8.882169,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              8.829537,
+              33.478236,
+              8.934191,
+              33.531661
+            ],
+            "areaKm2": 29.659948988503288,
+            "pickerGroupId": "osm:relation:7107484",
+            "offset": 529788,
+            "length": 252
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نويل الشمالية",
+            "name:ar": "نويل الشمالية",
+            "name:fr": "Nouil Nord",
+            "ref:tn:codegeo": "635554"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6355",
+            "delegationFr": "Douz sud",
+            "delegationAr": "دوز الجنوبية",
+            "sectorCode": "635554",
+            "sectorFr": "Nouil nord",
+            "sectorAr": "نويل الشمالية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70423,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3455,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3448
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107485",
+            "sourceId": "osm",
+            "name": "نويل الجنوبية",
+            "aliases": [
+              "Nouil Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الجنوبية",
+            "contextAliases": [
+              "Douz Sud",
+              "Délégation Douz Sud",
+              "معتمدية دوز الجنوبية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.475132,
+            "lng": 8.907434,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              8.843823,
+              33.442461,
+              8.960541,
+              33.505192
+            ],
+            "areaKm2": 41.966726302053,
+            "pickerGroupId": "osm:relation:7107485",
+            "offset": 530040,
+            "length": 300
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نويل الجنوبية",
+            "name:ar": "نويل الجنوبية",
+            "name:fr": "Nouil Sud",
+            "ref:tn:codegeo": "635555"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6355",
+            "delegationFr": "Douz sud",
+            "delegationAr": "دوز الجنوبية",
+            "sectorCode": "635555",
+            "sectorFr": "Nouil sud",
+            "sectorAr": "نويل الجنوبية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70457,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3457,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3450
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107486",
+            "sourceId": "osm",
+            "name": "العذارة",
+            "aliases": [
+              "El Adhara"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الجنوبية",
+            "contextAliases": [
+              "Douz Sud",
+              "Délégation Douz Sud",
+              "معتمدية دوز الجنوبية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.03521,
+            "lng": 8.992322,
+            "delegationId": 485,
+            "hasBoundary": true,
+            "bbox": [
+              8.850861,
+              32.624298,
+              9.259136,
+              33.465772
+            ],
+            "areaKm2": 1270.4784011891466,
+            "pickerGroupId": "osm:relation:7107486",
+            "offset": 530340,
+            "length": 892
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العذارة",
+            "name:ar": "العذارة",
+            "name:fr": "El Adhara",
+            "ref:tn:codegeo": "635552"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6355",
+            "delegationFr": "Douz sud",
+            "delegationAr": "دوز الجنوبية",
+            "sectorCode": "635552",
+            "sectorFr": "El adhara",
+            "sectorAr": "العذارة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70355,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3451,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3444
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107487",
+            "sourceId": "osm",
+            "name": "غليسية",
+            "aliases": [
+              "Ghlissia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الجنوبية",
+            "contextAliases": [
+              "Douz Sud",
+              "Délégation Douz Sud",
+              "معتمدية دوز الجنوبية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.060647,
+            "lng": 9.169088,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              8.927978,
+              32.659574,
+              9.559543,
+              33.472028
+            ],
+            "areaKm2": 1549.1716491909756,
+            "pickerGroupId": "osm:relation:7107487",
+            "offset": 531232,
+            "length": 1076
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "غليسية",
+            "name:ar": "غليسية",
+            "name:fr": "Ghlissia",
+            "ref:tn:codegeo": "635553"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6355",
+            "delegationFr": "Douz sud",
+            "delegationAr": "دوز الجنوبية",
+            "sectorCode": "635553",
+            "sectorFr": "Ghlicia",
+            "sectorAr": "غليسية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70389,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3453,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3446
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107488",
+            "sourceId": "osm",
+            "name": "دوز الغربية",
+            "aliases": [
+              "Douz Ouest"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الجنوبية",
+            "contextAliases": [
+              "Douz Sud",
+              "Délégation Douz Sud",
+              "معتمدية دوز الجنوبية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.027893,
+            "lng": 9.404895,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              8.995634,
+              32.647563,
+              9.965607,
+              33.400227
+            ],
+            "areaKm2": 1418.416962619996,
+            "pickerGroupId": "osm:relation:7107488",
+            "offset": 532308,
+            "length": 2356
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوز الغربية",
+            "name:ar": "دوز الغربية",
+            "name:fr": "Douz Ouest",
+            "ref:tn:codegeo": "635551"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6355",
+            "delegationFr": "Douz sud",
+            "delegationAr": "دوز الجنوبية",
+            "sectorCode": "635551",
+            "sectorFr": "Douz ouest",
+            "sectorAr": "دوز الغربية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70321,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3449,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3442
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7107714",
+            "sourceId": "osm",
+            "name": "القلعة",
+            "aliases": [
+              "El Golaa"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوز الشمالية",
+            "contextAliases": [
+              "Douz Nord",
+              "Délégation Douz Nord",
+              "معتمدية دوز الشمالية"
+            ],
+            "governorateId": 1012,
+            "lat": 33.487067,
+            "lng": 8.988472,
+            "delegationId": 484,
+            "hasBoundary": true,
+            "bbox": [
+              8.924355,
+              33.454303,
+              9.085996,
+              33.520098
+            ],
+            "areaKm2": 52.71854696162434,
+            "pickerGroupId": "osm:relation:7107714",
+            "offset": 542200,
+            "length": 1100
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القلعة",
+            "name:ar": "القلعة",
+            "name:fr": "El Golaa",
+            "ref:tn:codegeo": "635452"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "63",
+            "governorateFr": "Kebili",
+            "governorateAr": "قبلي",
+            "delegationCode": "6354",
+            "delegationFr": "Douz nord",
+            "delegationAr": "دوز  الشمالية",
+            "sectorCode": "635452",
+            "sectorFr": "El golaa",
+            "sectorAr": "القلعة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 70185,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3442,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3435
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        }
+      ],
+      "qualifications": [
+        "Version1 was an unnamed point; versions2-24 identify the town. Versions10-19 carried obsolete Gabes address/is_in tags; version20 removed those in2020. The current cache does not carry them, and the primary ACTE profile explicitly places the town in Kebili.",
+        "The town is not equated with either Douz North or Douz South delegation or their imadas."
+      ],
+      "mustPreserve": [
+        "Raw point ID, kind, coordinates, aliases, parent and prayer delegation.",
+        "Base ID, names and coordinates.",
+        "All separately coded sector rows and their current geometry, including accepted replacement lineage."
+      ]
+    },
+    {
+      "id": "osm:node:1165828361",
+      "baseId": 595,
+      "label": "Jemmal",
+      "status": "current settlement identity supported; display association not yet approved",
+      "currentFeature": {
+        "id": "osm:node:1165828361",
+        "sourceId": "osm",
+        "name": "جمال",
+        "aliases": [
+          "Jemmel",
+          "Jemmal"
+        ],
+        "kind": "village",
+        "parentName": "جمال القبلية",
+        "contextAliases": [
+          "Délégation Jammel",
+          "Jammel Sud",
+          "Jemmal",
+          "جمال القبلية",
+          "معتمدية جمّال"
+        ],
+        "governorateId": 364,
+        "lat": 35.6239297,
+        "lng": 10.7592359,
+        "delegationId": 595,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1165828361"
+      },
+      "currentBase": {
+        "id": 595,
+        "nomFr": "Jammel",
+        "nomAr": "جمال",
+        "nomEn": "Jammel",
+        "lat": 35.63,
+        "lng": 10.76,
+        "governorateId": 364
+      },
+      "cachedExactSource": {
+        "id": "osm:node:1165828361",
+        "tags": {
+          "name": "جمال",
+          "name:ar": "جمال",
+          "name:en": "Jemmal",
+          "name:fr": "Jemmel",
+          "place": "village",
+          "population": "65420",
+          "source:population": "English Wikipedia",
+          "wikidata": "Q2545445",
+          "wikimedia_commons": "Category:Jemmal",
+          "wikipedia": "en:Jemmal"
+        },
+        "lat": 35.6239297,
+        "lng": 10.7592359
+      },
+      "liveSource": {
+        "version": 18,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "visible": "true",
+        "lat": 35.6239297,
+        "lng": 10.7592359,
+        "tags": {
+          "name": "جمال",
+          "name:ar": "جمال",
+          "name:en": "Jemmal",
+          "name:fr": "Jemmel",
+          "place": "village",
+          "population": "65420",
+          "source:population": "English Wikipedia",
+          "wikidata": "Q2545445",
+          "wikimedia_commons": "Category:Jemmal",
+          "wikipedia": "en:Jemmal"
+        }
+      },
+      "fullHistory": [
+        {
+          "version": 1,
+          "timestamp": "2011-02-21T21:58:47Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "name": "Jemmel",
+            "place": "village"
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2011-03-10T14:31:59Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:fr": "Jemmel",
+            "place": "village"
+          }
+        },
+        {
+          "version": 3,
+          "timestamp": "2011-09-23T15:49:25Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:fr": "Jemmel",
+            "place": "village"
+          }
+        },
+        {
+          "version": 4,
+          "timestamp": "2011-12-11T23:09:40Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:country": "TN",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:fr": "Jemmel",
+            "place": "village"
+          }
+        },
+        {
+          "version": 5,
+          "timestamp": "2013-01-29T09:01:24Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:country": "TN",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Monastir",
+            "name": "JAMMEL",
+            "name:ar": "جمال",
+            "name:fr": "Jemmel",
+            "place": "village"
+          }
+        },
+        {
+          "version": 6,
+          "timestamp": "2013-02-08T10:36:56Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:country": "TN",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:fr": "Jemmel",
+            "place": "village"
+          }
+        },
+        {
+          "version": 7,
+          "timestamp": "2016-10-24T21:09:51Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:country": "TN",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 8,
+          "timestamp": "2016-11-20T21:49:19Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 9,
+          "timestamp": "2017-07-14T05:44:33Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 10,
+          "timestamp": "2017-07-31T13:02:06Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 11,
+          "timestamp": "2017-07-31T13:02:09Z",
+          "visible": "true",
+          "lat": 35.6215725,
+          "lng": 10.7629733,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 12,
+          "timestamp": "2019-08-04T12:13:48Z",
+          "visible": "true",
+          "lat": 35.6239373,
+          "lng": 10.7592628,
+          "tags": {
+            "addr:city": "Jemmel",
+            "addr:governorate": "Monastir",
+            "is_in": "Monastir; Tunisia; Africa",
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 13,
+          "timestamp": "2021-08-15T18:22:01Z",
+          "visible": "true",
+          "lat": 35.6239373,
+          "lng": 10.7592628,
+          "tags": {
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 14,
+          "timestamp": "2022-05-27T12:51:32Z",
+          "visible": "true",
+          "lat": 35.6239297,
+          "lng": 10.7592359,
+          "tags": {
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445"
+          }
+        },
+        {
+          "version": 15,
+          "timestamp": "2022-06-30T05:30:55Z",
+          "visible": "true",
+          "lat": 35.6239297,
+          "lng": 10.7592359,
+          "tags": {
+            "is_in:continent": "Africa",
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445",
+            "wikipedia": "en:Jemmal"
+          }
+        },
+        {
+          "version": 16,
+          "timestamp": "2023-09-05T15:40:34Z",
+          "visible": "true",
+          "lat": 35.6239297,
+          "lng": 10.7592359,
+          "tags": {
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445",
+            "wikipedia": "en:Jemmal"
+          }
+        },
+        {
+          "version": 17,
+          "timestamp": "2023-10-25T21:12:37Z",
+          "visible": "true",
+          "lat": 35.6239297,
+          "lng": 10.7592359,
+          "tags": {
+            "is_in:country": "Tunisia",
+            "is_in:country_code": "TN",
+            "is_in:governorate": "Monastir",
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445",
+            "wikimedia_commons": "Category:Jemmal",
+            "wikipedia": "en:Jemmal"
+          }
+        },
+        {
+          "version": 18,
+          "timestamp": "2026-03-07T20:28:17Z",
+          "visible": "true",
+          "lat": 35.6239297,
+          "lng": 10.7592359,
+          "tags": {
+            "name": "جمال",
+            "name:ar": "جمال",
+            "name:en": "Jemmal",
+            "name:fr": "Jemmel",
+            "place": "village",
+            "population": "65420",
+            "source:population": "English Wikipedia",
+            "wikidata": "Q2545445",
+            "wikimedia_commons": "Category:Jemmal",
+            "wikipedia": "en:Jemmal"
+          }
+        }
+      ],
+      "currentSourceEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-1165828361-current.xml",
+        "sha256": "42aa5971868e3c88fd60ff17293419678f07c2304e4ec17d9dbbc4fb140af0db",
+        "bytes": 845
+      },
+      "historyEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-1165828361-history.xml",
+        "sha256": "403f10be78dcfcd165bfc0206ecd2d76df1abd42ea8b0783ee6ccaaea19169f1",
+        "bytes": 10961
+      },
+      "freshExactSourceEqualsCacheAndRawCoordinate": true,
+      "sourceRetrievals": [
+        {
+          "file": "work\\remaining-three-town-source-identity\\osm-node-1165828361-current.xml",
+          "url": "https://api.openstreetmap.org/api/0.6/node/1165828361",
+          "retrievedAt": "2026-09-12T08:19:22.507235+00:00",
+          "status": 200,
+          "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1165828361",
+          "contentType": "application/xml; charset=utf-8",
+          "bytes": 845,
+          "sha256": "42aa5971868e3c88fd60ff17293419678f07c2304e4ec17d9dbbc4fb140af0db"
+        },
+        {
+          "file": "work\\remaining-three-town-source-identity\\osm-node-1165828361-history.xml",
+          "url": "https://api.openstreetmap.org/api/0.6/node/1165828361/history",
+          "retrievedAt": "2026-09-12T08:19:22.653620+00:00",
+          "status": 200,
+          "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1165828361/history",
+          "contentType": "application/xml; charset=utf-8",
+          "bytes": 10961,
+          "sha256": "403f10be78dcfcd165bfc0206ecd2d76df1abd42ea8b0783ee6ccaaea19169f1"
+        }
+      ],
+      "directActiveCurationRules": [],
+      "distinctAdministrativeScope": [
+        "معتمدية جمّال"
+      ],
+      "separateSectorCount": 9,
+      "separateSectorFacts": [
+        {
+          "currentFeature": {
+            "id": "osm:relation:7112769",
+            "sourceId": "osm",
+            "name": "زاوية قنطش",
+            "aliases": [
+              "Zaouiet Kontoch",
+              "Zaouit Kontech"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.646935,
+            "lng": 10.762317,
+            "delegationId": 595,
+            "hasBoundary": true,
+            "bbox": [
+              10.723024,
+              35.628131,
+              10.803937,
+              35.665721
+            ],
+            "areaKm2": 12.191933253709186,
+            "pickerGroupId": "osm:relation:7112769",
+            "offset": 779652,
+            "length": 2340
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زاوية قنطش",
+            "name:ar": "زاوية قنطش",
+            "name:fr": "Zaouiet Kontoch",
+            "ref:tn:codegeo": "325655",
+            "wikidata": "Q3574794"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325655",
+            "sectorFr": "Zaouiet kontoch",
+            "sectorAr": "زاوية قنطش",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37093,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1757,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1755
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7113920",
+            "sourceId": "isie-local-sectors-2023-jammel",
+            "name": "الطيايرة",
+            "aliases": [
+              "Et-Teyaïra"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.578868,
+            "lng": 10.771911,
+            "delegationId": 596,
+            "hasBoundary": true,
+            "bbox": [
+              10.756953,
+              35.566223,
+              10.788982,
+              35.591316
+            ],
+            "areaKm2": 5.090551773561805,
+            "pickerGroupId": "osm:relation:7113920",
+            "offset": 820656,
+            "length": 1396
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الطيايرة",
+            "name:ar": "الطيايرة",
+            "name:fr": "Et-Teyaïra",
+            "ref:tn:codegeo": "325659"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325659",
+            "sectorFr": "Et-teyaira",
+            "sectorAr": "الطيايرة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37229,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1763,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1761
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7113921",
+            "sourceId": "osm",
+            "name": "جمال الجوفية",
+            "aliases": [
+              "Jammel Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.632288,
+            "lng": 10.723776,
+            "delegationId": 595,
+            "hasBoundary": true,
+            "bbox": [
+              10.694784,
+              35.62026,
+              10.761316,
+              35.644244
+            ],
+            "areaKm2": 9.867977782378215,
+            "pickerGroupId": "osm:relation:7113921",
+            "offset": 822052,
+            "length": 844
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمال الجوفية",
+            "name:ar": "جمال الجوفية",
+            "name:fr": "Jammel Nord",
+            "ref:tn:codegeo": "325652"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325652",
+            "sectorFr": "Jammel Nord",
+            "sectorAr": "جمال الجوفية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36991,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1751,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1749
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7113922",
+            "sourceId": "osm",
+            "name": "جمال الشرقية",
+            "aliases": [
+              "Jammel Est"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.617015,
+            "lng": 10.79631,
+            "delegationId": 595,
+            "hasBoundary": true,
+            "bbox": [
+              10.758741,
+              35.591087,
+              10.824492,
+              35.643492
+            ],
+            "areaKm2": 19.754260048271465,
+            "pickerGroupId": "osm:relation:7113922",
+            "offset": 822896,
+            "length": 1548
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمال الشرقية",
+            "name:ar": "جمال الشرقية",
+            "name:fr": "Jammel Est",
+            "ref:tn:codegeo": "325653"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325653",
+            "sectorFr": "Jammel Est",
+            "sectorAr": "جمال الشرقية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37025,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1753,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1751
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7113923",
+            "sourceId": "isie-local-sectors-2023-jammel",
+            "name": "جمال الغربية",
+            "aliases": [
+              "Jammel Ouest"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.607136,
+            "lng": 10.7272,
+            "delegationId": 596,
+            "hasBoundary": true,
+            "bbox": [
+              10.686977,
+              35.58944,
+              10.762236,
+              35.625221
+            ],
+            "areaKm2": 18.046837766574868,
+            "pickerGroupId": "osm:relation:7113923",
+            "offset": 824444,
+            "length": 2244
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمال الغربية",
+            "name:ar": "جمال الغربية",
+            "name:fr": "Jammel Ouest",
+            "ref:tn:codegeo": "325654"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325654",
+            "sectorFr": "Jammel Ouest",
+            "sectorAr": "جمال الغربية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37059,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1755,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1753
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7113924",
+            "sourceId": "osm",
+            "name": "جمال القبلية",
+            "aliases": [
+              "Jammel Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.607646,
+            "lng": 10.768673,
+            "delegationId": 595,
+            "hasBoundary": true,
+            "bbox": [
+              10.757691,
+              35.590173,
+              10.792927,
+              35.625307
+            ],
+            "areaKm2": 5.853461097573152,
+            "pickerGroupId": "osm:relation:7113924",
+            "offset": 826688,
+            "length": 1540
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جمال القبلية",
+            "name:ar": "جمال القبلية",
+            "name:fr": "Jammel Sud",
+            "ref:tn:codegeo": "325651"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325651",
+            "sectorFr": "Jammel Sud",
+            "sectorAr": "جمال القبلية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 36957,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1749,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1747
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7114360",
+            "sourceId": "osm",
+            "name": "الهدادرة",
+            "aliases": [
+              "El Hdadra",
+              "Hdadra"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.602145,
+            "lng": 10.630193,
+            "delegationId": 596,
+            "hasBoundary": true,
+            "bbox": [
+              10.577402,
+              35.55538,
+              10.66919,
+              35.648351
+            ],
+            "areaKm2": 42.395595062011324,
+            "pickerGroupId": "osm:relation:7114360",
+            "offset": 857476,
+            "length": 1356
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الهدادرة",
+            "name:ar": "الهدادرة",
+            "name:fr": "El Hdadra",
+            "ref:tn:codegeo": "325658"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325658",
+            "sectorFr": "El hdadra",
+            "sectorAr": "الهدادرة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37195,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1762,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1760
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7114361",
+            "sourceId": "osm",
+            "name": "بئر الطيب",
+            "aliases": [
+              "Bir Taïeb"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.657284,
+            "lng": 10.677158,
+            "delegationId": 593,
+            "hasBoundary": true,
+            "bbox": [
+              10.636946,
+              35.642472,
+              10.722632,
+              35.672522
+            ],
+            "areaKm2": 12.167131332742317,
+            "pickerGroupId": "osm:relation:7114361",
+            "offset": 858832,
+            "length": 2300
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر الطيب",
+            "name:ar": "بئر الطيب",
+            "name:fr": "Bir Taïeb",
+            "ref:tn:codegeo": "325656"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325656",
+            "sectorFr": "Bir taieb",
+            "sectorAr": "بئر الطيب",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37127,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1759,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1757
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        },
+        {
+          "currentFeature": {
+            "id": "osm:relation:7114362",
+            "sourceId": "osm",
+            "name": "منزل كامل",
+            "aliases": [
+              "Menzel Kamel"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جمّال",
+            "contextAliases": [
+              "Délégation Jammel",
+              "Jemmal",
+              "معتمدية جمّال"
+            ],
+            "governorateId": 364,
+            "lat": 35.636264,
+            "lng": 10.661692,
+            "delegationId": 593,
+            "hasBoundary": true,
+            "bbox": [
+              10.618713,
+              35.609751,
+              10.735814,
+              35.662659
+            ],
+            "areaKm2": 26.022473792335568,
+            "pickerGroupId": "osm:relation:7114362",
+            "offset": 861132,
+            "length": 2156
+          },
+          "originalSourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل كامل",
+            "name:ar": "منزل كامل",
+            "name:fr": "Menzel Kamel",
+            "ref:tn:codegeo": "325657"
+          },
+          "currentOfficialRecord": {
+            "governorateCode": "32",
+            "governorateFr": "Monastir",
+            "governorateAr": "المنستير",
+            "delegationCode": "3256",
+            "delegationFr": "Jammel",
+            "delegationAr": "جمال",
+            "sectorCode": "325657",
+            "sectorFr": "Menzel kamel",
+            "sectorAr": "منزل كامل",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37161,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1760,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1758
+            }
+          },
+          "sourceCodeRegistryMatch": true
+        }
+      ],
+      "qualifications": [
+        "All18 versions retain a named village settlement classification. The current primary Ministry evidence calls Jemmal a town/city; this difference in size classification does not authorize changing raw kind or assigning a boundary.",
+        "The source population65420 was attributed to English Wikipedia. The retrieved PGES search extraction labels that number as delegation population, so it is not imported as town population or used as identity proof."
+      ],
+      "mustPreserve": [
+        "Raw point ID, kind, coordinates, aliases, parent and prayer delegation.",
+        "Base ID, names and coordinates.",
+        "All separately coded sector rows and their current geometry, including accepted replacement lineage."
+      ]
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "id": "jendouba-mehat-resume-2018",
+      "placeId": "osm:node:287625095",
+      "publisher": "Tunisian Ministry of Equipment, Housing and Territorial Planning; DGAT; URAM2018",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+        "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+        "bytes": 7131225
+      },
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+      "originalRetrieval": {
+        "file": "mehat-jendouba-sdad-2018.pdf",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+        "finalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+        "retrievedAt": "2026-09-08T02:00:09.725661+00:00",
+        "statusCode": 200,
+        "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+        "bytes": 7131225,
+        "contentType": "application/pdf"
+      },
+      "reviewedPages": [
+        {
+          "pdfPage": 26,
+          "printedPage": 21,
+          "finding": "Treats Essaada and Ettataouer as sectors on the periphery of the city of Jendouba."
+        },
+        {
+          "pdfPage": 33,
+          "printedPage": 27,
+          "finding": "Discusses Jendouba North and South as separate delegations and tabulates Jendouba and Jendouba North as separate administrative rows."
+        },
+        {
+          "pdfPage": 51,
+          "printedPage": 42,
+          "finding": "Proposes strengthening Jendouba as a regional city, with urban rail, economic and service functions."
+        }
+      ],
+      "limits": "The resumed report supports an inhabited city identity distinct from the two administrative delegations. No exact town perimeter, population or coordinate is imported. The larger Rapport URL supplied as a lead was not used as this cached file source."
+    },
+    {
+      "id": "douz-acte-town-profile",
+      "placeId": "osm:node:264881676",
+      "publisher": "ACTE national commune energy-transition programme implemented by ANME",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\douz-acte.html",
+        "sha256": "dc68ea69dd2526b8198f6be02744ede41e1971f284d83f94fe63f783c25f32d1",
+        "bytes": 60602
+      },
+      "url": "https://acte.tn/fr/commune/commune-douz",
+      "finding": "Explicitly identifies Douz as a city in Kebili and describes urban growth over agricultural land, oasis/tourism activity and industrial infrastructure. This identifies an inhabited city rather than merely a municipality office.",
+      "publisherSupport": {
+        "source": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\anme-acte-2023-programme-authority.pdf",
+          "sha256": "d60b99a3008293db02273942e1f5017fb02909671576c44d1f88949c8e451536",
+          "bytes": 1087460
+        },
+        "url": "https://www.anme.tn/sites/default/files/2024-10/cahier_des_charges_ao_5acte-2023.pdf",
+        "pdfPage": 6,
+        "finding": "ANME procurement documentation identifies ANME implementation of ACTE, lists Douz among pilot communes and distinguishes programme activities from municipal objects."
+      },
+      "limits": "Neither the general city profile nor programme procurement establishes Douz North/South boundaries. Those current separate sectors and contexts remain intact."
+    },
+    {
+      "id": "jemmal-mehat-city-tender-2017",
+      "placeId": "osm:node:1165828361",
+      "publisher": "Tunisian Ministry of Equipment, Housing and Territorial Planning, Urban Hydraulics Directorate",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jemmal-mehat-city-floodworks-tender2017.pdf",
+        "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+        "bytes": 242375
+      },
+      "url": "https://intranet.mehat.gov.tn/geao.nsf/xsp/.ibmmodres/domino/OpenAttachment/geao.nsf/251CD8B8DD61C6F4412581670029E05A/AvisAOfr/MEHAT_DHU_AO-06_2017_Fr.pdf",
+      "pdfPage": 1,
+      "finding": "Official tender06/2017 explicitly assigns lot2 to city flood-protection works in Jemmal, alongside separate Sousse and Zeramdine city works. This establishes city identity without conflating any named imada with the whole town.",
+      "limits": "No geographical extent or delegation population is imported. The municipal PGES lead could be indexed by web search, but direct archival access timed out; it is supplementary discovery only, not a pinned PDF source."
+    }
+  ],
+  "visualEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jendouba-mehat-page26.png",
+      "sha256": "57b50a1daca14de5c434ac67922875a3752f80bad612206f07def7e730be085c",
+      "bytes": 456865,
+      "personallyViewed": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jendouba-mehat-page33.png",
+      "sha256": "f16f5f9b1fde210d0139d4fc177f87eaa36bba4ac8a32658524563f38018365a",
+      "bytes": 164375,
+      "personallyViewed": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jendouba-mehat-page51.png",
+      "sha256": "a37ba7c1e4c9f1cc826f3dec68383eccbe4b70e4e95ccf1c24168ef41622aeb8",
+      "bytes": 168025,
+      "personallyViewed": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jemmal-mehat-tender-page1.png",
+      "sha256": "9a649ab362a3a7777c92a67746c14d08200a268da6007df18332fef14549768e",
+      "bytes": 226103,
+      "personallyViewed": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\anme-acte-page6.png",
+      "sha256": "461d4838e47ff99d15041d06b3be4754c614704224079b0274ccb72bf1a80616",
+      "bytes": 169628,
+      "personallyViewed": true
+    }
+  ],
+  "failedPrimaryArchivalAttempts": [
+    {
+      "file": "work\\remaining-three-town-source-identity\\jemmal-municipal-pges.pdf",
+      "url": "https://www.collectiviteslocales.gov.tn/wp-content/uploads/2017/06/Jemmal-PGES-drainage-eaux-pluviales.pdf",
+      "retrievedAt": "2026-09-12T08:19:22.655667+00:00",
+      "error": "HTTPSConnectionPool(host='www.collectiviteslocales.gov.tn', port=443): Max retries exceeded with url: /wp-content/uploads/2017/06/Jemmal-PGES-drainage-eaux-pluviales.pdf (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.collectiviteslocales.gov.tn', port=443) at 0x1b71890e750>, 'Connection to www.collectiviteslocales.gov.tn timed out. (connect timeout=35)'))"
+    },
+    {
+      "file": "work\\remaining-three-town-source-identity\\municipality-directory.html",
+      "url": "https://www.collectiviteslocales.gov.tn/fr/sites-web-des-municipalites/",
+      "retrievedAt": "2026-09-12T08:19:22.666663+00:00",
+      "error": "HTTPSConnectionPool(host='www.collectiviteslocales.gov.tn', port=443): Max retries exceeded with url: /fr/sites-web-des-municipalites/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.collectiviteslocales.gov.tn', port=443) at 0x1b71890cce0>, 'Connection to www.collectiviteslocales.gov.tn timed out. (connect timeout=35)'))"
+    }
+  ],
+  "evidenceNotClaimed": [
+    "Google Maps review in this source subtask",
+    "Surveyed source-point accuracy",
+    "Original INM calculation anchor",
+    "City polygon identity or complete city polygon coverage",
+    "Approval to merge picker rows"
+  ]
+}

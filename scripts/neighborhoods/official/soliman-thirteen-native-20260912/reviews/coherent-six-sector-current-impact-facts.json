@@ -1,0 +1,6424 @@
+{
+  "status": "INDEPENDENT_FINITE_COHERENT_SIX_SECTOR_MEASUREMENTS_NOT_IMPORT_APPROVAL",
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+      "bytes": 1842364
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "b7ac659019ec21f24d0fa518d09be46edd75034aba764ea204b437ee087933be",
+      "bytes": 5495792
+    },
+    "cache": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "626031d4136dceeb49085bd80311cb1d930a4cf22b906b81a818a5127a5369e2",
+      "bytes": 373017
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+      "bytes": 555201
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "29dd3b4e381151993cc244ad3ab8500c041bc55a81999488aaedcadd67e2e70f",
+      "bytes": 987522
+    },
+    "governors": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+      "bytes": 543279
+    },
+    "registry": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/point-retention-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "bundle": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-adjacent-native-source-review/whole-native-source-polygons.geojson",
+      "sha256": "c18e02069247cd0bd528464ee5da6b01e59bf07ed46e1ab37656d543688b935f",
+      "bytes": 380510
+    },
+    "cohort": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-immediate-native-source-cohort-review.json",
+      "sha256": "9deea58cbe45ac51bf8c1e8414cd5c7d3c45399dba5642fa4bf567d5eeafa510",
+      "bytes": 16070
+    },
+    "priorIndependentHold": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-whole-boundary-independent-impact-review.json",
+      "sha256": "867b6e7f3b34f1d984b2007132d9c91ee729e1bb125042102809ddee27af2bda",
+      "bytes": 28180
+    },
+    "checkpoint": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/soliman-numbered-blocks-exclusion-catalog-checkpoint-20260912.json",
+      "sha256": "a62ed859f909dfbe00088bc08cbdf7b85cb7699012baba56f6e737c636ba469c",
+      "bytes": 6899
+    },
+    "beforeMetadata": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/before-soliman-numbered-blocks-exclusion-20260912/repo/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "fbd93249d69e9f05d1e713a5924241c38503224adf1b5baab98ac5f44effc4e6",
+      "bytes": 1880801
+    },
+    "beforeBinary": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/before-soliman-numbered-blocks-exclusion-20260912/repo/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "4beb6839b037a4bd07d8583b9b70a3993d6d848c2cd89bf8cf44e9f44e7eca1b",
+      "bytes": 5501144
+    }
+  },
+  "sourceReconstruction": [
+    {
+      "id": "osm:relation:7100693",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-sector-building-context-review\\soliman.pdf",
+        "sha256": "912a5163030cbc29a62b1609f1f4a3dd4a579e4dac9e3cd4b35fe94fd46e0e27"
+      },
+      "drawingIndex": 410,
+      "seqno": 418,
+      "verticesIncludingClosure": 403,
+      "affineUTM32FromPage": [
+        [
+          13.00632190998112,
+          0.0004483057165536507
+        ],
+        [
+          -0.0004510942890192382,
+          -13.002882146258344
+        ],
+        [
+          623935.025535268,
+          4066361.406437825
+        ]
+      ],
+      "maxControlResidualM": 0.20873152417633042,
+      "bundleHausdorffDegrees": 0.0,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "soliman",
+        "sourceOsmId": "osm:relation:7100693",
+        "currentCode": "156154",
+        "sourceName": "سليمان",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-sector-building-context-review\\soliman.pdf",
+          "sha256": "912a5163030cbc29a62b1609f1f4a3dd4a579e4dac9e3cd4b35fe94fd46e0e27"
+        },
+        "sourceDrawingIndices": [
+          410
+        ],
+        "sourceFacts": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-sector-building-context-review\\source-geography-facts.json",
+          "sha256": "df697da61dfa7af2f5576c58e2e88538df0197cebc59f049bc61045f1d796f78"
+        },
+        "binding": "Existing sector identity aligned with official registry; geometry not imported."
+      },
+      "renderPersonallyViewed": false
+    },
+    {
+      "id": "osm:relation:7100694",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\soliman-sud.pdf",
+        "sha256": "ce5884a3f7ebbadbfa5383b0b433e28e554760cd8531dc286354cf6405f3f3c0"
+      },
+      "drawingIndex": 422,
+      "seqno": 430,
+      "verticesIncludingClosure": 566,
+      "affineUTM32FromPage": [
+        [
+          15.64298809411518,
+          0.0006701361506802273
+        ],
+        [
+          -0.0008892661253412371,
+          -15.638650520673764
+        ],
+        [
+          628254.5082482019,
+          4069001.614157104
+        ]
+      ],
+      "maxControlResidualM": 0.14537327845723458,
+      "bundleHausdorffDegrees": 3.552713678800501e-15,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "soliman-sud",
+        "sourceOsmId": "osm:relation:7100694",
+        "currentCode": "156155",
+        "sourceName": "سليمان الجنوبية",
+        "sourceParentName": "سليمان",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\soliman-sud.pdf",
+          "sha256": "ce5884a3f7ebbadbfa5383b0b433e28e554760cd8531dc286354cf6405f3f3c0"
+        },
+        "sourceRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\soliman-sud-retrieval.json",
+          "sha256": "3bebd7a655e89ad540458f6feb282c28c607d09948afbb3537c30fc9f192ab8a"
+        },
+        "sourceDrawingIndices": [
+          422
+        ],
+        "sourceExtraction": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+          "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+        },
+        "sourceSplitReconstruction": null,
+        "officialRegistryRow": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1561",
+          "delegationFr": "Soliman",
+          "delegationAr": "سليمان",
+          "sectorCode": "156155",
+          "sectorFr": "Soliman sud",
+          "sectorAr": "سليمان الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13533,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 546,
+            "Nombre_de_menages_par_Secteurs.xlsx": 545
+          }
+        },
+        "binding": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+      },
+      "renderPersonallyViewed": true
+    },
+    {
+      "id": "osm:relation:7102534",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\bouchray.pdf",
+        "sha256": "3b54f8c69b91a27619da685b1f127bfd2317f8c031195b90aa55b6f57364796c"
+      },
+      "drawingIndex": 399,
+      "seqno": 407,
+      "verticesIncludingClosure": 722,
+      "affineUTM32FromPage": [
+        [
+          11.785403472577775,
+          0.0008975571990927826
+        ],
+        [
+          0.0005529362451852649,
+          -11.781830067900955
+        ],
+        [
+          631627.4356990564,
+          4062075.944897601
+        ]
+      ],
+      "maxControlResidualM": 0.09352704551793506,
+      "bundleHausdorffDegrees": 0.0,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "bouchray",
+        "sourceOsmId": "osm:relation:7102534",
+        "currentCode": "156153",
+        "sourceName": "بوشراي",
+        "sourceParentName": "سليمان",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\bouchray.pdf",
+          "sha256": "3b54f8c69b91a27619da685b1f127bfd2317f8c031195b90aa55b6f57364796c"
+        },
+        "sourceRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\bouchray-retrieval.json",
+          "sha256": "b1b567a0ebd6e08ea5b876083cb09f47595301a58fe00ec75e2f9d4b6545eb40"
+        },
+        "sourceDrawingIndices": [
+          399
+        ],
+        "sourceExtraction": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+          "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+        },
+        "sourceSplitReconstruction": null,
+        "officialRegistryRow": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1561",
+          "delegationFr": "Soliman",
+          "delegationAr": "سليمان",
+          "sectorCode": "156153",
+          "sectorFr": "Bou charray",
+          "sectorAr": "بوشراي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13465,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 542,
+            "Nombre_de_menages_par_Secteurs.xlsx": 541
+          }
+        },
+        "binding": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+      },
+      "renderPersonallyViewed": true
+    },
+    {
+      "id": "osm:relation:7104935",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\fondouk-jedid.pdf",
+        "sha256": "30e8a44086627c679d90fe8c55dfbdf2e96280519d7660b691af408088440cef"
+      },
+      "drawingIndex": 579,
+      "seqno": 587,
+      "verticesIncludingClosure": 499,
+      "affineUTM32FromPage": [
+        [
+          14.185688051774472,
+          0.0003982899471715594
+        ],
+        [
+          0.00013019968264416093,
+          -14.181411016881611
+        ],
+        [
+          621995.0693567052,
+          4063091.4635845013
+        ]
+      ],
+      "maxControlResidualM": 0.1611713177187804,
+      "bundleHausdorffDegrees": 0.0,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "fondouk-jedid",
+        "sourceOsmId": "osm:relation:7104935",
+        "currentCode": "156451",
+        "sourceName": "فندق الجديد",
+        "sourceParentName": "قرنبالية",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\fondouk-jedid.pdf",
+          "sha256": "30e8a44086627c679d90fe8c55dfbdf2e96280519d7660b691af408088440cef"
+        },
+        "sourceRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\fondouk-jedid-retrieval.json",
+          "sha256": "fb222f05c87c9a6da964be34ba310546bdc62974f0180df34e3dad07613413ea"
+        },
+        "sourceDrawingIndices": [
+          579
+        ],
+        "sourceExtraction": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+          "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+        },
+        "sourceSplitReconstruction": null,
+        "officialRegistryRow": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1564",
+          "delegationFr": "Grombalia",
+          "delegationAr": "قرنبالية",
+          "sectorCode": "156451",
+          "sectorFr": "Fondouk djedid",
+          "sectorAr": "فندق الجديد",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13941,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 570,
+            "Nombre_de_menages_par_Secteurs.xlsx": 569
+          }
+        },
+        "binding": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+      },
+      "renderPersonallyViewed": true
+    },
+    {
+      "id": "osm:relation:7104934",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\chammes.pdf",
+        "sha256": "73f9a0b5a3b2c2ebd393be651755a4afa4a4de2051008905eef72c6efd1323c1"
+      },
+      "drawingIndex": 620,
+      "seqno": 628,
+      "verticesIncludingClosure": 271,
+      "affineUTM32FromPage": [
+        [
+          14.775377849905164,
+          -0.0002235497107408538
+        ],
+        [
+          -0.0005278239941617358,
+          -14.769512039027177
+        ],
+        [
+          624857.3414455557,
+          4060491.5767721785
+        ]
+      ],
+      "maxControlResidualM": 0.14524760212172858,
+      "bundleHausdorffDegrees": 0.0,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "chammes",
+        "sourceOsmId": "osm:relation:7104934",
+        "currentCode": "156452",
+        "sourceName": "شماس",
+        "sourceParentName": "قرنبالية",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\chammes.pdf",
+          "sha256": "73f9a0b5a3b2c2ebd393be651755a4afa4a4de2051008905eef72c6efd1323c1"
+        },
+        "sourceRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\chammes-retrieval.json",
+          "sha256": "326027ed29a9369aaa61d0c841e60af077499f404fb63b308201790606325c8d"
+        },
+        "sourceDrawingIndices": [
+          620
+        ],
+        "sourceExtraction": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+          "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+        },
+        "sourceSplitReconstruction": null,
+        "officialRegistryRow": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1564",
+          "delegationFr": "Grombalia",
+          "delegationAr": "قرنبالية",
+          "sectorCode": "156452",
+          "sectorFr": "Chammes",
+          "sectorAr": "شماس",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13975,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 572,
+            "Nombre_de_menages_par_Secteurs.xlsx": 571
+          }
+        },
+        "binding": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+      },
+      "renderPersonallyViewed": true
+    },
+    {
+      "id": "osm:relation:7102535",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\cherifet.pdf",
+        "sha256": "fab1b73d8275448c7467c57f37e613439a1e1e444835e965d6a95155cb3b68f3"
+      },
+      "drawingIndex": 409,
+      "seqno": 417,
+      "verticesIncludingClosure": 392,
+      "affineUTM32FromPage": [
+        [
+          11.824740855224992,
+          0.0008175282725416974
+        ],
+        [
+          0.00037353212564994465,
+          -11.819882890538793
+        ],
+        [
+          631811.2462553409,
+          4067646.080673883
+        ]
+      ],
+      "maxControlResidualM": 0.09009119490922811,
+      "bundleHausdorffDegrees": 0.0,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "cherifet",
+        "sourceOsmId": "osm:relation:7102535",
+        "currentCode": "156152",
+        "sourceName": "الشريفات",
+        "sourceParentName": "سليمان",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\cherifet.pdf",
+          "sha256": "fab1b73d8275448c7467c57f37e613439a1e1e444835e965d6a95155cb3b68f3"
+        },
+        "sourceRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\cherifet-retrieval.json",
+          "sha256": "8aa61fcfc92eac66b5942127fd730689de9faa5b682127eacb4b40b8daf5b23c"
+        },
+        "sourceDrawingIndices": [
+          409
+        ],
+        "sourceExtraction": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+          "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+        },
+        "sourceSplitReconstruction": null,
+        "officialRegistryRow": {
+          "governorateCode": "15",
+          "governorateFr": "Nabeul",
+          "governorateAr": "نابل",
+          "delegationCode": "1561",
+          "delegationFr": "Soliman",
+          "delegationAr": "سليمان",
+          "sectorCode": "156152",
+          "sectorFr": "Ech-cherifet",
+          "sectorAr": "الشريفات",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13431,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 540,
+            "Nombre_de_menages_par_Secteurs.xlsx": 539
+          }
+        },
+        "binding": "Named own map aligned with the current registry row; whole boundary remains unaccepted."
+      },
+      "renderPersonallyViewed": true
+    },
+    {
+      "id": "isie2023:borj-cedria-1",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1.pdf",
+        "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc"
+      },
+      "drawingIndex": 480,
+      "seqno": 488,
+      "verticesIncludingClosure": 432,
+      "affineUTM32FromPage": [
+        [
+          13.865018904522213,
+          -0.00011907266241581328
+        ],
+        [
+          -0.00018375946228843532,
+          -13.859681832404021
+        ],
+        [
+          617762.9438437801,
+          4063958.957380142
+        ]
+      ],
+      "maxControlResidualM": 0.44819810513939695,
+      "bundleHausdorffDegrees": 0.0,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "borj-cedria-1",
+        "sourceOsmId": null,
+        "currentCode": null,
+        "sourceName": "برج السدرية 1",
+        "sourceParentName": "حمام الشط",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1.pdf",
+          "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc"
+        },
+        "sourceRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-1-retrieval.json",
+          "sha256": "44ffc9025119816c89103d6b5cb5f4d4ebacb8fe00100870d94e0b60bb1dd051"
+        },
+        "sourceDrawingIndices": [
+          480
+        ],
+        "sourceExtraction": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+          "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+        },
+        "sourceSplitReconstruction": null,
+        "officialRegistryRow": null,
+        "binding": "Source-only named component. Current unsuffixed Borj Cedria raw7174585/code135552 is not independently bound to this one component; no fake new code or source identity assigned."
+      },
+      "renderPersonallyViewed": true
+    },
+    {
+      "id": "isie2023:borj-cedria-2",
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2.pdf",
+        "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849"
+      },
+      "drawingIndex": 210,
+      "seqno": 218,
+      "verticesIncludingClosure": 398,
+      "affineUTM32FromPage": [
+        [
+          4.341222501566146,
+          -0.0002867782542254149
+        ],
+        [
+          0.0007246230720738822,
+          -4.341144185667872
+        ],
+        [
+          623036.8023183452,
+          4064767.342276139
+        ]
+      ],
+      "maxControlResidualM": 0.17769819495373276,
+      "bundleHausdorffDegrees": 0.0,
+      "validWholeLinearClosedPathInsideViewportAndTwoClips": true,
+      "sourceIdentity": {
+        "key": "borj-cedria-2",
+        "sourceOsmId": null,
+        "currentCode": null,
+        "sourceName": "برج السدرية 2",
+        "sourceParentName": "حمام الشط",
+        "sourcePdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2.pdf",
+          "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849"
+        },
+        "sourceRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\borj-cedria-2-retrieval.json",
+          "sha256": "0e88a2117532572f612bd0366dec714be6dc845a779c5ea4c92a3c8bcd28e5c0"
+        },
+        "sourceDrawingIndices": [
+          210
+        ],
+        "sourceExtraction": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-adjacent-native-source-review\\native-neighbor-source-records.json",
+          "sha256": "3e6e9ad53e3723fdb29870b7a118e298dce3f93e8d02dd95788791725f031ac5"
+        },
+        "sourceSplitReconstruction": null,
+        "officialRegistryRow": null,
+        "binding": "Source-only named component. Current unsuffixed Borj Cedria raw7174585/code135552 is not independently bound to this one component; no fake new code or source identity assigned."
+      },
+      "renderPersonallyViewed": true
+    }
+  ],
+  "sectors": [
+    {
+      "id": "osm:relation:7100693",
+      "currentRaw": {
+        "id": "osm:relation:7100693",
+        "sourceId": "osm",
+        "name": "سليمان",
+        "aliases": [
+          "Soliman"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.720223,
+        "lng": 10.482011,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.403797,
+          36.687246,
+          10.54891,
+          36.753043
+        ],
+        "areaKm2": 42.290533211050594,
+        "pickerGroupId": "osm:relation:7100693",
+        "offset": 289116,
+        "length": 2836
+      },
+      "currentSourceRecord": {
+        "id": "osm:relation:7100693",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سليمان",
+          "name:ar": "سليمان",
+          "name:fr": "Soliman",
+          "ref:tn:codegeo": "156154"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.4037967,
+                  36.7012868
+                ],
+                [
+                  10.406707,
+                  36.7007007
+                ],
+                [
+                  10.4080971,
+                  36.7004266
+                ],
+                [
+                  10.4184147,
+                  36.6982917
+                ],
+                [
+                  10.4220596,
+                  36.6976305
+                ],
+                [
+                  10.4238079,
+                  36.6972338
+                ],
+                [
+                  10.427189,
+                  36.6965197
+                ],
+                [
+                  10.4303721,
+                  36.6958584
+                ],
+                [
+                  10.4343799,
+                  36.695065
+                ],
+                [
+                  10.4344623,
+                  36.6943244
+                ],
+                [
+                  10.4347345,
+                  36.6927639
+                ],
+                [
+                  10.4349901,
+                  36.6912794
+                ],
+                [
+                  10.4352705,
+                  36.6898378
+                ],
+                [
+                  10.4356333,
+                  36.6891236
+                ],
+                [
+                  10.4366229,
+                  36.6885814
+                ],
+                [
+                  10.4378929,
+                  36.6882375
+                ],
+                [
+                  10.4388,
+                  36.6882243
+                ],
+                [
+                  10.4398555,
+                  36.6882375
+                ],
+                [
+                  10.4409935,
+                  36.6877746
+                ],
+                [
+                  10.4422965,
+                  36.6872853
+                ],
+                [
+                  10.4431541,
+                  36.6872456
+                ],
+                [
+                  10.4449354,
+                  36.6876027
+                ],
+                [
+                  10.4470465,
+                  36.688092
+                ],
+                [
+                  10.4498008,
+                  36.6888195
+                ],
+                [
+                  10.4517964,
+                  36.6892823
+                ],
+                [
+                  10.4542539,
+                  36.6900494
+                ],
+                [
+                  10.4569917,
+                  36.690261
+                ],
+                [
+                  10.4587729,
+                  36.6893617
+                ],
+                [
+                  10.4612469,
+                  36.6888591
+                ],
+                [
+                  10.4635229,
+                  36.6881714
+                ],
+                [
+                  10.4668916,
+                  36.689208
+                ],
+                [
+                  10.4697614,
+                  36.6899486
+                ],
+                [
+                  10.4733898,
+                  36.6905173
+                ],
+                [
+                  10.4730044,
+                  36.6915465
+                ],
+                [
+                  10.4755999,
+                  36.6919059
+                ],
+                [
+                  10.4812417,
+                  36.6927262
+                ],
+                [
+                  10.480221,
+                  36.6937244
+                ],
+                [
+                  10.4797097,
+                  36.6946502
+                ],
+                [
+                  10.479116,
+                  36.6961313
+                ],
+                [
+                  10.4788521,
+                  36.6972421
+                ],
+                [
+                  10.4786542,
+                  36.697824
+                ],
+                [
+                  10.4823568,
+                  36.6987761
+                ],
+                [
+                  10.485507,
+                  36.6999398
+                ],
+                [
+                  10.4839402,
+                  36.7019498
+                ],
+                [
+                  10.4868594,
+                  36.7031663
+                ],
+                [
+                  10.4846823,
+                  36.7063398
+                ],
+                [
+                  10.4834454,
+                  36.7078339
+                ],
+                [
+                  10.484212,
+                  36.7081988
+                ],
+                [
+                  10.4860842,
+                  36.70909
+                ],
+                [
+                  10.4868264,
+                  36.7092487
+                ],
+                [
+                  10.4872223,
+                  36.7087198
+                ],
+                [
+                  10.4887231,
+                  36.7092619
+                ],
+                [
+                  10.4904549,
+                  36.7043299
+                ],
+                [
+                  10.4923351,
+                  36.7050704
+                ],
+                [
+                  10.4922526,
+                  36.7060489
+                ],
+                [
+                  10.4944132,
+                  36.7064588
+                ],
+                [
+                  10.4989487,
+                  36.7080587
+                ],
+                [
+                  10.5002063,
+                  36.7061233
+                ],
+                [
+                  10.5036997,
+                  36.7076504
+                ],
+                [
+                  10.5071138,
+                  36.7091577
+                ],
+                [
+                  10.5091589,
+                  36.7101097
+                ],
+                [
+                  10.5134306,
+                  36.7121855
+                ],
+                [
+                  10.5162344,
+                  36.713468
+                ],
+                [
+                  10.5196637,
+                  36.7149417
+                ],
+                [
+                  10.5235935,
+                  36.7173448
+                ],
+                [
+                  10.5293452,
+                  36.7211317
+                ],
+                [
+                  10.5363701,
+                  36.7275832
+                ],
+                [
+                  10.5401986,
+                  36.7311164
+                ],
+                [
+                  10.5431509,
+                  36.7329009
+                ],
+                [
+                  10.5489097,
+                  36.7372651
+                ],
+                [
+                  10.5462235,
+                  36.7383414
+                ],
+                [
+                  10.5441187,
+                  36.7388555
+                ],
+                [
+                  10.5421342,
+                  36.7396908
+                ],
+                [
+                  10.5396485,
+                  36.7402531
+                ],
+                [
+                  10.5376038,
+                  36.740478
+                ],
+                [
+                  10.5357395,
+                  36.7416988
+                ],
+                [
+                  10.5345969,
+                  36.7418434
+                ],
+                [
+                  10.5331135,
+                  36.7429036
+                ],
+                [
+                  10.5331737,
+                  36.7446705
+                ],
+                [
+                  10.5336548,
+                  36.7469353
+                ],
+                [
+                  10.5353787,
+                  36.7486219
+                ],
+                [
+                  10.5358999,
+                  36.7502602
+                ],
+                [
+                  10.5342561,
+                  36.7506136
+                ],
+                [
+                  10.5291444,
+                  36.7493126
+                ],
+                [
+                  10.5271234,
+                  36.7530428
+                ],
+                [
+                  10.523808,
+                  36.7517711
+                ],
+                [
+                  10.5214691,
+                  36.7510361
+                ],
+                [
+                  10.5177408,
+                  36.7496478
+                ],
+                [
+                  10.5144261,
+                  36.7484359
+                ],
+                [
+                  10.5135512,
+                  36.7481047
+                ],
+                [
+                  10.51184,
+                  36.7474771
+                ],
+                [
+                  10.5099195,
+                  36.7471332
+                ],
+                [
+                  10.5087068,
+                  36.7468584
+                ],
+                [
+                  10.5085409,
+                  36.7467851
+                ],
+                [
+                  10.5082822,
+                  36.7468316
+                ],
+                [
+                  10.5080742,
+                  36.7466862
+                ],
+                [
+                  10.5078328,
+                  36.7465358
+                ],
+                [
+                  10.5075163,
+                  36.7464541
+                ],
+                [
+                  10.5032077,
+                  36.7452629
+                ],
+                [
+                  10.5011433,
+                  36.7448808
+                ],
+                [
+                  10.4998612,
+                  36.7445971
+                ],
+                [
+                  10.4992497,
+                  36.7444166
+                ],
+                [
+                  10.4988313,
+                  36.7443865
+                ],
+                [
+                  10.4985738,
+                  36.7443822
+                ],
+                [
+                  10.4981017,
+                  36.7443736
+                ],
+                [
+                  10.4978549,
+                  36.7442898
+                ],
+                [
+                  10.4977074,
+                  36.7442833
+                ],
+                [
+                  10.4976216,
+                  36.744307
+                ],
+                [
+                  10.4974633,
+                  36.7443306
+                ],
+                [
+                  10.4973561,
+                  36.7442769
+                ],
+                [
+                  10.4975432,
+                  36.7441343
+                ],
+                [
+                  10.4975572,
+                  36.7440297
+                ],
+                [
+                  10.4975304,
+                  36.7438578
+                ],
+                [
+                  10.4971978,
+                  36.7435977
+                ],
+                [
+                  10.4966722,
+                  36.7433697
+                ],
+                [
+                  10.4961464,
+                  36.7431958
+                ],
+                [
+                  10.4947007,
+                  36.7429121
+                ],
+                [
+                  10.4932415,
+                  36.7426499
+                ],
+                [
+                  10.4920721,
+                  36.7424091
+                ],
+                [
+                  10.4905111,
+                  36.742048
+                ],
+                [
+                  10.4899532,
+                  36.7420222
+                ],
+                [
+                  10.4896045,
+                  36.7418804
+                ],
+                [
+                  10.4892397,
+                  36.7417729
+                ],
+                [
+                  10.4888427,
+                  36.7417643
+                ],
+                [
+                  10.4886818,
+                  36.7417643
+                ],
+                [
+                  10.4884887,
+                  36.7417471
+                ],
+                [
+                  10.4881185,
+                  36.7416311
+                ],
+                [
+                  10.4870955,
+                  36.7414437
+                ],
+                [
+                  10.4860786,
+                  36.7412021
+                ],
+                [
+                  10.4855758,
+                  36.7410421
+                ],
+                [
+                  10.4850072,
+                  36.7409648
+                ],
+                [
+                  10.4844493,
+                  36.7410206
+                ],
+                [
+                  10.4841167,
+                  36.7410464
+                ],
+                [
+                  10.4832101,
+                  36.7408616
+                ],
+                [
+                  10.483017,
+                  36.7408272
+                ],
+                [
+                  10.4828078,
+                  36.7407584
+                ],
+                [
+                  10.4826897,
+                  36.7407326
+                ],
+                [
+                  10.4824242,
+                  36.7407133
+                ],
+                [
+                  10.4822284,
+                  36.7406466
+                ],
+                [
+                  10.4821613,
+                  36.7405456
+                ],
+                [
+                  10.4821855,
+                  36.7404489
+                ],
+                [
+                  10.4822391,
+                  36.7403715
+                ],
+                [
+                  10.4822874,
+                  36.7402834
+                ],
+                [
+                  10.482451,
+                  36.740163
+                ],
+                [
+                  10.482569,
+                  36.7399889
+                ],
+                [
+                  10.4825422,
+                  36.7398449
+                ],
+                [
+                  10.4823947,
+                  36.7396988
+                ],
+                [
+                  10.4821479,
+                  36.739501
+                ],
+                [
+                  10.4816008,
+                  36.739155
+                ],
+                [
+                  10.4812011,
+                  36.7390195
+                ],
+                [
+                  10.4806164,
+                  36.7388841
+                ],
+                [
+                  10.4800156,
+                  36.7388304
+                ],
+                [
+                  10.4798439,
+                  36.7388003
+                ],
+                [
+                  10.4791412,
+                  36.7386455
+                ],
+                [
+                  10.4787093,
+                  36.7384865
+                ],
+                [
+                  10.4780307,
+                  36.738278
+                ],
+                [
+                  10.4772127,
+                  36.737861
+                ],
+                [
+                  10.4766709,
+                  36.7376933
+                ],
+                [
+                  10.4764283,
+                  36.7376078
+                ],
+                [
+                  10.4761073,
+                  36.7374397
+                ],
+                [
+                  10.4756816,
+                  36.73726
+                ],
+                [
+                  10.4751392,
+                  36.7370909
+                ],
+                [
+                  10.474631,
+                  36.7370116
+                ],
+                [
+                  10.4742754,
+                  36.736965
+                ],
+                [
+                  10.4739755,
+                  36.7368674
+                ],
+                [
+                  10.4737281,
+                  36.7366509
+                ],
+                [
+                  10.4731894,
+                  36.7361024
+                ],
+                [
+                  10.472669,
+                  36.7353547
+                ],
+                [
+                  10.4722184,
+                  36.7348345
+                ],
+                [
+                  10.4718858,
+                  36.7345163
+                ],
+                [
+                  10.4713386,
+                  36.7340692
+                ],
+                [
+                  10.4707888,
+                  36.7337059
+                ],
+                [
+                  10.470534,
+                  36.7335297
+                ],
+                [
+                  10.4702845,
+                  36.7334437
+                ],
+                [
+                  10.4700941,
+                  36.7334738
+                ],
+                [
+                  10.4699787,
+                  36.7334888
+                ],
+                [
+                  10.46985,
+                  36.7335146
+                ],
+                [
+                  10.4697779,
+                  36.7335824
+                ],
+                [
+                  10.4696792,
+                  36.7336383
+                ],
+                [
+                  10.469629,
+                  36.7336911
+                ],
+                [
+                  10.4690252,
+                  36.7334292
+                ],
+                [
+                  10.4691147,
+                  36.7333236
+                ],
+                [
+                  10.4692071,
+                  36.73321
+                ],
+                [
+                  10.4692748,
+                  36.7330529
+                ],
+                [
+                  10.4693052,
+                  36.7328942
+                ],
+                [
+                  10.4692981,
+                  36.7327118
+                ],
+                [
+                  10.4692429,
+                  36.7324909
+                ],
+                [
+                  10.4691771,
+                  36.7322933
+                ],
+                [
+                  10.4690222,
+                  36.7320965
+                ],
+                [
+                  10.4686938,
+                  36.7318813
+                ],
+                [
+                  10.4685237,
+                  36.7318209
+                ],
+                [
+                  10.4682934,
+                  36.7317582
+                ],
+                [
+                  10.4680959,
+                  36.7317543
+                ],
+                [
+                  10.4678654,
+                  36.7317951
+                ],
+                [
+                  10.467709,
+                  36.7318575
+                ],
+                [
+                  10.4675637,
+                  36.7319371
+                ],
+                [
+                  10.4674783,
+                  36.7320102
+                ],
+                [
+                  10.4673899,
+                  36.7321221
+                ],
+                [
+                  10.4673672,
+                  36.73219
+                ],
+                [
+                  10.4677753,
+                  36.7324146
+                ],
+                [
+                  10.4677951,
+                  36.732429
+                ],
+                [
+                  10.4678083,
+                  36.7324475
+                ],
+                [
+                  10.4678139,
+                  36.7324684
+                ],
+                [
+                  10.4678112,
+                  36.7324896
+                ],
+                [
+                  10.4678004,
+                  36.7325092
+                ],
+                [
+                  10.4677819,
+                  36.7325257
+                ],
+                [
+                  10.4677577,
+                  36.7325366
+                ],
+                [
+                  10.4677305,
+                  36.7325408
+                ],
+                [
+                  10.467703,
+                  36.7325377
+                ],
+                [
+                  10.4676782,
+                  36.7325278
+                ],
+                [
+                  10.4664624,
+                  36.7318599
+                ],
+                [
+                  10.4664405,
+                  36.7318449
+                ],
+                [
+                  10.4664261,
+                  36.7318249
+                ],
+                [
+                  10.4664206,
+                  36.7318023
+                ],
+                [
+                  10.4664247,
+                  36.7317795
+                ],
+                [
+                  10.466438,
+                  36.731759
+                ],
+                [
+                  10.4664563,
+                  36.7317445
+                ],
+                [
+                  10.4664792,
+                  36.731735
+                ],
+                [
+                  10.4665045,
+                  36.7317314
+                ],
+                [
+                  10.4665301,
+                  36.7317338
+                ],
+                [
+                  10.4665536,
+                  36.7317422
+                ],
+                [
+                  10.4669731,
+                  36.7319731
+                ],
+                [
+                  10.4670803,
+                  36.7318879
+                ],
+                [
+                  10.4671986,
+                  36.7317472
+                ],
+                [
+                  10.4672603,
+                  36.7315845
+                ],
+                [
+                  10.467272,
+                  36.7313857
+                ],
+                [
+                  10.4672105,
+                  36.7311541
+                ],
+                [
+                  10.467077,
+                  36.730942
+                ],
+                [
+                  10.4669667,
+                  36.7308186
+                ],
+                [
+                  10.4668186,
+                  36.7306853
+                ],
+                [
+                  10.4664122,
+                  36.7304492
+                ],
+                [
+                  10.4661706,
+                  36.7303088
+                ],
+                [
+                  10.4649426,
+                  36.7299114
+                ],
+                [
+                  10.4637963,
+                  36.7296874
+                ],
+                [
+                  10.4624233,
+                  36.7293914
+                ],
+                [
+                  10.4615633,
+                  36.7293284
+                ],
+                [
+                  10.4613767,
+                  36.7299159
+                ],
+                [
+                  10.4613121,
+                  36.7300298
+                ],
+                [
+                  10.4612739,
+                  36.7300244
+                ],
+                [
+                  10.4612937,
+                  36.7298977
+                ],
+                [
+                  10.4613868,
+                  36.7295461
+                ],
+                [
+                  10.4614218,
+                  36.7293521
+                ],
+                [
+                  10.4618111,
+                  36.7280126
+                ],
+                [
+                  10.4618172,
+                  36.7279119
+                ],
+                [
+                  10.4617845,
+                  36.7277957
+                ],
+                [
+                  10.4617154,
+                  36.7276667
+                ],
+                [
+                  10.4616227,
+                  36.7275719
+                ],
+                [
+                  10.4615014,
+                  36.7275119
+                ],
+                [
+                  10.4589402,
+                  36.7266707
+                ],
+                [
+                  10.4588415,
+                  36.726599
+                ],
+                [
+                  10.4587559,
+                  36.7265107
+                ],
+                [
+                  10.4583792,
+                  36.7264451
+                ],
+                [
+                  10.456503,
+                  36.7261831
+                ],
+                [
+                  10.45495,
+                  36.7259136
+                ],
+                [
+                  10.4532757,
+                  36.7255902
+                ],
+                [
+                  10.4513533,
+                  36.7253057
+                ],
+                [
+                  10.4476056,
+                  36.7247762
+                ],
+                [
+                  10.446044,
+                  36.7246278
+                ],
+                [
+                  10.444531,
+                  36.7245724
+                ],
+                [
+                  10.4429816,
+                  36.7243985
+                ],
+                [
+                  10.4421374,
+                  36.7244401
+                ],
+                [
+                  10.4419294,
+                  36.7250659
+                ],
+                [
+                  10.4418702,
+                  36.7250561
+                ],
+                [
+                  10.4419694,
+                  36.7244244
+                ],
+                [
+                  10.442253,
+                  36.7231636
+                ],
+                [
+                  10.4422443,
+                  36.7231106
+                ],
+                [
+                  10.4411986,
+                  36.7223351
+                ],
+                [
+                  10.4410837,
+                  36.7221984
+                ],
+                [
+                  10.4409967,
+                  36.722059
+                ],
+                [
+                  10.4407757,
+                  36.721522
+                ],
+                [
+                  10.4406818,
+                  36.7214104
+                ],
+                [
+                  10.4405548,
+                  36.7213379
+                ],
+                [
+                  10.4403877,
+                  36.7212486
+                ],
+                [
+                  10.4401841,
+                  36.7211831
+                ],
+                [
+                  10.4387722,
+                  36.7207613
+                ],
+                [
+                  10.43777,
+                  36.720548
+                ],
+                [
+                  10.4349613,
+                  36.7200149
+                ],
+                [
+                  10.4345259,
+                  36.7199669
+                ],
+                [
+                  10.4334996,
+                  36.7198716
+                ],
+                [
+                  10.43213,
+                  36.7198565
+                ],
+                [
+                  10.4315988,
+                  36.7198934
+                ],
+                [
+                  10.4314759,
+                  36.7199358
+                ],
+                [
+                  10.4313935,
+                  36.7204339
+                ],
+                [
+                  10.4313453,
+                  36.7204311
+                ],
+                [
+                  10.4313248,
+                  36.719866
+                ],
+                [
+                  10.4313707,
+                  36.7193352
+                ],
+                [
+                  10.4313437,
+                  36.7192995
+                ],
+                [
+                  10.4308594,
+                  36.7191098
+                ],
+                [
+                  10.4304185,
+                  36.7189593
+                ],
+                [
+                  10.4300592,
+                  36.7189005
+                ],
+                [
+                  10.4294558,
+                  36.7187461
+                ],
+                [
+                  10.428821,
+                  36.7186478
+                ],
+                [
+                  10.4276904,
+                  36.7185436
+                ],
+                [
+                  10.4261654,
+                  36.7184494
+                ],
+                [
+                  10.4249548,
+                  36.7182512
+                ],
+                [
+                  10.4242712,
+                  36.7181403
+                ],
+                [
+                  10.4235743,
+                  36.7180327
+                ],
+                [
+                  10.422383,
+                  36.7179539
+                ],
+                [
+                  10.4217371,
+                  36.7179497
+                ],
+                [
+                  10.4212288,
+                  36.7179699
+                ],
+                [
+                  10.4207973,
+                  36.7180176
+                ],
+                [
+                  10.4204685,
+                  36.7180815
+                ],
+                [
+                  10.4203853,
+                  36.7188024
+                ],
+                [
+                  10.4203004,
+                  36.7192408
+                ],
+                [
+                  10.4202439,
+                  36.719236
+                ],
+                [
+                  10.4202706,
+                  36.7189385
+                ],
+                [
+                  10.4202371,
+                  36.7187944
+                ],
+                [
+                  10.4203554,
+                  36.7172447
+                ],
+                [
+                  10.4199169,
+                  36.7171063
+                ],
+                [
+                  10.4187504,
+                  36.7168056
+                ],
+                [
+                  10.4181345,
+                  36.716672
+                ],
+                [
+                  10.4175984,
+                  36.7166089
+                ],
+                [
+                  10.4179718,
+                  36.7159726
+                ],
+                [
+                  10.4182261,
+                  36.7160286
+                ],
+                [
+                  10.4184031,
+                  36.7156724
+                ],
+                [
+                  10.418585,
+                  36.7152558
+                ],
+                [
+                  10.4186677,
+                  36.7150304
+                ],
+                [
+                  10.4187162,
+                  36.7148077
+                ],
+                [
+                  10.4187391,
+                  36.7145935
+                ],
+                [
+                  10.4187396,
+                  36.714463
+                ],
+                [
+                  10.41874,
+                  36.7143419
+                ],
+                [
+                  10.4187019,
+                  36.7141601
+                ],
+                [
+                  10.418631,
+                  36.7139225
+                ],
+                [
+                  10.4185406,
+                  36.7136902
+                ],
+                [
+                  10.4180265,
+                  36.7125807
+                ],
+                [
+                  10.4178914,
+                  36.7124307
+                ],
+                [
+                  10.4177452,
+                  36.7123041
+                ],
+                [
+                  10.4166675,
+                  36.7118964
+                ],
+                [
+                  10.4158109,
+                  36.7115678
+                ],
+                [
+                  10.4156723,
+                  36.7115146
+                ],
+                [
+                  10.4150829,
+                  36.7113275
+                ],
+                [
+                  10.4144479,
+                  36.7111649
+                ],
+                [
+                  10.4143535,
+                  36.7111397
+                ],
+                [
+                  10.414167,
+                  36.7111056
+                ],
+                [
+                  10.41327,
+                  36.7109517
+                ],
+                [
+                  10.413172,
+                  36.7109375
+                ],
+                [
+                  10.4126171,
+                  36.7102419
+                ],
+                [
+                  10.4116894,
+                  36.7091471
+                ],
+                [
+                  10.4100397,
+                  36.7073573
+                ],
+                [
+                  10.4102096,
+                  36.7069082
+                ],
+                [
+                  10.4102389,
+                  36.7066293
+                ],
+                [
+                  10.4101319,
+                  36.7061522
+                ],
+                [
+                  10.4099322,
+                  36.7057908
+                ],
+                [
+                  10.4097027,
+                  36.70555
+                ],
+                [
+                  10.4091602,
+                  36.7051625
+                ],
+                [
+                  10.4089,
+                  36.7050872
+                ],
+                [
+                  10.4086182,
+                  36.7050155
+                ],
+                [
+                  10.4083249,
+                  36.7049897
+                ],
+                [
+                  10.4080919,
+                  36.7050143
+                ],
+                [
+                  10.4078745,
+                  36.7051197
+                ],
+                [
+                  10.4064905,
+                  36.7036432
+                ],
+                [
+                  10.4049855,
+                  36.7021752
+                ],
+                [
+                  10.4037967,
+                  36.7012868
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "beforePackedAreaM2": 42194260.49727463,
+      "nativeAreaM2": 26068865.4107515,
+      "gainM2": 5418356.942493102,
+      "lossM2": 21543752.02901617,
+      "beforeSourceAreaM2": 42194322.70903011,
+      "nativeOutsideCurrentCountryM2": 0.0,
+      "beforePackedOutsideCurrentCountryM2": 0.0,
+      "currentRepresentativeWithinOwnNative": false,
+      "currentCoordinateNearest": {
+        "id": 465,
+        "distanceKm": 1.581288327419015
+      },
+      "nativeUnquantizedRepresentativeDiagnostic": {
+        "lat": 36.69886353978711,
+        "lng": 10.453989392767086,
+        "nearest": {
+          "id": 465,
+          "distanceKm": 3.1119617484817077
+        }
+      },
+      "representativeQualification": "Native unquantized Shapely representative is diagnostic only; not a proposed app coordinate or generated default.",
+      "lostAreaNotRecoveredByOtherFiveNativeM2": 397823.08987409045
+    },
+    {
+      "id": "osm:relation:7100694",
+      "currentRaw": {
+        "id": "osm:relation:7100694",
+        "sourceId": "osm",
+        "name": "سليمان الجنوبية",
+        "aliases": [
+          "Soliman Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.694327,
+        "lng": 10.497823,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.463523,
+          36.679918,
+          10.516152,
+          36.709262
+        ],
+        "areaKm2": 7.105761257713284,
+        "pickerGroupId": "osm:relation:7100694",
+        "offset": 291952,
+        "length": 548
+      },
+      "currentSourceRecord": {
+        "id": "osm:relation:7100694",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سليمان الجنوبية",
+          "name:ar": "سليمان الجنوبية",
+          "name:fr": "Soliman Sud",
+          "ref:tn:codegeo": "156155"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.4635229,
+                  36.6881714
+                ],
+                [
+                  10.4651722,
+                  36.6868488
+                ],
+                [
+                  10.4697573,
+                  36.68259
+                ],
+                [
+                  10.472759,
+                  36.6799181
+                ],
+                [
+                  10.4787294,
+                  36.6831719
+                ],
+                [
+                  10.4791912,
+                  36.6836745
+                ],
+                [
+                  10.4818301,
+                  36.6850765
+                ],
+                [
+                  10.4870614,
+                  36.6882707
+                ],
+                [
+                  10.4888427,
+                  36.6865513
+                ],
+                [
+                  10.4902415,
+                  36.6852088
+                ],
+                [
+                  10.4916104,
+                  36.6845739
+                ],
+                [
+                  10.4934081,
+                  36.6844946
+                ],
+                [
+                  10.4954863,
+                  36.6844549
+                ],
+                [
+                  10.4969211,
+                  36.6837539
+                ],
+                [
+                  10.4974159,
+                  36.6837671
+                ],
+                [
+                  10.5022319,
+                  36.6844681
+                ],
+                [
+                  10.5069983,
+                  36.6851691
+                ],
+                [
+                  10.5105443,
+                  36.6857378
+                ],
+                [
+                  10.5135062,
+                  36.6855051
+                ],
+                [
+                  10.5134462,
+                  36.6862421
+                ],
+                [
+                  10.5130139,
+                  36.6891598
+                ],
+                [
+                  10.5130854,
+                  36.6894309
+                ],
+                [
+                  10.5131436,
+                  36.690163
+                ],
+                [
+                  10.5154135,
+                  36.6899046
+                ],
+                [
+                  10.5157396,
+                  36.6915439
+                ],
+                [
+                  10.5161519,
+                  36.6930251
+                ],
+                [
+                  10.5160035,
+                  36.6940037
+                ],
+                [
+                  10.5153767,
+                  36.6948236
+                ],
+                [
+                  10.5150469,
+                  36.6953526
+                ],
+                [
+                  10.5136945,
+                  36.6975214
+                ],
+                [
+                  10.5115999,
+                  36.6968205
+                ],
+                [
+                  10.5093898,
+                  36.6961196
+                ],
+                [
+                  10.5064736,
+                  36.6958486
+                ],
+                [
+                  10.5064077,
+                  36.6963512
+                ],
+                [
+                  10.5062263,
+                  36.697224
+                ],
+                [
+                  10.5049233,
+                  36.6986125
+                ],
+                [
+                  10.5028947,
+                  36.7008869
+                ],
+                [
+                  10.5018886,
+                  36.702963
+                ],
+                [
+                  10.5002063,
+                  36.7061233
+                ],
+                [
+                  10.4989487,
+                  36.7080587
+                ],
+                [
+                  10.4944132,
+                  36.7064588
+                ],
+                [
+                  10.4922526,
+                  36.7060489
+                ],
+                [
+                  10.4923351,
+                  36.7050704
+                ],
+                [
+                  10.4904549,
+                  36.7043299
+                ],
+                [
+                  10.4887231,
+                  36.7092619
+                ],
+                [
+                  10.4872223,
+                  36.7087198
+                ],
+                [
+                  10.4868264,
+                  36.7092487
+                ],
+                [
+                  10.4860842,
+                  36.70909
+                ],
+                [
+                  10.484212,
+                  36.7081988
+                ],
+                [
+                  10.4834454,
+                  36.7078339
+                ],
+                [
+                  10.4846823,
+                  36.7063398
+                ],
+                [
+                  10.4868594,
+                  36.7031663
+                ],
+                [
+                  10.4839402,
+                  36.7019498
+                ],
+                [
+                  10.485507,
+                  36.6999398
+                ],
+                [
+                  10.4823568,
+                  36.6987761
+                ],
+                [
+                  10.4786542,
+                  36.697824
+                ],
+                [
+                  10.4788521,
+                  36.6972421
+                ],
+                [
+                  10.479116,
+                  36.6961313
+                ],
+                [
+                  10.4797097,
+                  36.6946502
+                ],
+                [
+                  10.480221,
+                  36.6937244
+                ],
+                [
+                  10.4812417,
+                  36.6927262
+                ],
+                [
+                  10.4755999,
+                  36.6919059
+                ],
+                [
+                  10.4730044,
+                  36.6915465
+                ],
+                [
+                  10.4733898,
+                  36.6905173
+                ],
+                [
+                  10.4697614,
+                  36.6899486
+                ],
+                [
+                  10.4668916,
+                  36.689208
+                ],
+                [
+                  10.4635229,
+                  36.6881714
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "beforePackedAreaM2": 7089526.176666573,
+      "nativeAreaM2": 25961925.04503924,
+      "gainM2": 22214528.195936196,
+      "lossM2": 3342129.3275634954,
+      "beforeSourceAreaM2": 7089484.513965996,
+      "nativeOutsideCurrentCountryM2": 0.0,
+      "beforePackedOutsideCurrentCountryM2": 0.0,
+      "currentRepresentativeWithinOwnNative": true,
+      "currentCoordinateNearest": {
+        "id": 465,
+        "distanceKm": 1.6552531909166743
+      },
+      "nativeUnquantizedRepresentativeDiagnostic": {
+        "lat": 36.71507522668894,
+        "lng": 10.499652309550589,
+        "nearest": {
+          "id": 465,
+          "distanceKm": 1.4285491992280919
+        }
+      },
+      "representativeQualification": "Native unquantized Shapely representative is diagnostic only; not a proposed app coordinate or generated default.",
+      "lostAreaNotRecoveredByOtherFiveNativeM2": 6286.372430634632
+    },
+    {
+      "id": "osm:relation:7102534",
+      "currentRaw": {
+        "id": "osm:relation:7102534",
+        "sourceId": "osm",
+        "name": "بو شراي",
+        "aliases": [
+          "Bou Charray",
+          "Boucharray",
+          "بوشراي"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.662845,
+        "lng": 10.524305,
+        "delegationId": 467,
+        "hasBoundary": true,
+        "bbox": [
+          10.472759,
+          36.63481,
+          10.563781,
+          36.690163
+        ],
+        "areaKm2": 25.370030820804065,
+        "pickerGroupId": "osm:relation:7102534",
+        "offset": 355052,
+        "length": 1012
+      },
+      "currentSourceRecord": {
+        "id": "osm:relation:7102534",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بو شراي",
+          "name:ar": "بو شراي",
+          "name:fr": "Bou Charray",
+          "ref:tn:codegeo": "156153"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.472759,
+                  36.6799181
+                ],
+                [
+                  10.4775901,
+                  36.6777018
+                ],
+                [
+                  10.4817855,
+                  36.6757771
+                ],
+                [
+                  10.4843795,
+                  36.6729215
+                ],
+                [
+                  10.485651,
+                  36.6721872
+                ],
+                [
+                  10.4876855,
+                  36.6719832
+                ],
+                [
+                  10.4923144,
+                  36.668433
+                ],
+                [
+                  10.4927065,
+                  36.6676243
+                ],
+                [
+                  10.4933821,
+                  36.6662309
+                ],
+                [
+                  10.4946028,
+                  36.6652926
+                ],
+                [
+                  10.4960778,
+                  36.6639666
+                ],
+                [
+                  10.4961032,
+                  36.663273
+                ],
+                [
+                  10.4969679,
+                  36.6624162
+                ],
+                [
+                  10.498392,
+                  36.6610902
+                ],
+                [
+                  10.5006554,
+                  36.6597438
+                ],
+                [
+                  10.5014692,
+                  36.6587033
+                ],
+                [
+                  10.5044446,
+                  36.6574792
+                ],
+                [
+                  10.5055128,
+                  36.654317
+                ],
+                [
+                  10.5063265,
+                  36.652644
+                ],
+                [
+                  10.5064791,
+                  36.651685
+                ],
+                [
+                  10.5067843,
+                  36.6509301
+                ],
+                [
+                  10.5085391,
+                  36.6484001
+                ],
+                [
+                  10.5093783,
+                  36.6482165
+                ],
+                [
+                  10.5117688,
+                  36.6464005
+                ],
+                [
+                  10.5125063,
+                  36.6452987
+                ],
+                [
+                  10.5133455,
+                  36.6432582
+                ],
+                [
+                  10.5144899,
+                  36.6413809
+                ],
+                [
+                  10.5160412,
+                  36.6390954
+                ],
+                [
+                  10.516855,
+                  36.643299
+                ],
+                [
+                  10.5179994,
+                  36.641891
+                ],
+                [
+                  10.5185589,
+                  36.6405034
+                ],
+                [
+                  10.5188132,
+                  36.6391158
+                ],
+                [
+                  10.5194236,
+                  36.6377078
+                ],
+                [
+                  10.5208986,
+                  36.6362589
+                ],
+                [
+                  10.5225262,
+                  36.6352794
+                ],
+                [
+                  10.5236197,
+                  36.63481
+                ],
+                [
+                  10.5265697,
+                  36.6363405
+                ],
+                [
+                  10.5331818,
+                  36.639626
+                ],
+                [
+                  10.537734,
+                  36.6418502
+                ],
+                [
+                  10.5437103,
+                  36.6448498
+                ],
+                [
+                  10.5478047,
+                  36.6469514
+                ],
+                [
+                  10.5508565,
+                  36.6485021
+                ],
+                [
+                  10.5500427,
+                  36.649155
+                ],
+                [
+                  10.5477793,
+                  36.6501752
+                ],
+                [
+                  10.5452871,
+                  36.6512974
+                ],
+                [
+                  10.5441427,
+                  36.651787
+                ],
+                [
+                  10.5429474,
+                  36.6526032
+                ],
+                [
+                  10.5440028,
+                  36.653256
+                ],
+                [
+                  10.5442952,
+                  36.6535417
+                ],
+                [
+                  10.5448802,
+                  36.6538987
+                ],
+                [
+                  10.5451981,
+                  36.6543782
+                ],
+                [
+                  10.5450328,
+                  36.6546332
+                ],
+                [
+                  10.5448929,
+                  36.6550922
+                ],
+                [
+                  10.5467112,
+                  36.6560409
+                ],
+                [
+                  10.5480972,
+                  36.6567346
+                ],
+                [
+                  10.5488856,
+                  36.6568876
+                ],
+                [
+                  10.5500173,
+                  36.6573976
+                ],
+                [
+                  10.5514541,
+                  36.6583361
+                ],
+                [
+                  10.5524841,
+                  36.6590909
+                ],
+                [
+                  10.5530817,
+                  36.6597336
+                ],
+                [
+                  10.5538701,
+                  36.6601008
+                ],
+                [
+                  10.5537302,
+                  36.6605598
+                ],
+                [
+                  10.5546076,
+                  36.6608964
+                ],
+                [
+                  10.5543226,
+                  36.6615624
+                ],
+                [
+                  10.5411069,
+                  36.6691024
+                ],
+                [
+                  10.5541132,
+                  36.6764365
+                ],
+                [
+                  10.5554976,
+                  36.6754754
+                ],
+                [
+                  10.5571728,
+                  36.67583
+                ],
+                [
+                  10.5583129,
+                  36.6748223
+                ],
+                [
+                  10.5599881,
+                  36.6755874
+                ],
+                [
+                  10.5596159,
+                  36.6760912
+                ],
+                [
+                  10.5612446,
+                  36.676819
+                ],
+                [
+                  10.5616634,
+                  36.6779386
+                ],
+                [
+                  10.5614074,
+                  36.6784984
+                ],
+                [
+                  10.5627104,
+                  36.6795621
+                ],
+                [
+                  10.5614772,
+                  36.6812228
+                ],
+                [
+                  10.5637807,
+                  36.6821558
+                ],
+                [
+                  10.5613609,
+                  36.6863167
+                ],
+                [
+                  10.561105,
+                  36.6870443
+                ],
+                [
+                  10.5598718,
+                  36.6868764
+                ],
+                [
+                  10.5571698,
+                  36.6862092
+                ],
+                [
+                  10.5547665,
+                  36.6857554
+                ],
+                [
+                  10.5535268,
+                  36.6855617
+                ],
+                [
+                  10.5516067,
+                  36.6854291
+                ],
+                [
+                  10.5502906,
+                  36.685373
+                ],
+                [
+                  10.5484596,
+                  36.6851589
+                ],
+                [
+                  10.5467112,
+                  36.684853
+                ],
+                [
+                  10.5452616,
+                  36.6846235
+                ],
+                [
+                  10.5442571,
+                  36.6846286
+                ],
+                [
+                  10.5423879,
+                  36.6847102
+                ],
+                [
+                  10.5407095,
+                  36.6847663
+                ],
+                [
+                  10.5382426,
+                  36.6849855
+                ],
+                [
+                  10.5360492,
+                  36.6856483
+                ],
+                [
+                  10.534695,
+                  36.6860613
+                ],
+                [
+                  10.5319802,
+                  36.6868618
+                ],
+                [
+                  10.5301365,
+                  36.6873971
+                ],
+                [
+                  10.5291192,
+                  36.6875653
+                ],
+                [
+                  10.5279112,
+                  36.6877591
+                ],
+                [
+                  10.5260802,
+                  36.6882791
+                ],
+                [
+                  10.5246115,
+                  36.6886615
+                ],
+                [
+                  10.5232065,
+                  36.6890235
+                ],
+                [
+                  10.5219921,
+                  36.6892121
+                ],
+                [
+                  10.5205044,
+                  36.6893497
+                ],
+                [
+                  10.5175989,
+                  36.689625
+                ],
+                [
+                  10.5154135,
+                  36.6899046
+                ],
+                [
+                  10.5131436,
+                  36.690163
+                ],
+                [
+                  10.5130854,
+                  36.6894309
+                ],
+                [
+                  10.5130139,
+                  36.6891598
+                ],
+                [
+                  10.5134462,
+                  36.6862421
+                ],
+                [
+                  10.5135062,
+                  36.6855051
+                ],
+                [
+                  10.5105443,
+                  36.6857378
+                ],
+                [
+                  10.5069983,
+                  36.6851691
+                ],
+                [
+                  10.5022319,
+                  36.6844681
+                ],
+                [
+                  10.4974159,
+                  36.6837671
+                ],
+                [
+                  10.4969211,
+                  36.6837539
+                ],
+                [
+                  10.4954863,
+                  36.6844549
+                ],
+                [
+                  10.4934081,
+                  36.6844946
+                ],
+                [
+                  10.4916104,
+                  36.6845739
+                ],
+                [
+                  10.4902415,
+                  36.6852088
+                ],
+                [
+                  10.4888427,
+                  36.6865513
+                ],
+                [
+                  10.4870614,
+                  36.6882707
+                ],
+                [
+                  10.4818301,
+                  36.6850765
+                ],
+                [
+                  10.4791912,
+                  36.6836745
+                ],
+                [
+                  10.4787294,
+                  36.6831719
+                ],
+                [
+                  10.472759,
+                  36.6799181
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "beforePackedAreaM2": 25310552.783558838,
+      "nativeAreaM2": 22681661.850413527,
+      "gainM2": 1046163.1553403938,
+      "lossM2": 3675054.088485783,
+      "beforeSourceAreaM2": 25310583.665144652,
+      "nativeOutsideCurrentCountryM2": 0.0,
+      "beforePackedOutsideCurrentCountryM2": 0.0,
+      "currentRepresentativeWithinOwnNative": true,
+      "currentCoordinateNearest": {
+        "id": 467,
+        "distanceKm": 5.169444784165851
+      },
+      "nativeUnquantizedRepresentativeDiagnostic": {
+        "lat": 36.66311897247752,
+        "lng": 10.521636551040453,
+        "nearest": {
+          "id": 467,
+          "distanceKm": 5.406746079667794
+        }
+      },
+      "representativeQualification": "Native unquantized Shapely representative is diagnostic only; not a proposed app coordinate or generated default.",
+      "lostAreaNotRecoveredByOtherFiveNativeM2": 883724.6859053973
+    },
+    {
+      "id": "osm:relation:7102535",
+      "currentRaw": {
+        "id": "osm:relation:7102535",
+        "sourceId": "osm",
+        "name": "الشريفات",
+        "aliases": [
+          "Ech Cherifet"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.713156,
+        "lng": 10.533755,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.500206,
+          36.684624,
+          10.563904,
+          36.74141
+        ],
+        "areaKm2": 18.750894264197953,
+        "pickerGroupId": "osm:relation:7102535",
+        "offset": 356064,
+        "length": 692
+      },
+      "currentSourceRecord": {
+        "id": "osm:relation:7102535",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الشريفات",
+          "name:ar": "الشريفات",
+          "name:fr": "Ech Cherifet",
+          "ref:tn:codegeo": "156152"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.5002063,
+                  36.7061233
+                ],
+                [
+                  10.5018886,
+                  36.702963
+                ],
+                [
+                  10.5028947,
+                  36.7008869
+                ],
+                [
+                  10.5049233,
+                  36.6986125
+                ],
+                [
+                  10.5062263,
+                  36.697224
+                ],
+                [
+                  10.5064077,
+                  36.6963512
+                ],
+                [
+                  10.5064736,
+                  36.6958486
+                ],
+                [
+                  10.5093898,
+                  36.6961196
+                ],
+                [
+                  10.5115999,
+                  36.6968205
+                ],
+                [
+                  10.5136945,
+                  36.6975214
+                ],
+                [
+                  10.5150469,
+                  36.6953526
+                ],
+                [
+                  10.5153767,
+                  36.6948236
+                ],
+                [
+                  10.5160035,
+                  36.6940037
+                ],
+                [
+                  10.5161519,
+                  36.6930251
+                ],
+                [
+                  10.5157396,
+                  36.6915439
+                ],
+                [
+                  10.5154135,
+                  36.6899046
+                ],
+                [
+                  10.5175989,
+                  36.689625
+                ],
+                [
+                  10.5205044,
+                  36.6893497
+                ],
+                [
+                  10.5219921,
+                  36.6892121
+                ],
+                [
+                  10.5232065,
+                  36.6890235
+                ],
+                [
+                  10.5246115,
+                  36.6886615
+                ],
+                [
+                  10.5260802,
+                  36.6882791
+                ],
+                [
+                  10.5279112,
+                  36.6877591
+                ],
+                [
+                  10.5291192,
+                  36.6875653
+                ],
+                [
+                  10.5301365,
+                  36.6873971
+                ],
+                [
+                  10.5319802,
+                  36.6868618
+                ],
+                [
+                  10.534695,
+                  36.6860613
+                ],
+                [
+                  10.5360492,
+                  36.6856483
+                ],
+                [
+                  10.5382426,
+                  36.6849855
+                ],
+                [
+                  10.5407095,
+                  36.6847663
+                ],
+                [
+                  10.5423879,
+                  36.6847102
+                ],
+                [
+                  10.5442571,
+                  36.6846286
+                ],
+                [
+                  10.5452616,
+                  36.6846235
+                ],
+                [
+                  10.5467112,
+                  36.684853
+                ],
+                [
+                  10.5484596,
+                  36.6851589
+                ],
+                [
+                  10.5502906,
+                  36.685373
+                ],
+                [
+                  10.5516067,
+                  36.6854291
+                ],
+                [
+                  10.5535268,
+                  36.6855617
+                ],
+                [
+                  10.5547665,
+                  36.6857554
+                ],
+                [
+                  10.5571698,
+                  36.6862092
+                ],
+                [
+                  10.5598718,
+                  36.6868764
+                ],
+                [
+                  10.5593832,
+                  36.6873615
+                ],
+                [
+                  10.5585689,
+                  36.6890221
+                ],
+                [
+                  10.5577778,
+                  36.6887795
+                ],
+                [
+                  10.5567308,
+                  36.6904587
+                ],
+                [
+                  10.5600347,
+                  36.6921192
+                ],
+                [
+                  10.5559164,
+                  36.6989846
+                ],
+                [
+                  10.5523565,
+                  36.7037602
+                ],
+                [
+                  10.5490293,
+                  36.7085915
+                ],
+                [
+                  10.5511466,
+                  36.7092257
+                ],
+                [
+                  10.5518447,
+                  36.712322
+                ],
+                [
+                  10.5515189,
+                  36.7128442
+                ],
+                [
+                  10.5531709,
+                  36.7140193
+                ],
+                [
+                  10.5582315,
+                  36.7173019
+                ],
+                [
+                  10.5623032,
+                  36.7199876
+                ],
+                [
+                  10.5602092,
+                  36.7217966
+                ],
+                [
+                  10.5630012,
+                  36.7231394
+                ],
+                [
+                  10.5615354,
+                  36.7245381
+                ],
+                [
+                  10.560628,
+                  36.7266267
+                ],
+                [
+                  10.562629,
+                  36.727671
+                ],
+                [
+                  10.5614656,
+                  36.7298529
+                ],
+                [
+                  10.5624196,
+                  36.7305055
+                ],
+                [
+                  10.5631623,
+                  36.729843
+                ],
+                [
+                  10.563904,
+                  36.7313692
+                ],
+                [
+                  10.5635833,
+                  36.7318833
+                ],
+                [
+                  10.5622603,
+                  36.732783
+                ],
+                [
+                  10.5609573,
+                  36.7347751
+                ],
+                [
+                  10.5591131,
+                  36.7366547
+                ],
+                [
+                  10.5576697,
+                  36.7388716
+                ],
+                [
+                  10.5568679,
+                  36.7409117
+                ],
+                [
+                  10.554282,
+                  36.7414097
+                ],
+                [
+                  10.5537408,
+                  36.7404619
+                ],
+                [
+                  10.5489097,
+                  36.7372651
+                ],
+                [
+                  10.5431509,
+                  36.7329009
+                ],
+                [
+                  10.5401986,
+                  36.7311164
+                ],
+                [
+                  10.5363701,
+                  36.7275832
+                ],
+                [
+                  10.5293452,
+                  36.7211317
+                ],
+                [
+                  10.5235935,
+                  36.7173448
+                ],
+                [
+                  10.5196637,
+                  36.7149417
+                ],
+                [
+                  10.5162344,
+                  36.713468
+                ],
+                [
+                  10.5134306,
+                  36.7121855
+                ],
+                [
+                  10.5091589,
+                  36.7101097
+                ],
+                [
+                  10.5071138,
+                  36.7091577
+                ],
+                [
+                  10.5036997,
+                  36.7076504
+                ],
+                [
+                  10.5002063,
+                  36.7061233
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "beforePackedAreaM2": 18709518.98240895,
+      "nativeAreaM2": 17768100.29689612,
+      "gainM2": 199598.37154852194,
+      "lossM2": 1141017.0570613032,
+      "beforeSourceAreaM2": 18709552.638287954,
+      "nativeOutsideCurrentCountryM2": 0.0,
+      "beforePackedOutsideCurrentCountryM2": 0.0,
+      "currentRepresentativeWithinOwnNative": true,
+      "currentCoordinateNearest": {
+        "id": 465,
+        "distanceKm": 4.185282840272631
+      },
+      "nativeUnquantizedRepresentativeDiagnostic": {
+        "lat": 36.71267282135461,
+        "lng": 10.533205278079642,
+        "nearest": {
+          "id": 465,
+          "distanceKm": 4.128043163466139
+        }
+      },
+      "representativeQualification": "Native unquantized Shapely representative is diagnostic only; not a proposed app coordinate or generated default.",
+      "lostAreaNotRecoveredByOtherFiveNativeM2": 975207.0504243878
+    },
+    {
+      "id": "osm:relation:7104934",
+      "currentRaw": {
+        "id": "osm:relation:7104934",
+        "sourceId": "osm",
+        "name": "شماس",
+        "aliases": [
+          "Chammes"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": [
+          "Délégation Grombalia",
+          "Grombalia",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.641053,
+        "lng": 10.46787,
+        "delegationId": 464,
+        "hasBoundary": true,
+        "bbox": [
+          10.436129,
+          36.604711,
+          10.497334,
+          36.677702
+        ],
+        "areaKm2": 25.710231857380048,
+        "pickerGroupId": "osm:relation:7104934",
+        "offset": 414656,
+        "length": 548
+      },
+      "currentSourceRecord": {
+        "id": "osm:relation:7104934",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "شماس",
+          "name:ar": "شماس",
+          "name:fr": "Chammes",
+          "ref:tn:codegeo": "156452"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.4361293,
+                  36.6318491
+                ],
+                [
+                  10.440174,
+                  36.6255379
+                ],
+                [
+                  10.4408607,
+                  36.6232647
+                ],
+                [
+                  10.440689,
+                  36.6187526
+                ],
+                [
+                  10.4433927,
+                  36.6151013
+                ],
+                [
+                  10.4441652,
+                  36.6108643
+                ],
+                [
+                  10.4464531,
+                  36.6076046
+                ],
+                [
+                  10.4539633,
+                  36.6047107
+                ],
+                [
+                  10.4600143,
+                  36.609327
+                ],
+                [
+                  10.4614306,
+                  36.6081902
+                ],
+                [
+                  10.4664516,
+                  36.6115317
+                ],
+                [
+                  10.4716444,
+                  36.6071912
+                ],
+                [
+                  10.4749489,
+                  36.6131508
+                ],
+                [
+                  10.4785109,
+                  36.6154243
+                ],
+                [
+                  10.4816866,
+                  36.6174566
+                ],
+                [
+                  10.4849052,
+                  36.6189377
+                ],
+                [
+                  10.488266,
+                  36.6135976
+                ],
+                [
+                  10.4937985,
+                  36.6162523
+                ],
+                [
+                  10.4941458,
+                  36.619432
+                ],
+                [
+                  10.4952465,
+                  36.623071
+                ],
+                [
+                  10.4963506,
+                  36.6265605
+                ],
+                [
+                  10.4970867,
+                  36.6282599
+                ],
+                [
+                  10.4973344,
+                  36.6300103
+                ],
+                [
+                  10.4969642,
+                  36.6322613
+                ],
+                [
+                  10.4966451,
+                  36.6352845
+                ],
+                [
+                  10.4962411,
+                  36.6383702
+                ],
+                [
+                  10.4962529,
+                  36.6396056
+                ],
+                [
+                  10.496511,
+                  36.6432419
+                ],
+                [
+                  10.4950333,
+                  36.6565766
+                ],
+                [
+                  10.4955912,
+                  36.6589865
+                ],
+                [
+                  10.4922438,
+                  36.6643569
+                ],
+                [
+                  10.4927065,
+                  36.6676243
+                ],
+                [
+                  10.4923144,
+                  36.668433
+                ],
+                [
+                  10.4876855,
+                  36.6719832
+                ],
+                [
+                  10.485651,
+                  36.6721872
+                ],
+                [
+                  10.4843795,
+                  36.6729215
+                ],
+                [
+                  10.4817855,
+                  36.6757771
+                ],
+                [
+                  10.4775901,
+                  36.6777018
+                ],
+                [
+                  10.4767486,
+                  36.6748342
+                ],
+                [
+                  10.4762336,
+                  36.6707725
+                ],
+                [
+                  10.4758045,
+                  36.668363
+                ],
+                [
+                  10.4749891,
+                  36.6665385
+                ],
+                [
+                  10.4741308,
+                  36.6633715
+                ],
+                [
+                  10.4696751,
+                  36.6593065
+                ],
+                [
+                  10.4676337,
+                  36.6574653
+                ],
+                [
+                  10.4656773,
+                  36.6556696
+                ],
+                [
+                  10.4648465,
+                  36.6546031
+                ],
+                [
+                  10.4644391,
+                  36.6541527
+                ],
+                [
+                  10.4636354,
+                  36.6533956
+                ],
+                [
+                  10.4622685,
+                  36.6523017
+                ],
+                [
+                  10.4639446,
+                  36.6507525
+                ],
+                [
+                  10.4644626,
+                  36.6502409
+                ],
+                [
+                  10.4647464,
+                  36.6496017
+                ],
+                [
+                  10.4649806,
+                  36.6485877
+                ],
+                [
+                  10.4619428,
+                  36.6461572
+                ],
+                [
+                  10.4600116,
+                  36.6428516
+                ],
+                [
+                  10.4575226,
+                  36.6427138
+                ],
+                [
+                  10.4570934,
+                  36.6476033
+                ],
+                [
+                  10.4443475,
+                  36.6430237
+                ],
+                [
+                  10.4442403,
+                  36.6419391
+                ],
+                [
+                  10.4401418,
+                  36.6419563
+                ],
+                [
+                  10.4386398,
+                  36.6401657
+                ],
+                [
+                  10.4374811,
+                  36.6395975
+                ],
+                [
+                  10.4366228,
+                  36.6380307
+                ],
+                [
+                  10.4364082,
+                  36.6360678
+                ],
+                [
+                  10.4361936,
+                  36.63333
+                ],
+                [
+                  10.4361293,
+                  36.6318491
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "beforePackedAreaM2": 25652141.749319766,
+      "nativeAreaM2": 24966099.999625877,
+      "gainM2": 811324.5563306764,
+      "lossM2": 1497366.3060244732,
+      "beforeSourceAreaM2": 25652181.972137086,
+      "nativeOutsideCurrentCountryM2": 0.0,
+      "beforePackedOutsideCurrentCountryM2": 0.0,
+      "currentRepresentativeWithinOwnNative": true,
+      "currentCoordinateNearest": {
+        "id": 464,
+        "distanceKm": 5.340899925392998
+      },
+      "nativeUnquantizedRepresentativeDiagnostic": {
+        "lat": 36.6415060150686,
+        "lng": 10.467995486529675,
+        "nearest": {
+          "id": 464,
+          "distanceKm": 5.372913200348672
+        }
+      },
+      "representativeQualification": "Native unquantized Shapely representative is diagnostic only; not a proposed app coordinate or generated default.",
+      "lostAreaNotRecoveredByOtherFiveNativeM2": 1242123.5170548523
+    },
+    {
+      "id": "osm:relation:7104935",
+      "currentRaw": {
+        "id": "osm:relation:7104935",
+        "sourceId": "osm",
+        "name": "فندق الجديد",
+        "aliases": [
+          "Fondouk Jedid"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": [
+          "Délégation Grombalia",
+          "Grombalia",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.667451,
+        "lng": 10.434044,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.390326,
+          36.631849,
+          10.47759,
+          36.701287
+        ],
+        "areaKm2": 40.92425934196877,
+        "pickerGroupId": "osm:relation:7104935",
+        "offset": 415204,
+        "length": 708
+      },
+      "currentSourceRecord": {
+        "id": "osm:relation:7104935",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "فندق الجديد",
+          "name:ar": "فندق الجديد",
+          "name:fr": "Fondouk Jedid",
+          "ref:tn:codegeo": "156451"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.3903262,
+                  36.6472465
+                ],
+                [
+                  10.3915279,
+                  36.644819
+                ],
+                [
+                  10.394437,
+                  36.6431959
+                ],
+                [
+                  10.4041359,
+                  36.6408544
+                ],
+                [
+                  10.4102513,
+                  36.6365499
+                ],
+                [
+                  10.4134485,
+                  36.6358611
+                ],
+                [
+                  10.4200575,
+                  36.6353274
+                ],
+                [
+                  10.4234263,
+                  36.6348108
+                ],
+                [
+                  10.4290697,
+                  36.633571
+                ],
+                [
+                  10.4361293,
+                  36.6318491
+                ],
+                [
+                  10.4361936,
+                  36.63333
+                ],
+                [
+                  10.4364082,
+                  36.6360678
+                ],
+                [
+                  10.4366228,
+                  36.6380307
+                ],
+                [
+                  10.4374811,
+                  36.6395975
+                ],
+                [
+                  10.4386398,
+                  36.6401657
+                ],
+                [
+                  10.4401418,
+                  36.6419563
+                ],
+                [
+                  10.4442403,
+                  36.6419391
+                ],
+                [
+                  10.4443475,
+                  36.6430237
+                ],
+                [
+                  10.4570934,
+                  36.6476033
+                ],
+                [
+                  10.4575226,
+                  36.6427138
+                ],
+                [
+                  10.4600116,
+                  36.6428516
+                ],
+                [
+                  10.4619428,
+                  36.6461572
+                ],
+                [
+                  10.4649806,
+                  36.6485877
+                ],
+                [
+                  10.4647464,
+                  36.6496017
+                ],
+                [
+                  10.4644626,
+                  36.6502409
+                ],
+                [
+                  10.4639446,
+                  36.6507525
+                ],
+                [
+                  10.4622685,
+                  36.6523017
+                ],
+                [
+                  10.4636354,
+                  36.6533956
+                ],
+                [
+                  10.4644391,
+                  36.6541527
+                ],
+                [
+                  10.4648465,
+                  36.6546031
+                ],
+                [
+                  10.4656773,
+                  36.6556696
+                ],
+                [
+                  10.4676337,
+                  36.6574653
+                ],
+                [
+                  10.4696751,
+                  36.6593065
+                ],
+                [
+                  10.4741308,
+                  36.6633715
+                ],
+                [
+                  10.4749891,
+                  36.6665385
+                ],
+                [
+                  10.4758045,
+                  36.668363
+                ],
+                [
+                  10.4762336,
+                  36.6707725
+                ],
+                [
+                  10.4767486,
+                  36.6748342
+                ],
+                [
+                  10.4775901,
+                  36.6777018
+                ],
+                [
+                  10.472759,
+                  36.6799181
+                ],
+                [
+                  10.4697573,
+                  36.68259
+                ],
+                [
+                  10.4651722,
+                  36.6868488
+                ],
+                [
+                  10.4635229,
+                  36.6881714
+                ],
+                [
+                  10.4612469,
+                  36.6888591
+                ],
+                [
+                  10.4587729,
+                  36.6893617
+                ],
+                [
+                  10.4569917,
+                  36.690261
+                ],
+                [
+                  10.4542539,
+                  36.6900494
+                ],
+                [
+                  10.4517964,
+                  36.6892823
+                ],
+                [
+                  10.4498008,
+                  36.6888195
+                ],
+                [
+                  10.4470465,
+                  36.688092
+                ],
+                [
+                  10.4449354,
+                  36.6876027
+                ],
+                [
+                  10.4431541,
+                  36.6872456
+                ],
+                [
+                  10.4422965,
+                  36.6872853
+                ],
+                [
+                  10.4409935,
+                  36.6877746
+                ],
+                [
+                  10.4398555,
+                  36.6882375
+                ],
+                [
+                  10.4388,
+                  36.6882243
+                ],
+                [
+                  10.4378929,
+                  36.6882375
+                ],
+                [
+                  10.4366229,
+                  36.6885814
+                ],
+                [
+                  10.4356333,
+                  36.6891236
+                ],
+                [
+                  10.4352705,
+                  36.6898378
+                ],
+                [
+                  10.4349901,
+                  36.6912794
+                ],
+                [
+                  10.4347345,
+                  36.6927639
+                ],
+                [
+                  10.4344623,
+                  36.6943244
+                ],
+                [
+                  10.4343799,
+                  36.695065
+                ],
+                [
+                  10.4303721,
+                  36.6958584
+                ],
+                [
+                  10.427189,
+                  36.6965197
+                ],
+                [
+                  10.4238079,
+                  36.6972338
+                ],
+                [
+                  10.4220596,
+                  36.6976305
+                ],
+                [
+                  10.4184147,
+                  36.6982917
+                ],
+                [
+                  10.4080971,
+                  36.7004266
+                ],
+                [
+                  10.406707,
+                  36.7007007
+                ],
+                [
+                  10.4037967,
+                  36.7012868
+                ],
+                [
+                  10.402071,
+                  36.6999028
+                ],
+                [
+                  10.4010062,
+                  36.6989896
+                ],
+                [
+                  10.3987486,
+                  36.6969957
+                ],
+                [
+                  10.3978403,
+                  36.696515
+                ],
+                [
+                  10.3977095,
+                  36.6929801
+                ],
+                [
+                  10.3944219,
+                  36.6838427
+                ],
+                [
+                  10.3937867,
+                  36.67403
+                ],
+                [
+                  10.3934879,
+                  36.6707788
+                ],
+                [
+                  10.3909485,
+                  36.6601746
+                ],
+                [
+                  10.3924076,
+                  36.6566803
+                ],
+                [
+                  10.3929655,
+                  36.6535645
+                ],
+                [
+                  10.3927724,
+                  36.6524283
+                ],
+                [
+                  10.3918068,
+                  36.6509823
+                ],
+                [
+                  10.3904979,
+                  36.6499493
+                ],
+                [
+                  10.3903262,
+                  36.6472465
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "beforePackedAreaM2": 40828738.441686325,
+      "nativeAreaM2": 39311588.55112318,
+      "gainM2": 641394.0753712517,
+      "lossM2": 2158543.9659344363,
+      "beforeSourceAreaM2": 40828680.50043901,
+      "nativeOutsideCurrentCountryM2": 0.0,
+      "beforePackedOutsideCurrentCountryM2": 0.0,
+      "currentRepresentativeWithinOwnNative": true,
+      "currentCoordinateNearest": {
+        "id": 465,
+        "distanceKm": 6.462766361886172
+      },
+      "nativeUnquantizedRepresentativeDiagnostic": {
+        "lat": 36.66714005532195,
+        "lng": 10.434533604100007,
+        "nearest": {
+          "id": 465,
+          "distanceKm": 6.454157106115139
+        }
+      },
+      "representativeQualification": "Native unquantized Shapely representative is diagnostic only; not a proposed app coordinate or generated default.",
+      "lostAreaNotRecoveredByOtherFiveNativeM2": 1852759.1053920158
+    }
+  ],
+  "topology": {
+    "currentPackedCohortUnionM2": 159784738.63091508,
+    "nativeSixUnionM2": 156728522.76411074,
+    "gainM2": 2301707.9542770116,
+    "lossM2": 5357923.821081392,
+    "sourceUnquantizedComparison": {
+      "currentSourceUnionM2": 159784805.99900463,
+      "gainM2": 2301683.9873534464,
+      "lossM2": 5357967.222247777
+    },
+    "lossUncoveredByAnyRemainingCurrentPolygonM2": 5298543.611983053,
+    "lossUncoveredByRemainingCurrentSectorM2": 5300728.503061527,
+    "largestUncoveredLossComponents": [
+      {
+        "areaM2": 1590069.2212187464,
+        "representativeWgs84": {
+          "lng": 10.3959895206592,
+          "lat": 36.68401145009959
+        },
+        "boundsWgs84": [
+          10.391822935530584,
+          36.6638253056803,
+          10.409270538503758,
+          36.704289605488434
+        ]
+      },
+      {
+        "areaM2": 916162.9151703805,
+        "representativeWgs84": {
+          "lng": 10.553551562566403,
+          "lat": 36.69816476691532
+        },
+        "boundsWgs84": [
+          10.54431504816127,
+          36.688747878076434,
+          10.560035,
+          36.70857137078823
+        ]
+      },
+      {
+        "areaM2": 871319.4055492855,
+        "representativeWgs84": {
+          "lng": 10.497154557428068,
+          "lat": 36.630827078736715
+        },
+        "boundsWgs84": [
+          10.470343278333077,
+          36.60719099999999,
+          10.497334000000002,
+          36.65342073747929
+        ]
+      },
+      {
+        "areaM2": 480849.80042563553,
+        "representativeWgs84": {
+          "lng": 10.55451923837361,
+          "lat": 36.677087236666694
+        },
+        "boundsWgs84": [
+          10.5463371937499,
+          36.67421173269508,
+          10.561451679449563,
+          36.68043202795214
+        ]
+      },
+      {
+        "areaM2": 364732.8033384418,
+        "representativeWgs84": {
+          "lng": 10.457505966111546,
+          "lat": 36.60884669129354
+        },
+        "boundsWgs84": [
+          10.44584026048604,
+          36.60471100000001,
+          10.46606185214127,
+          36.61241847613735
+        ]
+      },
+      {
+        "areaM2": 286453.59307623614,
+        "representativeWgs84": {
+          "lng": 10.5602886382483,
+          "lat": 36.68338698681793
+        },
+        "boundsWgs84": [
+          10.555867249613023,
+          36.679653391164855,
+          10.563781,
+          36.68704399999999
+        ]
+      },
+      {
+        "areaM2": 262337.72467171773,
+        "representativeWgs84": {
+          "lng": 10.420560846803232,
+          "lat": 36.63554869999146
+        },
+        "boundsWgs84": [
+          10.405913782943436,
+          36.63191984518297,
+          10.43598858679989,
+          36.63960280065027
+        ]
+      },
+      {
+        "areaM2": 199971.75958819015,
+        "representativeWgs84": {
+          "lng": 10.508411048600447,
+          "lat": 36.74648566412454
+        },
+        "boundsWgs84": [
+          10.482161,
+          36.74001480084337,
+          10.527457826332101,
+          36.75304299999999
+        ]
+      },
+      {
+        "areaM2": 68661.6296429243,
+        "representativeWgs84": {
+          "lng": 10.443082952779001,
+          "lat": 36.72364363662654
+        },
+        "boundsWgs84": [
+          10.439026599079314,
+          36.7208370928222,
+          10.457669561331041,
+          36.726345924318075
+        ]
+      },
+      {
+        "areaM2": 39675.954456920175,
+        "representativeWgs84": {
+          "lng": 10.472491635316954,
+          "lat": 36.73509440456573
+        },
+        "boundsWgs84": [
+          10.466421000000002,
+          36.730567228330536,
+          10.482337611029566,
+          36.73965299602563
+        ]
+      },
+      {
+        "areaM2": 39299.43238073636,
+        "representativeWgs84": {
+          "lng": 10.559699073401717,
+          "lat": 36.73588900269559
+        },
+        "boundsWgs84": [
+          10.554177121122594,
+          36.73104636584061,
+          10.563904,
+          36.74140999999999
+        ]
+      },
+      {
+        "areaM2": 36480.15704340907,
+        "representativeWgs84": {
+          "lng": 10.545912174770072,
+          "lat": 36.666233276610534
+        },
+        "boundsWgs84": [
+          10.54077680551806,
+          36.66149868490844,
+          10.554104717549471,
+          36.67097751655801
+        ]
+      }
+    ],
+    "largestSectorUncoveredLossComponents": [
+      {
+        "areaM2": 1590069.2212187464,
+        "representativeWgs84": {
+          "lng": 10.3959895206592,
+          "lat": 36.68401145009959
+        },
+        "boundsWgs84": [
+          10.391822935530584,
+          36.6638253056803,
+          10.409270538503758,
+          36.704289605488434
+        ]
+      },
+      {
+        "areaM2": 916162.9151703805,
+        "representativeWgs84": {
+          "lng": 10.553551562566403,
+          "lat": 36.69816476691532
+        },
+        "boundsWgs84": [
+          10.54431504816127,
+          36.688747878076434,
+          10.560035,
+          36.70857137078823
+        ]
+      },
+      {
+        "areaM2": 871319.4055492855,
+        "representativeWgs84": {
+          "lng": 10.497154557428068,
+          "lat": 36.630827078736715
+        },
+        "boundsWgs84": [
+          10.470343278333077,
+          36.60719099999999,
+          10.497334000000002,
+          36.65342073747929
+        ]
+      },
+      {
+        "areaM2": 480849.80042563553,
+        "representativeWgs84": {
+          "lng": 10.55451923837361,
+          "lat": 36.677087236666694
+        },
+        "boundsWgs84": [
+          10.5463371937499,
+          36.67421173269508,
+          10.561451679449563,
+          36.68043202795214
+        ]
+      },
+      {
+        "areaM2": 364732.8033384418,
+        "representativeWgs84": {
+          "lng": 10.457505966111546,
+          "lat": 36.60884669129354
+        },
+        "boundsWgs84": [
+          10.44584026048604,
+          36.60471100000001,
+          10.46606185214127,
+          36.61241847613735
+        ]
+      },
+      {
+        "areaM2": 286453.59307623614,
+        "representativeWgs84": {
+          "lng": 10.5602886382483,
+          "lat": 36.68338698681793
+        },
+        "boundsWgs84": [
+          10.555867249613023,
+          36.679653391164855,
+          10.563781,
+          36.68704399999999
+        ]
+      },
+      {
+        "areaM2": 262337.72467171773,
+        "representativeWgs84": {
+          "lng": 10.420560846803232,
+          "lat": 36.63554869999146
+        },
+        "boundsWgs84": [
+          10.405913782943436,
+          36.63191984518297,
+          10.43598858679989,
+          36.63960280065027
+        ]
+      },
+      {
+        "areaM2": 199971.75958819015,
+        "representativeWgs84": {
+          "lng": 10.508411048600447,
+          "lat": 36.74648566412454
+        },
+        "boundsWgs84": [
+          10.482161,
+          36.74001480084337,
+          10.527457826332101,
+          36.75304299999999
+        ]
+      },
+      {
+        "areaM2": 68661.6296429243,
+        "representativeWgs84": {
+          "lng": 10.443082952779001,
+          "lat": 36.72364363662654
+        },
+        "boundsWgs84": [
+          10.439026599079314,
+          36.7208370928222,
+          10.457669561331041,
+          36.726345924318075
+        ]
+      },
+      {
+        "areaM2": 39675.954456920175,
+        "representativeWgs84": {
+          "lng": 10.472491635316954,
+          "lat": 36.73509440456573
+        },
+        "boundsWgs84": [
+          10.466421000000002,
+          36.730567228330536,
+          10.482337611029566,
+          36.73965299602563
+        ]
+      },
+      {
+        "areaM2": 39299.43238073636,
+        "representativeWgs84": {
+          "lng": 10.559699073401717,
+          "lat": 36.73588900269559
+        },
+        "boundsWgs84": [
+          10.554177121122594,
+          36.73104636584061,
+          10.563904,
+          36.74140999999999
+        ]
+      },
+      {
+        "areaM2": 36480.15704340907,
+        "representativeWgs84": {
+          "lng": 10.545912174770072,
+          "lat": 36.666233276610534
+        },
+        "boundsWgs84": [
+          10.54077680551806,
+          36.66149868490844,
+          10.554104717549471,
+          36.67097751655801
+        ]
+      }
+    ],
+    "gainOverlapRemainingCurrentPolygonsM2": 2254960.6474687927,
+    "gainOverlapRemainingCurrentSectorsM2": 2254960.6474687927,
+    "nativeSixInternalPairOverlaps": [
+      {
+        "ids": [
+          "osm:relation:7100693",
+          "osm:relation:7104935"
+        ],
+        "overlapM2": 7457.77244480313,
+        "largestParts": [
+          {
+            "areaM2": 1450.2902340351116,
+            "representativeWgs84": {
+              "lng": 10.464174134853993,
+              "lat": 36.68682168814579
+            },
+            "boundsWgs84": [
+              10.459012783246648,
+              36.685774431780125,
+              10.465399030913883,
+              36.68898405064986
+            ]
+          },
+          {
+            "areaM2": 863.9009160775568,
+            "representativeWgs84": {
+              "lng": 10.429895598977874,
+              "lat": 36.69624085780204
+            },
+            "boundsWgs84": [
+              10.427629379129662,
+              36.69542602292512,
+              10.434111876155121,
+              36.696727512187614
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7100694",
+          "osm:relation:7102535"
+        ],
+        "overlapM2": 6500.514081347545,
+        "largestParts": [
+          {
+            "areaM2": 1031.7632129461156,
+            "representativeWgs84": {
+              "lng": 10.526608439373586,
+              "lat": 36.719092477892396
+            },
+            "boundsWgs84": [
+              10.523763918346502,
+              36.717234626260215,
+              10.528685868911323,
+              36.72045820408437
+            ]
+          },
+          {
+            "areaM2": 576.3186771552081,
+            "representativeWgs84": {
+              "lng": 10.532706292334662,
+              "lat": 36.72397628388341
+            },
+            "boundsWgs84": [
+              10.530880871180877,
+              36.72226759576076,
+              10.53402288156575,
+              36.72523260748672
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7100693",
+          "osm:relation:7100694"
+        ],
+        "overlapM2": 5102.797081203644,
+        "largestParts": [
+          {
+            "areaM2": 812.3433273230494,
+            "representativeWgs84": {
+              "lng": 10.473742909310417,
+              "lat": 36.72151741419046
+            },
+            "boundsWgs84": [
+              10.472366501111969,
+              36.719136479898836,
+              10.475688819082935,
+              36.72316703559276
+            ]
+          },
+          {
+            "areaM2": 701.9384819066922,
+            "representativeWgs84": {
+              "lng": 10.47034494881355,
+              "lat": 36.72564940888282
+            },
+            "boundsWgs84": [
+              10.468323989947573,
+              36.723938367813,
+              10.4717591160003,
+              36.728150332309006
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7104934",
+          "osm:relation:7104935"
+        ],
+        "overlapM2": 4866.982137970589,
+        "largestParts": [
+          {
+            "areaM2": 1004.1595182339818,
+            "representativeWgs84": {
+              "lng": 10.457921076487398,
+              "lat": 36.64578273776721
+            },
+            "boundsWgs84": [
+              10.457553063208195,
+              36.6428989222493,
+              10.458231996050277,
+              36.64864611332702
+            ]
+          },
+          {
+            "areaM2": 791.3553849803402,
+            "representativeWgs84": {
+              "lng": 10.463741315374543,
+              "lat": 36.653620841996016
+            },
+            "boundsWgs84": [
+              10.462157678897178,
+              36.652313616384475,
+              10.464738224393983,
+              36.654622483289586
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7102534",
+          "osm:relation:7102535"
+        ],
+        "overlapM2": 1888.8401323296678,
+        "largestParts": [
+          {
+            "areaM2": 497.38352548718007,
+            "representativeWgs84": {
+              "lng": 10.555814970117293,
+              "lat": 36.685800251910216
+            },
+            "boundsWgs84": [
+              10.55392920940171,
+              36.68547976362451,
+              10.556998911974224,
+              36.68599837200127
+            ]
+          },
+          {
+            "areaM2": 488.95337083745636,
+            "representativeWgs84": {
+              "lng": 10.523243342847728,
+              "lat": 36.68882354549914
+            },
+            "boundsWgs84": [
+              10.521592656249918,
+              36.688669994649366,
+              10.523839462756554,
+              36.689099580861956
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7102534",
+          "osm:relation:7104934"
+        ],
+        "overlapM2": 1549.1937445896053,
+        "largestParts": [
+          {
+            "areaM2": 433.43262728589247,
+            "representativeWgs84": {
+              "lng": 10.49467370630937,
+              "lat": 36.6576531914338
+            },
+            "boundsWgs84": [
+              10.494453708390132,
+              36.65670600933323,
+              10.494943589937076,
+              36.658970762637225
+            ]
+          },
+          {
+            "areaM2": 410.6354249739028,
+            "representativeWgs84": {
+              "lng": 10.494971024395623,
+              "lat": 36.65422642969747
+            },
+            "boundsWgs84": [
+              10.494770060791197,
+              36.65332263054681,
+              10.495196443076791,
+              36.655091701776705
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7100694",
+          "osm:relation:7102534"
+        ],
+        "overlapM2": 1452.9364720403696,
+        "largestParts": [
+          {
+            "areaM2": 286.8191470193357,
+            "representativeWgs84": {
+              "lng": 10.510837672028368,
+              "lat": 36.68101279627051
+            },
+            "boundsWgs84": [
+              10.510817787187607,
+              36.680377737334794,
+              10.510872841122216,
+              36.68171178964054
+            ]
+          },
+          {
+            "areaM2": 169.41015823809326,
+            "representativeWgs84": {
+              "lng": 10.511632396799065,
+              "lat": 36.68289729557896
+            },
+            "boundsWgs84": [
+              10.51161418958202,
+              36.68250826821567,
+              10.511649654978763,
+              36.68340721473673
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7100693",
+          "osm:relation:7102534"
+        ],
+        "overlapM2": 503.48698509829677,
+        "largestParts": [
+          {
+            "areaM2": 274.78927604476803,
+            "representativeWgs84": {
+              "lng": 10.492494739601732,
+              "lat": 36.67044851541604
+            },
+            "boundsWgs84": [
+              10.492323281737015,
+              36.668891830863664,
+              10.492600650988438,
+              36.67166686452489
+            ]
+          },
+          {
+            "areaM2": 158.9699288321869,
+            "representativeWgs84": {
+              "lng": 10.492810688254863,
+              "lat": 36.679040324918105
+            },
+            "boundsWgs84": [
+              10.492792911372666,
+              36.67865391383065,
+              10.492832989240304,
+              36.67941817571973
+            ]
+          }
+        ]
+      },
+      {
+        "ids": [
+          "osm:relation:7100693",
+          "osm:relation:7104934"
+        ],
+        "overlapM2": 397.6215315192688,
+        "largestParts": [
+          {
+            "areaM2": 306.21630161663506,
+            "representativeWgs84": {
+              "lng": 10.485137154589678,
+              "lat": 36.67145468886623
+            },
+            "boundsWgs84": [
+              10.484612795044146,
+              36.671065180146655,
+              10.487118266790002,
+              36.671652369497174
+            ]
+          },
+          {
+            "areaM2": 52.53421157154162,
+            "representativeWgs84": {
+              "lng": 10.491118682438584,
+              "lat": 36.66901334003798
+            },
+            "boundsWgs84": [
+              10.490010367175213,
+              36.66855638467677,
+              10.491803325647554,
+              36.669631542323096
+            ]
+          }
+        ]
+      }
+    ],
+    "currentPackedSixInternalPairOverlaps": [],
+    "nativeSixOutsideCurrentCountryM2": 0.0,
+    "currentPackedSixOutsideCurrentCountryM2": 0.0,
+    "largestNativeOutsideCountryComponents": [],
+    "scope": "Six identity-bound polygons replaced together in memory; every other current polygon, including Mraissa and unsuffixed Borj Cedria, retained. No clipping or repair."
+  },
+  "retainedPolygonIntersections": [
+    {
+      "id": "osm:way:177385463",
+      "currentRaw": {
+        "id": "osm:way:177385463",
+        "sourceId": "osm",
+        "name": "سليمان",
+        "aliases": [
+          "Soliman"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.700751,
+        "lng": 10.488828,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.468221,
+          36.69017,
+          10.506047,
+          36.711329
+        ],
+        "areaKm2": 4.073446556171929,
+        "pickerGroupId": "delegation:465",
+        "offset": 5266104,
+        "length": 2140
+      },
+      "intersectsIndividualSectorChangeM2": 1341542.979627355,
+      "cohortBeforeOverlapM2": 4064183.7472310346,
+      "cohortAfterOverlapM2": 4062739.851215176,
+      "wholeCohortGainOverlapM2": 0.0,
+      "wholeCohortLossOverlapM2": 1443.8960158627249,
+      "retainedCurrentPackedSha256": "52f7783eded902f217331da4c6234de553f1c17d0477da130f4d45d8869ebdd6"
+    },
+    {
+      "id": "osm:relation:7104933",
+      "currentRaw": {
+        "id": "osm:relation:7104933",
+        "sourceId": "osm",
+        "name": "خنقة الحجاج",
+        "aliases": [
+          "Khannguet el Hadjadj"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": [
+          "Délégation Grombalia",
+          "Grombalia",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.595439,
+        "lng": 10.395657,
+        "delegationId": 464,
+        "hasBoundary": true,
+        "bbox": [
+          10.332305,
+          36.549707,
+          10.446453,
+          36.647005
+        ],
+        "areaKm2": 62.94404148882477,
+        "pickerGroupId": "osm:relation:7104933",
+        "offset": 413500,
+        "length": 1156
+      },
+      "intersectsIndividualSectorChangeM2": 857242.8051580603,
+      "cohortBeforeOverlapM2": 0.0,
+      "cohortAfterOverlapM2": 857242.8051580535,
+      "wholeCohortGainOverlapM2": 857242.8051580274,
+      "wholeCohortLossOverlapM2": 0.0,
+      "retainedCurrentPackedSha256": "0d72c91f92726f0c3cc7033085cf3265be29a2cd5763967ca6db68fdb2f0712e"
+    },
+    {
+      "id": "osm:relation:7103806",
+      "currentRaw": {
+        "id": "osm:relation:7103806",
+        "sourceId": "osm",
+        "name": "قرنبالية الشرقية",
+        "aliases": [
+          "Grombalia Est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": [
+          "Délégation Grombalia",
+          "Grombalia",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.624909,
+        "lng": 10.512857,
+        "delegationId": 464,
+        "hasBoundary": true,
+        "bbox": [
+          10.488266,
+          36.584879,
+          10.545044,
+          36.667624
+        ],
+        "areaKm2": 20.689967760754403,
+        "pickerGroupId": "osm:relation:7103806",
+        "offset": 398876,
+        "length": 612
+      },
+      "intersectsIndividualSectorChangeM2": 599133.6483704507,
+      "cohortBeforeOverlapM2": 0.0,
+      "cohortAfterOverlapM2": 599133.6483704404,
+      "wholeCohortGainOverlapM2": 599133.6483704507,
+      "wholeCohortLossOverlapM2": 0.0,
+      "retainedCurrentPackedSha256": "846a3dc3c034206f4f157925863e9e71f7a9e4d5a36c6fdde13e4fae1f53385f"
+    },
+    {
+      "id": "osm:relation:7174585",
+      "currentRaw": {
+        "id": "osm:relation:7174585",
+        "sourceId": "osm",
+        "name": "برج السدرية",
+        "aliases": [
+          "Borj Cedria",
+          "Borj Cédria",
+          "Borj Cédria, Tunisia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حمام الشط",
+        "contextAliases": [
+          "Délégation Hammam Chott",
+          "Hammam Chott",
+          "معتمدية حمام الشط"
+        ],
+        "governorateId": 349,
+        "lat": 36.68123,
+        "lng": 10.378472,
+        "delegationId": 452,
+        "hasBoundary": true,
+        "bbox": [
+          10.361163,
+          36.644819,
+          10.41874,
+          36.71761
+        ],
+        "areaKm2": 18.525658086818485,
+        "pickerGroupId": "osm:relation:7174585",
+        "offset": 4286072,
+        "length": 6340
+      },
+      "intersectsIndividualSectorChangeM2": 445714.3302111219,
+      "cohortBeforeOverlapM2": 0.0,
+      "cohortAfterOverlapM2": 445714.330211122,
+      "wholeCohortGainOverlapM2": 445714.3302111219,
+      "wholeCohortLossOverlapM2": 0.0,
+      "retainedCurrentPackedSha256": "83e2cf54a63b6ee94a5e2895a1c6b765356aa90b9670324f1597d868592bacf0"
+    },
+    {
+      "id": "osm:way:640629366",
+      "currentRaw": {
+        "id": "osm:way:640629366",
+        "sourceId": "osm",
+        "name": "Soliman Plage",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729159,
+        "lng": 10.467951,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.461613,
+          36.72263,
+          10.474738,
+          36.735505
+        ],
+        "areaKm2": 0.6349783269213604,
+        "pickerGroupId": "osm:way:640629366",
+        "offset": 5417228,
+        "length": 436
+      },
+      "intersectsIndividualSectorChangeM2": 294441.36677947926,
+      "cohortBeforeOverlapM2": 633520.2433043255,
+      "cohortAfterOverlapM2": 632779.2482417251,
+      "wholeCohortGainOverlapM2": 0.0,
+      "wholeCohortLossOverlapM2": 740.9950626114166,
+      "retainedCurrentPackedSha256": "c8055deca3310383b2d1370acf310b40bc329b7eeefac2f1d43e9ea4c59ef488"
+    },
+    {
+      "id": "osm:relation:7100603",
+      "currentRaw": {
+        "id": "osm:relation:7100603",
+        "sourceId": "osm",
+        "name": "المريسة",
+        "aliases": [
+          "El Mraissa"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.793954,
+        "lng": 10.5739,
+        "delegationId": 462,
+        "hasBoundary": true,
+        "bbox": [
+          10.527123,
+          36.723914,
+          10.6137,
+          36.863998
+        ],
+        "areaKm2": 49.165943536331746,
+        "pickerGroupId": "osm:relation:7100603",
+        "offset": 282296,
+        "length": 6820
+      },
+      "intersectsIndividualSectorChangeM2": 243380.63202762927,
+      "cohortBeforeOverlapM2": 0.0,
+      "cohortAfterOverlapM2": 243380.63202762435,
+      "wholeCohortGainOverlapM2": 243380.6320276234,
+      "wholeCohortLossOverlapM2": 2.8352678013536525e-09,
+      "retainedCurrentPackedSha256": "3b8331724799ef9d19b0d9a5a7f656668ef9bda3808566c9c4678fec88dbac61"
+    },
+    {
+      "id": "osm:relation:7101601",
+      "currentRaw": {
+        "id": "osm:relation:7101601",
+        "sourceId": "osm",
+        "name": "منزل بوزلفة الجنوبية",
+        "aliases": [
+          "Menzel Bouzelfa Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.662463,
+        "lng": 10.662059,
+        "delegationId": 467,
+        "hasBoundary": true,
+        "bbox": [
+          10.541107,
+          36.637855,
+          10.697625,
+          36.687044
+        ],
+        "areaKm2": 26.350579787689828,
+        "pickerGroupId": "osm:relation:7101601",
+        "offset": 297368,
+        "length": 1476
+      },
+      "intersectsIndividualSectorChangeM2": 87369.02023720034,
+      "cohortBeforeOverlapM2": 0.0,
+      "cohortAfterOverlapM2": 87369.02023716699,
+      "wholeCohortGainOverlapM2": 87369.02023715935,
+      "wholeCohortLossOverlapM2": 4.463263517326681e-08,
+      "retainedCurrentPackedSha256": "b28597a104d347a28ae63c5f6c6e70f3e72eb5bc237b02a30a5aa455d30ea388"
+    },
+    {
+      "id": "osm:relation:7103676",
+      "currentRaw": {
+        "id": "osm:relation:7103676",
+        "sourceId": "isie-local-sectors-2023-neighbor-review",
+        "name": "زاوية الجديدي",
+        "aliases": [
+          "Zaouiet Djedidi",
+          "Zaouiet Jedidi",
+          "Zaouiet djedidi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خلاد",
+        "contextAliases": [
+          "Béni Khalled",
+          "Délégation Beni Khalled",
+          "معتمدية بني خلاد"
+        ],
+        "governorateId": 350,
+        "lat": 36.642199,
+        "lng": 10.560114,
+        "delegationId": 467,
+        "hasBoundary": true,
+        "bbox": [
+          10.53962,
+          36.623664,
+          10.587068,
+          36.660898
+        ],
+        "areaKm2": 11.169252590079143,
+        "pickerGroupId": "osm:relation:7103676",
+        "offset": 389476,
+        "length": 3308
+      },
+      "intersectsIndividualSectorChangeM2": 56346.715833068156,
+      "cohortBeforeOverlapM2": 56519.878915450514,
+      "cohortAfterOverlapM2": 1283.1437473274411,
+      "wholeCohortGainOverlapM2": 554.9903324714318,
+      "wholeCohortLossOverlapM2": 55791.72550059672,
+      "retainedCurrentPackedSha256": "d653823c22ed02864f92869088f5603e551510d6971b13c723df48283a723267"
+    },
+    {
+      "id": "osm:relation:7103805",
+      "currentRaw": {
+        "id": "osm:relation:7103805",
+        "sourceId": "osm",
+        "name": "قرمبالية الغربية",
+        "aliases": [
+          "Grombalia Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": [
+          "Délégation Grombalia",
+          "Grombalia",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.593276,
+        "lng": 10.472341,
+        "delegationId": 464,
+        "hasBoundary": true,
+        "bbox": [
+          10.430961,
+          36.568822,
+          10.50828,
+          36.618938
+        ],
+        "areaKm2": 19.353418463920782,
+        "pickerGroupId": "osm:relation:7103805",
+        "offset": 398472,
+        "length": 404
+      },
+      "intersectsIndividualSectorChangeM2": 14853.24895487038,
+      "cohortBeforeOverlapM2": 0.0,
+      "cohortAfterOverlapM2": 14853.248954878734,
+      "wholeCohortGainOverlapM2": 14853.24895487038,
+      "wholeCohortLossOverlapM2": 0.0,
+      "retainedCurrentPackedSha256": "076385758dfe900092e24ca0f0d73630b92add7908dfd9aecdd5c0c1bcc6b281"
+    },
+    {
+      "id": "osm:relation:7101606",
+      "currentRaw": {
+        "id": "osm:relation:7101606",
+        "sourceId": "osm",
+        "name": "منزل بوزلفة الغربية",
+        "aliases": [
+          "Menzel Bouzelfa Ouest"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية منزل بوزلفة",
+        "contextAliases": [
+          "Délégation Menzel Bouzelfa",
+          "Menzel Bouzelfa",
+          "معتمدية منزل بوزلفة"
+        ],
+        "governorateId": 350,
+        "lat": 36.706454,
+        "lng": 10.573511,
+        "delegationId": 458,
+        "hasBoundary": true,
+        "bbox": [
+          10.549029,
+          36.682534,
+          10.609975,
+          36.730506
+        ],
+        "areaKm2": 16.771261536976528,
+        "pickerGroupId": "osm:relation:7101606",
+        "offset": 303984,
+        "length": 932
+      },
+      "intersectsIndividualSectorChangeM2": 6711.972177034053,
+      "cohortBeforeOverlapM2": 0.0,
+      "cohortAfterOverlapM2": 6711.972177042828,
+      "wholeCohortGainOverlapM2": 6711.972177034053,
+      "wholeCohortLossOverlapM2": 0.0,
+      "retainedCurrentPackedSha256": "501a1c3810017845428eb7ff1d3ef98bd45c0a645b7c3edd0a225f4e4ad9d847"
+    },
+    {
+      "id": "osm:relation:7102675",
+      "currentRaw": {
+        "id": "osm:relation:7102675",
+        "sourceId": "isie-local-sectors-2023-identity-review",
+        "name": "بني خلاد الجوفية",
+        "aliases": [
+          "Beni khalled nord",
+          "بني خلاد الشمالية"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بني خلاد",
+        "contextAliases": [
+          "Béni Khalled",
+          "Délégation Beni Khalled",
+          "معتمدية بني خلاد"
+        ],
+        "governorateId": 350,
+        "lat": 36.649484,
+        "lng": 10.584944,
+        "delegationId": 467,
+        "hasBoundary": true,
+        "bbox": [
+          10.553881,
+          36.627146,
+          10.599793,
+          36.671838
+        ],
+        "areaKm2": 6.887311305612312,
+        "pickerGroupId": "osm:relation:7102675",
+        "offset": 363808,
+        "length": 2852
+      },
+      "intersectsIndividualSectorChangeM2": 1403.5925192832,
+      "cohortBeforeOverlapM2": 1433.424382885278,
+      "cohortAfterOverlapM2": 29.83186360651222,
+      "wholeCohortGainOverlapM2": 0.0,
+      "wholeCohortLossOverlapM2": 1403.5925192832,
+      "retainedCurrentPackedSha256": "264e81e57cbcaecb7c5509399cd8e1696a7b52200abb080a0a61d3831a4c884e"
+    }
+  ],
+  "rawRepresentativeMembershipChanges": [
+    {
+      "currentRaw": {
+        "id": "osm:relation:7100693",
+        "sourceId": "osm",
+        "name": "سليمان",
+        "aliases": [
+          "Soliman"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.720223,
+        "lng": 10.482011,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.403797,
+          36.687246,
+          10.54891,
+          36.753043
+        ],
+        "areaKm2": 42.290533211050594,
+        "pickerGroupId": "osm:relation:7100693",
+        "offset": 289116,
+        "length": 2836
+      },
+      "beforeSectorIds": [
+        "osm:relation:7100693"
+      ],
+      "afterSectorIds": [
+        "osm:relation:7100694"
+      ],
+      "otherCurrentContainingSectors": []
+    },
+    {
+      "currentRaw": {
+        "id": "osm:way:177385463",
+        "sourceId": "osm",
+        "name": "سليمان",
+        "aliases": [
+          "Soliman"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.700751,
+        "lng": 10.488828,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.468221,
+          36.69017,
+          10.506047,
+          36.711329
+        ],
+        "areaKm2": 4.073446556171929,
+        "pickerGroupId": "delegation:465",
+        "offset": 5266104,
+        "length": 2140
+      },
+      "beforeSectorIds": [
+        "osm:relation:7100694"
+      ],
+      "afterSectorIds": [
+        "osm:relation:7100693"
+      ],
+      "otherCurrentContainingSectors": []
+    },
+    {
+      "currentRaw": {
+        "id": "osm:way:640629366",
+        "sourceId": "osm",
+        "name": "Soliman Plage",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.729159,
+        "lng": 10.467951,
+        "delegationId": 465,
+        "hasBoundary": true,
+        "bbox": [
+          10.461613,
+          36.72263,
+          10.474738,
+          36.735505
+        ],
+        "areaKm2": 0.6349783269213604,
+        "pickerGroupId": "osm:way:640629366",
+        "offset": 5417228,
+        "length": 436
+      },
+      "beforeSectorIds": [
+        "osm:relation:7100693"
+      ],
+      "afterSectorIds": [
+        "osm:relation:7100694"
+      ],
+      "otherCurrentContainingSectors": []
+    },
+    {
+      "currentRaw": {
+        "id": "osm:node:1374298056",
+        "sourceId": "osm",
+        "name": "المرجة",
+        "aliases": [
+          "El Marja"
+        ],
+        "kind": "hamlet",
+        "parentName": "سليمان",
+        "contextAliases": [
+          "Délégation Soliman",
+          "Soliman",
+          "سليمان",
+          "معتمدية سليمان"
+        ],
+        "governorateId": 350,
+        "lat": 36.7223143,
+        "lng": 10.5304315,
+        "delegationId": 465,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:1374298056"
+      },
+      "beforeSectorIds": [
+        "osm:relation:7100693"
+      ],
+      "afterSectorIds": [
+        "osm:relation:7100694"
+      ],
+      "otherCurrentContainingSectors": []
+    }
+  ],
+  "sourcePointMembershipChanges": [
+    {
+      "source": {
+        "id": "osm:node:1124155543",
+        "tags": {
+          "addr:city": "سليمان",
+          "name": "سليمان",
+          "name:ar": "سليمان",
+          "name:en": "Soliman",
+          "name:fr": "Soliman",
+          "place": "village",
+          "wikidata": "Q726858",
+          "wikimedia_commons": "Category:Soliman, Tunisia",
+          "wikipedia": "ar:سليمان (تونس)"
+        },
+        "lat": 36.6944327,
+        "lng": 10.4865924
+      },
+      "currentlyRaw": false,
+      "beforeSourceSectorIds": [
+        "osm:relation:7100694"
+      ],
+      "afterNativeSectorIds": [
+        "osm:relation:7100693"
+      ],
+      "retainedLocalityPolygonsCoveringPoint": [
+        "osm:way:177385463"
+      ]
+    },
+    {
+      "source": {
+        "id": "osm:node:1374298056",
+        "tags": {
+          "addr:governorate": "Nabeul",
+          "name": "المرجة",
+          "name:ar": "المرجة",
+          "name:en": "El Marja",
+          "name:fr": "El Marja",
+          "place": "hamlet"
+        },
+        "lat": 36.7223143,
+        "lng": 10.5304315
+      },
+      "currentlyRaw": true,
+      "beforeSourceSectorIds": [
+        "osm:relation:7100693"
+      ],
+      "afterNativeSectorIds": [
+        "osm:relation:7100694"
+      ],
+      "retainedLocalityPolygonsCoveringPoint": []
+    }
+  ],
+  "completeAffectedCurrentGroupClosure": [
+    {
+      "id": "osm:relation:7100603",
+      "sourceId": "osm",
+      "name": "المريسة",
+      "aliases": [
+        "El Mraissa"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.793954,
+      "lng": 10.5739,
+      "delegationId": 462,
+      "hasBoundary": true,
+      "bbox": [
+        10.527123,
+        36.723914,
+        10.6137,
+        36.863998
+      ],
+      "areaKm2": 49.165943536331746,
+      "pickerGroupId": "osm:relation:7100603",
+      "offset": 282296,
+      "length": 6820
+    },
+    {
+      "id": "osm:relation:7100693",
+      "sourceId": "osm",
+      "name": "سليمان",
+      "aliases": [
+        "Soliman"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.720223,
+      "lng": 10.482011,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.403797,
+        36.687246,
+        10.54891,
+        36.753043
+      ],
+      "areaKm2": 42.290533211050594,
+      "pickerGroupId": "osm:relation:7100693",
+      "offset": 289116,
+      "length": 2836
+    },
+    {
+      "id": "osm:relation:7100694",
+      "sourceId": "osm",
+      "name": "سليمان الجنوبية",
+      "aliases": [
+        "Soliman Sud"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.694327,
+      "lng": 10.497823,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.463523,
+        36.679918,
+        10.516152,
+        36.709262
+      ],
+      "areaKm2": 7.105761257713284,
+      "pickerGroupId": "osm:relation:7100694",
+      "offset": 291952,
+      "length": 548
+    },
+    {
+      "id": "osm:relation:7101601",
+      "sourceId": "osm",
+      "name": "منزل بوزلفة الجنوبية",
+      "aliases": [
+        "Menzel Bouzelfa Sud"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزلفة",
+      "contextAliases": [
+        "Délégation Menzel Bouzelfa",
+        "Menzel Bouzelfa",
+        "معتمدية منزل بوزلفة"
+      ],
+      "governorateId": 350,
+      "lat": 36.662463,
+      "lng": 10.662059,
+      "delegationId": 467,
+      "hasBoundary": true,
+      "bbox": [
+        10.541107,
+        36.637855,
+        10.697625,
+        36.687044
+      ],
+      "areaKm2": 26.350579787689828,
+      "pickerGroupId": "osm:relation:7101601",
+      "offset": 297368,
+      "length": 1476
+    },
+    {
+      "id": "osm:relation:7101606",
+      "sourceId": "osm",
+      "name": "منزل بوزلفة الغربية",
+      "aliases": [
+        "Menzel Bouzelfa Ouest"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزلفة",
+      "contextAliases": [
+        "Délégation Menzel Bouzelfa",
+        "Menzel Bouzelfa",
+        "معتمدية منزل بوزلفة"
+      ],
+      "governorateId": 350,
+      "lat": 36.706454,
+      "lng": 10.573511,
+      "delegationId": 458,
+      "hasBoundary": true,
+      "bbox": [
+        10.549029,
+        36.682534,
+        10.609975,
+        36.730506
+      ],
+      "areaKm2": 16.771261536976528,
+      "pickerGroupId": "osm:relation:7101606",
+      "offset": 303984,
+      "length": 932
+    },
+    {
+      "id": "osm:relation:7102534",
+      "sourceId": "osm",
+      "name": "بو شراي",
+      "aliases": [
+        "Bou Charray",
+        "Boucharray",
+        "بوشراي"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.662845,
+      "lng": 10.524305,
+      "delegationId": 467,
+      "hasBoundary": true,
+      "bbox": [
+        10.472759,
+        36.63481,
+        10.563781,
+        36.690163
+      ],
+      "areaKm2": 25.370030820804065,
+      "pickerGroupId": "osm:relation:7102534",
+      "offset": 355052,
+      "length": 1012
+    },
+    {
+      "id": "osm:relation:7102535",
+      "sourceId": "osm",
+      "name": "الشريفات",
+      "aliases": [
+        "Ech Cherifet"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.713156,
+      "lng": 10.533755,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.500206,
+        36.684624,
+        10.563904,
+        36.74141
+      ],
+      "areaKm2": 18.750894264197953,
+      "pickerGroupId": "osm:relation:7102535",
+      "offset": 356064,
+      "length": 692
+    },
+    {
+      "id": "osm:relation:7102675",
+      "sourceId": "isie-local-sectors-2023-identity-review",
+      "name": "بني خلاد الجوفية",
+      "aliases": [
+        "Beni khalled nord",
+        "بني خلاد الشمالية"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بني خلاد",
+      "contextAliases": [
+        "Béni Khalled",
+        "Délégation Beni Khalled",
+        "معتمدية بني خلاد"
+      ],
+      "governorateId": 350,
+      "lat": 36.649484,
+      "lng": 10.584944,
+      "delegationId": 467,
+      "hasBoundary": true,
+      "bbox": [
+        10.553881,
+        36.627146,
+        10.599793,
+        36.671838
+      ],
+      "areaKm2": 6.887311305612312,
+      "pickerGroupId": "osm:relation:7102675",
+      "offset": 363808,
+      "length": 2852
+    },
+    {
+      "id": "osm:relation:7103676",
+      "sourceId": "isie-local-sectors-2023-neighbor-review",
+      "name": "زاوية الجديدي",
+      "aliases": [
+        "Zaouiet Djedidi",
+        "Zaouiet Jedidi",
+        "Zaouiet djedidi"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بني خلاد",
+      "contextAliases": [
+        "Béni Khalled",
+        "Délégation Beni Khalled",
+        "معتمدية بني خلاد"
+      ],
+      "governorateId": 350,
+      "lat": 36.642199,
+      "lng": 10.560114,
+      "delegationId": 467,
+      "hasBoundary": true,
+      "bbox": [
+        10.53962,
+        36.623664,
+        10.587068,
+        36.660898
+      ],
+      "areaKm2": 11.169252590079143,
+      "pickerGroupId": "osm:relation:7103676",
+      "offset": 389476,
+      "length": 3308
+    },
+    {
+      "id": "osm:relation:7103805",
+      "sourceId": "osm",
+      "name": "قرمبالية الغربية",
+      "aliases": [
+        "Grombalia Ouest"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية قرمبالية",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Grombalia",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.593276,
+      "lng": 10.472341,
+      "delegationId": 464,
+      "hasBoundary": true,
+      "bbox": [
+        10.430961,
+        36.568822,
+        10.50828,
+        36.618938
+      ],
+      "areaKm2": 19.353418463920782,
+      "pickerGroupId": "osm:relation:7103805",
+      "offset": 398472,
+      "length": 404
+    },
+    {
+      "id": "osm:relation:7103806",
+      "sourceId": "osm",
+      "name": "قرنبالية الشرقية",
+      "aliases": [
+        "Grombalia Est"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية قرمبالية",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Grombalia",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.624909,
+      "lng": 10.512857,
+      "delegationId": 464,
+      "hasBoundary": true,
+      "bbox": [
+        10.488266,
+        36.584879,
+        10.545044,
+        36.667624
+      ],
+      "areaKm2": 20.689967760754403,
+      "pickerGroupId": "osm:relation:7103806",
+      "offset": 398876,
+      "length": 612
+    },
+    {
+      "id": "osm:relation:7104933",
+      "sourceId": "osm",
+      "name": "خنقة الحجاج",
+      "aliases": [
+        "Khannguet el Hadjadj"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية قرمبالية",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Grombalia",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.595439,
+      "lng": 10.395657,
+      "delegationId": 464,
+      "hasBoundary": true,
+      "bbox": [
+        10.332305,
+        36.549707,
+        10.446453,
+        36.647005
+      ],
+      "areaKm2": 62.94404148882477,
+      "pickerGroupId": "osm:relation:7104933",
+      "offset": 413500,
+      "length": 1156
+    },
+    {
+      "id": "osm:relation:7104934",
+      "sourceId": "osm",
+      "name": "شماس",
+      "aliases": [
+        "Chammes"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية قرمبالية",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Grombalia",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.641053,
+      "lng": 10.46787,
+      "delegationId": 464,
+      "hasBoundary": true,
+      "bbox": [
+        10.436129,
+        36.604711,
+        10.497334,
+        36.677702
+      ],
+      "areaKm2": 25.710231857380048,
+      "pickerGroupId": "osm:relation:7104934",
+      "offset": 414656,
+      "length": 548
+    },
+    {
+      "id": "osm:relation:7104935",
+      "sourceId": "osm",
+      "name": "فندق الجديد",
+      "aliases": [
+        "Fondouk Jedid"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية قرمبالية",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Grombalia",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.667451,
+      "lng": 10.434044,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.390326,
+        36.631849,
+        10.47759,
+        36.701287
+      ],
+      "areaKm2": 40.92425934196877,
+      "pickerGroupId": "osm:relation:7104935",
+      "offset": 415204,
+      "length": 708
+    },
+    {
+      "id": "osm:relation:7174585",
+      "sourceId": "osm",
+      "name": "برج السدرية",
+      "aliases": [
+        "Borj Cedria",
+        "Borj Cédria",
+        "Borj Cédria, Tunisia"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية حمام الشط",
+      "contextAliases": [
+        "Délégation Hammam Chott",
+        "Hammam Chott",
+        "معتمدية حمام الشط"
+      ],
+      "governorateId": 349,
+      "lat": 36.68123,
+      "lng": 10.378472,
+      "delegationId": 452,
+      "hasBoundary": true,
+      "bbox": [
+        10.361163,
+        36.644819,
+        10.41874,
+        36.71761
+      ],
+      "areaKm2": 18.525658086818485,
+      "pickerGroupId": "osm:relation:7174585",
+      "offset": 4286072,
+      "length": 6340
+    },
+    {
+      "id": "osm:way:173530145",
+      "sourceId": "osm",
+      "name": "فندق الجديد",
+      "aliases": [
+        "Fondouk Jedid"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية قرمبالية",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Fondouk Jedid",
+        "Grombalia",
+        "فندق الجديد",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.668442,
+      "lng": 10.445554,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.438506,
+        36.660781,
+        10.454018,
+        36.675828
+      ],
+      "areaKm2": 1.1934232845446529,
+      "pickerGroupId": "osm:relation:7104935",
+      "offset": 5263084,
+      "length": 364
+    },
+    {
+      "id": "osm:way:177385463",
+      "sourceId": "osm",
+      "name": "سليمان",
+      "aliases": [
+        "Soliman"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.700751,
+      "lng": 10.488828,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.468221,
+        36.69017,
+        10.506047,
+        36.711329
+      ],
+      "areaKm2": 4.073446556171929,
+      "pickerGroupId": "delegation:465",
+      "offset": 5266104,
+      "length": 2140
+    },
+    {
+      "id": "osm:way:26286904",
+      "sourceId": "osm",
+      "name": "خنقة الحجاج",
+      "aliases": [
+        "Khannguet el Hadjadj"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية قرمبالية",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Grombalia",
+        "Khannguet el Hadjadj",
+        "خنقة الحجاج",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.617172,
+      "lng": 10.405972,
+      "delegationId": 464,
+      "hasBoundary": true,
+      "bbox": [
+        10.401966,
+        36.614189,
+        10.40974,
+        36.619703
+      ],
+      "areaKm2": 0.2531772161512795,
+      "pickerGroupId": "osm:relation:7104933",
+      "offset": 5368328,
+      "length": 116
+    },
+    {
+      "id": "osm:way:640629366",
+      "sourceId": "osm",
+      "name": "Soliman Plage",
+      "aliases": [],
+      "kind": "residential",
+      "parentName": "سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "سليمان",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.729159,
+      "lng": 10.467951,
+      "delegationId": 465,
+      "hasBoundary": true,
+      "bbox": [
+        10.461613,
+        36.72263,
+        10.474738,
+        36.735505
+      ],
+      "areaKm2": 0.6349783269213604,
+      "pickerGroupId": "osm:way:640629366",
+      "offset": 5417228,
+      "length": 436
+    },
+    {
+      "id": "osm:way:97468182",
+      "sourceId": "osm",
+      "name": "المريسة",
+      "aliases": [
+        "Marisa"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "El Mraissa",
+        "Soliman",
+        "المريسة",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.75571,
+      "lng": 10.555342,
+      "delegationId": 462,
+      "hasBoundary": true,
+      "bbox": [
+        10.550921,
+        36.749334,
+        10.557847,
+        36.76218
+      ],
+      "areaKm2": 0.20876039608116823,
+      "pickerGroupId": "osm:relation:7100603",
+      "offset": 5450148,
+      "length": 348
+    },
+    {
+      "id": "osm:node:1374298056",
+      "sourceId": "osm",
+      "name": "المرجة",
+      "aliases": [
+        "El Marja"
+      ],
+      "kind": "hamlet",
+      "parentName": "سليمان",
+      "contextAliases": [
+        "Délégation Soliman",
+        "Soliman",
+        "سليمان",
+        "معتمدية سليمان"
+      ],
+      "governorateId": 350,
+      "lat": 36.7223143,
+      "lng": 10.5304315,
+      "delegationId": 465,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1374298056"
+    }
+  ],
+  "epochCarry": {
+    "fromMetadataSha256": "fbd93249d69e9f05d1e713a5924241c38503224adf1b5baab98ac5f44effc4e6",
+    "toMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+    "finiteClosureRows": 21,
+    "allSemanticFieldsAndPackedSlicesUnchanged": true,
+    "removed88IdsRemainAbsent": true
+  },
+  "unboundBorjCedriaDiagnostics": [
+    {
+      "id": "isie2023:borj-cedria-1",
+      "assignedSourceId": null,
+      "assignedRegistryCode": null,
+      "ownAreaM2": 17520304.3292878,
+      "uncoveredCohortLossCoveredM2": 1573815.5701422126,
+      "cohortLossCoveredM2": 1573815.5701422126,
+      "cohortNativeOverlapM2": 11322.302742115085,
+      "currentBorjCedriaOverlapM2": 14385762.898384826,
+      "outsideCurrentCountryM2": 0.0,
+      "rawChangedRepresentativesInside": [],
+      "qualification": "Independent diagnostic intersection only. This component is not assigned the old sector code, unioned with its peer or applied to any current row."
+    },
+    {
+      "id": "isie2023:borj-cedria-2",
+      "assignedSourceId": null,
+      "assignedRegistryCode": null,
+      "ownAreaM2": 3538020.1691587125,
+      "uncoveredCohortLossCoveredM2": 40111.785795745905,
+      "cohortLossCoveredM2": 40111.785795732896,
+      "cohortNativeOverlapM2": 3491.883958436836,
+      "currentBorjCedriaOverlapM2": 3494767.5030061556,
+      "outsideCurrentCountryM2": 0.0,
+      "rawChangedRepresentativesInside": [],
+      "qualification": "Independent diagnostic intersection only. This component is not assigned the old sector code, unioned with its peer or applied to any current row."
+    }
+  ],
+  "heldMraissaCurrentRaw": {
+    "id": "osm:relation:7100603",
+    "sourceId": "osm",
+    "name": "المريسة",
+    "aliases": [
+      "El Mraissa"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية سليمان",
+    "contextAliases": [
+      "Délégation Soliman",
+      "Soliman",
+      "معتمدية سليمان"
+    ],
+    "governorateId": 350,
+    "lat": 36.793954,
+    "lng": 10.5739,
+    "delegationId": 462,
+    "hasBoundary": true,
+    "bbox": [
+      10.527123,
+      36.723914,
+      10.6137,
+      36.863998
+    ],
+    "areaKm2": 49.165943536331746,
+    "pickerGroupId": "osm:relation:7100603",
+    "offset": 282296,
+    "length": 6820
+  },
+  "directCurationObjects": [],
+  "directPickerObjects": [
+    {
+      "path": "$.records[101]",
+      "record": {
+        "id": "osm:way:177385463",
+        "targetDelegationId": 465,
+        "expectedGovernorateId": 350,
+        "expectedBase": {
+          "nomAr": "سليمان",
+          "lat": 36.7067,
+          "lng": 10.4875
+        },
+        "expectedExistingMemberIds": [
+          "osm:way:177385463"
+        ],
+        "expectedTargetMemberIds": [
+          "delegation:465"
+        ],
+        "members": [
+          {
+            "id": "osm:way:177385463",
+            "expectedKind": "residential",
+            "expectedSourceId": "osm",
+            "expectedName": "سليمان",
+            "expectedParentName": "معتمدية سليمان",
+            "expectedDelegationId": 465,
+            "expectedLat": 36.700751,
+            "expectedLng": 10.488828,
+            "expectedOriginalTags": {
+              "addr:city": "سليمان",
+              "addr:country": "TN",
+              "addr:governorate": "Nabeul",
+              "landuse": "residential",
+              "name": "سليمان",
+              "name:ar": "سليمان",
+              "name:fr": "Soliman"
+            },
+            "originalGeometrySha256": "1e90189af413c2ea32ece7ca663c3692170c2a2599b2f7569556220140aae69d",
+            "packedGeometrySha256": "52f7783eded902f217331da4c6234de553f1c17d0477da130f4d45d8869ebdd6"
+          }
+        ],
+        "identityEvidence": [
+          {
+            "method": "reviewed_split_settlement_reference",
+            "id": "osm:node:1124155543",
+            "accepted": true,
+            "residentialId": "osm:way:177385463",
+            "reviewEvidence": {
+              "file": "three-city-split-reviews/three-city-split-source-proof.json",
+              "sha256": "ff66bf2aedeed7e18832b077175acf02968aefddb23cb2850d8c79af9f3f2f62"
+            }
+          }
+        ],
+        "requiredCurations": []
+      }
+    },
+    {
+      "path": "$.distinctPairs[3]",
+      "record": {
+        "ids": [
+          "osm:relation:7100693",
+          "osm:way:177385463"
+        ],
+        "reviewEvidence": {
+          "file": "soliman-town-sector-distinct-choices.json",
+          "sha256": "72716d8bc66bbbcb19d1d3288563d5c658ae1997f3bb85da1ec5745e17148d10"
+        }
+      }
+    }
+  ],
+  "directBoundaryObjects": [
+    {
+      "path": "$.sources[1].records[4]",
+      "record": {
+        "id": "osm:relation:7102675",
+        "officialCode": "156351",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بني خلاد الشمالية",
+          "name:ar": "بني خلاد الشمالية",
+          "name:fr": "Beni Khalled Nord",
+          "ref:tn:codegeo": "156351"
+        },
+        "aliases": [
+          "بني خلاد الشمالية"
+        ]
+      }
+    },
+    {
+      "path": "$.sources[3].records[0]",
+      "record": {
+        "id": "osm:relation:7103676",
+        "officialCode": "156353",
+        "action": "replace",
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "زاوية الجديدي",
+          "name:ar": "زاوية الجديدي",
+          "name:fr": "Zaouiet Jdidi",
+          "ref:tn:codegeo": "156353"
+        }
+      }
+    }
+  ],
+  "currentCurationReceiptsInScope": [
+    {
+      "id": "osm:relation:7102675",
+      "decisionId": "osm:relation:7102675",
+      "inherited": false
+    },
+    {
+      "id": "osm:relation:7103676",
+      "decisionId": "osm:relation:7103676",
+      "inherited": false
+    }
+  ],
+  "currentConflictObjectsInScope": [
+    {
+      "ids": [
+        "osm:relation:7101601",
+        "osm:relation:7102675"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.03175027716478161,
+      "sample": {
+        "lat": 36.664362499999996,
+        "lng": 10.557303185984207
+      },
+      "names": [
+        "منزل بوزلفة الجنوبية",
+        "بني خلاد الجوفية"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7102534",
+        "osm:relation:7102675"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.0014366604562622688,
+      "sample": {
+        "lat": 36.6613325,
+        "lng": 10.554280854729729
+      },
+      "names": [
+        "بو شراي",
+        "بني خلاد الجوفية"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7102534",
+        "osm:relation:7103676"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.05665216112849157,
+      "sample": {
+        "lat": 36.6477505,
+        "lng": 10.549138363152805
+      },
+      "names": [
+        "بو شراي",
+        "زاوية الجديدي"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7102673",
+        "osm:relation:7102675"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.10995719551866975,
+      "sample": {
+        "lat": 36.6544175,
+        "lng": 10.589047250343388
+      },
+      "names": [
+        "بني خلاد الشرقية",
+        "بني خلاد الجوفية"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7102674",
+        "osm:relation:7102675"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.001458899446912988,
+      "sample": {
+        "lat": 36.630295000000004,
+        "lng": 10.596137655339815
+      },
+      "names": [
+        "بني خلاد القبلية",
+        "بني خلاد الجوفية"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7102674",
+        "osm:relation:7103676"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.0001811021526259949,
+      "sample": {
+        "lat": 36.624626500000005,
+        "lng": 10.585949505595522
+      },
+      "names": [
+        "بني خلاد القبلية",
+        "زاوية الجديدي"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7102675",
+        "osm:relation:7103676"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.0022628681085469075,
+      "sample": {
+        "lat": 36.6445395,
+        "lng": 10.580273513962513
+      },
+      "names": [
+        "بني خلاد الجوفية",
+        "زاوية الجديدي"
+      ]
+    },
+    {
+      "ids": [
+        "osm:relation:7103676",
+        "osm:relation:7103677"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.004996182411457458,
+      "sample": {
+        "lat": 36.626031,
+        "lng": 10.56996173479089
+      },
+      "names": [
+        "زاوية الجديدي",
+        "القبة الكبيرة"
+      ]
+    }
+  ],
+  "qualifications": [
+    "Full source paths preserved. Source map georegistration residuals are not surveyed accuracy.",
+    "Only the current packed country shape is measured, not a newly certified coastline.",
+    "No existing groups/defaults/coordinates are changed by this source-only scenario.",
+    "Source-point membership alone does not imply a new raw point: retained locality footprints and existing curation must be assessed before any import.",
+    "Current Mraissa remains; its invalid native path is not loaded into polygon arithmetic.",
+    "Neither Borj Cedria component is assigned, unioned or imported."
+  ],
+  "reviewerScript": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-six-sector-cohort-independent-impact/measure_cohort.py",
+    "sha256": "e5de64b93b8d656a69f30d08b35038a953de67d99e2bc13993de0b7696dc0892",
+    "bytes": 16717
+  }
+}

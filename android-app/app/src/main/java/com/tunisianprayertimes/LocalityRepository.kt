@@ -79,14 +79,41 @@ internal fun filterAvailableLocalities(localities: List<Locality>, available: Li
     }
 }
 
+/** A named settlement is a more useful manual reference than its broader sector. */
+private fun retainedPickerRepresentative(members: List<Locality>): Locality? =
+    members.asSequence()
+        .filter { !it.id.startsWith("delegation:") && it.lat != null && it.lng != null &&
+            validCoordinates(it.lat, it.lng) }
+        .minWithOrNull(compareBy<Locality> {
+            when (it.kind) {
+                "city", "town" -> 0
+                "village" -> 1
+                "hamlet" -> 2
+                "suburb", "neighbourhood", "quarter", "city_district" -> 3
+                "residential" -> 4
+                "sector" -> 5
+                "municipality" -> 6
+                else -> 7
+            }
+        }.thenBy { it.id })
+
 /** Merge only compiler-confirmed matches; homonyms elsewhere remain separate choices. */
 internal fun groupPickerLocalities(localities: List<Locality>): List<Locality> =
     localities.groupBy { it.pickerGroupId ?: it.id }.map { (groupId, members) ->
         val canonical = members.firstOrNull { it.id == groupId } ?: members.first()
-        if (members.size == 1) canonical else canonical.copy(
-            searchText = members.joinToString(" ") { it.searchText },
-            pickerMemberIds = members.flatMapTo(mutableSetOf()) { it.pickerMemberIds + it.id },
-        )
+        if (members.size == 1) canonical else {
+            // Keep the display identity, but select its timetable from a retained
+            // locality point. Never substitute the prayer source's coordinates.
+            val representative = if (canonical.id.startsWith("delegation:")) {
+                retainedPickerRepresentative(members)
+            } else null
+            canonical.copy(
+                lat = representative?.lat ?: canonical.lat,
+                lng = representative?.lng ?: canonical.lng,
+                searchText = members.joinToString(" ") { it.searchText },
+                pickerMemberIds = members.flatMapTo(mutableSetOf()) { it.pickerMemberIds + it.id },
+            )
+        }
     }
 
 internal fun enrichLocalityCatalog(localities: List<Locality>, governors: List<Gouvernorat>): List<Locality> {
@@ -217,9 +244,21 @@ object LocalityRepository {
         val sources = available.map { SourceKey(it.id, it.lat, it.lng) }
             .sortedWith(compareBy<SourceKey> { it.id }.thenBy { it.lat }.thenBy { it.lng })
         availableCatalog?.takeIf { it.sources == sources }?.let { return it.localities }
-        return groupPickerLocalities(filterAvailableLocalities(loadAll(context), available)).also {
+        // Group before filtering: a merged place can use another source even
+        // when its canonical delegation has no complete timetable this month.
+        return filterAvailableLocalities(groupPickerLocalities(loadAll(context)), available).also {
             availableCatalog = AvailableCatalog(sources, it)
         }
+    }
+
+    /** Saved manual groups use the same representative as a new picker selection. */
+    fun manualSelection(context: Context, localityId: String): Locality? {
+        val localities = loadAll(context)
+        // A saved raw locality keeps its own ID and representative, including
+        // when its name is currently displayed within a larger picker group.
+        if (!localityId.startsWith("delegation:")) return localities.find { it.id == localityId }
+        val members = localities.filter { (it.pickerGroupId ?: it.id) == localityId }
+        return groupPickerLocalities(members).singleOrNull()?.takeIf { it.id == localityId }
     }
 
     fun selected(context: Context): Locality? {

@@ -1,0 +1,94 @@
+[
+  {
+    "file": "work\\remaining-three-town-source-identity\\osm-node-287625095-current.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/287625095",
+    "retrievedAt": "2026-09-12T08:19:22.505177+00:00",
+    "status": 200,
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287625095",
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 1189,
+    "sha256": "2815e47380f42e8341c8c05ace9c063e0acbe1a181b634d465c1dbbe33e774a2"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\osm-node-287625095-history.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/287625095/history",
+    "retrievedAt": "2026-09-12T08:19:22.505177+00:00",
+    "status": 200,
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/287625095/history",
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 24981,
+    "sha256": "ab80cb7fe3ecefa20b82a1eaf79bd3b7d900c4afd597c88f60624c6192ccfbda"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\osm-node-264881676-current.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/264881676",
+    "retrievedAt": "2026-09-12T08:19:22.506174+00:00",
+    "status": 200,
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/264881676",
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 862,
+    "sha256": "7ed039e0afe4457a057431b2070e3986599f24be49a64baa417dd44e426b5152"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\osm-node-264881676-history.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/264881676/history",
+    "retrievedAt": "2026-09-12T08:19:22.506174+00:00",
+    "status": 200,
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/264881676/history",
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 12132,
+    "sha256": "cda1332e0f5e4c2577d453979958ca7f294544aeda143c12a60b3869be4c3e3e"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\osm-node-1165828361-current.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1165828361",
+    "retrievedAt": "2026-09-12T08:19:22.507235+00:00",
+    "status": 200,
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1165828361",
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 845,
+    "sha256": "42aa5971868e3c88fd60ff17293419678f07c2304e4ec17d9dbbc4fb140af0db"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\osm-node-1165828361-history.xml",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1165828361/history",
+    "retrievedAt": "2026-09-12T08:19:22.653620+00:00",
+    "status": 200,
+    "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1165828361/history",
+    "contentType": "application/xml; charset=utf-8",
+    "bytes": 10961,
+    "sha256": "403f10be78dcfcd165bfc0206ecd2d76df1abd42ea8b0783ee6ccaaea19169f1"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\jemmal-municipal-pges.pdf",
+    "url": "https://www.collectiviteslocales.gov.tn/wp-content/uploads/2017/06/Jemmal-PGES-drainage-eaux-pluviales.pdf",
+    "retrievedAt": "2026-09-12T08:19:22.655667+00:00",
+    "error": "HTTPSConnectionPool(host='www.collectiviteslocales.gov.tn', port=443): Max retries exceeded with url: /wp-content/uploads/2017/06/Jemmal-PGES-drainage-eaux-pluviales.pdf (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.collectiviteslocales.gov.tn', port=443) at 0x1b71890e750>, 'Connection to www.collectiviteslocales.gov.tn timed out. (connect timeout=35)'))"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\douz-acte.html",
+    "url": "https://acte.tn/fr/commune/commune-douz",
+    "retrievedAt": "2026-09-12T08:19:22.658664+00:00",
+    "status": 200,
+    "resolvedUrl": "https://acte.tn/fr/commune/commune-douz",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 60602,
+    "sha256": "dc68ea69dd2526b8198f6be02744ede41e1971f284d83f94fe63f783c25f32d1"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\acte-programme.html",
+    "url": "https://acte.tn/fr",
+    "retrievedAt": "2026-09-12T08:19:22.661620+00:00",
+    "status": 200,
+    "resolvedUrl": "https://acte.tn/fr",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 139172,
+    "sha256": "617989e42b84055a0819af844d74469cf76748a91056b9ff5d44a134b3a66447"
+  },
+  {
+    "file": "work\\remaining-three-town-source-identity\\municipality-directory.html",
+    "url": "https://www.collectiviteslocales.gov.tn/fr/sites-web-des-municipalites/",
+    "retrievedAt": "2026-09-12T08:19:22.666663+00:00",
+    "error": "HTTPSConnectionPool(host='www.collectiviteslocales.gov.tn', port=443): Max retries exceeded with url: /fr/sites-web-des-municipalites/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.collectiviteslocales.gov.tn', port=443) at 0x1b71890cce0>, 'Connection to www.collectiviteslocales.gov.tn timed out. (connect timeout=35)'))"
+  }
+]

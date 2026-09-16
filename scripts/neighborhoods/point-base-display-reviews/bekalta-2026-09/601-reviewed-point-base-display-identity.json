@@ -1,0 +1,1567 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_explicit_point_base_display_identity",
+  "identityDecision": "same_named_settlement_display_only",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "reviewedDate": "2026-09-12",
+  "pointId": "osm:node:558814858",
+  "baseId": 601,
+  "rawCurrent": {
+    "id": "osm:node:558814858",
+    "sourceId": "osm",
+    "name": "البقالطة",
+    "aliases": [
+      "Bekalta"
+    ],
+    "kind": "village",
+    "parentName": "البقالطة الشمالية",
+    "contextAliases": [
+      "Bekalta",
+      "Bekalta nord",
+      "Délégation Bekalta",
+      "البقالطة الشمالية",
+      "معتمدية البقالطة"
+    ],
+    "governorateId": 364,
+    "lat": 35.6172948,
+    "lng": 10.9891336,
+    "delegationId": 601,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:558814858"
+  },
+  "baseCurrent": {
+    "id": 601,
+    "nomFr": "Bekalta",
+    "nomAr": "البقالطة",
+    "nomEn": "Bekalta",
+    "lat": 35.619,
+    "lng": 10.9949
+  },
+  "expectedGovernor": {
+    "id": 364,
+    "nomFr": "Monastir",
+    "nomAr": "المنستير",
+    "nomEn": "Monastir",
+    "lat": 35.7643,
+    "lng": 10.8113
+  },
+  "originalSourceNode": {
+    "id": "osm:node:558814858",
+    "tags": {
+      "addr:city": "Bekalta",
+      "addr:governorate": "Monastir",
+      "addr:postcode": "5009",
+      "name": "البقالطة",
+      "name:ar": "البقالطة",
+      "name:en": "Bekalta",
+      "name:fr": "Bekalta",
+      "place": "village",
+      "population": "17850",
+      "wikidata": "Q1203138",
+      "wikimedia_commons": "Category:Bekalta",
+      "wikipedia": "en:Bekalta"
+    },
+    "lat": 35.6172948,
+    "lng": 10.9891336
+  },
+  "sourceNode": {
+    "file": "point-base-display-reviews/bekalta-2026-09/osm-node-558814858-current.json",
+    "sha256": "bea719421b4426a61c6cca7beb7fc998a177c1f2ef2ea44e601061cfae9e6bf9",
+    "url": "https://api.openstreetmap.org/api/0.6/node/558814858.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/558814858.json",
+    "sha256": "bea719421b4426a61c6cca7beb7fc998a177c1f2ef2ea44e601061cfae9e6bf9",
+    "exactElement": {
+      "type": "node",
+      "id": 558814858,
+      "lat": 35.6172948,
+      "lon": 10.9891336,
+      "timestamp": "2026-03-07T20:28:17Z",
+      "version": 17,
+      "changeset": 179509225,
+      "user": "Johnwhelan",
+      "uid": 186592,
+      "tags": {
+        "addr:city": "Bekalta",
+        "addr:governorate": "Monastir",
+        "addr:postcode": "5009",
+        "name": "البقالطة",
+        "name:ar": "البقالطة",
+        "name:en": "Bekalta",
+        "name:fr": "Bekalta",
+        "place": "village",
+        "population": "17850",
+        "wikidata": "Q1203138",
+        "wikimedia_commons": "Category:Bekalta",
+        "wikipedia": "en:Bekalta"
+      }
+    }
+  },
+  "sourceProposal": {
+    "file": "point-base-display-reviews/bekalta-2026-09/bekalta-town-point-source-review.json",
+    "sha256": "42c7f5f3d6caa20bb984df325e7700003b049bf08b0683bb47a50fcea21607f4"
+  },
+  "independentSourceReview": {
+    "file": "point-base-display-reviews/bekalta-2026-09/bekalta-town-point-root-source-identity-review.json",
+    "sha256": "ac539a3a548b6bca092cfcbb6b476a33db1f859654ce24e77a5b4dd9e712f5e0"
+  },
+  "independentPrimaryFinding": [
+    "Authentic current node/history and unchanged raw point identify inhabited Bekalta. Municipal street-cleaning report explicitly identifies the city, and municipal geographic page corroborates Monastir context.",
+    "The two phone views corroborate town context only; neither the snapped bus-stop card nor the displayed outline certifies coordinates or a boundary."
+  ],
+  "primaryEvidence": [
+    {
+      "file": "point-base-display-reviews/bekalta-2026-09/municipal-city-cleaning.html",
+      "sha256": "e445ef4b80ade97a6f7ac38ac9e447f1446fa214ef5a6a3d3352aaa0a1b8c654",
+      "url": "https://www.commune-bekalta.gov.tn/news-ar/165-proprete",
+      "role": "official_settlement_identity",
+      "requiredText": [
+        "مدينة البقالطة",
+        "بشارع البيئة"
+      ],
+      "finding": "The municipal report describes an actual street-cleaning operation on17July2025 and calls the inhabited place the city of Bekalta. It supplies town identity rather than merely an administrative name.",
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "qualification": "Original response body after HTTP content decoding. Municipal identity/context only; no town boundary, precise point coordinate or prayer calculation input is certified."
+    },
+    {
+      "file": "point-base-display-reviews/bekalta-2026-09/municipal-geography.html",
+      "sha256": "c816d5f6f1929d6df59cd26571dbdee04ddc046cb0a3fe2d9a24a532e6d08e9d",
+      "url": "https://www.commune-bekalta.gov.tn/bekalta/ville/localisation",
+      "role": "official_locality_context",
+      "requiredText": [
+        "بلدية البقالطة",
+        "لولاية المنستير"
+      ],
+      "finding": "The municipality locates Bekalta in southeastern Monastir, south of Teboulba. Municipal geographic extent is contextual only; no boundary or iframe coordinates were extracted.",
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "qualification": "Original response body after HTTP content decoding. Municipal identity/context only; no town boundary, precise point coordinate or prayer calculation input is certified."
+    },
+    {
+      "file": "point-base-display-reviews/bekalta-2026-09/municipal-foundation.html",
+      "sha256": "e06e477a818ffab6fd713c777723f3962d7391c19e6c9bc209786e7273bfe8c9",
+      "url": "https://www.commune-bekalta.gov.tn/bekalta/municipalite/date-de-fondation",
+      "role": "official_inhabited_municipality_context",
+      "requiredText": [
+        "أحدثت بلدية البقالطة",
+        "عدد السكان"
+      ],
+      "finding": "The municipality describes foundation in1957 and resident/housing figures. The figures have no explicit contemporary census date here and are not treated as current population estimates.",
+      "artifactKind": "original_html_response",
+      "isOriginalHttpResponseBytes": true,
+      "qualification": "Original response body after HTTP content decoding. Municipal identity/context only; no town boundary, precise point coordinate or prayer calculation input is certified."
+    }
+  ],
+  "sourceRetrieval": [
+    {
+      "file": "point-base-display-reviews/bekalta-2026-09/retrieval-manifest.json",
+      "sha256": "ab72387fe428c386efb8d5c192f361bd552bbef23e7db21841fde7dba09914b0"
+    }
+  ],
+  "sourceHistory": {
+    "file": "point-base-display-reviews/bekalta-2026-09/osm-node-558814858-history.json",
+    "sha256": "4134e949f9de99ece99ab41d07d746402a857f4be999fc8252e362cc4834b937",
+    "url": "https://api.openstreetmap.org/api/0.6/node/558814858/history.json"
+  },
+  "sourceIdentityQualifications": [
+    "The municipal city description is not a survey or an official town polygon. It does not certify an OSM point coordinate, settlement extent or astronomical calculation input.",
+    "OSM place=village is retained despite municipal use of the word city; no kind recategorization is proposed.",
+    "OSM addr:postcode5009 differs from municipality contact postcode5090. This source-tag discrepancy is not exposed in the current picker row and does not establish a different locality. No tag correction was performed.",
+    "Only the existing name-card observation was read as historical supplementary data. Root owns fresh targeted phone checks; none was performed or presumed in this report.",
+    "The separate four-sector and cluster boundary reviews retain their existing scope/uncertainty. Their geometry was not regenerated, reimported or newly certified here.",
+    "No primary-page iframe coordinates or Google key were used. No stage, live edits, ledger, compiler execution, generation, test, APK or build."
+  ],
+  "geographySchemaReview": {
+    "file": "point-base-display-reviews/bekalta-2026-09/bekalta-town-geography-feasibility.json",
+    "sha256": "7f0cae969a1e12943098156ec03b241b6b45c7e225b30cdc3454faec717a1877"
+  },
+  "historicalFiniteSourceFacts": {
+    "file": "point-base-display-reviews/bekalta-2026-09/finite-source-group-facts.json",
+    "sha256": "bd9fe80fd69ff5ffaa13d79af62b8d4c088a72dd61ea70afcd8fc803d6e84d46"
+  },
+  "currentSourcePhaseFacts": {
+    "file": "point-base-display-reviews/bekalta-2026-09/current-catalog-unchanged-bekalta-closure.json",
+    "sha256": "932de9c4874908c32431e35827d60e4731bf069829ddd034a65a3cbe5dc6dde5"
+  },
+  "baselineMetadataSha256": "c5d895dd8e1c5cd35e99dcce1790a468f3438aa90658c55c11bcdb2a34eba4e9",
+  "baselineCurationSha256": "2d1c80ef35b9066249461c2824aad9ae277d06d718b7537c0c68f76e348e5f55",
+  "historicalSourceReportQualification": "Original source and finite reports retain their e457/163-rule epoch. Current raw/base/source-state/group fields are bound through the explicit unchanged-closure carry to c5/166 rules.",
+  "supplementaryPhoneReview": {
+    "reference": {
+      "file": "point-base-display-reviews/bekalta-2026-09/bekalta-beni-mhira-borma-phone-review-20260912.json",
+      "sha256": "f37127f65189ec3c112ac08b33950b740a30fee26abfb8a4a11eec15175a7ecc"
+    },
+    "qualification": "Only the two Bekalta public observations support this pair: the coordinate query opened a nearby bus-stop card; the name query opened the town card. No Google outline, boundary or point-coordinate certification is imported."
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7111930",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3259",
+        "delegationFr": "Bekalta",
+        "delegationAr": "البقالطة",
+        "sectorCode": "325953",
+        "sectorFr": "Baghdadi",
+        "sectorAr": "البغدادي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37977,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1805,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1802
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البغدادي",
+        "name:ar": "البغدادي",
+        "name:fr": "El Baghdadi",
+        "ref:tn:codegeo": "325953"
+      },
+      "sourceGeometrySha256": "7e6aaf5490e49c0a5eb15d7d168cf5c9659f7f0cce682e9671233f0e86e2f755",
+      "currentMetadata": {
+        "id": "osm:relation:7111930",
+        "sourceId": "isie-local-sectors-2023-baghdadi-review",
+        "name": "البغدادي",
+        "aliases": [
+          "Baghdadi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية البقالطة",
+        "contextAliases": [
+          "Bekalta",
+          "Délégation Bekalta",
+          "معتمدية البقالطة"
+        ],
+        "governorateId": 364,
+        "lat": 35.567693,
+        "lng": 11.010783,
+        "delegationId": 601,
+        "hasBoundary": true,
+        "bbox": [
+          10.989083,
+          35.552231,
+          11.03094,
+          35.583394
+        ],
+        "areaKm2": 8.50938915410889,
+        "pickerGroupId": "osm:relation:7111930",
+        "offset": 746624,
+        "length": 2092
+      },
+      "packedGeometrySha256": "14a057c97da11378123fef351e4af51f5978ec6e73b6913a9290a08b0e28429b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111931",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3259",
+        "delegationFr": "Bekalta",
+        "delegationAr": "البقالطة",
+        "sectorCode": "325952",
+        "sectorFr": "Bekalta Sud",
+        "sectorAr": "البقالطة الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37943,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1803,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1800
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البقالطة الجنوبية",
+        "name:ar": "البقالطة الجنوبية",
+        "name:fr": "Beklta Sud",
+        "ref:tn:codegeo": "325952"
+      },
+      "sourceGeometrySha256": "56d9a4df8e7909c36bc293bf9da3d9bd4a24fe7c51bb5d8823ce2180dfa356d6",
+      "currentMetadata": {
+        "id": "osm:relation:7111931",
+        "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+        "name": "البقالطة الجنوبية",
+        "aliases": [
+          "Bekalta Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية البقالطة",
+        "contextAliases": [
+          "Bekalta",
+          "Délégation Bekalta",
+          "معتمدية البقالطة"
+        ],
+        "governorateId": 364,
+        "lat": 35.596024,
+        "lng": 10.994798,
+        "delegationId": 601,
+        "hasBoundary": true,
+        "bbox": [
+          10.979602,
+          35.573589,
+          11.018024,
+          35.618857
+        ],
+        "areaKm2": 11.503088896724025,
+        "pickerGroupId": "osm:relation:7111931",
+        "offset": 748716,
+        "length": 1540
+      },
+      "packedGeometrySha256": "3e05a96b1d55481089a5cf62e1859c5006bb287c7c720c642c3d9813c613e6b0",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111932",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3259",
+        "delegationFr": "Bekalta",
+        "delegationAr": "البقالطة",
+        "sectorCode": "325954",
+        "sectorFr": "Bekalta est",
+        "sectorAr": "البقالطة الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 38011,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1806,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1803
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "البقالطة الشرقية",
+        "name:ar": "البقالطة الشرقية",
+        "name:fr": "Bekalta Est",
+        "ref:tn:codegeo": "325954"
+      },
+      "sourceGeometrySha256": "d6ccd77926f30798fe8b4636cf7d7be08faba97b2d9d5cd2ac41826653371fde",
+      "currentMetadata": {
+        "id": "osm:relation:7111932",
+        "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+        "name": "البقالطة الشرقية",
+        "aliases": [
+          "Bekalta est"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية البقالطة",
+        "contextAliases": [
+          "Bekalta",
+          "Délégation Bekalta",
+          "معتمدية البقالطة"
+        ],
+        "governorateId": 364,
+        "lat": 35.603396,
+        "lng": 11.028329,
+        "delegationId": 601,
+        "hasBoundary": true,
+        "bbox": [
+          11.005379,
+          35.575003,
+          11.047963,
+          35.63204
+        ],
+        "areaKm2": 14.027324867108453,
+        "pickerGroupId": "osm:relation:7111932",
+        "offset": 750256,
+        "length": 1756
+      },
+      "packedGeometrySha256": "81e155af4f0c947f93d73ecfa40583f8e7e942f6119a662c09e7f35ecc5fbc60",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7111933",
+      "officialIdentity": {
+        "governorateCode": "32",
+        "governorateFr": "Monastir",
+        "governorateAr": "المنستير",
+        "delegationCode": "3259",
+        "delegationFr": "Bekalta",
+        "delegationAr": "البقالطة",
+        "sectorCode": "325951",
+        "sectorFr": "Bekalta nord",
+        "sectorAr": "البقالطة الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 37909,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1801,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1798
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "طبلبة",
+        "name:ar": "طبلبة",
+        "name:fr": "Téboulba",
+        "ref:tn:codegeo": "325951"
+      },
+      "sourceGeometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee",
+      "currentMetadata": {
+        "id": "osm:relation:7111933",
+        "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+        "name": "البقالطة الشمالية",
+        "aliases": [
+          "Bekalta nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية البقالطة",
+        "contextAliases": [
+          "Bekalta",
+          "Délégation Bekalta",
+          "معتمدية البقالطة"
+        ],
+        "governorateId": 364,
+        "lat": 35.626695,
+        "lng": 11.010987,
+        "delegationId": 601,
+        "hasBoundary": true,
+        "bbox": [
+          10.973385,
+          35.613826,
+          11.036008,
+          35.63977
+        ],
+        "areaKm2": 9.297071014496208,
+        "pickerGroupId": "osm:relation:7111933",
+        "offset": 752012,
+        "length": 2028
+      },
+      "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+      "expectedCuration": null
+    }
+  ],
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:558814858",
+      "kind": "village",
+      "tags": {
+        "addr:city": "Bekalta",
+        "addr:governorate": "Monastir",
+        "addr:postcode": "5009",
+        "name": "البقالطة",
+        "name:ar": "البقالطة",
+        "name:en": "Bekalta",
+        "name:fr": "Bekalta",
+        "place": "village",
+        "population": "17850",
+        "wikidata": "Q1203138",
+        "wikimedia_commons": "Category:Bekalta",
+        "wikipedia": "en:Bekalta"
+      }
+    },
+    {
+      "id": "osm:relation:7154971",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Bekalta",
+        "boundary": "administrative",
+        "name": "معتمدية البقالطة",
+        "name:ar": "معتمدية البقالطة",
+        "name:fr": "Délégation Bekalta",
+        "ref:tn:codegeo": "3259",
+        "ref:tn:hasc_2": "TN.MS.BK",
+        "wikidata": "Q12243794"
+      }
+    }
+  ],
+  "contexts": {
+    "osm:relation:1434954": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-52",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Monastir",
+        "boundary": "administrative",
+        "long_name": "ولاية المنستير",
+        "long_name:ar": "ولاية المنستير",
+        "long_name:en": "Monastir Governorate",
+        "long_name:fr": "Gouvernorat de Monastir",
+        "long_name:it": "Governatorato di Monastir",
+        "name": "ولاية المنستير",
+        "name:ar": "ولاية المنستير",
+        "name:az": "Monastir (vilayət)",
+        "name:be": "Манасцір (вілает)",
+        "name:be-tarask": "Манастыр (вілает)",
+        "name:bg": "Монастир (област)",
+        "name:ca": "Governació de Monastir",
+        "name:ceb": "Gouvernorat de Monastir",
+        "name:cy": "Monastir (talaith)",
+        "name:de": "Al-Munastir",
+        "name:el": "Μοναστίρ (Κυβερνείο)",
+        "name:en": "Monastir",
+        "name:es": "Gobernación de Monastir",
+        "name:fa": "استان منستیر",
+        "name:fi": "Monastir (kuvernementti)",
+        "name:fr": "Gouvernorat Monastir",
+        "name:frr": "Monastir (Guwernement)",
+        "name:hr": "Monastir",
+        "name:id": "Kegubernuran Monastir",
+        "name:it": "Monastir",
+        "name:ja": "モナスティル県",
+        "name:ka": "მონასტირის ვილაიეთი",
+        "name:ko": "모나스티르주",
+        "name:ms": "Kawasan kegabenoran Monastir",
+        "name:nl": "Monastir (gouvernement)",
+        "name:no": "Monastir (guvernement)",
+        "name:pl": "Gubernatorstwo Monastyr",
+        "name:pt": "Monastir (província)",
+        "name:ro": "Guvernoratul Monastir",
+        "name:ru": "Монастир (вилайет)",
+        "name:sco": "Monastir Govrenorate",
+        "name:sh": "Monastir (vilajet)",
+        "name:sq": "Monastir",
+        "name:tr": "Munastır (vilayet)",
+        "name:uk": "Монастір (вілаєт)",
+        "name:ur": "ولایت منستیر",
+        "name:zh": "莫納斯提爾省",
+        "name:zu": "Monastir Governorate",
+        "population": "455590",
+        "ref:tn:codegeo": "32",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q318102",
+        "wikipedia": "ar:ولاية المنستير"
+      },
+      "sourceGeometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+    },
+    "osm:relation:7154971": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Bekalta",
+        "boundary": "administrative",
+        "name": "معتمدية البقالطة",
+        "name:ar": "معتمدية البقالطة",
+        "name:fr": "Délégation Bekalta",
+        "ref:tn:codegeo": "3259",
+        "ref:tn:hasc_2": "TN.MS.BK",
+        "wikidata": "Q12243794"
+      },
+      "sourceGeometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "onlyRawChange": {
+    "id": "osm:node:558814858",
+    "field": "pickerGroupId",
+    "before": "osm:node:558814858",
+    "after": "delegation:601"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:558814858"
+      ],
+      [
+        "delegation:601"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:601",
+        "osm:node:558814858"
+      ]
+    ]
+  },
+  "townPreservationExtension": {
+    "officialDelegationCodes": [
+      "3259"
+    ],
+    "sourceStates": [
+      {
+        "id": "osm:node:558814858",
+        "original": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "Bekalta",
+            "addr:governorate": "Monastir",
+            "addr:postcode": "5009",
+            "name": "البقالطة",
+            "name:ar": "البقالطة",
+            "name:en": "Bekalta",
+            "name:fr": "Bekalta",
+            "place": "village",
+            "population": "17850",
+            "wikidata": "Q1203138",
+            "wikimedia_commons": "Category:Bekalta",
+            "wikipedia": "en:Bekalta"
+          },
+          "sourceId": null,
+          "geometrySha256": "a22710784f96752df277c6a38151150e2ade7405df9a5d70950339f333e36ebc"
+        },
+        "effective": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "Bekalta",
+            "addr:governorate": "Monastir",
+            "addr:postcode": "5009",
+            "name": "البقالطة",
+            "name:ar": "البقالطة",
+            "name:en": "Bekalta",
+            "name:fr": "Bekalta",
+            "place": "village",
+            "population": "17850",
+            "wikidata": "Q1203138",
+            "wikimedia_commons": "Category:Bekalta",
+            "wikipedia": "en:Bekalta"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "a22710784f96752df277c6a38151150e2ade7405df9a5d70950339f333e36ebc"
+        }
+      },
+      {
+        "id": "osm:relation:1434954",
+        "original": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-52",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Monastir",
+            "boundary": "administrative",
+            "long_name": "ولاية المنستير",
+            "long_name:ar": "ولاية المنستير",
+            "long_name:en": "Monastir Governorate",
+            "long_name:fr": "Gouvernorat de Monastir",
+            "long_name:it": "Governatorato di Monastir",
+            "name": "ولاية المنستير",
+            "name:ar": "ولاية المنستير",
+            "name:az": "Monastir (vilayət)",
+            "name:be": "Манасцір (вілает)",
+            "name:be-tarask": "Манастыр (вілает)",
+            "name:bg": "Монастир (област)",
+            "name:ca": "Governació de Monastir",
+            "name:ceb": "Gouvernorat de Monastir",
+            "name:cy": "Monastir (talaith)",
+            "name:de": "Al-Munastir",
+            "name:el": "Μοναστίρ (Κυβερνείο)",
+            "name:en": "Monastir",
+            "name:es": "Gobernación de Monastir",
+            "name:fa": "استان منستیر",
+            "name:fi": "Monastir (kuvernementti)",
+            "name:fr": "Gouvernorat Monastir",
+            "name:frr": "Monastir (Guwernement)",
+            "name:hr": "Monastir",
+            "name:id": "Kegubernuran Monastir",
+            "name:it": "Monastir",
+            "name:ja": "モナスティル県",
+            "name:ka": "მონასტირის ვილაიეთი",
+            "name:ko": "모나스티르주",
+            "name:ms": "Kawasan kegabenoran Monastir",
+            "name:nl": "Monastir (gouvernement)",
+            "name:no": "Monastir (guvernement)",
+            "name:pl": "Gubernatorstwo Monastyr",
+            "name:pt": "Monastir (província)",
+            "name:ro": "Guvernoratul Monastir",
+            "name:ru": "Монастир (вилайет)",
+            "name:sco": "Monastir Govrenorate",
+            "name:sh": "Monastir (vilajet)",
+            "name:sq": "Monastir",
+            "name:tr": "Munastır (vilayet)",
+            "name:uk": "Монастір (вілаєт)",
+            "name:ur": "ولایت منستیر",
+            "name:zh": "莫納斯提爾省",
+            "name:zu": "Monastir Governorate",
+            "population": "455590",
+            "ref:tn:codegeo": "32",
+            "source:population": "INS TN 2004",
+            "wikidata": "Q318102",
+            "wikipedia": "ar:ولاية المنستير"
+          },
+          "sourceId": null,
+          "geometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+        },
+        "effective": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-52",
+            "admin_level": "4",
+            "alt_name:de": "Gouvernement Monastir",
+            "boundary": "administrative",
+            "long_name": "ولاية المنستير",
+            "long_name:ar": "ولاية المنستير",
+            "long_name:en": "Monastir Governorate",
+            "long_name:fr": "Gouvernorat de Monastir",
+            "long_name:it": "Governatorato di Monastir",
+            "name": "ولاية المنستير",
+            "name:ar": "ولاية المنستير",
+            "name:az": "Monastir (vilayət)",
+            "name:be": "Манасцір (вілает)",
+            "name:be-tarask": "Манастыр (вілает)",
+            "name:bg": "Монастир (област)",
+            "name:ca": "Governació de Monastir",
+            "name:ceb": "Gouvernorat de Monastir",
+            "name:cy": "Monastir (talaith)",
+            "name:de": "Al-Munastir",
+            "name:el": "Μοναστίρ (Κυβερνείο)",
+            "name:en": "Monastir",
+            "name:es": "Gobernación de Monastir",
+            "name:fa": "استان منستیر",
+            "name:fi": "Monastir (kuvernementti)",
+            "name:fr": "Gouvernorat Monastir",
+            "name:frr": "Monastir (Guwernement)",
+            "name:hr": "Monastir",
+            "name:id": "Kegubernuran Monastir",
+            "name:it": "Monastir",
+            "name:ja": "モナスティル県",
+            "name:ka": "მონასტირის ვილაიეთი",
+            "name:ko": "모나스티르주",
+            "name:ms": "Kawasan kegabenoran Monastir",
+            "name:nl": "Monastir (gouvernement)",
+            "name:no": "Monastir (guvernement)",
+            "name:pl": "Gubernatorstwo Monastyr",
+            "name:pt": "Monastir (província)",
+            "name:ro": "Guvernoratul Monastir",
+            "name:ru": "Монастир (вилайет)",
+            "name:sco": "Monastir Govrenorate",
+            "name:sh": "Monastir (vilajet)",
+            "name:sq": "Monastir",
+            "name:tr": "Munastır (vilayet)",
+            "name:uk": "Монастір (вілаєт)",
+            "name:ur": "ولایت منستیر",
+            "name:zh": "莫納斯提爾省",
+            "name:zu": "Monastir Governorate",
+            "population": "455590",
+            "ref:tn:codegeo": "32",
+            "source:population": "INS TN 2004",
+            "wikidata": "Q318102",
+            "wikipedia": "ar:ولاية المنستير"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "4183f2338eb1b18b4aaf09bd5e3f64f9139db570f48366826d575e432cc003d5"
+        }
+      },
+      {
+        "id": "osm:relation:7111930",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البغدادي",
+            "name:ar": "البغدادي",
+            "name:fr": "El Baghdadi",
+            "ref:tn:codegeo": "325953"
+          },
+          "sourceId": null,
+          "geometrySha256": "7e6aaf5490e49c0a5eb15d7d168cf5c9659f7f0cce682e9671233f0e86e2f755"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325953",
+            "name:ar": "البغدادي",
+            "name:fr": "Baghdadi"
+          },
+          "sourceId": "isie-local-sectors-2023-baghdadi-review",
+          "geometrySha256": "70b9eb83856d3bf95a434bc1b0b389ae3838609597a942286ce6268980fa4e49"
+        }
+      },
+      {
+        "id": "osm:relation:7111931",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الجنوبية",
+            "name:ar": "البقالطة الجنوبية",
+            "name:fr": "Beklta Sud",
+            "ref:tn:codegeo": "325952"
+          },
+          "sourceId": null,
+          "geometrySha256": "56d9a4df8e7909c36bc293bf9da3d9bd4a24fe7c51bb5d8823ce2180dfa356d6"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325952",
+            "name:ar": "البقالطة الجنوبية",
+            "name:fr": "Bekalta Sud"
+          },
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "geometrySha256": "6a739bf408f25fad5d65e42ec36ce92b4f4f751610f835d5753273ae986f2c43"
+        }
+      },
+      {
+        "id": "osm:relation:7111932",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الشرقية",
+            "name:ar": "البقالطة الشرقية",
+            "name:fr": "Bekalta Est",
+            "ref:tn:codegeo": "325954"
+          },
+          "sourceId": null,
+          "geometrySha256": "d6ccd77926f30798fe8b4636cf7d7be08faba97b2d9d5cd2ac41826653371fde"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325954",
+            "name:ar": "البقالطة الشرقية",
+            "name:fr": "Bekalta est"
+          },
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "geometrySha256": "ea11ae659d96bd68629131d6b5dd050531d152009dfd1a7e9098e251abe96e94"
+        }
+      },
+      {
+        "id": "osm:relation:7111933",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طبلبة",
+            "name:ar": "طبلبة",
+            "name:fr": "Téboulba",
+            "ref:tn:codegeo": "325951"
+          },
+          "sourceId": null,
+          "geometrySha256": "3be36fde1e6e7bde295cbb9475d3ff32aa8dbf1fbf37a89ab6010ae4b2d71eee"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "boundary": "administrative",
+            "admin_level": "6",
+            "ref:tn:codegeo": "325951",
+            "name:ar": "البقالطة الشمالية",
+            "name:fr": "Bekalta nord"
+          },
+          "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+          "geometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e"
+        }
+      },
+      {
+        "id": "osm:relation:7154971",
+        "original": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bekalta",
+            "boundary": "administrative",
+            "name": "معتمدية البقالطة",
+            "name:ar": "معتمدية البقالطة",
+            "name:fr": "Délégation Bekalta",
+            "ref:tn:codegeo": "3259",
+            "ref:tn:hasc_2": "TN.MS.BK",
+            "wikidata": "Q12243794"
+          },
+          "sourceId": null,
+          "geometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4"
+        },
+        "effective": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Bekalta",
+            "boundary": "administrative",
+            "name": "معتمدية البقالطة",
+            "name:ar": "معتمدية البقالطة",
+            "name:fr": "Délégation Bekalta",
+            "ref:tn:codegeo": "3259",
+            "ref:tn:hasc_2": "TN.MS.BK",
+            "wikidata": "Q12243794"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "73e6a8bc939a6a1bbe91ffce68a1083ae997640bbfea71fa6a11756b128d03d4"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1434954": null,
+      "osm:relation:7111930": null,
+      "osm:relation:7111931": null,
+      "osm:relation:7111932": null,
+      "osm:relation:7111933": null,
+      "osm:relation:7154971": null
+    },
+    "acceptedBoundaryReplacements": [
+      {
+        "id": "osm:relation:7111930",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-baghdadi-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/baghdadi-review-isie2023-sector.geojson",
+          "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111930",
+              "officialCode": "325953",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البغدادي",
+                "name:ar": "البغدادي",
+                "name:fr": "El Baghdadi",
+                "ref:tn:codegeo": "325953"
+              }
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/baghdadi-review-isie2023-decision.json",
+            "evidenceSha256": "a9c5b40970cb04f4ec1c92ef3429dfbf11a20396af183564162eb4883e172512"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111930",
+          "officialCode": "325953",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البغدادي",
+            "name:ar": "البغدادي",
+            "name:fr": "El Baghdadi",
+            "ref:tn:codegeo": "325953"
+          }
+        },
+        "application": {
+          "id": "osm:relation:7111930",
+          "action": "replace",
+          "officialCode": "325953",
+          "sourceId": "isie-local-sectors-2023-baghdadi-review"
+        },
+        "geojson": {
+          "file": "official/baghdadi-review-isie2023-sector.geojson",
+          "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a"
+        },
+        "featureSha256": "5ab1282285e8d02d45ec90cc25040fcc4c140ce09f32f174930eb812ae5c7f80"
+      },
+      {
+        "id": "osm:relation:7111931",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-bekalta-south-east-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111931",
+              "officialCode": "325952",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الجنوبية",
+                "name:ar": "البقالطة الجنوبية",
+                "name:fr": "Beklta Sud",
+                "ref:tn:codegeo": "325952"
+              }
+            },
+            {
+              "id": "osm:relation:7111932",
+              "officialCode": "325954",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الشرقية",
+                "name:ar": "البقالطة الشرقية",
+                "name:fr": "Bekalta Est",
+                "ref:tn:codegeo": "325954"
+              }
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/bekalta-south-east-review-isie2023-decisions.json",
+            "evidenceSha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111931",
+          "officialCode": "325952",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الجنوبية",
+            "name:ar": "البقالطة الجنوبية",
+            "name:fr": "Beklta Sud",
+            "ref:tn:codegeo": "325952"
+          }
+        },
+        "application": {
+          "id": "osm:relation:7111931",
+          "action": "replace",
+          "officialCode": "325952",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review"
+        },
+        "geojson": {
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5"
+        },
+        "featureSha256": "94567b2e53c594f7336a060c00d618b5bee866b8fab11386a886a48c3efbe5ee"
+      },
+      {
+        "id": "osm:relation:7111932",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-bekalta-south-east-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111931",
+              "officialCode": "325952",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الجنوبية",
+                "name:ar": "البقالطة الجنوبية",
+                "name:fr": "Beklta Sud",
+                "ref:tn:codegeo": "325952"
+              }
+            },
+            {
+              "id": "osm:relation:7111932",
+              "officialCode": "325954",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البقالطة الشرقية",
+                "name:ar": "البقالطة الشرقية",
+                "name:fr": "Bekalta Est",
+                "ref:tn:codegeo": "325954"
+              }
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/bekalta-south-east-review-isie2023-decisions.json",
+            "evidenceSha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111932",
+          "officialCode": "325954",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البقالطة الشرقية",
+            "name:ar": "البقالطة الشرقية",
+            "name:fr": "Bekalta Est",
+            "ref:tn:codegeo": "325954"
+          }
+        },
+        "application": {
+          "id": "osm:relation:7111932",
+          "action": "replace",
+          "officialCode": "325954",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review"
+        },
+        "geojson": {
+          "file": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+          "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5"
+        },
+        "featureSha256": "f3f3e1e05570e560b32a897385050ec76d53f5d58a225efc9bd595af130fe3ff"
+      },
+      {
+        "id": "osm:relation:7111933",
+        "sourceRecord": {
+          "id": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+          "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+          "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+          "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+          "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+          "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+          "records": [
+            {
+              "id": "osm:relation:7111933",
+              "officialCode": "325951",
+              "action": "replace",
+              "expectedOriginalTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "طبلبة",
+                "name:ar": "طبلبة",
+                "name:fr": "Téboulba",
+                "ref:tn:codegeo": "325951"
+              },
+              "scopeKind": "exhaustive_electoral_parts"
+            }
+          ],
+          "review": {
+            "reviewedDate": "2026-09-07",
+            "geometryEdition": 2023,
+            "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+            "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+            "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+            "evidenceFile": "official/bekalta-north-aggregate-independent-review.json",
+            "evidenceSha256": "9ce783d5e415631eed80f536f80d3ce64ecfe51bfa109b54eede5bdd7ff906aa"
+          }
+        },
+        "record": {
+          "id": "osm:relation:7111933",
+          "officialCode": "325951",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "طبلبة",
+            "name:ar": "طبلبة",
+            "name:fr": "Téboulba",
+            "ref:tn:codegeo": "325951"
+          },
+          "scopeKind": "exhaustive_electoral_parts"
+        },
+        "application": {
+          "id": "osm:relation:7111933",
+          "action": "replace",
+          "officialCode": "325951",
+          "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review"
+        },
+        "geojson": {
+          "file": "official/bekalta-north-aggregate-review-isie2023-sector.geojson",
+          "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+        },
+        "featureSha256": "e2a0fc6211be1eb9d86589594993f6038d7d4a0e7826a56b398482af690ed8ea"
+      }
+    ],
+    "reviewedBoundaries": {
+      "file": "reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1434954": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7111930": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111931": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111932": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7111933": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7154971": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      }
+    },
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:558814858",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:558814858",
+          "sourceId": "osm",
+          "name": "البقالطة",
+          "aliases": [
+            "Bekalta"
+          ],
+          "kind": "village",
+          "parentName": "البقالطة الشمالية",
+          "contextAliases": [
+            "Bekalta",
+            "Bekalta nord",
+            "Délégation Bekalta",
+            "البقالطة الشمالية",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.6172948,
+          "lng": 10.9891336,
+          "delegationId": 601,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:558814858"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7111930",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111930",
+          "sourceId": "isie-local-sectors-2023-baghdadi-review",
+          "name": "البغدادي",
+          "aliases": [
+            "Baghdadi"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.567693,
+          "lng": 11.010783,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.989083,
+            35.552231,
+            11.03094,
+            35.583394
+          ],
+          "areaKm2": 8.50938915410889,
+          "pickerGroupId": "osm:relation:7111930",
+          "offset": 746624,
+          "length": 2092
+        },
+        "packedGeometrySha256": "14a057c97da11378123fef351e4af51f5978ec6e73b6913a9290a08b0e28429b"
+      },
+      {
+        "id": "osm:relation:7111931",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111931",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "name": "البقالطة الجنوبية",
+          "aliases": [
+            "Bekalta Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.596024,
+          "lng": 10.994798,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.979602,
+            35.573589,
+            11.018024,
+            35.618857
+          ],
+          "areaKm2": 11.503088896724025,
+          "pickerGroupId": "osm:relation:7111931",
+          "offset": 748716,
+          "length": 1540
+        },
+        "packedGeometrySha256": "3e05a96b1d55481089a5cf62e1859c5006bb287c7c720c642c3d9813c613e6b0"
+      },
+      {
+        "id": "osm:relation:7111932",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111932",
+          "sourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+          "name": "البقالطة الشرقية",
+          "aliases": [
+            "Bekalta est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.603396,
+          "lng": 11.028329,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            11.005379,
+            35.575003,
+            11.047963,
+            35.63204
+          ],
+          "areaKm2": 14.027324867108453,
+          "pickerGroupId": "osm:relation:7111932",
+          "offset": 750256,
+          "length": 1756
+        },
+        "packedGeometrySha256": "81e155af4f0c947f93d73ecfa40583f8e7e942f6119a662c09e7f35ecc5fbc60"
+      },
+      {
+        "id": "osm:relation:7111933",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7111933",
+          "sourceId": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+          "name": "البقالطة الشمالية",
+          "aliases": [
+            "Bekalta nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية البقالطة",
+          "contextAliases": [
+            "Bekalta",
+            "Délégation Bekalta",
+            "معتمدية البقالطة"
+          ],
+          "governorateId": 364,
+          "lat": 35.626695,
+          "lng": 11.010987,
+          "delegationId": 601,
+          "hasBoundary": true,
+          "bbox": [
+            10.973385,
+            35.613826,
+            11.036008,
+            35.63977
+          ],
+          "areaKm2": 9.297071014496208,
+          "pickerGroupId": "osm:relation:7111933",
+          "offset": 752012,
+          "length": 2028
+        },
+        "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0"
+      }
+    ],
+    "expectedBeforeGroups": {
+      "osm:node:558814858": [
+        "osm:node:558814858"
+      ],
+      "osm:relation:7111930": [
+        "osm:relation:7111930"
+      ],
+      "osm:relation:7111931": [
+        "osm:relation:7111931"
+      ],
+      "osm:relation:7111932": [
+        "osm:relation:7111932"
+      ],
+      "osm:relation:7111933": [
+        "osm:relation:7111933"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7111930": [
+        "osm:relation:7111930"
+      ],
+      "osm:relation:7111931": [
+        "osm:relation:7111931"
+      ],
+      "osm:relation:7111932": [
+        "osm:relation:7111932"
+      ],
+      "osm:relation:7111933": [
+        "osm:relation:7111933"
+      ],
+      "delegation:601": [
+        "osm:node:558814858"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "schemaVersion": 1,
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:558814858",
+        "osm:relation:7154971"
+      ],
+      "effective": [
+        "osm:node:558814858",
+        "osm:relation:7154971"
+      ]
+    }
+  },
+  "displayPhaseCoordinateChanges": [],
+  "coordinatePolicy": "Both the original town point and existing prayer reference601 retain their exact coordinates.",
+  "scope": "Only the town point joins the existing manual town choice. The four official sectors remain distinct; all raw records, names, contexts, geometry and nearest prayer defaults remain unchanged.",
+  "sourcePhaseQualification": "Original North sector325951 is labeled Teboulba in the cache. Its accepted ISIE replacement retains ID/code and replaces labels/geometry with Bekalta North. This historical mismatch is not town-node identity evidence.",
+  "boundaryQualification": "Accepted 2023 vector/electoral aggregate lineage and its existing registration-gap/conflict qualifications are retained; no new boundary precision or Google extent is claimed.",
+  "preservedBoundaryScopeAndUncertainty": [
+    {
+      "id": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-north-aggregate-independent-review.json",
+        "evidenceSha256": "9ce783d5e415631eed80f536f80d3ce64ecfe51bfa109b54eede5bdd7ff906aa"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-bekalta-south-east-review",
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-south-east-review-isie2023-decisions.json",
+        "evidenceSha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-baghdadi-review",
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/baghdadi-review-isie2023-decision.json",
+        "evidenceSha256": "a9c5b40970cb04f4ec1c92ef3429dfbf11a20396af183564162eb4883e172512"
+      }
+    }
+  ]
+}

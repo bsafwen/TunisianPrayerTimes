@@ -1,0 +1,1597 @@
+{
+  "status": "SOURCE_AND_FINITE_SCOPE_SUPPORT_EXACT_INSTITUTIONAL_GROUNDS_EXCLUSION",
+  "baselineMetadataSha256": "c9e5b0d591a8f118660b0e653ef1c9afcb40bb0758c519828a2a77e62cde72a2",
+  "inputs": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-current-v2.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-current-v2.json",
+      "sha256": "fc42ba5d0c11c6c7c8d10678639735c4f89b280c41d0f2d955c7c4c2a982e876",
+      "bytes": 1559
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-history-v2.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-history-v2.json",
+      "sha256": "8e6db297a52670ae05f048eb36b8e33aa95570dced97a5794913513caad646ad",
+      "bytes": 9578
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-full-v2.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-full-v2.json",
+      "sha256": "482809d3b515ec135a679e45ba9602bd99d5cd977b30b20e409af9175cbbdf4d",
+      "bytes": 16283
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "c9e5b0d591a8f118660b0e653ef1c9afcb40bb0758c519828a2a77e62cde72a2",
+      "bytes": 1854436
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "bb19542937128c4167e8f49fafb5d15b42c103dfacb827a13016b027b2326f98",
+      "bytes": 5537724
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "60a8ac0f8df97b6e16700517e505617b3fbbf0239b4f2d35f5ae26575905e3f4",
+      "bytes": 374087
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "fb18cff7e851c69220869c3324e2351b90f50e6e682726de4d9d784af4106cd7",
+      "bytes": 555357
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421",
+      "bytes": 90241
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193",
+      "bytes": 113816
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "bd042500dafeee734e3e94596c227f43053aac8b63194f0235d0b01c0905e65d",
+      "bytes": 1019126
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "1b560320e7a67d88911ecf64fa26e19345d4e5655d0bfd405da27c617f8b1c21",
+      "bytes": 11777
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\megrine-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\megrine-isie2023-sectors.geojson",
+      "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "bytes": 380383
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\identity-review-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\identity-review-isie2023-sectors.geojson",
+      "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "bytes": 495834
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\next-identity-review-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\next-identity-review-isie2023-sectors.geojson",
+      "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02",
+      "bytes": 133496
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\neighbor-review-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\neighbor-review-isie2023-sectors.geojson",
+      "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+      "bytes": 938527
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+      "bytes": 46356
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-neighbors-review-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-neighbors-review-isie2023-sectors.geojson",
+      "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+      "bytes": 69449
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-south-east-review-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-south-east-review-isie2023-sectors.geojson",
+      "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+      "bytes": 100007
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\baghdadi-review-isie2023-sector.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\baghdadi-review-isie2023-sector.geojson",
+      "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a",
+      "bytes": 61470
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\hiboun-review-isie2023-sector.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\hiboun-review-isie2023-sector.geojson",
+      "sha256": "b1f3b459d642e6be62ab60f27fed66068df3222fbc726e970bfed3276c5b642c",
+      "bytes": 90460
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-sector-candidate-readiness.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "bytes": 109094
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bizerte-three-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bizerte-three-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+      "bytes": 118572
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-seven-native-source-candidates.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-seven-native-source-candidates.geojson",
+      "sha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "bytes": 164552
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-joufia-native-source-candidate.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-joufia-native-source-candidate.geojson",
+      "sha256": "395e9bb9803d0ae544977aad8178e0b06e74de7ff013d0c3c5346b4078f00497",
+      "bytes": 26774
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-keblia-native-source-candidate.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-keblia-native-source-candidate.geojson",
+      "sha256": "760dd75369b87109b81609ec18cf77c171486aed45dea79ea04d34964d793cf5",
+      "bytes": 21856
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\carthage-isie2023-six-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\carthage-isie2023-six-sectors.geojson",
+      "sha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "bytes": 124910
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\le-kram-isie2023-six-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\le-kram-isie2023-six-sectors.geojson",
+      "sha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "bytes": 59324
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\la-goulette-isie2023-three-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\la-goulette-isie2023-three-sectors.geojson",
+      "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+      "bytes": 54603
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\beni-hassan-isie2023-five-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\beni-hassan-isie2023-five-sectors.geojson",
+      "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+      "bytes": 203768
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\saouaf-isie2023-five-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\saouaf-isie2023-five-sectors.geojson",
+      "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+      "bytes": 192484
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\zeramdine-south-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\zeramdine-south-isie2023-sectors.geojson",
+      "sha256": "7af1bc235260fcdbaf61332f2317a6ae9911fed1982746cdb1a78fd6fd1328c1",
+      "bytes": 58069
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\nadhour-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\nadhour-isie2023-sectors.geojson",
+      "sha256": "5c7f6a16500866daf3a2937eb92e1b3be6798e1c34d2dcb6ef6c7bb5d2f8024e",
+      "bytes": 73315
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\jammel-isie2023-two-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\jammel-isie2023-two-sectors.geojson",
+      "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2",
+      "bytes": 50093
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\nadhour-souar-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\nadhour-souar-isie2023-sectors.geojson",
+      "sha256": "8c2fda9b927cb8e0c5761df51adede563a96d3a2c683649586ddf181fa32582f",
+      "bytes": 52001
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\zeramdine-north-isie2023-sectors.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\zeramdine-north-isie2023-sectors.geojson",
+      "sha256": "8f3f52ecf69ea9df4136a53e83241e57775399c1d5c805ffea16862372812361",
+      "bytes": 32667
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\soliman-thirteen-native-20260912\\soliman-thirteen-whole-source-boundaries.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\soliman-thirteen-native-20260912\\soliman-thirteen-whole-source-boundaries.geojson",
+      "sha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "bytes": 704024
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\arima-joufia-receivers-20260912\\arima-joufia-whole-source-boundaries.geojson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\arima-joufia-receivers-20260912\\arima-joufia-whole-source-boundaries.geojson",
+      "sha256": "5bbe3bf118e99adc441209092bb9a805f2efa67977c0d746cbf3ff95c340b5c0",
+      "bytes": 139963
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\presidency-carthage-palace-original.html": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\presidency-carthage-palace-original.html",
+      "sha256": "8624f73df4a2f639d68a1c6bc59c3b4f74aba30e301c2be97a08d0dca20556ac",
+      "bytes": 58079
+    }
+  },
+  "target": {
+    "id": "osm:way:100982052",
+    "currentRaw": {
+      "id": "osm:way:100982052",
+      "sourceId": "osm",
+      "name": "القصر الرئاسي",
+      "aliases": [
+        "Palais présidentiel",
+        "Presidential Palace Grounds"
+      ],
+      "kind": "residential",
+      "parentName": "قرطاج",
+      "contextAliases": [
+        "Cartagine",
+        "Cartago",
+        "Carthage",
+        "Delegación de Cartago",
+        "Delegation Karthago",
+        "Kartagina",
+        "Karthago",
+        "Καρχηδόνα",
+        "Καρχηδών",
+        "Картаген",
+        "Карфаген",
+        "Կարթագեն",
+        "Կարթագէն",
+        "قرطاج",
+        "قرطاجنہ",
+        "معتمدية قرطاج",
+        "کارتاژ",
+        "ܩܪܬܐܓܘ"
+      ],
+      "governorateId": 342,
+      "lat": 36.856645,
+      "lng": 10.33743,
+      "delegationId": 387,
+      "hasBoundary": true,
+      "bbox": [
+        10.332048,
+        36.854332,
+        10.340772,
+        36.85894
+      ],
+      "areaKm2": 0.1698150052475701,
+      "pickerGroupId": "osm:way:100982052",
+      "offset": 5240308,
+      "length": 732
+    },
+    "sourceCacheRecord": {
+      "id": "osm:way:100982052",
+      "kind": "residential",
+      "tags": {
+        "landuse": "residential",
+        "name": "القصر الرئاسي",
+        "name:ar": "القصر الرئاسي",
+        "name:en": "Presidential Palace Grounds",
+        "name:fr": "Palais présidentiel"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.3320478,
+                36.8557717
+              ],
+              [
+                10.3326429,
+                36.8554897
+              ],
+              [
+                10.3328943,
+                36.8554217
+              ],
+              [
+                10.3331264,
+                36.8556891
+              ],
+              [
+                10.3332866,
+                36.8556759
+              ],
+              [
+                10.3345474,
+                36.8553989
+              ],
+              [
+                10.3347835,
+                36.8553051
+              ],
+              [
+                10.3352311,
+                36.8559326
+              ],
+              [
+                10.3360411,
+                36.8558422
+              ],
+              [
+                10.3361925,
+                36.8557248
+              ],
+              [
+                10.3363095,
+                36.8556196
+              ],
+              [
+                10.3361459,
+                36.8552503
+              ],
+              [
+                10.3364941,
+                36.8550095
+              ],
+              [
+                10.3363089,
+                36.8547474
+              ],
+              [
+                10.3368799,
+                36.8544403
+              ],
+              [
+                10.3369074,
+                36.8543317
+              ],
+              [
+                10.3372625,
+                36.8547142
+              ],
+              [
+                10.338349,
+                36.8559289
+              ],
+              [
+                10.3389993,
+                36.8556151
+              ],
+              [
+                10.339073,
+                36.8556208
+              ],
+              [
+                10.3391277,
+                36.8556532
+              ],
+              [
+                10.3391797,
+                36.8556263
+              ],
+              [
+                10.3401502,
+                36.8568005
+              ],
+              [
+                10.3402041,
+                36.8568832
+              ],
+              [
+                10.3402144,
+                36.8569623
+              ],
+              [
+                10.3401906,
+                36.8570441
+              ],
+              [
+                10.3401241,
+                36.8571544
+              ],
+              [
+                10.3401059,
+                36.857239
+              ],
+              [
+                10.3401145,
+                36.8573333
+              ],
+              [
+                10.3401608,
+                36.8574194
+              ],
+              [
+                10.3407718,
+                36.858164
+              ],
+              [
+                10.3402768,
+                36.8584137
+              ],
+              [
+                10.3400308,
+                36.8585362
+              ],
+              [
+                10.3399806,
+                36.858563
+              ],
+              [
+                10.3400184,
+                36.8586252
+              ],
+              [
+                10.3399304,
+                36.8586676
+              ],
+              [
+                10.3398836,
+                36.8586902
+              ],
+              [
+                10.3398122,
+                36.8587663
+              ],
+              [
+                10.3397266,
+                36.8587986
+              ],
+              [
+                10.3394804,
+                36.8588952
+              ],
+              [
+                10.3393723,
+                36.8582392
+              ],
+              [
+                10.3393218,
+                36.8581661
+              ],
+              [
+                10.3387387,
+                36.858439
+              ],
+              [
+                10.3385239,
+                36.858139
+              ],
+              [
+                10.3369659,
+                36.8589167
+              ],
+              [
+                10.3368567,
+                36.85894
+              ],
+              [
+                10.3368512,
+                36.8588635
+              ],
+              [
+                10.3367757,
+                36.8585751
+              ],
+              [
+                10.336747,
+                36.8582342
+              ],
+              [
+                10.3367078,
+                36.8582359
+              ],
+              [
+                10.3367003,
+                36.8581234
+              ],
+              [
+                10.3367424,
+                36.8581216
+              ],
+              [
+                10.3367226,
+                36.8578241
+              ],
+              [
+                10.3367087,
+                36.8576148
+              ],
+              [
+                10.3367547,
+                36.8575215
+              ],
+              [
+                10.336741,
+                36.8574857
+              ],
+              [
+                10.336676,
+                36.8573311
+              ],
+              [
+                10.3366747,
+                36.8572594
+              ],
+              [
+                10.3364934,
+                36.8571739
+              ],
+              [
+                10.3363541,
+                36.8567485
+              ],
+              [
+                10.3362037,
+                36.8568186
+              ],
+              [
+                10.3358955,
+                36.856962
+              ],
+              [
+                10.3358337,
+                36.856872
+              ],
+              [
+                10.3355425,
+                36.8570105
+              ],
+              [
+                10.3355644,
+                36.8570322
+              ],
+              [
+                10.3352113,
+                36.8571953
+              ],
+              [
+                10.3348554,
+                36.856669
+              ],
+              [
+                10.3345659,
+                36.8562409
+              ],
+              [
+                10.3344483,
+                36.8562813
+              ],
+              [
+                10.3339663,
+                36.8565045
+              ],
+              [
+                10.3343181,
+                36.8570159
+              ],
+              [
+                10.3346956,
+                36.857509
+              ],
+              [
+                10.3336894,
+                36.8579918
+              ],
+              [
+                10.3331392,
+                36.8572275
+              ],
+              [
+                10.333202,
+                36.8571825
+              ],
+              [
+                10.3332454,
+                36.8571314
+              ],
+              [
+                10.3332749,
+                36.8570694
+              ],
+              [
+                10.3332911,
+                36.8570115
+              ],
+              [
+                10.3332926,
+                36.8569465
+              ],
+              [
+                10.3332805,
+                36.8568595
+              ],
+              [
+                10.3332645,
+                36.856836
+              ],
+              [
+                10.3331686,
+                36.856708
+              ],
+              [
+                10.3331475,
+                36.8566825
+              ],
+              [
+                10.3330525,
+                36.8566205
+              ],
+              [
+                10.3329422,
+                36.8565867
+              ],
+              [
+                10.332838,
+                36.8565756
+              ],
+              [
+                10.3327461,
+                36.8565827
+              ],
+              [
+                10.3326776,
+                36.8566155
+              ],
+              [
+                10.3322226,
+                36.8560059
+              ],
+              [
+                10.3320478,
+                36.8557717
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    "sourceGeometrySha256": "ff1ecf1ff7e489c1ddd08f3b31a3a9e3dd176b116662a333f4ecb04e7ae1b340",
+    "packedGeometrySha256": "eb9d39a9d4fab54a5a05079db552c29c0449855eaac47cc9e580623538baedc8",
+    "completeCurrentGroup": [
+      "osm:way:100982052"
+    ],
+    "sourceAreaKm2Approx": 0.16980203463132332
+  },
+  "authenticCurrentAndHistory": {
+    "currentResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-current-v2.json",
+      "sha256": "fc42ba5d0c11c6c7c8d10678639735c4f89b280c41d0f2d955c7c4c2a982e876",
+      "bytes": 1559
+    },
+    "fullResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-full-v2.json",
+      "sha256": "482809d3b515ec135a679e45ba9602bd99d5cd977b30b20e409af9175cbbdf4d",
+      "bytes": 16283
+    },
+    "historyResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\osm-way-100982052-history-v2.json",
+      "sha256": "8e6db297a52670ae05f048eb36b8e33aa95570dced97a5794913513caad646ad",
+      "bytes": 9578
+    },
+    "currentVersion": 8,
+    "currentTimestamp": "2023-03-18T11:06:05Z",
+    "currentChangeset": 133818229,
+    "fullCurrentWayElementEqualsCurrentAndLatestHistory": true,
+    "fullTagsEqualFreshOriginalPbfTags": true,
+    "completeOuterRingNodeCount": 90,
+    "distinctNodes": 89,
+    "holes": 0,
+    "cacheRingMatchesOriginalFullTopologyUpTo": {
+      "orientation": "reverse",
+      "rotationIndex": 49
+    },
+    "noNewEdgesOrCoordinates": true,
+    "historyVersions": [
+      {
+        "version": 1,
+        "timestamp": "2011-02-22T14:08:03Z",
+        "changeset": 7363708,
+        "tags": {
+          "landuse": "residential",
+          "name": "Presidential Palace Grounds"
+        },
+        "nodeCount": 61
+      },
+      {
+        "version": 2,
+        "timestamp": "2011-09-04T14:29:31Z",
+        "changeset": 9209445,
+        "tags": {
+          "landuse": "residential",
+          "name": "القصر الرئاسي",
+          "name:ar": "القصر الرئاسي",
+          "name:en": "Presidential Palace Grounds",
+          "name:fr": "Palais présidentiel"
+        },
+        "nodeCount": 61
+      },
+      {
+        "version": 3,
+        "timestamp": "2012-02-22T01:06:43Z",
+        "changeset": 10755424,
+        "tags": {
+          "landuse": "residential",
+          "name": "القصر الرئاسي",
+          "name:ar": "القصر الرئاسي",
+          "name:en": "Presidential Palace Grounds",
+          "name:fr": "Palais présidentiel"
+        },
+        "nodeCount": 66
+      },
+      {
+        "version": 4,
+        "timestamp": "2012-03-10T00:51:50Z",
+        "changeset": 10927421,
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "القصر الرئاسي",
+          "name:ar": "القصر الرئاسي",
+          "name:en": "Presidential Palace Grounds",
+          "name:fr": "Palais présidentiel"
+        },
+        "nodeCount": 88
+      },
+      {
+        "version": 5,
+        "timestamp": "2015-07-31T21:43:43Z",
+        "changeset": 33020064,
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "القصر الرئاسي",
+          "name:ar": "القصر الرئاسي",
+          "name:en": "Presidential Palace Grounds",
+          "name:fr": "Palais présidentiel"
+        },
+        "nodeCount": 89
+      },
+      {
+        "version": 6,
+        "timestamp": "2015-07-31T21:44:08Z",
+        "changeset": 33020072,
+        "tags": {
+          "landuse": "residential",
+          "name": "القصر الرئاسي",
+          "name:ar": "القصر الرئاسي",
+          "name:en": "Presidential Palace Grounds",
+          "name:fr": "Palais présidentiel"
+        },
+        "nodeCount": 89
+      },
+      {
+        "version": 7,
+        "timestamp": "2018-12-29T12:00:38Z",
+        "changeset": 65860697,
+        "tags": {
+          "landuse": "residential",
+          "name": "القصر الرئاسي",
+          "name:ar": "القصر الرئاسي",
+          "name:en": "Presidential Palace Grounds",
+          "name:fr": "Palais présidentiel"
+        },
+        "nodeCount": 90
+      },
+      {
+        "version": 8,
+        "timestamp": "2023-03-18T11:06:05Z",
+        "changeset": 133818229,
+        "tags": {
+          "landuse": "residential",
+          "name": "القصر الرئاسي",
+          "name:ar": "القصر الرئاسي",
+          "name:en": "Presidential Palace Grounds",
+          "name:fr": "Palais présidentiel"
+        },
+        "nodeCount": 90
+      }
+    ],
+    "qualification": "All eight authentic way versions inspected. Historical node coordinates were not refetched for every date; exact current full topology and frozen PBF geometry were compared."
+  },
+  "primarySource": {
+    "originalResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\presidency-carthage-palace-original.html",
+      "sha256": "8624f73df4a2f639d68a1c6bc59c3b4f74aba30e301c2be97a08d0dca20556ac",
+      "bytes": 58079
+    },
+    "url": "https://www.carthage.tn/ar/%D9%82%D8%B5%D8%B1_%D9%82%D8%B1%D8%B7%D8%A7%D8%AC",
+    "derivedText": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\presidency-carthage-palace-derived-text.txt",
+      "sha256": "c6757afd5fcbde500f7c85bee763a0f4a36b2c72e835cacf12b9d494d335a323",
+      "bytes": 2578
+    },
+    "derivation": "HTMLParser text nodes excluding script/style, joined by LF, UTF-8. This is explicitly derived text, not original HTTP bytes.",
+    "meaning": "The Presidency identifies Carthage Palace as the official presidential workplace and residence, overlooking the coast of Carthage. Institutional function and geographic context; no exact cadastral polygon is published by this text.",
+    "tlsQualification": "Original verified TLS attempt failed due certificate-chain validation. Exact public HTML was then archived using an explicit unverified read-only retry; the official-page content was independently available in the web reader."
+  },
+  "containment": {
+    "originalSourceWholeFootprintContainers": [
+      {
+        "id": "osm:relation:7116454",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "قرطاج الشاطئ",
+          "name:ar": "قرطاج الشاطئ",
+          "name:es": "Cartago Playa",
+          "name:fr": "Carthage Plage",
+          "ref:tn:codegeo": "115154"
+        },
+        "sourceGeometrySha256": "44aca51b42a1d6ea828af4488298c36eaecffd2b7768c725a97240f3e8a97090",
+        "containsWholeTargetFootprint": true
+      },
+      {
+        "id": "osm:relation:4135055",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "long_name": "معتمدية قرطاج",
+          "long_name:ar": "معتمدية قرطاج",
+          "long_name:de": "Delegation Karthago",
+          "long_name:es": "Delegación de Cartago",
+          "name": "قرطاج",
+          "name:ar": "قرطاج",
+          "name:arc": "ܩܪܬܐܓܘ",
+          "name:azb": "کارتاژ",
+          "name:be": "Карфаген",
+          "name:be-tarask": "Картаген",
+          "name:de": "Karthago",
+          "name:el": "Καρχηδόνα",
+          "name:en": "Carthage",
+          "name:es": "Cartago",
+          "name:fr": "Carthage",
+          "name:grc": "Καρχηδών",
+          "name:hy": "Կարթագեն",
+          "name:hyw": "Կարթագէն",
+          "name:it": "Cartagine",
+          "name:pl": "Kartagina",
+          "name:ru": "Карфаген",
+          "name:skr": "قرطاجنہ",
+          "name:syc": "ܩܪܬܐܓܘ",
+          "name:uk": "Карфаген",
+          "name:ur": "قرطاجنہ",
+          "official_name": "معتمدية قرطاج",
+          "official_name:ar": "معتمدية قرطاج",
+          "official_name:de": "Delegation Karthago",
+          "official_name:es": "Delegación de Cartago",
+          "ref:tn:codegeo": "1151",
+          "ref:tn:hasc_2": "TN.TU.CA",
+          "wikidata": "Q2940578",
+          "wikipedia": "ar:معتمدية قرطاج"
+        },
+        "sourceGeometrySha256": "79307ac42f49595240f7a235dd18e52597a3710e95efd5c47fe26cf2cfa603fe",
+        "containsWholeTargetFootprint": true
+      },
+      {
+        "id": "osm:relation:1435835",
+        "sourceId": "osm",
+        "tags": {
+          "ISO3166-2": "TN-11",
+          "admin_level": "4",
+          "alt_name:de": "Gouvernement Tunis",
+          "alt_name:ko": "튀니스주",
+          "alt_name:ru": "Тунис (вилайет)",
+          "boundary": "administrative",
+          "long_name:ar": "ولاية تونس",
+          "long_name:en": "Tunis Governorate",
+          "long_name:fr": "Gouvernorat de Tunis",
+          "long_name:it": "Governatorato di Tunisi",
+          "name": "ولاية تونس",
+          "name:ar": "ولاية تونس",
+          "name:be": "Туніс (вілает)",
+          "name:be-tarask": "Туніс (вілает)",
+          "name:bg": "Тунис (област)",
+          "name:ca": "Governació de Tunis",
+          "name:ceb": "Gouvernorat de Tunis",
+          "name:cy": "Tiwnis (talaith)",
+          "name:de": "Tunis",
+          "name:en": "Tunis",
+          "name:es": "Gobernación de Túnez",
+          "name:fa": "استان تونس",
+          "name:fr": "Gouvernorat Tunis",
+          "name:id": "Kegubernuran Tunis",
+          "name:it": "Tunisi",
+          "name:ja": "チュニス県",
+          "name:ko": "튀니스",
+          "name:ms": "Kawasan kegabenoran Tunis",
+          "name:nl": "Tunis (gouvernement)",
+          "name:no": "Tunis (guvernement)",
+          "name:pl": "Gubernatorstwo Tunis",
+          "name:pt": "Túnis (província)",
+          "name:ro": "Guvernoratul Tunis",
+          "name:ru": "Тунис",
+          "name:sco": "Tunis Govrenorate",
+          "name:sh": "Tunis (vilajet)",
+          "name:sv": "Tunis (guvernement)",
+          "name:tr": "Tunus ili",
+          "name:uk": "Туніс (вілаєт)",
+          "name:ur": "ولایت تونس",
+          "name:zh": "突尼斯省",
+          "name:zu": "Tunis Governorate",
+          "population": "983861",
+          "ref:tn:codegeo": "11",
+          "source:population": "INS TN 2004",
+          "wikidata": "Q328109",
+          "wikipedia": "ar:ولاية تونس"
+        },
+        "sourceGeometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468",
+        "containsWholeTargetFootprint": true
+      },
+      {
+        "id": "osm:relation:192757",
+        "sourceId": "osm",
+        "tags": {
+          "ISO3166-1": "TN",
+          "ISO3166-1:alpha2": "TN",
+          "ISO3166-1:alpha3": "TUN",
+          "ISO3166-1:numeric": "788",
+          "admin_level": "2",
+          "alt_name:ur": "تیونس",
+          "alt_name:vi": "Tuy-ni-di",
+          "border_type": "nation",
+          "boundary": "administrative",
+          "default_language": "ar",
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg",
+          "name": "تونس",
+          "name:ace": "Tunisia",
+          "name:af": "Tunisië",
+          "name:als": "Tunesien",
+          "name:am": "ቱኒዚያ",
+          "name:an": "Tunicia",
+          "name:ang": "Tunisia",
+          "name:ar": "تونس",
+          "name:arc": "ܬܘܢܣ",
+          "name:arz": "تونس",
+          "name:ast": "Tunicia",
+          "name:az": "Tunis",
+          "name:azb": "تونیس",
+          "name:ba": "Тунис",
+          "name:bat-smg": "Tonėsos",
+          "name:bcl": "Tunisya",
+          "name:be": "Туніс",
+          "name:be-tarask": "Туніс",
+          "name:ber": "ⵜⵓⵏⵙ",
+          "name:bg": "Тунис",
+          "name:bjn": "Tunisia",
+          "name:bm": "Tunizi",
+          "name:bn": "তিউনিসিয়া",
+          "name:bo": "ཏུ་ནི་ཤི་ཡ།",
+          "name:bpy": "তিউনিসিয়া",
+          "name:br": "Tunizia",
+          "name:bs": "Tunis",
+          "name:bxr": "Тунис",
+          "name:ca": "Tunísia",
+          "name:ce": "Тунис",
+          "name:ceb": "Tunisia",
+          "name:chr": "ᏚᏂᏏᏍᎠ",
+          "name:ckb": "توونس",
+          "name:crh": "Tunis",
+          "name:cs": "Tunisko",
+          "name:cv": "Тунис",
+          "name:cy": "Tunisia",
+          "name:da": "Tunesien",
+          "name:de": "Tunesien",
+          "name:diq": "Tunıs",
+          "name:dv": "ތޫނިސް",
+          "name:ee": "Tunisia",
+          "name:el": "Τυνησία",
+          "name:en": "Tunisia",
+          "name:eo": "Tunizio",
+          "name:es": "Túnez",
+          "name:et": "Tuneesia",
+          "name:eu": "Tunisia",
+          "name:ext": "Túnis",
+          "name:fa": "تونس",
+          "name:fi": "Tunisia",
+          "name:fo": "Tunesia",
+          "name:fr": "Tunisie",
+          "name:frp": "Tunisie",
+          "name:fy": "Tuneezje",
+          "name:ga": "An Túinéis",
+          "name:gag": "Tunis",
+          "name:gd": "Tuinisia",
+          "name:gl": "Tunisia",
+          "name:gn": "Tunísia",
+          "name:grc": "Τυνησία",
+          "name:gu": "ટ્યુનિશિયા",
+          "name:gv": "Yn Tooneesh",
+          "name:haw": "Tunisia",
+          "name:he": "תוניסיה",
+          "name:hi": "ट्यूनिशिया",
+          "name:hif": "Tunisia",
+          "name:hr": "Tunis",
+          "name:hsb": "Tuneziska",
+          "name:ht": "Tinizi",
+          "name:hu": "Tunézia",
+          "name:hy": "Թունիս",
+          "name:id": "Tunisia",
+          "name:ie": "Tunisia",
+          "name:ilo": "Tunisia",
+          "name:io": "Tunizia",
+          "name:is": "Túnis",
+          "name:it": "Tunisia",
+          "name:ja": "チュニジア",
+          "name:jv": "Tunisia",
+          "name:ka": "ტუნისი",
+          "name:kab": "Tunes",
+          "name:kg": "Tunisia",
+          "name:kk": "Тунис",
+          "name:kn": "ಟುನೀಶಿಯ",
+          "name:ko": "튀니지",
+          "name:ks": "تونس",
+          "name:ku": "Tûnis",
+          "name:ku-Arab": "توونس",
+          "name:kw": "Tunisi",
+          "name:ky": "Тунис",
+          "name:la": "Tunesia",
+          "name:lad": "Tunesia",
+          "name:lb": "Tunesien",
+          "name:li": "Tunesië",
+          "name:lij": "Tunixia",
+          "name:lmo": "Tünisia",
+          "name:ln": "Tunisia",
+          "name:lt": "Tunisas",
+          "name:lv": "Tunisija",
+          "name:mdf": "Тунис",
+          "name:mg": "Tonizia",
+          "name:mi": "Tūnihia",
+          "name:mk": "Тунис",
+          "name:ml": "ടുണീഷ്യ",
+          "name:mn": "Тунис",
+          "name:mr": "ट्युनिसिया",
+          "name:mrj": "Тунис",
+          "name:ms": "Tunisia",
+          "name:mt": "Tuneżija",
+          "name:my": "တူနီးရှားနိုင်ငံ",
+          "name:mzn": "تونس",
+          "name:nah": "Tunez",
+          "name:nan": "Tunisia",
+          "name:nds": "Tunesien",
+          "name:new": "ट्युनिसिया",
+          "name:nl": "Tunesië",
+          "name:nn": "Tunisia",
+          "name:no": "Tunisia",
+          "name:nov": "Tunisia",
+          "name:nso": "Tunisia",
+          "name:nv": "Ghą́ą́ʼaskʼidii Biłikahii Bikéyah Yázhí",
+          "name:oc": "Tunisia",
+          "name:or": "ଟ୍ୟୁନିସିଆ",
+          "name:os": "Тунис",
+          "name:pa": "ਤੁਨੀਸੀਆ",
+          "name:pam": "Tunisia",
+          "name:pap": "Tunesia",
+          "name:pl": "Tunezja",
+          "name:pms": "Tunisìa",
+          "name:pnb": "ٹیونس",
+          "name:pnt": "Τυνησίαν",
+          "name:ps": "تونس",
+          "name:pt": "Tunísia",
+          "name:qu": "Tunisya",
+          "name:rm": "Tunesia",
+          "name:ro": "Tunisia",
+          "name:ru": "Тунис",
+          "name:rw": "Tunisiya",
+          "name:sa": "टुनिशिया",
+          "name:sah": "Тунис",
+          "name:sc": "Tunisia",
+          "name:scn": "Tunisìa",
+          "name:sco": "Tunisie",
+          "name:se": "Tunisia",
+          "name:sg": "Tunizïi",
+          "name:sh": "Tunis",
+          "name:simple": "Tunisia",
+          "name:sk": "Tunisko",
+          "name:sl": "Tunizija",
+          "name:smn": "Tunisia",
+          "name:sms": "Tunisia",
+          "name:sn": "Tunisia",
+          "name:so": "Tunisiya",
+          "name:sq": "Tunizia",
+          "name:sr": "Тунис",
+          "name:ss": "IThunisiya",
+          "name:stq": "Tunesien",
+          "name:su": "Tunisia",
+          "name:sv": "Tunisien",
+          "name:sw": "Tunisia",
+          "name:syc": "ܬܘܢܣ",
+          "name:szl": "Tůnezyjo",
+          "name:ta": "துனீசியா",
+          "name:te": "ట్యునీషియా",
+          "name:tg": "Тунис",
+          "name:th": "ประเทศตูนิเซีย",
+          "name:ti": "ቱኒዢያ",
+          "name:tk": "Tunis",
+          "name:tl": "Tunisya",
+          "name:tr": "Tunus",
+          "name:ts": "Tunisia",
+          "name:tt": "Тунис",
+          "name:tzl": "Tünis",
+          "name:ug": "تۇنىس",
+          "name:uk": "Туніс",
+          "name:ur": "تونس",
+          "name:uz": "Tunis",
+          "name:vec": "Tunixia",
+          "name:vi": "Tunisia",
+          "name:vo": "Tünisän",
+          "name:vro": "Tuneesiä",
+          "name:wa": "Tunizeye",
+          "name:war": "Tunisia",
+          "name:wo": "Tiniisi",
+          "name:wuu": "突尼斯",
+          "name:yi": "טוניסיע",
+          "name:yo": "Tùnísíà",
+          "name:yue": "突尼西亞",
+          "name:zgh": "ⵜⵓⵏⵙ",
+          "name:zh": "突尼斯 / 突尼西亞",
+          "name:zh-Hans": "突尼斯",
+          "name:zh-Hans-CN": "突尼斯",
+          "name:zh-Hant": "突尼西亞",
+          "name:zh-Hant-CN": "突尼斯",
+          "name:zh-Hant-TW": "突尼西亞",
+          "name:zu": "ITunisia",
+          "official_name": "الجمهورية التونسية",
+          "official_name:ar": "الجمهورية التونسية",
+          "official_name:bs": "Republika Tunis",
+          "official_name:ca": "República de Tunísia",
+          "official_name:cs": "Tuniská republika",
+          "official_name:de": "Republik Tunesien",
+          "official_name:en": "Republic of Tunisia",
+          "official_name:es": "República de Túnez",
+          "official_name:fa": "جمهوری تونس",
+          "official_name:gn": "Tavakuairetã Tunísia",
+          "official_name:hu": "Tunéziai Köztársaság",
+          "official_name:pt": "República Tunisina",
+          "official_name:ru": "Тунисская Республика",
+          "official_name:ur": "جمہوریہ تونس",
+          "population": "10276158",
+          "source:name:oc": "ieo-bdtopoc",
+          "timezone": "Africa/Tunis",
+          "wikidata": "Q948",
+          "wikimedia_commons": "Category:Tunisia",
+          "wikipedia": "ar:تونس"
+        },
+        "sourceGeometrySha256": "550608391fa552c04f85f8f7707100211514f588e347d403a63772ad2a706eb9",
+        "containsWholeTargetFootprint": true
+      }
+    ],
+    "effectiveSourceWholeFootprintContainers": [
+      {
+        "id": "osm:relation:4135055",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "long_name": "معتمدية قرطاج",
+          "long_name:ar": "معتمدية قرطاج",
+          "long_name:de": "Delegation Karthago",
+          "long_name:es": "Delegación de Cartago",
+          "name": "قرطاج",
+          "name:ar": "قرطاج",
+          "name:arc": "ܩܪܬܐܓܘ",
+          "name:azb": "کارتاژ",
+          "name:be": "Карфаген",
+          "name:be-tarask": "Картаген",
+          "name:de": "Karthago",
+          "name:el": "Καρχηδόνα",
+          "name:en": "Carthage",
+          "name:es": "Cartago",
+          "name:fr": "Carthage",
+          "name:grc": "Καρχηδών",
+          "name:hy": "Կարթագեն",
+          "name:hyw": "Կարթագէն",
+          "name:it": "Cartagine",
+          "name:pl": "Kartagina",
+          "name:ru": "Карфаген",
+          "name:skr": "قرطاجنہ",
+          "name:syc": "ܩܪܬܐܓܘ",
+          "name:uk": "Карфаген",
+          "name:ur": "قرطاجنہ",
+          "official_name": "معتمدية قرطاج",
+          "official_name:ar": "معتمدية قرطاج",
+          "official_name:de": "Delegation Karthago",
+          "official_name:es": "Delegación de Cartago",
+          "ref:tn:codegeo": "1151",
+          "ref:tn:hasc_2": "TN.TU.CA",
+          "wikidata": "Q2940578",
+          "wikipedia": "ar:معتمدية قرطاج"
+        },
+        "sourceGeometrySha256": "79307ac42f49595240f7a235dd18e52597a3710e95efd5c47fe26cf2cfa603fe",
+        "containsWholeTargetFootprint": true
+      },
+      {
+        "id": "osm:relation:1435835",
+        "sourceId": "osm",
+        "tags": {
+          "ISO3166-2": "TN-11",
+          "admin_level": "4",
+          "alt_name:de": "Gouvernement Tunis",
+          "alt_name:ko": "튀니스주",
+          "alt_name:ru": "Тунис (вилайет)",
+          "boundary": "administrative",
+          "long_name:ar": "ولاية تونس",
+          "long_name:en": "Tunis Governorate",
+          "long_name:fr": "Gouvernorat de Tunis",
+          "long_name:it": "Governatorato di Tunisi",
+          "name": "ولاية تونس",
+          "name:ar": "ولاية تونس",
+          "name:be": "Туніс (вілает)",
+          "name:be-tarask": "Туніс (вілает)",
+          "name:bg": "Тунис (област)",
+          "name:ca": "Governació de Tunis",
+          "name:ceb": "Gouvernorat de Tunis",
+          "name:cy": "Tiwnis (talaith)",
+          "name:de": "Tunis",
+          "name:en": "Tunis",
+          "name:es": "Gobernación de Túnez",
+          "name:fa": "استان تونس",
+          "name:fr": "Gouvernorat Tunis",
+          "name:id": "Kegubernuran Tunis",
+          "name:it": "Tunisi",
+          "name:ja": "チュニス県",
+          "name:ko": "튀니스",
+          "name:ms": "Kawasan kegabenoran Tunis",
+          "name:nl": "Tunis (gouvernement)",
+          "name:no": "Tunis (guvernement)",
+          "name:pl": "Gubernatorstwo Tunis",
+          "name:pt": "Túnis (província)",
+          "name:ro": "Guvernoratul Tunis",
+          "name:ru": "Тунис",
+          "name:sco": "Tunis Govrenorate",
+          "name:sh": "Tunis (vilajet)",
+          "name:sv": "Tunis (guvernement)",
+          "name:tr": "Tunus ili",
+          "name:uk": "Туніс (вілаєт)",
+          "name:ur": "ولایت تونس",
+          "name:zh": "突尼斯省",
+          "name:zu": "Tunis Governorate",
+          "population": "983861",
+          "ref:tn:codegeo": "11",
+          "source:population": "INS TN 2004",
+          "wikidata": "Q328109",
+          "wikipedia": "ar:ولاية تونس"
+        },
+        "sourceGeometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468",
+        "containsWholeTargetFootprint": true
+      },
+      {
+        "id": "osm:relation:192757",
+        "sourceId": "osm",
+        "tags": {
+          "ISO3166-1": "TN",
+          "ISO3166-1:alpha2": "TN",
+          "ISO3166-1:alpha3": "TUN",
+          "ISO3166-1:numeric": "788",
+          "admin_level": "2",
+          "alt_name:ur": "تیونس",
+          "alt_name:vi": "Tuy-ni-di",
+          "border_type": "nation",
+          "boundary": "administrative",
+          "default_language": "ar",
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg",
+          "name": "تونس",
+          "name:ace": "Tunisia",
+          "name:af": "Tunisië",
+          "name:als": "Tunesien",
+          "name:am": "ቱኒዚያ",
+          "name:an": "Tunicia",
+          "name:ang": "Tunisia",
+          "name:ar": "تونس",
+          "name:arc": "ܬܘܢܣ",
+          "name:arz": "تونس",
+          "name:ast": "Tunicia",
+          "name:az": "Tunis",
+          "name:azb": "تونیس",
+          "name:ba": "Тунис",
+          "name:bat-smg": "Tonėsos",
+          "name:bcl": "Tunisya",
+          "name:be": "Туніс",
+          "name:be-tarask": "Туніс",
+          "name:ber": "ⵜⵓⵏⵙ",
+          "name:bg": "Тунис",
+          "name:bjn": "Tunisia",
+          "name:bm": "Tunizi",
+          "name:bn": "তিউনিসিয়া",
+          "name:bo": "ཏུ་ནི་ཤི་ཡ།",
+          "name:bpy": "তিউনিসিয়া",
+          "name:br": "Tunizia",
+          "name:bs": "Tunis",
+          "name:bxr": "Тунис",
+          "name:ca": "Tunísia",
+          "name:ce": "Тунис",
+          "name:ceb": "Tunisia",
+          "name:chr": "ᏚᏂᏏᏍᎠ",
+          "name:ckb": "توونس",
+          "name:crh": "Tunis",
+          "name:cs": "Tunisko",
+          "name:cv": "Тунис",
+          "name:cy": "Tunisia",
+          "name:da": "Tunesien",
+          "name:de": "Tunesien",
+          "name:diq": "Tunıs",
+          "name:dv": "ތޫނިސް",
+          "name:ee": "Tunisia",
+          "name:el": "Τυνησία",
+          "name:en": "Tunisia",
+          "name:eo": "Tunizio",
+          "name:es": "Túnez",
+          "name:et": "Tuneesia",
+          "name:eu": "Tunisia",
+          "name:ext": "Túnis",
+          "name:fa": "تونس",
+          "name:fi": "Tunisia",
+          "name:fo": "Tunesia",
+          "name:fr": "Tunisie",
+          "name:frp": "Tunisie",
+          "name:fy": "Tuneezje",
+          "name:ga": "An Túinéis",
+          "name:gag": "Tunis",
+          "name:gd": "Tuinisia",
+          "name:gl": "Tunisia",
+          "name:gn": "Tunísia",
+          "name:grc": "Τυνησία",
+          "name:gu": "ટ્યુનિશિયા",
+          "name:gv": "Yn Tooneesh",
+          "name:haw": "Tunisia",
+          "name:he": "תוניסיה",
+          "name:hi": "ट्यूनिशिया",
+          "name:hif": "Tunisia",
+          "name:hr": "Tunis",
+          "name:hsb": "Tuneziska",
+          "name:ht": "Tinizi",
+          "name:hu": "Tunézia",
+          "name:hy": "Թունիս",
+          "name:id": "Tunisia",
+          "name:ie": "Tunisia",
+          "name:ilo": "Tunisia",
+          "name:io": "Tunizia",
+          "name:is": "Túnis",
+          "name:it": "Tunisia",
+          "name:ja": "チュニジア",
+          "name:jv": "Tunisia",
+          "name:ka": "ტუნისი",
+          "name:kab": "Tunes",
+          "name:kg": "Tunisia",
+          "name:kk": "Тунис",
+          "name:kn": "ಟುನೀಶಿಯ",
+          "name:ko": "튀니지",
+          "name:ks": "تونس",
+          "name:ku": "Tûnis",
+          "name:ku-Arab": "توونس",
+          "name:kw": "Tunisi",
+          "name:ky": "Тунис",
+          "name:la": "Tunesia",
+          "name:lad": "Tunesia",
+          "name:lb": "Tunesien",
+          "name:li": "Tunesië",
+          "name:lij": "Tunixia",
+          "name:lmo": "Tünisia",
+          "name:ln": "Tunisia",
+          "name:lt": "Tunisas",
+          "name:lv": "Tunisija",
+          "name:mdf": "Тунис",
+          "name:mg": "Tonizia",
+          "name:mi": "Tūnihia",
+          "name:mk": "Тунис",
+          "name:ml": "ടുണീഷ്യ",
+          "name:mn": "Тунис",
+          "name:mr": "ट्युनिसिया",
+          "name:mrj": "Тунис",
+          "name:ms": "Tunisia",
+          "name:mt": "Tuneżija",
+          "name:my": "တူနီးရှားနိုင်ငံ",
+          "name:mzn": "تونس",
+          "name:nah": "Tunez",
+          "name:nan": "Tunisia",
+          "name:nds": "Tunesien",
+          "name:new": "ट्युनिसिया",
+          "name:nl": "Tunesië",
+          "name:nn": "Tunisia",
+          "name:no": "Tunisia",
+          "name:nov": "Tunisia",
+          "name:nso": "Tunisia",
+          "name:nv": "Ghą́ą́ʼaskʼidii Biłikahii Bikéyah Yázhí",
+          "name:oc": "Tunisia",
+          "name:or": "ଟ୍ୟୁନିସିଆ",
+          "name:os": "Тунис",
+          "name:pa": "ਤੁਨੀਸੀਆ",
+          "name:pam": "Tunisia",
+          "name:pap": "Tunesia",
+          "name:pl": "Tunezja",
+          "name:pms": "Tunisìa",
+          "name:pnb": "ٹیونس",
+          "name:pnt": "Τυνησίαν",
+          "name:ps": "تونس",
+          "name:pt": "Tunísia",
+          "name:qu": "Tunisya",
+          "name:rm": "Tunesia",
+          "name:ro": "Tunisia",
+          "name:ru": "Тунис",
+          "name:rw": "Tunisiya",
+          "name:sa": "टुनिशिया",
+          "name:sah": "Тунис",
+          "name:sc": "Tunisia",
+          "name:scn": "Tunisìa",
+          "name:sco": "Tunisie",
+          "name:se": "Tunisia",
+          "name:sg": "Tunizïi",
+          "name:sh": "Tunis",
+          "name:simple": "Tunisia",
+          "name:sk": "Tunisko",
+          "name:sl": "Tunizija",
+          "name:smn": "Tunisia",
+          "name:sms": "Tunisia",
+          "name:sn": "Tunisia",
+          "name:so": "Tunisiya",
+          "name:sq": "Tunizia",
+          "name:sr": "Тунис",
+          "name:ss": "IThunisiya",
+          "name:stq": "Tunesien",
+          "name:su": "Tunisia",
+          "name:sv": "Tunisien",
+          "name:sw": "Tunisia",
+          "name:syc": "ܬܘܢܣ",
+          "name:szl": "Tůnezyjo",
+          "name:ta": "துனீசியா",
+          "name:te": "ట్యునీషియా",
+          "name:tg": "Тунис",
+          "name:th": "ประเทศตูนิเซีย",
+          "name:ti": "ቱኒዢያ",
+          "name:tk": "Tunis",
+          "name:tl": "Tunisya",
+          "name:tr": "Tunus",
+          "name:ts": "Tunisia",
+          "name:tt": "Тунис",
+          "name:tzl": "Tünis",
+          "name:ug": "تۇنىس",
+          "name:uk": "Туніс",
+          "name:ur": "تونس",
+          "name:uz": "Tunis",
+          "name:vec": "Tunixia",
+          "name:vi": "Tunisia",
+          "name:vo": "Tünisän",
+          "name:vro": "Tuneesiä",
+          "name:wa": "Tunizeye",
+          "name:war": "Tunisia",
+          "name:wo": "Tiniisi",
+          "name:wuu": "突尼斯",
+          "name:yi": "טוניסיע",
+          "name:yo": "Tùnísíà",
+          "name:yue": "突尼西亞",
+          "name:zgh": "ⵜⵓⵏⵙ",
+          "name:zh": "突尼斯 / 突尼西亞",
+          "name:zh-Hans": "突尼斯",
+          "name:zh-Hans-CN": "突尼斯",
+          "name:zh-Hant": "突尼西亞",
+          "name:zh-Hant-CN": "突尼斯",
+          "name:zh-Hant-TW": "突尼西亞",
+          "name:zu": "ITunisia",
+          "official_name": "الجمهورية التونسية",
+          "official_name:ar": "الجمهورية التونسية",
+          "official_name:bs": "Republika Tunis",
+          "official_name:ca": "República de Tunísia",
+          "official_name:cs": "Tuniská republika",
+          "official_name:de": "Republik Tunesien",
+          "official_name:en": "Republic of Tunisia",
+          "official_name:es": "República de Túnez",
+          "official_name:fa": "جمهوری تونس",
+          "official_name:gn": "Tavakuairetã Tunísia",
+          "official_name:hu": "Tunéziai Köztársaság",
+          "official_name:pt": "República Tunisina",
+          "official_name:ru": "Тунисская Республика",
+          "official_name:ur": "جمہوریہ تونس",
+          "population": "10276158",
+          "source:name:oc": "ieo-bdtopoc",
+          "timezone": "Africa/Tunis",
+          "wikidata": "Q948",
+          "wikimedia_commons": "Category:Tunisia",
+          "wikipedia": "ar:تونس"
+        },
+        "sourceGeometrySha256": "550608391fa552c04f85f8f7707100211514f588e347d403a63772ad2a706eb9",
+        "containsWholeTargetFootprint": true
+      }
+    ],
+    "currentPackedWholeFootprintContainers": [],
+    "currentPackedPositiveAreaIntersections": [
+      {
+        "id": "osm:relation:7116454",
+        "name": "قرطاج الشاطئ",
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-carthage",
+        "containsWholeFootprint": false,
+        "targetCoveredFraction": 0.9912978780854121,
+        "pointInOther": true
+      }
+    ],
+    "coveredFreshSourcePlaceNodes": {
+      "source": [],
+      "packed": []
+    },
+    "coveredOtherRawRepresentatives": [],
+    "coveredWholeOtherRawPolygons": []
+  },
+  "dependencies": {
+    "directActiveManifestReferences": {
+      "catalog-curation.json": [],
+      "reviewed-picker-groups.json": [],
+      "reviewed-boundaries.json": [],
+      "prayer-source-coordinates.json": []
+    },
+    "currentTargetReceipts": [],
+    "currentTargetConflicts": [],
+    "currentTargetDuplicateGroups": [],
+    "historicalScopeOccurrences": [
+      "outputs/carthage-four-sector-identity-name-source-review.json contains historical context side-effect rows, not an active palace preservation decision.",
+      "Earlier institutional/parcel shortlists were triage, not source-specific identity findings."
+    ]
+  },
+  "separateHeldObject": {
+    "id": "osm:way:100904291",
+    "currentRaw": {
+      "id": "osm:way:100904291",
+      "sourceId": "osm",
+      "name": "Presidential Residences",
+      "aliases": [],
+      "kind": "residential",
+      "parentName": "المرسى الشاطئ",
+      "contextAliases": [
+        "Al Marsa",
+        "Al-Marsa",
+        "Délégation La Marsa",
+        "La Marsa",
+        "La Marsa Plage",
+        "المرسى الشاطئ",
+        "معتمدية المرسى"
+      ],
+      "governorateId": 342,
+      "lat": 36.911154,
+      "lng": 10.31659,
+      "delegationId": 386,
+      "hasBoundary": true,
+      "bbox": [
+        10.314274,
+        36.909711,
+        10.318745,
+        36.913278
+      ],
+      "areaKm2": 0.11677848960808318,
+      "pickerGroupId": "osm:way:100904291",
+      "offset": 5240128,
+      "length": 180
+    },
+    "packedGeometrySha256": "479a376b2c738b8c5bbe6f6b7aaf8e9b9c70e21f79dc9bcca09688073b4446a6",
+    "spatiallyDisjointFromPalaceGrounds": true,
+    "preserveUnchanged": true,
+    "qualification": "Presidential Residences is a separate source object and remains held. This palace-ground finding supplies no classification for that residential area."
+  },
+  "proposedCuration": {
+    "id": "osm:way:100982052",
+    "expectedKind": "residential",
+    "expectedTags": {
+      "landuse": "residential",
+      "name": "القصر الرئاسي",
+      "name:ar": "القصر الرئاسي",
+      "name:en": "Presidential Palace Grounds",
+      "name:fr": "Palais présidentiel"
+    },
+    "action": "exclude",
+    "reason": "This exact source object denotes the presidential palace grounds, supported by all eight OSM way versions and the Presidency institutional description. It is a named institutional compound rather than a neighborhood choice. Preserve every surrounding locality and the separate Presidential Residences object."
+  },
+  "finiteExclusionObligation": {
+    "removeOnlyIds": [
+      "osm:way:100982052"
+    ],
+    "metadataRowsBefore": 3530,
+    "metadataRowsAfter": 3529,
+    "polygonsBefore": 2626,
+    "polygonsAfter": 2625,
+    "pointCountUnchanged": 904,
+    "packedBytesRemovedOnly": 732,
+    "binaryBefore": 5537724,
+    "binaryAfter": 5536992,
+    "rawGroupsBefore": 3394,
+    "rawGroupsAfter": 3393,
+    "curationsBefore": 265,
+    "curationsAfter": 266,
+    "allCurrentReceiptsUnchanged": 389,
+    "allCurrentConflictsUnchanged": 366,
+    "allCurrentDuplicateGroupsUnchanged": 308,
+    "retiredCountBefore": 117,
+    "retiredCountAfter": 118,
+    "allReviewedNamesUnchanged": 121,
+    "allSavedReplacementObjectsUnchanged": 1,
+    "noNewSourcePointsWouldSurface": true,
+    "manualPrayerReferencesUnchanged": true,
+    "remainingRawIdsMetadataAndPackedSlicesPreservedExceptOffsets": true
+  },
+  "qualification": "The exclusion proposal is source-object classification, not a claim that nobody resides inside the official compound, not a legal parcel certification, and not a Google polygon import. Public institutional identity does not justify removing unrelated residential neighborhoods.",
+  "noLiveOrSourceStageChanges": true,
+  "noGeneratorTestsPhoneLedger": true,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\palace100982052-source-review\\derive_finite_source_facts.py",
+    "sha256": "3012c539cd2f4b201bad82130c06b85f57efbef703bd4723879048b85531e183",
+    "bytes": 17258
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "method": "exact_property_scope_exclusion",
+  "id": "osm:way:525479443",
+  "originalTags": {
+    "landuse": "residential",
+    "name": "Résidence Sourour",
+    "residential": "apartments"
+  },
+  "currentRaw": {
+    "id": "osm:way:525479443",
+    "sourceId": "osm",
+    "name": "Résidence Sourour",
+    "aliases": [],
+    "kind": "residential",
+    "parentName": "سيدي فرج",
+    "contextAliases": [
+      "Kram",
+      "Le Kram",
+      "Sidi Fredj",
+      "الكرم",
+      "سيدي فرج"
+    ],
+    "governorateId": 342,
+    "lat": 36.860449,
+    "lng": 10.269408,
+    "delegationId": 532,
+    "hasBoundary": true,
+    "bbox": [
+      10.268846,
+      36.860224,
+      10.269769,
+      36.860782
+    ],
+    "areaKm2": 0.0026424356003249896,
+    "pickerGroupId": "osm:way:525479443",
+    "offset": 5452644,
+    "length": 68
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\aouina-three-properties-source-review-20260912\\source-scope-report.json",
+    "sha256": "317fe0c4f486c28453ddfa17aaaa09e689e3d4415dc4b611dc24ac5c53d5457c"
+  },
+  "evidence": [
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-137318209.json",
+      "sha256": "935fd81aecb55d49b974e999ed703e221f37c93583095aa499fc6b9df78b9b96",
+      "bytes": 813
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-51844653.json",
+      "sha256": "e29b1f240ce6b0352e749e09dde49b126ced08343ebb9e0978f5d959b6ae82aa",
+      "bytes": 756
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-52129451.json",
+      "sha256": "c2fc749b49b53b712dc9fcbf8dc23fe138b9139fe3eae0b932f06b4fb8c22813",
+      "bytes": 715
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-52129553.json",
+      "sha256": "569e0db5edeaabd4aea135f555e3ad4a5b35fa88437397fd641d1e070a52c839",
+      "bytes": 715
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-52129617.json",
+      "sha256": "45cf26243d67043836276e1b56f2ddae41bd0506efa699a03ffb263f98290cf5",
+      "bytes": 715
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-52129623.json",
+      "sha256": "9e870f8de69971a6585fc44ad36211f40ba26cc7b4d3616db11298e9bda4b695",
+      "bytes": 716
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-86557026.json",
+      "sha256": "90eed12afc89b943197393afe63bf66db4a3668d8f32fb66d0350f87a185bdb3",
+      "bytes": 909
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-95372525.json",
+      "sha256": "7b62a66d648bb9a243e6f8af19a13c46903356aad02e4fdd61286d66391af43e",
+      "bytes": 604
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/changeset-98399405.json",
+      "sha256": "503701c34a96daa102b4fcbd3ee16a0b56de13a5fbd8c504300c5559c31d5fcd",
+      "bytes": 624
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/exact-three-source-finite-facts.json",
+      "sha256": "88cdc59754eed6b86822665f42b40f26e0419c63c7c98bf1056bf14f63d8d8ac",
+      "bytes": 37878
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/jort-2014-069-page-36.txt",
+      "sha256": "c292d3f6a75281d40e8d0dd05f005ca0aa9e19ac8a2657ed848f69fad94f73ce",
+      "bytes": 6155
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/jort-2014-069.pdf",
+      "sha256": "78f76e087482daba61c56f3c8866241ea4f35acb29c470e57d2efa74cef792be",
+      "bytes": 1094196
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/jort-2025-075-page-9.txt",
+      "sha256": "ac71d9789aefa56205abc21847bb695f2fa6a48b53e53c05c2b5d0aca0388a51",
+      "bytes": 5380
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/jort-2025-075.pdf",
+      "sha256": "0fad5d72babc58e20dbe42b06266383b79da96ae2663f4757cbb27568a75dae2",
+      "bytes": 970640
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/oat-2025-professional-list-page-21.txt",
+      "sha256": "dd493392979a39f027a73f6ad07565211f29cc8515ff78c6939e5c3e1666a083",
+      "bytes": 3495
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/oat-2025-professional-list.pdf",
+      "sha256": "adb18c20704ca712e4fcedbdeb727c90e0dfbed66161afcfa913073b3791860c",
+      "bytes": 25025364
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/osm-original-retrievals.json",
+      "sha256": "7ecca711457cecec775f0fd1f3ef0bf10a84b142a10102d2dc92d4926e9ef8c4",
+      "bytes": 10059
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/primary-derived-page-provenance.json",
+      "sha256": "85149330a9ec0739690cd6b1ddfa7b525750b80aec701543906f311f908bd636",
+      "bytes": 1968
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/riadh-soukra-II-syndic-contact.html",
+      "sha256": "970d80813f8fd8e4b41ddb19807c7af405b9203faf66bbd27e8f116e789c92f2",
+      "bytes": 51997
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/source-scope-report.json",
+      "sha256": "317fe0c4f486c28453ddfa17aaaa09e689e3d4415dc4b611dc24ac5c53d5457c",
+      "bytes": 33106
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/support-original-retrievals.json",
+      "sha256": "503232e34d76c428169ba079bfbc0d98558b5caf3f8819cf107db5d0cfe23381",
+      "bytes": 26334
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-522478927-current.json",
+      "sha256": "02539bb8f3ff4b4ee3bddbfeb3e8a25a5f65b7cfa754c757d4f0c6fe4e87531a",
+      "bytes": 637
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-522478927-full.json",
+      "sha256": "617faaf772ed4f03da5c6f7a38590da38d90baaf912ef179b920d22ce8622679",
+      "bytes": 1645
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-522478927-history.json",
+      "sha256": "2e5f6ee09f69cd697110d7fbb9c879d15b633415f22b47c802ae33f9957d68b6",
+      "bytes": 1849
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-525479443-current.json",
+      "sha256": "647e0c7c82721aa2987a4b954175a5e680b88daccc093091a7ac53a58ea0c877",
+      "bytes": 573
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-525479443-full.json",
+      "sha256": "b7fa251e849027a553181f20f7166b854bd4afb3ba62d3c5023150e5894aed7f",
+      "bytes": 1581
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-525479443-history.json",
+      "sha256": "329f71845129478c85c066bfd304d3ab7c63d3ff2e0c2ad2e1a32a4283212309",
+      "bytes": 825
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-815233393-current.json",
+      "sha256": "db51bf17a6eb8cb11688eff14df17e85a5b2961f7607ba3e365173db351e033e",
+      "bytes": 1019
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-815233393-full.json",
+      "sha256": "c23625f36e0868b8a52c7852cef0f18a1b1b7def82a0fd4e6fcffeabea7e6bb7",
+      "bytes": 7074
+    },
+    {
+      "file": "exclusion-reviews/six-properties-20260912/aouina/way-815233393-history.json",
+      "sha256": "66f4a28621c5631a89367975a00266a55eea88f8d2d659eb5da84119a6bd5707",
+      "bytes": 1735
+    }
+  ],
+  "phoneScopeReview": {
+    "file": "exclusion-reviews/six-properties-20260912/phone/six-properties-phone-scope-review-20260912.json",
+    "sha256": "e612982064923d6876634833b038a174378374ccbbfd1886c3078c132cf1f043",
+    "bytes": 11383
+  },
+  "phoneObservations": [
+    {
+      "record": {
+        "file": "exclusion-reviews/six-properties-20260912/phone/osm_way_525479443-1.json",
+        "sha256": "766b4eef8ba8559238c79cc7eb4011e74aed3ed51293e7712314265352004b0c"
+      },
+      "finding": "Exact Residence Sourour card at 88 Av Khaled Ibn El Walid, highlighted individual building and directory of occupants.",
+      "screenshotSha256": "e0587852db0942b793414ba96bc97b31b6feadd77922343124142c2b59eac5be"
+    },
+    {
+      "record": {
+        "file": "exclusion-reviews/six-properties-20260912/phone/osm_way_525479443-2.json",
+        "sha256": "a349ca8021af9d4ed2bedfdc00f97d8b42a5585837e4e2db15ab77b89340c053"
+      },
+      "finding": "Coordinate query gives Residence SOUROUR 2 at the same street address, categorized as hotel, with an apartment exterior photo. Category differences do not establish legal use or exact phase identity.",
+      "screenshotSha256": "3ee62447f8cacfeab283f040f8a3d04a59dfd91ee0e8d0653021178d3b629bee"
+    }
+  ],
+  "classificationReason": "Exclude only this exact mapped apartment property from neighborhood choices. The 2642.44 m2 seven-node footprint originated in a changeset explicitly describing a residential building. Current v2 retains the same seven nodes and explicitly adds residential=apartments and the property name. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+  "qualification": "The exact mapped property is excluded from locality choices. Supporting advertisements and Maps results do not certify a legal parcel or neighborhood boundary. No Google geometry copied.",
+  "preservation": "Remove only this singleton source object; preserve all named points, surrounding polygons, prayer coordinates and mappings, existing receipts, conflicts and saved names."
+}

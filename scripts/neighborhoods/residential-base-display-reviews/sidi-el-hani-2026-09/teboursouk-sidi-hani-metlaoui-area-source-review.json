@@ -1,0 +1,3079 @@
+{
+  "schemaVersion": 1,
+  "status": "TWO_QUALIFIED_TOWN_DISPLAY_REVIEW_CANDIDATES_ONE_NEIGHBORHOOD_HOLD_NO_PRODUCT_CHANGE",
+  "createdAt": "2026-09-12T12:00:09.207815+00:00",
+  "inputPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+      "bytes": 1883642
+    },
+    "governorates": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94",
+      "bytes": 275518
+    },
+    "pickerManifest": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877",
+      "bytes": 554334
+    },
+    "reviewedBoundaries": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "officialRegistry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "triage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-six-current-locality-verification-triage.json",
+      "sha256": "c6e5eb0c92dc07384d3cb8030e9de52147ae693368e7e0d69473ed635a654243",
+      "bytes": 45110
+    }
+  },
+  "curationCount": 167,
+  "scope": "Three residential identities only, with accepted Métlaoui owner as a fourth exact OSM source. Tinja, Soukra and Hrairia deferred.",
+  "sourceRecords": [
+    {
+      "rawId": "osm:way:96369466",
+      "currentRaw": {
+        "id": "osm:way:96369466",
+        "sourceId": "osm",
+        "name": "تبرسق",
+        "aliases": [
+          "Tabursuq",
+          "Téboursouk",
+          "Тебурсук"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية تبرسق",
+        "contextAliases": [
+          "Délégation Teboursouk",
+          "Téboursouk",
+          "معتمدية تبرسق"
+        ],
+        "governorateId": 356,
+        "lat": 36.457368,
+        "lng": 9.246191,
+        "delegationId": 518,
+        "hasBoundary": true,
+        "bbox": [
+          9.231327,
+          36.443317,
+          9.267215,
+          36.471907
+        ],
+        "areaKm2": 2.7421180825607117,
+        "pickerGroupId": "osm:way:96369466",
+        "offset": 5451760,
+        "length": 1860
+      },
+      "currentRawSha256": "02f1b7d7b085d3128cfafe9b94e3ff17c1e3504dfae1b935e93f731c9c6d6a43",
+      "cachedSourceTags": {
+        "addr:city": "تبرسق",
+        "addr:city:ar": "تبرسق",
+        "addr:postcode": "9040",
+        "landuse": "residential",
+        "name": "تبرسق",
+        "name:ar": "تبرسق",
+        "name:azb": "تبرسق",
+        "name:en": "Téboursouk",
+        "name:fa": "تبرسق",
+        "name:fr": "Téboursouk",
+        "wikidata": "Q1890362",
+        "wikimedia_commons": "Category:Téboursouk",
+        "wikipedia": "ar:تبرسق",
+        "wikipedia:ar": "تبرسق"
+      },
+      "currentOsmIdentity": {
+        "type": "way",
+        "id": 96369466,
+        "version": 15,
+        "timestamp": "2025-06-11T13:17:10Z",
+        "changeset": 167491482,
+        "tags": {
+          "addr:city": "تبرسق",
+          "addr:city:ar": "تبرسق",
+          "addr:postcode": "9040",
+          "landuse": "residential",
+          "name": "تبرسق",
+          "name:ar": "تبرسق",
+          "name:azb": "تبرسق",
+          "name:en": "Téboursouk",
+          "name:fa": "تبرسق",
+          "name:fr": "Téboursouk",
+          "wikidata": "Q1890362",
+          "wikimedia_commons": "Category:Téboursouk",
+          "wikipedia": "ar:تبرسق",
+          "wikipedia:ar": "تبرسق"
+        }
+      },
+      "authenticResponses": {
+        "current": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-96369466-current.json",
+          "sha256": "faa27b2f300c621f9af901541a3237f3880191a8d02ec62357d7d9dd2db5c429",
+          "bytes": 3382
+        },
+        "history": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-96369466-history.json",
+          "sha256": "f629afd04694885b01e2c299b6257cdcec041c4f0e9301d16b7cbb5830f9ee3e",
+          "bytes": 31737
+        },
+        "full": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-96369466-full.json",
+          "sha256": "f69da25422398f1d387401c082e9f76585bb2210aa6fd067d9784b60ad4c40cd",
+          "bytes": 41037
+        }
+      },
+      "allVersions": [
+        {
+          "version": 1,
+          "timestamp": "2011-01-23T13:38:36Z",
+          "changeset": 7061197,
+          "nodeCount": 61,
+          "tagChanges": {
+            "landuse": {
+              "before": null,
+              "after": "residential"
+            },
+            "name": {
+              "before": null,
+              "after": "Teboursouk"
+            },
+            "place": {
+              "before": null,
+              "after": "village"
+            }
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2011-03-10T14:39:33Z",
+          "changeset": 7514684,
+          "nodeCount": 61,
+          "tagChanges": {
+            "name": {
+              "before": "Teboursouk",
+              "after": "تبرسق"
+            },
+            "name:ar": {
+              "before": null,
+              "after": "تبرسق"
+            },
+            "name:fr": {
+              "before": null,
+              "after": "Teboursouk"
+            }
+          }
+        },
+        {
+          "version": 3,
+          "timestamp": "2012-10-09T11:24:24Z",
+          "changeset": 13425621,
+          "nodeCount": 132,
+          "tagChanges": {
+            "name:en": {
+              "before": null,
+              "after": "Téboursouk"
+            },
+            "name:fr": {
+              "before": "Teboursouk",
+              "after": "Téboursouk"
+            },
+            "place": {
+              "before": "village",
+              "after": null
+            }
+          }
+        },
+        {
+          "version": 4,
+          "timestamp": "2013-04-25T18:02:24Z",
+          "changeset": 15863764,
+          "nodeCount": 132,
+          "tagChanges": {}
+        },
+        {
+          "version": 5,
+          "timestamp": "2013-04-25T19:03:05Z",
+          "changeset": 15864439,
+          "nodeCount": 133,
+          "tagChanges": {}
+        },
+        {
+          "version": 6,
+          "timestamp": "2014-01-05T20:59:27Z",
+          "changeset": 19832454,
+          "nodeCount": 153,
+          "tagChanges": {}
+        },
+        {
+          "version": 7,
+          "timestamp": "2014-05-02T14:29:17Z",
+          "changeset": 22086247,
+          "nodeCount": 153,
+          "tagChanges": {
+            "addr:city": {
+              "before": null,
+              "after": "Téboursouk"
+            },
+            "addr:country": {
+              "before": null,
+              "after": "TN"
+            },
+            "addr:governorate": {
+              "before": null,
+              "after": "Béja"
+            },
+            "addr:postcode": {
+              "before": null,
+              "after": "9040"
+            },
+            "is_in": {
+              "before": null,
+              "after": "Béja; Tunisia; Africa"
+            },
+            "is_in:continent": {
+              "before": null,
+              "after": "Africa"
+            },
+            "is_in:country": {
+              "before": null,
+              "after": "Tunisia"
+            },
+            "is_in:governorate": {
+              "before": null,
+              "after": "Béja"
+            }
+          }
+        },
+        {
+          "version": 8,
+          "timestamp": "2017-05-04T10:03:59Z",
+          "changeset": 48389769,
+          "nodeCount": 153,
+          "tagChanges": {
+            "is_in": {
+              "before": "Béja; Tunisia; Africa",
+              "after": "Béja;Tunisia;Africa"
+            }
+          }
+        },
+        {
+          "version": 9,
+          "timestamp": "2017-08-23T18:53:21Z",
+          "changeset": 51384990,
+          "nodeCount": 156,
+          "tagChanges": {}
+        },
+        {
+          "version": 10,
+          "timestamp": "2017-11-23T21:57:40Z",
+          "changeset": 54037050,
+          "nodeCount": 165,
+          "tagChanges": {}
+        },
+        {
+          "version": 11,
+          "timestamp": "2020-07-21T20:40:44Z",
+          "changeset": 88311986,
+          "nodeCount": 165,
+          "tagChanges": {
+            "addr:city": {
+              "before": "Téboursouk",
+              "after": "تبرسق"
+            },
+            "addr:city:ar": {
+              "before": null,
+              "after": "تبرسق"
+            },
+            "addr:country": {
+              "before": "TN",
+              "after": null
+            },
+            "addr:governorate": {
+              "before": "Béja",
+              "after": null
+            },
+            "is_in": {
+              "before": "Béja;Tunisia;Africa",
+              "after": null
+            },
+            "is_in:continent": {
+              "before": "Africa",
+              "after": null
+            },
+            "is_in:country": {
+              "before": "Tunisia",
+              "after": null
+            },
+            "is_in:governorate": {
+              "before": "Béja",
+              "after": null
+            },
+            "name:azb": {
+              "before": null,
+              "after": "تبرسق"
+            },
+            "name:fa": {
+              "before": null,
+              "after": "تبرسق"
+            },
+            "wikidata": {
+              "before": null,
+              "after": "Q1890362"
+            },
+            "wikipedia": {
+              "before": null,
+              "after": "ar:تبرسق"
+            },
+            "wikipedia:ar": {
+              "before": null,
+              "after": "تبرسق"
+            }
+          }
+        },
+        {
+          "version": 12,
+          "timestamp": "2022-12-23T01:10:44Z",
+          "changeset": 130397577,
+          "nodeCount": 206,
+          "tagChanges": {}
+        },
+        {
+          "version": 13,
+          "timestamp": "2023-10-25T21:12:37Z",
+          "changeset": 143134733,
+          "nodeCount": 206,
+          "tagChanges": {
+            "wikimedia_commons": {
+              "before": null,
+              "after": "Category:Téboursouk"
+            }
+          }
+        },
+        {
+          "version": 14,
+          "timestamp": "2025-03-24T00:34:09Z",
+          "changeset": 164010054,
+          "nodeCount": 205,
+          "tagChanges": {}
+        },
+        {
+          "version": 15,
+          "timestamp": "2025-06-11T13:17:10Z",
+          "changeset": 167491482,
+          "nodeCount": 231,
+          "tagChanges": {}
+        }
+      ],
+      "currentEqualsLastHistoryAndFullWay": true,
+      "currentTagsExactlyMatchCache": true,
+      "sourceGeometryParity": {
+        "method": "Construct Polygon from authentic full response ordered way node references and exact lon/lat values; assert cached source is a single-component MultiPolygon without holes, then compare its single Polygon using Shapely normalize().equals_exact(...,0) plus complete topology equality. No rounding, simplification, clipping, coordinate replacement or product helper.",
+        "shapelyVersion": "2.1.2",
+        "exactAfterRingNormalization": true,
+        "topologicallyEqual": true,
+        "valid": true,
+        "sourceBounds": [
+          9.2313274,
+          36.443317,
+          9.2672154,
+          36.4719066
+        ],
+        "originalGeometrySha256": "5060d7ba08c71066e76680a12c231ebc752bcf61656cc03d8dcdab09e2b43503"
+      }
+    },
+    {
+      "rawId": "osm:way:43944790",
+      "currentRaw": {
+        "id": "osm:way:43944790",
+        "sourceId": "osm",
+        "name": "سيدي الهاني",
+        "aliases": [
+          "Sidi El Heni"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية سيدي الهاني",
+        "contextAliases": [
+          "Délégation Sidi El Heni",
+          "Sidi El Hani",
+          "سيدي الهاني",
+          "معتمدية سيدي الهاني"
+        ],
+        "governorateId": 348,
+        "lat": 35.680877,
+        "lng": 10.311315,
+        "delegationId": 441,
+        "hasBoundary": true,
+        "bbox": [
+          10.302708,
+          35.676573,
+          10.320224,
+          35.685514
+        ],
+        "areaKm2": 0.6345806885521329,
+        "pickerGroupId": "osm:way:43944790",
+        "offset": 5406988,
+        "length": 428
+      },
+      "currentRawSha256": "c1654ec7930de1847ba81ba951d686ade2d8ae4caad216f6fc0516dfb810d2ee",
+      "cachedSourceTags": {
+        "landuse": "residential",
+        "name": "سيدي الهاني",
+        "name:ar": "سيدي الهاني"
+      },
+      "currentOsmIdentity": {
+        "type": "way",
+        "id": 43944790,
+        "version": 5,
+        "timestamp": "2022-06-09T19:02:29Z",
+        "changeset": 122179847,
+        "tags": {
+          "landuse": "residential",
+          "name": "سيدي الهاني",
+          "name:ar": "سيدي الهاني"
+        }
+      },
+      "authenticResponses": {
+        "current": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-43944790-current.json",
+          "sha256": "e1754be7c3da529217123e453347be5f002b65df205c8f6f7676664624d32c87",
+          "bytes": 1074
+        },
+        "history": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-43944790-history.json",
+          "sha256": "b17d13e9ab2dd83338ecd6e541d39f0bc12a77d8cd9e0a365c2f1105e1f10c54",
+          "bytes": 3078
+        },
+        "full": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-43944790-full.json",
+          "sha256": "9eec413e62e05432b077237395d19a57c9ba3c2b19cbcc80c7108d33f1df2d62",
+          "bytes": 9479
+        }
+      },
+      "allVersions": [
+        {
+          "version": 1,
+          "timestamp": "2009-11-07T13:15:34Z",
+          "changeset": 3055621,
+          "nodeCount": 9,
+          "tagChanges": {
+            "landuse": {
+              "before": null,
+              "after": "residential"
+            }
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2012-07-03T22:07:43Z",
+          "changeset": 12105192,
+          "nodeCount": 11,
+          "tagChanges": {}
+        },
+        {
+          "version": 3,
+          "timestamp": "2019-08-16T12:42:09Z",
+          "changeset": 73414242,
+          "nodeCount": 51,
+          "tagChanges": {}
+        },
+        {
+          "version": 4,
+          "timestamp": "2020-04-16T19:54:04Z",
+          "changeset": 83665691,
+          "nodeCount": 52,
+          "tagChanges": {}
+        },
+        {
+          "version": 5,
+          "timestamp": "2022-06-09T19:02:29Z",
+          "changeset": 122179847,
+          "nodeCount": 52,
+          "tagChanges": {
+            "name": {
+              "before": null,
+              "after": "سيدي الهاني"
+            },
+            "name:ar": {
+              "before": null,
+              "after": "سيدي الهاني"
+            }
+          }
+        }
+      ],
+      "currentEqualsLastHistoryAndFullWay": true,
+      "currentTagsExactlyMatchCache": true,
+      "sourceGeometryParity": {
+        "method": "Construct Polygon from authentic full response ordered way node references and exact lon/lat values; assert cached source is a single-component MultiPolygon without holes, then compare its single Polygon using Shapely normalize().equals_exact(...,0) plus complete topology equality. No rounding, simplification, clipping, coordinate replacement or product helper.",
+        "shapelyVersion": "2.1.2",
+        "exactAfterRingNormalization": true,
+        "topologicallyEqual": true,
+        "valid": true,
+        "sourceBounds": [
+          10.3027077,
+          35.676573,
+          10.3202238,
+          35.6855144
+        ],
+        "originalGeometrySha256": "6e6065ecfd090b2b5f1ceaae814323e0668490097139cee70b80ef047b555b81"
+      }
+    },
+    {
+      "rawId": "osm:way:923739218",
+      "currentRaw": {
+        "id": "osm:way:923739218",
+        "sourceId": "osm",
+        "name": "المتلوي",
+        "aliases": [
+          "Metlaoui"
+        ],
+        "kind": "residential",
+        "parentName": "حي الامل الغربي",
+        "contextAliases": [
+          "Cite El Amel Ouest",
+          "Délégation Metlaoui",
+          "Métlaoui",
+          "حي الامل الغربي",
+          "معتمدية المتلوي"
+        ],
+        "governorateId": 365,
+        "lat": 34.33925,
+        "lng": 8.406474,
+        "delegationId": 606,
+        "hasBoundary": true,
+        "bbox": [
+          8.40463,
+          34.337398,
+          8.408226,
+          34.340976
+        ],
+        "areaKm2": 0.07902863991689626,
+        "pickerGroupId": "osm:way:923739218",
+        "offset": 5446672,
+        "length": 164
+      },
+      "currentRawSha256": "f692cb85d381226556eb1c5c296d6bad27a050ba5122f50b14d2f60dd0eeec9f",
+      "cachedSourceTags": {
+        "addr:city": "المتلوي",
+        "landuse": "residential",
+        "name": "المتلوي",
+        "name:ar": "المتلوي",
+        "name:en": "Metlaoui"
+      },
+      "currentOsmIdentity": {
+        "type": "way",
+        "id": 923739218,
+        "version": 1,
+        "timestamp": "2021-03-30T10:35:48Z",
+        "changeset": 101977329,
+        "tags": {
+          "addr:city": "المتلوي",
+          "landuse": "residential",
+          "name": "المتلوي",
+          "name:ar": "المتلوي",
+          "name:en": "Metlaoui"
+        }
+      },
+      "authenticResponses": {
+        "current": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-923739218-current.json",
+          "sha256": "25f677be79641cb7c3f5de2aed40d0f31b0ffe4bcb300c0eca55bb68603f9c0a",
+          "bytes": 754
+        },
+        "history": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-923739218-history.json",
+          "sha256": "008c021888dabd8384187eae22011a7bdda7a4bd8a5389aaa506504949877245",
+          "bytes": 754
+        },
+        "full": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-923739218-full.json",
+          "sha256": "5da6889ffff5aab2f8134046c60543398b13c71771949289c40389966b1ef5e0",
+          "bytes": 3759
+        }
+      },
+      "allVersions": [
+        {
+          "version": 1,
+          "timestamp": "2021-03-30T10:35:48Z",
+          "changeset": 101977329,
+          "nodeCount": 19,
+          "tagChanges": {
+            "addr:city": {
+              "before": null,
+              "after": "المتلوي"
+            },
+            "landuse": {
+              "before": null,
+              "after": "residential"
+            },
+            "name": {
+              "before": null,
+              "after": "المتلوي"
+            },
+            "name:ar": {
+              "before": null,
+              "after": "المتلوي"
+            },
+            "name:en": {
+              "before": null,
+              "after": "Metlaoui"
+            }
+          }
+        }
+      ],
+      "currentEqualsLastHistoryAndFullWay": true,
+      "currentTagsExactlyMatchCache": true,
+      "sourceGeometryParity": {
+        "method": "Construct Polygon from authentic full response ordered way node references and exact lon/lat values; assert cached source is a single-component MultiPolygon without holes, then compare its single Polygon using Shapely normalize().equals_exact(...,0) plus complete topology equality. No rounding, simplification, clipping, coordinate replacement or product helper.",
+        "shapelyVersion": "2.1.2",
+        "exactAfterRingNormalization": true,
+        "topologicallyEqual": true,
+        "valid": true,
+        "sourceBounds": [
+          8.4046295,
+          34.3373983,
+          8.4082262,
+          34.3409758
+        ],
+        "originalGeometrySha256": "5415faeaeee47b535c6fbb1a44d733c43873e26edb9d0aed7595b0c64c177621"
+      }
+    },
+    {
+      "rawId": "osm:way:179363717",
+      "currentRaw": {
+        "id": "osm:way:179363717",
+        "sourceId": "osm",
+        "name": "المتلوي",
+        "aliases": [
+          "Al-Matlawi",
+          "Metlaoui",
+          "Métlaoui",
+          "Метлави",
+          "Мітлаві"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية المتلوي",
+        "contextAliases": [
+          "Délégation Metlaoui",
+          "Métlaoui",
+          "معتمدية المتلوي"
+        ],
+        "governorateId": 365,
+        "lat": 34.323229,
+        "lng": 8.406292,
+        "delegationId": 606,
+        "hasBoundary": true,
+        "bbox": [
+          8.371674,
+          34.301566,
+          8.425556,
+          34.344915
+        ],
+        "areaKm2": 11.134594742991881,
+        "pickerGroupId": "delegation:606",
+        "offset": 5276672,
+        "length": 2636
+      },
+      "currentRawSha256": "e177f88f56069ee330e0ea895980da1c4335049687a859402aebb97819d99af1",
+      "cachedSourceTags": {
+        "addr:city": "المتلوي",
+        "landuse": "residential",
+        "name": "المتلوي",
+        "name:ar": "المتلوي",
+        "name:en": "Metlaoui"
+      },
+      "currentOsmIdentity": {
+        "type": "way",
+        "id": 179363717,
+        "version": 16,
+        "timestamp": "2024-10-23T22:10:04Z",
+        "changeset": 158272999,
+        "tags": {
+          "addr:city": "المتلوي",
+          "landuse": "residential",
+          "name": "المتلوي",
+          "name:ar": "المتلوي",
+          "name:en": "Metlaoui"
+        }
+      },
+      "authenticResponses": {
+        "current": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-179363717-current.json",
+          "sha256": "51ca38fa49c46b3bb684c8178a9f2c72e0efdb3e69a72df54394c4ec479b3374",
+          "bytes": 4182
+        },
+        "history": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-179363717-history.json",
+          "sha256": "e0097b85faab2a500b92efb984fbd1dbcd2a114632370a192fb9c5213c06d149",
+          "bytes": 42283
+        },
+        "full": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-179363717-full.json",
+          "sha256": "9c7ee7cf71386bf9077b27cf9f0bd4509a43913655244267a3f16361a6709464",
+          "bytes": 58212
+        }
+      },
+      "allVersions": [
+        {
+          "version": 1,
+          "timestamp": "2012-09-03T21:32:58Z",
+          "changeset": 12974066,
+          "nodeCount": 32,
+          "tagChanges": {
+            "int_name": {
+              "before": null,
+              "after": "Metlaoui"
+            },
+            "is_in": {
+              "before": null,
+              "after": "قفصة, تونس"
+            },
+            "landuse": {
+              "before": null,
+              "after": "residential"
+            },
+            "name": {
+              "before": null,
+              "after": "المتلوي"
+            },
+            "name:ar": {
+              "before": null,
+              "after": "المتلوي"
+            },
+            "name:en": {
+              "before": null,
+              "after": "Metlaoui"
+            }
+          }
+        },
+        {
+          "version": 2,
+          "timestamp": "2013-02-20T10:49:26Z",
+          "changeset": 15098520,
+          "nodeCount": 45,
+          "tagChanges": {}
+        },
+        {
+          "version": 3,
+          "timestamp": "2013-02-20T15:04:32Z",
+          "changeset": 15100102,
+          "nodeCount": 55,
+          "tagChanges": {}
+        },
+        {
+          "version": 4,
+          "timestamp": "2013-02-20T15:17:36Z",
+          "changeset": 15100102,
+          "nodeCount": 135,
+          "tagChanges": {
+            "name": {
+              "before": "المتلوي",
+              "after": "المتلوي (Metlaoui)"
+            }
+          }
+        },
+        {
+          "version": 5,
+          "timestamp": "2013-02-20T15:23:23Z",
+          "changeset": 15100102,
+          "nodeCount": 137,
+          "tagChanges": {}
+        },
+        {
+          "version": 6,
+          "timestamp": "2013-02-20T15:57:01Z",
+          "changeset": 15100102,
+          "nodeCount": 140,
+          "tagChanges": {}
+        },
+        {
+          "version": 7,
+          "timestamp": "2013-02-20T23:02:22Z",
+          "changeset": 15106303,
+          "nodeCount": 140,
+          "tagChanges": {
+            "name": {
+              "before": "المتلوي (Metlaoui)",
+              "after": "(Metlaoui) المتلوي"
+            }
+          }
+        },
+        {
+          "version": 8,
+          "timestamp": "2013-02-20T23:12:27Z",
+          "changeset": 15106303,
+          "nodeCount": 241,
+          "tagChanges": {}
+        },
+        {
+          "version": 9,
+          "timestamp": "2013-02-27T13:31:24Z",
+          "changeset": 15185384,
+          "nodeCount": 271,
+          "tagChanges": {}
+        },
+        {
+          "version": 10,
+          "timestamp": "2013-02-27T13:34:18Z",
+          "changeset": 15185384,
+          "nodeCount": 301,
+          "tagChanges": {}
+        },
+        {
+          "version": 11,
+          "timestamp": "2013-02-27T13:40:37Z",
+          "changeset": 15185384,
+          "nodeCount": 307,
+          "tagChanges": {}
+        },
+        {
+          "version": 12,
+          "timestamp": "2017-06-29T07:02:03Z",
+          "changeset": 49908888,
+          "nodeCount": 307,
+          "tagChanges": {
+            "name": {
+              "before": "(Metlaoui) المتلوي",
+              "after": "المتلوي"
+            }
+          }
+        },
+        {
+          "version": 13,
+          "timestamp": "2019-04-01T21:40:58Z",
+          "changeset": 68771006,
+          "nodeCount": 309,
+          "tagChanges": {}
+        },
+        {
+          "version": 14,
+          "timestamp": "2019-08-11T01:00:20Z",
+          "changeset": 73231514,
+          "nodeCount": 309,
+          "tagChanges": {
+            "addr:city": {
+              "before": null,
+              "after": "المتلوي"
+            },
+            "int_name": {
+              "before": "Metlaoui",
+              "after": null
+            },
+            "is_in": {
+              "before": "قفصة, تونس",
+              "after": null
+            }
+          }
+        },
+        {
+          "version": 15,
+          "timestamp": "2021-03-30T10:35:48Z",
+          "changeset": 101977329,
+          "nodeCount": 326,
+          "tagChanges": {}
+        },
+        {
+          "version": 16,
+          "timestamp": "2024-10-23T22:10:04Z",
+          "changeset": 158272999,
+          "nodeCount": 328,
+          "tagChanges": {}
+        }
+      ],
+      "currentEqualsLastHistoryAndFullWay": true,
+      "currentTagsExactlyMatchCache": true,
+      "sourceGeometryParity": {
+        "method": "Construct Polygon from authentic full response ordered way node references and exact lon/lat values; assert cached source is a single-component MultiPolygon without holes, then compare its single Polygon using Shapely normalize().equals_exact(...,0) plus complete topology equality. No rounding, simplification, clipping, coordinate replacement or product helper.",
+        "shapelyVersion": "2.1.2",
+        "exactAfterRingNormalization": true,
+        "topologicallyEqual": true,
+        "valid": true,
+        "sourceBounds": [
+          8.3716744,
+          34.3015664,
+          8.4255563,
+          34.3449147
+        ],
+        "originalGeometrySha256": "dc1297711eb9c00001642b0a4bb7933673ef59695cd66d282fcea8ca9098a4ba"
+      }
+    }
+  ],
+  "metlaouiSplitLineage": {
+    "changeset": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-changeset-101977329.xml",
+      "sha256": "1df796cd9bacafb04a0eb2f9e6041449281c14faab1e92151f4cb7f7c83cd989",
+      "bytes": 713
+    },
+    "changesetId": 101977329,
+    "commentAndSource": {
+      "comment": "usines",
+      "created_by": "JOSM/1.5 (17580 fr)",
+      "source": "Maxar; Clarity (Beta); Bing"
+    },
+    "patchCreatedVersion": 1,
+    "ownerBeforeVersion": 14,
+    "ownerAfterVersion": 15,
+    "sameChangeTimestamp": "2021-03-30T10:35:48Z",
+    "uniquePatchNodeCount": 18,
+    "patchNodesRemovedFromOwnerInSameEdit": [
+      1897154898,
+      1897154904,
+      2163955350,
+      2163955391,
+      2163955459,
+      2163955472,
+      2163955479,
+      2163955544,
+      2163955561,
+      2163955602,
+      2163955607
+    ],
+    "removedFromOwnerTotal": 13,
+    "patchOwnerAfterSharedNodes": 0,
+    "patchAndOwnerTagsIdentical": true,
+    "currentPolygonsDisjoint": true,
+    "interpretation": "Concrete source evidence of a residential-fragment split: eleven former owner vertices are reused by the new disjoint patch and all city tags are copied unchanged. The editor comment is usines with imagery sources, not a local-name survey. This does not establish a named neighborhood identity or its exact boundary."
+  },
+  "finiteAdministrativePreservation": [
+    {
+      "delegationCode": "2155",
+      "targetRawId": "osm:way:96369466",
+      "base": {
+        "governorateId": 356,
+        "id": 518,
+        "nomFr": "Teboursouk",
+        "nomAr": "تبرسق",
+        "nomEn": "Teboursouk",
+        "lat": 36.46,
+        "lng": 9.24
+      },
+      "sourceDelegation": {
+        "id": "osm:relation:7189388",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Téboursouk",
+          "boundary": "administrative",
+          "name": "معتمدية تبرسق",
+          "name:ar": "معتمدية تبرسق",
+          "name:fr": "Délégation Teboursouk",
+          "ref:tn:codegeo": "2155",
+          "ref:tn:hasc_2": "TN.BJ.TB",
+          "sorting_name": "تبرسق",
+          "sorting_name:ar": "تبرسق",
+          "sorting_name:azb": "تبرسق",
+          "sorting_name:fa": "تبرسق",
+          "wikidata": "Q3546458",
+          "wikipedia": "ar:معتمدية تبرسق",
+          "wikipedia:ar": "معتمدية تبرسق"
+        },
+        "originalGeometrySha256": "b60704119d9309ca7d853c646482135d470d92131f408a876d07e369e81eab3c"
+      },
+      "currentOfficialRegistryRows": [
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215551",
+          "sectorFr": "Teboursouk ville",
+          "sectorAr": "تبرسق المدينة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21658,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 981,
+            "Nombre_de_menages_par_Secteurs.xlsx": 980
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215552",
+          "sectorFr": "Ain el karma",
+          "sectorAr": "عين الكرمة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21692,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 982,
+            "Nombre_de_menages_par_Secteurs.xlsx": 981
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215553",
+          "sectorFr": "El menchia",
+          "sectorAr": "المنشية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21726,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 984,
+            "Nombre_de_menages_par_Secteurs.xlsx": 983
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215554",
+          "sectorFr": "Dougga",
+          "sectorAr": "دقة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21760,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 986,
+            "Nombre_de_menages_par_Secteurs.xlsx": 985
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215555",
+          "sectorFr": "Rihana",
+          "sectorAr": "ريحانة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21794,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 988,
+            "Nombre_de_menages_par_Secteurs.xlsx": 987
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215556",
+          "sectorFr": "Ain el melliti",
+          "sectorAr": "عين المليتي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21828,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 990,
+            "Nombre_de_menages_par_Secteurs.xlsx": 989
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215557",
+          "sectorFr": "Fadden es-souk",
+          "sectorAr": "فدان السوق",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21862,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 992,
+            "Nombre_de_menages_par_Secteurs.xlsx": 991
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215558",
+          "sectorFr": "Ain el hammam",
+          "sectorAr": "عين الحمام",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21896,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 994,
+            "Nombre_de_menages_par_Secteurs.xlsx": 993
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215559",
+          "sectorFr": "Ain djammala",
+          "sectorAr": "عين جمالة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21929,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 995,
+            "Nombre_de_menages_par_Secteurs.xlsx": 994
+          }
+        },
+        {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2155",
+          "delegationFr": "Teboursouk",
+          "delegationAr": "تبرسق",
+          "sectorCode": "215560",
+          "sectorFr": "Bir ettouta",
+          "sectorAr": "بئر التوتة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21963,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 997,
+            "Nombre_de_menages_par_Secteurs.xlsx": 996
+          }
+        }
+      ],
+      "sourceSectors": [
+        {
+          "id": "osm:relation:7189476",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "فدان السوق",
+            "name:ar": "فدان السوق",
+            "name:fr": "Fadden Es-Souk",
+            "ref:tn:codegeo": "215557"
+          },
+          "originalGeometrySha256": "d9f60f369f81beff420758a4d7c8ffa37f714c5cfd4df69668e35757e50f2c0a"
+        },
+        {
+          "id": "osm:relation:7189470",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين المليتي",
+            "name:ar": "عين المليتي",
+            "name:fr": "Ain El Melliti",
+            "ref:tn:codegeo": "215556"
+          },
+          "originalGeometrySha256": "c0de71e59ccffc62bfbf388c6068eb6f06a81f6b015afdef1195fbbb4eb78188"
+        },
+        {
+          "id": "osm:relation:7189429",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر التوتة",
+            "name:ar": "بئر التوتة",
+            "name:fr": "Bir Ettouta",
+            "ref:tn:codegeo": "215560"
+          },
+          "originalGeometrySha256": "d60f3ef33602bc3174b97d3e5f3fb50ecd3e54ef44f46e7a7a090d17187ec57e"
+        },
+        {
+          "id": "osm:relation:7189448",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ريحانة",
+            "name:ar": "ريحانة",
+            "name:fr": "Rihana",
+            "ref:tn:codegeo": "215555"
+          },
+          "originalGeometrySha256": "caf804243c7a105b84627ceb5f6504a3b3f05f3e0633f6cb33e034a9db0a3ce4"
+        },
+        {
+          "id": "osm:relation:7189423",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المنشية",
+            "name:ar": "المنشية",
+            "name:fr": "El Menchia",
+            "ref:tn:codegeo": "215553"
+          },
+          "originalGeometrySha256": "d825fd96d73975fdcd5c08a7dc9831143d259ccffdf0761633dd61a6fea08857"
+        },
+        {
+          "id": "osm:relation:7189435",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "تبرسق المدينة",
+            "name:ar": "تبرسق المدينة",
+            "name:fr": "Teboursouk Ville",
+            "ref:tn:codegeo": "215551"
+          },
+          "originalGeometrySha256": "fef523c20d66dfecf2462e743442fe101978209980fa7a9b57f3e2083d15ccfd"
+        },
+        {
+          "id": "osm:relation:7189469",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين الكرمة",
+            "name:ar": "عين الكرمة",
+            "name:fr": "Ain El Karma",
+            "ref:tn:codegeo": "215552"
+          },
+          "originalGeometrySha256": "c111e4a0b940ac25fff84cdbf54ef3558d61239c8893c27d3819f16ae0def9d6"
+        },
+        {
+          "id": "osm:relation:7189471",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين جمالة",
+            "name:ar": "عين جمالة",
+            "name:fr": "Ain Djammala",
+            "ref:tn:codegeo": "215559"
+          },
+          "originalGeometrySha256": "cbf8312ec91bc73849b114373f69eb7abe8369c4c0f307ef21b912b58a6942e2"
+        },
+        {
+          "id": "osm:relation:7189467",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين الحمام",
+            "name:ar": "عين الحمام",
+            "name:fr": "Ain El Hammam",
+            "ref:tn:codegeo": "215558"
+          },
+          "originalGeometrySha256": "d30c0ab738b86cf73b45f67871b1b28ba7e5b80622fc41ac83cd4a9dfec51502"
+        },
+        {
+          "id": "osm:relation:7189446",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دقة",
+            "name:ar": "دقة",
+            "name:fr": "Dougga",
+            "ref:tn:codegeo": "215554"
+          },
+          "originalGeometrySha256": "41b9f71aa3538c9a3d199c2cb5ae320086b86bf84dd573971b6c2f5bc3977ecc"
+        }
+      ],
+      "preservedCurrentSectorRows": [
+        {
+          "id": "osm:relation:7189423",
+          "sourceId": "osm",
+          "name": "المنشية",
+          "aliases": [
+            "El Menchia"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.45378,
+          "lng": 9.203314,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.160143,
+            36.43671,
+            9.254434,
+            36.47087
+          ],
+          "areaKm2": 17.98823468906659,
+          "pickerGroupId": "osm:relation:7189423",
+          "offset": 4590832,
+          "length": 5316
+        },
+        {
+          "id": "osm:relation:7189429",
+          "sourceId": "osm",
+          "name": "بئر التوتة",
+          "aliases": [
+            "Bir Ettouta"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.52583,
+          "lng": 9.258962,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.184075,
+            36.47087,
+            9.308402,
+            36.58147
+          ],
+          "areaKm2": 59.35938184532627,
+          "pickerGroupId": "osm:relation:7189429",
+          "offset": 4613904,
+          "length": 7404
+        },
+        {
+          "id": "osm:relation:7189435",
+          "sourceId": "osm",
+          "name": "تبرسق المدينة",
+          "aliases": [
+            "Teboursouk Ville"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.456445,
+          "lng": 9.258549,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.232066,
+            36.45046,
+            9.279562,
+            36.46236
+          ],
+          "areaKm2": 3.0925908283810934,
+          "pickerGroupId": "osm:relation:7189435",
+          "offset": 4636904,
+          "length": 2132
+        },
+        {
+          "id": "osm:relation:7189446",
+          "sourceId": "osm",
+          "name": "دقة",
+          "aliases": [
+            "Dougga"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.38979,
+          "lng": 9.245805,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.183696,
+            36.335449,
+            9.315302,
+            36.44415
+          ],
+          "areaKm2": 71.21333313095394,
+          "pickerGroupId": "osm:relation:7189446",
+          "offset": 4675700,
+          "length": 3668
+        },
+        {
+          "id": "osm:relation:7189448",
+          "sourceId": "osm",
+          "name": "ريحانة",
+          "aliases": [
+            "Rihana"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.427089,
+          "lng": 9.131221,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.06789,
+            36.3888,
+            9.195409,
+            36.4655
+          ],
+          "areaKm2": 49.71766724877517,
+          "pickerGroupId": "osm:relation:7189448",
+          "offset": 4684188,
+          "length": 4580
+        },
+        {
+          "id": "osm:relation:7189467",
+          "sourceId": "osm",
+          "name": "عين الحمام",
+          "aliases": [
+            "Ain El Hammam"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.401245,
+          "lng": 9.156595,
+          "delegationId": 421,
+          "hasBoundary": true,
+          "bbox": [
+            9.110642,
+            36.362601,
+            9.211082,
+            36.44005
+          ],
+          "areaKm2": 31.884983773037856,
+          "pickerGroupId": "osm:relation:7189467",
+          "offset": 4754688,
+          "length": 3844
+        },
+        {
+          "id": "osm:relation:7189469",
+          "sourceId": "osm",
+          "name": "عين الكرمة",
+          "aliases": [
+            "Ain El Karma"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.468101,
+          "lng": 9.251761,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.205899,
+            36.45807,
+            9.284599,
+            36.47812
+          ],
+          "areaKm2": 8.717855485972402,
+          "pickerGroupId": "osm:relation:7189469",
+          "offset": 4760944,
+          "length": 3812
+        },
+        {
+          "id": "osm:relation:7189470",
+          "sourceId": "osm",
+          "name": "عين المليتي",
+          "aliases": [
+            "Ain El Melliti"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.50431,
+          "lng": 9.193408,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.130921,
+            36.45004,
+            9.227187,
+            36.55821
+          ],
+          "areaKm2": 48.859621999303066,
+          "pickerGroupId": "osm:relation:7189470",
+          "offset": 4764756,
+          "length": 6012
+        },
+        {
+          "id": "osm:relation:7189471",
+          "sourceId": "osm",
+          "name": "عين جمالة",
+          "aliases": [
+            "Ain Djammala"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.48305,
+          "lng": 9.298906,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.24546,
+            36.42708,
+            9.361192,
+            36.53934
+          ],
+          "areaKm2": 62.044524437497145,
+          "pickerGroupId": "osm:relation:7189471",
+          "offset": 4770768,
+          "length": 5292
+        },
+        {
+          "id": "osm:relation:7189476",
+          "sourceId": "osm",
+          "name": "فدان السوق",
+          "aliases": [
+            "Fadden Es-Souk"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية تبرسق",
+          "contextAliases": [
+            "Délégation Teboursouk",
+            "Téboursouk",
+            "معتمدية تبرسق"
+          ],
+          "governorateId": 356,
+          "lat": 36.41285,
+          "lng": 9.316433,
+          "delegationId": 518,
+          "hasBoundary": true,
+          "bbox": [
+            9.252834,
+            36.37283,
+            9.362165,
+            36.45339
+          ],
+          "areaKm2": 43.87341587660949,
+          "pickerGroupId": "osm:relation:7189476",
+          "offset": 4799300,
+          "length": 2756
+        }
+      ],
+      "activeDirectCurationDecisions": [],
+      "acceptedBoundaryReferencesTouchingScope": [],
+      "activePickerReferencesTouchingScope": [],
+      "currentBaseRawOwners": [],
+      "finiteCoordinateContext": {
+        "rawRepresentative": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7189435"
+          ],
+          "inTargetResidentialPolygon": true
+        },
+        "legacyBase": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7189435"
+          ],
+          "inTargetResidentialPolygon": false
+        }
+      },
+      "limitation": "Source identity scope only. These are current pinned sector states; no new boundary review, complete display proof assembly, or compiler readiness claim is made."
+    },
+    {
+      "delegationCode": "3163",
+      "targetRawId": "osm:way:43944790",
+      "base": {
+        "governorateId": 348,
+        "id": 441,
+        "nomFr": "Sidi Elheni",
+        "nomAr": "سيدي الهاني",
+        "nomEn": "Sidi Elheni",
+        "lat": 35.6792,
+        "lng": 10.3231
+      },
+      "sourceDelegation": {
+        "id": "osm:relation:7150740",
+        "tags": {
+          "admin_level": "5",
+          "alt_name": "سيدي الهاني",
+          "alt_name:ar": "سيدي الهاني",
+          "alt_name:fr": "Sidi El Hani",
+          "boundary": "administrative",
+          "name": "معتمدية سيدي الهاني",
+          "name:ar": "معتمدية سيدي الهاني",
+          "name:fr": "Délégation Sidi El Heni",
+          "ref:tn:codegeo": "3163",
+          "ref:tn:hasc_2": "TN.SS.SH",
+          "wikidata": "Q3483227",
+          "wikipedia": "ar:معتمدية سيدي الهاني"
+        },
+        "originalGeometrySha256": "d5df0715e9b1fc87d8db9803f0489e32a5ec10facf9780887dab9d7d3167eb7d"
+      },
+      "currentOfficialRegistryRows": [
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316351",
+          "sectorFr": "Sidi el heni centre",
+          "sectorAr": "سيدي الهاني المركزية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34917,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1644,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1643
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316352",
+          "sectorFr": "Sidi el heni ouest",
+          "sectorAr": "سيدي الهاني الغربية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34951,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1646,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1645
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316353",
+          "sectorFr": "Sidi el heni sud",
+          "sectorAr": "سيدي الهاني الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34985,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1648,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1647
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316354",
+          "sectorFr": "Ouled ali belhani",
+          "sectorAr": "أولاد علي بلهاني",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35019,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1650,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1649
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316355",
+          "sectorFr": "Kroussia ouest",
+          "sectorAr": "كروسية الغربية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35053,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1651,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1650
+          }
+        },
+        {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3163",
+          "delegationFr": "Sidi el heni",
+          "delegationAr": "سيدي الهاني",
+          "sectorCode": "316356",
+          "sectorFr": "Kroussia centrale",
+          "sectorAr": "كروسية المركزية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 35087,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1653,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1652
+          }
+        }
+      ],
+      "sourceSectors": [
+        {
+          "id": "osm:relation:7113809",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الهاني المركزية",
+            "name:ar": "سيدي الهاني المركزية",
+            "name:fr": "Sidi El Heni Centre",
+            "ref:tn:codegeo": "316351"
+          },
+          "originalGeometrySha256": "4e66470046febd8df4bad9c3b6255f6de1aef45bcb372c84c2ca3fd6876220c7"
+        },
+        {
+          "id": "osm:relation:7135672",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الهاني الغربية",
+            "name:ar": "سيدي الهاني الغربية",
+            "name:fr": "Sidi El Heni Ouest",
+            "ref:tn:codegeo": "316352"
+          },
+          "originalGeometrySha256": "703e86adcbc4c8c7aab2735968de08ff8447533f11d47b24f7e0dcad84d923f6"
+        },
+        {
+          "id": "osm:relation:7113807",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أولاد علي بالهاني",
+            "name:ar": "أولاد علي بالهاني",
+            "name:fr": "Ouled Ali Bel Hani",
+            "ref:tn:codegeo": "316354"
+          },
+          "originalGeometrySha256": "9646ddd67daf30b4c9e3e9c0db9134d3d0a25040c43ba4e99fb46ac8d96a3173"
+        },
+        {
+          "id": "osm:relation:7113811",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كروسية المركزية",
+            "name:ar": "كروسية المركزية",
+            "name:fr": "Kroussia Centrale",
+            "ref:tn:codegeo": "316356"
+          },
+          "originalGeometrySha256": "bfae88496f686a08919eae34eaee60bdfdd6800fbfe430b7c1c5e718ab971036"
+        },
+        {
+          "id": "osm:relation:7113806",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الهاني الجنوبية",
+            "name:ar": "سيدي الهاني الجنوبية",
+            "name:fr": "Sidi El Heni Sud",
+            "ref:tn:codegeo": "316353"
+          },
+          "originalGeometrySha256": "5334ff797f2b1ee40eea2e6ebf8839abdc81d8f8a1a0c79698e91fce5d410f4d"
+        },
+        {
+          "id": "osm:relation:7113808",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كروسية الغربية",
+            "name:ar": "كروسية الغربية",
+            "name:fr": "Kroussia Ouest",
+            "ref:tn:codegeo": "316355"
+          },
+          "originalGeometrySha256": "de9e968a7083718318e7822dc6c64a4e3900b17d2c20cc9d073490084879f332"
+        }
+      ],
+      "preservedCurrentSectorRows": [
+        {
+          "id": "osm:relation:7113806",
+          "sourceId": "osm",
+          "name": "سيدي الهاني الجنوبية",
+          "aliases": [
+            "Sidi El Heni Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي الهاني",
+          "contextAliases": [
+            "Délégation Sidi El Heni",
+            "Sidi El Hani",
+            "سيدي الهاني",
+            "معتمدية سيدي الهاني"
+          ],
+          "governorateId": 348,
+          "lat": 35.640107,
+          "lng": 10.355191,
+          "delegationId": 441,
+          "hasBoundary": true,
+          "bbox": [
+            10.25261,
+            35.584393,
+            10.441185,
+            35.69478
+          ],
+          "areaKm2": 109.4039347061993,
+          "pickerGroupId": "osm:relation:7113806",
+          "offset": 816004,
+          "length": 1012
+        },
+        {
+          "id": "osm:relation:7113807",
+          "sourceId": "osm",
+          "name": "أولاد علي بالهاني",
+          "aliases": [
+            "Ouled Ali Bel Hani"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي الهاني",
+          "contextAliases": [
+            "Délégation Sidi El Heni",
+            "Sidi El Hani",
+            "سيدي الهاني",
+            "معتمدية سيدي الهاني"
+          ],
+          "governorateId": 348,
+          "lat": 35.706906,
+          "lng": 10.35972,
+          "delegationId": 441,
+          "hasBoundary": true,
+          "bbox": [
+            10.314887,
+            35.679898,
+            10.401984,
+            35.733435
+          ],
+          "areaKm2": 28.28985158564307,
+          "pickerGroupId": "osm:relation:7113807",
+          "offset": 817016,
+          "length": 564
+        },
+        {
+          "id": "osm:relation:7113808",
+          "sourceId": "osm",
+          "name": "كروسية الغربية",
+          "aliases": [
+            "Kroussia Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي الهاني",
+          "contextAliases": [
+            "Délégation Sidi El Heni",
+            "Sidi El Hani",
+            "سيدي الهاني",
+            "معتمدية سيدي الهاني"
+          ],
+          "governorateId": 348,
+          "lat": 35.763518,
+          "lng": 10.254913,
+          "delegationId": 441,
+          "hasBoundary": true,
+          "bbox": [
+            10.195861,
+            35.716132,
+            10.367074,
+            35.80966
+          ],
+          "areaKm2": 98.21989340437968,
+          "pickerGroupId": "osm:relation:7113808",
+          "offset": 817580,
+          "length": 1268
+        },
+        {
+          "id": "osm:relation:7113809",
+          "sourceId": "osm",
+          "name": "سيدي الهاني المركزية",
+          "aliases": [
+            "Sidi El Heni Centre"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي الهاني",
+          "contextAliases": [
+            "Délégation Sidi El Heni",
+            "Sidi El Hani",
+            "سيدي الهاني",
+            "معتمدية سيدي الهاني"
+          ],
+          "governorateId": 348,
+          "lat": 35.704736,
+          "lng": 10.29537,
+          "delegationId": 441,
+          "hasBoundary": true,
+          "bbox": [
+            10.250896,
+            35.678726,
+            10.320449,
+            35.730774
+          ],
+          "areaKm2": 19.338275045664936,
+          "pickerGroupId": "osm:relation:7113809",
+          "offset": 818848,
+          "length": 732
+        },
+        {
+          "id": "osm:relation:7113811",
+          "sourceId": "osm",
+          "name": "كروسية المركزية",
+          "aliases": [
+            "Kroussia Centrale"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي الهاني",
+          "contextAliases": [
+            "Délégation Sidi El Heni",
+            "Sidi El Hani",
+            "سيدي الهاني",
+            "معتمدية سيدي الهاني"
+          ],
+          "governorateId": 348,
+          "lat": 35.752033,
+          "lng": 10.345479,
+          "delegationId": 441,
+          "hasBoundary": true,
+          "bbox": [
+            10.291893,
+            35.715274,
+            10.445582,
+            35.789074
+          ],
+          "areaKm2": 50.355608912071176,
+          "pickerGroupId": "osm:relation:7113811",
+          "offset": 819580,
+          "length": 1076
+        },
+        {
+          "id": "osm:relation:7135672",
+          "sourceId": "osm",
+          "name": "سيدي الهاني الغربية",
+          "aliases": [
+            "Sidi El Heni Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي الهاني",
+          "contextAliases": [
+            "Délégation Sidi El Heni",
+            "Sidi El Hani",
+            "سيدي الهاني",
+            "معتمدية سيدي الهاني"
+          ],
+          "governorateId": 348,
+          "lat": 35.707146,
+          "lng": 10.241486,
+          "delegationId": 441,
+          "hasBoundary": true,
+          "bbox": [
+            10.212735,
+            35.678396,
+            10.306014,
+            35.735355
+          ],
+          "areaKm2": 18.899028591675894,
+          "pickerGroupId": "osm:relation:7135672",
+          "offset": 1688784,
+          "length": 644
+        }
+      ],
+      "activeDirectCurationDecisions": [],
+      "acceptedBoundaryReferencesTouchingScope": [],
+      "activePickerReferencesTouchingScope": [],
+      "currentBaseRawOwners": [],
+      "finiteCoordinateContext": {
+        "rawRepresentative": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7113809"
+          ],
+          "inTargetResidentialPolygon": true
+        },
+        "legacyBase": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7113806"
+          ],
+          "inTargetResidentialPolygon": false
+        }
+      },
+      "limitation": "Source identity scope only. These are current pinned sector states; no new boundary review, complete display proof assembly, or compiler readiness claim is made."
+    },
+    {
+      "delegationCode": "6157",
+      "targetRawId": "osm:way:923739218",
+      "base": {
+        "governorateId": 365,
+        "id": 606,
+        "nomFr": "Metlaoui",
+        "nomAr": "المتلوي",
+        "nomEn": "Metlaoui",
+        "lat": 34.33,
+        "lng": 8.4
+      },
+      "sourceDelegation": {
+        "id": "osm:relation:7150160",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Métlaoui",
+          "boundary": "administrative",
+          "name": "معتمدية المتلوي",
+          "name:ar": "معتمدية المتلوي",
+          "name:fr": "Délégation Metlaoui",
+          "ref:tn:codegeo": "6157",
+          "ref:tn:hasc_2": "TN.GF.ME",
+          "wikidata": "Q3333748"
+        },
+        "originalGeometrySha256": "07a2d545455a9c542a91b859f2c2c42563c8361dabb45b013c471cd0b6fe843b"
+      },
+      "currentOfficialRegistryRows": [
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615751",
+          "sectorFr": "Metlaoui centre",
+          "sectorAr": "المتلوي المركز",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 66934,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3285,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3279
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615752",
+          "sectorFr": "Metlaoui gare",
+          "sectorAr": "المتلوي المحطة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 66968,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3286,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3280
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615753",
+          "sectorFr": "El mziraa",
+          "sectorAr": "المزيرعة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67002,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3287,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3281
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615754",
+          "sectorFr": "Krichet naam",
+          "sectorAr": "كريشة النعام",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67036,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3289,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3283
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615755",
+          "sectorFr": "Cite el amel ouest",
+          "sectorAr": "حي الامل الغربي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67066,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3290,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3284
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615756",
+          "sectorFr": "Cite el amel est",
+          "sectorAr": "حي الامل الشرقي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67100,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3291,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3285
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615757",
+          "sectorFr": "Thalja",
+          "sectorAr": "الثالجة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67134,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3292,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3286
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615758",
+          "sectorFr": "Oued el orta",
+          "sectorAr": "وادي الأرطة",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67168,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3293,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3287
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615759",
+          "sectorFr": "El magroun",
+          "sectorAr": "المقرون",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67202,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3295,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3289
+          }
+        },
+        {
+          "governorateCode": "61",
+          "governorateFr": "Gafsa",
+          "governorateAr": "قفصة",
+          "delegationCode": "6157",
+          "delegationFr": "Metlaoui",
+          "delegationAr": "المتلوي",
+          "sectorCode": "615760",
+          "sectorFr": "Segui sud",
+          "sectorAr": "السقى القبلي",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 67236,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3296,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3290
+          }
+        }
+      ],
+      "sourceSectors": [
+        {
+          "id": "osm:relation:7150208",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المقرون",
+            "name:ar": "المقرون",
+            "name:fr": "El Magroun",
+            "ref:tn:codegeo": "615759"
+          },
+          "originalGeometrySha256": "83d1c7e88901d3d795fd278c9f90a5d77e25be14953eaa194aeb312deae55c16"
+        },
+        {
+          "id": "osm:relation:7150204",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المتلوي المركز",
+            "name:ar": "المتلوي المركز",
+            "name:fr": "Metlaoui Centre",
+            "ref:tn:codegeo": "615751"
+          },
+          "originalGeometrySha256": "afb0291a4badff816b61bad5b0af0ae4506b66ad9b3df4238f389a8e899e0720"
+        },
+        {
+          "id": "osm:relation:7150171",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الثالجة",
+            "name:ar": "الثالجة",
+            "name:fr": "Thalja",
+            "ref:tn:codegeo": "615757"
+          },
+          "originalGeometrySha256": "7dc9084bfa6575c68bece51c67c308d56d6b728bfe9f905d45578e8981621fa7"
+        },
+        {
+          "id": "osm:relation:7150241",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي الأرطة",
+            "name:ar": "وادي الأرطة",
+            "name:fr": "Oued El Arta",
+            "ref:tn:codegeo": "615758"
+          },
+          "originalGeometrySha256": "a154e507853489fde26584bffdee6008479c3e08590eee30e4dbec5e9fb11fd6"
+        },
+        {
+          "id": "osm:relation:7150203",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المتلوي المحطة",
+            "name:ar": "المتلوي المحطة",
+            "name:fr": "Metlaoui Gare",
+            "ref:tn:codegeo": "615752"
+          },
+          "originalGeometrySha256": "3db56c7a37ed501cc19cff0c1c2513d756df02e67b87224eafde648189ae18be"
+        },
+        {
+          "id": "osm:relation:7150235",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كريشة النعام",
+            "name:ar": "كريشة النعام",
+            "name:fr": "Krichet Naam",
+            "ref:tn:codegeo": "615754"
+          },
+          "originalGeometrySha256": "00438e8ed28e892c989b906ee4500b678b8963b6eae69fccf75fbb4821b141b0"
+        },
+        {
+          "id": "osm:relation:7150205",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المزيرعة",
+            "name:ar": "المزيرعة",
+            "name:fr": "El Mziraa",
+            "ref:tn:codegeo": "615753"
+          },
+          "originalGeometrySha256": "5981b85f5d176483261ed25a8aa0b7091a1ded295a1bd352e769cb17e4df3bbd"
+        },
+        {
+          "id": "osm:relation:7150182",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "السقي القبلي",
+            "name:ar": "السقي القبلي",
+            "name:fr": "Segui Sud",
+            "ref:tn:codegeo": "615760"
+          },
+          "originalGeometrySha256": "e8c7e1a2e23952ffbe5715565e3da961db5310d1aee88955e261061348b09263"
+        },
+        {
+          "id": "osm:relation:7150215",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حي الامل الشرقي",
+            "name:ar": "حي الامل الشرقي",
+            "name:fr": "Cite El Amel Est",
+            "ref:tn:codegeo": "615756"
+          },
+          "originalGeometrySha256": "e9edfc3ff21288f0a479df0391508a6b957f1c1b50fea745c0a823f6aaf58f9b"
+        },
+        {
+          "id": "osm:relation:7150216",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حي الامل الغربي",
+            "name:ar": "حي الامل الغربي",
+            "name:fr": "Cite El Amel Ouest",
+            "ref:tn:codegeo": "615755"
+          },
+          "originalGeometrySha256": "ec19dbb503559b1d3f55caf2bc113ff3a2834c1489a6c42da0205eef0e207d66"
+        }
+      ],
+      "preservedCurrentSectorRows": [
+        {
+          "id": "osm:relation:7150171",
+          "sourceId": "osm",
+          "name": "الثالجة",
+          "aliases": [
+            "Thalja"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.308285,
+          "lng": 8.40117,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.379374,
+            34.30033,
+            8.409946,
+            34.31627
+          ],
+          "areaKm2": 2.3246526527902427,
+          "pickerGroupId": "osm:relation:7150171",
+          "offset": 2625232,
+          "length": 1508
+        },
+        {
+          "id": "osm:relation:7150182",
+          "sourceId": "osm",
+          "name": "السقي القبلي",
+          "aliases": [
+            "Segui Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.18323,
+          "lng": 8.501305,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.326158,
+            34.05264,
+            8.603009,
+            34.31454
+          ],
+          "areaKm2": 451.2845408773287,
+          "pickerGroupId": "osm:relation:7150182",
+          "offset": 2654780,
+          "length": 12332
+        },
+        {
+          "id": "osm:relation:7150203",
+          "sourceId": "osm",
+          "name": "المتلوي المحطة",
+          "aliases": [
+            "Metlaoui Gare"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.307505,
+          "lng": 8.420757,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.404657,
+            34.29913,
+            8.43453,
+            34.31575
+          ],
+          "areaKm2": 3.7636005480129047,
+          "pickerGroupId": "osm:relation:7150203",
+          "offset": 2740176,
+          "length": 1548
+        },
+        {
+          "id": "osm:relation:7150204",
+          "sourceId": "osm",
+          "name": "المتلوي المركز",
+          "aliases": [
+            "Metlaoui Centre"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.321955,
+          "lng": 8.402286,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.395949,
+            34.31459,
+            8.412616,
+            34.3292
+          ],
+          "areaKm2": 1.196556637232923,
+          "pickerGroupId": "osm:relation:7150204",
+          "offset": 2741724,
+          "length": 1172
+        },
+        {
+          "id": "osm:relation:7150205",
+          "sourceId": "osm",
+          "name": "المزيرعة",
+          "aliases": [
+            "El Mziraa"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.244135,
+          "lng": 8.35668,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.242563,
+            34.15028,
+            8.403711,
+            34.33849
+          ],
+          "areaKm2": 153.35889832303002,
+          "pickerGroupId": "osm:relation:7150205",
+          "offset": 2742896,
+          "length": 3852
+        },
+        {
+          "id": "osm:relation:7150208",
+          "sourceId": "osm",
+          "name": "المقرون",
+          "aliases": [
+            "El Magroun"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.324085,
+          "lng": 8.396248,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.39228,
+            34.31477,
+            8.400991,
+            34.33316
+          ],
+          "areaKm2": 0.8753987958914234,
+          "pickerGroupId": "osm:relation:7150208",
+          "offset": 2751156,
+          "length": 1116
+        },
+        {
+          "id": "osm:relation:7150215",
+          "sourceId": "osm",
+          "name": "حي الامل الشرقي",
+          "aliases": [
+            "Cite El Amel Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.3239,
+          "lng": 8.40548,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.401611,
+            34.31856,
+            8.410622,
+            34.32916
+          ],
+          "areaKm2": 0.2317330072685314,
+          "pickerGroupId": "osm:relation:7150215",
+          "offset": 2772624,
+          "length": 1204
+        },
+        {
+          "id": "osm:relation:7150216",
+          "sourceId": "osm",
+          "name": "حي الامل الغربي",
+          "aliases": [
+            "Cite El Amel Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.364715,
+          "lng": 8.459638,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.399107,
+            34.31168,
+            8.513542,
+            34.417736
+          ],
+          "areaKm2": 74.11464780294938,
+          "pickerGroupId": "osm:relation:7150216",
+          "offset": 2773828,
+          "length": 6820
+        },
+        {
+          "id": "osm:relation:7150235",
+          "sourceId": "osm",
+          "name": "كريشة النعام",
+          "aliases": [
+            "Krichet Naam"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.268705,
+          "lng": 8.281454,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.14638,
+            34.16888,
+            8.348831,
+            34.36708
+          ],
+          "areaKm2": 226.31733195111772,
+          "pickerGroupId": "osm:relation:7150235",
+          "offset": 2837064,
+          "length": 1964
+        },
+        {
+          "id": "osm:relation:7150241",
+          "sourceId": "osm",
+          "name": "وادي الأرطة",
+          "aliases": [
+            "Oued El Arta"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية المتلوي",
+          "contextAliases": [
+            "Délégation Metlaoui",
+            "Métlaoui",
+            "معتمدية المتلوي"
+          ],
+          "governorateId": 365,
+          "lat": 34.37357,
+          "lng": 8.389483,
+          "delegationId": 606,
+          "hasBoundary": true,
+          "bbox": [
+            8.329065,
+            34.33214,
+            8.443076,
+            34.41481
+          ],
+          "areaKm2": 62.08749067886419,
+          "pickerGroupId": "osm:relation:7150241",
+          "offset": 2854928,
+          "length": 5500
+        }
+      ],
+      "activeDirectCurationDecisions": [],
+      "acceptedBoundaryReferencesTouchingScope": [],
+      "activePickerReferencesTouchingScope": [
+        {
+          "section": "records",
+          "record": {
+            "id": "osm:way:179363717",
+            "targetDelegationId": 606,
+            "expectedGovernorateId": 365,
+            "expectedBase": {
+              "nomAr": "المتلوي",
+              "lat": 34.33,
+              "lng": 8.4
+            },
+            "expectedExistingMemberIds": [
+              "osm:way:179363717"
+            ],
+            "expectedTargetMemberIds": [
+              "delegation:606"
+            ],
+            "members": [
+              {
+                "id": "osm:way:179363717",
+                "expectedKind": "residential",
+                "expectedSourceId": "osm",
+                "expectedName": "المتلوي",
+                "expectedParentName": "معتمدية المتلوي",
+                "expectedDelegationId": 606,
+                "expectedLat": 34.323229,
+                "expectedLng": 8.406292,
+                "expectedOriginalTags": {
+                  "addr:city": "المتلوي",
+                  "landuse": "residential",
+                  "name": "المتلوي",
+                  "name:ar": "المتلوي",
+                  "name:en": "Metlaoui"
+                },
+                "originalGeometrySha256": "90ec40ab01ed20f605df0ca4befdd7b09efd81d3286ad14f227555ec49f54c3a",
+                "packedGeometrySha256": "ec3bb5952c3d9e991d4aa8b2bbf3b644b812a21dc6fcb35a3c274f24e7760a01"
+              }
+            ],
+            "identityEvidence": [
+              {
+                "method": "current_coded_namesake_administrative_parent",
+                "id": "osm:relation:7150160",
+                "code": "6157",
+                "name": "معتمدية المتلوي",
+                "accepted": true,
+                "reasons": [],
+                "expectedOriginalTags": {
+                  "admin_level": "5",
+                  "alt_name:fr": "Métlaoui",
+                  "boundary": "administrative",
+                  "name": "معتمدية المتلوي",
+                  "name:ar": "معتمدية المتلوي",
+                  "name:fr": "Délégation Metlaoui",
+                  "ref:tn:codegeo": "6157",
+                  "ref:tn:hasc_2": "TN.GF.ME",
+                  "wikidata": "Q3333748"
+                },
+                "effectiveOriginalGeometrySha256": "22191b7abee1a2151ce82c6f2659f96a8a054a5dd357ae8db7a58cda8ecdd732",
+                "currentOfficialRecord": {
+                  "governorateCode": "61",
+                  "governorateAr": "قفصة",
+                  "governorateFr": "Gafsa",
+                  "delegationCode": "6157",
+                  "delegationAr": "المتلوي",
+                  "delegationFr": "Metlaoui"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "currentBaseRawOwners": [
+        "osm:way:179363717"
+      ],
+      "finiteCoordinateContext": {
+        "rawRepresentative": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7150216"
+          ],
+          "inTargetResidentialPolygon": true
+        },
+        "legacyBase": {
+          "inSourceDelegation": true,
+          "containingSourceSectors": [
+            "osm:relation:7150208"
+          ],
+          "inTargetResidentialPolygon": false
+        }
+      },
+      "limitation": "Source identity scope only. These are current pinned sector states; no new boundary review, complete display proof assembly, or compiler readiness claim is made."
+    }
+  ],
+  "primaryPdfEvidence": [
+    {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\mehat-beja-atlas.pdf",
+        "sha256": "c7d51ef83cd9553b021a4be2f4c5101e17828e0f10d3721f1c663dc6cf065201",
+        "bytes": 29396451
+      },
+      "originalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasGouvernoratBejaFr.pdf",
+      "pageCount": 106,
+      "derivedPages": [
+        {
+          "pdfPageOneBased": 60,
+          "printedPage": 59,
+          "completePageText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\beja-page60.txt",
+            "sha256": "eeb48829cb95b9c7e4336671c63f5ae9fb7c4844d40722fb0f97a6f5d452e734",
+            "bytes": 4105
+          },
+          "renderedFullPage": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\beja-page60.png",
+            "sha256": "5ea7c7f64ce4f99e52fd278e85e72e242539b336146800b9bd08fd6150bf69f6",
+            "bytes": 1469846
+          },
+          "reviewerPersonallyViewedCompleteRenderedPage": true,
+          "isOriginalHttpResponseBytes": false,
+          "textDerivation": "PyMuPDF page.get_text(\"text\", sort=False), entire page, no trimming/reflow/normalization/manual correction; Path.write_text UTF8 on Windows translates LF to CRLF.",
+          "pymupdfVersion": "1.28.2",
+          "renderMethod": "Poppler pdftoppm -f N -l N -singlefile -r DPI -png original.pdf outputstem",
+          "renderDpi": 110
+        }
+      ],
+      "cachedOriginalProvenance": null
+    },
+    {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+        "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+        "bytes": 30603494
+      },
+      "originalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+      "pageCount": 129,
+      "derivedPages": [
+        {
+          "pdfPageOneBased": 84,
+          "printedPage": 84,
+          "completePageText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\sousse-page84.txt",
+            "sha256": "a2f1ad433e2640c09eb62fe945c8383b4231c8797fbfa5f09184cfec0e9d5923",
+            "bytes": 5748
+          },
+          "renderedFullPage": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\sousse-page84.png",
+            "sha256": "d93bb5e9240970e084fd9ad14fe70a5f1bd34d0d3277b0720e7a425119319fe0",
+            "bytes": 1263560
+          },
+          "reviewerPersonallyViewedCompleteRenderedPage": true,
+          "isOriginalHttpResponseBytes": false,
+          "textDerivation": "PyMuPDF page.get_text(\"text\", sort=False), entire page, no trimming/reflow/normalization/manual correction; Path.write_text UTF8 on Windows translates LF to CRLF.",
+          "pymupdfVersion": "1.28.2",
+          "renderMethod": "Poppler pdftoppm -f N -l N -singlefile -r DPI -png original.pdf outputstem",
+          "renderDpi": 110
+        }
+      ],
+      "cachedOriginalProvenance": {
+        "sourceReport": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\msaken-second-point-source-review.json",
+          "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab",
+          "bytes": 80619
+        },
+        "sourceField": "primaryIdentityEvidence.source",
+        "originalRetrieval": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+          "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+          "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+          "retrievedAt": "2026-09-12T09:13:58.977509+00:00",
+          "status": 200,
+          "contentType": "application/pdf",
+          "bytes": 30603494,
+          "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+          "originalResponseBytesPreserved": true
+        }
+      }
+    },
+    {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\mehat-gafsa-atlas.pdf",
+        "sha256": "d76941e8be094c2de5a8adb7459da3244c81829ce53768a8d71bdcfd3aee169d",
+        "bytes": 32997585
+      },
+      "originalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasGafsaAr.pdf",
+      "pageCount": 142,
+      "derivedPages": [
+        {
+          "pdfPageOneBased": 102,
+          "printedPage": 91,
+          "completePageText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\gafsa-page102.txt",
+            "sha256": "e43636b6146055825cde50739355548bad019cd993b67b4237733c2d13f584d8",
+            "bytes": 484
+          },
+          "renderedFullPage": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\gafsa-page102.png",
+            "sha256": "8ffb14d8dbcef7d271c1e47bb59db4ac1c52350942f1d5f23a8218cf875d17b3",
+            "bytes": 725205
+          },
+          "reviewerPersonallyViewedCompleteRenderedPage": true,
+          "isOriginalHttpResponseBytes": false,
+          "textDerivation": "PyMuPDF page.get_text(\"text\", sort=False), entire page, no trimming/reflow/normalization/manual correction; Path.write_text UTF8 on Windows translates LF to CRLF.",
+          "pymupdfVersion": "1.28.2",
+          "renderMethod": "Poppler pdftoppm -f N -l N -singlefile -r DPI -png original.pdf outputstem",
+          "renderDpi": 130
+        },
+        {
+          "pdfPageOneBased": 104,
+          "printedPage": 93,
+          "completePageText": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\gafsa-page104.txt",
+            "sha256": "7467d34e1f3c38e968289996d64b92ad6c1ca84d04049990c0a24cd2d1f35d9b",
+            "bytes": 2540
+          },
+          "renderedFullPage": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\gafsa-page104.png",
+            "sha256": "720cd8d32b5ae1784f1be21a2fd933fb6290794f040f65a28935366887ae32b1",
+            "bytes": 386965
+          },
+          "reviewerPersonallyViewedCompleteRenderedPage": true,
+          "isOriginalHttpResponseBytes": false,
+          "textDerivation": "PyMuPDF page.get_text(\"text\", sort=False), entire page, no trimming/reflow/normalization/manual correction; Path.write_text UTF8 on Windows translates LF to CRLF.",
+          "pymupdfVersion": "1.28.2",
+          "renderMethod": "Poppler pdftoppm -f N -l N -singlefile -r DPI -png original.pdf outputstem",
+          "renderDpi": 130
+        }
+      ],
+      "cachedOriginalProvenance": null
+    }
+  ],
+  "primaryTownFindings": {
+    "teboursouk": "Béja atlas2016 physicalpage60/printed59, sectionTboursouk: inhabited city and two urban fabrics distinct from nearbyDougga; historical population/municipal area not treated as current or polygon extent.",
+    "sidiElHani": "Sousse atlas physical/printed84, section4.4.2: inhabited town onRN12 with basic services; URL saysDec2020 while pagefooter2021, historical2014 population not treated as current.",
+    "metlaoui": "Gafsa atlas2011 physical102/104, printed91/93: regional delegation map and2004 population table distinguish city, municipality, and namedsectors. No native map geometry imported and no OuledBelHassen extent established."
+  },
+  "financeTownContext": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\finances-teboursouk.html",
+      "sha256": "8d011944db0a039c4082bfbba3d0c5e8286e91cfbb724ba3be74c920fcd69e7f",
+      "bytes": 39041
+    },
+    "url": "https://www.finances.gov.tn/fr/node/1009",
+    "officialInstitution": "Recette des Finances Teboursouk",
+    "address": "Avenue de la république Téboursouk",
+    "postcode": "9040",
+    "position": {
+      "lat": 36.4608712,
+      "lng": 9.2444394
+    },
+    "insideExactCurrentWay": true,
+    "qualification": "An official office location inside the town polygon; not an INM calculation input, representative-coordinate correction, surveyed city center or boundary certification."
+  },
+  "supplementaryPhone": {
+    "rootReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\borma-next-six-beni-mhira-phone-review-20260912.json",
+      "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f",
+      "bytes": 11637
+    },
+    "selectedObservations": [
+      {
+        "id": "osm:way:96369466",
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_96369466-1.json",
+          "sha256": "a789925f91798bad05d7aa08b90da31d5ea9a9144ecac99c8903128c29b7146a"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_96369466-1.png",
+          "sha256": "bbf8a5570a02b6f83f4e10f5b4bc273b149e347a5999267f5e5c6d5f7f722f0f"
+        },
+        "query": "36.457368,9.246191",
+        "rootVisualConclusion": "Coordinate query selected the named Teboursouk/تبرسق locality card amid the town street network. This supports inhabited town context; the map does not certify the stored polygon.",
+        "rootViewed": true
+      },
+      {
+        "id": "osm:way:43944790",
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-1.json",
+          "sha256": "8577b0aa161096748bb6e89dca11627f06d5334e0aa01834c8c8be21e872d48f"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-1.png",
+          "sha256": "f25082a28f821d83b16856d17cfdfbcc9ae7ebfb6ee3663361f449e0fecdd7e6"
+        },
+        "query": "35.680877,10.311315",
+        "rootVisualConclusion": "Coordinate query snapped to a building on P12, address Sidi Al-Hani, with nearby town streets and health-centre label. Context evidence only; the building is not the locality identity.",
+        "rootViewed": true
+      },
+      {
+        "id": "osm:way:923739218",
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_923739218-1.json",
+          "sha256": "3e2833690aaaa580a7de63ab2fe59412b6b165002a4bfcf54a99481496f98ba1"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_923739218-1.png",
+          "sha256": "13064368fb7cd8a96b695db56daee90483c0578b79d3a2bc23974bf9ae55610c"
+        },
+        "query": "34.33925,8.406474",
+        "rootVisualConclusion": "Selected Ouled Bel Hassen locality card, address Metlaoui, with the same name on the street map east of C122. This changes the next action to investigating the small generic Metlaoui polygon as a potentially distinct named neighborhood; its exact footprint remains unverified.",
+        "rootViewed": true
+      },
+      {
+        "id": "osm:way:43944790",
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-2.json",
+          "sha256": "1de13faed4dc66e63a9a15fe9b293cfc5eb277ffeef215ef54e7507b134be8a2"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_43944790-2.png",
+          "sha256": "ebc940a8895af68bf6abab3e9c7e06299af120dbc35368c427b44545064b5ca5"
+        },
+        "query": "Sidi Al Hani Tunisie",
+        "rootVisualConclusion": "Selected Sidi El Heni/سيدي الهاني town card and visible town outline around the same P12 street network. Supports named town identity; the displayed outline is not extracted or certified.",
+        "rootViewed": true
+      }
+    ],
+    "thisReviewerAccessedPhoneOrLedger": false,
+    "thisReviewerPersonallyViewedPhoneScreenshots": false,
+    "qualification": "Relies on root frozen visual review; public context only, no Google geometry copied or authoritative boundary inferred."
+  },
+  "findings": [
+    {
+      "rawId": "osm:way:96369466",
+      "baseId": 518,
+      "status": "TOWN_IDENTITY_SUPPORTED_FOR_BOUNDED_DISPLAY_ASSOCIATION_REVIEW",
+      "evidenceBasis": [
+        "OSM v1 explicitly tagged this footprint place=village and Teboursouk. Later edits removed place but retained town names, and v11 added town Wikidata/Wikipedia links. Latest tags and exact ring coordinates match the frozen source.",
+        "MEHAT Béja atlas physicalpage60/printed59 describes the inhabited town, its old medina and adjoining colonial fabric, and expressly distinguishes nearby Dougga ruins. It is a town description, not just a municipality-name listing.",
+        "The Finance Ministry lists Recette des Finances Teboursouk at Avenue de la république, postcode9040, coordinate36.4608712,9.2444394 inside this exact residential polygon. This is an official office-location cross-check, not the prayer reference or surveyed town center.",
+        "Root coordinate check selected the town card within its street network. Supplementary only."
+      ],
+      "recommendedNextAction": "Prepare a display-only polygon/base identity proof if the existing residential contract can preserve the exact source polygon and all10 official sectors. Do not equate the residential footprint with the municipality, delegation or any sector.",
+      "missingBeforeAnyApply": [
+        "Independent source review and finite supported display schema/group closure."
+      ],
+      "nameOrCoordinateChange": null
+    },
+    {
+      "rawId": "osm:way:43944790",
+      "baseId": 441,
+      "status": "TOWN_IDENTITY_SUPPORTED_WITH_FOOTPRINT_SCOPE_QUALIFICATION",
+      "evidenceBasis": [
+        "OSM v1-v4 were unnamed residential landuse; v5 added only the town Arabic name in2022. No source neighborhood alternative or POI tag exists. The French output alias is not separate source proof.",
+        "MEHAT Sousse atlas physical/printedpage84 section4.4.2 explicitly describes the inhabited Sidi El Hani town, RN12 access toward Kairouan, schools and health services, and urban-growth limits. It does not certify this0.634581km2 boundary.",
+        "Root coordinate observation gives P12 urban-building context; separate explicit name query selected the town card around the same network. The unnamed building itself is not a locality identity."
+      ],
+      "recommendedNextAction": "A narrowly qualified display association may be reviewed against the existing residential contract, preserving the polygon and all6 distinct official sectors. Do not claim this residential polygon is a complete legal or exhaustive town boundary.",
+      "missingBeforeAnyApply": [
+        "Independent source review and finite supported display schema/group closure."
+      ],
+      "nameOrCoordinateChange": null
+    },
+    {
+      "rawId": "osm:way:923739218",
+      "baseId": 606,
+      "status": "HOLD_DISTINCT_NEIGHBORHOOD_NAME_AND_EXTENT_UNPROVED",
+      "evidenceBasis": [
+        "Exact OSM node-reference history establishes a city-fragment split with copied tags in2021, not an independently surveyed local name. The current accepted owner179363717 remains intact and distinct.",
+        "Root Maps observation selected Ouled Bel Hassen, addressMétlaoui, and showed that name near the streets. This is a substantive named-neighborhood lead and prevents automatically collapsing or deleting the small patch.",
+        "MEHAT Gafsa atlas2011 completeprintedpages91/93 distinguishes Métlaoui city and multiple official sectors, including Hay El Amel Ouest. It neither names this exact Ouled Bel Hassen neighborhood nor maps this0.079029km2 footprint.",
+        "Bounded exact-name searches in Arabic and French did not yield a primary record identifying Ouled Bel Hassen at this Métlaoui polygon. An indexed official postcode annex instead lists a namesake Cite Ouled Bel Hassen in Belkhir; it is not used as this place identity. The municipal historical PDF returned503 and is not cited as retrieved primary content."
+      ],
+      "recommendedNextAction": "Hold rename, deletion and display merge. Obtain a primary municipal/local record identifying this Ouled Bel Hassen neighborhood with a location or extent that can be tied to the current patch. Preserve owner179363717, this patch, all10 sectors, coordinates, and prayer default606 meanwhile.",
+      "missingBeforeAnyApply": [
+        "Primary inhabited-neighborhood identity at this location, independently of the Belkhir namesake.",
+        "Evidence tying the exact current polygon to that locality; phone text alone is insufficient."
+      ],
+      "nameOrCoordinateChange": null
+    }
+  ],
+  "searchScope": {
+    "method": "Targeted exact locality strings and primary institutional domains; no global catalog scan or unrelated locality research.",
+    "ouledBelHassenQueries": [
+      "site:commune-metlaoui.tn \"بلحسن\"",
+      "site:gov.tn \"المتلوي\" \"أولاد\" \"حسن\"",
+      "\"المتلوي\" \"أولاد بلحسن\"",
+      "\"المتلوي\" \"اولاد بالحسن\"",
+      "\"Metlaoui\" \"Ouled Bel Hassen\" quartier",
+      "\"Ouled Belhassen\" \"Métlaoui\" quartier"
+    ],
+    "unadoptedIndexedLead": {
+      "url": "https://www.onmne.tn/wp-content/uploads/2024/11/23-VHC-Circulaire-60-12_Annexe-XII-Codes-postaux.pdf",
+      "qualification": "Search index lists Cite Ouled Bel Hassen underBelkhir. Original body not retrieved in this bounded review; not used as exact place or absence evidence."
+    },
+    "failedPrimaryRetrieval": {
+      "requestedUrl": "https://commune-metlaoui.tn/wp-content/uploads/2025/08/%D8%A7%D9%84%D9%85%D8%AA%D9%84%D9%88%D9%8A-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D8%B6%D8%B1-%D9%88-%D8%A7%D9%84%D9%85%D8%A7%D8%B6%D9%8A.pdf",
+      "retrievedAt": "2026-09-12T11:51:56.638116+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "60",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\metlaoui-municipality-history.pdf.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\metlaoui-municipality-history.pdf",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://commune-metlaoui.tn/wp-content/uploads/2025/08/%D8%A7%D9%84%D9%85%D8%AA%D9%84%D9%88%D9%8A-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D8%B6%D8%B1-%D9%88-%D8%A7%D9%84%D9%85%D8%A7%D8%B6%D9%8A.pdf"
+      ],
+      "exitCode": 0,
+      "httpStatus": "503",
+      "effectiveUrl": "https://commune-metlaoui.tn/wp-content/uploads/2025/08/%D8%A7%D9%84%D9%85%D8%AA%D9%84%D9%88%D9%8A-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D8%B6%D8%B1-%D9%88-%D8%A7%D9%84%D9%85%D8%A7%D8%B6%D9%8A.pdf",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; no rewriting or JSON conversion; normal TLS validation.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\metlaoui-municipality-history.pdf",
+        "sha256": "e76b64432dd93453519199cab857c98b8b71370df5f92dd96c347cf1de0f4e14",
+        "bytes": 4739
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\metlaoui-municipality-history.pdf.headers",
+        "sha256": "65d3c62751e69cdffb503c294d434de670c78719f5d5de4807bcef371edb9e6f",
+        "bytes": 347
+      }
+    },
+    "negativeEvidenceQualification": "Failure to find a primary local record does not establish that the neighborhood is nonexistent."
+  },
+  "retrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\retrieval-manifest.json",
+      "sha256": "89e171faf61a1a85a331966a48f527928df04f238061c5f4116dfe61ea54a740",
+      "bytes": 22145
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\supplement-retrieval-manifest.json",
+      "sha256": "6107b8ce17b58890b8600cd83fd0e706adf0a9fb92da35e8dc2078b5b684768d",
+      "bytes": 11826
+    }
+  ],
+  "preservationSummary": {
+    "currentSectorRows": 26,
+    "sourceAdministrativeContexts": 3,
+    "residentialSourceRows": 4,
+    "directCurationDecisionsInScope": 0,
+    "noProductChangeProposedForMetlaoui": true
+  },
+  "notPerformed": [
+    "Live product edit",
+    "Source stage",
+    "Compiler/product-helper import or execution",
+    "Generation or distance matrix",
+    "Phone/device access",
+    "Ledger write",
+    "Tests/build/APK/AAB",
+    "Google polygon extraction",
+    "Survey/100percent certification"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_three_residential_area_identity_review.py",
+    "sha256": "ee942909d5ae208cb1a5fa927f0a83a8bb488ebd277fd3e859d3ec715ba45d3a",
+    "bytes": 19143
+  }
+}

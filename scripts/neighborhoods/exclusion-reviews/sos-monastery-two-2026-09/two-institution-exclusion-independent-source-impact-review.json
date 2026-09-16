@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_EXACT_TWO_INSTITUTION_EXCLUSION_SOURCE_AND_IMPACT",
+  "reviewedAt": "2026-09-12T14:42:41.382772+00:00",
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "558c204bf93b595d340d75102848f25c8321e3117150bcb809874901b2a181b2",
+      "bytes": 1883620
+    },
+    "binary": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069",
+      "bytes": 5501548
+    },
+    "tinySavedUpdates": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/retired-localities.json",
+      "sha256": "760f97a46c16b6f88ca7cac8b4f8a81610b755377397cb740e2f482973f91de1",
+      "bytes": 8669
+    },
+    "governors": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+      "bytes": 543279
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "78a5a8f3ee2f6b6688aaf12d29b25d8e8d7ed7c5f2a730663dcbb422aab5e4b5",
+      "bytes": 285280
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+      "bytes": 555201
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "c6e72889e5fc38e0ab3a13d466c12100c505a42e131c25b47c5c738a1598fe91",
+      "bytes": 897026
+    },
+    "cache": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "nameAudit": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/current-picker-name-audit.json",
+      "sha256": "02f84d495c7f24cc369f45091ea1569887beea160cf9bd2a88f36aa990f7fb13",
+      "bytes": 115118
+    },
+    "prefs": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/PrefsManager.kt",
+      "sha256": "91ca89263e11f86913e186b95a9f1629365742ba1ce4d5523e6b271df354505f",
+      "bytes": 23162
+    },
+    "localityRepository": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/java/com/tunisianprayertimes/LocalityRepository.kt",
+      "sha256": "77eb4acb077c68377c97eb59a6e7034af77c58476b19c248c6a8402e951d000b",
+      "bytes": 11637
+    }
+  },
+  "authorSourceReview": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/institutional-locality-three-candidate-triage-20260912.json",
+    "sha256": "97980a66fc2e5ca246dd47316ea0e421494520d687da0db92c7990f002969437",
+    "bytes": 13470
+  },
+  "authorFiniteFacts": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/exact-current-source-footprint-facts.json",
+    "sha256": "fe3d2dd9ccc0a09290a00d257c134a22f74c89f5f94017633deab9362f4bba83",
+    "bytes": 104941
+  },
+  "primaryRetrievalManifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/primary-retrievals.json",
+    "sha256": "481931e43eeb5d7e20fcef57da3e9734d59518c053171ae737414ba998633b99",
+    "bytes": 4755
+  },
+  "osmRetrievalManifest": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/two-institution-osm-retrievals.json",
+    "sha256": "d6c698f3c215141320387c5aa91964b634aefbfcb272a3083960dd98244a59d2",
+    "bytes": 6921
+  },
+  "priorControls": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/current-source-tag-scope-priority-screen6.json",
+      "sha256": "78c639a73ad305fbb7a67ffc0cd6347c9e454a1fab495e09bd7641adc87f8560",
+      "bytes": 24076
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/carthage-four-sector-identity-name-source-review.json",
+      "sha256": "6b5879dfb0cd9b9072cb1a719fe70cbbd716bcd0ddd3f235d61c66d94da8f588",
+      "bytes": 65390
+    }
+  ],
+  "primarySourcesPersonallyRead": [
+    {
+      "requestedUrl": "https://www.sosve.tn/village-sos-gammarth-ar/",
+      "retrievedAt": "2026-09-12T14:32:10.610165+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://www.sosve.tn/village-sos-gammarth-ar/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\institutional-locality-triage-20260912\\sos-tunisia-gammarth-current.html",
+        "sha256": "9e7918d1453bc4f9b4d53477df11ca9db8f8c8f52a605c6bdb0da3843fa44f9f",
+        "bytes": 359689
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\institutional-locality-triage-20260912\\sos-tunisia-gammarth-current.html.headers",
+        "sha256": "b115c4767345d45f2c7102759f9724f7c2e1597f480eb2133da2d19bb8d317b0",
+        "bytes": 1084
+      },
+      "stderr": "",
+      "byteProvenance": "Exact curl response body after HTTP content decoding (--compressed); no text conversion, normalization or reconstruction."
+    },
+    {
+      "requestedUrl": "https://www.soschildrensvillages.ca/tunisia/sos-childrens-village-gammarth",
+      "retrievedAt": "2026-09-12T14:32:10.610165+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://www.soschildrensvillages.ca/tunisia/sos-childrens-village-gammarth",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\institutional-locality-triage-20260912\\sos-canada-gammarth.html",
+        "sha256": "f02e3055962980e7b125e6c16f817795a0534efdfe91654dd61f542f768373b7",
+        "bytes": 176646
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\institutional-locality-triage-20260912\\sos-canada-gammarth.html.headers",
+        "sha256": "c928e0ad3bbd05975e81f47924f31f8f0ddfcabd06e4bbdca356d48cf73de5b7",
+        "bytes": 1086
+      },
+      "stderr": "",
+      "byteProvenance": "Exact curl response body after HTTP content decoding (--compressed); no text conversion, normalization or reconstruction."
+    },
+    {
+      "requestedUrl": "https://www.eglisecatholiquetunisie.com/les-paroisses/monastere-charles-de-foucauld-la-marsa/",
+      "retrievedAt": "2026-09-12T14:32:10.612165+00:00",
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://www.eglisecatholiquetunisie.com/les-paroisses/monastere-charles-de-foucauld-la-marsa/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\institutional-locality-triage-20260912\\archdiocese-charles-foucauld.html",
+        "sha256": "f260fcc51e7180e08b21d1a65ad95871ae6ede811162cfb74d9dd5a574215933",
+        "bytes": 127240
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\institutional-locality-triage-20260912\\archdiocese-charles-foucauld.html.headers",
+        "sha256": "ef1d55e23479648e7ebc9241485e09f5aa820760440ef53c7d79b210b8e62994",
+        "bytes": 1221
+      },
+      "stderr": "",
+      "byteProvenance": "Exact curl response body after HTTP content decoding (--compressed); no text conversion, normalization or reconstruction."
+    }
+  ],
+  "cases": [
+    {
+      "id": "osm:way:150833156",
+      "recommendation": "EXCLUDE_EXACT_NAMED_INSTITUTION_FROM_LOCALITY_CATALOG",
+      "currentRaw": {
+        "id": "osm:way:150833156",
+        "sourceId": "osm",
+        "name": "Village d'Enfants SOS Gammarth",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "lat": 36.903789,
+        "lng": 10.300283,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "bbox": [
+          10.299105,
+          36.902949,
+          10.301461,
+          36.904608
+        ],
+        "areaKm2": 0.019972039241661226,
+        "pickerGroupId": "osm:way:150833156",
+        "offset": 5242380,
+        "length": 84
+      },
+      "rawSha256": "ff9d0fa721a39b5f57a655ffe2fb574a504ebb6df635be73abcf423a0d1f372f",
+      "cachedSourceTags": {
+        "amenity": "community_centre",
+        "barrier": "wall",
+        "check_date": "2024-03-24",
+        "landuse": "residential",
+        "name": "Village d'Enfants SOS Gammarth",
+        "name:fr": "Village d'Enfants SOS Gammarth"
+      },
+      "authenticResponses": {
+        "current": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/way-150833156-current.json",
+          "sha256": "7a8837d6048e236609aab85e8f0238009a8903927074b3b45a6ce4378a57a601",
+          "bytes": 696
+        },
+        "history": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/way-150833156-history.json",
+          "sha256": "e1193a2eece30d93dfbe4ca74c98211bf89aa472b8371360d139581f44e37f49",
+          "bytes": 2417
+        },
+        "full": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/way-150833156-full.json",
+          "sha256": "8d8d4689fd4cb7743e89e7f44cc7607b585f21737ea5116b3dea2e12f3fcb142",
+          "bytes": 2217
+        }
+      },
+      "sourceChecks": {
+        "currentHistoryLastAndFullWayExactlyEqual": true,
+        "currentTagsEqualCache": true,
+        "currentVersion": 6,
+        "historyVersions": 6,
+        "originalFullNodeSequenceReconstructsCacheGeometry": true,
+        "sourceSymmetricDifferenceSquareDegrees": 0.0,
+        "packedGeometrySha256": "3e688373e91005b09f71e303b59b689b0dd1fff5bb2ceee74fc5c3d0678e17c2",
+        "packedBytes": 84,
+        "originalVerticesNotCertifiedByPrimaryOrPhone": true
+      },
+      "finiteEffects": {
+        "singletonGroup": [
+          "osm:way:150833156"
+        ],
+        "coveredCachedLocalityNodesSourceOrPacked": [],
+        "otherRawRepresentativePointsSourceOrPacked": [],
+        "newlySurfacedCachedLocalityPoints": [],
+        "remainingWholeFootprintContainers": [
+          {
+            "raw": {
+              "id": "osm:relation:7062758",
+              "sourceId": "osm",
+              "name": "قمرت",
+              "aliases": [
+                "Gammarth"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية المرسى",
+              "contextAliases": [
+                "Al Marsa",
+                "Al-Marsa",
+                "Délégation La Marsa",
+                "La Marsa",
+                "معتمدية المرسى"
+              ],
+              "governorateId": 342,
+              "lat": 36.907531,
+              "lng": 10.293172,
+              "delegationId": 532,
+              "hasBoundary": true,
+              "bbox": [
+                10.269367,
+                36.893763,
+                10.314957,
+                36.920908
+              ],
+              "areaKm2": 6.793965325790029,
+              "pickerGroupId": "osm:relation:7062758",
+              "offset": 73428,
+              "length": 1644
+            },
+            "rawSha256": "004da81275efb93c55e74aea48017a3e82269b6d685bc0667c0125bc6f1d420f",
+            "packedGeometrySha256": "6a0e1e338bb71dddfc5419f763603fd775ab3249543cb5049a78c9f1ac18032c"
+          },
+          {
+            "raw": {
+              "id": "osm:way:89006660",
+              "sourceId": "osm",
+              "name": "قمرت",
+              "aliases": [
+                "Gammarth"
+              ],
+              "kind": "residential",
+              "parentName": "معتمدية المرسى",
+              "contextAliases": [
+                "Al Marsa",
+                "Al-Marsa",
+                "Délégation La Marsa",
+                "La Marsa",
+                "معتمدية المرسى"
+              ],
+              "governorateId": 342,
+              "lat": 36.906883,
+              "lng": 10.294079,
+              "delegationId": 532,
+              "hasBoundary": true,
+              "bbox": [
+                10.282148,
+                36.897029,
+                10.31824,
+                36.916964
+              ],
+              "areaKm2": 2.926741043329966,
+              "pickerGroupId": "osm:relation:7062758",
+              "offset": 5439384,
+              "length": 2644
+            },
+            "rawSha256": "0eec83cfdf2cddd384e71f3794e978801e816628ad70fb858d2a52a44fb9a550",
+            "packedGeometrySha256": "e3e4ddc9a555205142148bc1c18f0785fb88bc8336bb05a8621eb7bfff53a013"
+          }
+        ],
+        "uncoveredFootprintAfterExclusionSquareDegrees": 0.0,
+        "currentConflicts": [],
+        "currentCurationApplicationsRemoved": [],
+        "directCurationPickerBoundaryTargetSelectors": [],
+        "alreadyRetiredOrSavedReplacement": false
+      },
+      "identityQualification": "Operator primary text identifies the named historical SOS care campus and describes family homes integrated into different neighborhoods, digital/cultural facilities retained on this site, and administration moved to El Manar. The historical two-hectare account is consistent with the 1.9972-hectare source footprint, but does not certify vertices or prove every residential use ceased. The broad Gammarth settlement remains separate."
+    },
+    {
+      "id": "osm:way:89023459",
+      "recommendation": "EXCLUDE_EXACT_NAMED_INSTITUTION_FROM_LOCALITY_CATALOG",
+      "currentRaw": {
+        "id": "osm:way:89023459",
+        "sourceId": "osm",
+        "name": "دير شارل دو فوكو",
+        "aliases": [
+          "Monastère Charles de Foucauld",
+          "Kloster Karl von Foucauld",
+          "Monasterio Carlos de Foucauld"
+        ],
+        "kind": "residential",
+        "parentName": "أميلكار",
+        "contextAliases": [
+          "Amilcar",
+          "Cartagine",
+          "Cartago",
+          "Carthage",
+          "Delegación de Cartago",
+          "Delegation Karthago",
+          "Kartagina",
+          "Karthago",
+          "Καρχηδόνα",
+          "Καρχηδών",
+          "Картаген",
+          "Карфаген",
+          "Կարթագեն",
+          "Կարթագէն",
+          "أميلكار",
+          "قرطاج",
+          "قرطاجنہ",
+          "معتمدية قرطاج",
+          "کارتاژ",
+          "ܩܪܬܐܓܘ"
+        ],
+        "governorateId": 342,
+        "lat": 36.875249,
+        "lng": 10.339187,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "bbox": [
+          10.338432,
+          36.874601,
+          10.339898,
+          36.875856
+        ],
+        "areaKm2": 0.010310214292954862,
+        "pickerGroupId": "osm:way:89023459",
+        "offset": 5442028,
+        "length": 140
+      },
+      "rawSha256": "b5d9350fb2a493e5b1a0deac328af2e5ef64adfdba02a52f6e32bbab06cf3a19",
+      "cachedSourceTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "دير شارل دو فوكو",
+        "name:ar": "دير شارل دو فوكو",
+        "name:de": "Kloster Karl von Foucauld",
+        "name:es": "Monasterio Carlos de Foucauld",
+        "name:fr": "Monastère Charles de Foucauld"
+      },
+      "authenticResponses": {
+        "current": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/way-89023459-current.json",
+          "sha256": "dc96f9b0bf7c6b899e9ed3c865d2cf9e2d42aca5ba1201bd2db7a5534d3a8d9a",
+          "bytes": 861
+        },
+        "history": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/way-89023459-history.json",
+          "sha256": "bc103a1f226541d5d59253eae0aec6d68f41fd5b1d07b5c43b841024e8c4c90b",
+          "bytes": 3122
+        },
+        "full": {
+          "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/institutional-locality-triage-20260912/way-89023459-full.json",
+          "sha256": "a010be3f5acdab78ab8c6b0b2c3211d9e9a444e5ef315c34d7a7b26384103e82",
+          "bytes": 3361
+        }
+      },
+      "sourceChecks": {
+        "currentHistoryLastAndFullWayExactlyEqual": true,
+        "currentTagsEqualCache": true,
+        "currentVersion": 7,
+        "historyVersions": 7,
+        "originalFullNodeSequenceReconstructsCacheGeometry": true,
+        "sourceSymmetricDifferenceSquareDegrees": 0.0,
+        "packedGeometrySha256": "2de1e57202fbb9592f534f8cb57ae7b9fb59b1c99dfa3ebaa16e23bea46e15eb",
+        "packedBytes": 140,
+        "originalVerticesNotCertifiedByPrimaryOrPhone": true
+      },
+      "finiteEffects": {
+        "singletonGroup": [
+          "osm:way:89023459"
+        ],
+        "coveredCachedLocalityNodesSourceOrPacked": [],
+        "otherRawRepresentativePointsSourceOrPacked": [],
+        "newlySurfacedCachedLocalityPoints": [],
+        "remainingWholeFootprintContainers": [
+          {
+            "raw": {
+              "id": "osm:relation:7116250",
+              "sourceId": "isie-local-sectors-2023-carthage",
+              "name": "أميلكار",
+              "aliases": [
+                "Amilcar"
+              ],
+              "kind": "sector",
+              "parentName": "قرطاج",
+              "contextAliases": [
+                "Cartagine",
+                "Cartago",
+                "Carthage",
+                "Delegación de Cartago",
+                "Delegation Karthago",
+                "Kartagina",
+                "Karthago",
+                "Καρχηδόνα",
+                "Καρχηδών",
+                "Картаген",
+                "Карфаген",
+                "Կարթագեն",
+                "Կարթագէն",
+                "قرطاج",
+                "قرطاجنہ",
+                "معتمدية قرطاج",
+                "کارتاژ",
+                "ܩܪܬܐܓܘ"
+              ],
+              "governorateId": 342,
+              "lat": 36.871827,
+              "lng": 10.337358,
+              "delegationId": 386,
+              "hasBoundary": true,
+              "bbox": [
+                10.332001,
+                36.865906,
+                10.34214,
+                36.877595
+              ],
+              "areaKm2": 0.6908495959946456,
+              "pickerGroupId": "osm:relation:7116250",
+              "offset": 964480,
+              "length": 492
+            },
+            "rawSha256": "43f6a61e2c31a14b51056bf3b46a3206720c2ad012d308791cd01eef9cc58e43",
+            "packedGeometrySha256": "e6d8cccabfd7487a1ec4acc6abacba7a2783a3b3950b55b98b78176bb2ab0a73"
+          }
+        ],
+        "uncoveredFootprintAfterExclusionSquareDegrees": 0.0,
+        "currentConflicts": [],
+        "currentCurationApplicationsRemoved": [
+          {
+            "index": 205,
+            "receipt": {
+              "id": "osm:way:89023459",
+              "decisionId": "osm:relation:7116250",
+              "inherited": true
+            }
+          }
+        ],
+        "directCurationPickerBoundaryTargetSelectors": [],
+        "alreadyRetiredOrSavedReplacement": false
+      },
+      "identityQualification": "Archdiocese primary page identifies the particular monastery at Villa Lavigerie and publishes its offices. OSM has named this exact walled garden property since v4 in2012. Monastic housing can correctly be residential land use; the supported exclusion concerns this named institution, not a generic residential filter. La Marsa postal wording does not override the existing Amilcar/Carthage context."
+    }
+  ],
+  "independentMethod": "Read primary HTML through a standard-library HTMLParser; verify exact archived bytes against retrieval manifests. Reconstruct both complete public way rings from their own full JSON node sequence, compare current/full/history tags and geometry to cache, decode NPOL independently with struct, and compute only the two candidate footprints against cached points/current polygons. No producer or product imports.",
+  "dependencyFinding": "Neither exact ID occurs in current curation, picker or reviewed-boundary selector manifests. Known installed mentions are generated coverage, frozen full-catalog snapshots, and historical packing/data-review reports. Those original evidence bytes remain historical and must not be rewritten to erase these rows. Monastery depends on accepted Amilcar source7116250 for its current context and inherited receipt; retain the sector/source/proof and remove only the disappearing child receipt. Source stage and actual generated-data gates remain required before installation.",
+  "projectedCountsForOnlyTwoExactExcludeDecisions": {
+    "rawRows": [
+      3623,
+      3621
+    ],
+    "polygons": [
+      2719,
+      2717
+    ],
+    "points": [
+      904,
+      904
+    ],
+    "rawPickerGroups": [
+      3487,
+      3485
+    ],
+    "pickerRows": [
+      3550,
+      3548
+    ],
+    "curations": [
+      171,
+      173
+    ],
+    "curationApplications": [
+      361,
+      360
+    ],
+    "duplicateGroupReports": [
+      308,
+      308
+    ],
+    "conflicts": [
+      318,
+      318
+    ],
+    "retiredIds": [
+      24,
+      26
+    ],
+    "reviewedSavedNames": [
+      105,
+      105
+    ],
+    "savedReplacements": [
+      1,
+      1
+    ],
+    "binaryBytesRemoved": 224
+  },
+  "projectedPreservationContract": [
+    "Append two exact-ID exclude decisions with complete expected residential kind/source tags and primary evidence; preserve all171 existing decisions and unrelated current behavior.",
+    "Remove only the two raw polygons/groups and their 84+140 packed bytes. Other polygon bytes, coordinates, names, aliases, parent/default IDs, groups, sources and conflicts remain unchanged. Offset/cell-index changes from serialization are mechanical and must be independently audited.",
+    "No cached locality node lies within either source or packed footprint, so exclusion cannot surface an absorbed point or transfer an alias from these polygons.",
+    "Remove exactly the inherited89023459/7116250 receipt and preserve all360 remaining previous receipt objects/order; do not add exclude receipts absent a deliberate compiler change.",
+    "Tiny and metadata retired IDs append exactly these two IDs in sorted order;105 reviewed names and the existing one saved replacement remain exact."
+  ],
+  "savedSelectionBehavior": "The existing app checks the tiny retired-ID index. Without a reviewed replacement, getLocalityId returns null and getLocationSelection clears localityId/name/kind, retaining the saved delegationId and GPS-origin flag. Do not remap either saved institution ID to a surrounding area implicitly; no device preferences were accessed.",
+  "gpsQualification": "Both removed footprints remain wholly covered by existing current polygons. SOS has the existing Gammarth sector/residential group; monastery has Amilcar. Their polygon/locality choice can change after exclusion. Actual-fix prayer-source arithmetic remains unchanged; broader Gammarth representative defaults532 must not be substituted for the old site/default386 or a saved/GPS timetable.",
+  "phoneQualification": "Root reported supplementary institution POIs, including a corrected region-qualified monastery name search. This reviewer did not access the phone or inspect those screenshots; no Google geometry or exact-vertex inference is used.",
+  "limitations": [
+    "This is source-qualified exact-property exclusion, not a survey or official polygon certification.",
+    "Residential land use, care facilities or religious names alone are not a generic exclusion rule; both recommendations rely on the specific named property and primary institutional evidence.",
+    "The training-centre candidate499554192 remains outside this review.",
+    "Projected counts are static finite predictions; no stage/generation/runtime build has been run by this reviewer."
+  ],
+  "execution": {
+    "productImports": false,
+    "generatorTestsBuilds": false,
+    "sourceOrLiveEdits": false,
+    "phoneOrLedgerAccess": false,
+    "newNetworkRetrieval": false
+  }
+}

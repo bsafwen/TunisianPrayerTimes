@@ -1,0 +1,166 @@
+{
+  "status": "SUPPORTED_SAME_NAMED_WORKER_LOCALITY_DISPLAY_IDENTITY_PENDING_SOURCE_STAGE",
+  "reviewedAt": "2026-09-12T11:58:30.926550+00:00",
+  "baselineMetadataSha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+  "baselineCurationSha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94",
+  "generatorSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-borma-town-point-source-review-20260912.json",
+    "sha256": "d7fe7e20ec827d9f254d7756db0292ccb5a7ba4d0fbded2e81fc0f371ff0622e"
+  },
+  "finiteFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\finite-source-group-facts.json",
+    "sha256": "83f9b3c04049276c98d83a5571938988029e09423fbe38e779f74ca45139b997"
+  },
+  "finiteSchemaReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-borma-display-scope-feasibility.json",
+    "sha256": "aa8c49a1b54264ddbf1da92c27c8f26de012e411548da1824dbd8f4e629a1bd8"
+  },
+  "previousScopeHold": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-borma-root-scope-holds-20260912.json",
+    "sha256": "d4e5df986785630e710959b05c46c4a02c119a9a3f4fdbfd0509e2fd77db4777"
+  },
+  "officialTimetableIdentity": {
+    "originalResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-476-2026-09-12.json",
+      "sha256": "aff4fa2cb83fa88f87902552f5d49edde663dabbaeab85c38addf00952fcc1b4",
+      "bytes": 571
+    },
+    "retrievalInventory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\reference-inventory.json",
+      "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401"
+    },
+    "finding": "INM directly identifies its El Borma timetable under Tataouine. Its published coordinates are supporting source context only; the existing app anchor stays unchanged."
+  },
+  "sourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\osm-node-500182808-version8.json",
+    "sha256": "98922a10e1b5bb7da068eb52f2ae10ac5da325ed4b6086158ef346ac5b13079d",
+    "url": "https://api.openstreetmap.org/api/0.6/node/500182808/8.json"
+  },
+  "sourceHistory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\osm-node-history-confirmed.json",
+    "sha256": "5c86593c1fe7935c86a31e9b631e98bb2243c08b95661c96eeb2f114bfef64fc"
+  },
+  "historyVersionsReviewed": 9,
+  "primaryEvidence": [
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-social.html",
+        "sha256": "c43e2230e6a10bba8b16643eea25e60ff948bc6f2b718f5f6df2c69976f21e82"
+      },
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=5",
+      "supports": "The operator explicitly describes a residential camp with sports facilities and a medical centre at its El Borma base. Inhabited worker locality is supported; a general civilian town and exact point or residential footprint are not certified."
+    },
+    {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-field.html",
+        "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51"
+      },
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+      "supports": "The operator locates its El Borma oil/gas production field in southwestern Tunisia near the Tunisian-Algerian border. This is the Tunisian industrial locality, not proof about the Algerian namesake municipality."
+    }
+  ],
+  "primaryImages": {
+    "retrieval": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\sitep-plan-image-retrieval.json",
+      "sha256": "6914db26147218824b9ce1cfb04449114f4a1b05127dc8f2b9733542fc069061"
+    },
+    "originalImages": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\sitep-field-map.jpg",
+        "sha256": "db49894dc40866c7e7795fe81220eab7ec0f83fd8773fab5e14692afec96fa37"
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\sitep-residential-camp.png",
+        "sha256": "e726f6bbef65e1109956824efe0397c3fb6710274bf4f149326fa36cc8f671f8"
+      }
+    ],
+    "primaryHtmlParent": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-field.html",
+        "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51"
+      },
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+      "supports": "The operator locates its El Borma oil/gas production field in southwestern Tunisia near the Tunisian-Algerian border. This is the Tunisian industrial locality, not proof about the Algerian namesake municipality."
+    },
+    "visualReview": "Both full original images personally viewed. The camp image labels Camp Résidentiel and a red closed outline, with no geographic grid/control. The concession image separately marks a national border, names Carthage UTM32N, and depicts a much broader industrial concession. These are different scopes, neither is imported or geometrically fitted.",
+    "use": "Supporting the distinction between residential camp, field and larger named locality; not proof that both stored anchors are inside the camp."
+  },
+  "rootImageReview": "Root personally viewed both complete original SITEP images. The camp image illustrates a residential compound; the other image illustrates a much larger concession and border. These distinct scopes are not equivalent and neither is imported as a polygon.",
+  "phoneReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\borma-next-six-beni-mhira-phone-review-20260912.json",
+    "sha256": "90a2ec70aaa2102dcad1cc5a74a7ed50dfbc802323824bb5c7b52be1e413922f"
+  },
+  "phoneObservationsReviewed": [
+    {
+      "id": "delegation:476",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_476-2.json",
+        "sha256": "9e5b7c2021d6fa6b46779677296662d9a01302d2aa06f2e57a190745be0a7382"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_476-2.png",
+        "sha256": "fa508faca836fe3ff58ae1a926e6e58a5db876c2d32cf9edfb376e8ac9bf7f7d"
+      },
+      "query": "31.6916,9.2043",
+      "rootVisualConclusion": "Unnamed pin among SITEP roads and buildings. The nearby-place address says Al Borma, Algeria; this wording identifies a nearby namesake and does not establish the country at the pin or a surveyed border. It is not a selected locality card.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:node:500182808",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-4.json",
+        "sha256": "527546d20856ca4d1644198632661c45082c82324cfa88c5e48eaf68bf150b9a"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-4.png",
+        "sha256": "50745356db524ecd1f9a5486350e582527e54d056e825af7daf184fbd7db6229"
+      },
+      "query": "SITEP El Borma camp résidentiel, Tunisie",
+      "rootVisualConclusion": "Result list contains Camp Résidentiel SITEP El Borma and TPIC Camp of El Borma - Remada. The residential camp is a named public result; no exact footprint is inferred.",
+      "rootViewed": true
+    },
+    {
+      "id": "osm:node:500182808",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-5.json",
+        "sha256": "8071086c3bc3ebd80f967798205a53c3da583aa11d4d833c94887ac3655afbee"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_500182808-5.png",
+        "sha256": "ddc491f89c5296b3c283368db9842e94a5104f558c59b10fc55e640a6f633992"
+      },
+      "query": "Camp Résidentiel SITEP El Borma",
+      "rootVisualConclusion": "Selected public Camp Résidentiel SITEP El Borma card, categorized as a hotel, with visible compound photographs and short plus code M6P9+X7G in the UI record. Supports residential-site identity, not an authoritative polygon or equality of both stored anchors with its footprint.",
+      "rootViewed": true
+    }
+  ],
+  "exactPair": {
+    "pointId": "osm:node:500182808",
+    "baseId": 476
+  },
+  "identityDecision": "same_named_settlement_display_only",
+  "decision": "Support combining the two broad El Borma manual locality choices. The source village identity has continuity from the original western point near the stored reference to the present eastern point; SITEP confirms habitation and INM identifies the Tunisian timetable. Both entries represent the named worker locality context. This does not equate a concession, residential camp, civilian municipality or administrative delegation.",
+  "holdResolution": "The prior hold requested independent narrower locality/reference scope and a valid proof contract. Authentic node history, direct INM identity, primary operator habitation, and the independently checked existing extension now support the broad named-locality display association. Exact shared residential-camp footprint is not the asserted identity.",
+  "preservedSectorIds": [
+    "osm:relation:7143844",
+    "osm:relation:7143846",
+    "osm:relation:7143848",
+    "osm:relation:7143850",
+    "osm:relation:7143871",
+    "osm:relation:7143874"
+  ],
+  "actualAdministrativeDelegationCode": "5357",
+  "actualAdministrativeDelegationName": "Remada",
+  "onlyPermittedMetadataChange": {
+    "id": "osm:node:500182808",
+    "field": "pickerGroupId",
+    "before": "osm:node:500182808",
+    "after": "delegation:476"
+  },
+  "qualification": "Source-stage review and exact generated-data checks remain required. No coordinate correction, sector merge, new boundary, name change, or country-boundary certification is approved by this display scope decision.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_el_borma_root_display_scope.py",
+    "sha256": "e58fc0289a2ed8960c430f3c28153ac0cd67eae060b946c7985fdc34677bd882"
+  }
+}

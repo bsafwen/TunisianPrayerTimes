@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_FAMILY_HOUSE_SOURCE_ANNOTATION_EXCLUSION_RECOMMENDED_NEOPARK_RETAIN",
+  "createdAtUtc": "2026-09-12T21:06:00.304786+00:00",
+  "baselineMetadataSha256": "c173c3051ca1ab9ec6ba077c5b86a52b4e78aa695820d8caf3e2ad3d170250e9",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c173c3051ca1ab9ec6ba077c5b86a52b4e78aa695820d8caf3e2ad3d170250e9",
+    "bytes": 1851719
+  },
+  "baselineCuration": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "660f481f680bad551df14b56b5909d65714856492498d826b468d129c02a16bd",
+    "bytes": 381051
+  },
+  "scope": [
+    "osm:way:454507693",
+    "osm:way:185753201"
+  ],
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\exact-source-finite-facts.json",
+    "sha256": "731bc05e6f0a9456bfd68a5afeb419a3b6a736bff64aaa826fbf32708658ba05",
+    "bytes": 29756
+  },
+  "records": {
+    "osm:way:454507693": {
+      "currentRaw": {
+        "id": "osm:way:454507693",
+        "sourceId": "osm",
+        "name": "maison dali",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "مزراية",
+        "contextAliases": [
+          "Djerba - Houmt Souk",
+          "Délégation Djerba Houmet Souk",
+          "Mazraia",
+          "مزراية",
+          "معتمدية جربة حومة السوق"
+        ],
+        "governorateId": 353,
+        "lat": 33.861341,
+        "lng": 10.960199,
+        "delegationId": 492,
+        "hasBoundary": true,
+        "bbox": [
+          10.95997,
+          33.860971,
+          10.960526,
+          33.861703
+        ],
+        "areaKm2": 0.00241761139158215,
+        "pickerGroupId": "osm:way:454507693",
+        "offset": 5448776,
+        "length": 84
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:454507693",
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "maison dali"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  10.9599702,
+                  33.8612963
+                ],
+                [
+                  10.9600706,
+                  33.8613059
+                ],
+                [
+                  10.9601033,
+                  33.8609899
+                ],
+                [
+                  10.9605259,
+                  33.8609705
+                ],
+                [
+                  10.9603508,
+                  33.8615929
+                ],
+                [
+                  10.9602477,
+                  33.8615961
+                ],
+                [
+                  10.9602177,
+                  33.8617034
+                ],
+                [
+                  10.9599795,
+                  33.8613757
+                ],
+                [
+                  10.9599702,
+                  33.8612963
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "packedSha256": "2c6f18b468046da0e8f16ae4cb073a6b366c1009b10764e73f4ab4ed69bfe241",
+      "packedBytes": 84
+    },
+    "osm:way:185753201": {
+      "currentRaw": {
+        "id": "osm:way:185753201",
+        "sourceId": "osm",
+        "name": "Neopark El Fejja",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "الفجة",
+        "contextAliases": [
+          "Délégation Mornaguia",
+          "El Fajja",
+          "Mornaguia",
+          "الفجة",
+          "معتمدية المرناقية"
+        ],
+        "governorateId": 360,
+        "lat": 36.687633,
+        "lng": 9.956708,
+        "delegationId": 552,
+        "hasBoundary": true,
+        "bbox": [
+          9.952241,
+          36.683509,
+          9.960943,
+          36.690528
+        ],
+        "areaKm2": 0.33125279012410397,
+        "pickerGroupId": "osm:way:185753201",
+        "offset": 5328584,
+        "length": 108
+      },
+      "sourceCacheRecord": {
+        "id": "osm:way:185753201",
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Neopark El Fejja"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  9.9522407,
+                  36.689012
+                ],
+                [
+                  9.9567842,
+                  36.6835094
+                ],
+                [
+                  9.9608199,
+                  36.6853518
+                ],
+                [
+                  9.960779,
+                  36.6855651
+                ],
+                [
+                  9.9607688,
+                  36.6858932
+                ],
+                [
+                  9.9609427,
+                  36.6862541
+                ],
+                [
+                  9.9589377,
+                  36.6893057
+                ],
+                [
+                  9.9579761,
+                  36.6893057
+                ],
+                [
+                  9.9572907,
+                  36.689437
+                ],
+                [
+                  9.9564519,
+                  36.6899209
+                ],
+                [
+                  9.956012,
+                  36.690528
+                ],
+                [
+                  9.9522407,
+                  36.689012
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "packedSha256": "1bc11d567daa528410514c1cc62dfd0548e74a019ac33f50f53722c9942b96c1",
+      "packedBytes": 108
+    }
+  },
+  "findings": {
+    "osm:way:454507693": {
+      "recommendation": "Exclude only this exact family-house source annotation, subject to root review and a separately audited source stage.",
+      "affirmativeSourceRole": {
+        "sourceStatement": "ajout de la maison de la famille dali ajouté le 19/11/2016",
+        "sourceDate": "2016-11-19",
+        "oneCreatedWayId": "454507693",
+        "createdBoundaryNodeIds": [
+          "4510608158",
+          "4510608159",
+          "4510608160",
+          "4510608161",
+          "4510608162",
+          "4510608163",
+          "4510608164",
+          "4510608165"
+        ],
+        "currentWayStillVersion1": true,
+        "allEightCurrentNodeCoordinatesAndVersion1EqualOriginalCreation": true,
+        "extraChange": {
+          "id": "1925608744",
+          "kind": "node",
+          "action": "modify",
+          "unnamed": true,
+          "outsideTarget": true
+        },
+        "qualification": "The mapper is a primary witness to the purpose of this exact map annotation, not independently verified as the owner or current resident. The original OSC directly binds the house statement to this way rather than an unrelated changeset object."
+      },
+      "independentPublicLocalityEvidence": "Bounded exact-name searches found OSM-derived repetitions but no independent municipal/owner source establishing this exact footprint as a recognized estate or neighborhood. This absence is not used as proof of nonexistence; the affirmative original house-annotation statement is the basis of the recommendation. No household/occupant identity research was performed.",
+      "geometryScope": "The whole original eight-vertex property-style outline is preserved in evidence and independently reproduces the84 packed bytes. No claim that it is a single roof, legal parcel, occupied home today, rental business or current household property.",
+      "realContext": "The entire current footprint lies within the preserved Mazraya7133849 sector, Djerba Houmt Souk7133840 delegation and Medenine1434952 governorate in the source layers. No other current locality polygon except the enclosing sector intersects it; no cached locality node or current point row is covered.",
+      "limits": "A later affirmative source establishing a useful named estate at this exact scope would justify reassessment. There is no broad maison/residential/small-area exclusion rule."
+    },
+    "osm:way:185753201": {
+      "recommendation": "Retain Neopark El Fejja as a recognized named industrial area; do not exclude or relabel its outline from category alone.",
+      "affirmativePrimaryIdentity": [
+        {
+          "source": "MFCPOLE operator’s own Neotex legal notice",
+          "file": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\neotex-owner-legal-notice.html",
+            "sha256": "8d78d23600349406dc59c846a6a5cc842657cfd6b1b58b3fcc7f589380256601",
+            "bytes": 125494
+          },
+          "url": "https://www.neotex40.com/mentions-legales/",
+          "finding": "The operator gives its corporate address at the business center within the named Neopark El Fejja industrial park in El Fejja, Mornaguia, Manouba. Hôtel d’entreprise is a business-center term here, not evidence of a lodging hotel."
+        },
+        {
+          "source": "Tunisia Investment Authority’s own visit report",
+          "file": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\neopark-tia-own-visit.html",
+            "sha256": "74ca8fcef0442db84f68f06fc9e176a6936235fdec2e2c964e214d0b575908f4",
+            "bytes": 28261
+          },
+          "url": "https://www.tia.gov.tn/en/news-details/tunisia-investment-authority-delegation-visits-marquardt-tunisia",
+          "finding": "Describes its visit to the Marquardt production extension in Neopark El Fejja. This establishes a real industrial area name and manufacturing context, not this whole OSM perimeter."
+        },
+        {
+          "source": "Sumitomo Wiring Systems’ own office location",
+          "file": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\neopark-sumitomo-own-address.html",
+            "sha256": "8fd3cb3eae13f30422a32f6a28a378783b65679192419882d20cfea6557b8b73",
+            "bytes": 22179
+          },
+          "url": "https://www.sws.co.jp/en/corporation/outline/office/detail/se_bordnetze_el_fejja_sarl_tunisia_sebn-tn2.html",
+          "finding": "Identifies the manufacturing location as Neopark El Fejja, Plot BI-9, Manouba. Its map link has empty coordinates (q=,), so no coordinate identity was invented from it."
+        }
+      ],
+      "osmHistory": "v1(2012) unnamed brownfield; v2(2018) changed landuse to residential; v3(2021) added Neopark El Fejja. All three have the same node-reference outline; current coordinates match fresh PBF and packed108 bytes. No historical node-coordinate parity is claimed beyond what was retrieved. The broad changeset comments provide no evidence of residential neighborhood development.",
+      "sourceTagQuestion": "The present residential tag is questionable against the named park’s documented industrial role, but is not by itself grounds for removing a useful locality. No kind correction is proposed without a separately reviewed exact mapping of the preserved source footprint.",
+      "wholeFootprintLimit": "Primary sources establish the industrial park name and real regional context, but no original operator/municipal polygon was acquired matching these eleven vertices. This33.1-hectare OSM footprint must not be silently presented as the park’s complete present extent, enlarged from unrelated park-area figures, or replaced by one tenant property.",
+      "realContext": "Whole current polygon is inside the preserved El Fejja7102174 sector, Mornaguia7204611 delegation and Manouba1435828 governorate in the source layers. No contained cached locality nodes/current point rows or direct active manifest references were found. Keep all108 bytes and current source identity."
+    }
+  },
+  "exactProposedCurations": [
+    {
+      "id": "osm:way:454507693",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "maison dali"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact source annotation of an individual family house from the locality picker. Its original creation comment explicitly describes adding a family house, and the original changeset creates only this way and its eight unchanged boundary nodes. This decision does not depend on the word maison, area or residential tag alone, and does not identify current occupants or certify a roof/cadastral boundary. Preserve the enclosing Mazraya locality and all prayer references.",
+      "evidence": [
+        {
+          "source": "Authentic original OSM way and creation intent",
+          "wayCurrent": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-current.json",
+            "sha256": "4473ae8e6b7908afe93d1ade44baa0f290daebfba5ccb8191ab3438c343a143b",
+            "bytes": 561
+          },
+          "wayHistory": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-history.json",
+            "sha256": "8019e7851d133dfe8df74e566e64d81fb7f0eaebe178b0c31e50b4abf8fd0b2a",
+            "bytes": 561
+          },
+          "wayFull": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-full.json",
+            "sha256": "9d9c6ee956c74aa6538e8fc640aba02b68ceae8181e55b5f8210d2ebea5e6073",
+            "bytes": 1905
+          },
+          "creationChangeset": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-43800862.json",
+            "sha256": "7807a0eae2957d9ed1e1db642ecea7023ac63151633a9a22f10aa54568e9f007",
+            "bytes": 734
+          },
+          "creationChangeBody": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-43800862-download.osc",
+            "sha256": "fe9117f44d4deb1eb3248a1c76fe1650b28204e40405927dfec0cfe705ce7e0e",
+            "bytes": 2525
+          },
+          "sourceStatement": "ajout de la maison de la famille dali ajouté le 19/11/2016",
+          "urls": [
+            "https://api.openstreetmap.org/api/0.6/way/454507693/history.json",
+            "https://api.openstreetmap.org/api/0.6/changeset/43800862.json",
+            "https://api.openstreetmap.org/api/0.6/changeset/43800862/download"
+          ]
+        }
+      ]
+    }
+  ],
+  "preservationContract": {
+    "removeOnlyIds": [
+      "osm:way:454507693"
+    ],
+    "preserveNamedIndustrialLocalityIds": [
+      "osm:way:185753201"
+    ],
+    "preserveCurrentParentSectorIds": [
+      "osm:relation:7133849",
+      "osm:relation:7102174"
+    ],
+    "all904CurrentPointRowsPreserved": true,
+    "noNewSourcePointSurfaced": true,
+    "allOtherCurrentRawFieldsExceptNecessaryBinaryOffsetsPreserved": true,
+    "all271PriorCurationObjectsAndTokensPreserved": true,
+    "all390ExistingReceiptsPreserved": true,
+    "all366ConflictsAnd308DuplicateReportsPreserved": true,
+    "noOwnTargetReceiptOrActiveManifestSelector": true,
+    "currentWholeGeometryBytes": 5536256,
+    "removedGeometryBytes": 84,
+    "expectedGeometryBytes": 5536172,
+    "expectedRawCount": 3524,
+    "expectedPolygonCount": 2620,
+    "expectedPointCount": 904,
+    "expectedRawPickerGroupCount": 3388,
+    "expectedCurationCount": 272,
+    "expectedRetiredIdCount": 123,
+    "savedNamesAndExistingReplacementBindings": "Preserve all existing saved-name records and replacement mappings; append only this retired ID under existing exclusion behavior.",
+    "prayerReferenceQualification": {
+      "houseCurrentDefault": 492,
+      "preservedMazrayaSectorRepresentativeDefault": 494,
+      "parkCurrentDefault": 552,
+      "meaning": "Different house/sector representative defaults do not imply a timetable transfer. Existing resolveGpsLocation selects nearest from the actual GPS fix and overrides the chosen locality delegationId. Exclusion changes the visible locality fallback only; no prayer-source coordinates or nearest-selection behavior is authorized to change.",
+      "source": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\java\\com\\tunisianprayertimes\\DelegationLocator.kt",
+        "sha256": "08b0e71b6ea14a071a6928d71138d32785d563904f61f33e13627e545dd68609",
+        "bytes": 19321
+      },
+      "lines": [
+        191,
+        201
+      ]
+    },
+    "noGeometryRepairClippingMergingOrSourceCoordinateChanges": true,
+    "actualGeneratedOutputNotYetAvailable": true
+  },
+  "minimalOriginalEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-current.json",
+      "sha256": "4473ae8e6b7908afe93d1ade44baa0f290daebfba5ccb8191ab3438c343a143b",
+      "bytes": 561
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-history.json",
+      "sha256": "8019e7851d133dfe8df74e566e64d81fb7f0eaebe178b0c31e50b4abf8fd0b2a",
+      "bytes": 561
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-full.json",
+      "sha256": "9d9c6ee956c74aa6538e8fc640aba02b68ceae8181e55b5f8210d2ebea5e6073",
+      "bytes": 1905
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-185753201-current.json",
+      "sha256": "f6972d9fa1a6affe4f545ace1005afbbdd186ea5c51a38e89e104c05dd2e7deb",
+      "bytes": 608
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-185753201-history.json",
+      "sha256": "3784289e7dabeb2ff3308637616e2e513af1b276add25f77a2e1ff5372ec38ff",
+      "bytes": 1209
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-185753201-full.json",
+      "sha256": "93be53151fe0a76d2165a1807d8ddb776e41ab87e4ece3c4e63e05f00fbcb192",
+      "bytes": 2405
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-43800862.json",
+      "sha256": "7807a0eae2957d9ed1e1db642ecea7023ac63151633a9a22f10aa54568e9f007",
+      "bytes": 734
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-43800862-download.osc",
+      "sha256": "fe9117f44d4deb1eb3248a1c76fe1650b28204e40405927dfec0cfe705ce7e0e",
+      "bytes": 2525
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-13489840.json",
+      "sha256": "6fc40832223a6602f67e2bf36a9956e47cbfc486b7e0f55a6505f0ff36cffe3b",
+      "bytes": 636
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-60950964.json",
+      "sha256": "d554722bd8c120b60545967bc0d1def8c777b71c7d6c8756387b48a998f33a06",
+      "bytes": 724
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-103777858.json",
+      "sha256": "010a06b686b36bc9a78828af545fafe25c6f4b4aabe493fc76594fc080efb1d2",
+      "bytes": 865
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\neotex-owner-legal-notice.html",
+      "sha256": "8d78d23600349406dc59c846a6a5cc842657cfd6b1b58b3fcc7f589380256601",
+      "bytes": 125494
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\neopark-tia-own-visit.html",
+      "sha256": "74ca8fcef0442db84f68f06fc9e176a6936235fdec2e2c964e214d0b575908f4",
+      "bytes": 28261
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\neopark-sumitomo-own-address.html",
+      "sha256": "8fd3cb3eae13f30422a32f6a28a378783b65679192419882d20cfea6557b8b73",
+      "bytes": 22179
+    }
+  ],
+  "retrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\osm-retrievals.json",
+      "sha256": "e4ac167b8d72a781ae1273615577bb0c9d63ad7b1009064fa055fae05d1a61dc",
+      "bytes": 8435
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\additional-retrievals.json",
+      "sha256": "c5f4f67c33b2f44e15404fda5d531ea3cd8fd0512f85da11c268623903e2be7c",
+      "bytes": 14773
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\owner-contractor-retrievals.json",
+      "sha256": "4af1123b6e27006118b663d3c266791f37811fe63934d1373964ce2d3865a59c",
+      "bytes": 2461
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\maison-creation-retrieval.json",
+      "sha256": "8e094dd26f7cdb13dbf7898d93744958fd1921d86c961c43a5b464c34d551535",
+      "bytes": 1467
+    }
+  ],
+  "unavailableSourcesPreserved": [
+    {
+      "url": "https://www.mfcpole.com.tn/",
+      "result": "TLS verification failed: self-signed certificate. No certificate validation bypass or false homepage bytes created. Successful operator-owned Neotex legal notice used separately."
+    },
+    {
+      "url": "https://sbf.com.tn/developpement-du-parc-industriel-el-fajja/",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\neopark-primary-contractor-development.html",
+        "sha256": "bf0d40d13e2801ceaa82a9a0a215957d04d4f17b53f2dc7021950220340ecc3b",
+        "bytes": 76069
+      },
+      "status": 404,
+      "qualification": "Search result snippet suggested a relevant development page, but original HTTP body is404 and is not used as project evidence."
+    }
+  ],
+  "phoneQualification": "Parent root operates public Maps independently. Reported name query for maison dali selected a Dali garden card without an exact-object link; not used as source identity. Parent’s Neopark query found the named factory/park vicinity and supports the real name only. Any later phone report is supplementary; no Google geometry was acquired or copied by this agent.",
+  "sourceResearchLimits": [
+    "Only these two source objects and their bounded creation/name histories investigated.",
+    "No private current residents, home ownership, contact details or unrelated personal information were investigated.",
+    "No rental advertisement or area/name-prefix-only reasoning is used.",
+    "No official cadastral or complete modern industrial-park geometry was obtained."
+  ],
+  "finiteProducer": {
+    "file": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\derive_finite_facts.py",
+      "sha256": "08dea3cea1b7798b7ac51a2a2123a33a6b07d0857f182835c1d1c14ab5c9d583",
+      "bytes": 8154
+    },
+    "toolChunk": "0392a3",
+    "exitCode": 0
+  },
+  "creationBindingCheck": {
+    "toolChunk": "77f8fd",
+    "exitCode": 0
+  },
+  "operations": {
+    "sourceStageOrLiveEdits": false,
+    "productImports": false,
+    "generation": false,
+    "testsOrBuild": false,
+    "phone": false,
+    "ledger": false
+  }
+}

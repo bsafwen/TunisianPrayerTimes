@@ -1,0 +1,42 @@
+{
+  "requestedUrl": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8",
+  "retrievedAt": "2026-09-12T12:28:07.043707+00:00",
+  "exitCode": 0,
+  "httpStatus": "200",
+  "effectiveUrl": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8",
+  "stderr": "",
+  "command": [
+    "curl.exe",
+    "--silent",
+    "--show-error",
+    "--location",
+    "--compressed",
+    "--connect-timeout",
+    "10",
+    "--max-time",
+    "35",
+    "--dump-header",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\interior-tinja-city-article.html.headers",
+    "--output",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\interior-tinja-city-article.html",
+    "--write-out",
+    "%{http_code}\n%{url_effective}",
+    "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8"
+  ],
+  "response": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\interior-tinja-city-article.html",
+    "sha256": "cbdbd3274bad4e07bc780c41d595a4ccdbe219633f775139eee4809e24cd21e7",
+    "bytes": 51445
+  },
+  "headers": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\interior-tinja-city-article.html.headers",
+    "sha256": "38ada78a7c03752e8d926dbf25b712a6aef0444ceb471723fcea4182e08b118e",
+    "bytes": 670
+  },
+  "bodySemantics": "Original decoded HTTP response bytes. Normal TLS. Article URL extracted verbatim from primary listing href; no conversion or rewriting.",
+  "discoverySource": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\interior-tinja-city-list.html",
+    "sha256": "f2f1c6b0c460237c696d9ca3901fc3ac1c645fd04db61a6e44416e7b05142e69",
+    "bytes": 110072
+  }
+}

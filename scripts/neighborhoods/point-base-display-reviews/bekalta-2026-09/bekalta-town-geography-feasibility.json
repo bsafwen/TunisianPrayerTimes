@@ -1,0 +1,388 @@
+{
+  "status": "BEKALTA_FINITE_EXISTING_EXTENSION_FEASIBLE_NO_STAGE",
+  "reviewedAt": "2026-09-12T11:12:03.495997+00:00",
+  "baselineMetadataSha256": "e457f34a3c0891ee3d1cdbeaac45214032396c7c6f6193c4d3f858686a9ce3f2",
+  "generatorSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "facts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-geography-feasibility\\finite-source-group-facts.json",
+    "sha256": "bd9fe80fd69ff5ffaa13d79af62b8d4c088a72dd61ea70afcd8fc803d6e84d46"
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-town-point-source-review.json",
+    "sha256": "42c7f5f3d6caa20bb984df325e7700003b049bf08b0683bb47a50fcea21607f4"
+  },
+  "sourceIdentityFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bekalta-town-point-source-review\\source-identity-facts.json",
+    "sha256": "eff6cf8be916dbf7f6cc1ac6344ca6b765eff9b5cafd9f39bfd7e8346ebeef1f"
+  },
+  "supplementaryPhoneReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\bekalta-beni-mhira-borma-phone-review-20260912.json",
+    "sha256": "f37127f65189ec3c112ac08b33950b740a30fee26abfb8a4a11eec15175a7ecc"
+  },
+  "schemaAssessment": {
+    "method": "reviewed_explicit_point_base_display_identity",
+    "extension": "townPreservationExtension",
+    "status": "EXISTING_EXTENSION_FEASIBLE",
+    "reason": "Four accepted replacements require exact original/effective phases. Existing extension preserves all five raw rows, seven states, four singleton sectors and both source-only contexts.",
+    "extraNamePeerIds": [],
+    "extraAdministrativeContainerIds": [],
+    "positiveGovernorAndDelegationContainment": true,
+    "topLevelCompletePickerGroups": {
+      "before": [
+        [
+          "osm:node:558814858"
+        ],
+        [
+          "delegation:601"
+        ]
+      ],
+      "after": [
+        [
+          "delegation:601",
+          "osm:node:558814858"
+        ]
+      ]
+    },
+    "doNotUse": [
+      "standard proof without source lineage",
+      "top-level officialDelegationCode together with townPreservationExtension",
+      "retainedTownPoint",
+      "coordinate relocation"
+    ]
+  },
+  "finiteCounts": {
+    "officialSectors": 4,
+    "protectedRawRows": 5,
+    "sourceStates": 7,
+    "acceptedReplacements": 4,
+    "acceptedProviders": 3,
+    "contexts": 2,
+    "boundCurationDecisions": 0,
+    "priorPickerRecords": 0,
+    "boundedReferenceComparisons": 516,
+    "freshBekaltaPhoneRecordsRead": 2
+  },
+  "sourceNamePeers": {
+    "original": [
+      {
+        "id": "osm:node:558814858",
+        "kind": "village"
+      },
+      {
+        "id": "osm:relation:7154971",
+        "kind": "delegation"
+      }
+    ],
+    "effective": [
+      {
+        "id": "osm:node:558814858",
+        "kind": "village"
+      },
+      {
+        "id": "osm:relation:7154971",
+        "kind": "delegation"
+      }
+    ]
+  },
+  "completeAdministrativeContainers": {
+    "original": {
+      "point": [
+        "osm:relation:1434954",
+        "osm:relation:7111933",
+        "osm:relation:7154971"
+      ],
+      "base": [
+        "osm:relation:1434954",
+        "osm:relation:7111933",
+        "osm:relation:7154971"
+      ]
+    },
+    "effective": {
+      "point": [
+        "osm:relation:1434954",
+        "osm:relation:7111933",
+        "osm:relation:7154971"
+      ],
+      "base": [
+        "osm:relation:1434954",
+        "osm:relation:7111933",
+        "osm:relation:7154971"
+      ]
+    }
+  },
+  "coordinateMembership": {
+    "osm:relation:1434954": {
+      "original": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      "effective": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      }
+    },
+    "osm:relation:7111930": {
+      "original": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "effective": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      }
+    },
+    "osm:relation:7111931": {
+      "original": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "effective": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      }
+    },
+    "osm:relation:7111932": {
+      "original": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "effective": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      }
+    },
+    "osm:relation:7111933": {
+      "original": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      "effective": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      }
+    },
+    "osm:relation:7154971": {
+      "original": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      "effective": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      }
+    }
+  },
+  "packedMembership": {
+    "osm:relation:7111930": {
+      "point": {
+        "contains": false,
+        "covers": false
+      },
+      "base": {
+        "contains": false,
+        "covers": false
+      }
+    },
+    "osm:relation:7111931": {
+      "point": {
+        "contains": false,
+        "covers": false
+      },
+      "base": {
+        "contains": false,
+        "covers": false
+      }
+    },
+    "osm:relation:7111932": {
+      "point": {
+        "contains": false,
+        "covers": false
+      },
+      "base": {
+        "contains": false,
+        "covers": false
+      }
+    },
+    "osm:relation:7111933": {
+      "point": {
+        "contains": true,
+        "covers": true
+      },
+      "base": {
+        "contains": true,
+        "covers": true
+      }
+    }
+  },
+  "referenceGuards": {
+    "point": {
+      "coordinate": {
+        "lat": 35.6172948,
+        "lng": 10.9891336
+      },
+      "nearest": {
+        "id": 601,
+        "kilometers": 0.554653271655194
+      },
+      "runnerUp": {
+        "id": 594,
+        "kilometers": 3.4345692695950003
+      }
+    },
+    "base": {
+      "coordinate": {
+        "lat": 35.619,
+        "lng": 10.9949
+      },
+      "nearest": {
+        "id": 601,
+        "kilometers": 0.0
+      },
+      "runnerUp": {
+        "id": 594,
+        "kilometers": 3.640008279861086
+      }
+    }
+  },
+  "onlyConditionalMetadataChange": {
+    "id": "osm:node:558814858",
+    "field": "pickerGroupId",
+    "before": "osm:node:558814858",
+    "after": "delegation:601"
+  },
+  "boundaryProviderIds": [
+    "isie-local-sectors-2023-baghdadi-review",
+    "isie-local-sectors-2023-bekalta-north-aggregate-review",
+    "isie-local-sectors-2023-bekalta-south-east-review"
+  ],
+  "preservedBoundaryScopeAndUncertainty": [
+    {
+      "id": "isie-local-sectors-2023-bekalta-north-aggregate-review",
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-north-aggregate-independent-review.json",
+        "evidenceSha256": "9ce783d5e415631eed80f536f80d3ce64ecfe51bfa109b54eede5bdd7ff906aa"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-bekalta-south-east-review",
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/bekalta-south-east-review-isie2023-decisions.json",
+        "evidenceSha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-baghdadi-review",
+      "review": {
+        "reviewedDate": "2026-09-07",
+        "geometryEdition": 2023,
+        "identityRegistry": "INS RGPH2024; three agreeing sector workbooks.",
+        "acceptance": "Complete reviewed geometry accepted together with the seven-record Bekalta neighbor correction. Exact original vectors retained; North is the exhaustive two-circle union.",
+        "uncertainty": "Registration strips and unfilled gaps remain. Zahra/Hiboun mixed-source border disagreement is retained as a conflict. Existing coordinate rounding can collapse thin source-gap branches; accepted geometry precision does not certify survey accuracy.",
+        "evidenceFile": "official/baghdadi-review-isie2023-decision.json",
+        "evidenceSha256": "a9c5b40970cb04f4ec1c92ef3429dfbf11a20396af183564162eb4883e172512"
+      }
+    }
+  ],
+  "qualifications": [
+    "Original North sector325951 is labeled Teboulba in the cache. Its accepted ISIE replacement retains ID/code and replaces labels/geometry with Bekalta North. This historical mismatch is not town-node identity evidence.",
+    "Accepted 2023 vector/electoral aggregate lineage and its existing registration-gap/conflict qualifications are retained; no new boundary precision or Google extent is claimed.",
+    "Town identity remains distinct from four sectors, municipality and delegation territory; both current coordinates remain unchanged.",
+    "The fresh coordinate query opened a nearby bus-stop card and the name query a Bekalta town card. These support context only; no Google outline is an accepted geometry.",
+    "Before a future display stage, bind the then-current metadata and curation epoch and independently review the source proof. No compiler execution was used to claim feasibility."
+  ],
+  "notPerformed": [
+    "network fetch",
+    "source/rule/compiler stage",
+    "generation",
+    "compiler/product-helper import or execution",
+    "live writes",
+    "phone or ledger access",
+    "tests/build"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\prepare_bekalta_town_geography.py",
+    "sha256": "7c9f1b19d6a7cbf36d666a55d2c84d997e6f715c0ddd99b073674360fa773ce3"
+  }
+}

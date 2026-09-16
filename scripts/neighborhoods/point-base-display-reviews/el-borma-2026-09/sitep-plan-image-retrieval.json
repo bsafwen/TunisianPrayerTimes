@@ -1,0 +1,42 @@
+[
+  {
+    "file": "sitep-field-map.jpg",
+    "requestedUrl": "http://www.sitep.com.tn/upload/1701092744_carte6.jpg",
+    "finalUrl": "http://www.sitep.com.tn/upload/1701092744_carte6.jpg",
+    "status": 200,
+    "sha256": "db49894dc40866c7e7795fe81220eab7ec0f83fd8773fab5e14692afec96fa37",
+    "bytes": 523685,
+    "retrievedAt": "2026-09-12T11:44:21.216314+00:00",
+    "headers": {
+      "Date": "Sat, 12 Sep 2026 11:44:15 GMT",
+      "Server": "Apache",
+      "Last-Modified": "Fri, 12 Jan 2024 12:13:03 GMT",
+      "ETag": "\"34cb84-7fda5-60ebe95f991c0\"",
+      "Accept-Ranges": "bytes",
+      "Content-Length": "523685",
+      "Keep-Alive": "timeout=5, max=100",
+      "Connection": "Keep-Alive",
+      "Content-Type": "image/jpeg"
+    }
+  },
+  {
+    "file": "sitep-residential-camp.png",
+    "requestedUrl": "http://www.sitep.com.tn/upload/1704961276_campresidentiel.png",
+    "finalUrl": "http://www.sitep.com.tn/upload/1704961276_campresidentiel.png",
+    "status": 200,
+    "sha256": "e726f6bbef65e1109956824efe0397c3fb6710274bf4f149326fa36cc8f671f8",
+    "bytes": 396485,
+    "retrievedAt": "2026-09-12T11:44:21.714485+00:00",
+    "headers": {
+      "Date": "Sat, 12 Sep 2026 11:44:15 GMT",
+      "Server": "Apache",
+      "Last-Modified": "Fri, 12 Jan 2024 09:59:25 GMT",
+      "ETag": "\"34cb5e-60cc5-60ebcb8109940\"",
+      "Accept-Ranges": "bytes",
+      "Content-Length": "396485",
+      "Keep-Alive": "timeout=5, max=100",
+      "Connection": "Keep-Alive",
+      "Content-Type": "image/png"
+    }
+  }
+]

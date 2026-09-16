@@ -4436,8 +4436,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "point-base-display-reviews/teboulba/594-proof-next-four-interface.json",
-        "sha256": "28be5cd92b2af9ec7c1bd51d367055858a7226116b11f646f2bfbb95a831332a"
+        "file": "dependency-successors/soliman-native-20260912/node-558814817-boundary-proof.json",
+        "sha256": "64b61c6c1d950f6b91a9e7b16f9e1c3bcb33d57221f5f96fe510ff2eb030eee5"
       },
       "reason": "The exact addressed source village and the existing594 timetable locality identify one named Teboulba settlement. Preserve both accepted coordinates and all separately coded imadas, including the already corrected Bekalta North source identity.",
       "evidence": {
@@ -4734,8 +4734,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "point-base-display-reviews/beni-hassan-saouaf/597-proof-next-four-interface.json",
-        "sha256": "5fa28c64915de148731e7749c624e23a07509448fe29c196df92ddb77aabc00a"
+        "file": "dependency-successors/soliman-native-20260912/node-1165828355-boundary-proof.json",
+        "sha256": "20e97713bf792b989f215c7c988e9437b3f7c5b1e8a490a0d288287e39870546"
       },
       "reason": "Exact source identity and primary inhabited-locality evidence support one display choice. Preserve both reference coordinates and every separate imada.",
       "evidence": {
@@ -4770,8 +4770,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "point-base-display-reviews/beni-hassan-saouaf/413-proof-next-four-interface.json",
-        "sha256": "abc82b38064031ccd8a22679c622b4acb0148527bc18005bf0c905cdfe8624e3"
+        "file": "dependency-successors/soliman-native-20260912/node-1419131100-boundary-proof.json",
+        "sha256": "3f98e9830e47130e1ca95345c265a1da520e81fc0f695344ce275e87ee8f28d2"
       },
       "reason": "Exact source identity and primary inhabited-locality evidence support one display choice. Preserve both reference coordinates and every separate imada.",
       "evidence": {
@@ -5068,8 +5068,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "point-base-display-reviews/town-preservation-2026-09/624-reviewed-point-base-display-identity.json",
-        "sha256": "51dc4e65ae7dfd47fe7d878292a0dbb4f5775f049edb8386aa320c10aefc5285"
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/dependency-successors/624-picker-proof.json",
+        "sha256": "81449f30457abffdf6bc05430008c6670e27e92c4808f0358ad50a27f4b0b493"
       },
       "reason": "Independent primary settlement identity supports one exact timetable display association while the typed preservation proof retains every existing imada, complete group and accepted context/source phase.",
       "evidence": {
@@ -5223,8 +5223,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "point-base-display-reviews/four-town-2026-09/467-reviewed-point-base-display-identity.json",
-        "sha256": "544a14464215148fdd987f579aabb5933486d16e437aa643a02825445764a44c"
+        "file": "dependency-successors/soliman-native-20260912/node-1124133881-boundary-proof.json",
+        "sha256": "8a54c7876cd4f93fc46932336f46d814cf0c6f41f14b23148923e4ed56bb7e4e"
       },
       "reason": "Independent primary city identity and exact unchanged-source preservation support this single timetable display association, with all administrative imadas kept separate.",
       "evidence": {
@@ -5323,6 +5323,2937 @@
           "file": "exclusion-reviews/student-residence-two/reviewed-two-student-institution-exclusion-proof.json",
           "sha256": "a325beb85df445a1b638be97a220498e2368bef1b47b371bcabd6bb63e33b1a5"
         }
+      ]
+    },
+    {
+      "id": "osm:node:287625095",
+      "expectedKind": "town",
+      "expectedTags": {
+        "addr:postcode": "8100",
+        "name": "جندوبة",
+        "name:ar": "جندوبة",
+        "name:en": "Jendouba",
+        "name:fa": "جندوبه",
+        "name:fr": "Jendouba",
+        "name:he": "ז'נדובה",
+        "name:kab": "Janduba",
+        "name:ru": "Джендуба",
+        "old_name": "سوق الأربعاء",
+        "old_name:ar": "سوق الأربعاء",
+        "old_name:fr": "Souk El Arba",
+        "place": "town",
+        "population": "45431",
+        "population:date": "2014-01-01",
+        "wikidata": "Q27064",
+        "wikimedia_commons": "Category:Jendouba",
+        "wikipedia": "ar:جندوبة"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/remaining-three-town-2026-09/627-reviewed-point-base-display-identity.json",
+        "sha256": "3996729d1b46f629fd43a22f44c23a8eec950b82239f6faec36624cc4ea305f8"
+      },
+      "reason": "Reviewed exact source and primary settlement identity support one manual city choice while preserving both existing coordinates and all separate administrative imadas.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/remaining-three-town-2026-09/source-identity-review.json",
+          "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/remaining-three-town-2026-09/independent-source-prerequisites-review.json",
+          "sha256": "3cd6d48f2c02cebfdc02f90caca830ade6566fa9897903dd04f8e0aeea5fe169"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:287625095",
+          "field": "pickerGroupId",
+          "before": "osm:node:287625095",
+          "after": "delegation:627"
+        },
+        "scope": "Only this raw point pickerGroupId changes. No coordinate correction, boundary certification, identity deletion or change to prayer sources."
+      }
+    },
+    {
+      "id": "osm:node:264881676",
+      "expectedKind": "town",
+      "expectedTags": {
+        "name": "دوز",
+        "name:ar": "دوز",
+        "name:en": "Douz",
+        "name:eo": "Douz",
+        "name:fr": "Douz",
+        "name:kab": "Duz",
+        "name:pl": "Duz",
+        "name:ru": "Дуз",
+        "place": "town",
+        "wikidata": "Q1009268",
+        "wikimedia_commons": "Category:Douz",
+        "wikipedia": "ar:دوز"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/remaining-three-town-2026-09/484-reviewed-point-base-display-identity.json",
+        "sha256": "ea3c0a50bda41b3d52517e2caaa6a54706b71ae47c1f44e454e29ceb1a45f5b2"
+      },
+      "reason": "Reviewed exact source and primary settlement identity support one manual city choice while preserving both existing coordinates and all separate administrative imadas.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/remaining-three-town-2026-09/source-identity-review.json",
+          "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/remaining-three-town-2026-09/independent-source-prerequisites-review.json",
+          "sha256": "3cd6d48f2c02cebfdc02f90caca830ade6566fa9897903dd04f8e0aeea5fe169"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:264881676",
+          "field": "pickerGroupId",
+          "before": "osm:node:264881676",
+          "after": "delegation:484"
+        },
+        "scope": "Only this raw point pickerGroupId changes. No coordinate correction, boundary certification, identity deletion or change to prayer sources."
+      }
+    },
+    {
+      "id": "osm:node:1165828361",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "جمال",
+        "name:ar": "جمال",
+        "name:en": "Jemmal",
+        "name:fr": "Jemmel",
+        "place": "village",
+        "population": "65420",
+        "source:population": "English Wikipedia",
+        "wikidata": "Q2545445",
+        "wikimedia_commons": "Category:Jemmal",
+        "wikipedia": "en:Jemmal"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "dependency-successors/soliman-native-20260912/node-1165828361-boundary-proof.json",
+        "sha256": "5502e324addd5e6047a01317117e86126f1e86a626cde662be6e80c2046ca881"
+      },
+      "reason": "Reviewed exact source and primary settlement identity support one manual city choice while preserving both existing coordinates and all separate administrative imadas.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/remaining-three-town-2026-09/source-identity-review.json",
+          "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/remaining-three-town-2026-09/independent-source-prerequisites-review.json",
+          "sha256": "3cd6d48f2c02cebfdc02f90caca830ade6566fa9897903dd04f8e0aeea5fe169"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:1165828361",
+          "field": "pickerGroupId",
+          "before": "osm:node:1165828361",
+          "after": "delegation:595"
+        },
+        "scope": "Only this raw point pickerGroupId changes. No coordinate correction, boundary certification, identity deletion or change to prayer sources."
+      }
+    },
+    {
+      "id": "osm:relation:7145440",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطورية الجنوبية",
+        "name:ar": "المطورية الجنوبية",
+        "name:fr": "El Metouia Sud",
+        "ref:tn:codegeo": "515552"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "المطوية الجنوبية",
+        "name:ar": "المطوية الجنوبية",
+        "name:fr": "El Metouia Sud"
+      },
+      "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+      "evidence": [
+        {
+          "source": "INS RGPH2024 three-workbook sector identity registry",
+          "officialRegistry": {
+            "file": "point-retention-reviews/current-official-sector-registry.json",
+            "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+          },
+          "sectorCode": "515552",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2862
+          },
+          "urls": [
+            "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+          ]
+        }
+      ],
+      "officialIdentity": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515552",
+        "sectorFr": "El metouia sud",
+        "sectorAr": "المطوية الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2862
+        }
+      },
+      "unresolved": [
+        "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+      ]
+    },
+    {
+      "id": "osm:relation:7145441",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطويةالشمالية",
+        "name:ar": "المطويةالشمالية",
+        "name:fr": "El Metouia Nord",
+        "ref:tn:codegeo": "515551"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "المطوية الشمالية",
+        "name:ar": "المطوية الشمالية",
+        "name:fr": "El Metouia Nord"
+      },
+      "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+      "evidence": [
+        {
+          "source": "INS RGPH2024 three-workbook sector identity registry",
+          "officialRegistry": {
+            "file": "point-retention-reviews/current-official-sector-registry.json",
+            "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+          },
+          "sectorCode": "515551",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2860
+          },
+          "urls": [
+            "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+          ]
+        }
+      ],
+      "officialIdentity": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515551",
+        "sectorFr": "El metouia nord",
+        "sectorAr": "المطوية الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2860
+        }
+      },
+      "unresolved": [
+        "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+      ]
+    },
+    {
+      "id": "osm:node:6681328578",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "مساكن",
+        "name:ar": "مساكن",
+        "name:en": "Msaken",
+        "name:fr": "Msaken",
+        "place": "village",
+        "postal_code": "4099"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/440-reviewed-point-base-display-identity.json",
+        "sha256": "53b20769ee1cbd0b7e9eb6cf457ec4376188d77948eddec600a1329dd7525d21"
+      },
+      "reason": "Reviewed exact source and primary settlement identity support one manual city choice while preserving all existing coordinates, the existing M’saken town owner, and separate administrative imadas.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-second-point-source-review.json",
+          "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-source-identity-independent-review.json",
+          "sha256": "9b89c7a0f7d1b8a77d42e6936e431821714804b0b3c5f41c138a369e4f8e6bd1"
+        },
+        "projectedSourcePhaseFacts": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-projected-finite-facts-v2.json",
+          "sha256": "bfa50eb03d1f1f1793e5ecf73fa81d85ffc4856223bab193ca1f738d1e7c8472"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:6681328578",
+          "field": "pickerGroupId",
+          "before": "osm:node:6681328578",
+          "after": "delegation:440"
+        },
+        "scope": "Only this raw point pickerGroupId changes in the display phase. No coordinate correction, boundary certification, identity deletion or change to prayer sources."
+      }
+    },
+    {
+      "id": "osm:node:559400503",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "المطوية",
+        "name:ar": "المطوية",
+        "name:en": "Métouia",
+        "name:fr": "Métouia",
+        "place": "village",
+        "wikidata": "Q3127824",
+        "wikimedia_commons": "Category:Métouia",
+        "wikipedia": "ar:المطوية (تونس)"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/1025-reviewed-point-base-display-identity.json",
+        "sha256": "cf3d8695711e72784f99bdc684ca13cec433059d9a70732a6256ff06607463d1"
+      },
+      "reason": "Reviewed exact source and primary settlement identity support one manual city choice while preserving all existing coordinates, the existing M’saken town owner, and separate administrative imadas.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/metouia-town-point-source-review.json",
+          "sha256": "01f445a84f52ea7adc67971c529bd4a663937c30727d6a6e707d00fea87cdccb"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-source-identity-independent-review.json",
+          "sha256": "9b89c7a0f7d1b8a77d42e6936e431821714804b0b3c5f41c138a369e4f8e6bd1"
+        },
+        "projectedSourcePhaseFacts": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-projected-finite-facts-v2.json",
+          "sha256": "bfa50eb03d1f1f1793e5ecf73fa81d85ffc4856223bab193ca1f738d1e7c8472"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:559400503",
+          "field": "pickerGroupId",
+          "before": "osm:node:559400503",
+          "after": "delegation:1025"
+        },
+        "scope": "Only this raw point pickerGroupId changes in the display phase. No coordinate correction, boundary certification, identity deletion or change to prayer sources."
+      }
+    },
+    {
+      "id": "osm:node:1184918055",
+      "expectedKind": "village",
+      "expectedTags": {
+        "addr:city": "Akouda",
+        "addr:governorate": "Sousse",
+        "addr:postcode": "4022",
+        "name": "أكودة",
+        "name:ar": "أكودة",
+        "name:en": "Akouda",
+        "name:fr": "Akouda",
+        "place": "village",
+        "population": "34494"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/437-reviewed-point-base-display-identity.json",
+        "sha256": "1e95bec3e33d1470e73bcc759a376c6611dc5a1b5c0bf12c8644d03ced7e0841"
+      },
+      "reason": "Reviewed exact source and primary settlement identity support one manual city choice while preserving all existing coordinates, the existing M’saken town owner, and separate administrative imadas.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/akouda-town-point-source-review.json",
+          "sha256": "ccd0b18aa939de386d92edede69a8a66d871d10bba08fbfa5bca33f2584adc2b"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-source-identity-independent-review.json",
+          "sha256": "9b89c7a0f7d1b8a77d42e6936e431821714804b0b3c5f41c138a369e4f8e6bd1"
+        },
+        "projectedSourcePhaseFacts": {
+          "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-projected-finite-facts-v2.json",
+          "sha256": "bfa50eb03d1f1f1793e5ecf73fa81d85ffc4856223bab193ca1f738d1e7c8472"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:1184918055",
+          "field": "pickerGroupId",
+          "before": "osm:node:1184918055",
+          "after": "delegation:437"
+        },
+        "scope": "Only this raw point pickerGroupId changes in the display phase. No coordinate correction, boundary certification, identity deletion or change to prayer sources."
+      }
+    },
+    {
+      "id": "osm:node:1190878345",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "بوعرقوب",
+        "name:ar": "بوعرقوب",
+        "name:en": "Bou Argoub",
+        "name:fr": "Bou Argoub",
+        "place": "village",
+        "wikidata": "Q655294",
+        "wikipedia": "ar:بوعرقوب"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/463-reviewed-point-base-display-identity.json",
+        "sha256": "99b7d94a65f3f5daffd6ad4bb94efcac63c13f4b792a86fd1dcf10b481377b4c"
+      },
+      "reason": "Exact source history and official inhabited-settlement identity support one manual town choice while retaining each separately coded sector and both existing coordinates.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-town-point-source-review.json",
+          "sha256": "c0be681b4afc62fce65a38e131e2b9d6a9baa966fcdb21a3875f6e24393f6fdd"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+          "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+        },
+        "currentSourcePhaseFacts": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/finite-source-group-facts.json",
+          "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:1190878345",
+          "field": "pickerGroupId",
+          "before": "osm:node:1190878345",
+          "after": "delegation:463"
+        },
+        "scope": "Display association only; preserve every raw record, source geometry, name, administrative context and prayer source."
+      }
+    },
+    {
+      "id": "osm:node:560792911",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "الفوار",
+        "name:ar": "الفوار",
+        "name:en": "El Faouar",
+        "name:fr": "El Faouar",
+        "place": "village"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/dependency-successors/485-picker-proof.json",
+        "sha256": "aeca7bd6c84829bfbbb0f0c7bc675b30954eeffce0fe67e4d65d3016900c2a04"
+      },
+      "reason": "Exact source history and official inhabited-settlement identity support one manual town choice while retaining each separately coded sector and both existing coordinates.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/el-faouar-town-point-source-review.json",
+          "sha256": "b46eef0ec5b43f07b6ab2c3f92dd3335ddadc62646f391989a972781bbbf07a4"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+          "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+        },
+        "currentSourcePhaseFacts": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/finite-source-group-facts.json",
+          "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:560792911",
+          "field": "pickerGroupId",
+          "before": "osm:node:560792911",
+          "after": "delegation:485"
+        },
+        "scope": "Display association only; preserve every raw record, source geometry, name, administrative context and prayer source."
+      }
+    },
+    {
+      "id": "osm:node:1187489040",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "حاجب العيون",
+        "name:ar": "حاجب العيون",
+        "name:en": "Hajeb El Ayoun",
+        "name:fr": "Hajeb El Ayoun",
+        "place": "village",
+        "wikidata": "Q3108263",
+        "wikimedia_commons": "Category:Hajeb El Ayoun",
+        "wikipedia": "ar:حاجب العيون (تونس)"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/526-reviewed-point-base-display-identity.json",
+        "sha256": "59015c7169e5dec4b46c3e792e01053da3acd89035c3c7d179ddb148b2783e7f"
+      },
+      "reason": "Exact source history and official inhabited-settlement identity support one manual town choice while retaining each separately coded sector and both existing coordinates.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/hajeb-el-ayoun-town-point-source-review.json",
+          "sha256": "55f1b613798694634635996bd7c740a19655c291c4edb81f2b961711dd73cbeb"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/bou-argoub-faouar-hajeb-source-identity-independent-review.json",
+          "sha256": "bc55e9fb691b7bdba045c1a2446f1e29ce11dfb754d45136f2d1669b37ffb550"
+        },
+        "currentSourcePhaseFacts": {
+          "file": "point-base-display-reviews/bou-argoub-faouar-hajeb-2026-09/finite-source-group-facts.json",
+          "sha256": "549d471e6625231d4601ff68c57c5dfb0ccdd3642f33e634bf728fba3572aa37"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:1187489040",
+          "field": "pickerGroupId",
+          "before": "osm:node:1187489040",
+          "after": "delegation:526"
+        },
+        "scope": "Display association only; preserve every raw record, source geometry, name, administrative context and prayer source."
+      }
+    },
+    {
+      "id": "osm:node:558814858",
+      "expectedKind": "village",
+      "expectedTags": {
+        "addr:city": "Bekalta",
+        "addr:governorate": "Monastir",
+        "addr:postcode": "5009",
+        "name": "البقالطة",
+        "name:ar": "البقالطة",
+        "name:en": "Bekalta",
+        "name:fr": "Bekalta",
+        "place": "village",
+        "population": "17850",
+        "wikidata": "Q1203138",
+        "wikimedia_commons": "Category:Bekalta",
+        "wikipedia": "en:Bekalta"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "dependency-successors/soliman-native-20260912/node-558814858-boundary-proof.json",
+        "sha256": "3f54f4ded6eb3da1a1f38c591c97bf7f0d933fe05739a1ae3d9e579bba6dd8e8"
+      },
+      "reason": "Exact source history and official inhabited Bekalta identity support one manual town choice while retaining the four separately coded sectors and both existing coordinates.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/bekalta-2026-09/bekalta-town-point-source-review.json",
+          "sha256": "42c7f5f3d6caa20bb984df325e7700003b049bf08b0683bb47a50fcea21607f4"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/bekalta-2026-09/bekalta-town-point-root-source-identity-review.json",
+          "sha256": "ac539a3a548b6bca092cfcbb6b476a33db1f859654ce24e77a5b4dd9e712f5e0"
+        },
+        "currentSourcePhaseFacts": {
+          "file": "point-base-display-reviews/bekalta-2026-09/current-catalog-unchanged-bekalta-closure.json",
+          "sha256": "932de9c4874908c32431e35827d60e4731bf069829ddd034a65a3cbe5dc6dde5"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:558814858",
+          "field": "pickerGroupId",
+          "before": "osm:node:558814858",
+          "after": "delegation:601"
+        },
+        "scope": "Display association only; every raw record, source geometry, name, administrative context and prayer source is preserved."
+      }
+    },
+    {
+      "id": "osm:node:500182808",
+      "expectedKind": "village",
+      "expectedTags": {
+        "addr:city": "البرمة",
+        "name": "ⵍⴱⵔⵎⴰ البرمة",
+        "name:ar": "البرمة",
+        "name:ber": "ⵍⴱⵔⵎⴰ",
+        "name:de": "El Borma",
+        "name:en": "El Borma",
+        "name:es": "El Borma",
+        "name:fr": "El Borma",
+        "place": "village"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/el-borma-2026-09/476-reviewed-point-base-display-identity.json",
+        "sha256": "c4848d85ea1db340ef1c61422c6e58cb09458331c957033da6d0de05b808f78d"
+      },
+      "reason": "Primary SITEP residential-worker locality evidence and original INM476 named-reference identity support one manual El Borma choice while keeping Remada administration, six sectors and both stored coordinates unchanged.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/el-borma-2026-09/el-borma-display-scope-feasibility.json",
+          "sha256": "aa8c49a1b54264ddbf1da92c27c8f26de012e411548da1824dbd8f4e629a1bd8"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/el-borma-2026-09/el-borma-root-display-scope-review.json",
+          "sha256": "52400db186b7e7eca19cb1ff6b039ad39e3fdafe61be7aa28691112cd7bde13c"
+        },
+        "currentSourcePhaseFacts": {
+          "file": "point-base-display-reviews/el-borma-2026-09/finite-source-group-facts.json",
+          "sha256": "83f9b3c04049276c98d83a5571938988029e09423fbe38e779f74ca45139b997"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:500182808",
+          "field": "pickerGroupId",
+          "before": "osm:node:500182808",
+          "after": "delegation:476"
+        },
+        "scope": "Display association only; no residential-camp extent, same-name official delegation, coordinate correction or polygon is created."
+      }
+    },
+    {
+      "id": "osm:node:5239666199",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "Beni Mhira",
+        "name:ar": "بني مهيرة",
+        "name:fr": "Beni Mhira",
+        "place": "village"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/beni-mhira-successor-2026-09/1524-reviewed-point-base-display-identity-v2.json",
+        "sha256": "0a14adf4140b411022dd8803ea6927ae88977cdfd3f07396ed3775808f177c4d"
+      },
+      "reason": "Primary planning-locality and occupied-address evidence supports one broad Beni Mhira manual choice. The reviewed administrative successor proof preserves five sectors, Bir Morra, both existing coordinates and the absent Ksar Aoun source point.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-beni-source-facts-v2.json",
+          "sha256": "c4b98dd5ca4fdeb7d712d38219b0ced060781093e41a29fcdc60501928b835fb"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/beni-mhira-successor-2026-09/beni-mhira-root-broad-town-display-acceptance.json",
+          "sha256": "50bbac798f6b89cc7ff89266037ccefc7d5474a7f6ae32009f075861bd4ce184"
+        },
+        "qualifiedPrimarySourceReview": {
+          "file": "point-base-display-reviews/beni-mhira-successor-2026-09/beni-mhira-urban-scope-review.json",
+          "sha256": "a52991b8d6905534f87552ddcfb4bffe94b821fffe50b6d12c89a9cbac090a59"
+        },
+        "successorCompilerReview": {
+          "file": "point-base-display-reviews/beni-mhira-successor-2026-09/beni-mhira-successor-compiler-independent-review.json",
+          "sha256": "06755120d6d2c81872a76ca990845c0fb7e2edac59ed98c7b57dfaa9b9625a51"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:5239666199",
+          "field": "pickerGroupId",
+          "before": "osm:node:5239666199",
+          "after": "delegation:1524"
+        },
+        "scope": "Display association only; no current delegation polygon, town boundary, source-code edit or new prayer anchor.",
+        "combinedCompilerReview": {
+          "file": "point-base-display-reviews/beni-mhira-successor-2026-09/beni-teboursouk-combined-compiler-independent-review.json",
+          "sha256": "0e8e9fb38e375d97d8b3e7d42c76178314500cb6fd0ed23d2564b5323ac6b09b"
+        }
+      }
+    },
+    {
+      "id": "osm:node:1109384824",
+      "expectedKind": "village",
+      "expectedTags": {
+        "addr:governorate": "Bizerte",
+        "name": "تينجة",
+        "name:ar": "تينجة",
+        "name:en": "Tinja",
+        "name:fr": "Tinja",
+        "place": "village"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/565-reviewed-sector-owned-settlement-display.json",
+        "sha256": "5f64edbd797dee74d12eee62985111da5f3b1c9dabc0180b19fc98617473da78",
+        "bytes": 54054
+      },
+      "reason": "Reviewed primary inhabited-place usage and authentic source history support one manual choice with the existing base and its approved coded-sector owner. Preserve the village point, every independent locality, all sectors, source geometry, names, coordinates and prayer defaults.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/two-settlement-current-source-identity.json",
+          "sha256": "2564fed259bf78254b6a57911b8b0adeae31135597a189f019d6a692c4a0a038",
+          "bytes": 9559
+        },
+        "independentPrimaryScopeReview": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+          "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+          "bytes": 7728
+        },
+        "currentSourceCarry": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-f05e-source-group-carry.json",
+          "sha256": "f0c772b7d0ffbcf76228baf50f3118155811a2451e9cf6c2e820ae96b1a4ffd3",
+          "bytes": 21438
+        },
+        "independentFiniteReview": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-finite-facts-independent-review.json",
+          "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62",
+          "bytes": 15797
+        },
+        "compilerIndependentReview": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-sector-owned-compiler-independent-review-v2.json",
+          "sha256": "0768fa25f652282fa0e2b750c1432f385be8f037f322ccbd4600796d9e9cb8f4",
+          "bytes": 13016
+        },
+        "onlyRawChange": {
+          "id": "osm:node:1109384824",
+          "field": "pickerGroupId",
+          "before": "osm:node:1109384824",
+          "after": "delegation:565"
+        }
+      }
+    },
+    {
+      "id": "osm:node:7390818324",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "سكرة",
+        "name:ar": "سكرة",
+        "name:en": "La Soukra",
+        "name:fr": "La Soukra",
+        "place": "village",
+        "wikidata": "Q678697",
+        "wikimedia_commons": "Category:La Soukra",
+        "wikipedia": "en:La Soukra"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "dependency-successors/soliman-native-20260912/node-7390818324-boundary-proof.json",
+        "sha256": "82b5e59d06a0bfe2f08dd75075e9bacf2d92d0e5132bd97a480880c84da19fc9",
+        "bytes": 105363
+      },
+      "reason": "Reviewed primary inhabited-place usage and authentic source history support one manual choice with the existing base and its approved coded-sector owner. Preserve the village point, every independent locality, all sectors, source geometry, names, coordinates and prayer defaults.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/two-settlement-current-source-identity.json",
+          "sha256": "2564fed259bf78254b6a57911b8b0adeae31135597a189f019d6a692c4a0a038",
+          "bytes": 9559
+        },
+        "independentPrimaryScopeReview": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+          "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+          "bytes": 7728
+        },
+        "currentSourceCarry": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-f05e-source-group-carry.json",
+          "sha256": "f0c772b7d0ffbcf76228baf50f3118155811a2451e9cf6c2e820ae96b1a4ffd3",
+          "bytes": 21438
+        },
+        "independentFiniteReview": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-finite-facts-independent-review.json",
+          "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62",
+          "bytes": 15797
+        },
+        "compilerIndependentReview": {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-sector-owned-compiler-independent-review-v2.json",
+          "sha256": "0768fa25f652282fa0e2b750c1432f385be8f037f322ccbd4600796d9e9cb8f4",
+          "bytes": 13016
+        },
+        "onlyRawChange": {
+          "id": "osm:node:7390818324",
+          "field": "pickerGroupId",
+          "before": "osm:node:7390818324",
+          "after": "delegation:532"
+        }
+      }
+    },
+    {
+      "id": "osm:way:150833156",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "amenity": "community_centre",
+        "barrier": "wall",
+        "check_date": "2024-03-24",
+        "landuse": "residential",
+        "name": "Village d'Enfants SOS Gammarth",
+        "name:fr": "Village d'Enfants SOS Gammarth"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact named institutional property from locality choices. Authentic source history, current full-way geometry and primary institution evidence support property scope. Preserve the surrounding localities and administrative sectors; retire this saved ID without an invented replacement. This does not assert vacancy, present occupancy, cadastral limits or a change of prayer source.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/sos-monastery-two-2026-09/reviewed-two-institution-property-exclusion-proof.json",
+          "sha256": "58d818066f7c0501f3d6e49f4df3e059b913ad41445839273abf4f99deec78b4",
+          "bytes": 15890
+        }
+      ]
+    },
+    {
+      "id": "osm:way:89023459",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "دير شارل دو فوكو",
+        "name:ar": "دير شارل دو فوكو",
+        "name:de": "Kloster Karl von Foucauld",
+        "name:es": "Monasterio Carlos de Foucauld",
+        "name:fr": "Monastère Charles de Foucauld"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact named institutional property from locality choices. Authentic source history, current full-way geometry and primary institution evidence support property scope. Preserve the surrounding localities and administrative sectors; retire this saved ID without an invented replacement. This does not assert vacancy, present occupancy, cadastral limits or a change of prayer source.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/sos-monastery-two-2026-09/reviewed-two-institution-property-exclusion-proof.json",
+          "sha256": "58d818066f7c0501f3d6e49f4df3e059b913ad41445839273abf4f99deec78b4",
+          "bytes": 15890
+        }
+      ]
+    },
+    {
+      "id": "osm:way:499554192",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "addr:postcode": "2000",
+        "landuse": "residential",
+        "name": "مركز التدريب القطاعي ملابس تونس",
+        "name:ar": "مركز التدريب القطاعي ملابس تونس",
+        "name:en": "Center Sectorial Training Clothing De Tunis"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact named clothing vocational training-centre property from locality choices. Authentic current source/history/full-way geometry, the historical primary training-centre record and reviewed public coordinate/address context establish institutional scope. Preserve RasTabia and all surrounding localities; retire this saved ID without an invented replacement. This does not certify occupancy, current operating status, cadastral limits or a change of prayer source.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/ras-tabia-training-centre-2026-09/reviewed-training-centre-exclusion-proof.json",
+          "sha256": "e5cfc3d3cd6f1092cb6065d77aa7b29ce6e71696de0db95c78d721cb4597cfdd",
+          "bytes": 10269
+        }
+      ]
+    },
+    {
+      "id": "osm:way:1123877044",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "menzah 4",
+        "addr:postcode": "1004",
+        "addr:street": "شارع 10 ديسمبر 1948",
+        "landuse": "residential",
+        "name": "café",
+        "residential": "apartments"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact individually labelled apartment-parcel source object from locality choices. Authentic current/history/full-way topology, explicit apartment tags and creation context support parcel-level mapping. Preserve surrounding localities and retire this saved ID without an invented replacement. Nearby public business observations do not establish current operator, occupant, ownership or cadastral identity; no prayer-source change is made.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/apartment-parcels-2026-09/reviewed-apartment-parcel-exclusion-proof.json",
+          "sha256": "f4343ac430b93a5e8f0bbf8f1e780b5c20736dca87596df0198fb01e6c72bdba",
+          "bytes": 20623
+        }
+      ]
+    },
+    {
+      "id": "osm:way:1209108779",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "Cite erriadh",
+        "landuse": "residential",
+        "name": "immeuble le boucher",
+        "residential": "apartments"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact individually labelled apartment-parcel source object from locality choices. Authentic current/history/full-way topology, explicit apartment tags and creation context support parcel-level mapping. Preserve surrounding localities and retire this saved ID without an invented replacement. Nearby public business observations do not establish current operator, occupant, ownership or cadastral identity; no prayer-source change is made.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/apartment-parcels-2026-09/reviewed-apartment-parcel-exclusion-proof.json",
+          "sha256": "f4343ac430b93a5e8f0bbf8f1e780b5c20736dca87596df0198fb01e6c72bdba",
+          "bytes": 20623
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693516878",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S1"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693515797",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S2"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693516877",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S3"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693516879",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S4"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518225",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S5"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518227",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S6"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518229",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S7"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518231",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S8"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518243",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S9"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518238",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S10"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518234",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S11"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518236",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S12"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518241",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S13"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518245",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S14"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693518247",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S15"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519901",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S16"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519904",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S17"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519902",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S18"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519906",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S19"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519908",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S20"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519921",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S21"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519910",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S22"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519914",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S23"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519912",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S24"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519916",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S25"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519918",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S26"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519919",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S27"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519923",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S28"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519924",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S29"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693519926",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S30"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693682670",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "S31"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683555",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "32"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683548",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "33"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683549",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "34"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683550",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "35"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683551",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "36"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683552",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "37"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683554",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "38"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683553",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "39"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683560",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "40"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683558",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "41"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693683557",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "42"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689970",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "43"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689933",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "44"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689934",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "45"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689935",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "46"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689936",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "47"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689940",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "48"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689971",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "49"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689941",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "50"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689937",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "51"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689938",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "52"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689939",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "53"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689942",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "54"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689944",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "55"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689954",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "56"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689943",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "57"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689955",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "58"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689957",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "59"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689956",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "60"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689962",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "61"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689963",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "62"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689945",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "63"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689946",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "64"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689949",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "65"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689947",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "66"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689948",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "67"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689950",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "68"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689953",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "69"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689951",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "70"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689964",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "71"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689961",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "72"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689960",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "73"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689959",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "74"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689958",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "75"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689966",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "76"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689965",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "77"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689967",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "78"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689968",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "79"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689969",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "80"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689972",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "81"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693689973",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "82"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693690337",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "83"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693690338",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "84"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693690339",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "85"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:693690340",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "86"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:694251073",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "87"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:way:694251074",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "88"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact member of the reviewed88-object Soliman Plage building/block enumeration from locality choices. Authentic source tags, sequential mapping history and full current topology bind the local scope. Preserve the named Soliman Plage parent and surrounding sector; retire this saved ID without an invented replacement. This is not a countrywide numeric-name rule or a legal parcel, occupancy or prayer-source change.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/soliman-numbered-blocks-2026-09/reviewed-numbered-block-cluster-exclusion-proof.json",
+          "sha256": "0b9c2711cd446725d6b1aa0d2652b75dfdc3a13b79809b59d8b43733bd46e532",
+          "bytes": 327091
+        }
+      ]
+    },
+    {
+      "id": "osm:node:2778243022",
+      "expectedKind": "hamlet",
+      "expectedTags": {
+        "addr:governorate": "Nabeul",
+        "name": "الخرمية",
+        "name:ar": "الخرمية",
+        "name:fr": "El Kharmia",
+        "place": "hamlet"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "الكرمية",
+        "name:ar": "الكرمية",
+        "name:fr": "El Kharmia",
+        "alt_name:fr": "El Karmia"
+      },
+      "reason": "Correct the retained Grombalia hamlet Arabic display spelling to الكرمية using Nabeul governorate, INP village descriptions and local parliamentary testimony, with separately qualified public Maps context. Preserve source identity, coordinates, independent nearest timetable, singleton choice and French El Kharmia search spelling; add published El Karmia for search. No administrative transfer, exclusion, merge or boundary is inferred.",
+      "evidence": [
+        {
+          "file": "name-reviews/kharmia-20260912/reviewed-kharmia-name-proof.json",
+          "sha256": "64f801574c6377c17690a9d5da49fdfef027102c0dc9762f32072bc97be959aa",
+          "bytes": 5489
+        }
+      ]
+    },
+{
+  "id": "osm:way:100982052",
+  "expectedKind": "residential",
+  "expectedTags": {
+    "landuse": "residential",
+    "name": "القصر الرئاسي",
+    "name:ar": "القصر الرئاسي",
+    "name:en": "Presidential Palace Grounds",
+    "name:fr": "Palais présidentiel"
+  },
+  "action": "exclude",
+  "reason": "This exact source object denotes the presidential palace grounds, supported by all eight OSM way versions and the Presidency institutional description. It is a named institutional compound rather than a neighborhood choice. Preserve every surrounding locality and the separate Presidential Residences object.",
+  "evidence": [
+    {
+      "file": "exclusion-reviews/carthage-palace-20260912/reviewed-palace-property-exclusion-proof.json",
+      "sha256": "b8bd6e1ad6054820728d9e06a10c3721e6d132b1485ef97ef7ae043e40b92ab5",
+      "bytes": 6245
+    }
+  ]
+},
+{
+  "id": "osm:way:129273831",
+  "expectedKind": "residential",
+  "expectedTags": {
+    "addr:city": "طبرقة",
+    "email": "mehari.tabarka@goldenyasmin.com",
+    "fax": "+216 78 671 923",
+    "landuse": "residential",
+    "name": "إقامة المهاري",
+    "name:ar": "إقامة المهاري",
+    "name:en": "Résidence Méhari",
+    "name:fr": "Résidence Méhari",
+    "phone": "+216 78 671 445",
+    "stars": "4",
+    "website": "https://www.goldenyasmin.com/residence-mehari-tabarka/"
+  },
+  "action": "exclude",
+  "reason": "The exact source way represents the named Golden Yasmin holiday-residence property; authentic history, retained operator contacts and the operator own property description support property scope rather than a neighborhood polygon.",
+  "evidence": [
+    {
+      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_129273831.json",
+      "sha256": "7b6c06ba6ab757b67c2f1a1d3551df1bd591d0bbcc70d5baf92ef8e2da7f8838",
+      "bytes": 6071
+    }
+  ]
+},
+{
+  "id": "osm:way:815233393",
+  "expectedKind": "residential",
+  "expectedTags": {
+    "addr:city": "العوينة",
+    "addr:city:ar": "العوينة",
+    "addr:postcode": "2045",
+    "building:levels": "7",
+    "height": "21",
+    "landuse": "residential",
+    "name": "Résidence Riadh Soukra",
+    "residential": "apartments"
+  },
+  "action": "exclude",
+  "reason": "Exclude only this exact mapped apartment property from neighborhood choices. Current source explicitly classifies this 5310.87 m2 footprint as residential=apartments with seven building levels and height21. Those property tags existed in v1; v2 only localized the city address. The originating changeset cites local knowledge. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+  "evidence": [
+    {
+      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_815233393.json",
+      "sha256": "a6ceb3a748c1c602e085e39e020d6e159b5e9b8bac4eb51660cd45b0d1713f37",
+      "bytes": 9981
+    }
+  ]
+},
+{
+  "id": "osm:way:522478927",
+  "expectedKind": "residential",
+  "expectedTags": {
+    "addr:city": "تونس",
+    "addr:city:ar": "تونس",
+    "building:levels": "6",
+    "height": "26",
+    "landuse": "residential",
+    "name": "Residence Diar El Mesk"
+  },
+  "action": "exclude",
+  "reason": "Exclude only this exact mapped apartment property from neighborhood choices. The 1031.00 m2 footprint originated as building=yes with height26. V2 named the six-level building; v3 replaced building=yes by landuse=residential while retaining the same closed five-node footprint and building-level/height tags. V4 refined to seven nodes. The directly associated 2017 changesets describe a residential building; current v5 only localizes city tags. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+  "evidence": [
+    {
+      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_522478927.json",
+      "sha256": "2021ec99255fe6591b5d1792d5047b7ab31831659717a1b845638c6b61c633f1",
+      "bytes": 9950
+    }
+  ]
+},
+{
+  "id": "osm:way:237115723",
+  "expectedKind": "residential",
+  "expectedTags": {
+    "addr:city": "Les Jardins d'El Menzah",
+    "addr:postcode": "2096",
+    "building:levels": "6",
+    "landuse": "residential",
+    "name": "إقامة البانوراميك",
+    "name:ar": "إقامة البانوراميك",
+    "name:fr": "Résidence Panoramique"
+  },
+  "action": "exclude",
+  "reason": "This exact source way was first mapped as a six-floor residential building and was retagged as residential landuse less than four minutes later without changing its way-node outline. The named apartment-property scale is additionally consistent with the Panorama Residence project material for Jardins d El Menzah 2. Exclude this property choice only; preserve all surrounding neighborhoods, administration and prayer references.",
+  "evidence": [
+    {
+      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_237115723.json",
+      "sha256": "85662e492b2739b42459b27d9c715ff8a8d623b58513ff8b24986b58a0172483",
+      "bytes": 6081
+    }
+  ]
+},
+    {
+      "id": "osm:way:901797262",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "El Halfaoui",
+        "residential": "rural"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "El Halfaoui",
+        "name:ar": "الحلفاوي"
+      },
+      "reason": "Supply the documented Arabic locality name الحلفاوي for display and search, preserving El Halfaoui as a Latin alias. Public ministerial reporting explicitly places this locality in Borj Ettoumi, El Battan; parliamentary proceedings independently corroborate the local name and bridge. This is a name-only correction and does not certify or change the source footprint.",
+      "evidence": [
+        {
+          "source": "Official Arabic locality wording and exact current/source object review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/halfaoui-20260912/source-review.json",
+              "sha256": "29d0116d249921343294267dfe42e78e64a6da9baba06855035c9109436454cf"
+            }
+          ]
+        },
+        "https://www.arp.tn/ar_SY/document/download/116901",
+        "https://www.radiojeunes.tn/article/6a51315a08d2abfa301f023f/وزير-التجهيز-المقاولات-المنجزة-للجسر-على-وادي-مجردة-بالبطان-تواجه-صعوبات"
+      ],
+      "unresolved": [
+        "Exact locality and governorate boundary alignment remains unverified. No clipping, reassignment, merge or geometry replacement is authorized by this naming evidence."
+      ]
+    },
+    {
+      "id": "osm:way:144986790",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "المرسى",
+        "addr:city:ar": "المرسى",
+        "landuse": "residential",
+        "name": "Cité Wifek"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Cité Wifek",
+        "name:ar": "حي الوفاق"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name حي الوفاق, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/greater-tunis.json",
+              "sha256": "b39cd636e1903f357a2efd67eacbb75590a7a237c287ca6c2fd1606d26cfc7fe"
+            }
+          ]
+        },
+        {
+          "source": "Original JORT legal notices, issue32, 13 March2024",
+          "url": "https://lake.jort.tn/annonces-legales/ar/2024/032.pdf",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\jort-legal-notices-2024-032.pdf",
+            "sha256": "077d51f613b7065ebf1fe1ae043965bc6c796604a3efa2c8c3383b36336cbed0",
+            "bytes": 1291229
+          }
+        },
+        {
+          "source": "Toufoula public childcare establishment register",
+          "url": "https://www.toufoula.tn/gouvernorat/11?direction=desc&page=27&sort=delegation.nom",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-tunis-wifek.html",
+            "sha256": "15c3e499c29365d59a9e95b90383036f54969997317097bdd1f8ad03a70e861d",
+            "bytes": 107861
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:way:219469525",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "المرسى",
+        "addr:city:ar": "المرسى",
+        "addr:postcode": "2070",
+        "landuse": "residential",
+        "name": "Cité Sofiène",
+        "name:fr": "Cité Sofiène"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Cité Sofiène",
+        "name:ar": "حي سفيان"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name حي سفيان, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/greater-tunis.json",
+              "sha256": "b39cd636e1903f357a2efd67eacbb75590a7a237c287ca6c2fd1606d26cfc7fe"
+            }
+          ]
+        },
+        {
+          "source": "FTUSA original register of experts and loss assessors,27 March2026",
+          "url": "https://www.ftusanet.org/wp-content/uploads/2026/03/قائمة-الخبراء-و-معايني-الأضرار-27-03-2026.pdf",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ftusa-experts-2026-03-27.pdf",
+            "sha256": "403c5e0ad2530744cd9e7a1a32029e10237c4eccea96fdd5636ad5de5389f77e",
+            "bytes": 6110691
+          }
+        },
+        {
+          "source": "Toufoula current filtered public establishment register",
+          "url": "https://www.toufoula.tn/rechercher?direction=asc&gouv=11&page=1&sort=type.nom&statut=2",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\toufoula-sofiene-filtered.html",
+            "sha256": "573e0282d389f9f3339ff7870e367bd116a8cdea7b3c9172a2c082dfb2cc4723",
+            "bytes": 57340
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:way:171986322",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "designation": "Borj Baccouche",
+        "landuse": "residential",
+        "name": "Borj Baccouche"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Borj Baccouche",
+        "name:ar": "برج البكوش"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name برج البكوش, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/greater-tunis.json",
+              "sha256": "b39cd636e1903f357a2efd67eacbb75590a7a237c287ca6c2fd1606d26cfc7fe"
+            }
+          ]
+        },
+        {
+          "source": "Ariana municipal facilities directory",
+          "url": "http://www.commune-ariana.gov.tn/web/detailSM/4",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\ariana-municipal-facilities-http.html",
+            "sha256": "bafb68979d6b8461380d435e0d78d454b6c39ff1c03b03fe31396fad3ad86780",
+            "bytes": 69281
+          }
+        },
+        {
+          "source": "Official Assembly proceedings,21 July2025, Interior Ministry answer",
+          "url": "https://www.arp.tn/document/download/113522",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\arp-borj-baccouche-question-answer.pdf",
+            "sha256": "27482a7801795cdf7037051dda9f7453cfd3ad682772ff5d60d883b678d4d0a5",
+            "bytes": 9451173
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:way:161243229",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Cité des Oranges"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Cité des Oranges",
+        "name:ar": "حي البرتقال"
+      },
+      "reason": "Supply the independently published Arabic neighborhood name حي البرتقال, preserving the existing Latin name as an alias and every source geometry, coordinate, parent, default and group. This evidence supports naming only; it does not certify or change the full footprint.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/greater-tunis.json",
+              "sha256": "b39cd636e1903f357a2efd67eacbb75590a7a237c287ca6c2fd1606d26cfc7fe"
+            }
+          ]
+        },
+        {
+          "source": "Ministry of Youth and Sport,Manouba regional project review,25 February2026",
+          "url": "https://www.mjs.tn/index.php/ar/1/5029-gv-manouba.html",
+          "original": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-greater-tunis-arabic-name-review-20260912\\mjs-manouba-projects-2026.html",
+            "sha256": "9fc2e80a6326c4416b8602c1a856d8c87c128297e0222ddd7ea68dfe5cc909b2",
+            "bytes": 104961
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:way:123158451",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "Sidi Aïssa",
+        "addr:country": "TN",
+        "addr:governorate": "Nabeul",
+        "landuse": "residential",
+        "name": "Sidi Aïssa"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Sidi Aïssa",
+        "name:ar": "سيدي عيسى"
+      },
+      "reason": "The exact contained and already absorbed hamlet supplies سيدي عيسى. Public ministerial reporting names the Sidi Aissa school in Takelsa. The same-named remote Ghezala/Bizerte sector remains a distinct identity. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/four-existing-arabic-aliases.json",
+              "sha256": "21a5a9526feae9f050adde257e11410396385208c08ee649bd45328849067887"
+            }
+          ]
+        },
+        "https://api.openstreetmap.org/api/0.6/way/123158451.json",
+        "https://api.openstreetmap.org/api/0.6/node/2041838914.json",
+        "https://www.radiomonastir.tn/article/6909d8542b5755c3b513069b/وزير-التربية-في-زيارة-ميدانية-إلى-كافة-معتمديات-نابل"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    },
+    {
+      "id": "osm:way:148644396",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Douiret"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Douiret",
+        "name:ar": "دويرات"
+      },
+      "reason": "The exact contained and already absorbed village supplies دويرات. This promotes its existing alias on the current residential footprint. It neither substitutes the historic northern ruined village/ksar nor equates the broader Douiret sector with this footprint. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/four-existing-arabic-aliases.json",
+              "sha256": "21a5a9526feae9f050adde257e11410396385208c08ee649bd45328849067887"
+            }
+          ]
+        },
+        "https://api.openstreetmap.org/api/0.6/way/148644396.json",
+        "https://api.openstreetmap.org/api/0.6/node/1977376169.json"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    },
+    {
+      "id": "osm:way:243776389",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "Aïn Garci",
+        "addr:country": "TN",
+        "addr:governorate": "Sousse",
+        "addr:postcode": "4035",
+        "landuse": "residential",
+        "name": "Aïn Garci",
+        "name:fr": "Aïn Garci"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Aïn Garci",
+        "name:fr": "Aïn Garci",
+        "name:ar": "عين القارصي"
+      },
+      "reason": "The exact contained and already absorbed village supplies عين القارصي; the Enfidha municipality independently uses this place name in regional history. The broader القارصي sector remains separate; the historical place-name mention is not modern polygon certification. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/four-existing-arabic-aliases.json",
+              "sha256": "21a5a9526feae9f050adde257e11410396385208c08ee649bd45328849067887"
+            }
+          ]
+        },
+        "https://api.openstreetmap.org/api/0.6/way/243776389.json",
+        "https://api.openstreetmap.org/api/0.6/node/1863511989.json",
+        "https://www.commune-enfidha.gov.tn/index.php/ar/features/histoire-et-patrimoines"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    },
+    {
+      "id": "osm:way:246391073",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Chenchou"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Chenchou",
+        "name:ar": "شنشو"
+      },
+      "reason": "The exact contained and already absorbed hamlet supplies شنشو, already the current alias. Keep this source-specific spelling for the small residential locality. The parent sector and CTAB publication use شانشو; root Maps Arabic query likewise identifies a broader شانشو/Chanchou area. Neither establishes that the specific absorbed hamlet must be renamed or merged. Preserve the Latin name for search and every source coordinate, polygon, raw ID, administrative context, prayer default and picker group.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/four-existing-arabic-aliases.json",
+              "sha256": "21a5a9526feae9f050adde257e11410396385208c08ee649bd45328849067887"
+            }
+          ]
+        },
+        "https://api.openstreetmap.org/api/0.6/way/246391073.json",
+        "https://api.openstreetmap.org/api/0.6/node/2534432406.json"
+      ],
+      "unresolved": [
+        "Name promotion does not certify the footprint or change administrative boundaries."
+      ]
+    },
+    {
+      "id": "osm:way:454507693",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "maison dali"
+      },
+      "action": "exclude",
+      "reason": "Exclude this exact source annotation of an individual family house from the locality picker. Its original creation comment explicitly describes adding a family house, and the original changeset creates only this way and its eight unchanged boundary nodes. This decision does not depend on the word maison, area or residential tag alone, and does not identify current occupants or certify a roof/cadastral boundary. Preserve the enclosing Mazraya locality and all prayer references.",
+      "evidence": [
+        {
+          "source": "Bounded source identity, naming and preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/arabic-role-batch-20260912/maison-dali-role.json",
+              "sha256": "fa41f295553f560035715b24f29acc0ee88f2c095a6e67b31e016135d98bf0d0"
+            }
+          ]
+        },
+        {
+          "source": "Authentic original OSM way and creation intent",
+          "wayCurrent": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-current.json",
+            "sha256": "4473ae8e6b7908afe93d1ade44baa0f290daebfba5ccb8191ab3438c343a143b",
+            "bytes": 561
+          },
+          "wayHistory": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-history.json",
+            "sha256": "8019e7851d133dfe8df74e566e64d81fb7f0eaebe178b0c31e50b4abf8fd0b2a",
+            "bytes": 561
+          },
+          "wayFull": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\way-454507693-full.json",
+            "sha256": "9d9c6ee956c74aa6538e8fc640aba02b68ceae8181e55b5f8210d2ebea5e6073",
+            "bytes": 1905
+          },
+          "creationChangeset": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-43800862.json",
+            "sha256": "7807a0eae2957d9ed1e1db642ecea7023ac63151633a9a22f10aa54568e9f007",
+            "bytes": 734
+          },
+          "creationChangeBody": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-locality-source-role-review-20260912\\changeset-43800862-download.osc",
+            "sha256": "fe9117f44d4deb1eb3248a1c76fe1650b28204e40405927dfec0cfe705ce7e0e",
+            "bytes": 2525
+          },
+          "sourceStatement": "ajout de la maison de la famille dali ajouté le 19/11/2016",
+          "urls": [
+            "https://api.openstreetmap.org/api/0.6/way/454507693/history.json",
+            "https://api.openstreetmap.org/api/0.6/changeset/43800862.json",
+            "https://api.openstreetmap.org/api/0.6/changeset/43800862/download"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:way:207473651",
+      "expectedKind": "town",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Mdhila",
+        "place": "town",
+        "population": "12 814",
+        "population:date": "2014",
+        "source:population": "https://www.ins.tn/en/enquetes/census-2014"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "Mdhila",
+        "name:ar": "المظيلة"
+      },
+      "reason": "Promote the exact absorbed town Arabic name المظيلة and intentionally associate this northern inhabited-town depiction with timetable607. The newly reviewed official INM prayer/sun references and primary northern Mdhila context resolve the older legacy-reference ambiguity. This rule activates the existing town/base matching path; that group change is deliberate and must be audited together with the607 reference correction. Preserve the town polygon, original node, all imadas and the distinct southern البرج/صهيب choices.",
+      "evidence": [
+        {
+          "source": "Explicit Mdhila name, intended town/base display association and official reference review",
+          "reviewFiles": [
+            {
+              "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/source-proposal.json",
+              "sha256": "359db0f9cb423ff3cb57208e066ed149132d9e701144d78c646a14792c3486f5"
+            },
+            {
+              "file": "coordinate-reviews/inm-published-mdhila607-2026-09-12/current-source-carry.json",
+              "sha256": "84a4dad64c67c65dbc46807074346e28d4969bde083a3cfd46ca3a3cd62aaed2"
+            }
+          ]
+        },
+        "https://api.openstreetmap.org/api/0.6/way/207473651.json",
+        "https://api.openstreetmap.org/api/0.6/node/2177279829.json",
+        "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/365/607/",
+        "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/365/607/"
+      ],
+      "unresolved": [
+        "The official point lies64.2604m outside the irregular OSM town polygon. Association is broad inhabited-town display identity; it does not enlarge that polygon or equate sector boundaries.",
+        "Internal INM calculation inputs and the provenance of the legacy southern coordinate remain uncertified."
+      ]
+    },
+    {
+      "id": "osm:way:588420478",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "alt_name": "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "alt_name:ar": "طافرطاست",
+        "alt_name:fr": "TAFERTAST",
+        "alt_name:tzm": "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "description": "Tafertast is an ancient village located in Biadha, Sened delegation, Gafsa Governorate, Tunisia.\nThe site has been occupied since Antiquity, with settlement dating back to the Carthaginian and Roman periods.",
+        "landuse": "residential",
+        "name": "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "residential": "rural"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "alt_name": "ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "alt_name:ar": "طافرطاست",
+        "alt_name:fr": "TAFERTAST",
+        "name": "TAFERTAST - ⵜⴰⴼⴻⵔⵜⴰⵙⵜ",
+        "name:ar": "طافرطاست"
+      },
+      "reason": "Promote the already consumed Arabic alias طافرطاست, independently corroborated by the ministerial answer on printed page803 of the7November2025 parliamentary proceedings. Preserve the original combined Latin/Tifinagh primary and all other current name values for search; retain the same rural residential footprint, ID, context, coordinates, default609 and singleton picker group.",
+      "evidence": [
+        {
+          "source": "Exact source Arabic alias, ministerial spelling and finite preservation review",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/tafertast-arabic-2026-09/tafertast-arabic-name-proof.json",
+              "sha256": "a29d91c70775e35a7258b25d071d4c75aa677ee9b2512c691b1b5aa85387419b",
+              "bytes": 12514
+            }
+          ]
+        },
+        "name-reviews/tafertast-arabic-2026-09/tafertast-arabic-name-proof.json",
+        "https://api.openstreetmap.org/api/0.6/way/588420478.json",
+        "https://arp.tn/document/download/115764"
+      ],
+      "unresolved": [
+        "This display spelling review does not certify the exact residential footprint or resolve Google broad Zannouch versus the current Sened administrative context."
       ]
     }
   ],

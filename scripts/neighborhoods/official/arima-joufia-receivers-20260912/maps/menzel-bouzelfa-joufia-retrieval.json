@@ -1,0 +1,45 @@
+{
+  "key": "menzel-bouzelfa-joufia",
+  "currentRawId": "osm:relation:7101605",
+  "currentCode": "156253",
+  "officialName": "منزل بوزلفة الجوفية",
+  "officialRegistryRow": {
+    "governorateCode": "15",
+    "governorateFr": "Nabeul",
+    "governorateAr": "نابل",
+    "delegationCode": "1562",
+    "delegationFr": "Menzel bouzelfa",
+    "delegationAr": "منزل بوزلفة",
+    "sectorCode": "156253",
+    "sectorFr": "Menzel bou zelfa nord",
+    "sectorAr": "منزل بوزلفة الجوفية",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13635,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 552,
+      "Nombre_de_menages_par_Secteurs.xlsx": 551
+    }
+  },
+  "officialIndexEntry": {
+    "text": "منزل بوزلفة الجوفية.pdf",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/منزل بوزلفة/منزل بوزلفة الجوفية.pdf",
+    "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/منزل بوزلفة/منزل بوزلفة الجوفية.pdf"
+  },
+  "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+  "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+  "retrievedAt": "2026-09-12T17:21:31.265946+00:00",
+  "exitCode": 0,
+  "httpStatus": "200",
+  "response": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.pdf",
+    "sha256": "b828a2a54b8cde4e2dbdb0894319a3ca051c08066fa89fc07d76c18928a15b58",
+    "bytes": 1633073
+  },
+  "headers": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/menzel-bouzelfa-joufia.headers",
+    "sha256": "128e4b17df18261ac8bca7c7e0317b62da67b6551533ef339c4e3e0ea9496392",
+    "bytes": 322
+  },
+  "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.55M 100  1.55M   0      0  5.30M      0                              0\n100  1.55M 100  1.55M   0      0  5.30M      0                              0\n100  1.55M 100  1.55M   0      0  5.29M      0                              0\n",
+  "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+  "success": true
+}

@@ -1,0 +1,133 @@
+{
+  "status": "QUALIFIED_TWO_HAMLET_PUBLIC_MAPS_OBSERVATIONS_WITH_NAME_REVIEW_LEAD",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41"
+  },
+  "metadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_node_2778243022-1\\ledger.json",
+    "sha256": "4760057814dc4d901759a988dcf0180a4c6f9f6be5e64f6d944e82c539aa09b9"
+  },
+  "ledger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "97cb5741a8e4d272c2e3307c4e26e033aa251ab25d437d29a3b1210c00bc8858"
+  },
+  "newObservations": 4,
+  "totalObservations": 1052,
+  "priorObservationsPreservedExactly": 1048,
+  "currentRawRecords": [
+    {
+      "id": "osm:node:2778243022",
+      "sourceId": "osm",
+      "name": "الخرمية",
+      "aliases": [
+        "El Kharmia"
+      ],
+      "kind": "hamlet",
+      "parentName": "عين طبرنق",
+      "contextAliases": [
+        "Ain Tebournok",
+        "Délégation Grombalia",
+        "Grombalia",
+        "عين طبرنق",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.5674182,
+      "lng": 10.4677201,
+      "delegationId": 464,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:2778243022"
+    },
+    {
+      "id": "osm:node:2778243023",
+      "sourceId": "osm",
+      "name": "السبالة",
+      "aliases": [
+        "Essabala"
+      ],
+      "kind": "hamlet",
+      "parentName": "تركي",
+      "contextAliases": [
+        "Délégation Grombalia",
+        "Grombalia",
+        "Turki",
+        "تركي",
+        "معتمدية قرمبالية"
+      ],
+      "governorateId": 350,
+      "lat": 36.5811309,
+      "lng": 10.4834428,
+      "delegationId": 464,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:2778243023"
+    }
+  ],
+  "records": [
+    {
+      "id": "osm:node:2778243022",
+      "query": "El Kharmia Grombalia Tunisie",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243022-1.json",
+        "sha256": "9e459ca1fbed40f8426ff7cb4e5e7366e4b1768c88fc903ee5f193c2962763d0"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243022-1.png",
+        "sha256": "376d9814aeefcc2646cc2122eb6f325a79d9155ace79e59bbeb333f67b594c56"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Named search returned unrelated la grappe d or and El-Haj listings, without an exact hamlet card. These results neither identify the hamlet nor prove its absence."
+    },
+    {
+      "id": "osm:node:2778243022",
+      "query": "36.5674182,10.4677201",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243022-2.json",
+        "sha256": "4e8c5142af61e83b9b38581cab627bc7e254adeb4953ea878a1f858bd1b8a454"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243022-2.png",
+        "sha256": "439a9fb2dbfbc7cf2ebb718dfacd5233ce3e15603fa7bb3e0a22c0df437cce86"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate request selected ملعب الكرمية, HF89+X4, with broad Ain Tebournok address. The visible built cluster also includes Ecole Primaire Elkarmia and مقهى الكرمية. Multiple local labels suggest الكرمية / Elkarmia versus current الخرمية / El Kharmia; this is a primary-source spelling-review lead, not authorization to rename from Google alone. The stadium is not substituted for the hamlet."
+    },
+    {
+      "id": "osm:node:2778243023",
+      "query": "Essabala Grombalia Tunisie",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243023-1.json",
+        "sha256": "90d46515370a59f11f5e20192d703f6d952bffeb14c410e63ce467fa3b08deeb"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243023-1.png",
+        "sha256": "cad4a4353dba6c0f7391fd92a091621bf47aae9e807aa69e48ac8b76fadb2d65"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Named search returned broader Grombalia and SAGES business listings, without an exact Essabala card. This supplies no exact identity proof and is not evidence that the hamlet does not exist."
+    },
+    {
+      "id": "osm:node:2778243023",
+      "query": "36.5811309,10.4834428",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243023-2.json",
+        "sha256": "ff493001bcfb814b1dc34a5b984e43a7d43074bcdd2a5d4e03076e1c94031c9e"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2778243023-2.png",
+        "sha256": "9069e99bfef2507c09527a8f92cdf2a00deefd88ed31f235abf12ebf461114cd"
+      },
+      "wholeScreenshotPersonallyViewedByRoot": true,
+      "finding": "Coordinate request returned broad تركي / Tunisia, with the pin in a small built cluster beside جامع السبيل and SMPC near A1. Supports an inhabited cluster at the requested vicinity, but does not independently corroborate the exact Essabala name or sector boundary. The mosque name is not adopted as a hamlet alias."
+    }
+  ],
+  "boundaryOrIdentityFacetsPromoted": false,
+  "liveCatalogChanged": false,
+  "qualification": "No exact named cards were returned. Coordinate results may select nearby landmarks or broad administrative addresses; they do not certify returned coordinates. Local landmark spelling is a research lead, without a catalog rename, deletion, point move, fabricated alias or Google geometry import.",
+  "testsBuildsOrPackagesRun": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\record_kharmia_essabala_phone_review_20260912.py",
+    "sha256": "fd9739bcc5a691ecc4c69282e069d66207c6fb015e5cd2cfbedd1788f28bef50"
+  }
+}

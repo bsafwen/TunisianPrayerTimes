@@ -1,0 +1,197 @@
+{
+  "status": "STATIC_FINITE_NAME_ONLY_PROPOSAL_NOT_GENERATED",
+  "baselineMetadataSha256": "992b1409c45567e83d153cd2b033a5ea1466413c8d3e0b6f3861d4fb0b9f3b41",
+  "generatorSha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+  "currentRaw": {
+    "id": "osm:node:2778243022",
+    "sourceId": "osm",
+    "name": "الخرمية",
+    "aliases": [
+      "El Kharmia"
+    ],
+    "kind": "hamlet",
+    "parentName": "عين طبرنق",
+    "contextAliases": [
+      "Ain Tebournok",
+      "Délégation Grombalia",
+      "Grombalia",
+      "عين طبرنق",
+      "معتمدية قرمبالية"
+    ],
+    "governorateId": 350,
+    "lat": 36.5674182,
+    "lng": 10.4677201,
+    "delegationId": 464,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:2778243022"
+  },
+  "projectedRaw": {
+    "id": "osm:node:2778243022",
+    "sourceId": "osm",
+    "name": "الكرمية",
+    "aliases": [
+      "El Kharmia",
+      "El Karmia"
+    ],
+    "kind": "hamlet",
+    "parentName": "عين طبرنق",
+    "contextAliases": [
+      "Ain Tebournok",
+      "Délégation Grombalia",
+      "Grombalia",
+      "عين طبرنق",
+      "معتمدية قرمبالية"
+    ],
+    "governorateId": 350,
+    "lat": 36.5674182,
+    "lng": 10.4677201,
+    "delegationId": 464,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:2778243022"
+  },
+  "exactMetadataFieldChanges": [
+    {
+      "id": "osm:node:2778243022",
+      "field": "name",
+      "before": "الخرمية",
+      "after": "الكرمية"
+    },
+    {
+      "id": "osm:node:2778243022",
+      "field": "aliases",
+      "before": [
+        "El Kharmia"
+      ],
+      "after": [
+        "El Kharmia",
+        "El Karmia"
+      ]
+    }
+  ],
+  "originalCacheRecord": {
+    "id": "osm:node:2778243022",
+    "tags": {
+      "addr:governorate": "Nabeul",
+      "name": "الخرمية",
+      "name:ar": "الخرمية",
+      "name:fr": "El Kharmia",
+      "place": "hamlet"
+    },
+    "lat": 36.5674182,
+    "lng": 10.4677201
+  },
+  "projectedEffectiveTags": {
+    "addr:governorate": "Nabeul",
+    "place": "hamlet",
+    "name": "الكرمية",
+    "name:ar": "الكرمية",
+    "name:fr": "El Kharmia",
+    "alt_name:fr": "El Karmia"
+  },
+  "sourceAndGroupPeerAudit": {
+    "normalization": "Independent literal reimplementation of installed clean/norm name comparison; no compiler import or execution. Complete consumed name tags, semicolon aliases, NFKD/combining marks, Arabic tatweel/alef-maksura and nonword normalization checked across the entire frozen cache and current catalog.",
+    "keys": [
+      "elkarmia",
+      "elkharmia",
+      "الخرمية",
+      "الكرمية"
+    ],
+    "cachedAreasScanned": 3018,
+    "cachedPointsScanned": 1742,
+    "rawRecordsScanned": 3530,
+    "baseDelegationsScanned": 259,
+    "sourceMatches": [
+      {
+        "id": "osm:node:2778243022",
+        "family": "nodes",
+        "tags": {
+          "addr:governorate": "Nabeul",
+          "name": "الخرمية",
+          "name:ar": "الخرمية",
+          "name:fr": "El Kharmia",
+          "place": "hamlet"
+        },
+        "matchingKeys": [
+          "elkharmia",
+          "الخرمية"
+        ]
+      }
+    ],
+    "rawMatches": [
+      {
+        "id": "osm:node:2778243022",
+        "sourceId": "osm",
+        "name": "الخرمية",
+        "aliases": [
+          "El Kharmia"
+        ],
+        "kind": "hamlet",
+        "parentName": "عين طبرنق",
+        "contextAliases": [
+          "Ain Tebournok",
+          "Délégation Grombalia",
+          "Grombalia",
+          "عين طبرنق",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.5674182,
+        "lng": 10.4677201,
+        "delegationId": 464,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2778243022"
+      }
+    ],
+    "baseMatches": [],
+    "noNewOtherSourceOrPickerPeer": true,
+    "absorptionAndGroupingConclusion": "No original source polygon or other point, current raw record, or base delegation shares any old/proposed name key. The new label cannot create a name-based absorption or group link in this baseline; the raw point remains a singleton."
+  },
+  "exactCoverageNameChange": {
+    "before": {
+      "id": "osm:node:2778243022",
+      "name": "الخرمية",
+      "kind": "hamlet",
+      "lat": 36.5674182,
+      "lng": 10.4677201
+    },
+    "after": {
+      "id": "osm:node:2778243022",
+      "name": "الكرمية",
+      "kind": "hamlet",
+      "lat": 36.5674182,
+      "lng": 10.4677201
+    }
+  },
+  "expectedNewCurationReceipt": {
+    "id": "osm:node:2778243022",
+    "decisionId": "osm:node:2778243022",
+    "action": "name_tags",
+    "inherited": false
+  },
+  "expectedSavedNamesAddition": {
+    "id": "osm:node:2778243022",
+    "name": "الكرمية",
+    "kind": "hamlet"
+  },
+  "expectedCounts": {
+    "curationBefore": 264,
+    "curationAfter": 265,
+    "receiptsBefore": 360,
+    "receiptsAfter": 361,
+    "reviewedNamesBefore": 105,
+    "reviewedNamesAfter": 106,
+    "rawRecordsUnchanged": 3530,
+    "pointOnlyUnchanged": 904,
+    "polygonCountUnchanged": 2626,
+    "pickerGroupCountUnchanged": 3394
+  },
+  "preserve": {
+    "allRawIdsKindsCoordinatesGroupsAndPrayerDefaults": true,
+    "allPolygonsAndPackedBytes": true,
+    "allOtherRawFieldsIncludingCurrentContext": true,
+    "allOldSavedNamesRetiredIdsReplacements": true,
+    "allOldCurationReceipts": true,
+    "allOldDecisionObjectsAndTokenSpans": true
+  },
+  "integrationQualification": "Standalone 992b pre-boundary proposal only. The separately frozen thirteen-boundary package may change this point’s context and whole proof dependencies. Integrate/rebase against that later accepted source epoch rather than overwriting its curation manifest or asserting stale parent fields."
+}

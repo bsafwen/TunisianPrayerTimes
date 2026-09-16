@@ -1,0 +1,4113 @@
+{
+  "schemaVersion": 1,
+  "status": "FINITE_FACTS_AND_CONDITIONAL_SCOPE_PROPOSAL_ONLY_NO_STAGE",
+  "baselineMetadataSha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+  "generatorSha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+  "baselineCurationSha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94",
+  "baselineCurationCount": 167,
+  "candidate": {
+    "id": "osm:node:500182808",
+    "baseId": 476,
+    "currentRaw": {
+      "id": "osm:node:500182808",
+      "sourceId": "osm",
+      "name": "البرمة",
+      "aliases": [
+        "ⵍⴱⵔⵎⴰ البرمة",
+        "El Borma",
+        "ⵍⴱⵔⵎⴰ"
+      ],
+      "kind": "village",
+      "parentName": "رمادة الغربية",
+      "contextAliases": [
+        "Délégation Remada",
+        "Remada",
+        "Remada Ouest",
+        "رمادة الغربية",
+        "معتمدية رمادة"
+      ],
+      "governorateId": 351,
+      "lat": 31.6880101,
+      "lng": 9.2186132,
+      "delegationId": 476,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:500182808"
+    },
+    "currentBase": {
+      "id": 476,
+      "nomFr": "El Borma",
+      "nomAr": "البرمة",
+      "nomEn": "El Borma",
+      "lat": 31.6916,
+      "lng": 9.2043
+    },
+    "expectedGovernor": {
+      "id": 351,
+      "nomFr": "Tataouine",
+      "nomAr": "تطاوين",
+      "nomEn": "Tataouine",
+      "lat": 32.9297,
+      "lng": 10.4518
+    },
+    "originalSourceNode": {
+      "id": "osm:node:500182808",
+      "tags": {
+        "addr:city": "البرمة",
+        "name": "ⵍⴱⵔⵎⴰ البرمة",
+        "name:ar": "البرمة",
+        "name:ber": "ⵍⴱⵔⵎⴰ",
+        "name:de": "El Borma",
+        "name:en": "El Borma",
+        "name:es": "El Borma",
+        "name:fr": "El Borma",
+        "place": "village"
+      },
+      "lat": 31.6880101,
+      "lng": 9.2186132
+    },
+    "sourceNode": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\osm-node-500182808-version8.json",
+      "sha256": "98922a10e1b5bb7da068eb52f2ae10ac5da325ed4b6086158ef346ac5b13079d",
+      "url": "https://api.openstreetmap.org/api/0.6/node/500182808/8.json"
+    },
+    "sourceNodeIdentity": {
+      "url": "https://api.openstreetmap.org/api/0.6/node/500182808/8.json",
+      "sha256": "98922a10e1b5bb7da068eb52f2ae10ac5da325ed4b6086158ef346ac5b13079d",
+      "exactElement": {
+        "type": "node",
+        "id": 500182808,
+        "lat": 31.6880101,
+        "lon": 9.2186132,
+        "timestamp": "2026-07-06T15:32:58Z",
+        "version": 8,
+        "changeset": 185207666,
+        "user": "Libya-truth",
+        "uid": 22560041,
+        "tags": {
+          "addr:city": "البرمة",
+          "name": "ⵍⴱⵔⵎⴰ البرمة",
+          "name:ar": "البرمة",
+          "name:ber": "ⵍⴱⵔⵎⴰ",
+          "name:de": "El Borma",
+          "name:en": "El Borma",
+          "name:es": "El Borma",
+          "name:fr": "El Borma",
+          "place": "village"
+        }
+      }
+    },
+    "officialDelegationCodes": [
+      "5357"
+    ],
+    "preservedSectors": [
+      {
+        "id": "osm:relation:7143844",
+        "officialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535754",
+          "sectorFr": "Kenbout",
+          "sectorAr": "كنبوت",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3199
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "كمبوت",
+          "name:ar": "كمبوت",
+          "name:fr": "Kambout",
+          "ref:tn:codegeo": "535754"
+        },
+        "sourceGeometrySha256": "c44305ceffceab88ad1b6e89c9edcdf58e99f767eb1e57ffdce1b79afaccfbfe",
+        "currentMetadata": {
+          "id": "osm:relation:7143844",
+          "sourceId": "osm",
+          "name": "كمبوت",
+          "aliases": [
+            "Kambout",
+            "ⴽⵎⴱⵓⵜ"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.198026,
+          "lng": 10.07295,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            9.844184,
+            31.976627,
+            10.35943,
+            32.418207
+          ],
+          "areaKm2": 1093.2821259218051,
+          "pickerGroupId": "osm:relation:7143844",
+          "offset": 2084896,
+          "length": 2268
+        },
+        "packedGeometrySha256": "f90a1a1c72c56eb9cbdad816338b11f67e1229af4da4517668d5aa2176ad1aed",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7143846",
+        "officialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535753",
+          "sectorFr": "Nekrif",
+          "sectorAr": "نكريف",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65239,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3203,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3197
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "نكريف",
+          "name:ar": "نكريف",
+          "name:fr": "Nekrif",
+          "ref:tn:codegeo": "535753"
+        },
+        "sourceGeometrySha256": "034beea4ed0afb67e44ccfa7609805a7675b1f03a4bacba98014ff4141bc45a7",
+        "currentMetadata": {
+          "id": "osm:relation:7143846",
+          "sourceId": "osm",
+          "name": "نكريف",
+          "aliases": [
+            "Nekrif",
+            "ⵏⴽⵔⵉⴼ"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.098757,
+          "lng": 10.394572,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.144431,
+            31.913657,
+            10.591872,
+            32.280237
+          ],
+          "areaKm2": 687.8203768147316,
+          "pickerGroupId": "osm:relation:7143846",
+          "offset": 2087688,
+          "length": 1460
+        },
+        "packedGeometrySha256": "248da09aacfbe6d323580e262d76a3b1adac12d172ad6b19aeb88077c5a0bad3",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7143848",
+        "officialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535752",
+          "sectorFr": "Remada ouest",
+          "sectorAr": "رمادة الغربية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65205,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3201,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3195
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "رمادة الغربية",
+          "name:ar": "رمادة الغربية",
+          "name:fr": "Remada Ouest",
+          "ref:tn:codegeo": "535752"
+        },
+        "sourceGeometrySha256": "de5696786088f93e31ab68d37f40ae3d52e8840a2aaac6905342c0df17cc7ed4",
+        "currentMetadata": {
+          "id": "osm:relation:7143848",
+          "sourceId": "osm",
+          "name": "رمادة الغربية",
+          "aliases": [
+            "Remada Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.030197,
+          "lng": 9.540886,
+          "delegationId": 476,
+          "hasBoundary": true,
+          "bbox": [
+            8.588326,
+            31.51407,
+            10.438221,
+            32.546427
+          ],
+          "areaKm2": 9896.9874338715,
+          "pickerGroupId": "osm:relation:7143848",
+          "offset": 2089448,
+          "length": 4108
+        },
+        "packedGeometrySha256": "db2a4fcef72c29507fe236287d05694b1d8914392fdf660079d1d60df37d3420",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7143850",
+        "officialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535751",
+          "sectorFr": "Remada est",
+          "sectorAr": "رمادة الشرقية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65171,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3199,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3193
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "رمادة الشرقية",
+          "name:ar": "رمادة الشرقية",
+          "name:fr": "Remada Est",
+          "ref:tn:codegeo": "535751"
+        },
+        "sourceGeometrySha256": "99cd2556dc4a94608614139e8a969fafb809dbc65beba5fcfba0345d835c2c7d",
+        "currentMetadata": {
+          "id": "osm:relation:7143850",
+          "sourceId": "osm",
+          "name": "رمادة الشرقية",
+          "aliases": [
+            "Remada Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.434532,
+          "lng": 10.442714,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.267404,
+            32.243847,
+            10.640149,
+            32.624197
+          ],
+          "areaKm2": 850.5269379166142,
+          "pickerGroupId": "osm:relation:7143850",
+          "offset": 2095416,
+          "length": 2228
+        },
+        "packedGeometrySha256": "0cd171c3fe0b591c062f7fbaec55da81673b741ea2445c697941f229afcb43d3",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7143871",
+        "officialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535757",
+          "sectorFr": "Meghani",
+          "sectorAr": "مغنى",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65341,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3208,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3202
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "مغنى",
+          "name:ar": "مغنى",
+          "name:fr": "Meghani",
+          "ref:tn:codegeo": "535757"
+        },
+        "sourceGeometrySha256": "bfd645ef135e0eace3d40ec28f0659ba1f46d0a528ca65b6931c0d263224e4a4",
+        "currentMetadata": {
+          "id": "osm:relation:7143871",
+          "sourceId": "osm",
+          "name": "مغنى",
+          "aliases": [
+            "Meghani"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.317542,
+          "lng": 10.634743,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.502444,
+            32.140157,
+            10.801971,
+            32.495127
+          ],
+          "areaKm2": 490.8415001806384,
+          "pickerGroupId": "osm:relation:7143871",
+          "offset": 2125584,
+          "length": 1348
+        },
+        "packedGeometrySha256": "7374242d398d2cc58e7543fbf682dd6cc4d37a70fa855972210b905161660fa2",
+        "expectedCuration": null
+      },
+      {
+        "id": "osm:relation:7143874",
+        "officialIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535755",
+          "sectorFr": "Bir amir",
+          "sectorAr": "بئر عمير",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65307,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3207,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3201
+          }
+        },
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بئر عمير",
+          "name:ar": "بئر عمير",
+          "name:fr": "Bir Amir",
+          "ref:tn:codegeo": "535755"
+        },
+        "sourceGeometrySha256": "891f2697f7d59581f89325799303a18a119e1ccea266d29171376d8f510060a8",
+        "currentMetadata": {
+          "id": "osm:relation:7143874",
+          "sourceId": "osm",
+          "name": "بئر عمير",
+          "aliases": [
+            "Bir Aamir",
+            "Bir Amir"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.581917,
+          "lng": 9.39924,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            8.35683,
+            32.363237,
+            10.307195,
+            32.800622
+          ],
+          "areaKm2": 3664.769860748323,
+          "pickerGroupId": "osm:relation:7143874",
+          "offset": 2129884,
+          "length": 3852
+        },
+        "packedGeometrySha256": "4fcd8084ddef10405be9b76537228e2ee727d9e3e72993ac1dd4edd20b1f0b82",
+        "expectedCuration": null
+      }
+    ],
+    "contexts": {
+      "osm:relation:1434953": {
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-83",
+          "admin_level": "4",
+          "boundary": "administrative",
+          "name": "ولاية تطاوين",
+          "name:ar": "ولاية تطاوين",
+          "name:be": "Татавін (вілает)",
+          "name:be-tarask": "Татаўін (вілает)",
+          "name:bg": "Татауин (област)",
+          "name:ca": "Governació de Tataouine",
+          "name:ceb": "Tataouine (lalawigan)",
+          "name:cy": "Tataouine (talaith)",
+          "name:de": "Gouvernement Tataouine",
+          "name:el": "Ταταουίν (Κυβερνείο)",
+          "name:en": "Tataouine",
+          "name:es": "Gobernación de Tataouine",
+          "name:fa": "تطاوین",
+          "name:fi": "Tataouine (kuvernementti)",
+          "name:fr": "Gouvernorat Tataouine",
+          "name:frr": "Tataouine (Guwernement)",
+          "name:id": "Kegubernuran Tataouine",
+          "name:it": "Tataouine",
+          "name:ja": "タタウイヌ県",
+          "name:ko": "타타우인주",
+          "name:ms": "Kawasan kegabenoran Tataouine",
+          "name:nl": "Tataouine (gouvernement)",
+          "name:no": "Tataouine (guvernement)",
+          "name:pl": "Gubernatorstwo Tatawin",
+          "name:pt": "Tataouine (província)",
+          "name:ro": "Guvernoratul Tataouine",
+          "name:ru": "Татавин (вилайет)",
+          "name:sco": "Tataouine Govrenorate",
+          "name:sh": "Tataouine (vilajet)",
+          "name:sv": "Tataouine (guvernement)",
+          "name:tr": "Tatavin ili",
+          "name:uk": "Татауїн (вілаєт)",
+          "name:ur": "تطاوین",
+          "name:zh": "泰塔溫省",
+          "name:zu": "Tataouine Governorate",
+          "official_name": "ولاية تطاوين",
+          "official_name:ar": "ولاية تطاوين",
+          "official_name:en": "Tataouine Governorate",
+          "official_name:fa": "استان تطاوین",
+          "official_name:fr": "Gouvernorat de Tataouine",
+          "official_name:it": "Governatorato di Tataouine",
+          "official_name:ur": "ولایت تطاوین",
+          "population": "143524",
+          "population:date": "2004",
+          "ref:tn:codegeo": "53",
+          "wikidata": "Q327045",
+          "wikipedia": "ar:ولاية تطاوين"
+        },
+        "sourceGeometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0"
+      },
+      "osm:relation:7143840": {
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Remada",
+          "boundary": "administrative",
+          "name": "معتمدية رمادة",
+          "name:ar": "معتمدية رمادة",
+          "name:fr": "Délégation Remada",
+          "ref:tn:codegeo": "5357",
+          "ref:tn:hasc_2": "TN.TA.RE",
+          "wikidata": "Q3424458"
+        },
+        "sourceGeometrySha256": "97ed7fa508bfca02431d7db1e1b64173cb6895c828b95ed0854d36d89b6b3ace"
+      }
+    },
+    "sourceStates": [
+      {
+        "id": "osm:node:500182808",
+        "original": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "البرمة",
+            "name": "ⵍⴱⵔⵎⴰ البرمة",
+            "name:ar": "البرمة",
+            "name:ber": "ⵍⴱⵔⵎⴰ",
+            "name:de": "El Borma",
+            "name:en": "El Borma",
+            "name:es": "El Borma",
+            "name:fr": "El Borma",
+            "place": "village"
+          },
+          "sourceId": null,
+          "geometrySha256": "ef1d598e5a6e41a53c5ef077b8f56b36777daca7388b071eaa51a59f83fa15c0"
+        },
+        "effective": {
+          "kind": "village",
+          "tags": {
+            "addr:city": "البرمة",
+            "name": "ⵍⴱⵔⵎⴰ البرمة",
+            "name:ar": "البرمة",
+            "name:ber": "ⵍⴱⵔⵎⴰ",
+            "name:de": "El Borma",
+            "name:en": "El Borma",
+            "name:es": "El Borma",
+            "name:fr": "El Borma",
+            "place": "village"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "ef1d598e5a6e41a53c5ef077b8f56b36777daca7388b071eaa51a59f83fa15c0"
+        }
+      },
+      {
+        "id": "osm:relation:1434953",
+        "original": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-83",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية تطاوين",
+            "name:ar": "ولاية تطاوين",
+            "name:be": "Татавін (вілает)",
+            "name:be-tarask": "Татаўін (вілает)",
+            "name:bg": "Татауин (област)",
+            "name:ca": "Governació de Tataouine",
+            "name:ceb": "Tataouine (lalawigan)",
+            "name:cy": "Tataouine (talaith)",
+            "name:de": "Gouvernement Tataouine",
+            "name:el": "Ταταουίν (Κυβερνείο)",
+            "name:en": "Tataouine",
+            "name:es": "Gobernación de Tataouine",
+            "name:fa": "تطاوین",
+            "name:fi": "Tataouine (kuvernementti)",
+            "name:fr": "Gouvernorat Tataouine",
+            "name:frr": "Tataouine (Guwernement)",
+            "name:id": "Kegubernuran Tataouine",
+            "name:it": "Tataouine",
+            "name:ja": "タタウイヌ県",
+            "name:ko": "타타우인주",
+            "name:ms": "Kawasan kegabenoran Tataouine",
+            "name:nl": "Tataouine (gouvernement)",
+            "name:no": "Tataouine (guvernement)",
+            "name:pl": "Gubernatorstwo Tatawin",
+            "name:pt": "Tataouine (província)",
+            "name:ro": "Guvernoratul Tataouine",
+            "name:ru": "Татавин (вилайет)",
+            "name:sco": "Tataouine Govrenorate",
+            "name:sh": "Tataouine (vilajet)",
+            "name:sv": "Tataouine (guvernement)",
+            "name:tr": "Tatavin ili",
+            "name:uk": "Татауїн (вілаєт)",
+            "name:ur": "تطاوین",
+            "name:zh": "泰塔溫省",
+            "name:zu": "Tataouine Governorate",
+            "official_name": "ولاية تطاوين",
+            "official_name:ar": "ولاية تطاوين",
+            "official_name:en": "Tataouine Governorate",
+            "official_name:fa": "استان تطاوین",
+            "official_name:fr": "Gouvernorat de Tataouine",
+            "official_name:it": "Governatorato di Tataouine",
+            "official_name:ur": "ولایت تطاوین",
+            "population": "143524",
+            "population:date": "2004",
+            "ref:tn:codegeo": "53",
+            "wikidata": "Q327045",
+            "wikipedia": "ar:ولاية تطاوين"
+          },
+          "sourceId": null,
+          "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0"
+        },
+        "effective": {
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-83",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية تطاوين",
+            "name:ar": "ولاية تطاوين",
+            "name:be": "Татавін (вілает)",
+            "name:be-tarask": "Татаўін (вілает)",
+            "name:bg": "Татауин (област)",
+            "name:ca": "Governació de Tataouine",
+            "name:ceb": "Tataouine (lalawigan)",
+            "name:cy": "Tataouine (talaith)",
+            "name:de": "Gouvernement Tataouine",
+            "name:el": "Ταταουίν (Κυβερνείο)",
+            "name:en": "Tataouine",
+            "name:es": "Gobernación de Tataouine",
+            "name:fa": "تطاوین",
+            "name:fi": "Tataouine (kuvernementti)",
+            "name:fr": "Gouvernorat Tataouine",
+            "name:frr": "Tataouine (Guwernement)",
+            "name:id": "Kegubernuran Tataouine",
+            "name:it": "Tataouine",
+            "name:ja": "タタウイヌ県",
+            "name:ko": "타타우인주",
+            "name:ms": "Kawasan kegabenoran Tataouine",
+            "name:nl": "Tataouine (gouvernement)",
+            "name:no": "Tataouine (guvernement)",
+            "name:pl": "Gubernatorstwo Tatawin",
+            "name:pt": "Tataouine (província)",
+            "name:ro": "Guvernoratul Tataouine",
+            "name:ru": "Татавин (вилайет)",
+            "name:sco": "Tataouine Govrenorate",
+            "name:sh": "Tataouine (vilajet)",
+            "name:sv": "Tataouine (guvernement)",
+            "name:tr": "Tatavin ili",
+            "name:uk": "Татауїн (вілаєт)",
+            "name:ur": "تطاوین",
+            "name:zh": "泰塔溫省",
+            "name:zu": "Tataouine Governorate",
+            "official_name": "ولاية تطاوين",
+            "official_name:ar": "ولاية تطاوين",
+            "official_name:en": "Tataouine Governorate",
+            "official_name:fa": "استان تطاوین",
+            "official_name:fr": "Gouvernorat de Tataouine",
+            "official_name:it": "Governatorato di Tataouine",
+            "official_name:ur": "ولایت تطاوین",
+            "population": "143524",
+            "population:date": "2004",
+            "ref:tn:codegeo": "53",
+            "wikidata": "Q327045",
+            "wikipedia": "ar:ولاية تطاوين"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0"
+        }
+      },
+      {
+        "id": "osm:relation:7143840",
+        "original": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Remada",
+            "boundary": "administrative",
+            "name": "معتمدية رمادة",
+            "name:ar": "معتمدية رمادة",
+            "name:fr": "Délégation Remada",
+            "ref:tn:codegeo": "5357",
+            "ref:tn:hasc_2": "TN.TA.RE",
+            "wikidata": "Q3424458"
+          },
+          "sourceId": null,
+          "geometrySha256": "97ed7fa508bfca02431d7db1e1b64173cb6895c828b95ed0854d36d89b6b3ace"
+        },
+        "effective": {
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Remada",
+            "boundary": "administrative",
+            "name": "معتمدية رمادة",
+            "name:ar": "معتمدية رمادة",
+            "name:fr": "Délégation Remada",
+            "ref:tn:codegeo": "5357",
+            "ref:tn:hasc_2": "TN.TA.RE",
+            "wikidata": "Q3424458"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "97ed7fa508bfca02431d7db1e1b64173cb6895c828b95ed0854d36d89b6b3ace"
+        }
+      },
+      {
+        "id": "osm:relation:7143844",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كمبوت",
+            "name:ar": "كمبوت",
+            "name:fr": "Kambout",
+            "ref:tn:codegeo": "535754"
+          },
+          "sourceId": null,
+          "geometrySha256": "c44305ceffceab88ad1b6e89c9edcdf58e99f767eb1e57ffdce1b79afaccfbfe"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كمبوت",
+            "name:ar": "كمبوت",
+            "name:fr": "Kambout",
+            "ref:tn:codegeo": "535754"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "c44305ceffceab88ad1b6e89c9edcdf58e99f767eb1e57ffdce1b79afaccfbfe"
+        }
+      },
+      {
+        "id": "osm:relation:7143846",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نكريف",
+            "name:ar": "نكريف",
+            "name:fr": "Nekrif",
+            "ref:tn:codegeo": "535753"
+          },
+          "sourceId": null,
+          "geometrySha256": "034beea4ed0afb67e44ccfa7609805a7675b1f03a4bacba98014ff4141bc45a7"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "نكريف",
+            "name:ar": "نكريف",
+            "name:fr": "Nekrif",
+            "ref:tn:codegeo": "535753"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "034beea4ed0afb67e44ccfa7609805a7675b1f03a4bacba98014ff4141bc45a7"
+        }
+      },
+      {
+        "id": "osm:relation:7143848",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الغربية",
+            "name:ar": "رمادة الغربية",
+            "name:fr": "Remada Ouest",
+            "ref:tn:codegeo": "535752"
+          },
+          "sourceId": null,
+          "geometrySha256": "de5696786088f93e31ab68d37f40ae3d52e8840a2aaac6905342c0df17cc7ed4"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الغربية",
+            "name:ar": "رمادة الغربية",
+            "name:fr": "Remada Ouest",
+            "ref:tn:codegeo": "535752"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "de5696786088f93e31ab68d37f40ae3d52e8840a2aaac6905342c0df17cc7ed4"
+        }
+      },
+      {
+        "id": "osm:relation:7143850",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الشرقية",
+            "name:ar": "رمادة الشرقية",
+            "name:fr": "Remada Est",
+            "ref:tn:codegeo": "535751"
+          },
+          "sourceId": null,
+          "geometrySha256": "99cd2556dc4a94608614139e8a969fafb809dbc65beba5fcfba0345d835c2c7d"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "رمادة الشرقية",
+            "name:ar": "رمادة الشرقية",
+            "name:fr": "Remada Est",
+            "ref:tn:codegeo": "535751"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "99cd2556dc4a94608614139e8a969fafb809dbc65beba5fcfba0345d835c2c7d"
+        }
+      },
+      {
+        "id": "osm:relation:7143871",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مغنى",
+            "name:ar": "مغنى",
+            "name:fr": "Meghani",
+            "ref:tn:codegeo": "535757"
+          },
+          "sourceId": null,
+          "geometrySha256": "bfd645ef135e0eace3d40ec28f0659ba1f46d0a528ca65b6931c0d263224e4a4"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "مغنى",
+            "name:ar": "مغنى",
+            "name:fr": "Meghani",
+            "ref:tn:codegeo": "535757"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "bfd645ef135e0eace3d40ec28f0659ba1f46d0a528ca65b6931c0d263224e4a4"
+        }
+      },
+      {
+        "id": "osm:relation:7143874",
+        "original": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر عمير",
+            "name:ar": "بئر عمير",
+            "name:fr": "Bir Amir",
+            "ref:tn:codegeo": "535755"
+          },
+          "sourceId": null,
+          "geometrySha256": "891f2697f7d59581f89325799303a18a119e1ccea266d29171376d8f510060a8"
+        },
+        "effective": {
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بئر عمير",
+            "name:ar": "بئر عمير",
+            "name:fr": "Bir Amir",
+            "ref:tn:codegeo": "535755"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "891f2697f7d59581f89325799303a18a119e1ccea266d29171376d8f510060a8"
+        }
+      }
+    ],
+    "curationBindings": {
+      "osm:relation:1434953": null,
+      "osm:relation:7143840": null,
+      "osm:relation:7143844": null,
+      "osm:relation:7143846": null,
+      "osm:relation:7143848": null,
+      "osm:relation:7143850": null,
+      "osm:relation:7143871": null,
+      "osm:relation:7143874": null
+    },
+    "acceptedBoundaryReplacements": [],
+    "reviewedBoundaries": null,
+    "protectedRawRecords": [
+      {
+        "id": "osm:node:500182808",
+        "kind": "village",
+        "currentMetadata": {
+          "id": "osm:node:500182808",
+          "sourceId": "osm",
+          "name": "البرمة",
+          "aliases": [
+            "ⵍⴱⵔⵎⴰ البرمة",
+            "El Borma",
+            "ⵍⴱⵔⵎⴰ"
+          ],
+          "kind": "village",
+          "parentName": "رمادة الغربية",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "Remada Ouest",
+            "رمادة الغربية",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 31.6880101,
+          "lng": 9.2186132,
+          "delegationId": 476,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:500182808"
+        },
+        "packedGeometrySha256": null
+      },
+      {
+        "id": "osm:relation:7143844",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143844",
+          "sourceId": "osm",
+          "name": "كمبوت",
+          "aliases": [
+            "Kambout",
+            "ⴽⵎⴱⵓⵜ"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.198026,
+          "lng": 10.07295,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            9.844184,
+            31.976627,
+            10.35943,
+            32.418207
+          ],
+          "areaKm2": 1093.2821259218051,
+          "pickerGroupId": "osm:relation:7143844",
+          "offset": 2084896,
+          "length": 2268
+        },
+        "packedGeometrySha256": "f90a1a1c72c56eb9cbdad816338b11f67e1229af4da4517668d5aa2176ad1aed"
+      },
+      {
+        "id": "osm:relation:7143846",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143846",
+          "sourceId": "osm",
+          "name": "نكريف",
+          "aliases": [
+            "Nekrif",
+            "ⵏⴽⵔⵉⴼ"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.098757,
+          "lng": 10.394572,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.144431,
+            31.913657,
+            10.591872,
+            32.280237
+          ],
+          "areaKm2": 687.8203768147316,
+          "pickerGroupId": "osm:relation:7143846",
+          "offset": 2087688,
+          "length": 1460
+        },
+        "packedGeometrySha256": "248da09aacfbe6d323580e262d76a3b1adac12d172ad6b19aeb88077c5a0bad3"
+      },
+      {
+        "id": "osm:relation:7143848",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143848",
+          "sourceId": "osm",
+          "name": "رمادة الغربية",
+          "aliases": [
+            "Remada Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.030197,
+          "lng": 9.540886,
+          "delegationId": 476,
+          "hasBoundary": true,
+          "bbox": [
+            8.588326,
+            31.51407,
+            10.438221,
+            32.546427
+          ],
+          "areaKm2": 9896.9874338715,
+          "pickerGroupId": "osm:relation:7143848",
+          "offset": 2089448,
+          "length": 4108
+        },
+        "packedGeometrySha256": "db2a4fcef72c29507fe236287d05694b1d8914392fdf660079d1d60df37d3420"
+      },
+      {
+        "id": "osm:relation:7143850",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143850",
+          "sourceId": "osm",
+          "name": "رمادة الشرقية",
+          "aliases": [
+            "Remada Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.434532,
+          "lng": 10.442714,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.267404,
+            32.243847,
+            10.640149,
+            32.624197
+          ],
+          "areaKm2": 850.5269379166142,
+          "pickerGroupId": "osm:relation:7143850",
+          "offset": 2095416,
+          "length": 2228
+        },
+        "packedGeometrySha256": "0cd171c3fe0b591c062f7fbaec55da81673b741ea2445c697941f229afcb43d3"
+      },
+      {
+        "id": "osm:relation:7143871",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143871",
+          "sourceId": "osm",
+          "name": "مغنى",
+          "aliases": [
+            "Meghani"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.317542,
+          "lng": 10.634743,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            10.502444,
+            32.140157,
+            10.801971,
+            32.495127
+          ],
+          "areaKm2": 490.8415001806384,
+          "pickerGroupId": "osm:relation:7143871",
+          "offset": 2125584,
+          "length": 1348
+        },
+        "packedGeometrySha256": "7374242d398d2cc58e7543fbf682dd6cc4d37a70fa855972210b905161660fa2"
+      },
+      {
+        "id": "osm:relation:7143874",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7143874",
+          "sourceId": "osm",
+          "name": "بئر عمير",
+          "aliases": [
+            "Bir Aamir",
+            "Bir Amir"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.581917,
+          "lng": 9.39924,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            8.35683,
+            32.363237,
+            10.307195,
+            32.800622
+          ],
+          "areaKm2": 3664.769860748323,
+          "pickerGroupId": "osm:relation:7143874",
+          "offset": 2129884,
+          "length": 3852
+        },
+        "packedGeometrySha256": "4fcd8084ddef10405be9b76537228e2ee727d9e3e72993ac1dd4edd20b1f0b82"
+      }
+    ],
+    "sourceNamePeers": {
+      "original": [
+        {
+          "id": "osm:node:500182808",
+          "kind": "village",
+          "tags": {
+            "addr:city": "البرمة",
+            "name": "ⵍⴱⵔⵎⴰ البرمة",
+            "name:ar": "البرمة",
+            "name:ber": "ⵍⴱⵔⵎⴰ",
+            "name:de": "El Borma",
+            "name:en": "El Borma",
+            "name:es": "El Borma",
+            "name:fr": "El Borma",
+            "place": "village"
+          },
+          "sourceId": null,
+          "geometrySha256": "ef1d598e5a6e41a53c5ef077b8f56b36777daca7388b071eaa51a59f83fa15c0",
+          "rawPresent": true
+        }
+      ],
+      "effective": [
+        {
+          "id": "osm:node:500182808",
+          "kind": "village",
+          "tags": {
+            "addr:city": "البرمة",
+            "name": "ⵍⴱⵔⵎⴰ البرمة",
+            "name:ar": "البرمة",
+            "name:ber": "ⵍⴱⵔⵎⴰ",
+            "name:de": "El Borma",
+            "name:en": "El Borma",
+            "name:es": "El Borma",
+            "name:fr": "El Borma",
+            "place": "village"
+          },
+          "sourceId": "osm",
+          "geometrySha256": "ef1d598e5a6e41a53c5ef077b8f56b36777daca7388b071eaa51a59f83fa15c0",
+          "rawPresent": true
+        }
+      ]
+    },
+    "sourceNamePeerIds": {
+      "original": [
+        "osm:node:500182808"
+      ],
+      "effective": [
+        "osm:node:500182808"
+      ]
+    },
+    "coordinateContextMembership": {
+      "osm:relation:1434953": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7143840": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7143844": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143846": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143848": {
+        "original": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": true,
+            "covers": true
+          },
+          "base": {
+            "contains": true,
+            "covers": true
+          }
+        }
+      },
+      "osm:relation:7143850": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143871": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      },
+      "osm:relation:7143874": {
+        "original": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        },
+        "effective": {
+          "point": {
+            "contains": false,
+            "covers": false
+          },
+          "base": {
+            "contains": false,
+            "covers": false
+          }
+        }
+      }
+    },
+    "packedCoordinateContextMembership": {
+      "osm:relation:7143844": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "osm:relation:7143846": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "osm:relation:7143848": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": true,
+          "covers": true
+        }
+      },
+      "osm:relation:7143850": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "osm:relation:7143871": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "osm:relation:7143874": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      }
+    },
+    "completeAdministrativeContainers": {
+      "original": {
+        "point": [
+          "osm:relation:1434953",
+          "osm:relation:7143840",
+          "osm:relation:7143848"
+        ],
+        "base": [
+          "osm:relation:1434953",
+          "osm:relation:7143840",
+          "osm:relation:7143848"
+        ]
+      },
+      "effective": {
+        "point": [
+          "osm:relation:1434953",
+          "osm:relation:7143840",
+          "osm:relation:7143848"
+        ],
+        "base": [
+          "osm:relation:1434953",
+          "osm:relation:7143840",
+          "osm:relation:7143848"
+        ]
+      }
+    },
+    "allOriginalEffectiveContainersIncluded": true,
+    "expectedBeforeGroups": {
+      "osm:node:500182808": [
+        "osm:node:500182808"
+      ],
+      "osm:relation:7143844": [
+        "osm:relation:7143844"
+      ],
+      "osm:relation:7143846": [
+        "osm:relation:7143846"
+      ],
+      "osm:relation:7143848": [
+        "osm:relation:7143848"
+      ],
+      "osm:relation:7143850": [
+        "osm:relation:7143850"
+      ],
+      "osm:relation:7143871": [
+        "osm:relation:7143871"
+      ],
+      "osm:relation:7143874": [
+        "osm:relation:7143874"
+      ]
+    },
+    "expectedAfterGroups": {
+      "osm:relation:7143844": [
+        "osm:relation:7143844"
+      ],
+      "osm:relation:7143846": [
+        "osm:relation:7143846"
+      ],
+      "osm:relation:7143848": [
+        "osm:relation:7143848"
+      ],
+      "osm:relation:7143850": [
+        "osm:relation:7143850"
+      ],
+      "osm:relation:7143871": [
+        "osm:relation:7143871"
+      ],
+      "osm:relation:7143874": [
+        "osm:relation:7143874"
+      ],
+      "delegation:476": [
+        "osm:node:500182808"
+      ]
+    },
+    "priorPickerBindings": {
+      "manifest": null,
+      "records": []
+    },
+    "expectedCoordinateCorrections": [],
+    "referenceGuards": {
+      "point": {
+        "coordinate": {
+          "lat": 31.6880101,
+          "lng": 9.2186132
+        },
+        "nearest": {
+          "id": 476,
+          "kilometers": 1.4118669322418183
+        },
+        "runnerUp": {
+          "id": 471,
+          "kilometers": 130.9138816197738
+        },
+        "ranking": [
+          {
+            "id": 476,
+            "kilometers": 1.4118669322418183
+          },
+          {
+            "id": 471,
+            "kilometers": 130.9138816197738
+          },
+          {
+            "id": 470,
+            "kilometers": 144.12753995880578
+          },
+          {
+            "id": 475,
+            "kilometers": 162.8838200755181
+          },
+          {
+            "id": 624,
+            "kilometers": 180.25936753794971
+          },
+          {
+            "id": 473,
+            "kilometers": 185.3734599399273
+          },
+          {
+            "id": 485,
+            "kilometers": 193.19650297995042
+          },
+          {
+            "id": 489,
+            "kilometers": 196.15315599811194
+          },
+          {
+            "id": 484,
+            "kilometers": 197.91310645996003
+          },
+          {
+            "id": 1524,
+            "kilometers": 199.08042902350917
+          },
+          {
+            "id": 474,
+            "kilometers": 201.65949749761185
+          },
+          {
+            "id": 472,
+            "kilometers": 209.51824210676952
+          },
+          {
+            "id": 487,
+            "kilometers": 212.81598761557186
+          },
+          {
+            "id": 1022,
+            "kilometers": 218.13901761936566
+          },
+          {
+            "id": 626,
+            "kilometers": 219.76580795477201
+          },
+          {
+            "id": 482,
+            "kilometers": 225.72829851057043
+          },
+          {
+            "id": 486,
+            "kilometers": 228.62300961788122
+          },
+          {
+            "id": 1023,
+            "kilometers": 231.90891697987814
+          },
+          {
+            "id": 496,
+            "kilometers": 233.72836725425472
+          },
+          {
+            "id": 483,
+            "kilometers": 234.93862051493122
+          },
+          {
+            "id": 1020,
+            "kilometers": 236.72953425078893
+          },
+          {
+            "id": 488,
+            "kilometers": 247.51523419367086
+          },
+          {
+            "id": 1024,
+            "kilometers": 250.74055991680407
+          },
+          {
+            "id": 620,
+            "kilometers": 257.3885786214045
+          },
+          {
+            "id": 1019,
+            "kilometers": 262.5829234795908
+          },
+          {
+            "id": 1025,
+            "kilometers": 262.7122336441201
+          },
+          {
+            "id": 625,
+            "kilometers": 268.07131093220227
+          },
+          {
+            "id": 490,
+            "kilometers": 268.6797897009549
+          },
+          {
+            "id": 493,
+            "kilometers": 269.2169567828313
+          },
+          {
+            "id": 478,
+            "kilometers": 270.35228813314467
+          },
+          {
+            "id": 477,
+            "kilometers": 272.99153606872596
+          },
+          {
+            "id": 479,
+            "kilometers": 274.5265056938335
+          },
+          {
+            "id": 481,
+            "kilometers": 275.30855299665285
+          },
+          {
+            "id": 491,
+            "kilometers": 281.82174567522475
+          },
+          {
+            "id": 1021,
+            "kilometers": 284.83424660014225
+          },
+          {
+            "id": 494,
+            "kilometers": 287.41087795343003
+          },
+          {
+            "id": 612,
+            "kilometers": 288.0232932123119
+          },
+          {
+            "id": 607,
+            "kilometers": 288.0737764899415
+          },
+          {
+            "id": 492,
+            "kilometers": 289.3671159500719
+          },
+          {
+            "id": 611,
+            "kilometers": 295.8869754595317
+          },
+          {
+            "id": 546,
+            "kilometers": 300.94372163957894
+          },
+          {
+            "id": 606,
+            "kilometers": 303.5269012481048
+          },
+          {
+            "id": 608,
+            "kilometers": 303.78213762272134
+          },
+          {
+            "id": 638,
+            "kilometers": 307.0192850858786
+          },
+          {
+            "id": 605,
+            "kilometers": 314.41636328679
+          },
+          {
+            "id": 609,
+            "kilometers": 317.21063811491786
+          },
+          {
+            "id": 510,
+            "kilometers": 321.39446429012486
+          },
+          {
+            "id": 480,
+            "kilometers": 323.0672331628238
+          },
+          {
+            "id": 604,
+            "kilometers": 323.31118683836394
+          },
+          {
+            "id": 539,
+            "kilometers": 325.7120569434909
+          },
+          {
+            "id": 505,
+            "kilometers": 325.73869570852514
+          },
+          {
+            "id": 511,
+            "kilometers": 326.50445037444723
+          },
+          {
+            "id": 537,
+            "kilometers": 337.04385658374304
+          },
+          {
+            "id": 610,
+            "kilometers": 340.9898447479621
+          },
+          {
+            "id": 580,
+            "kilometers": 346.480920979316
+          },
+          {
+            "id": 538,
+            "kilometers": 349.1009179145025
+          },
+          {
+            "id": 509,
+            "kilometers": 351.9537545120252
+          },
+          {
+            "id": 504,
+            "kilometers": 356.4561049783545
+          },
+          {
+            "id": 1522,
+            "kilometers": 356.96391983120014
+          },
+          {
+            "id": 508,
+            "kilometers": 360.7435206334495
+          },
+          {
+            "id": 540,
+            "kilometers": 360.75712895372686
+          },
+          {
+            "id": 549,
+            "kilometers": 361.1980931053683
+          },
+          {
+            "id": 513,
+            "kilometers": 363.2177895666411
+          },
+          {
+            "id": 582,
+            "kilometers": 366.75344491088856
+          },
+          {
+            "id": 577,
+            "kilometers": 367.6864373211886
+          },
+          {
+            "id": 632,
+            "kilometers": 368.4732928635975
+          },
+          {
+            "id": 628,
+            "kilometers": 373.34353838179226
+          },
+          {
+            "id": 544,
+            "kilometers": 374.6807374545003
+          },
+          {
+            "id": 547,
+            "kilometers": 374.8286434099784
+          },
+          {
+            "id": 548,
+            "kilometers": 374.9038182464835
+          },
+          {
+            "id": 542,
+            "kilometers": 380.33254639695303
+          },
+          {
+            "id": 512,
+            "kilometers": 382.2433111437051
+          },
+          {
+            "id": 507,
+            "kilometers": 388.20702939262634
+          },
+          {
+            "id": 635,
+            "kilometers": 388.6615564374488
+          },
+          {
+            "id": 529,
+            "kilometers": 388.7798544462613
+          },
+          {
+            "id": 543,
+            "kilometers": 390.95369922724245
+          },
+          {
+            "id": 575,
+            "kilometers": 393.9574580123242
+          },
+          {
+            "id": 430,
+            "kilometers": 398.1518624530523
+          },
+          {
+            "id": 545,
+            "kilometers": 398.3312508815612
+          },
+          {
+            "id": 506,
+            "kilometers": 398.6975295942481
+          },
+          {
+            "id": 536,
+            "kilometers": 403.84250780722357
+          },
+          {
+            "id": 541,
+            "kilometers": 407.2384510017129
+          },
+          {
+            "id": 578,
+            "kilometers": 410.6691645359675
+          },
+          {
+            "id": 527,
+            "kilometers": 411.78954692796214
+          },
+          {
+            "id": 526,
+            "kilometers": 413.5142735006415
+          },
+          {
+            "id": 429,
+            "kilometers": 414.3456114102937
+          },
+          {
+            "id": 528,
+            "kilometers": 419.69569906803645
+          },
+          {
+            "id": 425,
+            "kilometers": 420.2456903302879
+          },
+          {
+            "id": 619,
+            "kilometers": 424.7606790090737
+          },
+          {
+            "id": 428,
+            "kilometers": 424.85848712408523
+          },
+          {
+            "id": 576,
+            "kilometers": 427.43121661918343
+          },
+          {
+            "id": 579,
+            "kilometers": 428.8855569960105
+          },
+          {
+            "id": 424,
+            "kilometers": 431.83413183428536
+          },
+          {
+            "id": 581,
+            "kilometers": 434.4855729176995
+          },
+          {
+            "id": 431,
+            "kilometers": 435.02512020737896
+          },
+          {
+            "id": 573,
+            "kilometers": 436.09857318385133
+          },
+          {
+            "id": 574,
+            "kilometers": 436.9518359242289
+          },
+          {
+            "id": 524,
+            "kilometers": 437.67783755750185
+          },
+          {
+            "id": 426,
+            "kilometers": 440.05424894818066
+          },
+          {
+            "id": 523,
+            "kilometers": 440.40255138612997
+          },
+          {
+            "id": 416,
+            "kilometers": 440.9678293623374
+          },
+          {
+            "id": 522,
+            "kilometers": 441.8739092838536
+          },
+          {
+            "id": 427,
+            "kilometers": 442.45638265652747
+          },
+          {
+            "id": 587,
+            "kilometers": 445.22822815497534
+          },
+          {
+            "id": 423,
+            "kilometers": 447.26889997090717
+          },
+          {
+            "id": 630,
+            "kilometers": 451.0418559043693
+          },
+          {
+            "id": 1084,
+            "kilometers": 452.69630967645827
+          },
+          {
+            "id": 596,
+            "kilometers": 454.9469740013042
+          },
+          {
+            "id": 441,
+            "kilometers": 455.40341797345957
+          },
+          {
+            "id": 597,
+            "kilometers": 455.73260280931567
+          },
+          {
+            "id": 618,
+            "kilometers": 457.43144451439247
+          },
+          {
+            "id": 414,
+            "kilometers": 459.00018271352985
+          },
+          {
+            "id": 588,
+            "kilometers": 460.74927568067784
+          },
+          {
+            "id": 595,
+            "kilometers": 460.93971522976625
+          },
+          {
+            "id": 525,
+            "kilometers": 462.88603010852813
+          },
+          {
+            "id": 415,
+            "kilometers": 463.8287227471846
+          },
+          {
+            "id": 598,
+            "kilometers": 464.8007177114962
+          },
+          {
+            "id": 585,
+            "kilometers": 465.54388589989884
+          },
+          {
+            "id": 602,
+            "kilometers": 466.5868804189629
+          },
+          {
+            "id": 440,
+            "kilometers": 466.7401031450148
+          },
+          {
+            "id": 601,
+            "kilometers": 466.97703330003395
+          },
+          {
+            "id": 593,
+            "kilometers": 467.0229897850825
+          },
+          {
+            "id": 583,
+            "kilometers": 467.96629627313587
+          },
+          {
+            "id": 603,
+            "kilometers": 468.39104811616903
+          },
+          {
+            "id": 594,
+            "kilometers": 468.4138248534822
+          },
+          {
+            "id": 599,
+            "kilometers": 468.53178669390405
+          },
+          {
+            "id": 600,
+            "kilometers": 468.98518671676067
+          },
+          {
+            "id": 592,
+            "kilometers": 471.184398605965
+          },
+          {
+            "id": 586,
+            "kilometers": 471.4175678120952
+          },
+          {
+            "id": 590,
+            "kilometers": 474.83009295805573
+          },
+          {
+            "id": 443,
+            "kilometers": 476.35235070135155
+          },
+          {
+            "id": 637,
+            "kilometers": 476.5716795381529
+          },
+          {
+            "id": 521,
+            "kilometers": 477.80439637359706
+          },
+          {
+            "id": 621,
+            "kilometers": 478.35795403681163
+          },
+          {
+            "id": 439,
+            "kilometers": 481.1895086471322
+          },
+          {
+            "id": 438,
+            "kilometers": 481.2591325938527
+          },
+          {
+            "id": 437,
+            "kilometers": 482.02757068061146
+          },
+          {
+            "id": 442,
+            "kilometers": 482.40443814304166
+          },
+          {
+            "id": 584,
+            "kilometers": 487.56569710005294
+          },
+          {
+            "id": 436,
+            "kilometers": 488.4863885886103
+          },
+          {
+            "id": 617,
+            "kilometers": 489.1133980139723
+          },
+          {
+            "id": 417,
+            "kilometers": 490.69160107388603
+          },
+          {
+            "id": 435,
+            "kilometers": 496.6570536065911
+          },
+          {
+            "id": 422,
+            "kilometers": 499.2478585771514
+          },
+          {
+            "id": 412,
+            "kilometers": 499.78987009726217
+          },
+          {
+            "id": 636,
+            "kilometers": 501.1406216959235
+          },
+          {
+            "id": 434,
+            "kilometers": 505.81545486528375
+          },
+          {
+            "id": 591,
+            "kilometers": 510.11143803827736
+          },
+          {
+            "id": 413,
+            "kilometers": 512.3465456969993
+          },
+          {
+            "id": 589,
+            "kilometers": 514.0244938578635
+          },
+          {
+            "id": 418,
+            "kilometers": 515.1559790876495
+          },
+          {
+            "id": 421,
+            "kilometers": 516.1364619466158
+          },
+          {
+            "id": 420,
+            "kilometers": 519.4672495906487
+          },
+          {
+            "id": 1523,
+            "kilometers": 520.6728388745815
+          },
+          {
+            "id": 419,
+            "kilometers": 522.018234637393
+          },
+          {
+            "id": 409,
+            "kilometers": 523.7438991684685
+          },
+          {
+            "id": 433,
+            "kilometers": 523.9460791649843
+          },
+          {
+            "id": 411,
+            "kilometers": 524.4926050881171
+          },
+          {
+            "id": 518,
+            "kilometers": 530.6247181156562
+          },
+          {
+            "id": 616,
+            "kilometers": 531.1340289716582
+          },
+          {
+            "id": 501,
+            "kilometers": 534.2145877558927
+          },
+          {
+            "id": 500,
+            "kilometers": 535.0402904436382
+          },
+          {
+            "id": 627,
+            "kilometers": 536.7205544508454
+          },
+          {
+            "id": 516,
+            "kilometers": 538.5044977174404
+          },
+          {
+            "id": 461,
+            "kilometers": 539.8594199335436
+          },
+          {
+            "id": 517,
+            "kilometers": 541.0120515426769
+          },
+          {
+            "id": 519,
+            "kilometers": 541.1837427488857
+          },
+          {
+            "id": 410,
+            "kilometers": 541.403203126054
+          },
+          {
+            "id": 499,
+            "kilometers": 547.4909490732522
+          },
+          {
+            "id": 623,
+            "kilometers": 548.3118840870151
+          },
+          {
+            "id": 468,
+            "kilometers": 549.2592571828276
+          },
+          {
+            "id": 460,
+            "kilometers": 549.7375912151201
+          },
+          {
+            "id": 520,
+            "kilometers": 551.8106338684281
+          },
+          {
+            "id": 463,
+            "kilometers": 552.7442175811134
+          },
+          {
+            "id": 502,
+            "kilometers": 554.9117764219594
+          },
+          {
+            "id": 503,
+            "kilometers": 556.4323589415659
+          },
+          {
+            "id": 464,
+            "kilometers": 559.2910490000596
+          },
+          {
+            "id": 629,
+            "kilometers": 560.1647088813368
+          },
+          {
+            "id": 445,
+            "kilometers": 561.2126553598554
+          },
+          {
+            "id": 552,
+            "kilometers": 561.9506460232917
+          },
+          {
+            "id": 444,
+            "kilometers": 563.4333094955376
+          },
+          {
+            "id": 459,
+            "kilometers": 564.5232685316347
+          },
+          {
+            "id": 515,
+            "kilometers": 565.0603178630682
+          },
+          {
+            "id": 446,
+            "kilometers": 565.0812889671552
+          },
+          {
+            "id": 467,
+            "kilometers": 565.7646628736848
+          },
+          {
+            "id": 447,
+            "kilometers": 566.1698654801543
+          },
+          {
+            "id": 555,
+            "kilometers": 567.7411676412335
+          },
+          {
+            "id": 453,
+            "kilometers": 569.041552203123
+          },
+          {
+            "id": 452,
+            "kilometers": 569.2404431650751
+          },
+          {
+            "id": 498,
+            "kilometers": 569.4684318347673
+          },
+          {
+            "id": 458,
+            "kilometers": 569.5547087951257
+          },
+          {
+            "id": 400,
+            "kilometers": 569.5718924985889
+          },
+          {
+            "id": 465,
+            "kilometers": 570.1059786024701
+          },
+          {
+            "id": 454,
+            "kilometers": 570.1793816971226
+          },
+          {
+            "id": 451,
+            "kilometers": 570.2834443135342
+          },
+          {
+            "id": 622,
+            "kilometers": 570.8207693599282
+          },
+          {
+            "id": 450,
+            "kilometers": 571.3176488055473
+          },
+          {
+            "id": 398,
+            "kilometers": 571.4778100130943
+          },
+          {
+            "id": 551,
+            "kilometers": 571.8075815381449
+          },
+          {
+            "id": 399,
+            "kilometers": 572.1878941633876
+          },
+          {
+            "id": 401,
+            "kilometers": 572.2073069238546
+          },
+          {
+            "id": 448,
+            "kilometers": 572.5667135969649
+          },
+          {
+            "id": 449,
+            "kilometers": 573.1773907067756
+          },
+          {
+            "id": 397,
+            "kilometers": 573.2323262696433
+          },
+          {
+            "id": 402,
+            "kilometers": 574.0062208848636
+          },
+          {
+            "id": 396,
+            "kilometers": 574.2378282063623
+          },
+          {
+            "id": 405,
+            "kilometers": 574.2694630435079
+          },
+          {
+            "id": 556,
+            "kilometers": 574.6953670089032
+          },
+          {
+            "id": 404,
+            "kilometers": 574.8564325551953
+          },
+          {
+            "id": 633,
+            "kilometers": 574.8780770671042
+          },
+          {
+            "id": 403,
+            "kilometers": 574.9506530922412
+          },
+          {
+            "id": 394,
+            "kilometers": 575.6548467024994
+          },
+          {
+            "id": 615,
+            "kilometers": 575.9794625619551
+          },
+          {
+            "id": 395,
+            "kilometers": 576.0159315417361
+          },
+          {
+            "id": 391,
+            "kilometers": 577.0940523168797
+          },
+          {
+            "id": 393,
+            "kilometers": 577.2175517697258
+          },
+          {
+            "id": 554,
+            "kilometers": 577.3543610002935
+          },
+          {
+            "id": 534,
+            "kilometers": 578.0520525748902
+          },
+          {
+            "id": 553,
+            "kilometers": 578.1018037397522
+          },
+          {
+            "id": 550,
+            "kilometers": 578.1964741753568
+          },
+          {
+            "id": 392,
+            "kilometers": 578.3830315156035
+          },
+          {
+            "id": 389,
+            "kilometers": 578.8323970750673
+          },
+          {
+            "id": 388,
+            "kilometers": 579.0989152024047
+          },
+          {
+            "id": 390,
+            "kilometers": 579.6367802355527
+          },
+          {
+            "id": 457,
+            "kilometers": 580.2086917539797
+          },
+          {
+            "id": 462,
+            "kilometers": 580.652239925239
+          },
+          {
+            "id": 533,
+            "kilometers": 580.9531357749654
+          },
+          {
+            "id": 406,
+            "kilometers": 581.0272996154598
+          },
+          {
+            "id": 631,
+            "kilometers": 582.3266028198332
+          },
+          {
+            "id": 558,
+            "kilometers": 582.66608032251
+          },
+          {
+            "id": 387,
+            "kilometers": 583.2935202040435
+          },
+          {
+            "id": 532,
+            "kilometers": 585.1701092057182
+          },
+          {
+            "id": 535,
+            "kilometers": 585.4088281255603
+          },
+          {
+            "id": 386,
+            "kilometers": 585.9981278679619
+          },
+          {
+            "id": 497,
+            "kilometers": 586.7857249040509
+          },
+          {
+            "id": 514,
+            "kilometers": 587.4887274113959
+          },
+          {
+            "id": 456,
+            "kilometers": 589.629739451655
+          },
+          {
+            "id": 531,
+            "kilometers": 592.91276977378
+          },
+          {
+            "id": 559,
+            "kilometers": 596.4891703772647
+          },
+          {
+            "id": 557,
+            "kilometers": 597.3412420180539
+          },
+          {
+            "id": 455,
+            "kilometers": 598.8496852333631
+          },
+          {
+            "id": 560,
+            "kilometers": 599.815905593692
+          },
+          {
+            "id": 469,
+            "kilometers": 602.181348312979
+          },
+          {
+            "id": 530,
+            "kilometers": 603.2831095521656
+          },
+          {
+            "id": 567,
+            "kilometers": 603.6279339186489
+          },
+          {
+            "id": 570,
+            "kilometers": 609.6382290251064
+          },
+          {
+            "id": 562,
+            "kilometers": 610.7063053646425
+          },
+          {
+            "id": 565,
+            "kilometers": 610.891604101178
+          },
+          {
+            "id": 572,
+            "kilometers": 610.9988140291341
+          },
+          {
+            "id": 571,
+            "kilometers": 611.7995229420565
+          },
+          {
+            "id": 566,
+            "kilometers": 614.2621814584609
+          },
+          {
+            "id": 563,
+            "kilometers": 615.8710784462108
+          },
+          {
+            "id": 466,
+            "kilometers": 618.4420745236711
+          },
+          {
+            "id": 564,
+            "kilometers": 620.6461876547135
+          },
+          {
+            "id": 561,
+            "kilometers": 620.6865274677751
+          },
+          {
+            "id": 569,
+            "kilometers": 622.4575266572873
+          },
+          {
+            "id": 568,
+            "kilometers": 622.9668275108124
+          },
+          {
+            "id": 634,
+            "kilometers": 624.0697369442781
+          }
+        ]
+      },
+      "base": {
+        "coordinate": {
+          "lat": 31.6916,
+          "lng": 9.2043
+        },
+        "nearest": {
+          "id": 476,
+          "kilometers": 0.0
+        },
+        "runnerUp": {
+          "id": 471,
+          "kilometers": 131.84072261803456
+        },
+        "ranking": [
+          {
+            "id": 476,
+            "kilometers": 0.0
+          },
+          {
+            "id": 471,
+            "kilometers": 131.84072261803456
+          },
+          {
+            "id": 470,
+            "kilometers": 145.3350754762698
+          },
+          {
+            "id": 475,
+            "kilometers": 163.54842662988955
+          },
+          {
+            "id": 624,
+            "kilometers": 180.8214543210862
+          },
+          {
+            "id": 473,
+            "kilometers": 185.81206845708425
+          },
+          {
+            "id": 485,
+            "kilometers": 192.46190356537764
+          },
+          {
+            "id": 489,
+            "kilometers": 196.43559944585405
+          },
+          {
+            "id": 484,
+            "kilometers": 197.39383439256213
+          },
+          {
+            "id": 1524,
+            "kilometers": 199.83056587801906
+          },
+          {
+            "id": 474,
+            "kilometers": 202.09894455731452
+          },
+          {
+            "id": 472,
+            "kilometers": 210.21080244573784
+          },
+          {
+            "id": 487,
+            "kilometers": 211.77543782122285
+          },
+          {
+            "id": 1022,
+            "kilometers": 218.19575315716716
+          },
+          {
+            "id": 626,
+            "kilometers": 220.17169835460558
+          },
+          {
+            "id": 482,
+            "kilometers": 225.1967387455213
+          },
+          {
+            "id": 486,
+            "kilometers": 227.51018592015762
+          },
+          {
+            "id": 1023,
+            "kilometers": 231.95026953933862
+          },
+          {
+            "id": 496,
+            "kilometers": 234.06385100545194
+          },
+          {
+            "id": 483,
+            "kilometers": 234.35197812442624
+          },
+          {
+            "id": 1020,
+            "kilometers": 236.93771512481845
+          },
+          {
+            "id": 488,
+            "kilometers": 248.27288631265165
+          },
+          {
+            "id": 1024,
+            "kilometers": 250.6442593700674
+          },
+          {
+            "id": 620,
+            "kilometers": 257.4408888656633
+          },
+          {
+            "id": 1019,
+            "kilometers": 262.6083170769504
+          },
+          {
+            "id": 1025,
+            "kilometers": 262.69850955429814
+          },
+          {
+            "id": 625,
+            "kilometers": 267.19731505864524
+          },
+          {
+            "id": 490,
+            "kilometers": 269.26541775984134
+          },
+          {
+            "id": 478,
+            "kilometers": 269.51790239400435
+          },
+          {
+            "id": 493,
+            "kilometers": 269.59910647125156
+          },
+          {
+            "id": 477,
+            "kilometers": 272.0242645091897
+          },
+          {
+            "id": 479,
+            "kilometers": 273.4662236184898
+          },
+          {
+            "id": 481,
+            "kilometers": 274.45785269067613
+          },
+          {
+            "id": 491,
+            "kilometers": 282.2289332348003
+          },
+          {
+            "id": 1021,
+            "kilometers": 284.60700433112146
+          },
+          {
+            "id": 607,
+            "kilometers": 287.4834386973069
+          },
+          {
+            "id": 612,
+            "kilometers": 287.7026049012739
+          },
+          {
+            "id": 494,
+            "kilometers": 287.78771677501845
+          },
+          {
+            "id": 492,
+            "kilometers": 289.81743705773704
+          },
+          {
+            "id": 611,
+            "kilometers": 295.3792604202994
+          },
+          {
+            "id": 546,
+            "kilometers": 300.9131086532316
+          },
+          {
+            "id": 606,
+            "kilometers": 302.8070126630045
+          },
+          {
+            "id": 608,
+            "kilometers": 303.2193276580463
+          },
+          {
+            "id": 638,
+            "kilometers": 306.4502953497041
+          },
+          {
+            "id": 605,
+            "kilometers": 313.61659776086634
+          },
+          {
+            "id": 609,
+            "kilometers": 316.8281435924062
+          },
+          {
+            "id": 510,
+            "kilometers": 321.0792410326682
+          },
+          {
+            "id": 480,
+            "kilometers": 322.2029659128919
+          },
+          {
+            "id": 604,
+            "kilometers": 322.5657334371061
+          },
+          {
+            "id": 505,
+            "kilometers": 325.48988045101623
+          },
+          {
+            "id": 539,
+            "kilometers": 325.7111732619474
+          },
+          {
+            "id": 511,
+            "kilometers": 326.35164957435006
+          },
+          {
+            "id": 537,
+            "kilometers": 337.14039030881975
+          },
+          {
+            "id": 610,
+            "kilometers": 340.4375322470291
+          },
+          {
+            "id": 580,
+            "kilometers": 345.8411504314098
+          },
+          {
+            "id": 538,
+            "kilometers": 349.0262762904665
+          },
+          {
+            "id": 509,
+            "kilometers": 351.5311014183495
+          },
+          {
+            "id": 504,
+            "kilometers": 356.2600896905209
+          },
+          {
+            "id": 1522,
+            "kilometers": 356.6276285533481
+          },
+          {
+            "id": 508,
+            "kilometers": 360.33908444905114
+          },
+          {
+            "id": 540,
+            "kilometers": 360.8323582508076
+          },
+          {
+            "id": 549,
+            "kilometers": 361.3416327406596
+          },
+          {
+            "id": 513,
+            "kilometers": 362.93933539075846
+          },
+          {
+            "id": 582,
+            "kilometers": 366.267837231329
+          },
+          {
+            "id": 577,
+            "kilometers": 367.07672663691415
+          },
+          {
+            "id": 632,
+            "kilometers": 368.6250104611206
+          },
+          {
+            "id": 628,
+            "kilometers": 373.03564334162405
+          },
+          {
+            "id": 544,
+            "kilometers": 374.9464921300095
+          },
+          {
+            "id": 547,
+            "kilometers": 374.9704298984601
+          },
+          {
+            "id": 548,
+            "kilometers": 375.05359395990064
+          },
+          {
+            "id": 542,
+            "kilometers": 380.32570627656264
+          },
+          {
+            "id": 512,
+            "kilometers": 382.0623995137767
+          },
+          {
+            "id": 507,
+            "kilometers": 387.8287023102466
+          },
+          {
+            "id": 635,
+            "kilometers": 388.14503043840983
+          },
+          {
+            "id": 529,
+            "kilometers": 388.64821084409016
+          },
+          {
+            "id": 543,
+            "kilometers": 391.26497523798474
+          },
+          {
+            "id": 575,
+            "kilometers": 393.52977951187626
+          },
+          {
+            "id": 430,
+            "kilometers": 398.07850582281554
+          },
+          {
+            "id": 506,
+            "kilometers": 398.36277287265375
+          },
+          {
+            "id": 545,
+            "kilometers": 398.4858117902557
+          },
+          {
+            "id": 536,
+            "kilometers": 403.9916276437177
+          },
+          {
+            "id": 541,
+            "kilometers": 407.3263248235398
+          },
+          {
+            "id": 578,
+            "kilometers": 410.0983197322796
+          },
+          {
+            "id": 527,
+            "kilometers": 411.57849806299504
+          },
+          {
+            "id": 526,
+            "kilometers": 413.2146764100941
+          },
+          {
+            "id": 429,
+            "kilometers": 414.3086724948893
+          },
+          {
+            "id": 528,
+            "kilometers": 419.5488440325518
+          },
+          {
+            "id": 425,
+            "kilometers": 420.3951327390764
+          },
+          {
+            "id": 619,
+            "kilometers": 424.8163673620329
+          },
+          {
+            "id": 428,
+            "kilometers": 424.8628383548657
+          },
+          {
+            "id": 576,
+            "kilometers": 426.9916094218538
+          },
+          {
+            "id": 579,
+            "kilometers": 428.3895586124039
+          },
+          {
+            "id": 424,
+            "kilometers": 432.0107538231131
+          },
+          {
+            "id": 581,
+            "kilometers": 434.04382519874184
+          },
+          {
+            "id": 431,
+            "kilometers": 434.94908031448506
+          },
+          {
+            "id": 573,
+            "kilometers": 435.54889687813983
+          },
+          {
+            "id": 574,
+            "kilometers": 436.3427331725051
+          },
+          {
+            "id": 524,
+            "kilometers": 437.3786125407264
+          },
+          {
+            "id": 523,
+            "kilometers": 440.13558597335697
+          },
+          {
+            "id": 426,
+            "kilometers": 440.16328685568635
+          },
+          {
+            "id": 416,
+            "kilometers": 440.52575457608435
+          },
+          {
+            "id": 522,
+            "kilometers": 441.67706294711985
+          },
+          {
+            "id": 427,
+            "kilometers": 442.50128051653826
+          },
+          {
+            "id": 587,
+            "kilometers": 444.6608465925699
+          },
+          {
+            "id": 423,
+            "kilometers": 447.38473712669753
+          },
+          {
+            "id": 630,
+            "kilometers": 450.88920843658957
+          },
+          {
+            "id": 1084,
+            "kilometers": 452.8210103856471
+          },
+          {
+            "id": 596,
+            "kilometers": 454.9778614211926
+          },
+          {
+            "id": 441,
+            "kilometers": 455.3129327661156
+          },
+          {
+            "id": 597,
+            "kilometers": 455.78340144569955
+          },
+          {
+            "id": 618,
+            "kilometers": 457.5562899677527
+          },
+          {
+            "id": 414,
+            "kilometers": 458.6421407454938
+          },
+          {
+            "id": 588,
+            "kilometers": 460.1247706790084
+          },
+          {
+            "id": 595,
+            "kilometers": 460.9709004218371
+          },
+          {
+            "id": 525,
+            "kilometers": 462.5851938848901
+          },
+          {
+            "id": 415,
+            "kilometers": 463.42713260676373
+          },
+          {
+            "id": 598,
+            "kilometers": 464.8657412666326
+          },
+          {
+            "id": 585,
+            "kilometers": 464.9959190642597
+          },
+          {
+            "id": 602,
+            "kilometers": 466.6470344107786
+          },
+          {
+            "id": 440,
+            "kilometers": 466.71391403020795
+          },
+          {
+            "id": 593,
+            "kilometers": 467.0247179488265
+          },
+          {
+            "id": 601,
+            "kilometers": 467.0702358841918
+          },
+          {
+            "id": 583,
+            "kilometers": 467.4836287006153
+          },
+          {
+            "id": 603,
+            "kilometers": 468.42391829457745
+          },
+          {
+            "id": 594,
+            "kilometers": 468.49693638438987
+          },
+          {
+            "id": 599,
+            "kilometers": 468.57829036469167
+          },
+          {
+            "id": 600,
+            "kilometers": 469.0456326471434
+          },
+          {
+            "id": 586,
+            "kilometers": 470.85093142595593
+          },
+          {
+            "id": 592,
+            "kilometers": 471.1910838402282
+          },
+          {
+            "id": 590,
+            "kilometers": 474.3340856000815
+          },
+          {
+            "id": 443,
+            "kilometers": 476.31267915522903
+          },
+          {
+            "id": 637,
+            "kilometers": 476.60179029001085
+          },
+          {
+            "id": 521,
+            "kilometers": 477.61698240329565
+          },
+          {
+            "id": 621,
+            "kilometers": 478.33762091777584
+          },
+          {
+            "id": 439,
+            "kilometers": 481.1387382923671
+          },
+          {
+            "id": 438,
+            "kilometers": 481.2275138583698
+          },
+          {
+            "id": 437,
+            "kilometers": 481.98620626678
+          },
+          {
+            "id": 442,
+            "kilometers": 482.2899616898312
+          },
+          {
+            "id": 584,
+            "kilometers": 487.12137792896027
+          },
+          {
+            "id": 436,
+            "kilometers": 488.412577643639
+          },
+          {
+            "id": 617,
+            "kilometers": 488.7540909143758
+          },
+          {
+            "id": 417,
+            "kilometers": 490.38148979307925
+          },
+          {
+            "id": 435,
+            "kilometers": 496.58622754498276
+          },
+          {
+            "id": 422,
+            "kilometers": 498.8279396517131
+          },
+          {
+            "id": 412,
+            "kilometers": 499.6105907387264
+          },
+          {
+            "id": 636,
+            "kilometers": 500.6200350808645
+          },
+          {
+            "id": 434,
+            "kilometers": 505.70574244682757
+          },
+          {
+            "id": 591,
+            "kilometers": 509.5136659853653
+          },
+          {
+            "id": 413,
+            "kilometers": 512.1812033145189
+          },
+          {
+            "id": 589,
+            "kilometers": 513.5215046567097
+          },
+          {
+            "id": 418,
+            "kilometers": 514.7848460261865
+          },
+          {
+            "id": 421,
+            "kilometers": 515.7189457799603
+          },
+          {
+            "id": 420,
+            "kilometers": 519.1659718148046
+          },
+          {
+            "id": 1523,
+            "kilometers": 520.1299954433848
+          },
+          {
+            "id": 419,
+            "kilometers": 521.675014915067
+          },
+          {
+            "id": 409,
+            "kilometers": 523.5919694051169
+          },
+          {
+            "id": 433,
+            "kilometers": 523.8407695475915
+          },
+          {
+            "id": 411,
+            "kilometers": 524.2579880180099
+          },
+          {
+            "id": 518,
+            "kilometers": 530.2320692343261
+          },
+          {
+            "id": 616,
+            "kilometers": 530.9526344555151
+          },
+          {
+            "id": 501,
+            "kilometers": 533.6457346779314
+          },
+          {
+            "id": 500,
+            "kilometers": 534.4936041751683
+          },
+          {
+            "id": 627,
+            "kilometers": 536.2249883038127
+          },
+          {
+            "id": 516,
+            "kilometers": 538.0830799311192
+          },
+          {
+            "id": 461,
+            "kilometers": 539.7859689108197
+          },
+          {
+            "id": 517,
+            "kilometers": 540.6643391811242
+          },
+          {
+            "id": 519,
+            "kilometers": 540.8906652414041
+          },
+          {
+            "id": 410,
+            "kilometers": 541.1734644659668
+          },
+          {
+            "id": 499,
+            "kilometers": 547.0386058733586
+          },
+          {
+            "id": 623,
+            "kilometers": 548.2628091492404
+          },
+          {
+            "id": 468,
+            "kilometers": 549.2148587560989
+          },
+          {
+            "id": 460,
+            "kilometers": 549.6976231325325
+          },
+          {
+            "id": 520,
+            "kilometers": 551.4996906895749
+          },
+          {
+            "id": 463,
+            "kilometers": 552.6483588123268
+          },
+          {
+            "id": 502,
+            "kilometers": 554.4024235519952
+          },
+          {
+            "id": 503,
+            "kilometers": 555.9665072073357
+          },
+          {
+            "id": 464,
+            "kilometers": 559.1806326342097
+          },
+          {
+            "id": 629,
+            "kilometers": 559.7591128208123
+          },
+          {
+            "id": 445,
+            "kilometers": 561.021007483823
+          },
+          {
+            "id": 552,
+            "kilometers": 561.698067728614
+          },
+          {
+            "id": 444,
+            "kilometers": 563.2669979401928
+          },
+          {
+            "id": 459,
+            "kilometers": 564.491487844008
+          },
+          {
+            "id": 515,
+            "kilometers": 564.6351342227457
+          },
+          {
+            "id": 446,
+            "kilometers": 564.889551027842
+          },
+          {
+            "id": 467,
+            "kilometers": 565.6675401573758
+          },
+          {
+            "id": 447,
+            "kilometers": 565.9887839168425
+          },
+          {
+            "id": 555,
+            "kilometers": 567.5146618116479
+          },
+          {
+            "id": 453,
+            "kilometers": 568.8792860582975
+          },
+          {
+            "id": 498,
+            "kilometers": 568.9578945520951
+          },
+          {
+            "id": 452,
+            "kilometers": 569.0937852554684
+          },
+          {
+            "id": 400,
+            "kilometers": 569.384391573364
+          },
+          {
+            "id": 458,
+            "kilometers": 569.4553774122361
+          },
+          {
+            "id": 465,
+            "kilometers": 569.985433081972
+          },
+          {
+            "id": 454,
+            "kilometers": 570.004722647957
+          },
+          {
+            "id": 451,
+            "kilometers": 570.1282064788971
+          },
+          {
+            "id": 622,
+            "kilometers": 570.6418809870945
+          },
+          {
+            "id": 450,
+            "kilometers": 571.1564901665536
+          },
+          {
+            "id": 398,
+            "kilometers": 571.2714083897841
+          },
+          {
+            "id": 551,
+            "kilometers": 571.5440330531159
+          },
+          {
+            "id": 399,
+            "kilometers": 571.9987208589006
+          },
+          {
+            "id": 401,
+            "kilometers": 572.0223040114787
+          },
+          {
+            "id": 448,
+            "kilometers": 572.3885981427396
+          },
+          {
+            "id": 449,
+            "kilometers": 573.00787161795
+          },
+          {
+            "id": 397,
+            "kilometers": 573.0288652084089
+          },
+          {
+            "id": 402,
+            "kilometers": 573.8131755884274
+          },
+          {
+            "id": 396,
+            "kilometers": 574.0366061706271
+          },
+          {
+            "id": 405,
+            "kilometers": 574.074226108703
+          },
+          {
+            "id": 556,
+            "kilometers": 574.4322845643799
+          },
+          {
+            "id": 404,
+            "kilometers": 574.6645054092447
+          },
+          {
+            "id": 633,
+            "kilometers": 574.6663436938521
+          },
+          {
+            "id": 403,
+            "kilometers": 574.7572391533771
+          },
+          {
+            "id": 394,
+            "kilometers": 575.4537952491933
+          },
+          {
+            "id": 615,
+            "kilometers": 575.7881699126194
+          },
+          {
+            "id": 395,
+            "kilometers": 575.8221032712758
+          },
+          {
+            "id": 391,
+            "kilometers": 576.8965266663259
+          },
+          {
+            "id": 393,
+            "kilometers": 577.0141487745697
+          },
+          {
+            "id": 554,
+            "kilometers": 577.1417540386688
+          },
+          {
+            "id": 534,
+            "kilometers": 577.8439432453645
+          },
+          {
+            "id": 553,
+            "kilometers": 577.8786198484667
+          },
+          {
+            "id": 550,
+            "kilometers": 577.9496616186292
+          },
+          {
+            "id": 392,
+            "kilometers": 578.1791993276188
+          },
+          {
+            "id": 389,
+            "kilometers": 578.6433487679498
+          },
+          {
+            "id": 388,
+            "kilometers": 578.9334092363438
+          },
+          {
+            "id": 390,
+            "kilometers": 579.4437323849199
+          },
+          {
+            "id": 457,
+            "kilometers": 580.1644860219086
+          },
+          {
+            "id": 462,
+            "kilometers": 580.5554930980509
+          },
+          {
+            "id": 533,
+            "kilometers": 580.7441187504796
+          },
+          {
+            "id": 406,
+            "kilometers": 580.8620390988948
+          },
+          {
+            "id": 631,
+            "kilometers": 582.1358986327643
+          },
+          {
+            "id": 558,
+            "kilometers": 582.3034586773837
+          },
+          {
+            "id": 387,
+            "kilometers": 583.1316213649214
+          },
+          {
+            "id": 532,
+            "kilometers": 584.9934212021847
+          },
+          {
+            "id": 535,
+            "kilometers": 585.1840724369783
+          },
+          {
+            "id": 386,
+            "kilometers": 585.8338829322726
+          },
+          {
+            "id": 497,
+            "kilometers": 586.2943456194979
+          },
+          {
+            "id": 514,
+            "kilometers": 587.060620187747
+          },
+          {
+            "id": 456,
+            "kilometers": 589.613981780197
+          },
+          {
+            "id": 531,
+            "kilometers": 592.7225166030694
+          },
+          {
+            "id": 559,
+            "kilometers": 596.1814273623363
+          },
+          {
+            "id": 557,
+            "kilometers": 596.9478196625502
+          },
+          {
+            "id": 455,
+            "kilometers": 598.8458459124953
+          },
+          {
+            "id": 560,
+            "kilometers": 599.482472060012
+          },
+          {
+            "id": 469,
+            "kilometers": 602.178138215988
+          },
+          {
+            "id": 530,
+            "kilometers": 603.0684342160405
+          },
+          {
+            "id": 567,
+            "kilometers": 603.3984121328557
+          },
+          {
+            "id": 570,
+            "kilometers": 609.4088718778879
+          },
+          {
+            "id": 562,
+            "kilometers": 610.422429958832
+          },
+          {
+            "id": 565,
+            "kilometers": 610.6026695729814
+          },
+          {
+            "id": 572,
+            "kilometers": 610.7559355826039
+          },
+          {
+            "id": 571,
+            "kilometers": 611.5786556245364
+          },
+          {
+            "id": 566,
+            "kilometers": 614.0253468146348
+          },
+          {
+            "id": 563,
+            "kilometers": 615.6665639065844
+          },
+          {
+            "id": 466,
+            "kilometers": 618.4064815976466
+          },
+          {
+            "id": 564,
+            "kilometers": 620.4262301038466
+          },
+          {
+            "id": 561,
+            "kilometers": 620.4264942576041
+          },
+          {
+            "id": 569,
+            "kilometers": 622.222483405091
+          },
+          {
+            "id": 568,
+            "kilometers": 622.6976686199721
+          },
+          {
+            "id": 634,
+            "kilometers": 623.7997546665712
+          }
+        ]
+      }
+    },
+    "onlyPossibleRawChange": {
+      "id": "osm:node:500182808",
+      "field": "pickerGroupId",
+      "before": "osm:node:500182808",
+      "after": "delegation:476"
+    },
+    "sourcePhaseQualification": "Authentic historical OSM version8 exactly matches frozen source cache. Current version9 changes only name. Version8 must remain explicitly historical; neither source snapshot is rewritten. All nine local source states are OSM and unchanged between original/effective phases except provider bookkeeping.",
+    "boundaryQualification": "Cached Remada administrative boundaries remain unchanged. Official registry confirms administrative identities, not legal or surveyed point containment. The SITEP residential-camp image has no geographic control and is not an imported polygon.",
+    "schemaAssessment": {
+      "status": "EXISTING_TOWN_PRESERVATION_EXTENSION_FEASIBLE",
+      "method": "reviewed_explicit_point_base_display_identity",
+      "extension": "townPreservationExtension",
+      "officialDelegationCodes": [
+        "5357"
+      ],
+      "targetTimetableReferenceId": 476,
+      "sameNameOfficialDelegationRequired": false,
+      "reason": "The contract validates the actual containing Remada delegation and all of its sectors independently of the named target timetable reference. It does not require their names or IDs to coincide. All six sector groups remain separate.",
+      "topLevelCompletePickerGroups": {
+        "before": [
+          [
+            "osm:node:500182808"
+          ],
+          [
+            "delegation:476"
+          ]
+        ],
+        "after": [
+          [
+            "delegation:476",
+            "osm:node:500182808"
+          ]
+        ]
+      },
+      "sourceNodeRequirement": "Use authentic historical /node/500182808/8.json because currentv9 tags differ from the frozen source. Existing ordinary explicit-town contract permits this honest pinned snapshot; no retainedTownPoint is used.",
+      "noReplacementManifestRequirement": "acceptedBoundaryReplacements=[] and reviewedBoundaries=null; pin the active unchanged manifest in research inputs only.",
+      "extraNamePeerIds": [],
+      "extraAdministrativeContainerIds": [],
+      "noCompilerChangeNeeded": true,
+      "notAllowed": [
+        "fabricated El Borma administration code",
+        "current-v9 response described as matching cachev8",
+        "forced common camp footprint",
+        "camp-image digitization",
+        "coordinate migration",
+        "sector display association",
+        "claim of legal administrative boundary"
+      ]
+    }
+  },
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-borma-town-point-source-review-20260912.json",
+    "sha256": "d7fe7e20ec827d9f254d7756db0292ccb5a7ba4d0fbded2e81fc0f371ff0622e"
+  },
+  "priorIndependentScopeHold": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-borma-root-scope-holds-20260912.json",
+    "sha256": "d4e5df986785630e710959b05c46c4a02c119a9a3f4fdbfd0509e2fd77db4777"
+  },
+  "officialTimetableIdentity": {
+    "inventory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\reference-inventory.json",
+      "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401"
+    },
+    "exactRetrievalRecord": {
+      "expected": {
+        "governorateId": 351,
+        "delegationId": 476,
+        "governorate": {
+          "id": 351,
+          "nomFr": "Tataouine",
+          "nomAr": "تطاوين",
+          "nomEn": "Tataouine",
+          "lat": 32.9297,
+          "lng": 10.4518
+        },
+        "delegation": {
+          "id": 476,
+          "nomFr": "El Borma",
+          "nomAr": "البرمة",
+          "nomEn": "El Borma",
+          "lat": 31.6916,
+          "lng": 9.2043
+        },
+        "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/351/476/"
+      },
+      "attempt": 1,
+      "retrievedAt": "2026-09-12T10:17:05.965914+00:00",
+      "reused": false,
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/351/476/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:05 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "571",
+        "Keep-Alive": "timeout=5, max=95",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-476-2026-09-12.json",
+        "sha256": "aff4fa2cb83fa88f87902552f5d49edde663dabbaeab85c38addf00952fcc1b4",
+        "bytes": 571
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten.",
+      "analysis": {
+        "classification": "VALID_DAILY_REFERENCE",
+        "actual": {
+          "dailyRecordId": 908607,
+          "gouvernorat": {
+            "id": 351,
+            "intituleFr": "Tataouine",
+            "intituleAr": "تطاوين",
+            "intituleAn": "Tataouine"
+          },
+          "delegation": {
+            "id": 476,
+            "intituleFr": "El Borma",
+            "intituleAr": "البرمة",
+            "intituleAn": "El Borma",
+            "parent": {
+              "id": 351,
+              "intituleFr": "Tataouine",
+              "intituleAr": "تطاوين",
+              "intituleAn": "Tataouine"
+            }
+          },
+          "date": "2026-09-12 00:00",
+          "year": 2026,
+          "active": true,
+          "method": "GET",
+          "lat": "31.690",
+          "lng": " 9.211",
+          "times": {
+            "sobh": "04:40",
+            "dhohr": "12:27",
+            "aser": "15:52",
+            "magreb": "18:38",
+            "isha": "19:58"
+          }
+        },
+        "validationErrors": [],
+        "nameDifferences": [],
+        "coordinateComparison": {
+          "numeric": {
+            "lat": "31.690",
+            "lng": "9.211"
+          },
+          "matchesCurrentAppNumbersExactly": false,
+          "currentApp": {
+            "lat": 31.6916,
+            "lng": 9.2043
+          }
+        }
+      },
+      "accessChallengeSuspected": false,
+      "completedAt": "2026-09-12T10:17:06.237800+00:00"
+    },
+    "exactParsedResponse": {
+      "data": {
+        "id": 908607,
+        "gouvernorat": {
+          "id": 351,
+          "intituleFr": "Tataouine",
+          "intituleAr": "تطاوين",
+          "intituleAn": "Tataouine"
+        },
+        "delegation": {
+          "id": 476,
+          "intituleFr": "El Borma",
+          "intituleAr": "البرمة",
+          "intituleAn": "El Borma",
+          "parent": {
+            "id": 351,
+            "intituleFr": "Tataouine",
+            "intituleAr": "تطاوين",
+            "intituleAn": "Tataouine"
+          }
+        },
+        "date": "2026-09-12 00:00",
+        "sobh": "04:40",
+        "dhohr": "12:27",
+        "aser": "15:52",
+        "magreb": "18:38",
+        "isha": "19:58",
+        "lat": "31.690",
+        "lng": " 9.211",
+        "annee": 2026,
+        "active": true
+      },
+      "method": "GET"
+    },
+    "publishedCoordinate": {
+      "lat": 31.69,
+      "lng": 9.211
+    },
+    "currentCoordinateChangeProposed": false,
+    "publishedToPointKm": 0.7535562460578775,
+    "publishedToStoredBaseKm": 0.6584147968663127,
+    "qualification": "Official same named Tunisian timetable identity; published coordinate is not silently substituted for the stored anchor and is not certified as an astronomical calculation input."
+  },
+  "exactOsmHistory": {
+    "cacheMatchingVersion": 8,
+    "currentVersion": 9,
+    "singleHistoricalNodeRetrieval": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\historical-node-retrieval.json",
+      "sha256": "27620855771dee1070289ff2ecda0eb0d103a4ba3d894da238e6c5619f52ea56"
+    },
+    "historySource": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\osm-node-history-confirmed.json",
+      "sha256": "5c86593c1fe7935c86a31e9b631e98bb2243c08b95661c96eeb2f114bfef64fc"
+    },
+    "sourceCurrent": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\osm-node-current-confirmed.json",
+      "sha256": "b4cc8a5820330c7ccac48193ee5c8a6f58bb77a1ab56f4ce2ed534e0d1509565"
+    },
+    "historicalCoordinateRelation": [
+      {
+        "version": 1,
+        "timestamp": "2009-09-18T13:01:44Z",
+        "lat": 31.6914456,
+        "lng": 9.2060398,
+        "place": "village",
+        "distanceFromStoredBaseKm": 0.16550324337309114
+      },
+      {
+        "version": 2,
+        "timestamp": "2009-11-11T14:59:53Z",
+        "lat": 31.6914477,
+        "lng": 9.2060313,
+        "place": "village",
+        "distanceFromStoredBaseKm": 0.16467920103265518
+      },
+      {
+        "version": 3,
+        "timestamp": "2013-02-28T21:12:51Z",
+        "lat": 31.6880101,
+        "lng": 9.2187031,
+        "place": "village",
+        "distanceFromStoredBaseKm": 1.4200279201066248
+      },
+      {
+        "version": 4,
+        "timestamp": "2014-05-07T08:44:27Z",
+        "lat": 31.6880101,
+        "lng": 9.2187031,
+        "place": "village",
+        "distanceFromStoredBaseKm": 1.4200279201066248
+      },
+      {
+        "version": 5,
+        "timestamp": "2020-01-05T05:41:43Z",
+        "lat": 31.6880101,
+        "lng": 9.2187031,
+        "place": "village",
+        "distanceFromStoredBaseKm": 1.4200279201066248
+      },
+      {
+        "version": 6,
+        "timestamp": "2020-08-11T19:50:06Z",
+        "lat": 31.6880101,
+        "lng": 9.2186132,
+        "place": "village",
+        "distanceFromStoredBaseKm": 1.4118669322418183
+      },
+      {
+        "version": 7,
+        "timestamp": "2023-06-13T08:33:36Z",
+        "lat": 31.6880101,
+        "lng": 9.2186132,
+        "place": "village",
+        "distanceFromStoredBaseKm": 1.4118669322418183
+      },
+      {
+        "version": 8,
+        "timestamp": "2026-07-06T15:32:58Z",
+        "lat": 31.6880101,
+        "lng": 9.2186132,
+        "place": "village",
+        "distanceFromStoredBaseKm": 1.4118669322418183
+      },
+      {
+        "version": 9,
+        "timestamp": "2026-09-08T00:32:03Z",
+        "lat": 31.6880101,
+        "lng": 9.2186132,
+        "place": "village",
+        "distanceFromStoredBaseKm": 1.4118669322418183
+      }
+    ],
+    "qualification": "One stable OSM village identity moved about1.25km in2013 and a few metres in2020; this supports label continuity but does not survey settlement extent."
+  },
+  "primaryImages": {
+    "retrieval": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\sitep-plan-image-retrieval.json",
+      "sha256": "6914db26147218824b9ce1cfb04449114f4a1b05127dc8f2b9733542fc069061"
+    },
+    "originalImages": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\sitep-field-map.jpg",
+        "sha256": "db49894dc40866c7e7795fe81220eab7ec0f83fd8773fab5e14692afec96fa37"
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-display-scope-feasibility\\sitep-residential-camp.png",
+        "sha256": "e726f6bbef65e1109956824efe0397c3fb6710274bf4f149326fa36cc8f671f8"
+      }
+    ],
+    "primaryHtmlParent": {
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\el-borma-town-point-source-review-20260912\\sitep-field.html",
+        "sha256": "a6f1897879f1d1cfa08b4449cd9a35183281796fc48dc9ee1e96a997afb3ad51"
+      },
+      "url": "http://www.sitep.com.tn/page.php?r=1&sr=2",
+      "supports": "The operator locates its El Borma oil/gas production field in southwestern Tunisia near the Tunisian-Algerian border. This is the Tunisian industrial locality, not proof about the Algerian namesake municipality."
+    },
+    "visualReview": "Both full original images personally viewed. The camp image labels Camp Résidentiel and a red closed outline, with no geographic grid/control. The concession image separately marks a national border, names Carthage UTM32N, and depicts a much broader industrial concession. These are different scopes, neither is imported or geometrically fitted.",
+    "use": "Supporting the distinction between residential camp, field and larger named locality; not proof that both stored anchors are inside the camp."
+  },
+  "completeReferenceInventory": {
+    "available": 258,
+    "rejected": [
+      {
+        "id": 495,
+        "reason": "no_complete_bundled_month"
+      }
+    ],
+    "boundedComparisons": 516
+  },
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "760f97a46c16b6f88ca7cac8b4f8a81610b755377397cb740e2f482973f91de1"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "a5955fd12b45a5d110e160f118dda6923e0aa7cc9dac3c92108548bebaa129ab"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\el-borma-town-point-source-review-20260912.json",
+      "sha256": "d7fe7e20ec827d9f254d7756db0292ccb5a7ba4d0fbded2e81fc0f371ff0622e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-borma-root-scope-holds-20260912.json",
+      "sha256": "d4e5df986785630e710959b05c46c4a02c119a9a3f4fdbfd0509e2fd77db4777"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\megrine-isie2023-sectors.geojson",
+      "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\identity-review-isie2023-sectors.geojson",
+      "sha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\next-identity-review-isie2023-sectors.geojson",
+      "sha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\neighbor-review-isie2023-sectors.geojson",
+      "sha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-north-aggregate-review-isie2023-sector.geojson",
+      "sha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-neighbors-review-isie2023-sectors.geojson",
+      "sha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bekalta-south-east-review-isie2023-sectors.geojson",
+      "sha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\baghdadi-review-isie2023-sector.geojson",
+      "sha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\hiboun-review-isie2023-sector.geojson",
+      "sha256": "b1f3b459d642e6be62ab60f27fed66068df3222fbc726e970bfed3276c5b642c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\chenini-two-sector-candidate-readiness.geojson",
+      "sha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bizerte-three-isie2023-sectors.geojson",
+      "sha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-seven-native-source-candidates.geojson",
+      "sha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-joufia-native-source-candidate.geojson",
+      "sha256": "395e9bb9803d0ae544977aad8178e0b06e74de7ff013d0c3c5346b4078f00497"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\bembla-bennane-keblia-native-source-candidate.geojson",
+      "sha256": "760dd75369b87109b81609ec18cf77c171486aed45dea79ea04d34964d793cf5"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\carthage-isie2023-six-sectors.geojson",
+      "sha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\le-kram-isie2023-six-sectors.geojson",
+      "sha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\la-goulette-isie2023-three-sectors.geojson",
+      "sha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\beni-hassan-isie2023-five-sectors.geojson",
+      "sha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\saouaf-isie2023-five-sectors.geojson",
+      "sha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\zeramdine-south-isie2023-sectors.geojson",
+      "sha256": "7af1bc235260fcdbaf61332f2317a6ae9911fed1982746cdb1a78fd6fd1328c1"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\nadhour-isie2023-sectors.geojson",
+      "sha256": "5c7f6a16500866daf3a2937eb92e1b3be6798e1c34d2dcb6ef6c7bb5d2f8024e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\jammel-isie2023-two-sectors.geojson",
+      "sha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\nadhour-souar-isie2023-sectors.geojson",
+      "sha256": "8c2fda9b927cb8e0c5761df51adede563a96d3a2c683649586ddf181fa32582f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\zeramdine-north-isie2023-sectors.geojson",
+      "sha256": "8f3f52ecf69ea9df4136a53e83241e57775399c1d5c805ffea16862372812361"
+    }
+  ]
+}

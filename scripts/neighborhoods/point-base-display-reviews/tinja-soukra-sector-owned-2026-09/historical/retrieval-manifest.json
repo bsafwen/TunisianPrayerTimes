@@ -1,0 +1,334 @@
+{
+  "sources": [
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824.json",
+      "retrievedAt": "2026-09-12T12:17:44.779279+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-current.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-current.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/1109384824.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-current.json",
+        "sha256": "763557e325f2fa49bb0495ff740eb9b56d156541c52d65f54314e11db49a6cfb",
+        "bytes": 572
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-current.json.headers",
+        "sha256": "1565ed8cb9392f5d995a946374c401d7f199c4f7d23ba4d8956f928ee51ed877",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json",
+      "retrievedAt": "2026-09-12T12:17:44.779279+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-history.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-history.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-history.json",
+        "sha256": "7d63522df1f0209d887032debb4e62d1a4c81528dcce2f1b17e1562d47b1abd2",
+        "bytes": 2708
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-1109384824-history.json.headers",
+        "sha256": "7a3536cb9260aa8c1badce77b22d7e0b839f4a61b3e0a672405683bc7f83aa80",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324.json",
+      "retrievedAt": "2026-09-12T12:17:44.982717+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-current.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-current.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/7390818324.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-current.json",
+        "sha256": "815b87cab09e395612c7238dd42a188089475def4a11fcec997e9ad006eef38e",
+        "bytes": 631
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-current.json.headers",
+        "sha256": "eda8549e0a692a6e09ef9a4cddd6d2be88f5209cc888a2343bcff4563c15a244",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324/history.json",
+      "retrievedAt": "2026-09-12T12:17:44.988236+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-history.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-history.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/7390818324/history.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/7390818324/history.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-history.json",
+        "sha256": "0448dc12d8e4e276eaca90fe87c76081c363327e706b11cb4d7d7b83560ed24d",
+        "bytes": 1219
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-7390818324-history.json.headers",
+        "sha256": "0444450744c151580e363ec7cc635eb846f31de29570633bd980f8d2c2da77b2",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/3145829327.json",
+      "retrievedAt": "2026-09-12T12:17:45.128431+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-current.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-current.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/3145829327.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/3145829327.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-current.json",
+        "sha256": "89e0df690a385068619cce4365ce7e5a4ffae9a555d3c00f11961acbcfc606d7",
+        "bytes": 570
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-current.json.headers",
+        "sha256": "fec7dc50455548e06bfcc234ce8cdb288bf6cd59798f791a89459f9061551955",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/3145829327/history.json",
+      "retrievedAt": "2026-09-12T12:17:45.138001+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-history.json.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-history.json",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://api.openstreetmap.org/api/0.6/node/3145829327/history.json"
+      ],
+      "exitCode": 0,
+      "httpStatus": "200",
+      "effectiveUrl": "https://api.openstreetmap.org/api/0.6/node/3145829327/history.json",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-history.json",
+        "sha256": "65e0d33f6308c1d367d13fd2cc459a4d239b45a6e987828528586e5f5e7d37ac",
+        "bytes": 848
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\osm-node-3145829327-history.json.headers",
+        "sha256": "b120253ba77bdde3800a31665842f9ecbcac10501ac4026c5402576105736db2",
+        "bytes": 566
+      }
+    },
+    {
+      "requestedUrl": "http://www.commune-tinja.gov.tn/",
+      "retrievedAt": "2026-09-12T12:17:45.275821+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\tinja-home.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\tinja-home.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "http://www.commune-tinja.gov.tn/"
+      ],
+      "exitCode": 0,
+      "httpStatus": "500",
+      "effectiveUrl": "http://www.commune-tinja.gov.tn/",
+      "stderr": "",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\tinja-home.html",
+        "sha256": "d44ef6cef0d915260653c10e6b0b08f295385f542e73e7cb779e2be26a15255f",
+        "bytes": 251
+      },
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\tinja-home.html.headers",
+        "sha256": "fc63ba4d6d160fd725d8bac2a6db7cf1851b5e241cc38b9b4fea8937dfd9ec18",
+        "bytes": 316
+      }
+    },
+    {
+      "requestedUrl": "https://www.commune-menzelbourguiba.gov.tn/fr/histoire-ville",
+      "retrievedAt": "2026-09-12T12:17:45.275821+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\menzelbourguiba-history.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\menzelbourguiba-history.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://www.commune-menzelbourguiba.gov.tn/fr/histoire-ville"
+      ],
+      "exitCode": 60,
+      "httpStatus": "000",
+      "effectiveUrl": "https://www.commune-menzelbourguiba.gov.tn/fr/histoire-ville",
+      "stderr": "curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is incorrect.\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the webpage mentioned above.\n",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": null,
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\menzelbourguiba-history.html.headers",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "requestedUrl": "https://www.commune-soukra.tn/",
+      "retrievedAt": "2026-09-12T12:17:45.520500+00:00",
+      "command": [
+        "curl.exe",
+        "--silent",
+        "--show-error",
+        "--location",
+        "--compressed",
+        "--connect-timeout",
+        "10",
+        "--max-time",
+        "45",
+        "--dump-header",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\soukra-home.html.headers",
+        "--output",
+        "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\soukra-home.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}",
+        "https://www.commune-soukra.tn/"
+      ],
+      "exitCode": 60,
+      "httpStatus": "000",
+      "effectiveUrl": "https://www.commune-soukra.tn/",
+      "stderr": "curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is incorrect.\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the webpage mentioned above.\n",
+      "bodySemantics": "Original response body bytes after standard HTTP content decoding by curl --compressed; normal TLS; no text rewriting or JSON conversion.",
+      "response": null,
+      "headers": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tinja-soukra-hrairia-point-source-review\\soukra-home.html.headers",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\fetch_tinja_soukra_hrairia_point_sources.py",
+    "sha256": "c8f8d01b9490b73929704d6d00cb1387d2f366e146aebc5650738cd73ee520ac",
+    "bytes": 2176
+  }
+}

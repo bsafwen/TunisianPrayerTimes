@@ -1,0 +1,659 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_FOR_ISOLATED_THREE_TOWN_DISPLAY_SOURCE_STAGE_ONLY",
+  "createdAt": "2026-09-12T08:55:10.303330+00:00",
+  "scope": "Independent prerequisite acceptance for exactly Jendouba287625095→627, Douz264881676→484, and Jemmal1165828361→595. No staged wrappers, generator acceptance or live installation is approved by this report.",
+  "sourceIdentityReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-town-source-identity-review.json",
+    "sha256": "8a4b18b96a37d1fb64a7f897a421c6582322862f4b48345b4c5afc6433b38a08",
+    "bytes": 8857
+  },
+  "sourceIdentityFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\exact-three-town-source-phase-facts.json",
+    "sha256": "c44993431b48653f60a0004320a3498c477dc49e6c845e73b7b88a55ed5d012f",
+    "bytes": 162099
+  },
+  "finiteGeographyReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-town-geography-schema-feasibility.json",
+    "sha256": "13787c850f50e80077b3ed92ec644e6247b3cee5ef9401313b35768955332402",
+    "bytes": 24883
+  },
+  "finiteGeographyFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-geography-feasibility\\exact-three-geography-source-phase-facts.json",
+    "sha256": "ecbd81f7849d241c492af45b212cce0c19e1c00dc1d392048bfb34e58ef48dde",
+    "bytes": 489931
+  },
+  "primaryTextDerivationReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\three-town-primary-text-derivation-review.json",
+    "sha256": "243d67a243a13235a66398d36e2896ba3af8f4941f151a35fcf7093f5e420e75",
+    "bytes": 16554
+  },
+  "exactJsonRetrievalReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-town-exact-json-source-review.json",
+    "sha256": "3422357065b29d1f05000da99eb17cfa40652ae63c166a17cbbfa27f8406e6bd",
+    "bytes": 7489
+  },
+  "rootPublicPhoneSummary": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\two-village-three-town-phone-review-20260912.json",
+    "sha256": "74eb8a8fcea72088ac4210792fe2848e23257b0ff0e5cdf482c36d529b9a101b",
+    "bytes": 9317
+  },
+  "independentSourceInspection": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-independent-source\\independent-source-inspection.json",
+    "sha256": "dedf72c24cd431dae504e179f03d51049ed7bf2656446da08e90f17cec7c2077",
+    "bytes": 71082
+  },
+  "earlierInspectionStatusQualification": "The pinned inspection file deliberately retains its earlier pending visual/finite status. This later report records completion of five full-page visual reviews and the subsequent finite/provenance review without rewriting the historical artifact.",
+  "primaryFindings": [
+    {
+      "id": "osm:node:287625095",
+      "finding": "Ministry DGAT/URAM2018 describes the inhabited city, its peripheral sectors and regional urban role, while separately distinguishing North and South administrative delegations.",
+      "independentlyViewedFullPdfPages": [
+        26,
+        33,
+        51
+      ],
+      "coordinateQualification": "Current town identity is supported. The retained coordinate originates in version26 bank retag/move; versions27-29 carried town and bank, and version30 removed bank. No surveyed center or meteo anchor certification, relocation or former-coordinate reinstatement is approved."
+    },
+    {
+      "id": "osm:node:264881676",
+      "finding": "ACTE town profile explicitly identifies Douz in Kebili; ANME programme document PDF6 confirms Douz among the pilot communes. Original HTML and full ANME page were independently inspected.",
+      "administrativeQualification": "Obsolete Gabes is_in tags existed in older versions and were removed in version20. Neither Douz North nor Douz South or their sectors is equated with the whole town."
+    },
+    {
+      "id": "osm:node:1165828361",
+      "finding": "Official Ministry tender06/2017 PDF1 explicitly identifies city flood works in Jemmal. Full page independently viewed.",
+      "classificationQualification": "All18 node versions use place=village; raw kind stays village. No source population value is promoted as certified city population.",
+      "geographicQualification": "The retained node is within Jemmal El Qeblia325651, while the legacy base anchor lies within Zaouiet Kontoch325655; both are in delegation3256 in original/effective/packed evidence. This difference is retained and does not license a coordinate or sector-boundary change."
+    }
+  ],
+  "derivedTextProvenance": {
+    "status": "PASS",
+    "independentMethod": "Reopen the original pinned PDFs; call PyMuPDF1.28.2 get_text(\"text\", flags=TEXTFLAGS_TEXT=195, sort=False); strict UTF8 encode; compare every byte and requiredText character/byte/line location to the preserved derived artifacts. No producer script invoked.",
+    "checks": [
+      {
+        "placeId": "osm:node:287625095",
+        "originalPdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+          "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+          "bytes": 7131225
+        },
+        "preservedOriginalCopy": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018.pdf",
+          "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+          "bytes": 7131225
+        },
+        "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+        "pageOneBased": 26,
+        "derivedUtf8Text": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018-page26.txt",
+          "sha256": "20e35c795d0c4e81c7cacc5dece2b61673ccc16eee48bff7aa2c72c80c9f64d6",
+          "bytes": 2185
+        },
+        "requiredTextLocations": [
+          {
+            "phrase": "ville de Jendouba",
+            "firstCharacterOffset": 1513,
+            "firstUtf8ByteOffset": 1571,
+            "firstLineOneBased": 20,
+            "occurrences": 1,
+            "sourcePdfPageOneBased": 26,
+            "printedPage": 21,
+            "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+          },
+          {
+            "phrase": "GOUVERNORAT DE JENDOUBA",
+            "firstCharacterOffset": 166,
+            "firstUtf8ByteOffset": 175,
+            "firstLineOneBased": 5,
+            "occurrences": 1,
+            "sourcePdfPageOneBased": 26,
+            "printedPage": 21,
+            "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+          }
+        ],
+        "exactIndependentReproduction": true,
+        "isOriginalHttpResponseBytes": false
+      },
+      {
+        "placeId": "osm:node:287625095",
+        "originalPdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+          "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+          "bytes": 7131225
+        },
+        "preservedOriginalCopy": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018.pdf",
+          "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+          "bytes": 7131225
+        },
+        "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+        "pageOneBased": 33,
+        "derivedUtf8Text": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018-page33.txt",
+          "sha256": "3b93c9b91fa7607457b8c9b996ebfb5882f835384502c63d43e8df4c1eed5497",
+          "bytes": 3148
+        },
+        "requiredTextLocations": [
+          {
+            "phrase": "Jendouba (nord et sud)",
+            "firstCharacterOffset": 1220,
+            "firstUtf8ByteOffset": 1282,
+            "firstLineOneBased": 23,
+            "occurrences": 1,
+            "sourcePdfPageOneBased": 33,
+            "printedPage": 27,
+            "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+          },
+          {
+            "phrase": "Jendouba Nord",
+            "firstCharacterOffset": 1723,
+            "firstUtf8ByteOffset": 1795,
+            "firstLineOneBased": 54,
+            "occurrences": 2,
+            "sourcePdfPageOneBased": 33,
+            "printedPage": 27,
+            "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+          }
+        ],
+        "exactIndependentReproduction": true,
+        "isOriginalHttpResponseBytes": false
+      },
+      {
+        "placeId": "osm:node:287625095",
+        "originalPdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+          "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+          "bytes": 7131225
+        },
+        "preservedOriginalCopy": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018.pdf",
+          "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+          "bytes": 7131225
+        },
+        "originalPdfUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+        "pageOneBased": 51,
+        "derivedUtf8Text": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jendouba-mehat-resume2018-page51.txt",
+          "sha256": "8c8312057dc5d131aff99a66ad5e5a2564745a56b9c1fc8f2b4cddbade984b3b",
+          "bytes": 3408
+        },
+        "requiredTextLocations": [
+          {
+            "phrase": "ville de Jendouba",
+            "firstCharacterOffset": 747,
+            "firstUtf8ByteOffset": 782,
+            "firstLineOneBased": 14,
+            "occurrences": 1,
+            "sourcePdfPageOneBased": 51,
+            "printedPage": 42,
+            "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+          },
+          {
+            "phrase": "GOUVERNORAT DE JENDOUBA",
+            "firstCharacterOffset": 191,
+            "firstUtf8ByteOffset": 200,
+            "firstLineOneBased": 5,
+            "occurrences": 1,
+            "sourcePdfPageOneBased": 51,
+            "printedPage": 42,
+            "sourceIdentityEvidenceId": "jendouba-mehat-resume-2018"
+          }
+        ],
+        "exactIndependentReproduction": true,
+        "isOriginalHttpResponseBytes": false
+      },
+      {
+        "placeId": "osm:node:1165828361",
+        "originalPdf": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jemmal-mehat-city-floodworks-tender2017.pdf",
+          "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+          "bytes": 242375
+        },
+        "preservedOriginalCopy": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jemmal-mehat-tender2017.pdf",
+          "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+          "bytes": 242375
+        },
+        "originalPdfUrl": "https://intranet.mehat.gov.tn/geao.nsf/xsp/.ibmmodres/domino/OpenAttachment/geao.nsf/251CD8B8DD61C6F4412581670029E05A/AvisAOfr/MEHAT_DHU_AO-06_2017_Fr.pdf",
+        "pageOneBased": 1,
+        "derivedUtf8Text": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-town-primary-derived-evidence\\jemmal-mehat-tender2017-page1.txt",
+          "sha256": "a035c4abeb0de9443cf0f1f29028174ad2928a7802cf29950eddbce01a421371",
+          "bytes": 3391
+        },
+        "requiredTextLocations": [
+          {
+            "phrase": "ville de Jemmal",
+            "firstCharacterOffset": 642,
+            "firstUtf8ByteOffset": 668,
+            "firstLineOneBased": 16,
+            "occurrences": 1,
+            "sourcePdfPageOneBased": 1,
+            "printedPage": null,
+            "sourceIdentityEvidenceId": "jemmal-mehat-city-tender-2017"
+          },
+          {
+            "phrase": "Lot 2",
+            "firstCharacterOffset": 583,
+            "firstUtf8ByteOffset": 609,
+            "firstLineOneBased": 16,
+            "occurrences": 1,
+            "sourcePdfPageOneBased": 1,
+            "printedPage": null,
+            "sourceIdentityEvidenceId": "jemmal-mehat-city-tender-2017"
+          }
+        ],
+        "exactIndependentReproduction": true,
+        "isOriginalHttpResponseBytes": false
+      }
+    ],
+    "urlQualification": "Primary URLs identify the original PDFs. Derived TXT files are complete page extractions with explicit provenance, never original HTTP response bodies or claims of hosted TXT files."
+  },
+  "exactNodeJsonContinuity": {
+    "status": "PASS",
+    "checks": [
+      {
+        "id": "osm:node:287625095",
+        "sourceNode": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-287625095-current.json",
+          "sha256": "efd47e379cb8d72354ddd4553221801e704080851a790891eb3be3c45079bbc3",
+          "url": "https://api.openstreetmap.org/api/0.6/node/287625095.json",
+          "bytes": 924
+        },
+        "comparedCurrentXml": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-287625095-current.xml",
+          "sha256": "2815e47380f42e8341c8c05ace9c063e0acbe1a181b634d465c1dbbe33e774a2"
+        },
+        "comparedHistoryXml": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-287625095-history.xml",
+          "sha256": "ab80cb7fe3ecefa20b82a1eaf79bd3b7d900c4afd597c88f60624c6192ccfbda",
+          "bytes": 24981
+        },
+        "version": 30,
+        "timestamp": "2025-12-23T14:16:25Z",
+        "changeset": 176310814,
+        "completeJsonElementExactlyEqualsXml": true,
+        "completeTagsAndCoordinatesEqualUntouchedCacheAndCurrentRaw": true,
+        "httpProvenance": "Authentic endpoint retrieval is recorded by the pinned assembler report; this reviewer independently hashed its exact bytes and compared the complete JSON element to the earlier XML/cache, without a redundant fetch."
+      },
+      {
+        "id": "osm:node:264881676",
+        "sourceNode": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-264881676-current.json",
+          "sha256": "6bab854494f3c0a35f5c18824090875f512103a89e91a27e17444cbf38f530e3",
+          "url": "https://api.openstreetmap.org/api/0.6/node/264881676.json",
+          "bytes": 675
+        },
+        "comparedCurrentXml": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-264881676-current.xml",
+          "sha256": "7ed039e0afe4457a057431b2070e3986599f24be49a64baa417dd44e426b5152"
+        },
+        "comparedHistoryXml": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-264881676-history.xml",
+          "sha256": "cda1332e0f5e4c2577d453979958ca7f294544aeda143c12a60b3869be4c3e3e",
+          "bytes": 12132
+        },
+        "version": 24,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "changeset": 171909432,
+        "completeJsonElementExactlyEqualsXml": true,
+        "completeTagsAndCoordinatesEqualUntouchedCacheAndCurrentRaw": true,
+        "httpProvenance": "Authentic endpoint retrieval is recorded by the pinned assembler report; this reviewer independently hashed its exact bytes and compared the complete JSON element to the earlier XML/cache, without a redundant fetch."
+      },
+      {
+        "id": "osm:node:1165828361",
+        "sourceNode": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-1165828361-current.json",
+          "sha256": "a79d1f93a6b3d22e2c386d973dbd70296cf245b15d05a827c062c4e840965e78",
+          "url": "https://api.openstreetmap.org/api/0.6/node/1165828361.json",
+          "bytes": 684
+        },
+        "comparedCurrentXml": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-1165828361-current.xml",
+          "sha256": "42aa5971868e3c88fd60ff17293419678f07c2304e4ec17d9dbbc4fb140af0db"
+        },
+        "comparedHistoryXml": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\osm-node-1165828361-history.xml",
+          "sha256": "403f10be78dcfcd165bfc0206ecd2d76df1abd42ea8b0783ee6ccaaea19169f1",
+          "bytes": 10961
+        },
+        "version": 18,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "changeset": 179509225,
+        "completeJsonElementExactlyEqualsXml": true,
+        "completeTagsAndCoordinatesEqualUntouchedCacheAndCurrentRaw": true,
+        "httpProvenance": "Authentic endpoint retrieval is recorded by the pinned assembler report; this reviewer independently hashed its exact bytes and compared the complete JSON element to the earlier XML/cache, without a redundant fetch."
+      }
+    ],
+    "totalHistoryVersionsIndependentlyRead": 72
+  },
+  "phoneFindingQualification": "Root public Maps city cards/urban outlines provide supplementary named-city corroboration only. This reviewer read the frozen report, did not access the device or ledger, and imports no Google coordinates or polygons. Phone cards do not certify either retained coordinate or an administrative boundary.",
+  "finiteIndependentCrossCheck": {
+    "status": "PASS",
+    "records": [
+      {
+        "id": "osm:node:287625095",
+        "baseId": 627,
+        "preservedSectorCount": 22,
+        "protectedRawCount": 23,
+        "sourceStateCount": 26,
+        "exactRawAndPackedGeometryParity": true,
+        "allCurrentCurationBindingsPreserved": true,
+        "originalEffectiveAndPackedMembershipReproduced": true,
+        "allBoundedContainersIncluded": true,
+        "nearestReferenceRankings": {
+          "point": {
+            "nearest": {
+              "id": 627,
+              "kilometers": 0.6405295427659757
+            },
+            "runnerUp": {
+              "id": 502,
+              "kilometers": 19.373612016762266
+            }
+          },
+          "base": {
+            "nearest": {
+              "id": 627,
+              "kilometers": 0.0
+            },
+            "runnerUp": {
+              "id": 502,
+              "kilometers": 19.05462862410402
+            }
+          }
+        },
+        "onlyPermittedRawChange": {
+          "id": "osm:node:287625095",
+          "field": "pickerGroupId",
+          "before": "osm:node:287625095",
+          "after": "delegation:627"
+        },
+        "schemaRoute": {
+          "method": "reviewed_explicit_point_base_display_identity",
+          "extension": "townPreservationExtension",
+          "status": "EXISTING_EXTENSION_FEASIBLE",
+          "reason": "Plural administrative scopes and existing administrative_context curations must be preserved exactly, independently of geometric containment.",
+          "reviewedBoundaries": null,
+          "sourceStateIds": [
+            "osm:node:287625095",
+            "osm:relation:1435834",
+            "osm:relation:4742885",
+            "osm:relation:4742886",
+            "osm:relation:7139121",
+            "osm:relation:7139122",
+            "osm:relation:7139123",
+            "osm:relation:7139124",
+            "osm:relation:7139125",
+            "osm:relation:7139126",
+            "osm:relation:7139127",
+            "osm:relation:7139128",
+            "osm:relation:7139129",
+            "osm:relation:7139130",
+            "osm:relation:7139131",
+            "osm:relation:7139132",
+            "osm:relation:7144397",
+            "osm:relation:7144398",
+            "osm:relation:7144399",
+            "osm:relation:7144400",
+            "osm:relation:7144401",
+            "osm:relation:7144402",
+            "osm:relation:7144403",
+            "osm:relation:7144404",
+            "osm:relation:7144405",
+            "osm:relation:7153926"
+          ]
+        },
+        "sourceQualifications": [
+          "Versions1-25 are named town records. Version26 in May2025 replaced place=town with amenity=bank and moved to the current coordinate. Versions27-29 retained both town and bank; version30 removed bank. Current semantic town identity is supported, but the coordinate inherited from that edit is not certified by this review.",
+          "No assurance of surveyed center, original INM anchor or precise town boundary follows from current tags."
+        ]
+      },
+      {
+        "id": "osm:node:264881676",
+        "baseId": 484,
+        "preservedSectorCount": 10,
+        "protectedRawCount": 11,
+        "sourceStateCount": 14,
+        "exactRawAndPackedGeometryParity": true,
+        "allCurrentCurationBindingsPreserved": true,
+        "originalEffectiveAndPackedMembershipReproduced": true,
+        "allBoundedContainersIncluded": true,
+        "nearestReferenceRankings": {
+          "point": {
+            "nearest": {
+              "id": 484,
+              "kilometers": 0.5629682447811326
+            },
+            "runnerUp": {
+              "id": 482,
+              "kilometers": 28.276334080131896
+            }
+          },
+          "base": {
+            "nearest": {
+              "id": 484,
+              "kilometers": 0.0
+            },
+            "runnerUp": {
+              "id": 482,
+              "kilometers": 27.8795132281695
+            }
+          }
+        },
+        "onlyPermittedRawChange": {
+          "id": "osm:node:264881676",
+          "field": "pickerGroupId",
+          "before": "osm:node:264881676",
+          "after": "delegation:484"
+        },
+        "schemaRoute": {
+          "method": "reviewed_explicit_point_base_display_identity",
+          "extension": "townPreservationExtension",
+          "status": "EXISTING_EXTENSION_FEASIBLE",
+          "reason": "Plural administrative scopes and existing administrative_context curations must be preserved exactly, independently of geometric containment.",
+          "reviewedBoundaries": null,
+          "sourceStateIds": [
+            "osm:node:264881676",
+            "osm:relation:1434950",
+            "osm:relation:7107054",
+            "osm:relation:7107072",
+            "osm:relation:7107232",
+            "osm:relation:7107233",
+            "osm:relation:7107484",
+            "osm:relation:7107485",
+            "osm:relation:7107486",
+            "osm:relation:7107487",
+            "osm:relation:7107488",
+            "osm:relation:7107714",
+            "osm:relation:7108012",
+            "osm:relation:7110404"
+          ]
+        },
+        "sourceQualifications": [
+          "Version1 was an unnamed point; versions2-24 identify the town. Versions10-19 carried obsolete Gabes address/is_in tags; version20 removed those in2020. The current cache does not carry them, and the primary ACTE profile explicitly places the town in Kebili.",
+          "The town is not equated with either Douz North or Douz South delegation or their imadas."
+        ]
+      },
+      {
+        "id": "osm:node:1165828361",
+        "baseId": 595,
+        "preservedSectorCount": 9,
+        "protectedRawCount": 10,
+        "sourceStateCount": 12,
+        "exactRawAndPackedGeometryParity": true,
+        "allCurrentCurationBindingsPreserved": true,
+        "originalEffectiveAndPackedMembershipReproduced": true,
+        "allBoundedContainersIncluded": true,
+        "nearestReferenceRankings": {
+          "point": {
+            "nearest": {
+              "id": 595,
+              "kilometers": 0.6785103450055442
+            },
+            "runnerUp": {
+              "id": 596,
+              "kilometers": 5.33664458439413
+            }
+          },
+          "base": {
+            "nearest": {
+              "id": 595,
+              "kilometers": 0.0
+            },
+            "runnerUp": {
+              "id": 596,
+              "kilometers": 5.99367453157995
+            }
+          }
+        },
+        "onlyPermittedRawChange": {
+          "id": "osm:node:1165828361",
+          "field": "pickerGroupId",
+          "before": "osm:node:1165828361",
+          "after": "delegation:595"
+        },
+        "schemaRoute": {
+          "method": "reviewed_explicit_point_base_display_identity",
+          "extension": "sourcePhaseLineage",
+          "lineageMethod": "reviewed_official_boundary_source_phase_lineage",
+          "status": "EXISTING_LINEAGE_FEASIBLE",
+          "reason": "All nine sectors have singleton groups; two accepted official replacements need exact original/effective lineage.",
+          "lineageSourceStateIds": [
+            "osm:node:1165828361",
+            "osm:relation:7112769",
+            "osm:relation:7113920",
+            "osm:relation:7113921",
+            "osm:relation:7113922",
+            "osm:relation:7113923",
+            "osm:relation:7113924",
+            "osm:relation:7114360",
+            "osm:relation:7114361",
+            "osm:relation:7114362",
+            "osm:relation:7154978"
+          ],
+          "additionalPreservedSectors": [],
+          "townExtensionAlsoFitsButNotRequired": true
+        },
+        "sourceQualifications": [
+          "All18 versions retain a named village settlement classification. The current primary Ministry evidence calls Jemmal a town/city; this difference in size classification does not authorize changing raw kind or assigning a boundary.",
+          "The source population65420 was attributed to English Wikipedia. The retrieved PGES search extraction labels that number as delegation population, so it is not imported as town population or used as identity proof."
+        ]
+      }
+    ],
+    "protectedRawRows": 44,
+    "officialSectors": 41,
+    "sourceStates": 52,
+    "referenceComparisons": 1548,
+    "rawRecordsBeforeAfter": [
+      3623,
+      3623
+    ],
+    "rawGroupsBeforeAfter": [
+      3490,
+      3490
+    ],
+    "conditionalPickerRowsBeforeAfter": [
+      3566,
+      3563
+    ],
+    "conditionalCurationCountBeforeAfter": [
+      155,
+      158
+    ],
+    "qualification": "Ranking re-evaluation is confined to the six retained point/base coordinates against current258 eligible references. Current coverage availability is retained; no CSV eligibility pass or whole-catalog nearest matrix was rerun."
+  },
+  "existingSchemaReview": {
+    "engine": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+      "bytes": 459609
+    },
+    "sourceNodeContract": "Read lines2027-2035: JSON elements array must match exact sourceNodeIdentity element, tags, coordinates, version/timestamp/changeset. Authentic JSON snapshots satisfy this prerequisite.",
+    "primaryEvidenceContract": "Read lines2036-2045: pinned UTF8 with exact requiredText and authority URL. Independently reproduced derived pages truthfully satisfy artifact encoding prerequisite when their original PDF provenance is retained.",
+    "routes": "Jendouba and Douz use existing townPreservationExtension with plural delegation inventories and exact administrative_context bindings. Jemmal uses existing sourcePhaseLineage for its two already accepted replacement sectors; neither route changes boundaries.",
+    "engineInvoked": false,
+    "wrapperAcceptanceClaimed": false
+  },
+  "stageRequirements": [
+    "Append exactly three point/base display decisions; each may change only pickerGroupId on its original point.",
+    "Preserve all155 prior curation objects, all41 sectors, both accepted Jemmal replacement records, all current raw rows/coordinates/kinds/parents/names/aliases/defaults, and all base coordinates and prayer references.",
+    "Bind the pinned authentic JSON responses, complete primary evidence derivation provenance, frozen source/finite/phone reports, and explicit limitations in the stage.",
+    "Retain existing administrative_context records exactly, even where geometry and administrative membership disagree.",
+    "Keep stage separate from live repository; require independent staged byte/schema review before any product generation or installation."
+  ],
+  "unapprovedOperations": [
+    "Coordinate correction",
+    "Boundary import or geometry repair",
+    "Whole-town/imada equivalence",
+    "Raw kind/name/population change",
+    "Other locality decisions",
+    "Live install",
+    "Generator acceptance"
+  ],
+  "inputsUnchanged": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "82b8f2f4d8d716e4bc354a2f72dea37ec7df36bea4a97c2bd527917fe4a3aa6e"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "333d9125eef460d91d80f0cefb38a3019ba687d45eddef6dad693bb3d4908069"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "3c862fd6ef4b98c77ae94f810d4b454b67558ccb671806c0ccdc4c728d51eb3d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "c8524f79a16ba3b345f8ddbde8017d871b19aa1c6b2c74ebe686ff788435cd70"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "1c4b10fae3068aca81ff2824deee4086dee25c00636de9062e5ebab5477b4427"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "930b7f8afe20ab5330d4e4ff0144533d7a2fb8886d59fdf32acafc5280569e25"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "88eaf9b16e923ed438502347a9b9a54c29d8f7c0f9a9a3d2dc85167f81271e07"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+      "bytes": 459609
+    }
+  ],
+  "operations": {
+    "sourceArtifactsOnly": true,
+    "productImports": false,
+    "productHelpers": false,
+    "generator": false,
+    "stageWrites": false,
+    "liveWrites": false,
+    "phoneAccess": false,
+    "ledgerAccess": false,
+    "tests": false,
+    "build": false
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_three_town_combined_prerequisites.py",
+    "sha256": "18559eb1e884c0a32ab55dd4f6e3585fe882a1b260decf492570e4e56322184e",
+    "bytes": 24720
+  }
+}

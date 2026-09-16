@@ -1,0 +1,232 @@
+{
+  "status": "PASS",
+  "reviewType": "INDEPENDENT_STATIC_COMPILER_AND_FINITE_SOURCE_REVIEW_ONLY",
+  "createdAt": "2026-09-12T12:38:28.414139+00:00",
+  "inputs": {
+    "proposedCompiler": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-compiler-proposal\\scripts\\generate_neighborhoods.py",
+      "sha256": "0f6748f8a104321a96dae44b224808944b2a626b108fb6794f44d593c0945d2f",
+      "bytes": 490787
+    },
+    "liveCompiler": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+      "bytes": 473357
+    },
+    "schema": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-compiler-proposal\\administrative-successor-proof-proposal-v3.json",
+      "sha256": "858c42dc26fb2e476359bbccd64d064b10efc23b464e152ff93c1613dd595f6c",
+      "bytes": 72359
+    },
+    "producerReport": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-successor-compiler-proposal-review.json",
+      "sha256": "c24f35c6c90c2e30266025fd46dc72bdea4704dcf548229dc39a6e33d0b74f60",
+      "bytes": 5777
+    },
+    "designReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-successor-design-independent-review.json",
+      "sha256": "030805aebb1fe89b6173dcbb22848de71c592cc7d8dfe455cb3dc8b9cd0da811",
+      "bytes": 12830
+    },
+    "diff": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-compiler-proposal\\compiler.diff",
+      "sha256": "1b3a1d823685644dcb6bc324d0123ddc6f23b9fb280e78bbf533c24a48707ed3",
+      "bytes": 23638
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "registry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "observedCurrentMetadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+      "bytes": 1883638
+    },
+    "observedCurrentCuration": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "db243ff335c30f833ce78b23d3d7d380931c1de2fa67c8c8583cf48ef61d52f6",
+      "bytes": 277520
+    },
+    "observedCurrentPicker": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "414ce604cc413a22d3764b4b6e5e291746e9154403e4e61488dc987f4245a877",
+      "bytes": 554334
+    },
+    "historicalBaselineMetadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-compiler-proposal\\scripts\\neighborhoods\\beni-mhira-successor-review\\post-el-borma-neighborhoods.json",
+      "sha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+      "bytes": 1883638
+    }
+  },
+  "actionableIssues": [],
+  "checks": [
+    {
+      "check": "No-option behavior",
+      "result": "PASS",
+      "lines": [
+        1969,
+        1999,
+        2110,
+        2124,
+        2261,
+        2268,
+        2278,
+        2305,
+        2326,
+        2335
+      ],
+      "finding": "Every new semantic relaxation is gated by administrativeSuccession. Without it, context codes and sector-code equality remain original; the independent-point set is empty; set/sorted prior-ID traversal does not change the any-match result or sorted touching records. Existing retainedTownPoint behavior remains separately guarded."
+    },
+    {
+      "check": "Branch and integration guards",
+      "result": "PASS",
+      "lines": [
+        1766,
+        1779,
+        1969,
+        1981,
+        2394,
+        2439
+      ],
+      "finding": "The exact optional-key set, one same-governorate predecessor/successor pair, no accepted boundary replacement, and incompatibility with all other extensions are enforced. The main validator remains byte/AST unchanged, retaining authentic point identity, available nearest prayer source, base/governor equality, primary town evidence and pair-form completePickerGroups."
+    },
+    {
+      "check": "Current membership without fabricated source geometry",
+      "result": "PASS",
+      "lines": [
+        1781,
+        1828,
+        2030,
+        2041,
+        2116,
+        2145
+      ],
+      "finding": "Current registry rows form a complete bijection to the five unchanged source sectors. Exact old codes and Arabic names, unique source IDs, original/effective geometry and full parent-only curation objects remain bound. Real Smar context persists; absence of any5358 source delegation is recomputed in each complete source map."
+    },
+    {
+      "check": "Complete raw locality preservation",
+      "result": "PASS",
+      "lines": [
+        1859,
+        1892,
+        2325,
+        2359
+      ],
+      "finding": "The full pinned baseline and all final generated raw rows independently produce the administrative-marker closure. Omitting Bir Morra from both supplied lists fails this closure; changing its fields, geometry-free representation, singleton group or ownership fails the retained common checks."
+    },
+    {
+      "check": "Absorbed source-point preservation",
+      "result": "PASS",
+      "lines": [
+        1909,
+        1948,
+        2278,
+        2289,
+        2333,
+        2335
+      ],
+      "finding": "Ksar Aoun is separate from the nine common states. The branch checks exact source-only point state, null curation, baseline absence, unique same-name source receiver, complete covered point inventory and final absence from raw IDs, group keys/members and either side of base ownership. The absent ID also participates in the active prior-picker scan."
+    },
+    {
+      "check": "Malformed input and paths",
+      "result": "PASS",
+      "lines": [
+        163,
+        175,
+        1829,
+        1858,
+        2608,
+        2609
+      ],
+      "finding": "All operative new files go through the existing directory-containment and SHA256 reader. JSON/UTF8/missing-key/type errors are converted by the unchanged outer validation wrapper to a failing ValueError. Derived evidence retains original-PDF hash, exact derived bytes, original URL and explicit non-original-response declaration. Extraction correctness remains independently reviewed evidence, not something this validator executes."
+    },
+    {
+      "check": "Final integration",
+      "result": "PASS",
+      "lines": [
+        2300,
+        2308,
+        2311,
+        2362
+      ],
+      "finding": "Only the internally validated successor descriptor reaches final verification. Complete final raw closure and source-only absence augment, rather than replace, the existing exact per-record metadata, packed polygon, group, ownership and source-context checks."
+    }
+  ],
+  "designSafeguards": {
+    "completeGeneratedAdministrativeRawClosure": "IMPLEMENTED",
+    "absorbedKsarAounSourcePointPreservation": "IMPLEMENTED"
+  },
+  "independentAstComparison": {
+    "added": [
+      "validate_reviewed_administrative_successor_identity"
+    ],
+    "removed": [],
+    "changed": [
+      "validate_reviewed_town_preservation_extension",
+      "verify_reviewed_town_preservation"
+    ],
+    "allOtherFunctionsExact": true,
+    "allTopLevelNonFunctionNodesExact": true,
+    "mainPointBaseDisplayValidatorExact": true
+  },
+  "independentFiniteChecks": {
+    "protectedRawCount": 7,
+    "commonSourceStateCount": 9,
+    "sectorCount": 5,
+    "curationBindingCount": 8,
+    "fullRawClosureIds": [
+      "osm:node:1980186910",
+      "osm:node:5239666199",
+      "osm:relation:7143818",
+      "osm:relation:7143819",
+      "osm:relation:7143820",
+      "osm:relation:7143821",
+      "osm:relation:7143822"
+    ],
+    "coveredSourceNodes": {
+      "osm:node:1980186910": [
+        "osm:relation:7143821"
+      ],
+      "osm:node:5239666199": [
+        "osm:relation:7143819"
+      ],
+      "osm:node:9022801628": [
+        "osm:relation:7143820"
+      ]
+    },
+    "absorbedPointAbsentFromRaw": true,
+    "independentHamletSingletonPreserved": true,
+    "historicalToObservedCurrentLocalRecordsAndBindingsExact": true,
+    "successorSourceDelegationAbsent": true
+  },
+  "limitations": [
+    "Syntax/static review only; compiler functions were never imported, evaluated or run. No generator, tests or build was executed.",
+    "No source stage or installed implementation is approved by this report. The live compiler remains e9f91; the candidate is isolated0f6748.",
+    "The proposed schema is not yet an executable complete proof. Its absolute earlier evidence/provenance references must be relocated beneath the eventual source directory, and current source-name peers/prior-picker dependencies must be frozen against that stage epoch.",
+    "The historical2fbb baseline is explicitly labelled historical. Seven local raw rows and eight bindings were independently compared with current files during this review; a later stage still needs its current-epoch pins and carry.",
+    "Primary PDF derivation is checked as a static hash/provenance contract here; no new source research, PDF certification, administrative polygon, coordinate change or municipality enactment is inferred.",
+    "An independently reviewed future isolated generation is still needed to assess runtime compatibility of the assembled source proof."
+  ],
+  "notPerformed": [
+    "compiler import or execution",
+    "source stage assembly",
+    "generator",
+    "tests",
+    "build",
+    "live repository mutation",
+    "phone access",
+    "ledger write"
+  ],
+  "reviewerAlsoAuthoredProposal": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_beni_mhira_successor_compiler_independent.py",
+    "sha256": "87f512f251075e299355641137d463b640a4583fac89d25d3b34d74da29a910a",
+    "bytes": 13985
+  }
+}

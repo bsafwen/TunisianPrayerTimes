@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3498760 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="264881676" visible="true" version="24" changeset="171909432" timestamp="2025-09-14T10:19:40Z" user="tg4567" uid="12500589" lat="33.4571102" lon="9.0249829">
+  <tag k="name" v="دوز"/>
+  <tag k="name:ar" v="دوز"/>
+  <tag k="name:en" v="Douz"/>
+  <tag k="name:eo" v="Douz"/>
+  <tag k="name:fr" v="Douz"/>
+  <tag k="name:kab" v="Duz"/>
+  <tag k="name:pl" v="Duz"/>
+  <tag k="name:ru" v="Дуз"/>
+  <tag k="place" v="town"/>
+  <tag k="wikidata" v="Q1009268"/>
+  <tag k="wikimedia_commons" v="Category:Douz"/>
+  <tag k="wikipedia" v="ar:دوز"/>
+ </node>
+</osm>

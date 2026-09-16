@@ -1,0 +1,26 @@
+{
+  "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بن عروس/حمام الشط/برج السدرية 2.pdf",
+  "finalUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D8%AD%D9%85%D8%A7%D9%85%20%D8%A7%D9%84%D8%B4%D8%B7/%D8%A8%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B3%D8%AF%D8%B1%D9%8A%D8%A9%202.pdf",
+  "retrievedAt": "2026-09-12T15:51:04.576275+00:00",
+  "status": 200,
+  "headers": {
+    "Date": "Sat, 12 Sep 2026 15:51:04 GMT",
+    "X-Backend": "web2-10.10.117.3",
+    "Last-Modified": "Mon, 16 Oct 2023 23:28:14 GMT",
+    "ETag": "\"1a8361-607ddc2955f80\"",
+    "Accept-Ranges": "bytes",
+    "Content-Length": "1737569",
+    "X-Content-Type-Options": "nosniff",
+    "Content-Security-Policy": "frame-ancestors 'self';",
+    "Keep-Alive": "timeout=5, max=100",
+    "Connection": "Keep-Alive",
+    "Content-Type": "application/pdf"
+  },
+  "bodyFile": "borj-cedria-2.pdf",
+  "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849",
+  "exactDiscoveryEntry": {
+    "text": "برج السدرية 2.pdf",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بن عروس/حمام الشط/برج السدرية 2.pdf",
+    "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/بن عروس/حمام الشط/برج السدرية 2.pdf"
+  }
+}

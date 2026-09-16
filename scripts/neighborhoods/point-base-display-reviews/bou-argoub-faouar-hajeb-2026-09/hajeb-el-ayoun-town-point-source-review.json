@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "status": "SAME_TOWN_DISPLAY_IDENTITY_SUPPORTED_PENDING_INDEPENDENT_REVIEW_NO_STAGE",
+  "createdAt": "2026-09-12T10:04:03.084541+00:00",
+  "baselineMetadataSha256": "ad68201de32928467232f1aeb07675e84e993aaad79212406444a65634da1c87",
+  "id": "osm:node:1187489040",
+  "baseId": 526,
+  "name": "حاجب العيون",
+  "finiteSourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\finite-source-group-facts.json",
+    "sha256": "9e7fa27f9d6cf74698297664481da9ef1882b6adb55523ff9af9a70ae0a89f6f"
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\retrieval-manifest.json",
+    "sha256": "ab9735ea8a47ff316128adcdbd7185f3e2e3857d266f52e1c64924468151d874"
+  },
+  "sourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\osm-node-1187489040-current.json",
+    "sha256": "184395482034cdeb111d6340c7495bfad64bf008da4bade361874979d8d0ac69",
+    "url": "https://api.openstreetmap.org/api/0.6/node/1187489040.json"
+  },
+  "sourceNodeIdentity": {
+    "url": "https://api.openstreetmap.org/api/0.6/node/1187489040.json",
+    "sha256": "184395482034cdeb111d6340c7495bfad64bf008da4bade361874979d8d0ac69",
+    "exactElement": {
+      "type": "node",
+      "id": 1187489040,
+      "lat": 35.395434,
+      "lon": 9.5424162,
+      "timestamp": "2026-03-07T20:28:17Z",
+      "version": 13,
+      "changeset": 179509225,
+      "user": "Johnwhelan",
+      "uid": 186592,
+      "tags": {
+        "name": "حاجب العيون",
+        "name:ar": "حاجب العيون",
+        "name:en": "Hajeb El Ayoun",
+        "name:fr": "Hajeb El Ayoun",
+        "place": "village",
+        "wikidata": "Q3108263",
+        "wikimedia_commons": "Category:Hajeb El Ayoun",
+        "wikipedia": "ar:حاجب العيون (تونس)"
+      }
+    }
+  },
+  "sourceHistory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\osm-node-1187489040-history.json",
+    "sha256": "20847dcdd6a14878e150aaab634528c54c24770b7dfaa095e813870e7b51f34f"
+  },
+  "exactCurrentHistoryCacheRawParity": true,
+  "historyInterpretation": {
+    "versions": 13,
+    "firstTimestamp": "2011-03-05T16:41:44Z",
+    "firstKind": "town",
+    "laterKind": "village",
+    "sameTownFrenchNameAllVersions": true,
+    "coordinateStableFromVersion": 9,
+    "coordinateStableSince": "2019-10-25T15:09:30Z",
+    "versionsWithOfficeGovernmentAmenityBuildingShopLanduseTags": [],
+    "coordinateHistory": [
+      {
+        "version": 1,
+        "timestamp": "2011-03-05T16:41:44Z",
+        "lat": 35.3954084,
+        "lng": 9.5440981,
+        "kind": "town"
+      },
+      {
+        "version": 2,
+        "timestamp": "2011-03-19T20:27:31Z",
+        "lat": 35.3954084,
+        "lng": 9.5440981,
+        "kind": "village"
+      },
+      {
+        "version": 3,
+        "timestamp": "2011-09-23T00:15:12Z",
+        "lat": 35.3954084,
+        "lng": 9.5440981,
+        "kind": "village"
+      },
+      {
+        "version": 4,
+        "timestamp": "2011-09-23T15:48:52Z",
+        "lat": 35.3954084,
+        "lng": 9.5440981,
+        "kind": "village"
+      },
+      {
+        "version": 5,
+        "timestamp": "2011-12-11T23:09:19Z",
+        "lat": 35.3954084,
+        "lng": 9.5440981,
+        "kind": "village"
+      },
+      {
+        "version": 6,
+        "timestamp": "2011-12-12T19:27:17Z",
+        "lat": 35.3954084,
+        "lng": 9.5440981,
+        "kind": "village"
+      },
+      {
+        "version": 7,
+        "timestamp": "2016-11-20T21:45:48Z",
+        "lat": 35.3954084,
+        "lng": 9.5440981,
+        "kind": "village"
+      },
+      {
+        "version": 8,
+        "timestamp": "2017-02-14T21:17:05Z",
+        "lat": 35.3943589,
+        "lng": 9.5431969,
+        "kind": "village"
+      },
+      {
+        "version": 9,
+        "timestamp": "2019-10-25T15:09:30Z",
+        "lat": 35.395434,
+        "lng": 9.5424162,
+        "kind": "village"
+      },
+      {
+        "version": 10,
+        "timestamp": "2022-05-24T08:47:38Z",
+        "lat": 35.395434,
+        "lng": 9.5424162,
+        "kind": "village"
+      },
+      {
+        "version": 11,
+        "timestamp": "2023-09-05T15:40:34Z",
+        "lat": 35.395434,
+        "lng": 9.5424162,
+        "kind": "village"
+      },
+      {
+        "version": 12,
+        "timestamp": "2025-09-14T10:19:40Z",
+        "lat": 35.395434,
+        "lng": 9.5424162,
+        "kind": "village"
+      },
+      {
+        "version": 13,
+        "timestamp": "2026-03-07T20:28:17Z",
+        "lat": 35.395434,
+        "lng": 9.5424162,
+        "kind": "village"
+      }
+    ],
+    "qualification": "Persistent OSM settlement-label history, not surveyed center certification. No exact urban extent follows from a point."
+  },
+  "primaryIdentity": {
+    "pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\mehat-atlas-kairouan-fr.pdf",
+      "sha256": "7b683b60e43de90b14d42b19cc7f4836594b3729ee1a9c993e47bd718bc92641",
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasKairouanFrv2.pdf"
+    },
+    "title": "Atlas du gouvernorat de Kairouan",
+    "issuer": "Ministère du Transport et de l’Equipement / Direction Générale de l’Aménagement du Territoire",
+    "sourceDateQualification": "Cover personally inspected: Rapport définitif Mai2011. PDF file metadata was created/modified2015; current hosting path contains2024. This is historical city identity evidence, not a2024/2026 survey.",
+    "completePageDerivation": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\primary-page-derivation.json",
+      "sha256": "110f10ad4d9c5639860902275ee4cd9ba1b23ae0cc004bf0b641019d0cbf9edd"
+    },
+    "personallyInspectedWholePdfPages": [
+      1,
+      5,
+      40,
+      48,
+      82
+    ],
+    "townEvidence": {
+      "pdfPage": 48,
+      "printedPage": 47,
+      "section": "Infrastructure d’assainissement",
+      "finding": "Narrative explicitly classifies Hajeb el Ayoun as a ville; the ONAS Kairouan table identifies inhabited urban sanitation service. This establishes a town independently of an OSM name match or a municipal directory entry.",
+      "derivedUtf8": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\mehat-atlas-kairouan-page48.txt",
+        "sha256": "e4e820d35d2c5ba95fdfe94544c0c4550be8f529d04d911a310f50b67d79e06f"
+      },
+      "requiredText": [
+        "Hajeb El Ayoun",
+        "Ville prise en charge"
+      ]
+    },
+    "scopeEvidence": [
+      {
+        "pdfPage": 5,
+        "printedPage": 4,
+        "finding": "Administrative table separately lists Hajeb El Ayoun centre and eight surrounding sectors. Preserve those identities; a municipal/communal label is not the entire delegation."
+      },
+      {
+        "pdfPage": 40,
+        "printedPage": 39,
+        "finding": "Urban-planning section lists the Hajeb El Ayoun commune PAU separately from delegation identity; not a source polygon for import."
+      },
+      {
+        "pdfPage": 82,
+        "printedPage": 81,
+        "finding": "Delegation-scale landuse/equipment map with nine sector labels and a built-up patch near Hajeb. This is not a city-boundary map and is not georegistered or imported."
+      }
+    ],
+    "failedSupplementaryEndpoints": "Municipal website and official commune directory timed out; their search excerpts are not used as downloaded primary proof."
+  },
+  "distanceExplanation": {
+    "distanceKm": 2.572341297020478,
+    "townPoint": {
+      "lat": 35.395434,
+      "lng": 9.5424162
+    },
+    "timetableBase": {
+      "id": 526,
+      "nomFr": "Hajeb El Ayoun",
+      "nomAr": "حاجب العيون",
+      "nomEn": "Hajeb El Ayoun",
+      "lat": 35.39,
+      "lng": 9.57
+    },
+    "mainSourceProvenance": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\main-gouvernorats-provenance.json",
+      "sha256": "4ebe2155f9b33fab4478da8487ef27c78d6f57abdeb7bad74228d3f58876a700"
+    },
+    "finding": "The timetable base is unchanged from main at35.39,9.57 and has no reviewed coordinate correction. The mapped settlement point is stable since2019 at35.395434,9.5424162. They lie in different source sectors of the same delegation: central415851 versus Ghouiba415857. The separation is between an inherited timetable reference and a mapped town label; neither proximity nor shared delegation proves an exact city-center location.",
+    "notEstablished": "The external origin of the legacy timetable coordinate is not documented. Its two-decimal precision does not prove the discrepancy was caused by rounding; rounding the town point would not produce9.57. No INM calculation-anchor or official town-boundary claim is made.",
+    "coordinateChangeProposed": false
+  },
+  "associationReasoning": "The authentic node has continuous town/village identity, exact Arabic/French town names matching base526, and primary city-level corroboration in Kairouan. The legacy base is the named timetable reference for that city. This supports one reviewed display association preserving the raw village point, current timetable reference and all nine distinct sectors. It does not equate town, central imada, municipality and delegation extents.",
+  "finiteCounts": {
+    "sectors": 9,
+    "protectedRaw": 10,
+    "sourceStates": 12,
+    "sourceOnlyContexts": 2,
+    "existingMultiMemberGroups": 0
+  },
+  "localNearestReferences": [
+    {
+      "id": "osm:node:1187489040",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 2.572341297020478
+        },
+        {
+          "delegationId": 506,
+          "distanceKm": 17.928142470448286
+        },
+        {
+          "delegationId": 524,
+          "distanceKm": 24.341922088342145
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165245",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 5.954912209899205
+        },
+        {
+          "delegationId": 506,
+          "distanceKm": 13.259173882021235
+        },
+        {
+          "delegationId": 527,
+          "distanceKm": 27.324128035385787
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165263",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 3.264273398814585
+        },
+        {
+          "delegationId": 506,
+          "distanceKm": 17.773682101243423
+        },
+        {
+          "delegationId": 524,
+          "distanceKm": 24.10740673385862
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165271",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 10.938839096480457
+        },
+        {
+          "delegationId": 524,
+          "distanceKm": 16.424768835514136
+        },
+        {
+          "delegationId": 523,
+          "distanceKm": 17.764232322216596
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165274",
+      "preservedDelegationId": 524,
+      "nearestThree": [
+        {
+          "delegationId": 524,
+          "distanceKm": 13.104705266852617
+        },
+        {
+          "delegationId": 526,
+          "distanceKm": 19.598807351559074
+        },
+        {
+          "delegationId": 523,
+          "distanceKm": 22.91082692224293
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165285",
+      "preservedDelegationId": 524,
+      "nearestThree": [
+        {
+          "delegationId": 524,
+          "distanceKm": 9.799749213683572
+        },
+        {
+          "delegationId": 526,
+          "distanceKm": 16.359994209987107
+        },
+        {
+          "delegationId": 523,
+          "distanceKm": 17.868541843306
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165294",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 2.191107749003153
+        },
+        {
+          "delegationId": 506,
+          "distanceKm": 18.474551578965645
+        },
+        {
+          "delegationId": 527,
+          "distanceKm": 22.724941329301284
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165305",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 8.308840427750384
+        },
+        {
+          "delegationId": 524,
+          "distanceKm": 19.025471707946767
+        },
+        {
+          "delegationId": 506,
+          "distanceKm": 21.550971456743525
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165320",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 7.514121189626398
+        },
+        {
+          "delegationId": 527,
+          "distanceKm": 19.01301405870837
+        },
+        {
+          "delegationId": 524,
+          "distanceKm": 21.72193062428034
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165361",
+      "preservedDelegationId": 526,
+      "nearestThree": [
+        {
+          "delegationId": 526,
+          "distanceKm": 10.290199617477363
+        },
+        {
+          "delegationId": 527,
+          "distanceKm": 18.27989506685097
+        },
+        {
+          "delegationId": 506,
+          "distanceKm": 20.190349680965074
+        }
+      ]
+    }
+  ],
+  "recommendedAction": {
+    "action": "preserve_point",
+    "displayAssociationOnly": {
+      "id": "osm:node:1187489040",
+      "field": "pickerGroupId",
+      "before": "osm:node:1187489040",
+      "after": "delegation:526"
+    },
+    "preserve": [
+      "All10 current raw records except the single target pickerGroupId",
+      "All9 sector polygons and singleton groups",
+      "Both existing coordinates and every existing nearest-prayer default",
+      "All original/effective source tags, geometries and reference assets"
+    ],
+    "remainingGates": [
+      "Independent source identity and finite-facts review",
+      "Root supplementary phone report must retain its exact urban-vs-rural reference qualification",
+      "Separate bounded source stage and actual catalog verification before any live change"
+    ]
+  },
+  "notPerformed": {
+    "liveRepositoryWrites": false,
+    "sourceGeneration": false,
+    "productHelpersImportedOrExecuted": false,
+    "tests": false,
+    "build": false,
+    "phoneAccess": false,
+    "ledgerAccess": false,
+    "coordinateChanges": false,
+    "polygonImportOrGeoregistration": false,
+    "globalNearestMatrix": false
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hajeb-el-ayoun-town-point-source-review\\assemble_review.py",
+    "sha256": "d2342c3db688a7a2c77531250bb7aaae8daba5e519222522e118567c405f467f"
+  }
+}

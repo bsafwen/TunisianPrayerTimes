@@ -1,0 +1,101 @@
+{
+  "status": "SOURCE_ONLY_REGISTRATION_AND_DECLARED_PACKING_DIAGNOSTIC",
+  "sourceSelection": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-own-map-source-selection-facts.json",
+    "sha256": "0bb60e9953475b957cde85d7ba857cc3483b2ffcbde6106e08c559895e4098fa",
+    "bytes": 125684
+  },
+  "bundle": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-whole-native-source-polygons.geojson",
+    "sha256": "1cda298b6956e7dbde26a334ee9dae1d3457ac43a03f1f4abdc5441eed454427",
+    "bytes": 139631
+  },
+  "finiteFacts": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/two-receiving-source-finite-effects.json",
+    "sha256": "e420a0c7e3cd3aa3cb3147edfd105a77fa0934407c6b6ef366f55c81468930e7",
+    "bytes": 48816
+  },
+  "records": [
+    {
+      "id": "osm:relation:7100361",
+      "sourceGeometrySha256": "a24dd0e4e7872751868bad04b3d2821dbc09fdde72ce4fcd59072de26b44c764",
+      "declaredCoordinateScale": 1000000,
+      "quantizedGeometrySha256": "3cbd6a1953c668a2fe3dd515fa04bccf98b625dbd5b2c8a3b98788a9bf7e4d4f",
+      "packedGeometrySha256": "52c589f8e667e78f8f5e4b3383ee4a9daa733a8b313022491d7e7d9f62bbb0d5",
+      "packedBytes": 6884,
+      "sourceEdges": 858,
+      "quantizedEdges": 858,
+      "sourceHoles": 0,
+      "quantizedHoles": 0,
+      "sourceAndQuantizedWithinFullCountry": true,
+      "pointId": "osm:node:2173790702",
+      "pointCoveredByNativeApiGeometry": true,
+      "pointCoveredByOriginalDecimalControlGeometry": true,
+      "pointCoveredAfterDeclaredCoordinateQuantization": true,
+      "pointBoundaryDistanceMeters": {
+        "nativeApi": 0.9009742922197997,
+        "originalDecimalControls": 0.9012578190343288,
+        "declaredCoordinateQuantization": 0.8642659470371824
+      },
+      "maxRawDecimalVsNativePipelineDisplacementMeters": 0.0013653198969970006,
+      "maxOriginalControlResidualMeters": 0.08961302822342196,
+      "diagnosticPackedRepresentative": {
+        "lat": 36.732514,
+        "lng": 10.654238,
+        "nearestPrayer": {
+          "id": 462,
+          "distanceKm": 6.0978884266848095
+        }
+      },
+      "unchangedPointNearestPrayer": {
+        "id": 462,
+        "distanceKm": 3.981139797532864
+      },
+      "sourceGeometryRemainsUnroundedAndUnchanged": true,
+      "qualification": "This compares original-decimal and native API registration plus the declared serialization grid. It does not quantify map surveying error, device GPS uncertainty or legal parcel accuracy. No packed asset is written."
+    },
+    {
+      "id": "osm:relation:7101605",
+      "sourceGeometrySha256": "15b6306adc3a8f03d08e9977437f0591465bda35b3ff08f305ce31dff5c87cf6",
+      "declaredCoordinateScale": 1000000,
+      "quantizedGeometrySha256": "946c2cfc5084c4c26f3601ae3a097d4c1dae48e36e4c7a24b8112cc0df7d1fb7",
+      "packedGeometrySha256": "7a114f44c57059cb30863d6293c5905439f0a62823d04d128967e97fc8c64cf0",
+      "packedBytes": 4636,
+      "sourceEdges": 577,
+      "quantizedEdges": 577,
+      "sourceHoles": 0,
+      "quantizedHoles": 0,
+      "sourceAndQuantizedWithinFullCountry": true,
+      "pointId": "osm:node:2191295540",
+      "pointCoveredByNativeApiGeometry": true,
+      "pointCoveredByOriginalDecimalControlGeometry": true,
+      "pointCoveredAfterDeclaredCoordinateQuantization": true,
+      "pointBoundaryDistanceMeters": {
+        "nativeApi": 1688.5262258038508,
+        "originalDecimalControls": 1688.525960080836,
+        "declaredCoordinateQuantization": 1688.4695332758747
+      },
+      "maxRawDecimalVsNativePipelineDisplacementMeters": 0.0011105104641894465,
+      "maxOriginalControlResidualMeters": 0.09352890856804899,
+      "diagnosticPackedRepresentative": {
+        "lat": 36.689906,
+        "lng": 10.631708,
+        "nearestPrayer": {
+          "id": 458,
+          "distanceKm": 4.642855518623268
+        }
+      },
+      "unchangedPointNearestPrayer": {
+        "id": 458,
+        "distanceKm": 5.695937641575217
+      },
+      "sourceGeometryRemainsUnroundedAndUnchanged": true,
+      "qualification": "This compares original-decimal and native API registration plus the declared serialization grid. It does not quantify map surveying error, device GPS uncertainty or legal parcel accuracy. No packed asset is written."
+    }
+  ],
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/freeze_receiving_map_report.py",
+    "sha256": "3d7a70aa6d91d6c56df891ceb2ec8bd01e4270fd975a6ebe5e75838d048082ba",
+    "bytes": 11339
+  }
+}

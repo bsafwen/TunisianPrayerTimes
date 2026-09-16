@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "originalPdf": {
+    "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/mehat-beja-atlas.pdf",
+    "sha256": "c7d51ef83cd9553b021a4be2f4c5101e17828e0f10d3721f1c663dc6cf065201"
+  },
+  "originalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasGouvernoratBejaFr.pdf",
+  "sourceReport": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "originalPdfBeforeRelocation": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\mehat-beja-atlas.pdf",
+    "sha256": "c7d51ef83cd9553b021a4be2f4c5101e17828e0f10d3721f1c663dc6cf065201",
+    "bytes": 29396451
+  },
+  "derivedText": {
+    "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/beja-atlas-full-page60-derived.txt",
+    "sha256": "eeb48829cb95b9c7e4336671c63f5ae9fb7c4844d40722fb0f97a6f5d452e734"
+  },
+  "derivedTextBeforeRelocation": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\beja-page60.txt",
+    "sha256": "eeb48829cb95b9c7e4336671c63f5ae9fb7c4844d40722fb0f97a6f5d452e734",
+    "bytes": 4105
+  },
+  "pdfPageOneBased": 60,
+  "printedPage": 59,
+  "completePage": true,
+  "derivation": "PyMuPDF page.get_text(\"text\", sort=False), entire page, no trimming/reflow/normalization/manual correction; Path.write_text UTF8 on Windows translates LF to CRLF.",
+  "pymupdfVersion": "1.28.2",
+  "derivedTextIsOriginalHttpResponseBytes": false,
+  "newDerivationPerformed": false,
+  "originalSourceReviewFullPageRendering": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\beja-page60.png",
+    "sha256": "5ea7c7f64ce4f99e52fd278e85e72e242539b336146800b9bd08fd6150bf69f6",
+    "bytes": 1469846
+  },
+  "rootViewedCompletePage": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/two-town-residential-root-scope-review-v2.json",
+    "sha256": "0bc5d6b5b3ba42499ca84b146ff2e5435dda71f60edeab54d2b071768f20c098"
+  },
+  "qualification": "The complete official page describes the inhabited town and differentiates nearby Dougga. The retained residential footprint is not certified as the whole town or an administrative boundary."
+}

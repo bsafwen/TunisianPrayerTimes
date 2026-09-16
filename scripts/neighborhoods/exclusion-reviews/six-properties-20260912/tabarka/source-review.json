@@ -1,0 +1,769 @@
+{
+  "status": "SOURCE_QUALIFIED_EXACT_TWO_PROPERTY_EXCLUSION_PROPOSALS",
+  "baselineMetadataSha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64",
+  "scope": [
+    "osm:way:129273831",
+    "osm:way:1430310523"
+  ],
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\source-finite-facts.json",
+    "sha256": "15319d9807d522937568de740389349c5c007d05e6a796c3217453372f783f63",
+    "bytes": 104441
+  },
+  "retrievalManifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\retrieval-manifest.json",
+    "sha256": "9aae85701d8d7b297a34da4d15b5f00537ed74084b48af65e42a64d1bdf16b72",
+    "bytes": 15438
+  },
+  "findings": [
+    {
+      "id": "osm:way:129273831",
+      "finding": "EXACT_NAMED_HOLIDAY_RESIDENCE_PROPERTY_EXCLUSION_SUPPORTED",
+      "primaryOriginals": [
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\goldenyasmin-residence-mehari-tabarka-original.html",
+          "sha256": "0f9d681749a52567db62187ac3603c5de82c60c65acdc4ded41b26a8b2627a20",
+          "bytes": 74718,
+          "requestedUrl": "https://www.goldenyasmin.com/fr/residence-mehari-tabarka/",
+          "finalUrl": "https://www.goldenyasmin.com/fr/residence-mehari-tabarka/",
+          "statusCode": 200,
+          "startedAtUtc": "2026-09-12T18:43:57.779179+00:00",
+          "completedAtUtc": "2026-09-12T18:43:59.579584+00:00",
+          "tlsVerificationEnabled": true,
+          "headers": {
+            "Date": "Sat, 12 Sep 2026 18:43:59 GMT",
+            "Content-Type": "text/html; charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Server": "cloudflare",
+            "x-powered-by": "PHP/7.4",
+            "Set-Cookie": "PHPSESSID=2418b35380ebbfec13068e4d203b876f; path=/",
+            "expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate",
+            "pragma": "no-cache",
+            "link": "<https://www.goldenyasmin.com/fr/?p=1555>; rel=shortlink",
+            "vary": "Accept-Encoding",
+            "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+            "cf-cache-status": "DYNAMIC",
+            "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Uwwx1TtvNH7aw5zEaXr8T3VnQbVY6eJ0eTjl9TZa%2FFf37p6VkVwWla%2B%2Fwq0viXuabHOZGi6JxjHYeKeVy1y4Sl6jBKCtez3KFpfNZZAtt2nSxkJwbrAZ5%2F2bIz0C%2BGG6bw696Xp8QmsNL0ORxR7e6qmQHA%3D%3D\"}]}",
+            "Content-Encoding": "gzip",
+            "CF-RAY": "a3a10f901d51bb18-CDG",
+            "alt-svc": "h3=\":443\"; ma=86400"
+          },
+          "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+        },
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\discovertunisia-residence-mehari-original.html",
+          "sha256": "73ca3bbbb1d7b3d899e1bd8912050a7b51b06bdca6dcd0477a7280bdab6ba3c4",
+          "bytes": 29107,
+          "requestedUrl": "https://www.discovertunisia.com/en/node/60703",
+          "finalUrl": "https://www.discovertunisia.com/en/node/60703",
+          "statusCode": 200,
+          "startedAtUtc": "2026-09-12T18:43:57.782578+00:00",
+          "completedAtUtc": "2026-09-12T18:43:58.016936+00:00",
+          "tlsVerificationEnabled": true,
+          "headers": {
+            "Date": "Sat, 12 Sep 2026 18:43:56 GMT",
+            "Server": "Apache",
+            "X-Drupal-Cache": "HIT",
+            "Content-Language": "en",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Generator": "Drupal 7 (http://drupal.org)",
+            "Link": "<https://www.discovertunisia.com/en/node/60703>; rel=\"canonical\",<https://www.discovertunisia.com/en/node/60703>; rel=\"shortlink\"",
+            "Cache-Control": "public, max-age=0",
+            "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+            "Vary": "Cookie,Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "X-Content-Type-Options": "nosniff",
+            "Etag": "\"1789238635-1\"",
+            "Last-Modified": "Sat, 12 Sep 2026 18:43:55 GMT",
+            "Content-Security-Policy": "frame-ancestors http://www.discovertunisia.de http://www.discovertunisia.at http://www.discovertunisia.ch 'self';",
+            "Keep-Alive": "timeout=5, max=100",
+            "Connection": "Keep-Alive",
+            "Transfer-Encoding": "chunked",
+            "Content-Type": "text/html; charset=utf-8"
+          },
+          "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+        }
+      ],
+      "primaryMeaning": "Golden Yasmin itself describes its named Tabarka residence as accommodation with thirty equipped apartments, visitor services and resort activities. The source polygon links that same operator property URL and carries its contacts and four-star marker. This is strong named-property identity evidence, not a legal boundary certification.",
+      "sourceHistoryMeaning": "The way begins as tourism=chalet in 2011, changes to leisure=resort in 2017, then becomes landuse=residential in version13 in September2025 while preserving the operator contacts and website. All fourteen versions concern the same named tourism property; no version establishes a neighborhood boundary.",
+      "qualification": "The official tourism portal entry calls it an appart-hotel, but visibly marks its submission anonymous and unverified. It is supplementary, not proof of licensing, current certification or ownership. The separate main-hotel map pin does not certify this residential-property entrance or footprint."
+    },
+    {
+      "id": "osm:way:1430310523",
+      "finding": "EXACT_SOURCE_APARTMENT_COMPLEX_EXCLUSION_SUPPORTED_WITH_NAME_PIN_LIMIT",
+      "primaryOriginals": [
+        {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\afariat-bel-horizon-property-advert-original.html",
+          "sha256": "b80794dd82405d5d0f0695f311dd0e6b52c1d0e6b18a9773696dd5067f43a6c7",
+          "bytes": 111497,
+          "requestedUrl": "https://afariat.com/annonce-%C3%A0-jendouba/Immobilier/tabarka-bel-appartement-668b1fcaf1b4f.html",
+          "finalUrl": "https://afariat.com/annonce-%C3%A0-jendouba/Immobilier/tabarka-bel-appartement-668b1fcaf1b4f.html",
+          "statusCode": 200,
+          "startedAtUtc": "2026-09-12T18:43:57.858583+00:00",
+          "completedAtUtc": "2026-09-12T18:43:58.197082+00:00",
+          "tlsVerificationEnabled": true,
+          "headers": {
+            "Date": "Sat, 12 Sep 2026 18:43:58 GMT",
+            "Content-Type": "text/html; charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+            "Age": "0",
+            "Cache-Control": "must-revalidate, no-cache, private",
+            "expires": "Sat, 12 Sep 2026 19:43:58 GMT",
+            "x-cache": "MISS",
+            "x-cache-hits": "0",
+            "x-frame-options": "SAMEORIGIN",
+            "x-powered-by": "skonsoft",
+            "x-served-by": "ss-app",
+            "x-server": "ss-app",
+            "x-storage": "default",
+            "cf-cache-status": "DYNAMIC",
+            "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ym0t1laSgK571Iux8DqyaigkaLAN5eEC1VMlpBsbkNBqITkBXn8zAHT9754bwsv9j7ywdvcX4J3SByWZXaRnNxQHGWH5qlNkJoLiKh3CDfVaIgldXhaGkZsXHuMwjNB6Koc2gGKdOfvFSg%3D%3D\"}]}",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare",
+            "CF-RAY": "a3a10f909d702a1a-CDG",
+            "alt-svc": "h3=\":443\"; ma=86400"
+          },
+          "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+        }
+      ],
+      "primaryMeaning": "A public property advertiser offers a holiday apartment at the second floor of Residence Bel Horizon in the Tabarka tourist zone. This is independently attributable property-use evidence, not municipal, ownership or cadastral certification. No advertiser or occupant identity is needed or reproduced in this conclusion.",
+      "sourceHistoryMeaning": "All three authentic way versions consistently designate landuse=residential with residential=apartments. The first is a named apartment-complex object; later versions preserve that role and add language tags. Its full current topology matches exactly the 19-vertex original PBF ring and all164packed bytes.",
+      "qualification": "Google name search has two separate similarly named pins. No merger or equivalence between them is proposed. The coordinate observation supports a building/residential-complex scale only. The proposed action concerns this exact source apartment-complex polygon, not every place using Bel Horizon in its name."
+    }
+  ],
+  "sourceFootprintSummary": [
+    {
+      "id": "osm:way:129273831",
+      "currentRaw": {
+        "id": "osm:way:129273831",
+        "sourceId": "osm",
+        "name": "إقامة المهاري",
+        "aliases": [
+          "Résidence Méhari"
+        ],
+        "kind": "residential",
+        "parentName": "الحامدية",
+        "contextAliases": [
+          "Délégation Tabarka",
+          "Délégation de Tabarka",
+          "El Hamdia",
+          "Tabarka",
+          "الحامدية",
+          "معتمدية طبرقة"
+        ],
+        "governorateId": 354,
+        "lat": 36.950361,
+        "lng": 8.784316,
+        "delegationId": 497,
+        "hasBoundary": true,
+        "bbox": [
+          8.781052,
+          36.948681,
+          8.787069,
+          36.952039
+        ],
+        "areaKm2": 0.0884124693954804,
+        "pickerGroupId": "osm:way:129273831",
+        "offset": 5262704,
+        "length": 292
+      },
+      "packedGeometrySha256": "addaf900c4a3737a34e2826e921fdd555d6c790306d12fda1acf68832b84d92d",
+      "sourceGeometrySha256": "aa67b86c3483709c2a35a06858b236f188b887eef6a7e96730f74af889db4ee5",
+      "completeCurrentGroup": [
+        "osm:way:129273831"
+      ],
+      "currentVersion": 14,
+      "ringVertices": 35,
+      "fullWayEqualsCurrentEqualsLatestHistory": true,
+      "fullTopologyEqualsFreshOriginalPbfAndPackedBytes": true,
+      "sourcePlaceNodeAbsorption": {
+        "source": [],
+        "packed": []
+      },
+      "coveredOtherRawRepresentatives": [],
+      "coveredWholeOtherRawPolygons": [],
+      "wholePackedFootprintRawContainers": [
+        {
+          "currentRaw": {
+            "id": "osm:relation:7126382",
+            "sourceId": "osm",
+            "name": "الحامدية",
+            "aliases": [
+              "El Hamdia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية طبرقة",
+            "contextAliases": [
+              "Délégation Tabarka",
+              "Délégation de Tabarka",
+              "Tabarka",
+              "معتمدية طبرقة"
+            ],
+            "governorateId": 354,
+            "lat": 36.918306,
+            "lng": 8.784724,
+            "delegationId": 497,
+            "hasBoundary": true,
+            "bbox": [
+              8.753034,
+              36.878835,
+              8.824864,
+              36.958376
+            ],
+            "areaKm2": 31.44130020970638,
+            "pickerGroupId": "osm:relation:7126382",
+            "offset": 1491888,
+            "length": 1508
+          },
+          "packedGeometrySha256": "ce0900c4b243b569a8afb265e0547312794cb7634cf496bdefc5ae7848255234"
+        }
+      ],
+      "dependencies": {
+        "directActiveManifestReferences": {
+          "catalog-curation.json": [],
+          "reviewed-picker-groups.json": [],
+          "reviewed-boundaries.json": [],
+          "prayer-source-coordinates.json": []
+        },
+        "targetReceipts": [],
+        "targetCoverageConflicts": [],
+        "targetMetadataConflicts": [],
+        "targetDuplicateGroups": [],
+        "savedNameReferences": [],
+        "savedReplacementReferences": []
+      }
+    },
+    {
+      "id": "osm:way:1430310523",
+      "currentRaw": {
+        "id": "osm:way:1430310523",
+        "sourceId": "osm",
+        "name": "Résidence Bel Horizon",
+        "aliases": [
+          "Bel Horizon Residence"
+        ],
+        "kind": "residential",
+        "parentName": "الحامدية",
+        "contextAliases": [
+          "Délégation Tabarka",
+          "Délégation de Tabarka",
+          "El Hamdia",
+          "Tabarka",
+          "الحامدية",
+          "معتمدية طبرقة"
+        ],
+        "governorateId": 354,
+        "lat": 36.950008,
+        "lng": 8.780146,
+        "delegationId": 497,
+        "hasBoundary": true,
+        "bbox": [
+          8.778749,
+          36.948991,
+          8.781777,
+          36.951057
+        ],
+        "areaKm2": 0.029699323394782446,
+        "pickerGroupId": "osm:way:1430310523",
+        "offset": 5277836,
+        "length": 164
+      },
+      "packedGeometrySha256": "16c831e724d33c0b15f0768631c7dfaddd4f867490a5a20ae0374bcfad1b52b8",
+      "sourceGeometrySha256": "9cdc09773aca870bb7bc5aab7f6f680ef040939065002835178d9f700fd587ac",
+      "completeCurrentGroup": [
+        "osm:way:1430310523"
+      ],
+      "currentVersion": 3,
+      "ringVertices": 19,
+      "fullWayEqualsCurrentEqualsLatestHistory": true,
+      "fullTopologyEqualsFreshOriginalPbfAndPackedBytes": true,
+      "sourcePlaceNodeAbsorption": {
+        "source": [],
+        "packed": []
+      },
+      "coveredOtherRawRepresentatives": [],
+      "coveredWholeOtherRawPolygons": [],
+      "wholePackedFootprintRawContainers": [
+        {
+          "currentRaw": {
+            "id": "osm:relation:7126382",
+            "sourceId": "osm",
+            "name": "الحامدية",
+            "aliases": [
+              "El Hamdia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية طبرقة",
+            "contextAliases": [
+              "Délégation Tabarka",
+              "Délégation de Tabarka",
+              "Tabarka",
+              "معتمدية طبرقة"
+            ],
+            "governorateId": 354,
+            "lat": 36.918306,
+            "lng": 8.784724,
+            "delegationId": 497,
+            "hasBoundary": true,
+            "bbox": [
+              8.753034,
+              36.878835,
+              8.824864,
+              36.958376
+            ],
+            "areaKm2": 31.44130020970638,
+            "pickerGroupId": "osm:relation:7126382",
+            "offset": 1491888,
+            "length": 1508
+          },
+          "packedGeometrySha256": "ce0900c4b243b569a8afb265e0547312794cb7634cf496bdefc5ae7848255234"
+        }
+      ],
+      "dependencies": {
+        "directActiveManifestReferences": {
+          "catalog-curation.json": [],
+          "reviewed-picker-groups.json": [],
+          "reviewed-boundaries.json": [],
+          "prayer-source-coordinates.json": []
+        },
+        "targetReceipts": [],
+        "targetCoverageConflicts": [],
+        "targetMetadataConflicts": [],
+        "targetDuplicateGroups": [],
+        "savedNameReferences": [],
+        "savedReplacementReferences": []
+      }
+    }
+  ],
+  "sourceNamePeers": {
+    "inventory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "matchingNameTokens": [
+      "horizon",
+      "mehari",
+      "مهاري"
+    ],
+    "records": [
+      {
+        "id": "osm:way:129273831",
+        "tags": {
+          "addr:city": "طبرقة",
+          "email": "mehari.tabarka@goldenyasmin.com",
+          "fax": "+216 78 671 923",
+          "landuse": "residential",
+          "name": "إقامة المهاري",
+          "name:ar": "إقامة المهاري",
+          "name:en": "Résidence Méhari",
+          "name:fr": "Résidence Méhari",
+          "phone": "+216 78 671 445",
+          "stars": "4",
+          "website": "https://www.goldenyasmin.com/residence-mehari-tabarka/"
+        }
+      },
+      {
+        "id": "osm:way:1430310523",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Bel Horizon",
+          "name:en": "Bel Horizon Residence",
+          "name:fr": "Résidence Bel Horizon",
+          "residential": "apartments"
+        }
+      }
+    ],
+    "qualification": "Only these two matching name-token entries occur in the frozen locality-source extraction. This does not assert absence of general POIs or similarly named real places outside that extraction."
+  },
+  "supplementaryRootPhoneReview": {
+    "report": null,
+    "selectedIds": [
+      "osm:way:129273831",
+      "osm:way:1430310523"
+    ],
+    "recordState": "Root relayed four qualified observations; its combined frozen summary is pending and is not a source acceptance prerequisite.",
+    "observationsAsRelayedByRoot": [
+      "Méhari name query selected a four-star hotel/residence; representative query returned broad El Hamdia with the pin south of the main hotel pin. No entrance or whole-footprint claim.",
+      "Bel Horizon name query displayed two separate named results. Representative query selected a building card at XQ2H+2W with a residential-complex label. Property-scale context only; name pins not equated."
+    ],
+    "qualification": "Root states it personally viewed the screenshots. This author did not access the phone, ledger, screenshots or Google vertices. A missing final phone-summary pin is disclosed; the source classification rests on the authentic source-object tags/history/full topology and archived public property evidence. No ambiguous name-pin equivalence inferred."
+  },
+  "exactProposedCurations": [
+    {
+      "id": "osm:way:129273831",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "طبرقة",
+        "email": "mehari.tabarka@goldenyasmin.com",
+        "fax": "+216 78 671 923",
+        "landuse": "residential",
+        "name": "إقامة المهاري",
+        "name:ar": "إقامة المهاري",
+        "name:en": "Résidence Méhari",
+        "name:fr": "Résidence Méhari",
+        "phone": "+216 78 671 445",
+        "stars": "4",
+        "website": "https://www.goldenyasmin.com/residence-mehari-tabarka/"
+      },
+      "action": "exclude",
+      "reason": "The exact source way represents the named Golden Yasmin holiday-residence property; authentic history, retained operator contacts and the operator own property description support property scope rather than a neighborhood polygon."
+    },
+    {
+      "id": "osm:way:1430310523",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Bel Horizon",
+        "name:en": "Bel Horizon Residence",
+        "name:fr": "Résidence Bel Horizon",
+        "residential": "apartments"
+      },
+      "action": "exclude",
+      "reason": "The exact source way is consistently tagged as a named apartment complex. Authentic full topology and public apartment-property evidence support removing this complex from the locality catalog, without classifying other similarly named places or surrounding neighborhoods."
+    }
+  ],
+  "preservationContract": {
+    "removeOnlyIds": [
+      "osm:way:129273831",
+      "osm:way:1430310523"
+    ],
+    "metadataRowsBefore": 3529,
+    "metadataRowsAfter": 3527,
+    "polygonsBefore": 2625,
+    "polygonsAfter": 2623,
+    "allPointsPreserved": 904,
+    "binaryBefore": 5536992,
+    "packedBytesRemovedOnly": 456,
+    "binaryAfter": 5536536,
+    "rawGroupsBefore": 3393,
+    "rawGroupsAfter": 3391,
+    "curationsBefore": 266,
+    "curationsAfter": 268,
+    "retiredCountBefore": 118,
+    "retiredCountAfter": 120,
+    "allReceiptsPreserved": 389,
+    "allCoverageConflictsPreserved": 366,
+    "allMetadataConflictsPreserved": 366,
+    "allDuplicateGroupsPreserved": 308,
+    "allSavedNamesPreserved": 121,
+    "allReplacementsPreserved": 1,
+    "noAbsorbedPointWouldSurface": true,
+    "everyRemainingRawSemanticFieldAndPackedSlicePreservedExceptOffsets": true,
+    "allPrayerReferencesAndDefaultsPreserved": true,
+    "manualPickerGroupsBefore": 3456,
+    "manualPickerGroupsAfter": 3454,
+    "governorateCountsChangeOnly": {
+      "354": -2
+    },
+    "governorSource": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "allOldDecisionObjectsTokensAndExteriorBytesPreserved": true,
+    "pendingReviewsPreserved": true,
+    "sectorFallback": "Both exact native and packed properties lie wholly within current El Hamdia sector7126382. Preserve that sector and all other localities. Both raw prayer defaults are497 and all surviving defaults/references remain unchanged.",
+    "savedSelection": "Only append these two IDs to retiredLocalityIds. Existing retirement consumers clear the retired locality label while retaining the saved delegation. No saved-name or replacement additions."
+  },
+  "minimalOriginalEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\osm-way-129273831-current.json",
+      "sha256": "9d138470f50833a04a26bcd6b28d6ebddecaa47734a69c25974ecee551fadd5d",
+      "bytes": 1162,
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/129273831.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/129273831.json",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.663532+00:00",
+      "completedAtUtc": "2026-09-12T18:43:57.769637+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 18:43:57 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150092-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789238638.946141,VS0,VE49",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\osm-way-129273831-history.json",
+      "sha256": "26d2e56794d56f0f595220a815e00c794cbab92ab87c67be781a836c8683db9f",
+      "bytes": 10932,
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/129273831/history.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/129273831/history.json",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.663532+00:00",
+      "completedAtUtc": "2026-09-12T18:43:57.774177+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 18:43:57 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150020-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789238638.947635,VS0,VE52",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\osm-way-129273831-full.json",
+      "sha256": "1de61af4fd46298449e7a162b13498e28ad9695cde845d3c16495612ba4f9c47",
+      "bytes": 6735,
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/129273831/full.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/129273831/full.json",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.664534+00:00",
+      "completedAtUtc": "2026-09-12T18:43:57.781186+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 18:43:58 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150024-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789238638.954725,VS0,VE52",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\osm-way-1430310523-current.json",
+      "sha256": "0c5c3ff960011c8840ea5014c02397961cb91cae22f1f649faa20e6e8aee8bb3",
+      "bytes": 795,
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/1430310523.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/1430310523.json",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.665532+00:00",
+      "completedAtUtc": "2026-09-12T18:43:57.777177+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 18:43:58 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150031-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789238638.957649,VS0,VE44",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\osm-way-1430310523-history.json",
+      "sha256": "35ff9b5c6777a963cd3819c7ae6c31d89262dda77dad9e0fa860a8de1a8e38f5",
+      "bytes": 1631,
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/1430310523/history.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/1430310523/history.json",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.771168+00:00",
+      "completedAtUtc": "2026-09-12T18:43:57.865099+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 18:43:58 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150047-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789238638.045207,VS0,VE46",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\osm-way-1430310523-full.json",
+      "sha256": "af8907c32d00a469506d0d971c53dc921183eefe323531281e6395142a5db814",
+      "bytes": 3765,
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/way/1430310523/full.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/way/1430310523/full.json",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.776179+00:00",
+      "completedAtUtc": "2026-09-12T18:43:57.857583+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Connection": "keep-alive",
+        "Server": "Apache",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "private, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Content-Type": "application/json; charset=utf-8",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 12 Sep 2026 18:43:58 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150046-PAR",
+        "X-Cache": "MISS",
+        "X-Cache-Hits": "0",
+        "X-Timer": "S1789238638.037988,VS0,VE46",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\goldenyasmin-residence-mehari-tabarka-original.html",
+      "sha256": "0f9d681749a52567db62187ac3603c5de82c60c65acdc4ded41b26a8b2627a20",
+      "bytes": 74718,
+      "requestedUrl": "https://www.goldenyasmin.com/fr/residence-mehari-tabarka/",
+      "finalUrl": "https://www.goldenyasmin.com/fr/residence-mehari-tabarka/",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.779179+00:00",
+      "completedAtUtc": "2026-09-12T18:43:59.579584+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 18:43:59 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "x-powered-by": "PHP/7.4",
+        "Set-Cookie": "PHPSESSID=2418b35380ebbfec13068e4d203b876f; path=/",
+        "expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+        "pragma": "no-cache",
+        "link": "<https://www.goldenyasmin.com/fr/?p=1555>; rel=shortlink",
+        "vary": "Accept-Encoding",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "cf-cache-status": "DYNAMIC",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Uwwx1TtvNH7aw5zEaXr8T3VnQbVY6eJ0eTjl9TZa%2FFf37p6VkVwWla%2B%2Fwq0viXuabHOZGi6JxjHYeKeVy1y4Sl6jBKCtez3KFpfNZZAtt2nSxkJwbrAZ5%2F2bIz0C%2BGG6bw696Xp8QmsNL0ORxR7e6qmQHA%3D%3D\"}]}",
+        "Content-Encoding": "gzip",
+        "CF-RAY": "a3a10f901d51bb18-CDG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\discovertunisia-residence-mehari-original.html",
+      "sha256": "73ca3bbbb1d7b3d899e1bd8912050a7b51b06bdca6dcd0477a7280bdab6ba3c4",
+      "bytes": 29107,
+      "requestedUrl": "https://www.discovertunisia.com/en/node/60703",
+      "finalUrl": "https://www.discovertunisia.com/en/node/60703",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.782578+00:00",
+      "completedAtUtc": "2026-09-12T18:43:58.016936+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 18:43:56 GMT",
+        "Server": "Apache",
+        "X-Drupal-Cache": "HIT",
+        "Content-Language": "en",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-Generator": "Drupal 7 (http://drupal.org)",
+        "Link": "<https://www.discovertunisia.com/en/node/60703>; rel=\"canonical\",<https://www.discovertunisia.com/en/node/60703>; rel=\"shortlink\"",
+        "Cache-Control": "public, max-age=0",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "Cookie,Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "X-Content-Type-Options": "nosniff",
+        "Etag": "\"1789238635-1\"",
+        "Last-Modified": "Sat, 12 Sep 2026 18:43:55 GMT",
+        "Content-Security-Policy": "frame-ancestors http://www.discovertunisia.de http://www.discovertunisia.at http://www.discovertunisia.ch 'self';",
+        "Keep-Alive": "timeout=5, max=100",
+        "Connection": "Keep-Alive",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "text/html; charset=utf-8"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\afariat-bel-horizon-property-advert-original.html",
+      "sha256": "b80794dd82405d5d0f0695f311dd0e6b52c1d0e6b18a9773696dd5067f43a6c7",
+      "bytes": 111497,
+      "requestedUrl": "https://afariat.com/annonce-%C3%A0-jendouba/Immobilier/tabarka-bel-appartement-668b1fcaf1b4f.html",
+      "finalUrl": "https://afariat.com/annonce-%C3%A0-jendouba/Immobilier/tabarka-bel-appartement-668b1fcaf1b4f.html",
+      "statusCode": 200,
+      "startedAtUtc": "2026-09-12T18:43:57.858583+00:00",
+      "completedAtUtc": "2026-09-12T18:43:58.197082+00:00",
+      "tlsVerificationEnabled": true,
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 18:43:58 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Age": "0",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "expires": "Sat, 12 Sep 2026 19:43:58 GMT",
+        "x-cache": "MISS",
+        "x-cache-hits": "0",
+        "x-frame-options": "SAMEORIGIN",
+        "x-powered-by": "skonsoft",
+        "x-served-by": "ss-app",
+        "x-server": "ss-app",
+        "x-storage": "default",
+        "cf-cache-status": "DYNAMIC",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ym0t1laSgK571Iux8DqyaigkaLAN5eEC1VMlpBsbkNBqITkBXn8zAHT9754bwsv9j7ywdvcX4J3SByWZXaRnNxQHGWH5qlNkJoLiKh3CDfVaIgldXhaGkZsXHuMwjNB6Koc2gGKdOfvFSg%3D%3D\"}]}",
+        "Content-Encoding": "gzip",
+        "Server": "cloudflare",
+        "CF-RAY": "a3a10f909d702a1a-CDG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "provenance": "Authentic public response.content bytes, HTTP transport decoding only; no reserialization or modification."
+    }
+  ],
+  "limits": [
+    "The exact source-object property classification does not deny occupancy, residents, legitimate addresses or community use of these names.",
+    "No generic residence-name, apartment-tag or hotel-name exclusion filter is proposed.",
+    "The OSM polygons are authenticated source footprints, not independently certified property cadastral boundaries.",
+    "Historical node coordinate versions were not fetched for each historical way revision.",
+    "Operator marketing, directory entries and a property advertisement have distinct evidentiary roles and do not establish legal ownership.",
+    "No unrelated hotel, residential area, named neighborhood, source point or similarly named map result is selected for removal."
+  ],
+  "implementationState": "Preparatory source proposal only. No source manifest, source stage, live repo, compiler, phone or ledger changes; no generator, product imports, tests, builds or releases executed.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tabarka-two-properties-source-review-20260912\\freeze_source_report.py",
+    "sha256": "389f2b65150768f28ad176d180812d3674287b00bb6937abac4c32a59ceeb3e1",
+    "bytes": 12194
+  }
+}

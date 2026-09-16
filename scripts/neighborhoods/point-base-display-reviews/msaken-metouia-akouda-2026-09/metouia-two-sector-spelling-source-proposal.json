@@ -1,0 +1,1500 @@
+{
+  "schemaVersion": 1,
+  "status": "TWO_EXACT_NAME_TAGS_AND_PROJECTED_SOURCE_PHASE_PROPOSED_NO_STAGE",
+  "createdAt": "2026-09-12T09:26:32.130063+00:00",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea"
+  },
+  "baselineCuration": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80"
+  },
+  "sourceIdentityReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\metouia-town-point-source-review.json",
+    "sha256": "01f445a84f52ea7adc67971c529bd4a663937c30727d6a6e707d00fea87cdccb"
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\exact-metouia-town-source-facts.json",
+    "sha256": "6d6ff31fca3ca562be8b3f3b82690d5a8b3563c98aebbeee75a161a76ed52ea1"
+  },
+  "dependencyInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\metouia-sector-spelling-active-dependency-review.json",
+    "sha256": "5f357f6f2c37b8a14c133cc4a804b460e80143e9d4e98bd6f29cd7d5768ce5cd"
+  },
+  "officialRegistry": {
+    "file": "point-retention-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "proposedDecisions": [
+    {
+      "id": "osm:relation:7145440",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطورية الجنوبية",
+        "name:ar": "المطورية الجنوبية",
+        "name:fr": "El Metouia Sud",
+        "ref:tn:codegeo": "515552"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "المطوية الجنوبية",
+        "name:ar": "المطوية الجنوبية",
+        "name:fr": "El Metouia Sud"
+      },
+      "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+      "evidence": [
+        {
+          "source": "INS RGPH2024 three-workbook sector identity registry",
+          "officialRegistry": {
+            "file": "point-retention-reviews/current-official-sector-registry.json",
+            "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+          },
+          "sectorCode": "515552",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2862
+          },
+          "urls": [
+            "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+          ]
+        }
+      ],
+      "officialIdentity": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515552",
+        "sectorFr": "El metouia sud",
+        "sectorAr": "المطوية الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2862
+        }
+      },
+      "unresolved": [
+        "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+      ]
+    },
+    {
+      "id": "osm:relation:7145441",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المطويةالشمالية",
+        "name:ar": "المطويةالشمالية",
+        "name:fr": "El Metouia Nord",
+        "ref:tn:codegeo": "515551"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "المطوية الشمالية",
+        "name:ar": "المطوية الشمالية",
+        "name:fr": "El Metouia Nord"
+      },
+      "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+      "evidence": [
+        {
+          "source": "INS RGPH2024 three-workbook sector identity registry",
+          "officialRegistry": {
+            "file": "point-retention-reviews/current-official-sector-registry.json",
+            "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+          },
+          "sectorCode": "515551",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2860
+          },
+          "urls": [
+            "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+            "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+          ]
+        }
+      ],
+      "officialIdentity": {
+        "governorateCode": "51",
+        "governorateFr": "Gabes",
+        "governorateAr": "قابس",
+        "delegationCode": "5155",
+        "delegationFr": "El metouia",
+        "delegationAr": "المطوية",
+        "sectorCode": "515551",
+        "sectorFr": "El metouia nord",
+        "sectorAr": "المطوية الشمالية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2860
+        }
+      },
+      "unresolved": [
+        "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+      ]
+    }
+  ],
+  "proposedSourceStateOverrides": [
+    {
+      "id": "osm:relation:7145440",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطورية الجنوبية",
+          "name:ar": "المطورية الجنوبية",
+          "name:fr": "El Metouia Sud",
+          "ref:tn:codegeo": "515552"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "49018be55ccef06623434a724fbe3ab03df092fa14219c4bf9d611fd0fc3d804"
+      },
+      "projectedEffective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "ref:tn:codegeo": "515552",
+          "name": "المطوية الجنوبية",
+          "name:ar": "المطوية الجنوبية",
+          "name:fr": "El Metouia Sud"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "49018be55ccef06623434a724fbe3ab03df092fa14219c4bf9d611fd0fc3d804"
+      },
+      "expectedCurationBefore": null,
+      "proposedCuration": {
+        "id": "osm:relation:7145440",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطورية الجنوبية",
+          "name:ar": "المطورية الجنوبية",
+          "name:fr": "El Metouia Sud",
+          "ref:tn:codegeo": "515552"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "المطوية الجنوبية",
+          "name:ar": "المطوية الجنوبية",
+          "name:fr": "El Metouia Sud"
+        },
+        "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+        "evidence": [
+          {
+            "source": "INS RGPH2024 three-workbook sector identity registry",
+            "officialRegistry": {
+              "file": "point-retention-reviews/current-official-sector-registry.json",
+              "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+            },
+            "sectorCode": "515552",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2862
+            },
+            "urls": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+            ]
+          }
+        ],
+        "officialIdentity": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5155",
+          "delegationFr": "El metouia",
+          "delegationAr": "المطوية",
+          "sectorCode": "515552",
+          "sectorFr": "El metouia sud",
+          "sectorAr": "المطوية الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58546,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2868,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2862
+          }
+        },
+        "unresolved": [
+          "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7145441",
+      "original": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطويةالشمالية",
+          "name:ar": "المطويةالشمالية",
+          "name:fr": "El Metouia Nord",
+          "ref:tn:codegeo": "515551"
+        },
+        "kind": "sector",
+        "sourceId": null,
+        "geometrySha256": "f5981d26477163a297f839c18303708412e0d9d59fbe8f04c2600c73fc375a2f"
+      },
+      "projectedEffective": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "ref:tn:codegeo": "515551",
+          "name": "المطوية الشمالية",
+          "name:ar": "المطوية الشمالية",
+          "name:fr": "El Metouia Nord"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "f5981d26477163a297f839c18303708412e0d9d59fbe8f04c2600c73fc375a2f"
+      },
+      "expectedCurationBefore": null,
+      "proposedCuration": {
+        "id": "osm:relation:7145441",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المطويةالشمالية",
+          "name:ar": "المطويةالشمالية",
+          "name:fr": "El Metouia Nord",
+          "ref:tn:codegeo": "515551"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "المطوية الشمالية",
+          "name:ar": "المطوية الشمالية",
+          "name:fr": "El Metouia Nord"
+        },
+        "reason": "Correct the Arabic sector spelling to its exact INS RGPH2024 identity for this unchanged code. Preserve the genuine French source name, sector ID, source geometry, existing display group and prayer reference. The other Metouia sector and the town remain separate identities.",
+        "evidence": [
+          {
+            "source": "INS RGPH2024 three-workbook sector identity registry",
+            "officialRegistry": {
+              "file": "point-retention-reviews/current-official-sector-registry.json",
+              "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+            },
+            "sectorCode": "515551",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2860
+            },
+            "urls": [
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+            ]
+          }
+        ],
+        "officialIdentity": {
+          "governorateCode": "51",
+          "governorateFr": "Gabes",
+          "governorateAr": "قابس",
+          "delegationCode": "5155",
+          "delegationFr": "El metouia",
+          "delegationAr": "المطوية",
+          "sectorCode": "515551",
+          "sectorFr": "El metouia nord",
+          "sectorAr": "المطوية الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 58512,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2866,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2860
+          }
+        },
+        "unresolved": [
+          "A spelling correction does not certify this sector boundary or establish that it equals the entire town. Original source tags remain preserved in the source cache and review evidence."
+        ]
+      }
+    }
+  ],
+  "exactMetadataFieldChanges": [
+    {
+      "id": "osm:relation:7145440",
+      "field": "name",
+      "before": "المطورية الجنوبية",
+      "after": "المطوية الجنوبية"
+    },
+    {
+      "id": "osm:relation:7145441",
+      "field": "name",
+      "before": "المطويةالشمالية",
+      "after": "المطوية الشمالية"
+    },
+    {
+      "id": "osm:way:702435654",
+      "field": "parentName",
+      "before": "المطورية الجنوبية",
+      "after": "المطوية الجنوبية"
+    },
+    {
+      "id": "osm:way:702435654",
+      "field": "contextAliases",
+      "before": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطورية الجنوبية",
+        "معتمدية المطوية"
+      ],
+      "after": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطوية الجنوبية",
+        "معتمدية المطوية"
+      ]
+    },
+    {
+      "id": "osm:way:702443179",
+      "field": "parentName",
+      "before": "المطورية الجنوبية",
+      "after": "المطوية الجنوبية"
+    },
+    {
+      "id": "osm:way:702443179",
+      "field": "contextAliases",
+      "before": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطورية الجنوبية",
+        "معتمدية المطوية"
+      ],
+      "after": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطوية الجنوبية",
+        "معتمدية المطوية"
+      ]
+    },
+    {
+      "id": "osm:way:702443180",
+      "field": "parentName",
+      "before": "المطورية الجنوبية",
+      "after": "المطوية الجنوبية"
+    },
+    {
+      "id": "osm:way:702443180",
+      "field": "contextAliases",
+      "before": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطورية الجنوبية",
+        "معتمدية المطوية"
+      ],
+      "after": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطوية الجنوبية",
+        "معتمدية المطوية"
+      ]
+    },
+    {
+      "id": "osm:way:702645420",
+      "field": "parentName",
+      "before": "المطويةالشمالية",
+      "after": "المطوية الشمالية"
+    },
+    {
+      "id": "osm:way:702645420",
+      "field": "contextAliases",
+      "before": [
+        "Délégation El Metouia",
+        "El Metouia Nord",
+        "Métouia",
+        "المطويةالشمالية",
+        "معتمدية المطوية"
+      ],
+      "after": [
+        "Délégation El Metouia",
+        "El Metouia Nord",
+        "Métouia",
+        "المطوية الشمالية",
+        "معتمدية المطوية"
+      ]
+    },
+    {
+      "id": "osm:way:718891995",
+      "field": "parentName",
+      "before": "المطويةالشمالية",
+      "after": "المطوية الشمالية"
+    },
+    {
+      "id": "osm:way:718891995",
+      "field": "contextAliases",
+      "before": [
+        "Délégation El Metouia",
+        "El Metouia Nord",
+        "Métouia",
+        "المطويةالشمالية",
+        "معتمدية المطوية"
+      ],
+      "after": [
+        "Délégation El Metouia",
+        "El Metouia Nord",
+        "Métouia",
+        "المطوية الشمالية",
+        "معتمدية المطوية"
+      ]
+    },
+    {
+      "id": "osm:node:2235474650",
+      "field": "parentName",
+      "before": "المطويةالشمالية",
+      "after": "المطوية الشمالية"
+    },
+    {
+      "id": "osm:node:2235474650",
+      "field": "contextAliases",
+      "before": [
+        "Délégation El Metouia",
+        "El Metouia Nord",
+        "Métouia",
+        "المطويةالشمالية",
+        "معتمدية المطوية"
+      ],
+      "after": [
+        "Délégation El Metouia",
+        "El Metouia Nord",
+        "Métouia",
+        "المطوية الشمالية",
+        "معتمدية المطوية"
+      ]
+    },
+    {
+      "id": "osm:node:559400503",
+      "field": "parentName",
+      "before": "المطورية الجنوبية",
+      "after": "المطوية الجنوبية"
+    },
+    {
+      "id": "osm:node:559400503",
+      "field": "contextAliases",
+      "before": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطورية الجنوبية",
+        "معتمدية المطوية"
+      ],
+      "after": [
+        "Délégation El Metouia",
+        "El Metouia Sud",
+        "Métouia",
+        "المطوية الجنوبية",
+        "معتمدية المطوية"
+      ]
+    }
+  ],
+  "completeCurrentAndProjectedRawRecords": [
+    {
+      "id": "osm:relation:7145440",
+      "before": {
+        "id": "osm:relation:7145440",
+        "sourceId": "osm",
+        "name": "المطورية الجنوبية",
+        "aliases": [
+          "El Metouia Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.945385,
+        "lng": 9.972873,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.910928,
+          33.911945,
+          10.026282,
+          33.975615
+        ],
+        "areaKm2": 41.15208843364106,
+        "pickerGroupId": "osm:relation:7145440",
+        "offset": 2414272,
+        "length": 2220
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:relation:7145440",
+        "sourceId": "osm",
+        "name": "المطوية الجنوبية",
+        "aliases": [
+          "El Metouia Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.945385,
+        "lng": 9.972873,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.910928,
+          33.911945,
+          10.026282,
+          33.975615
+        ],
+        "areaKm2": 41.15208843364106,
+        "pickerGroupId": "osm:relation:7145440",
+        "offset": 2414272,
+        "length": 2220
+      }
+    },
+    {
+      "id": "osm:relation:7145441",
+      "before": {
+        "id": "osm:relation:7145441",
+        "sourceId": "osm",
+        "name": "المطويةالشمالية",
+        "aliases": [
+          "El Metouia Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.030415,
+        "lng": 10.015376,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.980391,
+          33.940825,
+          10.057294,
+          34.119475
+        ],
+        "areaKm2": 69.34537911106504,
+        "pickerGroupId": "osm:relation:7145441",
+        "offset": 2416492,
+        "length": 6364
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:relation:7145441",
+        "sourceId": "osm",
+        "name": "المطوية الشمالية",
+        "aliases": [
+          "El Metouia Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.030415,
+        "lng": 10.015376,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.980391,
+          33.940825,
+          10.057294,
+          34.119475
+        ],
+        "areaKm2": 69.34537911106504,
+        "pickerGroupId": "osm:relation:7145441",
+        "offset": 2416492,
+        "length": 6364
+      }
+    },
+    {
+      "id": "osm:way:702435654",
+      "before": {
+        "id": "osm:way:702435654",
+        "sourceId": "osm",
+        "name": "حي النسيم",
+        "aliases": [
+          "Cité Ennasim",
+          "Hay Ennasim"
+        ],
+        "kind": "quarter",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.955051,
+        "lng": 10.009311,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          10.007498,
+          33.952856,
+          10.010887,
+          33.957405
+        ],
+        "areaKm2": 0.10171421408783443,
+        "pickerGroupId": "osm:way:702435654",
+        "offset": 5433048,
+        "length": 108
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:way:702435654",
+        "sourceId": "osm",
+        "name": "حي النسيم",
+        "aliases": [
+          "Cité Ennasim",
+          "Hay Ennasim"
+        ],
+        "kind": "quarter",
+        "parentName": "المطوية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطوية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.955051,
+        "lng": 10.009311,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          10.007498,
+          33.952856,
+          10.010887,
+          33.957405
+        ],
+        "areaKm2": 0.10171421408783443,
+        "pickerGroupId": "osm:way:702435654",
+        "offset": 5433048,
+        "length": 108
+      }
+    },
+    {
+      "id": "osm:way:702443179",
+      "before": {
+        "id": "osm:way:702443179",
+        "sourceId": "osm",
+        "name": "Cité El Chobbéne",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.95786,
+        "lng": 10.000527,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.997544,
+          33.956121,
+          10.002003,
+          33.959351
+        ],
+        "areaKm2": 0.07787829534534803,
+        "pickerGroupId": "osm:way:702443179",
+        "offset": 5433156,
+        "length": 140
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:way:702443179",
+        "sourceId": "osm",
+        "name": "Cité El Chobbéne",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطوية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطوية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.95786,
+        "lng": 10.000527,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.997544,
+          33.956121,
+          10.002003,
+          33.959351
+        ],
+        "areaKm2": 0.07787829534534803,
+        "pickerGroupId": "osm:way:702443179",
+        "offset": 5433156,
+        "length": 140
+      }
+    },
+    {
+      "id": "osm:way:702443180",
+      "before": {
+        "id": "osm:way:702443180",
+        "sourceId": "osm",
+        "name": "Cité Nkhilet Farhat",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.956331,
+        "lng": 9.994136,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.991622,
+          33.953585,
+          9.995727,
+          33.960022
+        ],
+        "areaKm2": 0.1187347248319156,
+        "pickerGroupId": "osm:way:702443180",
+        "offset": 5433296,
+        "length": 140
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:way:702443180",
+        "sourceId": "osm",
+        "name": "Cité Nkhilet Farhat",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطوية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطوية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.956331,
+        "lng": 9.994136,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.991622,
+          33.953585,
+          9.995727,
+          33.960022
+        ],
+        "areaKm2": 0.1187347248319156,
+        "pickerGroupId": "osm:way:702443180",
+        "offset": 5433296,
+        "length": 140
+      }
+    },
+    {
+      "id": "osm:way:702645420",
+      "before": {
+        "id": "osm:way:702645420",
+        "sourceId": "osm",
+        "name": "Cité Aouinet (ZONE 7)",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطويةالشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطويةالشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.992505,
+        "lng": 10.003232,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          10.000998,
+          33.988868,
+          10.006234,
+          33.995424
+        ],
+        "areaKm2": 0.20452138398472722,
+        "pickerGroupId": "osm:way:702645420",
+        "offset": 5433584,
+        "length": 116
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:way:702645420",
+        "sourceId": "osm",
+        "name": "Cité Aouinet (ZONE 7)",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطوية الشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطوية الشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.992505,
+        "lng": 10.003232,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          10.000998,
+          33.988868,
+          10.006234,
+          33.995424
+        ],
+        "areaKm2": 0.20452138398472722,
+        "pickerGroupId": "osm:way:702645420",
+        "offset": 5433584,
+        "length": 116
+      }
+    },
+    {
+      "id": "osm:way:718891995",
+      "before": {
+        "id": "osm:way:718891995",
+        "sourceId": "osm",
+        "name": "Cité Essouk",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطويةالشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطويةالشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.961545,
+        "lng": 9.997292,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.993342,
+          33.959176,
+          10.002587,
+          33.963139
+        ],
+        "areaKm2": 0.1574656509403327,
+        "pickerGroupId": "osm:way:718891995",
+        "offset": 5433932,
+        "length": 84
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:way:718891995",
+        "sourceId": "osm",
+        "name": "Cité Essouk",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطوية الشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطوية الشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.961545,
+        "lng": 9.997292,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.993342,
+          33.959176,
+          10.002587,
+          33.963139
+        ],
+        "areaKm2": 0.1574656509403327,
+        "pickerGroupId": "osm:way:718891995",
+        "offset": 5433932,
+        "length": 84
+      }
+    },
+    {
+      "id": "osm:node:2235474650",
+      "before": {
+        "id": "osm:node:2235474650",
+        "sourceId": "osm",
+        "name": "العوينات",
+        "aliases": [
+          "El Aouinet"
+        ],
+        "kind": "village",
+        "parentName": "المطويةالشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطويةالشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.9925089,
+        "lng": 10.0014394,
+        "delegationId": 1025,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2235474650"
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:node:2235474650",
+        "sourceId": "osm",
+        "name": "العوينات",
+        "aliases": [
+          "El Aouinet"
+        ],
+        "kind": "village",
+        "parentName": "المطوية الشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطوية الشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.9925089,
+        "lng": 10.0014394,
+        "delegationId": 1025,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2235474650"
+      }
+    },
+    {
+      "id": "osm:node:559400503",
+      "before": {
+        "id": "osm:node:559400503",
+        "sourceId": "osm",
+        "name": "المطوية",
+        "aliases": [
+          "Métouia"
+        ],
+        "kind": "village",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.9589064,
+        "lng": 10.0014342,
+        "delegationId": 1025,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:559400503"
+      },
+      "projectedAfterSourceNames": {
+        "id": "osm:node:559400503",
+        "sourceId": "osm",
+        "name": "المطوية",
+        "aliases": [
+          "Métouia"
+        ],
+        "kind": "village",
+        "parentName": "المطوية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطوية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.9589064,
+        "lng": 10.0014342,
+        "delegationId": 1025,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:559400503"
+      }
+    }
+  ],
+  "projectedTownRawCurrent": {
+    "id": "osm:node:559400503",
+    "sourceId": "osm",
+    "name": "المطوية",
+    "aliases": [
+      "Métouia"
+    ],
+    "kind": "village",
+    "parentName": "المطوية الجنوبية",
+    "contextAliases": [
+      "Délégation El Metouia",
+      "El Metouia Sud",
+      "Métouia",
+      "المطوية الجنوبية",
+      "معتمدية المطوية"
+    ],
+    "governorateId": 347,
+    "lat": 33.9589064,
+    "lng": 10.0014342,
+    "delegationId": 1025,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:559400503"
+  },
+  "projectedTownProtectedRawRecords": [
+    {
+      "id": "osm:node:559400503",
+      "currentMetadata": {
+        "id": "osm:node:559400503",
+        "sourceId": "osm",
+        "name": "المطوية",
+        "aliases": [
+          "Métouia"
+        ],
+        "kind": "village",
+        "parentName": "المطوية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطوية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.9589064,
+        "lng": 10.0014342,
+        "delegationId": 1025,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:559400503"
+      },
+      "packedGeometrySha256": null
+    },
+    {
+      "id": "osm:relation:7145378",
+      "currentMetadata": {
+        "id": "osm:relation:7145378",
+        "sourceId": "osm",
+        "name": "العكاريت",
+        "aliases": [
+          "El Akarit"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.077055,
+        "lng": 9.975395,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.943368,
+          34.043475,
+          10.008513,
+          34.110875
+        ],
+        "areaKm2": 34.23280402513283,
+        "pickerGroupId": "osm:relation:7145378",
+        "offset": 2191664,
+        "length": 1940
+      },
+      "packedGeometrySha256": "9a6ebc57a5790fe3defe172246f6e4bf20736ee8a44afddcc733253e0f2a67d3"
+    },
+    {
+      "id": "osm:relation:7145440",
+      "currentMetadata": {
+        "id": "osm:relation:7145440",
+        "sourceId": "osm",
+        "name": "المطوية الجنوبية",
+        "aliases": [
+          "El Metouia Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.945385,
+        "lng": 9.972873,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.910928,
+          33.911945,
+          10.026282,
+          33.975615
+        ],
+        "areaKm2": 41.15208843364106,
+        "pickerGroupId": "osm:relation:7145440",
+        "offset": 2414272,
+        "length": 2220
+      },
+      "packedGeometrySha256": "43c839c68605b433caf323fdaa62de92852c826b5baeab2a06984587e2f27556"
+    },
+    {
+      "id": "osm:relation:7145441",
+      "currentMetadata": {
+        "id": "osm:relation:7145441",
+        "sourceId": "osm",
+        "name": "المطوية الشمالية",
+        "aliases": [
+          "El Metouia Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.030415,
+        "lng": 10.015376,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.980391,
+          33.940825,
+          10.057294,
+          34.119475
+        ],
+        "areaKm2": 69.34537911106504,
+        "pickerGroupId": "osm:relation:7145441",
+        "offset": 2416492,
+        "length": 6364
+      },
+      "packedGeometrySha256": "9e0fbf806439de9e68beb8fd853d927ebe849295d49f641667c060dcb3b40725"
+    },
+    {
+      "id": "osm:way:158297973",
+      "currentMetadata": {
+        "id": "osm:way:158297973",
+        "sourceId": "osm",
+        "name": "العكاريت",
+        "aliases": [
+          "El Amarat",
+          "العمارات"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Akarit",
+          "Métouia",
+          "العكاريت",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.054714,
+        "lng": 9.987073,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.985729,
+          34.053548,
+          9.98968,
+          34.055771
+        ],
+        "areaKm2": 0.06455994731545793,
+        "pickerGroupId": "osm:relation:7145378",
+        "offset": 5246564,
+        "length": 100
+      },
+      "packedGeometrySha256": "89ba5b1e8a1e5a1ca04817aa9e5a6a1abb71f169dae1290d08cd85f6eb792fe3"
+    }
+  ],
+  "unchangedTownBase": {
+    "id": 1025,
+    "nomFr": "Metouia",
+    "nomAr": "المطوية",
+    "nomEn": "Metouia",
+    "lat": 33.96,
+    "lng": 9.99
+  },
+  "unchangedSourceStateIds": [
+    "osm:node:559400503",
+    "osm:relation:1434956",
+    "osm:relation:7145378",
+    "osm:relation:7145411",
+    "osm:relation:7145440",
+    "osm:relation:7145441",
+    "osm:way:158297973"
+  ],
+  "unchangedFourOuedhrefTransferDecisions": [
+    {
+      "id": "osm:relation:7145422",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الميدة",
+        "ref:tn:codegeo": "515557"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516254",
+        "sectorAr": "الميدة",
+        "sectorFr": "El mida",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 60008,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2945,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2939
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515557",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145437",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "وذرف الشمالية",
+        "ref:tn:codegeo": "515553"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516251",
+        "sectorAr": "وذرف الشمالية",
+        "sectorFr": "Ouedhref nord",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59906,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2940,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2934
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515553",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145442",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "الهيشة",
+        "ref:tn:codegeo": "515556"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516253",
+        "sectorAr": "الهيشة",
+        "sectorFr": "El hicha",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59974,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2944,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2938
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515556",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    },
+    {
+      "id": "osm:relation:7145449",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "name:ar": "وذرف الجنوبية",
+        "ref:tn:codegeo": "515554"
+      },
+      "action": "administrative_context",
+      "parentNames": [
+        "معتمدية وذرف",
+        "وذرف",
+        "Ouedhref"
+      ],
+      "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 5162 (Ouedhref), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+      "evidence": [
+        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=113",
+        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+      ],
+      "reviewedOfficialSector": {
+        "sectorCode": "516252",
+        "sectorAr": "وذرف الجنوبية",
+        "sectorFr": "Ouedhref sud",
+        "delegationCode": "5162",
+        "delegationAr": "وذرف",
+        "delegationFr": "Ouedhref",
+        "governorateCode": "51",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 59940,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2942,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2936
+        }
+      },
+      "identityReview": {
+        "oldOfficialSectorCode": "515554",
+        "oldOfficialPages": [
+          113
+        ],
+        "oldParentSourceIds": [
+          "osm:relation:7145411"
+        ],
+        "oldParentFullyContainsSourceSector": true,
+        "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+      },
+      "unresolved": [
+        "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+      ]
+    }
+  ],
+  "historicalVsOperativeDependencies": {
+    "existingOperativeProofMigrations": 0,
+    "historicalDocumentsPreserved": 7,
+    "details": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\metouia-sector-spelling-active-dependency-review.json",
+      "sha256": "5f357f6f2c37b8a14c133cc4a804b460e80143e9d4e98bd6f29cd7d5768ce5cd"
+    }
+  },
+  "projectionRules": [
+    "Replace only the two Arabic source name/name:ar values using their unique unchanged official codes.",
+    "Retain name:fr exactly as El Metouia Sud and El Metouia Nord. Do not create a historical typo alias.",
+    "The derived raw sector name and existing child parentName/contextAliases consumers receive these exact spelling substitutions. All other metadata fields are unchanged in this projection.",
+    "This is a source-name phase projection, not generated output. The new Metouia town wrapper must bind these corrected effective tags, proposed curationBindings and projected raw metadata before its separate pickerGroupId-only display phase.",
+    "The final batch must check all16 projected spelling/context fields plus its explicit city pickerGroupId changes against one guarded actual generation."
+  ],
+  "counts": {
+    "newNameDecisions": 2,
+    "spellingRawRows": 9,
+    "spellingMetadataFields": 16,
+    "townProtectedRawRows": 5,
+    "townSourceStates": 7,
+    "preservedCurrentMetouiaSectors": 3,
+    "preservedOuedhrefTransfers": 4
+  },
+  "notPerformed": [
+    "Live changes",
+    "Stage assembly",
+    "Generator or helpers",
+    "Tests or build",
+    "Phone or ledger access",
+    "Additional primary research"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\propose_metouia_two_sector_spellings.py",
+    "sha256": "974b8ec4ca28b1b912c74bda49c0a932b122e6f406ac8de069eed73d8bdad950"
+  }
+}

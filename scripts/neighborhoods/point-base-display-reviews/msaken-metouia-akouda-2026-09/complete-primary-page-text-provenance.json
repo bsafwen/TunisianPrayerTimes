@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "method": "explicit_complete_page_text_provenance",
+  "originalPdf": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020.pdf",
+    "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+    "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf"
+  },
+  "originalPdfIsOriginalHttpResponseBytes": true,
+  "originalRetrieval": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\msaken-second-point-source-review\\mehat-sousse-atlas2020.pdf",
+    "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+    "resolvedUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf",
+    "retrievedAt": "2026-09-12T09:13:58.977509+00:00",
+    "status": 200,
+    "contentType": "application/pdf",
+    "bytes": 30603494,
+    "sha256": "7d75390d97f7fbad97a1668d2a40bf30705ec2732a1b846ca218515e15f366a9",
+    "originalResponseBytesPreserved": true
+  },
+  "independentCompletePageVerification": {
+    "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-metouia-akouda-source-identity-independent-review.json",
+    "sha256": "9b89c7a0f7d1b8a77d42e6936e431821714804b0b3c5f41c138a369e4f8e6bd1"
+  },
+  "records": [
+    {
+      "pointId": "osm:node:6681328578",
+      "derivedText": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-atlas2020-page81.txt",
+        "sha256": "d2061cb8938b522c392e0223094e12a64d470b17e05039f781ae3fc6d69a7ac3",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf"
+      },
+      "pdfPage": 81,
+      "printedPage": 81,
+      "method": "PyMuPDF page.get_text(\"text\", sort=False), complete page, UTF8 encoding; no trimming, reflow, normalization or manual corrections.",
+      "pymupdfVersion": "1.28.2",
+      "mupdfVersion": "1.28.2",
+      "requiredText": [
+        "مدينة مساكن",
+        "دائرة مساكن الجنوبية",
+        "دائرة مساكن الشمالية"
+      ],
+      "sourceDerivationRecord": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/msaken-second-point-source-review.json",
+        "sha256": "7a4d234e757a7c7b40f526cc5cec0041b5b181331a0631289e6e9b81f1cc41ab"
+      },
+      "isOriginalHttpResponseBytes": false
+    },
+    {
+      "pointId": "osm:node:1184918055",
+      "derivedText": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/mehat-sousse-ar-page-82.txt",
+        "sha256": "b968a8629d1ba54173fa974c4d7d6ff67b68a59ad6cf62b423d43020c7ab7fc7",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/04/AtlasSousseDec2020Ar.pdf"
+      },
+      "pdfPage": 82,
+      "printedPage": 82,
+      "extractor": {
+        "library": "PyMuPDF",
+        "version": "1.28.2",
+        "operation": "document[page-1].get_text('text')",
+        "encoding": "UTF-8",
+        "normalization": "none",
+        "newline": "preserve extraction LF"
+      },
+      "requiredText": [
+        "بلدية  أكودة",
+        "المحاور الرئيسية للمدينة",
+        "تهيكل نسيجها العمراني"
+      ],
+      "sourceDerivationRecord": {
+        "file": "point-base-display-reviews/msaken-metouia-akouda-2026-09/akouda-town-point-source-review.json",
+        "sha256": "ccd0b18aa939de386d92edede69a8a66d871d10bba08fbfa5bca33f2584adc2b"
+      },
+      "isOriginalHttpResponseBytes": false
+    }
+  ],
+  "qualification": "One shared original PDF is preserved exactly. Both UTF8 files are derived complete pages, not HTTP response bytes from the PDF URL. No coordinates or boundaries are imported."
+}

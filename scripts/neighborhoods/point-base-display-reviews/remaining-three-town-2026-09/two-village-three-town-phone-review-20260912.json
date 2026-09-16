@@ -1,0 +1,172 @@
+{
+  "status": "SIX_TARGETED_PUBLIC_PHONE_OBSERVATIONS_ROOT_VIEWED_NO_FACET_PROMOTION",
+  "metadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "82b8f2f4d8d716e4bc354a2f72dea37ec7df36bea4a97c2bd527917fe4a3aa6e"
+  },
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_node_1761154967-2\\ledger.json",
+    "sha256": "c70559af39003021dcccb94dc73b94ef7017b8c5e00515d7058da29fd57b65b1"
+  },
+  "afterLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "72ae5f73448600f6b80fe038cda0a4e3eab68b2e7b0625178fe53ca105893755"
+  },
+  "beforeCounts": {
+    "currentRows": 3566,
+    "historicalRows": 180,
+    "observedCurrentRows": 645,
+    "pendingRows": 3214,
+    "observedNeedsReviewRows": 352,
+    "currentObservations": 782,
+    "historicalObservations": 169
+  },
+  "afterCounts": {
+    "currentRows": 3566,
+    "historicalRows": 180,
+    "observedCurrentRows": 649,
+    "pendingRows": 3210,
+    "observedNeedsReviewRows": 356,
+    "currentObservations": 788,
+    "historicalObservations": 169
+  },
+  "records": [
+    {
+      "id": "osm:node:1761154967",
+      "query": "Awlad Al Abed 35.9994146 10.2089802",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1761154967-2.json",
+        "sha256": "ccd9172118fcb4f2d55347f2d5f5160de7e623b133d73a3a0ca61b998fb5c7e7"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1761154967-2.png",
+        "sha256": "682007deb22fad7a5e1770a256ca9b24728cb77453ed4f03b476e3642c7a6552"
+      },
+      "rootPersonallyViewedCompleteScreenshot": true,
+      "finding": "The coordinate-qualified name query returned two residential-complex listings. This does not establish a village at the stored coordinate or its administrative membership. No perimeter was established.",
+      "geometryVerticesCopied": false,
+      "catalogFacetsPromoted": false
+    },
+    {
+      "id": "osm:node:1761154967",
+      "query": "أولاد العابد كندار",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1761154967-3.json",
+        "sha256": "20c92280bbffccfdc8009fface7ad741733852aa832fe18cf095f9821fe998dc"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1761154967-3.png",
+        "sha256": "abce739b4abbad4c3f1857df4761b4545f4e6fc0e7bf0c06705f2f000155baf0"
+      },
+      "rootPersonallyViewedCompleteScreenshot": true,
+      "finding": "A named locality card for أولاد العابد / Ouled El Abed and a dotted outline appeared for the Kondar query. This corroborates a named place in that search context, but does not authenticate the separate Aouitha village point, identify the displayed outline as the legal sector, or authorize moving the point.",
+      "geometryVerticesCopied": false,
+      "catalogFacetsPromoted": false
+    },
+    {
+      "id": "osm:node:2889204496",
+      "query": "العواينية ودران الشمالية بئر علي بن خليفة",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2889204496-1.json",
+        "sha256": "d03055c1f445dc654613479e7fe5ffe7a41040c339cccd5fb592049190d38db0"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_2889204496-1.png",
+        "sha256": "2b989690edd994e3dc100713127b6f6b4cc00d29af1d7aa12b0efe00c4bae44a"
+      },
+      "rootPersonallyViewedCompleteScreenshot": true,
+      "finding": "A named العواينية place pin appeared on P14 beside the Wadran label. No whole-locality outline or full administrative address appeared. This is supplementary locality-name/road-context evidence; the independent primary JORT source remains the governorate evidence.",
+      "geometryVerticesCopied": false,
+      "catalogFacetsPromoted": false
+    },
+    {
+      "id": "osm:node:287625095",
+      "query": "جندوبة تونس",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_287625095-1.json",
+        "sha256": "829c1fbb93b288805d2e9ba474acecad8dc1528a34a4295e0fea013625692511"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_287625095-1.png",
+        "sha256": "7963aaf67d2ff22b12d23a773c1ae0c67519168f78b96d6789a2f7c0d683d031"
+      },
+      "rootPersonallyViewedCompleteScreenshot": true,
+      "finding": "The named جندوبة / Jendouba city card and urban-area outline appeared. This supports inhabited city identity. It does not certify the OSM coordinate inherited from the bank-retag edit, the meteo reference coordinate, or either administrative delegation boundary.",
+      "geometryVerticesCopied": false,
+      "catalogFacetsPromoted": false
+    },
+    {
+      "id": "osm:node:264881676",
+      "query": "دوز قبلي تونس",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_264881676-1.json",
+        "sha256": "ee77558d89368fcf3c6500826dcb87c54fee175dbb19059bc7468c6f182f9bac"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_264881676-1.png",
+        "sha256": "36d69a78d4181a4c6731790f9a6c93876833e4d8be832fae435224dd04a589f5"
+      },
+      "rootPersonallyViewedCompleteScreenshot": true,
+      "finding": "The named دوز / Douz city card and urban-area outline appeared. This supports the inhabited city identity, without equating it with Douz North or South or importing the outline.",
+      "geometryVerticesCopied": false,
+      "catalogFacetsPromoted": false
+    },
+    {
+      "id": "osm:node:1165828361",
+      "query": "جمال المنستير تونس",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1165828361-1.json",
+        "sha256": "e2d48c114087022a4263b7dbbbbf70e5f3f89219b9f8a9d91780a292a596acc2"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1165828361-1.png",
+        "sha256": "0a13a776e86aaf5f33430e8add36142cbe0bf04b03ba5e8574acd765582258d0"
+      },
+      "rootPersonallyViewedCompleteScreenshot": true,
+      "finding": "The named جمال / Jemmel city card and urban-area outline appeared. This supports the inhabited city identity and existing spelling alias. It does not identify any one of the nine sectors as the entire city.",
+      "geometryVerticesCopied": false,
+      "catalogFacetsPromoted": false
+    }
+  ],
+  "phoneAccessRecovery": "Fresh ADB device check identified the authorized Pixel6. Read-only lock-state check reported unlocked. Root launched only the explicit public coordinate-qualified Maps search with an Android VIEW intent; the existing helper then verified Maps foreground before every capture. No device unlock or security change was attempted. The prior request to open Maps manually is no longer needed.",
+  "before951ObservationsPreserved": true,
+  "reviewStatusChanges": [
+    {
+      "id": "osm:node:1165828361",
+      "before": "pending",
+      "after": "observed_needs_review"
+    },
+    {
+      "id": "osm:node:264881676",
+      "before": "pending",
+      "after": "observed_needs_review"
+    },
+    {
+      "id": "osm:node:287625095",
+      "before": "pending",
+      "after": "observed_needs_review"
+    },
+    {
+      "id": "osm:node:2889204496",
+      "before": "pending",
+      "after": "observed_needs_review"
+    }
+  ],
+  "allEntryFieldsOtherThanAppendedObservationsAndFourPendingStatusesUnchanged": true,
+  "allHistoricalRowsUnchanged": true,
+  "notPerformed": [
+    "API-key request",
+    "directions/navigation",
+    "calls",
+    "sharing/sending",
+    "saved-place interaction",
+    "map edits",
+    "geometry extraction",
+    "product change",
+    "test/build/package"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_six_targeted_phone_reviews_20260912.py",
+    "sha256": "79f8c9561b31937a3a5ce6fe38eb98d42376b6910323ee68fc577eb7de28429f"
+  }
+}

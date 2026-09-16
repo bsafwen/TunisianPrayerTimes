@@ -1,0 +1,2443 @@
+{
+  "status": "BOUNDED_PRIMARY_GEOGRAPHY_FACTS_FOR_REVIEW",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "94f028c265be535ed15d698b01b87e16abdad53f4afb49c1b785116327ad85b1"
+  },
+  "engine": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d"
+  },
+  "requestedCoordinate": {
+    "lat": 36.706378,
+    "lng": 10.423468
+  },
+  "sectorRaw": {
+    "id": "osm:relation:7100693",
+    "sourceId": "osm",
+    "name": "سليمان",
+    "aliases": [
+      "Soliman"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية سليمان",
+    "contextAliases": [
+      "Délégation Soliman",
+      "Soliman",
+      "معتمدية سليمان"
+    ],
+    "governorateId": 350,
+    "lat": 36.720223,
+    "lng": 10.482011,
+    "delegationId": 465,
+    "hasBoundary": true,
+    "bbox": [
+      10.403797,
+      36.687246,
+      10.54891,
+      36.753043
+    ],
+    "areaKm2": 42.290533211050594,
+    "pickerGroupId": "osm:relation:7100693",
+    "offset": 289116,
+    "length": 2836
+  },
+  "buildingRaw": {
+    "id": "osm:way:1209108779",
+    "sourceId": "osm",
+    "name": "immeuble le boucher",
+    "aliases": [],
+    "kind": "residential",
+    "parentName": "سليمان",
+    "contextAliases": [
+      "Délégation Soliman",
+      "Soliman",
+      "سليمان",
+      "معتمدية سليمان"
+    ],
+    "governorateId": 350,
+    "lat": 36.706378,
+    "lng": 10.423468,
+    "delegationId": 452,
+    "hasBoundary": true,
+    "bbox": [
+      10.423281,
+      36.70621,
+      10.42365,
+      36.70652
+    ],
+    "areaKm2": 0.0007826411049652554,
+    "pickerGroupId": "osm:way:1209108779",
+    "offset": 5211936,
+    "length": 52
+  },
+  "sourceCache": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "originalSectorTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "name": "سليمان",
+    "name:ar": "سليمان",
+    "name:fr": "Soliman",
+    "ref:tn:codegeo": "156154"
+  },
+  "sourceContextMembership": [
+    {
+      "id": "osm:relation:7145292",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Soliman",
+        "boundary": "administrative",
+        "name": "معتمدية سليمان",
+        "name:ar": "معتمدية سليمان",
+        "name:fr": "Délégation Soliman",
+        "ref:tn:codegeo": "1561",
+        "ref:tn:hasc_2": "TN.NB.SO",
+        "wikidata": "Q3489485"
+      },
+      "containsWholeBuilding": true
+    },
+    {
+      "id": "osm:relation:7100693",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سليمان",
+        "name:ar": "سليمان",
+        "name:fr": "Soliman",
+        "ref:tn:codegeo": "156154"
+      },
+      "containsWholeBuilding": true
+    },
+    {
+      "id": "osm:relation:192757",
+      "tags": {
+        "ISO3166-1": "TN",
+        "ISO3166-1:alpha2": "TN",
+        "ISO3166-1:alpha3": "TUN",
+        "ISO3166-1:numeric": "788",
+        "admin_level": "2",
+        "alt_name:ur": "تیونس",
+        "alt_name:vi": "Tuy-ni-di",
+        "border_type": "nation",
+        "boundary": "administrative",
+        "default_language": "ar",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg",
+        "name": "تونس",
+        "name:ace": "Tunisia",
+        "name:af": "Tunisië",
+        "name:als": "Tunesien",
+        "name:am": "ቱኒዚያ",
+        "name:an": "Tunicia",
+        "name:ang": "Tunisia",
+        "name:ar": "تونس",
+        "name:arc": "ܬܘܢܣ",
+        "name:arz": "تونس",
+        "name:ast": "Tunicia",
+        "name:az": "Tunis",
+        "name:azb": "تونیس",
+        "name:ba": "Тунис",
+        "name:bat-smg": "Tonėsos",
+        "name:bcl": "Tunisya",
+        "name:be": "Туніс",
+        "name:be-tarask": "Туніс",
+        "name:ber": "ⵜⵓⵏⵙ",
+        "name:bg": "Тунис",
+        "name:bjn": "Tunisia",
+        "name:bm": "Tunizi",
+        "name:bn": "তিউনিসিয়া",
+        "name:bo": "ཏུ་ནི་ཤི་ཡ།",
+        "name:bpy": "তিউনিসিয়া",
+        "name:br": "Tunizia",
+        "name:bs": "Tunis",
+        "name:bxr": "Тунис",
+        "name:ca": "Tunísia",
+        "name:ce": "Тунис",
+        "name:ceb": "Tunisia",
+        "name:chr": "ᏚᏂᏏᏍᎠ",
+        "name:ckb": "توونس",
+        "name:crh": "Tunis",
+        "name:cs": "Tunisko",
+        "name:cv": "Тунис",
+        "name:cy": "Tunisia",
+        "name:da": "Tunesien",
+        "name:de": "Tunesien",
+        "name:diq": "Tunıs",
+        "name:dv": "ތޫނިސް",
+        "name:ee": "Tunisia",
+        "name:el": "Τυνησία",
+        "name:en": "Tunisia",
+        "name:eo": "Tunizio",
+        "name:es": "Túnez",
+        "name:et": "Tuneesia",
+        "name:eu": "Tunisia",
+        "name:ext": "Túnis",
+        "name:fa": "تونس",
+        "name:fi": "Tunisia",
+        "name:fo": "Tunesia",
+        "name:fr": "Tunisie",
+        "name:frp": "Tunisie",
+        "name:fy": "Tuneezje",
+        "name:ga": "An Túinéis",
+        "name:gag": "Tunis",
+        "name:gd": "Tuinisia",
+        "name:gl": "Tunisia",
+        "name:gn": "Tunísia",
+        "name:grc": "Τυνησία",
+        "name:gu": "ટ્યુનિશિયા",
+        "name:gv": "Yn Tooneesh",
+        "name:haw": "Tunisia",
+        "name:he": "תוניסיה",
+        "name:hi": "ट्यूनिशिया",
+        "name:hif": "Tunisia",
+        "name:hr": "Tunis",
+        "name:hsb": "Tuneziska",
+        "name:ht": "Tinizi",
+        "name:hu": "Tunézia",
+        "name:hy": "Թունիս",
+        "name:id": "Tunisia",
+        "name:ie": "Tunisia",
+        "name:ilo": "Tunisia",
+        "name:io": "Tunizia",
+        "name:is": "Túnis",
+        "name:it": "Tunisia",
+        "name:ja": "チュニジア",
+        "name:jv": "Tunisia",
+        "name:ka": "ტუნისი",
+        "name:kab": "Tunes",
+        "name:kg": "Tunisia",
+        "name:kk": "Тунис",
+        "name:kn": "ಟುನೀಶಿಯ",
+        "name:ko": "튀니지",
+        "name:ks": "تونس",
+        "name:ku": "Tûnis",
+        "name:ku-Arab": "توونس",
+        "name:kw": "Tunisi",
+        "name:ky": "Тунис",
+        "name:la": "Tunesia",
+        "name:lad": "Tunesia",
+        "name:lb": "Tunesien",
+        "name:li": "Tunesië",
+        "name:lij": "Tunixia",
+        "name:lmo": "Tünisia",
+        "name:ln": "Tunisia",
+        "name:lt": "Tunisas",
+        "name:lv": "Tunisija",
+        "name:mdf": "Тунис",
+        "name:mg": "Tonizia",
+        "name:mi": "Tūnihia",
+        "name:mk": "Тунис",
+        "name:ml": "ടുണീഷ്യ",
+        "name:mn": "Тунис",
+        "name:mr": "ट्युनिसिया",
+        "name:mrj": "Тунис",
+        "name:ms": "Tunisia",
+        "name:mt": "Tuneżija",
+        "name:my": "တူနီးရှားနိုင်ငံ",
+        "name:mzn": "تونس",
+        "name:nah": "Tunez",
+        "name:nan": "Tunisia",
+        "name:nds": "Tunesien",
+        "name:new": "ट्युनिसिया",
+        "name:nl": "Tunesië",
+        "name:nn": "Tunisia",
+        "name:no": "Tunisia",
+        "name:nov": "Tunisia",
+        "name:nso": "Tunisia",
+        "name:nv": "Ghą́ą́ʼaskʼidii Biłikahii Bikéyah Yázhí",
+        "name:oc": "Tunisia",
+        "name:or": "ଟ୍ୟୁନିସିଆ",
+        "name:os": "Тунис",
+        "name:pa": "ਤੁਨੀਸੀਆ",
+        "name:pam": "Tunisia",
+        "name:pap": "Tunesia",
+        "name:pl": "Tunezja",
+        "name:pms": "Tunisìa",
+        "name:pnb": "ٹیونس",
+        "name:pnt": "Τυνησίαν",
+        "name:ps": "تونس",
+        "name:pt": "Tunísia",
+        "name:qu": "Tunisya",
+        "name:rm": "Tunesia",
+        "name:ro": "Tunisia",
+        "name:ru": "Тунис",
+        "name:rw": "Tunisiya",
+        "name:sa": "टुनिशिया",
+        "name:sah": "Тунис",
+        "name:sc": "Tunisia",
+        "name:scn": "Tunisìa",
+        "name:sco": "Tunisie",
+        "name:se": "Tunisia",
+        "name:sg": "Tunizïi",
+        "name:sh": "Tunis",
+        "name:simple": "Tunisia",
+        "name:sk": "Tunisko",
+        "name:sl": "Tunizija",
+        "name:smn": "Tunisia",
+        "name:sms": "Tunisia",
+        "name:sn": "Tunisia",
+        "name:so": "Tunisiya",
+        "name:sq": "Tunizia",
+        "name:sr": "Тунис",
+        "name:ss": "IThunisiya",
+        "name:stq": "Tunesien",
+        "name:su": "Tunisia",
+        "name:sv": "Tunisien",
+        "name:sw": "Tunisia",
+        "name:syc": "ܬܘܢܣ",
+        "name:szl": "Tůnezyjo",
+        "name:ta": "துனீசியா",
+        "name:te": "ట్యునీషియా",
+        "name:tg": "Тунис",
+        "name:th": "ประเทศตูนิเซีย",
+        "name:ti": "ቱኒዢያ",
+        "name:tk": "Tunis",
+        "name:tl": "Tunisya",
+        "name:tr": "Tunus",
+        "name:ts": "Tunisia",
+        "name:tt": "Тунис",
+        "name:tzl": "Tünis",
+        "name:ug": "تۇنىس",
+        "name:uk": "Туніс",
+        "name:ur": "تونس",
+        "name:uz": "Tunis",
+        "name:vec": "Tunixia",
+        "name:vi": "Tunisia",
+        "name:vo": "Tünisän",
+        "name:vro": "Tuneesiä",
+        "name:wa": "Tunizeye",
+        "name:war": "Tunisia",
+        "name:wo": "Tiniisi",
+        "name:wuu": "突尼斯",
+        "name:yi": "טוניסיע",
+        "name:yo": "Tùnísíà",
+        "name:yue": "突尼西亞",
+        "name:zgh": "ⵜⵓⵏⵙ",
+        "name:zh": "突尼斯 / 突尼西亞",
+        "name:zh-Hans": "突尼斯",
+        "name:zh-Hans-CN": "突尼斯",
+        "name:zh-Hant": "突尼西亞",
+        "name:zh-Hant-CN": "突尼斯",
+        "name:zh-Hant-TW": "突尼西亞",
+        "name:zu": "ITunisia",
+        "official_name": "الجمهورية التونسية",
+        "official_name:ar": "الجمهورية التونسية",
+        "official_name:bs": "Republika Tunis",
+        "official_name:ca": "República de Tunísia",
+        "official_name:cs": "Tuniská republika",
+        "official_name:de": "Republik Tunesien",
+        "official_name:en": "Republic of Tunisia",
+        "official_name:es": "República de Túnez",
+        "official_name:fa": "جمهوری تونس",
+        "official_name:gn": "Tavakuairetã Tunísia",
+        "official_name:hu": "Tunéziai Köztársaság",
+        "official_name:pt": "República Tunisina",
+        "official_name:ru": "Тунисская Республика",
+        "official_name:ur": "جمہوریہ تونس",
+        "population": "10276158",
+        "source:name:oc": "ieo-bdtopoc",
+        "timezone": "Africa/Tunis",
+        "wikidata": "Q948",
+        "wikimedia_commons": "Category:Tunisia",
+        "wikipedia": "ar:تونس"
+      },
+      "containsWholeBuilding": true
+    },
+    {
+      "id": "osm:relation:1435825",
+      "tags": {
+        "ISO3166-2": "TN-21",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية نابل",
+        "name:ar": "ولاية نابل",
+        "name:az": "Nabul (vilayət)",
+        "name:be": "Набуль (вілает)",
+        "name:be-tarask": "Набуль (вілает)",
+        "name:bg": "Набил (област)",
+        "name:ca": "Governació de Nabeul",
+        "name:ceb": "Gouvernorat de Nabeul",
+        "name:cy": "Nabeul (talaith)",
+        "name:de": "Gouvernement Nabeul",
+        "name:el": "Ναμπέλ (Κυβερνείο)",
+        "name:en": "Nabeul",
+        "name:es": "Gobernación de Nabeul",
+        "name:fa": "نابل",
+        "name:fi": "Nabeul (kuvernementti)",
+        "name:fr": "Gouvernorat Nabeul",
+        "name:frr": "Nabeul (Guwernement)",
+        "name:id": "Kegubernuran Nabeul",
+        "name:it": "Nabeul",
+        "name:ja": "ナブール県",
+        "name:ko": "나뵐주",
+        "name:ks": "نابل",
+        "name:ms": "Kawasan kegabenoran Nabeul",
+        "name:nl": "Nabeul (gouvernement)",
+        "name:no": "Nabeul (guvernement)",
+        "name:pl": "Gubernatorstwo Nabul",
+        "name:pt": "Nabeul (província)",
+        "name:ro": "Guvernoratul Nabeul",
+        "name:ru": "Набуль (вилайет)",
+        "name:sco": "Nabeul Govrenorate",
+        "name:sh": "Nabeul (vilajet)",
+        "name:tr": "Nabil ili",
+        "name:uk": "Набуль (вілаєт)",
+        "name:ur": "نابل",
+        "name:zh": "納布勒省",
+        "name:zu": "Nabeul Governorate",
+        "official_name": "ولاية نابل",
+        "official_name:ar": "ولاية نابل",
+        "official_name:en": "Nabeul Governorate",
+        "official_name:fa": "استان نابل",
+        "official_name:fr": "Gouvernorat de Nabeul",
+        "official_name:it": "Governatorato di Nabeul",
+        "official_name:ur": "ولاية نابل",
+        "population": "787920",
+        "population:date": "2014",
+        "ref:tn:codegeo": "15",
+        "wikidata": "Q328145",
+        "wikipedia": "ar:ولاية نابل"
+      },
+      "containsWholeBuilding": true
+    }
+  ],
+  "relevantDirectCurations": [],
+  "acceptedBoundaryManifest": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8"
+  },
+  "acceptedBoundaryMatches": [],
+  "existingDistinctChoiceGuard": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\soliman-town-sector-distinct-choices.json",
+    "sha256": "72716d8bc66bbbcb19d1d3288563d5c658ae1997f3bb85da1ec5745e17148d10"
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialIdentity": {
+    "governorateCode": "15",
+    "governorateFr": "Nabeul",
+    "governorateAr": "نابل",
+    "delegationCode": "1561",
+    "delegationFr": "Soliman",
+    "delegationAr": "سليمان",
+    "sectorCode": "156154",
+    "sectorFr": "Soliman",
+    "sectorAr": "سليمان",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13499,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 544,
+      "Nombre_de_menages_par_Secteurs.xlsx": 543
+    }
+  },
+  "originalWorkbookRows": [
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae"
+      },
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population",
+      "rowOneBased": 13499,
+      "values": [
+        {
+          "cell": "A13499",
+          "value": "2"
+        },
+        {
+          "cell": "B13499",
+          "value": "District 2"
+        },
+        {
+          "cell": "C13499",
+          "value": "إقليم 2"
+        },
+        {
+          "cell": "D13499",
+          "value": "15"
+        },
+        {
+          "cell": "E13499",
+          "value": "Nabeul"
+        },
+        {
+          "cell": "F13499",
+          "value": "نابل"
+        },
+        {
+          "cell": "G13499",
+          "value": "1561"
+        },
+        {
+          "cell": "H13499",
+          "value": "Soliman"
+        },
+        {
+          "cell": "I13499",
+          "value": "سليمان"
+        },
+        {
+          "cell": "J13499",
+          "value": "156154"
+        },
+        {
+          "cell": "K13499",
+          "value": "Soliman"
+        },
+        {
+          "cell": "L13499",
+          "value": "سليمان"
+        },
+        {
+          "cell": "M13499",
+          "value": "156154-Soliman"
+        },
+        {
+          "cell": "N13499",
+          "value": "156154-سليمان"
+        },
+        {
+          "cell": "O13499",
+          "value": "M"
+        },
+        {
+          "cell": "P13499",
+          "value": " Masculin"
+        },
+        {
+          "cell": "Q13499",
+          "value": " ذكر"
+        },
+        {
+          "cell": "R13499",
+          "value": "1"
+        },
+        {
+          "cell": "S13499",
+          "value": "00-04"
+        },
+        {
+          "cell": "T13499",
+          "value": "00-04"
+        },
+        {
+          "cell": "U13499",
+          "value": "930"
+        }
+      ]
+    },
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831"
+      },
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "sheet": "Logements",
+      "rowOneBased": 544,
+      "values": [
+        {
+          "cell": "A544",
+          "value": "2"
+        },
+        {
+          "cell": "B544",
+          "value": "District 2"
+        },
+        {
+          "cell": "C544",
+          "value": "إقليم 2"
+        },
+        {
+          "cell": "D544",
+          "value": "15"
+        },
+        {
+          "cell": "E544",
+          "value": "Nabeul"
+        },
+        {
+          "cell": "F544",
+          "value": "نابل"
+        },
+        {
+          "cell": "G544",
+          "value": "1561"
+        },
+        {
+          "cell": "H544",
+          "value": "Soliman"
+        },
+        {
+          "cell": "I544",
+          "value": "سليمان"
+        },
+        {
+          "cell": "J544",
+          "value": "Soliman"
+        },
+        {
+          "cell": "K544",
+          "value": "سليمان"
+        },
+        {
+          "cell": "L544",
+          "value": "156154"
+        },
+        {
+          "cell": "M544",
+          "value": "156154-Soliman"
+        },
+        {
+          "cell": "N544",
+          "value": "156154-سليمان"
+        },
+        {
+          "cell": "O544",
+          "value": "1"
+        },
+        {
+          "cell": "P544",
+          "value": "Urbain"
+        },
+        {
+          "cell": "Q544",
+          "value": "حضري"
+        },
+        {
+          "cell": "R544",
+          "value": "11776"
+        },
+        {
+          "cell": "S544",
+          "value": "9393"
+        }
+      ]
+    },
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1"
+      },
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "sheet": "Ménages",
+      "rowOneBased": 543,
+      "values": [
+        {
+          "cell": "A543",
+          "value": "2"
+        },
+        {
+          "cell": "B543",
+          "value": "District 2"
+        },
+        {
+          "cell": "C543",
+          "value": "إقليم 2"
+        },
+        {
+          "cell": "D543",
+          "value": "15"
+        },
+        {
+          "cell": "E543",
+          "value": "Nabeul"
+        },
+        {
+          "cell": "F543",
+          "value": "نابل"
+        },
+        {
+          "cell": "G543",
+          "value": "1561"
+        },
+        {
+          "cell": "H543",
+          "value": "Soliman"
+        },
+        {
+          "cell": "I543",
+          "value": "سليمان"
+        },
+        {
+          "cell": "J543",
+          "value": "Soliman"
+        },
+        {
+          "cell": "K543",
+          "value": "سليمان"
+        },
+        {
+          "cell": "L543",
+          "value": "156154"
+        },
+        {
+          "cell": "M543",
+          "value": "156154-Soliman"
+        },
+        {
+          "cell": "N543",
+          "value": "156154-سليمان"
+        },
+        {
+          "cell": "O543",
+          "value": "1"
+        },
+        {
+          "cell": "P543",
+          "value": "Urbain"
+        },
+        {
+          "cell": "Q543",
+          "value": "حضري"
+        },
+        {
+          "cell": "R543",
+          "value": "9488"
+        }
+      ]
+    }
+  ],
+  "primaryPdf": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-sector-building-context-review\\soliman.pdf",
+    "sha256": "912a5163030cbc29a62b1609f1f4a3dd4a579e4dac9e3cd4b35fe94fd46e0e27"
+  },
+  "retrieval": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-sector-building-context-review\\soliman-retrieval.json",
+    "sha256": "30d40d5cd9df8122e515e77fdecec765b5007c8264be1cb715c80fef8af70a21"
+  },
+  "discoveryIndex": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+    "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651"
+  },
+  "georeferencing": {
+    "epsg": 32632,
+    "affine": [
+      [
+        13.00632190998112,
+        0.0004483057165536507
+      ],
+      [
+        -0.0004510942890192382,
+        -13.002882146258344
+      ],
+      [
+        623935.025535268,
+        4066361.406437825
+      ]
+    ],
+    "maxControlResidualMeters": 0.20873152417633042,
+    "requestedPointPdfCoordinates": [
+      246.70900217430608,
+      239.68883655854734,
+      1.0
+    ],
+    "requestedPointWithinViewport": true
+  },
+  "nativeClosedRedSectorRings": [
+    {
+      "drawingIndex": 410,
+      "explicitlyClosed": true,
+      "vertexCount": 403,
+      "targetLabels": [
+        {
+          "text": "نﺎﻣﯾﻠﺳ",
+          "normalizedReverse": "سليمان",
+          "colors": [
+            15073280
+          ],
+          "point": [
+            296.2251892089844,
+            160.53441619873047
+          ]
+        }
+      ],
+      "allRedLabelsInside": [
+        {
+          "text": "نﺎﻣﯾﻠﺳ",
+          "normalizedReverse": "سليمان",
+          "colors": [
+            15073280
+          ],
+          "point": [
+            296.2251892089844,
+            160.53441619873047
+          ]
+        }
+      ],
+      "outsideViewportAreaPoints2": 0.0,
+      "activeClipCount": 2,
+      "outsideActiveClipAreasPoints2": [
+        0.0,
+        0.0
+      ],
+      "containsRequestedPoint": true,
+      "containsWholeBuilding": true,
+      "pointBoundaryDistanceMeters": 864.7141506588974,
+      "areaSquareMeters": 26068865.4107515,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.475677238220724,
+              36.71915138835297
+            ],
+            [
+              10.476239916714746,
+              36.718427024594114
+            ],
+            [
+              10.477111330539024,
+              36.71740343336878
+            ],
+            [
+              10.477930319990778,
+              36.71638048182476
+            ],
+            [
+              10.478646098814355,
+              36.71544320831421
+            ],
+            [
+              10.47931109099243,
+              36.71459096095546
+            ],
+            [
+              10.480130022169016,
+              36.713567995126745
+            ],
+            [
+              10.480641031783934,
+              36.71288645214754
+            ],
+            [
+              10.48150989005784,
+              36.71173625987585
+            ],
+            [
+              10.482174819429673,
+              36.71088399385109
+            ],
+            [
+              10.482788953770132,
+              36.71011675972374
+            ],
+            [
+              10.483299104792138,
+              36.709393015800075
+            ],
+            [
+              10.483861642377555,
+              36.708668614480885
+            ],
+            [
+              10.484270236532835,
+              36.708114930865584
+            ],
+            [
+              10.484677197652623,
+              36.707476862008654
+            ],
+            [
+              10.485082524584433,
+              36.70675441150579
+            ],
+            [
+              10.485641761629362,
+              36.705861245281916
+            ],
+            [
+              10.485843196277377,
+              36.70543673698115
+            ],
+            [
+              10.486199366177337,
+              36.704883696158014
+            ],
+            [
+              10.48645481736967,
+              36.70454291087704
+            ],
+            [
+              10.486809349677147,
+              36.70390549159709
+            ],
+            [
+              10.486960824757785,
+              36.70360820140923
+            ],
+            [
+              10.487367740830765,
+              36.7029701239211
+            ],
+            [
+              10.487673942482663,
+              36.70254430621227
+            ],
+            [
+              10.487723073834047,
+              36.70237489224231
+            ],
+            [
+              10.487826226864764,
+              36.70228920514292
+            ],
+            [
+              10.487980955981644,
+              36.70216067433362
+            ],
+            [
+              10.488291228074946,
+              36.70194580228122
+            ],
+            [
+              10.488549107209769,
+              36.70173158319441
+            ],
+            [
+              10.488961701965499,
+              36.70138883165581
+            ],
+            [
+              10.489117243292515,
+              36.701302493142485
+            ],
+            [
+              10.489271152361372,
+              36.70113177059779
+            ],
+            [
+              10.489475003368648,
+              36.70083382336582
+            ],
+            [
+              10.489781185067196,
+              36.70040799696534
+            ],
+            [
+              10.490034973440082,
+              36.699982824194215
+            ],
+            [
+              10.490337066601008,
+              36.69934604941106
+            ],
+            [
+              10.490387823215785,
+              36.699261014675294
+            ],
+            [
+              10.490741483164506,
+              36.69858139071841
+            ],
+            [
+              10.490841361116454,
+              36.69832694424129
+            ],
+            [
+              10.49109105305708,
+              36.69769081876085
+            ],
+            [
+              10.49124168320553,
+              36.69735133335302
+            ],
+            [
+              10.491292437574844,
+              36.6972662982561
+            ],
+            [
+              10.491343191834824,
+              36.6971812631389
+            ],
+            [
+              10.491390678239036,
+              36.696927471104935
+            ],
+            [
+              10.491440615204628,
+              36.6968002458301
+            ],
+            [
+              10.49143979823144,
+              36.696758055711236
+            ],
+            [
+              10.491491369010564,
+              36.69671521065389
+            ],
+            [
+              10.491542939732481,
+              36.69667236557521
+            ],
+            [
+              10.491595327451101,
+              36.69667171059196
+            ],
+            [
+              10.491540488661656,
+              36.69654579522086
+            ],
+            [
+              10.491538037606114,
+              36.696419224863675
+            ],
+            [
+              10.491537220590995,
+              36.696377034743975
+            ],
+            [
+              10.491585522916228,
+              36.69616542916958
+            ],
+            [
+              10.491582254792286,
+              36.695996668685375
+            ],
+            [
+              10.49163300801177,
+              36.6959116370292
+            ],
+            [
+              10.491734513984268,
+              36.69574156650388
+            ],
+            [
+              10.491784449678956,
+              36.69561434109045
+            ],
+            [
+              10.491834385215608,
+              36.69548711565716
+            ],
+            [
+              10.491885137768815,
+              36.69540208032426
+            ],
+            [
+              10.491882686250129,
+              36.69527550996259
+            ],
+            [
+              10.49188105191283,
+              36.69519112971993
+            ],
+            [
+              10.491880234746732,
+              36.69514893959812
+            ],
+            [
+              10.491879417582329,
+              36.69510674947599
+            ],
+            [
+              10.491878600419627,
+              36.69506455935354
+            ],
+            [
+              10.49192853547564,
+              36.694937333880944
+            ],
+            [
+              10.491926901108313,
+              36.69485295363523
+            ],
+            [
+              10.491976018754656,
+              36.69468353801961
+            ],
+            [
+              10.49202513626692,
+              36.69451412595999
+            ],
+            [
+              10.492075070685544,
+              36.69438689685201
+            ],
+            [
+              10.492174939256522,
+              36.69413244930464
+            ],
+            [
+              10.492276441815767,
+              36.693962378347955
+            ],
+            [
+              10.492325558191384,
+              36.693792962593776
+            ],
+            [
+              10.492373848090955,
+              36.69358135680721
+            ],
+            [
+              10.492419703363469,
+              36.69324318397965
+            ],
+            [
+              10.492467992712307,
+              36.69303157814961
+            ],
+            [
+              10.492466357868622,
+              36.692947197897595
+            ],
+            [
+              10.492516290699303,
+              36.69281997218758
+            ],
+            [
+              10.49256295351697,
+              36.69252398595035
+            ],
+            [
+              10.49256050114356,
+              36.69239741556653
+            ],
+            [
+              10.492558048785442,
+              36.692270845179884
+            ],
+            [
+              10.492443470770699,
+              36.69176587423702
+            ],
+            [
+              10.4924402013633,
+              36.69159711726993
+            ],
+            [
+              10.492437749273632,
+              36.69147054685927
+            ],
+            [
+              10.492432027790537,
+              36.691175215890055
+            ],
+            [
+              10.492522900138104,
+              36.69045667647805
+            ],
+            [
+              10.492569561818373,
+              36.69016069015745
+            ],
+            [
+              10.49261377095597,
+              36.68973813337501
+            ],
+            [
+              10.492708727503313,
+              36.68923054090115
+            ],
+            [
+              10.492752935591902,
+              36.688807987608506
+            ],
+            [
+              10.492848707781448,
+              36.68834258514533
+            ],
+            [
+              10.492940391348135,
+              36.687666235402574
+            ],
+            [
+              10.49293385122401,
+              36.687328714154965
+            ],
+            [
+              10.492974787215331,
+              36.68673739648463
+            ],
+            [
+              10.493010000220094,
+              36.685850751177675
+            ],
+            [
+              10.492996102925654,
+              36.68513352188206
+            ],
+            [
+              10.49303622038184,
+              36.6845000138413
+            ],
+            [
+              10.493031315528574,
+              36.68424687278366
+            ],
+            [
+              10.49297239679149,
+              36.68391000677305
+            ],
+            [
+              10.492956048635309,
+              36.683066206671135
+            ],
+            [
+              10.49298880950117,
+              36.6820529902941
+            ],
+            [
+              10.493015848354881,
+              36.68074443877564
+            ],
+            [
+              10.493011761655355,
+              36.68053349133582
+            ],
+            [
+              10.492951211860984,
+              36.68011224820636
+            ],
+            [
+              10.492835834884463,
+              36.679565086078746
+            ],
+            [
+              10.49282847993104,
+              36.67918537413796
+            ],
+            [
+              10.492822759506835,
+              36.678890042610796
+            ],
+            [
+              10.49281540479802,
+              36.678510330624604
+            ],
+            [
+              10.492856339453187,
+              36.67791901580866
+            ],
+            [
+              10.492898907957121,
+              36.67741207781718
+            ],
+            [
+              10.492943110497555,
+              36.676989523818946
+            ],
+            [
+              10.492809762690548,
+              36.675514179594146
+            ],
+            [
+              10.492724708311473,
+              36.67382722833271
+            ],
+            [
+              10.49264537718657,
+              36.67243560477477
+            ],
+            [
+              10.492566866758711,
+              36.6710861782161
+            ],
+            [
+              10.492437623895155,
+              36.66982178679489
+            ],
+            [
+              10.492313285533363,
+              36.66881052953485
+            ],
+            [
+              10.492189767408203,
+              36.66784146221489
+            ],
+            [
+              10.492184868294348,
+              36.66758832034983
+            ],
+            [
+              10.491989275381135,
+              36.66830817472884
+            ],
+            [
+              10.491733963314315,
+              36.66864897062973
+            ],
+            [
+              10.490490988247535,
+              36.66938191064404
+            ],
+            [
+              10.487327399601648,
+              36.67102499489931
+            ],
+            [
+              10.486857693089826,
+              36.67111524928431
+            ],
+            [
+              10.485655610281057,
+              36.67125682242081
+            ],
+            [
+              10.484615518758549,
+              36.67164957147117
+            ],
+            [
+              10.483742265508424,
+              36.67254663651266
+            ],
+            [
+              10.481227951736573,
+              36.67527870322574
+            ],
+            [
+              10.4797712138591,
+              36.67580317959138
+            ],
+            [
+              10.478522334079809,
+              36.67624066552459
+            ],
+            [
+              10.477640870076046,
+              36.676715789867536
+            ],
+            [
+              10.476188128770707,
+              36.67745117600277
+            ],
+            [
+              10.47312945711999,
+              36.67913479324585
+            ],
+            [
+              10.471942530513624,
+              36.68007785257817
+            ],
+            [
+              10.469366326312995,
+              36.68234622592588
+            ],
+            [
+              10.467666762599798,
+              36.68388635530062
+            ],
+            [
+              10.465706841988343,
+              36.685514067415646
+            ],
+            [
+              10.462922346861994,
+              36.68786926252284
+            ],
+            [
+              10.459846175656464,
+              36.68866654899119
+            ],
+            [
+              10.458701741351328,
+              36.68910254768545
+            ],
+            [
+              10.458130315542688,
+              36.689362732046334
+            ],
+            [
+              10.457715238757848,
+              36.6895788066587
+            ],
+            [
+              10.457143810501412,
+              36.68983898993669
+            ],
+            [
+              10.456986658809523,
+              36.68984090903526
+            ],
+            [
+              10.456619173726162,
+              36.689803195295276
+            ],
+            [
+              10.456147718714352,
+              36.68980894988696
+            ],
+            [
+              10.454731763892408,
+              36.68974182068006
+            ],
+            [
+              10.453680109629532,
+              36.689543635014395
+            ],
+            [
+              10.45278560701383,
+              36.6893435266606
+            ],
+            [
+              10.451731577530575,
+              36.689018754350414
+            ],
+            [
+              10.450571991188172,
+              36.68865305171794
+            ],
+            [
+              10.449204475214394,
+              36.68837426806133
+            ],
+            [
+              10.445942476065513,
+              36.68765423051939
+            ],
+            [
+              10.443943239461358,
+              36.687214233312694
+            ],
+            [
+              10.442471795846142,
+              36.68697882640394
+            ],
+            [
+              10.442054316846185,
+              36.68706827380868
+            ],
+            [
+              10.441585248292895,
+              36.68720054370652
+            ],
+            [
+              10.440289883735963,
+              36.687975798494016
+            ],
+            [
+              10.439662864217425,
+              36.6880677666585
+            ],
+            [
+              10.439297763394327,
+              36.68815657249489
+            ],
+            [
+              10.438562823232889,
+              36.68808103389179
+            ],
+            [
+              10.438142970518774,
+              36.68804389423632
+            ],
+            [
+              10.437881059354126,
+              36.68804705063709
+            ],
+            [
+              10.43761914370716,
+              36.688050206515506
+            ],
+            [
+              10.43600628036646,
+              36.68866043721161
+            ],
+            [
+              10.435434777614393,
+              36.688920514232535
+            ],
+            [
+              10.4352815566027,
+              36.689133360809414
+            ],
+            [
+              10.435083024407001,
+              36.68972655833816
+            ],
+            [
+              10.434843892521767,
+              36.69095325036916
+            ],
+            [
+              10.4346024007699,
+              36.692053368112326
+            ],
+            [
+              10.434371112172222,
+              36.69370197122918
+            ],
+            [
+              10.434178847215508,
+              36.69463269335745
+            ],
+            [
+              10.43413352994426,
+              36.69501304397568
+            ],
+            [
+              10.434192988610599,
+              36.695392131595526
+            ],
+            [
+              10.434088997817193,
+              36.6954355821975
+            ],
+            [
+              10.43377623929278,
+              36.695523742255986
+            ],
+            [
+              10.431633812238825,
+              36.69584487263982
+            ],
+            [
+              10.42824186253632,
+              36.69660293512681
+            ],
+            [
+              10.427980698989765,
+              36.69664825816667
+            ],
+            [
+              10.42521500970955,
+              36.69727213597468
+            ],
+            [
+              10.422813661868876,
+              36.69776500358498
+            ],
+            [
+              10.419943103716331,
+              36.698390006452094
+            ],
+            [
+              10.419734321552585,
+              36.698434691663955
+            ],
+            [
+              10.418376053450103,
+              36.698661849662685
+            ],
+            [
+              10.41780208744743,
+              36.698795273575506
+            ],
+            [
+              10.416966164460085,
+              36.69893180599871
+            ],
+            [
+              10.414980737022551,
+              36.69925077328312
+            ],
+            [
+              10.41231652596016,
+              36.69970434284938
+            ],
+            [
+              10.412107733185909,
+              36.69974901486985
+            ],
+            [
+              10.409548270111044,
+              36.70020128654769
+            ],
+            [
+              10.407615941213582,
+              36.70056170491825
+            ],
+            [
+              10.407355521936019,
+              36.70064917845378
+            ],
+            [
+              10.407250737193365,
+              36.70065041437929
+            ],
+            [
+              10.406937153832972,
+              36.70069631327371
+            ],
+            [
+              10.406675962521783,
+              36.70074159367295
+            ],
+            [
+              10.406101959014439,
+              36.700874958300965
+            ],
+            [
+              10.405265990211987,
+              36.701011409421625
+            ],
+            [
+              10.40484762092087,
+              36.70105854051243
+            ],
+            [
+              10.404742834399196,
+              36.70105977425552
+            ],
+            [
+              10.404640357904869,
+              36.70118757944587
+            ],
+            [
+              10.404642666907659,
+              36.701314154571755
+            ],
+            [
+              10.404697370002525,
+              36.70144011286587
+            ],
+            [
+              10.40469813970674,
+              36.701482304571975
+            ],
+            [
+              10.404751301324703,
+              36.70152387945003
+            ],
+            [
+              10.404753610537599,
+              36.70165045456272
+            ],
+            [
+              10.404807543185091,
+              36.70173422110099
+            ],
+            [
+              10.404861477062452,
+              36.70181798759813
+            ],
+            [
+              10.404916948512087,
+              36.701986137490785
+            ],
+            [
+              10.405024044867774,
+              36.70211147866906
+            ],
+            [
+              10.405077978143483,
+              36.702195245065354
+            ],
+            [
+              10.405292171212082,
+              36.70244592700671
+            ],
+            [
+              10.405665858934272,
+              36.702821328263276
+            ],
+            [
+              10.405824580180091,
+              36.7029038597037
+            ],
+            [
+              10.405931678195376,
+              36.70302920000089
+            ],
+            [
+              10.406091942285638,
+              36.70319611439337
+            ],
+            [
+              10.406412470339351,
+              36.70352994249904
+            ],
+            [
+              10.40657273652404,
+              36.70369685618602
+            ],
+            [
+              10.407054310270903,
+              36.70423978390354
+            ],
+            [
+              10.407161413283669,
+              36.7043651229714
+            ],
+            [
+              10.407428786709996,
+              36.70465737435872
+            ],
+            [
+              10.407534348228356,
+              36.70469832979294
+            ],
+            [
+              10.407898797136436,
+              36.70456742751831
+            ],
+            [
+              10.408368808630588,
+              36.704477478817495
+            ],
+            [
+              10.408999089918067,
+              36.70455443855459
+            ],
+            [
+              10.409368944143703,
+              36.70471887302762
+            ],
+            [
+              10.40947373209247,
+              36.70471763514677
+            ],
+            [
+              10.409738797698152,
+              36.70488330633933
+            ],
+            [
+              10.410164141426764,
+              36.70521588191199
+            ],
+            [
+              10.410271248584971,
+              36.70534121805035
+            ],
+            [
+              10.410432299789697,
+              36.70555031780548
+            ],
+            [
+              10.410593351878871,
+              36.70575941731685
+            ],
+            [
+              10.41081298609809,
+              36.70630542593368
+            ],
+            [
+              10.41081994480534,
+              36.70668514996678
+            ],
+            [
+              10.410823810810069,
+              36.706896107751966
+            ],
+            [
+              10.410775280179251,
+              36.70710768512473
+            ],
+            [
+              10.410725202976405,
+              36.70723487936546
+            ],
+            [
+              10.410622728762377,
+              36.70736269311796
+            ],
+            [
+              10.410520254212893,
+              36.707490506786826
+            ],
+            [
+              10.410417006259951,
+              36.7075761252372
+            ],
+            [
+              10.410313758143541,
+              36.70766174717789
+            ],
+            [
+              10.410366930404228,
+              36.707703319310326
+            ],
+            [
+              10.410740666443692,
+              36.70807870683939
+            ],
+            [
+              10.411062010779387,
+              36.70845471280865
+            ],
+            [
+              10.41122229517663,
+              36.70862161969204
+            ],
+            [
+              10.411757878517342,
+              36.70924828981155
+            ],
+            [
+              10.412402136297919,
+              36.71008467777054
+            ],
+            [
+              10.412617150871693,
+              36.710377536714084
+            ],
+            [
+              10.412830616000173,
+              36.710586008683926
+            ],
+            [
+              10.41304563585675,
+              36.710878866738206
+            ],
+            [
+              10.413151208814481,
+              36.71091981690221
+            ],
+            [
+              10.413940294671072,
+              36.71107926994557
+            ],
+            [
+              10.414203064107415,
+              36.7111183559768
+            ],
+            [
+              10.414834955707123,
+              36.71127966634676
+            ],
+            [
+              10.415414452557757,
+              36.711441594974
+            ],
+            [
+              10.415941549925865,
+              36.71160414268341
+            ],
+            [
+              10.416575003997758,
+              36.71184982287598
+            ],
+            [
+              10.416475639522686,
+              36.712146407159175
+            ],
+            [
+              10.416326979630083,
+              36.712612379139934
+            ],
+            [
+              10.416175212816347,
+              36.71290958527682
+            ],
+            [
+              10.416178317962684,
+              36.71307834736198
+            ],
+            [
+              10.41612746991203,
+              36.71316335222952
+            ],
+            [
+              10.416184528464413,
+              36.7134158786695
+            ],
+            [
+              10.416186857429187,
+              36.71354245290465
+            ],
+            [
+              10.41624003470514,
+              36.71358402224437
+            ],
+            [
+              10.41624081106021,
+              36.71362621365418
+            ],
+            [
+              10.416623925846284,
+              36.714507874319764
+            ],
+            [
+              10.416679431681292,
+              36.71467601764863
+            ],
+            [
+              10.416179484219702,
+              36.71599016917925
+            ],
+            [
+              10.416130187087354,
+              36.7161595568361
+            ],
+            [
+              10.416027710616008,
+              36.71628737511908
+            ],
+            [
+              10.417133605102531,
+              36.71656964707502
+            ],
+            [
+              10.417552828713069,
+              36.71656466618093
+            ],
+            [
+              10.417920424423558,
+              36.71660249807235
+            ],
+            [
+              10.418130813733212,
+              36.71664219777622
+            ],
+            [
+              10.418605549247781,
+              36.7168053556105
+            ],
+            [
+              10.41902632974473,
+              36.71688474860086
+            ],
+            [
+              10.419500290310879,
+              36.717005711457105
+            ],
+            [
+              10.419921851256566,
+              36.71712729613124
+            ],
+            [
+              10.420290229247458,
+              36.71720731192818
+            ],
+            [
+              10.420343413488212,
+              36.717248879280845
+            ],
+            [
+              10.420396593343028,
+              36.71729044666109
+            ],
+            [
+              10.420501400086351,
+              36.71728919868214
+            ],
+            [
+              10.420606985670377,
+              36.717330141914545
+            ],
+            [
+              10.42076419584948,
+              36.71732826963191
+            ],
+            [
+              10.420922182813056,
+              36.71736858846575
+            ],
+            [
+              10.420974588448269,
+              36.71736796422883
+            ],
+            [
+              10.421026991860252,
+              36.7173673399953
+            ],
+            [
+              10.421131798679376,
+              36.717366091459056
+            ],
+            [
+              10.421184199864902,
+              36.71736546718282
+            ],
+            [
+              10.421289006674332,
+              36.717364218508216
+            ],
+            [
+              10.421342189327975,
+              36.71740578542594
+            ],
+            [
+              10.421395372038901,
+              36.71744735231836
+            ],
+            [
+              10.421447775495242,
+              36.71744672789845
+            ],
+            [
+              10.421500178949966,
+              36.71744610345545
+            ],
+            [
+              10.421604985854568,
+              36.7174448545003
+            ],
+            [
+              10.421658168730874,
+              36.71748642127137
+            ],
+            [
+              10.421710572207772,
+              36.71748579673518
+            ],
+            [
+              10.421763755168385,
+              36.717527363456945
+            ],
+            [
+              10.421869341715613,
+              36.717568305546145
+            ],
+            [
+              10.42197414654781,
+              36.7175670562889
+            ],
+            [
+              10.422078955816778,
+              36.717565806886434
+            ],
+            [
+              10.422341750988851,
+              36.71760487433929
+            ],
+            [
+              10.422499741500566,
+              36.71764519102026
+            ],
+            [
+              10.42265773217119,
+              36.71768550748764
+            ],
+            [
+              10.422763317164309,
+              36.71772644879409
+            ],
+            [
+              10.422868126613894,
+              36.71772519869215
+            ],
+            [
+              10.422973713989158,
+              36.717766139781574
+            ],
+            [
+              10.423026115404497,
+              36.71776551468867
+            ],
+            [
+              10.423131702914876,
+              36.71780645563464
+            ],
+            [
+              10.423289694221118,
+              36.71784677124759
+            ],
+            [
+              10.423447685686266,
+              36.71788708664696
+            ],
+            [
+              10.42371126533575,
+              36.71796834225186
+            ],
+            [
+              10.423869257253813,
+              36.71800865708053
+            ],
+            [
+              10.424132835514516,
+              36.71808991175796
+            ],
+            [
+              10.424291608771485,
+              36.718172417245945
+            ],
+            [
+              10.424449601322697,
+              36.71821272771099
+            ],
+            [
+              10.424554409134451,
+              36.718211476136666
+            ],
+            [
+              10.424659998095667,
+              36.718252419268936
+            ],
+            [
+              10.424764803730117,
+              36.71825116753474
+            ],
+            [
+              10.424817209877366,
+              36.71825054159326
+            ],
+            [
+              10.424870392719429,
+              36.71829210332416
+            ],
+            [
+              10.424922796670439,
+              36.718291477362136
+            ],
+            [
+              10.424975981884655,
+              36.718333042593336
+            ],
+            [
+              10.425081571159593,
+              36.71837398176611
+            ],
+            [
+              10.425187160544235,
+              36.71841492084248
+            ],
+            [
+              10.425292750038588,
+              36.71845585982248
+            ],
+            [
+              10.425449962191573,
+              36.718453981302225
+            ],
+            [
+              10.425554770285464,
+              36.7184527288401
+            ],
+            [
+              10.425607174329977,
+              36.71845210257444
+            ],
+            [
+              10.425817572221401,
+              36.71849178848086
+            ],
+            [
+              10.425923162138366,
+              36.718532726891404
+            ],
+            [
+              10.426081156280887,
+              36.71857303872947
+            ],
+            [
+              10.42618674644266,
+              36.718613976900144
+            ],
+            [
+              10.42639714059928,
+              36.718653661817854
+            ],
+            [
+              10.426554353079766,
+              36.71865178183037
+            ],
+            [
+              10.426711565545656,
+              36.71864990163534
+            ],
+            [
+              10.426816373848139,
+              36.71864864805668
+            ],
+            [
+              10.42686956030747,
+              36.71869021241167
+            ],
+            [
+              10.426921964483299,
+              36.71868958556372
+            ],
+            [
+              10.42702677283009,
+              36.718688331798646
+            ],
+            [
+              10.427183985338107,
+              36.71868645097808
+            ],
+            [
+              10.427393601992755,
+              36.71868394289448
+            ],
+            [
+              10.427604001334565,
+              36.71872362560704
+            ],
+            [
+              10.427761996675638,
+              36.71876393518453
+            ],
+            [
+              10.427814396437872,
+              36.71876330799582
+            ],
+            [
+              10.427919992175578,
+              36.7188042445484
+            ],
+            [
+              10.428077200415313,
+              36.71880236259626
+            ],
+            [
+              10.428182791895606,
+              36.71884329896438
+            ],
+            [
+              10.428444813128491,
+              36.71884016159219
+            ],
+            [
+              10.428655213378029,
+              36.718879842424016
+            ],
+            [
+              10.428760021904106,
+              36.71887858712729
+            ],
+            [
+              10.42881242616471,
+              36.71887795944434
+            ],
+            [
+              10.428918018118337,
+              36.71891889514882
+            ],
+            [
+              10.42897120587027,
+              36.71896045853402
+            ],
+            [
+              10.429076798017899,
+              36.71900139409275
+            ],
+            [
+              10.42923401102337,
+              36.71899951055096
+            ],
+            [
+              10.429444412069843,
+              36.71903918996804
+            ],
+            [
+              10.429706429380532,
+              36.719036049857706
+            ],
+            [
+              10.429812022001467,
+              36.719076984752796
+            ],
+            [
+              10.42991683074247,
+              36.719075728431754
+            ],
+            [
+              10.43002242352388,
+              36.71911666313626
+            ],
+            [
+              10.430128016414985,
+              36.71915759774438
+            ],
+            [
+              10.430388469996517,
+              36.719070073845586
+            ],
+            [
+              10.434702918108703,
+              36.719946667402944
+            ],
+            [
+              10.435334132689807,
+              36.72006567519478
+            ],
+            [
+              10.437122986135988,
+              36.720423940901306
+            ],
+            [
+              10.439333465375586,
+              36.72090369046636
+            ],
+            [
+              10.440280706321769,
+              36.72110325894633
+            ],
+            [
+              10.440545103424153,
+              36.721226667502584
+            ],
+            [
+              10.441443901730976,
+              36.72163781386477
+            ],
+            [
+              10.441400189632867,
+              36.722102543334636
+            ],
+            [
+              10.443047722164403,
+              36.723306435193194
+            ],
+            [
+              10.444999451189354,
+              36.72395800982054
+            ],
+            [
+              10.448944289764647,
+              36.724669757436544
+            ],
+            [
+              10.45120656555899,
+              36.72510645807997
+            ],
+            [
+              10.453468072992601,
+              36.72550092442304
+            ],
+            [
+              10.4564141060311,
+              36.72605579216984
+            ],
+            [
+              10.459362575482796,
+              36.72673715043581
+            ],
+            [
+              10.460152707999136,
+              36.72693848148426
+            ],
+            [
+              10.461154889356973,
+              36.727263810535575
+            ],
+            [
+              10.461787808044884,
+              36.72746705650963
+            ],
+            [
+              10.462107872452279,
+              36.727758535320945
+            ],
+            [
+              10.462110277999013,
+              36.727885106692526
+            ],
+            [
+              10.461955458911016,
+              36.7280136053762
+            ],
+            [
+              10.46206588669974,
+              36.728307653730376
+            ],
+            [
+              10.46243676616283,
+              36.728514108075316
+            ],
+            [
+              10.462650417101894,
+              36.72872248953242
+            ],
+            [
+              10.462706838287415,
+              36.728932798976444
+            ],
+            [
+              10.462971296865845,
+              36.729056156153554
+            ],
+            [
+              10.463655842524492,
+              36.72921655122492
+            ],
+            [
+              10.464711272711508,
+              36.729583396520844
+            ],
+            [
+              10.466401282408881,
+              36.73023783340976
+            ],
+            [
+              10.46676494226332,
+              36.73006456054394
+            ],
+            [
+              10.467635805652383,
+              36.728998848154816
+            ],
+            [
+              10.46901864667305,
+              36.7272938135733
+            ],
+            [
+              10.469940244484023,
+              36.72614305905527
+            ],
+            [
+              10.470760226112473,
+              36.725162344446
+            ],
+            [
+              10.471477785089188,
+              36.72430948867784
+            ],
+            [
+              10.47209133177405,
+              36.72350011626133
+            ],
+            [
+              10.472654882335705,
+              36.72281795880578
+            ],
+            [
+              10.473424005378268,
+              36.721922254476254
+            ],
+            [
+              10.474089917882301,
+              36.72111222494003
+            ],
+            [
+              10.474755816491882,
+              36.72030218830662
+            ],
+            [
+              10.475677238220724,
+              36.71915138835297
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "skippedRedSectorPaths": [
+    {
+      "index": 406,
+      "reason": "disconnected native subpaths"
+    },
+    {
+      "index": 407,
+      "reason": "open native path"
+    },
+    {
+      "index": 408,
+      "reason": "disconnected native subpaths"
+    },
+    {
+      "index": 409,
+      "reason": "disconnected native subpaths"
+    },
+    {
+      "index": 411,
+      "reason": "open native path"
+    },
+    {
+      "index": 412,
+      "reason": "disconnected native subpaths"
+    },
+    {
+      "index": 413,
+      "reason": "disconnected native subpaths"
+    }
+  ],
+  "selectedTargetRingIndex": 410,
+  "wholeSectorComparisonForScopeOnly": {
+    "originalSourceAreaSquareMeters": 42194322.70903011,
+    "officialNativeAreaSquareMeters": 26068865.410751764,
+    "intersectionOverUnion": 0.4337200970823309,
+    "nativeGainSquareMeters": 5418309.81157121,
+    "nativeLossSquareMeters": 21543767.109849576
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_soliman_sector_building_context.py",
+    "sha256": "342f123d7dbc79cb52abc56420cc8020eb4aa074f6c042927b18ac4f806bed2f"
+  }
+}

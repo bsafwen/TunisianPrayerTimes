@@ -1,0 +1,237 @@
+{
+  "status": "DESIGN_REQUIRES_TWO_PRESERVATION_SAFEGUARDS_BEFORE_IMPLEMENTATION",
+  "scope": "Independent bounded design/source-contract review; no compiler execution, generation, stage, live mutation, phone, ledger, tests or builds.",
+  "proposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-code-proof-proposal\\administrative-successor-proof-proposal-v2.json",
+    "sha256": "0c9a47d066b0bbc13de5d8ac0ebf3040ed39ee6ae267d83563cc41d2ef6cb369",
+    "bytes": 65962
+  },
+  "urbanScopeReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-urban-scope-review.json",
+    "sha256": "a52991b8d6905534f87552ddcfb4bffe94b821fffe50b6d12c89a9cbac090a59",
+    "bytes": 36753
+  },
+  "compiler": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+    "bytes": 473357
+  },
+  "historicalProposalEpoch": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-el-borma-display-import\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "5e464382bdc6755f74b45abe4f22cbc4a0ea925ffec04d746fc8bab38a4a0ad4",
+      "bytes": 1883642
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-el-borma-display-import\\repo\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "a1fa872f824c9032856ca66f38f30a2d5d69aa769a9d9463014b6379bda57b94",
+      "bytes": 275518
+    },
+    "decisions": 167
+  },
+  "currentObservedEpoch": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "2fbbba54e692016f910df1c20f149d6e01b72990fd4ae61a0d266ecbd85f0ab1",
+      "bytes": 1883638
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "db243ff335c30f833ce78b23d3d7d380931c1de2fa67c8c8583cf48ef61d52f6",
+      "bytes": 277520
+    },
+    "decisions": 168,
+    "qualification": "Post-El Borma installed epoch. Seven Beni Mhira raw rows and all eight finite curation bindings remain exact. This observation does not rebind or approve the historical proposal as an executable stage."
+  },
+  "verifiedInputs": {
+    "cache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    },
+    "registry": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "boundaries": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+      "bytes": 80850
+    }
+  },
+  "identityAssessment": {
+    "status": "QUALIFIED_BROAD_TOWN_DISPLAY_IDENTITY_SUPPORTED",
+    "basis": "The authentic unqualified village identity, MEHAT approved-plan and announcement wording, and independent descriptions of two granaries near the village support a broad inhabited town named Beni Mhira. Exact cached point identity and administrative membership remain distinct claims.",
+    "limitations": [
+      "No certified urban footprint or point-to-approved-plan crosswalk was obtained. Do not merge finer old/new, school, granary or sector identities on this evidence.",
+      "MEHAT commune Smar is not proof that the current delegation is Smar. The five reviewed sector memberships and current registry establish the separate successor context 5358.",
+      "The 2026 municipality bill is proposed legislation, not an enacted municipality or boundary. No new polygon, administrative source ID, legal boundary or source-code rewrite is justified.",
+      "PDF/image observations in the source report remain their author/root reviews; this design pass checked exact referenced bytes and required UTF-8 text, without re-rendering the PDFs."
+    ]
+  },
+  "verifiedFiniteFacts": {
+    "rawRecordCount": 7,
+    "sourceStateCount": 9,
+    "sectorCount": 5,
+    "protectedRawIds": [
+      "osm:node:1980186910",
+      "osm:node:5239666199",
+      "osm:relation:7143818",
+      "osm:relation:7143819",
+      "osm:relation:7143820",
+      "osm:relation:7143821",
+      "osm:relation:7143822"
+    ],
+    "originalEffectiveSourceTagsKindsGeometryExact": true,
+    "rawMetadataAndPackedGeometryExactAcrossHistoricalAndCurrentEpoch": true,
+    "sourceProviderTransitionOnly": {
+      "original": null,
+      "effective": "osm"
+    },
+    "fiveCurationObjectsExact": true,
+    "allCurrentOfficial5358RegistrySectorsCovered": true,
+    "actual5358DelegationSourceAbsent": true,
+    "localAcceptedBoundaryReplacementCount": 0,
+    "historicalSmarSectorsOutsideSuccessorSet": [
+      {
+        "id": "osm:relation:7143861",
+        "code": "535351",
+        "name": "كرشاو"
+      },
+      {
+        "id": "osm:relation:7143870",
+        "code": "535353",
+        "name": "الغر ياني"
+      },
+      {
+        "id": "osm:relation:7143872",
+        "code": "535352",
+        "name": "الصمار"
+      }
+    ],
+    "coveredSourceNodes": [
+      {
+        "id": "osm:node:1980186910",
+        "tags": {
+          "addr:city": "Bir Morra",
+          "name": "بئر مرة",
+          "name:aeb": "بئر مرة",
+          "name:ar": "بئر مرة",
+          "name:en": "Bir Morra",
+          "name:fr": "Bir Morra",
+          "place": "hamlet"
+        },
+        "lat": 32.8145833,
+        "lng": 11.0933403,
+        "coveringReviewedSectorIds": [
+          "osm:relation:7143821"
+        ],
+        "rawPresent": true,
+        "currentDirectCuration": null
+      },
+      {
+        "id": "osm:node:5239666199",
+        "tags": {
+          "name": "Beni Mhira",
+          "name:ar": "بني مهيرة",
+          "name:fr": "Beni Mhira",
+          "place": "village"
+        },
+        "lat": 32.8634378,
+        "lng": 10.8172175,
+        "coveringReviewedSectorIds": [
+          "osm:relation:7143819"
+        ],
+        "rawPresent": true,
+        "currentDirectCuration": null
+      },
+      {
+        "id": "osm:node:9022801628",
+        "tags": {
+          "name": "قصر عون",
+          "name:aeb": "قصر عون",
+          "name:ar": "قصر عون",
+          "name:fr": "Ksar Aoun",
+          "place": "village"
+        },
+        "lat": 32.869559,
+        "lng": 10.8838257,
+        "coveringReviewedSectorIds": [
+          "osm:relation:7143820"
+        ],
+        "rawPresent": false,
+        "currentDirectCuration": null,
+        "pointGeometrySha256": "400e21744de7d507c8a531b26e38b43076761b07bd798df8646272f5b867d488",
+        "sourceStateProvider": {
+          "original": null,
+          "effective": "osm"
+        },
+        "matchingSourceSectorName": "قصر عون"
+      }
+    ]
+  },
+  "requiredChanges": [
+    {
+      "id": "complete-generated-administrative-raw-closure",
+      "priority": "required-before-implementation",
+      "problem": "The supplied independentPointIds and supplied protectedRawRecords can omit Bir Morra together. Their mutual equality and exact groups for the remaining supplied rows do not prove a complete dependency set. Existing final verification iterates supplied rows/groups only.",
+      "derivationPredicate": "sorted(row['id'] for row in ALL_GENERATED_RAW_FEATURES if row.get('governorateId') == 351 and (row.get('parentName') == 'معتمدية بني مهيرة' or 'معتمدية بني مهيرة' in row.get('contextAliases', [])))",
+      "predicateBinding": "Use governor 351 from the exact reviewed Tataouine base/source context and the exact administrative parent marker from all five independently validated operative administrative_context records. Do not use delegationId (a prayer reference) or arbitrary supplied independent-point IDs to select the universe.",
+      "expectedIds": [
+        "osm:node:1980186910",
+        "osm:node:5239666199",
+        "osm:relation:7143818",
+        "osm:relation:7143819",
+        "osm:relation:7143820",
+        "osm:relation:7143821",
+        "osm:relation:7143822"
+      ],
+      "requiredEnforcement": "Derive this set from the entire baseline raw catalog and again from the entire generated raw feature set, including polygon and point rows. Require exact equality with the full protected set and historical/source-derived expectation. Continue exact per-record metadata/packed geometry and complete group verification; only the candidate pickerGroupId may change.",
+      "compilerImplication": "Pass a validated, branch-specific closure descriptor to verify_reviewed_town_preservation and perform this complete-set derivation there. The proposal statement that the final verifier needs no change is not sufficient."
+    },
+    {
+      "id": "absorbed-ksar-aoun-source-point-preservation",
+      "priority": "required-before-implementation",
+      "problem": "The complete cached-point scan of the five retained sectors includes Ksar Aoun node9022801628. It is absent from raw metadata and picker ownership, has no direct curation, and is not in the proposal. Reappearance must not be silently permitted by a proof that claims preserved local selection scope.",
+      "exactSourceOnlyFact": {
+        "id": "osm:node:9022801628",
+        "tags": {
+          "name": "قصر عون",
+          "name:aeb": "قصر عون",
+          "name:ar": "قصر عون",
+          "name:fr": "Ksar Aoun",
+          "place": "village"
+        },
+        "lat": 32.869559,
+        "lng": 10.8838257,
+        "coveringReviewedSectorIds": [
+          "osm:relation:7143820"
+        ],
+        "rawPresent": false,
+        "currentDirectCuration": null,
+        "pointGeometrySha256": "400e21744de7d507c8a531b26e38b43076761b07bd798df8646272f5b867d488",
+        "sourceStateProvider": {
+          "original": null,
+          "effective": "osm"
+        },
+        "matchingSourceSectorName": "قصر عون"
+      },
+      "requiredEnforcement": "Pin this separate source-only point in original/effective phases with exact tags, coordinates, kind, geometry hash and null direct curation; preserve its absorption into the same-name retained sector7143820. Require its ID absent from all final raw IDs, group keys/members and base ownership. Do not create a fake raw row, restore it, or insert it into the ordinary sourceStates = protectedRawRecords union contexts set.",
+      "compilerImplication": "Add a narrowly scoped source-only-absence descriptor to the successor branch and carry it into final verification. Preserve the existing nine-state common contract."
+    }
+  ],
+  "existingDesignRequirementsToRetain": [
+    "Five-row bijection to all current registry sectors, exact untouched old source codes/Arabic names and exact operative parent-only curation records. Preserve the three other historical Smar sectors.",
+    "Actual historical governor/delegation contexts and explicit global absence of a successor delegation source in both phases; no fabricated context or geometry union.",
+    "Complete original/effective source-name peers and active prior-picker dependency scan at the eventual stage epoch, as already listed as unfinished stage facts.",
+    "Exact authentic cached-point version, original source bytes and honest derived PDF-text provenance; valid relative paths when staged.",
+    "All ordinary proof branches retain current behavior; nearest-reference, raw-coordinate, source-ID, packed-geometry and final group guards remain operative."
+  ],
+  "nextStep": "Revise the proposal with these two safeguards, then rebind finite proof inputs to the post-El Borma epoch before any implementation or source stage. This report authorizes no product mutation.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-design-independent-review\\review_design.py",
+    "sha256": "bee48a2eabaa14bbb3a7df5fe398d558e80fb3ecf81935376456af6df9049585",
+    "bytes": 13900
+  }
+}

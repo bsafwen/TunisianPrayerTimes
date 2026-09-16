@@ -1,0 +1,857 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUNDED_DEPENDENCY_REVIEW_COMPLETE_NO_MIGRATION_OR_STAGE",
+  "createdAt": "2026-09-12T09:24:13.298090+00:00",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "c588e5ef055fd90d27e8a9c73a35c33f3fbdffe9ec04a43f1f931d9930a44fea"
+  },
+  "curation": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "sha256": "1a883d2d29dde512cfadc87a010515de0ec6152eb793b3254956d848b0062c80"
+  },
+  "generator": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738"
+  },
+  "sourceIdentityReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\metouia-town-point-source-review.json",
+    "sha256": "01f445a84f52ea7adc67971c529bd4a663937c30727d6a6e707d00fea87cdccb"
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\exact-metouia-town-source-facts.json",
+    "sha256": "6d6ff31fca3ca562be8b3f3b82690d5a8b3563c98aebbeee75a161a76ed52ea1",
+    "bytes": 47544
+  },
+  "referenceDiscovery": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\spelling-proof-reference-discovery.json",
+    "sha256": "fb982188fc625dacb323671408542f9863b30c29601f1df0f968ef26f4b04104"
+  },
+  "currentProofScope": {
+    "roots": [
+      "catalog-curation.json",
+      "reviewed-picker-groups.json"
+    ],
+    "loadedDocuments": 296,
+    "edges": 2610,
+    "historicalLiteralDocuments": 7,
+    "currentlyEnforcedTargetRecordPinsRequiringMigration": 0,
+    "qualification": "Followed only current matching structured references within the installed source directory; phone/ledger filenames, outside paths and stale historical pins were explicitly not followed. Matched documents are individually classified below."
+  },
+  "exactOfficialSpellings": [
+    {
+      "id": "osm:relation:7145440",
+      "officialCode": "515552",
+      "currentArabic": "المطورية الجنوبية",
+      "officialArabic": "المطوية الجنوبية",
+      "difference": "Current source/raw text has an extra ر after و. The raw town parentName and contextAliases inherit this text."
+    },
+    {
+      "id": "osm:relation:7145441",
+      "officialCode": "515551",
+      "currentArabic": "المطويةالشمالية",
+      "officialArabic": "المطوية الشمالية",
+      "difference": "Current source/raw text omits the space before الشمالية."
+    }
+  ],
+  "currentRawLiteralConsumers": [
+    {
+      "id": "osm:relation:7145440",
+      "kind": "sector",
+      "name": "المطورية الجنوبية",
+      "currentRaw": {
+        "id": "osm:relation:7145440",
+        "sourceId": "osm",
+        "name": "المطورية الجنوبية",
+        "aliases": [
+          "El Metouia Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.945385,
+        "lng": 9.972873,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.910928,
+          33.911945,
+          10.026282,
+          33.975615
+        ],
+        "areaKm2": 41.15208843364106,
+        "pickerGroupId": "osm:relation:7145440",
+        "offset": 2414272,
+        "length": 2220
+      },
+      "literalNameConsumers": [
+        {
+          "field": "name",
+          "before": "المطورية الجنوبية",
+          "spellingReplacement": "المطوية الجنوبية"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7145441",
+      "kind": "sector",
+      "name": "المطويةالشمالية",
+      "currentRaw": {
+        "id": "osm:relation:7145441",
+        "sourceId": "osm",
+        "name": "المطويةالشمالية",
+        "aliases": [
+          "El Metouia Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المطوية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "Métouia",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 34.030415,
+        "lng": 10.015376,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.980391,
+          33.940825,
+          10.057294,
+          34.119475
+        ],
+        "areaKm2": 69.34537911106504,
+        "pickerGroupId": "osm:relation:7145441",
+        "offset": 2416492,
+        "length": 6364
+      },
+      "literalNameConsumers": [
+        {
+          "field": "name",
+          "before": "المطويةالشمالية",
+          "spellingReplacement": "المطوية الشمالية"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:702435654",
+      "kind": "quarter",
+      "name": "حي النسيم",
+      "currentRaw": {
+        "id": "osm:way:702435654",
+        "sourceId": "osm",
+        "name": "حي النسيم",
+        "aliases": [
+          "Cité Ennasim",
+          "Hay Ennasim"
+        ],
+        "kind": "quarter",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.955051,
+        "lng": 10.009311,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          10.007498,
+          33.952856,
+          10.010887,
+          33.957405
+        ],
+        "areaKm2": 0.10171421408783443,
+        "pickerGroupId": "osm:way:702435654",
+        "offset": 5433048,
+        "length": 108
+      },
+      "literalNameConsumers": [
+        {
+          "field": "parentName",
+          "before": "المطورية الجنوبية",
+          "spellingReplacement": "المطوية الجنوبية"
+        },
+        {
+          "field": "contextAliases",
+          "before": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطورية الجنوبية",
+            "معتمدية المطوية"
+          ],
+          "spellingReplacement": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطوية الجنوبية",
+            "معتمدية المطوية"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:way:702443179",
+      "kind": "residential",
+      "name": "Cité El Chobbéne",
+      "currentRaw": {
+        "id": "osm:way:702443179",
+        "sourceId": "osm",
+        "name": "Cité El Chobbéne",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.95786,
+        "lng": 10.000527,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.997544,
+          33.956121,
+          10.002003,
+          33.959351
+        ],
+        "areaKm2": 0.07787829534534803,
+        "pickerGroupId": "osm:way:702443179",
+        "offset": 5433156,
+        "length": 140
+      },
+      "literalNameConsumers": [
+        {
+          "field": "parentName",
+          "before": "المطورية الجنوبية",
+          "spellingReplacement": "المطوية الجنوبية"
+        },
+        {
+          "field": "contextAliases",
+          "before": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطورية الجنوبية",
+            "معتمدية المطوية"
+          ],
+          "spellingReplacement": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطوية الجنوبية",
+            "معتمدية المطوية"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:way:702443180",
+      "kind": "residential",
+      "name": "Cité Nkhilet Farhat",
+      "currentRaw": {
+        "id": "osm:way:702443180",
+        "sourceId": "osm",
+        "name": "Cité Nkhilet Farhat",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.956331,
+        "lng": 9.994136,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.991622,
+          33.953585,
+          9.995727,
+          33.960022
+        ],
+        "areaKm2": 0.1187347248319156,
+        "pickerGroupId": "osm:way:702443180",
+        "offset": 5433296,
+        "length": 140
+      },
+      "literalNameConsumers": [
+        {
+          "field": "parentName",
+          "before": "المطورية الجنوبية",
+          "spellingReplacement": "المطوية الجنوبية"
+        },
+        {
+          "field": "contextAliases",
+          "before": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطورية الجنوبية",
+            "معتمدية المطوية"
+          ],
+          "spellingReplacement": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطوية الجنوبية",
+            "معتمدية المطوية"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:way:702645420",
+      "kind": "residential",
+      "name": "Cité Aouinet (ZONE 7)",
+      "currentRaw": {
+        "id": "osm:way:702645420",
+        "sourceId": "osm",
+        "name": "Cité Aouinet (ZONE 7)",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطويةالشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطويةالشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.992505,
+        "lng": 10.003232,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          10.000998,
+          33.988868,
+          10.006234,
+          33.995424
+        ],
+        "areaKm2": 0.20452138398472722,
+        "pickerGroupId": "osm:way:702645420",
+        "offset": 5433584,
+        "length": 116
+      },
+      "literalNameConsumers": [
+        {
+          "field": "parentName",
+          "before": "المطويةالشمالية",
+          "spellingReplacement": "المطوية الشمالية"
+        },
+        {
+          "field": "contextAliases",
+          "before": [
+            "Délégation El Metouia",
+            "El Metouia Nord",
+            "Métouia",
+            "المطويةالشمالية",
+            "معتمدية المطوية"
+          ],
+          "spellingReplacement": [
+            "Délégation El Metouia",
+            "El Metouia Nord",
+            "Métouia",
+            "المطوية الشمالية",
+            "معتمدية المطوية"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:way:718891995",
+      "kind": "residential",
+      "name": "Cité Essouk",
+      "currentRaw": {
+        "id": "osm:way:718891995",
+        "sourceId": "osm",
+        "name": "Cité Essouk",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المطويةالشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطويةالشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.961545,
+        "lng": 9.997292,
+        "delegationId": 1025,
+        "hasBoundary": true,
+        "bbox": [
+          9.993342,
+          33.959176,
+          10.002587,
+          33.963139
+        ],
+        "areaKm2": 0.1574656509403327,
+        "pickerGroupId": "osm:way:718891995",
+        "offset": 5433932,
+        "length": 84
+      },
+      "literalNameConsumers": [
+        {
+          "field": "parentName",
+          "before": "المطويةالشمالية",
+          "spellingReplacement": "المطوية الشمالية"
+        },
+        {
+          "field": "contextAliases",
+          "before": [
+            "Délégation El Metouia",
+            "El Metouia Nord",
+            "Métouia",
+            "المطويةالشمالية",
+            "معتمدية المطوية"
+          ],
+          "spellingReplacement": [
+            "Délégation El Metouia",
+            "El Metouia Nord",
+            "Métouia",
+            "المطوية الشمالية",
+            "معتمدية المطوية"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:node:2235474650",
+      "kind": "village",
+      "name": "العوينات",
+      "currentRaw": {
+        "id": "osm:node:2235474650",
+        "sourceId": "osm",
+        "name": "العوينات",
+        "aliases": [
+          "El Aouinet"
+        ],
+        "kind": "village",
+        "parentName": "المطويةالشمالية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Nord",
+          "Métouia",
+          "المطويةالشمالية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.9925089,
+        "lng": 10.0014394,
+        "delegationId": 1025,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2235474650"
+      },
+      "literalNameConsumers": [
+        {
+          "field": "parentName",
+          "before": "المطويةالشمالية",
+          "spellingReplacement": "المطوية الشمالية"
+        },
+        {
+          "field": "contextAliases",
+          "before": [
+            "Délégation El Metouia",
+            "El Metouia Nord",
+            "Métouia",
+            "المطويةالشمالية",
+            "معتمدية المطوية"
+          ],
+          "spellingReplacement": [
+            "Délégation El Metouia",
+            "El Metouia Nord",
+            "Métouia",
+            "المطوية الشمالية",
+            "معتمدية المطوية"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:node:559400503",
+      "kind": "village",
+      "name": "المطوية",
+      "currentRaw": {
+        "id": "osm:node:559400503",
+        "sourceId": "osm",
+        "name": "المطوية",
+        "aliases": [
+          "Métouia"
+        ],
+        "kind": "village",
+        "parentName": "المطورية الجنوبية",
+        "contextAliases": [
+          "Délégation El Metouia",
+          "El Metouia Sud",
+          "Métouia",
+          "المطورية الجنوبية",
+          "معتمدية المطوية"
+        ],
+        "governorateId": 347,
+        "lat": 33.9589064,
+        "lng": 10.0014342,
+        "delegationId": 1025,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:559400503"
+      },
+      "literalNameConsumers": [
+        {
+          "field": "parentName",
+          "before": "المطورية الجنوبية",
+          "spellingReplacement": "المطوية الجنوبية"
+        },
+        {
+          "field": "contextAliases",
+          "before": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطورية الجنوبية",
+            "معتمدية المطوية"
+          ],
+          "spellingReplacement": [
+            "Délégation El Metouia",
+            "El Metouia Sud",
+            "Métouia",
+            "المطوية الجنوبية",
+            "معتمدية المطوية"
+          ]
+        }
+      ]
+    }
+  ],
+  "consumerCounts": {
+    "south": {
+      "rawRows": 5,
+      "fields": 9,
+      "ids": [
+        "osm:node:559400503",
+        "osm:relation:7145440",
+        "osm:way:702435654",
+        "osm:way:702443179",
+        "osm:way:702443180"
+      ]
+    },
+    "north": {
+      "rawRows": 4,
+      "fields": 7,
+      "ids": [
+        "osm:node:2235474650",
+        "osm:relation:7145441",
+        "osm:way:702645420",
+        "osm:way:718891995"
+      ]
+    },
+    "both": {
+      "rawRows": 9,
+      "fields": 16
+    }
+  },
+  "consumerQualification": "These are exact current string consumers and literal replacement projections, not a generated diff or authorization for other field changes. A guarded generation must verify full actual output, grouping and packed geometry if a correction is implemented.",
+  "existingReferenceClassifications": [
+    {
+      "file": "direct-pbf-source-facts.json",
+      "sha256": "ec3f10fea74bebd597211981cf729d4d2c073b8d117477c0e4e31483d5f0a878",
+      "firstRootChain": [
+        {
+          "owner": "catalog-curation.json",
+          "field": "$.decisions[102].evidence[0].reviewFiles[0]",
+          "target": "reviews/held12-el-aroussa-translation-review.json"
+        },
+        {
+          "owner": "reviews/held12-el-aroussa-translation-review.json",
+          "field": "$.sourceFacts",
+          "target": "direct-pbf-source-facts.json"
+        }
+      ],
+      "literalPaths": [
+        "$.administrativeCodeClaims.515551[0]",
+        "$.administrativeCodeClaims.515552[0]"
+      ],
+      "classification": "Original source code-to-ID inventory, immutable",
+      "whyNoMigration": "The matching literals are IDs under515551/515552 administrative code claims. A name_tags spelling correction keeps both IDs/codes and original cache bytes unchanged; these claims remain true and require no migration.",
+      "engineLinesInspected": [
+        4044
+      ],
+      "action": "preserve_exact_bytes"
+    },
+    {
+      "file": "locality-context-reviews/haf-direct-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "firstRootChain": [
+        {
+          "owner": "catalog-curation.json",
+          "field": "$.decisions[106].reviewEvidence",
+          "target": "locality-context-reviews/haf-three-context-proof.json"
+        },
+        {
+          "owner": "locality-context-reviews/haf-three-context-proof.json",
+          "field": "$.sourceFacts",
+          "target": "locality-context-reviews/haf-direct-pbf-source-facts.json"
+        }
+      ],
+      "literalPaths": [
+        "$.administrativeCodeClaims.515551[0]",
+        "$.administrativeCodeClaims.515552[0]"
+      ],
+      "classification": "Original source code-to-ID inventory, immutable",
+      "whyNoMigration": "The matching literals are IDs under515551/515552 administrative code claims. A name_tags spelling correction keeps both IDs/codes and original cache bytes unchanged; these claims remain true and require no migration.",
+      "engineLinesInspected": [
+        4044
+      ],
+      "action": "preserve_exact_bytes"
+    },
+    {
+      "file": "point-retention-reviews/before-neighborhoods.json",
+      "sha256": "40c6c980d63ba97f987739dca2046846e47245865d953f0af2271461a5ae82d0",
+      "firstRootChain": [
+        {
+          "owner": "catalog-curation.json",
+          "field": "$.decisions[109].pointRetentionReview",
+          "target": "point-retention-reviews/chenini-saved-point-retention-review.json"
+        },
+        {
+          "owner": "point-retention-reviews/chenini-saved-point-retention-review.json",
+          "field": "$.baselineMetadata",
+          "target": "point-retention-reviews/before-neighborhoods.json"
+        }
+      ],
+      "literalPaths": [
+        "$.features[1151].id",
+        "$.features[1151].name",
+        "$.features[1151].pickerGroupId",
+        "$.features[1152].id",
+        "$.features[1152].name",
+        "$.features[1152].pickerGroupId",
+        "$.features[2641].parentName",
+        "$.features[2641].contextAliases[3]",
+        "$.features[2642].parentName",
+        "$.features[2642].contextAliases[3]",
+        "$.features[2643].parentName",
+        "$.features[2643].contextAliases[3]",
+        "$.features[2645].parentName",
+        "$.features[2645].contextAliases[3]",
+        "$.features[2648].parentName",
+        "$.features[2648].contextAliases[3]",
+        "$.features[3144].parentName",
+        "$.features[3144].contextAliases[3]",
+        "$.features[3317].parentName",
+        "$.features[3317].contextAliases[3]"
+      ],
+      "classification": "Historical full baseline metadata, immutable",
+      "whyNoMigration": "Current Chenini point-retention reader loads this exact old snapshot, then selects its two expressly listed Chenini point/sector records. Métouia rows are historical unselected entries; the snapshot does not enforce current Métouia spellings.",
+      "engineLinesInspected": [
+        670,
+        692,
+        697,
+        698
+      ],
+      "action": "preserve_exact_bytes"
+    },
+    {
+      "file": "ksar-two-patch-reviews/direct-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "firstRootChain": [
+        {
+          "owner": "reviewed-picker-groups.json",
+          "field": "$.localRecords[7].sourceFacts",
+          "target": "ksar-two-patch-reviews/ksar-two-patch-current-facts.json"
+        },
+        {
+          "owner": "ksar-two-patch-reviews/ksar-two-patch-current-facts.json",
+          "field": "$.originalSourceFacts",
+          "target": "ksar-two-patch-reviews/direct-pbf-source-facts.json"
+        }
+      ],
+      "literalPaths": [
+        "$.administrativeCodeClaims.515551[0]",
+        "$.administrativeCodeClaims.515552[0]"
+      ],
+      "classification": "Original source code-to-ID inventory, immutable",
+      "whyNoMigration": "The matching literals are IDs under515551/515552 administrative code claims. A name_tags spelling correction keeps both IDs/codes and original cache bytes unchanged; these claims remain true and require no migration.",
+      "engineLinesInspected": [
+        4044
+      ],
+      "action": "preserve_exact_bytes"
+    },
+    {
+      "file": "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+      "sha256": "e4cc69298d1dfc61d0d0ff691e7de635f052e5d713dcac91b383c15b7d93d197",
+      "firstRootChain": [
+        {
+          "owner": "reviewed-picker-groups.json",
+          "field": "$.distinctPairs[0].reviewEvidence",
+          "target": "picker-distinct-reviews/medina-old-town-distinct-choices.json"
+        },
+        {
+          "owner": "picker-distinct-reviews/medina-old-town-distinct-choices.json",
+          "field": "$.evidence[1]",
+          "target": "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json"
+        }
+      ],
+      "literalPaths": [
+        "$.allMetadataChangesIncludingOffsets[581].id",
+        "$.allMetadataChangesIncludingOffsets[582].id"
+      ],
+      "classification": "Historical generated-change report, immutable",
+      "whyNoMigration": "The Métouia IDs occur only in historical all-changed-fields/offset report rows. They are not current per-sector tags, metadata, source-state or curation bindings.",
+      "engineLinesInspected": [],
+      "action": "preserve_exact_bytes"
+    },
+    {
+      "file": "official/chenini-two-choice-staged-data-independent-review.json",
+      "sha256": "56121c5cfb3ea4c02df6156f80138f969f921ac989a0ebfff2dd06e43b927fe7",
+      "firstRootChain": [
+        {
+          "owner": "catalog-curation.json",
+          "field": "$.decisions[151].evidence[0]",
+          "target": "exclusion-reviews/diplomatic-residence-two/reviewed-two-property-exclusion-proof.json"
+        },
+        {
+          "owner": "exclusion-reviews/diplomatic-residence-two/reviewed-two-property-exclusion-proof.json",
+          "field": "$.independentSourceAndDependencyReview",
+          "target": "exclusion-reviews/diplomatic-residence-two/diplomatic-residence-two-source-dependency-independent-review-v2.json"
+        },
+        {
+          "owner": "exclusion-reviews/diplomatic-residence-two/diplomatic-residence-two-source-dependency-independent-review-v2.json",
+          "field": "$.activeDependencyReview.allInstalledJsonLiteralTargetReferences[0]",
+          "target": "official/chenini-two-choice-staged-data-independent-review.json"
+        }
+      ],
+      "literalPaths": [
+        "$.allChangedFieldsIncludingOffsets[137].id",
+        "$.allChangedFieldsIncludingOffsets[138].id"
+      ],
+      "classification": "Historical generated-change report, immutable",
+      "whyNoMigration": "The Métouia IDs occur only in historical all-changed-fields/offset report rows. They are not current per-sector tags, metadata, source-state or curation bindings.",
+      "engineLinesInspected": [],
+      "action": "preserve_exact_bytes"
+    },
+    {
+      "file": "touil-reviews/original-pbf-source-facts.json",
+      "sha256": "af3c9b4ab4f86dd6834f9e921bb4e64ccce45af6d629b6e2c63581ce858f0a41",
+      "firstRootChain": [
+        {
+          "owner": "reviewed-picker-groups.json",
+          "field": "$.additionalLocalReviewEvidence[4]",
+          "target": "reviewed-touil-locality-group-evidence.json"
+        },
+        {
+          "owner": "reviewed-touil-locality-group-evidence.json",
+          "field": "$.sourceFacts",
+          "target": "touil-reviews/source-facts.json"
+        },
+        {
+          "owner": "touil-reviews/source-facts.json",
+          "field": "$.sourceEvidence[0]",
+          "target": "touil-reviews/original-pbf-source-facts.json"
+        }
+      ],
+      "literalPaths": [
+        "$.administrativeCodeClaims.515551[0]",
+        "$.administrativeCodeClaims.515552[0]"
+      ],
+      "classification": "Original source code-to-ID inventory, immutable",
+      "whyNoMigration": "The matching literals are IDs under515551/515552 administrative code claims. A name_tags spelling correction keeps both IDs/codes and original cache bytes unchanged; these claims remain true and require no migration.",
+      "engineLinesInspected": [
+        4044
+      ],
+      "action": "preserve_exact_bytes"
+    }
+  ],
+  "existingActiveReferences": {
+    "targetCurationDecisions": [],
+    "targetAcceptedBoundaryReplacements": [],
+    "targetPickerRecords": [],
+    "historicalResearchFilesToRewrite": [],
+    "existingProofWrappersToMigrate": [],
+    "preserveRelatedOuedhrefTransferDecisionIds": [
+      "osm:relation:7145422",
+      "osm:relation:7145437",
+      "osm:relation:7145442",
+      "osm:relation:7145449"
+    ]
+  },
+  "newCityProofDependency": {
+    "method": "reviewed_explicit_point_base_display_identity",
+    "extension": "townPreservationExtension",
+    "currentProtectedRawIds": [
+      "osm:node:559400503",
+      "osm:relation:7145378",
+      "osm:relation:7145440",
+      "osm:relation:7145441",
+      "osm:way:158297973"
+    ],
+    "sourceStateIds": [
+      "osm:node:559400503",
+      "osm:relation:1434956",
+      "osm:relation:7145378",
+      "osm:relation:7145411",
+      "osm:relation:7145440",
+      "osm:relation:7145441",
+      "osm:way:158297973"
+    ],
+    "officialDelegationCodes": [
+      "5155"
+    ],
+    "existingMultiMemberGroup": {
+      "groupId": "osm:relation:7145378",
+      "members": [
+        "osm:relation:7145378",
+        "osm:way:158297973"
+      ],
+      "qualification": "El Akarit sector and residential way158297973 already share one group. Preserve the entire group; plain singleton-sector proof format is insufficient."
+    },
+    "sourceNamePeerIds": [
+      "osm:node:559400503",
+      "osm:relation:7145411"
+    ],
+    "acceptedReplacements": [],
+    "currentCurationBindings": "All7 source-state records currently have no local curation; preserve the four separately recorded historical Ouedhref transfer decisions outside this current-town closure.",
+    "ifSouthCorrectedBeforeNewCityWrapper": [
+      "Add an explicit name_tags decision against exact original South sector tags; keep original source tags, ID, code and geometry unchanged.",
+      "Prepare a new, separately pinned projected source-phase fact artifact. The frozen source facts remain evidence for c588, not a claim that corrected metadata equals its old bytes.",
+      "The new wrapper must bind the South decision in curationBindings, its corrected effective tags in sourceStates, corrected South sector currentMetadata, and corrected town rawCurrent/parentName/contextAliases. Its original source state and geographic hashes remain unchanged.",
+      "The three other South child ways also consume the corrected parentName/contextAliases; include their exact9 total South metadata-field projections in the source-phase change proposal and final-output audit.",
+      "Keep the Akarit sector/residential pair intact. The existing typed town extension is needed for this5raw/7source closure.",
+      "Only after this source-name phase is explicit can the same wrapper safely authorize the single town pickerGroupId change. Do not pin the known typo as the intended corrected state."
+    ],
+    "ifNorthAlsoCorrected": "North adds its own name_tags binding/effective state/current sector metadata changes and four-row/seven-field consumer projections. Keep it explicitly scoped; a South-only correction need not claim North is fixed.",
+    "engineCapabilityQualification": "The installed townPreservationExtension already accepts nameTags-backed effective states and curationBindings. This inventory reads that contract but does not execute helpers or claim staged schema acceptance."
+  },
+  "inputPreservation": "All158 active decision bytes and296 visited JSON bytes remained unchanged during this inventory.",
+  "notPerformed": [
+    "Source or repository edits",
+    "Proof migration",
+    "Stage assembly",
+    "Generator or product helpers",
+    "Tests or build",
+    "Phone or ledger access"
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_metouia_spelling_dependencies.py",
+    "sha256": "55059e6a3c20c9aa3f4fb7828320be682917a4256d4f08fd747faf0a1a1bca47"
+  }
+}

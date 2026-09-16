@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_IDENTITY_SUPPORTED_THREE_WITH_EXPLICIT_QUALIFICATIONS; no stage or merge approval",
+  "metadataSha256": "82b8f2f4d8d716e4bc354a2f72dea37ec7df36bea4a97c2bd527917fe4a3aa6e",
+  "curationSha256": "c8524f79a16ba3b345f8ddbde8017d871b19aa1c6b2c74ebe686ff788435cd70",
+  "curationDecisions": 155,
+  "engineSha256": "411a7e03e4bd6583c4bddc2d86ed30db22d1bb842a5272fbc39c12470abc2738",
+  "candidateReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\remaining-three-settlement-point-pair-candidates.json",
+    "sha256": "01ecff36ea3d1e95259ab0943c3a4997ef4c36e07c283767db26c984f33f1b64",
+    "bytes": 15303
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\exact-three-town-source-phase-facts.json",
+    "sha256": "c44993431b48653f60a0004320a3498c477dc49e6c845e73b7b88a55ed5d012f",
+    "bytes": 162099
+  },
+  "candidateResults": [
+    {
+      "id": "osm:node:287625095",
+      "baseId": 627,
+      "label": "Jendouba",
+      "liveVersion": 30,
+      "historyVersions": 30,
+      "currentExactSourceMatchesCache": true,
+      "sectorsPreserved": 22,
+      "qualifications": [
+        "Versions1-25 are named town records. Version26 in May2025 replaced place=town with amenity=bank and moved to the current coordinate. Versions27-29 retained both town and bank; version30 removed bank. Current semantic town identity is supported, but the coordinate inherited from that edit is not certified by this review.",
+        "No assurance of surveyed center, original INM anchor or precise town boundary follows from current tags."
+      ]
+    },
+    {
+      "id": "osm:node:264881676",
+      "baseId": 484,
+      "label": "Douz",
+      "liveVersion": 24,
+      "historyVersions": 24,
+      "currentExactSourceMatchesCache": true,
+      "sectorsPreserved": 10,
+      "qualifications": [
+        "Version1 was an unnamed point; versions2-24 identify the town. Versions10-19 carried obsolete Gabes address/is_in tags; version20 removed those in2020. The current cache does not carry them, and the primary ACTE profile explicitly places the town in Kebili.",
+        "The town is not equated with either Douz North or Douz South delegation or their imadas."
+      ]
+    },
+    {
+      "id": "osm:node:1165828361",
+      "baseId": 595,
+      "label": "Jemmal",
+      "liveVersion": 18,
+      "historyVersions": 18,
+      "currentExactSourceMatchesCache": true,
+      "sectorsPreserved": 9,
+      "qualifications": [
+        "All18 versions retain a named village settlement classification. The current primary Ministry evidence calls Jemmal a town/city; this difference in size classification does not authorize changing raw kind or assigning a boundary.",
+        "The source population65420 was attributed to English Wikipedia. The retrieved PGES search extraction labels that number as delegation population, so it is not imported as town population or used as identity proof."
+      ]
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "id": "jendouba-mehat-resume-2018",
+      "placeId": "osm:node:287625095",
+      "publisher": "Tunisian Ministry of Equipment, Housing and Territorial Planning; DGAT; URAM2018",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-meliz-reference-review\\mehat-jendouba-sdad-2018.pdf",
+        "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+        "bytes": 7131225
+      },
+      "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+      "originalRetrieval": {
+        "file": "mehat-jendouba-sdad-2018.pdf",
+        "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+        "finalUrl": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/ResumePhase3SDADjendoubaJuin2018fr.pdf",
+        "retrievedAt": "2026-09-08T02:00:09.725661+00:00",
+        "statusCode": 200,
+        "sha256": "9f425934b6d63bfa0f1424d6b00d8f22d83a1e63172f06c7f819bbf147a42f7e",
+        "bytes": 7131225,
+        "contentType": "application/pdf"
+      },
+      "reviewedPages": [
+        {
+          "pdfPage": 26,
+          "printedPage": 21,
+          "finding": "Treats Essaada and Ettataouer as sectors on the periphery of the city of Jendouba."
+        },
+        {
+          "pdfPage": 33,
+          "printedPage": 27,
+          "finding": "Discusses Jendouba North and South as separate delegations and tabulates Jendouba and Jendouba North as separate administrative rows."
+        },
+        {
+          "pdfPage": 51,
+          "printedPage": 42,
+          "finding": "Proposes strengthening Jendouba as a regional city, with urban rail, economic and service functions."
+        }
+      ],
+      "limits": "The resumed report supports an inhabited city identity distinct from the two administrative delegations. No exact town perimeter, population or coordinate is imported. The larger Rapport URL supplied as a lead was not used as this cached file source."
+    },
+    {
+      "id": "douz-acte-town-profile",
+      "placeId": "osm:node:264881676",
+      "publisher": "ACTE national commune energy-transition programme implemented by ANME",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\douz-acte.html",
+        "sha256": "dc68ea69dd2526b8198f6be02744ede41e1971f284d83f94fe63f783c25f32d1",
+        "bytes": 60602
+      },
+      "url": "https://acte.tn/fr/commune/commune-douz",
+      "finding": "Explicitly identifies Douz as a city in Kebili and describes urban growth over agricultural land, oasis/tourism activity and industrial infrastructure. This identifies an inhabited city rather than merely a municipality office.",
+      "publisherSupport": {
+        "source": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\anme-acte-2023-programme-authority.pdf",
+          "sha256": "d60b99a3008293db02273942e1f5017fb02909671576c44d1f88949c8e451536",
+          "bytes": 1087460
+        },
+        "url": "https://www.anme.tn/sites/default/files/2024-10/cahier_des_charges_ao_5acte-2023.pdf",
+        "pdfPage": 6,
+        "finding": "ANME procurement documentation identifies ANME implementation of ACTE, lists Douz among pilot communes and distinguishes programme activities from municipal objects."
+      },
+      "limits": "Neither the general city profile nor programme procurement establishes Douz North/South boundaries. Those current separate sectors and contexts remain intact."
+    },
+    {
+      "id": "jemmal-mehat-city-tender-2017",
+      "placeId": "osm:node:1165828361",
+      "publisher": "Tunisian Ministry of Equipment, Housing and Territorial Planning, Urban Hydraulics Directorate",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-three-town-source-identity\\jemmal-mehat-city-floodworks-tender2017.pdf",
+        "sha256": "f92371d7554ac751bfedb3d0fd24fe7c48f7c3889c4ba1d366095769918cc933",
+        "bytes": 242375
+      },
+      "url": "https://intranet.mehat.gov.tn/geao.nsf/xsp/.ibmmodres/domino/OpenAttachment/geao.nsf/251CD8B8DD61C6F4412581670029E05A/AvisAOfr/MEHAT_DHU_AO-06_2017_Fr.pdf",
+      "pdfPage": 1,
+      "finding": "Official tender06/2017 explicitly assigns lot2 to city flood-protection works in Jemmal, alongside separate Sousse and Zeramdine city works. This establishes city identity without conflating any named imada with the whole town.",
+      "limits": "No geographical extent or delegation population is imported. The municipal PGES lead could be indexed by web search, but direct archival access timed out; it is supplementary discovery only, not a pinned PDF source."
+    }
+  ],
+  "nextRequirements": [
+    "Root phone review of each public named settlement; Jendouba needs explicit attention to the town-point edit history rather than treating the bank episode as silently absent.",
+    "Independent finite source/context/geography review for any display association, preserving41 sectors, both coordinates and current prayer mappings.",
+    "Independent readiness approval before staging any curation or generation."
+  ],
+  "actions": {
+    "liveProductWrites": false,
+    "phoneAccess": false,
+    "ledgerWrites": false,
+    "tests": false,
+    "generation": false,
+    "build": false,
+    "staging": false
+  }
+}

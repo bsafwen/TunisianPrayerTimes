@@ -1,0 +1,152 @@
+{
+  "status": "PASS",
+  "reviewType": "INDEPENDENT_EXACT_WHOLE_FILE_UNION_STATIC_REVIEW",
+  "createdAt": "2026-09-12T12:52:23.163230+00:00",
+  "inputs": {
+    "baseline": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+      "bytes": 473357
+    },
+    "beni": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-compiler-proposal\\scripts\\generate_neighborhoods.py",
+      "sha256": "0f6748f8a104321a96dae44b224808944b2a626b108fb6794f44d593c0945d2f",
+      "bytes": 490787
+    },
+    "teboursouk": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-complete-group-compiler-proposal\\scripts\\generate_neighborhoods.py",
+      "sha256": "803db69fcad9db4f5bbbec99bf6826fe79bac8a119a43a53320916e542e9e293",
+      "bytes": 481488
+    },
+    "combined": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-teboursouk-combined-compiler-proposal\\scripts\\generate_neighborhoods.py",
+      "sha256": "5680da6c22c2d39ea8f5e11c6dfe96720e04e5561d70a283abc2740c883b00a9",
+      "bytes": 498918
+    },
+    "wholeDiff": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-teboursouk-combined-compiler-proposal\\compiler.diff",
+      "sha256": "d2bcef31efe44ddba74748fd013d8c621121fe5aef13078596c11014e373380d",
+      "bytes": 36955
+    },
+    "combinationReport": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-teboursouk-combined-compiler-proposal\\combined-compiler-review.json",
+      "sha256": "402cdb3f42bcbaffa58631d68f9a06427f6d33079b1a24545082e4310b26d8f9",
+      "bytes": 16948
+    },
+    "beniIndependentReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\beni-mhira-successor-compiler-independent-review.json",
+      "sha256": "06755120d6d2c81872a76ca990845c0fb7e2edac59ed98c7b57dfaa9b9625a51",
+      "bytes": 10672
+    },
+    "teboursoukIndependentReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\teboursouk-complete-group-compiler-independent-review.json",
+      "sha256": "5cae15281bf04a7669be65a83331394a7fd8f598267e64080521bb2e3d39d30d",
+      "bytes": 6025
+    },
+    "beniSchema": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-mhira-successor-compiler-proposal\\administrative-successor-proof-proposal-v3.json",
+      "sha256": "858c42dc26fb2e476359bbccd64d064b10efc23b464e152ff93c1613dd595f6c",
+      "bytes": 72359
+    },
+    "teboursoukSchema": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-complete-group-compiler-proposal\\complete-sector-group-schema.json",
+      "sha256": "62b6aeb665b28a16aa3d75b6dd360fec8242b624b1c875d6402c9f50f908314f",
+      "bytes": 27591
+    }
+  },
+  "reviewedInputCopies": {
+    "baseline": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-teboursouk-combined-compiler-proposal\\reviewed-inputs\\baseline-generate_neighborhoods.py",
+      "sha256": "e9f91da2950357f22f8cfad94efc70a9df65940d91585e07309883d416bfd263",
+      "bytes": 473357
+    },
+    "beni": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-teboursouk-combined-compiler-proposal\\reviewed-inputs\\beni-generate_neighborhoods.py",
+      "sha256": "0f6748f8a104321a96dae44b224808944b2a626b108fb6794f44d593c0945d2f",
+      "bytes": 490787
+    },
+    "teboursouk": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\beni-teboursouk-combined-compiler-proposal\\reviewed-inputs\\teboursouk-generate_neighborhoods.py",
+      "sha256": "803db69fcad9db4f5bbbec99bf6826fe79bac8a119a43a53320916e542e9e293",
+      "bytes": 481488
+    }
+  },
+  "actionableIssues": [],
+  "independentWholeByteComparison": {
+    "method": "Read the original three source files; independently locate two unique function-region boundaries. Prove each component equals the baseline with only its own complete region replaced, prove regions are disjoint, then compare the in-memory union with every combined file byte. No producer helper, line-edit list or product code was evaluated.",
+    "allCombinedBytesEqualExpectedUnion": true,
+    "allExteriorBytesExactToBaseline": true,
+    "regions": [
+      {
+        "owner": "beni",
+        "baselineStartByte": 122691,
+        "baselineEndByteExclusive": 150473,
+        "componentRegionSha256": "e644bbaf736372637500c8902b774f16f2b1f5c83c14b8fc43f7bb813d03345c"
+      },
+      {
+        "owner": "teboursouk",
+        "baselineStartByte": 371072,
+        "baselineEndByteExclusive": 392787,
+        "componentRegionSha256": "e4d1ff1c7b9cc89b7e7fca4c3d51f715b351787f15057f89a3bb3a8f140e1efc"
+      }
+    ]
+  },
+  "independentDefinitionComparison": {
+    "definitionOwners": {
+      "validate_reviewed_administrative_successor_identity": "beni",
+      "validate_reviewed_town_preservation_extension": "beni",
+      "verify_reviewed_town_preservation": "beni",
+      "validate_residential_complete_sector_groups": "teboursouk",
+      "verify_residential_complete_sector_groups": "teboursouk",
+      "apply_reviewed_residential_display_associations": "teboursouk",
+      "verify_reviewed_city_display_associations": "teboursouk"
+    },
+    "changedExistingDefinitionCount": 4,
+    "addedDefinitionCount": 3,
+    "allSevenOwnerDefinitionsByteAndAstExact": true,
+    "allOtherDefinitionsByteAndAstExactToBaseline": true,
+    "allTopLevelNonDefinitionAstsExact": true,
+    "duplicateDefinitions": false
+  },
+  "integrationAssessment": [
+    "The changes occupy separate function families. Beni succession is validated and consumed by the town-preservation path; Téboursouk complete-sector groups are validated in the ordinary residential path and consumed in the city-display final verifier.",
+    "The unchanged main point/base validator, existing source loaders, caller ordering, timetable selection and normal proof contracts are exactly the reviewed baseline. Combining the files introduces no import, global variable, helper-name collision or new call path.",
+    "All seven modified or added function bodies are byte-exact to the already independently reviewed owners. Both earlier preservation safeguard reviews therefore retain their scope; no component logic was silently dropped or broadened during combination.",
+    "The two proposed schema inventories have disjoint raw and source IDs and distinct base targets1524 and518. This rules out a direct overlap in the supplied intended batch, but is not a substitute for the eventual current-epoch proof and whole-catalog audit."
+  ],
+  "schemaInventorySeparation": {
+    "beniProtectedRawCount": 7,
+    "teboursoukProtectedRawCount": 12,
+    "sharedRawIds": [],
+    "sharedSourceIds": [],
+    "baseTargets": [
+      1524,
+      518
+    ]
+  },
+  "teboursoukReviewChronology": "The combination producer truthfully referenced the earlier collaboration result at freeze time. This independent union review additionally pins the subsequently frozen formal5cae1528 report; the producer report was not rewritten.",
+  "limitations": [
+    "Static source bytes/AST and schema separation only. Neither component nor combined compiler was imported or executed, and no generator, test or build ran.",
+    "The candidate5680 remains isolated; the live compiler was rechecked as e9f91. No installed implementation or source-stage approval is implied.",
+    "Original schema/source-review epochs are preserved. Root reports subsequent Sidi metadata28fb; this union check performs no new live catalog carry and does not relabel the old2fbb facts.",
+    "Future source stages still require truthful relative evidence/provenance relocation, current catalog/dependency pins, independent stage review, and authorized isolated generation plus actual-data validation."
+  ],
+  "notPerformed": [
+    "combination authoring",
+    "component or combined source mutation",
+    "product import or execution",
+    "source stage",
+    "generator",
+    "tests",
+    "build",
+    "phone",
+    "ledger",
+    "live repository writes"
+  ],
+  "reviewerAlsoAuthoredCombination": false,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_beni_teboursouk_combined_compiler_independent.py",
+    "sha256": "bd4b76e758202190f1467e05a228c22d306f8d273485c011673a68e365a1d518",
+    "bytes": 11148
+  }
+}

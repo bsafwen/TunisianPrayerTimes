@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sourceReport": {
+    "file": "residential-base-display-reviews/sidi-el-hani-2026-09/teboursouk-sidi-hani-metlaoui-area-source-review.json",
+    "sha256": "53932012a157d295552d9ed9bea1ca147b71bf300cbb37747569a37d331f69df"
+  },
+  "sourceReviewRecordSelector": [
+    "sourceRecords",
+    0
+  ],
+  "originalResponseRefs": {
+    "current": {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/osm-way-96369466-current.json",
+      "sha256": "faa27b2f300c621f9af901541a3237f3880191a8d02ec62357d7d9dd2db5c429"
+    },
+    "history": {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/osm-way-96369466-history.json",
+      "sha256": "f629afd04694885b01e2c299b6257cdcec041c4f0e9301d16b7cbb5830f9ee3e"
+    },
+    "full": {
+      "file": "residential-base-display-reviews/teboursouk-complete-group-2026-09/osm-way-96369466-full.json",
+      "sha256": "f69da25422398f1d387401c082e9f76585bb2210aa6fd067d9784b60ad4c40cd"
+    }
+  },
+  "originalResponsePathsAndHashes": {
+    "current": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-96369466-current.json",
+      "sha256": "faa27b2f300c621f9af901541a3237f3880191a8d02ec62357d7d9dd2db5c429",
+      "bytes": 3382
+    },
+    "history": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-96369466-history.json",
+      "sha256": "f629afd04694885b01e2c299b6257cdcec041c4f0e9301d16b7cbb5830f9ee3e",
+      "bytes": 31737
+    },
+    "full": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\osm-way-96369466-full.json",
+      "sha256": "f69da25422398f1d387401c082e9f76585bb2210aa6fd067d9784b60ad4c40cd",
+      "bytes": 41037
+    }
+  },
+  "originalRetrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\retrieval-manifest.json",
+      "sha256": "89e171faf61a1a85a331966a48f527928df04f238061c5f4116dfe61ea54a740",
+      "bytes": 22145
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\teboursouk-sidi-hani-metlaoui-area-source-review\\supplement-retrieval-manifest.json",
+      "sha256": "6107b8ce17b58890b8600cd83fd0e706adf0a9fb92da35e8dc2078b5b684768d",
+      "bytes": 11826
+    }
+  ],
+  "exactSourceVersion": {
+    "type": "way",
+    "id": 96369466,
+    "version": 15,
+    "timestamp": "2025-06-11T13:17:10Z",
+    "changeset": 167491482,
+    "tags": {
+      "addr:city": "تبرسق",
+      "addr:city:ar": "تبرسق",
+      "addr:postcode": "9040",
+      "landuse": "residential",
+      "name": "تبرسق",
+      "name:ar": "تبرسق",
+      "name:azb": "تبرسق",
+      "name:en": "Téboursouk",
+      "name:fa": "تبرسق",
+      "name:fr": "Téboursouk",
+      "wikidata": "Q1890362",
+      "wikimedia_commons": "Category:Téboursouk",
+      "wikipedia": "ar:تبرسق",
+      "wikipedia:ar": "تبرسق"
+    }
+  },
+  "sourceGeometryParity": {
+    "method": "Construct Polygon from authentic full response ordered way node references and exact lon/lat values; assert cached source is a single-component MultiPolygon without holes, then compare its single Polygon using Shapely normalize().equals_exact(...,0) plus complete topology equality. No rounding, simplification, clipping, coordinate replacement or product helper.",
+    "shapelyVersion": "2.1.2",
+    "exactAfterRingNormalization": true,
+    "topologicallyEqual": true,
+    "valid": true,
+    "sourceBounds": [
+      9.2313274,
+      36.443317,
+      9.2672154,
+      36.4719066
+    ],
+    "originalGeometrySha256": "5060d7ba08c71066e76680a12c231ebc752bcf61656cc03d8dcdab09e2b43503"
+  },
+  "qualification": "Original current/history/full way response bytes were relocated exactly. The absorbed town point is retained extraction evidence, not a fabricated or converted public node response."
+}

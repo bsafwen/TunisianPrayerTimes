@@ -1,0 +1,36 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-12T18:52:49.912962+00:00",
+  "query": "Résidence Sourour Aouina",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Résidence Sourour, 88 شارع خالد ابن الوليد"
+  ],
+  "publicUiText": [
+    "Résidence Sourour",
+    "88 Av. Khaled Ibn El Walid، 2045، تونس‎",
+    "L'Univers-des-viandes-BBQ",
+    "3,9 نجمة (85)",
+    "مطعم",
+    "حي الواحات",
+    "3,5 نجمة (6)",
+    "مبنى سكني",
+    "الاتجاهات إلى Résidence Sourour, 88 شارع خالد ابن الوليد",
+    "الاتجاهات",
+    "الدليل",
+    "مشاركة Résidence Sourour",
+    "مشاركة",
+    "حفظ Résidence Sourour في القوائم",
+    "حفظ",
+    "نظرة عامة",
+    "إغلاق",
+    "Résidence Sourour Aouina",
+    "محو"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "Résidence Sourour"
+  ],
+  "screenshot": "osm_way_525479443-1.png",
+  "boundaryVerified": false
+}

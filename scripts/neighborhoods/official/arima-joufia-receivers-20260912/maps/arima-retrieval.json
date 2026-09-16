@@ -1,0 +1,45 @@
+{
+  "key": "arima",
+  "currentRawId": "osm:relation:7100361",
+  "currentCode": "156053",
+  "officialName": "العريمة",
+  "officialRegistryRow": {
+    "governorateCode": "15",
+    "governorateFr": "Nabeul",
+    "governorateAr": "نابل",
+    "delegationCode": "1560",
+    "delegationFr": "Takelsa",
+    "delegationAr": "تاكلسة",
+    "sectorCode": "156053",
+    "sectorFr": "El arima",
+    "sectorAr": "العريمة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13295,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 532,
+      "Nombre_de_menages_par_Secteurs.xlsx": 531
+    }
+  },
+  "officialIndexEntry": {
+    "text": "العريمة.pdf",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/تاكلسة/العريمة.pdf",
+    "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/تاكلسة/العريمة.pdf"
+  },
+  "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9.pdf",
+  "effectiveUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9.pdf",
+  "retrievedAt": "2026-09-12T17:21:31.264945+00:00",
+  "exitCode": 0,
+  "httpStatus": "200",
+  "response": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.pdf",
+    "sha256": "6411d48b0acb4b3cffde4c17d52004deb54fbb93d5fd0a6922aec2842dd55a6b",
+    "bytes": 1404326
+  },
+  "headers": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/arima-joufia-receiving-own-map-source-review/arima.headers",
+    "sha256": "036555b1be91dce05e55490b965f9d6e04d287b998fccf8b4ef8453947c0679e",
+    "bytes": 560
+  },
+  "stderr": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\n                                 Dload  Upload  Total   Spent   Left   Speed\n\n  0      0   0      0   0      0      0      0                              0\n100  1.33M 100  1.33M   0      0  4.71M      0                              0\n100  1.33M 100  1.33M   0      0  4.71M      0                              0\n100  1.33M 100  1.33M   0      0  4.71M      0                              0\n",
+  "sourceByteProvenance": "Exact HTTP response body; curl decodes HTTP compression only. No document conversion or geometry alteration.",
+  "success": true
+}

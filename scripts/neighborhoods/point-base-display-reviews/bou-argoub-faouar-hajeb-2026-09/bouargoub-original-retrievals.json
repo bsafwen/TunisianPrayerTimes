@@ -1,0 +1,53 @@
+{
+  "records": [
+    {
+      "name": "osm-node-1190878345-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1190878345.json",
+      "attemptedAt": "2026-09-12T09:57:52.179654+00:00",
+      "status": 200,
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1190878345.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 615,
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\osm-node-1190878345-current.json",
+      "sha256": "150723df61be020e28f56a2945106c22fb9b7b655f7e30ea25239794a750f73a",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "name": "osm-node-1190878345-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1190878345/history.json",
+      "attemptedAt": "2026-09-12T09:57:52.180650+00:00",
+      "status": 200,
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/1190878345/history.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 3324,
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\osm-node-1190878345-history.json",
+      "sha256": "6a86ea35510109a194eb8d07550598eaf62665c254cf01421d4fea0c5eb900e4",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "name": "municipal-city-brief.html",
+      "url": "https://www.commune-bouargoub.gov.tn/index.php?Itemid=132&id=18&lang=ar&option=com_content&view=article",
+      "attemptedAt": "2026-09-12T09:57:52.181663+00:00",
+      "status": 200,
+      "resolvedUrl": "https://www.commune-bouargoub.gov.tn/index.php?Itemid=132&id=18&lang=ar&option=com_content&view=article",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 53498,
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\municipal-city-brief.html",
+      "sha256": "da118e28e881d8bd8569a50b924e1d9502573366f339b42c08b2a6bc60f33321",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "name": "municipal-city-public-notices.html",
+      "url": "https://www.commune-bouargoub.gov.tn/index.php?Itemid=447&id=11&lang=ar&option=com_content&view=category",
+      "attemptedAt": "2026-09-12T09:57:52.182649+00:00",
+      "status": 200,
+      "resolvedUrl": "https://www.commune-bouargoub.gov.tn/index.php?Itemid=447&id=11&lang=ar&option=com_content&view=category",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 60769,
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bou-argoub-town-point-source-review\\municipal-city-public-notices.html",
+      "sha256": "9bf83223d9ffc680274da0015f04710e87a00f11c023014e612ed2aabfd93838",
+      "originalResponseBytesPreserved": true
+    }
+  ],
+  "method": "Public HTTP GET; saved exact response content bytes without conversion. A successful HTTP status alone is not accepted as proof of substantive page content."
+}

@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_exact_institution_property_exclusion",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "558c204bf93b595d340d75102848f25c8321e3117150bcb809874901b2a181b2",
+  "generatorSha256": "0c034835cb50d6a979dd6d890c1f0be062607227186850c8e19793f767642c4d",
+  "independentSourceAndFiniteReview": {
+    "file": "exclusion-reviews/sos-monastery-two-2026-09/two-institution-exclusion-independent-source-impact-review.json",
+    "sha256": "e8376534cda86ebfe4e8efeea28a2d980a62a734e80d3694bb1dbe7d7c32d28a",
+    "bytes": 26399
+  },
+  "researchProvenance": {
+    "sourceReviewTitle": "institutional-locality-three-candidate-triage-20260912.json",
+    "sourceReviewSha256": "97980a66fc2e5ca246dd47316ea0e421494520d687da0db92c7990f002969437",
+    "exactFactsTitle": "exact-current-source-footprint-facts.json",
+    "exactFactsSha256": "fe3d2dd9ccc0a09290a00d257c134a22f74c89f5f94017633deab9362f4bba83",
+    "primaryRetrievalSha256": "481931e43eeb5d7e20fcef57da3e9734d59518c053171ae737414ba998633b99",
+    "osmRetrievalSha256": "d6c698f3c215141320387c5aa91964b634aefbfcb272a3083960dd98244a59d2"
+  },
+  "supplementaryPublicMapsReview": {
+    "reportTitle": "institutional-phone-scope-review-20260912.json",
+    "reportSha256": "daf69b0cb06f6fe8fff7194a5ed7f591def27b6a9e64257bbfb12cca08b9a7df",
+    "observations": [
+      {
+        "id": "osm:way:150833156",
+        "query": "36.903789,10.300283",
+        "qualifiedFinding": "Named institutional POI corroborated: Village d Enfants SOS de Gammarth, categorized as an orphanage. Exact coordinate query is request provenance; Maps selected a POI and does not certify the source footprint or current activities."
+      },
+      {
+        "id": "osm:way:89023459",
+        "query": "Monastère Charles de Foucauld La Marsa Tunisie",
+        "qualifiedFinding": "Named Saint Charles de Foucauld Monastery POI, categorized as a church, shown near Sidi Dhrif station. Corroborates the particular institution in the source and archdiocese records, without certifying the whole property polygon."
+      }
+    ],
+    "qualification": "Root personally reviewed these public POI views. No Google polygon, current occupancy, parcel identity or boundary certification is inferred. Other inconclusive/foreign results are excluded."
+  },
+  "records": [
+    {
+      "id": "osm:way:150833156",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "amenity": "community_centre",
+        "barrier": "wall",
+        "check_date": "2024-03-24",
+        "landuse": "residential",
+        "name": "Village d'Enfants SOS Gammarth",
+        "name:fr": "Village d'Enfants SOS Gammarth"
+      },
+      "currentRaw": {
+        "id": "osm:way:150833156",
+        "sourceId": "osm",
+        "name": "Village d'Enfants SOS Gammarth",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "lat": 36.903789,
+        "lng": 10.300283,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "bbox": [
+          10.299105,
+          36.902949,
+          10.301461,
+          36.904608
+        ],
+        "areaKm2": 0.019972039241661226,
+        "pickerGroupId": "osm:way:150833156",
+        "offset": 5242380,
+        "length": 84
+      },
+      "currentWholeRawRecordSha256": "ff9d0fa721a39b5f57a655ffe2fb574a504ebb6df635be73abcf423a0d1f372f",
+      "currentRawRecordHashConvention": "Canonical UTF-8 JSON, ensure_ascii=False, sorted keys and compact separators.",
+      "completeCurrentRawGroup": [
+        "osm:way:150833156"
+      ],
+      "cachedGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.2991047,
+                36.9037377
+              ],
+              [
+                10.3008339,
+                36.9029494
+              ],
+              [
+                10.301219,
+                36.9034822
+              ],
+              [
+                10.301461,
+                36.9038393
+              ],
+              [
+                10.3012418,
+                36.9039343
+              ],
+              [
+                10.3010561,
+                36.9040171
+              ],
+              [
+                10.3004999,
+                36.9042616
+              ],
+              [
+                10.299711,
+                36.9046079
+              ],
+              [
+                10.2991047,
+                36.9037377
+              ]
+            ]
+          ]
+        ]
+      },
+      "cachedGeometryJsonSha256": "0777217ae76fa6f622b67947522270f7e956cec9ef11bd7da9b39a5dd24b91ea",
+      "packedGeometrySha256": "3e688373e91005b09f71e303b59b689b0dd1fff5bb2ceee74fc5c3d0678e17c2",
+      "packedBytes": 84,
+      "currentWay": {
+        "file": "exclusion-reviews/sos-monastery-two-2026-09/way-150833156-current.json",
+        "sha256": "7a8837d6048e236609aab85e8f0238009a8903927074b3b45a6ce4378a57a601",
+        "bytes": 696,
+        "url": "https://api.openstreetmap.org/api/0.6/way/150833156.json",
+        "retrievedAt": "2026-09-12T14:34:48.346208+00:00",
+        "byteProvenance": "Authentic OSM JSON endpoint response bytes decoded by curl --compressed, without JSON conversion or reconstruction."
+      },
+      "wayHistory": {
+        "file": "exclusion-reviews/sos-monastery-two-2026-09/way-150833156-history.json",
+        "sha256": "e1193a2eece30d93dfbe4ca74c98211bf89aa472b8371360d139581f44e37f49",
+        "bytes": 2417,
+        "url": "https://api.openstreetmap.org/api/0.6/way/150833156/history.json",
+        "retrievedAt": "2026-09-12T14:34:48.347205+00:00",
+        "byteProvenance": "Authentic OSM JSON endpoint response bytes decoded by curl --compressed, without JSON conversion or reconstruction."
+      },
+      "currentFullWay": {
+        "file": "exclusion-reviews/sos-monastery-two-2026-09/way-150833156-full.json",
+        "sha256": "8d8d4689fd4cb7743e89e7f44cc7607b585f21737ea5116b3dea2e12f3fcb142",
+        "bytes": 2217,
+        "url": "https://api.openstreetmap.org/api/0.6/way/150833156/full.json",
+        "retrievedAt": "2026-09-12T14:34:48.350195+00:00",
+        "byteProvenance": "Authentic OSM JSON endpoint response bytes decoded by curl --compressed, without JSON conversion or reconstruction."
+      },
+      "currentAndFullAndLastHistoryElementEqual": true,
+      "currentTagsEqualFrozenCache": true,
+      "currentFullWayGeometryEqualsFrozenCacheTopology": true,
+      "primaryEvidence": [
+        {
+          "file": "exclusion-reviews/sos-monastery-two-2026-09/sos-tunisia-gammarth-current.html",
+          "sha256": "9e7918d1453bc4f9b4d53477df11ca9db8f8c8f52a605c6bdb0da3843fa44f9f",
+          "bytes": 359689,
+          "url": "https://www.sosve.tn/village-sos-gammarth-ar/",
+          "retrievedAt": "2026-09-12T14:32:10.610165+00:00",
+          "byteProvenance": "Exact curl response body after HTTP content decoding (--compressed); no text conversion, normalization or reconstruction."
+        },
+        {
+          "file": "exclusion-reviews/sos-monastery-two-2026-09/sos-canada-gammarth.html",
+          "sha256": "f02e3055962980e7b125e6c16f817795a0534efdfe91654dd61f542f768373b7",
+          "bytes": 176646,
+          "url": "https://www.soschildrensvillages.ca/tunisia/sos-childrens-village-gammarth",
+          "retrievedAt": "2026-09-12T14:32:10.610165+00:00",
+          "byteProvenance": "Exact curl response body after HTTP content decoding (--compressed); no text conversion, normalization or reconstruction."
+        }
+      ],
+      "savedLocalityDisposition": {
+        "retireId": "osm:way:150833156",
+        "replacementId": null
+      },
+      "sourceScopeDecision": "Specific walled SOS institutional campus. Operator now describes family homes integrated into other neighborhoods and digital/cultural functions at the old site; source institutional tagging and historical care-campus account support property scope.",
+      "directExistingCuration": null,
+      "directExistingPickerSelector": null
+    },
+    {
+      "id": "osm:way:89023459",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "دير شارل دو فوكو",
+        "name:ar": "دير شارل دو فوكو",
+        "name:de": "Kloster Karl von Foucauld",
+        "name:es": "Monasterio Carlos de Foucauld",
+        "name:fr": "Monastère Charles de Foucauld"
+      },
+      "currentRaw": {
+        "id": "osm:way:89023459",
+        "sourceId": "osm",
+        "name": "دير شارل دو فوكو",
+        "aliases": [
+          "Monastère Charles de Foucauld",
+          "Kloster Karl von Foucauld",
+          "Monasterio Carlos de Foucauld"
+        ],
+        "kind": "residential",
+        "parentName": "أميلكار",
+        "contextAliases": [
+          "Amilcar",
+          "Cartagine",
+          "Cartago",
+          "Carthage",
+          "Delegación de Cartago",
+          "Delegation Karthago",
+          "Kartagina",
+          "Karthago",
+          "Καρχηδόνα",
+          "Καρχηδών",
+          "Картаген",
+          "Карфаген",
+          "Կարթագեն",
+          "Կարթագէն",
+          "أميلكار",
+          "قرطاج",
+          "قرطاجنہ",
+          "معتمدية قرطاج",
+          "کارتاژ",
+          "ܩܪܬܐܓܘ"
+        ],
+        "governorateId": 342,
+        "lat": 36.875249,
+        "lng": 10.339187,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "bbox": [
+          10.338432,
+          36.874601,
+          10.339898,
+          36.875856
+        ],
+        "areaKm2": 0.010310214292954862,
+        "pickerGroupId": "osm:way:89023459",
+        "offset": 5442028,
+        "length": 140
+      },
+      "currentWholeRawRecordSha256": "b5d9350fb2a493e5b1a0deac328af2e5ef64adfdba02a52f6e32bbab06cf3a19",
+      "currentRawRecordHashConvention": "Canonical UTF-8 JSON, ensure_ascii=False, sorted keys and compact separators.",
+      "completeCurrentRawGroup": [
+        "osm:way:89023459"
+      ],
+      "cachedGeometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.3384319,
+                36.875389
+              ],
+              [
+                10.3385716,
+                36.8751952
+              ],
+              [
+                10.3386766,
+                36.8750495
+              ],
+              [
+                10.3389553,
+                36.8746011
+              ],
+              [
+                10.3396814,
+                36.8749093
+              ],
+              [
+                10.3398497,
+                36.8750432
+              ],
+              [
+                10.3398977,
+                36.875084
+              ],
+              [
+                10.339822,
+                36.8753033
+              ],
+              [
+                10.3396216,
+                36.8758559
+              ],
+              [
+                10.3393484,
+                36.8757392
+              ],
+              [
+                10.3393177,
+                36.8758006
+              ],
+              [
+                10.3391272,
+                36.8757254
+              ],
+              [
+                10.3391937,
+                36.8756176
+              ],
+              [
+                10.3389703,
+                36.8755294
+              ],
+              [
+                10.3389345,
+                36.8755874
+              ],
+              [
+                10.3384319,
+                36.875389
+              ]
+            ]
+          ]
+        ]
+      },
+      "cachedGeometryJsonSha256": "b3bea4049a8d12e5dec486ddd33f5a67d3b53442f0430411824b18fefb63fee7",
+      "packedGeometrySha256": "2de1e57202fbb9592f534f8cb57ae7b9fb59b1c99dfa3ebaa16e23bea46e15eb",
+      "packedBytes": 140,
+      "currentWay": {
+        "file": "exclusion-reviews/sos-monastery-two-2026-09/way-89023459-current.json",
+        "sha256": "dc96f9b0bf7c6b899e9ed3c865d2cf9e2d42aca5ba1201bd2db7a5534d3a8d9a",
+        "bytes": 861,
+        "url": "https://api.openstreetmap.org/api/0.6/way/89023459.json",
+        "retrievedAt": "2026-09-12T14:34:48.348198+00:00",
+        "byteProvenance": "Authentic OSM JSON endpoint response bytes decoded by curl --compressed, without JSON conversion or reconstruction."
+      },
+      "wayHistory": {
+        "file": "exclusion-reviews/sos-monastery-two-2026-09/way-89023459-history.json",
+        "sha256": "bc103a1f226541d5d59253eae0aec6d68f41fd5b1d07b5c43b841024e8c4c90b",
+        "bytes": 3122,
+        "url": "https://api.openstreetmap.org/api/0.6/way/89023459/history.json",
+        "retrievedAt": "2026-09-12T14:34:48.349201+00:00",
+        "byteProvenance": "Authentic OSM JSON endpoint response bytes decoded by curl --compressed, without JSON conversion or reconstruction."
+      },
+      "currentFullWay": {
+        "file": "exclusion-reviews/sos-monastery-two-2026-09/way-89023459-full.json",
+        "sha256": "a010be3f5acdab78ab8c6b0b2c3211d9e9a444e5ef315c34d7a7b26384103e82",
+        "bytes": 3361,
+        "url": "https://api.openstreetmap.org/api/0.6/way/89023459/full.json",
+        "retrievedAt": "2026-09-12T14:34:48.350195+00:00",
+        "byteProvenance": "Authentic OSM JSON endpoint response bytes decoded by curl --compressed, without JSON conversion or reconstruction."
+      },
+      "currentAndFullAndLastHistoryElementEqual": true,
+      "currentTagsEqualFrozenCache": true,
+      "currentFullWayGeometryEqualsFrozenCacheTopology": true,
+      "primaryEvidence": [
+        {
+          "file": "exclusion-reviews/sos-monastery-two-2026-09/archdiocese-charles-foucauld.html",
+          "sha256": "f260fcc51e7180e08b21d1a65ad95871ae6ede811162cfb74d9dd5a574215933",
+          "bytes": 127240,
+          "url": "https://www.eglisecatholiquetunisie.com/les-paroisses/monastere-charles-de-foucauld-la-marsa/",
+          "retrievedAt": "2026-09-12T14:32:10.612165+00:00",
+          "byteProvenance": "Exact curl response body after HTTP content decoding (--compressed); no text conversion, normalization or reconstruction."
+        }
+      ],
+      "savedLocalityDisposition": {
+        "retireId": "osm:way:89023459",
+        "replacementId": null
+      },
+      "sourceScopeDecision": "Specific walled monastery garden/property. Official archdiocese identifies the named worship institution at Villa Lavigerie; authentic source history and public POI context support property scope rather than an Amilcar neighborhood.",
+      "directExistingCuration": null,
+      "directExistingPickerSelector": null
+    }
+  ],
+  "preservedSurroundingLocalityIds": [
+    "osm:relation:7062758",
+    "osm:relation:7116250"
+  ],
+  "limitations": [
+    "This excludes two particular institution properties as locality choices. Institutional residences can be inhabited; residential land use alone does not make their property names general neighborhoods.",
+    "The authentic current way footprints equal the frozen source geometries. Official institution descriptions and public POI views do not certify cadastral ownership or exact parcel limits.",
+    "SOS current strategy describes neighborhood family homes and a digital/cultural centre on this site. The exclusion does not assume current orphanage activity or complete vacancy.",
+    "No generic institution filter, new polygon, replacement locality, merged sector or prayer-reference change is introduced. The training-centre lead remains outside this package."
+  ]
+}

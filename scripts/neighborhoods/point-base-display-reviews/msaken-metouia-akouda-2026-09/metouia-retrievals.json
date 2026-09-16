@@ -1,0 +1,48 @@
+{
+  "records": [
+    {
+      "name": "osm-node-559400503-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/559400503.json",
+      "attemptedAt": "2026-09-12T09:13:57.313352+00:00",
+      "status": 200,
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/559400503.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 657,
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\osm-node-559400503-current.json",
+      "sha256": "66d45ffdcfae450e812c84588d052bf3195c9aaa6bbf9e1f7b55f47d2e9aa35e",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "name": "osm-node-559400503-history.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/559400503/history.json",
+      "attemptedAt": "2026-09-12T09:13:57.315354+00:00",
+      "status": 200,
+      "resolvedUrl": "https://api.openstreetmap.org/api/0.6/node/559400503/history.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 5689,
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\osm-node-559400503-history.json",
+      "sha256": "6424969bf512193556017b12a973c5ca78bccc8ca7ab5ccc58fdbd5329e76489",
+      "originalResponseBytesPreserved": true
+    },
+    {
+      "name": "metouia-municipality-city2018.html",
+      "url": "https://www.commune-metouia.gov.tn/2018/04/11/%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D8%B7%D9%88%D9%8A%D8%A9/",
+      "attemptedAt": "2026-09-12T09:13:57.317350+00:00",
+      "errorType": "URLError",
+      "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+    },
+    {
+      "name": "metouia-national-catalog-producer.html",
+      "url": "https://catalog.data.gov.tn/ar/producteurs-de-donnees/about/metouia",
+      "attemptedAt": "2026-09-12T09:13:57.318358+00:00",
+      "status": 200,
+      "resolvedUrl": "https://catalog.data.gov.tn/ar/producteurs-de-donnees/about/metouia",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 47648,
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\metouia-town-point-source-review\\metouia-national-catalog-producer.html",
+      "sha256": "f673f9c4552273d60d1c7b154d1547a1ce4c576b214986144aa030d7918f0052",
+      "originalResponseBytesPreserved": true
+    }
+  ],
+  "method": "urllib GET with unchanged HTTP response content bytes saved on200; errors remain explicit. No XML conversion or page extraction."
+}

@@ -1,0 +1,598 @@
+{
+  "schemaVersion": 1,
+  "status": "ARABIC_NAME_ADDITION_RECOMMENDED_KEEP_BOTH_GOVERNORATES_AND_HOLD_BOUNDARY_CORRECTIONS",
+  "createdAtUtc": "2026-09-12T20:42:01.944834+00:00",
+  "baselineMetadataSha256": "0b07ba6ecc7070fdaf7db7b1cc20151a98ccfde8f2ca77b67fdf9b4285263bf0",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "0b07ba6ecc7070fdaf7db7b1cc20151a98ccfde8f2ca77b67fdf9b4285263bf0",
+    "bytes": 1851701
+  },
+  "scope": [
+    "osm:way:901797262",
+    "osm:way:605237546"
+  ],
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\exact-source-finite-facts.json",
+    "sha256": "19f2016561e05e1a4920c341405fac52a4744e8e58317e79ce0a1d54ac0ac334",
+    "bytes": 43922
+  },
+  "initialScreen": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-polygon-governorate-screen-20260912\\whole-polygon-governorate-screen-review.json",
+    "sha256": "a224f3e362ed66e5c769fa6c5a7a7fa670d14be5219130434c01131f3a44b7af",
+    "bytes": 104425
+  },
+  "freshOriginalInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "sourceRegistry": {
+    "pin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\point-retention-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "exactContextRows": [
+      {
+        "governorateCode": "14",
+        "governorateFr": "Manouba",
+        "governorateAr": "منوبة",
+        "delegationCode": "1458",
+        "delegationFr": "El battane",
+        "delegationAr": "البطان",
+        "sectorCode": "145852",
+        "sectorFr": "Borj ettoumi",
+        "sectorAr": "برج التومي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11255,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 415,
+          "Nombre_de_menages_par_Secteurs.xlsx": 414
+        }
+      },
+      {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1754",
+        "delegationFr": "Sedjnane",
+        "delegationAr": "سجنان",
+        "sectorCode": "175455",
+        "sectorFr": "Sehabna",
+        "sectorAr": "السحابنة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 17442,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 750,
+          "Nombre_de_menages_par_Secteurs.xlsx": 749
+        }
+      },
+      {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215454",
+        "sectorFr": "Kap negro",
+        "sectorAr": "كاب النيقرو",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21216,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 955,
+          "Nombre_de_menages_par_Secteurs.xlsx": 954
+        }
+      },
+      {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215458",
+        "sectorFr": "Bellif",
+        "sectorAr": "بالليف",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21352,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 963,
+          "Nombre_de_menages_par_Secteurs.xlsx": 962
+        }
+      },
+      {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2154",
+        "delegationFr": "Nefza",
+        "delegationAr": "نفزة",
+        "sectorCode": "215459",
+        "sectorFr": "Djebel ediss",
+        "sectorAr": "جبل الديس",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 21386,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 965,
+          "Nombre_de_menages_par_Secteurs.xlsx": 964
+        }
+      },
+      {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2159",
+        "delegationFr": "Medjez el bab",
+        "delegationAr": "مجاز الباب",
+        "sectorCode": "215963",
+        "sectorFr": "Guerich el ouedi",
+        "sectorAr": "قريش الوادي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 23221,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1064,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1063
+        }
+      }
+    ],
+    "qualification": "Existing independently reviewed INS-derived administrative names and parent codes; not exact residential/village extents."
+  },
+  "minimalOriginalEvidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\way-901797262-current.json",
+      "sha256": "fe21267774e9342bbbe6ea00ada57f30d3bdaef961e0be7ffd8c8fc3add74fee",
+      "bytes": 602
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\way-901797262-history.json",
+      "sha256": "7c4b5e2f8fb505343a3d19497773524416b9bb5fb3a64e2d9d175b47301ed0c1",
+      "bytes": 602
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\way-901797262-full.json",
+      "sha256": "1fad08fa475f77c9501b755cb92139b817e6e4923f3617d3207e2f077fff66bc",
+      "bytes": 2174
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\changeset-98392800.json",
+      "sha256": "9588e6dcf3646a2dae25f081f94beee13a2882c00571e083bcafd7e78e460851",
+      "bytes": 734
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\way-605237546-current.json",
+      "sha256": "6a495501aa7dc88a155dc7f719b709459c5f6f97de558400281c46aeb536ab4f",
+      "bytes": 663
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\way-605237546-history.json",
+      "sha256": "fe62dff2409b9642fd0db593200187a290c88dd8fd94eeb6c336433a98546db5",
+      "bytes": 1269
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\way-605237546-full.json",
+      "sha256": "39534909b3a6796cbcc0b860dcc2e99befd0126886b0886b3d1b7afa651f679c",
+      "bytes": 2413
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\changeset-60430942.json",
+      "sha256": "1c11114c7dffc801316b4079d8784c3285b298b62dfecf7b70b7677e41cdb2f2",
+      "bytes": 705
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\changeset-76197652.json",
+      "sha256": "fbf14acafdc5ea377685ac137c2aeb9a98b8dd297c08fd8a0ac15e66a808f98b",
+      "bytes": 723
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\changeset-98472387.json",
+      "sha256": "2171f3603b73488e0baf2e4492b0e81b591ec1c20de6d138a47249d0229b1774",
+      "bytes": 672
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901.pdf",
+      "sha256": "7f366aa8113e46dd8eb918096988e0d9e9e55df21749ce43b094ad3241ba9ca2",
+      "bytes": 4868407
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-radiojeunes-official-statement.html",
+      "sha256": "246f2648b5cdf643acb8de8ea9ce0334b571425e3577e60025550100d0e143dd",
+      "bytes": 280681
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\khoualdia-local-correspondent-2021.html",
+      "sha256": "88506186973ced6a80e1b580d8880cad33307cd4496fef25e70baf8ead0623c4",
+      "bytes": 562904
+    }
+  ],
+  "retrievalManifests": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\osm-retrievals.json",
+      "sha256": "35e9eee380f3388e2b74ac30da8605db23e2e171099db427d3a98f2e28d81d7e",
+      "bytes": 8471
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\additional-retrievals.json",
+      "sha256": "9622ec6ce9cbfffb7935dbf86dcb49118d0f8eebb37b0974a2c3799eaff6ff34",
+      "bytes": 13584
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\locality-reporting-retrievals.json",
+      "sha256": "5760c78fdaa859508a3c042023f00345af2ab97ba831a116e50235b8536df674",
+      "bytes": 5750
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\radiokef-retrieval.json",
+      "sha256": "0e49ea8e0f479de0dbfef1f54c9a5f8fe796d812d09ba81601a50e862a237dca",
+      "bytes": 1522
+    }
+  ],
+  "derivedEvidence": [
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901.pdf",
+        "sha256": "7f366aa8113e46dd8eb918096988e0d9e9e55df21749ce43b094ad3241ba9ca2",
+        "bytes": 4868407
+      },
+      "physicalPage": 1,
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901-page-1.txt",
+        "sha256": "f8b3d26b7da710ccd7bb72985ac6c681f2e3b6ad8729c51291409ed28170baf5",
+        "bytes": 1872
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901-page-1.png",
+        "sha256": "22bcf0217ecaeac46f6a5f7704fc3b94cead2322f4efc65b1b36f41c67dfe834",
+        "bytes": 146989
+      },
+      "method": "PyMuPDF Page.get_text() encoded directly as UTF-8 bytes (LF); Page.get_pixmap(matrix=Matrix(1.5,1.5)), complete page without crop.",
+      "originalResponseBytes": false,
+      "wholePagePersonallyViewed": true
+    },
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901.pdf",
+        "sha256": "7f366aa8113e46dd8eb918096988e0d9e9e55df21749ce43b094ad3241ba9ca2",
+        "bytes": 4868407
+      },
+      "physicalPage": 27,
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901-page-27.txt",
+        "sha256": "11ac2bd2546b63c9bc33879090aa25baa240b7b79c121fec1dede4eddb087541",
+        "bytes": 8304
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901-page-27.png",
+        "sha256": "92aa5e285ddfc5676f20062f4bfe02e74e96a71cb07cafa98713d9f7ea8e7000",
+        "bytes": 265474
+      },
+      "method": "PyMuPDF Page.get_text() encoded directly as UTF-8 bytes (LF); Page.get_pixmap(matrix=Matrix(1.5,1.5)), complete page without crop.",
+      "originalResponseBytes": false,
+      "wholePagePersonallyViewed": true
+    },
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901.pdf",
+        "sha256": "7f366aa8113e46dd8eb918096988e0d9e9e55df21749ce43b094ad3241ba9ca2",
+        "bytes": 4868407
+      },
+      "physicalPage": 69,
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901-page-69.txt",
+        "sha256": "f19d7c6f79c9dc2287e7723cede7ab699cb0d6e1db90950d75a819171bcf729b",
+        "bytes": 8222
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901-page-69.png",
+        "sha256": "6be355aa70f265d1a1b77540954890a193a013ef6829e960d20a7403afd064ba",
+        "bytes": 261315
+      },
+      "method": "PyMuPDF Page.get_text() encoded directly as UTF-8 bytes (LF); Page.get_pixmap(matrix=Matrix(1.5,1.5)), complete page without crop.",
+      "originalResponseBytes": false,
+      "wholePagePersonallyViewed": true
+    },
+    {
+      "original": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\jica-11821659-01.pdf",
+        "sha256": "914909a4f310ca78de8a55d01d4c543b282ed329af7b97535d21b9ca93dbfbca",
+        "bytes": 2423081
+      },
+      "physicalPage": 11,
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\jica-11821659-01-page-11.txt",
+        "sha256": "b22f6afce9606b117c31d65dfd6fb1b21ebb117c88125b2dc1b52cabe2a7eba2",
+        "bytes": 1254
+      },
+      "wholePageRender": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\jica-11821659-01-page-11.png",
+        "sha256": "e5bffcedbe921f50933b02906377212a4fd086349f2042412c0553743df1dbb5",
+        "bytes": 163353
+      },
+      "method": "PyMuPDF Page.get_text() encoded directly as UTF-8 bytes (LF); Page.get_pixmap(matrix=Matrix(1.5,1.5)), complete page without crop.",
+      "originalResponseBytes": false,
+      "wholePagePersonallyViewed": true
+    }
+  ],
+  "findings": {
+    "osm:way:901797262": {
+      "currentRaw": {
+        "id": "osm:way:901797262",
+        "sourceId": "osm",
+        "name": "El Halfaoui",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "ولاية منوبة",
+        "contextAliases": [],
+        "governorateId": 360,
+        "lat": 36.737132,
+        "lng": 9.733992,
+        "delegationId": 551,
+        "hasBoundary": true,
+        "bbox": [
+          9.71678,
+          36.722637,
+          9.754724,
+          36.750881
+        ],
+        "areaKm2": 6.469546115965544,
+        "pickerGroupId": "osm:way:901797262",
+        "offset": 5478020,
+        "length": 92
+      },
+      "decision": "Preserve the existing Manouba governorate, rural locality identity and full polygon; recommend documented Arabic display/search name only.",
+      "sourceIdentity": "Authentic OSM way901797262 v1 (29 January 2021), landuse=residential/residential=rural, nine distinct vertices. Current full node coordinates equal the PBF geometry after exact ring reversal/rotation; independent source quantization reproduces all92 current packed bytes. No new source geometry was discovered.",
+      "administrativeNameSupport": "Parliament original proceedings of16 November2025, physical27/printed1715, identifies the Halfaoui bridge in El Battan; physical69/printed1757 mentions the bridge between Borj Ettoumi and Halfaoui while discussing Manouba. Radio Jeunes10 July2026 explicitly reports the minister/TAP description of Halfaoui locality in Borj Ettoumi imada/El Battan delegation. Existing INS context145852 belongs toManouba14/ElBattan1458. These sources support this local name and current organizing governorate; none supplies its complete polygon.",
+      "wholeBorderDisagreement": {
+        "outsideManoubaM2": 436013.9212198501,
+        "fractionOutside": 0.06752415691800796,
+        "neighborGovernorate": "Béja356",
+        "neighborSector": "osm:relation:7189480",
+        "neighborSectorCode": "215963",
+        "neighborDelegation": "MedjezElBab2159",
+        "interpretation": "Current locality and independent original administrative polygons disagree at one margin. Either the sparse residential outline or the administrative source line may be inaccurate; a local name/bridge report does not identify the correct edge. Do not clip to the old OSM governorate boundary."
+      },
+      "arabicNameEvidenceStrength": "Sufficient for qualified locality display spelling الحلفاوي and retained Latin alias, stronger than mere phonetic invention or downtown Tunis Halfaouine search. Insufficient for legal or whole-polygon certification.",
+      "nextBoundaryEvidence": "Exact local municipal/land-use or topographic description binding the rural settlement edge, compared with official own-map sector145852 BorjEttoumi and215963 GuerichElOuedi. Whole administrative sector geometry alone still would not prove the full residential perimeter."
+    },
+    "osm:way:605237546": {
+      "currentRaw": {
+        "id": "osm:way:605237546",
+        "sourceId": "osm",
+        "name": "الخوالدية",
+        "aliases": [
+          "Khoualdia"
+        ],
+        "kind": "village",
+        "parentName": "ولاية باجة",
+        "contextAliases": [],
+        "governorateId": 356,
+        "lat": 37.0333,
+        "lng": 9.110054,
+        "delegationId": 514,
+        "hasBoundary": true,
+        "bbox": [
+          9.098677,
+          37.022873,
+          9.123661,
+          37.049319
+        ],
+        "areaKm2": 4.2643769771346545,
+        "pickerGroupId": "osm:way:605237546",
+        "offset": 5454996,
+        "length": 100
+      },
+      "decision": "Preserve current village and Béja governorate; no supported name, coordinate or geometry correction.",
+      "sourceIdentity": "Authentic OSM way605237546 v1(2018) unnamed village, v2(2019) Arabic/French name and changed node-reference outline, v3(2021) English name. Current10-vertex ring equals PBF up to exact start rotation; independent quantization reproduces100 packed bytes. Historical node coordinates were not fetched; no historical geometry shape is inferred from current node coordinates.",
+      "administrativeNameSupport": "Tunisie Numérique31 May2021 local-correspondent report explicitly locates ElKhoualdia in Nefza/Béja. This is original local reporting, not an official boundary record. The former RadioKef article URL survives in an index, but now redirects to the homepage and was not misrepresented as the retrieved original article. Root publicMaps contextual observations separately corroborate the local Khoualdia name. No current official whole-locality extent was located.",
+      "wholeBorderDisagreement": {
+        "outsideBejaM2": 52876.63692264767,
+        "fractionOutside": 0.012423196622562034,
+        "neighborGovernorate": "Bizerte361",
+        "neighborSector": "osm:relation:7121412",
+        "neighborSectorCode": "175455",
+        "neighborDelegation": "Sejnane1754",
+        "otherIntersectedNefzaSectors": [
+          "215454 KapNegro",
+          "215458 Bellif",
+          "215459 DjebelEdiss"
+        ],
+        "interpretation": "About1.24% of the current sparse village polygon crosses the original governorate layer. This does not establish that the village belongs to Bizerte or that the crossing piece is false. Current representative is inside Nefza/Béja and KapNegro in those source layers."
+      },
+      "nextBoundaryEvidence": "Primary locality/municipal or topographic evidence for the Nefza–Sejnane margin, especially official own-map sector215454 KapNegro and175455 Sehabna, plus the village edge. Keep215458 Bellif and215459 DjebelEdiss contextual intersections distinct. No automatic clipping or reassignment is justified."
+    }
+  },
+  "exactProposedCurations": [
+    {
+      "id": "osm:way:901797262",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "El Halfaoui",
+        "residential": "rural"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "El Halfaoui",
+        "name:ar": "الحلفاوي"
+      },
+      "reason": "Add the documented Arabic locality spelling while retaining the original Latin name for search. Parliamentary proceedings and the minister/TAP report place this local Halfaoui name around Borj Ettoumi in El Battan. This name review does not certify the sparse whole rural polygon or imply an administrative boundary change.",
+      "evidence": [
+        {
+          "source": "Original parliamentary proceedings, 16 November 2025",
+          "originalPdf": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-parliament-116901.pdf",
+            "sha256": "7f366aa8113e46dd8eb918096988e0d9e9e55df21749ce43b094ad3241ba9ca2",
+            "bytes": 4868407
+          },
+          "url": "https://www.arp.tn/ar_SY/document/download/116901",
+          "physicalPages": [
+            27,
+            69
+          ],
+          "printedPages": [
+            1715,
+            1757
+          ]
+        },
+        {
+          "source": "Radio Jeunes public report of minister statement to TAP, 10 July 2026",
+          "originalHtml": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\halfaoui-radiojeunes-official-statement.html",
+            "sha256": "246f2648b5cdf643acb8de8ea9ce0334b571425e3577e60025550100d0e143dd",
+            "bytes": 280681
+          },
+          "url": "https://www.radiojeunes.tn/article/6a51315a08d2abfa301f023f/وزير-التجهيز-المقاولات-المنجزة-للجسر-على-وادي-مجردة-بالبطان-تواجه-صعوبات",
+          "qualifiedLocalityWording": "منطقة الحلفاوي من عمادة برج التومي بمعتمدية البطان"
+        }
+      ]
+    }
+  ],
+  "proposedNameOnlyContract": {
+    "targetId": "osm:way:901797262",
+    "originalConsumedNameTags": {
+      "name": "El Halfaoui"
+    },
+    "proposedConsumedNameTags": {
+      "name": "El Halfaoui",
+      "name:ar": "الحلفاوي"
+    },
+    "expectedMetadataChanges": {
+      "name": {
+        "before": "El Halfaoui",
+        "after": "الحلفاوي"
+      },
+      "aliases": {
+        "before": [],
+        "after": [
+          "El Halfaoui"
+        ]
+      }
+    },
+    "compilerSemanticsReadOnly": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "b4210755827fff89a6660c5439aee5081f6932776144ba515f736913664aead3",
+      "nameSelectionLines": [
+        53,
+        61
+      ],
+      "completeNameReplacementValidationLines": [
+        589,
+        605
+      ],
+      "qualification": "Static read only. name_tags replaces the complete consumed name set, so name=ElHalfaoui must remain alongside name:ar. No product function was imported or executed."
+    },
+    "currentExactNameCollisions": [],
+    "newRawLocalityOrPointAbsorption": "None supported or intended; no source locality nodes or current point rows are contained in the unchanged target polygon.",
+    "requiredActualVerification": [
+      "Exactly one appended name_tags decision; all270 prior decisions retained.",
+      "Only target name/aliases change in raw metadata; preserve all3525 IDs and all904 point rows.",
+      "Whole binary, target92-byte slice, grid, coordinates, kind, source, parentName, governorate360, default551 and singleton picker group unchanged.",
+      "Khoualdia and all surrounding sector records unchanged.",
+      "Append only expected name review/receipt information; verify saved-name compatibility through actual outputs."
+    ],
+    "notAnExecutedOrStagedChange": true
+  },
+  "preservationContract": {
+    "keepAllCurrentRawIds": true,
+    "keepBothWholePolygonBytes": true,
+    "keepBothGovernorateAndPrayerDefaultIds": true,
+    "keepCoordinatesGroupsSourcesAdministrativeLayers": true,
+    "noGeometryCorrectionApproved": true,
+    "noNewPolygonSource": true,
+    "actualCountryScreenCarriedFromPinnedIndependentScreen": "Both current polygons fully covered by the screened country geometry; no country correction proposed.",
+    "directTargetCurationPickerBoundaryReferences": [],
+    "currentTargetReceipts": [],
+    "currentTargetConflictRecords": [],
+    "transitiveProofAuditQualification": "Exact strings searched within the active curation/picker/boundary manifests; no claim of exhaustive historical or transitive proof enumeration."
+  },
+  "discardedOrUnavailableEvidence": [
+    {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\jica-11821659-01.pdf",
+        "sha256": "914909a4f310ca78de8a55d01d4c543b282ed329af7b97535d21b9ca93dbfbca",
+        "bytes": 2423081
+      },
+      "reason": "Same-name Khoualdia subproject is explicitly KAIROUAN on full physical page11; not this Nefza village. Original and reviewed page retained as rejected lead."
+    },
+    {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\khoualdia-radiokef-original-route.html",
+        "sha256": "3914a7e76c06dd5f419321738fc9c5241f06ee904edf6327c5f1a996b780d125",
+        "bytes": 396552
+      },
+      "reason": "HTTP200 final URL is https://www.radiokef.tn/ homepage after redirect; not the historical Khoualdia article. Original response and provenance preserved."
+    }
+  ],
+  "supplementaryPhoneContext": {
+    "reviewer": "Parent root personally viewed public screenshots; this subagent did not operate or independently inspect the phone.",
+    "findings": "Halfaoui Latin name query selected unrelated downtown Tunis Halfaouine; rejected. GPS/Arabic queries showed BorjToumi vicinity and Stadehalfawi label, without a locality boundary. Khoualdia name/GPS views show the corresponding rural locality and label, without administrative-boundary proof.",
+    "jsonPins": [
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_901797262-1.json",
+        "sha256": "68bb7d25d9b09b83a9b51b5d047d96041661adc8773aa85b818050b3678debd3",
+        "bytes": 1040
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_901797262-2.json",
+        "sha256": "c4196656f4b323919f90bcb762d807f66b151740345b748615e19268bc45de59",
+        "bytes": 1263
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_901797262-3.json",
+        "sha256": "b5aaa5e90e7049567051c23f5013c5a12dd5f3f09a31adbe2ce644c89d54b0d4",
+        "bytes": 617
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_605237546-1.json",
+        "sha256": "8bf4f277c52c648fe7b3c6592f879a9ea8dc1a66e888350ce1518f1818525ce4",
+        "bytes": 995
+      },
+      {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_605237546-2.json",
+        "sha256": "a359cc079b36b81a8972965fa4d10d66e8fa2189af49dd93f42a2a3e6e32dae0",
+        "bytes": 1291
+      }
+    ]
+  },
+  "preservedFailedAttempts": [
+    {
+      "toolChunk": "747ecf",
+      "error": "KeyError elements when inspecting changeset JSON; official endpoint uses changeset key. Original response preserved; corrected read only."
+    },
+    {
+      "toolChunk": "408baa",
+      "error": "ModuleNotFoundError bs4; standard-library HTML extraction used instead, no dependency installed."
+    },
+    {
+      "script": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\derive_finite_facts.py",
+        "sha256": "311ff60192d0755e09fa10203cff9834c75183b5e78ac9b2c1e0ce370d99136b",
+        "bytes": 7665
+      },
+      "toolChunk": "8698d6",
+      "error": "Direct ring-array equality assertion failed because PBF rotates/reverses the same exact ring. No data mutation. v3 verifies exact cyclic/reversed coordinate equality and independent packed parity."
+    },
+    {
+      "script": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\derive_finite_facts_v2.py",
+        "sha256": "f1b61d8a8d9792d041a7b4ea0206f43c50a6bd11965eb4e048c08479bb35ca3b",
+        "bytes": 8199
+      },
+      "toolChunk": "9a425b",
+      "error": "IndentationError before any analysis/output. Preserved; v3 fixes indentation only."
+    }
+  ],
+  "successfulFiniteProducer": {
+    "script": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\halfaoui-khoualdia-governorate-review-20260912\\derive_finite_facts_v3.py",
+      "sha256": "b740bbbcb698d23c810a50c6e9890471c68f29f0d81b5a9b0229ec3f07405488",
+      "bytes": 8160
+    },
+    "toolChunk": "2c0b95",
+    "exitCode": 0
+  },
+  "operations": {
+    "liveOrStageWrites": false,
+    "productImports": false,
+    "generation": false,
+    "testsOrBuild": false,
+    "phone": false,
+    "ledger": false,
+    "newDownloads": "Exact two OSM ways/history/full, four metadata changesets, bounded public locality reporting and rejected JICA same-name lead only."
+  }
+}

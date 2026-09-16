@@ -1,0 +1,921 @@
+{
+  "status": "SOURCE_QUALIFIED_EXACT_PROPERTY_EXCLUSION_SUPPORTED",
+  "baselineMetadataSha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64",
+  "target": {
+    "id": "osm:way:237115723",
+    "currentRaw": {
+      "id": "osm:way:237115723",
+      "sourceId": "osm",
+      "name": "إقامة البانوراميك",
+      "aliases": [
+        "Résidence Panoramique"
+      ],
+      "kind": "residential",
+      "parentName": "الرفاهة",
+      "contextAliases": [
+        "Délégation Mnihla",
+        "Errafaha",
+        "Mnihla",
+        "الرفاهة",
+        "معتمدية منيهلة"
+      ],
+      "governorateId": 358,
+      "lat": 36.853108,
+      "lng": 10.132433,
+      "delegationId": 392,
+      "hasBoundary": true,
+      "bbox": [
+        10.131833,
+        36.852859,
+        10.133311,
+        36.853765
+      ],
+      "areaKm2": 0.007051567811464462,
+      "pickerGroupId": "osm:way:237115723",
+      "offset": 5393236,
+      "length": 76
+    },
+    "sourceCacheRecord": {
+      "id": "osm:way:237115723",
+      "kind": "residential",
+      "tags": {
+        "addr:city": "Les Jardins d'El Menzah",
+        "addr:postcode": "2096",
+        "building:levels": "6",
+        "landuse": "residential",
+        "name": "إقامة البانوراميك",
+        "name:ar": "إقامة البانوراميك",
+        "name:fr": "Résidence Panoramique"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.1318331,
+                36.853357
+              ],
+              [
+                10.1323991,
+                36.8528591
+              ],
+              [
+                10.1331876,
+                36.8534192
+              ],
+              [
+                10.133311,
+                36.8535201
+              ],
+              [
+                10.1333083,
+                36.8535738
+              ],
+              [
+                10.1326887,
+                36.8537648
+              ],
+              [
+                10.1323856,
+                36.8537219
+              ],
+              [
+                10.1318331,
+                36.853357
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    "sourceGeometrySha256": "f989531443093f5a0e45b55ac688b2502987ead2f289260658a27e35bd8ab74d",
+    "packedGeometrySha256": "f1f7c919466dbf974f6b6add2e76eaa044ca9dd33cefabc73dedbec5bbe34506",
+    "completeCurrentGroup": [
+      "osm:way:237115723"
+    ]
+  },
+  "retrieval": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\retrieval-manifest.json",
+    "sha256": "1a1ca875d800c0b0f5e072fe6ddbe168e87506ed2fe0d61f5ca8c0ca5586e47e",
+    "bytes": 10146
+  },
+  "inputs": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\osm-way-237115723-current.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\osm-way-237115723-current.json",
+      "sha256": "97262dc95565694101fdf8e2f29203e2d365efc12c5fa3a3774fcecc3f9e8855",
+      "bytes": 737
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\osm-way-237115723-history.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\osm-way-237115723-history.json",
+      "sha256": "9fa4a0f410dd092c812dc42152adf0e869ca52468f15d81a71ffaa24622d69ae",
+      "bytes": 1592
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\osm-way-237115723-full.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\osm-way-237115723-full.json",
+      "sha256": "7af3a62f2d6c5ea071ef643b38cdd3b6b6c2bae962c43e0c914978e60af9e667",
+      "bytes": 1934
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "58797d47cbb9dd4763484488ea3034b67f561feb0223f478c5646bf7b0218d64",
+      "bytes": 1853702
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "e79422caf9a2fa697a299e97126ffd61ab92440942793ec154b3f45e4dc188ab",
+      "bytes": 5536992
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "4c7538b267a3e03facdcaecafa55ce2755eef299b28b36fd59e944b81612d9b2",
+      "bytes": 374967
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "fb18cff7e851c69220869c3324e2351b90f50e6e682726de4d9d784af4106cd7",
+      "bytes": 555357
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421",
+      "bytes": 90241
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "82bf2f1ab057fa8c81e8e64729433f7cc719cc56289ab4af944464451a09a193",
+      "bytes": 113816
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "dfe24ddc5d5dcbda875b84f8a24248ad3aa41015eaad4bb602bef99152c723b3",
+      "bytes": 1020126
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "97ce2ec3d1239d78911cc46db7960108d2f5a739192d74bc89bc31dfd7f8f30c",
+      "bytes": 11797
+    },
+    "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "050ab34c7969adb737e51b738267bb85595e373a6c6198b157d53a85f516f659",
+      "bytes": 54583
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-original.html": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-original.html",
+      "sha256": "acc72e6c78fd7c9448c9bd4f9e313da1fc8c7e21f70ef681f3db6643aa2a828e",
+      "bytes": 229437
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-current-original.html": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-current-original.html",
+      "sha256": "ad1b098cdc73e8715eb8e6999f862d68c80900b4ee8bbef618724e9aaf1cc87a",
+      "bytes": 178039
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\tunisair-gazelle57-original.pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\tunisair-gazelle57-original.pdf",
+      "sha256": "8e348ec80dabcfcb8489307a0760cdc8a163caa77a1ce22f070dc70f856604b8",
+      "bytes": 9359616
+    },
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\retrieval-manifest.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\retrieval-manifest.json",
+      "sha256": "1a1ca875d800c0b0f5e072fe6ddbe168e87506ed2fe0d61f5ca8c0ca5586e47e",
+      "bytes": 10146
+    }
+  },
+  "authenticHistory": {
+    "currentElement": {
+      "type": "way",
+      "id": 237115723,
+      "timestamp": "2024-03-28T07:35:08Z",
+      "version": 3,
+      "changeset": 149254145,
+      "user": "selimachour",
+      "uid": 400177,
+      "nodes": [
+        2450638817,
+        2450638819,
+        2450638820,
+        2450638821,
+        2450638824,
+        2450638822,
+        2450638823,
+        2450638817
+      ],
+      "tags": {
+        "addr:city": "Les Jardins d'El Menzah",
+        "addr:postcode": "2096",
+        "building:levels": "6",
+        "landuse": "residential",
+        "name": "إقامة البانوراميك",
+        "name:ar": "إقامة البانوراميك",
+        "name:fr": "Résidence Panoramique"
+      }
+    },
+    "versions": [
+      {
+        "type": "way",
+        "id": 237115723,
+        "timestamp": "2013-09-08T15:32:08Z",
+        "version": 1,
+        "changeset": 17735048,
+        "user": "Hamza Soussou",
+        "uid": 1738091,
+        "nodes": [
+          2450638817,
+          2450638819,
+          2450638820,
+          2450638821,
+          2450638824,
+          2450638822,
+          2450638823,
+          2450638817
+        ],
+        "tags": {
+          "addr:city": "Les Jardins d'El Menzah",
+          "addr:postcode": "2096",
+          "building": "residential",
+          "building:levels": "6",
+          "name": "Résidence Panoramique",
+          "name:ar": "إقامة البانوراميك"
+        }
+      },
+      {
+        "type": "way",
+        "id": 237115723,
+        "timestamp": "2013-09-08T15:35:57Z",
+        "version": 2,
+        "changeset": 17735099,
+        "user": "Hamza Soussou",
+        "uid": 1738091,
+        "nodes": [
+          2450638817,
+          2450638819,
+          2450638820,
+          2450638821,
+          2450638824,
+          2450638822,
+          2450638823,
+          2450638817
+        ],
+        "tags": {
+          "addr:city": "Les Jardins d'El Menzah",
+          "addr:postcode": "2096",
+          "building:levels": "6",
+          "landuse": "residential",
+          "name": "Résidence Panoramique",
+          "name:ar": "إقامة البانوراميك"
+        }
+      },
+      {
+        "type": "way",
+        "id": 237115723,
+        "timestamp": "2024-03-28T07:35:08Z",
+        "version": 3,
+        "changeset": 149254145,
+        "user": "selimachour",
+        "uid": 400177,
+        "nodes": [
+          2450638817,
+          2450638819,
+          2450638820,
+          2450638821,
+          2450638824,
+          2450638822,
+          2450638823,
+          2450638817
+        ],
+        "tags": {
+          "addr:city": "Les Jardins d'El Menzah",
+          "addr:postcode": "2096",
+          "building:levels": "6",
+          "landuse": "residential",
+          "name": "إقامة البانوراميك",
+          "name:ar": "إقامة البانوراميك",
+          "name:fr": "Résidence Panoramique"
+        }
+      }
+    ],
+    "currentFullAndHistoryLatestExact": true,
+    "freshOriginalPbfTagsAndFullRingExact": true,
+    "allThreeVersionsShareExactEightNodeSequence": true,
+    "firstVersionBuildingResidential": true,
+    "threeMinute49SecondRetag": {
+      "beforeVersion": 1,
+      "afterVersion": 2,
+      "removed": {
+        "building": "residential"
+      },
+      "added": {
+        "landuse": "residential"
+      },
+      "allOtherTagsAndWayNodesExact": true
+    },
+    "qualification": "History proves stable way-node identity and the initial building classification; current node coordinates are verified against fresh PBF/full output. Earlier node coordinate histories were not fetched, so unchanged historical coordinates are not asserted."
+  },
+  "primaryPropertyEvidence": {
+    "developerAdvertisement": {
+      "originalPdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\tunisair-gazelle57-original.pdf",
+        "sha256": "8e348ec80dabcfcb8489307a0760cdc8a163caa77a1ce22f070dc70f856604b8",
+        "bytes": 9359616
+      },
+      "publicUrl": "https://www.tunisair.com/sites/default/files/2025-09/gazelle57.pdf",
+      "wholePagesPersonallyViewed": [
+        {
+          "page": 6,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\tunisair-gazelle57-page-006.png",
+            "sha256": "97855152a33b0202429e2eabf2aca5a1d21afdc1e334ae074cd189b501c0397c",
+            "bytes": 700877
+          }
+        },
+        {
+          "page": 7,
+          "render": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\tunisair-gazelle57-page-007.png",
+            "sha256": "9ef839b601ff49fd4022634902b9aea123b0e503f34d431c605c6b22a5ae79c5",
+            "bytes": 598233
+          }
+        }
+      ],
+      "renderMethod": "PyMuPDF 2x rendering of complete original PDF pages; pages are images with no extractable text.",
+      "finding": "The joined advertisement carries Immobiliere Gadri branding and presents Panorama Residence at Jardin d El Menzah 2 as a multistorey apartment property. The old delivery caption refers to December 2014. This is the developer advertisement hosted by Tunisair, not an administrative boundary source."
+    },
+    "developerListings": [
+      {
+        "original": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-original.html",
+          "sha256": "acc72e6c78fd7c9448c9bd4f9e313da1fc8c7e21f70ef681f3db6643aa2a828e",
+          "bytes": 229437
+        },
+        "derivedText": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-original-derived-text.txt",
+          "sha256": "72849ea06599a1ad901dfdeecf8f9a29a49bbc8dca2c281c6c706385fbf9822f",
+          "bytes": 15491
+        },
+        "propertyContentPresent": false,
+        "qualification": "Legacy route now returns a generic Elyssimmo page despite HTTP200; its current body is not property evidence. Search-index excerpts of the former route are not treated as archived primary bytes.",
+        "derivation": "Python HTMLParser visible text excluding script/style, joined with LF; complete derived page text, not original bytes."
+      },
+      {
+        "original": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-current-original.html",
+          "sha256": "ad1b098cdc73e8715eb8e6999f862d68c80900b4ee8bbef618724e9aaf1cc87a",
+          "bytes": 178039
+        },
+        "derivedText": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\elyssimmo-panorama-current-original-derived-text.txt",
+          "sha256": "4eb95bbf89277e56724dc4425f0a30021b57d78bda1529d4803519c5d0a50d50",
+          "bytes": 9598
+        },
+        "propertyContentPresent": true,
+        "qualification": "Current project page corroborates apartment-project scale.",
+        "derivation": "Python HTMLParser visible text excluding script/style, joined with LF; complete derived page text, not original bytes."
+      }
+    ],
+    "directDeveloperHomepage": {
+      "file": "gadri-home-original.html",
+      "sha256": "415ff807abb2fd49ce840d67bf14cb4d647e78afa9ab115c2b2dd8c8614928dd",
+      "bytes": 358,
+      "requestedUrl": "https://www.gadrimmo.com/",
+      "finalUrl": "https://www.gadrimmo.com/",
+      "statusCode": 403,
+      "responseHeaders": {
+        "Date": "Sat, 12 Sep 2026 18:44:42 GMT",
+        "Server": "Apache",
+        "Content-Length": "358",
+        "Keep-Alive": "timeout=5, max=100",
+        "Connection": "Keep-Alive",
+        "Content-Type": "text/html; charset=iso-8859-1"
+      },
+      "startedAtUtc": "2026-09-12T18:44:41.723374+00:00",
+      "finishedAtUtc": "2026-09-12T18:44:41.803737+00:00",
+      "tlsVerificationEnabled": true
+    },
+    "exactFootprintQualification": "The R+6 project listing, locality name and advertisement corroborate property scale but do not supply surveyed coordinates or an exact footprint binding. The current listing embeds generic Tunis map coordinates (36.8065,10.1815), which are rejected as the target location. No identical developer ownership or legal parcel extent is certified.",
+    "rejectedNamesakes": [
+      "SITS Panorama Ennasr at the eastern end of Cite Ennasr is a separate project and was not used for this target.",
+      "The Oran and Dar Bouazza Panoramique developments are outside this scope.",
+      "Mapcarta repeats the same OSM way and is not independent corroboration."
+    ]
+  },
+  "containment": {
+    "originalSourceWholeFootprintContainers": [
+      {
+        "id": "osm:relation:4184671",
+        "kind": "delegation",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Mnihla",
+          "boundary": "administrative",
+          "name": "معتمدية منيهلة",
+          "name:ar": "معتمدية منيهلة",
+          "name:fr": "Délégation Mnihla",
+          "ref:tn:codegeo": "1257",
+          "ref:tn:hasc_2": "TN.AN.MN",
+          "wikidata": "Q3317508"
+        },
+        "sourceGeometrySha256": "bb8355645c522f59204c5e7bc6e0a2f03ba3016752bf00a55a36be056a1bbfc2",
+        "currentCuration": null
+      },
+      {
+        "id": "osm:relation:7115408",
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الرفاهة",
+          "name:ar": "الرفاهة",
+          "name:fr": "Errafaha",
+          "ref:tn:codegeo": "125752"
+        },
+        "sourceGeometrySha256": "7caa8aa29675fb236b7a1554ede4a2d7840e0661838a4eb79481a72d09643563",
+        "currentCuration": null
+      },
+      {
+        "id": "osm:relation:192757",
+        "kind": "country",
+        "tags": {
+          "ISO3166-1": "TN",
+          "ISO3166-1:alpha2": "TN",
+          "ISO3166-1:alpha3": "TUN",
+          "ISO3166-1:numeric": "788",
+          "admin_level": "2",
+          "alt_name:ur": "تیونس",
+          "alt_name:vi": "Tuy-ni-di",
+          "border_type": "nation",
+          "boundary": "administrative",
+          "default_language": "ar",
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg",
+          "name": "تونس",
+          "name:ace": "Tunisia",
+          "name:af": "Tunisië",
+          "name:als": "Tunesien",
+          "name:am": "ቱኒዚያ",
+          "name:an": "Tunicia",
+          "name:ang": "Tunisia",
+          "name:ar": "تونس",
+          "name:arc": "ܬܘܢܣ",
+          "name:arz": "تونس",
+          "name:ast": "Tunicia",
+          "name:az": "Tunis",
+          "name:azb": "تونیس",
+          "name:ba": "Тунис",
+          "name:bat-smg": "Tonėsos",
+          "name:bcl": "Tunisya",
+          "name:be": "Туніс",
+          "name:be-tarask": "Туніс",
+          "name:ber": "ⵜⵓⵏⵙ",
+          "name:bg": "Тунис",
+          "name:bjn": "Tunisia",
+          "name:bm": "Tunizi",
+          "name:bn": "তিউনিসিয়া",
+          "name:bo": "ཏུ་ནི་ཤི་ཡ།",
+          "name:bpy": "তিউনিসিয়া",
+          "name:br": "Tunizia",
+          "name:bs": "Tunis",
+          "name:bxr": "Тунис",
+          "name:ca": "Tunísia",
+          "name:ce": "Тунис",
+          "name:ceb": "Tunisia",
+          "name:chr": "ᏚᏂᏏᏍᎠ",
+          "name:ckb": "توونس",
+          "name:crh": "Tunis",
+          "name:cs": "Tunisko",
+          "name:cv": "Тунис",
+          "name:cy": "Tunisia",
+          "name:da": "Tunesien",
+          "name:de": "Tunesien",
+          "name:diq": "Tunıs",
+          "name:dv": "ތޫނިސް",
+          "name:ee": "Tunisia",
+          "name:el": "Τυνησία",
+          "name:en": "Tunisia",
+          "name:eo": "Tunizio",
+          "name:es": "Túnez",
+          "name:et": "Tuneesia",
+          "name:eu": "Tunisia",
+          "name:ext": "Túnis",
+          "name:fa": "تونس",
+          "name:fi": "Tunisia",
+          "name:fo": "Tunesia",
+          "name:fr": "Tunisie",
+          "name:frp": "Tunisie",
+          "name:fy": "Tuneezje",
+          "name:ga": "An Túinéis",
+          "name:gag": "Tunis",
+          "name:gd": "Tuinisia",
+          "name:gl": "Tunisia",
+          "name:gn": "Tunísia",
+          "name:grc": "Τυνησία",
+          "name:gu": "ટ્યુનિશિયા",
+          "name:gv": "Yn Tooneesh",
+          "name:haw": "Tunisia",
+          "name:he": "תוניסיה",
+          "name:hi": "ट्यूनिशिया",
+          "name:hif": "Tunisia",
+          "name:hr": "Tunis",
+          "name:hsb": "Tuneziska",
+          "name:ht": "Tinizi",
+          "name:hu": "Tunézia",
+          "name:hy": "Թունիս",
+          "name:id": "Tunisia",
+          "name:ie": "Tunisia",
+          "name:ilo": "Tunisia",
+          "name:io": "Tunizia",
+          "name:is": "Túnis",
+          "name:it": "Tunisia",
+          "name:ja": "チュニジア",
+          "name:jv": "Tunisia",
+          "name:ka": "ტუნისი",
+          "name:kab": "Tunes",
+          "name:kg": "Tunisia",
+          "name:kk": "Тунис",
+          "name:kn": "ಟುನೀಶಿಯ",
+          "name:ko": "튀니지",
+          "name:ks": "تونس",
+          "name:ku": "Tûnis",
+          "name:ku-Arab": "توونس",
+          "name:kw": "Tunisi",
+          "name:ky": "Тунис",
+          "name:la": "Tunesia",
+          "name:lad": "Tunesia",
+          "name:lb": "Tunesien",
+          "name:li": "Tunesië",
+          "name:lij": "Tunixia",
+          "name:lmo": "Tünisia",
+          "name:ln": "Tunisia",
+          "name:lt": "Tunisas",
+          "name:lv": "Tunisija",
+          "name:mdf": "Тунис",
+          "name:mg": "Tonizia",
+          "name:mi": "Tūnihia",
+          "name:mk": "Тунис",
+          "name:ml": "ടുണീഷ്യ",
+          "name:mn": "Тунис",
+          "name:mr": "ट्युनिसिया",
+          "name:mrj": "Тунис",
+          "name:ms": "Tunisia",
+          "name:mt": "Tuneżija",
+          "name:my": "တူနီးရှားနိုင်ငံ",
+          "name:mzn": "تونس",
+          "name:nah": "Tunez",
+          "name:nan": "Tunisia",
+          "name:nds": "Tunesien",
+          "name:new": "ट्युनिसिया",
+          "name:nl": "Tunesië",
+          "name:nn": "Tunisia",
+          "name:no": "Tunisia",
+          "name:nov": "Tunisia",
+          "name:nso": "Tunisia",
+          "name:nv": "Ghą́ą́ʼaskʼidii Biłikahii Bikéyah Yázhí",
+          "name:oc": "Tunisia",
+          "name:or": "ଟ୍ୟୁନିସିଆ",
+          "name:os": "Тунис",
+          "name:pa": "ਤੁਨੀਸੀਆ",
+          "name:pam": "Tunisia",
+          "name:pap": "Tunesia",
+          "name:pl": "Tunezja",
+          "name:pms": "Tunisìa",
+          "name:pnb": "ٹیونس",
+          "name:pnt": "Τυνησίαν",
+          "name:ps": "تونس",
+          "name:pt": "Tunísia",
+          "name:qu": "Tunisya",
+          "name:rm": "Tunesia",
+          "name:ro": "Tunisia",
+          "name:ru": "Тунис",
+          "name:rw": "Tunisiya",
+          "name:sa": "टुनिशिया",
+          "name:sah": "Тунис",
+          "name:sc": "Tunisia",
+          "name:scn": "Tunisìa",
+          "name:sco": "Tunisie",
+          "name:se": "Tunisia",
+          "name:sg": "Tunizïi",
+          "name:sh": "Tunis",
+          "name:simple": "Tunisia",
+          "name:sk": "Tunisko",
+          "name:sl": "Tunizija",
+          "name:smn": "Tunisia",
+          "name:sms": "Tunisia",
+          "name:sn": "Tunisia",
+          "name:so": "Tunisiya",
+          "name:sq": "Tunizia",
+          "name:sr": "Тунис",
+          "name:ss": "IThunisiya",
+          "name:stq": "Tunesien",
+          "name:su": "Tunisia",
+          "name:sv": "Tunisien",
+          "name:sw": "Tunisia",
+          "name:syc": "ܬܘܢܣ",
+          "name:szl": "Tůnezyjo",
+          "name:ta": "துனீசியா",
+          "name:te": "ట్యునీషియా",
+          "name:tg": "Тунис",
+          "name:th": "ประเทศตูนิเซีย",
+          "name:ti": "ቱኒዢያ",
+          "name:tk": "Tunis",
+          "name:tl": "Tunisya",
+          "name:tr": "Tunus",
+          "name:ts": "Tunisia",
+          "name:tt": "Тунис",
+          "name:tzl": "Tünis",
+          "name:ug": "تۇنىس",
+          "name:uk": "Туніс",
+          "name:ur": "تونس",
+          "name:uz": "Tunis",
+          "name:vec": "Tunixia",
+          "name:vi": "Tunisia",
+          "name:vo": "Tünisän",
+          "name:vro": "Tuneesiä",
+          "name:wa": "Tunizeye",
+          "name:war": "Tunisia",
+          "name:wo": "Tiniisi",
+          "name:wuu": "突尼斯",
+          "name:yi": "טוניסיע",
+          "name:yo": "Tùnísíà",
+          "name:yue": "突尼西亞",
+          "name:zgh": "ⵜⵓⵏⵙ",
+          "name:zh": "突尼斯 / 突尼西亞",
+          "name:zh-Hans": "突尼斯",
+          "name:zh-Hans-CN": "突尼斯",
+          "name:zh-Hant": "突尼西亞",
+          "name:zh-Hant-CN": "突尼斯",
+          "name:zh-Hant-TW": "突尼西亞",
+          "name:zu": "ITunisia",
+          "official_name": "الجمهورية التونسية",
+          "official_name:ar": "الجمهورية التونسية",
+          "official_name:bs": "Republika Tunis",
+          "official_name:ca": "República de Tunísia",
+          "official_name:cs": "Tuniská republika",
+          "official_name:de": "Republik Tunesien",
+          "official_name:en": "Republic of Tunisia",
+          "official_name:es": "República de Túnez",
+          "official_name:fa": "جمهوری تونس",
+          "official_name:gn": "Tavakuairetã Tunísia",
+          "official_name:hu": "Tunéziai Köztársaság",
+          "official_name:pt": "República Tunisina",
+          "official_name:ru": "Тунисская Республика",
+          "official_name:ur": "جمہوریہ تونس",
+          "population": "10276158",
+          "source:name:oc": "ieo-bdtopoc",
+          "timezone": "Africa/Tunis",
+          "wikidata": "Q948",
+          "wikimedia_commons": "Category:Tunisia",
+          "wikipedia": "ar:تونس"
+        },
+        "sourceGeometrySha256": "550608391fa552c04f85f8f7707100211514f588e347d403a63772ad2a706eb9",
+        "currentCuration": null
+      },
+      {
+        "id": "osm:relation:1435830",
+        "kind": "governorate",
+        "tags": {
+          "ISO3166-2": "TN-12",
+          "admin_level": "4",
+          "boundary": "administrative",
+          "name": "ولاية أريانة",
+          "name:ar": "ولاية أريانة",
+          "name:az": "Aryana",
+          "name:azb": "اریانه",
+          "name:bar": "Gouvernement Ariana",
+          "name:be": "Арыяна",
+          "name:be-tarask": "Арыяна (вілает)",
+          "name:bg": "Ариана",
+          "name:ca": "Governació d'Ariana",
+          "name:ce": "Арьяна",
+          "name:ceb": "Gouvernorat de l'Ariana",
+          "name:cy": "Ariana",
+          "name:de": "Gouvernement Ariana",
+          "name:el": "Αρυάνα",
+          "name:en": "Ariana",
+          "name:eo": "Arjana",
+          "name:fa": "اریانه",
+          "name:fi": "Ariana",
+          "name:fr": "Gouvernorat Ariana",
+          "name:frr": "Ariana",
+          "name:he": "אריאנה (מחוז)",
+          "name:hu": "Arjána kormányzóság",
+          "name:id": "Kegubernuran Ariana",
+          "name:it": "Ariana",
+          "name:ja": "アリアナ県",
+          "name:ka": "არიანის ვილაიეთი",
+          "name:ko": "아리아나주",
+          "name:lt": "Arianos vilajetas",
+          "name:ms": "Kawasan kegabenoran Ariana",
+          "name:nl": "Ariana",
+          "name:no": "Ariana",
+          "name:pl": "Arjana",
+          "name:pnb": "آریانہ",
+          "name:pt": "Ariana",
+          "name:ro": "Guvernoratul Ariana",
+          "name:ru": "Арьяна",
+          "name:sco": "Ariana Govrenorate",
+          "name:sh": "Ariana",
+          "name:sv": "Ariana",
+          "name:tr": "Aryana ili",
+          "name:uk": "Ар'яна",
+          "name:ur": "آریانہ",
+          "name:vi": "Ariana",
+          "name:zh": "艾爾亞內省",
+          "name:zu": "Ariana Governorate",
+          "official_name": "ولاية أريانة",
+          "official_name:ar": "ولاية أريانة",
+          "official_name:en": "Ariana Governorate",
+          "official_name:eo": "Gubernio de Arjana",
+          "official_name:fa": "استان اریانه",
+          "official_name:fr": "Gouvernorat de Ariana",
+          "official_name:it": "Governatorato di Ariana",
+          "official_name:pl": "Gubernatorstwo Arjana",
+          "official_name:ur": "ولایت آریانہ",
+          "population": "576088",
+          "population:date": "2014",
+          "ref:tn:codegeo": "12",
+          "wikidata": "Q233116",
+          "wikipedia": "ar:ولاية أريانة"
+        },
+        "sourceGeometrySha256": "28dd97fdb0f75b913551cfdd1b6c6034e09070ccb3d0ac21aed957c9113527b6",
+        "currentCuration": null
+      }
+    ],
+    "currentPackedWholeFootprintContainers": [
+      {
+        "id": "osm:relation:7115408",
+        "currentRaw": {
+          "id": "osm:relation:7115408",
+          "sourceId": "osm",
+          "name": "الرفاهة",
+          "aliases": [
+            "Errafaha"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية منيهلة",
+          "contextAliases": [
+            "Délégation Mnihla",
+            "Mnihla",
+            "معتمدية منيهلة"
+          ],
+          "governorateId": 358,
+          "lat": 36.866789,
+          "lng": 10.128037,
+          "delegationId": 533,
+          "hasBoundary": true,
+          "bbox": [
+            10.115059,
+            36.844498,
+            10.148657,
+            36.888566
+          ],
+          "areaKm2": 9.406370139131347,
+          "pickerGroupId": "osm:relation:7115408",
+          "offset": 990832,
+          "length": 972
+        },
+        "packedGeometrySha256": "2661cc85d6df69df2d83be5bd6f19131dbde4c854d758dbed99a1880e997f63c",
+        "currentCuration": null
+      }
+    ],
+    "currentPackedPositiveAreaIntersections": [
+      {
+        "id": "osm:relation:7115408",
+        "kind": "sector",
+        "name": "الرفاهة",
+        "targetCoveredFraction": 1.0000000000000002,
+        "representativeInside": true,
+        "wholeTargetInside": true
+      }
+    ],
+    "acceptedContainerBindings": [],
+    "coveredFreshSourcePlaceNodes": {
+      "source": [],
+      "packed": []
+    },
+    "coveredOtherRawRepresentatives": [],
+    "coveredWholeOtherRawPolygons": []
+  },
+  "identityPeers": {
+    "completeMatchingSourceAreas": [
+      {
+        "id": "osm:way:237115723",
+        "kind": "residential",
+        "tags": {
+          "addr:city": "Les Jardins d'El Menzah",
+          "addr:postcode": "2096",
+          "building:levels": "6",
+          "landuse": "residential",
+          "name": "إقامة البانوراميك",
+          "name:ar": "إقامة البانوراميك",
+          "name:fr": "Résidence Panoramique"
+        },
+        "geometrySha256": "f989531443093f5a0e45b55ac688b2502987ead2f289260658a27e35bd8ab74d"
+      }
+    ],
+    "completeMatchingSourcePlaceNodes": []
+  },
+  "dependencies": {
+    "directActiveManifestReferences": {
+      "catalog-curation.json": [],
+      "reviewed-picker-groups.json": [],
+      "reviewed-boundaries.json": [],
+      "prayer-source-coordinates.json": []
+    },
+    "currentTargetReceipts": [],
+    "currentTargetConflicts": [],
+    "currentTargetDuplicateGroups": [],
+    "currentSavedReferences": [],
+    "historicalMentionsOnly": [
+      "official/chenini-two-choice-staged-data-independent-review.json",
+      "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+      "point-retention-reviews/before-neighborhoods.json",
+      "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-el-hani-neighborhoods.json",
+      "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json"
+    ]
+  },
+  "prayerReferencePreservation": {
+    "actualRepresentativeNearestRanks": [
+      {
+        "id": 392,
+        "name": "العمران الأعلى",
+        "governorateId": 342,
+        "lat": 36.835,
+        "lng": 10.1283,
+        "distanceKm": 2.0468305314066924
+      },
+      {
+        "id": 533,
+        "name": "المنيهلة",
+        "governorateId": 358,
+        "lat": 36.8607,
+        "lng": 10.1087,
+        "distanceKm": 2.274050335281631
+      },
+      {
+        "id": 534,
+        "name": "التظامن",
+        "governorateId": 358,
+        "lat": 36.8344,
+        "lng": 10.1081,
+        "distanceKm": 3.002652812923945
+      }
+    ],
+    "usableReferenceCount": 258,
+    "currentDefaultId": 392,
+    "qualification": "Current Ariana/Errafaha administrative display context and nearest Omrane Superieur reference392 in Tunis serve different purposes. This property classification is not a reason to change any default, governorate or sector."
+  },
+  "proposedCuration": {
+    "id": "osm:way:237115723",
+    "expectedKind": "residential",
+    "expectedTags": {
+      "addr:city": "Les Jardins d'El Menzah",
+      "addr:postcode": "2096",
+      "building:levels": "6",
+      "landuse": "residential",
+      "name": "إقامة البانوراميك",
+      "name:ar": "إقامة البانوراميك",
+      "name:fr": "Résidence Panoramique"
+    },
+    "action": "exclude",
+    "reason": "This exact source way was first mapped as a six-floor residential building and was retagged as residential landuse less than four minutes later without changing its way-node outline. The named apartment-property scale is additionally consistent with the Panorama Residence project material for Jardins d El Menzah 2. Exclude this property choice only; preserve all surrounding neighborhoods, administration and prayer references."
+  },
+  "finiteExclusionObligation": {
+    "removeOnlyIds": [
+      "osm:way:237115723"
+    ],
+    "metadataRowsBefore": 3529,
+    "metadataRowsAfter": 3528,
+    "polygonsBefore": 2625,
+    "polygonsAfter": 2624,
+    "pointCountUnchanged": 904,
+    "packedBytesRemovedOnly": 76,
+    "binaryBefore": 5536992,
+    "binaryAfter": 5536916,
+    "rawGroupsBefore": 3393,
+    "rawGroupsAfter": 3392,
+    "curationsBefore": 266,
+    "curationsAfter": 267,
+    "allCurrentReceiptsUnchanged": 389,
+    "allCurrentConflictsUnchanged": 366,
+    "allCurrentDuplicateGroupsUnchanged": 308,
+    "retiredCountBefore": 118,
+    "retiredCountAfter": 119,
+    "allReviewedNamesUnchanged": 121,
+    "allSavedReplacementObjectsUnchanged": 1,
+    "noNewSourcePointsWouldSurface": true,
+    "allParentSectorsAndOtherSourceSemanticsPreserved": true
+  },
+  "qualification": "Source evidence supports property-level scope and a bounded exclusion proposal. It does not deny actual habitation, certify a legal parcel, infer building condition from an old rendering, or import a Google polygon. No exclusion has been staged or applied by this review.",
+  "phoneEvidence": null,
+  "noLiveOrSourceStageChanges": true,
+  "noGeneratorTestsPhoneLedger": true,
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\panoramique-property-source-review-20260912\\derive_source_review.py",
+    "sha256": "e4866c0664a67e022b0d8050b7d70e1cab4370078eef01d1584b31917ef710a5",
+    "bytes": 16162
+  }
+}

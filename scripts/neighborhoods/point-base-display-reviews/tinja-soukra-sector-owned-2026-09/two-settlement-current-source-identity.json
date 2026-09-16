@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "status": "QUALIFIED_TWO_SETTLEMENT_DISPLAY_IDENTITIES_WITH_COMPLETE_SECTOR_PRESERVATION",
+  "records": [
+    {
+      "pointId": "osm:node:1109384824",
+      "baseId": 565,
+      "decision": "same_named_settlement_display_only",
+      "sourceNode": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-current.json",
+        "sha256": "763557e325f2fa49bb0495ff740eb9b56d156541c52d65f54314e11db49a6cfb",
+        "bytes": 572,
+        "url": "https://api.openstreetmap.org/api/0.6/node/1109384824.json"
+      },
+      "sourceHistory": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-1109384824-history.json",
+        "sha256": "7d63522df1f0209d887032debb4e62d1a4c81528dcce2f1b17e1562d47b1abd2",
+        "bytes": 2708,
+        "url": "https://api.openstreetmap.org/api/0.6/node/1109384824/history.json"
+      },
+      "exactElement": {
+        "type": "node",
+        "id": 1109384824,
+        "lat": 37.1639232,
+        "lon": 9.7705573,
+        "timestamp": "2021-02-02T00:59:52Z",
+        "version": 7,
+        "changeset": 98539602,
+        "user": "user_11422772",
+        "uid": 11422772,
+        "tags": {
+          "addr:governorate": "Bizerte",
+          "name": "تينجة",
+          "name:ar": "تينجة",
+          "name:en": "Tinja",
+          "name:fr": "Tinja",
+          "place": "village"
+        }
+      },
+      "historyFinding": "Authentic village node named Tinja since2011. Coordinates have been unchanged sincev3 inJune2011; changes since then concern multilingual/context tags. The primary Interior article explicitly identifies the inhabited city Tinja, and MEHAT identifies its urban agglomeration with Menzel Bourguiba.",
+      "primaryEvidence": [
+        {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/interior-tinja-city-article.html",
+          "sha256": "cbdbd3274bad4e07bc780c41d595a4ccdbe219633f775139eee4809e24cd21e7",
+          "bytes": 51445,
+          "url": "https://www.interieur.gov.tn/actualite/14273/%D9%85%D9%86%D8%B2%D9%84-%D8%A8%D9%88%D8%B1%D9%82%D9%8A%D8%A8%D8%A9-%D8%A8%D9%86%D8%B2%D8%B1%D8%AA-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D8%B9%D9%84%D9%89-%D8%B4%D8%AE%D8%B5%D9%8A%D9%86-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D8%AF%D8%A7%D8%A1-%D8%A8%D8%A7%D9%84%D8%B9%D9%86%D9%81-%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A8",
+          "role": "official_settlement_identity",
+          "requiredText": [
+            "مدينة تينجة"
+          ],
+          "artifactKind": "original_html_response",
+          "isOriginalHttpResponseBytes": true,
+          "qualification": "2020 public incident article used only for locality wording, not incident details or boundary assertions."
+        },
+        {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-urban-planning.html",
+          "sha256": "c3170bececcf41da05792e76e7d9fdc12194f0b83cf26291e7e0ebf58479e108",
+          "bytes": 181081,
+          "url": "https://www.mehat.gov.tn/fr/principaux-secteurs/amenagement-du-territoire/les-etudes-et-les-projets-de-lamenagement-du-territoire/",
+          "role": "official_settlement_identity",
+          "requiredText": [
+            "L'agglomération urbaine de Menzel Bourguiba - Tinja"
+          ],
+          "artifactKind": "original_html_response",
+          "isOriginalHttpResponseBytes": true,
+          "qualification": "The planning area is stated in terms of municipal territories; it is not a polygon of the inhabited Tinja town."
+        }
+      ],
+      "independentPrimaryConclusion": {
+        "identityDisposition": "BROAD_PLACE_NAME_SUPPORTED_PENDING_FINITE_DISPLAY_CONTRACT",
+        "geometryDisposition": "NO_POINT_BOUNDARY_PROVEN"
+      },
+      "qualification": "The original finite record retains its old epoch fields. The operative proof below binds current f05e metadata through the exact carry and full baseline snapshot."
+    },
+    {
+      "pointId": "osm:node:7390818324",
+      "baseId": 532,
+      "decision": "same_named_settlement_display_only",
+      "sourceNode": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-7390818324-current.json",
+        "sha256": "815b87cab09e395612c7238dd42a188089475def4a11fcec997e9ad006eef38e",
+        "bytes": 631,
+        "url": "https://api.openstreetmap.org/api/0.6/node/7390818324.json"
+      },
+      "sourceHistory": {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/osm-node-7390818324-history.json",
+        "sha256": "0448dc12d8e4e276eaca90fe87c76081c363327e706b11cb4d7d7b83560ed24d",
+        "bytes": 1219,
+        "url": "https://api.openstreetmap.org/api/0.6/node/7390818324/history.json"
+      },
+      "exactElement": {
+        "type": "node",
+        "id": 7390818324,
+        "lat": 36.8749751,
+        "lon": 10.2454267,
+        "timestamp": "2023-08-27T13:23:50Z",
+        "version": 3,
+        "changeset": 140451568,
+        "user": "tg4567",
+        "uid": 12500589,
+        "tags": {
+          "name": "سكرة",
+          "name:ar": "سكرة",
+          "name:en": "La Soukra",
+          "name:fr": "La Soukra",
+          "place": "village",
+          "wikidata": "Q678697",
+          "wikimedia_commons": "Category:La Soukra",
+          "wikipedia": "en:La Soukra"
+        }
+      },
+      "historyFinding": "The authentic village point has always been La Soukra sincecreation2020 at the current coordinate. The originalversion already carried WikidataQ678697; later edits only added English and Wikimedia/Wikipedia links. It was never tagged as a monument, golf facility or named Bassatine component. MEHAT explicitly uses Soukra as a locality and shows inhabited urban land in its delegation while distinguishing the Soukra/Bassatine sectors.",
+      "primaryEvidence": [
+        {
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/derived/mehat-ariana-page-39.txt",
+          "sha256": "42008b6880090e677a02ee8c345e7d4a0b4184a85c4152a93bd487c14bf52e47",
+          "bytes": 3770,
+          "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf",
+          "role": "official_settlement_identity",
+          "requiredText": [
+            "Certaines localités (Soukra, Raoued, Kalaat Andalous) sont"
+          ],
+          "artifactKind": "derived_complete_page_text",
+          "isOriginalHttpResponseBytes": false,
+          "originalPdf": {
+            "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/original/mehat-ariana-atlas.pdf",
+            "sha256": "016eeba3ebac27bc2b38bfda667a0dae1b211e3493ee33b49fb0596c31958800",
+            "bytes": 15340414,
+            "url": "https://www.mehat.gov.tn/wp-content/uploads/2024/02/AtlasArianaFrV2.pdf"
+          },
+          "physicalPage": 39,
+          "printedPage": 34,
+          "qualification": "Historical atlas supports a broader locality and separate administrative sectors; it does not survey the exact village-point position or define one present-day town footprint.",
+          "urlQualification": "URL identifies original PDF; this separate UTF8 artifact is its unrewritten complete page.",
+          "derivationReview": {
+            "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/complete-primary-page-text-provenance.json",
+            "sha256": "0adecc49a779741c5648bab298072413eeb2ef4708f9ac8d481bac52150e25d8",
+            "bytes": 4612
+          }
+        }
+      ],
+      "independentPrimaryConclusion": {
+        "identityDisposition": "BROAD_PLACE_NAME_SUPPORTED_PENDING_FINITE_DISPLAY_CONTRACT",
+        "geometryDisposition": "NO_POINT_BOUNDARY_PROVEN"
+      },
+      "qualification": "The original finite record retains its old epoch fields. The operative proof below binds current f05e metadata through the exact carry and full baseline snapshot."
+    }
+  ],
+  "historicalSourceReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-point-source-review.json",
+    "sha256": "acb85d738ea62d1bfb216420b004148070c1a73bd73d1bc9e9ead385c5b13c60",
+    "bytes": 62389
+  },
+  "independentPrimaryScopeReview": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+    "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07",
+    "bytes": 7728
+  },
+  "currentSourceCarry": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-f05e-source-group-carry.json",
+    "sha256": "f0c772b7d0ffbcf76228baf50f3118155811a2451e9cf6c2e820ae96b1a4ffd3",
+    "bytes": 21438
+  },
+  "sourceRetrieval": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-canonical-response-provenance.json",
+    "sha256": "fab8ccca36d8f076d1d70336cc393bab809266235c5414168514b61711530965",
+    "bytes": 11292
+  },
+  "primaryDerivedEvidence": {
+    "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/complete-primary-page-text-provenance.json",
+    "sha256": "0adecc49a779741c5648bab298072413eeb2ef4708f9ac8d481bac52150e25d8",
+    "bytes": 4612
+  },
+  "excludedHeldCandidate": "osm:node:3145829327",
+  "qualification": "Broad inhabited-place names support display association only. No city/sector/municipality polygon equivalence, point relocation, suburb reclassification or change of prayer source is asserted."
+}
