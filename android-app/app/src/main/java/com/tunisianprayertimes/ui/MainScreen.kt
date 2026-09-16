@@ -1504,13 +1504,13 @@ private fun LocationPickerCard(
     LaunchedEffect(sourcesChecked, allDelegations, selectedLocation) {
         val saved = selectedLocation
         if (!sourcesChecked || saved.fromGps) return@LaunchedEffect
-        val id = saved.localityId?.takeUnless { it.startsWith("delegation:") } ?: return@LaunchedEffect
+        val id = saved.localityId ?: return@LaunchedEffect
         val sources = allDelegations
         val repaired = withContext(Dispatchers.Default) {
-            // A manual locality has a defined representative point. Recompute
-            // after source coordinates change too, even if the old source remains
-            // usable. Legacy GPS selections need their actual fix for this repair.
-            runCatching { LocalityRepository.loadAll(context).find { it.id == id } }.getOrNull()
+            // Manual groups and raw localities both have retained representatives.
+            // Recompute after source changes even when the old source is usable;
+            // GPS selections keep the result of their actual fix and are skipped.
+            runCatching { LocalityRepository.manualSelection(context, id) }.getOrNull()
                 ?.takeIf { it.lat != null && it.lng != null }
                 ?.let { withAvailablePrayerSource(it, sources) }
         } ?: return@LaunchedEffect
