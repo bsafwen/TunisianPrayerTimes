@@ -383,6 +383,9 @@ object PrefsManager {
         val current = getAfterMinutes(context, Prayer.ISHA)
         if (current < RAMADAN_ISHA_MINUTES) {
             setAfterMinutes(context, Prayer.ISHA, RAMADAN_ISHA_MINUTES)
+            // An explicit adhan-relative end would otherwise keep overriding the
+            // legacy duration this override relies on.
+            setEndOffsetMinutes(context, Prayer.ISHA, null)
         }
         prefs(context).edit().putInt(KEY_RAMADAN_OVERRIDE_APPLIED, hijriYear).apply()
     }

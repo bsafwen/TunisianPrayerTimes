@@ -6,24 +6,24 @@
     <string name="prayer_silence_recurrence_adhan">تتكرر يوميًا حسب وقت الأذان</string>
     <string name="prayer_silence_recurrence_fixed">تتكرر يوميًا حسب أوقات ثابتة</string>
     <string name="prayer_silence_recurrence_mixed">تتكرر يوميًا حسب إعداد كل صلاة</string>
-    <string name="prayer_silence_switch">الصمت</string>
-    <string name="prayer_silence_switch_desc">تفعيل الصمت لصلاة %1$s</string>
+    <string name="prayer_silence_switch">الإسكات</string>
+    <string name="prayer_silence_switch_desc">تفعيل الإسكات لصلاة %1$s</string>
     <string name="prayer_silence_start_label">البداية</string>
     <string name="prayer_silence_end_label">النهاية</string>
     <string name="prayer_silence_endpoint_caption">%1$s · %2$s</string>
     <string name="prayer_silence_inline_fixed_value">وقت ثابت · %1$s</string>
     <string name="prayer_silence_adhan_label">الأذان</string>
-    <string name="prayer_silence_scale_before">-%1$d د</string>
-    <string name="prayer_silence_scale_after">+%1$d د</string>
+    <string name="prayer_silence_scale_before">%1$s د</string>
+    <string name="prayer_silence_scale_after">%1$s د</string>
     <string name="prayer_silence_previous_day">اليوم السابق</string>
     <string name="prayer_silence_next_day">اليوم التالي</string>
     <string name="prayer_silence_days_earlier">قبل %1$d أيام</string>
     <string name="prayer_silence_days_later">بعد %1$d أيام</string>
 
-    <string name="prayer_silence_start_field_desc">بداية الصمت لصلاة %1$s، %2$s. اضغط للتعديل بدقة.</string>
-    <string name="prayer_silence_end_field_desc">نهاية الصمت لصلاة %1$s، %2$s. اضغط للتعديل بدقة.</string>
-    <string name="prayer_silence_start_handle_desc">بداية الصمت لصلاة %1$s، %2$s</string>
-    <string name="prayer_silence_end_handle_desc">نهاية الصمت لصلاة %1$s، %2$s</string>
+    <string name="prayer_silence_start_field_desc">بداية الإسكات لصلاة %1$s، %2$s. اضغط للتعديل بدقة.</string>
+    <string name="prayer_silence_end_field_desc">نهاية الإسكات لصلاة %1$s، %2$s. اضغط للتعديل بدقة.</string>
+    <string name="prayer_silence_start_handle_desc">بداية الإسكات لصلاة %1$s، %2$s</string>
+    <string name="prayer_silence_end_handle_desc">نهاية الإسكات لصلاة %1$s، %2$s</string>
     <string name="prayer_silence_window_handle_desc">فترة الصمت لصلاة %1$s، %2$s</string>
     <string name="prayer_silence_track_desc">شريط فترة الصمت لصلاة %1$s</string>
     <string name="prayer_silence_fixed_time_desc">عند وقت ثابت %1$s</string>
@@ -34,8 +34,8 @@
     <string name="prayer_silence_extend_earlier">استمر للسحب إلى وقت أبكر</string>
     <string name="prayer_silence_extend_later">استمر للسحب إلى وقت لاحق</string>
     <string name="prayer_silence_permission_needed">تم حفظ الإعداد، لكن الإسكات التلقائي يحتاج صلاحية عدم الإزعاج والمنبهات الدقيقة.</string>
-    <string name="prayer_silence_saved">تم تعديل فترة الصمت</string>
-    <string name="prayer_silence_save_failed">تعذّر حفظ الإعداد، ولم يتم تغيير فترة الصمت.</string>
+    <string name="prayer_silence_saved">تم تعديل فترة الإسكات</string>
+    <string name="prayer_silence_save_failed">تعذّر حفظ الإعداد، ولم يتم تغيير فترة الإسكات.</string>
 
     <string name="prayer_silence_shared_title">إعداد موحّد لكل الصلوات</string>
     <string name="prayer_silence_shared_body">طبّق فترة نسبية على الصلوات الخمس اليومية. لا يتضمن هذا الإعداد صلاة الجمعة أو صلاة العيد، ولن تتغير حالات التفعيل الفردية.</string>

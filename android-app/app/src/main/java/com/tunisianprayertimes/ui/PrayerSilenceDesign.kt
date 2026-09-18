@@ -34,7 +34,10 @@ internal object PrayerSilenceDimens {
     val FieldMinHeight = 52.dp
     val FieldPaddingHorizontal = 14.dp
     val FieldPaddingVertical = 6.dp
-    val SliderValueLabelHeight = 16.dp
+    // Small permanent gap between the endpoint block and the track. The drag
+    // tooltip is anchored by its bottom edge and borrows the block above instead
+    // of reserving a permanent empty band.
+    val SliderTrackTopClearance = 10.dp
     val SliderTrackHeight = 36.dp
     val SliderLabelsHeight = 16.dp
     val SliderHandleSize = 24.dp

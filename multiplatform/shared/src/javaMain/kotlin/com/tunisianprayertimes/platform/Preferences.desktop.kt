@@ -12,6 +12,7 @@ actual object Preferences {
 
     private const val DEFAULT_DELEGATION_ID = 615
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
+    private const val NO_END_OFFSET = Int.MIN_VALUE
 
     actual fun getDelegationId(): Int = prefs.getInt("delegation_id", DEFAULT_DELEGATION_ID)
     actual fun setDelegationId(id: Int) { prefs.putInt("delegation_id", id); prefs.flush() }
@@ -150,6 +151,9 @@ actual object Preferences {
         prefs.flush()
     }
 
+    private fun getEndOffsetMinutes(prayer: Prayer): Int? =
+        prefs.getInt("end_offset_${prayer.name}", NO_END_OFFSET).takeIf { it != NO_END_OFFSET }
+
     actual fun getConfig(prayer: Prayer): PrayerSilenceConfig {
         return PrayerSilenceConfig(
             mode = getSilenceMode(prayer),
@@ -159,7 +163,8 @@ actual object Preferences {
             delayMode = getDelayMode(prayer),
             delayMinutes = getDelayMinutes(prayer),
             delayFixedHour = getDelayFixedHour(prayer),
-            delayFixedMinute = getDelayFixedMinute(prayer)
+            delayFixedMinute = getDelayFixedMinute(prayer),
+            endOffsetMinutes = getEndOffsetMinutes(prayer)
         )
     }
 }

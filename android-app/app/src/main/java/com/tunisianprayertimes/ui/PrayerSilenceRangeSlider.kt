@@ -193,17 +193,21 @@ internal fun PrayerSilenceRangeSlider(
     )
     val scaleLabelStyle = TextStyle(
         fontSize = PrayerSilenceTypography.ScaleLabel,
+        // Left-to-right so the signed value renders before the "د" unit: "+60 د".
         textDirection = TextDirection.Ltr,
     )
     val tooltipPaddingHorizontal = PrayerSilenceDimens.SliderTooltipPaddingHorizontal
     val tooltipPaddingVertical = PrayerSilenceDimens.SliderTooltipPaddingVertical
     val scaleBeforeText = stringResource(
         R.string.prayer_silence_scale_before,
-        abs(activeScale.startOffsetMinutes),
+        scaleOffsetValue(activeScale.startOffsetMinutes),
     )
-    val scaleAfterText = stringResource(R.string.prayer_silence_scale_after, activeScale.endOffsetMinutes)
-    // Measurement drives both the stable feedback band and the shared legend
-    // baseline, so the layout adapts to font scale instead of fixed heights.
+    val scaleAfterText = stringResource(
+        R.string.prayer_silence_scale_after,
+        scaleOffsetValue(activeScale.endOffsetMinutes),
+    )
+    // Measured with the value style so the drag bubble keeps its exact height when
+    // it is anchored just above the track.
     val tooltipProbeText = stringResource(
         R.string.prayer_silence_value_label,
         "00:00",
@@ -244,9 +248,9 @@ internal fun PrayerSilenceRangeSlider(
             return@forEach
         }
         val text = if (offset > 0) {
-            stringResource(R.string.prayer_silence_scale_after, offset)
+            stringResource(R.string.prayer_silence_scale_after, scaleOffsetValue(offset))
         } else {
-            stringResource(R.string.prayer_silence_scale_before, -offset)
+            stringResource(R.string.prayer_silence_scale_before, scaleOffsetValue(offset))
         }
         legendEntries += LegendEntry(
             offsetMinutes = offset,
@@ -268,11 +272,9 @@ internal fun PrayerSilenceRangeSlider(
     )
     val legendBaselinePx = legendEntries.maxOf { it.layout.firstBaseline }
     val trackHeightPx = with(density) { PrayerSilenceDimens.SliderTrackHeight.toPx() }
-    val valueBandPx = maxOf(
-        tooltipProbe.size.height.toFloat() +
-            with(density) { tooltipPaddingVertical.toPx() } * 2f,
-        with(density) { PrayerSilenceDimens.SliderValueLabelHeight.toPx() },
-    )
+    // Deliberately small permanent clearance above the track: the row reads tighter
+    // and the drag tooltip borrows the endpoint block instead of reserving a band.
+    val trackTopClearancePx = with(density) { PrayerSilenceDimens.SliderTrackTopClearance.toPx() }
     val labelsBandPx = maxOf(
         legendEntries.maxOf { entry ->
             (legendBaselinePx - entry.layout.firstBaseline) + entry.layout.size.height
@@ -280,7 +282,7 @@ internal fun PrayerSilenceRangeSlider(
         with(density) { PrayerSilenceDimens.SliderLabelsHeight.toPx() },
     )
     val sliderHeight = with(density) {
-        (valueBandPx + trackHeightPx + labelsBandPx).toDp()
+        (trackTopClearancePx + trackHeightPx + labelsBandPx).toDp()
     }
 
     BoxWithConstraints(
@@ -296,8 +298,8 @@ internal fun PrayerSilenceRangeSlider(
         val touchRadiusPx = with(density) { (PrayerSilenceDimens.SliderHandleTouchTarget / 2).toPx() }
         val edgeInsetPx = handleRadiusPx + with(density) { 3.dp.toPx() }
         val trackWidthPx = (constraints.maxWidth - edgeInsetPx * 2f).coerceAtLeast(1f)
-        val centerYPx = valueBandPx + trackHeightPx / 2f
-        val labelsTopPx = valueBandPx + trackHeightPx
+        val centerYPx = trackTopClearancePx + trackHeightPx / 2f
+        val labelsTopPx = trackTopClearancePx + trackHeightPx
 
         // Arabic right-to-left timeline: earlier times (negative offsets) are on
         // the physical right, later times on the physical left, and adhan (0)
@@ -751,11 +753,16 @@ internal fun PrayerSilenceRangeSlider(
                 textMeasurer.measure(timeText, valueLabelStyle, maxLines = 1).size.width.toFloat()
             }
             val bubbleWidthPx = chosenTextWidthPx + tooltipPaddingHorizontalPx * 2f
+            val bubbleHeightPx = tooltipProbe.size.height +
+                with(density) { tooltipPaddingVertical.toPx() } * 2f
             val labelLeft = (activeX - bubbleWidthPx / 2f)
                 .coerceIn(0f, (constraints.maxWidth - bubbleWidthPx).coerceAtLeast(0f))
+            // Anchored by its bottom edge: with the tighter row the bubble borrows
+            // the endpoint block above instead of pushing the track down.
+            val labelTop = trackTopClearancePx - bubbleHeightPx
             Box(
                 modifier = Modifier
-                    .absoluteOffset { IntOffset(labelLeft.roundToInt(), 0) }
+                    .absoluteOffset { IntOffset(labelLeft.roundToInt(), labelTop.roundToInt()) }
                     .clip(RoundedCornerShape(9.dp))
                     .background(PrayerSilencePalette.PrimaryText)
                     .padding(horizontal = tooltipPaddingHorizontal, vertical = tooltipPaddingVertical),
@@ -1010,6 +1017,12 @@ private fun DrawScope.drawDiamond(center: Offset, radiusPx: Float, color: Color)
         },
         color,
     )
+}
+
+/** Signed offset value for a scale label; the label renders it before the "د" unit. */
+private fun scaleOffsetValue(offsetMinutes: Int): String {
+    val sign = if (offsetMinutes < 0) "-" else "+"
+    return "$sign${abs(offsetMinutes)}"
 }
 
 @Composable
