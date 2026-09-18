@@ -87,6 +87,7 @@ object SilenceScheduler {
         var nearestImminentDistance = Long.MAX_VALUE
 
         for (prayerTime in scheduledPrayersForDate(context, todayTimes, now, isFriday, jomoaaH, jomoaaM)) {
+            if (!PrefsManager.isPrayerSilenceEnabled(context, prayerTime.prayer)) continue
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
             val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
                 (now.clone() as Calendar).apply {
@@ -102,16 +103,8 @@ object SilenceScheduler {
                     add(Calendar.MINUTE, config.delayMinutes)
                 }
             }
-            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-                (now.clone() as Calendar).apply {
-                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
-                    set(Calendar.MINUTE, config.fixedMinute)
-                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
-                    if (before(silenceTime)) add(Calendar.DAY_OF_YEAR, 1)
-                }
-            } else {
-                (silenceTime.clone() as Calendar).apply { add(Calendar.MINUTE, config.afterMinutes) }
-            }
+            val unsilenceTime = resolveUnsilenceTime(now, prayerTime, silenceTime, config)
+            if (hasInvalidAdhanRelativeEnd(config, silenceTime, unsilenceTime)) continue
             if (!now.before(silenceTime) && now.before(unsilenceTime)) {
                 return prayerTime.prayer
             }
@@ -126,7 +119,7 @@ object SilenceScheduler {
         }
         // If auto-silence is active but we're in the gap between old/new delegation times,
         // return the imminent prayer so the UI can record dismissal correctly.
-        if (carriedEid != null) return carriedEid.prayer
+        if (carriedEid != null && PrefsManager.isPrayerSilenceEnabled(context, carriedEid.prayer)) return carriedEid.prayer
         if (nearestImminentPrayer != null && PrefsManager.isAutoSilenceActive(context)) {
             return nearestImminentPrayer
         }
@@ -168,6 +161,11 @@ object SilenceScheduler {
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
         for (prayerTime in todayTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
+            if (!PrefsManager.isPrayerSilenceEnabled(context, prayerTime.prayer)) {
+                cancelPrayerAlarms(context, prayerTime.prayer)
+                Log.d(TAG, "Prayer ${prayerTime.prayer} silence disabled; alarms cancelled")
+                continue
+            }
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
 
             val prayerStartTime = prayerStartTime(now, prayerTime)
@@ -191,21 +189,12 @@ object SilenceScheduler {
                 }
             }
 
-            // Unsilence based on mode: fixed time or duration (duration is relative to silence start)
-            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-                (now.clone() as Calendar).apply {
-                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
-                    set(Calendar.MINUTE, config.fixedMinute)
-                    set(Calendar.SECOND, 0)
-                    set(Calendar.MILLISECOND, 0)
-                    if (before(silenceTime)) {
-                        add(Calendar.DAY_OF_YEAR, 1)
-                    }
-                }
-            } else {
-                (silenceTime.clone() as Calendar).apply {
-                    add(Calendar.MINUTE, config.afterMinutes)
-                }
+            // Unsilence based on mode: fixed clock, adhan-relative offset, or legacy duration
+            val unsilenceTime = resolveUnsilenceTime(now, prayerTime, silenceTime, config)
+            if (hasInvalidAdhanRelativeEnd(config, silenceTime, unsilenceTime)) {
+                cancelPrayerAlarms(context, prayerTime.prayer)
+                Log.w(TAG, "Invalid adhan-relative window for ${prayerTime.prayer}; skipping")
+                continue
             }
             latestWindowEndMs = maxOf(latestWindowEndMs, unsilenceTime.timeInMillis)
 
@@ -313,6 +302,10 @@ object SilenceScheduler {
         val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
 
         for (prayerTime in tomorrowTimes.scheduledPrayers(isFriday, jomoaaH, jomoaaM)) {
+            if (!PrefsManager.isPrayerSilenceEnabled(context, prayerTime.prayer)) {
+                cancelPrayerAlarms(context, prayerTime.prayer)
+                continue
+            }
             val config = PrefsManager.getConfig(context, prayerTime.prayer)
             val prayerStartTime = prayerStartTime(tomorrow, prayerTime)
             scheduleDelegationCheckIfNeeded(context, now, prayerStartTime, prayerTime.prayer)
@@ -334,20 +327,11 @@ object SilenceScheduler {
                 }
             }
 
-            val unsilenceTime = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-                (tomorrow.clone() as Calendar).apply {
-                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
-                    set(Calendar.MINUTE, config.fixedMinute)
-                    set(Calendar.SECOND, 0)
-                    set(Calendar.MILLISECOND, 0)
-                    if (before(silenceTime)) {
-                        add(Calendar.DAY_OF_YEAR, 1)
-                    }
-                }
-            } else {
-                (silenceTime.clone() as Calendar).apply {
-                    add(Calendar.MINUTE, config.afterMinutes)
-                }
+            val unsilenceTime = resolveUnsilenceTime(tomorrow, prayerTime, silenceTime, config)
+            if (hasInvalidAdhanRelativeEnd(config, silenceTime, unsilenceTime)) {
+                cancelPrayerAlarms(context, prayerTime.prayer)
+                Log.w(TAG, "Invalid adhan-relative window for ${prayerTime.prayer}; skipping tomorrow")
+                continue
             }
 
             if (silenceTime.after(now)) {
@@ -495,6 +479,10 @@ object SilenceScheduler {
     private fun reconcileEidAlarms(context: Context, now: Calendar): List<EidSilenceWindows.Window> {
         val windows = EidSilenceWindows.nearby(context, now)
         for (prayer in EidSilenceWindows.prayers) {
+            if (!PrefsManager.isPrayerSilenceEnabled(context, prayer)) {
+                cancelPrayerAlarms(context, prayer)
+                continue
+            }
             val window = windows.firstOrNull { it.prayer == prayer }
             if (window == null) {
                 // Omitted Eid prayers still have request codes from yesterday's
@@ -582,6 +570,43 @@ object SilenceScheduler {
             set(Calendar.MILLISECOND, 0)
         }
     }
+
+    /**
+     * Same independent end rules as the card: fixed clock, adhan-relative offset,
+     * or the legacy duration measured from the silence start.
+     */
+    private fun resolveUnsilenceTime(
+        day: Calendar,
+        prayerTime: PrayerTime,
+        silenceTime: Calendar,
+        config: PrayerSilenceConfig,
+    ): Calendar {
+        val endOffsetMinutes = config.endOffsetMinutes
+        return when {
+            config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0 ->
+                (day.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
+                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                    if (before(silenceTime)) add(Calendar.DAY_OF_YEAR, 1)
+                }
+            endOffsetMinutes != null ->
+                prayerStartTime(day, prayerTime).apply { add(Calendar.MINUTE, endOffsetMinutes) }
+            else ->
+                (silenceTime.clone() as Calendar).apply { add(Calendar.MINUTE, config.afterMinutes) }
+        }
+    }
+
+    /** Adhan-relative windows that cross over are invalid and must not be scheduled. */
+    private fun hasInvalidAdhanRelativeEnd(
+        config: PrayerSilenceConfig,
+        silenceTime: Calendar,
+        unsilenceTime: Calendar,
+    ): Boolean =
+        config.mode != SilenceMode.FIXED_TIME &&
+            config.endOffsetMinutes != null &&
+            !unsilenceTime.after(silenceTime)
 
     private fun scheduledPrayersForDate(
         context: Context,

@@ -1,9 +1,7 @@
 package com.tunisianprayertimes.ui
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -46,8 +44,6 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.HijriCalendarDate
 import com.tunisianprayertimes.R
-import com.tunisianprayertimes.ui.theme.Gold
-import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.TextMuted
@@ -89,9 +85,8 @@ internal fun DateNavigationRow(
         modifier = Modifier
             .fillMaxWidth()
             .clip(shape)
-            .background(GoldLight.copy(alpha = 0.18f))
-            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.22f)), shape)
-            .padding(6.dp),
+            .background(Color.Transparent)
+            .padding(4.dp),
     ) {
         // Measure the actual text with the user's font settings, including nonlinear
         // scaling. Move controls below when they would crowd the primary date.
@@ -188,9 +183,9 @@ private fun DualDateLabel(date: LocalDate, hijriDate: HijriCalendarDate, modifie
             .clip(RoundedCornerShape(12.dp))
             .clickable(role = Role.Button, onClickLabel = pickerLabel, onClick = onClick)
             .heightIn(min = 48.dp)
-            .padding(horizontal = 8.dp, vertical = 8.dp),
+            .padding(horizontal = 8.dp, vertical = 6.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(3.dp),
+        verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
         Text(
             text = hijriDateLabel(hijriDate),

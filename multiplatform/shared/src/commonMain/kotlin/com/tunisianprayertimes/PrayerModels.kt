@@ -66,6 +66,13 @@ enum class SilenceMode { DURATION, FIXED_TIME }
 
 enum class DelayMode { MINUTES, FIXED_TIME }
 
+/**
+ * One prayer's silence configuration. Start and end are independent:
+ * - [delayMode]/[delayMinutes]/[delayFixedHour]/[delayFixedMinute] describe the start.
+ * - [mode]/[fixedHour]/[fixedMinute] describe a fixed end clock.
+ * - [endOffsetMinutes] optionally replaces the legacy duration end ([afterMinutes])
+ *   with an end that is measured from adhan, independent of the start.
+ */
 data class PrayerSilenceConfig(
     val mode: SilenceMode = SilenceMode.DURATION,
     val afterMinutes: Int = 30,
@@ -74,5 +81,6 @@ data class PrayerSilenceConfig(
     val delayMode: DelayMode = DelayMode.MINUTES,
     val delayMinutes: Int = 0,
     val delayFixedHour: Int = -1,
-    val delayFixedMinute: Int = -1
+    val delayFixedMinute: Int = -1,
+    val endOffsetMinutes: Int? = null,
 )

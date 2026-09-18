@@ -460,6 +460,25 @@ object PrefsManager {
             .apply()
     }
 
+    // --- Independent adhan-relative end offset (null = legacy duration end) ---
+
+    private const val NO_END_OFFSET = Int.MIN_VALUE
+
+    fun getEndOffsetMinutes(context: Context, prayer: Prayer): Int? {
+        val stored = prefs(context).getInt("end_offset_${prayer.name}", NO_END_OFFSET)
+        return stored.takeIf { it != NO_END_OFFSET }
+    }
+
+    fun setEndOffsetMinutes(context: Context, prayer: Prayer, minutes: Int?) {
+        val edit = prefs(context).edit()
+        if (minutes == null) {
+            edit.remove("end_offset_${prayer.name}")
+        } else {
+            edit.putInt("end_offset_${prayer.name}", minutes)
+        }
+        edit.apply()
+    }
+
     fun getConfig(context: Context, prayer: Prayer): PrayerSilenceConfig {
         return PrayerSilenceConfig(
             mode = getSilenceMode(context, prayer),
@@ -469,13 +488,14 @@ object PrefsManager {
             delayMode = getDelayMode(context, prayer),
             delayMinutes = getDelayMinutes(context, prayer),
             delayFixedHour = getDelayFixedHour(context, prayer),
-            delayFixedMinute = getDelayFixedMinute(context, prayer)
+            delayFixedMinute = getDelayFixedMinute(context, prayer),
+            endOffsetMinutes = getEndOffsetMinutes(context, prayer)
         )
     }
 
     /** Publish the whole window together so readers never observe half of an edit. */
     fun setConfig(context: Context, prayer: Prayer, config: PrayerSilenceConfig) {
-        prefs(context).edit()
+        val edit = prefs(context).edit()
             .putString("mode_${prayer.name}", config.mode.name)
             .putInt("after_${prayer.name}", config.afterMinutes)
             .putInt("fixed_hour_${prayer.name}", config.fixedHour)
@@ -484,15 +504,46 @@ object PrefsManager {
             .putInt("delay_${prayer.name}", config.delayMinutes)
             .putInt("delay_fixed_hour_${prayer.name}", config.delayFixedHour)
             .putInt("delay_fixed_minute_${prayer.name}", config.delayFixedMinute)
-            .apply()
+        // Local val: cross-module properties are not smart-castable.
+        val endOffsetMinutes = config.endOffsetMinutes
+        if (endOffsetMinutes == null) {
+            edit.remove("end_offset_${prayer.name}")
+        } else {
+            edit.putInt("end_offset_${prayer.name}", endOffsetMinutes)
+        }
+        edit.apply()
     }
 
     fun observeConfigChanges(context: Context, prayer: Prayer, onChanged: () -> Unit): () -> Unit {
         val settings = prefs(context)
-        val keys = listOf("mode", "after", "fixed_hour", "fixed_minute", "delay_mode", "delay", "delay_fixed_hour", "delay_fixed_minute")
-            .mapTo(mutableSetOf()) { "${it}_${prayer.name}" }
+        val keys = listOf(
+            "mode", "after", "fixed_hour", "fixed_minute", "delay_mode", "delay",
+            "delay_fixed_hour", "delay_fixed_minute", "end_offset",
+        ).mapTo(mutableSetOf()) { "${it}_${prayer.name}" }
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
             if (key == null || key in keys) onChanged()
+        }
+        settings.registerOnSharedPreferenceChangeListener(listener)
+        return { settings.unregisterOnSharedPreferenceChangeListener(listener) }
+    }
+
+    // --- Per-prayer silence enable (independent of the global auto-silence switch) ---
+
+    private fun prayerEnabledKey(prayer: Prayer) = "enabled_${prayer.name}"
+
+    fun isPrayerSilenceEnabled(context: Context, prayer: Prayer): Boolean {
+        return prefs(context).getBoolean(prayerEnabledKey(prayer), true)
+    }
+
+    fun setPrayerSilenceEnabled(context: Context, prayer: Prayer, enabled: Boolean) {
+        prefs(context).edit().putBoolean(prayerEnabledKey(prayer), enabled).apply()
+    }
+
+    fun observePrayerEnabledChanges(context: Context, prayer: Prayer, onChanged: () -> Unit): () -> Unit {
+        val settings = prefs(context)
+        val key = prayerEnabledKey(prayer)
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, changedKey ->
+            if (changedKey == null || changedKey == key) onChanged()
         }
         settings.registerOnSharedPreferenceChangeListener(listener)
         return { settings.unregisterOnSharedPreferenceChangeListener(listener) }

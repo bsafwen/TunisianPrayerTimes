@@ -25,5 +25,7 @@
     <string name="prayer_editor_invalid_window">أكمل القيم الصحيحة لعرض الفترة وحفظها.</string>
     <string name="prayer_editor_mode_unavailable">لا يمكن الاحتفاظ بالفترة الحالية بهذا الخيار. أكمل القيم أو عدّل الفترة أولاً.</string>
     <string name="prayer_editor_save">حفظ</string>
+    <string name="prayer_editor_apply">تطبيق</string>
+    <string name="prayer_editor_clock_title">%1$s — %2$s</string>
     <string name="prayer_editor_cancel">إلغاء</string>
 </resources>

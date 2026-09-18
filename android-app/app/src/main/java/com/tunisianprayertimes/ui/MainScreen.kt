@@ -95,6 +95,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
@@ -770,6 +771,15 @@ fun MainScreen(
                                 prayerTableSelectedDate = startOfDayMillis(selectedDate)
                             },
                             onConfigChanged = {
+                                rescheduleIfEnabled()
+                            },
+                            silencePermissionsGranted = hasDnd && hasAlarm,
+                            onEnableSilenceMaster = {
+                                if (!PrefsManager.isEnabled(context)) {
+                                    autoSilenceEnabled = true
+                                    PrefsManager.setEnabled(context, true)
+                                    AnalyticsTracker.autoSilenceStateChanged(context, true)
+                                }
                                 rescheduleIfEnabled()
                             }
                         )
@@ -1895,11 +1905,15 @@ private fun PrayerSettingsCard(
     onChooseLocation: () -> Unit,
     selectedDate: Long,
     onSelectedDateChange: (Long) -> Unit,
-    onConfigChanged: () -> Unit
+    onConfigChanged: () -> Unit,
+    silencePermissionsGranted: Boolean,
+    onEnableSilenceMaster: () -> Unit,
 ) {
     val context = LocalContext.current
-    var selectedTimelinePrayer by rememberSaveable { mutableStateOf<Prayer?>(null) }
-    LaunchedEffect(selectedDate, delegationId) { selectedTimelinePrayer = null }
+    var refreshTick by remember { mutableIntStateOf(0) }
+    var sharedSheetOpen by rememberSaveable { mutableStateOf(false) }
+    var sharedUndoBefore by remember { mutableStateOf<List<Pair<Prayer, PrayerSilenceConfig>>?>(null) }
+    var sharedUndoAfter by remember { mutableStateOf<List<Pair<Prayer, PrayerSilenceConfig>>?>(null) }
     val correctedCalendar = rememberTunisianHijriCalendar()
     val selectedHijriYear = correctedCalendar.date(calendarLocalDate(selectedDate)).year
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -2070,133 +2084,130 @@ private fun PrayerSettingsCard(
         )
     } else null
 
+    val dailyPrayers = remember { listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA) }
+    val sectionPrayers = remember(isAidFitr, isAidAdha) {
+        buildList {
+            addAll(dailyPrayers)
+            add(Prayer.JOMOAA)
+            if (isAidFitr) add(Prayer.AID_FITR)
+            if (isAidAdha) add(Prayer.AID_ADHA)
+        }
+    }
+    val sectionTimes = mapOf(
+        Prayer.FAJR to displayTimes?.fajr,
+        Prayer.DHUHR to displayTimes?.dhuhr,
+        Prayer.ASR to displayTimes?.asr,
+        Prayer.MAGHRIB to displayTimes?.maghrib,
+        Prayer.ISHA to displayTimes?.isha,
+        Prayer.JOMOAA to PrayerTime(Prayer.JOMOAA, resolvedJomoaaH, resolvedJomoaaM),
+        Prayer.AID_FITR to PrayerTime(Prayer.AID_FITR, resolvedAidFitrH, resolvedAidFitrM),
+        Prayer.AID_ADHA to PrayerTime(Prayer.AID_ADHA, resolvedAidAdhaH, resolvedAidAdhaM),
+    )
+    val timelineScale = remember(
+        displayTimes, refreshTick, selectedDate,
+        jomoaaH, jomoaaM, aidFitrH, aidFitrM, aidAdhaH, aidAdhaM, isAidFitr, isAidAdha,
+    ) {
+        val entries = sectionPrayers.mapNotNull { prayer ->
+            sectionTimes[prayer]
+                ?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
+                ?.let { time -> time to resolvePrayerTimelineWindow(time, PrefsManager.getConfig(context, prayer)) }
+                ?.takeIf { (_, window) -> window.endMinutes >= window.startMinutes }
+        }
+        sharedPrayerTimelineScale(entries)
+    }
+    val anyPrayerEnabled = remember(selectedDate, refreshTick) {
+        dailyPrayers.any { PrefsManager.isPrayerSilenceEnabled(context, it) }
+    }
+    LaunchedEffect(sharedUndoAfter) {
+        if (sharedUndoAfter != null) {
+            delay(6_000L)
+            sharedUndoBefore = null
+            sharedUndoAfter = null
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 8.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(16.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .testTag(TestTags.PRAYER_SETTINGS)
+                .clip(RoundedCornerShape(PrayerSilenceDimens.ContainerCorner))
+                .background(PrayerSilencePalette.Surface)
+                .border(
+                    width = 1.dp,
+                    color = PrayerSilencePalette.SoftBorder,
+                    shape = RoundedCornerShape(PrayerSilenceDimens.ContainerCorner),
+                ),
         ) {
-            Column(
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                    Text(
-                        text = stringResource(R.string.prayer_settings_title),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor,
-                    )
-                    Text(
-                        text = stringResource(R.string.prayer_timeline_subtitle),
-                        fontSize = 12.sp,
-                        color = TextMuted,
-                        lineHeight = 17.sp,
-                    )
-                }
+            Box(modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
+                DateNavigationRow(
+                    delegationId = delegationId,
+                    selectedDate = selectedDate,
+                    isToday = isToday,
+                    canGoBack = canGoBack,
+                    canGoForward = canGoForward,
+                    onPrevious = {
+                        val cal = Calendar.getInstance().apply {
+                            timeInMillis = selectedDate
+                            add(Calendar.DAY_OF_MONTH, -1)
+                        }
+                        onSelectedDateChange(cal.timeInMillis)
+                    },
+                    onNext = {
+                        val cal = Calendar.getInstance().apply {
+                            timeInMillis = selectedDate
+                            add(Calendar.DAY_OF_MONTH, 1)
+                        }
+                        onSelectedDateChange(cal.timeInMillis)
+                    },
+                    onDateSelected = { millis -> onSelectedDateChange(millis) }
+                )
+            }
 
-            // Date navigation
-            DateNavigationRow(
-                delegationId = delegationId,
-                selectedDate = selectedDate,
-                isToday = isToday,
-                canGoBack = canGoBack,
-                canGoForward = canGoForward,
-                onPrevious = {
-                    val cal = Calendar.getInstance().apply {
-                        timeInMillis = selectedDate
-                        add(Calendar.DAY_OF_MONTH, -1)
-                    }
-                    onSelectedDateChange(cal.timeInMillis)
-                },
-                onNext = {
-                    val cal = Calendar.getInstance().apply {
-                        timeInMillis = selectedDate
-                        add(Calendar.DAY_OF_MONTH, 1)
-                    }
-                    onSelectedDateChange(cal.timeInMillis)
-                },
-                onDateSelected = { millis -> onSelectedDateChange(millis) }
-            )
+            RecurrenceInfoStrip(R.string.prayer_silence_recurrence_general)
 
             if (displayTimes != null) {
-                val prayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-                prayers.forEachIndexed { index, prayer ->
-                    val prayerTime = displayTimes.allPrayers().find { it.prayer == prayer }
-                    val nextPrayerTime = if (index < prayers.size - 1) {
-                        displayTimes.allPrayers().find { it.prayer == prayers[index + 1] }
-                    } else nextDayFajr
-                    key(prayer) {
-                        PrayerRow(
-                            prayer = prayer,
-                            prayerName = prayerNames[prayer] ?: prayer.name,
-                            prayerTime = prayerTime,
-                            nextPrayerTime = nextPrayerTime,
-                            nextPrayerIsTomorrow = index == prayers.lastIndex,
-                            isNextPrayer = prayer == nextPrayer,
-                            selected = selectedTimelinePrayer == prayer,
-                            onSelect = { selectedTimelinePrayer = prayer },
-                            onDeselect = { selectedTimelinePrayer = null },
-                            onConfigChanged = onConfigChanged,
-                        )
-                    }
-                    if (index < prayers.lastIndex) {
-                        HorizontalDivider(color = Divider.copy(alpha = 0.6f), thickness = 1.dp)
-                    }
-                }
+                PrayerSilenceHint()
 
-                // JOMOAA row — always shown as the last row, time editable
-                HorizontalDivider(color = Divider, thickness = 1.dp)
-                key("jomoaa", jomoaaH, jomoaaM) {
-                    PrayerRow(
-                        prayer = Prayer.JOMOAA,
-                        prayerName = prayerNames[Prayer.JOMOAA] ?: Prayer.JOMOAA.name,
-                        prayerTime = PrayerTime(Prayer.JOMOAA, resolvedJomoaaH, resolvedJomoaaM),
-                        nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.ASR },
-                        isNextPrayer = Prayer.JOMOAA == nextPrayer,
-                        selected = selectedTimelinePrayer == Prayer.JOMOAA,
-                        onSelect = { selectedTimelinePrayer = Prayer.JOMOAA },
-                        onDeselect = { selectedTimelinePrayer = null },
-                        onConfigChanged = onConfigChanged,
-                        onPrayerTimeClick = {
-                            val picker = MaterialTimePicker.Builder()
-                                .setTimeFormat(TimeFormat.CLOCK_24H)
-                                .setHour(resolvedJomoaaH.coerceAtLeast(0))
-                                .setMinute(resolvedJomoaaM.coerceAtLeast(0))
-                                .setTitleText(context.getString(R.string.pick_jomoaa_time))
-                                .build()
-                            picker.addOnPositiveButtonClickListener {
-                                jomoaaH = picker.hour
-                                jomoaaM = picker.minute
-                                PrefsManager.setJomoaaTime(context, picker.hour, picker.minute)
-                                onConfigChanged()
+                sectionPrayers.forEachIndexed { index, prayer ->
+                    if (index > 0) {
+                        HorizontalDivider(color = PrayerSilencePalette.SoftBorder, thickness = 1.dp)
+                    }
+                    val prayerTime = sectionTimes[prayer]
+                    val nextPrayerTime = when (prayer) {
+                        Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB -> sectionTimes[
+                            dailyPrayers[dailyPrayers.indexOf(prayer) + 1]
+                        ]
+                        Prayer.ISHA -> nextDayFajr
+                        Prayer.JOMOAA -> displayTimes.allPrayers().find { it.prayer == Prayer.ASR }
+                        Prayer.AID_FITR, Prayer.AID_ADHA -> displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR }
+                    }
+                    val nextPrayerIsTomorrow = prayer == Prayer.ISHA
+                    val onTimeClick: (() -> Unit)? = when (prayer) {
+                        Prayer.JOMOAA -> {
+                            {
+                                val picker = MaterialTimePicker.Builder()
+                                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                                    .setHour(resolvedJomoaaH.coerceAtLeast(0))
+                                    .setMinute(resolvedJomoaaM.coerceAtLeast(0))
+                                    .setTitleText(context.getString(R.string.pick_jomoaa_time))
+                                    .build()
+                                picker.addOnPositiveButtonClickListener {
+                                    jomoaaH = picker.hour
+                                    jomoaaM = picker.minute
+                                    PrefsManager.setJomoaaTime(context, picker.hour, picker.minute)
+                                    refreshTick++
+                                    onConfigChanged()
+                                }
+                                picker.show(activity.supportFragmentManager, "jomoaa_time_picker")
                             }
-                            picker.show(activity.supportFragmentManager, "jomoaa_time_picker")
                         }
-                    )
-                }
-
-                // AID FITR row — shown only on 1 Shawwal
-                if (isAidFitr) {
-                    HorizontalDivider(color = Divider, thickness = 1.dp)
-                    key("aid_fitr", aidFitrH, aidFitrM) {
-                        PrayerRow(
-                            prayer = Prayer.AID_FITR,
-                            prayerName = prayerNames[Prayer.AID_FITR] ?: Prayer.AID_FITR.name,
-                            prayerTime = PrayerTime(Prayer.AID_FITR, resolvedAidFitrH, resolvedAidFitrM),
-                            nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
-                            isNextPrayer = false,
-                            selected = selectedTimelinePrayer == Prayer.AID_FITR,
-                            onSelect = { selectedTimelinePrayer = Prayer.AID_FITR },
-                            onDeselect = { selectedTimelinePrayer = null },
-                            onConfigChanged = onConfigChanged,
-                            onPrayerTimeClick = {
+                        Prayer.AID_FITR -> {
+                            {
                                 val picker = MaterialTimePicker.Builder()
                                     .setTimeFormat(TimeFormat.CLOCK_24H)
                                     .setHour(resolvedAidFitrH.coerceAtLeast(0))
@@ -2207,29 +2218,14 @@ private fun PrayerSettingsCard(
                                     aidFitrH = picker.hour
                                     aidFitrM = picker.minute
                                     PrefsManager.setAidFitrTime(context, picker.hour, picker.minute)
+                                    refreshTick++
                                     onConfigChanged()
                                 }
                                 picker.show(activity.supportFragmentManager, "aid_fitr_time_picker")
                             }
-                        )
-                    }
-                }
-
-                // AID ADHA row — shown only on 10 Dhul Hijjah
-                if (isAidAdha) {
-                    HorizontalDivider(color = Divider, thickness = 1.dp)
-                    key("aid_adha", aidAdhaH, aidAdhaM) {
-                        PrayerRow(
-                            prayer = Prayer.AID_ADHA,
-                            prayerName = prayerNames[Prayer.AID_ADHA] ?: Prayer.AID_ADHA.name,
-                            prayerTime = PrayerTime(Prayer.AID_ADHA, resolvedAidAdhaH, resolvedAidAdhaM),
-                            nextPrayerTime = displayTimes.allPrayers().find { it.prayer == Prayer.DHUHR },
-                            isNextPrayer = false,
-                            selected = selectedTimelinePrayer == Prayer.AID_ADHA,
-                            onSelect = { selectedTimelinePrayer = Prayer.AID_ADHA },
-                            onDeselect = { selectedTimelinePrayer = null },
-                            onConfigChanged = onConfigChanged,
-                            onPrayerTimeClick = {
+                        }
+                        Prayer.AID_ADHA -> {
+                            {
                                 val picker = MaterialTimePicker.Builder()
                                     .setTimeFormat(TimeFormat.CLOCK_24H)
                                     .setHour(resolvedAidAdhaH.coerceAtLeast(0))
@@ -2240,24 +2236,304 @@ private fun PrayerSettingsCard(
                                     aidAdhaH = picker.hour
                                     aidAdhaM = picker.minute
                                     PrefsManager.setAidAdhaTime(context, picker.hour, picker.minute)
+                                    refreshTick++
                                     onConfigChanged()
                                 }
                                 picker.show(activity.supportFragmentManager, "aid_adha_time_picker")
                             }
+                        }
+                        else -> null
+                    }
+                    key(prayer) {
+                        if (prayer == Prayer.JOMOAA) {
+                            FridayConfigurationLabel()
+                        }
+                        PrayerRow(
+                            prayer = prayer,
+                            prayerName = prayerNames[prayer] ?: prayer.name,
+                            prayerTime = prayerTime,
+                            nextPrayerTime = nextPrayerTime,
+                            nextPrayerIsTomorrow = nextPrayerIsTomorrow,
+                            isNextPrayer = prayer == nextPrayer,
+                            onConfigChanged = {
+                                refreshTick++
+                                onConfigChanged()
+                            },
+                            onPrayerTimeClick = onTimeClick,
+                            timelineScale = timelineScale,
+                            silencePermissionsGranted = silencePermissionsGranted,
+                            onEnableSilenceMaster = {
+                                refreshTick++
+                                onEnableSilenceMaster()
+                            },
                         )
                     }
                 }
+
+                HorizontalDivider(color = PrayerSilencePalette.SoftBorder, thickness = 1.dp)
+
+                SharedSettingsAction(onClick = { sharedSheetOpen = true })
+
+                if (!silencePermissionsGranted && anyPrayerEnabled) {
+                    Text(
+                        text = stringResource(R.string.prayer_silence_permission_needed),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(SilenceRed.copy(alpha = 0.06f))
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        fontSize = 12.sp,
+                        color = SilenceRed,
+                        lineHeight = 17.sp,
+                    )
+                }
+
+                if (sharedUndoBefore != null && sharedUndoAfter != null) {
+                    FlowRow(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(GreenPrimary.copy(alpha = 0.06f))
+                            .padding(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.prayer_silence_shared_applied),
+                            modifier = Modifier.align(Alignment.CenterVertically),
+                            fontSize = 12.sp,
+                            color = TextMuted,
+                        )
+                        TextButton(
+                            onClick = {
+                                sharedUndoBefore?.forEach { (prayer, config) ->
+                                    persistPrayerSilenceConfig(context, prayer, config)
+                                }
+                                sharedUndoBefore = null
+                                sharedUndoAfter = null
+                                refreshTick++
+                                onConfigChanged()
+                            },
+                            modifier = Modifier.heightIn(min = 48.dp),
+                        ) {
+                            Text(stringResource(R.string.prayer_silence_undo), color = GreenPrimaryDark)
+                        }
+                    }
+                }
             } else {
-                PrayerDataUnavailable(
-                    isToday = isToday,
-                    onReturnToToday = { onSelectedDateChange(startOfDayMillis(System.currentTimeMillis())) },
-                    onChooseLocation = onChooseLocation,
-                )
+                Box(modifier = Modifier.padding(vertical = 12.dp)) {
+                    PrayerDataUnavailable(
+                        isToday = isToday,
+                        onReturnToToday = { onSelectedDateChange(startOfDayMillis(System.currentTimeMillis())) },
+                        onChooseLocation = onChooseLocation,
+                    )
+                }
             }
         }
     }
+
+    if (sharedSheetOpen) {
+        val sharedTimes = dailyPrayers.mapNotNull { prayer ->
+            sectionTimes[prayer]
+                ?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
+                ?.let { prayer to it }
+        }.toMap()
+        val sharedInitial = remember(sharedSheetOpen, refreshTick, selectedDate, delegationId) {
+            val entries = sharedTimes.map { (prayer, time) ->
+                time to PrefsManager.getConfig(context, prayer)
+            }
+            fun uniformStart(): Pair<EndpointRuleMode, Int>? {
+                if (entries.isEmpty()) return null
+                if (entries.all { (_, config) -> config.startRuleMode() == EndpointRuleMode.ADHAN }) {
+                    val offsets = entries.map { (time, config) ->
+                        val window = resolvePrayerTimelineWindow(time, config)
+                        window.startMinutes - prayerMinutesOfDay(time)
+                    }
+                    return offsets.distinct().singleOrNull()?.let { EndpointRuleMode.ADHAN to it }
+                }
+                if (entries.all { (_, config) -> config.startRuleMode() == EndpointRuleMode.FIXED_TIME }) {
+                    val clocks = entries.map { (_, config) -> config.delayFixedHour * 60 + config.delayFixedMinute }
+                    return clocks.distinct().singleOrNull()?.let { EndpointRuleMode.FIXED_TIME to it }
+                }
+                return null
+            }
+            fun uniformEnd(): Pair<EndpointRuleMode, Int>? {
+                if (entries.isEmpty()) return null
+                if (entries.all { (_, config) -> config.endRuleMode() == EndpointRuleMode.ADHAN }) {
+                    val offsets = entries.map { (time, config) ->
+                        val window = resolvePrayerTimelineWindow(time, config)
+                        window.endMinutes - prayerMinutesOfDay(time)
+                    }
+                    return offsets.distinct().singleOrNull()?.let { EndpointRuleMode.ADHAN to it }
+                }
+                if (entries.all { (_, config) -> config.endRuleMode() == EndpointRuleMode.FIXED_TIME }) {
+                    val clocks = entries.map { (_, config) -> config.fixedHour * 60 + config.fixedMinute }
+                    return clocks.distinct().singleOrNull()?.let { EndpointRuleMode.FIXED_TIME to it }
+                }
+                return null
+            }
+            val start = uniformStart() ?: (EndpointRuleMode.ADHAN to 0)
+            val end = uniformEnd() ?: (EndpointRuleMode.ADHAN to 30)
+            val fallbackStartClock = entries.firstOrNull()?.let { (time, config) ->
+                Math.floorMod(resolvePrayerTimelineWindow(time, config).startMinutes, 1440)
+            } ?: 0
+            val fallbackEndClock = entries.firstOrNull()?.let { (time, config) ->
+                Math.floorMod(resolvePrayerTimelineWindow(time, config).endMinutes, 1440)
+            } ?: 0
+            SharedSilenceRuleDraft(
+                startMode = start.first,
+                startOffsetMinutes = if (start.first == EndpointRuleMode.ADHAN) start.second else 0,
+                startClockMinutes = if (start.first == EndpointRuleMode.FIXED_TIME) start.second else fallbackStartClock,
+                endMode = end.first,
+                endOffsetMinutes = if (end.first == EndpointRuleMode.ADHAN) end.second else 30,
+                endClockMinutes = if (end.first == EndpointRuleMode.FIXED_TIME) end.second else fallbackEndClock,
+            )
+        }
+        SharedSilenceSettingsSheet(
+            prayerNames = dailyPrayers.map { it to (prayerNames[it] ?: it.name) },
+            prayerTimes = sharedTimes,
+            initialDraft = sharedInitial,
+            onDismiss = { sharedSheetOpen = false },
+            onApply = { prayers, draft ->
+                val previous = prayers.map { it to PrefsManager.getConfig(context, it) }
+                val intended = prayers.mapNotNull { prayer ->
+                    val time = sharedTimes[prayer] ?: return@mapNotNull null
+                    prayer to draft.applyTo(PrefsManager.getConfig(context, prayer), time)
+                }.toMap()
+                intended.forEach { (prayer, config) ->
+                    persistPrayerSilenceConfig(context, prayer, config)
+                }
+                val persisted = intended.size == prayers.size && intended.all { (prayer, config) ->
+                    PrefsManager.getConfig(context, prayer) == config
+                }
+                if (!persisted) {
+                    previous.forEach { (prayer, config) ->
+                        persistPrayerSilenceConfig(context, prayer, config)
+                    }
+                    sharedUndoBefore = null
+                    sharedUndoAfter = null
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.prayer_silence_save_failed),
+                        Toast.LENGTH_LONG,
+                    ).show()
+                } else {
+                    sharedUndoBefore = previous
+                    sharedUndoAfter = intended.map { (prayer, config) -> prayer to config }
+                }
+                sharedSheetOpen = false
+                refreshTick++
+                onConfigChanged()
+            },
+        )
+    }
 }
 
+@Composable
+private fun FridayConfigurationLabel() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                start = PrayerSilenceDimens.SectionHorizontalPadding,
+                end = PrayerSilenceDimens.SectionHorizontalPadding,
+                top = 6.dp,
+            ),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.prayer_silence_friday_section),
+            fontSize = 13.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = PrayerSilencePalette.PrimaryText,
+        )
+        Text(
+            text = stringResource(R.string.prayer_silence_friday_scope),
+            fontSize = 11.sp,
+            color = PrayerSilencePalette.SecondaryText,
+        )
+    }
+}
+
+@Composable
+private fun RecurrenceInfoStrip(textRes: Int) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(PrayerSilencePalette.TintedStrip)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.ic_repeat),
+            contentDescription = null,
+            tint = PrayerSilencePalette.InteractiveTeal,
+            modifier = Modifier.size(15.dp),
+        )
+        Spacer(Modifier.width(6.dp))
+        Text(
+            text = stringResource(textRes),
+            fontSize = PrayerSilenceTypography.Recurrence,
+            color = PrayerSilencePalette.PrimaryText,
+            textAlign = TextAlign.Center,
+            lineHeight = 19.sp,
+        )
+    }
+}
+
+@Composable
+private fun SharedSettingsAction(onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(role = Role.Button, onClick = onClick)
+            .heightIn(min = PrayerSilenceDimens.MinTouchTarget)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.ic_tune),
+            contentDescription = null,
+            tint = PrayerSilencePalette.InteractiveTeal,
+            modifier = Modifier.size(18.dp),
+        )
+        Spacer(Modifier.width(6.dp))
+        Text(
+            text = stringResource(R.string.prayer_silence_shared_action),
+            fontSize = 15.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = PrayerSilencePalette.InteractiveTeal,
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+
+@Composable
+private fun PrayerSilenceHint() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = PrayerSilenceDimens.SectionHorizontalPadding, vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.ic_info_outline),
+            contentDescription = null,
+            tint = PrayerSilencePalette.SecondaryText,
+            modifier = Modifier.size(14.dp),
+        )
+        Spacer(Modifier.width(6.dp))
+        Text(
+            text = stringResource(R.string.prayer_silence_hint),
+            fontSize = PrayerSilenceTypography.Hint,
+            color = PrayerSilencePalette.SecondaryText,
+            textAlign = TextAlign.Center,
+            lineHeight = 18.sp,
+        )
+    }
 }
 
 private data class NightThirdSegment(
@@ -4862,34 +5138,63 @@ private fun PrayerRow(
     nextPrayerIsTomorrow: Boolean = false,
     isNextPrayer: Boolean,
     highlighted: Boolean = false,
-    selected: Boolean = false,
-    onSelect: () -> Unit = {},
-    onDeselect: (() -> Unit)? = null,
     draftSilenceConfig: PrayerSilenceConfig? = null,
     onDraftSilenceConfigChange: ((PrayerSilenceConfig) -> Unit)? = null,
     onConfigChanged: () -> Unit,
     onPrayerTimeClick: (() -> Unit)? = null,
+    timelineScale: PrayerTimelineScale? = null,
+    showEnableSwitch: Boolean = true,
+    silencePermissionsGranted: Boolean = true,
+    onEnableSilenceMaster: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
     val usesDraft = draftSilenceConfig != null && onDraftSilenceConfigChange != null
     var savedConfig by remember(context, prayer) { mutableStateOf(PrefsManager.getConfig(context, prayer)) }
     val config = if (usesDraft) requireNotNull(draftSilenceConfig) else savedConfig
-    var editorOpen by rememberSaveable(prayer) { mutableStateOf(false) }
+    var prayerEnabled by remember(context, prayer) {
+        mutableStateOf(PrefsManager.isPrayerSilenceEnabled(context, prayer))
+    }
+    var editorEndpoint by rememberSaveable(prayer) { mutableStateOf<SilenceEndpoint?>(null) }
+    var expanded by rememberSaveable(prayer) { mutableStateOf(false) }
+    var previewWindow by remember(prayer) { mutableStateOf<PrayerTimelineWindow?>(null) }
     var undoBefore by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
     var undoAfter by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
+    val currentConfig by rememberUpdatedState(config)
 
     DisposableEffect(context, prayer, usesDraft) {
-        val stopObserving = if (usesDraft) ({}) else {
+        val stopObservingConfig = if (usesDraft) {
+            ({})
+        } else {
             PrefsManager.observeConfigChanges(context, prayer) {
                 savedConfig = PrefsManager.getConfig(context, prayer)
             }
         }
-        onDispose { stopObserving() }
+        val stopObservingEnabled = if (usesDraft) {
+            ({})
+        } else {
+            PrefsManager.observePrayerEnabledChanges(context, prayer) {
+                prayerEnabled = PrefsManager.isPrayerSilenceEnabled(context, prayer)
+            }
+        }
+        onDispose {
+            stopObservingConfig()
+            stopObservingEnabled()
+        }
     }
     LaunchedEffect(config) {
+        previewWindow = null
         if (undoAfter != null && config != undoAfter) {
             undoBefore = null
             undoAfter = null
+        }
+    }
+    LaunchedEffect(undoAfter) {
+        if (undoAfter != null) {
+            delay(6_000L)
+            if (undoAfter == currentConfig) {
+                undoBefore = null
+                undoAfter = null
+            }
         }
     }
 
@@ -4899,6 +5204,19 @@ private fun PrayerRow(
         } else {
             savedConfig = updated
             persistPrayerSilenceConfig(context, prayer, updated)
+            val persisted = PrefsManager.getConfig(context, prayer)
+            if (persisted != updated) {
+                savedConfig = persisted
+                undoBefore = null
+                undoAfter = null
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.prayer_silence_save_failed),
+                    Toast.LENGTH_LONG,
+                ).show()
+                onConfigChanged()
+                return
+            }
         }
         onConfigChanged()
     }
@@ -4912,7 +5230,18 @@ private fun PrayerRow(
     }
 
     val validPrayerTime = prayerTime?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
-    val window = validPrayerTime?.let { resolvePrayerTimelineWindow(it, config) }
+    val savedWindow = validPrayerTime?.let { resolvePrayerTimelineWindow(it, config) }
+    val window = previewWindow ?: savedWindow
+    val scale = timelineScale ?: remember(validPrayerTime, savedWindow) {
+        if (validPrayerTime != null && savedWindow != null) {
+            sharedPrayerTimelineScale(listOf(validPrayerTime to savedWindow))
+        } else {
+            PrayerTimelineScale(
+                DEFAULT_TIMELINE_START_OFFSET_MINUTES,
+                DEFAULT_TIMELINE_END_OFFSET_MINUTES,
+            )
+        }
+    }
     val warningRes = when {
         window == null -> null
         window.endMinutes < window.startMinutes -> R.string.prayer_timeline_invalid_window
@@ -4922,37 +5251,60 @@ private fun PrayerRow(
         }
         else -> null
     }
-    val rowBackground = when {
-        highlighted -> GoldLight.copy(alpha = 0.30f)
-        selected -> GreenPrimary.copy(alpha = 0.035f)
-        else -> Color.Transparent
-    }
     Column(
-        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp))
-            .background(rowBackground)
-            .border(1.dp, if (selected) GreenPrimary.copy(alpha = 0.18f) else Color.Transparent, RoundedCornerShape(12.dp))
-            .padding(horizontal = 10.dp, vertical = 12.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(if (highlighted) GoldLight.copy(alpha = 0.30f) else Color.Transparent),
     ) {
-        PrayerTimelineRowHeader(
-            prayer = prayer,
-            prayerName = prayerName,
-            time = validPrayerTime?.let { String.format(Locale.US, "%02d:%02d", it.hour, it.minute) } ?: "--:--",
-            isNextPrayer = isNextPrayer,
-            onPrayerTimeClick = onPrayerTimeClick,
-        )
-        if (validPrayerTime != null) {
-            PrayerSilenceTimeline(
+        if (validPrayerTime != null && window != null) {
+            PrayerSilenceSection(
+                prayer = prayer,
+                prayerName = prayerName,
                 prayerTime = validPrayerTime,
                 config = config,
-                selected = selected,
-                onSelect = onSelect,
-                onCommit = ::commitConfig,
-                onEdit = { onSelect(); editorOpen = true },
-                onDeselect = onDeselect,
+                window = window,
+                scale = scale,
+                enabled = if (usesDraft) true else prayerEnabled,
+                showSwitch = showEnableSwitch && !usesDraft,
+                isNextPrayer = isNextPrayer,
+                expanded = expanded,
+                onExpandedChange = { expanded = it },
+                onEnabledChange = { newValue ->
+                    prayerEnabled = newValue
+                    PrefsManager.setPrayerSilenceEnabled(context, prayer, newValue)
+                    if (newValue && !PrefsManager.isEnabled(context)) {
+                        onEnableSilenceMaster?.invoke()
+                    }
+                    onConfigChanged()
+                    if (newValue && !silencePermissionsGranted) {
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.prayer_silence_permission_needed),
+                            Toast.LENGTH_LONG,
+                        ).show()
+                    }
+                },
+                onPreviewWindow = { previewWindow = it },
+                onCommitWindow = { candidate ->
+                    previewWindow = null
+                    prayerTimelineConfigForWindow(validPrayerTime, config, candidate)?.let { updated ->
+                        commitConfig(updated)
+                    }
+                },
+                onCommitConfig = { updated -> commitConfig(updated) },
+                onEditEndpoint = { endpoint -> editorEndpoint = endpoint },
+                onPrayerTimeClick = onPrayerTimeClick,
             )
         } else {
-            Text(stringResource(R.string.no_prayer_data), fontSize = 13.sp, color = TextMuted)
+            Text(
+                text = stringResource(R.string.no_prayer_data),
+                fontSize = 13.sp,
+                color = TextMuted,
+                modifier = Modifier.padding(
+                    horizontal = PrayerSilenceDimens.SectionHorizontalPadding,
+                    vertical = PrayerSilenceDimens.SectionVerticalPadding,
+                ),
+            )
         }
         warningRes?.let {
             Text(
@@ -4965,7 +5317,7 @@ private fun PrayerRow(
                 lineHeight = 18.sp,
             )
         }
-        if (selected && undoBefore != null && undoAfter == config) {
+        if (undoBefore != null && undoAfter == config) {
             FlowRow(
                 modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp))
                     .background(GreenPrimary.copy(alpha = 0.06f)).padding(horizontal = 10.dp),
@@ -4973,7 +5325,7 @@ private fun PrayerRow(
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Text(
-                    text = stringResource(R.string.prayer_timeline_saved),
+                    text = stringResource(R.string.prayer_silence_saved),
                     modifier = Modifier.align(Alignment.CenterVertically),
                     fontSize = 12.sp,
                     color = TextMuted,
@@ -4988,19 +5340,21 @@ private fun PrayerRow(
                     },
                     modifier = Modifier.heightIn(min = 48.dp).testTag("prayer_timeline_undo_${prayer.name}"),
                 ) {
-                    Text(stringResource(R.string.prayer_timeline_undo), color = GreenPrimaryDark)
+                    Text(stringResource(R.string.prayer_silence_undo), color = GreenPrimaryDark)
                 }
             }
         }
     }
-    if (editorOpen && validPrayerTime != null) {
+    val currentEditorEndpoint = editorEndpoint
+    if (currentEditorEndpoint != null && validPrayerTime != null) {
         PrayerSilenceEditorSheet(
             prayer = prayer,
             prayerName = prayerName,
             prayerTime = validPrayerTime,
             config = config,
-            onDismiss = { editorOpen = false },
-            onSave = { updated -> commitConfig(updated); editorOpen = false },
+            endpoint = currentEditorEndpoint,
+            onDismiss = { editorEndpoint = null },
+            onSave = { updated -> commitConfig(updated); editorEndpoint = null },
         )
     }
 }
@@ -5064,11 +5418,11 @@ private fun WakeSilenceConflictPrayerEditor(
             nextPrayerTime = nextPrayerTime,
             nextPrayerIsTomorrow = prayerIndex == scheduledPrayers.lastIndex,
             isNextPrayer = false,
-            selected = true,
             highlighted = false,
             draftSilenceConfig = editorState.draftSilenceConfig,
             onDraftSilenceConfigChange = onConfigChanged,
             onConfigChanged = {},
+            showEnableSwitch = false,
         )
     }
 }
