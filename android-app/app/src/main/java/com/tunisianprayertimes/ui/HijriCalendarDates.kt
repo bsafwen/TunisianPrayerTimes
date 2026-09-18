@@ -32,10 +32,20 @@ internal fun calendarLocalDate(timeMillis: Long): LocalDate =
 internal fun calendarDateMillis(date: LocalDate): Long =
     date.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
 
+// CLDR localizes Hijri month 4 as "ربيع الآخر" (Rabiʿ al-Akhir). Tunisian usage prefers
+// "ربيع الثاني" (Rabiʿ al-Thani), and the platform exposes no way to request the
+// alternate name, so we override the months where the two differ.
+private val hijriMonthNameOverrides = mapOf(
+    4 to "ربيع الثاني",
+)
+
 // Only use the built-in chronology to localize a month name. An official Tunisian
 // month can contain day 30 even when that same Umm al-Qura month has only 29 days.
-internal fun hijriMonthLabel(year: Int, month: Int): String =
-    "${hijriMonthFormatter.format(HijrahDate.of(year, month, 1))} $year هـ"
+internal fun hijriMonthLabel(year: Int, month: Int): String {
+    val name = hijriMonthNameOverrides[month]
+        ?: hijriMonthFormatter.format(HijrahDate.of(year, month, 1))
+    return "$name $year هـ"
+}
 
 internal fun hijriDateLabel(date: HijriCalendarDate): String =
     "${date.day} ${hijriMonthLabel(date.year, date.month)}"
