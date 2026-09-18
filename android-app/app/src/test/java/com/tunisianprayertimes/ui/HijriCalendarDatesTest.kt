@@ -51,6 +51,11 @@ class HijriCalendarDatesTest {
     }
 
     @Test
+    fun fourthHijriMonthUsesTunisianNaming() {
+        assertEquals("ربيع الثاني 1447 هـ", hijriMonthLabel(1447, 4))
+    }
+
+    @Test
     fun dateLabelsDistinguishHijriAndSolarYearsUsingLatinDigits() {
         assertTrue(hijriDateLabel(HijriCalendarDate(1447, 9, 1, false)).endsWith("1447 هـ"))
         assertTrue(gregorianDateLabel(LocalDate.of(2026, 2, 19)).endsWith("2026 م"))
