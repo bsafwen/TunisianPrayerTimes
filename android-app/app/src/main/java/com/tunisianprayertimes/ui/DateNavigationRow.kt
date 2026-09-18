@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.HijriCalendarDate
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.TextMuted
@@ -85,7 +86,7 @@ internal fun DateNavigationRow(
         modifier = Modifier
             .fillMaxWidth()
             .clip(shape)
-            .background(Color.Transparent)
+            .background(GoldLight.copy(alpha = 0.18f))
             .padding(4.dp),
     ) {
         // Measure the actual text with the user's font settings, including nonlinear
