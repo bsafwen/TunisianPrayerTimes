@@ -87,6 +87,12 @@
     <string name="prayer_editor_at_adhan">مع الأذان</string>
     <string name="prayer_editor_editing_start">تعديل بداية الصمت · الأذان %1$s</string>
     <string name="prayer_editor_editing_end">تعديل نهاية الصمت · الأذان %1$s</string>
+    <string name="prayer_silence_explain_follows_adhan">يتبع موعد الأذان</string>
+    <string name="prayer_silence_explain_fixed">يبقى عند %1$s حتى لو تغيّر موعد الأذان</string>
+    <string name="prayer_editor_result_label">للتاريخ المعروض</string>
+    <string name="prayer_editor_invalid_time">أدخل وقتاً صالحاً: الساعة من 0 إلى 23 والدقيقة من 0 إلى 59.</string>
+    <string name="prayer_editor_hour_label">الساعة</string>
+    <string name="prayer_editor_minute_label">الدقيقة</string>
 
     <plurals name="prayer_silence_duration_minutes">
         <item quantity="zero">0 دقيقة</item>

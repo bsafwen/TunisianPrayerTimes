@@ -5056,7 +5056,6 @@ private fun PrayerRow(
         mutableStateOf(PrefsManager.isPrayerSilenceEnabled(context, prayer))
     }
     var editorEndpoint by rememberSaveable(prayer) { mutableStateOf<SilenceEndpoint?>(null) }
-    var expanded by rememberSaveable(prayer) { mutableStateOf(false) }
     var previewWindow by remember(prayer) { mutableStateOf<PrayerTimelineWindow?>(null) }
     var undoBefore by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
     var undoAfter by remember(prayer) { mutableStateOf<PrayerSilenceConfig?>(null) }
@@ -5099,7 +5098,7 @@ private fun PrayerRow(
         }
     }
 
-    fun applyConfig(updated: PrayerSilenceConfig) {
+    fun applyConfig(updated: PrayerSilenceConfig): Boolean {
         if (usesDraft) {
             onDraftSilenceConfigChange?.invoke(updated)
         } else {
@@ -5116,18 +5115,24 @@ private fun PrayerRow(
                     Toast.LENGTH_LONG,
                 ).show()
                 onConfigChanged()
-                return
+                return false
             }
         }
         onConfigChanged()
+        return true
     }
 
-    fun commitConfig(updated: PrayerSilenceConfig) {
+    fun commitConfig(updated: PrayerSilenceConfig): Boolean {
         val previous = if (usesDraft) config else PrefsManager.getConfig(context, prayer)
-        if (updated == previous) return
+        if (updated == previous) return true
         undoBefore = previous
         undoAfter = updated
-        applyConfig(updated)
+        val applied = applyConfig(updated)
+        if (!applied) {
+            undoBefore = null
+            undoAfter = null
+        }
+        return applied
     }
 
     val validPrayerTime = prayerTime?.takeIf { it.hour in 0..23 && it.minute in 0..59 }
@@ -5168,8 +5173,6 @@ private fun PrayerRow(
                 enabled = if (usesDraft) true else prayerEnabled,
                 showSwitch = showEnableSwitch && !usesDraft,
                 isNextPrayer = isNextPrayer,
-                expanded = expanded,
-                onExpandedChange = { expanded = it },
                 onEnabledChange = { newValue ->
                     prayerEnabled = newValue
                     PrefsManager.setPrayerSilenceEnabled(context, prayer, newValue)
@@ -5192,7 +5195,6 @@ private fun PrayerRow(
                         commitConfig(updated)
                     }
                 },
-                onCommitConfig = { updated -> commitConfig(updated) },
                 onEditEndpoint = { endpoint -> editorEndpoint = endpoint },
                 onPrayerTimeClick = onPrayerTimeClick,
             )
@@ -5255,7 +5257,11 @@ private fun PrayerRow(
             config = config,
             endpoint = currentEditorEndpoint,
             onDismiss = { editorEndpoint = null },
-            onSave = { updated -> commitConfig(updated); editorEndpoint = null },
+            onSave = { updated ->
+                val applied = commitConfig(updated)
+                if (applied) editorEndpoint = null
+                applied
+            },
         )
     }
 }
