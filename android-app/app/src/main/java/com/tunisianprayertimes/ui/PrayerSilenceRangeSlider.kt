@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,7 +27,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
@@ -67,15 +70,26 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.SilenceMode
 import kotlin.math.abs
 import kotlin.math.roundToInt
+import kotlinx.coroutines.delay
 
 private enum class SilenceDragPart { Start, End, Window }
 
+/** Physical timeline edge that is being pushed outward during a drag. */
+private enum class SilenceEdgeSide { EARLIER, LATER }
+
 private data class SilenceDragState(
     val part: SilenceDragPart,
-    val originWindow: PrayerTimelineWindow,
+    /** Window at the moment the gesture started; decides whether release commits. */
+    val startWindow: PrayerTimelineWindow,
+    /** Rebased reference window for pointer-to-value mapping after domain growth. */
+    val baseWindow: PrayerTimelineWindow,
     val window: PrayerTimelineWindow,
     val accumulatedPixels: Float,
     val widthPx: Float,
+    /** Live viewing domain for this gesture; grows only through deliberate edge intent. */
+    val scale: PrayerTimelineScale,
+    val edgeSide: SilenceEdgeSide?,
+    val edgeArmed: Boolean,
 )
 
 private enum class LegendAnchor { LEFT, CENTER, RIGHT }
@@ -91,6 +105,9 @@ private data class LegendEntry(
 
 private val TickStepCandidates = listOf(15, 30, 60, 120, 180, 360, 720, 1440, 2880)
 private const val MaxTickIntervals = 8
+
+/** Pointer distance beyond a physical track edge that counts as outward intent. */
+private val EdgeOutwardOvershoot = 4.dp
 
 /**
  * Physical top-left alignment. The timeline positions its labels, tooltip and
@@ -152,14 +169,20 @@ internal fun PrayerSilenceRangeSlider(
     val endDescription = stringResource(R.string.prayer_silence_end_handle_desc, prayerName, endState)
 
     var drag by remember(prayerTime, config, scale) { mutableStateOf<SilenceDragState?>(null) }
+    // The active row may widen its own viewing domain while a deliberate edge drag is
+    // in progress; every other row keeps the shared scale until the drag commits.
+    val activeScale = drag?.scale ?: scale
     val currentWindow by rememberUpdatedState(window)
     val currentConfig by rememberUpdatedState(config)
     val currentCanAdjust by rememberUpdatedState(canAdjust)
+    val currentPreviewWindow by rememberUpdatedState(onPreviewWindow)
 
     val earlierLabel = stringResource(R.string.prayer_silence_adjust_earlier)
     val laterLabel = stringResource(R.string.prayer_silence_adjust_later)
     val atAdhanLabel = stringResource(R.string.prayer_silence_at_adhan)
     val adhanLabel = stringResource(R.string.prayer_silence_adhan_label)
+    val extendEarlierCue = stringResource(R.string.prayer_silence_extend_earlier)
+    val extendLaterCue = stringResource(R.string.prayer_silence_extend_later)
     val valueLabelStyle = TextStyle(
         fontSize = PrayerSilenceTypography.ValueLabel,
         fontWeight = FontWeight.SemiBold,
@@ -176,9 +199,9 @@ internal fun PrayerSilenceRangeSlider(
     val tooltipPaddingVertical = PrayerSilenceDimens.SliderTooltipPaddingVertical
     val scaleBeforeText = stringResource(
         R.string.prayer_silence_scale_before,
-        abs(scale.startOffsetMinutes),
+        abs(activeScale.startOffsetMinutes),
     )
-    val scaleAfterText = stringResource(R.string.prayer_silence_scale_after, scale.endOffsetMinutes)
+    val scaleAfterText = stringResource(R.string.prayer_silence_scale_after, activeScale.endOffsetMinutes)
     // Measurement drives both the stable feedback band and the shared legend
     // baseline, so the layout adapts to font scale instead of fixed heights.
     val tooltipProbeText = stringResource(
@@ -188,19 +211,19 @@ internal fun PrayerSilenceRangeSlider(
     )
     val tooltipProbe = textMeasurer.measure(tooltipProbeText, valueLabelStyle, maxLines = 1)
     // Reference ticks adapt to an extended domain instead of crowding the legend.
-    val tickStepMinutes = TickStepCandidates.firstOrNull { scale.spanMinutes / it <= MaxTickIntervals }
+    val tickStepMinutes = TickStepCandidates.firstOrNull { activeScale.spanMinutes / it <= MaxTickIntervals }
         ?: TickStepCandidates.last()
-    val firstTickOffset = Math.floorDiv(scale.startOffsetMinutes, tickStepMinutes) * tickStepMinutes
+    val firstTickOffset = Math.floorDiv(activeScale.startOffsetMinutes, tickStepMinutes) * tickStepMinutes
     val tickOffsets = buildList {
         var offset = firstTickOffset
-        while (offset <= scale.endOffsetMinutes) {
-            if (offset >= scale.startOffsetMinutes) add(offset)
+        while (offset <= activeScale.endOffsetMinutes) {
+            if (offset >= activeScale.startOffsetMinutes) add(offset)
             offset += tickStepMinutes
         }
     }
     val legendEntries = mutableListOf<LegendEntry>()
     legendEntries += LegendEntry(
-        offsetMinutes = scale.startOffsetMinutes,
+        offsetMinutes = activeScale.startOffsetMinutes,
         text = scaleBeforeText,
         style = scaleLabelStyle,
         layout = textMeasurer.measure(scaleBeforeText, scaleLabelStyle, maxLines = 1),
@@ -217,7 +240,7 @@ internal fun PrayerSilenceRangeSlider(
         mandatory = true,
     )
     tickOffsets.forEach { offset ->
-        if (offset == scale.startOffsetMinutes || offset == scale.endOffsetMinutes || offset == 0) {
+        if (offset == activeScale.startOffsetMinutes || offset == activeScale.endOffsetMinutes || offset == 0) {
             return@forEach
         }
         val text = if (offset > 0) {
@@ -235,7 +258,7 @@ internal fun PrayerSilenceRangeSlider(
         )
     }
     legendEntries += LegendEntry(
-        offsetMinutes = scale.endOffsetMinutes,
+        offsetMinutes = activeScale.endOffsetMinutes,
         text = scaleAfterText,
         style = scaleLabelStyle,
         layout = textMeasurer.measure(scaleAfterText, scaleLabelStyle, maxLines = 1),
@@ -280,10 +303,10 @@ internal fun PrayerSilenceRangeSlider(
         // the physical right, later times on the physical left, and adhan (0)
         // sits 20% of the track in from the right on the standard domain.
         fun xForOffset(offset: Int): Float =
-            constraints.maxWidth - edgeInsetPx - scale.fractionForOffset(offset) * trackWidthPx
+            constraints.maxWidth - edgeInsetPx - activeScale.fractionForOffset(offset) * trackWidthPx
 
         fun offsetForX(x: Float): Int =
-            scale.offsetForFraction(
+            activeScale.offsetForFraction(
                 ((constraints.maxWidth - edgeInsetPx - x) / trackWidthPx).coerceIn(0f, 1f),
             )
 
@@ -310,12 +333,13 @@ internal fun PrayerSilenceRangeSlider(
             base: PrayerTimelineWindow,
             part: SilenceDragPart,
             deltaMinutes: Int,
+            liveScale: PrayerTimelineScale = activeScale,
         ): PrayerTimelineWindow? =
             silenceShiftedWindow(
                 window = base,
                 part = part,
                 deltaMinutes = deltaMinutes,
-                scale = scale,
+                scale = liveScale,
                 prayerMinutes = prayerMinutes,
             )
 
@@ -329,17 +353,20 @@ internal fun PrayerSilenceRangeSlider(
             val visibleEndOffset = visible.endMinutes - prayerMinutes
             val candidate = when (endpoint) {
                 SilenceEndpoint.START -> {
-                    val maxStart = minOf(scale.endOffsetMinutes, visibleEndOffset - 1)
-                    if (maxStart < scale.startOffsetMinutes) return false
+                    val maxStart = minOf(activeScale.endOffsetMinutes, visibleEndOffset - 1)
+                    if (maxStart < activeScale.startOffsetMinutes) return false
                     visible.copy(
-                        startMinutes = prayerMinutes + targetOffset.coerceIn(scale.startOffsetMinutes, maxStart),
+                        startMinutes = prayerMinutes + targetOffset.coerceIn(
+                            activeScale.startOffsetMinutes,
+                            maxStart,
+                        ),
                     )
                 }
                 SilenceEndpoint.END -> {
-                    val minEnd = maxOf(scale.startOffsetMinutes + 1, visibleStartOffset + 1)
-                    if (minEnd > scale.endOffsetMinutes) return false
+                    val minEnd = maxOf(activeScale.startOffsetMinutes + 1, visibleStartOffset + 1)
+                    if (minEnd > activeScale.endOffsetMinutes) return false
                     visible.copy(
-                        endMinutes = prayerMinutes + targetOffset.coerceIn(minEnd, scale.endOffsetMinutes),
+                        endMinutes = prayerMinutes + targetOffset.coerceIn(minEnd, activeScale.endOffsetMinutes),
                     )
                 }
             }
@@ -350,19 +377,62 @@ internal fun PrayerSilenceRangeSlider(
 
         fun nudge(part: SilenceDragPart, deltaMinutes: Int): Boolean {
             if (!currentCanAdjust) return false
-            val candidate = shifted(visibleWindow(), part, deltaMinutes) ?: return false
+            val candidate = shifted(visibleWindow(), part, deltaMinutes, activeScale) ?: return false
             if (!isValid(candidate)) return false
             onCommitWindow(candidate)
             return true
         }
 
-        fun updateDrag(deltaPixels: Float) {
+        /**
+         * The physical edge is being pushed outward while the active endpoint sits on
+         * its boundary. Reaching an edge is not enough: the pointer must be beyond it.
+         */
+        fun edgeSideFor(
+            part: SilenceDragPart,
+            visible: PrayerTimelineWindow,
+            pointerX: Float,
+            liveScale: PrayerTimelineScale,
+        ): SilenceEdgeSide? {
+            val trackLeftPx = edgeInsetPx
+            val trackRightPx = constraints.maxWidth - edgeInsetPx
+            val overshootPx = with(density) { EdgeOutwardOvershoot.toPx() }
+            val pushingEarlier = pointerX - trackRightPx > overshootPx
+            val pushingLater = trackLeftPx - pointerX > overshootPx
+            val startOffset = visible.startMinutes - prayerMinutes
+            val endOffset = visible.endMinutes - prayerMinutes
+            return when (part) {
+                SilenceDragPart.Start -> if (
+                    startOffset <= liveScale.startOffsetMinutes && pushingEarlier
+                ) {
+                    SilenceEdgeSide.EARLIER
+                } else {
+                    null
+                }
+                SilenceDragPart.End -> if (
+                    endOffset >= liveScale.endOffsetMinutes && pushingLater
+                ) {
+                    SilenceEdgeSide.LATER
+                } else {
+                    null
+                }
+                SilenceDragPart.Window -> when {
+                    startOffset <= liveScale.startOffsetMinutes && pushingEarlier -> SilenceEdgeSide.EARLIER
+                    endOffset >= liveScale.endOffsetMinutes && pushingLater -> SilenceEdgeSide.LATER
+                    else -> null
+                }
+            }
+        }
+
+        fun updateDrag(deltaPixels: Float, pointerX: Float) {
             val current = drag ?: return
             val pixels = current.accumulatedPixels + deltaPixels
+            val liveScale = current.scale
             // Moving the pointer right goes back in time on the RTL timeline.
-            val deltaMinutes = (-pixels / current.widthPx * scale.spanMinutes).roundToInt()
-            val candidate = shifted(current.originWindow, current.part, deltaMinutes)
+            val deltaMinutes = (-pixels / current.widthPx * liveScale.spanMinutes).roundToInt()
+            val candidate = shifted(current.baseWindow, current.part, deltaMinutes, liveScale)
             val validated = candidate?.takeIf { isValid(it) } ?: current.window
+            val edgeSide = edgeSideFor(current.part, validated, pointerX, liveScale)
+            val stillArmed = current.edgeArmed && edgeSide != null && edgeSide == current.edgeSide
             if (validated != current.window) {
                 val previousOffset = endpointOffset(current.window, current.part, prayerMinutes)
                 val nextOffset = endpointOffset(validated, current.part, prayerMinutes)
@@ -372,18 +442,75 @@ internal fun PrayerSilenceRangeSlider(
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                 }
             }
-            drag = current.copy(accumulatedPixels = pixels, window = validated)
-            if (validated != current.window) onPreviewWindow(validated)
+            drag = current.copy(
+                accumulatedPixels = pixels,
+                window = validated,
+                edgeSide = edgeSide,
+                edgeArmed = stillArmed,
+            )
+            if (validated != current.window) currentPreviewWindow(validated)
+        }
+
+        /**
+         * One deliberate extension step: advance the active endpoint by one minute and
+         * grow the viewing domain to keep it on the physical edge. The untouched
+         * endpoint, its rule and its resolved time do not change.
+         */
+        fun extendEdgeStep(): Boolean {
+            val current = drag ?: return false
+            val side = current.edgeSide ?: return false
+            if (!current.edgeArmed || !currentCanAdjust) return false
+            val earlier = side == SilenceEdgeSide.EARLIER
+            if (current.part == SilenceDragPart.Start && !earlier) return false
+            if (current.part == SilenceDragPart.End && earlier) return false
+            val step = TIMELINE_EDGE_STEP_MINUTES
+            val moved = when (current.part) {
+                SilenceDragPart.Start -> current.window.copy(
+                    startMinutes = current.window.startMinutes - step,
+                )
+                SilenceDragPart.End -> current.window.copy(
+                    endMinutes = current.window.endMinutes + step,
+                )
+                SilenceDragPart.Window -> if (earlier) {
+                    current.window.copy(
+                        startMinutes = current.window.startMinutes - step,
+                        endMinutes = current.window.endMinutes - step,
+                    )
+                } else {
+                    current.window.copy(
+                        startMinutes = current.window.startMinutes + step,
+                        endMinutes = current.window.endMinutes + step,
+                    )
+                }
+            }
+            if (moved.endMinutes < moved.startMinutes || !isValid(moved)) return false
+            val liveScale = current.scale
+            val extendedScale = if (earlier) {
+                if (liveScale.startOffsetMinutes <= Int.MIN_VALUE + 1) return false
+                liveScale.copy(startOffsetMinutes = liveScale.startOffsetMinutes - step)
+            } else {
+                if (liveScale.endOffsetMinutes >= Int.MAX_VALUE - 1) return false
+                liveScale.copy(endOffsetMinutes = liveScale.endOffsetMinutes + step)
+            }
+            // Rebase the gesture so the domain growth itself cannot rescale the value.
+            drag = current.copy(
+                baseWindow = moved,
+                window = moved,
+                accumulatedPixels = 0f,
+                scale = extendedScale,
+            )
+            currentPreviewWindow(moved)
+            return true
         }
 
         fun finishDrag() {
             val completed = drag
             drag = null
-            if (completed != null && completed.window != completed.originWindow) {
-                onPreviewWindow(null)
+            if (completed != null && completed.window != completed.startWindow) {
+                currentPreviewWindow(null)
                 onCommitWindow(completed.window)
             } else {
-                onPreviewWindow(null)
+                currentPreviewWindow(null)
             }
         }
 
@@ -397,15 +524,15 @@ internal fun PrayerSilenceRangeSlider(
             val moveStart = abs(target - visibleStartOffset) <= abs(target - visibleEndOffset)
             val candidate = if (moveStart) {
                 val maxStart = visibleEndOffset - 1
-                if (maxStart < scale.startOffsetMinutes) return
+                if (maxStart < activeScale.startOffsetMinutes) return
                 visible.copy(
-                    startMinutes = prayerMinutes + target.coerceIn(scale.startOffsetMinutes, maxStart),
+                    startMinutes = prayerMinutes + target.coerceIn(activeScale.startOffsetMinutes, maxStart),
                 )
             } else {
-                val minEnd = maxOf(scale.startOffsetMinutes + 1, visibleStartOffset + 1)
-                if (minEnd > scale.endOffsetMinutes) return
+                val minEnd = maxOf(activeScale.startOffsetMinutes + 1, visibleStartOffset + 1)
+                if (minEnd > activeScale.endOffsetMinutes) return
                 visible.copy(
-                    endMinutes = prayerMinutes + target.coerceIn(minEnd, scale.endOffsetMinutes),
+                    endMinutes = prayerMinutes + target.coerceIn(minEnd, activeScale.endOffsetMinutes),
                 )
             }
             if (candidate == visible || !isValid(candidate)) return
@@ -422,6 +549,38 @@ internal fun PrayerSilenceRangeSlider(
             }
         }
 
+        // Deliberate-edge arming/extension ticker. Reaching an edge alone arms nothing:
+        // the pointer must stay beyond the physical edge, and only then does the
+        // domain grow one minute per step. Any inward move, release or cancellation
+        // changes the key and stops the loop without momentum.
+        val edgeTickerKey = drag?.let { state -> state.edgeSide?.let { side -> side to state.edgeArmed } }
+        LaunchedEffect(edgeTickerKey) {
+            val key = edgeTickerKey ?: return@LaunchedEffect
+            val (side, armed) = key
+            if (!armed) {
+                delay(TIMELINE_EDGE_ARM_DELAY_MS)
+                val current = drag
+                if (current != null && current.edgeSide == side && !current.edgeArmed) {
+                    drag = current.copy(edgeArmed = true)
+                }
+            } else {
+                while (true) {
+                    delay(TIMELINE_EDGE_STEP_INTERVAL_MS)
+                    val current = drag ?: break
+                    if (current.edgeSide != side || !current.edgeArmed) break
+                    if (!extendEdgeStep()) {
+                        // A genuine scheduling constraint stops deliberate intent for
+                        // this gesture: drop the highlight and cue instead of retrying.
+                        val stopped = drag
+                        if (stopped != null) {
+                            drag = stopped.copy(edgeSide = null, edgeArmed = false)
+                        }
+                        break
+                    }
+                }
+            }
+        }
+
         val dragModifier = Modifier.silenceSliderDrag(
             enabled = canAdjust,
             gestureKey = listOf(prayerTime, config, scale, constraints.maxWidth),
@@ -430,18 +589,22 @@ internal fun PrayerSilenceRangeSlider(
                 val origin = currentWindow
                 drag = SilenceDragState(
                     part = part,
-                    originWindow = origin,
+                    startWindow = origin,
+                    baseWindow = origin,
                     window = origin,
                     accumulatedPixels = 0f,
                     widthPx = trackWidthPx,
+                    scale = scale,
+                    edgeSide = null,
+                    edgeArmed = false,
                 )
-                onPreviewWindow(origin)
+                currentPreviewWindow(origin)
             },
-            onDelta = { deltaPixels -> updateDrag(deltaPixels) },
+            onDelta = { deltaPixels, pointer -> updateDrag(deltaPixels, pointer.x) },
             onFinish = { finishDrag() },
             onCancel = {
                 drag = null
-                onPreviewWindow(null)
+                currentPreviewWindow(null)
             },
         )
         val tapModifier = Modifier.pointerInput(canAdjust, prayerTime, scale, constraints.maxWidth) {
@@ -473,6 +636,29 @@ internal fun PrayerSilenceRangeSlider(
                     Offset(maxOf(visibleStartX, visibleEndX), centerYPx),
                     trackThicknessPx,
                     StrokeCap.Round,
+                )
+            }
+            // Restrained highlight on the edge that is being deliberately pushed
+            // outward; drawn under the ticks and handles so they stay readable.
+            val highlightedEdge = drag?.edgeSide
+            if (highlightedEdge != null) {
+                val highlightCenterX = if (highlightedEdge == SilenceEdgeSide.EARLIER) {
+                    constraints.maxWidth - edgeInsetPx
+                } else {
+                    edgeInsetPx
+                }
+                val highlightHalfWidth = 26.dp.toPx()
+                val highlightHalfHeight = trackThicknessPx * 2.4f
+                val highlightAlpha = if (drag?.edgeArmed == true) 0.20f else 0.10f
+                val highlightLeft = (highlightCenterX - highlightHalfWidth).coerceIn(
+                    0f,
+                    (constraints.maxWidth - highlightHalfWidth * 2f).coerceAtLeast(0f),
+                )
+                drawRoundRect(
+                    color = PrayerSilencePalette.InteractiveTeal.copy(alpha = highlightAlpha),
+                    topLeft = Offset(highlightLeft, centerYPx - highlightHalfHeight),
+                    size = Size(highlightHalfWidth * 2f, highlightHalfHeight * 2f),
+                    cornerRadius = CornerRadius(highlightHalfWidth),
                 )
             }
             // Ticks stay above the fills so they read on both the pale track and
@@ -537,7 +723,16 @@ internal fun PrayerSilenceRangeSlider(
                 SilenceDragPart.End -> prayerClockText(activeDrag.window.endMinutes)
                 else -> prayerClockText(activeDrag.window.startMinutes)
             }
-            val relation = if (activeOffset == 0) atAdhanLabel else relationshipText(activeOffset)
+            val edgeCue = when (activeDrag.edgeSide) {
+                SilenceEdgeSide.EARLIER -> extendEarlierCue
+                SilenceEdgeSide.LATER -> extendLaterCue
+                null -> null
+            }
+            val relation = when {
+                activeOffset == 0 -> atAdhanLabel
+                edgeCue != null -> edgeCue
+                else -> relationshipText(activeOffset)
+            }
             val fullText = stringResource(R.string.prayer_silence_value_label, timeText, relation)
             val tooltipPaddingHorizontalPx = with(density) { tooltipPaddingHorizontal.toPx() }
             val maxTooltipTextWidthPx = (constraints.maxWidth - tooltipPaddingHorizontalPx * 2f)
@@ -651,7 +846,7 @@ internal fun PrayerSilenceRangeSlider(
             description = startDescription,
             stateDescription = startState,
             offsetMinutes = visible.startMinutes - prayerMinutes,
-            scale = scale,
+            scale = activeScale,
             earlierLabel = earlierLabel,
             laterLabel = laterLabel,
             enabled = canAdjust,
@@ -665,7 +860,7 @@ internal fun PrayerSilenceRangeSlider(
             description = endDescription,
             stateDescription = endState,
             offsetMinutes = visible.endMinutes - prayerMinutes,
-            scale = scale,
+            scale = activeScale,
             earlierLabel = earlierLabel,
             laterLabel = laterLabel,
             enabled = canAdjust,
@@ -842,7 +1037,7 @@ private fun Modifier.silenceSliderDrag(
     gestureKey: Any,
     choosePart: (Offset) -> SilenceDragPart?,
     onStart: (SilenceDragPart) -> Unit,
-    onDelta: (Float) -> Unit,
+    onDelta: (Float, Offset) -> Unit,
     onFinish: () -> Unit,
     onCancel: () -> Unit,
 ): Modifier {
@@ -864,9 +1059,9 @@ private fun Modifier.silenceSliderDrag(
             var completed = false
             try {
                 currentStart(part)
-                currentDelta(overSlop)
+                currentDelta(overSlop, accepted.position)
                 val released = horizontalDrag(accepted.id) { change ->
-                    currentDelta(change.positionChange().x)
+                    currentDelta(change.positionChange().x, change.position)
                     change.consume()
                 }
                 if (released) {
