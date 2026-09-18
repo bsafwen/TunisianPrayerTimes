@@ -25,7 +25,8 @@ internal object EidSilenceWindows {
         val year = HijrahDate.from(today).get(ChronoField.YEAR)
         return prayers.mapNotNull { prayer ->
             val config = PrefsManager.getConfig(context, prayer)
-            val lookBackDays = (maxOf(0L, config.delayMinutes.toLong()) + maxOf(0L, config.afterMinutes.toLong())) / 1440 + 2
+            val relativeEnd = config.endOffsetMinutes?.let { maxOf(0L, it.toLong()) } ?: 0L
+            val lookBackDays = (maxOf(0L, config.delayMinutes.toLong()) + maxOf(0L, config.afterMinutes.toLong()) + relativeEnd) / 1440 + 2
             (year - 1..year + 1).mapNotNull event@{ eventYear ->
                 val date = runCatching {
                     if (prayer == Prayer.AID_FITR) RamadanOverrideChecker.getEidFitrDate(eventYear)
@@ -83,9 +84,15 @@ internal object EidSilenceWindows {
         val start = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
             at(config.delayFixedHour, config.delayFixedMinute)
         } else (prayerStart.clone() as Calendar).apply { add(Calendar.MINUTE, config.delayMinutes) }
-        val end = if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-            at(config.fixedHour, config.fixedMinute).apply { if (before(start)) add(Calendar.DAY_OF_YEAR, 1) }
-        } else (start.clone() as Calendar).apply { add(Calendar.MINUTE, config.afterMinutes) }
+        val configEndOffset = config.endOffsetMinutes
+        val end = when {
+            config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0 ->
+                at(config.fixedHour, config.fixedMinute).apply { if (before(start)) add(Calendar.DAY_OF_YEAR, 1) }
+            configEndOffset != null ->
+                (prayerStart.clone() as Calendar).apply { add(Calendar.MINUTE, configEndOffset) }
+            else ->
+                (start.clone() as Calendar).apply { add(Calendar.MINUTE, config.afterMinutes) }
+        }
         return Window(time.prayer, date, prayerStart.timeInMillis, start.timeInMillis, end.timeInMillis)
     }
 
