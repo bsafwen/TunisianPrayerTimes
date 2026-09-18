@@ -19,7 +19,7 @@ data class Locality(
     val pickerGroupId: String? = null,
     val pickerMemberIds: Set<String> = emptySet(),
 ) {
-    val normalizedName = normalizeLocalitySearch(name)
+    val normalizedName: String by lazy { normalizeLocalitySearch(name) }
 
     fun representsSelection(selectedId: String): Boolean = id == selectedId || selectedId in pickerMemberIds
 }
@@ -38,16 +38,32 @@ internal fun normalizeLocalitySearch(value: String): String =
         .replace(wordSeparators, " ")
         .trim()
 
-internal fun searchLocalities(localities: List<Locality>, query: String): List<Locality> {
-    val normalized = normalizeLocalitySearch(query)
-    val terms = normalized.split(' ').filter { it.isNotEmpty() }
-    if (terms.isEmpty()) return localities
-    return localities.filter { locality -> terms.all { it in locality.searchText } }
+/** Search input parsed once so each governorate group filters without re-normalizing. */
+internal class LocalitySearchQuery private constructor(
+    val normalized: String,
+    val terms: List<String>,
+) {
+    val isEmpty: Boolean get() = terms.isEmpty()
+
+    companion object {
+        fun parse(query: String): LocalitySearchQuery {
+            val normalized = normalizeLocalitySearch(query)
+            return LocalitySearchQuery(normalized, normalized.split(' ').filter { it.isNotEmpty() })
+        }
+    }
+}
+
+internal fun searchLocalities(localities: List<Locality>, query: String): List<Locality> =
+    searchLocalities(localities, LocalitySearchQuery.parse(query))
+
+internal fun searchLocalities(localities: List<Locality>, query: LocalitySearchQuery): List<Locality> {
+    if (query.isEmpty) return localities
+    return localities.filter { locality -> query.terms.all { it in locality.searchText } }
         .sortedByDescending {
             when {
-                it.normalizedName == normalized -> 3
-                it.normalizedName.startsWith(normalized) -> 2
-                terms.all { term -> term in it.normalizedName } -> 1
+                it.normalizedName == query.normalized -> 3
+                it.normalizedName.startsWith(query.normalized) -> 2
+                query.terms.all { term -> term in it.normalizedName } -> 1
                 else -> 0
             }
         }
@@ -116,6 +132,91 @@ internal fun groupPickerLocalities(localities: List<Locality>): List<Locality> =
         }
     }
 
+/** Distinguishes the kinds the picker labels differently, so classification happens once. */
+internal enum class LocalityKindClass {
+    DELEGATION, SECTOR, MUNICIPALITY, TOWN, VILLAGE, HAMLET, NEIGHBORHOOD, RESIDENTIAL, AREA,
+}
+
+internal fun localityKindClass(kind: String): LocalityKindClass = when (kind) {
+    "delegation" -> LocalityKindClass.DELEGATION
+    "sector" -> LocalityKindClass.SECTOR
+    "municipality" -> LocalityKindClass.MUNICIPALITY
+    "town", "city" -> LocalityKindClass.TOWN
+    "village" -> LocalityKindClass.VILLAGE
+    "hamlet" -> LocalityKindClass.HAMLET
+    "neighbourhood", "quarter", "suburb", "city_district" -> LocalityKindClass.NEIGHBORHOOD
+    "residential" -> LocalityKindClass.RESIDENTIAL
+    else -> LocalityKindClass.AREA
+}
+
+internal class LocalityPickerGroup(
+    val governorateId: Int,
+    val fallbackName: String,
+    val rows: List<Locality>,
+)
+
+/** Query-independent picker data, prepared once per available-source snapshot off the main thread. */
+internal class LocalityPickerCatalog(
+    val localities: List<Locality>,
+    val groups: List<LocalityPickerGroup>,
+    val typeContextIds: Set<String>,
+) {
+    /**
+     * The item to show first so the selected row sits directly under its sticky
+     * header, without composing from the top and scrolling afterwards.
+     */
+    fun selectionScrollIndex(selectedId: String): Int {
+        var index = 0
+        groups.forEach { group ->
+            val row = group.rows.indexOfFirst { it.representsSelection(selectedId) }
+            if (row >= 0) return index + row
+            index += group.rows.size + 1
+        }
+        return 0
+    }
+
+    companion object {
+        val empty = LocalityPickerCatalog(emptyList(), emptyList(), emptySet())
+    }
+}
+
+private const val GROUPS_KEY_SEPARATOR = '\u0000'
+
+private fun localityGroupKey(locality: Locality): String =
+    "${locality.governorateId}$GROUPS_KEY_SEPARATOR${locality.normalizedName}"
+
+internal fun buildPickerCatalog(localities: List<Locality>, gouvernorats: List<Gouvernorat>): LocalityPickerCatalog {
+    val rowsByGovernorate = LinkedHashMap<Int, MutableList<Locality>>()
+    localities.forEach { locality ->
+        rowsByGovernorate.getOrPut(locality.governorateId) { mutableListOf() } += locality
+    }
+    val orderedIds = gouvernorats.map { it.id } +
+        rowsByGovernorate.keys.filter { id -> gouvernorats.none { it.id == id } }
+    val groups = orderedIds.mapNotNull { id ->
+        rowsByGovernorate[id]?.let { rows -> LocalityPickerGroup(id, rows.first().parentName, rows) }
+    }
+    return LocalityPickerCatalog(localities, groups, mixedKindGroupIds(localities))
+}
+
+/** A row only needs its kind label when its namesake group mixes administrative levels. */
+private fun mixedKindGroupIds(localities: List<Locality>): Set<String> {
+    class GroupKinds {
+        var hasDelegation = false
+        val kinds = mutableSetOf<LocalityKindClass>()
+    }
+    val byName = HashMap<String, GroupKinds>()
+    localities.forEach { locality ->
+        val kinds = byName.getOrPut(localityGroupKey(locality)) { GroupKinds() }
+        if (locality.kind == "delegation") kinds.hasDelegation = true
+        kinds.kinds += localityKindClass(locality.kind)
+    }
+    val mixed = HashSet<String>()
+    byName.forEach { (key, kinds) -> if (kinds.hasDelegation && kinds.kinds.size > 1) mixed += key }
+    if (mixed.isEmpty()) return emptySet()
+    return localities.asSequence().filter { localityGroupKey(it) in mixed }
+        .mapTo(mutableSetOf()) { it.id }
+}
+
 internal fun enrichLocalityCatalog(localities: List<Locality>, governors: List<Gouvernorat>): List<Locality> {
     val delegations = governors.flatMap { it.delegations }
     val sourcesById = delegations.associateBy { it.id }
@@ -139,7 +240,7 @@ object LocalityRepository {
     @Volatile private var cached: List<Locality>? = null
     private val catalogLock = Any()
     private data class SourceKey(val id: Int, val lat: Double, val lng: Double)
-    private data class AvailableCatalog(val sources: List<SourceKey>, val localities: List<Locality>)
+    private data class AvailableCatalog(val sources: List<SourceKey>, val picker: LocalityPickerCatalog)
     @Volatile private var availableCatalog: AvailableCatalog? = null
     internal data class ReviewedLocalityName(val name: String, val kind: String)
     internal data class ReviewedLocalityReplacement(val replacementId: String, val name: String, val kind: String)
@@ -240,15 +341,25 @@ object LocalityRepository {
         return result.toList()
     }
 
-    fun loadAvailable(context: Context, available: List<Delegation>): List<Locality> {
+    fun loadAvailable(context: Context, available: List<Delegation>): List<Locality> =
+        preparePicker(context, available).localities
+
+    /**
+     * Builds the query-independent picker data once per source snapshot. Call off the
+     * main thread: opening the sheet then only renders the prepared groups.
+     */
+    internal fun preparePicker(context: Context, available: List<Delegation>): LocalityPickerCatalog {
         val sources = available.map { SourceKey(it.id, it.lat, it.lng) }
             .sortedWith(compareBy<SourceKey> { it.id }.thenBy { it.lat }.thenBy { it.lng })
-        availableCatalog?.takeIf { it.sources == sources }?.let { return it.localities }
+        availableCatalog?.takeIf { it.sources == sources }?.let { return it.picker }
         // Group before filtering: a merged place can use another source even
         // when its canonical delegation has no complete timetable this month.
-        return filterAvailableLocalities(groupPickerLocalities(loadAll(context)), available).also {
-            availableCatalog = AvailableCatalog(sources, it)
-        }
+        val picker = buildPickerCatalog(
+            filterAvailableLocalities(groupPickerLocalities(loadAll(context)), available),
+            GouvernoratRepository.loadAll(context),
+        )
+        availableCatalog = AvailableCatalog(sources, picker)
+        return picker
     }
 
     /** Saved manual groups use the same representative as a new picker selection. */

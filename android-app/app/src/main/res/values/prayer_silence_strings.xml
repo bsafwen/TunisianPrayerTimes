@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="prayer_silence_recurrence_general">تتكرر تلقائيًا حسب إعداد كل صلاة</string>
-    <string name="prayer_silence_friday_section">إعداد الجمعة</string>
-    <string name="prayer_silence_friday_scope">كل يوم جمعة</string>
     <string name="prayer_silence_edit_jomoaa_time">تعديل وقت صلاة الجمعة</string>
     <string name="prayer_silence_edit_aid_fitr_time">تعديل وقت صلاة عيد الفطر</string>
     <string name="prayer_silence_edit_aid_adha_time">تعديل وقت صلاة عيد الأضحى</string>
@@ -39,7 +36,6 @@
     <string name="prayer_silence_saved">تم تعديل فترة الصمت</string>
     <string name="prayer_silence_save_failed">تعذّر حفظ الإعداد، ولم يتم تغيير فترة الصمت.</string>
 
-    <string name="prayer_silence_shared_action">إعداد موحّد لكل الصلوات</string>
     <string name="prayer_silence_shared_title">إعداد موحّد لكل الصلوات</string>
     <string name="prayer_silence_shared_body">طبّق فترة نسبية على الصلوات الخمس اليومية. لا يتضمن هذا الإعداد صلاة الجمعة أو صلاة العيد، ولن تتغير حالات التفعيل الفردية.</string>
     <string name="prayer_silence_shared_select_prayers">الصلوات المتأثرة</string>

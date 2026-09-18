@@ -29,14 +29,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Locality
+import com.tunisianprayertimes.LocalityKindClass
+import com.tunisianprayertimes.LocalityPickerCatalog
+import com.tunisianprayertimes.LocalitySearchQuery
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.localityKindClass
 import com.tunisianprayertimes.searchLocalities
 import com.tunisianprayertimes.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 internal fun LocalityPickerSheet(
-    catalog: List<Locality>,
+    catalog: LocalityPickerCatalog,
     gouvernorats: List<Gouvernorat>,
     selectedId: String,
     onDismiss: () -> Unit,
@@ -44,40 +48,21 @@ internal fun LocalityPickerSheet(
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    val listState = rememberLazyListState()
+    val initialIndex = remember(catalog, selectedId) { catalog.selectionScrollIndex(selectedId) }
+    val listState = rememberLazyListState(initialFirstVisibleItemIndex = initialIndex)
     val focusRequester = remember { FocusRequester() }
-    // Decide from the complete catalog so a row keeps its context while searching.
-    // A delegation and its namesake sector are different administrative levels.
-    val rowsWithTypeContext = remember(catalog) {
-        catalog.groupBy { it.governorateId to it.normalizedName }
-            .values.filter { rows ->
-                rows.any { it.kind == "delegation" } &&
-                    rows.map { localityKindLabel(it.kind) }.distinct().size > 1
-            }
-            .flatten().mapTo(mutableSetOf()) { it.id }
-    }
-    val groups = remember(catalog, query, gouvernorats) {
-        val matches = searchLocalities(catalog, query).groupBy { it.governorateId }
-        val names = gouvernorats.associate { it.id to it.nomAr }
-        (gouvernorats.map { it.id } + matches.keys.filter { it !in names }).mapNotNull { id ->
-            matches[id]?.let { rows -> Triple(id, names[id] ?: rows.first().parentName, rows) }
+    val governorateNames = remember(gouvernorats) { gouvernorats.associate { it.id to it.nomAr } }
+    val search = remember(query) { LocalitySearchQuery.parse(query) }
+    // Opening renders the prepared groups; only a typed query filters rows.
+    val groups = remember(catalog, search, governorateNames) {
+        catalog.groups.mapNotNull { group ->
+            val rows = searchLocalities(group.rows, search)
+            if (rows.isEmpty()) null
+            else Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, rows)
         }
     }
     LaunchedEffect(query, catalog) {
-        var selectedIndex = 0
-        if (query.isBlank()) {
-            for ((_, _, rows) in groups) {
-                val index = rows.indexOfFirst { it.representsSelection(selectedId) }
-                if (index >= 0) {
-                    // Leave one item above the selection so the sticky header cannot cover it.
-                    selectedIndex += index
-                    break
-                }
-                selectedIndex += rows.size + 1
-            }
-            if (selectedIndex >= groups.sumOf { it.third.size + 1 }) selectedIndex = 0
-        }
-        listState.scrollToItem(selectedIndex)
+        listState.scrollToItem(if (query.isBlank()) catalog.selectionScrollIndex(selectedId) else 0)
     }
     LaunchedEffect(Unit) { focusRequester.requestFocus() }
 
@@ -131,7 +116,7 @@ internal fun LocalityPickerSheet(
                             val parent = locality.parentName.takeIf {
                                 it.isNotBlank() && it != locality.name && it != governorName
                             }
-                            val type = if (locality.id in rowsWithTypeContext) {
+                            val type = if (locality.id in catalog.typeContextIds) {
                                 stringResource(localityKindLabel(locality.kind))
                             } else null
                             val subtitle = listOfNotNull(type, parent).joinToString(" · ")
@@ -167,14 +152,14 @@ internal fun LocalityPickerSheet(
     }
 }
 
-private fun localityKindLabel(kind: String): Int = when (kind) {
-    "delegation" -> R.string.locality_kind_delegation
-    "sector" -> R.string.locality_kind_sector
-    "municipality" -> R.string.locality_kind_municipality
-    "town", "city" -> R.string.locality_kind_town
-    "village" -> R.string.locality_kind_village
-    "hamlet" -> R.string.locality_kind_hamlet
-    "neighbourhood", "quarter", "suburb", "city_district" -> R.string.locality_kind_neighborhood
-    "residential" -> R.string.locality_kind_residential
-    else -> R.string.locality_kind_area
+private fun localityKindLabel(kind: String): Int = when (localityKindClass(kind)) {
+    LocalityKindClass.DELEGATION -> R.string.locality_kind_delegation
+    LocalityKindClass.SECTOR -> R.string.locality_kind_sector
+    LocalityKindClass.MUNICIPALITY -> R.string.locality_kind_municipality
+    LocalityKindClass.TOWN -> R.string.locality_kind_town
+    LocalityKindClass.VILLAGE -> R.string.locality_kind_village
+    LocalityKindClass.HAMLET -> R.string.locality_kind_hamlet
+    LocalityKindClass.NEIGHBORHOOD -> R.string.locality_kind_neighborhood
+    LocalityKindClass.RESIDENTIAL -> R.string.locality_kind_residential
+    LocalityKindClass.AREA -> R.string.locality_kind_area
 }

@@ -156,8 +156,8 @@ import com.tunisianprayertimes.DelegationLocator
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.GouvernoratRepository
 import com.tunisianprayertimes.Locality
+import com.tunisianprayertimes.LocalityPickerCatalog
 import com.tunisianprayertimes.LocalityRepository
-import com.tunisianprayertimes.normalizeLocalitySearch
 import com.tunisianprayertimes.withAvailablePrayerSource
 import com.tunisianprayertimes.ManualSilenceMode
 import com.tunisianprayertimes.ManualSilenceScheduler
@@ -1490,17 +1490,9 @@ private fun LocationPickerCard(
             context.unregisterReceiver(receiver)
         }
     }
-    val delegationRows = remember(allDelegations) {
-        gouvernorats.flatMap { gov ->
-            gov.delegations.filter { it.id in availableIds }.map { d ->
-                Locality("delegation:${d.id}", d.nomAr, d.nomAr, gov.id, d.id,
-                    normalizeLocalitySearch("${d.nomAr} ${d.nomFr} ${d.nomEn} ${gov.nomAr} ${gov.nomFr} ${gov.nomEn}"))
-            }
-        }
-    }
     // Prepare names while the main screen is visible; opening the sheet never waits for polygons.
-    val pickerCatalog by produceState(delegationRows, allDelegations) {
-        value = withContext(Dispatchers.Default) { LocalityRepository.loadAvailable(context, allDelegations) }
+    val pickerCatalog by produceState(LocalityPickerCatalog.empty, allDelegations) {
+        value = withContext(Dispatchers.Default) { LocalityRepository.preparePicker(context, allDelegations) }
     }
     val savedDelegation = remember(delegationId, allDelegations) { allDelegations.find { it.id == delegationId } }
 
@@ -2168,8 +2160,6 @@ private fun PrayerSettingsCard(
                 )
             }
 
-            RecurrenceInfoStrip(R.string.prayer_silence_recurrence_general)
-
             if (displayTimes != null) {
                 PrayerSilenceHint()
 
@@ -2245,16 +2235,13 @@ private fun PrayerSettingsCard(
                         else -> null
                     }
                     key(prayer) {
-                        if (prayer == Prayer.JOMOAA) {
-                            FridayConfigurationLabel()
-                        }
                         PrayerRow(
                             prayer = prayer,
                             prayerName = prayerNames[prayer] ?: prayer.name,
                             prayerTime = prayerTime,
                             nextPrayerTime = nextPrayerTime,
                             nextPrayerIsTomorrow = nextPrayerIsTomorrow,
-                            isNextPrayer = prayer == nextPrayer,
+                            isNextPrayer = prayer == nextPrayer && prayer != Prayer.JOMOAA,
                             onConfigChanged = {
                                 refreshTick++
                                 onConfigChanged()
@@ -2269,10 +2256,6 @@ private fun PrayerSettingsCard(
                         )
                     }
                 }
-
-                HorizontalDivider(color = PrayerSilencePalette.SoftBorder, thickness = 1.dp)
-
-                SharedSettingsAction(onClick = { sharedSheetOpen = true })
 
                 if (!silencePermissionsGranted && anyPrayerEnabled) {
                     Text(
@@ -2424,88 +2407,6 @@ private fun PrayerSettingsCard(
                 refreshTick++
                 onConfigChanged()
             },
-        )
-    }
-}
-
-@Composable
-private fun FridayConfigurationLabel() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                start = PrayerSilenceDimens.SectionHorizontalPadding,
-                end = PrayerSilenceDimens.SectionHorizontalPadding,
-                top = 6.dp,
-            ),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        Text(
-            text = stringResource(R.string.prayer_silence_friday_section),
-            fontSize = 13.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = PrayerSilencePalette.PrimaryText,
-        )
-        Text(
-            text = stringResource(R.string.prayer_silence_friday_scope),
-            fontSize = 11.sp,
-            color = PrayerSilencePalette.SecondaryText,
-        )
-    }
-}
-
-@Composable
-private fun RecurrenceInfoStrip(textRes: Int) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(PrayerSilencePalette.TintedStrip)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
-    ) {
-        Icon(
-            painter = painterResource(R.drawable.ic_repeat),
-            contentDescription = null,
-            tint = PrayerSilencePalette.InteractiveTeal,
-            modifier = Modifier.size(15.dp),
-        )
-        Spacer(Modifier.width(6.dp))
-        Text(
-            text = stringResource(textRes),
-            fontSize = PrayerSilenceTypography.Recurrence,
-            color = PrayerSilencePalette.PrimaryText,
-            textAlign = TextAlign.Center,
-            lineHeight = 19.sp,
-        )
-    }
-}
-
-@Composable
-private fun SharedSettingsAction(onClick: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(role = Role.Button, onClick = onClick)
-            .heightIn(min = PrayerSilenceDimens.MinTouchTarget)
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
-    ) {
-        Icon(
-            painter = painterResource(R.drawable.ic_tune),
-            contentDescription = null,
-            tint = PrayerSilencePalette.InteractiveTeal,
-            modifier = Modifier.size(18.dp),
-        )
-        Spacer(Modifier.width(6.dp))
-        Text(
-            text = stringResource(R.string.prayer_silence_shared_action),
-            fontSize = 15.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = PrayerSilencePalette.InteractiveTeal,
-            textAlign = TextAlign.Center,
         )
     }
 }
