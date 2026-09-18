@@ -29,7 +29,7 @@ internal object PrayerSilenceDimens {
     val SectionHorizontalPadding = 16.dp
     val SectionVerticalPadding = 8.dp
     val SectionSpacing = 6.dp
-    val SectionDetailsSpacing = 4.dp
+    val SectionDetailsSpacing = 2.dp
     val FieldCorner = 14.dp
     val FieldMinHeight = 52.dp
     val FieldPaddingHorizontal = 14.dp

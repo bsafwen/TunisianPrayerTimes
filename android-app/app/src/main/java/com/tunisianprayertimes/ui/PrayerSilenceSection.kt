@@ -2,7 +2,6 @@ package com.tunisianprayertimes.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,6 +19,10 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -48,8 +51,8 @@ import com.tunisianprayertimes.ui.theme.NextPrayerBg
 
 /**
  * One prayer's silence controls. The header, compact interval summary and the
- * full timeline are always visible and directly editable; expanding reveals the
- * independent endpoint rule editors below the timeline.
+ * full timeline are always visible and directly editable. Expansion is reserved
+ * for genuine advanced settings; when none exist the prayer shows no chevron.
  */
 @Composable
 internal fun PrayerSilenceSection(
@@ -62,16 +65,16 @@ internal fun PrayerSilenceSection(
     enabled: Boolean,
     showSwitch: Boolean,
     isNextPrayer: Boolean,
-    expanded: Boolean,
-    onExpandedChange: (Boolean) -> Unit,
     onEnabledChange: (Boolean) -> Unit,
     onPreviewWindow: (PrayerTimelineWindow?) -> Unit,
     onCommitWindow: (PrayerTimelineWindow) -> Unit,
-    onCommitConfig: (PrayerSilenceConfig) -> Unit,
     onEditEndpoint: (SilenceEndpoint) -> Unit,
     onPrayerTimeClick: (() -> Unit)?,
     modifier: Modifier = Modifier,
+    advancedContent: (@Composable () -> Unit)? = null,
 ) {
+    var expanded by rememberSaveable(prayer) { mutableStateOf(false) }
+    val advanced = advancedContent
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -89,8 +92,9 @@ internal fun PrayerSilenceSection(
             isNextPrayer = isNextPrayer,
             enabled = enabled,
             showSwitch = showSwitch,
+            hasAdvanced = advanced != null,
             expanded = expanded,
-            onExpandedChange = onExpandedChange,
+            onExpandedChange = { expanded = it },
             onEnabledChange = onEnabledChange,
             onPrayerTimeClick = onPrayerTimeClick,
         )
@@ -124,83 +128,16 @@ internal fun PrayerSilenceSection(
                 onEditEndpoint = onEditEndpoint,
             )
         }
-        AnimatedVisibility(visible = expanded) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .alpha(if (enabled) 1f else PrayerSilencePalette.DeemphasisAlpha)
-                    .padding(top = 2.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-            ) {
-                EndpointAdvancedControls(
-                    prayerName = prayerName,
-                    config = config,
-                    prayerTime = prayerTime,
-                    window = window,
-                    enabled = enabled,
-                    onCommitConfig = onCommitConfig,
-                    onEditEndpoint = onEditEndpoint,
-                )
-                SilenceRuleSummary(
-                    config = config,
-                    prayerTime = prayerTime,
-                    window = window,
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun EndpointAdvancedControls(
-    prayerName: String,
-    config: PrayerSilenceConfig,
-    prayerTime: PrayerTime,
-    window: PrayerTimelineWindow,
-    enabled: Boolean,
-    onCommitConfig: (PrayerSilenceConfig) -> Unit,
-    onEditEndpoint: (SilenceEndpoint) -> Unit,
-) {
-    // RTL chronology: the beginning is always on the physical right and the end
-    // on the physical left; identities never swap when an endpoint crosses adhan.
-    val endpoints = listOf(SilenceEndpoint.START, SilenceEndpoint.END)
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val sideBySide = maxWidth.value / LocalDensity.current.fontScale >= 340f
-        if (sideBySide) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalAlignment = Alignment.Top,
-            ) {
-                endpoints.forEach { endpoint ->
-                    EndpointRuleControls(
-                        endpoint = endpoint,
-                        config = config,
-                        prayerTime = prayerTime,
-                        window = window,
-                        enabled = enabled,
-                        onConfigChange = onCommitConfig,
-                        modifier = Modifier.weight(1f),
-                        prayerName = prayerName,
-                        compact = true,
-                        onOpenEditor = { onEditEndpoint(endpoint) },
-                    )
-                }
-            }
-        } else {
-            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                endpoints.forEach { endpoint ->
-                    EndpointRuleControls(
-                        endpoint = endpoint,
-                        config = config,
-                        prayerTime = prayerTime,
-                        window = window,
-                        enabled = enabled,
-                        onConfigChange = onCommitConfig,
-                        prayerName = prayerName,
-                        compact = true,
-                        onOpenEditor = { onEditEndpoint(endpoint) },
-                    )
+        if (advanced != null) {
+            AnimatedVisibility(visible = expanded) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .alpha(if (enabled) 1f else PrayerSilencePalette.DeemphasisAlpha)
+                        .padding(top = 2.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    advanced()
                 }
             }
         }
@@ -215,6 +152,7 @@ private fun PrayerSilenceHeader(
     isNextPrayer: Boolean,
     enabled: Boolean,
     showSwitch: Boolean,
+    hasAdvanced: Boolean,
     expanded: Boolean,
     onExpandedChange: (Boolean) -> Unit,
     onEnabledChange: (Boolean) -> Unit,
@@ -229,6 +167,19 @@ private fun PrayerSilenceHeader(
     val disclosureState = stringResource(
         if (expanded) R.string.prayer_silence_expanded_state else R.string.prayer_silence_collapsed_state,
     )
+    val nameModifier = if (hasAdvanced) {
+        Modifier
+            .clip(RoundedCornerShape(8.dp))
+            .clickable(
+                role = Role.Button,
+                onClickLabel = disclosureLabel,
+                onClick = { onExpandedChange(!expanded) },
+            )
+            .padding(horizontal = 2.dp, vertical = 6.dp)
+            .semantics { stateDescription = disclosureState }
+    } else {
+        Modifier.padding(horizontal = 2.dp, vertical = 6.dp)
+    }
     Row(
         modifier = Modifier.fillMaxWidth().heightIn(min = PrayerSilenceDimens.MinTouchTarget),
         verticalAlignment = Alignment.CenterVertically,
@@ -242,26 +193,28 @@ private fun PrayerSilenceHeader(
             // RTL places the first child on the right: the disclosure chevron
             // stays at the far right, immediately beside the prayer name, and is
             // unaffected by the optional "القادمة" badge inside the FlowRow.
-            Box(
-                modifier = Modifier
-                    .size(PrayerSilenceDimens.MinTouchTarget)
-                    .clip(RoundedCornerShape(10.dp))
-                    .clickable(
-                        role = Role.Button,
-                        onClickLabel = disclosureLabel,
-                        onClick = { onExpandedChange(!expanded) },
+            if (hasAdvanced) {
+                Box(
+                    modifier = Modifier
+                        .size(PrayerSilenceDimens.MinTouchTarget)
+                        .clip(RoundedCornerShape(10.dp))
+                        .clickable(
+                            role = Role.Button,
+                            onClickLabel = disclosureLabel,
+                            onClick = { onExpandedChange(!expanded) },
+                        )
+                        .semantics { stateDescription = disclosureState },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        painter = painterResource(
+                            if (expanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more,
+                        ),
+                        contentDescription = null,
+                        tint = PrayerSilencePalette.SecondaryText,
+                        modifier = Modifier.size(22.dp),
                     )
-                    .semantics { stateDescription = disclosureState },
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    painter = painterResource(
-                        if (expanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more,
-                    ),
-                    contentDescription = null,
-                    tint = PrayerSilencePalette.SecondaryText,
-                    modifier = Modifier.size(22.dp),
-                )
+                }
             }
             FlowRow(
                 modifier = Modifier.weight(1f),
@@ -273,16 +226,7 @@ private fun PrayerSilenceHeader(
                     fontSize = PrayerSilenceTypography.PrayerName,
                     fontWeight = FontWeight.Bold,
                     color = PrayerSilencePalette.PrimaryText,
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .clip(RoundedCornerShape(8.dp))
-                        .clickable(
-                            role = Role.Button,
-                            onClickLabel = disclosureLabel,
-                            onClick = { onExpandedChange(!expanded) },
-                        )
-                        .padding(horizontal = 2.dp, vertical = 6.dp)
-                        .semantics { stateDescription = disclosureState },
+                    modifier = Modifier.align(Alignment.CenterVertically).then(nameModifier),
                 )
                 PrayerSilenceClock(
                     prayer = prayer,
@@ -543,13 +487,24 @@ private fun CompactEndpointSummary(
             maxLines = 1,
             softWrap = false,
         )
-        Text(
-            text = caption,
-            fontSize = PrayerSilenceTypography.FieldLabel,
-            color = PrayerSilencePalette.SecondaryText,
-            textAlign = TextAlign.Center,
-            maxLines = 2,
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(2.dp),
+        ) {
+            Text(
+                text = caption,
+                fontSize = PrayerSilenceTypography.FieldLabel,
+                color = PrayerSilencePalette.SecondaryText,
+                textAlign = TextAlign.Center,
+                maxLines = 2,
+            )
+            Icon(
+                painter = painterResource(R.drawable.ic_expand_more),
+                contentDescription = null,
+                tint = PrayerSilencePalette.SecondaryText,
+                modifier = Modifier.size(14.dp),
+            )
+        }
     }
 }
 
@@ -573,99 +528,6 @@ internal fun endpointRuleCaption(
         offset == 0 -> stringResource(R.string.prayer_silence_at_adhan)
         offset < 0 -> stringResource(R.string.prayer_silence_caption_before_adhan, -offset)
         else -> stringResource(R.string.prayer_silence_caption_after_adhan, offset)
-    }
-}
-
-@Composable
-private fun SilenceRuleSummary(
-    config: PrayerSilenceConfig,
-    prayerTime: PrayerTime,
-    window: PrayerTimelineWindow,
-    modifier: Modifier = Modifier,
-) {
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
-    val durationText = if (window.durationMinutes < 0) {
-        "—"
-    } else {
-        pluralStringResource(
-            R.plurals.prayer_silence_duration_minutes,
-            window.durationMinutes,
-            window.durationMinutes,
-        )
-    }
-    val startPhrase = endpointSummaryPhrase(config, window, SilenceEndpoint.START, prayerMinutes)
-    val endPhrase = endpointSummaryPhrase(config, window, SilenceEndpoint.END, prayerMinutes)
-    val shape = RoundedCornerShape(PrayerSilenceDimens.FieldCorner)
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(PrayerSilencePalette.TintedStrip)
-            .border(1.dp, PrayerSilencePalette.SoftBorder, shape)
-            .padding(horizontal = 12.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(2.dp),
-        ) {
-            Text(
-                text = stringResource(R.string.prayer_silence_summary_duration, durationText),
-                fontSize = PrayerSilenceTypography.Duration,
-                fontWeight = FontWeight.SemiBold,
-                color = PrayerSilencePalette.InteractiveTeal,
-            )
-            Text(
-                text = "$startPhrase $endPhrase",
-                fontSize = 12.sp,
-                color = PrayerSilencePalette.SecondaryText,
-                lineHeight = 17.sp,
-            )
-        }
-        Icon(
-            painter = painterResource(R.drawable.ic_bell_off),
-            contentDescription = null,
-            tint = PrayerSilencePalette.SecondaryText,
-            modifier = Modifier.size(16.dp),
-        )
-    }
-}
-
-/** "تبدأ ..." / "وتنتهي ..." phrases describing the endpoint's actual rule. */
-@Composable
-private fun endpointSummaryPhrase(
-    config: PrayerSilenceConfig,
-    window: PrayerTimelineWindow,
-    endpoint: SilenceEndpoint,
-    prayerMinutes: Int,
-): String {
-    val start = endpoint == SilenceEndpoint.START
-    val mode = if (start) config.startRuleMode() else config.endRuleMode()
-    if (mode == EndpointRuleMode.FIXED_TIME) {
-        val clock = silenceClockText(if (start) window.startMinutes else window.endMinutes)
-        return stringResource(
-            if (start) R.string.prayer_silence_summary_start_fixed else R.string.prayer_silence_summary_end_fixed,
-            clock,
-        )
-    }
-    val offset = if (start) {
-        window.startMinutes - prayerMinutes
-    } else {
-        window.endMinutes - prayerMinutes
-    }
-    return when {
-        offset == 0 -> stringResource(
-            if (start) R.string.prayer_silence_summary_start_at else R.string.prayer_silence_summary_end_at,
-        )
-        offset < 0 -> stringResource(
-            if (start) R.string.prayer_silence_summary_start_before else R.string.prayer_silence_summary_end_before,
-            -offset,
-        )
-        else -> stringResource(
-            if (start) R.string.prayer_silence_summary_start_after else R.string.prayer_silence_summary_end_after,
-            offset,
-        )
     }
 }
 

@@ -1,6 +1,5 @@
 package com.tunisianprayertimes.ui
 
-import android.app.TimePickerDialog
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -31,16 +29,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -62,101 +54,40 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
-import com.tunisianprayertimes.ui.theme.SilenceRed
 import kotlin.math.abs
 
-private const val EndpointOffsetLimitMinutes = 10_080
+internal const val EndpointOffsetLimitMinutes = 10_080
 
 /**
- * The one start/end rule editor shared by the expanded prayer rows and the
- * precision sheet, so both expose identical controls and conversions.
+ * The one endpoint rule editor used by the precision sheet. It is stateless:
+ * the sheet owns the draft and the temporary text so invalid input stays local
+ * until Apply validates it.
  */
 @Composable
-internal fun EndpointRuleControls(
+internal fun EndpointRuleEditor(
     endpoint: SilenceEndpoint,
     config: PrayerSilenceConfig,
     prayerTime: PrayerTime,
     window: PrayerTimelineWindow,
     enabled: Boolean,
-    onConfigChange: (PrayerSilenceConfig) -> Unit,
+    relativeValue: String,
+    hourValue: String,
+    minuteValue: String,
+    onModeSelected: (EndpointRuleMode) -> Unit,
+    onDirectionSelected: (EndpointDirection) -> Unit,
+    onRelativeValueChange: (String) -> Unit,
+    onHourValueChange: (String) -> Unit,
+    onMinuteValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    showTitle: Boolean = true,
-    prayerName: String? = null,
-    compact: Boolean = false,
-    onOpenEditor: (() -> Unit)? = null,
 ) {
-    val context = LocalContext.current
-    val focusManager = LocalFocusManager.current
-    val prayerMinutes = prayerMinutesOfDay(prayerTime)
     val start = endpoint == SilenceEndpoint.START
-    val fixed = (if (start) config.startRuleMode() else config.endRuleMode()) == EndpointRuleMode.FIXED_TIME
+    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    val mode = if (start) config.startRuleMode() else config.endRuleMode()
+    val fixed = mode == EndpointRuleMode.FIXED_TIME
     val resolvedMinutes = if (start) window.startMinutes else window.endMinutes
     val resolvedOffset = resolvedMinutes - prayerMinutes
-    val title = stringResource(
-        if (start) R.string.prayer_silence_start_group else R.string.prayer_silence_end_group,
-    )
-    val clockPickerLabel = stringResource(
-        if (start) R.string.prayer_editor_choose_start_clock else R.string.prayer_editor_choose_end_clock,
-    )
-    val clockPickerTitle = if (prayerName.isNullOrBlank()) {
-        clockPickerLabel
-    } else {
-        stringResource(R.string.prayer_editor_clock_title, prayerName, clockPickerLabel)
-    }
-    var error by remember(endpoint, config) { mutableStateOf(false) }
-    var clockOpen by remember(endpoint) { mutableStateOf(false) }
-    var minuteText by remember(endpoint, resolvedOffset, fixed) {
-        mutableStateOf(abs(resolvedOffset).toString())
-    }
-
-    fun ruleFor(mode: EndpointRuleMode, offsetMinutes: Int, clockMinutes: Int): PrayerSilenceConfig =
-        if (start) {
-            config.withStartRule(mode, offsetMinutes, clockMinutes)
-        } else {
-            config.withEndRule(mode, offsetMinutes, clockMinutes)
-        }
-
-    fun clampedOffset(target: Int): Int {
-        val otherOffset = if (start) {
-            window.endMinutes - prayerMinutes
-        } else {
-            window.startMinutes - prayerMinutes
-        }
-        val clamped = if (start) {
-            target.coerceAtMost(otherOffset - 1)
-        } else {
-            target.coerceAtLeast(otherOffset + 1)
-        }
-        return clamped.coerceIn(-EndpointOffsetLimitMinutes, EndpointOffsetLimitMinutes)
-    }
-
-    fun commit(candidate: PrayerSilenceConfig) {
-        if (!enabled) return
-        val synced = candidate.withLegacyDurationSynced(prayerTime)
-        if (configResolvesToValidWindow(prayerTime, synced)) {
-            error = false
-            onConfigChange(synced)
-        } else {
-            error = true
-        }
-    }
-
-    fun commitOffset(target: Int) {
-        if (!enabled) return
-        val offset = clampedOffset(target)
-        minuteText = abs(offset).toString()
-        commit(ruleFor(EndpointRuleMode.ADHAN, offset, resolvedMinutes))
-    }
-
-    Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        if (showTitle) {
-            Text(
-                text = title,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = PrayerSilencePalette.PrimaryText,
-            )
-        }
+    val direction = offsetDirection(resolvedOffset)
+    Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         EndpointModeChoices(
             choices = listOf(
                 stringResource(R.string.prayer_silence_mode_adhan),
@@ -165,145 +96,160 @@ internal fun EndpointRuleControls(
             selected = if (fixed) 1 else 0,
             enabled = enabled,
             onSelected = { index ->
-                val mode = if (index == 0) EndpointRuleMode.ADHAN else EndpointRuleMode.FIXED_TIME
-                if (mode == EndpointRuleMode.FIXED_TIME) {
-                    commit(ruleFor(mode, resolvedOffset, resolvedMinutes))
-                } else {
-                    commit(ruleFor(mode, clampedOffset(resolvedOffset), resolvedMinutes))
-                }
+                val target = if (index == 0) EndpointRuleMode.ADHAN else EndpointRuleMode.FIXED_TIME
+                if (target != mode) onModeSelected(target)
             },
         )
-        if (compact) {
-            CompactEndpointValue(
-                text = if (fixed) {
-                    stringResource(R.string.prayer_silence_inline_fixed_value, silenceClockText(resolvedMinutes))
-                } else {
-                    endpointRuleCaption(config, window, endpoint, prayerMinutes)
-                },
+        Text(
+            text = if (fixed) {
+                stringResource(R.string.prayer_silence_explain_fixed, silenceClockText(resolvedMinutes))
+            } else if (resolvedOffset == 0) {
+                stringResource(R.string.prayer_silence_explain_follows_adhan)
+            } else {
+                endpointRelationText(resolvedOffset)
+            },
+            color = PrayerSilencePalette.SecondaryText,
+            fontSize = 13.sp,
+            lineHeight = 19.sp,
+        )
+        if (fixed) {
+            EndpointInlineClockInput(
+                hourValue = hourValue,
+                minuteValue = minuteValue,
                 enabled = enabled,
-                description = stringResource(
-                    if (start) R.string.prayer_silence_start_field_desc else R.string.prayer_silence_end_field_desc,
-                    prayerName ?: title,
-                    if (fixed) {
-                        stringResource(R.string.prayer_silence_fixed_time_desc, prayerClockText(resolvedMinutes))
-                    } else {
-                        endpointRelationText(resolvedOffset)
-                    },
-                ),
-                onClick = { onOpenEditor?.invoke() },
-            )
-        } else if (fixed) {
-            EndpointClockButton(
-                label = stringResource(R.string.prayer_silence_mode_fixed),
-                minutes = resolvedMinutes,
-                enabled = enabled,
-                onClick = { focusManager.clearFocus(); clockOpen = true },
+                onHourValueChange = onHourValueChange,
+                onMinuteValueChange = onMinuteValueChange,
             )
         } else {
             EndpointDirectionChoices(
-                selected = offsetDirection(resolvedOffset),
+                selected = direction,
                 enabled = enabled,
-                onSelected = { direction ->
-                    val magnitude = abs(resolvedOffset).coerceAtLeast(1)
-                    commitOffset(
-                        when (direction) {
-                            EndpointDirection.BEFORE -> -magnitude
-                            EndpointDirection.AT_ADHAN -> 0
-                            EndpointDirection.AFTER -> magnitude
-                        },
-                    )
-                },
+                onSelected = onDirectionSelected,
             )
-            EndpointMinuteStepper(
-                value = minuteText,
-                enabled = enabled,
-                decreaseLabel = stringResource(R.string.prayer_silence_decrease_minute),
-                increaseLabel = stringResource(R.string.prayer_silence_increase_minute),
-                unitLabel = stringResource(R.string.prayer_editor_minutes_unit),
-                onDecrease = { commitOffset(resolvedOffset - 1) },
-                onIncrease = { commitOffset(resolvedOffset + 1) },
-                onValueChange = { text ->
-                    val digits = normalizeEndpointNumber(text)
-                    minuteText = digits
-                    val parsed = digits.toIntOrNull()
-                    if (parsed != null) {
-                        val signed = when {
-                            parsed == 0 -> 0
-                            resolvedOffset < 0 -> -parsed
-                            else -> parsed
-                        }
-                        commitOffset(signed)
-                    }
-                },
-            )
-        }
-        if (error) {
-            Text(
-                text = stringResource(R.string.prayer_silence_end_before_start_error),
-                color = SilenceRed,
-                fontSize = 12.sp,
-                lineHeight = 17.sp,
-            )
-        }
-    }
-
-    if (clockOpen) {
-        DisposableEffect(endpoint, resolvedMinutes) {
-            val clock = Math.floorMod(resolvedMinutes, 24 * 60)
-            val picker = TimePickerDialog(
-                context,
-                { _, hour, minute ->
-                    commit(ruleFor(EndpointRuleMode.FIXED_TIME, resolvedOffset, hour * 60 + minute))
-                    clockOpen = false
-                },
-                clock / 60,
-                clock % 60,
-                true,
-            )
-            picker.setTitle(clockPickerTitle)
-            picker.setOnDismissListener { clockOpen = false }
-            picker.show()
-            onDispose {
-                picker.setOnDismissListener(null)
-                picker.dismiss()
+            if (direction == EndpointDirection.AT_ADHAN) {
+                CompactResolvedTime(resolvedMinutes)
+            } else {
+                EndpointMinuteStepper(
+                    value = relativeValue,
+                    enabled = enabled,
+                    decreaseLabel = stringResource(R.string.prayer_silence_decrease_minute),
+                    increaseLabel = stringResource(R.string.prayer_silence_increase_minute),
+                    unitLabel = stringResource(R.string.prayer_editor_minutes_unit),
+                    onDecrease = {
+                        val current = relativeValue.toIntOrNull() ?: abs(resolvedOffset)
+                        onRelativeValueChange((current - 1).coerceAtLeast(1).toString())
+                    },
+                    onIncrease = {
+                        val current = relativeValue.toIntOrNull() ?: abs(resolvedOffset)
+                        onRelativeValueChange((current + 1).toString())
+                    },
+                    onValueChange = onRelativeValueChange,
+                )
             }
         }
     }
 }
 
-/** Compact inline rule text; tapping opens the endpoint's precision editor. */
+/** Compact resolved clock shown for at-adhan mode, which needs no numeric input. */
 @Composable
-private fun CompactEndpointValue(
-    text: String,
-    enabled: Boolean,
-    description: String,
-    onClick: () -> Unit,
-) {
+private fun CompactResolvedTime(minutes: Int) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 48.dp)
-            .clip(RoundedCornerShape(10.dp))
-            .clickable(
-                enabled = enabled,
-                role = Role.Button,
-                onClickLabel = description,
-                onClick = onClick,
-            )
-            .padding(horizontal = 8.dp, vertical = 10.dp)
-            .semantics { contentDescription = description },
+            .heightIn(min = 48.dp),
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = text,
+            text = silenceClockText(minutes),
             color = PrayerSilencePalette.PrimaryText,
-            fontSize = 16.sp,
+            fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Center,
-            lineHeight = 21.sp,
-            maxLines = 2,
+            maxLines = 1,
+            softWrap = false,
         )
     }
+}
+
+/**
+ * Compact inline hour/minute entry for fixed mode. No dialog and no auto-focus:
+ * the keyboard appears only after the user deliberately taps one of the fields.
+ */
+@Composable
+internal fun EndpointInlineClockInput(
+    hourValue: String,
+    minuteValue: String,
+    enabled: Boolean,
+    onHourValueChange: (String) -> Unit,
+    onMinuteValueChange: (String) -> Unit,
+) {
+    val hourLabel = stringResource(R.string.prayer_editor_hour_label)
+    val minuteLabel = stringResource(R.string.prayer_editor_minute_label)
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            ClockNumberField(
+                value = hourValue,
+                label = hourLabel,
+                enabled = enabled,
+                imeAction = ImeAction.Next,
+                onValueChange = onHourValueChange,
+                modifier = Modifier.weight(1f).widthIn(max = 96.dp),
+            )
+            Text(
+                text = ":",
+                color = PrayerSilencePalette.PrimaryText,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(horizontal = 6.dp),
+            )
+            ClockNumberField(
+                value = minuteValue,
+                label = minuteLabel,
+                enabled = enabled,
+                imeAction = ImeAction.Done,
+                onValueChange = onMinuteValueChange,
+                modifier = Modifier.weight(1f).widthIn(max = 96.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun ClockNumberField(
+    value: String,
+    label: String,
+    enabled: Boolean,
+    imeAction: ImeAction,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val focusManager = LocalFocusManager.current
+    BasicTextField(
+        value = value,
+        onValueChange = onValueChange,
+        enabled = enabled,
+        modifier = modifier
+            .heightIn(min = 56.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(PrayerSilencePalette.TintedStrip)
+            .border(1.dp, PrayerSilencePalette.SoftBorder, RoundedCornerShape(12.dp))
+            .padding(horizontal = 8.dp)
+            .semantics { contentDescription = label },
+        textStyle = TextStyle(
+            fontSize = 24.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = PrayerSilencePalette.PrimaryText,
+            textDirection = TextDirection.Ltr,
+            textAlign = TextAlign.Center,
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = imeAction),
+        keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+        singleLine = true,
+        decorationBox = { innerTextField -> Box(contentAlignment = Alignment.Center) { innerTextField() } },
+    )
 }
 
 internal enum class EndpointDirection { BEFORE, AT_ADHAN, AFTER }
@@ -320,24 +266,32 @@ internal fun EndpointDirectionChoices(
     enabled: Boolean,
     onSelected: (EndpointDirection) -> Unit,
 ) {
-    FlowRow(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
-        listOf(
-            EndpointDirection.BEFORE to R.string.prayer_silence_direction_before,
-            EndpointDirection.AT_ADHAN to R.string.prayer_silence_direction_at,
-            EndpointDirection.AFTER to R.string.prayer_silence_direction_after,
-        ).forEach { (direction, labelRes) ->
-            EndpointChoiceChip(
-                label = stringResource(labelRes),
-                selected = selected == direction,
-                enabled = enabled,
-                onClick = { onSelected(direction) },
-            )
-        }
+    // RTL order: "before" sits on the physical right, "at" in the middle and
+    // "after" on the physical left, matching the summary/timeline geometry.
+    val choices = listOf(
+        stringResource(R.string.prayer_silence_direction_before),
+        stringResource(R.string.prayer_silence_direction_at),
+        stringResource(R.string.prayer_silence_direction_after),
+    )
+    val selectedIndex = when (selected) {
+        EndpointDirection.BEFORE -> 0
+        EndpointDirection.AT_ADHAN -> 1
+        EndpointDirection.AFTER -> 2
     }
+    EndpointModeChoices(
+        choices = choices,
+        selected = selectedIndex,
+        enabled = enabled,
+        onSelected = { index ->
+            onSelected(
+                when (index) {
+                    0 -> EndpointDirection.BEFORE
+                    1 -> EndpointDirection.AT_ADHAN
+                    else -> EndpointDirection.AFTER
+                },
+            )
+        },
+    )
 }
 
 @Composable
@@ -402,6 +356,8 @@ internal fun EndpointMinuteStepper(
                             text = unitLabel,
                             color = PrayerSilencePalette.SecondaryText,
                             fontSize = 12.sp,
+                            maxLines = 1,
+                            softWrap = false,
                         )
                     }
                 },
@@ -473,46 +429,6 @@ internal fun EndpointClockButton(
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
             style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
-            maxLines = 1,
-        )
-    }
-}
-
-@Composable
-private fun EndpointChoiceChip(
-    label: String,
-    selected: Boolean,
-    enabled: Boolean,
-    onClick: () -> Unit,
-) {
-    val shape = RoundedCornerShape(9.dp)
-    Box(
-        modifier = Modifier
-            .heightIn(min = 44.dp)
-            .clip(shape)
-            .background(
-                if (selected) PrayerSilencePalette.InteractiveTeal.copy(alpha = 0.12f) else PrayerSilencePalette.TintedStrip,
-                shape,
-            )
-            .border(
-                1.dp,
-                if (selected) PrayerSilencePalette.InteractiveTeal else PrayerSilencePalette.SoftBorder,
-                shape,
-            )
-            .selectable(
-                selected = selected,
-                enabled = enabled,
-                role = Role.RadioButton,
-                onClick = onClick,
-            )
-            .padding(horizontal = 10.dp, vertical = 8.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = label,
-            color = if (selected) PrayerSilencePalette.PrimaryText else PrayerSilencePalette.SecondaryText,
-            fontSize = 13.sp,
-            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
             maxLines = 1,
         )
     }

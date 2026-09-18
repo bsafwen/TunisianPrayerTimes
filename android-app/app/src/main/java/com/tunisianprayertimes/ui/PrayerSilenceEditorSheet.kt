@@ -1,7 +1,5 @@
 package com.tunisianprayertimes.ui
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -34,10 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.DelayMode
@@ -49,9 +46,10 @@ import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.SilenceRed
 import com.tunisianprayertimes.ui.theme.TextMuted
-import java.util.Locale
+import kotlin.math.abs
 
 private const val NO_END_OFFSET = Int.MIN_VALUE
+private const val MINUTES_PER_DAY = 24 * 60
 
 private val PrayerEditorConfigSaver = listSaver<PrayerSilenceConfig, Any>(
     save = {
@@ -77,8 +75,8 @@ private val PrayerEditorConfigSaver = listSaver<PrayerSilenceConfig, Any>(
 )
 
 /**
- * Precision editor for a single endpoint. The draft is committed atomically
- * through Apply; the window preview reflects the whole interval.
+ * Precision editor for a single endpoint. The draft, including temporary
+ * invalid text, stays local; only Apply commits the selected endpoint's rule.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -89,21 +87,61 @@ internal fun PrayerSilenceEditorSheet(
     config: PrayerSilenceConfig,
     endpoint: SilenceEndpoint,
     onDismiss: () -> Unit,
-    onSave: (PrayerSilenceConfig) -> Unit,
+    onSave: (PrayerSilenceConfig) -> Boolean,
 ) {
     val focusManager = LocalFocusManager.current
+    val start = endpoint == SilenceEndpoint.START
+    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    val initialWindow = resolvePrayerTimelineWindow(prayerTime, config)
+    val initialResolved = if (start) initialWindow.startMinutes else initialWindow.endMinutes
+    val initialOffset = initialResolved - prayerMinutes
+    val initialClock = Math.floorMod(initialResolved, MINUTES_PER_DAY)
+
     var draft by rememberSaveable(prayer, config, endpoint, stateSaver = PrayerEditorConfigSaver) {
         mutableStateOf(config)
     }
+    var relativeText by rememberSaveable(prayer, config, endpoint) {
+        mutableStateOf(abs(initialOffset).toString())
+    }
+    var hourText by rememberSaveable(prayer, config, endpoint) {
+        mutableStateOf(clockField(initialClock / 60))
+    }
+    var minuteText by rememberSaveable(prayer, config, endpoint) {
+        mutableStateOf(clockField(initialClock % 60))
+    }
     var saved by remember(prayer, config, endpoint) { mutableStateOf(false) }
+
     val window = resolvePrayerTimelineWindow(prayerTime, draft)
-    val valid = configResolvesToValidWindow(prayerTime, draft)
-    val endpointTitle = stringResource(
-        if (endpoint == SilenceEndpoint.START) {
-            R.string.prayer_silence_start_group
+    val fixed = (if (start) draft.startRuleMode() else draft.endRuleMode()) == EndpointRuleMode.FIXED_TIME
+    val resolvedMinutes = if (start) window.startMinutes else window.endMinutes
+    val resolvedOffset = resolvedMinutes - prayerMinutes
+
+    val relativeValid = fixed || resolvedOffset == 0 ||
+        relativeText.toIntOrNull()?.let { it in 1..EndpointOffsetLimitMinutes } == true
+    val hourValue = hourText.toIntOrNull()
+    val minuteValue = minuteText.toIntOrNull()
+    val clockValid = !fixed ||
+        (hourValue != null && hourValue in 0..23 && minuteValue != null && minuteValue in 0..59)
+    val windowValid = configResolvesToValidWindow(prayerTime, draft)
+    val valid = relativeValid && clockValid && windowValid
+
+    fun applyRule(mode: EndpointRuleMode, offsetMinutes: Int, clockMinutes: Int) {
+        draft = if (start) {
+            draft.withStartRule(mode, offsetMinutes, clockMinutes)
         } else {
-            R.string.prayer_silence_end_group
-        },
+            draft.withEndRule(mode, offsetMinutes, clockMinutes)
+        }
+    }
+
+    fun updateFixedDraft() {
+        val h = hourText.toIntOrNull() ?: return
+        val m = minuteText.toIntOrNull() ?: return
+        if (h !in 0..23 || m !in 0..59) return
+        applyRule(EndpointRuleMode.FIXED_TIME, resolvedOffset, h * 60 + m)
+    }
+
+    val endpointTitle = stringResource(
+        if (start) R.string.prayer_silence_start_group else R.string.prayer_silence_end_group,
     )
 
     ModalBottomSheet(
@@ -111,13 +149,11 @@ internal fun PrayerSilenceEditorSheet(
         sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
         containerColor = Color.White,
     ) {
-        Column(
-            Modifier.fillMaxWidth().navigationBarsPadding().imePadding(),
-        ) {
+        Column(Modifier.fillMaxWidth().navigationBarsPadding().imePadding()) {
             Column(
                 Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState())
-                    .padding(horizontal = 20.dp).padding(bottom = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(20.dp),
+                    .padding(horizontal = 20.dp).padding(bottom = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Text(
@@ -133,24 +169,77 @@ internal fun PrayerSilenceEditorSheet(
                         lineHeight = 18.sp,
                     )
                 }
-                PrayerEditorWindowPreview(if (valid) window else null)
-                EndpointRuleControls(
+                EndpointRuleEditor(
                     endpoint = endpoint,
                     config = draft,
                     prayerTime = prayerTime,
                     window = window,
-                    enabled = true,
-                    onConfigChange = { updated -> draft = updated },
-                    showTitle = false,
-                    prayerName = prayerName,
+                    enabled = !saved,
+                    relativeValue = relativeText,
+                    hourValue = hourText,
+                    minuteValue = minuteText,
+                    onModeSelected = { target ->
+                        val currentWindow = resolvePrayerTimelineWindow(prayerTime, draft)
+                        val currentResolved = if (start) currentWindow.startMinutes else currentWindow.endMinutes
+                        if (target == EndpointRuleMode.FIXED_TIME) {
+                            applyRule(
+                                EndpointRuleMode.FIXED_TIME,
+                                currentResolved - prayerMinutes,
+                                currentResolved,
+                            )
+                            val clock = Math.floorMod(currentResolved, MINUTES_PER_DAY)
+                            hourText = clockField(clock / 60)
+                            minuteText = clockField(clock % 60)
+                        } else {
+                            val offset = currentResolved - prayerMinutes
+                            applyRule(EndpointRuleMode.ADHAN, offset, currentResolved)
+                            relativeText = abs(offset).toString()
+                        }
+                    },
+                    onDirectionSelected = { direction ->
+                        val magnitude = relativeText.toIntOrNull()?.coerceAtLeast(1)
+                            ?: abs(resolvedOffset).coerceAtLeast(1)
+                        val signed = when (direction) {
+                            EndpointDirection.BEFORE -> -magnitude
+                            EndpointDirection.AT_ADHAN -> 0
+                            EndpointDirection.AFTER -> magnitude
+                        }
+                        applyRule(EndpointRuleMode.ADHAN, signed, resolvedMinutes)
+                        relativeText = when {
+                            direction == EndpointDirection.AT_ADHAN -> "0"
+                            relativeText.toIntOrNull() == null ||
+                                relativeText.toIntOrNull() == 0 -> magnitude.toString()
+                            else -> relativeText
+                        }
+                    },
+                    onRelativeValueChange = { raw ->
+                        val digits = normalizeEndpointNumber(raw).take(4)
+                        relativeText = digits
+                        val parsed = digits.toIntOrNull()
+                        if (parsed != null && parsed <= EndpointOffsetLimitMinutes) {
+                            val signed = when {
+                                parsed == 0 -> 0
+                                resolvedOffset < 0 -> -parsed
+                                else -> parsed
+                            }
+                            applyRule(EndpointRuleMode.ADHAN, signed, resolvedMinutes)
+                        }
+                    },
+                    onHourValueChange = { raw ->
+                        hourText = normalizeEndpointNumber(raw).take(2)
+                        updateFixedDraft()
+                    },
+                    onMinuteValueChange = { raw ->
+                        minuteText = normalizeEndpointNumber(raw).take(2)
+                        updateFixedDraft()
+                    },
                 )
-                if (!valid) {
-                    Text(
-                        text = stringResource(R.string.prayer_editor_invalid_window),
-                        color = SilenceRed,
-                        fontSize = 14.sp,
-                    )
+                when {
+                    fixed && !clockValid -> EditorError(stringResource(R.string.prayer_editor_invalid_time))
+                    !fixed && !relativeValid -> EditorError(stringResource(R.string.prayer_editor_invalid_number))
+                    !windowValid -> EditorError(stringResource(R.string.prayer_silence_end_before_start_error))
                 }
+                EndpointResultPreview(window)
             }
             PrayerEditorActions(
                 canSave = valid && !saved,
@@ -158,7 +247,9 @@ internal fun PrayerSilenceEditorSheet(
                     if (valid && !saved) {
                         saved = true
                         focusManager.clearFocus()
-                        onSave(draft)
+                        if (!onSave(draft.withLegacyDurationSynced(prayerTime))) {
+                            saved = false
+                        }
                     }
                 },
                 onCancel = { focusManager.clearFocus(); onDismiss() },
@@ -168,73 +259,72 @@ internal fun PrayerSilenceEditorSheet(
 }
 
 @Composable
-private fun PrayerEditorWindowPreview(window: PrayerTimelineWindow?) {
-    Column(
-        Modifier.fillMaxWidth()
-            .background(GreenPrimaryDark.copy(alpha = 0.045f), RoundedCornerShape(14.dp))
-            .border(1.dp, GreenPrimaryDark.copy(alpha = 0.10f), RoundedCornerShape(14.dp))
-            .padding(14.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
+private fun EditorError(message: String) {
+    Text(message, color = SilenceRed, fontSize = 14.sp, lineHeight = 19.sp)
+}
+
+/** Compact date-aware interval preview shown below the active inputs. */
+@Composable
+private fun EndpointResultPreview(window: PrayerTimelineWindow) {
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        HorizontalDivider(color = GreenPrimaryDark.copy(alpha = 0.10f))
         Text(
-            stringResource(R.string.prayer_editor_preview),
-            color = GreenPrimaryDark,
+            stringResource(R.string.prayer_editor_result_label),
+            color = TextMuted,
             fontSize = 12.sp,
             fontWeight = FontWeight.Medium,
         )
-        if (window == null) {
-            Text(stringResource(R.string.prayer_editor_invalid_window), color = SilenceRed, fontSize = 14.sp)
-        } else {
-            BoxWithConstraints(Modifier.fillMaxWidth()) {
-                if (maxWidth.value / LocalDensity.current.fontScale >= 240f) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
-                        PrayerEditorPreviewEndpoint(stringResource(R.string.prayer_editor_start), window.startMinutes, Modifier.weight(1f))
-                        PrayerEditorPreviewEndpoint(stringResource(R.string.prayer_editor_end), window.endMinutes, Modifier.weight(1f))
-                    }
-                } else {
-                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        PrayerEditorPreviewEndpoint(stringResource(R.string.prayer_editor_start), window.startMinutes, Modifier.fillMaxWidth())
-                        PrayerEditorPreviewEndpoint(stringResource(R.string.prayer_editor_end), window.endMinutes, Modifier.fillMaxWidth())
-                    }
-                }
-            }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            PreviewEndpoint(
+                label = stringResource(R.string.prayer_silence_start_label),
+                minutes = window.startMinutes,
+                modifier = Modifier.weight(1f),
+            )
             Text(
-                stringResource(R.string.prayer_editor_preview_duration, window.durationMinutes),
-                color = TextMuted,
-                fontSize = 13.sp,
-                lineHeight = 18.sp,
+                text = if (window.durationMinutes < 0) {
+                    "—"
+                } else {
+                    pluralStringResource(
+                        R.plurals.prayer_silence_duration_minutes,
+                        window.durationMinutes,
+                        window.durationMinutes,
+                    )
+                },
+                color = PrayerSilencePalette.InteractiveTeal,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
+                maxLines = 1,
+                softWrap = false,
+            )
+            PreviewEndpoint(
+                label = stringResource(R.string.prayer_silence_end_label),
+                minutes = window.endMinutes,
+                modifier = Modifier.weight(1f),
             )
         }
     }
 }
 
 @Composable
-private fun PrayerEditorPreviewEndpoint(label: String, minutes: Int, modifier: Modifier) {
-    val day = Math.floorDiv(minutes, 1440)
-    Column(modifier, verticalArrangement = Arrangement.spacedBy(2.dp)) {
+private fun PreviewEndpoint(label: String, minutes: Int, modifier: Modifier) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+    ) {
         Text(label, color = TextMuted, fontSize = 12.sp)
         Text(
-            prayerEditorClockText(minutes),
+            text = silenceClockText(minutes),
             color = GreenPrimaryDark,
-            fontSize = 24.sp,
+            fontSize = 18.sp,
             fontWeight = FontWeight.SemiBold,
-            style = TextStyle(textDirection = TextDirection.Ltr),
+            maxLines = 1,
+            softWrap = false,
         )
-        if (day != 0) {
-            Text(
-                text = when (day) {
-                    -1 -> stringResource(R.string.prayer_editor_previous_day)
-                    1 -> stringResource(R.string.prayer_editor_next_day)
-                    else -> stringResource(
-                        if (day < 0) R.string.prayer_editor_days_before else R.string.prayer_editor_days_after,
-                        kotlin.math.abs(day),
-                    )
-                },
-                color = TextMuted,
-                fontSize = 12.sp,
-                lineHeight = 17.sp,
-            )
-        }
     }
 }
 
@@ -274,7 +364,4 @@ private fun PrayerEditorActions(canSave: Boolean, onSave: () -> Unit, onCancel: 
     }
 }
 
-private fun prayerEditorClockText(minutes: Int): String {
-    val clock = Math.floorMod(minutes, 1440)
-    return String.format(Locale.US, "%02d:%02d", clock / 60, clock % 60)
-}
+private fun clockField(value: Int): String = value.toString().padStart(2, '0')
