@@ -42,6 +42,23 @@ internal data class PrayerTimelineScale(
 internal const val DEFAULT_TIMELINE_START_OFFSET_MINUTES = -15
 internal const val DEFAULT_TIMELINE_END_OFFSET_MINUTES = 60
 
+/** Deliberate-edge extension policy: how long outward intent must hold before the domain grows. */
+internal const val TIMELINE_EDGE_ARM_DELAY_MS = 400L
+
+/** Deliberate-edge extension policy: interval between one-minute viewing-domain steps. */
+internal const val TIMELINE_EDGE_STEP_INTERVAL_MS = 200L
+
+/** Deliberate-edge extension policy: minutes added to the endpoint and viewing domain per step. */
+internal const val TIMELINE_EDGE_STEP_MINUTES = 1
+
+private const val TIMELINE_SETTLE_STEP_MINUTES = 15
+
+/**
+ * Viewing boundaries settle outward to whole quarter-hours after an extended drag
+ * ([floorToTimelineBoundary]/[ceilToTimelineBoundary]) while the selected values are
+ * never rounded, so an extended timeline stays extended instead of collapsing onto
+ * the dragged endpoint.
+ */
 internal fun sharedPrayerTimelineScale(
     windowsByPrayer: List<Pair<PrayerTime, PrayerTimelineWindow>>,
 ): PrayerTimelineScale {
@@ -54,8 +71,18 @@ internal fun sharedPrayerTimelineScale(
         if (startOffset < start) start = startOffset
         if (endOffset > end) end = endOffset
     }
-    return PrayerTimelineScale(start, end.coerceAtLeast(start + 1))
+    val settledStart = minOf(start, floorToTimelineBoundary(start))
+    val settledEnd = maxOf(end, ceilToTimelineBoundary(end))
+    return PrayerTimelineScale(settledStart, settledEnd.coerceAtLeast(settledStart + 1))
 }
+
+/** Rounds an earlier viewing boundary outward to the previous quarter-hour. */
+internal fun floorToTimelineBoundary(offsetMinutes: Int): Int =
+    Math.floorDiv(offsetMinutes, TIMELINE_SETTLE_STEP_MINUTES) * TIMELINE_SETTLE_STEP_MINUTES
+
+/** Rounds a later viewing boundary outward to the next quarter-hour. */
+internal fun ceilToTimelineBoundary(offsetMinutes: Int): Int =
+    -Math.floorDiv(-offsetMinutes, TIMELINE_SETTLE_STEP_MINUTES) * TIMELINE_SETTLE_STEP_MINUTES
 
 internal fun prayerMinutesOfDay(prayerTime: PrayerTime): Int = prayerTime.hour * 60 + prayerTime.minute
 

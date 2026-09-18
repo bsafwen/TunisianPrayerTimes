@@ -2161,8 +2161,6 @@ private fun PrayerSettingsCard(
             }
 
             if (displayTimes != null) {
-                PrayerSilenceHint()
-
                 sectionPrayers.forEachIndexed { index, prayer ->
                     if (index > 0) {
                         HorizontalDivider(color = PrayerSilencePalette.SoftBorder, thickness = 1.dp)
@@ -2407,32 +2405,6 @@ private fun PrayerSettingsCard(
                 refreshTick++
                 onConfigChanged()
             },
-        )
-    }
-}
-
-@Composable
-private fun PrayerSilenceHint() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = PrayerSilenceDimens.SectionHorizontalPadding, vertical = 6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
-    ) {
-        Icon(
-            painter = painterResource(R.drawable.ic_info_outline),
-            contentDescription = null,
-            tint = PrayerSilencePalette.SecondaryText,
-            modifier = Modifier.size(14.dp),
-        )
-        Spacer(Modifier.width(6.dp))
-        Text(
-            text = stringResource(R.string.prayer_silence_hint),
-            fontSize = PrayerSilenceTypography.Hint,
-            color = PrayerSilencePalette.SecondaryText,
-            textAlign = TextAlign.Center,
-            lineHeight = 18.sp,
         )
     }
 }
