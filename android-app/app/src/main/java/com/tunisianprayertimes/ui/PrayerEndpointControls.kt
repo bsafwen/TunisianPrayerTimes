@@ -44,6 +44,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -441,12 +442,26 @@ internal fun EndpointModeChoices(
     enabled: Boolean,
     onSelected: (Int) -> Unit,
 ) {
+    val textMeasurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    val optionLabelStyle = TextStyle(fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
     BoxWithConstraints(
         Modifier.fillMaxWidth().selectableGroup()
             .background(PrayerSilencePalette.TintedStrip, RoundedCornerShape(12.dp))
             .padding(4.dp),
     ) {
-        if (maxWidth.value / LocalDensity.current.fontScale >= 220f) {
+        // Fit the row from the rendered labels instead of a font-scale threshold.
+        val labelsWidthPx = choices.sumOf { label ->
+            textMeasurer.measure(label, optionLabelStyle, maxLines = 1).size.width
+        }
+        val optionPaddingPx = with(density) { 16.dp.toPx() }
+        val spacingPx = with(density) { 4.dp.toPx() }
+        val containerPaddingPx = with(density) { 8.dp.toPx() }
+        val neededWidthPx = labelsWidthPx +
+            spacingPx * (choices.size - 1) +
+            optionPaddingPx * choices.size +
+            containerPaddingPx
+        if (neededWidthPx <= constraints.maxWidth) {
             Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 choices.forEachIndexed { index, label ->
                     EndpointModeOption(

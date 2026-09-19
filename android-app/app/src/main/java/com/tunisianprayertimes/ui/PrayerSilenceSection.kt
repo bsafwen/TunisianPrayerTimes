@@ -28,6 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -39,8 +41,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Prayer
@@ -48,6 +53,7 @@ import com.tunisianprayertimes.PrayerSilenceConfig
 import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.ui.theme.NextPrayerBg
+import kotlin.math.roundToInt
 
 /**
  * One prayer's silence controls. The header, compact interval summary and the
@@ -144,6 +150,20 @@ internal fun PrayerSilenceSection(
     }
 }
 
+private const val HeaderNameSlot = "prayer_silence_header_name"
+private const val HeaderSwitchSlot = "prayer_silence_header_switch"
+
+private val HeaderNameTextStyle = TextStyle(
+    fontSize = PrayerSilenceTypography.PrayerName,
+    fontWeight = FontWeight.Bold,
+)
+
+private val HeaderClockTextStyle = TextStyle(
+    fontSize = PrayerSilenceTypography.PrayerTime,
+    fontWeight = FontWeight.SemiBold,
+    fontFeatureSettings = "tnum",
+)
+
 @Composable
 private fun PrayerSilenceHeader(
     prayer: Prayer,
@@ -180,51 +200,138 @@ private fun PrayerSilenceHeader(
     } else {
         Modifier.padding(horizontal = 2.dp, vertical = 6.dp)
     }
-    Row(
-        modifier = Modifier.fillMaxWidth().heightIn(min = PrayerSilenceDimens.MinTouchTarget),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        Row(
-            modifier = Modifier.weight(1f),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-        ) {
-            // RTL places the first child on the right: the disclosure chevron
-            // stays at the far right, immediately beside the prayer name, and is
-            // unaffected by the optional "القادمة" badge inside the FlowRow.
-            if (hasAdvanced) {
-                Box(
-                    modifier = Modifier
-                        .size(PrayerSilenceDimens.MinTouchTarget)
-                        .clip(RoundedCornerShape(10.dp))
-                        .clickable(
-                            role = Role.Button,
-                            onClickLabel = disclosureLabel,
-                            onClick = { onExpandedChange(!expanded) },
-                        )
-                        .semantics { stateDescription = disclosureState },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        painter = painterResource(
-                            if (expanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more,
-                        ),
-                        contentDescription = null,
-                        tint = PrayerSilencePalette.SecondaryText,
-                        modifier = Modifier.size(22.dp),
-                    )
-                }
+    val textMeasurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    SubcomposeLayout(modifier = Modifier.fillMaxWidth()) { constraints ->
+        val maxWidth = constraints.maxWidth
+        val gapPx = with(density) { 10.dp.toPx() }.roundToInt()
+        val minTouchPx = with(density) { PrayerSilenceDimens.MinTouchTarget.toPx() }.roundToInt()
+        val nameGroupMeasurable = subcompose(HeaderNameSlot) {
+            HeaderNameGroup(
+                prayer = prayer,
+                prayerName = prayerName,
+                prayerTime = prayerTime,
+                isNextPrayer = isNextPrayer,
+                hasAdvanced = hasAdvanced,
+                expanded = expanded,
+                disclosureLabel = disclosureLabel,
+                disclosureState = disclosureState,
+                nameModifier = nameModifier,
+                onExpandedChange = onExpandedChange,
+                onPrayerTimeClick = onPrayerTimeClick,
+            )
+        }.first()
+        val switchMeasurable = if (showSwitch) {
+            subcompose(HeaderSwitchSlot) {
+                SilenceSwitchRow(
+                    checked = enabled,
+                    onCheckedChange = onEnabledChange,
+                    description = switchDescription,
+                )
+            }.first()
+        } else {
+            null
+        }
+        val switchPlaceable = switchMeasurable?.measure(Constraints())
+        val switchWidth = switchPlaceable?.width ?: 0
+        // Content-driven fit: the "up next" badge may wrap, but the name and clock
+        // line has to share the row with the switch for the header to stay single-line.
+        val nameWidth = textMeasurer.measure(prayerName, HeaderNameTextStyle).size.width.toFloat()
+        val clockWidth = textMeasurer.measure(timeText, HeaderClockTextStyle, maxLines = 1).size.width.toFloat() +
+            if (onPrayerTimeClick != null) with(density) { 26.dp.toPx() } else 0f
+        val chevronWidth = if (hasAdvanced) with(density) { 54.dp.toPx() } else 0f
+        val nameClockWidth = chevronWidth + nameWidth + with(density) { 6.dp.toPx() } + clockWidth
+        val sharesLine = switchPlaceable == null || nameClockWidth + gapPx + switchWidth <= maxWidth
+        val startIsRight = layoutDirection == LayoutDirection.Rtl
+        if (sharesLine) {
+            val remaining = (maxWidth - (if (switchPlaceable != null) gapPx + switchWidth else 0))
+                .coerceAtLeast(1)
+            val nameGroup = nameGroupMeasurable.measure(Constraints(maxWidth = remaining))
+            val rowHeight = maxOf(nameGroup.height, switchPlaceable?.height ?: 0, minTouchPx)
+            layout(maxWidth, rowHeight) {
+                nameGroup.place(
+                    if (startIsRight) maxWidth - nameGroup.width else 0,
+                    (rowHeight - nameGroup.height) / 2,
+                )
+                switchPlaceable?.place(
+                    if (startIsRight) 0 else maxWidth - switchPlaceable.width,
+                    (rowHeight - switchPlaceable.height) / 2,
+                )
             }
+        } else {
+            val nameGroup = nameGroupMeasurable.measure(Constraints(maxWidth = maxWidth))
+            val switchHeight = switchPlaceable?.height ?: 0
+            val rowHeight = maxOf(nameGroup.height + gapPx + switchHeight, minTouchPx)
+            layout(maxWidth, rowHeight) {
+                nameGroup.place(0, 0)
+                switchPlaceable?.place(
+                    if (startIsRight) 0 else maxWidth - switchPlaceable.width,
+                    nameGroup.height + gapPx,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun HeaderNameGroup(
+    prayer: Prayer,
+    prayerName: String,
+    prayerTime: PrayerTime,
+    isNextPrayer: Boolean,
+    hasAdvanced: Boolean,
+    expanded: Boolean,
+    disclosureLabel: String,
+    disclosureState: String,
+    nameModifier: Modifier,
+    onExpandedChange: (Boolean) -> Unit,
+    onPrayerTimeClick: (() -> Unit)?,
+) {
+    val timeText = prayerClockText(prayerMinutesOfDay(prayerTime))
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        // RTL places the first child on the right: the disclosure chevron stays at
+        // the far right, immediately beside the prayer name.
+        if (hasAdvanced) {
+            Box(
+                modifier = Modifier
+                    .size(PrayerSilenceDimens.MinTouchTarget)
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        role = Role.Button,
+                        onClickLabel = disclosureLabel,
+                        onClick = { onExpandedChange(!expanded) },
+                    )
+                    .semantics { stateDescription = disclosureState },
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = painterResource(
+                        if (expanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more,
+                    ),
+                    contentDescription = null,
+                    tint = PrayerSilencePalette.SecondaryText,
+                    modifier = Modifier.size(22.dp),
+                )
+            }
+        }
+        FlowRow(
+            modifier = Modifier.weight(1f),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            // Name and adhan time stay together as one coherent group; only the
+            // optional badge may wrap when the header gets tight.
             FlowRow(
-                modifier = Modifier.weight(1f),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Text(
                     text = prayerName,
-                    fontSize = PrayerSilenceTypography.PrayerName,
-                    fontWeight = FontWeight.Bold,
+                    style = HeaderNameTextStyle,
                     color = PrayerSilencePalette.PrimaryText,
                     modifier = Modifier.align(Alignment.CenterVertically).then(nameModifier),
                 )
@@ -234,61 +341,67 @@ private fun PrayerSilenceHeader(
                     onPrayerTimeClick = onPrayerTimeClick,
                     modifier = Modifier.align(Alignment.CenterVertically),
                 )
-                if (isNextPrayer) {
-                    Text(
-                        text = stringResource(R.string.prayer_timeline_up_next),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = PrayerSilencePalette.PrimaryText,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically)
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(NextPrayerBg)
-                            .padding(horizontal = 8.dp, vertical = 3.dp),
+            }
+            if (isNextPrayer) {
+                Text(
+                    text = stringResource(R.string.prayer_timeline_up_next),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = PrayerSilencePalette.PrimaryText,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(NextPrayerBg)
+                        .padding(horizontal = 8.dp, vertical = 3.dp),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun SilenceSwitchRow(
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    description: String,
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.prayer_silence_switch),
+            fontSize = 13.sp,
+            fontWeight = FontWeight.Medium,
+            color = PrayerSilencePalette.PrimaryText,
+        )
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            modifier = Modifier
+                .heightIn(min = PrayerSilenceDimens.MinTouchTarget)
+                .semantics { contentDescription = description },
+            thumbContent = if (checked) {
+                {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_check),
+                        contentDescription = null,
+                        tint = PrayerSilencePalette.InteractiveTeal,
+                        modifier = Modifier.size(16.dp),
                     )
                 }
-            }
-        }
-        if (showSwitch) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
-                Text(
-                    text = stringResource(R.string.prayer_silence_switch),
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = PrayerSilencePalette.PrimaryText,
-                )
-                Switch(
-                    checked = enabled,
-                    onCheckedChange = onEnabledChange,
-                    modifier = Modifier
-                        .heightIn(min = PrayerSilenceDimens.MinTouchTarget)
-                        .semantics { contentDescription = switchDescription },
-                    thumbContent = if (enabled) {
-                        {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_check),
-                                contentDescription = null,
-                                tint = PrayerSilencePalette.InteractiveTeal,
-                                modifier = Modifier.size(16.dp),
-                            )
-                        }
-                    } else {
-                        null
-                    },
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Color.White,
-                        checkedTrackColor = PrayerSilencePalette.InteractiveTeal,
-                        checkedBorderColor = PrayerSilencePalette.InteractiveTeal,
-                        uncheckedThumbColor = Color.White,
-                        uncheckedTrackColor = PrayerSilencePalette.InactiveTrack,
-                        uncheckedBorderColor = PrayerSilencePalette.InactiveTrack,
-                    ),
-                )
-            }
-        }
+            } else {
+                null
+            },
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Color.White,
+                checkedTrackColor = PrayerSilencePalette.InteractiveTeal,
+                checkedBorderColor = PrayerSilencePalette.InteractiveTeal,
+                uncheckedThumbColor = Color.White,
+                uncheckedTrackColor = PrayerSilencePalette.InactiveTrack,
+                uncheckedBorderColor = PrayerSilencePalette.InactiveTrack,
+            ),
+        )
     }
 }
 
@@ -357,6 +470,21 @@ private fun Prayer.displayNameRes(): Int = when (this) {
     Prayer.AID_ADHA -> R.string.prayer_aid_adha
 }
 
+private val EndpointTimeTextStyle = TextStyle(
+    fontSize = PrayerSilenceTypography.FieldValue,
+    fontWeight = FontWeight.SemiBold,
+    fontFeatureSettings = "tnum",
+)
+
+private val EndpointCaptionTextStyle = TextStyle(
+    fontSize = PrayerSilenceTypography.FieldLabel,
+)
+
+private val EndpointDurationTextStyle = TextStyle(
+    fontSize = PrayerSilenceTypography.Duration,
+    fontWeight = FontWeight.SemiBold,
+)
+
 @Composable
 private fun SilenceIntervalDetails(
     prayerName: String,
@@ -368,16 +496,14 @@ private fun SilenceIntervalDetails(
     onEditEnd: () -> Unit,
 ) {
     val prayerMinutes = prayerMinutesOfDay(prayerTime)
-    val startCaption = stringResource(
-        R.string.prayer_silence_endpoint_caption,
-        stringResource(R.string.prayer_silence_start_label),
-        endpointRuleCaption(config, window, SilenceEndpoint.START, prayerMinutes),
-    )
-    val endCaption = stringResource(
-        R.string.prayer_silence_endpoint_caption,
-        stringResource(R.string.prayer_silence_end_label),
-        endpointRuleCaption(config, window, SilenceEndpoint.END, prayerMinutes),
-    )
+    val startIdentity = stringResource(R.string.prayer_silence_start_label)
+    val endIdentity = stringResource(R.string.prayer_silence_end_label)
+    val startRule = endpointRuleCaption(config, window, SilenceEndpoint.START, prayerMinutes)
+    val endRule = endpointRuleCaption(config, window, SilenceEndpoint.END, prayerMinutes)
+    val startCaption = stringResource(R.string.prayer_silence_endpoint_caption, startIdentity, startRule)
+    val endCaption = stringResource(R.string.prayer_silence_endpoint_caption, endIdentity, endRule)
+    val startTime = silenceClockText(window.startMinutes)
+    val endTime = silenceClockText(window.endMinutes)
     val startDescription = stringResource(
         R.string.prayer_silence_start_field_desc,
         prayerName,
@@ -389,60 +515,130 @@ private fun SilenceIntervalDetails(
         silenceEndpointState(config, window, SilenceEndpoint.END, prayerMinutes),
     )
     val invalid = window.durationMinutes < 0
+    val durationText = if (invalid) {
+        "—"
+    } else {
+        pluralStringResource(
+            R.plurals.prayer_silence_duration_minutes,
+            window.durationMinutes,
+            window.durationMinutes,
+        )
+    }
+    val textMeasurer = rememberTextMeasurer()
+    val density = LocalDensity.current
     BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val singleRow = maxWidth.value / LocalDensity.current.fontScale >= 300f
+        // Decide the arrangement from the actual width and the rendered text sizes
+        // instead of a font-scale threshold.
+        val fullWidthPx = constraints.maxWidth.toFloat()
+        val gapPx = with(density) { 10.dp.toPx() }
+        val durationWidthPx = textMeasurer.measure(
+            text = durationText,
+            style = EndpointDurationTextStyle,
+            maxLines = 1,
+        ).size.width.toFloat() + with(density) { 19.dp.toPx() }
+        val columnWidthPx = ((fullWidthPx - durationWidthPx - gapPx * 2f) / 2f).coerceAtLeast(0f)
+        val summaryPaddingPx = with(density) { 8.dp.toPx() }
+        val captionWidthPx = (columnWidthPx - summaryPaddingPx - with(density) { 16.dp.toPx() })
+            .coerceAtLeast(1f)
+        val timeWidthPx = (columnWidthPx - summaryPaddingPx).coerceAtLeast(1f)
+        val timeStyle = EndpointTimeTextStyle.copy(textDirection = TextDirection.Ltr)
+        fun columnFits(time: String, caption: String): Boolean {
+            val timeLayout = textMeasurer.measure(
+                text = time,
+                style = timeStyle,
+                maxLines = 1,
+                constraints = Constraints(maxWidth = timeWidthPx.toInt().coerceAtLeast(1)),
+            )
+            if (timeLayout.hasVisualOverflow) return false
+            val captionLayout = textMeasurer.measure(
+                text = caption,
+                style = EndpointCaptionTextStyle,
+                maxLines = 2,
+                constraints = Constraints(maxWidth = captionWidthPx.toInt().coerceAtLeast(1)),
+            )
+            return !captionLayout.hasVisualOverflow
+        }
+        val singleRow = columnWidthPx > 0f &&
+            columnFits(startTime, startCaption) &&
+            columnFits(endTime, endCaption)
         if (singleRow) {
-            // RTL chronology: beginning on the physical right, end on the left.
-            Row(
+            // Visual RTL chronology: beginning on the physical right, end on the
+            // left. Composed beginning, end, then duration so accessibility reads
+            // in the same order while the duration stays centered between them.
+            Layout(
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                CompactEndpointSummary(
-                    time = silenceClockText(window.startMinutes),
-                    caption = startCaption,
-                    description = startDescription,
-                    enabled = enabled,
-                    onClick = onEditStart,
-                    modifier = Modifier.weight(1f),
-                )
-                SilenceDurationLabel(
-                    durationMinutes = window.durationMinutes,
-                    invalid = invalid,
-                )
-                CompactEndpointSummary(
-                    time = silenceClockText(window.endMinutes),
-                    caption = endCaption,
-                    description = endDescription,
-                    enabled = enabled,
-                    onClick = onEditEnd,
-                    modifier = Modifier.weight(1f),
-                )
-            }
-        } else {
-            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
+                content = {
                     CompactEndpointSummary(
-                        time = silenceClockText(window.startMinutes),
+                        time = startTime,
                         caption = startCaption,
                         description = startDescription,
                         enabled = enabled,
                         onClick = onEditStart,
-                        modifier = Modifier.weight(1f),
                     )
                     CompactEndpointSummary(
-                        time = silenceClockText(window.endMinutes),
+                        time = endTime,
                         caption = endCaption,
                         description = endDescription,
                         enabled = enabled,
                         onClick = onEditEnd,
-                        modifier = Modifier.weight(1f),
+                    )
+                    SilenceDurationLabel(
+                        durationMinutes = window.durationMinutes,
+                        invalid = invalid,
+                    )
+                },
+            ) { measurables, layoutConstraints ->
+                val maxWidthPx = layoutConstraints.maxWidth
+                val durationPlaceable = measurables[2].measure(Constraints())
+                val summaryColumnWidthPx = ((maxWidthPx - durationPlaceable.width - gapPx * 2f) / 2f)
+                    .roundToInt()
+                    .coerceAtLeast(0)
+                val summaryConstraints = Constraints(
+                    minWidth = summaryColumnWidthPx,
+                    maxWidth = summaryColumnWidthPx,
+                )
+                val startPlaceable = measurables[0].measure(summaryConstraints)
+                val endPlaceable = measurables[1].measure(summaryConstraints)
+                val rowHeight = maxOf(
+                    startPlaceable.height,
+                    endPlaceable.height,
+                    durationPlaceable.height,
+                )
+                layout(maxWidthPx, rowHeight) {
+                    val startX = if (layoutDirection == LayoutDirection.Rtl) {
+                        maxWidthPx - summaryColumnWidthPx
+                    } else {
+                        0
+                    }
+                    val endX = if (layoutDirection == LayoutDirection.Rtl) 0 else maxWidthPx - summaryColumnWidthPx
+                    startPlaceable.place(startX, (rowHeight - startPlaceable.height) / 2)
+                    endPlaceable.place(endX, (rowHeight - endPlaceable.height) / 2)
+                    durationPlaceable.place(
+                        ((maxWidthPx - durationPlaceable.width) / 2f).roundToInt(),
+                        (rowHeight - durationPlaceable.height) / 2,
                     )
                 }
+            }
+        } else {
+            // Text no longer fits side by side: stack full-width endpoint groups
+            // (beginning first, then end) and give the duration its own line.
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                StackedEndpointSummary(
+                    identity = startIdentity,
+                    time = startTime,
+                    rule = startRule,
+                    description = startDescription,
+                    enabled = enabled,
+                    onClick = onEditStart,
+                )
+                StackedEndpointSummary(
+                    identity = endIdentity,
+                    time = endTime,
+                    rule = endRule,
+                    description = endDescription,
+                    enabled = enabled,
+                    onClick = onEditEnd,
+                )
                 SilenceDurationLabel(
                     durationMinutes = window.durationMinutes,
                     invalid = invalid,
@@ -480,10 +676,8 @@ private fun CompactEndpointSummary(
     ) {
         Text(
             text = time,
-            fontSize = PrayerSilenceTypography.FieldValue,
-            fontWeight = FontWeight.SemiBold,
+            style = EndpointTimeTextStyle.copy(textDirection = TextDirection.Ltr),
             color = PrayerSilencePalette.PrimaryText,
-            style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
             maxLines = 1,
             softWrap = false,
         )
@@ -493,7 +687,7 @@ private fun CompactEndpointSummary(
         ) {
             Text(
                 text = caption,
-                fontSize = PrayerSilenceTypography.FieldLabel,
+                style = EndpointCaptionTextStyle,
                 color = PrayerSilencePalette.SecondaryText,
                 textAlign = TextAlign.Center,
                 maxLines = 2,
@@ -505,6 +699,68 @@ private fun CompactEndpointSummary(
                 modifier = Modifier.size(14.dp),
             )
         }
+    }
+}
+
+/**
+ * Full-width, start-aligned endpoint group for tight widths: identity with the
+ * dropdown indicator, the prominent time, then the rule description, wrapping
+ * naturally over the whole width.
+ */
+@Composable
+private fun StackedEndpointSummary(
+    identity: String,
+    time: String,
+    rule: String,
+    description: String,
+    enabled: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .heightIn(min = PrayerSilenceDimens.MinTouchTarget)
+            .clip(RoundedCornerShape(10.dp))
+            .clickable(
+                enabled = enabled,
+                role = Role.Button,
+                onClickLabel = description,
+                onClick = onClick,
+            )
+            .padding(horizontal = 4.dp, vertical = 6.dp)
+            .semantics(mergeDescendants = true) { contentDescription = description },
+        horizontalAlignment = Alignment.Start,
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(2.dp),
+        ) {
+            Text(
+                text = identity,
+                style = EndpointCaptionTextStyle,
+                color = PrayerSilencePalette.SecondaryText,
+            )
+            Icon(
+                painter = painterResource(R.drawable.ic_expand_more),
+                contentDescription = null,
+                tint = PrayerSilencePalette.SecondaryText,
+                modifier = Modifier.size(14.dp),
+            )
+        }
+        Text(
+            text = time,
+            style = EndpointTimeTextStyle.copy(textDirection = TextDirection.Ltr),
+            color = PrayerSilencePalette.PrimaryText,
+            maxLines = 1,
+            softWrap = false,
+        )
+        Text(
+            text = rule,
+            style = EndpointCaptionTextStyle,
+            color = PrayerSilencePalette.SecondaryText,
+            textAlign = TextAlign.Start,
+        )
     }
 }
 

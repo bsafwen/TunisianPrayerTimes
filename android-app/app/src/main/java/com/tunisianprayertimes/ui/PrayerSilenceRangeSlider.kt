@@ -9,7 +9,7 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.horizontalDrag
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.absoluteOffset
@@ -52,7 +52,9 @@ import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.setProgress
 import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.TextMeasurer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
@@ -94,14 +96,55 @@ private data class SilenceDragState(
 
 private enum class LegendAnchor { LEFT, CENTER, RIGHT }
 
+private data class PlacedLegend(
+    val entry: LegendEntry,
+    val left: Float,
+    val right: Float,
+    val row: Int,
+)
+
 private data class LegendEntry(
     val offsetMinutes: Int,
     val text: String,
     val style: TextStyle,
     val layout: TextLayoutResult,
+    val glyphTopPx: Float,
+    val glyphBottomPx: Float,
     val anchor: LegendAnchor,
     val mandatory: Boolean,
 )
+
+/**
+ * Legend labels carry their actual glyph bounds: [glyphTopPx]/[glyphBottomPx] are
+ * measured with font padding disabled so two legend lines can sit a small, fixed
+ * gap apart instead of adding each line's font padding twice.
+ */
+private fun legendEntry(
+    textMeasurer: TextMeasurer,
+    offsetMinutes: Int,
+    text: String,
+    style: TextStyle,
+    anchor: LegendAnchor,
+    mandatory: Boolean,
+): LegendEntry {
+    val layout = textMeasurer.measure(text, style, maxLines = 1)
+    val tightLayout = textMeasurer.measure(
+        text,
+        style.copy(platformStyle = PlatformTextStyle(false)),
+        maxLines = 1,
+    )
+    val glyphTopPx = layout.firstBaseline - tightLayout.firstBaseline
+    return LegendEntry(
+        offsetMinutes = offsetMinutes,
+        text = text,
+        style = style,
+        layout = layout,
+        glyphTopPx = glyphTopPx,
+        glyphBottomPx = glyphTopPx + tightLayout.size.height,
+        anchor = anchor,
+        mandatory = mandatory,
+    )
+}
 
 private val TickStepCandidates = listOf(15, 30, 60, 120, 180, 360, 720, 1440, 2880)
 private const val MaxTickIntervals = 8
@@ -226,20 +269,20 @@ internal fun PrayerSilenceRangeSlider(
         }
     }
     val legendEntries = mutableListOf<LegendEntry>()
-    legendEntries += LegendEntry(
+    legendEntries += legendEntry(
+        textMeasurer = textMeasurer,
         offsetMinutes = activeScale.startOffsetMinutes,
         text = scaleBeforeText,
         style = scaleLabelStyle,
-        layout = textMeasurer.measure(scaleBeforeText, scaleLabelStyle, maxLines = 1),
         // The earliest offset now sits at the physical right edge.
         anchor = LegendAnchor.RIGHT,
         mandatory = true,
     )
-    legendEntries += LegendEntry(
+    legendEntries += legendEntry(
+        textMeasurer = textMeasurer,
         offsetMinutes = 0,
         text = adhanLabel,
         style = adhanLabelStyle,
-        layout = textMeasurer.measure(adhanLabel, adhanLabelStyle, maxLines = 1),
         anchor = LegendAnchor.CENTER,
         mandatory = true,
     )
@@ -252,20 +295,20 @@ internal fun PrayerSilenceRangeSlider(
         } else {
             stringResource(R.string.prayer_silence_scale_before, scaleOffsetValue(offset))
         }
-        legendEntries += LegendEntry(
+        legendEntries += legendEntry(
+            textMeasurer = textMeasurer,
             offsetMinutes = offset,
             text = text,
             style = scaleLabelStyle,
-            layout = textMeasurer.measure(text, scaleLabelStyle, maxLines = 1),
             anchor = LegendAnchor.CENTER,
             mandatory = false,
         )
     }
-    legendEntries += LegendEntry(
+    legendEntries += legendEntry(
+        textMeasurer = textMeasurer,
         offsetMinutes = activeScale.endOffsetMinutes,
         text = scaleAfterText,
         style = scaleLabelStyle,
-        layout = textMeasurer.measure(scaleAfterText, scaleLabelStyle, maxLines = 1),
         // The latest offset now sits at the physical left edge.
         anchor = LegendAnchor.LEFT,
         mandatory = true,
@@ -275,20 +318,10 @@ internal fun PrayerSilenceRangeSlider(
     // Deliberately small permanent clearance above the track: the row reads tighter
     // and the drag tooltip borrows the endpoint block instead of reserving a band.
     val trackTopClearancePx = with(density) { PrayerSilenceDimens.SliderTrackTopClearance.toPx() }
-    val labelsBandPx = maxOf(
-        legendEntries.maxOf { entry ->
-            (legendBaselinePx - entry.layout.firstBaseline) + entry.layout.size.height
-        },
-        with(density) { PrayerSilenceDimens.SliderLabelsHeight.toPx() },
-    )
-    val sliderHeight = with(density) {
-        (trackTopClearancePx + trackHeightPx + labelsBandPx).toDp()
-    }
 
     BoxWithConstraints(
         modifier = modifier
             .fillMaxWidth()
-            .height(sliderHeight)
             .testTag("prayer_silence_slider_${prayer.name}")
             .semantics { if (!enabled) disabled() },
         contentAlignment = AbsoluteTopLeft,
@@ -620,7 +653,7 @@ internal fun PrayerSilenceRangeSlider(
 
         Canvas(
             modifier = Modifier
-                .fillMaxSize()
+                .matchParentSize()
                 .then(dragModifier)
                 .then(tapModifier),
         ) {
@@ -778,8 +811,8 @@ internal fun PrayerSilenceRangeSlider(
         }
 
         val legendGapPx = with(density) { 6.dp.toPx() }
-        val placedLabels = mutableListOf<ClosedFloatingPointRange<Float>>()
-        val renderedLabels = mutableListOf<Pair<LegendEntry, Float>>()
+        val legendRowGapPx = with(density) { 4.dp.toPx() }
+        val minLabelBandPx = with(density) { PrayerSilenceDimens.SliderLabelsHeight.toPx() }
 
         fun legendNaturalLeft(entry: LegendEntry): Float {
             val width = entry.layout.size.width.toFloat()
@@ -799,7 +832,12 @@ internal fun PrayerSilenceRangeSlider(
                 .coerceIn(0f, (constraints.maxWidth - width).coerceAtLeast(0f))
         }
 
-        fun placeLegendEntry(entry: LegendEntry): Boolean {
+        fun placeLegend(
+            placed: MutableList<PlacedLegend>,
+            entry: LegendEntry,
+            row: Int,
+            rejectOverlap: Boolean,
+        ): Boolean {
             val width = entry.layout.size.width.toFloat()
             if (!entry.mandatory) {
                 val natural = legendNaturalLeft(entry)
@@ -807,41 +845,113 @@ internal fun PrayerSilenceRangeSlider(
             }
             val left = legendLeft(entry)
             val right = left + width
-            if (placedLabels.any { existing ->
-                    existing.start - legendGapPx < right && left < existing.endInclusive + legendGapPx
+            if (rejectOverlap && placed.any { existing ->
+                    existing.row == row &&
+                        existing.left - legendGapPx < right &&
+                        left < existing.right + legendGapPx
                 }
             ) {
                 return false
             }
-            renderedLabels += entry to left
-            placedLabels += left..right
+            placed += PlacedLegend(entry, left, right, row)
             return true
         }
 
-        // Adhan first, then the domain endpoints, then intermediate labels as
-        // space allows, so narrow widths or large fonts drop labels instead of
-        // overlapping them.
-        legendEntries.filter { it.mandatory && it.offsetMinutes == 0 }.forEach { placeLegendEntry(it) }
-        legendEntries.filter { it.mandatory && it.offsetMinutes != 0 }.forEach { placeLegendEntry(it) }
-        legendEntries.filter { !it.mandatory }
-            .sortedBy { abs(it.offsetMinutes) }
-            .forEach { placeLegendEntry(it) }
+        // Adhan first, then the domain endpoints, then intermediate labels as space
+        // allows, so narrow widths or large fonts drop labels instead of overlapping.
+        val adhanEntry = legendEntries.first { it.mandatory && it.offsetMinutes == 0 }
+        val boundaryEntries = legendEntries.filter { it.mandatory && it.offsetMinutes != 0 }
+        val intermediateEntries = legendEntries.filter { !it.mandatory }.sortedBy { abs(it.offsetMinutes) }
 
-        renderedLabels.forEach { (entry, left) ->
+        val singleRowLabels = mutableListOf<PlacedLegend>()
+        var fitsOneLegendRow = placeLegend(singleRowLabels, adhanEntry, row = 0, rejectOverlap = true)
+        if (fitsOneLegendRow) {
+            for (entry in boundaryEntries) {
+                if (!placeLegend(singleRowLabels, entry, row = 0, rejectOverlap = true)) {
+                    fitsOneLegendRow = false
+                    break
+                }
+            }
+        }
+        val renderedLabels: List<PlacedLegend>
+        val twoLegendRows: Boolean
+        if (fitsOneLegendRow) {
+            intermediateEntries.forEach { placeLegend(singleRowLabels, it, row = 0, rejectOverlap = true) }
+            renderedLabels = singleRowLabels
+            twoLegendRows = false
+        } else {
+            // The labels cannot share one row: keep the adhan reference directly
+            // beneath its marker on the first line and move the two domain edges to
+            // a second line below it.
+            val fallback = mutableListOf<PlacedLegend>()
+            placeLegend(fallback, adhanEntry, row = 0, rejectOverlap = false)
+            boundaryEntries.forEach { placeLegend(fallback, it, row = 1, rejectOverlap = false) }
+            renderedLabels = fallback
+            twoLegendRows = true
+        }
+
+        fun legendRowHeight(row: Int): Float {
+            val rowEntries = renderedLabels.filter { it.row == row }
+            if (rowEntries.isEmpty()) return 0f
+            val baseline = rowEntries.maxOf { it.entry.layout.firstBaseline }
+            return rowEntries.maxOf {
+                (baseline - it.entry.layout.firstBaseline) + it.entry.layout.size.height
+            }
+        }
+
+        fun legendRowBaseline(row: Int): Float =
+            renderedLabels.filter { it.row == row }.maxOfOrNull { it.entry.layout.firstBaseline } ?: 0f
+
+        val firstLegendRowBottomRel = renderedLabels
+            .filter { it.row == 0 }
+            .maxOfOrNull { placed ->
+                legendRowBaseline(0) - placed.entry.layout.firstBaseline + placed.entry.glyphBottomPx
+            } ?: 0f
+        val secondLegendRowGlyphTopRel = renderedLabels
+            .filter { it.row == 1 }
+            .minOfOrNull { placed ->
+                legendRowBaseline(1) - placed.entry.layout.firstBaseline + placed.entry.glyphTopPx
+            } ?: 0f
+        // The second line packs against the first line's glyph bottom with only a
+        // small gap; each line's font padding is not counted twice.
+        val secondLegendRowTopRel =
+            firstLegendRowBottomRel + legendRowGapPx - secondLegendRowGlyphTopRel
+        val legendBandPx = if (twoLegendRows) {
+            maxOf(legendRowHeight(0), secondLegendRowTopRel + legendRowHeight(1))
+        } else {
+            maxOf(
+                legendEntries.maxOf { entry ->
+                    (legendBaselinePx - entry.layout.firstBaseline) + entry.layout.size.height
+                },
+                minLabelBandPx,
+            )
+        }
+        val secondLegendRowTopPx = labelsTopPx + secondLegendRowTopRel
+
+        // Content-driven height: the box wraps this spacer, the canvas matches it.
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(with(density) { (trackTopClearancePx + trackHeightPx + legendBandPx).toDp() }),
+        )
+
+        renderedLabels.forEach { placed ->
+            val rowTop = if (placed.row == 0) labelsTopPx else secondLegendRowTopPx
+            val rowBaseline = legendRowBaseline(placed.row)
             Text(
-                text = entry.text,
-                color = if (entry.style == adhanLabelStyle) {
+                text = placed.entry.text,
+                color = if (placed.entry.style == adhanLabelStyle) {
                     PrayerSilencePalette.GoldAccent
                 } else {
                     PrayerSilencePalette.SecondaryText
                 },
-                style = entry.style,
+                style = placed.entry.style,
                 maxLines = 1,
                 softWrap = false,
                 modifier = Modifier.absoluteOffset {
                     IntOffset(
-                        left.roundToInt(),
-                        (labelsTopPx + (legendBaselinePx - entry.layout.firstBaseline)).roundToInt(),
+                        placed.left.roundToInt(),
+                        (rowTop + (rowBaseline - placed.entry.layout.firstBaseline)).roundToInt(),
                     )
                 },
             )
