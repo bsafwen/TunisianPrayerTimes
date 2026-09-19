@@ -1,0 +1,205 @@
+{
+  "smar-prayer-2026-09-19.json": {
+    "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/472/",
+    "startedAt": "2026-09-19T09:11:10.710954+00:00",
+    "status": 200,
+    "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/472/",
+    "headers": {
+      "Date": "Sat, 19 Sep 2026 09:11:10 GMT",
+      "X-Content-Type-Options": "nosniff",
+      "Cache-Control": "must-revalidate, no-cache, private",
+      "X-UA-Compatible": "IE=edge",
+      "Content-language": "fr",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "Vary": "",
+      "Content-Length": "563",
+      "Content-Type": "application/json",
+      "Connection": "close"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar472-review-20260919/smar-prayer-2026-09-19.json",
+    "sha256": "f3287c6837cb0ad3b0666b75ecff9a477ef023535eefb01832a49b533479364c",
+    "bytes": 563,
+    "body": {
+      "data": {
+        "id": 909709,
+        "gouvernorat": {
+          "id": 351,
+          "intituleFr": "Tataouine",
+          "intituleAr": "تطاوين",
+          "intituleAn": "Tataouine"
+        },
+        "delegation": {
+          "id": 472,
+          "intituleFr": "Smar",
+          "intituleAr": "السمار",
+          "intituleAn": "Smar",
+          "parent": {
+            "id": 351,
+            "intituleFr": "Tataouine",
+            "intituleAr": "تطاوين",
+            "intituleAn": "Tataouine"
+          }
+        },
+        "date": "2026-09-19 00:00",
+        "sobh": "04:38",
+        "dhohr": "12:17",
+        "aser": "15:40",
+        "magreb": "18:21",
+        "isha": "19:41",
+        "lat": "32.872",
+        "lng": "10.890",
+        "annee": 2026,
+        "active": true
+      },
+      "method": "GET"
+    },
+    "finishedAt": "2026-09-19T09:11:10.964527+00:00"
+  },
+  "smar-sun-2026-09-19.json": {
+    "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/472/",
+    "startedAt": "2026-09-19T09:11:10.710954+00:00",
+    "status": 200,
+    "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/472/",
+    "headers": {
+      "Date": "Sat, 19 Sep 2026 09:11:10 GMT",
+      "X-Content-Type-Options": "nosniff",
+      "Cache-Control": "must-revalidate, no-cache, private",
+      "X-UA-Compatible": "IE=edge",
+      "Content-language": "fr",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "Vary": "",
+      "Content-Length": "532",
+      "Content-Type": "application/json",
+      "Connection": "close"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar472-review-20260919/smar-sun-2026-09-19.json",
+    "sha256": "bc4f109bbb02fa615f01a4c18de041d084ca3b8d27bbe780c7a12fcf404a6a23",
+    "bytes": 532,
+    "body": {
+      "data": {
+        "id": 871220,
+        "gouvernorat": {
+          "id": 351,
+          "intituleFr": "Tataouine",
+          "intituleAr": "تطاوين",
+          "intituleAn": "Tataouine"
+        },
+        "delegation": {
+          "id": 472,
+          "intituleFr": "Smar",
+          "intituleAr": "السمار",
+          "intituleAn": "Smar",
+          "parent": {
+            "id": 351,
+            "intituleFr": "Tataouine",
+            "intituleAr": "تطاوين",
+            "intituleAn": "Tataouine"
+          }
+        },
+        "date": "2026-09-19 00:00",
+        "lever": "06:01",
+        "pm": "12:10",
+        "coucher": "18:19",
+        "lat": "32.872",
+        "lng": "10.890",
+        "annee": 2026,
+        "active": true
+      },
+      "method": "GET"
+    },
+    "finishedAt": "2026-09-19T09:11:10.964527+00:00"
+  },
+  "municipality-home.html": {
+    "requestedUrl": "http://www.commune-smar.gov.tn/",
+    "startedAt": "2026-09-19T09:11:10.710954+00:00",
+    "status": 200,
+    "finalUrl": "http://www.commune-smar.gov.tn/",
+    "headers": {
+      "Date": "Sat, 19 Sep 2026 09:11:11 GMT",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Set-Cookie": "wpdiscuz_nonce_=043c6233cc; expires=Sat, 19-Sep-2026 19:11:12 GMT; Max-Age=36000; path=/; HttpOnly; SameSite=Strict",
+      "Link": "</index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+      "X-XSS-Protection": "1; mode=block",
+      "Content-Type": "text/html; charset=UTF-8",
+      "X-FRAME-OPTIONS": "SAMEORIGIN",
+      "Connection": "close"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar472-review-20260919/municipality-home.html",
+    "sha256": "c1c92592efe8a021859e4a51a508a5ed74631be384b5c720a202f2410777aae7",
+    "bytes": 264943,
+    "finishedAt": "2026-09-19T09:11:13.822969+00:00"
+  },
+  "municipality-https.html": {
+    "requestedUrl": "https://www.commune-smar.gov.tn/",
+    "startedAt": "2026-09-19T09:11:10.711954+00:00",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
+    "finishedAt": "2026-09-19T09:11:31.877968+00:00"
+  },
+  "municipal-sites-official.html": {
+    "requestedUrl": "https://www.collectiviteslocales.gov.tn/fr/sites-web-des-municipalites/",
+    "startedAt": "2026-09-19T09:11:10.711954+00:00",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
+    "finishedAt": "2026-09-19T09:11:31.877968+00:00"
+  },
+  "town-current.json": {
+    "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/1980279372.json",
+    "startedAt": "2026-09-19T09:11:10.711954+00:00",
+    "status": 200,
+    "finalUrl": "https://api.openstreetmap.org/api/0.6/node/1980279372.json",
+    "headers": {
+      "Connection": "close",
+      "content-encoding": "identity",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "cache-control": "private, max-age=0, must-revalidate",
+      "content-type": "application/json; charset=utf-8",
+      "server": "Apache",
+      "Accept-Ranges": "bytes",
+      "Date": "Sat, 19 Sep 2026 09:11:11 GMT",
+      "Via": "1.1 varnish",
+      "X-Served-By": "cache-par-lfpg1960021-PAR, cache-par-lfpg1960021-PAR",
+      "X-Cache": "MISS, MISS",
+      "X-Cache-Hits": "0, 0",
+      "X-Timer": "S1789809071.944052,VS0,VE63",
+      "Vary": "Accept-Encoding",
+      "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+      "transfer-encoding": "chunked"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar472-review-20260919/town-current.json",
+    "sha256": "bda47b04ddc354a552076382e20f408c62186a9a554fe0a7ad682b19904944b1",
+    "bytes": 623,
+    "body": {
+      "version": "0.6",
+      "generator": "openstreetmap-cgimap 2.1.0 (862525 spike-07.openstreetmap.org)",
+      "copyright": "OpenStreetMap and contributors",
+      "attribution": "http://www.openstreetmap.org/copyright",
+      "license": "http://opendatacommons.org/licenses/odbl/1-0/",
+      "elements": [
+        {
+          "type": "node",
+          "id": 1980279372,
+          "lat": 32.9946554,
+          "lon": 10.8222443,
+          "timestamp": "2026-07-17T00:43:34Z",
+          "version": 10,
+          "changeset": 185877300,
+          "user": "Petr Jenč",
+          "uid": 15169703,
+          "tags": {
+            "addr:city": "الصمار",
+            "name": "الصمار",
+            "name:aeb": "الصمار",
+            "name:ar": "الصمار",
+            "name:ber": "ⵍⵚⵎⴰⵔ",
+            "name:en": "Smar",
+            "name:fr": "Smar",
+            "place": "town"
+          }
+        }
+      ]
+    },
+    "finishedAt": "2026-09-19T09:11:10.858552+00:00"
+  }
+}

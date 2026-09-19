@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "status": "FINITE_DEPENDENCY_SUCCESSOR_PROPOSAL",
+  "historicalProof": {
+    "file": "point-base-display-reviews/beni-mhira-successor-2026-09/1524-reviewed-point-base-display-identity-v2.json",
+    "sha256": "0a14adf4140b411022dd8803ea6927ae88977cdfd3f07396ed3775808f177c4d"
+  },
+  "successorProof": {
+    "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/beni-mhira-nearest-reference-successor.json",
+    "sha256": "2250071b5a7415df7dc5c6bcb731c1c54cfa5c1b1900b31392c3d87b656df965"
+  },
+  "historicalContextCatalog": {
+    "file": "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-el-hani-neighborhoods.json",
+    "sha256": "28fb5aaa23615e24da39d0a4ec237a16d54575adbcf6afaf64dc6aa7f9230c8a"
+  },
+  "derivedContextCatalog": {
+    "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/beni-mhira-context-nearest-reference-projection.json",
+    "sha256": "cc44917580b054ad09b0003b8cbf3bf562cbfbd299e74aa2c26eed538fc1bb5f"
+  },
+  "derivedSnapshotQualification": "Historical complete catalog bytes with exactly six source-default leaf values projected after the independently reviewed472 published reference; this is not a newly captured historical catalog. Every other historical byte is preserved.",
+  "exactNearestChanges": [
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    }
+  ],
+  "changedProofLeaves": [
+    {
+      "path": [
+        "preservedSectors",
+        0,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "preservedSectors",
+        1,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "preservedSectors",
+        2,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "preservedSectors",
+        3,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "preservedSectors",
+        4,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "protectedRawRecords",
+        0,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "protectedRawRecords",
+        2,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "protectedRawRecords",
+        3,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "protectedRawRecords",
+        4,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "protectedRawRecords",
+        5,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "protectedRawRecords",
+        6,
+        "currentMetadata",
+        "delegationId"
+      ],
+      "after": 472
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "administrativeSuccession",
+        "rawContextClosure",
+        "baselineMetadata",
+        "file"
+      ],
+      "after": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/beni-mhira-context-nearest-reference-projection.json"
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "administrativeSuccession",
+        "rawContextClosure",
+        "baselineMetadata",
+        "sha256"
+      ],
+      "after": "cc44917580b054ad09b0003b8cbf3bf562cbfbd299e74aa2c26eed538fc1bb5f"
+    },
+    {
+      "path": [
+        "baselineMetadataSha256"
+      ],
+      "after": "cc44917580b054ad09b0003b8cbf3bf562cbfbd299e74aa2c26eed538fc1bb5f"
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "priorPickerBindings",
+        "manifest"
+      ],
+      "after": {
+        "file": "reviewed-picker-groups.json",
+        "sha256": "1816f6e4736b7fff8d5c7b9a5ab86b51c45cb3463b7ef1f0e8625ebb12620ed0"
+      }
+    },
+    {
+      "path": [
+        "townPreservationExtension",
+        "priorPickerBindings",
+        "records"
+      ],
+      "after": [
+        {
+          "section": "records",
+          "id": "osm:relation:7143872",
+          "record": {
+            "id": "osm:relation:7143872",
+            "targetDelegationId": 472,
+            "expectedGovernorateId": 351,
+            "expectedBase": {
+              "nomAr": "السمار",
+              "lat": 32.872,
+              "lng": 10.89
+            },
+            "expectedExistingMemberIds": [
+              "osm:relation:7143872",
+              "osm:way:187313013"
+            ],
+            "expectedTargetMemberIds": [
+              "delegation:472"
+            ],
+            "members": [
+              {
+                "id": "osm:relation:7143872",
+                "expectedKind": "sector",
+                "expectedSourceId": "osm",
+                "expectedName": "الصمار",
+                "expectedParentName": "معتمدية الصمار",
+                "expectedDelegationId": 472,
+                "expectedLat": 33.031397,
+                "expectedLng": 10.909537,
+                "expectedOriginalTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "الصمار",
+                  "name:ar": "الصمار",
+                  "name:fr": "Smar",
+                  "ref:tn:codegeo": "535352"
+                },
+                "originalGeometrySha256": "e9332b8ca55be4a3e3bf37278b80b127daa02cb5907b5a78c705349ae0dcb3bf",
+                "packedGeometrySha256": "ece9e9f38babc0272e03dd1687d85b381ff61931786fa004d965e10e9cebfde0"
+              },
+              {
+                "id": "osm:way:187313013",
+                "expectedKind": "residential",
+                "expectedSourceId": "osm",
+                "expectedName": "الصمار",
+                "expectedParentName": "معتمدية الصمار",
+                "expectedDelegationId": 1524,
+                "expectedLat": 32.99975,
+                "expectedLng": 10.818201,
+                "expectedOriginalTags": {
+                  "addr:city": "الصمار",
+                  "landuse": "residential",
+                  "name": "الصمار",
+                  "name:ar": "الصمار",
+                  "name:en": "Smar",
+                  "name:fr": "Smar"
+                },
+                "originalGeometrySha256": "7a54a6b7ac7cacb1fb4266d47696ef62abf421754bf9d77c973366795c2e35e8",
+                "packedGeometrySha256": "94cda1c6c5e9c077beee62027a26d37f15784909a8c8abbd0af788d1072cd7cc"
+              }
+            ],
+            "identityEvidence": [
+              {
+                "method": "current_coded_sector",
+                "id": "osm:relation:7143872",
+                "code": "535352",
+                "currentOfficialRecord": {
+                  "governorateCode": "53",
+                  "governorateFr": "Tataouine",
+                  "governorateAr": "تطاوين",
+                  "delegationCode": "5353",
+                  "delegationFr": "Smar",
+                  "delegationAr": "الصمار",
+                  "sectorCode": "535352",
+                  "sectorFr": "Smar",
+                  "sectorAr": "الصمار",
+                  "sourceRows": {
+                    "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64461,
+                    "Nombre_de_Logements_par_Secteurs.xlsx": 3167,
+                    "Nombre_de_menages_par_Secteurs.xlsx": 3161
+                  }
+                },
+                "accepted": true,
+                "reasons": [],
+                "expectedOriginalTags": {
+                  "admin_level": "6",
+                  "boundary": "administrative",
+                  "name": "الصمار",
+                  "name:ar": "الصمار",
+                  "name:fr": "Smar",
+                  "ref:tn:codegeo": "535352"
+                },
+                "effectiveOriginalGeometrySha256": "e9332b8ca55be4a3e3bf37278b80b127daa02cb5907b5a78c705349ae0dcb3bf",
+                "originalCodedParentEvidence": [
+                  {
+                    "id": "osm:relation:7143836",
+                    "sourceCode": "5353",
+                    "expectedOriginalTags": {
+                      "admin_level": "5",
+                      "alt_name:fr": "Smâr",
+                      "boundary": "administrative",
+                      "name": "معتمدية الصمار",
+                      "name:ar": "معتمدية الصمار",
+                      "name:fr": "Délégation Smâr",
+                      "ref:tn:codegeo": "5353",
+                      "ref:tn:hasc_2": "TN.TA.SA",
+                      "wikidata": "Q3487090"
+                    },
+                    "effectiveOriginalGeometrySha256": "528ae4466f6defccfbf8fbe58617a20efd2623d95e8f1530a51d6503f7ba8694",
+                    "containsSourceSector": true,
+                    "containsEveryGroupMember": true
+                  }
+                ]
+              },
+              {
+                "method": "current_coded_namesake_administrative_parent",
+                "id": "osm:relation:7143836",
+                "code": "5353",
+                "name": "معتمدية الصمار",
+                "accepted": true,
+                "reasons": [],
+                "expectedOriginalTags": {
+                  "admin_level": "5",
+                  "alt_name:fr": "Smâr",
+                  "boundary": "administrative",
+                  "name": "معتمدية الصمار",
+                  "name:ar": "معتمدية الصمار",
+                  "name:fr": "Délégation Smâr",
+                  "ref:tn:codegeo": "5353",
+                  "ref:tn:hasc_2": "TN.TA.SA",
+                  "wikidata": "Q3487090"
+                },
+                "effectiveOriginalGeometrySha256": "528ae4466f6defccfbf8fbe58617a20efd2623d95e8f1530a51d6503f7ba8694",
+                "currentOfficialRecord": {
+                  "governorateCode": "53",
+                  "governorateFr": "Tataouine",
+                  "governorateAr": "تطاوين",
+                  "delegationCode": "5353",
+                  "delegationFr": "Smar",
+                  "delegationAr": "الصمار"
+                }
+              }
+            ],
+            "retainedDisplayReference": {
+              "schemaVersion": 1,
+              "method": "reviewed_settlement_retained_display_reference",
+              "reviewEvidence": {
+                "file": "coordinate-reviews/inm-published-smar472-2026-09-19/retained-display-reference-proof.json",
+                "sha256": "28a7ea69ae75e785a3ab380bc8eaae911ecf235b86ee3ea66a288900bfd146e7"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "unchangedIdentityApproval": {
+    "file": "point-base-display-reviews/beni-mhira-successor-2026-09/beni-mhira-root-broad-town-display-acceptance.json",
+    "sha256": "50bbac798f6b89cc7ff89266037ccefc7d5474a7f6ae32009f075861bd4ce184"
+  },
+  "unchangedSourceIdentityEvidence": {
+    "file": "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-beni-source-facts-v2.json",
+    "sha256": "c4b98dd5ca4fdeb7d712d38219b0ced060781093e41a29fcdc60501928b835fb"
+  },
+  "preserved": "Every source geometry/tag, coordinate, name, alias, administrative membership, original point and complete BeniMhira display group; raw source1524 remains nearest at both BeniMhira settlement/base references."
+}

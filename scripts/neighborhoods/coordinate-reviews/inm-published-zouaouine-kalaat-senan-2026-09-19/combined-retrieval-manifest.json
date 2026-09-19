@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "scope": "Combined index of unchanged acquisitions; each correction retains its pinned original acquisition evidence.",
+  "responses": [
+    {
+      "file": "../inm-published-zouaouine570-2026-09-19/original-source/zouaouine-prayer-2026-09-19.json",
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/570/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/570/",
+      "status": 200,
+      "sha256": "eb824d082d79ac87351f79a3b8bd73e0f37c485b7e40774eedf4e8d9022dbd35",
+      "bytes": 565,
+      "retrievedAtUtc": "2026-09-19T09:47:55.153960+00:00",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/570/"
+    },
+    {
+      "file": "../inm-published-zouaouine570-2026-09-19/original-source/zouaouine-sun-2026-09-19.json",
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/570/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/570/",
+      "status": 200,
+      "sha256": "d3c18c353be3701a39b33176f21c7c20d2497806baf315f5437164b3f6c0a920",
+      "bytes": 534,
+      "retrievedAtUtc": "2026-09-19T09:47:55.154961+00:00",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/570/"
+    },
+    {
+      "file": "../inm-published-zouaouine570-2026-09-19/original-source/village-3771493269-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/3771493269.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/3771493269.json",
+      "status": 200,
+      "sha256": "4149c3a8978695ef2a0c47734d35a9e57d1d0c96d67e1a89e58b11dd35fa9717",
+      "bytes": 678,
+      "retrievedAtUtc": "2026-09-19T09:47:55.248675+00:00",
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/3771493269.json"
+    },
+    {
+      "file": "../inm-published-kalaat588-2026-09-19/kalaat-senan-prayer-2026-09-19.json",
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/",
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/",
+      "status": 200,
+      "sha256": "0219d0eb3f55cdc74a522dc43deefeb9a500c189497cd9bf4f0c8aaf47067f1f",
+      "bytes": 582,
+      "retrievedAtUtc": "2026-09-19T09:47:55.145962+00:00",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/"
+    },
+    {
+      "file": "../inm-published-kalaat588-2026-09-19/kalaat-senan-sun-2026-09-19.json",
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/",
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/",
+      "status": 200,
+      "sha256": "946d7819efaa46f005a62366a884d05cd63cd234b5d80f142faaf553aab64da7",
+      "bytes": 551,
+      "retrievedAtUtc": "2026-09-19T09:47:55.140956+00:00",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/"
+    },
+    {
+      "file": "../inm-published-kalaat588-2026-09-19/town-501803032-current.json",
+      "url": "https://api.openstreetmap.org/api/0.6/node/501803032.json",
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/501803032.json",
+      "status": 200,
+      "sha256": "b4818f0135f89f14516b1a8bbda1d25493ebd201c941f1275fa0fb53818604e4",
+      "bytes": 739,
+      "retrievedAtUtc": "2026-09-19T09:47:55.245673+00:00",
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/501803032.json"
+    }
+  ]
+}

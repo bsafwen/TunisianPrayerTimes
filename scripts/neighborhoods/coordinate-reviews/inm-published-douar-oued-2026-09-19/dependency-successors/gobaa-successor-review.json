@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_GOBAA_REFERENCE_AND_PARENT_SUCCESSOR",
+  "baselineMetadataSha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+  "sourceFacts": {
+    "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/source-facts.json",
+    "sha256": "efa6ffbefde62754a327df1bc74b7b8f016b3125a12d1f4bac7dae4c1704a56c"
+  },
+  "historicalProof": {
+    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/eligible-local-group-proof.json",
+    "sha256": "e6602ee409050335db7f9a61546f1c5ead089657a20a91f0789913d8868f1ec3"
+  },
+  "successorProof": {
+    "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/dependency-successors/gobaa-parent-reference-eligible-proof.json",
+    "sha256": "8b573932423f990d54621879b5bb708fb259366817de3a29db87a5a457fd0dc4"
+  },
+  "exactGobaaChanges": [
+    {
+      "id": "osm:relation:7095859",
+      "field": "parentName",
+      "before": "معتمدية وادي اللیل",
+      "after": "معتمدية وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095859",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي اللیل"
+      ],
+      "after": [
+        "Délégation Oued Ellil",
+        "Oued Ellil",
+        "معتمدية وادي الليل",
+        "معتمدية وادي اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095859",
+      "field": "delegationId",
+      "before": 554,
+      "after": 553
+    },
+    {
+      "id": "osm:way:456466522",
+      "field": "delegationId",
+      "before": 554,
+      "after": 553
+    }
+  ],
+  "manualNearestBefore": 554,
+  "manualNearestAfter": 553,
+  "sourceIdentityReviewPreserved": {
+    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+    "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+  },
+  "currentEffectiveParentState": {
+    "id": "osm:relation:7204582",
+    "originalTags": {
+      "admin_level": "5",
+      "alt_name:fr": "Oued Ellil",
+      "boundary": "administrative",
+      "name": "معتمدية وادي اللیل",
+      "name:ar": "معتمدية وادي اللیل‬",
+      "name:fr": "Délégation Oued Ellil",
+      "ref:tn:codegeo": "1453",
+      "ref:tn:hasc_2": "TN.MN.OE",
+      "wikidata": "Q3358013"
+    },
+    "effectiveTags": {
+      "admin_level": "5",
+      "boundary": "administrative",
+      "ref:tn:codegeo": "1453",
+      "ref:tn:hasc_2": "TN.MN.OE",
+      "wikidata": "Q3358013",
+      "name": "معتمدية وادي الليل",
+      "name:ar": "معتمدية وادي الليل",
+      "name:fr": "Délégation Oued Ellil",
+      "alt_name:fr": "Oued Ellil",
+      "alt_name:ar": "معتمدية وادي اللیل"
+    },
+    "expectedCuration": {
+      "id": "osm:relation:7204582",
+      "expectedKind": "delegation",
+      "expectedTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Oued Ellil",
+        "boundary": "administrative",
+        "name": "معتمدية وادي اللیل",
+        "name:ar": "معتمدية وادي اللیل‬",
+        "name:fr": "Délégation Oued Ellil",
+        "ref:tn:codegeo": "1453",
+        "ref:tn:hasc_2": "TN.MN.OE",
+        "wikidata": "Q3358013"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "معتمدية وادي الليل",
+        "name:ar": "معتمدية وادي الليل",
+        "name:fr": "Délégation Oued Ellil",
+        "alt_name:fr": "Oued Ellil",
+        "alt_name:ar": "معتمدية وادي اللیل"
+      },
+      "reason": "Correct the Oued Ellil administrative parent Arabic letter form to معتمدية وادي الليل, matching all seven current official1453 sector records. Preserve both original French names and the original consumed Arabic spelling معتمدية وادي اللیل as an alias. The source code, wikidata identity, administrative geometry and membership stay unchanged; the trailing source formatting control is retained in expectedTags provenance and was already removed by normal display cleaning.",
+      "evidence": [
+        {
+          "source": "Current official sector registry: all seven records in delegation1453 agree on وادي الليل in governorate14/منوبة. Original OSM parent1453 preserves the same French aliases, HASC and Wikidata identity.",
+          "reviewFiles": [
+            {
+              "file": "residential-base-display-reviews/current-official-sector-registry.json",
+              "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+            }
+          ]
+        }
+      ]
+    },
+    "parentReview": {
+      "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/oued-parent-sourcefacts-and-projection.json",
+      "sha256": "dacfe8ea5db6aa3f15b5a48eb6ad17e6b23990181763cd61c897f94a77be1ed1"
+    }
+  },
+  "scope": "Only Gobaa sector parentName/contextAliases and both member nearest IDs plus manual nearest guard change. Member names, original/effective tags, member curation, polygons, coordinates, complete members and village owner remain identical. Historical source review original-parent-tags/null-curation is preserved as history; new effective parent rule is separately explicit."
+}

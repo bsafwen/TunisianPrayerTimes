@@ -1,0 +1,70 @@
+{
+  "createdAt": "2026-09-19T09:14:28.737050+00:00",
+  "status": "QUALIFIED_LOCATION_CONTEXT_REVIEW",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_7154916-4\\ledger.json",
+    "sha256": "789060fae15e5d26d4f652c9057762d660de54aa6aa21d8012e17f6e3f95a11c"
+  },
+  "afterLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "b84b2743e0ea2c32d299326b7e0b452bb642bc5884bcaf25fb75612eaf5e9797"
+  },
+  "observations": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7154916-4.json",
+        "sha256": "6cd6e5a4388aac68eb9ce435d9730f10af7b85f0c4f67b583b243aa213247161"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7154916-4.png",
+        "sha256": "463bccbb2d15719f7d155035361f30994ebeb28fa241d42b082b381ac9a1628e"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Authentic Hazoua source village coordinate appears as unnamed pin near حزوة with exact rounded coordinates33.7404310,7.6038540 visible. Map shows settlement streets, Hazoua pharmacy and AGIL Hazoua nearby; supports local context, not polygon certification.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7154916-5.json",
+        "sha256": "6bbaacbbf300f8900e220f846bed05f5b704cc883bae6fb78d3fe2b53ce2f48c"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7154916-5.png",
+        "sha256": "cfd04b922f5fb71c344b46083b97cc27abde388e764222add5dc31da6ae36aa6"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Published Hazoua coordinate query shows map pin south of main settlement streets but card is unrelated Western Union Sousse. Coordinate not visible; card is unusable identity evidence.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7143872-3.json",
+        "sha256": "2a8dc8f4e850705fef750d4f03ed3a824547eaea0f9e4021cf1cb14efad44b81"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7143872-3.png",
+        "sha256": "abcd8dc23bd1a445d8e85bc92d972e9ef1fa57ac71c6a417c390c456e6c2c4a1"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Authentic Smar town coordinate query returns a bakery card and visible mosque label مسجد الصمار alongside سمر / Smar map labels and dense streets. Requested coordinates are not shown; supporting context only.",
+      "boundaryVerified": false
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7143872-4.json",
+        "sha256": "873ff159202b2a3f9663a3fd121305a4d67f34dbf69d21aef3c5e1eeeacb6116"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7143872-4.png",
+        "sha256": "d560d492d758476ac7c998ead8e792b834b8046457af4131d9af5a7b4c401542"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Published Smar coordinate appears as unnamed pin with exact32.8720000,10.8900000 visible; card says nearKsarOuledOune. This is geographically separate context from the town, not proof of the prayer reference semantics.",
+      "boundaryVerified": false
+    }
+  ],
+  "all1248PriorObservationsPreserved": true,
+  "totalObservations": 1252,
+  "catalogMutated": false,
+  "conclusion": "Supports keeping actual settlement coordinates separate from published prayer reference coordinates. Google card context alone does not prove administration or boundary vertices."
+}

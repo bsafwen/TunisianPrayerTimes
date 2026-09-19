@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Fresh public four-reference evidence and independent17-field numeric/source projection; current proof successors are required as explicitly enumerated and must pass later concrete package review.",
+  "reviewer": "point_pairs_check",
+  "createdAtUtc": "2026-09-19T11:34:35.359759+00:00",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "sourceReports": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-public-reference-20260919/source-and-reference-impact-review.json",
+      "sha256": "c283ec2b98eaa8b2c128a6e2342413020c6b9999284f9d89883b31f894dfcf31",
+      "bytes": 129255
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-source-design-20260919/independent-source-and-dependency-review.json",
+      "sha256": "d3d690d7c9ad1d0446b1ae3cd52d2268adaadafc7f71a2b2ab646c09075b3702",
+      "bytes": 12177
+    }
+  ],
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7118020",
+      "field": "name",
+      "before": "عمادة باردو",
+      "after": "باردو"
+    },
+    {
+      "id": "osm:relation:7118020",
+      "field": "aliases",
+      "before": [
+        "Bardo"
+      ],
+      "after": [
+        "Bardo",
+        "Le Bardo",
+        "Ле Бардо",
+        "בארדו",
+        "عمادة باردو"
+      ]
+    },
+    {
+      "id": "osm:relation:7118020",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7118020",
+      "after": "delegation:394"
+    },
+    {
+      "id": "osm:way:103825771",
+      "field": "aliases",
+      "before": [
+        "Le Bardo",
+        "Ле Бардо",
+        "בארדו"
+      ],
+      "after": [
+        "Le Bardo",
+        "Ле Бардо"
+      ]
+    },
+    {
+      "id": "osm:relation:7095908",
+      "field": "delegationId",
+      "before": 393,
+      "after": 534
+    },
+    {
+      "id": "osm:relation:7118023",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118026",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118027",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201456",
+      "field": "delegationId",
+      "before": 615,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201480",
+      "field": "delegationId",
+      "before": 395,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201481",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:relation:7201531",
+      "field": "delegationId",
+      "before": 393,
+      "after": 392
+    },
+    {
+      "id": "osm:relation:7201543",
+      "field": "delegationId",
+      "before": 390,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201546",
+      "field": "delegationId",
+      "before": 391,
+      "after": 392
+    },
+    {
+      "id": "osm:way:980164287",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:way:980164288",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:node:12925453903",
+      "field": "delegationId",
+      "before": 395,
+      "after": 391
+    }
+  ],
+  "exactNearestDefaultChanges": [
+    {
+      "id": "osm:relation:7095908",
+      "field": "delegationId",
+      "before": 393,
+      "after": 534
+    },
+    {
+      "id": "osm:relation:7118023",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118026",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118027",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201456",
+      "field": "delegationId",
+      "before": 615,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201480",
+      "field": "delegationId",
+      "before": 395,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201481",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:relation:7201531",
+      "field": "delegationId",
+      "before": 393,
+      "after": 392
+    },
+    {
+      "id": "osm:relation:7201543",
+      "field": "delegationId",
+      "before": 390,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201546",
+      "field": "delegationId",
+      "before": 391,
+      "after": 392
+    },
+    {
+      "id": "osm:way:980164287",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:way:980164288",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:node:12925453903",
+      "field": "delegationId",
+      "before": 395,
+      "after": 391
+    }
+  ],
+  "referenceIds": [
+    391,
+    393,
+    394,
+    396
+  ],
+  "projectedMetadata": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\projected-joint-neighborhoods.json",
+    "sha256": "1d80b28c86db122f136d5e1bc9aa83c0272fc9a5c9d10a7666fd06d01cb8abaa",
+    "bytes": 1851461
+  },
+  "projectedRetired": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo394-public-reference-20260919\\projected-joint-retired-localities.json",
+    "sha256": "329f7c4b40a9b3819ad6f1177bb1d53e4476060b3d74851efc0d4418e8851886",
+    "bytes": 13228
+  },
+  "all3523CurrentAndFinalNearestDefaultsVerified": true,
+  "allFiveNumericScenariosVerified": true,
+  "requiredDependencySuccessors": [
+    {
+      "component": "Ettahrir393",
+      "curationIndex": 131,
+      "activeReview": {
+        "file": "point-base-display-reviews/ettahrir393/reviewed-suburb-point-base-display-identity.json",
+        "sha256": "fc4accbb1c929d644b844e7070f9d046d4c952ade58bef7caf1fd8877dab2161"
+      },
+      "requiredChanges": [
+        "baseCurrent.lat36.8244→36.823",
+        "baseCurrent.lng10.1283→10.133",
+        "expectedCoordinateCorrections[]→exact new393 inm_published_reference correction",
+        "preservedSectors[1].currentMetadata.delegationId393→392 for7201531"
+      ],
+      "preserve": [
+        "rawCurrent suburb1158752159 unchanged",
+        "source node/primary identity",
+        "all five original imada IDs/geometries/names/groups",
+        "typed peer inventory",
+        "displayPhaseCoordinateChanges[]"
+      ],
+      "reason": "Existing loader3087/3106–07 and final preserved metadata guards require truthful current references. Existing contract supports exact data successor without independentPublishedPrayerSelection."
+    },
+    {
+      "component": "Ezzouhour396",
+      "strictRecordIndex": 82,
+      "eligibleEvidence": {
+        "file": "coordinate-reviews/inm-published-douar-oued-batch-2026-09-19/dependency-successors/held12-hichria-coordinate43-successor.json",
+        "sha256": "0f44dd7d07d6db78899462b8a90593902b5dbe99fe8f50935d6c12ba1156b906"
+      },
+      "eligibleRecordIndex": 0,
+      "requiredChanges": [
+        "strict expectedBase.lat/lng→36.799,10.135",
+        "eligible records[0].basePoint→same published point"
+      ],
+      "preserve": [
+        "original historical held396 entry in base-locality110-strict-proposal",
+        "original and packed containment booleans true",
+        "7201569 source/member identity/manual coordinate/default396",
+        "exact group membership"
+      ]
+    },
+    {
+      "component": "shared coordinate dependencies",
+      "requiredChanges": [
+        "Hichria publishedPrayerReference checksum",
+        "Bousalem prayerSourceReference checksum in record and eligible proof",
+        "Degache publishedPrayerReference checksum",
+        "held12 Hichria reference link alongside396 basePoint",
+        "Dar624/Dar485/Beni whole-picker hashes after exact current manifest changes"
+      ]
+    },
+    {
+      "component": "historical-only impact references",
+      "preserve": [
+        "all original whole-catalog/offset snapshots",
+        "RasTabia training exclusion173 original proof and surrounding ID7201481",
+        "Colisee/Soula original exclusion identities and preserved imada IDs"
+      ],
+      "qualification": "Historical default/capture values remain historical; current proof for7201531 is specifically handled above."
+    }
+  ],
+  "dependencyInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-source-design-20260919/independent-four-reference-impact-closure.json",
+    "sha256": "45b94ffd0a3d1125576354752df289d8abd1d7b069282c29db8208d16512efcd",
+    "bytes": 13165
+  },
+  "checks": [
+    "exact joint source report pin",
+    "current installed metadata baseline",
+    "independent four-field name/group review",
+    "exact primary retrieval manifest retrievals.json",
+    "exact primary retrieval manifest adjacent-retrievals.json",
+    "four exact requested references",
+    "reference original identity 391",
+    "exact primary body 391-prayer-2026-09-19.json",
+    "exact service identity/date 391-prayer-2026-09-19.json",
+    "unchanged public base names 391-prayer-2026-09-19.json",
+    "prayer/sun published pair 391-prayer-2026-09-19.json",
+    "original successful HTTPS acquisition 391-prayer-2026-09-19.json",
+    "exact primary body 391-sun-2026-09-19.json",
+    "exact service identity/date 391-sun-2026-09-19.json",
+    "unchanged public base names 391-sun-2026-09-19.json",
+    "prayer/sun published pair 391-sun-2026-09-19.json",
+    "original successful HTTPS acquisition 391-sun-2026-09-19.json",
+    "reference original identity 393",
+    "exact primary body 393-prayer-2026-09-19.json",
+    "exact service identity/date 393-prayer-2026-09-19.json",
+    "unchanged public base names 393-prayer-2026-09-19.json",
+    "prayer/sun published pair 393-prayer-2026-09-19.json",
+    "original successful HTTPS acquisition 393-prayer-2026-09-19.json",
+    "exact primary body 393-sun-2026-09-19.json",
+    "exact service identity/date 393-sun-2026-09-19.json",
+    "unchanged public base names 393-sun-2026-09-19.json",
+    "prayer/sun published pair 393-sun-2026-09-19.json",
+    "original successful HTTPS acquisition 393-sun-2026-09-19.json",
+    "reference original identity 394",
+    "exact primary body 394-prayer-2026-09-19.json",
+    "exact service identity/date 394-prayer-2026-09-19.json",
+    "unchanged public base names 394-prayer-2026-09-19.json",
+    "prayer/sun published pair 394-prayer-2026-09-19.json",
+    "original successful HTTPS acquisition 394-prayer-2026-09-19.json",
+    "exact primary body 394-sun-2026-09-19.json",
+    "exact service identity/date 394-sun-2026-09-19.json",
+    "unchanged public base names 394-sun-2026-09-19.json",
+    "prayer/sun published pair 394-sun-2026-09-19.json",
+    "original successful HTTPS acquisition 394-sun-2026-09-19.json",
+    "reference original identity 396",
+    "exact primary body 396-prayer-2026-09-19.json",
+    "exact service identity/date 396-prayer-2026-09-19.json",
+    "unchanged public base names 396-prayer-2026-09-19.json",
+    "prayer/sun published pair 396-prayer-2026-09-19.json",
+    "original successful HTTPS acquisition 396-prayer-2026-09-19.json",
+    "exact primary body 396-sun-2026-09-19.json",
+    "exact service identity/date 396-sun-2026-09-19.json",
+    "unchanged public base names 396-sun-2026-09-19.json",
+    "prayer/sun published pair 396-sun-2026-09-19.json",
+    "original successful HTTPS acquisition 396-sun-2026-09-19.json",
+    "fresh public Bardo node exact bytes",
+    "fresh public node identical to authoritative original tags/coordinates",
+    "3523 complete current rows",
+    "all3523 baseline nearest independently recomputed",
+    "all3523 scenario exact defaults [394]",
+    "all3523 scenario exact defaults [391]",
+    "all3523 scenario exact defaults [393]",
+    "all3523 scenario exact defaults [396]",
+    "all3523 scenario exact defaults [391, 393, 394, 396]",
+    "joint17 fields exactly four name/group plus13 computed defaults",
+    "Hached remains393 in the joint scope",
+    "exact before osm:relation:7118020/name",
+    "exact before osm:relation:7118020/aliases",
+    "exact before osm:relation:7118020/pickerGroupId",
+    "exact before osm:way:103825771/aliases",
+    "exact before osm:relation:7095908/delegationId",
+    "exact before osm:relation:7118023/delegationId",
+    "exact before osm:relation:7118026/delegationId",
+    "exact before osm:relation:7118027/delegationId",
+    "exact before osm:relation:7201456/delegationId",
+    "exact before osm:relation:7201480/delegationId",
+    "exact before osm:relation:7201481/delegationId",
+    "exact before osm:relation:7201531/delegationId",
+    "exact before osm:relation:7201543/delegationId",
+    "exact before osm:relation:7201546/delegationId",
+    "exact before osm:way:980164287/delegationId",
+    "exact before osm:way:980164288/delegationId",
+    "exact before osm:node:12925453903/delegationId",
+    "whole projected metadata equals exactly17 fields",
+    "exact projected serialization bytes",
+    "all3523 final nearest independently recomputed",
+    "saved index only canonical Bardo sector addition",
+    "unchanged Bardo town manual representative retains394",
+    "unchanged Ettahrir suburb manual representative retains393",
+    "unchanged Ezzouhour sector retains396",
+    "new393 published point remains inside exact original delegation",
+    "new396 published point inside original namesake sector",
+    "Ettahrir exact current base/correction guard",
+    "Ettahrir exact current protected default guard",
+    "Ezzouhour exact current strict base guard",
+    "Ezzouhour eligible proof current base guard",
+    "new immutable independent joint reference review"
+  ],
+  "checkCount": 92,
+  "limitations": [
+    "Published coordinates are service references, not certified internal calculation inputs or boundary centres.",
+    "No claim that all258 references are freshly audited; this scope is the four primary pairs requested for this batch.",
+    "This is source/numeric approval, not approval of yet-unprepared successor files or installation.",
+    "No source identities, raw coordinates, polygons or old evidence are rewritten."
+  ],
+  "notRun": [
+    "compiler execution/import",
+    "generator",
+    "tests",
+    "build",
+    "phone",
+    "network",
+    "live edits"
+  ]
+}

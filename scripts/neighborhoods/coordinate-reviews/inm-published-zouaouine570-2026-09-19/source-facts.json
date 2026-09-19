@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_BOUND_ZOUAOUINE570_DATA_ONLY_PROPOSAL",
+  "createdAtUtc": "2026-09-19T10:33:14.042876+00:00",
+  "baselineMetadataSha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "oldFactsRevalidation": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/zouaouine-kalaat-name-review-20260919/sourcefacts-and-design.json",
+    "sha256": "73df5e784ab3a73dd7ca97ff36b733371e66f9f84d5cde2a16196d404e4dd309",
+    "bytes": 38034
+  },
+  "authoritativeInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "sourceRecords": {
+    "osm:relation:7121325": {
+      "id": "osm:relation:7121325",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "زواوين",
+        "name:ar": "زواوين",
+        "name:fr": "Zouaouine",
+        "ref:tn:codegeo": "176154"
+      },
+      "geometrySha256": "b87238d2a735f362eb95a0a519ab4c5ab916d9b2c63262fa386dfc357c13b86e",
+      "expectedCuration": null
+    },
+    "osm:node:3771493269": {
+      "id": "osm:node:3771493269",
+      "kind": "village",
+      "tags": {
+        "addr:city": "الزواوين",
+        "addr:postcode": "7024",
+        "name": "الزواوين",
+        "name:ar": "الزواوين",
+        "name:en": "Zouaouine",
+        "name:fr": "Zouaouine",
+        "place": "village",
+        "wikidata": "Q12188162",
+        "wikipedia": "ar:الزواوين"
+      },
+      "geometrySha256": "ebd1eab1847bec3211f3cf190d6cfc29f110c34a9bfeb46629e41f3267e0ace8",
+      "expectedCuration": null
+    },
+    "osm:relation:7151815": {
+      "id": "osm:relation:7151815",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ghar El Melh",
+        "boundary": "administrative",
+        "name": "معتمدية غار الملح",
+        "name:ar": "معتمدية غار الملح",
+        "name:fr": "Délégation Ghar El Melh",
+        "ref:tn:codegeo": "1761",
+        "ref:tn:hasc_2": "TN.BZ.GM",
+        "wikidata": "Q3104773"
+      },
+      "geometrySha256": "9ceae26f1ba4d33d64cc3e5f6a10bdcd9aed03f6b1de0dae408fd42b98bfd416",
+      "expectedCuration": null
+    },
+    "osm:relation:1435827": {
+      "id": "osm:relation:1435827",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-23",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Bizerte",
+        "boundary": "administrative",
+        "name": "ولاية بنزرت",
+        "name:ar": "ولاية بنزرت",
+        "name:az": "Bizerta (vilayət)",
+        "name:azb": "بنزرت",
+        "name:be": "Бізерта (вілает)",
+        "name:be-tarask": "Бізэрта (вілает)",
+        "name:bg": "Бизерта (област)",
+        "name:ca": "Governació de Bizerta",
+        "name:ceb": "Gouvernorat de Bizerte",
+        "name:cy": "Bizerte (talaith)",
+        "name:de": "Binzart",
+        "name:el": "Μπιζέρτα (Κυβερνείο)",
+        "name:en": "Bizerte",
+        "name:es": "Gobernación de Bizerta",
+        "name:fa": "بنزرت",
+        "name:fi": "Bizerte (kuvernementti)",
+        "name:fr": "Gouvernorat Bizerte",
+        "name:frr": "Bizerte (Guwernement)",
+        "name:hu": "Bizerte kormányzóság",
+        "name:id": "Kegubernuran Bizerte",
+        "name:it": "Biserta",
+        "name:ja": "ビゼルト県",
+        "name:ka": "ბიზერტის ვილაიეთი",
+        "name:ko": "비제르테주",
+        "name:ks": "بنزرت",
+        "name:lt": "Bizertos vilajetas",
+        "name:ms": "Kawasan kegabenoran Bizerte",
+        "name:nl": "Bizerte (gouvernement)",
+        "name:no": "Bizerte (guvernement)",
+        "name:pl": "Gubernatorstwo Bizerta",
+        "name:pnb": "بنزرت",
+        "name:pt": "Bizerta (província)",
+        "name:ro": "Guvernoratul Bizerte",
+        "name:ru": "Бизерта (вилайет)",
+        "name:sco": "Bizerte Govrenorate",
+        "name:sh": "Bizerta (vilajet)",
+        "name:sv": "Bizerte (guvernement)",
+        "name:tr": "Bizerte (vilayet)",
+        "name:uk": "Бізерта (вілаєт)",
+        "name:ur": "بنزرت",
+        "name:zh": "比塞大省",
+        "name:zu": "Bizerte Governorate",
+        "official_name": "ولاية بنزرت",
+        "official_name:ar": "ولاية بنزرت",
+        "official_name:en": "Bizerte Governorate",
+        "official_name:es": "Gobernación de Bizerta",
+        "official_name:fa": "استان بنزرت",
+        "official_name:fr": "Gouvernorat de Bizerte",
+        "official_name:it": "Governatorato di Biserta",
+        "official_name:ur": "ولایت بنزرت",
+        "population": "568219",
+        "population:date": "2014",
+        "ref:tn:codegeo": "17",
+        "wikidata": "Q241129",
+        "wikipedia": "ar:ولاية بنزرت",
+        "wikipedia:es": "Gobernación de Bizerta"
+      },
+      "geometrySha256": "4a232513c530ecc0640b5dbb22e5a8550cebd70827406f4220343862a03a20c4",
+      "expectedCuration": null
+    }
+  },
+  "officialSectorRecord": {
+    "governorateCode": "17",
+    "governorateFr": "Bizerte",
+    "governorateAr": "بنزرت",
+    "delegationCode": "1761",
+    "delegationFr": "Ghar el meleh",
+    "delegationAr": "غار الملح",
+    "sectorCode": "176154",
+    "sectorFr": "Zouaouine",
+    "sectorAr": "الزواوين",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19278,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 848,
+      "Nombre_de_menages_par_Secteurs.xlsx": 847
+    }
+  },
+  "currentBase": {
+    "id": 570,
+    "nomFr": "Zouaouine",
+    "nomAr": "الزواوين",
+    "nomEn": "Zouaouine",
+    "lat": 37.1269,
+    "lng": 10.0569
+  },
+  "publishedBase": {
+    "id": 570,
+    "nomFr": "Zouaouine",
+    "nomAr": "الزواوين",
+    "nomEn": "Zouaouine",
+    "lat": 37.127,
+    "lng": 10.057
+  },
+  "publishedPrayerCorrection": {
+    "delegationId": 570,
+    "expectedGovernorateId": 361,
+    "expectedNames": {
+      "nomAr": "الزواوين",
+      "nomFr": "Zouaouine",
+      "nomEn": "Zouaouine"
+    },
+    "reviewedDate": "2026-09-19",
+    "original": {
+      "lat": 37.1269,
+      "lng": 10.0569
+    },
+    "proposed": {
+      "lat": 37.127,
+      "lng": 10.057
+    },
+    "originalProvenance": "Legacy bundled reference in asset SHA256 9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c; its external origin is undocumented. Published daily coordinates are not certified calculation inputs or surveyed settlement centres.",
+    "referenceKind": "inm_published_reference",
+    "inmEvidence": {
+      "serviceDate": "2026-09-19",
+      "prayer": {
+        "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/original-source/zouaouine-prayer-2026-09-19.json",
+        "sha256": "eb824d082d79ac87351f79a3b8bd73e0f37c485b7e40774eedf4e8d9022dbd35",
+        "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/570/"
+      },
+      "sun": {
+        "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/original-source/zouaouine-sun-2026-09-19.json",
+        "sha256": "d3c18c353be3701a39b33176f21c7c20d2497806baf315f5437164b3f6c0a920",
+        "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/570/"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/original-source/retrieval-manifest.json",
+        "sha256": "9b21c1c21e60d7c77388b77ab29212b8a40c0416368f2433e5a32deee47c06a2"
+      }
+    },
+    "qualification": "Fresh prayer and sunrise responses agree. The independently sourced contained village point supplies the manual locality reference; neither point certifies a polygon.",
+    "reviewBatchId": "2026-09-19-inm-published-zouaouine-kalaat-senan",
+    "originalSourceAssetSha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+    "originalSourceAssetEvidence": {
+      "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/before-gouvernorats.json",
+      "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c"
+    }
+  },
+  "exactPublicVillageElement": {
+    "type": "node",
+    "id": 3771493269,
+    "lat": 37.128421,
+    "lon": 10.0581544,
+    "timestamp": "2019-11-30T11:19:28Z",
+    "version": 3,
+    "changeset": 77755618,
+    "user": "Anis Ben Makhlouf",
+    "uid": 10001069,
+    "tags": {
+      "addr:city": "الزواوين",
+      "addr:postcode": "7024",
+      "name": "الزواوين",
+      "name:ar": "الزواوين",
+      "name:en": "Zouaouine",
+      "name:fr": "Zouaouine",
+      "place": "village",
+      "wikidata": "Q12188162",
+      "wikipedia": "ar:الزواوين"
+    }
+  },
+  "sourceVillageRemainsAbsorbed": true,
+  "completeSourceNamePeerIds": [
+    "osm:node:3771493269",
+    "osm:relation:7121325"
+  ],
+  "completeBeforeSectorGroup": [
+    "osm:relation:7121325"
+  ],
+  "completeBeforeBaseRawMembers": [],
+  "protectedChildId": "osm:node:1870317876",
+  "exactRawBefore": [
+    {
+      "id": "osm:relation:7121325",
+      "sourceId": "osm",
+      "name": "زواوين",
+      "aliases": [
+        "Zouaouine",
+        "الزواوين"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية غار الملح",
+      "contextAliases": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "معتمدية غار الملح"
+      ],
+      "governorateId": 361,
+      "lat": 37.11603,
+      "lng": 10.027253,
+      "delegationId": 570,
+      "hasBoundary": true,
+      "bbox": [
+        9.994576,
+        37.074807,
+        10.083813,
+        37.15705
+      ],
+      "areaKm2": 21.903449083227116,
+      "pickerGroupId": "osm:relation:7121325",
+      "offset": 1198760,
+      "length": 1028
+    },
+    {
+      "id": "osm:node:1870317876",
+      "sourceId": "osm",
+      "name": "طويبية",
+      "aliases": [
+        "Touibia"
+      ],
+      "kind": "village",
+      "parentName": "زواوين",
+      "contextAliases": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "Zouaouine",
+        "زواوين",
+        "معتمدية غار الملح"
+      ],
+      "governorateId": 361,
+      "lat": 37.1162119,
+      "lng": 10.0296088,
+      "delegationId": 570,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1870317876"
+    }
+  ],
+  "exactRawAfter": [
+    {
+      "id": "osm:relation:7121325",
+      "sourceId": "osm",
+      "name": "الزواوين",
+      "aliases": [
+        "Zouaouine",
+        "زواوين"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية غار الملح",
+      "contextAliases": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "معتمدية غار الملح"
+      ],
+      "governorateId": 361,
+      "lat": 37.128421,
+      "lng": 10.0581544,
+      "delegationId": 570,
+      "hasBoundary": true,
+      "bbox": [
+        9.994576,
+        37.074807,
+        10.083813,
+        37.15705
+      ],
+      "areaKm2": 21.903449083227116,
+      "pickerGroupId": "delegation:570",
+      "offset": 1198760,
+      "length": 1028,
+      "manualPointId": "osm:node:3771493269"
+    },
+    {
+      "id": "osm:node:1870317876",
+      "sourceId": "osm",
+      "name": "طويبية",
+      "aliases": [
+        "Touibia"
+      ],
+      "kind": "village",
+      "parentName": "الزواوين",
+      "contextAliases": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "Zouaouine",
+        "الزواوين",
+        "زواوين",
+        "معتمدية غار الملح"
+      ],
+      "governorateId": 361,
+      "lat": 37.1162119,
+      "lng": 10.0296088,
+      "delegationId": 570,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1870317876"
+    }
+  ],
+  "exactRawFieldChanges": [
+    {
+      "id": "osm:relation:7121325",
+      "field": "name",
+      "before": "زواوين",
+      "after": "الزواوين"
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "aliases",
+      "before": [
+        "Zouaouine",
+        "الزواوين"
+      ],
+      "after": [
+        "Zouaouine",
+        "زواوين"
+      ]
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "lat",
+      "before": 37.11603,
+      "after": 37.128421
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "lng",
+      "before": 10.027253,
+      "after": 10.0581544
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:3771493269"
+    },
+    {
+      "id": "osm:relation:7121325",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7121325",
+      "after": "delegation:570"
+    },
+    {
+      "id": "osm:node:1870317876",
+      "field": "parentName",
+      "before": "زواوين",
+      "after": "الزواوين"
+    },
+    {
+      "id": "osm:node:1870317876",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "Zouaouine",
+        "زواوين",
+        "معتمدية غار الملح"
+      ],
+      "after": [
+        "Délégation Ghar El Melh",
+        "Ghar El Melh",
+        "Zouaouine",
+        "الزواوين",
+        "زواوين",
+        "معتمدية غار الملح"
+      ]
+    }
+  ],
+  "containment": [
+    {
+      "label": "oldBase",
+      "originalSector": true,
+      "packedSector": true,
+      "originalParent": true
+    },
+    {
+      "label": "published",
+      "originalSector": true,
+      "packedSector": true,
+      "originalParent": true
+    },
+    {
+      "label": "sourceVillage",
+      "originalSector": true,
+      "packedSector": true,
+      "originalParent": true
+    },
+    {
+      "label": "oldRawAnchor",
+      "originalSector": true,
+      "packedSector": true,
+      "originalParent": true
+    }
+  ],
+  "originalParentCoversWholeSourceSector": true,
+  "originalParentCoversWholePackedSector": false,
+  "packedOutsideUnroundedParentAreaSquareDegrees": 2.410252782855009e-08,
+  "packedGeometrySha256": "69b6fd3f2e8e77db8c407042d4aebabada0d5350ae0ebd1f724c3be1aaae995b",
+  "all3523CurrentNearestSourcesVerified": true,
+  "publishedReferenceOnlyNearestChanges": [],
+  "all3523ProposedNearestSourcesVerified": true,
+  "manualSelection": {
+    "representativeId": "osm:relation:7121325",
+    "sourcePointId": "osm:node:3771493269",
+    "lat": 37.128421,
+    "lng": 10.0581544,
+    "expectedNearestSourceId": 570
+  },
+  "savedNameIndex": {
+    "insert": {
+      "id": "osm:relation:7121325",
+      "name": "الزواوين",
+      "kind": "sector"
+    },
+    "index": 86,
+    "beforeCount": 134,
+    "afterCount": 135,
+    "retiredIdsAndReplacementsUnchanged": true
+  },
+  "activeDependencyScreen": {
+    "jsonDocumentsChecked": 671,
+    "depth": 2,
+    "ids": [
+      "osm:relation:7121325",
+      "osm:node:3771493269",
+      "osm:node:1870317876"
+    ],
+    "matchingDocuments": [
+      "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/beni-mhira-context-nearest-reference-projection.json",
+      "direct-pbf-source-facts.json",
+      "ksar-two-patch-reviews/direct-pbf-source-facts.json",
+      "locality-context-reviews/haf-direct-pbf-source-facts.json",
+      "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+      "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-el-hani-neighborhoods.json",
+      "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json",
+      "point-retention-reviews/before-neighborhoods.json"
+    ],
+    "scope": "Direct and second-hop existing JSON references from active curation, picker, coordinate and boundary manifests; whole-manifest bindings listed separately.",
+    "neededSuccessors": [
+      {
+        "manifest": "catalog-curation.json",
+        "decisionIndex": 146,
+        "id": "osm:node:264885332",
+        "currentProof": {
+          "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/624-picker-binding-proof.json",
+          "sha256": "1d0cd5a02fe4f40b81da9efa009f3bf650e7a31687475c713ec5b8ca232a015b"
+        },
+        "requiredChange": "Whole picker manifest hash only; preserve complete touching records and all identity/geometry assertions"
+      },
+      {
+        "manifest": "catalog-curation.json",
+        "decisionIndex": 164,
+        "id": "osm:node:560792911",
+        "currentProof": {
+          "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/485-picker-binding-proof.json",
+          "sha256": "7504c95e59a99d2a83b786d1d2c3cdf0a82fcf97b4b796ca73ac7ceb47870eee"
+        },
+        "requiredChange": "Whole picker manifest hash only; preserve complete touching records and all identity/geometry assertions"
+      },
+      {
+        "manifest": "catalog-curation.json",
+        "decisionIndex": 168,
+        "id": "osm:node:5239666199",
+        "currentProof": {
+          "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/1524-picker-binding-proof.json",
+          "sha256": "29e53b459ac7caed8318f1c24cdc8c1ae44afb7d541bfdb5f9d12116cd5aeab1"
+        },
+        "requiredChange": "Whole picker manifest hash only; preserve complete touching records and all identity/geometry assertions"
+      },
+      {
+        "manifest": "catalog-curation.json",
+        "decisionIndex": 282,
+        "id": "osm:node:351582010",
+        "currentProof": {
+          "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/degache-coordinate39-proof.json",
+          "sha256": "97673cb1cdaf42221b8cd5e19a9bd220e6945afbc651be3eddfb23935e864af1"
+        },
+        "requiredChange": "Whole coordinate reference hash only"
+      },
+      {
+        "manifest": "reviewed-picker-groups.json",
+        "recordIndex": 94,
+        "id": "osm:way:172866902",
+        "requiredChange": "identityEvidence[0].prayerSourceReference.sha256 and corresponding additionalReviewEvidence[1] wrapper successor: whole coordinate manifest hash only"
+      },
+      {
+        "manifest": "reviewed-picker-groups.json",
+        "recordIndex": 87,
+        "id": "osm:relation:7169598",
+        "requiredChange": "retainedDisplayReference.reviewEvidence successor publishedPrayerReference.sha256; corresponding additionalReviewEvidence[0] held12 wrapper retained proof reference successor"
+      }
+    ],
+    "matchingBranches": [
+      {
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/beni-mhira-context-nearest-reference-projection.json",
+        "branches": [
+          "features"
+        ],
+        "qualification": "Historical full-catalog/offset evidence: preserved unchanged; not a current assertion for these three raw IDs."
+      },
+      {
+        "file": "direct-pbf-source-facts.json",
+        "branches": [
+          "administrativeCodeClaims"
+        ],
+        "qualification": "Unchanged source administrative code inventory"
+      },
+      {
+        "file": "ksar-two-patch-reviews/direct-pbf-source-facts.json",
+        "branches": [
+          "administrativeCodeClaims"
+        ],
+        "qualification": "Unchanged source administrative code inventory"
+      },
+      {
+        "file": "locality-context-reviews/haf-direct-pbf-source-facts.json",
+        "branches": [
+          "administrativeCodeClaims"
+        ],
+        "qualification": "Unchanged source administrative code inventory"
+      },
+      {
+        "file": "picker-distinct-reviews/bizerte-three-staged-data-independent-review.json",
+        "branches": [
+          "allMetadataChangesIncludingOffsets"
+        ],
+        "qualification": "Historical full-catalog/offset evidence: preserved unchanged; not a current assertion for these three raw IDs."
+      },
+      {
+        "file": "point-base-display-reviews/beni-mhira-successor-2026-09/post-sidi-el-hani-neighborhoods.json",
+        "branches": [
+          "features"
+        ],
+        "qualification": "Historical full-catalog/offset evidence: preserved unchanged; not a current assertion for these three raw IDs."
+      },
+      {
+        "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-baseline-neighborhoods-f05e.json",
+        "branches": [
+          "features"
+        ],
+        "qualification": "Historical full-catalog/offset evidence: preserved unchanged; not a current assertion for these three raw IDs."
+      },
+      {
+        "file": "point-retention-reviews/before-neighborhoods.json",
+        "branches": [
+          "features"
+        ],
+        "qualification": "Historical full-catalog/offset evidence: preserved unchanged; not a current assertion for these three raw IDs."
+      }
+    ],
+    "historicalManifestPinsObserved": [
+      {
+        "file": "reviewed-boundaries.json",
+        "recordedSha256": "1c20cb167cf1a3232dc0dd19b4674eaf0f57f91910cc12356e584eb3e4a9f3f8",
+        "currentSha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421"
+      },
+      {
+        "file": "reviewed-picker-groups.json",
+        "recordedSha256": "bcef47ff305e020350aeb26b268a3f9b2bd835220491f560d0c2664f718b4352",
+        "currentSha256": "351c6f2aca1766d045f05225992b28dfcea23e0d042c15517af70c842bb47b11"
+      }
+    ]
+  },
+  "phoneEvidence": {
+    "review": {
+      "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/public-phone-context-review.json",
+      "sha256": "46aa92d284bffbb76188c79fb4d50b429e0f3fccea6e67bde2a0c8cc2ab3b873"
+    },
+    "qualification": "Root personally viewed surrounding الزواوين label at the requested village point. Pharmacy selected card is geographic/name context only, not settlement-coordinate or polygon certification."
+  },
+  "qualifications": [
+    "Original tags and polygon bytes remain unchanged.",
+    "Canonical display follows official176154, authentic village and INM570; old sector spelling remains an alias.",
+    "Only the source village coordinates replace the sector interior anchor used for manual selection. GPS continues to use the device fix and unchanged polygon.",
+    "Quantized sector has a tiny spill beyond the unrounded parent; no claim of whole packed-parent containment.",
+    "No compiler execution/import, live writes, phone, build or tests."
+  ]
+}

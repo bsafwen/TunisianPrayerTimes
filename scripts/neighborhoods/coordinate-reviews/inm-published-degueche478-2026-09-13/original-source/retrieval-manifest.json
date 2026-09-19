@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "derived_retrieval_index_not_original_HTTP_or_original_manifest_bytes",
+  "scope": "Only reference478 daily prayer and sunrise originals. Local files resolve beside this manifest; both original HTTP bodies are unchanged.",
+  "responses": [
+    {
+      "file": "inm-prayer-478-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/",
+      "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+      "bytes": 523,
+      "retrievedAtUtc": "2026-09-12T10:17:06.875631+00:00",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:06 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "523",
+        "Keep-Alive": "timeout=5, max=36",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten."
+    },
+    {
+      "file": "inm-sun-478-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/",
+      "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+      "bytes": 492,
+      "retrievedAtUtc": "2026-09-12T22:12:37.518383+00:00",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 22:12:37 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "492",
+        "Keep-Alive": "timeout=5, max=91",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten."
+    }
+  ],
+  "derivation": {
+    "originalInventory": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/inm-reference-inventory-20260912/reference-inventory.json",
+      "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401",
+      "bytes": 1665727
+    },
+    "originalDeguecheRetrievalManifest": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/retrievals.json",
+      "sha256": "37e1c1646720d790141d93b104c9a8bf12d3bbfcb1097f49f0472f6c5df005f9",
+      "bytes": 8663
+    },
+    "historicalParentManifestPinsAreProvenanceNotShippingDependencyReferences": true,
+    "originalPrayerEntry": {
+      "expected": {
+        "governorateId": 352,
+        "delegationId": 478,
+        "governorate": {
+          "id": 352,
+          "nomFr": "Tozeur",
+          "nomAr": "توزر",
+          "nomEn": "Tozeur",
+          "lat": 33.9197,
+          "lng": 8.1335
+        },
+        "delegation": {
+          "id": 478,
+          "nomFr": "Degueche",
+          "nomAr": "دقاش",
+          "nomEn": "Degueche",
+          "lat": 33.97,
+          "lng": 8.22
+        },
+        "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+      },
+      "attempt": 1,
+      "retrievedAt": "2026-09-12T10:17:06.875631+00:00",
+      "reused": false,
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 10:17:06 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "523",
+        "Keep-Alive": "timeout=5, max=36",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-478-2026-09-12.json",
+        "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+        "bytes": 523
+      },
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten.",
+      "analysis": {
+        "classification": "VALID_DAILY_REFERENCE",
+        "actual": {
+          "dailyRecordId": 910797,
+          "gouvernorat": {
+            "id": 352,
+            "intituleFr": "Tozeur",
+            "intituleAr": "توزر",
+            "intituleAn": "Tozeur"
+          },
+          "delegation": {
+            "id": 478,
+            "intituleFr": "Degueche",
+            "intituleAr": "دقاش",
+            "intituleAn": "Degueche",
+            "parent": {
+              "id": 352,
+              "intituleFr": "Tozeur",
+              "intituleAr": "توزر",
+              "intituleAn": "Tozeur"
+            }
+          },
+          "date": "2026-09-12 00:00",
+          "year": 2026,
+          "active": true,
+          "method": "GET",
+          "lat": "34.016",
+          "lng": " 8.273",
+          "times": {
+            "sobh": "04:42",
+            "dhohr": "12:30",
+            "aser": "15:56",
+            "magreb": "18:41",
+            "isha": "20:04"
+          }
+        },
+        "validationErrors": [],
+        "nameDifferences": [],
+        "coordinateComparison": {
+          "numeric": {
+            "lat": "34.016",
+            "lng": "8.273"
+          },
+          "matchesCurrentAppNumbersExactly": false,
+          "currentApp": {
+            "lat": 33.97,
+            "lng": 8.22
+          }
+        }
+      },
+      "accessChallengeSuspected": false,
+      "completedAt": "2026-09-12T10:17:07.066602+00:00"
+    },
+    "originalSunEntry": {
+      "file": "sun-478-2026-09-12.json",
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/",
+      "retrievedAt": "2026-09-12T22:12:37.518383+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/",
+      "headers": {
+        "Date": "Sat, 12 Sep 2026 22:12:37 GMT",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "492",
+        "Keep-Alive": "timeout=5, max=91",
+        "Connection": "Keep-Alive",
+        "Content-Type": "application/json"
+      },
+      "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+      "bytes": 492,
+      "provenance": "Original HTTP response body bytes after content decoding; not rewritten.",
+      "tlsVerification": true
+    },
+    "method": "Select original prayer inventory and matching sunrise retrieval by exact body hashes; flatten local filenames and copy request/status/header/time fields. Preserve both complete selected original records here."
+  }
+}

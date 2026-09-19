@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_settlement_retained_display_reference",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "id": "osm:relation:7129263",
+  "targetDelegationId": 588,
+  "governorateId": 363,
+  "baseCurrent": {
+    "id": 588,
+    "nomFr": "Kalaat Sinane",
+    "nomAr": "قلعة السنان",
+    "nomEn": "Kalaat Sinane",
+    "lat": 35.768,
+    "lng": 8.342
+  },
+  "baselineMetadataSha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+  "exactRawFieldChanges": [
+    {
+      "id": "osm:relation:7129263",
+      "field": "lat",
+      "before": 35.769282,
+      "after": 35.7672773
+    },
+    {
+      "id": "osm:relation:7129263",
+      "field": "lng",
+      "before": 8.347248,
+      "after": 8.3438119
+    },
+    {
+      "id": "osm:relation:7129263",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:501803032"
+    },
+    {
+      "id": "osm:relation:7129263",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7129263",
+      "after": "delegation:588"
+    }
+  ],
+  "recordCoreSha256": "ca65fb732958f4a45a6b41c99b6f23a5b843177c8c609f288c7e312052c7bc77",
+  "eligibleProofCoreSha256": "e71fc33d72a8ebd2b6319414979e0c439f1337900bf974be8845e4d8358f113c",
+  "sourceFacts": {
+    "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/source-facts.json",
+    "sha256": "066503ce5fc24a1fdf2d54ed3c41276d47646ba4232f120aa01857c6400c36dc"
+  },
+  "independentSourceReview": {
+    "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/independent-source-review.json",
+    "sha256": "93d87d6273053f33b5d948be73664bdab27bdd3ef68e057a88a3c4aa57245a8b"
+  },
+  "publishedPrayerCorrection": {
+    "delegationId": 588,
+    "expectedGovernorateId": 363,
+    "expectedNames": {
+      "nomAr": "قلعة السنان",
+      "nomFr": "Kalaat Sinane",
+      "nomEn": "Kalaat Sinane"
+    },
+    "reviewedDate": "2026-09-19",
+    "original": {
+      "lat": 35.7669,
+      "lng": 8.341
+    },
+    "proposed": {
+      "lat": 35.768,
+      "lng": 8.342
+    },
+    "originalProvenance": "Legacy bundled reference retained in the frozen post-Gobaa/property-v2 source asset SHA256 9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c; its external original origin is undocumented. Published INM daily coordinates are independently preserved and are not certified internal prayer calculation inputs.",
+    "referenceKind": "inm_published_reference",
+    "inmEvidence": {
+      "serviceDate": "2026-09-19",
+      "prayer": {
+        "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/kalaat-senan-prayer-2026-09-19.json",
+        "sha256": "0219d0eb3f55cdc74a522dc43deefeb9a500c189497cd9bf4f0c8aaf47067f1f",
+        "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/"
+      },
+      "sun": {
+        "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/kalaat-senan-sun-2026-09-19.json",
+        "sha256": "946d7819efaa46f005a62366a884d05cd63cd234b5d80f142faaf553aab64da7",
+        "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/retrieval-manifest.json",
+        "sha256": "e30cfcb2578a5fbc6e50f27f6f69de00f5848b435d1576cbb11c70132f1df286"
+      }
+    },
+    "qualification": "Daily prayer and sunrise responses agree on the published reference. An independently source-bound town point supplies manual selection; sector polygon bytes and device GPS semantics remain unchanged. This reference correction alone changes no current nearest default across all3523 raw rows.",
+    "reviewBatchId": "2026-09-19-inm-published-zouaouine-kalaat-senan",
+    "originalSourceAssetSha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+    "originalSourceAssetEvidence": {
+      "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/before-gouvernorats.json",
+      "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c"
+    }
+  },
+  "witness": {
+    "id": "osm:node:501803032",
+    "kind": "town",
+    "tags": {
+      "name": "قلعة سنان",
+      "name:ar": "قلعة سنان",
+      "name:en": "Kalaat es Senam",
+      "name:fr": "Kalaat Senan",
+      "name:ru": "Калъат-эс-Сенам",
+      "place": "town",
+      "population": "8145",
+      "population:date": "2014",
+      "postal_code": "7130",
+      "wikidata": "Q3100254",
+      "wikipedia": "ar:قلعة سنان"
+    },
+    "lat": 35.7672773,
+    "lng": 8.3438119,
+    "exactPublicElement": {
+      "type": "node",
+      "id": 501803032,
+      "lat": 35.7672773,
+      "lon": 8.3438119,
+      "timestamp": "2021-12-13T15:18:52Z",
+      "version": 11,
+      "changeset": 114887673,
+      "user": "Anis Ben Makhlouf",
+      "uid": 10001069,
+      "tags": {
+        "name": "قلعة سنان",
+        "name:ar": "قلعة سنان",
+        "name:en": "Kalaat es Senam",
+        "name:fr": "Kalaat Senan",
+        "name:ru": "Калъат-эс-Сенам",
+        "place": "town",
+        "population": "8145",
+        "population:date": "2014",
+        "postal_code": "7130",
+        "wikidata": "Q3100254",
+        "wikipedia": "ar:قلعة سنان"
+      }
+    },
+    "publicNode": {
+      "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/town-501803032-current.json",
+      "sha256": "b4818f0135f89f14516b1a8bbda1d25493ebd201c941f1275fa0fb53818604e4",
+      "url": "https://api.openstreetmap.org/api/0.6/node/501803032.json"
+    }
+  },
+  "sources": [
+    {
+      "id": "osm:node:501803032",
+      "kind": "town",
+      "tags": {
+        "name": "قلعة سنان",
+        "name:ar": "قلعة سنان",
+        "name:en": "Kalaat es Senam",
+        "name:fr": "Kalaat Senan",
+        "name:ru": "Калъат-эс-Сенам",
+        "place": "town",
+        "population": "8145",
+        "population:date": "2014",
+        "postal_code": "7130",
+        "wikidata": "Q3100254",
+        "wikipedia": "ar:قلعة سنان"
+      },
+      "geometrySha256": "ee754605dc0f41d4b581acc4da5493650c1eb0841a8d6690b65b0aad0f2b3c62",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:1435838",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-33",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Kef",
+        "boundary": "administrative",
+        "name": "ولاية الكاف",
+        "name:ar": "ولاية الكاف",
+        "name:az": "Kef (vilayət)",
+        "name:be": "Эль-Кеф (вілает)",
+        "name:be-tarask": "Эль-Кеф (вілает)",
+        "name:bg": "Кеф (област)",
+        "name:ca": "Governació del Kef",
+        "name:ceb": "Gouvernorat de Kef",
+        "name:cy": "El Kef (talaith)",
+        "name:de": "Al-Kaf",
+        "name:el": "Αλ Καφ (Κυβερνείο)",
+        "name:en": "Al Kaf",
+        "name:es": "Gobernación de Al-Kāf",
+        "name:fa": "کاف",
+        "name:fi": "Kef (kuvernementti)",
+        "name:fr": "Gouvernorat Le Kef",
+        "name:frr": "Kef (Guwernement)",
+        "name:id": "Kegubernuran Kef",
+        "name:it": "Le Kef",
+        "name:ja": "ケフ県",
+        "name:ko": "케프주 (튀니지)",
+        "name:ms": "Kawasan kegabenoran Kef",
+        "name:nl": "Kef (gouvernement)",
+        "name:no": "Kef (guvernement)",
+        "name:pl": "Gubernatorstwo Al-Kaf",
+        "name:pt": "Kef (província)",
+        "name:ro": "Guvernoratul Kef",
+        "name:ru": "Эль-Кеф (вилайет)",
+        "name:sco": "Kef Govrenorate",
+        "name:sh": "Kef (vilajet)",
+        "name:tr": "Kâf ili",
+        "name:uk": "Ель-Кеф (вілаєт)",
+        "name:ur": "کاف",
+        "name:zh": "卡夫省",
+        "name:zu": "Kef Governorate",
+        "official_name": "ولاية الكاف",
+        "official_name:ar": "ولاية الكاف",
+        "official_name:en": "El Kef Governorate",
+        "official_name:fr": "Gouvernorat du Kef",
+        "official_name:it": "Governatorato del Kef",
+        "population": "258790",
+        "population:date": "2004",
+        "ref:tn:codegeo": "23",
+        "wikidata": "Q328199",
+        "wikipedia": "ar:ولاية الكاف"
+      },
+      "geometrySha256": "a05ac1c3ce0ca8c52ff1923978f6572743d4befbdfc73ded8254762f6ac2e155",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:4752889",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Kalaat Senan",
+        "boundary": "administrative",
+        "name": "معتمدية قلعة سنان",
+        "name:ar": "معتمدية قلعة سنان",
+        "name:fr": "Délégation Kalaat Senan",
+        "official_name": "معتمدية قلعة سنان",
+        "official_name:ar": "معتمدية قلعة سنان",
+        "official_name:fr": "Délégation de Kalaat Senan",
+        "ref:tn:codegeo": "2356",
+        "ref:tn:hasc_2": "TN.KF.KS",
+        "wikidata": "Q3192066",
+        "wikipedia": "ar:معتمدية قلعة سنان"
+      },
+      "geometrySha256": "7b1a34c9662259657d163f6363a818850079c40e08302af6f18e6db0272d0d8c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7129263",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "قلعة سنان",
+        "name:ar": "قلعة سنان",
+        "name:fr": "Kalâat Snan",
+        "ref:tn:codegeo": "235651",
+        "wikidata": "Q3100254",
+        "wikipedia": "ar:قلعة سنان"
+      },
+      "geometrySha256": "29e01a34261160ada5c9284dccee04b96f0cb92d7860305c9cf89466530cbd3a",
+      "expectedCuration": {
+        "id": "osm:relation:7129263",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "قلعة سنان",
+          "name:ar": "قلعة سنان",
+          "name:fr": "Kalâat Snan",
+          "ref:tn:codegeo": "235651",
+          "wikidata": "Q3100254",
+          "wikipedia": "ar:قلعة سنان"
+        },
+        "action": "name_tags",
+        "manualPointId": "osm:node:501803032",
+        "nameTags": {
+          "name": "قلعة سنان",
+          "name:ar": "قلعة سنان",
+          "name:fr": "Kalâat Snan"
+        },
+        "reason": "Preserve every original locality name and alias while selecting its existing contained town501803032 as the manual location. The Ministry paired-name article and coded current sector/parent establish one display identity with the differently spelled INM588 label; neither prayer coordinates nor administrative polygons define the inhabited town extent. Device GPS and both source/packed sector geometry stay unchanged.",
+        "evidence": [
+          {
+            "source": "Pinned source/coded identity, exact public town witness, current whole-country nearest-source calculation, and accurately labelled Ministry web text capture.",
+            "reviewFiles": [
+              {
+                "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/source-and-design-note.json",
+                "sha256": "617a6e0f31e3c5cfcb53c1172689f5e99395b300ac5f87e306268a81c1f3bd05"
+              },
+              {
+                "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/culture-primary-web-excerpts.json",
+                "sha256": "120213c2f00b129862dc4616a9bc21deb863c299442af884ea10b78977aa87d1"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "namePeerIds": [
+    "osm:node:501803032",
+    "osm:relation:4752889",
+    "osm:relation:7129263"
+  ],
+  "primaryNames": {
+    "base": "قلعة السنان",
+    "locality": "قلعة سنان",
+    "evidence": [
+      {
+        "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/culture-primary-web-excerpts.json",
+        "sha256": "120213c2f00b129862dc4616a9bc21deb863c299442af884ea10b78977aa87d1",
+        "url": "https://www.culture.gov.tn/?p=33647",
+        "requiredText": [
+          "قلعة سنان",
+          "قلعة السنان",
+          "مدينة"
+        ]
+      }
+    ]
+  },
+  "primaryEvidence": [
+    {
+      "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/culture-primary-web-excerpts.json",
+      "sha256": "120213c2f00b129862dc4616a9bc21deb863c299442af884ea10b78977aa87d1",
+      "url": "https://www.culture.gov.tn/?p=33647",
+      "requiredText": [
+        "قلعة سنان",
+        "قلعة السنان",
+        "مدينة"
+      ]
+    }
+  ],
+  "contextIds": {
+    "delegation": "osm:relation:4752889",
+    "governor": "osm:relation:1435838"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialSectorRecord": {
+    "governorateCode": "23",
+    "governorateFr": "Le kef",
+    "governorateAr": "الكاف",
+    "delegationCode": "2356",
+    "delegationFr": "Kalaat snan",
+    "delegationAr": "قلعة سنان",
+    "sectorCode": "235651",
+    "sectorFr": "Kalaat snan",
+    "sectorAr": "قلعة سنان",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 27879,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 1309,
+      "Nombre_de_menages_par_Secteurs.xlsx": 1308
+    }
+  },
+  "protectedMetadata": {
+    "osm:relation:7129263": {
+      "id": "osm:relation:7129263",
+      "sourceId": "osm",
+      "name": "قلعة سنان",
+      "aliases": [
+        "Kalaat Senan",
+        "Kalaat es Senam",
+        "Kalâat Snan",
+        "Калъат-эс-Сенам"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية قلعة سنان",
+      "contextAliases": [
+        "Délégation Kalaat Senan",
+        "Délégation de Kalaat Senan",
+        "Kalaat Senan",
+        "معتمدية قلعة سنان"
+      ],
+      "governorateId": 363,
+      "lat": 35.7672773,
+      "lng": 8.3438119,
+      "delegationId": 588,
+      "hasBoundary": true,
+      "bbox": [
+        8.310929,
+        35.729962,
+        8.40082,
+        35.808584
+      ],
+      "areaKm2": 31.20175861502659,
+      "manualPointId": "osm:node:501803032"
+    }
+  },
+  "beforeGroups": [
+    {
+      "id": "delegation:588",
+      "memberIds": [
+        "delegation:588"
+      ]
+    },
+    {
+      "id": "osm:relation:7129263",
+      "memberIds": [
+        "osm:relation:7129263"
+      ]
+    }
+  ],
+  "finalGroups": [
+    {
+      "id": "delegation:588",
+      "memberIds": [
+        "delegation:588",
+        "osm:relation:7129263"
+      ]
+    }
+  ],
+  "memberPrayerSources": {
+    "osm:relation:7129263": 588
+  },
+  "manualSelection": {
+    "representativeId": "osm:relation:7129263",
+    "lat": 35.7672773,
+    "lng": 8.3438119,
+    "expectedNearestSourceId": 588
+  },
+  "qualifications": {
+    "publishedCoordinatesAreNotDisplayGeometry": true,
+    "sourceWitnessRemainsAbsorbed": true,
+    "memberPolygonsAreNotEquivalent": true,
+    "administrativeBoundaryNotCertified": true,
+    "manualPrayerSourceUsesRepresentative": true
+  }
+}

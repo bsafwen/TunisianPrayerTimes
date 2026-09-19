@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewedDate": "2026-09-13",
-  "scope": "Reviewed references for nearest available meteo.tn timetable selection: 30 preserved OSM settlement references and five official INM-published references 463, 526, 607, 609, 1522. No internal calculation-input or boundary certification.",
+  "reviewedDate": "2026-09-19",
+  "scope": "Reviewed references for nearest available meteo.tn timetable selection: 30 preserved OSM settlement references and seventeen official INM-published references 463, 526, 607, 609, 1522, 478, 576, 479, 472, 570, 588, 553, 554, 391, 393, 394, 396. No internal calculation-input or boundary certification.",
   "originalSourceAsset": {
     "path": "android-app/app/src/main/assets/gouvernorats.json",
     "sha256": "05e4ec8df5a1cff9b73f5ec5fe2b44fc4ce35d20fb500a41f8305c48092533d8",
@@ -18,7 +18,7 @@
     "populatedPlaceRecords": 2245
   },
   "reviewLimitations": [
-    "For 30 original OSM settlement corrections, named OSM place nodes supply the reference coordinates. Official INM prayer and sunrise responses supply 463, 526, 607, 609, 1522. Public phone observations corroborate place context only; no Google coordinates or geometry are copied and internal calculation inputs remain uncertified.",
+    "For 30 original OSM settlement corrections, named OSM place nodes supply the reference coordinates. Official INM prayer and sunrise responses supply 463, 526, 607, 609, 1522, 478, 576, 479, 472, 570, 588, 553, 554, 391, 393, 394, 396. Public phone observations corroborate place context only; no Google coordinates or geometry are copied and internal calculation inputs remain uncertified.",
     "Coordinate searches can display a nearby address or POI. Phone screenshots do not certify exact pin coordinates, administrative membership or polygon borders.",
     "GeoNames disagrees for Rouhia. The conflicting point is retained; the Social Affairs Ministry record embeds exactly the selected OSM settlement coordinate."
   ],
@@ -2489,6 +2489,534 @@
         "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-gouvernorats.json",
         "sha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4"
       }
+    },
+    {
+      "delegationId": 478,
+      "expectedGovernorateId": 352,
+      "expectedNames": {
+        "nomAr": "دقاش",
+        "nomFr": "Degueche",
+        "nomEn": "Degueche"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 33.97,
+        "lng": 8.22
+      },
+      "proposed": {
+        "lat": 34.016,
+        "lng": 8.273
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen Hichria-stage gouvernorats.json SHA256 cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c; external origin undocumented. Neither old nor published daily coordinates are labelled as an exact OSM settlement point.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-prayer-478-2026-09-12.json",
+          "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-sun-478-2026-09-12.json",
+          "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "3ff5d6d8a60a6519320f566e5a2e6995fd6980490f040bdb578db0b8b6068bb2"
+        }
+      },
+      "qualification": "Official published daily timetable reference fields corroborated by original prayer and sunrise responses. The coordinates are separate from the named data.delegation identity; they do not certify a town centre, hidden server calculation input, settlement equivalence or administrative boundary.",
+      "reviewBatchId": "2026-09-13-inm-published-degueche478",
+      "originalSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-gouvernorats.json",
+        "sha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
+      }
+    },
+    {
+      "delegationId": 576,
+      "expectedGovernorateId": 362,
+      "expectedNames": {
+        "nomAr": "سبيبة",
+        "nomFr": "Sbiba",
+        "nomEn": "Sbiba"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 35.53,
+        "lng": 9.07
+      },
+      "proposed": {
+        "lat": 35.545,
+        "lng": 9.072
+      },
+      "originalProvenance": "Legacy bundled reference retained in the post-Degache/Menzel source asset SHA256 1a399f88f1d77e95a49451f05928f3e0122052889f945c4719fa3a61e4051042; external original origin undocumented. Published daily references are not certified internal calculation inputs or surveyed town centres.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/sbiba-prayer-2026-09-19.json",
+          "sha256": "6ec7b78f5b23532472dc3700a54086ad2a315861f8105b379125b30cc8cbb9c9",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/576/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/sbiba-sun-2026-09-19.json",
+          "sha256": "7ec25820720f8438225d30e0bcc9acbbe4879e0786fd2abfc9af22d1db4da7c6",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/576/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/retrieval-manifest.json",
+          "sha256": "4d8a2a3544c444a64dbec807a30f65a72e6a77e8042b9514de4e5f3284f2ae51"
+        }
+      },
+      "qualification": "Official daily prayer and sunrise references agree on both2026-09-12 and2026-09-19. This is separate from locality identity and does not certify administrative or settlement geometry.",
+      "reviewBatchId": "2026-09-19-inm-published-sbiba576",
+      "originalSourceAssetSha256": "1a399f88f1d77e95a49451f05928f3e0122052889f945c4719fa3a61e4051042",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/before-gouvernorats.json",
+        "sha256": "1a399f88f1d77e95a49451f05928f3e0122052889f945c4719fa3a61e4051042"
+      }
+    },
+    {
+      "delegationId": 479,
+      "expectedGovernorateId": 352,
+      "expectedNames": {
+        "nomAr": "حزوة",
+        "nomFr": "Hazoua",
+        "nomEn": "Hazoua"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 33.764,
+        "lng": 7.63
+      },
+      "proposed": {
+        "lat": 33.738,
+        "lng": 7.603
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen post-Sidi/Khitmin source asset SHA256 c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b; external original origin undocumented. Published INM daily coordinates are independent of the actual village and are not certified internal calculation inputs.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/prayer-2026-09-19.json",
+          "sha256": "4c72a64bb879536e66834b777aabc94353cd5b1600de186ead70ceaf2678faac",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/352/479/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/sun-2026-09-19.json",
+          "sha256": "bb2e3a7ddee0b5e07a0e52ab169c01bef828451e4dc7afa532e2f2b774754b3c",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/352/479/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/retrieval-manifest.json",
+          "sha256": "02f191b797193ccc97b03bd9fc3dd2127ed9ed963ffccace16b4831c4e778cea"
+        }
+      },
+      "qualification": "Preserved daily prayer and sunrise responses agree. The published point is outside the original and packed village polygon. The retained authentic source village witness establishes display identity separately; no locality representative or polygon moves.",
+      "reviewBatchId": "2026-09-19-inm-published-hazoua-smar",
+      "originalSourceAssetSha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/before-gouvernorats.json",
+        "sha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b"
+      }
+    },
+    {
+      "delegationId": 472,
+      "expectedGovernorateId": 351,
+      "expectedNames": {
+        "nomAr": "السمار",
+        "nomFr": "Smar",
+        "nomEn": "Smar"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 32.9955,
+        "lng": 10.8246
+      },
+      "proposed": {
+        "lat": 32.872,
+        "lng": 10.89
+      },
+      "originalProvenance": "Legacy bundled reference in source asset SHA256 c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b; its external origin is undocumented. Published daily coordinates are not certified internal calculation inputs or surveyed town centres.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/smar-prayer-2026-09-19.json",
+          "sha256": "f3287c6837cb0ad3b0666b75ecff9a477ef023535eefb01832a49b533479364c",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/472/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/smar-sun-2026-09-19.json",
+          "sha256": "bc4f109bbb02fa615f01a4c18de041d084ca3b8d27bbe780c7a12fcf404a6a23",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/472/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/retrieval-manifest.json",
+          "sha256": "62645377f034a93f24bf5d24d5b88f3685922667e95d6bddf768e37d04f825a4"
+        }
+      },
+      "qualification": "Fresh primary prayer and sunrise responses agree. The published point is geographically separate from the named Smar settlement; it does not move or certify a locality or boundary.",
+      "reviewBatchId": "2026-09-19-inm-published-hazoua-smar",
+      "originalSourceAssetSha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-smar472-2026-09-19/before-gouvernorats.json",
+        "sha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b"
+      }
+    },
+    {
+      "delegationId": 570,
+      "expectedGovernorateId": 361,
+      "expectedNames": {
+        "nomAr": "الزواوين",
+        "nomFr": "Zouaouine",
+        "nomEn": "Zouaouine"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 37.1269,
+        "lng": 10.0569
+      },
+      "proposed": {
+        "lat": 37.127,
+        "lng": 10.057
+      },
+      "originalProvenance": "Legacy bundled reference in asset SHA256 9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c; its external origin is undocumented. Published daily coordinates are not certified calculation inputs or surveyed settlement centres.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/original-source/zouaouine-prayer-2026-09-19.json",
+          "sha256": "eb824d082d79ac87351f79a3b8bd73e0f37c485b7e40774eedf4e8d9022dbd35",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/570/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/original-source/zouaouine-sun-2026-09-19.json",
+          "sha256": "d3c18c353be3701a39b33176f21c7c20d2497806baf315f5437164b3f6c0a920",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/570/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/original-source/retrieval-manifest.json",
+          "sha256": "9b21c1c21e60d7c77388b77ab29212b8a40c0416368f2433e5a32deee47c06a2"
+        }
+      },
+      "qualification": "Fresh prayer and sunrise responses agree. The independently sourced contained village point supplies the manual locality reference; neither point certifies a polygon.",
+      "reviewBatchId": "2026-09-19-inm-published-zouaouine-kalaat-senan",
+      "originalSourceAssetSha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/before-gouvernorats.json",
+        "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c"
+      }
+    },
+    {
+      "delegationId": 588,
+      "expectedGovernorateId": 363,
+      "expectedNames": {
+        "nomAr": "قلعة السنان",
+        "nomFr": "Kalaat Sinane",
+        "nomEn": "Kalaat Sinane"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 35.7669,
+        "lng": 8.341
+      },
+      "proposed": {
+        "lat": 35.768,
+        "lng": 8.342
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen post-Gobaa/property-v2 source asset SHA256 9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c; its external original origin is undocumented. Published INM daily coordinates are independently preserved and are not certified internal prayer calculation inputs.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/kalaat-senan-prayer-2026-09-19.json",
+          "sha256": "0219d0eb3f55cdc74a522dc43deefeb9a500c189497cd9bf4f0c8aaf47067f1f",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/588/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/kalaat-senan-sun-2026-09-19.json",
+          "sha256": "946d7819efaa46f005a62366a884d05cd63cd234b5d80f142faaf553aab64da7",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/588/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/retrieval-manifest.json",
+          "sha256": "e30cfcb2578a5fbc6e50f27f6f69de00f5848b435d1576cbb11c70132f1df286"
+        }
+      },
+      "qualification": "Daily prayer and sunrise responses agree on the published reference. An independently source-bound town point supplies manual selection; sector polygon bytes and device GPS semantics remain unchanged. This reference correction alone changes no current nearest default across all3523 raw rows.",
+      "reviewBatchId": "2026-09-19-inm-published-zouaouine-kalaat-senan",
+      "originalSourceAssetSha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/before-gouvernorats.json",
+        "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c"
+      }
+    },
+    {
+      "delegationId": 553,
+      "expectedGovernorateId": 360,
+      "expectedNames": {
+        "nomAr": "واد الليل",
+        "nomFr": "Oued Ellil",
+        "nomEn": "Oued Ellil"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 36.8427,
+        "lng": 10.0388
+      },
+      "proposed": {
+        "lat": 36.836,
+        "lng": 10.041
+      },
+      "originalProvenance": "Legacy bundled reference in current asset SHA256 d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9; external origin undocumented. Published daily coordinates are service references, not certified server calculation inputs or settlement centres.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/553-prayer-2026-09-19.json",
+          "sha256": "db311a68bedb26f0e2ec45ca2eea9e6d7f189533443e3c477853b0cc5af43b42",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/553/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/553-sun-2026-09-19.json",
+          "sha256": "7d0a7f77f515d61c9810b97b4192f658e819a737fa295818003e35c1fbf027ee",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/553/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/retrievals.json",
+          "sha256": "44dcbcb55d9eccc8067c1cfe10d7c7e9b87304046656e9a6ce1cedc27d5c26c8"
+        }
+      },
+      "qualification": "Fresh prayer and sunrise responses agree. Manual settlement references come independently from authentic contained source town points; neither proves polygon accuracy.",
+      "reviewBatchId": "2026-09-19-inm-published-douar-oued",
+      "originalSourceAssetSha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/before-gouvernorats.json",
+        "sha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9"
+      }
+    },
+    {
+      "delegationId": 554,
+      "expectedGovernorateId": 360,
+      "expectedNames": {
+        "nomAr": "دوار هيشر",
+        "nomFr": "Douar Hicher",
+        "nomEn": "Douar Hicher"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 36.8306,
+        "lng": 10.0863
+      },
+      "proposed": {
+        "lat": 36.828,
+        "lng": 10.089
+      },
+      "originalProvenance": "Legacy bundled reference in current asset SHA256 d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9; external origin undocumented. Published daily coordinates are service references, not certified server calculation inputs or settlement centres.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/554-prayer-2026-09-19.json",
+          "sha256": "1784e47de1291d98a998ac055ca7ec15ef071028e492350724af68fc6dca95cf",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/554/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/554-sun-2026-09-19.json",
+          "sha256": "58855ab8c1a3cc8e070184653f9045b4afe4a6c559463dfe44a88c23ccf26922",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/554/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/retrievals.json",
+          "sha256": "44dcbcb55d9eccc8067c1cfe10d7c7e9b87304046656e9a6ce1cedc27d5c26c8"
+        }
+      },
+      "qualification": "Fresh prayer and sunrise responses agree. Manual settlement references come independently from authentic contained source town points; neither proves polygon accuracy.",
+      "reviewBatchId": "2026-09-19-inm-published-douar-oued",
+      "originalSourceAssetSha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/before-gouvernorats.json",
+        "sha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9"
+      }
+    },
+    {
+      "delegationId": 391,
+      "expectedGovernorateId": 342,
+      "expectedNames": {
+        "nomAr": "العمران",
+        "nomFr": "Omrane",
+        "nomEn": "Omrane"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 36.82,
+        "lng": 10.155
+      },
+      "proposed": {
+        "lat": 36.818,
+        "lng": 10.168
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen installed Douar/Oued source asset SHA256 6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9; external origin is undocumented. Fresh published INM prayer and sunrise responses are independently preserved and are not certified internal calculation inputs.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/391-prayer-2026-09-19.json",
+          "sha256": "064de7dffdda425774e3aed4697698703bfac9c5b76aed75806371d4b5d8ec73",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/391/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/391-sun-2026-09-19.json",
+          "sha256": "8422d73488b49a5730330d2604c01a97816b6b30af92f08cecd0ccd20a73f5be",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/391/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/published-reference-retrieval-manifest.json",
+          "sha256": "3caed88c3b93ab1c3d70f92e9d5fd5039076efe88b11be96b6e04e50e3642886"
+        }
+      },
+      "qualification": "Both published daily endpoints agree on this independently observed prayer reference. Adopt the jointly reviewed391/393/394/396 source set; it changes exactly13 current nearest defaults across all3523 raw rows. Bardo manual selection retains its existing town-polygon representative, and no raw location coordinate or polygon is relocated.",
+      "reviewBatchId": "2026-09-19-inm-published-bardo-nearby",
+      "originalSourceAssetSha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/before-gouvernorats.json",
+        "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9"
+      }
+    },
+    {
+      "delegationId": 393,
+      "expectedGovernorateId": 342,
+      "expectedNames": {
+        "nomAr": "التحرير",
+        "nomFr": "Ettahrir",
+        "nomEn": "Ettahrir"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 36.8244,
+        "lng": 10.1283
+      },
+      "proposed": {
+        "lat": 36.823,
+        "lng": 10.133
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen installed Douar/Oued source asset SHA256 6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9; external origin is undocumented. Fresh published INM prayer and sunrise responses are independently preserved and are not certified internal calculation inputs.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/393-prayer-2026-09-19.json",
+          "sha256": "29f95ede13475726e30c437326360ed2c4703ee6091716adc28a9ece744c78f1",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/393/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/393-sun-2026-09-19.json",
+          "sha256": "be1387cd8a76bfa003031a8d3ceb253d012b01e051adf37a8fb312cc38b2ed09",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/393/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/published-reference-retrieval-manifest.json",
+          "sha256": "3caed88c3b93ab1c3d70f92e9d5fd5039076efe88b11be96b6e04e50e3642886"
+        }
+      },
+      "qualification": "Both published daily endpoints agree on this independently observed prayer reference. Adopt the jointly reviewed391/393/394/396 source set; it changes exactly13 current nearest defaults across all3523 raw rows. Bardo manual selection retains its existing town-polygon representative, and no raw location coordinate or polygon is relocated.",
+      "reviewBatchId": "2026-09-19-inm-published-bardo-nearby",
+      "originalSourceAssetSha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/before-gouvernorats.json",
+        "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9"
+      }
+    },
+    {
+      "delegationId": 394,
+      "expectedGovernorateId": 342,
+      "expectedNames": {
+        "nomAr": "باردو",
+        "nomFr": "Bardo",
+        "nomEn": "Bardo"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 36.8092,
+        "lng": 10.1364
+      },
+      "proposed": {
+        "lat": 36.814,
+        "lng": 10.141
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen installed Douar/Oued source asset SHA256 6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9; external origin is undocumented. Fresh published INM prayer and sunrise responses are independently preserved and are not certified internal calculation inputs.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/394-prayer-2026-09-19.json",
+          "sha256": "cdea280043eef09a507ec6e2890c4997779d8bce4a402b9b892984125b633e17",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/394/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/394-sun-2026-09-19.json",
+          "sha256": "ef127cdc4f1b41c4befef8bf35eeb5839e48ffa3b69af78d7e4a7b54bfc24e0b",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/394/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/published-reference-retrieval-manifest.json",
+          "sha256": "3caed88c3b93ab1c3d70f92e9d5fd5039076efe88b11be96b6e04e50e3642886"
+        }
+      },
+      "qualification": "Both published daily endpoints agree on this independently observed prayer reference. Adopt the jointly reviewed391/393/394/396 source set; it changes exactly13 current nearest defaults across all3523 raw rows. Bardo manual selection retains its existing town-polygon representative, and no raw location coordinate or polygon is relocated.",
+      "reviewBatchId": "2026-09-19-inm-published-bardo-nearby",
+      "originalSourceAssetSha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/before-gouvernorats.json",
+        "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9"
+      }
+    },
+    {
+      "delegationId": 396,
+      "expectedGovernorateId": 342,
+      "expectedNames": {
+        "nomAr": "الزهور",
+        "nomFr": "Ezzouhour",
+        "nomEn": "Ezzouhour"
+      },
+      "reviewedDate": "2026-09-19",
+      "original": {
+        "lat": 36.7967,
+        "lng": 10.1332
+      },
+      "proposed": {
+        "lat": 36.799,
+        "lng": 10.135
+      },
+      "originalProvenance": "Legacy bundled reference retained in the frozen installed Douar/Oued source asset SHA256 6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9; external origin is undocumented. Fresh published INM prayer and sunrise responses are independently preserved and are not certified internal calculation inputs.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/396-prayer-2026-09-19.json",
+          "sha256": "9619ccf6fd8b379f1871b4cc3b7924fa04f46af9687a3d92227adefb27c1b89c",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/396/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/396-sun-2026-09-19.json",
+          "sha256": "5507f31572962898354f27980cfff60379031ff889401462499d847ae87caf9f",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/396/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/published-reference-retrieval-manifest.json",
+          "sha256": "3caed88c3b93ab1c3d70f92e9d5fd5039076efe88b11be96b6e04e50e3642886"
+        }
+      },
+      "qualification": "Both published daily endpoints agree on this independently observed prayer reference. Adopt the jointly reviewed391/393/394/396 source set; it changes exactly13 current nearest defaults across all3523 raw rows. Bardo manual selection retains its existing town-polygon representative, and no raw location coordinate or polygon is relocated.",
+      "reviewBatchId": "2026-09-19-inm-published-bardo-nearby",
+      "originalSourceAssetSha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/before-gouvernorats.json",
+        "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9"
+      }
     }
   ],
   "reviewBatches": [
@@ -2770,7 +3298,361 @@
         }
       ],
       "scope": "Only official published reference1522. Preserve existing Hichria group and all raw localities via separately reviewed retained-display evidence; no locality identity is inferred from the shifted daily-reference point."
+    },
+    {
+      "id": "2026-09-13-inm-published-degueche478",
+      "reviewedDate": "2026-09-13",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-gouvernorats.json",
+        "sha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/before-prayer-source-coordinates.json",
+        "sha256": "b65c08b99bb7fe6e04bf26fee9c9253ca4206fbcb3e065bd892cb64c7a42904c"
+      },
+      "reviewedSourceAssetSha256": "1a399f88f1d77e95a49451f05928f3e0122052889f945c4719fa3a61e4051042",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/reference-source-acceptance.json",
+        "sha256": "4f1a36236a66246386bd7568d7e7e93a14a96047b5f05e6187b366e1661c9d88"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/retrieval-manifest.json",
+        "sha256": "3ff5d6d8a60a6519320f566e5a2e6995fd6980490f040bdb578db0b8b6068bb2"
+      },
+      "appliedSourceIds": [
+        478
+      ],
+      "preservedOriginalCorrectionCount": 35,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 478,
+          "governorateId": 352,
+          "field": "lat",
+          "before": 33.97,
+          "after": 34.016
+        },
+        {
+          "delegationId": 478,
+          "governorateId": 352,
+          "field": "lng",
+          "before": 8.22,
+          "after": 8.273
+        }
+      ],
+      "scope": "Only the official published daily reference478. Preserve distinct Degache/Bou Helal/Kriz locality identities and the existing Degache display via separately reviewed manual/display evidence; no locality is moved to the published reference point."
+    },
+    {
+      "id": "2026-09-19-inm-published-sbiba576",
+      "reviewedDate": "2026-09-19",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/before-gouvernorats.json",
+        "sha256": "1a399f88f1d77e95a49451f05928f3e0122052889f945c4719fa3a61e4051042"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/before-prayer-source-coordinates.json",
+        "sha256": "acf237ec5f63a27720e425096a6364fe7c953930b7855f7be1568a83eb3a1fd3"
+      },
+      "reviewedSourceAssetSha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/reference-source-acceptance.json",
+        "sha256": "90c8c8a71b2a848f09961ea84cf6bf0a1ecfa9986544a030defc83e931297337"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/original-source/retrieval-manifest.json",
+        "sha256": "4d8a2a3544c444a64dbec807a30f65a72e6a77e8042b9514de4e5f3284f2ae51"
+      },
+      "appliedSourceIds": [
+        576
+      ],
+      "preservedOriginalCorrectionCount": 36,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 576,
+          "governorateId": 362,
+          "field": "lat",
+          "before": 35.53,
+          "after": 35.545
+        },
+        {
+          "delegationId": 576,
+          "governorateId": 362,
+          "field": "lng",
+          "before": 9.07,
+          "after": 9.072
+        }
+      ],
+      "scope": "One official published reference576, with a separate ordinary reviewed display grouping for the existing sector and town depiction. All raw geometry and original coordinates retained."
+    },
+    {
+      "id": "2026-09-19-inm-published-hazoua-smar",
+      "reviewedDate": "2026-09-19",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/before-gouvernorats.json",
+        "sha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/before-prayer-source-coordinates.json",
+        "sha256": "ae6172a07759174c352536aa41f186020bf8881ea90a9e8956434c3d61e35636"
+      },
+      "reviewedSourceAssetSha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/combined-reference-and-display-source-review.json",
+        "sha256": "1545bf8c2c2db35d002abea25014d2e7f231e9e1fa0ebfb250aa7b1d8fa2de76"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/combined-retrieval-manifest.json",
+        "sha256": "51ec14fee9b55c2fc142ecb085c02a37d8b924b66411cfa0374ac870fa69cc8a"
+      },
+      "appliedSourceIds": [
+        479,
+        472
+      ],
+      "preservedOriginalCorrectionCount": 37,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 479,
+          "governorateId": 352,
+          "field": "lat",
+          "before": 33.764,
+          "after": 33.738
+        },
+        {
+          "delegationId": 479,
+          "governorateId": 352,
+          "field": "lng",
+          "before": 7.63,
+          "after": 7.603
+        },
+        {
+          "delegationId": 472,
+          "governorateId": 351,
+          "field": "lat",
+          "before": 32.9955,
+          "after": 32.872
+        },
+        {
+          "delegationId": 472,
+          "governorateId": 351,
+          "field": "lng",
+          "before": 10.8246,
+          "after": 10.89
+        }
+      ],
+      "scope": "Two paired primary INM references,479 and472, with separate retained-settlement display identity. All raw coordinates, names and geometry stay unchanged."
+    },
+    {
+      "id": "2026-09-19-inm-published-zouaouine-kalaat-senan",
+      "reviewedDate": "2026-09-19",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/before-gouvernorats.json",
+        "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-zouaouine-kalaat-senan-2026-09-19/before-prayer-source-coordinates.json",
+        "sha256": "d3034011c5dac58e4653ba3d518385b1016addbaa61ab932804629ecb2b850fd"
+      },
+      "reviewedSourceAssetSha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-zouaouine-kalaat-senan-2026-09-19/combined-reference-and-display-review.json",
+        "sha256": "c17bda9beca317a329b1ba30458cfe7c4d7df3862684a8b80e52c42319994d6c"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-zouaouine-kalaat-senan-2026-09-19/combined-retrieval-manifest.json",
+        "sha256": "d044f3f763b2d7f146a779a9ff39492dc7f301eb6c95924513507069e23334a9"
+      },
+      "appliedSourceIds": [
+        570,
+        588
+      ],
+      "preservedOriginalCorrectionCount": 39,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 570,
+          "governorateId": 361,
+          "field": "lat",
+          "before": 37.1269,
+          "after": 37.127
+        },
+        {
+          "delegationId": 570,
+          "governorateId": 361,
+          "field": "lng",
+          "before": 10.0569,
+          "after": 10.057
+        },
+        {
+          "delegationId": 588,
+          "governorateId": 363,
+          "field": "lat",
+          "before": 35.7669,
+          "after": 35.768
+        },
+        {
+          "delegationId": 588,
+          "governorateId": 363,
+          "field": "lng",
+          "before": 8.341,
+          "after": 8.342
+        }
+      ],
+      "scope": "Two paired published references, with independently contained authentic manual settlement points and one ordinary/grouped display choice per reviewed locality."
+    },
+    {
+      "id": "2026-09-19-inm-published-douar-oued",
+      "reviewedDate": "2026-09-19",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/before-gouvernorats.json",
+        "sha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-douar-oued-batch-2026-09-19/before-prayer-source-coordinates.json",
+        "sha256": "15412fb0f53ac0e6d8bea72bf971145dda29cd4c7ed3b5ad7468b3eb477d9332"
+      },
+      "reviewedSourceAssetSha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-douar-oued-batch-2026-09-19/combined-reference-and-display-review.json",
+        "sha256": "3b392a5532eeb32bce5e6bccc340c5615888c856fe8f13d09fcb10e1c7457f80"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-douar-oued-batch-2026-09-19/combined-retrieval-manifest.json",
+        "sha256": "a395fd98023a98610d9bdb5d8e6ce223d1ed236325d258866f8966e05864253a"
+      },
+      "appliedSourceIds": [
+        553,
+        554
+      ],
+      "preservedOriginalCorrectionCount": 41,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 553,
+          "governorateId": 360,
+          "field": "lat",
+          "before": 36.8427,
+          "after": 36.836
+        },
+        {
+          "delegationId": 553,
+          "governorateId": 360,
+          "field": "lng",
+          "before": 10.0388,
+          "after": 10.041
+        },
+        {
+          "delegationId": 554,
+          "governorateId": 360,
+          "field": "lat",
+          "before": 36.8306,
+          "after": 36.828
+        },
+        {
+          "delegationId": 554,
+          "governorateId": 360,
+          "field": "lng",
+          "before": 10.0863,
+          "after": 10.089
+        }
+      ],
+      "scope": "Two paired published references and authentic manual settlement points. Reviewed sector/parent spelling corrections, two duplicate display groups, and Gobaa nearest/context guard successors preserve all original geometries and raw identities."
+    },
+    {
+      "id": "2026-09-19-inm-published-bardo-nearby",
+      "reviewedDate": "2026-09-19",
+      "referenceKind": "inm_published_reference",
+      "priorSourceAsset": {
+        "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/before-gouvernorats.json",
+        "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9"
+      },
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/before-prayer-source-coordinates.json",
+        "sha256": "533e1acd0a898e9eb05aa343897c1e5eeae5a818604ad9e9f0f7480941e6c9bc"
+      },
+      "reviewedSourceAssetSha256": "9e65e1f52fb3b129816e8ee33af89df545b98226f35b222870403a7ec9541c25",
+      "sourceReview": {
+        "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/combined-reference-and-display-review.json",
+        "sha256": "2bafc3b13f6f292f9f52d18fe7f8bda63b426da658e00520a8acb4515ec17e8d"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/published-reference-retrieval-manifest.json",
+        "sha256": "3caed88c3b93ab1c3d70f92e9d5fd5039076efe88b11be96b6e04e50e3642886"
+      },
+      "appliedSourceIds": [
+        391,
+        393,
+        394,
+        396
+      ],
+      "preservedOriginalCorrectionCount": 43,
+      "changedExistingCorrectionIds": [],
+      "exactAssetFieldChanges": [
+        {
+          "delegationId": 391,
+          "governorateId": 342,
+          "field": "lat",
+          "before": 36.82,
+          "after": 36.818
+        },
+        {
+          "delegationId": 391,
+          "governorateId": 342,
+          "field": "lng",
+          "before": 10.155,
+          "after": 10.168
+        },
+        {
+          "delegationId": 393,
+          "governorateId": 342,
+          "field": "lat",
+          "before": 36.8244,
+          "after": 36.823
+        },
+        {
+          "delegationId": 393,
+          "governorateId": 342,
+          "field": "lng",
+          "before": 10.1283,
+          "after": 10.133
+        },
+        {
+          "delegationId": 394,
+          "governorateId": 342,
+          "field": "lat",
+          "before": 36.8092,
+          "after": 36.814
+        },
+        {
+          "delegationId": 394,
+          "governorateId": 342,
+          "field": "lng",
+          "before": 10.1364,
+          "after": 10.141
+        },
+        {
+          "delegationId": 396,
+          "governorateId": 342,
+          "field": "lat",
+          "before": 36.7967,
+          "after": 36.799
+        },
+        {
+          "delegationId": 396,
+          "governorateId": 342,
+          "field": "lng",
+          "before": 10.1332,
+          "after": 10.135
+        }
+      ],
+      "scope": "Four agreeing prayer/sun published reference updates. The same source batch includes independently reviewed Bardo, Ksar Hadada and Bir Thalathine manual display corrections; all original polygons and raw identities are retained."
     }
   ],
-  "reviewedSourceAssetSha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c"
+  "reviewedSourceAssetSha256": "9e65e1f52fb3b129816e8ee33af89df545b98226f35b222870403a7ec9541c25"
 }

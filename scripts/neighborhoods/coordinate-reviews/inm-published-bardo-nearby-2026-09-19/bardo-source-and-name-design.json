@@ -1,0 +1,825 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUNDED_SOURCE_DESIGN_SUPPORTS_DATA_ONLY_REVIEW_NOT_IMPLEMENTED",
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineReadTransition": {
+    "firstReadMetadataSha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+    "freezeMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+    "bothRelevantRowsEqualInitialRead": true,
+    "initialRowsCapturedAsLiteralAssertionsInProducer": true
+  },
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+      "bytes": 1851425
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568",
+      "bytes": 5536120
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "6df4578109031647caa91035f01cae1ecc1f489825f1544835394989f6b491b9",
+      "bytes": 54578
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "55cb693c58e7da2c6c680869a30fbcb31bbb4abea4c49867600387471ee3141e",
+      "bytes": 419286
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "edc9b5f969bdb1387c9b8fca93e1ef999cb2af444d1921e9b34ea241633419a2",
+      "bytes": 615989
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "533e1acd0a898e9eb05aa343897c1e5eeae5a818604ad9e9f0f7480941e6c9bc",
+      "bytes": 155840
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "7f4a47f43695272401599976f64f74aba5ad3867d2226ce0f394190bc446a4a1",
+      "bytes": 642686
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-five-localities-phone-review-20260919.json",
+      "sha256": "df58c2b71debfb2b66d3533fc83eeb2503fb11321c47d95804d94c85f29a7599",
+      "bytes": 5403
+    }
+  ],
+  "targetDelegationId": 394,
+  "governorateId": 342,
+  "base": {
+    "id": 394,
+    "nomFr": "Bardo",
+    "nomAr": "باردو",
+    "nomEn": "Bardo",
+    "lat": 36.8092,
+    "lng": 10.1364
+  },
+  "sourceRecords": {
+    "osm:relation:7118020": {
+      "id": "osm:relation:7118020",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عمادة باردو",
+        "name:ar": "عمادة باردو",
+        "name:fr": "Bardo",
+        "ref:tn:codegeo": "116051"
+      },
+      "geometrySha256": "3bf44062f2ab16ca58cdda7d0a0ff34151d8ed3aa5466c89cba16d0340a340c9",
+      "currentMetadata": {
+        "id": "osm:relation:7118020",
+        "sourceId": "osm",
+        "name": "عمادة باردو",
+        "aliases": [
+          "Bardo"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية باردو",
+        "contextAliases": [
+          "Délégation Le Bardo",
+          "معتمدية باردو"
+        ],
+        "governorateId": 342,
+        "lat": 36.81236,
+        "lng": 10.14065,
+        "delegationId": 394,
+        "hasBoundary": true,
+        "bbox": [
+          10.134162,
+          36.807779,
+          10.147071,
+          36.817121
+        ],
+        "areaKm2": 0.5235927305293813,
+        "pickerGroupId": "osm:relation:7118020",
+        "offset": 1023776,
+        "length": 300
+      },
+      "originalWithinParent": true
+    },
+    "osm:way:103825771": {
+      "id": "osm:way:103825771",
+      "kind": "town",
+      "tags": {
+        "landuse": "residential",
+        "name": "باردو",
+        "name:ar": "باردو",
+        "name:en": "Le Bardo",
+        "name:fr": "Le Bardo",
+        "name:ru": "Ле Бардо",
+        "place": "town"
+      },
+      "geometrySha256": "eb30bcf355bf047e91840013485fdb8c3cb508f64fdd1fa97cb86edcffbc4d74",
+      "currentMetadata": {
+        "id": "osm:way:103825771",
+        "sourceId": "osm",
+        "name": "باردو",
+        "aliases": [
+          "Le Bardo",
+          "Ле Бардо",
+          "בארדו"
+        ],
+        "kind": "town",
+        "parentName": "معتمدية باردو",
+        "contextAliases": [
+          "Délégation Le Bardo",
+          "معتمدية باردو"
+        ],
+        "governorateId": 342,
+        "lat": 36.814275,
+        "lng": 10.137426,
+        "delegationId": 394,
+        "hasBoundary": true,
+        "bbox": [
+          10.125923,
+          36.807462,
+          10.154886,
+          36.821205
+        ],
+        "areaKm2": 1.6817700929249506,
+        "pickerGroupId": "delegation:394",
+        "offset": 5245428,
+        "length": 748
+      },
+      "originalWithinParent": true
+    },
+    "osm:node:287558953": {
+      "id": "osm:node:287558953",
+      "kind": "town",
+      "tags": {
+        "name": "باردو",
+        "name:ar": "باردو",
+        "name:en": "Le Bardo",
+        "name:fa": "باردو",
+        "name:fr": "Le Bardo",
+        "name:he": "בארדו",
+        "name:ru": "Ле Бардо",
+        "place": "town"
+      },
+      "geometrySha256": "c2aa02e5ff291054d5c805b6b4bc205db63924497013b48d05b55979e54104a5",
+      "currentMetadata": null,
+      "originalWithinParent": true
+    },
+    "osm:relation:4128393": {
+      "id": "osm:relation:4128393",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Délégation Le Bardo",
+        "boundary": "administrative",
+        "name": "معتمدية باردو",
+        "name:ar": "معتمدية باردو",
+        "name:fr": "Délégation Le Bardo",
+        "ref:tn:codegeo": "1160",
+        "ref:tn:hasc_2": "TN.TU.LB",
+        "wikidata": "Q3220302"
+      },
+      "geometrySha256": "c17c1f0ea7bbfb813dde96cd60c71f3b0a09f94c3a8b6b2f2483961ad5b80581",
+      "currentMetadata": null,
+      "originalWithinParent": null
+    },
+    "osm:relation:1435835": {
+      "id": "osm:relation:1435835",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-11",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Tunis",
+        "alt_name:ko": "튀니스주",
+        "alt_name:ru": "Тунис (вилайет)",
+        "boundary": "administrative",
+        "long_name:ar": "ولاية تونس",
+        "long_name:en": "Tunis Governorate",
+        "long_name:fr": "Gouvernorat de Tunis",
+        "long_name:it": "Governatorato di Tunisi",
+        "name": "ولاية تونس",
+        "name:ar": "ولاية تونس",
+        "name:be": "Туніс (вілает)",
+        "name:be-tarask": "Туніс (вілает)",
+        "name:bg": "Тунис (област)",
+        "name:ca": "Governació de Tunis",
+        "name:ceb": "Gouvernorat de Tunis",
+        "name:cy": "Tiwnis (talaith)",
+        "name:de": "Tunis",
+        "name:en": "Tunis",
+        "name:es": "Gobernación de Túnez",
+        "name:fa": "استان تونس",
+        "name:fr": "Gouvernorat Tunis",
+        "name:id": "Kegubernuran Tunis",
+        "name:it": "Tunisi",
+        "name:ja": "チュニス県",
+        "name:ko": "튀니스",
+        "name:ms": "Kawasan kegabenoran Tunis",
+        "name:nl": "Tunis (gouvernement)",
+        "name:no": "Tunis (guvernement)",
+        "name:pl": "Gubernatorstwo Tunis",
+        "name:pt": "Túnis (província)",
+        "name:ro": "Guvernoratul Tunis",
+        "name:ru": "Тунис",
+        "name:sco": "Tunis Govrenorate",
+        "name:sh": "Tunis (vilajet)",
+        "name:sv": "Tunis (guvernement)",
+        "name:tr": "Tunus ili",
+        "name:uk": "Туніс (вілаєт)",
+        "name:ur": "ولایت تونس",
+        "name:zh": "突尼斯省",
+        "name:zu": "Tunis Governorate",
+        "population": "983861",
+        "ref:tn:codegeo": "11",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q328109",
+        "wikipedia": "ar:ولاية تونس"
+      },
+      "geometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468",
+      "currentMetadata": null,
+      "originalWithinParent": null
+    }
+  },
+  "exactSourceNamePeers": [
+    "osm:node:287558953",
+    "osm:relation:7118020",
+    "osm:way:103825771"
+  ],
+  "exactCurrentRawNamePeers": [
+    "osm:relation:7118020",
+    "osm:way:103825771"
+  ],
+  "currentGroups": [
+    {
+      "id": "delegation:394",
+      "memberIds": [
+        "delegation:394",
+        "osm:way:103825771"
+      ]
+    },
+    {
+      "id": "osm:relation:7118020",
+      "memberIds": [
+        "osm:relation:7118020"
+      ]
+    }
+  ],
+  "currentOfficialNamesake": {
+    "governorateCode": "11",
+    "governorateFr": "Tunis",
+    "governorateAr": "تونس",
+    "delegationCode": "1160",
+    "delegationFr": "Le bardo",
+    "delegationAr": "باردو",
+    "sectorCode": "116051",
+    "sectorFr": "Le bardo",
+    "sectorAr": "باردو",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2382,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 74,
+      "Nombre_de_menages_par_Secteurs.xlsx": 74
+    }
+  },
+  "completeOfficialDelegationSectors": [
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116051",
+      "sectorFr": "Le bardo",
+      "sectorAr": "باردو",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2382,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 74,
+        "Nombre_de_menages_par_Secteurs.xlsx": 74
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116052",
+      "sectorFr": "Le bardo nord",
+      "sectorAr": "باردو الشمالي",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2416,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 75,
+        "Nombre_de_menages_par_Secteurs.xlsx": 75
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116053",
+      "sectorFr": "Le bardo sud",
+      "sectorAr": "باردو الجنوبي",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2450,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 76,
+        "Nombre_de_menages_par_Secteurs.xlsx": 76
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116054",
+      "sectorFr": "El hadika",
+      "sectorAr": "الحديقة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2484,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 77,
+        "Nombre_de_menages_par_Secteurs.xlsx": 77
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116055",
+      "sectorFr": "Bou-choucha",
+      "sectorAr": "بوشوشة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2518,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 78,
+        "Nombre_de_menages_par_Secteurs.xlsx": 78
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116056",
+      "sectorFr": "Bonne residence",
+      "sectorAr": "الإقامة الطيبة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2552,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 79,
+        "Nombre_de_menages_par_Secteurs.xlsx": 79
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116057",
+      "sectorFr": "Khaznadar",
+      "sectorAr": "خزندار",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2586,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 80,
+        "Nombre_de_menages_par_Secteurs.xlsx": 80
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116058",
+      "sectorFr": "El fath",
+      "sectorAr": "الفتح",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2620,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 81,
+        "Nombre_de_menages_par_Secteurs.xlsx": 81
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116059",
+      "sectorFr": "Ksar-said",
+      "sectorAr": "قصر السعيد",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2654,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 82,
+        "Nombre_de_menages_par_Secteurs.xlsx": 82
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116060",
+      "sectorFr": "Ksar-said ii",
+      "sectorAr": "قصر السعيد الثاني",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2688,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 83,
+        "Nombre_de_menages_par_Secteurs.xlsx": 83
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116061",
+      "sectorFr": "El bassatine",
+      "sectorAr": "البساتين",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2722,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 84,
+        "Nombre_de_menages_par_Secteurs.xlsx": 84
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116062",
+      "sectorFr": "Es-saada",
+      "sectorAr": "السعادة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2756,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 85,
+        "Nombre_de_menages_par_Secteurs.xlsx": 85
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116063",
+      "sectorFr": "Ksar-el bortal",
+      "sectorAr": "قصر البرطال",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2790,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 86,
+        "Nombre_de_menages_par_Secteurs.xlsx": 86
+      }
+    },
+    {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116064",
+      "sectorFr": "Ibn sina",
+      "sectorAr": "إبن سيناء",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2824,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 87,
+        "Nombre_de_menages_par_Secteurs.xlsx": 87
+      }
+    }
+  ],
+  "packedGeometrySha256": {
+    "osm:relation:7118020": "788cc12d900e64fbd1c567e47e87fe0c12a8d420a01fcee606c976a500ad34cb",
+    "osm:way:103825771": "80ece9ed19e55f06370eaa5f2f6c1fc5c3e9e1908c8ee70fd7ff3bb5c148dcc7"
+  },
+  "containment": {
+    "bundledPrayerReference": {
+      "lat": 36.8092,
+      "lng": 10.1364,
+      "originalContains": {
+        "osm:relation:7118020": false,
+        "osm:way:103825771": false,
+        "osm:relation:4128393": true,
+        "osm:relation:1435835": true
+      },
+      "packedContains": {
+        "osm:relation:7118020": false,
+        "osm:way:103825771": false
+      },
+      "containingOriginalSectors": [
+        {
+          "id": "osm:relation:7118021",
+          "code": "116052",
+          "name": "باردو الشمالية"
+        }
+      ]
+    },
+    "absorbedTownNode": {
+      "lat": 36.8139969,
+      "lng": 10.1363018,
+      "originalContains": {
+        "osm:relation:7118020": true,
+        "osm:way:103825771": true,
+        "osm:relation:4128393": true,
+        "osm:relation:1435835": true
+      },
+      "packedContains": {
+        "osm:relation:7118020": true,
+        "osm:way:103825771": true
+      },
+      "containingOriginalSectors": [
+        {
+          "id": "osm:relation:7118020",
+          "code": "116051",
+          "name": "عمادة باردو"
+        }
+      ]
+    },
+    "sectorRepresentative": {
+      "lat": 36.81236,
+      "lng": 10.14065,
+      "originalContains": {
+        "osm:relation:7118020": true,
+        "osm:way:103825771": true,
+        "osm:relation:4128393": true,
+        "osm:relation:1435835": true
+      },
+      "packedContains": {
+        "osm:relation:7118020": true,
+        "osm:way:103825771": true
+      },
+      "containingOriginalSectors": [
+        {
+          "id": "osm:relation:7118020",
+          "code": "116051",
+          "name": "عمادة باردو"
+        }
+      ]
+    },
+    "townRepresentative": {
+      "lat": 36.814275,
+      "lng": 10.137426,
+      "originalContains": {
+        "osm:relation:7118020": true,
+        "osm:way:103825771": true,
+        "osm:relation:4128393": true,
+        "osm:relation:1435835": true
+      },
+      "packedContains": {
+        "osm:relation:7118020": true,
+        "osm:way:103825771": true
+      },
+      "containingOriginalSectors": [
+        {
+          "id": "osm:relation:7118020",
+          "code": "116051",
+          "name": "عمادة باردو"
+        }
+      ]
+    }
+  },
+  "overlap": {
+    "original": {
+      "sectorCoveredByTown": false,
+      "townCoveredBySector": false,
+      "fractionSector": 0.9809709158020743,
+      "fractionTown": 0.30540522904593864,
+      "intersectionAreaSquareDegrees": 5.177120468398879e-05,
+      "sectorMinusTownAreaSquareDegrees": 1.004268931005396e-06,
+      "townMinusSectorAreaSquareDegrees": 0.00011774522712602916
+    },
+    "packed": {
+      "sectorCoveredByTown": false,
+      "townCoveredBySector": false,
+      "fractionSector": 0.9809983133763103,
+      "fractionTown": 0.3054107922855488,
+      "intersectionAreaSquareDegrees": 5.1772451838977636e-05,
+      "sectorMinusTownAreaSquareDegrees": 1.0028191610246007e-06,
+      "townMinusSectorAreaSquareDegrees": 0.0001177449756610055
+    }
+  },
+  "townIntersectsOriginalSectors": [
+    {
+      "id": "osm:relation:7118022",
+      "code": "116061",
+      "name": "البساتين",
+      "fractionTown": 0.18377379040290526,
+      "fractionSector": 0.893677762335665
+    },
+    {
+      "id": "osm:relation:7118020",
+      "code": "116051",
+      "name": "عمادة باردو",
+      "fractionTown": 0.30540522904593864,
+      "fractionSector": 0.9809709158020743
+    },
+    {
+      "id": "osm:relation:7118028",
+      "code": "116056",
+      "name": "اقامة جميلة",
+      "fractionTown": 0.0006877862556164276,
+      "fractionSector": 0.0024239797013114253
+    },
+    {
+      "id": "osm:relation:7118021",
+      "code": "116052",
+      "name": "باردو الشمالية",
+      "fractionTown": 0.25176463191553755,
+      "fractionSector": 0.6695845945200242
+    },
+    {
+      "id": "osm:relation:7118029",
+      "code": "116055",
+      "name": "بوشوشة",
+      "fractionTown": 0.2580056549975157,
+      "fractionSector": 0.9641050081256448
+    },
+    {
+      "id": "osm:relation:7118026",
+      "code": "116053",
+      "name": "باردو الجنوبية",
+      "fractionTown": 0.0003629073825057645,
+      "fractionSector": 0.0019110685656030613
+    }
+  ],
+  "authenticConsumedTownWitness": {
+    "id": "osm:node:287558953",
+    "lat": 36.8139969,
+    "lng": 10.1363018,
+    "rawPresent": false,
+    "currentAliasReceiver": "osm:way:103825771",
+    "prospectiveAliasReceiverAfterCanonicalSectorName": "osm:relation:7118020",
+    "noFreshPublicNodeFetch": true,
+    "sourceTimestamp": "2026-09-05T20:22:06Z"
+  },
+  "phoneContext": {
+    "batch": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\next-five-localities-phone-review-20260919.json",
+      "sha256": "df58c2b71debfb2b66d3533fc83eeb2503fb11321c47d95804d94c85f29a7599",
+      "bytes": 5403
+    },
+    "observation": {
+      "id": "osm:relation:7118020",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118020-2.json",
+        "sha256": "c2fb65cdbf5ca304da8af46f87babcbcd67e72c08e6ef662c7ebd4ca04aa8f3d"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118020-2.png",
+        "sha256": "fe152ca54880b1a24a14bd5c7761d6678b2cccb860c1b04678c1aba0db32eaa8"
+      },
+      "visuallyReviewed": true,
+      "visibleTitle": [
+        "باردو"
+      ],
+      "qualification": "Named public Maps locality card and broad outline support place-name context only. They do not establish equivalence with every narrower catalog feature or certify stored polygons."
+    },
+    "qualification": "Root-viewed named card provides public Bardo name context only. This agent did not control the phone or promote its outline to a geometry proof."
+  },
+  "finding": {
+    "administrativeAndTownFootprintsDistinct": true,
+    "sameDisplayIdentitySupported": true,
+    "basis": [
+      "The official116051 namesake sector and1160 delegation both use باردو, while the sector source has the administrative title prefix عمادة.",
+      "The exact original town node identifies باردو and is contained by both original and packed sector and town polygons.",
+      "Both current manual representatives occupy the common namesake sector; a complete existing base394 group already uses this town polygon.",
+      "Town/subsector footprints have different scopes; grouping is a display identity decision and must preserve each original polygon."
+    ],
+    "preserveOtherLocalities": "All13 other official Bardo sectors remain distinct; none is merged from spatial overlap or Bardo name prefixes."
+  },
+  "finiteNextDesign": {
+    "preferredRoute": "Existing name_tags curation only, followed by unchanged automatic pairwise positive-overlap/name grouping; no new reviewed-picker record or compiler branch.",
+    "suggestedSectorNameTags": {
+      "name": "باردو",
+      "name:ar": "باردو",
+      "name:fr": "Bardo",
+      "alt_name:ar": "عمادة باردو"
+    },
+    "manualRepresentativeId": "osm:way:103825771",
+    "manualCoordinatesUnchanged": {
+      "lat": 36.814275,
+      "lng": 10.137426
+    },
+    "prayerReferenceUnchanged": {
+      "id": 394,
+      "nomFr": "Bardo",
+      "nomAr": "باردو",
+      "nomEn": "Bardo",
+      "lat": 36.8092,
+      "lng": 10.1364
+    },
+    "proposedGroupMembers": [
+      "delegation:394",
+      "osm:relation:7118020",
+      "osm:way:103825771"
+    ],
+    "prospectiveRawFieldChanges": [
+      {
+        "id": "osm:relation:7118020",
+        "field": "name",
+        "before": "عمادة باردو",
+        "after": "باردو"
+      },
+      {
+        "id": "osm:relation:7118020",
+        "field": "aliases",
+        "before": [
+          "Bardo"
+        ],
+        "after": [
+          "Bardo",
+          "Le Bardo",
+          "Ле Бардо",
+          "בארדו",
+          "عمادة باردو"
+        ]
+      },
+      {
+        "id": "osm:relation:7118020",
+        "field": "pickerGroupId",
+        "before": "osm:relation:7118020",
+        "after": "delegation:394"
+      },
+      {
+        "id": "osm:way:103825771",
+        "field": "aliases",
+        "before": [
+          "Le Bardo",
+          "Ле Бардо",
+          "בארדו"
+        ],
+        "after": [
+          "Le Bardo",
+          "Ле Бардо"
+        ]
+      }
+    ],
+    "rawCountDelta": 0,
+    "displayCountDelta": -1,
+    "curationReceiptDelta": 1,
+    "savedNameReviewAdditionCount": 1,
+    "sourceCoordinatesAndPolygonBytesUnchanged": true,
+    "inheritedContextRows": [],
+    "completeGroupSearchNamesPreserved": true,
+    "aliasReceiverEffect": "Canonicalizing the sector causes the existing absorbed town node to enrich the smaller sector. The town polygon loses its node-derived Hebrew alias, which remains searchable on the same display group through the sector. Pin this explicitly; do not describe every raw alias as unchanged.",
+    "ordinaryReviewedGroupAlternative": "A new ordinary reviewed sector-to-base record would fail because base394 lies outside both polygons. It is unnecessary for the existing automatic data-only route. The generic retained-reference contract also currently requires a singleton base target, whereas394 already has a town member.",
+    "noReferenceRelocationToSatisfyGuard": true,
+    "remainingSteps": [
+      "Independently review the exact source/name/alias receiver evidence and data-only curation proposal.",
+      "If approved, freeze a current-baseline component with exact four fields, the new saved-name review and one receipt; root owns isolated generation and full product audit.",
+      "Verify actual automatic grouping, alias flow, unchanged town representative, all raw IDs, all current nearest defaults and saved selection preservation after generation."
+    ]
+  },
+  "activeManifestReferencesToTheseSourceIds": [],
+  "limitations": [
+    "Original source geometry is not certified administrative ground truth.",
+    "Town/source-node evidence is the pinned Sep5 PBF extraction; no fresh OSM node or published INM response was fetched in this bounded review.",
+    "The prospective four fields follow the inspected existing code paths but are not a generated product or compiler run.",
+    "The current bundled prayer point lies in Bardo Nord; this report does not certify its external origin or request a coordinate correction."
+  ],
+  "operations": {
+    "compilerExecutionOrImport": 0,
+    "generation": 0,
+    "tests": 0,
+    "build": 0,
+    "phoneOperations": 0,
+    "networkFetches": 0,
+    "liveRepositoryWrites": 0
+  },
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_bardo_source_design_20260919.py",
+    "sha256": "7262c558f150166743320ebd936b96e93ff077d4a133b90d9fac2dded4508dca",
+    "bytes": 13937
+  }
+}

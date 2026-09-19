@@ -1,0 +1,2146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osmChange version="0.6" generator="openstreetmap-cgimap 2.1.0 (244688 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <create>
+  <node id="7397873697" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.9062095" lon="9.5669711"/>
+ </create>
+ <create>
+  <node id="7397873698" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.8990322" lon="9.5695675"/>
+ </create>
+ <create>
+  <node id="7397873699" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.8986404" lon="9.5697177"/>
+ </create>
+ <create>
+  <node id="7397873700" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.9065473" lon="9.5668359"/>
+ </create>
+ <create>
+  <node id="7397873701" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8499814" lon="10.3251276"/>
+ </create>
+ <create>
+  <node id="7397873702" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8499467" lon="10.3251806"/>
+ </create>
+ <create>
+  <node id="7397873703" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8500238" lon="10.3252046"/>
+ </create>
+ <create>
+  <node id="7397873704" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8500366" lon="10.3251758"/>
+ </create>
+ <create>
+  <node id="7397873705" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8498465" lon="10.3270934"/>
+ </create>
+ <create>
+  <node id="7397873706" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8497027" lon="10.3269586"/>
+ </create>
+ <create>
+  <node id="7397873707" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8495576" lon="10.3271528"/>
+ </create>
+ <create>
+  <node id="7397873708" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8496976" lon="10.3272972"/>
+ </create>
+ <create>
+  <node id="7397873709" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8515728" lon="10.3273209"/>
+ </create>
+ <create>
+  <node id="7397873710" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8506341" lon="10.3264358"/>
+ </create>
+ <create>
+  <node id="7397873711" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8502342" lon="10.3270795"/>
+ </create>
+ <create>
+  <node id="7397873712" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8511695" lon="10.3280408"/>
+ </create>
+ <create>
+  <node id="7397873713" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0116975" lon="10.6157660"/>
+ </create>
+ <create>
+  <node id="7397873714" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0074509" lon="10.6243061"/>
+ </create>
+ <create>
+  <node id="7397873715" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0131190" lon="10.6368374"/>
+ </create>
+ <create>
+  <node id="7397873716" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0185528" lon="10.6251430"/>
+ </create>
+ <create>
+  <node id="7397873717" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0223850" lon="10.6310439"/>
+ </create>
+ <create>
+  <node id="7397873718" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9902813" lon="10.5767976"/>
+ </create>
+ <create>
+  <node id="7397873719" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9843058" lon="10.5632578"/>
+ </create>
+ <create>
+  <node id="7397873720" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9801119" lon="10.5759607"/>
+ </create>
+ <create>
+  <node id="7397873721" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9822539" lon="10.5806814"/>
+ </create>
+ <create>
+  <node id="7397873722" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9822882" lon="10.4628004">
+   <tag k="name" v="Usine eau naturel Maine"/>
+  </node>
+ </create>
+ <create>
+  <node id="7397873723" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9656003" lon="10.4768123"/>
+ </create>
+ <create>
+  <node id="7397873724" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9649882" lon="10.4763885"/>
+ </create>
+ <create>
+  <node id="7397873725" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9645651" lon="10.4770698"/>
+ </create>
+ <create>
+  <node id="7397873726" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9651862" lon="10.4775258"/>
+ </create>
+ <create>
+  <node id="7397873727" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9291179" lon="10.4501427"/>
+ </create>
+ <create>
+  <node id="7397873728" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9291335" lon="10.4501441">
+   <tag k="amenity" v="cafe"/>
+   <tag k="name" v="Café les pyramides"/>
+  </node>
+ </create>
+ <create>
+  <node id="7397873729" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9291655" lon="10.4501606">
+   <tag k="name" v="Taxiphone"/>
+  </node>
+ </create>
+ <create>
+  <node id="7397873730" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9290905" lon="10.4501098">
+   <tag k="amenity" v="restaurant"/>
+   <tag k="name" v="Restaurant rapide"/>
+  </node>
+ </create>
+ <create>
+  <node id="7397873731" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9291047" lon="10.4498780">
+   <tag k="amenity" v="cafe"/>
+   <tag k="name" v="café tataouine"/>
+  </node>
+ </create>
+ <create>
+  <node id="7397873732" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9286940" lon="10.4498239">
+   <tag k="name" v="Superette"/>
+   <tag k="shop" v="supermarket"/>
+  </node>
+ </create>
+ <create>
+  <node id="7397873733" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9757803" lon="10.6053047"/>
+ </create>
+ <create>
+  <node id="7397873734" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9733905" lon="10.6035768"/>
+ </create>
+ <create>
+  <node id="7397873735" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9722230" lon="10.6067711"/>
+ </create>
+ <create>
+  <node id="7397873736" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9739547" lon="10.6084336"/>
+ </create>
+ <create>
+  <node id="7397873737" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0172636" lon="10.6276975"/>
+ </create>
+ <create>
+  <node id="7397873738" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0199919" lon="10.6325402"/>
+ </create>
+ <create>
+  <node id="7397873739" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0182805" lon="10.6336103"/>
+ </create>
+ <create>
+  <node id="7397873740" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0192249" lon="10.6352699"/>
+ </create>
+ <create>
+  <node id="7397873741" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0203996" lon="10.6332151"/>
+ </create>
+ <create>
+  <node id="7397873742" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0209218" lon="10.6341206"/>
+ </create>
+ <create>
+  <node id="7397873743" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0200762" lon="10.6346785"/>
+ </create>
+ <create>
+  <node id="7397873744" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0169755" lon="10.6300542"/>
+ </create>
+ <create>
+  <node id="7397873745" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0168664" lon="10.6298678"/>
+ </create>
+ <create>
+  <node id="7397873746" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0167955" lon="10.6299161"/>
+ </create>
+ <create>
+  <node id="7397873747" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0168799" lon="10.6301440"/>
+ </create>
+ <create>
+  <node id="7397873748" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0087555" lon="10.6172685"/>
+ </create>
+ <create>
+  <node id="7397873749" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0086599" lon="10.6170097"/>
+ </create>
+ <create>
+  <node id="7397873750" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0084894" lon="10.6171268"/>
+ </create>
+ <create>
+  <node id="7397873751" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="33.0086392" lon="10.6175704"/>
+ </create>
+ <create>
+  <way id="791334731" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873700"/>
+   <nd ref="7397873697"/>
+   <nd ref="7397873698"/>
+   <nd ref="7397873699"/>
+   <tag k="highway" v="footway"/>
+   <tag k="name" v="chemin piétone"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334732" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873701"/>
+   <nd ref="7397873702"/>
+   <nd ref="7397873703"/>
+   <nd ref="7397873704"/>
+   <nd ref="7397873701"/>
+   <tag k="landuse" v="retail"/>
+   <tag k="name" v="Point commerciale"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334733" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873705"/>
+   <nd ref="7397873706"/>
+   <nd ref="7397873707"/>
+   <nd ref="7397873708"/>
+   <nd ref="7397873705"/>
+   <tag k="amenity" v="cafe"/>
+   <tag k="building" v="yes"/>
+   <tag k="name" v="NextOne"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334734" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873709"/>
+   <nd ref="7397873710"/>
+   <nd ref="7397873711"/>
+   <nd ref="7397873712"/>
+   <nd ref="7397873709"/>
+   <tag k="leisure" v="park"/>
+   <tag k="name" v="site archéologique carthage dermech"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334735" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873713"/>
+   <nd ref="7397873714"/>
+   <nd ref="7397873715"/>
+   <nd ref="7397873716"/>
+   <nd ref="7397873713"/>
+   <tag k="landuse" v="farmland"/>
+   <tag k="name" v="Draiena Projet"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334736" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873716"/>
+   <nd ref="7397873717"/>
+   <nd ref="7397873738"/>
+   <nd ref="7397873739"/>
+   <nd ref="7397873715"/>
+   <nd ref="7397873716"/>
+   <tag k="landuse" v="farmland"/>
+   <tag k="name" v="Draiena Projet 2"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334737" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873718"/>
+   <nd ref="7397873719"/>
+   <nd ref="7397873720"/>
+   <nd ref="7397873721"/>
+   <nd ref="7397873718"/>
+   <tag k="landuse" v="industrial"/>
+   <tag k="name" v="Usines Platres"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334738" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873723"/>
+   <nd ref="7397873724"/>
+   <nd ref="7397873725"/>
+   <nd ref="7397873726"/>
+   <nd ref="7397873723"/>
+   <tag k="landuse" v="retail"/>
+   <tag k="name" v="centre équitation Tataouine"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334739" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873733"/>
+   <nd ref="7397873734"/>
+   <nd ref="7397873735"/>
+   <nd ref="7397873736"/>
+   <nd ref="7397873733"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="BHIR"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334740" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="6626993932"/>
+   <nd ref="7397873737"/>
+   <nd ref="7397873738"/>
+   <nd ref="7397873739"/>
+   <nd ref="6626993933"/>
+   <nd ref="6626993932"/>
+   <tag k="landuse" v="farmland"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334741" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873740"/>
+   <nd ref="7397873739"/>
+   <nd ref="7397873738"/>
+   <nd ref="7397873741"/>
+   <nd ref="7397873742"/>
+   <nd ref="7397873743"/>
+   <nd ref="7397873740"/>
+   <tag k="landuse" v="farmland"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334742" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873744"/>
+   <nd ref="7397873745"/>
+   <nd ref="7397873746"/>
+   <nd ref="7397873747"/>
+   <nd ref="7397873744"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="Maison Agricole dr Ahmed GHADNOUR"/>
+  </way>
+ </create>
+ <create>
+  <way id="791334743" visible="true" version="1" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="7397873748"/>
+   <nd ref="7397873749"/>
+   <nd ref="7397873750"/>
+   <nd ref="7397873751"/>
+   <nd ref="7397873748"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="Puit Agricole  Draina"/>
+  </way>
+ </create>
+ <modify>
+  <way id="378269918" visible="true" version="2" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="3816712541"/>
+   <nd ref="3816712552"/>
+   <nd ref="3816712560"/>
+   <nd ref="3816712563"/>
+   <nd ref="3816712568"/>
+   <nd ref="3816712576"/>
+   <nd ref="3816712590"/>
+   <nd ref="3816712601"/>
+   <nd ref="3816712574"/>
+   <nd ref="3816712593"/>
+   <nd ref="3816712618"/>
+   <nd ref="3816712625"/>
+   <nd ref="3816712631"/>
+   <nd ref="3816712641"/>
+   <nd ref="3816712646"/>
+   <nd ref="3816712648"/>
+   <nd ref="3816712654"/>
+   <nd ref="3816712657"/>
+   <nd ref="3816712660"/>
+   <nd ref="3816712669"/>
+   <nd ref="3816712675"/>
+   <nd ref="3816712678"/>
+   <nd ref="3816712679"/>
+   <nd ref="3816712677"/>
+   <nd ref="3816712674"/>
+   <nd ref="3816712671"/>
+   <nd ref="3816712668"/>
+   <nd ref="3816712664"/>
+   <nd ref="3816712661"/>
+   <nd ref="3816712659"/>
+   <nd ref="3816712655"/>
+   <nd ref="3816712650"/>
+   <nd ref="3816712637"/>
+   <nd ref="3816712640"/>
+   <nd ref="3816712636"/>
+   <nd ref="3816712624"/>
+   <nd ref="3816712620"/>
+   <nd ref="3816712626"/>
+   <nd ref="3816712615"/>
+   <nd ref="3816712591"/>
+   <nd ref="3816712580"/>
+   <nd ref="3816712569"/>
+   <nd ref="3816712558"/>
+   <nd ref="3816712538"/>
+   <nd ref="3816712526"/>
+   <nd ref="3816712490"/>
+   <nd ref="3816712489"/>
+   <nd ref="3816712519"/>
+   <nd ref="3816712527"/>
+   <nd ref="3816712535"/>
+   <nd ref="3816712539"/>
+   <nd ref="3816712551"/>
+   <nd ref="3816712575"/>
+   <nd ref="3816712584"/>
+   <nd ref="3816712595"/>
+   <nd ref="3816712605"/>
+   <nd ref="3816712614"/>
+   <nd ref="3816712611"/>
+   <nd ref="3816712599"/>
+   <nd ref="3816712594"/>
+   <nd ref="3816712582"/>
+   <nd ref="3816712578"/>
+   <nd ref="3816712571"/>
+   <nd ref="3816712562"/>
+   <nd ref="3816712556"/>
+   <nd ref="3816712550"/>
+   <nd ref="3816712542"/>
+   <nd ref="3816712561"/>
+   <nd ref="3816712546"/>
+   <nd ref="3816712544"/>
+   <nd ref="3816712536"/>
+   <nd ref="3816712530"/>
+   <nd ref="3816712516"/>
+   <nd ref="3816712509"/>
+   <nd ref="3816712491"/>
+   <nd ref="3816712487"/>
+   <nd ref="3816712486"/>
+   <nd ref="3816712501"/>
+   <nd ref="3816712522"/>
+   <nd ref="3816712523"/>
+   <nd ref="3816712528"/>
+   <nd ref="3816712529"/>
+   <nd ref="3816712533"/>
+   <nd ref="3816712541"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="GHANADRIA"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="524055835" visible="true" version="2" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="5100480507"/>
+   <nd ref="5100480506"/>
+   <nd ref="5100480505"/>
+   <nd ref="5100480504"/>
+   <nd ref="5100480503"/>
+   <nd ref="5100480502"/>
+   <nd ref="5100480501"/>
+   <nd ref="5100480500"/>
+   <nd ref="5100480507"/>
+   <tag k="building" v="yes"/>
+   <tag k="name" v="Usine 3"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="524055846" visible="true" version="2" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="5100480625"/>
+   <nd ref="5100480624"/>
+   <nd ref="5100480623"/>
+   <nd ref="5100480622"/>
+   <nd ref="5100480625"/>
+   <tag k="building" v="yes"/>
+   <tag k="name" v="Usine 2"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="524055853" visible="true" version="2" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="5100480644"/>
+   <nd ref="5100480643"/>
+   <nd ref="5100480642"/>
+   <nd ref="5100480641"/>
+   <nd ref="5100480644"/>
+   <tag k="building" v="yes"/>
+   <tag k="name" v="Usine 1"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="2028030046" visible="true" version="3" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8496524" lon="10.3269367">
+   <tag k="addr:country" v="TN"/>
+   <tag k="addr:postcode" v="2016"/>
+   <tag k="addr:street" v="شارع الحبيب بورقيبة"/>
+   <tag k="amenity" v="cafe"/>
+   <tag k="name" v="Mirador"/>
+  </node>
+ </modify>
+ <modify>
+  <node id="4333624540" visible="true" version="3" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="32.9288940" lon="10.4497619">
+   <tag k="addr:city" v="تطاوين"/>
+   <tag k="addr:postcode" v="3243"/>
+   <tag k="amenity" v="cafe"/>
+   <tag k="name" v="صيدلية عبد النور"/>
+   <tag k="name:ar" v="صيدلية عبد النور"/>
+   <tag k="name:fr" v="pharmacie abdennour"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="389764461" visible="true" version="3" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="3929290905"/>
+   <nd ref="3929290929"/>
+   <nd ref="3929290943"/>
+   <nd ref="3929290944"/>
+   <nd ref="3929290935"/>
+   <nd ref="3929290949"/>
+   <nd ref="4235256750"/>
+   <nd ref="3929290957"/>
+   <nd ref="4235256754"/>
+   <nd ref="4235256767"/>
+   <nd ref="4235256769"/>
+   <nd ref="4235256770"/>
+   <nd ref="3929290975"/>
+   <nd ref="3929290979"/>
+   <nd ref="3929291024"/>
+   <nd ref="3929291040"/>
+   <nd ref="3929291048"/>
+   <nd ref="3929291054"/>
+   <nd ref="3929291038"/>
+   <nd ref="3929291035"/>
+   <nd ref="3929291028"/>
+   <nd ref="3929291010"/>
+   <nd ref="3929291015"/>
+   <nd ref="3929291011"/>
+   <nd ref="4235256778"/>
+   <nd ref="4235256772"/>
+   <nd ref="3929290964"/>
+   <nd ref="4235256757"/>
+   <nd ref="3929290960"/>
+   <nd ref="4235256562"/>
+   <nd ref="4235256529"/>
+   <nd ref="3929290938"/>
+   <nd ref="4235255748"/>
+   <nd ref="4235255758"/>
+   <nd ref="3929290940"/>
+   <nd ref="4235256759"/>
+   <nd ref="3929290980"/>
+   <nd ref="3929290984"/>
+   <nd ref="3929290996"/>
+   <nd ref="3929290992"/>
+   <nd ref="3929291014"/>
+   <nd ref="3929291045"/>
+   <nd ref="3929291046"/>
+   <nd ref="3929291027"/>
+   <nd ref="3929291008"/>
+   <nd ref="3929290988"/>
+   <nd ref="3929290958"/>
+   <nd ref="3929290936"/>
+   <nd ref="4235255724"/>
+   <nd ref="3929290924"/>
+   <nd ref="3929290930"/>
+   <nd ref="3929290914"/>
+   <nd ref="3929290909"/>
+   <nd ref="3929290920"/>
+   <nd ref="3929290913"/>
+   <nd ref="3929290905"/>
+   <tag k="landuse" v="residential"/>
+   <tag k="name" v="WED EL GHAR"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="724518511" visible="true" version="3" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="6794734101"/>
+   <nd ref="6794734100"/>
+   <nd ref="7397873727"/>
+   <nd ref="6794734099"/>
+   <nd ref="6794734098"/>
+   <nd ref="6794734101"/>
+   <tag k="building" v="yes"/>
+   <tag k="building:levels" v="1"/>
+   <tag k="building:min_level" v="1"/>
+   <tag k="building:part" v="yes"/>
+  </way>
+ </modify>
+ <delete>
+  <node id="288947560" visible="false" version="4" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377"/>
+ </delete>
+ <modify>
+  <way id="178302934" visible="true" version="4" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="288947565"/>
+   <nd ref="288947522"/>
+   <nd ref="6617305487"/>
+   <nd ref="288947566"/>
+   <nd ref="6617305488"/>
+   <nd ref="1668127236"/>
+   <nd ref="1668126992"/>
+   <nd ref="6617305489"/>
+   <nd ref="288947524"/>
+   <nd ref="6617305490"/>
+   <nd ref="1668127116"/>
+   <nd ref="1668127144"/>
+   <tag k="highway" v="residential"/>
+   <tag k="name" v="نهج أبو القاسم الشابي"/>
+   <tag k="name:ar" v="نهج أبو القاسم الشابي"/>
+   <tag k="name:fr" v="Rue Abou El Kacem Chebbi"/>
+  </way>
+ </modify>
+ <modify>
+  <node id="5814603911" visible="true" version="5" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377" lat="36.8416949" lon="10.3191400">
+   <tag k="name" v="قرطاج صلامبو"/>
+   <tag k="name:ar" v="قرطاج صلامبو"/>
+   <tag k="name:en" v="Carthage Salammbô"/>
+   <tag k="name:fr" v="Carthage Salammbô"/>
+  </node>
+ </modify>
+ <modify>
+  <way id="26374427" visible="true" version="5" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="1668126992"/>
+   <nd ref="288947561"/>
+   <nd ref="1668127220"/>
+   <nd ref="288947562"/>
+   <nd ref="288947563"/>
+   <nd ref="288947564"/>
+   <nd ref="288947565"/>
+   <tag k="highway" v="residential"/>
+   <tag k="name" v="Rue Hedi Khefacha"/>
+   <tag k="name:fr" v="Rue Hedi Khefacha"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="284143307" visible="true" version="11" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="2879025328"/>
+   <nd ref="2879025334"/>
+   <nd ref="2879025310"/>
+   <nd ref="2879025313"/>
+   <nd ref="2879025329"/>
+   <nd ref="2879025349"/>
+   <nd ref="2879025364"/>
+   <nd ref="2879025370"/>
+   <nd ref="2879025342"/>
+   <nd ref="2879025179"/>
+   <nd ref="5324671930"/>
+   <nd ref="2879024324"/>
+   <nd ref="2879022985"/>
+   <nd ref="5324671926"/>
+   <nd ref="2879022952"/>
+   <nd ref="2879020975"/>
+   <nd ref="5324671925"/>
+   <nd ref="2879019772"/>
+   <nd ref="2879019781"/>
+   <nd ref="2879022200"/>
+   <nd ref="2879022933"/>
+   <nd ref="2879022960"/>
+   <nd ref="2879022950"/>
+   <nd ref="2879022979"/>
+   <nd ref="2879024338"/>
+   <nd ref="2879024339"/>
+   <nd ref="2879024340"/>
+   <nd ref="2879022967"/>
+   <nd ref="2879022935"/>
+   <nd ref="2879023317"/>
+   <nd ref="2879023312"/>
+   <nd ref="2879023313"/>
+   <nd ref="2879023318"/>
+   <nd ref="2879023323"/>
+   <nd ref="2879022957"/>
+   <nd ref="2879024323"/>
+   <nd ref="2879024367"/>
+   <nd ref="2879024377"/>
+   <nd ref="2879024355"/>
+   <nd ref="2879024364"/>
+   <nd ref="2879024366"/>
+   <nd ref="2879024357"/>
+   <nd ref="2879024368"/>
+   <nd ref="2879024361"/>
+   <nd ref="2879022997"/>
+   <nd ref="5354893634"/>
+   <nd ref="5354893633"/>
+   <nd ref="5324671800"/>
+   <nd ref="5324671797"/>
+   <nd ref="2879022987"/>
+   <nd ref="5324671791"/>
+   <nd ref="2879024313"/>
+   <nd ref="2879024334"/>
+   <nd ref="2879024358"/>
+   <nd ref="2879025173"/>
+   <nd ref="2879025194"/>
+   <nd ref="5324640924"/>
+   <nd ref="5324640923"/>
+   <nd ref="2879025301"/>
+   <nd ref="2879025198"/>
+   <nd ref="2879025197"/>
+   <nd ref="2879025307"/>
+   <nd ref="5324671744"/>
+   <nd ref="5354893405"/>
+   <nd ref="5354893404"/>
+   <nd ref="5354893403"/>
+   <nd ref="5354893402"/>
+   <nd ref="2879025316"/>
+   <nd ref="2879025327"/>
+   <nd ref="2879025332"/>
+   <nd ref="5354893383"/>
+   <nd ref="5354893382"/>
+   <nd ref="5354893381"/>
+   <nd ref="2879025341"/>
+   <nd ref="5354893380"/>
+   <nd ref="5354893379"/>
+   <nd ref="5354893378"/>
+   <nd ref="2879025355"/>
+   <nd ref="2879025361"/>
+   <nd ref="2879025366"/>
+   <nd ref="2879025371"/>
+   <nd ref="2879025377"/>
+   <nd ref="2879025374"/>
+   <nd ref="2879025362"/>
+   <nd ref="5324671738"/>
+   <nd ref="2879025347"/>
+   <nd ref="5354893364"/>
+   <nd ref="2879025335"/>
+   <nd ref="5354893362"/>
+   <nd ref="5354893361"/>
+   <nd ref="5354893360"/>
+   <nd ref="2879025325"/>
+   <nd ref="2879025315"/>
+   <nd ref="2879025304"/>
+   <nd ref="5324640925"/>
+   <nd ref="2879025191"/>
+   <nd ref="5354893345"/>
+   <nd ref="5354893344"/>
+   <nd ref="5354893343"/>
+   <nd ref="5354893342"/>
+   <nd ref="2879025180"/>
+   <nd ref="2879025176"/>
+   <nd ref="2879025174"/>
+   <nd ref="5324671731"/>
+   <nd ref="2879025186"/>
+   <nd ref="2879025199"/>
+   <nd ref="2879025303"/>
+   <nd ref="2879025305"/>
+   <nd ref="5324671717"/>
+   <nd ref="5324671716"/>
+   <nd ref="2879025192"/>
+   <nd ref="5354893205"/>
+   <nd ref="2879025181"/>
+   <nd ref="5354893196"/>
+   <nd ref="2879025171"/>
+   <nd ref="2879025152"/>
+   <nd ref="2879025121"/>
+   <nd ref="2879025117"/>
+   <nd ref="2879019999"/>
+   <nd ref="2879024373"/>
+   <nd ref="2879024359"/>
+   <nd ref="2879024332"/>
+   <nd ref="7397873700"/>
+   <nd ref="2879023331"/>
+   <nd ref="2879022939"/>
+   <nd ref="2879022940"/>
+   <nd ref="5354893176"/>
+   <nd ref="2879022945"/>
+   <nd ref="5354893175"/>
+   <nd ref="2879022980"/>
+   <nd ref="5354893174"/>
+   <nd ref="2879024354"/>
+   <nd ref="5354893173"/>
+   <nd ref="2879025120"/>
+   <nd ref="5354893172"/>
+   <nd ref="5354893171"/>
+   <nd ref="5354893170"/>
+   <nd ref="5354893169"/>
+   <nd ref="5354893168"/>
+   <nd ref="5354893167"/>
+   <nd ref="5354893166"/>
+   <nd ref="5354893165"/>
+   <nd ref="5354893164"/>
+   <nd ref="5354893163"/>
+   <nd ref="5354893162"/>
+   <nd ref="2879025177"/>
+   <nd ref="5354893161"/>
+   <nd ref="5354893160"/>
+   <nd ref="5354893159"/>
+   <nd ref="2879025183"/>
+   <nd ref="5354893158"/>
+   <nd ref="5354893157"/>
+   <nd ref="5354893156"/>
+   <nd ref="5354893155"/>
+   <nd ref="5354893154"/>
+   <nd ref="5354893153"/>
+   <nd ref="5354893151"/>
+   <nd ref="5354893152"/>
+   <nd ref="2879025195"/>
+   <nd ref="5354893150"/>
+   <nd ref="2879025302"/>
+   <nd ref="5354893149"/>
+   <nd ref="5354893148"/>
+   <nd ref="5354893147"/>
+   <nd ref="5354893146"/>
+   <nd ref="5354893145"/>
+   <nd ref="5354893144"/>
+   <nd ref="5354893143"/>
+   <nd ref="5354893142"/>
+   <nd ref="5354893141"/>
+   <nd ref="2879025308"/>
+   <nd ref="2879025317"/>
+   <nd ref="2879025320"/>
+   <nd ref="5324671709"/>
+   <nd ref="2879025318"/>
+   <nd ref="2879025331"/>
+   <nd ref="5324671706"/>
+   <nd ref="2879025339"/>
+   <nd ref="2879025353"/>
+   <nd ref="2879025357"/>
+   <nd ref="5324671701"/>
+   <nd ref="2879025359"/>
+   <nd ref="5324671700"/>
+   <nd ref="2879025351"/>
+   <nd ref="5324671698"/>
+   <nd ref="2879025345"/>
+   <nd ref="5324671697"/>
+   <nd ref="2879025344"/>
+   <nd ref="5354893135"/>
+   <nd ref="2879025350"/>
+   <nd ref="2879025360"/>
+   <nd ref="5324671686"/>
+   <nd ref="5354893128"/>
+   <nd ref="5354893127"/>
+   <nd ref="2879025393"/>
+   <nd ref="5354893126"/>
+   <nd ref="5354893125"/>
+   <nd ref="2879026001"/>
+   <nd ref="2879024390"/>
+   <nd ref="2879024386"/>
+   <nd ref="2879025400"/>
+   <nd ref="2879025385"/>
+   <nd ref="2879025378"/>
+   <nd ref="2879025369"/>
+   <nd ref="2879025375"/>
+   <nd ref="2879025384"/>
+   <nd ref="2879025391"/>
+   <nd ref="2879025389"/>
+   <nd ref="2879025367"/>
+   <nd ref="2879025348"/>
+   <nd ref="2879025337"/>
+   <nd ref="2879025322"/>
+   <nd ref="2879025321"/>
+   <nd ref="2879025309"/>
+   <nd ref="2879025190"/>
+   <nd ref="2879025184"/>
+   <nd ref="2879025175"/>
+   <nd ref="5324671678"/>
+   <nd ref="2879025125"/>
+   <nd ref="2879025130"/>
+   <nd ref="2879025170"/>
+   <nd ref="2879025187"/>
+   <nd ref="5324671677"/>
+   <nd ref="2879025306"/>
+   <nd ref="2879025311"/>
+   <nd ref="2879025330"/>
+   <nd ref="5324671666"/>
+   <nd ref="2879025333"/>
+   <nd ref="2879025326"/>
+   <nd ref="2879025323"/>
+   <nd ref="2879025352"/>
+   <nd ref="2879025356"/>
+   <nd ref="2879025379"/>
+   <nd ref="2879025396"/>
+   <nd ref="2879024383"/>
+   <nd ref="2879024392"/>
+   <nd ref="2879026011"/>
+   <nd ref="5324669814"/>
+   <nd ref="5324669813"/>
+   <nd ref="2879026014"/>
+   <nd ref="2879026012"/>
+   <nd ref="5324669812"/>
+   <nd ref="2879024391"/>
+   <nd ref="2879025397"/>
+   <nd ref="2879025388"/>
+   <nd ref="2879025368"/>
+   <nd ref="2879025358"/>
+   <nd ref="2879025380"/>
+   <nd ref="2879025386"/>
+   <nd ref="2879025394"/>
+   <nd ref="2879025392"/>
+   <nd ref="2879025373"/>
+   <nd ref="2879025319"/>
+   <nd ref="2879025196"/>
+   <nd ref="2879025189"/>
+   <nd ref="2879025167"/>
+   <nd ref="2203042741"/>
+   <nd ref="2203042731"/>
+   <nd ref="2203042730"/>
+   <nd ref="2203042724"/>
+   <nd ref="2203042723"/>
+   <nd ref="7150132648"/>
+   <nd ref="7150132647"/>
+   <nd ref="2203042728"/>
+   <nd ref="2203042737"/>
+   <nd ref="2203042740"/>
+   <nd ref="2203042743"/>
+   <nd ref="2203042742"/>
+   <nd ref="2879024342"/>
+   <nd ref="2879019993"/>
+   <nd ref="2879025200"/>
+   <nd ref="2879025336"/>
+   <nd ref="2879025354"/>
+   <nd ref="2879025363"/>
+   <nd ref="2879025387"/>
+   <nd ref="2879026015"/>
+   <nd ref="2879026029"/>
+   <nd ref="2879026036"/>
+   <nd ref="2879026037"/>
+   <nd ref="5324671639"/>
+   <nd ref="2879026018"/>
+   <nd ref="2879026007"/>
+   <nd ref="2879026005"/>
+   <nd ref="2879026008"/>
+   <nd ref="2879026016"/>
+   <nd ref="2879026033"/>
+   <nd ref="2879026039"/>
+   <nd ref="2879026042"/>
+   <nd ref="2879026044"/>
+   <nd ref="2879026046"/>
+   <nd ref="2879026061"/>
+   <nd ref="5324671623"/>
+   <nd ref="2879026078"/>
+   <nd ref="3759191705"/>
+   <nd ref="3759191706"/>
+   <nd ref="3759191707"/>
+   <nd ref="2879026092"/>
+   <nd ref="3759191708"/>
+   <nd ref="3759191709"/>
+   <nd ref="3759191710"/>
+   <nd ref="2879026096"/>
+   <nd ref="3759191711"/>
+   <nd ref="2879026099"/>
+   <nd ref="2879026100"/>
+   <nd ref="2879026097"/>
+   <nd ref="2879026095"/>
+   <nd ref="2879026087"/>
+   <nd ref="2879026089"/>
+   <nd ref="2879026085"/>
+   <nd ref="2879026081"/>
+   <nd ref="2879026086"/>
+   <nd ref="2879026098"/>
+   <nd ref="2879026401"/>
+   <nd ref="2879026403"/>
+   <nd ref="5324672134"/>
+   <nd ref="2879026404"/>
+   <nd ref="2879026411"/>
+   <nd ref="2879026413"/>
+   <nd ref="2879026410"/>
+   <nd ref="2879026406"/>
+   <nd ref="2879026405"/>
+   <nd ref="2879026415"/>
+   <nd ref="2879026418"/>
+   <nd ref="2879026414"/>
+   <nd ref="2879026407"/>
+   <nd ref="2879026408"/>
+   <nd ref="2879026409"/>
+   <nd ref="2879026417"/>
+   <nd ref="2879026419"/>
+   <nd ref="2879026420"/>
+   <nd ref="2879026416"/>
+   <nd ref="2879026412"/>
+   <nd ref="5324672107"/>
+   <nd ref="2879026402"/>
+   <nd ref="5324672104"/>
+   <nd ref="5324672103"/>
+   <nd ref="2879026094"/>
+   <nd ref="2879026093"/>
+   <nd ref="2879026084"/>
+   <nd ref="2879026077"/>
+   <nd ref="2879026073"/>
+   <nd ref="2879026072"/>
+   <nd ref="2879026070"/>
+   <nd ref="2879026063"/>
+   <nd ref="2879026055"/>
+   <nd ref="2879026052"/>
+   <nd ref="2879026058"/>
+   <nd ref="2879026057"/>
+   <nd ref="2879026056"/>
+   <nd ref="2879026048"/>
+   <nd ref="2879026050"/>
+   <nd ref="2879026062"/>
+   <nd ref="2879026053"/>
+   <nd ref="5324672092"/>
+   <nd ref="2879026051"/>
+   <nd ref="2879026054"/>
+   <nd ref="5324672091"/>
+   <nd ref="2879026064"/>
+   <nd ref="2879026071"/>
+   <nd ref="2879026076"/>
+   <nd ref="2879026083"/>
+   <nd ref="2879026090"/>
+   <nd ref="2879026091"/>
+   <nd ref="2879026088"/>
+   <nd ref="2879026082"/>
+   <nd ref="5324672074"/>
+   <nd ref="2879026074"/>
+   <nd ref="2879026067"/>
+   <nd ref="2879026068"/>
+   <nd ref="5324672069"/>
+   <nd ref="2879026075"/>
+   <nd ref="2879026080"/>
+   <nd ref="2879026079"/>
+   <nd ref="2879026069"/>
+   <nd ref="2879026066"/>
+   <nd ref="2879026065"/>
+   <nd ref="2879026060"/>
+   <nd ref="2879026059"/>
+   <nd ref="2879026049"/>
+   <nd ref="2879026047"/>
+   <nd ref="2879026045"/>
+   <nd ref="2879026040"/>
+   <nd ref="2879026034"/>
+   <nd ref="2879026027"/>
+   <nd ref="2879026023"/>
+   <nd ref="2879026024"/>
+   <nd ref="2879026028"/>
+   <nd ref="2879026030"/>
+   <nd ref="2879026025"/>
+   <nd ref="2879026021"/>
+   <nd ref="2879026026"/>
+   <nd ref="5324672001"/>
+   <nd ref="2879026032"/>
+   <nd ref="2879026038"/>
+   <nd ref="2879026043"/>
+   <nd ref="2879026041"/>
+   <nd ref="5324671981"/>
+   <nd ref="2879026035"/>
+   <nd ref="2879026022"/>
+   <nd ref="2879026017"/>
+   <nd ref="2879026013"/>
+   <nd ref="2879026003"/>
+   <nd ref="2879024385"/>
+   <nd ref="2879024384"/>
+   <nd ref="2879025398"/>
+   <nd ref="2879026002"/>
+   <nd ref="2879024389"/>
+   <nd ref="2879026009"/>
+   <nd ref="2879026010"/>
+   <nd ref="2879026004"/>
+   <nd ref="2879024387"/>
+   <nd ref="2879025399"/>
+   <nd ref="5324671955"/>
+   <nd ref="2879025390"/>
+   <nd ref="2879025383"/>
+   <nd ref="2879025372"/>
+   <nd ref="2879025346"/>
+   <nd ref="2879025340"/>
+   <nd ref="2879025338"/>
+   <nd ref="2879025343"/>
+   <nd ref="2879025328"/>
+   <tag k="addr:city" v="الحامة"/>
+   <tag k="addr:country" v="TN"/>
+   <tag k="addr:governorate" v="قابس"/>
+   <tag k="is_in" v="قابس؛ تونس؛ أفريقيا"/>
+   <tag k="is_in:continent" v="أفريقيا"/>
+   <tag k="is_in:country" v="تونس"/>
+   <tag k="is_in:governorate" v="قابس"/>
+   <tag k="name" v="سبخة الحامة"/>
+   <tag k="name:ar" v="سبخة الحامة"/>
+   <tag k="name:fr" v="Sebkhet El Hamma"/>
+   <tag k="water" v="salt_lake"/>
+  </way>
+ </modify>
+ <modify>
+  <way id="551346335" visible="true" version="17" changeset="83472658" timestamp="2020-04-13T11:17:34Z" user="mohamed amine GHANDOUR" uid="10616377">
+   <nd ref="2879026098"/>
+   <nd ref="7139778952"/>
+   <nd ref="2879026086"/>
+   <nd ref="2879026081"/>
+   <nd ref="2879026089"/>
+   <nd ref="5324669815"/>
+   <nd ref="5324669816"/>
+   <nd ref="5324669817"/>
+   <nd ref="5324669818"/>
+   <nd ref="4862659406"/>
+   <nd ref="5324669819"/>
+   <nd ref="5324669820"/>
+   <nd ref="7139659129"/>
+   <nd ref="5324671621"/>
+   <nd ref="5324671622"/>
+   <nd ref="3759191708"/>
+   <nd ref="2879026092"/>
+   <nd ref="3759191707"/>
+   <nd ref="3759191706"/>
+   <nd ref="3759191705"/>
+   <nd ref="5324671623"/>
+   <nd ref="7139645845"/>
+   <nd ref="5324671624"/>
+   <nd ref="4858682926"/>
+   <nd ref="4862659443"/>
+   <nd ref="5324671625"/>
+   <nd ref="5324671626"/>
+   <nd ref="7139626339"/>
+   <nd ref="7139645846"/>
+   <nd ref="5324671627"/>
+   <nd ref="7139615811"/>
+   <nd ref="5324671628"/>
+   <nd ref="5324671629"/>
+   <nd ref="5324671630"/>
+   <nd ref="5324671631"/>
+   <nd ref="5324671632"/>
+   <nd ref="5324671633"/>
+   <nd ref="5324671634"/>
+   <nd ref="5324671635"/>
+   <nd ref="5324671636"/>
+   <nd ref="5324671637"/>
+   <nd ref="5324671638"/>
+   <nd ref="2879026007"/>
+   <nd ref="2879026018"/>
+   <nd ref="5324671639"/>
+   <nd ref="2879026037"/>
+   <nd ref="7139615812"/>
+   <nd ref="2879026036"/>
+   <nd ref="5324671640"/>
+   <nd ref="2879026015"/>
+   <nd ref="4858682946"/>
+   <nd ref="5324690709"/>
+   <nd ref="5324690710"/>
+   <nd ref="5324690711"/>
+   <nd ref="4862659471"/>
+   <nd ref="5324690712"/>
+   <nd ref="2879025200"/>
+   <nd ref="7139778951"/>
+   <nd ref="5324671641"/>
+   <nd ref="5324671642"/>
+   <nd ref="5324671645"/>
+   <nd ref="5324690708"/>
+   <nd ref="5324671646"/>
+   <nd ref="7150132645"/>
+   <nd ref="7150132646"/>
+   <nd ref="5324671647"/>
+   <nd ref="5324671648"/>
+   <nd ref="5324671649"/>
+   <nd ref="2203042728"/>
+   <nd ref="7150132647"/>
+   <nd ref="7150132648"/>
+   <nd ref="2203042723"/>
+   <nd ref="2203042724"/>
+   <nd ref="2203042730"/>
+   <nd ref="2203042731"/>
+   <nd ref="2203042741"/>
+   <nd ref="2879025167"/>
+   <nd ref="2879025189"/>
+   <nd ref="2879025196"/>
+   <nd ref="2879025319"/>
+   <nd ref="2879025373"/>
+   <nd ref="2879025392"/>
+   <nd ref="2879025386"/>
+   <nd ref="2879025380"/>
+   <nd ref="2879025358"/>
+   <nd ref="2879025368"/>
+   <nd ref="2879025388"/>
+   <nd ref="1116531437"/>
+   <nd ref="2879025397"/>
+   <nd ref="5324669812"/>
+   <nd ref="1116531667"/>
+   <nd ref="2879026012"/>
+   <nd ref="5324671650"/>
+   <nd ref="5324671651"/>
+   <nd ref="2879026014"/>
+   <nd ref="1116532761"/>
+   <nd ref="5324669813"/>
+   <nd ref="5324671652"/>
+   <nd ref="5324671653"/>
+   <nd ref="5324669814"/>
+   <nd ref="2879026011"/>
+   <nd ref="2879024392"/>
+   <nd ref="2879024383"/>
+   <nd ref="2879025396"/>
+   <nd ref="2879025379"/>
+   <nd ref="2879025356"/>
+   <nd ref="5324671654"/>
+   <nd ref="5324671655"/>
+   <nd ref="5324671656"/>
+   <nd ref="5324671657"/>
+   <nd ref="5324671658"/>
+   <nd ref="5324671659"/>
+   <nd ref="5324671660"/>
+   <nd ref="5324671661"/>
+   <nd ref="5324671662"/>
+   <nd ref="5324671663"/>
+   <nd ref="5324671664"/>
+   <nd ref="5324671665"/>
+   <nd ref="5324671666"/>
+   <nd ref="5324671667"/>
+   <nd ref="5324671668"/>
+   <nd ref="5324671669"/>
+   <nd ref="5324671670"/>
+   <nd ref="5324671671"/>
+   <nd ref="5324671672"/>
+   <nd ref="5324671673"/>
+   <nd ref="5324671674"/>
+   <nd ref="5324671675"/>
+   <nd ref="5324671676"/>
+   <nd ref="5324671677"/>
+   <nd ref="2879025187"/>
+   <nd ref="2879025170"/>
+   <nd ref="2879025130"/>
+   <nd ref="5324671678"/>
+   <nd ref="2879025175"/>
+   <nd ref="2879025184"/>
+   <nd ref="2879025190"/>
+   <nd ref="2879025321"/>
+   <nd ref="2879025322"/>
+   <nd ref="2879025337"/>
+   <nd ref="2879025348"/>
+   <nd ref="2879025367"/>
+   <nd ref="2879025389"/>
+   <nd ref="2879025391"/>
+   <nd ref="5324671679"/>
+   <nd ref="2879025375"/>
+   <nd ref="2879025369"/>
+   <nd ref="2879025378"/>
+   <nd ref="5324671680"/>
+   <nd ref="5324671681"/>
+   <nd ref="5324671682"/>
+   <nd ref="5324671683"/>
+   <nd ref="5324671684"/>
+   <nd ref="2879026001"/>
+   <nd ref="5354893125"/>
+   <nd ref="5354893126"/>
+   <nd ref="2879025393"/>
+   <nd ref="5354893127"/>
+   <nd ref="5354893128"/>
+   <nd ref="5324671686"/>
+   <nd ref="5324671687"/>
+   <nd ref="5324671688"/>
+   <nd ref="5354893129"/>
+   <nd ref="5324671689"/>
+   <nd ref="5354893130"/>
+   <nd ref="5354893131"/>
+   <nd ref="5324671690"/>
+   <nd ref="5354893132"/>
+   <nd ref="5354893133"/>
+   <nd ref="5354893134"/>
+   <nd ref="5354893135"/>
+   <nd ref="5324671691"/>
+   <nd ref="5324671692"/>
+   <nd ref="5324671693"/>
+   <nd ref="5354893136"/>
+   <nd ref="5324671694"/>
+   <nd ref="5324671695"/>
+   <nd ref="5324671696"/>
+   <nd ref="5324671697"/>
+   <nd ref="5324671698"/>
+   <nd ref="5324671699"/>
+   <nd ref="5324671700"/>
+   <nd ref="5324671701"/>
+   <nd ref="5324671702"/>
+   <nd ref="5324671703"/>
+   <nd ref="5324671704"/>
+   <nd ref="5354893137"/>
+   <nd ref="5324671705"/>
+   <nd ref="5354893138"/>
+   <nd ref="5324671706"/>
+   <nd ref="5354893139"/>
+   <nd ref="5354893140"/>
+   <nd ref="5324671707"/>
+   <nd ref="5324671708"/>
+   <nd ref="5324671709"/>
+   <nd ref="2879025320"/>
+   <nd ref="2879025317"/>
+   <nd ref="2879025308"/>
+   <nd ref="5354893141"/>
+   <nd ref="5354893142"/>
+   <nd ref="5354893143"/>
+   <nd ref="5354893144"/>
+   <nd ref="5354893145"/>
+   <nd ref="5354893146"/>
+   <nd ref="5354893147"/>
+   <nd ref="5354893148"/>
+   <nd ref="5354893149"/>
+   <nd ref="2879025302"/>
+   <nd ref="5354893150"/>
+   <nd ref="2879025195"/>
+   <nd ref="5354893152"/>
+   <nd ref="5354893151"/>
+   <nd ref="5354893153"/>
+   <nd ref="5354893154"/>
+   <nd ref="5354893155"/>
+   <nd ref="5354893156"/>
+   <nd ref="5354893157"/>
+   <nd ref="5354893158"/>
+   <nd ref="2879025183"/>
+   <nd ref="5354893159"/>
+   <nd ref="5354893160"/>
+   <nd ref="5354893161"/>
+   <nd ref="2879025177"/>
+   <nd ref="5354893162"/>
+   <nd ref="5354893163"/>
+   <nd ref="5354893164"/>
+   <nd ref="5354893165"/>
+   <nd ref="5354893166"/>
+   <nd ref="5354893167"/>
+   <nd ref="5354893168"/>
+   <nd ref="5354893169"/>
+   <nd ref="5354893170"/>
+   <nd ref="5354893171"/>
+   <nd ref="5354893172"/>
+   <nd ref="2879025120"/>
+   <nd ref="5354893173"/>
+   <nd ref="2879024354"/>
+   <nd ref="5354893174"/>
+   <nd ref="2879022980"/>
+   <nd ref="5354893175"/>
+   <nd ref="2879022945"/>
+   <nd ref="5354893176"/>
+   <nd ref="2879022940"/>
+   <nd ref="2879022939"/>
+   <nd ref="2879023331"/>
+   <nd ref="7397873700"/>
+   <nd ref="2879024332"/>
+   <nd ref="2879024359"/>
+   <nd ref="5324671710"/>
+   <nd ref="5354893177"/>
+   <nd ref="5354893178"/>
+   <nd ref="5354893179"/>
+   <nd ref="5324671711"/>
+   <nd ref="5354893180"/>
+   <nd ref="5354893181"/>
+   <nd ref="5354893182"/>
+   <nd ref="5354893183"/>
+   <nd ref="5354893184"/>
+   <nd ref="5354893185"/>
+   <nd ref="5354893186"/>
+   <nd ref="5354893187"/>
+   <nd ref="5354893188"/>
+   <nd ref="5354893189"/>
+   <nd ref="5324671712"/>
+   <nd ref="5354893190"/>
+   <nd ref="5354893191"/>
+   <nd ref="5324671713"/>
+   <nd ref="5354893192"/>
+   <nd ref="5354893194"/>
+   <nd ref="5354893193"/>
+   <nd ref="5354893195"/>
+   <nd ref="2879025171"/>
+   <nd ref="5354893196"/>
+   <nd ref="2879025181"/>
+   <nd ref="5354893197"/>
+   <nd ref="5354893198"/>
+   <nd ref="5354893199"/>
+   <nd ref="5354893200"/>
+   <nd ref="5354893201"/>
+   <nd ref="5354893202"/>
+   <nd ref="5354893203"/>
+   <nd ref="5324671714"/>
+   <nd ref="5354893204"/>
+   <nd ref="5354893205"/>
+   <nd ref="5354893206"/>
+   <nd ref="5354893207"/>
+   <nd ref="5324671715"/>
+   <nd ref="5354893208"/>
+   <nd ref="5354893209"/>
+   <nd ref="5354893210"/>
+   <nd ref="5354893211"/>
+   <nd ref="5354893212"/>
+   <nd ref="5324671716"/>
+   <nd ref="5324671717"/>
+   <nd ref="5354893213"/>
+   <nd ref="5354893214"/>
+   <nd ref="5324671718"/>
+   <nd ref="5324671719"/>
+   <nd ref="5354893220"/>
+   <nd ref="5354893216"/>
+   <nd ref="5324671720"/>
+   <nd ref="5354893215"/>
+   <nd ref="5324671721"/>
+   <nd ref="5354893217"/>
+   <nd ref="5354893218"/>
+   <nd ref="5354893219"/>
+   <nd ref="5324671722"/>
+   <nd ref="5324671723"/>
+   <nd ref="5324671724"/>
+   <nd ref="5354893321"/>
+   <nd ref="5354893322"/>
+   <nd ref="5324671725"/>
+   <nd ref="5354893323"/>
+   <nd ref="5354893324"/>
+   <nd ref="5354893325"/>
+   <nd ref="5354893326"/>
+   <nd ref="5324671726"/>
+   <nd ref="5354893327"/>
+   <nd ref="5354893328"/>
+   <nd ref="5354893329"/>
+   <nd ref="5354893330"/>
+   <nd ref="5324671727"/>
+   <nd ref="5324671728"/>
+   <nd ref="5354893331"/>
+   <nd ref="5324671729"/>
+   <nd ref="2879025199"/>
+   <nd ref="5324671730"/>
+   <nd ref="5354893332"/>
+   <nd ref="5354893333"/>
+   <nd ref="2879025186"/>
+   <nd ref="5324671731"/>
+   <nd ref="5354893335"/>
+   <nd ref="5354893336"/>
+   <nd ref="5354893334"/>
+   <nd ref="5354893337"/>
+   <nd ref="5324671732"/>
+   <nd ref="5354893338"/>
+   <nd ref="2879025174"/>
+   <nd ref="5324671733"/>
+   <nd ref="5324671734"/>
+   <nd ref="5354893339"/>
+   <nd ref="5354893340"/>
+   <nd ref="5354893341"/>
+   <nd ref="2879025180"/>
+   <nd ref="5354893342"/>
+   <nd ref="5354893343"/>
+   <nd ref="5354893344"/>
+   <nd ref="5354893345"/>
+   <nd ref="2879025191"/>
+   <nd ref="5354893346"/>
+   <nd ref="5354893347"/>
+   <nd ref="5354893348"/>
+   <nd ref="5324671735"/>
+   <nd ref="5354893349"/>
+   <nd ref="5354893350"/>
+   <nd ref="5354893351"/>
+   <nd ref="2879025304"/>
+   <nd ref="5354893352"/>
+   <nd ref="5354893353"/>
+   <nd ref="5354893354"/>
+   <nd ref="5354893355"/>
+   <nd ref="5324671736"/>
+   <nd ref="5354893356"/>
+   <nd ref="5354893357"/>
+   <nd ref="5324671737"/>
+   <nd ref="5354893358"/>
+   <nd ref="5354893359"/>
+   <nd ref="2879025325"/>
+   <nd ref="5354893360"/>
+   <nd ref="5354893361"/>
+   <nd ref="5354893362"/>
+   <nd ref="2879025335"/>
+   <nd ref="5354893363"/>
+   <nd ref="5354893364"/>
+   <nd ref="5354893365"/>
+   <nd ref="5324671738"/>
+   <nd ref="5354893366"/>
+   <nd ref="5354893367"/>
+   <nd ref="5354893368"/>
+   <nd ref="5324671739"/>
+   <nd ref="5354893369"/>
+   <nd ref="5354893370"/>
+   <nd ref="2879025374"/>
+   <nd ref="5354893371"/>
+   <nd ref="5354893372"/>
+   <nd ref="5324671740"/>
+   <nd ref="5354893373"/>
+   <nd ref="5324671741"/>
+   <nd ref="5354893374"/>
+   <nd ref="5324671742"/>
+   <nd ref="5354893375"/>
+   <nd ref="5354893376"/>
+   <nd ref="5324671743"/>
+   <nd ref="5354893377"/>
+   <nd ref="2879025355"/>
+   <nd ref="5354893378"/>
+   <nd ref="5354893379"/>
+   <nd ref="5354893380"/>
+   <nd ref="2879025341"/>
+   <nd ref="5354893381"/>
+   <nd ref="5354893382"/>
+   <nd ref="5354893383"/>
+   <nd ref="2879025332"/>
+   <nd ref="5354893384"/>
+   <nd ref="5354893385"/>
+   <nd ref="5354893387"/>
+   <nd ref="5354893389"/>
+   <nd ref="5354893388"/>
+   <nd ref="5354893386"/>
+   <nd ref="5354893390"/>
+   <nd ref="5354893393"/>
+   <nd ref="5354893391"/>
+   <nd ref="5354893392"/>
+   <nd ref="5354893394"/>
+   <nd ref="5354893395"/>
+   <nd ref="5354893396"/>
+   <nd ref="5354893397"/>
+   <nd ref="5354893398"/>
+   <nd ref="5354893399"/>
+   <nd ref="5354893400"/>
+   <nd ref="5354893401"/>
+   <nd ref="2879025316"/>
+   <nd ref="5354893402"/>
+   <nd ref="5354893403"/>
+   <nd ref="5354893404"/>
+   <nd ref="5354893405"/>
+   <nd ref="5324671744"/>
+   <nd ref="5354893406"/>
+   <nd ref="5354893407"/>
+   <nd ref="5354893408"/>
+   <nd ref="5324671745"/>
+   <nd ref="5354893409"/>
+   <nd ref="5354893410"/>
+   <nd ref="5354893411"/>
+   <nd ref="5354893412"/>
+   <nd ref="5324671746"/>
+   <nd ref="5354893413"/>
+   <nd ref="5354893414"/>
+   <nd ref="5324671747"/>
+   <nd ref="5354893415"/>
+   <nd ref="5354893416"/>
+   <nd ref="5354893419"/>
+   <nd ref="5354893418"/>
+   <nd ref="5354893417"/>
+   <nd ref="5324671748"/>
+   <nd ref="5354893420"/>
+   <nd ref="5354893421"/>
+   <nd ref="5324671749"/>
+   <nd ref="5354893422"/>
+   <nd ref="5324671750"/>
+   <nd ref="5354893423"/>
+   <nd ref="5354893424"/>
+   <nd ref="5324671751"/>
+   <nd ref="5354893425"/>
+   <nd ref="5354893426"/>
+   <nd ref="5354893427"/>
+   <nd ref="5324671752"/>
+   <nd ref="5354893432"/>
+   <nd ref="5354893431"/>
+   <nd ref="5354893430"/>
+   <nd ref="5354893429"/>
+   <nd ref="5354893428"/>
+   <nd ref="5354893433"/>
+   <nd ref="5354893434"/>
+   <nd ref="5354893435"/>
+   <nd ref="5324671753"/>
+   <nd ref="5354893436"/>
+   <nd ref="5354893438"/>
+   <nd ref="5354893437"/>
+   <nd ref="5354893439"/>
+   <nd ref="5354893440"/>
+   <nd ref="5354893441"/>
+   <nd ref="5324671754"/>
+   <nd ref="5354893442"/>
+   <nd ref="5354893443"/>
+   <nd ref="5324671755"/>
+   <nd ref="5354893444"/>
+   <nd ref="5354893445"/>
+   <nd ref="5354893446"/>
+   <nd ref="5354893447"/>
+   <nd ref="5354893448"/>
+   <nd ref="5354893449"/>
+   <nd ref="5324671756"/>
+   <nd ref="5354893450"/>
+   <nd ref="5354893451"/>
+   <nd ref="5354893452"/>
+   <nd ref="5354893454"/>
+   <nd ref="5354893453"/>
+   <nd ref="5324671757"/>
+   <nd ref="5354893456"/>
+   <nd ref="5354893455"/>
+   <nd ref="5324671758"/>
+   <nd ref="5354893460"/>
+   <nd ref="5354893463"/>
+   <nd ref="5354893461"/>
+   <nd ref="5354893462"/>
+   <nd ref="5354893457"/>
+   <nd ref="5324671759"/>
+   <nd ref="5354893458"/>
+   <nd ref="5354893459"/>
+   <nd ref="5324671760"/>
+   <nd ref="5354893464"/>
+   <nd ref="5354893465"/>
+   <nd ref="5354893466"/>
+   <nd ref="5324671761"/>
+   <nd ref="5354893467"/>
+   <nd ref="5354893468"/>
+   <nd ref="5354893471"/>
+   <nd ref="5354893469"/>
+   <nd ref="5324671762"/>
+   <nd ref="5354893470"/>
+   <nd ref="5324671763"/>
+   <nd ref="5354893472"/>
+   <nd ref="5324671764"/>
+   <nd ref="5324640924"/>
+   <nd ref="5354893474"/>
+   <nd ref="5354893475"/>
+   <nd ref="5354893476"/>
+   <nd ref="5354893477"/>
+   <nd ref="5354893478"/>
+   <nd ref="5354893479"/>
+   <nd ref="5354893480"/>
+   <nd ref="5354893481"/>
+   <nd ref="5354893482"/>
+   <nd ref="5354893483"/>
+   <nd ref="5354893484"/>
+   <nd ref="5354893473"/>
+   <nd ref="5354893485"/>
+   <nd ref="5354893486"/>
+   <nd ref="5354893487"/>
+   <nd ref="5354893488"/>
+   <nd ref="5354893489"/>
+   <nd ref="5354893490"/>
+   <nd ref="5354893491"/>
+   <nd ref="5354893492"/>
+   <nd ref="5354893493"/>
+   <nd ref="5354893494"/>
+   <nd ref="5354893495"/>
+   <nd ref="5354893496"/>
+   <nd ref="5354893497"/>
+   <nd ref="5354893498"/>
+   <nd ref="5354893499"/>
+   <nd ref="5354893500"/>
+   <nd ref="5324671765"/>
+   <nd ref="5324671766"/>
+   <nd ref="5354893501"/>
+   <nd ref="5354893502"/>
+   <nd ref="5354893503"/>
+   <nd ref="5354893505"/>
+   <nd ref="5354893506"/>
+   <nd ref="5354893504"/>
+   <nd ref="5354893507"/>
+   <nd ref="5354893508"/>
+   <nd ref="5354893509"/>
+   <nd ref="5354893510"/>
+   <nd ref="5324671767"/>
+   <nd ref="5354893511"/>
+   <nd ref="5354893512"/>
+   <nd ref="5324671768"/>
+   <nd ref="5354893513"/>
+   <nd ref="5354893514"/>
+   <nd ref="5354893515"/>
+   <nd ref="5354893516"/>
+   <nd ref="5354893517"/>
+   <nd ref="5354893518"/>
+   <nd ref="5354893519"/>
+   <nd ref="5324671769"/>
+   <nd ref="5354893520"/>
+   <nd ref="5354893521"/>
+   <nd ref="5354893522"/>
+   <nd ref="5354893523"/>
+   <nd ref="5354893524"/>
+   <nd ref="5354893525"/>
+   <nd ref="5354893526"/>
+   <nd ref="5354893527"/>
+   <nd ref="5324671770"/>
+   <nd ref="5354893528"/>
+   <nd ref="5354893529"/>
+   <nd ref="5324671771"/>
+   <nd ref="5354893532"/>
+   <nd ref="5354893531"/>
+   <nd ref="5354893530"/>
+   <nd ref="5354893534"/>
+   <nd ref="5354893535"/>
+   <nd ref="5354893536"/>
+   <nd ref="5354893537"/>
+   <nd ref="5354893533"/>
+   <nd ref="5354893538"/>
+   <nd ref="5354893539"/>
+   <nd ref="5354893540"/>
+   <nd ref="5354893541"/>
+   <nd ref="5324671772"/>
+   <nd ref="5354893542"/>
+   <nd ref="5354893543"/>
+   <nd ref="5354893544"/>
+   <nd ref="5354893545"/>
+   <nd ref="5324671773"/>
+   <nd ref="5354893546"/>
+   <nd ref="5354893547"/>
+   <nd ref="5324671774"/>
+   <nd ref="5354893548"/>
+   <nd ref="5354893549"/>
+   <nd ref="5324671775"/>
+   <nd ref="5354893550"/>
+   <nd ref="5354893551"/>
+   <nd ref="5354893552"/>
+   <nd ref="5324671776"/>
+   <nd ref="5354893553"/>
+   <nd ref="5354893554"/>
+   <nd ref="5324671777"/>
+   <nd ref="5354893555"/>
+   <nd ref="5354893556"/>
+   <nd ref="5354893557"/>
+   <nd ref="5354893558"/>
+   <nd ref="5324671778"/>
+   <nd ref="5354893560"/>
+   <nd ref="5354893563"/>
+   <nd ref="5354893562"/>
+   <nd ref="5354893561"/>
+   <nd ref="5354893559"/>
+   <nd ref="5354893564"/>
+   <nd ref="5324671779"/>
+   <nd ref="5354893566"/>
+   <nd ref="5354893567"/>
+   <nd ref="5354893568"/>
+   <nd ref="5354893569"/>
+   <nd ref="5354893565"/>
+   <nd ref="5354893570"/>
+   <nd ref="5354893571"/>
+   <nd ref="5354893572"/>
+   <nd ref="5324671780"/>
+   <nd ref="5354893573"/>
+   <nd ref="5354893574"/>
+   <nd ref="5354893575"/>
+   <nd ref="5354893576"/>
+   <nd ref="5354893577"/>
+   <nd ref="5354893578"/>
+   <nd ref="5354893579"/>
+   <nd ref="5354893580"/>
+   <nd ref="5354893581"/>
+   <nd ref="5324671781"/>
+   <nd ref="5324671782"/>
+   <nd ref="5324671783"/>
+   <nd ref="5354893582"/>
+   <nd ref="5354893583"/>
+   <nd ref="5354893584"/>
+   <nd ref="5324671784"/>
+   <nd ref="5354893585"/>
+   <nd ref="5324671785"/>
+   <nd ref="5354893586"/>
+   <nd ref="5354893587"/>
+   <nd ref="5324671786"/>
+   <nd ref="5354893588"/>
+   <nd ref="5324671787"/>
+   <nd ref="5354893599"/>
+   <nd ref="5354893589"/>
+   <nd ref="2879024313"/>
+   <nd ref="5354893590"/>
+   <nd ref="5354893598"/>
+   <nd ref="5324671788"/>
+   <nd ref="5354893591"/>
+   <nd ref="5354893594"/>
+   <nd ref="5354893593"/>
+   <nd ref="5354893597"/>
+   <nd ref="5354893596"/>
+   <nd ref="5354893595"/>
+   <nd ref="5354893592"/>
+   <nd ref="5354893600"/>
+   <nd ref="5354893601"/>
+   <nd ref="5324671789"/>
+   <nd ref="5354893602"/>
+   <nd ref="5354893603"/>
+   <nd ref="5354893604"/>
+   <nd ref="5324671790"/>
+   <nd ref="5324671791"/>
+   <nd ref="5354893605"/>
+   <nd ref="5354893606"/>
+   <nd ref="5324671792"/>
+   <nd ref="5354893607"/>
+   <nd ref="5354893608"/>
+   <nd ref="5354893609"/>
+   <nd ref="5324671793"/>
+   <nd ref="5354893610"/>
+   <nd ref="5354893611"/>
+   <nd ref="5354893612"/>
+   <nd ref="5354893613"/>
+   <nd ref="5354893614"/>
+   <nd ref="5354893615"/>
+   <nd ref="5324671794"/>
+   <nd ref="5354893616"/>
+   <nd ref="5354893617"/>
+   <nd ref="5354893618"/>
+   <nd ref="5354893619"/>
+   <nd ref="5354893620"/>
+   <nd ref="5324671795"/>
+   <nd ref="5354893621"/>
+   <nd ref="5354893622"/>
+   <nd ref="5324671796"/>
+   <nd ref="5324671797"/>
+   <nd ref="5354893623"/>
+   <nd ref="5324671798"/>
+   <nd ref="5354893624"/>
+   <nd ref="5354893625"/>
+   <nd ref="5354893626"/>
+   <nd ref="5354893627"/>
+   <nd ref="5354893628"/>
+   <nd ref="5354893629"/>
+   <nd ref="5354893630"/>
+   <nd ref="5354893631"/>
+   <nd ref="5324671799"/>
+   <nd ref="5354893632"/>
+   <nd ref="5324671800"/>
+   <nd ref="5354893633"/>
+   <nd ref="5354893634"/>
+   <nd ref="2879022997"/>
+   <nd ref="2879024361"/>
+   <nd ref="2879024368"/>
+   <nd ref="2879024357"/>
+   <nd ref="5324671801"/>
+   <nd ref="5324671802"/>
+   <nd ref="5324671803"/>
+   <nd ref="5324671804"/>
+   <nd ref="5324671805"/>
+   <nd ref="5324671806"/>
+   <nd ref="5324671807"/>
+   <nd ref="5324671808"/>
+   <nd ref="5324671809"/>
+   <nd ref="5324671810"/>
+   <nd ref="5324671811"/>
+   <nd ref="5324671812"/>
+   <nd ref="5324671813"/>
+   <nd ref="5324671814"/>
+   <nd ref="5324671815"/>
+   <nd ref="5324671816"/>
+   <nd ref="5324671817"/>
+   <nd ref="2879024377"/>
+   <nd ref="5324671818"/>
+   <nd ref="5324671819"/>
+   <nd ref="5324671820"/>
+   <nd ref="5324671821"/>
+   <nd ref="5324671822"/>
+   <nd ref="5324671823"/>
+   <nd ref="5324671824"/>
+   <nd ref="7119072628"/>
+   <nd ref="5324671825"/>
+   <nd ref="5324671826"/>
+   <nd ref="5324671827"/>
+   <nd ref="5324671828"/>
+   <nd ref="5324671829"/>
+   <nd ref="5324671830"/>
+   <nd ref="5324671831"/>
+   <nd ref="5324671832"/>
+   <nd ref="5324671833"/>
+   <nd ref="5324671834"/>
+   <nd ref="5324671835"/>
+   <nd ref="5324671836"/>
+   <nd ref="5324671837"/>
+   <nd ref="5324671838"/>
+   <nd ref="5324671839"/>
+   <nd ref="5324671840"/>
+   <nd ref="5324671841"/>
+   <nd ref="5324671842"/>
+   <nd ref="5324671843"/>
+   <nd ref="5324671844"/>
+   <nd ref="5324671845"/>
+   <nd ref="5324671846"/>
+   <nd ref="5324671847"/>
+   <nd ref="5324671848"/>
+   <nd ref="5324671849"/>
+   <nd ref="5324671850"/>
+   <nd ref="5324671851"/>
+   <nd ref="5324671852"/>
+   <nd ref="5324671853"/>
+   <nd ref="5324671854"/>
+   <nd ref="5324671855"/>
+   <nd ref="5324671856"/>
+   <nd ref="5324671857"/>
+   <nd ref="5324671858"/>
+   <nd ref="5324671859"/>
+   <nd ref="5324671860"/>
+   <nd ref="5324671861"/>
+   <nd ref="5324671862"/>
+   <nd ref="5324671863"/>
+   <nd ref="5324671864"/>
+   <nd ref="5324671865"/>
+   <nd ref="5324671866"/>
+   <nd ref="5324671867"/>
+   <nd ref="5324671868"/>
+   <nd ref="5324671869"/>
+   <nd ref="5324671870"/>
+   <nd ref="5324671871"/>
+   <nd ref="5324671872"/>
+   <nd ref="5324671873"/>
+   <nd ref="5324671874"/>
+   <nd ref="5324671875"/>
+   <nd ref="5324671876"/>
+   <nd ref="5324671877"/>
+   <nd ref="5324671878"/>
+   <nd ref="5324671879"/>
+   <nd ref="5324671880"/>
+   <nd ref="5324671881"/>
+   <nd ref="5324671882"/>
+   <nd ref="5324671883"/>
+   <nd ref="5324671884"/>
+   <nd ref="5324671885"/>
+   <nd ref="5324671886"/>
+   <nd ref="5324671887"/>
+   <nd ref="5324671888"/>
+   <nd ref="7119072599"/>
+   <nd ref="5324671889"/>
+   <nd ref="5324671890"/>
+   <nd ref="5324671891"/>
+   <nd ref="5324671892"/>
+   <nd ref="5324671893"/>
+   <nd ref="5324671894"/>
+   <nd ref="5324671895"/>
+   <nd ref="5324671896"/>
+   <nd ref="5324671897"/>
+   <nd ref="5324671898"/>
+   <nd ref="5324671899"/>
+   <nd ref="5324671900"/>
+   <nd ref="5324671901"/>
+   <nd ref="5324671902"/>
+   <nd ref="5324671903"/>
+   <nd ref="5324671904"/>
+   <nd ref="5324671905"/>
+   <nd ref="5324671906"/>
+   <nd ref="5324671907"/>
+   <nd ref="5324671908"/>
+   <nd ref="5324671909"/>
+   <nd ref="5324671910"/>
+   <nd ref="5324671911"/>
+   <nd ref="5324671912"/>
+   <nd ref="5324671913"/>
+   <nd ref="5324671914"/>
+   <nd ref="5324671915"/>
+   <nd ref="5324671916"/>
+   <nd ref="5324671917"/>
+   <nd ref="5324671918"/>
+   <nd ref="5324671919"/>
+   <nd ref="5324671920"/>
+   <nd ref="5324671921"/>
+   <nd ref="5324671922"/>
+   <nd ref="5324671923"/>
+   <nd ref="5324671924"/>
+   <nd ref="5324671925"/>
+   <nd ref="2879020975"/>
+   <nd ref="2879022952"/>
+   <nd ref="5324671926"/>
+   <nd ref="5324671927"/>
+   <nd ref="5324671928"/>
+   <nd ref="5324671929"/>
+   <nd ref="5324671930"/>
+   <nd ref="5324671931"/>
+   <nd ref="5324671932"/>
+   <nd ref="5324671933"/>
+   <nd ref="5324671934"/>
+   <nd ref="5324671935"/>
+   <nd ref="5324671936"/>
+   <nd ref="5324671937"/>
+   <nd ref="5324671938"/>
+   <nd ref="5324671939"/>
+   <nd ref="5324671940"/>
+   <nd ref="5324671941"/>
+   <nd ref="5324671942"/>
+   <nd ref="5324671943"/>
+   <nd ref="5324671944"/>
+   <nd ref="5324671945"/>
+   <nd ref="5324671946"/>
+   <nd ref="5324671947"/>
+   <nd ref="5324671948"/>
+   <nd ref="5324671949"/>
+   <nd ref="7119072623"/>
+   <nd ref="5324671950"/>
+   <nd ref="2879025346"/>
+   <nd ref="5324671951"/>
+   <nd ref="5324671952"/>
+   <nd ref="5324671953"/>
+   <nd ref="5324671954"/>
+   <nd ref="5324671955"/>
+   <nd ref="2879025399"/>
+   <nd ref="2879024387"/>
+   <nd ref="2879026010"/>
+   <nd ref="5324671956"/>
+   <nd ref="5324671957"/>
+   <nd ref="5324671958"/>
+   <nd ref="5324671959"/>
+   <nd ref="5324671960"/>
+   <nd ref="5324671961"/>
+   <nd ref="5324671962"/>
+   <nd ref="5324671963"/>
+   <nd ref="5324671964"/>
+   <nd ref="5324671965"/>
+   <nd ref="2879025398"/>
+   <nd ref="2879024385"/>
+   <nd ref="5324671966"/>
+   <nd ref="5324671967"/>
+   <nd ref="5324671968"/>
+   <nd ref="5324671969"/>
+   <nd ref="5324671970"/>
+   <nd ref="5324671971"/>
+   <nd ref="5324671972"/>
+   <nd ref="5324671973"/>
+   <nd ref="5324671974"/>
+   <nd ref="5324671975"/>
+   <nd ref="5324671976"/>
+   <nd ref="5324671977"/>
+   <nd ref="5324671978"/>
+   <nd ref="5324671979"/>
+   <nd ref="5324671980"/>
+   <nd ref="5324671981"/>
+   <nd ref="5324671982"/>
+   <nd ref="5324671983"/>
+   <nd ref="5324671984"/>
+   <nd ref="2879026043"/>
+   <nd ref="5324671985"/>
+   <nd ref="5324671986"/>
+   <nd ref="5324671987"/>
+   <nd ref="5324671988"/>
+   <nd ref="5324671989"/>
+   <nd ref="5324671990"/>
+   <nd ref="5324671991"/>
+   <nd ref="5324671992"/>
+   <nd ref="5324671993"/>
+   <nd ref="5324671994"/>
+   <nd ref="5324671995"/>
+   <nd ref="5324671996"/>
+   <nd ref="5324671997"/>
+   <nd ref="5324671998"/>
+   <nd ref="5324671999"/>
+   <nd ref="5324672000"/>
+   <nd ref="5324672001"/>
+   <nd ref="2879026026"/>
+   <nd ref="2879026021"/>
+   <nd ref="5324672002"/>
+   <nd ref="2879026025"/>
+   <nd ref="5324672003"/>
+   <nd ref="5324672004"/>
+   <nd ref="5324672005"/>
+   <nd ref="5324672006"/>
+   <nd ref="5324672007"/>
+   <nd ref="5324672008"/>
+   <nd ref="5324672009"/>
+   <nd ref="5324672010"/>
+   <nd ref="5324672011"/>
+   <nd ref="5324672012"/>
+   <nd ref="5324672013"/>
+   <nd ref="5324672014"/>
+   <nd ref="5324672015"/>
+   <nd ref="5324672016"/>
+   <nd ref="5324672017"/>
+   <nd ref="5324672018"/>
+   <nd ref="5324672019"/>
+   <nd ref="5324672020"/>
+   <nd ref="5324672021"/>
+   <nd ref="5324672022"/>
+   <nd ref="5324672023"/>
+   <nd ref="5324672024"/>
+   <nd ref="5324672025"/>
+   <nd ref="5324672026"/>
+   <nd ref="2879026059"/>
+   <nd ref="2879026060"/>
+   <nd ref="5324672027"/>
+   <nd ref="5324672028"/>
+   <nd ref="5324672029"/>
+   <nd ref="5324672030"/>
+   <nd ref="5324672031"/>
+   <nd ref="5324672032"/>
+   <nd ref="5324672033"/>
+   <nd ref="5324672034"/>
+   <nd ref="5324672035"/>
+   <nd ref="5324672036"/>
+   <nd ref="5324672037"/>
+   <nd ref="5324672038"/>
+   <nd ref="5324672039"/>
+   <nd ref="5324672040"/>
+   <nd ref="5324672041"/>
+   <nd ref="5324672042"/>
+   <nd ref="5324672043"/>
+   <nd ref="5324672044"/>
+   <nd ref="5324672045"/>
+   <nd ref="5324672046"/>
+   <nd ref="5324672047"/>
+   <nd ref="5324672048"/>
+   <nd ref="5324672049"/>
+   <nd ref="5324672050"/>
+   <nd ref="5324672051"/>
+   <nd ref="5324672052"/>
+   <nd ref="5324672053"/>
+   <nd ref="5324672054"/>
+   <nd ref="5324672055"/>
+   <nd ref="5324672056"/>
+   <nd ref="5324672057"/>
+   <nd ref="5324672058"/>
+   <nd ref="5324672059"/>
+   <nd ref="5324672060"/>
+   <nd ref="5324672061"/>
+   <nd ref="5324672062"/>
+   <nd ref="5324672063"/>
+   <nd ref="5324672064"/>
+   <nd ref="5324672065"/>
+   <nd ref="5324672066"/>
+   <nd ref="5324672067"/>
+   <nd ref="5324672068"/>
+   <nd ref="5324672069"/>
+   <nd ref="5324672070"/>
+   <nd ref="5324672071"/>
+   <nd ref="2879026067"/>
+   <nd ref="5324672072"/>
+   <nd ref="5324672073"/>
+   <nd ref="5324672074"/>
+   <nd ref="5324672075"/>
+   <nd ref="5324672076"/>
+   <nd ref="5324672077"/>
+   <nd ref="5324672078"/>
+   <nd ref="5324672079"/>
+   <nd ref="5324672080"/>
+   <nd ref="5324672081"/>
+   <nd ref="5324672082"/>
+   <nd ref="5324672083"/>
+   <nd ref="5324672084"/>
+   <nd ref="5324672085"/>
+   <nd ref="5324672086"/>
+   <nd ref="5324672087"/>
+   <nd ref="5324672088"/>
+   <nd ref="2879026090"/>
+   <nd ref="2879026076"/>
+   <nd ref="2879026071"/>
+   <nd ref="5324672089"/>
+   <nd ref="5324672090"/>
+   <nd ref="5324672091"/>
+   <nd ref="2879026054"/>
+   <nd ref="2879026051"/>
+   <nd ref="5324672092"/>
+   <nd ref="5324672093"/>
+   <nd ref="5324672094"/>
+   <nd ref="2879026050"/>
+   <nd ref="2879026048"/>
+   <nd ref="2879026056"/>
+   <nd ref="5324672095"/>
+   <nd ref="5324672096"/>
+   <nd ref="5324672097"/>
+   <nd ref="5324672098"/>
+   <nd ref="5324672099"/>
+   <nd ref="5324672100"/>
+   <nd ref="5324672101"/>
+   <nd ref="5324672102"/>
+   <nd ref="2879026058"/>
+   <nd ref="2879026052"/>
+   <nd ref="2879026055"/>
+   <nd ref="2879026063"/>
+   <nd ref="2879026070"/>
+   <nd ref="1116533485"/>
+   <nd ref="2879026072"/>
+   <nd ref="2879026073"/>
+   <nd ref="2879026077"/>
+   <nd ref="2879026084"/>
+   <nd ref="2879026093"/>
+   <nd ref="5324672103"/>
+   <nd ref="5324672104"/>
+   <nd ref="5324672105"/>
+   <nd ref="5324672106"/>
+   <nd ref="5324672107"/>
+   <nd ref="2879026412"/>
+   <nd ref="2879026416"/>
+   <nd ref="2879026420"/>
+   <nd ref="5324672108"/>
+   <nd ref="5324672109"/>
+   <nd ref="5324672110"/>
+   <nd ref="5324672111"/>
+   <nd ref="5324672112"/>
+   <nd ref="5324672113"/>
+   <nd ref="5324672114"/>
+   <nd ref="5324672115"/>
+   <nd ref="5324672116"/>
+   <nd ref="5324672117"/>
+   <nd ref="5324672118"/>
+   <nd ref="5324672119"/>
+   <nd ref="5324672120"/>
+   <nd ref="5324672121"/>
+   <nd ref="5324672122"/>
+   <nd ref="5324672123"/>
+   <nd ref="5324672124"/>
+   <nd ref="5324672125"/>
+   <nd ref="5324672126"/>
+   <nd ref="5324672127"/>
+   <nd ref="5324672128"/>
+   <nd ref="5324672129"/>
+   <nd ref="5324672130"/>
+   <nd ref="5324672131"/>
+   <nd ref="5324672132"/>
+   <nd ref="5324672133"/>
+   <nd ref="5324672134"/>
+   <nd ref="5324672135"/>
+   <nd ref="5324672136"/>
+   <nd ref="5324672137"/>
+   <nd ref="5324672138"/>
+   <nd ref="5324672139"/>
+   <nd ref="5324672140"/>
+   <nd ref="5324672141"/>
+   <nd ref="5324672142"/>
+   <nd ref="5324672143"/>
+   <nd ref="5324672144"/>
+   <nd ref="2879026098"/>
+   <tag k="intermittent" v="yes"/>
+   <tag k="name" v="سبخة الحامة"/>
+   <tag k="name:ar" v="سبخة الحامة"/>
+   <tag k="name:fr" v="Sebkhet El Hamma"/>
+   <tag k="natural" v="water"/>
+   <tag k="water" v="salt_lake"/>
+  </way>
+ </modify>
+</osmChange>

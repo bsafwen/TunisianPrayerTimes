@@ -1,0 +1,54 @@
+{
+  "status": "THREE_PUBLIC_PHONE_OBSERVATIONS_QUALIFIED_NOT_BOUNDARY_CERTIFICATION",
+  "createdAt": "2026-09-19T09:49:49.954830+00:00",
+  "catalogMetadataSha256": "94d9472c144b0df6ea2d473ad0018ef79dc18c1fedca5a64291849c117c14066",
+  "sourceId": "osm:way:791334742",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_way_791334742-1\\ledger.json",
+    "sha256": "da4bfa1fa9b8fda8da81a9a745b67ef9eedf3b456a081a112b45f58b052b4eec"
+  },
+  "afterLedgerSha256": "9c6bf2e6af0a29724ba196ba8193a6e345167eb871ee5fcaeb8fbccadf6d0974",
+  "observations": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_791334742-1.json",
+        "sha256": "06a5b30f25c8cbfad1bf2dd54e05f6f94f2f4c97301dc5bc3513a59daf14c0cc"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_791334742-1.png",
+        "sha256": "fc1bf07bc44312948ab06b8ece936a599b01f10e7ef837c0d5db6660d6658490"
+      },
+      "visuallyReviewed": true,
+      "qualification": "Named search explicitly produced partial matches to an unrelated Ahmed hotel; no exact locality identity established."
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_791334742-2.json",
+        "sha256": "1cf291d363fd4cdc39ebe90bafff9291d34b9d61b048713c1a39a893f194c170"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_791334742-2.png",
+        "sha256": "8426dd4171ab13f4b8e0b82f7af92b0c47081619832c498f13eb2d937464fdd9"
+      },
+      "visuallyReviewed": true,
+      "qualification": "Exact coordinates33.016928,10.630036 visible on an unnamed pin near Oued El Ghar; nearby Docteur senya label is public place context only."
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_791334742-3.json",
+        "sha256": "5c5dccf44f4783e594cbc7ab33b489cb35aead83cf159dfc5280e5584e8888f0"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_791334742-3.png",
+        "sha256": "680b3d6ad5237e699d83e709c823a94652a26d04a43620c96b3fe8afaaebb0ab"
+      },
+      "visuallyReviewed": true,
+      "qualification": "Docteur senya nearby public card explicitly categorized as garden. It does not prove exact identity with the source footprint, ownership or a neighborhood boundary."
+    }
+  ],
+  "all1258PriorObservationsPreserved": true,
+  "totalObservations": 1261,
+  "catalogFilesChanged": false,
+  "testsRun": false,
+  "apkOrAabGenerated": false
+}

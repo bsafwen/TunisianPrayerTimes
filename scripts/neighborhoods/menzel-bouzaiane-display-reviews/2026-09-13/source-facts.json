@@ -1,0 +1,1013 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_FINITE_SOURCE_AND_GROUP_EVIDENCE_NOT_STAGED",
+  "inputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "00fe0573e5e07e14994701eaa816c6e674d5147d8ae43e3b7c2dc11801941b72",
+      "bytes": 1851305
+    },
+    "geometry": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.bin",
+      "sha256": "5029c262f8f698c74cfa7acf0d302b9b65c034a4a9fb29edf0cc00fd84453053",
+      "bytes": 5536172
+    },
+    "governors": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "cb1e25d626cd6c2778e632875bf1eb305208b7ecc4b665792d141d5922e8898c",
+      "bytes": 54583
+    },
+    "retired": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/retired-localities.json",
+      "sha256": "925f50faadf3ff3eeb27d8d0fef5e4f423c9217e96690cb5bcc9bec772e3be1a",
+      "bytes": 12704
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "005b13c3e72bf1cb74a6b595f0b90a37b84371f6662263f2456064e630e86908",
+      "bytes": 579940
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "bc2f54d7f9cf40af5fdcef891ecf927629c304d7823bcd1a653a63c8cd1494e2",
+      "bytes": 553635
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "c55e9eee5d7359b87017c6b350ee001881501dffd77cd8401ec9608bbd78967e",
+      "bytes": 402923
+    },
+    "coordinates": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/prayer-source-coordinates.json",
+      "sha256": "b65c08b99bb7fe6e04bf26fee9c9253ca4206fbcb3e065bd892cb64c7a42904c",
+      "bytes": 126610
+    },
+    "boundaries": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-boundaries.json",
+      "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421",
+      "bytes": 90241
+    },
+    "coverage": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coverage.json",
+      "sha256": "8d401463db4dabba3e655b2be0c19c2513566461d3a9a9d60b8abfd461876637",
+      "bytes": 1062318
+    },
+    "originalInventory": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "registry": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "originalNodeResponse": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/source-coordinates/candidate-town-nodes-live.json",
+      "sha256": "49be026dd6719b1261ce12e8929468e7a81c974cfa4076ae90d797f413b25979",
+      "bytes": 5629
+    },
+    "publicScreenshot": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/phone-maps-review/osm_relation_7169630-1.png",
+      "sha256": "7f02ef9368b21a9551f7858cc056ed046b6b096b05f3622c95aa4b0ca52feee5",
+      "bytes": 1497382
+    },
+    "availability": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/three-published-reference-impact-20260913/availability-evidence.json",
+      "sha256": "31e4a934803862409405e93378906118d257c15c4069531a7084d6277a3b8b99",
+      "bytes": 98566
+    }
+  },
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "epochQualification": "Captured post-Hichria live inputs are historical research pins. Degache or any later integration must carry this unchanged local closure and resolve shared pins afresh.",
+  "base": {
+    "id": 510,
+    "nomFr": "Menzel Bouzayane",
+    "nomAr": "منزل بو زيان",
+    "nomEn": "Menzel Bouzayane",
+    "lat": 34.5731138,
+    "lng": 9.4269175
+  },
+  "acceptedCoordinateCorrection510": {
+    "delegationId": 510,
+    "expectedGovernorateId": 355,
+    "expectedNames": {
+      "nomAr": "منزل بو زيان",
+      "nomFr": "Menzel Bouzayane",
+      "nomEn": "Menzel Bouzayane"
+    },
+    "reviewedDate": "2026-09-07",
+    "original": {
+      "lat": 34.6308,
+      "lng": 9.4117
+    },
+    "originalProvenance": "Legacy bundled source asset identified by originalSourceAsset.sha256; external coordinate provenance was not documented.",
+    "proposed": {
+      "lat": 34.5731138,
+      "lng": 9.4269175
+    },
+    "movedKm": 6.563885464245662,
+    "osm": {
+      "id": "osm:node:7371710998",
+      "url": "https://www.openstreetmap.org/node/7371710998",
+      "apiUrl": "https://api.openstreetmap.org/api/0.6/node/7371710998.json",
+      "version": 3,
+      "timestamp": "2021-02-02T00:59:52Z",
+      "name": "منزل بوزيان",
+      "place": "village"
+    },
+    "geonames": {
+      "id": 13132701,
+      "name": "Menzel Bouzaiane",
+      "lat": 34.5732,
+      "lng": 9.42567,
+      "featureClass": "P",
+      "featureCode": "PPL",
+      "modified": "2024-12-02",
+      "url": "https://www.geonames.org/13132701",
+      "distanceToProposedKm": 0.11462027547268014
+    },
+    "phoneVisualReview": {
+      "reviewedDate": "2026-09-07",
+      "decision": "approved_settlement_reference",
+      "reportSha256": "82b22b7ba0ea11646cd01043b561e51f74f71d4b11ce6525c658a2f006a9cbdb",
+      "observation": "The proposed pin sits on P14 in the dense street network labelled Menzel Bouzaiane; its address card agrees.",
+      "exactCoordinateCertified": false,
+      "boundaryVerified": false
+    }
+  },
+  "originalVillageElement": {
+    "type": "node",
+    "id": 7371710998,
+    "lat": 34.5731138,
+    "lon": 9.4269175,
+    "timestamp": "2021-02-02T00:59:52Z",
+    "version": 3,
+    "changeset": 98539602,
+    "user": "user_11422772",
+    "uid": 11422772,
+    "tags": {
+      "name": "منزل بوزيان",
+      "name:ar": "منزل بوزيان",
+      "name:en": "Menzel Bouzaiane",
+      "name:fr": "Menzel Bouzaiane",
+      "place": "village",
+      "postal_code": "9114"
+    }
+  },
+  "sourceAssertions": [
+    {
+      "id": "osm:node:7371704678",
+      "kind": "neighbourhood",
+      "tags": {
+        "name": "الإعتزاز",
+        "name:ar": "الإعتزاز",
+        "name:en": "El Aatizez",
+        "name:fr": "El Aatizez",
+        "place": "neighbourhood"
+      },
+      "geometrySha256": "80c65b73f9abd3f5a38c894a0ca8e0432522988a4ad7427568b045bc25234b2d",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:node:7371710998",
+      "kind": "village",
+      "tags": {
+        "name": "منزل بوزيان",
+        "name:ar": "منزل بوزيان",
+        "name:en": "Menzel Bouzaiane",
+        "name:fr": "Menzel Bouzaiane",
+        "place": "village",
+        "postal_code": "9114"
+      },
+      "geometrySha256": "f2c48828ecb3815a9b75d6a9f9aa9485af9cff4ac901f17990b04e5732ef2bf2",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:node:8257614460",
+      "kind": "village",
+      "tags": {
+        "name": "القلال",
+        "name:ar": "القلال",
+        "name:en": "El Gallel",
+        "name:fr": "El Gallel",
+        "place": "village"
+      },
+      "geometrySha256": "ee710a3e3a15f6c646e141599506d758e20e7c1eb19a2dd7cbc35440b3857b12",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:1435831",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-43",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Sidi Bouzid",
+        "boundary": "administrative",
+        "name": "ولاية سيدي بوزيد",
+        "name:ar": "ولاية سيدي بوزيد",
+        "name:az": "Sidi-Bu-Zid (vilayət)",
+        "name:azb": "سیدی بوزید",
+        "name:be": "Сідзі-Бу-Зід (вілает)",
+        "name:be-tarask": "Сідзі-Бу-Зід (вілает)",
+        "name:bg": "Сиди Бузид (област)",
+        "name:ca": "Governació de Sidi Bou Zid",
+        "name:ceb": "Gouvernorat de Sidi Bouzid",
+        "name:cy": "Sidi Bouzid (talaith)",
+        "name:de": "Sayyidi Buzaid",
+        "name:el": "Σιντί Μπουζίντ (Κυβερνείο)",
+        "name:en": "Sidi Bouzid",
+        "name:es": "Gobernación de Sidi Bouzid",
+        "name:fa": "سیدی بوزید",
+        "name:fi": "Sidi Bouzid (kuvernementti)",
+        "name:fr": "Gouvernorat Sidi Bouzid",
+        "name:frr": "Sidi Bouzid (Guwernement)",
+        "name:id": "Kegubernuran Sidi Bou Said",
+        "name:it": "Sidi Bouzid",
+        "name:ja": "シディブジッド県",
+        "name:kab": "سيدي بوزيد",
+        "name:ko": "시디부지드주",
+        "name:ks": "سیدی بوزید",
+        "name:ms": "Kawasan kegabenoran Sidi Bou Said",
+        "name:nl": "Sidi Bouzid (gouvernement)",
+        "name:no": "Sidi Bouzid (guvernement)",
+        "name:pl": "Gubernatorstwo Sidi Bu Zajd",
+        "name:pt": "Sidi Bouzid (província)",
+        "name:ro": "Guvernoratul Sidi Bouzid",
+        "name:ru": "Сиди-Бу-Зид (вилайет)",
+        "name:sco": "Sidi Bou Zid Govrenorate",
+        "name:sh": "Sidi Bouzid (vilajet)",
+        "name:tr": "Sidi Bu Zeyd ili",
+        "name:uk": "Сіді-Бузід (вілаєт)",
+        "name:ur": "سیدی بوزید",
+        "name:zh": "西迪布濟德省",
+        "name:zu": "Sidi Bouzid Governorate",
+        "official_name": "ولاية سيدي بوزيد",
+        "official_name:ar": "ولاية سيدي بوزيد",
+        "official_name:en": "Sidi Bouzid Governorate",
+        "official_name:fa": "استان سیدی بوزید",
+        "official_name:fr": "Gouvernorat de Sidi Bouzid",
+        "official_name:it": "Governatorato di Sidi Bouzid",
+        "official_name:ur": "ولایت سیدی بوزید",
+        "population": "429912",
+        "population:date": "2014",
+        "ref:tn:codegeo": "43",
+        "wikidata": "Q327097",
+        "wikipedia": "ar:ولاية سيدي بوزيد"
+      },
+      "geometrySha256": "88ff6be1cfb347db8e3d59ef3b116ac618248a9a382b492daee3fd16e8491d07",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169593",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Menzel Bouzaiane",
+        "boundary": "administrative",
+        "name": "معتمدية منزل بوزيان",
+        "name:ar": "معتمدية منزل بوزيان",
+        "name:fr": "Délégation Menzel Bouzaïane",
+        "ref:tn:codegeo": "4357",
+        "ref:tn:hasc_2": "TN.SZ.MB",
+        "wikidata": "Q3306137"
+      },
+      "geometrySha256": "6cd5b188f07dc6457a79ee830b69180ce23cc76bb895df481e576ee55b558a4c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169623",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العمران",
+        "name:ar": "العمران",
+        "name:fr": "El Omrane",
+        "ref:tn:codegeo": "435757"
+      },
+      "geometrySha256": "7f78a915d8997b028824f2e8bcbf6df01a42f276ed82fe35376f78d50f15305c",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169625",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العمرية",
+        "name:ar": "العمرية",
+        "name:fr": "El Omria",
+        "ref:tn:codegeo": "435756"
+      },
+      "geometrySha256": "8d2273f07109127cb3c99a0f94e164be9a18bfefd0d2d234f39ed284e5efe94d",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169626",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الخروبة",
+        "name:ar": "الخروبة",
+        "name:fr": "El Kharrouba",
+        "ref:tn:codegeo": "435755"
+      },
+      "geometrySha256": "68142ddce8f055ff0d191df8c30ad6db07044d61811e3a20061b5940d11618e2",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169627",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الخرشف",
+        "name:ar": "الخرشف",
+        "name:fr": "El Khorchef",
+        "ref:tn:codegeo": "435754"
+      },
+      "geometrySha256": "926c12ca674b6246be96f6165347c05de665a74ea1b2f4bc6da4a733881602e4",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169628",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القلال",
+        "name:ar": "القلال",
+        "name:fr": "El Gallel",
+        "ref:tn:codegeo": "435753"
+      },
+      "geometrySha256": "6701137cbffb8895126d6d655cfc120c55acafd1c82ef96d164f77447e3e63b5",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169629",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النوامر",
+        "name:ar": "النوامر",
+        "name:fr": "En-Nouamer",
+        "ref:tn:codegeo": "435752"
+      },
+      "geometrySha256": "d9749e2d8579076bd246ac33b8398003596234d59f2afe4885cd1d6a13abfb23",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7169630",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "منزل بوزيان",
+        "name:ar": "منزل بوزيان",
+        "name:fr": "Menzel Bouzaiane",
+        "name:kab": "Menzel Buzeyyan",
+        "ref:tn:codegeo": "435751"
+      },
+      "geometrySha256": "9231731be21ecae196af031655a401e9cae4e28d8074a2b1ac8b6439c70c6674",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:way:170079232",
+      "kind": "residential",
+      "tags": {
+        "landuse": "residential",
+        "name": "منزل بوزيان",
+        "name:ar": "منزل بوزيان",
+        "name:fr": "Menzel Bouzaiane",
+        "name:kab": "Menzel Buzeyyan"
+      },
+      "geometrySha256": "a5ac3fff1d9c45200b780a7e46e8b05f14fa9d9ed537a3a6c4ac19c0ebff9e9a",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:way:192749364",
+      "kind": "residential",
+      "tags": {
+        "landuse": "residential",
+        "name": "الإعتزاز",
+        "name:ar": "الإعتزاز",
+        "name:fr": "El Aatizez"
+      },
+      "geometrySha256": "aacbb722728ef4e81d139caa54ac0251bc17967e95e9295b5d3be46e092feab2",
+      "expectedCuration": null
+    }
+  ],
+  "currentRaw": [
+    {
+      "id": "osm:relation:7169623",
+      "sourceId": "osm",
+      "name": "العمران",
+      "aliases": [
+        "El Omrane"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.534265,
+      "lng": 9.408895,
+      "delegationId": 510,
+      "hasBoundary": true,
+      "bbox": [
+        9.296494,
+        34.48005,
+        9.483094,
+        34.58764
+      ],
+      "areaKm2": 112.52674055785418,
+      "pickerGroupId": "osm:relation:7169623",
+      "offset": 4020408,
+      "length": 2388
+    },
+    {
+      "id": "osm:relation:7169625",
+      "sourceId": "osm",
+      "name": "العمرية",
+      "aliases": [
+        "El Omria"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.619485,
+      "lng": 9.319933,
+      "delegationId": 510,
+      "hasBoundary": true,
+      "bbox": [
+        9.254797,
+        34.56627,
+        9.367293,
+        34.67527
+      ],
+      "areaKm2": 63.324793421105525,
+      "pickerGroupId": "osm:relation:7169625",
+      "offset": 4024136,
+      "length": 1604
+    },
+    {
+      "id": "osm:relation:7169626",
+      "sourceId": "osm",
+      "name": "الخروبة",
+      "aliases": [
+        "El Kharrouba"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.671565,
+      "lng": 9.427835,
+      "delegationId": 510,
+      "hasBoundary": true,
+      "bbox": [
+        9.356195,
+        34.62126,
+        9.52078,
+        34.72013
+      ],
+      "areaKm2": 87.47118616592712,
+      "pickerGroupId": "osm:relation:7169626",
+      "offset": 4025740,
+      "length": 1188
+    },
+    {
+      "id": "osm:relation:7169627",
+      "sourceId": "osm",
+      "name": "الخرشف",
+      "aliases": [
+        "El Khorchef"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.71392,
+      "lng": 9.51199,
+      "delegationId": 505,
+      "hasBoundary": true,
+      "bbox": [
+        9.412854,
+        34.65107,
+        9.564053,
+        34.7768
+      ],
+      "areaKm2": 94.30669654710242,
+      "pickerGroupId": "osm:relation:7169627",
+      "offset": 4026928,
+      "length": 2124
+    },
+    {
+      "id": "osm:relation:7169628",
+      "sourceId": "osm",
+      "name": "القلال",
+      "aliases": [
+        "El Gallel"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.695375,
+      "lng": 9.349164,
+      "delegationId": 1522,
+      "hasBoundary": true,
+      "bbox": [
+        9.263205,
+        34.63154,
+        9.439229,
+        34.76043
+      ],
+      "areaKm2": 92.57852823871077,
+      "pickerGroupId": "osm:relation:7169628",
+      "offset": 4029052,
+      "length": 1900
+    },
+    {
+      "id": "osm:relation:7169629",
+      "sourceId": "osm",
+      "name": "النوامر",
+      "aliases": [
+        "En-Nouamer"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.609435,
+      "lng": 9.428348,
+      "delegationId": 510,
+      "hasBoundary": true,
+      "bbox": [
+        9.34387,
+        34.56763,
+        9.524574,
+        34.65107
+      ],
+      "areaKm2": 105.05514555393863,
+      "pickerGroupId": "osm:relation:7169629",
+      "offset": 4030952,
+      "length": 1180
+    },
+    {
+      "id": "osm:relation:7169630",
+      "sourceId": "osm",
+      "name": "منزل بوزيان",
+      "aliases": [
+        "Menzel Bouzaiane",
+        "Menzel Buzeyyan"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.56963,
+      "lng": 9.417792,
+      "delegationId": 510,
+      "hasBoundary": true,
+      "bbox": [
+        9.413628,
+        34.56481,
+        9.442923,
+        34.574315
+      ],
+      "areaKm2": 1.0736418015965854,
+      "pickerGroupId": "osm:relation:7169630",
+      "offset": 4032132,
+      "length": 548
+    },
+    {
+      "id": "osm:way:170079232",
+      "sourceId": "osm",
+      "name": "منزل بوزيان",
+      "aliases": [
+        "Menzel Bouzaiane",
+        "Menzel Buzeyyan"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية منزل بوزيان",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "Menzel Bouzaiane",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.575518,
+      "lng": 9.430558,
+      "delegationId": 510,
+      "hasBoundary": true,
+      "bbox": [
+        9.416893,
+        34.568103,
+        9.442874,
+        34.583705
+      ],
+      "areaKm2": 2.0119038664196083,
+      "pickerGroupId": "osm:relation:7169630",
+      "offset": 5290544,
+      "length": 572
+    },
+    {
+      "id": "osm:way:192749364",
+      "sourceId": "osm",
+      "name": "الإعتزاز",
+      "aliases": [
+        "El Aatizez"
+      ],
+      "kind": "residential",
+      "parentName": "النوامر",
+      "contextAliases": [
+        "Délégation Menzel Bouzaïane",
+        "En-Nouamer",
+        "Menzel Bouzaiane",
+        "النوامر",
+        "معتمدية منزل بوزيان"
+      ],
+      "governorateId": 355,
+      "lat": 34.579632,
+      "lng": 9.477714,
+      "delegationId": 510,
+      "hasBoundary": true,
+      "bbox": [
+        9.473476,
+        34.577198,
+        9.481952,
+        34.583881
+      ],
+      "areaKm2": 0.482324976787041,
+      "pickerGroupId": "osm:way:192749364",
+      "offset": 5355376,
+      "length": 76
+    }
+  ],
+  "allSevenOfficialSectors": [
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4357",
+      "delegationFr": "Menzel bouzaienne",
+      "delegationAr": "منزل بوزيان",
+      "sectorCode": "435751",
+      "sectorFr": "Menzel bouzaiane",
+      "sectorAr": "منزل بوزيان",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55622,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2716,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2711
+      }
+    },
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4357",
+      "delegationFr": "Menzel bouzaienne",
+      "delegationAr": "منزل بوزيان",
+      "sectorCode": "435752",
+      "sectorFr": "En-nouamer",
+      "sectorAr": "النوامر",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55656,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2718,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2713
+      }
+    },
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4357",
+      "delegationFr": "Menzel bouzaienne",
+      "delegationAr": "منزل بوزيان",
+      "sectorCode": "435753",
+      "sectorFr": "Kallel",
+      "sectorAr": "قلال",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55690,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2720,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2715
+      }
+    },
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4357",
+      "delegationFr": "Menzel bouzaienne",
+      "delegationAr": "منزل بوزيان",
+      "sectorCode": "435754",
+      "sectorFr": "El khorchef",
+      "sectorAr": "الخرشف",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55724,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2722,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2717
+      }
+    },
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4357",
+      "delegationFr": "Menzel bouzaienne",
+      "delegationAr": "منزل بوزيان",
+      "sectorCode": "435755",
+      "sectorFr": "El kharrouba",
+      "sectorAr": "الخروبة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55758,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2724,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2719
+      }
+    },
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4357",
+      "delegationFr": "Menzel bouzaienne",
+      "delegationAr": "منزل بوزيان",
+      "sectorCode": "435756",
+      "sectorFr": "El omria",
+      "sectorAr": "العمرية",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55792,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2726,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2721
+      }
+    },
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4357",
+      "delegationFr": "Menzel bouzaienne",
+      "delegationAr": "منزل بوزيان",
+      "sectorCode": "435757",
+      "sectorFr": "El omrane",
+      "sectorAr": "العمران",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55826,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2727,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2722
+      }
+    }
+  ],
+  "sourceNamePeerIds": [
+    "osm:node:7371710998",
+    "osm:relation:7169593",
+    "osm:relation:7169630",
+    "osm:way:170079232"
+  ],
+  "rawClosurePredicate": {
+    "governorateId": 355,
+    "parentOrContextAlias": "معتمدية منزل بوزيان",
+    "expectedIds": [
+      "osm:relation:7169623",
+      "osm:relation:7169625",
+      "osm:relation:7169626",
+      "osm:relation:7169627",
+      "osm:relation:7169628",
+      "osm:relation:7169629",
+      "osm:relation:7169630",
+      "osm:way:170079232",
+      "osm:way:192749364"
+    ]
+  },
+  "sourceOnlyAbsentIds": [
+    "osm:node:7371704678",
+    "osm:node:7371710998",
+    "osm:node:8257614460"
+  ],
+  "sourceVillageInsideBothOriginalAndPackedMembers": true,
+  "bothWholeMemberSourcesInsideDelegation4357": true,
+  "sourceOverlapFractions": {
+    "fractionOfSector": 0.6997308993764938,
+    "fractionOfResidential": 0.37337192771982153
+  },
+  "packedGeometrySha256": {
+    "osm:way:192749364": "5f5570712b5379bcbeff5991c60c7e083fcede0bc1ede0a97c32a6269b8379db",
+    "osm:relation:7169626": "115253088b5a4d89aafeed0a1fe98dd59189f204beb2cec74a72834f8b95943f",
+    "osm:relation:7169629": "c5a6b90caf8984e319c11154d0c739a7fbe41f66fea8d855a3d2b7ae8edc67e9",
+    "osm:relation:7169630": "67e0ee927fb23a5e02db529cf514336f335ed914b0cb18cb3ef0fd4a2aedd5e4",
+    "osm:relation:7169623": "0b48189f3b8ee022c92c0d73f68057e0df9a2347befcc4d3b38c78e6ef0b66ef",
+    "osm:relation:7169628": "15d5c04dcbae35988e69589e9f992c88f02e7be39a71dabdc2a30d635ee039f3",
+    "osm:relation:7169625": "82538b79a29f14f6aa8be316150e5df54bf1ee56879ebd3682b3bdf0b052be0e",
+    "osm:way:170079232": "1be9b6746b1c393aa2dc204b17e9d28faed07b2acac0013fba5d094891c0796e",
+    "osm:relation:7169627": "c754659ad3eaa96e94401b99622e078c841fb9394ec4293c719256ff2ff00547"
+  },
+  "nearestAtEveryProtectedRawPoint": {
+    "osm:way:192749364": {
+      "sourceId": 510,
+      "distanceKm": 4.706793514636149
+    },
+    "osm:relation:7169626": {
+      "sourceId": 510,
+      "distanceKm": 10.9475958830785
+    },
+    "osm:relation:7169629": {
+      "sourceId": 510,
+      "distanceKm": 4.040855393570424
+    },
+    "osm:relation:7169630": {
+      "sourceId": 510,
+      "distanceKm": 0.920965552204821
+    },
+    "osm:relation:7169623": {
+      "sourceId": 510,
+      "distanceKm": 4.624360351631819
+    },
+    "osm:relation:7169628": {
+      "sourceId": 1522,
+      "distanceKm": 15.059293828371553
+    },
+    "osm:relation:7169625": {
+      "sourceId": 510,
+      "distanceKm": 11.0671300046184
+    },
+    "osm:way:170079232": {
+      "sourceId": 510,
+      "distanceKm": 0.42727668250920275
+    },
+    "osm:relation:7169627": {
+      "sourceId": 505,
+      "distanceKm": 15.008731598728117
+    }
+  },
+  "expectedBeforeGroups": [
+    {
+      "id": "delegation:510",
+      "memberIds": [
+        "delegation:510"
+      ]
+    },
+    {
+      "id": "osm:relation:7169623",
+      "memberIds": [
+        "osm:relation:7169623"
+      ]
+    },
+    {
+      "id": "osm:relation:7169625",
+      "memberIds": [
+        "osm:relation:7169625"
+      ]
+    },
+    {
+      "id": "osm:relation:7169626",
+      "memberIds": [
+        "osm:relation:7169626"
+      ]
+    },
+    {
+      "id": "osm:relation:7169627",
+      "memberIds": [
+        "osm:relation:7169627"
+      ]
+    },
+    {
+      "id": "osm:relation:7169628",
+      "memberIds": [
+        "osm:relation:7169628"
+      ]
+    },
+    {
+      "id": "osm:relation:7169629",
+      "memberIds": [
+        "osm:relation:7169629"
+      ]
+    },
+    {
+      "id": "osm:relation:7169630",
+      "memberIds": [
+        "osm:relation:7169630",
+        "osm:way:170079232"
+      ]
+    },
+    {
+      "id": "osm:way:192749364",
+      "memberIds": [
+        "osm:way:192749364"
+      ]
+    }
+  ],
+  "expectedAfterGroups": [
+    {
+      "id": "delegation:510",
+      "memberIds": [
+        "delegation:510",
+        "osm:relation:7169630",
+        "osm:way:170079232"
+      ]
+    },
+    {
+      "id": "osm:relation:7169623",
+      "memberIds": [
+        "osm:relation:7169623"
+      ]
+    },
+    {
+      "id": "osm:relation:7169625",
+      "memberIds": [
+        "osm:relation:7169625"
+      ]
+    },
+    {
+      "id": "osm:relation:7169626",
+      "memberIds": [
+        "osm:relation:7169626"
+      ]
+    },
+    {
+      "id": "osm:relation:7169627",
+      "memberIds": [
+        "osm:relation:7169627"
+      ]
+    },
+    {
+      "id": "osm:relation:7169628",
+      "memberIds": [
+        "osm:relation:7169628"
+      ]
+    },
+    {
+      "id": "osm:relation:7169629",
+      "memberIds": [
+        "osm:relation:7169629"
+      ]
+    },
+    {
+      "id": "osm:way:192749364",
+      "memberIds": [
+        "osm:way:192749364"
+      ]
+    }
+  ],
+  "publicContext": {
+    "requestedWholeScreenshot": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/phone-maps-review/osm_relation_7169630-1.png",
+      "sha256": "7f02ef9368b21a9551f7858cc056ed046b6b096b05f3622c95aa4b0ca52feee5",
+      "bytes": 1497382
+    },
+    "personallyViewed": true,
+    "finding": "Exact Menzel Bouzaiane / منزل بوزيان place card and outlined street grid. Contextual identity corroboration only; no Google vertices or polygon equality inferred.",
+    "additionalRootViewedObservations": [
+      {
+        "record": "outputs/phone-maps-review/osm_relation_7169630-2.json",
+        "sha256": "bacefb74366e7b4547cfadd56ff2a7a9335cbc6bbd3265fce6d2d5bdc92c387a",
+        "pngSha256": "15c4dd1525035e76a3872ece8cad2cb9f4ceb24049cd7a725afac9c312694b32",
+        "qualification": "Root reported exact sector-coordinate query returns named place card/street grid; not independently accessed here."
+      },
+      {
+        "record": "outputs/phone-maps-review/osm_relation_7169630-3.json",
+        "sha256": "dc9786d5435cc4a414180316818419b49f41340910793ef05cbb9b91d8cb0762",
+        "pngSha256": "737e6cfc72e22f7001c1cd37448d40bc23fae7eda67c2509e36107b27a761fee",
+        "qualification": "Root reported accepted village/reference coordinate query returns P14 Menzel Bouzaiane; not independently accessed here."
+      }
+    ]
+  },
+  "existingSeparationReason": "Automatic base matching only accepts emitted town rows. The shared source village is absorbed, while both surviving members are sector/residential. No explicit distinct-choice or hold rule was found.",
+  "currentCompilerObstacle": {
+    "baseStrictKey": "منزل بو زيان",
+    "rawStrictKey": "منزل بوزيان",
+    "finding": "Word-preserving primary comparison rejects the existing spelling difference; do not change global normalization or either stored label."
+  },
+  "preservationQualification": "No polygon repair, new surveyed boundary, locality deletion, source coordinate change or naming change is proposed."
+}

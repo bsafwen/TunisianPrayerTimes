@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "status": "AUTHORITATIVE_ORIGINAL_SOURCE_CROSSCHECK_PASS",
+  "sourceComponent": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/maison-agricole791334742-exclusion-proposal-20260919/proposal.json",
+    "sha256": "117fde8e8d48832eed27ac675e59fa585c31439145c47f76c8e39b8f92924ab4"
+  },
+  "authoritativeOriginalInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "pbf": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+    "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd"
+  },
+  "earlierCache": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/geo/osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "checks": [
+    {
+      "id": "osm:way:791334742",
+      "kind": "residential",
+      "tags": {
+        "landuse": "residential",
+        "name": "Maison Agricole dr Ahmed GHADNOUR"
+      },
+      "geometrySha256": "3fb510ef750acf27c5564714f7f3f19fe3d39c306444adef3c31dd38cd21b452",
+      "tagsAndFullGeometryJsonExactlyEqualToEarlierCache": true
+    },
+    {
+      "id": "osm:relation:7143860",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي الغار",
+        "name:ar": "وادي الغار",
+        "name:fr": "Oued El Ghar",
+        "ref:tn:codegeo": "535157"
+      },
+      "geometrySha256": "a261410e44d55c52e502fa08170c258f209a08e56c825466ae2847b378418c30",
+      "tagsAndFullGeometryJsonExactlyEqualToEarlierCache": true
+    },
+    {
+      "id": "osm:relation:7143811",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "boundary": "administrative",
+        "name": "معتمدية تطاوين الشمالية",
+        "name:ar": "معتمدية تطاوين الشمالية",
+        "name:fr": "Délégation Tataouine Nord",
+        "ref:tn:codegeo": "5351",
+        "ref:tn:hasc_2": "TN.TA.TN",
+        "sorting_name": "تطاوين الشمالية",
+        "sorting_name:ar": "تطاوين الشمالية",
+        "sorting_name:fr": "Tataouine Nord",
+        "wikidata": "Q3516010",
+        "wikipedia": "ar:معتمدية تطاوين الشمالية",
+        "wikipedia:ar": "معتمدية تطاوين الشمالية"
+      },
+      "geometrySha256": "7821aa4f2fbe0333f3e7fed640a21b441dc7a3dfef662863d95c711b9c7fd397",
+      "tagsAndFullGeometryJsonExactlyEqualToEarlierCache": true
+    },
+    {
+      "id": "osm:relation:1434953",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-83",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية تطاوين",
+        "name:ar": "ولاية تطاوين",
+        "name:be": "Татавін (вілает)",
+        "name:be-tarask": "Татаўін (вілает)",
+        "name:bg": "Татауин (област)",
+        "name:ca": "Governació de Tataouine",
+        "name:ceb": "Tataouine (lalawigan)",
+        "name:cy": "Tataouine (talaith)",
+        "name:de": "Gouvernement Tataouine",
+        "name:el": "Ταταουίν (Κυβερνείο)",
+        "name:en": "Tataouine",
+        "name:es": "Gobernación de Tataouine",
+        "name:fa": "تطاوین",
+        "name:fi": "Tataouine (kuvernementti)",
+        "name:fr": "Gouvernorat Tataouine",
+        "name:frr": "Tataouine (Guwernement)",
+        "name:id": "Kegubernuran Tataouine",
+        "name:it": "Tataouine",
+        "name:ja": "タタウイヌ県",
+        "name:ko": "타타우인주",
+        "name:ms": "Kawasan kegabenoran Tataouine",
+        "name:nl": "Tataouine (gouvernement)",
+        "name:no": "Tataouine (guvernement)",
+        "name:pl": "Gubernatorstwo Tatawin",
+        "name:pt": "Tataouine (província)",
+        "name:ro": "Guvernoratul Tataouine",
+        "name:ru": "Татавин (вилайет)",
+        "name:sco": "Tataouine Govrenorate",
+        "name:sh": "Tataouine (vilajet)",
+        "name:sv": "Tataouine (guvernement)",
+        "name:tr": "Tatavin ili",
+        "name:uk": "Татауїн (вілаєт)",
+        "name:ur": "تطاوین",
+        "name:zh": "泰塔溫省",
+        "name:zu": "Tataouine Governorate",
+        "official_name": "ولاية تطاوين",
+        "official_name:ar": "ولاية تطاوين",
+        "official_name:en": "Tataouine Governorate",
+        "official_name:fa": "استان تطاوین",
+        "official_name:fr": "Gouvernorat de Tataouine",
+        "official_name:it": "Governatorato di Tataouine",
+        "official_name:ur": "ولایت تطاوین",
+        "population": "143524",
+        "population:date": "2004",
+        "ref:tn:codegeo": "53",
+        "wikidata": "Q327045",
+        "wikipedia": "ar:ولاية تطاوين"
+      },
+      "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0",
+      "tagsAndFullGeometryJsonExactlyEqualToEarlierCache": true
+    }
+  ],
+  "sameNameSourceIds": [
+    "osm:way:791334742"
+  ],
+  "fullOriginalPropertyContainmentVerifiedInAllThreeContexts": true,
+  "qualification": "The earlier geo cache is not treated as current inventory authority globally. For this exact property and the three explicitly used contexts, its entire source tags and geometry JSON match the authoritative current original-PBF inventory byte-semantically. Fresh public way/nodes also matched this geometry. No scope beyond these IDs is inferred. The standalone classification and proposed exact exclusion are unchanged."
+}

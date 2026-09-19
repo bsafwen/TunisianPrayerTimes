@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "status": "SOURCE_AND_DESIGN_SUPPORTED",
+  "sourceFacts": {
+    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+    "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+  },
+  "memberIds": [
+    "osm:relation:7095859",
+    "osm:way:456466522"
+  ],
+  "canonicalName": "القباعة",
+  "proposedOwnerId": "osm:way:456466522",
+  "conclusion": "One exact existing group changes display owner to its existing village member. The official named sector and village retain independent footprints; the review neither claims full containment nor copies any Google polygon. The public card supports the canonical name only.",
+  "sourceReviewQualification": "Task-authored evidence/design synthesis. Independent compiler/proof review and root generated-output review remain required before install."
+}

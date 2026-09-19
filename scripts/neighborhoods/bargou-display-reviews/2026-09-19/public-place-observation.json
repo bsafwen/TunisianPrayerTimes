@@ -1,0 +1,37 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T08:24:00.768638+00:00",
+  "query": "Bargou, Siliana, Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "برقو"
+  ],
+  "publicUiText": [
+    "برقو",
+    "Bargou",
+    "تونس‎",
+    "الاتجاهات إلى برقو",
+    "الاتجاهات",
+    "مشاركة برقو",
+    "مشاركة",
+    "حفظ برقو في القوائم",
+    "حفظ",
+    "عرض المزيد من الإجراءات لهذا المكان",
+    "المزيد",
+    "صورة",
+    "إغلاق",
+    "Bargou, Siliana, Tunisia",
+    "محو",
+    "المطاعم",
+    "الفنادق",
+    "مَعالِم الجذب السياحي",
+    "المتنزهات"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "برقو",
+    "Bargou"
+  ],
+  "screenshot": "osm_relation_7125182-2.png",
+  "boundaryVerified": false
+}

@@ -1,0 +1,45 @@
+{
+  "municipality-about.html": {
+    "requestedUrl": "http://www.commune-smar.gov.tn/?page_id=34264",
+    "startedAt": "2026-09-19T09:12:43.623554+00:00",
+    "status": 200,
+    "finalUrl": "http://www.commune-smar.gov.tn/?page_id=34264",
+    "headers": {
+      "Date": "Sat, 19 Sep 2026 09:12:43 GMT",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Set-Cookie": "wpdiscuz_nonce_=043c6233cc; expires=Sat, 19-Sep-2026 19:12:44 GMT; Max-Age=36000; path=/; HttpOnly; SameSite=Strict",
+      "Link": "</index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+      "X-XSS-Protection": "1; mode=block",
+      "Content-Type": "text/html; charset=UTF-8",
+      "X-FRAME-OPTIONS": "SAMEORIGIN",
+      "Connection": "close"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar472-review-20260919/municipality-about.html",
+    "sha256": "336fbb734d309ad83cf4d0142799760a7b0d0fc316a7c1e2f11a8bf597be3d14",
+    "bytes": 242698,
+    "finishedAt": "2026-09-19T09:12:44.961423+00:00"
+  },
+  "interior-name-equivalence.html": {
+    "requestedUrl": "https://www.interieur.gov.tn/actualite/20115/%D8%A7%D9%84%D8%B5%D9%85%D8%A7%D8%B1-%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86-%D8%B6%D8%A8%D8%B7-%D8%B3%D9%8A%D8%A7%D8%B1%D8%AA%D9%8A%D9%86-%D9%85%D8%AD%D9%85%D9%84%D8%A9-%D8%A8%D8%A8%D8%B6%D8%A7%D8%B9%D8%A9-%D9%85%D9%87%D8%B1%D8%A8%D8%A9",
+    "startedAt": "2026-09-19T09:12:43.624554+00:00",
+    "status": 200,
+    "finalUrl": "https://www.interieur.gov.tn/actualite/20115/%D8%A7%D9%84%D8%B5%D9%85%D8%A7%D8%B1-%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86-%D8%B6%D8%A8%D8%B7-%D8%B3%D9%8A%D8%A7%D8%B1%D8%AA%D9%8A%D9%86-%D9%85%D8%AD%D9%85%D9%84%D8%A9-%D8%A8%D8%A8%D8%B6%D8%A7%D8%B9%D8%A9-%D9%85%D9%87%D8%B1%D8%A8%D8%A9",
+    "headers": {
+      "Date": "Sat, 19 Sep 2026 09:09:17 GMT",
+      "Server": "Apache",
+      "Set-Cookie": "PORTAILKF=n5t8e69ldgn77o4kta7ngv4s45; path=/; secure; HttpOnly",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Connection": "close",
+      "Content-Type": "text/html; charset=UTF-8",
+      "content-length": "48413"
+    },
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar472-review-20260919/interior-name-equivalence.html",
+    "sha256": "6be2ffcb5e88acf01d86cc7205daa9e5a4c36046521f1c7eaca4d453f97879a1",
+    "bytes": 48413,
+    "finishedAt": "2026-09-19T09:13:04.978493+00:00"
+  }
+}

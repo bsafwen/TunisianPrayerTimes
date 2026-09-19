@@ -1,0 +1,654 @@
+{
+  "status": "BOUNDED_RETAINED_DEGACHE_DISPLAY_WITH_INDEPENDENT_MANUAL_SOURCE_DESIGN_NOT_IMPLEMENTED",
+  "sourceReview": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/source-review.json",
+    "sha256": "8198e56ae25a0efbc0f24568e8a7ed687ca2a14a2cb602f058ff2dd88b225503",
+    "bytes": 9663
+  },
+  "historicalSourceFacts": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/finite-source-facts.json",
+    "sha256": "72b5b15477e82fc16684cc9bd46fc0c7a0bd0c7649aedd8788f1abbb71661309",
+    "bytes": 26724
+  },
+  "originalInventory": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "capturedInputs": {
+    "metadata": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "ef5bcb592957d3b753d21ff528a20533e80247041ff4639a23a25e1e825f2b39",
+      "bytes": 1851305
+    },
+    "governors": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4",
+      "bytes": 54584
+    },
+    "compiler": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/generate_neighborhoods.py",
+      "sha256": "a3e26c3ea0a00accd7b26406ddb4974fe6a470bdf0a29032eb51e6ea522ec2b5",
+      "bytes": 567966
+    },
+    "picker": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "b3bf51990fc77e093247db3779bdb25bb8c7a0bb9e4c11f709ac9d3f93df54de",
+      "bytes": 555426
+    },
+    "curation": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/catalog-curation.json",
+      "sha256": "1d9bd79897ad465c489eb27bd9d3ba4f67f10df29458d8c694888f0c1f87f96c",
+      "bytes": 402857
+    },
+    "coordinates": {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/prayer-source-coordinates.json",
+      "sha256": "55f9c5d0406d20e073ba887817436737ebdfb9d0c1e84967870f3eeb52bfc99e",
+      "bytes": 122296
+    },
+    "officialRegistry": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    }
+  },
+  "epochQualification": "All nine geographic rows still equal the frozen d88 source facts exactly. Captured live Dar/Sened pins are a research epoch; Hichria and subsequent coordinate/picker/proof hashes must be resolved at assembly.",
+  "currentIdentity": {
+    "displayGroupId": "delegation:478",
+    "onlyRawMember": {
+      "id": "osm:node:351582010",
+      "sourceId": "osm",
+      "name": "دقاش",
+      "aliases": [
+        "Degache",
+        "Дегаш"
+      ],
+      "kind": "town",
+      "parentName": "دقاش الجنوبية",
+      "contextAliases": [
+        "Degach Sud",
+        "Degache",
+        "Délégation Degache",
+        "دقاش الجنوبية",
+        "معتمدية دقاش"
+      ],
+      "governorateId": 352,
+      "lat": 33.9841058,
+      "lng": 8.2154584,
+      "delegationId": 478,
+      "hasBoundary": false,
+      "pickerGroupId": "delegation:478"
+    },
+    "rawTownSource": {
+      "id": "osm:node:351582010",
+      "kind": "town",
+      "tags": {
+        "name": "دقاش",
+        "name:ar": "دقاش",
+        "name:en": "Degache",
+        "name:fr": "Degache",
+        "name:ru": "Дегаш",
+        "place": "town",
+        "wikidata": "Q2499386",
+        "wikimedia_commons": "Category:Degache",
+        "wikipedia": "ar:دقاش"
+      },
+      "lat": 33.9841058,
+      "lng": 8.2154584
+    },
+    "base": {
+      "id": 478,
+      "nomFr": "Degueche",
+      "nomAr": "دقاش",
+      "nomEn": "Degueche",
+      "lat": 33.97,
+      "lng": 8.22
+    },
+    "uniqueNamedContainingDelegation": {
+      "id": "osm:relation:7154892",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Degache",
+        "boundary": "administrative",
+        "name": "معتمدية دقاش",
+        "name:ar": "معتمدية دقاش",
+        "name:fr": "Délégation Degache",
+        "ref:tn:codegeo": "6252",
+        "ref:tn:hasc_2": "TN.TO.DE",
+        "wikidata": "Q3021228"
+      },
+      "geometryCanonicalSortedSha256": "70d1dfa905f933ae37efed33bb44bb2d353a58e208a9d2aad1c4c584b2012adf",
+      "coversTownCurrentReferenceAndPublishedReference": true
+    },
+    "existingAssociation": "Automatic matching_base_delegation, not an active reviewed picker record or own curation.",
+    "automaticMatchingFailureAfterReferenceAdoption": "The town nearest changes to481, so feature.delegationId==base478.id fails. The exact named6252 delegation continues to contain both town and published478 point; source identity/containment have not failed.",
+    "directOwnCurationDecisions": [],
+    "directPickerRecords": {
+      "records": [],
+      "additionalReviewEvidence": [],
+      "localRecords": [],
+      "additionalLocalReviewEvidence": [],
+      "distinctPairs": [],
+      "cityDisplayAssociations": [],
+      "residentialDisplayAssociations": []
+    }
+  },
+  "publishedReference": {
+    "prayer": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/inm-reference-inventory-20260912/responses/prayer-478-2026-09-12.json",
+      "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+      "bytes": 523,
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+    },
+    "sunrise": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/sun-478-2026-09-12.json",
+      "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+      "bytes": 492,
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/"
+    },
+    "serviceDate": "2026-09-12",
+    "fieldPaths": [
+      "$.data.lat",
+      "$.data.lng"
+    ],
+    "rawCoordinates": {
+      "lat": "34.016",
+      "lng": " 8.273"
+    },
+    "exactNumericCoordinates": {
+      "lat": 34.016,
+      "lng": 8.273
+    },
+    "validation": "HTTP200, original bytes/hash, same delegation478/governorate352 and parent/names in three languages, date/year/active/GET and HH:MM fields verified. The prayer body is the archived morning original; the matching historical-date sunrise body was newly retrieved in this task.",
+    "semantics": "These coordinates are explicitly published daily-record fields. The delegation object names an administrative reference; the JSON does not state that the fields are the town center or establish why this point was selected. No claim of hidden server calculation inputs is made."
+  },
+  "arithmetic": {
+    "method": "Independent current3524-row haversine/distance-ID comparison; no product import or generator.",
+    "availability": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/three-published-reference-impact-20260913/availability-evidence.json",
+      "sha256": "31e4a934803862409405e93378906118d257c15c4069531a7084d6277a3b8b99",
+      "bytes": 98566
+    },
+    "currentDefaultMismatches": 0,
+    "changedDefaults": [
+      {
+        "id": "osm:relation:7154920",
+        "name": "دقاش الجنوبية",
+        "lat": 33.890245,
+        "lng": 8.247926,
+        "before": {
+          "id": 478,
+          "distanceKm": 9.235033277573923
+        },
+        "after": {
+          "id": 625,
+          "distanceKm": 11.056372410497822
+        },
+        "currentGroupId": "osm:relation:7154920"
+      },
+      {
+        "id": "osm:node:351582010",
+        "name": "دقاش",
+        "lat": 33.9841058,
+        "lng": 8.2154584,
+        "before": {
+          "id": 478,
+          "distanceKm": 1.623437014563583
+        },
+        "after": {
+          "id": 481,
+          "distanceKm": 5.272831288835677
+        },
+        "currentGroupId": "delegation:478"
+      }
+    ],
+    "townToPublished478Km": 6.380808970642665,
+    "manualResult": "Canonical display ID remains delegation:478, but selection at retained33.9841058,8.2154584 resolves source481. GPS still uses its actual fix and raw ID."
+  },
+  "preservation": {
+    "sixSectors": [
+      {
+        "id": "osm:relation:7154909",
+        "sourceId": "osm",
+        "name": "المحاسن",
+        "aliases": [
+          "El Mahassen"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.91335,
+        "lng": 8.346637,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.2416,
+          33.82348,
+          8.423543,
+          34.01921
+        ],
+        "areaKm2": 55.34497644947627,
+        "pickerGroupId": "osm:relation:7154909",
+        "offset": 3185168,
+        "length": 876,
+        "officialIdentity": {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6252",
+          "delegationFr": "Degach",
+          "delegationAr": "دقاش",
+          "sectorCode": "625254",
+          "sectorFr": "El mahassen",
+          "sectorAr": "المحاسن",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68531,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3364,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3357
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7154914",
+        "sourceId": "osm",
+        "name": "بوهلال",
+        "aliases": [
+          "Bou Helal"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.94926,
+        "lng": 8.337583,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.235598,
+          33.83469,
+          8.432435,
+          34.05751
+        ],
+        "areaKm2": 57.40572507892205,
+        "pickerGroupId": "osm:relation:7154914",
+        "offset": 3191720,
+        "length": 444,
+        "officialIdentity": {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6252",
+          "delegationFr": "Degach",
+          "delegationAr": "دقاش",
+          "sectorCode": "625255",
+          "sectorFr": "Bou helal",
+          "sectorAr": "بوهلال",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68565,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3366,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3359
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7154919",
+        "sourceId": "osm",
+        "name": "دغومس",
+        "aliases": [
+          "Dghoumes"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.958512,
+        "lng": 8.457449,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.298263,
+          33.84155,
+          8.64814,
+          34.06789
+        ],
+        "areaKm2": 468.48737708561686,
+        "pickerGroupId": "osm:relation:7154919",
+        "offset": 3194252,
+        "length": 4708,
+        "officialIdentity": {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6252",
+          "delegationFr": "Degach",
+          "delegationAr": "دقاش",
+          "sectorCode": "625258",
+          "sectorFr": "Dghoumes",
+          "sectorAr": "دغومس",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68599,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3367,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3360
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7154920",
+        "sourceId": "osm",
+        "name": "دقاش الجنوبية",
+        "aliases": [
+          "Degach Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.890245,
+        "lng": 8.247926,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.178966,
+          33.75676,
+          8.352495,
+          34.00107
+        ],
+        "areaKm2": 104.83306440866039,
+        "pickerGroupId": "osm:relation:7154920",
+        "offset": 3198960,
+        "length": 1468,
+        "officialIdentity": {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6252",
+          "delegationFr": "Degach",
+          "delegationAr": "دقاش",
+          "sectorCode": "625252",
+          "sectorFr": "Degach sud",
+          "sectorAr": "دقاش الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68463,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3361,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3354
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7154921",
+        "sourceId": "osm",
+        "name": "دقاش الشمالية",
+        "aliases": [
+          "Degach Nord"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.988975,
+        "lng": 8.221939,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.215344,
+          33.98367,
+          8.228486,
+          33.99442
+        ],
+        "areaKm2": 0.6933969581906012,
+        "pickerGroupId": "osm:relation:7154921",
+        "offset": 3200428,
+        "length": 740,
+        "officialIdentity": {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6252",
+          "delegationFr": "Degach",
+          "delegationAr": "دقاش",
+          "sectorCode": "625251",
+          "sectorFr": "Degach nord",
+          "sectorAr": "دقاش الشمالية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68429,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3360,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3353
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7154923",
+        "sourceId": "osm",
+        "name": "سبع آبار",
+        "aliases": [
+          "Sabaa Abar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دقاش",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.903675,
+        "lng": 8.30006,
+        "delegationId": 478,
+        "hasBoundary": true,
+        "bbox": [
+          8.212077,
+          33.77988,
+          8.408994,
+          34.02209
+        ],
+        "areaKm2": 151.3224399353294,
+        "pickerGroupId": "osm:relation:7154923",
+        "offset": 3202588,
+        "length": 1828,
+        "officialIdentity": {
+          "governorateCode": "62",
+          "governorateFr": "Tozeur",
+          "governorateAr": "توزر",
+          "delegationCode": "6252",
+          "delegationFr": "Degach",
+          "delegationAr": "دقاش",
+          "sectorCode": "625253",
+          "sectorFr": "Sebaa abar",
+          "sectorAr": "سبع آبار",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 68497,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3362,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3355
+          }
+        }
+      }
+    ],
+    "threeSeparatePointRows": [
+      {
+        "id": "osm:node:351581998",
+        "sourceId": "osm",
+        "name": "بوهلال",
+        "aliases": [
+          "Bou Helal"
+        ],
+        "kind": "hamlet",
+        "parentName": "المحاسن",
+        "contextAliases": [
+          "Degache",
+          "Délégation Degache",
+          "El Mahassen",
+          "المحاسن",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 34.0099439,
+        "lng": 8.2689451,
+        "delegationId": 478,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:351581998"
+      },
+      {
+        "id": "osm:node:351582010",
+        "sourceId": "osm",
+        "name": "دقاش",
+        "aliases": [
+          "Degache",
+          "Дегаш"
+        ],
+        "kind": "town",
+        "parentName": "دقاش الجنوبية",
+        "contextAliases": [
+          "Degach Sud",
+          "Degache",
+          "Délégation Degache",
+          "دقاش الجنوبية",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 33.9841058,
+        "lng": 8.2154584,
+        "delegationId": 478,
+        "hasBoundary": false,
+        "pickerGroupId": "delegation:478"
+      },
+      {
+        "id": "osm:node:5629636916",
+        "sourceId": "osm",
+        "name": "كريز المحسن",
+        "aliases": [
+          "Kriz El Mahassen"
+        ],
+        "kind": "village",
+        "parentName": "دغومس",
+        "contextAliases": [
+          "Degache",
+          "Dghoumes",
+          "Délégation Degache",
+          "دغومس",
+          "معتمدية دقاش"
+        ],
+        "governorateId": 352,
+        "lat": 34.0366878,
+        "lng": 8.3372594,
+        "delegationId": 478,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:5629636916"
+      }
+    ],
+    "allNineRawIds": [
+      "osm:relation:7154909",
+      "osm:relation:7154914",
+      "osm:relation:7154919",
+      "osm:relation:7154920",
+      "osm:relation:7154921",
+      "osm:relation:7154923",
+      "osm:node:351581998",
+      "osm:node:351582010",
+      "osm:node:5629636916"
+    ],
+    "publishedPointDoesNotMergeBouHelal": "osm:node:351581998",
+    "allRawIdsCoordinatesAliasesGeometryAndGroupsRetained": true,
+    "onlyDefaultChangesAllowed": {
+      "osm:relation:7154920": {
+        "before": 478,
+        "after": 625
+      },
+      "osm:node:351582010": {
+        "before": 478,
+        "after": 481
+      }
+    }
+  },
+  "smallestCoherentPath": {
+    "recommended": "Reuse the existing preserve_point / pickerBaseDisplayReview dispatch and final verifier, with one narrowly validated published-reference/manual-source option for exact town351582010→display478. Do not relax automatic matching globally.",
+    "compilerScope": [
+      "One new exact-pair option validator called by validate_reviewed_point_base_display.",
+      "Only validate_reviewed_point_base_display needs ordinary-function edits: the explicit option selects truthful retained_town_delegation_display_only identity wording; replaces its two current-town target equality checks with the separately validated expected manual source481; retains base self-nearest478 and every other source/primary/context/sector guard.",
+      "Keep matching_base_delegation, build dispatch, assign_picker_groups, metadata nearest calculation and verify_reviewed_point_base_names unchanged.",
+      "Return the existing exactPair/preservedSectors descriptor. Add the two exact other point rows through existing preservedNamePoints final verification, without using the suburb-only typedNamePeerExtension schema."
+    ],
+    "requiredOptionEvidence": [
+      "Exact town351582010, base478, governor352, retained33.9841058,8.2154584, canonical478 and independently recomputed manual481; reject all other pairs and mixed extensions.",
+      "Pin original OSM current/history and fresh source point/tags; require official primary town identity and exact code6252 delegation/three-workbook six-sector identity.",
+      "Pin and validate exact active478 INM correction with validate_inm_published_reference; published34.016,8.273 is separate from town geometry and does not rename Bou Helal.",
+      "Pin the historical automatic group and unchanged current canonical display. Post-reference rawCurrent in the existing proof schema is explicitly the projected pre-display record with default481 and own picker ID, not falsely described as already generated.",
+      "Derive exact before/after group ownership, protect all six sectors and both other named points; require no new/lost raw rows and current source/member closure.",
+      "Keep current nearest source481 recomputed over available references with distance/id ordering. Never copy the INM point onto the town or force raw default478."
+    ],
+    "sourceChanges": [
+      "Append one exact preserve_point curation with full original tags and the new display proof; no name change or raw restoration.",
+      "Append exact published478 coordinate correction and change only that governor asset coordinate pair.",
+      "Reuse existing primary originals and prepare one finite display proof with the six-sector/two-other-point context; no new boundary provider or guessed locality.",
+      "Migrate only the coordinate-manifest Bousalem proof/record and then current624/485 final-picker consumers. Existing Hichria publishedPrayerReference also becomes an operative coordinate-manifest consumer after its pending installation; preserve its exact478-independent correction and migrate that whole-manifest pin through its proof/wrapper/record hash cascade.",
+      "Late-bind all final compiler, coordinate, picker and curation pins after Hichria."
+    ],
+    "ordinaryContractWhyNotUnchanged": [
+      "validate_reviewed_point_base_display currently demands current.delegationId==target and nearest(current)==target. Degache needs481 versus display478.",
+      "The direct reviewed-picker records path requires boundary members and the same target nearest, so it cannot accept this town point unchanged.",
+      "The Dar city-display path is for an exact residential polygon and cannot be relabeled as this point contract."
+    ],
+    "noArtificialSplit": true,
+    "noNewCompilerOrProofWritten": true
+  },
+  "functionPointers": {
+    "matching_base_delegation": {
+      "line": 3262,
+      "endLine": 3277,
+      "sourceSha256": "235c2a4ee74788f7e5a2458c874749460b5479191f336bc6d4c3c38916cf54c3"
+    },
+    "validate_reviewed_point_base_display": {
+      "line": 2913,
+      "endLine": 3165,
+      "sourceSha256": "fa2ec7739fe82480a190762e5dab658e19baacd2f6c3c9eaa59d95c54b5f9baa"
+    },
+    "verify_reviewed_point_base_names": {
+      "line": 2011,
+      "endLine": 2055,
+      "sourceSha256": "810b15afea8d81d42fb953df7568cd1ce8a52220328338cafb9525bc7307fe3f"
+    },
+    "build": {
+      "line": 7373,
+      "endLine": 7726,
+      "sourceSha256": "2ac8bef2edb6a47eec604f22e2efb8bd99742f43e18bd4607b48df115c38a795"
+    }
+  },
+  "limits": [
+    "The source supports retained named-town/delegation display identity, not one settlement shared with Bou Helal or a claim that published478 coordinates are a town center.",
+    "Source6252 and sector containment are archived geometry checks, not a new legal boundary certification.",
+    "The two arithmetic changes are an independently verified preview. No actual catalog generation or adoption occurred.",
+    "A separately authorized implementation/source review should check the proposed exact option before assembly; this report is a design, not an executable proof."
+  ],
+  "execution": {
+    "phoneOrLedger": false,
+    "sourceStageOrLiveWrites": false,
+    "productImports": false,
+    "generatorOrTestsOrBuild": false
+  },
+  "producer": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-retained-display-proposal-20260913/prepare_findings.py",
+    "sha256": "5f5130904b213079ba9f13adc9bfe166bac1b3b2b693812db91505c7ab1f4281",
+    "bytes": 12236
+  }
+}

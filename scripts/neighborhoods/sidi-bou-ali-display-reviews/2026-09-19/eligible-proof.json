@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "status": "ORDINARY_CANONICAL_DISPLAY_GROUP_ELIGIBLE_PROPOSAL",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "sidi-bou-ali-display-reviews/2026-09-19/source-facts.json",
+    "sha256": "5e9c600f27c472b94d42e128adea801f5b57922baeb3a479e566247c0d0146c2"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7107795",
+      "status": "eligible_proposal",
+      "targetDelegationId": 436,
+      "targetBaseId": "delegation:436",
+      "name": "سيدي بوعلي",
+      "governorateId": 348,
+      "governorate": "سوسة",
+      "basePoint": {
+        "lat": 35.9563486,
+        "lng": 10.470397
+      },
+      "members": [
+        {
+          "id": "osm:relation:7107795",
+          "name": "سيدي بوعلي",
+          "kind": "sector",
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي بو علي",
+            "name:ar": "سيدي بو علي",
+            "name:fr": "Sidi Bou Ali",
+            "ref:tn:codegeo": "315851"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "manualPrayerSource": 436,
+          "independentNearestPrayerSource": 436,
+          "reasons": []
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:436"
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7107795",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي بو علي",
+            "name:ar": "سيدي بو علي",
+            "name:fr": "Sidi Bou Ali",
+            "ref:tn:codegeo": "315851"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:1444704293",
+          "nameTags": {
+            "name": "سيدي بوعلي",
+            "name:ar": "سيدي بوعلي",
+            "name:fr": "Sidi Bou Ali",
+            "alt_name:ar": "سيدي بو علي"
+          },
+          "reason": "Use the accepted base and official-delegation spelling سيدي بوعلي for one display identity, preserving the official-sector spelling سيدي بو علي as an Arabic alias. Both spellings identify the same source315851 sector and contained accepted village1444704293. Use that accepted source village coordinate for the grouped manual choice, preserving the sector footprint for GPS containment.",
+          "evidence": [
+            {
+              "source": "Pinned official sector/delegation record, accepted village reference and root-reviewed public locality card.",
+              "reviewFiles": [
+                {
+                  "file": "sidi-bou-ali-display-reviews/2026-09-19/source-facts.json",
+                  "sha256": "5e9c600f27c472b94d42e128adea801f5b57922baeb3a479e566247c0d0146c2"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_current_sector_name_equivalence",
+          "id": "osm:relation:7107795",
+          "sourceCode": "315851",
+          "currentCode": "315851",
+          "currentOfficialRecord": {
+            "governorateCode": "31",
+            "governorateFr": "Sousse",
+            "governorateAr": "سوسة",
+            "delegationCode": "3158",
+            "delegationFr": "Sidi bou ali",
+            "delegationAr": "سيدي بوعلي",
+            "sectorCode": "315851",
+            "sectorFr": "Sidi bou ali",
+            "sectorAr": "سيدي بو علي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33591,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1578,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1577
+            }
+          },
+          "nameEquivalence": {
+            "displayName": "سيدي بوعلي",
+            "displayParentName": "معتمدية سيدي بو علي",
+            "officialSectorAr": "سيدي بو علي",
+            "officialDelegationAr": "سيدي بوعلي"
+          },
+          "expectedCuration": {
+            "id": "osm:relation:7107795",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "سيدي بو علي",
+              "name:ar": "سيدي بو علي",
+              "name:fr": "Sidi Bou Ali",
+              "ref:tn:codegeo": "315851"
+            },
+            "action": "name_tags",
+            "manualPointId": "osm:node:1444704293",
+            "nameTags": {
+              "name": "سيدي بوعلي",
+              "name:ar": "سيدي بوعلي",
+              "name:fr": "Sidi Bou Ali",
+              "alt_name:ar": "سيدي بو علي"
+            },
+            "reason": "Use the accepted base and official-delegation spelling سيدي بوعلي for one display identity, preserving the official-sector spelling سيدي بو علي as an Arabic alias. Both spellings identify the same source315851 sector and contained accepted village1444704293. Use that accepted source village coordinate for the grouped manual choice, preserving the sector footprint for GPS containment.",
+            "evidence": [
+              {
+                "source": "Pinned official sector/delegation record, accepted village reference and root-reviewed public locality card.",
+                "reviewFiles": [
+                  {
+                    "file": "sidi-bou-ali-display-reviews/2026-09-19/source-facts.json",
+                    "sha256": "5e9c600f27c472b94d42e128adea801f5b57922baeb3a479e566247c0d0146c2"
+                  }
+                ]
+              }
+            ]
+          },
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي بو علي",
+            "name:ar": "سيدي بو علي",
+            "name:fr": "Sidi Bou Ali",
+            "ref:tn:codegeo": "315851"
+          },
+          "effectiveOriginalGeometrySha256": "a372b727a5a2e120c4cd42d9181907b965636eb4206b9909459fd406db2074ab",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7150745",
+              "sourceCode": "3158",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Sidi Bou Ali",
+                "boundary": "administrative",
+                "name": "معتمدية سيدي بو علي",
+                "name:ar": "معتمدية سيدي بو علي",
+                "name:fr": "Délégation Sidi Bou Ali",
+                "ref:tn:codegeo": "3158",
+                "ref:tn:hasc_2": "TN.SS.SB",
+                "wikidata": "Q3483198"
+              },
+              "effectiveOriginalGeometrySha256": "a63b568aa81acf3c874f8eb020c396a689fcf536e6eec695a0f91060491099c4",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ],
+          "accepted": true,
+          "reasons": []
+        }
+      ],
+      "reasons": []
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "status": "INDEPENDENT_SOURCE_AND_MECHANISM_REVIEW_SUPPORTS_EXACT_PROPOSAL",
+  "createdAt": "2026-09-19T08:53:16.871169+00:00",
+  "reviewer": "catalog_duplicate_screen",
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\khitmin-display-sourcefacts-20260919\\sourcefacts-and-mechanism.json",
+    "sha256": "29715a42705a1066a8665d3e056876dea86b0c16b70827a6047bd70140be7e58"
+  },
+  "scope": "Retain raw village1513517120 and attach its picker identity after existing strict sector7119581 to base572; no new geometry, name normalization or timetable-reference changes.",
+  "independentlyInspected": [
+    "Original9-version node response and current exact node; old BrahimBenRahal label remains historical only.",
+    "Saved original ISIE HTML confirms school الخيتمين under الختمين/العالية/بنزرت; this is identity/context corroboration, not survey geometry.",
+    "Personally viewed phone screenshot osm_node_1513517120-1.png: visible Khitmin,Bizerte query, الخيتمين/AlKhitmin place card and map label/street network. Outline is qualitative only.",
+    "Original inventory node and4officialAlia sectors, exact current raw metadata, source and packed geometry hashes, official registry identities, source and packed owner containment of both node and base.",
+    "Exact current owner572 record and existing deferredCompleteGroupExtension membership contract; current raw subgroup singleton must remain until after strict owner grouping."
+  ],
+  "conclusion": "Evidence supports one displayed locality with the precise unchanged village representative. Existing deferred extension expresses exact membership preservation; the reviewed method/kind gates must permit this village using existing settlement identity evidence.",
+  "limitations": [
+    "No phone operation, network request, generator/import, tests or build performed.",
+    "No claim that village extent equals owner sector geometry.",
+    "Compiler candidate and final executable proof were not yet supplied; this review approves the bounded identity/mechanism design, not unseen code or generated output."
+  ],
+  "sources": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\khitmin-display-sourcefacts-20260919\\isie-original.html",
+      "sha256": "dd17404e56b3fbe171ba54de2b0c563b68757d7644e03352a2cb5b86905a4494",
+      "bytes": 3715411
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1513517120-1.json",
+      "sha256": "6dd04882dfb336d54ce85ddef02a4d92a71eef62bf34f632b303cb5de467511b",
+      "bytes": 1006
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1513517120-1.png",
+      "sha256": "d30138531f5cb5a46e04def99bf3aac32b8baaf0984cd09953b07212463b5d35",
+      "bytes": 1267501
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "99a9140c0d37934edd59091f9666d59d85e9d26ef6b7f3df76c284092edddb21"
+    }
+  ],
+  "operations": {
+    "liveWrites": false,
+    "generatorRun": false,
+    "testsRun": false,
+    "buildRun": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "status": "ORDINARY_OFFICIAL_REFERENCE_SOURCE_PARTS_DISPLAY_INTEGRATION_PENDING",
+  "reviewedDate": "2026-09-13",
+  "referenceId": 478,
+  "baselineSourceStage": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/hichria-reference-source-readiness-20260913.json",
+    "sha256": "d4db01f8c796b09c6696c27aa4d135e6f285e67daf4b702c8ef1b648d2f68216",
+    "bytes": 660684
+  },
+  "sourceEpochQualification": "The input remains the frozen Hichria source stage, subsequently installed by root and identified by the pinned checkpoint. This proposal does not claim any generated Degache output.",
+  "originalPublicEvidence": {
+    "prayer": {
+      "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-prayer-478-2026-09-12.json",
+      "sha256": "93c9542f357c18638235d3e0d0ec1af2c685cb6346d763747460e40bff5a4156",
+      "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/352/478/"
+    },
+    "sun": {
+      "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/inm-sun-478-2026-09-12.json",
+      "sha256": "753d3e7f899e69dcc6ad018c129946ebd710001bb65db2722708316a3d01d3db",
+      "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/352/478/"
+    },
+    "retrievalManifest": {
+      "file": "coordinate-reviews/inm-published-degueche478-2026-09-13/original-source/retrieval-manifest.json",
+      "sha256": "3ff5d6d8a60a6519320f566e5a2e6995fd6980490f040bdb578db0b8b6068bb2"
+    }
+  },
+  "historicalWorkEvidence": {
+    "sourceReview": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/source-review.json",
+      "sha256": "8198e56ae25a0efbc0f24568e8a7ed687ca2a14a2cb602f058ff2dd88b225503",
+      "bytes": 9663
+    },
+    "sourceFacts": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/degueche-reference-review-20260913/finite-source-facts.json",
+      "sha256": "72b5b15477e82fc16684cc9bd46fc0c7a0bd0c7649aedd8788f1abbb71661309",
+      "bytes": 26724
+    }
+  },
+  "historicalWorkEvidenceQualification": "The original report retains its earlier adoption hold and distinct-settlement evidence. Root now authorized a task-local adoption proposal for the published reference while preserving true named localities; the separately reviewed display/manual proof remains a prerequisite. Workspace pins are historical provenance, not shipping-loader dependencies.",
+  "publishedDelegation": {
+    "id": 478,
+    "nomAr": "دقاش",
+    "nomFr": "Degueche",
+    "nomEn": "Degueche",
+    "governorateId": 352
+  },
+  "publishedDailyFields": {
+    "serviceDate": "2026-09-12",
+    "literalLat": "34.016",
+    "literalLng": " 8.273",
+    "lat": 34.016,
+    "lng": 8.273
+  },
+  "exactAssetFieldChanges": [
+    {
+      "delegationId": 478,
+      "governorateId": 352,
+      "field": "lat",
+      "before": 33.97,
+      "after": 34.016
+    },
+    {
+      "delegationId": 478,
+      "governorateId": 352,
+      "field": "lng",
+      "before": 8.22,
+      "after": 8.273
+    }
+  ],
+  "qualification": "Official published daily timetable reference fields corroborated by original prayer and sunrise responses. The coordinates are separate from the named data.delegation identity; they do not certify a town centre, hidden server calculation input, settlement equivalence or administrative boundary.",
+  "preservationRequirements": {
+    "namedDegacheTown": "osm:node:351582010",
+    "separateBouHelal": "osm:node:351581998",
+    "separateKriz": "osm:node:5629636916",
+    "preserveDisplayGroup": "delegation:478",
+    "noLocalityNameCoordinateGeometryOrIdentityChange": true,
+    "manualTimetableMustFollowRetainedTownRepresentative": true,
+    "publishedPointDoesNotDefineDisplayLocality": true,
+    "allCurrentSectorIdentitiesPreserved": true
+  },
+  "integrationQualification": "The compiler/display proposal must separately bind the exact correction and town representative nearest available timetable, without making false source-point containment claims. Hichria retained-display and Dar manual-selection contracts remain unchanged except necessary whole-manifest proof hashes.",
+  "installedBaselineCheckpoint": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/outputs/hichria-reference-catalog-checkpoint-20260913.json",
+    "sha256": "9c598a905f404eeb7177aa2bd0908fb141a7b5e50ec526a0492518b68bac280e",
+    "bytes": 4632
+  },
+  "baselineMetadataSha256": "00fe0573e5e07e14994701eaa816c6e674d5147d8ae43e3b7c2dc11801941b72"
+}

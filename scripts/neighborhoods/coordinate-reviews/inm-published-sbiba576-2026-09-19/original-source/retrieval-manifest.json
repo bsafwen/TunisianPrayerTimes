@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "scope": "Compiler-compatible index of unmodified original acquisitions; original manifests retained alongside.",
+  "responses": [
+    {
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/362/576/",
+      "startedAt": "2026-09-19T08:17:54.684089+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/362/576/",
+      "headers": {
+        "Date": "Sat, 19 Sep 2026 08:17:54 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "571",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "file": "sbiba-prayer-2026-09-12.json",
+      "sha256": "18d0c09a370a0d0011205ebfba2dcc1634001d44a9446c630ddf06a53280f3bf",
+      "bytes": 571,
+      "finishedAt": "2026-09-19T08:17:55.090974+00:00"
+    },
+    {
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/362/576/",
+      "startedAt": "2026-09-19T08:17:54.685120+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/362/576/",
+      "headers": {
+        "Date": "Sat, 19 Sep 2026 08:17:54 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "540",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "file": "sbiba-sun-2026-09-12.json",
+      "sha256": "f3022c108949960c4cd278074ff1ccd42ac1aec78149788dc7a4d8cce2e99de4",
+      "bytes": 540,
+      "finishedAt": "2026-09-19T08:17:55.106042+00:00"
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/2873759991.json",
+      "startedAt": "2026-09-19T08:17:54.686142+00:00",
+      "status": 200,
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/2873759991.json",
+      "headers": {
+        "Connection": "close",
+        "content-encoding": "identity",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "cache-control": "private, max-age=0, must-revalidate",
+        "content-type": "application/json; charset=utf-8",
+        "server": "Apache",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 19 Sep 2026 08:17:55 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150092-PAR, cache-par-lfpb1150076-PAR",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1789805875.043999,VS0,VE63",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "file": "sbiba-node-2873759991-current.json",
+      "sha256": "5111aaceeb2fe31c879fe2a98c2c9f67eba78c67c8a2f99c626b1f4fec2ef9ab",
+      "bytes": 803,
+      "finishedAt": "2026-09-19T08:17:54.983320+00:00"
+    },
+    {
+      "requestedUrl": "https://api.openstreetmap.org/api/0.6/node/2873759991/history.json",
+      "startedAt": "2026-09-19T08:17:54.686142+00:00",
+      "status": 200,
+      "finalUrl": "https://api.openstreetmap.org/api/0.6/node/2873759991/history.json",
+      "headers": {
+        "Connection": "close",
+        "content-encoding": "identity",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "cache-control": "private, max-age=0, must-revalidate",
+        "content-type": "application/json; charset=utf-8",
+        "server": "Apache",
+        "Accept-Ranges": "bytes",
+        "Date": "Sat, 19 Sep 2026 08:17:55 GMT",
+        "Via": "1.1 varnish",
+        "X-Served-By": "cache-par-lfpb1150048-PAR, cache-par-lfpb1150075-PAR",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1789805875.044427,VS0,VE68",
+        "Vary": "Accept-Encoding",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "transfer-encoding": "chunked"
+      },
+      "file": "sbiba-node-2873759991-history.json",
+      "sha256": "cfd2d734c705b6232cb7441c0ed6dac0217b4a30bfeeeb64cf5fedd3a0b7f6e8",
+      "bytes": 4690,
+      "finishedAt": "2026-09-19T08:17:54.990312+00:00"
+    },
+    {
+      "requestedUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/576/",
+      "startedAt": "2026-09-19T08:23:56.995103+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/576/",
+      "headers": {
+        "Date": "Sat, 19 Sep 2026 08:23:56 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "571",
+        "Content-Type": "application/json",
+        "Connection": "close"
+      },
+      "file": "sbiba-prayer-2026-09-19.json",
+      "sha256": "6ec7b78f5b23532472dc3700a54086ad2a315861f8105b379125b30cc8cbb9c9",
+      "bytes": 571,
+      "reference": {
+        "lat": "35.545",
+        "lng": " 9.072",
+        "date": "2026-09-19 00:00",
+        "active": true
+      },
+      "finishedAt": "2026-09-19T08:23:57.232978+00:00"
+    },
+    {
+      "requestedUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/576/",
+      "startedAt": "2026-09-19T08:23:56.996097+00:00",
+      "status": 200,
+      "finalUrl": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/576/",
+      "headers": {
+        "Date": "Sat, 19 Sep 2026 08:23:56 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Upgrade": "h2",
+        "Connection": "Upgrade",
+        "Cache-Control": "must-revalidate, no-cache, private",
+        "X-UA-Compatible": "IE=edge",
+        "Content-language": "fr",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+        "Vary": "",
+        "Content-Length": "540",
+        "Content-Type": "application/json"
+      },
+      "file": "sbiba-sun-2026-09-19.json",
+      "sha256": "7ec25820720f8438225d30e0bcc9acbbe4879e0786fd2abfc9af22d1db4da7c6",
+      "bytes": 540,
+      "reference": {
+        "lat": "35.545",
+        "lng": " 9.072",
+        "date": "2026-09-19 00:00",
+        "active": true
+      },
+      "finishedAt": "2026-09-19T08:23:57.263608+00:00"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T08:22:33.471186+00:00",
+  "query": "Sbiba, Kasserine, Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "سبيبة"
+  ],
+  "publicUiText": [
+    "سبيبة",
+    "Sbiba",
+    "تونس‎",
+    "الاتجاهات إلى سبيبة",
+    "الاتجاهات",
+    "مشاركة سبيبة",
+    "مشاركة",
+    "حفظ سبيبة في القوائم",
+    "حفظ",
+    "عرض المزيد من الإجراءات لهذا المكان",
+    "المزيد",
+    "صورة",
+    "إغلاق",
+    "Sbiba, Kasserine, Tunisia",
+    "محو",
+    "المطاعم",
+    "الفنادق",
+    "مَعالِم الجذب السياحي",
+    "المتنزهات"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "سبيبة",
+    "Sbiba"
+  ],
+  "screenshot": "osm_relation_7164981-1.png",
+  "boundaryVerified": false
+}

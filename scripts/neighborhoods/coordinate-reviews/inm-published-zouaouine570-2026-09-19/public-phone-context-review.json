@@ -1,0 +1,72 @@
+{
+  "status": "THREE_PUBLIC_PHONE_OBSERVATIONS_RECORDED_AND_QUALIFIED",
+  "createdAtUtc": "2026-09-19T10:25:50.901248+00:00",
+  "metadataSha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_7129263-2\\ledger.json",
+    "sha256": "3ab069166aa05e51b996f5bc8e7c5a5f86fce15202d20c8dced96cb2bf9c0c5e"
+  },
+  "afterLedgerSha256": "7fbead4ff91ca4015ef351185a26355fcdda055334184918eec386277de6ccaa",
+  "totalObservationsBefore": 1266,
+  "totalObservationsAfter": 1269,
+  "allPriorObservationsPreserved": true,
+  "reviews": [
+    {
+      "id": "osm:relation:7129263",
+      "query": "35.7672773,8.3438119",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7129263-2.json",
+        "sha256": "bfe41fdf4e5a2cc1a1c9bf0e86bb5bca7c590128f0216c7df875b61380088c58"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7129263-2.png",
+        "sha256": "8181afe562b9a838dd5771044e42b7e9955db332fdce328659b8a27ca130ae84"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Exact-coordinate query yields a dropped pin in the Kalaat town street grid, with nearby سوق قلعة سنان label. Reverse-geocoded card uses قلت -اس-سنن; that wording is not accepted as a primary spelling correction. The search coordinates are not printed in the card, so this is geographic context rather than independent coordinate certification.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7129263",
+      "query": "35.769282,8.347248",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7129263-3.json",
+        "sha256": "347a351f7f2244e4b8c2c8fb31a11136aef631e91c5964d698b30c1eb1d61e94"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7129263-3.png",
+        "sha256": "da7b8fa50044f8fe3c158f4b6bc02d0279a6369ef36a4a692ed6e77de4386de8"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Current sector representative query yields a different dropped pin near the northeastern part of the same street grid, with the same reverse-geocoded wording. This supports local context only and does not prove any boundary or equivalent precision.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7121325",
+      "query": "37.128421,10.0581544",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7121325-2.json",
+        "sha256": "27f90a7c72a9052aac368a6cd2e58ec62983d098e2a50ac0b50816509738491a"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7121325-2.png",
+        "sha256": "d934fe74d36d69af0ba746fc47bc4589ae76e532764bf0c7edc66378a21d5f35"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Zouaouine settlement-coordinate query resolves to a pharmacy POI card with Zouaouine address; the surrounding map visibly labels الزواوين. This supports vicinity and name context, not a locality card, exact coordinate match, POI/locality identity or boundary certification.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    }
+  ],
+  "captures": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\zouaouine-kalaat-phone-point-captures-20260919.json",
+    "sha256": "b701007496af3d66c3aa2dc4e297ac1aeac2edf8f1f264735094703e77826243"
+  },
+  "qualifications": "Phone observations supply geographic context. Exact manual point identities and polygon containment come from independently pinned source records; none of these screenshots certifies source polygons or every alias.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_zouaouine_kalaat_points_20260919.py",
+    "sha256": "f88416572602f7f201d11f53a0cbdf39febf0772a99f4cedf38f6a5caf873418"
+  }
+}

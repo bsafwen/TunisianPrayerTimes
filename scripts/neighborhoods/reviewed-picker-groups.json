@@ -8036,8 +8036,8 @@
       "expectedGovernorateId": 342,
       "expectedBase": {
         "nomAr": "الزهور",
-        "lat": 36.7967,
-        "lng": 10.1332
+        "lat": 36.799,
+        "lng": 10.135
       },
       "expectedExistingMemberIds": [
         "osm:relation:7201569"
@@ -8822,7 +8822,7 @@
         }
       ]
     },
-    {"id": "osm:relation:7169598", "targetDelegationId": 1522, "expectedGovernorateId": 355, "expectedBase": {"nomAr": "الهيشرية", "lat": 34.829, "lng": 9.376}, "expectedExistingMemberIds": ["osm:relation:7169598"], "expectedTargetMemberIds": ["delegation:1522"], "members": [{"id": "osm:relation:7169598", "expectedKind": "sector", "expectedSourceId": "osm", "expectedName": "الهيشرية", "expectedParentName": "معتمدية الهيشرية", "expectedDelegationId": 1522, "expectedLat": 34.895, "expectedLng": 9.40957, "expectedOriginalTags": {"admin_level": "6", "boundary": "administrative", "name": "الهيشرية", "name:ar": "الهيشرية", "name:fr": "El Hichria", "ref:tn:codegeo": "435154"}, "originalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c", "packedGeometrySha256": "b18fb8cdb817f982856a99e10e9879317c4c68da76cf2eb327e1ed4d59b3414c"}], "identityEvidence": [{"id": "osm:relation:7169598", "accepted": true, "reasons": [], "expectedOriginalTags": {"admin_level": "6", "boundary": "administrative", "name": "الهيشرية", "name:ar": "الهيشرية", "name:fr": "El Hichria", "ref:tn:codegeo": "435154"}, "effectiveOriginalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c", "method": "reviewed_current_sector_transfer", "sourceCode": "435154", "currentCode": "436451", "code": "435154", "currentOfficialRecord": {"governorateCode": "43", "governorateFr": "Sidi bouzid", "governorateAr": "سيدي بوزيد", "delegationCode": "4364", "delegationFr": "El hichria", "delegationAr": "الهيشرية", "sectorCode": "436451", "sectorFr": "El hichria", "sectorAr": "الهيشرية", "sourceRows": {"Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628, "Nombre_de_Logements_par_Secteurs.xlsx": 2822, "Nombre_de_menages_par_Secteurs.xlsx": 2817}}, "expectedCuration": {"id": "osm:relation:7169598", "expectedKind": "sector", "expectedTags": {"name:ar": "الهيشرية", "ref:tn:codegeo": "435154"}, "action": "administrative_context", "parentNames": ["معتمدية الهيشرية", "الهيشرية", "El Hichria", "El hichria"], "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4364 (El hichria), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.", "evidence": ["https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107", "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx", "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx", "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx", "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"], "reviewedOfficialSector": {"sectorCode": "436451", "sectorAr": "الهيشرية", "sectorFr": "El hichria", "delegationCode": "4364", "delegationAr": "الهيشرية", "delegationFr": "El hichria", "governorateCode": "43", "sourceRows": {"Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628, "Nombre_de_Logements_par_Secteurs.xlsx": 2822, "Nombre_de_menages_par_Secteurs.xlsx": 2817}}, "identityReview": {"oldOfficialSectorCode": "435154", "oldOfficialPages": [107], "oldParentSourceIds": ["osm:relation:7169656"], "oldParentFullyContainsSourceSector": true, "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."}, "unresolved": ["No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."]}, "nameEquivalence": {"displayName": "الهيشرية", "displayParentName": "معتمدية الهيشرية", "officialSectorAr": "الهيشرية", "officialDelegationAr": "الهيشرية"}, "originalCodedParentEvidence": [{"id": "osm:relation:7169656", "sourceCode": "4351", "expectedOriginalTags": {"admin_level": "5", "boundary": "administrative", "name": "معتمدية سيدي بوزيد الغربية", "name:ar": "معتمدية سيدي بوزيد الغربية", "name:es": "Delegación Sidi Buzid Oeste", "name:fr": "Délégation Sidi Bouzid Ouest", "ref:tn:codegeo": "4351", "ref:tn:hasc_2": "TN.SZ.SO", "sorting_name": "سيدي بوزيد الغربية", "sorting_name:ar": "سيدي بوزيد الغربية", "sorting_name:es": "Sidi Buzid Oeste"}, "effectiveOriginalGeometrySha256": "ffb474834ef27e20c7c823860f163a14a6c1cb77f141aa1a32db0e18590c55d3", "containsSourceSector": true, "containsEveryGroupMember": true}], "sourceVintageEvidence": {"oldSourceCode": "435154", "oldOfficialRows": [{"code": "435154", "nameFr": "EL Hichria", "nameAr": "الهيشرية", "delegationHeading": "Delegation Sidi Bouzid Ouest Code secteur", "page": 107}], "isie2022MembershipEvidence": [{"governorate": "سيدي بوزيد", "delegation": "سيدي بوزيد الغربية", "sector": "الهيشرية", "pages": [53]}], "currentCode": "436451", "finding": "Existing curation already includes reviewedOfficialSector436451 and old435154 identity evidence, INS2012 p107 and all three current tables. The grouping proposal read the retained raw code instead of this accepted crosswalk.", "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."}}], "retainedDisplayReference": {"schemaVersion": 1, "method": "reviewed_hichria_retained_display_reference", "reviewEvidence": {"file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/retained-display/hichria-retained-display-reference.json", "sha256": "00163a7a42c1e71ff9311cd39a43e5f3a694961e39161f189bc14cab4ae9fb62"}}},
+    {"id": "osm:relation:7169598", "targetDelegationId": 1522, "expectedGovernorateId": 355, "expectedBase": {"nomAr": "الهيشرية", "lat": 34.829, "lng": 9.376}, "expectedExistingMemberIds": ["osm:relation:7169598"], "expectedTargetMemberIds": ["delegation:1522"], "members": [{"id": "osm:relation:7169598", "expectedKind": "sector", "expectedSourceId": "osm", "expectedName": "الهيشرية", "expectedParentName": "معتمدية الهيشرية", "expectedDelegationId": 1522, "expectedLat": 34.895, "expectedLng": 9.40957, "expectedOriginalTags": {"admin_level": "6", "boundary": "administrative", "name": "الهيشرية", "name:ar": "الهيشرية", "name:fr": "El Hichria", "ref:tn:codegeo": "435154"}, "originalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c", "packedGeometrySha256": "b18fb8cdb817f982856a99e10e9879317c4c68da76cf2eb327e1ed4d59b3414c"}], "identityEvidence": [{"id": "osm:relation:7169598", "accepted": true, "reasons": [], "expectedOriginalTags": {"admin_level": "6", "boundary": "administrative", "name": "الهيشرية", "name:ar": "الهيشرية", "name:fr": "El Hichria", "ref:tn:codegeo": "435154"}, "effectiveOriginalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c", "method": "reviewed_current_sector_transfer", "sourceCode": "435154", "currentCode": "436451", "code": "435154", "currentOfficialRecord": {"governorateCode": "43", "governorateFr": "Sidi bouzid", "governorateAr": "سيدي بوزيد", "delegationCode": "4364", "delegationFr": "El hichria", "delegationAr": "الهيشرية", "sectorCode": "436451", "sectorFr": "El hichria", "sectorAr": "الهيشرية", "sourceRows": {"Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628, "Nombre_de_Logements_par_Secteurs.xlsx": 2822, "Nombre_de_menages_par_Secteurs.xlsx": 2817}}, "expectedCuration": {"id": "osm:relation:7169598", "expectedKind": "sector", "expectedTags": {"name:ar": "الهيشرية", "ref:tn:codegeo": "435154"}, "action": "administrative_context", "parentNames": ["معتمدية الهيشرية", "الهيشرية", "El Hichria", "El hichria"], "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4364 (El hichria), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.", "evidence": ["https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107", "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx", "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx", "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx", "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"], "reviewedOfficialSector": {"sectorCode": "436451", "sectorAr": "الهيشرية", "sectorFr": "El hichria", "delegationCode": "4364", "delegationAr": "الهيشرية", "delegationFr": "El hichria", "governorateCode": "43", "sourceRows": {"Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628, "Nombre_de_Logements_par_Secteurs.xlsx": 2822, "Nombre_de_menages_par_Secteurs.xlsx": 2817}}, "identityReview": {"oldOfficialSectorCode": "435154", "oldOfficialPages": [107], "oldParentSourceIds": ["osm:relation:7169656"], "oldParentFullyContainsSourceSector": true, "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."}, "unresolved": ["No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."]}, "nameEquivalence": {"displayName": "الهيشرية", "displayParentName": "معتمدية الهيشرية", "officialSectorAr": "الهيشرية", "officialDelegationAr": "الهيشرية"}, "originalCodedParentEvidence": [{"id": "osm:relation:7169656", "sourceCode": "4351", "expectedOriginalTags": {"admin_level": "5", "boundary": "administrative", "name": "معتمدية سيدي بوزيد الغربية", "name:ar": "معتمدية سيدي بوزيد الغربية", "name:es": "Delegación Sidi Buzid Oeste", "name:fr": "Délégation Sidi Bouzid Ouest", "ref:tn:codegeo": "4351", "ref:tn:hasc_2": "TN.SZ.SO", "sorting_name": "سيدي بوزيد الغربية", "sorting_name:ar": "سيدي بوزيد الغربية", "sorting_name:es": "Sidi Buzid Oeste"}, "effectiveOriginalGeometrySha256": "ffb474834ef27e20c7c823860f163a14a6c1cb77f141aa1a32db0e18590c55d3", "containsSourceSector": true, "containsEveryGroupMember": true}], "sourceVintageEvidence": {"oldSourceCode": "435154", "oldOfficialRows": [{"code": "435154", "nameFr": "EL Hichria", "nameAr": "الهيشرية", "delegationHeading": "Delegation Sidi Bouzid Ouest Code secteur", "page": 107}], "isie2022MembershipEvidence": [{"governorate": "سيدي بوزيد", "delegation": "سيدي بوزيد الغربية", "sector": "الهيشرية", "pages": [53]}], "currentCode": "436451", "finding": "Existing curation already includes reviewedOfficialSector436451 and old435154 identity evidence, INS2012 p107 and all three current tables. The grouping proposal read the retained raw code instead of this accepted crosswalk.", "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."}}], "retainedDisplayReference": {"schemaVersion": 1, "method": "reviewed_hichria_retained_display_reference", "reviewEvidence": {"file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/hichria-coordinate47-proof.json", "sha256": "f442c30d0d58efe1489263edee6d14b5c02bfc33c2d81877ec0c5c50b695e6d8"}}},
     {
       "id": "osm:relation:7165288",
       "targetDelegationId": 524,
@@ -9857,7 +9857,7 @@
           },
           "prayerSourceReference": {
             "file": "prayer-source-coordinates.json",
-            "sha256": "b65c08b99bb7fe6e04bf26fee9c9253ca4206fbcb3e065bd892cb64c7a42904c",
+            "sha256": "091711bafdf85d4f94a09141b555b480dadc18e8f188f0e8989c1d3162b87b9f",
             "expectedCorrection": {
               "delegationId": 499,
               "expectedGovernorateId": 354,
@@ -10609,16 +10609,1378 @@
         }
       ],
       "requiredCurations": []
+    },
+    {
+      "id": "osm:relation:7169630",
+      "targetDelegationId": 510,
+      "expectedGovernorateId": 355,
+      "expectedBase": {
+        "nomAr": "منزل بو زيان",
+        "lat": 34.5731138,
+        "lng": 9.4269175
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7169630",
+        "osm:way:170079232"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:510"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7169630",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "منزل بوزيان",
+          "expectedParentName": "معتمدية منزل بوزيان",
+          "expectedDelegationId": 510,
+          "expectedLat": 34.56963,
+          "expectedLng": 9.417792,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزيان",
+            "name:ar": "منزل بوزيان",
+            "name:fr": "Menzel Bouzaiane",
+            "name:kab": "Menzel Buzeyyan",
+            "ref:tn:codegeo": "435751"
+          },
+          "originalGeometrySha256": "9231731be21ecae196af031655a401e9cae4e28d8074a2b1ac8b6439c70c6674",
+          "packedGeometrySha256": "67e0ee927fb23a5e02db529cf514336f335ed914b0cb18cb3ef0fd4a2aedd5e4"
+        },
+        {
+          "id": "osm:way:170079232",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "منزل بوزيان",
+          "expectedParentName": "معتمدية منزل بوزيان",
+          "expectedDelegationId": 510,
+          "expectedLat": 34.575518,
+          "expectedLng": 9.430558,
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "منزل بوزيان",
+            "name:ar": "منزل بوزيان",
+            "name:fr": "Menzel Bouzaiane",
+            "name:kab": "Menzel Buzeyyan"
+          },
+          "originalGeometrySha256": "a5ac3fff1d9c45200b780a7e46e8b05f14fa9d9ed537a3a6c4ac19c0ebff9e9a",
+          "packedGeometrySha256": "1be9b6746b1c393aa2dc204b17e9d28faed07b2acac0013fba5d094891c0796e"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7169630",
+          "code": "435751",
+          "currentOfficialRecord": {
+            "governorateCode": "43",
+            "governorateFr": "Sidi bouzid",
+            "governorateAr": "سيدي بوزيد",
+            "delegationCode": "4357",
+            "delegationFr": "Menzel bouzaienne",
+            "delegationAr": "منزل بوزيان",
+            "sectorCode": "435751",
+            "sectorFr": "Menzel bouzaiane",
+            "sectorAr": "منزل بوزيان",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 55622,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2716,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2711
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منزل بوزيان",
+            "name:ar": "منزل بوزيان",
+            "name:fr": "Menzel Bouzaiane",
+            "name:kab": "Menzel Buzeyyan",
+            "ref:tn:codegeo": "435751"
+          },
+          "effectiveOriginalGeometrySha256": "9231731be21ecae196af031655a401e9cae4e28d8074a2b1ac8b6439c70c6674"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7169593",
+          "code": "4357",
+          "name": "معتمدية منزل بوزيان",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Menzel Bouzaiane",
+            "boundary": "administrative",
+            "name": "معتمدية منزل بوزيان",
+            "name:ar": "معتمدية منزل بوزيان",
+            "name:fr": "Délégation Menzel Bouzaïane",
+            "ref:tn:codegeo": "4357",
+            "ref:tn:hasc_2": "TN.SZ.MB",
+            "wikidata": "Q3306137"
+          },
+          "effectiveOriginalGeometrySha256": "6cd5b188f07dc6457a79ee830b69180ce23cc76bb895df481e576ee55b558a4c",
+          "currentOfficialRecord": {
+            "governorateCode": "43",
+            "governorateAr": "سيدي بوزيد",
+            "governorateFr": "Sidi bouzid",
+            "delegationCode": "4357",
+            "delegationAr": "منزل بوزيان",
+            "delegationFr": "Menzel bouzaienne"
+          }
+        }
+      ],
+      "reviewedSpellingEquivalence": {
+        "schemaVersion": 1,
+        "method": "reviewed_menzel_bouzaiane_spelling_equivalence",
+        "reviewEvidence": {
+          "file": "menzel-bouzaiane-display-reviews/2026-09-13/spelling-equivalence-proof.json",
+          "sha256": "b7fb40037b30ac9b5366235faac09ad336f39de5f75593d8f3fea0bfcd28bf99"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7164981",
+      "targetDelegationId": 576,
+      "expectedGovernorateId": 362,
+      "expectedBase": {
+        "nomAr": "سبيبة",
+        "lat": 35.545,
+        "lng": 9.072
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7164981",
+        "osm:way:283529700"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:576"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7164981",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "سبيبة",
+          "expectedParentName": "معتمدية سبيبة",
+          "expectedDelegationId": 576,
+          "expectedLat": 35.544765,
+          "expectedLng": 9.045793,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سبيبة",
+            "name:ar": "سبيبة",
+            "name:fr": "Sbiba",
+            "ref:tn:codegeo": "425651"
+          },
+          "originalGeometrySha256": "d6c534ac99123b79ae8630a7f6f5eacfa1351d02dc73bf45ac497fbd490fbb19",
+          "packedGeometrySha256": "cc16ddaf780a956c0c03226ff1e44078e5eb9f31ab81d12f24f80479ffdc1d42"
+        },
+        {
+          "id": "osm:way:283529700",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "سبيبة",
+          "expectedParentName": "معتمدية سبيبة",
+          "expectedDelegationId": 576,
+          "expectedLat": 35.544229,
+          "expectedLng": 9.069513,
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "سبيبة",
+            "name:ar": "سبيبة",
+            "name:en": "Sbiba",
+            "name:fr": "Sbiba",
+            "name:it": "Sbiba"
+          },
+          "originalGeometrySha256": "39bf1b506a083d295b079aa1052be1913468de20ac7b2bd60889476205c23930",
+          "packedGeometrySha256": "eff7848296592539ed870f2153cadfe390dad8a691dfd490f2e5189518994727"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7164981",
+          "code": "425651",
+          "currentOfficialRecord": {
+            "governorateCode": "42",
+            "governorateFr": "Kasserine",
+            "governorateAr": "القصرين",
+            "delegationCode": "4256",
+            "delegationFr": "Sbiba",
+            "delegationAr": "سبيبة",
+            "sectorCode": "425651",
+            "sectorFr": "Sbiba",
+            "sectorAr": "سبيبة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51475,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2498,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2493
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سبيبة",
+            "name:ar": "سبيبة",
+            "name:fr": "Sbiba",
+            "ref:tn:codegeo": "425651"
+          },
+          "effectiveOriginalGeometrySha256": "d6c534ac99123b79ae8630a7f6f5eacfa1351d02dc73bf45ac497fbd490fbb19"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7164915",
+          "code": "4256",
+          "name": "معتمدية سبيبة",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sbiba",
+            "boundary": "administrative",
+            "name": "معتمدية سبيبة",
+            "name:ar": "معتمدية سبيبة",
+            "name:fr": "Délégation Sbiba",
+            "ref:tn:codegeo": "4256",
+            "ref:tn:hasc_2": "TN.KS.SB",
+            "wikidata": "Q12243940"
+          },
+          "effectiveOriginalGeometrySha256": "ba090763c9a812114ff1a1f6c2c28a8b16c79bfd14cc1b152a70a8defc7b5c5b",
+          "currentOfficialRecord": {
+            "governorateCode": "42",
+            "governorateFr": "Kasserine",
+            "governorateAr": "القصرين",
+            "delegationCode": "4256",
+            "delegationFr": "Sbiba",
+            "delegationAr": "سبيبة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7125182",
+      "targetDelegationId": 417,
+      "expectedGovernorateId": 344,
+      "expectedBase": {
+        "nomAr": "برقو",
+        "lat": 36.0914446,
+        "lng": 9.5667337
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7125182"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:417"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7125182",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "برقو",
+          "expectedParentName": "معتمدية برقو",
+          "expectedDelegationId": 417,
+          "expectedLat": 36.092062,
+          "expectedLng": 9.567854,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "boundary": "administrative",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "ref:tn:codegeo": "246051",
+            "wikidata": "Q2884486",
+            "wikipedia": "ar:برقو"
+          },
+          "originalGeometrySha256": "f91c26b45910163cd9f87710a917d48dc8db0bee120664fd547b4ede9f129ba6",
+          "packedGeometrySha256": "edd48d5e7e06a0af91022d6bd0ba903c82ae06361bb3ffef07c6bae023d30f2b"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7125182",
+          "code": "246051",
+          "currentOfficialRecord": {
+            "governorateCode": "24",
+            "governorateFr": "Siliana",
+            "governorateAr": "سليانة",
+            "delegationCode": "2460",
+            "delegationFr": "Bargou",
+            "delegationAr": "برقو",
+            "sectorCode": "246051",
+            "sectorFr": "Bargou",
+            "sectorAr": "برقو",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 31959,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1511,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1510
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "alt_name": "البرقو",
+            "alt_name:ar": "البرقو",
+            "boundary": "administrative",
+            "name": "برقو",
+            "name:ar": "برقو",
+            "name:fr": "Bargou",
+            "old_name": "ربع أولاد يحيى",
+            "old_name:ar": "ربع أولاد يحيى",
+            "ref:tn:codegeo": "246051",
+            "wikidata": "Q2884486",
+            "wikipedia": "ar:برقو"
+          },
+          "effectiveOriginalGeometrySha256": "f91c26b45910163cd9f87710a917d48dc8db0bee120664fd547b4ede9f129ba6",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7154129",
+              "sourceCode": "2460",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Bargou",
+                "boundary": "administrative",
+                "name": "معتمدية برقو",
+                "name:ar": "معتمدية برقو",
+                "name:fr": "Délégation Bargou",
+                "ref:tn:codegeo": "2460",
+                "ref:tn:hasc_2": "TN.SL.BA",
+                "wikidata": "Q2884474"
+              },
+              "effectiveOriginalGeometrySha256": "5f6cc5fc6322a35e1354fc9c5370d1b3117e006e9f939b7fa6d88050b9f930a3",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7107795",
+      "targetDelegationId": 436,
+      "expectedGovernorateId": 348,
+      "expectedBase": {
+        "nomAr": "سيدي بوعلي",
+        "lat": 35.9563486,
+        "lng": 10.470397
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7107795"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:436"
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7107795",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي بو علي",
+            "name:ar": "سيدي بو علي",
+            "name:fr": "Sidi Bou Ali",
+            "ref:tn:codegeo": "315851"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:1444704293",
+          "nameTags": {
+            "name": "سيدي بوعلي",
+            "name:ar": "سيدي بوعلي",
+            "name:fr": "Sidi Bou Ali",
+            "alt_name:ar": "سيدي بو علي"
+          },
+          "reason": "Use the accepted base and official-delegation spelling سيدي بوعلي for one display identity, preserving the official-sector spelling سيدي بو علي as an Arabic alias. Both spellings identify the same source315851 sector and contained accepted village1444704293. Use that accepted source village coordinate for the grouped manual choice, preserving the sector footprint for GPS containment.",
+          "evidence": [
+            {
+              "source": "Pinned official sector/delegation record, accepted village reference and root-reviewed public locality card.",
+              "reviewFiles": [
+                {
+                  "file": "sidi-bou-ali-display-reviews/2026-09-19/source-facts.json",
+                  "sha256": "5e9c600f27c472b94d42e128adea801f5b57922baeb3a479e566247c0d0146c2"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7107795",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "سيدي بوعلي",
+          "expectedParentName": "معتمدية سيدي بو علي",
+          "expectedDelegationId": 436,
+          "expectedLat": 35.9563486,
+          "expectedLng": 10.470397,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي بو علي",
+            "name:ar": "سيدي بو علي",
+            "name:fr": "Sidi Bou Ali",
+            "ref:tn:codegeo": "315851"
+          },
+          "originalGeometrySha256": "a372b727a5a2e120c4cd42d9181907b965636eb4206b9909459fd406db2074ab",
+          "packedGeometrySha256": "1dddac9e5b1e0a0f73a6793f0c20d6e4244c5c8b8da92a06d0bdadcc7f7b31d0"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "reviewed_current_sector_name_equivalence",
+          "id": "osm:relation:7107795",
+          "sourceCode": "315851",
+          "currentCode": "315851",
+          "currentOfficialRecord": {
+            "governorateCode": "31",
+            "governorateFr": "Sousse",
+            "governorateAr": "سوسة",
+            "delegationCode": "3158",
+            "delegationFr": "Sidi bou ali",
+            "delegationAr": "سيدي بوعلي",
+            "sectorCode": "315851",
+            "sectorFr": "Sidi bou ali",
+            "sectorAr": "سيدي بو علي",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 33591,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1578,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1577
+            }
+          },
+          "nameEquivalence": {
+            "displayName": "سيدي بوعلي",
+            "displayParentName": "معتمدية سيدي بو علي",
+            "officialSectorAr": "سيدي بو علي",
+            "officialDelegationAr": "سيدي بوعلي"
+          },
+          "expectedCuration": {
+            "id": "osm:relation:7107795",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "سيدي بو علي",
+              "name:ar": "سيدي بو علي",
+              "name:fr": "Sidi Bou Ali",
+              "ref:tn:codegeo": "315851"
+            },
+            "action": "name_tags",
+            "manualPointId": "osm:node:1444704293",
+            "nameTags": {
+              "name": "سيدي بوعلي",
+              "name:ar": "سيدي بوعلي",
+              "name:fr": "Sidi Bou Ali",
+              "alt_name:ar": "سيدي بو علي"
+            },
+            "reason": "Use the accepted base and official-delegation spelling سيدي بوعلي for one display identity, preserving the official-sector spelling سيدي بو علي as an Arabic alias. Both spellings identify the same source315851 sector and contained accepted village1444704293. Use that accepted source village coordinate for the grouped manual choice, preserving the sector footprint for GPS containment.",
+            "evidence": [
+              {
+                "source": "Pinned official sector/delegation record, accepted village reference and root-reviewed public locality card.",
+                "reviewFiles": [
+                  {
+                    "file": "sidi-bou-ali-display-reviews/2026-09-19/source-facts.json",
+                    "sha256": "5e9c600f27c472b94d42e128adea801f5b57922baeb3a479e566247c0d0146c2"
+                  }
+                ]
+              }
+            ]
+          },
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي بو علي",
+            "name:ar": "سيدي بو علي",
+            "name:fr": "Sidi Bou Ali",
+            "ref:tn:codegeo": "315851"
+          },
+          "effectiveOriginalGeometrySha256": "a372b727a5a2e120c4cd42d9181907b965636eb4206b9909459fd406db2074ab",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7150745",
+              "sourceCode": "3158",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Sidi Bou Ali",
+                "boundary": "administrative",
+                "name": "معتمدية سيدي بو علي",
+                "name:ar": "معتمدية سيدي بو علي",
+                "name:fr": "Délégation Sidi Bou Ali",
+                "ref:tn:codegeo": "3158",
+                "ref:tn:hasc_2": "TN.SS.SB",
+                "wikidata": "Q3483198"
+              },
+              "effectiveOriginalGeometrySha256": "a63b568aa81acf3c874f8eb020c396a689fcf536e6eec695a0f91060491099c4",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ],
+          "accepted": true,
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7154916",
+      "targetDelegationId": 479,
+      "expectedGovernorateId": 352,
+      "expectedBase": {
+        "nomAr": "حزوة",
+        "lat": 33.738,
+        "lng": 7.603
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7154916",
+        "osm:way:207579215"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:479"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7154916",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "حزوة",
+          "expectedParentName": "معتمدية حزوة",
+          "expectedDelegationId": 479,
+          "expectedLat": 33.764215,
+          "expectedLng": 7.630519,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:fr": "Hazoua",
+            "ref:tn:codegeo": "625551"
+          },
+          "originalGeometrySha256": "c41fc183c98f89985c5bd35cc48a129d94bbc18ce854f48880cecd5edecae40e",
+          "packedGeometrySha256": "2e1e01b3e0d215f35c901fd83ac178f1fad3cec46735e041167e7565afe59364"
+        },
+        {
+          "id": "osm:way:207579215",
+          "expectedKind": "village",
+          "expectedSourceId": "osm",
+          "expectedName": "حزوة",
+          "expectedParentName": "معتمدية حزوة",
+          "expectedDelegationId": 479,
+          "expectedLat": 33.740709,
+          "expectedLng": 7.599514,
+          "expectedOriginalTags": {
+            "addr:city": "حزوة",
+            "landuse": "residential",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:de": "Hazwa",
+            "name:en": "Hazwa",
+            "name:fr": "Hazoua",
+            "place": "village"
+          },
+          "originalGeometrySha256": "810ea33b29bc91238d10cecb62c7fefd5188a6dd4493668636610d5403306a0b",
+          "packedGeometrySha256": "b009b55868151800ddcc32bd5e590f94fa89ad7d00d736e6964d4eb3a11a0dbe"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7154916",
+          "code": "625551",
+          "currentOfficialRecord": {
+            "governorateCode": "62",
+            "governorateFr": "Tozeur",
+            "governorateAr": "توزر",
+            "delegationCode": "6255",
+            "delegationFr": "Hazoua",
+            "delegationAr": "حزوة",
+            "sectorCode": "625551",
+            "sectorFr": "Hazoua",
+            "sectorAr": "حزوة",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69109,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3388,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3381
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "حزوة",
+            "name:ar": "حزوة",
+            "name:fr": "Hazoua",
+            "ref:tn:codegeo": "625551"
+          },
+          "effectiveOriginalGeometrySha256": "c41fc183c98f89985c5bd35cc48a129d94bbc18ce854f48880cecd5edecae40e"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7154891",
+          "code": "6255",
+          "name": "معتمدية حزوة",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Hazoua",
+            "boundary": "administrative",
+            "name": "معتمدية حزوة",
+            "name:ar": "معتمدية حزوة",
+            "name:fr": "Délégation Hazoua",
+            "ref:tn:codegeo": "6255",
+            "ref:tn:hasc_2": "TN.TO.HA",
+            "wikidata": "Q3128900"
+          },
+          "effectiveOriginalGeometrySha256": "c69702da677ecc5617960bf5f39621239e3073c8c0e2c2f4b946a2a3a3b9bb06",
+          "currentOfficialRecord": {
+            "governorateCode": "62",
+            "governorateFr": "Tozeur",
+            "governorateAr": "توزر",
+            "delegationCode": "6255",
+            "delegationFr": "Hazoua",
+            "delegationAr": "حزوة"
+          }
+        }
+      ],
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/retained-display-review.json",
+          "sha256": "1a483e5380a6523faf610606f9408be881f98b30a238e88b2bcbf8948556cd20"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7143872",
+      "targetDelegationId": 472,
+      "expectedGovernorateId": 351,
+      "expectedBase": {
+        "nomAr": "السمار",
+        "lat": 32.872,
+        "lng": 10.89
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7143872",
+        "osm:way:187313013"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:472"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7143872",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "الصمار",
+          "expectedParentName": "معتمدية الصمار",
+          "expectedDelegationId": 472,
+          "expectedLat": 33.031397,
+          "expectedLng": 10.909537,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الصمار",
+            "name:ar": "الصمار",
+            "name:fr": "Smar",
+            "ref:tn:codegeo": "535352"
+          },
+          "originalGeometrySha256": "e9332b8ca55be4a3e3bf37278b80b127daa02cb5907b5a78c705349ae0dcb3bf",
+          "packedGeometrySha256": "ece9e9f38babc0272e03dd1687d85b381ff61931786fa004d965e10e9cebfde0"
+        },
+        {
+          "id": "osm:way:187313013",
+          "expectedKind": "residential",
+          "expectedSourceId": "osm",
+          "expectedName": "الصمار",
+          "expectedParentName": "معتمدية الصمار",
+          "expectedDelegationId": 1524,
+          "expectedLat": 32.99975,
+          "expectedLng": 10.818201,
+          "expectedOriginalTags": {
+            "addr:city": "الصمار",
+            "landuse": "residential",
+            "name": "الصمار",
+            "name:ar": "الصمار",
+            "name:en": "Smar",
+            "name:fr": "Smar"
+          },
+          "originalGeometrySha256": "7a54a6b7ac7cacb1fb4266d47696ef62abf421754bf9d77c973366795c2e35e8",
+          "packedGeometrySha256": "94cda1c6c5e9c077beee62027a26d37f15784909a8c8abbd0af788d1072cd7cc"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7143872",
+          "code": "535352",
+          "currentOfficialRecord": {
+            "governorateCode": "53",
+            "governorateFr": "Tataouine",
+            "governorateAr": "تطاوين",
+            "delegationCode": "5353",
+            "delegationFr": "Smar",
+            "delegationAr": "الصمار",
+            "sectorCode": "535352",
+            "sectorFr": "Smar",
+            "sectorAr": "الصمار",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64461,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3167,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3161
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الصمار",
+            "name:ar": "الصمار",
+            "name:fr": "Smar",
+            "ref:tn:codegeo": "535352"
+          },
+          "effectiveOriginalGeometrySha256": "e9332b8ca55be4a3e3bf37278b80b127daa02cb5907b5a78c705349ae0dcb3bf",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7143836",
+              "sourceCode": "5353",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Smâr",
+                "boundary": "administrative",
+                "name": "معتمدية الصمار",
+                "name:ar": "معتمدية الصمار",
+                "name:fr": "Délégation Smâr",
+                "ref:tn:codegeo": "5353",
+                "ref:tn:hasc_2": "TN.TA.SA",
+                "wikidata": "Q3487090"
+              },
+              "effectiveOriginalGeometrySha256": "528ae4466f6defccfbf8fbe58617a20efd2623d95e8f1530a51d6503f7ba8694",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ]
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7143836",
+          "code": "5353",
+          "name": "معتمدية الصمار",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Smâr",
+            "boundary": "administrative",
+            "name": "معتمدية الصمار",
+            "name:ar": "معتمدية الصمار",
+            "name:fr": "Délégation Smâr",
+            "ref:tn:codegeo": "5353",
+            "ref:tn:hasc_2": "TN.TA.SA",
+            "wikidata": "Q3487090"
+          },
+          "effectiveOriginalGeometrySha256": "528ae4466f6defccfbf8fbe58617a20efd2623d95e8f1530a51d6503f7ba8694",
+          "currentOfficialRecord": {
+            "governorateCode": "53",
+            "governorateFr": "Tataouine",
+            "governorateAr": "تطاوين",
+            "delegationCode": "5353",
+            "delegationFr": "Smar",
+            "delegationAr": "الصمار"
+          }
+        }
+      ],
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/smar-after-property-exclusion/retained-display-reference-proof.json",
+          "sha256": "5fbe0d64d9e170f92a2f8e5bfaf2c85c99a6b9971a0666d9b2fae63ddf1b31fc"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7121325",
+      "targetDelegationId": 570,
+      "expectedGovernorateId": 361,
+      "expectedBase": {
+        "nomAr": "الزواوين",
+        "lat": 37.127,
+        "lng": 10.057
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7121325"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:570"
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7121325",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زواوين",
+            "name:ar": "زواوين",
+            "name:fr": "Zouaouine",
+            "ref:tn:codegeo": "176154"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:3771493269",
+          "nameTags": {
+            "name": "الزواوين",
+            "name:ar": "الزواوين",
+            "name:fr": "Zouaouine",
+            "alt_name:ar": "زواوين"
+          },
+          "reason": "Use the official176154, authentic contained village and INM570 spelling الزواوين for one display identity while preserving زواوين as an Arabic alias. Select the authentic source village coordinate for the manual choice; retain the existing administrative polygon for GPS containment.",
+          "evidence": [
+            {
+              "source": "Current official sector record, original source village, paired published INM responses, and qualified public phone name context.",
+              "reviewFiles": [
+                {
+                  "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/source-facts.json",
+                  "sha256": "48c20bc2907b42630232cbc31311a2c31e2d0c00e6b6162213d60de2b1b3a41b"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7121325",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "الزواوين",
+          "expectedParentName": "معتمدية غار الملح",
+          "expectedDelegationId": 570,
+          "expectedLat": 37.128421,
+          "expectedLng": 10.0581544,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زواوين",
+            "name:ar": "زواوين",
+            "name:fr": "Zouaouine",
+            "ref:tn:codegeo": "176154"
+          },
+          "originalGeometrySha256": "b87238d2a735f362eb95a0a519ab4c5ab916d9b2c63262fa386dfc357c13b86e",
+          "packedGeometrySha256": "69b6fd3f2e8e77db8c407042d4aebabada0d5350ae0ebd1f724c3be1aaae995b"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7121325",
+          "code": "176154",
+          "currentOfficialRecord": {
+            "governorateCode": "17",
+            "governorateFr": "Bizerte",
+            "governorateAr": "بنزرت",
+            "delegationCode": "1761",
+            "delegationFr": "Ghar el meleh",
+            "delegationAr": "غار الملح",
+            "sectorCode": "176154",
+            "sectorFr": "Zouaouine",
+            "sectorAr": "الزواوين",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 19278,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 848,
+              "Nombre_de_menages_par_Secteurs.xlsx": 847
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "زواوين",
+            "name:ar": "زواوين",
+            "name:fr": "Zouaouine",
+            "ref:tn:codegeo": "176154"
+          },
+          "effectiveOriginalGeometrySha256": "b87238d2a735f362eb95a0a519ab4c5ab916d9b2c63262fa386dfc357c13b86e",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7151815",
+              "sourceCode": "1761",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Ghar El Melh",
+                "boundary": "administrative",
+                "name": "معتمدية غار الملح",
+                "name:ar": "معتمدية غار الملح",
+                "name:fr": "Délégation Ghar El Melh",
+                "ref:tn:codegeo": "1761",
+                "ref:tn:hasc_2": "TN.BZ.GM",
+                "wikidata": "Q3104773"
+              },
+              "effectiveOriginalGeometrySha256": "9ceae26f1ba4d33d64cc3e5f6a10bdcd9aed03f6b1de0dae408fd42b98bfd416",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7129263",
+      "targetDelegationId": 588,
+      "expectedGovernorateId": 363,
+      "expectedBase": {
+        "nomAr": "قلعة السنان",
+        "lat": 35.768,
+        "lng": 8.342
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7129263"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:588"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7129263",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "قلعة سنان",
+          "expectedParentName": "معتمدية قلعة سنان",
+          "expectedDelegationId": 588,
+          "expectedLat": 35.7672773,
+          "expectedLng": 8.3438119,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قلعة سنان",
+            "name:ar": "قلعة سنان",
+            "name:fr": "Kalâat Snan",
+            "ref:tn:codegeo": "235651",
+            "wikidata": "Q3100254",
+            "wikipedia": "ar:قلعة سنان"
+          },
+          "originalGeometrySha256": "29e01a34261160ada5c9284dccee04b96f0cb92d7860305c9cf89466530cbd3a",
+          "packedGeometrySha256": "9563bc3e6e1ec2d58a7c380bbc65b2c8f5ddaaf4467153c48a5d953c2aca708e"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7129263",
+          "code": "235651",
+          "currentOfficialRecord": {
+            "governorateCode": "23",
+            "governorateFr": "Le kef",
+            "governorateAr": "الكاف",
+            "delegationCode": "2356",
+            "delegationFr": "Kalaat snan",
+            "delegationAr": "قلعة سنان",
+            "sectorCode": "235651",
+            "sectorFr": "Kalaat snan",
+            "sectorAr": "قلعة سنان",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 27879,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 1309,
+              "Nombre_de_menages_par_Secteurs.xlsx": 1308
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قلعة سنان",
+            "name:ar": "قلعة سنان",
+            "name:fr": "Kalâat Snan",
+            "ref:tn:codegeo": "235651",
+            "wikidata": "Q3100254",
+            "wikipedia": "ar:قلعة سنان"
+          },
+          "effectiveOriginalGeometrySha256": "29e01a34261160ada5c9284dccee04b96f0cb92d7860305c9cf89466530cbd3a"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:4752889",
+          "code": "2356",
+          "name": "معتمدية قلعة سنان",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Kalaat Senan",
+            "boundary": "administrative",
+            "name": "معتمدية قلعة سنان",
+            "name:ar": "معتمدية قلعة سنان",
+            "name:fr": "Délégation Kalaat Senan",
+            "official_name": "معتمدية قلعة سنان",
+            "official_name:ar": "معتمدية قلعة سنان",
+            "official_name:fr": "Délégation de Kalaat Senan",
+            "ref:tn:codegeo": "2356",
+            "ref:tn:hasc_2": "TN.KF.KS",
+            "wikidata": "Q3192066",
+            "wikipedia": "ar:معتمدية قلعة سنان"
+          },
+          "effectiveOriginalGeometrySha256": "7b1a34c9662259657d163f6363a818850079c40e08302af6f18e6db0272d0d8c",
+          "currentOfficialRecord": {
+            "governorateCode": "23",
+            "governorateFr": "Le kef",
+            "governorateAr": "الكاف",
+            "delegationCode": "2356",
+            "delegationFr": "Kalaat snan",
+            "delegationAr": "قلعة سنان"
+          }
+        }
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7129263",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "قلعة سنان",
+            "name:ar": "قلعة سنان",
+            "name:fr": "Kalâat Snan",
+            "ref:tn:codegeo": "235651",
+            "wikidata": "Q3100254",
+            "wikipedia": "ar:قلعة سنان"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:501803032",
+          "nameTags": {
+            "name": "قلعة سنان",
+            "name:ar": "قلعة سنان",
+            "name:fr": "Kalâat Snan"
+          },
+          "reason": "Preserve every original locality name and alias while selecting its existing contained town501803032 as the manual location. The Ministry paired-name article and coded current sector/parent establish one display identity with the differently spelled INM588 label; neither prayer coordinates nor administrative polygons define the inhabited town extent. Device GPS and both source/packed sector geometry stay unchanged.",
+          "evidence": [
+            {
+              "source": "Pinned source/coded identity, exact public town witness, current whole-country nearest-source calculation, and accurately labelled Ministry web text capture.",
+              "reviewFiles": [
+                {
+                  "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/source-and-design-note.json",
+                  "sha256": "617a6e0f31e3c5cfcb53c1172689f5e99395b300ac5f87e306268a81c1f3bd05"
+                },
+                {
+                  "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/culture-primary-web-excerpts.json",
+                  "sha256": "120213c2f00b129862dc4616a9bc21deb863c299442af884ea10b78977aa87d1"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/retained-display-review.json",
+          "sha256": "ea072719b668812ea1b209f006709972cb3d68816e8f533e3ba13b200870055e"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7090957",
+      "targetDelegationId": 554,
+      "expectedGovernorateId": 360,
+      "expectedBase": {
+        "nomAr": "دوار هيشر",
+        "lat": 36.828,
+        "lng": 10.089
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7090957"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:554"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7090957",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "دوار هيشر",
+          "expectedParentName": "معتمدية دوار هيشر",
+          "expectedDelegationId": 554,
+          "expectedLat": 36.8237415,
+          "expectedLng": 10.0960637,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوار ھیشر",
+            "name:fr": "Douar Hicher",
+            "ref:tn:codegeo": "145251"
+          },
+          "originalGeometrySha256": "d6cccb384ce567d4bac486a222fafc29e9bceafa08afd412b7ea54440b29ba22",
+          "packedGeometrySha256": "47e245262f2a57917ed3464308408417a2d3f221bad3cf490049d5714d08c112"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7090957",
+          "code": "145251",
+          "currentOfficialRecord": {
+            "governorateCode": "14",
+            "governorateFr": "Manouba",
+            "governorateAr": "منوبة",
+            "delegationCode": "1452",
+            "delegationFr": "Douar hicher",
+            "delegationAr": "دوار هيشر",
+            "sectorCode": "145251",
+            "sectorFr": "Douar hicher",
+            "sectorAr": "دوار هيشر",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 9963,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 346,
+              "Nombre_de_menages_par_Secteurs.xlsx": 345
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوار ھیشر",
+            "name:fr": "Douar Hicher",
+            "ref:tn:codegeo": "145251"
+          },
+          "effectiveOriginalGeometrySha256": "d6cccb384ce567d4bac486a222fafc29e9bceafa08afd412b7ea54440b29ba22"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7204580",
+          "code": "1452",
+          "name": "معتمدية دوار هيشر",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Douar Hicher",
+            "boundary": "administrative",
+            "name": "معتمدية دوار هيشر",
+            "name:ar": "معتمدية دوار هيشر",
+            "name:fr": "Délégation Douar Hicher",
+            "ref:tn:codegeo": "1452",
+            "ref:tn:hasc_2": "TN.MN.DH",
+            "wikidata": "Q3037406"
+          },
+          "effectiveOriginalGeometrySha256": "4690f2be4c82d9b1fe0f50c37474dd1d1753085b98006a1646b014507a7bea8f",
+          "currentOfficialRecord": {
+            "governorateCode": "14",
+            "governorateFr": "Manouba",
+            "governorateAr": "منوبة",
+            "delegationCode": "1452",
+            "delegationFr": "Douar hicher",
+            "delegationAr": "دوار هيشر"
+          }
+        }
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7090957",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوار ھیشر",
+            "name:fr": "Douar Hicher",
+            "ref:tn:codegeo": "145251"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:7720714782",
+          "nameTags": {
+            "name": "دوار هيشر",
+            "name:ar": "دوار هيشر",
+            "name:fr": "Douar Hicher",
+            "alt_name:ar": "دوار ھیشر"
+          },
+          "reason": "Use the exact official-sector and authentic contained town Arabic spelling, preserving the original source spelling as a searchable alias. Use the original town point for manual locality selection while retaining the unchanged sector polygon for GPS containment.",
+          "evidence": [
+            {
+              "source": "Original PBF source town and sector, current official sector identity, exact containment and fresh independent published service references.",
+              "reviewFiles": [
+                {
+                  "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/source-facts.json",
+                  "sha256": "efa6ffbefde62754a327df1bc74b7b8f016b3125a12d1f4bac7dae4c1704a56c"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "retained-group-reviews/douar-oued-2026-09-19/554-retained-display-review.json",
+          "sha256": "2a9edf56c80fb42a0eedf18e2b9187aa7cdbafcbb7d3d43b5c85fc9b7f61f3c8"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7095862",
+      "targetDelegationId": 553,
+      "expectedGovernorateId": 360,
+      "expectedBase": {
+        "nomAr": "واد الليل",
+        "lat": 36.836,
+        "lng": 10.041
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7095862"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:553"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7095862",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "وادي الليل",
+          "expectedParentName": "معتمدية وادي الليل",
+          "expectedDelegationId": 553,
+          "expectedLat": 36.8376735,
+          "expectedLng": 10.0422381,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي اللیل",
+            "name:ar": "وادي اللیل‬",
+            "name:fr": "Oued Ellil",
+            "ref:tn:codegeo": "145351"
+          },
+          "originalGeometrySha256": "b037018c23c3f714875cdcce8097d5dbce48e0dd571b6263128dd3f744a18f11",
+          "packedGeometrySha256": "0b064a645eb609301d21cde29161d80281d5ee0fe467c80f609d01de2cd4ce03"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7095862",
+          "code": "145351",
+          "currentOfficialRecord": {
+            "governorateCode": "14",
+            "governorateFr": "Manouba",
+            "governorateAr": "منوبة",
+            "delegationCode": "1453",
+            "delegationFr": "Oued ellil",
+            "delegationAr": "وادي الليل",
+            "sectorCode": "145351",
+            "sectorFr": "Oued ellil",
+            "sectorAr": "وادي الليل",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10133,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 352,
+              "Nombre_de_menages_par_Secteurs.xlsx": 351
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي اللیل",
+            "name:ar": "وادي اللیل‬",
+            "name:fr": "Oued Ellil",
+            "ref:tn:codegeo": "145351"
+          },
+          "effectiveOriginalGeometrySha256": "b037018c23c3f714875cdcce8097d5dbce48e0dd571b6263128dd3f744a18f11"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7204582",
+          "code": "1453",
+          "name": "معتمدية وادي الليل",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Oued Ellil",
+            "boundary": "administrative",
+            "name": "معتمدية وادي اللیل",
+            "name:ar": "معتمدية وادي اللیل‬",
+            "name:fr": "Délégation Oued Ellil",
+            "ref:tn:codegeo": "1453",
+            "ref:tn:hasc_2": "TN.MN.OE",
+            "wikidata": "Q3358013"
+          },
+          "effectiveOriginalGeometrySha256": "fe97fa2e53f05980fdfe501d952fe9dc7bb21737cbf880b632430f7749ee148e",
+          "currentOfficialRecord": {
+            "governorateCode": "14",
+            "governorateFr": "Manouba",
+            "governorateAr": "منوبة",
+            "delegationCode": "1453",
+            "delegationFr": "Oued ellil",
+            "delegationAr": "وادي الليل"
+          }
+        }
+      ],
+      "requiredCurations": [
+        {
+          "id": "osm:relation:7095862",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي اللیل",
+            "name:ar": "وادي اللیل‬",
+            "name:fr": "Oued Ellil",
+            "ref:tn:codegeo": "145351"
+          },
+          "action": "name_tags",
+          "manualPointId": "osm:node:287619187",
+          "nameTags": {
+            "name": "وادي الليل",
+            "name:ar": "وادي الليل",
+            "name:fr": "Oued Ellil",
+            "alt_name:ar": "وادي اللیل"
+          },
+          "reason": "Use the exact official-sector and authentic contained town Arabic spelling, preserving the original source spelling as a searchable alias. Use the original town point for manual locality selection while retaining the unchanged sector polygon for GPS containment.",
+          "evidence": [
+            {
+              "source": "Original PBF source town and sector, current official sector identity, exact containment and fresh independent published service references.",
+              "reviewFiles": [
+                {
+                  "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/source-facts.json",
+                  "sha256": "efa6ffbefde62754a327df1bc74b7b8f016b3125a12d1f4bac7dae4c1704a56c"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "retained-group-reviews/douar-oued-2026-09-19/553-retained-display-review.json",
+          "sha256": "f4ebd0f2bf18bfd76470a73e89c5f3cd211129dc7b3736afc9c10ba541cf8f03"
+        }
+      }
     }
   ],
   "additionalReviewEvidence": [
     {
-      "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/retained-display/held12-hichria-retained-display-successor.json",
-      "sha256": "f47f482d8f32195b3d7772f9fa93372910280d57ff197803b04d6221bb6b8044"
+      "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/held12-ezzouhour-hichria-coordinate47-successor.json",
+      "sha256": "8c0791511b229683409ac869e1c7ebb80687e52962ca7692908c45d42a0ff42c"
     },
     {
-      "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/dependency-successors/bousalem-coordinate35-proof.json",
-      "sha256": "f97ff21e8abde072a763a77919b5e19307fb75ced70d1d3e3c6f2fa175b36d2d"
+      "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/bousalem-coordinate47-proof.json",
+      "sha256": "0187080213473b33fb544249e1cbb6602cc477e98848ffd84f3df34abe865d00"
     },
     {
       "file": "six-city-base-reviews/six-city-base-picker-proof.json",
@@ -10627,6 +11989,46 @@
     {
       "file": "three-city-split-reviews/soliman-accepted-native-20260912/three-city-split-picker-evidence-native-soliman.json",
       "sha256": "938696ae5cc6bd0675dae934168c1001a11fcd0607de1f088e4ed3a653f8e33b"
+    },
+    {
+      "file": "menzel-bouzaiane-display-reviews/2026-09-13/eligible-picker-proof.json",
+      "sha256": "deb1b2ddfe1fa018df0d1239ad939b10535646c92f800b8d471d7fa1722cacd7"
+    },
+    {
+      "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/eligible-picker-proof.json",
+      "sha256": "ccc1622439e5394e0907cb9917414feeb1b610ccda87e71ac4eb88f021c6a404"
+    },
+    {
+      "file": "bargou-display-reviews/2026-09-19/eligible-proof.json",
+      "sha256": "2a121c400b9e07e471f5892b86040bbf6b102cb8a5b8ce0519b10eafe7292690"
+    },
+    {
+      "file": "sidi-bou-ali-display-reviews/2026-09-19/eligible-proof.json",
+      "sha256": "f41e2c7a26e464cc5705d7ee68e2c9ddd14669d4626c778d83a68aa181d0c7f9"
+    },
+    {
+      "file": "coordinate-reviews/inm-published-hazoua479-2026-09-19/eligible-picker-proof.json",
+      "sha256": "c19abe02a426eb11bdbb9ffb1f3cea676ac9b7c9e441d96cfa13b9b04240c2d7"
+    },
+    {
+      "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/smar-after-property-exclusion/eligible-picker-proof.json",
+      "sha256": "46cd58e25d8f609fef65cca4f3c5a396ed7e5592a09c193f6c1c70177b3894f9"
+    },
+    {
+      "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/eligible-picker-proof.json",
+      "sha256": "394f6b809c17f8efedcedaf76c474b9c29b488ab6476f8dfde2ba2ae3ed7860a"
+    },
+    {
+      "file": "coordinate-reviews/inm-published-kalaat588-2026-09-19/eligible-picker-proof.json",
+      "sha256": "9c25f613826ddb5e9049e3670780dc58214083199e417886ae2bd950b4d83a39"
+    },
+    {
+      "file": "retained-group-reviews/douar-oued-2026-09-19/554-eligible-picker-proof.json",
+      "sha256": "284e21cd7e20b1df8719cbdebdb3f6202fe576b6f6a747cb17043b3a6a10959b"
+    },
+    {
+      "file": "retained-group-reviews/douar-oued-2026-09-19/553-eligible-picker-proof.json",
+      "sha256": "a0189711239ec10d87ef59e2657434d301e125ea2655d12e972557d66d53ae26"
     }
   ],
   "additionalCheckpointEvidence": {
@@ -14463,6 +15865,201 @@
         }
       ],
       "scope": "Display association only; both current raw polygons, coordinates, names, contexts and source624 remain unchanged. The absorbed village is supporting identity, not restored. Historic fortress and mosque remain excluded. Creation/current vertex differences3/9 are acknowledged; only exact current source geometry is pinned."
+    },
+    {
+      "id": "osm:relation:7095859",
+      "status": "eligible_proposal",
+      "method": "reviewed_complete_locality_group_owner",
+      "targetPickerGroupId": "osm:way:456466522",
+      "expectedExistingMemberIds": [
+        "osm:relation:7095859",
+        "osm:way:456466522"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7095859",
+          "expectedMetadata": {
+            "id": "osm:relation:7095859",
+            "sourceId": "osm",
+            "name": "القباعة",
+            "aliases": [
+              "El Kobbâa",
+              "القبعة"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية وادي الليل",
+            "contextAliases": ["Délégation Oued Ellil", "Oued Ellil", "معتمدية وادي الليل", "معتمدية وادي اللیل"],
+            "governorateId": 360,
+            "lat": 36.820863,
+            "lng": 10.060016,
+            "delegationId": 553,
+            "hasBoundary": true,
+            "bbox": [
+              10.049056,
+              36.814471,
+              10.075316,
+              36.827278
+            ],
+            "areaKm2": 1.5520591353122575
+          },
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "القبعة",
+            "name:ar": "القبعة",
+            "name:fr": "El Kobbâa",
+            "ref:tn:codegeo": "145357"
+          },
+          "expectedEffectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "ref:tn:codegeo": "145357",
+            "name": "القباعة",
+            "name:ar": "القباعة",
+            "name:fr": "El Kobbâa",
+            "alt_name:ar": "القبعة"
+          },
+          "expectedCuration": {
+            "id": "osm:relation:7095859",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "القبعة",
+              "name:ar": "القبعة",
+              "name:fr": "El Kobbâa",
+              "ref:tn:codegeo": "145357"
+            },
+            "action": "name_tags",
+            "nameTags": {
+              "name": "القباعة",
+              "name:ar": "القباعة",
+              "name:fr": "El Kobbâa",
+              "alt_name:ar": "القبعة"
+            },
+            "reason": "Use the exact official145357 sector spelling القباعة, preserving prior source spelling القبعة as an Arabic search alias and retaining the original French name. Join its established village depiction through a separately reviewed complete-group village owner; keep every original raw coordinate and polygon.",
+            "evidence": [
+              {
+                "source": "Current official sector145357, original village polygon, exact partial-overlap measurements and saved public locality-card context.",
+                "reviewFiles": [
+                  {
+                    "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+                    "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+                  }
+                ]
+              }
+            ]
+          },
+          "originalGeometrySha256": "be44bfe04652989e3627373fd70485258d7b6de19ff9f5d0acf607aaad7263f8",
+          "packedGeometrySha256": "b3791b37cc3b6ab8a0a8633234ee956d1ad06885dc7549e57ddb22985b9978b0"
+        },
+        {
+          "id": "osm:way:456466522",
+          "expectedMetadata": {
+            "id": "osm:way:456466522",
+            "sourceId": "osm",
+            "name": "القباعة",
+            "aliases": [
+              "Gobaâ",
+              "Gobaa",
+              "Al-Qaba'a"
+            ],
+            "kind": "village",
+            "parentName": "ولاية منوبة",
+            "contextAliases": [],
+            "governorateId": 360,
+            "lat": 36.824277,
+            "lng": 10.060474,
+            "delegationId": 553,
+            "hasBoundary": true,
+            "bbox": [
+              10.053807,
+              36.82147,
+              10.067282,
+              36.827161
+            ],
+            "areaKm2": 0.47739231418602934
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "القباعة",
+            "name:ar": "القباعة",
+            "name:de": "Al-Qaba'a",
+            "name:en": "Gobaa",
+            "name:fr": "Gobaâ",
+            "place": "village"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "القباعة",
+            "name:ar": "القباعة",
+            "name:de": "Al-Qaba'a",
+            "name:en": "Gobaa",
+            "name:fr": "Gobaâ",
+            "place": "village"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "6556ad1a9c8fa6bd7327b31a5dafaebca1e688d799073cf82e248184f8afd237",
+          "packedGeometrySha256": "924cd4b669a22f0efdc958bd93b6ec7060c34ab4f37709788ae68e6016bdaa2c"
+        }
+      ],
+      "expectedGovernorateId": 360,
+      "canonicalName": "القباعة",
+      "officialRegistry": {
+        "file": "residential-base-display-reviews/current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "officialSectorRecord": {
+        "governorateCode": "14",
+        "governorateFr": "Manouba",
+        "governorateAr": "منوبة",
+        "delegationCode": "1453",
+        "delegationFr": "Oued ellil",
+        "delegationAr": "وادي الليل",
+        "sectorCode": "145357",
+        "sectorFr": "El kobbaa",
+        "sectorAr": "القباعة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10337,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 364,
+          "Nombre_de_menages_par_Secteurs.xlsx": 363
+        }
+      },
+      "expectedSourceNamePeerIds": [
+        "osm:relation:7095859",
+        "osm:way:456466522"
+      ],
+      "overlap": {
+        "original": {
+          "sectorCoversVillage": false,
+          "villageCoversSector": false,
+          "villageFractionInsideSector": 0.991689598751558,
+          "sectorFractionInsideVillage": 0.3050503458823904
+        },
+        "packed": {
+          "sectorCoversVillage": false,
+          "villageCoversSector": false,
+          "villageFractionInsideSector": 0.9916669951249593,
+          "sectorFractionInsideVillage": 0.3050369096768278
+        }
+      },
+      "manualSelection": {
+        "representativeId": "osm:way:456466522",
+        "lat": 36.824277,
+        "lng": 10.060474,
+        "expectedNearestSourceId": 553
+      },
+      "sourceReview": {
+        "file": "locality-group-reviews/gobaa-village-owner-2026-09-19/source-facts.json",
+        "sha256": "c28fac9f25b2f251d21f68e65829c97f1da57c97cc6d948348010c8e967545b6"
+      },
+      "qualifications": {
+        "polygonsHaveDifferentExtents": true,
+        "noBoundaryCertification": true,
+        "allRawCoordinatesRetained": true,
+        "prayerSourceIsNotDisplayIdentity": true,
+        "ownerIsExistingVillagePolygon": true
+      }
     }
   ],
   "localReviewEvidence": {
@@ -14493,6 +16090,10 @@
     {
       "file": "reviewed-ksar-two-patch-evidence.json",
       "sha256": "e3a106d8930a2c5cfcdca803479458d58732e2dd24651a7cbc599392d32fdb2c"
+    },
+    {
+      "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/dependency-successors/gobaa-parent-reference-eligible-proof.json",
+      "sha256": "8b573932423f990d54621879b5bb708fb259366817de3a29db87a5a457fd0dc4"
     }
   ],
   "distinctPairs": [
@@ -14660,8 +16261,8 @@
       "id": "osm:way:26303952",
       "targetDelegationId": 488,
       "reviewEvidence": {
-        "file": "residential-base-display-reviews/three-town-review/488-proof.json",
-        "sha256": "1d8045df4a303d35bdf7a4aa63fe1d9e2b2dc6c2c03ee76cec933a9f632384f0"
+        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/488-protected-nearest-proof.json",
+        "sha256": "724da197ac0c7f6c831cb2f331baad5133c54b4638c6abe7d3fcf099f4c40916"
       }
     },
     {

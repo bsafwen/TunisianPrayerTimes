@@ -1,0 +1,104 @@
+{
+  "status": "FIVE_PUBLIC_PHONE_OBSERVATIONS_RECORDED_AND_QUALIFIED",
+  "createdAtUtc": "2026-09-19T11:27:42.626109+00:00",
+  "metadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_7118023-1\\ledger.json",
+    "sha256": "941ab547a61d0e4df0f64341d079290c3b936516f36408ec5984db1a22a4c209"
+  },
+  "afterLedgerSha256": "4039715cd57b4a764d77b95fa8671e28d8bc0341b6dd7ee8048a5055e912a4fb",
+  "totalObservationsBefore": 1275,
+  "totalObservationsAfter": 1280,
+  "allPriorObservationsPreserved": true,
+  "reviews": [
+    {
+      "id": "osm:relation:7118023",
+      "query": "36.805274,10.126553",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118023-1.json",
+        "sha256": "ed988dd51ad19f67c65965425b3a0ee438baa2de8e1a6b804cf708cafde0a537"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118023-1.png",
+        "sha256": "e4c4a1ab3c20bf1af70e97ad64774fcf0803c4828ba25672f8ce22c81d008b52"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Khaznadar sector representative query opens a P5 road card near the Essaida transit stop. The surrounding map visibly labels KHAZNADAR southeast of the pin. This supports geographic context, not exact sector boundaries or a formal locality card.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7118026",
+      "query": "36.803686,10.135602",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118026-2.json",
+        "sha256": "4e65e63f6c80adcc0c763b69dafb1c7356403c50f9bb749ca7f18c5ce4c6a756"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118026-2.png",
+        "sha256": "e4f08cd8a68abff2945bb3200331edbe03d2f28d9ba35201f354272b6188a6f1"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Bardo Sud sector representative query opens a bookstore named Librairie AZ Le Bardo on Avenue Hedi Chaker. This supports the broad Bardo vicinity; it does not independently establish the Bardo Sud administrative name or full extent.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7118027",
+      "query": "36.803672,10.141856",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118027-1.json",
+        "sha256": "ef655ea0cbf6d227b65df8315d81da6cbc043ed3c6f5a75ae2161dc7bd702c9f"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7118027-1.png",
+        "sha256": "47e111eb95329663847655a8883b5a0ae52866651ad8d44cfebbff5a9aea1125"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "El Hadika sector representative query opens a residential-complex POI card addressed El Hadika, with nearby Bou Choucha and Cite Somrane map labels. This supports local El Hadika name context only. The POI is not added as a locality and does not certify the sector extent.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:relation:7201481",
+      "query": "36.820068,10.145248",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7201481-1.json",
+        "sha256": "d4ffb6b73eaf9072d7348851b98725db7632e39c262a0e66ba7b071cf528a03a"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7201481-1.png",
+        "sha256": "64a7594ff9f851e1add30a1d86b7f7377199c8c4afec2404b3233937a2518135"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Ras Tabia sector representative query opens a Rue61495 street card in Tunis. The map shows Cite Rommana north of the pin and a partially visible Ras Et Tabia label to the southeast. This is broad vicinity evidence only and does not resolve fine neighborhood versus administrative-sector coverage.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    },
+    {
+      "id": "osm:node:1099411041",
+      "query": "36.8193511,10.136907",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1099411041-2.json",
+        "sha256": "cc0487b455a3f76c89e7998ac601dd2c10b25732e460501574314905f04020ed"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_1099411041-2.png",
+        "sha256": "df649620cc16fe568a061889e2a94b3dabb50e88df5a29e0154f56ff1b1a28c1"
+      },
+      "rootViewedScreenshot": true,
+      "finding": "Hached suburb point query opens a dropped-pin card labelled باردو near Rue Alyssa, with a nearby رأس الطابية label. It supports broad Bardo vicinity but does not independently confirm the finer حشاد identity. Absence of that label on this view is not evidence of nonexistence.",
+      "boundaryVerified": false,
+      "verifiedFacetsPromoted": false
+    }
+  ],
+  "captures": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\bardo-affected-phone-point-captures-20260919.json",
+    "sha256": "4c47b238e528755077cadd5f124e626e0a1d7206cbf1012350fadea41a9d7610"
+  },
+  "qualifications": "Phone observations supply geographic context. Exact manual point identities and polygon containment come from independently pinned source records; none of these screenshots certifies source polygons or every alias.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\freeze_bardo_affected_points_20260919.py",
+    "sha256": "ea94528655153bd9def2403ec64cc6953556b11cfe364e5c9c13dbe470427394"
+  }
+}

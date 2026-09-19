@@ -51,8 +51,8 @@
           "nomFr": "Omrane",
           "nomAr": "العمران",
           "nomEn": "Omrane",
-          "lat": 36.82,
-          "lng": 10.155
+          "lat": 36.818,
+          "lng": 10.168
         },
         {
           "id": 392,
@@ -67,16 +67,16 @@
           "nomFr": "Ettahrir",
           "nomAr": "التحرير",
           "nomEn": "Ettahrir",
-          "lat": 36.8244,
-          "lng": 10.1283
+          "lat": 36.823,
+          "lng": 10.133
         },
         {
           "id": 394,
           "nomFr": "Bardo",
           "nomAr": "باردو",
           "nomEn": "Bardo",
-          "lat": 36.8092,
-          "lng": 10.1364
+          "lat": 36.814,
+          "lng": 10.141
         },
         {
           "id": 395,
@@ -91,8 +91,8 @@
           "nomFr": "Ezzouhour",
           "nomAr": "الزهور",
           "nomEn": "Ezzouhour",
-          "lat": 36.7967,
-          "lng": 10.1332
+          "lat": 36.799,
+          "lng": 10.135
         },
         {
           "id": 397,
@@ -891,8 +891,8 @@
           "nomFr": "Smar",
           "nomAr": "السمار",
           "nomEn": "Smar",
-          "lat": 32.9955,
-          "lng": 10.8246
+          "lat": 32.872,
+          "lng": 10.89
         },
         {
           "id": 473,
@@ -965,16 +965,16 @@
           "nomFr": "Degueche",
           "nomAr": "دقاش",
           "nomEn": "Degueche",
-          "lat": 33.97,
-          "lng": 8.22
+          "lat": 34.016,
+          "lng": 8.273
         },
         {
           "id": 479,
           "nomFr": "Hazoua",
           "nomAr": "حزوة",
           "nomEn": "Hazoua",
-          "lat": 33.764,
-          "lng": 7.63
+          "lat": 33.738,
+          "lng": 7.603
         },
         {
           "id": 480,
@@ -1669,16 +1669,16 @@
           "nomFr": "Oued Ellil",
           "nomAr": "واد الليل",
           "nomEn": "Oued Ellil",
-          "lat": 36.8427,
-          "lng": 10.0388
+          "lat": 36.836,
+          "lng": 10.041
         },
         {
           "id": 554,
           "nomFr": "Douar Hicher",
           "nomAr": "دوار هيشر",
           "nomEn": "Douar Hicher",
-          "lat": 36.8306,
-          "lng": 10.0863
+          "lat": 36.828,
+          "lng": 10.089
         },
         {
           "id": 555,
@@ -1823,8 +1823,8 @@
           "nomFr": "Zouaouine",
           "nomAr": "الزواوين",
           "nomEn": "Zouaouine",
-          "lat": 37.1269,
-          "lng": 10.0569
+          "lat": 37.127,
+          "lng": 10.057
         },
         {
           "id": 571,
@@ -1889,8 +1889,8 @@
           "nomFr": "Sbiba",
           "nomAr": "سبيبة",
           "nomEn": "Sbiba",
-          "lat": 35.53,
-          "lng": 9.07
+          "lat": 35.545,
+          "lng": 9.072
         },
         {
           "id": 577,
@@ -2003,8 +2003,8 @@
           "nomFr": "Kalaat Sinane",
           "nomAr": "قلعة السنان",
           "nomEn": "Kalaat Sinane",
-          "lat": 35.7669,
-          "lng": 8.341
+          "lat": 35.768,
+          "lng": 8.342
         },
         {
           "id": 589,

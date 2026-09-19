@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_settlement_retained_display_reference",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "id": "osm:relation:7090957",
+  "targetDelegationId": 554,
+  "governorateId": 360,
+  "baseCurrent": {
+    "id": 554,
+    "nomFr": "Douar Hicher",
+    "nomAr": "دوار هيشر",
+    "nomEn": "Douar Hicher",
+    "lat": 36.828,
+    "lng": 10.089
+  },
+  "baselineMetadataSha256": "ebc76476ceb177d91bb2d117ff8758096a6a5d7fc4c2e4f871e85e50fcc07967",
+  "exactRawFieldChanges": [
+    {
+      "id": "osm:relation:7090957",
+      "field": "name",
+      "before": "دوار ھیشر",
+      "after": "دوار هيشر"
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "aliases",
+      "before": [
+        "Douar Hicher",
+        "דואר הישר",
+        "دوار هيشر"
+      ],
+      "after": [
+        "Douar Hicher",
+        "דואר הישר",
+        "دوار ھیشر"
+      ]
+    },
+    {
+      "id": "osm:way:663536803",
+      "field": "parentName",
+      "before": "دوار ھیشر",
+      "after": "دوار هيشر"
+    },
+    {
+      "id": "osm:way:663536803",
+      "field": "contextAliases",
+      "before": [
+        "Douar Hicher",
+        "Délégation Douar Hicher",
+        "دوار ھیشر",
+        "معتمدية دوار هيشر"
+      ],
+      "after": [
+        "Douar Hicher",
+        "Délégation Douar Hicher",
+        "دوار هيشر",
+        "دوار ھیشر",
+        "معتمدية دوار هيشر"
+      ]
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "lat",
+      "before": 36.821735,
+      "after": 36.8237415
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "lng",
+      "before": 10.097085,
+      "after": 10.0960637
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:7720714782"
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7090957",
+      "after": "delegation:554"
+    }
+  ],
+  "recordCoreSha256": "6edb1026277a38b0525686e54cbd9a9edb317bf29a78fd5951e7884db28b4910",
+  "eligibleProofCoreSha256": "ace675ca7594bb3ecb511ba38d78d78ff23e202c9855409c6f4891f15d49a9b6",
+  "sourceFacts": {
+    "file": "retained-group-reviews/douar-oued-2026-09-19/source-facts.json",
+    "sha256": "a9097fab0952ea482fc955359c113f334e46510c1e65a62da4f58674e0177fe4"
+  },
+  "independentSourceReview": {
+    "file": "retained-group-reviews/douar-oued-2026-09-19/independent-source-review-554.json",
+    "sha256": "dae439d92765131c0eec2a953c51bc730c0b70f2d64e2d16a3d14030e386ded1"
+  },
+  "publishedPrayerCorrection": {
+    "delegationId": 554,
+    "expectedGovernorateId": 360,
+    "expectedNames": {
+      "nomAr": "دوار هيشر",
+      "nomFr": "Douar Hicher",
+      "nomEn": "Douar Hicher"
+    },
+    "reviewedDate": "2026-09-19",
+    "original": {
+      "lat": 36.8306,
+      "lng": 10.0863
+    },
+    "proposed": {
+      "lat": 36.828,
+      "lng": 10.089
+    },
+    "originalProvenance": "Legacy bundled reference in current asset SHA256 d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9; external origin undocumented. Published daily coordinates are service references, not certified server calculation inputs or settlement centres.",
+    "referenceKind": "inm_published_reference",
+    "inmEvidence": {
+      "serviceDate": "2026-09-19",
+      "prayer": {
+        "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/554-prayer-2026-09-19.json",
+        "sha256": "1784e47de1291d98a998ac055ca7ec15ef071028e492350724af68fc6dca95cf",
+        "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/554/"
+      },
+      "sun": {
+        "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/554-sun-2026-09-19.json",
+        "sha256": "58855ab8c1a3cc8e070184653f9045b4afe4a6c559463dfe44a88c23ccf26922",
+        "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/554/"
+      },
+      "retrievalManifest": {
+        "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/original-source/retrievals.json",
+        "sha256": "44dcbcb55d9eccc8067c1cfe10d7c7e9b87304046656e9a6ce1cedc27d5c26c8"
+      }
+    },
+    "qualification": "Fresh prayer and sunrise responses agree. Manual settlement references come independently from authentic contained source town points; neither proves polygon accuracy.",
+    "reviewBatchId": "2026-09-19-inm-published-douar-oued",
+    "originalSourceAssetSha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9",
+    "originalSourceAssetEvidence": {
+      "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/before-gouvernorats.json",
+      "sha256": "d931b1039fea3d781be1ac730c25a9a147a0f23595c89c001df67480a46dfba9"
+    }
+  },
+  "witness": {
+    "id": "osm:node:7720714782",
+    "kind": "town",
+    "tags": {
+      "name": "دوار هيشر",
+      "name:ar": "دوار هيشر",
+      "name:en": "Douar Hicher",
+      "name:fa": "دوار هيشر",
+      "name:fr": "Douar Hicher",
+      "name:he": "דואר הישר",
+      "place": "town",
+      "wikidata": "Q3037419",
+      "wikimedia_commons": "Category:Douar Hicher",
+      "wikipedia": "en:Douar Hicher"
+    },
+    "lat": 36.8237415,
+    "lng": 10.0960637,
+    "exactPublicElement": {
+      "type": "node",
+      "id": 7720714782,
+      "lat": 36.8237415,
+      "lon": 10.0960637,
+      "timestamp": "2025-12-27T23:04:23Z",
+      "version": 5,
+      "changeset": 176507655,
+      "user": "Yovân El-Mekh",
+      "uid": 23638457,
+      "tags": {
+        "name": "دوار هيشر",
+        "name:ar": "دوار هيشر",
+        "name:en": "Douar Hicher",
+        "name:fa": "دوار هيشر",
+        "name:fr": "Douar Hicher",
+        "name:he": "דואר הישר",
+        "place": "town",
+        "wikidata": "Q3037419",
+        "wikimedia_commons": "Category:Douar Hicher",
+        "wikipedia": "en:Douar Hicher"
+      }
+    },
+    "publicNode": {
+      "file": "retained-group-reviews/douar-oued-2026-09-19/town-7720714782-current.json",
+      "sha256": "25b6cda7ac902a2d4aef152e063331e00e2dbde0ad75856b2a5ae5945140376a",
+      "url": "https://api.openstreetmap.org/api/0.6/node/7720714782.json"
+    }
+  },
+  "sources": [
+    {
+      "id": "osm:node:7720714782",
+      "kind": "town",
+      "tags": {
+        "name": "دوار هيشر",
+        "name:ar": "دوار هيشر",
+        "name:en": "Douar Hicher",
+        "name:fa": "دوار هيشر",
+        "name:fr": "Douar Hicher",
+        "name:he": "דואר הישר",
+        "place": "town",
+        "wikidata": "Q3037419",
+        "wikimedia_commons": "Category:Douar Hicher",
+        "wikipedia": "en:Douar Hicher"
+      },
+      "geometrySha256": "ba514b857f23fde9948ae5d4168df580900458ee4c16b2b2742a6552b90aca6b",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:1435828",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-14",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية منوبة",
+        "name:ar": "ولاية منوبة",
+        "name:arz": "ولاية منوبه",
+        "name:az": "Manuba (vilayət)",
+        "name:be": "Мануба (вілает)",
+        "name:be-tarask": "Мануба (вілает)",
+        "name:bg": "Мануба (област)",
+        "name:bjn": "Tunisia",
+        "name:ca": "Governació de Manouba",
+        "name:ceb": "Manouba (lalawigan)",
+        "name:cy": "Manouba (talaith)",
+        "name:de": "Gouvernement Manouba",
+        "name:el": "Λα Μανουμπά (Κυβερνείο)",
+        "name:en": "Manouba",
+        "name:es": "Gobernación de Manouba",
+        "name:fa": "منوبه",
+        "name:fr": "Gouvernorat La Manouba",
+        "name:frr": "Manouba (Guwernement)",
+        "name:id": "Kegubernuran Manouba",
+        "name:it": "Manouba",
+        "name:ja": "マヌーバ県",
+        "name:ko": "마누바주",
+        "name:ms": "Kawasan kegabenoran Manouba",
+        "name:nl": "Manouba (gouvernement)",
+        "name:no": "Manouba (guvernement)",
+        "name:pl": "Gubernatorstwo Manuba",
+        "name:pt": "Manouba (província)",
+        "name:ro": "Guvernoratul Manouba",
+        "name:ru": "Мануба (вилайет)",
+        "name:sco": "Manouba Govrenorate",
+        "name:sh": "Manouba (vilajet)",
+        "name:sv": "Manouba (guvernement)",
+        "name:tr": "Manuba ili",
+        "name:uk": "Мануба (вілаєт)",
+        "name:ur": "منوبہ",
+        "name:zh": "馬努巴省",
+        "name:zu": "Manouba Governorate",
+        "official_name": "ولاية منوبة",
+        "official_name:ar": "ولاية منوبة",
+        "official_name:en": "Manouba Governorate",
+        "official_name:fa": "استان منوبه",
+        "official_name:fr": "Gouvernorat de la Manouba",
+        "official_name:it": "Governatorato di Manouba",
+        "official_name:ur": "ولایت منوبہ",
+        "population": "335912",
+        "population:date": "2014",
+        "ref:tn:codegeo": "14",
+        "wikidata": "Q734328",
+        "wikipedia": "ar:ولاية منوبة"
+      },
+      "geometrySha256": "45240f4735b249f476a71af8d94d323efbbed6659fdf79ef387b32d052ba16a5",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7090957",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "دوار ھیشر",
+        "name:fr": "Douar Hicher",
+        "ref:tn:codegeo": "145251"
+      },
+      "geometrySha256": "d6cccb384ce567d4bac486a222fafc29e9bceafa08afd412b7ea54440b29ba22",
+      "expectedCuration": {
+        "id": "osm:relation:7090957",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "دوار ھیشر",
+          "name:fr": "Douar Hicher",
+          "ref:tn:codegeo": "145251"
+        },
+        "action": "name_tags",
+        "manualPointId": "osm:node:7720714782",
+        "nameTags": {
+          "name": "دوار هيشر",
+          "name:ar": "دوار هيشر",
+          "name:fr": "Douar Hicher",
+          "alt_name:ar": "دوار ھیشر"
+        },
+        "reason": "Use the exact official-sector and authentic contained town Arabic spelling, preserving the original source spelling as a searchable alias. Use the original town point for manual locality selection while retaining the unchanged sector polygon for GPS containment.",
+        "evidence": [
+          {
+            "source": "Original PBF source town and sector, current official sector identity, exact containment and fresh independent published service references.",
+            "reviewFiles": [
+              {
+                "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/source-facts.json",
+                "sha256": "efa6ffbefde62754a327df1bc74b7b8f016b3125a12d1f4bac7dae4c1704a56c"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:7204580",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Douar Hicher",
+        "boundary": "administrative",
+        "name": "معتمدية دوار هيشر",
+        "name:ar": "معتمدية دوار هيشر",
+        "name:fr": "Délégation Douar Hicher",
+        "ref:tn:codegeo": "1452",
+        "ref:tn:hasc_2": "TN.MN.DH",
+        "wikidata": "Q3037406"
+      },
+      "geometrySha256": "4690f2be4c82d9b1fe0f50c37474dd1d1753085b98006a1646b014507a7bea8f",
+      "expectedCuration": null
+    }
+  ],
+  "namePeerIds": [
+    "osm:node:7720714782",
+    "osm:relation:7090957",
+    "osm:relation:7204580"
+  ],
+  "primaryNames": {
+    "base": "دوار هيشر",
+    "locality": "دوار هيشر",
+    "evidence": []
+  },
+  "primaryEvidence": [
+    {
+      "file": "retained-group-reviews/douar-oued-2026-09-19/town-7720714782-current.json",
+      "sha256": "25b6cda7ac902a2d4aef152e063331e00e2dbde0ad75856b2a5ae5945140376a",
+      "url": "https://api.openstreetmap.org/api/0.6/node/7720714782.json",
+      "requiredText": [
+        "دوار هيشر",
+        "Douar Hicher"
+      ]
+    }
+  ],
+  "contextIds": {
+    "delegation": "osm:relation:7204580",
+    "governor": "osm:relation:1435828"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialSectorRecord": {
+    "governorateCode": "14",
+    "governorateFr": "Manouba",
+    "governorateAr": "منوبة",
+    "delegationCode": "1452",
+    "delegationFr": "Douar hicher",
+    "delegationAr": "دوار هيشر",
+    "sectorCode": "145251",
+    "sectorFr": "Douar hicher",
+    "sectorAr": "دوار هيشر",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 9963,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 346,
+      "Nombre_de_menages_par_Secteurs.xlsx": 345
+    }
+  },
+  "protectedMetadata": {
+    "osm:relation:7090957": {
+      "id": "osm:relation:7090957",
+      "sourceId": "osm",
+      "name": "دوار هيشر",
+      "aliases": [
+        "Douar Hicher",
+        "דואר הישר",
+        "دوار ھیشر"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية دوار هيشر",
+      "contextAliases": [
+        "Douar Hicher",
+        "Délégation Douar Hicher",
+        "معتمدية دوار هيشر"
+      ],
+      "governorateId": 360,
+      "lat": 36.8237415,
+      "lng": 10.0960637,
+      "delegationId": 554,
+      "hasBoundary": true,
+      "bbox": [
+        10.086144,
+        36.815754,
+        10.104947,
+        36.827621
+      ],
+      "areaKm2": 1.5190625520515233,
+      "manualPointId": "osm:node:7720714782"
+    }
+  },
+  "beforeGroups": [
+    {
+      "id": "delegation:554",
+      "memberIds": [
+        "delegation:554"
+      ]
+    },
+    {
+      "id": "osm:relation:7090957",
+      "memberIds": [
+        "osm:relation:7090957"
+      ]
+    }
+  ],
+  "finalGroups": [
+    {
+      "id": "delegation:554",
+      "memberIds": [
+        "delegation:554",
+        "osm:relation:7090957"
+      ]
+    }
+  ],
+  "memberPrayerSources": {
+    "osm:relation:7090957": 554
+  },
+  "manualSelection": {
+    "representativeId": "osm:relation:7090957",
+    "lat": 36.8237415,
+    "lng": 10.0960637,
+    "expectedNearestSourceId": 554
+  },
+  "qualifications": {
+    "publishedCoordinatesAreNotDisplayGeometry": true,
+    "sourceWitnessRemainsAbsorbed": true,
+    "memberPolygonsAreNotEquivalent": true,
+    "administrativeBoundaryNotCertified": true,
+    "manualPrayerSourceUsesRepresentative": true
+  },
+  "nameCuration": {
+    "curationIds": [
+      "osm:relation:7090957"
+    ],
+    "beforeMetadata": {
+      "osm:relation:7090957": {
+        "id": "osm:relation:7090957",
+        "sourceId": "osm",
+        "name": "دوار ھیشر",
+        "aliases": [
+          "Douar Hicher",
+          "דואר הישר",
+          "دوار هيشر"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية دوار هيشر",
+        "contextAliases": [
+          "Douar Hicher",
+          "Délégation Douar Hicher",
+          "معتمدية دوار هيشر"
+        ],
+        "governorateId": 360,
+        "lat": 36.821735,
+        "lng": 10.097085,
+        "delegationId": 554,
+        "hasBoundary": true,
+        "bbox": [
+          10.086144,
+          36.815754,
+          10.104947,
+          36.827621
+        ],
+        "areaKm2": 1.5190625520515233
+      },
+      "osm:way:663536803": {
+        "id": "osm:way:663536803",
+        "sourceId": "osm",
+        "name": "residene nour",
+        "aliases": [],
+        "kind": "quarter",
+        "parentName": "دوار ھیشر",
+        "contextAliases": [
+          "Douar Hicher",
+          "Délégation Douar Hicher",
+          "دوار ھیشر",
+          "معتمدية دوار هيشر"
+        ],
+        "governorateId": 360,
+        "lat": 36.825459,
+        "lng": 10.097081,
+        "delegationId": 554,
+        "hasBoundary": true,
+        "bbox": [
+          10.096319,
+          36.824171,
+          10.099249,
+          36.826617
+        ],
+        "areaKm2": 0.03091727127862237
+      }
+    }
+  }
+}

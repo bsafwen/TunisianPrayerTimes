@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_COMPONENTS_COMBINED_FOR_ISOLATED_GENERATION",
+  "baselineMetadataSha256": "fe578055027e1f988df027d50e6156e83a549945924ba95320d35b8d3bee0a50",
+  "componentProposals": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/bardo394-component-proposal-20260919/proposal.json",
+      "sha256": "ede8e0bee5d0faea5534aac9104021e1a37e225399cbccfa9542168fa252296d",
+      "bytes": 38463
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ksar-bir-component-proposal-20260919/proposal.json",
+      "sha256": "8ba2fd67ed77902339002ba2517f7834ff20f438881aef5965ddbefcca99c215",
+      "bytes": 213229
+    }
+  ],
+  "sourceReviews": [
+    {
+      "file": "coordinate-reviews/inm-published-bardo-nearby-2026-09-19/source-and-reference-impact-review.json",
+      "sha256": "c283ec2b98eaa8b2c128a6e2342413020c6b9999284f9d89883b31f894dfcf31"
+    },
+    {
+      "file": "locality-group-reviews/ksar-hadada-bir-thalathine-2026-09-19/source-identity-and-design.json",
+      "sha256": "76f7d17f20047e34798f25f8fcdc3dbc1de8d47ebf281793420ac000a8c07b6c"
+    }
+  ],
+  "exactRawChanges": [
+    {
+      "id": "osm:relation:7118020",
+      "field": "name",
+      "before": "عمادة باردو",
+      "after": "باردو"
+    },
+    {
+      "id": "osm:relation:7118020",
+      "field": "aliases",
+      "before": [
+        "Bardo"
+      ],
+      "after": [
+        "Bardo",
+        "Le Bardo",
+        "Ле Бардо",
+        "בארדו",
+        "عمادة باردو"
+      ]
+    },
+    {
+      "id": "osm:relation:7118020",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7118020",
+      "after": "delegation:394"
+    },
+    {
+      "id": "osm:way:103825771",
+      "field": "aliases",
+      "before": [
+        "Le Bardo",
+        "Ле Бардо",
+        "בארדו"
+      ],
+      "after": [
+        "Le Bardo",
+        "Ле Бардо"
+      ]
+    },
+    {
+      "id": "osm:relation:7095908",
+      "field": "delegationId",
+      "before": 393,
+      "after": 534
+    },
+    {
+      "id": "osm:relation:7118023",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118026",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7118027",
+      "field": "delegationId",
+      "before": 394,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201456",
+      "field": "delegationId",
+      "before": 615,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201480",
+      "field": "delegationId",
+      "before": 395,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201481",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:relation:7201531",
+      "field": "delegationId",
+      "before": 393,
+      "after": 392
+    },
+    {
+      "id": "osm:relation:7201543",
+      "field": "delegationId",
+      "before": 390,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7201546",
+      "field": "delegationId",
+      "before": 391,
+      "after": 392
+    },
+    {
+      "id": "osm:way:980164287",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:way:980164288",
+      "field": "delegationId",
+      "before": 391,
+      "after": 394
+    },
+    {
+      "id": "osm:node:12925453903",
+      "field": "delegationId",
+      "before": 395,
+      "after": 391
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "name",
+      "before": "قصر الحدادة",
+      "after": "قصر حدادة"
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "aliases",
+      "before": [
+        "Ksar El Haddada"
+      ],
+      "after": [
+        "Ksar El Haddada",
+        "قصر الحدادة"
+      ]
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "lat",
+      "before": 33.110282,
+      "after": 33.1004153
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "lng",
+      "before": 10.3048,
+      "after": 10.3119203
+    },
+    {
+      "id": "osm:relation:7143839",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:297761849"
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "parentName",
+      "before": "قصر الحدادة",
+      "after": "معتمدية غمراسن"
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Ghomrassen",
+        "Ghomrassen",
+        "Ksar El Haddada",
+        "قصر الحدادة",
+        "معتمدية غمراسن"
+      ],
+      "after": [
+        "Délégation Ghomrassen",
+        "Ghomrassen",
+        "Ksar El Haddada",
+        "قصر الحدادة",
+        "قصر حدادة",
+        "معتمدية غمراسن"
+      ]
+    },
+    {
+      "id": "osm:way:321991676",
+      "field": "pickerGroupId",
+      "before": "osm:way:321991676",
+      "after": "osm:relation:7143839"
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "name",
+      "before": "بئر الثلاثين",
+      "after": "بئر ثلاثين"
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "aliases",
+      "before": [
+        "BIR THALATHINE"
+      ],
+      "after": [
+        "BIR THALATHINE",
+        "بئر الثلاثين"
+      ]
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "lat",
+      "before": 32.691982,
+      "after": 32.6945027
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "lng",
+      "before": 10.346146,
+      "after": 10.3302325
+    },
+    {
+      "id": "osm:relation:7143857",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:8655345739"
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "parentName",
+      "before": "بئر الثلاثين",
+      "after": "معتمدية تطاوين الجنوبية"
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "contextAliases",
+      "before": [
+        "BIR THALATHINE",
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "بئر الثلاثين",
+        "معتمدية تطاوين الجنوبية"
+      ],
+      "after": [
+        "BIR THALATHINE",
+        "Délégation Tataouine Sud",
+        "Tataouine Sud",
+        "بئر الثلاثين",
+        "بئر ثلاثين",
+        "معتمدية تطاوين الجنوبية"
+      ]
+    },
+    {
+      "id": "osm:way:154906508",
+      "field": "pickerGroupId",
+      "before": "osm:way:154906508",
+      "after": "osm:relation:7143857"
+    }
+  ],
+  "all3523BeforeAndAfterNearestVerified": true,
+  "scope": "Four separately published Tunis references affect13 raw nearest defaults. Bardo merges into its retained town/base choice; Ksar Hadada and Bir Thalathine each retain their two different polygons but use one named manual choice at the original village point. No geometry, source-kind or compiler change."
+}

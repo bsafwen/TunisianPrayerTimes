@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "ACCEPTED_FOR_ISOLATED_GENERATION_PENDING_ACTUAL_OUTPUT_REVIEW",
+  "reviewedDate": "2026-09-13",
+  "reviewer": "root",
+  "scope": "Retain the existing Degache town display while adopting its separately published timetable reference and selecting the nearest available source at the town point.",
+  "designSha256": "87896aaf2dbce58865d98b3b94bce242b78c0fe9fee77ee5ca458a1baa239c5b",
+  "historicalSourceReviewSha256": "8198e56ae25a0efbc0f24568e8a7ed687ca2a14a2cb602f058ff2dd88b225503",
+  "compilerProposalSha256": "027d6484b95ca6ee7d0fcbbc525c8a2fb17383c6ac966aff9d29f1101d40fd89",
+  "reviewedPatchSha256": "e177d95ce4889e0748d3cd28e9bbf54e4c0674317466b51d3fe1bd29bd424c04",
+  "reviewedCompilerSha256": "55cf024b5a0ac7eadb1058a63af52fde97d659a740aa13e27aec998aee3cef84",
+  "ordinaryCoordinatePartsSha256": "dc0312383f4f164aaf3856413c7887ef891f6d8b059aa6e0aee48c37470c3eb9",
+  "rootReviewEvidence": {
+    "historicalSourceReviewRead": "804fd9",
+    "designRead": "c1df6d",
+    "ordinaryCoordinatePartsRead": "a81c9c",
+    "wholePatchRead": "170d61",
+    "surroundingOrdinaryValidatorRead": "9f8b78",
+    "proposalRead": "b32564",
+    "sourcePayloadPlanRead": "ce9754"
+  },
+  "independentSourceReview": {
+    "agent": "awlad_boundary_identity",
+    "finding": "The agent independently read original paired INM responses, authentic town history and Ministry office HTML, viewed atlas pages97/99, checked the same named containing delegation6252, and reproduced all3524 nearest defaults. It found no identity blocker and exactly two source-default changes.",
+    "qualification": "This records the agent's reported review. It does not assert that root personally viewed every original page in this turn."
+  },
+  "acceptedInvariants": [
+    "Keep group delegation478 with only raw town osm:node:351582010 and its unchanged coordinates33.9841058,8.2154584.",
+    "Treat34.016,8.273 as the published daily timetable reference for478; do not describe it as the town center, hidden calculation input or Bou Helal settlement identity.",
+    "Only town351582010 changes default478 to481 and sector7154920 changes478 to625.",
+    "Keep Bou Helal and Kriz separate and preserve every field of the six sectors except the specified7154920 default.",
+    "Retain the ordinary exact source node, primary source, full source-name inventory, official registry, context containment and final preservation checks.",
+    "The independent-selection option applies only to the exact Degache relationship; no-option behavior remains unchanged.",
+    "Review the actual generated metadata, complete groups, receipts and polygon bytes before installation."
+  ],
+  "historicalHoldResolution": "Separating town display identity from the published timetable reference resolves the earlier ambiguity without asserting that the different reference points are one settlement.",
+  "phoneOrBoundaryCertification": false,
+  "generatorExecutedByThisReview": false,
+  "testsRun": false,
+  "liveFilesChangedByThisReview": false
+}

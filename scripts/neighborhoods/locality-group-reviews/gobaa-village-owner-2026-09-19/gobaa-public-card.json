@@ -1,0 +1,36 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T09:16:09.010546+00:00",
+  "query": "القباعة وادي الليل تونس",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "القباعة"
+  ],
+  "publicUiText": [
+    "القباعة",
+    "El Kobbaa",
+    "تونس‎",
+    "الاتجاهات إلى القباعة",
+    "الاتجاهات",
+    "مشاركة القباعة",
+    "مشاركة",
+    "حفظ القباعة في القوائم",
+    "حفظ",
+    "عرض المزيد من الإجراءات لهذا المكان",
+    "المزيد",
+    "لمحة",
+    "العنوان:‏ تونس‎",
+    "إضافة مكان غير مدرج على الخريطة",
+    "إضافة مؤسستك إلى \"خرائط Google\" مجانًا",
+    "قياس المسافة",
+    "إغلاق",
+    "القباعة وادي الليل تونس",
+    "محو"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "القباعة"
+  ],
+  "screenshot": "osm_way_456466522-1.png",
+  "boundaryVerified": false
+}

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "status": "COUNTERFACTUAL_SCOPE_PROPOSAL_PENDING_INDEPENDENT_REVIEW",
+  "scope": "EXPLICIT COUNTERFACTUAL: this is not an actual historical deployed catalog. Both sides already include the approved property exclusion and Gobaa display/name correction, plus the installed Hazoua correction. Only the Smar472 prayer reference and its two-member display group are absent on the before side. The exact18 surviving changes reproduce the approved combined target byte-for-byte.",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "d3c334ca94f18e8a970568bb562676de57e7880762a7619cba9f6ce6c9902439",
+  "snapshots": {
+    "counterfactual-before-smar-neighborhoods.json": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar-exclusion-scope-20260919/counterfactual-before-smar-neighborhoods.json",
+      "sha256": "d3c334ca94f18e8a970568bb562676de57e7880762a7619cba9f6ce6c9902439",
+      "bytes": 1850817
+    },
+    "counterfactual-before-smar-gouvernorats.json": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar-exclusion-scope-20260919/counterfactual-before-smar-gouvernorats.json",
+      "sha256": "da298374ca00c7066965d9e4dd301b6412a2cb79e7239227462d95fc764b50e2",
+      "bytes": 29519
+    },
+    "projected-after-smar-neighborhoods.json": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar-exclusion-scope-20260919/projected-after-smar-neighborhoods.json",
+      "sha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+      "bytes": 1850804
+    },
+    "projected-after-smar-gouvernorats.json": {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/smar-exclusion-scope-20260919/projected-after-smar-gouvernorats.json",
+      "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "bytes": 54585
+    }
+  },
+  "originalRetainedProof": {
+    "file": "coordinate-reviews/inm-published-smar472-2026-09-19/retained-display-reference-proof.json",
+    "sha256": "28a7ea69ae75e785a3ab380bc8eaae911ecf235b86ee3ea66a288900bfd146e7"
+  },
+  "originalIndependentSourceReview": {
+    "file": "coordinate-reviews/inm-published-smar472-2026-09-19/independent-source-review.json",
+    "sha256": "908d753e3c0f3a1d1a2df90a9328c676b9e9d19725312a85ce8e3a7e82f49441"
+  },
+  "originalSourceFacts": {
+    "file": "coordinate-reviews/inm-published-smar472-2026-09-19/sourcefacts-and-design.json",
+    "sha256": "4d8b2b7ceba4b0544b7ae310c65e166155a04d169ee7f39eb4291e82769c43aa"
+  },
+  "originalBaselineMetadataSha256": "5fead87cca66a9f6be73b14259f2dbb796f5001e2339327be5ff2c2000b1ac9b",
+  "originalNineteenFieldScopeRemainsHistorical": true,
+  "excludedHistoricalAssertion": {
+    "id": "osm:way:791334742",
+    "field": "delegationId",
+    "before": 472,
+    "after": 624
+  },
+  "exclusionComponent": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/maison-agricole791334742-exclusion-proposal-20260919/proposal.json",
+    "sha256": "117fde8e8d48832eed27ac675e59fa585c31439145c47f76c8e39b8f92924ab4",
+    "bytes": 18691
+  },
+  "sourceAuthorityAddendum": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/maison-agricole791334742-exclusion-proposal-20260919/source-authority-addendum.json",
+    "sha256": "c109d03c1558a2f7322a4167ebfbd00ae4eb868456e8a05c4a1479a989b887fa",
+    "bytes": 1692
+  },
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7142926",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7142928",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7142961",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143859",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143861",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:1392451611",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:187313004",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:11820052133",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:9052889223",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7143872",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    }
+  ],
+  "referenceDelta": {
+    "delegationId": 472,
+    "before": {
+      "lat": 32.9955,
+      "lng": 10.8246
+    },
+    "after": {
+      "lat": 32.872,
+      "lng": 10.89
+    },
+    "allOtherSourceReferencesPreserved": true
+  },
+  "verification": {
+    "both3523NearestSourcesRecomputed": true,
+    "availableSources": 258,
+    "rawIdsIdenticalAcrossThisScopedTransition": true,
+    "exact18FieldsReproduceTargetBytes": true,
+    "allSourceIdentityManualRepresentativesAndGeometryEvidenceUnchanged": true,
+    "allOriginalEvidencePreserved": true
+  },
+  "sourceInputs": [
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/gobaa-property-combined-proposal-20260919/proposal.json",
+      "sha256": "e231928ccba8fabe8ffa1ff6e27b74cf7c1fc6f1aeb3335f0d7568358e344916",
+      "bytes": 48294
+    },
+    {
+      "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/gobaa-property-combined-proposal-20260919/expected-neighborhoods.json",
+      "sha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+      "bytes": 1850804
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/reviewed-picker-groups.json",
+      "sha256": "1816f6e4736b7fff8d5c7b9a5ab86b51c45cb3463b7ef1f0e8625ebb12620ed0",
+      "bytes": 585396
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coordinate-reviews/inm-published-smar472-2026-09-19/retained-display-reference-proof.json",
+      "sha256": "28a7ea69ae75e785a3ab380bc8eaae911ecf235b86ee3ea66a288900bfd146e7",
+      "bytes": 20560
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coordinate-reviews/inm-published-smar472-2026-09-19/sourcefacts-and-design.json",
+      "sha256": "4d8b2b7ceba4b0544b7ae310c65e166155a04d169ee7f39eb4291e82769c43aa",
+      "bytes": 283533
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/coordinate-reviews/inm-published-smar472-2026-09-19/independent-source-review.json",
+      "sha256": "908d753e3c0f3a1d1a2df90a9328c676b9e9d19725312a85ce8e3a7e82f49441",
+      "bytes": 18305
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/gouvernorats.json",
+      "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "bytes": 54585
+    },
+    {
+      "file": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/scripts/neighborhoods/prayer-source-coordinates.json",
+      "sha256": "d3034011c5dac58e4653ba3d518385b1016addbaa61ab932804629ecb2b850fd",
+      "bytes": 141962
+    }
+  ],
+  "operations": {
+    "liveWrites": false,
+    "productImports": false,
+    "generatorRuns": 0,
+    "tests": 0,
+    "builds": 0
+  }
+}

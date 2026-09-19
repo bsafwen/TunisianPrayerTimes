@@ -1,0 +1,37 @@
+[
+  {
+    "file": "way791334742-current.json",
+    "url": "https://api.openstreetmap.org/api/0.6/way/791334742.json",
+    "sha256": "08bd8da064df6b5366ba28d524f3785bcaec16dbe78caa15826da1c9ffe0400d",
+    "bytes": 551,
+    "retrievedAt": "2026-09-19T09:47:10.351764+00:00"
+  },
+  {
+    "file": "way791334742-history.json",
+    "url": "https://api.openstreetmap.org/api/0.6/way/791334742/history.json",
+    "sha256": "997381c7c7259bb3858115cf5edf4f13b22582b37eec370b7d3e78f53a3766df",
+    "bytes": 551,
+    "retrievedAt": "2026-09-19T09:47:10.349765+00:00"
+  },
+  {
+    "file": "way791334742-full.json",
+    "url": "https://api.openstreetmap.org/api/0.6/way/791334742/full.json",
+    "sha256": "24185dc524b9f76acd27d25ae08405865a536335fa8f71f3ec13c13ff5d94214",
+    "bytes": 1275,
+    "retrievedAt": "2026-09-19T09:47:10.349765+00:00"
+  },
+  {
+    "file": "changeset83472658.json",
+    "url": "https://api.openstreetmap.org/api/0.6/changeset/83472658.json",
+    "sha256": "35467d62441402f8653efa12766d12554e170b348a3f66d3e8c483473a3eb645",
+    "bytes": 785,
+    "retrievedAt": "2026-09-19T09:47:30.252529+00:00"
+  },
+  {
+    "file": "changeset83472658.osc",
+    "url": "https://api.openstreetmap.org/api/0.6/changeset/83472658/download",
+    "sha256": "737cb0e2469caabd18024191f345c6eeef265fe5f77ce82cae6e5ef89d4ed7c0",
+    "bytes": 66383,
+    "retrievedAt": "2026-09-19T09:47:30.267531+00:00"
+  }
+]

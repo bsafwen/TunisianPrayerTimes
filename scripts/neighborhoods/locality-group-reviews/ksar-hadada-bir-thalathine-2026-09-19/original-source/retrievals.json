@@ -1,0 +1,29 @@
+[
+  {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ksar-bir-source-design-20260919/original-source/ksar-village-297761849.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/297761849.json",
+    "finalUrl": "https://api.openstreetmap.org/api/0.6/node/297761849.json",
+    "status": 200,
+    "retrievedAtUtc": "2026-09-19T11:30:07.227783+00:00",
+    "sha256": "54f329d5c8ad181db2002134d7df6259936a066e7e42df77b366102963f12553",
+    "bytes": 571
+  },
+  {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ksar-bir-source-design-20260919/original-source/bir-village-8655345739.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/8655345739.json",
+    "finalUrl": "https://api.openstreetmap.org/api/0.6/node/8655345739.json",
+    "status": 200,
+    "retrievedAtUtc": "2026-09-19T11:30:07.312334+00:00",
+    "sha256": "23111d798fc2be25ba47f17c96074f86abf1a90a170545b1041bca562be9e346",
+    "bytes": 542
+  },
+  {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/ksar-bir-source-design-20260919/original-source/isie-public-centre-list.html",
+    "url": "https://www.isie.tn/ar/presidentielle-pv-centre-de-vote/",
+    "finalUrl": "https://www.isie.tn/ar/presidentielle-pv-centre-de-vote/",
+    "status": 200,
+    "retrievedAtUtc": "2026-09-19T11:30:08.746025+00:00",
+    "sha256": "51b0bc6fbdba170a189401ec1f2f80477fa0fa257ebebaa7d722cd4c21858d92",
+    "bytes": 3704851
+  }
+]

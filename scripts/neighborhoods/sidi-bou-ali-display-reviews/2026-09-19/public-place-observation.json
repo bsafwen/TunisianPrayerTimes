@@ -1,0 +1,38 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T08:24:18.293252+00:00",
+  "query": "Sidi Bou Ali, Sousse, Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "سيدي بوعلي"
+  ],
+  "publicUiText": [
+    "سيدي بوعلي",
+    "Sidi Bou Ali",
+    "تونس‎",
+    "الاتجاهات إلى سيدي بوعلي",
+    "الاتجاهات",
+    "مشاركة سيدي بوعلي",
+    "مشاركة",
+    "حفظ سيدي بوعلي في القوائم",
+    "حفظ",
+    "عرض المزيد من الإجراءات لهذا المكان",
+    "المزيد",
+    "صورة",
+    "فيديو",
+    "إغلاق",
+    "Sidi Bou Ali, Sousse, Tunisia",
+    "محو",
+    "المطاعم",
+    "الفنادق",
+    "مَعالِم الجذب السياحي",
+    "المتنزهات"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "سيدي بو علي",
+    "Sidi Bou Ali"
+  ],
+  "screenshot": "osm_relation_7107795-1.png",
+  "boundaryVerified": false
+}

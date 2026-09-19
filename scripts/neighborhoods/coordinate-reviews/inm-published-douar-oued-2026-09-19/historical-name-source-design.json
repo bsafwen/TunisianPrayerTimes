@@ -1,0 +1,1278 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUNDED_SOURCE_DESIGN_REVIEW_NAME_AND_MANUAL_POINT_READY_GROUPING_HELD",
+  "createdAtUtc": "2026-09-19T10:28:46.655123+00:00",
+  "reviewer": "point_pairs_check",
+  "baselineMetadataSha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "2df41a502072c52200ba0af04fe5ea8094b0e80735b7facb11af9c5f7c0bf1f2",
+      "bytes": 1850804
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568",
+      "bytes": 5536120
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "9aa12d86c50fd4747bf4e61021261822bcb0ad7fe149b03fae24a6e2ac88e86c",
+      "bytes": 54585
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "a1175f0320576b6fe6c77469345d1da2e60b8437c2fc6a7febaa592ff3a2f678",
+      "bytes": 12869
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "905550368c9b05f903bbdb66031cf64d0a70ca53689f9009988f696039b66ac1",
+      "bytes": 411641
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "351c6f2aca1766d045f05225992b28dfcea23e0d042c15517af70c842bb47b11",
+      "bytes": 592989
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "d3034011c5dac58e4653ba3d518385b1016addbaa61ab932804629ecb2b850fd",
+      "bytes": 141962
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "2c67379cea3fe8c12c79ae8febb354694a139dc54b579fa5a6ef55c1f74d2a7e",
+      "bytes": 633160
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\reference-inventory.json",
+      "sha256": "6ea5141de2abc05f32fdbee8db2f8b13146ba4144be0e096338c5a1cf140f401",
+      "bytes": 1665727
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-display-top-ten-20260919.json",
+      "sha256": "96c5289b756f15670b21dff984e4ec9ef8ef93875b0b25d23594c61b21303b33",
+      "bytes": 61901
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\five-locality-names-phone-review-20260919.json",
+      "sha256": "57e12e425dd25789510fdbdafd21a7d5dc2c516d05859bf05193e7c4af9fb282",
+      "bytes": 6192
+    }
+  ],
+  "records": [
+    {
+      "targetDelegationId": 554,
+      "governorateId": 360,
+      "rawSectorId": "osm:relation:7090957",
+      "sourceTownPointId": "osm:node:7720714782",
+      "canonicalPrimaryName": "دوار هيشر",
+      "baseCurrent": {
+        "id": 554,
+        "nomFr": "Douar Hicher",
+        "nomAr": "دوار هيشر",
+        "nomEn": "Douar Hicher",
+        "lat": 36.8306,
+        "lng": 10.0863
+      },
+      "officialRecord": {
+        "governorateCode": "14",
+        "governorateFr": "Manouba",
+        "governorateAr": "منوبة",
+        "delegationCode": "1452",
+        "delegationFr": "Douar hicher",
+        "delegationAr": "دوار هيشر",
+        "sectorCode": "145251",
+        "sectorFr": "Douar hicher",
+        "sectorAr": "دوار هيشر",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 9963,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 346,
+          "Nombre_de_menages_par_Secteurs.xlsx": 345
+        }
+      },
+      "sourceRecords": {
+        "osm:relation:7090957": {
+          "id": "osm:relation:7090957",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "دوار ھیشر",
+            "name:fr": "Douar Hicher",
+            "ref:tn:codegeo": "145251"
+          },
+          "geometrySha256": "d6cccb384ce567d4bac486a222fafc29e9bceafa08afd412b7ea54440b29ba22",
+          "lat": null,
+          "lng": null,
+          "currentMetadata": {
+            "id": "osm:relation:7090957",
+            "sourceId": "osm",
+            "name": "دوار ھیشر",
+            "aliases": [
+              "Douar Hicher",
+              "דואר הישר",
+              "دوار هيشر"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية دوار هيشر",
+            "contextAliases": [
+              "Douar Hicher",
+              "Délégation Douar Hicher",
+              "معتمدية دوار هيشر"
+            ],
+            "governorateId": 360,
+            "lat": 36.821735,
+            "lng": 10.097085,
+            "delegationId": 554,
+            "hasBoundary": true,
+            "bbox": [
+              10.086144,
+              36.815754,
+              10.104947,
+              36.827621
+            ],
+            "areaKm2": 1.5190625520515233,
+            "pickerGroupId": "osm:relation:7090957",
+            "offset": 103032,
+            "length": 972
+          },
+          "expectedCuration": null
+        },
+        "osm:node:7720714782": {
+          "id": "osm:node:7720714782",
+          "kind": "town",
+          "tags": {
+            "name": "دوار هيشر",
+            "name:ar": "دوار هيشر",
+            "name:en": "Douar Hicher",
+            "name:fa": "دوار هيشر",
+            "name:fr": "Douar Hicher",
+            "name:he": "דואר הישר",
+            "place": "town",
+            "wikidata": "Q3037419",
+            "wikimedia_commons": "Category:Douar Hicher",
+            "wikipedia": "en:Douar Hicher"
+          },
+          "geometrySha256": "ba514b857f23fde9948ae5d4168df580900458ee4c16b2b2742a6552b90aca6b",
+          "lat": 36.8237415,
+          "lng": 10.0960637,
+          "currentMetadata": null,
+          "expectedCuration": null
+        },
+        "osm:relation:7204580": {
+          "id": "osm:relation:7204580",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Douar Hicher",
+            "boundary": "administrative",
+            "name": "معتمدية دوار هيشر",
+            "name:ar": "معتمدية دوار هيشر",
+            "name:fr": "Délégation Douar Hicher",
+            "ref:tn:codegeo": "1452",
+            "ref:tn:hasc_2": "TN.MN.DH",
+            "wikidata": "Q3037406"
+          },
+          "geometrySha256": "4690f2be4c82d9b1fe0f50c37474dd1d1753085b98006a1646b014507a7bea8f",
+          "lat": null,
+          "lng": null,
+          "currentMetadata": null,
+          "expectedCuration": null
+        },
+        "osm:relation:1435828": {
+          "id": "osm:relation:1435828",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-14",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية منوبة",
+            "name:ar": "ولاية منوبة",
+            "name:arz": "ولاية منوبه",
+            "name:az": "Manuba (vilayət)",
+            "name:be": "Мануба (вілает)",
+            "name:be-tarask": "Мануба (вілает)",
+            "name:bg": "Мануба (област)",
+            "name:bjn": "Tunisia",
+            "name:ca": "Governació de Manouba",
+            "name:ceb": "Manouba (lalawigan)",
+            "name:cy": "Manouba (talaith)",
+            "name:de": "Gouvernement Manouba",
+            "name:el": "Λα Μανουμπά (Κυβερνείο)",
+            "name:en": "Manouba",
+            "name:es": "Gobernación de Manouba",
+            "name:fa": "منوبه",
+            "name:fr": "Gouvernorat La Manouba",
+            "name:frr": "Manouba (Guwernement)",
+            "name:id": "Kegubernuran Manouba",
+            "name:it": "Manouba",
+            "name:ja": "マヌーバ県",
+            "name:ko": "마누바주",
+            "name:ms": "Kawasan kegabenoran Manouba",
+            "name:nl": "Manouba (gouvernement)",
+            "name:no": "Manouba (guvernement)",
+            "name:pl": "Gubernatorstwo Manuba",
+            "name:pt": "Manouba (província)",
+            "name:ro": "Guvernoratul Manouba",
+            "name:ru": "Мануба (вилайет)",
+            "name:sco": "Manouba Govrenorate",
+            "name:sh": "Manouba (vilajet)",
+            "name:sv": "Manouba (guvernement)",
+            "name:tr": "Manuba ili",
+            "name:uk": "Мануба (вілаєт)",
+            "name:ur": "منوبہ",
+            "name:zh": "馬努巴省",
+            "name:zu": "Manouba Governorate",
+            "official_name": "ولاية منوبة",
+            "official_name:ar": "ولاية منوبة",
+            "official_name:en": "Manouba Governorate",
+            "official_name:fa": "استان منوبه",
+            "official_name:fr": "Gouvernorat de la Manouba",
+            "official_name:it": "Governatorato di Manouba",
+            "official_name:ur": "ولایت منوبہ",
+            "population": "335912",
+            "population:date": "2014",
+            "ref:tn:codegeo": "14",
+            "wikidata": "Q734328",
+            "wikipedia": "ar:ولاية منوبة"
+          },
+          "geometrySha256": "45240f4735b249f476a71af8d94d323efbbed6659fdf79ef387b32d052ba16a5",
+          "lat": null,
+          "lng": null,
+          "currentMetadata": null,
+          "expectedCuration": null
+        }
+      },
+      "completeBeforeSectorGroup": [
+        "osm:relation:7090957"
+      ],
+      "completeBeforeBaseRawMembers": [],
+      "sourceNamePeers": [
+        {
+          "id": "osm:relation:7090957",
+          "kind": "sector",
+          "names": [
+            "دوار ھیشر",
+            "Douar Hicher"
+          ],
+          "currentRaw": true
+        },
+        {
+          "id": "osm:relation:7204580",
+          "kind": "delegation",
+          "names": [
+            "معتمدية دوار هيشر",
+            "Délégation Douar Hicher",
+            "Douar Hicher"
+          ],
+          "currentRaw": false
+        },
+        {
+          "id": "osm:node:7720714782",
+          "kind": "town",
+          "names": [
+            "دوار هيشر",
+            "Douar Hicher",
+            "דואר הישר"
+          ],
+          "currentRaw": false
+        }
+      ],
+      "containment": {
+        "installedPrayerReference": {
+          "lat": 36.8306,
+          "lng": 10.0863,
+          "originalSector": false,
+          "packedSector": false,
+          "originalParent": true,
+          "nearestInstalled": 554,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7090955",
+              "name": "حي النسيم",
+              "code": "145254"
+            }
+          ]
+        },
+        "archivedPublishedPrayerReference": {
+          "lat": 36.828,
+          "lng": 10.089,
+          "originalSector": false,
+          "packedSector": false,
+          "originalParent": true,
+          "nearestInstalled": 554,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7090955",
+              "name": "حي النسيم",
+              "code": "145254"
+            }
+          ]
+        },
+        "authenticOriginalTownPoint": {
+          "lat": 36.8237415,
+          "lng": 10.0960637,
+          "originalSector": true,
+          "packedSector": true,
+          "originalParent": true,
+          "nearestInstalled": 554,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7090957",
+              "name": "دوار ھیشر",
+              "code": "145251"
+            }
+          ]
+        },
+        "currentSectorRepresentative": {
+          "lat": 36.821735,
+          "lng": 10.097085,
+          "originalSector": true,
+          "packedSector": true,
+          "originalParent": true,
+          "nearestInstalled": 554,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7090957",
+              "name": "دوار ھیشر",
+              "code": "145251"
+            }
+          ]
+        }
+      },
+      "wholeOriginalSectorWithinParent": true,
+      "wholePackedSectorWithinOriginalParent": false,
+      "packedParentSpillAreaSquareDegrees": 3.3780514589569664e-09,
+      "packedGeometrySha256": "47e245262f2a57917ed3464308408417a2d3f221bad3cf490049d5714d08c112",
+      "currentContextDependents": [
+        {
+          "id": "osm:way:663536803",
+          "sourceId": "osm",
+          "name": "residene nour",
+          "aliases": [],
+          "kind": "quarter",
+          "parentName": "دوار ھیشر",
+          "contextAliases": [
+            "Douar Hicher",
+            "Délégation Douar Hicher",
+            "دوار ھیشر",
+            "معتمدية دوار هيشر"
+          ],
+          "governorateId": 360,
+          "lat": 36.825459,
+          "lng": 10.097081,
+          "delegationId": 554,
+          "hasBoundary": true,
+          "bbox": [
+            10.096319,
+            36.824171,
+            10.099249,
+            36.826617
+          ],
+          "areaKm2": 0.03091727127862237,
+          "pickerGroupId": "osm:way:663536803",
+          "offset": 5459280,
+          "length": 332
+        }
+      ],
+      "archivedPublishedEvidence": {
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-554-2026-09-12.json",
+          "sha256": "d15f108d51fb5cf2d4da74ba025b571263034ef4bbda6c30f2a6bac10d08c6ee",
+          "bytes": 572
+        },
+        "retrievedAt": "2026-09-12T10:17:25.055176+00:00",
+        "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/360/554/",
+        "recordDate": "2026-09-12 00:00",
+        "names": {
+          "id": 554,
+          "intituleFr": "Douar Hicher",
+          "intituleAr": "دوار هيشر",
+          "intituleAn": "Douar Hicher",
+          "parent": {
+            "id": 360,
+            "intituleFr": "Manouba",
+            "intituleAr": "منوبة",
+            "intituleAn": "Manouba"
+          }
+        },
+        "coordinates": {
+          "lat": 36.828,
+          "lng": 10.089
+        },
+        "isFreshSeptember19Retrieval": false,
+        "sunCorroborationRead": false
+      },
+      "installedCoordinateCorrection": [],
+      "installedToArchivedReferenceKm": 0.3759401273767602,
+      "currentRepresentativeToTownKm": 0.24092172909975845,
+      "archivedReferenceOnlyDefaultChanges": [],
+      "publicPhoneNameContext": {
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-1.json",
+          "sha256": "3dbaf51b5ea8c3f8173c8dc9585f051ac256b21a2f971dbfed4b1d8053aec2b3"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7090957-1.png",
+          "sha256": "f07625739996d012f8c4365c704badfc73746480cf30f3a6cf96719b869c3b81"
+        },
+        "rootViewedScreenshot": true,
+        "finding": "Named query returns دوار هيشر / Douar Hicher card with broad outline. Supports standard Arabic letter spelling; not a same-sector/base reference conclusion.",
+        "boundaryVerified": false
+      },
+      "sourceScriptDefect": [
+        {
+          "character": "ھ",
+          "codePoint": "U+06BE",
+          "unicodeName": "ARABIC LETTER HEH DOACHASHMEE"
+        },
+        {
+          "character": "ی",
+          "codePoint": "U+06CC",
+          "unicodeName": "ARABIC LETTER FARSI YEH"
+        }
+      ],
+      "design": {
+        "status": "DATA_ONLY_NAME_AND_AUTHENTIC_MANUAL_POINT_READY_GROUPING_HELD",
+        "curationAction": "name_tags",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "دوار ھیشر",
+          "name:fr": "Douar Hicher",
+          "ref:tn:codegeo": "145251"
+        },
+        "nameTags": {
+          "name": "دوار هيشر",
+          "name:ar": "دوار هيشر",
+          "name:fr": "Douar Hicher",
+          "alt_name:ar": "دوار ھیشر"
+        },
+        "manualPointId": "osm:node:7720714782",
+        "manualPointNameNormAndOriginalAndPackedContainmentSatisfied": true,
+        "nameOnlyRawFieldChanges": [
+          {
+            "id": "osm:relation:7090957",
+            "field": "name",
+            "before": "دوار ھیشر",
+            "after": "دوار هيشر"
+          },
+          {
+            "id": "osm:relation:7090957",
+            "field": "aliases",
+            "before": [
+              "Douar Hicher",
+              "דואר הישר",
+              "دوار هيشر"
+            ],
+            "after": [
+              "Douar Hicher",
+              "דואר הישר",
+              "دوار ھیشر"
+            ]
+          },
+          {
+            "id": "osm:way:663536803",
+            "field": "parentName",
+            "before": "دوار ھیشر",
+            "after": "دوار هيشر"
+          },
+          {
+            "id": "osm:way:663536803",
+            "field": "contextAliases",
+            "before": [
+              "Douar Hicher",
+              "Délégation Douar Hicher",
+              "دوار ھیشر",
+              "معتمدية دوار هيشر"
+            ],
+            "after": [
+              "Douar Hicher",
+              "Délégation Douar Hicher",
+              "دوار هيشر",
+              "دوار ھیشر",
+              "معتمدية دوار هيشر"
+            ]
+          }
+        ],
+        "additionalAuthenticManualPointRawFieldChanges": [
+          {
+            "id": "osm:relation:7090957",
+            "field": "lat",
+            "before": 36.821735,
+            "after": 36.8237415
+          },
+          {
+            "id": "osm:relation:7090957",
+            "field": "lng",
+            "before": 10.097085,
+            "after": 10.0960637
+          },
+          {
+            "id": "osm:relation:7090957",
+            "field": "manualPointId",
+            "before": null,
+            "after": "osm:node:7720714782"
+          }
+        ],
+        "exactCandidateRawFieldChanges": [
+          {
+            "id": "osm:relation:7090957",
+            "field": "name",
+            "before": "دوار ھیشر",
+            "after": "دوار هيشر"
+          },
+          {
+            "id": "osm:relation:7090957",
+            "field": "aliases",
+            "before": [
+              "Douar Hicher",
+              "דואר הישר",
+              "دوار هيشر"
+            ],
+            "after": [
+              "Douar Hicher",
+              "דואר הישר",
+              "دوار ھیشر"
+            ]
+          },
+          {
+            "id": "osm:way:663536803",
+            "field": "parentName",
+            "before": "دوار ھیشر",
+            "after": "دوار هيشر"
+          },
+          {
+            "id": "osm:way:663536803",
+            "field": "contextAliases",
+            "before": [
+              "Douar Hicher",
+              "Délégation Douar Hicher",
+              "دوار ھیشر",
+              "معتمدية دوار هيشر"
+            ],
+            "after": [
+              "Douar Hicher",
+              "Délégation Douar Hicher",
+              "دوار هيشر",
+              "دوار ھیشر",
+              "معتمدية دوار هيشر"
+            ]
+          },
+          {
+            "id": "osm:relation:7090957",
+            "field": "lat",
+            "before": 36.821735,
+            "after": 36.8237415
+          },
+          {
+            "id": "osm:relation:7090957",
+            "field": "lng",
+            "before": 10.097085,
+            "after": 10.0960637
+          },
+          {
+            "id": "osm:relation:7090957",
+            "field": "manualPointId",
+            "before": null,
+            "after": "osm:node:7720714782"
+          }
+        ],
+        "displayRowDelta": 0,
+        "rawFeatureDelta": 0,
+        "geometryChanges": 0,
+        "referenceChanges": 0,
+        "nearestDefaultChanges": 0,
+        "curationDecisionDelta": 1,
+        "curationReceiptDelta": 2,
+        "reviewedNamesAddition": {
+          "id": "osm:relation:7090957",
+          "name": "دوار هيشر",
+          "kind": "sector"
+        },
+        "savedRawIdsPreserved": true,
+        "sourceTownRemainsAbsorbed": true,
+        "samePickerNameSetsPreserved": true,
+        "unchangedDistinctChildIds": [
+          "osm:way:663536803"
+        ],
+        "groupingConclusion": "No base grouping proposed. Existing and archived published base reference is outside namesake sector; original town identity proves a usable sector anchor, not that broader base and sector are identical extents."
+      }
+    },
+    {
+      "targetDelegationId": 553,
+      "governorateId": 360,
+      "rawSectorId": "osm:relation:7095862",
+      "sourceTownPointId": "osm:node:287619187",
+      "canonicalPrimaryName": "وادي الليل",
+      "baseCurrent": {
+        "id": 553,
+        "nomFr": "Oued Ellil",
+        "nomAr": "واد الليل",
+        "nomEn": "Oued Ellil",
+        "lat": 36.8427,
+        "lng": 10.0388
+      },
+      "officialRecord": {
+        "governorateCode": "14",
+        "governorateFr": "Manouba",
+        "governorateAr": "منوبة",
+        "delegationCode": "1453",
+        "delegationFr": "Oued ellil",
+        "delegationAr": "وادي الليل",
+        "sectorCode": "145351",
+        "sectorFr": "Oued ellil",
+        "sectorAr": "وادي الليل",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 10133,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 352,
+          "Nombre_de_menages_par_Secteurs.xlsx": 351
+        }
+      },
+      "sourceRecords": {
+        "osm:relation:7095862": {
+          "id": "osm:relation:7095862",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي اللیل",
+            "name:ar": "وادي اللیل‬",
+            "name:fr": "Oued Ellil",
+            "ref:tn:codegeo": "145351"
+          },
+          "geometrySha256": "b037018c23c3f714875cdcce8097d5dbce48e0dd571b6263128dd3f744a18f11",
+          "lat": null,
+          "lng": null,
+          "currentMetadata": {
+            "id": "osm:relation:7095862",
+            "sourceId": "osm",
+            "name": "وادي اللیل",
+            "aliases": [
+              "Oued Ellil",
+              "Оуед Еллил",
+              "ואדי אל-ליל",
+              "وادي الليل",
+              "وادی اللیل"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية وادي اللیل",
+            "contextAliases": [
+              "Délégation Oued Ellil",
+              "Oued Ellil",
+              "معتمدية وادي اللیل"
+            ],
+            "governorateId": 360,
+            "lat": 36.832848,
+            "lng": 10.039089,
+            "delegationId": 553,
+            "hasBoundary": true,
+            "bbox": [
+              10.006837,
+              36.822943,
+              10.066074,
+              36.842864
+            ],
+            "areaKm2": 5.643271988808833,
+            "pickerGroupId": "osm:relation:7095862",
+            "offset": 133004,
+            "length": 1764
+          },
+          "expectedCuration": null
+        },
+        "osm:node:287619187": {
+          "id": "osm:node:287619187",
+          "kind": "town",
+          "tags": {
+            "name": "وادي الليل",
+            "name:ar": "وادي الليل",
+            "name:en": "Oued Ellil",
+            "name:fa": "وادی اللیل",
+            "name:fr": "Oued Ellil",
+            "name:he": "ואדי אל-ליל",
+            "name:ru": "Оуед Еллил",
+            "place": "town"
+          },
+          "geometrySha256": "d093aec281425d6ffe359c04613f972c04709a781c1f1db0457c9c18b3a66054",
+          "lat": 36.8376735,
+          "lng": 10.0422381,
+          "currentMetadata": null,
+          "expectedCuration": null
+        },
+        "osm:relation:7204582": {
+          "id": "osm:relation:7204582",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Oued Ellil",
+            "boundary": "administrative",
+            "name": "معتمدية وادي اللیل",
+            "name:ar": "معتمدية وادي اللیل‬",
+            "name:fr": "Délégation Oued Ellil",
+            "ref:tn:codegeo": "1453",
+            "ref:tn:hasc_2": "TN.MN.OE",
+            "wikidata": "Q3358013"
+          },
+          "geometrySha256": "fe97fa2e53f05980fdfe501d952fe9dc7bb21737cbf880b632430f7749ee148e",
+          "lat": null,
+          "lng": null,
+          "currentMetadata": null,
+          "expectedCuration": null
+        },
+        "osm:relation:1435828": {
+          "id": "osm:relation:1435828",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-14",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية منوبة",
+            "name:ar": "ولاية منوبة",
+            "name:arz": "ولاية منوبه",
+            "name:az": "Manuba (vilayət)",
+            "name:be": "Мануба (вілает)",
+            "name:be-tarask": "Мануба (вілает)",
+            "name:bg": "Мануба (област)",
+            "name:bjn": "Tunisia",
+            "name:ca": "Governació de Manouba",
+            "name:ceb": "Manouba (lalawigan)",
+            "name:cy": "Manouba (talaith)",
+            "name:de": "Gouvernement Manouba",
+            "name:el": "Λα Μανουμπά (Κυβερνείο)",
+            "name:en": "Manouba",
+            "name:es": "Gobernación de Manouba",
+            "name:fa": "منوبه",
+            "name:fr": "Gouvernorat La Manouba",
+            "name:frr": "Manouba (Guwernement)",
+            "name:id": "Kegubernuran Manouba",
+            "name:it": "Manouba",
+            "name:ja": "マヌーバ県",
+            "name:ko": "마누바주",
+            "name:ms": "Kawasan kegabenoran Manouba",
+            "name:nl": "Manouba (gouvernement)",
+            "name:no": "Manouba (guvernement)",
+            "name:pl": "Gubernatorstwo Manuba",
+            "name:pt": "Manouba (província)",
+            "name:ro": "Guvernoratul Manouba",
+            "name:ru": "Мануба (вилайет)",
+            "name:sco": "Manouba Govrenorate",
+            "name:sh": "Manouba (vilajet)",
+            "name:sv": "Manouba (guvernement)",
+            "name:tr": "Manuba ili",
+            "name:uk": "Мануба (вілаєт)",
+            "name:ur": "منوبہ",
+            "name:zh": "馬努巴省",
+            "name:zu": "Manouba Governorate",
+            "official_name": "ولاية منوبة",
+            "official_name:ar": "ولاية منوبة",
+            "official_name:en": "Manouba Governorate",
+            "official_name:fa": "استان منوبه",
+            "official_name:fr": "Gouvernorat de la Manouba",
+            "official_name:it": "Governatorato di Manouba",
+            "official_name:ur": "ولایت منوبہ",
+            "population": "335912",
+            "population:date": "2014",
+            "ref:tn:codegeo": "14",
+            "wikidata": "Q734328",
+            "wikipedia": "ar:ولاية منوبة"
+          },
+          "geometrySha256": "45240f4735b249f476a71af8d94d323efbbed6659fdf79ef387b32d052ba16a5",
+          "lat": null,
+          "lng": null,
+          "currentMetadata": null,
+          "expectedCuration": null
+        }
+      },
+      "completeBeforeSectorGroup": [
+        "osm:relation:7095862"
+      ],
+      "completeBeforeBaseRawMembers": [],
+      "sourceNamePeers": [
+        {
+          "id": "osm:relation:7095862",
+          "kind": "sector",
+          "names": [
+            "وادي اللیل",
+            "Oued Ellil"
+          ],
+          "currentRaw": true
+        },
+        {
+          "id": "osm:relation:7204582",
+          "kind": "delegation",
+          "names": [
+            "معتمدية وادي اللیل",
+            "Délégation Oued Ellil",
+            "Oued Ellil"
+          ],
+          "currentRaw": false
+        },
+        {
+          "id": "osm:node:287619187",
+          "kind": "town",
+          "names": [
+            "وادي الليل",
+            "Oued Ellil",
+            "وادی اللیل",
+            "ואדי אל-ליל",
+            "Оуед Еллил"
+          ],
+          "currentRaw": false
+        }
+      ],
+      "containment": {
+        "installedPrayerReference": {
+          "lat": 36.8427,
+          "lng": 10.0388,
+          "originalSector": false,
+          "packedSector": false,
+          "originalParent": true,
+          "nearestInstalled": 553,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7091763",
+              "name": "النجاة",
+              "code": "145355"
+            }
+          ]
+        },
+        "archivedPublishedPrayerReference": {
+          "lat": 36.836,
+          "lng": 10.041,
+          "originalSector": true,
+          "packedSector": true,
+          "originalParent": true,
+          "nearestInstalled": 553,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7095862",
+              "name": "وادي اللیل",
+              "code": "145351"
+            }
+          ]
+        },
+        "authenticOriginalTownPoint": {
+          "lat": 36.8376735,
+          "lng": 10.0422381,
+          "originalSector": true,
+          "packedSector": true,
+          "originalParent": true,
+          "nearestInstalled": 553,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7095862",
+              "name": "وادي اللیل",
+              "code": "145351"
+            }
+          ]
+        },
+        "currentSectorRepresentative": {
+          "lat": 36.832848,
+          "lng": 10.039089,
+          "originalSector": true,
+          "packedSector": true,
+          "originalParent": true,
+          "nearestInstalled": 553,
+          "containingOriginalSectors": [
+            {
+              "id": "osm:relation:7095862",
+              "name": "وادي اللیل",
+              "code": "145351"
+            }
+          ]
+        }
+      },
+      "wholeOriginalSectorWithinParent": true,
+      "wholePackedSectorWithinOriginalParent": false,
+      "packedParentSpillAreaSquareDegrees": 2.5245842606626585e-09,
+      "packedGeometrySha256": "0b064a645eb609301d21cde29161d80281d5ee0fe467c80f609d01de2cd4ce03",
+      "currentContextDependents": [],
+      "archivedPublishedEvidence": {
+        "response": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\inm-reference-inventory-20260912\\responses\\prayer-553-2026-09-12.json",
+          "sha256": "1f504b184392716f84ab4460b8b9390b2ca0aa3f09e930c89114ee6d35df7c6a",
+          "bytes": 568
+        },
+        "retrievedAt": "2026-09-12T10:17:24.854039+00:00",
+        "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/360/553/",
+        "recordDate": "2026-09-12 00:00",
+        "names": {
+          "id": 553,
+          "intituleFr": "Oued Ellil",
+          "intituleAr": "واد الليل",
+          "intituleAn": "Oued Ellil",
+          "parent": {
+            "id": 360,
+            "intituleFr": "Manouba",
+            "intituleAr": "منوبة",
+            "intituleAn": "Manouba"
+          }
+        },
+        "coordinates": {
+          "lat": 36.836,
+          "lng": 10.041
+        },
+        "isFreshSeptember19Retrieval": false,
+        "sunCorroborationRead": false
+      },
+      "installedCoordinateCorrection": [],
+      "installedToArchivedReferenceKm": 0.7703014146568916,
+      "currentRepresentativeToTownKm": 0.6053537606395293,
+      "archivedReferenceOnlyDefaultChanges": [
+        {
+          "id": "osm:relation:7095859",
+          "field": "delegationId",
+          "before": 554,
+          "after": 553
+        },
+        {
+          "id": "osm:way:456466522",
+          "field": "delegationId",
+          "before": 554,
+          "after": 553
+        }
+      ],
+      "publicPhoneNameContext": {
+        "record": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-1.json",
+          "sha256": "c7f80cf65a6a5c07969dee4a863cb9f2a47fa3ce74eee8ad44e2afddef631386"
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7095862-1.png",
+          "sha256": "98490f7a5450f24e8fe8fc1f7f45f4df9429260d7fb204ee638779fc83a8dcc4"
+        },
+        "rootViewedScreenshot": true,
+        "finding": "Named query returns وادي الليل / Oued Ellil card with urban streets and outline. Supports standard Arabic spelling; does not establish base-point containment or every stored boundary.",
+        "boundaryVerified": false
+      },
+      "sourceScriptDefect": [
+        {
+          "character": "ی",
+          "codePoint": "U+06CC",
+          "unicodeName": "ARABIC LETTER FARSI YEH"
+        }
+      ],
+      "design": {
+        "status": "DATA_ONLY_NAME_AND_AUTHENTIC_MANUAL_POINT_READY_GROUPING_HELD",
+        "curationAction": "name_tags",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "وادي اللیل",
+          "name:ar": "وادي اللیل‬",
+          "name:fr": "Oued Ellil",
+          "ref:tn:codegeo": "145351"
+        },
+        "nameTags": {
+          "name": "وادي الليل",
+          "name:ar": "وادي الليل",
+          "name:fr": "Oued Ellil",
+          "alt_name:ar": "وادي اللیل"
+        },
+        "manualPointId": "osm:node:287619187",
+        "manualPointNameNormAndOriginalAndPackedContainmentSatisfied": true,
+        "nameOnlyRawFieldChanges": [
+          {
+            "id": "osm:relation:7095862",
+            "field": "name",
+            "before": "وادي اللیل",
+            "after": "وادي الليل"
+          },
+          {
+            "id": "osm:relation:7095862",
+            "field": "aliases",
+            "before": [
+              "Oued Ellil",
+              "Оуед Еллил",
+              "ואדי אל-ליל",
+              "وادي الليل",
+              "وادی اللیل"
+            ],
+            "after": [
+              "Oued Ellil",
+              "Оуед Еллил",
+              "ואדי אל-ליל",
+              "وادي اللیل",
+              "وادی اللیل"
+            ]
+          }
+        ],
+        "additionalAuthenticManualPointRawFieldChanges": [
+          {
+            "id": "osm:relation:7095862",
+            "field": "lat",
+            "before": 36.832848,
+            "after": 36.8376735
+          },
+          {
+            "id": "osm:relation:7095862",
+            "field": "lng",
+            "before": 10.039089,
+            "after": 10.0422381
+          },
+          {
+            "id": "osm:relation:7095862",
+            "field": "manualPointId",
+            "before": null,
+            "after": "osm:node:287619187"
+          }
+        ],
+        "exactCandidateRawFieldChanges": [
+          {
+            "id": "osm:relation:7095862",
+            "field": "name",
+            "before": "وادي اللیل",
+            "after": "وادي الليل"
+          },
+          {
+            "id": "osm:relation:7095862",
+            "field": "aliases",
+            "before": [
+              "Oued Ellil",
+              "Оуед Еллил",
+              "ואדי אל-ליל",
+              "وادي الليل",
+              "وادی اللیل"
+            ],
+            "after": [
+              "Oued Ellil",
+              "Оуед Еллил",
+              "ואדי אל-ליל",
+              "وادي اللیل",
+              "وادی اللیل"
+            ]
+          },
+          {
+            "id": "osm:relation:7095862",
+            "field": "lat",
+            "before": 36.832848,
+            "after": 36.8376735
+          },
+          {
+            "id": "osm:relation:7095862",
+            "field": "lng",
+            "before": 10.039089,
+            "after": 10.0422381
+          },
+          {
+            "id": "osm:relation:7095862",
+            "field": "manualPointId",
+            "before": null,
+            "after": "osm:node:287619187"
+          }
+        ],
+        "displayRowDelta": 0,
+        "rawFeatureDelta": 0,
+        "geometryChanges": 0,
+        "referenceChanges": 0,
+        "nearestDefaultChanges": 0,
+        "curationDecisionDelta": 1,
+        "curationReceiptDelta": 2,
+        "reviewedNamesAddition": {
+          "id": "osm:relation:7095862",
+          "name": "وادي الليل",
+          "kind": "sector"
+        },
+        "savedRawIdsPreserved": true,
+        "sourceTownRemainsAbsorbed": true,
+        "samePickerNameSetsPreserved": true,
+        "unchangedDistinctChildIds": [],
+        "groupingConclusion": "No base grouping proposed. Installed reference is outside sector; archived published reference is inside but differs from installed. Canonical official/source spelling وادي الليل differs from INM/base واد الليل. Reference refresh and explicit paired-name/group proof would need their own bounded review; changing the authentic source town to pass a name guard is not justified."
+      },
+      "separateAncestorNameScope": {
+        "id": "osm:relation:7204582",
+        "currentName": "معتمدية وادي اللیل",
+        "officialStandardName": "معتمدية وادي الليل",
+        "notPartOfThisCandidate": true,
+        "rawRowsWithParentName": [
+          "osm:relation:7091763",
+          "osm:relation:7095857",
+          "osm:relation:7095858",
+          "osm:relation:7095859",
+          "osm:relation:7095860",
+          "osm:relation:7095861",
+          "osm:relation:7095862",
+          "osm:way:158484548",
+          "osm:way:169498195",
+          "osm:way:609722184",
+          "osm:way:861326316"
+        ],
+        "rawRowsWithContextAlias": [
+          "osm:relation:7091763",
+          "osm:relation:7095857",
+          "osm:relation:7095858",
+          "osm:relation:7095859",
+          "osm:relation:7095860",
+          "osm:relation:7095861",
+          "osm:relation:7095862",
+          "osm:way:158484548",
+          "osm:way:169498195",
+          "osm:way:609722184",
+          "osm:way:861326316",
+          "osm:node:8027679311"
+        ],
+        "reason": "A parent-level name_tags correction propagates beyond the one sector and requires its own complete context projection."
+      }
+    }
+  ],
+  "exactCombinedCandidateRawFieldChanges": [
+    {
+      "id": "osm:relation:7090957",
+      "field": "name",
+      "before": "دوار ھیشر",
+      "after": "دوار هيشر"
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "aliases",
+      "before": [
+        "Douar Hicher",
+        "דואר הישר",
+        "دوار هيشر"
+      ],
+      "after": [
+        "Douar Hicher",
+        "דואר הישר",
+        "دوار ھیشر"
+      ]
+    },
+    {
+      "id": "osm:way:663536803",
+      "field": "parentName",
+      "before": "دوار ھیشر",
+      "after": "دوار هيشر"
+    },
+    {
+      "id": "osm:way:663536803",
+      "field": "contextAliases",
+      "before": [
+        "Douar Hicher",
+        "Délégation Douar Hicher",
+        "دوار ھیشر",
+        "معتمدية دوار هيشر"
+      ],
+      "after": [
+        "Douar Hicher",
+        "Délégation Douar Hicher",
+        "دوار هيشر",
+        "دوار ھیشر",
+        "معتمدية دوار هيشر"
+      ]
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "lat",
+      "before": 36.821735,
+      "after": 36.8237415
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "lng",
+      "before": 10.097085,
+      "after": 10.0960637
+    },
+    {
+      "id": "osm:relation:7090957",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:7720714782"
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "name",
+      "before": "وادي اللیل",
+      "after": "وادي الليل"
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "aliases",
+      "before": [
+        "Oued Ellil",
+        "Оуед Еллил",
+        "ואדי אל-ליל",
+        "وادي الليل",
+        "وادی اللیل"
+      ],
+      "after": [
+        "Oued Ellil",
+        "Оуед Еллил",
+        "ואדי אל-ליל",
+        "وادي اللیل",
+        "وادی اللیل"
+      ]
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "lat",
+      "before": 36.832848,
+      "after": 36.8376735
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "lng",
+      "before": 10.039089,
+      "after": 10.0422381
+    },
+    {
+      "id": "osm:relation:7095862",
+      "field": "manualPointId",
+      "before": null,
+      "after": "osm:node:287619187"
+    }
+  ],
+  "candidateFieldCount": 12,
+  "candidateAffectedRawIds": [
+    "osm:relation:7090957",
+    "osm:relation:7095862",
+    "osm:way:663536803"
+  ],
+  "all3523InstalledNearestDefaultsVerified": true,
+  "hypotheticalBothArchivedReferenceCorrectionsOnlyDefaultChanges": [
+    {
+      "id": "osm:relation:7095859",
+      "field": "delegationId",
+      "before": 554,
+      "after": 553
+    },
+    {
+      "id": "osm:way:456466522",
+      "field": "delegationId",
+      "before": 554,
+      "after": 553
+    }
+  ],
+  "activeDependencyScreen": {
+    "depth": 2,
+    "referenceCandidates": 695,
+    "matchingDocuments": [],
+    "qualification": "Finite static closure screen only. A concrete package must refresh every active checksum/snapshot assertion for changed rows and use root actual generation review. Whole-picker bound evidence is unchanged if no picker manifest is edited."
+  },
+  "limitations": [
+    "No current public OSM or INM retrieval, sun endpoint check, phone operation, or screenshot interpretation performed. Archived Sep12 HTTP bodies remain dated evidence.",
+    "Neither old versus new spelling equivalence nor source town containment proves sector and broader administrative or timetable base extents identical.",
+    "Canonical primary and aliases plus manualPointId are feasible under the existing compiler checks read statically; exact final generation and dependency validation remain root-owned.",
+    "An optional Oued Ellil parent spelling correction is explicitly separate because it changes multiple raw contexts."
+  ],
+  "operations": {
+    "network": 0,
+    "phone": 0,
+    "compilerImportOrExecution": 0,
+    "generator": 0,
+    "tests": 0,
+    "build": 0,
+    "liveRepositoryWrites": 0
+  }
+}

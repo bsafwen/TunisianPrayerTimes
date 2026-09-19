@@ -1,0 +1,851 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_SUPPORTED_SHARED_RETAINED_REFERENCE_EXTENSION_PROPOSAL",
+  "baseline": {
+    "neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "5fead87cca66a9f6be73b14259f2dbb796f5001e2339327be5ff2c2000b1ac9b",
+      "bytes": 1851325
+    },
+    "neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "5029c262f8f698c74cfa7acf0d302b9b65c034a4a9fb29edf0cc00fd84453053",
+      "bytes": 5536172
+    },
+    "gouvernorats.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b",
+      "bytes": 54587
+    },
+    "catalog-curation.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "90a3df996cbe47d1b8856cdecc53d9a5661d5502e6cfedd1ec12226e45850254",
+      "bytes": 408691
+    },
+    "reviewed-picker-groups.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "82bb4eaeaccd521576eaf3e85ace17ff1b1b12334b85c87cf69f4c7eab106592",
+      "bytes": 574628
+    },
+    "prayer-source-coordinates.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+      "sha256": "ae6172a07759174c352536aa41f186020bf8881ea90a9e8956434c3d61e35636",
+      "bytes": 135148
+    },
+    "current-official-sector-registry.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "coverage.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "220fe5679fd4bad3fea3055cdc17039e273bfd34890584504051299d4aa266b1",
+      "bytes": 1082659
+    },
+    "generate_neighborhoods.py": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "f249cbc8e050c99e40d09b26329eee36beb1e50f5770b2353e4dc7aff58618e8",
+      "bytes": 603709
+    },
+    "soliman-current-original-source-inventory-20260912.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "sidi-khitmin-catalog-checkpoint-20260919.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\sidi-khitmin-catalog-checkpoint-20260919.json",
+      "sha256": "fb651f8f6374c9d9a15d23fa94d173c17c5843986733f9dd5ddf2d3550371b17",
+      "bytes": 2577
+    },
+    "hazoua-smar-coordinate-phone-review-20260919.json": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\hazoua-smar-coordinate-phone-review-20260919.json",
+      "sha256": "8cc20c82bcf0be31110e5c0a7d4aeb3000dee254c7ad157f1cc7407101091296",
+      "bytes": 4504
+    }
+  },
+  "referenceCorrection": {
+    "id": 479,
+    "before": {
+      "lat": 33.764,
+      "lng": 7.63
+    },
+    "published": {
+      "lat": 33.738,
+      "lng": 7.603
+    },
+    "distanceKm": 3.8196328610176256,
+    "freshPrayer": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\prayer-2026-09-19.json",
+      "sha256": "4c72a64bb879536e66834b777aabc94353cd5b1600de186ead70ceaf2678faac",
+      "bytes": 519
+    },
+    "freshSun": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\sun-2026-09-19.json",
+      "sha256": "bb2e3a7ddee0b5e07a0e52ab169c01bef828451e4dc7afa532e2f2b774754b3c",
+      "bytes": 488
+    },
+    "qualification": "Original daily response coordinates establish the public INM reference, not its private calculation inputs or settlement geometry."
+  },
+  "baseCurrent": {
+    "id": 479,
+    "nomFr": "Hazoua",
+    "nomAr": "حزوة",
+    "nomEn": "Hazoua",
+    "lat": 33.764,
+    "lng": 7.63
+  },
+  "baseAfterReference": {
+    "id": 479,
+    "nomFr": "Hazoua",
+    "nomAr": "حزوة",
+    "nomEn": "Hazoua",
+    "lat": 33.738,
+    "lng": 7.603
+  },
+  "governorCurrent": {
+    "id": 352,
+    "nomFr": "Tozeur",
+    "nomAr": "توزر",
+    "nomEn": "Tozeur",
+    "lat": 33.9197,
+    "lng": 8.1335
+  },
+  "currentCoordinateCorrection": [],
+  "members": [
+    "osm:relation:7154916",
+    "osm:way:207579215"
+  ],
+  "witness": {
+    "id": "osm:node:1566167629",
+    "kind": "village",
+    "tags": {
+      "name": "حزوة",
+      "name:ar": "حزوة",
+      "name:de": "Hazwa",
+      "name:en": "Hazwa",
+      "name:fr": "Hazoua",
+      "place": "village",
+      "wikidata": "Q4119790",
+      "wikipedia": "ar:حزوة"
+    },
+    "lat": 33.7404313,
+    "lng": 7.6038545,
+    "publicNode": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\node-1566167629-current.json",
+      "sha256": "2e04c832bb70023ea9704bfac28f1ca6d3d4690ebd7e6ae35aca957054d0e1e1",
+      "bytes": 609
+    },
+    "exactPublicElement": {
+      "type": "node",
+      "id": 1566167629,
+      "lat": 33.7404313,
+      "lon": 7.6038545,
+      "timestamp": "2020-03-30T14:02:31Z",
+      "version": 5,
+      "changeset": 82828016,
+      "user": "Anis Ben Makhlouf",
+      "uid": 10001069,
+      "tags": {
+        "name": "حزوة",
+        "name:ar": "حزوة",
+        "name:de": "Hazwa",
+        "name:en": "Hazwa",
+        "name:fr": "Hazoua",
+        "place": "village",
+        "wikidata": "Q4119790",
+        "wikipedia": "ar:حزوة"
+      }
+    }
+  },
+  "sourceNamePeerValues": [
+    "Hazoua",
+    "Hazwa",
+    "حزوة"
+  ],
+  "sourceNamePeerIds": [
+    "osm:node:1566167629",
+    "osm:relation:7154891",
+    "osm:relation:7154916",
+    "osm:way:207579215"
+  ],
+  "sourceRecords": {
+    "osm:node:1566167629": {
+      "id": "osm:node:1566167629",
+      "kind": "village",
+      "tags": {
+        "name": "حزوة",
+        "name:ar": "حزوة",
+        "name:de": "Hazwa",
+        "name:en": "Hazwa",
+        "name:fr": "Hazoua",
+        "place": "village",
+        "wikidata": "Q4119790",
+        "wikipedia": "ar:حزوة"
+      },
+      "geometrySha256": "9754dabc934ea0a103b5ada9b2c8fde672ede5a3cd1d1a76143baba6615f9fae",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "postReferenceMetadata": null,
+      "packedGeometrySha256": null,
+      "completeRawGroup": []
+    },
+    "osm:relation:1435826": {
+      "id": "osm:relation:1435826",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-72",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية توزر",
+        "name:ar": "ولاية توزر",
+        "name:azb": "توزر",
+        "name:be": "Таўзар (вілает)",
+        "name:be-tarask": "Таўзар (вілает)",
+        "name:bg": "Тозьор (област)",
+        "name:ca": "Governació de Tozeur",
+        "name:ceb": "Gouvernorat de Tozeur",
+        "name:cy": "Tozeur (talaith)",
+        "name:de": "Tauzar",
+        "name:el": "Ταουζάρ (Κυβερνείο)",
+        "name:en": "Tozeur",
+        "name:es": "Gobernación de Tozeur",
+        "name:fa": "توزر",
+        "name:fr": "Gouvernorat Tozeur",
+        "name:frr": "Tozeur (Guwernement)",
+        "name:id": "Kegubernuran Tozeur",
+        "name:it": "Tozeur",
+        "name:ja": "トズール県",
+        "name:kab": "توزر",
+        "name:ko": "토죄르주",
+        "name:ks": "توزر",
+        "name:ms": "Kawasan kegabenoran Tozeur",
+        "name:nl": "Tozeur (gouvernement)",
+        "name:no": "Tozeur (guvernement)",
+        "name:pl": "Gubernatorstwo Tauzar",
+        "name:pt": "Tozeur (província)",
+        "name:ro": "Guvernoratul Tozeur",
+        "name:ru": "Таузар (вилайет)",
+        "name:sco": "Tozeur Govrenorate",
+        "name:sh": "Tozeur (vilajet)",
+        "name:sv": "Tozeur (guvernement)",
+        "name:tr": "Tuzer ili",
+        "name:uk": "Таузар (вілаєт)",
+        "name:ur": "توزر",
+        "name:zh": "托澤爾省",
+        "name:zu": "Tozeur Governorate",
+        "official_name": "ولاية توزر",
+        "official_name:ar": "ولاية توزر",
+        "official_name:en": "Tozeur Governorate",
+        "official_name:fa": "استان توزر",
+        "official_name:fr": "Gouvernorat de Tozeur",
+        "official_name:it": "Governatorato di Tozeur",
+        "official_name:ur": "ولایت توزر",
+        "population": "107912",
+        "population:date": "2014",
+        "ref:tn:codegeo": "62",
+        "wikidata": "Q388059",
+        "wikipedia": "ar:ولاية توزر"
+      },
+      "geometrySha256": "c8401d707cecac8654c66ed40f4eeb9cbf3c10a7ef7c1ba268046ad2d49b24ee",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "postReferenceMetadata": null,
+      "packedGeometrySha256": null,
+      "completeRawGroup": []
+    },
+    "osm:relation:7154891": {
+      "id": "osm:relation:7154891",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Hazoua",
+        "boundary": "administrative",
+        "name": "معتمدية حزوة",
+        "name:ar": "معتمدية حزوة",
+        "name:fr": "Délégation Hazoua",
+        "ref:tn:codegeo": "6255",
+        "ref:tn:hasc_2": "TN.TO.HA",
+        "wikidata": "Q3128900"
+      },
+      "geometrySha256": "c69702da677ecc5617960bf5f39621239e3073c8c0e2c2f4b946a2a3a3b9bb06",
+      "expectedCuration": null,
+      "currentMetadata": null,
+      "postReferenceMetadata": null,
+      "packedGeometrySha256": null,
+      "completeRawGroup": []
+    },
+    "osm:relation:7154916": {
+      "id": "osm:relation:7154916",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حزوة",
+        "name:ar": "حزوة",
+        "name:fr": "Hazoua",
+        "ref:tn:codegeo": "625551"
+      },
+      "geometrySha256": "c41fc183c98f89985c5bd35cc48a129d94bbc18ce854f48880cecd5edecae40e",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7154916",
+        "sourceId": "osm",
+        "name": "حزوة",
+        "aliases": [
+          "Hazoua"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.764215,
+        "lng": 7.630519,
+        "delegationId": 479,
+        "hasBoundary": true,
+        "bbox": [
+          7.561315,
+          33.705951,
+          7.726653,
+          33.82407
+        ],
+        "areaKm2": 89.0042614669994,
+        "pickerGroupId": "osm:relation:7154916",
+        "offset": 3192280,
+        "length": 172
+      },
+      "postReferenceMetadata": {
+        "id": "osm:relation:7154916",
+        "sourceId": "osm",
+        "name": "حزوة",
+        "aliases": [
+          "Hazoua"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.764215,
+        "lng": 7.630519,
+        "delegationId": 479,
+        "hasBoundary": true,
+        "bbox": [
+          7.561315,
+          33.705951,
+          7.726653,
+          33.82407
+        ],
+        "areaKm2": 89.0042614669994,
+        "pickerGroupId": "osm:relation:7154916",
+        "offset": 3192280,
+        "length": 172
+      },
+      "packedGeometrySha256": "2e1e01b3e0d215f35c901fd83ac178f1fad3cec46735e041167e7565afe59364",
+      "completeRawGroup": [
+        "osm:relation:7154916",
+        "osm:way:207579215"
+      ]
+    },
+    "osm:relation:7154917": {
+      "id": "osm:relation:7154917",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حطام",
+        "name:ar": "حطام",
+        "name:fr": "Hattem",
+        "ref:tn:codegeo": "625552"
+      },
+      "geometrySha256": "fff9c80db7e882cbece217ff4c0781d7ac0eda9c5a71bb79e9cff7dbe456a337",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7154917",
+        "sourceId": "osm",
+        "name": "حطام",
+        "aliases": [
+          "Hattem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.956571,
+        "lng": 7.642963,
+        "delegationId": 479,
+        "hasBoundary": true,
+        "bbox": [
+          7.521981,
+          33.777659,
+          7.756975,
+          34.10768
+        ],
+        "areaKm2": 585.4789786175553,
+        "pickerGroupId": "osm:relation:7154917",
+        "offset": 3192452,
+        "length": 348
+      },
+      "postReferenceMetadata": {
+        "id": "osm:relation:7154917",
+        "sourceId": "osm",
+        "name": "حطام",
+        "aliases": [
+          "Hattem"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.956571,
+        "lng": 7.642963,
+        "delegationId": 477,
+        "hasBoundary": true,
+        "bbox": [
+          7.521981,
+          33.777659,
+          7.756975,
+          34.10768
+        ],
+        "areaKm2": 585.4789786175553,
+        "pickerGroupId": "osm:relation:7154917",
+        "offset": 3192452,
+        "length": 348
+      },
+      "packedGeometrySha256": "89793abe716323d6dd2e297a0247ef883098fe3e403c540370d76e5490fc9ec8",
+      "completeRawGroup": [
+        "osm:relation:7154917"
+      ]
+    },
+    "osm:relation:7154925": {
+      "id": "osm:relation:7154925",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين أولاد اللغريسي",
+        "name:ar": "عين أولاد اللغريسي",
+        "name:fr": "Ain Ouled El Ggerissi",
+        "ref:tn:codegeo": "625553"
+      },
+      "geometrySha256": "ccd132f1526e92bb9a8dd6aa3bf77fed0090bd16ffe8b5febae5a30d56a8fe22",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:relation:7154925",
+        "sourceId": "osm",
+        "name": "عين أولاد اللغريسي",
+        "aliases": [
+          "Ain Ouled El Ggerissi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.606742,
+        "lng": 7.722822,
+        "delegationId": 479,
+        "hasBoundary": true,
+        "bbox": [
+          7.581941,
+          33.424659,
+          7.929185,
+          33.79444
+        ],
+        "areaKm2": 611.9428644116889,
+        "pickerGroupId": "osm:relation:7154925",
+        "offset": 3208548,
+        "length": 196
+      },
+      "postReferenceMetadata": {
+        "id": "osm:relation:7154925",
+        "sourceId": "osm",
+        "name": "عين أولاد اللغريسي",
+        "aliases": [
+          "Ain Ouled El Ggerissi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.606742,
+        "lng": 7.722822,
+        "delegationId": 479,
+        "hasBoundary": true,
+        "bbox": [
+          7.581941,
+          33.424659,
+          7.929185,
+          33.79444
+        ],
+        "areaKm2": 611.9428644116889,
+        "pickerGroupId": "osm:relation:7154925",
+        "offset": 3208548,
+        "length": 196
+      },
+      "packedGeometrySha256": "aeb4ea230c10275dda0e42142872acfd0f038adfdde85b998dc28e136891b626",
+      "completeRawGroup": [
+        "osm:relation:7154925"
+      ]
+    },
+    "osm:way:207579215": {
+      "id": "osm:way:207579215",
+      "kind": "village",
+      "tags": {
+        "addr:city": "حزوة",
+        "landuse": "residential",
+        "name": "حزوة",
+        "name:ar": "حزوة",
+        "name:de": "Hazwa",
+        "name:en": "Hazwa",
+        "name:fr": "Hazoua",
+        "place": "village"
+      },
+      "geometrySha256": "810ea33b29bc91238d10cecb62c7fefd5188a6dd4493668636610d5403306a0b",
+      "expectedCuration": null,
+      "currentMetadata": {
+        "id": "osm:way:207579215",
+        "sourceId": "osm",
+        "name": "حزوة",
+        "aliases": [
+          "Hazoua",
+          "Hazwa"
+        ],
+        "kind": "village",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "حزوة",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.740709,
+        "lng": 7.599514,
+        "delegationId": 479,
+        "hasBoundary": true,
+        "bbox": [
+          7.585485,
+          33.732901,
+          7.613863,
+          33.748678
+        ],
+        "areaKm2": 1.9124028100719948,
+        "pickerGroupId": "osm:relation:7154916",
+        "offset": 5374440,
+        "length": 412
+      },
+      "postReferenceMetadata": {
+        "id": "osm:way:207579215",
+        "sourceId": "osm",
+        "name": "حزوة",
+        "aliases": [
+          "Hazoua",
+          "Hazwa"
+        ],
+        "kind": "village",
+        "parentName": "معتمدية حزوة",
+        "contextAliases": [
+          "Délégation Hazoua",
+          "Hazoua",
+          "حزوة",
+          "معتمدية حزوة"
+        ],
+        "governorateId": 352,
+        "lat": 33.740709,
+        "lng": 7.599514,
+        "delegationId": 479,
+        "hasBoundary": true,
+        "bbox": [
+          7.585485,
+          33.732901,
+          7.613863,
+          33.748678
+        ],
+        "areaKm2": 1.9124028100719948,
+        "pickerGroupId": "osm:relation:7154916",
+        "offset": 5374440,
+        "length": 412
+      },
+      "packedGeometrySha256": "b009b55868151800ddcc32bd5e590f94fa89ad7d00d736e6964d4eb3a11a0dbe",
+      "completeRawGroup": [
+        "osm:relation:7154916",
+        "osm:way:207579215"
+      ]
+    }
+  },
+  "contextIds": {
+    "governor": "osm:relation:1435826",
+    "delegation": "osm:relation:7154891"
+  },
+  "official625551": {
+    "governorateCode": "62",
+    "governorateFr": "Tozeur",
+    "governorateAr": "توزر",
+    "delegationCode": "6255",
+    "delegationFr": "Hazoua",
+    "delegationAr": "حزوة",
+    "sectorCode": "625551",
+    "sectorFr": "Hazoua",
+    "sectorAr": "حزوة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69109,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 3388,
+      "Nombre_de_menages_par_Secteurs.xlsx": 3381
+    }
+  },
+  "official6255Inventory": [
+    {
+      "governorateCode": "62",
+      "governorateFr": "Tozeur",
+      "governorateAr": "توزر",
+      "delegationCode": "6255",
+      "delegationFr": "Hazoua",
+      "delegationAr": "حزوة",
+      "sectorCode": "625551",
+      "sectorFr": "Hazoua",
+      "sectorAr": "حزوة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69109,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3388,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3381
+      }
+    },
+    {
+      "governorateCode": "62",
+      "governorateFr": "Tozeur",
+      "governorateAr": "توزر",
+      "delegationCode": "6255",
+      "delegationFr": "Hazoua",
+      "delegationAr": "حزوة",
+      "sectorCode": "625552",
+      "sectorFr": "Hattem",
+      "sectorAr": "حطام",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 69143,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3390,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3383
+      }
+    }
+  ],
+  "allOriginal6255SectorIds": [
+    "osm:relation:7154916",
+    "osm:relation:7154917",
+    "osm:relation:7154925"
+  ],
+  "registryCompletenessQualification": "Current indexed INS registry contains625551/625552; original/source inventory additionally contains625553. Preserve the latter without pretending this index certifies an exhaustive present-day administrative inventory. The ordinary group identity relies on verified625551 and unique6255 parent only.",
+  "containment": {
+    "osm:relation:7154916": {
+      "legacyReference": {
+        "original": true,
+        "packed": true
+      },
+      "publishedReference": {
+        "original": true,
+        "packed": true
+      },
+      "sourceWitness": {
+        "original": true,
+        "packed": true
+      },
+      "manualVillageRepresentative": {
+        "original": true,
+        "packed": true
+      }
+    },
+    "osm:way:207579215": {
+      "legacyReference": {
+        "original": false,
+        "packed": false
+      },
+      "publishedReference": {
+        "original": false,
+        "packed": false
+      },
+      "sourceWitness": {
+        "original": true,
+        "packed": true
+      },
+      "manualVillageRepresentative": {
+        "original": true,
+        "packed": true
+      }
+    }
+  },
+  "wholeParentContainment": {
+    "osm:relation:7154916": {
+      "originalParentCoversOriginal": true,
+      "originalParentCoversPacked": false,
+      "quantizedParentCoversPacked": true,
+      "packedOutsideOriginalParentAreaSquareDegrees": 5.423675044686938e-09
+    },
+    "osm:way:207579215": {
+      "originalParentCoversOriginal": true,
+      "originalParentCoversPacked": true,
+      "quantizedParentCoversPacked": true,
+      "packedOutsideOriginalParentAreaSquareDegrees": 0.0
+    }
+  },
+  "boundaryQualification": "Native source member containment and point containment are verified separately. Any packed polygon outside the unrounded parent is recorded as quantization-sensitive, not ignored and not certified as an official boundary. No geometry changes proposed.",
+  "primaryEvidence": {
+    "reference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hazoua-display-sourcefacts-20260919\\social-hazoua-town.html",
+      "sha256": "06129c0754b8595f00bacb1db9c20551e8a2bae157a9745e7f1f0a2b6fc8b838",
+      "bytes": 65345
+    },
+    "url": "https://www.social.gov.tn/en/node/2973",
+    "requiredText": [
+      "حزوة المدينة حي النخيل 2223"
+    ],
+    "excerpt": "ces الوحدة المحلية للنهوض الاجتماعي بحزوة توزر Breadcrumb Home الوحدة المحلية للنهوض الاجتماعي بحزوة توزر Listen Text Resize - A A + A Catégorie النهوض الاجتماعي Adresse حزوة المدينة حي النخيل 2223 Email upls.hezoua@social.gov.tn Téléphone 76440080 Position Map POINT (7.60091 33.738606) Lieu توزر Type مؤسسات Home Social Grants for needy families Contact us Social p",
+    "claim": "Ministry of Social Affairs directly uses Hazoua town with Cité Ennakhil postal2223 as its local-unit address; independent inhabited-town corroboration. It does not certify polygon extent."
+  },
+  "phone": {
+    "reference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\hazoua-smar-coordinate-phone-review-20260919.json",
+      "sha256": "8cc20c82bcf0be31110e5c0a7d4aeb3000dee254c7ad157f1cc7407101091296",
+      "bytes": 4504
+    },
+    "qualification": "Root-viewed actual witness coordinate query gives visible rounded coordinates and unnamed pin near Hazoua-labelled street grid/pharmacy/AGIL. Published-coordinate query showed an unrelated Western Union Sousse card, so no coordinate/locality certification is drawn from that result."
+  },
+  "fullCountryImpact": {
+    "rawRowsEvaluated": 3524,
+    "availablePrayerSources": 258,
+    "currentNearestMismatches": [],
+    "published479OnlyChanges": [
+      {
+        "id": "osm:relation:7154917",
+        "name": "حطام",
+        "field": "delegationId",
+        "before": 479,
+        "after": 477,
+        "coordinates": {
+          "lat": 33.956571,
+          "lng": 7.642963
+        }
+      }
+    ],
+    "changedRawCount": 1
+  },
+  "nearestCandidates": {
+    "witness": [
+      {
+        "id": 479,
+        "nomAr": "حزوة",
+        "km": 0.2816579521498816
+      },
+      {
+        "id": 477,
+        "nomAr": "نفطة",
+        "km": 29.30133586311509
+      },
+      {
+        "id": 486,
+        "nomAr": "المطروحة",
+        "km": 46.49486263554898
+      }
+    ],
+    "sectorRepresentative": [
+      {
+        "id": 479,
+        "nomAr": "حزوة",
+        "km": 3.8691401615663423
+      },
+      {
+        "id": 477,
+        "nomAr": "نفطة",
+        "km": 25.875867954609973
+      },
+      {
+        "id": 486,
+        "nomAr": "المطروحة",
+        "km": 48.19541197315016
+      }
+    ],
+    "manualVillageRepresentative": [
+      {
+        "id": 479,
+        "nomAr": "حزوة",
+        "km": 0.44118031352501247
+      },
+      {
+        "id": 477,
+        "nomAr": "نفطة",
+        "km": 29.636177677281783
+      },
+      {
+        "id": 486,
+        "nomAr": "المطروحة",
+        "km": 46.668370486850336
+      }
+    ]
+  },
+  "recommendedDisplayChange": [
+    {
+      "id": "osm:relation:7154916",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7154916",
+      "after": "delegation:479"
+    },
+    {
+      "id": "osm:way:207579215",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7154916",
+      "after": "delegation:479"
+    }
+  ],
+  "manualSelection": {
+    "representativeId": "osm:way:207579215",
+    "lat": 33.740709,
+    "lng": 7.599514,
+    "expectedNearestSourceId": 479,
+    "qualification": "Runtime already ranks village before sector. Preserve its existing raw representative; witnesspoint is identity support, not a substituted coordinate."
+  },
+  "mechanism": "Add one generic reviewed_settlement_retained_display_reference option to the existing ordinary group path. Validate the public prayer correction independently; use authentic source witness for member containment and exact per-member nearest references for defaults. Existing Hichria/Menzel and ordinary unextended behavior stay unchanged. Do not split this already supported same-place display group to fit the old guard.",
+  "conditionalNumericImpact": {
+    "rawRows": 3524,
+    "polygons": 2620,
+    "points": 904,
+    "allPickerChoicesBefore": 3445,
+    "allPickerChoicesDelta": -1,
+    "rawPickerGroupsBefore": 3387,
+    "rawPickerGroupsDelta": 0,
+    "duplicateGroupCountBefore": 311,
+    "duplicateGroupCountDelta": 0,
+    "ordinaryPickerRecordDelta": 1,
+    "coordinateCorrectionDelta": 1,
+    "rawFieldChanges": 3,
+    "geometryChanges": 0,
+    "curationChanges": 0,
+    "savedSelectionIndexChanges": 0
+  },
+  "liveRepositoryChanges": [],
+  "notRun": [
+    "generator",
+    "tests",
+    "build",
+    "APK generation",
+    "phone or ADB calls"
+  ]
+}
