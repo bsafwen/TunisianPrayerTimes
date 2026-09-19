@@ -1854,7 +1854,8 @@ def validate_deferred_complete_group_extension(review, manifest_path, original_s
     keys = {'schemaVersion', 'strictOwner', 'expectedBeforeGroups', 'expectedAfterGroups', 'protectedRawRecords'}
     if (not isinstance(extension, dict) or set(extension) != keys
             or type(extension['schemaVersion']) is not int or extension['schemaVersion'] != 1
-            or review['method'] != 'reviewed_explicit_suburb_point_base_display_identity'
+            or review['method'] not in ('reviewed_explicit_suburb_point_base_display_identity',
+                                        'reviewed_explicit_point_base_display_identity')
             or 'sourcePhaseLineage' in review or review['preservedNamePeers'] != []
             or review.get('typedNamePeerExtension', {}).get('rawPointPeers', []) != []):
         raise ValueError('Malformed or unsupported deferred complete-group extension')
@@ -1893,7 +1894,9 @@ def validate_deferred_complete_group_extension(review, manifest_path, original_s
                 or (curation.get(rid) != rule if rid == identifier else curation.get(rid) != row['expectedCuration'])):
             raise ValueError('Reviewed complete-group metadata or curation binding changed')
         if rid == identifier:
-            if (row['kind'] != 'suburb' or current['hasBoundary'] is not False
+            if (row['kind'] != ('suburb' if review['method'] ==
+                    'reviewed_explicit_suburb_point_base_display_identity' else 'village')
+                    or current['hasBoundary'] is not False
                     or 'offset' in current or 'length' in current or row['packedGeometrySha256'] is not None):
                 raise ValueError('Reviewed complete-group point representation changed')
         elif (current['hasBoundary'] is not True or not isinstance(row['packedGeometrySha256'], str)
@@ -2910,6 +2913,107 @@ def verify_reviewed_town_preservation(proposal, features, geometries, base_group
 
 
 
+def validate_degueche_independent_prayer_selection(review, directory, coordinate_path,
+                                                   original_sources, effective_sources,
+                                                   current, governor, bases, curation):
+    """Bind the retained Degache display to its separately selected prayer source."""
+    identifier, display_id, manual_id = 'osm:node:351582010', 478, 481
+    option = review.get('independentPublishedPrayerSelection')
+    keys = {'schemaVersion', 'method', 'displayGroupId', 'retainedPoint', 'manualSourceId',
+            'publishedPrayerReference', 'historicalDisplayEvidence', 'preservedPoints', 'qualification'}
+    qualification = ('The published daily reference is separate from the retained Degache town; '
+                     'it does not move or merge Bou Helal or certify a settlement center.')
+    if (not isinstance(option, dict) or set(option) != keys
+            or type(option['schemaVersion']) is not int or option['schemaVersion'] != 1
+            or option['method'] != 'exact_degueche_retained_display_independent_prayer_source'
+            or option['displayGroupId'] != 'delegation:478'
+            or option['retainedPoint'] != {'id': identifier, 'lat': 33.9841058, 'lng': 8.2154584}
+            or type(option['manualSourceId']) is not int or option['manualSourceId'] != manual_id
+            or option['qualification'] != qualification
+            or review.get('method') != 'reviewed_explicit_point_base_display_identity'
+            or review.get('pointId') != identifier or type(review.get('baseId')) is not int
+            or review['baseId'] != display_id or governor['id'] != 352 or len(bases) != 1
+            or current.get('id') != identifier or current.get('kind') != 'town'
+            or current.get('hasBoundary') is not False or current.get('delegationId') != manual_id
+            or current.get('lat') != 33.9841058 or current.get('lng') != 8.2154584
+            or review.get('officialDelegationCode') != '6252'):
+        raise ValueError('Invalid exact Degache independent prayer/display contract')
+    base = bases[0]
+    if (base != {'id': 478, 'nomAr': 'دقاش', 'nomFr': 'Degueche', 'nomEn': 'Degueche',
+                 'lat': 34.016, 'lng': 8.273}
+            or any(key in review for key in ('townPreservationExtension', 'deferredCompleteGroupExtension',
+                'sectorOwnedSettlementPreservation', 'typedNamePeerExtension', 'sourcePhaseLineage',
+                'retainedTownPoint'))):
+        raise ValueError('Degache published reference requires its unmixed ordinary town contract')
+    historical = option['historicalDisplayEvidence']
+    if (not isinstance(historical, dict) or set(historical) != {'file', 'sha256'}
+            or historical['sha256'] != '87896aaf2dbce58865d98b3b94bce242b78c0fe9fee77ee5ca458a1baa239c5b'):
+        raise ValueError('Missing immutable Degache retained-display facts')
+    old = json.loads(aggregate_review_file(directory, historical, 'historical Degache display'))
+    historical_point = old['currentIdentity']['onlyRawMember']
+    expected_point = {**historical_point, 'delegationId': manual_id, 'pickerGroupId': identifier}
+    if (historical_point['id'] != identifier or historical_point['pickerGroupId'] != 'delegation:478'
+            or historical_point['delegationId'] != display_id or review.get('rawCurrent') != expected_point
+            or review.get('contexts', {}).get('osm:relation:7154892', {}).get('kind') != 'delegation'
+            or review['contexts']['osm:relation:7154892'].get('tags', {}).get('ref:tn:codegeo') != '6252'
+            or set(review['contexts']) != {'osm:relation:7154892', 'osm:relation:1435826'}):
+        raise ValueError('Degache historical display identity or exact administrative context changed')
+    reference = option['publishedPrayerReference']
+    if (not isinstance(reference, dict) or set(reference) != {'file', 'sha256', 'expectedCorrection'}
+            or reference['file'] != 'prayer-source-coordinates.json'
+            or (directory / reference['file']).resolve() != Path(coordinate_path).resolve()):
+        raise ValueError('Missing active Degache published prayer reference')
+    coordinates = json.loads(aggregate_review_file(directory, reference, 'Degache prayer coordinates'))
+    corrections = [item for item in coordinates.get('corrections', []) if item.get('delegationId') == display_id]
+    if (len(corrections) != 1 or corrections[0] != reference['expectedCorrection']
+            or corrections[0].get('referenceKind') != 'inm_published_reference'
+            or corrections[0].get('expectedGovernorateId') != governor['id']
+            or corrections[0].get('expectedNames') != {key: base[key] for key in ('nomAr', 'nomFr', 'nomEn')}
+            or corrections[0].get('original') != {'lat': 33.97, 'lng': 8.22}
+            or corrections[0].get('proposed') != {'lat': 34.016, 'lng': 8.273}):
+        raise ValueError('Degache published correction changed')
+    validate_inm_published_reference(corrections[0], governor, base, directory)
+    # Every old imada retains its fields. Only the independently recomputed
+    # Degache South prayer default changes alongside the town default.
+    old_sectors = {row['id']: row for row in old['preservation']['sixSectors']}
+    sectors = review.get('preservedSectors')
+    if (not isinstance(sectors, list) or len(sectors) != 6
+            or {row.get('id') for row in sectors} != set(old_sectors)):
+        raise ValueError('Missing exact six Degache sector identities')
+    for sector in sectors:
+        before = old_sectors[sector['id']]
+        expected_metadata = {key: value for key, value in before.items() if key != 'officialIdentity'}
+        if sector['id'] == 'osm:relation:7154920':
+            expected_metadata['delegationId'] = 625
+        if (sector.get('currentMetadata') != expected_metadata
+                or sector.get('officialIdentity') != before['officialIdentity']
+                or sector.get('expectedCuration') is not None):
+            raise ValueError('Degache preserved sector metadata or current identity changed')
+    preserved = option['preservedPoints']
+    point_ids = {'osm:node:351581998', 'osm:node:5629636916'}
+    if (not isinstance(preserved, list) or len(preserved) != 2
+            or any(not isinstance(row, dict) or set(row) != {'id', 'kind', 'tags', 'currentMetadata'} for row in preserved)
+            or {row['id'] for row in preserved} != point_ids):
+        raise ValueError('Missing separate Bou Helal and Kriz point identities')
+    old_points = {row['id']: row for row in old['preservation']['threeSeparatePointRows']}
+    preserved_points = []
+    for row in preserved:
+        expected = old_points[row['id']]
+        if (row['currentMetadata'] != expected or row['kind'] != expected['kind']
+                or expected['pickerGroupId'] != row['id'] or expected['hasBoundary'] is not False
+                or curation.get(row['id']) is not None):
+            raise ValueError('Degache separate point fields or current curation changed')
+        for sources in (original_sources, effective_sources):
+            source = sources.get(row['id'])
+            if (source is None or source.get('kind') != row['kind'] or source.get('tags') != row['tags']
+                    or source.get('shape') is not None or source.get('point') is None
+                    or source['point'].geom_type != 'Point'
+                    or source['point'].x != expected['lng'] or source['point'].y != expected['lat']):
+                raise ValueError('Degache preserved source point or exact tags changed')
+        preserved_points.append({'id': row['id'], 'current': expected})
+    return {'manualSourceId': manual_id, 'preservedNamePoints': preserved_points}
+
+
 def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, obj, original_sources,
                                           effective_sources, current, governor, timetables, source_sha256, curation,
                                           reviewed_boundaries=None, official_report=None, reviewed_picker_groups=None):
@@ -2938,13 +3042,25 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
             suburb_review = True
         else:
             raise ValueError('Unknown reviewed point/base display method')
+        independent_selection = None
+        if 'independentPublishedPrayerSelection' in review:
+            if suburb_review:
+                raise ValueError('Independent published selection requires the exact Degache town contract')
+            independent_selection = validate_degueche_independent_prayer_selection(
+                review, directory, coordinate_path, original_sources, effective_sources,
+                current, governor, bases, curation)
+            identity_decision = 'retained_named_town_delegation_display_only'
+        manual_target = independent_selection['manualSourceId'] if independent_selection else target
         sector_owned_extension = 'sectorOwnedSettlementPreservation' in review
         if sector_owned_extension and (suburb_review or any(key in review for key in (
                 'townPreservationExtension', 'deferredCompleteGroupExtension', 'typedNamePeerExtension',
                 'sourcePhaseLineage', 'retainedTownPoint', 'officialDelegationCode'))):
             raise ValueError('Sector-owned settlement requires its unmixed explicit settlement contract')
-        if 'deferredCompleteGroupExtension' in review and not suburb_review:
-            raise ValueError('Deferred complete-group extension requires the explicit suburb method')
+        if 'deferredCompleteGroupExtension' in review and not (suburb_review or (
+                expected.get('kind') == 'village' and not any(key in review for key in (
+                    'townPreservationExtension', 'typedNamePeerExtension', 'sourcePhaseLineage',
+                    'independentPublishedPrayerSelection', 'retainedTownPoint')))):
+            raise ValueError('Deferred complete-group extension requires an explicit suburb or unmixed village method')
         retained_town_extension = (isinstance(review.get('townPreservationExtension'), dict)
                                   and 'retainedTownPoint' in review['townPreservationExtension'])
         if retained_town_extension and (suburb_review or any(key in review for key in (
@@ -2973,7 +3089,7 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
                 or current != {k: v for k, v in expected.items() if k != 'pickerGroupId'}
                 or expected['id'] != identifier or expected['pickerGroupId'] != identifier
                 or expected['kind'] not in allowed_kinds or expected['hasBoundary'] is not False
-                or expected['governorateId'] != governor['id'] or current['delegationId'] != target
+                or expected['governorateId'] != governor['id'] or current['delegationId'] != manual_target
                 or rule['expectedTags'] != obj['tags'] or rule['action'] != 'preserve_point'
                 or review['originalSourceNode'] != {'id': identifier, 'tags': obj['tags'],
                     'lat': current['lat'], 'lng': current['lng']}
@@ -2985,7 +3101,7 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
                 or review['displayPhaseCoordinateChanges'] != []):
             raise ValueError('Reviewed town display identity or either retained coordinate changed')
         base = bases[0]
-        if (min(timetables, key=lambda d: (distance(current['lat'], current['lng'], d), d['id']))['id'] != target
+        if (min(timetables, key=lambda d: (distance(current['lat'], current['lng'], d), d['id']))['id'] != manual_target
                 or min(timetables, key=lambda d: (distance(base['lat'], base['lng'], d), d['id']))['id'] != target
                 or [r for r in json.loads(Path(coordinate_path).read_bytes())['corrections']
                     if r['delegationId'] == target] != review['expectedCoordinateCorrections']):
@@ -3149,6 +3265,8 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
                 'preservedSectors': [{'id': row['id'], 'current': row['currentMetadata'],
                     'packedGeometrySha256': row['packedGeometrySha256']} for row in sectors]
                     + ([] if lineage is None else lineage['additionalPreservedSectors'])}
+        if independent_selection is not None:
+            result['preservedNamePoints'] = independent_selection['preservedNamePoints']
         if suburb_review:
             result['preservedNamePeers'] = [{'id': row['id'], 'current': row['currentMetadata'],
                 'packedGeometrySha256': row['packedGeometrySha256']} for row in preserved_name_peers]
@@ -4430,6 +4548,140 @@ def apply_deferred_reviewed_hamlet_groups(manifest_path, records, features, geom
             if len(member_ids) > 1 or identifier.startswith('delegation:')]
 
 
+def validate_reviewed_complete_locality_group_owner(record, directory, features, indices, geometries,
+                                                     groups, original_sources, effective_sources,
+                                                     curation, timetables, source_sha256):
+    """Choose an existing village member as owner of one complete reviewed group.
+
+    The sector and settlement may overlap without sharing a boundary. Their
+    exact separate source and packed footprints, metadata and coordinates stay
+    intact; only the group's owner changes to the retained settlement member.
+    """
+    identifier, target = record['id'], record['targetPickerGroupId']
+    member_ids = {identifier, target}
+    keys = {'id', 'status', 'method', 'targetPickerGroupId', 'expectedExistingMemberIds', 'members',
+            'expectedGovernorateId', 'canonicalName', 'officialRegistry', 'officialSectorRecord',
+            'expectedSourceNamePeerIds', 'overlap', 'manualSelection', 'sourceReview', 'qualifications'}
+    qualifications = {'polygonsHaveDifferentExtents': True, 'noBoundaryCertification': True,
+                      'allRawCoordinatesRetained': True, 'prayerSourceIsNotDisplayIdentity': True,
+                      'ownerIsExistingVillagePolygon': True}
+    if (set(record) != keys or record['method'] != 'reviewed_complete_locality_group_owner'
+            or record['status'] != 'eligible_proposal' or type(record['expectedGovernorateId']) is not int
+            or record['expectedExistingMemberIds'] != sorted(member_ids)
+            or groups.get(identifier) != member_ids or groups.get(target, set())
+            or not member_ids <= set(indices) or record['qualifications'] != qualifications
+            or not isinstance(record['canonicalName'], str) or not clean(record['canonicalName'])
+            or not isinstance(record['members'], list) or len(record['members']) != 2
+            or {row.get('id') for row in record['members']} != member_ids):
+        raise ValueError('Reviewed complete local group or village-owner scope changed')
+    source_review = json.loads(aggregate_review_file(directory, record['sourceReview'], 'complete local group source review'))
+    if (source_review.get('schemaVersion') != 1 or source_review.get('sourceSha256') != source_sha256
+            or source_review.get('memberIds') != sorted(member_ids)
+            or source_review.get('canonicalName') != record['canonicalName']
+            or source_review.get('proposedOwnerId') != target):
+        raise ValueError('Reviewed complete local group source identity changed')
+    registry = json.loads(aggregate_review_file(directory, record['officialRegistry'], 'complete local group official registry'))
+    official = record['officialSectorRecord']
+    code = official.get('sectorCode') if isinstance(official, dict) else None
+    if (not isinstance(code, str) or not re.fullmatch(r'[0-9]{6}', code)
+            or [row for row in registry['sectors'] if row.get('sectorCode') == code] != [official]
+            or official.get('sectorAr') != record['canonicalName']
+            or official.get('delegationCode') != code[:4] or official.get('governorateCode') != code[:2]):
+        raise ValueError('Reviewed complete local group official sector changed')
+    protected = {}
+    for member in record['members']:
+        mid = member['id'];index = indices[mid]
+        current = features[index]
+        original, effective = original_sources.get(mid), effective_sources.get(mid)
+        expected_kind = 'sector' if mid == identifier else 'village'
+        expected_metadata = member.get('expectedMetadata')
+        metadata = {key: value for key, value in current.items() if key not in {'pickerGroupId', 'offset', 'length'}}
+        if (set(member) != {'id', 'expectedMetadata', 'expectedOriginalTags', 'expectedEffectiveTags',
+                           'expectedCuration', 'originalGeometrySha256', 'packedGeometrySha256'}
+                or index >= len(geometries) or original is None or effective is None
+                or original.get('sourceId') is not None or effective.get('sourceId') != 'osm'
+                or current.get('sourceId') != 'osm' or current.get('kind') != expected_kind
+                or original.get('kind') != expected_kind or effective.get('kind') != expected_kind
+                or not current.get('hasBoundary') or current.get('name') != record['canonicalName']
+                or current.get('governorateId') != record['expectedGovernorateId']
+                or current.get('pickerGroupId') != identifier or metadata != expected_metadata
+                or original['tags'] != member['expectedOriginalTags']
+                or effective['tags'] != member['expectedEffectiveTags']
+                or curation.get(mid) != member['expectedCuration']
+                or names(original['tags'])[0] not in [current['name'], *current.get('aliases', [])]
+                or names(effective['tags'])[0] != record['canonicalName']):
+            raise ValueError('Reviewed complete local member metadata, name or source changed')
+        for source in (original, effective):
+            geometry = source.get('shape')
+            if (geometry is None or geometry.is_empty
+                    or aggregate_geometry_sha256(geometry) != member['originalGeometrySha256']):
+                raise ValueError('Reviewed complete local member source footprint changed')
+        if hashlib.sha256(packed_geometry_bytes(geometries[index])).hexdigest() != member['packedGeometrySha256']:
+            raise ValueError('Reviewed complete local member packed footprint changed')
+        if mid == identifier:
+            decision = member['expectedCuration']
+            if (not isinstance(decision, dict) or decision.get('id') != mid
+                    or decision.get('action') != 'name_tags' or 'manualPointId' in decision
+                    or decision.get('expectedTags') != original['tags']
+                    or any(source['tags'].get('ref:tn:codegeo') != code for source in (original, effective))
+                    or any(sum(source['kind'] == 'sector' and source['tags'].get('ref:tn:codegeo') == code
+                               for source in sources.values()) != 1 for sources in (original_sources, effective_sources))):
+                raise ValueError('Reviewed complete local coded sector or name-only curation changed')
+            references = [ref for evidence in decision.get('evidence', []) if isinstance(evidence, dict)
+                          for ref in evidence.get('reviewFiles', [])]
+            if not references:
+                raise ValueError('Reviewed complete local sector correction lacks pinned evidence')
+            for reference in references:
+                aggregate_review_file(directory, reference, 'complete local sector name evidence')
+        elif (member['expectedCuration'] is not None or original['tags'] != effective['tags']
+                or original['tags'].get('place') != 'village'):
+            raise ValueError('Reviewed complete local village is no longer unchanged')
+        nearest = min(timetables, key=lambda d: (distance(current['lat'], current['lng'], d), d['id']))
+        if current['delegationId'] != nearest['id']:
+            raise ValueError('Reviewed complete local member nearest prayer source changed')
+        protected[mid] = metadata
+    peer_keys = {norm(value) for mid in member_ids for value in names(original_sources[mid]['tags'])}
+    peer_keys.add(norm(record['canonicalName']))
+    for sources in (original_sources, effective_sources):
+        peers = sorted(mid for mid, source in sources.items()
+                       if peer_keys & {norm(value) for value in names(source['tags'])})
+        if peers != record['expectedSourceNamePeerIds'] or peers != sorted(member_ids):
+            raise ValueError('Reviewed complete local group gained a source name peer')
+    overlaps = {}
+    for phase, sector, village in (
+            ('original', original_sources[identifier]['shape'], original_sources[target]['shape']),
+            ('packed', geometries[indices[identifier]], geometries[indices[target]])):
+        # Measure existing vertices at full operation precision. Source hashes
+        # and packed hashes above independently freeze the actual footprints.
+        sector, village = set_precision(sector, 0), set_precision(village, 0)
+        intersection = sector.intersection(village)
+        overlaps[phase] = {'sectorCoversVillage': sector.covers(village),
+                           'villageCoversSector': village.covers(sector),
+                           'villageFractionInsideSector': intersection.area / village.area,
+                           'sectorFractionInsideVillage': intersection.area / sector.area}
+        expected = record['overlap'].get(phase, {})
+        if (intersection.area <= 0 or sector.equals(village) or set(expected) != set(overlaps[phase])
+                or any(type(expected[key]) is not bool or expected[key] != overlaps[phase][key]
+                       for key in ('sectorCoversVillage', 'villageCoversSector'))
+                or any(type(expected[key]) not in (int, float) or not math.isfinite(expected[key])
+                       or not math.isclose(expected[key], overlaps[phase][key], rel_tol=1e-12, abs_tol=0)
+                       for key in ('villageFractionInsideSector', 'sectorFractionInsideVillage'))):
+            raise ValueError('Reviewed complete local partial overlap changed')
+    owner = features[indices[target]]
+    point = Point(owner['lng'], owner['lat'])
+    manual = {'representativeId': target, 'lat': owner['lat'], 'lng': owner['lng'],
+              'expectedNearestSourceId': owner['delegationId']}
+    if (record['manualSelection'] != manual or set(record['overlap']) != {'original', 'packed'}
+            or any(not original_sources[mid]['shape'].covers(point)
+                   or not geometries[indices[mid]].covers(point) for mid in member_ids)):
+        raise ValueError('Reviewed complete local village representative changed')
+    return {'id': identifier, 'identityMethod': record['method'], 'retainedOwnerId': target,
+            'manualSelection': manual, 'overlap': overlaps,
+            'finalGroups': [{'id': target, 'memberIds': sorted(member_ids)}],
+            'protectedMetadata': protected}
+
+
+
 def validate_reviewed_locality_groups(manifest_path, manifest, features, geometries, timetables,
                                       original_sources, effective_sources, source_sha256, curation,
                                       groups, indices, reserved_groups, reserved_members):
@@ -4472,6 +4724,7 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
             proofs[identifier] = proof
     seen_groups, seen_members, seen_ids, staged = set(), set(), set(), []
     deferred = []
+    complete_owner_applications = []
     seen_support_ids = set()
     available = {d['id'] for d in timetables}
     for record in records:
@@ -4483,8 +4736,20 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
                 or record.get('method') not in ('explicit_named_village_containment', 'explicit_addressed_village',
                                               'reviewed_primary_source_named_settlement',
                                               'reviewed_distributed_settlement', 'reviewed_surveyed_hamlet',
-                                              'reviewed_two_patch_settlement')):
+                                              'reviewed_two_patch_settlement', 'reviewed_complete_locality_group_owner')):
             raise ValueError('Invalid, transitive or unreviewed locality-group target')
+        if record['method'] == 'reviewed_complete_locality_group_owner':
+            left = record.get('expectedExistingMemberIds')
+            if (not isinstance(left, list) or any(not isinstance(mid, str) for mid in left)
+                    or set(left) & (seen_members | reserved_members | seen_support_ids)):
+                raise ValueError('Reviewed complete local owner overlaps a reserved identity')
+            application = validate_reviewed_complete_locality_group_owner(
+                record, manifest_path.parent, features, indices, geometries, groups,
+                original_sources, effective_sources, curation, timetables, source_sha256)
+            staged.append((target, left))
+            complete_owner_applications.append(application)
+            seen_groups.update((identifier, target));seen_members.update(left);seen_ids.add(identifier)
+            continue
         left, right = record.get('expectedExistingMemberIds'), record.get('expectedTargetMemberIds')
         if (not isinstance(left, list) or not isinstance(right, list) or not left or not right
                 or any(not isinstance(i, str) for i in left + right)
@@ -4659,6 +4924,9 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
                     'applications': [{'pickerGroupId': target, 'ids': sorted(ids)} for target, ids in all_applications]}
     if deferred:
         report['_deferredSurveyedHamlets'] = deferred
+    if complete_owner_applications:
+        report['completeGroupOwners'] = {'reviewedGroupCount': len(complete_owner_applications),
+                                        'applications': complete_owner_applications}
     if additional:
         report['additionalEvidenceSha256'] = [item['sha256'] for item in additional]
         report['additionalSourceFactsSha256'] = [item['sourceFacts']['sha256'] for item in evidence_documents[1:]]
@@ -6372,6 +6640,11 @@ def verify_reviewed_city_display_associations(features, report):
                                                   'excluded_city_supplement_only')
                     or not isinstance(preserved['id'], str) or preserved['id'] in current):
                 raise ValueError('Source-bound display unexpectedly recreated an evidence-only place')
+        elif application.get('identityMethod') == 'reviewed_complete_locality_group_owner':
+            owner_id = application.get('retainedOwnerId')
+            if (owner_id not in current or current[owner_id]['kind'] != 'village'
+                    or current[owner_id]['pickerGroupId'] != owner_id):
+                raise ValueError('Reviewed complete local group lost its retained village owner')
         elif application['preservedAbsorbedPointId'] in current:
             raise ValueError('City display association unexpectedly recreated its absorbed source point')
         if 'acceptedBoundaryAbsorption' in application:
@@ -6976,6 +7249,338 @@ def validate_reviewed_split_settlement_reference(identity, manifest_path, manife
     except (OSError, UnicodeError, ValueError, KeyError, TypeError, AttributeError, IndexError) as error:
         raise ValueError('Missing, malformed or changed reviewed town/sector split evidence') from error
 
+def validate_settlement_retained_display_reference(option, manifest_path, record, proof,
+                                                    features, indices, geometries,
+                                                    original_sources, effective_sources,
+                                                    source_sha256, base, governor, timetables, curation):
+    """Bind a reviewed place identity independently from its published prayer point.
+
+    This option preserves a complete existing polygon group and its absorbed
+    settlement witness. It permits only the pinned primary spelling pair. An
+    exact singleton-sector curation may select that existing witness for manual
+    use; otherwise each member retains its unchanged representative.
+    """
+    method = 'reviewed_settlement_retained_display_reference'
+    directory = Path(manifest_path).parent
+    identifier, target = record['id'], base['id']
+    member_ids = set(record['expectedExistingMemberIds'])
+    manual_mode = any('requiredCurations' in obj for obj in (record, proof))
+    base_group = f'delegation:{target}'
+    if (not isinstance(option, dict) or set(option) != {'schemaVersion', 'method', 'reviewEvidence'}
+            or type(option['schemaVersion']) is not int or option['schemaVersion'] != 1
+            or option['method'] != method or proof.get('retainedDisplayReference') != option
+            or any('reviewedSpellingEquivalence' in obj for obj in (record, proof))
+            or record['expectedTargetMemberIds'] != [base_group]):
+        raise ValueError('Invalid reviewed settlement retained-display option')
+    review = json.loads(aggregate_review_file(directory, option['reviewEvidence'], 'settlement retained-display review'))
+    keys = {'schemaVersion', 'method', 'sourceSha256', 'id', 'targetDelegationId', 'governorateId',
+            'baseCurrent', 'baselineMetadataSha256', 'exactRawFieldChanges', 'recordCoreSha256',
+            'eligibleProofCoreSha256', 'sourceFacts', 'independentSourceReview', 'publishedPrayerCorrection',
+            'witness', 'sources', 'namePeerIds', 'primaryNames', 'primaryEvidence', 'contextIds',
+            'officialRegistry', 'officialSectorRecord', 'protectedMetadata', 'beforeGroups', 'finalGroups',
+            'memberPrayerSources', 'manualSelection', 'qualifications'}
+    name_mode = 'nameCuration' in review
+    if name_mode:
+        keys.add('nameCuration')
+    qualifications = {'publishedCoordinatesAreNotDisplayGeometry': True, 'sourceWitnessRemainsAbsorbed': True,
+                      'memberPolygonsAreNotEquivalent': True, 'administrativeBoundaryNotCertified': True,
+                      'manualPrayerSourceUsesRepresentative': True}
+    def core_hash(value):
+        return hashlib.sha256(json.dumps({key: item for key, item in value.items()
+            if key != 'retainedDisplayReference'}, ensure_ascii=False, sort_keys=True,
+            separators=(',', ':')).encode('utf-8')).hexdigest()
+    if (not isinstance(review, dict) or set(review) != keys or type(review['schemaVersion']) is not int
+            or review['schemaVersion'] != 1 or review['method'] != method
+            or (name_mode and not manual_mode)
+            or review['sourceSha256'] != source_sha256 or review['id'] != identifier
+            or type(review['targetDelegationId']) is not int or review['targetDelegationId'] != target
+            or type(review['governorateId']) is not int or review['governorateId'] != governor['id']
+            or review['baseCurrent'] != base or review['qualifications'] != qualifications
+            or review['recordCoreSha256'] != core_hash(record) or review['eligibleProofCoreSha256'] != core_hash(proof)
+            or not isinstance(review['baselineMetadataSha256'], str)
+            or re.fullmatch(r'[0-9a-f]{64}', review['baselineMetadataSha256']) is None):
+        raise ValueError('Reviewed settlement proof scope or approved record changed')
+    aggregate_review_file(directory, review['sourceFacts'], 'settlement source facts')
+    independent = json.loads(aggregate_review_file(directory, review['independentSourceReview'], 'independent settlement source review'))
+    changes = review['exactRawFieldChanges']
+    manual_fields = {'lat', 'lng', 'manualPointId'} if manual_mode else set()
+    name_fields = {'name', 'aliases', 'parentName', 'contextAliases'} if name_mode else set()
+    if (independent.get('status') != 'PASS' or independent.get('sourceSha256') != source_sha256
+            or independent.get('baselineMetadataSha256') != review['baselineMetadataSha256']
+            or not any(row.get('sha256') == review['sourceFacts']['sha256'] for row in independent.get('sourceReports', []))
+            or independent.get('exactProposedRawFieldChanges') != changes
+            or not isinstance(changes, list) or not changes
+            or any(not isinstance(row, dict) or set(row) != {'id', 'field', 'before', 'after'}
+                   or row['id'] not in indices or row['field'] not in {'pickerGroupId', 'delegationId'} | manual_fields | name_fields
+                   or row['before'] == row['after'] for row in changes)
+            or len({(row['id'], row['field']) for row in changes}) != len(changes)
+            or {row['id'] for row in changes if row['field'] == 'pickerGroupId'} != member_ids
+            or any((row['before'] != identifier or row['after'] != base_group) if row['field'] == 'pickerGroupId'
+                   else features[indices[row['id']]].get(row['field']) != row['after'] for row in changes)):
+        raise ValueError('Independent settlement source review or exact changes differ')
+    coordinates = json.loads((directory / 'prayer-source-coordinates.json').read_bytes())
+    corrections = [row for row in coordinates['corrections'] if row.get('delegationId') == target]
+    if (len(corrections) != 1 or corrections[0] != review['publishedPrayerCorrection']
+            or corrections[0].get('referenceKind') != 'inm_published_reference'
+            or corrections[0].get('expectedGovernorateId') != governor['id']
+            or corrections[0].get('expectedNames') != {key: base[key] for key in ('nomAr', 'nomFr', 'nomEn')}
+            or corrections[0].get('proposed') != {key: base[key] for key in ('lat', 'lng')}):
+        raise ValueError('Independent published settlement prayer reference changed')
+    validate_inm_published_reference(corrections[0], governor, base, directory)
+    primary = review['primaryNames']
+    if (not isinstance(primary, dict) or set(primary) != {'base', 'locality', 'evidence'}
+            or primary['base'] != base['nomAr'] or primary['locality'] != proof['name']
+            or not picker_review_name_key(primary['locality']) or not isinstance(primary['evidence'], list)
+            or not isinstance(review['primaryEvidence'], list) or not review['primaryEvidence']):
+        raise ValueError('Missing exact reviewed primary place names')
+    paired_primary = False
+    for reference in primary['evidence'] + review['primaryEvidence']:
+        content = aggregate_review_file(directory, reference, 'primary inhabited settlement evidence').decode('utf-8')
+        required = reference.get('requiredText')
+        if (not isinstance(reference.get('url'), str) or not reference['url'].startswith('https://')
+                or not isinstance(required, list) or not required
+                or any(not isinstance(text, str) or not text or text not in content for text in required)):
+            raise ValueError('Primary settlement name evidence changed')
+        if reference in primary['evidence'] and all(name in required for name in (primary['base'], primary['locality'])):
+            paired_primary = True
+    if picker_review_name_key(primary['base']) != picker_review_name_key(primary['locality']) and not paired_primary:
+        raise ValueError('Different primary spellings need their exact reviewed primary-source pair')
+    witness = review['witness']
+    if (not isinstance(witness, dict) or set(witness) != {'id', 'kind', 'tags', 'lat', 'lng', 'publicNode', 'exactPublicElement'}
+            or witness['id'] in indices or witness['kind'] not in ('village', 'town')
+            or any(type(witness[key]) not in (int, float) or not math.isfinite(witness[key]) for key in ('lat', 'lng'))):
+        raise ValueError('Invalid absorbed settlement witness')
+    point_id = witness['id']
+    point = Point(witness['lng'], witness['lat'])
+    node_document = json.loads(aggregate_review_file(directory, witness['publicNode'], 'public settlement witness'))
+    node = witness['exactPublicElement']
+    if (node_document.get('elements') != [node] or node.get('type') != 'node'
+            or point_id != f"osm:node:{node.get('id')}" or node.get('tags') != witness['tags']
+            or node.get('lat') != point.y or node.get('lon') != point.x
+            or witness['tags'].get('place') != witness['kind']
+            or picker_review_name_key(names(witness['tags'])[0]) != picker_review_name_key(primary['locality'])
+            or witness['publicNode'].get('url') != f"https://api.openstreetmap.org/api/0.6/node/{node['id']}.json"):
+        raise ValueError('Exact public settlement witness changed')
+    manual_rule = None
+    if manual_mode:
+        prerequisites = record.get('requiredCurations')
+        if (not isinstance(prerequisites, list) or len(prerequisites) != 1
+                or proof.get('requiredCurations') != prerequisites
+                or member_ids != {identifier}):
+            raise ValueError('A retained manual witness requires one complete singleton sector')
+        manual_rule = prerequisites[0]
+        source = original_sources.get(identifier)
+        allowed_rule_keys = {'id', 'expectedKind', 'expectedTags', 'action', 'reason',
+                             'evidence', 'nameTags', 'manualPointId'}
+        if (not isinstance(manual_rule, dict) or set(manual_rule) != allowed_rule_keys
+                or source is None or source['kind'] != 'sector'
+                or manual_rule.get('id') != identifier or manual_rule.get('expectedKind') != 'sector'
+                or manual_rule.get('action') != 'name_tags'
+                or manual_rule.get('expectedTags') != source['tags']
+                or (not name_mode and manual_rule.get('nameTags') != {key: value for key, value in source['tags'].items()
+                                                                        if is_current_name_tag(key)})
+                or manual_rule.get('manualPointId') != point_id
+                or curation.get(identifier) != manual_rule):
+            raise ValueError('Retained manual witness must preserve all source names and geometry')
+        current = features[indices[identifier]]
+        if indices[identifier] >= len(geometries) or current.get('kind') != 'sector':
+            raise ValueError('Retained manual witness lost its existing sector polygon')
+        # These are the same precision-aware geometries used by build(). Do not
+        # substitute a decoded geometry lacking its quantization precision model.
+        ordinary_point = geometries[indices[identifier]].representative_point()
+        expected_manual_changes = {
+            (identifier, 'lat'): (round(ordinary_point.y, 7), round(point.y, 7)),
+            (identifier, 'lng'): (round(ordinary_point.x, 7), round(point.x, 7)),
+            (identifier, 'manualPointId'): (None, point_id)}
+        actual_manual_changes = {(row['id'], row['field']): (row['before'], row['after'])
+                                 for row in changes if row['field'] in manual_fields}
+        if (actual_manual_changes != expected_manual_changes
+                or current.get('manualPointId') != point_id
+                or current['lat'] != round(point.y, 7) or current['lng'] != round(point.x, 7)):
+            raise ValueError('Retained manual witness exact before/after coordinates changed')
+    contexts = review['contextIds']
+    if not isinstance(contexts, dict) or set(contexts) != {'governor', 'delegation'}:
+        raise ValueError('Missing settlement administrative source context')
+    source_rows = review['sources']
+    source_ids = member_ids | {point_id} | set(contexts.values())
+    if (not isinstance(source_rows, list) or len(source_rows) != len(source_ids)
+            or any(not isinstance(row, dict) or set(row) != {'id', 'kind', 'tags', 'geometrySha256', 'expectedCuration'}
+                   for row in source_rows) or {row['id'] for row in source_rows} != source_ids):
+        raise ValueError('Reviewed settlement source closure changed')
+    peer_keys = {norm(value) for value in [base['nomAr'], base['nomFr'], base['nomEn'], primary['locality']]
+                 + names(witness['tags']) + [value for i in member_ids for value in names(original_sources[i]['tags'])]}
+    registry = json.loads(aggregate_review_file(directory, review['officialRegistry'], 'settlement official sector registry'))
+    official = review['officialSectorRecord']
+    if (not isinstance(official, dict) or [row for row in registry['sectors'] if row.get('sectorCode') == official.get('sectorCode')] != [official]
+            or official.get('sectorAr') != primary['locality'] or official.get('delegationAr') != primary['locality']
+            or picker_review_name_key(official.get('governorateAr', '')) != picker_review_name_key(governor['nomAr'])):
+        raise ValueError('Reviewed settlement official current identity changed')
+    identities = record['identityEvidence']
+    if (identities != proof['identityEvidence'] or len(identities) != 2
+            or {(row.get('id'), row.get('method')) for row in identities}
+               != {(identifier, 'current_coded_sector'), (contexts['delegation'], 'current_coded_namesake_administrative_parent')}
+            or any(row.get('accepted') is not True or row.get('currentOfficialRecord') != (
+                official if row['id'] == identifier else {key: official[key] for key in (
+                    'governorateCode', 'governorateAr', 'governorateFr', 'delegationCode', 'delegationAr', 'delegationFr')}) for row in identities)):
+        raise ValueError('Reviewed settlement ordinary sector and parent evidence changed')
+    expected_curations = {identifier: manual_rule} if manual_rule is not None else {}
+    name_replacements, name_before = {}, {}
+    if name_mode:
+        naming = review['nameCuration']
+        assertions = {row['id']: row for row in source_rows}
+        if (not isinstance(naming, dict) or set(naming) != {'curationIds', 'beforeMetadata'}
+                or not isinstance(naming['curationIds'], list)
+                or naming['curationIds'] != sorted(set(naming['curationIds']))
+                or identifier not in naming['curationIds']
+                or not set(naming['curationIds']) <= {identifier, contexts['delegation']}
+                or not isinstance(naming['beforeMetadata'], dict)):
+            raise ValueError('Invalid exact retained-place naming scope')
+        for source_id in naming['curationIds']:
+            assertion = assertions[source_id]
+            rule = assertion['expectedCuration']
+            sector = source_id == identifier
+            canonical = primary['locality'] if sector else 'معتمدية ' + official['delegationAr']
+            original_names = {key: value for key, value in assertion['tags'].items()
+                              if is_current_name_tag(key)}
+            rule_keys = {'id', 'expectedKind', 'expectedTags', 'action', 'reason', 'evidence', 'nameTags'}
+            if sector:
+                rule_keys.add('manualPointId')
+            if (not isinstance(rule, dict) or set(rule) != rule_keys
+                    or rule.get('id') != source_id or rule.get('action') != 'name_tags'
+                    or rule.get('expectedKind') != ('sector' if sector else 'delegation')
+                    or rule.get('expectedTags') != assertion['tags']
+                    or curation.get(source_id) != rule
+                    or (sector and (rule != manual_rule or rule.get('manualPointId') != point_id))
+                    or not isinstance(rule.get('nameTags'), dict)
+                    or not set(rule['nameTags']) <= set(original_names) | {'name:ar', 'alt_name:ar'}
+                    or rule['nameTags'].get('name') != canonical or rule['nameTags'].get('name:ar') != canonical
+                    or set(names(rule['nameTags'])) != set(names(assertion['tags'])) | {canonical}
+                    or any(rule['nameTags'].get(key) != value for key, value in original_names.items()
+                           if key not in {'name', 'name:ar', 'alt_name:ar'})):
+                raise ValueError('Retained-place naming must preserve exact prior names and official identity')
+            expected_curations[source_id] = rule
+            previous = names(assertion['tags'])[0]
+            if previous != canonical:
+                name_replacements[previous] = canonical
+        name_before = naming['beforeMetadata']
+        expected_name_ids = {row['id'] for row in changes if row['field'] in name_fields} | {identifier}
+        if (not name_replacements or set(name_before) != expected_name_ids
+                or not expected_name_ids <= set(indices)
+                or any(row['id'] != identifier for row in changes if row['field'] in {'name', 'aliases'})):
+            raise ValueError('Retained-place naming raw inventory changed')
+    for sources, provider in ((original_sources, None), (effective_sources, 'osm')):
+        if (review['namePeerIds'] != sorted(i for i, source in sources.items()
+                if peer_keys & {norm(value) for value in names(source['tags'])})
+                or not set(review['namePeerIds']) <= source_ids):
+            raise ValueError('Settlement acquired an unreviewed source name peer')
+        for row in source_rows:
+            source = sources.get(row['id'])
+            geometry = None if source is None else source.get('shape')
+            if geometry is None and source is not None:
+                geometry = source.get('point')
+            if (source is None or geometry is None or geometry.is_empty or source.get('sourceId') != provider
+                    or source['kind'] != row['kind'] or source['tags'] != (
+                        {**{key: value for key, value in row['tags'].items() if not is_current_name_tag(key)},
+                         **expected_curations[row['id']]['nameTags']}
+                        if provider is not None and row['id'] in expected_curations else row['tags'])
+                    or aggregate_geometry_sha256(geometry) != row['geometrySha256']
+                    or row['expectedCuration'] != expected_curations.get(row['id'])
+                    or curation.get(row['id']) != expected_curations.get(row['id'])):
+                raise ValueError('Reviewed original/effective settlement source or curation changed')
+        source_point = sources[point_id]
+        if (source_point.get('shape') is not None or source_point['point'].geom_type != 'Point'
+                or not source_point['point'].equals_exact(point, 0)
+                or source_point['tags'] != witness['tags'] or source_point['kind'] != witness['kind']
+                or any(sources[i].get('shape') is None or not sources[i]['shape'].covers(point) for i in member_ids)):
+            raise ValueError('Reviewed absorbed settlement witness or member containment changed')
+        parent, region = sources[contexts['delegation']], sources[contexts['governor']]
+        if (parent['kind'] != 'delegation' or region['kind'] != 'governorate'
+                or parent['tags'].get('ref:tn:codegeo') != official['delegationCode']
+                or region['tags'].get('ref:tn:codegeo') != official['governorateCode']
+                or not parent['shape'].covers(point) or not region['shape'].covers(point)
+                or not all(parent['shape'].covers(sources[i]['shape']) for i in member_ids)):
+            raise ValueError('Reviewed settlement administrative context changed')
+    if any(indices[i] >= len(geometries) or not geometries[indices[i]].covers(point) for i in member_ids):
+        raise ValueError('Packed settlement member no longer contains authentic witness')
+    name_after = {}
+    if name_mode:
+        # Inherited labels are metadata effects, not additional display-group
+        # members. Their own reviewed groups may be applied at a later stage.
+        for raw_id, before_metadata in name_before.items():
+            current = features[indices[raw_id]]
+            after_metadata = {key: value for key, value in current.items()
+                              if key not in {'pickerGroupId', 'offset', 'length'}}
+            if (not isinstance(before_metadata, dict) or before_metadata.get('id') != raw_id
+                    or any(key in before_metadata for key in ('pickerGroupId', 'offset', 'length'))
+                    or before_metadata.get('governorateId') != governor['id']
+                    or not isinstance(before_metadata.get('contextAliases'), list)
+                    or after_metadata.get('parentName') != name_replacements.get(
+                        before_metadata.get('parentName'), before_metadata.get('parentName'))
+                    or after_metadata.get('contextAliases') != sorted(set(before_metadata['contextAliases'])
+                        | {new for old, new in name_replacements.items()
+                           if old in before_metadata['contextAliases']})):
+                raise ValueError('Retained-place inherited naming changed beyond exact source corrections')
+            derived = {(raw_id, key): (before_metadata.get(key), after_metadata.get(key))
+                       for key in set(before_metadata) | set(after_metadata)
+                       if before_metadata.get(key) != after_metadata.get(key)}
+            approved = {(row['id'], row['field']): (row['before'], row['after'])
+                        for row in changes if row['id'] == raw_id and row['field'] != 'pickerGroupId'}
+            if derived != approved:
+                raise ValueError('Retained-place full naming metadata differs from independent exact changes')
+            if raw_id == identifier:
+                if (before_metadata.get('name') != names(original_sources[identifier]['tags'])[0]
+                        or not isinstance(before_metadata.get('aliases'), list)
+                        or set([before_metadata['name'], *before_metadata['aliases']])
+                           != set([current['name'], *current.get('aliases', [])])):
+                    raise ValueError('Retained-place corrected primary lost an existing searchable name')
+            name_after[raw_id] = after_metadata
+        inherited_ids = {row['id'] for row in features if row['governorateId'] == governor['id']
+                         and any(old in row.get('contextAliases', []) for old in name_replacements)}
+        if not inherited_ids <= set(name_before):
+            raise ValueError('Retained-place source correction gained an unreviewed inherited label')
+    protected = review['protectedMetadata']
+    protected_ids = set(protected) if isinstance(protected, dict) else set()
+    if not member_ids <= protected_ids or not protected_ids <= set(indices):
+        raise ValueError('Missing reviewed settlement protected raw rows')
+    expected_metadata = {i: {key: value for key, value in features[indices[i]].items()
+                             if key not in {'pickerGroupId', 'offset', 'length'}} for i in protected_ids}
+    if protected != expected_metadata:
+        raise ValueError('Reviewed settlement preserved raw metadata changed')
+    def scoped_groups(after):
+        def group_for(row):
+            return base_group if after and row['id'] in member_ids else row['pickerGroupId']
+        result = []
+        for group_id in sorted({group_for(features[indices[i]]) for i in protected_ids} | {base_group}):
+            members = {row['id'] for row in features if group_for(row) == group_id}
+            if not members <= protected_ids:
+                raise ValueError('Reviewed settlement protected group gained an unreviewed member')
+            if group_id.startswith('delegation:'):
+                members.add(group_id)
+            result.append({'id': group_id, 'memberIds': sorted(members)})
+        return result
+    before, after = scoped_groups(False), scoped_groups(True)
+    nearest = {i: min(timetables, key=lambda row: (distance(features[indices[i]]['lat'], features[indices[i]]['lng'], row), row['id']))['id']
+               for i in member_ids}
+    ranks = {'city': 0, 'town': 0, 'village': 1, 'hamlet': 2, 'suburb': 3, 'neighbourhood': 3,
+             'quarter': 3, 'city_district': 3, 'residential': 4, 'sector': 5, 'municipality': 6}
+    representative_id = min(member_ids, key=lambda i: (ranks.get(features[indices[i]]['kind'], 7), i))
+    representative = features[indices[representative_id]]
+    manual = {'representativeId': representative_id, 'lat': representative['lat'], 'lng': representative['lng'],
+              'expectedNearestSourceId': nearest[representative_id]}
+    if (review['beforeGroups'] != before or review['finalGroups'] != after
+            or review['memberPrayerSources'] != nearest or review['manualSelection'] != manual
+            or any(features[indices[i]]['delegationId'] != nearest[i] for i in member_ids)):
+        raise ValueError('Reviewed settlement complete group or independent nearest prayer source changed')
+    expected_metadata.update(name_after)
+    return point, {'id': identifier, 'identityMethod': method, 'targetDelegationId': target,
+        'displayReference': {'id': point_id, 'lat': point.y, 'lng': point.x},
+        'publishedPrayerReference': {key: base[key] for key in ('lat', 'lng')}, 'manualSelection': manual,
+        'reviewedPrimaryNameKey': picker_review_name_key(primary['locality']), 'memberPrayerSources': nearest,
+        'finalGroups': after, 'protectedMetadata': expected_metadata,
+        'preservedNonCatalogPlace': {'id': point_id, 'role': f"absorbed_extracted_{witness['kind']}"}}
+
+
+
 def validate_hichria_retained_display_reference(option, manifest_path, record, proof,
                                                 features, indices, geometries,
                                                 original_sources, effective_sources,
@@ -7125,6 +7730,195 @@ def validate_hichria_retained_display_reference(option, manifest_path, record, p
 
 
 
+def validate_menzel_bouzaiane_spelling_equivalence(option, manifest_path, record, proof,
+                                                  features, indices, geometries,
+                                                  original_sources, effective_sources,
+                                                  source_sha256, base, governor, curation):
+    """Validate one accepted spelling relationship without changing either label.
+
+    The source village is the existing settlement reference, not a new raw place.
+    All group members and separate local rows retain their independent geometry.
+    """
+    method = 'reviewed_menzel_bouzaiane_spelling_equivalence'
+    identifier, target = 'osm:relation:7169630', 510
+    member_ids = {identifier, 'osm:way:170079232'}
+    sector_ids = {identifier, 'osm:relation:7169623', 'osm:relation:7169625',
+                  'osm:relation:7169626', 'osm:relation:7169627',
+                  'osm:relation:7169628', 'osm:relation:7169629'}
+    raw_ids = sector_ids | {'osm:way:170079232', 'osm:way:192749364'}
+    absent_ids = {'osm:node:7371710998', 'osm:node:7371704678', 'osm:node:8257614460'}
+    context_ids = {'osm:relation:7169593', 'osm:relation:1435831'}
+    base_name, locality_name = 'منزل بو زيان', 'منزل بوزيان'
+    administrative_parent = 'معتمدية منزل بوزيان'
+    point_id = 'osm:node:7371710998'
+    point = Point(9.4269175, 34.5731138)
+    directory = Path(manifest_path).parent
+    if (not isinstance(option, dict)
+            or set(option) != {'schemaVersion', 'method', 'reviewEvidence'}
+            or type(option['schemaVersion']) is not int or option['schemaVersion'] != 1
+            or option['method'] != method or proof.get('reviewedSpellingEquivalence') != option
+            or 'retainedDisplayReference' in record or 'retainedDisplayReference' in proof
+            or record.get('id') != identifier or record.get('targetDelegationId') != target
+            or type(record.get('targetDelegationId')) is not int
+            or base != {'id': target, 'nomFr': 'Menzel Bouzayane', 'nomAr': base_name,
+                        'nomEn': 'Menzel Bouzayane', 'lat': point.y, 'lng': point.x}
+            or governor['id'] != 355
+            or set(record.get('expectedExistingMemberIds', [])) != member_ids
+            or len(record.get('expectedExistingMemberIds', [])) != 2
+            or record.get('expectedTargetMemberIds') != ['delegation:510']
+            or len(record.get('members', [])) != 2
+            or {row.get('id') for row in record['members']} != member_ids):
+        raise ValueError('Invalid exact Menzel Bouzaiane spelling relationship')
+    reference = option['reviewEvidence']
+    if not isinstance(reference, dict) or set(reference) != {'file', 'sha256'}:
+        raise ValueError('Missing Menzel Bouzaiane spelling proof')
+    review = json.loads(aggregate_review_file(directory, reference, 'Menzel Bouzaiane spelling proof'))
+    expected_keys = {'schemaVersion', 'method', 'sourceSha256', 'id', 'targetDelegationId',
+                     'governorateId', 'baseSpelling', 'localitySpelling', 'sourceFacts',
+                     'originalNodeEvidence', 'officialRegistry', 'officialSectorRecords',
+                     'acceptedCoordinateCorrection', 'sourceRecords', 'sourceNamePeerIds',
+                     'protectedMetadata', 'packedGeometrySha256', 'expectedBeforeGroups',
+                     'expectedAfterGroups', 'sourceOnlyAbsentIds', 'publicContextEvidence',
+                     'qualifications'}
+    qualifications = {'namesCoordinatesAndGeometriesUnchanged': True,
+                      'sectorAndResidentialFootprintsNotEquivalent': True,
+                      'googleOutlineIsQualitativeContextOnly': True,
+                      'sourceVillageRemainsAbsorbed': True,
+                      'noAdministrativeBoundaryCertification': True}
+    if (not isinstance(review, dict) or set(review) != expected_keys
+            or type(review['schemaVersion']) is not int or review['schemaVersion'] != 1
+            or review['method'] != method or review['sourceSha256'] != source_sha256
+            or review['id'] != identifier or type(review['targetDelegationId']) is not int
+            or review['targetDelegationId'] != target or type(review['governorateId']) is not int
+            or review['governorateId'] != governor['id']
+            or review['baseSpelling'] != base_name or review['localitySpelling'] != locality_name
+            or review['qualifications'] != qualifications
+            or any(value is not True for value in review['qualifications'].values())):
+        raise ValueError('Menzel Bouzaiane spelling proof scope changed')
+    aggregate_review_file(directory, review['sourceFacts'], 'Menzel Bouzaiane finite source facts')
+    if not isinstance(review['publicContextEvidence'], list) or not review['publicContextEvidence']:
+        raise ValueError('Missing reviewed public Menzel Bouzaiane context')
+    for evidence in review['publicContextEvidence']:
+        aggregate_review_file(directory, evidence, 'Menzel Bouzaiane public context')
+    registry = json.loads(aggregate_review_file(directory, review['officialRegistry'], 'Menzel Bouzaiane sector registry'))
+    official = sorted([row for row in registry['sectors'] if row['delegationCode'] == '4357'],
+                      key=lambda row: row['sectorCode'])
+    if (len(official) != 7 or {row['sectorCode'] for row in official}
+            != {'435751', '435752', '435753', '435754', '435755', '435756', '435757'}
+            or any(row['governorateCode'] != '43' or row['delegationAr'] != locality_name
+                   for row in official) or review['officialSectorRecords'] != official):
+        raise ValueError('Menzel Bouzaiane complete official sector identity changed')
+    # Existing coordinate corrections are immutable semantic objects. Do not
+    # introduce another whole-manifest dependency on unrelated source updates.
+    coordinate_document = json.loads((directory / 'prayer-source-coordinates.json').read_bytes())
+    corrections = [row for row in coordinate_document['corrections'] if row.get('delegationId') == target]
+    if (len(corrections) != 1 or corrections[0] != review['acceptedCoordinateCorrection']
+            or corrections[0].get('expectedGovernorateId') != governor['id']
+            or corrections[0].get('expectedNames') != {key: base[key] for key in ('nomAr', 'nomFr', 'nomEn')}
+            or corrections[0].get('proposed') != {'lat': point.y, 'lng': point.x}
+            or corrections[0].get('osm', {}).get('id') != point_id
+            or corrections[0].get('osm', {}).get('place') != 'village'):
+        raise ValueError('Menzel Bouzaiane accepted settlement reference changed')
+    node_reference = review['originalNodeEvidence']
+    if node_reference.get('sha256') != '49be026dd6719b1261ce12e8929468e7a81c974cfa4076ae90d797f413b25979':
+        raise ValueError('Menzel Bouzaiane original node evidence changed')
+    node_document = json.loads(aggregate_review_file(directory, node_reference, 'Menzel Bouzaiane original node response'))
+    nodes = [row for row in node_document['elements'] if row.get('type') == 'node' and row.get('id') == 7371710998]
+    if (len(nodes) != 1 or nodes[0].get('lat') != point.y or nodes[0].get('lon') != point.x
+            or nodes[0].get('version') != 3 or nodes[0].get('timestamp') != '2021-02-02T00:59:52Z'
+            or nodes[0].get('changeset') != 98539602):
+        raise ValueError('Menzel Bouzaiane exact original village witness changed')
+    source_rows = review['sourceRecords']
+    if (not isinstance(source_rows, list) or len(source_rows) != len(raw_ids | absent_ids | context_ids)
+            or any(not isinstance(row, dict) or set(row) != {'id', 'kind', 'tags', 'geometrySha256', 'expectedCuration'}
+                   for row in source_rows)
+            or {row['id'] for row in source_rows} != raw_ids | absent_ids | context_ids):
+        raise ValueError('Menzel Bouzaiane source closure changed')
+    assertions = {row['id']: row for row in source_rows}
+    peer_ids = member_ids | {point_id, 'osm:relation:7169593'}
+    peer_keys = {norm(v) for v in (base_name, locality_name, base['nomFr'], 'Menzel Bouzaiane', 'Menzel Buzeyyan')}
+    if review['sourceNamePeerIds'] != sorted(peer_ids):
+        raise ValueError('Menzel Bouzaiane source name inventory changed')
+    for sources, provider in ((original_sources, None), (effective_sources, 'osm')):
+        for source_id, row in assertions.items():
+            source = sources.get(source_id)
+            geometry = None if source is None else source.get('shape')
+            if geometry is None and source is not None:
+                geometry = source.get('point')
+            if (source is None or geometry is None or geometry.is_empty
+                    or source.get('sourceId') != provider or source['kind'] != row['kind']
+                    or source['tags'] != row['tags'] or aggregate_geometry_sha256(geometry) != row['geometrySha256']
+                    or row['expectedCuration'] is not None or curation.get(source_id) is not None):
+                raise ValueError('Menzel Bouzaiane original/effective source or curation changed')
+        if ({source_id for source_id, source in sources.items()
+             if peer_keys & {norm(value) for value in names(source['tags'])}} != peer_ids):
+            raise ValueError('Menzel Bouzaiane acquired an unreviewed source name peer')
+        village = sources[point_id]
+        if (village['kind'] != 'village' or village['tags'] != nodes[0]['tags']
+                or village.get('shape') is not None or village['point'].geom_type != 'Point'
+                or not village['point'].equals_exact(point, 0)
+                or any(not sources[i]['shape'].covers(point) for i in member_ids)):
+            raise ValueError('Menzel Bouzaiane absorbed reference or original containment changed')
+        parent = sources['osm:relation:7169593']
+        if (parent['kind'] != 'delegation' or parent['tags'].get('ref:tn:codegeo') != '4357'
+                or parent['tags'].get('name:ar') != administrative_parent
+                or sum(row['kind'] == 'delegation' and row['tags'].get('ref:tn:codegeo') == '4357'
+                       for row in sources.values()) != 1
+                or not all(parent['shape'].covers(sources[i]['shape']) for i in member_ids)
+                or {sources[i]['tags'].get('ref:tn:codegeo') for i in sector_ids}
+                   != {row['sectorCode'] for row in official}):
+            raise ValueError('Menzel Bouzaiane exact administrative source identity changed')
+    actual_raw_ids = {row['id'] for row in features if row['governorateId'] == governor['id']
+                      and (row.get('parentName') == administrative_parent
+                           or administrative_parent in row.get('contextAliases', []))}
+    if (actual_raw_ids != raw_ids or not raw_ids <= set(indices)
+            or review['sourceOnlyAbsentIds'] != sorted(absent_ids) or absent_ids & set(indices)):
+        raise ValueError('Menzel Bouzaiane complete raw/absorbed source closure changed')
+    expected_metadata = {i: {key: value for key, value in features[indices[i]].items()
+                             if key not in {'pickerGroupId', 'offset', 'length'}} for i in raw_ids}
+    if (review['protectedMetadata'] != expected_metadata
+            or set(review['packedGeometrySha256']) != raw_ids
+            or any(indices[i] >= len(geometries)
+                   or hashlib.sha256(packed_geometry_bytes(geometries[indices[i]])).hexdigest()
+                      != review['packedGeometrySha256'][i] for i in raw_ids)
+            or any(features[indices[i]]['name'] != locality_name
+                   or not geometries[indices[i]].covers(point) for i in member_ids)):
+        raise ValueError('Menzel Bouzaiane preserved metadata or packed footprints changed')
+    identities = record.get('identityEvidence')
+    sector_registry = next(row for row in official if row['sectorCode'] == '435751')
+    parent_registry = {key: sector_registry[key] for key in ('governorateCode', 'governorateAr',
+                        'governorateFr', 'delegationCode', 'delegationAr', 'delegationFr')}
+    if (not isinstance(identities, list) or len(identities) != 2
+            or {(row.get('id'), row.get('method')) for row in identities}
+                != {(identifier, 'current_coded_sector'),
+                    ('osm:relation:7169593', 'current_coded_namesake_administrative_parent')}
+            or identities != proof.get('identityEvidence')
+            or any(row.get('accepted') is not True
+                   or row.get('currentOfficialRecord') != (sector_registry if row['id'] == identifier else parent_registry)
+                   for row in identities)):
+        raise ValueError('Menzel Bouzaiane accepted sector/delegation proof changed')
+    def scoped_groups(after):
+        group_for = lambda row: 'delegation:510' if after and row['id'] in member_ids else row['pickerGroupId']
+        group_ids = {group_for(features[indices[i]]) for i in raw_ids} | {'delegation:510'}
+        result = []
+        for group_id in sorted(group_ids):
+            members = {row['id'] for row in features if group_for(row) == group_id}
+            if not members <= raw_ids:
+                raise ValueError('Menzel Bouzaiane protected group has an unreviewed member')
+            if group_id.startswith('delegation:'):
+                members.add(group_id)
+            result.append({'id': group_id, 'memberIds': sorted(members)})
+        return result
+    before, after = scoped_groups(False), scoped_groups(True)
+    if review['expectedBeforeGroups'] != before or review['expectedAfterGroups'] != after:
+        raise ValueError('Menzel Bouzaiane exact before/after display groups changed')
+    return picker_review_name_key(locality_name), {
+        'id': identifier, 'identityMethod': method, 'targetDelegationId': target,
+        'baseSpelling': base_name, 'localitySpelling': locality_name,
+        'finalGroups': after, 'protectedMetadata': expected_metadata,
+        'preservedNonCatalogPlace': {'id': point_id, 'role': 'absorbed_extracted_village'}}
+
+
 def apply_reviewed_picker_groups(manifest_path, features, geometries, governors, timetables,
                                  original_sources, effective_sources, source_sha256, curation,
                                  reviewed_boundaries=None, official_report=None):
@@ -7215,13 +8009,28 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
                         aggregate_review_file(manifest_path.parent, reference, 'picker curation evidence')
         base_point = Point(base['lng'], base['lat'])
         display_point = base_point
+        retained_settlement = None
         if 'retainedDisplayReference' in record or 'retainedDisplayReference' in proof:
-            display_point, display_application = validate_hichria_retained_display_reference(
-                record.get('retainedDisplayReference'), manifest_path, record, proof,
-                features, indices, geometries, original_sources, effective_sources,
-                source_sha256, base, governor)
+            option = record.get('retainedDisplayReference')
+            if isinstance(option, dict) and option.get('method') == 'reviewed_settlement_retained_display_reference':
+                display_point, display_application = validate_settlement_retained_display_reference(
+                    option, manifest_path, record, proof, features, indices, geometries,
+                    original_sources, effective_sources, source_sha256, base, governor, timetables, curation)
+                retained_settlement = display_application
+            else:
+                display_point, display_application = validate_hichria_retained_display_reference(
+                    option, manifest_path, record, proof, features, indices, geometries,
+                    original_sources, effective_sources, source_sha256, base, governor)
             retained_display_applications.append(display_application)
-        primary = picker_review_name_key(base['nomAr'])
+        if 'reviewedSpellingEquivalence' in record or 'reviewedSpellingEquivalence' in proof:
+            primary, spelling_application = validate_menzel_bouzaiane_spelling_equivalence(
+                record.get('reviewedSpellingEquivalence'), manifest_path, record, proof,
+                features, indices, geometries, original_sources, effective_sources,
+                source_sha256, base, governor, curation)
+            retained_display_applications.append(spelling_application)
+        else:
+            primary = (retained_settlement['reviewedPrimaryNameKey'] if retained_settlement is not None
+                       else picker_review_name_key(base['nomAr']))
         if not primary or primary != picker_review_name_key(proof['name']):
             raise ValueError('Missing reviewed original picker name')
         for existing_id in groups.get(base_group, set()):
@@ -7233,6 +8042,8 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
             member_id = member['id']
             index = indices[member_id]
             current = features[index]
+            expected_prayer_source = (retained_settlement['memberPrayerSources'][member_id]
+                                     if retained_settlement is not None else target)
             original = original_sources.get(member_id)
             effective = effective_sources.get(member_id)
             if (index >= len(geometries) or not current['hasBoundary'] or original is None or effective is None
@@ -7241,7 +8052,7 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
                         ('kind', 'expectedKind'), ('sourceId', 'expectedSourceId'), ('name', 'expectedName'),
                         ('parentName', 'expectedParentName'), ('delegationId', 'expectedDelegationId'),
                         ('lat', 'expectedLat'), ('lng', 'expectedLng')))
-                    or current['governorateId'] != governor['id'] or current['delegationId'] != target
+                    or current['governorateId'] != governor['id'] or current['delegationId'] != expected_prayer_source
                     or picker_review_name_key(current['name']) != primary):
                 raise ValueError(f'Reviewed picker member identity or default changed: {member_id}')
             source_geometry = effective.get('shape')
@@ -7252,8 +8063,8 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
                     or hashlib.sha256(packed_geometry_bytes(packed_geometry)).hexdigest() != member.get('packedGeometrySha256')):
                 raise ValueError(f'Reviewed picker geometry or containment changed: {member_id}')
             nearest = min(timetables, key=lambda d: (distance(current['lat'], current['lng'], d), d['id']))
-            if nearest['id'] != target:
-                raise ValueError(f'Reviewed picker member no longer shares the same prayer choice: {member_id}')
+            if nearest['id'] != expected_prayer_source:
+                raise ValueError(f'Reviewed picker member no longer matches its reviewed nearest prayer source: {member_id}')
         identity_evidence = record.get('identityEvidence', [])
         if not isinstance(identity_evidence, list):
             raise ValueError('Missing reviewed picker locality identity evidence')
@@ -7452,6 +8263,7 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
         verify_reviewed_city_display_associations(features, retained_report)
         report['retainedDisplayReferences'] = retained_report
     if local_report is not None:
+        verify_reviewed_city_display_associations(features, local_report.get('completeGroupOwners'))
         report['localityGroups'] = local_report
     if city_report is not None:
         verify_reviewed_city_display_associations(features, city_report)
@@ -7800,6 +8612,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
         features + point_only, reviewed_picker_report.get('splitSettlementReferences'))
     verify_reviewed_city_display_associations(
         features + point_only, reviewed_picker_report.get('retainedDisplayReferences'))
+    verify_reviewed_city_display_associations(
+        features + point_only, (reviewed_locality_report or {}).get('completeGroupOwners'))
     verify_reviewed_point_base_names(
         reviewed_point_base_names, features + point_only, geometries, base_picker_groups)
     saved_replacements = reviewed_saved_replacements(
