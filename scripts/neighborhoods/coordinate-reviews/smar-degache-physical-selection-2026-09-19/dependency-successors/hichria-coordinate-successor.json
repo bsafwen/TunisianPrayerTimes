@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_hichria_retained_display_reference",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "id": "osm:relation:7169598",
+  "targetDelegationId": 1522,
+  "governorateId": 355,
+  "historicalReview": {
+    "file": "reviews/held12-current-identity-proposal.json",
+    "sha256": "f670006b560fbc0fcd334b4f5eaaa2df623a9c7ee50b566866ece96a556a5f33"
+  },
+  "publishedPrayerReference": {
+    "file": "prayer-source-coordinates.json",
+    "sha256": "f69e15011dfc2fa2dd2436134e9351bda80c21fab6919b0e20a18fab952f0f3e",
+    "expectedCorrection": {
+      "delegationId": 1522,
+      "expectedGovernorateId": 355,
+      "expectedNames": {
+        "nomAr": "الهيشرية",
+        "nomFr": "Hichria",
+        "nomEn": "Hichria"
+      },
+      "reviewedDate": "2026-09-13",
+      "original": {
+        "lat": 34.895,
+        "lng": 9.3918
+      },
+      "proposed": {
+        "lat": 34.829,
+        "lng": 9.376
+      },
+      "originalProvenance": "Legacy bundled reference in gouvernorats.json SHA256b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4; external origin undocumented. Its original northern-sector containment remains historical evidence and is not relabelled as an OSM error.",
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "serviceDate": "2026-09-12",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-prayer-1522-2026-09-12.json",
+          "sha256": "e549430d69fced86c75ed842d5df501c82e8d83e517bb255dc9897ffa7b799d6",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-12/355/1522/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/inm-sun-1522-2026-09-12.json",
+          "sha256": "543c5cfdcac7e3b959e7e1ead940f4e983042b2254994d3433911b132fb1c484",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-12/355/1522/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/original-source/retrieval-manifest.json",
+          "sha256": "e2db43e8ecc6f949c11a5e426e217b5746772a58f017fb7843ea1b4e941f09dd"
+        }
+      },
+      "qualification": "Official published daily timetable reference fields, corroborated by original prayer and sunrise responses. Their latitude/longitude are separate from data.delegation identity; no surveyed centre, internal calculation input or administrative boundary is certified.",
+      "reviewBatchId": "2026-09-13-inm-published-hichria1522",
+      "originalSourceAssetSha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-hichria1522-2026-09-13/before-gouvernorats.json",
+        "sha256": "b6563a38dc9bf71c1f6c3ac02af178066475210d2fe42d29cfdb10e32fe3a9e4"
+      }
+    }
+  },
+  "displayReference": {
+    "id": "osm:relation:7169598",
+    "lat": 34.895,
+    "lng": 9.40957
+  },
+  "absorbedNorthernVillage": {
+    "id": "osm:node:7938334046",
+    "kind": "village",
+    "tags": {
+      "name": "الهيشرية",
+      "name:ar": "الهيشرية",
+      "name:en": "El Hichria",
+      "name:fr": "El Hichria",
+      "place": "village"
+    },
+    "lat": 34.8742313,
+    "lng": 9.435056
+  },
+  "manualSelection": {
+    "method": "nearest_available_at_retained_locality",
+    "representativeId": "osm:relation:7169598",
+    "expectedNearestSourceId": 1522
+  },
+  "protectedMetadata": {
+    "osm:node:10006882480": {
+      "id": "osm:node:10006882480",
+      "sourceId": "osm",
+      "name": "الفتح",
+      "aliases": [
+        "El Fath"
+      ],
+      "kind": "village",
+      "parentName": "الفريو",
+      "contextAliases": [
+        "El Friou",
+        "El Hichria",
+        "El hichria",
+        "الفريو",
+        "الهيشرية",
+        "معتمدية الهيشرية"
+      ],
+      "governorateId": 355,
+      "lat": 34.8582527,
+      "lng": 9.3945627,
+      "delegationId": 1522,
+      "hasBoundary": false
+    },
+    "osm:node:7938334020": {
+      "id": "osm:node:7938334020",
+      "sourceId": "osm",
+      "name": "أولاد سليمان",
+      "aliases": [
+        "Ouled Slimane"
+      ],
+      "kind": "village",
+      "parentName": "السلامة",
+      "contextAliases": [
+        "Bir El Hafey",
+        "Délégation Bir El Hafey",
+        "Essalama",
+        "السلامة",
+        "معتمدية بئر الحفي"
+      ],
+      "governorateId": 355,
+      "lat": 34.8298106,
+      "lng": 9.3767845,
+      "delegationId": 1522,
+      "hasBoundary": false
+    },
+    "osm:relation:7169555": {
+      "id": "osm:relation:7169555",
+      "sourceId": "osm",
+      "name": "الزيتونة",
+      "aliases": [
+        "Ezzitouna"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الهيشرية",
+      "contextAliases": [
+        "El Hichria",
+        "El hichria",
+        "الهيشرية",
+        "معتمدية الهيشرية"
+      ],
+      "governorateId": 355,
+      "lat": 34.91343,
+      "lng": 9.490654,
+      "delegationId": 513,
+      "hasBoundary": true,
+      "bbox": [
+        9.429199,
+        34.86001,
+        9.555021,
+        34.96783
+      ],
+      "areaKm2": 64.4717506661667
+    },
+    "osm:relation:7169579": {
+      "id": "osm:relation:7169579",
+      "sourceId": "osm",
+      "name": "السلامة",
+      "aliases": [
+        "Essalama"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية بئر الحفي",
+      "contextAliases": [
+        "Bir El Hafey",
+        "Délégation Bir El Hafey",
+        "معتمدية بئر الحفي"
+      ],
+      "governorateId": 355,
+      "lat": 34.817035,
+      "lng": 9.380515,
+      "delegationId": 1522,
+      "hasBoundary": true,
+      "bbox": [
+        9.336023,
+        34.76424,
+        9.419267,
+        34.86839
+      ],
+      "areaKm2": 39.349879524052916
+    },
+    "osm:relation:7169594": {
+      "id": "osm:relation:7169594",
+      "sourceId": "osm",
+      "name": "الفريو",
+      "aliases": [
+        "El Friou"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الهيشرية",
+      "contextAliases": [
+        "El Hichria",
+        "El hichria",
+        "الهيشرية",
+        "معتمدية الهيشرية"
+      ],
+      "governorateId": 355,
+      "lat": 34.83883,
+      "lng": 9.426865,
+      "delegationId": 1522,
+      "hasBoundary": true,
+      "bbox": [
+        9.336821,
+        34.78474,
+        9.460985,
+        34.8968
+      ],
+      "areaKm2": 48.094809342379875
+    },
+    "osm:relation:7169598": {
+      "id": "osm:relation:7169598",
+      "sourceId": "osm",
+      "name": "الهيشرية",
+      "aliases": [
+        "El Hichria"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الهيشرية",
+      "contextAliases": [
+        "El Hichria",
+        "El hichria",
+        "الهيشرية",
+        "معتمدية الهيشرية"
+      ],
+      "governorateId": 355,
+      "lat": 34.895,
+      "lng": 9.40957,
+      "delegationId": 1522,
+      "hasBoundary": true,
+      "bbox": [
+        9.327268,
+        34.84225,
+        9.46149,
+        34.94835
+      ],
+      "areaKm2": 71.5698031846261
+    }
+  },
+  "finalGroups": [
+    {
+      "id": "delegation:1522",
+      "memberIds": [
+        "delegation:1522",
+        "osm:relation:7169598"
+      ]
+    },
+    {
+      "id": "osm:node:10006882480",
+      "memberIds": [
+        "osm:node:10006882480"
+      ]
+    },
+    {
+      "id": "osm:node:7938334020",
+      "memberIds": [
+        "osm:node:7938334020"
+      ]
+    },
+    {
+      "id": "osm:relation:7169555",
+      "memberIds": [
+        "osm:relation:7169555"
+      ]
+    },
+    {
+      "id": "osm:relation:7169579",
+      "memberIds": [
+        "osm:relation:7169579"
+      ]
+    },
+    {
+      "id": "osm:relation:7169594",
+      "memberIds": [
+        "osm:relation:7169594"
+      ]
+    }
+  ],
+  "qualifications": {
+    "publishedPointOutsideDisplaySector": true,
+    "publishedCoordinatesAreNotDisplayGeometry": true,
+    "southernVillageIdentityNotMerged": true,
+    "sectorBoundaryNotCertified": true
+  }
+}

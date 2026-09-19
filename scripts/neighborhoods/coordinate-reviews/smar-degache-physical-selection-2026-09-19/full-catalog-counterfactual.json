@@ -1,0 +1,1874 @@
+{
+  "status": "DIAGNOSTIC_ONLY_IDENTITY_AND_DEPENDENCY_REVIEW_REQUIRED",
+  "inputs": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "5fd2641d156648ae5596aa81159bfdf6efa4074bb82fc06bd01a71ade8a1e117"
+    },
+    "governors": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "9e65e1f52fb3b129816e8ee33af89df545b98226f35b222870403a7ec9541c25"
+    },
+    "matrix": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-physical-reference-matrix-20260919\\physical-reference-evidence-matrix.json",
+      "sha256": "1a6f3e404aaf86f80856fa39252ed5fd5051fe139e0bec558d23da40cf86b24d"
+    }
+  },
+  "eligibleSourceCount": 258,
+  "all3523CurrentDefaultsRecomputed": true,
+  "currentDefaultMismatches": [],
+  "candidatePoints": {
+    "472": {
+      "id": "osm:node:1980279372",
+      "lat": 32.9946554,
+      "lng": 10.8222443
+    },
+    "609": {
+      "id": "osm:node:2178146164",
+      "lat": 34.540278,
+      "lng": 9.2513281
+    },
+    "1522": {
+      "id": "osm:node:7938334046",
+      "lat": 34.8742313,
+      "lng": 9.435056
+    },
+    "478": {
+      "id": "osm:node:351582010",
+      "lat": 33.9841058,
+      "lng": 8.2154584
+    }
+  },
+  "scenarios": {
+    "472only": {
+      "changedReferenceIds": [
+        472
+      ],
+      "changedRawCount": 16,
+      "changes": [
+        {
+          "id": "osm:relation:7142926",
+          "name": "المعمرات",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142926",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 48.99717467745592
+          },
+          "after": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 52.12533324288604
+          }
+        },
+        {
+          "id": "osm:relation:7142928",
+          "name": "العامرية",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142928",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 30.363313721097967
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 36.960430332228434
+          }
+        },
+        {
+          "id": "osm:relation:7142961",
+          "name": "النفاتية",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142961",
+          "before": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 29.113337332420084
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 24.965362285064813
+          }
+        },
+        {
+          "id": "osm:relation:7143818",
+          "name": "بني مهيرة الشرقية",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143818",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 30.267804421373782
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 32.920099582075586
+          }
+        },
+        {
+          "id": "osm:relation:7143819",
+          "name": "قصر مهيرة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143819",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 32.00219798562333
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 33.952644357088396
+          }
+        },
+        {
+          "id": "osm:relation:7143820",
+          "name": "قصر عون",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143820",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 31.198951920310662
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 34.79162635295071
+          }
+        },
+        {
+          "id": "osm:relation:7143821",
+          "name": "المرة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143821",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 35.71948693261618
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 39.92139001398439
+          }
+        },
+        {
+          "id": "osm:relation:7143822",
+          "name": "الرهاش",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143822",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 7.80810628165643
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.37019366651841
+          }
+        },
+        {
+          "id": "osm:relation:7143859",
+          "name": "المعونة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143859",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 23.21155584232177
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 15.151305243832047
+          }
+        },
+        {
+          "id": "osm:relation:7143861",
+          "name": "كرشاو",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143861",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 19.429132414666782
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 6.76333785663701
+          }
+        },
+        {
+          "id": "osm:way:1392451611",
+          "name": "قصر بحير",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "osm:way:1392451611",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 16.855124206523026
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 14.160100822261477
+          }
+        },
+        {
+          "id": "osm:way:187313004",
+          "name": "كرشاو",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143861",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 18.325919430812235
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 4.791915235265062
+          }
+        },
+        {
+          "id": "osm:way:187313013",
+          "name": "الصمار",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "delegation:472",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.664081416808928
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 0.6805141951725718
+          }
+        },
+        {
+          "id": "osm:node:11820052133",
+          "name": "Ksar Karrouz",
+          "kind": "hamlet",
+          "governorateId": 351,
+          "pickerGroupId": "osm:node:11820052133",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 17.19604199941421
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 3.2374285046438778
+          }
+        },
+        {
+          "id": "osm:node:1980186910",
+          "name": "بئر مرة",
+          "kind": "hamlet",
+          "governorateId": 351,
+          "pickerGroupId": "osm:node:1980186910",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 20.04046419026937
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 27.010297365163165
+          }
+        },
+        {
+          "id": "osm:node:9052889223",
+          "name": "وادي الربايع",
+          "kind": "hamlet",
+          "governorateId": 353,
+          "pickerGroupId": "osm:node:9052889223",
+          "before": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 26.492613557923637
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 25.49375261479819
+          }
+        }
+      ],
+      "candidatePointDetail": [
+        {
+          "delegationId": 472,
+          "point": {
+            "id": "osm:node:1980279372",
+            "lat": 32.9946554,
+            "lng": 10.8222443
+          },
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "delegationId": 609,
+          "point": {
+            "id": "osm:node:2178146164",
+            "lat": 34.540278,
+            "lng": 9.2513281
+          },
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          }
+        },
+        {
+          "delegationId": 1522,
+          "point": {
+            "id": "osm:node:7938334046",
+            "lat": 34.8742313,
+            "lng": 9.435056
+          },
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          }
+        },
+        {
+          "delegationId": 478,
+          "point": {
+            "id": "osm:node:351582010",
+            "lat": 33.9841058,
+            "lng": 8.2154584
+          },
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          }
+        }
+      ]
+    },
+    "609only": {
+      "changedReferenceIds": [
+        609
+      ],
+      "changedRawCount": 6,
+      "changes": [
+        {
+          "id": "osm:relation:7150211",
+          "name": "بئر سعد",
+          "kind": "sector",
+          "governorateId": 365,
+          "pickerGroupId": "osm:relation:7150211",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 12.197012022534011
+          },
+          "after": {
+            "id": 612,
+            "name": "بلخير",
+            "distanceKm": 16.15180120991205
+          }
+        },
+        {
+          "id": "osm:relation:7150239",
+          "name": "منزل ميمون",
+          "kind": "sector",
+          "governorateId": 365,
+          "pickerGroupId": "osm:relation:7150239",
+          "before": {
+            "id": 509,
+            "name": "سيدي علي بن عون",
+            "distanceKm": 21.451042532174156
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 20.123559939717172
+          }
+        },
+        {
+          "id": "osm:relation:7169625",
+          "name": "العمرية",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169625",
+          "before": {
+            "id": 510,
+            "name": "منزل بو زيان",
+            "distanceKm": 11.0671300046184
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 10.817550497810162
+          }
+        },
+        {
+          "id": "osm:way:285155889",
+          "name": "الطلح",
+          "kind": "residential",
+          "governorateId": 365,
+          "pickerGroupId": "osm:way:285155889",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 12.96232851275306
+          },
+          "after": {
+            "id": 612,
+            "name": "بلخير",
+            "distanceKm": 15.517733090401709
+          }
+        },
+        {
+          "id": "osm:node:10008679396",
+          "name": "أولاد زايد",
+          "kind": "hamlet",
+          "governorateId": 365,
+          "pickerGroupId": "osm:node:10008679396",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 16.28378844160777
+          },
+          "after": {
+            "id": 510,
+            "name": "منزل بو زيان",
+            "distanceKm": 16.32533131053248
+          }
+        },
+        {
+          "id": "osm:node:10008679398",
+          "name": "أولاد طالب",
+          "kind": "hamlet",
+          "governorateId": 365,
+          "pickerGroupId": "osm:node:10008679398",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 11.271276344132842
+          },
+          "after": {
+            "id": 612,
+            "name": "بلخير",
+            "distanceKm": 14.545418281677843
+          }
+        }
+      ],
+      "candidatePointDetail": [
+        {
+          "delegationId": 472,
+          "point": {
+            "id": "osm:node:1980279372",
+            "lat": 32.9946554,
+            "lng": 10.8222443
+          },
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          }
+        },
+        {
+          "delegationId": 609,
+          "point": {
+            "id": "osm:node:2178146164",
+            "lat": 34.540278,
+            "lng": 9.2513281
+          },
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "delegationId": 1522,
+          "point": {
+            "id": "osm:node:7938334046",
+            "lat": 34.8742313,
+            "lng": 9.435056
+          },
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          }
+        },
+        {
+          "delegationId": 478,
+          "point": {
+            "id": "osm:node:351582010",
+            "lat": 33.9841058,
+            "lng": 8.2154584
+          },
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          }
+        }
+      ]
+    },
+    "1522only": {
+      "changedReferenceIds": [
+        1522
+      ],
+      "changedRawCount": 6,
+      "changes": [
+        {
+          "id": "osm:relation:7169555",
+          "name": "الزيتونة",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169555",
+          "before": {
+            "id": 513,
+            "name": "سوق الجديد",
+            "distanceKm": 7.217424713380941
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 6.6865986348313315
+          }
+        },
+        {
+          "id": "osm:relation:7169577",
+          "name": "ورغة",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169577",
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 8.907998083380633
+          },
+          "after": {
+            "id": 509,
+            "name": "سيدي علي بن عون",
+            "distanceKm": 15.367775696179029
+          }
+        },
+        {
+          "id": "osm:relation:7169583",
+          "name": "بئر عمامة",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169583",
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 8.257578821490839
+          },
+          "after": {
+            "id": 508,
+            "name": "بئر الحفي",
+            "distanceKm": 11.771639665568772
+          }
+        },
+        {
+          "id": "osm:relation:7169628",
+          "name": "القلال",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169628",
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 15.059293828371553
+          },
+          "after": {
+            "id": 510,
+            "name": "منزل بو زيان",
+            "distanceKm": 15.343546285272188
+          }
+        },
+        {
+          "id": "osm:relation:7169672",
+          "name": "القصر",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169672",
+          "before": {
+            "id": 508,
+            "name": "بئر الحفي",
+            "distanceKm": 13.695551430688989
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 13.633792262763096
+          }
+        },
+        {
+          "id": "osm:relation:7169673",
+          "name": "بئر بدر",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169673",
+          "before": {
+            "id": 513,
+            "name": "سوق الجديد",
+            "distanceKm": 8.835618642286242
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.828209883635739
+          }
+        }
+      ],
+      "candidatePointDetail": [
+        {
+          "delegationId": 472,
+          "point": {
+            "id": "osm:node:1980279372",
+            "lat": 32.9946554,
+            "lng": 10.8222443
+          },
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          }
+        },
+        {
+          "delegationId": 609,
+          "point": {
+            "id": "osm:node:2178146164",
+            "lat": 34.540278,
+            "lng": 9.2513281
+          },
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          }
+        },
+        {
+          "delegationId": 1522,
+          "point": {
+            "id": "osm:node:7938334046",
+            "lat": 34.8742313,
+            "lng": 9.435056
+          },
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "delegationId": 478,
+          "point": {
+            "id": "osm:node:351582010",
+            "lat": 33.9841058,
+            "lng": 8.2154584
+          },
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          }
+        }
+      ]
+    },
+    "478only": {
+      "changedReferenceIds": [
+        478
+      ],
+      "changedRawCount": 2,
+      "changes": [
+        {
+          "id": "osm:relation:7154920",
+          "name": "دقاش الجنوبية",
+          "kind": "sector",
+          "governorateId": 352,
+          "pickerGroupId": "osm:relation:7154920",
+          "before": {
+            "id": 625,
+            "name": "توزر",
+            "distanceKm": 11.056372410497822
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 10.858136465132675
+          }
+        },
+        {
+          "id": "osm:node:351582010",
+          "name": "دقاش",
+          "kind": "town",
+          "governorateId": 352,
+          "pickerGroupId": "delegation:478",
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 0.0
+          }
+        }
+      ],
+      "candidatePointDetail": [
+        {
+          "delegationId": 472,
+          "point": {
+            "id": "osm:node:1980279372",
+            "lat": 32.9946554,
+            "lng": 10.8222443
+          },
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          }
+        },
+        {
+          "delegationId": 609,
+          "point": {
+            "id": "osm:node:2178146164",
+            "lat": 34.540278,
+            "lng": 9.2513281
+          },
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          }
+        },
+        {
+          "delegationId": 1522,
+          "point": {
+            "id": "osm:node:7938334046",
+            "lat": 34.8742313,
+            "lng": 9.435056
+          },
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          }
+        },
+        {
+          "delegationId": 478,
+          "point": {
+            "id": "osm:node:351582010",
+            "lat": 33.9841058,
+            "lng": 8.2154584
+          },
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 0.0
+          }
+        }
+      ]
+    },
+    "472+478": {
+      "changedReferenceIds": [
+        472,
+        478
+      ],
+      "changedRawCount": 18,
+      "changes": [
+        {
+          "id": "osm:relation:7142926",
+          "name": "المعمرات",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142926",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 48.99717467745592
+          },
+          "after": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 52.12533324288604
+          }
+        },
+        {
+          "id": "osm:relation:7142928",
+          "name": "العامرية",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142928",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 30.363313721097967
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 36.960430332228434
+          }
+        },
+        {
+          "id": "osm:relation:7142961",
+          "name": "النفاتية",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142961",
+          "before": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 29.113337332420084
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 24.965362285064813
+          }
+        },
+        {
+          "id": "osm:relation:7143818",
+          "name": "بني مهيرة الشرقية",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143818",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 30.267804421373782
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 32.920099582075586
+          }
+        },
+        {
+          "id": "osm:relation:7143819",
+          "name": "قصر مهيرة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143819",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 32.00219798562333
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 33.952644357088396
+          }
+        },
+        {
+          "id": "osm:relation:7143820",
+          "name": "قصر عون",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143820",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 31.198951920310662
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 34.79162635295071
+          }
+        },
+        {
+          "id": "osm:relation:7143821",
+          "name": "المرة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143821",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 35.71948693261618
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 39.92139001398439
+          }
+        },
+        {
+          "id": "osm:relation:7143822",
+          "name": "الرهاش",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143822",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 7.80810628165643
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.37019366651841
+          }
+        },
+        {
+          "id": "osm:relation:7143859",
+          "name": "المعونة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143859",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 23.21155584232177
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 15.151305243832047
+          }
+        },
+        {
+          "id": "osm:relation:7143861",
+          "name": "كرشاو",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143861",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 19.429132414666782
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 6.76333785663701
+          }
+        },
+        {
+          "id": "osm:relation:7154920",
+          "name": "دقاش الجنوبية",
+          "kind": "sector",
+          "governorateId": 352,
+          "pickerGroupId": "osm:relation:7154920",
+          "before": {
+            "id": 625,
+            "name": "توزر",
+            "distanceKm": 11.056372410497822
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 10.858136465132675
+          }
+        },
+        {
+          "id": "osm:way:1392451611",
+          "name": "قصر بحير",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "osm:way:1392451611",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 16.855124206523026
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 14.160100822261477
+          }
+        },
+        {
+          "id": "osm:way:187313004",
+          "name": "كرشاو",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143861",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 18.325919430812235
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 4.791915235265062
+          }
+        },
+        {
+          "id": "osm:way:187313013",
+          "name": "الصمار",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "delegation:472",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.664081416808928
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 0.6805141951725718
+          }
+        },
+        {
+          "id": "osm:node:11820052133",
+          "name": "Ksar Karrouz",
+          "kind": "hamlet",
+          "governorateId": 351,
+          "pickerGroupId": "osm:node:11820052133",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 17.19604199941421
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 3.2374285046438778
+          }
+        },
+        {
+          "id": "osm:node:1980186910",
+          "name": "بئر مرة",
+          "kind": "hamlet",
+          "governorateId": 351,
+          "pickerGroupId": "osm:node:1980186910",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 20.04046419026937
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 27.010297365163165
+          }
+        },
+        {
+          "id": "osm:node:351582010",
+          "name": "دقاش",
+          "kind": "town",
+          "governorateId": 352,
+          "pickerGroupId": "delegation:478",
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "id": "osm:node:9052889223",
+          "name": "وادي الربايع",
+          "kind": "hamlet",
+          "governorateId": 353,
+          "pickerGroupId": "osm:node:9052889223",
+          "before": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 26.492613557923637
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 25.49375261479819
+          }
+        }
+      ],
+      "candidatePointDetail": [
+        {
+          "delegationId": 472,
+          "point": {
+            "id": "osm:node:1980279372",
+            "lat": 32.9946554,
+            "lng": 10.8222443
+          },
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "delegationId": 609,
+          "point": {
+            "id": "osm:node:2178146164",
+            "lat": 34.540278,
+            "lng": 9.2513281
+          },
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          }
+        },
+        {
+          "delegationId": 1522,
+          "point": {
+            "id": "osm:node:7938334046",
+            "lat": 34.8742313,
+            "lng": 9.435056
+          },
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          }
+        },
+        {
+          "delegationId": 478,
+          "point": {
+            "id": "osm:node:351582010",
+            "lat": 33.9841058,
+            "lng": 8.2154584
+          },
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 0.0
+          }
+        }
+      ]
+    },
+    "all4": {
+      "changedReferenceIds": [
+        472,
+        609,
+        1522,
+        478
+      ],
+      "changedRawCount": 30,
+      "changes": [
+        {
+          "id": "osm:relation:7142926",
+          "name": "المعمرات",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142926",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 48.99717467745592
+          },
+          "after": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 52.12533324288604
+          }
+        },
+        {
+          "id": "osm:relation:7142928",
+          "name": "العامرية",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142928",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 30.363313721097967
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 36.960430332228434
+          }
+        },
+        {
+          "id": "osm:relation:7142961",
+          "name": "النفاتية",
+          "kind": "sector",
+          "governorateId": 353,
+          "pickerGroupId": "osm:relation:7142961",
+          "before": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 29.113337332420084
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 24.965362285064813
+          }
+        },
+        {
+          "id": "osm:relation:7143818",
+          "name": "بني مهيرة الشرقية",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143818",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 30.267804421373782
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 32.920099582075586
+          }
+        },
+        {
+          "id": "osm:relation:7143819",
+          "name": "قصر مهيرة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143819",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 32.00219798562333
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 33.952644357088396
+          }
+        },
+        {
+          "id": "osm:relation:7143820",
+          "name": "قصر عون",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143820",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 31.198951920310662
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 34.79162635295071
+          }
+        },
+        {
+          "id": "osm:relation:7143821",
+          "name": "المرة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143821",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 35.71948693261618
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 39.92139001398439
+          }
+        },
+        {
+          "id": "osm:relation:7143822",
+          "name": "الرهاش",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143822",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 7.80810628165643
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.37019366651841
+          }
+        },
+        {
+          "id": "osm:relation:7143859",
+          "name": "المعونة",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143859",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 23.21155584232177
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 15.151305243832047
+          }
+        },
+        {
+          "id": "osm:relation:7143861",
+          "name": "كرشاو",
+          "kind": "sector",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143861",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 19.429132414666782
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 6.76333785663701
+          }
+        },
+        {
+          "id": "osm:relation:7150211",
+          "name": "بئر سعد",
+          "kind": "sector",
+          "governorateId": 365,
+          "pickerGroupId": "osm:relation:7150211",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 12.197012022534011
+          },
+          "after": {
+            "id": 612,
+            "name": "بلخير",
+            "distanceKm": 16.15180120991205
+          }
+        },
+        {
+          "id": "osm:relation:7150239",
+          "name": "منزل ميمون",
+          "kind": "sector",
+          "governorateId": 365,
+          "pickerGroupId": "osm:relation:7150239",
+          "before": {
+            "id": 509,
+            "name": "سيدي علي بن عون",
+            "distanceKm": 21.451042532174156
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 20.123559939717172
+          }
+        },
+        {
+          "id": "osm:relation:7154920",
+          "name": "دقاش الجنوبية",
+          "kind": "sector",
+          "governorateId": 352,
+          "pickerGroupId": "osm:relation:7154920",
+          "before": {
+            "id": 625,
+            "name": "توزر",
+            "distanceKm": 11.056372410497822
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 10.858136465132675
+          }
+        },
+        {
+          "id": "osm:relation:7169555",
+          "name": "الزيتونة",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169555",
+          "before": {
+            "id": 513,
+            "name": "سوق الجديد",
+            "distanceKm": 7.217424713380941
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 6.6865986348313315
+          }
+        },
+        {
+          "id": "osm:relation:7169577",
+          "name": "ورغة",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169577",
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 8.907998083380633
+          },
+          "after": {
+            "id": 509,
+            "name": "سيدي علي بن عون",
+            "distanceKm": 15.367775696179029
+          }
+        },
+        {
+          "id": "osm:relation:7169583",
+          "name": "بئر عمامة",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169583",
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 8.257578821490839
+          },
+          "after": {
+            "id": 508,
+            "name": "بئر الحفي",
+            "distanceKm": 11.771639665568772
+          }
+        },
+        {
+          "id": "osm:relation:7169625",
+          "name": "العمرية",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169625",
+          "before": {
+            "id": 510,
+            "name": "منزل بو زيان",
+            "distanceKm": 11.0671300046184
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 10.817550497810162
+          }
+        },
+        {
+          "id": "osm:relation:7169628",
+          "name": "القلال",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169628",
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 15.059293828371553
+          },
+          "after": {
+            "id": 510,
+            "name": "منزل بو زيان",
+            "distanceKm": 15.343546285272188
+          }
+        },
+        {
+          "id": "osm:relation:7169672",
+          "name": "القصر",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169672",
+          "before": {
+            "id": 508,
+            "name": "بئر الحفي",
+            "distanceKm": 13.695551430688989
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 13.633792262763096
+          }
+        },
+        {
+          "id": "osm:relation:7169673",
+          "name": "بئر بدر",
+          "kind": "sector",
+          "governorateId": 355,
+          "pickerGroupId": "osm:relation:7169673",
+          "before": {
+            "id": 513,
+            "name": "سوق الجديد",
+            "distanceKm": 8.835618642286242
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.828209883635739
+          }
+        },
+        {
+          "id": "osm:way:1392451611",
+          "name": "قصر بحير",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "osm:way:1392451611",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 16.855124206523026
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 14.160100822261477
+          }
+        },
+        {
+          "id": "osm:way:187313004",
+          "name": "كرشاو",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "osm:relation:7143861",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 18.325919430812235
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 4.791915235265062
+          }
+        },
+        {
+          "id": "osm:way:187313013",
+          "name": "الصمار",
+          "kind": "residential",
+          "governorateId": 351,
+          "pickerGroupId": "delegation:472",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.664081416808928
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 0.6805141951725718
+          }
+        },
+        {
+          "id": "osm:way:285155889",
+          "name": "الطلح",
+          "kind": "residential",
+          "governorateId": 365,
+          "pickerGroupId": "osm:way:285155889",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 12.96232851275306
+          },
+          "after": {
+            "id": 612,
+            "name": "بلخير",
+            "distanceKm": 15.517733090401709
+          }
+        },
+        {
+          "id": "osm:node:10008679396",
+          "name": "أولاد زايد",
+          "kind": "hamlet",
+          "governorateId": 365,
+          "pickerGroupId": "osm:node:10008679396",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 16.28378844160777
+          },
+          "after": {
+            "id": 510,
+            "name": "منزل بو زيان",
+            "distanceKm": 16.32533131053248
+          }
+        },
+        {
+          "id": "osm:node:10008679398",
+          "name": "أولاد طالب",
+          "kind": "hamlet",
+          "governorateId": 365,
+          "pickerGroupId": "osm:node:10008679398",
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 11.271276344132842
+          },
+          "after": {
+            "id": 612,
+            "name": "بلخير",
+            "distanceKm": 14.545418281677843
+          }
+        },
+        {
+          "id": "osm:node:11820052133",
+          "name": "Ksar Karrouz",
+          "kind": "hamlet",
+          "governorateId": 351,
+          "pickerGroupId": "osm:node:11820052133",
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 17.19604199941421
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 3.2374285046438778
+          }
+        },
+        {
+          "id": "osm:node:1980186910",
+          "name": "بئر مرة",
+          "kind": "hamlet",
+          "governorateId": 351,
+          "pickerGroupId": "osm:node:1980186910",
+          "before": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 20.04046419026937
+          },
+          "after": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 27.010297365163165
+          }
+        },
+        {
+          "id": "osm:node:351582010",
+          "name": "دقاش",
+          "kind": "town",
+          "governorateId": 352,
+          "pickerGroupId": "delegation:478",
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "id": "osm:node:9052889223",
+          "name": "وادي الربايع",
+          "kind": "hamlet",
+          "governorateId": 353,
+          "pickerGroupId": "osm:node:9052889223",
+          "before": {
+            "id": 488,
+            "name": "بن قردان",
+            "distanceKm": 26.492613557923637
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 25.49375261479819
+          }
+        }
+      ],
+      "candidatePointDetail": [
+        {
+          "delegationId": 472,
+          "point": {
+            "id": "osm:node:1980279372",
+            "lat": 32.9946554,
+            "lng": 10.8222443
+          },
+          "before": {
+            "id": 1524,
+            "name": "بني مهيرة",
+            "distanceKm": 14.120428808618795
+          },
+          "after": {
+            "id": 472,
+            "name": "السمار",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "delegationId": 609,
+          "point": {
+            "id": "osm:node:2178146164",
+            "lat": 34.540278,
+            "lng": 9.2513281
+          },
+          "before": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 8.758882340785448
+          },
+          "after": {
+            "id": 609,
+            "name": "السند",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "delegationId": 1522,
+          "point": {
+            "id": "osm:node:7938334046",
+            "lat": 34.8742313,
+            "lng": 9.435056
+          },
+          "before": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 7.3712858695520875
+          },
+          "after": {
+            "id": 1522,
+            "name": "الهيشرية",
+            "distanceKm": 0.0
+          }
+        },
+        {
+          "delegationId": 478,
+          "point": {
+            "id": "osm:node:351582010",
+            "lat": 33.9841058,
+            "lng": 8.2154584
+          },
+          "before": {
+            "id": 481,
+            "name": "حامة الجريد",
+            "distanceKm": 5.272831288835677
+          },
+          "after": {
+            "id": 478,
+            "name": "دقاش",
+            "distanceKm": 0.0
+          }
+        }
+      ]
+    }
+  },
+  "liveWrites": false,
+  "testsRun": false,
+  "compilerExecuted": false,
+  "rootTakeoverReason": "DeepSeek draft rejected unexecuted: incorrect JSON paths/source IDs, inverted current-versus-candidate checks, invalid distance argument and candidate evaluation at unrelated raw rows.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four_reference_counterfactual_20260919.py",
+    "sha256": "72f6554e2110af32fcb906610824907f561620e42d179d5eb6f431112be9aa26"
+  }
+}

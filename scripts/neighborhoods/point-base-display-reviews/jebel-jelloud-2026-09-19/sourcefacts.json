@@ -1,0 +1,752 @@
+{
+  "schemaVersion": 1,
+  "status": "CURRENT_INPUTS_FROZEN_PENDING_ROOT_IDENTITY_REVIEW",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineQueue": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\catalog-next-actions-after-hichria1522-20260919.json",
+    "sha256": "98a0e5f28c881a1c557f50c8e96d9c867f01d83c4cbda0a04996ffa21b04938b"
+  },
+  "baselineProductHashes": {
+    "android-app/app/src/main/assets/neighborhoods.json": "f6e1885729ca0cce90104c6e12888749d829bb2011e2d956edc26ae64ca99c09",
+    "android-app/app/src/main/assets/neighborhoods.bin": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568",
+    "android-app/app/src/main/assets/gouvernorats.json": "bd131b8d673fb039a0e94ad62f3b263a385d52d0734d903f6241aa2b96682203",
+    "android-app/app/src/main/assets/retired-localities.json": "2a56d6497e26c90277454488bbbbf6bf66f765b24141c61f0a55924cddf06347",
+    "scripts/generate_neighborhoods.py": "66e4d5e5eaf01339b1543b9e1d230b4c523d8a780df83331864625f02d16acb9",
+    "scripts/neighborhoods/catalog-curation.json": "e04d364aa92ca4726f5dc59b787d9222370e772b9a814c3ff56efdb5eca3895c",
+    "scripts/neighborhoods/reviewed-picker-groups.json": "5db5e1ad74305a475138820ad92eb05b27bde920abb351d5c75364bf69630d1d",
+    "scripts/neighborhoods/prayer-source-coordinates.json": "bbe49b94878d664068ab9cf5afe8db0d55b210320e73abc4d9a67ef82f7a3e6a",
+    "scripts/neighborhoods/coverage.json": "5adf61d800c7e9659b040c6841cb373bd02aa46cc8e5225f358ed3b664d5e83c"
+  },
+  "originalSourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119"
+  },
+  "officialRegistry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "rawCurrent": {
+    "id": "osm:node:3148875770",
+    "sourceId": "osm",
+    "name": "جبل الجلود",
+    "aliases": [
+      "Djebel Jelloud"
+    ],
+    "kind": "village",
+    "parentName": "علي باش حانبة",
+    "contextAliases": [
+      "Ali Bach-Hamba",
+      "Djebel Jelloud",
+      "Délégation Djebel Jelloud",
+      "علي باش حانبة",
+      "معتمدية جبل الجلود"
+    ],
+    "governorateId": 342,
+    "lat": 36.7708045,
+    "lng": 10.1997843,
+    "delegationId": 401,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:3148875770"
+  },
+  "baseCurrent": {
+    "id": 401,
+    "nomFr": "Jebel Jelloud",
+    "nomAr": "جبل جلود",
+    "nomEn": "Jebel Jelloud",
+    "lat": 36.7693,
+    "lng": 10.2032
+  },
+  "expectedGovernor": {
+    "id": 342,
+    "nomFr": "Tunis",
+    "nomAr": "تونس",
+    "nomEn": "Tunis",
+    "lat": 36.8065,
+    "lng": 10.1815
+  },
+  "originalSourceNode": {
+    "id": "osm:node:3148875770",
+    "tags": {
+      "name": "جبل الجلود",
+      "name:ar": "جبل الجلود",
+      "name:en": "Djebel Jelloud",
+      "name:fr": "Djebel Jelloud",
+      "place": "village"
+    },
+    "lat": 36.7708045,
+    "lng": 10.1997843
+  },
+  "sourceNode": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jebel-oued-zbib-source-review-20260919\\jebel-node-current.json",
+    "sha256": "1dfa402064ec991994177092bbebe65237561e36f19381b77669e9ae95d6071e"
+  },
+  "sourceNodeExactElement": {
+    "type": "node",
+    "id": 3148875770,
+    "lat": 36.7708045,
+    "lon": 10.1997843,
+    "timestamp": "2021-02-02T00:59:52Z",
+    "version": 3,
+    "changeset": 98539602,
+    "user": "user_11422772",
+    "uid": 11422772,
+    "tags": {
+      "name": "جبل الجلود",
+      "name:ar": "جبل الجلود",
+      "name:en": "Djebel Jelloud",
+      "name:fr": "Djebel Jelloud",
+      "place": "village"
+    }
+  },
+  "expectedCoordinateCorrections": [],
+  "preservedSectors": [
+    {
+      "id": "osm:relation:7202848",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1168",
+        "delegationFr": "Djebel djelloud",
+        "delegationAr": "جبل الجلود",
+        "sectorCode": "116851",
+        "sectorFr": "Sidi fathallah",
+        "sectorAr": "سيدي فتح الله",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4558,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 143,
+          "Nombre_de_menages_par_Secteurs.xlsx": 143
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي فتح الله",
+        "name:ar": "سيدي فتح الله",
+        "name:fr": "Sidi Fathallah",
+        "ref:tn:codegeo": "116851"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7202848",
+        "sourceId": "osm",
+        "name": "سيدي فتح الله",
+        "aliases": [
+          "Sidi Fathallah"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبل الجلود",
+        "contextAliases": [
+          "Djebel Jelloud",
+          "Délégation Djebel Jelloud",
+          "معتمدية جبل الجلود"
+        ],
+        "governorateId": 342,
+        "lat": 36.763078,
+        "lng": 10.210482,
+        "delegationId": 401,
+        "hasBoundary": true,
+        "bbox": [
+          10.203988,
+          36.75743,
+          10.215314,
+          36.76872
+        ],
+        "areaKm2": 0.4077167742576927,
+        "pickerGroupId": "osm:relation:7202848",
+        "offset": 5213424,
+        "length": 612
+      },
+      "sourceGeometrySha256": "99bede9b26081a4d610cad019b589c611077c3d567a2b8262c80681b90fde207",
+      "packedGeometrySha256": "bfaf5e0ba54400276509a2bb2706686148f116c40caa404f786e2efc4bebd115",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7202853",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1168",
+        "delegationFr": "Djebel djelloud",
+        "delegationAr": "جبل الجلود",
+        "sectorCode": "116852",
+        "sectorFr": "Ali bach-hamba",
+        "sectorAr": "علي باش حانبة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4592,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 144,
+          "Nombre_de_menages_par_Secteurs.xlsx": 144
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "علي باش حانبة",
+        "name:ar": "علي باش حانبة",
+        "name:fr": "Ali Bach-Hamba",
+        "ref:tn:codegeo": "116852"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7202853",
+        "sourceId": "osm",
+        "name": "علي باش حانبة",
+        "aliases": [
+          "Ali Bach-Hamba"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبل الجلود",
+        "contextAliases": [
+          "Djebel Jelloud",
+          "Délégation Djebel Jelloud",
+          "معتمدية جبل الجلود"
+        ],
+        "governorateId": 342,
+        "lat": 36.77017,
+        "lng": 10.19904,
+        "delegationId": 401,
+        "hasBoundary": true,
+        "bbox": [
+          10.195823,
+          36.76744,
+          10.203994,
+          36.77306
+        ],
+        "areaKm2": 0.16792029277766793,
+        "pickerGroupId": "osm:relation:7202853",
+        "offset": 5217308,
+        "length": 756
+      },
+      "sourceGeometrySha256": "f789d7f3457cc0712a6b4893d5f3f43dbca97b32f6e8b88a6c198ff2ea5742f7",
+      "packedGeometrySha256": "878e5d3d3196f4c476f41dda9737835da73ba39e631bc58ac5150a1df47d29da",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7202850",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1168",
+        "delegationFr": "Djebel djelloud",
+        "delegationAr": "جبل الجلود",
+        "sectorCode": "116853",
+        "sectorFr": "El garjouma",
+        "sectorAr": "القرجومة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4626,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 145,
+          "Nombre_de_menages_par_Secteurs.xlsx": 145
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القرجومة",
+        "name:ar": "القرجومة",
+        "name:fr": "El Garjouma",
+        "ref:tn:codegeo": "116853"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7202850",
+        "sourceId": "osm",
+        "name": "القرجومة",
+        "aliases": [
+          "El Garjouma"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبل الجلود",
+        "contextAliases": [
+          "Djebel Jelloud",
+          "Délégation Djebel Jelloud",
+          "معتمدية جبل الجلود"
+        ],
+        "governorateId": 342,
+        "lat": 36.76593,
+        "lng": 10.198402,
+        "delegationId": 401,
+        "hasBoundary": true,
+        "bbox": [
+          10.191432,
+          36.762314,
+          10.203254,
+          36.76953
+        ],
+        "areaKm2": 0.35896660131153657,
+        "pickerGroupId": "osm:relation:7202850",
+        "offset": 5214864,
+        "length": 692
+      },
+      "sourceGeometrySha256": "78ab707f4235b206560421ad3422b638edc4748dd22288e63625a2e9bd0171a9",
+      "packedGeometrySha256": "7d1d34aacb11a73383b652870f135eaf57ca7925cc2de822525480103e00b96d",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7202849",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1168",
+        "delegationFr": "Djebel djelloud",
+        "delegationAr": "جبل الجلود",
+        "sectorCode": "116854",
+        "sectorFr": "Cite el fath",
+        "sectorAr": "حي الفتح",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4660,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 146,
+          "Nombre_de_menages_par_Secteurs.xlsx": 146
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي الفتح",
+        "name:ar": "حي الفتح",
+        "name:fr": "Cite El Fath",
+        "ref:tn:codegeo": "116854"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7202849",
+        "sourceId": "osm",
+        "name": "حي الفتح",
+        "aliases": [
+          "Cite El Fath"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبل الجلود",
+        "contextAliases": [
+          "Djebel Jelloud",
+          "Délégation Djebel Jelloud",
+          "معتمدية جبل الجلود"
+        ],
+        "governorateId": 342,
+        "lat": 36.757272,
+        "lng": 10.206473,
+        "delegationId": 401,
+        "hasBoundary": true,
+        "bbox": [
+          10.197726,
+          36.748765,
+          10.212401,
+          36.76558
+        ],
+        "areaKm2": 1.3906964367604453,
+        "pickerGroupId": "osm:relation:7202849",
+        "offset": 5214036,
+        "length": 828
+      },
+      "sourceGeometrySha256": "cc52360259d2585ca3e3dc29601a53a834a8ec9c004e2a8380e0719db02d0a51",
+      "packedGeometrySha256": "50405d15239c5a1ba4d64b7bd7286e844760d014df41174d4ce1df664636a9ed",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7202847",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1168",
+        "delegationFr": "Djebel djelloud",
+        "delegationAr": "جبل الجلود",
+        "sectorCode": "116855",
+        "sectorFr": "Es-sebkha",
+        "sectorAr": "السبخاء",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4694,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 147,
+          "Nombre_de_menages_par_Secteurs.xlsx": 147
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السبخاء",
+        "name:ar": "السبخاء",
+        "name:fr": "Es-Sebkha",
+        "ref:tn:codegeo": "116855"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7202847",
+        "sourceId": "osm",
+        "name": "السبخاء",
+        "aliases": [
+          "Es-Sebkha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبل الجلود",
+        "contextAliases": [
+          "Djebel Jelloud",
+          "Délégation Djebel Jelloud",
+          "معتمدية جبل الجلود"
+        ],
+        "governorateId": 342,
+        "lat": 36.76998,
+        "lng": 10.211062,
+        "delegationId": 401,
+        "hasBoundary": true,
+        "bbox": [
+          10.195361,
+          36.75733,
+          10.220352,
+          36.782686
+        ],
+        "areaKm2": 1.9492705916468267,
+        "pickerGroupId": "osm:relation:7202847",
+        "offset": 5212396,
+        "length": 1028
+      },
+      "sourceGeometrySha256": "bde7fc71ae474490b58907e7c21966c2502c38507b7fd92f7ddefccd883e08d7",
+      "packedGeometrySha256": "f99883dc037510367656f87ebc57ce7617c8e38df13631d7d47c9eb22e361692",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7202852",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1168",
+        "delegationFr": "Djebel djelloud",
+        "delegationAr": "جبل الجلود",
+        "sectorCode": "116856",
+        "sectorFr": "El afrane",
+        "sectorAr": "الأفران",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4727,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 148,
+          "Nombre_de_menages_par_Secteurs.xlsx": 148
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الأفران",
+        "name:ar": "الأفران",
+        "name:fr": "El Afrane",
+        "ref:tn:codegeo": "116856"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7202852",
+        "sourceId": "osm",
+        "name": "الأفران",
+        "aliases": [
+          "El Afrane"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبل الجلود",
+        "contextAliases": [
+          "Djebel Jelloud",
+          "Délégation Djebel Jelloud",
+          "معتمدية جبل الجلود"
+        ],
+        "governorateId": 342,
+        "lat": 36.773515,
+        "lng": 10.19725,
+        "delegationId": 401,
+        "hasBoundary": true,
+        "bbox": [
+          10.190364,
+          36.76757,
+          10.202821,
+          36.779471
+        ],
+        "areaKm2": 0.719049730352179,
+        "pickerGroupId": "osm:relation:7202852",
+        "offset": 5216352,
+        "length": 956
+      },
+      "sourceGeometrySha256": "bc89003cc4549c6b5bc452fbd7ab036406d5563e172c0daa736d69a91445c7c6",
+      "packedGeometrySha256": "e7dd66be645fa40271bffda6fe55ba18dfcdad6f404fdea4d82bac7f078d50dd",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7202851",
+      "officialIdentity": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1168",
+        "delegationFr": "Djebel djelloud",
+        "delegationAr": "جبل الجلود",
+        "sectorCode": "116857",
+        "sectorFr": "Djebel djeloud",
+        "sectorAr": "جبل الجلود",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4761,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 149,
+          "Nombre_de_menages_par_Secteurs.xlsx": 149
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جبل الجلود",
+        "name:ar": "جبل الجلود",
+        "name:fr": "Djebel Djeloud",
+        "ref:tn:codegeo": "116857"
+      },
+      "currentMetadata": {
+        "id": "osm:relation:7202851",
+        "sourceId": "osm",
+        "name": "جبل الجلود",
+        "aliases": [
+          "Djebel Djeloud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبل الجلود",
+        "contextAliases": [
+          "Djebel Jelloud",
+          "Délégation Djebel Jelloud",
+          "معتمدية جبل الجلود"
+        ],
+        "governorateId": 342,
+        "lat": 36.76861,
+        "lng": 10.204226,
+        "delegationId": 401,
+        "hasBoundary": true,
+        "bbox": [
+          10.200144,
+          36.76549,
+          10.207836,
+          36.77191
+        ],
+        "areaKm2": 0.2737701718055159,
+        "pickerGroupId": "osm:relation:7202851",
+        "offset": 5215556,
+        "length": 796
+      },
+      "sourceGeometrySha256": "38eb44b1085b9071429753cd1f166edf5e1423ff45c8162d1ed6ccd2e9ec0487",
+      "packedGeometrySha256": "aad19eec6ebda2808c728ebec218c3c497e0b9b3d9422835895a6dd42fe4d473",
+      "expectedCuration": null
+    }
+  ],
+  "contexts": {
+    "osm:relation:1435835": {
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-11",
+        "admin_level": "4",
+        "alt_name:de": "Gouvernement Tunis",
+        "alt_name:ko": "튀니스주",
+        "alt_name:ru": "Тунис (вилайет)",
+        "boundary": "administrative",
+        "long_name:ar": "ولاية تونس",
+        "long_name:en": "Tunis Governorate",
+        "long_name:fr": "Gouvernorat de Tunis",
+        "long_name:it": "Governatorato di Tunisi",
+        "name": "ولاية تونس",
+        "name:ar": "ولاية تونس",
+        "name:be": "Туніс (вілает)",
+        "name:be-tarask": "Туніс (вілает)",
+        "name:bg": "Тунис (област)",
+        "name:ca": "Governació de Tunis",
+        "name:ceb": "Gouvernorat de Tunis",
+        "name:cy": "Tiwnis (talaith)",
+        "name:de": "Tunis",
+        "name:en": "Tunis",
+        "name:es": "Gobernación de Túnez",
+        "name:fa": "استان تونس",
+        "name:fr": "Gouvernorat Tunis",
+        "name:id": "Kegubernuran Tunis",
+        "name:it": "Tunisi",
+        "name:ja": "チュニス県",
+        "name:ko": "튀니스",
+        "name:ms": "Kawasan kegabenoran Tunis",
+        "name:nl": "Tunis (gouvernement)",
+        "name:no": "Tunis (guvernement)",
+        "name:pl": "Gubernatorstwo Tunis",
+        "name:pt": "Túnis (província)",
+        "name:ro": "Guvernoratul Tunis",
+        "name:ru": "Тунис",
+        "name:sco": "Tunis Govrenorate",
+        "name:sh": "Tunis (vilajet)",
+        "name:sv": "Tunis (guvernement)",
+        "name:tr": "Tunus ili",
+        "name:uk": "Туніс (вілаєт)",
+        "name:ur": "ولایت تونس",
+        "name:zh": "突尼斯省",
+        "name:zu": "Tunis Governorate",
+        "population": "983861",
+        "ref:tn:codegeo": "11",
+        "source:population": "INS TN 2004",
+        "wikidata": "Q328109",
+        "wikipedia": "ar:ولاية تونس"
+      },
+      "sourceGeometrySha256": "52b9cc4642c148609f7b1c38f596aafd61b9aef61bafa1c2bc54b79bbba66468"
+    },
+    "osm:relation:4134869": {
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Djebel Jelloud",
+        "boundary": "administrative",
+        "name": "معتمدية جبل الجلود",
+        "name:ar": "معتمدية جبل الجلود",
+        "name:fr": "Délégation Djebel Jelloud",
+        "ref:tn:codegeo": "1168",
+        "ref:tn:hasc_2": "TN.TU.JJ",
+        "wikidata": "Q3032829"
+      },
+      "sourceGeometrySha256": "15fa79373300b8b01d965e32a11157398099a5d00271d11076477a9b313bd0d0"
+    }
+  },
+  "sourceNamePeers": [
+    {
+      "id": "osm:node:3148875770",
+      "kind": "village",
+      "tags": {
+        "name": "جبل الجلود",
+        "name:ar": "جبل الجلود",
+        "name:en": "Djebel Jelloud",
+        "name:fr": "Djebel Jelloud",
+        "place": "village"
+      }
+    },
+    {
+      "id": "osm:relation:4134869",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Djebel Jelloud",
+        "boundary": "administrative",
+        "name": "معتمدية جبل الجلود",
+        "name:ar": "معتمدية جبل الجلود",
+        "name:fr": "Délégation Djebel Jelloud",
+        "ref:tn:codegeo": "1168",
+        "ref:tn:hasc_2": "TN.TU.JJ",
+        "wikidata": "Q3032829"
+      }
+    },
+    {
+      "id": "osm:relation:7202851",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جبل الجلود",
+        "name:ar": "جبل الجلود",
+        "name:fr": "Djebel Djeloud",
+        "ref:tn:codegeo": "116857"
+      }
+    }
+  ],
+  "sectorContainment": [
+    {
+      "id": "osm:relation:7202848",
+      "pointInside": false,
+      "baseInside": false
+    },
+    {
+      "id": "osm:relation:7202853",
+      "pointInside": true,
+      "baseInside": false
+    },
+    {
+      "id": "osm:relation:7202850",
+      "pointInside": false,
+      "baseInside": false
+    },
+    {
+      "id": "osm:relation:7202849",
+      "pointInside": false,
+      "baseInside": false
+    },
+    {
+      "id": "osm:relation:7202847",
+      "pointInside": false,
+      "baseInside": false
+    },
+    {
+      "id": "osm:relation:7202852",
+      "pointInside": false,
+      "baseInside": false
+    },
+    {
+      "id": "osm:relation:7202851",
+      "pointInside": false,
+      "baseInside": true
+    }
+  ],
+  "nearestReferences": {
+    "base": [
+      {
+        "id": 401,
+        "distanceKm": 0.0
+      },
+      {
+        "id": 399,
+        "distanceKm": 1.7027690578295958
+      },
+      {
+        "id": 400,
+        "distanceKm": 2.826164216388278
+      }
+    ],
+    "point": [
+      {
+        "id": 401,
+        "distanceKm": 0.34720448876313503
+      },
+      {
+        "id": 399,
+        "distanceKm": 1.3820316132046304
+      },
+      {
+        "id": 400,
+        "distanceKm": 2.8371918049715332
+      }
+    ],
+    "sector": [
+      {
+        "id": 401,
+        "distanceKm": 0.11932578922880947
+      },
+      {
+        "id": 399,
+        "distanceKm": 1.8057205043036502
+      },
+      {
+        "id": 622,
+        "distanceKm": 2.731157343596122
+      }
+    ]
+  },
+  "primaryHtml": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jebel-oued-zbib-source-review-20260919\\interior-paired-list.html",
+    "sha256": "c49de25d556462cb2e91bc47baa9547e57c68be87e0ed653834cbebe86a509de"
+  },
+  "primaryArticleId": 31303,
+  "primaryRequiredText": [
+    "جبل الجلود",
+    "بجبل جلود",
+    "بجهة جبل جلود"
+  ],
+  "newPhoneObservation": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_401-2.json",
+    "sha256": "13dc4ec5f058c032dabbbe3ccee4a8925fe928340ede10a54932e11573eceae4"
+  },
+  "completePickerGroups": {
+    "before": [
+      [
+        "osm:node:3148875770"
+      ],
+      [
+        "delegation:401"
+      ]
+    ],
+    "after": [
+      [
+        "delegation:401",
+        "osm:node:3148875770"
+      ]
+    ]
+  },
+  "onlyRawChange": {
+    "id": "osm:node:3148875770",
+    "field": "pickerGroupId",
+    "before": "osm:node:3148875770",
+    "after": "delegation:401"
+  },
+  "displayPhaseCoordinateChanges": []
+}

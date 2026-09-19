@@ -1,0 +1,9 @@
+{
+  "url": "https://api.openstreetmap.org/api/0.6/node/7938334046.json",
+  "retrievedAtUtc": "2026-09-19T14:00:59.985189+00:00",
+  "status": 200,
+  "finalUrl": "https://api.openstreetmap.org/api/0.6/node/7938334046.json",
+  "contentType": "application/json; charset=utf-8",
+  "sha256": "cc7b98d2ac8bc3ef86b2cf8d70b783d47476f2b3dde8fb1d7c38aa8757ebccbd",
+  "bytes": 569
+}

@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "5fd2641d156648ae5596aa81159bfdf6efa4074bb82fc06bd01a71ade8a1e117",
+  "sourceReports": [
+    {
+      "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/sourcefacts-and-design.json",
+      "sha256": "59418e6ef6c83549407231e004868cd920b989ccd8a22b28e82a6015b0a2737d"
+    }
+  ],
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7142926",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7142928",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7142961",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143859",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143861",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7154920",
+      "field": "delegationId",
+      "before": 625,
+      "after": 478
+    },
+    {
+      "id": "osm:way:1392451611",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313004",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:11820052133",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:351582010",
+      "field": "delegationId",
+      "before": 481,
+      "after": 478
+    },
+    {
+      "id": "osm:node:9052889223",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143872",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    }
+  ],
+  "actualInstalledRawFieldChanges": [
+    {
+      "id": "osm:relation:7142926",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7142928",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7142961",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143859",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143861",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7154920",
+      "field": "delegationId",
+      "before": 625,
+      "after": 478
+    },
+    {
+      "id": "osm:way:1392451611",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313004",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:11820052133",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:351582010",
+      "field": "delegationId",
+      "before": 481,
+      "after": 478
+    },
+    {
+      "id": "osm:node:9052889223",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    }
+  ],
+  "reviewer": "Root integration review using independently implemented DeepSeek spherical-vector nearest calculation; not an independent map authority.",
+  "numericValidation": {
+    "formula": "atan2(norm(cross(unit_vectors)),dot(unit_vectors))",
+    "all3523CurrentDefaultsMatch": true,
+    "all3523ProposedDefaultsMatch": true,
+    "changedDefaults": 18,
+    "candidateTownPointsSelectOwnSources": true
+  },
+  "qualification": "Grouping rows represent the existing generator stage, not changes from installed picker groups. This review does not certify the entire catalog or surveyed polygon borders."
+}

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceFacts": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/sourcefacts-and-design.json",
+    "sha256": "59418e6ef6c83549407231e004868cd920b989ccd8a22b28e82a6015b0a2737d"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7143872",
+      "targetBaseId": "delegation:472",
+      "targetDelegationId": 472,
+      "name": "الصمار",
+      "governorateId": 351,
+      "governorate": "تطاوين",
+      "basePoint": {
+        "lat": 32.9946554,
+        "lng": 10.8222443
+      },
+      "status": "eligible_proposal",
+      "reasons": [],
+      "members": [
+        {
+          "id": "osm:relation:7143872",
+          "name": "الصمار",
+          "kind": "sector",
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الصمار",
+            "name:ar": "الصمار",
+            "name:fr": "Smar",
+            "ref:tn:codegeo": "535352"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "originalContainsDisplayReference": true,
+          "packagedContainsDisplayReference": true,
+          "manualPrayerSource": 472,
+          "independentNearestPrayerSource": 472,
+          "reasons": []
+        },
+        {
+          "id": "osm:way:187313013",
+          "name": "الصمار",
+          "kind": "residential",
+          "sourceTags": {
+            "addr:city": "الصمار",
+            "landuse": "residential",
+            "name": "الصمار",
+            "name:ar": "الصمار",
+            "name:en": "Smar",
+            "name:fr": "Smar"
+          },
+          "originalContainsBasePoint": true,
+          "packagedContainsBasePoint": true,
+          "originalContainsDisplayReference": true,
+          "packagedContainsDisplayReference": true,
+          "manualPrayerSource": 472,
+          "independentNearestPrayerSource": 472,
+          "reasons": []
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7143872",
+          "code": "535352",
+          "currentOfficialRecord": {
+            "governorateCode": "53",
+            "governorateFr": "Tataouine",
+            "governorateAr": "تطاوين",
+            "delegationCode": "5353",
+            "delegationFr": "Smar",
+            "delegationAr": "الصمار",
+            "sectorCode": "535352",
+            "sectorFr": "Smar",
+            "sectorAr": "الصمار",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64461,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 3167,
+              "Nombre_de_menages_par_Secteurs.xlsx": 3161
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الصمار",
+            "name:ar": "الصمار",
+            "name:fr": "Smar",
+            "ref:tn:codegeo": "535352"
+          },
+          "effectiveOriginalGeometrySha256": "e9332b8ca55be4a3e3bf37278b80b127daa02cb5907b5a78c705349ae0dcb3bf",
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7143836",
+              "sourceCode": "5353",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "alt_name:fr": "Smâr",
+                "boundary": "administrative",
+                "name": "معتمدية الصمار",
+                "name:ar": "معتمدية الصمار",
+                "name:fr": "Délégation Smâr",
+                "ref:tn:codegeo": "5353",
+                "ref:tn:hasc_2": "TN.TA.SA",
+                "wikidata": "Q3487090"
+              },
+              "effectiveOriginalGeometrySha256": "528ae4466f6defccfbf8fbe58617a20efd2623d95e8f1530a51d6503f7ba8694",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ]
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:7143836",
+          "code": "5353",
+          "name": "معتمدية الصمار",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Smâr",
+            "boundary": "administrative",
+            "name": "معتمدية الصمار",
+            "name:ar": "معتمدية الصمار",
+            "name:fr": "Délégation Smâr",
+            "ref:tn:codegeo": "5353",
+            "ref:tn:hasc_2": "TN.TA.SA",
+            "wikidata": "Q3487090"
+          },
+          "effectiveOriginalGeometrySha256": "528ae4466f6defccfbf8fbe58617a20efd2623d95e8f1530a51d6503f7ba8694",
+          "currentOfficialRecord": {
+            "governorateCode": "53",
+            "governorateFr": "Tataouine",
+            "governorateAr": "تطاوين",
+            "delegationCode": "5353",
+            "delegationFr": "Smar",
+            "delegationAr": "الصمار"
+          }
+        }
+      ],
+      "existingTargetGroupMembers": [
+        "delegation:472"
+      ],
+      "proposedBehavior": "Retain the existing named Smar sector/residential display group, all coordinates and both polygons. The unchanged residential representative selects source472 using its authentic named town reference.",
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_settlement_retained_display_reference",
+        "reviewEvidence": {
+          "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/dependency-successors/smar-retained-display-proof.json",
+          "sha256": "16764cf3b3fde7cd6a675ef542f7e171297f498c015277e3760305a1ffe03d23"
+        }
+      }
+    }
+  ]
+}

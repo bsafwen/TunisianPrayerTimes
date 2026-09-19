@@ -5068,8 +5068,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/624-bir-complete-group-picker-proof.json",
-        "sha256": "6f7ed25095dc50614a571a583d8c39608eb43fb5f44c0600dd51d8e16b79a9b1"
+        "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/dependency-successors/624-picker-pin-successor.json",
+        "sha256": "627154fd2674b30975ae34925264dcb79ffdd18cfe0e2ccaa349e3027a2f49b7"
       },
       "reason": "Independent primary settlement identity supports one exact timetable display association while the typed preservation proof retains every existing imada, complete group and accepted context/source phase.",
       "evidence": {
@@ -5742,8 +5742,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/485-picker-binding-proof.json",
-        "sha256": "541fc35457969abd1867d80760695591f5d7b84c0d7391d9062c646f0eb108e2"
+        "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/dependency-successors/485-picker-pin-successor.json",
+        "sha256": "d6c763243b8529d10c509fbb73476a2aac33b1ccc118fb9ae7ca1720fb5ae5ba"
       },
       "reason": "Exact source history and official inhabited-settlement identity support one manual town choice while retaining each separately coded sector and both existing coordinates.",
       "evidence": {
@@ -5907,8 +5907,8 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/1524-picker-binding-proof.json",
-        "sha256": "eae7ed9834701f12920abfc6476924dfd45789624ffb3473f25bc5fd7187dfbb"
+        "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/dependency-successors/1524-picker-pin-successor.json",
+        "sha256": "a3b4bff6f77fcd85326c9f31d87bf418f000b3147a0b738218f0f7f4377a88ef"
       },
       "reason": "Primary planning-locality and occupied-address evidence supports one broad Beni Mhira manual choice. The reviewed administrative successor proof preserves five sectors, Bir Morra, both existing coordinates and the absent Ksar Aoun source point.",
       "evidence": {
@@ -7675,118 +7675,118 @@
         }
       ]
     },
-{
-  "id": "osm:way:100982052",
-  "expectedKind": "residential",
-  "expectedTags": {
-    "landuse": "residential",
-    "name": "القصر الرئاسي",
-    "name:ar": "القصر الرئاسي",
-    "name:en": "Presidential Palace Grounds",
-    "name:fr": "Palais présidentiel"
-  },
-  "action": "exclude",
-  "reason": "This exact source object denotes the presidential palace grounds, supported by all eight OSM way versions and the Presidency institutional description. It is a named institutional compound rather than a neighborhood choice. Preserve every surrounding locality and the separate Presidential Residences object.",
-  "evidence": [
     {
-      "file": "exclusion-reviews/carthage-palace-20260912/reviewed-palace-property-exclusion-proof.json",
-      "sha256": "b8bd6e1ad6054820728d9e06a10c3721e6d132b1485ef97ef7ae043e40b92ab5",
-      "bytes": 6245
-    }
-  ]
-},
-{
-  "id": "osm:way:129273831",
-  "expectedKind": "residential",
-  "expectedTags": {
-    "addr:city": "طبرقة",
-    "email": "mehari.tabarka@goldenyasmin.com",
-    "fax": "+216 78 671 923",
-    "landuse": "residential",
-    "name": "إقامة المهاري",
-    "name:ar": "إقامة المهاري",
-    "name:en": "Résidence Méhari",
-    "name:fr": "Résidence Méhari",
-    "phone": "+216 78 671 445",
-    "stars": "4",
-    "website": "https://www.goldenyasmin.com/residence-mehari-tabarka/"
-  },
-  "action": "exclude",
-  "reason": "The exact source way represents the named Golden Yasmin holiday-residence property; authentic history, retained operator contacts and the operator own property description support property scope rather than a neighborhood polygon.",
-  "evidence": [
+      "id": "osm:way:100982052",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "القصر الرئاسي",
+        "name:ar": "القصر الرئاسي",
+        "name:en": "Presidential Palace Grounds",
+        "name:fr": "Palais présidentiel"
+      },
+      "action": "exclude",
+      "reason": "This exact source object denotes the presidential palace grounds, supported by all eight OSM way versions and the Presidency institutional description. It is a named institutional compound rather than a neighborhood choice. Preserve every surrounding locality and the separate Presidential Residences object.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/carthage-palace-20260912/reviewed-palace-property-exclusion-proof.json",
+          "sha256": "b8bd6e1ad6054820728d9e06a10c3721e6d132b1485ef97ef7ae043e40b92ab5",
+          "bytes": 6245
+        }
+      ]
+    },
     {
-      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_129273831.json",
-      "sha256": "7b6c06ba6ab757b67c2f1a1d3551df1bd591d0bbcc70d5baf92ef8e2da7f8838",
-      "bytes": 6071
-    }
-  ]
-},
-{
-  "id": "osm:way:815233393",
-  "expectedKind": "residential",
-  "expectedTags": {
-    "addr:city": "العوينة",
-    "addr:city:ar": "العوينة",
-    "addr:postcode": "2045",
-    "building:levels": "7",
-    "height": "21",
-    "landuse": "residential",
-    "name": "Résidence Riadh Soukra",
-    "residential": "apartments"
-  },
-  "action": "exclude",
-  "reason": "Exclude only this exact mapped apartment property from neighborhood choices. Current source explicitly classifies this 5310.87 m2 footprint as residential=apartments with seven building levels and height21. Those property tags existed in v1; v2 only localized the city address. The originating changeset cites local knowledge. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
-  "evidence": [
+      "id": "osm:way:129273831",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "طبرقة",
+        "email": "mehari.tabarka@goldenyasmin.com",
+        "fax": "+216 78 671 923",
+        "landuse": "residential",
+        "name": "إقامة المهاري",
+        "name:ar": "إقامة المهاري",
+        "name:en": "Résidence Méhari",
+        "name:fr": "Résidence Méhari",
+        "phone": "+216 78 671 445",
+        "stars": "4",
+        "website": "https://www.goldenyasmin.com/residence-mehari-tabarka/"
+      },
+      "action": "exclude",
+      "reason": "The exact source way represents the named Golden Yasmin holiday-residence property; authentic history, retained operator contacts and the operator own property description support property scope rather than a neighborhood polygon.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_129273831.json",
+          "sha256": "7b6c06ba6ab757b67c2f1a1d3551df1bd591d0bbcc70d5baf92ef8e2da7f8838",
+          "bytes": 6071
+        }
+      ]
+    },
     {
-      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_815233393.json",
-      "sha256": "a6ceb3a748c1c602e085e39e020d6e159b5e9b8bac4eb51660cd45b0d1713f37",
-      "bytes": 9981
-    }
-  ]
-},
-{
-  "id": "osm:way:522478927",
-  "expectedKind": "residential",
-  "expectedTags": {
-    "addr:city": "تونس",
-    "addr:city:ar": "تونس",
-    "building:levels": "6",
-    "height": "26",
-    "landuse": "residential",
-    "name": "Residence Diar El Mesk"
-  },
-  "action": "exclude",
-  "reason": "Exclude only this exact mapped apartment property from neighborhood choices. The 1031.00 m2 footprint originated as building=yes with height26. V2 named the six-level building; v3 replaced building=yes by landuse=residential while retaining the same closed five-node footprint and building-level/height tags. V4 refined to seven nodes. The directly associated 2017 changesets describe a residential building; current v5 only localizes city tags. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
-  "evidence": [
+      "id": "osm:way:815233393",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "العوينة",
+        "addr:city:ar": "العوينة",
+        "addr:postcode": "2045",
+        "building:levels": "7",
+        "height": "21",
+        "landuse": "residential",
+        "name": "Résidence Riadh Soukra",
+        "residential": "apartments"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact mapped apartment property from neighborhood choices. Current source explicitly classifies this 5310.87 m2 footprint as residential=apartments with seven building levels and height21. Those property tags existed in v1; v2 only localized the city address. The originating changeset cites local knowledge. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_815233393.json",
+          "sha256": "a6ceb3a748c1c602e085e39e020d6e159b5e9b8bac4eb51660cd45b0d1713f37",
+          "bytes": 9981
+        }
+      ]
+    },
     {
-      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_522478927.json",
-      "sha256": "2021ec99255fe6591b5d1792d5047b7ab31831659717a1b845638c6b61c633f1",
-      "bytes": 9950
-    }
-  ]
-},
-{
-  "id": "osm:way:237115723",
-  "expectedKind": "residential",
-  "expectedTags": {
-    "addr:city": "Les Jardins d'El Menzah",
-    "addr:postcode": "2096",
-    "building:levels": "6",
-    "landuse": "residential",
-    "name": "إقامة البانوراميك",
-    "name:ar": "إقامة البانوراميك",
-    "name:fr": "Résidence Panoramique"
-  },
-  "action": "exclude",
-  "reason": "This exact source way was first mapped as a six-floor residential building and was retagged as residential landuse less than four minutes later without changing its way-node outline. The named apartment-property scale is additionally consistent with the Panorama Residence project material for Jardins d El Menzah 2. Exclude this property choice only; preserve all surrounding neighborhoods, administration and prayer references.",
-  "evidence": [
+      "id": "osm:way:522478927",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "تونس",
+        "addr:city:ar": "تونس",
+        "building:levels": "6",
+        "height": "26",
+        "landuse": "residential",
+        "name": "Residence Diar El Mesk"
+      },
+      "action": "exclude",
+      "reason": "Exclude only this exact mapped apartment property from neighborhood choices. The 1031.00 m2 footprint originated as building=yes with height26. V2 named the six-level building; v3 replaced building=yes by landuse=residential while retaining the same closed five-node footprint and building-level/height tags. V4 refined to seven nodes. The directly associated 2017 changesets describe a residential building; current v5 only localizes city tags. Preserve the surrounding named Aouina town and sector, every named source point, all existing timetable references and saved-name mappings; retire this ID without inventing a replacement. No generic residence-name or countrywide residential filter is introduced.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_522478927.json",
+          "sha256": "2021ec99255fe6591b5d1792d5047b7ab31831659717a1b845638c6b61c633f1",
+          "bytes": 9950
+        }
+      ]
+    },
     {
-      "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_237115723.json",
-      "sha256": "85662e492b2739b42459b27d9c715ff8a8d623b58513ff8b24986b58a0172483",
-      "bytes": 6081
-    }
-  ]
-},
+      "id": "osm:way:237115723",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "Les Jardins d'El Menzah",
+        "addr:postcode": "2096",
+        "building:levels": "6",
+        "landuse": "residential",
+        "name": "إقامة البانوراميك",
+        "name:ar": "إقامة البانوراميك",
+        "name:fr": "Résidence Panoramique"
+      },
+      "action": "exclude",
+      "reason": "This exact source way was first mapped as a six-floor residential building and was retagged as residential landuse less than four minutes later without changing its way-node outline. The named apartment-property scale is additionally consistent with the Panorama Residence project material for Jardins d El Menzah 2. Exclude this property choice only; preserve all surrounding neighborhoods, administration and prayer references.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/six-properties-20260912/proofs/osm_way_237115723.json",
+          "sha256": "85662e492b2739b42459b27d9c715ff8a8d623b58513ff8b24986b58a0172483",
+          "bytes": 6081
+        }
+      ]
+    },
     {
       "id": "osm:way:901797262",
       "expectedKind": "residential",
@@ -8272,10 +8272,10 @@
       },
       "action": "preserve_point",
       "pickerBaseDisplayReview": {
-        "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/degache-coordinate47-proof.json",
-        "sha256": "0e0c3ec3e76a58716e97482d3852254a52d3ee9639c0c0a771d7ab7c3df470f0"
+        "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/dependency-successors/degache-physical-display-successor.json",
+        "sha256": "12b9d743f65fbfca4d65434cbc1148932dd2f9cdbce88630241cc722eac24c26"
       },
-      "reason": "Keep the established Degache town display and its retained coordinate while the independently published INM478 reference moves; manual selection resolves the nearest source481 without creating a duplicate locality.",
+      "reason": "Keep the established Degache town display and original point. The corrected source478 physical reference equals that town point and is independently nearest; all imada and other named-place identities remain separate.",
       "evidence": {
         "sourceProposal": {
           "file": "point-base-display-reviews/degueche-retained-reference-2026-09-13/historical-retained-display-proposal.json",
@@ -8709,6 +8709,93 @@
           ]
         }
       ]
+    },
+    {
+      "id": "osm:relation:7133843",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي الزبيب",
+        "name:ar": "وادي الزبيب",
+        "name:fr": "Oued Ezzebib",
+        "ref:tn:codegeo": "525855"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "وادي الزبيب",
+        "name:ar": "وادي الزبيب",
+        "name:fr": "Oued Ezzebib"
+      },
+      "manualPointId": "osm:node:2419847402",
+      "reason": "Use the authentic retained namesake village point for manual selection; preserve the original official sector spelling and polygon.",
+      "evidence": [
+        "https://api.openstreetmap.org/api/0.6/node/2419847402.json"
+      ]
+    },
+    {
+      "id": "osm:node:2419847402",
+      "expectedKind": "village",
+      "expectedTags": {
+        "addr:postcode": "4166",
+        "name": "واد الزبيب",
+        "name:aeb": "واد الزبيب",
+        "name:ar": "واد الزبيب",
+        "name:en": "Oued Zbib",
+        "name:fr": "Oued Zbib",
+        "place": "village"
+      },
+      "action": "preserve_point",
+      "nameTags": {
+        "name": "وادي الزبيب",
+        "name:aeb": "واد الزبيب",
+        "name:ar": "وادي الزبيب",
+        "name:en": "Oued Zbib",
+        "name:fr": "Oued Zbib",
+        "alt_name:ar": "واد الزبيب"
+      },
+      "reason": "Keep the saved village ID and exact source coordinates while displaying the official namesake spelling, retaining the original Arabic as an alias.",
+      "evidence": [
+        "https://api.openstreetmap.org/api/0.6/node/2419847402.json"
+      ],
+      "pointRetentionReview": {
+        "file": "original-sector-point-reviews/oued-zbib-2026-09/point-retention-review.json",
+        "sha256": "c7477093114cf73016a77dfa1417ff51e9f28ac1347ec7174ba2847658a22215"
+      }
+    },
+    {
+      "id": "osm:node:3148875770",
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "جبل الجلود",
+        "name:ar": "جبل الجلود",
+        "name:en": "Djebel Jelloud",
+        "name:fr": "Djebel Jelloud",
+        "place": "village"
+      },
+      "action": "preserve_point",
+      "pickerBaseDisplayReview": {
+        "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/reviewed-point-base-display-identity.json",
+        "sha256": "41e479828a0a77e837585029c9bfd866ac4bcddfab98db23015130c4c8649113"
+      },
+      "reason": "Show Jebel Jelloud once while preserving the retained settlement point and all seven separately coded sector polygons.",
+      "evidence": {
+        "sourceProposal": {
+          "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/sourcefacts.json",
+          "sha256": "fa6a0d8e343e2c0a45f9a5cdb7206771e3fa6d4f68b6a09d26872b8c463c9dad"
+        },
+        "independentSourceReview": {
+          "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/root-identity-review.json",
+          "sha256": "e773ead12665a8f90d28ac8acf35f737d21d683a5419b752df26cdd11821d54e"
+        },
+        "onlyRawChange": {
+          "id": "osm:node:3148875770",
+          "field": "pickerGroupId",
+          "before": "osm:node:3148875770",
+          "after": "delegation:401"
+        },
+        "scope": "One reviewed manual display choice; the narrow namesake sector and broad village keep their separate raw geographic records. Strict sector grouping precedes the deferred village association. All seven sector geometries and every coordinate remain unchanged."
+      }
     }
   ],
   "pendingReviews": [

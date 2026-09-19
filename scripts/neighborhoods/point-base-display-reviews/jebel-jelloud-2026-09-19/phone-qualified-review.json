@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "status": "ROOT_VISUAL_REVIEW_QUALIFIED",
+  "observations": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_401-2.json",
+        "sha256": "13dc4ec5f058c032dabbbe3ccee4a8925fe928340ede10a54932e11573eceae4"
+      },
+      "query": "جبل جلود",
+      "publicCardTitles": [
+        "جبل الجلود"
+      ],
+      "screenshotSha256": "664e07a4dd196fd5ead2967451e0e5e42424fda1e381f40362d39a24719d838c"
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7202851-1.json",
+        "sha256": "d4532d2532a462b6244d33a0d85beabfad2e05d3efb6c1ad1adc99104c219cc8"
+      },
+      "query": "Djebel Jelloud, Tunis, Tunisia",
+      "publicCardTitles": [
+        "جبل الجلود"
+      ],
+      "screenshotSha256": "53df61032825f164cc57ff4ac4fc53e745ef08bffc30d6e31277f8fc95cc1564"
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7202851-2.json",
+        "sha256": "44bacf6275493d1f830e5e2a96b3a11942d555125546a870fdf6b45d03251fa0"
+      },
+      "query": "36.76861,10.204226",
+      "publicCardTitles": [
+        "تونس"
+      ],
+      "screenshotSha256": "40fa53f5021f470e8e621818b5400edcddc6199cb73f36f548ea9fcc86000aab"
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_node_3148875770-1.json",
+        "sha256": "28f5b8e8357cc9fe5cd872001f801142ce2135bbfa908a3ad7eadc0bf60baecc"
+      },
+      "query": "36.7708045,10.1997843",
+      "publicCardTitles": [
+        "53 Rue Skikda, 53 Rue Skikda"
+      ],
+      "screenshotSha256": "58fc09644e465c8a9269181baf6e6d5bba08a095d56255e16c703c2380c93509"
+    }
+  ],
+  "findings": [
+    "Arabic query جبل جلود opens جبل الجلود / Djebel Djeloud with a small outlined area around Rue9061 and Rue9270.",
+    "French Djebel Jelloud query opens جبل الجلود / Djebel Jelloud with a wider outline in the same regional context.",
+    "Coordinate query at the retained sector representative shows Rue9061 within the smaller neighborhood context.",
+    "The retained village point is a separate original-source representative outside the namesake sector; exact original and packed containment is not inferred from Maps outlines."
+  ],
+  "qualification": "Public Maps supports names and differing displayed extents. No Google polygon vertices, boundary certification, or hidden place coordinates are claimed."
+}

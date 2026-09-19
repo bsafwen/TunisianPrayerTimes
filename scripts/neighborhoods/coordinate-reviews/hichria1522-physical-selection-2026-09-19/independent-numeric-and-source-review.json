@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "c03311437d50ac6b7e0b6fa6c516a4955c778c11a07b940888751fca3da56d27",
+  "sourceReports": [
+    {
+      "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/sourcefacts-and-design.json",
+      "sha256": "cd3beff1bb7ca3316ab0c1d5110ecbfa2a73acc560fbd77048be0f3a78403d8d"
+    }
+  ],
+  "exactProposedRawFieldChanges": [
+    {
+      "id": "osm:relation:7169555",
+      "field": "delegationId",
+      "before": 513,
+      "after": 1522
+    },
+    {
+      "id": "osm:relation:7169577",
+      "field": "delegationId",
+      "before": 1522,
+      "after": 509
+    },
+    {
+      "id": "osm:relation:7169583",
+      "field": "delegationId",
+      "before": 1522,
+      "after": 508
+    },
+    {
+      "id": "osm:relation:7169628",
+      "field": "delegationId",
+      "before": 1522,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7169672",
+      "field": "delegationId",
+      "before": 508,
+      "after": 1522
+    },
+    {
+      "id": "osm:relation:7169673",
+      "field": "delegationId",
+      "before": 513,
+      "after": 1522
+    }
+  ],
+  "actualInstalledRawFieldChanges": [
+    {
+      "id": "osm:relation:7169555",
+      "field": "delegationId",
+      "before": 513,
+      "after": 1522
+    },
+    {
+      "id": "osm:relation:7169577",
+      "field": "delegationId",
+      "before": 1522,
+      "after": 509
+    },
+    {
+      "id": "osm:relation:7169583",
+      "field": "delegationId",
+      "before": 1522,
+      "after": 508
+    },
+    {
+      "id": "osm:relation:7169628",
+      "field": "delegationId",
+      "before": 1522,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7169672",
+      "field": "delegationId",
+      "before": 508,
+      "after": 1522
+    },
+    {
+      "id": "osm:relation:7169673",
+      "field": "delegationId",
+      "before": 513,
+      "after": 1522
+    }
+  ],
+  "reviewer": "Root integration review using independently implemented DeepSeek spherical-vector nearest calculation; not an independent map authority.",
+  "numericValidation": {
+    "formula": "atan2(norm(cross(unit_vectors)),dot(unit_vectors))",
+    "all3523CurrentDefaultsMatch": true,
+    "all3523ProposedDefaultsMatch": true,
+    "changedDefaults": 6,
+    "candidateTownPointSelectsOwnSource": true
+  },
+  "qualification": "This review does not certify the entire catalog or surveyed polygon borders. Only the six 1522 projection changes are exercised here."
+}

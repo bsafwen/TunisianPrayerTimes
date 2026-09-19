@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_paired_article_spelling_equivalence",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baseCurrent": {
+    "id": 401,
+    "nomFr": "Jebel Jelloud",
+    "nomAr": "جبل جلود",
+    "nomEn": "Jebel Jelloud",
+    "lat": 36.7693,
+    "lng": 10.2032
+  },
+  "expectedGovernor": {
+    "id": 342,
+    "nomFr": "Tunis",
+    "nomAr": "تونس",
+    "nomEn": "Tunis",
+    "lat": 36.8065,
+    "lng": 10.1815
+  },
+  "sector": {
+    "id": "osm:relation:7202851",
+    "originalTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "جبل الجلود",
+      "name:ar": "جبل الجلود",
+      "name:fr": "Djebel Djeloud",
+      "ref:tn:codegeo": "116857"
+    },
+    "sourceGeometrySha256": "38eb44b1085b9071429753cd1f166edf5e1423ff45c8162d1ed6ccd2e9ec0487",
+    "metadata": {
+      "id": "osm:relation:7202851",
+      "sourceId": "osm",
+      "name": "جبل الجلود",
+      "aliases": [
+        "Djebel Djeloud"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية جبل الجلود",
+      "contextAliases": [
+        "Djebel Jelloud",
+        "Délégation Djebel Jelloud",
+        "معتمدية جبل الجلود"
+      ],
+      "governorateId": 342,
+      "lat": 36.76861,
+      "lng": 10.204226,
+      "delegationId": 401,
+      "hasBoundary": true,
+      "bbox": [
+        10.200144,
+        36.76549,
+        10.207836,
+        36.77191
+      ],
+      "areaKm2": 0.2737701718055159,
+      "pickerGroupId": "osm:relation:7202851",
+      "offset": 5215556,
+      "length": 796
+    }
+  },
+  "parent": {
+    "id": "osm:relation:4134869",
+    "originalTags": {
+      "admin_level": "5",
+      "alt_name:fr": "Djebel Jelloud",
+      "boundary": "administrative",
+      "name": "معتمدية جبل الجلود",
+      "name:ar": "معتمدية جبل الجلود",
+      "name:fr": "Délégation Djebel Jelloud",
+      "ref:tn:codegeo": "1168",
+      "ref:tn:hasc_2": "TN.TU.JJ",
+      "wikidata": "Q3032829"
+    },
+    "sourceGeometrySha256": "15fa79373300b8b01d965e32a11157398099a5d00271d11076477a9b313bd0d0"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialSectorRecord": {
+    "governorateCode": "11",
+    "governorateFr": "Tunis",
+    "governorateAr": "تونس",
+    "delegationCode": "1168",
+    "delegationFr": "Djebel djelloud",
+    "delegationAr": "جبل الجلود",
+    "sectorCode": "116857",
+    "sectorFr": "Djebel djeloud",
+    "sectorAr": "جبل الجلود",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4761,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 149,
+      "Nombre_de_menages_par_Secteurs.xlsx": 149
+    }
+  },
+  "primaryArticle": {
+    "file": "point-base-display-reviews/jebel-jelloud-2026-09-19/interior-paired-list.html",
+    "sha256": "c49de25d556462cb2e91bc47baa9547e57c68be87e0ed653834cbebe86a509de",
+    "url": "https://www.interieur.gov.tn/filtre/fr/fr/actuali?direction=asc&page=670&sort=gouvernorat_id",
+    "articleId": 31303
+  },
+  "sourceReview": {
+    "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/root-identity-review.json",
+    "sha256": "e773ead12665a8f90d28ac8acf35f737d21d683a5419b752df26cdd11821d54e"
+  },
+  "qualifications": {
+    "namesAndCoordinatesUnchanged": true,
+    "displayIdentityOnly": true,
+    "noBoundaryEquivalenceClaim": true
+  }
+}

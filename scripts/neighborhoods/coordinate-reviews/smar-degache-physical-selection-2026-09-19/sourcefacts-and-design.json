@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_AND_NUMERIC_REVIEW_FOR_ISOLATED_GENERATION",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadataSha256": "5fd2641d156648ae5596aa81159bfdf6efa4074bb82fc06bd01a71ade8a1e117",
+  "priorCoordinateManifest": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/before-prayer-source-coordinates.json",
+    "sha256": "091711bafdf85d4f94a09141b555b480dadc18e8f188f0e8989c1d3162b87b9f"
+  },
+  "priorGovernorAsset": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/before-gouvernorats.json",
+    "sha256": "9e65e1f52fb3b129816e8ee33af89df545b98226f35b222870403a7ec9541c25"
+  },
+  "freshSourceComparison": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/original-and-fresh-node-comparison.json",
+    "sha256": "6fbacc92c2a22083f05d989111a2c644faa8fc5a31e0cd9df07a0575651ee067"
+  },
+  "qualifiedPhoneReview": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/qualified-phone-review.json",
+    "sha256": "8f23ae22a3bf73e1998d26808eb7c1ae73f5b57a4ebe717fd64b93cd8fe34b06"
+  },
+  "counterfactual": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/full-catalog-counterfactual.json",
+    "sha256": "2a050dae81e7c14ea37cdeabe018133413ec9d21412f301671e62a91769b4c95"
+  },
+  "exactInstalledRawFieldChanges": [
+    {
+      "id": "osm:relation:7142926",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7142928",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7142961",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143859",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143861",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7154920",
+      "field": "delegationId",
+      "before": 625,
+      "after": 478
+    },
+    {
+      "id": "osm:way:1392451611",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313004",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:11820052133",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:351582010",
+      "field": "delegationId",
+      "before": 481,
+      "after": 478
+    },
+    {
+      "id": "osm:node:9052889223",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    }
+  ],
+  "generationPhaseGroupingReapplication": [
+    {
+      "id": "osm:relation:7143872",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    }
+  ],
+  "targetSourcePoints": {
+    "472": {
+      "lat": 32.9946554,
+      "lng": 10.8222443
+    },
+    "478": {
+      "lat": 33.9841058,
+      "lng": 8.2154584
+    }
+  },
+  "preservation": "The existing complete Smar and Degache picker identities are retained. Both raw Smar polygons and all Degache sectors remain separate geographic records. Only prayer source IDs change; no displayed name, raw coordinate, geometry, parent, alias, saved ID or timetable changes.",
+  "qualification": "Phone cards establish place context only. Fresh original OSM points provide the physical selection coordinates. Published INM coordinates remain archived, not asserted to be physical settlement centres. Grouping changes are compiler-phase reapplication, not new installed picker changes."
+}

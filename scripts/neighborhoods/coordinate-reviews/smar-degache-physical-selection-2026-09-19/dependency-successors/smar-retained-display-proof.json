@@ -1,0 +1,793 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_settlement_retained_display_reference",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "id": "osm:relation:7143872",
+  "targetDelegationId": 472,
+  "governorateId": 351,
+  "baseCurrent": {
+    "id": 472,
+    "nomFr": "Smar",
+    "nomAr": "السمار",
+    "nomEn": "Smar",
+    "lat": 32.9946554,
+    "lng": 10.8222443
+  },
+  "recordCoreSha256": "1a691e5c7ba9dfc8910b749b2a4ffbe6f14959a5cb0c79559abb6f7beb5d9b6a",
+  "eligibleProofCoreSha256": "d0460548f51f4041e249633b5a39b507af0de04e49289d985d24bff52f21eea6",
+  "sourceFacts": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/sourcefacts-and-design.json",
+    "sha256": "59418e6ef6c83549407231e004868cd920b989ccd8a22b28e82a6015b0a2737d"
+  },
+  "independentSourceReview": {
+    "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/independent-numeric-and-source-review.json",
+    "sha256": "81c591d2c30404322d7c6d67574b83eb2d1ad40218c5417df46167fba8a35899"
+  },
+  "baselineMetadataSha256": "5fd2641d156648ae5596aa81159bfdf6efa4074bb82fc06bd01a71ade8a1e117",
+  "exactRawFieldChanges": [
+    {
+      "id": "osm:relation:7142926",
+      "field": "delegationId",
+      "before": 472,
+      "after": 488
+    },
+    {
+      "id": "osm:relation:7142928",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7142961",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143818",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143819",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143820",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143821",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143822",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:relation:7143859",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143861",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7154920",
+      "field": "delegationId",
+      "before": 625,
+      "after": 478
+    },
+    {
+      "id": "osm:way:1392451611",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313004",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:11820052133",
+      "field": "delegationId",
+      "before": 1524,
+      "after": 472
+    },
+    {
+      "id": "osm:node:1980186910",
+      "field": "delegationId",
+      "before": 472,
+      "after": 1524
+    },
+    {
+      "id": "osm:node:351582010",
+      "field": "delegationId",
+      "before": 481,
+      "after": 478
+    },
+    {
+      "id": "osm:node:9052889223",
+      "field": "delegationId",
+      "before": 488,
+      "after": 472
+    },
+    {
+      "id": "osm:relation:7143872",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    },
+    {
+      "id": "osm:way:187313013",
+      "field": "pickerGroupId",
+      "before": "osm:relation:7143872",
+      "after": "delegation:472"
+    }
+  ],
+  "witness": {
+    "id": "osm:node:1980279372",
+    "kind": "town",
+    "tags": {
+      "addr:city": "الصمار",
+      "name": "الصمار",
+      "name:aeb": "الصمار",
+      "name:ar": "الصمار",
+      "name:ber": "ⵍⵚⵎⴰⵔ",
+      "name:en": "Smar",
+      "name:fr": "Smar",
+      "place": "town"
+    },
+    "lat": 32.9946554,
+    "lng": 10.8222443,
+    "publicNode": {
+      "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/node-1980279372.json",
+      "sha256": "7b9020993493e5d2f9945431ba3e80e3c99d76b71282fec82d0e3d4c883a12af",
+      "url": "https://api.openstreetmap.org/api/0.6/node/1980279372.json"
+    },
+    "exactPublicElement": {
+      "type": "node",
+      "id": 1980279372,
+      "lat": 32.9946554,
+      "lon": 10.8222443,
+      "timestamp": "2026-07-17T00:43:34Z",
+      "version": 10,
+      "changeset": 185877300,
+      "user": "Petr Jenč",
+      "uid": 15169703,
+      "tags": {
+        "addr:city": "الصمار",
+        "name": "الصمار",
+        "name:aeb": "الصمار",
+        "name:ar": "الصمار",
+        "name:ber": "ⵍⵚⵎⴰⵔ",
+        "name:en": "Smar",
+        "name:fr": "Smar",
+        "place": "town"
+      }
+    }
+  },
+  "sources": [
+    {
+      "id": "osm:node:1980279372",
+      "kind": "town",
+      "tags": {
+        "addr:city": "الصمار",
+        "name": "الصمار",
+        "name:aeb": "الصمار",
+        "name:ar": "الصمار",
+        "name:ber": "ⵍⵚⵎⴰⵔ",
+        "name:en": "Smar",
+        "name:fr": "Smar",
+        "place": "town"
+      },
+      "geometrySha256": "7fd15c61de321c82a3eddb29c49d29e7e7caeb4f362117705627e2fb5856e1d4",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:1434953",
+      "kind": "governorate",
+      "tags": {
+        "ISO3166-2": "TN-83",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "ولاية تطاوين",
+        "name:ar": "ولاية تطاوين",
+        "name:be": "Татавін (вілает)",
+        "name:be-tarask": "Татаўін (вілает)",
+        "name:bg": "Татауин (област)",
+        "name:ca": "Governació de Tataouine",
+        "name:ceb": "Tataouine (lalawigan)",
+        "name:cy": "Tataouine (talaith)",
+        "name:de": "Gouvernement Tataouine",
+        "name:el": "Ταταουίν (Κυβερνείο)",
+        "name:en": "Tataouine",
+        "name:es": "Gobernación de Tataouine",
+        "name:fa": "تطاوین",
+        "name:fi": "Tataouine (kuvernementti)",
+        "name:fr": "Gouvernorat Tataouine",
+        "name:frr": "Tataouine (Guwernement)",
+        "name:id": "Kegubernuran Tataouine",
+        "name:it": "Tataouine",
+        "name:ja": "タタウイヌ県",
+        "name:ko": "타타우인주",
+        "name:ms": "Kawasan kegabenoran Tataouine",
+        "name:nl": "Tataouine (gouvernement)",
+        "name:no": "Tataouine (guvernement)",
+        "name:pl": "Gubernatorstwo Tatawin",
+        "name:pt": "Tataouine (província)",
+        "name:ro": "Guvernoratul Tataouine",
+        "name:ru": "Татавин (вилайет)",
+        "name:sco": "Tataouine Govrenorate",
+        "name:sh": "Tataouine (vilajet)",
+        "name:sv": "Tataouine (guvernement)",
+        "name:tr": "Tatavin ili",
+        "name:uk": "Татауїн (вілаєт)",
+        "name:ur": "تطاوین",
+        "name:zh": "泰塔溫省",
+        "name:zu": "Tataouine Governorate",
+        "official_name": "ولاية تطاوين",
+        "official_name:ar": "ولاية تطاوين",
+        "official_name:en": "Tataouine Governorate",
+        "official_name:fa": "استان تطاوین",
+        "official_name:fr": "Gouvernorat de Tataouine",
+        "official_name:it": "Governatorato di Tataouine",
+        "official_name:ur": "ولایت تطاوین",
+        "population": "143524",
+        "population:date": "2004",
+        "ref:tn:codegeo": "53",
+        "wikidata": "Q327045",
+        "wikipedia": "ar:ولاية تطاوين"
+      },
+      "geometrySha256": "812bba4b398d6334a2caf8d343f17fa9c19fbb7c13799b2654eeab5db7b309c0",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7143836",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Smâr",
+        "boundary": "administrative",
+        "name": "معتمدية الصمار",
+        "name:ar": "معتمدية الصمار",
+        "name:fr": "Délégation Smâr",
+        "ref:tn:codegeo": "5353",
+        "ref:tn:hasc_2": "TN.TA.SA",
+        "wikidata": "Q3487090"
+      },
+      "geometrySha256": "528ae4466f6defccfbf8fbe58617a20efd2623d95e8f1530a51d6503f7ba8694",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:relation:7143872",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الصمار",
+        "name:ar": "الصمار",
+        "name:fr": "Smar",
+        "ref:tn:codegeo": "535352"
+      },
+      "geometrySha256": "e9332b8ca55be4a3e3bf37278b80b127daa02cb5907b5a78c705349ae0dcb3bf",
+      "expectedCuration": null
+    },
+    {
+      "id": "osm:way:187313013",
+      "kind": "residential",
+      "tags": {
+        "addr:city": "الصمار",
+        "landuse": "residential",
+        "name": "الصمار",
+        "name:ar": "الصمار",
+        "name:en": "Smar",
+        "name:fr": "Smar"
+      },
+      "geometrySha256": "7a54a6b7ac7cacb1fb4266d47696ef62abf421754bf9d77c973366795c2e35e8",
+      "expectedCuration": null
+    }
+  ],
+  "namePeerIds": [
+    "osm:node:1980279372",
+    "osm:relation:7143836",
+    "osm:relation:7143872",
+    "osm:way:187313013"
+  ],
+  "primaryNames": {
+    "base": "السمار",
+    "locality": "الصمار",
+    "evidence": [
+      {
+        "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/interior-name-equivalence.html",
+        "sha256": "6be2ffcb5e88acf01d86cc7205daa9e5a4c36046521f1c7eaca4d453f97879a1",
+        "url": "https://www.interieur.gov.tn/actualite/20115/%D8%A7%D9%84%D8%B5%D9%85%D8%A7%D8%B1-%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86-%D8%B6%D8%A8%D8%B7-%D8%B3%D9%8A%D8%A7%D8%B1%D8%AA%D9%8A%D9%86-%D9%85%D8%AD%D9%85%D9%84%D8%A9-%D8%A8%D8%A8%D8%B6%D8%A7%D8%B9%D8%A9-%D9%85%D9%87%D8%B1%D8%A8%D8%A9",
+        "requiredText": [
+          "الصمار",
+          "السمار",
+          "تطاوين"
+        ]
+      }
+    ]
+  },
+  "primaryEvidence": [
+    {
+      "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/interior-name-equivalence.html",
+      "sha256": "6be2ffcb5e88acf01d86cc7205daa9e5a4c36046521f1c7eaca4d453f97879a1",
+      "url": "https://www.interieur.gov.tn/actualite/20115/%D8%A7%D9%84%D8%B5%D9%85%D8%A7%D8%B1-%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86-%D8%B6%D8%A8%D8%B7-%D8%B3%D9%8A%D8%A7%D8%B1%D8%AA%D9%8A%D9%86-%D9%85%D8%AD%D9%85%D9%84%D8%A9-%D8%A8%D8%A8%D8%B6%D8%A7%D8%B9%D8%A9-%D9%85%D9%87%D8%B1%D8%A8%D8%A9",
+      "requiredText": [
+        "الصمار",
+        "السمار",
+        "تطاوين"
+      ]
+    }
+  ],
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "officialSectorRecord": {
+    "governorateCode": "53",
+    "governorateFr": "Tataouine",
+    "governorateAr": "تطاوين",
+    "delegationCode": "5353",
+    "delegationFr": "Smar",
+    "delegationAr": "الصمار",
+    "sectorCode": "535352",
+    "sectorFr": "Smar",
+    "sectorAr": "الصمار",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 64461,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 3167,
+      "Nombre_de_menages_par_Secteurs.xlsx": 3161
+    }
+  },
+  "contextIds": {
+    "governor": "osm:relation:1434953",
+    "delegation": "osm:relation:7143836"
+  },
+  "protectedMetadata": {
+    "osm:node:11820052133": {
+      "id": "osm:node:11820052133",
+      "sourceId": "osm",
+      "name": "Ksar Karrouz",
+      "aliases": [],
+      "kind": "hamlet",
+      "parentName": "الصمار",
+      "contextAliases": [
+        "Délégation Smâr",
+        "Smar",
+        "Smâr",
+        "الصمار",
+        "معتمدية الصمار"
+      ],
+      "governorateId": 351,
+      "lat": 33.0211915,
+      "lng": 10.8365297,
+      "delegationId": 472,
+      "hasBoundary": false
+    },
+    "osm:node:5239666199": {
+      "id": "osm:node:5239666199",
+      "sourceId": "osm",
+      "name": "بني مهيرة",
+      "aliases": [
+        "Beni Mhira"
+      ],
+      "kind": "village",
+      "parentName": "قصر مهيرة",
+      "contextAliases": [
+        "Beni Mhira",
+        "Ksar Mehira",
+        "بني مهيرة",
+        "قصر مهيرة",
+        "معتمدية بني مهيرة"
+      ],
+      "governorateId": 351,
+      "lat": 32.8634378,
+      "lng": 10.8172175,
+      "delegationId": 1524,
+      "hasBoundary": false
+    },
+    "osm:relation:7143861": {
+      "id": "osm:relation:7143861",
+      "sourceId": "osm",
+      "name": "كرشاو",
+      "aliases": [
+        "Kerchaou"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الصمار",
+      "contextAliases": [
+        "Délégation Smâr",
+        "Smâr",
+        "معتمدية الصمار"
+      ],
+      "governorateId": 351,
+      "lat": 33.03986,
+      "lng": 10.773711,
+      "delegationId": 472,
+      "hasBoundary": true,
+      "bbox": [
+        10.68316,
+        32.978037,
+        10.868559,
+        33.102222
+      ],
+      "areaKm2": 122.91053330988213
+    },
+    "osm:relation:7143870": {
+      "id": "osm:relation:7143870",
+      "sourceId": "osm",
+      "name": "الغر ياني",
+      "aliases": [
+        "El Ghariani"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الصمار",
+      "contextAliases": [
+        "Délégation Smâr",
+        "Smâr",
+        "معتمدية الصمار"
+      ],
+      "governorateId": 351,
+      "lat": 32.971917,
+      "lng": 10.952463,
+      "delegationId": 472,
+      "hasBoundary": true,
+      "bbox": [
+        10.828724,
+        32.880307,
+        11.092645,
+        33.059182
+      ],
+      "areaKm2": 187.1517478709892
+    },
+    "osm:relation:7143872": {
+      "id": "osm:relation:7143872",
+      "sourceId": "osm",
+      "name": "الصمار",
+      "aliases": [
+        "Smar"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية الصمار",
+      "contextAliases": [
+        "Délégation Smâr",
+        "Smâr",
+        "معتمدية الصمار"
+      ],
+      "governorateId": 351,
+      "lat": 33.031397,
+      "lng": 10.909537,
+      "delegationId": 472,
+      "hasBoundary": true,
+      "bbox": [
+        10.747496,
+        32.967417,
+        11.036571,
+        33.095072
+      ],
+      "areaKm2": 167.95718024780138
+    },
+    "osm:way:187313004": {
+      "id": "osm:way:187313004",
+      "sourceId": "osm",
+      "name": "كرشاو",
+      "aliases": [
+        "Kerchaou",
+        "Kirchaou"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية الصمار",
+      "contextAliases": [
+        "Délégation Smâr",
+        "Kerchaou",
+        "Smâr",
+        "كرشاو",
+        "معتمدية الصمار"
+      ],
+      "governorateId": 351,
+      "lat": 33.032398,
+      "lng": 10.797439,
+      "delegationId": 472,
+      "hasBoundary": true,
+      "bbox": [
+        10.793598,
+        33.029559,
+        10.801477,
+        33.035322
+      ],
+      "areaKm2": 0.27909749162048814
+    },
+    "osm:way:187313013": {
+      "id": "osm:way:187313013",
+      "sourceId": "osm",
+      "name": "الصمار",
+      "aliases": [
+        "Smar",
+        "ⵍⵚⵎⴰⵔ"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية الصمار",
+      "contextAliases": [
+        "Délégation Smâr",
+        "Smar",
+        "Smâr",
+        "الصمار",
+        "معتمدية الصمار"
+      ],
+      "governorateId": 351,
+      "lat": 32.99975,
+      "lng": 10.818201,
+      "delegationId": 472,
+      "hasBoundary": true,
+      "bbox": [
+        10.806772,
+        32.990992,
+        10.827368,
+        33.008468
+      ],
+      "areaKm2": 1.2894325139565619
+    },
+    "osm:way:385166772": {
+      "id": "osm:way:385166772",
+      "sourceId": "osm",
+      "name": "الغرياني",
+      "aliases": [
+        "Ghariani"
+      ],
+      "kind": "residential",
+      "parentName": "معتمدية الصمار",
+      "contextAliases": [
+        "Délégation Smâr",
+        "Smâr",
+        "معتمدية الصمار"
+      ],
+      "governorateId": 351,
+      "lat": 32.997292,
+      "lng": 10.903358,
+      "delegationId": 472,
+      "hasBoundary": true,
+      "bbox": [
+        10.897009,
+        32.993144,
+        10.918573,
+        33.001428
+      ],
+      "areaKm2": 0.5616549897605382
+    }
+  },
+  "beforeGroups": [
+    {
+      "id": "delegation:1524",
+      "memberIds": [
+        "delegation:1524",
+        "osm:node:5239666199"
+      ]
+    },
+    {
+      "id": "delegation:472",
+      "memberIds": [
+        "delegation:472"
+      ]
+    },
+    {
+      "id": "osm:node:11820052133",
+      "memberIds": [
+        "osm:node:11820052133"
+      ]
+    },
+    {
+      "id": "osm:relation:7143861",
+      "memberIds": [
+        "osm:relation:7143861",
+        "osm:way:187313004"
+      ]
+    },
+    {
+      "id": "osm:relation:7143870",
+      "memberIds": [
+        "osm:relation:7143870",
+        "osm:way:385166772"
+      ]
+    },
+    {
+      "id": "osm:relation:7143872",
+      "memberIds": [
+        "osm:relation:7143872",
+        "osm:way:187313013"
+      ]
+    }
+  ],
+  "finalGroups": [
+    {
+      "id": "delegation:1524",
+      "memberIds": [
+        "delegation:1524",
+        "osm:node:5239666199"
+      ]
+    },
+    {
+      "id": "delegation:472",
+      "memberIds": [
+        "delegation:472",
+        "osm:relation:7143872",
+        "osm:way:187313013"
+      ]
+    },
+    {
+      "id": "osm:node:11820052133",
+      "memberIds": [
+        "osm:node:11820052133"
+      ]
+    },
+    {
+      "id": "osm:relation:7143861",
+      "memberIds": [
+        "osm:relation:7143861",
+        "osm:way:187313004"
+      ]
+    },
+    {
+      "id": "osm:relation:7143870",
+      "memberIds": [
+        "osm:relation:7143870",
+        "osm:way:385166772"
+      ]
+    }
+  ],
+  "memberPrayerSources": {
+    "osm:relation:7143872": 472,
+    "osm:way:187313013": 472
+  },
+  "manualSelection": {
+    "representativeId": "osm:way:187313013",
+    "lat": 32.99975,
+    "lng": 10.818201,
+    "expectedNearestSourceId": 472
+  },
+  "qualifications": {
+    "sourceWitnessRemainsAbsorbed": true,
+    "memberPolygonsAreNotEquivalent": true,
+    "administrativeBoundaryNotCertified": true,
+    "manualPrayerSourceUsesRepresentative": true,
+    "prayerCoordinatesAreNotDisplayGeometry": true
+  },
+  "settlementPrayerCorrection": {
+    "delegationId": 472,
+    "expectedGovernorateId": 351,
+    "expectedNames": {
+      "nomAr": "السمار",
+      "nomFr": "Smar",
+      "nomEn": "Smar"
+    },
+    "reviewedDate": "2026-09-19",
+    "original": {
+      "lat": 32.9955,
+      "lng": 10.8246
+    },
+    "proposed": {
+      "lat": 32.9946554,
+      "lng": 10.8222443
+    },
+    "originalProvenance": "Legacy bundled reference in source asset SHA256 c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b; its external origin is undocumented. Published daily coordinates are not certified internal calculation inputs or surveyed town centres.",
+    "qualification": "Named original OSM settlement coordinate used for nearest timetable selection. Published INM fields remain historical evidence; no claim about internal timetable calculation coordinates or certified boundaries.",
+    "reviewBatchId": "2026-09-19-smar-degache-physical-selection",
+    "originalSourceAssetSha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b",
+    "originalSourceAssetEvidence": {
+      "file": "coordinate-reviews/inm-published-smar472-2026-09-19/before-gouvernorats.json",
+      "sha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b"
+    },
+    "osm": {
+      "id": "osm:node:1980279372",
+      "url": "https://www.openstreetmap.org/node/1980279372",
+      "apiUrl": "https://api.openstreetmap.org/api/0.6/node/1980279372.json",
+      "version": 10,
+      "timestamp": "2026-07-17T00:43:34Z",
+      "changeset": 185877300,
+      "tags": {
+        "addr:city": "الصمار",
+        "name": "الصمار",
+        "name:aeb": "الصمار",
+        "name:ar": "الصمار",
+        "name:ber": "ⵍⵚⵎⴰⵔ",
+        "name:en": "Smar",
+        "name:fr": "Smar",
+        "place": "town"
+      },
+      "name": "الصمار",
+      "place": "town"
+    },
+    "osmEvidence": {
+      "liveResponse": {
+        "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/node-1980279372.json",
+        "sha256": "7b9020993493e5d2f9945431ba3e80e3c99d76b71282fec82d0e3d4c883a12af",
+        "url": "https://api.openstreetmap.org/api/0.6/node/1980279372.json"
+      },
+      "originalExtractionComparison": {
+        "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/original-and-fresh-node-comparison.json",
+        "sha256": "6fbacc92c2a22083f05d989111a2c644faa8fc5a31e0cd9df07a0575651ee067"
+      }
+    },
+    "supersededPublishedReference": {
+      "priorCoordinateManifest": {
+        "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/before-prayer-source-coordinates.json",
+        "sha256": "091711bafdf85d4f94a09141b555b480dadc18e8f188f0e8989c1d3162b87b9f"
+      },
+      "exactCorrection": {
+        "delegationId": 472,
+        "expectedGovernorateId": 351,
+        "expectedNames": {
+          "nomAr": "السمار",
+          "nomFr": "Smar",
+          "nomEn": "Smar"
+        },
+        "reviewedDate": "2026-09-19",
+        "original": {
+          "lat": 32.9955,
+          "lng": 10.8246
+        },
+        "proposed": {
+          "lat": 32.872,
+          "lng": 10.89
+        },
+        "originalProvenance": "Legacy bundled reference in source asset SHA256 c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b; its external origin is undocumented. Published daily coordinates are not certified internal calculation inputs or surveyed town centres.",
+        "referenceKind": "inm_published_reference",
+        "inmEvidence": {
+          "serviceDate": "2026-09-19",
+          "prayer": {
+            "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/smar-prayer-2026-09-19.json",
+            "sha256": "f3287c6837cb0ad3b0666b75ecff9a477ef023535eefb01832a49b533479364c",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/472/"
+          },
+          "sun": {
+            "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/smar-sun-2026-09-19.json",
+            "sha256": "bc4f109bbb02fa615f01a4c18de041d084ca3b8d27bbe780c7a12fcf404a6a23",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/472/"
+          },
+          "retrievalManifest": {
+            "file": "coordinate-reviews/inm-published-smar472-2026-09-19/original-source/retrieval-manifest.json",
+            "sha256": "62645377f034a93f24bf5d24d5b88f3685922667e95d6bddf768e37d04f825a4"
+          }
+        },
+        "qualification": "Fresh primary prayer and sunrise responses agree. The published point is geographically separate from the named Smar settlement; it does not move or certify a locality or boundary.",
+        "reviewBatchId": "2026-09-19-inm-published-hazoua-smar",
+        "originalSourceAssetSha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b",
+        "originalSourceAssetEvidence": {
+          "file": "coordinate-reviews/inm-published-smar472-2026-09-19/before-gouvernorats.json",
+          "sha256": "c26633f8221f0a3399725b3e157e13abb65215a62042e70d56aa54155c6c991b"
+        }
+      }
+    },
+    "phoneVisualReview": {
+      "report": {
+        "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/qualified-phone-review.json",
+        "sha256": "8f23ae22a3bf73e1998d26808eb7c1ae73f5b57a4ebe717fd64b93cd8fe34b06"
+      },
+      "exactCoordinateCertified": false,
+      "boundaryVerified": false
+    }
+  }
+}

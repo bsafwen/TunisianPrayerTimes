@@ -1,0 +1,219 @@
+{
+  "status": "QUALIFIED_PHONE_OBSERVATIONS_REFERENCE_CORRECTIONS_PENDING",
+  "metadataSha256": "5fd2641d156648ae5596aa81159bfdf6efa4074bb82fc06bd01a71ade8a1e117",
+  "captureBatch": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\priority-four-reference-phone-captures-20260919.json",
+    "sha256": "dd1a22a9086995c05880ed7f0ece15403d9cc70fd6e4b6373ddaf39c8be327da"
+  },
+  "beforeLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\delegation_472-2\\ledger.json",
+    "sha256": "a824271ecc32fbc11b7922325fde3924bafc0be51b571b4eac27c7dcb5ef26ae"
+  },
+  "afterLedgerSha256": "5614592bd28db2ef162c2d9d3b7265fdab54b9608f3e8fbd997fcb1bab622192",
+  "beforeCounts": {
+    "currentRows": 3433,
+    "historicalRows": 313,
+    "currentRowsWithObservations": 778,
+    "currentObservations": 1040,
+    "historicalObservations": 266
+  },
+  "afterCounts": {
+    "currentRows": 3433,
+    "historicalRows": 313,
+    "currentRowsWithObservations": 778,
+    "currentObservations": 1048,
+    "historicalObservations": 266
+  },
+  "all1306PriorObservationsPreserved": true,
+  "totalObservations": 1314,
+  "fingerprintObservationFlagTransitions": [
+    {
+      "id": "delegation:472",
+      "before": "pending/current fingerprint unobserved",
+      "after": "observed_needs_review/current fingerprint observed",
+      "facetsUnchanged": true
+    },
+    {
+      "id": "delegation:478",
+      "before": "pending/current fingerprint unobserved",
+      "after": "observed_needs_review/current fingerprint observed",
+      "facetsUnchanged": true
+    },
+    {
+      "id": "delegation:1522",
+      "before": "pending/current fingerprint unobserved",
+      "after": "observed_needs_review/current fingerprint observed",
+      "facetsUnchanged": true
+    },
+    {
+      "id": "delegation:609",
+      "before": "pending/current fingerprint unobserved",
+      "after": "observed_needs_review/current fingerprint observed",
+      "facetsUnchanged": true
+    }
+  ],
+  "observations": [
+    {
+      "plan": {
+        "id": "delegation:472",
+        "role": "installed_published_reference",
+        "query": "32.872, 10.89"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_472-2.png",
+        "sha256": "15d96ec21de9ef1e2484054592a8620ada5e3a2861df63270de4a753e9bacaa5"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_472-2.json",
+        "sha256": "9a01eaf140ffe7a854ed9a39cf13727960344111214349dcca8294e689eecf3d"
+      },
+      "qualification": "Root: exact displayed32.872,10.89 near Ksar Ouled Oune; rural-road context. Worker overstates uncertainty about coordinate equality despite visible matching coordinates.",
+      "boundaryCertified": false
+    },
+    {
+      "plan": {
+        "id": "delegation:472",
+        "role": "original_named_settlement_point",
+        "sourcePointId": "osm:node:1980279372",
+        "query": "32.9946554, 10.8222443"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_472-3.png",
+        "sha256": "5136275de1ffb957a2942a661b7644841f7d9e6703f2bf1d6800e8d991de3e5c"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_472-3.json",
+        "sha256": "4bbfb90241a1760a66367168490eaace03080d399fd4f348e6026110c6c6de73"
+      },
+      "qualification": "Root: business card in Smar settlement grid; visible Arabic label سمر, not worker transcription بمبر. Town vicinity supported; exact official centre not established by business card.",
+      "boundaryCertified": false
+    },
+    {
+      "plan": {
+        "id": "delegation:609",
+        "role": "installed_published_reference",
+        "query": "34.462, 9.262"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-5.png",
+        "sha256": "3c557e25a65e1ca214ca93683164b8015aec202d492a36e310176dee6e931190"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-5.json",
+        "sha256": "faf6fc4fb70914cea3a3dd0b7f72892062af3ed79313b71c56fa0abe3e3922ab"
+      },
+      "qualification": "Root: exact34.462,9.262 beside السند جبل. Preserve distinction from northern Sened settlement pending identity review.",
+      "boundaryCertified": false
+    },
+    {
+      "plan": {
+        "id": "delegation:609",
+        "role": "original_named_settlement_point",
+        "sourcePointId": "osm:node:2178146164",
+        "query": "34.540278, 9.2513281"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-6.png",
+        "sha256": "94ca9decbb20d4b38e35e90a2f8aa243cc1a07c49c617fc2964573a1fc32ba7f"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_609-6.json",
+        "sha256": "18f054ff89784f46caaf58195c040a5e103aa88e18ca45df049e6732d2b3f158"
+      },
+      "qualification": "DeepSeek visual review plus captured UI: P14 street card in Sened context. Root did not independently view this image; no boundary or exact-centre certification.",
+      "boundaryCertified": false
+    },
+    {
+      "plan": {
+        "id": "delegation:1522",
+        "role": "installed_published_reference",
+        "query": "34.829, 9.376"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-5.png",
+        "sha256": "ae8bc168dcb1dc762e8dc9c3f35b2a12a4a84e3c16e570e5473035b4d169597d"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-5.json",
+        "sha256": "19021c61bd80a2691ecc2bbed793f595f62552264c81633d60bea5a945772627"
+      },
+      "qualification": "Root: named هيكرية card in southern settlement with Salama school/cultural-centre context. No displayed coordinates; separate northern village remains distinct.",
+      "boundaryCertified": false
+    },
+    {
+      "plan": {
+        "id": "delegation:1522",
+        "role": "original_named_settlement_point",
+        "sourcePointId": "osm:node:7938334046",
+        "query": "34.8742313, 9.435056"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-6.png",
+        "sha256": "fcbfc581229aae3dfaeb384d153239cbc421a740650ceeb8bd220e2489a4aee5"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1522-6.json",
+        "sha256": "c7bdfb11a9848038a91dfebab460565f7e4963b3d307592726a3010b04fcaa3c"
+      },
+      "qualification": "Root: exact unnamed card34.8742310,9.4350560 matches query to six decimal places, in northern الهيشرية/EL HICHRIA CENT context. Namesake southern settlement must not be conflated.",
+      "boundaryCertified": false
+    },
+    {
+      "plan": {
+        "id": "delegation:478",
+        "role": "installed_published_reference",
+        "query": "34.016, 8.273"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_478-5.png",
+        "sha256": "6a4c216e8214404dab94a3bbf25e9ba41864c34736588bae854920966f46a341"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_478-5.json",
+        "sha256": "18d3e8c22a746e34ad8c97da7afbbdd14017f27185467eb057b91f4341600f76"
+      },
+      "qualification": "Root: named بوحلیل سددا card, distinct cluster, no exact coordinate field. Do not add this name as a Degache alias.",
+      "boundaryCertified": false
+    },
+    {
+      "plan": {
+        "id": "delegation:478",
+        "role": "original_named_settlement_point",
+        "sourcePointId": "osm:node:351582010",
+        "query": "33.9841058, 8.2154584"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_478-6.png",
+        "sha256": "ad57eda519a02602b9f2b4b4c9730cf70e0ce9310230803973adfbc84973c031"
+      },
+      "captureRecord": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_478-6.json",
+        "sha256": "dcbc93ceb5045b48c67344cb7794ab58c8b2f7b035269a4cc4c9ffb1f26dd8d8"
+      },
+      "qualification": "Root: named دقاش card and matching town map label at source-point query. Town identity/vicinity supported; no certified boundary or official-centre claim.",
+      "boundaryCertified": false
+    }
+  ],
+  "workerVisualReports": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\smar-sened-phone-vision-response.json",
+      "sha256": "ba942fed9bcb1927f05ceef95cea9187873a9160ce7d2f6dcbe8e7e79ac2690f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\hichria-degache-phone-vision-response.json",
+      "sha256": "9be030ad88b296eef8fdc1af3c1ab803065873476b74961ccdc4588a4085a087"
+    }
+  ],
+  "counterfactual": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\four-reference-counterfactual-20260919.json",
+    "sha256": "2a050dae81e7c14ea37cdeabe018133413ec9d21412f301671e62a91769b4c95"
+  },
+  "freshSourceComparison": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\smar-degache-physical-reference-review-20260919\\fresh-original-node-comparison.json",
+    "sha256": "6fbacc92c2a22083f05d989111a2c644faa8fc5a31e0cd9df07a0575651ee067"
+  },
+  "decision": "Prepare Smar472 and Degache478 physical selection-reference corrections with dependency review; combined18 raw nearest changes. Hold Sened609 and Hichria1522 identity decisions. Keep upstream published coordinates as historical evidence. No reference edits installed yet.",
+  "qualificationAttemptCorrection": "First qualification assertion incorrectly expected changedSinceObservation to stay true. The helper correctly resets it after observing the current fingerprint; all facets and other fields are unchanged. No report was written by that failed attempt.",
+  "productFilesChanged": false,
+  "fullCatalogCertified": false
+}

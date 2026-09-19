@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "status": "ROOT_APPROVED_PAIRED_SPELLING_DISPLAY_ONLY",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baseId": 401,
+  "sectorId": "osm:relation:7202851",
+  "baseSpelling": "جبل جلود",
+  "localitySpelling": "جبل الجلود",
+  "sourceFacts": {
+    "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/sourcefacts.json",
+    "sha256": "fa6a0d8e343e2c0a45f9a5cdb7206771e3fa6d4f68b6a09d26872b8c463c9dad"
+  },
+  "decision": "Use one manual choice for the named Jebel Jelloud settlement, existing base and namesake sector. Preserve every raw record, all names, coordinates, geometry and prayer sources.",
+  "evidence": "Current official code116857 identifies the namesake sector of1168. Interior Ministry article31303 uses both Arabic spellings for the same geographic subject. Phone Arabic/French cards support the name relationship with different extents, not boundary equivalence.",
+  "supersedesDisplayScopeOnly": {
+    "file": "point-base-display-reviews/jebel-jelloud-2026-09-19/root-identity-review.json",
+    "sha256": "e18077d41d8c170fab4fec0301513ceed3d04b974ce848f48f78eb554d2cf7c5"
+  },
+  "qualifications": [
+    "All seven separately coded sector records remain in the geometry index.",
+    "The village lies outside the namesake sector; grouping is not a containment or boundary-equivalence claim.",
+    "No global Arabic name normalization is changed."
+  ],
+  "workerReviewDisposition": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\jebel-spelling-helper-review-response.json",
+    "sha256": "f2c3660501bda494db23fb7d6fff261a264a0f6bc4505cc4536af141188f2754",
+    "findings": "No applicable blocker: Point is already a compiler global; exact parent-name and singleton bindings intentionally limit this route to the reviewed case."
+  }
+}

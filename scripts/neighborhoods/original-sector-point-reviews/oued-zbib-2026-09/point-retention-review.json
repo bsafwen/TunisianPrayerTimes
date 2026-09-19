@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed_original_sector_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "baselineMetadata": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/baseline-neighborhoods.json",
+    "sha256": "2730affeae7809067a0901059052979be0a807f7d47e2a2b14cc72d55830716c"
+  },
+  "baselineBinary": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/baseline-neighborhoods.bin",
+    "sha256": "b1203adf40b6c439e3d9fea2d3ef6d913869ea5553cb710aa29337c6d9252568"
+  },
+  "officialRegistry": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "sourceFacts": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/sourcefacts-v3.json",
+    "sha256": "c5c365144fabad014d9c21f640b11d73972fef4fe29708b2c2137364f52770af"
+  },
+  "independentSourceReview": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/independent-source-review-v3.json",
+    "sha256": "f9bf36548d57dbd5c51dd3b0d3bcc61f8d5b82a9e51b3800fc37ffe416c94912"
+  },
+  "records": [
+    {
+      "pointId": "osm:node:2419847402",
+      "sectorId": "osm:relation:7133843",
+      "pointDecision": {
+        "id": "osm:node:2419847402",
+        "expectedKind": "village",
+        "expectedTags": {
+          "addr:postcode": "4166",
+          "name": "واد الزبيب",
+          "name:aeb": "واد الزبيب",
+          "name:ar": "واد الزبيب",
+          "name:en": "Oued Zbib",
+          "name:fr": "Oued Zbib",
+          "place": "village"
+        },
+        "action": "preserve_point",
+        "nameTags": {
+          "name": "وادي الزبيب",
+          "name:aeb": "واد الزبيب",
+          "name:ar": "وادي الزبيب",
+          "name:en": "Oued Zbib",
+          "name:fr": "Oued Zbib",
+          "alt_name:ar": "واد الزبيب"
+        },
+        "reason": "Keep the saved village ID and exact source coordinates while displaying the official namesake spelling, retaining the original Arabic as an alias.",
+        "evidence": [
+          "https://api.openstreetmap.org/api/0.6/node/2419847402.json"
+        ]
+      },
+      "sectorDecision": {
+        "id": "osm:relation:7133843",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "وادي الزبيب",
+          "name:ar": "وادي الزبيب",
+          "name:fr": "Oued Ezzebib",
+          "ref:tn:codegeo": "525855"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "وادي الزبيب",
+          "name:ar": "وادي الزبيب",
+          "name:fr": "Oued Ezzebib"
+        },
+        "manualPointId": "osm:node:2419847402",
+        "reason": "Use the authentic retained namesake village point for manual selection; preserve the original official sector spelling and polygon.",
+        "evidence": [
+          "https://api.openstreetmap.org/api/0.6/node/2419847402.json"
+        ]
+      },
+      "officialSectorRecord": {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5258",
+        "delegationFr": "Djerba ajim",
+        "delegationAr": "جربة أجيم",
+        "sectorCode": "525855",
+        "sectorFr": "Oued ezzebib",
+        "sectorAr": "وادي الزبيب",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62966,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3095,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3089
+        }
+      },
+      "sourcePoint": {
+        "id": "osm:node:2419847402",
+        "tags": {
+          "addr:postcode": "4166",
+          "name": "واد الزبيب",
+          "name:aeb": "واد الزبيب",
+          "name:ar": "واد الزبيب",
+          "name:en": "Oued Zbib",
+          "name:fr": "Oued Zbib",
+          "place": "village"
+        },
+        "lat": 33.7893831,
+        "lng": 10.828002
+      },
+      "publicNode": {
+        "file": "original-sector-point-reviews/oued-zbib-2026-09/public-node-2419847402.json",
+        "sha256": "7875a8c0d843a5b82b414a5d7a1e9ea048874c7ef429f8cc0fde6df0e802d8fd",
+        "url": "https://api.openstreetmap.org/api/0.6/node/2419847402.json"
+      },
+      "exactPublicNode": {
+        "type": "node",
+        "id": 2419847402,
+        "lat": 33.7893831,
+        "lon": 10.828002,
+        "timestamp": "2026-06-01T00:59:20Z",
+        "version": 13,
+        "changeset": 183472884,
+        "user": "Petr Jenč",
+        "uid": 15169703,
+        "tags": {
+          "addr:postcode": "4166",
+          "name": "واد الزبيب",
+          "name:aeb": "واد الزبيب",
+          "name:ar": "واد الزبيب",
+          "name:en": "Oued Zbib",
+          "name:fr": "Oued Zbib",
+          "place": "village"
+        }
+      },
+      "sourceSector": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "وادي الزبيب",
+          "name:ar": "وادي الزبيب",
+          "name:fr": "Oued Ezzebib",
+          "ref:tn:codegeo": "525855"
+        },
+        "originalGeometrySha256": "cea72afee88bd2559f5ea53e1e7b9a0bcac94752d179bb4e816006b5cba42962",
+        "packedGeometrySha256": "044ea9867c2db5f30671c96b298bcee8663beaa861f34b84d32d5e91d9191477"
+      },
+      "contexts": [
+        {
+          "id": "osm:relation:7133842",
+          "kind": "delegation",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Djerba - Ajim",
+            "boundary": "administrative",
+            "name": "معتمدية جربة أجيم",
+            "name:ar": "معتمدية جربة أجيم",
+            "name:fr": "Délégation Djerba Ajim",
+            "ref:tn:codegeo": "5258",
+            "ref:tn:hasc_2": "TN.ME.DA",
+            "wikidata": "Q3032895"
+          },
+          "geometrySha256": "c6c0a932defec778d6ffbf9868b303f3a01a56c373483a82228d5fa07e5ead30"
+        },
+        {
+          "id": "osm:relation:1434952",
+          "kind": "governorate",
+          "tags": {
+            "ISO3166-2": "TN-82",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية مدنين",
+            "name:ar": "ولاية مدنين",
+            "name:ast": "Gobernación de Medenine",
+            "name:az": "Medenin (vilayət)",
+            "name:be": "Медзенін (вілает)",
+            "name:be-tarask": "Мэдзенін (вілает)",
+            "name:bg": "Меденин (област)",
+            "name:ca": "Governació de Médenine",
+            "name:ceb": "Gouvernorat de Médenine",
+            "name:cy": "Médenine (talaith)",
+            "name:de": "Gouvernement Medenine",
+            "name:el": "Μεντενίν (Κυβερνείο)",
+            "name:en": "Médenine",
+            "name:es": "Gobernación de Medenine",
+            "name:fa": "مدنین",
+            "name:fi": "Medenine (kuvernementti)",
+            "name:fr": "Gouvernorat Médenine",
+            "name:frr": "Médenine (Guwernement)",
+            "name:he": "מדנין (מחוז)",
+            "name:id": "Kegubernuran Medenine",
+            "name:it": "Medenina",
+            "name:ja": "メドニン県",
+            "name:ko": "메드닌주",
+            "name:ks": "مدنین",
+            "name:ms": "Kawasan kegabenoran Medenine",
+            "name:nl": "Médenine (gouvernement)",
+            "name:no": "Medenine (guvernement)",
+            "name:pl": "Gubernatorstwo Madanin",
+            "name:pt": "Médenine (província)",
+            "name:ro": "Guvernoratul Medenine",
+            "name:ru": "Меденин (вилайет)",
+            "name:sco": "Medenine Govrenorate",
+            "name:sh": "Médenine (vilajet)",
+            "name:tr": "Medenin ili",
+            "name:uk": "Меденін (вілаєт)",
+            "name:ur": "مدنین",
+            "name:zh": "梅德寧省",
+            "name:zu": "Medenine Governorate",
+            "official_name": "ولاية مدنين",
+            "official_name:ar": "ولاية مدنين",
+            "official_name:en": "Médenine Governorate",
+            "official_name:fa": "استان مدنین",
+            "official_name:fr": "Gouvernorat de Médenine",
+            "official_name:it": "Governatorato di Medenina",
+            "official_name:ur": "ولایت مدنین",
+            "population": "432503",
+            "population:date": "2004",
+            "ref:tn:codegeo": "52",
+            "wikidata": "Q327087",
+            "wikipedia": "ar:ولاية مدنين"
+          },
+          "geometrySha256": "43655b3b89b3ed838607b5419a55eb71e16184ed6529972ecd9706912b789e90"
+        }
+      ],
+      "sourceNamePeerIds": [
+        "osm:node:2419847402",
+        "osm:relation:7133843"
+      ],
+      "beforeMetadata": {
+        "osm:node:2419847402": {
+          "id": "osm:node:2419847402",
+          "sourceId": "osm",
+          "name": "واد الزبيب",
+          "aliases": [
+            "Oued Zbib"
+          ],
+          "kind": "village",
+          "parentName": "وادي الزبيب",
+          "contextAliases": [
+            "Djerba - Ajim",
+            "Délégation Djerba Ajim",
+            "Oued Ezzebib",
+            "معتمدية جربة أجيم",
+            "وادي الزبيب"
+          ],
+          "governorateId": 353,
+          "lat": 33.7893831,
+          "lng": 10.828002,
+          "delegationId": 491,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2419847402"
+        },
+        "osm:relation:7133843": {
+          "id": "osm:relation:7133843",
+          "sourceId": "osm",
+          "name": "وادي الزبيب",
+          "aliases": [
+            "Oued Ezzebib"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية جربة أجيم",
+          "contextAliases": [
+            "Djerba - Ajim",
+            "Délégation Djerba Ajim",
+            "معتمدية جربة أجيم"
+          ],
+          "governorateId": 353,
+          "lat": 33.772854,
+          "lng": 10.820138,
+          "delegationId": 491,
+          "hasBoundary": true,
+          "bbox": [
+            10.793677,
+            33.744634,
+            10.846663,
+            33.800924
+          ],
+          "areaKm2": 18.403123230068797,
+          "pickerGroupId": "osm:relation:7133843",
+          "offset": 1577444,
+          "length": 2260
+        }
+      },
+      "afterMetadata": {
+        "osm:node:2419847402": {
+          "id": "osm:node:2419847402",
+          "sourceId": "osm",
+          "name": "وادي الزبيب",
+          "aliases": [
+            "Oued Zbib",
+            "واد الزبيب"
+          ],
+          "kind": "village",
+          "parentName": "معتمدية جربة أجيم",
+          "contextAliases": [
+            "Djerba - Ajim",
+            "Délégation Djerba Ajim",
+            "Oued Ezzebib",
+            "معتمدية جربة أجيم",
+            "وادي الزبيب"
+          ],
+          "governorateId": 353,
+          "lat": 33.7893831,
+          "lng": 10.828002,
+          "delegationId": 491,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:relation:7133843"
+        },
+        "osm:relation:7133843": {
+          "id": "osm:relation:7133843",
+          "sourceId": "osm",
+          "name": "وادي الزبيب",
+          "aliases": [
+            "Oued Ezzebib"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية جربة أجيم",
+          "contextAliases": [
+            "Djerba - Ajim",
+            "Délégation Djerba Ajim",
+            "معتمدية جربة أجيم"
+          ],
+          "governorateId": 353,
+          "lat": 33.7893831,
+          "lng": 10.828002,
+          "delegationId": 491,
+          "hasBoundary": true,
+          "bbox": [
+            10.793677,
+            33.744634,
+            10.846663,
+            33.800924
+          ],
+          "areaKm2": 18.403123230068797,
+          "pickerGroupId": "osm:relation:7133843",
+          "manualPointId": "osm:node:2419847402"
+        }
+      },
+      "beforeGroups": {
+        "osm:node:2419847402": [
+          "osm:node:2419847402"
+        ],
+        "osm:relation:7133843": [
+          "osm:relation:7133843"
+        ]
+      },
+      "afterGroup": {
+        "id": "osm:relation:7133843",
+        "memberIds": [
+          "osm:node:2419847402",
+          "osm:relation:7133843"
+        ]
+      },
+      "exactRawFieldChanges": [
+        {
+          "id": "osm:relation:7133843",
+          "field": "lat",
+          "before": 33.772854,
+          "after": 33.7893831
+        },
+        {
+          "id": "osm:relation:7133843",
+          "field": "lng",
+          "before": 10.820138,
+          "after": 10.828002
+        },
+        {
+          "id": "osm:relation:7133843",
+          "field": "manualPointId",
+          "before": null,
+          "after": "osm:node:2419847402"
+        },
+        {
+          "id": "osm:node:2419847402",
+          "field": "aliases",
+          "before": [
+            "Oued Zbib"
+          ],
+          "after": [
+            "Oued Zbib",
+            "واد الزبيب"
+          ]
+        },
+        {
+          "id": "osm:node:2419847402",
+          "field": "name",
+          "before": "واد الزبيب",
+          "after": "وادي الزبيب"
+        },
+        {
+          "id": "osm:node:2419847402",
+          "field": "parentName",
+          "before": "وادي الزبيب",
+          "after": "معتمدية جربة أجيم"
+        },
+        {
+          "id": "osm:node:2419847402",
+          "field": "pickerGroupId",
+          "before": "osm:node:2419847402",
+          "after": "osm:relation:7133843"
+        }
+      ]
+    }
+  ],
+  "qualifications": {
+    "sourcePointAndSectorRetained": true,
+    "originalGeometryUnchanged": true,
+    "noBoundaryCertification": true,
+    "prayerSourceIsNotDisplayIdentity": true
+  }
+}

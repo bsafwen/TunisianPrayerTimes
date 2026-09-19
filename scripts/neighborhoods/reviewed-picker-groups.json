@@ -8822,7 +8822,192 @@
         }
       ]
     },
-    {"id": "osm:relation:7169598", "targetDelegationId": 1522, "expectedGovernorateId": 355, "expectedBase": {"nomAr": "الهيشرية", "lat": 34.829, "lng": 9.376}, "expectedExistingMemberIds": ["osm:relation:7169598"], "expectedTargetMemberIds": ["delegation:1522"], "members": [{"id": "osm:relation:7169598", "expectedKind": "sector", "expectedSourceId": "osm", "expectedName": "الهيشرية", "expectedParentName": "معتمدية الهيشرية", "expectedDelegationId": 1522, "expectedLat": 34.895, "expectedLng": 9.40957, "expectedOriginalTags": {"admin_level": "6", "boundary": "administrative", "name": "الهيشرية", "name:ar": "الهيشرية", "name:fr": "El Hichria", "ref:tn:codegeo": "435154"}, "originalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c", "packedGeometrySha256": "b18fb8cdb817f982856a99e10e9879317c4c68da76cf2eb327e1ed4d59b3414c"}], "identityEvidence": [{"id": "osm:relation:7169598", "accepted": true, "reasons": [], "expectedOriginalTags": {"admin_level": "6", "boundary": "administrative", "name": "الهيشرية", "name:ar": "الهيشرية", "name:fr": "El Hichria", "ref:tn:codegeo": "435154"}, "effectiveOriginalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c", "method": "reviewed_current_sector_transfer", "sourceCode": "435154", "currentCode": "436451", "code": "435154", "currentOfficialRecord": {"governorateCode": "43", "governorateFr": "Sidi bouzid", "governorateAr": "سيدي بوزيد", "delegationCode": "4364", "delegationFr": "El hichria", "delegationAr": "الهيشرية", "sectorCode": "436451", "sectorFr": "El hichria", "sectorAr": "الهيشرية", "sourceRows": {"Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628, "Nombre_de_Logements_par_Secteurs.xlsx": 2822, "Nombre_de_menages_par_Secteurs.xlsx": 2817}}, "expectedCuration": {"id": "osm:relation:7169598", "expectedKind": "sector", "expectedTags": {"name:ar": "الهيشرية", "ref:tn:codegeo": "435154"}, "action": "administrative_context", "parentNames": ["معتمدية الهيشرية", "الهيشرية", "El Hichria", "El hichria"], "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4364 (El hichria), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.", "evidence": ["https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107", "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx", "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx", "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx", "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"], "reviewedOfficialSector": {"sectorCode": "436451", "sectorAr": "الهيشرية", "sectorFr": "El hichria", "delegationCode": "4364", "delegationAr": "الهيشرية", "delegationFr": "El hichria", "governorateCode": "43", "sourceRows": {"Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628, "Nombre_de_Logements_par_Secteurs.xlsx": 2822, "Nombre_de_menages_par_Secteurs.xlsx": 2817}}, "identityReview": {"oldOfficialSectorCode": "435154", "oldOfficialPages": [107], "oldParentSourceIds": ["osm:relation:7169656"], "oldParentFullyContainsSourceSector": true, "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."}, "unresolved": ["No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."]}, "nameEquivalence": {"displayName": "الهيشرية", "displayParentName": "معتمدية الهيشرية", "officialSectorAr": "الهيشرية", "officialDelegationAr": "الهيشرية"}, "originalCodedParentEvidence": [{"id": "osm:relation:7169656", "sourceCode": "4351", "expectedOriginalTags": {"admin_level": "5", "boundary": "administrative", "name": "معتمدية سيدي بوزيد الغربية", "name:ar": "معتمدية سيدي بوزيد الغربية", "name:es": "Delegación Sidi Buzid Oeste", "name:fr": "Délégation Sidi Bouzid Ouest", "ref:tn:codegeo": "4351", "ref:tn:hasc_2": "TN.SZ.SO", "sorting_name": "سيدي بوزيد الغربية", "sorting_name:ar": "سيدي بوزيد الغربية", "sorting_name:es": "Sidi Buzid Oeste"}, "effectiveOriginalGeometrySha256": "ffb474834ef27e20c7c823860f163a14a6c1cb77f141aa1a32db0e18590c55d3", "containsSourceSector": true, "containsEveryGroupMember": true}], "sourceVintageEvidence": {"oldSourceCode": "435154", "oldOfficialRows": [{"code": "435154", "nameFr": "EL Hichria", "nameAr": "الهيشرية", "delegationHeading": "Delegation Sidi Bouzid Ouest Code secteur", "page": 107}], "isie2022MembershipEvidence": [{"governorate": "سيدي بوزيد", "delegation": "سيدي بوزيد الغربية", "sector": "الهيشرية", "pages": [53]}], "currentCode": "436451", "finding": "Existing curation already includes reviewedOfficialSector436451 and old435154 identity evidence, INS2012 p107 and all three current tables. The grouping proposal read the retained raw code instead of this accepted crosswalk.", "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."}}], "retainedDisplayReference": {"schemaVersion": 1, "method": "reviewed_hichria_retained_display_reference", "reviewEvidence": {"file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/hichria-coordinate47-proof.json", "sha256": "f442c30d0d58efe1489263edee6d14b5c02bfc33c2d81877ec0c5c50b695e6d8"}}},
+    {
+      "id": "osm:relation:7169598",
+      "targetDelegationId": 1522,
+      "expectedGovernorateId": 355,
+      "expectedBase": {
+        "nomAr": "الهيشرية",
+        "lat": 34.8742313,
+        "lng": 9.435056
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7169598"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:1522"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7169598",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "الهيشرية",
+          "expectedParentName": "معتمدية الهيشرية",
+          "expectedDelegationId": 1522,
+          "expectedLat": 34.895,
+          "expectedLng": 9.40957,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الهيشرية",
+            "name:ar": "الهيشرية",
+            "name:fr": "El Hichria",
+            "ref:tn:codegeo": "435154"
+          },
+          "originalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c",
+          "packedGeometrySha256": "b18fb8cdb817f982856a99e10e9879317c4c68da76cf2eb327e1ed4d59b3414c"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "id": "osm:relation:7169598",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الهيشرية",
+            "name:ar": "الهيشرية",
+            "name:fr": "El Hichria",
+            "ref:tn:codegeo": "435154"
+          },
+          "effectiveOriginalGeometrySha256": "98cb9ae0f0f86214e90835a749f41da1c1dc8bed8599f83b355763e19eb3f54c",
+          "method": "reviewed_current_sector_transfer",
+          "sourceCode": "435154",
+          "currentCode": "436451",
+          "code": "435154",
+          "currentOfficialRecord": {
+            "governorateCode": "43",
+            "governorateFr": "Sidi bouzid",
+            "governorateAr": "سيدي بوزيد",
+            "delegationCode": "4364",
+            "delegationFr": "El hichria",
+            "delegationAr": "الهيشرية",
+            "sectorCode": "436451",
+            "sectorFr": "El hichria",
+            "sectorAr": "الهيشرية",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 2822,
+              "Nombre_de_menages_par_Secteurs.xlsx": 2817
+            }
+          },
+          "expectedCuration": {
+            "id": "osm:relation:7169598",
+            "expectedKind": "sector",
+            "expectedTags": {
+              "name:ar": "الهيشرية",
+              "ref:tn:codegeo": "435154"
+            },
+            "action": "administrative_context",
+            "parentNames": [
+              "معتمدية الهيشرية",
+              "الهيشرية",
+              "El Hichria",
+              "El hichria"
+            ],
+            "reason": "The old INS code and sector name establish the source identity. All three INS RGPH2024 raw tables place that sector in delegation 4364 (El hichria), also corroborated by the ISIE 2023 locality hierarchy. The source still uses its former parent code and boundary context; update membership context while retaining the sector name and geometry.",
+            "evidence": [
+              "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=107",
+              "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+              "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+              "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+            ],
+            "reviewedOfficialSector": {
+              "sectorCode": "436451",
+              "sectorAr": "الهيشرية",
+              "sectorFr": "El hichria",
+              "delegationCode": "4364",
+              "delegationAr": "الهيشرية",
+              "delegationFr": "El hichria",
+              "governorateCode": "43",
+              "sourceRows": {
+                "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57628,
+                "Nombre_de_Logements_par_Secteurs.xlsx": 2822,
+                "Nombre_de_menages_par_Secteurs.xlsx": 2817
+              }
+            },
+            "identityReview": {
+              "oldOfficialSectorCode": "435154",
+              "oldOfficialPages": [
+                107
+              ],
+              "oldParentSourceIds": [
+                "osm:relation:7169656"
+              ],
+              "oldParentFullyContainsSourceSector": true,
+              "support": "A complete adjacent transfer group agrees across the old source identities, the 2024 registry and the ISIE locality hierarchy. Ghedabna adjoins the existing Chebba polygon; the three Hamma Jerid sectors form one connected group."
+            },
+            "unresolved": [
+              "No current delegation polygon exists in the source. Reviewed parent names establish membership context only, without inventing a boundary or certifying the sector polygon."
+            ]
+          },
+          "nameEquivalence": {
+            "displayName": "الهيشرية",
+            "displayParentName": "معتمدية الهيشرية",
+            "officialSectorAr": "الهيشرية",
+            "officialDelegationAr": "الهيشرية"
+          },
+          "originalCodedParentEvidence": [
+            {
+              "id": "osm:relation:7169656",
+              "sourceCode": "4351",
+              "expectedOriginalTags": {
+                "admin_level": "5",
+                "boundary": "administrative",
+                "name": "معتمدية سيدي بوزيد الغربية",
+                "name:ar": "معتمدية سيدي بوزيد الغربية",
+                "name:es": "Delegación Sidi Buzid Oeste",
+                "name:fr": "Délégation Sidi Bouzid Ouest",
+                "ref:tn:codegeo": "4351",
+                "ref:tn:hasc_2": "TN.SZ.SO",
+                "sorting_name": "سيدي بوزيد الغربية",
+                "sorting_name:ar": "سيدي بوزيد الغربية",
+                "sorting_name:es": "Sidi Buzid Oeste"
+              },
+              "effectiveOriginalGeometrySha256": "ffb474834ef27e20c7c823860f163a14a6c1cb77f141aa1a32db0e18590c55d3",
+              "containsSourceSector": true,
+              "containsEveryGroupMember": true
+            }
+          ],
+          "sourceVintageEvidence": {
+            "oldSourceCode": "435154",
+            "oldOfficialRows": [
+              {
+                "code": "435154",
+                "nameFr": "EL Hichria",
+                "nameAr": "الهيشرية",
+                "delegationHeading": "Delegation Sidi Bouzid Ouest Code secteur",
+                "page": 107
+              }
+            ],
+            "isie2022MembershipEvidence": [
+              {
+                "governorate": "سيدي بوزيد",
+                "delegation": "سيدي بوزيد الغربية",
+                "sector": "الهيشرية",
+                "pages": [
+                  53
+                ]
+              }
+            ],
+            "currentCode": "436451",
+            "finding": "Existing curation already includes reviewedOfficialSector436451 and old435154 identity evidence, INS2012 p107 and all three current tables. The grouping proposal read the retained raw code instead of this accepted crosswalk.",
+            "basis": "Exact old source code and original identity plus documented administrative transfer/current identity; never a same-name-only replacement."
+          }
+        }
+      ],
+      "retainedDisplayReference": {
+        "schemaVersion": 1,
+        "method": "reviewed_hichria_retained_display_reference",
+        "reviewEvidence": {
+          "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/dependency-successors/hichria-coordinate-successor.json",
+          "sha256": "48233177974c5d3b056ea197f3c4866ec971eb69f8979a6a409b248c03edad07"
+        }
+      }
+    },
     {
       "id": "osm:relation:7165288",
       "targetDelegationId": 524,
@@ -9857,7 +10042,7 @@
           },
           "prayerSourceReference": {
             "file": "prayer-source-coordinates.json",
-            "sha256": "091711bafdf85d4f94a09141b555b480dadc18e8f188f0e8989c1d3162b87b9f",
+            "sha256": "bbe49b94878d664068ab9cf5afe8db0d55b210320e73abc4d9a67ef82f7a3e6a",
             "expectedCorrection": {
               "delegationId": 499,
               "expectedGovernorateId": 354,
@@ -10735,8 +10920,8 @@
         "schemaVersion": 1,
         "method": "reviewed_menzel_bouzaiane_spelling_equivalence",
         "reviewEvidence": {
-          "file": "menzel-bouzaiane-display-reviews/2026-09-13/spelling-equivalence-proof.json",
-          "sha256": "b7fb40037b30ac9b5366235faac09ad336f39de5f75593d8f3fea0bfcd28bf99"
+          "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/dependency-successors/menzel-bouzaiane-protected-prayer-successor.json",
+          "sha256": "0f0a66deef8d5d6aa514140c1e386f70cf1ac4d0cb17e8fa5ef60d499782ba68"
         }
       }
     },
@@ -11267,8 +11452,8 @@
       "expectedGovernorateId": 351,
       "expectedBase": {
         "nomAr": "السمار",
-        "lat": 32.872,
-        "lng": 10.89
+        "lat": 32.9946554,
+        "lng": 10.8222443
       },
       "expectedExistingMemberIds": [
         "osm:relation:7143872",
@@ -11304,7 +11489,7 @@
           "expectedSourceId": "osm",
           "expectedName": "الصمار",
           "expectedParentName": "معتمدية الصمار",
-          "expectedDelegationId": 1524,
+          "expectedDelegationId": 472,
           "expectedLat": 32.99975,
           "expectedLng": 10.818201,
           "expectedOriginalTags": {
@@ -11405,8 +11590,8 @@
         "schemaVersion": 1,
         "method": "reviewed_settlement_retained_display_reference",
         "reviewEvidence": {
-          "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/smar-after-property-exclusion/retained-display-reference-proof.json",
-          "sha256": "5fbe0d64d9e170f92a2f8e5bfaf2c85c99a6b9971a0666d9b2fae63ddf1b31fc"
+          "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/dependency-successors/smar-retained-display-proof.json",
+          "sha256": "16764cf3b3fde7cd6a675ef542f7e171297f498c015277e3760305a1ffe03d23"
         }
       }
     },
@@ -11971,16 +12156,124 @@
           "sha256": "f4ebd0f2bf18bfd76470a73e89c5f3cd211129dc7b3736afc9c10ba541cf8f03"
         }
       }
+    },
+    {
+      "id": "osm:relation:7202851",
+      "targetDelegationId": 401,
+      "expectedGovernorateId": 342,
+      "expectedBase": {
+        "nomAr": "جبل جلود",
+        "lat": 36.7693,
+        "lng": 10.2032
+      },
+      "expectedExistingMemberIds": [
+        "osm:relation:7202851"
+      ],
+      "expectedTargetMemberIds": [
+        "delegation:401"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7202851",
+          "expectedKind": "sector",
+          "expectedSourceId": "osm",
+          "expectedName": "جبل الجلود",
+          "expectedParentName": "معتمدية جبل الجلود",
+          "expectedDelegationId": 401,
+          "expectedLat": 36.76861,
+          "expectedLng": 10.204226,
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جبل الجلود",
+            "name:ar": "جبل الجلود",
+            "name:fr": "Djebel Djeloud",
+            "ref:tn:codegeo": "116857"
+          },
+          "originalGeometrySha256": "38eb44b1085b9071429753cd1f166edf5e1423ff45c8162d1ed6ccd2e9ec0487",
+          "packedGeometrySha256": "aad19eec6ebda2808c728ebec218c3c497e0b9b3d9422835895a6dd42fe4d473"
+        }
+      ],
+      "identityEvidence": [
+        {
+          "method": "current_coded_sector",
+          "id": "osm:relation:7202851",
+          "code": "116857",
+          "currentOfficialRecord": {
+            "governorateCode": "11",
+            "governorateFr": "Tunis",
+            "governorateAr": "تونس",
+            "delegationCode": "1168",
+            "delegationFr": "Djebel djelloud",
+            "delegationAr": "جبل الجلود",
+            "sectorCode": "116857",
+            "sectorFr": "Djebel djeloud",
+            "sectorAr": "جبل الجلود",
+            "sourceRows": {
+              "Population_Secteur_Age_Sexe_Dynamique.xlsx": 4761,
+              "Nombre_de_Logements_par_Secteurs.xlsx": 149,
+              "Nombre_de_menages_par_Secteurs.xlsx": 149
+            }
+          },
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جبل الجلود",
+            "name:ar": "جبل الجلود",
+            "name:fr": "Djebel Djeloud",
+            "ref:tn:codegeo": "116857"
+          },
+          "effectiveOriginalGeometrySha256": "38eb44b1085b9071429753cd1f166edf5e1423ff45c8162d1ed6ccd2e9ec0487"
+        },
+        {
+          "method": "current_coded_namesake_administrative_parent",
+          "id": "osm:relation:4134869",
+          "code": "1168",
+          "name": "معتمدية جبل الجلود",
+          "accepted": true,
+          "reasons": [],
+          "expectedOriginalTags": {
+            "admin_level": "5",
+            "alt_name:fr": "Djebel Jelloud",
+            "boundary": "administrative",
+            "name": "معتمدية جبل الجلود",
+            "name:ar": "معتمدية جبل الجلود",
+            "name:fr": "Délégation Djebel Jelloud",
+            "ref:tn:codegeo": "1168",
+            "ref:tn:hasc_2": "TN.TU.JJ",
+            "wikidata": "Q3032829"
+          },
+          "effectiveOriginalGeometrySha256": "15fa79373300b8b01d965e32a11157398099a5d00271d11076477a9b313bd0d0",
+          "currentOfficialRecord": {
+            "governorateCode": "11",
+            "governorateAr": "تونس",
+            "governorateFr": "Tunis",
+            "delegationCode": "1168",
+            "delegationAr": "جبل الجلود",
+            "delegationFr": "Djebel djelloud"
+          }
+        }
+      ],
+      "reviewedSpellingEquivalence": {
+        "schemaVersion": 1,
+        "method": "reviewed_paired_article_spelling_equivalence",
+        "reviewEvidence": {
+          "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/paired-spelling-review.json",
+          "sha256": "b988d4d3410713af5f0d863b7dc92a903676b664dd8bb8f94cff31cdb2388a35"
+        }
+      }
     }
   ],
   "additionalReviewEvidence": [
     {
-      "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/held12-ezzouhour-hichria-coordinate47-successor.json",
-      "sha256": "8c0791511b229683409ac869e1c7ebb80687e52962ca7692908c45d42a0ff42c"
+      "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/dependency-successors/held-eligible-successor.json",
+      "sha256": "1988206561373061123d14eb26b2f2f6a3d42e91efd68519358b330400a7ba9d"
     },
     {
-      "file": "coordinate-reviews/inm-published-bardo-ksar-bir-batch-2026-09-19/dependency-successors/bousalem-coordinate47-proof.json",
-      "sha256": "0187080213473b33fb544249e1cbb6602cc477e98848ffd84f3df34abe865d00"
+      "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/dependency-successors/bousalem-coordinate-successor.json",
+      "sha256": "9b1a0bc78dcc50dab9e3777956175d01225dbf7aef80dc77109830249f4d3a31"
     },
     {
       "file": "six-city-base-reviews/six-city-base-picker-proof.json",
@@ -11991,8 +12284,8 @@
       "sha256": "938696ae5cc6bd0675dae934168c1001a11fcd0607de1f088e4ed3a653f8e33b"
     },
     {
-      "file": "menzel-bouzaiane-display-reviews/2026-09-13/eligible-picker-proof.json",
-      "sha256": "deb1b2ddfe1fa018df0d1239ad939b10535646c92f800b8d471d7fa1722cacd7"
+      "file": "coordinate-reviews/hichria1522-physical-selection-2026-09-19/dependency-successors/menzel-bouzaiane-eligible-successor.json",
+      "sha256": "98062a31bfd97474e8711a47fd071288a7a168ce575c073e8aad0ce3a933aaf5"
     },
     {
       "file": "coordinate-reviews/inm-published-sbiba576-2026-09-19/eligible-picker-proof.json",
@@ -12011,8 +12304,8 @@
       "sha256": "c19abe02a426eb11bdbb9ffb1f3cea676ac9b7c9e441d96cfa13b9b04240c2d7"
     },
     {
-      "file": "locality-group-reviews/gobaa-property-batch-2026-09-19/dependency-successors/smar-after-property-exclusion/eligible-picker-proof.json",
-      "sha256": "46cd58e25d8f609fef65cca4f3c5a396ed7e5592a09c193f6c1c70177b3894f9"
+      "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/dependency-successors/smar-eligible-proof.json",
+      "sha256": "30d468c42a3f3e3780587bd0a6b5eb043cba8e5bfa6561e59eae3058a6914b1d"
     },
     {
       "file": "coordinate-reviews/inm-published-zouaouine570-2026-09-19/eligible-picker-proof.json",
@@ -12029,6 +12322,10 @@
     {
       "file": "retained-group-reviews/douar-oued-2026-09-19/553-eligible-picker-proof.json",
       "sha256": "a0189711239ec10d87ef59e2657434d301e125ea2655d12e972557d66d53ae26"
+    },
+    {
+      "file": "point-base-display-reviews/jebel-complete-display-2026-09-19/eligible-picker-proof.json",
+      "sha256": "267b3f8b45f723c1acbc0bf872edcc1817ab7d0010cf45640bb7b726fdc445d8"
     }
   ],
   "additionalCheckpointEvidence": {
@@ -15888,7 +16185,12 @@
             ],
             "kind": "sector",
             "parentName": "معتمدية وادي الليل",
-            "contextAliases": ["Délégation Oued Ellil", "Oued Ellil", "معتمدية وادي الليل", "معتمدية وادي اللیل"],
+            "contextAliases": [
+              "Délégation Oued Ellil",
+              "Oued Ellil",
+              "معتمدية وادي الليل",
+              "معتمدية وادي اللیل"
+            ],
             "governorateId": 360,
             "lat": 36.820863,
             "lng": 10.060016,
@@ -16261,8 +16563,8 @@
       "id": "osm:way:26303952",
       "targetDelegationId": 488,
       "reviewEvidence": {
-        "file": "coordinate-reviews/inm-published-hazoua-smar-2026-09-19/dependency-successors/488-protected-nearest-proof.json",
-        "sha256": "724da197ac0c7f6c831cb2f331baad5133c54b4638c6abe7d3fcf099f4c40916"
+        "file": "coordinate-reviews/smar-degache-physical-selection-2026-09-19/dependency-successors/ben-guerdane-protected-source-proof.json",
+        "sha256": "6abb0b5540fa2d418fc9a78c11f0128ac77e930e2b1a78f79fedcec108469d77"
       }
     },
     {
