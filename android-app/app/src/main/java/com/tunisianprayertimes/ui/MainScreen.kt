@@ -40,6 +40,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -113,10 +114,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathOperation
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
@@ -137,6 +141,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -202,8 +207,6 @@ import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
-import com.tunisianprayertimes.ui.theme.HeaderEnd
-import com.tunisianprayertimes.ui.theme.HeaderStart
 import com.tunisianprayertimes.ui.theme.NextPrayerBg
 import com.tunisianprayertimes.ui.theme.PrayerNameColor
 import com.tunisianprayertimes.ui.theme.RamadanBg
@@ -253,6 +256,9 @@ private const val DEFAULT_TIMER_MINUTES = 15
 private const val DEFAULT_FIXED_ALARM_HOUR = 8
 private const val DEFAULT_FIXED_ALARM_MINUTE = 0
 private val MainContentBottomPadding = 76.dp
+private val BottomNavigationMinHeight = 64.dp
+private val BottomNavigationVerticalPadding = 6.dp
+private val BottomNavigationItemFixedHeight = 29.dp
 private val WakeAlarmAddButtonSize = 64.dp
 private val WakeAlarmAddButtonBottomPadding = 92.dp
 private val WakeAlarmAddButtonShadowElevation = 8.dp
@@ -264,6 +270,18 @@ private val SilencedHeroStart = Color(0xFF3A1F2E)
 private val SilencedHeroEnd = Color(0xFF6D3543)
 private val SilencedHeroPillBackground = Color(0xFFF7E8EC)
 private val SilencedHeroPillText = Color(0xFF3A1F2E)
+
+// Emerald & gold branded header / hero card palette.
+private val HeaderEmeraldTop = Color(0xFF043B31)
+private val HeaderEmeraldBottom = Color(0xFF0C5748)
+private val HeaderCream = Color(0xFFF7EFD9)
+private val HeaderTitleColor = Color(0xFFFDF8EA)
+private val HeaderAttributionColor = Color(0xFFB8E0D8)
+private val HeaderOrnamentWidth = 70.dp
+private val HeaderLogoHeight = 72.dp
+private val HeaderBasmalahHeight = 32.dp
+private val HeaderStripHeight = 12.dp
+private val HeroBackdropSilhouette = Color(0xFF00241D)
 
 private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Today -> "prayers"
@@ -675,25 +693,26 @@ fun MainScreen(
         }
     }
 
+    val density = LocalDensity.current
+    val navigationBarInsetPx = WindowInsets.navigationBars.getBottom(density)
+    // Height the scrolling content keeps clear of the bottom navigation. The surface
+    // consumes the system navigation inset once; the measured surface height already
+    // includes it, so the scrolling content must not add it again.
+    var bottomNavigationOccupiedPx by remember {
+        mutableIntStateOf(
+            with(density) { MainContentBottomPadding.roundToPx() } + navigationBarInsetPx,
+        )
+    }
+
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(BgCream)
-                .padding(bottom = MainContentBottomPadding)
-                .navigationBarsPadding()
+                .padding(bottom = with(density) { bottomNavigationOccupiedPx.toDp() })
                 .verticalScroll(selectedDestinationScrollState)
         ) {
             IslamicHeader()
-
-            Image(
-                painter = painterResource(R.drawable.islamic_border),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(6.dp),
-                contentScale = ContentScale.FillBounds
-            )
 
             Column(
                 modifier = Modifier
@@ -992,19 +1011,18 @@ fun MainScreen(
                 .align(Alignment.TopCenter)
                 .fillMaxWidth()
                 .windowInsetsTopHeight(WindowInsets.statusBars)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(HeaderStart, HeaderEnd),
-                        start = Offset(0f, 0f),
-                        end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
-                    )
-                )
+                .background(HeaderEmeraldTop)
         )
 
         Surface(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .onSizeChanged { size ->
+                    bottomNavigationOccupiedPx = size.height + with(density) {
+                        (MainContentBottomPadding - BottomNavigationMinHeight).roundToPx()
+                    }
+                },
             color = Color.White,
             tonalElevation = 8.dp
         ) {
@@ -1013,68 +1031,97 @@ fun MainScreen(
                     .fillMaxWidth()
                     .navigationBarsPadding()
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(64.dp)
-                        .padding(horizontal = 8.dp, vertical = 6.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    mainDestinations.forEachIndexed { index, destination ->
-                        val selected = currentDestinationIndex == index
-                        val label = stringResource(destination.labelRes)
-                        val tabIndicatorColor by animateColorAsState(
-                            targetValue = if (selected) GreenPrimary else Color.Transparent,
-                            label = "bottomTabIndicator"
-                        )
-                        val tabContentColor by animateColorAsState(
-                            targetValue = if (selected) GreenPrimaryDark else TextMuted,
-                            label = "bottomTabContent"
-                        )
+                BoxWithConstraints(Modifier.fillMaxWidth()) {
+                    // Content-driven height: wrapped labels grow the bar instead of
+                    // being clipped by a fixed 64dp row.
+                    val textMeasurer = rememberTextMeasurer()
+                    val labels = mainDestinations.map { stringResource(it.labelRes) }
+                    val labelStyle = LocalTextStyle.current.merge(
+                        TextStyle(fontSize = 11.sp, fontWeight = FontWeight.Bold),
+                    )
+                    val itemWidthPx = (constraints.maxWidth - with(density) { 16.dp.toPx() }) /
+                        mainDestinations.size
+                    val labelWidthPx = (itemWidthPx - with(density) { 12.dp.toPx() }).coerceAtLeast(1f)
+                    val labelHeightPx = labels.maxOf { label ->
+                        textMeasurer.measure(
+                            text = label,
+                            style = labelStyle,
+                            constraints = Constraints(maxWidth = labelWidthPx.toInt().coerceAtLeast(1)),
+                        ).size.height
+                    }
+                    val minContentHeightPx = with(density) {
+                        (BottomNavigationMinHeight - BottomNavigationVerticalPadding * 2).toPx()
+                    }
+                    val itemContentHeightPx = with(density) {
+                        BottomNavigationItemFixedHeight.toPx()
+                    } + labelHeightPx
+                    val rowHeight = with(density) {
+                        (maxOf(minContentHeightPx, itemContentHeightPx) +
+                            BottomNavigationVerticalPadding.toPx() * 2f).toDp()
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(rowHeight)
+                            .padding(horizontal = 8.dp, vertical = BottomNavigationVerticalPadding),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        mainDestinations.forEachIndexed { index, destination ->
+                            val selected = currentDestinationIndex == index
+                            val label = stringResource(destination.labelRes)
+                            val tabIndicatorColor by animateColorAsState(
+                                targetValue = if (selected) GreenPrimary else Color.Transparent,
+                                label = "bottomTabIndicator"
+                            )
+                            val tabContentColor by animateColorAsState(
+                                targetValue = if (selected) GreenPrimaryDark else TextMuted,
+                                label = "bottomTabContent"
+                            )
 
-                        Column(
-                            modifier = Modifier
-                                .weight(1f)
-                                .fillMaxSize()
-                                .padding(horizontal = 4.dp)
-                                .testTag(destination.testTag())
-                                .clip(RoundedCornerShape(12.dp))
-                                .clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication = null,
-                                ) { selectedDestinationIndex = index },
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Box(
+                            Column(
                                 modifier = Modifier
-                                    .width(26.dp)
-                                    .height(3.dp)
-                                    .clip(RoundedCornerShape(2.dp))
-                                    .background(tabIndicatorColor)
-                            )
+                                    .weight(1f)
+                                    .fillMaxSize()
+                                    .padding(horizontal = 4.dp)
+                                    .testTag(destination.testTag())
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = null,
+                                    ) { selectedDestinationIndex = index },
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .width(26.dp)
+                                        .height(3.dp)
+                                        .clip(RoundedCornerShape(2.dp))
+                                        .background(tabIndicatorColor)
+                                )
 
-                            Spacer(Modifier.height(5.dp))
+                                Spacer(Modifier.height(5.dp))
 
-                            Icon(
-                                painter = painterResource(destination.iconRes),
-                                contentDescription = label,
-                                tint = tabContentColor,
-                                modifier = Modifier.size(18.dp)
-                            )
+                                Icon(
+                                    painter = painterResource(destination.iconRes),
+                                    contentDescription = label,
+                                    tint = tabContentColor,
+                                    modifier = Modifier.size(18.dp)
+                                )
 
-                            Spacer(Modifier.height(3.dp))
+                                Spacer(Modifier.height(3.dp))
 
-                            Text(
-                                text = label,
-                                fontSize = 11.sp,
-                                fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
-                                color = tabContentColor,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 2.dp)
-                            )
+                                Text(
+                                    text = label,
+                                    fontSize = 11.sp,
+                                    fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
+                                    color = tabContentColor,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 2.dp)
+                                )
+                            }
                         }
                     }
                 }
@@ -1086,8 +1133,11 @@ fun MainScreen(
                 onClick = { quickAddVisible = true },
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .navigationBarsPadding()
-                    .padding(end = 24.dp, bottom = WakeAlarmAddButtonBottomPadding),
+                    .padding(
+                        end = 24.dp,
+                        bottom = with(density) { bottomNavigationOccupiedPx.toDp() } +
+                            (WakeAlarmAddButtonBottomPadding - MainContentBottomPadding),
+                    ),
             )
         }
 
@@ -1193,55 +1243,276 @@ fun MainScreen(
 
 @Composable
 private fun IslamicHeader() {
+    val fontScale = LocalDensity.current.fontScale
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(
-                brush = Brush.linearGradient(
-                    colors = listOf(HeaderStart, HeaderEnd),
-                    start = Offset(0f, 0f),
-                    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
+                brush = Brush.verticalGradient(
+                    colors = listOf(HeaderEmeraldTop, HeaderEmeraldBottom),
                 )
             )
-            .statusBarsPadding()
-            .padding(top = 2.dp, bottom = 6.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Bismillah
-        Image(
-            painter = painterResource(R.drawable.basmalah),
-            contentDescription = "بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(28.dp)
-                .padding(horizontal = 42.dp),
-            contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(Gold)
+                .statusBarsPadding()
+        ) {
+            // Nonessential side ornament yields to the content when text is
+            // enlarged, so arches and lanterns never crowd or overlap it.
+            val showOrnaments = fontScale <= 1.3f && maxWidth >= 340.dp
+            if (showOrnaments) {
+                HeaderOrnaments(Modifier.matchParentSize())
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = if (showOrnaments) HeaderOrnamentWidth + 4.dp else 20.dp,
+                        end = if (showOrnaments) HeaderOrnamentWidth + 4.dp else 20.dp,
+                        top = 10.dp,
+                        bottom = 12.dp,
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                // 1. Mosque app logo.
+                Image(
+                    painter = painterResource(R.drawable.header_mosque_logo),
+                    contentDescription = stringResource(R.string.app_name),
+                    modifier = Modifier.height(HeaderLogoHeight),
+                    contentScale = ContentScale.Fit,
+                )
+                Spacer(Modifier.height(2.dp))
+                // 2. Thin gold curved accent beneath the logo.
+                HeaderLogoCurve(
+                    modifier = Modifier
+                        .width(118.dp)
+                        .height(8.dp)
+                )
+                Spacer(Modifier.height(2.dp))
+                // 3. Calligraphic basmalah with its flourishes and diamond accents.
+                Image(
+                    painter = painterResource(R.drawable.basmalah),
+                    contentDescription = "بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(HeaderBasmalahHeight),
+                    contentScale = ContentScale.Fit,
+                    colorFilter = ColorFilter.tint(Gold)
+                )
+                Spacer(Modifier.height(8.dp))
+                // 4. Native title.
+                Text(
+                    text = stringResource(R.string.subtitle),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = HeaderTitleColor,
+                    textAlign = TextAlign.Center,
+                )
+                Spacer(Modifier.height(4.dp))
+                // 5. Existing data-source attribution.
+                Text(
+                    text = stringResource(R.string.source),
+                    fontSize = 11.sp,
+                    color = HeaderAttributionColor,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 15.sp,
+                )
+            }
+        }
+        // Narrow cream transition strip below the header content.
+        HeaderDiamondStrip()
+    }
+}
+
+@Composable
+private fun HeaderOrnaments(modifier: Modifier = Modifier) {
+    Canvas(modifier = modifier) {
+        val sideWidth = HeaderOrnamentWidth.toPx()
+        val inset = 9.dp.toPx()
+        val archWidth = sideWidth - inset * 2f
+        val apexY = 30.dp.toPx()
+        val shoulderY = 76.dp.toPx()
+        val outlineColor = Gold.copy(alpha = 0.34f)
+        val innerOutlineColor = Gold.copy(alpha = 0.18f)
+        val patternColor = Gold.copy(alpha = 0.09f)
+        val strokeWidth = 1.1.dp.toPx()
+
+        fun drawArch(
+            left: Float,
+            top: Float,
+            right: Float,
+            shoulder: Float,
+            color: Color,
+            stroke: Float,
+        ) {
+            val path = Path().apply {
+                moveTo(left, size.height)
+                lineTo(left, shoulder)
+                quadraticBezierTo(left, top, (left + right) / 2f, top)
+                quadraticBezierTo(right, top, right, shoulder)
+                lineTo(right, size.height)
+            }
+            drawPath(path, color, style = Stroke(width = stroke))
+        }
+
+        fun drawLantern(centerX: Float) {
+            val chainTop = 6.dp.toPx()
+            val capTop = 14.dp.toPx()
+            val bodyTop = capTop + 6.dp.toPx()
+            val bodyBottom = bodyTop + 24.dp.toPx()
+            drawLine(
+                color = Gold.copy(alpha = 0.7f),
+                start = Offset(centerX, chainTop),
+                end = Offset(centerX, capTop),
+                strokeWidth = 1.dp.toPx(),
+            )
+            drawCircle(
+                color = Gold.copy(alpha = 0.85f),
+                radius = 1.6.dp.toPx(),
+                center = Offset(centerX, chainTop),
+            )
+            val cap = Path().apply {
+                moveTo(centerX - 7.dp.toPx(), capTop + 4.dp.toPx())
+                quadraticBezierTo(centerX, capTop - 4.dp.toPx(), centerX + 7.dp.toPx(), capTop + 4.dp.toPx())
+                close()
+            }
+            drawPath(cap, Gold.copy(alpha = 0.8f))
+            val body = Path().apply {
+                moveTo(centerX - 6.dp.toPx(), bodyTop)
+                lineTo(centerX + 6.dp.toPx(), bodyTop)
+                lineTo(centerX + 8.dp.toPx(), bodyTop + 8.dp.toPx())
+                lineTo(centerX + 6.dp.toPx(), bodyBottom)
+                lineTo(centerX - 6.dp.toPx(), bodyBottom)
+                lineTo(centerX - 8.dp.toPx(), bodyTop + 8.dp.toPx())
+                close()
+            }
+            drawPath(body, Gold.copy(alpha = 0.16f))
+            drawPath(body, Gold.copy(alpha = 0.8f), style = Stroke(width = 1.dp.toPx()))
+            drawLine(
+                color = Gold.copy(alpha = 0.8f),
+                start = Offset(centerX - 5.dp.toPx(), bodyBottom + 2.dp.toPx()),
+                end = Offset(centerX + 5.dp.toPx(), bodyBottom + 2.dp.toPx()),
+                strokeWidth = 2.dp.toPx(),
+                cap = StrokeCap.Round,
+            )
+        }
+
+        fun drawSide(mirror: Boolean) {
+            val left = if (mirror) size.width - sideWidth + inset else inset
+            val right = if (mirror) size.width - inset else inset + archWidth
+            val clipLeft = if (mirror) size.width - sideWidth else 0f
+            clipRect(clipLeft, 0f, clipLeft + sideWidth, size.height) {
+                val spacing = 14.dp.toPx()
+                val diagonal = size.height
+                var offset = -diagonal
+                while (offset < sideWidth + diagonal) {
+                    val x = clipLeft + offset
+                    val opposite = x + diagonal
+                    if (mirror) {
+                        drawLine(
+                            color = patternColor,
+                            start = Offset(opposite, 0f),
+                            end = Offset(x, diagonal),
+                            strokeWidth = 0.8.dp.toPx(),
+                        )
+                        drawLine(
+                            color = patternColor,
+                            start = Offset(opposite, diagonal),
+                            end = Offset(x, 0f),
+                            strokeWidth = 0.8.dp.toPx(),
+                        )
+                    } else {
+                        drawLine(
+                            color = patternColor,
+                            start = Offset(x, 0f),
+                            end = Offset(opposite, diagonal),
+                            strokeWidth = 0.8.dp.toPx(),
+                        )
+                        drawLine(
+                            color = patternColor,
+                            start = Offset(x, diagonal),
+                            end = Offset(opposite, 0f),
+                            strokeWidth = 0.8.dp.toPx(),
+                        )
+                    }
+                    offset += spacing
+                }
+            }
+            drawArch(left, apexY, right, shoulderY, outlineColor, strokeWidth)
+            val innerShift = if (mirror) -8.dp.toPx() else 8.dp.toPx()
+            drawArch(
+                left + innerShift,
+                apexY + 7.dp.toPx(),
+                right + innerShift,
+                shoulderY + 7.dp.toPx(),
+                innerOutlineColor,
+                strokeWidth * 0.8f,
+            )
+            drawLantern(if (mirror) size.width - sideWidth / 2f else sideWidth / 2f)
+        }
+
+        drawSide(mirror = false)
+        drawSide(mirror = true)
+    }
+}
+
+@Composable
+private fun HeaderLogoCurve(modifier: Modifier = Modifier) {
+    Canvas(modifier = modifier) {
+        val path = Path().apply {
+            moveTo(0f, size.height * 0.72f)
+            quadraticBezierTo(
+                size.width * 0.5f,
+                size.height * 0.06f,
+                size.width,
+                size.height * 0.72f,
+            )
+        }
+        drawPath(
+            path = path,
+            color = Gold,
+            style = Stroke(width = 1.4.dp.toPx(), cap = StrokeCap.Round),
+        )
+    }
+}
+
+@Composable
+private fun HeaderDiamondStrip() {
+    Canvas(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(HeaderStripHeight)
+            .background(HeaderCream)
+    ) {
+        val hairline = 0.8.dp.toPx()
+        val lineColor = Gold.copy(alpha = 0.35f)
+        val diamondColor = Gold.copy(alpha = 0.92f)
+        drawLine(lineColor, Offset(0f, hairline / 2f), Offset(size.width, hairline / 2f), hairline)
+        drawLine(
+            lineColor,
+            Offset(0f, size.height - hairline / 2f),
+            Offset(size.width, size.height - hairline / 2f),
+            hairline,
         )
 
-        Image(
-            painter = painterResource(R.drawable.mosque_silhouette),
-            contentDescription = stringResource(R.string.app_name),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp),
-            contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(Color(0xB3FFFFFF))
-        )
-
-        Text(
-            text = stringResource(R.string.subtitle),
-            fontSize = 13.sp,
-            color = Color(0xFFB2DFDB),
-            textAlign = TextAlign.Center
-        )
-
-        Text(
-            text = stringResource(R.string.source),
-            fontSize = 10.sp,
-            color = Color(0x80B2DFDB),
-            textAlign = TextAlign.Center
-        )
+        val spacing = 18.dp.toPx()
+        val radius = 3.4.dp.toPx()
+        val count = (size.width / spacing).toInt().coerceAtLeast(1)
+        val rowWidth = (count - 1) * spacing
+        val startX = (size.width - rowWidth) / 2f
+        val centerY = size.height / 2f
+        for (index in 0 until count) {
+            val x = startX + index * spacing
+            val diamond = Path().apply {
+                moveTo(x, centerY - radius)
+                lineTo(x + radius, centerY)
+                lineTo(x, centerY + radius)
+                lineTo(x - radius, centerY)
+                close()
+            }
+            drawPath(diamond, diamondColor)
+        }
     }
 }
 
@@ -4812,7 +5083,6 @@ private fun NextPrayerHeroCard(
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = MainHeroCardHeight)
             .testTag(TestTags.STATUS_CARD)
             .clip(shape)
             .background(
@@ -4824,8 +5094,12 @@ private fun NextPrayerHeroCard(
             )
             .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape)
     ) {
+        // Decorative emerald/gold artwork sits behind the live prayer data.
+        NextPrayerHeroBackdrop(Modifier.matchParentSize())
+
         // Measure at the user's actual font scale, including Android's nonlinear scaling.
-        // Keep the requested text sizes and move content onto another row when necessary.
+        // Keep the requested text sizes and move the countdown onto its own line when
+        // the two groups cannot share the width.
         fun textWidth(text: String, size: androidx.compose.ui.unit.TextUnit, weight: FontWeight): Int =
             textMeasurer.measure(
                 text = text,
@@ -4836,30 +5110,60 @@ private fun NextPrayerHeroCard(
 
         val contentWidth = (constraints.maxWidth - with(density) { 36.dp.roundToPx() }).coerceAtLeast(0)
         val gapWidth = with(density) { 12.dp.roundToPx() }
-        val headingWidth = maxOf(
-            textWidth(titleText, 12.sp, FontWeight.Bold),
-            if (showLiveDateContext) textWidth(liveDateText, 12.sp, FontWeight.SemiBold) else 0,
-        )
+        val pillWidth = textWidth(remainingText, 14.sp, FontWeight.Bold) +
+            with(density) { 24.dp.roundToPx() } +
+            with(density) { 15.dp.roundToPx() } +
+            with(density) { 6.dp.roundToPx() }
+        val titleWidth = textWidth(titleText, 12.sp, FontWeight.Bold)
         val statusWidth = statusText?.let {
             textWidth(it, 12.sp, FontWeight.SemiBold) + with(density) { 11.dp.roundToPx() }
         } ?: 0
-        val stackHeader = statusText != null && headingWidth + gapWidth + statusWidth > contentWidth
-        val detailsWidth = maxOf(
+        // Keep the silence status on the heading line when it fits, as before.
+        val sideInfoWidth = (contentWidth - gapWidth - pillWidth).coerceAtLeast(0)
+        val statusSharesHeading = statusText != null &&
+            titleWidth + gapWidth + statusWidth <= sideInfoWidth
+        val headingRowWidth = if (statusSharesHeading) titleWidth + gapWidth + statusWidth else titleWidth
+        val infoWidth = maxOf(
+            headingRowWidth,
             textWidth(prayerName, 28.sp, FontWeight.Bold),
             textWidth(prayerTimeLineText, 14.sp, FontWeight.SemiBold),
+            if (showLiveDateContext) textWidth(liveDateText, 12.sp, FontWeight.SemiBold) else 0,
+            if (statusSharesHeading) 0 else statusWidth,
         )
-        val remainingWidth = textWidth(remainingText, 14.sp, FontWeight.Bold) +
-            with(density) { 24.dp.roundToPx() }
-        val stackCountdown = detailsWidth + gapWidth + remainingWidth > contentWidth
+        val stackCountdown = infoWidth + gapWidth + pillWidth > contentWidth
 
-        val heading: @Composable (Modifier) -> Unit = { headingModifier ->
-            Column(modifier = headingModifier, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text(
-                    text = titleText,
-                    fontSize = 12.sp,
-                    color = Color.White.copy(alpha = 0.78f),
-                    fontWeight = FontWeight.Bold,
-                )
+        val prayerInfo: @Composable (Modifier) -> Unit = { infoModifier ->
+            Column(
+                modifier = infoModifier,
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                if (statusSharesHeading) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        Text(
+                            text = titleText,
+                            fontSize = 12.sp,
+                            color = Color.White.copy(alpha = 0.78f),
+                            fontWeight = FontWeight.Bold,
+                        )
+                        PhoneStatusNotice(
+                            isPhoneSilenced,
+                            hasDnd,
+                            silenceReason,
+                            Modifier.weight(1f),
+                        )
+                    }
+                } else {
+                    Text(
+                        text = titleText,
+                        fontSize = 12.sp,
+                        color = Color.White.copy(alpha = 0.78f),
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
                 if (showLiveDateContext) {
                     Text(
                         text = liveDateText,
@@ -4868,13 +5172,6 @@ private fun NextPrayerHeroCard(
                         fontWeight = FontWeight.SemiBold,
                     )
                 }
-            }
-        }
-        val prayerDetails: @Composable (Modifier) -> Unit = { detailsModifier ->
-            Column(
-                modifier = detailsModifier,
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
                 Text(
                     text = prayerName,
                     fontSize = 28.sp,
@@ -4887,60 +5184,197 @@ private fun NextPrayerHeroCard(
                     color = Color.White.copy(alpha = 0.82f),
                     fontWeight = FontWeight.SemiBold,
                 )
+                if (statusText != null && !statusSharesHeading) {
+                    PhoneStatusNotice(isPhoneSilenced, hasDnd, silenceReason, Modifier.fillMaxWidth())
+                }
             }
         }
         val remainingPill: @Composable () -> Unit = {
-            Text(
-                text = remainingText,
-                fontSize = 14.sp,
-                color = countdownPillTextColor,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
+            Row(
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
                     .background(countdownPillBackgroundColor)
                     .padding(horizontal = 12.dp, vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Text(
+                    text = remainingText,
+                    fontSize = 14.sp,
+                    color = countdownPillTextColor,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                )
+                CountdownClockIcon(
+                    color = countdownPillTextColor,
+                    modifier = Modifier.size(15.dp),
+                )
+            }
+        }
+        if (stackCountdown) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 14.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                prayerInfo(Modifier.fillMaxWidth())
+                remainingPill()
+            }
+        } else {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 14.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                prayerInfo(Modifier.weight(1f))
+                remainingPill()
+            }
+        }
+    }
+}
+
+@Composable
+private fun NextPrayerHeroBackdrop(modifier: Modifier = Modifier) {
+    Canvas(modifier = modifier) {
+        val width = size.width
+        val height = size.height
+
+        // Thin curved architectural accent sweeping through the background.
+        val outerArch = Path().apply {
+            moveTo(width * 0.63f, height)
+            lineTo(width * 0.63f, height * 0.40f)
+            quadraticBezierTo(width * 0.63f, height * 0.08f, width * 0.83f, height * 0.08f)
+            quadraticBezierTo(width * 1.02f, height * 0.08f, width * 1.02f, height * 0.52f)
+            lineTo(width * 1.02f, height)
+        }
+        drawPath(outerArch, Gold.copy(alpha = 0.18f), style = Stroke(width = 1.6.dp.toPx()))
+        val innerArch = Path().apply {
+            moveTo(width * 0.69f, height)
+            lineTo(width * 0.69f, height * 0.44f)
+            quadraticBezierTo(width * 0.69f, height * 0.16f, width * 0.83f, height * 0.16f)
+            quadraticBezierTo(width * 0.96f, height * 0.16f, width * 0.96f, height * 0.54f)
+            lineTo(width * 0.96f, height)
+        }
+        drawPath(innerArch, Gold.copy(alpha = 0.11f), style = Stroke(width = 1.dp.toPx()))
+
+        // Small gold crescent, kept in the clear upper area beside the text.
+        val crescentRadius = 8.dp.toPx()
+        val crescentCenter = Offset(width * 0.27f, height * 0.24f)
+        val crescent = Path().apply {
+            addOval(Rect(center = crescentCenter, radius = crescentRadius))
+        }
+        val crescentCut = Path().apply {
+            addOval(
+                Rect(
+                    center = Offset(
+                        crescentCenter.x + crescentRadius * 0.55f,
+                        crescentCenter.y - crescentRadius * 0.1f,
+                    ),
+                    radius = crescentRadius * 0.84f,
+                )
             )
         }
-        Column(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
-        ) {
-            if (stackHeader) {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    heading(Modifier.fillMaxWidth())
-                    PhoneStatusNotice(isPhoneSilenced, hasDnd, silenceReason, Modifier.fillMaxWidth())
-                }
-            } else {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    heading(Modifier.weight(1f))
-                    PhoneStatusNotice(isPhoneSilenced, hasDnd, silenceReason)
-                }
-            }
+        crescent.op(crescent, crescentCut, PathOperation.Difference)
+        drawPath(crescent, Gold.copy(alpha = 0.8f))
 
-            if (stackCountdown) {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    prayerDetails(Modifier.fillMaxWidth())
-                    remainingPill()
+        // Low-contrast mosque and palm silhouettes along the lower area.
+        val base = height
+        fun silhouetteColor(alpha: Float) = HeroBackdropSilhouette.copy(alpha = alpha)
+
+        fun dome(centerX: Float, domeWidth: Float, domeHeight: Float) {
+            val path = Path().apply {
+                moveTo(centerX - domeWidth / 2f, base)
+                quadraticBezierTo(centerX, base - domeHeight * 1.35f, centerX + domeWidth / 2f, base)
+                close()
+            }
+            drawPath(path, silhouetteColor(0.45f))
+            drawLine(
+                color = silhouetteColor(0.45f),
+                start = Offset(centerX, base - domeHeight * 1.35f),
+                end = Offset(centerX, base - domeHeight * 1.6f),
+                strokeWidth = 1.dp.toPx(),
+            )
+        }
+
+        fun minaret(centerX: Float, minaretHeight: Float) {
+            val halfWidth = 1.6.dp.toPx()
+            drawRect(
+                color = silhouetteColor(0.45f),
+                topLeft = Offset(centerX - halfWidth, base - minaretHeight),
+                size = Size(halfWidth * 2f, minaretHeight),
+            )
+            drawCircle(
+                color = silhouetteColor(0.45f),
+                radius = halfWidth * 1.3f,
+                center = Offset(centerX, base - minaretHeight - halfWidth),
+            )
+        }
+
+        fun palm(centerX: Float, palmHeight: Float) {
+            val trunkTop = Offset(centerX + 1.dp.toPx(), base - palmHeight)
+            val trunk = Path().apply {
+                moveTo(centerX, base)
+                quadraticBezierTo(centerX + 3.dp.toPx(), base - palmHeight * 0.55f, trunkTop.x, trunkTop.y)
+            }
+            drawPath(
+                trunk,
+                silhouetteColor(0.4f),
+                style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round),
+            )
+            val fronds = listOf(-0.9f, -0.45f, 0f, 0.45f, 0.9f)
+            fronds.forEach { spread ->
+                val end = Offset(
+                    trunkTop.x + spread * palmHeight * 0.42f,
+                    trunkTop.y - palmHeight * 0.24f + abs(spread) * palmHeight * 0.22f,
+                )
+                val frond = Path().apply {
+                    moveTo(trunkTop.x, trunkTop.y)
+                    quadraticBezierTo(
+                        (trunkTop.x + end.x) / 2f,
+                        trunkTop.y - palmHeight * 0.2f,
+                        end.x,
+                        end.y,
+                    )
                 }
-            } else {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.Bottom,
-                ) {
-                    prayerDetails(Modifier.weight(1f))
-                    remainingPill()
-                }
+                drawPath(
+                    frond,
+                    silhouetteColor(0.4f),
+                    style = Stroke(width = 1.4.dp.toPx(), cap = StrokeCap.Round),
+                )
             }
         }
+
+        palm(width * 0.13f, 26.dp.toPx())
+        minaret(width * 0.24f, 22.dp.toPx())
+        dome(width * 0.34f, 26.dp.toPx(), 15.dp.toPx())
+        minaret(width * 0.44f, 17.dp.toPx())
+        dome(width * 0.52f, 16.dp.toPx(), 9.dp.toPx())
+    }
+}
+
+@Composable
+private fun CountdownClockIcon(
+    color: Color,
+    modifier: Modifier = Modifier,
+) {
+    Canvas(modifier = modifier) {
+        val stroke = 1.4.dp.toPx()
+        val radius = (size.minDimension - stroke) / 2f
+        val center = Offset(size.width / 2f, size.height / 2f)
+        drawCircle(color = color, radius = radius, center = center, style = Stroke(width = stroke))
+        drawLine(
+            color = color,
+            start = center,
+            end = Offset(center.x, center.y - radius * 0.55f),
+            strokeWidth = stroke,
+            cap = StrokeCap.Round,
+        )
+        drawLine(
+            color = color,
+            start = center,
+            end = Offset(center.x + radius * 0.42f, center.y + radius * 0.22f),
+            strokeWidth = stroke,
+            cap = StrokeCap.Round,
+        )
     }
 }
 
