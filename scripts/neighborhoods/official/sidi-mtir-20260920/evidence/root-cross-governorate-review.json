@@ -1,0 +1,179 @@
+{
+  "status": "ADMINISTRATIVE_BORDER_EVIDENCE_ACCEPTED_BLIND_THREE_WAY_MERGE_REJECTED",
+  "pins": {
+    "sourceInventory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-complete-locality-review-20260920\\source-and-administrative-context-inventory.json",
+      "sha256": "9403c93dcbe120c5aba39bda3ae4bc82e8f4cc5c721530cf0019890ffac7e1ba"
+    },
+    "comparison": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\onehundredfiftyone-current-name-review-20260920.json",
+      "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7"
+    },
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+    },
+    "inspector": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\native-map-inspection.json",
+      "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200"
+    },
+    "officialMap": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\sidi-mtir-bouficha.pdf",
+      "sha256": "c86ef7a672fba608129954d5417f0792fc23afc60f71601c5365cba9abd8ed5e"
+    },
+    "officialMapImage": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\sidi-mtir-bouficha.png",
+      "sha256": "bb8012c1511e735421e987760f07d742af864d252bf4267eda0d968e429d0ac9"
+    },
+    "atlas": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-complete-locality-review-20260920\\mehat-atlas-sousse-2020.pdf",
+      "sha256": "0754642a406f524cee78b5f8cd71310469ffdd166f74932bedad7e22b661d6e5"
+    },
+    "atlasExtract": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-complete-locality-review-20260920\\atlas-yasmine-extract.json",
+      "sha256": "0a59791f471db707ca186c21c087034517a821667be20b5a19507b6957509be7"
+    },
+    "decree": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+    },
+    "decreePage49": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-complete-locality-review-20260920\\decree-page-49.png",
+      "sha256": "f64fd041ad54a174f81e9770fade154c37072b66d56eb1149ac9f65228c67a76"
+    },
+    "decreePage50": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-complete-locality-review-20260920\\decree-page-050.png",
+      "sha256": "fa9c9e401a0d459bfc3011f682891cc3bdc76b4817a795aab673157cc1b1ffd6"
+    },
+    "groupDispatcherReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\yasmine-existing-group-contracts-response-20260920.json",
+      "sha256": "4df0a860468b81808a49a84d19f09735db499fb6be9a5bdfbde9775ab96cdf11"
+    },
+    "groupValidatorReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\yasmine-validator-contracts-response-20260920.json",
+      "sha256": "97592f27606e7448d3cdf85faeade63cbc1c17adab7d074f9cdc7e4f3b935608"
+    }
+  },
+  "visualReview": {
+    "atlasPages": [
+      69,
+      70,
+      83
+    ],
+    "decreePages": [
+      49,
+      50
+    ],
+    "decreeJortPages": [
+      5146,
+      5147
+    ],
+    "officialMapWholePageReviewed": true
+  },
+  "officialSidiMtir": {
+    "id": "osm:relation:7105456",
+    "code": "316159",
+    "governorateCode": "31",
+    "delegationCode": "3161",
+    "governorate": "سوسة",
+    "delegation": "بوفيشة",
+    "imada": "سيدي مطير",
+    "electoralCircle": "سيدي مطير - (بوفيشة)",
+    "scope": "whole_imada",
+    "basis": "Decree page49 starts Sousse governorate; page50 lists one identically named electoral circle for Sidi Mtir imada under Bouficha, continuing governorate. Registry316159 agrees.",
+    "sourceUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%88%D8%B3%D8%A9/%D8%A8%D9%88%D9%81%D9%8A%D8%B4%D8%A9/%D8%B3%D9%8A%D8%AF%D9%8A%20%D9%85%D8%B7%D9%8A%D8%B1%20-%20%28%D8%A8%D9%88%D9%81%D9%8A%D8%B4%D8%A9%29.pdf",
+    "drawing": {
+      "drawingIndex": 345,
+      "layer": "circonscription_isie2023",
+      "pdfSha256": "c86ef7a672fba608129954d5417f0792fc23afc60f71601c5365cba9abd8ed5e",
+      "segmentCount": 323,
+      "seqno": 353,
+      "sourceOrigin": "connected-official-maps",
+      "sourceRingCompleteness": {
+        "activeClipCount": 2,
+        "activeClipOutsideAreasPoints2": [
+          0.0,
+          0.0
+        ],
+        "explicitlyClosed": true,
+        "isValid": true,
+        "viewportCoversCompleteRing": true
+      },
+      "sourceRingVertexCount": 324,
+      "vertexCount": 324
+    },
+    "sourceGeometrySha256": "67361b7ae5e70e60115c76377391c92e922f64172b3916cb0577fc13c33c6fa1",
+    "coordinateNormalization": null,
+    "controlMaxResidualMeters": 0.2512203523267961,
+    "geometryUnchanged": true,
+    "valid": true,
+    "stagingPointPolicy": {
+      "mode": "previous_metadata",
+      "point": {
+        "lat": 36.358483,
+        "lng": 10.501576
+      },
+      "coversRawAndQuantized": true,
+      "expectedNearestId": 433,
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7105456",
+        "sourceId": "osm",
+        "name": "سيدي مطير",
+        "aliases": [
+          "Sidi Mtir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بوفيشة",
+        "contextAliases": [
+          "Bouficha",
+          "Délégation Bouficha",
+          "معتمدية بوفيشة"
+        ],
+        "governorateId": 348,
+        "lat": 36.358483,
+        "lng": 10.501576,
+        "delegationId": 433,
+        "hasBoundary": true,
+        "bbox": [
+          10.434029,
+          36.325313,
+          10.53185,
+          36.391772
+        ],
+        "areaKm2": 26.051887293880604,
+        "pickerGroupId": "osm:relation:7105456",
+        "offset": 471680,
+        "length": 812
+      }
+    }
+  },
+  "southResidential": {
+    "id": "osm:relation:3152105",
+    "currentGovernorateId": 350,
+    "currentParentName": "ولاية نابل",
+    "point": {
+      "lat": 36.369228,
+      "lng": 10.536217
+    },
+    "officialSidiMtirCoversStoredPoint": true,
+    "distanceToSidiMtirBoundaryM": 17.682801634204562,
+    "officialYasmineCoversStoredPoint": false,
+    "distanceToYasmineBoundaryM": 15.759089349964603,
+    "betweenOfficialSourcesOverlapM2": 2929.0219669286143,
+    "correctionStatus": "REQUIRES_SOURCE_INTEGRATION_AND_EXPLICIT_CONTEXT_REVIEW_NOT_APPLIED",
+    "qualification": "The footprint straddles administrative source polygons. Whole-footprint membership in Sousse or Nabeul is not established and must not be asserted. The point is only about18m from the mapped border; affine control residual is not real-world surveying accuracy."
+  },
+  "decisions": [
+    "Do not accept a three-way same-governorate display merge from shared names or overlapping sector alone. Southern3152105 current stored coordinate is covered by reviewed SidiMtir/Bouficha/Sousse source, not reviewed Yasmine/Hammamet/Nabeul source.",
+    "Accept SidiMtir316159 whole-imada source identity and selected complete drawing for the next isolated source-stage extension; preserve its existing valid stored coordinate. Source publication is not universal positional certification.",
+    "The old atlas links tourist complex Yasmine to Bouficha and supports the need to distinguish tourist/place names from imada identity; it does not pinpoint current individual parcel membership.",
+    "Hammamet461 source-bound successor still needed for automatic north3152100+sector7104932 group and nine explicit manual points. Do not bypass its preserved-source validations.",
+    "Full-catalog phone requirement remains incomplete: neither residential3152100 nor3152105 has a phone observation; shared-name Google card for7104932 on2026-09-07 did not certify either residential shape or its administration.",
+    "Existing reviewed local-group methods inspected do not accept this sector/two-residential/absorbed-suburb scenario without violated contracts. Do not weaken them.",
+    "GPS timetable selection already uses actual device coordinates; PrefsManager persists GPS name/id/kind and timetable, not a governorate. No new GPS core bug is asserted from metadata context alone."
+  ],
+  "appChanges": false,
+  "fullCatalogCertified": false,
+  "testsRun": false,
+  "apkGenerated": false
+}

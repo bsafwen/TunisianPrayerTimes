@@ -1,0 +1,158 @@
+{
+  "status": "SOURCE_GEOMETRY_AND_SCOPE_STAGED_NOT_INSTALLED",
+  "rootReview": {
+    "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+    "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+  },
+  "boundary": {
+    "file": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+    "sha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7105070",
+      "officialCode": "156651",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-sidi-djedidi.pdf",
+        "sha256": "fb704ad3de27894aa0ac74668349aac75f46fb4eb7598a66c1c648edb61780cd"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-sidi-djedidi.json",
+        "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200"
+      },
+      "sourceGeometrySha256": "69d0df0bd99602b7bfcfa02c198648a862526926eefe1286b561446dbb65ee7b"
+    },
+    {
+      "id": "osm:relation:7144606",
+      "officialCode": "156652",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-el-atrach.pdf",
+        "sha256": "93053eb8095a5eeeb9ed05400909d6f0c5f5a7fac767aaf5b8e5c7f44c8d3b59"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-el-atrach.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "sourceGeometrySha256": "7ce2a93a215a74ba638100bc835c26908440ab791b5333da9376767a15071c5e"
+    },
+    {
+      "id": "osm:relation:7104926",
+      "officialCode": "156653",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-bir-bou-regba.pdf",
+        "sha256": "6126b3ab3e290e1d2f3b5da75aafbfa6217a34e63383b2e105a488578f91d518"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-el-atrach.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "sourceGeometrySha256": "72fb8952d622e250cfc4dfb0b71cccaf96a3b57b3963c7c6ff1f4d2538e12b5c"
+    },
+    {
+      "id": "osm:relation:7104931",
+      "officialCode": "156654",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-baraket-essahel.pdf",
+        "sha256": "258c4ffaf4cb2c079bf33d27bd27949bf3402d32b098b936b3cef0cac9ae1f25"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-sidi-djedidi.json",
+        "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200"
+      },
+      "sourceGeometrySha256": "e92ee6aa2ce90045f3a5748a8f9dbbc12bace90a24c3c3e9826f8ce8cbfeae73"
+    },
+    {
+      "id": "osm:relation:7104927",
+      "officialCode": "156655",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-hammamet-nord.pdf",
+        "sha256": "b401485272352ae9c6eba464a2361098361b8ef1606a710e99ff3d8e06e3a66d"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-hammamet-nord.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "sourceGeometrySha256": "297148856fbb4de41cef03b2077cb05f91f75eaf0626d377abf7a0856d99effa"
+    },
+    {
+      "id": "osm:relation:7104929",
+      "officialCode": "156656",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-hammamet-est.pdf",
+        "sha256": "ec4694b1cca6bbc83b451e5fb712ea2a3c0f3adc7a76fa61dd572c4c76363267"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-hammamet-nord.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "sourceGeometrySha256": "b9d61e26e1eb70308763e27820d46211780ad7b1cfb8776c070f0218cd65d846"
+    },
+    {
+      "id": "osm:relation:7104930",
+      "officialCode": "156657",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-hammamet-ouest.pdf",
+        "sha256": "cd5756b37f9d2caf0ace95bb40b02970043822e93309c1ce57e51de2662fdbbc"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-el-atrach.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "sourceGeometrySha256": "a2eee1ca35c8a092aa12470deda99f4e0a98f0dd959c3b815801458bfccdeb1f"
+    },
+    {
+      "id": "osm:relation:7104928",
+      "officialCode": "156658",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-sector-156658.pdf",
+        "sha256": "b0ef5c27942408e22354193689ab78c41d68ea8bf073c51a6bd8203d4386ebe0"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-sector-156658.json",
+        "sha256": "0c9dd6fe789c5f17de43d89f771e460094525918998da66bfa7c0a29b2e3ae3b"
+      },
+      "sourceGeometrySha256": "769f59a324561925c028c3322624ed14512c2875e199e28d65e2cd03ab2a3da4"
+    },
+    {
+      "id": "osm:relation:7104932",
+      "officialCode": "156659",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-yasmine-hammamet.pdf",
+        "sha256": "a056ddb414929e42bd20b4eac4ab6ce9d36ec799823300430ff470312f7780cc"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-yasmine-hammamet.json",
+        "sha256": "10bf13f5dcef39c6573dd587051f1e900d84404b4fd826154af451f96f40d5c7"
+      },
+      "sourceGeometrySha256": "1c3f64db70357364c5518524e3d721c901c47683b731a6cf76c708ca2fd30770"
+    }
+  ],
+  "decree": {
+    "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "pageImage": {
+    "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+    "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+  },
+  "registry": {
+    "file": "official/hammamet-nine-20260920/evidence/registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "frontier": {
+    "file": "official/hammamet-nine-20260920/evidence/externalfrontier.json",
+    "sha256": "f06a565cb88301be77812a567bdca65b02c5b0460c129ad551c0de9cc822c758"
+  },
+  "nameReview": {
+    "file": "official/hammamet-nine-20260920/evidence/baraketnameevidence.json",
+    "sha256": "38de1245baa4795bce9d8496c08c049eac0365174730bbe5f93006a9130bfd98"
+  },
+  "limitations": [
+    "Boundary-only source stage; no curation, coordinate or default-point decision is applied.",
+    "Eight external sector neighbors remain, with all positive-area source discrepancies preserved.",
+    "No app, compiler, collector, config, ledger, tests, APK or AAB changes.",
+    "Official imada geometry is not a claim of equal municipal-district or Google locality extent.",
+    "Existing source geometry is copied exactly, including previously reviewed zero-area Hammamet Nord normalization; no new geometry operation.",
+    "No full catalog certification or installation."
+  ]
+}

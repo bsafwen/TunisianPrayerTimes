@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_SCOPE_FACTS_VERIFIED",
+  "purpose": "Finite JORT evidence for package assembler; this is not a final scope manifest or installation proposal.",
+  "decree": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "bytes": 10636520,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "publicationDate": "2023-09-22",
+    "jortIssue": 108
+  },
+  "registry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "codeQualification": "Six-digit INS codes are mapped using exact imada names and exact parent context in the cached registry. Codes are not printed in these decree table rows.",
+  "headerEvidence": {
+    "pdfPageOneBased": 3,
+    "jortPage": 5100,
+    "annex": 1,
+    "table": "A",
+    "title": "ضبط الدوائر الانتخابية المحلية لانتخابات المجالس المحلية وعدد المقاعد المخصصة لها",
+    "render": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\package\\jort-review\\page-3.png",
+      "sha256": "f72a8c1c03b22edaf4d01056efaca687184a4049eb6ce4ecb13f38d2c1627c63",
+      "bytes": 350706
+    },
+    "personallyViewed": true
+  },
+  "whole125657": {
+    "id": "osm:relation:7115584",
+    "officialCode": "125657",
+    "imadaName": "التضامن 4",
+    "circleName": "التضامن 4",
+    "circleCountForImada": 1,
+    "visibleCellSpan": 1,
+    "seats": 1,
+    "delegationCode": "1256",
+    "delegationName": "حي التضامن",
+    "governorateCode": "12",
+    "governorateName": "أريانة",
+    "officialRegistryRow": {
+      "governorateCode": "12",
+      "governorateFr": "Ariana",
+      "governorateAr": "أريانة",
+      "delegationCode": "1256",
+      "delegationFr": "Cite ettadhamen",
+      "delegationAr": "حي التضامن",
+      "sectorCode": "125657",
+      "sectorFr": "Ettadhamen 4",
+      "sectorAr": "التضامن 4",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6903,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 230,
+        "Nombre_de_menages_par_Secteurs.xlsx": 230
+      }
+    },
+    "pdfPageOneBased": 3,
+    "jortPage": 5100,
+    "annex": 1,
+    "table": "A",
+    "personallyViewed": true,
+    "conclusion": "One imada cell corresponds to exactly one identically named electoral circle row; no numbered subdivision beyond the imada name itself."
+  },
+  "complete3152DelegationInventory": {
+    "delegationCode": "3152",
+    "delegationName": "سوسة الرياض",
+    "pdfPageOneBased": 51,
+    "jortPage": 5148,
+    "annex": 1,
+    "table": "A",
+    "fullParentBlockVisuallyCompleteOnOnePage": true,
+    "previousVisibleParent": "حمام سوسة",
+    "followingVisibleParent": "سوسة المدينة",
+    "imadaCount": 3,
+    "circleCount": 5,
+    "rowsInPrintedOrder": [
+      {
+        "officialCode": "315254",
+        "imadaName": "الزهور",
+        "circleNames": [
+          "الزهور - (سوسة الرياض)"
+        ],
+        "circleCount": 1,
+        "officialRegistryRow": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3152",
+          "delegationFr": "Sousse riadh",
+          "delegationAr": "سوسة الرياض",
+          "sectorCode": "315254",
+          "sectorFr": "Ezzouhour",
+          "sectorAr": "الزهور",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32571,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1535,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1534
+          }
+        },
+        "seatsPerCircle": 1,
+        "pdfPageOneBased": 51,
+        "jortPage": 5148,
+        "annex": 1,
+        "table": "A",
+        "parentName": "سوسة الرياض",
+        "parentCode": "3152",
+        "governorateCode": "31",
+        "governorateNameFromRegistry": "سوسة",
+        "visibleCellSpan": 1,
+        "personallyViewed": true
+      },
+      {
+        "officialCode": "315256",
+        "imadaName": "حمام معروف الرياض",
+        "circleNames": [
+          "حمام معروف الرياض 1",
+          "حمام معروف الرياض 2"
+        ],
+        "circleCount": 2,
+        "officialRegistryRow": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3152",
+          "delegationFr": "Sousse riadh",
+          "delegationAr": "سوسة الرياض",
+          "sectorCode": "315256",
+          "sectorFr": "Hammem maarouf er-riadh",
+          "sectorAr": "حمام معروف الرياض",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32639,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1537,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1536
+          }
+        },
+        "seatsPerCircle": 1,
+        "pdfPageOneBased": 51,
+        "jortPage": 5148,
+        "annex": 1,
+        "table": "A",
+        "parentName": "سوسة الرياض",
+        "parentCode": "3152",
+        "governorateCode": "31",
+        "governorateNameFromRegistry": "سوسة",
+        "visibleCellSpan": 2,
+        "personallyViewed": true
+      },
+      {
+        "officialCode": "315255",
+        "imadaName": "حي الرياض",
+        "circleNames": [
+          "حي الرياض 1 - (سوسة الرياض)",
+          "حي الرياض 2 - (سوسة الرياض)"
+        ],
+        "circleCount": 2,
+        "officialRegistryRow": {
+          "governorateCode": "31",
+          "governorateFr": "Sousse",
+          "governorateAr": "سوسة",
+          "delegationCode": "3152",
+          "delegationFr": "Sousse riadh",
+          "delegationAr": "سوسة الرياض",
+          "sectorCode": "315255",
+          "sectorFr": "Cite er-riadh",
+          "sectorAr": "حي الرياض",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32605,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 1536,
+            "Nombre_de_menages_par_Secteurs.xlsx": 1535
+          }
+        },
+        "seatsPerCircle": 1,
+        "pdfPageOneBased": 51,
+        "jortPage": 5148,
+        "annex": 1,
+        "table": "A",
+        "parentName": "سوسة الرياض",
+        "parentCode": "3152",
+        "governorateCode": "31",
+        "governorateNameFromRegistry": "سوسة",
+        "visibleCellSpan": 2,
+        "personallyViewed": true
+      }
+    ],
+    "registrySectorCodeSetExact": true,
+    "render": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\package\\jort-review\\page-51.png",
+      "sha256": "b119a060466c4a856dfa30f621e36fd65e88eac8363e1dcb61c985f3e8152f87",
+      "bytes": 399075
+    },
+    "personallyViewed": true
+  },
+  "aggregate315256": {
+    "id": "osm:relation:7113315",
+    "officialCode": "315256",
+    "imadaName": "حمام معروف الرياض",
+    "completeCircleNames": [
+      "حمام معروف الرياض 1",
+      "حمام معروف الرياض 2"
+    ],
+    "expectedPartCount": 2,
+    "pdfPageOneBased": 51,
+    "jortPage": 5148,
+    "annex": 1,
+    "table": "A",
+    "conclusion": "The one imada cell spans exactly two circle rows, parts 1 and 2. Both maps are necessary for its aggregate. No third part occurs in the full parent block."
+  },
+  "contraryEvidence": [],
+  "scopeLimitations": [
+    "The decree establishes 2023 circle-to-imada scope and exhaustive rows within the printed parent block; it does not independently validate every coordinate or certify current boundaries.",
+    "Code mapping comes from the separately pinned registry, not from invented numeric labels in the PDF.",
+    "No native geometry repair, source polygon modification, production write, network request, model call or device action occurred."
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\package\\jort-review\\freeze.py",
+    "sha256": "37b8e56ad397d419ac1b9f461390afbf4f3c73d3899f2e08d7dee7bc2a2be6be",
+    "bytes": 4580
+  }
+}

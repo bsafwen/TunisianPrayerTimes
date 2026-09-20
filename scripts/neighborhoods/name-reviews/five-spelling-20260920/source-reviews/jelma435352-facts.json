@@ -1,0 +1,556 @@
+{
+  "status": "SOURCE_IDENTITY_CONVERGES_NAME_CORRECTION_NOT_APPLIED",
+  "id": "osm:relation:7169653",
+  "inputFreeze": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\freeze.json",
+    "sha256": "0874823ba44a232f968efae97b0b549ecb940d0a181ae5da5c8240d0fee3dbbe",
+    "bytes": 8044
+  },
+  "currentRaw": {
+    "id": "osm:relation:7169653",
+    "sourceId": "osm",
+    "name": "جلمة الغريبة",
+    "aliases": [
+      "Jilma Ouest"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية جلمة",
+    "contextAliases": [
+      "Délégation Jelma",
+      "Jilma",
+      "معتمدية جلمة"
+    ],
+    "governorateId": 355,
+    "lat": 35.28315,
+    "lng": 9.400382,
+    "delegationId": 506,
+    "hasBoundary": true,
+    "bbox": [
+      9.349654,
+      35.23486,
+      9.441893,
+      35.331667
+    ],
+    "areaKm2": 40.866021152455424,
+    "pickerGroupId": "osm:relation:7169653",
+    "offset": 4142404,
+    "length": 8540
+  },
+  "currentPicker": {
+    "id": "osm:relation:7169653",
+    "sourceId": "osm",
+    "name": "جلمة الغريبة",
+    "aliases": [
+      "Jilma Ouest"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية جلمة",
+    "contextAliases": [
+      "Délégation Jelma",
+      "Jilma",
+      "معتمدية جلمة"
+    ],
+    "governorateId": 355,
+    "lat": 35.28315,
+    "lng": 9.400382,
+    "delegationId": 506,
+    "hasBoundary": true,
+    "bbox": [
+      9.349654,
+      35.23486,
+      9.441893,
+      35.331667
+    ],
+    "areaKm2": 40.866021152455424,
+    "pickerGroupId": "osm:relation:7169653",
+    "offset": 4142404,
+    "length": 8540,
+    "members": [
+      "osm:relation:7169653"
+    ],
+    "governorate": "سيدي بوزيد",
+    "governorateFr": "Sidi Bouzid",
+    "geometrySha256": "f351ca9cca0f0c2794a58301aaebca3978dfa2952fe8079d3c01fae4e2f5d0f4",
+    "fingerprint": "0c6fe5047c2f734049fc0cdc30173e61cca40ba4cf0b52a0f67558d46b8bac71"
+  },
+  "originalSource": {
+    "id": "osm:relation:7169653",
+    "kind": "sector",
+    "tags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "جلمة الغريبة",
+      "name:ar": "جلمة الغريبة",
+      "name:fr": "Jilma Ouest",
+      "ref:tn:codegeo": "435352"
+    }
+  },
+  "sourceGeometry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\jelma-source-geometry.json",
+    "sha256": "59cef4867fd300f00690f1ba69ec762f6dc977fa41c34e8d24f7853895c72b3c",
+    "bytes": 974886
+  },
+  "officialRegistryRecord": {
+    "governorateCode": "43",
+    "governorateFr": "Sidi bouzid",
+    "governorateAr": "سيدي بوزيد",
+    "delegationCode": "4353",
+    "delegationFr": "Jilma",
+    "delegationAr": "جلمة",
+    "sectorCode": "435352",
+    "sectorFr": "Jilma ouest",
+    "sectorAr": "جلمة الغربية",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 54569,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 2656,
+      "Nombre_de_menages_par_Secteurs.xlsx": 2651
+    }
+  },
+  "officialRegistrySources": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "sourceCodeMatches": [
+    "osm:relation:7169653"
+  ],
+  "officialCodeMatches": [
+    {
+      "governorateCode": "43",
+      "governorateFr": "Sidi bouzid",
+      "governorateAr": "سيدي بوزيد",
+      "delegationCode": "4353",
+      "delegationFr": "Jilma",
+      "delegationAr": "جلمة",
+      "sectorCode": "435352",
+      "sectorFr": "Jilma ouest",
+      "sectorAr": "جلمة الغربية",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 54569,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2656,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2651
+      }
+    }
+  ],
+  "parentContext": [
+    {
+      "id": "osm:relation:7169666",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Jilma",
+        "boundary": "administrative",
+        "name": "معتمدية جلمة",
+        "name:ar": "معتمدية جلمة",
+        "name:fr": "Délégation Jelma",
+        "ref:tn:codegeo": "4353",
+        "ref:tn:hasc_2": "TN.SZ.JI",
+        "wikidata": "Q3178714"
+      },
+      "originalParentCoversSector": true,
+      "originalParentCoversPackedSector": true
+    }
+  ],
+  "sourceSiblings": [
+    {
+      "id": "osm:relation:7169631",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الأبيض",
+        "name:ar": "الأبيض",
+        "name:fr": "El Abaiedh",
+        "ref:tn:codegeo": "435361"
+      },
+      "bbox": [
+        9.423717,
+        35.3863569,
+        9.505198,
+        35.4930947
+      ],
+      "intersectsSubject": false
+    },
+    {
+      "id": "osm:relation:7169633",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العضلة",
+        "name:ar": "العضلة",
+        "name:fr": "El Adhla",
+        "ref:tn:codegeo": "435359"
+      },
+      "bbox": [
+        9.3637318,
+        35.35595,
+        9.4735248,
+        35.4956739
+      ],
+      "intersectsSubject": false
+    },
+    {
+      "id": "osm:relation:7169632",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحميمة",
+        "name:ar": "الحميمة",
+        "name:fr": "El Hamima",
+        "ref:tn:codegeo": "435360"
+      },
+      "bbox": [
+        9.36973,
+        35.16331,
+        9.492552,
+        35.25249
+      ],
+      "intersectsSubject": true
+    },
+    {
+      "id": "osm:relation:7169654",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جلمة الشرقية",
+        "name:ar": "جلمة الشرقية",
+        "name:fr": "Jilma Est",
+        "ref:tn:codegeo": "435351"
+      },
+      "bbox": [
+        9.3993772,
+        35.28054,
+        9.527077,
+        35.36355
+      ],
+      "intersectsSubject": true
+    },
+    {
+      "id": "osm:relation:7169678",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "غدير الزيتون",
+        "name:ar": "غدير الزيتون",
+        "name:fr": "Ghedir Ezzitoun",
+        "ref:tn:codegeo": "435356"
+      },
+      "bbox": [
+        9.427406,
+        35.22472,
+        9.566163,
+        35.3443
+      ],
+      "intersectsSubject": true
+    },
+    {
+      "id": "osm:relation:7169663",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باطن الغزال الشمالية",
+        "name:ar": "باطن الغزال الشمالية",
+        "name:fr": "Baten El Ghezel Nord",
+        "ref:tn:codegeo": "435358"
+      },
+      "bbox": [
+        9.28574,
+        35.41478,
+        9.390888,
+        35.4792989
+      ],
+      "intersectsSubject": false
+    },
+    {
+      "id": "osm:relation:7169664",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "باطن الغزال الجنوبية",
+        "name:ar": "باطن الغزال الجنوبية",
+        "name:fr": "Baten El Ghezel Sud",
+        "ref:tn:codegeo": "435357"
+      },
+      "bbox": [
+        9.359069,
+        35.32009,
+        9.468576,
+        35.43328
+      ],
+      "intersectsSubject": true
+    },
+    {
+      "id": "osm:relation:7169651",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "لزيرق",
+        "name:ar": "لزيرق",
+        "name:fr": "Lazirek",
+        "ref:tn:codegeo": "435353"
+      },
+      "bbox": [
+        9.26876,
+        35.2235,
+        9.397878,
+        35.33774
+      ],
+      "intersectsSubject": true
+    },
+    {
+      "id": "osm:relation:7169679",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "زغمار",
+        "name:ar": "زغمار",
+        "name:fr": "Zoghmar",
+        "ref:tn:codegeo": "435355"
+      },
+      "bbox": [
+        9.2411255,
+        35.34857,
+        9.381704,
+        35.4462498
+      ],
+      "intersectsSubject": false
+    },
+    {
+      "id": "osm:relation:7169680",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سلتة",
+        "name:ar": "سلتة",
+        "name:fr": "Selta",
+        "ref:tn:codegeo": "435354"
+      },
+      "bbox": [
+        9.1978462,
+        35.31452,
+        9.371707,
+        35.4186398
+      ],
+      "intersectsSubject": false
+    }
+  ],
+  "packed": {
+    "binary": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\neighborhoods.bin",
+      "sha256": "bab9876668eb53f9fd27992242575b031acaa74c3f4e36cca7842289164fe444",
+      "bytes": 5590504
+    },
+    "sliceSha256": "f351ca9cca0f0c2794a58301aaebca3978dfa2952fe8079d3c01fae4e2f5d0f4",
+    "endOffsetVerified": true,
+    "originalCoversCurrentRepresentative": true,
+    "packedCoversCurrentRepresentative": true,
+    "originalBounds": [
+      9.349654,
+      35.23486,
+      9.441893,
+      35.331667
+    ],
+    "packedBounds": [
+      9.349654,
+      35.23486,
+      9.441893,
+      35.331667
+    ]
+  },
+  "currentDirectManifestDependencies": {
+    "curation": {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\curation.json",
+        "sha256": "25b18a3a35f313b538eeae4da1db889b1bb5b1278e58d0904e360f041f9822b9",
+        "bytes": 436092
+      },
+      "exactIdPaths": [],
+      "codePaths": []
+    },
+    "picker": {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\picker.json",
+        "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+        "bytes": 630000
+      },
+      "exactIdPaths": [],
+      "codePaths": []
+    },
+    "boundaries": {
+      "file": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\boundaries.json",
+        "sha256": "4611c1bafd550a6448e31177b3a49bd62f47d718743a8e7778de6a092a4cd91b",
+        "bytes": 104391
+      },
+      "exactIdPaths": [],
+      "codePaths": []
+    }
+  },
+  "rawRowsInheritingExactCurrentName": [],
+  "existingMapsEvidence": [
+    {
+      "observedAt": "2026-09-20T07:38:21.505252+00:00",
+      "query": "Jilma Ouest, Sidi Bouzid, Tunisia",
+      "observationParserVersion": 4,
+      "queryVisibleInUi": true,
+      "synchronizationOutcome": "settled_candidate",
+      "publicCardTitles": [
+        "Jilma Ouest"
+      ],
+      "publicUiText": [
+        "Jilma Ouest",
+        "جلمة الغريبة",
+        "Tunisia",
+        "Directions to Jilma Ouest",
+        "Directions",
+        "Share Jilma Ouest",
+        "Share",
+        "Save Jilma Ouest to lists",
+        "Save",
+        "Show more actions for this place",
+        "More",
+        "About",
+        "Address: Tunisia",
+        "Add a missing place",
+        "Add your business to Maps for free",
+        "Measure distance",
+        "Close",
+        "Jilma Ouest, Sidi Bouzid, Tunisia",
+        "Clear"
+      ],
+      "observationStatus": "candidate_observed",
+      "metadataSha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348",
+      "artifact": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass5-5556-001\\osm_relation_7169653-1.json",
+        "sha256": "8d527ff33e1791dd3ea338027caa011303736c2900d899cfa2875234d761edcb",
+        "bytes": 3273
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass5-5556-001\\osm_relation_7169653-1.png",
+        "sha256": "4a95b090be233c2cc3f010841358f0bcd05853fea11307d23e75b0505ecf931c",
+        "bytes": 487406
+      },
+      "triageLineage": [
+        {
+          "segment": "main827",
+          "catalog": {
+            "name": "جلمة الغريبة",
+            "aliases": [
+              "Jilma Ouest"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جلمة",
+            "contextAliases": [
+              "Délégation Jelma",
+              "Jilma",
+              "معتمدية جلمة"
+            ],
+            "lat": 35.28315,
+            "lng": 9.400382,
+            "governorate": "سيدي بوزيد",
+            "governorateFr": "Sidi Bouzid"
+          },
+          "lineage": {
+            "provenance": {
+              "batchRunId": "firstpass5-5556-001",
+              "inputPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\maps-firstpass-settled-triage-20260920\\triage-f7ba19c6d52c4ce0\\batches\\firstpass5-5556-001\\input.json",
+              "inputSha256": "b0e9b7ab89f4ffcee3088957d1202229cb921bbcf68ccd7f31c2f2d2c3672a8f",
+              "localUncertainPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\maps-firstpass-settled-triage-20260920\\triage-f7ba19c6d52c4ce0\\batches\\firstpass5-5556-001\\local-uncertain.json",
+              "localUncertainSha256": "48f76cb9e2f10c1d361254698f97f1fec84ba828ea7f69e2e3ab05fb92f2eee3",
+              "reviewedByRoot": false,
+              "boundaryVerified": false,
+              "jobPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\maps-firstpass-settled-triage-20260920\\triage-f7ba19c6d52c4ce0\\batches\\firstpass5-5556-001\\job.json",
+              "jobSha256": "9094b25782a9103384ac4781651e5cbddd43d2da4c2609c744dff173c9d04149",
+              "responsePath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\maps-firstpass-settled-triage-20260920\\triage-f7ba19c6d52c4ce0\\batches\\firstpass5-5556-001\\response.json",
+              "responseSha256": "ba8f4cff4c15e4877f8477e1600959de14baf77b74ab7663ad4e3400acdd33e5"
+            },
+            "triage": {
+              "id": "osm:relation:7169653",
+              "outcome": "ambiguous",
+              "evidence": [
+                "Jilma Ouest",
+                "جلمة الغريبة"
+              ],
+              "explanation": "Latin title matches alias Jilma Ouest, but Arabic name جلمة الغريبة conflicts with the west/Ouest qualifier; directional identity unresolved.",
+              "suggestedQuery": "جلمة الغريبة, سيدي بوزيد, Tunisia",
+              "triageMethod": "deepseek_settled_text"
+            },
+            "summary": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass5-5556-001\\batch-summary.json",
+              "sha256": "ce1fec579813bf11d3e4808574af0e8ca5e92f0fa7a245914a5cca55aaaacc2a",
+              "bytes": 90677
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "judgment": "One original sector carries435352, Jilma Ouest and Arabic جلمة الغريبة; official435352 is Jilma ouest / جلمة الغربية under4353 Jilma. Original source parent geometry agrees. This supports a specific Arabic typo lead rather than a wrong-code inference. Saved Maps also repeats الغريبة, so Maps is not independent corrective spelling evidence. No boundary certification or edit approval. No exact direct curation/picker/boundary contract targets this ID; whole-file consumers require normal dependency review before staging.",
+  "boundedNextAction": "Verify the three pinned workbook rows for435352 against originals, then prepare a name_tags-only correction from الغريبة to الغربية preserving source geometry, coordinates, parent, prayer mapping and saved-name history; audit aggregate consumers before isolated generation."
+}

@@ -1,0 +1,380 @@
+{
+  "status": "INDEPENDENT_NATIVE_LINEWORK_AUDIT_NOT_GEOGRAPHIC_CERTIFICATION",
+  "id": "osm:relation:7109196",
+  "pins": {
+    "review": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\onehundredfiftyone-current-name-review-20260920.json",
+      "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7"
+    },
+    "inventory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\ten-external-nine-candidate-inventory.json",
+      "sha256": "173da1c7c65507dfe13b69fffe0dda9bf5d892ac85993bac8ca44b9d2a558e27"
+    },
+    "normalization": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\root-normalized-source-candidates.json",
+      "sha256": "f09610ab341b5cb342cc7d47e36dd8e085ed66070c610f209a868d7df6204611"
+    },
+    "rawProof": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\invalid-source-raw-and-clip-review.json",
+      "sha256": "468a9aa3832d5503a64dc84916e768553acbf5f9939ad8d751b232b004473bae"
+    },
+    "pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\oued-zit-zaghouan.pdf",
+      "sha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b"
+    },
+    "metadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\oued-zit-zaghouan-metadata.json",
+      "sha256": "f48df29c910005c44d24fcc1f0f031af5a15c9bc0267210ad4413f39944cf781"
+    },
+    "identity": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\source-exceptions-diagnostic.json",
+      "sha256": "0cdef51da7456256faa32c4e0fa18b3e8bcd10f67d5dd3708cefb654f44d92f4"
+    },
+    "pagePng": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\oued-zit-zaghouan.png",
+      "sha256": "6d207d13c22dc486bedbef40b8ac037fa3a4fcdc61d80b356332745543a4751e"
+    }
+  },
+  "native": {
+    "pageCount": 1,
+    "drawingIndex": 680,
+    "layer": "circonscription_isie2023",
+    "color": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "fill": null,
+    "strokeWidthPoints": 2.879390001296997,
+    "nativeOperationStart": 5173,
+    "nativeStrokeOperation": 5776,
+    "rawCoordinatesExactlyMatchPinnedProof": true,
+    "closed": true,
+    "segments": 602,
+    "vertices": 603,
+    "rawValidity": "Self-intersection[621450.711271371 4039160.51267675]",
+    "crossings": [
+      {
+        "edgeA": 438,
+        "edgeB": 440,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            621450.7112713705,
+            4039160.512676751
+          ]
+        }
+      }
+    ],
+    "crossingLatLon": [
+      36.49006268059851,
+      10.355943149543581
+    ],
+    "nearbyNativePaths": [
+      {
+        "drawingIndex": 673,
+        "layer": "circonscription_isie2023",
+        "color": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "fill": null,
+        "width": 2.879390001296997,
+        "distancePoints": 1.2216796847042133e-05,
+        "items": 1023
+      },
+      {
+        "drawingIndex": 680,
+        "layer": "circonscription_isie2023",
+        "color": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "fill": null,
+        "width": 2.879390001296997,
+        "distancePoints": 1.0730408194468965e-05,
+        "items": 602
+      },
+      {
+        "drawingIndex": 692,
+        "layer": "circonscription_isie2023",
+        "color": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "fill": null,
+        "width": 2.879390001296997,
+        "distancePoints": 1.0730408194458705e-05,
+        "items": 180
+      },
+      {
+        "drawingIndex": 698,
+        "layer": "delegation_isie_2023",
+        "color": [
+          0.0,
+          0.3607800006866455,
+          0.901960015296936
+        ],
+        "fill": null,
+        "width": 5.0389299392700195,
+        "distancePoints": 1.2216796847042133e-05,
+        "items": 568
+      },
+      {
+        "drawingIndex": 700,
+        "layer": "delegation_isie_2023",
+        "color": [
+          0.0,
+          0.3607800006866455,
+          0.901960015296936
+        ],
+        "fill": null,
+        "width": 5.0389299392700195,
+        "distancePoints": 1.0730408194458705e-05,
+        "items": 79
+      },
+      {
+        "drawingIndex": 703,
+        "layer": "delegation_isie_2023",
+        "color": [
+          0.0,
+          0.3607800006866455,
+          0.901960015296936
+        ],
+        "fill": null,
+        "width": 5.0389299392700195,
+        "distancePoints": 1.0730408194468965e-05,
+        "items": 1023
+      },
+      {
+        "drawingIndex": 708,
+        "layer": "gouv_2023",
+        "color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "fill": null,
+        "width": 6.11870002746582,
+        "distancePoints": 1.0730408194458705e-05,
+        "items": 499
+      },
+      {
+        "drawingIndex": 709,
+        "layer": "gouv_2023",
+        "color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "fill": null,
+        "width": 6.11870002746582,
+        "distancePoints": 1.0730408194468965e-05,
+        "items": 643
+      }
+    ]
+  },
+  "preservation": {
+    "reviewGeometryExactlyEqualsPinnedNormalization": true,
+    "polygonizedNativeEdgesTopologicallyEqualCandidate": true,
+    "allOriginalVerticesExactlyRetained": true,
+    "missingOriginalVertexIndices": [],
+    "newVertices": [
+      [
+        621450.7112713705,
+        4039160.512676751
+      ]
+    ],
+    "candidateSegments": 604,
+    "splitNativeEdges": [
+      438,
+      440
+    ],
+    "allCandidateEdgesMatchNativeEdgeSubsegments": true,
+    "maxSubsegmentLineResidualMeters": 5.916079036778701e-11,
+    "maxNativeEdgeIntervalGapFraction": 0,
+    "nativeLineLengthMeters": 53170.84009488688,
+    "candidateBoundaryLengthMeters": 53170.84009488689,
+    "boundaryLengthDeltaMeters": 7.275957614183426e-12,
+    "polygonizationAreaM2": 77996388.30022588,
+    "candidateAreaM2": 77996388.30022603,
+    "candidateMinusPolygonizedAreaM2": 1.4901161193847656e-07,
+    "rawAlgebraicAreaM2": 77996377.70344338,
+    "candidateMinusAlgebraicAreaM2": 10.59678265452385,
+    "componentAreasM2": [
+      5.298391216211339,
+      77996383.00183481
+    ],
+    "holes": 0,
+    "normalizationSymmetricDifferenceM2": 0.0
+  },
+  "coverageFromPinnedProof": [
+    {
+      "kind": "viewport",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.319079875946045,
+              590.1144409179688
+            ],
+            [
+              841.5009765625,
+              590.1144409179688
+            ],
+            [
+              841.5009765625,
+              5.0406494140625
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              4.319079875946045,
+              590.1144409179688
+            ]
+          ]
+        ]
+      },
+      "coversAllRawEdges": true,
+      "outsideLengthPoints": 0.0,
+      "clearancePoints": 26.643330546874946
+    },
+    {
+      "kind": "activeClip",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ]
+      },
+      "coversAllRawEdges": true,
+      "outsideLengthPoints": 0.0,
+      "clearancePoints": 31.684010371093787
+    },
+    {
+      "kind": "activeClip",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ]
+        ]
+      },
+      "coversAllRawEdges": true,
+      "outsideLengthPoints": 0.0,
+      "clearancePoints": 26.64336095703129
+    }
+  ],
+  "projectionResidualMeters": 0.1698565984668559,
+  "identityComparison": {
+    "rmelRecord": {
+      "key": "oued-rmel-zaghouan",
+      "sourceRelationId": "osm:relation:7109197",
+      "inputSectorCode": "165158",
+      "drawingIndex": 524
+    },
+    "rmelChecks": {
+      "isValid": true,
+      "viewportCoversCompleteRing": true,
+      "activeClipOutsideAreasPoints2": [
+        0.0,
+        0.0
+      ]
+    },
+    "crs": {
+      "source": "EPSG:4326",
+      "target": "EPSG:32632"
+    },
+    "comparisons": {
+      "rmel_epsg32632_vs_raw685_epsg32632": {
+        "iou": 0.9979408218610947,
+        "intersection_area_m2": 61063687.39816074,
+        "symmetric_difference_area_m2": 126000.4675795734,
+        "distance_m": 0.0,
+        "area_a_m2": 61125233.130390465,
+        "area_b_m2": 61128142.13351059,
+        "union_area_m2": 61189687.865740314,
+        "intersection_type": "Polygon",
+        "intersection_bounds_m": [
+          608074.2705385513,
+          4024390.0615213383,
+          619862.0184531322,
+          4035976.5856338264
+        ]
+      },
+      "rmel_epsg32632_vs_repaired680_epsg32632": {
+        "iou": 0.00011604368466550608,
+        "intersection_area_m2": 16142.312256071937,
+        "symmetric_difference_area_m2": 139089335.9617394,
+        "distance_m": 0.0,
+        "area_a_m2": 61125233.130390465,
+        "area_b_m2": 77996387.45586106,
+        "union_area_m2": 139105478.27399546,
+        "intersection_type": "MultiPolygon",
+        "intersection_bounds_m": [
+          614742.0596082864,
+          4024638.5026674727,
+          619865.6743488479,
+          4034274.311393215
+        ]
+      }
+    },
+    "areas_m2": {
+      "rmel_epsg32632": 61125233.130390465,
+      "raw685_epsg32632": 61128142.13351059,
+      "repaired680_epsg32632": 77996387.45586106
+    }
+  },
+  "qualifications": [
+    "The source path is stroked, not filled. Polygonization preserves both loops but does not prove intended real-world ownership of the tiny loop.",
+    "A self-intersecting ring has no valid simple-polygon area. The 10.5967827 m2 change against its algebraic area is twice the small oppositely oriented lobe, not an inferred replacement edge.",
+    "No source/repository/production edits; no geometry simplification, snapping, buffering, or lobe discard."
+  ]
+}

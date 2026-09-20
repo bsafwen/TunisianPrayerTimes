@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "primarySource": {
+    "title": "Tunisian decree2023-590 of21September2023, annex1 tableA and annex6 introduction",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "date": "2023-09-21",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "pages": 190,
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "records": [
+    {
+      "id": "osm:relation:7115584",
+      "officialCode": "125657",
+      "imadaName": "التضامن 4",
+      "circleName": "التضامن 4",
+      "circleCountForImada": 1,
+      "visibleCellSpan": 1,
+      "seats": 1,
+      "delegationCode": "1256",
+      "delegationName": "حي التضامن",
+      "governorateCode": "12",
+      "governorateName": "أريانة",
+      "officialRegistryRow": {
+        "governorateCode": "12",
+        "governorateFr": "Ariana",
+        "governorateAr": "أريانة",
+        "delegationCode": "1256",
+        "delegationFr": "Cite ettadhamen",
+        "delegationAr": "حي التضامن",
+        "sectorCode": "125657",
+        "sectorFr": "Ettadhamen 4",
+        "sectorAr": "التضامن 4",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6903,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 230,
+          "Nombre_de_menages_par_Secteurs.xlsx": 230
+        }
+      },
+      "jortPage": 5100,
+      "annex": 1,
+      "table": "A",
+      "personallyViewed": true,
+      "conclusion": "whole_imada",
+      "pdfPage": 3,
+      "boundarySourceId": "isie-local-sector-2023-ettadhamen4-historical-rename",
+      "boundarySourceFile": "official/two-historical-sectors-20260920/ettadhamen4-source.geojson",
+      "boundarySourceSha256": "5ecc75bf902793294f2edd27ac0f6c3f066867f3ea50c99373436411aeb429c9",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/التضامن 4.pdf",
+      "mapPdfSha256": "ba9d75ba467a055e07f96c810263e4502a9b3273697414303eab8edb19d11c38"
+    }
+  ]
+}

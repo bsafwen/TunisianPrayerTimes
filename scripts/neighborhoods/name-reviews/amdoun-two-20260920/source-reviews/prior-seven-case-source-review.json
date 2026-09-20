@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_SOURCE_REVIEW",
+  "scope": "Exactly previous ranks4-10; all facts use the frozen currentDDB/4921 snapshot, independent of the parallel firstthreecorrections. No new research/Maps/source mutations/generation.",
+  "counts": {
+    "cases": 7,
+    "originalWorkbookRowsChecked": 24,
+    "nameOnlyCandidates": 2,
+    "holds": 5,
+    "projectedRawFieldChanges": 6,
+    "projectedChangedRawRows": 4,
+    "projectedReviewedNamesAdditions": 2,
+    "projectedRawRetirements": 0
+  },
+  "candidates": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\gounna425555-name-only-candidate.json",
+      "sha256": "eec3805be148905dac43902938f5bceda9dacdbb7fd6879d97d4f5f6fba19908",
+      "bytes": 18057
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\sidi235360-name-only-candidate.json",
+      "sha256": "db1b405e0a2e2ada1e0e40469060e671ffc7d7a1085210fadce9fc5f60e2f8b5",
+      "bytes": 19933
+    }
+  ],
+  "exactProjectedRawFieldChanges": [
+    {
+      "id": "osm:relation:7164910",
+      "field": "name",
+      "before": "الفنة",
+      "after": "القنة"
+    },
+    {
+      "id": "osm:node:2874824483",
+      "field": "parentName",
+      "before": "الفنة",
+      "after": "القنة"
+    },
+    {
+      "id": "osm:node:2874824483",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Sbeitla",
+        "El Gounna",
+        "Sbeïtla",
+        "الفنة",
+        "معتمدية سبيطلة"
+      ],
+      "after": [
+        "Délégation Sbeitla",
+        "El Gounna",
+        "Sbeïtla",
+        "القنة",
+        "معتمدية سبيطلة"
+      ]
+    },
+    {
+      "id": "osm:relation:7198157",
+      "field": "name",
+      "before": "سيدي مدنين",
+      "after": "سيدي مدين"
+    },
+    {
+      "id": "osm:node:2610858584",
+      "field": "parentName",
+      "before": "سيدي مدنين",
+      "after": "سيدي مدين"
+    },
+    {
+      "id": "osm:node:2610858584",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Nebeur",
+        "Délégation de Nebeur",
+        "Nebeur",
+        "Nibbar",
+        "Sidi Medien",
+        "سيدي مدنين",
+        "معتمدية نبر"
+      ],
+      "after": [
+        "Délégation Nebeur",
+        "Délégation de Nebeur",
+        "Nebeur",
+        "Nibbar",
+        "Sidi Medien",
+        "سيدي مدين",
+        "معتمدية نبر"
+      ]
+    }
+  ],
+  "holds": [
+    {
+      "rank": 6,
+      "ids": [
+        "osm:relation:7189451",
+        "osm:relation:7189452"
+      ],
+      "label": "Amdoun sector labels versus Zahret Medien",
+      "verdict": "HOLD",
+      "preciseMissingEvidence": "An explicit naming or boundary identity linkage from source215351/215352 Amdoun/AmdounSud polygons to the official ZahretMedien titles; two distinct bilingual name pairs cannot be replaced from a shared code alone.",
+      "action": "Preserve every current name, raw ID, coordinate, polygon, group, parent and prayer mapping. No further Maps retry is requested by this review.",
+      "sourceFactsReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+        "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+        "bytes": 132738,
+        "jsonPointer": "/cases/2"
+      },
+      "modelVerdict": "HOLD"
+    },
+    {
+      "rank": 7,
+      "ids": [
+        "osm:relation:7115584"
+      ],
+      "label": "7 Novembre versus Ettadhamen4",
+      "verdict": "HOLD",
+      "preciseMissingEvidence": "A source-specific same-sector link proving whether7Novembre is a former/alternate name of officialEttadhamen4 or a wrongly coded polygon. Political naming history must not be inferred.",
+      "action": "Preserve every current name, raw ID, coordinate, polygon, group, parent and prayer mapping. No further Maps retry is requested by this review.",
+      "sourceFactsReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+        "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+        "bytes": 132738,
+        "jsonPointer": "/cases/3"
+      },
+      "modelVerdict": "HOLD"
+    },
+    {
+      "rank": 8,
+      "ids": [
+        "osm:relation:7113315"
+      ],
+      "label": "El Ahd El Jadid versus Hammam Maarouf Riadh",
+      "verdict": "HOLD",
+      "preciseMissingEvidence": "An explicit same-sector link from ElAhdElJadid polygon to officialHammamMaaroufErRiadh; failed public search is not such a link.",
+      "action": "Preserve every current name, raw ID, coordinate, polygon, group, parent and prayer mapping. No further Maps retry is requested by this review.",
+      "sourceFactsReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+        "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+        "bytes": 132738,
+        "jsonPointer": "/cases/4"
+      },
+      "modelVerdict": "HOLD"
+    },
+    {
+      "rank": 9,
+      "ids": [
+        "osm:relation:7147644"
+      ],
+      "label": "Gremdi island versus official En-Najet sector",
+      "verdict": "HOLD",
+      "preciseMissingEvidence": "Official sector geography or source-specific evidence showing whether the Gremdi island footprint is EnNajet346656, lies inside it, or carries an erroneous code. An island must not be renamed to the sector from its code alone.",
+      "action": "Preserve every current name, raw ID, coordinate, polygon, group, parent and prayer mapping. No further Maps retry is requested by this review.",
+      "sourceFactsReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+        "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+        "bytes": 132738,
+        "jsonPointer": "/cases/5"
+      },
+      "modelVerdict": "HOLD"
+    },
+    {
+      "rank": 10,
+      "ids": [
+        "osm:node:287613682",
+        "osm:relation:7133850"
+      ],
+      "label": "Midoun town versus namesake sector",
+      "verdict": "HOLD",
+      "preciseMissingEvidence": "Evidence defining town versus sector display scope despite townpoint being outside the namesake sector. Shared Wikidata/Wikipedia references do not establish equal administrative extent or justify a group.",
+      "action": "Preserve every current name, raw ID, coordinate, polygon, group, parent and prayer mapping. No further Maps retry is requested by this review.",
+      "sourceFactsReference": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+        "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+        "bytes": 132738,
+        "jsonPointer": "/cases/6"
+      },
+      "modelVerdict": "HOLD"
+    }
+  ],
+  "evidence": {
+    "facts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+      "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+      "bytes": 132738
+    },
+    "workbookRows": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\original-workbook-rows.json",
+      "sha256": "1623158ebe4e44826f946083e6dc12d96d0a84168e7f1905400297b4fa70eca1",
+      "bytes": 26523
+    },
+    "modelRequest": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\deepseek-job.json",
+      "sha256": "5d4c0eaacec1ca231eec681a71f448730c3c23bdeb9b1a83340e15804aeaf3f6",
+      "bytes": 1668
+    },
+    "modelResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\remaining-shortlist-source-review-20260920\\result.json",
+      "sha256": "910ef1240ddd12077cfd6478ddfc503cf4ad25e2d782e5aa893cc5ec026e2ee0",
+      "bytes": 72611
+    },
+    "modelDecoded": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\model-verdict.json",
+      "sha256": "ecc3e692b3369ca42a4b29230d47c28f80225dc718f0c5cc4f2479fe6a957904",
+      "bytes": 10886
+    },
+    "priorShortlist": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\ranked-shortlist.json",
+      "sha256": "0e3e3984d8d90895f4b3c759c4d8d87cfb4e850f738adff80c91db02db92be8c",
+      "bytes": 27343
+    }
+  },
+  "modelUse": {
+    "calls": 1,
+    "reasoning": "max",
+    "nativeOverride": "Sidi235360 HOLD overridden with disclosed transliteration rationale; no inferred renames or merges accepted."
+  },
+  "projectionQualification": "Six fields assume primary Arabic updates with existing Latin aliases unchanged. Existing action name_tags should add two saved-name review records. This is a source-reviewed projection, not a generator run or permission to skip active dependency/coverage review.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\finalize.py",
+    "sha256": "e30622e5f2e8f9fb01397abfaf20a09a85a46785d4c82a792b6582b1a9a3035c",
+    "bytes": 10325
+  }
+}

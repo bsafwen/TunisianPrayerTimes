@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "targetId": "osm:relation:7147644",
+  "sourceKind": "sector",
+  "effectiveKind": "locality",
+  "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "originalTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "name": "جزيرة قرمدي",
+    "name:ar": "جزيرة قرمدي",
+    "name:fr": "Îlot Gremdi",
+    "ref:tn:codegeo": "346656"
+  },
+  "originalGeometrySha256": "8d121d2f482e195c3ca7eed76221f2fe564db56d85b8bfaff0c42be9c727c5c9",
+  "expectedTargetFeatureWithoutOffsetLength": {
+    "id": "osm:relation:7147644",
+    "sourceId": "osm",
+    "name": "جزيرة قرمدي",
+    "aliases": [
+      "Îlot Gremdi"
+    ],
+    "kind": "locality",
+    "parentName": "قرقنة",
+    "contextAliases": [
+      "Kerkennah",
+      "قرقنة",
+      "معتمدية قرقنة"
+    ],
+    "governorateId": 359,
+    "lat": 34.752319,
+    "lng": 11.313686,
+    "delegationId": 543,
+    "hasBoundary": true,
+    "bbox": [
+      11.305487,
+      34.744212,
+      11.343104,
+      34.760475
+    ],
+    "areaKm2": 1.997642197391508,
+    "pickerGroupId": "osm:relation:7147644"
+  },
+  "expectedPackedGeometrySha256": "4a1fc0c7a4aacf5c5f878f61eacdf249f3fb02bcbe0f26ca12862f42793bceb5",
+  "expectedPickerMembers": [
+    "osm:relation:7147644"
+  ],
+  "expectedIncidentConflicts": [],
+  "primaryReview": {
+    "file": "official/next-identity-review-isie2023-decisions.json",
+    "sha256": "6b3ac1a843d38208d6d4a01aac4742a805a56fb281014270e8f4dabd5b8d8953"
+  },
+  "sourcePdf": {
+    "file": "classification-reviews/gremdi-20260920/kraten.pdf",
+    "sha256": "18093ba2d049ea7b7330bcd1ee8b16575bbd448e9dfa9bba8315e028dac3fcf9"
+  },
+  "status": "reviewed_detached_component_locality_classification",
+  "rejectedAdministrativeCode": "346656",
+  "noPositiveAreaOverlaps": true,
+  "qualifications": {
+    "sourceNameAndGeometryRetained": true,
+    "currentDelegationContextRetained": true,
+    "noExactSectorContextAssigned": true,
+    "noBoundaryCertification": true
+  }
+}

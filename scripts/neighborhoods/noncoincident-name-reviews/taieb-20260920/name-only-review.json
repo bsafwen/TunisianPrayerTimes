@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_noncoincident_name_only_lineage_successor",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_noncoincident_town_residential_base_identity",
+    "id": "osm:way:93164500",
+    "targetDelegationId": 388
+  },
+  "priorLineage": {
+    "file": "dependency-successors/soliman-native-20260912/way-93164500-boundary-lineage.json",
+    "sha256": "4ad759b88ec55fd7840b5ed76bb124e56adff9bb8e029416d04eed9341a88077"
+  },
+  "priorProof": {
+    "file": "dependency-successors/soliman-native-20260912/way-93164500-boundary-proof.json",
+    "sha256": "c8281f1da70bb210fe75ec5c4858146edfe4d05caa392f740fc9ffbd8a5d7d5b"
+  },
+  "nameCorrectionReview": {
+    "file": "official-six-name-review-20260920.json",
+    "sha256": "49fc267dad2eba56b781895e333ccfa5e354ebfde0375b40217cf87ff38e09c5"
+  },
+  "changes": [
+    {
+      "id": "osm:relation:7117932",
+      "curation": {
+        "id": "osm:relation:7117932",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطيب مهيري",
+          "name:ar": "الطيب مهيري",
+          "name:fr": "Taieb Mhiri",
+          "ref:tn:codegeo": "116954"
+        },
+        "action": "name_tags",
+        "nameTags": {
+          "name": "الطيب المهيري",
+          "name:ar": "الطيب المهيري",
+          "name:fr": "Taieb Mhiri",
+          "alt_name": "الطيب مهيري"
+        },
+        "reason": "scripts/neighborhoods/official-six-name-review-20260920.json correction for official sector code 116954: الطيب مهيري -> الطيب المهيري.",
+        "evidence": "scripts/neighborhoods/official-six-name-review-20260920.json#osm:relation:7117932; official sector code 116954"
+      },
+      "beforeEffective": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الطيب مهيري",
+          "name:ar": "الطيب مهيري",
+          "name:fr": "Taieb Mhiri",
+          "ref:tn:codegeo": "116954"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "897432cd2ab943e349506a1931aecda8aacb4396aa235a2a95a2a914bf34c447"
+      },
+      "afterEffective": {
+        "kind": "sector",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "ref:tn:codegeo": "116954",
+          "name": "الطيب المهيري",
+          "name:ar": "الطيب المهيري",
+          "name:fr": "Taieb Mhiri",
+          "alt_name": "الطيب مهيري"
+        },
+        "sourceId": "osm",
+        "geometrySha256": "897432cd2ab943e349506a1931aecda8aacb4396aa235a2a95a2a914bf34c447"
+      },
+      "beforeMetadata": {
+        "id": "osm:relation:7117932",
+        "sourceId": "osm",
+        "name": "الطيب مهيري",
+        "aliases": [
+          "Taieb Mhiri"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.836049,
+        "lng": 10.278915,
+        "delegationId": 406,
+        "hasBoundary": true,
+        "bbox": [
+          10.239206,
+          36.810457,
+          10.30779,
+          36.862359
+        ],
+        "areaKm2": 17.2850050701517,
+        "pickerGroupId": "osm:relation:7117932"
+      },
+      "afterMetadata": {
+        "id": "osm:relation:7117932",
+        "sourceId": "osm",
+        "name": "الطيب المهيري",
+        "aliases": [
+          "Taieb Mhiri",
+          "الطيب مهيري"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "lat": 36.836049,
+        "lng": 10.278915,
+        "delegationId": 406,
+        "hasBoundary": true,
+        "bbox": [
+          10.239206,
+          36.810457,
+          10.30779,
+          36.862359
+        ],
+        "areaKm2": 17.2850050701517,
+        "pickerGroupId": "osm:relation:7117932"
+      }
+    }
+  ]
+}

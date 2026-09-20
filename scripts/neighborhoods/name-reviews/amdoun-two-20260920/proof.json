@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_TWO_AMDOUN_SECTOR_NAMES",
+  "scope": "Exact official sector codes and same-region source/GeoPDF comparisons support the two primary Arabic sector names. Existing Amdoun aliases remain genuine and searchable. Original source polygons differ from official map scopes and remain unchanged; this is name evidence, not geographic equivalence.",
+  "targets": [
+    {
+      "id": "osm:relation:7189452",
+      "code": "215351",
+      "newName": "زهرة مدين",
+      "oldName": "عمدون",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عمدون",
+        "name:ar": "عمدون",
+        "name:fr": "Amdoun",
+        "ref:tn:codegeo": "215351"
+      },
+      "officialRecord": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2153",
+        "delegationFr": "Amdoun",
+        "delegationAr": "عمدون",
+        "sectorCode": "215351",
+        "sectorFr": "Zahret medien",
+        "sectorAr": "زهرة مدين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20638,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 922,
+          "Nombre_de_menages_par_Secteurs.xlsx": 921
+        }
+      },
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7189452",
+        "sourceId": "osm",
+        "name": "عمدون",
+        "aliases": [
+          "Amdoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.78194,
+        "lng": 9.088968,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.055601,
+          36.76293,
+          9.109579,
+          36.80082
+        ],
+        "areaKm2": 9.558281132863852,
+        "pickerGroupId": "osm:relation:7189452",
+        "offset": 4801112,
+        "length": 3292
+      }
+    },
+    {
+      "id": "osm:relation:7189451",
+      "code": "215352",
+      "newName": "زهرة مدين الجنوبية",
+      "oldName": "عمدون الجنوبية",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عمدون الجنوبية",
+        "name:ar": "عمدون الجنوبية",
+        "name:fr": "Amdoun Sud",
+        "ref:tn:codegeo": "215352"
+      },
+      "officialRecord": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2153",
+        "delegationFr": "Amdoun",
+        "delegationAr": "عمدون",
+        "sectorCode": "215352",
+        "sectorFr": "Zahret medien sud",
+        "sectorAr": "زهرة مدين الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20672,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 924,
+          "Nombre_de_menages_par_Secteurs.xlsx": 923
+        }
+      },
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7189451",
+        "sourceId": "osm",
+        "name": "عمدون الجنوبية",
+        "aliases": [
+          "Amdoun Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.76026,
+        "lng": 9.087709,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.052248,
+          36.73371,
+          9.139952,
+          36.7867
+        ],
+        "areaKm2": 18.70448151465049,
+        "pickerGroupId": "osm:relation:7189451",
+        "offset": 4797564,
+        "length": 3548
+      }
+    }
+  ],
+  "officialRegistry": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "reviewFiles": [
+    {
+      "file": "name-reviews/amdoun-two-20260920/source-reviews/four-map-source-and-geometry-review.json",
+      "sha256": "6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b",
+      "bytes": 29736
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/source-reviews/four-map-geometry-facts.json",
+      "sha256": "baa703fd7ca7f8ed502b2bc9afab552cbc3b401c867684f44ab1463cc630dcb9",
+      "bytes": 55436
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/source-reviews/four-map-model-review.json",
+      "sha256": "67e3e2fe6fe05ffbcda63cf50620373cb432eccfeb650c236800db472a9951cd",
+      "bytes": 8325
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/source-reviews/four-map-source-receipts.json",
+      "sha256": "a2c6a172a96d43bd5c41fe552ac9c7cefb5fc8600c3341cef5fb1c9093151e02",
+      "bytes": 4677
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/source-reviews/local-official-evidence-index.json",
+      "sha256": "2f35e76bbe32f611d963e83441454c6ba7ece8436016d990d8f4748815079637",
+      "bytes": 89653
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/source-reviews/prior-seven-case-source-review.json",
+      "sha256": "976ff6b8efbe598f53d8584960930f70066b113cba6cf17e1026902e93059e6d",
+      "bytes": 10358
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/source-reviews/dependency-screen.json",
+      "sha256": "effc3e9f8b1b24c6f550d7ad1f0227bf548b445b141a160ac94309c708483987"
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/original-source-extract.json",
+      "sha256": "ef79cab4fc27b49253682cc5d813f60edac1bba820342100fa96e3bc7dfcbbce"
+    }
+  ],
+  "primarySources": [
+    {
+      "file": "name-reviews/amdoun-two-20260920/primary/zahret-medien.pdf",
+      "sha256": "7e8b308d9e185da02fcb450153d1239e783cfef54f82a3a78c0a580661217bd3",
+      "bytes": 1291892,
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين.pdf"
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/primary/zahret-medien-sud.pdf",
+      "sha256": "d4f5105ecb380f07b675b1897e4ad9f903da2cfae9ee81daf5e0d88fe2944107",
+      "bytes": 1096477,
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين الجنوبية.pdf"
+    },
+    {
+      "file": "name-reviews/amdoun-two-20260920/primary/ins-2012.pdf",
+      "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+      "bytes": 749971,
+      "url": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+      "pdfPageOneBased": 61
+    }
+  ],
+  "expectedRawFieldChanges": [
+    {
+      "id": "osm:relation:7189452",
+      "field": "name",
+      "before": "عمدون",
+      "after": "زهرة مدين"
+    },
+    {
+      "id": "osm:relation:7189452",
+      "field": "aliases",
+      "before": [
+        "Amdoun"
+      ],
+      "after": [
+        "Zahret medien",
+        "عمدون",
+        "Amdoun"
+      ]
+    },
+    {
+      "id": "osm:relation:7189451",
+      "field": "name",
+      "before": "عمدون الجنوبية",
+      "after": "زهرة مدين الجنوبية"
+    },
+    {
+      "id": "osm:relation:7189451",
+      "field": "aliases",
+      "before": [
+        "Amdoun Sud"
+      ],
+      "after": [
+        "Zahret medien sud",
+        "عمدون الجنوبية",
+        "Amdoun Sud"
+      ]
+    },
+    {
+      "id": "osm:node:4099579144",
+      "field": "parentName",
+      "before": "عمدون الجنوبية",
+      "after": "زهرة مدين الجنوبية"
+    },
+    {
+      "id": "osm:node:4099579144",
+      "field": "contextAliases",
+      "before": [
+        "Amdoun Sud",
+        "Délégation Amdoun",
+        "عمدون الجنوبية",
+        "معتمدية عمدون"
+      ],
+      "after": [
+        "Amdoun Sud",
+        "Délégation Amdoun",
+        "Zahret medien sud",
+        "زهرة مدين الجنوبية",
+        "عمدون الجنوبية",
+        "معتمدية عمدون"
+      ]
+    }
+  ],
+  "protectedTown": {
+    "id": "osm:node:4099579144",
+    "beforeMetadata": {
+      "id": "osm:node:4099579144",
+      "sourceId": "osm",
+      "name": "عمدون",
+      "aliases": [
+        "Amdoun",
+        "Zahret Medien",
+        "زهرة مدين",
+        "Zahret Median"
+      ],
+      "kind": "town",
+      "parentName": "عمدون الجنوبية",
+      "contextAliases": [
+        "Amdoun Sud",
+        "Délégation Amdoun",
+        "عمدون الجنوبية",
+        "معتمدية عمدون"
+      ],
+      "governorateId": 356,
+      "lat": 36.7686376,
+      "lng": 9.0894667,
+      "delegationId": 515,
+      "hasBoundary": false,
+      "pickerGroupId": "delegation:515"
+    },
+    "afterMetadata": {
+      "id": "osm:node:4099579144",
+      "sourceId": "osm",
+      "name": "عمدون",
+      "aliases": [
+        "Amdoun",
+        "Zahret Medien",
+        "زهرة مدين",
+        "Zahret Median"
+      ],
+      "kind": "town",
+      "parentName": "زهرة مدين الجنوبية",
+      "contextAliases": [
+        "Amdoun Sud",
+        "Délégation Amdoun",
+        "Zahret medien sud",
+        "زهرة مدين الجنوبية",
+        "عمدون الجنوبية",
+        "معتمدية عمدون"
+      ],
+      "governorateId": 356,
+      "lat": 36.7686376,
+      "lng": 9.0894667,
+      "delegationId": 515,
+      "hasBoundary": false,
+      "pickerGroupId": "delegation:515"
+    },
+    "ownNameAliasesCoordinatesAndGroupUnchanged": true
+  },
+  "historicalProvenanceQualification": "Copied review documents retain their original snapshot paths/hashes and broader four-map findings. Operational references in this proof are relative to scripts/neighborhoods. Only these two Amdoun sector names and one inherited child context are proposed. Midoun remains held and untouched.",
+  "geometryQualification": "No GeoPDF vector is imported. No old source polygon, coordinate, kind, identity, prayer source or picker group is replaced."
+}

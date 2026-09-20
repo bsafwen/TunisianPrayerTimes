@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "osm:relation:7115584",
+      "coordinateScale": 1000000,
+      "geometrySha256": "a04e16182e749f097495175471fcb78f786f3c683311e3ad39b37eba2ab5529f",
+      "packedGeometrySha256": "464ed655cac240803ef79270e2404f92c6e2a6a933793c74e1c8c14337e66807",
+      "packedLength": 372,
+      "valid": true,
+      "countryCovers": true,
+      "anchorPreservedAndContained": true,
+      "nativeGeometryType": "Polygon",
+      "quantizedGeometryType": "Polygon",
+      "nativeInteriorRings": 0,
+      "quantizedInteriorRings": 0,
+      "symmetricDifferenceMeters2": 53.02226807023219,
+      "hausdorffMeters": 0.06549693308564927,
+      "qualification": "Only the existing app precision is applied to a separate copy. Exported sources retain full unrounded coordinates; this is source packing assessment, not catalog generation."
+    },
+    {
+      "id": "osm:relation:7113315",
+      "coordinateScale": 1000000,
+      "geometrySha256": "ebabb97d5444371309fccd83f9e153d8d947b782c091478f7b5d44871dc93606",
+      "packedGeometrySha256": "ffd3c39e9dc0c2702b03d8074643a036a1ee0c4a248afa969203b03b32f0a45e",
+      "packedLength": 952,
+      "valid": true,
+      "countryCovers": true,
+      "anchorPreservedAndContained": true,
+      "nativeGeometryType": "Polygon",
+      "quantizedGeometryType": "Polygon",
+      "nativeInteriorRings": 1,
+      "quantizedInteriorRings": 1,
+      "symmetricDifferenceMeters2": 255.3326436129896,
+      "hausdorffMeters": 0.06466691183366557,
+      "qualification": "Only the existing app precision is applied to a separate copy. Exported sources retain full unrounded coordinates; this is source packing assessment, not catalog generation."
+    }
+  ],
+  "generatorHelperPin": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "722c90af0739d79714edb4df78cbfb38a08aa4801bf343113e0d3f74533ab50c"
+  },
+  "noCatalogGeneration": true
+}

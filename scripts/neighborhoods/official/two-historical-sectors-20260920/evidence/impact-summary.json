@@ -1,0 +1,53 @@
+{
+  "status": "READ_ONLY_PROPOSED_TWO_SECTOR_IMPACT_FACTS",
+  "factsFile": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/two-historical-sector-scope-20260920/impact-facts.json",
+  "summaryFile": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/two-historical-sector-scope-20260920/impact-summary.json",
+  "counts": {
+    "currentRawRows": 3523,
+    "currentBoundaryRows": 2619,
+    "intersectionRecords": 18,
+    "oldIncidentConflicts": 0,
+    "afterPrepackingProjectionConflicts": 9,
+    "currentRawMembershipChanges": 0,
+    "oldNameReferenceRows": 1,
+    "pickerGroups": 13,
+    "pickerClosureRows": 13
+  },
+  "metrics": {
+    "osm:relation:7115584": {
+      "oldAreaKm2": 0.40842937080126285,
+      "newAreaKm2": 0.34681396648482204,
+      "gainKm2": 0.0040894440052867504,
+      "lossKm2": 0.06570484832171279,
+      "oldOutsideOtherSectorsKm2": 0.40842937080126296,
+      "oldOutsideAllRemainingPolygonsKm2": 0.40842937080126296,
+      "newOutsideOtherSectorsKm2": 0.3427245224795499,
+      "newOutsideAllRemainingPolygonsKm2": 0.3427245224795499,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.06570484832171282,
+      "lossNotCoveredByOtherSectorKm2": 0.06570484832171282,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.004089444005286332,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.004089444005286332,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    },
+    "osm:relation:7113315": {
+      "oldAreaKm2": 4.119931455052667,
+      "newAreaKm2": 4.348393893732443,
+      "gainKm2": 0.363583823464645,
+      "lossKm2": 0.13512138478491123,
+      "oldOutsideOtherSectorsKm2": 4.119931455052669,
+      "oldOutsideAllRemainingPolygonsKm2": 2.435693780327265,
+      "newOutsideOtherSectorsKm2": 3.984810070267811,
+      "newOutsideAllRemainingPolygonsKm2": 2.32066921514722,
+      "lossNotCoveredByAnyRemainingPolygonKm2": 0.11502456518006825,
+      "lossNotCoveredByOtherSectorKm2": 0.13512138478490154,
+      "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.3635838234646526,
+      "gainAlreadyClaimedByOtherSectorsKm2": 0.3635838234646445,
+      "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+      "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+      "nonPeerOverlapIsNotAConflict": true
+    }
+  },
+  "qualification": "prepacking projection using untouched native geometry against current packed peers; not an exact generated/packed app prediction"
+}

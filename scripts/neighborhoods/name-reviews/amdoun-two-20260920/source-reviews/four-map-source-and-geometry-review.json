@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "status": "FINITE_SOURCE_REVIEW_COMPLETE",
+  "scope": "Exactly four official PDFs, three current sectors and one town node. No new Maps calls, production changes, candidate generation, tests or build.",
+  "baselineMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "d396925c0a7adb85010fb1a2b3f839ffcea939bc12b59a0da6c04d23c57d79a4",
+    "bytes": 1866360
+  },
+  "baselineBinary": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "sha256": "bab9876668eb53f9fd27992242575b031acaa74c3f4e36cca7842289164fe444",
+    "bytes": 5590504
+  },
+  "originalInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "sourceReceipts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\source-receipts.json",
+    "sha256": "a2c6a172a96d43bd5c41fe552ac9c7cefb5fc8600c3341cef5fb1c9093151e02",
+    "bytes": 4677
+  },
+  "frozenSelectedRows": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\frozen-source-rows.json",
+    "sha256": "17894890818f921fdda9789529a409a42aa0be7984af68c5169d93cf58275a71",
+    "bytes": 126895
+  },
+  "geometryFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\geometry-facts.json",
+    "sha256": "baa703fd7ca7f8ed502b2bc9afab552cbc3b401c867684f44ab1463cc630dcb9",
+    "bytes": 55436
+  },
+  "unchangedNativeGeometryEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\native-geometries.json",
+    "sha256": "8ec9290dcd89849ec2af082bd3b0a3b718cbd4814ac573a79120741c4dbadfe2",
+    "bytes": 206365
+  },
+  "nativeGeometryEvidenceImportable": false,
+  "nativeGeometryEvidenceQualification": "Read-only diagnostic collection includes the invalid unrepaired Midoun ring. Not a production geometry candidate.",
+  "sourceMethod": "Parse embedded GCS WKT + GPTS/LPTS and page transformation; affine in stored projected CRS. Native continuous explicitly closed red circonscription_isie2023 path, wholly inside viewport and both active clips. No invented alignment, repair, snapping, smoothing, buffer or cutting. Native paths are preserved separately.",
+  "visualReview": {
+    "allFourCompletePagesPersonallyViewed": true,
+    "titles": [
+      "زهرة مدين",
+      "زهرة مدين الجنوبية",
+      "ميدون",
+      "اركو"
+    ],
+    "legend": {
+      "black": "الولاية",
+      "blue": "المعتمدية",
+      "red": "الدائرة / العمادة"
+    },
+    "sourcePageOneBased": 1,
+    "geometrySelections": [
+      {
+        "slug": "zahret-medien",
+        "drawingIndex": 245,
+        "nativeValid": true,
+        "wholeTargetInsideViewportAndBothClips": true,
+        "epsgParsedFromEmbeddedWkt": 32632,
+        "maxControlResidualMeters": 0.2836175848720098
+      },
+      {
+        "slug": "zahret-medien-sud",
+        "drawingIndex": 271,
+        "nativeValid": true,
+        "wholeTargetInsideViewportAndBothClips": true,
+        "epsgParsedFromEmbeddedWkt": 32632,
+        "maxControlResidualMeters": 0.33349120266599147
+      },
+      {
+        "slug": "midoun",
+        "drawingIndex": 500,
+        "nativeValid": false,
+        "wholeTargetInsideViewportAndBothClips": true,
+        "epsgParsedFromEmbeddedWkt": 32632,
+        "maxControlResidualMeters": 0.11823612018781256
+      },
+      {
+        "slug": "arkou",
+        "drawingIndex": 547,
+        "nativeValid": true,
+        "wholeTargetInsideViewportAndBothClips": true,
+        "epsgParsedFromEmbeddedWkt": 32632,
+        "maxControlResidualMeters": 0.22798169635094895
+      }
+    ]
+  },
+  "amdoun": {
+    "conclusions": [
+      {
+        "id": "osm:relation:7189452",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "عمدون",
+          "name:ar": "عمدون",
+          "name:fr": "Amdoun",
+          "ref:tn:codegeo": "215351"
+        },
+        "currentRow": {
+          "id": "osm:relation:7189452",
+          "sourceId": "osm",
+          "name": "عمدون",
+          "aliases": [
+            "Amdoun"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية عمدون",
+          "contextAliases": [
+            "Délégation Amdoun",
+            "معتمدية عمدون"
+          ],
+          "governorateId": 356,
+          "lat": 36.78194,
+          "lng": 9.088968,
+          "delegationId": 515,
+          "hasBoundary": true,
+          "bbox": [
+            9.055601,
+            36.76293,
+            9.109579,
+            36.80082
+          ],
+          "areaKm2": 9.558281132863852,
+          "pickerGroupId": "osm:relation:7189452",
+          "offset": 4801112,
+          "length": 3292
+        },
+        "officialRegistryRecord": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2153",
+          "delegationFr": "Amdoun",
+          "delegationAr": "عمدون",
+          "sectorCode": "215351",
+          "sectorFr": "Zahret medien",
+          "sectorAr": "زهرة مدين",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20638,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 922,
+            "Nombre_de_menages_par_Secteurs.xlsx": 921
+          }
+        },
+        "officialMap": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien.pdf",
+          "sha256": "7e8b308d9e185da02fcb450153d1239e783cfef54f82a3a78c0a580661217bd3",
+          "bytes": 1291892,
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين.pdf",
+          "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D8%A7%D8%AC%D8%A9/%D8%B9%D9%85%D8%AF%D9%88%D9%86/%D8%B2%D9%87%D8%B1%D8%A9%20%D9%85%D8%AF%D9%8A%D9%86.pdf",
+          "index": 608,
+          "observedTitle": "زهرة مدين.pdf",
+          "indexSource": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "retrievedAt": "2026-09-20T11:22:52.565616+00:00",
+          "httpStatus": 200,
+          "contentType": "application/pdf"
+        },
+        "officialPdfPageOneBased": 1,
+        "nativeDrawingIndex": 245,
+        "officialVsOriginal": {
+          "officialAreaKm2": 8.995099411370612,
+          "comparedAreaKm2": 9.532652006010675,
+          "intersectionKm2": 8.909360146916496,
+          "iou": 0.9262838136221708,
+          "officialCoveredByCompared": 0.9904682249152539,
+          "comparedCoveredByOfficial": 0.9346150621357863,
+          "officialOutsideComparedKm2": 0.08573926445425213,
+          "comparedOutsideOfficialKm2": 0.6232918590942252,
+          "hausdorffMeters": 431.1044064147871,
+          "centroidDistanceMeters": 45.07504684034296
+        },
+        "officialVsPacked": {
+          "officialAreaKm2": 8.995099411370612,
+          "comparedAreaKm2": 9.53265200601067,
+          "intersectionKm2": 8.909360146916496,
+          "iou": 0.9262838136221708,
+          "officialCoveredByCompared": 0.9904682249152539,
+          "comparedCoveredByOfficial": 0.9346150621357868,
+          "officialOutsideComparedKm2": 0.08573926445425213,
+          "comparedOutsideOfficialKm2": 0.6232918590942248,
+          "hausdorffMeters": 431.1044064147871,
+          "centroidDistanceMeters": 45.07504683958938
+        },
+        "currentAnchor": {
+          "covered": true,
+          "distanceToPolygonMeters": 0.0,
+          "distanceToBoundaryMeters": 925.1525654005069
+        },
+        "crossMatchWithOtherOfficialMap": {
+          "officialAreaKm2": 19.692897278145765,
+          "comparedAreaKm2": 9.53265200601067,
+          "intersectionKm2": 0.22878505547705266,
+          "iou": 0.00789002019924596,
+          "officialCoveredByCompared": 0.01161764326729858,
+          "comparedCoveredByOfficial": 0.02400014763287233,
+          "officialOutsideComparedKm2": 19.46411222266874,
+          "comparedOutsideOfficialKm2": 9.303866950533587,
+          "hausdorffMeters": 3309.7842135071237,
+          "centroidDistanceMeters": 2348.5173367198463
+        },
+        "verdict": "NAME_IDENTITY_SUPPORTED_DISTINCT_GEOMETRY_PRESERVED",
+        "proposedPrimaryName": "زهرة مدين",
+        "recommendedNextAction": "Prepare a bounded source-bound name correction with old Amdoun wording retained as search aliases; preserve IDs, geometry, coordinates, prayer source and existing distinct picker roles. This report does not implement a curation or approve boundary replacement.",
+        "unproven": "Current packed polygon and official map are not equal; their differences are material and are not certified here as rounding-only."
+      },
+      {
+        "id": "osm:relation:7189451",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "عمدون الجنوبية",
+          "name:ar": "عمدون الجنوبية",
+          "name:fr": "Amdoun Sud",
+          "ref:tn:codegeo": "215352"
+        },
+        "currentRow": {
+          "id": "osm:relation:7189451",
+          "sourceId": "osm",
+          "name": "عمدون الجنوبية",
+          "aliases": [
+            "Amdoun Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية عمدون",
+          "contextAliases": [
+            "Délégation Amdoun",
+            "معتمدية عمدون"
+          ],
+          "governorateId": 356,
+          "lat": 36.76026,
+          "lng": 9.087709,
+          "delegationId": 515,
+          "hasBoundary": true,
+          "bbox": [
+            9.052248,
+            36.73371,
+            9.139952,
+            36.7867
+          ],
+          "areaKm2": 18.70448151465049,
+          "pickerGroupId": "osm:relation:7189451",
+          "offset": 4797564,
+          "length": 3548
+        },
+        "officialRegistryRecord": {
+          "governorateCode": "21",
+          "governorateFr": "Beja",
+          "governorateAr": "باجة",
+          "delegationCode": "2153",
+          "delegationFr": "Amdoun",
+          "delegationAr": "عمدون",
+          "sectorCode": "215352",
+          "sectorFr": "Zahret medien sud",
+          "sectorAr": "زهرة مدين الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20672,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 924,
+            "Nombre_de_menages_par_Secteurs.xlsx": 923
+          }
+        },
+        "officialMap": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\zahret-medien-sud.pdf",
+          "sha256": "d4f5105ecb380f07b675b1897e4ad9f903da2cfae9ee81daf5e0d88fe2944107",
+          "bytes": 1096477,
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/باجة/عمدون/زهرة مدين الجنوبية.pdf",
+          "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D8%A7%D8%AC%D8%A9/%D8%B9%D9%85%D8%AF%D9%88%D9%86/%D8%B2%D9%87%D8%B1%D8%A9%20%D9%85%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+          "index": 609,
+          "observedTitle": "زهرة مدين الجنوبية.pdf",
+          "indexSource": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+            "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+            "bytes": 818063
+          },
+          "retrievedAt": "2026-09-20T11:22:52.563617+00:00",
+          "httpStatus": 200,
+          "contentType": "application/pdf"
+        },
+        "officialPdfPageOneBased": 1,
+        "nativeDrawingIndex": 271,
+        "officialVsOriginal": {
+          "officialAreaKm2": 19.692897278145765,
+          "comparedAreaKm2": 18.65323642285475,
+          "intersectionKm2": 18.497834333818144,
+          "iou": 0.9319606678445581,
+          "officialCoveredByCompared": 0.9393150267607477,
+          "comparedCoveredByOfficial": 0.9916688940453142,
+          "officialOutsideComparedKm2": 1.1950629443276677,
+          "comparedOutsideOfficialKm2": 0.15540208903670685,
+          "hausdorffMeters": 649.1935219569352,
+          "centroidDistanceMeters": 2.899038648475634
+        },
+        "officialVsPacked": {
+          "officialAreaKm2": 19.692897278145765,
+          "comparedAreaKm2": 18.653236422854725,
+          "intersectionKm2": 18.497834333818144,
+          "iou": 0.9319606678445581,
+          "officialCoveredByCompared": 0.9393150267607477,
+          "comparedCoveredByOfficial": 0.9916688940453157,
+          "officialOutsideComparedKm2": 1.1950629443276677,
+          "comparedOutsideOfficialKm2": 0.15540208903670683,
+          "hausdorffMeters": 649.1935219569352,
+          "centroidDistanceMeters": 2.8990386627862534
+        },
+        "currentAnchor": {
+          "covered": true,
+          "distanceToPolygonMeters": 0.0,
+          "distanceToBoundaryMeters": 484.7773939761201
+        },
+        "crossMatchWithOtherOfficialMap": {
+          "officialAreaKm2": 8.995099411370612,
+          "comparedAreaKm2": 18.653236422854725,
+          "intersectionKm2": 0.004104042702453686,
+          "iou": 0.0001484592783552116,
+          "officialCoveredByCompared": 0.00045625317906612656,
+          "comparedCoveredByOfficial": 0.00022001772826002683,
+          "officialOutsideComparedKm2": 8.990995368668182,
+          "comparedOutsideOfficialKm2": 18.649132380152285,
+          "hausdorffMeters": 3318.2397496896397,
+          "centroidDistanceMeters": 2306.139728044743
+        },
+        "verdict": "NAME_IDENTITY_SUPPORTED_DISTINCT_GEOMETRY_PRESERVED",
+        "proposedPrimaryName": "زهرة مدين الجنوبية",
+        "recommendedNextAction": "Prepare a bounded source-bound name correction with old Amdoun wording retained as search aliases; preserve IDs, geometry, coordinates, prayer source and existing distinct picker roles. This report does not implement a curation or approve boundary replacement.",
+        "unproven": "Current packed polygon and official map are not equal; their differences are material and are not certified here as rounding-only."
+      }
+    ],
+    "pairTopology": {
+      "a": "zahret-medien",
+      "b": "zahret-medien-sud",
+      "distanceMeters": 0.0,
+      "intersectionAreaM2": 2424.407393552848,
+      "boundaryIntersectionLengthMeters": 0.0,
+      "relation": "212101212",
+      "qualification": "Separately georeferenced complete native paths; no snapping or repair."
+    },
+    "dependentContextLead": {
+      "id": "osm:node:4099579144",
+      "frozenCurrentParentName": "عمدون الجنوبية",
+      "existingPickerGroupId": "delegation:515",
+      "qualification": "Prior source facts identify this authentic town as the southern sector context child. Future curation must independently project its inherited parentName/contextAliases and preserve its own name, coordinates and group. The scope here does not rename or regroup the town.",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+        "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760",
+        "bytes": 132738
+      }
+    },
+    "aliasQualification": "Amdoun/Zahret Medien is a documented township alias context in the earlier qualified primary leads. Old Amdoun labels are not proven nonexistent or false; use the official sector names as primary labels while preserving useful aliases.",
+    "primaryContextLeads": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\local-evidence-index.json",
+      "sha256": "2f35e76bbe32f611d963e83441454c6ba7ece8436016d990d8f4748815079637",
+      "bytes": 89653
+    }
+  },
+  "midoun": {
+    "verdict": "HOLD_EXCLUSIVE_SECTOR_ASSIGNMENT_AND_DUPLICATE_MERGE",
+    "townId": "osm:node:287613682",
+    "townCurrentRow": {
+      "id": "osm:node:287613682",
+      "sourceId": "osm",
+      "name": "ميدون",
+      "aliases": [
+        "Midoun",
+        "Midun",
+        "Мидун",
+        "Мідун"
+      ],
+      "kind": "town",
+      "parentName": "آركو",
+      "contextAliases": [
+        "Arkou",
+        "Djerba - Midoun",
+        "Délégation Djerba Midoun",
+        "آركو",
+        "أركو",
+        "معتمدية جربة ميدون"
+      ],
+      "governorateId": 353,
+      "lat": 33.8074152,
+      "lng": 10.9910666,
+      "delegationId": 492,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:287613682"
+    },
+    "townOriginalTags": {
+      "name": "ميدون",
+      "name:ar": "ميدون",
+      "name:ca": "Midoun",
+      "name:de": "Midoun",
+      "name:en": "Midoun",
+      "name:fr": "Midoun",
+      "name:it": "Midoun",
+      "name:kab": "Midun",
+      "name:pl": "Midun",
+      "name:pt": "Midoun",
+      "name:ru": "Мидун",
+      "name:uk": "Мідун",
+      "name:zu": "Midoun",
+      "place": "town",
+      "wikidata": "Q687088",
+      "wikimedia_commons": "Category:Midoun",
+      "wikipedia": "ar:ميدون (تونس)"
+    },
+    "sectorId": "osm:relation:7133850",
+    "sectorCurrentRow": {
+      "id": "osm:relation:7133850",
+      "sourceId": "osm",
+      "name": "ميدون",
+      "aliases": [
+        "Midoun"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية جربة ميدون",
+      "contextAliases": [
+        "Djerba - Midoun",
+        "Délégation Djerba Midoun",
+        "معتمدية جربة ميدون"
+      ],
+      "governorateId": 353,
+      "lat": 33.824557,
+      "lng": 11.006924,
+      "delegationId": 492,
+      "hasBoundary": true,
+      "bbox": [
+        10.94771,
+        33.798263,
+        11.051437,
+        33.851228
+      ],
+      "areaKm2": 23.952119218510635,
+      "pickerGroupId": "osm:relation:7133850",
+      "offset": 1663152,
+      "length": 4036
+    },
+    "sectorOriginalTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "ميدون",
+      "name:ar": "ميدون",
+      "name:fr": "Midoun",
+      "ref:tn:codegeo": "525751",
+      "wikidata": "Q687088",
+      "wikipedia": "ar:ميدون (تونس)"
+    },
+    "officialRegistryRecord": {
+      "governorateCode": "52",
+      "governorateFr": "Mednine",
+      "governorateAr": "مدنين",
+      "delegationCode": "5257",
+      "delegationFr": "Djerba midoun",
+      "delegationAr": "جربة ميدون",
+      "sectorCode": "525751",
+      "sectorFr": "Midoun",
+      "sectorAr": "ميدون",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62592,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 3076,
+        "Nombre_de_menages_par_Secteurs.xlsx": 3070
+      }
+    },
+    "officialMidounMap": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\midoun.pdf",
+      "sha256": "2ed99f7d702d77e90c376bdcf6184b86cee18862cbc59bc8ae4b3a813d8698fc",
+      "bytes": 1539296,
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/ميدون.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%85%D8%AF%D9%86%D9%8A%D9%86/%D8%AC%D8%B1%D8%A8%D8%A9%20%D9%85%D9%8A%D8%AF%D9%88%D9%86/%D9%85%D9%8A%D8%AF%D9%88%D9%86.pdf",
+      "index": 1956,
+      "observedTitle": "ميدون.pdf",
+      "indexSource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+        "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+        "bytes": 818063
+      },
+      "retrievedAt": "2026-09-20T11:22:52.553210+00:00",
+      "httpStatus": 200,
+      "contentType": "application/pdf"
+    },
+    "officialArkouMap": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\arkou.pdf",
+      "sha256": "41204274398156d8b262bae61ad041f99aef42147499692ffdf85efd1ba3ec43",
+      "bytes": 1524451,
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/اركو.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%85%D8%AF%D9%86%D9%8A%D9%86/%D8%AC%D8%B1%D8%A8%D8%A9%20%D9%85%D9%8A%D8%AF%D9%88%D9%86/%D8%A7%D8%B1%D9%83%D9%88.pdf",
+      "index": 1950,
+      "observedTitle": "اركو.pdf",
+      "indexSource": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+        "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+        "bytes": 818063
+      },
+      "retrievedAt": "2026-09-20T11:22:52.560102+00:00",
+      "httpStatus": 200,
+      "contentType": "application/pdf"
+    },
+    "nativeMidounValidity": "Self-intersection[682536.723004981 3741532.5790659]",
+    "nativeMidounSelfIntersection": {
+      "utm": [
+        682536.723004981,
+        3741532.5790659
+      ],
+      "lat": 33.79823400114453,
+      "lng": 10.971821959648114,
+      "distanceFromTownMeters": 2052.499591435576,
+      "qualification": "Coordinate reported from native ring validation; no repair or alignment change."
+    },
+    "townVsCurrentSector": {
+      "original": {
+        "covered": false,
+        "distanceToPolygonMeters": 7.040130049798284,
+        "distanceToBoundaryMeters": 7.040130049798284
+      },
+      "packed": {
+        "covered": false,
+        "distanceToPolygonMeters": 7.005400085033555,
+        "distanceToBoundaryMeters": 7.005400085033555
+      }
+    },
+    "townVsNativeMidounPath": {
+      "id": "osm:node:287613682",
+      "lat": 33.8074152,
+      "lng": 10.9910666,
+      "covered": null,
+      "nativeRingValid": false,
+      "distanceToBoundaryMeters": 1.6219727289307497,
+      "literalRingWindingNumber": -1,
+      "literalRingCrossingCount": 1,
+      "literalNonzeroFillContains": true,
+      "literalEvenOddFillContains": true,
+      "qualification": "Unrepaired self-intersecting native ring: ordinary valid-polygon containment withheld; literal nonzero/even-odd winding reported separately."
+    },
+    "townVsValidArkou": {
+      "id": "osm:node:287613682",
+      "lat": 33.8074152,
+      "lng": 10.9910666,
+      "covered": true,
+      "distanceToPolygonMeters": 0.0,
+      "distanceToBoundaryMeters": 1.4527907012910366
+    },
+    "nativeStrokeGroundWidthsMeters": {
+      "midoun": [
+        34.31164471695368,
+        34.2994060678564
+      ],
+      "arkou": [
+        47.747447351608436,
+        47.731011524125044
+      ]
+    },
+    "strokeQualification": "Rendering width provides scale context only, not a statistical positional-accuracy interval or authority to buffer/snap.",
+    "pairTopology": {
+      "a": "midoun",
+      "b": "arkou",
+      "status": "AREA_TOPOLOGY_WITHHELD_INVALID_NATIVE_RING",
+      "boundaryDistanceMeters": 0.0,
+      "qualification": "One complete native ring is self-intersecting; no snapping or repair and no polygon overlap/topology assertion."
+    },
+    "conclusion": "The source town point is approximately 7 m outside the current sector and within 2 m of both separately georeferenced official boundary paths. Valid Arkou contains it; both literal winding rules also place it inside the invalid Midoun ring. This is a near-boundary/source-seam ambiguity. It does not establish a misplaced town, an incorrect name, or a duplicate display identity. Preserve the town and sector separately; no move, merge, exclusive membership rewrite or native-ring repair.",
+    "ordinaryMidounAreaAndIouWithheld": true,
+    "ordinaryMidounPolygonContainmentWithheld": true,
+    "furtherSourceExpansionRequested": false
+  },
+  "deepseekReview": {
+    "rawResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\amdoun-midoun-official-scope-20260920\\result.json",
+      "sha256": "21328553651003fbad4d9de1873ed3c24f0c0433ce90e4fd2efcc5d0973df03c",
+      "bytes": 42331
+    },
+    "decodedReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\model-review.json",
+      "sha256": "67e3e2fe6fe05ffbcda63cf50620373cb432eccfeb650c236800db472a9951cd",
+      "bytes": 8325
+    },
+    "requestSettings": {
+      "model": "deepseek-flash",
+      "thinking": {
+        "type": "enabled"
+      },
+      "reasoning_effort": "max",
+      "max_tokens": 393216
+    },
+    "usage": {
+      "prompt_tokens": 20206,
+      "completion_tokens": 10247,
+      "total_tokens": 30453,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 8087
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 20206
+    },
+    "agreement": "Both name-identity recommendations and the Midoun hold agree with native assessment.",
+    "nativeQualifications": [
+      "The model calls old Amdoun labels contradictory to the official codes. More precisely, the official sector primary names differ; existing town aliases remain legitimate search context, not false or nonexistent names.",
+      "A town point outside a same-name administrative sector is not itself an identity contradiction. Different semantic roles must remain explicit.",
+      "Document stroke width is not an uncertainty interval; tiny distances are qualified using multiple source discrepancies, invalid-ring status and rendering scale together.",
+      "Amdoun overlapping independently transformed rings are not equal boundaries; no seam repair is authorized."
+    ]
+  },
+  "limitations": [
+    "Official source is 2023 electoral district/imada map, not an assertion of present-day boundary certification.",
+    "Map base imagery/POI labels are geographic context, not independent boundary evidence.",
+    "Original OSM and packed OSM share source lineage.",
+    "Same town name or Wikidata does not make a town point identical to an administrative sector.",
+    "Affine tie-point residual is fit consistency, not independently measured ground-position accuracy.",
+    "The ISIE documents use a Google imagery/POI background; only their district vectors/title/legend are treated as official scope evidence."
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\finalize.py",
+    "sha256": "c9c980b21036e4da259a6b27261162e30cd92c1f7f6a6c845d59b36b712b213f",
+    "bytes": 9764
+  },
+  "otherProducers": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\prepare.py",
+      "sha256": "e9a9ef56ee5ba8cf45a98a92e85a552d359ad0db18225fb8dd508ca9d6df74cb",
+      "bytes": 2800
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\extract.py",
+      "sha256": "53aeeac37f3a9180cb77a81c59b34146f9143c761a54451630482f25193eca49",
+      "bytes": 10929
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\prepare_review.py",
+      "sha256": "f281adf8b5a489e1ce6828aea058d4895e4f75e62687ed4d8f17f6bcd925f88a",
+      "bytes": 4386
+    }
+  ]
+}

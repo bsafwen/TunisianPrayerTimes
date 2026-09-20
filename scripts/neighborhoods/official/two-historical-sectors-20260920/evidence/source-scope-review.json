@@ -1,0 +1,328 @@
+{
+  "status": "SOURCE_SCOPE_COMPLETE_IMPACT_PENDING_NO_CANDIDATE",
+  "primarySources": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\ettadhamen4.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/حي التضامن/التضامن 4.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%AD%D9%8A%20%D8%A7%D9%84%D8%AA%D8%B6%D8%A7%D9%85%D9%86/%D8%A7%D9%84%D8%AA%D8%B6%D8%A7%D9%85%D9%86%204.pdf",
+      "sha256": "ba9d75ba467a055e07f96c810263e4502a9b3273697414303eab8edb19d11c38",
+      "bytes": 2016091,
+      "contentType": "application/pdf"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh1.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%88%D8%B3%D8%A9/%D8%B3%D9%88%D8%B3%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6/%D8%AD%D9%85%D8%A7%D9%85%20%D9%85%D8%B9%D8%B1%D9%88%D9%81%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%201.pdf",
+      "sha256": "974ebe24f0dee0a2701db768d6dd160554c9a492c5601b2978df6c710ad81025",
+      "bytes": 2119706,
+      "contentType": "application/pdf"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\hammam-maarouf-riadh2.pdf",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf",
+      "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%88%D8%B3%D8%A9/%D8%B3%D9%88%D8%B3%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6/%D8%AD%D9%85%D8%A7%D9%85%20%D9%85%D8%B9%D8%B1%D9%88%D9%81%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%202.pdf",
+      "sha256": "377144831315b1197c2f4aefdc0f4aee2bf5db4ba20d7c99a24c401d70ff7eaf",
+      "bytes": 1617679,
+      "contentType": "application/pdf"
+    }
+  ],
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\geometry-facts.json",
+    "sha256": "6b659d39e27c85659831a60ef2485e1f1b04d1b22b8ac761433fb0212e0f11bb"
+  },
+  "additionalScopeFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\source-scope-addendum.json",
+    "sha256": "56e2f15374b060281c256a4ed1f2151d15126918f265370c74f678752fb6af29"
+  },
+  "nativeGeometries": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\native-geometries.json",
+    "sha256": "342c232904d6a09517552c1b2059d22e309cb14fe35a8c8711057dab05b87429"
+  },
+  "extractionScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\extract_scope_facts.py",
+    "sha256": "c5409076a0fb30f9ce5f5e6e308ec88d5702170da14e2875ab12ade77cf324fe"
+  },
+  "sourceIdentity": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\seven-case-facts.json",
+      "sha256": "def5ad67cdc8ccf0f132756c635d6f3b6841c2077bfecacc53938ea538379760"
+    },
+    "records": [
+      {
+        "governorateCode": "12",
+        "governorateFr": "Ariana",
+        "governorateAr": "أريانة",
+        "delegationCode": "1256",
+        "delegationFr": "Cite ettadhamen",
+        "delegationAr": "حي التضامن",
+        "sectorCode": "125657",
+        "sectorFr": "Ettadhamen 4",
+        "sectorAr": "التضامن 4",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6903,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 230,
+          "Nombre_de_menages_par_Secteurs.xlsx": 230
+        }
+      },
+      {
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "governorateAr": "سوسة",
+        "delegationCode": "3152",
+        "delegationFr": "Sousse riadh",
+        "delegationAr": "سوسة الرياض",
+        "sectorCode": "315256",
+        "sectorFr": "Hammem maarouf er-riadh",
+        "sectorAr": "حمام معروف الرياض",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 32639,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1537,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1536
+        }
+      }
+    ]
+  },
+  "cachedIndexScope": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\five-held-local-official-evidence-20260920\\isie-exact-parent-subsets.json",
+      "sha256": "d006f86495628a407fd99e92b144243d159ba1473d38b9760eb6e67185bd29fe"
+    },
+    "index": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    },
+    "retrievedAt": "2026-09-07T06:25:42.947665+00:00",
+    "ettadhamenParentLinks": 9,
+    "hammamMaaroufParentLinks": 5,
+    "hammamMaaroufPartsPresent": [
+      1,
+      2
+    ],
+    "onlyTheseTwoHammamPartsInCompleteCachedParent": true,
+    "qualification": "Exhaustive in the cached full ISIE index, not an independent proof of no omitted/later district or present-day legal sector boundary."
+  },
+  "nativeProof": {
+    "targetDrawingIndices": {
+      "ettadhamen4.pdf": 4,
+      "hammam-maarouf-riadh1.pdf": 292,
+      "hammam-maarouf-riadh2.pdf": 383
+    },
+    "storedCrs": "WGS84 UTM Zone32N parsed from embedded WKT, EPSG32632",
+    "embeddedControlResidualMaximumMeters": [
+      0.03770291086293665,
+      0.29169979272402036,
+      0.11515680474513314
+    ],
+    "continuousLinearPathsExplicitlyClosed": true,
+    "allNativeGeometriesValid": true,
+    "allWithinViewportAndBothActiveClips": true,
+    "allThreeRenderedPagesPersonallyInspected": true,
+    "legend": "black governorate; blue delegation; red electoral district/imada",
+    "soussePartsAreSeparateDistrictsNotTiles": true,
+    "noGeometrySnappingClippingRepairOrFabrication": true,
+    "nativePairUnionSeamOverlapM2": 288.3215669586554
+  },
+  "comparisons": [
+    {
+      "id": "osm:relation:7115584",
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "7 نوفمبر",
+        "name:ar": "7 نوفمبر",
+        "name:fr": "7 Novembre",
+        "ref:tn:codegeo": "125657"
+      },
+      "currentRow": {
+        "id": "osm:relation:7115584",
+        "sourceId": "osm",
+        "name": "7 نوفمبر",
+        "aliases": [
+          "7 Novembre"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي التضامن",
+        "contextAliases": [
+          "Délégation Cité Ettadhamen",
+          "Ettadhamen",
+          "معتمدية حي التضامن"
+        ],
+        "governorateId": 358,
+        "lat": 36.835375,
+        "lng": 10.097386,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.092637,
+          36.830995,
+          10.102708,
+          36.839744
+        ],
+        "areaKm2": 0.4094399263261814,
+        "pickerGroupId": "osm:relation:7115584",
+        "offset": 1041396,
+        "length": 612
+      },
+      "originalVsPacked": {
+        "aAreaKm2": 0.4084481729119294,
+        "bAreaKm2": 0.40842937080126285,
+        "intersectionKm2": 0.4084104646670606,
+        "iou": 0.9998613979387366,
+        "aCoveredByB": 0.9999076792421422,
+        "bCoveredByA": 0.9999537101502638,
+        "aOutsideBKm2": 3.7708244886428104e-05,
+        "bOutsideAKm2": 1.8906134227766643e-05,
+        "hausdorffMeters": 0.05896199010243544,
+        "centroidDistanceMeters": 0.006733213950733988
+      },
+      "officialScopeVsOriginal": {
+        "aAreaKm2": 0.3468139664846619,
+        "bAreaKm2": 0.4084481729119294,
+        "intersectionKm2": 0.3427267817489832,
+        "iou": 0.8307815933725402,
+        "aCoveredByB": 0.9882150514954551,
+        "bCoveredByA": 0.8390949072084177,
+        "aOutsideBKm2": 0.004087184735669934,
+        "bOutsideAKm2": 0.06572139116294598,
+        "hausdorffMeters": 172.96751218827237,
+        "centroidDistanceMeters": 63.21645654262583
+      },
+      "officialScopeVsPacked": {
+        "aAreaKm2": 0.3468139664846619,
+        "bAreaKm2": 0.40842937080126285,
+        "intersectionKm2": 0.34272452247942176,
+        "iou": 0.8308094326320359,
+        "aCoveredByB": 0.9882085371396915,
+        "bCoveredByA": 0.8391280034711012,
+        "aOutsideBKm2": 0.004089444005230077,
+        "bOutsideAKm2": 0.06570484832184043,
+        "hausdorffMeters": 172.9972755252486,
+        "centroidDistanceMeters": 63.212567156975126
+      },
+      "officialUnionType": "Polygon",
+      "officialUnionValid": true,
+      "officialUnionContainsCurrentAnchor": true,
+      "parts": 1,
+      "unionOperation": "Shapely native union of untouched independently georeferenced polygons; no snap, clip, buffer, repair, cutting, or invented vertices"
+    },
+    {
+      "id": "osm:relation:7113315",
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "العهد الجديد",
+        "name:ar": "العهد الجديد",
+        "name:fr": "El Ahd El Jadid",
+        "ref:tn:codegeo": "315256"
+      },
+      "currentRow": {
+        "id": "osm:relation:7113315",
+        "sourceId": "osm",
+        "name": "العهد الجديد",
+        "aliases": [
+          "El Ahd El Jadid"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سوسة الرياض",
+        "contextAliases": [
+          "Délégation Sousse Erriadh",
+          "Sousse Riadh",
+          "معتمدية سوسة الرياض"
+        ],
+        "governorateId": 348,
+        "lat": 35.811559,
+        "lng": 10.595204,
+        "delegationId": 443,
+        "hasBoundary": true,
+        "bbox": [
+          10.579152,
+          35.79812,
+          10.61431,
+          35.825293
+        ],
+        "areaKm2": 4.129890475630522,
+        "pickerGroupId": "osm:relation:7113315",
+        "offset": 895364,
+        "length": 340
+      },
+      "originalVsPacked": {
+        "aAreaKm2": 4.119970986874567,
+        "bAreaKm2": 4.119931455052667,
+        "intersectionKm2": 4.119844373755665,
+        "iou": 0.9999481331543075,
+        "aCoveredByB": 0.9999692684440483,
+        "bCoveredByA": 0.9999788634112114,
+        "aOutsideBKm2": 0.00012661311897843743,
+        "bOutsideAKm2": 8.70812970888567e-05,
+        "hausdorffMeters": 0.061742031059750006,
+        "centroidDistanceMeters": 0.00987576452115781
+      },
+      "officialScopeVsOriginal": {
+        "aAreaKm2": 4.3483938927781445,
+        "bAreaKm2": 4.119970986874567,
+        "intersectionKm2": 3.9848627201977895,
+        "iou": 0.8887834952403135,
+        "aCoveredByB": 0.9163987482403305,
+        "bCoveredByA": 0.9672065004566278,
+        "aOutsideBKm2": 0.36353117258035295,
+        "bOutsideAKm2": 0.13510826667672515,
+        "hausdorffMeters": 410.68211545295793,
+        "centroidDistanceMeters": 44.44187136832952
+      },
+      "officialScopeVsPacked": {
+        "aAreaKm2": 4.3483938927781445,
+        "bAreaKm2": 4.119931455052667,
+        "intersectionKm2": 3.984810069430324,
+        "iou": 0.8887691514351033,
+        "aCoveredByB": 0.9163866401450743,
+        "bCoveredByA": 0.9672030015313409,
+        "aOutsideBKm2": 0.36358382334779543,
+        "bOutsideAKm2": 0.13512138562236758,
+        "hausdorffMeters": 410.63833360307797,
+        "centroidDistanceMeters": 44.446767448988034
+      },
+      "officialUnionType": "Polygon",
+      "officialUnionValid": true,
+      "officialUnionContainsCurrentAnchor": true,
+      "parts": 2,
+      "unionOperation": "Shapely native union of untouched independently georeferenced polygons; no snap, clip, buffer, repair, cutting, or invented vertices",
+      "splitSeam": {
+        "distanceMeters": 0.0,
+        "intersectionAreaM2": 288.3215669586554,
+        "boundaryIntersectionLengthMeters": 0.0,
+        "relation": "212101212"
+      }
+    }
+  ],
+  "parentAndGovernorateDifferences": [
+    {
+      "id": "osm:relation:7115584",
+      "parentId": "osm:relation:4156579",
+      "originalOutsideParentM2": 0.0,
+      "officialOutsideOriginalParentM2": 405.4674913191327,
+      "officialOutsideOriginalGovernorateM2": [
+        {
+          "id": "osm:relation:1435830",
+          "areaM2": 402.0129208057862
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7113315",
+      "parentId": "osm:relation:7150108",
+      "originalOutsideParentM2": 0.0,
+      "officialOutsideOriginalParentM2": 312599.3935339133,
+      "officialOutsideOriginalGovernorateM2": [
+        {
+          "id": "osm:relation:3152094",
+          "areaM2": 0.0
+        }
+      ]
+    }
+  ],
+  "verdict": "Exact historical/current INS codes plus published footprint correspondence support the two renamed administrative identities. The ISIE whole Ettadhamen4 district and cached-index-exhaustive HammamMaarouf1+2 pair are usable independent source outlines for a bounded replacement impact assessment. They do not prove the original/current OSM edges equivalent, nor current surveyed or legal certainty. Name-only correction would leave documented geometry discrepancies. Root decides a future finite two-shape+name candidate only after impact review.",
+  "productionWrites": false,
+  "generationRun": false,
+  "devicesBuildsTests": false
+}

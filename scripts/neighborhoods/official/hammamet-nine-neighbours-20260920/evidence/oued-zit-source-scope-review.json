@@ -1,0 +1,80 @@
+{
+  "status": "COMPLETE_PUBLISHED_SOURCE_RING_IDENTITY_SUPPORTED",
+  "inputs": {
+    "nativeAudit": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\native-linework-audit.json",
+      "sha256": "bbc89b8b253d56b033b8cfe8848118d68fc53867eb876dcbd322acaa5066fd4e"
+    },
+    "rmelInspector": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\native-map-inspection.json",
+      "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+    },
+    "rmelMetadata": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\oued-rmel-zaghouan-metadata.json",
+      "sha256": "d4c009b2cc8f1ce318868e8bd0a568c88e0a526982831a39f80964d5e6f07f0d"
+    },
+    "rmelPdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\oued-rmel-zaghouan.pdf",
+      "sha256": "7bf9ff6635eb6e4eee00ec228c1e3892a7632a5968d8a88b9f12f66dfa35604a"
+    },
+    "rmelPagePng": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\oued-rmel-zaghouan.png",
+      "sha256": "0b510802ac872ae3a6821879448de8a8ca469c54f74558a2099f3c415e1247dd"
+    }
+  },
+  "wholePageVisualReview": [
+    "Oued Zit: one complete published page; title names electoral constituency Oued Zit, legend explicitly equates red boundary with electoral constituency / imada. Black governorate strokes overlay northern/eastern border. No part number or clipping of selected ring.",
+    "Oued Rmel: complete one-page source; own named constituency is west of the selected Oued Zit ring; this corroborates path685 belongs to Oued Rmel. Oued Zit label on its own map is displaced east across the governorate boundary, so label centre is not used as geometry identity proof."
+  ],
+  "nativeIndependentCoverage": [
+    {
+      "kind": "viewport",
+      "coversAllNativeSegments": true,
+      "outsideLengthPoints": 0.0,
+      "clearancePoints": 26.64335999999992
+    },
+    {
+      "kind": "page",
+      "coversAllNativeSegments": true,
+      "outsideLengthPoints": 0.0,
+      "clearancePoints": 31.68401037109379
+    },
+    {
+      "kind": "activeClip",
+      "coversAllNativeSegments": true,
+      "outsideLengthPoints": 0.0,
+      "clearancePoints": 31.684010371093787
+    },
+    {
+      "kind": "activeClip",
+      "coversAllNativeSegments": true,
+      "outsideLengthPoints": 0.0,
+      "clearancePoints": 26.64336095703129
+    }
+  ],
+  "independentAlternateRingComparison": {
+    "ouedZitPdfAlternateDrawingIndex": 685,
+    "ouedRmelOwnPdfDrawingIndex": 524,
+    "bothValid": true,
+    "iou": 0.9979408218610726,
+    "symmetricDifferenceM2": 126000.46758083517
+  },
+  "administrativeScope": {
+    "publisher": "ISIE",
+    "sourceEdition": 2023,
+    "mapLegend": "electoral constituency / imada",
+    "officialRegistrySectorCode": "165159",
+    "officialRegistryDelegationCode": "1651",
+    "officialRegistryGovernorateCode": "16",
+    "ownPageTitle": "Oued Zit",
+    "scopeConclusion": "Supports source-based sector boundary for Oued Zit, Zaghouan. It is an electoral map carrying imada semantics, not an independently certified current cadastral/legal polygon. Registry code verifies name and hierarchy, not every edge."
+  },
+  "decision": "KEEP_PINNED_NORMALIZED_CANDIDATE_AS_COMPLETE_SOURCE_LINEWORK_REPRESENTATION",
+  "doNotSubstituteDrawing685": true,
+  "requiredComponentCount": 2,
+  "noDifferentNativePathIndicated": true,
+  "remainingUncertainty": "The stroked self-crossing path does not resolve whether the 5.298391m2 loop was intentional or a source editing error. Faithful preservation can be accepted for source comparison/integration with qualification; unqualified real-world or legal boundary certification needs a clean authoritative GIS geometry or publisher clarification.",
+  "recommendedNextSafeAction": "Retain unchanged pinned proposed geometry SHA256 59e00798d50a4d2b427b0fbf090f83dddcc3ac810fb517863343286c7d391a70 and both polygons. Attach this evidence to the candidate integration decision; do not drop the small triangle, replace with valid neighbour685, snap, buffer, or infer a new edge.",
+  "productionEdits": false,
+  "appTestsOrBuilds": false
+}

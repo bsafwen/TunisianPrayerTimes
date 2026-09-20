@@ -1,0 +1,727 @@
+{
+  "acceptedReplacements": [
+    {
+      "application": {
+        "action": "replace",
+        "id": "osm:relation:7103679",
+        "officialCode": "156553",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours"
+      },
+      "featureSha256": "3249ce589b0ffa8e5e93b926e909738af0434722227a94d35722fa5a1673bf61",
+      "geojson": {
+        "file": "official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+        "sha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696"
+      },
+      "id": "osm:relation:7103679",
+      "record": {
+        "action": "replace",
+        "aliases": [
+          "Borj Hfaiedh"
+        ],
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "برج حفيظ",
+          "name:ar": "برج حفيظ",
+          "name:fr": "Borj Hfaiedh",
+          "ref:tn:codegeo": "156553"
+        },
+        "id": "osm:relation:7103679",
+        "officialCode": "156553",
+        "sourcePdfSha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/برج حفيظ.pdf"
+      },
+      "sourceRecord": {
+        "file": "official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+        "id": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "manualPointReview": {
+          "file": "official/hammamet-nine-neighbours-20260920/manual-point-review.json",
+          "sha256": "245769444f90699858c8f5dbbd15bf12eea2ca60fa644d010df3c6813d1d9bb7"
+        },
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "records": [
+          {
+            "action": "replace",
+            "aliases": [
+              "Bouficha"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بوفيشة",
+              "name:ar": "بوفيشة",
+              "name:fr": "Bouficha",
+              "ref:tn:codegeo": "316151"
+            },
+            "id": "osm:relation:7105250",
+            "officialCode": "316151",
+            "sourcePdfSha256": "2a9bd82743ab156c34534789f8f45627d79c43bc87a0aa51c6fdf77f46ab4a4f",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/بوفيشة.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Esselloum"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "السلوم",
+              "name:ar": "السلوم",
+              "name:fr": "Esselloum",
+              "ref:tn:codegeo": "316158"
+            },
+            "id": "osm:relation:7105249",
+            "officialCode": "316158",
+            "sourcePdfSha256": "2f1896201606af27e359e39c81f001f61e5778df37321a550a7fa20816e95c6c",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/السلوم - (بوفيشة).pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Sidi Said"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "سيدي سعيد",
+              "name:ar": "سيدي سعيد",
+              "name:fr": "Sidi Said",
+              "ref:tn:codegeo": "316155"
+            },
+            "id": "osm:relation:7105455",
+            "officialCode": "316155",
+            "sourcePdfSha256": "e2d651fb66fa7ef345b9006abdc644cb928a1124e662449098539bb39807dfac",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/سيدي سعيد - (بوفيشة).pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Jbal Trif"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "جبل طريف",
+              "name:ar": "جبل طريف",
+              "name:fr": "Jbal Trif",
+              "ref:tn:codegeo": "156458"
+            },
+            "id": "osm:relation:7104940",
+            "officialCode": "156458",
+            "sourcePdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/جبل طريف.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Borj Hfaiedh"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "برج حفيظ",
+              "name:ar": "برج حفيظ",
+              "name:fr": "Borj Hfaiedh",
+              "ref:tn:codegeo": "156553"
+            },
+            "id": "osm:relation:7103679",
+            "officialCode": "156553",
+            "sourcePdfSha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/برج حفيظ.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Bou Argoub Sud"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بو عرقوب الجنوبية",
+              "name:ar": "بو عرقوب الجنوبية",
+              "name:fr": "Bou Argoub Sud",
+              "ref:tn:codegeo": "156555"
+            },
+            "id": "osm:relation:7103680",
+            "officialCode": "156555",
+            "sourcePdfSha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/بوعرقوب القبلية.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Hedi Chaker"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الهادي شاكر",
+              "name:ar": "الهادي شاكر",
+              "name:fr": "Hedi Chaker",
+              "ref:tn:codegeo": "155156"
+            },
+            "id": "osm:relation:7103327",
+            "officialCode": "155156",
+            "sourcePdfSha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 1/نابل/الهادي شاكر - (نابل).pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Ain Tebournok"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "عين طبرنق",
+              "name:ar": "عين طبرنق",
+              "name:fr": "Ain Tebournok",
+              "ref:tn:codegeo": "156459"
+            },
+            "id": "osm:relation:7104938",
+            "officialCode": "156459",
+            "sourcePdfSha256": "26c69787a7f2e4126f30ba3c15e8babbe8b72558d9a3e8f4a4f9d3431c2dea48",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/عين طبرنق.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Oued Ezzit"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "وادي الزيت",
+              "name:ar": "وادي الزيت",
+              "name:fr": "Oued Ezzit",
+              "ref:tn:codegeo": "165159"
+            },
+            "id": "osm:relation:7109196",
+            "officialCode": "165159",
+            "sourcePdfSha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/زغوان/زغوان/وادي الزيت.pdf"
+          }
+        ],
+        "review": {
+          "evidenceFile": "official/hammamet-nine-neighbours-20260920/source-review.json",
+          "evidenceSha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667",
+          "geometryEdition": 2023,
+          "geometryPolicy": "Exact reviewed source coordinates copied unchanged; no new geometry operation, centroid choice, or rounding.",
+          "namePolicy": "Registry names and codes from officialRecord; aliases from existing expectedBeforeMetadata.",
+          "qualification": "Prepared source fragment; no installed catalog or certified border claim.",
+          "reviewedDate": "2026-09-20"
+        },
+        "sha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/"
+      }
+    },
+    {
+      "application": {
+        "action": "replace",
+        "id": "osm:relation:7103680",
+        "officialCode": "156555",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours"
+      },
+      "featureSha256": "a75ebd29e98ec2872a91e2440914d917bb6eee695dbe1e63a5285489af75dd3c",
+      "geojson": {
+        "file": "official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+        "sha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696"
+      },
+      "id": "osm:relation:7103680",
+      "record": {
+        "action": "replace",
+        "aliases": [
+          "Bou Argoub Sud"
+        ],
+        "expectedOriginalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بو عرقوب الجنوبية",
+          "name:ar": "بو عرقوب الجنوبية",
+          "name:fr": "Bou Argoub Sud",
+          "ref:tn:codegeo": "156555"
+        },
+        "id": "osm:relation:7103680",
+        "officialCode": "156555",
+        "sourcePdfSha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7",
+        "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/بوعرقوب القبلية.pdf"
+      },
+      "sourceRecord": {
+        "file": "official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+        "id": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "manualPointReview": {
+          "file": "official/hammamet-nine-neighbours-20260920/manual-point-review.json",
+          "sha256": "245769444f90699858c8f5dbbd15bf12eea2ca60fa644d010df3c6813d1d9bb7"
+        },
+        "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+        "records": [
+          {
+            "action": "replace",
+            "aliases": [
+              "Bouficha"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بوفيشة",
+              "name:ar": "بوفيشة",
+              "name:fr": "Bouficha",
+              "ref:tn:codegeo": "316151"
+            },
+            "id": "osm:relation:7105250",
+            "officialCode": "316151",
+            "sourcePdfSha256": "2a9bd82743ab156c34534789f8f45627d79c43bc87a0aa51c6fdf77f46ab4a4f",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/بوفيشة.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Esselloum"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "السلوم",
+              "name:ar": "السلوم",
+              "name:fr": "Esselloum",
+              "ref:tn:codegeo": "316158"
+            },
+            "id": "osm:relation:7105249",
+            "officialCode": "316158",
+            "sourcePdfSha256": "2f1896201606af27e359e39c81f001f61e5778df37321a550a7fa20816e95c6c",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/السلوم - (بوفيشة).pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Sidi Said"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "سيدي سعيد",
+              "name:ar": "سيدي سعيد",
+              "name:fr": "Sidi Said",
+              "ref:tn:codegeo": "316155"
+            },
+            "id": "osm:relation:7105455",
+            "officialCode": "316155",
+            "sourcePdfSha256": "e2d651fb66fa7ef345b9006abdc644cb928a1124e662449098539bb39807dfac",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/سيدي سعيد - (بوفيشة).pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Jbal Trif"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "جبل طريف",
+              "name:ar": "جبل طريف",
+              "name:fr": "Jbal Trif",
+              "ref:tn:codegeo": "156458"
+            },
+            "id": "osm:relation:7104940",
+            "officialCode": "156458",
+            "sourcePdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/جبل طريف.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Borj Hfaiedh"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "برج حفيظ",
+              "name:ar": "برج حفيظ",
+              "name:fr": "Borj Hfaiedh",
+              "ref:tn:codegeo": "156553"
+            },
+            "id": "osm:relation:7103679",
+            "officialCode": "156553",
+            "sourcePdfSha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/برج حفيظ.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Bou Argoub Sud"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "بو عرقوب الجنوبية",
+              "name:ar": "بو عرقوب الجنوبية",
+              "name:fr": "Bou Argoub Sud",
+              "ref:tn:codegeo": "156555"
+            },
+            "id": "osm:relation:7103680",
+            "officialCode": "156555",
+            "sourcePdfSha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/بوعرقوب القبلية.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Hedi Chaker"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "الهادي شاكر",
+              "name:ar": "الهادي شاكر",
+              "name:fr": "Hedi Chaker",
+              "ref:tn:codegeo": "155156"
+            },
+            "id": "osm:relation:7103327",
+            "officialCode": "155156",
+            "sourcePdfSha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 1/نابل/الهادي شاكر - (نابل).pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Ain Tebournok"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "عين طبرنق",
+              "name:ar": "عين طبرنق",
+              "name:fr": "Ain Tebournok",
+              "ref:tn:codegeo": "156459"
+            },
+            "id": "osm:relation:7104938",
+            "officialCode": "156459",
+            "sourcePdfSha256": "26c69787a7f2e4126f30ba3c15e8babbe8b72558d9a3e8f4a4f9d3431c2dea48",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/عين طبرنق.pdf"
+          },
+          {
+            "action": "replace",
+            "aliases": [
+              "Oued Ezzit"
+            ],
+            "expectedOriginalTags": {
+              "admin_level": "6",
+              "boundary": "administrative",
+              "name": "وادي الزيت",
+              "name:ar": "وادي الزيت",
+              "name:fr": "Oued Ezzit",
+              "ref:tn:codegeo": "165159"
+            },
+            "id": "osm:relation:7109196",
+            "officialCode": "165159",
+            "sourcePdfSha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b",
+            "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/زغوان/زغوان/وادي الزيت.pdf"
+          }
+        ],
+        "review": {
+          "evidenceFile": "official/hammamet-nine-neighbours-20260920/source-review.json",
+          "evidenceSha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667",
+          "geometryEdition": 2023,
+          "geometryPolicy": "Exact reviewed source coordinates copied unchanged; no new geometry operation, centroid choice, or rounding.",
+          "namePolicy": "Registry names and codes from officialRecord; aliases from existing expectedBeforeMetadata.",
+          "qualification": "Prepared source fragment; no installed catalog or certified border claim.",
+          "reviewedDate": "2026-09-20"
+        },
+        "sha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696",
+        "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+        "url": "https://www.isie.tn/ar/الدوائر-المحلية/"
+      }
+    }
+  ],
+  "additionalPreservedSectors": [],
+  "baseId": 463,
+  "effectiveNamePeerIds": [
+    "osm:node:1190878345",
+    "osm:relation:7145836"
+  ],
+  "method": "reviewed_official_boundary_source_phase_lineage",
+  "originalNamePeerIds": [
+    "osm:node:1190878345",
+    "osm:relation:7145836"
+  ],
+  "pointId": "osm:node:1190878345",
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "4611c1bafd550a6448e31177b3a49bd62f47d718743a8e7778de6a092a4cd91b"
+  },
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "sourceStates": [
+    {
+      "effective": {
+        "geometrySha256": "0c063fb0a8e15203a9a2f60d9a38994120f6b6085f92b63ecd2588c252b334cc",
+        "kind": "village",
+        "sourceId": "osm",
+        "tags": {
+          "name": "بوعرقوب",
+          "name:ar": "بوعرقوب",
+          "name:en": "Bou Argoub",
+          "name:fr": "Bou Argoub",
+          "place": "village",
+          "wikidata": "Q655294",
+          "wikipedia": "ar:بوعرقوب"
+        }
+      },
+      "id": "osm:node:1190878345",
+      "original": {
+        "geometrySha256": "0c063fb0a8e15203a9a2f60d9a38994120f6b6085f92b63ecd2588c252b334cc",
+        "kind": "village",
+        "sourceId": null,
+        "tags": {
+          "name": "بوعرقوب",
+          "name:ar": "بوعرقوب",
+          "name:en": "Bou Argoub",
+          "name:fr": "Bou Argoub",
+          "place": "village",
+          "wikidata": "Q655294",
+          "wikipedia": "ar:بوعرقوب"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "e6f09ee6fc5a7fa78ce707d1ed83d5232d1e0ea1af772b9b3fcd7f4d4365c461",
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "tags": {
+          "admin_level": "6",
+          "alt_name": "Borj Hfaiedh",
+          "boundary": "administrative",
+          "name:ar": "برج حفيظ",
+          "name:fr": "Borj hefaied",
+          "ref:tn:codegeo": "156553"
+        }
+      },
+      "id": "osm:relation:7103679",
+      "original": {
+        "geometrySha256": "1db7defdac53df5ecc60839c8830995b17054412c5b72ad9a96499658540221d",
+        "kind": "sector",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "برج حفيظ",
+          "name:ar": "برج حفيظ",
+          "name:fr": "Borj Hfaiedh",
+          "ref:tn:codegeo": "156553"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "3dc38c18cc8c69386b4a409f19c48719e0bc6a02247d5e172889e69c1f8b0c0e",
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "tags": {
+          "admin_level": "6",
+          "alt_name": "Bou Argoub Sud",
+          "boundary": "administrative",
+          "name:ar": "بوعرقوب القبلية",
+          "name:fr": "Bou argoub sud",
+          "ref:tn:codegeo": "156555"
+        }
+      },
+      "id": "osm:relation:7103680",
+      "original": {
+        "geometrySha256": "7fff34c877f19d343918cb699ed59994c534d0194018a65192a2b8d2739f990d",
+        "kind": "sector",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بو عرقوب الجنوبية",
+          "name:ar": "بو عرقوب الجنوبية",
+          "name:fr": "Bou Argoub Sud",
+          "ref:tn:codegeo": "156555"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "6e97be88601321199d5c2e22e6570fdbc42a2651c97dce8a4d31eecf688b2193",
+        "kind": "sector",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المشروحة",
+          "name:ar": "المشروحة",
+          "name:fr": "El Machrouha",
+          "ref:tn:codegeo": "156552"
+        }
+      },
+      "id": "osm:relation:7103681",
+      "original": {
+        "geometrySha256": "6e97be88601321199d5c2e22e6570fdbc42a2651c97dce8a4d31eecf688b2193",
+        "kind": "sector",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المشروحة",
+          "name:ar": "المشروحة",
+          "name:fr": "El Machrouha",
+          "ref:tn:codegeo": "156552"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "b1a22f0b86b2e2cda774be9f2e8f2867ad8b8ee65eeb2f3fc9116d7c546a6161",
+        "kind": "sector",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بو عرقوب الشمالية",
+          "name:ar": "بو عرقوب الشمالية",
+          "name:fr": "Bou Argoub Nord",
+          "ref:tn:codegeo": "156554"
+        }
+      },
+      "id": "osm:relation:7103682",
+      "original": {
+        "geometrySha256": "b1a22f0b86b2e2cda774be9f2e8f2867ad8b8ee65eeb2f3fc9116d7c546a6161",
+        "kind": "sector",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بو عرقوب الشمالية",
+          "name:ar": "بو عرقوب الشمالية",
+          "name:fr": "Bou Argoub Nord",
+          "ref:tn:codegeo": "156554"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "f15c68a03c4521013966da84071262e2e89a78eeebc9be4afa22aa5a379fd20f",
+        "kind": "sector",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سيدي الظاهر",
+          "name:ar": "سيدي الظاهر",
+          "name:fr": "Sidi Dhaher",
+          "ref:tn:codegeo": "156551"
+        }
+      },
+      "id": "osm:relation:7103683",
+      "original": {
+        "geometrySha256": "f15c68a03c4521013966da84071262e2e89a78eeebc9be4afa22aa5a379fd20f",
+        "kind": "sector",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سيدي الظاهر",
+          "name:ar": "سيدي الظاهر",
+          "name:fr": "Sidi Dhaher",
+          "ref:tn:codegeo": "156551"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "6b627c7a6e941b30250c6f4ac6116a08d17f12e7bf58a1296ef2899d996b922d",
+        "kind": "sector",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بلّي",
+          "name:ar": "بلّي",
+          "name:fr": "Belli",
+          "ref:tn:codegeo": "156556"
+        }
+      },
+      "id": "osm:relation:7103684",
+      "original": {
+        "geometrySha256": "6b627c7a6e941b30250c6f4ac6116a08d17f12e7bf58a1296ef2899d996b922d",
+        "kind": "sector",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بلّي",
+          "name:ar": "بلّي",
+          "name:fr": "Belli",
+          "ref:tn:codegeo": "156556"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "1bda20a60c5823b12f7c12e1a85e6649e3065f895d1348fb727a9b6bea1fe21e",
+        "kind": "sector",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الخرّوبة",
+          "name:ar": "الخرّوبة",
+          "name:fr": "El Kharrouba",
+          "ref:tn:codegeo": "156557"
+        }
+      },
+      "id": "osm:relation:7103685",
+      "original": {
+        "geometrySha256": "1bda20a60c5823b12f7c12e1a85e6649e3065f895d1348fb727a9b6bea1fe21e",
+        "kind": "sector",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الخرّوبة",
+          "name:ar": "الخرّوبة",
+          "name:fr": "El Kharrouba",
+          "ref:tn:codegeo": "156557"
+        }
+      }
+    },
+    {
+      "effective": {
+        "geometrySha256": "bd2564de4460ce55a88e1bfe92089582d3c3257ec5d94fbd4f0daaf1ba73ac23",
+        "kind": "delegation",
+        "sourceId": "osm",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Bou Argoub",
+          "boundary": "administrative",
+          "name": "معتمدية بو عرقوب",
+          "name:ar": "معتمدية بو عرقوب",
+          "name:fr": "Délégation Bou Argoub",
+          "ref:tn:codegeo": "1565",
+          "ref:tn:hasc_2": "TN.NB.BA",
+          "wikidata": "Q2911882"
+        }
+      },
+      "id": "osm:relation:7145836",
+      "original": {
+        "geometrySha256": "bd2564de4460ce55a88e1bfe92089582d3c3257ec5d94fbd4f0daaf1ba73ac23",
+        "kind": "delegation",
+        "sourceId": null,
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Bou Argoub",
+          "boundary": "administrative",
+          "name": "معتمدية بو عرقوب",
+          "name:ar": "معتمدية بو عرقوب",
+          "name:fr": "Délégation Bou Argoub",
+          "ref:tn:codegeo": "1565",
+          "ref:tn:hasc_2": "TN.NB.BA",
+          "wikidata": "Q2911882"
+        }
+      }
+    }
+  ]
+}

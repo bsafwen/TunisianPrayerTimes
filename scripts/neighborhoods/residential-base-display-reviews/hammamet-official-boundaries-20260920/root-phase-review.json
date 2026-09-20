@@ -1,0 +1,253 @@
+{
+  "status": "TEN_BOUNDARY_PROBE_SOURCE_FACTS_REVIEWED_NOT_INSTALLED",
+  "capture": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\ten-source-captured-facts-20260920.json",
+    "sha256": "25ccde736b63fe40166e7233dbf938455143a7605f66831ee2ccc9007a8d6cf9"
+  },
+  "fieldChanges": {
+    "osm:relation:1435825": {
+      "changedFields": [],
+      "metadataFields": []
+    },
+    "osm:relation:3152100": {
+      "newAssertion": true,
+      "metadata": {
+        "aliases": [],
+        "areaKm2": 1.0248585866954305,
+        "bbox": [
+          10.544058,
+          36.379217,
+          10.558766,
+          36.396975
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:3152100",
+        "kind": "residential",
+        "lat": 36.388077,
+        "lng": 10.551723,
+        "name": "Yasmine Hammamet",
+        "parentName": "معتمدية الحمامات",
+        "pickerGroupId": "osm:relation:7104932",
+        "sourceId": "osm"
+      }
+    },
+    "osm:relation:3152105": {
+      "newAssertion": true,
+      "metadata": {
+        "aliases": [
+          "Yasmine Hammamet"
+        ],
+        "areaKm2": 3.1407759175242367,
+        "bbox": [
+          10.522696,
+          36.352827,
+          10.551177,
+          36.385616
+        ],
+        "contextAliases": [],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:3152105",
+        "kind": "residential",
+        "lat": 36.369228,
+        "lng": 10.536217,
+        "name": "ياسمين الحمامات",
+        "parentName": "ولاية نابل",
+        "pickerGroupId": "osm:relation:3152105",
+        "sourceId": "osm"
+      }
+    },
+    "osm:relation:7104926": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "name",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7104927": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7104928": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7104929": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7104930": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7104931": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "lat",
+        "lng",
+        "name",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7104932": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "delegationId",
+        "lat",
+        "lng",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7105070": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7144606": {
+      "changedFields": [
+        "currentMetadata",
+        "effectiveGeometrySha256",
+        "effectiveSourceId",
+        "effectiveTags",
+        "packedGeometrySha256"
+      ],
+      "metadataFields": [
+        "aliases",
+        "areaKm2",
+        "bbox",
+        "sourceId"
+      ]
+    },
+    "osm:relation:7145835": {
+      "changedFields": [],
+      "metadataFields": []
+    },
+    "osm:way:234090258": {
+      "changedFields": [],
+      "metadataFields": []
+    },
+    "osm:way:238137076": {
+      "changedFields": [
+        "currentMetadata"
+      ],
+      "metadataFields": [
+        "contextAliases"
+      ],
+      "detail": {
+        "currentMetadata": {
+          "contextAliases": {
+            "before": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "Latrach",
+              "الاطرش",
+              "معتمدية الحمامات"
+            ],
+            "after": [
+              "Délégation Hammamet",
+              "El atrach",
+              "Hammamet",
+              "Latrach",
+              "الاطرش",
+              "معتمدية الحمامات"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "limits": [
+    "All ten point policies passed before the existing Yasmine group membership safeguard stopped generation.",
+    "Southern Yasmine remains a separate cross-governorate review item; no source polygon or administrative assertion is repaired or certified by this probe."
+  ],
+  "liveInputsUnchanged": true
+}

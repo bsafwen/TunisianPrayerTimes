@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 2,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_source_bound_residential_base_display_identity",
+    "id": "osm:way:234090258",
+    "targetDelegationId": 461
+  },
+  "conclusion": "reviewed_source_bound_residential_base_display_identity",
+  "expected": {
+    "application": {
+      "method": "reviewed_source_bound_residential_base_display_identity",
+      "id": "osm:way:234090258",
+      "targetDelegationId": 461
+    },
+    "proposedProofSchemaVersion": 2,
+    "identityMode": "bilingual_residential_address",
+    "currentBase": {
+      "id": 461,
+      "nomFr": "Hammamet",
+      "nomAr": "الحمامات",
+      "nomEn": "Hammamet",
+      "lat": 36.404,
+      "lng": 10.612
+    },
+    "preservedGovernorate": {
+      "id": 350,
+      "nomFr": "Nabeul",
+      "nomAr": "نابل",
+      "nomEn": "Nabeul",
+      "lat": 36.4561,
+      "lng": 10.7376
+    },
+    "currentRaw": {
+      "id": "osm:way:234090258",
+      "sourceId": "osm",
+      "name": "Hammamet",
+      "aliases": [],
+      "kind": "residential",
+      "parentName": "معتمدية الحمامات",
+      "contextAliases": [
+        "Délégation Hammamet",
+        "Hammamet",
+        "معتمدية الحمامات"
+      ],
+      "governorateId": 350,
+      "lat": 36.402568,
+      "lng": 10.621605,
+      "delegationId": 461,
+      "hasBoundary": true,
+      "bbox": [
+        10.553918,
+        36.387736,
+        10.642279,
+        36.41736
+      ],
+      "areaKm2": 9.709992130967194,
+      "pickerGroupId": "osm:way:234090258"
+    },
+    "sourceAssertionIds": [
+      "osm:relation:1435825",
+      "osm:relation:3152100",
+      "osm:relation:7104926",
+      "osm:relation:7104927",
+      "osm:relation:7104928",
+      "osm:relation:7104929",
+      "osm:relation:7104930",
+      "osm:relation:7104931",
+      "osm:relation:7104932",
+      "osm:relation:7105070",
+      "osm:relation:7144606",
+      "osm:relation:7145835",
+      "osm:way:234090258",
+      "osm:way:238137076"
+    ],
+    "protectedRawIds": [
+      "osm:relation:3152100",
+      "osm:relation:7104926",
+      "osm:relation:7104927",
+      "osm:relation:7104928",
+      "osm:relation:7104929",
+      "osm:relation:7104930",
+      "osm:relation:7104931",
+      "osm:relation:7104932",
+      "osm:relation:7105070",
+      "osm:relation:7144606",
+      "osm:way:234090258",
+      "osm:way:238137076"
+    ],
+    "beforeGroups": {
+      "delegation:461": [
+        "delegation:461"
+      ],
+      "osm:way:234090258": [
+        "osm:way:234090258"
+      ],
+      "osm:relation:7105070": [
+        "osm:relation:7105070"
+      ],
+      "osm:relation:7144606": [
+        "osm:relation:7144606",
+        "osm:way:238137076"
+      ],
+      "osm:relation:7104926": [
+        "osm:relation:7104926"
+      ],
+      "osm:relation:7104931": [
+        "osm:relation:7104931"
+      ],
+      "osm:relation:7104927": [
+        "osm:relation:7104927"
+      ],
+      "osm:relation:7104929": [
+        "osm:relation:7104929"
+      ],
+      "osm:relation:7104930": [
+        "osm:relation:7104930"
+      ],
+      "osm:relation:7104928": [
+        "osm:relation:7104928"
+      ],
+      "osm:relation:7104932": [
+        "osm:relation:3152100",
+        "osm:relation:7104932"
+      ]
+    },
+    "afterGroups": {
+      "delegation:461": [
+        "delegation:461",
+        "osm:way:234090258"
+      ],
+      "osm:relation:7105070": [
+        "osm:relation:7105070"
+      ],
+      "osm:relation:7144606": [
+        "osm:relation:7144606",
+        "osm:way:238137076"
+      ],
+      "osm:relation:7104926": [
+        "osm:relation:7104926"
+      ],
+      "osm:relation:7104931": [
+        "osm:relation:7104931"
+      ],
+      "osm:relation:7104927": [
+        "osm:relation:7104927"
+      ],
+      "osm:relation:7104929": [
+        "osm:relation:7104929"
+      ],
+      "osm:relation:7104930": [
+        "osm:relation:7104930"
+      ],
+      "osm:relation:7104928": [
+        "osm:relation:7104928"
+      ],
+      "osm:relation:7104932": [
+        "osm:relation:3152100",
+        "osm:relation:7104932"
+      ]
+    },
+    "placeEvidence": {
+      "role": "excluded_city_supplement_only",
+      "id": "osm:node:287583296",
+      "requiredForIdentity": false,
+      "cachedSupplement": {
+        "root": "REPO",
+        "file": "scripts/neighborhoods/six-city-base-reviews/source-bridge/osm-city-nodes.json",
+        "sha256": "05266ae2e3d3576f7934d6557085afb9d8928c8f9056248ebee140d3bf2eceda"
+      },
+      "exactCachedRecord": {
+        "id": "osm:node:287583296",
+        "tags": {
+          "name": "الحمامات",
+          "name:ar": "الحمامات",
+          "name:de": "Al-Hammamat",
+          "name:en": "Hammamet",
+          "name:fa": "حمامات",
+          "name:fr": "Hammamet",
+          "name:kab": "Ḥemmamat",
+          "name:ml": "ഹമ്മാമാത്ത്",
+          "name:ru": "Хаммамет",
+          "place": "city",
+          "population": "97579",
+          "wikidata": "Q339535",
+          "wikimedia_commons": "Category:Hammamet",
+          "wikipedia": "ar:الحمامات (تونس)"
+        },
+        "lat": 36.4006557,
+        "lng": 10.6190626
+      },
+      "expectedOriginalAndEffectivePresence": false,
+      "expectedRawPresence": false,
+      "qualification": "Not absorbed and no PBF/version lineage is claimed. Direct residential addr:city and primary governorate text are the identity grounds; do not add city to PLACES."
+    },
+    "officialDelegationCode": "1566",
+    "officialRecords": [
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156651",
+        "sectorFr": "Sidi djedidi",
+        "sectorAr": "سيدي الجديدي",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14485,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 602,
+          "Nombre_de_menages_par_Secteurs.xlsx": 601
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156652",
+        "sectorFr": "El atrach",
+        "sectorAr": "الاطرش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14519,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 604,
+          "Nombre_de_menages_par_Secteurs.xlsx": 603
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156653",
+        "sectorFr": "Bir bou regba",
+        "sectorAr": "بئر بورقبة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14553,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 605,
+          "Nombre_de_menages_par_Secteurs.xlsx": 604
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156654",
+        "sectorFr": "Barraket essahel",
+        "sectorAr": "براكة الساحل",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14587,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 607,
+          "Nombre_de_menages_par_Secteurs.xlsx": 606
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156655",
+        "sectorFr": "Hammamet nord",
+        "sectorAr": "الحمامات الجوفية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14621,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 609,
+          "Nombre_de_menages_par_Secteurs.xlsx": 608
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156656",
+        "sectorFr": "Hammamet est",
+        "sectorAr": "الحمامات الشرقية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14655,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 611,
+          "Nombre_de_menages_par_Secteurs.xlsx": 610
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156657",
+        "sectorFr": "Hammamet ouest",
+        "sectorAr": "الحمامات الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14689,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 612,
+          "Nombre_de_menages_par_Secteurs.xlsx": 611
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156658",
+        "sectorFr": "Mrezga",
+        "sectorAr": "المرازقة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14723,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 613,
+          "Nombre_de_menages_par_Secteurs.xlsx": 612
+        }
+      },
+      {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "delegationAr": "الحمامات",
+        "sectorCode": "156659",
+        "sectorFr": "Yasmin hammamet",
+        "sectorAr": "ياسمين الحمامات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14757,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 615,
+          "Nombre_de_menages_par_Secteurs.xlsx": 614
+        }
+      }
+    ],
+    "officialRegistry": {
+      "root": "REPO",
+      "file": "scripts/neighborhoods/residential-base-display-reviews/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "exactReviewedContainment": {
+      "originalAndPackedShapesValid": true,
+      "currentBaseInsideOriginalAndPackedResidential": true,
+      "supportPointInsideOriginalAndPackedResidential": true,
+      "sameNamedContainingCompiledPolygonsAtSupportingPoint": [
+        {
+          "id": "osm:way:234090258",
+          "name": "Hammamet",
+          "kind": "residential",
+          "areaKm2": 9.709992130967194
+        }
+      ],
+      "cachedDelegation": {
+        "id": "osm:relation:7145835",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Hammamet",
+          "boundary": "administrative",
+          "name": "معتمدية الحمامات",
+          "name:ar": "معتمدية الحمامات",
+          "name:fr": "Délégation Hammamet",
+          "ref:tn:codegeo": "1566",
+          "ref:tn:hasc_2": "TN.NB.HM",
+          "wikidata": "Q3126509"
+        },
+        "sourceGeometrySha256": "a4cb48143692c93e0316282b2a4a174049de25483130bd3a3f44be736a293ddc",
+        "sourceBounds": [
+          10.3440937,
+          36.3084451,
+          10.6856364,
+          36.5113263
+        ],
+        "current": null,
+        "packedGeometrySha256": null
+      },
+      "residentialFullyInsideCachedDelegation": true,
+      "residentialAreaOutsideCachedDelegationM2": 0.0,
+      "qualification": "Source identity and exact current point/polygon containment only. Neither the residential extent nor inherited OSM administrative borders are certified as a complete official town boundary. Noncontainment is recorded rather than fabricated away."
+    },
+    "parentMetadataMustRemain": {
+      "parentName": "معتمدية الحمامات",
+      "contextAliases": [
+        "Délégation Hammamet",
+        "Hammamet",
+        "معتمدية الحمامات"
+      ]
+    },
+    "sourceNamePeerInventory": {
+      "queryNormalizedNames": [
+        "alhammamat",
+        "hammamet",
+        "hemmamat",
+        "хаммамет",
+        "الحمامات",
+        "حمامات",
+        "ഹമമമതത"
+      ],
+      "cachedAreas": [
+        {
+          "id": "osm:way:234090258",
+          "tags": {
+            "addr:city": "الحمامات",
+            "addr:country": "TN",
+            "landuse": "residential",
+            "name": "Hammamet"
+          },
+          "sourceGeometrySha256": "1a9c99e10bee3e1ee59df622b697513242587d0250472c7d051b689706f4f649",
+          "sourceBounds": [
+            10.5539178,
+            36.387736,
+            10.6422789,
+            36.4173601
+          ],
+          "current": {
+            "id": "osm:way:234090258",
+            "sourceId": "osm",
+            "name": "Hammamet",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.402568,
+            "lng": 10.621605,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.553918,
+              36.387736,
+              10.642279,
+              36.41736
+            ],
+            "areaKm2": 9.709992130967194,
+            "pickerGroupId": "osm:way:234090258",
+            "offset": 5339776,
+            "length": 4076
+          },
+          "packedGeometrySha256": "f678e9736a979cc30eeffbf0ca5b397baeab7c159095a6a117cfb215d528a05a"
+        },
+        {
+          "id": "osm:relation:7145835",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Hammamet",
+            "boundary": "administrative",
+            "name": "معتمدية الحمامات",
+            "name:ar": "معتمدية الحمامات",
+            "name:fr": "Délégation Hammamet",
+            "ref:tn:codegeo": "1566",
+            "ref:tn:hasc_2": "TN.NB.HM",
+            "wikidata": "Q3126509"
+          },
+          "sourceGeometrySha256": "a4cb48143692c93e0316282b2a4a174049de25483130bd3a3f44be736a293ddc",
+          "sourceBounds": [
+            10.3440937,
+            36.3084451,
+            10.6856364,
+            36.5113263
+          ],
+          "current": null,
+          "packedGeometrySha256": null
+        }
+      ],
+      "cachedNodes": [],
+      "supplementalCities": [
+        {
+          "id": "osm:node:287583296",
+          "tags": {
+            "name": "الحمامات",
+            "name:ar": "الحمامات",
+            "name:de": "Al-Hammamat",
+            "name:en": "Hammamet",
+            "name:fa": "حمامات",
+            "name:fr": "Hammamet",
+            "name:kab": "Ḥemmamat",
+            "name:ml": "ഹമ്മാമാത്ത്",
+            "name:ru": "Хаммамет",
+            "place": "city",
+            "population": "97579",
+            "wikidata": "Q339535",
+            "wikimedia_commons": "Category:Hammamet",
+            "wikipedia": "ar:الحمامات (تونس)"
+          },
+          "lat": 36.4006557,
+          "lng": 10.6190626,
+          "current": null
+        }
+      ],
+      "scope": "Exact normalized primary/alias names across existing cached source inventories; no fuzzy matching, proximity discovery, PBF scan or global collector change."
+    },
+    "coordinateCorrectionBefore": null,
+    "coordinateCorrectionAfter": null,
+    "primaryGrounds": "The polygon itself explicitly binds French Hammamet to Arabic addr:city=الحمامات. Both legacy source461 and the supplemental city point lie inside its original and packaged shape. Primary governorate text independently identifies الحمامات as the city. This is a town display association, not equality with the nine-imada delegation extent.",
+    "primaryCorroboration": {
+      "baseId": 461,
+      "url": "https://www.nabeul.gov.tn/ar/%D8%A8%D8%A7%D9%86%D9%88%D8%B1%D8%A7%D9%85%D8%A7-%D8%A7%D9%84%D9%85%D8%B9%D8%AA%D9%85%D8%AF%D9%8A%D8%A7%D8%AA-2/",
+      "provider": "Governorate of Nabeul",
+      "evidence": {
+        "file": "work/three-residential-town-source-triage/hammamet-governorate.html",
+        "sha256": "f1e05febaf66a2c1a7461f2643a427ad3622794c8b13d2b35ed417dc74cc85fa",
+        "bytes": 175347
+      },
+      "evidenceType": "Complete primary HTML via verified Schannel HTTPS",
+      "supports": "Names الحمامات as an urban city and separately describes its municipalities/imadas.",
+      "limit": "The collated page uses historical/inconsistent imada wording, including الحمامات الشمالية where current INS has الحمامات الغربية. Preserve current exact INS nine-imada inventory, not that descriptive list."
+    },
+    "exactIdentityBindings": {
+      "residentialName": "Hammamet",
+      "residentialAddrCity": "الحمامات",
+      "baseNomFr": "Hammamet",
+      "baseNomAr": "الحمامات",
+      "sourceNameArAbsent": true,
+      "rawFrenchNameAndAliasesPreserved": true
+    }
+  },
+  "sourceReview": {
+    "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/source-review.json",
+    "sha256": "40ebd6609b30f3c4afac015af552d193249087dd9939f06e2fc5b0ee85144cb6"
+  },
+  "sourceFacts": {
+    "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/current-source-facts.json",
+    "sha256": "d3186be4427393bdc7201ba7e33c601979605335d62fbe130945464cc882e48b"
+  },
+  "officialRegistry": {
+    "file": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "primarySources": [
+    {
+      "file": "residential-base-display-reviews/three-town-review/hammamet-governorate.html",
+      "sha256": "f1e05febaf66a2c1a7461f2643a427ad3622794c8b13d2b35ed417dc74cc85fa"
+    }
+  ],
+  "qualification": "Display identity only. All raw footprints, coordinates, default sources and imada groups remain independent. Historical indexed municipal text is not original downloaded HTML or a boundary certificate.",
+  "sourcePhaseLineage": {
+    "file": "residential-base-display-reviews/hammamet-nineteen-source-phase-20260920/source-phase-lineage.json",
+    "sha256": "b3533abf31d3429eabd908ffcc495b52c098434bbf754b0f86ed13f9507d59fb"
+  },
+  "historicalProof": {
+    "file": "residential-base-display-reviews/three-town-review/461-proof.json",
+    "sha256": "c072a241da01f7e4bee2f1549090615489c56b8c166b35c17022c1732ff3481c"
+  },
+  "phaseQualification": "This proof is an explicit source-phase successor for the protected Hammamet 461 town association. It updates only source assertion ids, protected raw ids, and the explicit Yasmine group membership to include the already automatically grouped northern residential. No merge operation is performed, and southern 3152105 remains outside this proof."
+}

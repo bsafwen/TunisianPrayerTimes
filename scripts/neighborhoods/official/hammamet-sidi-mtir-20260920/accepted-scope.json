@@ -1,0 +1,2591 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-12",
+  "scope": "Ninety reviewed whole-imada circles; the unchanged Bekalta North and Borj Cedria exhaustive administrative aggregates remain separately preserved.",
+  "primarySource": {
+    "title": "Tunisian decree2023-590 of21September2023, annex1 tableA and annex6 introduction",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "date": "2023-09-21",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "pages": 190,
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "officialIdentityRegistry": {
+    "file": "current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "sectorCount": 2082,
+    "sourceWorkbooks": [
+      {
+        "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+          "ETag": "\"8d1a5c-636842926ae2a\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "9247324",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 9247324,
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sheet": "Population"
+      },
+      {
+        "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+          "ETag": "\"b8855-6433d8623825d\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "755797",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 755797,
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sheet": "Logements"
+      },
+      {
+        "file": "Nombre_de_menages_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+          "ETag": "\"9ea73-6433d95004ce0\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "649843",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 649843,
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sheet": "Ménages"
+      }
+    ]
+  },
+  "records": [
+    {
+      "id": "osm:relation:7174630",
+      "officialCode": "135954",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "منزل مبروك",
+      "circleName": "منزل مبروك",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "منزل مبروك",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D9%85%D9%86%D8%B2%D9%84%20%D9%85%D8%A8%D8%B1%D9%88%D9%83.pdf",
+      "mapPdfSha256": "20b2896a085e6cc52a7bc45c15378db909f9a898be92bec6731a7310862b8aa3",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      }
+    },
+    {
+      "id": "isie:sector:135956",
+      "officialCode": "135956",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "مقرين شاكر2",
+      "circleName": "مقرين شاكر2",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "مقرين شاكر2",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D9%85%D9%82%D8%B1%D9%8A%D9%86%20%D8%B4%D8%A7%D9%83%D8%B12.pdf",
+      "mapPdfSha256": "9d5f26480cab8d37d1bf9c9ac35931223fbd3c1c71097f8a05ef3911a144f57f",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      },
+      "note": "The digit2 occurs in both the imada and circle columns. It is an administrative imada here, not a split circle inferred from a numeric suffix."
+    },
+    {
+      "id": "osm:relation:7174628",
+      "officialCode": "135955",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "مقرين شاكر",
+      "circleName": "مقرين شاكر",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "مقرين شاكر",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D9%85%D9%82%D8%B1%D9%8A%D9%86%20%D8%B4%D8%A7%D9%83%D8%B1.pdf",
+      "mapPdfSha256": "18cd8bd03e249fc68d90e78d97e4ee812271d114e523e67c836eb9fc4f5b4224",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      }
+    },
+    {
+      "id": "osm:relation:7174626",
+      "officialCode": "135952",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "مقرين الرياض",
+      "circleName": "مقرين الرياض",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "مقرين الرياض",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D9%85%D9%82%D8%B1%D9%8A%D9%86%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6.pdf",
+      "mapPdfSha256": "8f94e23006a635dd89f06b15a461a17798740f8503141f55073795a250e82488",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      }
+    },
+    {
+      "id": "osm:relation:7174627",
+      "officialCode": "135951",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "مقرين العليا",
+      "circleName": "مقرين العليا",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "مقرين العليا",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D9%85%D9%82%D8%B1%D9%8A%D9%86%20%D8%A7%D9%84%D8%B9%D9%84%D9%8A%D8%A7.pdf",
+      "mapPdfSha256": "a3c6c8d330c497e796011e6406b3968683f1bbfe0a6efa1bfee99ad07beb49f6",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      }
+    },
+    {
+      "id": "osm:relation:7174591",
+      "officialCode": "135953",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "جوهرة",
+      "circleName": "جوهرة",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "جوهرة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D8%AC%D9%88%D9%87%D8%B1%D8%A9.pdf",
+      "mapPdfSha256": "7faeab29c7f8836cf8f5348767a2d7a75ddcc98f38e31aa68b5465ae636b3491",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      }
+    },
+    {
+      "id": "osm:relation:7174613",
+      "officialCode": "135957",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "سيدي رزيق",
+      "circleName": "سيدي رزيق",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "سيدي رزيق",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%B1%D8%B2%D9%8A%D9%82.pdf",
+      "mapPdfSha256": "432983243c5f284410ffe42c8718c4d7497ae3fb90f4bbbb4a8bfee93287e70b",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      }
+    },
+    {
+      "id": "osm:relation:7174612",
+      "officialCode": "135958",
+      "boundarySourceId": "isie-local-sectors-2023-megrine",
+      "boundarySourceFile": "official/megrine-isie2023-sectors.geojson",
+      "boundarySourceSha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51",
+      "conclusion": "whole_imada",
+      "pdfPage": 28,
+      "jortPage": 5125,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "سيدي رزيق 2",
+      "circleName": "سيدي رزيق 2",
+      "delegationCode": "1359",
+      "delegationName": "مقرين",
+      "governorateCode": "13",
+      "governorateName": "بن عروس",
+      "officialRegistryName": "سيدي رزيق 2",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%B1%D8%B2%D9%8A%D9%82%202.pdf",
+      "mapPdfSha256": "244d3f8060c3d1ee562744093d77d9dc406435d05ff7a632a19da43ffad267f4",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-28.png",
+        "cachedPageImageSha256": "fbbf6bca4c4c416d63e90b7bfbeb15e1e562920baa8959a0e799cb83ade7cfc8"
+      }
+    },
+    {
+      "id": "osm:relation:7110676",
+      "officialCode": "326151",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 18,
+      "jortPage": 5115,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "عياد",
+      "circleName": "عياد",
+      "delegationCode": "3261",
+      "delegationName": "قصر هلال",
+      "governorateCode": "32",
+      "governorateName": "المنستير",
+      "officialRegistryName": "عياد",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D9%82%D8%B5%D8%B1%20%D9%87%D9%84%D8%A7%D9%84/%D8%B9%D9%8A%D8%A7%D8%AF.pdf",
+      "mapPdfSha256": "ca6d68f5c0106728c4377d1311c5401c562cb6c6eed297c193709e110edd3b89",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\page-18.png",
+        "cachedPageImageSha256": "1f0801e5adc23c32ca4adb68002439e387ca19818c1aaafbe1fd3fd3d442d6b7"
+      },
+      "note": "The parent has four imadas, but only Soua (صوة) is split into circles1/2 on this page. Ayad and Bouzguitta each occupy a separate one-to-one imada/circle row."
+    },
+    {
+      "id": "osm:relation:7110673",
+      "officialCode": "326153",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 18,
+      "jortPage": 5115,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "بوزويتة",
+      "circleName": "بوزويتة",
+      "delegationCode": "3261",
+      "delegationName": "قصر هلال",
+      "governorateCode": "32",
+      "governorateName": "المنستير",
+      "officialRegistryName": "بوزويتة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D9%82%D8%B5%D8%B1%20%D9%87%D9%84%D8%A7%D9%84/%D8%A8%D9%88%D8%B2%D9%88%D9%8A%D8%AA%D8%A9.pdf",
+      "mapPdfSha256": "56cbd21deeaa6ef4b2dcf3e1a001c97325e9e5f34ab6401f432da2028348f1be",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\page-18.png",
+        "cachedPageImageSha256": "1f0801e5adc23c32ca4adb68002439e387ca19818c1aaafbe1fd3fd3d442d6b7"
+      },
+      "note": "The parent has four imadas, but only Soua (صوة) is split into circles1/2 on this page. Ayad and Bouzguitta each occupy a separate one-to-one imada/circle row."
+    },
+    {
+      "id": "osm:relation:7164965",
+      "officialCode": "426153",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 7,
+      "jortPage": 5104,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "خمودة الشمالية",
+      "circleName": "خمودة الشمالية",
+      "delegationCode": "4261",
+      "delegationName": "فوسانة",
+      "governorateCode": "42",
+      "governorateName": "القصرين",
+      "officialRegistryName": "خمودة الشمالية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%82%D8%B5%D8%B1%D9%8A%D9%86/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9/%D8%AE%D9%85%D9%88%D8%AF%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "c3677035b8ab6ab4e9b6c5a79eb000c4918a5ce29e58b63a3ba9ba34454167ef",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-7.png",
+        "cachedPageImageSha256": "84312276c1808619dca586905dddba3e1318d614c1df2daefb691f4493bbc486"
+      }
+    },
+    {
+      "id": "osm:relation:7164980",
+      "officialCode": "426154",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 7,
+      "jortPage": 5104,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "خمودة الجنوبية",
+      "circleName": "خمودة الجنوبية",
+      "delegationCode": "4261",
+      "delegationName": "فوسانة",
+      "governorateCode": "42",
+      "governorateName": "القصرين",
+      "officialRegistryName": "خمودة الجنوبية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%82%D8%B5%D8%B1%D9%8A%D9%86/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9/%D8%AE%D9%85%D9%88%D8%AF%D8%A9%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "339e160b270d0d9d9534ea4a6846be05bc3b2f80ef6eae9dd31f10cfdd17d246",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-7.png",
+        "cachedPageImageSha256": "84312276c1808619dca586905dddba3e1318d614c1df2daefb691f4493bbc486"
+      }
+    },
+    {
+      "id": "osm:relation:7102675",
+      "officialCode": "156351",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 75,
+      "jortPage": 5172,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "بني خلاد الجوفية",
+      "circleName": "بني خلاد الجوفية",
+      "delegationCode": "1563",
+      "delegationName": "بني خلاد",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "بني خلاد الجوفية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "affb1499274fab446db642d46a1549ea3e6e74391a39ee4362d82b4e21a7eec9",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-75.png",
+        "cachedPageImageSha256": "281d411fb0233042bcecdf4411046fe4979f5d7bf184a7bc96ac16a0ee9c0b98"
+      },
+      "note": "All six Beni Khalled imadas occupy separate one-to-one rows on this page; accepted North, South and Zaouiet Djedidi are whole imadas."
+    },
+    {
+      "id": "osm:relation:7102674",
+      "officialCode": "156352",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 75,
+      "jortPage": 5172,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "بني خلاد القبلية",
+      "circleName": "بني خلاد القبلية",
+      "delegationCode": "1563",
+      "delegationName": "بني خلاد",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "بني خلاد القبلية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF%20%D8%A7%D9%84%D9%82%D8%A8%D9%84%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "8d89c60f8e6461ea28b36e0c19c51667665d777d149297294aecc511fc7f0825",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-75.png",
+        "cachedPageImageSha256": "281d411fb0233042bcecdf4411046fe4979f5d7bf184a7bc96ac16a0ee9c0b98"
+      },
+      "note": "All six Beni Khalled imadas occupy separate one-to-one rows on this page; accepted North, South and Zaouiet Djedidi are whole imadas."
+    },
+    {
+      "id": "osm:relation:7115053",
+      "officialCode": "125156",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 3,
+      "jortPage": 5100,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "التعمير",
+      "circleName": "التعمير",
+      "delegationCode": "1251",
+      "delegationName": "اريانةالمدينة",
+      "governorateCode": "12",
+      "governorateName": "أريانة",
+      "officialRegistryName": "التعمير",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9/%D8%A7%D9%84%D8%AA%D8%B9%D9%85%D9%8A%D8%B1.pdf",
+      "mapPdfSha256": "79c24d6ce54a7485d865fbbc229bf56422334cc6922958ad9749332f75538823",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-3.png",
+        "cachedPageImageSha256": "9e9e354ce9fd4c4eaadf01f266ad1624f468116a37a19392cd544b76a3c4c6dd"
+      }
+    },
+    {
+      "id": "osm:relation:7114904",
+      "officialCode": "125257",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 4,
+      "jortPage": 5101,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "التعمير الخامس",
+      "circleName": "التعمير الخامس",
+      "delegationCode": "1252",
+      "delegationName": "سكرة",
+      "governorateCode": "12",
+      "governorateName": "أريانة",
+      "officialRegistryName": "التعمير الخامس",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%B3%D9%83%D8%B1%D8%A9/%D8%A7%D9%84%D8%AA%D8%B9%D9%85%D9%8A%D8%B1%20%D8%A7%D9%84%D8%AE%D8%A7%D9%85%D8%B3.pdf",
+      "mapPdfSha256": "ab87d2a83df8c79a6bbf64aec89f9a8420520c7260dfff733a41ece4be8b6346",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-4.png",
+        "cachedPageImageSha256": "b8e8fc68b00f827b24e923eff75740f13bb2d2ea5bc5c180bc03f02a583828cb"
+      }
+    },
+    {
+      "id": "osm:relation:7147636",
+      "officialCode": "346653",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 61,
+      "jortPage": 5158,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "سيدي فرج",
+      "circleName": "سيدي فرج - (قرقنة)",
+      "delegationCode": "3466",
+      "delegationName": "قرقنة",
+      "governorateCode": "34",
+      "governorateName": "صفاقس",
+      "officialRegistryName": "سيدي فرج",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B5%D9%81%D8%A7%D9%82%D8%B3%201/%D9%82%D8%B1%D9%82%D9%86%D8%A9/%D8%B3%D9%8A%D8%AF%D9%8A%20%D9%81%D8%B1%D8%AC%20-%20%28%D9%82%D8%B1%D9%82%D9%86%D8%A9%29.pdf",
+      "mapPdfSha256": "a1d6e86d61db5ce95fb2368f19cdf3d3018d9b4de70de7b23d5fc9cfca90d04a",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-61.png",
+        "cachedPageImageSha256": "a09172ec2c77abfbba81a77349eacef4b25c0b14395e0a086b43945fc0f4bfc9"
+      },
+      "note": "The circle name adds its parent in parentheses solely to disambiguate the same-named whole-imada row."
+    },
+    {
+      "id": "osm:relation:7147638",
+      "officialCode": "346660",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review",
+      "boundarySourceFile": "official/identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "36bc95124931e187c82e608cc7445a22cae34542e5022d52f1c73cc57e9209be",
+      "conclusion": "whole_imada",
+      "pdfPage": 61,
+      "jortPage": 5158,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "أولاد قاسم",
+      "circleName": "أولاد قاسم",
+      "delegationCode": "3466",
+      "delegationName": "قرقنة",
+      "governorateCode": "34",
+      "governorateName": "صفاقس",
+      "officialRegistryName": "أولاد قاسم",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B5%D9%81%D8%A7%D9%82%D8%B3%201/%D9%82%D8%B1%D9%82%D9%86%D8%A9/%D8%A3%D9%88%D9%84%D8%A7%D8%AF%20%D9%82%D8%A7%D8%B3%D9%85.pdf",
+      "mapPdfSha256": "285c64d3457eceb76940b7e1bf63a82f6645380cc82b13ea1a0a6936461cf111",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-61.png",
+        "cachedPageImageSha256": "a09172ec2c77abfbba81a77349eacef4b25c0b14395e0a086b43945fc0f4bfc9"
+      }
+    },
+    {
+      "id": "osm:relation:7142911",
+      "officialCode": "525552",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review-2",
+      "boundarySourceFile": "official/next-identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02",
+      "conclusion": "whole_imada",
+      "pdfPage": 71,
+      "jortPage": 5168,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "2مارس",
+      "circleName": "2مارس - (جرجيس)",
+      "delegationCode": "5255",
+      "delegationName": "جرجيس",
+      "governorateCode": "52",
+      "governorateName": "مدنين",
+      "officialRegistryName": "2مارس",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%85%D8%AF%D9%86%D9%8A%D9%86/%D8%AC%D8%B1%D8%AC%D9%8A%D8%B3/2%D9%85%D8%A7%D8%B1%D8%B3%20-%20%28%D8%AC%D8%B1%D8%AC%D9%8A%D8%B3%29.pdf",
+      "mapPdfSha256": "eebfe6016818ecfdedba11a8e50c936046609e8e931414699a392bea99272982",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-71.png",
+        "cachedPageImageSha256": "68d235712bae5cff49f00c1feb4d042aa0bade97afdcb99449cf1613e778f89d"
+      },
+      "note": "The circle name adds its parent in parentheses solely to disambiguate the same-named whole-imada row."
+    },
+    {
+      "id": "osm:relation:7169580",
+      "officialCode": "435256",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review-2",
+      "boundarySourceFile": "official/next-identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02",
+      "conclusion": "whole_imada",
+      "pdfPage": 56,
+      "jortPage": 5153,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "المكارم",
+      "circleName": "المكارم",
+      "delegationCode": "4352",
+      "delegationName": "سيدي بوزيد الشرقية",
+      "governorateCode": "43",
+      "governorateName": "سيدي بوزيد",
+      "officialRegistryName": "المكارم",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D9%83%D8%A7%D8%B1%D9%85.pdf",
+      "mapPdfSha256": "267f923cdbd7464dd3b5f1e00371dbb0a3493479a577d072e44d5d1e99081d49",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-56.png",
+        "cachedPageImageSha256": "b2ef12ed62155271b681d819263f1f44a580e9836fc06006dadfb9d026c7eed5"
+      }
+    },
+    {
+      "id": "osm:relation:7169578",
+      "officialCode": "435257",
+      "boundarySourceId": "isie-local-sectors-2023-identity-review-2",
+      "boundarySourceFile": "official/next-identity-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "6e077a130cbd156b28ba2f6341c72e00bffc5f4f7bc3da9eea7745245fcaeb02",
+      "conclusion": "whole_imada",
+      "pdfPage": 56,
+      "jortPage": 5153,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "المكارم الشرقية",
+      "circleName": "المكارم الشرقية",
+      "delegationCode": "4352",
+      "delegationName": "سيدي بوزيد الشرقية",
+      "governorateCode": "43",
+      "governorateName": "سيدي بوزيد",
+      "officialRegistryName": "المكارم الشرقية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D9%83%D8%A7%D8%B1%D9%85%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "6d9bde26e80e7ef2bba6ff1d5288d46df761203245e004ceb5b561583925d44a",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-56.png",
+        "cachedPageImageSha256": "b2ef12ed62155271b681d819263f1f44a580e9836fc06006dadfb9d026c7eed5"
+      }
+    },
+    {
+      "id": "osm:relation:7103676",
+      "officialCode": "156353",
+      "boundarySourceId": "isie-local-sectors-2023-neighbor-review",
+      "boundarySourceFile": "official/neighbor-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+      "conclusion": "whole_imada",
+      "pdfPage": 75,
+      "jortPage": 5172,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "زاوية الجديدي",
+      "circleName": "زاوية الجديدي",
+      "delegationCode": "1563",
+      "delegationName": "بني خلاد",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "زاوية الجديدي",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A8%D9%86%D9%8A%20%D8%AE%D9%84%D8%A7%D8%AF/%D8%B2%D8%A7%D9%88%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D9%8A.pdf",
+      "mapPdfSha256": "a4ef074a663113a2a3e9257220fd6f274796c75dc645894219797d3cf683f46e",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-75.png",
+        "cachedPageImageSha256": "281d411fb0233042bcecdf4411046fe4979f5d7bf184a7bc96ac16a0ee9c0b98"
+      },
+      "note": "All six Beni Khalled imadas occupy separate one-to-one rows on this page; accepted North, South and Zaouiet Djedidi are whole imadas."
+    },
+    {
+      "id": "osm:relation:7165010",
+      "officialCode": "425959",
+      "boundarySourceId": "isie-local-sectors-2023-neighbor-review",
+      "boundarySourceFile": "official/neighbor-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+      "conclusion": "whole_imada",
+      "pdfPage": 5,
+      "jortPage": 5102,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "زلفان",
+      "circleName": "زلفان",
+      "delegationCode": "4259",
+      "delegationName": "تالة",
+      "governorateCode": "42",
+      "governorateName": "القصرين",
+      "officialRegistryName": "زلفان",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%82%D8%B5%D8%B1%D9%8A%D9%86/%D8%AA%D8%A7%D9%84%D8%A9/%D8%B2%D9%84%D9%81%D8%A7%D9%86.pdf",
+      "mapPdfSha256": "1d2fda81dc2c0d6e850ff82cc640031e24be57a99979db5559ca337ad0dcd4b8",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-5.png",
+        "cachedPageImageSha256": "fce9427ab3e4d502f166c02b21270cdfc08de309c3e92c059709ff423b8e5752"
+      }
+    },
+    {
+      "id": "osm:relation:7164966",
+      "officialCode": "426152",
+      "boundarySourceId": "isie-local-sectors-2023-neighbor-review",
+      "boundarySourceFile": "official/neighbor-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+      "conclusion": "whole_imada",
+      "pdfPage": 8,
+      "jortPage": 5105,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "فوسانة الأحواز",
+      "circleName": "فوسانة الأحواز",
+      "delegationCode": "4261",
+      "delegationName": "فوسانة",
+      "governorateCode": "42",
+      "governorateName": "القصرين",
+      "officialRegistryName": "فوسانة الأحواز",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%82%D8%B5%D8%B1%D9%8A%D9%86/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9%20%D8%A7%D9%84%D8%A3%D8%AD%D9%88%D8%A7%D8%B2.pdf",
+      "mapPdfSha256": "d566994827fe0b9072fa0ef60c1a8f893d726f1c59b5549ba8f0b8b0292942b0",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-8.png",
+        "cachedPageImageSha256": "aa5747c7b9bb2cb354c974d3cbe99d356cae54395ee31ba0b42ebc9f1e12d03b"
+      }
+    },
+    {
+      "id": "osm:relation:7164967",
+      "officialCode": "426151",
+      "boundarySourceId": "isie-local-sectors-2023-neighbor-review",
+      "boundarySourceFile": "official/neighbor-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "4b1d7d26912b9df0b04b178f7b6425d251dd69a0835dda0d8932f440b85979ce",
+      "conclusion": "whole_imada",
+      "pdfPage": 8,
+      "jortPage": 5105,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "فوسانة",
+      "circleName": "فوسانة",
+      "delegationCode": "4261",
+      "delegationName": "فوسانة",
+      "governorateCode": "42",
+      "governorateName": "القصرين",
+      "officialRegistryName": "فوسانة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%82%D8%B5%D8%B1%D9%8A%D9%86/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9/%D9%81%D9%88%D8%B3%D8%A7%D9%86%D8%A9%20%D8%A7%D9%84%D8%A3%D8%AD%D9%88%D8%A7%D8%B2.pdf",
+      "mapPdfSha256": "d566994827fe0b9072fa0ef60c1a8f893d726f1c59b5549ba8f0b8b0292942b0",
+      "evidence": {
+        "method": "Direct visual reading of the imada and local electoral circle columns in the same annex-1 row. The imada cell spans exactly one circle row; no combined-parts label. Parent and map identity were already independently cross-checked against the three pinned INS2024 workbooks.",
+        "cachedPageImage": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-8.png",
+        "cachedPageImageSha256": "aa5747c7b9bb2cb354c974d3cbe99d356cae54395ee31ba0b42ebc9f1e12d03b"
+      }
+    },
+    {
+      "id": "osm:relation:7111785",
+      "officialCode": "326052",
+      "boundarySourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+      "boundarySourceFile": "official/bekalta-neighbors-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+      "conclusion": "whole_imada",
+      "pdfPage": 18,
+      "jortPage": 5115,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "الفضلين",
+      "circleName": "الفضلين",
+      "delegationCode": "3260",
+      "delegationName": "طبلبة",
+      "governorateCode": "32",
+      "governorateName": "المنستير",
+      "officialRegistryName": "الفضلين",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%B7%D8%A8%D9%84%D8%A8%D8%A9/%D8%A7%D9%84%D9%81%D8%B6%D9%84%D9%8A%D9%86.pdf",
+      "mapPdfSha256": "1507a3879adc693e0ea3a84bb6ee53cd560533b369908899e46e4937c0b1a4e2",
+      "evidence": {
+        "sourceReview": {
+          "file": "official/bekalta-neighbors-review-isie2023-decisions.json",
+          "sha256": "8dd2bea2de7865eb5826abe1b861b6fc481ab9e9755c01fafdcefebb036e9a2c"
+        },
+        "scopeReview": {
+          "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+          "wholeCircleEqualsWholeImada": true,
+          "decreeAnnex": 1,
+          "decreeTable": "A",
+          "decreePDFPage": 18,
+          "decreeJORTPage": 5115,
+          "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "imadaNameAr": "الفضلين",
+          "circleNameAr": "الفضلين"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7111784",
+      "officialCode": "326053",
+      "boundarySourceId": "isie-local-sectors-2023-bekalta-neighbors-review",
+      "boundarySourceFile": "official/bekalta-neighbors-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "c60fb4ced86eddd6468675c8312171aad8b40acc74c766b61e75fedcaf36cdb4",
+      "conclusion": "whole_imada",
+      "pdfPage": 18,
+      "jortPage": 5115,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "العيايشة",
+      "circleName": "العيايشة",
+      "delegationCode": "3260",
+      "delegationName": "طبلبة",
+      "governorateCode": "32",
+      "governorateName": "المنستير",
+      "officialRegistryName": "العيايشة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%B7%D8%A8%D9%84%D8%A8%D8%A9/%D8%A7%D9%84%D8%B9%D9%8A%D8%A7%D9%8A%D8%B4%D8%A9.pdf",
+      "mapPdfSha256": "d4ec8820cb98123a8af0b6505972e708eb049b894766ac37d12e9a0248ab3a64",
+      "evidence": {
+        "sourceReview": {
+          "file": "official/bekalta-neighbors-review-isie2023-decisions.json",
+          "sha256": "8dd2bea2de7865eb5826abe1b861b6fc481ab9e9755c01fafdcefebb036e9a2c"
+        },
+        "scopeReview": {
+          "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+          "wholeCircleEqualsWholeImada": true,
+          "decreeAnnex": 1,
+          "decreeTable": "A",
+          "decreePDFPage": 18,
+          "decreeJORTPage": 5115,
+          "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "imadaNameAr": "العيايشة",
+          "circleNameAr": "العيايشة"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7111931",
+      "officialCode": "325952",
+      "boundarySourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+      "boundarySourceFile": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+      "conclusion": "whole_imada",
+      "pdfPage": 15,
+      "jortPage": 5112,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "البقالطة الجنوبية",
+      "circleName": "البقالطة الجنوبية",
+      "delegationCode": "3259",
+      "delegationName": "البقالطة",
+      "governorateCode": "32",
+      "governorateName": "المنستير",
+      "officialRegistryName": "البقالطة الجنوبية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "3fdddc32c5c2ad1de5b626dd9a5d0d0f1669c5b51ccab941071162a275b5667a",
+      "evidence": {
+        "sourceReview": {
+          "file": "official/bekalta-south-east-review-isie2023-decisions.json",
+          "sha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+        },
+        "scopeReview": {
+          "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+          "wholeCircleEqualsWholeImada": true,
+          "decreeAnnex": 1,
+          "decreeTable": "A",
+          "decreePDFPage": 15,
+          "decreeJORTPage": 5112,
+          "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "imadaNameAr": "البقالطة الجنوبية",
+          "circleNameAr": "البقالطة الجنوبية"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7111932",
+      "officialCode": "325954",
+      "boundarySourceId": "isie-local-sectors-2023-bekalta-south-east-review",
+      "boundarySourceFile": "official/bekalta-south-east-review-isie2023-sectors.geojson",
+      "boundarySourceSha256": "3228cd7dcd819955c8e106a0a52ecf63309c435ec0742b0fa42301b2fdac29f5",
+      "conclusion": "whole_imada",
+      "pdfPage": 15,
+      "jortPage": 5112,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "البقالطة الشرقية",
+      "circleName": "البقالطة الشرقية",
+      "delegationCode": "3259",
+      "delegationName": "البقالطة",
+      "governorateCode": "32",
+      "governorateName": "المنستير",
+      "officialRegistryName": "البقالطة الشرقية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "602b348d8da271ae9d0467019775a0af72c3844f2e894e77124e601318101882",
+      "evidence": {
+        "sourceReview": {
+          "file": "official/bekalta-south-east-review-isie2023-decisions.json",
+          "sha256": "c26a27c3a2585dd9b37d44dfac38b73373fd0a94a5ec39620a7ca298fcf2d3d8"
+        },
+        "scopeReview": {
+          "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+          "wholeCircleEqualsWholeImada": true,
+          "decreeAnnex": 1,
+          "decreeTable": "A",
+          "decreePDFPage": 15,
+          "decreeJORTPage": 5112,
+          "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "imadaNameAr": "البقالطة الشرقية",
+          "circleNameAr": "البقالطة الشرقية"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7111930",
+      "officialCode": "325953",
+      "boundarySourceId": "isie-local-sectors-2023-baghdadi-review",
+      "boundarySourceFile": "official/baghdadi-review-isie2023-sector.geojson",
+      "boundarySourceSha256": "b88b775846a032db2338964498d37fc072ba2afd7165cefad1495242c5f5cb8a",
+      "conclusion": "whole_imada",
+      "pdfPage": 15,
+      "jortPage": 5112,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "البغدادي",
+      "circleName": "البغدادي",
+      "delegationCode": "3259",
+      "delegationName": "البقالطة",
+      "governorateCode": "32",
+      "governorateName": "المنستير",
+      "officialRegistryName": "البغدادي",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF%D9%8A.pdf",
+      "mapPdfSha256": "bdd8450b17438aead31405b4f0807c78b4c2296a8837dc1cb6c3d0e09112fcf0",
+      "evidence": {
+        "sourceReview": {
+          "file": "official/baghdadi-review-isie2023-decision.json",
+          "sha256": "a9c5b40970cb04f4ec1c92ef3429dfbf11a20396af183564162eb4883e172512"
+        },
+        "scopeReview": {
+          "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+          "wholeCircleEqualsWholeImada": true,
+          "decreeAnnex": 1,
+          "decreeTable": "A",
+          "decreePDFPage": 15,
+          "decreeJORTPage": 5112,
+          "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "imadaNameAr": "البغدادي",
+          "circleNameAr": "البغدادي"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7152283",
+      "officialCode": "335161",
+      "boundarySourceId": "isie-local-sectors-2023-hiboun-review",
+      "boundarySourceFile": "official/hiboun-review-isie2023-sector.geojson",
+      "boundarySourceSha256": "b1f3b459d642e6be62ab60f27fed66068df3222fbc726e970bfed3276c5b642c",
+      "conclusion": "whole_imada",
+      "pdfPage": 20,
+      "jortPage": 5117,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "هيبون",
+      "circleName": "هيبون",
+      "delegationCode": "3351",
+      "delegationName": "المهدية",
+      "governorateCode": "33",
+      "governorateName": "المهدية",
+      "officialRegistryName": "هيبون",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%87%D8%AF%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D9%87%D8%AF%D9%8A%D8%A9/%D9%87%D9%8A%D8%A8%D9%88%D9%86.pdf",
+      "mapPdfSha256": "4c93df7b54f7b9aa7356f3936ced541336cba298e17aa41c6c0d3e7fe57bfa50",
+      "evidence": {
+        "sourceReview": {
+          "file": "official/hiboun-review-isie2023-decision.json",
+          "sha256": "e92a054bc9bf582ad06d6254f83338c8e4b18964f9d04307ee62c74b0e5574a5"
+        },
+        "scopeReview": {
+          "classification": "WHOLE_CIRCLE_EQUALS_WHOLE_IMADA",
+          "wholeCircleEqualsWholeImada": true,
+          "decreeAnnex": 1,
+          "decreeTable": "A",
+          "decreePDFPage": 20,
+          "decreeJORTPage": 5117,
+          "parentContinuationPDFPage": 19,
+          "parentContinuationJORTPage": 5116,
+          "sourceDecreeSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+          "sourceDecreeURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+          "imadaNameAr": "هيبون",
+          "circleNameAr": "هيبون"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7143881",
+      "officialCode": "535259",
+      "boundarySourceSha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "conclusion": "whole_imada",
+      "pdfPage": 33,
+      "jortPage": 5130,
+      "imadaName": "شنني",
+      "circleName": "شنني",
+      "delegationName": "تطاوين الجنوبية",
+      "parentStartsPdfPage": 32,
+      "boundarySourceId": "isie-local-sectors-2023-chenini-two-review",
+      "boundarySourceFile": "official/chenini-two-sector-candidate-readiness.geojson",
+      "annex": 1,
+      "table": "A",
+      "delegationCode": "5352",
+      "governorateCode": "53",
+      "governorateName": "تطاوين",
+      "officialRegistryName": "شنني",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A.pdf",
+      "mapPdfSha256": "6de89fef69504d0be66d75e07cacc9b4c135b2fffa64ff1bb9d74fb74ac8f4f5",
+      "evidence": {
+        "sourceReadinessSha256": "681038666dd2e5fd62b9edb18bca2278f26257375c059e63f55757ee7af108ae",
+        "method": "Directly reviewed decree33/JORT5130 one-to-one imada/circle rows, parent starts decree32; current INS original workbook rows and both complete source-map titles agree."
+      }
+    },
+    {
+      "id": "osm:relation:7143823",
+      "officialCode": "535258",
+      "boundarySourceSha256": "f016c2cc727a04d30fd81a95a55094e4a588be3946f76bfe4eac9f2596d7b18d",
+      "conclusion": "whole_imada",
+      "pdfPage": 33,
+      "jortPage": 5130,
+      "imadaName": "شنني الجديدة",
+      "circleName": "شنني الجديدة",
+      "delegationName": "تطاوين الجنوبية",
+      "parentStartsPdfPage": 32,
+      "boundarySourceId": "isie-local-sectors-2023-chenini-two-review",
+      "boundarySourceFile": "official/chenini-two-sector-candidate-readiness.geojson",
+      "annex": 1,
+      "table": "A",
+      "delegationCode": "5352",
+      "governorateCode": "53",
+      "governorateName": "تطاوين",
+      "officialRegistryName": "شنني الجديدة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86/%D8%AA%D8%B7%D8%A7%D9%88%D9%8A%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9/%D8%B4%D9%86%D9%86%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.pdf",
+      "mapPdfSha256": "c91ebd050f74d8a97dbe38a2a69cfe505ba92166f1918c3a5b300d2ee74355cb",
+      "evidence": {
+        "sourceReadinessSha256": "681038666dd2e5fd62b9edb18bca2278f26257375c059e63f55757ee7af108ae",
+        "method": "Directly reviewed decree33/JORT5130 one-to-one imada/circle rows, parent starts decree32; current INS original workbook rows and both complete source-map titles agree."
+      }
+    },
+    {
+      "id": "osm:relation:7118631",
+      "officialCode": "175154",
+      "boundarySourceSha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+      "conclusion": "whole_imada",
+      "pdfPage": 29,
+      "jortPage": 5126,
+      "imadaName": "المدينة",
+      "circleName": "المدينة - (بنزرت الشمالية)",
+      "delegationName": "بنزرت الشمالية",
+      "delegationCode": "1751",
+      "governorateCode": "17",
+      "governorateName": "بنزرت",
+      "officialRegistryName": "المدينة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20-%20%28%D8%A8%D9%86%D8%B2%D8%B1%D8%AA%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9%29.pdf",
+      "mapPdfSha256": "58432ca876919adda114863dec1db9f62fca0ceb511b8e6af29616b812beb280",
+      "evidence": {
+        "sourceURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "sourceSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "PDFPage": 29,
+        "JORTPage": 5126,
+        "table": "AnnexA",
+        "imadaAr": "المدينة",
+        "circleAr": "المدينة - (بنزرت الشمالية)",
+        "parentAr": "بنزرت الشمالية",
+        "semantics": "WHOLE_IMADA_CIRCLE_CONFIRMED_IN_ANNEX_A",
+        "reviewImageFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-29.png",
+        "reviewImageSha256": "8992306a876a31161bc60c727997c48397127470199ce2b81273bd8c841625c4",
+        "method": "Full decree page visually inspected: distinct one-to-one imada/circle row, no subdivided imada cell."
+      }
+    },
+    {
+      "id": "osm:relation:7118632",
+      "officialCode": "175155",
+      "boundarySourceSha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+      "conclusion": "whole_imada",
+      "pdfPage": 29,
+      "jortPage": 5126,
+      "imadaName": "الشيخ إدريس",
+      "circleName": "الشيخ إدريس",
+      "delegationName": "بنزرت الشمالية",
+      "delegationCode": "1751",
+      "governorateCode": "17",
+      "governorateName": "بنزرت",
+      "officialRegistryName": "الشيخ إدريس",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9/%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D8%A5%D8%AF%D8%B1%D9%8A%D8%B3.pdf",
+      "mapPdfSha256": "02256a2b0f869788dae9d36c456caa3b8b4da02ea16a9dc4ac6fe6f3993c0130",
+      "evidence": {
+        "sourceURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "sourceSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "PDFPage": 29,
+        "JORTPage": 5126,
+        "table": "AnnexA",
+        "imadaAr": "الشيخ إدريس",
+        "circleAr": "الشيخ إدريس",
+        "parentAr": "بنزرت الشمالية",
+        "semantics": "WHOLE_IMADA_CIRCLE_CONFIRMED_IN_ANNEX_A",
+        "reviewImageFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-29.png",
+        "reviewImageSha256": "8992306a876a31161bc60c727997c48397127470199ce2b81273bd8c841625c4",
+        "method": "Full decree page visually inspected: distinct one-to-one imada/circle row, no subdivided imada cell."
+      }
+    },
+    {
+      "id": "osm:relation:7118630",
+      "officialCode": "175160",
+      "boundarySourceSha256": "793eb3471f4edcbb54a74946727d7cbded921391e45db5e57c8a03a6160c2140",
+      "conclusion": "whole_imada",
+      "pdfPage": 29,
+      "jortPage": 5126,
+      "imadaName": "المؤتمر",
+      "circleName": "المؤتمر",
+      "delegationName": "بنزرت الشمالية",
+      "delegationCode": "1751",
+      "governorateCode": "17",
+      "governorateName": "بنزرت",
+      "officialRegistryName": "المؤتمر",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA/%D8%A8%D9%86%D8%B2%D8%B1%D8%AA%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D8%A4%D8%AA%D9%85%D8%B1.pdf",
+      "mapPdfSha256": "8aecb95e2e8f47831b700d62817df926f69f6fc917a8afafd9aa47333c033428",
+      "evidence": {
+        "sourceURL": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+        "sourceSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+        "PDFPage": 29,
+        "JORTPage": 5126,
+        "table": "AnnexA",
+        "imadaAr": "المؤتمر",
+        "circleAr": "المؤتمر",
+        "parentAr": "بنزرت الشمالية",
+        "semantics": "WHOLE_IMADA_CIRCLE_CONFIRMED_IN_ANNEX_A",
+        "reviewImageFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-29.png",
+        "reviewImageSha256": "8992306a876a31161bc60c727997c48397127470199ce2b81273bd8c841625c4",
+        "method": "Full decree page visually inspected: distinct one-to-one imada/circle row, no subdivided imada cell."
+      }
+    },
+    {
+      "id": "osm:relation:7107801",
+      "officialCode": "325751",
+      "boundarySourceSha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "conclusion": "whole_imada",
+      "pdfPage": 16,
+      "jortPage": 5113,
+      "imadaName": "بنبلة",
+      "circleName": "بنبلة",
+      "delegationName": "بنبلة"
+    },
+    {
+      "id": "osm:relation:7107800",
+      "officialCode": "325752",
+      "boundarySourceSha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "بنبلة الغربية",
+      "circleName": "بنبلة الغربية",
+      "delegationName": "بنبلة"
+    },
+    {
+      "id": "osm:relation:7105910",
+      "officialCode": "325159",
+      "boundarySourceSha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "conclusion": "whole_imada",
+      "pdfPage": 16,
+      "jortPage": 5113,
+      "imadaName": "خنيس الشمالية",
+      "circleName": "خنيس الشمالية",
+      "delegationName": "المنستير"
+    },
+    {
+      "id": "osm:relation:7105911",
+      "officialCode": "325158",
+      "boundarySourceSha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "conclusion": "whole_imada",
+      "pdfPage": 16,
+      "jortPage": 5113,
+      "imadaName": "خنيس",
+      "circleName": "خنيس",
+      "delegationName": "المنستير"
+    },
+    {
+      "id": "osm:relation:7107799",
+      "officialCode": "325753",
+      "boundarySourceSha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "conclusion": "whole_imada",
+      "pdfPage": 16,
+      "jortPage": 5113,
+      "imadaName": "المنارة",
+      "circleName": "المنارة - (بنبلة)",
+      "delegationName": "بنبلة"
+    },
+    {
+      "id": "osm:relation:7107974",
+      "officialCode": "325754",
+      "boundarySourceSha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "منزل النور",
+      "circleName": "منزل النور",
+      "delegationName": "بنبلة"
+    },
+    {
+      "id": "osm:relation:7109599",
+      "officialCode": "326255",
+      "boundarySourceSha256": "3f27f0805cab64045d333b9b3420a765e8190389ba8b92a1d321e347982822e8",
+      "conclusion": "whole_imada",
+      "pdfPage": 18,
+      "jortPage": 5115,
+      "imadaName": "بوضر",
+      "circleName": "بوضر",
+      "delegationName": "قصيبة المديوني"
+    },
+    {
+      "id": "osm:relation:7109597",
+      "officialCode": "326254",
+      "boundarySourceSha256": "395e9bb9803d0ae544977aad8178e0b06e74de7ff013d0c3c5346b4078f00497",
+      "conclusion": "whole_imada",
+      "pdfPage": 18,
+      "jortPage": 5115,
+      "imadaName": "بنان الجوفية",
+      "circleName": "بنان الجوفية",
+      "delegationName": "قصيبة المديوني"
+    },
+    {
+      "id": "osm:relation:7109598",
+      "officialCode": "326253",
+      "boundarySourceSha256": "760dd75369b87109b81609ec18cf77c171486aed45dea79ea04d34964d793cf5",
+      "conclusion": "whole_imada",
+      "pdfPage": 18,
+      "jortPage": 5115,
+      "imadaName": "بنان القبلية",
+      "circleName": "بنان القبلية",
+      "delegationName": "قصيبة المديوني"
+    },
+    {
+      "id": "osm:relation:7116249",
+      "officialCode": "115151",
+      "boundarySourceSha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "conclusion": "whole_imada",
+      "pdfPage": 41,
+      "jortPage": 5138,
+      "imadaName": "سيدي بوسعيد",
+      "circleName": "سيدي بوسعيد",
+      "delegationName": "قرطاج"
+    },
+    {
+      "id": "osm:relation:7116250",
+      "officialCode": "115152",
+      "boundarySourceSha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "conclusion": "whole_imada",
+      "pdfPage": 41,
+      "jortPage": 5138,
+      "imadaName": "أميلكار",
+      "circleName": "أميلكار",
+      "delegationName": "قرطاج"
+    },
+    {
+      "id": "osm:relation:7116451",
+      "officialCode": "115153",
+      "boundarySourceSha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "conclusion": "whole_imada",
+      "pdfPage": 41,
+      "jortPage": 5138,
+      "imadaName": "قرطاج بيرصا",
+      "circleName": "قرطاج بيرصا",
+      "delegationName": "قرطاج"
+    },
+    {
+      "id": "osm:relation:7116452",
+      "officialCode": "115156",
+      "boundarySourceSha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "conclusion": "whole_imada",
+      "pdfPage": 41,
+      "jortPage": 5138,
+      "imadaName": "حي محمد علي",
+      "circleName": "حي محمد علي - (قرطاج)",
+      "delegationName": "قرطاج"
+    },
+    {
+      "id": "osm:relation:7116453",
+      "officialCode": "115155",
+      "boundarySourceSha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "conclusion": "whole_imada",
+      "pdfPage": 41,
+      "jortPage": 5138,
+      "imadaName": "الياسمينة",
+      "circleName": "الياسمينة - (قرطاج)",
+      "delegationName": "قرطاج"
+    },
+    {
+      "id": "osm:relation:7116454",
+      "officialCode": "115154",
+      "boundarySourceSha256": "ea96ef334d8821921cfa9bd0cf6a30ceae8713b523a246e69b970a8736921448",
+      "conclusion": "whole_imada",
+      "pdfPage": 41,
+      "jortPage": 5138,
+      "imadaName": "قرطاج الشاطىء",
+      "circleName": "قرطاج الشاطىء",
+      "delegationName": "قرطاج"
+    },
+    {
+      "id": "osm:relation:7063887",
+      "officialCode": "117051",
+      "boundarySourceSha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "conclusion": "whole_imada",
+      "pdfPage": 37,
+      "jortPage": 5134,
+      "imadaName": "الكرم الشرقي",
+      "circleName": "الكرم الشرقي",
+      "delegationName": "الكرم"
+    },
+    {
+      "id": "osm:relation:7079234",
+      "officialCode": "117052",
+      "boundarySourceSha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "conclusion": "whole_imada",
+      "pdfPage": 37,
+      "jortPage": 5134,
+      "imadaName": "الرياض",
+      "circleName": "الرياض - (الكرم)",
+      "delegationName": "الكرم"
+    },
+    {
+      "id": "osm:relation:7079245",
+      "officialCode": "117057",
+      "boundarySourceSha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "conclusion": "whole_imada",
+      "pdfPage": 37,
+      "jortPage": 5134,
+      "imadaName": "البئر الحلو",
+      "circleName": "البئر الحلو",
+      "delegationName": "الكرم"
+    },
+    {
+      "id": "osm:relation:7079335",
+      "officialCode": "117055",
+      "boundarySourceSha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "conclusion": "whole_imada",
+      "pdfPage": 37,
+      "jortPage": 5134,
+      "imadaName": "الكرم الغربي",
+      "circleName": "الكرم الغربي",
+      "delegationName": "الكرم"
+    },
+    {
+      "id": "osm:relation:7079355",
+      "officialCode": "117056",
+      "boundarySourceSha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "conclusion": "whole_imada",
+      "pdfPage": 37,
+      "jortPage": 5134,
+      "imadaName": "سيدي عمر",
+      "circleName": "سيدي عمر - (الكرم)",
+      "delegationName": "الكرم"
+    },
+    {
+      "id": "osm:relation:7079365",
+      "officialCode": "117053",
+      "boundarySourceSha256": "2164b1c11891b66ee7ad35f695ecd319992092be46c7a23ebf43093f288ebdc0",
+      "conclusion": "whole_imada",
+      "pdfPage": 37,
+      "jortPage": 5134,
+      "imadaName": "البحيرة",
+      "circleName": "البحيرة - (الكرم)",
+      "delegationName": "الكرم"
+    },
+    {
+      "id": "osm:relation:7117889",
+      "officialCode": "116952",
+      "boundarySourceSha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+      "conclusion": "whole_imada",
+      "pdfPage": 40,
+      "jortPage": 5137,
+      "imadaName": "حلق الوادي كازينو",
+      "circleName": "حلق الوادي كازينو",
+      "delegationName": "حلق الوادي"
+    },
+    {
+      "id": "osm:relation:7117890",
+      "officialCode": "116953",
+      "boundarySourceSha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+      "conclusion": "whole_imada",
+      "pdfPage": 40,
+      "jortPage": 5137,
+      "imadaName": "خير الدين",
+      "circleName": "خير الدين - (حلق الوادي)",
+      "delegationName": "حلق الوادي"
+    },
+    {
+      "id": "osm:relation:7117933",
+      "officialCode": "116951",
+      "boundarySourceSha256": "02faeb319b58a208539ff94c4592e441a94416aae1e21f6d8718b780abeb767f",
+      "conclusion": "whole_imada",
+      "pdfPage": 40,
+      "jortPage": 5137,
+      "imadaName": "حلق الوادي",
+      "circleName": "حلق الوادي",
+      "delegationName": "حلق الوادي"
+    },
+    {
+      "id": "osm:relation:7113965",
+      "officialCode": "325552",
+      "boundarySourceSha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "بني حسان الجوفية",
+      "circleName": "بني حسان الجوفية",
+      "delegationName": "بني حسان"
+    },
+    {
+      "id": "osm:relation:7113975",
+      "officialCode": "325551",
+      "boundarySourceSha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "بني حسان القبلية",
+      "circleName": "بني حسان القبلية",
+      "delegationName": "بني حسان"
+    },
+    {
+      "id": "osm:relation:7114530",
+      "officialCode": "325554",
+      "boundarySourceSha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "الجنائحة",
+      "circleName": "الجنائحة",
+      "delegationName": "بني حسان"
+    },
+    {
+      "id": "osm:relation:7114531",
+      "officialCode": "325555",
+      "boundarySourceSha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "الغنادة",
+      "circleName": "الغنادة",
+      "delegationName": "بني حسان"
+    },
+    {
+      "id": "osm:relation:7114532",
+      "officialCode": "325553",
+      "boundarySourceSha256": "b66f76790cf93729d7a6a33bbb4903ed3e9020445318b644970b2892038edf56",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "حاتم",
+      "circleName": "حاتم",
+      "delegationName": "بني حسان"
+    },
+    {
+      "id": "osm:relation:7114526",
+      "officialCode": "165651",
+      "boundarySourceSha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+      "conclusion": "whole_imada",
+      "pdfPage": 46,
+      "jortPage": 5143,
+      "imadaName": "صواف الشرقية",
+      "circleName": "صواف الشرقية",
+      "delegationName": "صواف"
+    },
+    {
+      "id": "osm:relation:7114549",
+      "officialCode": "165653",
+      "boundarySourceSha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+      "conclusion": "whole_imada",
+      "pdfPage": 46,
+      "jortPage": 5143,
+      "imadaName": "الحميرة",
+      "circleName": "الحميرة",
+      "delegationName": "صواف"
+    },
+    {
+      "id": "osm:relation:7116957",
+      "officialCode": "165652",
+      "boundarySourceSha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+      "conclusion": "whole_imada",
+      "pdfPage": 46,
+      "jortPage": 5143,
+      "imadaName": "صواف الغربية",
+      "circleName": "صواف الغربية",
+      "delegationName": "صواف"
+    },
+    {
+      "id": "osm:relation:7119808",
+      "officialCode": "165654",
+      "boundarySourceSha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+      "conclusion": "whole_imada",
+      "pdfPage": 46,
+      "jortPage": 5143,
+      "imadaName": "الدغافلة الشرقية",
+      "circleName": "الدغافلة الشرقية",
+      "delegationName": "صواف"
+    },
+    {
+      "id": "osm:relation:7119809",
+      "officialCode": "165655",
+      "boundarySourceSha256": "2cff0a3edafbd79fd739d902d2f334985081655316f42babefd2b9e0b859bc20",
+      "conclusion": "whole_imada",
+      "pdfPage": 46,
+      "jortPage": 5143,
+      "imadaName": "الدغافلة الغربية",
+      "circleName": "الدغافلة الغربية",
+      "delegationName": "صواف"
+    },
+    {
+      "id": "osm:relation:7114249",
+      "officialCode": "325455",
+      "boundarySourceSha256": "7af1bc235260fcdbaf61332f2317a6ae9911fed1982746cdb1a78fd6fd1328c1",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "زرمدين الجنوبية",
+      "circleName": "زرمدين الجنوبية",
+      "delegationName": "زرمدين"
+    },
+    {
+      "id": "osm:relation:7119798",
+      "officialCode": "165551",
+      "boundarySourceSha256": "5c7f6a16500866daf3a2937eb92e1b3be6798e1c34d2dcb6ef6c7bb5d2f8024e",
+      "conclusion": "whole_imada",
+      "pdfPage": 45,
+      "jortPage": 5142,
+      "imadaName": "الناظور",
+      "circleName": "الناظور - (الناظور)",
+      "delegationName": "الناظور"
+    },
+    {
+      "id": "osm:relation:7113923",
+      "officialCode": "325654",
+      "boundarySourceSha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "جمال الغربية",
+      "circleName": "جمال الغربية",
+      "delegationName": "جمال"
+    },
+    {
+      "id": "osm:relation:7113920",
+      "officialCode": "325659",
+      "boundarySourceSha256": "6fba0d2d77fe4d944ef5d241f6911b38b93a62a633043070f1d7543083a549c2",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "الطيايرة",
+      "circleName": "الطيايرة",
+      "delegationName": "جمال"
+    },
+    {
+      "id": "osm:relation:7119796",
+      "officialCode": "165553",
+      "boundarySourceSha256": "8c2fda9b927cb8e0c5761df51adede563a96d3a2c683649586ddf181fa32582f",
+      "conclusion": "whole_imada",
+      "pdfPage": 45,
+      "jortPage": 5142,
+      "imadaName": "صوار",
+      "circleName": "صوار",
+      "delegationName": "الناظور"
+    },
+    {
+      "id": "osm:relation:7114248",
+      "officialCode": "325454",
+      "boundarySourceSha256": "8f3f52ecf69ea9df4136a53e83241e57775399c1d5c805ffea16862372812361",
+      "conclusion": "whole_imada",
+      "pdfPage": 17,
+      "jortPage": 5114,
+      "imadaName": "زرمدين الشمالية",
+      "circleName": "زرمدين الشمالية",
+      "delegationName": "زرمدين"
+    },
+    {
+      "id": "osm:relation:7100603",
+      "officialCode": "156151",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 76,
+      "jortPage": 5173,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "المريسة",
+      "circleName": "المريسة",
+      "delegationCode": "1561",
+      "delegationName": "سليمان",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "المريسة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%A7%D9%84%D9%85%D8%B1%D9%8A%D8%B3%D8%A9.pdf",
+      "mapPdfSha256": "444feebb83c9c559fc645d590cda0824752ce91b2fc3f65539233eca7dacce2f",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7100693",
+      "officialCode": "156154",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 76,
+      "jortPage": 5173,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "سليمان",
+      "circleName": "سليمان",
+      "delegationCode": "1561",
+      "delegationName": "سليمان",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "سليمان",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86.pdf",
+      "mapPdfSha256": "912a5163030cbc29a62b1609f1f4a3dd4a579e4dac9e3cd4b35fe94fd46e0e27",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7100694",
+      "officialCode": "156155",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 76,
+      "jortPage": 5173,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "سليمان الجنوبية",
+      "circleName": "سليمان الجنوبية",
+      "delegationCode": "1561",
+      "delegationName": "سليمان",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "سليمان الجنوبية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "ce5884a3f7ebbadbfa5383b0b433e28e554760cd8531dc286354cf6405f3f3c0",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7101601",
+      "officialCode": "156254",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "منزل بوزلفة القبلية",
+      "circleName": "منزل بوزلفة القبلية",
+      "delegationCode": "1562",
+      "delegationName": "منزل بوزلفة",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "منزل بوزلفة القبلية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D9%82%D8%A8%D9%84%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "00b47cf7be053ccd933f6b5ad19f1154a51f7b7d0280b1086d97d178f5876ea8",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7101606",
+      "officialCode": "156255",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "منزل بوزلفة الغربية",
+      "circleName": "منزل بوزلفة الغربية",
+      "delegationCode": "1562",
+      "delegationName": "منزل بوزلفة",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "منزل بوزلفة الغربية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "925c149e026c36ed48c3101eca887c5a7bc0d8bd3eb39dd36e5dd3a907c6142f",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7102534",
+      "officialCode": "156153",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 76,
+      "jortPage": 5173,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "بوشراي",
+      "circleName": "بوشراي",
+      "delegationCode": "1561",
+      "delegationName": "سليمان",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "بوشراي",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%A8%D9%88%D8%B4%D8%B1%D8%A7%D9%8A.pdf",
+      "mapPdfSha256": "3b54f8c69b91a27619da685b1f127bfd2317f8c031195b90aa55b6f57364796c",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7102535",
+      "officialCode": "156152",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 76,
+      "jortPage": 5173,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "الشريفات",
+      "circleName": "الشريفات",
+      "delegationCode": "1561",
+      "delegationName": "سليمان",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "الشريفات",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86/%D8%A7%D9%84%D8%B4%D8%B1%D9%8A%D9%81%D8%A7%D8%AA.pdf",
+      "mapPdfSha256": "fab1b73d8275448c7467c57f37e613439a1e1e444835e965d6a95155cb3b68f3",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7103805",
+      "officialCode": "156457",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "قرنبالية الغربية",
+      "circleName": "قرنبالية الغربية",
+      "delegationCode": "1564",
+      "delegationName": "قرنبالية",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "قرنبالية الغربية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "a43d10bdb4ddce307148ee0f171eafafa9b3b1cbf92c01a39ab19233d32d5de8",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7103806",
+      "officialCode": "156456",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "قرنبالية الشرقية",
+      "circleName": "قرنبالية الشرقية",
+      "delegationCode": "1564",
+      "delegationName": "قرنبالية",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "قرنبالية الشرقية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "72a0cad3f3ecff7f65a93c7d9776ca13135124cc34bfb5a47878e448088c06a6",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104933",
+      "officialCode": "156455",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "خنقة الحجاج",
+      "circleName": "خنقة الحجاج",
+      "delegationCode": "1564",
+      "delegationName": "قرنبالية",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "خنقة الحجاج",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D8%AE%D9%86%D9%82%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AC%D8%A7%D8%AC.pdf",
+      "mapPdfSha256": "88e5d0c527d10fc6837e5f7a5cbcc13b26cf40ae1dc1771b12382c6f5efd70c0",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104934",
+      "officialCode": "156452",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "شماس",
+      "circleName": "شماس",
+      "delegationCode": "1564",
+      "delegationName": "قرنبالية",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "شماس",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D8%B4%D9%85%D8%A7%D8%B3.pdf",
+      "mapPdfSha256": "73f9a0b5a3b2c2ebd393be651755a4afa4a4de2051008905eef72c6efd1323c1",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104935",
+      "officialCode": "156451",
+      "boundarySourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+      "boundarySourceFile": "official/soliman-thirteen-native-20260912/soliman-thirteen-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "فندق الجديد",
+      "circleName": "فندق الجديد",
+      "delegationCode": "1564",
+      "delegationName": "قرنبالية",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "فندق الجديد",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%82%D8%B1%D9%86%D8%A8%D8%A7%D9%84%D9%8A%D8%A9/%D9%81%D9%86%D8%AF%D9%82%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf",
+      "mapPdfSha256": "30e8a44086627c679d90fe8c55dfbdf2e96280519d7660b691af408088440cef",
+      "evidence": {
+        "method": "Direct personal whole-page reading of decree administrative imada and electoral-circle columns: each target cell spans exactly one circle row. Exact current INS code/name/parent identity and own-map title are independently reviewed.",
+        "decreePdf": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/soliman-thirteen-native-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/soliman-thirteen-native-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7100361",
+      "officialCode": "156053",
+      "boundarySourceId": "isie-local-sectors-2023-arima-joufia-receivers",
+      "boundarySourceFile": "official/arima-joufia-receivers-20260912/arima-joufia-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "5bbe3bf118e99adc441209092bb9a805f2efa67977c0d746cbf3ff95c340b5c0",
+      "conclusion": "whole_imada",
+      "pdfPage": 76,
+      "jortPage": 5173,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "العريمة",
+      "circleName": "العريمة",
+      "delegationCode": "1560",
+      "delegationName": "تاكلسة",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "العريمة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%AA%D8%A7%D9%83%D9%84%D8%B3%D8%A9/%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D9%85%D8%A9.pdf",
+      "mapPdfSha256": "6411d48b0acb4b3cffde4c17d52004deb54fbb93d5fd0a6922aec2842dd55a6b",
+      "evidence": {
+        "method": "Whole original decree page and own-map source outline reviewed; both target administrative cells have exactly one electoral-circle row. Native path/control/identity/close-edge qualifications are independently reviewed.",
+        "decreePdf": {
+          "file": "official/arima-joufia-receivers-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/arima-joufia-receivers-20260912/identity/decree-page-76.png",
+          "sha256": "88d47718021a450fecfcc40ed6a9ac8487793bea355ff259f4f9a77f5fe93598"
+        },
+        "registry": {
+          "file": "official/arima-joufia-receivers-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "independentSourceReview": {
+          "file": "official/arima-joufia-receivers-20260912/reviews/arima-joufia-own-map-source-independent-review-20260912.json",
+          "sha256": "ba07ad26291a6694f75e323756a57e31752d716644b7cedcd01f17e1194edba5"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7101605",
+      "officialCode": "156253",
+      "boundarySourceId": "isie-local-sectors-2023-arima-joufia-receivers",
+      "boundarySourceFile": "official/arima-joufia-receivers-20260912/arima-joufia-whole-source-boundaries.geojson",
+      "boundarySourceSha256": "5bbe3bf118e99adc441209092bb9a805f2efa67977c0d746cbf3ff95c340b5c0",
+      "conclusion": "whole_imada",
+      "pdfPage": 77,
+      "jortPage": 5174,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "منزل بوزلفة الجوفية",
+      "circleName": "منزل بوزلفة الجوفية",
+      "delegationCode": "1562",
+      "delegationName": "منزل بوزلفة",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "officialRegistryName": "منزل بوزلفة الجوفية",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9/%D9%85%D9%86%D8%B2%D9%84%20%D8%A8%D9%88%D8%B2%D9%84%D9%81%D8%A9%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "b828a2a54b8cde4e2dbdb0894319a3ca051c08066fa89fc07d76c18928a15b58",
+      "evidence": {
+        "method": "Whole original decree page and own-map source outline reviewed; both target administrative cells have exactly one electoral-circle row. Native path/control/identity/close-edge qualifications are independently reviewed.",
+        "decreePdf": {
+          "file": "official/arima-joufia-receivers-20260912/identity/decree2023-590.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/arima-joufia-receivers-20260912/identity/decree-page-77.png",
+          "sha256": "d966277457fb3dc46800aed1df31b04749b26eec83da143d91fc72d3208d7134"
+        },
+        "registry": {
+          "file": "official/arima-joufia-receivers-20260912/identity/current-official-sector-registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "independentSourceReview": {
+          "file": "official/arima-joufia-receivers-20260912/reviews/arima-joufia-own-map-source-independent-review-20260912.json",
+          "sha256": "ba07ad26291a6694f75e323756a57e31752d716644b7cedcd01f17e1194edba5"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7105070",
+      "officialCode": "156651",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "سيدي الجديدي",
+      "circleName": "سيدي الجديدي",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D9%8A.pdf",
+      "mapPdfSha256": "fb704ad3de27894aa0ac74668349aac75f46fb4eb7598a66c1c648edb61780cd",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7144606",
+      "officialCode": "156652",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "الاطرش",
+      "circleName": "الاطرش",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D8%B7%D8%B1%D8%B4.pdf",
+      "mapPdfSha256": "93053eb8095a5eeeb9ed05400909d6f0c5f5a7fac767aaf5b8e5c7f44c8d3b59",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104926",
+      "officialCode": "156653",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "بئر بورقبة",
+      "circleName": "بئر بورقبة",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A8%D8%A6%D8%B1%20%D8%A8%D9%88%D8%B1%D9%82%D8%A8%D8%A9.pdf",
+      "mapPdfSha256": "6126b3ab3e290e1d2f3b5da75aafbfa6217a34e63383b2e105a488578f91d518",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104931",
+      "officialCode": "156654",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "براكة الساحل",
+      "circleName": "براكة الساحل",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A8%D8%B1%D8%A7%D9%83%D8%A9%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84.pdf",
+      "mapPdfSha256": "258c4ffaf4cb2c079bf33d27bd27949bf3402d32b098b936b3cef0cac9ae1f25",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104927",
+      "officialCode": "156655",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "الحمامات الجوفية",
+      "circleName": "الحمامات الجوفية",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "b401485272352ae9c6eba464a2361098361b8ef1606a710e99ff3d8e06e3a66d",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104929",
+      "officialCode": "156656",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "الحمامات الشرقية",
+      "circleName": "الحمامات الشرقية",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "ec4694b1cca6bbc83b451e5fb712ea2a3c0f3adc7a76fa61dd572c4c76363267",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104930",
+      "officialCode": "156657",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "الحمامات الغربية",
+      "circleName": "الحمامات الغربية",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "mapPdfSha256": "cd5756b37f9d2caf0ace95bb40b02970043822e93309c1ce57e51de2662fdbbc",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104928",
+      "officialCode": "156658",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "المرازقة",
+      "circleName": "المرازقة",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B2%D9%82%D8%A9.pdf",
+      "mapPdfSha256": "b0ef5c27942408e22354193689ab78c41d68ea8bf073c51a6bd8203d4386ebe0",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7104932",
+      "officialCode": "156659",
+      "boundarySourceId": "isie-local-sectors-2023-hammamet-nine",
+      "boundarySourceFile": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "boundarySourceSha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "conclusion": "whole_imada",
+      "pdfPage": 74,
+      "jortPage": 5171,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "ياسمين الحمامات",
+      "circleName": "ياسمين الحمامات",
+      "delegationCode": "1566",
+      "delegationName": "الحمامات",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D9%8A%D8%A7%D8%B3%D9%85%D9%8A%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA.pdf",
+      "mapPdfSha256": "a056ddb414929e42bd20b4eac4ab6ce9d36ec799823300430ff470312f7780cc",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+          "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+        },
+        "registry": {
+          "file": "official/hammamet-nine-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+          "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+        },
+        "sourceReview": {
+          "file": "official/hammamet-nine-20260920/source-review.json",
+          "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    },
+    {
+      "id": "osm:relation:7105456",
+      "officialCode": "316159",
+      "boundarySourceId": "isie-local-sector-2023-sidi-mtir-bouficha",
+      "boundarySourceFile": "official/sidi-mtir-20260920/sidi-mtir-source.geojson",
+      "boundarySourceSha256": "4d8069110dc7c8720f7904c85596789d11da79a2bb9c740c7b4ff3d95a8349e9",
+      "conclusion": "whole_imada",
+      "pdfPage": 50,
+      "jortPage": 5147,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "سيدي مطير",
+      "circleName": "سيدي مطير - (بوفيشة)",
+      "delegationCode": "3161",
+      "delegationName": "بوفيشة",
+      "governorateCode": "31",
+      "governorateName": "سوسة",
+      "mapPdfUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%88%D8%B3%D8%A9/%D8%A8%D9%88%D9%81%D9%8A%D8%B4%D8%A9/%D8%B3%D9%8A%D8%AF%D9%8A%20%D9%85%D8%B7%D9%8A%D8%B1%20-%20%28%D8%A8%D9%88%D9%81%D9%8A%D8%B4%D8%A9%29.pdf",
+      "mapPdfSha256": "c86ef7a672fba608129954d5417f0792fc23afc60f71601c5365cba9abd8ed5e",
+      "evidence": {
+        "decreePdf": {
+          "file": "official/sidi-mtir-20260920/evidence/decree.pdf",
+          "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+        },
+        "pageImage": {
+          "file": "official/sidi-mtir-20260920/evidence/decree-page-050.png",
+          "sha256": "fa9c9e401a0d459bfc3011f682891cc3bdc76b4817a795aab673157cc1b1ffd6"
+        },
+        "governorateHeaderPage": {
+          "file": "official/sidi-mtir-20260920/evidence/decree-page-049.png",
+          "sha256": "f64fd041ad54a174f81e9770fade154c37072b66d56eb1149ac9f65228c67a76"
+        },
+        "registry": {
+          "file": "official/sidi-mtir-20260920/evidence/registry.json",
+          "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+        },
+        "rootReview": {
+          "file": "official/sidi-mtir-20260920/evidence/root-cross-governorate-review.json",
+          "sha256": "b1536cc521b3fc75c61ac2dcef3379b5e7ae69e836752d6b3f64fb6f8c0e8e45"
+        },
+        "sourceReview": {
+          "file": "official/sidi-mtir-20260920/source-review.json",
+          "sha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6"
+        },
+        "transcriptionIsDerivedNotOriginalPdfText": true
+      }
+    }
+  ],
+  "methodology": [
+    "The decree table explicitly distinguishes the administrative imada column from the electoral circle column. Each accepted identity was visually located under the correct delegation, rather than assumed equivalent from matching names or numeric codes.",
+    "Whole-imada conclusion requires a direct one-imada to one-circle row. A parent with fewer than5imadas can still contain whole-imada circles; it is not by itself an exclusion rule.",
+    "The map PDF title/parent and current INS identity had already been independently cross-checked; this adds the missing legal semantic check. No polygon unions, splits or edits were performed.",
+    "Arabic text is visually transcribed; spacing around numerals, hyphens and parentheses is normalized for legibility. It is not an OCR byte-for-byte transcription."
+  ],
+  "nationalContext": {
+    "primaryMinutes": {
+      "url": "https://www.isie.tn/wp-content/uploads/2025/02/15-septembre-2023.pdf",
+      "sha256": "950fb4d41ba9b59ae90aaa130e22da81f6224109310acef1aa0452a8436eaed5",
+      "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\isie-council-minutes-2023-09-15.pdf",
+      "date": "2023-09-15",
+      "pdfPage": 3,
+      "jortNumber": 109,
+      "jortPage": 5299
+    },
+    "imadas2023": 2085,
+    "wholeImadaCircles": 2024,
+    "splitImadas": 61,
+    "circlesFromSplittingSingleImada": 129,
+    "circlesCombiningPartsOfDifferentImadas": 2,
+    "exceptionCircles": 131,
+    "totalCircles": 2155,
+    "delegationsUnderFiveImadas": 43,
+    "notes": [
+      "These are the2023 minutes figures, not the later2082-row INS2024 publication count.",
+      "The minutes say236delegations have more than5imadas; this wording should not be silently treated as a strict exhaustive mathematical classification because many have exactly5. The43under-five and131exception figures are independently consistent with the decree.",
+      "The supplemental43-name list is computed from the three-workbook INS2024 registry. It is useful screening context, not a substitute for inspecting each2023 circle composition."
+    ]
+  },
+  "relevantException": {
+    "delegationCode": "3261",
+    "delegationName": "قصر هلال",
+    "pdfPage": 18,
+    "jortPage": 5115,
+    "wholeImadas": [
+      "بوزويتة",
+      "حي الرياض",
+      "عياد"
+    ],
+    "splitImada": "صوة",
+    "splitCircles": [
+      "صوة1",
+      "صوة2"
+    ],
+    "acceptedIdsUnaffected": [
+      "osm:relation:7110676",
+      "osm:relation:7110673"
+    ]
+  },
+  "summary": {
+    "reviewedRecordCount": 90,
+    "wholeImadaCount": 90,
+    "splitCircleCount": 0,
+    "combinedCircleCount": 0,
+    "unresolvedCount": 0
+  },
+  "limitations": [
+    "This report checks territorial unit semantics in the2023 decree, not survey accuracy, topology against neighboring mixed-source polygons or post2023 legal changes.",
+    "Approval applies only to these exact record IDs, official codes and boundarySourceSha256 values. New source records require their own direct semantic review."
+  ],
+  "priorAccepted25ReviewSha256": "6172f2570835efdf6f8e10561a65dadf5aa15d204e44d9902d7e72b7e8700558",
+  "priorAccepted31ReviewSha256": "a5f13eb1de4a98a61a17e97271a54bfd410a7fe13fae6934380094ff32b84dce",
+  "priorAccepted33ReviewSha256": "9e5ec97aaef26e7373870dd4d41f3631e5455e454ec346518b99960d953a7d71"
+}

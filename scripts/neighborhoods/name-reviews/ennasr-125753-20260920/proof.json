@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "targetId": "osm:relation:7115409",
+  "sectorCode": "125753",
+  "status": "REVIEWED_ISOLATED_NAME_CORRECTION",
+  "primaryAuthority": "Pinned official sector registry exact code125753 and parent1257; Maps observations corroborate the numbered/unumbered place distinction only.",
+  "officialRegistry": {
+    "pin": {
+      "file": "original-sector-point-reviews/oued-zbib-2026-09/official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "record": {
+      "governorateCode": "12",
+      "governorateFr": "Ariana",
+      "governorateAr": "أريانة",
+      "delegationCode": "1257",
+      "delegationFr": "El mnihla",
+      "delegationAr": "المنيهلة",
+      "sectorCode": "125753",
+      "sectorFr": "En-nasr",
+      "sectorAr": "النصر",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 7073,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 236,
+        "Nombre_de_menages_par_Secteurs.xlsx": 236
+      }
+    }
+  },
+  "originalSource": {
+    "record": {
+      "id": "osm:relation:7115409",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "النصر",
+        "name:ar": "النصر 1",
+        "name:fr": "Ennasr",
+        "ref:tn:codegeo": "125753"
+      }
+    },
+    "geometryCanonicalSha256": "a34acea39d615a3c6c7e12972b65446fd7196a57fbb036fb83acf1bdb477666f",
+    "sourceExtract": {
+      "file": "name-reviews/ennasr-125753-20260920/original-source-extract.json",
+      "sha256": "cc2a06acf5fe7b1fa8f19e2ca1562d5ff3dc0bddef15f15b22a47397b0c4b743"
+    },
+    "originalInventoryProvenance": {
+      "sourceDocument": "soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119"
+    }
+  },
+  "sourceParent": {
+    "id": "osm:relation:4184671",
+    "name": "معتمدية منيهلة",
+    "tags": {
+      "admin_level": "5",
+      "alt_name:fr": "Mnihla",
+      "boundary": "administrative",
+      "name": "معتمدية منيهلة",
+      "name:ar": "معتمدية منيهلة",
+      "name:fr": "Délégation Mnihla",
+      "ref:tn:codegeo": "1257",
+      "ref:tn:hasc_2": "TN.AN.MN",
+      "wikidata": "Q3317508"
+    },
+    "geometryCanonicalSha256": "7e25ec5e42e55ac748c0f63d7ad31e15de73539ea3aaa97220dba8451c08afd6"
+  },
+  "originalPbf": {
+    "sourceFileName": "tunisia-260905.osm.pbf",
+    "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "url": "https://download.geofabrik.de/africa/tunisia-260905.osm.pbf"
+  },
+  "maps": [
+    {
+      "id": "osm:relation:7115409",
+      "runId": "three-identity-coordinate-rest-20260920",
+      "query": "36.842195, 10.113159",
+      "outcome": "settled_candidate",
+      "acceptedCurrentTitles": [
+        "36°50'31.9\"N 10°06'47.4\"E"
+      ],
+      "observation": {
+        "file": "name-reviews/ennasr-125753-20260920/maps/three-identity-coordinate-rest-20260920/osm_relation_7115409-1.json",
+        "sha256": "6d7f3955e5847c86380389958b8c6d22803b2b3eb238cb16bec4de0a288fb39e",
+        "bytes": 3459
+      },
+      "screenshot": {
+        "file": "name-reviews/ennasr-125753-20260920/maps/three-identity-coordinate-rest-20260920/osm_relation_7115409-1.png",
+        "sha256": "11c5fe58e9a2ffab1be47571fbbc94769e8099efdd3d038e526cfe984aaa1136",
+        "bytes": 1148951
+      },
+      "fullScreenshotPersonallyViewed": true
+    },
+    {
+      "id": "osm:relation:7115409",
+      "runId": "three-identity-name-rest-20260920",
+      "query": "النصر 1، المنيهلة، أريانة، تونس",
+      "outcome": "settled_candidate",
+      "acceptedCurrentTitles": [
+        "Ennasr 1"
+      ],
+      "observation": {
+        "file": "name-reviews/ennasr-125753-20260920/maps/three-identity-name-rest-20260920/osm_relation_7115409-1.json",
+        "sha256": "ef725d18fde59c8942e1042eb93a30732f99663a221bc02b3b4fadeb18d655e4",
+        "bytes": 3442
+      },
+      "screenshot": {
+        "file": "name-reviews/ennasr-125753-20260920/maps/three-identity-name-rest-20260920/osm_relation_7115409-1.png",
+        "sha256": "f0a52e90579cf9460809e44da99890ee4d7eb2d55c58f5226d2dd3beb440f5d1",
+        "bytes": 1185649
+      },
+      "fullScreenshotPersonallyViewed": true
+    },
+    {
+      "id": "osm:relation:7115409",
+      "runId": "three-identity-conditional-20260920",
+      "query": "النصر، المنيهلة، أريانة، تونس",
+      "outcome": "settled_candidate",
+      "acceptedCurrentTitles": [
+        "En-Nasr"
+      ],
+      "observation": {
+        "file": "name-reviews/ennasr-125753-20260920/maps/three-identity-conditional-20260920/osm_relation_7115409-1.json",
+        "sha256": "62f1e81f0433f0b308ce3232fc07f7061ba72bf72e90de51fc9b355f8f9b10c8",
+        "bytes": 3343
+      },
+      "screenshot": {
+        "file": "name-reviews/ennasr-125753-20260920/maps/three-identity-conditional-20260920/osm_relation_7115409-1.png",
+        "sha256": "cbf77d1499bcb85bb1e38ff81a6fa816866cb4aad7694978129645d1535f2bc7",
+        "bytes": 1078080
+      },
+      "fullScreenshotPersonallyViewed": true
+    }
+  ],
+  "mapsConclusion": "The two spellings select visibly different candidate places. The official registry code125753 uses unnumbered النصر / En-nasr, whereas current OSM-derived display name includes1. Do not equate the first numbered Maps result to the Mnihla sector. The unnumbered result is the better supported candidate context, but the evidence does not authorize a polygon change.",
+  "boundaryCertified": false,
+  "productionChanges": false,
+  "upstreamProofProvenance": {
+    "sourceDocument": "name-source-proof-candidate.json",
+    "sha256": "ed204a83844359cbc2a9dcd751cd48c7450446e264dac96eeedb8f457678a83d"
+  },
+  "reviewScope": "Display name only. No geographic, administrative, prayer-source or polygon change authorized."
+}

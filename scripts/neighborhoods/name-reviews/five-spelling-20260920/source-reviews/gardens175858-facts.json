@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "status": "PINNED_NAME_CORRECTION_CANDIDATE_NOT_APPLIED",
+  "id": "osm:relation:7119628",
+  "intendedPrimaryName": "حي الحدائق",
+  "currentAndSourceFacts": {
+    "id": "osm:relation:7119628",
+    "currentRaw": {
+      "id": "osm:relation:7119628",
+      "sourceId": "osm",
+      "name": "حي الحداءق",
+      "aliases": [
+        "Cité Jardins"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بورقيبة",
+      "contextAliases": [
+        "Délégation Menzel Bourguiba",
+        "Menzel Bourguiba",
+        "معتمدية منزل بورقيبة"
+      ],
+      "governorateId": 361,
+      "lat": 37.163594,
+      "lng": 9.787143,
+      "delegationId": 562,
+      "hasBoundary": true,
+      "bbox": [
+        9.777491,
+        37.152423,
+        9.793944,
+        37.175245
+      ],
+      "areaKm2": 2.269374209241473,
+      "pickerGroupId": "osm:relation:7119628",
+      "offset": 1198032,
+      "length": 532
+    },
+    "currentPicker": {
+      "id": "osm:relation:7119628",
+      "sourceId": "osm",
+      "name": "حي الحداءق",
+      "aliases": [
+        "Cité Jardins"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بورقيبة",
+      "contextAliases": [
+        "Délégation Menzel Bourguiba",
+        "Menzel Bourguiba",
+        "معتمدية منزل بورقيبة"
+      ],
+      "governorateId": 361,
+      "lat": 37.163594,
+      "lng": 9.787143,
+      "delegationId": 562,
+      "hasBoundary": true,
+      "bbox": [
+        9.777491,
+        37.152423,
+        9.793944,
+        37.175245
+      ],
+      "areaKm2": 2.269374209241473,
+      "pickerGroupId": "osm:relation:7119628",
+      "offset": 1198032,
+      "length": 532,
+      "members": [
+        "osm:relation:7119628"
+      ],
+      "governorate": "بنزرت",
+      "governorateFr": "Bizerte",
+      "geometrySha256": "80c32ffb74a7bfc250de973388d308c5787ede27c25cc7781b0e150512383b9f",
+      "fingerprint": "531e4d1ab0328c6c0ab5b5700afdb3a1b7626d1e910ff6f735c708810db05372"
+    },
+    "currentRawReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\metadata.json",
+      "sha256": "ddb2bfe2389fe257d37cef60a6293e449323258cf2d4db3896a3986a6d4ee8f6",
+      "bytes": 1866364,
+      "jsonPointer": "/features/614"
+    },
+    "originalSourceReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\source.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997,
+      "jsonPointer": "/areas/852"
+    },
+    "originalSourceTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "حي الحداءق",
+      "name:ar": "حي الحداءق",
+      "name:fr": "Cité Jardins",
+      "ref:tn:codegeo": "175858"
+    },
+    "originalSourceKind": "sector",
+    "officialReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114,
+      "jsonPointer": "/sectors/552"
+    },
+    "officialSectorRecord": {
+      "governorateCode": "17",
+      "governorateFr": "Bizerte",
+      "governorateAr": "بنزرت",
+      "delegationCode": "1758",
+      "delegationFr": "Menzel bourguiba",
+      "delegationAr": "منزل بورقيبة",
+      "sectorCode": "175858",
+      "sectorFr": "Cite jardins",
+      "sectorAr": "حي الحدائق",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18768,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 821,
+        "Nombre_de_menages_par_Secteurs.xlsx": 820
+      }
+    },
+    "exactCodeSourceIds": [
+      "osm:relation:7119628"
+    ],
+    "originalSourceParent": [
+      {
+        "id": "osm:relation:7151753",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Menzel Bourguiba",
+          "boundary": "administrative",
+          "name": "معتمدية منزل بورقيبة",
+          "name:ar": "معتمدية منزل بورقيبة",
+          "name:fr": "Délégation Menzel Bourguiba",
+          "ref:tn:codegeo": "1758",
+          "ref:tn:hasc_2": "TN.BZ.MB",
+          "wikidata": "Q3306135"
+        },
+        "originalParentCoversOriginalObject": true
+      }
+    ],
+    "directActiveManifestPaths": {
+      "curation": [],
+      "picker": [],
+      "boundaries": []
+    },
+    "rawChildrenInheritingCurrentName": [],
+    "mapsEvidence": [
+      {
+        "artifact": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass-phone-001\\osm_relation_7119628-1.json",
+          "sha256": "baddece35f1023e881c37d635d7b1f088d2f684418f6a36e42c5bcd2eb28355a",
+          "bytes": 1479
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass-phone-001\\osm_relation_7119628-1.png",
+          "sha256": "bfb1c20139b9c4580ea983bdb3c50deece1389d217caa0e8a5f09bd47aed57ff",
+          "bytes": 797782
+        },
+        "observedAt": "2026-09-20T06:25:22.250787+00:00",
+        "exactQuery": "Cité Jardins, Bizerte, Tunisia",
+        "queryVisibleInUi": true,
+        "observationParserVersion": 3,
+        "observationStatus": "candidate_observed",
+        "synchronizationOutcome": null,
+        "publicCardTitles": [
+          "حي الحدائق"
+        ],
+        "literalPublicUiText": [
+          "حي الحدائق",
+          "Cite Jardins",
+          "منزل بورقيبة، تونس‎",
+          "الاتجاهات إلى حي الحدائق",
+          "الاتجاهات",
+          "مشاركة حي الحدائق",
+          "مشاركة",
+          "حفظ حي الحدائق في القوائم",
+          "حفظ",
+          "عرض المزيد من الإجراءات لهذا المكان",
+          "المزيد",
+          "لمحة",
+          "العنوان:‏ منزل بورقيبة، تونس‎",
+          "إضافة مكان غير مدرج على الخريطة",
+          "إضافة مؤسستك إلى \"خرائط Google\" مجانًا",
+          "قياس المسافة",
+          "إغلاق",
+          "Cité Jardins, Bizerte, Tunisia",
+          "محو"
+        ],
+        "metadataAtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348",
+        "currentMetadataForThisReview": "ddb2bfe2389fe257d37cef60a6293e449323258cf2d4db3896a3986a6d4ee8f6",
+        "existingTriage": [
+          null,
+          null
+        ],
+        "qualification": "Historical captured public text; no geography/identity/boundary facet promotion. Existing ambiguous/uncertain parser signals remain unchanged."
+      }
+    ]
+  },
+  "officialSourceWorkbooks": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "sourceGeometry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\gardens175858-source-geometry.json",
+    "sha256": "8f8e4a4f74e8299b825f2f7842ec4446db96321f59614e51bfbf3ccc34ea785c",
+    "bytes": 136688
+  },
+  "originalAndPackedGeometry": {
+    "originalGeometryType": "MultiPolygon",
+    "originalBounds": [
+      9.7774913,
+      37.1524227,
+      9.7939444,
+      37.175245
+    ],
+    "packedBounds": [
+      9.777491,
+      37.152423,
+      9.793944,
+      37.175245
+    ],
+    "originalCoversCurrentAnchor": true,
+    "packedCoversCurrentAnchor": true,
+    "binary": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\neighborhoods.bin",
+      "sha256": "bab9876668eb53f9fd27992242575b031acaa74c3f4e36cca7842289164fe444",
+      "bytes": 5590504
+    },
+    "packedSliceSha256": "80c32ffb74a7bfc250de973388d308c5787ede27c25cc7781b0e150512383b9f",
+    "packedEndOffsetVerified": true,
+    "parentContainment": [
+      {
+        "id": "osm:relation:7151753",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Menzel Bourguiba",
+          "boundary": "administrative",
+          "name": "معتمدية منزل بورقيبة",
+          "name:ar": "معتمدية منزل بورقيبة",
+          "name:fr": "Délégation Menzel Bourguiba",
+          "ref:tn:codegeo": "1758",
+          "ref:tn:hasc_2": "TN.BZ.MB",
+          "wikidata": "Q3306135"
+        },
+        "originalParentCoversOriginalSector": true,
+        "originalParentCoversPackedSector": false
+      }
+    ]
+  },
+  "currentOldOrProposedNameOccurrences": [
+    {
+      "id": "osm:relation:7119628",
+      "fields": [
+        "name"
+      ]
+    },
+    {
+      "id": "osm:relation:7201237",
+      "fields": [
+        "name"
+      ]
+    },
+    {
+      "id": "osm:node:1183575561",
+      "fields": [
+        "parentName",
+        "contextAliases"
+      ]
+    }
+  ],
+  "currentPickerMembers": [
+    "osm:relation:7119628"
+  ],
+  "expectedDownstreamNameContextScope": {
+    "inheritedChildIds": [],
+    "directCurations": [],
+    "directPickerBindings": [],
+    "directBoundaryBindings": [],
+    "identityMembershipChangeIntended": false,
+    "coordinatePrayerGeometryChangeIntended": false,
+    "aliasPolicy": "Not decided by this source bundle; preserve exact source tags and use reviewed saved-name history rather than inventing an alias rule."
+  },
+  "existingEvidenceQualification": "Saved Google capture is parser3 with no synchronizationOutcome/settled contract. Literal text is corroborating name evidence only, not physical identity, administrative membership or boundary certification. Original/current metadata lineage remains separate.",
+  "boundedNextAction": "Audit the175858 original sector and parent identity against the three pinned registry workbook rows, then prepare a name-only correction if they agree.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\two-name-bundles.py",
+    "sha256": "ca04b50169c8c22089c14ee462cd9e9d534598f1f3c0baa32a7dfaa931148752",
+    "bytes": 4109
+  }
+}

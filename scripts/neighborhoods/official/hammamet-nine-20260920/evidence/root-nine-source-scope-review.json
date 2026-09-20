@@ -1,0 +1,1363 @@
+{
+  "status": "SOURCE_ONLY_NINE_WHOLE_IMADA_SCOPE_ACCEPTED_FOR_STAGING",
+  "comparison": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\onehundredfiftyone-current-name-review-20260920.json",
+    "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7"
+  },
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+  },
+  "boundaryManifest": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421"
+  },
+  "scopeReview": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\arima-joufia-receivers-20260912\\accepted90-whole-imada-scope-review.json",
+    "sha256": "b9c78637a2cb6e26482283c696e34b9828223a1df91d29adcae365c4b73a5d58"
+  },
+  "decree": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "decreePageImage": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\decree-074.png",
+    "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+  },
+  "decreePdfPage": 74,
+  "decreeJortPage": 5171,
+  "decreeWholePageVisuallyReviewed": true,
+  "decreeTableFinding": "Nine separate Hammamet imada rows, each with one electoral circle of matching name; no split or aggregate in this block. Nabeul heading and Hammamet parent read on same page.",
+  "registry": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "baraketNameEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baraket-name-equivalence-20260920\\root-name-association-accepted.json",
+    "sha256": "38de1245baa4795bce9d8496c08c049eac0365174730bbe5f93006a9130bfd98"
+  },
+  "rows": [
+    {
+      "id": "osm:relation:7105070",
+      "key": "sidi-djedidi",
+      "officialCode": "156651",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "سيدي الجديدي",
+        "sectorCode": "156651",
+        "sectorFr": "Sidi djedidi",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 602,
+          "Nombre_de_menages_par_Secteurs.xlsx": 601,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14485
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي الجديدي",
+        "name:ar": "سيدي الجديدي",
+        "name:fr": "Sidi Ejdidi",
+        "ref:tn:codegeo": "156651"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\native-map-inspection.json",
+        "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\sidi-djedidi.pdf",
+        "sha256": "fb704ad3de27894aa0ac74668349aac75f46fb4eb7598a66c1c648edb61780cd"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D9%8A.pdf",
+      "sourceDrawingDetails": {
+        "clipProof": {
+          "activeClipCount": 2,
+          "activeClipStacksIdentical": true,
+          "activeClips": [
+            {
+              "outsideAreaPoints2": 0.0,
+              "polygonBoundaryClearancePoints": 31.68402099609375,
+              "segmentCount": 1203,
+              "segmentMinBoundaryClearancePoints": 31.68402099609375,
+              "segmentOutsideCount": 0,
+              "segmentOutsideLengthPoints": 0.0,
+              "wholePolygonCovered": true
+            },
+            {
+              "outsideAreaPoints2": 0.0,
+              "polygonBoundaryClearancePoints": 26.64337158203125,
+              "segmentCount": 1203,
+              "segmentMinBoundaryClearancePoints": 26.64337158203125,
+              "segmentOutsideCount": 0,
+              "segmentOutsideLengthPoints": 0.0,
+              "wholePolygonCovered": true
+            }
+          ],
+          "affineMetersFromPagePoints": [
+            [
+              26.959252050184602,
+              7.238599855347675e-05
+            ],
+            [
+              0.0001608636316632328,
+              -26.948854093852788
+            ],
+            [
+              617023.0533243788,
+              4040078.45548924
+            ]
+          ],
+          "everySegmentPathCoveredByEveryActiveClip": true,
+          "nativeCrsEpsg": 32632,
+          "pdfSha256": "fb704ad3de27894aa0ac74668349aac75f46fb4eb7598a66c1c648edb61780cd",
+          "sourceCrsWkt": "PROJCRS[\"WGS 84 / UTM zone 32N\",BASEGEOGCRS[\"WGS 84\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"Degree\",0.0174532925199433]]],CONVERSION[\"UTM zone 32N\",METHOD[\"Transverse Mercator\",ID[\"EPSG\",9807]],PARAMETER[\"Latitude of natural origin\",0,ANGLEUNIT[\"Degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",9,ANGLEUNIT[\"Degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Scale factor at natural origin\",0.9996,SCALEUNIT[\"unity\",1],ID[\"EPSG\",8805]],PARAMETER[\"False easting\",500000,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]],ID[\"EPSG\",16032]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+          "viewport": {
+            "coversCompleteRing": true,
+            "outsideAreaPoints2": 0.0,
+            "polygonBoundaryClearancePoints": 26.643310546875004,
+            "segmentCount": 1203,
+            "segmentMinBoundaryClearancePoints": 26.643310546875004,
+            "segmentOutsideCount": 0,
+            "segmentOutsideLengthPoints": 0.0
+          },
+          "wholeRingCoveredByEveryActiveClip": true
+        },
+        "color": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "combinedSegmentCount": 1203,
+        "combinedVertexCount": 1204,
+        "concatenation": {
+          "bufferApplied": false,
+          "explicitlyClosed": true,
+          "inferredClosingSegmentAdded": false,
+          "method": "ordered concatenation of drawing411 vertices plus drawing412 vertices excluding the duplicate joint vertex",
+          "polygonizeApplied": false,
+          "repairApplied": false,
+          "snappingApplied": false,
+          "toleranceApplied": false,
+          "unionApplied": false,
+          "zeroInventedEdges": true
+        },
+        "drawingIndices": [
+          411,
+          412
+        ],
+        "excludedDrawingIndices": [
+          413
+        ],
+        "excludedDrawings": [
+          {
+            "color": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "drawingIndex": 413,
+            "itemCount": 429,
+            "layer": "circonscription_isie2023",
+            "reason": "existing drawing413 is clipped neighboring Yasmine, not own boundary",
+            "used": false
+          }
+        ],
+        "insideTextLines": [
+          {
+            "bbox": [
+              524.041015625,
+              312.3021240234375,
+              546.9362182617188,
+              331.67840576171875
+            ],
+            "colors": [
+              0
+            ],
+            "text": "R28"
+          },
+          {
+            "bbox": [
+              318.2550048828125,
+              331.3609313964844,
+              348.3210144042969,
+              361.3116455078125
+            ],
+            "colors": [
+              0
+            ],
+            "text": "28 ج"
+          },
+          {
+            "bbox": [
+              363.6256408691406,
+              122.71075439453125,
+              384.2424011230469,
+              145.4879150390625
+            ],
+            "colors": [
+              0
+            ],
+            "text": "دﺣ"
+          },
+          {
+            "bbox": [
+              190.43374633789062,
+              289.63720703125,
+              224.7883758544922,
+              327.4812927246094
+            ],
+            "colors": [
+              0
+            ],
+            "text": "ﮫﺗﻠﻘﻟا داو"
+          },
+          {
+            "bbox": [
+              432.28143310546875,
+              398.4519348144531,
+              475.68170166015625,
+              448.1164855957031
+            ],
+            "colors": [
+              0
+            ],
+            "text": "طرﯾﻖ ﺗﺎﻓرﻧﺑن"
+          },
+          {
+            "bbox": [
+              241.97341918945312,
+              113.3403549194336,
+              262.5591125488281,
+              156.64083862304688
+            ],
+            "colors": [
+              0
+            ],
+            "text": "واد اﻟﺣﺗوس"
+          },
+          {
+            "bbox": [
+              554.5169677734375,
+              398.3786926269531,
+              593.4822998046875,
+              444.8665466308594
+            ],
+            "colors": [
+              0
+            ],
+            "text": "طرﯾﻖ ﺛﺎﻧوي"
+          },
+          {
+            "bbox": [
+              423.41357421875,
+              248.09799194335938,
+              447.4302062988281,
+              273.0710144042969
+            ],
+            "colors": [
+              0
+            ],
+            "text": "ﺔﻠﺗﻟا"
+          },
+          {
+            "bbox": [
+              427.2167663574219,
+              231.322998046875,
+              452.9112548828125,
+              261.4311828613281
+            ],
+            "colors": [
+              0
+            ],
+            "text": "طرﯾﻖ "
+          },
+          {
+            "bbox": [
+              559.3529663085938,
+              259.8786926269531,
+              594.8802490234375,
+              293.6841735839844
+            ],
+            "colors": [
+              0
+            ],
+            "text": "رﺎﺷﻧﻣﻟا"
+          },
+          {
+            "bbox": [
+              576.9561157226562,
+              248.74835205078125,
+              608.5715942382812,
+              279.37371826171875
+            ],
+            "colors": [
+              0
+            ],
+            "text": "طرﯾﻖ "
+          },
+          {
+            "bbox": [
+              540.32666015625,
+              340.0700378417969,
+              616.1788330078125,
+              407.6791687011719
+            ],
+            "colors": [
+              0
+            ],
+            "text": "ﻣﺳﻠك اﻟﻌرﻋﺎرة اﻟﺻﻔراء"
+          },
+          {
+            "bbox": [
+              630.1634521484375,
+              314.12066650390625,
+              668.994873046875,
+              352.6229553222656
+            ],
+            "colors": [
+              0
+            ],
+            "text": "اﻟﺑﺳﺎﯾﺳﯾﺔ"
+          },
+          {
+            "bbox": [
+              599.6586303710938,
+              352.5062255859375,
+              657.6061401367188,
+              373.4734802246094
+            ],
+            "colors": [
+              0
+            ],
+            "text": "ﻣﺳﻠك اﻟﺧﺻﺎﯾﺑﯾﺔ"
+          },
+          {
+            "bbox": [
+              409.23974609375,
+              196.694580078125,
+              451.10491943359375,
+              224.03131103515625
+            ],
+            "colors": [
+              0
+            ],
+            "text": "واد اﻟرﻗﯾﺑﺔ"
+          },
+          {
+            "bbox": [
+              365.5523986816406,
+              464.7740478515625,
+              453.43780517578125,
+              514.2310180664062
+            ],
+            "colors": [
+              0
+            ],
+            "text": " ﻧﺎﺑل- ﺣد ﺑﯾن وﻻﯾﺔ ﺳوﺳﺔ"
+          },
+          {
+            "bbox": [
+              564.6830444335938,
+              468.44122314453125,
+              646.5836791992188,
+              572.8255615234375
+            ],
+            "colors": [
+              0
+            ],
+            "text": " ﻧﺎﺑل- ﺳﻛﺔ ﺣدﯾدﯾﺔ ﺑﯾن وﻻﯾﺔ ﺳوﺳﺔ"
+          },
+          {
+            "bbox": [
+              447.0021667480469,
+              296.7810974121094,
+              528.4617309570312,
+              375.09332275390625
+            ],
+            "colors": [
+              0
+            ],
+            "text": "ﺔﺑﻘﻌﻟا هﺎﺟﺗإ ﻲﻓ ﻲﺣﻼﻓ كﻠﺳﻣ"
+          },
+          {
+            "bbox": [
+              165.0963897705078,
+              430.1252746582031,
+              249.51300048828125,
+              497.8314514160156
+            ],
+            "colors": [
+              0
+            ],
+            "text": " ﻧﺎﺑل- ﺣد ﺑﯾن وﻻﯾﺔ زﻏوان"
+          },
+          {
+            "bbox": [
+              565.1015625,
+              459.3385009765625,
+              584.3644409179688,
+              473.49530029296875
+            ],
+            "colors": [
+              0
+            ],
+            "text": "دﺣ"
+          },
+          {
+            "bbox": [
+              506.8509216308594,
+              276.2843322753906,
+              529.7849731445312,
+              298.14471435546875
+            ],
+            "colors": [
+              0
+            ],
+            "text": "دﺣ"
+          },
+          {
+            "bbox": [
+              586.6279907226562,
+              312.4831848144531,
+              611.1796875,
+              332.18634033203125
+            ],
+            "colors": [
+              0
+            ],
+            "text": "28 ج"
+          },
+          {
+            "bbox": [
+              653.5472412109375,
+              302.86065673828125,
+              671.5725708007812,
+              324.533203125
+            ],
+            "colors": [
+              0
+            ],
+            "text": "دﺣ"
+          },
+          {
+            "bbox": [
+              534.9743041992188,
+              277.137939453125,
+              564.0745239257812,
+              307.0852355957031
+            ],
+            "colors": [
+              0
+            ],
+            "text": "كﻠﺳﻣ"
+          },
+          {
+            "bbox": [
+              246.09912109375,
+              443.6428527832031,
+              262.6538391113281,
+              464.4757995605469
+            ],
+            "colors": [
+              0
+            ],
+            "text": "دﺣ"
+          },
+          {
+            "bbox": [
+              671.195556640625,
+              322.9101257324219,
+              693.9173583984375,
+              345.42791748046875
+            ],
+            "colors": [
+              0
+            ],
+            "text": "دﺣ"
+          },
+          {
+            "bbox": [
+              259.21429443359375,
+              419.1684875488281,
+              285.0386962890625,
+              441.000244140625
+            ],
+            "colors": [
+              0
+            ],
+            "text": "كﻠﺳﻣ"
+          },
+          {
+            "bbox": [
+              489.10943603515625,
+              178.63894653320312,
+              511.0126953125,
+              197.13111877441406
+            ],
+            "colors": [
+              0
+            ],
+            "text": "دﺣ"
+          },
+          {
+            "bbox": [
+              228.55137634277344,
+              235.7849884033203,
+              371.1202392578125,
+              289.0695495605469
+            ],
+            "colors": [
+              15073280
+            ],
+            "text": "يدﯾدﺟﻟا يدﯾﺳ"
+          },
+          {
+            "bbox": [
+              237.0095672607422,
+              179.91781616210938,
+              370.2143859863281,
+              249.11854553222656
+            ],
+            "colors": [
+              19880
+            ],
+            "text": "اﻟﺣﻣﺎﻣﺎت"
+          }
+        ],
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "fb704ad3de27894aa0ac74668349aac75f46fb4eb7598a66c1c648edb61780cd",
+        "segmentCounts": [
+          1023,
+          180
+        ],
+        "seqnos": [
+          419,
+          420
+        ],
+        "sourceVertexCounts": [
+          1024,
+          181
+        ]
+      },
+      "geometrySha256": "69d0df0bd99602b7bfcfa02c198648a862526926eefe1286b561446dbb65ee7b",
+      "aliasesApprovedForStaging": [
+        "Sidi Ejdidi",
+        "Sidi Jadidi"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Sidi Ejdidi",
+          "Sidi Jadidi"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 433,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7105070",
+        "kind": "sector",
+        "lat": 36.421917,
+        "lng": 10.427507,
+        "name": "سيدي الجديدي",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": true
+    },
+    {
+      "id": "osm:relation:7144606",
+      "key": "el-atrach",
+      "officialCode": "156652",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "الاطرش",
+        "sectorCode": "156652",
+        "sectorFr": "El atrach",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 604,
+          "Nombre_de_menages_par_Secteurs.xlsx": 603,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14519
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الاطرش",
+        "name:ar": "الاطرش",
+        "name:fr": "Latrach",
+        "ref:tn:codegeo": "156652"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\native-map-inspection.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\el-atrach.pdf",
+        "sha256": "93053eb8095a5eeeb9ed05400909d6f0c5f5a7fac767aaf5b8e5c7f44c8d3b59"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%A3%D8%B7%D8%B1%D8%B4.pdf",
+      "sourceDrawingDetails": {
+        "drawingIndex": 250,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "93053eb8095a5eeeb9ed05400909d6f0c5f5a7fac767aaf5b8e5c7f44c8d3b59",
+        "segmentCount": 991,
+        "seqno": 258,
+        "sourceOrigin": "frontier8-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 992,
+        "vertexCount": 992
+      },
+      "geometrySha256": "7ce2a93a215a74ba638100bc835c26908440ab791b5333da9376767a15071c5e",
+      "aliasesApprovedForStaging": [
+        "Latrach"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Latrach"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 463,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7144606",
+        "kind": "sector",
+        "lat": 36.474958,
+        "lng": 10.484984,
+        "name": "الاطرش",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": true
+    },
+    {
+      "id": "osm:relation:7104926",
+      "key": "bir-bou-regba",
+      "officialCode": "156653",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "بئر بورقبة",
+        "sectorCode": "156653",
+        "sectorFr": "Bir bou regba",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 605,
+          "Nombre_de_menages_par_Secteurs.xlsx": 604,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14553
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بير بورقبة",
+        "name:ar": "بير بورقبة",
+        "name:fr": "Bir Bouregba",
+        "ref:tn:codegeo": "156653",
+        "wikidata": "Q2904332"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\native-map-inspection.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\bir-bou-regba.pdf",
+        "sha256": "6126b3ab3e290e1d2f3b5da75aafbfa6217a34e63383b2e105a488578f91d518"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A8%D8%A6%D8%B1%20%D8%A8%D9%88%D8%B1%D9%82%D8%A8%D8%A9.pdf",
+      "sourceDrawingDetails": {
+        "drawingIndex": 567,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "6126b3ab3e290e1d2f3b5da75aafbfa6217a34e63383b2e105a488578f91d518",
+        "segmentCount": 579,
+        "seqno": 575,
+        "sourceOrigin": "frontier8-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 580,
+        "vertexCount": 580
+      },
+      "geometrySha256": "72fb8952d622e250cfc4dfb0b71cccaf96a3b57b3963c7c6ff1f4d2538e12b5c",
+      "aliasesApprovedForStaging": [
+        "Bir Bouregba",
+        "بير بورقبة"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Bir Bouregba",
+          "بئر بورقبة"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7104926",
+        "kind": "sector",
+        "lat": 36.455911,
+        "lng": 10.559755,
+        "name": "بير بورقبة",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": true
+    },
+    {
+      "id": "osm:relation:7104931",
+      "key": "baraket-essahel",
+      "officialCode": "156654",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "براكة الساحل",
+        "sectorCode": "156654",
+        "sectorFr": "Barraket essahel",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 607,
+          "Nombre_de_menages_par_Secteurs.xlsx": 606,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14587
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "منارة الحمامات",
+        "name:aeb": "براكة الساحل",
+        "name:ar": "منارة الحمامات",
+        "name:fr": "Manaret El Hammamet",
+        "ref:tn:codegeo": "156654"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\native-map-inspection.json",
+        "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\baraket-essahel.pdf",
+        "sha256": "258c4ffaf4cb2c079bf33d27bd27949bf3402d32b098b936b3cef0cac9ae1f25"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A8%D8%B1%D8%A7%D9%83%D8%A9%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84.pdf",
+      "sourceDrawingDetails": {
+        "drawingIndex": 572,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "258c4ffaf4cb2c079bf33d27bd27949bf3402d32b098b936b3cef0cac9ae1f25",
+        "segmentCount": 602,
+        "seqno": 580,
+        "sourceOrigin": "connected-official-maps",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 603,
+        "vertexCount": 603
+      },
+      "geometrySha256": "e92ee6aa2ce90045f3a5748a8f9dbbc12bace90a24c3c3e9826f8ce8cbfeae73",
+      "aliasesApprovedForStaging": [
+        "Manaret El Hammamet",
+        "Mnaret El Hammamet",
+        "منارة الحمامات"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Manaret El Hammamet",
+          "Mnaret El Hammamet",
+          "براكة الساحل"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7104931",
+        "kind": "sector",
+        "lat": 36.396361,
+        "lng": 10.544,
+        "name": "منارة الحمامات",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": false
+    },
+    {
+      "id": "osm:relation:7104927",
+      "key": "hammamet-nord",
+      "officialCode": "156655",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "الحمامات الجوفية",
+        "sectorCode": "156655",
+        "sectorFr": "Hammamet nord",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 609,
+          "Nombre_de_menages_par_Secteurs.xlsx": 608,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14621
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحمامات الجوفية",
+        "name:ar": "الحمامات الجوفية",
+        "name:fr": "Hammamet Nord",
+        "ref:tn:codegeo": "156655"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\native-map-inspection.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\hammamet-nord.pdf",
+        "sha256": "b401485272352ae9c6eba464a2361098361b8ef1606a710e99ff3d8e06e3a66d"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AC%D9%88%D9%81%D9%8A%D8%A9.pdf",
+      "sourceDrawingDetails": {
+        "coverageProof": [
+          {
+            "clearancePoints": 26.643330546874946,
+            "coversAllRawEdges": true,
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    4.319079875946045,
+                    590.1144409179688
+                  ],
+                  [
+                    841.5009765625,
+                    590.1144409179688
+                  ],
+                  [
+                    841.5009765625,
+                    5.0406494140625
+                  ],
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ],
+                  [
+                    4.319079875946045,
+                    590.1144409179688
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "kind": "viewport",
+            "outsideLengthPoints": 0.0
+          },
+          {
+            "clearancePoints": 31.684010371093787,
+            "coversAllRawEdges": true,
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    0.0
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "kind": "activeClip",
+            "outsideLengthPoints": 0.0
+          },
+          {
+            "clearancePoints": 26.64336095703129,
+            "coversAllRawEdges": true,
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "kind": "activeClip",
+            "outsideLengthPoints": 0.0
+          }
+        ],
+        "drawingIndices": [
+          699
+        ],
+        "geometryType": "Polygon",
+        "normalizationAcceptedForCandidateComparison": true,
+        "normalizationDescription": "Remove exact raw A-B-A zero-area spur only (vertices768,769); all other source vertices unchanged; areal geometry exactly equals source make_valid polygonal component.",
+        "polygonCount": 1,
+        "rawProof": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\invalid-source-raw-and-clip-review.json",
+          "sha256": "468a9aa3832d5503a64dc84916e768553acbf5f9939ad8d751b232b004473bae"
+        },
+        "sourcePDF": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\hammamet-nord.pdf",
+          "sha256": "b401485272352ae9c6eba464a2361098361b8ef1606a710e99ff3d8e06e3a66d"
+        },
+        "sourceVertexCount": 855
+      },
+      "geometrySha256": "297148856fbb4de41cef03b2077cb05f91f75eaf0626d377abf7a0856d99effa",
+      "aliasesApprovedForStaging": [
+        "Hammamet Nord"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Hammamet Nord"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7104927",
+        "kind": "sector",
+        "lat": 36.435638,
+        "lng": 10.632269,
+        "name": "الحمامات الجوفية",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": true
+    },
+    {
+      "id": "osm:relation:7104929",
+      "key": "hammamet-est",
+      "officialCode": "156656",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "الحمامات الشرقية",
+        "sectorCode": "156656",
+        "sectorFr": "Hammamet est",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 611,
+          "Nombre_de_menages_par_Secteurs.xlsx": 610,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14655
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحمامات الشرقية",
+        "name:ar": "الحمامات الشرقية",
+        "name:fr": "Hammamet Est",
+        "ref:tn:codegeo": "156656"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\native-map-inspection.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\hammamet-est.pdf",
+        "sha256": "ec4694b1cca6bbc83b451e5fb712ea2a3c0f3adc7a76fa61dd572c4c76363267"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9.pdf",
+      "sourceDrawingDetails": {
+        "drawingIndex": 456,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "ec4694b1cca6bbc83b451e5fb712ea2a3c0f3adc7a76fa61dd572c4c76363267",
+        "segmentCount": 164,
+        "seqno": 464,
+        "sourceOrigin": "frontier11-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 165,
+        "vertexCount": 165
+      },
+      "geometrySha256": "b9d61e26e1eb70308763e27820d46211780ad7b1cfb8776c070f0218cd65d846",
+      "aliasesApprovedForStaging": [
+        "Hammamet Est"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Hammamet Est"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7104929",
+        "kind": "sector",
+        "lat": 36.399951,
+        "lng": 10.621608,
+        "name": "الحمامات الشرقية",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": true
+    },
+    {
+      "id": "osm:relation:7104930",
+      "key": "hammamet-ouest",
+      "officialCode": "156657",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "الحمامات الغربية",
+        "sectorCode": "156657",
+        "sectorFr": "Hammamet ouest",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 612,
+          "Nombre_de_menages_par_Secteurs.xlsx": 611,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14689
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الحمامات الغربية",
+        "name:ar": "الحمامات الغربية",
+        "name:fr": "Hammamet Ouest",
+        "ref:tn:codegeo": "156657"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\native-map-inspection.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\hammamet-ouest.pdf",
+        "sha256": "cd5756b37f9d2caf0ace95bb40b02970043822e93309c1ce57e51de2662fdbbc"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9.pdf",
+      "sourceDrawingDetails": {
+        "drawingIndex": 554,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "cd5756b37f9d2caf0ace95bb40b02970043822e93309c1ce57e51de2662fdbbc",
+        "segmentCount": 230,
+        "seqno": 562,
+        "sourceOrigin": "frontier8-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 231,
+        "vertexCount": 231
+      },
+      "geometrySha256": "a2eee1ca35c8a092aa12470deda99f4e0a98f0dd959c3b815801458bfccdeb1f",
+      "aliasesApprovedForStaging": [
+        "Hammamet Ouest"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Hammamet Ouest"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7104930",
+        "kind": "sector",
+        "lat": 36.412834,
+        "lng": 10.582532,
+        "name": "الحمامات الغربية",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": true
+    },
+    {
+      "id": "osm:relation:7104928",
+      "key": "sector-156658",
+      "officialCode": "156658",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "المرازقة",
+        "sectorCode": "156658",
+        "sectorFr": "Mrezga",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 613,
+          "Nombre_de_menages_par_Secteurs.xlsx": 612,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14723
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المرازقة",
+        "name:ar": "المرازقة",
+        "name:fr": "El Mrezga",
+        "ref:tn:codegeo": "156658"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\hammamet-frontier32-20260919\\native-map-inspection.json",
+        "sha256": "0c9dd6fe789c5f17de43d89f771e460094525918998da66bfa7c0a29b2e3ae3b"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\hammamet-frontier32-20260919\\sector-156658.pdf",
+        "sha256": "b0ef5c27942408e22354193689ab78c41d68ea8bf073c51a6bd8203d4386ebe0"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B2%D9%82%D8%A9.pdf",
+      "sourceDrawingDetails": {
+        "drawingIndex": 383,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "b0ef5c27942408e22354193689ab78c41d68ea8bf073c51a6bd8203d4386ebe0",
+        "segmentCount": 412,
+        "seqno": 391,
+        "sourceOrigin": "runtime-selection-official-source",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 413,
+        "vertexCount": 413
+      },
+      "geometrySha256": "769f59a324561925c028c3322624ed14512c2875e199e28d65e2cd03ab2a3da4",
+      "aliasesApprovedForStaging": [
+        "El Mrezga"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "El Mrezga"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 461,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7104928",
+        "kind": "sector",
+        "lat": 36.422055,
+        "lng": 10.662188,
+        "name": "المرازقة",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": true
+    },
+    {
+      "id": "osm:relation:7104932",
+      "key": "yasmine-hammamet",
+      "officialCode": "156659",
+      "registry": {
+        "delegationAr": "الحمامات",
+        "delegationCode": "1566",
+        "delegationFr": "Hammamet",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "ياسمين الحمامات",
+        "sectorCode": "156659",
+        "sectorFr": "Yasmin hammamet",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 615,
+          "Nombre_de_menages_par_Secteurs.xlsx": 614,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14757
+        }
+      },
+      "expectedOriginalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "ياسمين الحمامات",
+        "name:ar": "ياسمين الحمامات",
+        "name:fr": "Yasmine Hammamet",
+        "ref:tn:codegeo": "156659"
+      },
+      "sourceInspector": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-hammamet-official-map-20260919\\native-map-inspection.json",
+        "sha256": "10bf13f5dcef39c6573dd587051f1e900d84404b4fd826154af451f96f40d5c7"
+      },
+      "sourcePdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-hammamet-official-map-20260919\\yasmine-hammamet.pdf",
+        "sha256": "a056ddb414929e42bd20b4eac4ab6ce9d36ec799823300430ff470312f7780cc"
+      },
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D9%86%D8%A7%D8%A8%D9%84%202/%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA/%D9%8A%D8%A7%D8%B3%D9%85%D9%8A%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%85%D8%A7%D8%AA.pdf",
+      "sourceDrawingDetails": {
+        "drawingIndex": 467,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "a056ddb414929e42bd20b4eac4ab6ce9d36ec799823300430ff470312f7780cc",
+        "segmentCount": 438,
+        "seqno": 475,
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 439,
+        "vertexCount": 439
+      },
+      "geometrySha256": "1c3f64db70357364c5518524e3d721c901c47683b731a6cf76c708ca2fd30770",
+      "aliasesApprovedForStaging": [
+        "Yasmine Hammamet"
+      ],
+      "currentFeature": {
+        "aliases": [
+          "Yasmine Hammamet"
+        ],
+        "contextAliases": [
+          "Délégation Hammamet",
+          "Hammamet",
+          "معتمدية الحمامات"
+        ],
+        "delegationId": 433,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7104932",
+        "kind": "sector",
+        "lat": 36.332443,
+        "lng": 10.511143,
+        "name": "ياسمين الحمامات",
+        "parentId": null,
+        "parentName": "معتمدية الحمامات",
+        "sourceId": "osm"
+      },
+      "currentPointInsideProposed": false
+    }
+  ],
+  "pointPolicy": "No point policy applied in this boundary-only source stage. Seven existing coordinates are sector metadata coordinates, not assumed named villages. Two named source physical point choices stay separate. Geometry installation/generation requires a truthful explicit point/default decision.",
+  "sourceGeometryPolicy": "Exact existing candidate GeoJSON coordinates from pinned comparison, including the previously reviewed zero-area Hammamet Nord normalization; no new geometry operation.",
+  "externalFrontier": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\nine-external-sector-frontier.json",
+    "sha256": "f06a565cb88301be77812a567bdca65b02c5b0460c129ad551c0de9cc822c758"
+  },
+  "appChanges": false,
+  "fullCatalogCertified": false
+}

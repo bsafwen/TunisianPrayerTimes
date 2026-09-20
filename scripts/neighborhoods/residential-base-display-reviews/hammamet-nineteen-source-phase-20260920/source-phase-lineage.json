@@ -1,0 +1,1145 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_source_bound_residential_official_boundary_lineage",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "application": {
+    "method": "reviewed_source_bound_residential_base_display_identity",
+    "id": "osm:way:234090258",
+    "targetDelegationId": 461
+  },
+  "historicalSourceFacts": {
+    "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/current-source-facts.json",
+    "sha256": "d3186be4427393bdc7201ba7e33c601979605335d62fbe130945464cc882e48b"
+  },
+  "reviewedBoundaries": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "4611c1bafd550a6448e31177b3a49bd62f47d718743a8e7778de6a092a4cd91b"
+  },
+  "replacements": [
+    {
+      "id": "osm:relation:7104926",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بير بورقبة",
+          "name:ar": "بير بورقبة",
+          "name:fr": "Bir Bouregba",
+          "ref:tn:codegeo": "156653",
+          "wikidata": "Q2904332"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بير بورقبة",
+          "name:ar": "بير بورقبة",
+          "name:fr": "Bir Bouregba",
+          "ref:tn:codegeo": "156653",
+          "wikidata": "Q2904332"
+        },
+        "originalGeometrySha256": "1664587b8ad63efd963928edf056e8a7bc4884b6252b05347186f6cb0177f387",
+        "effectiveGeometrySha256": "1664587b8ad63efd963928edf056e8a7bc4884b6252b05347186f6cb0177f387",
+        "triageResearchGeometrySha256": "a1dfd4c0f2350b28364e9bfe76d5c3efb8d91d35b0ed492c2a418529a584ab83",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7104926",
+          "sourceId": "osm",
+          "name": "بير بورقبة",
+          "aliases": [
+            "Bir Bouregba",
+            "بئر بورقبة"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.455911,
+          "lng": 10.559755,
+          "delegationId": 461,
+          "hasBoundary": true,
+          "bbox": [
+            10.495779,
+            36.417786,
+            10.615836,
+            36.494119
+          ],
+          "areaKm2": 47.03409599001534,
+          "pickerGroupId": "osm:relation:7104926"
+        },
+        "packedGeometrySha256": "0b8d0abbe5cc6db45eeafb3fa48e796c5e7b61258a51b3fe980f1db5975e9420"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بير بورقبة",
+          "name:ar": "بير بورقبة",
+          "name:fr": "Bir Bouregba",
+          "ref:tn:codegeo": "156653",
+          "wikidata": "Q2904332"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Bir Bouregba;بير بورقبة",
+          "boundary": "administrative",
+          "name:ar": "بئر بورقبة",
+          "name:fr": "Bir bou regba",
+          "ref:tn:codegeo": "156653"
+        },
+        "originalGeometrySha256": "1664587b8ad63efd963928edf056e8a7bc4884b6252b05347186f6cb0177f387",
+        "effectiveGeometrySha256": "72fb8952d622e250cfc4dfb0b71cccaf96a3b57b3963c7c6ff1f4d2538e12b5c",
+        "triageResearchGeometrySha256": "a1dfd4c0f2350b28364e9bfe76d5c3efb8d91d35b0ed492c2a418529a584ab83",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "Bir Bouregba",
+            "Bir bou regba",
+            "بير بورقبة"
+          ],
+          "areaKm2": 22.506333846717382,
+          "bbox": [
+            10.5418,
+            36.41131,
+            10.624273,
+            36.49125
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 461,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7104926",
+          "kind": "sector",
+          "lat": 36.455911,
+          "lng": 10.559755,
+          "name": "بئر بورقبة",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7104926",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "78f138bfcaa1e09587e3acc6c80417ff38883dc078b0154543e54b519bbb2324"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7104926",
+        "action": "replace",
+        "officialCode": "156653",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7104927",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الجوفية",
+          "name:ar": "الحمامات الجوفية",
+          "name:fr": "Hammamet Nord",
+          "ref:tn:codegeo": "156655"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الجوفية",
+          "name:ar": "الحمامات الجوفية",
+          "name:fr": "Hammamet Nord",
+          "ref:tn:codegeo": "156655"
+        },
+        "originalGeometrySha256": "a569bcdfdc499829b6259a4fbaae0ee1d3c6f6330a3eb9ef128781e47707c693",
+        "effectiveGeometrySha256": "a569bcdfdc499829b6259a4fbaae0ee1d3c6f6330a3eb9ef128781e47707c693",
+        "triageResearchGeometrySha256": "792d12925bb5a1c12d9e55a47e5fd116b2d796bae20388d11e12564c760017d6",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7104927",
+          "sourceId": "osm",
+          "name": "الحمامات الجوفية",
+          "aliases": [
+            "Hammamet Nord"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.435638,
+          "lng": 10.632269,
+          "delegationId": 461,
+          "hasBoundary": true,
+          "bbox": [
+            10.588494,
+            36.402822,
+            10.678124,
+            36.468789
+          ],
+          "areaKm2": 35.720243645497604,
+          "pickerGroupId": "osm:relation:7104927"
+        },
+        "packedGeometrySha256": "bbc8d1a2f2ca580a2c0e5fb520c67e9e99ace03f1dc9f9fa77db834d736439ff"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الجوفية",
+          "name:ar": "الحمامات الجوفية",
+          "name:fr": "Hammamet Nord",
+          "ref:tn:codegeo": "156655"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Hammamet Nord",
+          "boundary": "administrative",
+          "name:ar": "الحمامات الجوفية",
+          "name:fr": "Hammamet nord",
+          "ref:tn:codegeo": "156655"
+        },
+        "originalGeometrySha256": "a569bcdfdc499829b6259a4fbaae0ee1d3c6f6330a3eb9ef128781e47707c693",
+        "effectiveGeometrySha256": "297148856fbb4de41cef03b2077cb05f91f75eaf0626d377abf7a0856d99effa",
+        "triageResearchGeometrySha256": "792d12925bb5a1c12d9e55a47e5fd116b2d796bae20388d11e12564c760017d6",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "Hammamet nord",
+            "Hammamet Nord"
+          ],
+          "areaKm2": 26.167507147440432,
+          "bbox": [
+            10.588327,
+            36.402983,
+            10.657908,
+            36.46946
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 461,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7104927",
+          "kind": "sector",
+          "lat": 36.435638,
+          "lng": 10.632269,
+          "name": "الحمامات الجوفية",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7104927",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "c4a4edffadd564b0678ac63d448aaeeca00056905f3ce7e8db79137b530a367a"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7104927",
+        "action": "replace",
+        "officialCode": "156655",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7104928",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المرازقة",
+          "name:ar": "المرازقة",
+          "name:fr": "El Mrezga",
+          "ref:tn:codegeo": "156658"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المرازقة",
+          "name:ar": "المرازقة",
+          "name:fr": "El Mrezga",
+          "ref:tn:codegeo": "156658"
+        },
+        "originalGeometrySha256": "425eb20bdf1344d6ad34f0f3c4614c26ee7f03cbf446390eb1cd98013c5450e3",
+        "effectiveGeometrySha256": "425eb20bdf1344d6ad34f0f3c4614c26ee7f03cbf446390eb1cd98013c5450e3",
+        "triageResearchGeometrySha256": "c6d8f97e5693f66749f7c9ab8449d76d74b341a993683ad11bdb13db43c9934d",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7104928",
+          "sourceId": "osm",
+          "name": "المرازقة",
+          "aliases": [
+            "El Mrezga"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.422055,
+          "lng": 10.662188,
+          "delegationId": 461,
+          "hasBoundary": true,
+          "bbox": [
+            10.645561,
+            36.404623,
+            10.685636,
+            36.439609
+          ],
+          "areaKm2": 5.653714164875306,
+          "pickerGroupId": "osm:relation:7104928"
+        },
+        "packedGeometrySha256": "ea9f4c5506e0820884721fdf331f550305cc5057e54916f94de8d9393581e5c1"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المرازقة",
+          "name:ar": "المرازقة",
+          "name:fr": "El Mrezga",
+          "ref:tn:codegeo": "156658"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "El Mrezga",
+          "boundary": "administrative",
+          "name:ar": "المرازقة",
+          "name:fr": "Mrezga",
+          "ref:tn:codegeo": "156658"
+        },
+        "originalGeometrySha256": "425eb20bdf1344d6ad34f0f3c4614c26ee7f03cbf446390eb1cd98013c5450e3",
+        "effectiveGeometrySha256": "769f59a324561925c028c3322624ed14512c2875e199e28d65e2cd03ab2a3da4",
+        "triageResearchGeometrySha256": "c6d8f97e5693f66749f7c9ab8449d76d74b341a993683ad11bdb13db43c9934d",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "Mrezga",
+            "El Mrezga"
+          ],
+          "areaKm2": 12.526372332628283,
+          "bbox": [
+            10.634769,
+            36.404919,
+            10.683173,
+            36.453206
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 461,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7104928",
+          "kind": "sector",
+          "lat": 36.422055,
+          "lng": 10.662188,
+          "name": "المرازقة",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7104928",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "97a2fb995235d92e89e6b5bed52fc13a6fac388c84e58c5ee727f53e4ce7acd9"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7104928",
+        "action": "replace",
+        "officialCode": "156658",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7104929",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الشرقية",
+          "name:ar": "الحمامات الشرقية",
+          "name:fr": "Hammamet Est",
+          "ref:tn:codegeo": "156656"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الشرقية",
+          "name:ar": "الحمامات الشرقية",
+          "name:fr": "Hammamet Est",
+          "ref:tn:codegeo": "156656"
+        },
+        "originalGeometrySha256": "516b71c72c46b59f876d912b900adde9a53f1e473830336420c4b0b3d6e8bec7",
+        "effectiveGeometrySha256": "516b71c72c46b59f876d912b900adde9a53f1e473830336420c4b0b3d6e8bec7",
+        "triageResearchGeometrySha256": "646f76e1052bd662411b2b92b6b7306912c86f1bc858e64aa3ea39ab2f0bfcdd",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7104929",
+          "sourceId": "osm",
+          "name": "الحمامات الشرقية",
+          "aliases": [
+            "Hammamet Est"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.399951,
+          "lng": 10.621608,
+          "delegationId": 461,
+          "hasBoundary": true,
+          "bbox": [
+            10.610391,
+            36.392138,
+            10.64187,
+            36.407715
+          ],
+          "areaKm2": 2.7137582933247657,
+          "pickerGroupId": "osm:relation:7104929"
+        },
+        "packedGeometrySha256": "6c83480ef381177f84b90de4be126f91cca994ee3f40a1ade556bef3cc4f03c7"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الشرقية",
+          "name:ar": "الحمامات الشرقية",
+          "name:fr": "Hammamet Est",
+          "ref:tn:codegeo": "156656"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Hammamet Est",
+          "boundary": "administrative",
+          "name:ar": "الحمامات الشرقية",
+          "name:fr": "Hammamet est",
+          "ref:tn:codegeo": "156656"
+        },
+        "originalGeometrySha256": "516b71c72c46b59f876d912b900adde9a53f1e473830336420c4b0b3d6e8bec7",
+        "effectiveGeometrySha256": "b9d61e26e1eb70308763e27820d46211780ad7b1cfb8776c070f0218cd65d846",
+        "triageResearchGeometrySha256": "646f76e1052bd662411b2b92b6b7306912c86f1bc858e64aa3ea39ab2f0bfcdd",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "Hammamet Est",
+            "Hammamet est"
+          ],
+          "areaKm2": 2.7022464496523515,
+          "bbox": [
+            10.611451,
+            36.39216,
+            10.642284,
+            36.40926
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 461,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7104929",
+          "kind": "sector",
+          "lat": 36.399951,
+          "lng": 10.621608,
+          "name": "الحمامات الشرقية",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7104929",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "fef2cacb88419cabf4457fa2546b09fafd1f47bb18dbaec8de3858cd2d5a35de"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7104929",
+        "action": "replace",
+        "officialCode": "156656",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7104930",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الغربية",
+          "name:ar": "الحمامات الغربية",
+          "name:fr": "Hammamet Ouest",
+          "ref:tn:codegeo": "156657"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الغربية",
+          "name:ar": "الحمامات الغربية",
+          "name:fr": "Hammamet Ouest",
+          "ref:tn:codegeo": "156657"
+        },
+        "originalGeometrySha256": "00b7b3a2b922cf85ecbdb88ed97e93466bb344706724b7eb0589fef16ab2d27a",
+        "effectiveGeometrySha256": "00b7b3a2b922cf85ecbdb88ed97e93466bb344706724b7eb0589fef16ab2d27a",
+        "triageResearchGeometrySha256": "ff776da71821884b3da9c6a0bc97ce45e31dc7f74a473d33e2ea84416dc9cb09",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7104930",
+          "sourceId": "osm",
+          "name": "الحمامات الغربية",
+          "aliases": [
+            "Hammamet Ouest"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.412834,
+          "lng": 10.582532,
+          "delegationId": 461,
+          "hasBoundary": true,
+          "bbox": [
+            10.567579,
+            36.39794,
+            10.612446,
+            36.42726
+          ],
+          "areaKm2": 6.775994653364434,
+          "pickerGroupId": "osm:relation:7104930"
+        },
+        "packedGeometrySha256": "73ebe9248da3697dcf0b53a9d22773cd79af04bda10eee456c949c4891196657"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الحمامات الغربية",
+          "name:ar": "الحمامات الغربية",
+          "name:fr": "Hammamet Ouest",
+          "ref:tn:codegeo": "156657"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Hammamet Ouest",
+          "boundary": "administrative",
+          "name:ar": "الحمامات الغربية",
+          "name:fr": "Hammamet ouest",
+          "ref:tn:codegeo": "156657"
+        },
+        "originalGeometrySha256": "00b7b3a2b922cf85ecbdb88ed97e93466bb344706724b7eb0589fef16ab2d27a",
+        "effectiveGeometrySha256": "a2eee1ca35c8a092aa12470deda99f4e0a98f0dd959c3b815801458bfccdeb1f",
+        "triageResearchGeometrySha256": "ff776da71821884b3da9c6a0bc97ce45e31dc7f74a473d33e2ea84416dc9cb09",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "Hammamet ouest",
+            "Hammamet Ouest"
+          ],
+          "areaKm2": 5.849609992731289,
+          "bbox": [
+            10.566003,
+            36.397346,
+            10.612666,
+            36.424501
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 461,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7104930",
+          "kind": "sector",
+          "lat": 36.412834,
+          "lng": 10.582532,
+          "name": "الحمامات الغربية",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7104930",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "e10da22226abf193cd62ae4a934f05382720100276411dee15f07683bf20b79e"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7104930",
+        "action": "replace",
+        "officialCode": "156657",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7104931",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "منارة الحمامات",
+          "name:aeb": "براكة الساحل",
+          "name:ar": "منارة الحمامات",
+          "name:fr": "Manaret El Hammamet",
+          "ref:tn:codegeo": "156654"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "منارة الحمامات",
+          "name:aeb": "براكة الساحل",
+          "name:ar": "منارة الحمامات",
+          "name:fr": "Manaret El Hammamet",
+          "ref:tn:codegeo": "156654"
+        },
+        "originalGeometrySha256": "f1d27d89dd2b273045d92e839a15b1d1827397a7f75d6b159d2e193ec2962e6d",
+        "effectiveGeometrySha256": "f1d27d89dd2b273045d92e839a15b1d1827397a7f75d6b159d2e193ec2962e6d",
+        "triageResearchGeometrySha256": "d6f22c1ece8b596de34a7456bafeca464342689db389c0d15b8afd771a46ab69",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7104931",
+          "sourceId": "osm",
+          "name": "منارة الحمامات",
+          "aliases": [
+            "Manaret El Hammamet",
+            "Mnaret El Hammamet",
+            "براكة الساحل"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.396361,
+          "lng": 10.544,
+          "delegationId": 461,
+          "hasBoundary": true,
+          "bbox": [
+            10.495833,
+            36.352827,
+            10.576348,
+            36.439747
+          ],
+          "areaKm2": 28.356014609587717,
+          "pickerGroupId": "osm:relation:7104931"
+        },
+        "packedGeometrySha256": "e066d430a473443cef570b486b8233ff5c6ad4ce055dc7a2ddb0172cd33db07f"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "منارة الحمامات",
+          "name:aeb": "براكة الساحل",
+          "name:ar": "منارة الحمامات",
+          "name:fr": "Manaret El Hammamet",
+          "ref:tn:codegeo": "156654"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Manaret El Hammamet;Mnaret El Hammamet;منارة الحمامات",
+          "boundary": "administrative",
+          "name:ar": "براكة الساحل",
+          "name:fr": "Barraket essahel",
+          "ref:tn:codegeo": "156654"
+        },
+        "originalGeometrySha256": "f1d27d89dd2b273045d92e839a15b1d1827397a7f75d6b159d2e193ec2962e6d",
+        "effectiveGeometrySha256": "e92ee6aa2ce90045f3a5748a8f9dbbc12bace90a24c3c3e9826f8ce8cbfeae73",
+        "triageResearchGeometrySha256": "d6f22c1ece8b596de34a7456bafeca464342689db389c0d15b8afd771a46ab69",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "Barraket essahel",
+            "Manaret El Hammamet",
+            "Mnaret El Hammamet",
+            "منارة الحمامات"
+          ],
+          "areaKm2": 20.524514004725216,
+          "bbox": [
+            10.495592,
+            36.387351,
+            10.576837,
+            36.445382
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 461,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7104931",
+          "kind": "sector",
+          "lat": 36.4047613,
+          "lng": 10.5602519,
+          "name": "براكة الساحل",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7104931",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "3f54eaac8c9134b71a3609b1c4a6a1740409bfa4d51c792895a44647ca42a93a"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7104931",
+        "action": "replace",
+        "officialCode": "156654",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7104932",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "ياسمين الحمامات",
+          "name:ar": "ياسمين الحمامات",
+          "name:fr": "Yasmine Hammamet",
+          "ref:tn:codegeo": "156659"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "ياسمين الحمامات",
+          "name:ar": "ياسمين الحمامات",
+          "name:fr": "Yasmine Hammamet",
+          "ref:tn:codegeo": "156659"
+        },
+        "originalGeometrySha256": "ae9da58f08b296f56268d7cca3baa25a563ffc4299765694e18aa44444200a9f",
+        "effectiveGeometrySha256": "ae9da58f08b296f56268d7cca3baa25a563ffc4299765694e18aa44444200a9f",
+        "triageResearchGeometrySha256": "59d70b780e12d2658bf9b1f50fd0058ce3ada4e9339e921373cea770db8aa9e1",
+        "expectedCuration": {
+          "id": "osm:relation:7104932",
+          "expectedKind": "sector",
+          "expectedTags": {
+            "name:ar": "ياسمين الحمامات",
+            "ref:tn:codegeo": "156659"
+          },
+          "action": "administrative_context",
+          "delegationId": "osm:relation:7145835",
+          "governorateId": "osm:relation:1435825",
+          "reason": "The official directory identifies Yasmine Hammamet sector 156659 under Hammamet 1566 in Nabeul 15. Assign this documented identity instead of the conflicting source Sousse governorate polygon.",
+          "evidence": [
+            "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=52"
+          ],
+          "unresolved": [
+            "The source sector polygon lies within the source Sousse governorate polygon and the source Hammamet delegation polygon. Correcting metadata does not determine which polygon border is wrong.",
+            "A Google Maps phone spot-check on 2026-09-07 confirmed the place name and coastal resort south of Hammamet; it did not expose a governorate or establish boundary vertex accuracy."
+          ]
+        },
+        "currentMetadata": {
+          "id": "osm:relation:7104932",
+          "sourceId": "osm",
+          "name": "ياسمين الحمامات",
+          "aliases": [
+            "Yasmine Hammamet"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.332443,
+          "lng": 10.511143,
+          "delegationId": 433,
+          "hasBoundary": true,
+          "bbox": [
+            10.494454,
+            36.308445,
+            10.529529,
+            36.356531
+          ],
+          "areaKm2": 5.206642318925503,
+          "pickerGroupId": "osm:relation:7104932"
+        },
+        "packedGeometrySha256": "3cc983f7d4ea7ec6a31c62fb84f06417c487492c88572ed0aa0b7312122f3aca"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "ياسمين الحمامات",
+          "name:ar": "ياسمين الحمامات",
+          "name:fr": "Yasmine Hammamet",
+          "ref:tn:codegeo": "156659"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Yasmine Hammamet",
+          "boundary": "administrative",
+          "name:ar": "ياسمين الحمامات",
+          "name:fr": "Yasmin hammamet",
+          "ref:tn:codegeo": "156659"
+        },
+        "originalGeometrySha256": "ae9da58f08b296f56268d7cca3baa25a563ffc4299765694e18aa44444200a9f",
+        "effectiveGeometrySha256": "1c3f64db70357364c5518524e3d721c901c47683b731a6cf76c708ca2fd30770",
+        "triageResearchGeometrySha256": "59d70b780e12d2658bf9b1f50fd0058ce3ada4e9339e921373cea770db8aa9e1",
+        "expectedCuration": {
+          "action": "administrative_context",
+          "delegationId": "osm:relation:7145835",
+          "evidence": [
+            "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=52"
+          ],
+          "expectedKind": "sector",
+          "expectedTags": {
+            "name:ar": "ياسمين الحمامات",
+            "ref:tn:codegeo": "156659"
+          },
+          "governorateId": "osm:relation:1435825",
+          "id": "osm:relation:7104932",
+          "reason": "The official directory identifies Yasmine Hammamet sector 156659 under Hammamet 1566 in Nabeul 15. Assign this documented identity instead of the conflicting source Sousse governorate polygon.",
+          "unresolved": [
+            "The source sector polygon lies within the source Sousse governorate polygon and the source Hammamet delegation polygon. Correcting metadata does not determine which polygon border is wrong.",
+            "A Google Maps phone spot-check on 2026-09-07 confirmed the place name and coastal resort south of Hammamet; it did not expose a governorate or establish boundary vertex accuracy."
+          ]
+        },
+        "currentMetadata": {
+          "aliases": [
+            "Yasmin hammamet",
+            "Yasmine Hammamet"
+          ],
+          "areaKm2": 16.922792620779198,
+          "bbox": [
+            10.492338,
+            36.367646,
+            10.558163,
+            36.416674
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 461,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7104932",
+          "kind": "sector",
+          "lat": 36.3746888,
+          "lng": 10.5411468,
+          "name": "ياسمين الحمامات",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7104932",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "a272bf2357d429a0ec0e5285330a4dc73e1330a6f719ee4d693f702f07330d3f"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7104932",
+        "action": "replace",
+        "officialCode": "156659",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7105070",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سيدي الجديدي",
+          "name:ar": "سيدي الجديدي",
+          "name:fr": "Sidi Ejdidi",
+          "ref:tn:codegeo": "156651"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سيدي الجديدي",
+          "name:ar": "سيدي الجديدي",
+          "name:fr": "Sidi Ejdidi",
+          "ref:tn:codegeo": "156651"
+        },
+        "originalGeometrySha256": "ddabb3ec9c41d71bfccc45f77922b59d201100758376caa6296e54e80ee9e60d",
+        "effectiveGeometrySha256": "ddabb3ec9c41d71bfccc45f77922b59d201100758376caa6296e54e80ee9e60d",
+        "triageResearchGeometrySha256": "1acb9fa3051fc6a30a4277f510aa712d1a00ad2746547f353334f27a857738a5",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7105070",
+          "sourceId": "osm",
+          "name": "سيدي الجديدي",
+          "aliases": [
+            "Sidi Ejdidi",
+            "Sidi Jadidi"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.421917,
+          "lng": 10.427507,
+          "delegationId": 433,
+          "hasBoundary": true,
+          "bbox": [
+            10.344094,
+            36.353477,
+            10.53878,
+            36.490588
+          ],
+          "areaKm2": 153.50185465440399,
+          "pickerGroupId": "osm:relation:7105070"
+        },
+        "packedGeometrySha256": "f2243f137566579c209969f0e29d38cccb4b369c1344f4abb4d89cea5ddc0ffc"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سيدي الجديدي",
+          "name:ar": "سيدي الجديدي",
+          "name:fr": "Sidi Ejdidi",
+          "ref:tn:codegeo": "156651"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Sidi Ejdidi;Sidi Jadidi",
+          "boundary": "administrative",
+          "name:ar": "سيدي الجديدي",
+          "name:fr": "Sidi djedidi",
+          "ref:tn:codegeo": "156651"
+        },
+        "originalGeometrySha256": "ddabb3ec9c41d71bfccc45f77922b59d201100758376caa6296e54e80ee9e60d",
+        "effectiveGeometrySha256": "69d0df0bd99602b7bfcfa02c198648a862526926eefe1286b561446dbb65ee7b",
+        "triageResearchGeometrySha256": "1acb9fa3051fc6a30a4277f510aa712d1a00ad2746547f353334f27a857738a5",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "Sidi Ejdidi",
+            "Sidi Jadidi",
+            "Sidi djedidi"
+          ],
+          "areaKm2": 134.3687749403321,
+          "bbox": [
+            10.351507,
+            36.359975,
+            10.513939,
+            36.490361
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 433,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7105070",
+          "kind": "sector",
+          "lat": 36.421917,
+          "lng": 10.427507,
+          "name": "سيدي الجديدي",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7105070",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "4a97721732eff4e1ea77a1e38c356efa04f622b1fcf9cb0d8e20898af05de2ef"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7105070",
+        "action": "replace",
+        "officialCode": "156651",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    },
+    {
+      "id": "osm:relation:7144606",
+      "originalRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "osm",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الاطرش",
+          "name:ar": "الاطرش",
+          "name:fr": "Latrach",
+          "ref:tn:codegeo": "156652"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الاطرش",
+          "name:ar": "الاطرش",
+          "name:fr": "Latrach",
+          "ref:tn:codegeo": "156652"
+        },
+        "originalGeometrySha256": "1b24cde277691789d7cd1efd424aef70c7c5db836670b0c096ecf02bf850d0a5",
+        "effectiveGeometrySha256": "1b24cde277691789d7cd1efd424aef70c7c5db836670b0c096ecf02bf850d0a5",
+        "triageResearchGeometrySha256": "feb9550e017814532b828f723d143178d27c15f60feba864ec8c15dc7133c430",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "id": "osm:relation:7144606",
+          "sourceId": "osm",
+          "name": "الاطرش",
+          "aliases": [
+            "Latrach"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية الحمامات",
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "governorateId": 350,
+          "lat": 36.474958,
+          "lng": 10.484984,
+          "delegationId": 463,
+          "hasBoundary": true,
+          "bbox": [
+            10.398189,
+            36.438552,
+            10.535985,
+            36.511326
+          ],
+          "areaKm2": 41.13070350001682,
+          "pickerGroupId": "osm:relation:7144606"
+        },
+        "packedGeometrySha256": "379b0ae4f264040a6e8d1e91a053b3a99350089e4b4f790d6a3b975728363016"
+      },
+      "effectiveRecord": {
+        "originalSourceId": null,
+        "effectiveSourceId": "isie-local-sectors-2023-hammamet-nine",
+        "kind": "sector",
+        "originalTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الاطرش",
+          "name:ar": "الاطرش",
+          "name:fr": "Latrach",
+          "ref:tn:codegeo": "156652"
+        },
+        "effectiveTags": {
+          "admin_level": "6",
+          "alt_name": "Latrach",
+          "boundary": "administrative",
+          "name:ar": "الاطرش",
+          "name:fr": "El atrach",
+          "ref:tn:codegeo": "156652"
+        },
+        "originalGeometrySha256": "1b24cde277691789d7cd1efd424aef70c7c5db836670b0c096ecf02bf850d0a5",
+        "effectiveGeometrySha256": "7ce2a93a215a74ba638100bc835c26908440ab791b5333da9376767a15071c5e",
+        "triageResearchGeometrySha256": "feb9550e017814532b828f723d143178d27c15f60feba864ec8c15dc7133c430",
+        "expectedCuration": null,
+        "currentMetadata": {
+          "aliases": [
+            "El atrach",
+            "Latrach"
+          ],
+          "areaKm2": 67.20434624289183,
+          "bbox": [
+            10.39782,
+            36.434612,
+            10.561444,
+            36.511431
+          ],
+          "contextAliases": [
+            "Délégation Hammamet",
+            "Hammamet",
+            "معتمدية الحمامات"
+          ],
+          "delegationId": 463,
+          "governorateId": 350,
+          "hasBoundary": true,
+          "id": "osm:relation:7144606",
+          "kind": "sector",
+          "lat": 36.474958,
+          "lng": 10.484984,
+          "name": "الاطرش",
+          "parentName": "معتمدية الحمامات",
+          "pickerGroupId": "osm:relation:7144606",
+          "sourceId": "isie-local-sectors-2023-hammamet-nine"
+        },
+        "packedGeometrySha256": "4410c867c763951e22c2e010d08e539baba4add6d979e55e4495500037b89829"
+      },
+      "acceptedApplication": {
+        "id": "osm:relation:7144606",
+        "action": "replace",
+        "officialCode": "156652",
+        "sourceId": "isie-local-sectors-2023-hammamet-nine"
+      }
+    }
+  ],
+  "historicalFullSourceFacts": {
+    "file": "residential-base-display-reviews/three-town-review/current-source-facts.json",
+    "sha256": "1ad3ad73308e56a1969531ea5d1c0f5ebd5503c75f0e41ef0633a0a7d8397242"
+  },
+  "sourceCapture": {
+    "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/source-capture.json",
+    "sha256": "25ccde736b63fe40166e7233dbf938455143a7605f66831ee2ccc9007a8d6cf9"
+  },
+  "phaseEvidence": {
+    "file": "residential-base-display-reviews/hammamet-official-boundaries-20260920/root-phase-review.json",
+    "sha256": "9e7213a5cb9565f39b7e0c3896ccdefcec9bb647e9755b739635ed9f184288ba"
+  },
+  "phaseQualification": "The lineage contract consumes the fresh working before-document for historicalSourceFacts. It does not rewrite historical source facts; historicalFullSourceFacts remains pinned separately."
+}

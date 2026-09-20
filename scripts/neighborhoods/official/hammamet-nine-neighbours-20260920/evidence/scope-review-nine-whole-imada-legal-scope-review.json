@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "status": "NINE_WHOLE_IMADA_SEMANTIC_SCOPE_CHECKS_SUPPORTED",
+  "reviewedOn": "2026-09-20",
+  "scope": "The exact nine external-neighbour candidates in the pinned inventory; territorial-unit semantics only. No geometry construction or production edits.",
+  "candidateInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\ten-external-nine-candidate-inventory.json",
+    "sha256": "173da1c7c65507dfe13b69fffe0dda9bf5d892ac85993bac8ca44b9d2a558e27"
+  },
+  "primarySource": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "title": "Decree2023-590 of21September2023",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "priorMethodologyReference": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\accepted76-whole-imada-scope-review.json",
+    "sha256": "b95908cfbb781e419b2b8a5ac015b95c41979448bfa0443b39813d090f554027",
+    "use": "Methodology and expected INS workbook pins only; prior candidate approvals were not reused for these nine."
+  },
+  "registrySources": [
+    {
+      "extract": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique-sectors.json",
+        "sha256": "b08b0a4456c19ee1c747dc3db2fab5e924566b484702bff1b53ebfee63b2f031"
+      },
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae"
+      },
+      "officialSourceUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx"
+    },
+    {
+      "extract": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs-sectors.json",
+        "sha256": "50bdbfe110723aa8f842dc331b8f6384c0284878748b684871fa46273e6ac9d9"
+      },
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831"
+      },
+      "officialSourceUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx"
+    },
+    {
+      "extract": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs-sectors.json",
+        "sha256": "1e246c62aefe1e041968a94b5b2e82fe293ec01ea87847566cb2bb1361f6bf12"
+      },
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1"
+      },
+      "officialSourceUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx"
+    }
+  ],
+  "visualEvidence": {
+    "newCompletePageRenders": [
+      {
+        "pdfPageOneBased": 44,
+        "jortPage": 5141,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-44.png",
+        "sha256": "7d1e54b30a371ff3176496ee0eec48680874b4afe927fcc248d9bd94448d188c"
+      },
+      {
+        "pdfPageOneBased": 46,
+        "jortPage": 5143,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-46.png",
+        "sha256": "9b829a0abb95f090b491affbe45cc1b9dba5443aee0e6fcd85b7cef5120353db"
+      },
+      {
+        "pdfPageOneBased": 49,
+        "jortPage": 5146,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-49.png",
+        "sha256": "0fa23ac7fff8149d106fe622d8dc3f4fa06441dc4ffe737f3a516c33c83db47a"
+      },
+      {
+        "pdfPageOneBased": 50,
+        "jortPage": 5147,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-50.png",
+        "sha256": "103d4a26c93089277be8451b199b07a539e41fbb8e8dcfb3805078c0aa9daa40"
+      },
+      {
+        "pdfPageOneBased": 51,
+        "jortPage": 5148,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-51.png",
+        "sha256": "31d86b31bba4a19c91a428308e56d88e2cf22d9e9b1cff15d981bc55215b3bf3"
+      },
+      {
+        "pdfPageOneBased": 74,
+        "jortPage": 5171,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-74.png",
+        "sha256": "1b84972dc4d202fa21bf0e36feae9521b0167cb7cf45e24c6c90fd98c0ae3769"
+      },
+      {
+        "pdfPageOneBased": 75,
+        "jortPage": 5172,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-75.png",
+        "sha256": "af214a66ed6896a5b142b5f694a09dbc24e65c5a948c8b31be52dfef0c3a79e1"
+      },
+      {
+        "pdfPageOneBased": 76,
+        "jortPage": 5173,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-76.png",
+        "sha256": "3483e377186635257c1767208fab86c3e743c2b0c77ddc1bc9e00b5832590e77"
+      },
+      {
+        "pdfPageOneBased": 77,
+        "jortPage": 5174,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-77.png",
+        "sha256": "1567f776ae039e33638a76b972df9cd6a68459d45abf07d5e333860c7dae643c"
+      },
+      {
+        "pdfPageOneBased": 78,
+        "jortPage": 5175,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\oued-zit-crossing-review-20260920\\decree-page-78.png",
+        "sha256": "7e66d574605bbd23199d21e411834424516485deeefd822e4475bcac7799acbe"
+      }
+    ],
+    "previousCompleteRendersAlsoVisuallyRead": [
+      {
+        "pdfPageOneBased": 2,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-2.png",
+        "sha256": "09ced0a2c749d8fdf1886da70fa52126d7aaba680ccdbdb1d9e19fda8a29c9c2"
+      },
+      {
+        "pdfPageOneBased": 95,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-95.png",
+        "sha256": "69ffbcae948a8bbf50249262536622b046017c885621c7f00fa9e5c27d06e0cf"
+      }
+    ],
+    "governorateHeaderAnchors": [
+      {
+        "governorateCode": "16",
+        "pdfPageOneBased": 44
+      },
+      {
+        "governorateCode": "31",
+        "pdfPageOneBased": 49
+      },
+      {
+        "governorateCode": "15",
+        "pdfPageOneBased": 74
+      }
+    ]
+  },
+  "methodology": [
+    "Read complete rendered decree pages visually, including imada, constituency, delegation and governorate columns. Automated PDF text has only headers for these scanned tables and was not used as row evidence.",
+    "Whole-imada requires one administrative-imada cell aligned to exactly one electoral-circle row; explicit split cells on other pages were visibly distinguishable.",
+    "Sector codes are supplied by the INS registry and are not printed in this decree table. Each code-to-name assignment was joined by exact Arabic name and parent hierarchy, then independently checked at the cited source row in all three pinned INS workbooks.",
+    "Annex6 introduction states that its descriptions cover electoral constituencies whose limits do not coincide with an imada. The nine direct tableA row structures support whole-imada treatment without constructing unions.",
+    "Arabic transcription normalizes spacing and punctuation; parent qualifiers and directional imada names are preserved."
+  ],
+  "records": [
+    {
+      "id": "osm:relation:7105250",
+      "key": "bouficha",
+      "officialCode": "316151",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 50,
+        "jortPage": 5147,
+        "imadaNameArabic": "بوفيشة",
+        "circleNameArabicNormalizedVisualTranscription": "بوفيشة",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 4,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "31",
+        "governorateAr": "سوسة",
+        "governorateFr": "Sousse",
+        "delegationCode": "3161",
+        "delegationAr": "بوفيشة",
+        "delegationFr": "Bouficha"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 34373,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1617,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1616,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "2a9bd82743ab156c34534789f8f45627d79c43bc87a0aa51c6fdf77f46ab4a4f",
+        "geometrySha256": "72428c025d781af3d2dc2688f3c6c1014ba9c7d9dc8c89ad012d2810934ecafa"
+      },
+      "note": "Bouficha is the fourth of seven delegation rows on page50; the same parent continues with Ain Rahma and Oued El Kharroub on page51. No split cell."
+    },
+    {
+      "id": "osm:relation:7105249",
+      "key": "selloum-bouficha",
+      "officialCode": "316158",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 50,
+        "jortPage": 5147,
+        "imadaNameArabic": "السلوم",
+        "circleNameArabicNormalizedVisualTranscription": "السلوم - (بوفيشة)",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 1,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "31",
+        "governorateAr": "سوسة",
+        "governorateFr": "Sousse",
+        "delegationCode": "3161",
+        "delegationAr": "بوفيشة",
+        "delegationFr": "Bouficha"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 34611,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1629,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1628,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "2f1896201606af27e359e39c81f001f61e5778df37321a550a7fa20816e95c6c",
+        "geometrySha256": "b1d78d6aced3ca53b18b51e14810074d9e3e23cdd82926cd9e29b92a9693438f"
+      },
+      "note": "Circle includes the Bouficha parent qualifier in parentheses; this distinguishes the homonym and is not a subdivision."
+    },
+    {
+      "id": "osm:relation:7105455",
+      "key": "sidi-said-bouficha",
+      "officialCode": "316155",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 50,
+        "jortPage": 5147,
+        "imadaNameArabic": "سيدي سعيد",
+        "circleNameArabicNormalizedVisualTranscription": "سيدي سعيد - (بوفيشة)",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 6,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "31",
+        "governorateAr": "سوسة",
+        "governorateFr": "Sousse",
+        "delegationCode": "3161",
+        "delegationAr": "بوفيشة",
+        "delegationFr": "Bouficha"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 34509,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 1624,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 1623,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "e2d651fb66fa7ef345b9006abdc644cb928a1124e662449098539bb39807dfac",
+        "geometrySha256": "f72e489b29ce3cf64d66f84cd2c33d171095ed162e06530f5a528de89a9a2a11"
+      },
+      "note": "Circle includes the Bouficha parent qualifier in parentheses; imada and circle occupy one shared row."
+    },
+    {
+      "id": "osm:relation:7104940",
+      "key": "jebel-trif",
+      "officialCode": "156458",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 77,
+        "jortPage": 5174,
+        "imadaNameArabic": "جبل طريف",
+        "circleNameArabicNormalizedVisualTranscription": "جبل طريف",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 2,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "15",
+        "governorateAr": "نابل",
+        "governorateFr": "Nabeul",
+        "delegationCode": "1564",
+        "delegationAr": "قرنبالية",
+        "delegationFr": "Grombalia"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 14179,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 584,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 583,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+        "geometrySha256": "e7fadf4486f8629c99e846050a7d9b5c269f1224a8f9bd2f8036759ddc0b20ee"
+      },
+      "note": "Direct one-imada to one-electoral-circle row under the matching delegation; no numbered or combined subdivision."
+    },
+    {
+      "id": "osm:relation:7103679",
+      "key": "borj-hafedh",
+      "officialCode": "156553",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 75,
+        "jortPage": 5172,
+        "imadaNameArabic": "برج حفيظ",
+        "circleNameArabicNormalizedVisualTranscription": "برج حفيظ",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 3,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "15",
+        "governorateAr": "نابل",
+        "governorateFr": "Nabeul",
+        "delegationCode": "1565",
+        "delegationAr": "بوعرقوب",
+        "delegationFr": "Bou argoub"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 14315,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 592,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 591,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+        "geometrySha256": "e6f09ee6fc5a7fa78ce707d1ed83d5232d1e0ea1af772b9b3fcd7f4d4365c461"
+      },
+      "note": "Direct one-imada to one-electoral-circle row under the matching delegation; no numbered or combined subdivision."
+    },
+    {
+      "id": "osm:relation:7103680",
+      "key": "bou-argoub-sud",
+      "officialCode": "156555",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 75,
+        "jortPage": 5172,
+        "imadaNameArabic": "بوعرقوب القبلية",
+        "circleNameArabicNormalizedVisualTranscription": "بوعرقوب القبلية",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 6,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "15",
+        "governorateAr": "نابل",
+        "governorateFr": "Nabeul",
+        "delegationCode": "1565",
+        "delegationAr": "بوعرقوب",
+        "delegationFr": "Bou argoub"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 14383,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 596,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 595,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7",
+        "geometrySha256": "3dc38c18cc8c69386b4a409f19c48719e0bc6a02247d5e172889e69c1f8b0c0e"
+      },
+      "note": "South/Quibliya occurs in both the administrative imada and electoral-circle columns. It names the imada, not a fraction inferred from a directional label."
+    },
+    {
+      "id": "osm:relation:7103327",
+      "key": "hedi-chaker",
+      "officialCode": "155156",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 78,
+        "jortPage": 5175,
+        "imadaNameArabic": "الهادي شاكر",
+        "circleNameArabicNormalizedVisualTranscription": "الهادي شاكر - (نابل)",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 4,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "15",
+        "governorateAr": "نابل",
+        "governorateFr": "Nabeul",
+        "delegationCode": "1551",
+        "delegationAr": "نابل",
+        "delegationFr": "Nabeul"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 11527,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 429,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 428,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+        "geometrySha256": "e627b222e6f8920dcf19f8c99b8c20c123c900f9d145d0f2c5c19848dd36cb64"
+      },
+      "note": "Circle adds the Nabeul parent qualifier. The separate Hedi Chaker in Sousse Jawhara appears on page51 and is not this record."
+    },
+    {
+      "id": "osm:relation:7104938",
+      "key": "ain-tebournouk",
+      "officialCode": "156459",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 77,
+        "jortPage": 5174,
+        "imadaNameArabic": "عين طبرنق",
+        "circleNameArabicNormalizedVisualTranscription": "عين طبرنق",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 5,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "15",
+        "governorateAr": "نابل",
+        "governorateFr": "Nabeul",
+        "delegationCode": "1564",
+        "delegationAr": "قرنبالية",
+        "delegationFr": "Grombalia"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 14213,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 586,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 585,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "26c69787a7f2e4126f30ba3c15e8babbe8b72558d9a3e8f4a4f9d3431c2dea48",
+        "geometrySha256": "c6f4a4e01d1e1e9be65d768ac63bd71bd4001501710b0995de8beb0202163103"
+      },
+      "note": "Direct one-imada to one-electoral-circle row under the matching delegation; no numbered or combined subdivision."
+    },
+    {
+      "id": "osm:relation:7109196",
+      "key": "oued-zit",
+      "officialCode": "165159",
+      "conclusion": "whole_imada",
+      "decree": {
+        "annex": 1,
+        "table": "A",
+        "pdfPageOneBased": 46,
+        "jortPage": 5143,
+        "imadaNameArabic": "وادي الزيت",
+        "circleNameArabicNormalizedVisualTranscription": "وادي الزيت",
+        "imadaColumnSpansExactlyOneCircleRow": true,
+        "circleRowCountForThisImada": 1,
+        "seatCount": 1,
+        "rowOrdinalWithinDelegation": 9,
+        "splitOrCombinedPartsLabel": false
+      },
+      "hierarchy": {
+        "governorateCode": "16",
+        "governorateAr": "زغوان",
+        "governorateFr": "Zaghouan",
+        "delegationCode": "1651",
+        "delegationAr": "زغوان",
+        "delegationFr": "Zaghouan"
+      },
+      "registryChecks": [
+        {
+          "workbook": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+          "sheet": "Population",
+          "row": 15063,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_Logements_par_Secteurs.xlsx",
+          "sheet": "Logements",
+          "row": 631,
+          "codeNameHierarchyExactlyMatch": true
+        },
+        {
+          "workbook": "Nombre_de_menages_par_Secteurs.xlsx",
+          "sheet": "Ménages",
+          "row": 630,
+          "codeNameHierarchyExactlyMatch": true
+        }
+      ],
+      "candidateBinding": {
+        "sourcePdfSha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b",
+        "geometrySha256": "59e00798d50a4d2b427b0fbf090f83dddcc3ac810fb517863343286c7d391a70"
+      },
+      "note": "The ninth and final Zaghouan row pairs Oued Zit with exactly one Oued Zit electoral circle. Previously reviewed crossing remains a separate geometric limitation."
+    }
+  ],
+  "summary": {
+    "wholeImadaCount": 9,
+    "splitCircleCount": 0,
+    "combinedCircleCount": 0,
+    "unresolvedSemanticCount": 0,
+    "directWorkbookRowChecks": 27
+  },
+  "qualifications": [
+    "This establishes the unit represented by the2023 electoral maps; it does not certify boundary survey accuracy, agreement between neighbouring map projections, or legal changes after2023.",
+    "INS source records corroborate identity and hierarchy. They do not supply the legal edge coordinates.",
+    "Whole-imada semantics do not independently prove that a chosen PDF path is complete or correctly georeferenced; retain the separate native-path and clipping checks.",
+    "Oued Zit source-crossing qualification and both retained components remain unchanged. This task did not repeat or alter its accepted linework audit."
+  ],
+  "recommendedNextSafeAction": "The semantic scope gate is satisfied for these exact nine pinned candidates. Carry these per-record decree pages, INS joins and source hashes into staging; retain the separate geometry, neighbour topology and coordinate-policy gates.",
+  "geometryConstruction": false,
+  "productionEdits": false,
+  "testsBuildsDevicesExternalApiCalls": false
+}

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "administrativeScopeReview": {
-  "file": "official/arima-joufia-receivers-20260912/accepted90-whole-imada-scope-review.json",
-  "sha256": "b9c78637a2cb6e26482283c696e34b9828223a1df91d29adcae365c4b73a5d58"
-},
+    "file": "official/two-historical-sectors-20260920/accepted-whole-scope-successor.json",
+    "sha256": "a82d380fd97d67e24fc970fa3a03cecad9935d30ec440e8e8254bf0195d39d0c"
+  },
   "sources": [
     {
       "id": "isie-local-sectors-2023-megrine",
@@ -2067,10 +2067,494 @@
         "namePolicy": "Canonical original INS/decree/own-map Arima and Joufia identities; exact complete old source tags are bound, no automatic old aliases.",
         "qualification": "Source-only receiver extension, preserving close-edge Baddar primary identity qualification and actual source seams. Full integrated proof/context and actual-data review remain required."
       }
+    },
+    {
+      "id": "isie-local-sectors-2023-hammamet-nine",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/hammamet-nine-20260920/hammamet-nine-source.geojson",
+      "sha256": "1039956e7e88e4dc130ea717b2dddf35827aec97998007e2a591beb677a0a60e",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7105070",
+          "officialCode": "156651",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي الجديدي",
+            "name:ar": "سيدي الجديدي",
+            "name:fr": "Sidi Ejdidi",
+            "ref:tn:codegeo": "156651"
+          },
+          "aliases": [
+            "Sidi Ejdidi",
+            "Sidi Jadidi"
+          ]
+        },
+        {
+          "id": "osm:relation:7144606",
+          "officialCode": "156652",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الاطرش",
+            "name:ar": "الاطرش",
+            "name:fr": "Latrach",
+            "ref:tn:codegeo": "156652"
+          },
+          "aliases": [
+            "Latrach"
+          ]
+        },
+        {
+          "id": "osm:relation:7104926",
+          "officialCode": "156653",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بير بورقبة",
+            "name:ar": "بير بورقبة",
+            "name:fr": "Bir Bouregba",
+            "ref:tn:codegeo": "156653",
+            "wikidata": "Q2904332"
+          },
+          "aliases": [
+            "Bir Bouregba",
+            "بير بورقبة"
+          ]
+        },
+        {
+          "id": "osm:relation:7104931",
+          "officialCode": "156654",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "منارة الحمامات",
+            "name:aeb": "براكة الساحل",
+            "name:ar": "منارة الحمامات",
+            "name:fr": "Manaret El Hammamet",
+            "ref:tn:codegeo": "156654"
+          },
+          "aliases": [
+            "Manaret El Hammamet",
+            "Mnaret El Hammamet",
+            "منارة الحمامات"
+          ]
+        },
+        {
+          "id": "osm:relation:7104927",
+          "officialCode": "156655",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الجوفية",
+            "name:ar": "الحمامات الجوفية",
+            "name:fr": "Hammamet Nord",
+            "ref:tn:codegeo": "156655"
+          },
+          "aliases": [
+            "Hammamet Nord"
+          ]
+        },
+        {
+          "id": "osm:relation:7104929",
+          "officialCode": "156656",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الشرقية",
+            "name:ar": "الحمامات الشرقية",
+            "name:fr": "Hammamet Est",
+            "ref:tn:codegeo": "156656"
+          },
+          "aliases": [
+            "Hammamet Est"
+          ]
+        },
+        {
+          "id": "osm:relation:7104930",
+          "officialCode": "156657",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الحمامات الغربية",
+            "name:ar": "الحمامات الغربية",
+            "name:fr": "Hammamet Ouest",
+            "ref:tn:codegeo": "156657"
+          },
+          "aliases": [
+            "Hammamet Ouest"
+          ]
+        },
+        {
+          "id": "osm:relation:7104928",
+          "officialCode": "156658",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المرازقة",
+            "name:ar": "المرازقة",
+            "name:fr": "El Mrezga",
+            "ref:tn:codegeo": "156658"
+          },
+          "aliases": [
+            "El Mrezga"
+          ]
+        },
+        {
+          "id": "osm:relation:7104932",
+          "officialCode": "156659",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "ياسمين الحمامات",
+            "name:ar": "ياسمين الحمامات",
+            "name:fr": "Yasmine Hammamet",
+            "ref:tn:codegeo": "156659"
+          },
+          "aliases": [
+            "Yasmine Hammamet"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/hammamet-nine-20260920/source-review.json",
+        "evidenceSha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8",
+        "geometryPolicy": "Existing source geometry is copied exactly, including previously reviewed zero-area Hammamet Nord normalization; no new geometry operation.",
+        "namePolicy": "Registry primary names with individually approved aliases; no territorial equivalence inferred from aliases.",
+        "qualification": "Source stage only; integration, point choices and external source seams remain to be reviewed."
+      },
+      "manualPointReview": {
+        "file": "official/hammamet-nine-20260920/manual-point-review.json",
+        "sha256": "d0043877ef4aca2ca916e064e035db336c673eec4463b6efd0c21cab17c73c84"
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-sidi-mtir-bouficha",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/sidi-mtir-20260920/sidi-mtir-source.geojson",
+      "sha256": "4d8069110dc7c8720f7904c85596789d11da79a2bb9c740c7b4ff3d95a8349e9",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7105456",
+          "officialCode": "316159",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي مطير",
+            "name:ar": "سيدي مطير",
+            "name:fr": "Sidi Mtir",
+            "ref:tn:codegeo": "316159"
+          },
+          "aliases": [
+            "Sidi Mtir"
+          ]
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/sidi-mtir-20260920/source-review.json",
+        "evidenceSha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6",
+        "geometryPolicy": "Exact reviewed source drawing345, no new geometry operation.",
+        "namePolicy": "Registry names for code316159 with existing Sidi Mtir alias retained.",
+        "qualification": "Prepared source fragment; no installed catalog or certified border claim."
+      },
+      "manualPointReview": {
+        "file": "official/sidi-mtir-20260920/manual-point-review.json",
+        "sha256": "9436401420068fcfb32c58eddf26bef11c3a3d87478745e2c601e515b5e7b19d"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-hammamet-nine-neighbours",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+      "sha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7105250",
+          "officialCode": "316151",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بوفيشة",
+            "name:ar": "بوفيشة",
+            "name:fr": "Bouficha",
+            "ref:tn:codegeo": "316151"
+          },
+          "aliases": [
+            "Bouficha"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/بوفيشة.pdf",
+          "sourcePdfSha256": "2a9bd82743ab156c34534789f8f45627d79c43bc87a0aa51c6fdf77f46ab4a4f"
+        },
+        {
+          "id": "osm:relation:7105249",
+          "officialCode": "316158",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "السلوم",
+            "name:ar": "السلوم",
+            "name:fr": "Esselloum",
+            "ref:tn:codegeo": "316158"
+          },
+          "aliases": [
+            "Esselloum"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/السلوم - (بوفيشة).pdf",
+          "sourcePdfSha256": "2f1896201606af27e359e39c81f001f61e5778df37321a550a7fa20816e95c6c"
+        },
+        {
+          "id": "osm:relation:7105455",
+          "officialCode": "316155",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سيدي سعيد",
+            "name:ar": "سيدي سعيد",
+            "name:fr": "Sidi Said",
+            "ref:tn:codegeo": "316155"
+          },
+          "aliases": [
+            "Sidi Said"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/سيدي سعيد - (بوفيشة).pdf",
+          "sourcePdfSha256": "e2d651fb66fa7ef345b9006abdc644cb928a1124e662449098539bb39807dfac"
+        },
+        {
+          "id": "osm:relation:7104940",
+          "officialCode": "156458",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "جبل طريف",
+            "name:ar": "جبل طريف",
+            "name:fr": "Jbal Trif",
+            "ref:tn:codegeo": "156458"
+          },
+          "aliases": [
+            "Jbal Trif"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/جبل طريف.pdf",
+          "sourcePdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168"
+        },
+        {
+          "id": "osm:relation:7103679",
+          "officialCode": "156553",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "برج حفيظ",
+            "name:ar": "برج حفيظ",
+            "name:fr": "Borj Hfaiedh",
+            "ref:tn:codegeo": "156553"
+          },
+          "aliases": [
+            "Borj Hfaiedh"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/برج حفيظ.pdf",
+          "sourcePdfSha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e"
+        },
+        {
+          "id": "osm:relation:7103680",
+          "officialCode": "156555",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بو عرقوب الجنوبية",
+            "name:ar": "بو عرقوب الجنوبية",
+            "name:fr": "Bou Argoub Sud",
+            "ref:tn:codegeo": "156555"
+          },
+          "aliases": [
+            "Bou Argoub Sud"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/بوعرقوب القبلية.pdf",
+          "sourcePdfSha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7"
+        },
+        {
+          "id": "osm:relation:7103327",
+          "officialCode": "155156",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الهادي شاكر",
+            "name:ar": "الهادي شاكر",
+            "name:fr": "Hedi Chaker",
+            "ref:tn:codegeo": "155156"
+          },
+          "aliases": [
+            "Hedi Chaker"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 1/نابل/الهادي شاكر - (نابل).pdf",
+          "sourcePdfSha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda"
+        },
+        {
+          "id": "osm:relation:7104938",
+          "officialCode": "156459",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عين طبرنق",
+            "name:ar": "عين طبرنق",
+            "name:fr": "Ain Tebournok",
+            "ref:tn:codegeo": "156459"
+          },
+          "aliases": [
+            "Ain Tebournok"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/عين طبرنق.pdf",
+          "sourcePdfSha256": "26c69787a7f2e4126f30ba3c15e8babbe8b72558d9a3e8f4a4f9d3431c2dea48"
+        },
+        {
+          "id": "osm:relation:7109196",
+          "officialCode": "165159",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "وادي الزيت",
+            "name:ar": "وادي الزيت",
+            "name:fr": "Oued Ezzit",
+            "ref:tn:codegeo": "165159"
+          },
+          "aliases": [
+            "Oued Ezzit"
+          ],
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/زغوان/زغوان/وادي الزيت.pdf",
+          "sourcePdfSha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b"
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "evidenceFile": "official/hammamet-nine-neighbours-20260920/source-review.json",
+        "evidenceSha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667",
+        "geometryPolicy": "Exact reviewed source coordinates copied unchanged; no new geometry operation, centroid choice, or rounding.",
+        "namePolicy": "Registry names and codes from officialRecord; aliases from existing expectedBeforeMetadata.",
+        "qualification": "Prepared source fragment; no installed catalog or certified border claim."
+      },
+      "manualPointReview": {
+        "file": "official/hammamet-nine-neighbours-20260920/manual-point-review.json",
+        "sha256": "245769444f90699858c8f5dbbd15bf12eea2ca60fa644d010df3c6813d1d9bb7"
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-ettadhamen4-historical-rename",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/two-historical-sectors-20260920/ettadhamen4-source.geojson",
+      "sha256": "5ecc75bf902793294f2edd27ac0f6c3f066867f3ea50c99373436411aeb429c9",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7115584",
+          "officialCode": "125657",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "7 نوفمبر",
+            "name:ar": "7 نوفمبر",
+            "name:fr": "7 Novembre",
+            "ref:tn:codegeo": "125657"
+          },
+          "aliases": [
+            "7 نوفمبر",
+            "7 Novembre"
+          ]
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/two-historical-sectors-20260920/ettadhamen4-manual-point-review.json",
+        "sha256": "2198fd4b1ab9ab5e64ed0ed98bc2df3bee2ef10397a13ca6dcbdf76706f4d604"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "identityRegistry": "Exact INS2012/current INS2024 six-digit sector identity with agreeing current population, housing and household workbook rows.",
+        "geometryPolicy": "Unmodified complete native whole-imada vector",
+        "aliasReview": "Preserve only the exact proven historical Arabic/French names as search aliases.",
+        "uncertainty": "Nine incident conflicts and approximately 0.180729413502 square kilometres of all-layer uncovered loss across the two replacements remain explicit. No neighbor updates or seam repair. GPS conflict withholding and broader fallback remain necessary.",
+        "evidenceFile": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+        "evidenceSha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-hammam-maarouf-riadh-exhaustive-parts",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-source.geojson",
+      "sha256": "874b28be93b7a1d59fd450e6d6a4cbfee46dcf51a6f77c6bf7ee20aba13d3985",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7113315",
+          "officialCode": "315256",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العهد الجديد",
+            "name:ar": "العهد الجديد",
+            "name:fr": "El Ahd El Jadid",
+            "ref:tn:codegeo": "315256"
+          },
+          "aliases": [
+            "العهد الجديد",
+            "El Ahd El Jadid"
+          ],
+          "scopeKind": "exhaustive_electoral_parts"
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-manual-point-review.json",
+        "sha256": "335e846a88fbb4858048fc62f07c751816f9df9b311ab0b76a6163717e981830"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "identityRegistry": "Exact INS2012/current INS2024 six-digit sector identity with agreeing current population, housing and household workbook rows.",
+        "geometryPolicy": "Exact unrounded union of both decree-exhaustive electoral parts; unchanged native parts independently pinned.",
+        "aliasReview": "Preserve only the exact proven historical Arabic/French names as search aliases.",
+        "uncertainty": "Nine incident conflicts and approximately 0.180729413502 square kilometres of all-layer uncovered loss across the two replacements remain explicit. No neighbor updates or seam repair. GPS conflict withholding and broader fallback remain necessary.",
+        "evidenceFile": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+        "evidenceSha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+      }
     }
   ],
   "aggregateScopeReview": {
-  "file": "official/soliman-thirteen-native-20260912/accepted2-exhaustive-aggregate-scope-review.json",
-  "sha256": "c370d7122b4e614de33957441e0b22fcada79e50a02a16324417082cfee6453d"
-}
+    "file": "official/two-historical-sectors-20260920/accepted-aggregate-scope-successor.json",
+    "sha256": "243efca92415dfc75873cbe4210d6923b6d3a5d359a7bf3bfc2010d899599282"
+  },
+  "lineageCompatibility": {
+    "file": "official/two-historical-sectors-20260920/append-only-lineage-compatibility.json",
+    "sha256": "d7629a2fb0e732b87055257a73a903d49fb6f0ef457a599fc7a83bf8e2298453"
+  }
 }

@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_existing_locality_name_only",
+  "originalProposal": {
+    "id": "osm:way:260596042",
+    "status": "ROOT_NAME_CORRECTION_STAGED_NOT_APPLIED",
+    "expectedCatalogFingerprint": "622a01c31dbe6ca16e36f35ef8efb500f563de5873fdfddb866563335ceec618",
+    "fromName": "ليماوة",
+    "toName": "ليماية",
+    "fromAliases": [
+      "Limaoua"
+    ],
+    "toAliases": [
+      "ليماوة",
+      "Limaoua",
+      "Limaya",
+      "لماية"
+    ],
+    "keepPoint": {
+      "lat": 33.719597,
+      "lng": 10.310642
+    },
+    "keepGovernorateId": 347,
+    "keepDelegationId": 1020,
+    "keepParentName": "الزارات",
+    "keepGeometrySha256": "c9fba494b71d0192b352321489d9e098653ea3deeb89dd3f4366161094662867",
+    "sourceNodeSupport": {
+      "id": "osm:node:2661216137",
+      "int_name": "Limaya",
+      "point": {
+        "lat": 33.7204616,
+        "lng": 10.3109723
+      },
+      "currentCatalogFeature": false
+    },
+    "locationEvidence": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\limaya-landmark-location-check.json",
+      "sha256": "12bb10ac0b13b765b023c592ff0a30eba1d6be9ec00ff8a82f47f6cae3ff918c"
+    },
+    "phoneEvidenceLabels": [
+      "limaya-zarat-20260920",
+      "limaya-centered-20260920",
+      "limaya-mosque-20260920"
+    ],
+    "officialEvidence": [
+      {
+        "documentPins": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\official-document-pins.json",
+          "sha256": "bc503adf36cae4f4bb684d434c17601bf484556d3a1d64179903e14f835d8342"
+        },
+        "source": "ISIE voting-centre directory",
+        "pageZeroBased": 78,
+        "rowCode": "5139",
+        "supports": "Limaya school in Ezzarat/Mareth/Gabes, separately from Limaoua in Gabes Sud on page 77 row 5116."
+      },
+      {
+        "documentPins": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\official-document-pins.json",
+          "sha256": "bc503adf36cae4f4bb684d434c17601bf484556d3a1d64179903e14f835d8342"
+        },
+        "source": "ARP parliamentary proceedings",
+        "pageZeroBased": 105,
+        "printedPage": 4058,
+        "supports": "Arabic coastal place spelling ليماية in Mareth, alongside Ketana and Zarat."
+      },
+      {
+        "url": "https://lake.jort.tn/annonces-legales/fr/2012/048.pdf",
+        "pageZeroBased": 52,
+        "supports": "Published association address names Limaya 6026 Zarat Mareth Gabes.",
+        "localPdfAvailable": false
+      }
+    ],
+    "rationale": "Combined evidence supports the local spelling ليماية / Limaya at the existing Zarat residential area: the source hamlet has int_name Limaya within the polygon; the Google mosque with that Arabic name has a parsed code cell wholly inside it; official records distinguish Limaya in Ezzarat from Limaoua in Gabes Sud. This is a name correction at the existing location, not a move to the distant same-name sector.",
+    "limitations": [
+      "Google did not expose a locality card for Limaya; support comes from local named landmarks plus primary documents and the existing source node.",
+      "Mosque code was parsed from the accessible directions title; expanded screenshots did not display its address.",
+      "No polygon boundary, exact locality extent, or full entry certification is inferred."
+    ],
+    "otherRows": {
+      "osm:relation:7145419": "Leave name ليماوة, aliases, location and geometry unchanged; this is the separate Gabes Sud sector.",
+      "osm:node:9772827014": "Separate source village not present as a current raw feature; do not rename through a global string replacement."
+    },
+    "integrationScope": "Apply to this stable residential feature ID only. Keep former names as searchable aliases. Do not add the absent source node as a new picker row. Propagate any display labels only through explicit feature relationships.",
+    "renameApplied": false,
+    "mergeApplied": false,
+    "boundaryVerified": false,
+    "fullEntryCertified": false,
+    "rootReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\root-seven-identity-findings.json",
+      "sha256": "b63453a37789f09431f5950506cdf33ae21344010002ade07a723c466aeade86"
+    }
+  },
+  "proposalPin": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\root-limaya-name-correction-staged.json",
+    "sha256": "68f44ccbf8a27d80cac20cb0dc59bbf7a92a65001729865e9fa57a519bd10027"
+  },
+  "sourceWay": {
+    "id": "osm:way:260596042",
+    "kind": "residential",
+    "tags": {
+      "landuse": "residential",
+      "name": "ليماوة",
+      "name:ar": "ليماوة",
+      "name:fr": "Limaoua"
+    }
+  },
+  "sourceNode": {
+    "id": "osm:node:2661216137",
+    "kind": "hamlet",
+    "tags": {
+      "int_name": "Limaya",
+      "name": "ليماوة",
+      "name:ar": "ليماوة",
+      "name:en": "Limaoua",
+      "name:fr": "Limaoua",
+      "place": "hamlet"
+    },
+    "lat": 33.7204616,
+    "lng": 10.3109723
+  },
+  "currentCatalog": {
+    "id": "osm:way:260596042",
+    "sourceId": "osm",
+    "name": "ليماوة",
+    "aliases": [
+      "Limaoua"
+    ],
+    "kind": "residential",
+    "parentName": "الزارات",
+    "contextAliases": [
+      "Délégation Mareth",
+      "Ezzarat",
+      "الزارات",
+      "معتمدية مارث"
+    ],
+    "governorateId": 347,
+    "lat": 33.719597,
+    "lng": 10.310642,
+    "delegationId": 1020,
+    "hasBoundary": true,
+    "bbox": [
+      10.30758,
+      33.717224,
+      10.316234,
+      33.721822
+    ],
+    "areaKm2": 0.17451082338150722,
+    "pickerGroupId": "osm:way:260596042",
+    "offset": 5408772,
+    "length": 388
+  },
+  "currentPickerFingerprint": "622a01c31dbe6ca16e36f35ef8efb500f563de5873fdfddb866563335ceec618",
+  "currentMetadata": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "2a1cdb95e619db967abff363e4c29e2b3845c131f76a8ec0c26672865908744c"
+  },
+  "priorMetadata": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\before-official-six-name-install-20260920\\repo\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "0c71238f85216b5e3e9a247958f5c8bb1e9891f78cba3c70a5e05de20f0442ab"
+  },
+  "currentMetadataRebase": "Target raw feature and picker fingerprint remain exactly unchanged after six unrelated names. Source geometry and packed bytes unchanged.",
+  "currentNodeAndMosqueCenterContainmentVerified": true,
+  "documentPins": {
+    "at": "2026-09-20T01:08:13.208427+00:00",
+    "sources": [
+      {
+        "url": "https://www.isie.tn/wp-content/uploads/2022/06/Annuaire-codes-USSD-centres-de-Vote-en-Tunisie.pdf",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022.pdf",
+        "sha256": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97",
+        "pagesZeroBased": [
+          18,
+          77,
+          78
+        ],
+        "pageCount": 87,
+        "renderedPages": [
+          {
+            "pageZeroBased": 18,
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022-page-19.png",
+            "sha256": "3d2f7fe4e6e2e97b1f393132eec1331a3714c9550534f7cfa5ad6969a3951aab"
+          },
+          {
+            "pageZeroBased": 77,
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022-page-78.png",
+            "sha256": "213aca180189b545a3e5f074ff93ee85d092756cb0c1aee154bee597d415f363"
+          },
+          {
+            "pageZeroBased": 78,
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022-page-79.png",
+            "sha256": "e753018dd16958b2908d59dcbfe9cc10f46758e73624098c07cbd462b71b68ee"
+          }
+        ]
+      },
+      {
+        "url": "https://www.arp.tn/document/download/112323",
+        "finalUrl": "https://www.arp.tn/document/download/112323",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\arp-112323.pdf",
+        "sha256": "bded5d09542b391fe37bf2e1cdba136475d2d03b2604d301fb84834d11ed779f",
+        "pagesZeroBased": [
+          105
+        ],
+        "pageCount": 124,
+        "renderedPages": [
+          {
+            "pageZeroBased": 105,
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\arp-112323-page-106.png",
+            "sha256": "72e18fd8a7d9bfff3e7d90817c01212931c786db41809fa109b7d3483f43d603"
+          }
+        ]
+      },
+      {
+        "url": "https://lake.jort.tn/annonces-legales/fr/2012/048.pdf",
+        "pagesZeroBased": [
+          52
+        ],
+        "localDownloadStatus": "HTTP 403; not retried or bypassed",
+        "webReading": "Official web tool successfully exposed page 52 address: Limaya 6026, Zarat, Mareth, Gabes. No local PDF pin."
+      }
+    ]
+  },
+  "evidencePins": {
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\root-limaya-name-correction-staged.json": "68f44ccbf8a27d80cac20cb0dc59bbf7a92a65001729865e9fa57a519bd10027",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\limaya-landmark-location-check.json": "12bb10ac0b13b765b023c592ff0a30eba1d6be9ec00ff8a82f47f6cae3ff918c",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\root-seven-identity-findings.json": "b63453a37789f09431f5950506cdf33ae21344010002ade07a723c466aeade86",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\official-document-pins.json": "bc503adf36cae4f4bb684d434c17601bf484556d3a1d64179903e14f835d8342",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022.pdf": "8562bd8e601ba58f752bffdc46517270c5d3b32d318bac09f0c92f860ab86e97",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022-page-19.png": "3d2f7fe4e6e2e97b1f393132eec1331a3714c9550534f7cfa5ad6969a3951aab",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022-page-78.png": "213aca180189b545a3e5f074ff93ee85d092756cb0c1aee154bee597d415f363",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\isie-vote-centres-2022-page-79.png": "e753018dd16958b2908d59dcbfe9cc10f46758e73624098c07cbd462b71b68ee",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\arp-112323.pdf": "bded5d09542b391fe37bf2e1cdba136475d2d03b2604d301fb84834d11ed779f",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\seven-name-identity-review-20260920\\arp-112323-page-106.png": "72e18fd8a7d9bfff3e7d90817c01212931c786db41809fa109b7d3483f43d603",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_260596042-detail-limaya-zarat-20260920.json": "492b12683c937c1479751182cf1e4d90995c25c6556f4578971384ea3a0f8198",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_260596042-detail-limaya-zarat-20260920.png": "63fcf70a6bd515c0136e2db0982eefe87453a4d2145e4b6a76488a339f129657",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_260596042-detail-limaya-centered-20260920.json": "e37254dfcda3e3f365e7131417e591cd4b35289c5a9e6a92c3069d308fd3b593",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_260596042-detail-limaya-centered-20260920.png": "b500b9a264d1f31050888b137e5ac1af49b0bb95b9b6816b7cb1f09b908442f8",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_260596042-detail-limaya-mosque-20260920.json": "54fb734b13c197020d71677f86564f6bca368072a0d2e4678a4a4c9fe3dd277c",
+    "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_way_260596042-detail-limaya-mosque-20260920.png": "0508eceff0bff29159b15296f418dbc07224ba18fd2432f2a1f6892b467e80e1"
+  },
+  "nameTags": {
+    "name": "ليماية",
+    "name:ar": "ليماية",
+    "alt_name": "ليماوة;Limaoua;Limaya;لماية"
+  },
+  "boundaryCertified": false,
+  "fullEntryCertified": false
+}

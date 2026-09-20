@@ -153,8 +153,9 @@ object DelegationLocator {
         if (location == null) return false
         if (!isUsableSilentUpdateLocation(location)) return false
 
+        val accuracyMeters = if (location.hasAccuracy()) location.accuracy.toDouble() else null
         val result = withContext(Dispatchers.IO) {
-            resolveGpsLocation(context, location.latitude, location.longitude)
+            resolveGpsLocation(context, location.latitude, location.longitude, accuracyMeters)
         } as? DelegationLocationResult.Success ?: return false
         val currentId = PrefsManager.getDelegationId(context)
         // Refresh the neighborhood even when travel stays within one timetable's area.
@@ -171,8 +172,9 @@ object DelegationLocator {
         val location = findCurrentLocation(context, permissionState)
             ?: return DelegationLocationResult.LocationUnavailable
 
+        val accuracyMeters = if (location.hasAccuracy()) location.accuracy.toDouble() else null
         return withContext(Dispatchers.IO) {
-            resolveGpsLocation(context, location.latitude, location.longitude)
+            resolveGpsLocation(context, location.latitude, location.longitude, accuracyMeters)
         }
     }
 
@@ -188,7 +190,12 @@ object DelegationLocator {
             ?.takeIf { isUsableLocation(it) }
     }
 
-    internal fun resolveGpsLocation(context: Context, lat: Double, lng: Double): DelegationLocationResult {
+    internal fun resolveGpsLocation(
+        context: Context,
+        lat: Double,
+        lng: Double,
+        accuracyMeters: Double? = null,
+    ): DelegationLocationResult {
         if (!validCoordinates(lat, lng)) return DelegationLocationResult.LocationUnavailable
         val index = runCatching { NeighborhoodRepository.load(context) }.getOrNull()
         val insideCountry = index?.isInsideCountry(lat, lng) ?: isInsideTunisiaBounds(lat, lng)
@@ -197,7 +204,7 @@ object DelegationLocator {
             ?: return DelegationLocationResult.NoDelegationFound
         // Containment determines only the user's visible location. Timetables are
         // selected by distance from the GPS fix, never by an administrative alias.
-        val locality = index?.find(lat, lng)?.copy(delegationId = nearest.id)
+        val locality = index?.findWithAccuracy(lat, lng, accuracyMeters)?.copy(delegationId = nearest.id)
         return DelegationLocationResult.Success(nearest, locality)
     }
 

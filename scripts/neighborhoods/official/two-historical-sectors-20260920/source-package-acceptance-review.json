@@ -1,0 +1,537 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_PACKAGE_ONLY_REQUIRES_ROOT_APPROVAL_BEFORE_GENERATION",
+  "rootDecision": "Prepare the finite two official-boundary/current-name replacements despite documented overlaps and uncovered loss; preserve source paths, anchors and proven historical aliases, with no neighbor expansion or seam repair.",
+  "priorAssessmentRemainsUnchanged": {
+    "file": "official/two-historical-sectors-20260920/evidence/assessment.json",
+    "sha256": "dccec0ea1c7e49f16de8a13edb8b17f9d876b367afb618cd3adf7a61df66e912"
+  },
+  "sourceInputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "d396925c0a7adb85010fb1a2b3f839ffcea939bc12b59a0da6c04d23c57d79a4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "bab9876668eb53f9fd27992242575b031acaa74c3f4e36cca7842289164fe444"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "722c90af0739d79714edb4df78cbfb38a08aa4801bf343113e0d3f74533ab50c"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "4611c1bafd550a6448e31177b3a49bd62f47d718743a8e7778de6a092a4cd91b"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "d7eac391b4e9072cd939e36781b32a5ec13794df614035ac471e0a830e7240bc"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\native-geometries.json",
+      "sha256": "342c232904d6a09517552c1b2059d22e309cb14fe35a8c8711057dab05b87429"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\geometry-facts.json",
+      "sha256": "6b659d39e27c85659831a60ef2485e1f1b04d1b22b8ac761433fb0212e0f11bb"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\source-scope-addendum.json",
+      "sha256": "56e2f15374b060281c256a4ed1f2151d15126918f265370c74f678752fb6af29"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\impact-facts.json",
+      "sha256": "70215bbff849dd22f3659dc343a0471780e1ceae9471bc8ff3539044c162581f"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-codes\\ins-2012.pdf",
+      "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-historical-sector-scope-20260920\\package\\jort-review\\scope-facts.json",
+      "sha256": "edb81f7eefa75a6082e6b86874778228abd10f604ac173376f0faeae6e4b4733"
+    }
+  ],
+  "sourceIds": [
+    "isie-local-sector-2023-ettadhamen4-historical-rename",
+    "isie-local-sector-2023-hammam-maarouf-riadh-exhaustive-parts"
+  ],
+  "targetIds": [
+    "osm:relation:7115584",
+    "osm:relation:7113315"
+  ],
+  "geometryUnchangedFromReviewedSource": true,
+  "wholeAndAggregateScopeAdditions": [
+    {
+      "file": "official/two-historical-sectors-20260920/whole-scope-addition.json",
+      "sha256": "23d146344b7d4245a1a399692f6b4f2e41ceecdffb565524e4f6be016087d1d0"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/aggregate-scope-addition.json",
+      "sha256": "97bac47bb666f88b6f34e261386e2f583c0a148481d6e36b14eb4d6d0c6c0565"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/source-receipts.json",
+      "sha256": "eafe668aa32ddf16db6d8dec935fe22ecbbd40fa8954f5aea0f3257052e1510f"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/geometry-facts.json",
+      "sha256": "6b659d39e27c85659831a60ef2485e1f1b04d1b22b8ac761433fb0212e0f11bb"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/native-geometries.json",
+      "sha256": "342c232904d6a09517552c1b2059d22e309cb14fe35a8c8711057dab05b87429"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/source-scope-addendum.json",
+      "sha256": "56e2f15374b060281c256a4ed1f2151d15126918f265370c74f678752fb6af29"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/impact-facts.json",
+      "sha256": "70215bbff849dd22f3659dc343a0471780e1ceae9471bc8ff3539044c162581f"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/impact-summary.json",
+      "sha256": "f89485ab1d9c1fdd3d60af8f46281e50b4127a2c2278c3cdcbfb83ed20dc245f"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/source-scope-review.json",
+      "sha256": "6b2d8bf2e2e1094c66e964b3784505d3882903f77e49133c6f3e2c58a676ca2b"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/assessment.json",
+      "sha256": "dccec0ea1c7e49f16de8a13edb8b17f9d876b367afb618cd3adf7a61df66e912"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/extract_scope_facts.py",
+      "sha256": "c5409076a0fb30f9ce5f5e6e308ec88d5702170da14e2875ab12ade77cf324fe"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/impact-reviewed.py",
+      "sha256": "e42242e52750b2299e24084981fc3c123554a1b6399c68eff0afd2a6fda6b096"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/ins-2012.pdf",
+      "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/decree-scope-facts.json",
+      "sha256": "edb81f7eefa75a6082e6b86874778228abd10f604ac173376f0faeae6e4b4733"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/page-3.png",
+      "sha256": "f72a8c1c03b22edaf4d01056efaca687184a4049eb6ce4ecb13f38d2c1627c63"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/page-51.png",
+      "sha256": "b119a060466c4a856dfa30f621e36fd65e88eac8363e1dcb61c985f3e8152f87"
+    }
+  ],
+  "exactExpectedChildChange": {
+    "id": "osm:node:1567848345",
+    "before": {
+      "id": "osm:node:1567848345",
+      "sourceId": "osm",
+      "name": "حي الرياض",
+      "aliases": [
+        "Cité Riadh",
+        "Hay Riadh",
+        "Cité Erriadh"
+      ],
+      "kind": "suburb",
+      "parentName": "العهد الجديد",
+      "contextAliases": [
+        "Délégation Sousse Erriadh",
+        "El Ahd El Jadid",
+        "Sousse Riadh",
+        "العهد الجديد",
+        "معتمدية سوسة الرياض"
+      ],
+      "governorateId": 348,
+      "lat": 35.804617,
+      "lng": 10.6050818,
+      "delegationId": 621,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1567848345"
+    },
+    "after": {
+      "id": "osm:node:1567848345",
+      "sourceId": "osm",
+      "name": "حي الرياض",
+      "aliases": [
+        "Cité Riadh",
+        "Hay Riadh",
+        "Cité Erriadh"
+      ],
+      "kind": "suburb",
+      "parentName": "حمام معروف الرياض",
+      "contextAliases": [
+        "Délégation Sousse Erriadh",
+        "El Ahd El Jadid",
+        "Hammem maarouf er-riadh",
+        "Sousse Riadh",
+        "العهد الجديد",
+        "حمام معروف الرياض",
+        "معتمدية سوسة الرياض"
+      ],
+      "governorateId": 348,
+      "lat": 35.804617,
+      "lng": 10.6050818,
+      "delegationId": 621,
+      "hasBoundary": false,
+      "pickerGroupId": "osm:node:1567848345"
+    },
+    "qualification": "Expected inherited parent/context under accepted aliases; genuine combined generation must verify exact output. Child name, coordinate, kind, own aliases, prayer source and singleton ownership remain unchanged."
+  },
+  "impactInventory": {
+    "osm:relation:7115584": {
+      "coverage": {
+        "oldAreaKm2": 0.40842937080126285,
+        "newAreaKm2": 0.34681396648482204,
+        "gainKm2": 0.0040894440052867504,
+        "lossKm2": 0.06570484832171279,
+        "oldOutsideOtherSectorsKm2": 0.40842937080126296,
+        "oldOutsideAllRemainingPolygonsKm2": 0.40842937080126296,
+        "newOutsideOtherSectorsKm2": 0.3427245224795499,
+        "newOutsideAllRemainingPolygonsKm2": 0.3427245224795499,
+        "lossNotCoveredByAnyRemainingPolygonKm2": 0.06570484832171282,
+        "lossNotCoveredByOtherSectorKm2": 0.06570484832171282,
+        "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.004089444005286332,
+        "gainAlreadyClaimedByOtherSectorsKm2": 0.004089444005286332,
+        "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+        "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+        "nonPeerOverlapIsNotAConflict": true
+      },
+      "incidentConflictsPrepacking": [
+        {
+          "ids": [
+            "osm:relation:7090954",
+            "osm:relation:7115584"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.0004090546588124414,
+          "sample": {
+            "lat": 36.83733939737938,
+            "lng": 10.092655442582736
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7115406",
+            "osm:relation:7115584"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 3.495798428330516e-06,
+          "sample": {
+            "lat": 36.8397652518651,
+            "lng": 10.09395304133292
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7115582",
+            "osm:relation:7115584"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.0027048014824283067,
+          "sample": {
+            "lat": 36.836612,
+            "lng": 10.099041315155972
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7115583",
+            "osm:relation:7115584"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.0009822143515898843,
+          "sample": {
+            "lat": 36.83904884521786,
+            "lng": 10.094894692806793
+          }
+        }
+      ],
+      "parentGovernorateDiscrepancy": {
+        "parent": {
+          "id": "osm:relation:4156579",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Ettadhamen",
+            "boundary": "administrative",
+            "name": "معتمدية حي التضامن",
+            "name:ar": "معتمدية حي التضامن",
+            "name:fr": "Délégation Cité Ettadhamen",
+            "ref:tn:codegeo": "1256",
+            "ref:tn:hasc_2": "TN.AN.ET",
+            "wikidata": "Q3059378"
+          },
+          "compactExpectedOfficialOutsideOriginalM2": 405.4674913191327,
+          "oldPackedOutsideM2": 3.1183603836678,
+          "newNativeOutsideM2": 405.4674913191327,
+          "newNativeMinusCompactExpectedM2": 0.0
+        },
+        "governorate": {
+          "id": "osm:relation:1435830",
+          "tags": {
+            "ISO3166-2": "TN-12",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية أريانة",
+            "name:ar": "ولاية أريانة",
+            "name:az": "Aryana",
+            "name:azb": "اریانه",
+            "name:bar": "Gouvernement Ariana",
+            "name:be": "Арыяна",
+            "name:be-tarask": "Арыяна (вілает)",
+            "name:bg": "Ариана",
+            "name:ca": "Governació d'Ariana",
+            "name:ce": "Арьяна",
+            "name:ceb": "Gouvernorat de l'Ariana",
+            "name:cy": "Ariana",
+            "name:de": "Gouvernement Ariana",
+            "name:el": "Αρυάνα",
+            "name:en": "Ariana",
+            "name:eo": "Arjana",
+            "name:fa": "اریانه",
+            "name:fi": "Ariana",
+            "name:fr": "Gouvernorat Ariana",
+            "name:frr": "Ariana",
+            "name:he": "אריאנה (מחוז)",
+            "name:hu": "Arjána kormányzóság",
+            "name:id": "Kegubernuran Ariana",
+            "name:it": "Ariana",
+            "name:ja": "アリアナ県",
+            "name:ka": "არიანის ვილაიეთი",
+            "name:ko": "아리아나주",
+            "name:lt": "Arianos vilajetas",
+            "name:ms": "Kawasan kegabenoran Ariana",
+            "name:nl": "Ariana",
+            "name:no": "Ariana",
+            "name:pl": "Arjana",
+            "name:pnb": "آریانہ",
+            "name:pt": "Ariana",
+            "name:ro": "Guvernoratul Ariana",
+            "name:ru": "Арьяна",
+            "name:sco": "Ariana Govrenorate",
+            "name:sh": "Ariana",
+            "name:sv": "Ariana",
+            "name:tr": "Aryana ili",
+            "name:uk": "Ар'яна",
+            "name:ur": "آریانہ",
+            "name:vi": "Ariana",
+            "name:zh": "艾爾亞內省",
+            "name:zu": "Ariana Governorate",
+            "official_name": "ولاية أريانة",
+            "official_name:ar": "ولاية أريانة",
+            "official_name:en": "Ariana Governorate",
+            "official_name:eo": "Gubernio de Arjana",
+            "official_name:fa": "استان اریانه",
+            "official_name:fr": "Gouvernorat de Ariana",
+            "official_name:it": "Governatorato di Ariana",
+            "official_name:pl": "Gubernatorstwo Arjana",
+            "official_name:ur": "ولایت آریانہ",
+            "population": "576088",
+            "population:date": "2014",
+            "ref:tn:codegeo": "12",
+            "wikidata": "Q233116",
+            "wikipedia": "ar:ولاية أريانة"
+          },
+          "compactExpectedOfficialOutsideOriginalM2": 402.0129208057862,
+          "oldPackedOutsideM2": 3.1183603836678,
+          "newNativeOutsideM2": 402.0129208057862,
+          "newNativeMinusCompactExpectedM2": 0.0
+        }
+      }
+    },
+    "osm:relation:7113315": {
+      "coverage": {
+        "oldAreaKm2": 4.119931455052667,
+        "newAreaKm2": 4.348393893732443,
+        "gainKm2": 0.363583823464645,
+        "lossKm2": 0.13512138478491123,
+        "oldOutsideOtherSectorsKm2": 4.119931455052669,
+        "oldOutsideAllRemainingPolygonsKm2": 2.435693780327265,
+        "newOutsideOtherSectorsKm2": 3.984810070267811,
+        "newOutsideAllRemainingPolygonsKm2": 2.32066921514722,
+        "lossNotCoveredByAnyRemainingPolygonKm2": 0.11502456518006825,
+        "lossNotCoveredByOtherSectorKm2": 0.13512138478490154,
+        "gainAlreadyClaimedByAllRemainingPolygonsKm2": 0.3635838234646526,
+        "gainAlreadyClaimedByOtherSectorsKm2": 0.3635838234646445,
+        "potentialNewGap": "lossNotCoveredByAnyRemainingPolygonKm2",
+        "possiblePeerConflict": "gainAlreadyClaimedByOtherSectorsKm2",
+        "nonPeerOverlapIsNotAConflict": true
+      },
+      "incidentConflictsPrepacking": [
+        {
+          "ids": [
+            "osm:relation:7106871",
+            "osm:relation:7113315"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.00019052805257054717,
+          "sample": {
+            "lat": 35.82534914039958,
+            "lng": 10.591555606698005
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7106872",
+            "osm:relation:7113315"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.07534929206689421,
+          "sample": {
+            "lat": 35.81838079994969,
+            "lng": 10.598161314842017
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7106873",
+            "osm:relation:7113315"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.057985304880259,
+          "sample": {
+            "lat": 35.80612148880084,
+            "lng": 10.610780760918392
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7108099",
+            "osm:relation:7113315"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.17988111746532842,
+          "sample": {
+            "lat": 35.805842380988125,
+            "lng": 10.579265117441597
+          }
+        },
+        {
+          "ids": [
+            "osm:relation:7113315",
+            "osm:relation:7113316"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.051059829901629286,
+          "sample": {
+            "lat": 35.80403514083474,
+            "lng": 10.58467217417462
+          }
+        }
+      ],
+      "parentGovernorateDiscrepancy": {
+        "parent": {
+          "id": "osm:relation:7150108",
+          "tags": {
+            "admin_level": "5",
+            "alt_name:fr": "Sousse Riadh",
+            "boundary": "administrative",
+            "name": "معتمدية سوسة الرياض",
+            "name:ar": "معتمدية سوسة الرياض",
+            "name:fr": "Délégation Sousse Erriadh",
+            "ref:tn:codegeo": "3152",
+            "ref:tn:hasc_2": "TN.SS.SR",
+            "wikidata": "Q3492192"
+          },
+          "compactExpectedOfficialOutsideOriginalM2": 312599.3935339133,
+          "oldPackedOutsideM2": 68.15218411519639,
+          "newNativeOutsideM2": 312599.39364841225,
+          "newNativeMinusCompactExpectedM2": 0.00011449895100668073
+        },
+        "governorate": {
+          "id": "osm:relation:3152094",
+          "tags": {
+            "ISO3166-2": "TN-51",
+            "admin_level": "4",
+            "boundary": "administrative",
+            "name": "ولاية سوسة",
+            "name:ar": "ولاية سوسة",
+            "name:azb": "سوسه",
+            "name:be": "Сус (вілает)",
+            "name:be-tarask": "Сус (вілает)",
+            "name:bg": "Сус (област)",
+            "name:ca": "Governació de Sussa",
+            "name:ceb": "Gouvernorat de Sousse",
+            "name:ckb": "سوسە",
+            "name:cy": "Sousse (talaith)",
+            "name:de": "Gouvernement Sousse",
+            "name:el": "Σούσα (Κυβερνείο)",
+            "name:en": "Sousse",
+            "name:es": "Gobernación de Susa",
+            "name:fa": "سوسه",
+            "name:fi": "Sousse (kuvernementti)",
+            "name:fr": "Gouvernorat Sousse",
+            "name:frr": "Sousse (Guwernement)",
+            "name:he": "סוסה (מחוז)",
+            "name:id": "Kegubernuran Sousse",
+            "name:it": "Susa",
+            "name:ja": "スース県",
+            "name:ko": "수스주",
+            "name:ks": "سوسہ",
+            "name:lt": "Suso vilajetas",
+            "name:ms": "Kawasan kegabenoran Sousse",
+            "name:nl": "Sousse (gouvernement)",
+            "name:no": "Sousse (guvernement)",
+            "name:ota": "سوسه",
+            "name:pl": "Gubernatorstwo Susa",
+            "name:pt": "Susa (província)",
+            "name:ro": "Guvernoratul Sousse",
+            "name:ru": "Сус (вилайет)",
+            "name:sco": "Sousse Govrenorate",
+            "name:sh": "Sousse (vilajet)",
+            "name:tr": "Susa ili",
+            "name:uk": "Сус (вілаєт)",
+            "name:ur": "سوسہ",
+            "name:zh": "蘇塞省",
+            "name:zu": "Sousse Governorate",
+            "official_name": "ولاية سوسة",
+            "official_name:ar": "ولاية سوسة",
+            "official_name:en": "Sousse Governorate",
+            "official_name:es": "Gobernación de Susa",
+            "official_name:fa": "استان سوسه",
+            "official_name:fr": "Gouvernorat de Sousse",
+            "official_name:ur": "ولایت سوسہ",
+            "population": "674971",
+            "population:date": "2014",
+            "ref:tn:codegeo": "31",
+            "wikidata": "Q276565",
+            "wikipedia": "ar:ولاية سوسة"
+          },
+          "compactExpectedOfficialOutsideOriginalM2": 0.0,
+          "oldPackedOutsideM2": 0.0,
+          "newNativeOutsideM2": 0.0,
+          "newNativeMinusCompactExpectedM2": 0.0
+        }
+      }
+    }
+  },
+  "totalAllLayerUncoveredLossKm2": 0.18072941350178107,
+  "newIncidentConflictCountPrepacking": 9,
+  "prepackingNotExactGeneratedCatalogPrediction": true,
+  "runtimeQualification": "Conflicting polygons remain withheld according to GPS accuracy checks. A broader or approximate location fallback does not recover missing neighborhood polygon coverage. Prayer source still uses the actual GPS point; manual anchors remain unchanged.",
+  "protectedProofs": {
+    "noExistingProofRewrittenOrRepinned": true,
+    "nextStep": "Append these source/scope records through an explicitly reviewed lineage successor. Existing 111 reviewed features and all unrelated semantic guards must remain intact; combined generation owns dependency review."
+  },
+  "retirementPolicy": "No ID retirement or replacement; saved same-ID names/aliases must be reviewed during later generation/migration.",
+  "sourceCatalogGenerationOrInstallationPerformed": false
+}

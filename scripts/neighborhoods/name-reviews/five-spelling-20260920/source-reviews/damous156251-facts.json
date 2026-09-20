@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "status": "PINNED_NAME_CORRECTION_CANDIDATE_NOT_APPLIED",
+  "id": "osm:relation:7101603",
+  "intendedPrimaryName": "داموس الحاجة",
+  "currentAndSourceFacts": {
+    "id": "osm:relation:7101603",
+    "currentRaw": {
+      "id": "osm:relation:7101603",
+      "sourceId": "osm",
+      "name": "داموس الهجة",
+      "aliases": [
+        "Damous El Hajja"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزلفة",
+      "contextAliases": [
+        "Délégation Menzel Bouzelfa",
+        "Menzel Bouzelfa",
+        "معتمدية منزل بوزلفة"
+      ],
+      "governorateId": 350,
+      "lat": 36.741104,
+      "lng": 10.739039,
+      "delegationId": 457,
+      "hasBoundary": true,
+      "bbox": [
+        10.701199,
+        36.712744,
+        10.770415,
+        36.769486
+      ],
+      "areaKm2": 23.617220752932877,
+      "pickerGroupId": "osm:relation:7101603",
+      "offset": 317572,
+      "length": 2220
+    },
+    "currentPicker": {
+      "id": "osm:relation:7101603",
+      "sourceId": "osm",
+      "name": "داموس الهجة",
+      "aliases": [
+        "Damous El Hajja"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية منزل بوزلفة",
+      "contextAliases": [
+        "Délégation Menzel Bouzelfa",
+        "Menzel Bouzelfa",
+        "معتمدية منزل بوزلفة"
+      ],
+      "governorateId": 350,
+      "lat": 36.741104,
+      "lng": 10.739039,
+      "delegationId": 457,
+      "hasBoundary": true,
+      "bbox": [
+        10.701199,
+        36.712744,
+        10.770415,
+        36.769486
+      ],
+      "areaKm2": 23.617220752932877,
+      "pickerGroupId": "osm:relation:7101603",
+      "offset": 317572,
+      "length": 2220,
+      "members": [
+        "osm:relation:7101603"
+      ],
+      "governorate": "نابل",
+      "governorateFr": "Nabeul",
+      "geometrySha256": "5025a49939c721ee90791acb6e6b5dcbb1401e6d76a3d2de35d9896a72e7513e",
+      "fingerprint": "92110b50f3eb5c355a37f96cd6dfb8ac860e9970c0849a3ec1b70ca5e18fce4b"
+    },
+    "currentRawReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\metadata.json",
+      "sha256": "ddb2bfe2389fe257d37cef60a6293e449323258cf2d4db3896a3986a6d4ee8f6",
+      "bytes": 1866364,
+      "jsonPointer": "/features/151"
+    },
+    "originalSourceReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\source.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997,
+      "jsonPointer": "/areas/418"
+    },
+    "originalSourceTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "داموس الهجة",
+      "name:ar": "داموس الهجة",
+      "name:fr": "Damous El Hajja",
+      "ref:tn:codegeo": "156251"
+    },
+    "originalSourceKind": "sector",
+    "officialReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114,
+      "jsonPointer": "/sectors/399"
+    },
+    "officialSectorRecord": {
+      "governorateCode": "15",
+      "governorateFr": "Nabeul",
+      "governorateAr": "نابل",
+      "delegationCode": "1562",
+      "delegationFr": "Menzel bouzelfa",
+      "delegationAr": "منزل بوزلفة",
+      "sectorCode": "156251",
+      "sectorFr": "Damous el hajja",
+      "sectorAr": "داموس الحاجة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13567,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 548,
+        "Nombre_de_menages_par_Secteurs.xlsx": 547
+      }
+    },
+    "exactCodeSourceIds": [
+      "osm:relation:7101603"
+    ],
+    "originalSourceParent": [
+      {
+        "id": "osm:relation:7145839",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Menzel Bouzelfa",
+          "boundary": "administrative",
+          "name": "معتمدية منزل بوزلفة",
+          "name:ar": "معتمدية منزل بوزلفة",
+          "name:fr": "Délégation Menzel Bouzelfa",
+          "ref:tn:codegeo": "1562",
+          "ref:tn:hasc_2": "TN.NB.MB",
+          "wikidata": "Q3306140"
+        },
+        "originalParentCoversOriginalObject": true
+      }
+    ],
+    "directActiveManifestPaths": {
+      "curation": [],
+      "picker": [],
+      "boundaries": []
+    },
+    "rawChildrenInheritingCurrentName": [],
+    "mapsEvidence": [
+      {
+        "artifact": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\wave2-5556-20260920\\osm_relation_7101603-1.json",
+          "sha256": "0f03bf548f5b8805523b30c73fa8e3e1799f018c661f325d577570222c4a9df6",
+          "bytes": 1137
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\wave2-5556-20260920\\osm_relation_7101603-1.png",
+          "sha256": "5e234d041cdf5a6bfcf3b0ab96585fd8c9bb969d04d8923ff0ce5622be241f2e",
+          "bytes": 383109
+        },
+        "observedAt": "2026-09-20T05:59:22.606298+00:00",
+        "exactQuery": "Damous El Hajja Nabeul Tunisia",
+        "queryVisibleInUi": true,
+        "observationParserVersion": 3,
+        "observationStatus": "candidate_observed",
+        "synchronizationOutcome": null,
+        "publicCardTitles": [
+          "Damous El Hajja"
+        ],
+        "literalPublicUiText": [
+          "Damous El Hajja",
+          "داموس الحاجة",
+          "Tunisia",
+          "Directions to Damous El Hajja",
+          "Directions",
+          "Share Damous El Hajja",
+          "Share",
+          "Save Damous El Hajja to lists",
+          "Save",
+          "Show more actions for this place",
+          "More",
+          "About",
+          "Address: Tunisia",
+          "Add a missing place",
+          "Add your business to Maps for free",
+          "Measure distance",
+          "Close",
+          "Damous El Hajja Nabeul Tunisia",
+          "Clear"
+        ],
+        "metadataAtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348",
+        "currentMetadataForThisReview": "ddb2bfe2389fe257d37cef60a6293e449323258cf2d4db3896a3986a6d4ee8f6",
+        "existingTriage": [
+          null
+        ],
+        "qualification": "Historical captured public text; no geography/identity/boundary facet promotion. Existing ambiguous/uncertain parser signals remain unchanged."
+      }
+    ]
+  },
+  "officialSourceWorkbooks": [
+    {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    }
+  ],
+  "sourceGeometry": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\damous156251-source-geometry.json",
+    "sha256": "803b723a124ea945c073b11b90301d7934887219478c3796a56ebee46d6c42d6",
+    "bytes": 77465
+  },
+  "originalAndPackedGeometry": {
+    "originalGeometryType": "MultiPolygon",
+    "originalBounds": [
+      10.7011987,
+      36.712744,
+      10.7704147,
+      36.7694861
+    ],
+    "packedBounds": [
+      10.701199,
+      36.712744,
+      10.770415,
+      36.769486
+    ],
+    "originalCoversCurrentAnchor": true,
+    "packedCoversCurrentAnchor": true,
+    "binary": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\neighborhoods.bin",
+      "sha256": "bab9876668eb53f9fd27992242575b031acaa74c3f4e36cca7842289164fe444",
+      "bytes": 5590504
+    },
+    "packedSliceSha256": "5025a49939c721ee90791acb6e6b5dcbb1401e6d76a3d2de35d9896a72e7513e",
+    "packedEndOffsetVerified": true,
+    "parentContainment": [
+      {
+        "id": "osm:relation:7145839",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Menzel Bouzelfa",
+          "boundary": "administrative",
+          "name": "معتمدية منزل بوزلفة",
+          "name:ar": "معتمدية منزل بوزلفة",
+          "name:fr": "Délégation Menzel Bouzelfa",
+          "ref:tn:codegeo": "1562",
+          "ref:tn:hasc_2": "TN.NB.MB",
+          "wikidata": "Q3306140"
+        },
+        "originalParentCoversOriginalSector": true,
+        "originalParentCoversPackedSector": false
+      }
+    ]
+  },
+  "currentOldOrProposedNameOccurrences": [
+    {
+      "id": "osm:relation:7101603",
+      "fields": [
+        "name"
+      ]
+    }
+  ],
+  "currentPickerMembers": [
+    "osm:relation:7101603"
+  ],
+  "expectedDownstreamNameContextScope": {
+    "inheritedChildIds": [],
+    "directCurations": [],
+    "directPickerBindings": [],
+    "directBoundaryBindings": [],
+    "identityMembershipChangeIntended": false,
+    "coordinatePrayerGeometryChangeIntended": false,
+    "aliasPolicy": "Not decided by this source bundle; preserve exact source tags and use reviewed saved-name history rather than inventing an alias rule."
+  },
+  "existingEvidenceQualification": "Saved Google capture is parser3 with no synchronizationOutcome/settled contract. Literal text is corroborating name evidence only, not physical identity, administrative membership or boundary certification. Original/current metadata lineage remains separate.",
+  "boundedNextAction": "Review156251 source/parent identity and inherited child labels against pinned workbook rows to determine a bounded Arabic name-only correction.",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\two-name-bundles.py",
+    "sha256": "ca04b50169c8c22089c14ee462cd9e9d534598f1f3c0baa32a7dfaa931148752",
+    "bytes": 4109
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "receipts": [
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\root-nine-source-scope-review.json",
+      "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/root-nine-source-scope-review.json",
+        "sha256": "b0cb01b3c9e9e0021a0a334beacced13132dfa592ae880244de2344ac58f41de"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\onehundredfiftyone-current-name-review-20260920.json",
+      "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/comparison.json",
+        "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/currentmetadata.json",
+        "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/boundarymanifest.json",
+        "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\arima-joufia-receivers-20260912\\accepted90-whole-imada-scope-review.json",
+      "sha256": "b9c78637a2cb6e26482283c696e34b9828223a1df91d29adcae365c4b73a5d58",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/scopereview.json",
+        "sha256": "b9c78637a2cb6e26482283c696e34b9828223a1df91d29adcae365c4b73a5d58"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/decree.pdf",
+        "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\decree-074.png",
+      "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/decreepageimage.png",
+        "sha256": "884048c54489acd9a0dee1b65211dff93182654836e5b94488f890ce587a5545"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baraket-name-equivalence-20260920\\root-name-association-accepted.json",
+      "sha256": "38de1245baa4795bce9d8496c08c049eac0365174730bbe5f93006a9130bfd98",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/baraketnameevidence.json",
+        "sha256": "38de1245baa4795bce9d8496c08c049eac0365174730bbe5f93006a9130bfd98"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-integration-20260920\\nine-external-sector-frontier.json",
+      "sha256": "f06a565cb88301be77812a567bdca65b02c5b0460c129ad551c0de9cc822c758",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/externalfrontier.json",
+        "sha256": "f06a565cb88301be77812a567bdca65b02c5b0460c129ad551c0de9cc822c758"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\native-map-inspection.json",
+      "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-sidi-djedidi.json",
+        "sha256": "787d48e2c0931e9cdc4d43300af586afb41117a544f3d849be862fb99edb6200"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\sidi-djedidi.pdf",
+      "sha256": "fb704ad3de27894aa0ac74668349aac75f46fb4eb7598a66c1c648edb61780cd",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-sidi-djedidi.pdf",
+        "sha256": "fb704ad3de27894aa0ac74668349aac75f46fb4eb7598a66c1c648edb61780cd"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\native-map-inspection.json",
+      "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-el-atrach.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\el-atrach.pdf",
+      "sha256": "93053eb8095a5eeeb9ed05400909d6f0c5f5a7fac767aaf5b8e5c7f44c8d3b59",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-el-atrach.pdf",
+        "sha256": "93053eb8095a5eeeb9ed05400909d6f0c5f5a7fac767aaf5b8e5c7f44c8d3b59"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\bir-bou-regba.pdf",
+      "sha256": "6126b3ab3e290e1d2f3b5da75aafbfa6217a34e63383b2e105a488578f91d518",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-bir-bou-regba.pdf",
+        "sha256": "6126b3ab3e290e1d2f3b5da75aafbfa6217a34e63383b2e105a488578f91d518"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-connected-official-maps-20260919\\baraket-essahel.pdf",
+      "sha256": "258c4ffaf4cb2c079bf33d27bd27949bf3402d32b098b936b3cef0cac9ae1f25",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-baraket-essahel.pdf",
+        "sha256": "258c4ffaf4cb2c079bf33d27bd27949bf3402d32b098b936b3cef0cac9ae1f25"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\native-map-inspection.json",
+      "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-hammamet-nord.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\hammamet-nord.pdf",
+      "sha256": "b401485272352ae9c6eba464a2361098361b8ef1606a710e99ff3d8e06e3a66d",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-hammamet-nord.pdf",
+        "sha256": "b401485272352ae9c6eba464a2361098361b8ef1606a710e99ff3d8e06e3a66d"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\hammamet-est.pdf",
+      "sha256": "ec4694b1cca6bbc83b451e5fb712ea2a3c0f3adc7a76fa61dd572c4c76363267",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-hammamet-est.pdf",
+        "sha256": "ec4694b1cca6bbc83b451e5fb712ea2a3c0f3adc7a76fa61dd572c4c76363267"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\hammamet-ouest.pdf",
+      "sha256": "cd5756b37f9d2caf0ace95bb40b02970043822e93309c1ce57e51de2662fdbbc",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-hammamet-ouest.pdf",
+        "sha256": "cd5756b37f9d2caf0ace95bb40b02970043822e93309c1ce57e51de2662fdbbc"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\hammamet-frontier32-20260919\\native-map-inspection.json",
+      "sha256": "0c9dd6fe789c5f17de43d89f771e460094525918998da66bfa7c0a29b2e3ae3b",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-sector-156658.json",
+        "sha256": "0c9dd6fe789c5f17de43d89f771e460094525918998da66bfa7c0a29b2e3ae3b"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\hammamet-frontier32-20260919\\sector-156658.pdf",
+      "sha256": "b0ef5c27942408e22354193689ab78c41d68ea8bf073c51a6bd8203d4386ebe0",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-sector-156658.pdf",
+        "sha256": "b0ef5c27942408e22354193689ab78c41d68ea8bf073c51a6bd8203d4386ebe0"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-hammamet-official-map-20260919\\native-map-inspection.json",
+      "sha256": "10bf13f5dcef39c6573dd587051f1e900d84404b4fd826154af451f96f40d5c7",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourceinspector-yasmine-hammamet.json",
+        "sha256": "10bf13f5dcef39c6573dd587051f1e900d84404b4fd826154af451f96f40d5c7"
+      },
+      "byteExact": true
+    },
+    {
+      "originalFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\yasmine-hammamet-official-map-20260919\\yasmine-hammamet.pdf",
+      "sha256": "a056ddb414929e42bd20b4eac4ab6ce9d36ec799823300430ff470312f7780cc",
+      "staged": {
+        "file": "official/hammamet-nine-20260920/evidence/sourcepdf-yasmine-hammamet.pdf",
+        "sha256": "a056ddb414929e42bd20b4eac4ab6ce9d36ec799823300430ff470312f7780cc"
+      },
+      "byteExact": true
+    }
+  ]
+}

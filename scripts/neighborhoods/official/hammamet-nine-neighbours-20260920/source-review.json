@@ -1,0 +1,948 @@
+{
+  "status": "SOURCE_GEOMETRY_AND_WHOLE_IMADA_SCOPE_STAGED_NOT_INSTALLED",
+  "rootReview": {
+    "file": "official/hammamet-nine-neighbours-20260920/evidence/scope-review-nine-whole-imada-legal-scope-review.json",
+    "sha256": "0f0374e1510a900852a65afd7b2d733885bec09d67b4baabbdd731f6cedcb50e"
+  },
+  "boundary": {
+    "file": "official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+    "sha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7105250",
+      "officialRecord": {
+        "delegationAr": "بوفيشة",
+        "delegationCode": "3161",
+        "delegationFr": "Bouficha",
+        "governorateAr": "سوسة",
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "sectorAr": "بوفيشة",
+        "sectorCode": "316151",
+        "sectorFr": "Bouficha",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1617,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1616,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34373
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بوفيشة",
+        "name:ar": "بوفيشة",
+        "name:fr": "Bouficha",
+        "ref:tn:codegeo": "316151"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 452,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "2a9bd82743ab156c34534789f8f45627d79c43bc87a0aa51c6fdf77f46ab4a4f",
+        "segmentCount": 107,
+        "seqno": 460,
+        "sourceOrigin": "frontier8-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 108,
+        "vertexCount": 108
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "72428c025d781af3d2dc2688f3c6c1014ba9c7d9dc8c89ad012d2810934ecafa",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-bouficha.pdf",
+        "sha256": "2a9bd82743ab156c34534789f8f45627d79c43bc87a0aa51c6fdf77f46ab4a4f",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/بوفيشة.pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-bouficha.json",
+        "sha256": "ff80c59a4140c059f4d3a9fffa15a2eac0107e5c9d411e8b463e9585249bdf5b"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-4cc52af896b8.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.308451,
+          "lng": 10.447804
+        },
+        "expectedNearestId": 433,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7105249",
+      "officialRecord": {
+        "delegationAr": "بوفيشة",
+        "delegationCode": "3161",
+        "delegationFr": "Bouficha",
+        "governorateAr": "سوسة",
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "sectorAr": "السلوم",
+        "sectorCode": "316158",
+        "sectorFr": "Esselloum",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1629,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1628,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34611
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "السلوم",
+        "name:ar": "السلوم",
+        "name:fr": "Esselloum",
+        "ref:tn:codegeo": "316158"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 428,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "2f1896201606af27e359e39c81f001f61e5778df37321a550a7fa20816e95c6c",
+        "segmentCount": 134,
+        "seqno": 436,
+        "sourceOrigin": "frontier8-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 135,
+        "vertexCount": 135
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "b1d78d6aced3ca53b18b51e14810074d9e3e23cdd82926cd9e29b92a9693438f",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-selloum-bouficha.pdf",
+        "sha256": "2f1896201606af27e359e39c81f001f61e5778df37321a550a7fa20816e95c6c",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/السلوم - (بوفيشة).pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-selloum-bouficha.json",
+        "sha256": "22af7709ef731fb897f6af05d8b6b39da17f00b52c4cbc963db0ba047bc99d4b"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-4cc52af896b8.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.289495,
+          "lng": 10.476255
+        },
+        "expectedNearestId": 433,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7105455",
+      "officialRecord": {
+        "delegationAr": "بوفيشة",
+        "delegationCode": "3161",
+        "delegationFr": "Bouficha",
+        "governorateAr": "سوسة",
+        "governorateCode": "31",
+        "governorateFr": "Sousse",
+        "sectorAr": "سيدي سعيد",
+        "sectorCode": "316155",
+        "sectorFr": "Sidi said",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1624,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1623,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 34509
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي سعيد",
+        "name:ar": "سيدي سعيد",
+        "name:fr": "Sidi Said",
+        "ref:tn:codegeo": "316155"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 258,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "e2d651fb66fa7ef345b9006abdc644cb928a1124e662449098539bb39807dfac",
+        "segmentCount": 502,
+        "seqno": 266,
+        "sourceOrigin": "frontier8-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 503,
+        "vertexCount": 503
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "f72e489b29ce3cf64d66f84cd2c33d171095ed162e06530f5a528de89a9a2a11",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-sidi-said-bouficha.pdf",
+        "sha256": "e2d651fb66fa7ef345b9006abdc644cb928a1124e662449098539bb39807dfac",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/سيدي سعيد - (بوفيشة).pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-sidi-said-bouficha.json",
+        "sha256": "2f5bc4db02391b30580e80e1c485888b0ff20cdfec39ffa2fdf3ae607ab58118"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-4cc52af896b8.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.349513,
+          "lng": 10.413925
+        },
+        "expectedNearestId": 433,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7104940",
+      "officialRecord": {
+        "delegationAr": "قرنبالية",
+        "delegationCode": "1564",
+        "delegationFr": "Grombalia",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "جبل طريف",
+        "sectorCode": "156458",
+        "sectorFr": "Djebel terif",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 584,
+          "Nombre_de_menages_par_Secteurs.xlsx": 583,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14179
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جبل طريف",
+        "name:ar": "جبل طريف",
+        "name:fr": "Jbal Trif",
+        "ref:tn:codegeo": "156458"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 228,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+        "segmentCount": 534,
+        "seqno": 236,
+        "sourceOrigin": "frontier8-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 535,
+        "vertexCount": 535
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "e7fadf4486f8629c99e846050a7d9b5c269f1224a8f9bd2f8036759ddc0b20ee",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-jebel-trif.pdf",
+        "sha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/جبل طريف.pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-jebel-trif.json",
+        "sha256": "540229e26e5493e2a5a89da932ff97c142a996da876ea899929a1bd6b8f95a3b"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-4cc52af896b8.json",
+        "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.513888,
+          "lng": 10.392493
+        },
+        "expectedNearestId": 464,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7103679",
+      "officialRecord": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "برج حفيظ",
+        "sectorCode": "156553",
+        "sectorFr": "Borj hefaied",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 592,
+          "Nombre_de_menages_par_Secteurs.xlsx": 591,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14315
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "برج حفيظ",
+        "name:ar": "برج حفيظ",
+        "name:fr": "Borj Hfaiedh",
+        "ref:tn:codegeo": "156553"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 379,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+        "segmentCount": 513,
+        "seqno": 387,
+        "sourceOrigin": "frontier11-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 514,
+        "vertexCount": 514
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "e6f09ee6fc5a7fa78ce707d1ed83d5232d1e0ea1af772b9b3fcd7f4d4365c461",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-borj-hafedh.pdf",
+        "sha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/برج حفيظ.pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-borj-hafedh.json",
+        "sha256": "6b4a16dbd2040d468d77ed18806b0762bc40fb40aec185ecf32256aa15300037"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-05cd413369ff.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.496414,
+          "lng": 10.605121
+        },
+        "expectedNearestId": 463,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7103680",
+      "officialRecord": {
+        "delegationAr": "بوعرقوب",
+        "delegationCode": "1565",
+        "delegationFr": "Bou argoub",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "بوعرقوب القبلية",
+        "sectorCode": "156555",
+        "sectorFr": "Bou argoub sud",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 596,
+          "Nombre_de_menages_par_Secteurs.xlsx": 595,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14383
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بو عرقوب الجنوبية",
+        "name:ar": "بو عرقوب الجنوبية",
+        "name:fr": "Bou Argoub Sud",
+        "ref:tn:codegeo": "156555"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 313,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7",
+        "segmentCount": 577,
+        "seqno": 321,
+        "sourceOrigin": "frontier11-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 578,
+        "vertexCount": 578
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "3dc38c18cc8c69386b4a409f19c48719e0bc6a02247d5e172889e69c1f8b0c0e",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-bou-argoub-sud.pdf",
+        "sha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/بوعرقوب القبلية.pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-bou-argoub-sud.json",
+        "sha256": "bde39679431c26ee888348130113e3f7762a9b175d52362ea1198f266d195910"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-05cd413369ff.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.500767,
+          "lng": 10.536322
+        },
+        "expectedNearestId": 463,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7103327",
+      "officialRecord": {
+        "delegationAr": "نابل",
+        "delegationCode": "1551",
+        "delegationFr": "Nabeul",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "الهادي شاكر",
+        "sectorCode": "155156",
+        "sectorFr": "Hedi chaker",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 429,
+          "Nombre_de_menages_par_Secteurs.xlsx": 428,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 11527
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الهادي شاكر",
+        "name:ar": "الهادي شاكر",
+        "name:fr": "Hedi Chaker",
+        "ref:tn:codegeo": "155156"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 240,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+        "segmentCount": 761,
+        "seqno": 248,
+        "sourceOrigin": "frontier11-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 762,
+        "vertexCount": 762
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "e627b222e6f8920dcf19f8c99b8c20c123c900f9d145d0f2c5c19848dd36cb64",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-hedi-chaker.pdf",
+        "sha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 1/نابل/الهادي شاكر - (نابل).pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-hedi-chaker.json",
+        "sha256": "fbd4e0134aca0dc598981216e1d007b08376fdc95bd0369428e3608dc08d3655"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-05cd413369ff.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.492765,
+          "lng": 10.667192
+        },
+        "expectedNearestId": 623,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7104938",
+      "officialRecord": {
+        "delegationAr": "قرنبالية",
+        "delegationCode": "1564",
+        "delegationFr": "Grombalia",
+        "governorateAr": "نابل",
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "sectorAr": "عين طبرنق",
+        "sectorCode": "156459",
+        "sectorFr": "Ain tebournouk",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 586,
+          "Nombre_de_menages_par_Secteurs.xlsx": 585,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 14213
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عين طبرنق",
+        "name:ar": "عين طبرنق",
+        "name:fr": "Ain Tebournok",
+        "ref:tn:codegeo": "156459"
+      },
+      "selectedDrawing": {
+        "drawingIndex": 361,
+        "layer": "circonscription_isie2023",
+        "pdfSha256": "26c69787a7f2e4126f30ba3c15e8babbe8b72558d9a3e8f4a4f9d3431c2dea48",
+        "segmentCount": 644,
+        "seqno": 369,
+        "sourceOrigin": "frontier11-native-map-inspection",
+        "sourceRingCompleteness": {
+          "activeClipCount": 2,
+          "activeClipOutsideAreasPoints2": [
+            0.0,
+            0.0
+          ],
+          "explicitlyClosed": true,
+          "isValid": true,
+          "viewportCoversCompleteRing": true
+        },
+        "sourceRingVertexCount": 645,
+        "vertexCount": 645
+      },
+      "normalizationDescription": null,
+      "candidateGeometrySha256": "c6f4a4e01d1e1e9be65d768ac63bd71bd4001501710b0995de8beb0202163103",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-ain-tebournouk.pdf",
+        "sha256": "26c69787a7f2e4126f30ba3c15e8babbe8b72558d9a3e8f4a4f9d3431c2dea48",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/عين طبرنق.pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-ain-tebournouk.json",
+        "sha256": "027b377372b209b8448bdf3f315d832240f39ee49964bc7fd255381c27b80603"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-05cd413369ff.json",
+        "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.532338,
+          "lng": 10.448967
+        },
+        "expectedNearestId": 463,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    },
+    {
+      "id": "osm:relation:7109196",
+      "officialRecord": {
+        "delegationAr": "زغوان",
+        "delegationCode": "1651",
+        "delegationFr": "Zaghouan",
+        "governorateAr": "زغوان",
+        "governorateCode": "16",
+        "governorateFr": "Zaghouan",
+        "sectorAr": "وادي الزيت",
+        "sectorCode": "165159",
+        "sectorFr": "Oued ezzit",
+        "sourceRows": {
+          "Nombre_de_Logements_par_Secteurs.xlsx": 631,
+          "Nombre_de_menages_par_Secteurs.xlsx": 630,
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 15063
+        }
+      },
+      "originalTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "وادي الزيت",
+        "name:ar": "وادي الزيت",
+        "name:fr": "Oued Ezzit",
+        "ref:tn:codegeo": "165159"
+      },
+      "selectedDrawing": {
+        "coverageProof": [
+          {
+            "clearancePoints": 26.643330546874946,
+            "coversAllRawEdges": true,
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    4.319079875946045,
+                    590.1144409179688
+                  ],
+                  [
+                    841.5009765625,
+                    590.1144409179688
+                  ],
+                  [
+                    841.5009765625,
+                    5.0406494140625
+                  ],
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ],
+                  [
+                    4.319079875946045,
+                    590.1144409179688
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "kind": "viewport",
+            "outsideLengthPoints": 0.0
+          },
+          {
+            "clearancePoints": 31.684010371093787,
+            "coversAllRawEdges": true,
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    0.0
+                  ],
+                  [
+                    841.8609008789062,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    596.2352294921875
+                  ],
+                  [
+                    0.0,
+                    0.0
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "kind": "activeClip",
+            "outsideLengthPoints": 0.0
+          },
+          {
+            "clearancePoints": 26.64336095703129,
+            "coversAllRawEdges": true,
+            "geometry": {
+              "coordinates": [
+                [
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    5.0406494140625
+                  ],
+                  [
+                    841.8609008789062,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    590.4745483398438
+                  ],
+                  [
+                    4.319079875946045,
+                    5.0406494140625
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "kind": "activeClip",
+            "outsideLengthPoints": 0.0
+          }
+        ],
+        "drawingIndices": [
+          680
+        ],
+        "geometryType": "MultiPolygon",
+        "normalizationAcceptedForCandidateComparison": true,
+        "normalizationDescription": "Node the one source crossing and retain both resulting polygons, including the5.298391m2 triangular component; no component discarded, no buffer/snap or guessed replacementedge.",
+        "polygonCount": 2,
+        "rawProof": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier11-official-maps-20260919\\invalid-source-raw-and-clip-review.json",
+          "sha256": "468a9aa3832d5503a64dc84916e768553acbf5f9939ad8d751b232b004473bae"
+        },
+        "sourcePDF": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-frontier8-official-maps-20260919\\oued-zit-zaghouan.pdf",
+          "sha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b"
+        },
+        "sourceVertexCount": 603
+      },
+      "normalizationDescription": "Node the one source crossing and retain both resulting polygons, including the5.298391m2 triangular component; no component discarded, no buffer/snap or guessed replacementedge.",
+      "candidateGeometrySha256": "59e00798d50a4d2b427b0fbf090f83dddcc3ac810fb517863343286c7d391a70",
+      "sourcePdf": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-oued-zit.pdf",
+        "sha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b",
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/زغوان/زغوان/وادي الزيت.pdf"
+      },
+      "sourceMetadata": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-oued-zit.json",
+        "sha256": "f48df29c910005c44d24fcc1f0f031af5a15c9bc0267210ad4413f39944cf781"
+      },
+      "sourceInspector": {
+        "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-root-normalized-source-candidates-f09610ab341b.json",
+        "sha256": "f09610ab341b5cb342cc7d47e36dd8e085ed66070c610f209a868d7df6204611"
+      },
+      "preservedPointPolicy": {
+        "mode": "previous_metadata",
+        "point": {
+          "lat": 36.40337,
+          "lng": 10.326419
+        },
+        "expectedNearestId": 409,
+        "expectedCuration": null,
+        "centroidUsed": false
+      }
+    }
+  ],
+  "decree": {
+    "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "pageImages": [
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-044.png",
+      "sha256": "7d1e54b30a371ff3176496ee0eec48680874b4afe927fcc248d9bd94448d188c"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-046.png",
+      "sha256": "9b829a0abb95f090b491affbe45cc1b9dba5443aee0e6fcd85b7cef5120353db"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-049.png",
+      "sha256": "0fa23ac7fff8149d106fe622d8dc3f4fa06441dc4ffe737f3a516c33c83db47a"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-050.png",
+      "sha256": "103d4a26c93089277be8451b199b07a539e41fbb8e8dcfb3805078c0aa9daa40"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-051.png",
+      "sha256": "31d86b31bba4a19c91a428308e56d88e2cf22d9e9b1cff15d981bc55215b3bf3"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-074.png",
+      "sha256": "1b84972dc4d202fa21bf0e36feae9521b0167cb7cf45e24c6c90fd98c0ae3769"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-075.png",
+      "sha256": "af214a66ed6896a5b142b5f694a09dbc24e65c5a948c8b31be52dfef0c3a79e1"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-076.png",
+      "sha256": "3483e377186635257c1767208fab86c3e743c2b0c77ddc1bc9e00b5832590e77"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-077.png",
+      "sha256": "1567f776ae039e33638a76b972df9cd6a68459d45abf07d5e333860c7dae643c"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/decree-page-078.png",
+      "sha256": "7e66d574605bbd23199d21e411834424516485deeefd822e4475bcac7799acbe"
+    }
+  ],
+  "registry": {
+    "file": "official/hammamet-nine-neighbours-20260920/evidence/registry-current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "sourcePdfs": [
+    {
+      "id": "osm:relation:7105250",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-bouficha.pdf",
+      "sha256": "2a9bd82743ab156c34534789f8f45627d79c43bc87a0aa51c6fdf77f46ab4a4f",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/بوفيشة.pdf"
+    },
+    {
+      "id": "osm:relation:7105249",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-selloum-bouficha.pdf",
+      "sha256": "2f1896201606af27e359e39c81f001f61e5778df37321a550a7fa20816e95c6c",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/السلوم - (بوفيشة).pdf"
+    },
+    {
+      "id": "osm:relation:7105455",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-sidi-said-bouficha.pdf",
+      "sha256": "e2d651fb66fa7ef345b9006abdc644cb928a1124e662449098539bb39807dfac",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/بوفيشة/سيدي سعيد - (بوفيشة).pdf"
+    },
+    {
+      "id": "osm:relation:7104940",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-jebel-trif.pdf",
+      "sha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/جبل طريف.pdf"
+    },
+    {
+      "id": "osm:relation:7103679",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-borj-hafedh.pdf",
+      "sha256": "32e4bb03fd4778b4113194b04919212cba5dacac4cd17baab06d89a1a808888e",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/برج حفيظ.pdf"
+    },
+    {
+      "id": "osm:relation:7103680",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-bou-argoub-sud.pdf",
+      "sha256": "ba86f9e984c73854ff3d5b8bb782f225a887e9fac0925c2f88035ad57039f1b7",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/بوعرقوب/بوعرقوب القبلية.pdf"
+    },
+    {
+      "id": "osm:relation:7103327",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-hedi-chaker.pdf",
+      "sha256": "18c786feb6fe4e6d89bb3d1c9ee4e82ef5add3f17d3299619ce70505fafe6cda",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 1/نابل/الهادي شاكر - (نابل).pdf"
+    },
+    {
+      "id": "osm:relation:7104938",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-ain-tebournouk.pdf",
+      "sha256": "26c69787a7f2e4126f30ba3c15e8babbe8b72558d9a3e8f4a4f9d3431c2dea48",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/نابل 2/قرنبالية/عين طبرنق.pdf"
+    },
+    {
+      "id": "osm:relation:7109196",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-pdf-oued-zit.pdf",
+      "sha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/زغوان/زغوان/وادي الزيت.pdf"
+    }
+  ],
+  "sourceMetadata": [
+    {
+      "id": "osm:relation:7105250",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-bouficha.json",
+      "sha256": "ff80c59a4140c059f4d3a9fffa15a2eac0107e5c9d411e8b463e9585249bdf5b"
+    },
+    {
+      "id": "osm:relation:7105249",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-selloum-bouficha.json",
+      "sha256": "22af7709ef731fb897f6af05d8b6b39da17f00b52c4cbc963db0ba047bc99d4b"
+    },
+    {
+      "id": "osm:relation:7105455",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-sidi-said-bouficha.json",
+      "sha256": "2f5bc4db02391b30580e80e1c485888b0ff20cdfec39ffa2fdf3ae607ab58118"
+    },
+    {
+      "id": "osm:relation:7104940",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-jebel-trif.json",
+      "sha256": "540229e26e5493e2a5a89da932ff97c142a996da876ea899929a1bd6b8f95a3b"
+    },
+    {
+      "id": "osm:relation:7103679",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-borj-hafedh.json",
+      "sha256": "6b4a16dbd2040d468d77ed18806b0762bc40fb40aec185ecf32256aa15300037"
+    },
+    {
+      "id": "osm:relation:7103680",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-bou-argoub-sud.json",
+      "sha256": "bde39679431c26ee888348130113e3f7762a9b175d52362ea1198f266d195910"
+    },
+    {
+      "id": "osm:relation:7103327",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-hedi-chaker.json",
+      "sha256": "fbd4e0134aca0dc598981216e1d007b08376fdc95bd0369428e3608dc08d3655"
+    },
+    {
+      "id": "osm:relation:7104938",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-ain-tebournouk.json",
+      "sha256": "027b377372b209b8448bdf3f315d832240f39ee49964bc7fd255381c27b80603"
+    },
+    {
+      "id": "osm:relation:7109196",
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-metadata-oued-zit.json",
+      "sha256": "f48df29c910005c44d24fcc1f0f031af5a15c9bc0267210ad4413f39944cf781"
+    }
+  ],
+  "inspectors": [
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-4cc52af896b8.json",
+      "sha256": "4cc52af896b8f36b80b51a747757d3610fe9908c7fce58da6c037bc3ca740a7f"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-native-map-inspection-05cd413369ff.json",
+      "sha256": "05cd413369ff7fffe78b3ae3552cc4a5d52b14a1dd558eabd1dda2fe1c088807"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/source-inspector-root-normalized-source-candidates-f09610ab341b.json",
+      "sha256": "f09610ab341b5cb342cc7d47e36dd8e085ed66070c610f209a868d7df6204611"
+    }
+  ],
+  "ouedZitAudits": [
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/oued-zit-native-linework-audit.json",
+      "sha256": "bbc89b8b253d56b033b8cfe8848118d68fc53867eb876dcbd322acaa5066fd4e"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/oued-zit-source-scope-review.json",
+      "sha256": "f54f408761dc8bca53ed4efc6158f6d706ca80efeac07c69c2120a6928dda382"
+    }
+  ],
+  "candidateInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\official-source-batches\\onehundredfiftyone-current-name-review-20260920.json",
+    "sha256": "529e2da19664425f92c7498be4c86092eec412745c49b849e82e073ca63f7fe7",
+    "copied": false,
+    "reason": "large 151-candidate inventory not copied; pin provenance only"
+  },
+  "limitations": [
+    "Eight native valid, unchanged polygons; Oued Zit is a pre-reviewed node-crossing MultiPolygon retained with both components unchanged; small loop ownership unknown.",
+    "whole_imada is a 2023 semantic scope conclusion, not a 100 percent physical-accuracy claim.",
+    "No full-catalog certification and no Google certification is implied."
+  ]
+}

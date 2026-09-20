@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_FIVE_NAME_ONLY_CORRECTIONS",
+  "scope": "The official coded INS registry and source identity reviews govern these Arabic spellings. Existing Maps observations do not establish corrected spelling or boundary. No geometry, grouping, source, coordinate or extent change.",
+  "targets": [
+    {
+      "id": "osm:relation:7169653",
+      "code": "435352",
+      "newName": "جلمة الغربية",
+      "officialRecord": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4353",
+        "delegationFr": "Jilma",
+        "delegationAr": "جلمة",
+        "sectorCode": "435352",
+        "sectorFr": "Jilma ouest",
+        "sectorAr": "جلمة الغربية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 54569,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2656,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2651
+        }
+      },
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "جلمة الغريبة",
+        "name:ar": "جلمة الغريبة",
+        "name:fr": "Jilma Ouest",
+        "ref:tn:codegeo": "435352"
+      }
+    },
+    {
+      "id": "osm:relation:7119628",
+      "code": "175858",
+      "newName": "حي الحدائق",
+      "officialRecord": {
+        "governorateCode": "17",
+        "governorateFr": "Bizerte",
+        "governorateAr": "بنزرت",
+        "delegationCode": "1758",
+        "delegationFr": "Menzel bourguiba",
+        "delegationAr": "منزل بورقيبة",
+        "sectorCode": "175858",
+        "sectorFr": "Cite jardins",
+        "sectorAr": "حي الحدائق",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18768,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 821,
+          "Nombre_de_menages_par_Secteurs.xlsx": 820
+        }
+      },
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "حي الحداءق",
+        "name:ar": "حي الحداءق",
+        "name:fr": "Cité Jardins",
+        "ref:tn:codegeo": "175858"
+      }
+    },
+    {
+      "id": "osm:relation:7101603",
+      "code": "156251",
+      "newName": "داموس الحاجة",
+      "officialRecord": {
+        "governorateCode": "15",
+        "governorateFr": "Nabeul",
+        "governorateAr": "نابل",
+        "delegationCode": "1562",
+        "delegationFr": "Menzel bouzelfa",
+        "delegationAr": "منزل بوزلفة",
+        "sectorCode": "156251",
+        "sectorFr": "Damous el hajja",
+        "sectorAr": "داموس الحاجة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13567,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 548,
+          "Nombre_de_menages_par_Secteurs.xlsx": 547
+        }
+      },
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "داموس الهجة",
+        "name:ar": "داموس الهجة",
+        "name:fr": "Damous El Hajja",
+        "ref:tn:codegeo": "156251"
+      }
+    },
+    {
+      "id": "osm:relation:7164910",
+      "code": "425555",
+      "newName": "القنة",
+      "officialRecord": {
+        "governorateCode": "42",
+        "governorateFr": "Kasserine",
+        "governorateAr": "القصرين",
+        "delegationCode": "4255",
+        "delegationFr": "Sbeitla",
+        "delegationAr": "سبيطلة",
+        "sectorCode": "425555",
+        "sectorFr": "El gounna",
+        "sectorAr": "القنة",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51135,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2479,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2474
+        }
+      },
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الفنة",
+        "name:ar": "الفنة",
+        "name:fr": "El Gounna",
+        "ref:tn:codegeo": "425555"
+      }
+    },
+    {
+      "id": "osm:relation:7198157",
+      "code": "235360",
+      "newName": "سيدي مدين",
+      "officialRecord": {
+        "governorateCode": "23",
+        "governorateFr": "Le kef",
+        "governorateAr": "الكاف",
+        "delegationCode": "2353",
+        "delegationFr": "Nebeur",
+        "delegationAr": "نبر",
+        "sectorCode": "235360",
+        "sectorFr": "Sidi medyen",
+        "sectorAr": "سيدي مدين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 27097,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 1271,
+          "Nombre_de_menages_par_Secteurs.xlsx": 1270
+        }
+      },
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سيدي مدنين",
+        "name:ar": "سيدي مدنين",
+        "name:fr": "Sidi Medien",
+        "ref:tn:codegeo": "235360"
+      }
+    }
+  ],
+  "officialRegistry": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+  },
+  "reviewFiles": [
+    {
+      "file": "name-reviews/five-spelling-20260920/source-reviews/jelma435352-facts.json",
+      "sha256": "674cee233b76e79121358707fc1bad55dce16df796dd028898159bf8624833b2",
+      "bytes": 20314
+    },
+    {
+      "file": "name-reviews/five-spelling-20260920/source-reviews/gardens175858-facts.json",
+      "sha256": "cfbae27424ec52f8e6f23d6407d2ff263aab8f5fa1a6b1c2046db7ccd3093d40",
+      "bytes": 14155
+    },
+    {
+      "file": "name-reviews/five-spelling-20260920/source-reviews/damous156251-facts.json",
+      "sha256": "453aee3e1b0f8424e6dc0a96a21d8c3c5b679fe299d7949444b687a24d88a525",
+      "bytes": 13652
+    },
+    {
+      "file": "name-reviews/five-spelling-20260920/source-reviews/three-name-independent-review.json",
+      "sha256": "ac68538fca90090cda1d0c56fdbeaf4ed85832b3ece7f94bce1c888e785e3a00",
+      "bytes": 11078
+    },
+    {
+      "file": "name-reviews/five-spelling-20260920/source-reviews/source-review.json",
+      "sha256": "976ff6b8efbe598f53d8584960930f70066b113cba6cf17e1026902e93059e6d",
+      "bytes": 10358
+    },
+    {
+      "file": "name-reviews/five-spelling-20260920/source-reviews/gounna425555-name-only-candidate.json",
+      "sha256": "eec3805be148905dac43902938f5bceda9dacdbb7fd6879d97d4f5f6fba19908",
+      "bytes": 18057
+    },
+    {
+      "file": "name-reviews/five-spelling-20260920/source-reviews/sidi235360-name-only-candidate.json",
+      "sha256": "db1b405e0a2e2ada1e0e40469060e671ffc7d7a1085210fadce9fc5f60e2f8b5",
+      "bytes": 19933
+    },
+    {
+      "file": "name-reviews/five-spelling-20260920/original-source-extract.json",
+      "sha256": "c2fb94c7e1d8e743cafd805416c9a055c4cead7fc457832df3cfd6fb935d80c0"
+    }
+  ],
+  "historicalProvenanceQualification": "Copied original review documents retain their original file references, observations and model qualifications as historical evidence. Operational references in this proof resolve relative to scripts/neighborhoods. Root accepted Sidi Medien/Medyen as an ordinary French transliteration difference under exact code and parent.",
+  "sourceReviewQualification": "First-three native review passes; last-two native source review passes with the disclosed Sidi transliteration decision. Same-name peers, existing child identities and protected review guards remain unchanged."
+}

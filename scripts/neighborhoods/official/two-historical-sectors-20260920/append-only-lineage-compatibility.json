@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_append_only_boundary_extension",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "previousManifest": {
+    "file": "official/two-historical-sectors-20260920/evidence/boundarymanifest-before-combined.json",
+    "sha256": "4611c1bafd550a6448e31177b3a49bd62f47d718743a8e7778de6a092a4cd91b"
+  },
+  "addedSources": [
+    {
+      "id": "isie-local-sector-2023-ettadhamen4-historical-rename",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/two-historical-sectors-20260920/ettadhamen4-source.geojson",
+      "sha256": "5ecc75bf902793294f2edd27ac0f6c3f066867f3ea50c99373436411aeb429c9",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7115584",
+          "officialCode": "125657",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "7 نوفمبر",
+            "name:ar": "7 نوفمبر",
+            "name:fr": "7 Novembre",
+            "ref:tn:codegeo": "125657"
+          },
+          "aliases": [
+            "7 نوفمبر",
+            "7 Novembre"
+          ]
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/two-historical-sectors-20260920/ettadhamen4-manual-point-review.json",
+        "sha256": "2198fd4b1ab9ab5e64ed0ed98bc2df3bee2ef10397a13ca6dcbdf76706f4d604"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "identityRegistry": "Exact INS2012/current INS2024 six-digit sector identity with agreeing current population, housing and household workbook rows.",
+        "geometryPolicy": "Unmodified complete native whole-imada vector",
+        "aliasReview": "Preserve only the exact proven historical Arabic/French names as search aliases.",
+        "uncertainty": "Nine incident conflicts and approximately 0.180729413502 square kilometres of all-layer uncovered loss across the two replacements remain explicit. No neighbor updates or seam repair. GPS conflict withholding and broader fallback remain necessary.",
+        "evidenceFile": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+        "evidenceSha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-hammam-maarouf-riadh-exhaustive-parts",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-source.geojson",
+      "sha256": "874b28be93b7a1d59fd450e6d6a4cbfee46dcf51a6f77c6bf7ee20aba13d3985",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7113315",
+          "officialCode": "315256",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العهد الجديد",
+            "name:ar": "العهد الجديد",
+            "name:fr": "El Ahd El Jadid",
+            "ref:tn:codegeo": "315256"
+          },
+          "aliases": [
+            "العهد الجديد",
+            "El Ahd El Jadid"
+          ],
+          "scopeKind": "exhaustive_electoral_parts"
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-manual-point-review.json",
+        "sha256": "335e846a88fbb4858048fc62f07c751816f9df9b311ab0b76a6163717e981830"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "identityRegistry": "Exact INS2012/current INS2024 six-digit sector identity with agreeing current population, housing and household workbook rows.",
+        "geometryPolicy": "Exact unrounded union of both decree-exhaustive electoral parts; unchanged native parts independently pinned.",
+        "aliasReview": "Preserve only the exact proven historical Arabic/French names as search aliases.",
+        "uncertainty": "Nine incident conflicts and approximately 0.180729413502 square kilometres of all-layer uncovered loss across the two replacements remain explicit. No neighbor updates or seam repair. GPS conflict withholding and broader fallback remain necessary.",
+        "evidenceFile": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+        "evidenceSha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+      }
+    }
+  ],
+  "scopeSuccessor": {
+    "file": "official/two-historical-sectors-20260920/accepted-whole-scope-successor.json",
+    "sha256": "a82d380fd97d67e24fc970fa3a03cecad9935d30ec440e8e8254bf0195d39d0c"
+  },
+  "evidence": [
+    {
+      "file": "official/hammamet-nine-20260920/evidence/root-source-stage-checked.json",
+      "sha256": "acc52c536fd817049d3b12633ffe8e834837336dd46b2c6db34393e643c5190c"
+    },
+    {
+      "file": "official/hammamet-nine-20260920/source-review.json",
+      "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+    },
+    {
+      "file": "official/sidi-mtir-20260920/source-review.json",
+      "sha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/source-review.json",
+      "sha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+      "sha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+    }
+  ],
+  "aggregateScopeSuccessor": {
+    "file": "official/two-historical-sectors-20260920/accepted-aggregate-scope-successor.json",
+    "sha256": "243efca92415dfc75873cbe4210d6923b6d3a5d359a7bf3bfc2010d899599282"
+  }
+}

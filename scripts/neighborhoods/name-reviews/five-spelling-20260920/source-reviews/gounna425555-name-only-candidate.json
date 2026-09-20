@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 1,
+  "status": "NATIVE_SOURCE_REVIEW_PASS_NAME_ONLY_CANDIDATE",
+  "rank": 4,
+  "id": "osm:relation:7164910",
+  "sourceAndCurrentFacts": {
+    "id": "osm:relation:7164910",
+    "currentRaw": {
+      "id": "osm:relation:7164910",
+      "sourceId": "osm",
+      "name": "الفنة",
+      "aliases": [
+        "El Gounna"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سبيطلة",
+      "contextAliases": [
+        "Délégation Sbeitla",
+        "Sbeïtla",
+        "معتمدية سبيطلة"
+      ],
+      "governorateId": 362,
+      "lat": 35.403945,
+      "lng": 9.103936,
+      "delegationId": 576,
+      "hasBoundary": true,
+      "bbox": [
+        9.016982,
+        35.33138,
+        9.192246,
+        35.4754
+      ],
+      "areaKm2": 103.42276348821417,
+      "pickerGroupId": "osm:relation:7164910",
+      "offset": 3276852,
+      "length": 2028
+    },
+    "sourceTags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "الفنة",
+      "name:ar": "الفنة",
+      "name:fr": "El Gounna",
+      "ref:tn:codegeo": "425555"
+    },
+    "sourceKind": "sector",
+    "sourceReference": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-catalog-issue-priority-20260920\\frozen\\source.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997,
+      "jsonPointer": "/areas/1715"
+    },
+    "officialRecord": {
+      "governorateCode": "42",
+      "governorateFr": "Kasserine",
+      "governorateAr": "القصرين",
+      "delegationCode": "4255",
+      "delegationFr": "Sbeitla",
+      "delegationAr": "سبيطلة",
+      "sectorCode": "425555",
+      "sectorFr": "El gounna",
+      "sectorAr": "القنة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 51135,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 2479,
+        "Nombre_de_menages_par_Secteurs.xlsx": 2474
+      }
+    },
+    "workbookRowIndices": [
+      6,
+      14,
+      22
+    ],
+    "sourceCodeMatchingIds": [
+      "osm:relation:7164910"
+    ],
+    "parentScope": [
+      {
+        "id": "osm:relation:7164930",
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Sbeïtla",
+          "boundary": "administrative",
+          "name": "معتمدية سبيطلة",
+          "name:ar": "معتمدية سبيطلة",
+          "name:fr": "Délégation Sbeitla",
+          "ref:tn:codegeo": "4255",
+          "ref:tn:hasc_2": "TN.KS.ST",
+          "wikidata": "Q3474896"
+        },
+        "originalParentCoversOriginalObject": true
+      }
+    ],
+    "directDecisions": {
+      "curation": [],
+      "picker": [],
+      "boundaries": []
+    },
+    "existingCuration": null,
+    "pendingReview": [],
+    "currentPickerId": "osm:relation:7164910",
+    "currentPickerMembers": [
+      "osm:relation:7164910"
+    ],
+    "childrenWithSameContextName": [
+      {
+        "currentRaw": {
+          "id": "osm:node:2874824483",
+          "sourceId": "osm",
+          "name": "الزنايدية",
+          "aliases": [
+            "Eznaidia"
+          ],
+          "kind": "hamlet",
+          "parentName": "الفنة",
+          "contextAliases": [
+            "Délégation Sbeitla",
+            "El Gounna",
+            "Sbeïtla",
+            "الفنة",
+            "معتمدية سبيطلة"
+          ],
+          "governorateId": 362,
+          "lat": 35.3951226,
+          "lng": 9.1203599,
+          "delegationId": 576,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:2874824483"
+        },
+        "source": {
+          "id": "osm:node:2874824483",
+          "kind": "hamlet",
+          "tags": {
+            "name": "الزنايدية",
+            "name:ar": "الزنايدية",
+            "name:en": "Eznaidia",
+            "name:fr": "Eznaidia",
+            "place": "hamlet"
+          },
+          "lat": 35.3951226,
+          "lng": 9.1203599
+        },
+        "originalObjectContainsChildPoint": true,
+        "curation": null
+      }
+    ],
+    "savedMaps": [
+      {
+        "artifact": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5556-003\\osm_relation_7164910-1.json",
+          "sha256": "ca9e667b4202616b794b8772092fe7a1c2c76ad1ab2eb466d25099317a5b5a32",
+          "bytes": 1229
+        },
+        "screenshot": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5556-003\\osm_relation_7164910-1.png",
+          "sha256": "9863581268d5cae1ea483a841b5f58911e097c59db4f801d4033482d3a8e808e",
+          "bytes": 365593
+        },
+        "exactQuery": "El Gounna, Kasserine, Tunisia",
+        "parserVersion": 3,
+        "status": "candidate_observed",
+        "synchronizationOutcome": null,
+        "titles": [
+          "El Gounna"
+        ],
+        "literalPublicUiText": [
+          "El Gounna",
+          "الفنة",
+          "Tunisia",
+          "Directions to El Gounna",
+          "Directions",
+          "Share El Gounna",
+          "Share",
+          "Save El Gounna to lists",
+          "Save",
+          "Show more actions for this place",
+          "More",
+          "About",
+          "Address: Tunisia",
+          "Add a missing place",
+          "Add your business to Maps for free",
+          "Measure distance",
+          "Close",
+          "El Gounna, Kasserine, Tunisia",
+          "Clear"
+        ],
+        "qualification": "Historical captured public text; no geography/identity/boundary facet promotion. Existing ambiguous/uncertain parser signals remain unchanged."
+      }
+    ]
+  },
+  "officialOriginalWorkbookRows": [
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "bytes": 9247324
+      },
+      "officialUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population",
+      "worksheetXml": "xl/worksheets/sheet3.xml",
+      "row": 51135,
+      "cells": {
+        "A": "3",
+        "B": "District 3",
+        "C": "إقليم 3",
+        "D": "42",
+        "E": "Kasserine",
+        "F": "القصرين",
+        "G": "4255",
+        "H": "Sbeitla",
+        "I": "سبيطلة",
+        "J": "425555",
+        "K": "El gounna",
+        "L": "القنة",
+        "M": "425555-El gounna",
+        "N": "425555-القنة",
+        "O": "M",
+        "P": " Masculin",
+        "Q": " ذكر",
+        "R": "1",
+        "S": "00-04",
+        "T": "00-04",
+        "U": "149"
+      },
+      "code": "425555",
+      "matchesRegistryExactly": true
+    },
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "bytes": 755797
+      },
+      "officialUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "sheet": "Logements",
+      "worksheetXml": "xl/worksheets/sheet3.xml",
+      "row": 2479,
+      "cells": {
+        "A": "3",
+        "B": "District 3",
+        "C": "إقليم 3",
+        "D": "42",
+        "E": "Kasserine",
+        "F": "القصرين",
+        "G": "4255",
+        "H": "Sbeitla",
+        "I": "سبيطلة",
+        "J": "El gounna",
+        "K": "القنة",
+        "L": "425555",
+        "M": "425555-El gounna",
+        "N": "425555-القنة",
+        "O": "1",
+        "P": "Urbain",
+        "Q": "حضري",
+        "R": "5",
+        "S": "5"
+      },
+      "code": "425555",
+      "matchesRegistryExactly": true
+    },
+    {
+      "workbook": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "bytes": 649843
+      },
+      "officialUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "sheet": "Ménages",
+      "worksheetXml": "xl/worksheets/sheet3.xml",
+      "row": 2474,
+      "cells": {
+        "A": "3",
+        "B": "District 3",
+        "C": "إقليم 3",
+        "D": "42",
+        "E": "Kasserine",
+        "F": "القصرين",
+        "G": "4255",
+        "H": "Sbeitla",
+        "I": "سبيطلة",
+        "J": "El gounna",
+        "K": "القنة",
+        "L": "425555",
+        "M": "425555-El gounna",
+        "N": "425555-القنة",
+        "O": "1",
+        "P": "Urbain",
+        "Q": "حضري",
+        "R": "5"
+      },
+      "code": "425555",
+      "matchesRegistryExactly": true
+    }
+  ],
+  "sourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+    "bytes": 25453997
+  },
+  "metadataBaseline": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "sha256": "ddb2bfe2389fe257d37cef60a6293e449323258cf2d4db3896a3986a6d4ee8f6",
+    "bytes": 1866364
+  },
+  "ledgerBaseline": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "d8a557c94abfbe0a66e039f7a71deefcb7f4fa0dd72f6fa9a4b6d0cf4aa1c251",
+    "bytes": 36828572
+  },
+  "originalAndPacked": {
+    "originalBounds": [
+      9.016982,
+      35.33138,
+      9.1922457,
+      35.4754
+    ],
+    "packedBounds": [
+      9.016982,
+      35.33138,
+      9.192246,
+      35.4754
+    ],
+    "packedSliceSha256": "2fb09fb8da7dcd3702cb4c2d78b7d9fbb251ef6c8adfe6d8fb867094bdcadd10",
+    "parentRelationships": [
+      {
+        "id": "osm:relation:7164930",
+        "originalParentCoversOriginalSector": true,
+        "originalParentCoversPackedSector": false,
+        "tags": {
+          "admin_level": "5",
+          "alt_name:fr": "Sbeïtla",
+          "boundary": "administrative",
+          "name": "معتمدية سبيطلة",
+          "name:ar": "معتمدية سبيطلة",
+          "name:fr": "Délégation Sbeitla",
+          "ref:tn:codegeo": "4255",
+          "ref:tn:hasc_2": "TN.KS.ST",
+          "wikidata": "Q3474896"
+        }
+      }
+    ],
+    "originalContainsCurrentAnchor": true,
+    "packedContainsCurrentAnchor": true
+  },
+  "identityFinding": "Unique original source code, matching coded parent, and the corresponding official catalog row identify the same sector. Only its Arabic display spelling is proposed for correction. No geometry, point, membership, group or nearest prayer-source change is authorized by this review.",
+  "proposedEffectiveNameTags": {
+    "name": "القنة",
+    "name:ar": "القنة",
+    "name:fr": "El Gounna"
+  },
+  "aliasPolicy": "Keep existing consumed Latin alias list unchanged; do not add the former erroneous primary as a searchable alias. Existing name_tags saved reviewedNames history must preserve the old name; final generated review remains required.",
+  "exactProjectedRawFieldChanges": [
+    {
+      "id": "osm:relation:7164910",
+      "field": "name",
+      "before": "الفنة",
+      "after": "القنة"
+    },
+    {
+      "id": "osm:node:2874824483",
+      "field": "parentName",
+      "before": "الفنة",
+      "after": "القنة"
+    },
+    {
+      "id": "osm:node:2874824483",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Sbeitla",
+        "El Gounna",
+        "Sbeïtla",
+        "الفنة",
+        "معتمدية سبيطلة"
+      ],
+      "after": [
+        "Délégation Sbeitla",
+        "El Gounna",
+        "Sbeïtla",
+        "القنة",
+        "معتمدية سبيطلة"
+      ]
+    }
+  ],
+  "expectedSavedNameHistory": {
+    "reviewedNamesNewRecords": 1,
+    "retiredRawIdsNew": 0,
+    "oldName": "الفنة",
+    "newName": "القنة"
+  },
+  "homonymsAndSourcePeers": [
+    {
+      "id": "osm:relation:7174568",
+      "kind": "sector",
+      "sourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "القنة",
+        "name:ar": "القنة",
+        "name:fr": "El Gounna",
+        "ref:tn:codegeo": "136259"
+      },
+      "sourceLat": null,
+      "sourceLng": null,
+      "currentRaw": {
+        "id": "osm:relation:7174568",
+        "sourceId": "osm",
+        "name": "القنة",
+        "aliases": [
+          "El Gounna"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مرناق",
+        "contextAliases": [
+          "Délégation Mornag",
+          "Mornag",
+          "معتمدية مرناق"
+        ],
+        "governorateId": 349,
+        "lat": 36.562925,
+        "lng": 10.189665,
+        "delegationId": 445,
+        "hasBoundary": true,
+        "bbox": [
+          10.150266,
+          36.54134,
+          10.238267,
+          36.58548
+        ],
+        "areaKm2": 24.058756685584857,
+        "pickerGroupId": "osm:relation:7174568",
+        "offset": 4315104,
+        "length": 7516
+      },
+      "insideOriginalCandidate": false,
+      "insidePackedCandidate": false
+    },
+    {
+      "id": "osm:node:2874826396",
+      "kind": "hamlet",
+      "sourceTags": {
+        "name": "القنة",
+        "name:ar": "القنة",
+        "name:en": "El Gonna",
+        "name:fr": "El Gonna",
+        "place": "hamlet"
+      },
+      "sourceLat": 35.4445809,
+      "sourceLng": 9.1205946,
+      "currentRaw": {
+        "id": "osm:node:2874826396",
+        "sourceId": "osm",
+        "name": "القنة",
+        "aliases": [
+          "El Gonna"
+        ],
+        "kind": "hamlet",
+        "parentName": "عين الخمائسية",
+        "contextAliases": [
+          "Ain El Khemaissia",
+          "Délégation Sbiba",
+          "Sbiba",
+          "عين الخمائسية",
+          "معتمدية سبيبة"
+        ],
+        "governorateId": 362,
+        "lat": 35.4445809,
+        "lng": 9.1205946,
+        "delegationId": 576,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:2874826396"
+      },
+      "insideOriginalCandidate": false,
+      "insidePackedCandidate": false
+    }
+  ],
+  "peerQualification": "All listed original name peers lie outside both original and current packed candidate geometry; preserve their raw/source/group states. The absent8022428811 village belongs to separate source context and must not be revived.",
+  "modelVerdict": {
+    "rank": 4,
+    "ids": [
+      "osm:relation:7164910"
+    ],
+    "verdict": "NAME_ONLY_CANDIDATE",
+    "exactEvidenceProvingChange": "Official rows 51135, 2479, and 2474 for code 425555 give sectorAr=القنة and sectorFr=El gounna. OSM relation 7164910 has ref:tn:codegeo=425555, name:fr=El Gounna, and parent relation 7164930 code 4255 Sbeitla; its Arabic is الفنة. The only mismatch is Arabic ف/ق, with code, parent, kind, and French name converging.",
+    "proposedPrimaryName": {
+      "osm:relation:7164910": "القنة"
+    },
+    "whyNotWrongIdentity": "Same sector code 425555, same parent delegation 4255, same French label El Gounna, same OSM relation/geometry. Correcting the Arabic spelling does not reassign the object to a different place.",
+    "scopeEffects": "If authorized, only change relation 7164910 Arabic name fields: currentRaw.name and sourceTags.name/name:ar to القنة; keep name:fr=El Gounna and aliases. Child node 2874824483 الزنايدية keeps its own name; generated parentName/contextAliases that reference الفنة would become stale if not regenerated. No boundary, picker-group, point, or sector-merge effect.",
+    "missingEvidence": "Independent authoritative Arabic orthography/field confirmation is absent; the workbook trio is one catalog, not independent geographic verification. Under the supplied rule, code/parent/French convergence is enough for a name-only Arabic typo candidate.",
+    "nextBoundedAction": "Name-only correction candidate for relation 7164910 if changes are authorized: set Arabic name to القنة; do not alter code, parent, French name, geometry, picker grouping, or child names."
+  },
+  "nativeModelDisposition": "AGREE with one contained child context update.",
+  "limitations": [
+    "The threeworkbooks share one official source catalog; they are not threeindependent geographical verifications.",
+    "Maps repeats the old spelling and is not the corrective source.",
+    "OSM source/packed containment is not official boundary certification.",
+    "Direct manifest matches are empty, but full active aggregate guards and generated metadata/coverage must still be reviewed before installation."
+  ],
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-shortlist-source-review-20260920\\finalize.py",
+    "sha256": "e30622e5f2e8f9fb01397abfaf20a09a85a46785d4c82a792b6582b1a9a3035c",
+    "bytes": 10325
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "decision": "Accept name association only: preserve current display name and existing alias. Census municipal district row supports association, not equal imada geometry or exact node identity.",
+  "sourceEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\baraket-name-equivalence-20260920\\census-and-existing-phone-evidence.json",
+    "sha256": "de00be81161e6244a5edf9cd0974721a1bf7b74e9fb83ceff1d700e7a6e5b87b"
+  },
+  "workerResponse": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\baraket-name-equivalence-review-response-20260920.json",
+    "sha256": "a9d5552fad49cdf3833388eeb870a60e645e49d30da9b51acc58618ff8d3bf84"
+  },
+  "pointAndGeometryDecisionsSeparate": true,
+  "appChanges": false,
+  "fullCatalogCertified": false
+}

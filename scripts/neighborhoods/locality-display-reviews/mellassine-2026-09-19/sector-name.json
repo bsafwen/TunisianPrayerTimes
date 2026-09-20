@@ -1,0 +1,37 @@
+{
+  "observationParserVersion": 3,
+  "observedAt": "2026-09-19T17:24:18.719324+00:00",
+  "query": "Mellassine Sijoumi Tunis",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "الملاسين"
+  ],
+  "publicUiText": [
+    "عرض صور الملاسين من \"التجوّل الافتراضي\"",
+    "الملاسين",
+    "Mellasine",
+    "تونس، تونس‎",
+    "الاتجاهات إلى الملاسين",
+    "الاتجاهات",
+    "مشاركة الملاسين",
+    "مشاركة",
+    "حفظ الملاسين في القوائم",
+    "حفظ",
+    "عرض المزيد من الإجراءات لهذا المكان",
+    "المزيد",
+    "صورة",
+    "إغلاق",
+    "Mellassine Sijoumi Tunis",
+    "محو",
+    "المطاعم",
+    "مَعالِم الجذب السياحي",
+    "الفنادق",
+    "المتنزهات"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "الملاسين"
+  ],
+  "screenshot": "osm_relation_7201552-1.png",
+  "boundaryVerified": false
+}

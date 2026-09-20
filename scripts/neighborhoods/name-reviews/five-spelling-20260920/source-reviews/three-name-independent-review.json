@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_THREE_NAME_ONLY_IDENTITIES_AND_STATIC_DEPENDENCY_SCREEN",
+  "cases": [
+    {
+      "id": "osm:relation:7169653",
+      "sectorCode": "435352",
+      "before": "جلمة الغريبة",
+      "after": "جلمة الغربية",
+      "aliases": [
+        "Jilma Ouest"
+      ],
+      "parentCode": "4353",
+      "workbookRows": {
+        "Population": 54569,
+        "Logements": 2656,
+        "Menages": 2651
+      },
+      "verdict": "PASS_NAME_ONLY",
+      "qualification": "Google repeats original disputed Arabic; official same-code INS identity is corrective evidence."
+    },
+    {
+      "id": "osm:relation:7119628",
+      "sectorCode": "175858",
+      "before": "حي الحداءق",
+      "after": "حي الحدائق",
+      "aliases": [
+        "Cité Jardins"
+      ],
+      "parentCode": "1758",
+      "workbookRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 18768,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 821,
+        "Nombre_de_menages_par_Secteurs.xlsx": 820
+      },
+      "verdict": "PASS_NAME_ONLY",
+      "qualification": "Google capture is historical parser3 without settled synchronization contract; direct original INS cell reads are primary evidence. Original unrounded parent fully covers original sector but not rounded packed sector; preserve this existing difference."
+    },
+    {
+      "id": "osm:relation:7101603",
+      "sectorCode": "156251",
+      "before": "داموس الهجة",
+      "after": "داموس الحاجة",
+      "aliases": [
+        "Damous El Hajja"
+      ],
+      "parentCode": "1562",
+      "workbookRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 13567,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 548,
+        "Nombre_de_menages_par_Secteurs.xlsx": 547
+      },
+      "verdict": "PASS_NAME_ONLY",
+      "qualification": "Google capture is historical parser3 without settled synchronization contract; direct original INS cell reads are primary evidence. Original unrounded parent fully covers original sector but not rounded packed sector; preserve this existing difference."
+    }
+  ],
+  "sharedConclusion": "One finite batch of three derived Arabic primary-name corrections is supported. Retain each existing French alias verbatim; no new alternate names. No original source, historical Maps evidence, shape or prayer mapping is corrected by this review.",
+  "independentVerification": {
+    "originalWorkbooks": "Direct XML cell reads from all three hash-verified original INS XLSX files for all nine case rows. The three files are one official provider, independent of OSM source Arabic labels.",
+    "sourceInventory": "Unique code 435352/175858/156251 matches exactly 7169653/7119628/7101603 respectively in the pinned original source inventory. Existing French and parent identity agree with INS.",
+    "maps": "All three saved JSON/PNG hashes verified and screenshots personally viewed. Gardens and Damous remain parser3 historical observations without a settled contract. Jelma parser4 query shows conflicting Arabic and matching French; no identity/geography/boundary facet promotion.",
+    "currentScope": "All three are singleton picker groups and no current child row inherits their old primary name. No administrative/coordinate/prayer/geometry delta is intended."
+  },
+  "contraryAndLimitedEvidence": [
+    "Jelma original OSM Arabic and Google Arabic both say جلمة الغريبة; dependence between providers is unknown. Same unique official code and French Jilma Ouest support the correction to Western.",
+    "Gardens original OSM Arabic حي الحداءق conflicts with INS حي الحدائق. Distant Tunis relation7201237 already has حي الحدائق and child1183575561 inherits it; preserve both, their names and their contexts.",
+    "Damous original OSM Arabic داموس الهجة conflicts with INS داموس الحاجة. Parser3 Google title supports only a historical literal spelling observation.",
+    "Both added packed polygons fail full containment in their original unrounded parent while original source containment passes; no precision repair or boundary certification is included.",
+    "Damous has an existing overlapping-sector claim with7100361 (العريمة). A name correction leaves that unresolved geometry conflict intact."
+  ],
+  "aggregateDependencyFindings": {
+    "reuse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\independent-review.json",
+      "sha256": "c1ea211ff3578c85d0d9cd111dc981316731161f364124d135f1ff40112b8204",
+      "bytes": 11010
+    },
+    "reachability": "988 repository-local JSON/GeoJSON documents conservatively reachable through file+SHA references from current generator manifests; includes historical/informational references, not an exact runtime call graph. Outside-repository references were not recursively expanded.",
+    "additionalIdBearingFileCounts": {
+      "osm:relation:7119628": 28,
+      "osm:relation:7101603": 28
+    },
+    "existingProofSuccessorsRequired": [],
+    "gardensKhadraGuard": {
+      "reviewFile": "scripts/neighborhoods/point-base-display-reviews/khadra389/reviewed-suburb-point-base-display-identity.json",
+      "otherProtectedSector": "osm:relation:7201237",
+      "newTarget": "osm:relation:7119628",
+      "compilerLines": "3652-3675, 3732-3744, 3777-3791, 2318-2326",
+      "finding": "Khadra proof preserves the Tunis Gardens sector by exact ID; target175858 is not protected or in source peer IDs. Global peer keys derive from the Khadra point/base names, not every preserved sector name. Adding Gardens Arabic to the Bizerte target does not add it to those Khadra peer keys. Original protected Gardens and its child stay unchanged."
+    },
+    "damousCoverageLabel": {
+      "path": "scripts/neighborhoods/coverage.json",
+      "jsonPointer": "/conflicts/58/names/1",
+      "before": "داموس الهجة",
+      "after": "داموس الحاجة",
+      "ids": [
+        "osm:relation:7100361",
+        "osm:relation:7101603"
+      ],
+      "reason": "overlapping_sectors",
+      "intersectionKm2": 0.10344659285330948,
+      "sample": {
+        "lat": 36.747466,
+        "lng": 10.711670441644603
+      },
+      "finding": "Only the report display name changes. Packaged metadata conflict has no names; IDs/reason/area/sample stay byte-equivalent. Existing conflict count stays419."
+    },
+    "coverageReferenceQualification": {
+      "syntacticIncomingReferences": 34,
+      "referencesWithCurrentCoverageSha": 0,
+      "finding": "These incoming references describe historical input/report states; do not rewrite their historical hash. No current coverage-equality guard was identified."
+    },
+    "unchangedHistoricalArtifacts": "Preserve all original code inventories, old full-catalog snapshots/projections, registry copies, staged comparison reports and prior Maps observations. No blanket repinning is warranted."
+  },
+  "candidateAcceptanceConditions": [
+    "Exactly three feature.name changes in neighborhoods.json: the IDs and spellings above. All aliases, contexts, coordinates, prayer mappings, sources, groups and other feature fields unchanged.",
+    "neighborhoods.bin and retired-localities.json exactly unchanged. Metadata conflict entries unchanged.",
+    "coverage.json may update the normal curation manifest/checksum/application and reviewedNames outputs for the three name_tags decisions, plus Damous conflict report label as explicitly listed. Every other report delta requires explanation.",
+    "No original evidence/history rewrite, source-code change, new alias, parent reassignment or identity/boundary facet promotion.",
+    "Run the authorized genuine isolated generation and inspect all differences. If a guard fails, review the exact predicate; do not weaken or blanket repin it.",
+    "Handle live ledger/current fingerprint changes via the separately reviewed migration rules while preserving observations, original capture metadata and state/facet invariants."
+  ],
+  "deepseekReview": {
+    "response": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\three-name-deepseek-response.json",
+      "sha256": "3d3a60189384e60252a26ff4c2c04a04b340953c8fb9752776755854f03946fb",
+      "bytes": 54698
+    },
+    "finalContent": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\three-name-deepseek-final.txt",
+      "sha256": "b60d68900edcb1e7aa81fd927f688e31ac92aa21e8ff14d314553505e4f2f878",
+      "bytes": 6779
+    },
+    "model": "deepseek-flash",
+    "reasoningEffort": "max",
+    "result": "All three ACCEPT_NAME_ONLY; native follow-up adds the exact Damous conflict-label delta and checks Khadra homonym guard."
+  },
+  "proofArtifacts": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\independent-workbook-rows.json",
+      "sha256": "26f0efeacd9ff4c175b28e2d5684c6f8073909096800c200b788432fe552d458",
+      "bytes": 2742
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\additional-two-workbook-rows.json",
+      "sha256": "306714417a33370e2e24c9481459b71d9bd8efde69a509ce04af13c5c403e7e5",
+      "bytes": 5668
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\independent-source-identity.json",
+      "sha256": "d7b7d613d66a4f0cb447f2aa54471f0f6ddc0b2819ceee2d7fbe5fd3419521ac",
+      "bytes": 1039
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\additional-two-compact-facts.json",
+      "sha256": "8211a32087921cd243a8e7af13d4e4a65eef949aceeece7e218344c1297bc2bb",
+      "bytes": 15944
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\additional-two-dependency-screen.json",
+      "sha256": "88d73966a4d6867afad14791c79db0bab35d0fac307e96f52066ed398c5593e1",
+      "bytes": 51408
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\jelma435352-name-scope-review-20260920\\current-display-dependencies.json",
+      "sha256": "e165694a001ad7fd360f27717dff2ed4819893e9e40616089ed2e5d1120caf98",
+      "bytes": 329
+    }
+  ],
+  "noProductionWrites": true,
+  "noGenerationBuildTestsDevices": true,
+  "noNewSourceResearch": true,
+  "noBoundaryCertification": true
+}

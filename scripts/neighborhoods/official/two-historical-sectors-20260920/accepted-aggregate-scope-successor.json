@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "primarySource": {
+    "title": "Tunisian decree2023-590 of21September2023, annex1 tableA and annex6 introduction",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "date": "2023-09-21",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "pages": 190,
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "records": [
+    {
+      "id": "osm:relation:7111933",
+      "officialCode": "325951",
+      "boundarySourceSha256": "56bf11789c6f0d95d309d3d7ab6a891e19e2c151df1f2f25fc0b954f93fd8a55",
+      "conclusion": "whole_imada_from_exhaustive_electoral_parts",
+      "pdfPage": 15,
+      "jortPage": 5112,
+      "imadaName": "البقالطة الشمالية",
+      "delegationCode": "3259",
+      "governorateCode": "32",
+      "decreeInventory": {
+        "completeForDelegation": true,
+        "delegationCode": "3259",
+        "rows": [
+          {
+            "officialCode": "325953",
+            "imadaName": "البغدادي",
+            "circleNames": [
+              "البغدادي"
+            ]
+          },
+          {
+            "officialCode": "325952",
+            "imadaName": "البقالطة الجنوبية",
+            "circleNames": [
+              "البقالطة الجنوبية"
+            ]
+          },
+          {
+            "officialCode": "325954",
+            "imadaName": "البقالطة الشرقية",
+            "circleNames": [
+              "البقالطة الشرقية"
+            ]
+          },
+          {
+            "officialCode": "325951",
+            "imadaName": "البقالطة الشمالية",
+            "circleNames": [
+              "البقالطة الشمالية 1",
+              "البقالطة الشمالية 2"
+            ]
+          }
+        ]
+      },
+      "sourceParts": {
+        "file": "official/bekalta-north-aggregate-source-parts.geojson",
+        "sha256": "7a4966f8ae07440cd7d77db733c22adfb0eec4af6fccf74d1facf36c5b34f509"
+      },
+      "parts": [
+        {
+          "id": "bekalta-north-1",
+          "circleName": "البقالطة الشمالية 1",
+          "parentImadaCode": "325951",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9.pdf",
+          "sourcePdfSha256": "44da4d4631854a63048c32acf144bb49e5dc583f8dd4b4b492675432430b7bbf",
+          "geometrySha256": "d0e62b8f72da802caf5254fadea9f9b9a0854041d98c9bd042a1252dbe67f809"
+        },
+        {
+          "id": "bekalta-north-2",
+          "circleName": "البقالطة الشمالية 2",
+          "parentImadaCode": "325951",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A7%D9%84%D9%85%D9%86%D8%B3%D8%AA%D9%8A%D8%B1/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9/%D8%A7%D9%84%D8%A8%D9%82%D8%A7%D9%84%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9%20%282%29.pdf",
+          "sourcePdfSha256": "c2f5d298778222de1ef8a4cd19b41c58653b8a247c6d7197c1d653eb80018252",
+          "geometrySha256": "8c9d7948345a1201e02abbeff2ab5008e595154590cde720aed9270944bd615e"
+        }
+      ],
+      "geometrySha256": "adb201f3f600be1f7313cf7b176c5109d2e70732d160a0f1c06f7adf32a9070e",
+      "quantization": {
+        "coordinateScale": 1000000,
+        "packedGeometrySha256": "5682244426ce1d5226cd1c6971c66a58ddac3f07b41fa75f84bece44ccac4ea0",
+        "review": {
+          "file": "official/bekalta-north-coordinate-precision-acceptance.json",
+          "sha256": "02a1e3bab75a5b9042e25ac0bf6330bd83b691c03b127b044f3e312ba960fab2"
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7174585",
+      "officialCode": "135552",
+      "boundarySourceSha256": "82c1c5e2e99194c59b075d2ca63a32cda82deb0babae19de0c210da987fe4857",
+      "conclusion": "whole_imada_from_exhaustive_electoral_parts",
+      "pdfPage": 26,
+      "jortPage": 5123,
+      "imadaName": "برج السدرية",
+      "delegationCode": "1355",
+      "governorateCode": "13",
+      "decreeInventory": {
+        "completeForDelegation": true,
+        "delegationCode": "1355",
+        "rows": [
+          {
+            "officialCode": "135552",
+            "imadaName": "برج السدرية",
+            "circleNames": [
+              "برج السدرية 1",
+              "برج السدرية 2"
+            ]
+          },
+          {
+            "officialCode": "135551",
+            "imadaName": "بئر الباي",
+            "circleNames": [
+              "بئر الباي"
+            ]
+          },
+          {
+            "officialCode": "135553",
+            "imadaName": "حمام الشط",
+            "circleNames": [
+              "حمام الشط 1",
+              "حمام الشط 2"
+            ]
+          }
+        ]
+      },
+      "sourceParts": {
+        "file": "official/soliman-thirteen-native-20260912/borj-cedria-complete-source-parts.geojson",
+        "sha256": "24bbb909efd36d4a18e668c00f4eeaff8e451869ddf2c48356836ca01bd8d9b3"
+      },
+      "parts": [
+        {
+          "id": "isie2023:borj-cedria-1",
+          "circleName": "برج السدرية 1",
+          "parentImadaCode": "135552",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D8%AD%D9%85%D8%A7%D9%85%20%D8%A7%D9%84%D8%B4%D8%B7/%D8%A8%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B3%D8%AF%D8%B1%D9%8A%D8%A9%201.pdf",
+          "sourcePdfSha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc",
+          "geometrySha256": "7845713628a7c8c195d3deb070407165e288bfd0dd1c1581a07f585f8f0bff99"
+        },
+        {
+          "id": "isie2023:borj-cedria-2",
+          "circleName": "برج السدرية 2",
+          "parentImadaCode": "135552",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D8%AD%D9%85%D8%A7%D9%85%20%D8%A7%D9%84%D8%B4%D8%B7/%D8%A8%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B3%D8%AF%D8%B1%D9%8A%D8%A9%202.pdf",
+          "sourcePdfSha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849",
+          "geometrySha256": "faed5876858f1d011e80da9cc32682030c944c6330f8ab7b585bcf58ccb24c24"
+        }
+      ],
+      "geometrySha256": "2e8707da49290ee3c8dc221ba2d5be04041e8bfa13435bf3b41e98beecd52e7f",
+      "quantization": {
+        "coordinateScale": 1000000,
+        "packedGeometrySha256": "ab68b1cd97087a4fb558087c6289c6b51bd76e63c4200fe01e0aaddf9614788e",
+        "review": {
+          "file": "official/soliman-thirteen-native-20260912/borj-mraissa-declared-coordinate-quantization-review.json",
+          "sha256": "0e75a9f5b5e90d7925b6138b15b3bd5520e3ea6009b9d9c725cb9f5a51143959"
+        }
+      },
+      "independentLegalSourceBridge": {
+        "file": "official/soliman-thirteen-native-20260912/reviews/borj-cedria-official-imada-electoral-component-bridge.json",
+        "sha256": "7be6b471bba316575c81de4be33e53a08f71230d90137eec16d041a66ee4f4cb"
+      },
+      "primaryPdf": {
+        "file": "official/soliman-thirteen-native-20260912/identity/decree2023-590.pdf",
+        "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+      },
+      "qualification": "Complete two-part administrative aggregation, not either electoral component alone;1898.525m² part overlap retained in source evidence."
+    },
+    {
+      "id": "osm:relation:7113315",
+      "officialCode": "315256",
+      "imadaName": "حمام معروف الرياض",
+      "completeCircleNames": [
+        "حمام معروف الرياض 1",
+        "حمام معروف الرياض 2"
+      ],
+      "expectedPartCount": 2,
+      "jortPage": 5148,
+      "annex": 1,
+      "table": "A",
+      "conclusion": "whole_imada_from_exhaustive_electoral_parts",
+      "pdfPage": 51,
+      "boundarySourceId": "isie-local-sector-2023-hammam-maarouf-riadh-exhaustive-parts",
+      "boundarySourceFile": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-source.geojson",
+      "boundarySourceSha256": "874b28be93b7a1d59fd450e6d6a4cbfee46dcf51a6f77c6bf7ee20aba13d3985",
+      "delegationCode": "3152",
+      "governorateCode": "31",
+      "decreeInventory": {
+        "completeForDelegation": true,
+        "delegationCode": "3152",
+        "rows": [
+          {
+            "officialCode": "315254",
+            "imadaName": "الزهور",
+            "circleNames": [
+              "الزهور - (سوسة الرياض)"
+            ]
+          },
+          {
+            "officialCode": "315256",
+            "imadaName": "حمام معروف الرياض",
+            "circleNames": [
+              "حمام معروف الرياض 1",
+              "حمام معروف الرياض 2"
+            ]
+          },
+          {
+            "officialCode": "315255",
+            "imadaName": "حي الرياض",
+            "circleNames": [
+              "حي الرياض 1 - (سوسة الرياض)",
+              "حي الرياض 2 - (سوسة الرياض)"
+            ]
+          }
+        ]
+      },
+      "sourceParts": {
+        "file": "official/two-historical-sectors-20260920/hammam-maarouf-riadh-source-parts.geojson",
+        "sha256": "5b8ec0bedd84174e59a697d0a44c301142cd2a263bfb48a176f16e7ffabeb6b9"
+      },
+      "parts": [
+        {
+          "id": "hammam-maarouf-riadh-1",
+          "circleName": "حمام معروف الرياض 1",
+          "parentImadaCode": "315256",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 1.pdf",
+          "sourcePdfSha256": "974ebe24f0dee0a2701db768d6dd160554c9a492c5601b2978df6c710ad81025",
+          "geometrySha256": "1ad6c2e7aff464fdbae5d27d46d026c02f296536409c1fe689ba18d5f5a3df66"
+        },
+        {
+          "id": "hammam-maarouf-riadh-2",
+          "circleName": "حمام معروف الرياض 2",
+          "parentImadaCode": "315256",
+          "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سوسة/سوسة الرياض/حمام معروف الرياض 2.pdf",
+          "sourcePdfSha256": "377144831315b1197c2f4aefdc0f4aee2bf5db4ba20d7c99a24c401d70ff7eaf",
+          "geometrySha256": "153566aebfdd6461ba3a4b15b33f6e69420c173ec6600d47b174feb41af0c74d"
+        }
+      ],
+      "geometrySha256": "ebabb97d5444371309fccd83f9e153d8d947b782c091478f7b5d44871dc93606",
+      "quantization": {
+        "coordinateScale": 1000000,
+        "packedGeometrySha256": "ffd3c39e9dc0c2702b03d8074643a036a1ee0c4a248afa969203b03b32f0a45e",
+        "review": {
+          "file": "official/two-historical-sectors-20260920/coordinate-precision-review.json",
+          "sha256": "628f576a162f5cfc8ba1cec9360906c4d8de703f12b96583e2d54241e412bc59"
+        }
+      }
+    }
+  ]
+}

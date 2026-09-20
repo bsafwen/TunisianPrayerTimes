@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+  "boundarySource": {
+    "file": "official/hammamet-nine-neighbours-20260920/hammamet-nine-neighbours-source.geojson",
+    "sha256": "3c91323712abef26e060cd2490c346baf269b940f224be855ff1496f34f5a696"
+  },
+  "baselineMetadata": {
+    "file": "official/hammamet-nine-neighbours-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7105250",
+      "officialCode": "316151",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7105250",
+        "sourceId": "osm",
+        "name": "بوفيشة",
+        "aliases": [
+          "Bouficha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بوفيشة",
+        "contextAliases": [
+          "Bouficha",
+          "Délégation Bouficha",
+          "معتمدية بوفيشة"
+        ],
+        "governorateId": 348,
+        "lat": 36.308451,
+        "lng": 10.447804,
+        "delegationId": 433,
+        "hasBoundary": true,
+        "bbox": [
+          10.421121,
+          36.286042,
+          10.499153,
+          36.330326
+        ],
+        "areaKm2": 16.094897796943158,
+        "pickerGroupId": "delegation:433",
+        "offset": 462636,
+        "length": 772
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.308451,
+        "lng": 10.447804
+      },
+      "expectedNearestId": 433
+    },
+    {
+      "id": "osm:relation:7105249",
+      "officialCode": "316158",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7105249",
+        "sourceId": "osm",
+        "name": "السلوم",
+        "aliases": [
+          "Esselloum"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بوفيشة",
+        "contextAliases": [
+          "Bouficha",
+          "Délégation Bouficha",
+          "معتمدية بوفيشة"
+        ],
+        "governorateId": 348,
+        "lat": 36.289495,
+        "lng": 10.476255,
+        "delegationId": 433,
+        "hasBoundary": true,
+        "bbox": [
+          10.446224,
+          36.255322,
+          10.505297,
+          36.324059
+        ],
+        "areaKm2": 21.110300643444415,
+        "pickerGroupId": "osm:relation:7105249",
+        "offset": 461768,
+        "length": 868
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.289495,
+        "lng": 10.476255
+      },
+      "expectedNearestId": 433
+    },
+    {
+      "id": "osm:relation:7105455",
+      "officialCode": "316155",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7105455",
+        "sourceId": "osm",
+        "name": "سيدي سعيد",
+        "aliases": [
+          "Sidi Said"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بوفيشة",
+        "contextAliases": [
+          "Bouficha",
+          "Délégation Bouficha",
+          "معتمدية بوفيشة"
+        ],
+        "governorateId": 348,
+        "lat": 36.349513,
+        "lng": 10.413925,
+        "delegationId": 433,
+        "hasBoundary": true,
+        "bbox": [
+          10.366174,
+          36.315043,
+          10.476236,
+          36.384327
+        ],
+        "areaKm2": 49.96539601563522,
+        "pickerGroupId": "osm:relation:7105455",
+        "offset": 470340,
+        "length": 1340
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.349513,
+        "lng": 10.413925
+      },
+      "expectedNearestId": 433
+    },
+    {
+      "id": "osm:relation:7104940",
+      "officialCode": "156458",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104940",
+        "sourceId": "osm",
+        "name": "جبل طريف",
+        "aliases": [
+          "Jbal Trif"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": [
+          "Délégation Grombalia",
+          "Grombalia",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.513888,
+        "lng": 10.392493,
+        "delegationId": 464,
+        "hasBoundary": true,
+        "bbox": [
+          10.339997,
+          36.482765,
+          10.447472,
+          36.544404
+        ],
+        "areaKm2": 41.72006467471835,
+        "pickerGroupId": "osm:relation:7104940",
+        "offset": 458440,
+        "length": 836
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.513888,
+        "lng": 10.392493
+      },
+      "expectedNearestId": 464
+    },
+    {
+      "id": "osm:relation:7103679",
+      "officialCode": "156553",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7103679",
+        "sourceId": "osm",
+        "name": "برج حفيظ",
+        "aliases": [
+          "Borj Hfaiedh"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بو عرقوب",
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "governorateId": 350,
+        "lat": 36.496414,
+        "lng": 10.605121,
+        "delegationId": 463,
+        "hasBoundary": true,
+        "bbox": [
+          10.570552,
+          36.458909,
+          10.643004,
+          36.534664
+        ],
+        "areaKm2": 24.665416156828172,
+        "pickerGroupId": "osm:relation:7103679",
+        "offset": 422704,
+        "length": 1116
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.496414,
+        "lng": 10.605121
+      },
+      "expectedNearestId": 463
+    },
+    {
+      "id": "osm:relation:7103680",
+      "officialCode": "156555",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7103680",
+        "sourceId": "osm",
+        "name": "بو عرقوب الجنوبية",
+        "aliases": [
+          "Bou Argoub Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية بو عرقوب",
+        "contextAliases": [
+          "Bou Argoub",
+          "Délégation Bou Argoub",
+          "معتمدية بو عرقوب"
+        ],
+        "governorateId": 350,
+        "lat": 36.500767,
+        "lng": 10.536322,
+        "delegationId": 463,
+        "hasBoundary": true,
+        "bbox": [
+          10.495502,
+          36.476843,
+          10.57865,
+          36.525137
+        ],
+        "areaKm2": 17.94517930374868,
+        "pickerGroupId": "osm:relation:7103680",
+        "offset": 423820,
+        "length": 836
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.500767,
+        "lng": 10.536322
+      },
+      "expectedNearestId": 463
+    },
+    {
+      "id": "osm:relation:7103327",
+      "officialCode": "155156",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7103327",
+        "sourceId": "osm",
+        "name": "الهادي شاكر",
+        "aliases": [
+          "Hedi Chaker"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية نابل",
+        "contextAliases": [
+          "Délégation Nabeul",
+          "Nabeul",
+          "معتمدية نابل"
+        ],
+        "governorateId": 350,
+        "lat": 36.492765,
+        "lng": 10.667192,
+        "delegationId": 623,
+        "hasBoundary": true,
+        "bbox": [
+          10.610826,
+          36.4474,
+          10.706011,
+          36.538845
+        ],
+        "areaKm2": 47.04950829275858,
+        "pickerGroupId": "osm:relation:7103327",
+        "offset": 407656,
+        "length": 1524
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.492765,
+        "lng": 10.667192
+      },
+      "expectedNearestId": 623
+    },
+    {
+      "id": "osm:relation:7104938",
+      "officialCode": "156459",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7104938",
+        "sourceId": "osm",
+        "name": "عين طبرنق",
+        "aliases": [
+          "Ain Tebournok"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": [
+          "Délégation Grombalia",
+          "Grombalia",
+          "معتمدية قرمبالية"
+        ],
+        "governorateId": 350,
+        "lat": 36.532338,
+        "lng": 10.448967,
+        "delegationId": 463,
+        "hasBoundary": true,
+        "bbox": [
+          10.377784,
+          36.48725,
+          10.500284,
+          36.577421
+        ],
+        "areaKm2": 48.34452464393805,
+        "pickerGroupId": "osm:relation:7104938",
+        "offset": 457564,
+        "length": 876
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.532338,
+        "lng": 10.448967
+      },
+      "expectedNearestId": 463
+    },
+    {
+      "id": "osm:relation:7109196",
+      "officialCode": "165159",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7109196",
+        "sourceId": "osm",
+        "name": "وادي الزيت",
+        "aliases": [
+          "Oued Ezzit"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية زغوان",
+        "contextAliases": [
+          "Délégation Zaghouan",
+          "Zaghouan",
+          "معتمدية زغوان"
+        ],
+        "governorateId": 343,
+        "lat": 36.40337,
+        "lng": 10.326419,
+        "delegationId": 409,
+        "hasBoundary": true,
+        "bbox": [
+          10.278167,
+          36.319282,
+          10.37725,
+          36.487854
+        ],
+        "areaKm2": 69.88142846891176,
+        "pickerGroupId": "osm:relation:7109196",
+        "offset": 611556,
+        "length": 1324
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.40337,
+        "lng": 10.326419
+      },
+      "expectedNearestId": 409
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/source-review.json",
+      "sha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/baseline-neighborhoods.json",
+      "sha256": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/current-catalog-curation.json",
+      "sha256": "06fb47a910feb9e899ba152a02dafd0c39f413bd5f514b900682df062805a3e2"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/evidence/registry-current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    }
+  ]
+}

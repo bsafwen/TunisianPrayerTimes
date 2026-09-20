@@ -1578,7 +1578,7 @@
         {
           "id": "osm:relation:7105250",
           "expectedKind": "sector",
-          "expectedSourceId": "osm",
+          "expectedSourceId": "isie-local-sectors-2023-hammamet-nine-neighbours",
           "expectedName": "بوفيشة",
           "expectedParentName": "معتمدية بوفيشة",
           "expectedDelegationId": 433,
@@ -1592,8 +1592,8 @@
             "name:fr": "Bouficha",
             "ref:tn:codegeo": "316151"
           },
-          "originalGeometrySha256": "806bfafa3c36c0b15c7adef82efb110851550f7fbc4a7cb1d36724d1052d4ae2",
-          "packedGeometrySha256": "dc1ea0f404890e96b5bc4f29c2e6f9e62a0bf3ab8da829961b0fc506d94caae8"
+          "originalGeometrySha256": "72428c025d781af3d2dc2688f3c6c1014ba9c7d9dc8c89ad012d2810934ecafa",
+          "packedGeometrySha256": "9c7e92655e3ee667576f69023f0fd15f49906a6e957fe32c0ab375c1b1d10a5f"
         }
       ],
       "identityEvidence": [
@@ -1627,7 +1627,7 @@
             "name:fr": "Bouficha",
             "ref:tn:codegeo": "316151"
           },
-          "effectiveOriginalGeometrySha256": "806bfafa3c36c0b15c7adef82efb110851550f7fbc4a7cb1d36724d1052d4ae2"
+          "effectiveOriginalGeometrySha256": "72428c025d781af3d2dc2688f3c6c1014ba9c7d9dc8c89ad012d2810934ecafa"
         },
         {
           "method": "current_coded_namesake_administrative_parent",
@@ -16362,6 +16362,208 @@
         "prayerSourceIsNotDisplayIdentity": true,
         "ownerIsExistingVillagePolygon": true
       }
+    },
+    {
+      "id": "osm:relation:7201552",
+      "status": "eligible_proposal",
+      "method": "reviewed_sector_settlement_display_identity",
+      "targetPickerGroupId": "osm:node:1143501777",
+      "expectedExistingMemberIds": [
+        "osm:relation:7201552"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:1143501777"
+      ],
+      "members": [
+        {
+          "id": "osm:relation:7201552",
+          "expectedMetadata": {
+            "id": "osm:relation:7201552",
+            "sourceId": "osm",
+            "name": "الملاسين",
+            "aliases": [
+              "Mellassine"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية السيجومي",
+            "contextAliases": [
+              "Délégation Essijoumi",
+              "Séjoumi",
+              "معتمدية السيجومي"
+            ],
+            "governorateId": 342,
+            "lat": 36.79515,
+            "lng": 10.151589,
+            "delegationId": 405,
+            "hasBoundary": true,
+            "bbox": [
+              10.148176,
+              36.792249,
+              10.155965,
+              36.798075
+            ],
+            "areaKm2": 0.2826324764088639
+          },
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الملاسين",
+            "name:ar": "الملاسين",
+            "name:fr": "Mellassine",
+            "ref:tn:codegeo": "116156"
+          },
+          "expectedEffectiveTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الملاسين",
+            "name:ar": "الملاسين",
+            "name:fr": "Mellassine",
+            "ref:tn:codegeo": "116156"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "c81f891bb30978b01457c90e9ea45bc7171819ebaa66b4acb77579b7bf92f7ab",
+          "packedGeometrySha256": "29b762a6454608c2b2fa654e74ea2532d92c1ef51ccfaa5fecd0984cd7cf9a57"
+        },
+        {
+          "id": "osm:node:1143501777",
+          "expectedMetadata": {
+            "id": "osm:node:1143501777",
+            "sourceId": "osm",
+            "name": "الملاسين",
+            "aliases": [
+              "El Mellassine",
+              "Al Malasin"
+            ],
+            "kind": "suburb",
+            "parentName": "علي البلهوان",
+            "contextAliases": [
+              "Ali Belhouane",
+              "Délégation Essijoumi",
+              "Séjoumi",
+              "علي البلهوان",
+              "معتمدية السيجومي"
+            ],
+            "governorateId": 342,
+            "lat": 36.7986702,
+            "lng": 10.1598749,
+            "delegationId": 405,
+            "hasBoundary": false
+          },
+          "expectedOriginalTags": {
+            "addr:city": "تونس",
+            "addr:city:ar": "تونس",
+            "name": "الملاسين",
+            "name:ar": "الملاسين",
+            "name:en": "Al Malasin",
+            "name:fr": "El Mellassine",
+            "place": "suburb"
+          },
+          "expectedEffectiveTags": {
+            "addr:city": "تونس",
+            "addr:city:ar": "تونس",
+            "name": "الملاسين",
+            "name:ar": "الملاسين",
+            "name:en": "Al Malasin",
+            "name:fr": "El Mellassine",
+            "place": "suburb"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "7c50448076bc9d95f46509e887aed5502c6d4296d34073d2cea33ee485e961a5",
+          "packedGeometrySha256": null
+        }
+      ],
+      "expectedGovernorateId": 342,
+      "canonicalName": "الملاسين",
+      "officialRegistry": {
+        "file": "residential-base-display-reviews/current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+      },
+      "officialSectorRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1161",
+        "delegationFr": "Sijoumi",
+        "delegationAr": "السيجومي",
+        "sectorCode": "116156",
+        "sectorFr": "Mellassine",
+        "sectorAr": "الملاسين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 3028,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 93,
+          "Nombre_de_menages_par_Secteurs.xlsx": 93
+        }
+      },
+      "pointContextOfficialRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1161",
+        "delegationFr": "Sijoumi",
+        "delegationAr": "السيجومي",
+        "sectorCode": "116152",
+        "sectorFr": "Ali belhouane - ( essijoumi )",
+        "sectorAr": "علي البلهوان – ( السيجومي )",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2892,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 89,
+          "Nombre_de_menages_par_Secteurs.xlsx": 89
+        }
+      },
+      "codedParent": {
+        "id": "osm:relation:4130348",
+        "expectedKind": "delegation",
+        "expectedTags": {
+          "admin_level": "5",
+          "alt_name:fr": "Séjoumi",
+          "boundary": "administrative",
+          "name": "معتمدية السيجومي",
+          "name:ar": "معتمدية السيجومي",
+          "name:fr": "Délégation Essijoumi",
+          "ref:tn:codegeo": "1161",
+          "ref:tn:hasc_2": "TN.TU.SI",
+          "wikidata": "Q3510596"
+        },
+        "originalGeometrySha256": "9c3147d81b0e8c0af9b9896ff39722f1dccdd0605e09dad1183aa47ffcc45e94"
+      },
+      "pointContext": {
+        "id": "osm:relation:7201551",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "علي البلهوان",
+          "name:ar": "علي البلهوان",
+          "name:fr": "Ali Belhouane",
+          "ref:tn:codegeo": "116152"
+        },
+        "originalGeometrySha256": "f9fb8e161a0609825f4a40a588f643fab5e07e6726060804fe3b5efc7473f058"
+      },
+      "expectedSourceNamePeerIds": [
+        "osm:node:1143501777",
+        "osm:relation:7201552"
+      ],
+      "spatialRelationship": {
+        "pointOutsideSector": true,
+        "representativeDistanceKm": 0.8351891308497986
+      },
+      "manualSelection": {
+        "representativeId": "osm:node:1143501777",
+        "lat": 36.7986702,
+        "lng": 10.1598749,
+        "expectedNearestSourceId": 405
+      },
+      "sourceReview": {
+        "file": "locality-display-reviews/mellassine-2026-09-19/root-identity-review.json",
+        "sha256": "0003a13836cc57dae455b22d0d7b7825168857a22c56ccc20de6d1904987575c"
+      },
+      "qualifications": {
+        "displayIdentityOnly": true,
+        "noBoundaryCertification": true,
+        "allRawCoordinatesRetained": true,
+        "prayerSourceIsNotDisplayIdentity": true,
+        "ownerIsExistingSuburbPoint": true
+      }
     }
   ],
   "localReviewEvidence": {
@@ -16396,6 +16598,10 @@
     {
       "file": "coordinate-reviews/inm-published-douar-oued-2026-09-19/dependency-successors/gobaa-parent-reference-eligible-proof.json",
       "sha256": "8b573932423f990d54621879b5bb708fb259366817de3a29db87a5a457fd0dc4"
+    },
+    {
+      "file": "locality-display-reviews/mellassine-2026-09-19/eligible-picker-proof.json",
+      "sha256": "227b2a837624e954ee86ab4f653a2fea23e217ad5d01da3fd3fef0c315cff774"
     }
   ],
   "distinctPairs": [
@@ -16554,8 +16760,8 @@
       "id": "osm:way:234090258",
       "targetDelegationId": 461,
       "reviewEvidence": {
-        "file": "residential-base-display-reviews/three-town-review/461-proof.json",
-        "sha256": "c072a241da01f7e4bee2f1549090615489c56b8c166b35c17022c1732ff3481c"
+        "file": "residential-base-display-reviews/hammamet-nineteen-source-phase-20260920/461-proof.json",
+        "sha256": "4222c740beb7c166f0a6ca9fd5582b056642ced862b45c41fe9d05dd8f8b38dd"
       }
     },
     {
@@ -16572,8 +16778,8 @@
       "id": "osm:way:93164500",
       "targetDelegationId": 388,
       "reviewEvidence": {
-        "file": "dependency-successors/soliman-native-20260912/way-93164500-boundary-proof.json",
-        "sha256": "c8281f1da70bb210fe75ec5c4858146edfe4d05caa392f740fc9ffbd8a5d7d5b"
+        "file": "noncoincident-name-reviews/taieb-20260920/proof.json",
+        "sha256": "dbed2a3b50ff87300c0438d178de6f282019556d13d9422da531da999f121b7d"
       }
     },
     {

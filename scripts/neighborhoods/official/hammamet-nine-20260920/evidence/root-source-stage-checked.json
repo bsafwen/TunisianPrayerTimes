@@ -1,0 +1,130 @@
+{
+  "status": "NINE_SOURCE_STAGE_CHECKED_NOT_GENERATED_OR_INSTALLED",
+  "package": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\hammamet-nine-source-stage-20260920\\package-manifest.json",
+    "sha256": "66f803adefe47fe41a49de6aca2918733639d9869f1eb36e421e90462d7dac2d"
+  },
+  "reviewedAssembler": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\stage_hammamet_nine_source_reviewed_20260920.py",
+    "sha256": "06f2f1e52cbca5cd53e9ff9ddf7f12ed885f800ae98897f2c698ae493cdd8c49"
+  },
+  "workerOriginalRejected": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\stage_hammamet_nine_source_20260920.py",
+    "sha256": "72b26343bd9c9cb1ffee09d06c732910aef18d0540433840f48d94b26696b3b9"
+  },
+  "rootCorrections": [
+    "Added fixed root-input checksum before reading declared paths.",
+    "Used candidate.proposed.geometry instead of recursive search requiring geometry on same dict as id.",
+    "Included feature.id and mandatory provider fields and correctly local evidence paths.",
+    "Used scope id, correct parent keys and provider GeoJSON checksum, not OSM input checksum.",
+    "Removed heuristic unknown-schema selection and verified exact whole-imada ID inventory."
+  ],
+  "counts": {
+    "newFeatures": 9,
+    "newScopeRecords": 9,
+    "wholeScopeRecords": 99,
+    "sources": 27
+  },
+  "checkedStagedFiles": 29,
+  "baselineFilesUnchanged": 1579,
+  "records": [
+    {
+      "id": "osm:relation:7105070",
+      "officialCode": "156651",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": true,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7144606",
+      "officialCode": "156652",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": true,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7104926",
+      "officialCode": "156653",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": true,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7104931",
+      "officialCode": "156654",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": false,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7104927",
+      "officialCode": "156655",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": true,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7104929",
+      "officialCode": "156656",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": true,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7104930",
+      "officialCode": "156657",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": true,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7104928",
+      "officialCode": "156658",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": true,
+      "pointPolicySelected": false
+    },
+    {
+      "id": "osm:relation:7104932",
+      "officialCode": "156659",
+      "candidateGeometryExactlyEqual": true,
+      "validSourceAndQuantized": true,
+      "countryCoversSourceAndQuantized": true,
+      "oldPointCoveredByQuantized": false,
+      "pointPolicySelected": false
+    }
+  ],
+  "pointFacts": {
+    "sevenCurrentCoordinatesAreSectorMetadataNotVillageNodes": true,
+    "yasmineSourceNodeAbsentFromRawCatalog": true,
+    "baraketSourceNodeAbsentFromRawCatalog": true,
+    "noSavedPointRetentionAssumed": true
+  },
+  "remaining": [
+    "Choose explicit metadata coordinate policy without inventing village records or superseded locality decisions.",
+    "Two source physical points remain qualified source evidence, not exact Google identity certification.",
+    "Review source seam conflicts with eight existing external sector neighbors; never alter geometry to hide them.",
+    "Run isolated catalog generation and review actual differences and saved-picker dependencies before installation."
+  ],
+  "appChanges": false,
+  "testsRun": false,
+  "testsEdited": false,
+  "apkOrAabGenerated": false,
+  "fullCatalogCertified": false
+}
