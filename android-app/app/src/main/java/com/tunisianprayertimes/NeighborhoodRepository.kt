@@ -4,6 +4,7 @@ import android.content.Context
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import kotlin.math.abs
+import kotlin.math.cos
 import kotlin.math.floor
 import kotlin.math.hypot
 import org.json.JSONObject
@@ -133,12 +134,94 @@ internal class NeighborhoodIndex(
         return candidates.values.asSequence().filter { it.locality.id !in ambiguous }
             .minWithOrNull(compareBy<NeighborhoodBoundary> { it.areaKm2 }.thenBy { it.locality.id })?.locality
     }
+
+    /**
+     * GPS-only lookup. The uncertainty disk is handled in a conservative linear frame:
+     * Rmin is the minimum WGS84 meridional radius, so any path of length <= radius stays
+     * within |latitude| <= |query| + radius/Rmin. Within that band the frame uses
+     * y = Rmin * dLat, x = Rmin * cos(maxAbsLat) * dLng. This frame length lower-bounds
+     * the true ellipsoidal path length, so clearance > radius is a proof of separation;
+     * clearance <= radius may be a false positive. Null/invalid accuracy returns null.
+     */
+    fun findWithAccuracy(lat: Double, lng: Double, accuracyMeters: Double?): Locality? {
+        val radiusMeters = accuracyMeters ?: return null
+        if (!radiusMeters.isFinite() || radiusMeters <= 0.0) return null
+        if (!isInsideCountry(lat, lng)) return null
+
+        val queryLatRadians = Math.toRadians(lat)
+        val deltaRadians = radiusMeters / MIN_MERIDIONAL_RADIUS_METERS
+        val maxAbsLatRadians = abs(queryLatRadians) + deltaRadians
+        if (!maxAbsLatRadians.isFinite() || maxAbsLatRadians >= Math.PI / 2.0) return null
+
+        val yScale = MIN_MERIDIONAL_RADIUS_METERS
+        val xScale = yScale * cos(maxAbsLatRadians)
+        val queryLngRadians = Math.toRadians(lng)
+        val key = "${floor(lat / gridSize).toInt()}:${floor(lng / gridSize).toInt()}"
+        // The disk clearance supplies the boundary margin. Use exact membership here so
+        // the legacy edge tolerance cannot hide a conflict peer for a tiny radius.
+        val membershipCache = HashMap<Int, Boolean>()
+        val clearanceCache = HashMap<Int, Double>()
+
+        fun isStrictlyInside(index: Int): Boolean =
+            membershipCache.getOrPut(index) {
+                val boundary = boundaries.getValue(index)
+                containsPackedGeometry(
+                    geometry, boundary.offset, boundary.length, scale, lat, lng,
+                    includeBoundary = false,
+                    boundaryTolerance = 0.0,
+                )
+            }
+
+        fun clearanceMeters(index: Int): Double =
+            clearanceCache.getOrPut(index) {
+                val boundary = boundaries.getValue(index)
+                packedEdgeClearanceMeters(
+                    bytes = geometry,
+                    offset = boundary.offset,
+                    length = boundary.length,
+                    scale = scale,
+                    queryLatRadians = queryLatRadians,
+                    queryLngRadians = queryLngRadians,
+                    xScale = xScale,
+                    yScale = yScale,
+                )
+            }
+
+        // Conservative peer test: the lower-bound clearance may flag a peer that the
+        // true ellipsoidal disk would miss, but it never misses a possible intersection.
+        fun peerMayIntersectDisk(peerIndex: Int): Boolean =
+            isStrictlyInside(peerIndex) || clearanceMeters(peerIndex) <= radiusMeters
+
+        return cells[key].orEmpty().asSequence()
+            .filter { index ->
+                val boundary = boundaries[index] ?: return@filter false
+                lng >= boundary.bbox[0] && lat >= boundary.bbox[1] &&
+                    lng <= boundary.bbox[2] && lat <= boundary.bbox[3]
+            }
+            .filter { index -> isStrictlyInside(index) && clearanceMeters(index) > radiusMeters }
+            .filterNot { candidateIndex ->
+                conflicts.any { (firstIndex, secondIndex) ->
+                    when (candidateIndex) {
+                        firstIndex -> peerMayIntersectDisk(secondIndex)
+                        secondIndex -> peerMayIntersectDisk(firstIndex)
+                        else -> false
+                    }
+                }
+            }
+            .mapNotNull { boundaries[it] }
+            .minWithOrNull(compareBy<NeighborhoodBoundary> { it.areaKm2 }.thenBy { it.locality.id })
+            ?.locality
+    }
 }
 
 internal fun validCoordinates(lat: Double, lng: Double): Boolean =
     lat.isFinite() && lng.isFinite() && lat in -90.0..90.0 && lng in -180.0..180.0
 
 private const val COORDINATE_EPSILON = 1e-10
+private const val WGS84_SEMI_MAJOR_AXIS_METERS = 6378137.0
+private const val WGS84_FLATTENING = 1.0 / 298.257223563
+private const val MIN_MERIDIONAL_RADIUS_METERS =
+    WGS84_SEMI_MAJOR_AXIS_METERS * (1.0 - WGS84_FLATTENING) * (1.0 - WGS84_FLATTENING)
 
 /** Reject corrupt packed records at load time, even when a query would return before reading them. */
 private fun validatePackedGeometry(bytes: ByteArray, offset: Int, length: Int, scale: Double) {
@@ -167,6 +250,7 @@ private fun validatePackedGeometry(bytes: ByteArray, offset: Int, length: Int, s
 internal fun containsPackedGeometry(
     bytes: ByteArray, offset: Int, length: Int, scale: Double, lat: Double, lng: Double,
     includeBoundary: Boolean = true,
+    boundaryTolerance: Double = COORDINATE_EPSILON,
 ): Boolean {
     val buffer = ByteBuffer.wrap(bytes, offset, length).slice().order(ByteOrder.BIG_ENDIAN)
     val polygonCount = buffer.int
@@ -191,9 +275,9 @@ internal fun containsPackedGeometry(
                 val cross = (lng - previousX) * dy - (lat - previousY) * dx
                 // Scale the cross product (degrees squared) by segment length so the
                 // numerical edge tolerance remains a distance, including for short edges.
-                if (lng >= minOf(previousX, x) - COORDINATE_EPSILON && lng <= maxOf(previousX, x) + COORDINATE_EPSILON &&
-                    lat >= minOf(previousY, y) - COORDINATE_EPSILON && lat <= maxOf(previousY, y) + COORDINATE_EPSILON &&
-                    abs(cross) <= COORDINATE_EPSILON * hypot(dx, dy)) onEdge = true
+                if (lng >= minOf(previousX, x) - boundaryTolerance && lng <= maxOf(previousX, x) + boundaryTolerance &&
+                    lat >= minOf(previousY, y) - boundaryTolerance && lat <= maxOf(previousY, y) + boundaryTolerance &&
+                    abs(cross) <= boundaryTolerance * hypot(dx, dy)) onEdge = true
                 if ((previousY > lat) != (y > lat) && lng < dx * (lat - previousY) / dy + previousX) {
                     inside = !inside
                 }
@@ -211,6 +295,81 @@ internal fun containsPackedGeometry(
         if (insideOuter && !insideHole) return true
     }
     return false
+}
+
+/**
+ * Conservative lower-bound edge clearance in the linear frame described above.
+ * A returned value greater than the accuracy radius proves the ellipsoidal disk
+ * cannot reach the packed boundary; a smaller value may be a false positive.
+ */
+private fun packedEdgeClearanceMeters(
+    bytes: ByteArray,
+    offset: Int,
+    length: Int,
+    scale: Double,
+    queryLatRadians: Double,
+    queryLngRadians: Double,
+    xScale: Double,
+    yScale: Double,
+): Double {
+    val buffer = ByteBuffer.wrap(bytes, offset, length).slice().order(ByteOrder.BIG_ENDIAN)
+    val polygonCount = buffer.int
+    require(polygonCount > 0 && polygonCount <= length / 4)
+    var minClearance = Double.POSITIVE_INFINITY
+
+    repeat(polygonCount) {
+        val ringCount = buffer.int
+        require(ringCount > 0 && ringCount <= buffer.remaining() / 4)
+        repeat(ringCount) {
+            val count = buffer.int
+            require(count >= 3 && count <= buffer.remaining() / 8)
+            val firstX = buffer.int / scale
+            val firstY = buffer.int / scale
+            var previousFrameX = xScale * (Math.toRadians(firstX) - queryLngRadians)
+            var previousFrameY = yScale * (Math.toRadians(firstY) - queryLatRadians)
+
+            fun edge(x: Double, y: Double) {
+                val frameX = xScale * (Math.toRadians(x) - queryLngRadians)
+                val frameY = yScale * (Math.toRadians(y) - queryLatRadians)
+                minClearance = minOf(
+                    minClearance,
+                    pointToSegmentDistance(
+                        px = 0.0,
+                        py = 0.0,
+                        ax = previousFrameX,
+                        ay = previousFrameY,
+                        bx = frameX,
+                        by = frameY,
+                    ),
+                )
+                previousFrameX = frameX
+                previousFrameY = frameY
+            }
+
+            repeat(count - 1) {
+                edge(buffer.int / scale, buffer.int / scale)
+            }
+            edge(firstX, firstY)
+        }
+    }
+    return minClearance
+}
+
+private fun pointToSegmentDistance(
+    px: Double,
+    py: Double,
+    ax: Double,
+    ay: Double,
+    bx: Double,
+    by: Double,
+): Double {
+    val abX = bx - ax
+    val abY = by - ay
+    val lengthSquared = abX * abX + abY * abY
+    if (lengthSquared == 0.0) return hypot(px - ax, py - ay)
+    val projection = ((px - ax) * abX + (py - ay) * abY) / lengthSquared
+    val t = projection.coerceIn(0.0, 1.0)
+    return hypot(px - (ax + t * abX), py - (ay + t * abY))
 }
 
 object NeighborhoodRepository {

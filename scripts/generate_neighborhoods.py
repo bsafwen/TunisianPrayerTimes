@@ -311,6 +311,139 @@ def validate_exhaustive_aggregate(directory, review, source, properties, geometr
         raise ValueError('Aggregate packed coordinate quantization changed')
 
 
+def load_reviewed_boundary_manifest_for_lineage(directory, reference, reviewed_boundaries, official_report):
+    if not isinstance(directory, Path): raise ValueError('directory must be a Path')
+    directory = directory.resolve()
+    if not isinstance(reference, dict): raise ValueError('reference must be a dictionary')
+    ref_file, ref_sha = reference.get('file'), reference.get('sha256')
+    if not isinstance(ref_file, str) or not ref_file: raise ValueError('reference.file must be a non-empty string')
+    if not isinstance(ref_sha, str) or not re.fullmatch(r'[0-9a-f]{64}', ref_sha): raise ValueError('reference.sha256 must be lowercase 64-hex')
+    if reviewed_boundaries is None: raise ValueError('reviewed_boundaries is required')
+    if not isinstance(reviewed_boundaries, (str, Path)): raise ValueError('reviewed_boundaries must be a path')
+    if not isinstance(official_report, dict): raise ValueError('official_report must be a dictionary')
+    official_sha = official_report.get('manifestSha256')
+    if not isinstance(official_sha, str): raise ValueError('official_report.manifestSha256 must be a string')
+    active_path = (directory / ref_file).resolve()
+    if not active_path.is_relative_to(directory): raise ValueError('reference escapes source directory')
+    if active_path != Path(reviewed_boundaries).resolve(): raise ValueError('reference does not point to reviewed_boundaries')
+    try:
+        active_raw = active_path.read_bytes()
+    except OSError as exc:
+        raise ValueError('unable to read reviewed boundary manifest') from exc
+    active_sha = hashlib.sha256(active_raw).hexdigest()
+    if active_sha != official_sha: raise ValueError('active manifest checksum does not match official_report.manifestSha256')
+    active = json.loads(active_raw)
+    if not isinstance(active, dict) or active.get('schemaVersion') != 1 or not isinstance(active.get('sources'), list): raise ValueError('active manifest must be a schemaVersion 1 object with sources list')
+    if ref_sha == active_sha: return active
+    compat_ref = active.get('lineageCompatibility')
+    if not isinstance(compat_ref, dict): raise ValueError('active manifest requires a lineageCompatibility pin')
+    proof = json.loads(aggregate_review_file(directory, compat_ref, 'lineage compatibility'))
+    if not isinstance(proof, dict): raise ValueError('lineage compatibility document must be an object')
+    has_aggregate_successor = 'aggregateScopeSuccessor' in proof
+    expected_proof_keys = {'schemaVersion', 'method', 'sourceSha256', 'previousManifest', 'addedSources', 'scopeSuccessor', 'evidence'}
+    if has_aggregate_successor:
+        expected_proof_keys.add('aggregateScopeSuccessor')
+    if set(proof.keys()) != expected_proof_keys: raise ValueError('lineage compatibility document has unexpected keys')
+    if proof['schemaVersion'] != 1 or proof['method'] != 'reviewed_append_only_boundary_extension': raise ValueError('lineage compatibility must be schemaVersion 1 reviewed_append_only_boundary_extension')
+    source_sha = proof['sourceSha256']
+    if not isinstance(source_sha, str) or not re.fullmatch(r'[0-9a-f]{64}', source_sha): raise ValueError('lineage compatibility sourceSha256 must be lowercase 64-hex')
+    added_sources = proof['addedSources']
+    if not isinstance(added_sources, list) or not added_sources or any(not isinstance(s, dict) for s in added_sources): raise ValueError('lineage compatibility addedSources must be a non-empty list of objects')
+    evidence = proof['evidence']
+    if not isinstance(evidence, list) or not evidence: raise ValueError('lineage compatibility evidence must be a non-empty list')
+    for index, pin in enumerate(evidence): aggregate_review_file(directory, pin, f'lineage evidence {index}')
+    previous_ref = proof['previousManifest']
+    if not isinstance(previous_ref, dict): raise ValueError('previousManifest must be a dictionary')
+    previous_file = previous_ref.get('file')
+    if not isinstance(previous_file, str) or not previous_file: raise ValueError('previousManifest.file must be a non-empty string')
+    previous_sha = previous_ref.get('sha256')
+    if not isinstance(previous_sha, str) or not re.fullmatch(r'[0-9a-f]{64}', previous_sha): raise ValueError('previousManifest.sha256 must be lowercase 64-hex')
+    previous_path = (directory / previous_file).resolve()
+    if previous_path == active_path: raise ValueError('previousManifest must not resolve to the active manifest')
+    previous = json.loads(aggregate_review_file(directory, previous_ref, 'previous manifest'))
+    if not isinstance(previous, dict) or previous.get('schemaVersion') != 1 or not isinstance(previous.get('sources'), list) or not previous['sources']: raise ValueError('previous manifest must be schemaVersion 1 with non-empty sources')
+    if active['sources'] != previous['sources'] + added_sources: raise ValueError('active sources must equal previous sources plus addedSources')
+    old_provider_ids, old_record_ids = set(), set()
+    for source in previous['sources']:
+        if not isinstance(source, dict): raise ValueError('previous source must be an object')
+        provider_id = source.get('id')
+        if not isinstance(provider_id, str) or not provider_id or provider_id in old_provider_ids: raise ValueError('previous source ids must be unique non-empty strings')
+        old_provider_ids.add(provider_id)
+        if source.get('sourceSha256') != source_sha or not isinstance(source.get('records'), list): raise ValueError('previous source sourceSha256/records invalid')
+        for record in source.get('records'):
+            if not isinstance(record, dict): raise ValueError('previous source record must be an object')
+            record_id = record.get('id')
+            if not isinstance(record_id, str) or not record_id or record_id in old_record_ids: raise ValueError('previous source record ids must be unique non-empty strings')
+            old_record_ids.add(record_id)
+    new_provider_ids, new_record_ids, whole_record_ids, aggregate_record_ids = set(), set(), [], []
+    for source in added_sources:
+        provider_id = source.get('id')
+        if not isinstance(provider_id, str) or not provider_id or provider_id in new_provider_ids or provider_id in old_provider_ids: raise ValueError('new source ids must be unique non-empty strings disjoint from previous ids')
+        new_provider_ids.add(provider_id)
+        if source.get('sourceSha256') != source_sha or not isinstance(source.get('records'), list) or not source.get('records'): raise ValueError('new source sourceSha256/records invalid')
+        for record in source.get('records'):
+            if not isinstance(record, dict): raise ValueError('new source record must be an object')
+            record_id = record.get('id')
+            scope_kind = record.get('scopeKind', 'whole_imada')
+            if (not isinstance(record_id, str) or not record_id or record_id in new_record_ids or record_id in old_record_ids
+                    or record.get('action') not in ('replace', 'add')
+                    or scope_kind not in ('whole_imada', 'exhaustive_electoral_parts')
+                    or (scope_kind == 'exhaustive_electoral_parts' and not has_aggregate_successor)):
+                raise ValueError('new source record id/action/scopeKind invalid')
+            new_record_ids.add(record_id)
+            if scope_kind == 'whole_imada':
+                whole_record_ids.append(record_id)
+            else:
+                aggregate_record_ids.append(record_id)
+    if has_aggregate_successor and not aggregate_record_ids: raise ValueError('aggregateScopeSuccessor requires at least one new aggregate id')
+    active_exclusions = {'sources', 'administrativeScopeReview', 'lineageCompatibility'}
+    previous_exclusions = {'sources', 'administrativeScopeReview', 'lineageCompatibility'}
+    if has_aggregate_successor:
+        active_exclusions.add('aggregateScopeReview')
+        previous_exclusions.add('aggregateScopeReview')
+    active_other = {k: v for k, v in active.items() if k not in active_exclusions}; previous_other = {k: v for k, v in previous.items() if k not in previous_exclusions}
+    if active_other != previous_other: raise ValueError('active manifest changes fields outside the reviewed append-only extension')
+    new_scope_ref = proof['scopeSuccessor']
+    old_scope_ref = previous.get('administrativeScopeReview')
+    if not isinstance(new_scope_ref, dict) or active.get('administrativeScopeReview') != new_scope_ref or not isinstance(old_scope_ref, dict): raise ValueError('administrativeScopeReview pins must match scopeSuccessor and exist in previous manifest')
+    old_scope = json.loads(aggregate_review_file(directory, old_scope_ref, 'previous administrative scope')); new_scope = json.loads(aggregate_review_file(directory, new_scope_ref, 'new administrative scope'))
+    if not isinstance(old_scope, dict) or old_scope.get('schemaVersion') != 1 or not isinstance(old_scope.get('records'), list) or not isinstance(new_scope, dict) or new_scope.get('schemaVersion') != 1 or not isinstance(new_scope.get('records'), list): raise ValueError('administrative scope documents must be schemaVersion 1 objects with records lists')
+    old_records, new_records = old_scope['records'], new_scope['records']
+    if (len(new_records) < len(old_records) or new_records[:len(old_records)] != old_records
+            or {k: v for k, v in new_scope.items() if k != 'records'} != {k: v for k, v in old_scope.items() if k != 'records'}):
+        raise ValueError('new administrative scope must retain old records as an exact prefix and change only records')
+    seen_scope_ids = set()
+    for record in new_records:
+        record_id = record.get('id') if isinstance(record, dict) else None
+        if not isinstance(record_id, str) or not record_id or record_id in seen_scope_ids: raise ValueError('scope record ids must be unique non-empty strings')
+        seen_scope_ids.add(record_id)
+    if [record['id'] for record in new_records[len(old_records):]] != whole_record_ids: raise ValueError('appended scope record ids must exactly match added whole_imada source record ids')
+    if has_aggregate_successor:
+        new_aggregate_scope_ref = proof['aggregateScopeSuccessor']
+        old_aggregate_scope_ref = previous.get('aggregateScopeReview')
+        if not isinstance(new_aggregate_scope_ref, dict) or active.get('aggregateScopeReview') != new_aggregate_scope_ref or not isinstance(old_aggregate_scope_ref, dict): raise ValueError('aggregateScopeReview pins must match aggregateScopeSuccessor and exist in previous manifest')
+        old_aggregate_scope = json.loads(aggregate_review_file(directory, old_aggregate_scope_ref, 'previous aggregate scope')); new_aggregate_scope = json.loads(aggregate_review_file(directory, new_aggregate_scope_ref, 'new aggregate scope'))
+        if not isinstance(old_aggregate_scope, dict) or old_aggregate_scope.get('schemaVersion') != 1 or not isinstance(old_aggregate_scope.get('records'), list) or not isinstance(new_aggregate_scope, dict) or new_aggregate_scope.get('schemaVersion') != 1 or not isinstance(new_aggregate_scope.get('records'), list): raise ValueError('aggregate scope documents must be schemaVersion 1 objects with records lists')
+        old_aggregate_records, new_aggregate_records = old_aggregate_scope['records'], new_aggregate_scope['records']
+        if (len(new_aggregate_records) < len(old_aggregate_records) or new_aggregate_records[:len(old_aggregate_records)] != old_aggregate_records
+                or {k: v for k, v in new_aggregate_scope.items() if k != 'records'} != {k: v for k, v in old_aggregate_scope.items() if k != 'records'}):
+            raise ValueError('new aggregate scope must retain old records as an exact prefix and change only records')
+        seen_aggregate_scope_ids = set()
+        for record in new_aggregate_records:
+            record_id = record.get('id') if isinstance(record, dict) else None
+            if not isinstance(record_id, str) or not record_id or record_id in seen_aggregate_scope_ids: raise ValueError('aggregate scope record ids must be unique non-empty strings')
+            seen_aggregate_scope_ids.add(record_id)
+        if [record['id'] for record in new_aggregate_records[len(old_aggregate_records):]] != aggregate_record_ids: raise ValueError('appended aggregate scope record ids must exactly match added exhaustive_electoral_parts source record ids')
+    if ref_sha != previous_sha:
+        load_reviewed_boundary_manifest_for_lineage(
+            directory,
+            {'file': previous_file, 'sha256': ref_sha},
+            previous_path,
+            {'manifestSha256': previous_sha},
+        )
+    return active
+
+
 def load_reviewed_boundaries(manifest_path, areas, source_sha256):
     """Overlay individually reviewed, byte-pinned official sector footprints.
 
@@ -568,6 +701,12 @@ def load_catalog_curation(manifest_path, source_sha256, areas, nodes):
                 raise ValueError('Only an existing source point can retain a saved locality identity')
             if 'pointRetentionReview' in rule:
                 aggregate_review_file(manifest_path.parent, rule['pointRetentionReview'], 'point retention review')
+        elif rule.get('action') == 'reviewed_locality_classification':
+            allowed = {'id', 'expectedKind', 'expectedTags', 'action', 'targetKind', 'reason', 'evidence', 'reviewEvidence'}
+            if (set(rule) != allowed or obj['kind'] != 'sector' or 'shape' not in obj or 'point' in obj
+                    or rule.get('targetKind') != 'locality' or rule['expectedTags'] != obj['tags']):
+                raise ValueError('Reviewed locality classification requires one exact polygon sector source and locality target')
+            validate_reviewed_locality_classification(manifest_path, obj, rule, source_sha256)
         elif rule.get('action') == 'locality_context':
             # This is deliberately separate from sector membership curation.
             # It cannot carry name, manual-reference or governorate changes.
@@ -1150,6 +1289,95 @@ def apply_reviewed_locality_contexts(manifest_path, curation, features, geometri
     return applications
 
 
+def validate_reviewed_locality_classification(manifest_path, obj, rule, source_sha256):
+    identifier = obj['id']
+    proof = json.loads(aggregate_review_file(
+        Path(manifest_path).parent, rule['reviewEvidence'], 'reviewed locality classification'))
+    source_code = obj['tags'].get('ref:tn:codegeo')
+    source_name = obj['tags'].get('name')
+    allowed = {'schemaVersion', 'status', 'targetId', 'sourceKind', 'effectiveKind', 'sourcePbfSha256',
+               'originalTags', 'originalGeometrySha256', 'expectedTargetFeatureWithoutOffsetLength',
+               'expectedPackedGeometrySha256', 'expectedPickerMembers', 'expectedIncidentConflicts',
+               'primaryReview', 'sourcePdf', 'rejectedAdministrativeCode', 'noPositiveAreaOverlaps', 'qualifications'}
+    if (set(proof) != allowed or proof.get('schemaVersion') != 1
+            or proof.get('status') != 'reviewed_detached_component_locality_classification'
+            or proof.get('targetId') != identifier
+            or proof.get('rejectedAdministrativeCode') != source_code
+            or proof.get('noPositiveAreaOverlaps') is not True
+            or obj['shape'].geom_type not in ('Polygon', 'MultiPolygon')
+            or obj['shape'].is_empty or not obj['shape'].is_valid
+            or proof.get('qualifications') != {
+                'sourceNameAndGeometryRetained': True, 'currentDelegationContextRetained': True,
+                'noExactSectorContextAssigned': True, 'noBoundaryCertification': True}
+            or proof.get('sourceKind') != 'sector' or proof.get('effectiveKind') != 'locality'
+            or proof.get('sourcePbfSha256') != source_sha256
+            or proof.get('originalTags') != obj['tags']
+            or proof.get('originalGeometrySha256') != aggregate_geometry_sha256(obj['shape'])
+            or proof.get('expectedPickerMembers') != [identifier]
+            or proof.get('expectedIncidentConflicts') != []
+            or not isinstance(proof.get('expectedTargetFeatureWithoutOffsetLength'), dict)
+            or not isinstance(proof.get('expectedPackedGeometrySha256'), str)
+            or not isinstance(proof.get('primaryReview'), dict)
+            or not isinstance(proof.get('sourcePdf'), dict)):
+        raise ValueError(f'Reviewed locality classification proof changed: {identifier}')
+    primary_review = json.loads(aggregate_review_file(
+        Path(manifest_path).parent, proof['primaryReview'], 'Gremdi component identity'))
+    identity = primary_review.get('gremdiComponentIdentity')
+    if (not isinstance(identity, dict) or identity.get('id') != identifier
+            or identity.get('wrongSourceCode') != source_code
+            or identity.get('existingName') != source_name
+            or identity.get('sourcePdfSha256') != proof['sourcePdf'].get('sha256')
+            or identity.get('officialMapName') != 'القراطن'
+            or identity.get('officialSectorCode') != '346659'
+            or source_code != '346656' or identity.get('sourceDrawingIndex') != 128
+            or not isinstance(identity.get('exactIslandGeometry'), dict)):
+        raise ValueError(f'Reviewed locality identity changed: {identifier}')
+    aggregate_review_file(Path(manifest_path).parent, proof['sourcePdf'], 'Gremdi source PDF')
+    return proof
+
+
+def apply_reviewed_locality_classifications(areas_nodes, curation, original_picker_sources):
+    for obj in areas_nodes:
+        rule = curation.get(obj['id'])
+        if rule is None or rule.get('action') != 'reviewed_locality_classification':
+            continue
+        identifier = obj['id']
+        source = original_picker_sources.get(identifier)
+        if (source is None or source['kind'] != 'sector' or source['tags'] != obj['tags']
+                or obj['kind'] != 'sector' or rule.get('targetKind') != 'locality'):
+            raise ValueError(f'Reviewed locality classification source changed: {identifier}')
+        obj['kind'] = 'locality'
+
+
+def verify_reviewed_locality_classifications(manifest_path, features, point_only, geometries, conflicts, curation):
+    all_features = features + point_only
+    by_id = {feature['id']: feature for feature in all_features}
+    by_geometry = {feature['id']: geometry for feature, geometry in zip(features, geometries)}
+    for identifier, rule in curation.items():
+        if rule.get('action') != 'reviewed_locality_classification':
+            continue
+        proof = json.loads(aggregate_review_file(
+            Path(manifest_path).parent, rule['reviewEvidence'], 'reviewed locality classification'))
+        feature = by_id.get(identifier)
+        geometry = by_geometry.get(identifier)
+        if feature is None or geometry is None:
+            raise ValueError(f'Reviewed locality classification target missing: {identifier}')
+        expected = proof.get('expectedTargetFeatureWithoutOffsetLength')
+        projected = {key: value for key, value in feature.items() if key not in ('offset', 'length')}
+        if (feature.get('kind') != 'locality' or rule.get('targetKind') != 'locality'
+                or projected != expected
+                or hashlib.sha256(packed_geometry_bytes(geometry)).hexdigest()
+                   != proof.get('expectedPackedGeometrySha256')
+                or proof.get('expectedPickerMembers') != [identifier]
+                or feature.get('pickerGroupId') != identifier
+                or sum(1 for item in all_features if item.get('pickerGroupId') == identifier) != 1
+                or any(set_precision(geometry, 0).intersection(set_precision(peer, 0)).area > 0
+                       for other_id, peer in by_geometry.items() if other_id != identifier)
+                or [conflict for conflict in conflicts if identifier in conflict['ids']]
+                   != proof.get('expectedIncidentConflicts')):
+            raise ValueError(f'Reviewed locality classification projection changed: {identifier}')
+
+
 def detect_conflicts(features, geometries):
     """Keep original borders; mark peers whose crossing claims are ambiguous.
 
@@ -1630,11 +1858,8 @@ def validate_sector_owned_settlement_preservation(directory, review, rule, regis
     manifest = None
     if replacements:
         reference = extension['reviewedBoundaries']
-        manifest = json.loads(aggregate_review_file(directory, reference, 'sector-owned active boundaries'))
-        if (reviewed_boundaries is None or official_report is None
-                or (directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
-                or official_report['manifestSha256'] != reference['sha256']):
-            raise ValueError('Reviewed sector-owned settlement boundary reference is not the active loader')
+        manifest = load_reviewed_boundary_manifest_for_lineage(
+            directory, reference, reviewed_boundaries, official_report)
     elif extension['reviewedBoundaries'] is not None:
         raise ValueError('Reviewed sector-owned settlement has an unexpected replacement manifest')
     for sid, record in states.items():
@@ -2398,10 +2623,8 @@ def validate_reviewed_source_phase_lineage(directory, review, original_sources, 
             or lineage.get('pointId') != review['pointId'] or lineage.get('baseId') != review['baseId']):
         raise ValueError('Reviewed source phase lineage identity changed')
     reference = lineage['reviewedBoundaries']
-    boundary_manifest = json.loads(aggregate_review_file(directory, reference, 'active reviewed boundaries'))
-    if ((directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
-            or official_report['manifestSha256'] != reference['sha256']):
-        raise ValueError('Source phase lineage is not bound to the active boundary loader')
+    boundary_manifest = load_reviewed_boundary_manifest_for_lineage(
+        directory, reference, reviewed_boundaries, official_report)
     records = lineage['sourceStates']
     states = {record['id']: record for record in records}
     sector_ids = {row['id'] for row in review['preservedSectors']}
@@ -2691,6 +2914,255 @@ def validate_reviewed_administrative_successor_identity(directory, review, regis
                                 'expectedRawIds': closure['expectedRawIds'],
                                 'sourceOnlyAbsentIds': sorted(absent_ids)}}
 
+def load_reviewed_picker_manifest_for_lineage(directory, reference, picker_path, picker, source_sha256) -> bytes:
+    import re
+
+    METHOD = 'reviewed_source_bound_residential_base_display_identity'
+    SECTION = 'residentialDisplayAssociations'
+    COMPAT_METHOD = 'reviewed_picker_proof_successor'
+    LINEAGE_METHOD = 'reviewed_source_bound_residential_official_boundary_lineage'
+    SHA_RE = re.compile(r'^[0-9a-f]{64}$')
+
+    def _exact_keys(value, keys, label):
+        if not isinstance(value, dict):
+            raise ValueError(f'{label}: expected object')
+        expected = set(keys)
+        actual = set(value)
+        if actual != expected:
+            missing = sorted(expected - actual)
+            extra = sorted(actual - expected)
+            raise ValueError(f'{label}: expected keys {sorted(expected)}; missing={missing}; extra={extra}')
+        return value
+
+    def _str(value, label, nonempty=False):
+        if not isinstance(value, str):
+            raise ValueError(f'{label}: expected string')
+        if nonempty and not value:
+            raise ValueError(f'{label}: expected non-empty string')
+        return value
+
+    def _sha(value, label):
+        value = _str(value, label)
+        if SHA_RE.fullmatch(value) is None:
+            raise ValueError(f'{label}: expected lowercase 64-character hex sha256')
+        return value
+
+    def _int(value, label):
+        if not isinstance(value, int) or isinstance(value, bool):
+            raise ValueError(f'{label}: expected integer')
+        return value
+
+    def _resolve(rel, label):
+        rel = _str(rel, f'{label}.file', nonempty=True)
+        rel_path = Path(rel)
+        if rel_path.is_absolute() or '..' in rel_path.parts:
+            raise ValueError(f'{label}: expected relative path without ..')
+        base = Path(directory).resolve()
+        candidate = (base / rel_path).resolve()
+        try:
+            candidate.relative_to(base)
+        except ValueError as exc:
+            raise ValueError(f'{label}: path escapes directory') from exc
+        return candidate
+
+    def _load_ref(ref, label):
+        _exact_keys(ref, ('file', 'sha256'), label)
+        _sha(ref['sha256'], f'{label}.sha256')
+        path = _resolve(ref['file'], label)
+        raw = aggregate_review_file(directory, ref, label)
+        try:
+            doc = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f'{label}: invalid JSON') from exc
+        return path, raw, doc
+
+    def _section_rows(doc, label):
+        rows = doc.get(SECTION)
+        if not isinstance(rows, list) or any(not isinstance(row, dict) for row in rows):
+            raise ValueError(f'{label}: expected the top-level residentialDisplayAssociations list')
+        return rows
+
+    _sha(source_sha256, 'sourceSha256')
+    _exact_keys(reference, ('file', 'sha256'), 'reference')
+    _sha(reference['sha256'], 'reference.sha256')
+    active_path = _resolve(reference['file'], 'reference')
+    if active_path != Path(picker_path).resolve():
+        raise ValueError('Picker lineage reference does not bind the active picker path')
+
+    try:
+        active_raw = active_path.read_bytes()
+    except OSError as exc:
+        raise ValueError(f'active picker manifest: cannot read {active_path}') from exc
+    try:
+        active_json = json.loads(active_raw)
+    except json.JSONDecodeError as exc:
+        raise ValueError('active picker manifest: invalid JSON') from exc
+    if not isinstance(active_json, dict):
+        raise ValueError('active picker manifest: expected object')
+    if active_json != picker:
+        raise ValueError('active picker manifest: does not match passed picker')
+    if _int(active_json.get('schemaVersion'), 'active picker manifest.schemaVersion') != 1:
+        raise ValueError('active picker manifest.schemaVersion: expected 1')
+    if active_json.get('sourceSha256') != source_sha256:
+        raise ValueError('active picker manifest.sourceSha256: does not match source_sha256')
+
+    active_sha = hashlib.sha256(active_raw).hexdigest()
+    if active_sha == reference['sha256']:
+        return active_raw
+
+    if 'lineageCompatibility' not in active_json:
+        raise ValueError('active picker manifest: sha256 mismatch without lineageCompatibility')
+    compat_ref = active_json['lineageCompatibility']
+    _compat_path, _compat_raw, compat = _load_ref(compat_ref, 'picker lineage compatibility')
+    _exact_keys(
+        compat,
+        ('schemaVersion', 'method', 'sourceSha256', 'previousManifest', 'changes', 'qualification'),
+        'active picker manifest.lineageCompatibility',
+    )
+    if _int(compat['schemaVersion'], 'lineageCompatibility.schemaVersion') != 1:
+        raise ValueError('lineageCompatibility.schemaVersion: expected 1')
+    if compat['method'] != COMPAT_METHOD:
+        raise ValueError('lineageCompatibility.method: unexpected value')
+    if compat['sourceSha256'] != source_sha256:
+        raise ValueError('lineageCompatibility.sourceSha256: does not match source_sha256')
+    _str(compat['qualification'], 'lineageCompatibility.qualification', nonempty=True)
+
+    prev_ref = compat['previousManifest']
+    _exact_keys(prev_ref, ('file', 'sha256'), 'lineageCompatibility.previousManifest')
+    _sha(prev_ref['sha256'], 'lineageCompatibility.previousManifest.sha256')
+    if prev_ref['sha256'] != reference['sha256']:
+        raise ValueError('lineageCompatibility.previousManifest.sha256: does not match reference.sha256')
+    prev_path, _prev_raw, previous_json = _load_ref(prev_ref, 'lineageCompatibility.previousManifest')
+    if prev_path == active_path:
+        raise ValueError('lineageCompatibility.previousManifest: path must differ from active path')
+    if not isinstance(previous_json, dict):
+        raise ValueError('previous manifest: expected object')
+    if _int(previous_json.get('schemaVersion'), 'previous manifest.schemaVersion') != 1:
+        raise ValueError('previous manifest.schemaVersion: expected 1')
+    if previous_json.get('sourceSha256') != source_sha256:
+        raise ValueError('previous manifest.sourceSha256: does not match source_sha256')
+    if 'lineageCompatibility' in previous_json:
+        raise ValueError('previous manifest: lineageCompatibility must be absent')
+
+    changes = compat['changes']
+    if not isinstance(changes, list) or len(changes) != 1:
+        raise ValueError('lineageCompatibility.changes: expected exactly one change')
+    change = changes[0]
+    _exact_keys(
+        change,
+        ('section', 'id', 'previousRecord', 'activeRecord', 'historicalProof', 'successorProof'),
+        'lineageCompatibility.changes[0]',
+    )
+    if change['section'] != SECTION:
+        raise ValueError('lineageCompatibility.changes[0].section: unexpected value')
+    change_id = _str(change['id'], 'lineageCompatibility.changes[0].id', nonempty=True)
+
+    old_rows = _section_rows(previous_json, 'previous manifest')
+    new_rows = _section_rows(active_json, 'active picker manifest')
+    old_matches = [row for row in old_rows if isinstance(row, dict) and row.get('id') == change_id]
+    new_matches = [row for row in new_rows if isinstance(row, dict) and row.get('id') == change_id]
+    if len(old_matches) != 1:
+        raise ValueError('previous manifest: expected exactly one matching row id')
+    if len(new_matches) != 1:
+        raise ValueError('active picker manifest: expected exactly one matching row id')
+    old_record = old_matches[0]
+    new_record = new_matches[0]
+    if old_record != change['previousRecord']:
+        raise ValueError('lineageCompatibility.changes[0].previousRecord: does not match previous manifest row')
+    if new_record != change['activeRecord']:
+        raise ValueError('lineageCompatibility.changes[0].activeRecord: does not match active picker manifest row')
+    if set(old_record) != set(new_record):
+        raise ValueError('previous/active records: expected identical key sets')
+    for key in old_record:
+        if key != 'reviewEvidence' and old_record[key] != new_record[key]:
+            raise ValueError(f'previous/active records: field {key!r} differs')
+    if old_record.get('reviewEvidence') == new_record.get('reviewEvidence'):
+        raise ValueError('previous/active records: reviewEvidence must differ')
+    historical_ref = change['historicalProof']
+    successor_ref = change['successorProof']
+    if old_record.get('reviewEvidence') != historical_ref:
+        raise ValueError('previous record.reviewEvidence: does not match historicalProof')
+    if new_record.get('reviewEvidence') != successor_ref:
+        raise ValueError('active record.reviewEvidence: does not match successorProof')
+    if old_record.get('method') != METHOD or new_record.get('method') != METHOD:
+        raise ValueError('previous/active records.method: unexpected value')
+    if old_record.get('id') != change_id or new_record.get('id') != change_id:
+        raise ValueError('previous/active records.id: does not match change id')
+    target = _int(old_record.get('targetDelegationId'), 'previous record.targetDelegationId')
+    new_target = _int(new_record.get('targetDelegationId'), 'active record.targetDelegationId')
+    if new_target != target:
+        raise ValueError('previous/active records.targetDelegationId: must be unchanged')
+    expected_application = {'method': METHOD, 'id': change_id, 'targetDelegationId': target}
+
+    _hist_path, _hist_raw, hist_json = _load_ref(historical_ref, 'historicalProof')
+    _succ_path, _succ_raw, succ_json = _load_ref(successor_ref, 'successorProof')
+    if not isinstance(hist_json, dict):
+        raise ValueError('historicalProof: expected object')
+    if not isinstance(succ_json, dict):
+        raise ValueError('successorProof: expected object')
+
+    def _check_proof(doc, label):
+        if _int(doc.get('schemaVersion'), f'{label}.schemaVersion') != 2:
+            raise ValueError(f'{label}.schemaVersion: expected 2')
+        if doc.get('sourceSha256') != source_sha256:
+            raise ValueError(f'{label}.sourceSha256: does not match source_sha256')
+        app = doc.get('application')
+        _exact_keys(app, ('method', 'id', 'targetDelegationId'), f'{label}.application')
+        if app != expected_application:
+            raise ValueError(f'{label}.application: unexpected value')
+        if doc.get('conclusion') != METHOD:
+            raise ValueError(f'{label}.conclusion: unexpected value')
+        for key in ('officialRegistry', 'primarySources', 'sourceFacts'):
+            if key not in doc:
+                raise ValueError(f'{label}.{key}: missing')
+
+    _check_proof(hist_json, 'historicalProof')
+    _check_proof(succ_json, 'successorProof')
+    if hist_json['officialRegistry'] != succ_json['officialRegistry']:
+        raise ValueError('historical/successor proofs.officialRegistry: must be unchanged')
+    if hist_json['primarySources'] != succ_json['primarySources']:
+        raise ValueError('historical/successor proofs.primarySources: must be unchanged')
+    if succ_json.get('historicalProof') != historical_ref:
+        raise ValueError('successorProof.historicalProof: does not match historicalProof reference')
+    if 'sourcePhaseLineage' not in succ_json:
+        raise ValueError('successorProof.sourcePhaseLineage: missing')
+
+    lineage_ref = succ_json['sourcePhaseLineage']
+    _lineage_path, _lineage_raw, lineage_json = _load_ref(lineage_ref, 'successorProof.sourcePhaseLineage')
+    if not isinstance(lineage_json, dict):
+        raise ValueError('sourcePhaseLineage: expected object')
+    if _int(lineage_json.get('schemaVersion'), 'sourcePhaseLineage.schemaVersion') != 1:
+        raise ValueError('sourcePhaseLineage.schemaVersion: expected 1')
+    if lineage_json.get('method') != LINEAGE_METHOD:
+        raise ValueError('sourcePhaseLineage.method: unexpected value')
+    if lineage_json.get('sourceSha256') != source_sha256:
+        raise ValueError('sourcePhaseLineage.sourceSha256: does not match source_sha256')
+    lineage_app = lineage_json.get('application')
+    _exact_keys(lineage_app, ('method', 'id', 'targetDelegationId'), 'sourcePhaseLineage.application')
+    if lineage_app != expected_application:
+        raise ValueError('sourcePhaseLineage.application: unexpected value')
+    for key in ('historicalSourceFacts', 'historicalFullSourceFacts'):
+        if key not in lineage_json:
+            raise ValueError(f'sourcePhaseLineage.{key}: missing')
+    if lineage_json.get('historicalSourceFacts') != succ_json.get('sourceFacts'):
+        raise ValueError('sourcePhaseLineage.historicalSourceFacts: does not match successorProof.sourceFacts')
+    if lineage_json.get('historicalFullSourceFacts') != hist_json.get('sourceFacts'):
+        raise ValueError('sourcePhaseLineage.historicalFullSourceFacts: does not match historicalProof.sourceFacts')
+
+    expected_active = json.loads(json.dumps(previous_json))
+    expected_rows = _section_rows(expected_active, 'previous manifest during reconstruction')
+    expected_matches = [row for row in expected_rows if isinstance(row, dict) and row.get('id') == change_id]
+    if len(expected_matches) != 1:
+        raise ValueError('previous manifest: expected exactly one matching row id during reconstruction')
+    expected_matches[0]['reviewEvidence'] = successor_ref
+    expected_active['lineageCompatibility'] = compat_ref
+    if expected_active != active_json:
+        raise ValueError('active picker manifest: does not match lineage reconstruction')
+    if json.dumps(expected_active, separators=(',', ':'), sort_keys=False) != json.dumps(active_json, separators=(',', ':'), sort_keys=False):
+        raise ValueError('active picker manifest: serialized order or types differ from lineage reconstruction')
+    return active_raw
+
+
 def validate_reviewed_town_preservation_extension(directory, review, rule, registry, original_sources,
                                                   effective_sources, curation, source_sha256,
                                                   reviewed_boundaries, official_report, reviewed_picker_groups,
@@ -2790,11 +3262,8 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
     reference = extension['reviewedBoundaries']
     boundary_manifest = None
     if replacements:
-        boundary_manifest = json.loads(aggregate_review_file(directory, reference, 'town active boundaries'))
-        if (reviewed_boundaries is None or official_report is None
-                or (directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
-                or official_report['manifestSha256'] != reference['sha256']):
-            raise ValueError('Reviewed town lineage is not bound to the active boundary loader')
+        boundary_manifest = load_reviewed_boundary_manifest_for_lineage(
+            directory, reference, reviewed_boundaries, official_report)
     elif reference is not None:
         raise ValueError('Reviewed town no-replacement lineage must not claim an active replacement manifest')
     for sid, record in states.items():
@@ -3033,7 +3502,7 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
         raise ValueError('Reviewed town touching prior picker inventory changed')
     if touching:
         reference = prior['manifest']
-        pinned = aggregate_review_file(directory, reference, 'town active prior picker decisions')
+        pinned = load_reviewed_picker_manifest_for_lineage(directory, reference, picker_path, picker, source_sha256)
         if (directory / reference['file']).resolve() != picker_path.resolve() or json.loads(pinned) != picker:
             raise ValueError('Reviewed town prior picker pin does not bind the active manifest')
     elif prior['manifest'] is not None:
@@ -4873,6 +5342,466 @@ def validate_reviewed_complete_locality_group_owner(record, directory, features,
 
 
 
+def validate_reviewed_sector_settlement_display_identity(record, directory, features, indices, geometries,
+                                                         groups, original_sources, effective_sources,
+                                                         curation, timetables, source_sha256):
+    """Validate a reviewed sector/settlement display-identity grouping."""
+    RECORD_KEYS = {
+        'id', 'status', 'method', 'targetPickerGroupId', 'expectedExistingMemberIds',
+        'expectedTargetMemberIds', 'members', 'expectedGovernorateId', 'canonicalName',
+        'officialRegistry', 'officialSectorRecord', 'pointContextOfficialRecord',
+        'codedParent', 'pointContext', 'expectedSourceNamePeerIds', 'spatialRelationship',
+        'manualSelection', 'sourceReview', 'qualifications'
+    }
+    MEMBER_KEYS = {
+        'id', 'expectedMetadata', 'expectedOriginalTags', 'expectedEffectiveTags',
+        'expectedCuration', 'originalGeometrySha256', 'packedGeometrySha256'
+    }
+    QUALIFICATIONS = {
+        'displayIdentityOnly': True,
+        'noBoundaryCertification': True,
+        'allRawCoordinatesRetained': True,
+        'prayerSourceIsNotDisplayIdentity': True,
+        'ownerIsExistingSuburbPoint': True
+    }
+    GEOMETRY_SPEC_KEYS = {'id', 'expectedKind', 'expectedTags', 'originalGeometrySha256'}
+    SPATIAL_KEYS = {'pointOutsideSector', 'representativeDistanceKm'}
+    MANUAL_KEYS = {'representativeId', 'lat', 'lng', 'expectedNearestSourceId'}
+
+    def fail(message):
+        raise ValueError(message)
+
+    def is_number(value):
+        return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+    def names_of(tags, label):
+        if not isinstance(tags, dict):
+            fail(f'{label} tags are not an object')
+        try:
+            values = list(names(tags))
+        except Exception as exc:
+            raise ValueError(f'{label} names cannot be read') from exc
+        if not values or any(not isinstance(value, str) for value in values):
+            fail(f'{label} names are malformed')
+        return values
+
+    def load_ref(reference, label):
+        if (not isinstance(reference, dict) or set(reference) != {'file', 'sha256'}
+                or not isinstance(reference['file'], str) or not reference['file']
+                or not isinstance(reference['sha256'], str)
+                or not re.fullmatch(r'[0-9a-f]{64}', reference['sha256'])):
+            fail(f'{label} reference is malformed')
+        raw = aggregate_review_file(directory, reference, label)
+        return json.loads(raw), raw
+
+    def is_polygonal(geometry, label):
+        if (geometry is None or geometry.is_empty or not geometry.is_valid
+                or geometry.geom_type not in ('Polygon', 'MultiPolygon')):
+            fail(f'{label} is not a valid nonempty polygonal shape')
+        return geometry
+
+    def point_candidate(source, current, label):
+        point = source.get('point')
+        if not isinstance(point, Point) or point.is_empty or not point.is_valid:
+            fail(f'{label} requires an actual source Point in its point field')
+        return point
+
+    def feature_at(mid, label):
+        if mid not in indices:
+            fail(f'{label} member id is missing from indices')
+        try:
+            index = indices[mid]
+            if index < 0 or index >= len(features):
+                fail(f'{label} member index is outside features')
+            current = features[index]
+        except (TypeError, IndexError, KeyError) as exc:
+            raise ValueError(f'{label} member index cannot be read') from exc
+        if not isinstance(current, dict):
+            fail(f'{label} current feature is malformed')
+        return index, current
+
+    try:
+        if not isinstance(record, dict) or set(record) != RECORD_KEYS:
+            fail('Record keys changed')
+
+        identifier = record['id']
+        target = record['targetPickerGroupId']
+        if (not isinstance(identifier, str) or not identifier.startswith('osm:relation:')
+                or not isinstance(target, str) or not target.startswith('osm:node:')
+                or identifier == target):
+            fail('Record source or target identity is malformed')
+
+        member_ids = {identifier, target}
+        sorted_pair = sorted(member_ids)
+
+        if (record['status'] != 'eligible_proposal'
+                or record['method'] != 'reviewed_sector_settlement_display_identity'
+                or record['expectedExistingMemberIds'] != [identifier]
+                or record['expectedTargetMemberIds'] != [target]
+                or type(record['expectedGovernorateId']) is not int
+                or not isinstance(record['canonicalName'], str)
+                or not record['canonicalName'].strip()):
+            fail('Record scope or identity changed')
+
+        if (groups.get(identifier) != {identifier} or groups.get(target) != {target}
+                or identifier not in indices or target not in indices):
+            fail('Source or target picker group is no longer a singleton')
+
+        quals = record['qualifications']
+        if (not isinstance(quals, dict) or set(quals) != set(QUALIFICATIONS)
+                or any(type(quals[key]) is not bool or quals[key] is not True
+                       for key in QUALIFICATIONS)):
+            fail('Qualifications changed')
+
+        source_index, source_current = feature_at(identifier, 'source')
+        _, target_current = feature_at(target, 'target')
+        if (not is_number(source_current.get('lat')) or not is_number(source_current.get('lng'))
+                or not is_number(target_current.get('lat')) or not is_number(target_current.get('lng'))):
+            fail('Member coordinates are malformed')
+        point_lat, point_lng = target_current['lat'], target_current['lng']
+
+        review, _ = load_ref(record['sourceReview'], 'source review')
+        if (not isinstance(review, dict)
+                or review.get('schemaVersion') != 1
+                or review.get('sourceSha256') != source_sha256
+                or review.get('status') != 'ROOT_APPROVED_MANUAL_DISPLAY_ONLY'
+                or review.get('memberIds') != sorted_pair
+                or review.get('canonicalName') != record['canonicalName']
+                or review.get('proposedOwnerId') != target):
+            fail('Source review identity changed')
+
+        phone_evidence = review.get('phoneEvidence')
+        if not isinstance(phone_evidence, list) or len(phone_evidence) < 2:
+            fail('Source review phone evidence is missing')
+
+        query_target = f'{point_lat}, {point_lng}'
+        query_seen = False
+        for reference in phone_evidence:
+            if not isinstance(reference, dict) or set(reference) != {'file', 'sha256'}:
+                fail('Source review phone evidence reference is malformed')
+            file_ref, sha_ref = reference['file'], reference['sha256']
+            if (not isinstance(file_ref, str) or not file_ref.strip()
+                    or not isinstance(sha_ref, str) or not re.fullmatch(r'[0-9a-f]{64}', sha_ref)):
+                fail('Source review phone evidence reference is malformed')
+
+            evidence, evidence_bytes = load_ref(reference, 'phone evidence')
+            if hashlib.sha256(evidence_bytes).hexdigest() != sha_ref:
+                fail('Source review phone evidence hash changed')
+            if not isinstance(evidence, dict):
+                fail('Source review phone evidence is malformed')
+
+            if evidence.get('boundaryVerified') is not False:
+                fail('Source review phone evidence makes a boundary claim')
+            titles = evidence.get('publicCardTitles')
+            if (not isinstance(titles, list) or any(not isinstance(value, str) for value in titles)
+                    or record['canonicalName'] not in titles):
+                fail('Source review selected public card name changed')
+            if evidence.get('query') == query_target:
+                query_seen = True
+        if not query_seen:
+            fail('Source review phone evidence query changed')
+
+        registry, _ = load_ref(record['officialRegistry'], 'official sector registry')
+        if not isinstance(registry, dict) or not isinstance(registry.get('sectors'), list):
+            fail('Official sector registry is malformed')
+
+        official = record['officialSectorRecord']
+        context_official = record['pointContextOfficialRecord']
+        if not isinstance(official, dict) or not isinstance(context_official, dict):
+            fail('Official sector records are malformed')
+
+        code = official.get('sectorCode')
+        context_code = context_official.get('sectorCode')
+        if (not isinstance(code, str) or not re.fullmatch(r'[0-9]{6}', code)
+                or not isinstance(context_code, str) or not re.fullmatch(r'[0-9]{6}', context_code)
+                or code == context_code):
+            fail('Official sector codes are malformed')
+
+        if [row for row in registry['sectors']
+                if isinstance(row, dict) and row.get('sectorCode') == code] != [official]:
+            fail('Official sector record is not the unique coded record')
+        if [row for row in registry['sectors']
+                if isinstance(row, dict) and row.get('sectorCode') == context_code] != [context_official]:
+            fail('Point context official sector record is not the unique coded record')
+
+        if (official.get('sectorAr') != record['canonicalName']
+                or official.get('delegationCode') != code[:4]
+                or official.get('governorateCode') != code[:2]
+                or context_official.get('delegationCode') != code[:4]
+                or context_official.get('governorateCode') != code[:2]
+                or context_official.get('delegationCode') != context_code[:4]
+                or context_official.get('governorateCode') != context_code[:2]):
+            fail('Official sector record code relationships changed')
+
+        members = record['members']
+        if (not isinstance(members, list) or len(members) != 2
+                or any(not isinstance(row, dict) for row in members)):
+            fail('Members are malformed')
+        if {row.get('id') for row in members} != member_ids:
+            fail('Members do not match the reviewed pair')
+
+        protected = {}
+        member_current = {}
+        member_original_geometry = {}
+        member_effective_geometry = {}
+        nearest_ids = []
+
+        for member in members:
+            if set(member) != MEMBER_KEYS:
+                fail('Member keys changed')
+            mid = member['id']
+            if mid not in member_ids:
+                fail('Member identity changed')
+
+            expected_kind = 'sector' if mid == identifier else 'suburb'
+            index, current = feature_at(mid, 'member')
+            member_current[mid] = current
+
+            metadata = {key: value for key, value in current.items()
+                        if key not in {'pickerGroupId', 'offset', 'length'}}
+            if metadata != member['expectedMetadata'] or current.get('pickerGroupId') != mid:
+                fail('Member metadata or current group changed')
+
+            if (current.get('sourceId') != 'osm'
+                    or current.get('name') != record['canonicalName']
+                    or current.get('governorateId') != record['expectedGovernorateId']
+                    or current.get('kind') != expected_kind):
+                fail('Member current identity changed')
+
+            original = original_sources.get(mid)
+            effective = effective_sources.get(mid)
+            if not isinstance(original, dict) or not isinstance(effective, dict):
+                fail('Member source records are missing')
+
+            if (original.get('sourceId') is not None or effective.get('sourceId') != 'osm'
+                    or original.get('kind') != expected_kind or effective.get('kind') != expected_kind):
+                fail('Member source identity changed')
+
+            original_tags = original.get('tags')
+            effective_tags = effective.get('tags')
+            expected_original_tags = member['expectedOriginalTags']
+            expected_effective_tags = member['expectedEffectiveTags']
+            if (not isinstance(original_tags, dict) or not isinstance(effective_tags, dict)
+                    or not isinstance(expected_original_tags, dict) or not isinstance(expected_effective_tags, dict)
+                    or original_tags != effective_tags
+                    or original_tags != expected_original_tags
+                    or effective_tags != expected_effective_tags):
+                fail('Member source tags changed')
+
+            original_names = names_of(original_tags, 'member original')
+            effective_names = names_of(effective_tags, 'member effective')
+            if (original_names[0] != record['canonicalName']
+                    or effective_names[0] != record['canonicalName']):
+                fail('Member primary names changed')
+
+            if mid == identifier:
+                if (original_tags.get('admin_level') != '6'
+                        or original_tags.get('boundary') != 'administrative'
+                        or original_tags.get('ref:tn:codegeo') != code):
+                    fail('Coded sector tags changed')
+            else:
+                if original_tags.get('place') != 'suburb':
+                    fail('Settlement point tags changed')
+
+            if member['expectedCuration'] is not None or curation.get(mid) is not None:
+                fail('Member curation changed')
+
+            original_hash = member['originalGeometrySha256']
+            if not isinstance(original_hash, str) or not re.fullmatch(r'[0-9a-f]{64}', original_hash):
+                fail('Member original geometry hash is malformed')
+
+            if mid == identifier:
+                original_geometry = is_polygonal(original.get('shape'), 'source original shape')
+                effective_geometry = is_polygonal(effective.get('shape'), 'source effective shape')
+                if (aggregate_geometry_sha256(original_geometry) != original_hash
+                        or aggregate_geometry_sha256(effective_geometry) != original_hash):
+                    fail('Source polygon geometry hash changed')
+                if current.get('hasBoundary') is not True:
+                    fail('Source sector no longer has a boundary')
+                if index < 0 or index >= len(geometries):
+                    fail('Source sector packed geometry index is missing')
+                packed = is_polygonal(geometries[index], 'source packed shape')
+                packed_hash = member['packedGeometrySha256']
+                if not isinstance(packed_hash, str) or not re.fullmatch(r'[0-9a-f]{64}', packed_hash):
+                    fail('Source packed geometry hash is malformed')
+                if hashlib.sha256(packed_geometry_bytes(packed)).hexdigest() != packed_hash:
+                    fail('Source packed geometry changed')
+            else:
+                original_geometry = point_candidate(original, current, 'target original')
+                effective_geometry = point_candidate(effective, current, 'target effective')
+                if (aggregate_geometry_sha256(original_geometry) != original_hash
+                        or aggregate_geometry_sha256(effective_geometry) != original_hash):
+                    fail('Target point geometry hash changed')
+                if current.get('hasBoundary') is not False:
+                    fail('Target settlement point now has a boundary')
+                if member['packedGeometrySha256'] is not None:
+                    fail('Target settlement point gained packed geometry')
+                if (original_geometry.x != current.get('lng') or original_geometry.y != current.get('lat')
+                        or effective_geometry.x != current.get('lng') or effective_geometry.y != current.get('lat')):
+                    fail('Target point coordinates changed')
+
+            member_original_geometry[mid] = original_geometry
+            member_effective_geometry[mid] = effective_geometry
+
+            lat, lng = current.get('lat'), current.get('lng')
+            if (not is_number(lat) or not is_number(lng) or not math.isfinite(lat)
+                    or not math.isfinite(lng) or not -90 <= lat <= 90 or not -180 <= lng <= 180):
+                fail('Member coordinates are malformed')
+            try:
+                nearest = min(timetables, key=lambda d: (distance(lat, lng, d), d['id']))
+            except Exception as exc:
+                raise ValueError('Member prayer timetable is malformed') from exc
+            if current.get('delegationId') != nearest.get('id'):
+                fail('Member prayer source changed')
+            nearest_ids.append(nearest['id'])
+            protected[mid] = metadata
+
+        if len(nearest_ids) != 2 or nearest_ids[0] != nearest_ids[1]:
+            fail('Member prayer sources no longer agree')
+
+        parent_spec = record['codedParent']
+        context_spec = record['pointContext']
+        for spec, label, expected_kind, expected_admin, expected_code in (
+                (parent_spec, 'coded parent', 'delegation', '5', code[:4]),
+                (context_spec, 'point context', 'sector', '6', context_code)):
+            if not isinstance(spec, dict) or set(spec) != GEOMETRY_SPEC_KEYS:
+                fail(f'{label} keys changed')
+            spec_id = spec['id']
+            expected_tags = spec['expectedTags']
+            if (not isinstance(spec_id, str) or not spec_id
+                    or spec['expectedKind'] != expected_kind
+                    or not isinstance(expected_tags, dict)
+                    or expected_tags.get('admin_level') != expected_admin
+                    or expected_tags.get('boundary') != 'administrative'
+                    or expected_tags.get('ref:tn:codegeo') != expected_code
+                    or not isinstance(expected_tags.get('name'), str)
+                    or not expected_tags['name'].strip()
+                    or not isinstance(spec['originalGeometrySha256'], str)
+                    or not re.fullmatch(r'[0-9a-f]{64}', spec['originalGeometrySha256'])):
+                fail(f'{label} specification changed')
+
+            if spec_id not in original_sources or spec_id not in effective_sources:
+                fail(f'{label} source records are missing')
+            original_source = original_sources[spec_id]
+            effective_source = effective_sources[spec_id]
+            if not isinstance(original_source, dict) or not isinstance(effective_source, dict):
+                fail(f'{label} source records are malformed')
+
+            if (original_source.get('kind') != expected_kind
+                    or effective_source.get('kind') != expected_kind
+                    or original_source.get('tags') != expected_tags
+                    or effective_source.get('tags') != expected_tags):
+                fail(f'{label} kind or tags changed')
+
+            original_shape = is_polygonal(original_source.get('shape'), f'{label} original')
+            effective_shape = is_polygonal(effective_source.get('shape'), f'{label} effective')
+            if (aggregate_geometry_sha256(original_shape) != spec['originalGeometrySha256']
+                    or aggregate_geometry_sha256(effective_shape) != spec['originalGeometrySha256']):
+                fail(f'{label} geometry hash changed')
+            if curation.get(spec_id) is not None:
+                fail(f'{label} curation changed')
+
+            if spec is parent_spec:
+                if source_current.get('parentName') != expected_tags['name']:
+                    fail('Source parent name changed')
+            else:
+                if target_current.get('parentName') != expected_tags['name']:
+                    fail('Target parent name changed')
+
+        parent_id = parent_spec['id']
+        context_id = context_spec['id']
+        if parent_id == context_id:
+            fail('Coded parent and point context are the same source')
+
+        for sources, geometry_map in ((original_sources, member_original_geometry),
+                                      (effective_sources, member_effective_geometry)):
+            parent_shape = is_polygonal(sources[parent_id].get('shape'), 'parent coverage shape')
+            context_shape = is_polygonal(sources[context_id].get('shape'), 'context coverage shape')
+            sector_shape = is_polygonal(sources[identifier].get('shape'), 'sector coverage shape')
+            point_shape = geometry_map[target]
+            if (not parent_shape.covers(sector_shape)
+                    or not parent_shape.covers(point_shape)
+                    or not context_shape.covers(point_shape)
+                    or not parent_shape.covers(context_shape)):
+                fail('Reviewed parent or context coverage changed')
+
+        expected_peers = record['expectedSourceNamePeerIds']
+        if not isinstance(expected_peers, list) or expected_peers != sorted_pair:
+            fail('Expected source name peer list changed')
+
+        for sources in (original_sources, effective_sources):
+            peer_keys = set()
+            for mid in member_ids:
+                source = sources.get(mid)
+                if not isinstance(source, dict):
+                    fail('Member source is missing during peer inventory')
+                for value in names_of(source.get('tags'), 'peer member'):
+                    peer_keys.add(norm(value))
+
+            matched = []
+            for mid, source in sources.items():
+                if not isinstance(source, dict):
+                    continue
+                try:
+                    values = names_of(source.get('tags'), 'peer source')
+                except ValueError:
+                    continue
+                if peer_keys & {norm(value) for value in values}:
+                    matched.append(mid)
+
+            if sorted(matched) != expected_peers or sorted(matched) != sorted_pair:
+                fail('Source name peer inventory changed')
+
+        spatial = record['spatialRelationship']
+        if not isinstance(spatial, dict) or set(spatial) != SPATIAL_KEYS:
+            fail('Spatial relationship keys changed')
+        if spatial.get('pointOutsideSector') is not True:
+            fail('Spatial relationship no longer excludes the point')
+
+        supplied_distance = spatial.get('representativeDistanceKm')
+        if not is_number(supplied_distance) or not math.isfinite(supplied_distance):
+            fail('Representative distance is malformed')
+
+        target_point = member_original_geometry[target]
+        actual_distance = distance(source_current.get('lat'), source_current.get('lng'),
+                                   {'lat': target_point.y, 'lng': target_point.x})
+        if (not is_number(actual_distance) or not math.isfinite(actual_distance)
+                or actual_distance <= 0 or actual_distance > 2
+                or not math.isclose(actual_distance, supplied_distance, rel_tol=1e-12, abs_tol=1e-12)):
+            fail('Representative distance changed')
+
+        if original_sources[identifier]['shape'].covers(target_point):
+            fail('Source sector unexpectedly covers the settlement point')
+        if geometries[source_index].covers(target_point):
+            fail('Packed source sector unexpectedly covers the settlement point')
+
+        manual_selection = record['manualSelection']
+        manual = {
+            'representativeId': target,
+            'lat': target_current.get('lat'),
+            'lng': target_current.get('lng'),
+            'expectedNearestSourceId': target_current.get('delegationId')
+        }
+        if (not isinstance(manual_selection, dict)
+                or set(manual_selection) != MANUAL_KEYS
+                or manual_selection != manual):
+            fail('Manual selection changed')
+
+        return {
+            'id': identifier,
+            'identityMethod': record['method'],
+            'retainedOwnerId': target,
+            'manualSelection': manual,
+            'spatialRelationship': spatial,
+            'finalGroups': [{'id': target, 'memberIds': sorted_pair}],
+            'protectedMetadata': protected
+        }
+    except ValueError:
+        raise
+    except Exception as exc:
+        raise ValueError('Reviewed sector settlement display identity is malformed') from exc
+
+
 def validate_reviewed_locality_groups(manifest_path, manifest, features, geometries, timetables,
                                       original_sources, effective_sources, source_sha256, curation,
                                       groups, indices, reserved_groups, reserved_members):
@@ -4916,6 +5845,7 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
     seen_groups, seen_members, seen_ids, staged = set(), set(), set(), []
     deferred = []
     complete_owner_applications = []
+    sector_settlement_applications = []
     seen_support_ids = set()
     available = {d['id'] for d in timetables}
     for record in records:
@@ -4927,8 +5857,20 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
                 or record.get('method') not in ('explicit_named_village_containment', 'explicit_addressed_village',
                                               'reviewed_primary_source_named_settlement',
                                               'reviewed_distributed_settlement', 'reviewed_surveyed_hamlet',
-                                              'reviewed_two_patch_settlement', 'reviewed_complete_locality_group_owner')):
+                                              'reviewed_two_patch_settlement', 'reviewed_complete_locality_group_owner',
+                                              'reviewed_sector_settlement_display_identity')):
             raise ValueError('Invalid, transitive or unreviewed locality-group target')
+        if record['method'] == 'reviewed_sector_settlement_display_identity':
+            member_ids = {identifier, target}
+            if member_ids & (seen_members | reserved_members | seen_support_ids):
+                raise ValueError('Reviewed sector settlement overlaps a reserved identity')
+            application = validate_reviewed_sector_settlement_display_identity(
+                record, manifest_path.parent, features, indices, geometries, groups,
+                original_sources, effective_sources, curation, timetables, source_sha256)
+            staged.append((target, [identifier]))
+            sector_settlement_applications.append(application)
+            seen_groups.update(member_ids);seen_members.update(member_ids);seen_ids.add(identifier)
+            continue
         if record['method'] == 'reviewed_complete_locality_group_owner':
             left = record.get('expectedExistingMemberIds')
             if (not isinstance(left, list) or any(not isinstance(mid, str) for mid in left)
@@ -5115,6 +6057,9 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
                     'applications': [{'pickerGroupId': target, 'ids': sorted(ids)} for target, ids in all_applications]}
     if deferred:
         report['_deferredSurveyedHamlets'] = deferred
+    if sector_settlement_applications:
+        report['sectorSettlementDisplayIdentities'] = {'reviewedGroupCount': len(sector_settlement_applications),
+                                                      'applications': sector_settlement_applications}
     if complete_owner_applications:
         report['completeGroupOwners'] = {'reviewedGroupCount': len(complete_owner_applications),
                                         'applications': complete_owner_applications}
@@ -5586,11 +6531,8 @@ def source_bound_residential_boundary_records(proof, directory, records, sector_
             or lineage.get('historicalSourceFacts') != proof['sourceFacts']):
         raise ValueError('Residential boundary lineage identity changed')
     reference = lineage['reviewedBoundaries']
-    manifest = json.loads(aggregate_review_file(directory, reference, 'active reviewed boundaries'))
-    if (reviewed_boundaries is None or official_report is None
-            or (directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
-            or official_report['manifestSha256'] != reference['sha256']):
-        raise ValueError('Residential lineage is not bound to the active boundary loader')
+    manifest = load_reviewed_boundary_manifest_for_lineage(
+        directory, reference, reviewed_boundaries, official_report)
     replacements = lineage['replacements']
     changed = {row['id'] for row in replacements}
     if not changed or len(changed) != len(replacements) or not changed <= sector_ids:
@@ -5863,6 +6805,245 @@ def validate_source_bound_residential_display(entry, directory, current, indices
     return (identifier, target_group, aliases), result, saved_name, reserved
 
 
+def _validated_noncoincident_name_only_changes(proof, lineage, directory, source_sha256, curation):
+    if 'nameOnlySourceReview' not in lineage:
+        return {}
+    if not isinstance(curation, dict):
+        raise ValueError('Noncoincident name-only live curation changed')
+    review_reference = lineage['nameOnlySourceReview']
+    review = json.loads(aggregate_review_file(
+        directory, review_reference, 'noncoincident name-only lineage review'))
+    review_keys = {'schemaVersion', 'method', 'sourceSha256', 'application', 'priorLineage',
+                   'priorProof', 'nameCorrectionReview', 'changes'}
+    if not isinstance(review, dict) or set(review) != review_keys:
+        raise ValueError('Noncoincident name-only review shape changed')
+    if (review['schemaVersion'] != 1
+            or review['method'] != 'reviewed_noncoincident_name_only_lineage_successor'):
+        raise ValueError('Noncoincident name-only review method changed')
+    if (review['sourceSha256'] != source_sha256
+            or proof.get('sourceSha256') != source_sha256
+            or lineage.get('sourceSha256') != source_sha256):
+        raise ValueError('Noncoincident name-only review source identity changed')
+    if (review['application'] != proof.get('application')
+            or lineage.get('application') != review['application']):
+        raise ValueError('Noncoincident name-only review application changed')
+    changes = review['changes']
+    change_keys = {'id', 'curation', 'beforeEffective', 'afterEffective',
+                   'beforeMetadata', 'afterMetadata'}
+    if (not isinstance(changes, list) or not changes
+            or any(not isinstance(change, dict) or set(change) != change_keys
+                   for change in changes)):
+        raise ValueError('Noncoincident name-only change inventory changed')
+    change_ids = [change['id'] for change in changes]
+    if (any(not isinstance(identifier, str) or not identifier for identifier in change_ids)
+            or len(change_ids) != len(set(change_ids))):
+        raise ValueError('Noncoincident name-only change inventory changed')
+    if 'sourcePhaseLineage' not in proof:
+        raise ValueError('Noncoincident name-only current proof lineage reference changed')
+    prior_lineage = json.loads(aggregate_review_file(
+        directory, review['priorLineage'], 'noncoincident prior lineage'))
+    prior_proof = json.loads(aggregate_review_file(
+        directory, review['priorProof'], 'noncoincident prior proof'))
+    name_review = json.loads(aggregate_review_file(
+        directory, review['nameCorrectionReview'], 'noncoincident name correction review'))
+    if (not isinstance(prior_lineage, dict) or not isinstance(prior_proof, dict)
+            or not isinstance(name_review, dict)):
+        raise ValueError('Noncoincident name-only pinned JSON changed')
+    if 'nameOnlySourceReview' in prior_lineage:
+        raise ValueError('Nested noncoincident name-only lineage successor')
+    if prior_proof.get('sourcePhaseLineage') != review['priorLineage']:
+        raise ValueError('Noncoincident name-only prior proof lineage reference changed')
+    expected_proof = json.loads(json.dumps(prior_proof))
+    expected_proof['sourcePhaseLineage'] = proof['sourcePhaseLineage']
+    if expected_proof != proof:
+        raise ValueError('Noncoincident name-only proof successor changed')
+    prior_states_list = prior_lineage.get('sourceStates')
+    prior_protected_list = prior_lineage.get('protectedRaw')
+    if (not isinstance(prior_states_list, list) or not isinstance(prior_protected_list, list)
+            or any(not isinstance(row, dict) or set(row) != {'id', 'original', 'effective'}
+                   for row in prior_states_list)
+            or any(not isinstance(row, dict)
+                   or set(row) != {'id', 'expectedMetadata', 'packedGeometrySha256'}
+                   for row in prior_protected_list)):
+        raise ValueError('Noncoincident name-only prior lineage inventory changed')
+    prior_states = {row['id']: row for row in prior_states_list}
+    prior_protected = {row['id']: row for row in prior_protected_list}
+    if (len(prior_states) != len(prior_states_list)
+            or len(prior_protected) != len(prior_protected_list)):
+        raise ValueError('Noncoincident name-only prior lineage inventory changed')
+    replacements = prior_lineage.get('acceptedReplacements')
+    if not isinstance(replacements, list):
+        raise ValueError('Noncoincident name-only accepted replacements changed')
+    accepted_ids = set()
+    for replacement in replacements:
+        if not isinstance(replacement, dict) or not isinstance(replacement.get('id'), str):
+            raise ValueError('Noncoincident name-only accepted replacements changed')
+        accepted_ids.add(replacement['id'])
+    if len(accepted_ids) != len(replacements):
+        raise ValueError('Noncoincident name-only accepted replacements changed')
+    corrections = name_review.get('changes')
+    if not isinstance(corrections, list):
+        raise ValueError('Noncoincident name correction review changes changed')
+    correction_by_id = {}
+    for correction in corrections:
+        if not isinstance(correction, dict):
+            raise ValueError('Noncoincident name correction record changed')
+        identifier = correction.get('id')
+        nested = correction.get('proposal')
+        if not isinstance(identifier, str) and isinstance(nested, dict):
+            identifier = nested.get('id')
+        if not isinstance(identifier, str) or not identifier:
+            raise ValueError('Noncoincident name correction record changed')
+        if identifier in correction_by_id:
+            raise ValueError('Duplicate noncoincident name correction record')
+        correction_by_id[identifier] = correction
+    source_kinds = proof.get('sourceKinds')
+    if not isinstance(source_kinds, dict):
+        raise ValueError('Noncoincident name-only source kinds changed')
+    declared = {}
+    for change in changes:
+        identifier = change['id']
+        if source_kinds.get(identifier) != 'sector':
+            raise ValueError('Noncoincident name-only ID is not a sector')
+        if identifier not in prior_states or identifier not in prior_protected:
+            raise ValueError('Noncoincident name-only ID is not in prior lineage')
+        if identifier in accepted_ids:
+            raise ValueError('Noncoincident name-only ID was already replaced')
+        correction = correction_by_id.get(identifier)
+        if correction is None:
+            raise ValueError('Missing noncoincident name correction record')
+        proposal = correction.get('proposal', correction)
+        if not isinstance(proposal, dict):
+            raise ValueError('Noncoincident name correction proposal changed')
+        if 'id' in proposal and proposal.get('id') != identifier:
+            raise ValueError('Noncoincident name correction proposal ID changed')
+        original = prior_states[identifier]['original']
+        if (not isinstance(original, dict) or original.get('kind') != 'sector'
+                or not isinstance(original.get('tags'), dict)):
+            raise ValueError('Noncoincident name-only original row changed')
+        tags = original['tags']
+        code = tags.get('ref:tn:codegeo')
+        if not isinstance(code, str) or not code:
+            raise ValueError('Noncoincident name-only original sector code changed')
+        if proposal.get('phoneNameFacetSupported') is not True:
+            raise ValueError('Noncoincident name-only phone name facet unsupported')
+        phone_evidence = proposal.get('phoneNameEvidence')
+        if (not isinstance(phone_evidence, dict)
+                or phone_evidence.get('rootScreenshotReviewed') is not True):
+            raise ValueError('Noncoincident name-only root screenshot not reviewed')
+        source_record = proposal.get('sourceRecord')
+        if (not isinstance(source_record, dict)
+                or source_record.get('id') != identifier
+                or source_record.get('kind') != original.get('kind')
+                or source_record.get('tags') != tags):
+            raise ValueError('Noncoincident name-only source record changed')
+        official_registry = proposal.get('officialRegistryRecord')
+        if (proposal.get('officialSectorCode') != code
+                or not isinstance(official_registry, dict)
+                or official_registry.get('sectorCode') != code):
+            raise ValueError('Noncoincident name-only official sector code changed')
+        old_name = proposal.get('oldName')
+        new_name = proposal.get('newName')
+        old_aliases = proposal.get('oldAliases')
+        proposed_aliases = proposal.get('proposedAliases')
+        if (not isinstance(old_name, str) or not old_name
+                or not isinstance(new_name, str) or not new_name
+                or not isinstance(old_aliases, list)
+                or any(not isinstance(alias, str) for alias in old_aliases)
+                or not isinstance(proposed_aliases, list)
+                or any(not isinstance(alias, str) for alias in proposed_aliases)):
+            raise ValueError('Noncoincident name-only proposed names changed')
+        if official_registry.get('sectorAr') != new_name:
+            raise ValueError('Noncoincident name-only official Arabic name changed')
+        before_effective = change['beforeEffective']
+        before_metadata = change['beforeMetadata']
+        if before_effective != prior_states[identifier]['effective']:
+            raise ValueError('Noncoincident name-only before effective changed')
+        if before_metadata != prior_protected[identifier]['expectedMetadata']:
+            raise ValueError('Noncoincident name-only before metadata changed')
+        if not isinstance(before_effective, dict) or not isinstance(before_metadata, dict):
+            raise ValueError('Noncoincident name-only before rows changed')
+        if before_effective != {**original, 'sourceId': 'osm'}:
+            raise ValueError('Noncoincident name-only prior source was not unchanged')
+        if (before_metadata.get('name') != old_name
+                or before_metadata.get('aliases') != old_aliases):
+            raise ValueError('Noncoincident name-only prior names changed')
+        point = proposal.get('currentPointToKeep')
+        if (not isinstance(point, dict)
+                or 'lat' not in before_metadata or 'lng' not in before_metadata
+                or point.get('lat') != before_metadata.get('lat')
+                or point.get('lng') != before_metadata.get('lng')
+                or 'governorateId' not in before_metadata
+                or proposal.get('governorateIdToKeep') != before_metadata.get('governorateId')
+                or 'delegationId' not in before_metadata
+                or proposal.get('nearestDelegationIdToKeep') != before_metadata.get('delegationId')
+                or 'parentName' not in before_metadata
+                or proposal.get('parentNameToKeep') != before_metadata.get('parentName')):
+            raise ValueError('Noncoincident name-only geography changed')
+        cur = change['curation']
+        curation_keys = {'id', 'expectedKind', 'expectedTags', 'action', 'nameTags',
+                         'reason', 'evidence'}
+        if (not isinstance(cur, dict) or set(cur) != curation_keys
+                or cur.get('id') != identifier
+                or cur.get('expectedKind') != 'sector'
+                or cur.get('expectedTags') != tags
+                or cur.get('action') != 'name_tags'):
+            raise ValueError('Noncoincident name-only curation changed')
+        if curation.get(identifier) != cur:
+            raise ValueError('Noncoincident name-only live curation changed')
+        if (not isinstance(cur.get('reason'), str) or not cur['reason'].strip()
+                or not isinstance(cur.get('evidence'), str) or not cur['evidence'].strip()):
+            raise ValueError('Noncoincident name-only curation lacks reason or evidence')
+        name_tags = cur.get('nameTags')
+        if not isinstance(name_tags, dict) or not name_tags:
+            raise ValueError('Noncoincident name-only name tags changed')
+        for key, value in name_tags.items():
+            if (not isinstance(key, str) or not is_current_name_tag(key)
+                    or not isinstance(value, str)):
+                raise ValueError('Noncoincident name-only name tags changed')
+        if names(name_tags) != [new_name] + proposed_aliases:
+            raise ValueError('Noncoincident name-only name tags changed')
+        if new_name == old_name or old_name not in proposed_aliases:
+            raise ValueError('Noncoincident name-only name did not change')
+        after_effective = change['afterEffective']
+        after_metadata = change['afterMetadata']
+        if not isinstance(after_effective, dict) or not isinstance(after_metadata, dict):
+            raise ValueError('Noncoincident name-only successor rows changed')
+        if set(after_effective) != set(before_effective):
+            raise ValueError('Noncoincident name-only effective shape changed')
+        for key in before_effective:
+            if key != 'tags' and after_effective.get(key) != before_effective.get(key):
+                raise ValueError('Noncoincident name-only effective field changed')
+        if (after_effective.get('kind') != 'sector'
+                or after_effective.get('sourceId') != 'osm'
+                or after_effective.get('geometrySha256') != before_effective.get('geometrySha256')):
+            raise ValueError('Noncoincident name-only effective source changed')
+        if not isinstance(before_effective.get('tags'), dict):
+            raise ValueError('Noncoincident name-only prior tags changed')
+        expected_tags = {key: value for key, value in before_effective['tags'].items()
+                         if not is_current_name_tag(key)}
+        expected_tags.update(name_tags)
+        if after_effective.get('tags') != expected_tags:
+            raise ValueError('Noncoincident name-only effective tags changed')
+        expected_metadata = json.loads(json.dumps(before_metadata))
+        expected_metadata['name'] = new_name
+        expected_metadata['aliases'] = proposed_aliases
+        if after_metadata != expected_metadata:
+            raise ValueError('Noncoincident name-only effective metadata changed')
+        declared[identifier] = change
+    expected_lineage = json.loads(json.dumps(prior_lineage))
+    expected_states = {row['id']: row for row in expected_lineage['sourceStates']}
+    expected_protected = {row['id']: row for row in expected_lineage['protectedRaw']}
+    for change in changes:
+        identifier = change['id']
+        expected_states[identifier]['effective'] = change['afterEffective']
+        expected_protected[identifier]['expectedMetadata'] = change['afterMetadata']
+    expected_lineage['nameOnlySourceReview'] = review_reference
+    if expected_lineage != lineage:
+        raise ValueError('Noncoincident name-only lineage successor changed')
+    return declared
+
+
 def validate_noncoincident_boundary_source_phase_lineage(proof, directory, expected, facts,
                                                         current, indices, geometries, original_sources,
                                                         effective_sources, source_sha256, curation,
@@ -5870,6 +7051,8 @@ def validate_noncoincident_boundary_source_phase_lineage(proof, directory, expec
     """Bind accepted sector replacements without changing the reviewed town identity."""
     lineage = json.loads(aggregate_review_file(directory, proof['sourcePhaseLineage'],
                                                'noncoincident boundary source lineage'))
+    name_only_changes = _validated_noncoincident_name_only_changes(
+        proof, lineage, directory, source_sha256, curation)
     if (lineage.get('schemaVersion') != 1
             or lineage.get('method') != 'reviewed_noncoincident_official_boundary_lineage'
             or lineage.get('sourceSha256') != source_sha256
@@ -5877,11 +7060,8 @@ def validate_noncoincident_boundary_source_phase_lineage(proof, directory, expec
             or lineage.get('historicalSourceFacts') != proof['sourceFacts']):
         raise ValueError('Noncoincident boundary lineage identity changed')
     reference = lineage['reviewedBoundaries']
-    boundary_manifest = json.loads(aggregate_review_file(directory, reference, 'active reviewed boundaries'))
-    if (reviewed_boundaries is None or official_report is None
-            or (directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
-            or official_report['manifestSha256'] != reference['sha256']):
-        raise ValueError('Noncoincident lineage is not bound to the active boundary loader')
+    boundary_manifest = load_reviewed_boundary_manifest_for_lineage(
+        directory, reference, reviewed_boundaries, official_report)
     source_ids = set(proof['sourceKinds'])
     sector_ids = {row['sourceId'] for row in expected['preservedImadas']}
     records = lineage['sourceStates']
@@ -5894,8 +7074,9 @@ def validate_noncoincident_boundary_source_phase_lineage(proof, directory, expec
         wanted = facts['records'][identifier]
         historical = {'kind': proof['sourceKinds'][identifier], 'tags': wanted['originalTags'],
                       'sourceId': None, 'geometrySha256': wanted['originalGeometrySha256']}
+        declared = name_only_changes.get(identifier)
         if (row['original'] != historical or wanted['expectedCuration'] is not None
-                or curation.get(identifier) is not None):
+                or curation.get(identifier) != (declared['curation'] if declared else None)):
             raise ValueError('Noncoincident original source or curation changed')
         for phase, sources in (('original', original_sources), ('effective', effective_sources)):
             source = sources.get(identifier)
@@ -5908,7 +7089,7 @@ def validate_noncoincident_boundary_source_phase_lineage(proof, directory, expec
                       'geometrySha256': aggregate_geometry_sha256(geometry)}
             if actual != row[phase]:
                 raise ValueError('Noncoincident source phase changed')
-        if row['effective'] != {**historical, 'sourceId': 'osm'}:
+        if identifier not in name_only_changes and row['effective'] != {**historical, 'sourceId': 'osm'}:
             changed.add(identifier)
     replacements = lineage['acceptedReplacements']
     replacement_ids = [row['id'] for row in replacements]
@@ -5977,7 +7158,8 @@ def validate_noncoincident_boundary_source_phase_lineage(proof, directory, expec
         raise ValueError('Noncoincident source-bound absorbed aliases changed')
     protected = lineage['protectedRaw']
     protected_rows = {row['id']: row for row in protected}
-    if (len(protected_rows) != len(protected) or set(protected_rows) != set(expected['protectedRawIds'])
+    if (len(protected_rows) != len(protected)
+            or set(protected_rows) != set(expected['protectedRawIds'])
             or any(set(row) != {'id', 'expectedMetadata', 'packedGeometrySha256'} for row in protected)):
         raise ValueError('Noncoincident protected output inventory changed')
     for source_id, row in protected_rows.items():
@@ -5986,7 +7168,11 @@ def validate_noncoincident_boundary_source_phase_lineage(proof, directory, expec
         if source_id == identifier:
             historical = {**historical, 'pickerGroupId': identifier, 'aliases': after}
         wanted = row['expectedMetadata']
-        if source_id in changed:
+        declared = name_only_changes.get(source_id)
+        if declared is not None:
+            if declared['beforeMetadata'] != historical or wanted != declared['afterMetadata']:
+                raise ValueError('Noncoincident name-only protected metadata changed')
+        elif source_id in changed:
             allowed = {'sourceId', 'name', 'aliases', 'parentName', 'contextAliases',
                        'lat', 'lng', 'bbox', 'areaKm2'}
             if (set(wanted) != set(historical)
@@ -7061,11 +8247,8 @@ def validate_soliman_split_boundary_lineage(directory, wrapper, row, proposal, f
                 aggregate_review_file(directory, wrapper['sourceFacts'], 'historical split facts')).hexdigest()):
         raise ValueError('Accepted split boundary lineage rewrote historical wrapper fields')
     reference = lineage['reviewedBoundaries']
-    boundary_manifest = document(reference, 'active Soliman reviewed boundaries')
-    if (reviewed_boundaries is None or official_report is None
-            or (directory / reference['file']).resolve() != Path(reviewed_boundaries).resolve()
-            or reference['sha256'] != official_report['manifestSha256']):
-        raise ValueError('Accepted split boundary lineage does not bind the active loader')
+    boundary_manifest = load_reviewed_boundary_manifest_for_lineage(
+        directory, reference, reviewed_boundaries, official_report)
     assertions = {item['id']: item for item in row['sourceAssertions']}
     context_ids = {'osm:relation:1435825', 'osm:relation:7145292'}
     required_ids = {identifier, sector_id, point_id} | context_ids
@@ -8729,6 +9912,317 @@ def reviewed_saved_replacements(manifest_path, curation, original_sources, effec
     return sorted(replacements, key=lambda row: row['id'])
 
 
+def load_reviewed_official_manual_points(manifest_path, source_sha256,
+                                         original_sources, effective_sources,
+                                         curation, timetables):
+    manifest_path = Path(manifest_path)
+    manifest_dir = manifest_path.resolve().parent
+    manifest = json.loads(manifest_path.read_bytes().decode('utf-8'))
+    if not isinstance(manifest, dict):
+        raise ValueError('official manual-point manifest must be a JSON object')
+    sources = manifest.get('sources')
+    if not isinstance(sources, list):
+        raise ValueError('official manual-point manifest must contain a sources list')
+
+    def _require_string(value, label):
+        if not isinstance(value, str) or not value:
+            raise ValueError(f'{label} must be a non-empty string')
+        return value
+
+    def _provider_id(provider):
+        if 'providerId' in provider:
+            value = _require_string(provider['providerId'], 'source providerId')
+            if 'id' in provider and provider['id'] != value:
+                raise ValueError('source id/providerId mismatch')
+            return value
+        if 'id' in provider:
+            return _require_string(provider['id'], 'source id')
+        raise ValueError('official source entry must have id or providerId')
+
+    def _source_dir(provider_file):
+        path = Path(provider_file)
+        if not path.is_absolute():
+            path = manifest_dir / path
+        return path.resolve().parent
+
+    def _pin(value, label):
+        if not isinstance(value, dict) or set(value) != {'file', 'sha256'}:
+            raise ValueError(f'{label} must contain exactly file and sha256')
+        _require_string(value['file'], f'{label}.file')
+        _require_string(value['sha256'], f'{label}.sha256')
+        return value
+
+    def _coord(value, label):
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValueError(f'{label} must be a finite number')
+        value = float(value)
+        if not math.isfinite(value):
+            raise ValueError(f'{label} must be a finite number')
+        return value
+
+    def _lat_lng(value, label):
+        if not isinstance(value, dict) or set(value) != {'lat', 'lng'}:
+            raise ValueError(f'{label} must contain exactly lat and lng')
+        lat = _coord(value['lat'], f'{label}.lat')
+        lng = _coord(value['lng'], f'{label}.lng')
+        if not (-90.0 <= lat <= 90.0) or not (-180.0 <= lng <= 180.0):
+            raise ValueError(f'{label} coordinates out of range')
+        return lat, lng
+
+    def _source_coords(value, label):
+        if isinstance(value, dict):
+            if 'lat' not in value or 'lng' not in value:
+                raise ValueError(f'{label} must contain lat and lng')
+            return _coord(value['lat'], f'{label}.lat'), _coord(value['lng'], f'{label}.lng')
+        if hasattr(value, 'x') and hasattr(value, 'y'):
+            return _coord(value.y, f'{label}.y'), _coord(value.x, f'{label}.x')
+        raise ValueError(f'{label} must be a lat/lng mapping or point')
+
+    def _primary_name(tags, label):
+        if not isinstance(tags, dict):
+            raise ValueError(f'{label} tags must be an object')
+        values = names(tags)
+        if not values:
+            raise ValueError(f'{label} must have a primary name')
+        return values[0]
+
+    def _covers(shape, lat, lng, label):
+        point = Point(lng, lat)
+        if (shape is None or shape.geom_type not in ('Polygon', 'MultiPolygon')
+                or shape.is_empty or not shape.is_valid):
+            raise ValueError(f'{label} must be a polygon')
+        if not bool(shape.covers(point)):
+            raise ValueError(f'{label} does not cover chosen point')
+        quantized = set_precision(shape, 1.0 / SCALE)
+        if quantized.is_empty or not quantized.is_valid or not bool(quantized.covers(point)):
+            raise ValueError(f'{label} quantized polygon does not cover chosen point')
+
+    choices = {}
+    report_rows = []
+    seen_record_ids = set()
+
+    for provider in sources:
+        if not isinstance(provider, dict):
+            raise ValueError('official source entry must be an object')
+        if 'manualPointReview' not in provider:
+            continue
+        review_ref = provider['manualPointReview']
+        provider_id = _provider_id(provider)
+        provider_file = _require_string(provider.get('file'), 'source file')
+        provider_sha256 = _require_string(provider.get('sha256'), 'source sha256')
+        source_dir = manifest_dir
+        if provider.get('sourceSha256') != source_sha256:
+            raise ValueError('Manual point provider source checksum changed')
+        _pin(review_ref, f'manualPointReview for {provider_id}')
+        review_bytes = aggregate_review_file(manifest_dir, review_ref,
+                                             f'manualPointReview for {provider_id}')
+        review = json.loads(review_bytes.decode('utf-8'))
+        if not isinstance(review, dict):
+            raise ValueError(f'manualPointReview for {provider_id} must be an object')
+        review_keys = {'schemaVersion', 'method', 'sourceSha256', 'providerId',
+                       'boundarySource', 'baselineMetadata', 'records', 'evidence'}
+        if set(review) != review_keys:
+            raise ValueError(f'manualPointReview for {provider_id} has unexpected schema keys')
+        if type(review['schemaVersion']) is not int or review['schemaVersion'] != 1:
+            raise ValueError(f'manualPointReview for {provider_id} has unsupported schemaVersion')
+        if review['method'] != 'reviewed_official_manual_point_choices':
+            raise ValueError(f'manualPointReview for {provider_id} has unexpected method')
+        if _require_string(review['sourceSha256'], 'review sourceSha256') != source_sha256:
+            raise ValueError(f'manualPointReview for {provider_id} sourceSha256 mismatch')
+        if _require_string(review['providerId'], 'review providerId') != provider_id:
+            raise ValueError(f'manualPointReview for {provider_id} providerId mismatch')
+        expected_boundary = {'file': provider_file, 'sha256': provider_sha256}
+        if review['boundarySource'] != expected_boundary:
+            raise ValueError(f'manualPointReview for {provider_id} boundarySource mismatch')
+
+        baseline_ref = _pin(review['baselineMetadata'],
+                            f'baselineMetadata for {provider_id}')
+        baseline_bytes = aggregate_review_file(source_dir, baseline_ref,
+                                               f'baselineMetadata for {provider_id}')
+        baseline = json.loads(baseline_bytes.decode('utf-8'))
+        if not isinstance(baseline, dict) or not isinstance(baseline.get('features'), list):
+            raise ValueError(f'baselineMetadata for {provider_id} must contain features list')
+        baseline_by_id = {}
+        for feature in baseline['features']:
+            if not isinstance(feature, dict):
+                raise ValueError(f'baselineMetadata for {provider_id} has non-object feature')
+            feature_id = _require_string(feature.get('id'), 'baseline feature id')
+            if feature_id in baseline_by_id:
+                raise ValueError(f'baselineMetadata for {provider_id} has duplicate feature id {feature_id}')
+            baseline_by_id[feature_id] = feature
+
+        evidence = review['evidence']
+        if not isinstance(evidence, list) or not evidence:
+            raise ValueError(f'manualPointReview for {provider_id} evidence must be a non-empty list')
+        for index, pin in enumerate(evidence):
+            label = f'evidence[{index}] for {provider_id}'
+            _pin(pin, label)
+            aggregate_review_file(source_dir, pin, label)
+
+        records = review['records']
+        if not isinstance(records, list) or not records:
+            raise ValueError(f'manualPointReview for {provider_id} records must be a non-empty list')
+        common_keys = {'id', 'officialCode', 'mode', 'expectedBeforeMetadata',
+                       'expectedCuration', 'point', 'expectedNearestId'}
+        for record in records:
+            if not isinstance(record, dict):
+                raise ValueError(f'manualPointReview for {provider_id} has non-object record')
+            record_id = _require_string(record.get('id'), 'record id')
+            if record_id in seen_record_ids:
+                raise ValueError(f'duplicate manual point record id {record_id}')
+            seen_record_ids.add(record_id)
+            mode = record.get('mode')
+            if mode == 'previous_metadata':
+                allowed_keys = set(common_keys)
+            elif mode == 'existing_source_point':
+                allowed_keys = set(common_keys)
+                allowed_keys.add('sourcePoint')
+            else:
+                raise ValueError(f'record {record_id} has unsupported mode')
+            if 'nameAssociation' in record:
+                if mode != 'existing_source_point':
+                    raise ValueError(f'record {record_id} cannot have nameAssociation')
+                allowed_keys.add('nameAssociation')
+            if set(record) != allowed_keys:
+                raise ValueError(f'record {record_id} has unexpected keys')
+
+            official_code = record['officialCode']
+            if not isinstance(official_code, str) or len(official_code) != 6 or not official_code.isascii() or not official_code.isdigit():
+                raise ValueError(f'record {record_id} officialCode must be non-empty')
+            lat, lng = _lat_lng(record['point'], f'record {record_id} point')
+            expected_nearest = record['expectedNearestId']
+            if type(expected_nearest) is not int or expected_nearest <= 0:
+                raise ValueError(f'record {record_id} expectedNearestId must be an int')
+
+            baseline_feature = baseline_by_id.get(record_id)
+            if baseline_feature is None:
+                raise ValueError(f'record {record_id} missing baseline feature')
+            if record['expectedBeforeMetadata'] != baseline_feature:
+                raise ValueError(f'record {record_id} expectedBeforeMetadata mismatch')
+            if baseline_feature.get('kind') != 'sector' or baseline_feature.get('hasBoundary') is not True:
+                raise ValueError(f'record {record_id} baseline feature must be a boundary sector')
+
+            original_sector = original_sources.get(record_id)
+            effective_sector = effective_sources.get(record_id)
+            if not isinstance(original_sector, dict) or not isinstance(effective_sector, dict):
+                raise ValueError(f'record {record_id} missing original/effective sector')
+            if original_sector.get('kind') != 'sector' or effective_sector.get('kind') != 'sector':
+                raise ValueError(f'record {record_id} original/effective source must be sector')
+            if effective_sector.get('sourceId') != provider_id:
+                raise ValueError(f'record {record_id} effective source provider mismatch')
+            accepted = [r for r in provider['records'] if r['id'] == record_id]
+            if len(accepted) != 1 or accepted[0]['action'] != 'replace' or accepted[0]['officialCode'] != official_code:
+                raise ValueError(f'record {record_id} needs an accepted replacement in this provider')
+            if (original_sector['tags'].get('ref:tn:codegeo') != official_code
+                    or effective_sector['tags'].get('ref:tn:codegeo') != official_code):
+                raise ValueError(f'record {record_id} original/effective officialCode mismatch')
+
+            actual_curation = curation.get(record_id)
+            if actual_curation != record['expectedCuration']:
+                raise ValueError(f'record {record_id} curation mismatch')
+            if isinstance(actual_curation, dict):
+                if actual_curation.get('action') == 'exclude':
+                    raise ValueError(f'record {record_id} sector is excluded')
+                for key in ('nameTags', 'manualPointId'):
+                    if key in actual_curation:
+                        raise ValueError(f'record {record_id} sector curation has {key}')
+
+            _covers(effective_sector.get('shape'), lat, lng,
+                    f'record {record_id} effective shape')
+
+            if mode == 'previous_metadata':
+                baseline_lat = _coord(baseline_feature.get('lat'), f'record {record_id} baseline lat')
+                baseline_lng = _coord(baseline_feature.get('lng'), f'record {record_id} baseline lng')
+                if lat != baseline_lat or lng != baseline_lng:
+                    raise ValueError(f'record {record_id} previous_metadata point mismatch')
+                _covers(original_sector.get('shape'), lat, lng,
+                        f'record {record_id} original shape')
+            else:
+                source_point = record['sourcePoint']
+                if not isinstance(source_point, dict) or set(source_point) != {'id', 'kind', 'tags', 'lat', 'lng'}:
+                    raise ValueError(f'record {record_id} sourcePoint has unexpected schema')
+                donor_id = _require_string(source_point['id'], f'record {record_id} sourcePoint.id')
+                donor_kind = _require_string(source_point['kind'], f'record {record_id} sourcePoint.kind')
+                if donor_kind not in ('village', 'town', 'suburb', 'neighbourhood', 'hamlet'):
+                    raise ValueError(f'record {record_id} sourcePoint.kind is not an acceptable place kind')
+                if not isinstance(source_point['tags'], dict):
+                    raise ValueError(f'record {record_id} sourcePoint.tags must be an object')
+                sp_lat = _coord(source_point['lat'], f'record {record_id} sourcePoint.lat')
+                sp_lng = _coord(source_point['lng'], f'record {record_id} sourcePoint.lng')
+                if not (-90.0 <= sp_lat <= 90.0) or not (-180.0 <= sp_lng <= 180.0):
+                    raise ValueError(f'record {record_id} sourcePoint coordinates out of range')
+                if sp_lat != lat or sp_lng != lng:
+                    raise ValueError(f'record {record_id} sourcePoint point mismatch')
+
+                donor_original = original_sources.get(donor_id)
+                donor_effective = effective_sources.get(donor_id)
+                if not isinstance(donor_original, dict) or not isinstance(donor_effective, dict):
+                    raise ValueError(f'record {record_id} donor missing original/effective source')
+                if donor_original.get('kind') != donor_kind or donor_effective.get('kind') != donor_kind:
+                    raise ValueError(f'record {record_id} donor kind mismatch')
+                if donor_original.get('tags') != source_point['tags']:
+                    raise ValueError(f'record {record_id} donor original tags mismatch')
+                if donor_effective.get('tags') != source_point['tags']:
+                    raise ValueError(f'record {record_id} donor effective tags mismatch')
+                if donor_original.get('point') is None or donor_effective.get('point') is None:
+                    raise ValueError(f'record {record_id} donor missing point')
+                donor_original_lat, donor_original_lng = _source_coords(
+                    donor_original['point'], f'record {record_id} donor original point')
+                donor_effective_lat, donor_effective_lng = _source_coords(
+                    donor_effective['point'], f'record {record_id} donor effective point')
+                if (donor_original_lat, donor_original_lng) != (sp_lat, sp_lng):
+                    raise ValueError(f'record {record_id} donor original point mismatch')
+                if (donor_effective_lat, donor_effective_lng) != (sp_lat, sp_lng):
+                    raise ValueError(f'record {record_id} donor effective point mismatch')
+                if donor_id in baseline_by_id:
+                    raise ValueError(f'record {record_id} donor already present in baselineMetadata')
+                donor_curation = curation.get(donor_id)
+                if isinstance(donor_curation, dict):
+                    if donor_curation.get('action') == 'exclude' or 'nameTags' in donor_curation:
+                        raise ValueError(f'record {record_id} donor curation has exclude/nameTags')
+
+                source_primary = _primary_name(source_point['tags'], f'record {record_id} donor')
+                effective_primary = _primary_name(effective_sector.get('tags'), f'record {record_id} effective sector')
+                names_differ = norm(source_primary) != norm(effective_primary)
+                if names_differ:
+                    if 'nameAssociation' not in record:
+                        raise ValueError(f'record {record_id} needs nameAssociation')
+                    association = record['nameAssociation']
+                    if not isinstance(association, dict) or set(association) != {
+                            'sectorPrimary', 'pointPrimary', 'claim', 'review'}:
+                        raise ValueError(f'record {record_id} nameAssociation has unexpected schema')
+                    if association['sectorPrimary'] != effective_primary:
+                        raise ValueError(f'record {record_id} nameAssociation sectorPrimary mismatch')
+                    if association['pointPrimary'] != source_primary:
+                        raise ValueError(f'record {record_id} nameAssociation pointPrimary mismatch')
+                    if association['claim'] != 'manual_representative_only':
+                        raise ValueError(f'record {record_id} nameAssociation claim mismatch')
+                    review_pin_label = f'record {record_id} nameAssociation.review'
+                    _pin(association['review'], review_pin_label)
+                    aggregate_review_file(source_dir, association['review'], review_pin_label)
+                elif 'nameAssociation' in record:
+                    raise ValueError(f'record {record_id} has unnecessary nameAssociation')
+
+            if not timetables:
+                raise ValueError('timetables must be non-empty')
+            nearest = min(timetables, key=lambda d: (distance(lat, lng, d), d['id']))['id']
+            if nearest != expected_nearest:
+                raise ValueError(f'record {record_id} expectedNearestId mismatch')
+
+            choices[record_id] = Point(lng, lat)
+            row = {
+                'id': record_id,
+                'sourceId': provider_id,
+                'mode': mode,
+                'lat': lat,
+                'lng': lng,
+                'delegationId': nearest,
+            }
+            if mode == 'existing_source_point':
+                row['pointId'] = record['sourcePoint']['id']
+            report_rows.append(row)
+
+    return choices, report_rows
 def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
           curation_manifest=CURATION_MANIFEST, prayer_source_coordinates=PRAYER_SOURCE_COORDINATES,
           reviewed_boundaries=REVIEWED_BOUNDARIES, reviewed_picker_groups=REVIEWED_PICKER_GROUPS):
@@ -8742,13 +10236,32 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
     source_sha256 = hashlib.sha256(pbf.read_bytes()).hexdigest()
     curation, curation_targets, curation_report = load_catalog_curation(
         curation_manifest, source_sha256, areas, nodes)
+    classification_ids = {identifier for identifier, rule in curation.items()
+                          if rule.get('action') == 'reviewed_locality_classification'}
+    if classification_ids:
+        boundary_manifest = json.loads(Path(reviewed_boundaries).read_bytes())
+        boundary_ids = {record['id'] for source in boundary_manifest['sources']
+                        for record in source['records']}
+        if classification_ids & boundary_ids:
+            raise ValueError('Reviewed locality classification target is also a reviewed boundary record')
+    apply_reviewed_locality_classifications(areas + nodes, curation, original_picker_sources)
     areas, official_sources, official_contexts, official_targets, official_report = load_reviewed_boundaries(
         reviewed_boundaries, areas, source_sha256)
     retained_point_choices = load_reviewed_point_retentions(
         curation_manifest, curation, original_picker_sources, {obj['id']: obj for obj in areas + nodes},
         official_sources, official_contexts, source_sha256)
+    official_manual_points, official_manual_point_report = load_reviewed_official_manual_points(
+        reviewed_boundaries, source_sha256, original_picker_sources,
+        {obj['id']: obj for obj in areas + nodes}, curation, timetables)
+    if official_manual_point_report:
+        official_report['manualPointChoices'] = official_manual_point_report
     context_targets = {**curation_targets, **official_targets}
-    curation_applications = []
+    curation_applications = [
+        {'id': identifier, 'decisionId': identifier, 'action': 'reviewed_locality_classification',
+         'originalKind': 'sector', 'effectiveKind': 'locality', 'inherited': False,
+         'rejectedAdministrativeCode': curation[identifier]['expectedTags']['ref:tn:codegeo'],
+         'reviewEvidenceSha256': curation[identifier]['reviewEvidence']['sha256']}
+        for identifier in sorted(classification_ids)]
     # Validate every decision against untouched extracted tags first. Apply name
     # metadata before constructing parent indexes, aliases or picker groups so
     # children and all other consumers see the same reviewed identity.
@@ -8893,6 +10406,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
             errors.append({'id': obj['id'], 'reason': 'Collapsed at coordinate precision'})
             continue
         point = geometry.representative_point()
+        if obj['id'] in official_manual_points:
+            point = official_manual_points[obj['id']]
         manual_point_id = curation.get(obj['id'], {}).get('manualPointId')
         if manual_point_id:
             reference = point_references.get(manual_point_id)
@@ -9027,6 +10542,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
               'timestamp': osmium.io.Reader(str(pbf)).header().get('osmosis_replication_timestamp')}
     sources = {'osm': source, **municipal_sources, **official_sources}
     conflicts = detect_conflicts(features, geometries)
+    verify_reviewed_locality_classifications(
+        curation_manifest, features, point_only, geometries, conflicts, curation)
     result = {'schemaVersion': 1, 'coordinateScale': SCALE, 'gridSize': GRID,
               'source': source, 'sources': sources, 'conflicts': conflicts,
               'retiredLocalityIds': sorted(excluded_ids),
@@ -9037,6 +10554,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
     # Preference cleanup runs before the larger picker catalog is preloaded.
     # Keep this generated index tiny instead of parsing all polygon metadata.
     reviewed_name_ids = ({identifier for identifier, rule in curation.items() if 'nameTags' in rule}
+                         | {identifier for identifier, rule in curation.items()
+                            if rule.get('action') == 'reviewed_locality_classification'}
                          | set(official_contexts))
     reviewed_names = [{'id': feature['id'], 'name': feature['name'], 'kind': feature['kind']}
                       for feature in sorted(features + point_only, key=lambda item: item['id'])
