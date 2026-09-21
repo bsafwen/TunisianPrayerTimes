@@ -384,7 +384,8 @@ object NeighborhoodRepository {
         return synchronized(metadataLock) {
             metadata ?: run {
                 val json = JSONObject(context.assets.open("neighborhoods.json").bufferedReader().use { it.readText() })
-                Metadata(json, parseNeighborhoodLocalities(json)).also { metadata = it }
+                val localities = parseNeighborhoodLocalities(json)
+                Metadata(json, localities.map { LocalityDisplayNames.localize(context, it) }).also { metadata = it }
             }
         }
     }

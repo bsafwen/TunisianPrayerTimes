@@ -88,6 +88,11 @@
             </intent-filter>
         </receiver>
 
+        <!-- Private delivery and counter actions for adhkar reminders. -->
+        <receiver
+            android:name=".adhkar.DhikrReminderReceiver"
+            android:exported="false" />
+
         <!-- System broadcast receiver for boot/update (must be exported) -->
         <receiver
             android:name=".BootReceiver"

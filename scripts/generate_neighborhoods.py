@@ -10,6 +10,7 @@ from collections import Counter, defaultdict
 import csv
 from datetime import date
 import hashlib
+import importlib.util
 import json
 import math
 from pathlib import Path
@@ -32,6 +33,9 @@ CURATION_MANIFEST = ROOT / 'scripts/neighborhoods/catalog-curation.json'
 PRAYER_SOURCE_COORDINATES = ROOT / 'scripts/neighborhoods/prayer-source-coordinates.json'
 REVIEWED_BOUNDARIES = ROOT / 'scripts/neighborhoods/reviewed-boundaries.json'
 REVIEWED_PICKER_GROUPS = ROOT / 'scripts/neighborhoods/reviewed-picker-groups.json'
+FINAL_EXCLUSIONS = ROOT / 'scripts/neighborhoods/final-exclusions.json'
+REVIEWED_CATALOG_UPDATES = ROOT / 'scripts/neighborhoods/reviewed-catalog-updates.json'
+REVIEWED_MANUAL_POINTS = ROOT / 'scripts/neighborhoods/reviewed-manual-points.json'
 GRID = 0.1
 SCALE = 1_000_000
 
@@ -173,6 +177,520 @@ def aggregate_review_file(directory, reference, label):
     if hashlib.sha256(raw).hexdigest() != reference['sha256']:
         raise ValueError(f'Aggregate {label} checksum mismatch')
     return raw
+
+
+import hashlib
+import json
+from pathlib import Path
+
+_final_exclusion_HEX = set("0123456789abcdef")
+_final_exclusion_KINDS = {"residential", "quarter", "neighbourhood"}
+
+def _final_exclusion_sha_ok(value):
+    return isinstance(value, str) and len(value) == 64 and all(c in _final_exclusion_HEX for c in value)
+
+def _final_exclusion_file_sha(path):
+    try:
+        h = hashlib.sha256()
+        with open(path, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+        return h.hexdigest()
+    except OSError as exc:
+        raise ValueError(f"cannot read evidence file {path!r}") from exc
+
+def _final_exclusion_need(cond, msg):
+    if not cond:
+        raise ValueError(msg)
+
+def apply_final_exclusions(result, blob, selection_report, manifest_path):
+    _final_exclusion_need(isinstance(result, dict), "result must be an object")
+    _final_exclusion_need(isinstance(blob, (bytes, bytearray, memoryview)), "blob must be bytes-like")
+    bview = blob.tobytes() if isinstance(blob, memoryview) else blob
+    try:
+        mpath = Path(manifest_path).resolve(strict=True)
+    except Exception as exc:
+        raise ValueError(f"manifest path is invalid: {manifest_path!r}") from exc
+    _final_exclusion_need(mpath.is_file(), "manifest path must be a file")
+    try:
+        mbytes = mpath.read_bytes()
+    except OSError as exc:
+        raise ValueError(f"cannot read manifest {mpath!r}") from exc
+    try:
+        manifest = json.loads(mbytes.decode("utf-8"))
+    except Exception as exc:
+        raise ValueError("manifest must be valid UTF-8 JSON") from exc
+    _final_exclusion_need(isinstance(manifest, dict), "manifest must be an object")
+    _final_exclusion_need(set(manifest) == {"schemaVersion", "exclusions"}, "manifest must have exact keys schemaVersion,exclusions")
+    _final_exclusion_need(type(manifest["schemaVersion"]) is int and manifest["schemaVersion"] == 1, "manifest.schemaVersion must be integer 1")
+    exclusions = manifest["exclusions"]
+    _final_exclusion_need(isinstance(exclusions, list) and exclusions, "manifest.exclusions must be a nonempty list")
+    base = mpath.parent
+    seen = set()
+    info = []
+    for i, ex in enumerate(exclusions):
+        _final_exclusion_need(isinstance(ex, dict) and set(ex) == {"id", "expectedFeature", "expectedGeometrySha256", "reason", "evidence"}, f"manifest.exclusions[{i}] has wrong keys")
+        eid = ex["id"]
+        _final_exclusion_need(isinstance(eid, str) and eid, f"manifest.exclusions[{i}].id must be a nonempty string")
+        _final_exclusion_need(not eid.startswith("delegation:") and eid not in seen, f"duplicate exclusion id {eid!r}")
+        seen.add(eid)
+        expected = ex["expectedFeature"]
+        _final_exclusion_need(isinstance(expected, dict), f"exclusion {eid!r}.expectedFeature must be an object")
+        _final_exclusion_need(isinstance(ex["reason"], str) and ex["reason"].strip(), f"exclusion {eid!r}.reason must be nonempty")
+        geom = ex["expectedGeometrySha256"]
+        _final_exclusion_need(geom is None or _final_exclusion_sha_ok(geom), f"exclusion {eid!r}.expectedGeometrySha256 must be 64 lowercase hex or null")
+        ev = ex["evidence"]
+        _final_exclusion_need(isinstance(ev, list) and ev, f"exclusion {eid!r}.evidence must be a list")
+        refs = []
+        for j, er in enumerate(ev):
+            _final_exclusion_need(isinstance(er, dict) and set(er) == {"file", "sha256"}, f"exclusion {eid!r}.evidence[{j}] has wrong keys")
+            rel = er["file"]
+            _final_exclusion_need(isinstance(rel, str) and rel and not Path(rel).is_absolute(), f"exclusion {eid!r}.evidence[{j}].file must be a relative path")
+            try:
+                ep = (base / rel).resolve(strict=True)
+            except Exception as exc:
+                raise ValueError(f"exclusion {eid!r} evidence file missing: {rel!r}") from exc
+            try:
+                ep.relative_to(base.resolve())
+            except ValueError:
+                raise ValueError(f"exclusion {eid!r} evidence file escapes manifest directory: {rel!r}")
+            _final_exclusion_need(ep.is_file(), f"exclusion {eid!r} evidence path is not a file: {rel!r}")
+            digest = er["sha256"]
+            _final_exclusion_need(_final_exclusion_sha_ok(digest), f"exclusion {eid!r}.evidence[{j}].sha256 must be 64 lowercase hex")
+            _final_exclusion_need(_final_exclusion_file_sha(ep) == digest, f"exclusion {eid!r} evidence sha256 mismatch: {rel!r}")
+            refs.append({"file": rel, "sha256": digest})
+        info.append((eid, expected, geom, refs))
+    _final_exclusion_need(isinstance(result.get("features"), list), "result.features must be a list")
+    _final_exclusion_need(isinstance(result.get("cells"), dict), "result.cells must be an object")
+    _final_exclusion_need(isinstance(result.get("conflicts"), list), "result.conflicts must be a list")
+    _final_exclusion_need(isinstance(result.get("retiredLocalityIds"), list), "result.retiredLocalityIds must be a list")
+    features = result["features"]
+    id_to_idx = {}
+    for i, f in enumerate(features):
+        _final_exclusion_need(isinstance(f, dict), f"result.features[{i}] must be an object")
+        fid = f.get("id")
+        _final_exclusion_need(isinstance(fid, str) and fid, f"result.features[{i}].id must be a nonempty string")
+        _final_exclusion_need(fid not in id_to_idx, f"duplicate feature id {fid!r}")
+        id_to_idx[fid] = i
+    retired = result["retiredLocalityIds"]
+    _final_exclusion_need(all(isinstance(x, str) and x for x in retired), "result.retiredLocalityIds must contain nonempty strings")
+    retired_set = set(retired)
+    for eid, expected, geom, refs in info:
+        _final_exclusion_need(eid not in retired_set, f"exclusion id {eid!r} is already retired")
+        _final_exclusion_need(eid in id_to_idx, f"exclusion id {eid!r} is not present in result.features")
+        row = features[id_to_idx[eid]]
+        _final_exclusion_need(row == expected, f"expectedFeature mismatch for exclusion {eid!r}")
+        _final_exclusion_need(row.get("sourceId") == "osm", f"exclusion {eid!r} sourceId must be osm")
+        kind = row.get("kind")
+        _final_exclusion_need(isinstance(kind, str) and kind in _final_exclusion_KINDS, f"exclusion {eid!r} kind must be residential, quarter, or neighbourhood")
+        _final_exclusion_need(row.get("pickerGroupId") == eid, f"exclusion {eid!r} pickerGroupId must equal id")
+        members = [f for f in features if f.get("pickerGroupId") == eid]
+        _final_exclusion_need(len(members) == 1 and members[0].get("id") == eid, f"exclusion {eid!r} is not the only picker group member")
+        hb = row.get("hasBoundary")
+        _final_exclusion_need(type(hb) is bool, f"exclusion {eid!r} hasBoundary must be boolean")
+        if hb:
+            _final_exclusion_need(_final_exclusion_sha_ok(geom), f"exclusion {eid!r} boundary requires expectedGeometrySha256")
+            off, length = row.get("offset"), row.get("length")
+            _final_exclusion_need(type(off) is int and off >= 8, f"exclusion {eid!r} offset must be an integer >= 8")
+            _final_exclusion_need(type(length) is int and length > 0, f"exclusion {eid!r} length must be a positive integer")
+            _final_exclusion_need(off + length <= len(bview), f"exclusion {eid!r} geometry slice is out of bounds")
+            _final_exclusion_need(hashlib.sha256(bview[off:off + length]).hexdigest() == geom, f"exclusion {eid!r} geometry sha256 mismatch")
+        else:
+            _final_exclusion_need(geom is None, f"exclusion {eid!r} point requires null expectedGeometrySha256")
+    excluded_ids = set(seen)
+    old_to_new = {}
+    new_features = []
+    for old, f in enumerate(features):
+        if f["id"] not in excluded_ids:
+            old_to_new[old] = len(new_features)
+            new_features.append(f)
+    new_cells = {}
+    for key, indices in result["cells"].items():
+        _final_exclusion_need(isinstance(indices, list), f"result.cells[{key!r}] must be a list")
+        used = set()
+        mapped = []
+        for idx in indices:
+            _final_exclusion_need(type(idx) is int, f"result.cells[{key!r}] indices must be integers")
+            _final_exclusion_need(0 <= idx < len(features), f"result.cells[{key!r}] index out of range: {idx}")
+            _final_exclusion_need(idx not in used, f"result.cells[{key!r}] duplicate index {idx}")
+            used.add(idx)
+            _final_exclusion_need(features[idx].get("hasBoundary") is True, f"result.cells[{key!r}] index {idx} is not a boundary row")
+            if idx in old_to_new:
+                mapped.append(old_to_new[idx])
+        if mapped:
+            new_cells[key] = mapped
+    new_conflicts = []
+    for i, c in enumerate(result["conflicts"]):
+        _final_exclusion_need(isinstance(c, dict) and isinstance(c.get("ids"), list), f"result.conflicts[{i}] must be an object with an ids list")
+        _final_exclusion_need(all(isinstance(x, str) and x for x in c["ids"]), f"result.conflicts[{i}].ids must contain nonempty strings")
+        if not excluded_ids.intersection(c["ids"]):
+            new_conflicts.append(c)
+    new_result = dict(result)
+    new_result["features"] = new_features
+    new_result["cells"] = new_cells
+    new_result["conflicts"] = new_conflicts
+    new_result["retiredLocalityIds"] = sorted(retired_set | excluded_ids)
+    if selection_report is not None:
+        _final_exclusion_need(isinstance(selection_report, dict), "selection_report must be an object or None")
+        _final_exclusion_need(isinstance(selection_report.get("currentManualSelections"), list), "selection_report.currentManualSelections must be a list")
+        _final_exclusion_need(isinstance(selection_report.get("rawChanges"), list), "selection_report.rawChanges must be a list")
+        _final_exclusion_need(isinstance(selection_report.get("manualChanges"), list), "selection_report.manualChanges must be a list")
+        _final_exclusion_need(type(selection_report.get("rawChangedCount")) is int and selection_report["rawChangedCount"] >= 0, "selection_report.rawChangedCount must be a nonnegative integer")
+        _final_exclusion_need(type(selection_report.get("manualChangedCount")) is int and selection_report["manualChangedCount"] >= 0, "selection_report.manualChangedCount must be a nonnegative integer")
+        def filt(rows, name, required):
+            out = []
+            for i, row in enumerate(rows):
+                _final_exclusion_need(isinstance(row, dict), f"selection_report.{name}[{i}] must be an object")
+                for key in required:
+                    _final_exclusion_need(key in row, f"selection_report.{name}[{i}].{key} is required")
+                _final_exclusion_need(isinstance(row["id"], str) and row["id"], f"selection_report.{name}[{i}].id must be a nonempty string")
+                if row["id"] not in excluded_ids:
+                    out.append(row)
+            return out
+        new_cms = filt(selection_report["currentManualSelections"], "currentManualSelections", ("id", "representativeId", "lat", "lng", "sourceId"))
+        new_raw = filt(selection_report["rawChanges"], "rawChanges", ("id", "before", "after"))
+        new_man = filt(selection_report["manualChanges"], "manualChanges", ("id", "before", "after"))
+        for row in new_cms:
+            rep = row["representativeId"]
+            _final_exclusion_need(isinstance(rep, str) and rep, "selection_report representativeId must be a nonempty string")
+            _final_exclusion_need(rep not in excluded_ids, f"selection_report row {row['id']!r} representativeId points to excluded id {rep!r}")
+        new_selection_report = dict(selection_report)
+        new_selection_report["currentManualSelections"] = new_cms
+        new_selection_report["rawChanges"] = new_raw
+        new_selection_report["manualChanges"] = new_man
+        new_selection_report["rawChangedCount"] = len(new_raw)
+        new_selection_report["manualChangedCount"] = len(new_man)
+        new_selection_report["excludedAfterSelectionIds"] = sorted(excluded_ids)
+    else:
+        new_selection_report = None
+    report = {
+        "manifestSha256": hashlib.sha256(mbytes).hexdigest(),
+        "excludedIds": sorted(excluded_ids),
+        "evidenceReferences": [ref for _, _, _, refs in info for ref in refs],
+        "geometryBytesPreserved": True,
+    }
+    return new_result, new_selection_report, report
+
+
+def _selection_require(condition, message):
+    if not condition:
+        raise ValueError('Prayer selection successor: ' + message)
+
+
+def _selection_ref(directory, reference, label):
+    _selection_require(isinstance(reference, dict) and set(reference) == {'file', 'sha256'}, label + ' reference')
+    return aggregate_review_file(directory, reference, label)
+
+
+def _selection_changes(rows, available):
+    _selection_require(isinstance(rows, list), 'change rows')
+    result = {}
+    for row in rows:
+        _selection_require(isinstance(row, dict) and set(row) == {'id', 'before', 'after'}, 'change fields')
+        _selection_require(isinstance(row['id'], str) and row['id'] and row['id'] not in result, 'change identity')
+        _selection_require(all(type(row[k]) is int and row[k] in available for k in ('before', 'after'))
+                           and row['before'] != row['after'], 'change source IDs')
+        result[row['id']] = (row['before'], row['after'])
+    return result
+
+
+def prayer_selection_review(directory):
+    """Read a finite, pinned separation of display identity and prayer selection."""
+    directory = Path(directory).resolve()
+    current = json.loads((directory / 'prayer-source-coordinates.json').read_bytes())
+    _selection_require(isinstance(current, dict), 'coordinate manifest')
+    if 'selectionSuccessor' not in current:
+        return None
+    reference = current['selectionSuccessor']
+    review = json.loads(_selection_ref(directory, reference, 'selection successor'))
+    refs = ('baselineGovernors', 'baselineCoordinates', 'baselineMetadata', 'baselineGeometry',
+            'manualRows', 'geographicReview', 'mapsReview', 'impactReview')
+    base = {'schemaVersion', 'method', 'status', 'sourceSha256', 'identityInputs', 'approvedCorrections',
+            'expectedRawChanges', 'expectedManualChanges', 'availableSourceIds', 'rejectedSources',
+            'qualification', *refs}
+    v2 = {'predecessorCoordinates', 'predecessorSelectionReview'}
+    _selection_require(isinstance(review, dict), 'review fields')
+    schema = review.get('schemaVersion')
+    _selection_require(type(schema) is int and schema in (1, 2), 'review schema')
+    _selection_require(set(review) == base | (v2 if schema == 2 else set()), 'review fields')
+    _selection_require(review['method'] == 'reviewed_prayer_selection_after_frozen_display_validation'
+                       and review['status'] == 'APPROVED_SCOPED_REFERENCE_CORRECTIONS_PENDING_GENERATION', 'review scope')
+    loaded = {key: _selection_ref(directory, review[key], key) for key in refs}
+    pins = {'baselineCoordinates': 'f56e4c570c5d4c6136dd8d8b9b811b51882452da6cdf5b001a00224c7e8a63c2',
+            'baselineMetadata': '52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e',
+            'baselineGeometry': 'daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1'}
+    _selection_require(all(review[k]['sha256'] == v for k, v in pins.items()), 'finite baseline pins')
+    identity = review['identityInputs']
+    _selection_require(isinstance(identity, dict) and set(identity) == {
+        'municipalSources', 'curation', 'reviewedBoundaries', 'reviewedPickerGroups'}, 'identity input inventory')
+    for key, ref in identity.items():
+        _selection_ref(directory, ref, key)
+    old = json.loads(loaded['baselineCoordinates'])
+    _selection_require(isinstance(old, dict) and 'selectionSuccessor' not in old
+                       and isinstance(old.get('corrections'), list) and len(old['corrections']) == 48, 'baseline corrections')
+    baseline = old['corrections']
+    additions = review['approvedCorrections']
+    _selection_require(isinstance(additions, list) and additions, 'approved correction inventory')
+    _selection_require(all(isinstance(r, dict) and type(r.get('delegationId')) is int and r['delegationId'] > 0
+                           and r.get('referenceKind') == 'inm_published_reference'
+                           and r.get('original') != r.get('proposed') for r in additions), 'approved correction inventory')
+    current_corrections = current.get('corrections')
+    _selection_require(isinstance(current_corrections, list) and len(current_corrections) >= 48
+                       and current_corrections[:48] == baseline, 'baseline corrections changed')
+    batches = current.get('reviewBatches', [])
+    _selection_require(isinstance(batches, list), 'review batches')
+    if schema == 1:
+        _selection_require(len(additions) == 4 and [r.get('delegationId') for r in additions] == [441, 468, 516, 579], 'V1 approved correction inventory')
+        _selection_require(current_corrections == baseline + additions, 'existing corrections changed')
+        _selection_require(len(current_corrections) == 52, 'correction count')
+        prior_batches = old.get('reviewBatches', [])
+        _selection_require(isinstance(prior_batches, list), 'review batches')
+        _selection_require(len(batches) == len(prior_batches) + 1 and batches[:-1] == prior_batches, 'historical review batches')
+        batch = batches[-1]
+        _selection_require(batch.get('appliedSourceIds') == [441, 468, 516, 579]
+                           and batch.get('priorCoordinateManifest') == review['baselineCoordinates']
+                           and batch.get('changedExistingCorrectionIds') == []
+                           and batch.get('preservedOriginalCorrectionCount') == 48, 'additive review batch')
+    else:
+        pred_coord_ref, pred_review_ref = review['predecessorCoordinates'], review['predecessorSelectionReview']
+        _selection_require(isinstance(pred_coord_ref, dict) and set(pred_coord_ref) == {'file', 'sha256'}, 'predecessorCoordinates reference')
+        _selection_require(isinstance(pred_review_ref, dict) and set(pred_review_ref) == {'file', 'sha256'}, 'predecessorSelectionReview reference')
+        pred = json.loads(_selection_ref(directory, pred_coord_ref, 'predecessorCoordinates'))
+        pred_review = json.loads(_selection_ref(directory, pred_review_ref, 'predecessorSelectionReview'))
+        _selection_require(isinstance(pred, dict) and isinstance(pred_review, dict), 'predecessor documents')
+        _selection_require(pred.get('selectionSuccessor') == pred_review_ref, 'predecessor selection successor')
+        pred_corrections = pred.get('corrections')
+        _selection_require(isinstance(pred_corrections, list) and len(pred_corrections) >= 48
+                           and pred_corrections[:48] == baseline, 'predecessor baseline corrections changed')
+        pred_schema = pred_review.get('schemaVersion')
+        _selection_require(type(pred_schema) is int and pred_schema in (1, 2), 'predecessor review schema')
+        _selection_require(set(pred_review) == base | (v2 if pred_schema == 2 else set()), 'predecessor review fields')
+        _selection_require(pred_review.get('method') == review['method'] and pred_review.get('status') == review['status'], 'predecessor review scope')
+        _selection_require(pred_review.get('sourceSha256') == review['sourceSha256'], 'predecessor PBF changed')
+        _selection_require(all(pred_review.get(k) == review[k] for k in
+                               ('baselineGovernors', 'baselineCoordinates', 'baselineMetadata', 'baselineGeometry', 'identityInputs')),
+                           'predecessor baseline identity changed')
+        _selection_require(pred_review.get('availableSourceIds') == review['availableSourceIds']
+                           and pred_review.get('rejectedSources') == review['rejectedSources'], 'predecessor availability changed')
+        prev_approved = pred_review.get('approvedCorrections')
+        _selection_require(isinstance(prev_approved, list) and prev_approved, 'predecessor approved correction inventory')
+        _selection_require(all(isinstance(r, dict) and type(r.get('delegationId')) is int and r['delegationId'] > 0
+                               and r.get('referenceKind') == 'inm_published_reference'
+                               and r.get('original') != r.get('proposed') for r in prev_approved), 'predecessor approved correction inventory')
+        if pred_schema == 1:
+            _selection_require(len(prev_approved) == 4 and [r.get('delegationId') for r in prev_approved] == [441, 468, 516, 579], 'V1 predecessor approved correction inventory')
+            _selection_require(isinstance(pred_review.get('expectedRawChanges'), list) and len(pred_review['expectedRawChanges']) == 10
+                               and isinstance(pred_review.get('expectedManualChanges'), list) and len(pred_review['expectedManualChanges']) == 10, 'predecessor V1 expected changes')
+        _selection_require(prev_approved == pred_corrections[48:], 'predecessor approved corrections')
+        _selection_require(additions[:len(prev_approved)] == prev_approved and len(additions) > len(prev_approved), 'cumulative approved corrections')
+        _selection_require(current_corrections == baseline + additions, 'existing corrections changed')
+        _selection_require(current_corrections[:len(pred_corrections)] == pred_corrections, 'predecessor corrections prefix')
+        _selection_require(len(current_corrections) > len(pred_corrections), 'new correction required')
+        prior_batches = pred.get('reviewBatches', [])
+        _selection_require(isinstance(prior_batches, list), 'review batches')
+        _selection_require(len(batches) == len(prior_batches) + 1 and batches[:-1] == prior_batches, 'historical review batches')
+        batch = batches[-1]
+        new_ids = [r['delegationId'] for r in additions[len(prev_approved):]]
+        _selection_require(batch.get('appliedSourceIds') == new_ids
+                           and batch.get('priorCoordinateManifest') == pred_coord_ref
+                           and batch.get('changedExistingCorrectionIds') == []
+                           and batch.get('preservedOriginalCorrectionCount') == len(pred_corrections), 'additive review batch')
+    ids = [r.get('delegationId') if isinstance(r, dict) else None for r in current_corrections]
+    _selection_require(all(type(i) is int and i > 0 for i in ids) and len(ids) == len(set(ids)), 'correction IDs')
+    if schema == 1:
+        _selection_require(len(ids) == 52, 'correction count')
+    available = review['availableSourceIds']
+    _selection_require(isinstance(available, list) and len(available) == 258
+                       and all(type(i) is int and i > 0 for i in available)
+                       and available == sorted(set(available))
+                       and review['rejectedSources'] == [{'id': 495, 'reason': 'no_complete_bundled_month'}], 'available sources')
+    if schema == 1:
+        _selection_require(isinstance(review['expectedRawChanges'], list) and len(review['expectedRawChanges']) == 10
+                           and isinstance(review['expectedManualChanges'], list) and len(review['expectedManualChanges']) == 10, 'expected change count')
+    _selection_changes(review['expectedRawChanges'], available)
+    _selection_changes(review['expectedManualChanges'], available)
+    return {'review': review, 'reference': reference, 'loaded': loaded}
+
+
+def display_identity_coordinate_bytes(directory):
+    """Historical proof context only; exported selection uses current references."""
+    context = prayer_selection_review(directory)
+    return (context['loaded']['baselineCoordinates'] if context is not None
+            else (Path(directory) / 'prayer-source-coordinates.json').read_bytes())
+
+
+def load_prayer_selection_successor(manifest_path, runtime_governors, assets, source_sha256, identity_input_paths):
+    import copy
+    directory = Path(manifest_path).resolve().parent
+    context = prayer_selection_review(directory)
+    if context is None:
+        return None
+    review = context['review']
+    _selection_require(review['sourceSha256'] == source_sha256, 'PBF changed')
+    _selection_require(set(identity_input_paths) == set(review['identityInputs']), 'identity path keys')
+    for key, path in identity_input_paths.items():
+        ref = review['identityInputs'][key]
+        _selection_require(Path(path).resolve() == (directory / ref['file']).resolve()
+                           and hashlib.sha256(Path(path).read_bytes()).hexdigest() == ref['sha256'], 'identity path changed: ' + key)
+    old_governors = json.loads(context['loaded']['baselineGovernors'])['gouvernorats']
+    proposed = copy.deepcopy(old_governors)
+    by_id = {d['id']: (g, d) for g in proposed for d in g['delegations']}
+    _selection_require(len(by_id) == sum(len(g['delegations']) for g in proposed), 'duplicate source')
+    for correction in review['approvedCorrections']:
+        governor, row = by_id[correction['delegationId']]
+        _selection_require(governor['id'] == correction['expectedGovernorateId']
+                           and correction['expectedNames'] == {k: row[k] for k in ('nomAr', 'nomFr', 'nomEn')}
+                           and correction['original'] == {k: row[k] for k in ('lat', 'lng')}, 'source identity or old reference')
+        row.update(correction['proposed'])
+    message = ('runtime sources differ beyond four approved coordinate pairs' if review['schemaVersion'] == 1
+               else 'runtime sources differ beyond approved coordinate pairs')
+    _selection_require(proposed == runtime_governors, message)
+    # The caller validates all current corrections, including the unchanged
+    # 48 original objects. Their source coordinates also remain unchanged here.
+    old_tables, old_rejected = available_timetables(old_governors, assets)
+    new_tables, new_rejected = available_timetables(runtime_governors, assets)
+    for tables, rejected in ((old_tables, old_rejected), (new_tables, new_rejected)):
+        _selection_require(sorted(d['id'] for d in tables) == review['availableSourceIds']
+                           and rejected == review['rejectedSources'], 'timetable availability changed')
+    manual_doc = json.loads(context['loaded']['manualRows'])
+    _selection_require(isinstance(manual_doc, dict) and set(manual_doc) == {'schemaVersion', 'rows'}
+                       and type(manual_doc['schemaVersion']) is int and manual_doc['schemaVersion'] == 1
+                       and isinstance(manual_doc['rows'], list) and len(manual_doc['rows']) == 3336, 'manual inventory')
+    seen = set()
+    for row in manual_doc['rows']:
+        _selection_require(isinstance(row, dict) and set(row) == {
+            'id', 'representativeId', 'lat', 'lng', 'members', 'before', 'after'}, 'manual row fields')
+        _selection_require(isinstance(row['id'], str) and row['id'] and row['id'] not in seen
+                           and isinstance(row['representativeId'], str) and row['representativeId'], 'manual owner ID')
+        seen.add(row['id'])
+        _selection_require(isinstance(row['members'], list) and row['members']
+                           and all(isinstance(i, str) and i for i in row['members'])
+                           and len(row['members']) == len(set(row['members'])), 'manual group members')
+        _selection_require(all(type(row[k]) in (int, float) and math.isfinite(row[k]) for k in ('lat', 'lng'))
+                           and -90 <= row['lat'] <= 90 and -180 <= row['lng'] <= 180, 'manual coordinate')
+        _selection_require(all(type(row[k]) is int and row[k] in review['availableSourceIds'] for k in ('before', 'after')), 'manual source')
+    context.update(baselineGovernors=old_governors, baselineTimetables=old_tables, runtimeTimetables=new_tables,
+                   baselineMetadata=json.loads(context['loaded']['baselineMetadata']), manualRows=manual_doc['rows'])
+    return context
+
+
+def finalize_prayer_selection_successor(context, result, blob):
+    if context is None:
+        return None
+    review = context['review']
+    _selection_require(result == context['baselineMetadata'], 'display catalog differs from reviewed frozen baseline')
+    _selection_require(hashlib.sha256(blob).hexdigest() == review['baselineGeometry']['sha256'], 'packed geometry changed')
+    rows = result['features']; raw = {r['id']: r for r in rows}
+    _selection_require(len(rows) == len(raw) == 3484, 'raw identity inventory')
+    nearest = lambda row, tables: min(tables, key=lambda d: (distance(row['lat'], row['lng'], d), d['id']))['id']
+    old_tables, new_tables = context['baselineTimetables'], context['runtimeTimetables']
+    raw_changes, manual_changes, current_manual, pending = {}, {}, [], {}
+    groups = defaultdict(set)
+    for row in rows:
+        before, after = nearest(row, old_tables), nearest(row, new_tables)
+        _selection_require(row['delegationId'] == before, 'baseline raw source: ' + row['id'])
+        if before != after:
+            raw_changes[row['id']] = (before, after)
+        pending[row['id']] = after
+        groups[row['pickerGroupId']].add(row['id'])
+    for row in context['manualRows']:
+        representative = raw.get(row['representativeId'])
+        members = groups[row['id']] | ({row['id']} if row['id'].startswith('delegation:') else set())
+        _selection_require(representative is not None and all(representative[k] == row[k] for k in ('lat', 'lng'))
+                           and row['representativeId'] in members and set(row['members']) == members, 'manual representative/group: ' + row['id'])
+        before, after = nearest(row, old_tables), nearest(row, new_tables)
+        _selection_require(before == row['before'] and after == row['after'], 'manual nearest source: ' + row['id'])
+        if before != after:
+            manual_changes[row['id']] = (before, after)
+        current_manual.append({**{k: row[k] for k in ('id', 'representativeId', 'lat', 'lng')}, 'sourceId': after})
+    _selection_require(raw_changes == _selection_changes(review['expectedRawChanges'], review['availableSourceIds'])
+                       and manual_changes == _selection_changes(review['expectedManualChanges'], review['availableSourceIds']), 'unreviewed nearest-source changes')
+    # Commit only after every identity, geometry, group and selection check passes.
+    for row in rows:
+        row['delegationId'] = pending[row['id']]
+    changes = lambda values: [{'id': i, 'before': b, 'after': a} for i, (b, a) in sorted(values.items())]
+    return {'schemaVersion': 1, 'method': review['method'], 'reviewReference': context['reference'],
+            'historicalIdentityScope': {k: review[k] for k in ('baselineGovernors', 'baselineCoordinates', 'baselineMetadata', 'baselineGeometry')},
+            'currentSourceIds': review['availableSourceIds'], 'rawChangedCount': len(raw_changes),
+            'manualChangedCount': len(manual_changes), 'rawChanges': changes(raw_changes),
+            'manualChanges': changes(manual_changes), 'currentManualSelections': current_manual,
+            'qualification': 'Historical display proofs retain their prior prayer-reference context. This section and exported raw delegationId values give current nearest-prayer selection. Final exclusions, when present, remove explicitly reviewed facilities; retained identities and geometry are unchanged.'}
+
+
+def reviewed_prayer_coordinate_reference(directory, reference, label):
+    """Read a pinned prayer manifest, allowing one audited additive successor."""
+    directory = Path(directory).resolve()
+    if (not isinstance(reference, dict)
+            or reference.get('file') != 'prayer-source-coordinates.json'):
+        return aggregate_review_file(directory, reference, label)
+    current_path = (directory / 'prayer-source-coordinates.json').resolve()
+    if not current_path.is_relative_to(directory):
+        raise ValueError(f'Current {label} manifest escapes source directory')
+    current_raw = display_identity_coordinate_bytes(directory)
+    current_sha = hashlib.sha256(current_raw).hexdigest()
+    if reference.get('sha256') == current_sha:
+        return current_raw
+    expected = reference.get('expectedCorrection')
+    if (not isinstance(expected, dict)
+            or type(expected.get('delegationId')) is not int
+            or expected['delegationId'] <= 0):
+        raise ValueError(f'Invalid additive {label} expected correction')
+
+    def read_manifest(raw, name):
+        try:
+            manifest = json.loads(raw)
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise ValueError(f'Invalid {name} coordinate manifest') from exc
+        corrections = manifest.get('corrections') if isinstance(manifest, dict) else None
+        if (not isinstance(manifest, dict) or type(manifest.get('schemaVersion')) is not int
+                or manifest.get('schemaVersion') != 1
+                or not isinstance(corrections, list) or not corrections):
+            raise ValueError(f'Invalid {name} coordinate manifest')
+        by_id = {}
+        for correction in corrections:
+            identifier = correction.get('delegationId') if isinstance(correction, dict) else None
+            if type(identifier) is not int or identifier <= 0 or identifier in by_id:
+                raise ValueError(f'Invalid or duplicate {name} correction ID')
+            by_id[identifier] = correction
+        return manifest, by_id
+
+    current, current_by_id = read_manifest(current_raw, 'current')
+    batches = current.get('reviewBatches')
+    if not isinstance(batches, list):
+        raise ValueError(f'Invalid current {label} review batches')
+    matches = []
+    for batch in batches:
+        prior = batch.get('priorCoordinateManifest') if isinstance(batch, dict) else None
+        if isinstance(prior, dict) and prior.get('sha256') == reference.get('sha256'):
+            matches.append((batch, prior))
+    if len(matches) != 1:
+        raise ValueError(f'No unique additive review batch for {label}')
+    batch, prior_reference = matches[0]
+    prior_path = (directory / prior_reference.get('file', '')).resolve()
+    if prior_path == current_path:
+        raise ValueError(f'Additive {label} prior manifest is current manifest')
+    prior_raw = aggregate_review_file(directory, prior_reference, f'{label} prior coordinate manifest')
+    prior, prior_by_id = read_manifest(prior_raw, 'prior')
+    old_ids = set(prior_by_id)
+    current_ids = set(current_by_id)
+    added_ids = current_ids - old_ids
+    if not old_ids < current_ids:
+        raise ValueError(f'Additive {label} must strictly add correction IDs')
+    if any(current_by_id[item] != prior_by_id[item] for item in old_ids):
+        raise ValueError(f'Additive {label} changed an existing correction')
+    identifier = expected['delegationId']
+    if (expected != prior_by_id.get(identifier)
+            or expected != current_by_id.get(identifier)):
+        raise ValueError(f'Additive {label} expected correction does not match both manifests')
+    applied = batch.get('appliedSourceIds')
+    if (not isinstance(applied, list) or not applied
+            or any(type(item) is not int or item <= 0 for item in applied)
+            or len(set(applied)) != len(applied) or not set(applied) <= added_ids):
+        raise ValueError(f'Invalid additive {label} applied source IDs')
+    if (batch.get('changedExistingCorrectionIds') != []
+            or batch.get('preservedOriginalCorrectionCount') != len(old_ids)):
+        raise ValueError(f'Additive {label} prior correction preservation changed')
+    return current_raw
 
 
 def aggregate_geometry_sha256(geometry):
@@ -1457,6 +1975,33 @@ def complete_prayer_month(path):
         return False
 
 
+def inm_source_delegation_names_match(source_delegation, delegation, governor):
+    """Keep reviewed display spelling fixes separate from INM's original spelling."""
+    if not all(isinstance(value, dict) for value in (source_delegation, delegation, governor)):
+        return False
+    governor_id = governor.get('id')
+    source_id, asset_id = source_delegation.get('id'), delegation.get('id')
+    if (type(governor_id) is not int or type(source_id) is not int
+            or type(asset_id) is not int or source_id != asset_id):
+        return False
+    source_ar, source_fr, source_en = (source_delegation.get(key)
+                                     for key in ('intituleAr', 'intituleFr', 'intituleAn'))
+    asset_ar, asset_fr, asset_en = (delegation.get(key) for key in ('nomAr', 'nomFr', 'nomEn'))
+    if not all(isinstance(value, str) and value
+               for value in (source_ar, source_fr, source_en, asset_ar, asset_fr, asset_en)):
+        return False
+    if source_fr != asset_fr or source_en != asset_en:
+        return False
+    if source_ar == asset_ar:
+        return True
+    # Exact, ID-bound source typos retained after the reviewed Arabic display fixes.
+    # Governor names, source parents and all response provenance remain checked below.
+    return (governor_id, source_id, source_ar, asset_ar) in {
+        (345, 425, 'مللولش', 'ملولش'),
+        (358, 534, 'التظامن', 'التضامن'),
+    }
+
+
 def validate_inm_published_reference(correction, governor, delegation, directory):
     """Bind published INM reference coordinates to original daily response bytes.
 
@@ -1524,8 +2069,8 @@ def validate_inm_published_reference(correction, governor, delegation, directory
                 or type(source_delegation.get('id')) is not int or source_delegation['id'] != identifier
                 or source_delegation.get('parent') != source_governor
                 or any(source_governor.get(source_key) != governor.get(asset_key)
-                       or source_delegation.get(source_key) != delegation.get(asset_key)
-                       for asset_key, source_key in name_fields.items())):
+                       for asset_key, source_key in name_fields.items())
+                or not inm_source_delegation_names_match(source_delegation, delegation, governor)):
             raise ValueError(f'INM {resource} response identity changed: {identifier}')
         if (data.get('date') != f'{service_date} 00:00'
                 or type(data.get('annee')) is not int or data['annee'] != service_year
@@ -1644,7 +2189,7 @@ def validate_reviewed_point_base_name(rule, manifest_path, coordinate_path, obj,
             raise ValueError('Reviewed point/base exact labels or current identity changed')
         # Pin this correction object, not the whole manifest: unrelated appended
         # reference corrections cannot change the reviewed identity of this pair.
-        corrections = json.loads(Path(coordinate_path).read_bytes())['corrections']
+        corrections = json.loads(display_identity_coordinate_bytes(Path(coordinate_path).parent))['corrections']
         matches = [r for r in corrections if r['delegationId'] == target]
         correction = proposal['identityEvidence']['approvedSourceCoordinateCuration']['exactCorrection']
         if (matches != [correction] or hashlib.sha256(json.dumps(correction, ensure_ascii=False,
@@ -1790,7 +2335,10 @@ def validate_sector_owned_settlement_preservation(directory, review, rule, regis
     change = {'id': identifier, 'field': 'pickerGroupId', 'before': identifier, 'after': target}
     if extension['onlyRawChange'] != change or review['onlyRawChange'] != change:
         raise ValueError('Reviewed sector-owned settlement requested more than point membership')
-    reviewed_complete_group_owner(picker_path, extension['strictOwner'], source_sha256, review['baseId'])
+    reviewed_complete_group_owner(
+        picker_path, extension['strictOwner'], source_sha256, review['baseId'],
+        original_sources=original_sources, effective_sources=effective_sources,
+        reviewed_boundaries=reviewed_boundaries, official_report=official_report)
     owner = extension['strictOwner']['recordId']
     sectors = review['preservedSectors']; sector_ids = {row['id'] for row in sectors}
     contexts = review['contexts']; codes = extension['officialDelegationCodes']
@@ -2125,7 +2673,9 @@ def sector_owned_reservation_ids(value):
 
 def reserve_sector_owned_settlement_proposals(reviews, manifest_path, strict_report, city_report,
                                                residential_report, deferred_hamlets, features,
-                                               geometries, governors, base_groups, curation_applications):
+                                               geometries, governors, base_groups, curation_applications,
+                                               original_sources=None, effective_sources=None,
+                                               reviewed_boundaries=None, official_report=None):
     """Cross-check new writes against ALL existing mutation/protection contracts.
 
     Shared read-only dependencies are legal. A mutation/ownership claim against
@@ -2181,7 +2731,10 @@ def reserve_sector_owned_settlement_proposals(reviews, manifest_path, strict_rep
     for sid, proposal in pending:
         runtime = proposal['sectorOwnedSettlementPreservation']; ext = runtime['proof']
         target = proposal['exactPair']['basePickerId']; mine = next(c for c in claims if c['label'] == ('point', sid))
-        reviewed_complete_group_owner(manifest_path, ext['strictOwner'], runtime['sourceSha256'], runtime['baseCurrent']['id'])
+        reviewed_complete_group_owner(
+            manifest_path, ext['strictOwner'], runtime['sourceSha256'], runtime['baseCurrent']['id'],
+            original_sources=original_sources, effective_sources=effective_sources,
+            reviewed_boundaries=reviewed_boundaries, official_report=official_report)
         owner = ext['strictOwner']['recordId']; receipt = ext['strictOwner']['expectedAppliedReceipt']
         if ([r for r in strict_report['applications'] if r.get('pickerGroupId') == target or owner in r.get('ids', [])] != [receipt]
                 or any(r.get('id') == sid and r.get('action') == 'picker_base_display' for r in curation_applications)):
@@ -2235,10 +2788,13 @@ def apply_sector_owned_settlement_proposals(reviews, features, geometries, base_
             if len(ids) > 1 or group.startswith('delegation:')]
 
 
-def reviewed_complete_group_owner(manifest_path, owner, source_sha256, target):
+def reviewed_complete_group_owner(manifest_path, owner, source_sha256, target,
+                                  original_sources=None, effective_sources=None,
+                                  reviewed_boundaries=None, official_report=None):
     """Bind the unchanged strict owner, including its active approved proof."""
     manifest_path = Path(manifest_path)
-    manifest = json.loads(manifest_path.read_bytes())
+    manifest_raw = manifest_path.read_bytes()
+    manifest = json.loads(manifest_raw)
     if (not isinstance(owner, dict) or set(owner) != {'recordId', 'expectedRecord', 'reviewEvidence',
             'proofRecordObjectSha256', 'expectedAppliedReceipt'}
             or manifest.get('schemaVersion') != 1 or manifest.get('sourceSha256') != source_sha256
@@ -2253,18 +2809,111 @@ def reviewed_complete_group_owner(manifest_path, owner, source_sha256, target):
             or record['expectedTargetMemberIds'] != [f'delegation:{target}']
             or len(record['members']) != 1 or record['members'][0]['id'] != identifier
             or record['members'][0]['expectedKind'] != 'sector'
-            or owner['reviewEvidence'] not in [manifest.get('reviewEvidence'), *manifest.get('additionalReviewEvidence', [])]
             or owner['expectedAppliedReceipt'] != {'pickerGroupId': f'delegation:{target}', 'ids': [identifier]}):
         raise ValueError('Reviewed complete-group strict owner record changed')
-    evidence = json.loads(aggregate_review_file(manifest_path.parent, owner['reviewEvidence'], 'complete-group owner proof'))
-    proofs = [r for r in evidence['records'] if r.get('id') == identifier and r.get('status') == 'eligible_proposal']
-    if (len(proofs) != 1 or hashlib.sha256(json.dumps(proofs[0], ensure_ascii=False, sort_keys=True,
-            separators=(',', ':')).encode('utf-8')).hexdigest() != owner['proofRecordObjectSha256']):
+    active_evidence_refs = [manifest.get('reviewEvidence'), *manifest.get('additionalReviewEvidence', [])]
+    if owner['reviewEvidence'] in active_evidence_refs:
+        evidence = json.loads(aggregate_review_file(manifest_path.parent, owner['reviewEvidence'], 'complete-group owner proof'))
+        proofs = [r for r in evidence['records'] if r.get('id') == identifier and r.get('status') == 'eligible_proposal']
+        if (len(proofs) != 1 or hashlib.sha256(json.dumps(proofs[0], ensure_ascii=False, sort_keys=True,
+                separators=(',', ':')).encode('utf-8')).hexdigest() != owner['proofRecordObjectSha256']):
+            raise ValueError('Reviewed complete-group approved owner proof changed')
+        return
+    if (original_sources is None or effective_sources is None
+            or reviewed_boundaries is None or official_report is None):
+        raise ValueError('Reviewed complete-group strict owner record changed')
+    directory = manifest_path.parent
+    if not isinstance(manifest.get('lineageCompatibility'), dict):
+        raise ValueError('Reviewed complete-group strict owner record changed')
+    lineage_doc = json.loads(aggregate_review_file(directory, manifest['lineageCompatibility'], 'picker lineage compatibility'))
+    if not isinstance(lineage_doc, dict) or lineage_doc.get('method') != 'reviewed_picker_strict_boundary_successor':
+        raise ValueError('Reviewed complete-group strict owner record changed')
+    load_reviewed_picker_manifest_for_lineage(
+        directory,
+        {'file': manifest_path.name, 'sha256': hashlib.sha256(manifest_raw).hexdigest()},
+        manifest_path, manifest, source_sha256,
+        reviewed_boundaries=reviewed_boundaries, official_report=official_report,
+        original_sources=original_sources, effective_sources=effective_sources)
+    historical_ref = None
+    seen = {(str(manifest_path.resolve()), hashlib.sha256(manifest_raw).hexdigest())}
+    current_doc = manifest
+    for depth in range(8):
+        current_lineage_ref = current_doc.get('lineageCompatibility')
+        if not isinstance(current_lineage_ref, dict):
+            break
+        current_lineage = json.loads(aggregate_review_file(directory, current_lineage_ref, 'picker lineage compatibility'))
+        if (not isinstance(current_lineage, dict)
+                or current_lineage.get('method') != 'reviewed_picker_strict_boundary_successor'):
+            break
+        previous_proof_ref = current_lineage.get('previousProofCollection')
+        if (isinstance(previous_proof_ref, dict) and previous_proof_ref == owner['reviewEvidence']):
+            if historical_ref is not None:
+                raise ValueError('Reviewed complete-group historical owner proof changed')
+            historical_ref = previous_proof_ref
+        previous_manifest_ref = current_lineage.get('previousManifest')
+        if not isinstance(previous_manifest_ref, dict):
+            raise ValueError('Reviewed complete-group historical owner proof changed')
+        previous_raw = aggregate_review_file(directory, previous_manifest_ref, 'lineageCompatibility.previousManifest')
+        previous_sha = hashlib.sha256(previous_raw).hexdigest()
+        if previous_sha != previous_manifest_ref.get('sha256'):
+            raise ValueError('Reviewed complete-group historical owner proof changed')
+        previous_path = (directory / previous_manifest_ref['file']).resolve()
+        seen_key = (str(previous_path), previous_sha)
+        if seen_key in seen:
+            raise ValueError('Reviewed complete-group historical owner proof changed')
+        seen.add(seen_key)
+        previous_doc = json.loads(previous_raw)
+        if not isinstance(previous_doc, dict):
+            raise ValueError('Reviewed complete-group historical owner proof changed')
+        current_doc = previous_doc
+    if historical_ref is None:
+        raise ValueError('Reviewed complete-group strict owner record changed')
+    historical_raw = aggregate_review_file(directory, historical_ref, 'complete-group historical owner proof')
+    historical_doc = json.loads(historical_raw)
+    if not isinstance(historical_doc, dict) or not isinstance(historical_doc.get('records'), list):
         raise ValueError('Reviewed complete-group approved owner proof changed')
+    historical_proofs = [r for r in historical_doc['records']
+                         if isinstance(r, dict) and r.get('id') == identifier and r.get('status') == 'eligible_proposal']
+    if len(historical_proofs) != 1:
+        raise ValueError('Reviewed complete-group approved owner proof changed')
+    historical_proof = historical_proofs[0]
+    historical_hash = hashlib.sha256(json.dumps(historical_proof, ensure_ascii=False, sort_keys=True,
+                                              separators=(',', ':')).encode('utf-8')).hexdigest()
+    if historical_hash != owner['proofRecordObjectSha256']:
+        raise ValueError('Reviewed complete-group approved owner proof changed')
+    active_matches = []
+    for active_ref in active_evidence_refs:
+        active_raw = aggregate_review_file(directory, active_ref, 'picker review evidence')
+        active_doc = json.loads(active_raw)
+        active_rows = active_doc.get('records') if isinstance(active_doc, dict) else None
+        if not isinstance(active_rows, list):
+            raise ValueError('Reviewed complete-group approved owner proof changed')
+        for row in active_rows:
+            if (isinstance(row, dict) and row.get('id') == identifier
+                    and row.get('status') == 'eligible_proposal'):
+                active_matches.append((active_doc, row))
+    if len(active_matches) != 1:
+        raise ValueError('Reviewed complete-group approved owner proof changed')
+    active_doc, active_proof = active_matches[0]
+    active_hash = hashlib.sha256(json.dumps(active_proof, ensure_ascii=False, sort_keys=True,
+                                           separators=(',', ':')).encode('utf-8')).hexdigest()
+    if active_hash != owner['proofRecordObjectSha256']:
+        raise ValueError('Reviewed complete-group approved owner proof changed')
+    if (active_proof != historical_proof
+            or json.dumps(active_proof, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+               != json.dumps(historical_proof, ensure_ascii=False, sort_keys=True, separators=(',', ':'))):
+        raise ValueError('Reviewed complete-group approved owner proof changed')
+    if (historical_doc.get('schemaVersion') != active_doc.get('schemaVersion')
+            or historical_doc.get('sourceSha256') != active_doc.get('sourceSha256')):
+        raise ValueError('Reviewed complete-group approved owner proof context changed')
+    if {k: v for k, v in historical_doc.items() if k != 'records'} != {
+            k: v for k, v in active_doc.items() if k != 'records'}:
+        raise ValueError('Reviewed complete-group approved owner proof context changed')
 
 
 def validate_deferred_complete_group_extension(review, manifest_path, original_sources, effective_sources,
-                                               curation, rule, source_sha256):
+                                               curation, rule, source_sha256,
+                                               reviewed_boundaries=None, official_report=None):
     """Validate source identity and explicit group maps without assigning a group."""
     extension = review['deferredCompleteGroupExtension']
     keys = {'schemaVersion', 'strictOwner', 'expectedBeforeGroups', 'expectedAfterGroups', 'protectedRawRecords'}
@@ -2276,7 +2925,10 @@ def validate_deferred_complete_group_extension(review, manifest_path, original_s
             or review.get('typedNamePeerExtension', {}).get('rawPointPeers', []) != []):
         raise ValueError('Malformed or unsupported deferred complete-group extension')
     identifier, target = review['pointId'], f"delegation:{review['baseId']}"
-    reviewed_complete_group_owner(manifest_path, extension['strictOwner'], source_sha256, review['baseId'])
+    reviewed_complete_group_owner(
+        manifest_path, extension['strictOwner'], source_sha256, review['baseId'],
+        original_sources=original_sources, effective_sources=effective_sources,
+        reviewed_boundaries=reviewed_boundaries, official_report=official_report)
     owner = extension['strictOwner']['recordId']
     before, after = extension['expectedBeforeGroups'], extension['expectedAfterGroups']
     rows = extension['protectedRawRecords']
@@ -2385,7 +3037,9 @@ def verify_reviewed_complete_group_state(proposal, features, geometries, base_gr
 
 
 def apply_deferred_point_base_group_extensions(reviews, manifest_path, strict_report, features, geometries,
-                                              governors, base_groups, curation_applications):
+                                              governors, base_groups, curation_applications,
+                                              original_sources=None, effective_sources=None,
+                                              reviewed_boundaries=None, official_report=None):
     """Check every pending extension after existing mutations, then commit only its point."""
     pending = [(identifier, proposal) for identifier, proposal in reviews.items()
                if 'deferredCompleteGroupExtension' in proposal]
@@ -2404,7 +3058,10 @@ def apply_deferred_point_base_group_extensions(reviews, manifest_path, strict_re
         if (len(matches) != 1 or matches[0][1] != extension['baseCurrent']
                 or {k: v for k, v in matches[0][0].items() if k != 'delegations'} != extension['expectedGovernor']):
             raise ValueError('Reviewed complete-group base reference changed')
-        reviewed_complete_group_owner(manifest_path, extension['strictOwner'], extension['sourceSha256'], base_id)
+        reviewed_complete_group_owner(
+            manifest_path, extension['strictOwner'], extension['sourceSha256'], base_id,
+            original_sources=original_sources, effective_sources=effective_sources,
+            reviewed_boundaries=reviewed_boundaries, official_report=official_report)
         receipt = extension['strictOwner']['expectedAppliedReceipt']
         owner = extension['strictOwner']['recordId']
         if ([r for r in strict_report['applications'] if r.get('pickerGroupId') == target or owner in r.get('ids', [])]
@@ -2516,7 +3173,7 @@ def validate_reviewed_legacy_point_base_name(rule, manifest_path, coordinate_pat
                 or pair['expectedAfterGroups'] != [{'id': f'delegation:{target}',
                     'memberIds': [f'delegation:{target}', identifier]}]):
             raise ValueError('Legacy point/base exact names or preserved identity changed')
-        corrections = json.loads(Path(coordinate_path).read_bytes())['corrections']
+        corrections = json.loads(display_identity_coordinate_bytes(Path(coordinate_path).parent))['corrections']
         correction = pair['existingCorrection']
         if ([r for r in corrections if r['delegationId'] == target] != [correction]
                 or hashlib.sha256(json.dumps(correction, ensure_ascii=False, sort_keys=True,
@@ -2914,12 +3571,393 @@ def validate_reviewed_administrative_successor_identity(directory, review, regis
                                 'expectedRawIds': closure['expectedRawIds'],
                                 'sourceOnlyAbsentIds': sorted(absent_ids)}}
 
-def load_reviewed_picker_manifest_for_lineage(directory, reference, picker_path, picker, source_sha256) -> bytes:
+def validate_reviewed_official_boundary_parent_membership(reference, directory, compat, boundary_manifest,
+                                                          feature, original_sources, effective_sources,
+                                                          source_sha256):
+    METHOD = 'reviewed_official_boundary_parent_membership'
+    LEGACY = 'current_coded_namesake_administrative_parent'
+    DIFFERENCE_METHOD = ('shapely WGS84 degree2; local estimate = difference.area*111.32**2*'
+                         'cos(radians(fixedSectorAnchorLatitude)); not UTM/survey')
+    directory = Path(directory)
+
+    def _keys(value, keys, label):
+        if not isinstance(value, dict):
+            raise ValueError(f'{label}: expected object')
+        expected = set(keys)
+        actual = set(value)
+        if actual != expected:
+            missing = sorted(expected - actual)
+            extra = sorted(actual - expected)
+            raise ValueError(f'{label}: expected keys {sorted(expected)}; missing={missing}; extra={extra}')
+        return value
+
+    def _str(value, label, nonempty=False):
+        if not isinstance(value, str):
+            raise ValueError(f'{label}: expected string')
+        if nonempty and not value:
+            raise ValueError(f'{label}: expected non-empty string')
+        return value
+
+    def _sha(value, label):
+        value = _str(value, label)
+        if re.fullmatch(r'[0-9a-f]{64}', value) is None:
+            raise ValueError(f'{label}: expected lowercase 64-character hex sha256')
+        return value
+
+    def _num(value, label, positive=False):
+        if type(value) not in (int, float) or isinstance(value, bool) or not math.isfinite(value):
+            raise ValueError(f'{label}: expected finite number')
+        if positive and value <= 0:
+            raise ValueError(f'{label}: expected positive number')
+        return value
+
+    def _point(value, label):
+        _keys(value, ('lat', 'lng'), label)
+        _num(value['lat'], f'{label}.lat')
+        _num(value['lng'], f'{label}.lng')
+        return value
+
+    def _load(ref, label, allow_size=False):
+        expected = ('file', 'sha256', 'bytes') if allow_size and 'bytes' in ref else ('file', 'sha256')
+        _keys(ref, expected, label)
+        _sha(ref['sha256'], f'{label}.sha256')
+        raw = aggregate_review_file(directory, ref, label)
+        if 'bytes' in ref and (type(ref['bytes']) is not int or ref['bytes'] != len(raw)):
+            raise ValueError(f'{label}: byte count mismatch')
+        try:
+            doc = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f'{label}: invalid JSON') from exc
+        if not isinstance(doc, dict):
+            raise ValueError(f'{label}: expected object')
+        return doc
+
+    def _canonical(value):
+        return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True,
+                                         separators=(',', ':')).encode('utf-8')).hexdigest()
+
+    _sha(source_sha256, 'sourceSha256')
+    if not isinstance(compat, dict) or not isinstance(boundary_manifest, dict) or not isinstance(feature, dict):
+        raise ValueError('reviewed official boundary parent membership: missing active context')
+    review = _load(reference, 'reviewed official boundary parent membership')
+    _keys(review, (
+        'schemaVersion', 'method', 'sourceSha256', 'ownerId', 'parentId', 'previousManifest',
+        'previousRecord', 'previousProofCollection', 'previousProofRecordObjectSha256',
+        'reviewedBoundaries', 'acceptedBoundaryReplacement', 'administrativeScopeReview',
+        'scopePrimarySource', 'wholeScopeRow', 'currentOfficialRegistry', 'originalChildGeometrySha256',
+        'effectiveChildGeometrySha256', 'originalParentGeometrySha256', 'effectiveParentGeometrySha256',
+        'parentMembership', 'qualification'), 'reviewed official boundary parent membership')
+    if type(review['schemaVersion']) is not int or review['schemaVersion'] != 1:
+        raise ValueError('reviewed official boundary parent membership.schemaVersion: expected 1')
+    if review['method'] != METHOD:
+        raise ValueError('reviewed official boundary parent membership.method: unexpected value')
+    if review['sourceSha256'] != source_sha256:
+        raise ValueError('reviewed official boundary parent membership.sourceSha256: mismatch')
+    owner_id = _str(review['ownerId'], 'reviewed official boundary parent membership.ownerId', nonempty=True)
+    parent_id = _str(review['parentId'], 'reviewed official boundary parent membership.parentId', nonempty=True)
+    if owner_id != compat.get('ownerId'):
+        raise ValueError('reviewed official boundary parent membership: owner identity mismatch')
+    _str(review['qualification'], 'reviewed official boundary parent membership.qualification', nonempty=True)
+    for key in ('previousManifest', 'previousRecord', 'previousProofCollection', 'reviewedBoundaries',
+                'acceptedBoundaryReplacement'):
+        if review[key] != compat.get(key):
+            raise ValueError(f'reviewed official boundary parent membership.{key}: does not match active compatibility')
+    _sha(review['previousProofRecordObjectSha256'],
+         'reviewed official boundary parent membership.previousProofRecordObjectSha256')
+    for prior in (compat.get('previousManifest'), compat.get('previousProofCollection'),
+                  compat.get('reviewedBoundaries')):
+        if (isinstance(prior, dict) and prior.get('file') == reference.get('file')
+                and prior.get('sha256') == reference.get('sha256')):
+            raise ValueError('reviewed official boundary parent membership: review reference reuses a prior lineage reference')
+
+    proof_doc = _load(compat['previousProofCollection'], 'compatibility.previousProofCollection')
+    proof_rows = proof_doc.get('records')
+    if not isinstance(proof_rows, list):
+        raise ValueError('compatibility.previousProofCollection.records: expected list')
+    proof_matches = [row for row in proof_rows if isinstance(row, dict) and row.get('id') == owner_id]
+    if len(proof_matches) != 1 or proof_matches[0].get('status') != 'eligible_proposal':
+        raise ValueError('compatibility.previousProofCollection: eligible owner proof is not unique')
+    if _canonical(proof_matches[0]) != review['previousProofRecordObjectSha256']:
+        raise ValueError('reviewed official boundary parent membership.previousProofRecordObjectSha256: canonical proof mismatch')
+
+    scope_ref = review['administrativeScopeReview']
+    _keys(scope_ref, ('file', 'sha256', 'bytes') if isinstance(scope_ref, dict) and 'bytes' in scope_ref else ('file', 'sha256'),
+          'reviewed official boundary parent membership.administrativeScopeReview')
+    _sha(scope_ref['sha256'], 'reviewed official boundary parent membership.administrativeScopeReview.sha256')
+    if boundary_manifest.get('administrativeScopeReview') != scope_ref:
+        target_ref = compat.get('reviewedBoundaries')
+        if not isinstance(target_ref, dict):
+            raise ValueError('reviewed official boundary parent membership: compatibility reviewedBoundaries is missing')
+        target_sha = _sha(target_ref.get('sha256'), 'reviewed official boundary parent membership.compatibility.reviewedBoundaries.sha256')
+        current = boundary_manifest
+        current_sources = current.get('sources')
+        if not isinstance(current_sources, list):
+            raise ValueError('reviewed official boundary parent membership: active boundary manifest sources are missing')
+        current_len = len(current_sources)
+        seen = set()
+        reached = None
+        while current_len:
+            lineage_ref = current.get('lineageCompatibility')
+            if not isinstance(lineage_ref, dict):
+                raise ValueError('reviewed official boundary parent membership: lineageCompatibility is missing')
+            proof = _load(lineage_ref, 'lineage compatibility', allow_size=True)
+            proof_keys = ('schemaVersion', 'method', 'sourceSha256', 'previousManifest',
+                          'addedSources', 'scopeSuccessor', 'evidence')
+            if 'aggregateScopeSuccessor' in proof:
+                proof_keys += ('aggregateScopeSuccessor',)
+            _keys(proof, proof_keys, 'lineage compatibility')
+            if proof['schemaVersion'] != 1 or proof['method'] != 'reviewed_append_only_boundary_extension':
+                raise ValueError('lineage compatibility must be schemaVersion 1 reviewed_append_only_boundary_extension')
+            added = proof['addedSources']
+            if not isinstance(added, list) or not added:
+                raise ValueError('lineage compatibility addedSources must be a non-empty list')
+            previous_ref = proof['previousManifest']
+            previous = _load(previous_ref, 'lineage previous manifest', allow_size=True)
+            previous_sha = previous_ref['sha256']
+            if previous_sha in seen:
+                raise ValueError('lineage compatibility contains a cycle')
+            seen.add(previous_sha)
+            previous_sources = previous.get('sources')
+            if not isinstance(previous_sources, list):
+                raise ValueError('lineage previous manifest sources are missing')
+            if len(previous_sources) >= current_len or len(previous_sources) + len(added) != current_len:
+                raise ValueError('lineage compatibility must strictly decrease the source count by at least one provider')
+            current = previous
+            current_len = len(previous_sources)
+            if previous_sha == target_sha:
+                reached = previous
+                break
+        if reached is None:
+            raise ValueError('reviewed official boundary parent membership: reviewedBoundaries lineage target was not reached')
+        if reached.get('administrativeScopeReview') != scope_ref:
+            raise ValueError('reviewed official boundary parent membership: lineage target administrativeScopeReview does not match review')
+        active_scope_ref = boundary_manifest.get('administrativeScopeReview')
+        old_scope = _load(scope_ref, 'administrative scope review', allow_size=True)
+        new_scope = _load(active_scope_ref, 'active administrative scope review', allow_size=True)
+        if (not isinstance(old_scope, dict) or old_scope.get('schemaVersion') != 1
+                or not isinstance(old_scope.get('records'), list)
+                or not isinstance(new_scope, dict) or new_scope.get('schemaVersion') != 1
+                or not isinstance(new_scope.get('records'), list)):
+            raise ValueError('administrative scope documents must be schemaVersion 1 objects with records lists')
+        old_records = old_scope['records']
+        new_records = new_scope['records']
+        if (len(new_records) < len(old_records)
+                or new_records[:len(old_records)] != old_records
+                or {k: v for k, v in new_scope.items() if k != 'records'} != {k: v for k, v in old_scope.items() if k != 'records'}):
+            raise ValueError('active administrative scope must retain historical records as an exact prefix and change only records')
+        old_owner = [row for row in old_records if isinstance(row, dict) and row.get('id') == owner_id]
+        new_owner = [row for row in new_records if isinstance(row, dict) and row.get('id') == owner_id]
+        if len(old_owner) != 1 or len(new_owner) != 1 or new_owner[0] != old_owner[0]:
+            raise ValueError('active administrative scope: owner row is not the unique unchanged row')
+        if sum(1 for row in new_records if isinstance(row, dict) and row.get('officialCode') == old_owner[0].get('officialCode')) != 1:
+            raise ValueError('active administrative scope: owner officialCode is not unique')
+    if scope_ref.get('file') == reference.get('file') and scope_ref.get('sha256') == reference.get('sha256'):
+        raise ValueError('reviewed official boundary parent membership: scope reference is self-referential')
+    scope_doc = _load(scope_ref, 'administrative scope review', allow_size=True)
+    if scope_doc.get('primarySource') != review['scopePrimarySource']:
+        raise ValueError('reviewed official boundary parent membership.scopePrimarySource: mismatch')
+    scope_rows = scope_doc.get('records')
+    if not isinstance(scope_rows, list):
+        raise ValueError('administrative scope review: expected records list')
+    scope_matches = [row for row in scope_rows if isinstance(row, dict) and row.get('id') == owner_id]
+    if len(scope_matches) != 1:
+        raise ValueError('administrative scope review: owner row is not unique')
+    whole = scope_matches[0]
+    if review['wholeScopeRow'] != whole:
+        raise ValueError('reviewed official boundary parent membership.wholeScopeRow: does not match unique accepted row')
+    if whole.get('conclusion') != 'whole_imada':
+        raise ValueError('administrative scope review: accepted scope kind is not whole_imada')
+    if sum(1 for row in scope_rows if isinstance(row, dict)
+           and row.get('officialCode') == whole.get('officialCode')) != 1:
+        raise ValueError('administrative scope review: official code row is not unique')
+
+    old_record = compat.get('previousRecord')
+    new_record = compat.get('activeRecord')
+    if not isinstance(old_record, dict) or not isinstance(new_record, dict):
+        raise ValueError('reviewed official boundary parent membership: previous/active records are missing')
+    old_identities = old_record.get('identityEvidence')
+    new_identities = new_record.get('identityEvidence')
+    if not isinstance(old_identities, list) or not isinstance(new_identities, list):
+        raise ValueError('reviewed official boundary parent membership: identityEvidence is missing')
+    old_children = [row for row in old_identities if isinstance(row, dict)
+                    and row.get('method') == 'current_coded_sector' and row.get('id') == owner_id]
+    old_legacy = [row for row in old_identities if isinstance(row, dict) and row.get('method') == LEGACY]
+    new_parents = [row for row in new_identities if isinstance(row, dict) and row.get('method') == METHOD]
+    if (len(old_children) != 1 or len(old_legacy) != 1 or len(new_parents) != 1
+            or new_parents[0].get('id') != parent_id):
+        raise ValueError('reviewed official boundary parent membership: expected exactly one child and legacy/new parent identity')
+    old_child = old_children[0]
+    old_parent = old_legacy[0]
+    new_parent = new_parents[0]
+    if old_parent.get('id') != parent_id:
+        raise ValueError('reviewed official boundary parent membership.parentId: does not match legacy parent identity')
+    registry = review['currentOfficialRegistry']
+    if not isinstance(registry, dict) or registry != old_child.get('currentOfficialRecord'):
+        raise ValueError('reviewed official boundary parent membership.currentOfficialRegistry: does not match old child registry')
+    if whole.get('officialRegistryRow') != registry:
+        raise ValueError('reviewed official boundary parent membership.wholeScopeRow.officialRegistryRow: does not match child registry')
+
+    replacement = compat.get('acceptedBoundaryReplacement')
+    if (not isinstance(replacement, dict) or replacement.get('id') != owner_id
+            or replacement.get('record', {}).get('scopeKind', 'whole_imada') != 'whole_imada'):
+        raise ValueError('reviewed official boundary parent membership: accepted whole boundary replacement is missing')
+    source_record = replacement.get('sourceRecord')
+    if not isinstance(source_record, dict):
+        raise ValueError('reviewed official boundary parent membership: accepted source record is missing')
+    source_id = _str(source_record.get('id'), 'reviewed official boundary parent membership.sourceRecord.id', nonempty=True)
+    properties = feature.get('properties') or {}
+    if not isinstance(properties, dict):
+        raise ValueError('reviewed official boundary parent membership: accepted feature properties are missing')
+    if (properties.get('id') != owner_id or properties.get('sourceId') != source_id
+            or properties.get('officialCode') != registry.get('sectorCode')
+            or properties.get('nameAr') != registry.get('sectorAr')
+            or properties.get('nameFr') != registry.get('sectorFr')
+            or properties.get('parentAr') != registry.get('delegationAr')
+            or properties.get('parentFr') != registry.get('delegationFr')
+            or properties.get('governorateAr') != registry.get('governorateAr')
+            or properties.get('governorateFr') != registry.get('governorateFr')
+            or properties.get('governorateCode') != registry.get('governorateCode')
+            or properties.get('delegationCode') != registry.get('delegationCode')):
+        raise ValueError('reviewed official boundary parent membership: accepted feature names/codes do not match the registry')
+    if (whole.get('officialCode') != registry.get('sectorCode')
+            or whole.get('imadaName') != registry.get('sectorAr')
+            or whole.get('delegationName') != registry.get('delegationAr')
+            or whole.get('governorateName') != registry.get('governorateAr')
+            or whole.get('delegationCode') != registry.get('delegationCode')
+            or whole.get('governorateCode') != registry.get('governorateCode')
+            or whole.get('boundarySourceId') != source_id
+            or whole.get('boundarySourceFile') != replacement.get('geojson', {}).get('file')
+            or whole.get('boundarySourceSha256') != replacement.get('geojson', {}).get('sha256')):
+        raise ValueError('reviewed official boundary parent membership: scope hierarchy or source does not match the accepted feature')
+
+    parent_registry = old_parent.get('currentOfficialRecord')
+    if not isinstance(parent_registry, dict) or not set(parent_registry).issubset(registry):
+        raise ValueError('reviewed official boundary parent membership: parent registry is not a child-registry subset')
+    if any(registry.get(key) != value for key, value in parent_registry.items()):
+        raise ValueError('reviewed official boundary parent membership: parent registry values changed')
+    parent_code = _str(old_parent.get('code'), 'reviewed official boundary parent membership.parent code', nonempty=True)
+    if parent_code != registry.get('delegationCode') or parent_code != parent_registry.get('delegationCode'):
+        raise ValueError('reviewed official boundary parent membership: parent code is not the delegation code')
+    parent_name_key = picker_review_name_key(old_parent.get('name', ''))
+    delegation_name_key = picker_review_name_key(registry.get('delegationAr', ''))
+    if parent_name_key not in (delegation_name_key,
+                               picker_review_name_key('معتمدية ' + registry.get('delegationAr', ''))):
+        raise ValueError('reviewed official boundary parent membership: parent name does not match the delegation registry')
+    expected_parent = json.loads(json.dumps(old_parent))
+    expected_parent['method'] = METHOD
+    expected_parent['parentMembershipReview'] = reference
+    if (new_parent != expected_parent
+            or json.dumps(new_parent, ensure_ascii=False, separators=(',', ':'), sort_keys=False)
+               != json.dumps(expected_parent, ensure_ascii=False, separators=(',', ':'), sort_keys=False)):
+        raise ValueError('reviewed official boundary parent membership: new parent identity is not the exact legacy identity with method/reference replacement')
+    if new_parent.get('currentOfficialRecord') != parent_registry:
+        raise ValueError('reviewed official boundary parent membership: parent registry changed')
+
+    original_child = original_sources.get(owner_id)
+    effective_child = effective_sources.get(owner_id)
+    original_parent = original_sources.get(parent_id)
+    effective_parent = effective_sources.get(parent_id)
+    if (not isinstance(original_child, dict) or not isinstance(effective_child, dict)
+            or not isinstance(original_parent, dict) or not isinstance(effective_parent, dict)
+            or original_child.get('shape') is None or effective_child.get('shape') is None
+            or original_parent.get('shape') is None or effective_parent.get('shape') is None):
+        raise ValueError('reviewed official boundary parent membership: actual original/effective source geometry is missing')
+    if original_child.get('kind') != 'sector' or effective_child.get('kind') != 'sector':
+        raise ValueError('reviewed official boundary parent membership: child sources are not sectors')
+    if (original_child['shape'].is_empty or not original_child['shape'].is_valid
+            or effective_child['shape'].is_empty or not effective_child['shape'].is_valid):
+        raise ValueError('reviewed official boundary parent membership: child geometry is invalid')
+    if aggregate_geometry_sha256(original_child['shape']) != review['originalChildGeometrySha256']:
+        raise ValueError('reviewed official boundary parent membership.originalChildGeometrySha256: mismatch')
+    if aggregate_geometry_sha256(effective_child['shape']) != review['effectiveChildGeometrySha256']:
+        raise ValueError('reviewed official boundary parent membership.effectiveChildGeometrySha256: mismatch')
+    if old_child.get('effectiveOriginalGeometrySha256') != review['originalChildGeometrySha256']:
+        raise ValueError('reviewed official boundary parent membership: old child original hash changed')
+    parent_hash = review['originalParentGeometrySha256']
+    if (review['effectiveParentGeometrySha256'] != parent_hash
+            or old_parent.get('effectiveOriginalGeometrySha256') != parent_hash):
+        raise ValueError('reviewed official boundary parent membership: parent hashes changed')
+    if (original_parent.get('kind') != 'delegation' or effective_parent.get('kind') != 'delegation'
+            or original_parent.get('tags') != old_parent.get('expectedOriginalTags')
+            or effective_parent.get('tags') != old_parent.get('expectedOriginalTags')
+            or original_parent['shape'].is_empty or not original_parent['shape'].is_valid
+            or effective_parent['shape'].is_empty or not effective_parent['shape'].is_valid
+            or aggregate_geometry_sha256(original_parent['shape']) != parent_hash
+            or aggregate_geometry_sha256(effective_parent['shape']) != parent_hash):
+        raise ValueError('reviewed official boundary parent membership: parent source phase changed')
+    if sum(1 for obj in effective_sources.values()
+           if (isinstance(obj, dict) and obj.get('kind') == 'delegation'
+               and isinstance(obj.get('tags'), dict)
+               and obj['tags'].get('ref:tn:codegeo') == parent_code)) != 1:
+        raise ValueError('reviewed official boundary parent membership: parent code is not unique among delegations')
+
+    membership = review['parentMembership']
+    _keys(membership, ('anchor', 'base', 'oldParentCoversOldChild', 'newParentCoversEffectiveChild',
+                       'differenceAreaDegree2', 'differenceAreaKm2', 'differenceMethod',
+                       'differenceGeometrySha256', 'fixedAnchorLatitude', 'toleranceRel', 'toleranceAbs'),
+          'reviewed official boundary parent membership.parentMembership')
+    anchor = _point(membership['anchor'], 'reviewed official boundary parent membership.parentMembership.anchor')
+    base = _point(membership['base'], 'reviewed official boundary parent membership.parentMembership.base')
+    if membership['oldParentCoversOldChild'] is not True or membership['newParentCoversEffectiveChild'] is not False:
+        raise ValueError('reviewed official boundary parent membership.parentMembership: coverage flags changed')
+    if membership['toleranceRel'] != 1e-12 or membership['toleranceAbs'] != 1e-12:
+        raise ValueError('reviewed official boundary parent membership.parentMembership: tolerances changed')
+    if membership['differenceMethod'] != DIFFERENCE_METHOD:
+        raise ValueError('reviewed official boundary parent membership.parentMembership.differenceMethod: unexpected value')
+    _sha(membership['differenceGeometrySha256'],
+         'reviewed official boundary parent membership.parentMembership.differenceGeometrySha256')
+    _num(membership['differenceAreaDegree2'],
+         'reviewed official boundary parent membership.parentMembership.differenceAreaDegree2', positive=True)
+    _num(membership['differenceAreaKm2'],
+         'reviewed official boundary parent membership.parentMembership.differenceAreaKm2')
+    _num(membership['fixedAnchorLatitude'],
+         'reviewed official boundary parent membership.parentMembership.fixedAnchorLatitude')
+    old_members = old_record.get('members')
+    if not isinstance(old_members, list) or len(old_members) != 1 or old_members[0].get('id') != owner_id:
+        raise ValueError('reviewed official boundary parent membership: old owner member is not the unique child')
+    old_member = old_members[0]
+    if anchor['lat'] != old_member.get('expectedLat') or anchor['lng'] != old_member.get('expectedLng'):
+        raise ValueError('reviewed official boundary parent membership.parentMembership.anchor: is not the fixed member anchor')
+    expected_base = old_record.get('expectedBase')
+    if (not isinstance(expected_base, dict) or base['lat'] != expected_base.get('lat')
+            or base['lng'] != expected_base.get('lng')):
+        raise ValueError('reviewed official boundary parent membership.parentMembership.base: is not the old expected base')
+    if membership['fixedAnchorLatitude'] != anchor['lat']:
+        raise ValueError('reviewed official boundary parent membership.parentMembership.fixedAnchorLatitude: mismatch')
+    anchor_point = Point(anchor['lng'], anchor['lat'])
+    base_point = Point(base['lng'], base['lat'])
+    for point in (anchor_point, base_point):
+        for source_shape in (original_parent['shape'], effective_parent['shape'],
+                             original_child['shape'], effective_child['shape']):
+            if not source_shape.covers(point):
+                raise ValueError('reviewed official boundary parent membership: parent/child geometry no longer covers the fixed membership points')
+    if not effective_parent['shape'].covers(original_child['shape']):
+        raise ValueError('reviewed official boundary parent membership: old parent no longer covers old child')
+    if effective_parent['shape'].covers(effective_child['shape']):
+        raise ValueError('reviewed official boundary parent membership: new parent unexpectedly covers effective child')
+    difference = effective_child['shape'].difference(effective_parent['shape'])
+    if difference.is_empty or not difference.is_valid or not math.isfinite(difference.area) or difference.area <= 0:
+        raise ValueError('reviewed official boundary parent membership: difference geometry is empty')
+    if aggregate_geometry_sha256(difference) != membership['differenceGeometrySha256']:
+        raise ValueError('reviewed official boundary parent membership.parentMembership.differenceGeometrySha256: mismatch')
+    if not math.isclose(difference.area, membership['differenceAreaDegree2'], rel_tol=1e-12, abs_tol=1e-12):
+        raise ValueError('reviewed official boundary parent membership.parentMembership.differenceAreaDegree2: mismatch')
+    local_area = difference.area * 111.32 ** 2 * math.cos(math.radians(membership['fixedAnchorLatitude']))
+    if not math.isclose(local_area, membership['differenceAreaKm2'], rel_tol=1e-12, abs_tol=1e-12):
+        raise ValueError('reviewed official boundary parent membership.parentMembership.differenceAreaKm2: mismatch')
+    return reference
+
+
+def load_reviewed_picker_manifest_for_lineage(directory, reference, picker_path, picker, source_sha256,
+                                              reviewed_boundaries=None, official_report=None,
+                                              original_sources=None, effective_sources=None,
+                                              _lineage_depth=0, _lineage_seen=None) -> bytes:
     import re
 
     METHOD = 'reviewed_source_bound_residential_base_display_identity'
     SECTION = 'residentialDisplayAssociations'
     COMPAT_METHOD = 'reviewed_picker_proof_successor'
+    STRICT_METHOD = 'reviewed_picker_strict_boundary_successor'
     LINEAGE_METHOD = 'reviewed_source_bound_residential_official_boundary_lineage'
     SHA_RE = re.compile(r'^[0-9a-f]{64}$')
 
@@ -3008,12 +4046,409 @@ def load_reviewed_picker_manifest_for_lineage(directory, reference, picker_path,
 
     active_sha = hashlib.sha256(active_raw).hexdigest()
     if active_sha == reference['sha256']:
-        return active_raw
+        _same_sha_lineage = active_json.get('lineageCompatibility')
+        _same_sha_method = None
+        if isinstance(_same_sha_lineage, dict):
+            _same_sha_path, _same_sha_raw, _same_sha_doc = _load_ref(_same_sha_lineage, 'picker lineage compatibility')
+            if isinstance(_same_sha_doc, dict):
+                _same_sha_method = _same_sha_doc.get('method')
+        if _same_sha_method != STRICT_METHOD:
+            return active_raw
 
     if 'lineageCompatibility' not in active_json:
         raise ValueError('active picker manifest: sha256 mismatch without lineageCompatibility')
     compat_ref = active_json['lineageCompatibility']
     _compat_path, _compat_raw, compat = _load_ref(compat_ref, 'picker lineage compatibility')
+    if isinstance(compat, dict) and compat.get('method') == STRICT_METHOD:
+        def _strict_boundary_successor_branch():
+            _exact_keys(compat, (
+                'schemaVersion', 'method', 'sourceSha256', 'previousManifest', 'ownerId', 'previousRecord',
+                'activeRecord', 'previousProofCollection', 'successorProofCollection', 'reviewedBoundaries',
+                'acceptedBoundaryReplacement', 'qualification'), 'lineageCompatibility (strict boundary successor)')
+            if _int(compat['schemaVersion'], 'lineageCompatibility.schemaVersion') != 1:
+                raise ValueError('lineageCompatibility.schemaVersion: expected 1')
+            if compat['sourceSha256'] != source_sha256:
+                raise ValueError('lineageCompatibility.sourceSha256: does not match source_sha256')
+            _str(compat['qualification'], 'lineageCompatibility.qualification', nonempty=True)
+            if _lineage_depth >= 8:
+                raise ValueError('lineageCompatibility: strict boundary successor depth exceeded')
+            _seen = set() if _lineage_seen is None else set(_lineage_seen)
+            if (str(active_path), active_sha) in _seen:
+                raise ValueError('lineageCompatibility: strict boundary successor cycle detected')
+            _seen.add((str(active_path), active_sha))
+            _owner_id = _str(compat['ownerId'], 'lineageCompatibility.ownerId', nonempty=True)
+            if not isinstance(reviewed_boundaries, (str, Path)) or not isinstance(official_report, dict):
+                raise ValueError('lineageCompatibility: strict successor needs the active reviewed boundaries and report')
+            if not isinstance(original_sources, dict) or not isinstance(effective_sources, dict):
+                raise ValueError('lineageCompatibility: strict successor needs the actual source phases')
+            _prev_ref = compat['previousManifest']
+            _exact_keys(_prev_ref, ('file', 'sha256'), 'lineageCompatibility.previousManifest')
+            _sha(_prev_ref['sha256'], 'lineageCompatibility.previousManifest.sha256')
+            _prev_path, _prev_raw, _previous_json = _load_ref(_prev_ref, 'lineageCompatibility.previousManifest')
+            if _prev_path == active_path:
+                raise ValueError('lineageCompatibility.previousManifest: path must differ from active path')
+            if (str(_prev_path), _prev_ref['sha256']) in _seen:
+                raise ValueError('lineageCompatibility.previousManifest: lineage cycle detected')
+            if (not isinstance(_previous_json, dict)
+                    or _int(_previous_json.get('schemaVersion'), 'previous manifest.schemaVersion') != 1):
+                raise ValueError('previous manifest.schemaVersion: expected 1')
+            if _previous_json.get('sourceSha256') != source_sha256:
+                raise ValueError('previous manifest.sourceSha256: does not match source_sha256')
+            _old_rows = _previous_json.get('records')
+            _new_rows = active_json.get('records')
+            if not isinstance(_old_rows, list) or not isinstance(_new_rows, list):
+                raise ValueError('lineageCompatibility: picker manifests need a records list')
+            _old_index = [i for i, row in enumerate(_old_rows) if isinstance(row, dict) and row.get('id') == _owner_id]
+            _new_index = [i for i, row in enumerate(_new_rows) if isinstance(row, dict) and row.get('id') == _owner_id]
+            if len(_old_index) != 1 or _old_index != _new_index:
+                raise ValueError('lineageCompatibility: owner id must occur once at the same index')
+            _old_record = compat['previousRecord']
+            _new_record = compat['activeRecord']
+            if (not isinstance(_old_record, dict) or not isinstance(_new_record, dict)
+                    or _old_rows[_old_index[0]] != _old_record or _new_rows[_new_index[0]] != _new_record
+                    or json.dumps(_old_rows[_old_index[0]], separators=(',', ':'), sort_keys=False)
+                       != json.dumps(_old_record, separators=(',', ':'), sort_keys=False)
+                    or json.dumps(_new_rows[_new_index[0]], separators=(',', ':'), sort_keys=False)
+                       != json.dumps(_new_record, separators=(',', ':'), sort_keys=False)):
+                raise ValueError('lineageCompatibility: owner records do not match the manifests')
+            _replacement = compat['acceptedBoundaryReplacement']
+            if (not isinstance(_replacement, dict) or set(_replacement) != {
+                    'id', 'sourceRecord', 'record', 'application', 'geojson', 'featureSha256', 'providerEvidence'}
+                    or _replacement.get('id') != _owner_id):
+                raise ValueError('lineageCompatibility.acceptedBoundaryReplacement: unexpected shape')
+            _source = _replacement.get('sourceRecord')
+            _accepted = _replacement.get('record')
+            _boundary_ref = compat['reviewedBoundaries']
+            _exact_keys(_boundary_ref, ('file', 'sha256'), 'lineageCompatibility.reviewedBoundaries')
+            _sha(_boundary_ref['sha256'], 'lineageCompatibility.reviewedBoundaries.sha256')
+            if _resolve(_boundary_ref['file'], 'lineageCompatibility.reviewedBoundaries') != Path(reviewed_boundaries).resolve():
+                raise ValueError('lineageCompatibility.reviewedBoundaries: does not bind the active accepted manifest')
+            _boundary_manifest = load_reviewed_boundary_manifest_for_lineage(
+                directory, _boundary_ref, reviewed_boundaries, official_report)
+            if (not isinstance(_boundary_manifest, dict) or not isinstance(_source, dict) or not isinstance(_accepted, dict)
+                    or [s for s in _boundary_manifest.get('sources', []) if s.get('id') == _source.get('id')] != [_source]
+                    or [r for r in _source.get('records', []) if r.get('id') == _owner_id] != [_accepted]
+                    or _source.get('sourceSha256') != source_sha256 or _source.get('id') == 'osm'
+                    or _accepted.get('action') != 'replace' or not _accepted.get('expectedOriginalTags')):
+                raise ValueError('lineageCompatibility.acceptedBoundaryReplacement: does not match the accepted loader report')
+            _application = {'id': _owner_id, 'action': 'replace', 'officialCode': _accepted['officialCode'],
+                            'sourceId': _source['id']}
+            if (_replacement.get('application') != _application
+                    or [r for r in official_report.get('applications', []) if r.get('id') == _owner_id] != [_application]
+                    or official_report.get('sources', {}).get(_source['id']) != {
+                        k: v for k, v in _source.items() if k not in ('file', 'records')}):
+                raise ValueError('lineageCompatibility.acceptedBoundaryReplacement: provider evidence is not the active report')
+            if _replacement.get('geojson') != {'file': _source['file'], 'sha256': _source['sha256']}:
+                raise ValueError('lineageCompatibility.acceptedBoundaryReplacement: accepted feature file is not the provider record')
+            _sha(_replacement['featureSha256'], 'lineageCompatibility.acceptedBoundaryReplacement.featureSha256')
+            _collection = json.loads(aggregate_review_file(Path(reviewed_boundaries).parent,
+                                                           _replacement['geojson'], 'picker accepted boundary feature'))
+            _matches = [f for f in _collection.get('features', []) if f.get('id') == _owner_id] if isinstance(_collection, dict) else []
+            if len(_matches) != 1:
+                raise ValueError('lineageCompatibility.acceptedBoundaryReplacement: accepted feature is not unique')
+            _feature = _matches[0]
+            _properties = _feature.get('properties') or {}
+            if (_feature.get('type') != 'Feature' or _properties.get('sourceId') != _source['id']
+                    or _properties.get('officialCode') != _accepted['officialCode']
+                    or hashlib.sha256(json.dumps(_feature, ensure_ascii=False, sort_keys=True,
+                                                 separators=(',', ':')).encode('utf-8')).hexdigest() != _replacement['featureSha256']):
+                raise ValueError('lineageCompatibility.acceptedBoundaryReplacement: accepted feature hash or identity changed')
+            _provider_decision = _replacement['providerEvidence']
+            aggregate_review_file(directory, _provider_decision, 'picker accepted boundary provider decision')
+            if ((directory / _provider_decision['file']).resolve()
+                    != (Path(reviewed_boundaries).parent / _source['review']['evidenceFile']).resolve()
+                    or _provider_decision['sha256'] != _source['review']['evidenceSha256']):
+                raise ValueError('lineageCompatibility.acceptedBoundaryReplacement: provider decision is not active')
+            _original = original_sources.get(_owner_id)
+            _effective = effective_sources.get(_owner_id)
+            if (not isinstance(_original, dict) or not isinstance(_effective, dict)
+                    or _original.get('shape') is None or _effective.get('shape') is None):
+                raise ValueError('lineageCompatibility: actual original/effective owner source is missing')
+            if not isinstance(_old_record.get('members'), list) or len(_old_record['members']) != 1:
+                raise ValueError('lineageCompatibility: expected a single sector member')
+            _native_sha = aggregate_geometry_sha256(shape(_feature['geometry']))
+            if _native_sha != aggregate_geometry_sha256(_effective['shape']):
+                raise ValueError('lineageCompatibility: effective owner geometry does not match the accepted whole source')
+            if _effective['shape'].is_empty or not _effective['shape'].is_valid:
+                raise ValueError('lineageCompatibility: invalid accepted owner shape')
+            _packed = set_precision(_effective['shape'], 1 / SCALE)
+            if _packed.is_empty or not _packed.is_valid:
+                raise ValueError('lineageCompatibility: invalid packed owner shape')
+            _packed_sha = hashlib.sha256(packed_geometry_bytes(_packed)).hexdigest()
+            _derived_tags = {'boundary': 'administrative', 'admin_level': '6', 'ref:tn:codegeo': _accepted['officialCode'],
+                             'name:ar': _properties['nameAr'], 'name:fr': _properties['nameFr']}
+            if _accepted.get('aliases'):
+                _derived_tags['alt_name'] = ';'.join(_accepted['aliases'])
+            _old_member = _old_record['members'][0]
+            _original_tags = _original.get('tags')
+            _original_geometry_sha = (aggregate_geometry_sha256(_original['shape'])
+                                      if _original.get('shape') is not None else _original.get('geometrySha256'))
+            if (not isinstance(_original_tags, dict) or not isinstance(_original_geometry_sha, str)
+                    or _original_tags != _old_member.get('expectedOriginalTags')
+                    or _original.get('kind') != 'sector' or _original.get('sourceId') is not None
+                    or _old_member.get('id') != _owner_id or _old_member.get('expectedKind') != 'sector'
+                    or _old_member.get('expectedSourceId') != 'osm'
+                    or _original_geometry_sha != _old_member.get('originalGeometrySha256')
+                    or any(_original_tags.get(k) != v for k, v in _accepted['expectedOriginalTags'].items())
+                    or _accepted['officialCode'] != _original_tags.get('ref:tn:codegeo')
+                    or _effective.get('tags') != _derived_tags or _effective.get('sourceId') != _source['id']
+                    or _effective.get('kind') != _original.get('kind')):
+                raise ValueError('lineageCompatibility: owner source phases do not match the accepted replacement')
+            for _point in ((_old_member.get('expectedLat'), _old_member.get('expectedLng')),
+                           (_old_record.get('expectedBase', {}).get('lat'), _old_record.get('expectedBase', {}).get('lng'))):
+                if (not all(isinstance(value, (int, float)) and not isinstance(value, bool) for value in _point)
+                        or not all(math.isfinite(value) for value in _point)
+                        or not _effective['shape'].covers(Point(_point[1], _point[0]))
+                        or not _packed.covers(Point(_point[1], _point[0]))):
+                    raise ValueError('lineageCompatibility: effective owner geometry does not cover the fixed anchor/base')
+            _expected_owner = json.loads(json.dumps(_old_record))
+            _expected_owner['members'][0]['expectedSourceId'] = _source['id']
+            _expected_owner['members'][0]['originalGeometrySha256'] = _native_sha
+            _expected_owner['members'][0]['packedGeometrySha256'] = _packed_sha
+            _identity_index = [i for i, row in enumerate(_expected_owner.get('identityEvidence') or [])
+                               if isinstance(row, dict) and row.get('method') == 'current_coded_sector'
+                               and row.get('id') == _owner_id]
+            if len(_identity_index) != 1:
+                raise ValueError('lineageCompatibility: expected exactly one current_coded_sector identity')
+            _expected_owner['identityEvidence'][_identity_index[0]]['effectiveOriginalGeometrySha256'] = _native_sha
+            _parent_method = 'reviewed_official_boundary_parent_membership'
+            _parent_rows = [row for row in _new_record.get('identityEvidence') or []
+                            if isinstance(row, dict) and row.get('method') == _parent_method]
+            _parent_ref = None
+            if _parent_rows:
+                if len(_parent_rows) != 1:
+                    raise ValueError('lineageCompatibility: expected one reviewed official parent membership')
+                _parent_ref = validate_reviewed_official_boundary_parent_membership(
+                    _parent_rows[0].get('parentMembershipReview'), directory, compat, _boundary_manifest,
+                    _feature, original_sources, effective_sources, source_sha256)
+                _parent_indices = [i for i, row in enumerate(_expected_owner.get('identityEvidence') or [])
+                                   if isinstance(row, dict)
+                                   and row.get('method') == 'current_coded_namesake_administrative_parent'
+                                   and row.get('id') == _parent_rows[0]['id']]
+                if len(_parent_indices) != 1:
+                    raise ValueError('lineageCompatibility: exact previous parent identity missing')
+                _expected_owner['identityEvidence'][_parent_indices[0]]['method'] = _parent_method
+                _expected_owner['identityEvidence'][_parent_indices[0]]['parentMembershipReview'] = _parent_ref
+            if (_new_record != _expected_owner
+                    or json.dumps(_new_record, ensure_ascii=False, separators=(',', ':'), sort_keys=False)
+                    != json.dumps(_expected_owner, ensure_ascii=False, separators=(',', ':'), sort_keys=False)):
+                raise ValueError('lineageCompatibility: active owner record changes more than the four allowlisted fields')
+            _prev_proof_ref = compat['previousProofCollection']
+            _succ_proof_ref = compat['successorProofCollection']
+            for _proof_ref, _proof_label in ((_prev_proof_ref, 'previousProofCollection'), (_succ_proof_ref, 'successorProofCollection')):
+                _exact_keys(_proof_ref, ('file', 'sha256'), 'lineageCompatibility.' + _proof_label)
+                _sha(_proof_ref['sha256'], 'lineageCompatibility.' + _proof_label + '.sha256')
+            if (_prev_proof_ref == _succ_proof_ref or _prev_proof_ref['file'] == _succ_proof_ref['file']
+                    or _prev_proof_ref['sha256'] == _succ_proof_ref['sha256']):
+                raise ValueError('lineageCompatibility: proof collection references must be unique')
+            _prev_proof_path, _prev_proof_raw, _previous_proof = _load_ref(_prev_proof_ref, 'lineageCompatibility.previousProofCollection')
+            _succ_proof_path, _succ_proof_raw, _successor_proof = _load_ref(_succ_proof_ref, 'lineageCompatibility.successorProofCollection')
+            if (_prev_proof_path == _succ_proof_path or not isinstance(_previous_proof, dict)
+                    or not isinstance(_successor_proof, dict)):
+                raise ValueError('lineageCompatibility: proof collections must be distinct objects')
+            _prev_proof_rows = _previous_proof.get('records')
+            _succ_proof_rows = _successor_proof.get('records')
+            if not isinstance(_prev_proof_rows, list) or not isinstance(_succ_proof_rows, list):
+                raise ValueError('lineageCompatibility: proof collections need a records list')
+            _proof_index = [i for i, row in enumerate(_prev_proof_rows) if isinstance(row, dict) and row.get('id') == _owner_id]
+            if (len(_proof_index) != 1
+                    or [i for i, row in enumerate(_succ_proof_rows) if isinstance(row, dict) and row.get('id') == _owner_id] != _proof_index):
+                raise ValueError('lineageCompatibility: eligible owner proof must occur once at the same index')
+            _old_proof = _prev_proof_rows[_proof_index[0]]
+            _new_proof = _succ_proof_rows[_proof_index[0]]
+            _expected_proof = json.loads(json.dumps(_previous_proof))
+            _expected_proof['records'][_proof_index[0]] = _new_proof
+            if (_expected_proof != _successor_proof
+                    or json.dumps(_expected_proof, ensure_ascii=False, separators=(',', ':'), sort_keys=False)
+                    != json.dumps(_successor_proof, ensure_ascii=False, separators=(',', ':'), sort_keys=False)):
+                raise ValueError('lineageCompatibility: successor proof collection changes more than the eligible owner proof')
+            if (_old_proof.get('status') != 'eligible_proposal'
+                    or not isinstance(_old_proof.get('members'), list) or len(_old_proof['members']) != 1
+                    or _old_proof['members'][0].get('id') != _owner_id):
+                raise ValueError('lineageCompatibility: owner proof is not the exact eligible sector')
+            _expected_owner_proof = json.loads(json.dumps(_old_proof))
+            _expected_owner_proof['members'][0]['officialSource'] = {
+                'sourceId': _source['id'], 'officialCode': _accepted['officialCode'],
+                'geometrySha256': _native_sha, 'packedGeometrySha256': _packed_sha}
+            _expected_owner_proof['proposedBehavior'] = (
+                'Existing identity and picker membership retained; effective sector boundary replaced by '
+                'the explicitly accepted official whole-imada source. Historical evidence and original '
+                'OSM geometry are preserved separately.')
+            if _parent_ref is not None:
+                _proof_parent_indices = [i for i, row in enumerate(_expected_owner_proof.get('identityEvidence') or [])
+                                         if isinstance(row, dict)
+                                         and row.get('method') == 'current_coded_namesake_administrative_parent'
+                                         and row.get('id') == _parent_rows[0]['id']]
+                if len(_proof_parent_indices) != 1:
+                    raise ValueError('lineageCompatibility: exact previous proof parent identity missing')
+                _expected_owner_proof['identityEvidence'][_proof_parent_indices[0]]['method'] = _parent_method
+                _expected_owner_proof['identityEvidence'][_proof_parent_indices[0]]['parentMembershipReview'] = _parent_ref
+                _expected_owner_proof['proposedBehavior'] = 'Reviewed official whole-imada source is the effective sector boundary. The legacy coded delegation parent geometry does not cover that effective whole sector, so administrative parent membership is established by reviewed_official_boundary_parent_membership instead of legacy containment. Historical identity and original OSM geometry are preserved.'
+            if (_new_proof != _expected_owner_proof
+                    or json.dumps(_new_proof, separators=(',', ':'), sort_keys=False)
+                       != json.dumps(_expected_owner_proof, separators=(',', ':'), sort_keys=False)):
+                raise ValueError('lineageCompatibility: owner proof differs outside the exact two-path successor')
+            _evidence_refs = []
+            if isinstance(active_json.get('reviewEvidence'), dict):
+                _evidence_refs.append(active_json['reviewEvidence'])
+            _additional_evidence = active_json.get('additionalReviewEvidence')
+            if _additional_evidence is not None:
+                if (not isinstance(_additional_evidence, list)
+                        or any(not isinstance(item, dict) for item in _additional_evidence)):
+                    raise ValueError('active picker manifest.additionalReviewEvidence: expected references')
+                _evidence_refs.extend(_additional_evidence)
+            _eligible_ids = []
+            for _evidence_ref in _evidence_refs:
+                _evidence_doc = json.loads(aggregate_review_file(directory, _evidence_ref, 'picker review evidence'))
+                _evidence_rows = _evidence_doc.get('records') if isinstance(_evidence_doc, dict) else None
+                if not isinstance(_evidence_rows, list):
+                    raise ValueError('picker review evidence: expected a records list')
+                for _evidence_row in _evidence_rows:
+                    if isinstance(_evidence_row, dict) and _evidence_row.get('status') == 'eligible_proposal':
+                        _eligible_ids.append(_str(_evidence_row.get('id'), 'picker review evidence.records[].id', nonempty=True))
+            if len(_eligible_ids) != len(set(_eligible_ids)):
+                raise ValueError('active picker review collections contain a duplicate eligible id')
+            _expected_active = json.loads(json.dumps(_previous_json))
+            _expected_active['records'][_old_index[0]] = _new_record
+            _replaced_refs = 0
+            if _expected_active.get('reviewEvidence') == _prev_proof_ref:
+                _expected_active['reviewEvidence'] = _succ_proof_ref
+                _replaced_refs += 1
+            _expected_additional = _expected_active.get('additionalReviewEvidence')
+            if isinstance(_expected_additional, list):
+                _expected_active['additionalReviewEvidence'] = [
+                    _succ_proof_ref if item == _prev_proof_ref else item for item in _expected_additional]
+                _replaced_refs += sum(1 for item in _expected_additional if item == _prev_proof_ref)
+            if _replaced_refs != 1:
+                raise ValueError('lineageCompatibility.previousProofCollection: must be replaced exactly once')
+            _expected_active['lineageCompatibility'] = compat_ref
+            if (_expected_active != active_json
+                    or json.dumps(_expected_active, ensure_ascii=False, separators=(',', ':'), sort_keys=False)
+                    != json.dumps(active_json, ensure_ascii=False, separators=(',', ':'), sort_keys=False)):
+                raise ValueError('active picker manifest: does not match the strict boundary successor reconstruction')
+            _previous_reference = {'file': _prev_ref['file'],
+                                   'sha256': _prev_ref['sha256'] if active_sha == reference['sha256'] else reference['sha256']}
+            load_reviewed_picker_manifest_for_lineage(
+                directory, _previous_reference, _prev_path, _previous_json, source_sha256,
+                reviewed_boundaries=reviewed_boundaries, official_report=official_report,
+                original_sources=original_sources, effective_sources=effective_sources,
+                _lineage_depth=_lineage_depth + 1, _lineage_seen=_seen)
+            return active_raw
+        return _strict_boundary_successor_branch()
+    if isinstance(compat, dict) and compat.get('method') == 'reviewed_picker_local_records_append':
+        _exact_keys(
+            compat,
+            ('schemaVersion', 'method', 'sourceSha256', 'previousManifest', 'appendedLocalRecords', 'appendedLocalReviewEvidence', 'qualification'),
+            'active picker manifest.lineageCompatibility (local records append)',
+        )
+        if _int(compat['schemaVersion'], 'lineageCompatibility.schemaVersion') != 1:
+            raise ValueError('lineageCompatibility.schemaVersion: expected 1')
+        if compat['sourceSha256'] != source_sha256:
+            raise ValueError('lineageCompatibility.sourceSha256: does not match source_sha256')
+        _str(compat['qualification'], 'lineageCompatibility.qualification', nonempty=True)
+
+        append_prev_ref = compat['previousManifest']
+        _exact_keys(append_prev_ref, ('file', 'sha256'), 'lineageCompatibility.previousManifest')
+        _sha(append_prev_ref['sha256'], 'lineageCompatibility.previousManifest.sha256')
+        if append_prev_ref['sha256'] != reference['sha256']:
+            raise ValueError('lineageCompatibility.previousManifest.sha256: does not match reference.sha256')
+        append_prev_path, _append_prev_raw, append_previous_json = _load_ref(append_prev_ref, 'lineageCompatibility.previousManifest')
+        if append_prev_path == active_path:
+            raise ValueError('lineageCompatibility.previousManifest: path must differ from active path')
+        if not isinstance(append_previous_json, dict):
+            raise ValueError('previous manifest: expected object')
+        if _int(append_previous_json.get('schemaVersion'), 'previous manifest.schemaVersion') != 1:
+            raise ValueError('previous manifest.schemaVersion: expected 1')
+        if append_previous_json.get('sourceSha256') != source_sha256:
+            raise ValueError('previous manifest.sourceSha256: does not match source_sha256')
+        if 'lineageCompatibility' in append_previous_json:
+            raise ValueError('previous manifest: lineageCompatibility must be absent')
+
+        old_local_records = append_previous_json.get('localRecords')
+        if not isinstance(old_local_records, list) or any(not isinstance(row, dict) for row in old_local_records):
+            raise ValueError('previous manifest.localRecords: expected a list of objects')
+        old_local_evidence = append_previous_json.get('additionalLocalReviewEvidence')
+        if not isinstance(old_local_evidence, list) or any(not isinstance(item, dict) for item in old_local_evidence):
+            raise ValueError('previous manifest.additionalLocalReviewEvidence: expected a list of objects')
+
+        appended_records = compat['appendedLocalRecords']
+        if not isinstance(appended_records, list) or len(appended_records) != 2:
+            raise ValueError('lineageCompatibility.appendedLocalRecords: expected exactly two records')
+        if any(not isinstance(record, dict) for record in appended_records):
+            raise ValueError('lineageCompatibility.appendedLocalRecords: expected object entries')
+        appended_ids = set()
+        for record in appended_records:
+            record_id = _str(record.get('id'), 'lineageCompatibility.appendedLocalRecords[].id', nonempty=True)
+            if record_id in appended_ids:
+                raise ValueError('lineageCompatibility.appendedLocalRecords: duplicate id')
+            appended_ids.add(record_id)
+            if any(old_local_record.get('id') == record_id for old_local_record in old_local_records):
+                raise ValueError('lineageCompatibility.appendedLocalRecords: id already present in previous manifest.localRecords')
+            if record.get('status') != 'eligible_proposal':
+                raise ValueError('lineageCompatibility.appendedLocalRecords[].status: unexpected value')
+            if record.get('method') != 'reviewed_named_neighbourhood_residential_display_identity':
+                raise ValueError('lineageCompatibility.appendedLocalRecords[].method: unexpected value')
+
+        appended_evidence_refs = compat['appendedLocalReviewEvidence']
+        if not isinstance(appended_evidence_refs, list) or len(appended_evidence_refs) != 1:
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence: expected exactly one reference')
+        append_evidence_ref = appended_evidence_refs[0]
+        _exact_keys(append_evidence_ref, ('file', 'sha256'), 'lineageCompatibility.appendedLocalReviewEvidence[0]')
+        _sha(append_evidence_ref['sha256'], 'lineageCompatibility.appendedLocalReviewEvidence[0].sha256')
+        append_evidence_path = _resolve(append_evidence_ref['file'], 'lineageCompatibility.appendedLocalReviewEvidence[0]')
+        for old_item in old_local_evidence:
+            if old_item == append_evidence_ref or old_item.get('file') == append_evidence_ref['file']:
+                raise ValueError('lineageCompatibility.appendedLocalReviewEvidence: reference or path already present')
+            old_file = old_item.get('file')
+            if isinstance(old_file, str):
+                old_path = _resolve(old_file, 'previous manifest.additionalLocalReviewEvidence[]')
+                if old_path == append_evidence_path:
+                    raise ValueError('lineageCompatibility.appendedLocalReviewEvidence: reference or path already present')
+        _append_evidence_path, _append_evidence_raw, append_evidence_json = _load_ref(append_evidence_ref, 'lineageCompatibility.appendedLocalReviewEvidence[0]')
+        if not isinstance(append_evidence_json, dict):
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence: expected object')
+        _exact_keys(
+            append_evidence_json,
+            ('schemaVersion', 'sourceSha256', 'sourceFacts', 'researchReview', 'records'),
+            'lineageCompatibility.appendedLocalReviewEvidence',
+        )
+        if _int(append_evidence_json['schemaVersion'], 'lineageCompatibility.appendedLocalReviewEvidence.schemaVersion') != 1:
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.schemaVersion: expected 1')
+        if append_evidence_json['sourceSha256'] != source_sha256:
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.sourceSha256: does not match source_sha256')
+        if append_evidence_json['records'] != appended_records:
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.records: does not match appendedLocalRecords')
+        if json.dumps(append_evidence_json['records'], separators=(',', ':'), sort_keys=False) != json.dumps(appended_records, separators=(',', ':'), sort_keys=False):
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.records: JSON order or types differ')
+
+        source_facts_ref = append_evidence_json['sourceFacts']
+        research_review_ref = append_evidence_json['researchReview']
+        _source_facts_path, _source_facts_raw, source_facts_json = _load_ref(source_facts_ref, 'lineageCompatibility.appendedLocalReviewEvidence.sourceFacts')
+        _research_review_path, _research_review_raw, research_review_json = _load_ref(research_review_ref, 'lineageCompatibility.appendedLocalReviewEvidence.researchReview')
+        if not isinstance(source_facts_json, dict):
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.sourceFacts: expected object')
+        if not isinstance(research_review_json, dict):
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.researchReview: expected object')
+        if source_facts_json.get('sourceSha256') != source_sha256:
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.sourceFacts.sourceSha256: does not match source_sha256')
+        if research_review_json.get('sourceSha256') != source_sha256:
+            raise ValueError('lineageCompatibility.appendedLocalReviewEvidence.researchReview.sourceSha256: does not match source_sha256')
+
+        append_expected_active = json.loads(json.dumps(append_previous_json))
+        append_expected_records = append_expected_active.get('localRecords')
+        if not isinstance(append_expected_records, list):
+            raise ValueError('previous manifest.localRecords: expected a list during reconstruction')
+        append_expected_records.extend(appended_records)
+        append_expected_evidence = append_expected_active.get('additionalLocalReviewEvidence')
+        if not isinstance(append_expected_evidence, list):
+            raise ValueError('previous manifest.additionalLocalReviewEvidence: expected a list during reconstruction')
+        append_expected_evidence.append(append_evidence_ref)
+        append_expected_active['lineageCompatibility'] = compat_ref
+        if append_expected_active != active_json:
+            raise ValueError('active picker manifest: does not match local records append reconstruction')
+        if json.dumps(append_expected_active, separators=(',', ':'), sort_keys=False) != json.dumps(active_json, separators=(',', ':'), sort_keys=False):
+            raise ValueError('active picker manifest: serialized order or types differ from local records append reconstruction')
+        return active_raw
     _exact_keys(
         compat,
         ('schemaVersion', 'method', 'sourceSha256', 'previousManifest', 'changes', 'qualification'),
@@ -3502,7 +4937,10 @@ def validate_reviewed_town_preservation_extension(directory, review, rule, regis
         raise ValueError('Reviewed town touching prior picker inventory changed')
     if touching:
         reference = prior['manifest']
-        pinned = load_reviewed_picker_manifest_for_lineage(directory, reference, picker_path, picker, source_sha256)
+        pinned = load_reviewed_picker_manifest_for_lineage(
+            directory, reference, picker_path, picker, source_sha256,
+            reviewed_boundaries=reviewed_boundaries, official_report=official_report,
+            original_sources=original_sources, effective_sources=effective_sources)
         if (directory / reference['file']).resolve() != picker_path.resolve() or json.loads(pinned) != picker:
             raise ValueError('Reviewed town prior picker pin does not bind the active manifest')
     elif prior['manifest'] is not None:
@@ -3763,7 +5201,7 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
         base = bases[0]
         if (min(timetables, key=lambda d: (distance(current['lat'], current['lng'], d), d['id']))['id'] != manual_target
                 or min(timetables, key=lambda d: (distance(base['lat'], base['lng'], d), d['id']))['id'] != target
-                or [r for r in json.loads(Path(coordinate_path).read_bytes())['corrections']
+                or [r for r in json.loads(display_identity_coordinate_bytes(Path(coordinate_path).parent))['corrections']
                     if r['delegationId'] == target] != review['expectedCoordinateCorrections']):
             raise ValueError('Reviewed separate references or available prayer source changed')
         node = json.loads(aggregate_review_file(directory, review['sourceNode'], 'exact named source point'))['elements']
@@ -3937,7 +5375,8 @@ def validate_reviewed_point_base_display(rule, manifest_path, coordinate_path, o
                 for row in read_only_name_contexts]
         if 'deferredCompleteGroupExtension' in review:
             result['deferredCompleteGroupExtension'] = validate_deferred_complete_group_extension(
-                review, reviewed_picker_groups, original_sources, effective_sources, curation, rule, source_sha256)
+                review, reviewed_picker_groups, original_sources, effective_sources, curation, rule, source_sha256,
+                reviewed_boundaries=reviewed_boundaries, official_report=official_report)
         return result
     except (OSError, UnicodeError, ValueError, KeyError, TypeError, AttributeError, IndexError) as error:
         raise ValueError('Missing, malformed or changed reviewed point/base display identity') from error
@@ -5802,6 +7241,170 @@ def validate_reviewed_sector_settlement_display_identity(record, directory, feat
         raise ValueError('Reviewed sector settlement display identity is malformed') from exc
 
 
+def validate_reviewed_named_neighbourhood_residential_display_identity(
+        record, features, geometries, indices, original_sources, effective_sources, curation, timetables):
+    '''Validate one exact reviewed named neighbourhood/residential display-identity join.'''
+    record_keys = {'id', 'status', 'method', 'targetPickerGroupId', 'expectedExistingMemberIds',
+                   'expectedTargetMemberIds', 'expectedGovernorateId', 'expectedDelegationId',
+                   'expectedParentName', 'relationship', 'nameEvidence', 'members', 'qualifications'}
+    if (set(record) != record_keys or record.get('status') != 'eligible_proposal'
+            or record.get('method') != 'reviewed_named_neighbourhood_residential_display_identity'
+            or record.get('relationship') not in ('quarter_residential', 'neighbourhood_point_residential')):
+        raise ValueError('Invalid reviewed named neighbourhood/residential record')
+    left, right = record.get('expectedExistingMemberIds'), record.get('expectedTargetMemberIds')
+    if (not isinstance(left, list) or not isinstance(right, list) or not left or not right
+            or any(not isinstance(mid, str) for mid in left + right)
+            or len(left) != len(set(left)) or len(right) != len(set(right)) or set(left) & set(right)):
+        raise ValueError('Invalid reviewed named neighbourhood/residential group binding')
+    name = record.get('nameEvidence')
+    if (not isinstance(name, dict) or set(name) != {'arabic', 'latin', 'residentialLatin'}
+            or any(not isinstance(name.get(key), str) or not name[key] for key in name)):
+        raise ValueError('Invalid reviewed named neighbourhood/residential name evidence')
+    qualifications = record.get('qualifications')
+    if (not isinstance(qualifications, dict)
+            or set(qualifications) != {'displayIdentityOnly', 'noBoundaryEqualityClaim',
+                                       'allRawGeometryAndCoordinatesRetained',
+                                       'prayerSourceIsNotIdentityEvidence'}
+            or any(value is not True for value in qualifications.values())):
+        raise ValueError('Invalid reviewed named neighbourhood/residential qualifications')
+    members = record.get('members')
+    member_keys = {'id', 'expectedMetadata', 'expectedOriginalTags', 'expectedEffectiveTags',
+                   'expectedCuration', 'originalGeometrySha256', 'packedGeometrySha256'}
+    if (not isinstance(members, list) or len(members) != len(left) + len(right)
+            or any(not isinstance(member, dict) or set(member) != member_keys for member in members)):
+        raise ValueError('Invalid reviewed named neighbourhood/residential member inventory')
+    member_by_id = {}
+    for member in members:
+        mid, metadata = member.get('id'), member.get('expectedMetadata')
+        if (not isinstance(mid, str) or mid in member_by_id or not isinstance(metadata, dict)
+                or metadata.get('id') != mid or metadata.get('sourceId') != 'osm'
+                or not isinstance(member.get('expectedOriginalTags'), dict)
+                or not isinstance(member.get('expectedEffectiveTags'), dict)
+                or member.get('expectedCuration') is not None
+                or not isinstance(member.get('originalGeometrySha256'), str) or not member['originalGeometrySha256']
+                or (member.get('packedGeometrySha256') is not None
+                    and (not isinstance(member['packedGeometrySha256'], str) or not member['packedGeometrySha256']))):
+            raise ValueError('Invalid reviewed named neighbourhood/residential member record')
+        member_by_id[mid] = member
+    if set(member_by_id) != set(left) | set(right):
+        raise ValueError('Reviewed named neighbourhood/residential member ids changed')
+
+    def checked(member):
+        mid = member['id']
+        if mid not in indices:
+            raise ValueError(f'Reviewed named neighbourhood/residential member index missing: {mid}')
+        index = indices[mid]
+        if (not isinstance(index, int) or index < 0 or index >= len(features)
+                or features[index].get('id') != mid):
+            raise ValueError(f'Reviewed named neighbourhood/residential member index changed: {mid}')
+        current, metadata = features[index], member['expectedMetadata']
+        if ({key: value for key, value in current.items()
+             if key not in ('pickerGroupId', 'offset', 'length')} != metadata):
+            raise ValueError(f'Reviewed named neighbourhood/residential metadata changed: {mid}')
+        if (current.get('governorateId') != record['expectedGovernorateId']
+                or current.get('delegationId') != record['expectedDelegationId']):
+            raise ValueError(f'Reviewed named neighbourhood/residential context changed: {mid}')
+        nearest = min(timetables, key=lambda d: (distance(current['lat'], current['lng'], d), d['id']))
+        if nearest['id'] != record['expectedDelegationId']:
+            raise ValueError(f'Reviewed named neighbourhood/residential prayer source changed: {mid}')
+        original, effective = original_sources.get(mid), effective_sources.get(mid)
+        if original is None or effective is None:
+            raise ValueError(f'Reviewed named neighbourhood/residential source missing: {mid}')
+        if (original.get('kind') != metadata.get('kind') or effective.get('kind') != metadata.get('kind')
+                or original.get('tags') != member['expectedOriginalTags']
+                or effective.get('tags') != member['expectedEffectiveTags']
+                or curation.get(mid) is not None or effective.get('sourceId') != 'osm'):
+            raise ValueError(f'Reviewed named neighbourhood/residential source identity changed: {mid}')
+        if metadata.get('kind') == 'neighbourhood':
+            if (metadata.get('hasBoundary') is not False or member.get('packedGeometrySha256') is not None
+                    or index < len(geometries)):
+                raise ValueError(f'Reviewed named neighbourhood/residential point geometry changed: {mid}')
+            if (original.get('shape') is not None or effective.get('shape') is not None
+                    or original.get('point') is None or effective.get('point') is None):
+                raise ValueError(f'Reviewed named neighbourhood/residential point source fields changed: {mid}')
+            original_geom, effective_geom = original['point'], effective['point']
+            if (getattr(original_geom, 'geom_type', None) != 'Point'
+                    or getattr(effective_geom, 'geom_type', None) != 'Point'
+                    or original_geom.x != metadata.get('lng') or original_geom.y != metadata.get('lat')
+                    or effective_geom.x != metadata.get('lng') or effective_geom.y != metadata.get('lat')
+                    or aggregate_geometry_sha256(original_geom) != member['originalGeometrySha256']
+                    or aggregate_geometry_sha256(effective_geom) != member['originalGeometrySha256']):
+                raise ValueError(f'Reviewed named neighbourhood/residential point identity changed: {mid}')
+            return original_geom, effective_geom, None
+        if metadata.get('hasBoundary') is not True or index >= len(geometries):
+            raise ValueError(f'Reviewed named neighbourhood/residential polygon index changed: {mid}')
+        packed = geometries[index]
+        original_geom, effective_geom = original.get('shape'), effective.get('shape')
+        if (not isinstance(original_geom, (Polygon, MultiPolygon))
+                or not isinstance(effective_geom, (Polygon, MultiPolygon))
+                or not isinstance(packed, (Polygon, MultiPolygon))
+                or original_geom.is_empty or not original_geom.is_valid
+                or effective_geom.is_empty or not effective_geom.is_valid
+                or packed.is_empty or not packed.is_valid
+                or aggregate_geometry_sha256(original_geom) != member['originalGeometrySha256']
+                or aggregate_geometry_sha256(effective_geom) != member['originalGeometrySha256']
+                or hashlib.sha256(packed_geometry_bytes(packed)).hexdigest() != member['packedGeometrySha256']):
+            raise ValueError(f'Reviewed named neighbourhood/residential polygon identity changed: {mid}')
+        return original_geom, effective_geom, packed
+
+    prepared = {member['id']: checked(member) for member in members}
+    if record['relationship'] == 'quarter_residential':
+        quarter = [m for m in members if m['expectedMetadata'].get('kind') == 'quarter']
+        residential = [m for m in members if m['expectedMetadata'].get('kind') == 'residential']
+        village = [m for m in members if m['expectedMetadata'].get('kind') == 'village']
+        if (len(quarter) != 1 or len(residential) != 1 or len(village) != 1
+                or set(left) != {residential[0]['id']} or record.get('id') != residential[0]['id']
+                or set(right) != {quarter[0]['id'], village[0]['id']}
+                or record.get('targetPickerGroupId') != quarter[0]['id']):
+            raise ValueError('Reviewed named neighbourhood/residential quarter roles changed')
+        quarter, residential, village = quarter[0], residential[0], village[0]
+        if (quarter['expectedMetadata'].get('parentName') != record['expectedParentName']
+                or residential['expectedMetadata'].get('parentName') != record['expectedParentName']):
+            raise ValueError('Reviewed named neighbourhood/residential quarter context changed')
+        if (quarter['expectedMetadata'].get('name') != name['latin'] + ' - ' + name['arabic']
+                or residential['expectedMetadata'].get('name') != name['arabic'] + ' - ' + name['latin']
+                or name['residentialLatin'] != residential['expectedMetadata'].get('name')
+                or village['expectedMetadata'].get('name') != name['latin']
+                or quarter['expectedOriginalTags'].get('name') != quarter['expectedMetadata'].get('name')
+                or quarter['expectedOriginalTags'].get('place') != 'quarter'
+                or residential['expectedOriginalTags'].get('name') != name['residentialLatin']
+                or residential['expectedOriginalTags'].get('landuse') != 'residential'
+                or village['expectedOriginalTags'].get('name') != name['latin']
+                or village['expectedOriginalTags'].get('place') != 'village'):
+            raise ValueError('Reviewed named neighbourhood/residential literal name evidence changed')
+        quarter_geom, residential_geom, village_geom = prepared[quarter['id']], prepared[residential['id']], prepared[village['id']]
+        if (not village_geom[0].covers(quarter_geom[0]) or not quarter_geom[0].covers(residential_geom[0])
+                or not village_geom[1].covers(quarter_geom[1]) or not quarter_geom[1].covers(residential_geom[1])
+                or not village_geom[2].covers(quarter_geom[2]) or not quarter_geom[2].covers(residential_geom[2])):
+            raise ValueError('Reviewed named neighbourhood/residential quarter containment changed')
+        return
+    point = [m for m in members if m['expectedMetadata'].get('kind') == 'neighbourhood']
+    residential = [m for m in members if m['expectedMetadata'].get('kind') == 'residential']
+    if (len(point) != 1 or len(residential) != 1
+            or set(left) != {residential[0]['id']} or record.get('id') != residential[0]['id']
+            or set(right) != {point[0]['id']} or record.get('targetPickerGroupId') != point[0]['id']):
+        raise ValueError('Reviewed named neighbourhood/residential point roles changed')
+    point, residential = point[0], residential[0]
+    if (point['expectedMetadata'].get('parentName') != record['expectedParentName']
+            or residential['expectedMetadata'].get('parentName') != record['expectedParentName']):
+        raise ValueError('Reviewed named neighbourhood/residential point context changed')
+    if (point['expectedMetadata'].get('name') != name['arabic']
+            or point['expectedOriginalTags'].get('name') != name['arabic']
+            or point['expectedOriginalTags'].get('name:ar') != name['arabic']
+            or point['expectedOriginalTags'].get('name:fr') != name['latin']
+            or point['expectedOriginalTags'].get('place') != 'neighbourhood'
+            or residential['expectedMetadata'].get('name') != name['residentialLatin']
+            or residential['expectedOriginalTags'].get('name') != name['residentialLatin']
+            or residential['expectedOriginalTags'].get('addr:place') != name['arabic']
+            or residential['expectedOriginalTags'].get('landuse') != 'residential'):
+        raise ValueError('Reviewed named neighbourhood/residential literal point name evidence changed')
+    point_geom, residential_geom = prepared[point['id']], prepared[residential['id']]
+    if (not residential_geom[0].covers(point_geom[0])
+            or not residential_geom[1].covers(point_geom[1])
+            or not residential_geom[2].covers(point_geom[1])):
+        raise ValueError('Reviewed named neighbourhood/residential point containment changed')
+
+
 def validate_reviewed_locality_groups(manifest_path, manifest, features, geometries, timetables,
                                       original_sources, effective_sources, source_sha256, curation,
                                       groups, indices, reserved_groups, reserved_members):
@@ -5858,7 +7461,8 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
                                               'reviewed_primary_source_named_settlement',
                                               'reviewed_distributed_settlement', 'reviewed_surveyed_hamlet',
                                               'reviewed_two_patch_settlement', 'reviewed_complete_locality_group_owner',
-                                              'reviewed_sector_settlement_display_identity')):
+                                              'reviewed_sector_settlement_display_identity',
+                                              'reviewed_named_neighbourhood_residential_display_identity')):
             raise ValueError('Invalid, transitive or unreviewed locality-group target')
         if record['method'] == 'reviewed_sector_settlement_display_identity':
             member_ids = {identifier, target}
@@ -5924,6 +7528,12 @@ def validate_reviewed_locality_groups(manifest_path, manifest, features, geometr
                 or type(record.get('expectedGovernorateId')) is not int
                 or not isinstance(record.get('expectedParentName'), str) or not record['expectedParentName']):
             raise ValueError('Reviewed locality-group context or prayer source changed')
+        if record['method'] == 'reviewed_named_neighbourhood_residential_display_identity':
+            validate_reviewed_named_neighbourhood_residential_display_identity(
+                record, features, geometries, indices, original_sources, effective_sources, curation, timetables)
+            staged.append((target, left))
+            seen_groups.update((identifier, target));seen_members.update(member_ids);seen_ids.add(identifier)
+            continue
         if record['method'] == 'reviewed_two_patch_settlement':
             support = record.get('exclusiveSupportingSourceIds', [])
             other_support = {sid for other in records if other is not record
@@ -6135,7 +7745,7 @@ def validate_reviewed_absorbed_town_reference(identity, manifest_path, manifest,
     # The source-reference correction is independently pinned. A nearby point
     # or a later reanchoring cannot silently satisfy this exact association.
     reference = identity.get('prayerSourceReference')
-    coordinates = json.loads(aggregate_review_file(
+    coordinates = json.loads(reviewed_prayer_coordinate_reference(
         Path(manifest_path).parent, reference, 'absorbed-town source reference'))
     matches = [item for item in coordinates.get('corrections', [])
                if item.get('delegationId') == base['id']]
@@ -6703,7 +8313,7 @@ def validate_source_bound_residential_display(entry, directory, current, indices
     expected_base = correction['afterBase'] if correction else expected['currentBase']
     if base != expected_base:
         raise ValueError('Source-bound canonical base reference or name changed')
-    coordinate_manifest = json.loads((directory / 'prayer-source-coordinates.json').read_bytes())
+    coordinate_manifest = json.loads(display_identity_coordinate_bytes(directory))
     current_corrections = [r for r in coordinate_manifest['corrections'] if r['delegationId'] == target]
     expected_correction = expected['coordinateCorrectionAfter']
     if current_corrections != ([expected_correction] if expected_correction else []):
@@ -7356,7 +8966,7 @@ def validate_noncoincident_town_residential_display(entry, directory, current, i
                 raise ValueError('Noncoincident reference left the reviewed context')
     if not all(geometries[indices[sector_id]].covers(q) for q in (point, base_point)):
         raise ValueError('Noncoincident reference left the packed namesake imada')
-    coordinate_manifest = json.loads((directory / 'prayer-source-coordinates.json').read_bytes())
+    coordinate_manifest = json.loads(display_identity_coordinate_bytes(directory))
     if any(r['delegationId'] == target for r in coordinate_manifest['corrections']):
         raise ValueError('Noncoincident base acquired an unreviewed coordinate correction')
     for reference in (base, residential, current[sector_id], {'lat': point.y, 'lng': point.x}):
@@ -7582,7 +9192,7 @@ def validate_explicit_settlement_polygon_display(entry, manifest_path, current, 
         if (expected['settlementWithinNamesakeSector'][phase] is not True
                 or not sector_geometry.covers(settlement_geometry)):
             raise ValueError('Explicit settlement whole footprint left its reviewed imada')
-    coordinate_manifest=json.loads((directory/'prayer-source-coordinates.json').read_bytes())
+    coordinate_manifest=json.loads(display_identity_coordinate_bytes(directory))
     if [r for r in coordinate_manifest['corrections'] if r['delegationId']==target] != expected['coordinateCorrections']:
         raise ValueError('Explicit settlement timetable reference provenance changed')
     references={'base':base,'settlementPolygon':polygon,'sourcePoint':{'lat':point.y,'lng':point.x},
@@ -8696,7 +10306,7 @@ def validate_settlement_retained_display_reference(option, manifest_path, record
             or any((row['before'] != identifier or row['after'] != base_group) if row['field'] == 'pickerGroupId'
                    else features[indices[row['id']]].get(row['field']) != row['after'] for row in changes)):
         raise ValueError('Independent settlement source review or exact changes differ')
-    coordinates = json.loads((directory / 'prayer-source-coordinates.json').read_bytes())
+    coordinates = json.loads(display_identity_coordinate_bytes(directory))
     corrections = [row for row in coordinates['corrections'] if row.get('delegationId') == target]
     if (len(corrections) != 1 or corrections[0] != review[correction_key]
             or corrections[0].get('expectedGovernorateId') != governor['id']
@@ -9077,7 +10687,7 @@ def validate_hichria_retained_display_reference(option, manifest_path, record, p
             or set(prayer_reference) != {'file', 'sha256', 'expectedCorrection'}
             or prayer_reference['file'] != 'prayer-source-coordinates.json'):
         raise ValueError('Missing independently published Hichria prayer reference')
-    coordinates = json.loads(aggregate_review_file(directory, prayer_reference, 'Hichria prayer coordinates'))
+    coordinates = json.loads(reviewed_prayer_coordinate_reference(directory, prayer_reference, 'Hichria prayer coordinates'))
     corrections = [item for item in coordinates.get('corrections', []) if item.get('delegationId') == target]
     if (len(corrections) != 1 or corrections[0] != prayer_reference['expectedCorrection']
             or corrections[0].get('referenceKind') != (None if physical_reference else 'inm_published_reference')
@@ -9258,7 +10868,7 @@ def validate_menzel_bouzaiane_spelling_equivalence(option, manifest_path, record
         raise ValueError('Menzel Bouzaiane complete official sector identity changed')
     # Existing coordinate corrections are immutable semantic objects. Do not
     # introduce another whole-manifest dependency on unrelated source updates.
-    coordinate_document = json.loads((directory / 'prayer-source-coordinates.json').read_bytes())
+    coordinate_document = json.loads(display_identity_coordinate_bytes(directory))
     corrections = [row for row in coordinate_document['corrections'] if row.get('delegationId') == target]
     if (len(corrections) != 1 or corrections[0] != review['acceptedCoordinateCorrection']
             or corrections[0].get('expectedGovernorateId') != governor['id']
@@ -9492,6 +11102,20 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
     if (manifest.get('schemaVersion') != 1 or manifest.get('sourceSha256') != source_sha256
             or not isinstance(manifest.get('records'), list)):
         raise ValueError('Reviewed picker groups need review for this source')
+    _validated_strict_parent_owner = None
+    _picker_lineage_ref = manifest.get('lineageCompatibility')
+    if _picker_lineage_ref is not None:
+        _picker_lineage_doc = json.loads(aggregate_review_file(
+            manifest_path.parent, _picker_lineage_ref, 'picker lineage compatibility'))
+        if (isinstance(_picker_lineage_doc, dict)
+                and _picker_lineage_doc.get('method') == 'reviewed_picker_strict_boundary_successor'):
+            load_reviewed_picker_manifest_for_lineage(
+                manifest_path.parent,
+                {'file': manifest_path.name, 'sha256': hashlib.sha256(raw).hexdigest()},
+                manifest_path, manifest, source_sha256,
+                reviewed_boundaries=reviewed_boundaries, official_report=official_report,
+                original_sources=original_sources, effective_sources=effective_sources)
+            _validated_strict_parent_owner = _picker_lineage_doc['activeRecord']
     additional_evidence = manifest.get('additionalReviewEvidence', [])
     if not isinstance(additional_evidence, list):
         raise ValueError('Invalid additional picker-group evidence')
@@ -9747,6 +11371,23 @@ def apply_reviewed_picker_groups(manifest_path, features, geometries, governors,
                 elif source_code != current_code:
                     raise ValueError('A reviewed name equivalence must retain the same official sector code')
                 sector_evidence.add(identity_id)
+            elif method == 'reviewed_official_boundary_parent_membership':
+                code = identity.get('code')
+                registry = identity.get('currentOfficialRecord')
+                if (record != _validated_strict_parent_owner
+                        or not isinstance(_validated_strict_parent_owner, dict)
+                        or [row for row in _validated_strict_parent_owner.get('identityEvidence') or []
+                            if row.get('method') == method] != [identity]
+                        or effective['kind'] != 'delegation'
+                        or not isinstance(code, str) or effective['tags'].get('ref:tn:codegeo') != code
+                        or not isinstance(registry, dict) or registry.get('delegationCode') != code
+                        or registry.get('governorateCode') != code[:2]
+                        or picker_review_name_key(registry.get('governorateAr', '')) != picker_review_name_key(governor['nomAr'])
+                        or picker_review_name_key(registry.get('delegationAr', '')) != primary
+                        or picker_review_name_key(names(effective['tags'])[0].removeprefix('معتمدية ')) != primary
+                        or sum(obj['tags'].get('ref:tn:codegeo') == code for obj in effective_sources.values()
+                               if obj['kind'] == 'delegation') != 1):
+                    raise ValueError('Reviewed official parent membership is not the exact validated strict successor')
             elif method in ('current_coded_sector', 'current_coded_namesake_administrative_parent'):
                 code = identity.get('code')
                 registry = identity.get('currentOfficialRecord', {})
@@ -10225,15 +11866,23 @@ def load_reviewed_official_manual_points(manifest_path, source_sha256,
     return choices, report_rows
 def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
           curation_manifest=CURATION_MANIFEST, prayer_source_coordinates=PRAYER_SOURCE_COORDINATES,
-          reviewed_boundaries=REVIEWED_BOUNDARIES, reviewed_picker_groups=REVIEWED_PICKER_GROUPS):
-    governors = json.loads((ASSETS/'gouvernorats.json').read_text(encoding='utf-8'))['gouvernorats']
-    prayer_source_coordinate_report = validate_prayer_source_coordinates(governors, prayer_source_coordinates)
+          reviewed_boundaries=REVIEWED_BOUNDARIES, reviewed_picker_groups=REVIEWED_PICKER_GROUPS, final_exclusions=FINAL_EXCLUSIONS, reviewed_catalog_updates=REVIEWED_CATALOG_UPDATES,
+          reviewed_manual_points=REVIEWED_MANUAL_POINTS):
+    runtime_governors = json.loads((ASSETS/'gouvernorats.json').read_text(encoding='utf-8'))['gouvernorats']
+    prayer_source_coordinate_report = validate_prayer_source_coordinates(runtime_governors, prayer_source_coordinates)
+    source_sha256 = hashlib.sha256(pbf.read_bytes()).hexdigest()
+    selection_context = load_prayer_selection_successor(
+        prayer_source_coordinates, runtime_governors, ASSETS, source_sha256,
+        {'municipalSources': municipal_manifest, 'curation': curation_manifest,
+         'reviewedBoundaries': reviewed_boundaries, 'reviewedPickerGroups': reviewed_picker_groups})
+    # Existing source proofs describe frozen display identity. Current prayer
+    # defaults are independently verified and recomputed before asset writes.
+    governors = selection_context['baselineGovernors'] if selection_context else runtime_governors
     timetables, rejected_timetables = available_timetables(governors, ASSETS)
     areas, nodes, errors = extract(pbf)
     original_picker_sources = {obj['id']: {'tags': dict(obj['tags']), 'kind': obj['kind'],
                                            'shape': obj.get('shape'), 'point': obj.get('point')}
                                for obj in areas + nodes}
-    source_sha256 = hashlib.sha256(pbf.read_bytes()).hexdigest()
     curation, curation_targets, curation_report = load_catalog_curation(
         curation_manifest, source_sha256, areas, nodes)
     classification_ids = {identifier for identifier, rule in curation.items()
@@ -10492,10 +12141,16 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
         reserve_sector_owned_settlement_proposals(
             reviewed_point_base_names, reviewed_picker_groups, reviewed_picker_report, reviewed_city_report,
             reviewed_residential_report, deferred_hamlets, features + point_only, geometries, governors,
-            base_picker_groups, curation_applications)
+            base_picker_groups, curation_applications,
+            original_sources=original_picker_sources,
+            effective_sources={obj['id']: obj for obj in areas + nodes},
+            reviewed_boundaries=reviewed_boundaries, official_report=official_report)
     extended_picker_groups = apply_deferred_point_base_group_extensions(
         reviewed_point_base_names, reviewed_picker_groups, reviewed_picker_report, features + point_only,
-        geometries, governors, base_picker_groups, curation_applications)
+        geometries, governors, base_picker_groups, curation_applications,
+        original_sources=original_picker_sources,
+        effective_sources={obj['id']: obj for obj in areas + nodes},
+        reviewed_boundaries=reviewed_boundaries, official_report=official_report)
     if extended_picker_groups is not None:
         picker_groups = extended_picker_groups
     if sector_owned_pending:
@@ -10549,6 +12204,69 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
               'retiredLocalityIds': sorted(excluded_ids),
               'country': country_record, 'cells': dict(sorted(cells.items())),
               'features': features + point_only}
+    selection_report = finalize_prayer_selection_successor(selection_context, result, blob)
+    # Historical source proofs above remain intact. Explicit later facility
+    # exclusions change only the exported catalog after those checks pass.
+    result, selection_report, final_exclusion_report = apply_final_exclusions(
+        result, blob, selection_report, final_exclusions)
+    # Current spelling and parent-label reviews run after all historical proofs.
+    # Only textual updates are enabled here; boundary adoption needs a separate
+    # geographic and prayer-selection review before this scope can be widened.
+    catalog_update_report = None
+    if reviewed_catalog_updates is not None and Path(reviewed_catalog_updates).exists():
+        spec = importlib.util.spec_from_file_location(
+            'reviewed_catalog_updates', Path(__file__).with_name('reviewed_catalog_updates.py'))
+        update_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(update_module)
+        current_timetables, _ = available_timetables(runtime_governors, ASSETS)
+        original_result = json.loads(json.dumps(result, ensure_ascii=False))
+        original_blob = bytes(blob)
+        result, blob, catalog_update_report = update_module.apply_reviewed_updates(
+            result, original_blob, reviewed_catalog_updates, current_timetables,
+            pack_geometry=packed_geometry_bytes, detect_conflicts=detect_conflicts, distance=distance)
+        if bytes(blob) != original_blob or set(result) != set(original_result):
+            raise ValueError('Reviewed catalog naming updates changed geometry or schema')
+        if any(result[key] != original_result[key] for key in result if key != 'features'):
+            raise ValueError('Reviewed catalog naming updates changed non-text catalog state')
+        if len(result['features']) != len(original_result['features']):
+            raise ValueError('Reviewed catalog naming updates changed feature count')
+        text_fields = {'name', 'aliases', 'parentName', 'contextAliases'}
+        for before, after in zip(original_result['features'], result['features']):
+            if ({k: v for k, v in before.items() if k not in text_fields}
+                    != {k: v for k, v in after.items() if k not in text_fields}):
+                raise ValueError('Reviewed catalog naming updates changed identity or spatial data')
+    reviewed_manual_points_report = None
+    if reviewed_manual_points is not None and Path(reviewed_manual_points).exists():
+        manual_module_spec = importlib.util.spec_from_file_location(
+            'reviewed_manual_points', Path(__file__).with_name('reviewed_manual_points.py'))
+        manual_module = importlib.util.module_from_spec(manual_module_spec)
+        manual_module_spec.loader.exec_module(manual_module)
+        manual_timetables, _ = available_timetables(runtime_governors, ASSETS)
+        manual_geometry_by_id = {feature['id']: geometry for feature, geometry in zip(features, geometries)}
+        result, reviewed_manual_points_report = manual_module.apply_reviewed_manual_points(
+            result, blob, reviewed_manual_points, manual_timetables, manual_geometry_by_id, distance=distance)
+    if reviewed_manual_points_report is not None and selection_report is not None:
+        # Keep the exported current manual-selection table aligned with the pins.
+        # Historical source-selection deltas still describe their original run.
+        selections = {row['id']: row for row in selection_report['currentManualSelections']}
+        for change in reviewed_manual_points_report['changedPins']:
+            row = selections.get(change['id'])
+            if (row is None or row['representativeId'] != change['id']
+                    or row['sourceId'] != change.get('beforeDelegationId', change['delegationId'])
+                    or {key: row[key] for key in ('lat', 'lng')} != change['before']):
+                raise ValueError('Manual pin correction differs from current selection')
+            row.update(change['after'])
+            row['sourceId'] = change['delegationId']
+        selection_report['qualification'] += ' reviewedManualPoints updates current manual-representative pins and any explicit representative source amendment; historical source-change rows retain their original review context.'
+    removed = set(final_exclusion_report['excludedIds'])
+    if any(row['replacementId'] in removed for row in saved_replacements):
+        raise ValueError('Final exclusion is a saved replacement target')
+    kept_polygons = [(f, g) for f, g in zip(features, geometries) if f['id'] not in removed]
+    geometries = [g for _, g in kept_polygons]
+    features = [f for f in result['features'] if f['hasBoundary']]
+    point_only = [f for f in result['features'] if not f['hasBoundary']]
+    excluded_ids.update(removed)
+    conflicts = result['conflicts']
     (output/'neighborhoods.bin').write_bytes(blob)
     (output/'neighborhoods.json').write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8', newline='\n')
     # Preference cleanup runs before the larger picker catalog is preloaded.
@@ -10557,6 +12275,8 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
                          | {identifier for identifier, rule in curation.items()
                             if rule.get('action') == 'reviewed_locality_classification'}
                          | set(official_contexts))
+    if catalog_update_report is not None:
+        reviewed_name_ids.update(catalog_update_report['renamedIds'])
     reviewed_names = [{'id': feature['id'], 'name': feature['name'], 'kind': feature['kind']}
                       for feature in sorted(features + point_only, key=lambda item: item['id'])
                       if feature['id'] in reviewed_name_ids]
@@ -10575,6 +12295,7 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
     by_id = {f['id']: f for f in features}
     report = {'source': source, 'sources': sources, 'polygonCount': len(features), 'pointOnlyCount': len(point_only),
               'curation': curation_report,
+              'finalExclusions': final_exclusion_report,
               'curationApplications': curation_applications,
               'reviewedLocalityReplacements': saved_replacements,
               'prayerSourceCount': len(timetables), 'rejectedPrayerSources': rejected_timetables,
@@ -10601,6 +12322,18 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
         report['reviewedCityDisplayAssociations'] = reviewed_city_report
     if reviewed_residential_report is not None:
         report['reviewedResidentialDisplayAssociations'] = reviewed_residential_report
+    if catalog_update_report is not None:
+        report['reviewedCatalogUpdates'] = catalog_update_report
+    if reviewed_manual_points_report is not None:
+        report['reviewedManualPoints'] = reviewed_manual_points_report
+    if selection_report is not None:
+        report['prayerSelection'] = selection_report
+        report['displayIdentityValidationContext'] = {
+            'scope': 'Existing display proof reports describe their pinned historical identity and prayer-reference context. reviewedCatalogUpdates, when present, gives later textual corrections. reviewedManualPoints, when present, gives later manual representative pin corrections; those reports retain historical before-correction metadata hashes and are checked separately. Geometry, IDs and groups remain unchanged. Explicit reviewedManualPoints settlement choices may amend current manual prayer-selection source IDs; historical source-change reports retain their original context.',
+            'baselineGovernors': selection_context['review']['baselineGovernors'],
+            'baselineCoordinates': selection_context['review']['baselineCoordinates'],
+            'historicalReportKeys': [key for key in report if key not in ('reviewedCatalogUpdates', 'reviewedManualPoints')
+                                     and (key.startswith('reviewed') or key in ('curation', 'curationApplications'))]}
     (report_dir/'coverage.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
     # Windows terminals may still use cp1252. Output files remain full UTF-8;
     # keep the console summary portable and omit detailed coordinate lists.
@@ -10618,7 +12351,11 @@ if __name__ == '__main__':
     parser.add_argument('--prayer-source-coordinates', type=Path, default=PRAYER_SOURCE_COORDINATES)
     parser.add_argument('--reviewed-boundaries', type=Path, default=REVIEWED_BOUNDARIES)
     parser.add_argument('--reviewed-picker-groups', type=Path, default=REVIEWED_PICKER_GROUPS)
+    parser.add_argument('--final-exclusions', type=Path, default=FINAL_EXCLUSIONS)
+    parser.add_argument('--reviewed-catalog-updates', type=Path, default=REVIEWED_CATALOG_UPDATES)
+    parser.add_argument('--reviewed-manual-points', type=Path, default=REVIEWED_MANUAL_POINTS)
     options = parser.parse_args()
     build(options.pbf, options.output, options.report_dir, options.municipal_manifest,
           options.curation_manifest, options.prayer_source_coordinates, options.reviewed_boundaries,
-          options.reviewed_picker_groups)
+          options.reviewed_picker_groups, options.final_exclusions, options.reviewed_catalog_updates,
+          options.reviewed_manual_points)

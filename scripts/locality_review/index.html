@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Locality Check — manual place review</title>
+<link rel="stylesheet" href="/boundary.css">
+<link rel="stylesheet" href="/google_map.css">
+<script src="/google_map.js"></script>
+<script src="/boundary.js"></script>
+<style>
+:root{
+  --cream:#faf6ec; --cream2:#f2ebdb; --card:#fffdf8;
+  --teal:#0e6f6b; --teal-dark:#0a5450; --teal-light:#e3f2f0;
+  --ink:#1d2b2a; --muted:#5f6f6d; --line:#e7ddc9;
+  --ok:#146b45; --okbg:#e6f4ec;
+  --bad:#a12a20; --badbg:#fbe9e6;
+  --warnc:#7a5a12; --warnbg:#fbf1d9;
+  --stalec:#6a5b7c; --stalebg:#efeaf5;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(30,40,38,.05),0 8px 20px rgba(30,40,38,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Naskh Arabic","Segoe UI Historic",Tahoma,sans-serif;
+}
+[hidden]{display:none !important}
+h1,h2,h3{margin:0 0 .35em;line-height:1.25}
+p{margin:0 0 .6em}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+.skiplink{position:absolute;left:-9999px;top:0;background:#fff;color:var(--teal);padding:8px 12px;z-index:60;border-radius:0 0 8px 0}
+.skiplink:focus{left:0;top:0}
+:focus-visible{outline:3px solid #79c6c1;outline-offset:2px;border-radius:4px}
+.topbar{background:linear-gradient(160deg,#0f7a75,#0a5450);color:#eaf7f5;padding:16px 0 14px;box-shadow:0 2px 10px rgba(10,60,58,.15)}
+.topbar-inner{display:flex;gap:18px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.topbar h1{font-size:21px;letter-spacing:.2px;margin-bottom:4px}
+.topbar .sub{margin:0;font-size:13.5px;line-height:1.5;max-width:74ch;color:#cdeae6}
+.topbar .sub strong{color:#fff}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font:inherit;font-weight:600;font-size:14.5px;
+  padding:9px 14px;border-radius:10px;border:1px solid transparent;
+  cursor:pointer;text-decoration:none;background:#eee;color:var(--ink);
+  transition:background .15s,border-color .15s,transform .05s;
+}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--teal);color:#fff;border-color:var(--teal-dark)}
+.btn.primary:hover{background:var(--teal-dark)}
+.btn.ghost{background:#fff;border-color:var(--line);color:var(--teal)}
+.btn.ghost:hover{background:var(--teal-light);border-color:#bfe0dd}
+.btn.on-dark{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.38);color:#fff}
+.btn.on-dark:hover{background:rgba(255,255,255,.24)}
+.btn.small{padding:6px 10px;font-size:13px}
+.btn[disabled]{opacity:.55;cursor:progress}
+.statsbar{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 14px;margin:16px 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid transparent;background:#f0ebdd;color:#5a5344}
+.chip.small{font-size:11.5px;padding:2px 8px;font-weight:700}
+.chip.ok{background:var(--okbg);color:var(--ok);border-color:#c7e6d4}
+.chip.bad{background:var(--badbg);color:var(--bad);border-color:#f0cdc7}
+.chip.unsure{background:var(--warnbg);color:var(--warnc);border-color:#eeddb0}
+.chip.stale{background:var(--stalebg);color:var(--stalec);border-color:#dcd3e8}
+.chip.neutral{background:#f1ecdf;color:#5a5344;border-color:#e4dcc8}
+.progresswrap{display:flex;align-items:center;gap:10px;margin-top:10px}
+.progressbar{flex:1;height:8px;background:#e9e1cf;border-radius:999px;overflow:hidden}
+.progressbar > div{height:100%;width:0;background:linear-gradient(90deg,#1a958f,#0e6f6b);transition:width .25s}
+.progresslabel{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.layout{display:grid;grid-template-columns:minmax(300px,370px) minmax(0,1fr);gap:18px;align-items:start;padding-bottom:52px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.list-panel{display:flex;flex-direction:column;gap:12px}
+.detail-panel{min-height:340px}
+.field{margin:0}
+.field-label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+input[type=search],input[type=text],input[type=number],select,textarea{
+  width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:9px 11px;
+}
+textarea{resize:vertical;min-height:96px}
+.hint{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.segmented{display:flex;flex-wrap:wrap;gap:6px}
+.segmented button{font:inherit;font-size:13.5px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer}
+.segmented button:hover{background:var(--teal-light)}
+.segmented button.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.listmeta{font-size:12.5px;color:var(--muted);margin:0}
+#list{list-style:none;margin:0;padding:10px 2px 2px;display:flex;flex-direction:column;gap:8px;max-height:58vh;overflow:auto;border-top:1px solid var(--line)}
+@media (max-width:900px){#list{max-height:46vh}}
+#list li{margin:0}
+.item{width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:5px;font:inherit;color:inherit}
+.item:hover{background:var(--teal-light);border-color:#bfe0dd}
+.item.selected{border-color:var(--teal);background:var(--teal-light);box-shadow:inset 3px 0 0 var(--teal)}
+.item-name{font-size:17px;font-weight:700;font-family:"Noto Naskh Arabic","Segoe UI Historic",Tahoma,serif}
+.item-sub{font-size:12.5px;color:var(--muted)}
+.empty-li{border:1px dashed var(--line);border-radius:12px;padding:14px;color:var(--muted);font-size:14px}
+.place-name{font-size:26px;font-family:"Noto Naskh Arabic","Segoe UI Historic",Tahoma,serif;margin-bottom:2px}
+.aliases{color:var(--muted);font-size:14px;margin-bottom:8px}
+.meta{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;margin:10px 0 14px;font-size:14.5px}
+.meta dt{color:var(--muted);font-weight:600}
+.meta dd{margin:0}
+.meta.small{font-size:13.5px;grid-template-columns:130px 1fr}
+@media (max-width:560px){.meta,.meta.small{grid-template-columns:1fr;gap:0 0}.meta dt{margin-top:7px}}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px}
+.maps{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.prayer{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;margin-bottom:14px}
+.prayer summary{cursor:pointer;font-weight:600;font-size:14px}
+.prayer .meta{margin:10px 0 4px}
+.prior{border:1px solid #bfe0dd;background:var(--teal-light);border-radius:12px;padding:11px 13px;margin:0 0 14px}
+.prior:empty{display:none}
+.prior p{margin:0 0 8px;font-size:14px;overflow-wrap:anywhere}
+.prior-tag{color:var(--teal-dark);font-weight:700}
+.verdicts{border:0;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.verdicts legend{font-weight:700;font-size:15px;margin-bottom:8px;padding:0}
+.verdict-opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;cursor:pointer;margin-bottom:8px}
+.verdict-opt:hover{background:var(--teal-light)}
+.verdict-opt input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--teal)}
+.vo-body{display:flex;flex-direction:column}
+.vo-label{font-weight:700}
+.vo-hint{display:none}
+.verdict-opt:has(input:checked){border-color:var(--teal);background:var(--teal-light)}
+.issues{border:1px solid #f0d6cf;background:#fffaf8;border-radius:12px;padding:12px;margin-bottom:12px}
+.issue-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:4px 16px}
+.issue{display:flex;gap:8px;align-items:center;font-size:14.5px;padding:4px 0;cursor:pointer}
+.issue input{width:17px;height:17px;flex:none;accent-color:var(--teal)}
+.krow{margin:0 0 12px}
+.extra{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;margin-bottom:14px}
+.extra summary{cursor:pointer;font-weight:600;font-size:14px;margin-bottom:4px}
+.extra .field-label{margin-top:10px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.dirtyflag{font-size:12.5px;font-weight:700;color:var(--warnc);margin:8px 0 0}
+.disclaimer{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+.feedback{margin:14px 0 0;padding:11px 13px;border-radius:12px;font-size:14px;border:1px solid transparent}
+.feedback:empty{display:none}
+.feedback.ok{background:var(--okbg);color:var(--ok);border-color:#c7e6d4}
+.feedback.err{background:var(--badbg);color:var(--bad);border-color:#f0cdc7}
+.feedback.warn{background:var(--warnbg);color:var(--warnc);border-color:#eeddb0}
+.feedback.info{background:var(--teal-light);color:var(--teal-dark);border-color:#bfe0dd}
+.errorbox{border:1px solid #f0cdc7;background:#fff;border-radius:12px;padding:16px}
+.errorbox h2{font-size:17px}
+.empty{color:var(--muted)}
+.banner.warn{background:var(--warnbg);color:var(--warnc);border:1px solid #eeddb0;border-radius:12px;padding:10px 12px;font-size:14px;margin:0 0 12px}
+</style>
+</head>
+<body>
+<a class="skiplink" href="#detailPanel">Skip to the review form</a>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <h1>Locality Check</h1>
+      <p class="sub">Help check places you know. <strong>Saved for me to follow up.</strong></p>
+    </div>
+    <div class="top-actions">
+      <button type="button" class="btn on-dark" id="reloadBtn">Reload answers</button>
+      <a class="btn on-dark" id="exportLink" href="/api/export" download>Download answers (JSON)</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="statsbar" aria-label="Review progress">
+    <div class="chips" id="counts"></div>
+    <div class="progresswrap">
+      <div class="progressbar" id="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressFill"></div></div>
+      <span class="progresslabel" id="progressLabel"></span>
+    </div>
+  </section>
+
+  <div class="layout">
+    <section class="panel list-panel" aria-label="Places">
+      <div class="field">
+        <label class="field-label" for="q">Search places (Arabic, French or alias)</label>
+        <input id="q" type="search" autocomplete="off" placeholder="مقرين · Megrine · Menzel…" dir="auto">
+      </div>
+      <div class="field">
+        <label class="field-label" for="gov">Governorate</label>
+        <select id="gov"><option value="all">All governorates</option></select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="scoreAbove">Verification score greater than (%)</label>
+        <input id="scoreAbove" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="Any score" aria-describedby="scoreAboveHint" disabled>
+        <button type="button" class="btn ghost" id="clearScoreBtn" disabled>Clear score filter</button>
+        <p class="hint" id="scoreAboveHint">Completed verification checks, not certainty. Unscored places are excluded while filtering.</p>
+      </div>
+      <div class="field">
+        <span class="field-label" id="filterLabel">Show</span>
+        <div class="segmented" id="filters" role="group" aria-labelledby="filterLabel">
+          <button type="button" data-filter="all" aria-pressed="true" class="active">All</button>
+          <button type="button" data-filter="unreviewed" aria-pressed="false">Unreviewed</button>
+          <button type="button" data-filter="reported" aria-pressed="false">Reported</button>
+          <button type="button" data-filter="mine" aria-pressed="false">My reviews</button>
+        </div>
+        <p class="hint">“My reviews” shows your current saved answers after reloads.</p>
+      </div>
+      <p class="listmeta" id="listMeta"></p>
+      <ul id="list"></ul>
+      <button type="button" class="btn ghost" id="moreBtn" hidden>Load more</button>
+    </section>
+
+    <section class="panel detail-panel" id="detailPanel" aria-label="Place details and review form" tabindex="-1">
+      <div id="detailBody"></div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------------------------------------------------------------- data */
+
+var VERDICTS = [
+  {value:'looks_correct', label:'Looks right', hint:'The name, the locality and the area match what I recognize.'},
+  {value:'problem', label:'Report a problem', hint:'Something about this place record is wrong.'},
+  {value:'unsure', label:'Not sure', hint:'I cannot confirm this place.'}
+];
+
+var ISSUES = [
+  ['name','Name is wrong or misspelled'],
+  ['type','Place type is wrong'],
+  ['governorate','Governorate is wrong'],
+  ['delegation','Delegation / parent is wrong'],
+  ['pin','Map pin / coordinates are wrong'],
+  ['boundary','Boundary area is wrong'],
+  ['duplicate','Duplicate of another place'],
+  ['prayer_source','Prayer-time source is wrong'],
+  ['other','Something else (explain in the note)']
+];
+
+var KNOWLEDGE = [
+  {value:'personal', label:'I know this place myself (personal knowledge)'},
+  {value:'maps', label:'I checked it on maps / satellite imagery'},
+  {value:'both', label:'Both — personal knowledge and maps'},
+  {value:'unspecified', label:'Not specified'}
+];
+
+var PAGE = 60;
+
+/* ---------------------------------------------------------------- state */
+
+var app = {
+  catalog:null,
+  token:'',
+  counts:{reviewed:0, looks_correct:0, problem:0, unsure:0, stale:0},
+  total:0,
+  latest:{},
+  q:'',
+  gov:'all',
+  filter:'all',
+  scoreAbove:'',
+  shown:PAGE,
+  index:new Map(),
+  selected:null,
+  saving:false
+};
+
+var form = {
+  id:null, fingerprint:null, verdict:null, issues:[], note:'', evidenceUrl:'',
+  knowledge:'unspecified', prior:null, baseline:null, lastAttempt:null
+};
+
+var issuesWereCleared = false;
+var ui = {};
+
+/* ---------------------------------------------------------------- dom helpers */
+
+function $(id){ return document.getElementById(id); }
+
+function appendChildren(node, children){
+  if (children === null || children === undefined || children === false) return;
+  if (!Array.isArray(children)) children = [children];
+  for (var i = 0; i < children.length; i++){
+    var c = children[i];
+    if (c === null || c === undefined || c === false) continue;
+    if (Array.isArray(c)) { appendChildren(node, c); continue; }
+    if (typeof c === 'string' || typeof c === 'number') node.appendChild(document.createTextNode(String(c)));
+    else node.appendChild(c);
+  }
+}
+
+function el(tag, props){
+  var node = document.createElement(tag);
+  if (props){
+    Object.keys(props).forEach(function(k){
+      var v = props[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === 'class') node.className = v;
+      else if (k === 'text') node.textContent = v;
+      else if (k === 'value') node.value = v;
+      else if (k === 'checked') node.checked = !!v;
+      else if (k.indexOf('on') === 0 && k.length > 2) node.addEventListener(k.slice(2), v);
+      else node.setAttribute(k, v === true ? '' : String(v));
+    });
+  }
+  for (var i = 2; i < arguments.length; i++) appendChildren(node, arguments[i]);
+  return node;
+}
+
+function chip(text, kind){
+  return el('span', {class:'chip ' + (kind || 'neutral')}, text);
+}
+
+function uuid(){
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+  var b = new Uint8Array(16);
+  if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(b);
+  else for (var i = 0; i < 16; i++) b[i] = Math.floor(Math.random() * 256);
+  b[6] = (b[6] & 0x0f) | 0x40;
+  b[8] = (b[8] & 0x3f) | 0x80;
+  var h = [];
+  for (var j = 0; j < 16; j++) h.push((b[j] + 256).toString(16).slice(1));
+  var s = h.join('');
+  return s.slice(0,8) + '-' + s.slice(8,12) + '-' + s.slice(12,16) + '-' + s.slice(16,20) + '-' + s.slice(20);
+}
+
+/* ---------------------------------------------------------------- text */
+
+function norm(s){
+  return String(s === null || s === undefined ? '' : s)
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f\u0653-\u0655]/g, '')
+    .replace(/[\u064b-\u0652\u0670\u0640]/g, '')
+    .replace(/[\u0623\u0625\u0622\u0671]/g, '\u0627')
+    .replace(/\u0649/g, '\u064a')
+    .replace(/\u0626/g, '\u064a')
+    .replace(/\u0624/g, '\u0648')
+    .replace(/\u0629/g, '\u0647')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function tokens(s){
+  return s.split(/[\s\u060c,;:.!?()\[\]{}<>"'\u2019\u2018/\\|\-_\u2013\u2014+*]+/).filter(function(t){ return t.length > 0; });
+}
+
+function editDistanceAtMost1(a, b){
+  if (a === b) return true;
+  if (Math.abs(a.length - b.length) > 1) return false;
+  var i = 0, j = 0, diffs = 0;
+  while (i < a.length && j < b.length){
+    if (a.charAt(i) === b.charAt(j)){ i++; j++; continue; }
+    diffs++;
+    if (diffs > 1) return false;
+    if (a.length > b.length) i++;
+    else if (b.length > a.length) j++;
+    else { i++; j++; }
+  }
+  if (i < a.length || j < b.length) diffs++;
+  return diffs <= 1;
+}
+
+function mapsUrl(query){
+  var p = new URLSearchParams();
+  p.set('api', '1');
+  p.set('query', query);
+  return 'https://www.google.com/maps/search/?' + p.toString();
+}
+
+function mapsLink(text, query){
+  return el('a', {class:'btn ghost small', href:mapsUrl(query), target:'_blank', rel:'noopener', title:query}, text);
+}
+
+function formatUtc(value){
+  if (!value) return '';
+  var d = new Date(value);
+  if (isNaN(d.getTime())) return String(value);
+  return d.toISOString().slice(0,16).replace('T',' ') + ' UTC';
+}
+
+function verdictLabel(v){
+  if (v === 'looks_correct') return 'Looks right';
+  if (v === 'problem') return 'Report a problem';
+  if (v === 'unsure') return 'Not sure';
+  if (v === 'withdrawn') return 'Withdrawn';
+  return v || '—';
+}
+
+function issueLabel(v){
+  for (var i = 0; i < ISSUES.length; i++) if (ISSUES[i][0] === v) return ISSUES[i][1];
+  return v;
+}
+
+/* ---------------------------------------------------------------- server io */
+
+function getJSON(url){
+  return fetch(url, {headers:{'Accept':'application/json'}, cache:'no-store'}).then(function(res){
+    return res.text().then(function(text){
+      var data = null;
+      try { data = text ? JSON.parse(text) : null; } catch(e){ data = null; }
+      if (!res.ok){
+        var msg = (data && (data.message || data.error)) || ('The server answered with HTTP ' + res.status + ' for ' + url + '.');
+        var err = new Error(msg);
+        err.status = res.status;
+        err.data = data;
+        throw err;
+      }
+      if (!data || typeof data !== 'object') throw new Error('The server sent an unexpected response for ' + url + '.');
+      return data;
+    });
+  }, function(){
+    throw new Error('Could not reach the local server. Check that it is running, then try again.');
+  });
+}
+
+function postReview(body){
+  return fetch('/api/review', {
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Accept':'application/json',
+      'X-Review-Token': app.token
+    },
+    body: JSON.stringify(body)
+  }).then(function(res){
+    return res.text().then(function(text){
+      var data = null;
+      try { data = text ? JSON.parse(text) : null; } catch(e){ data = null; }
+      return {status:res.status, ok:res.ok, data:data};
+    });
+  });
+}
+
+/* ---------------------------------------------------------------- lookup */
+
+function locById(id){
+  if (!app.catalog || !app.catalog.locations) return null;
+  for (var i = 0; i < app.catalog.locations.length; i++){
+    if (app.catalog.locations[i].id === id) return app.catalog.locations[i];
+  }
+  return null;
+}
+
+function isFingerprintStale(record, loc){
+  return !!(record && loc && record.fingerprint && loc.fingerprint && record.fingerprint !== loc.fingerprint);
+}
+
+function currentReview(id){
+  var r = app.latest[id];
+  if (!r || !r.verdict || r.verdict === 'withdrawn') return null;
+  if (isFingerprintStale(r, locById(id))) return null;
+  return r;
+}
+
+function staleReview(id){
+  var r = app.latest[id];
+  if (!r || !r.verdict || r.verdict === 'withdrawn') return null;
+  return isFingerprintStale(r, locById(id)) ? r : null;
+}
+
+/* ---------------------------------------------------------------- search */
+
+function buildIndex(){
+  app.index = new Map();
+  (app.catalog.locations || []).forEach(function(loc){
+    var parts = [loc.nameAr]
+      .concat(loc.aliases || [])
+      .concat(loc.searchTerms || [])
+      .concat([loc.governorateAr, loc.parentAr, loc.kind])
+      .filter(Boolean)
+      .map(function(s){ return norm(s); });
+    var toks = [];
+    parts.forEach(function(p){
+      tokens(p).forEach(function(t){ if (toks.indexOf(t) < 0) toks.push(t); });
+    });
+    app.index.set(loc.id, {tokens:toks, joined:parts.join(' ')});
+  });
+}
+
+function matchToken(idx, t, fuzzy){
+  var i, tok;
+  for (i = 0; i < idx.tokens.length; i++){
+    tok = idx.tokens[i];
+    if (tok === t) return 3;
+    if (t.length >= 2 && tok.indexOf(t) === 0) return 2;
+  }
+  if (t.length >= 3 && idx.joined.indexOf(t) >= 0) return 1;
+  if (fuzzy && t.length >= 4){
+    for (i = 0; i < idx.tokens.length; i++){
+      tok = idx.tokens[i];
+      if (tok.length >= 3 && Math.abs(tok.length - t.length) <= 1 && editDistanceAtMost1(tok, t)) return 1;
+    }
+  }
+  return 0;
+}
+
+function rank(items){
+  items.sort(function(a, b){
+    if (b.score !== a.score) return b.score - a.score;
+    return String(a.loc.nameAr || '').localeCompare(String(b.loc.nameAr || ''), 'ar');
+  });
+  return items.map(function(x){ return x.loc; });
+}
+
+function searchIn(list, query){
+  var qn = norm(query);
+  var qt = tokens(qn);
+  if (!qt.length) return list.slice();
+  var strict = [];
+  var fuzzy = [];
+  list.forEach(function(loc){
+    var idx = app.index.get(loc.id);
+    if (!idx) return;
+    var i, score = 0, t;
+    for (i = 0; i < qt.length; i++){
+      score = matchToken(idx, qt[i], false);
+      if (!score) { score = 0; break; }
+    }
+    if (score) { strict.push({loc:loc, score:score}); return; }
+    score = 0;
+    var canFuzzy = true;
+    for (i = 0; i < qt.length; i++){
+      t = qt[i];
+      if (t.length < 4) { canFuzzy = false; break; }
+      score = matchToken(idx, t, true);
+      if (!score) { canFuzzy = false; break; }
+    }
+    if (canFuzzy && score) fuzzy.push({loc:loc, score:score});
+  });
+  if (strict.length) return rank(strict);
+  return rank(fuzzy);
+}
+
+function scoreValueFor(loc){
+  var v = app.catalog && app.catalog.verification;
+  if (!v || !v.available || !v.scores) return null;
+  var raw = v.scores[loc.id];
+  return (typeof raw === 'number' && isFinite(raw)) ? raw : null;
+}
+
+function verificationValue(loc){
+  var v = app.catalog && app.catalog.verification;
+  if (!v || !v.available) return 'Scores unavailable';
+  var score = scoreValueFor(loc);
+  if (score === null) return 'Unscored';
+  return score + '%';
+}
+
+function verificationLabel(loc){
+  var value = verificationValue(loc);
+  if (value === 'Scores unavailable' || value === 'Unscored') return value;
+  return 'Verification: ' + value;
+}
+
+function scoreFilterState(){
+  var input = ui.scoreAbove;
+  if (input && input.validity && input.validity.badInput){
+    return {active:true, value:null, error:'Enter a valid verification score between 0 and 100.'};
+  }
+  var raw = (app.scoreAbove == null ? '' : String(app.scoreAbove)).trim();
+  if (!raw) return {active:false, value:null, error:''};
+  var n = Number(raw);
+  if (!isFinite(n) || n < 0 || n > 100){
+    return {active:true, value:null, error:'Enter a valid verification score between 0 and 100.'};
+  }
+  return {active:true, value:n, error:''};
+}
+
+function filteredLocations(){
+  var all = (app.catalog && app.catalog.locations) || [];
+  var scoreFilter = scoreFilterState();
+  if (scoreFilter.error) return [];
+
+  var base = app.gov === 'all' ? all.slice() : all.filter(function(l){ return l.governorateAr === app.gov; });
+
+  if (app.filter === 'unreviewed') base = base.filter(function(l){ return !currentReview(l.id); });
+  else if (app.filter === 'reported') base = base.filter(function(l){ var r = currentReview(l.id); return r && r.verdict === 'problem'; });
+  else if (app.filter === 'mine') base = base.filter(function(l){ return !!currentReview(l.id) || !!staleReview(l.id); });
+
+  if (scoreFilter.active){
+    base = base.filter(function(l){
+      var score = scoreValueFor(l);
+      return score !== null && score > scoreFilter.value;
+    });
+  }
+
+  var q = (app.q || '').trim();
+  if (q) return searchIn(base, q);
+
+  return base.sort(function(a, b){
+    return String(a.nameAr || '').localeCompare(String(b.nameAr || ''), 'ar');
+  });
+}
+
+function emptyListMessage(){
+  var scoreFilter = scoreFilterState();
+  if (scoreFilter.error) return scoreFilter.error;
+  if ((app.q || '').trim()){
+    return 'No place matches “' + app.q.trim() + '”. Check the spelling, or pick a familiar place from the list.';
+  }
+  if (app.filter === 'mine') return 'No answers saved in this session yet. Places you save during this session appear here.';
+  if (app.filter === 'reported') return 'No problems reported with the current filter.';
+  if (app.filter === 'unreviewed') return 'Every place in the current filter already has an answer.';
+  return 'No places to show with the current filter.';
+}
+
+/* ---------------------------------------------------------------- rendering */
+
+function renderCounts(){
+  var c = app.counts || {};
+  ui.counts.textContent = '';
+  ui.counts.appendChild(chip(((c.reviewed || 0) + (c.stale || 0)) + ' YOUR saved answers', 'neutral'));
+  if (c.looks_correct) ui.counts.appendChild(chip(c.looks_correct + ' looks right', 'ok'));
+  if (c.problem) ui.counts.appendChild(chip(c.problem + ' reported problem', 'bad'));
+  if (c.unsure) ui.counts.appendChild(chip(c.unsure + ' not sure', 'unsure'));
+  if (c.stale) ui.counts.appendChild(chip(c.stale + ' saved before an update', 'stale'));
+
+  var total = app.total || 0;
+  var pct = total ? Math.round(((c.reviewed || 0) / total) * 100) : 0;
+  ui.progressFill.style.width = pct + '%';
+  ui.progressBar.setAttribute('aria-valuenow', String(pct));
+  ui.progressLabel.textContent = total ? ((c.reviewed || 0) + ' / ' + total + ' answers for the current list') : '';
+}
+
+function listItem(loc){
+  var r = currentReview(loc.id);
+  var stale = staleReview(loc.id);
+  var btn = el('button', {
+    type:'button',
+    class:'item' + (app.selected === loc.id ? ' selected' : ''),
+    'data-id':loc.id
+  });
+  if (app.selected === loc.id) btn.setAttribute('aria-current', 'true');
+
+  btn.appendChild(el('span', {class:'item-name', dir:'rtl', lang:'ar'}, loc.nameAr || loc.id));
+  var sub = [loc.governorateAr, loc.parentAr].filter(Boolean).join(' · ');
+  if (sub) btn.appendChild(el('span', {class:'item-sub', dir:'auto'}, sub));
+
+  if (r){
+    var kind = r.verdict === 'problem' ? 'bad' : (r.verdict === 'looks_correct' ? 'ok' : 'unsure');
+    btn.appendChild(el('span', {class:'chip small ' + kind}, verdictLabel(r.verdict)));
+  } else if (stale){
+    btn.appendChild(el('span', {class:'chip small stale'}, 'Stale record'));
+  } else {
+    btn.appendChild(el('span', {class:'chip small neutral'}, 'Not reviewed'));
+  }
+  btn.appendChild(el('span', {class:'chip small neutral'}, verificationLabel(loc)));
+
+  btn.addEventListener('click', function(){ selectPlace(loc.id); });
+  return el('li', null, btn);
+}
+
+function renderList(){
+  if (!ui.list) return;
+  var rows = filteredLocations();
+  var shown = rows.slice(0, app.shown);
+
+  ui.list.textContent = '';
+  shown.forEach(function(loc){ ui.list.appendChild(listItem(loc)); });
+  if (!rows.length) ui.list.appendChild(el('li', {class:'empty-li'}, emptyListMessage()));
+
+  ui.listMeta.textContent = rows.length
+    ? ('Showing ' + shown.length + ' of ' + rows.length + ' matching place' + (rows.length === 1 ? '' : 's'))
+    : '';
+
+  ui.moreBtn.hidden = rows.length <= app.shown;
+  if (!ui.moreBtn.hidden) ui.moreBtn.textContent = 'Load more (' + (rows.length - app.shown) + ' remaining)';
+}
+
+function addMeta(dl, label, valueNode){
+  dl.appendChild(el('dt', null, label));
+  dl.appendChild(el('dd', null, valueNode));
+}
+
+function renderDetail(opts){
+  opts = opts || {};
+  var body = ui.detailBody;
+  if (ui.boundaryPreview && ui.boundaryPreview.__localityBoundaryPreview){
+    ui.boundaryPreview.__localityBoundaryPreview.destroy();
+  }
+  ui.boundaryPreview = null;
+  body.textContent = '';
+  ui.saveBtn = null;
+  ui.undoBtn = null;
+  ui.issuesBox = null;
+  ui.noteInput = null;
+  ui.evidenceInput = null;
+  ui.problemHint = null;
+  ui.issuesNote = null;
+  ui.dirtyFlag = null;
+
+  var loc = app.selected ? locById(app.selected) : null;
+  if (!loc){
+    body.appendChild(el('p', {class:'empty'}, 'Pick a place from the list to review it.'));
+    return;
+  }
+
+  var head = el('div');
+  head.appendChild(el('h2', {class:'place-name', dir:'rtl', lang:'ar', id:'detailHeading', tabindex:'-1'}, loc.nameAr || loc.id));
+  if (loc.aliases && loc.aliases.length){
+    var aliasDetails = el('details', {class:'extra'});
+    aliasDetails.appendChild(el('summary', null, 'Alternative names and spellings'));
+    aliasDetails.appendChild(el('p', {class:'aliases', dir:'auto'}, loc.aliases.filter(Boolean).join(' · ')));
+    head.appendChild(aliasDetails);
+  }
+  body.appendChild(head);
+
+  if (staleReview(loc.id)){
+    body.appendChild(el('p', {class:'banner warn'}, 'Your saved answer is preserved. This place record has since changed; you can update your answer if needed.'));
+  }
+
+  var meta = el('dl', {class:'meta'});
+  addMeta(meta, 'Governorate', el('span', {dir:'rtl', lang:'ar'}, loc.governorateAr || '—'));
+  addMeta(meta, 'Delegation / parent', el('span', {dir:'rtl', lang:'ar'}, loc.parentAr || '—'));
+  addMeta(meta, 'Verification', verificationValue(loc));
+  var hasCoords = typeof loc.lat === 'number' && isFinite(loc.lat) && typeof loc.lng === 'number' && isFinite(loc.lng);
+  body.appendChild(meta);
+
+  if (loc.kind || hasCoords || loc.hasBoundary){
+    var raw = el('details', {class:'extra'});
+    raw.appendChild(el('summary', null, 'More place details'));
+    var rawMeta = el('dl', {class:'meta small'});
+    if (loc.kind) addMeta(rawMeta, 'Type', loc.kind);
+    if (hasCoords) addMeta(rawMeta, 'Coordinates', el('span', {class:'mono'}, loc.lat + ', ' + loc.lng));
+    addMeta(rawMeta, 'Boundary data', loc.hasBoundary ? 'Available' : 'Not available');
+    raw.appendChild(rawMeta);
+    body.appendChild(raw);
+  }
+
+  var links = el('div', {class:'maps'});
+  var nameQuery = [loc.nameAr, loc.parentAr, loc.governorateAr].filter(Boolean).join(' ');
+  links.appendChild(mapsLink('Find this name', (nameQuery || loc.id) + ' Tunisia'));
+  if (hasCoords) links.appendChild(mapsLink('View saved pin', loc.lat + ',' + loc.lng));
+  body.appendChild(links);
+
+  if (window.LocalityBoundaryPreview){
+    var boundaryHost = el('div');
+    body.appendChild(boundaryHost);
+    ui.boundaryPreview = window.LocalityBoundaryPreview.mount(boundaryHost, loc);
+  } else {
+    body.appendChild(el('p', {class:'hint'}, 'The boundary preview could not load. Refresh this page to try again.'));
+  }
+
+  if (loc.prayerSource){
+    var ps = loc.prayerSource;
+    var psCoords = (typeof ps.lat === 'number' && isFinite(ps.lat) && typeof ps.lng === 'number' && isFinite(ps.lng))
+      ? (ps.lat + ', ' + ps.lng) : '—';
+    var det = el('details', {class:'prayer'});
+    det.appendChild(el('summary', null, 'Prayer-time source (reference only)'));
+    var pdl = el('dl', {class:'meta small'});
+    addMeta(pdl, 'Name', el('span', {dir:'rtl', lang:'ar'}, ps.nameAr || '—'));
+    addMeta(pdl, 'Coordinates', el('span', {class:'mono'}, psCoords));
+    det.appendChild(pdl);
+    if (psCoords !== '—') det.appendChild(el('p', null, mapsLink('Check this source on Google Maps', psCoords)));
+    det.appendChild(el('p', {class:'hint'}, 'This is the prayer-time source attached to the place record. It is shown for reference; checking prayer mapping is a separate task.'));
+    body.appendChild(det);
+  }
+
+  ui.priorBanner = el('div', {class:'prior'});
+  body.appendChild(ui.priorBanner);
+  updatePriorBanner();
+
+  /* ---- form ---- */
+  var f = el('form', {class:'review-form', novalidate:'novalidate'});
+  f.addEventListener('submit', saveReview);
+
+  var isProblem = form.verdict === 'problem';
+  var fs = el('fieldset', {class:'verdicts'});
+  fs.appendChild(el('legend', null, 'Your answer for this place'));
+  VERDICTS.forEach(function(v){
+    var rid = 'v-' + v.value;
+    var input = el('input', {type:'radio', name:'verdict', id:rid, value:v.value});
+    input.checked = form.verdict === v.value;
+    input.addEventListener('change', function(){
+      form.verdict = v.value;
+      onVerdictChange();
+    });
+    var lab = el('label', {class:'verdict-opt', 'for':rid});
+    lab.appendChild(input);
+    lab.appendChild(el('span', {class:'vo-body'},
+      el('span', {class:'vo-label'}, v.label),
+      el('span', {class:'vo-hint'}, v.hint)));
+    fs.appendChild(lab);
+  });
+  f.appendChild(fs);
+
+  f.appendChild(el('p', {class:'hint'}, '“Looks right” checks the name, the locality and the area you recognize. Boundaries, GPS pins and prayer-time mapping are checked separately.'));
+
+  ui.issuesBox = el('div', {class:'issues', role:'group', 'aria-label':'Issues', hidden:!isProblem});
+  ui.issuesBox.appendChild(el('p', {class:'field-label'}, 'What is wrong? (select everything that applies)'));
+  var grid = el('div', {class:'issue-grid'});
+  ISSUES.forEach(function(pair){
+    var val = pair[0], label = pair[1];
+    var cid = 'i-' + val;
+    var cb = el('input', {type:'checkbox', id:cid, value:val});
+    cb.checked = isProblem && form.issues.indexOf(val) >= 0;
+    cb.addEventListener('change', function(){
+      if (cb.checked){
+        if (form.issues.indexOf(val) < 0) form.issues.push(val);
+      } else {
+        form.issues = form.issues.filter(function(x){ return x !== val; });
+      }
+      updateDirtyUI();
+    });
+    var lab = el('label', {class:'issue', 'for':cid});
+    lab.appendChild(cb);
+    lab.appendChild(el('span', null, label));
+    grid.appendChild(lab);
+  });
+  ui.issuesBox.appendChild(grid);
+  ui.problemHint = el('p', {class:'hint', hidden:!isProblem}, 'A problem report needs at least one issue selected or a short note.');
+  ui.issuesBox.appendChild(ui.problemHint);
+  f.appendChild(ui.issuesBox);
+
+  ui.issuesNote = el('p', {class:'hint', hidden:!(issuesWereCleared && form.verdict && !isProblem)},
+    'Issues are only saved with “Report a problem”. Choosing another answer clears them.');
+  f.appendChild(ui.issuesNote);
+
+  var krow = el('div', {class:'krow'});
+  krow.appendChild(el('label', {class:'field-label', 'for':'knowledge'}, 'Where does your answer come from?'));
+  var ksel = el('select', {id:'knowledge'});
+  KNOWLEDGE.forEach(function(k){ ksel.appendChild(el('option', {value:k.value}, k.label)); });
+  ksel.value = form.knowledge || 'unspecified';
+  ksel.addEventListener('change', function(){
+    form.knowledge = ksel.value;
+    updateDirtyUI();
+  });
+  krow.appendChild(ksel);
+  f.appendChild(krow);
+
+  var extra = el('details', {class:'extra'});
+  if (form.note || form.evidenceUrl) extra.open = true;
+  extra.appendChild(el('summary', null, 'Add a note or a Google Maps link (optional)'));
+  extra.appendChild(el('label', {class:'field-label', 'for':'note'}, 'Note (max 3000 characters)'));
+  ui.noteInput = el('textarea', {id:'note', rows:'4', maxlength:'3000', placeholder:'What did you check? Anything an agent should follow up on.'});
+  ui.noteInput.value = form.note || '';
+  ui.noteInput.addEventListener('input', function(){
+    form.note = ui.noteInput.value;
+    updateDirtyUI();
+  });
+  extra.appendChild(ui.noteInput);
+  extra.appendChild(el('label', {class:'field-label', 'for':'evidence'}, 'Link to evidence on Google Maps (optional, http/https)'));
+  ui.evidenceInput = el('input', {type:'text', id:'evidence', maxlength:'2048', inputmode:'url', placeholder:'https://www.google.com/maps/…'});
+  ui.evidenceInput.value = form.evidenceUrl || '';
+  ui.evidenceInput.addEventListener('input', function(){
+    form.evidenceUrl = ui.evidenceInput.value;
+    updateDirtyUI();
+  });
+  extra.appendChild(ui.evidenceInput);
+  f.appendChild(extra);
+
+  var actions = el('div', {class:'actions'});
+  ui.saveBtn = el('button', {type:'submit', class:'btn primary'}, 'Save answer');
+  var next = el('button', {type:'button', class:'btn ghost'}, 'Next unreviewed →');
+  next.addEventListener('click', nextUnreviewed);
+  actions.appendChild(ui.saveBtn);
+  actions.appendChild(next);
+  f.appendChild(actions);
+
+  ui.dirtyFlag = el('p', {class:'dirtyflag', hidden:true}, 'Unsaved changes for this place.');
+  f.appendChild(ui.dirtyFlag);
+
+  f.appendChild(el('p', {class:'disclaimer'}, 'Saved for follow-up.'));
+
+  body.appendChild(f);
+  updateDirtyUI();
+
+  if (opts.focus !== false){
+    var h = $('detailHeading');
+    if (h) h.focus({preventScroll:true});
+  }
+}
+
+function updatePriorBanner(){
+  if (!ui.priorBanner) return;
+  ui.priorBanner.textContent = '';
+  var prior = form.prior;
+  if (!prior) return;
+
+  var when = formatUtc(prior.savedAtUtc);
+  ui.priorBanner.appendChild(el('p', null,
+    el('span', {class:'prior-tag'}, 'Saved answer on record: '),
+    el('strong', null, verdictLabel(prior.verdict)),
+    when ? ' · ' + when : '',
+    ''
+  ));
+
+  if (prior.verdict === 'problem' && prior.issues && prior.issues.length){
+    ui.priorBanner.appendChild(el('p', null, 'Reported issues: ' + prior.issues.map(issueLabel).join(', ')));
+  }
+  if (prior.note) ui.priorBanner.appendChild(el('p', null, 'Note: ' + prior.note));
+
+  ui.undoBtn = el('button', {type:'button', class:'btn small ghost'}, 'Undo this answer (withdraw)');
+  ui.undoBtn.addEventListener('click', withdrawReview);
+  ui.priorBanner.appendChild(ui.undoBtn);
+  ui.priorBanner.appendChild(el('p', {class:'hint'}, 'Editing the form and pressing Save replaces your saved answer for this place.'));
+}
+
+function updateDirtyUI(){
+  if (ui.dirtyFlag) ui.dirtyFlag.hidden = !isDirty();
+  updateInteractionState();
+}
+
+function updateInteractionState(){
+  var busy = !!app.saving;
+  var scoresAvailable = !!(app.catalog && app.catalog.verification && app.catalog.verification.available);
+  var controls = document.querySelectorAll('#q,#gov,#filters button,#moreBtn,#reloadBtn,#scoreAbove,#clearScoreBtn,.item,#detailBody input,#detailBody select,#detailBody textarea,.actions button');
+  for (var i=0;i<controls.length;i++){
+    var c = controls[i];
+    if (c.id === 'scoreAbove' || c.id === 'clearScoreBtn') c.disabled = busy || !scoresAvailable;
+    else c.disabled = busy;
+  }
+  if (ui.saveBtn) ui.saveBtn.disabled = busy;
+  if (ui.undoBtn) ui.undoBtn.disabled = busy;
+}
+
+/* ---------------------------------------------------------------- form state */
+
+function onVerdictChange(){
+  var isProblem = form.verdict === 'problem';
+  if (!isProblem){
+    if (form.issues.length) issuesWereCleared = true;
+    form.issues = [];
+  } else {
+    issuesWereCleared = false;
+  }
+  if (ui.issuesBox){
+    ui.issuesBox.hidden = !isProblem;
+    if (isProblem){
+      var boxes = ui.issuesBox.querySelectorAll('input[type=checkbox]');
+      for (var i = 0; i < boxes.length; i++) boxes[i].checked = form.issues.indexOf(boxes[i].value) >= 0;
+    }
+  }
+  if (ui.problemHint) ui.problemHint.hidden = !isProblem;
+  if (ui.issuesNote) ui.issuesNote.hidden = !(issuesWereCleared && form.verdict && !isProblem);
+  updateDirtyUI();
+}
+
+function snapFromValues(v){
+  var issues = (v.verdict === 'problem' && Array.isArray(v.issues)) ? v.issues.slice().sort() : [];
+  return JSON.stringify({
+    verdict: v.verdict || null,
+    issues: issues,
+    note: String(v.note || '').trim(),
+    evidenceUrl: String(v.evidenceUrl || '').trim(),
+    knowledge: v.knowledge || 'unspecified'
+  });
+}
+
+function snapshot(){ return snapFromValues(form); }
+
+function isDirty(){
+  if (!form.id || form.baseline === null) return false;
+  return snapshot() !== form.baseline;
+}
+
+function loadFormFor(id){
+  var loc = locById(id);
+  var prior = currentReview(id);
+  form.id = id;
+  form.fingerprint = loc ? loc.fingerprint : null;
+  form.prior = prior;
+  form.lastAttempt = null;
+  form.verdict = null;
+  form.issues = [];
+  form.note = '';
+  form.evidenceUrl = '';
+  form.knowledge = 'unspecified';
+  issuesWereCleared = false;
+  if (prior){
+    form.verdict = prior.verdict;
+    form.issues = (prior.verdict === 'problem' && Array.isArray(prior.issues)) ? prior.issues.slice() : [];
+    form.note = prior.note || '';
+    form.evidenceUrl = prior.evidenceUrl || '';
+    form.knowledge = prior.knowledge || 'unspecified';
+  }
+  form.baseline = snapshot();
+}
+
+function selectPlace(id, opts){
+  opts = opts || {};
+  if (app.saving) return;
+  if (app.selected === id && !opts.force) return;
+  if (!opts.skipDirtyCheck && isDirty()){
+    if (!window.confirm('You have unsaved changes for the current place. Discard them and open another place?')) return;
+  }
+  app.selected = id;
+  loadFormFor(id);
+  renderList();
+  renderDetail({focus: opts.focus});
+  if (opts.scroll !== false && window.matchMedia('(max-width: 900px)').matches && ui.detailPanel){
+    ui.detailPanel.scrollIntoView({block:'start'});
+  }
+}
+
+function setFeedback(text, kind){
+  if (!ui.feedback) return;
+  ui.feedback.className = 'feedback' + (kind ? ' ' + kind : '');
+  ui.feedback.textContent = text || '';
+}
+
+/* ---------------------------------------------------------------- save */
+
+function saveReview(evt){
+  if (evt) evt.preventDefault();
+  if (app.saving) return;
+
+  if (!form.id){ setFeedback('Pick a place from the list first.', 'err'); return; }
+  if (!form.verdict){
+    setFeedback('Pick one answer first: Looks right, Report a problem or Not sure.', 'err');
+    focusFirstVerdict();
+    return;
+  }
+
+  form.note = String(form.note || '').trim();
+  form.evidenceUrl = String(form.evidenceUrl || '').trim();
+  if (ui.noteInput) ui.noteInput.value = form.note;
+  if (ui.evidenceInput) ui.evidenceInput.value = form.evidenceUrl;
+
+  var isProblem = form.verdict === 'problem';
+  var issues = isProblem ? form.issues.slice().sort() : [];
+  if (isProblem && !issues.length && !form.note){
+    setFeedback('A problem report needs at least one issue ticked, or a short note explaining what is wrong.', 'err');
+    if (ui.issuesBox) ui.issuesBox.hidden = false;
+    return;
+  }
+
+  if (form.evidenceUrl){
+    var okUrl = false;
+    try {
+      var u = new URL(form.evidenceUrl);
+      okUrl = (u.protocol === 'http:' || u.protocol === 'https:') && !!u.hostname;
+    } catch(e){ okUrl = false; }
+    if (!okUrl){
+      setFeedback('The evidence link must start with http:// or https:// and include a hostname, or be left empty.', 'err');
+      if (ui.evidenceInput) ui.evidenceInput.focus();
+      return;
+    }
+  }
+
+  var body = {
+    requestId: null,
+    id: form.id,
+    fingerprint: form.fingerprint,
+    verdict: form.verdict,
+    issues: issues,
+    note: form.note,
+    evidenceUrl: form.evidenceUrl,
+    knowledge: form.knowledge || 'unspecified'
+  };
+
+  var signature = snapFromValues(body);
+  if (!form.lastAttempt || form.lastAttempt.signature !== signature){
+    form.lastAttempt = {requestId: uuid(), signature: signature};
+  }
+  body.requestId = form.lastAttempt.requestId;
+
+  app.saving = true;
+  updateInteractionState();
+  var btn = ui.saveBtn;
+  var oldLabel = btn ? btn.textContent : '';
+  if (btn){ btn.disabled = true; btn.textContent = 'Saving…'; }
+  setFeedback('Saving…', 'info');
+
+  postReview(body).then(function(res){
+    if (res.status === 409){
+      var m409 = (res.data && (res.data.message || res.data.error)) || 'the server refused this answer';
+      setFeedback('Not saved: ' + m409 + '. The place record or the server state changed. Press “Reload answers” and try again — your draft is still here.', 'err');
+      return;
+    }
+    if (!res.ok || !res.data || res.data.ok !== true){
+      var m = (res.data && (res.data.message || res.data.error)) || ('the server answered with HTTP ' + res.status);
+      setFeedback('Not saved: ' + m + '. Your draft is kept — fix it and press Save again.', 'err');
+      return;
+    }
+    onSaveSuccess(res.data, body);
+  }).catch(function(err){
+    if (err && err.message) setFeedback('Not saved: ' + err.message + '. Your draft is kept — press Save again.', 'err');
+    else
+    setFeedback('Not saved: could not reach the local server. Your draft is kept — press Save again.', 'err');
+  }).finally(function(){
+    app.saving = false;
+    if (ui.saveBtn){ ui.saveBtn.disabled = false; ui.saveBtn.textContent = oldLabel || 'Save answer'; }
+    if (ui.undoBtn) ui.undoBtn.disabled = false;
+    updateInteractionState();
+  });
+}
+
+function onSaveSuccess(data, submitted){
+  var id = submitted.id;
+  var review = data.review || {
+    id: id,
+    fingerprint: submitted.fingerprint,
+    verdict: submitted.verdict,
+    issues: submitted.issues,
+    note: submitted.note,
+    evidenceUrl: submitted.evidenceUrl,
+    knowledge: submitted.knowledge,
+    status:'PENDING_AGENT_REVIEW',
+    savedAtUtc:new Date().toISOString()
+  };
+
+  app.latest[id] = review;
+  if (data.counts) app.counts = data.counts;
+
+  renderCounts();
+  renderList();
+
+  if (form.id === id){
+    form.prior = review;
+    form.lastAttempt = null;
+    var submittedSnap = snapFromValues(submitted);
+    form.baseline = submittedSnap;
+    updatePriorBanner();
+    updateDirtyUI();
+    if (snapshot() !== submittedSnap){
+      setFeedback('Saved the answer you submitted. You have newer edits that are still unsaved — press Save again to store them.', 'warn');
+    } else {
+      setFeedback('Saved for follow-up.', 'ok');
+    }
+  } else {
+    setFeedback('Saved for follow-up.', 'ok');
+  }
+}
+
+function focusFirstVerdict(){
+  var input = document.querySelector('input[name="verdict"]');
+  if (input) input.focus();
+  else {
+    var h = $('detailHeading');
+    if (h) h.focus();
+  }
+}
+
+/* ---------------------------------------------------------------- withdraw */
+
+function withdrawReview(){
+  if (app.saving || !form.id || !form.prior) return;
+  if (!window.confirm('Withdraw your saved answer for this place? It will be removed from the counts and shown as withdrawn.')) return;
+
+  var id = form.id;
+  var body = {
+    requestId: uuid(),
+    id: id,
+    fingerprint: form.fingerprint,
+    verdict: 'withdrawn',
+    issues: [],
+    note: '',
+    evidenceUrl: '',
+    knowledge: 'unspecified'
+  };
+
+  app.saving = true;
+  updateInteractionState();
+  var btn = ui.undoBtn;
+  if (btn){ btn.disabled = true; btn.textContent = 'Withdrawing…'; }
+  setFeedback('Withdrawing…', 'info');
+
+  postReview(body).then(function(res){
+    if (!res.ok || !res.data || res.data.ok !== true){
+      var m = (res.data && (res.data.message || res.data.error)) || ('the server answered with HTTP ' + res.status);
+      setFeedback('Withdraw failed: ' + m + '. Your saved answer is unchanged.', 'err');
+      return;
+    }
+    delete app.latest[id];
+    if (res.data.counts) app.counts = res.data.counts;
+
+    if (form.id === id){
+      form.verdict = null;
+      form.issues = [];
+      form.note = '';
+      form.evidenceUrl = '';
+      form.knowledge = 'unspecified';
+      form.prior = null;
+      form.lastAttempt = null;
+      issuesWereCleared = false;
+      form.baseline = snapshot();
+      renderDetail({focus:false});
+    }
+    renderCounts();
+    renderList();
+    setFeedback('Answer withdrawn. This place is counted as unreviewed again.', 'ok');
+  }).catch(function(){
+    setFeedback('Withdraw failed: could not reach the local server. Your saved answer is unchanged.', 'err');
+  }).finally(function(){
+    app.saving = false;
+    if (ui.undoBtn){ ui.undoBtn.disabled = false; ui.undoBtn.textContent = 'Undo this answer (withdraw)'; }
+    updateInteractionState();
+  });
+}
+
+/* ---------------------------------------------------------------- navigation */
+
+function nextUnreviewed(){
+  if (app.saving) return;
+  var rows = filteredLocations();
+  if (!rows.length){
+    setFeedback('No places in the current filter. Change the search or the filter to find places to review.', 'info');
+    return;
+  }
+  var ids = rows.map(function(l){ return l.id; });
+  var start = ids.indexOf(app.selected);
+  var target = null;
+  for (var i = 1; i <= ids.length; i++){
+    var cand = ids[((start < 0 ? -1 : start) + i) % ids.length];
+    if (!currentReview(cand)){ target = cand; break; }
+  }
+  if (!target){
+    setFeedback('No unreviewed places in the current filter. Switch to “All”, widen the governorate filter, or clear the search.', 'info');
+    return;
+  }
+  if (isDirty() && !window.confirm('You have unsaved changes. Discard them and open the next unreviewed place?')) return;
+  selectPlace(target, {force:true, skipDirtyCheck:true});
+}
+
+/* ---------------------------------------------------------------- load */
+
+function loadAll(){
+  setFeedback('Loading places and saved answers…', 'info');
+  if (ui.listMeta) ui.listMeta.textContent = 'Loading…';
+
+  Promise.all([getJSON('/api/catalog'), getJSON('/api/state')]).then(function(results){
+    var cat = results[0];
+    var st = results[1];
+    if (!cat || !Array.isArray(cat.locations)) throw new Error('The catalog response did not contain a list of locations.');
+
+    app.catalog = cat;
+    app.token = cat.csrfToken || '';
+    app.latest = (st && st.latest) || {};
+    app.counts = (st && st.counts) || app.counts;
+    app.total = (st && st.total) || cat.locations.length;
+    app.selected = null;
+    var scoresAvailable = !!(cat.verification && cat.verification.available);
+    if (ui.scoreAbove) ui.scoreAbove.disabled = !scoresAvailable;
+    if (ui.clearScoreBtn) ui.clearScoreBtn.disabled = !scoresAvailable;
+    if (!scoresAvailable) {
+      if (ui.scoreAbove) ui.scoreAbove.value = '';
+      app.scoreAbove = '';
+    }
+
+    buildIndex();
+    buildGovOptions();
+    renderCounts();
+    applyInitialQuery();
+    renderList();
+    renderDetail({focus:false});
+    setFeedback('', '');
+  }, function(err){
+    setFeedback('Could not load the review data: ' + (err && err.message ? err.message : 'unknown error'), 'err');
+    showLoadError(err);
+  });
+}
+
+function applyInitialQuery(){
+  var params = new URLSearchParams(window.location.search);
+  var q = params.get('q');
+  if (!q){ renderDetail({focus:false}); return; }
+
+  ui.q.value = q;
+  app.q = q;
+  app.shown = PAGE;
+
+  var rows = filteredLocations();
+  if (rows.length){
+    app.selected = rows[0].id;
+    loadFormFor(rows[0].id);
+    renderDetail({focus:false});
+  } else {
+    renderDetail({focus:false});
+    setFeedback('No place matched “' + q + '”. Pick a familiar place from the list, or try another spelling.', 'info');
+  }
+}
+
+function showLoadError(err){
+  ui.detailBody.textContent = '';
+  var box = el('div', {class:'errorbox'});
+  box.appendChild(el('h2', null, 'Could not load the review data'));
+  box.appendChild(el('p', null, (err && err.message) ? err.message : 'Unknown error.'));
+  box.appendChild(el('p', {class:'hint'}, 'Check that the local review server is running, then try again.'));
+  var retry = el('button', {type:'button', class:'btn primary'}, 'Try again');
+  retry.addEventListener('click', loadAll);
+  box.appendChild(retry);
+  ui.detailBody.appendChild(box);
+  if (ui.listMeta) ui.listMeta.textContent = '';
+}
+
+function reloadState(){
+  if (app.saving) return;
+  setFeedback('Reloading saved answers…', 'info');
+  var selectedBefore = app.selected;
+  var dirtyBefore = isDirty();
+  app.saving = true;
+  updateInteractionState();
+  Promise.all([getJSON('/api/catalog'), getJSON('/api/state')]).then(function(results){
+    var cat = results[0], st = results[1];
+    if (!cat || !Array.isArray(cat.locations)) throw new Error('The catalog response did not contain a list of locations.');
+    app.catalog = cat;
+    app.token = cat.csrfToken || '';
+    buildIndex();
+    buildGovOptions();
+    app.latest = st.latest || {};
+    app.counts = st.counts || app.counts;
+    app.total = st.total || app.total;
+    app.selected = selectedBefore;
+    renderCounts();
+    renderList();
+    if (app.selected && !dirtyBefore){
+      loadFormFor(app.selected);
+      renderDetail({focus:false});
+    } else if (app.selected) {
+      var updatedPlace = locById(app.selected);
+      if (!updatedPlace || updatedPlace.fingerprint !== form.fingerprint){
+        var keptNote = form.note, keptLink = form.evidenceUrl;
+        loadFormFor(app.selected);
+        form.note = keptNote;
+        form.evidenceUrl = keptLink;
+        form.verdict = null;
+        form.issues = [];
+        renderDetail({focus:false});
+        setFeedback('Place details changed. Your note is kept; check the updated details and choose an answer again.', 'warn');
+        return;
+      }
+      renderDetail({focus:false});
+    }
+    setFeedback('Answers reloaded from the server.', 'info');
+  }).catch(function(err){
+    setFeedback('Could not reload answers: ' + (err && err.message ? err.message : 'unknown error'), 'err');
+  }).finally(function(){
+    app.saving = false;
+    updateInteractionState();
+  });
+}
+
+function buildGovOptions(){
+  var seen = Object.create(null);
+  (app.catalog.locations || []).forEach(function(l){
+    if (l.governorateAr) seen[l.governorateAr] = true;
+  });
+  var list = Object.keys(seen).sort(function(a, b){ return a.localeCompare(b, 'ar'); });
+  ui.gov.textContent = '';
+  ui.gov.appendChild(el('option', {value:'all'}, 'All governorates'));
+  list.forEach(function(g){ ui.gov.appendChild(el('option', {value:g}, g)); });
+  ui.gov.value = app.gov;
+}
+
+/* ---------------------------------------------------------------- init */
+
+function init(){
+  ui.counts = $('counts');
+  ui.progressBar = $('progressBar');
+  ui.progressFill = $('progressFill');
+  ui.progressLabel = $('progressLabel');
+  ui.list = $('list');
+  ui.listMeta = $('listMeta');
+  ui.moreBtn = $('moreBtn');
+  ui.q = $('q');
+  ui.gov = $('gov');
+  ui.scoreAbove = $('scoreAbove');
+  ui.clearScoreBtn = $('clearScoreBtn');
+  ui.filters = $('filters');
+  ui.detailBody = $('detailBody');
+  ui.detailPanel = $('detailPanel');
+  ui.feedback = $('feedback');
+
+  ui.q.addEventListener('input', function(){
+    app.q = ui.q.value;
+    app.shown = PAGE;
+    renderList();
+  });
+
+  ui.gov.addEventListener('change', function(){
+    app.gov = ui.gov.value;
+    app.shown = PAGE;
+    renderList();
+  });
+
+  ui.scoreAbove.addEventListener('input', function(){
+    app.scoreAbove = ui.scoreAbove.value;
+    app.shown = PAGE;
+    renderList();
+  });
+
+  ui.clearScoreBtn.addEventListener('click', function(){
+    ui.scoreAbove.value = '';
+    app.scoreAbove = '';
+    app.shown = PAGE;
+    renderList();
+  });
+
+  var buttons = ui.filters.querySelectorAll('button');
+  Array.prototype.forEach.call(buttons, function(b){
+    b.addEventListener('click', function(){
+      app.filter = b.getAttribute('data-filter');
+      app.shown = PAGE;
+      Array.prototype.forEach.call(buttons, function(x){
+        var on = (x === b);
+        x.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) x.classList.add('active'); else x.classList.remove('active');
+      });
+      renderList();
+    });
+  });
+
+  ui.moreBtn.addEventListener('click', function(){
+    app.shown += PAGE;
+    renderList();
+  });
+
+  $('reloadBtn').addEventListener('click', reloadState);
+
+  window.addEventListener('beforeunload', function(e){
+    if (isDirty()){
+      e.preventDefault();
+      e.returnValue = '';
+      return '';
+    }
+  });
+
+  renderCounts();
+  loadAll();
+}
+
+init();
+})();
+</script>
+</body>
+</html>

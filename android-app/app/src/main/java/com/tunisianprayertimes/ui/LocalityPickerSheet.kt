@@ -36,6 +36,20 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.localityKindClass
 import com.tunisianprayertimes.searchLocalities
 import com.tunisianprayertimes.ui.theme.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.withContext
+
+private class LocalitySearchRequest(
+    val catalog: LocalityPickerCatalog,
+    val query: LocalitySearchQuery,
+    val governorateNames: Map<Int, String>,
+)
+
+private class LocalityGroupResult(
+    val request: LocalitySearchRequest,
+    val groups: List<Triple<Int, String, List<Locality>>>,
+)
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -53,14 +67,36 @@ internal fun LocalityPickerSheet(
     val focusRequester = remember { FocusRequester() }
     val governorateNames = remember(gouvernorats) { gouvernorats.associate { it.id to it.nomAr } }
     val search = remember(query) { LocalitySearchQuery.parse(query) }
-    // Opening renders the prepared groups; only a typed query filters rows.
-    val groups = remember(catalog, search, governorateNames) {
-        catalog.groups.mapNotNull { group ->
-            val rows = searchLocalities(group.rows, search)
-            if (rows.isEmpty()) null
-            else Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, rows)
+    val request = remember(catalog, search, governorateNames) {
+        LocalitySearchRequest(catalog, search, governorateNames)
+    }
+    val preparedGroups = remember(catalog, governorateNames) {
+        catalog.groups.map { group ->
+            Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, group.rows)
         }
     }
+    val searchResult by produceState<LocalityGroupResult?>(null, catalog, search, governorateNames) {
+        value = null
+        if (!search.isEmpty) {
+            val groups = withContext(Dispatchers.Default) {
+                val scope = this
+                catalog.groups.mapNotNull { group ->
+                    val rows = searchLocalities(group.rows, search) { scope.ensureActive() }
+                    if (rows.isEmpty()) null
+                    else Triple(group.governorateId, governorateNames[group.governorateId] ?: group.fallbackName, rows)
+                }
+            }
+            ensureActive()
+            value = LocalityGroupResult(request, groups)
+        }
+    }
+    val currentResult = searchResult?.takeIf { it.request === request }
+    val groups = when {
+        search.isEmpty -> preparedGroups
+        currentResult != null -> currentResult.groups
+        else -> emptyList()
+    }
+    val isSearchPending = !search.isEmpty && currentResult == null
     LaunchedEffect(query, catalog) {
         listState.scrollToItem(if (query.isBlank()) catalog.selectionScrollIndex(selectedId) else 0)
     }
@@ -94,7 +130,14 @@ internal fun LocalityPickerSheet(
                 )
             }
             Spacer(Modifier.height(8.dp))
-            if (groups.isEmpty()) {
+            if (isSearchPending) {
+                Box(
+                    modifier = Modifier.fillMaxWidth().padding(24.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                }
+            } else if (groups.isEmpty()) {
                 Text(
                     stringResource(R.string.locality_no_results),
                     modifier = Modifier.fillMaxWidth().padding(24.dp),

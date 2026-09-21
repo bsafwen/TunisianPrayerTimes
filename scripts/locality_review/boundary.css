@@ -1,0 +1,320 @@
+/* Locality boundary preview styles. All rules are scoped to .boundary-preview. */
+.boundary-preview {
+  --bp-cream: #faf6ec;
+  --bp-cream-2: #f3ecda;
+  --bp-ink: #23301f;
+  --bp-muted: #66705d;
+  --bp-green: #2f6b4f;
+  --bp-green-dark: #1f4a36;
+  --bp-line: #d9cfb8;
+  --bp-pin: #c0392b;
+  --bp-pin-dark: #922b21;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 14px 0;
+  padding: 14px;
+  border: 1px solid var(--bp-line);
+  border-radius: 12px;
+  background: var(--bp-cream);
+  color: var(--bp-ink);
+  font: inherit;
+  overflow: hidden;
+}
+
+.boundary-preview *,
+.boundary-preview *::before,
+.boundary-preview *::after {
+  box-sizing: border-box;
+}
+
+.boundary-preview__head {
+  min-width: 0;
+}
+
+.boundary-preview__title {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--bp-green-dark);
+}
+
+.boundary-preview__subtitle {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--bp-muted);
+}
+
+.boundary-preview__body {
+  margin-top: 10px;
+  min-width: 0;
+}
+
+.boundary-preview__status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--bp-cream-2);
+  color: var(--bp-ink);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.boundary-preview__status[hidden] {
+  display: none;
+}
+
+.boundary-preview__status.is-note {
+  background: #eef3e6;
+  color: var(--bp-green-dark);
+}
+
+.boundary-preview__status.is-error {
+  background: #fbeae7;
+  color: #7d2b20;
+  border: 1px solid #e7bdb4;
+}
+
+.boundary-preview__status-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.boundary-preview__retry {
+  flex: 0 0 auto;
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid var(--bp-green);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--bp-green-dark);
+  font: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.boundary-preview__retry:hover {
+  background: #eef3e6;
+}
+
+.boundary-preview__retry:focus-visible,
+.boundary-preview__tool:focus-visible {
+  outline: 2px solid var(--bp-green-dark);
+  outline-offset: 2px;
+}
+
+.boundary-preview__canvas {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 10px;
+  border: 1px solid #e2d9c6;
+  border-radius: 10px;
+  background: #f4efe2;
+  overflow: hidden;
+}
+
+.boundary-preview__canvas[hidden] {
+  display: none;
+}
+
+.boundary-preview__map {
+  display: block;
+  width: 100%;
+  height: 300px;
+  touch-action: none;
+  cursor: grab;
+  outline: none;
+  font-family: inherit;
+}
+
+.boundary-preview__map text {
+  font-family: inherit;
+}
+
+.boundary-preview__map:active,
+.boundary-preview__map.is-dragging {
+  cursor: grabbing;
+}
+
+.boundary-preview__map:focus-visible {
+  outline: 2px solid var(--bp-green-dark);
+  outline-offset: -2px;
+}
+
+.boundary-preview__tools {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
+.boundary-preview__tool {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 4px 8px;
+  border: 1px solid var(--bp-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--bp-green-dark);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(34, 48, 31, 0.12);
+}
+
+.boundary-preview__tool:hover {
+  background: #fff;
+  border-color: var(--bp-green);
+}
+
+.boundary-preview__map .bp-path {
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.boundary-preview__map .bp-path--primary {
+  stroke-width: 2.6;
+}
+
+.boundary-preview__map .bp-path:not(.bp-path--primary) {
+  stroke-dasharray: 7 5;
+}
+
+.boundary-preview__map .bp-pin__shape {
+  fill: var(--bp-pin);
+  stroke: #fff;
+  stroke-width: 1.6;
+}
+
+.boundary-preview__map .bp-pin__dot {
+  fill: #fff;
+}
+
+.boundary-preview__map .bp-north__needle {
+  fill: var(--bp-green);
+}
+
+.boundary-preview__map .bp-north__label {
+  fill: var(--bp-green);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.boundary-preview__map .bp-scale__line,
+.boundary-preview__map .bp-scale__tick {
+  stroke: var(--bp-ink);
+  stroke-width: 1.4;
+}
+
+.boundary-preview__map .bp-scale__bg {
+  fill: rgba(250, 246, 236, 0.84);
+}
+
+.boundary-preview__map .bp-scale__label {
+  fill: var(--bp-ink);
+  font-size: 10px;
+}
+
+.boundary-preview__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-top: 8px;
+  padding: 0 2px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--bp-ink);
+  min-width: 0;
+}
+
+.boundary-preview__legend[hidden] {
+  display: none;
+}
+
+.boundary-preview__legend-title {
+  flex: 0 0 100%;
+  color: var(--bp-green-dark);
+  font-weight: 600;
+}
+
+.boundary-preview__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.boundary-preview__legend-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.boundary-preview__legend-coords {
+  color: var(--bp-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.boundary-preview__legend-tag {
+  flex: 0 0 auto;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #e4efe5;
+  color: var(--bp-green-dark);
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.boundary-preview__swatch {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 10px;
+  border: 2px solid var(--bp-swatch-color, var(--bp-green));
+  border-radius: 3px;
+  background: var(--bp-swatch-color, var(--bp-green));
+}
+
+.boundary-preview__swatch.is-dashed {
+  background: transparent;
+  border-style: dashed;
+}
+
+.boundary-preview__swatch--pin {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  background: var(--bp-pin);
+  transform: rotate(-45deg);
+  box-shadow: 0 0 0 1px var(--bp-pin-dark);
+}
+
+@media (max-width: 480px) {
+  .boundary-preview {
+    padding: 10px;
+  }
+
+  .boundary-preview__map {
+    height: 260px;
+  }
+
+  .boundary-preview__tool {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
